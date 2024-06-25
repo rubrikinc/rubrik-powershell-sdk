@@ -21,3 +21,5 @@ Input to finalize set up of an AWS cloud account.
   - List of feature types to be protected for the cloud account.
 - featuresWithPermissionsGroups: list of FeatureWithPermissionsGroupss
   - List of features to onboard for the cloud account along with specific permissions groups. This list is a valid input only for customer-managed cluster users.
+- awsIamPairId: System.String
+  - Details of IAM role to be used for data center role-based archival.

@@ -1,5 +1,26 @@
 # Changelog
 
+## Version 1.5
+
+New Features:
+  - Get-RscWorkload cmdlet - Retrieves information about any supported workload type, with various filtering capabilities.
+  - Get-RscVmwareVm - Added -Relic switch. Use -Relic:$false to filter out Relics. -Relic will return only Relics. No usage of -Relic will return all (default operation). -Name parameter is now position 0, so you don't have to specify -Name.
+  - Get-RscNutanixVm - New cmdlet to get Nutanix VMs
+  - Register-RscRubrikBackupService - New cmdlet to register RBS on VMs
+  - Get-RscRole - Gets list of RSC Roles
+  - Get-RscPermission - Gets list of RSC Permissions from Role
+  - New-RscPermission - Creates new RSC Permission object
+  - Merge-RscPermission - Merges an RSC Permission object into a Role object
+  - Set-RscRole - Updates a Role in RSC with a Role object
+  - New-RscSla - Now accepts -DailySchedule as a parameter
+
+Fixes:
+  - Issue [#112](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/112)
+
+Breaking Changes:
+
+ - Removed legacy Get-RscVsphereVm CS cmdlet. Please use Get-RscVmwareVm.
+
 ## Version 1.4
 
 New Features:
@@ -494,6 +515,7 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
+
 
 
 

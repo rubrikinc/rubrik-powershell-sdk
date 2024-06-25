@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
         //      C# -> SyslogExportRuleInput? SyslogExportRuleV51
         // GraphQL -> syslogExportRuleV51: SyslogExportRuleInput (input)
         [JsonProperty("syslogExportRuleV51")]
@@ -68,13 +75,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> syslogExportRuleV92: SyslogExportRuleFullInput (input)
         [JsonProperty("syslogExportRuleV92")]
         public SyslogExportRuleFullInput? SyslogExportRuleV92 { get; set; }
-
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
 
 
         #endregion

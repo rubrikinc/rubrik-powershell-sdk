@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archiveFolderAction")]
         public ArchiveFolderAction? ArchiveFolderAction { get; set; }
 
+        //      C# -> System.Boolean? SkipRifItems
+        // GraphQL -> skipRifItems: Boolean (scalar)
+        [JsonProperty("skipRifItems")]
+        public System.Boolean? SkipRifItems { get; set; }
+
 
         #endregion
 

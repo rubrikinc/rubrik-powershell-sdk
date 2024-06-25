@@ -49,10 +49,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("resourcePoolId")]
         public System.String? ResourcePoolId { get; set; }
 
-        //      C# -> List<VmwareVnicBindingInfoV2Input>? VnicBindings
-        // GraphQL -> vNicBindings: [VmwareVnicBindingInfoV2Input!] (input)
-        [JsonProperty("vNicBindings")]
-        public List<VmwareVnicBindingInfoV2Input>? VnicBindings { get; set; }
+        //      C# -> System.Boolean? ShouldMigrateImmediately
+        // GraphQL -> shouldMigrateImmediately: Boolean (scalar)
+        [JsonProperty("shouldMigrateImmediately")]
+        public System.Boolean? ShouldMigrateImmediately { get; set; }
+
+        //      C# -> RelocateMountConfigV2Input? MigrationConfig
+        // GraphQL -> migrationConfig: RelocateMountConfigV2Input (input)
+        [JsonProperty("migrationConfig")]
+        public RelocateMountConfigV2Input? MigrationConfig { get; set; }
 
         //      C# -> MountExportSnapshotJobCommonOptionsV2Input? MountExportSnapshotJobCommonOptionsV2
         // GraphQL -> mountExportSnapshotJobCommonOptionsV2: MountExportSnapshotJobCommonOptionsV2Input (input)
@@ -64,15 +69,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("requiredRecoveryParameters")]
         public RequiredRecoveryParametersInput? RequiredRecoveryParameters { get; set; }
 
-        //      C# -> RelocateMountConfigV2Input? MigrationConfig
-        // GraphQL -> migrationConfig: RelocateMountConfigV2Input (input)
-        [JsonProperty("migrationConfig")]
-        public RelocateMountConfigV2Input? MigrationConfig { get; set; }
-
-        //      C# -> System.Boolean? ShouldMigrateImmediately
-        // GraphQL -> shouldMigrateImmediately: Boolean (scalar)
-        [JsonProperty("shouldMigrateImmediately")]
-        public System.Boolean? ShouldMigrateImmediately { get; set; }
+        //      C# -> List<VmwareVnicBindingInfoV2Input>? VnicBindings
+        // GraphQL -> vNicBindings: [VmwareVnicBindingInfoV2Input!] (input)
+        [JsonProperty("vNicBindings")]
+        public List<VmwareVnicBindingInfoV2Input>? VnicBindings { get; set; }
 
 
         #endregion

@@ -24,15 +24,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("subnet")]
         public System.String? Subnet { get; set; }
 
-        //      C# -> ManagedVolumePatchConfigInput? ManagedVolumePatchConfig
-        // GraphQL -> managedVolumePatchConfig: ManagedVolumePatchConfigInput (input)
-        [JsonProperty("managedVolumePatchConfig")]
-        public ManagedVolumePatchConfigInput? ManagedVolumePatchConfig { get; set; }
-
         //      C# -> ManagedVolumeShareType? ShareType
         // GraphQL -> shareType: ManagedVolumeShareType (enum)
         [JsonProperty("shareType")]
         public ManagedVolumeShareType? ShareType { get; set; }
+
+        //      C# -> ManagedVolumePatchConfigInput? ManagedVolumePatchConfig
+        // GraphQL -> managedVolumePatchConfig: ManagedVolumePatchConfigInput (input)
+        [JsonProperty("managedVolumePatchConfig")]
+        public ManagedVolumePatchConfigInput? ManagedVolumePatchConfig { get; set; }
 
 
         #endregion

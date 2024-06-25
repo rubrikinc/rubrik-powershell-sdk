@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("physicalPath")]
         public List<PathNode>? PhysicalPath { get; set; }
 
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
@@ -174,6 +179,7 @@ namespace RubrikSecurityCloud.Types
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
         List<PathNode>? PhysicalPath = null,
+        SecurityMetadata? SecurityMetadata = null,
         SnapshotDistribution? SnapshotDistribution = null
     ) 
     {
@@ -245,6 +251,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PhysicalPath != null ) {
             this.PhysicalPath = PhysicalPath;
+        }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
@@ -494,6 +503,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "physicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -937,6 +958,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PhysicalPath != null && ec.Excludes("physicalPath",false))
         {
             this.PhysicalPath = null;
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

@@ -3,7 +3,9 @@ Enumerates the types of filters that can be applied when querying for
  Archival Locations.
 
 - NAME - Filter archival locations by name.
-- IS_ARCHIVED - Filter archived locations.
+- IS_ARCHIVED - Filter archival locations by archived status. [true] for archived
+ locations, [false] for non-archived locations and [true, false] for
+ all locations.
 - LOCATION_TYPE - Filter archival locations by storage provider type.
 - IS_MANAGED_BY_AUTO_AG - Filter archival locations that are part of an automatically
  created Archival Group. (Note: We do not use archival groups
@@ -26,3 +28,4 @@ Enumerates the types of filters that can be applied when querying for
 - ARCHIVAL_ENTITY_USE_CASE_TYPE - Filter archival locations by use case type as defined by
  ArchivalEntityUseCaseType.
 - EXTERNAL_CDM_LOCATION_ID - Filter archival location by the Rubrik CDM ID of the location.
+- LOCATION_REDUNDANCY - Filter by redundancy for RCV archival location.

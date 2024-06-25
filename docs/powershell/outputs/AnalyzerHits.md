@@ -7,3 +7,5 @@ Analyzer hits for different risk categories.
   - Medium-risk analyzer hits.
 - lowRiskHits: SummaryHits
   - Low-risk analyzer hits.
+- noRiskHits: SummaryHits
+  - No-risk analyzer hits.

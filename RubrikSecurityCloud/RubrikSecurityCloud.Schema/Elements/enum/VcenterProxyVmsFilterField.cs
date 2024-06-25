@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         FIELD_UNSPECIFIED,
 
         [EnumMember(Value = "INCLUDE_COUNT")]
-        INCLUDE_COUNT
+        INCLUDE_COUNT,
+
+        [EnumMember(Value = "NAME")]
+        NAME
 
 
     } // enum VcenterProxyVmsFilterField

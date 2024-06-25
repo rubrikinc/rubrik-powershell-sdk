@@ -64,11 +64,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isCreatedByPolarisNas")]
         public System.Boolean? IsCreatedByPolarisNas { get; set; }
 
-        //      C# -> FilesetOptionsInput? FilesetOptions
-        // GraphQL -> filesetOptions: FilesetOptionsInput (input)
-        [JsonProperty("filesetOptions")]
-        public FilesetOptionsInput? FilesetOptions { get; set; }
-
         //      C# -> FilesetTemplateCreateOperatingSystemType? OperatingSystemType
         // GraphQL -> operatingSystemType: FilesetTemplateCreateOperatingSystemType (enum)
         [JsonProperty("operatingSystemType")]
@@ -78,6 +73,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shareType: FilesetTemplateCreateShareType (enum)
         [JsonProperty("shareType")]
         public FilesetTemplateCreateShareType? ShareType { get; set; }
+
+        //      C# -> FilesetOptionsInput? FilesetOptions
+        // GraphQL -> filesetOptions: FilesetOptionsInput (input)
+        [JsonProperty("filesetOptions")]
+        public FilesetOptionsInput? FilesetOptions { get; set; }
 
         //      C# -> List<System.String>? Includes
         // GraphQL -> includes: [String!]! (scalar)

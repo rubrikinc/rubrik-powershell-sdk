@@ -36,11 +36,8 @@ function Get-RscSla {
          )]
          [String]$Id,
         [Parameter(
-            Mandatory = $false
-        )]
-        [Switch]$Detail,
-        [Parameter(
              Mandatory = $false,
+             Position = 0,
              ParameterSetName = "Name"
          )]
          [String]$Name
@@ -48,14 +45,8 @@ function Get-RscSla {
     
     Process {
 
-        # Determine input profile:
-        $fieldProfile = "DEFAULT"
-        if ( $Detail -eq $true ) {
-            $fieldProfile = "DETAIL"
-        }
-
         if ($Id) {
-            $query = New-RscQuery -GqlQuery slaDomain -FieldProfile $fieldProfile
+            $query = New-RscQuery -GqlQuery slaDomain
             $query.var.id = $Id
             # TODO: SDK currently treating as a clusterSlaDomain, so we can't get globalSlaReply fields.
             #$query.field.BaseFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration

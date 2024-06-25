@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("rsaKey")]
         public System.String? RsaKey { get; set; }
 
+        //      C# -> AzureKeyVaultKeyIdentifierInput? AzureKeyVaultKey
+        // GraphQL -> azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput (input)
+        [JsonProperty("azureKeyVaultKey")]
+        public AzureKeyVaultKeyIdentifierInput? AzureKeyVaultKey { get; set; }
+
 
         #endregion
 

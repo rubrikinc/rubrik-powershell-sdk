@@ -7,3 +7,5 @@ Input to initiate deletion of AWS cloud account.
   - Protection feature to be deleted for the cloud account.
 - awsRoleCustomization: AwsRoleCustomization
   - Role customization options.
+- awsIamPairId: System.String
+  - The internal ID of the IAM pair. This field is required only when the feature to be deleted is DATA_CENTER_ROLE_BASED_ARCHIVAL.

@@ -19,6 +19,20 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
+
         //      C# -> SnmpConfigurationInput? SnmpConfigV50
         // GraphQL -> snmpConfigV50: SnmpConfigurationInput (input)
         [JsonProperty("snmpConfigV50")]
@@ -73,20 +87,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snmpConfigV92: SnmpConfigurationPatchInput (input)
         [JsonProperty("snmpConfigV92")]
         public SnmpConfigurationPatchInput? SnmpConfigV92 { get; set; }
-
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
-
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
 
 
         #endregion

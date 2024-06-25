@@ -171,6 +171,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> List<MongoHostDetail>? HostDetails
+        // GraphQL -> hostDetails: [MongoHostDetail!]! (type)
+        [JsonProperty("hostDetails")]
+        public List<MongoHostDetail>? HostDetails { get; set; }
+
         //      C# -> List<CdmMongoNode>? IgnoreSecondaryNodes
         // GraphQL -> ignoreSecondaryNodes: [CdmMongoNode!] (type)
         [JsonProperty("ignoreSecondaryNodes")]
@@ -205,6 +210,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> primaryClusterLocation: DataLocation! (type)
         [JsonProperty("primaryClusterLocation")]
         public DataLocation? PrimaryClusterLocation { get; set; }
+
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
 
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
@@ -308,6 +318,7 @@ namespace RubrikSecurityCloud.Types
         PhysicalHostConnection? DataHosts = null,
         MongoSourceDescendantTypeConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
+        List<MongoHostDetail>? HostDetails = null,
         List<CdmMongoNode>? IgnoreSecondaryNodes = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
@@ -315,6 +326,7 @@ namespace RubrikSecurityCloud.Types
         MongoSourcePhysicalChildTypeConnection? PhysicalChildConnection = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
+        SecurityMetadata? SecurityMetadata = null,
         SnapshotDistribution? SnapshotDistribution = null,
         List<CdmMongoNode>? SourceNodes = null,
         CdmMongoSslParams? SslParams = null
@@ -410,6 +422,9 @@ namespace RubrikSecurityCloud.Types
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
         }
+        if ( HostDetails != null ) {
+            this.HostDetails = HostDetails;
+        }
         if ( IgnoreSecondaryNodes != null ) {
             this.IgnoreSecondaryNodes = IgnoreSecondaryNodes;
         }
@@ -430,6 +445,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterLocation != null ) {
             this.PrimaryClusterLocation = PrimaryClusterLocation;
+        }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
@@ -762,6 +780,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<MongoHostDetail>? HostDetails
+        // GraphQL -> hostDetails: [MongoHostDetail!]! (type)
+        if (this.HostDetails != null) {
+            var fspec = this.HostDetails.AsFieldSpec(conf.Child("hostDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hostDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<CdmMongoNode>? IgnoreSecondaryNodes
         // GraphQL -> ignoreSecondaryNodes: [CdmMongoNode!] (type)
         if (this.IgnoreSecondaryNodes != null) {
@@ -843,6 +873,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "primaryClusterLocation" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1441,6 +1483,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaSourceObject = null;
         }
+        //      C# -> List<MongoHostDetail>? HostDetails
+        // GraphQL -> hostDetails: [MongoHostDetail!]! (type)
+        if (ec.Includes("hostDetails",false))
+        {
+            if(this.HostDetails == null) {
+
+                this.HostDetails = new List<MongoHostDetail>();
+                this.HostDetails.ApplyExploratoryFieldSpec(ec.NewChild("hostDetails"));
+
+            } else {
+
+                this.HostDetails.ApplyExploratoryFieldSpec(ec.NewChild("hostDetails"));
+
+            }
+        }
+        else if (this.HostDetails != null && ec.Excludes("hostDetails",false))
+        {
+            this.HostDetails = null;
+        }
         //      C# -> List<CdmMongoNode>? IgnoreSecondaryNodes
         // GraphQL -> ignoreSecondaryNodes: [CdmMongoNode!] (type)
         if (ec.Includes("ignoreSecondaryNodes",false))
@@ -1573,6 +1634,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
         {
             this.PrimaryClusterLocation = null;
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

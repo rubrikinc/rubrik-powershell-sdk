@@ -33,6 +33,9 @@ Supported in v5.0+
   Specifies whether the refresh of host metadata for this host is paused.
 - hostSummary: HostSummary
   - 
+- mssqlSddUsername: System.String
+  - Supported in v9.2
+  Specifies the username configured for the SQL server instance for sensitive data discovery.
 - hostDomainName: System.String
   - Supported in v9.0+
   Specify the name of active directory domain.

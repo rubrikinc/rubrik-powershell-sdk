@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+    <ViewDefinitions>
+        <View>
+            <Name>Default</Name>
+            <ViewSelectedBy>
+                <TypeName>RubrikSecurityCloud.Types.Snappable</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader>
+                        <Label>Name</Label>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Label>Object Type</Label>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Label>Object State</Label>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Label>Compliance Status</Label>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Label>SLA Domain</Label>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Label>Forever Id (FID)</Label>
+                    </TableColumnHeader>                      
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>name</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>objectType</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>objectState</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                               <PropertyName>complianceStatus</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                 <ScriptBlock>$_.slaDomain.name</ScriptBlock>
+                            </TableColumnItem>                            
+                            <TableColumnItem>
+                                <PropertyName>fid</PropertyName>
+                            </TableColumnItem>                            
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>

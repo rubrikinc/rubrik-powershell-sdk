@@ -19,15 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> IpmiAccessUpdateInput? Access
-        // GraphQL -> access: IpmiAccessUpdateInput (input)
-        [JsonProperty("access")]
-        public IpmiAccessUpdateInput? Access { get; set; }
-
         //      C# -> System.String? Password
         // GraphQL -> password: String (scalar)
         [JsonProperty("password")]
         public System.String? Password { get; set; }
+
+        //      C# -> IpmiAccessUpdateInput? Access
+        // GraphQL -> access: IpmiAccessUpdateInput (input)
+        [JsonProperty("access")]
+        public IpmiAccessUpdateInput? Access { get; set; }
 
 
         #endregion

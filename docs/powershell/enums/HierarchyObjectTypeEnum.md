@@ -70,6 +70,7 @@ Type of hierarchy object.
 - Db2Database
 - Mssql
 - NAS_FILESET - NAS Fileset.
+- ACTIVE_DIRECTORY_FOREST - Active Directory forest.
 - AZURE_AD_DIRECTORY - Azure AD Directory.
 - AzureNativeResourceGroup
 - VSphereTagCategory
@@ -109,6 +110,7 @@ Type of hierarchy object.
 - VcdVimServer
 - MONGO_DATABASE - MongoDB Database.
 - Ec2Instance
+- NUTANIX_ERA - Nutanix Era.
 - ORCHESTRATED_APPLICATION_RECOVERY_BLUEPRINT - Orchestrated Application Recovery Blueprint.
 - HypervCluster
 - JIRA_PROJECT - Jira project.

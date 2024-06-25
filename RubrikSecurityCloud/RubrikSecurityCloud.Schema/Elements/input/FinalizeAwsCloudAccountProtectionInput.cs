@@ -73,6 +73,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("featuresWithPermissionsGroups")]
         public List<FeatureWithPermissionsGroups>? FeaturesWithPermissionsGroups { get; set; }
 
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String (scalar)
+        [JsonProperty("awsIamPairId")]
+        public System.String? AwsIamPairId { get; set; }
+
 
         #endregion
 

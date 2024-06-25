@@ -15,6 +15,8 @@ Supported in v5.0+
 - isStickySmbService: System.Boolean
   - Supported in v5.0+
       A Boolean value that determines whether to run the SMB service when no shares are exposed. When this value is 'true,' the SMB service runs even when no shares are exposed. When this value is 'false,' the SMB service does not run when no shares are exposed.
+- orgNetworkId: System.String
+  - Organizational network ID used by the domain. Applicable only when Rubrik Envoy is used to reach SMB domain from the Rubrik cluster.
 - password: System.String
   - Required. Supported in v5.0+
       Password for joining Active Directory.

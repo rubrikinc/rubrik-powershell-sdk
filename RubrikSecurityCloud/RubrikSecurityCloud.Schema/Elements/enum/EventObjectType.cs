@@ -273,6 +273,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_TYPE_NUTANIX_CLUSTER")]
         OBJECT_TYPE_NUTANIX_CLUSTER,
 
+        [EnumMember(Value = "OBJECT_TYPE_NUTANIX_ERA")]
+        OBJECT_TYPE_NUTANIX_ERA,
+
         [EnumMember(Value = "OBJECT_TYPE_NUTANIX_PRISM_CENTRAL")]
         OBJECT_TYPE_NUTANIX_PRISM_CENTRAL,
 
@@ -302,6 +305,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ORACLE_RAC")]
         ORACLE_RAC,
+
+        [EnumMember(Value = "ORGANIZATION")]
+        ORGANIZATION,
 
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,

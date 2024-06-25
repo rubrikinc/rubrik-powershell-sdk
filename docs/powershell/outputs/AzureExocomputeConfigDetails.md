@@ -17,3 +17,5 @@ Exocompute configurations details.
   - Error message received while creating Exocompute configuration.
 - healthCheckStatus: ExocomputeHealthCheckStatus
   - Status of the latest Exocompute health check.
+- latestExoclusterDetails: ExocomputeClusterDetails
+  - Details of the latest Exocompute cluster.

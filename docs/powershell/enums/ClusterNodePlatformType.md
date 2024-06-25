@@ -1,6 +1,7 @@
 ### ClusterNodePlatformType
 The computing platform that is running the Rubrik CDM software.
 
+- R7000 - Production r7000.
 - PE740CITI - Dell PowerEdge 740 Citi.
 - THINKSERVERSD350 - ThinkServer sd350.
 - CE - Cloud Edition.

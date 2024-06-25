@@ -16,6 +16,8 @@
 - nonRubrikRecipientEmails: list of System.Strings
   - List of email addresses of non-Rubrik user recipients of the scheduled report.
 - updateCreator: System.Boolean
+- timeZone: System.String
+  - Time zone of the schedule time in IANA format.
 - weeklyDays: list of WeekDays
   - List of weekdays for weekly schedule of reports.
 - attachmentTypes: list of ReportAttachmentTypes

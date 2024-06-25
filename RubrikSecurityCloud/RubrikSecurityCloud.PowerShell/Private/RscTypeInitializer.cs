@@ -308,11 +308,11 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             }
                             else
                             {
-                                IList value = (IList)returnInstance.GetType()
+                                IList value = (IList)currentObject?.GetType()?
                                     .GetProperty(requestedPropertyTree[i],
                                     BindingFlags.IgnoreCase |
                                     BindingFlags.Instance |
-                                    BindingFlags.Public).GetValue(returnInstance);
+                                    BindingFlags.Public)?.GetValue(currentObject);
                                 currentObject = value[0];
                             }
 

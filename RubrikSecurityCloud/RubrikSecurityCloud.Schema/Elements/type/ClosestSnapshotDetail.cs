@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> GenericSnapshot? SnapshotDetail
+        // GraphQL -> snapshotDetail: GenericSnapshot (interface)
+        [JsonProperty("snapshotDetail")]
+        public GenericSnapshot? SnapshotDetail { get; set; }
+
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         [JsonProperty("date")]
@@ -50,12 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ClosestSnapshotDetail Set(
+        GenericSnapshot? SnapshotDetail = null,
         DateTime? Date = null,
         System.String? Id = null,
         System.Boolean? IsAnomaly = null,
         System.Boolean? IsQuarantined = null
     ) 
     {
+        if ( SnapshotDetail != null ) {
+            this.SnapshotDetail = SnapshotDetail;
+        }
         if ( Date != null ) {
             this.Date = Date;
         }
@@ -82,6 +91,19 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> GenericSnapshot? SnapshotDetail
+        // GraphQL -> snapshotDetail: GenericSnapshot (interface)
+        if (this.SnapshotDetail != null) {
+                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.SnapshotDetail, conf.Child("snapshotDetail"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotDetail" + " " + "{\n" + fspec + ind + "}\n";
+                }
+            }
+        }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         if (this.Date != null) {
@@ -125,6 +147,30 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> GenericSnapshot? SnapshotDetail
+        // GraphQL -> snapshotDetail: GenericSnapshot (interface)
+        if (ec.Includes("snapshotDetail",false))
+        {
+            if(this.SnapshotDetail == null) {
+
+                var impls = new List<GenericSnapshot>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDetail"));
+                this.SnapshotDetail = (GenericSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<GenericSnapshot>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDetail"));
+                this.SnapshotDetail = (GenericSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.SnapshotDetail != null && ec.Excludes("snapshotDetail",false))
+        {
+            this.SnapshotDetail = null;
+        }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         if (ec.Includes("date",true))

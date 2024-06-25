@@ -19,15 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> BeginSnapshotManagedVolumeRequestInput? Config
-        // GraphQL -> config: BeginSnapshotManagedVolumeRequestInput (input)
-        [JsonProperty("config")]
-        public BeginSnapshotManagedVolumeRequestInput? Config { get; set; }
-
         //      C# -> System.String? OwnerId
         // GraphQL -> ownerId: String (scalar)
         [JsonProperty("ownerId")]
         public System.String? OwnerId { get; set; }
+
+        //      C# -> BeginSnapshotManagedVolumeRequestInput? Config
+        // GraphQL -> config: BeginSnapshotManagedVolumeRequestInput (input)
+        [JsonProperty("config")]
+        public BeginSnapshotManagedVolumeRequestInput? Config { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)

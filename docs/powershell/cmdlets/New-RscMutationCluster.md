@@ -25,6 +25,11 @@ Register a cloud cluster.
 
 - There is a single argument of type RegisterCloudClusterInput.
 - Returns RegisterCloudClusterReply.
+### releasepersistentexo
+Releases all the persistent Exocompute clusters for a region configuration in a cloud account.
+
+- There is a single argument of type ReleasePersistentExoclustersInput.
+- Returns System.String.
 ### removecdm
 - There are 3 arguments.
     - clusterUUID - System.String: UUID of the Rubrik cluster.
@@ -36,6 +41,16 @@ Remove healthy nodes from a cluster.
 
 - There is a single argument of type RemoveClusterNodesInput.
 - Returns CcProvisionJobReply.
+### requestpersistentexo
+Requests a persistent Exocompute clusters for a region configuration in a cloud account.
+
+- There is a single argument of type RequestPersistentExoclusterInput.
+- Returns RequestPersistentExoclusterReply.
+### setmissingclusterstatus
+Update missing cluster connection status.
+
+- There is a single argument of type SetMissingClusterStatusInput.
+- Returns SetMissingClusterStatusReply.
 ### updateclusterdefaultaddress
 Update the default address of a Rubrik cluster.
 

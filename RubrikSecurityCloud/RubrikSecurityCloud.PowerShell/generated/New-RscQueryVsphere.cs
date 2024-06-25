@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 23
+    /// Create a new RscQuery object for any of the 24
     /// operations in the 'VMware vSphere' API domain:
-    /// ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, or VmwareCdpLiveInfo.
+    /// ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, VmsByFids, or VmwareCdpLiveInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryVsphere creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 23 operations
+    /// There are 24 operations
     /// in the 'VMware vSphere' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, or VmwareCdpLiveInfo.
+    /// one of: ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, VmsByFids, or VmwareCdpLiveInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1079,6 +1079,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the VmsByFids operation
+    /// of the 'VMware vSphere' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vsphere
+    /// # API Operation: VmsByFids
+    /// 
+    /// $query = New-RscQueryVsphere -VmsByFids
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.fids = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VsphereVmConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the VmwareCdpLiveInfo operation
     /// of the 'VMware vSphere' API domain.
     /// <code>
@@ -1146,6 +1188,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Tag",
                 "TagCategory",
                 "TopLevelDescendantsList",
+                "VmsByFids",
                 "VmwareCdpLiveInfo",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -1227,6 +1270,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "TopLevelDescendantsList":
                         this.ProcessRecord_TopLevelDescendantsList();
+                        break;
+                    case "VmsByFids":
+                        this.ProcessRecord_VmsByFids();
                         break;
                     case "VmwareCdpLiveInfo":
                         this.ProcessRecord_VmwareCdpLiveInfo();
@@ -1437,6 +1483,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -TopLevelDescendantsList";
             // Create new graphql operation vSphereTopLevelDescendantsConnection
             InitQueryVsphereTopLevelDescendantsConnection();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allVsphereVmsByFids.
+        internal void ProcessRecord_VmsByFids()
+        {
+            this._logger.name += " -VmsByFids";
+            // Create new graphql operation allVsphereVmsByFids
+            InitQueryAllVsphereVmsByFids();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2362,6 +2417,54 @@ $query.Var.filter = @(
 		)
 }
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allVsphereVmsByFids(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     fids: [UUID!]!
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //   ): VsphereVmConnection!
+        internal void InitQueryAllVsphereVmsByFids()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("fids", "[UUID!]!"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllVsphereVmsByFids",
+                "($first: Int,$after: String,$last: Int,$before: String,$fids: [UUID!]!,$sortBy: HierarchySortByField,$sortOrder: SortOrder)",
+                "VsphereVmConnection",
+                Query.AllVsphereVmsByFids_ObjectFieldSpec,
+                Query.AllVsphereVmsByFidsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.fids = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 

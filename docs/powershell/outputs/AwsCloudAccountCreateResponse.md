@@ -17,3 +17,5 @@ Initiate aws cloud accounts.
   - List of feature versions.
 - roleArn: System.String
   - Role ARN for the feature (if valid).
+- awsIamPairId: System.String
+  - ID of IAM pair, only for data center role-based archival.

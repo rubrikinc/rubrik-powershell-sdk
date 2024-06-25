@@ -96,6 +96,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		nasShares = @(
     /// 			@{
+    /// 				# REQUIRED
+    /// 				shareType = $someCreateNasShareInputShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CreateNasShareInputShareType]) for enum values.
     /// 				# OPTIONAL
     /// 				credentials = @{
     /// 					# OPTIONAL
@@ -103,8 +105,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# REQUIRED
     /// 					username = $someString
     /// 				}
-    /// 				# REQUIRED
-    /// 				shareType = $someCreateNasShareInputShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CreateNasShareInputShareType]) for enum values.
     /// 				# REQUIRED
     /// 				exportPoint = $someString
     /// 			}
@@ -223,14 +223,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				exportPoint = $someString
     /// 				# OPTIONAL
+    /// 				nasSourceId = $someString
+    /// 				# OPTIONAL
     /// 				credentials = @{
     /// 					# OPTIONAL
     /// 					password = $someString
     /// 					# REQUIRED
     /// 					username = $someString
     /// 				}
-    /// 				# OPTIONAL
-    /// 				nasSourceId = $someString
     /// 				# REQUIRED
     /// 				id = $someString
     /// 			}
@@ -375,7 +375,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	nasSystem = @{
     /// 		# OPTIONAL
+    /// 		isIsilonChangelistEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldGrantSmbShareRootAccess = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldGrantNfsShareRootAccess = $someBoolean
+    /// 		# REQUIRED
+    /// 		nasVendorType = $someNasVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NasVendorType]) for enum values.
+    /// 		# OPTIONAL
     /// 		genericNasSystemParameters = @{
+    /// 			# REQUIRED
+    /// 			hasNfsSupport = $someBoolean
+    /// 			# REQUIRED
+    /// 			hasSmbSupport = $someBoolean
     /// 			# OPTIONAL
     /// 			smbCredentials = @{
     /// 				# REQUIRED
@@ -383,13 +395,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				username = $someString
     /// 			}
+    /// 		}
+    /// 		# REQUIRED
+    /// 		hostname = $someString
+    /// 		# OPTIONAL
+    /// 		nasFlashBladeApiCredentials = @{
+    /// 			# OPTIONAL
+    /// 			apiCertificate = $someString
+    /// 			# OPTIONAL
+    /// 			certificateId = $someString
     /// 			# REQUIRED
-    /// 			hasNfsSupport = $someBoolean
+    /// 			apiToken = $someString
     /// 			# REQUIRED
     /// 			hasSmbSupport = $someBoolean
+    /// 			# OPTIONAL
+    /// 			smbCredentials = @{
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
+    /// 			}
     /// 		}
-    /// 		# OPTIONAL
-    /// 		isIsilonChangelistEnabled = $someBoolean
     /// 		# OPTIONAL
     /// 		nasTmpApiCredentials = @{
     /// 			# OPTIONAL
@@ -402,11 +428,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			certificateId = $someString
     /// 		}
     /// 		# OPTIONAL
-    /// 		nasFlashBladeApiCredentials = @{
+    /// 		nutanixFileServerParameters = @{
     /// 			# OPTIONAL
     /// 			apiCertificate = $someString
     /// 			# OPTIONAL
     /// 			certificateId = $someString
+    /// 			# OPTIONAL
+    /// 			apiPassword = $someString
+    /// 			# OPTIONAL
+    /// 			apiUsername = $someString
+    /// 			# REQUIRED
+    /// 			hasSmbSupport = $someBoolean
     /// 			# OPTIONAL
     /// 			smbCredentials = @{
     /// 				# REQUIRED
@@ -414,10 +446,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				username = $someString
     /// 			}
-    /// 			# REQUIRED
-    /// 			apiToken = $someString
-    /// 			# REQUIRED
-    /// 			hasSmbSupport = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		smbCredentials = @{
@@ -426,30 +454,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			username = $someString
     /// 		}
-    /// 		# OPTIONAL
-    /// 		nutanixFileServerParameters = @{
-    /// 			# OPTIONAL
-    /// 			apiCertificate = $someString
-    /// 			# OPTIONAL
-    /// 			certificateId = $someString
-    /// 			# OPTIONAL
-    /// 			smbCredentials = @{
-    /// 				# REQUIRED
-    /// 				password = $someString
-    /// 				# REQUIRED
-    /// 				username = $someString
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			apiPassword = $someString
-    /// 			# OPTIONAL
-    /// 			apiUsername = $someString
-    /// 			# REQUIRED
-    /// 			hasSmbSupport = $someBoolean
-    /// 		}
-    /// 		# REQUIRED
-    /// 		nasVendorType = $someNasVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NasVendorType]) for enum values.
-    /// 		# REQUIRED
-    /// 		hostname = $someString
     /// 	}
     /// }
     /// 
@@ -526,7 +530,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	nasSystemUpdateProperties = @{
     /// 		# OPTIONAL
+    /// 		hostname = $someString
+    /// 		# OPTIONAL
+    /// 		isIsilonChangelistEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldResetGeneratedNamespaceSmbCredentials = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldGrantSmbShareRootAccess = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldGrantNfsShareRootAccess = $someBoolean
+    /// 		# OPTIONAL
     /// 		genericNasSystemParameters = @{
+    /// 			# REQUIRED
+    /// 			hasNfsSupport = $someBoolean
+    /// 			# REQUIRED
+    /// 			hasSmbSupport = $someBoolean
     /// 			# OPTIONAL
     /// 			smbCredentials = @{
     /// 				# REQUIRED
@@ -534,15 +552,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				username = $someString
     /// 			}
-    /// 			# REQUIRED
-    /// 			hasNfsSupport = $someBoolean
-    /// 			# REQUIRED
-    /// 			hasSmbSupport = $someBoolean
     /// 		}
-    /// 		# OPTIONAL
-    /// 		hostname = $someString
-    /// 		# OPTIONAL
-    /// 		isIsilonChangelistEnabled = $someBoolean
     /// 		# OPTIONAL
     /// 		nasApiCredentials = @{
     /// 			# OPTIONAL
@@ -555,13 +565,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			certificateId = $someString
     /// 		}
     /// 		# OPTIONAL
-    /// 		shouldResetGeneratedNamespaceSmbCredentials = $someBoolean
-    /// 		# OPTIONAL
     /// 		nasFlashBladeApiCredentials = @{
     /// 			# OPTIONAL
     /// 			apiCertificate = $someString
     /// 			# OPTIONAL
     /// 			certificateId = $someString
+    /// 			# REQUIRED
+    /// 			apiToken = $someString
+    /// 			# REQUIRED
+    /// 			hasSmbSupport = $someBoolean
     /// 			# OPTIONAL
     /// 			smbCredentials = @{
     /// 				# REQUIRED
@@ -569,17 +581,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				username = $someString
     /// 			}
-    /// 			# REQUIRED
-    /// 			apiToken = $someString
-    /// 			# REQUIRED
-    /// 			hasSmbSupport = $someBoolean
-    /// 		}
-    /// 		# OPTIONAL
-    /// 		smbCredentials = @{
-    /// 			# OPTIONAL
-    /// 			password = $someString
-    /// 			# REQUIRED
-    /// 			username = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		nutanixFileServerParameters = @{
@@ -588,18 +589,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			certificateId = $someString
     /// 			# OPTIONAL
+    /// 			apiPassword = $someString
+    /// 			# OPTIONAL
+    /// 			apiUsername = $someString
+    /// 			# REQUIRED
+    /// 			hasSmbSupport = $someBoolean
+    /// 			# OPTIONAL
     /// 			smbCredentials = @{
     /// 				# REQUIRED
     /// 				password = $someString
     /// 				# REQUIRED
     /// 				username = $someString
     /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		smbCredentials = @{
     /// 			# OPTIONAL
-    /// 			apiPassword = $someString
-    /// 			# OPTIONAL
-    /// 			apiUsername = $someString
+    /// 			password = $someString
     /// 			# REQUIRED
-    /// 			hasSmbSupport = $someBoolean
+    /// 			username = $someString
     /// 		}
     /// 	}
     /// }
@@ -810,6 +818,8 @@ $query.Var.input = @{
 		# REQUIRED
 		nasShares = @(
 			@{
+				# REQUIRED
+				shareType = $someCreateNasShareInputShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CreateNasShareInputShareType]) for enum values.
 				# OPTIONAL
 				credentials = @{
 					# OPTIONAL
@@ -817,8 +827,6 @@ $query.Var.input = @{
 					# REQUIRED
 					username = $someString
 				}
-				# REQUIRED
-				shareType = $someCreateNasShareInputShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CreateNasShareInputShareType]) for enum values.
 				# REQUIRED
 				exportPoint = $someString
 			}
@@ -913,14 +921,14 @@ $query.Var.input = @{
 				# OPTIONAL
 				exportPoint = $someString
 				# OPTIONAL
+				nasSourceId = $someString
+				# OPTIONAL
 				credentials = @{
 					# OPTIONAL
 					password = $someString
 					# REQUIRED
 					username = $someString
 				}
-				# OPTIONAL
-				nasSourceId = $someString
 				# REQUIRED
 				id = $someString
 			}
@@ -1033,7 +1041,19 @@ $query.Var.input = @{
 	# REQUIRED
 	nasSystem = @{
 		# OPTIONAL
+		isIsilonChangelistEnabled = $someBoolean
+		# OPTIONAL
+		shouldGrantSmbShareRootAccess = $someBoolean
+		# OPTIONAL
+		shouldGrantNfsShareRootAccess = $someBoolean
+		# REQUIRED
+		nasVendorType = $someNasVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NasVendorType]) for enum values.
+		# OPTIONAL
 		genericNasSystemParameters = @{
+			# REQUIRED
+			hasNfsSupport = $someBoolean
+			# REQUIRED
+			hasSmbSupport = $someBoolean
 			# OPTIONAL
 			smbCredentials = @{
 				# REQUIRED
@@ -1041,13 +1061,27 @@ $query.Var.input = @{
 				# REQUIRED
 				username = $someString
 			}
+		}
+		# REQUIRED
+		hostname = $someString
+		# OPTIONAL
+		nasFlashBladeApiCredentials = @{
+			# OPTIONAL
+			apiCertificate = $someString
+			# OPTIONAL
+			certificateId = $someString
 			# REQUIRED
-			hasNfsSupport = $someBoolean
+			apiToken = $someString
 			# REQUIRED
 			hasSmbSupport = $someBoolean
+			# OPTIONAL
+			smbCredentials = @{
+				# REQUIRED
+				password = $someString
+				# REQUIRED
+				username = $someString
+			}
 		}
-		# OPTIONAL
-		isIsilonChangelistEnabled = $someBoolean
 		# OPTIONAL
 		nasTmpApiCredentials = @{
 			# OPTIONAL
@@ -1060,11 +1094,17 @@ $query.Var.input = @{
 			certificateId = $someString
 		}
 		# OPTIONAL
-		nasFlashBladeApiCredentials = @{
+		nutanixFileServerParameters = @{
 			# OPTIONAL
 			apiCertificate = $someString
 			# OPTIONAL
 			certificateId = $someString
+			# OPTIONAL
+			apiPassword = $someString
+			# OPTIONAL
+			apiUsername = $someString
+			# REQUIRED
+			hasSmbSupport = $someBoolean
 			# OPTIONAL
 			smbCredentials = @{
 				# REQUIRED
@@ -1072,10 +1112,6 @@ $query.Var.input = @{
 				# REQUIRED
 				username = $someString
 			}
-			# REQUIRED
-			apiToken = $someString
-			# REQUIRED
-			hasSmbSupport = $someBoolean
 		}
 		# OPTIONAL
 		smbCredentials = @{
@@ -1084,30 +1120,6 @@ $query.Var.input = @{
 			# REQUIRED
 			username = $someString
 		}
-		# OPTIONAL
-		nutanixFileServerParameters = @{
-			# OPTIONAL
-			apiCertificate = $someString
-			# OPTIONAL
-			certificateId = $someString
-			# OPTIONAL
-			smbCredentials = @{
-				# REQUIRED
-				password = $someString
-				# REQUIRED
-				username = $someString
-			}
-			# OPTIONAL
-			apiPassword = $someString
-			# OPTIONAL
-			apiUsername = $someString
-			# REQUIRED
-			hasSmbSupport = $someBoolean
-		}
-		# REQUIRED
-		nasVendorType = $someNasVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NasVendorType]) for enum values.
-		# REQUIRED
-		hostname = $someString
 	}
 }"
             );
@@ -1168,7 +1180,21 @@ $query.Var.input = @{
 	# REQUIRED
 	nasSystemUpdateProperties = @{
 		# OPTIONAL
+		hostname = $someString
+		# OPTIONAL
+		isIsilonChangelistEnabled = $someBoolean
+		# OPTIONAL
+		shouldResetGeneratedNamespaceSmbCredentials = $someBoolean
+		# OPTIONAL
+		shouldGrantSmbShareRootAccess = $someBoolean
+		# OPTIONAL
+		shouldGrantNfsShareRootAccess = $someBoolean
+		# OPTIONAL
 		genericNasSystemParameters = @{
+			# REQUIRED
+			hasNfsSupport = $someBoolean
+			# REQUIRED
+			hasSmbSupport = $someBoolean
 			# OPTIONAL
 			smbCredentials = @{
 				# REQUIRED
@@ -1176,15 +1202,7 @@ $query.Var.input = @{
 				# REQUIRED
 				username = $someString
 			}
-			# REQUIRED
-			hasNfsSupport = $someBoolean
-			# REQUIRED
-			hasSmbSupport = $someBoolean
 		}
-		# OPTIONAL
-		hostname = $someString
-		# OPTIONAL
-		isIsilonChangelistEnabled = $someBoolean
 		# OPTIONAL
 		nasApiCredentials = @{
 			# OPTIONAL
@@ -1197,13 +1215,15 @@ $query.Var.input = @{
 			certificateId = $someString
 		}
 		# OPTIONAL
-		shouldResetGeneratedNamespaceSmbCredentials = $someBoolean
-		# OPTIONAL
 		nasFlashBladeApiCredentials = @{
 			# OPTIONAL
 			apiCertificate = $someString
 			# OPTIONAL
 			certificateId = $someString
+			# REQUIRED
+			apiToken = $someString
+			# REQUIRED
+			hasSmbSupport = $someBoolean
 			# OPTIONAL
 			smbCredentials = @{
 				# REQUIRED
@@ -1211,17 +1231,6 @@ $query.Var.input = @{
 				# REQUIRED
 				username = $someString
 			}
-			# REQUIRED
-			apiToken = $someString
-			# REQUIRED
-			hasSmbSupport = $someBoolean
-		}
-		# OPTIONAL
-		smbCredentials = @{
-			# OPTIONAL
-			password = $someString
-			# REQUIRED
-			username = $someString
 		}
 		# OPTIONAL
 		nutanixFileServerParameters = @{
@@ -1230,18 +1239,25 @@ $query.Var.input = @{
 			# OPTIONAL
 			certificateId = $someString
 			# OPTIONAL
+			apiPassword = $someString
+			# OPTIONAL
+			apiUsername = $someString
+			# REQUIRED
+			hasSmbSupport = $someBoolean
+			# OPTIONAL
 			smbCredentials = @{
 				# REQUIRED
 				password = $someString
 				# REQUIRED
 				username = $someString
 			}
+		}
+		# OPTIONAL
+		smbCredentials = @{
 			# OPTIONAL
-			apiPassword = $someString
-			# OPTIONAL
-			apiUsername = $someString
+			password = $someString
 			# REQUIRED
-			hasSmbSupport = $someBoolean
+			username = $someString
 		}
 	}
 }"

@@ -126,3 +126,5 @@ Enum representing all the possible object types which generate events.
 - SALESFORCE_OBJECT - Salesforce objects.
 - SALESFORCE_METADATA - Salesforce metadata.
 - INTEL_FEED - Orion threat feed.
+- ORGANIZATION - Organization object.
+- OBJECT_TYPE_NUTANIX_ERA - Nutanix Era object.

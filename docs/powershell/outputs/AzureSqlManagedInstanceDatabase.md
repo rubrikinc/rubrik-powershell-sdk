@@ -19,6 +19,8 @@ Retrieves an Azure SQL Managed Instance Database. Refers to the database engine 
   - The authorized operations on the object.
 - azureSqlManagedInstanceServer: AzureSqlManagedInstanceServer
   - Azure SQL Managed Instance Server of the Azure SQL Managed Instance Database.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String
@@ -47,6 +49,8 @@ Retrieves an Azure SQL Managed Instance Database. Refers to the database engine 
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

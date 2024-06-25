@@ -29,11 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isEnabled")]
         public System.Boolean? IsEnabled { get; set; }
 
-        //      C# -> List<NetworkThrottleScheduleSummaryInput>? ScheduledThrottles
-        // GraphQL -> scheduledThrottles: [NetworkThrottleScheduleSummaryInput!] (input)
-        [JsonProperty("scheduledThrottles")]
-        public List<NetworkThrottleScheduleSummaryInput>? ScheduledThrottles { get; set; }
-
         //      C# -> System.String? NetworkInterface
         // GraphQL -> networkInterface: String (scalar)
         [JsonProperty("networkInterface")]
@@ -43,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalThrottlePort: Int (scalar)
         [JsonProperty("archivalThrottlePort")]
         public System.Int32? ArchivalThrottlePort { get; set; }
+
+        //      C# -> List<NetworkThrottleScheduleSummaryInput>? ScheduledThrottles
+        // GraphQL -> scheduledThrottles: [NetworkThrottleScheduleSummaryInput!] (input)
+        [JsonProperty("scheduledThrottles")]
+        public List<NetworkThrottleScheduleSummaryInput>? ScheduledThrottles { get; set; }
 
 
         #endregion

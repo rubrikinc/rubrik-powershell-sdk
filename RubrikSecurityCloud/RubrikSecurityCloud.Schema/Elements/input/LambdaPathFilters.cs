@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("searchRecurseFolderId")]
         public System.String? SearchRecurseFolderId { get; set; }
 
+        //      C# -> System.Boolean? IncludeAncestors
+        // GraphQL -> includeAncestors: Boolean (scalar)
+        [JsonProperty("includeAncestors")]
+        public System.Boolean? IncludeAncestors { get; set; }
+
 
         #endregion
 

@@ -11,6 +11,8 @@ Customer facing file.
   - Creator of the file.
 - filename: System.String
   - Name of the file.
+- completedAt: DateTime
+  - Timestamp when the file generation was completed.
 - type: FileTypeEnumType
   - File type.
 - state: FileStateEnumType

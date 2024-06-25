@@ -26,12 +26,12 @@ Supported in v5.0+
       Specifies whether this is created by a Kupr Host.
 - isCreatedByPolarisNas: System.Boolean
   - Specifies whether the template was created for Rubrik Security Cloud NAS.
-- filesetOptions: FilesetOptionsInput
-  - Fileset options.
 - operatingSystemType: FilesetTemplatePatchOperatingSystemType
   - Supported in v5.0+
       Operating system type of filesets created by template.
 - shareType: FilesetTemplatePatchShareType
   - Supported in v5.0+
+- filesetOptions: FilesetOptionsInput
+  - Fileset options.
 - id: System.String
   - Required. Supported in v5.0+

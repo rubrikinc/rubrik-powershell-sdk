@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> HostRbsConnectionStatus? StatusEnum
+        // GraphQL -> statusEnum: HostRbsConnectionStatus (enum)
+        [JsonProperty("statusEnum")]
+        public HostRbsConnectionStatus? StatusEnum { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public HypervScvmmSummary Set(
+        HostRbsConnectionStatus? StatusEnum = null,
         System.String? Id = null,
         System.String? PrimaryClusterId = null,
         System.String? RunAsAccount = null,
@@ -74,6 +80,9 @@ namespace RubrikSecurityCloud.Types
         SlaAssignable? SlaAssignable = null
     ) 
     {
+        if ( StatusEnum != null ) {
+            this.StatusEnum = StatusEnum;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -109,6 +118,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> HostRbsConnectionStatus? StatusEnum
+        // GraphQL -> statusEnum: HostRbsConnectionStatus (enum)
+        if (this.StatusEnum != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "statusEnum\n" ;
+            } else {
+                s += ind + "statusEnum\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -182,6 +200,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> HostRbsConnectionStatus? StatusEnum
+        // GraphQL -> statusEnum: HostRbsConnectionStatus (enum)
+        if (ec.Includes("statusEnum",true))
+        {
+            if(this.StatusEnum == null) {
+
+                this.StatusEnum = new HostRbsConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StatusEnum != null && ec.Excludes("statusEnum",true))
+        {
+            this.StatusEnum = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (ec.Includes("id",true))

@@ -37,5 +37,7 @@ Input for creating ab AWS archival target.
   - Optional field for specifying an AWS S3 endpoint, for example a VPC endpoint. When not specified, the default, region-based S3 endpoint is used.
 - kmsEndpoint: System.String
   - Optional field for specifying the KMS server endpoint when using KMS-based encryption, for example a VPC endpoint. When not specified, the default, region-based KMS server endpoint is used.
+- awsIamPairId: System.String
+  - Internal ID of the AWS IAM pair. This field is required only when creating Data Center AWS role-based archival locations.
 - bypassProxy: System.Boolean
   - Specifies whether the proxy settings should be bypassed for creating this AWS archival target.

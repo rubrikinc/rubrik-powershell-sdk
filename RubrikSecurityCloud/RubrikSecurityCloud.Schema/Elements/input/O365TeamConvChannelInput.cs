@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("naturalId")]
         public System.String? NaturalId { get; set; }
 
+        //      C# -> System.String? ChannelId
+        // GraphQL -> channelId: String (scalar)
+        [JsonProperty("channelId")]
+        public System.String? ChannelId { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [Required]

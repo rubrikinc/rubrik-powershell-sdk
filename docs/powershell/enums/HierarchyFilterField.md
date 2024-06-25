@@ -277,3 +277,17 @@
  Id.
 - POSTGRES_DB_CLUSTER_HOST_CONNECTION_STATUS - Filter the Postgres Database Cluster based on its host
  connection status.
+- ORACLE_OS_TYPE - Filter Oracle host and RAC objects by OS type.
+- RECOVERY_PLAN_WORKLOAD_TYPE - Filter by Recovery Plan workload type.
+- VMWARE_VM_MOID - Filter by moid of VMware virtual machines.
+- HAS_EXPIRED_NON_GCED_SNAPSHOTS - Filter objects with snapshots that have expired but
+ not been garbage-collected.
+- VMWARE_IS_STANDALONE_HOST - Filter VMware standalone hosts from vCenters and standalone hosts.
+- SENSITIVITY_STATUS - Filter by sensitivity status.
+- HAS_EXPIRED_NON_GCED_SNAPSHOT_COUNT_UNSET - Filter objects for which the expired_non_gced_snapshot_count field
+ is not set.
+- SAASAPPS_ORGANIZATION_SCOPE - Filter the SaaS Apps organizations by their scopes.
+- IS_UNACCESSED - Filter objects that have not been accessed for over 90 days.
+- PHYSICAL_HOST_EXCLUDE_IDS - Filter physical host objects by excluding hosts from the output that
+ that have IDs specified by the caller.
+- PROTECTION_STATUS - Filter by the protection status of the object.

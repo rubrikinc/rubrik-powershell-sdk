@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
+
         //      C# -> VcenterConfigInput? UpdatePropertiesV50
         // GraphQL -> updatePropertiesV50: VcenterConfigInput (input)
         [JsonProperty("updatePropertiesV50")]
@@ -73,13 +80,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updatePropertiesV92: VcenterUpdateConfigInput (input)
         [JsonProperty("updatePropertiesV92")]
         public VcenterUpdateConfigInput? UpdatePropertiesV92 { get; set; }
-
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
 
 
         #endregion

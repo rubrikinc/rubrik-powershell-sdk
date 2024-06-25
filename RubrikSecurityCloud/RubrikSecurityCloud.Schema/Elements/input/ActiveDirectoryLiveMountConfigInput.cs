@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("subnet")]
         public System.String? Subnet { get; set; }
 
+        //      C# -> System.Boolean? ShouldMountVhdx
+        // GraphQL -> shouldMountVhdx: Boolean (scalar)
+        [JsonProperty("shouldMountVhdx")]
+        public System.Boolean? ShouldMountVhdx { get; set; }
+
 
         #endregion
 

@@ -49,3 +49,4 @@ TODO: SPARK-150447 - Deprecate this enum to use managed object type
 - MSSQL_DATABASE - Represents MSSQL Database.
 - MSSQL_ROOT - Represents MSSQL Root.
 - VSPHERE_DATACENTER_FOLDER - Represents VMWARE VSPHERE_DATACENTER_FOLDER.
+- AWS_NATIVE_S3_BUCKET - Represents AWS S3 bucket.

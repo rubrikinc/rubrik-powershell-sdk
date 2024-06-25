@@ -39,15 +39,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serviceAccountName")]
         public System.String? ServiceAccountName { get; set; }
 
-        //      C# -> EksConfigInput? EksConfig
-        // GraphQL -> eksConfig: EksConfigInput (input)
-        [JsonProperty("eksConfig")]
-        public EksConfigInput? EksConfig { get; set; }
-
         //      C# -> System.String? Distribution
         // GraphQL -> distribution: String (scalar)
         [JsonProperty("distribution")]
         public System.String? Distribution { get; set; }
+
+        //      C# -> System.String? PullSecret
+        // GraphQL -> pullSecret: String (scalar)
+        [JsonProperty("pullSecret")]
+        public System.String? PullSecret { get; set; }
 
         //      C# -> System.String? Transport
         // GraphQL -> transport: String (scalar)
@@ -69,10 +69,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("region")]
         public System.String? Region { get; set; }
 
+        //      C# -> System.String? OnboardingType
+        // GraphQL -> onboardingType: String (scalar)
+        [JsonProperty("onboardingType")]
+        public System.String? OnboardingType { get; set; }
+
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String (scalar)
         [JsonProperty("clientId")]
         public System.String? ClientId { get; set; }
+
+        //      C# -> EksConfigInput? EksConfig
+        // GraphQL -> eksConfig: EksConfigInput (input)
+        [JsonProperty("eksConfig")]
+        public EksConfigInput? EksConfig { get; set; }
+
+        //      C# -> KuprServerProxyConfigInput? KuprServerProxyConfig
+        // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfigInput (input)
+        [JsonProperty("kuprServerProxyConfig")]
+        public KuprServerProxyConfigInput? KuprServerProxyConfig { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

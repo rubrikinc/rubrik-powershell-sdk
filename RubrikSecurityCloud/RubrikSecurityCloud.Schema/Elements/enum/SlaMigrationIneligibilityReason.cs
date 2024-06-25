@@ -54,6 +54,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NOT_APPLICABLE")]
         NOT_APPLICABLE,
 
+        [EnumMember(Value = "RECOVERED_FROM_ARCHIVAL_LOCATION")]
+        RECOVERED_FROM_ARCHIVAL_LOCATION,
+
         [EnumMember(Value = "REPLICATION_TARGET_DISCONNECTED")]
         REPLICATION_TARGET_DISCONNECTED,
 
@@ -62,6 +65,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RETENTION_LOCK_CONFIGURED")]
         RETENTION_LOCK_CONFIGURED,
+
+        [EnumMember(Value = "SLA_OUT_OF_SYNC_ON_RSC")]
+        SLA_OUT_OF_SYNC_ON_RSC,
 
         [EnumMember(Value = "TPR_ENABLED_ON_CLUSTER")]
         TPR_ENABLED_ON_CLUSTER,

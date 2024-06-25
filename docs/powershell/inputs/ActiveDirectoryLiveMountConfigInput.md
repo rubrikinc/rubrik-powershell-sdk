@@ -16,3 +16,5 @@ Configuration for creating Active Directory Live Mount.
 - subnet: System.String
   - Supported in v9.0+
       IP subnet specifying an outgoing VLAN interface for a Rubrik node. This is a required value when creating an export on a Rubrik node that has multiple VLAN interfaces.
+- shouldMountVhdx: System.Boolean
+  - Specifies whether the Virtual Hard Disk Extended (VHDX) must be mounted during export.

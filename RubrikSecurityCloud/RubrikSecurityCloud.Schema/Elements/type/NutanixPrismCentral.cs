@@ -86,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsDrEnabled
+        // GraphQL -> isDrEnabled: Boolean! (scalar)
+        [JsonProperty("isDrEnabled")]
+        public System.Boolean? IsDrEnabled { get; set; }
+
         //      C# -> DateTime? LastRefreshTime
         // GraphQL -> lastRefreshTime: DateTime (scalar)
         [JsonProperty("lastRefreshTime")]
@@ -196,6 +201,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterLocation")]
         public DataLocation? PrimaryClusterLocation { get; set; }
 
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
@@ -273,6 +283,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? DuplicateObjectsAbsoluteCount = null,
         System.String? HostName = null,
         System.String? Id = null,
+        System.Boolean? IsDrEnabled = null,
         DateTime? LastRefreshTime = null,
         System.String? Name = null,
         System.String? NaturalId = null,
@@ -295,6 +306,7 @@ namespace RubrikSecurityCloud.Types
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
+        SecurityMetadata? SecurityMetadata = null,
         SnapshotDistribution? SnapshotDistribution = null
     ) 
     {
@@ -336,6 +348,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsDrEnabled != null ) {
+            this.IsDrEnabled = IsDrEnabled;
         }
         if ( LastRefreshTime != null ) {
             this.LastRefreshTime = LastRefreshTime;
@@ -402,6 +417,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterLocation != null ) {
             this.PrimaryClusterLocation = PrimaryClusterLocation;
+        }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
@@ -559,6 +577,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsDrEnabled
+        // GraphQL -> isDrEnabled: Boolean! (scalar)
+        if (this.IsDrEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isDrEnabled\n" ;
+            } else {
+                s += ind + "isDrEnabled\n" ;
             }
         }
         //      C# -> DateTime? LastRefreshTime
@@ -795,6 +822,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "primaryClusterLocation" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1069,6 +1108,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsDrEnabled
+        // GraphQL -> isDrEnabled: Boolean! (scalar)
+        if (ec.Includes("isDrEnabled",true))
+        {
+            if(this.IsDrEnabled == null) {
+
+                this.IsDrEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDrEnabled != null && ec.Excludes("isDrEnabled",true))
+        {
+            this.IsDrEnabled = null;
         }
         //      C# -> DateTime? LastRefreshTime
         // GraphQL -> lastRefreshTime: DateTime (scalar)
@@ -1469,6 +1525,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
         {
             this.PrimaryClusterLocation = null;
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

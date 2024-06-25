@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AgentConnectStatus? AgentConnectStatus
+        // GraphQL -> agentConnectStatus: AgentConnectStatus (enum)
+        [JsonProperty("agentConnectStatus")]
+        public AgentConnectStatus? AgentConnectStatus { get; set; }
+
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
         [JsonProperty("forceFull")]
@@ -80,6 +85,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public HypervVirtualMachineSummary Set(
+        AgentConnectStatus? AgentConnectStatus = null,
         System.Boolean? ForceFull = null,
         System.String? HostId = null,
         System.String? Id = null,
@@ -92,6 +98,9 @@ namespace RubrikSecurityCloud.Types
         CdmWorkload? Snappable = null
     ) 
     {
+        if ( AgentConnectStatus != null ) {
+            this.AgentConnectStatus = AgentConnectStatus;
+        }
         if ( ForceFull != null ) {
             this.ForceFull = ForceFull;
         }
@@ -136,6 +145,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AgentConnectStatus? AgentConnectStatus
+        // GraphQL -> agentConnectStatus: AgentConnectStatus (enum)
+        if (this.AgentConnectStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "agentConnectStatus\n" ;
+            } else {
+                s += ind + "agentConnectStatus\n" ;
+            }
+        }
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
         if (this.ForceFull != null) {
@@ -248,6 +266,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> AgentConnectStatus? AgentConnectStatus
+        // GraphQL -> agentConnectStatus: AgentConnectStatus (enum)
+        if (ec.Includes("agentConnectStatus",true))
+        {
+            if(this.AgentConnectStatus == null) {
+
+                this.AgentConnectStatus = new AgentConnectStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AgentConnectStatus != null && ec.Excludes("agentConnectStatus",true))
+        {
+            this.AgentConnectStatus = null;
+        }
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
         if (ec.Includes("forceFull",true))

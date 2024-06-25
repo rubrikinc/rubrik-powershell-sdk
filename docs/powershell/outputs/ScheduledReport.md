@@ -29,5 +29,7 @@ Metadata for rendering a scheduled report.
   - List of Rubrik users that are the intended recipients of the scheduled report. Inactive users are not part of this list.
 - recipientEmails: list of System.Strings
   - List of email addresses of (non-Rubrik user) recipients of the scheduled report.
+- timeZone: System.String
+  - Time zone of the schedule time in IANA format.
 - weeklyDays: list of WeekDays
   - Weekdays for report delivery if weekly schedule is enabled.

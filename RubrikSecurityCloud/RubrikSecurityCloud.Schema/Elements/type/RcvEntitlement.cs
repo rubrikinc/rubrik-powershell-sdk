@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("capacity")]
         public System.Single? Capacity { get; set; }
 
+        //      C# -> DateTime? CreatedAt
+        // GraphQL -> createdAt: DateTime (scalar)
+        [JsonProperty("createdAt")]
+        public DateTime? CreatedAt { get; set; }
+
 
         #endregion
 
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         RcvRegionBundle? Bundle = null,
         RcvRedundancy? Redundancy = null,
         RcvTier? Tier = null,
-        System.Single? Capacity = null
+        System.Single? Capacity = null,
+        DateTime? CreatedAt = null
     ) 
     {
         if ( Bundle != null ) {
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Capacity != null ) {
             this.Capacity = Capacity;
+        }
+        if ( CreatedAt != null ) {
+            this.CreatedAt = CreatedAt;
         }
         return this;
     }
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "capacity\n" ;
             } else {
                 s += ind + "capacity\n" ;
+            }
+        }
+        //      C# -> DateTime? CreatedAt
+        // GraphQL -> createdAt: DateTime (scalar)
+        if (this.CreatedAt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "createdAt\n" ;
+            } else {
+                s += ind + "createdAt\n" ;
             }
         }
         return s;
@@ -192,6 +210,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Capacity != null && ec.Excludes("capacity",true))
         {
             this.Capacity = null;
+        }
+        //      C# -> DateTime? CreatedAt
+        // GraphQL -> createdAt: DateTime (scalar)
+        if (ec.Includes("createdAt",true))
+        {
+            if(this.CreatedAt == null) {
+
+                this.CreatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedAt != null && ec.Excludes("createdAt",true))
+        {
+            this.CreatedAt = null;
         }
     }
 

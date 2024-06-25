@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ActiveDirectoryObjectType? ObjectType
+        // GraphQL -> objectType: ActiveDirectoryObjectType! (enum)
+        [JsonProperty("objectType")]
+        public ActiveDirectoryObjectType? ObjectType { get; set; }
+
+        //      C# -> System.Int32? Dnt
+        // GraphQL -> dnt: Int! (scalar)
+        [JsonProperty("dnt")]
+        public System.Int32? Dnt { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -40,10 +50,18 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ActiveDirectorySnappableSearchResponse Set(
+        ActiveDirectoryObjectType? ObjectType = null,
+        System.Int32? Dnt = null,
         System.String? Name = null,
         List<ActiveDirectorySearchVersions>? Versions = null
     ) 
     {
+        if ( ObjectType != null ) {
+            this.ObjectType = ObjectType;
+        }
+        if ( Dnt != null ) {
+            this.Dnt = Dnt;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
@@ -64,6 +82,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ActiveDirectoryObjectType? ObjectType
+        // GraphQL -> objectType: ActiveDirectoryObjectType! (enum)
+        if (this.ObjectType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
+        }
+        //      C# -> System.Int32? Dnt
+        // GraphQL -> dnt: Int! (scalar)
+        if (this.Dnt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dnt\n" ;
+            } else {
+                s += ind + "dnt\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -92,6 +128,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> ActiveDirectoryObjectType? ObjectType
+        // GraphQL -> objectType: ActiveDirectoryObjectType! (enum)
+        if (ec.Includes("objectType",true))
+        {
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new ActiveDirectoryObjectType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
+        }
+        //      C# -> System.Int32? Dnt
+        // GraphQL -> dnt: Int! (scalar)
+        if (ec.Includes("dnt",true))
+        {
+            if(this.Dnt == null) {
+
+                this.Dnt = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Dnt != null && ec.Excludes("dnt",true))
+        {
+            this.Dnt = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))

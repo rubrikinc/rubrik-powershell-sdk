@@ -101,3 +101,7 @@
 - K8S_CLUSTER_NAME - Sort based on Kubernetes cluster name.
 - AZURE_BLOB_STORAGE_ACCOUNT_CONTAINER_COUNT - Sort Azure storage accounts by number of containers.
 - AZURE_BLOB_STORAGE_ACCOUNT_CAPACITY_USED - Sort Azure storage accounts by capacity used.
+- SENSITIVITY_HITS - Sort based on sensitivity hits.
+- SENSITIVITY_STATUS - Sort based on sensitivity status.
+- EFFECTIVE_SLA_FREQUENCY - Sort based on the base frequency of effective SLA Domain.
+- EFFECTIVE_SLA_MAX_RETENTION - Sort based on the maximum retention of the effective SLA Domain.

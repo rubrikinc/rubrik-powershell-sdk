@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GROUP")]
         GROUP,
 
+        [EnumMember(Value = "ROLE")]
+        ROLE,
+
         [EnumMember(Value = "USER")]
         USER
 

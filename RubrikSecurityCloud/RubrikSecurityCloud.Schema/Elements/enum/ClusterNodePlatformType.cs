@@ -90,6 +90,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "R6408M")]
         R6408_M,
 
+        [EnumMember(Value = "R7000")]
+        R7000,
+
         [EnumMember(Value = "RKDEV")]
         RKDEV,
 

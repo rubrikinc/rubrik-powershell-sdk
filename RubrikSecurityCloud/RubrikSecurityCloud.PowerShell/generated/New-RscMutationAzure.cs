@@ -873,7 +873,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cloudAccountId = $someString
     /// 	# REQUIRED
     /// 	instanceType = $someInstanceTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InstanceTypeEnum]) for enum values.
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	rsaKey = $someString
     /// 	# OPTIONAL
     /// 	computeSettings = @{
@@ -937,6 +937,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
+    /// 	# OPTIONAL
+    /// 	azureKeyVaultKey = @{
+    /// 		# REQUIRED
+    /// 		kmsKeyVaultId = $someString
+    /// 		# REQUIRED
+    /// 		keyName = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1007,7 +1014,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cloudAccountId = $someString
     /// 	# REQUIRED
     /// 	instanceType = $someInstanceTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InstanceTypeEnum]) for enum values.
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	rsaKey = $someString
     /// 	# OPTIONAL
     /// 	computeSettings = @{
@@ -1069,6 +1076,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
+    /// 	# OPTIONAL
+    /// 	azureKeyVaultKey = @{
+    /// 		# REQUIRED
+    /// 		kmsKeyVaultId = $someString
+    /// 		# REQUIRED
+    /// 		keyName = $someString
+    /// 		# REQUIRED
+    /// 		keyVersion = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -3614,7 +3630,7 @@ $query.Var.input = @{
 	cloudAccountId = $someString
 	# REQUIRED
 	instanceType = $someInstanceTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InstanceTypeEnum]) for enum values.
-	# REQUIRED
+	# OPTIONAL
 	rsaKey = $someString
 	# OPTIONAL
 	computeSettings = @{
@@ -3678,6 +3694,13 @@ $query.Var.input = @{
 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
 	# REQUIRED
 	bypassProxy = $someBoolean
+	# OPTIONAL
+	azureKeyVaultKey = @{
+		# REQUIRED
+		kmsKeyVaultId = $someString
+		# REQUIRED
+		keyName = $someString
+	}
 }"
             );
         }
@@ -3731,7 +3754,7 @@ $query.Var.input = @{
 	cloudAccountId = $someString
 	# REQUIRED
 	instanceType = $someInstanceTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InstanceTypeEnum]) for enum values.
-	# REQUIRED
+	# OPTIONAL
 	rsaKey = $someString
 	# OPTIONAL
 	computeSettings = @{
@@ -3793,6 +3816,15 @@ $query.Var.input = @{
 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
 	# REQUIRED
 	bypassProxy = $someBoolean
+	# OPTIONAL
+	azureKeyVaultKey = @{
+		# REQUIRED
+		kmsKeyVaultId = $someString
+		# REQUIRED
+		keyName = $someString
+		# REQUIRED
+		keyVersion = $someString
+	}
 }"
             );
         }

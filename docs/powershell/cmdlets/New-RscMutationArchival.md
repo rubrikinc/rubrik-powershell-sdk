@@ -53,7 +53,7 @@ Refreshes a reader Archival Location.
 - There is a single argument of type ResumeTargetInput.
 - Returns ResumeTargetReply.
 ### updateglaciertarget
-Edit a reader target of type Glacier on a Rubrik cluster.
+Edit a target of type Glacier on a Rubrik cluster.
 
 - There is a single argument of type UpdateGlacierTargetInput.
 - Returns Target.

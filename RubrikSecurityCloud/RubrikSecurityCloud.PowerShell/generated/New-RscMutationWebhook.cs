@@ -112,9 +112,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someUserAuditTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditTypeEnum]) for enum values.
     /// 		)
     /// 		# OPTIONAL
+    /// 		objectTypes = @(
+    /// 			$someEventObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
     /// 		isSubscribedToAllEvents = $someBoolean
     /// 		# OPTIONAL
     /// 		isSubscribedToAllAudits = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSubscribedToAllObjectTypes = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	subscriptionSeverity = @{
@@ -318,9 +324,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someUserAuditTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditTypeEnum]) for enum values.
     /// 		)
     /// 		# OPTIONAL
+    /// 		objectTypes = @(
+    /// 			$someEventObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
     /// 		isSubscribedToAllEvents = $someBoolean
     /// 		# OPTIONAL
     /// 		isSubscribedToAllAudits = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSubscribedToAllObjectTypes = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	subscriptionSeverity = @{
@@ -521,9 +533,15 @@ $query.Var.input = @{
 			$someUserAuditTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditTypeEnum]) for enum values.
 		)
 		# OPTIONAL
+		objectTypes = @(
+			$someEventObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
+		)
+		# OPTIONAL
 		isSubscribedToAllEvents = $someBoolean
 		# OPTIONAL
 		isSubscribedToAllAudits = $someBoolean
+		# OPTIONAL
+		isSubscribedToAllObjectTypes = $someBoolean
 	}
 	# REQUIRED
 	subscriptionSeverity = @{
@@ -695,9 +713,15 @@ $query.Var.input = @{
 			$someUserAuditTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditTypeEnum]) for enum values.
 		)
 		# OPTIONAL
+		objectTypes = @(
+			$someEventObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
+		)
+		# OPTIONAL
 		isSubscribedToAllEvents = $someBoolean
 		# OPTIONAL
 		isSubscribedToAllAudits = $someBoolean
+		# OPTIONAL
+		isSubscribedToAllObjectTypes = $someBoolean
 	}
 	# OPTIONAL
 	subscriptionSeverity = @{

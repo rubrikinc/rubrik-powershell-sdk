@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("prismElementCdmTuple")]
         public List<PrismElementCdmTuple>? PrismElementCdmTuple { get; set; }
 
+        //      C# -> System.Boolean? IsDrEnabled
+        // GraphQL -> isDrEnabled: Boolean (scalar)
+        [JsonProperty("isDrEnabled")]
+        public System.Boolean? IsDrEnabled { get; set; }
+
 
         #endregion
 

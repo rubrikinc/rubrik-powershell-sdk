@@ -5,3 +5,5 @@ Holds the configuration of a single integration. Note that IntegrationConfig
 
 - dataLossPrevention: DlpConfigInput
   - The Data Loss Prevention configuration.
+- serviceNowItsm: ServiceNowItsmIntegrationConfigInput
+  - The ServiceNow ITSM configuration.

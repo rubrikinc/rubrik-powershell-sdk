@@ -29,3 +29,11 @@ Supported in v5.0+
   Specifies whether the Volume Group needs to be migrated in order to use the fast VHDX builder. This flag is set only when the Volume Group's last backup job failed due to an error during data fetch, and the backup job did not use the fast VHDX builder.
 - snappable: CdmWorkload
   - 
+- operatingSystem: System.String
+  - Operating system of the host. One of Windows, Linux, AIX, HPUX, or SunOS.
+- isPaused: System.Boolean
+  - Indicates whether backup, archiving, and replication are paused for this Volume Group.
+- rbsConnectionStatus: HostRbsConnectionStatus
+  - 
+- volumes: list of HostVolumeSummarys
+  - Configuration details for the volumes in the Volume Group.

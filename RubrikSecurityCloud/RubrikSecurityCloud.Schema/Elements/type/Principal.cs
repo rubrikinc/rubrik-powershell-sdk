@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authDomainId")]
         public System.String? AuthDomainId { get; set; }
 
+        //      C# -> System.String? AuthDomainName
+        // GraphQL -> authDomainName: String! (scalar)
+        [JsonProperty("authDomainName")]
+        public System.String? AuthDomainName { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
         [JsonProperty("description")]
@@ -62,6 +67,7 @@ namespace RubrikSecurityCloud.Types
     public Principal Set(
         PrincipalTypeEnum? PrincipalType = null,
         System.String? AuthDomainId = null,
+        System.String? AuthDomainName = null,
         System.String? Description = null,
         System.String? Email = null,
         System.String? Id = null,
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AuthDomainId != null ) {
             this.AuthDomainId = AuthDomainId;
+        }
+        if ( AuthDomainName != null ) {
+            this.AuthDomainName = AuthDomainName;
         }
         if ( Description != null ) {
             this.Description = Description;
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authDomainId\n" ;
             } else {
                 s += ind + "authDomainId\n" ;
+            }
+        }
+        //      C# -> System.String? AuthDomainName
+        // GraphQL -> authDomainName: String! (scalar)
+        if (this.AuthDomainName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "authDomainName\n" ;
+            } else {
+                s += ind + "authDomainName\n" ;
             }
         }
         //      C# -> System.String? Description
@@ -194,6 +212,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthDomainId != null && ec.Excludes("authDomainId",true))
         {
             this.AuthDomainId = null;
+        }
+        //      C# -> System.String? AuthDomainName
+        // GraphQL -> authDomainName: String! (scalar)
+        if (ec.Includes("authDomainName",true))
+        {
+            if(this.AuthDomainName == null) {
+
+                this.AuthDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthDomainName != null && ec.Excludes("authDomainName",true))
+        {
+            this.AuthDomainName = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)

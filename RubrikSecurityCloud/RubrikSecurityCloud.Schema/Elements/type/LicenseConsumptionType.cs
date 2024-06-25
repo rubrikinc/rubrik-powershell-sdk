@@ -20,10 +20,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int32? FetbConsumed
-        // GraphQL -> fetbConsumed: Int! (scalar)
+        //      C# -> System.Int64? FetbConsumed
+        // GraphQL -> fetbConsumed: Long! (scalar)
         [JsonProperty("fetbConsumed")]
-        public System.Int32? FetbConsumed { get; set; }
+        public System.Int64? FetbConsumed { get; set; }
 
         //      C# -> System.Int32? UsersProtected
         // GraphQL -> usersProtected: Int! (scalar)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public LicenseConsumptionType Set(
-        System.Int32? FetbConsumed = null,
+        System.Int64? FetbConsumed = null,
         System.Int32? UsersProtected = null
     ) 
     {
@@ -64,8 +64,8 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> System.Int32? FetbConsumed
-        // GraphQL -> fetbConsumed: Int! (scalar)
+        //      C# -> System.Int64? FetbConsumed
+        // GraphQL -> fetbConsumed: Long! (scalar)
         if (this.FetbConsumed != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "fetbConsumed\n" ;
@@ -89,13 +89,13 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
-        //      C# -> System.Int32? FetbConsumed
-        // GraphQL -> fetbConsumed: Int! (scalar)
+        //      C# -> System.Int64? FetbConsumed
+        // GraphQL -> fetbConsumed: Long! (scalar)
         if (ec.Includes("fetbConsumed",true))
         {
             if(this.FetbConsumed == null) {
 
-                this.FetbConsumed = Int32.MinValue;
+                this.FetbConsumed = new System.Int64();
 
             } else {
 

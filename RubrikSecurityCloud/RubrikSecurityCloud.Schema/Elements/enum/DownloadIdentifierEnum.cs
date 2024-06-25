@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_FILES_DOWNLOAD,
 
         [EnumMember(Value = "SONAR_DOWNLOAD")]
-        SONAR_DOWNLOAD
+        SONAR_DOWNLOAD,
+
+        [EnumMember(Value = "USER_AWARENESS_DOWNLOAD")]
+        USER_AWARENESS_DOWNLOAD
 
 
     } // enum DownloadIdentifierEnum

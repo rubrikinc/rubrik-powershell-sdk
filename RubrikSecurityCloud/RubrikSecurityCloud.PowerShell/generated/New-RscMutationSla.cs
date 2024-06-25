@@ -761,6 +761,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				}
     /// 			)
     /// 			# OPTIONAL
+    /// 			replicationPairs = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					sourceClusterId = $someString
+    /// 					# REQUIRED
+    /// 					targetClusterId = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
     /// 			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
     /// 			# OPTIONAL
     /// 			azureRegion = $someAzureNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
@@ -841,10 +850,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		shouldDownloadToLocal = $someBoolean
     /// 		# OPTIONAL
     /// 		managedVolumeSlaExportConfig = @{
+    /// 			# REQUIRED
+    /// 			hostId = $someString
+    /// 			# REQUIRED
+    /// 			hostMountPaths = @(
+    /// 				$someString
+    /// 			)
     /// 			# OPTIONAL
     /// 			managedVolumeExportConfig = @{
     /// 				# OPTIONAL
     /// 				subnet = $someString
+    /// 				# OPTIONAL
+    /// 				shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
     /// 				# OPTIONAL
     /// 				managedVolumePatchConfig = @{
     /// 					# OPTIONAL
@@ -866,15 +883,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						$someString
     /// 					)
     /// 				}
-    /// 				# OPTIONAL
-    /// 				shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
     /// 			}
-    /// 			# REQUIRED
-    /// 			hostId = $someString
-    /// 			# REQUIRED
-    /// 			hostMountPaths = @(
-    /// 				$someString
-    /// 			)
     /// 		}
     /// 	}
     /// }
@@ -1493,6 +1502,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					frequency = @(
     /// 						$someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 					)
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			replicationPairs = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					sourceClusterId = $someString
+    /// 					# REQUIRED
+    /// 					targetClusterId = $someString
     /// 				}
     /// 			)
     /// 			# OPTIONAL
@@ -2432,6 +2450,15 @@ $query.Var.input = @{
 				}
 			)
 			# OPTIONAL
+			replicationPairs = @(
+				@{
+					# REQUIRED
+					sourceClusterId = $someString
+					# REQUIRED
+					targetClusterId = $someString
+				}
+			)
+			# OPTIONAL
 			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
 			# OPTIONAL
 			azureRegion = $someAzureNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
@@ -2497,10 +2524,18 @@ $query.Var.input = @{
 		shouldDownloadToLocal = $someBoolean
 		# OPTIONAL
 		managedVolumeSlaExportConfig = @{
+			# REQUIRED
+			hostId = $someString
+			# REQUIRED
+			hostMountPaths = @(
+				$someString
+			)
 			# OPTIONAL
 			managedVolumeExportConfig = @{
 				# OPTIONAL
 				subnet = $someString
+				# OPTIONAL
+				shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
 				# OPTIONAL
 				managedVolumePatchConfig = @{
 					# OPTIONAL
@@ -2522,15 +2557,7 @@ $query.Var.input = @{
 						$someString
 					)
 				}
-				# OPTIONAL
-				shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
 			}
-			# REQUIRED
-			hostId = $someString
-			# REQUIRED
-			hostMountPaths = @(
-				$someString
-			)
 		}
 	}
 }"
@@ -3125,6 +3152,15 @@ $query.Var.input = @{
 					frequency = @(
 						$someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 					)
+				}
+			)
+			# OPTIONAL
+			replicationPairs = @(
+				@{
+					# REQUIRED
+					sourceClusterId = $someString
+					# REQUIRED
+					targetClusterId = $someString
 				}
 			)
 			# OPTIONAL

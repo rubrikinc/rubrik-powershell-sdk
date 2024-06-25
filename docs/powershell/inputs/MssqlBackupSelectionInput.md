@@ -1,6 +1,9 @@
 ### MssqlBackupSelectionInput
 Supported in v5.2+
 
+- backupType: MssqlBackupType
+  - Supported in v5.2+
+      A filter for responses that are of the specified type.
 - endPoint: MssqlRecoveryPointInput
   - Supported in v5.2+
 - legalHoldDownloadConfig: LegalHoldDownloadConfigInput
@@ -11,6 +14,3 @@ Supported in v5.2+
   - Supported in v5.2+
 - startPoint: MssqlRecoveryPointInput
   - Supported in v5.2+
-- backupType: MssqlBackupType
-  - Supported in v5.2+
-      A filter for responses that are of the specified type.

@@ -31,7 +31,7 @@ List all target mappings.
 
 - There are 5 arguments.
     - sortBy - ArchivalGroupQuerySortByField: Specification on how to sort a list of target mappings.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - filter - list of TargetMappingFilterInputs: Specification on how to filter a list of target mappings.
     - contextFilter - ContextFilterTypeEnum: Specifies the context filter to use.
     - isRcsStatsRequired - System.Boolean: Corresponds to rcs stats flag, only true value will add rcs stats in response.
@@ -45,7 +45,7 @@ All archival locations.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - ArchivalLocationQuerySortByField: Specifies the field by which the list of targets will be sorted.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - filter - list of TargetFilterInputs: Specifies how to filter the list of targets.
     - contextFilter - ContextFilterTypeEnum: Specifies the context filter to use.
 - Returns TargetConnection.

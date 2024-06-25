@@ -30,6 +30,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("apiVersion")]
         public System.String? ApiVersion { get; set; }
 
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean! (scalar)
+        [JsonProperty("isAirGapped")]
+        public System.Boolean? IsAirGapped { get; set; }
+
+        //      C# -> System.Boolean? IsConnected
+        // GraphQL -> isConnected: Boolean! (scalar)
+        [JsonProperty("isConnected")]
+        public System.Boolean? IsConnected { get; set; }
+
+        //      C# -> System.Boolean? IsCrossAccount
+        // GraphQL -> isCrossAccount: Boolean! (scalar)
+        [JsonProperty("isCrossAccount")]
+        public System.Boolean? IsCrossAccount { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -57,6 +72,9 @@ namespace RubrikSecurityCloud.Types
     public ValidReplicationTarget Set(
         System.String? AccountName = null,
         System.String? ApiVersion = null,
+        System.Boolean? IsAirGapped = null,
+        System.Boolean? IsConnected = null,
+        System.Boolean? IsCrossAccount = null,
         System.String? Name = null,
         System.String? Uuid = null,
         System.String? Version = null
@@ -67,6 +85,15 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ApiVersion != null ) {
             this.ApiVersion = ApiVersion;
+        }
+        if ( IsAirGapped != null ) {
+            this.IsAirGapped = IsAirGapped;
+        }
+        if ( IsConnected != null ) {
+            this.IsConnected = IsConnected;
+        }
+        if ( IsCrossAccount != null ) {
+            this.IsCrossAccount = IsCrossAccount;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -107,6 +134,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "apiVersion\n" ;
             } else {
                 s += ind + "apiVersion\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean! (scalar)
+        if (this.IsAirGapped != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAirGapped\n" ;
+            } else {
+                s += ind + "isAirGapped\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsConnected
+        // GraphQL -> isConnected: Boolean! (scalar)
+        if (this.IsConnected != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isConnected\n" ;
+            } else {
+                s += ind + "isConnected\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsCrossAccount
+        // GraphQL -> isCrossAccount: Boolean! (scalar)
+        if (this.IsCrossAccount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isCrossAccount\n" ;
+            } else {
+                s += ind + "isCrossAccount\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -176,6 +230,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.ApiVersion != null && ec.Excludes("apiVersion",true))
         {
             this.ApiVersion = null;
+        }
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean! (scalar)
+        if (ec.Includes("isAirGapped",true))
+        {
+            if(this.IsAirGapped == null) {
+
+                this.IsAirGapped = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAirGapped != null && ec.Excludes("isAirGapped",true))
+        {
+            this.IsAirGapped = null;
+        }
+        //      C# -> System.Boolean? IsConnected
+        // GraphQL -> isConnected: Boolean! (scalar)
+        if (ec.Includes("isConnected",true))
+        {
+            if(this.IsConnected == null) {
+
+                this.IsConnected = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsConnected != null && ec.Excludes("isConnected",true))
+        {
+            this.IsConnected = null;
+        }
+        //      C# -> System.Boolean? IsCrossAccount
+        // GraphQL -> isCrossAccount: Boolean! (scalar)
+        if (ec.Includes("isCrossAccount",true))
+        {
+            if(this.IsCrossAccount == null) {
+
+                this.IsCrossAccount = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCrossAccount != null && ec.Excludes("isCrossAccount",true))
+        {
+            this.IsCrossAccount = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

@@ -90,10 +90,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldEnforceMfaForAll")]
         public System.Boolean? ShouldEnforceMfaForAll { get; set; }
 
-        //      C# -> List<ClusterCapacityQuota>? AllClusterCapacityQuotas
-        // GraphQL -> allClusterCapacityQuotas: [ClusterCapacityQuota!]! (type)
+        //      C# -> List<ClusterWithCapacityQuota>? AllClusterCapacityQuotas
+        // GraphQL -> allClusterCapacityQuotas: [ClusterWithCapacityQuota!]! (type)
         [JsonProperty("allClusterCapacityQuotas")]
-        public List<ClusterCapacityQuota>? AllClusterCapacityQuotas { get; set; }
+        public List<ClusterWithCapacityQuota>? AllClusterCapacityQuotas { get; set; }
 
         //      C# -> Role? OrgAdminRole
         // GraphQL -> orgAdminRole: Role! (type)
@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.Int64? PhysicalStorageUsed = null,
         System.Boolean? ShouldEnforceMfaForAll = null,
-        List<ClusterCapacityQuota>? AllClusterCapacityQuotas = null,
+        List<ClusterWithCapacityQuota>? AllClusterCapacityQuotas = null,
         Role? OrgAdminRole = null,
         List<Permission>? Permissions = null,
         List<SelfServicePermission>? SelfServicePermissions = null,
@@ -352,8 +352,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "shouldEnforceMfaForAll\n" ;
             }
         }
-        //      C# -> List<ClusterCapacityQuota>? AllClusterCapacityQuotas
-        // GraphQL -> allClusterCapacityQuotas: [ClusterCapacityQuota!]! (type)
+        //      C# -> List<ClusterWithCapacityQuota>? AllClusterCapacityQuotas
+        // GraphQL -> allClusterCapacityQuotas: [ClusterWithCapacityQuota!]! (type)
         if (this.AllClusterCapacityQuotas != null) {
             var fspec = this.AllClusterCapacityQuotas.AsFieldSpec(conf.Child("allClusterCapacityQuotas"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -669,13 +669,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.ShouldEnforceMfaForAll = null;
         }
-        //      C# -> List<ClusterCapacityQuota>? AllClusterCapacityQuotas
-        // GraphQL -> allClusterCapacityQuotas: [ClusterCapacityQuota!]! (type)
+        //      C# -> List<ClusterWithCapacityQuota>? AllClusterCapacityQuotas
+        // GraphQL -> allClusterCapacityQuotas: [ClusterWithCapacityQuota!]! (type)
         if (ec.Includes("allClusterCapacityQuotas",false))
         {
             if(this.AllClusterCapacityQuotas == null) {
 
-                this.AllClusterCapacityQuotas = new List<ClusterCapacityQuota>();
+                this.AllClusterCapacityQuotas = new List<ClusterWithCapacityQuota>();
                 this.AllClusterCapacityQuotas.ApplyExploratoryFieldSpec(ec.NewChild("allClusterCapacityQuotas"));
 
             } else {

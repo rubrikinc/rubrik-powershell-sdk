@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ClusterCyberEventLockdownMode? CyberEventLockdownMode
+        // GraphQL -> cyberEventLockdownMode: ClusterCyberEventLockdownMode (enum)
+        [JsonProperty("cyberEventLockdownMode")]
+        public ClusterCyberEventLockdownMode? CyberEventLockdownMode { get; set; }
+
         //      C# -> ClusterEosStatus? EosStatus
         // GraphQL -> eosStatus: ClusterEosStatus (enum)
         [JsonProperty("eosStatus")]
@@ -105,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean (scalar)
+        [JsonProperty("isAirGapped")]
+        public System.Boolean? IsAirGapped { get; set; }
 
         //      C# -> System.Boolean? IsHealthy
         // GraphQL -> isHealthy: Boolean! (scalar)
@@ -225,6 +235,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configProtectionInfo: ConfigProtectionInfo (type)
         [JsonProperty("configProtectionInfo")]
         public ConfigProtectionInfo? ConfigProtectionInfo { get; set; }
+
+        //      C# -> CyberEventLockdownSupportCaseDetails? CyberEventLockdownSupportCaseDetails
+        // GraphQL -> cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails! (type)
+        [JsonProperty("cyberEventLockdownSupportCaseDetails")]
+        public CyberEventLockdownSupportCaseDetails? CyberEventLockdownSupportCaseDetails { get; set; }
 
         //      C# -> AutoEnablePolicyClusterConfigReply? DatagovAutoEnablePolicyConfig
         // GraphQL -> datagovAutoEnablePolicyConfig: AutoEnablePolicyClusterConfigReply! (type)
@@ -394,6 +409,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Cluster Set(
+        ClusterCyberEventLockdownMode? CyberEventLockdownMode = null,
         ClusterEosStatus? EosStatus = null,
         List<Product>? LicensedProducts = null,
         ClusterPauseStatus? PauseStatus = null,
@@ -411,6 +427,7 @@ namespace RubrikSecurityCloud.Types
         System.String? EosDate = null,
         System.Int64? EstimatedRunway = null,
         System.String? Id = null,
+        System.Boolean? IsAirGapped = null,
         System.Boolean? IsHealthy = null,
         System.Boolean? IsTprEnabled = null,
         DateTime? LastConnectionTime = null,
@@ -435,6 +452,7 @@ namespace RubrikSecurityCloud.Types
         ClusterNodeConnection? ClusterNodeConnection = null,
         List<ClusterNodeStats>? ClusterNodeStats = null,
         ConfigProtectionInfo? ConfigProtectionInfo = null,
+        CyberEventLockdownSupportCaseDetails? CyberEventLockdownSupportCaseDetails = null,
         AutoEnablePolicyClusterConfigReply? DatagovAutoEnablePolicyConfig = null,
         PreviewerClusterConfig? DatagovPreviewerConfig = null,
         GeoLocation? GeoLocation = null,
@@ -454,6 +472,9 @@ namespace RubrikSecurityCloud.Types
         WebServerCertificate? WebServerCertificate = null
     ) 
     {
+        if ( CyberEventLockdownMode != null ) {
+            this.CyberEventLockdownMode = CyberEventLockdownMode;
+        }
         if ( EosStatus != null ) {
             this.EosStatus = EosStatus;
         }
@@ -504,6 +525,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsAirGapped != null ) {
+            this.IsAirGapped = IsAirGapped;
         }
         if ( IsHealthy != null ) {
             this.IsHealthy = IsHealthy;
@@ -577,6 +601,9 @@ namespace RubrikSecurityCloud.Types
         if ( ConfigProtectionInfo != null ) {
             this.ConfigProtectionInfo = ConfigProtectionInfo;
         }
+        if ( CyberEventLockdownSupportCaseDetails != null ) {
+            this.CyberEventLockdownSupportCaseDetails = CyberEventLockdownSupportCaseDetails;
+        }
         if ( DatagovAutoEnablePolicyConfig != null ) {
             this.DatagovAutoEnablePolicyConfig = DatagovAutoEnablePolicyConfig;
         }
@@ -642,6 +669,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ClusterCyberEventLockdownMode? CyberEventLockdownMode
+        // GraphQL -> cyberEventLockdownMode: ClusterCyberEventLockdownMode (enum)
+        if (this.CyberEventLockdownMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cyberEventLockdownMode\n" ;
+            } else {
+                s += ind + "cyberEventLockdownMode\n" ;
+            }
+        }
         //      C# -> ClusterEosStatus? EosStatus
         // GraphQL -> eosStatus: ClusterEosStatus (enum)
         if (this.EosStatus != null) {
@@ -793,6 +829,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean (scalar)
+        if (this.IsAirGapped != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAirGapped\n" ;
+            } else {
+                s += ind + "isAirGapped\n" ;
             }
         }
         //      C# -> System.Boolean? IsHealthy
@@ -1047,6 +1092,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> CyberEventLockdownSupportCaseDetails? CyberEventLockdownSupportCaseDetails
+        // GraphQL -> cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails! (type)
+        if (this.CyberEventLockdownSupportCaseDetails != null) {
+            var fspec = this.CyberEventLockdownSupportCaseDetails.AsFieldSpec(conf.Child("cyberEventLockdownSupportCaseDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cyberEventLockdownSupportCaseDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AutoEnablePolicyClusterConfigReply? DatagovAutoEnablePolicyConfig
         // GraphQL -> datagovAutoEnablePolicyConfig: AutoEnablePolicyClusterConfigReply! (type)
         if (this.DatagovAutoEnablePolicyConfig != null) {
@@ -1258,6 +1315,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> ClusterCyberEventLockdownMode? CyberEventLockdownMode
+        // GraphQL -> cyberEventLockdownMode: ClusterCyberEventLockdownMode (enum)
+        if (ec.Includes("cyberEventLockdownMode",true))
+        {
+            if(this.CyberEventLockdownMode == null) {
+
+                this.CyberEventLockdownMode = new ClusterCyberEventLockdownMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CyberEventLockdownMode != null && ec.Excludes("cyberEventLockdownMode",true))
+        {
+            this.CyberEventLockdownMode = null;
+        }
         //      C# -> ClusterEosStatus? EosStatus
         // GraphQL -> eosStatus: ClusterEosStatus (enum)
         if (ec.Includes("eosStatus",true))
@@ -1546,6 +1620,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean (scalar)
+        if (ec.Includes("isAirGapped",true))
+        {
+            if(this.IsAirGapped == null) {
+
+                this.IsAirGapped = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAirGapped != null && ec.Excludes("isAirGapped",true))
+        {
+            this.IsAirGapped = null;
         }
         //      C# -> System.Boolean? IsHealthy
         // GraphQL -> isHealthy: Boolean! (scalar)
@@ -1978,6 +2069,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ConfigProtectionInfo != null && ec.Excludes("configProtectionInfo",false))
         {
             this.ConfigProtectionInfo = null;
+        }
+        //      C# -> CyberEventLockdownSupportCaseDetails? CyberEventLockdownSupportCaseDetails
+        // GraphQL -> cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails! (type)
+        if (ec.Includes("cyberEventLockdownSupportCaseDetails",false))
+        {
+            if(this.CyberEventLockdownSupportCaseDetails == null) {
+
+                this.CyberEventLockdownSupportCaseDetails = new CyberEventLockdownSupportCaseDetails();
+                this.CyberEventLockdownSupportCaseDetails.ApplyExploratoryFieldSpec(ec.NewChild("cyberEventLockdownSupportCaseDetails"));
+
+            } else {
+
+                this.CyberEventLockdownSupportCaseDetails.ApplyExploratoryFieldSpec(ec.NewChild("cyberEventLockdownSupportCaseDetails"));
+
+            }
+        }
+        else if (this.CyberEventLockdownSupportCaseDetails != null && ec.Excludes("cyberEventLockdownSupportCaseDetails",false))
+        {
+            this.CyberEventLockdownSupportCaseDetails = null;
         }
         //      C# -> AutoEnablePolicyClusterConfigReply? DatagovAutoEnablePolicyConfig
         // GraphQL -> datagovAutoEnablePolicyConfig: AutoEnablePolicyClusterConfigReply! (type)

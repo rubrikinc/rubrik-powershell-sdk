@@ -97,11 +97,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	definitions = @(
     /// 		@{
     /// 			# OPTIONAL
-    /// 			arraySpec = @{
-    /// 				# OPTIONAL
-    /// 				proxyHostId = $someString
-    /// 			}
-    /// 			# OPTIONAL
     /// 			hostId = $someString
     /// 			# OPTIONAL
     /// 			isPassthrough = $someBoolean
@@ -121,6 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isManagedByPolaris = $someBoolean
     /// 			# OPTIONAL
     /// 			isPolarisNasModel = $someBoolean
+    /// 			# OPTIONAL
+    /// 			arraySpec = @{
+    /// 				# OPTIONAL
+    /// 				proxyHostId = $someString
+    /// 			}
     /// 			# REQUIRED
     /// 			templateId = $someString
     /// 		}
@@ -182,6 +182,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			isCreatedByPolarisNas = $someBoolean
     /// 			# OPTIONAL
+    /// 			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
+    /// 			# OPTIONAL
     /// 			filesetOptions = @{
     /// 				# OPTIONAL
     /// 				allowBackupHiddenFoldersInNetworkMounts = $someBoolean
@@ -190,10 +194,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				useWindowsVss = $someBoolean
     /// 			}
-    /// 			# OPTIONAL
-    /// 			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
-    /// 			# OPTIONAL
-    /// 			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
     /// 			# REQUIRED
     /// 			includes = @(
     /// 				$someString
@@ -331,6 +331,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			isCreatedByPolarisNas = $someBoolean
     /// 			# OPTIONAL
+    /// 			operatingSystemType = $someFilesetTemplatePatchOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchOperatingSystemType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			shareType = $someFilesetTemplatePatchShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchShareType]) for enum values.
+    /// 			# OPTIONAL
     /// 			filesetOptions = @{
     /// 				# OPTIONAL
     /// 				allowBackupHiddenFoldersInNetworkMounts = $someBoolean
@@ -339,10 +343,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				useWindowsVss = $someBoolean
     /// 			}
-    /// 			# OPTIONAL
-    /// 			operatingSystemType = $someFilesetTemplatePatchOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchOperatingSystemType]) for enum values.
-    /// 			# OPTIONAL
-    /// 			shareType = $someFilesetTemplatePatchShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchShareType]) for enum values.
     /// 			# REQUIRED
     /// 			id = $someString
     /// 		}
@@ -573,11 +573,6 @@ $query.Var.input = @{
 	definitions = @(
 		@{
 			# OPTIONAL
-			arraySpec = @{
-				# OPTIONAL
-				proxyHostId = $someString
-			}
-			# OPTIONAL
 			hostId = $someString
 			# OPTIONAL
 			isPassthrough = $someBoolean
@@ -597,6 +592,11 @@ $query.Var.input = @{
 			isManagedByPolaris = $someBoolean
 			# OPTIONAL
 			isPolarisNasModel = $someBoolean
+			# OPTIONAL
+			arraySpec = @{
+				# OPTIONAL
+				proxyHostId = $someString
+			}
 			# REQUIRED
 			templateId = $someString
 		}
@@ -650,6 +650,10 @@ $query.Var.input = @{
 			# OPTIONAL
 			isCreatedByPolarisNas = $someBoolean
 			# OPTIONAL
+			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
+			# OPTIONAL
+			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
+			# OPTIONAL
 			filesetOptions = @{
 				# OPTIONAL
 				allowBackupHiddenFoldersInNetworkMounts = $someBoolean
@@ -658,10 +662,6 @@ $query.Var.input = @{
 				# OPTIONAL
 				useWindowsVss = $someBoolean
 			}
-			# OPTIONAL
-			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
-			# OPTIONAL
-			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
 			# REQUIRED
 			includes = @(
 				$someString
@@ -775,6 +775,10 @@ $query.Var.input = @{
 			# OPTIONAL
 			isCreatedByPolarisNas = $someBoolean
 			# OPTIONAL
+			operatingSystemType = $someFilesetTemplatePatchOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchOperatingSystemType]) for enum values.
+			# OPTIONAL
+			shareType = $someFilesetTemplatePatchShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchShareType]) for enum values.
+			# OPTIONAL
 			filesetOptions = @{
 				# OPTIONAL
 				allowBackupHiddenFoldersInNetworkMounts = $someBoolean
@@ -783,10 +787,6 @@ $query.Var.input = @{
 				# OPTIONAL
 				useWindowsVss = $someBoolean
 			}
-			# OPTIONAL
-			operatingSystemType = $someFilesetTemplatePatchOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchOperatingSystemType]) for enum values.
-			# OPTIONAL
-			shareType = $someFilesetTemplatePatchShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchShareType]) for enum values.
 			# REQUIRED
 			id = $someString
 		}

@@ -49,7 +49,7 @@ Get CDM release details from support portal for a given list of clusters.
     - filterUpgradeable - System.Boolean: Filters for the available upgrade versions.
     - shouldShowAll - System.Boolean: Shows all versions.
     - filterAfterSource - System.Boolean: Filter to include only the versions released after the source version.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
 - Returns CdmUpgradeReleaseDetailsFromSupportPortalReply.
 ### getgroupcountbycdmclusterstatus
 - The getgroupcountbycdmclusterstatus subcommand takes no arguments.
@@ -88,8 +88,8 @@ Summary of all Kubernetes Clusters.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns KubernetesClusterConnection.
 ### licensesforclusterproductsummary
@@ -109,6 +109,13 @@ List of the available cluster objects.
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - ClusterSortByEnum: Sort clusters by field.
 - Returns ClusterConnection.
+### missing
+All missing clusters from the account.
+
+- There are 2 arguments.
+    - connectionStatus - MissingClusterConnectionStatus: Rubrik cluster connection status.
+    - isExcluded - System.Boolean: Rubrik cluster exclusion status.
+- Returns MissingClusterConnection.
 ### networkinterfaces
 Get network interfaces for a Rubrik Cluster cluster
 

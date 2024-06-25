@@ -186,6 +186,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EFFECTIVE_SLA_DOMAIN")]
         EFFECTIVE_SLA_DOMAIN,
 
+        [EnumMember(Value = "EFFECTIVE_SLA_FREQUENCY")]
+        EFFECTIVE_SLA_FREQUENCY,
+
+        [EnumMember(Value = "EFFECTIVE_SLA_MAX_RETENTION")]
+        EFFECTIVE_SLA_MAX_RETENTION,
+
         [EnumMember(Value = "EMAIL_ADDRESS")]
         EMAIL_ADDRESS,
 
@@ -290,6 +296,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SAP_HANA_SYSTEM_STATUS")]
         SAP_HANA_SYSTEM_STATUS,
+
+        [EnumMember(Value = "SENSITIVITY_HITS")]
+        SENSITIVITY_HITS,
+
+        [EnumMember(Value = "SENSITIVITY_STATUS")]
+        SENSITIVITY_STATUS,
 
         [EnumMember(Value = "UNMANAGED_OBJECTS_ARCHIVAL_STORAGE_BYTES")]
         UNMANAGED_OBJECTS_ARCHIVAL_STORAGE_BYTES,

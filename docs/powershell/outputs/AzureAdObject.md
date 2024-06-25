@@ -13,3 +13,5 @@ Response to the azureAdObjectsByType API.
   - Populate either AzureAdUser or AzureAdGroup.
 - type: AzureAdObjectType
   - Azure AD object type.
+- relatedItemCount: list of AzureAdRelatedItemCounts
+  - Represents count of related items for relationship type.

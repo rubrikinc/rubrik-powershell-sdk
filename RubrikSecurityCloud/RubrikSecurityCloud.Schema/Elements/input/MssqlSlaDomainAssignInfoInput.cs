@@ -29,11 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldApplyToNonPolicySnapshots")]
         public System.Boolean? ShouldApplyToNonPolicySnapshots { get; set; }
 
-        //      C# -> MssqlSlaPatchPropertiesInput? MssqlSlaPatchProperties
-        // GraphQL -> mssqlSlaPatchProperties: MssqlSlaPatchPropertiesInput (input)
-        [JsonProperty("mssqlSlaPatchProperties")]
-        public MssqlSlaPatchPropertiesInput? MssqlSlaPatchProperties { get; set; }
-
         //      C# -> ExistingSnapshotRetention? ExistingSnapshotRetention
         // GraphQL -> existingSnapshotRetention: ExistingSnapshotRetention (enum)
         [JsonProperty("existingSnapshotRetention")]
@@ -45,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("ids")]
         public List<System.String>? Ids { get; set; }
+
+        //      C# -> MssqlSlaPatchPropertiesInput? MssqlSlaPatchProperties
+        // GraphQL -> mssqlSlaPatchProperties: MssqlSlaPatchPropertiesInput (input)
+        [JsonProperty("mssqlSlaPatchProperties")]
+        public MssqlSlaPatchPropertiesInput? MssqlSlaPatchProperties { get; set; }
 
 
         #endregion

@@ -15,16 +15,9 @@ Supported in v5.1+
 - resourcePoolId: System.String
   - Supported in v5.2+
       ID of the resource pool to export the new virtual machine to.
-- vNicBindings: list of VmwareVnicBindingInfoV2Inputs
-  - Supported in v6.0+
-      The network binding for vNIC of the virtual machine.
 - shouldUseHotAddProxy: System.Boolean
   - Supported in v7.0+
       Boolean value that determines whether Export uses a HotAdd mode to transport virtual disk data. When this value is `true`, Export uses HotAdd mode to transport virtual disk data. When this value is `false`, Export uses NBDSSL to transport virtual disk data. The default value is `false`.
-- mountExportSnapshotJobCommonOptionsV2: MountExportSnapshotJobCommonOptionsV2Input
-  - 
-- requiredRecoveryParameters: RequiredRecoveryParametersInput
-  - 
 - folderId: System.String
   - Supported in v9.1+
       ID of the virtual machine folder to export the new virtual machine to.
@@ -37,3 +30,10 @@ Supported in v5.1+
 - datastoreId: System.String
   - Required. Supported in v5.1+
       ID of the datastore to assign to the exported virtual machine.
+- mountExportSnapshotJobCommonOptionsV2: MountExportSnapshotJobCommonOptionsV2Input
+  - 
+- requiredRecoveryParameters: RequiredRecoveryParametersInput
+  - 
+- vNicBindings: list of VmwareVnicBindingInfoV2Inputs
+  - Supported in v6.0+
+      The network binding for vNIC of the virtual machine.

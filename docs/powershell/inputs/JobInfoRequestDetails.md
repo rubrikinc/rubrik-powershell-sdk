@@ -78,3 +78,7 @@ Additional information needed to fetch the status of the job. At most one field 
   - Populate for `POSTGRES_DB_CLUSTER` jobs.
 - hostsInfo: HostsInfo
   - Populate for `HOST_BULK_REGISTER_ASYNC` jobs.
+- vsphereVmMakePrimaryInfo: VsphereVmMakePrimaryInfo
+  - Populate for `VSPHERE_VM_MAKE_PRIMARY` jobs.
+- mssqlAddHost: MssqlAddHostOperation
+  - Populate for `DISCOVERED_MSSQL_OBJECTS_NOTIFICATIONS_POLLER` jobs.

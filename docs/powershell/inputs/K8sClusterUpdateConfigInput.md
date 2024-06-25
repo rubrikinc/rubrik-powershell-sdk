@@ -11,8 +11,14 @@ Supported in v9.1+
 - serviceAccountName: System.String
   - Supported in v9.1+
       The name of the RSC service account.
+- pullSecret: System.String
+  - Supported in v9.1+
+      The pull secret required for pulling Rubrik container images.
 - transport: System.String
-  - The transport type used for communication with the Kubernetes cluster.
+  - Supported in v9.1+
+      The transport type used for communication with the Kubernetes cluster.
+- isAutoPsCreationEnabled: System.Boolean
+  - Specifies whether to enable automatic protection set creation for the Kubernetes cluster.
 - clientSecret: System.String
   - Supported in v9.1+
       The client secret for the service account.
@@ -25,3 +31,5 @@ Supported in v9.1+
 - clientId: System.String
   - Supported in v9.1+
       The client ID for the service account.
+- kuprServerProxyConfig: KuprServerProxyConfigInput
+  - The configuration for the kupr server proxy to be updated.

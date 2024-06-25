@@ -95,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analyzerHits")]
         public AnalyzerHits? AnalyzerHits { get; set; }
 
+        //      C# -> List<DataTypeResult>? DataTypeResults
+        // GraphQL -> dataTypeResults: [DataTypeResult!]! (type)
+        [JsonProperty("dataTypeResults")]
+        public List<DataTypeResult>? DataTypeResults { get; set; }
+
         //      C# -> PrincipalCounts? DeltaUserCounts
         // GraphQL -> deltaUserCounts: PrincipalCounts (type)
         [JsonProperty("deltaUserCounts")]
@@ -233,6 +238,7 @@ namespace RubrikSecurityCloud.Types
         System.String? TimeContext = null,
         List<AnalyzerMapping>? AllAnalyzerMappings = null,
         AnalyzerHits? AnalyzerHits = null,
+        List<DataTypeResult>? DataTypeResults = null,
         PrincipalCounts? DeltaUserCounts = null,
         FileResultConnection? FileResultConnection = null,
         FileResultConnection? FolderChildConnection = null,
@@ -291,6 +297,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AnalyzerHits != null ) {
             this.AnalyzerHits = AnalyzerHits;
+        }
+        if ( DataTypeResults != null ) {
+            this.DataTypeResults = DataTypeResults;
         }
         if ( DeltaUserCounts != null ) {
             this.DeltaUserCounts = DeltaUserCounts;
@@ -484,6 +493,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "analyzerHits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<DataTypeResult>? DataTypeResults
+        // GraphQL -> dataTypeResults: [DataTypeResult!]! (type)
+        if (this.DataTypeResults != null) {
+            var fspec = this.DataTypeResults.AsFieldSpec(conf.Child("dataTypeResults"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "dataTypeResults" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -903,6 +924,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AnalyzerHits != null && ec.Excludes("analyzerHits",false))
         {
             this.AnalyzerHits = null;
+        }
+        //      C# -> List<DataTypeResult>? DataTypeResults
+        // GraphQL -> dataTypeResults: [DataTypeResult!]! (type)
+        if (ec.Includes("dataTypeResults",false))
+        {
+            if(this.DataTypeResults == null) {
+
+                this.DataTypeResults = new List<DataTypeResult>();
+                this.DataTypeResults.ApplyExploratoryFieldSpec(ec.NewChild("dataTypeResults"));
+
+            } else {
+
+                this.DataTypeResults.ApplyExploratoryFieldSpec(ec.NewChild("dataTypeResults"));
+
+            }
+        }
+        else if (this.DataTypeResults != null && ec.Excludes("dataTypeResults",false))
+        {
+            this.DataTypeResults = null;
         }
         //      C# -> PrincipalCounts? DeltaUserCounts
         // GraphQL -> deltaUserCounts: PrincipalCounts (type)

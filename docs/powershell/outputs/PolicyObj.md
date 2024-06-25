@@ -41,6 +41,8 @@
   - Unused sensitive file count for various risk levels.
 - isUserActivityEnabled: System.Boolean
   - Specifies whether the user activity for the object is enabled.
+- dataTypeResults: list of DataTypeResults
+  - Specifies the data type level results.
 - id: System.String
 - folderChildConnection: FileResultConnection
 - fileResultConnection: FileResultConnection

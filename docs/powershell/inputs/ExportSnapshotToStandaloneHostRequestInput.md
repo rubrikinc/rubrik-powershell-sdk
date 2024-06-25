@@ -1,8 +1,6 @@
 ### ExportSnapshotToStandaloneHostRequestInput
 Supported in v5.0+
 
-- mountExportSnapshotJobCommonOptions: MountExportSnapshotJobCommonOptionsInput
-  - 
 - datastoreName: System.String
   - Required. Supported in v5.0+
       Name of the datastore to assign to the exported. virtual machine.
@@ -15,3 +13,5 @@ Supported in v5.0+
 - hostUsername: System.String
   - Required. Supported in v5.0+
       The admin username of standalone ESXi host.
+- mountExportSnapshotJobCommonOptions: MountExportSnapshotJobCommonOptionsInput
+  - 

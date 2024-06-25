@@ -27,3 +27,6 @@ Name of product.
 - USER_INTELLIGENCE - User Intelligence.
 - NAS_CLOUDDIRECT - NAS Cloud Direct.
 - CLOUD_UNSTRUCTURED - Cloud Unstructured.
+- SALESFORCE - Salesforce protection.
+- LAMINAR - Laminar feature.
+- LAMINAR_LITE_UCL - Laminar Lite UCL feature.

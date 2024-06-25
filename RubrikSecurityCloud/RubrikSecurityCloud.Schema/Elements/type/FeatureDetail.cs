@@ -45,6 +45,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accessKey")]
         public System.String? AccessKey { get; set; }
 
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String (scalar)
+        [JsonProperty("awsIamPairId")]
+        public System.String? AwsIamPairId { get; set; }
+
+        //      C# -> System.String? IamPairName
+        // GraphQL -> iamPairName: String (scalar)
+        [JsonProperty("iamPairName")]
+        public System.String? IamPairName { get; set; }
+
         //      C# -> System.String? RoleArn
         // GraphQL -> roleArn: String! (scalar)
         [JsonProperty("roleArn")]
@@ -80,6 +90,8 @@ namespace RubrikSecurityCloud.Types
         List<PermissionsGroup>? PermissionsGroups = null,
         CloudAccountStatus? Status = null,
         System.String? AccessKey = null,
+        System.String? AwsIamPairId = null,
+        System.String? IamPairName = null,
         System.String? RoleArn = null,
         System.String? StackArn = null,
         System.String? UserArn = null,
@@ -100,6 +112,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AccessKey != null ) {
             this.AccessKey = AccessKey;
+        }
+        if ( AwsIamPairId != null ) {
+            this.AwsIamPairId = AwsIamPairId;
+        }
+        if ( IamPairName != null ) {
+            this.IamPairName = IamPairName;
         }
         if ( RoleArn != null ) {
             this.RoleArn = RoleArn;
@@ -170,6 +188,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "accessKey\n" ;
             } else {
                 s += ind + "accessKey\n" ;
+            }
+        }
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String (scalar)
+        if (this.AwsIamPairId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "awsIamPairId\n" ;
+            } else {
+                s += ind + "awsIamPairId\n" ;
+            }
+        }
+        //      C# -> System.String? IamPairName
+        // GraphQL -> iamPairName: String (scalar)
+        if (this.IamPairName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "iamPairName\n" ;
+            } else {
+                s += ind + "iamPairName\n" ;
             }
         }
         //      C# -> System.String? RoleArn
@@ -302,6 +338,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.AccessKey != null && ec.Excludes("accessKey",true))
         {
             this.AccessKey = null;
+        }
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String (scalar)
+        if (ec.Includes("awsIamPairId",true))
+        {
+            if(this.AwsIamPairId == null) {
+
+                this.AwsIamPairId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsIamPairId != null && ec.Excludes("awsIamPairId",true))
+        {
+            this.AwsIamPairId = null;
+        }
+        //      C# -> System.String? IamPairName
+        // GraphQL -> iamPairName: String (scalar)
+        if (ec.Includes("iamPairName",true))
+        {
+            if(this.IamPairName == null) {
+
+                this.IamPairName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.IamPairName != null && ec.Excludes("iamPairName",true))
+        {
+            this.IamPairName = null;
         }
         //      C# -> System.String? RoleArn
         // GraphQL -> roleArn: String! (scalar)

@@ -104,14 +104,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		serviceAccountName = $someString
     /// 		# OPTIONAL
-    /// 		eksConfig = @{
-    /// 			# REQUIRED
-    /// 			cloudAccountId = $someString
-    /// 			# REQUIRED
-    /// 			eksClusterArn = $someString
-    /// 		}
-    /// 		# OPTIONAL
     /// 		distribution = $someString
+    /// 		# OPTIONAL
+    /// 		pullSecret = $someString
     /// 		# OPTIONAL
     /// 		transport = $someString
     /// 		# OPTIONAL
@@ -121,7 +116,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		region = $someString
     /// 		# OPTIONAL
+    /// 		onboardingType = $someString
+    /// 		# OPTIONAL
     /// 		clientId = $someString
+    /// 		# OPTIONAL
+    /// 		eksConfig = @{
+    /// 			# REQUIRED
+    /// 			cloudAccountId = $someString
+    /// 			# REQUIRED
+    /// 			eksClusterArn = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		kuprServerProxyConfig = @{
+    /// 			# OPTIONAL
+    /// 			port = $someInt
+    /// 			# REQUIRED
+    /// 			cert = $someString
+    /// 			# REQUIRED
+    /// 			ipAddress = $someString
+    /// 		}
     /// 		# REQUIRED
     /// 		name = $someString
     /// 	}
@@ -156,6 +169,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		creationType = $someString
     /// 		# OPTIONAL
     /// 		kubernetesNamespace = $someString
     /// 		# OPTIONAL
@@ -728,7 +743,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		serviceAccountName = $someString
     /// 		# OPTIONAL
+    /// 		pullSecret = $someString
+    /// 		# OPTIONAL
     /// 		transport = $someString
+    /// 		# OPTIONAL
+    /// 		isAutoPsCreationEnabled = $someBoolean
     /// 		# OPTIONAL
     /// 		clientSecret = $someString
     /// 		# OPTIONAL
@@ -737,6 +756,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		cloudAccountId = $someString
     /// 		# OPTIONAL
     /// 		clientId = $someString
+    /// 		# OPTIONAL
+    /// 		kuprServerProxyConfig = @{
+    /// 			# OPTIONAL
+    /// 			port = $someInt
+    /// 			# REQUIRED
+    /// 			cert = $someString
+    /// 			# REQUIRED
+    /// 			ipAddress = $someString
+    /// 		}
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1087,14 +1115,9 @@ $query.Var.input = @{
 		# OPTIONAL
 		serviceAccountName = $someString
 		# OPTIONAL
-		eksConfig = @{
-			# REQUIRED
-			cloudAccountId = $someString
-			# REQUIRED
-			eksClusterArn = $someString
-		}
-		# OPTIONAL
 		distribution = $someString
+		# OPTIONAL
+		pullSecret = $someString
 		# OPTIONAL
 		transport = $someString
 		# OPTIONAL
@@ -1104,7 +1127,25 @@ $query.Var.input = @{
 		# OPTIONAL
 		region = $someString
 		# OPTIONAL
+		onboardingType = $someString
+		# OPTIONAL
 		clientId = $someString
+		# OPTIONAL
+		eksConfig = @{
+			# REQUIRED
+			cloudAccountId = $someString
+			# REQUIRED
+			eksClusterArn = $someString
+		}
+		# OPTIONAL
+		kuprServerProxyConfig = @{
+			# OPTIONAL
+			port = $someInt
+			# REQUIRED
+			cert = $someString
+			# REQUIRED
+			ipAddress = $someString
+		}
 		# REQUIRED
 		name = $someString
 	}
@@ -1131,6 +1172,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
+		# OPTIONAL
+		creationType = $someString
 		# OPTIONAL
 		kubernetesNamespace = $someString
 		# OPTIONAL
@@ -1591,7 +1634,11 @@ $query.Var.input = @{
 		# OPTIONAL
 		serviceAccountName = $someString
 		# OPTIONAL
+		pullSecret = $someString
+		# OPTIONAL
 		transport = $someString
+		# OPTIONAL
+		isAutoPsCreationEnabled = $someBoolean
 		# OPTIONAL
 		clientSecret = $someString
 		# OPTIONAL
@@ -1600,6 +1647,15 @@ $query.Var.input = @{
 		cloudAccountId = $someString
 		# OPTIONAL
 		clientId = $someString
+		# OPTIONAL
+		kuprServerProxyConfig = @{
+			# OPTIONAL
+			port = $someInt
+			# REQUIRED
+			cert = $someString
+			# REQUIRED
+			ipAddress = $someString
+		}
 	}
 	# REQUIRED
 	id = $someString
