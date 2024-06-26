@@ -28,7 +28,7 @@ function Get-RscPermission
         [Parameter(Mandatory=$false)]
         [RubrikSecurityCloud.Types.Operation]$Operation,
 
-        [Parameter(ValueFromPipeline=$true)]
+        [Parameter(ValueFromPipeline=$true, Mandatory=$true)]
         [RubrikSecurityCloud.Types.Role]$Role
     )
     Process {
