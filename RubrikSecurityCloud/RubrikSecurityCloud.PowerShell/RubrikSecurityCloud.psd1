@@ -8,7 +8,7 @@
 RootModule = 'LoadModule.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.4'
+ModuleVersion = '1.5'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@ Copyright = '(c) Rubrik. All rights reserved.'
 
 # Description of the functionality provided by this module
 # NOTE: This entry is generated.
-Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20240506-29 .'
+Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20240624-26 .'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.0.0'
@@ -63,9 +63,11 @@ PowerShellVersion = '5.0.0'
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
   "Toolkit/Format/GlobalSlaReply.Format.ps1xml",
-  "Toolkit/Format/VsphereVm.Format.ps1xml",
   "Toolkit/Format/NutanixVm.Format.ps1xml",
-  "Toolkit/Format/Snappable.Format.ps1xml")
+  "Toolkit/Format/Permission.Format.ps1xml",
+  "Toolkit/Format/Role.Format.ps1xml",
+  "Toolkit/Format/Snappable.Format.ps1xml",
+  "Toolkit/Format/VsphereVm.Format.ps1xml")
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('PublicFunctions.psm1')
