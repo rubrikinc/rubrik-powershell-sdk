@@ -43,6 +43,8 @@
   - Specifies whether the user activity for the object is enabled.
 - dataTypeResults: list of DataTypeResults
   - Specifies the data type level results.
+- assetMetadata: AssetMetadata
+  - Specifies the metadata of the asset.
 - id: System.String
 - folderChildConnection: FileResultConnection
 - fileResultConnection: FileResultConnection

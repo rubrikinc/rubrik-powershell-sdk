@@ -77,6 +77,11 @@ Exports an Exchange mailbox.
 
 - There is a single argument of type ExportO365MailboxInput.
 - Returns CreateOnDemandJobReply.
+### exportmailboxv2
+Exports an Exchange mailbox.
+
+- There is a single argument of type ExportO365MailboxInput.
+- Returns list of CreateOnDemandJobReplys.
 ### insertcustomerapp
 Inserts a Customer-hosted O365 Azure AD App.
 
@@ -107,6 +112,11 @@ Restores an Exchange mailbox.
 
 - There is a single argument of type RestoreO365MailboxInput.
 - Returns CreateOnDemandJobReply.
+### restoremailboxv2
+Restores an Exchange mailbox data.
+
+- There is a single argument of type RestoreO365MailboxInput.
+- Returns list of CreateOnDemandJobReplys.
 ### restoresnappable
 Restores an O365 snappable.
 

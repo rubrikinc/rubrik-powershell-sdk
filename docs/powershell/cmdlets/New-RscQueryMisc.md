@@ -766,6 +766,11 @@ The ID of the Rubrik cluster node to replace.
 
 - There is a single argument of type NodeToReplaceInput.
 - Returns NodeToReplaceReply.
+### nodetunnelstatuses
+List of node tunnel status.
+
+- There is a single argument of type GetNodesInput.
+- Returns NodeTunnelStatusConnection.
 ### nosqlstoragelocations
 List of Mosaic Storage Locations used for NoSQL backups
 

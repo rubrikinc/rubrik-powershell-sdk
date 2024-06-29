@@ -23,6 +23,8 @@ Supported in v9.0+
 - transport: System.String
   - Supported in v9.1+
       The transport type used for communication with the Kubernetes cluster.
+- isAutoPsCreationEnabled: System.Boolean
+  - Specifies whether to enable automatic protection set creation for the Kubernetes cluster.
 - clientSecret: System.String
   - Supported in v9.1+
       The client secret for the service account.

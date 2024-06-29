@@ -12,16 +12,16 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | [Account (9,14)](#account-domain) | [Cluster (32,16)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,18)](#oracle-domain) | [Snapshot (21,18)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (8,4)](#microsoft-365-domain) | [Policy (6,12)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (4,3)](#activity-series-domain) | [Db2 (9,12)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (8,16)](#archival-domain) | [Report Download (3,17)](#report-download-domain) | [Miscellaneous (184,130)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (8,16)](#archival-domain) | [Report Download (3,17)](#report-download-domain) | [Miscellaneous (185,132)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (30,35)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (3,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (19,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (47,42)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (4,3)](#threat-domain) |
-| [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [Microsoft SQL Server (17,23)](#microsoft-sql-server-domain) | [SAP HANA (8,11)](#sap-hana-domain) | [VMware vSphere vCenter (11,6)](#vmware-vsphere-vcenter-domain) |
+| [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [Microsoft SQL Server (17,24)](#microsoft-sql-server-domain) | [SAP HANA (8,11)](#sap-hana-domain) | [VMware vSphere vCenter (11,6)](#vmware-vsphere-vcenter-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (8,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
 | [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (24,8)](#vmware-vsphere-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (6,25)](#vmware-vsphere-vm-domain) |
-| [Cloud Account (6,2)](#cloud-account-domain) | [Integration (2,6)](#integration-domain) | [Nutanix (19,25)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (1,5)](#webhook-domain) |
-| [Cloud Native (19,13)](#cloud-native-domain) | [Kubernetes (8,17)](#kubernetes-domain) | [Office 365 (39,31)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
+| [Cloud Account (6,2)](#cloud-account-domain) | [Integration (2,6)](#integration-domain) | [Nutanix (20,27)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (1,5)](#webhook-domain) |
+| [Cloud Native (19,13)](#cloud-native-domain) | [Kubernetes (8,17)](#kubernetes-domain) | [Office 365 (39,33)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
 
 ## Account domain
 
@@ -1659,6 +1659,7 @@ v5.2+: Searches for nodes that can bootstrap into the specified Rubrik cluster. 
 | NfAnomalyResultsGrouped | Results for Non-Filesystem Anomaly Investigations grouped by an argument. | `New-RscQueryMisc -Operation NfAnomalyResultsGrouped`<BR> | [nfAnomalyResultsGrouped](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NodeRemovalCancelPermission | Check if the running node-removal job is cancelable. | `New-RscQueryMisc -Operation NodeRemovalCancelPermission`<BR> | [nodeRemovalCancelPermission](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NodeToReplace | The ID of the Rubrik cluster node to replace. | `New-RscQueryMisc -Operation NodeToReplace`<BR> | [nodeToReplace](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| NodeTunnelStatuses | List of node tunnel status. | `New-RscQueryMisc -Operation NodeTunnelStatuses`<BR> | [nodeTunnelStatuses](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NosqlStorageLocations | List of Mosaic Storage Locations used for NoSQL backups | `New-RscQueryMisc -Operation NosqlStorageLocations`<BR> | [allNosqlStorageLocations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | OauthCodesForEdgeReg | Reply for request to download Rubrik Edge from Rubrik Security Cloud. | `New-RscQueryMisc -Operation OauthCodesForEdgeReg`<BR> | [oauthCodesForEdgeReg](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ObjectFiles | N/A | `New-RscQueryMisc -Operation ObjectFiles`<BR> | [objectFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1772,6 +1773,7 @@ Create an on-demand snapshot for the given Volume Group ID. | `New-RscMutationMi
 | DeleteDistributionListDigestBatch | Delete specific distribution list digests. | `New-RscMutationMisc -Operation DeleteDistributionListDigestBatch`<BR> | [deleteDistributionListDigestBatch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteEventDigest | Delete event digests for specific recipients. | `New-RscMutationMisc -Operation DeleteEventDigest`<BR> | [deleteEventDigest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteGuestCredentialById | Delete guest OS credentials. | `New-RscMutationMisc -Operation DeleteGuestCredentialById`<BR> | [deleteGuestCredentialById](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteIntelFeed | Delete intel feed. | `New-RscMutationMisc -Operation DeleteIntelFeed`<BR> | [deleteIntelFeed](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteVolumeGroupMount | Requst to delete a mount  
   
 Supported in v5.0+  
@@ -1887,6 +1889,7 @@ Modify the global setting for automatic deployment of the Rubrik Backup Service 
 | UpdateBadDiskLedStatus | Find bad disk of a node in the CDM cluster. | `New-RscMutationMisc -Operation UpdateBadDiskLedStatus`<BR> | [updateBadDiskLedStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateConfiguredGroup | Update the configuration, name, or deletion status of a configured group. | `New-RscMutationMisc -Operation UpdateConfiguredGroup`<BR> | [updateConfiguredGroup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateCustomAnalyzer | Update a custom analyzer. | `New-RscMutationMisc -Operation UpdateCustomAnalyzer`<BR> | [updateCustomAnalyzer](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateCustomIntelFeed | Update custom intel feed. | `New-RscMutationMisc -Operation UpdateCustomIntelFeed`<BR> | [updateCustomIntelFeed](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateCustomerAppPermissions | Updates the Azure app for the specified account with specified permissions in an idempotent manner. | `New-RscMutationMisc -Operation UpdateCustomerAppPermissions`<BR> | [updateCustomerAppPermissions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateDistributionListDigest | Update specific distribution list digests. | `New-RscMutationMisc -Operation UpdateDistributionListDigest`<BR> | [updateDistributionListDigest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateDnsServersAndSearchDomains | Update cluster DNS servers and search domains. | `New-RscMutationMisc -Operation UpdateDnsServersAndSearchDomains`<BR> | [updateDnsServersAndSearchDomains](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2125,6 +2128,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database. | `N
 | TakeLogBackup | Take an on-demand log backup for a Microsoft SQL database. | `New-RscMutationMssql -Operation TakeLogBackup`<BR> | [takeMssqlLogBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateDefaultProperties | Update the default properties for Microsoft SQL databases. | `New-RscMutationMssql -Operation UpdateDefaultProperties`<BR> | [updateMssqlDefaultProperties](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateLogShippingConfiguration | Update log shipping configuration of a Microsoft SQL Database. | `New-RscMutationMssql -Operation UpdateLogShippingConfiguration`<BR> | [updateMssqlLogShippingConfiguration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateLogShippingConfigurationV1 | Update log shipping configuration of a Microsoft SQL Database. | `New-RscMutationMssql -Operation UpdateLogShippingConfigurationV1`<BR> | [updateMssqlLogShippingConfigurationV1](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## NAS domain
@@ -2280,6 +2284,8 @@ Supported in v5.0+
 Search for a file within the Nutanix Virtual Machine. Search via full path prefix or filename prefix. | `New-RscQueryNutanix -Operation SearchVm`<BR> | [searchNutanixVm](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SnapshotDetail | Supported in v5.0+. Get Nutanix virtual machine snapshot details.  
  Retrieve detailed information about a snapshot. | `New-RscQueryNutanix -Operation SnapshotDetail`<BR> | [nutanixSnapshotDetail](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SnapshotVdisks | Supported in v9.2+. Get virtual disks from Nutanix virtual machine snapshot.  
+ Retrieve detailed information about the virtual disks. | `New-RscQueryNutanix -Operation SnapshotVdisks`<BR> | [nutanixSnapshotVdisks](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | TopLevelDescendants | Paginated list of the highest-level Nutanix Objects accessible by the current user. | `New-RscQueryNutanix -Operation TopLevelDescendants`<BR> | [nutanixTopLevelDescendants](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | VDiskMountableVms | A paginated list of Nutanix virtual machines with the vDisk Mount privilege. | `New-RscQueryNutanix -Operation VDiskMountableVms`<BR> | [vDiskMountableNutanixVms](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Vm | A Nutanix Virtual Machine. | `New-RscQueryNutanix -Operation Vm`<BR> | [nutanixVm](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2362,6 +2368,10 @@ v8.1+: Start an asynchronous job to download multiple files and folders from a s
   
 Supported in v5.0+  
 Download a snapshot from archival. | `New-RscMutationNutanix -Operation DownloadSnapshot`<BR> | [downloadNutanixSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DownloadVdisks | Download virtual disks from the snapshot of a Nutanix virtual machine  
+  
+Supported in v9.2  
+Start an asynchronous job to download multiple virtual disks from a specified Nutanix virtual machine snapshot. Once initiated, you will receive an asynchronous request ID in response. To obtain the URL for downloading the virtual disk files, including the specific virtual disks, send a GET request to 'nutanix/vm/request/{id}'. | `New-RscMutationNutanix -Operation DownloadVdisks`<BR> | [downloadNutanixVdisks](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DownloadVmFromLocation | Download a snapshot from a replication target  
   
 Supported in v7.0+  
@@ -2380,6 +2390,10 @@ Initiate a request to migrate the virtual disks of a specified Nutanix Live Moun
   
 Supported in v6.0+  
 Initiates a request to perform a Live Mount of a Nutanix virtual machine snapshot identified by the snapshot ID. | `New-RscMutationNutanix -Operation MountSnapshotV1`<BR> | [mountNutanixSnapshotV1](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MountVdisks | Attaching disks from a snapshot to an existing virtual machine  
+  
+Supported in v9.2  
+Requests a vDisk Mount to attach disks to an existing virtual machine. | `New-RscMutationNutanix -Operation MountVdisks`<BR> | [mountNutanixVdisks](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | PatchMountV1 | Change Nutanix Live Mount power status  
   
 Supported in v6.0+  
@@ -2490,12 +2504,14 @@ Cmdlets: `New-RscQueryO365` and `New-RscMutationO365`
 | EnableSharePoint | Enables SharePoint protection in the exocompute cluster. | `New-RscMutationO365 -Operation EnableSharePoint`<BR> | [enableO365SharePoint](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | EnableTeams | Enables Teams protection in the exocompute cluster. | `New-RscMutationO365 -Operation EnableTeams`<BR> | [enableO365Teams](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExportMailbox | Exports an Exchange mailbox. | `New-RscMutationO365 -Operation ExportMailbox`<BR> | [exportO365Mailbox](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ExportMailboxV2 | Exports an Exchange mailbox. | `New-RscMutationO365 -Operation ExportMailboxV2`<BR> | [exportO365MailboxV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | InsertCustomerApp | Inserts a Customer-hosted O365 Azure AD App. | `New-RscMutationO365 -Operation InsertCustomerApp`<BR> | [insertCustomerO365App](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | OauthConsentComplete | Completes the OAuth consent flow for an O365 Azure AD App. | `New-RscMutationO365 -Operation OauthConsentComplete`<BR> | [o365OauthConsentComplete](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | OauthConsentKickoff | Kicks off the OAuth consent flow for an O365 Azure AD App. | `New-RscMutationO365 -Operation OauthConsentKickoff`<BR> | [o365OauthConsentKickoff](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | PdlGroups | Retrieve or create the groups corresponding to the preferred data location and workload pairings for use in role creation. | `New-RscMutationO365 -Operation PdlGroups`<BR> | [o365PdlGroups](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RefreshOrg | Refreshes an O365 org. | `New-RscMutationO365 -Operation RefreshOrg`<BR> | [refreshO365Org](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RestoreMailbox | Restores an Exchange mailbox. | `New-RscMutationO365 -Operation RestoreMailbox`<BR> | [restoreO365Mailbox](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RestoreMailboxV2 | Restores an Exchange mailbox data. | `New-RscMutationO365 -Operation RestoreMailboxV2`<BR> | [restoreO365MailboxV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RestoreSnappable | Restores an O365 snappable. | `New-RscMutationO365 -Operation RestoreSnappable`<BR> | [restoreO365Snappable](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RestoreTeamsConversations | Restore Team conversations. | `New-RscMutationO365 -Operation RestoreTeamsConversations`<BR> | [restoreO365TeamsConversations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RestoreTeamsFiles | Restore Team files. | `New-RscMutationO365 -Operation RestoreTeamsFiles`<BR> | [restoreO365TeamsFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |

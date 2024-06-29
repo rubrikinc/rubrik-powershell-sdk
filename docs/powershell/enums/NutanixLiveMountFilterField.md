@@ -9,3 +9,5 @@ Filters for Nutanix virtual machine live mount results.
  virtual machine.
 - ORG_ID - Filter the results by Organization ID of the original
  virtual machine.
+- SOURCE_OR_ACTIVE_VM_CDMID - Filter the results by CDM ID of the original
+  or active virtual machine.

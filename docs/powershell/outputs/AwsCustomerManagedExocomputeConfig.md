@@ -16,3 +16,5 @@ AWS Customer Managed Exocompute Configuration in a region.
   - Whether this Exocompute uses a Private Container Registry (PCR).
 - pcrUrl: System.String
   - URL of the user's PCR.
+- pcrImagePullAwsNativeId: System.String
+  - AWS native account ID authorized to pull images from Rubrik's Elastic Container Registry.

@@ -124,3 +124,8 @@ Update log shipping configuration of a Microsoft SQL Database.
 
 - There is a single argument of type UpdateMssqlLogShippingConfigurationInput.
 - Returns UpdateMssqlLogShippingConfigurationReply.
+### updatelogshippingconfigurationv1
+Update log shipping configuration of a Microsoft SQL Database.
+
+- There is a single argument of type UpdateMssqlLogShippingConfigurationV1Input.
+- Returns AsyncRequestStatus.
