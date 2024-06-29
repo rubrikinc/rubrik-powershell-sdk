@@ -1064,6 +1064,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		orgName = $someString
     /// 		# OPTIONAL
+    /// 		outpostAwsNativeId = $someString
+    /// 		# OPTIONAL
     /// 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 	}
     /// 	# REQUIRED
@@ -1079,6 +1081,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			seamlessFlowEnabled = $someBoolean
     /// 			# OPTIONAL
     /// 			orgName = $someString
+    /// 			# OPTIONAL
+    /// 			outpostAwsNativeId = $someString
     /// 			# OPTIONAL
     /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 		}
@@ -1979,6 +1983,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		orgName = $someString
     /// 		# OPTIONAL
+    /// 		outpostAwsNativeId = $someString
+    /// 		# OPTIONAL
     /// 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 	}
     /// 	# REQUIRED
@@ -1994,6 +2000,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			seamlessFlowEnabled = $someBoolean
     /// 			# OPTIONAL
     /// 			orgName = $someString
+    /// 			# OPTIONAL
+    /// 			outpostAwsNativeId = $someString
     /// 			# OPTIONAL
     /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 		}
@@ -2037,6 +2045,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		awsIamRoleName = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	outpostAwsNativeId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3443,6 +3453,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		orgName = $someString
 		# OPTIONAL
+		outpostAwsNativeId = $someString
+		# OPTIONAL
 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 	}
 	# REQUIRED
@@ -3458,6 +3470,8 @@ $query.Var.input = @{
 			seamlessFlowEnabled = $someBoolean
 			# OPTIONAL
 			orgName = $someString
+			# OPTIONAL
+			outpostAwsNativeId = $someString
 			# OPTIONAL
 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 		}
@@ -4222,6 +4236,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		orgName = $someString
 		# OPTIONAL
+		outpostAwsNativeId = $someString
+		# OPTIONAL
 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 	}
 	# REQUIRED
@@ -4237,6 +4253,8 @@ $query.Var.input = @{
 			seamlessFlowEnabled = $someBoolean
 			# OPTIONAL
 			orgName = $someString
+			# OPTIONAL
+			outpostAwsNativeId = $someString
 			# OPTIONAL
 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 		}
@@ -4280,6 +4298,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		awsIamRoleName = $someString
 	}
+	# OPTIONAL
+	outpostAwsNativeId = $someString
 }"
             );
         }

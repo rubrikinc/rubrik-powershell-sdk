@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("transport")]
         public System.String? Transport { get; set; }
 
+        //      C# -> System.Boolean? IsAutoPsCreationEnabled
+        // GraphQL -> isAutoPsCreationEnabled: Boolean (scalar)
+        [JsonProperty("isAutoPsCreationEnabled")]
+        public System.Boolean? IsAutoPsCreationEnabled { get; set; }
+
         //      C# -> System.String? ClientSecret
         // GraphQL -> clientSecret: String (scalar)
         [JsonProperty("clientSecret")]

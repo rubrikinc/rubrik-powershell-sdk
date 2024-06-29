@@ -1,4 +1,4 @@
-// AwsCloudAccountInput.cs
+// DownloadNutanixVmSnapshotVirtualDisksInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,46 +13,25 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region AwsCloudAccountInput
+    #region DownloadNutanixVmSnapshotVirtualDisksInput
 
-    public class AwsCloudAccountInput: IInput
+    public class DownloadNutanixVmSnapshotVirtualDisksInput: IInput
     {
         #region members
 
         //      C# -> System.String? Id
-        // GraphQL -> id: String (scalar)
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
-        //      C# -> System.String? NativeId
-        // GraphQL -> nativeId: String (scalar)
-        [JsonProperty("nativeId")]
-        public System.String? NativeId { get; set; }
-
-        //      C# -> System.String? AccountName
-        // GraphQL -> accountName: String (scalar)
-        [JsonProperty("accountName")]
-        public System.String? AccountName { get; set; }
-
-        //      C# -> System.Boolean? SeamlessFlowEnabled
-        // GraphQL -> seamlessFlowEnabled: Boolean (scalar)
-        [JsonProperty("seamlessFlowEnabled")]
-        public System.Boolean? SeamlessFlowEnabled { get; set; }
-
-        //      C# -> System.String? OrgName
-        // GraphQL -> orgName: String (scalar)
-        [JsonProperty("orgName")]
-        public System.String? OrgName { get; set; }
-
-        //      C# -> System.String? OutpostAwsNativeId
-        // GraphQL -> outpostAwsNativeId: String (scalar)
-        [JsonProperty("outpostAwsNativeId")]
-        public System.String? OutpostAwsNativeId { get; set; }
-
-        //      C# -> AwsCloudType? CloudType
-        // GraphQL -> cloudType: AwsCloudType (enum)
-        [JsonProperty("cloudType")]
-        public AwsCloudType? CloudType { get; set; }
+        //      C# -> List<System.String>? VdiskIds
+        // GraphQL -> vdiskIds: [String!]! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("vdiskIds")]
+        public List<System.String>? VdiskIds { get; set; }
 
 
         #endregion
@@ -80,7 +59,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class AwsCloudAccountInput
+    } // class DownloadNutanixVmSnapshotVirtualDisksInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

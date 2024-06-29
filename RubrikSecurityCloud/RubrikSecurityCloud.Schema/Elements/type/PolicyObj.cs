@@ -95,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analyzerHits")]
         public AnalyzerHits? AnalyzerHits { get; set; }
 
+        //      C# -> AssetMetadata? AssetMetadata
+        // GraphQL -> assetMetadata: AssetMetadata (type)
+        [JsonProperty("assetMetadata")]
+        public AssetMetadata? AssetMetadata { get; set; }
+
         //      C# -> List<DataTypeResult>? DataTypeResults
         // GraphQL -> dataTypeResults: [DataTypeResult!]! (type)
         [JsonProperty("dataTypeResults")]
@@ -238,6 +243,7 @@ namespace RubrikSecurityCloud.Types
         System.String? TimeContext = null,
         List<AnalyzerMapping>? AllAnalyzerMappings = null,
         AnalyzerHits? AnalyzerHits = null,
+        AssetMetadata? AssetMetadata = null,
         List<DataTypeResult>? DataTypeResults = null,
         PrincipalCounts? DeltaUserCounts = null,
         FileResultConnection? FileResultConnection = null,
@@ -297,6 +303,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AnalyzerHits != null ) {
             this.AnalyzerHits = AnalyzerHits;
+        }
+        if ( AssetMetadata != null ) {
+            this.AssetMetadata = AssetMetadata;
         }
         if ( DataTypeResults != null ) {
             this.DataTypeResults = DataTypeResults;
@@ -493,6 +502,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "analyzerHits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AssetMetadata? AssetMetadata
+        // GraphQL -> assetMetadata: AssetMetadata (type)
+        if (this.AssetMetadata != null) {
+            var fspec = this.AssetMetadata.AsFieldSpec(conf.Child("assetMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "assetMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -924,6 +945,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AnalyzerHits != null && ec.Excludes("analyzerHits",false))
         {
             this.AnalyzerHits = null;
+        }
+        //      C# -> AssetMetadata? AssetMetadata
+        // GraphQL -> assetMetadata: AssetMetadata (type)
+        if (ec.Includes("assetMetadata",false))
+        {
+            if(this.AssetMetadata == null) {
+
+                this.AssetMetadata = new AssetMetadata();
+                this.AssetMetadata.ApplyExploratoryFieldSpec(ec.NewChild("assetMetadata"));
+
+            } else {
+
+                this.AssetMetadata.ApplyExploratoryFieldSpec(ec.NewChild("assetMetadata"));
+
+            }
+        }
+        else if (this.AssetMetadata != null && ec.Excludes("assetMetadata",false))
+        {
+            this.AssetMetadata = null;
         }
         //      C# -> List<DataTypeResult>? DataTypeResults
         // GraphQL -> dataTypeResults: [DataTypeResult!]! (type)

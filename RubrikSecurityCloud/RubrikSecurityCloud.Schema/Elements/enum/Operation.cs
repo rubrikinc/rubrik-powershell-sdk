@@ -123,6 +123,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DOWNLOAD_FROM_ARCHIVAL_LOCATION")]
         DOWNLOAD_FROM_ARCHIVAL_LOCATION,
 
+        [EnumMember(Value = "DOWNLOAD_NUTANIX_VDISK")]
+        DOWNLOAD_NUTANIX_VDISK,
+
         [EnumMember(Value = "DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET")]
         DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET,
 
@@ -302,6 +305,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MOUNT")]
         MOUNT,
+
+        [EnumMember(Value = "MOUNT_NUTANIX_VDISK")]
+        MOUNT_NUTANIX_VDISK,
 
         [EnumMember(Value = "PROVISION_ON_INFRASTRUCTURE")]
         PROVISION_ON_INFRASTRUCTURE,

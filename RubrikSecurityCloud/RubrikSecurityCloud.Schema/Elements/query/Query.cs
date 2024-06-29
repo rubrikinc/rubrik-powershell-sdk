@@ -16932,6 +16932,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> NodeTunnelStatusConnection? NodeTunnelStatuses
+        // GraphQL -> nodeTunnelStatuses: NodeTunnelStatusConnection! (type)
+        public static string NodeTunnelStatuses_TypedFieldSpec(NodeTunnelStatusConnection fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "nodeTunnelStatuses" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string NodeTunnelStatuses_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return NodeTunnelStatuses((NodeTunnelStatusConnection)fieldSpecObj);
+        }
+        public static string NodeTunnelStatuses(NodeTunnelStatusConnection fieldSpec)
+        {
+            return NodeTunnelStatuses_TypedFieldSpec(fieldSpec);
+        }
+        public static string NodeTunnelStatuses(object fieldSpecObj)
+        {
+            return NodeTunnelStatuses_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object NodeTunnelStatusesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new NodeTunnelStatusConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> BrowseResponseListResponse? NutanixBrowseSnapshot
         // GraphQL -> nutanixBrowseSnapshot: BrowseResponseListResponse! (type)
         public static string NutanixBrowseSnapshot_TypedFieldSpec(BrowseResponseListResponse fieldSpec)
@@ -17300,6 +17331,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new NutanixVmSnapshotDetail() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> NutanixVmSnapshotVdiskDetailListResponse? NutanixSnapshotVdisks
+        // GraphQL -> nutanixSnapshotVdisks: NutanixVmSnapshotVdiskDetailListResponse! (type)
+        public static string NutanixSnapshotVdisks_TypedFieldSpec(NutanixVmSnapshotVdiskDetailListResponse fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "nutanixSnapshotVdisks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string NutanixSnapshotVdisks_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return NutanixSnapshotVdisks((NutanixVmSnapshotVdiskDetailListResponse)fieldSpecObj);
+        }
+        public static string NutanixSnapshotVdisks(NutanixVmSnapshotVdiskDetailListResponse fieldSpec)
+        {
+            return NutanixSnapshotVdisks_TypedFieldSpec(fieldSpec);
+        }
+        public static string NutanixSnapshotVdisks(object fieldSpecObj)
+        {
+            return NutanixSnapshotVdisks_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object NutanixSnapshotVdisksFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new NutanixVmSnapshotVdiskDetailListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CDM_UPGRADES")]
         CDM_UPGRADES,
 
+        [EnumMember(Value = "CLUSTERS")]
+        CLUSTERS,
+
         [EnumMember(Value = "GLOBAL_OBJECT")]
         GLOBAL_OBJECT,
 

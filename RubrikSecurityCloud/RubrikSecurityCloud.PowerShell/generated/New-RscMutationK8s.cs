@@ -110,6 +110,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		transport = $someString
     /// 		# OPTIONAL
+    /// 		isAutoPsCreationEnabled = $someBoolean
+    /// 		# OPTIONAL
     /// 		clientSecret = $someString
     /// 		# OPTIONAL
     /// 		accessToken = $someString
@@ -1120,6 +1122,8 @@ $query.Var.input = @{
 		pullSecret = $someString
 		# OPTIONAL
 		transport = $someString
+		# OPTIONAL
+		isAutoPsCreationEnabled = $someBoolean
 		# OPTIONAL
 		clientSecret = $someString
 		# OPTIONAL

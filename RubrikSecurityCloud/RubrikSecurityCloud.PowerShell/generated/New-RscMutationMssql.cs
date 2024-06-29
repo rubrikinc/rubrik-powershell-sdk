@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 23
+    /// Create a new RscQuery object for any of the 24
     /// operations in the 'Microsoft SQL Server' API domain:
-    /// AddHost, AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
+    /// AddHost, AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, UpdateLogShippingConfiguration, or UpdateLogShippingConfigurationV1.
     /// </summary>
     /// <description>
     /// New-RscMutationMssql creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 23 operations
+    /// There are 24 operations
     /// in the 'Microsoft SQL Server' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddHost, AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
+    /// one of: AddHost, AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, UpdateLogShippingConfiguration, or UpdateLogShippingConfigurationV1.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1438,6 +1438,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the UpdateLogShippingConfigurationV1 operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: UpdateLogShippingConfigurationV1
+    /// 
+    /// $query = New-RscMutationMssql -UpdateLogShippingConfigurationV1
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		mssqlLogShippingTargetStateOptions = @{
+    /// 			# OPTIONAL
+    /// 			shouldDisconnectStandbyUsers = $someBoolean
+    /// 			# REQUIRED
+    /// 			state = $someMssqlLogShippingOkState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingOkState]) for enum values.
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -1477,6 +1518,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "TakeLogBackup",
                 "UpdateDefaultProperties",
                 "UpdateLogShippingConfiguration",
+                "UpdateLogShippingConfigurationV1",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -1560,6 +1602,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateLogShippingConfiguration":
                         this.ProcessRecord_UpdateLogShippingConfiguration();
+                        break;
+                    case "UpdateLogShippingConfigurationV1":
+                        this.ProcessRecord_UpdateLogShippingConfigurationV1();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -1776,6 +1821,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdateLogShippingConfiguration";
             // Create new graphql operation updateMssqlLogShippingConfiguration
             InitMutationUpdateMssqlLogShippingConfiguration();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateMssqlLogShippingConfigurationV1.
+        internal void ProcessRecord_UpdateLogShippingConfigurationV1()
+        {
+            this._logger.name += " -UpdateLogShippingConfigurationV1";
+            // Create new graphql operation updateMssqlLogShippingConfigurationV1
+            InitMutationUpdateMssqlLogShippingConfigurationV1();
         }
 
 
@@ -2950,6 +3004,39 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		makeupReseedLimit = $someInt
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateMssqlLogShippingConfigurationV1(input: UpdateMssqlLogShippingConfigurationV1Input!): AsyncRequestStatus!
+        internal void InitMutationUpdateMssqlLogShippingConfigurationV1()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateMssqlLogShippingConfigurationV1Input!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateMssqlLogShippingConfigurationV1",
+                "($input: UpdateMssqlLogShippingConfigurationV1Input!)",
+                "AsyncRequestStatus",
+                Mutation.UpdateMssqlLogShippingConfigurationV1_ObjectFieldSpec,
+                Mutation.UpdateMssqlLogShippingConfigurationV1FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		mssqlLogShippingTargetStateOptions = @{
+			# OPTIONAL
+			shouldDisconnectStandbyUsers = $someBoolean
+			# REQUIRED
+			state = $someMssqlLogShippingOkState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingOkState]) for enum values.
+		}
 	}
 	# REQUIRED
 	id = $someString

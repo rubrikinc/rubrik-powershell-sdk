@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mountStatus")]
         public NutanixVmMountStatus? MountStatus { get; set; }
 
+        //      C# -> System.Int32? AttachedDiskCount
+        // GraphQL -> attachedDiskCount: Int! (scalar)
+        [JsonProperty("attachedDiskCount")]
+        public System.Int32? AttachedDiskCount { get; set; }
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -34,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsDiskLevelMount
+        // GraphQL -> isDiskLevelMount: Boolean! (scalar)
+        [JsonProperty("isDiskLevelMount")]
+        public System.Boolean? IsDiskLevelMount { get; set; }
 
         //      C# -> System.Boolean? IsMigrationDisabled
         // GraphQL -> isMigrationDisabled: Boolean! (scalar)
@@ -171,8 +181,10 @@ namespace RubrikSecurityCloud.Types
 
     public NutanixLiveMount Set(
         NutanixVmMountStatus? MountStatus = null,
+        System.Int32? AttachedDiskCount = null,
         System.String? CdmId = null,
         System.String? Id = null,
+        System.Boolean? IsDiskLevelMount = null,
         System.Boolean? IsMigrationDisabled = null,
         System.Boolean? IsVmReady = null,
         System.String? MigrationJobInstanceId = null,
@@ -203,11 +215,17 @@ namespace RubrikSecurityCloud.Types
         if ( MountStatus != null ) {
             this.MountStatus = MountStatus;
         }
+        if ( AttachedDiskCount != null ) {
+            this.AttachedDiskCount = AttachedDiskCount;
+        }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsDiskLevelMount != null ) {
+            this.IsDiskLevelMount = IsDiskLevelMount;
         }
         if ( IsMigrationDisabled != null ) {
             this.IsMigrationDisabled = IsMigrationDisabled;
@@ -307,6 +325,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "mountStatus\n" ;
             }
         }
+        //      C# -> System.Int32? AttachedDiskCount
+        // GraphQL -> attachedDiskCount: Int! (scalar)
+        if (this.AttachedDiskCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "attachedDiskCount\n" ;
+            } else {
+                s += ind + "attachedDiskCount\n" ;
+            }
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
@@ -323,6 +350,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsDiskLevelMount
+        // GraphQL -> isDiskLevelMount: Boolean! (scalar)
+        if (this.IsDiskLevelMount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isDiskLevelMount\n" ;
+            } else {
+                s += ind + "isDiskLevelMount\n" ;
             }
         }
         //      C# -> System.Boolean? IsMigrationDisabled
@@ -580,6 +616,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.MountStatus = null;
         }
+        //      C# -> System.Int32? AttachedDiskCount
+        // GraphQL -> attachedDiskCount: Int! (scalar)
+        if (ec.Includes("attachedDiskCount",true))
+        {
+            if(this.AttachedDiskCount == null) {
+
+                this.AttachedDiskCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AttachedDiskCount != null && ec.Excludes("attachedDiskCount",true))
+        {
+            this.AttachedDiskCount = null;
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (ec.Includes("cdmId",true))
@@ -613,6 +666,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsDiskLevelMount
+        // GraphQL -> isDiskLevelMount: Boolean! (scalar)
+        if (ec.Includes("isDiskLevelMount",true))
+        {
+            if(this.IsDiskLevelMount == null) {
+
+                this.IsDiskLevelMount = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDiskLevelMount != null && ec.Excludes("isDiskLevelMount",true))
+        {
+            this.IsDiskLevelMount = null;
         }
         //      C# -> System.Boolean? IsMigrationDisabled
         // GraphQL -> isMigrationDisabled: Boolean! (scalar)

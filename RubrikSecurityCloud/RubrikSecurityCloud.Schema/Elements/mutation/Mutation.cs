@@ -10264,6 +10264,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> DeleteIntelFeedReply? DeleteIntelFeed
+        // GraphQL -> deleteIntelFeed: DeleteIntelFeedReply! (type)
+        public static string DeleteIntelFeed_TypedFieldSpec(DeleteIntelFeedReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "deleteIntelFeed" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string DeleteIntelFeed_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DeleteIntelFeed((DeleteIntelFeedReply)fieldSpecObj);
+        }
+        public static string DeleteIntelFeed(DeleteIntelFeedReply fieldSpec)
+        {
+            return DeleteIntelFeed_TypedFieldSpec(fieldSpec);
+        }
+        public static string DeleteIntelFeed(object fieldSpecObj)
+        {
+            return DeleteIntelFeed_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DeleteIntelFeedFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new DeleteIntelFeedReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? DeleteK8sCluster
         // GraphQL -> deleteK8sCluster: AsyncRequestStatus! (type)
         public static string DeleteK8sCluster_TypedFieldSpec(AsyncRequestStatus fieldSpec)
@@ -11814,6 +11845,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? DownloadNutanixVdisks
+        // GraphQL -> downloadNutanixVdisks: AsyncRequestStatus! (type)
+        public static string DownloadNutanixVdisks_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "downloadNutanixVdisks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string DownloadNutanixVdisks_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DownloadNutanixVdisks((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string DownloadNutanixVdisks(AsyncRequestStatus fieldSpec)
+        {
+            return DownloadNutanixVdisks_TypedFieldSpec(fieldSpec);
+        }
+        public static string DownloadNutanixVdisks(object fieldSpecObj)
+        {
+            return DownloadNutanixVdisks_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DownloadNutanixVdisksFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? DownloadNutanixVmFromLocation
         // GraphQL -> downloadNutanixVmFromLocation: AsyncRequestStatus! (type)
         public static string DownloadNutanixVmFromLocation_TypedFieldSpec(AsyncRequestStatus fieldSpec)
@@ -12895,6 +12957,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new CreateOnDemandJobReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> List<CreateOnDemandJobReply>? ExportO365MailboxV2
+        // GraphQL -> exportO365MailboxV2: [CreateOnDemandJobReply!]! (type)
+        public static string ExportO365MailboxV2_TypedFieldSpec(List<CreateOnDemandJobReply> fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "exportO365MailboxV2" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string ExportO365MailboxV2_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ExportO365MailboxV2((List<CreateOnDemandJobReply>)fieldSpecObj);
+        }
+        public static string ExportO365MailboxV2(List<CreateOnDemandJobReply> fieldSpec)
+        {
+            return ExportO365MailboxV2_TypedFieldSpec(fieldSpec);
+        }
+        public static string ExportO365MailboxV2(object fieldSpecObj)
+        {
+            return ExportO365MailboxV2_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ExportO365MailboxV2FieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new List<CreateOnDemandJobReply>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -14356,6 +14449,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? MountNutanixVdisks
+        // GraphQL -> mountNutanixVdisks: AsyncRequestStatus! (type)
+        public static string MountNutanixVdisks_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "mountNutanixVdisks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string MountNutanixVdisks_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return MountNutanixVdisks((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string MountNutanixVdisks(AsyncRequestStatus fieldSpec)
+        {
+            return MountNutanixVdisks_TypedFieldSpec(fieldSpec);
+        }
+        public static string MountNutanixVdisks(object fieldSpecObj)
+        {
+            return MountNutanixVdisks_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object MountNutanixVdisksFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? MountOracleDatabase
         // GraphQL -> mountOracleDatabase: AsyncRequestStatus! (type)
         public static string MountOracleDatabase_TypedFieldSpec(AsyncRequestStatus fieldSpec)
@@ -14391,7 +14515,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> notificationForGetLicense: NotificationForGetLicenseReply! (type)
         public static string NotificationForGetLicense_TypedFieldSpec(NotificationForGetLicenseReply fieldSpec)
         {
-            string args = "";
+            string args = "\n(\ninput: $input\n)";
             return "notificationForGetLicense" + args + "\n{\n" +
                     fieldSpec.AsFieldSpec() +
                     "}\n";
@@ -16305,6 +16429,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new CreateOnDemandJobReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> List<CreateOnDemandJobReply>? RestoreO365MailboxV2
+        // GraphQL -> restoreO365MailboxV2: [CreateOnDemandJobReply!]! (type)
+        public static string RestoreO365MailboxV2_TypedFieldSpec(List<CreateOnDemandJobReply> fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "restoreO365MailboxV2" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string RestoreO365MailboxV2_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return RestoreO365MailboxV2((List<CreateOnDemandJobReply>)fieldSpecObj);
+        }
+        public static string RestoreO365MailboxV2(List<CreateOnDemandJobReply> fieldSpec)
+        {
+            return RestoreO365MailboxV2_TypedFieldSpec(fieldSpec);
+        }
+        public static string RestoreO365MailboxV2(object fieldSpecObj)
+        {
+            return RestoreO365MailboxV2_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object RestoreO365MailboxV2FieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new List<CreateOnDemandJobReply>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -19409,6 +19564,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> UpdateCustomIntelFeedReply? UpdateCustomIntelFeed
+        // GraphQL -> updateCustomIntelFeed: UpdateCustomIntelFeedReply! (type)
+        public static string UpdateCustomIntelFeed_TypedFieldSpec(UpdateCustomIntelFeedReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "updateCustomIntelFeed" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string UpdateCustomIntelFeed_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return UpdateCustomIntelFeed((UpdateCustomIntelFeedReply)fieldSpecObj);
+        }
+        public static string UpdateCustomIntelFeed(UpdateCustomIntelFeedReply fieldSpec)
+        {
+            return UpdateCustomIntelFeed_TypedFieldSpec(fieldSpec);
+        }
+        public static string UpdateCustomIntelFeed(object fieldSpecObj)
+        {
+            return UpdateCustomIntelFeed_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object UpdateCustomIntelFeedFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new UpdateCustomIntelFeedReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> UpdateCustomReportReply? UpdateCustomReport
         // GraphQL -> updateCustomReport: UpdateCustomReportReply! (type)
         public static string UpdateCustomReport_TypedFieldSpec(UpdateCustomReportReply fieldSpec)
@@ -20242,6 +20428,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new UpdateMssqlLogShippingConfigurationReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? UpdateMssqlLogShippingConfigurationV1
+        // GraphQL -> updateMssqlLogShippingConfigurationV1: AsyncRequestStatus! (type)
+        public static string UpdateMssqlLogShippingConfigurationV1_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "updateMssqlLogShippingConfigurationV1" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string UpdateMssqlLogShippingConfigurationV1_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return UpdateMssqlLogShippingConfigurationV1((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string UpdateMssqlLogShippingConfigurationV1(AsyncRequestStatus fieldSpec)
+        {
+            return UpdateMssqlLogShippingConfigurationV1_TypedFieldSpec(fieldSpec);
+        }
+        public static string UpdateMssqlLogShippingConfigurationV1(object fieldSpecObj)
+        {
+            return UpdateMssqlLogShippingConfigurationV1_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object UpdateMssqlLogShippingConfigurationV1FieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

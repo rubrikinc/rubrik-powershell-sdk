@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORG_ID")]
         ORG_ID,
 
+        [EnumMember(Value = "SOURCE_OR_ACTIVE_VM_CDMID")]
+        SOURCE_OR_ACTIVE_VM_CDMID,
+
         [EnumMember(Value = "SOURCE_VM_CDMID")]
         SOURCE_VM_CDMID
 
