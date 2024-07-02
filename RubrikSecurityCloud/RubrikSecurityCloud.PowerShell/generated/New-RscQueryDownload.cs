@@ -290,7 +290,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryDownloadCdmUpgradesPdf",
                 "($downloadFilter: DownloadCdmUpgradesPdfFiltersInput)",
                 "DownloadCdmUpgradesPdfReply",
-                Query.DownloadCdmUpgradesPdf_ObjectFieldSpec,
+                Query.DownloadCdmUpgradesPdf,
                 Query.DownloadCdmUpgradesPdfFieldSpec,
                 @"# OPTIONAL
 $query.Var.downloadFilter = @{
@@ -346,7 +346,7 @@ $query.Var.downloadFilter = @{
                 "QueryDownloadedVersionList",
                 "",
                 "List<GroupCount>",
-                Query.DownloadedVersionList_ObjectFieldSpec,
+                Query.DownloadedVersionList,
                 Query.DownloadedVersionListFieldSpec,
                 @""
             );
@@ -365,7 +365,7 @@ $query.Var.downloadFilter = @{
                 "QueryDownloadPackageStatus",
                 "($clusterUuid: UUID!)",
                 "DownloadPackageStatusReply",
-                Query.DownloadPackageStatus_ObjectFieldSpec,
+                Query.DownloadPackageStatus,
                 Query.DownloadPackageStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"

@@ -174,7 +174,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAllStorageArrays",
                 "($input: [UUID!]!)",
                 "AllStorageArraysReply",
-                Query.AllStorageArrays_ObjectFieldSpec,
+                Query.AllStorageArrays,
                 Query.AllStorageArraysFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @(

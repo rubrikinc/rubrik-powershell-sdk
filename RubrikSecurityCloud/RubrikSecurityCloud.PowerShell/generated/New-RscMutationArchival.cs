@@ -980,7 +980,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCreateGlacierReaderTarget",
                 "($input: CreateGlacierReaderTargetInput!)",
                 "Target",
-                Mutation.CreateGlacierReaderTarget_ObjectFieldSpec,
+                Mutation.CreateGlacierReaderTarget,
                 Mutation.CreateGlacierReaderTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1017,7 +1017,7 @@ $query.Var.input = @{
                 "MutationCreateManualTargetMapping",
                 "($input: CreateManualTargetMappingInput!)",
                 "TargetMapping",
-                Mutation.CreateManualTargetMapping_ObjectFieldSpec,
+                Mutation.CreateManualTargetMapping,
                 Mutation.CreateManualTargetMappingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1051,7 +1051,7 @@ $query.Var.input = @{
                 "MutationCreateS3CompatibleReaderTarget",
                 "($input: CreateS3CompatibleReaderTargetInput!)",
                 "Target",
-                Mutation.CreateS3CompatibleReaderTarget_ObjectFieldSpec,
+                Mutation.CreateS3CompatibleReaderTarget,
                 Mutation.CreateS3CompatibleReaderTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1110,7 +1110,7 @@ $query.Var.input = @{
                 "MutationCreateS3CompatibleTarget",
                 "($input: CreateS3CompatibleTargetInput!)",
                 "Target",
-                Mutation.CreateS3CompatibleTarget_ObjectFieldSpec,
+                Mutation.CreateS3CompatibleTarget,
                 Mutation.CreateS3CompatibleTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1167,7 +1167,7 @@ $query.Var.input = @{
                 "MutationDeleteTarget",
                 "($input: DeleteTargetInput!)",
                 "System.String",
-                Mutation.DeleteTarget_ObjectFieldSpec,
+                Mutation.DeleteTarget,
                 Mutation.DeleteTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1190,7 +1190,7 @@ $query.Var.input = @{
                 "MutationDeleteTargetMapping",
                 "($input: DeleteTargetMappingInput!)",
                 "System.String",
-                Mutation.DeleteTargetMapping_ObjectFieldSpec,
+                Mutation.DeleteTargetMapping,
                 Mutation.DeleteTargetMappingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1213,7 +1213,7 @@ $query.Var.input = @{
                 "MutationDisableTarget",
                 "($input: DisableTargetInput!)",
                 "DisableTargetReply",
-                Mutation.DisableTarget_ObjectFieldSpec,
+                Mutation.DisableTarget,
                 Mutation.DisableTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1236,7 +1236,7 @@ $query.Var.input = @{
                 "MutationEnableTarget",
                 "($input: EnableTargetInput!)",
                 "EnableTargetReply",
-                Mutation.EnableTarget_ObjectFieldSpec,
+                Mutation.EnableTarget,
                 Mutation.EnableTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1259,7 +1259,7 @@ $query.Var.input = @{
                 "MutationPauseTarget",
                 "($input: PauseTargetInput!)",
                 "PauseTargetReply",
-                Mutation.PauseTarget_ObjectFieldSpec,
+                Mutation.PauseTarget,
                 Mutation.PauseTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1282,7 +1282,7 @@ $query.Var.input = @{
                 "MutationPromoteReaderTarget",
                 "($input: PromoteReaderTargetInput!)",
                 "System.String",
-                Mutation.PromoteReaderTarget_ObjectFieldSpec,
+                Mutation.PromoteReaderTarget,
                 Mutation.PromoteReaderTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1305,7 +1305,7 @@ $query.Var.input = @{
                 "MutationRefreshReaderTarget",
                 "($input: RefreshReaderTargetInput!)",
                 "System.String",
-                Mutation.RefreshReaderTarget_ObjectFieldSpec,
+                Mutation.RefreshReaderTarget,
                 Mutation.RefreshReaderTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1340,7 +1340,7 @@ $query.Var.input = @{
                 "MutationResumeTarget",
                 "($input: ResumeTargetInput!)",
                 "ResumeTargetReply",
-                Mutation.ResumeTarget_ObjectFieldSpec,
+                Mutation.ResumeTarget,
                 Mutation.ResumeTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1363,7 +1363,7 @@ $query.Var.input = @{
                 "MutationUpdateGlacierTarget",
                 "($input: UpdateGlacierTargetInput!)",
                 "Target",
-                Mutation.UpdateGlacierTarget_ObjectFieldSpec,
+                Mutation.UpdateGlacierTarget,
                 Mutation.UpdateGlacierTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1392,7 +1392,7 @@ $query.Var.input = @{
                 "MutationUpdateManualTargetMapping",
                 "($input: UpdateManualTargetMappingInput!)",
                 "TargetMapping",
-                Mutation.UpdateManualTargetMapping_ObjectFieldSpec,
+                Mutation.UpdateManualTargetMapping,
                 Mutation.UpdateManualTargetMappingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1426,7 +1426,7 @@ $query.Var.input = @{
                 "MutationUpdateS3CompatibleTarget",
                 "($input: UpdateS3CompatibleTargetInput!)",
                 "Target",
-                Mutation.UpdateS3CompatibleTarget_ObjectFieldSpec,
+                Mutation.UpdateS3CompatibleTarget,
                 Mutation.UpdateS3CompatibleTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1468,7 +1468,7 @@ $query.Var.input = @{
                 "MutationUpgradeCdmManagedTarget",
                 "($input: UpgradeCdmManagedTargetInput!)",
                 "System.String",
-                Mutation.UpgradeCdmManagedTarget_ObjectFieldSpec,
+                Mutation.UpgradeCdmManagedTarget,
                 Mutation.UpgradeCdmManagedTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

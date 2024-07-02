@@ -380,7 +380,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryActivitySeries",
                 "($input: ActivitySeriesInput!)",
                 "ActivitySeries",
-                Query.ActivitySeries_ObjectFieldSpec,
+                Query.ActivitySeries,
                 Query.ActivitySeriesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -419,7 +419,7 @@ $query.Var.input = @{
                 "QueryActivitySeriesConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: ActivitySeriesSortField,$filters: ActivitySeriesFilter)",
                 "ActivitySeriesConnection",
-                Query.ActivitySeriesConnection_ObjectFieldSpec,
+                Query.ActivitySeriesConnection,
                 Query.ActivitySeriesConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -510,7 +510,7 @@ $query.Var.filters = @{
                 "QueryUserFileActivityTimeline",
                 "($userId: String!,$resource: ResourceInput,$nativePath: String!,$startDay: String!,$timezone: String!,$timeGranularity: TimeGranularity!)",
                 "ActivityTimelineResultConnection",
-                Query.UserFileActivityTimeline_ObjectFieldSpec,
+                Query.UserFileActivityTimeline,
                 Query.UserFileActivityTimelineFieldSpec,
                 @"# REQUIRED
 $query.Var.userId = $someString
@@ -553,7 +553,7 @@ $query.Var.timeGranularity = $someTimeGranularity # Call [Enum]::GetValues([Rubr
                 "QueryUserActivityTimeline",
                 "($userId: String!,$startDay: String!,$timezone: String!,$uniqueActivities: Boolean!)",
                 "ActivityTimelineResultConnection",
-                Query.UserActivityTimeline_ObjectFieldSpec,
+                Query.UserActivityTimeline,
                 Query.UserActivityTimelineFieldSpec,
                 @"# REQUIRED
 $query.Var.userId = $someString

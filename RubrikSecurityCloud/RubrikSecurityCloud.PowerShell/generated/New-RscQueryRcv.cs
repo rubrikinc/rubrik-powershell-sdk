@@ -251,7 +251,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryRcvAccountEntitlement",
                 "",
                 "RcvAccountEntitlement",
-                Query.RcvAccountEntitlement_ObjectFieldSpec,
+                Query.RcvAccountEntitlement,
                 Query.RcvAccountEntitlementFieldSpec,
                 @""
             );
@@ -269,7 +269,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAllRcvAccountEntitlements",
                 "",
                 "AllRcvAccountEntitlements",
-                Query.AllRcvAccountEntitlements_ObjectFieldSpec,
+                Query.AllRcvAccountEntitlements,
                 Query.AllRcvAccountEntitlementsFieldSpec,
                 @""
             );
@@ -288,7 +288,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAllRcvPrivateEndpointConnections",
                 "($input: UUID!)",
                 "List<DetailedPrivateEndpointConnection>",
-                Query.AllRcvPrivateEndpointConnections_ObjectFieldSpec,
+                Query.AllRcvPrivateEndpointConnections,
                 Query.AllRcvPrivateEndpointConnectionsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = $someString"

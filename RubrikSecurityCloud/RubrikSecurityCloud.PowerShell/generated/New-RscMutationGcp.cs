@@ -750,7 +750,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationGcpCloudAccountAddManualAuthProject",
                 "($input: GcpCloudAccountAddManualAuthProjectInput!)",
                 "System.Boolean",
-                Mutation.GcpCloudAccountAddManualAuthProject_ObjectFieldSpec,
+                Mutation.GcpCloudAccountAddManualAuthProject,
                 Mutation.GcpCloudAccountAddManualAuthProjectFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -785,7 +785,7 @@ $query.Var.input = @{
                 "MutationGcpCloudAccountAddProjects",
                 "($input: GcpCloudAccountAddProjectsInput!)",
                 "GcpCloudAccountAddProjectsReply",
-                Mutation.GcpCloudAccountAddProjects_ObjectFieldSpec,
+                Mutation.GcpCloudAccountAddProjects,
                 Mutation.GcpCloudAccountAddProjectsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -820,7 +820,7 @@ $query.Var.input = @{
                 "MutationGcpCloudAccountDeleteProjects",
                 "($input: GcpCloudAccountDeleteProjectsInput!)",
                 "GcpCloudAccountDeleteProjectsReply",
-                Mutation.GcpCloudAccountDeleteProjects_ObjectFieldSpec,
+                Mutation.GcpCloudAccountDeleteProjects,
                 Mutation.GcpCloudAccountDeleteProjectsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -857,7 +857,7 @@ $query.Var.input = @{
                 "MutationGcpCloudAccountOauthComplete",
                 "($input: GcpCloudAccountOauthCompleteInput!)",
                 "GcpCloudAccountOauthCompleteReply",
-                Mutation.GcpCloudAccountOauthComplete_ObjectFieldSpec,
+                Mutation.GcpCloudAccountOauthComplete,
                 Mutation.GcpCloudAccountOauthCompleteFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -884,7 +884,7 @@ $query.Var.input = @{
                 "MutationGcpCloudAccountOauthInitiate",
                 "($input: GcpCloudAccountOauthInitiateInput!)",
                 "GcpCloudAccountOauthInitiateReply",
-                Mutation.GcpCloudAccountOauthInitiate_ObjectFieldSpec,
+                Mutation.GcpCloudAccountOauthInitiate,
                 Mutation.GcpCloudAccountOauthInitiateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -907,7 +907,7 @@ $query.Var.input = @{
                 "MutationGcpCloudAccountUpgradeProjects",
                 "($input: GcpCloudAccountUpgradeProjectsInput!)",
                 "GcpCloudAccountUpgradeProjectsReply",
-                Mutation.GcpCloudAccountUpgradeProjects_ObjectFieldSpec,
+                Mutation.GcpCloudAccountUpgradeProjects,
                 Mutation.GcpCloudAccountUpgradeProjectsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -936,7 +936,7 @@ $query.Var.input = @{
                 "MutationCreateGcpReaderTarget",
                 "($input: CreateGcpReaderTargetInput!)",
                 "Target",
-                Mutation.CreateGcpReaderTarget_ObjectFieldSpec,
+                Mutation.CreateGcpReaderTarget,
                 Mutation.CreateGcpReaderTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -988,7 +988,7 @@ $query.Var.input = @{
                 "MutationCreateGcpTarget",
                 "($input: CreateGcpTargetInput!)",
                 "Target",
-                Mutation.CreateGcpTarget_ObjectFieldSpec,
+                Mutation.CreateGcpTarget,
                 Mutation.CreateGcpTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1038,7 +1038,7 @@ $query.Var.input = @{
                 "MutationGcpSetDefaultServiceAccountJwtConfig",
                 "($input: GcpSetDefaultServiceAccountJwtConfigInput!)",
                 "System.Boolean",
-                Mutation.GcpSetDefaultServiceAccountJwtConfig_ObjectFieldSpec,
+                Mutation.GcpSetDefaultServiceAccountJwtConfig,
                 Mutation.GcpSetDefaultServiceAccountJwtConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1063,7 +1063,7 @@ $query.Var.input = @{
                 "MutationUpdateGcpTarget",
                 "($input: UpdateGcpTargetInput!)",
                 "Target",
-                Mutation.UpdateGcpTarget_ObjectFieldSpec,
+                Mutation.UpdateGcpTarget,
                 Mutation.UpdateGcpTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1113,7 +1113,7 @@ $query.Var.input = @{
                 "MutationUpgradeGcpCloudAccountPermissionsWithoutOauth",
                 "($input: UpgradeGcpCloudAccountPermissionsWithoutOauthInput!)",
                 "UpgradeGcpCloudAccountPermissionsWithoutOauthReply",
-                Mutation.UpgradeGcpCloudAccountPermissionsWithoutOauth_ObjectFieldSpec,
+                Mutation.UpgradeGcpCloudAccountPermissionsWithoutOauth,
                 Mutation.UpgradeGcpCloudAccountPermissionsWithoutOauthFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

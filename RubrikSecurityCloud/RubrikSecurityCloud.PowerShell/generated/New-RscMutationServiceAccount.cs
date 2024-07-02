@@ -317,7 +317,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCreateServiceAccount",
                 "($input: CreateServiceAccountInput!)",
                 "CreateServiceAccountReply",
-                Mutation.CreateServiceAccount_ObjectFieldSpec,
+                Mutation.CreateServiceAccount,
                 Mutation.CreateServiceAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -346,7 +346,7 @@ $query.Var.input = @{
                 "MutationDeleteServiceAccountsFromAccount",
                 "($input: DeleteServiceAccountsFromAccountInput!)",
                 "System.Boolean",
-                Mutation.DeleteServiceAccountsFromAccount_ObjectFieldSpec,
+                Mutation.DeleteServiceAccountsFromAccount,
                 Mutation.DeleteServiceAccountsFromAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -371,7 +371,7 @@ $query.Var.input = @{
                 "MutationRotateServiceAccountSecret",
                 "($input: RotateServiceAccountSecretInput!)",
                 "RotateServiceAccountSecretReply",
-                Mutation.RotateServiceAccountSecret_ObjectFieldSpec,
+                Mutation.RotateServiceAccountSecret,
                 Mutation.RotateServiceAccountSecretFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -394,7 +394,7 @@ $query.Var.input = @{
                 "MutationUpdateServiceAccount",
                 "($input: UpdateServiceAccountInput!)",
                 "UpdateServiceAccountReply",
-                Mutation.UpdateServiceAccount_ObjectFieldSpec,
+                Mutation.UpdateServiceAccount,
                 Mutation.UpdateServiceAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

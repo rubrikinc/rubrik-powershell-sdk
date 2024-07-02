@@ -362,7 +362,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryMosaicBulkRecoveryRange",
                 "($input: MosaicBulkRecoveryRangeInput!)",
                 "MosaicRecoveryRangeResponse",
-                Query.MosaicBulkRecoveryRange_ObjectFieldSpec,
+                Query.MosaicBulkRecoveryRange,
                 Query.MosaicBulkRecoveryRangeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -406,7 +406,7 @@ $query.Var.input = @{
                 "QueryMosaicSnapshots",
                 "($input: GetMosaicVersionInput!)",
                 "ListVersionResponse",
-                Query.MosaicSnapshots_ObjectFieldSpec,
+                Query.MosaicSnapshots,
                 Query.MosaicSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -446,7 +446,7 @@ $query.Var.input = @{
                 "QueryMosaicStores",
                 "($input: GetMosaicStoreInput!)",
                 "ListStoreResponse",
-                Query.MosaicStores_ObjectFieldSpec,
+                Query.MosaicStores,
                 Query.MosaicStoresFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -469,7 +469,7 @@ $query.Var.input = @{
                 "QueryMosaicVersions",
                 "($input: GetMosaicVersionInput!)",
                 "ListVersionResponse",
-                Query.MosaicVersions_ObjectFieldSpec,
+                Query.MosaicVersions,
                 Query.MosaicVersionsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

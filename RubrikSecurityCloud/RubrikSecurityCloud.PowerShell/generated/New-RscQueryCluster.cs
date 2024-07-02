@@ -1891,7 +1891,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryCluster",
                 "($clusterUuid: UUID!)",
                 "Cluster",
-                Query.Cluster_ObjectFieldSpec,
+                Query.Cluster,
                 Query.ClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -1911,7 +1911,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryComputeClusterStatus",
                 "($input: GetComputeClusterInput!)",
                 "ComputeClusterDetail",
-                Query.ComputeClusterStatus_ObjectFieldSpec,
+                Query.ComputeClusterStatus,
                 Query.ComputeClusterStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1934,7 +1934,7 @@ $query.Var.input = @{
                 "QueryAllConnectedClusters",
                 "($clusterFilterArg: ClusterTypeEnum)",
                 "List<DataLocationSupportedCluster>",
-                Query.AllConnectedClusters_ObjectFieldSpec,
+                Query.AllConnectedClusters,
                 Query.AllConnectedClustersFieldSpec,
                 @"# OPTIONAL
 $query.Var.clusterFilterArg = $someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values."
@@ -1954,7 +1954,7 @@ $query.Var.clusterFilterArg = $someClusterTypeEnum # Call [Enum]::GetValues([Rub
                 "QueryClusterDefaultGateway",
                 "($input: GetDefaultGatewayInput!)",
                 "InternalGetDefaultGatewayResponse",
-                Query.ClusterDefaultGateway_ObjectFieldSpec,
+                Query.ClusterDefaultGateway,
                 Query.ClusterDefaultGatewayFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1977,7 +1977,7 @@ $query.Var.input = @{
                 "QueryClusterDns",
                 "($clusterUuid: UUID!)",
                 "ClusterDnsReply",
-                Query.ClusterDns_ObjectFieldSpec,
+                Query.ClusterDns,
                 Query.ClusterDnsFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -1997,7 +1997,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryClusterFloatingIps",
                 "($input: GetClusterIpsInput!)",
                 "InternalGetClusterIpsResponse",
-                Query.ClusterFloatingIps_ObjectFieldSpec,
+                Query.ClusterFloatingIps,
                 Query.ClusterFloatingIpsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2034,7 +2034,7 @@ $query.Var.input = @{
                 "QueryGetCdmReleaseDetailsForClusterFromSupportPortal",
                 "($listClusterUuid: [UUID!]!,$filterVersion: String!,$fetchLinks: Boolean!,$filterUpgradeable: Boolean!,$shouldShowAll: Boolean!,$filterAfterSource: Boolean!,$sortOrder: SortOrder)",
                 "CdmUpgradeReleaseDetailsFromSupportPortalReply",
-                Query.GetCdmReleaseDetailsForClusterFromSupportPortal_ObjectFieldSpec,
+                Query.GetCdmReleaseDetailsForClusterFromSupportPortal,
                 Query.GetCdmReleaseDetailsForClusterFromSupportPortalFieldSpec,
                 @"# REQUIRED
 $query.Var.listClusterUuid = @(
@@ -2067,7 +2067,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryGetGroupCountByCdmClusterStatus",
                 "",
                 "GroupCountListWithTotal",
-                Query.GetGroupCountByCdmClusterStatus_ObjectFieldSpec,
+                Query.GetGroupCountByCdmClusterStatus,
                 Query.GetGroupCountByCdmClusterStatusFieldSpec,
                 @""
             );
@@ -2100,7 +2100,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryClusterGroupByConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$groupBy: ClusterGroupByEnum!,$filter: ClusterFilterInput,$timezoneOffset: Float)",
                 "ClusterGroupByConnection",
-                Query.ClusterGroupByConnection_ObjectFieldSpec,
+                Query.ClusterGroupByConnection,
                 Query.ClusterGroupByConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2202,7 +2202,7 @@ $query.Var.timezoneOffset = $someSingle"
                 "QueryClusterIpmi",
                 "($input: GetIpmiInput!)",
                 "ModifyIpmiReply",
-                Query.ClusterIpmi_ObjectFieldSpec,
+                Query.ClusterIpmi,
                 Query.ClusterIpmiFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2225,7 +2225,7 @@ $query.Var.input = @{
                 "QueryClusterIpv6Mode",
                 "($input: ClusterIpv6ModeInput!)",
                 "ClusterIpv6ModeReply",
-                Query.ClusterIpv6Mode_ObjectFieldSpec,
+                Query.ClusterIpv6Mode,
                 Query.ClusterIpv6ModeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2248,7 +2248,7 @@ $query.Var.input = @{
                 "QueryIsTotpAckNecessaryForCluster",
                 "($clusterUuid: UUID!)",
                 "System.Boolean",
-                Query.IsTotpAckNecessaryForCluster_ObjectFieldSpec,
+                Query.IsTotpAckNecessaryForCluster,
                 Query.IsTotpAckNecessaryForClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -2278,7 +2278,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryKubernetesClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "KubernetesClusterConnection",
-                Query.KubernetesClusters_ObjectFieldSpec,
+                Query.KubernetesClusters,
                 Query.KubernetesClustersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2346,7 +2346,7 @@ $query.Var.filter = @(
                 "QueryLicensesForClusterProductSummary",
                 "($input: LicensesForClusterProductSummaryInput!)",
                 "LicensesForClusterProductReply",
-                Query.LicensesForClusterProductSummary_ObjectFieldSpec,
+                Query.LicensesForClusterProductSummary,
                 Query.LicensesForClusterProductSummaryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2383,7 +2383,7 @@ $query.Var.input = @{
                 "QueryClusterConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: ClusterFilterInput,$sortOrder: SortOrder,$sortBy: ClusterSortByEnum)",
                 "ClusterConnection",
-                Query.ClusterConnection_ObjectFieldSpec,
+                Query.ClusterConnection,
                 Query.ClusterConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2486,7 +2486,7 @@ $query.Var.sortBy = $someClusterSortByEnum # Call [Enum]::GetValues([RubrikSecur
                 "QueryAllMissingClusters",
                 "($connectionStatus: MissingClusterConnectionStatus,$isExcluded: Boolean)",
                 "MissingClusterConnection",
-                Query.AllMissingClusters_ObjectFieldSpec,
+                Query.AllMissingClusters,
                 Query.AllMissingClustersFieldSpec,
                 @"# OPTIONAL
 $query.Var.connectionStatus = $someMissingClusterConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterConnectionStatus]) for enum values.
@@ -2508,7 +2508,7 @@ $query.Var.isExcluded = $someBoolean"
                 "QueryClusterNetworkInterfaces",
                 "($input: GetNetworkInterfaceInput!)",
                 "NetworkInterfaceListResponse",
-                Query.ClusterNetworkInterfaces_ObjectFieldSpec,
+                Query.ClusterNetworkInterfaces,
                 Query.ClusterNetworkInterfacesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2533,7 +2533,7 @@ $query.Var.input = @{
                 "QueryClusterNodes",
                 "($input: GetNodesInput!)",
                 "NodeStatusListResponse",
-                Query.ClusterNodes_ObjectFieldSpec,
+                Query.ClusterNodes,
                 Query.ClusterNodesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2556,7 +2556,7 @@ $query.Var.input = @{
                 "QueryClusterNtpServers",
                 "($input: GetClusterNtpServersInput!)",
                 "NtpServerConfigurationListResponse",
-                Query.ClusterNtpServers_ObjectFieldSpec,
+                Query.ClusterNtpServers,
                 Query.ClusterNtpServersFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2579,7 +2579,7 @@ $query.Var.input = @{
                 "QueryClusterOperationJobProgress",
                 "($input: ClusterOperationJobProgressInput!)",
                 "ClusterOperationJobProgress",
-                Query.ClusterOperationJobProgress_ObjectFieldSpec,
+                Query.ClusterOperationJobProgress,
                 Query.ClusterOperationJobProgressFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2604,7 +2604,7 @@ $query.Var.input = @{
                 "QueryClusterProxy",
                 "($clusterUuid: UUID!)",
                 "ClusterProxyReply",
-                Query.ClusterProxy_ObjectFieldSpec,
+                Query.ClusterProxy,
                 Query.ClusterProxyFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -2638,7 +2638,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryRadarClusterConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: ClusterFilterInput,$sortOrder: SortOrder,$sortBy: ClusterSortByEnum)",
                 "ClusterConnection",
-                Query.RadarClusterConnection_ObjectFieldSpec,
+                Query.RadarClusterConnection,
                 Query.RadarClusterConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2739,7 +2739,7 @@ $query.Var.sortBy = $someClusterSortByEnum # Call [Enum]::GetValues([RubrikSecur
                 "QueryClusterRegistrationProductInfo",
                 "",
                 "ClusterRegistrationProductInfoType",
-                Query.ClusterRegistrationProductInfo_ObjectFieldSpec,
+                Query.ClusterRegistrationProductInfo,
                 Query.ClusterRegistrationProductInfoFieldSpec,
                 @""
             );
@@ -2758,7 +2758,7 @@ $query.Var.sortBy = $someClusterSortByEnum # Call [Enum]::GetValues([RubrikSecur
                 "QueryAllClusterReplicationTargets",
                 "($clusterUuid: UUID!)",
                 "List<ClusterReplicationTarget>",
-                Query.AllClusterReplicationTargets_ObjectFieldSpec,
+                Query.AllClusterReplicationTargets,
                 Query.AllClusterReplicationTargetsFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -2778,7 +2778,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryClusterRoutes",
                 "($clusterUuid: UUID!)",
                 "ClusterRoutesReply",
-                Query.ClusterRoutes_ObjectFieldSpec,
+                Query.ClusterRoutes,
                 Query.ClusterRoutesFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -2798,7 +2798,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryAllClustersTotpAckStatus",
                 "($listClusterUuid: [UUID!]!)",
                 "List<System.Boolean>",
-                Query.AllClustersTotpAckStatus_ObjectFieldSpec,
+                Query.AllClustersTotpAckStatus,
                 Query.AllClustersTotpAckStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.listClusterUuid = @(
@@ -2819,7 +2819,7 @@ $query.Var.listClusterUuid = @(
                 "QueryClusterTypeList",
                 "",
                 "List<GroupCount>",
-                Query.ClusterTypeList_ObjectFieldSpec,
+                Query.ClusterTypeList,
                 Query.ClusterTypeListFieldSpec,
                 @""
             );
@@ -2838,7 +2838,7 @@ $query.Var.listClusterUuid = @(
                 "QueryValidateClusterLicenseCapacity",
                 "($input: ValidateClusterLicenseCapacityInput!)",
                 "ClusterLicenseCapacityValidations",
-                Query.ValidateClusterLicenseCapacity_ObjectFieldSpec,
+                Query.ValidateClusterLicenseCapacity,
                 Query.ValidateClusterLicenseCapacityFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2884,7 +2884,7 @@ $query.Var.input = @{
                 "QueryClusterVlans",
                 "($input: GetVlanInput!)",
                 "VlanConfigListResponse",
-                Query.ClusterVlans_ObjectFieldSpec,
+                Query.ClusterVlans,
                 Query.ClusterVlansFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2909,7 +2909,7 @@ $query.Var.input = @{
                 "QueryAllClusterWebCertsAndIpmis",
                 "($input: BulkClusterWebCertAndIpmiInput!)",
                 "List<ClusterWebCertAndIpmi>",
-                Query.AllClusterWebCertsAndIpmis_ObjectFieldSpec,
+                Query.AllClusterWebCertsAndIpmis,
                 Query.AllClusterWebCertsAndIpmisFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2934,7 +2934,7 @@ $query.Var.input = @{
                 "QueryWindowsCluster",
                 "($fid: UUID!)",
                 "WindowsCluster",
-                Query.WindowsCluster_ObjectFieldSpec,
+                Query.WindowsCluster,
                 Query.WindowsClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -2968,7 +2968,7 @@ $query.Var.fid = $someString"
                 "QueryClusterWithUpgradesInfo",
                 "($first: Int,$after: String,$last: Int,$before: String,$upgradeFilter: CdmUpgradeInfoFilterInput,$sortOrder: SortOrder,$sortBy: UpgradeInfoSortByEnum)",
                 "ClusterConnection",
-                Query.ClusterWithUpgradesInfo_ObjectFieldSpec,
+                Query.ClusterWithUpgradesInfo,
                 Query.ClusterWithUpgradesInfoFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

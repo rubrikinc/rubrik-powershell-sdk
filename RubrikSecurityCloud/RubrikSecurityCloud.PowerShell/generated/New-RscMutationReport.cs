@@ -1021,7 +1021,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCreateCustomReport",
                 "($input: CreateCustomReportInput!,$reportRoom: String)",
                 "CreateCustomReportReply",
-                Mutation.CreateCustomReport_ObjectFieldSpec,
+                Mutation.CreateCustomReport,
                 Mutation.CreateCustomReportFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1218,7 +1218,7 @@ $query.Var.reportRoom = $someString"
                 "MutationCreateScheduledReport",
                 "($input: CreateScheduledReportInput!)",
                 "CreateScheduledReportReply",
-                Mutation.CreateScheduledReport_ObjectFieldSpec,
+                Mutation.CreateScheduledReport,
                 Mutation.CreateScheduledReportFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1271,7 +1271,7 @@ $query.Var.input = @{
                 "MutationDeleteCustomReport",
                 "($input: DeleteCustomReportInput!)",
                 "System.String",
-                Mutation.DeleteCustomReport_ObjectFieldSpec,
+                Mutation.DeleteCustomReport,
                 Mutation.DeleteCustomReportFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1294,7 +1294,7 @@ $query.Var.input = @{
                 "MutationDeleteScheduledReport",
                 "($input: DeleteScheduledReportInput!)",
                 "System.String",
-                Mutation.DeleteScheduledReport_ObjectFieldSpec,
+                Mutation.DeleteScheduledReport,
                 Mutation.DeleteScheduledReportFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1319,7 +1319,7 @@ $query.Var.input = @{
                 "MutationSendPdfReport",
                 "($input: SendPdfReportInput!)",
                 "SendPdfReportReply",
-                Mutation.SendPdfReport_ObjectFieldSpec,
+                Mutation.SendPdfReport,
                 Mutation.SendPdfReportFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1350,7 +1350,7 @@ $query.Var.input = @{
                 "MutationSendScheduledReportAsync",
                 "($input: SendScheduledReportAsyncInput!)",
                 "AsyncDownloadReply",
-                Mutation.SendScheduledReportAsync_ObjectFieldSpec,
+                Mutation.SendScheduledReportAsync,
                 Mutation.SendScheduledReportAsyncFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1385,7 +1385,7 @@ $query.Var.input = @{
                 "MutationStartClusterReportMigrationJob",
                 "($input: StartClusterReportMigrationJobInput!)",
                 "StartClusterReportMigrationJobReply",
-                Mutation.StartClusterReportMigrationJob_ObjectFieldSpec,
+                Mutation.StartClusterReportMigrationJob,
                 Mutation.StartClusterReportMigrationJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1410,7 +1410,7 @@ $query.Var.input = @{
                 "MutationUpdateCustomReport",
                 "($input: UpdateCustomReportInput!)",
                 "UpdateCustomReportReply",
-                Mutation.UpdateCustomReport_ObjectFieldSpec,
+                Mutation.UpdateCustomReport,
                 Mutation.UpdateCustomReportFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1610,7 +1610,7 @@ $query.Var.input = @{
                 "MutationUpdateDatabaseLogReportingPropertiesForCluster",
                 "($input: UpdateDatabaseLogReportingPropertiesForClusterInput!)",
                 "DbLogReportProperties",
-                Mutation.UpdateDatabaseLogReportingPropertiesForCluster_ObjectFieldSpec,
+                Mutation.UpdateDatabaseLogReportingPropertiesForCluster,
                 Mutation.UpdateDatabaseLogReportingPropertiesForClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1642,7 +1642,7 @@ $query.Var.input = @{
                 "MutationUpdateScheduledReport",
                 "($input: UpdateScheduledReportInput!)",
                 "UpdateScheduledReportReply",
-                Mutation.UpdateScheduledReport_ObjectFieldSpec,
+                Mutation.UpdateScheduledReport,
                 Mutation.UpdateScheduledReportFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

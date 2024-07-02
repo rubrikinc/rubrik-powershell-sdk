@@ -1258,7 +1258,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryNutanixBrowseSnapshot",
                 "($input: BrowseNutanixSnapshotInput!)",
                 "BrowseResponseListResponse",
-                Query.NutanixBrowseSnapshot_ObjectFieldSpec,
+                Query.NutanixBrowseSnapshot,
                 Query.NutanixBrowseSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1287,7 +1287,7 @@ $query.Var.input = @{
                 "QueryNutanixCategory",
                 "($fid: UUID!)",
                 "NutanixCategory",
-                Query.NutanixCategory_ObjectFieldSpec,
+                Query.NutanixCategory,
                 Query.NutanixCategoryFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1307,7 +1307,7 @@ $query.Var.fid = $someString"
                 "QueryNutanixCategoryValue",
                 "($fid: UUID!)",
                 "NutanixCategoryValue",
-                Query.NutanixCategoryValue_ObjectFieldSpec,
+                Query.NutanixCategoryValue,
                 Query.NutanixCategoryValueFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1327,7 +1327,7 @@ $query.Var.fid = $someString"
                 "QueryNutanixCluster",
                 "($fid: UUID!)",
                 "NutanixCluster",
-                Query.NutanixCluster_ObjectFieldSpec,
+                Query.NutanixCluster,
                 Query.NutanixClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1347,7 +1347,7 @@ $query.Var.fid = $someString"
                 "QueryNutanixClusterAsyncRequestStatus",
                 "($input: GetNutanixClusterAsyncRequestStatusInput!)",
                 "AsyncRequestStatus",
-                Query.NutanixClusterAsyncRequestStatus_ObjectFieldSpec,
+                Query.NutanixClusterAsyncRequestStatus,
                 Query.NutanixClusterAsyncRequestStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1372,7 +1372,7 @@ $query.Var.input = @{
                 "QueryNutanixClusterContainers",
                 "($input: GetContainersInput!)",
                 "NutanixContainerListResponse",
-                Query.NutanixClusterContainers_ObjectFieldSpec,
+                Query.NutanixClusterContainers,
                 Query.NutanixClusterContainersFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1395,7 +1395,7 @@ $query.Var.input = @{
                 "QueryNutanixClusterNetworks",
                 "($input: GetNutanixNetworksInput!)",
                 "NutanixNetworkListResponse",
-                Query.NutanixClusterNetworks_ObjectFieldSpec,
+                Query.NutanixClusterNetworks,
                 Query.NutanixClusterNetworksFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1428,7 +1428,7 @@ $query.Var.input = @{
                 "QueryNutanixClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "NutanixClusterConnection",
-                Query.NutanixClusters_ObjectFieldSpec,
+                Query.NutanixClusters,
                 Query.NutanixClustersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1504,7 +1504,7 @@ $query.Var.filter = @(
                 "QueryNutanixMounts",
                 "($first: Int,$after: String,$filters: [NutanixLiveMountFilterInput!],$sortBy: NutanixLiveMountSortByInput)",
                 "NutanixLiveMountConnection",
-                Query.NutanixMounts_ObjectFieldSpec,
+                Query.NutanixMounts,
                 Query.NutanixMountsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1544,7 +1544,7 @@ $query.Var.sortBy = @{
                 "QueryNutanixPrismCentral",
                 "($fid: UUID!)",
                 "NutanixPrismCentral",
-                Query.NutanixPrismCentral_ObjectFieldSpec,
+                Query.NutanixPrismCentral,
                 Query.NutanixPrismCentralFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1574,7 +1574,7 @@ $query.Var.fid = $someString"
                 "QueryNutanixPrismCentrals",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "NutanixPrismCentralConnection",
-                Query.NutanixPrismCentrals_ObjectFieldSpec,
+                Query.NutanixPrismCentrals,
                 Query.NutanixPrismCentralsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1642,7 +1642,7 @@ $query.Var.filter = @(
                 "QuerySearchNutanixVm",
                 "($input: SearchNutanixVmInput!)",
                 "SearchResponseListResponse",
-                Query.SearchNutanixVm_ObjectFieldSpec,
+                Query.SearchNutanixVm,
                 Query.SearchNutanixVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1671,7 +1671,7 @@ $query.Var.input = @{
                 "QueryNutanixSnapshotDetail",
                 "($input: GetNutanixSnapshotDetailInput!)",
                 "NutanixVmSnapshotDetail",
-                Query.NutanixSnapshotDetail_ObjectFieldSpec,
+                Query.NutanixSnapshotDetail,
                 Query.NutanixSnapshotDetailFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1694,7 +1694,7 @@ $query.Var.input = @{
                 "QueryNutanixSnapshotVdisks",
                 "($input: GetNutanixVmSnapshotVdisksInput!)",
                 "NutanixVmSnapshotVdiskDetailListResponse",
-                Query.NutanixSnapshotVdisks_ObjectFieldSpec,
+                Query.NutanixSnapshotVdisks,
                 Query.NutanixSnapshotVdisksFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1729,7 +1729,7 @@ $query.Var.input = @{
                 "QueryNutanixTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
                 "CdmHierarchyObjectConnection",
-                Query.NutanixTopLevelDescendants_ObjectFieldSpec,
+                Query.NutanixTopLevelDescendants,
                 Query.NutanixTopLevelDescendantsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1811,7 +1811,7 @@ $query.Var.filter = @(
                 "QueryVdiskMountableNutanixVms",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "NutanixVmConnection",
-                Query.VdiskMountableNutanixVms_ObjectFieldSpec,
+                Query.VdiskMountableNutanixVms,
                 Query.VdiskMountableNutanixVmsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1879,7 +1879,7 @@ $query.Var.filter = @(
                 "QueryNutanixVm",
                 "($fid: UUID!)",
                 "NutanixVm",
-                Query.NutanixVm_ObjectFieldSpec,
+                Query.NutanixVm,
                 Query.NutanixVmFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1899,7 +1899,7 @@ $query.Var.fid = $someString"
                 "QueryNutanixVmAsyncRequestStatus",
                 "($input: GetNutanixVmAsyncRequestStatusInput!)",
                 "AsyncRequestStatus",
-                Query.NutanixVmAsyncRequestStatus_ObjectFieldSpec,
+                Query.NutanixVmAsyncRequestStatus,
                 Query.NutanixVmAsyncRequestStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1924,7 +1924,7 @@ $query.Var.input = @{
                 "QueryNutanixVmMissedSnapshots",
                 "($input: NutanixMissedSnapshotsInput!)",
                 "MissedSnapshotListResponse",
-                Query.NutanixVmMissedSnapshots_ObjectFieldSpec,
+                Query.NutanixVmMissedSnapshots,
                 Query.NutanixVmMissedSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1957,7 +1957,7 @@ $query.Var.input = @{
                 "QueryNutanixVms",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "NutanixVmConnection",
-                Query.NutanixVms_ObjectFieldSpec,
+                Query.NutanixVms,
                 Query.NutanixVmsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

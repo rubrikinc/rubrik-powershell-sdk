@@ -508,7 +508,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCreateWebhook",
                 "($input: CreateWebhookInput!)",
                 "CreateWebhookReply",
-                Mutation.CreateWebhook_ObjectFieldSpec,
+                Mutation.CreateWebhook,
                 Mutation.CreateWebhookFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -594,7 +594,7 @@ $query.Var.input = @{
                 "MutationDeleteWebhook",
                 "($input: DeleteWebhookInput!)",
                 "System.String",
-                Mutation.DeleteWebhook_ObjectFieldSpec,
+                Mutation.DeleteWebhook,
                 Mutation.DeleteWebhookFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -617,7 +617,7 @@ $query.Var.input = @{
                 "MutationTestWebhook",
                 "($input: TestWebhookInput!)",
                 "TestWebhookReply",
-                Mutation.TestWebhook_ObjectFieldSpec,
+                Mutation.TestWebhook,
                 Mutation.TestWebhookFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -665,7 +665,7 @@ $query.Var.input = @{
                 "MutationTestExistingWebhook",
                 "($input: TestExistingWebhookInput!)",
                 "TestExistingWebhookReply",
-                Mutation.TestExistingWebhook_ObjectFieldSpec,
+                Mutation.TestExistingWebhook,
                 Mutation.TestExistingWebhookFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -688,7 +688,7 @@ $query.Var.input = @{
                 "MutationUpdateWebhook",
                 "($input: UpdateWebhookInput!)",
                 "UpdateWebhookReply",
-                Mutation.UpdateWebhook_ObjectFieldSpec,
+                Mutation.UpdateWebhook,
                 Mutation.UpdateWebhookFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

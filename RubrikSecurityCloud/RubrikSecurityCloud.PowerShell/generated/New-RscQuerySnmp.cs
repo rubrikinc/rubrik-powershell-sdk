@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QuerySnmpConfigurations",
                 "($input: GetSnmpConfigurationInput!)",
                 "SnmpConfiguration",
-                Query.SnmpConfigurations_ObjectFieldSpec,
+                Query.SnmpConfigurations,
                 Query.SnmpConfigurationsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

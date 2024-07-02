@@ -834,7 +834,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddPolicyObjects",
                 "($policyIds: [String!]!,$objectIds: [String!]!,$objectRootIds: [String!]!,$clusterIds: [String!]!)",
                 "System.String",
-                Mutation.AddPolicyObjects_ObjectFieldSpec,
+                Mutation.AddPolicyObjects,
                 Mutation.AddPolicyObjectsFieldSpec,
                 @"# REQUIRED
 $query.Var.policyIds = @(
@@ -868,7 +868,7 @@ $query.Var.clusterIds = @(
                 "MutationCreatePolicy",
                 "($input: CreatePolicyInput!)",
                 "ClassificationPolicyDetail",
-                Mutation.CreatePolicy_ObjectFieldSpec,
+                Mutation.CreatePolicy,
                 Mutation.CreatePolicyFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -912,7 +912,7 @@ $query.Var.input = @{
                 "MutationDeactivatePolicy",
                 "($policyId: String!,$runAsync: Boolean!)",
                 "List<System.String>",
-                Mutation.DeactivatePolicy_ObjectFieldSpec,
+                Mutation.DeactivatePolicy,
                 Mutation.DeactivatePolicyFieldSpec,
                 @"# REQUIRED
 $query.Var.policyId = $someString
@@ -934,7 +934,7 @@ $query.Var.runAsync = $someBoolean"
                 "MutationGetHealthMonitorPolicyStatus",
                 "($input: GetHealthMonitorPolicyStatusInput!)",
                 "GetHealthMonitorPolicyStatusReply",
-                Mutation.GetHealthMonitorPolicyStatus_ObjectFieldSpec,
+                Mutation.GetHealthMonitorPolicyStatus,
                 Mutation.GetHealthMonitorPolicyStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -977,7 +977,7 @@ $query.Var.input = @{
                 "MutationRemovePolicyObjects",
                 "($policyIds: [String!]!,$objectIds: [String!]!,$objectRootIds: [String!]!,$clusterIds: [String!]!,$runAsync: Boolean!)",
                 "List<System.String>",
-                Mutation.RemovePolicyObjects_ObjectFieldSpec,
+                Mutation.RemovePolicyObjects,
                 Mutation.RemovePolicyObjectsFieldSpec,
                 @"# REQUIRED
 $query.Var.policyIds = @(
@@ -1012,7 +1012,7 @@ $query.Var.runAsync = $someBoolean"
                 "MutationSeedEnabledPolicies",
                 "",
                 "SeedEnabledPoliciesReply",
-                Mutation.SeedEnabledPolicies_ObjectFieldSpec,
+                Mutation.SeedEnabledPolicies,
                 Mutation.SeedEnabledPoliciesFieldSpec,
                 @""
             );
@@ -1030,7 +1030,7 @@ $query.Var.runAsync = $someBoolean"
                 "MutationSeedInitialPolicies",
                 "",
                 "SeedInitialPoliciesReply",
-                Mutation.SeedInitialPolicies_ObjectFieldSpec,
+                Mutation.SeedInitialPolicies,
                 Mutation.SeedInitialPoliciesFieldSpec,
                 @""
             );
@@ -1049,7 +1049,7 @@ $query.Var.runAsync = $someBoolean"
                 "MutationSetPasswordComplexityPolicy",
                 "($input: SetPasswordComplexityPolicyInput!)",
                 "System.String",
-                Mutation.SetPasswordComplexityPolicy_ObjectFieldSpec,
+                Mutation.SetPasswordComplexityPolicy,
                 Mutation.SetPasswordComplexityPolicyFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1161,7 +1161,7 @@ $query.Var.input = @{
                 "MutationUpdateAutoEnablePolicyClusterConfig",
                 "($input: UpdateAutoEnablePolicyClusterConfigInput!)",
                 "UpdateAutoEnablePolicyClusterConfigReply",
-                Mutation.UpdateAutoEnablePolicyClusterConfig_ObjectFieldSpec,
+                Mutation.UpdateAutoEnablePolicyClusterConfig,
                 Mutation.UpdateAutoEnablePolicyClusterConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1186,7 +1186,7 @@ $query.Var.input = @{
                 "MutationUpdateHealthMonitorPolicyStatus",
                 "($input: UpdateHealthMonitorPolicyStatusInput!)",
                 "UpdateHealthMonitorPolicyStatusReply",
-                Mutation.UpdateHealthMonitorPolicyStatus_ObjectFieldSpec,
+                Mutation.UpdateHealthMonitorPolicyStatus,
                 Mutation.UpdateHealthMonitorPolicyStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1220,7 +1220,7 @@ $query.Var.input = @{
                 "MutationUpdateOrgSecurityPolicy",
                 "($input: UpdateOrgSecurityPolicyInput!)",
                 "System.String",
-                Mutation.UpdateOrgSecurityPolicy_ObjectFieldSpec,
+                Mutation.UpdateOrgSecurityPolicy,
                 Mutation.UpdateOrgSecurityPolicyFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1243,7 +1243,7 @@ $query.Var.input = @{
                 "MutationUpdatePolicy",
                 "($input: UpdatePolicyInput!)",
                 "ClassificationPolicyDetail",
-                Mutation.UpdatePolicy_ObjectFieldSpec,
+                Mutation.UpdatePolicy,
                 Mutation.UpdatePolicyFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

@@ -582,7 +582,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryExchangeDag",
                 "($fid: UUID!)",
                 "ExchangeDag",
-                Query.ExchangeDag_ObjectFieldSpec,
+                Query.ExchangeDag,
                 Query.ExchangeDagFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -612,7 +612,7 @@ $query.Var.fid = $someString"
                 "QueryExchangeDags",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "ExchangeDagConnection",
-                Query.ExchangeDags_ObjectFieldSpec,
+                Query.ExchangeDags,
                 Query.ExchangeDagsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -680,7 +680,7 @@ $query.Var.filter = @(
                 "QueryExchangeDatabase",
                 "($fid: UUID!)",
                 "ExchangeDatabase",
-                Query.ExchangeDatabase_ObjectFieldSpec,
+                Query.ExchangeDatabase,
                 Query.ExchangeDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -710,7 +710,7 @@ $query.Var.fid = $someString"
                 "QueryExchangeDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "ExchangeDatabaseConnection",
-                Query.ExchangeDatabases_ObjectFieldSpec,
+                Query.ExchangeDatabases,
                 Query.ExchangeDatabasesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -786,7 +786,7 @@ $query.Var.filter = @(
                 "QueryExchangeLiveMounts",
                 "($first: Int,$after: String,$filters: [ExchangeLiveMountFilterInput!],$sortBy: ExchangeLiveMountSortByInput)",
                 "ExchangeLiveMountConnection",
-                Query.ExchangeLiveMounts_ObjectFieldSpec,
+                Query.ExchangeLiveMounts,
                 Query.ExchangeLiveMountsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -826,7 +826,7 @@ $query.Var.sortBy = @{
                 "QueryExchangeServer",
                 "($fid: UUID!)",
                 "ExchangeServer",
-                Query.ExchangeServer_ObjectFieldSpec,
+                Query.ExchangeServer,
                 Query.ExchangeServerFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -856,7 +856,7 @@ $query.Var.fid = $someString"
                 "QueryExchangeServers",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "ExchangeServerConnection",
-                Query.ExchangeServers_ObjectFieldSpec,
+                Query.ExchangeServers,
                 Query.ExchangeServersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

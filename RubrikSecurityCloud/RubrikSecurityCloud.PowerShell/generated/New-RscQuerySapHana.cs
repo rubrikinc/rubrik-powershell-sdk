@@ -609,7 +609,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QuerySapHanaDatabase",
                 "($fid: UUID!)",
                 "SapHanaDatabase",
-                Query.SapHanaDatabase_ObjectFieldSpec,
+                Query.SapHanaDatabase,
                 Query.SapHanaDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -639,7 +639,7 @@ $query.Var.fid = $someString"
                 "QuerySapHanaDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "SapHanaDatabaseConnection",
-                Query.SapHanaDatabases_ObjectFieldSpec,
+                Query.SapHanaDatabases,
                 Query.SapHanaDatabasesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -707,7 +707,7 @@ $query.Var.filter = @(
                 "QuerySapHanaLogSnapshot",
                 "($fid: UUID!)",
                 "SapHanaLogSnapshot",
-                Query.SapHanaLogSnapshot_ObjectFieldSpec,
+                Query.SapHanaLogSnapshot,
                 Query.SapHanaLogSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -741,7 +741,7 @@ $query.Var.fid = $someString"
                 "QuerySapHanaLogSnapshots",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: SapHanaLogSnapshotSortBy,$filter: SapHanaLogSnapshotFilterInput)",
                 "SapHanaLogSnapshotConnection",
-                Query.SapHanaLogSnapshots_ObjectFieldSpec,
+                Query.SapHanaLogSnapshots,
                 Query.SapHanaLogSnapshotsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -788,7 +788,7 @@ $query.Var.filter = @{
                 "QuerySapHanaRecoverableRange",
                 "($fid: UUID!)",
                 "SapHanaRecoverableRange",
-                Query.SapHanaRecoverableRange_ObjectFieldSpec,
+                Query.SapHanaRecoverableRange,
                 Query.SapHanaRecoverableRangeFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -822,7 +822,7 @@ $query.Var.fid = $someString"
                 "QuerySapHanaRecoverableRanges",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: SapHanaRecoverableRangeSortBy,$filter: SapHanaRecoverableRangeFilterInput)",
                 "SapHanaRecoverableRangeConnection",
-                Query.SapHanaRecoverableRanges_ObjectFieldSpec,
+                Query.SapHanaRecoverableRanges,
                 Query.SapHanaRecoverableRangesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -869,7 +869,7 @@ $query.Var.filter = @{
                 "QuerySapHanaSystem",
                 "($fid: UUID!)",
                 "SapHanaSystem",
-                Query.SapHanaSystem_ObjectFieldSpec,
+                Query.SapHanaSystem,
                 Query.SapHanaSystemFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -899,7 +899,7 @@ $query.Var.fid = $someString"
                 "QuerySapHanaSystems",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "SapHanaSystemConnection",
-                Query.SapHanaSystems_ObjectFieldSpec,
+                Query.SapHanaSystems,
                 Query.SapHanaSystemsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

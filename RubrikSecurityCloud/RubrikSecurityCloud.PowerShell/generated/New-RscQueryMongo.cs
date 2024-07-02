@@ -625,7 +625,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryMongoBulkRecoverableRanges",
                 "($input: RecoverableRangeInput!)",
                 "MongoRecoverableRanges",
-                Query.MongoBulkRecoverableRanges_ObjectFieldSpec,
+                Query.MongoBulkRecoverableRanges,
                 Query.MongoBulkRecoverableRangesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -656,7 +656,7 @@ $query.Var.input = @{
                 "QueryMongoCollection",
                 "($fid: UUID!)",
                 "MongoCollection",
-                Query.MongoCollection_ObjectFieldSpec,
+                Query.MongoCollection,
                 Query.MongoCollectionFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -686,7 +686,7 @@ $query.Var.fid = $someString"
                 "QueryMongoCollections",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "MongoCollectionConnection",
-                Query.MongoCollections_ObjectFieldSpec,
+                Query.MongoCollections,
                 Query.MongoCollectionsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -754,7 +754,7 @@ $query.Var.filter = @(
                 "QueryMongoDatabase",
                 "($fid: UUID!)",
                 "MongoDatabase",
-                Query.MongoDatabase_ObjectFieldSpec,
+                Query.MongoDatabase,
                 Query.MongoDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -784,7 +784,7 @@ $query.Var.fid = $someString"
                 "QueryMongoDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "MongoDatabaseConnection",
-                Query.MongoDatabases_ObjectFieldSpec,
+                Query.MongoDatabases,
                 Query.MongoDatabasesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -852,7 +852,7 @@ $query.Var.filter = @(
                 "QueryMongoRecoverableRanges",
                 "($input: RecoverableRangeInput!)",
                 "MongoRecoverableRanges",
-                Query.MongoRecoverableRanges_ObjectFieldSpec,
+                Query.MongoRecoverableRanges,
                 Query.MongoRecoverableRangesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -883,7 +883,7 @@ $query.Var.input = @{
                 "QueryMongoSource",
                 "($fid: UUID!)",
                 "MongoSource",
-                Query.MongoSource_ObjectFieldSpec,
+                Query.MongoSource,
                 Query.MongoSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -913,7 +913,7 @@ $query.Var.fid = $someString"
                 "QueryMongoSources",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "MongoSourceConnection",
-                Query.MongoSources_ObjectFieldSpec,
+                Query.MongoSources,
                 Query.MongoSourcesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

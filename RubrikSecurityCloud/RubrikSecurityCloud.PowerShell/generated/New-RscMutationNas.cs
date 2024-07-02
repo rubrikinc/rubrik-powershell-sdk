@@ -809,7 +809,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationBulkAddNasShares",
                 "($input: BulkAddNasSharesInput!)",
                 "BulkAddNasSharesReply",
-                Mutation.BulkAddNasShares_ObjectFieldSpec,
+                Mutation.BulkAddNasShares,
                 Mutation.BulkAddNasSharesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -851,7 +851,7 @@ $query.Var.input = @{
                 "MutationBulkDeleteNasShares",
                 "($input: BulkDeleteNasSharesInput!)",
                 "System.String",
-                Mutation.BulkDeleteNasShares_ObjectFieldSpec,
+                Mutation.BulkDeleteNasShares,
                 Mutation.BulkDeleteNasSharesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -879,7 +879,7 @@ $query.Var.input = @{
                 "MutationBulkDeleteNasSystems",
                 "($input: BulkDeleteNasSystemsInput!)",
                 "BatchAsyncRequestStatus",
-                Mutation.BulkDeleteNasSystems_ObjectFieldSpec,
+                Mutation.BulkDeleteNasSystems,
                 Mutation.BulkDeleteNasSystemsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -907,7 +907,7 @@ $query.Var.input = @{
                 "MutationBulkUpdateNasShares",
                 "($input: BulkUpdateNasSharesInput!)",
                 "BulkUpdateNasSharesReply",
-                Mutation.BulkUpdateNasShares_ObjectFieldSpec,
+                Mutation.BulkUpdateNasShares,
                 Mutation.BulkUpdateNasSharesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -951,7 +951,7 @@ $query.Var.input = @{
                 "MutationDeleteNasSystem",
                 "($input: DeleteNasSystemInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteNasSystem_ObjectFieldSpec,
+                Mutation.DeleteNasSystem,
                 Mutation.DeleteNasSystemFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -974,7 +974,7 @@ $query.Var.input = @{
                 "MutationHideRevealNasShares",
                 "($input: HideRevealNasSharesInput!)",
                 "ResponseSuccess",
-                Mutation.HideRevealNasShares_ObjectFieldSpec,
+                Mutation.HideRevealNasShares,
                 Mutation.HideRevealNasSharesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1004,7 +1004,7 @@ $query.Var.input = @{
                 "MutationRefreshNasSystems",
                 "($input: RefreshNasSystemsInput!)",
                 "RefreshNasSystemsReply",
-                Mutation.RefreshNasSystems_ObjectFieldSpec,
+                Mutation.RefreshNasSystems,
                 Mutation.RefreshNasSystemsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1032,7 +1032,7 @@ $query.Var.input = @{
                 "MutationRegisterNasSystem",
                 "($input: RegisterNasSystemInput!)",
                 "RegisterNasSystemReply",
-                Mutation.RegisterNasSystem_ObjectFieldSpec,
+                Mutation.RegisterNasSystem,
                 Mutation.RegisterNasSystemFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1138,7 +1138,7 @@ $query.Var.input = @{
                 "MutationUpdateNasShares",
                 "($input: UpdateNasSharesInput!)",
                 "System.String",
-                Mutation.UpdateNasShares_ObjectFieldSpec,
+                Mutation.UpdateNasShares,
                 Mutation.UpdateNasSharesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1171,7 +1171,7 @@ $query.Var.input = @{
                 "MutationUpdateNasSystem",
                 "($input: UpdateNasSystemInput!)",
                 "UpdateNasSystemReply",
-                Mutation.UpdateNasSystem_ObjectFieldSpec,
+                Mutation.UpdateNasSystem,
                 Mutation.UpdateNasSystemFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

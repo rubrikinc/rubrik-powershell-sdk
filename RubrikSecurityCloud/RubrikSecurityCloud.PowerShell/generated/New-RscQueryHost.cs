@@ -479,7 +479,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryHostDiagnosis",
                 "($id: String!)",
                 "HostDiagnosisSummary",
-                Query.HostDiagnosis_ObjectFieldSpec,
+                Query.HostDiagnosis,
                 Query.HostDiagnosisFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString"
@@ -499,7 +499,7 @@ $query.Var.id = $someString"
                 "QueryPhysicalHost",
                 "($fid: UUID!)",
                 "PhysicalHost",
-                Query.PhysicalHost_ObjectFieldSpec,
+                Query.PhysicalHost,
                 Query.PhysicalHostFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -533,7 +533,7 @@ $query.Var.fid = $someString"
                 "QueryPhysicalHosts",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$hostRoot: HostRoot!,$isBulkPolicyAssignmentFlow: Boolean)",
                 "PhysicalHostConnection",
-                Query.PhysicalHosts_ObjectFieldSpec,
+                Query.PhysicalHosts,
                 Query.PhysicalHostsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -606,7 +606,7 @@ $query.Var.isBulkPolicyAssignmentFlow = $someBoolean"
                 "QuerySearchHost",
                 "($id: String!,$path: String!)",
                 "SearchResponseListResponse",
-                Query.SearchHost_ObjectFieldSpec,
+                Query.SearchHost,
                 Query.SearchHostFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString
@@ -628,7 +628,7 @@ $query.Var.path = $someString"
                 "QueryHostShare",
                 "($fid: UUID!)",
                 "HostShare",
-                Query.HostShare_ObjectFieldSpec,
+                Query.HostShare,
                 Query.HostShareFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -658,7 +658,7 @@ $query.Var.fid = $someString"
                 "QueryHostShares",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "HostShareConnection",
-                Query.HostShares_ObjectFieldSpec,
+                Query.HostShares,
                 Query.HostSharesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

@@ -435,7 +435,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryNcdBackEndCapacity",
                 "($clusters: [UUID!]!)",
                 "NcdBackEndCapacity",
-                Query.NcdBackEndCapacity_ObjectFieldSpec,
+                Query.NcdBackEndCapacity,
                 Query.NcdBackEndCapacityFieldSpec,
                 @"# REQUIRED
 $query.Var.clusters = @(
@@ -457,7 +457,7 @@ $query.Var.clusters = @(
                 "QueryNcdFrontEndCapacity",
                 "($clusters: [UUID!]!)",
                 "NcdFrontEndCapacity",
-                Query.NcdFrontEndCapacity_ObjectFieldSpec,
+                Query.NcdFrontEndCapacity,
                 Query.NcdFrontEndCapacityFieldSpec,
                 @"# REQUIRED
 $query.Var.clusters = @(
@@ -479,7 +479,7 @@ $query.Var.clusters = @(
                 "QueryNcdObjectProtectionStatus",
                 "($clusters: [UUID!]!)",
                 "NcdObjectProtectionStatus",
-                Query.NcdObjectProtectionStatus_ObjectFieldSpec,
+                Query.NcdObjectProtectionStatus,
                 Query.NcdObjectProtectionStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.clusters = @(
@@ -501,7 +501,7 @@ $query.Var.clusters = @(
                 "QueryAllNcdObjectsOverTimeData",
                 "($clusters: [UUID!]!)",
                 "List<NcdObjectsOverTimeData>",
-                Query.AllNcdObjectsOverTimeData_ObjectFieldSpec,
+                Query.AllNcdObjectsOverTimeData,
                 Query.AllNcdObjectsOverTimeDataFieldSpec,
                 @"# REQUIRED
 $query.Var.clusters = @(
@@ -523,7 +523,7 @@ $query.Var.clusters = @(
                 "QueryAllNcdTaskData",
                 "($clusters: [UUID!]!)",
                 "List<NcdTaskData>",
-                Query.AllNcdTaskData_ObjectFieldSpec,
+                Query.AllNcdTaskData,
                 Query.AllNcdTaskDataFieldSpec,
                 @"# REQUIRED
 $query.Var.clusters = @(
@@ -545,7 +545,7 @@ $query.Var.clusters = @(
                 "QueryAllNcdUsageOverTimeData",
                 "($clusters: [UUID!]!)",
                 "List<NcdUsageOverTimeData>",
-                Query.AllNcdUsageOverTimeData_ObjectFieldSpec,
+                Query.AllNcdUsageOverTimeData,
                 Query.AllNcdUsageOverTimeDataFieldSpec,
                 @"# REQUIRED
 $query.Var.clusters = @(
@@ -567,7 +567,7 @@ $query.Var.clusters = @(
                 "QueryNcdVmImageUrl",
                 "($input: VmImageUrlInput!)",
                 "NcdVmImageUrl",
-                Query.NcdVmImageUrl_ObjectFieldSpec,
+                Query.NcdVmImageUrl,
                 Query.NcdVmImageUrlFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

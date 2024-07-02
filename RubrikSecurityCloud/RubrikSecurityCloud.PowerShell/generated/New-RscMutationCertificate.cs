@@ -732,7 +732,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddClusterCertificate",
                 "($input: AddClusterCertificateInput!)",
                 "AddClusterCertificateReply",
-                Mutation.AddClusterCertificate_ObjectFieldSpec,
+                Mutation.AddClusterCertificate,
                 Mutation.AddClusterCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -770,7 +770,7 @@ $query.Var.input = @{
                 "MutationAddGlobalCertificate",
                 "($input: AddGlobalCertificateInput!)",
                 "AddGlobalCertificateReply",
-                Mutation.AddGlobalCertificate_ObjectFieldSpec,
+                Mutation.AddGlobalCertificate,
                 Mutation.AddGlobalCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -810,7 +810,7 @@ $query.Var.input = @{
                 "MutationDeleteCertificate",
                 "($certificateId: Long!)",
                 "System.Boolean",
-                Mutation.DeleteCertificate_ObjectFieldSpec,
+                Mutation.DeleteCertificate,
                 Mutation.DeleteCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.certificateId = $someInt64"
@@ -830,7 +830,7 @@ $query.Var.certificateId = $someInt64"
                 "MutationDeleteCsr",
                 "($input: DeleteCsrInput!)",
                 "System.String",
-                Mutation.DeleteCsr_ObjectFieldSpec,
+                Mutation.DeleteCsr,
                 Mutation.DeleteCsrFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -855,7 +855,7 @@ $query.Var.input = @{
                 "MutationDeleteGlobalCertificate",
                 "($input: DeleteGlobalCertificateInput!)",
                 "DeleteGlobalCertificateReply",
-                Mutation.DeleteGlobalCertificate_ObjectFieldSpec,
+                Mutation.DeleteGlobalCertificate,
                 Mutation.DeleteGlobalCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -898,7 +898,7 @@ $query.Var.input = @{
                 "MutationGenerateCsr",
                 "($name: String!,$hostnames: [String!]!,$organization: String,$organizationUnit: String,$country: String,$state: String,$city: String,$email: String,$surname: String,$userId: String)",
                 "Csr",
-                Mutation.GenerateCsr_ObjectFieldSpec,
+                Mutation.GenerateCsr,
                 Mutation.GenerateCsrFieldSpec,
                 @"# REQUIRED
 $query.Var.name = $someString
@@ -938,7 +938,7 @@ $query.Var.userId = $someString"
                 "MutationMarkAgentSecondaryCertificate",
                 "($input: MarkAgentSecondaryCertificateInput!)",
                 "MarkAgentSecondaryCertificateReply",
-                Mutation.MarkAgentSecondaryCertificate_ObjectFieldSpec,
+                Mutation.MarkAgentSecondaryCertificate,
                 Mutation.MarkAgentSecondaryCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -963,7 +963,7 @@ $query.Var.input = @{
                 "MutationSetSsoCertificate",
                 "($input: SetSsoCertificateInput!)",
                 "System.String",
-                Mutation.SetSsoCertificate_ObjectFieldSpec,
+                Mutation.SetSsoCertificate,
                 Mutation.SetSsoCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -988,7 +988,7 @@ $query.Var.input = @{
                 "MutationSetWebSignedCertificate",
                 "($input: SetWebSignedCertificateInput!)",
                 "AsyncRequestStatus",
-                Mutation.SetWebSignedCertificate_ObjectFieldSpec,
+                Mutation.SetWebSignedCertificate,
                 Mutation.SetWebSignedCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1024,7 +1024,7 @@ $query.Var.input = @{
                 "MutationUpdateCertificate",
                 "($certificateId: Long!,$name: String,$description: String,$certificate: String)",
                 "System.Boolean",
-                Mutation.UpdateCertificate_ObjectFieldSpec,
+                Mutation.UpdateCertificate,
                 Mutation.UpdateCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.certificateId = $someInt64
@@ -1050,7 +1050,7 @@ $query.Var.certificate = $someString"
                 "MutationUpdateGlobalCertificate",
                 "($input: UpdateGlobalCertificateInput!)",
                 "UpdateGlobalCertificateReply",
-                Mutation.UpdateGlobalCertificate_ObjectFieldSpec,
+                Mutation.UpdateGlobalCertificate,
                 Mutation.UpdateGlobalCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1086,7 +1086,7 @@ $query.Var.input = @{
                 "MutationUpdateCertificateHost",
                 "($input: UpdateCertificateHostInput!)",
                 "UpdateCertificateHostReply",
-                Mutation.UpdateCertificateHost_ObjectFieldSpec,
+                Mutation.UpdateCertificateHost,
                 Mutation.UpdateCertificateHostFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

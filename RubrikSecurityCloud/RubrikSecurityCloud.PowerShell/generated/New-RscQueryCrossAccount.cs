@@ -205,7 +205,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAllCrossAccountClusters",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: [GetCrossAccountClustersFilter!],$sortBy: GetCrossAccountClustersSortByField,$sortOrder: SortOrder)",
                 "CrossAccountClusterConnection",
-                Query.AllCrossAccountClusters_ObjectFieldSpec,
+                Query.AllCrossAccountClusters,
                 Query.AllCrossAccountClustersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

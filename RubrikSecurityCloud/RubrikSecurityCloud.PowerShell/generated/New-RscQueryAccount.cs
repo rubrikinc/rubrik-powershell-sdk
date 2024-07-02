@@ -516,7 +516,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryCurrentUser",
                 "",
                 "User",
-                Query.CurrentUser_ObjectFieldSpec,
+                Query.CurrentUser,
                 Query.CurrentUserFieldSpec,
                 @""
             );
@@ -534,7 +534,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryCurrentUserLoginContext",
                 "",
                 "UserLoginContext",
-                Query.CurrentUserLoginContext_ObjectFieldSpec,
+                Query.CurrentUserLoginContext,
                 Query.CurrentUserLoginContextFieldSpec,
                 @""
             );
@@ -552,7 +552,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAllEnabledFeaturesForAccount",
                 "",
                 "AllEnabledFeaturesForAccountReply",
-                Query.AllEnabledFeaturesForAccount_ObjectFieldSpec,
+                Query.AllEnabledFeaturesForAccount,
                 Query.AllEnabledFeaturesForAccountFieldSpec,
                 @""
             );
@@ -570,7 +570,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAccountId",
                 "",
                 "System.String",
-                Query.AccountId_ObjectFieldSpec,
+                Query.AccountId,
                 Query.AccountIdFieldSpec,
                 @""
             );
@@ -589,7 +589,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryLookupAccount",
                 "($input: LookupAccountInput!)",
                 "LookupAccountReply",
-                Query.LookupAccount_ObjectFieldSpec,
+                Query.LookupAccount,
                 Query.LookupAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -611,7 +611,7 @@ $query.Var.input = @{
                 "QueryAllAccountOwners",
                 "",
                 "List<User>",
-                Query.AllAccountOwners_ObjectFieldSpec,
+                Query.AllAccountOwners,
                 Query.AllAccountOwnersFieldSpec,
                 @""
             );
@@ -640,7 +640,7 @@ $query.Var.input = @{
                 "QueryAllAccountProducts",
                 "($nameFilter: [ProductName!]!,$typeFilter: [ProductType!]!,$stateFilter: [ProductState!]!,$startDateArg: DateTime,$endDateArg: DateTime)",
                 "List<AccountProduct>",
-                Query.AllAccountProducts_ObjectFieldSpec,
+                Query.AllAccountProducts,
                 Query.AllAccountProductsFieldSpec,
                 @"# REQUIRED
 $query.Var.nameFilter = @(
@@ -673,7 +673,7 @@ $query.Var.endDateArg = $someDateTime"
                 "QueryAccountSettings",
                 "",
                 "AccountSetting",
-                Query.AccountSettings_ObjectFieldSpec,
+                Query.AccountSettings,
                 Query.AccountSettingsFieldSpec,
                 @""
             );
@@ -700,7 +700,7 @@ $query.Var.endDateArg = $someDateTime"
                 "QueryAllUsersOnAccount",
                 "($first: Int,$after: String,$last: Int,$before: String)",
                 "List<User>",
-                Query.AllUsersOnAccount_ObjectFieldSpec,
+                Query.AllUsersOnAccount,
                 Query.AllUsersOnAccountFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

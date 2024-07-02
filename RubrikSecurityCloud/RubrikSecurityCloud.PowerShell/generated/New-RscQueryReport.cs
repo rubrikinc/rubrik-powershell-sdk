@@ -747,7 +747,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryClusterReportMigrationCount",
                 "($clusterUuid: UUID,$status: [CdmReportMigrationStatus!]!)",
                 "ReportsMigrationCount",
-                Query.ClusterReportMigrationCount_ObjectFieldSpec,
+                Query.ClusterReportMigrationCount,
                 Query.ClusterReportMigrationCountFieldSpec,
                 @"# OPTIONAL
 $query.Var.clusterUuid = $someString
@@ -771,7 +771,7 @@ $query.Var.status = @(
                 "QueryClusterReportMigrationJobStatus",
                 "($clusterUuid: UUID)",
                 "ClusterReportMigrationJobStatus",
-                Query.ClusterReportMigrationJobStatus_ObjectFieldSpec,
+                Query.ClusterReportMigrationJobStatus,
                 Query.ClusterReportMigrationJobStatusFieldSpec,
                 @"# OPTIONAL
 $query.Var.clusterUuid = $someString"
@@ -803,7 +803,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryClusterReportMigrationStatus",
                 "($clusterUuid: UUID,$status: [CdmReportMigrationStatus!]!,$first: Int,$after: String,$last: Int,$before: String)",
                 "ReportMigrationStatusConnection",
-                Query.ClusterReportMigrationStatus_ObjectFieldSpec,
+                Query.ClusterReportMigrationStatus,
                 Query.ClusterReportMigrationStatusFieldSpec,
                 @"# OPTIONAL
 $query.Var.clusterUuid = $someString
@@ -861,7 +861,7 @@ $query.Var.before = $someString"
                 "QueryReportData",
                 "($first: Int,$after: String,$last: Int,$before: String,$dataView: DataViewTypeEnum!,$columns: [String!]!,$filters: [ReportFilterInput!],$groupBy: [String!],$secondaryGroupBy: String,$aggregations: [String!],$sortBy: String,$sortOrder: SortOrder,$timezone: String)",
                 "RowConnection",
-                Query.ReportData_ObjectFieldSpec,
+                Query.ReportData,
                 Query.ReportDataFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -920,7 +920,7 @@ $query.Var.timezone = $someString"
                 "QueryDatabaseLogReportForCluster",
                 "($input: QueryLogReportInput!)",
                 "DbLogReportSummaryListReply",
-                Query.DatabaseLogReportForCluster_ObjectFieldSpec,
+                Query.DatabaseLogReportForCluster,
                 Query.DatabaseLogReportForClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -961,7 +961,7 @@ $query.Var.input = @{
                 "QueryDatabaseLogReportingPropertiesForCluster",
                 "($input: QueryReportPropertiesInput!)",
                 "DbLogReportProperties",
-                Query.DatabaseLogReportingPropertiesForCluster_ObjectFieldSpec,
+                Query.DatabaseLogReportingPropertiesForCluster,
                 Query.DatabaseLogReportingPropertiesForClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -984,7 +984,7 @@ $query.Var.input = @{
                 "QueryScheduledReport",
                 "($id: Int!)",
                 "ScheduledReport",
-                Query.ScheduledReport_ObjectFieldSpec,
+                Query.ScheduledReport,
                 Query.ScheduledReportFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someInt"
@@ -1014,7 +1014,7 @@ $query.Var.id = $someInt"
                 "QueryScheduledReports",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: ScheduledReportFilterInput)",
                 "ScheduledReportConnection",
-                Query.ScheduledReports_ObjectFieldSpec,
+                Query.ScheduledReports,
                 Query.ScheduledReportsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1047,7 +1047,7 @@ $query.Var.filter = @{
                 "QuerySonarReport",
                 "($sonarReportGroupBy: DiscoveryReportGroupBy!,$filter: [String!],$timeFilter: TimeFilterInput)",
                 "SonarReportConnection",
-                Query.SonarReport_ObjectFieldSpec,
+                Query.SonarReport,
                 Query.SonarReportFieldSpec,
                 @"# REQUIRED
 $query.Var.sonarReportGroupBy = $someDiscoveryReportGroupBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryReportGroupBy]) for enum values.
@@ -1104,7 +1104,7 @@ $query.Var.timeFilter = @{
                 "QuerySonarContentReport",
                 "($groupBy: DiscoveryContentReportGroupBy!,$sortBy: DiscoveryContentReportSortBy,$sortOrder: SortOrder,$filters: SonarContentReportFilter,$day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$first: Int,$after: String,$last: Int,$before: String)",
                 "SonarContentReportConnection",
-                Query.SonarContentReport_ObjectFieldSpec,
+                Query.SonarContentReport,
                 Query.SonarContentReportFieldSpec,
                 @"# REQUIRED
 $query.Var.groupBy = $someDiscoveryContentReportGroupBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryContentReportGroupBy]) for enum values.
@@ -1183,7 +1183,7 @@ $query.Var.before = $someString"
                 "QuerySonarReportRow",
                 "($sortBy: DiscoveryReportSortBy,$sortOrder: SortOrder,$filter: [String!],$endTime: String,$first: Int,$after: String,$last: Int,$before: String)",
                 "SonarReportRowConnection",
-                Query.SonarReportRow_ObjectFieldSpec,
+                Query.SonarReportRow,
                 Query.SonarReportRowFieldSpec,
                 @"# OPTIONAL
 $query.Var.sortBy = $someDiscoveryReportSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryReportSortBy]) for enum values.

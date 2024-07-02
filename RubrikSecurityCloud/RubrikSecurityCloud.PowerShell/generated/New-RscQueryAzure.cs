@@ -2683,7 +2683,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAzureAdDirectories",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "AzureAdDirectoryConnection",
-                Query.AzureAdDirectories_ObjectFieldSpec,
+                Query.AzureAdDirectories,
                 Query.AzureAdDirectoriesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2751,7 +2751,7 @@ $query.Var.filter = @(
                 "QueryAzureAdDirectory",
                 "($workloadFid: UUID!)",
                 "AzureAdDirectory",
-                Query.AzureAdDirectory_ObjectFieldSpec,
+                Query.AzureAdDirectory,
                 Query.AzureAdDirectoryFieldSpec,
                 @"# REQUIRED
 $query.Var.workloadFid = $someString"
@@ -2781,7 +2781,7 @@ $query.Var.workloadFid = $someString"
                 "QueryAzureAdObjectsByType",
                 "($first: Int,$after: String,$sortByOption: [AzureAdObjectSearchType!],$sortOrder: SortOrder,$input: AzureAdObjectTypeInput!)",
                 "AzureAdObjectConnection",
-                Query.AzureAdObjectsByType_ObjectFieldSpec,
+                Query.AzureAdObjectsByType,
                 Query.AzureAdObjectsByTypeFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2827,7 +2827,7 @@ $query.Var.input = @{
                 "QueryAllAzureArmTemplatesByFeature",
                 "($input: AzureArmTemplatesByFeatureInput!)",
                 "List<AzureArmTemplateByFeature>",
-                Query.AllAzureArmTemplatesByFeature_ObjectFieldSpec,
+                Query.AllAzureArmTemplatesByFeature,
                 Query.AllAzureArmTemplatesByFeatureFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2869,7 +2869,7 @@ $query.Var.input = @{
                 "QueryAllAzureCdmVersions",
                 "($cdmVersionRequest: AzureCdmVersionReq!)",
                 "List<AzureCdmVersion>",
-                Query.AllAzureCdmVersions_ObjectFieldSpec,
+                Query.AllAzureCdmVersions,
                 Query.AllAzureCdmVersionsFieldSpec,
                 @"# REQUIRED
 $query.Var.cdmVersionRequest = @{
@@ -2896,7 +2896,7 @@ $query.Var.cdmVersionRequest = @{
                 "QueryCheckAzurePersistentStorageSubscriptionCanUnmap",
                 "($cloudAccountId: UUID!,$feature: CloudAccountFeature!,$unmappingValidationType: UnmappingValidationType!)",
                 "CheckAzurePersistentStorageSubscriptionCanUnmapReply",
-                Query.CheckAzurePersistentStorageSubscriptionCanUnmap_ObjectFieldSpec,
+                Query.CheckAzurePersistentStorageSubscriptionCanUnmap,
                 Query.CheckAzurePersistentStorageSubscriptionCanUnmapFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString
@@ -2920,7 +2920,7 @@ $query.Var.unmappingValidationType = $someUnmappingValidationType # Call [Enum]:
                 "QueryAzureCloudAccountDetailsForFeature",
                 "($featureId: UUID!)",
                 "AzureCloudAccountDetailsForFeatureReply",
-                Query.AzureCloudAccountDetailsForFeature_ObjectFieldSpec,
+                Query.AzureCloudAccountDetailsForFeature,
                 Query.AzureCloudAccountDetailsForFeatureFieldSpec,
                 @"# REQUIRED
 $query.Var.featureId = $someString"
@@ -2942,7 +2942,7 @@ $query.Var.featureId = $someString"
                 "QueryAllAzureCloudAccountMissingPermissions",
                 "($sessionId: String!,$subscriptionIds: [UUID!]!,$cloudAccountAction: CloudAccountAction!)",
                 "List<AzureSubscriptionMissingPermissions>",
-                Query.AllAzureCloudAccountMissingPermissions_ObjectFieldSpec,
+                Query.AllAzureCloudAccountMissingPermissions,
                 Query.AllAzureCloudAccountMissingPermissionsFieldSpec,
                 @"# REQUIRED
 $query.Var.sessionId = $someString
@@ -2969,7 +2969,7 @@ $query.Var.cloudAccountAction = $someCloudAccountAction # Call [Enum]::GetValues
                 "QueryAzureCloudAccountPermissionConfig",
                 "($feature: CloudAccountFeature!,$permissionsGroups: [PermissionsGroup!]!)",
                 "AzureCloudAccountPermissionConfigResponse",
-                Query.AzureCloudAccountPermissionConfig_ObjectFieldSpec,
+                Query.AzureCloudAccountPermissionConfig,
                 Query.AzureCloudAccountPermissionConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -2994,7 +2994,7 @@ $query.Var.permissionsGroups = @(
                 "QueryAllAzureCloudAccountSubnetsByRegion",
                 "($cloudAccountId: UUID!,$region: AzureCloudAccountRegion!)",
                 "List<AzureNativeSubnet>",
-                Query.AllAzureCloudAccountSubnetsByRegion_ObjectFieldSpec,
+                Query.AllAzureCloudAccountSubnetsByRegion,
                 Query.AllAzureCloudAccountSubnetsByRegionFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString
@@ -3016,7 +3016,7 @@ $query.Var.region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([Rubri
                 "QueryAzureCloudAccountSubscriptionWithFeatures",
                 "($cloudAccountId: UUID!)",
                 "AzureCloudAccountSubscriptionWithFeatures",
-                Query.AzureCloudAccountSubscriptionWithFeatures_ObjectFieldSpec,
+                Query.AzureCloudAccountSubscriptionWithFeatures,
                 Query.AzureCloudAccountSubscriptionWithFeaturesFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString"
@@ -3038,7 +3038,7 @@ $query.Var.cloudAccountId = $someString"
                 "QueryAllAzureCloudAccountSubscriptionsByFeature",
                 "($feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$permissionsGroupFilters: [FeatureWithPermissionsGroups!])",
                 "List<AzureSubscriptionWithFeaturesType>",
-                Query.AllAzureCloudAccountSubscriptionsByFeature_ObjectFieldSpec,
+                Query.AllAzureCloudAccountSubscriptionsByFeature,
                 Query.AllAzureCloudAccountSubscriptionsByFeatureFieldSpec,
                 @"# REQUIRED
 $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -3083,7 +3083,7 @@ $query.Var.permissionsGroupFilters = @(
                 "QueryAzureCloudAccountTenant",
                 "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
                 "AzureCloudAccountTenant",
-                Query.AzureCloudAccountTenant_ObjectFieldSpec,
+                Query.AzureCloudAccountTenant,
                 Query.AzureCloudAccountTenantFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -3125,7 +3125,7 @@ $query.Var.subscriptionIdsFilter = @(
                 "QueryAzureCloudAccountTenantWithExoConfigs",
                 "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
                 "AzureCloudAccountTenantWithExoConfigs",
-                Query.AzureCloudAccountTenantWithExoConfigs_ObjectFieldSpec,
+                Query.AzureCloudAccountTenantWithExoConfigs,
                 Query.AzureCloudAccountTenantWithExoConfigsFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -3159,7 +3159,7 @@ $query.Var.subscriptionIdsFilter = @(
                 "QueryAllAzureCloudAccountTenants",
                 "($features: [CloudAccountFeature!],$feature: CloudAccountFeature!,$includeSubscriptionDetails: Boolean!)",
                 "List<AzureCloudAccountTenant>",
-                Query.AllAzureCloudAccountTenants_ObjectFieldSpec,
+                Query.AllAzureCloudAccountTenants,
                 Query.AllAzureCloudAccountTenantsFieldSpec,
                 @"# OPTIONAL
 $query.Var.features = @(
@@ -3186,7 +3186,7 @@ $query.Var.includeSubscriptionDetails = $someBoolean"
                 "QueryAllAzureDiskEncryptionSetsByRegion",
                 "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
                 "List<AzureNativeDiskEncryptionSet>",
-                Query.AllAzureDiskEncryptionSetsByRegion_ObjectFieldSpec,
+                Query.AllAzureDiskEncryptionSetsByRegion,
                 Query.AllAzureDiskEncryptionSetsByRegionFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSubscriptionRubrikId = $someString
@@ -3208,7 +3208,7 @@ $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecur
                 "QueryAllAzureEncryptionKeys",
                 "($azureEncryptionKeysInput: AzureEncryptionKeysInput!)",
                 "List<AzureEncryptionKey>",
-                Query.AllAzureEncryptionKeys_ObjectFieldSpec,
+                Query.AllAzureEncryptionKeys,
                 Query.AllAzureEncryptionKeysFieldSpec,
                 @"# REQUIRED
 $query.Var.azureEncryptionKeysInput = @{
@@ -3236,7 +3236,7 @@ $query.Var.azureEncryptionKeysInput = @{
                 "QueryAllAzureExocomputeConfigsInAccount",
                 "($azureExocomputeSearchQuery: String,$cloudAccountIDs: [UUID!])",
                 "List<AzureExocomputeConfigsInAccount>",
-                Query.AllAzureExocomputeConfigsInAccount_ObjectFieldSpec,
+                Query.AllAzureExocomputeConfigsInAccount,
                 Query.AllAzureExocomputeConfigsInAccountFieldSpec,
                 @"# OPTIONAL
 $query.Var.azureExocomputeSearchQuery = $someString
@@ -3260,7 +3260,7 @@ $query.Var.cloudAccountIDs = @(
                 "QueryHasRelicAzureAdSnapshot",
                 "($input: HasRelicAzureAdSnapshotInput!)",
                 "HasRelicAzureAdSnapshotReplyType",
-                Query.HasRelicAzureAdSnapshot_ObjectFieldSpec,
+                Query.HasRelicAzureAdSnapshot,
                 Query.HasRelicAzureAdSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3282,7 +3282,7 @@ $query.Var.input = @{
                 "QueryAllHostedAzureRegions",
                 "",
                 "AzureRegionsResp",
-                Query.AllHostedAzureRegions_ObjectFieldSpec,
+                Query.AllHostedAzureRegions,
                 Query.AllHostedAzureRegionsFieldSpec,
                 @""
             );
@@ -3302,7 +3302,7 @@ $query.Var.input = @{
                 "QueryIsAzureStorageAccountNameAvailable",
                 "($azureSubscriptionRubrikId: UUID!,$storageAccountName: String!)",
                 "System.Boolean",
-                Query.IsAzureStorageAccountNameAvailable_ObjectFieldSpec,
+                Query.IsAzureStorageAccountNameAvailable,
                 Query.IsAzureStorageAccountNameAvailableFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSubscriptionRubrikId = $someString
@@ -3324,7 +3324,7 @@ $query.Var.storageAccountName = $someString"
                 "QueryAllAzureKeyVaultsByRegion",
                 "($azureKeyVaultsInput: AzureKeyVaultsInput!)",
                 "List<AzureKeyVault>",
-                Query.AllAzureKeyVaultsByRegion_ObjectFieldSpec,
+                Query.AllAzureKeyVaultsByRegion,
                 Query.AllAzureKeyVaultsByRegionFieldSpec,
                 @"# REQUIRED
 $query.Var.azureKeyVaultsInput = @{
@@ -3351,7 +3351,7 @@ $query.Var.azureKeyVaultsInput = @{
                 "QueryAllAzureManagedIdentities",
                 "($managedIdentitiesRequest: AzureManagedIdentitiesRequest!)",
                 "List<AzureManagedIdentity>",
-                Query.AllAzureManagedIdentities_ObjectFieldSpec,
+                Query.AllAzureManagedIdentities,
                 Query.AllAzureManagedIdentitiesFieldSpec,
                 @"# REQUIRED
 $query.Var.managedIdentitiesRequest = @{
@@ -3374,7 +3374,7 @@ $query.Var.managedIdentitiesRequest = @{
                 "QueryAllAzureNsgs",
                 "($nsgRequest: AzureNsgRequest!)",
                 "List<System.String>",
-                Query.AllAzureNsgs_ObjectFieldSpec,
+                Query.AllAzureNsgs,
                 Query.AllAzureNsgsFieldSpec,
                 @"# REQUIRED
 $query.Var.nsgRequest = @{
@@ -3400,7 +3400,7 @@ $query.Var.nsgRequest = @{
                 "QueryAzureRegions",
                 "($tenantId: String!,$subscriptionId: UUID!)",
                 "RegionConnection",
-                Query.AzureRegions_ObjectFieldSpec,
+                Query.AzureRegions,
                 Query.AzureRegionsFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -3422,7 +3422,7 @@ $query.Var.subscriptionId = $someString"
                 "QueryAllAzureRegionsWithAzDetails",
                 "($cloudAccountId: String!)",
                 "List<AzureLocationDetailType>",
-                Query.AllAzureRegionsWithAzDetails_ObjectFieldSpec,
+                Query.AllAzureRegionsWithAzDetails,
                 Query.AllAzureRegionsWithAzDetailsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString"
@@ -3444,7 +3444,7 @@ $query.Var.cloudAccountId = $someString"
                 "QueryAllResourceGroupsFromAzure",
                 "($cloudAccountId: UUID!,$azureSubscriptionNativeId: UUID!,$feature: CloudAccountFeature!)",
                 "List<AzureResourceGroup>",
-                Query.AllResourceGroupsFromAzure_ObjectFieldSpec,
+                Query.AllResourceGroupsFromAzure,
                 Query.AllResourceGroupsFromAzureFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString
@@ -3470,7 +3470,7 @@ $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSe
                 "QuerySearchAzureAdSnapshot",
                 "($first: Int,$after: String,$input: SearchAzureAdSnapshotInput!)",
                 "AzureAdObjectConnection",
-                Query.SearchAzureAdSnapshot_ObjectFieldSpec,
+                Query.SearchAzureAdSnapshot,
                 Query.SearchAzureAdSnapshotFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3510,7 +3510,7 @@ $query.Var.input = @{
                 "QueryAzureSqlDatabase",
                 "($azureSqlDatabaseRubrikId: UUID!)",
                 "AzureSqlDatabaseDb",
-                Query.AzureSqlDatabase_ObjectFieldSpec,
+                Query.AzureSqlDatabase,
                 Query.AzureSqlDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSqlDatabaseRubrikId = $someString"
@@ -3538,7 +3538,7 @@ $query.Var.azureSqlDatabaseRubrikId = $someString"
                 "QueryAzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure",
                 "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlDatabaseServerName: String!,$azureSqlDatabaseName: String!)",
                 "AzureNativeSqlDatabasePointInTimeRestoreWindow",
-                Query.AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure_ObjectFieldSpec,
+                Query.AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure,
                 Query.AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzureFieldSpec,
                 @"# REQUIRED
 $query.Var.subscriptionId = $someString
@@ -3564,7 +3564,7 @@ $query.Var.azureSqlDatabaseName = $someString"
                 "QueryAzureSqlDatabaseServer",
                 "($azureSqlDatabaseServerRubrikId: UUID!)",
                 "AzureSqlDatabaseServer",
-                Query.AzureSqlDatabaseServer_ObjectFieldSpec,
+                Query.AzureSqlDatabaseServer,
                 Query.AzureSqlDatabaseServerFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSqlDatabaseServerRubrikId = $someString"
@@ -3592,7 +3592,7 @@ $query.Var.azureSqlDatabaseServerRubrikId = $someString"
                 "QueryAllAzureSqlDatabaseServerElasticPools",
                 "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlDatabaseServerName: String!,$azureSqlDatabaseServerRubrikId: UUID!)",
                 "List<AzureSqlDatabaseServerElasticPool>",
-                Query.AllAzureSqlDatabaseServerElasticPools_ObjectFieldSpec,
+                Query.AllAzureSqlDatabaseServerElasticPools,
                 Query.AllAzureSqlDatabaseServerElasticPoolsFieldSpec,
                 @"# REQUIRED
 $query.Var.subscriptionId = $someString
@@ -3632,7 +3632,7 @@ $query.Var.azureSqlDatabaseServerRubrikId = $someString"
                 "QueryAzureSqlDatabaseServers",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlDatabaseServerSortFields,$sortOrder: SortOrder,$azureSqlDatabaseServerFilters: AzureSqlDatabaseServerFilters)",
                 "AzureSqlDatabaseServerConnection",
-                Query.AzureSqlDatabaseServers_ObjectFieldSpec,
+                Query.AzureSqlDatabaseServers,
                 Query.AzureSqlDatabaseServersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3712,7 +3712,7 @@ $query.Var.azureSqlDatabaseServerFilters = @{
                 "QueryAzureSqlDatabases",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlDatabaseSortFields,$sortOrder: SortOrder,$azureSqlDatabaseFilters: AzureSqlDatabaseFilters)",
                 "AzureSqlDatabaseDbConnection",
-                Query.AzureSqlDatabases_ObjectFieldSpec,
+                Query.AzureSqlDatabases,
                 Query.AzureSqlDatabasesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3804,7 +3804,7 @@ $query.Var.azureSqlDatabaseFilters = @{
                 "QueryAzureSqlManagedInstanceDatabase",
                 "($azureSqlManagedInstanceDatabaseRubrikId: UUID!)",
                 "AzureSqlManagedInstanceDatabase",
-                Query.AzureSqlManagedInstanceDatabase_ObjectFieldSpec,
+                Query.AzureSqlManagedInstanceDatabase,
                 Query.AzureSqlManagedInstanceDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSqlManagedInstanceDatabaseRubrikId = $someString"
@@ -3838,7 +3838,7 @@ $query.Var.azureSqlManagedInstanceDatabaseRubrikId = $someString"
                 "QueryAzureSqlManagedInstanceDatabases",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlManagedInstanceDatabaseSortFields,$sortOrder: SortOrder,$azureSqlManagedInstanceDatabaseFilters: AzureSqlManagedInstanceDatabaseFilters)",
                 "AzureSqlManagedInstanceDatabaseConnection",
-                Query.AzureSqlManagedInstanceDatabases_ObjectFieldSpec,
+                Query.AzureSqlManagedInstanceDatabases,
                 Query.AzureSqlManagedInstanceDatabasesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3924,7 +3924,7 @@ $query.Var.azureSqlManagedInstanceDatabaseFilters = @{
                 "QueryAzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
                 "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlManagedInstanceName: String!,$azureSqlDatabaseName: String!)",
                 "AzureNativeSqlDatabasePointInTimeRestoreWindow",
-                Query.AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure_ObjectFieldSpec,
+                Query.AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure,
                 Query.AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzureFieldSpec,
                 @"# REQUIRED
 $query.Var.subscriptionId = $someString
@@ -3950,7 +3950,7 @@ $query.Var.azureSqlDatabaseName = $someString"
                 "QueryAzureSqlManagedInstanceServer",
                 "($azureSqlManagedInstanceServerRubrikId: UUID!)",
                 "AzureSqlManagedInstanceServer",
-                Query.AzureSqlManagedInstanceServer_ObjectFieldSpec,
+                Query.AzureSqlManagedInstanceServer,
                 Query.AzureSqlManagedInstanceServerFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSqlManagedInstanceServerRubrikId = $someString"
@@ -3984,7 +3984,7 @@ $query.Var.azureSqlManagedInstanceServerRubrikId = $someString"
                 "QueryAzureSqlManagedInstanceServers",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlManagedInstanceServerSortFields,$sortOrder: SortOrder,$azureSqlManagedInstanceServerFilters: AzureSqlManagedInstanceServerFilters)",
                 "AzureSqlManagedInstanceServerConnection",
-                Query.AzureSqlManagedInstanceServers_ObjectFieldSpec,
+                Query.AzureSqlManagedInstanceServers,
                 Query.AzureSqlManagedInstanceServersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -4066,7 +4066,7 @@ $query.Var.azureSqlManagedInstanceServerFilters = @{
                 "QueryAzureStorageAccounts",
                 "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)",
                 "StorageAccountConnection",
-                Query.AzureStorageAccounts_ObjectFieldSpec,
+                Query.AzureStorageAccounts,
                 Query.AzureStorageAccountsFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -4090,7 +4090,7 @@ $query.Var.regionName = $someString"
                 "QueryAllAzureStorageAccountsByRegion",
                 "($input: AzureStorageAccountsByRegionInput!)",
                 "List<AzureStorageAccountCcprovision>",
-                Query.AllAzureStorageAccountsByRegion_ObjectFieldSpec,
+                Query.AllAzureStorageAccountsByRegion,
                 Query.AllAzureStorageAccountsByRegionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4117,7 +4117,7 @@ $query.Var.input = @{
                 "QueryAzureSubnets",
                 "($tenantId: String!,$subscriptionId: UUID!,$vNetId: String!)",
                 "SubnetConnection",
-                Query.AzureSubnets_ObjectFieldSpec,
+                Query.AzureSubnets,
                 Query.AzureSubnetsFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -4142,7 +4142,7 @@ $query.Var.vNetId = $someString"
                 "QueryAllAzureSubscriptionWithExocomputeMappings",
                 "($features: [CloudAccountFeature!],$exocomputeSubscriptionIdsFilter: [UUID!])",
                 "List<AzureSubscriptionWithExocomputeMapping>",
-                Query.AllAzureSubscriptionWithExocomputeMappings_ObjectFieldSpec,
+                Query.AllAzureSubscriptionWithExocomputeMappings,
                 Query.AllAzureSubscriptionWithExocomputeMappingsFieldSpec,
                 @"# OPTIONAL
 $query.Var.features = @(
@@ -4168,7 +4168,7 @@ $query.Var.exocomputeSubscriptionIdsFilter = @(
                 "QueryAzureSubscriptions",
                 "($tenantId: String!)",
                 "AzureSubscriptionConnection",
-                Query.AzureSubscriptions_ObjectFieldSpec,
+                Query.AzureSubscriptions,
                 Query.AzureSubscriptionsFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString"
@@ -4190,7 +4190,7 @@ $query.Var.tenantId = $someString"
                 "QueryAzureVnets",
                 "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)",
                 "VnetConnection",
-                Query.AzureVnets_ObjectFieldSpec,
+                Query.AzureVnets,
                 Query.AzureVnetsFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -4214,7 +4214,7 @@ $query.Var.regionName = $someString"
                 "QueryValidateAzureCloudAccountExocomputeConfigurations",
                 "($input: ValidateAzureCloudAccountExocomputeConfigurationsInput!)",
                 "ValidateAzureSubnetsForCloudAccountExocomputeReply",
-                Query.ValidateAzureCloudAccountExocomputeConfigurations_ObjectFieldSpec,
+                Query.ValidateAzureCloudAccountExocomputeConfigurations,
                 Query.ValidateAzureCloudAccountExocomputeConfigurationsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4252,7 +4252,7 @@ $query.Var.input = @{
                 "QueryValidateCreateAzureClusterInput",
                 "($input: CreateAzureClusterInput!)",
                 "ValidationReply",
-                Query.ValidateCreateAzureClusterInput_ObjectFieldSpec,
+                Query.ValidateCreateAzureClusterInput,
                 Query.ValidateCreateAzureClusterInputFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

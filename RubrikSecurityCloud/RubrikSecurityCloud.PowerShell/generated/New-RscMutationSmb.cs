@@ -355,7 +355,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddAndJoinSmbDomain",
                 "($input: AddAndJoinSmbDomainInput!)",
                 "AddAndJoinSmbDomainReply",
-                Mutation.AddAndJoinSmbDomain_ObjectFieldSpec,
+                Mutation.AddAndJoinSmbDomain,
                 Mutation.AddAndJoinSmbDomainFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -402,7 +402,7 @@ $query.Var.input = @{
                 "MutationDeleteSmbDomain",
                 "($input: DeleteSmbDomainInput!)",
                 "System.String",
-                Mutation.DeleteSmbDomain_ObjectFieldSpec,
+                Mutation.DeleteSmbDomain,
                 Mutation.DeleteSmbDomainFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -425,7 +425,7 @@ $query.Var.input = @{
                 "MutationJoinSmbDomain",
                 "($input: JoinSmbDomainInput!)",
                 "System.String",
-                Mutation.JoinSmbDomain_ObjectFieldSpec,
+                Mutation.JoinSmbDomain,
                 Mutation.JoinSmbDomainFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -467,7 +467,7 @@ $query.Var.input = @{
                 "MutationPutSmbConfiguration",
                 "($input: PutSmbConfigurationInput!)",
                 "PutSmbConfigurationReply",
-                Mutation.PutSmbConfiguration_ObjectFieldSpec,
+                Mutation.PutSmbConfiguration,
                 Mutation.PutSmbConfigurationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

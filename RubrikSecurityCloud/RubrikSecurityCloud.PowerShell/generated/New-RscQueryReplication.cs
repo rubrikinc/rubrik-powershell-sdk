@@ -498,7 +498,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryReplicationIncomingStats",
                 "($input: ReplicationBandwidthIncomingInput!)",
                 "InternalReplicationBandwidthIncomingResponse",
-                Query.ReplicationIncomingStats_ObjectFieldSpec,
+                Query.ReplicationIncomingStats,
                 Query.ReplicationIncomingStatsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -523,7 +523,7 @@ $query.Var.input = @{
                 "QueryReplicationNetworkThrottleBypass",
                 "($input: QueryReplicationTargetInfoInput!)",
                 "ReplicationTargetThrottleBypassSummaryListResponse",
-                Query.ReplicationNetworkThrottleBypass_ObjectFieldSpec,
+                Query.ReplicationNetworkThrottleBypass,
                 Query.ReplicationNetworkThrottleBypassFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -546,7 +546,7 @@ $query.Var.input = @{
                 "QueryReplicationNetworkThrottleBypassById",
                 "($input: QueryByIdReplicationTargetInfoInput!)",
                 "ReplicationNetworkThrottleBypassReply",
-                Query.ReplicationNetworkThrottleBypassById_ObjectFieldSpec,
+                Query.ReplicationNetworkThrottleBypassById,
                 Query.ReplicationNetworkThrottleBypassByIdFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -571,7 +571,7 @@ $query.Var.input = @{
                 "QueryReplicationOutgoingStats",
                 "($input: ReplicationBandwidthOutgoingInput!)",
                 "InternalReplicationBandwidthOutgoingResponse",
-                Query.ReplicationOutgoingStats_ObjectFieldSpec,
+                Query.ReplicationOutgoingStats,
                 Query.ReplicationOutgoingStatsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -610,7 +610,7 @@ $query.Var.input = @{
                 "QueryReplicationPairs",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: ReplicationPairsQuerySortByField,$sortOrder: SortOrder,$filter: ReplicationPairsQueryFilter)",
                 "ReplicationPairConnection",
-                Query.ReplicationPairs_ObjectFieldSpec,
+                Query.ReplicationPairs,
                 Query.ReplicationPairsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -671,7 +671,7 @@ $query.Var.filter = @{
                 "QueryAllValidReplicationSources",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: ListValidReplicationSourcesSortByField,$sortOrder: SortOrder,$isCrossAccount: Boolean)",
                 "ValidReplicationSourceConnection",
-                Query.AllValidReplicationSources_ObjectFieldSpec,
+                Query.AllValidReplicationSources,
                 Query.AllValidReplicationSourcesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -719,7 +719,7 @@ $query.Var.isCrossAccount = $someBoolean"
                 "QueryAllValidReplicationTargets",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: ListValidReplicationTargetsSortByField,$sortOrder: SortOrder,$isCrossAccount: Boolean,$validReplicationTargetFilter: ListValidReplicationTargetFilter)",
                 "ValidReplicationTargetConnection",
-                Query.AllValidReplicationTargets_ObjectFieldSpec,
+                Query.AllValidReplicationTargets,
                 Query.AllValidReplicationTargetsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

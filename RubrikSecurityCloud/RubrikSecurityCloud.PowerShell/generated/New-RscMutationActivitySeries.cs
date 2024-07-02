@@ -333,7 +333,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCancelActivitySeries",
                 "($input: CancelActivitySeriesInput!)",
                 "System.Boolean",
-                Mutation.CancelActivitySeries_ObjectFieldSpec,
+                Mutation.CancelActivitySeries,
                 Mutation.CancelActivitySeriesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -358,7 +358,7 @@ $query.Var.input = @{
                 "MutationDownloadUserActivityCsv",
                 "($input: DownloadUserActivityCsvInput!)",
                 "DownloadCsvReply",
-                Mutation.DownloadUserActivityCsv_ObjectFieldSpec,
+                Mutation.DownloadUserActivityCsv,
                 Mutation.DownloadUserActivityCsvFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -436,7 +436,7 @@ $query.Var.input = @{
                 "MutationDownloadUserFileActivityCsv",
                 "($input: DownloadUserFileActivityCsvInput!)",
                 "DownloadCsvReply",
-                Mutation.DownloadUserFileActivityCsv_ObjectFieldSpec,
+                Mutation.DownloadUserFileActivityCsv,
                 Mutation.DownloadUserFileActivityCsvFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

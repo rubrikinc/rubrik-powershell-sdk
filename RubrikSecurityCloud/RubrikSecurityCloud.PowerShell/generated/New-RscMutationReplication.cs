@@ -480,7 +480,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCreateReplicationPair",
                 "($input: CreateReplicationPairInput!)",
                 "System.String",
-                Mutation.CreateReplicationPair_ObjectFieldSpec,
+                Mutation.CreateReplicationPair,
                 Mutation.CreateReplicationPairFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -530,7 +530,7 @@ $query.Var.input = @{
                 "MutationDeleteReplicationPair",
                 "($input: DeleteReplicationPairInput!)",
                 "System.String",
-                Mutation.DeleteReplicationPair_ObjectFieldSpec,
+                Mutation.DeleteReplicationPair,
                 Mutation.DeleteReplicationPairFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -557,7 +557,7 @@ $query.Var.input = @{
                 "MutationDisableReplicationPause",
                 "($input: DisableReplicationPauseInput!)",
                 "ResponseSuccess",
-                Mutation.DisableReplicationPause_ObjectFieldSpec,
+                Mutation.DisableReplicationPause,
                 Mutation.DisableReplicationPauseFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -589,7 +589,7 @@ $query.Var.input = @{
                 "MutationEnableReplicationPause",
                 "($input: EnablePerLocationPauseInputVariable!)",
                 "ResponseSuccess",
-                Mutation.EnableReplicationPause_ObjectFieldSpec,
+                Mutation.EnableReplicationPause,
                 Mutation.EnableReplicationPauseFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -623,7 +623,7 @@ $query.Var.input = @{
                 "MutationUpdateReplicationNetworkThrottleBypass",
                 "($input: UpdateReplicationNetworkThrottleBypassInput!)",
                 "ResponseSuccess",
-                Mutation.UpdateReplicationNetworkThrottleBypass_ObjectFieldSpec,
+                Mutation.UpdateReplicationNetworkThrottleBypass,
                 Mutation.UpdateReplicationNetworkThrottleBypassFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -653,7 +653,7 @@ $query.Var.input = @{
                 "MutationUpdateReplicationTarget",
                 "($input: UpdateReplicationTargetInput!)",
                 "System.String",
-                Mutation.UpdateReplicationTarget_ObjectFieldSpec,
+                Mutation.UpdateReplicationTarget,
                 Mutation.UpdateReplicationTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

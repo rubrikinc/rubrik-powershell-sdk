@@ -432,7 +432,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryLinuxFileset",
                 "($fid: UUID!)",
                 "LinuxFileset",
-                Query.LinuxFileset_ObjectFieldSpec,
+                Query.LinuxFileset,
                 Query.LinuxFilesetFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -452,7 +452,7 @@ $query.Var.fid = $someString"
                 "QueryFilesetRequestStatus",
                 "($input: GetFilesetAsyncRequestStatusInput!)",
                 "AsyncRequestStatus",
-                Query.FilesetRequestStatus_ObjectFieldSpec,
+                Query.FilesetRequestStatus,
                 Query.FilesetRequestStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -477,7 +477,7 @@ $query.Var.input = @{
                 "QueryShareFileset",
                 "($fid: UUID!)",
                 "ShareFileset",
-                Query.ShareFileset_ObjectFieldSpec,
+                Query.ShareFileset,
                 Query.ShareFilesetFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -497,7 +497,7 @@ $query.Var.fid = $someString"
                 "QueryFilesetTemplate",
                 "($fid: UUID!)",
                 "FilesetTemplate",
-                Query.FilesetTemplate_ObjectFieldSpec,
+                Query.FilesetTemplate,
                 Query.FilesetTemplateFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -529,7 +529,7 @@ $query.Var.fid = $someString"
                 "QueryFilesetTemplates",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$hostRoot: HostRoot!)",
                 "FilesetTemplateConnection",
-                Query.FilesetTemplates_ObjectFieldSpec,
+                Query.FilesetTemplates,
                 Query.FilesetTemplatesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -599,7 +599,7 @@ $query.Var.hostRoot = $someHostRoot # Call [Enum]::GetValues([RubrikSecurityClou
                 "QueryWindowsFileset",
                 "($fid: UUID!)",
                 "WindowsFileset",
-                Query.WindowsFileset_ObjectFieldSpec,
+                Query.WindowsFileset,
                 Query.WindowsFilesetFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"

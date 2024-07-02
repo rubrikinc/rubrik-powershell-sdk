@@ -1535,7 +1535,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryBrowseSnapshotFileConnection",
                 "($first: Int,$after: String,$path: String!,$snapshotFid: UUID!,$searchPrefix: String)",
                 "SnapshotFileConnection",
-                Query.BrowseSnapshotFileConnection_ObjectFieldSpec,
+                Query.BrowseSnapshotFileConnection,
                 Query.BrowseSnapshotFileConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1579,7 +1579,7 @@ $query.Var.searchPrefix = $someString"
                 "QueryAllSnapshotsClosestToPointInTime",
                 "($beforeTime: DateTime,$afterTime: DateTime,$snappableIds: [String!]!,$includeLinked: Boolean,$ignoreActiveWorkloadCheck: Boolean,$excludeQuarantined: Boolean,$excludeAnomalous: Boolean,$getFullDetails: Boolean)",
                 "List<ClosestSnapshotSearchResult>",
-                Query.AllSnapshotsClosestToPointInTime_ObjectFieldSpec,
+                Query.AllSnapshotsClosestToPointInTime,
                 Query.AllSnapshotsClosestToPointInTimeFieldSpec,
                 @"# OPTIONAL
 $query.Var.beforeTime = $someDateTime
@@ -1627,7 +1627,7 @@ $query.Var.getFullDetails = $someBoolean"
                 "QuerySnapshotEmailSearch",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$orgId: UUID!,$searchFilter: SearchFilter)",
                 "O365ExchangeObjectConnection",
-                Query.SnapshotEmailSearch_ObjectFieldSpec,
+                Query.SnapshotEmailSearch,
                 Query.SnapshotEmailSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1714,7 +1714,7 @@ $query.Var.searchFilter = @{
                 "QuerySnapshotEventSearch",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$orgId: UUID!,$calendarSearchFilter: CalendarSearchFilter)",
                 "O365ExchangeObjectConnection",
-                Query.SnapshotEventSearch_ObjectFieldSpec,
+                Query.SnapshotEventSearch,
                 Query.SnapshotEventSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1811,7 +1811,7 @@ $query.Var.calendarSearchFilter = @{
                 "QuerySnapshotFilesDelta",
                 "($first: Int,$after: String,$path: String!,$snapshotFid: UUID!,$filter: SnapshotDeltaFilterInput,$searchPrefix: String,$quarantineFilters: [QuarantineFilter!],$workloadFieldsArg: WorkloadFieldsInput)",
                 "SnapshotFileDeltaConnection",
-                Query.SnapshotFilesDelta_ObjectFieldSpec,
+                Query.SnapshotFilesDelta,
                 Query.SnapshotFilesDeltaFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1890,7 +1890,7 @@ $query.Var.workloadFieldsArg = @{
                 "QuerySnapshotFilesDeltaV2",
                 "($first: Int,$after: String,$path: String!,$snapshotFid: UUID!,$filter: SnapshotDeltaFilterInput,$searchPrefix: String,$quarantineFilters: [QuarantineFilter!],$workloadFieldsArg: WorkloadFieldsInput)",
                 "SnapshotFileDeltaV2Connection",
-                Query.SnapshotFilesDeltaV2_ObjectFieldSpec,
+                Query.SnapshotFilesDeltaV2,
                 Query.SnapshotFilesDeltaV2FieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1954,7 +1954,7 @@ $query.Var.workloadFieldsArg = @{
                 "QueryFilesetSnapshot",
                 "($id: String!,$verbose: Boolean)",
                 "FilesetSnapshotDetail",
-                Query.FilesetSnapshot_ObjectFieldSpec,
+                Query.FilesetSnapshot,
                 Query.FilesetSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString
@@ -1984,7 +1984,7 @@ $query.Var.verbose = $someBoolean"
                 "QueryFilesetSnapshotFiles",
                 "($id: String!,$limit: Int,$offset: Int,$path: String!)",
                 "BrowseResponseListResponse",
-                Query.FilesetSnapshotFiles_ObjectFieldSpec,
+                Query.FilesetSnapshotFiles,
                 Query.FilesetSnapshotFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString
@@ -2020,7 +2020,7 @@ $query.Var.path = $someString"
                 "QueryLegalHoldSnapshotsForSnappable",
                 "($first: Int,$after: String,$last: Int,$before: String,$input: LegalHoldSnapshotsForSnappableInput!)",
                 "LegalHoldSnapshotDetailConnection",
-                Query.LegalHoldSnapshotsForSnappable_ObjectFieldSpec,
+                Query.LegalHoldSnapshotsForSnappable,
                 Query.LegalHoldSnapshotsForSnappableFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2097,7 +2097,7 @@ $query.Var.input = @{
                 "QuerySnapshotOnedriveSearch",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$orgId: UUID!,$onedriveSearchFilter: OnedriveSearchFilter)",
                 "O365OnedriveObjectConnection",
-                Query.SnapshotOnedriveSearch_ObjectFieldSpec,
+                Query.SnapshotOnedriveSearch,
                 Query.SnapshotOnedriveSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2181,7 +2181,7 @@ $query.Var.onedriveSearchFilter = @{
                 "QueryPolarisSnapshot",
                 "($snapshotFid: UUID!)",
                 "PolarisSnapshot",
-                Query.PolarisSnapshot_ObjectFieldSpec,
+                Query.PolarisSnapshot,
                 Query.PolarisSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotFid = $someString"
@@ -2203,7 +2203,7 @@ $query.Var.snapshotFid = $someString"
                 "QueryAllSnapshotPvcs",
                 "($snapshotId: String!,$snappableId: UUID!,$isReplica: Boolean!)",
                 "List<PvcInformation>",
-                Query.AllSnapshotPvcs_ObjectFieldSpec,
+                Query.AllSnapshotPvcs,
                 Query.AllSnapshotPvcsFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotId = $someString
@@ -2227,7 +2227,7 @@ $query.Var.isReplica = $someBoolean"
                 "QueryAllQuarantinedDetailsForSnapshots",
                 "($snapshotIds: [String!]!)",
                 "List<QuarantineSpec>",
-                Query.AllQuarantinedDetailsForSnapshots_ObjectFieldSpec,
+                Query.AllQuarantinedDetailsForSnapshots,
                 Query.AllQuarantinedDetailsForSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotIds = @(
@@ -2251,7 +2251,7 @@ $query.Var.snapshotIds = @(
                 "QuerySnapshotResults",
                 "($snappableFid: String!,$startTimeMs: Long!,$endTimeMs: Long!)",
                 "SnapshotResultConnection",
-                Query.SnapshotResults_ObjectFieldSpec,
+                Query.SnapshotResults,
                 Query.SnapshotResultsFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString
@@ -2295,7 +2295,7 @@ $query.Var.endTimeMs = $someInt64"
                 "QuerySnapshotOfAsnappableConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean)",
                 "GenericSnapshotConnection",
-                Query.SnapshotOfAsnappableConnection_ObjectFieldSpec,
+                Query.SnapshotOfAsnappableConnection,
                 Query.SnapshotOfAsnappableConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2381,7 +2381,7 @@ $query.Var.ignoreActiveWorkloadCheck = $someBoolean"
                 "QuerySnapshotOfSnappablesConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$snappableIds: [String!]!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean)",
                 "GenericSnapshotConnection",
-                Query.SnapshotOfSnappablesConnection_ObjectFieldSpec,
+                Query.SnapshotOfSnappablesConnection,
                 Query.SnapshotOfSnappablesConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2459,7 +2459,7 @@ $query.Var.ignoreActiveWorkloadCheck = $someBoolean"
                 "QuerySnappablesWithLegalHoldSnapshotsSummary",
                 "($first: Int,$after: String,$last: Int,$before: String,$input: SnappablesWithLegalHoldSnapshotsInput!)",
                 "LegalHoldSnappableDetailConnection",
-                Query.SnappablesWithLegalHoldSnapshotsSummary_ObjectFieldSpec,
+                Query.SnappablesWithLegalHoldSnapshotsSummary,
                 Query.SnappablesWithLegalHoldSnapshotsSummaryFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2523,7 +2523,7 @@ $query.Var.input = @{
                 "QuerySnapshot",
                 "($snapshotFid: UUID!,$clusterUuid: UUID)",
                 "CdmSnapshot",
-                Query.Snapshot_ObjectFieldSpec,
+                Query.Snapshot,
                 Query.SnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotFid = $someString
@@ -2555,7 +2555,7 @@ $query.Var.clusterUuid = $someString"
                 "QuerySnapshotsForUnmanagedObject",
                 "($first: Int,$after: String,$last: Int,$before: String,$input: QueryUnmanagedObjectSnapshotsV1Input!)",
                 "SnapshotSummaryConnection",
-                Query.SnapshotsForUnmanagedObject_ObjectFieldSpec,
+                Query.SnapshotsForUnmanagedObject,
                 Query.SnapshotsForUnmanagedObjectFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2604,7 +2604,7 @@ $query.Var.input = @{
                 "QueryVappSnapshotInstantRecoveryOptions",
                 "($input: VappSnapshotInstantRecoveryOptionsInput!)",
                 "VappInstantRecoveryOptions",
-                Query.VappSnapshotInstantRecoveryOptions_ObjectFieldSpec,
+                Query.VappSnapshotInstantRecoveryOptions,
                 Query.VappSnapshotInstantRecoveryOptionsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2627,7 +2627,7 @@ $query.Var.input = @{
                 "QueryVappTemplateSnapshotExportOptions",
                 "($input: VappTemplateSnapshotExportOptionsInput!)",
                 "VappTemplateExportOptionsUnion",
-                Query.VappTemplateSnapshotExportOptions_ObjectFieldSpec,
+                Query.VappTemplateSnapshotExportOptions,
                 Query.VappTemplateSnapshotExportOptionsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
