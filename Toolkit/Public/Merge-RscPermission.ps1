@@ -33,12 +33,14 @@ function Merge-RscPermission
     )
     Process {
         $operationIndex = $Role.permissions.findindex({ param($item) $item.Operation -eq $Permission.operation})
+        Write-Verbose "Operation Index: $operationIndex"
 
         # If the permission Operation already exists in the role, then just add the additional Object Ids, otherwise add the new operation.
         if ($operationIndex -ne -1) {
-            $roleObjectTypeIndex = $Role.permissions[$operationIndex].ObjectsForHierarchyTypes.findIndex({ param($item) $item.Operation -eq "ALL_SUB_HIERARCHY_TYPE"})
+            $roleObjectTypeIndex = $Role.permissions[$operationIndex].ObjectsForHierarchyTypes.findIndex({ param($item) $item.SnappableType -eq "ALL_SUB_HIERARCHY_TYPE"})
+            Write-Verbose "Role Object Type Index (All Sub Hierarchy): $roleObjectTypeIndex"
             if ($roleObjectTypeIndex -ne -1) {
-                $Role.permissions[$operationIndex].ObjectIdsForHierarchyType[$roleObjectTypeIndex].ObjectIds += $permission.ObjectsForHierarchyTypes[$permission.ObjectsForHierarchyTypes.findIndex({ param($item) $item.Operation -eq "ALL_SUB_HIERARCHY_TYPE"})].ObjectIds
+                $Role.permissions[$operationIndex].ObjectsForHierarchyTypes[$roleObjectTypeIndex].ObjectIds += $permission.ObjectsForHierarchyTypes[$permission.ObjectsForHierarchyTypes.findIndex({ param($item) $item.SnappableType -eq "ALL_SUB_HIERARCHY_TYPE"})].ObjectIds
             }
         }
         else {
