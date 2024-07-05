@@ -9,6 +9,8 @@ using RubrikSecurityCloud;
 using System.Reflection;
 using System.Linq;
 using System.Globalization;
+using RubrikSecurityCloud.Types;
+using System.Collections;
 
 namespace RubrikSecurityCloud
 {
@@ -396,6 +398,28 @@ namespace RubrikSecurityCloud
 
             _FlattenFieldCache[typeName] = fields;
             return fields;
+        }
+        
+        public static string GetObjFieldSpec(object obj, FieldSpecConfig? conf = null)
+        {
+            // If obj implements IFieldSpec, use AsFieldSpec method
+            if (obj is IFieldSpec fieldSpec)
+            {
+                return fieldSpec.AsFieldSpec(conf);
+            }
+
+            // If obj is a collection, recurse on the first element
+            if (obj is IEnumerable enumerable)
+            {
+                var enumerator = enumerable.GetEnumerator();
+                if (enumerator.MoveNext())
+                {
+                    return GetObjFieldSpec(enumerator.Current, conf);
+                }
+            }
+
+            // Fallback to ToString (for simple types like int, string, etc.)
+            return obj.ToString();
         }
     }
 }
