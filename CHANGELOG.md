@@ -1,37 +1,50 @@
 # Changelog
 
+## Version 1.7
+
+Fixes:
+
+- SDK dependencies updated because of vulnerabilities
+  (System.IdentityModel.Tokens.Jwt 6.22.1 -> 7.6.2,
+   System.Runtime.CompilerServices.Unsafe 4.5.3 -> 6.0.0)
+
 ## Version 1.6
 
 New Features:
- - Get-RscOrganization cmdlet
+
+- Get-RscOrganization cmdlet
 
 Fixes:
- - Get-RscPermission cmdlet parameters
+
+- Get-RscPermission cmdlet parameters
 
 ## Version 1.5
 
 New Features:
-  - Get-RscWorkload cmdlet - Retrieves information about any supported workload type, with various filtering capabilities.
-  - Get-RscVmwareVm - Added -Relic switch. Use -Relic:$false to filter out Relics. -Relic will return only Relics. No usage of -Relic will return all (default operation). -Name parameter is now position 0, so you don't have to specify -Name.
-  - Get-RscNutanixVm - New cmdlet to get Nutanix VMs
-  - Register-RscRubrikBackupService - New cmdlet to register RBS on VMs
-  - Get-RscRole - Gets list of RSC Roles
-  - Get-RscPermission - Gets list of RSC Permissions from Role
-  - New-RscPermission - Creates new RSC Permission object
-  - Merge-RscPermission - Merges an RSC Permission object into a Role object
-  - Set-RscRole - Updates a Role in RSC with a Role object
-  - New-RscSla - Now accepts -DailySchedule as a parameter
+
+- Get-RscWorkload cmdlet - Retrieves information about any supported workload type, with various filtering capabilities.
+- Get-RscVmwareVm - Added -Relic switch. Use -Relic:$false to filter out Relics. -Relic will return only Relics. No usage of -Relic will return all (default operation). -Name parameter is now position 0, so you don't have to specify -Name.
+- Get-RscNutanixVm - New cmdlet to get Nutanix VMs
+- Register-RscRubrikBackupService - New cmdlet to register RBS on VMs
+- Get-RscRole - Gets list of RSC Roles
+- Get-RscPermission - Gets list of RSC Permissions from Role
+- New-RscPermission - Creates new RSC Permission object
+- Merge-RscPermission - Merges an RSC Permission object into a Role object
+- Set-RscRole - Updates a Role in RSC with a Role object
+- New-RscSla - Now accepts -DailySchedule as a parameter
 
 Fixes:
-  - Issue [#112](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/112)
+
+- Issue [#112](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/112)
 
 Breaking Changes:
 
- - Removed legacy Get-RscVsphereVm CS cmdlet. Please use Get-RscVmwareVm.
+- Removed legacy Get-RscVsphereVm CS cmdlet. Please use Get-RscVmwareVm.
 
 ## Version 1.4
 
 New Features:
+
 - Set-RscNasShare and Set-RscNasSystem for updating NAS shares and systems.
 - Remove-RscNasShare and Remove-RscNasSystem for removing NAS shares and systems.
 - Get-RscNasSystem for getting details of NAS systems.
@@ -39,10 +52,12 @@ New Features:
 - Schema Update
 
 Fixes:
+
 - Issue [#86](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/86)
 - Issue [#96](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/96)
 
 Breaking Changes:
+
 - Get-RscNasShare - NasShareId parameter has been renamed to Id.
 - Get-RscNasShare no longer accepts NasSystemId. Pass a NAS system type obtained from Get-RscNasSystem to retrieve details of all NAS shares on a NAS system.
 - New-RscNasShare - NasSourceId parameter has been renamed to NasSystemId.
@@ -54,6 +69,7 @@ Schema Update
 ## Version 1.2
 
 Fixes:
+
 - Get-RscSnapshot - Fixed permissions issue.
 - New-RscMutationVsphere -Operation CreateAdvancedTag - Select fields by default.
 
@@ -64,6 +80,7 @@ New Features:
 - New-RscNasShare cmdlet (and its companion New-RscNasShareInput cmdlet to build the input arguments).
 
 Fixes:
+
 - Fix to Get-RscMssqlInstance to address Issue #79
 - Fix to Get-RscMssqlInstance to address Issue #73
 - Fix to Get-RscMssqlDatabase to address Issue #75
@@ -82,9 +99,11 @@ Breaking Changes:
 ## Version 1.0
 
 New Features:
+
 - Set-RscMssqlAvailabilityGroup - Allows for assigning an SLA to an AG
 
 Fixes:
+
 - Set-RscMssqlDatabase - Fixed issue when setting values for database properties. 
 - Get-RscMssqlLogShipping - Fixed issue where RscCluster was always required. Now it is only required when supplying other values. 
 - Set-RscMssqlInstance - Fixed help text.
