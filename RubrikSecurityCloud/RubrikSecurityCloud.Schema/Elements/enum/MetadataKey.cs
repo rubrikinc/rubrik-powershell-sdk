@@ -21,6 +21,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_LINK_ID")]
         CLUSTER_LINK_ID,
 
+        [EnumMember(Value = "HIDE_CHART_LEGEND")]
+        HIDE_CHART_LEGEND,
+
+        [EnumMember(Value = "HIDE_CHART_LEGEND_NUMBER")]
+        HIDE_CHART_LEGEND_NUMBER,
+
         [EnumMember(Value = "METADATA_KEY_UNSPECIFIED")]
         METADATA_KEY_UNSPECIFIED,
 

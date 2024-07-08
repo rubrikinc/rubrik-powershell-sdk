@@ -1,4 +1,4 @@
-// ReplicationPairInput.cs
+// ProtectionStatusFilter.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,25 +13,18 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region ReplicationPairInput
+    #region ProtectionStatusFilter
 
-    public class ReplicationPairInput: IInput
+    public class ProtectionStatusFilter: IInput
     {
         #region members
 
-        //      C# -> System.String? SourceClusterUuid
-        // GraphQL -> sourceClusterUuid: UUID! (scalar)
+        //      C# -> List<System.String>? ProtectionStatuses
+        // GraphQL -> protectionStatuses: [String!]! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("sourceClusterUuid")]
-        public System.String? SourceClusterUuid { get; set; }
-
-        //      C# -> System.String? TargetClusterUuid
-        // GraphQL -> targetClusterUuid: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("targetClusterUuid")]
-        public System.String? TargetClusterUuid { get; set; }
+        [JsonProperty("protectionStatuses")]
+        public List<System.String>? ProtectionStatuses { get; set; }
 
 
         #endregion
@@ -59,7 +52,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class ReplicationPairInput
+    } // class ProtectionStatusFilter
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("feature")]
         public CloudAccountFeature? Feature { get; set; }
 
+        //      C# -> List<PermissionsGroup>? PermissionsGroups
+        // GraphQL -> permissionsGroups: [PermissionsGroup!]! (enum)
+        [JsonProperty("permissionsGroups")]
+        public List<PermissionsGroup>? PermissionsGroups { get; set; }
+
         //      C# -> List<AzureCloudAccountRegion>? Regions
         // GraphQL -> regions: [AzureCloudAccountRegion!]! (enum)
         [JsonProperty("regions")]
@@ -76,6 +81,7 @@ namespace RubrikSecurityCloud.Types
 
     public AzureCloudAccountFeatureDetail Set(
         CloudAccountFeature? Feature = null,
+        List<PermissionsGroup>? PermissionsGroups = null,
         List<AzureCloudAccountRegion>? Regions = null,
         CloudAccountStatus? Status = null,
         System.String? CustomerFeatureId = null,
@@ -88,6 +94,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Feature != null ) {
             this.Feature = Feature;
+        }
+        if ( PermissionsGroups != null ) {
+            this.PermissionsGroups = PermissionsGroups;
         }
         if ( Regions != null ) {
             this.Regions = Regions;
@@ -134,6 +143,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "feature\n" ;
             } else {
                 s += ind + "feature\n" ;
+            }
+        }
+        //      C# -> List<PermissionsGroup>? PermissionsGroups
+        // GraphQL -> permissionsGroups: [PermissionsGroup!]! (enum)
+        if (this.PermissionsGroups != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "permissionsGroups\n" ;
+            } else {
+                s += ind + "permissionsGroups\n" ;
             }
         }
         //      C# -> List<AzureCloudAccountRegion>? Regions
@@ -246,6 +264,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Feature != null && ec.Excludes("feature",true))
         {
             this.Feature = null;
+        }
+        //      C# -> List<PermissionsGroup>? PermissionsGroups
+        // GraphQL -> permissionsGroups: [PermissionsGroup!]! (enum)
+        if (ec.Includes("permissionsGroups",true))
+        {
+            if(this.PermissionsGroups == null) {
+
+                this.PermissionsGroups = new List<PermissionsGroup>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PermissionsGroups != null && ec.Excludes("permissionsGroups",true))
+        {
+            this.PermissionsGroups = null;
         }
         //      C# -> List<AzureCloudAccountRegion>? Regions
         // GraphQL -> regions: [AzureCloudAccountRegion!]! (enum)

@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20240624-26" ;
+        public static string GraphqlSchemaVersion = "v20240701-23" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -1644,8 +1644,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharepointDrive,
             O365SharePointDrive,
+            O365SharepointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -1838,6 +1838,7 @@ namespace RubrikSecurityCloud.Types
             ProcessedRansomwareInvestigationWorkloadCountReply,
             ProductDocumentation,
             ProductTypeInfo,
+            PropertyExtension,
             ProtectedObjects,
             ProtectedObjectsConnection,
             ProtectedObjectsEdge,
@@ -3641,6 +3642,7 @@ namespace RubrikSecurityCloud.Types
             PrismElementCdmTuple,
             PrivateContainerRegistryInput,
             PromoteReaderTargetInput,
+            ProtectionStatusFilter,
             ProxyConfigInput,
             ProxySettingsInput,
             PutSmbConfigurationInput,
@@ -3782,6 +3784,7 @@ namespace RubrikSecurityCloud.Types
             SelfServicePermissionInput,
             SendPdfReportInput,
             SendScheduledReportAsyncInput,
+            SensitivityStatusFilter,
             ServiceNowItsmIntegrationConfigInput,
             SetAnalyzerRisksInput,
             SetAzureCloudAccountCustomerAppCredentialsInput,
@@ -3920,6 +3923,7 @@ namespace RubrikSecurityCloud.Types
             TriggerCloudComputeConnectivityCheckInput,
             TriggerExocomputeHealthCheckInput,
             TriggerRansomwareDetectionInput,
+            UnaccessedFilter,
             UnconfigureSapHanaRestoreInput,
             UnidirectionalReplicationSpecInput,
             UninstallIoFilterInput,
@@ -4542,7 +4546,6 @@ namespace RubrikSecurityCloud.Types
             getGroupCountByUpgradeJobStatus,
             getGroupCountByVersionStatus,
             getKorgTaskchainStatus,
-            getPermissions,
             getRolesByIds,
             getUserDownloads,
             globalCertificate,
@@ -6376,7 +6379,9 @@ namespace RubrikSecurityCloud.Types
             TimeGranularity,
             TimeUnitEnum,
             TprReqStatus,
+            TprRule,
             TransportLayerProtocol,
+            Type,
             UnlockMethod,
             UnmanagedObjectAvailabilityFilter,
             UnmanagedObjectsSortType,
@@ -8930,7 +8935,6 @@ namespace RubrikSecurityCloud.Types
             getHealthMonitorPolicyStatus,
             getKorgTaskchainStatus,
             getPendingSlaAssignments,
-            getPermissions,
             getRolesByIds,
             getUserDownloads,
             globalCertificate,
@@ -15745,14 +15749,6 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationSla",
                         cmdletSwitchName: "GetPendingAssignments",
                         gqlRootFieldName: "getPendingSlaAssignments"
-                    )
-                },
-                {
-                    GqlRootFieldName.getPermissions,
-                    new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "GetPermissions",
-                        gqlRootFieldName: "getPermissions"
                     )
                 },
                 {
@@ -25071,10 +25067,6 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.getPendingSlaAssignments
                 },
                 {
-                    "New-RscQueryMisc -Op GetPermissions",
-                    GqlRootFieldName.getPermissions
-                },
-                {
                     "New-RscQueryMisc -Op GetRolesByIds",
                     GqlRootFieldName.getRolesByIds
                 },
@@ -32447,10 +32439,6 @@ namespace RubrikSecurityCloud.Types
                         "allAwsPermissionPolicies",
                     }
                 },
-                {   "[Permission]", new List<string> {
-                        "getPermissions",
-                    }
-                },
                 {   "[PolicySummary]", new List<string> {
                         "allTopRiskPolicySummaries",
                     }
@@ -33178,6 +33166,8 @@ namespace RubrikSecurityCloud.Types
                         "assignRetentionSLAToSnappables",
                         "assignSlasForSnappableHierarchies",
                         "awsNativeRdsExportDefaults",
+                        "awsNativeRdsInstance",
+                        "awsNativeRdsInstances",
                         "awsNativeS3Bucket",
                         "azureO365CheckNetworkSubnet",
                         "azureO365GetNetworkSubnetUnusedAddr",
@@ -36620,7 +36610,6 @@ namespace RubrikSecurityCloud.Types
                         "getCdmReleaseDetailsForVersionFromSupportPortal",
                         "getCdmReleaseDetailsFromSupportPortal",
                         "getKorgTaskchainStatus",
-                        "getPermissions",
                         "getUserDownloads",
                         "globalCertificate",
                         "globalCertificates",
@@ -37713,6 +37702,7 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {   "UserTimeRangeInput", new List<string> {
+                        "policyObjs",
                         "userActivities",
                     }
                 },
@@ -38227,6 +38217,14 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "[PermissionsGroup]", new List<string> {
                         "azureCloudAccountPermissionConfig",
+                    }
+                },
+                {   "[PlatformCategory]", new List<string> {
+                        "policyObjs",
+                    }
+                },
+                {   "[Platform]", new List<string> {
+                        "policyObjs",
                     }
                 },
                 {   "[ProductName]", new List<string> {
@@ -39932,7 +39930,6 @@ namespace RubrikSecurityCloud.Types
                 { "allOptionGroupsByRegionFromAws", "[OptionGroup]"},
                 { "allOrgsByIds", "[Org]"},
                 { "allAwsPermissionPolicies", "[PermissionPolicy]"},
-                { "getPermissions", "[Permission]"},
                 { "allTopRiskPolicySummaries", "[PolicySummary]"},
                 { "allSnapshotPvcs", "[PvcInformation]"},
                 { "allQuarantinedDetailsForSnapshots", "[QuarantineSpec]"},
@@ -41204,7 +41201,6 @@ namespace RubrikSecurityCloud.Types
                     "GetGroupCountByUpgradeJobStatus",
                     "GetGroupCountByVersionStatus",
                     "GetKorgTaskchainStatus",
-                    "GetPermissions",
                     "GetRolesByIds",
                     "GetUserDownloads",
                     "GlobalFileSearch",

@@ -180,6 +180,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UPGRADE")]
         UPGRADE,
 
+        [EnumMember(Value = "USER_INTELLIGENCE")]
+        USER_INTELLIGENCE,
+
         [EnumMember(Value = "VCD")]
         VCD,
 

@@ -11,6 +11,12 @@ Filters for list of AWS RDS instances.
   - Filter by VPC.
 - relicFilter: RelicFilter
   - Filter by relic status.
+- unaccessedFilter: UnaccessedFilter
+  - Filter by unaccessed status.
+- sensitivityStatusFilter: SensitivityStatusFilter
+  - Filter by sensitivity status.
+- protectionStatusFilter: ProtectionStatusFilter
+  - Filter by protection status.
 - tagFilter: AwsNativeTagFilter
   - Filter by tags.
 - regionFilter: AwsNativeRegionFilter

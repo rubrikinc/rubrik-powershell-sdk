@@ -45,6 +45,8 @@
   - Specifies the data type level results.
 - assetMetadata: AssetMetadata
   - Specifies the metadata of the asset.
+- objectType: DataGovObjectType
+  - Specifies the object type of the asset.
 - id: System.String
 - folderChildConnection: FileResultConnection
 - fileResultConnection: FileResultConnection

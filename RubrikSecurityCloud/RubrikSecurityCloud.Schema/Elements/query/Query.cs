@@ -4080,7 +4080,7 @@ namespace RubrikSecurityCloud.Types
         public static string AwsNativeRdsInstance(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nrdsInstanceRubrikId: $rdsInstanceRubrikId\n)";
+            string args = "\n(\nrdsInstanceRubrikId: $rdsInstanceRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeRdsInstance" + args + "\n{\n" + fs + "}\n";
         }
         public static object AwsNativeRdsInstanceFieldSpec(ExplorationContext? ec=null)
@@ -4098,7 +4098,7 @@ namespace RubrikSecurityCloud.Types
         public static string AwsNativeRdsInstances(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nrdsInstanceFilters: $rdsInstanceFilters\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nrdsInstanceFilters: $rdsInstanceFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeRdsInstances" + args + "\n{\n" + fs + "}\n";
         }
         public static object AwsNativeRdsInstancesFieldSpec(ExplorationContext? ec=null)
@@ -7419,24 +7419,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new GetTaskchainStatusReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> List<Permission>? GetPermissions
-        // GraphQL -> getPermissions: [Permission!]! (type)
-        public static string GetPermissions(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nroleId: $roleId\n)";
-            return "getPermissions" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object GetPermissionsFieldSpec(ExplorationContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new ExplorationContext();
-            }
-            var fieldSpecObj = new List<Permission>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -11586,7 +11568,7 @@ namespace RubrikSecurityCloud.Types
         public static string PolicyObjs(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nobjectIdsFilter: $objectIdsFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nobjectIdsFilter: $objectIdsFilter\nplatformFilter: $platformFilter\nplatformCategoryFilter: $platformCategoryFilter\ncloudAccountIdsFilter: $cloudAccountIdsFilter\nresourceGroupsFilter: $resourceGroupsFilter\nregionsFilter: $regionsFilter\ndataTypeIdsFilter: $dataTypeIdsFilter\nfirstSeenTimeRange: $firstSeenTimeRange\nlastAccessTimeRange: $lastAccessTimeRange\ncreationTimeRange: $creationTimeRange\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "policyObjs" + args + "\n{\n" + fs + "}\n";
         }
         public static object PolicyObjsFieldSpec(ExplorationContext? ec=null)

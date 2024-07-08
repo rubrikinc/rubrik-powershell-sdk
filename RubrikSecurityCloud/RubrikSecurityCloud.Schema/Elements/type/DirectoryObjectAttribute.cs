@@ -30,10 +30,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
-        //      C# -> List<System.String>? SubProperty
-        // GraphQL -> subProperty: [String!]! (scalar)
+        //      C# -> List<PropertyExtension>? SubProperty
+        // GraphQL -> subProperty: [PropertyExtension!]! (type)
         [JsonProperty("subProperty")]
-        public List<System.String>? SubProperty { get; set; }
+        public List<PropertyExtension>? SubProperty { get; set; }
 
 
         #endregion
@@ -47,7 +47,7 @@ namespace RubrikSecurityCloud.Types
     public DirectoryObjectAttribute Set(
         System.String? DisplayName = null,
         System.String? Id = null,
-        List<System.String>? SubProperty = null
+        List<PropertyExtension>? SubProperty = null
     ) 
     {
         if ( DisplayName != null ) {
@@ -91,13 +91,16 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
-        //      C# -> List<System.String>? SubProperty
-        // GraphQL -> subProperty: [String!]! (scalar)
+        //      C# -> List<PropertyExtension>? SubProperty
+        // GraphQL -> subProperty: [PropertyExtension!]! (type)
         if (this.SubProperty != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "subProperty\n" ;
-            } else {
-                s += ind + "subProperty\n" ;
+            var fspec = this.SubProperty.AsFieldSpec(conf.Child("subProperty"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "subProperty" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -141,20 +144,22 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
-        //      C# -> List<System.String>? SubProperty
-        // GraphQL -> subProperty: [String!]! (scalar)
-        if (ec.Includes("subProperty",true))
+        //      C# -> List<PropertyExtension>? SubProperty
+        // GraphQL -> subProperty: [PropertyExtension!]! (type)
+        if (ec.Includes("subProperty",false))
         {
             if(this.SubProperty == null) {
 
-                this.SubProperty = new List<System.String>();
+                this.SubProperty = new List<PropertyExtension>();
+                this.SubProperty.ApplyExploratoryFieldSpec(ec.NewChild("subProperty"));
 
             } else {
 
+                this.SubProperty.ApplyExploratoryFieldSpec(ec.NewChild("subProperty"));
 
             }
         }
-        else if (this.SubProperty != null && ec.Excludes("subProperty",true))
+        else if (this.SubProperty != null && ec.Excludes("subProperty",false))
         {
             this.SubProperty = null;
         }

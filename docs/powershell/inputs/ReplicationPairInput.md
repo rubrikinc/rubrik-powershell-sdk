@@ -1,7 +1,7 @@
 ### ReplicationPairInput
 Datacenter replication pair.
 
-- sourceClusterId: System.String
+- sourceClusterUuid: System.String
   - ID of the source cluster.
-- targetClusterId: System.String
+- targetClusterUuid: System.String
   - ID of the target cluster.

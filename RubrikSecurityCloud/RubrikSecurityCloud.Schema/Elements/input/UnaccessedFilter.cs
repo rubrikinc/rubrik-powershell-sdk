@@ -1,4 +1,4 @@
-// ReplicationPairInput.cs
+// UnaccessedFilter.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,25 +13,18 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region ReplicationPairInput
+    #region UnaccessedFilter
 
-    public class ReplicationPairInput: IInput
+    public class UnaccessedFilter: IInput
     {
         #region members
 
-        //      C# -> System.String? SourceClusterUuid
-        // GraphQL -> sourceClusterUuid: UUID! (scalar)
+        //      C# -> System.Boolean? Unaccessed
+        // GraphQL -> unaccessed: Boolean! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("sourceClusterUuid")]
-        public System.String? SourceClusterUuid { get; set; }
-
-        //      C# -> System.String? TargetClusterUuid
-        // GraphQL -> targetClusterUuid: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("targetClusterUuid")]
-        public System.String? TargetClusterUuid { get; set; }
+        [JsonProperty("unaccessed")]
+        public System.Boolean? Unaccessed { get; set; }
 
 
         #endregion
@@ -59,7 +52,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class ReplicationPairInput
+    } // class UnaccessedFilter
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

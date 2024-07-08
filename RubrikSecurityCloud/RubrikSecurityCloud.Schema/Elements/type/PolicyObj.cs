@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analysisStatus")]
         public AnalysisStatus? AnalysisStatus { get; set; }
 
+        //      C# -> DataGovObjectType? ObjectType
+        // GraphQL -> objectType: DataGovObjectType! (enum)
+        [JsonProperty("objectType")]
+        public DataGovObjectType? ObjectType { get; set; }
+
         //      C# -> DataGovOsType? OsType
         // GraphQL -> osType: DataGovOsType! (enum)
         [JsonProperty("osType")]
@@ -230,6 +235,7 @@ namespace RubrikSecurityCloud.Types
     public PolicyObj Set(
         List<RiskReason>? AccessRiskReasons = null,
         AnalysisStatus? AnalysisStatus = null,
+        DataGovObjectType? ObjectType = null,
         DataGovOsType? OsType = null,
         RiskLevelType? RiskLevel = null,
         DataGovShareType? ShareType = null,
@@ -264,6 +270,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AnalysisStatus != null ) {
             this.AnalysisStatus = AnalysisStatus;
+        }
+        if ( ObjectType != null ) {
+            this.ObjectType = ObjectType;
         }
         if ( OsType != null ) {
             this.OsType = OsType;
@@ -376,6 +385,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "analysisStatus\n" ;
             } else {
                 s += ind + "analysisStatus\n" ;
+            }
+        }
+        //      C# -> DataGovObjectType? ObjectType
+        // GraphQL -> objectType: DataGovObjectType! (enum)
+        if (this.ObjectType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
             }
         }
         //      C# -> DataGovOsType? OsType
@@ -713,6 +731,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AnalysisStatus != null && ec.Excludes("analysisStatus",true))
         {
             this.AnalysisStatus = null;
+        }
+        //      C# -> DataGovObjectType? ObjectType
+        // GraphQL -> objectType: DataGovObjectType! (enum)
+        if (ec.Includes("objectType",true))
+        {
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new DataGovObjectType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> DataGovOsType? OsType
         // GraphQL -> osType: DataGovOsType! (enum)

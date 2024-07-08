@@ -8,3 +8,5 @@ Status of the running threat hunt.
 - FAILED - Threat hunt failed.
 - CANCELING - Threat hunt is being canceled.
 - CANCELED - Threat hunt canceled.
+- PENDING - Pending: This represents that the set of snapshots has not yet been
+ determined for the threat hunt.

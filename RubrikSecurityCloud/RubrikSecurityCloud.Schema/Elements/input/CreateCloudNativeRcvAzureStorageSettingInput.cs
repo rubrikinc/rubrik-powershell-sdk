@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudNativeLocTemplateType")]
         public CloudNativeLocTemplateType? CloudNativeLocTemplateType { get; set; }
 
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy (enum)
+        [JsonProperty("redundancy")]
+        public RcvRedundancy? Redundancy { get; set; }
+
 
         #endregion
 

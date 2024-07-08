@@ -1,4 +1,4 @@
-// TprStatusForNodeRemoval.cs
+// PropertyExtension.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -15,25 +15,20 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region TprStatusForNodeRemoval
-    public class TprStatusForNodeRemoval: BaseType
+    #region PropertyExtension
+    public class PropertyExtension: BaseType
     {
         #region members
 
-        //      C# -> TprReqStatus? Status
-        // GraphQL -> status: TprReqStatus! (enum)
-        [JsonProperty("status")]
-        public TprReqStatus? Status { get; set; }
+        //      C# -> Type? DataType
+        // GraphQL -> dataType: Type! (enum)
+        [JsonProperty("dataType")]
+        public Type? DataType { get; set; }
 
-        //      C# -> TprRule? TprRule
-        // GraphQL -> tprRule: TprRule! (enum)
-        [JsonProperty("tprRule")]
-        public TprRule? TprRule { get; set; }
-
-        //      C# -> System.String? TprRequestId
-        // GraphQL -> tprRequestId: String! (scalar)
-        [JsonProperty("tprRequestId")]
-        public System.String? TprRequestId { get; set; }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
 
 
         #endregion
@@ -41,23 +36,19 @@ namespace RubrikSecurityCloud.Types
     #region methods
 
     public override string GetGqlTypeName() {
-        return "TprStatusForNodeRemoval";
+        return "PropertyExtension";
     }
 
-    public TprStatusForNodeRemoval Set(
-        TprReqStatus? Status = null,
-        TprRule? TprRule = null,
-        System.String? TprRequestId = null
+    public PropertyExtension Set(
+        Type? DataType = null,
+        System.String? Name = null
     ) 
     {
-        if ( Status != null ) {
-            this.Status = Status;
+        if ( DataType != null ) {
+            this.DataType = DataType;
         }
-        if ( TprRule != null ) {
-            this.TprRule = TprRule;
-        }
-        if ( TprRequestId != null ) {
-            this.TprRequestId = TprRequestId;
+        if ( Name != null ) {
+            this.Name = Name;
         }
         return this;
     }
@@ -73,31 +64,22 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> TprReqStatus? Status
-        // GraphQL -> status: TprReqStatus! (enum)
-        if (this.Status != null) {
+        //      C# -> Type? DataType
+        // GraphQL -> dataType: Type! (enum)
+        if (this.DataType != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "status\n" ;
+                s += conf.Prefix + "dataType\n" ;
             } else {
-                s += ind + "status\n" ;
+                s += ind + "dataType\n" ;
             }
         }
-        //      C# -> TprRule? TprRule
-        // GraphQL -> tprRule: TprRule! (enum)
-        if (this.TprRule != null) {
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "tprRule\n" ;
+                s += conf.Prefix + "name\n" ;
             } else {
-                s += ind + "tprRule\n" ;
-            }
-        }
-        //      C# -> System.String? TprRequestId
-        // GraphQL -> tprRequestId: String! (scalar)
-        if (this.TprRequestId != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "tprRequestId\n" ;
-            } else {
-                s += ind + "tprRequestId\n" ;
+                s += ind + "name\n" ;
             }
         }
         return s;
@@ -107,67 +89,50 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
-        //      C# -> TprReqStatus? Status
-        // GraphQL -> status: TprReqStatus! (enum)
-        if (ec.Includes("status",true))
+        //      C# -> Type? DataType
+        // GraphQL -> dataType: Type! (enum)
+        if (ec.Includes("dataType",true))
         {
-            if(this.Status == null) {
+            if(this.DataType == null) {
 
-                this.Status = new TprReqStatus();
+                this.DataType = new Type();
 
             } else {
 
 
             }
         }
-        else if (this.Status != null && ec.Excludes("status",true))
+        else if (this.DataType != null && ec.Excludes("dataType",true))
         {
-            this.Status = null;
+            this.DataType = null;
         }
-        //      C# -> TprRule? TprRule
-        // GraphQL -> tprRule: TprRule! (enum)
-        if (ec.Includes("tprRule",true))
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (ec.Includes("name",true))
         {
-            if(this.TprRule == null) {
+            if(this.Name == null) {
 
-                this.TprRule = new TprRule();
+                this.Name = "FETCH";
 
             } else {
 
 
             }
         }
-        else if (this.TprRule != null && ec.Excludes("tprRule",true))
+        else if (this.Name != null && ec.Excludes("name",true))
         {
-            this.TprRule = null;
-        }
-        //      C# -> System.String? TprRequestId
-        // GraphQL -> tprRequestId: String! (scalar)
-        if (ec.Includes("tprRequestId",true))
-        {
-            if(this.TprRequestId == null) {
-
-                this.TprRequestId = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.TprRequestId != null && ec.Excludes("tprRequestId",true))
-        {
-            this.TprRequestId = null;
+            this.Name = null;
         }
     }
 
 
     #endregion
 
-    } // class TprStatusForNodeRemoval
+    } // class PropertyExtension
     
     #endregion
 
-    public static class ListTprStatusForNodeRemovalExtensions
+    public static class ListPropertyExtensionExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of properties that are not null in an object.
@@ -186,14 +151,14 @@ namespace RubrikSecurityCloud.Types
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
-            this List<TprStatusForNodeRemoval> list,
+            this List<PropertyExtension> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
             return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
-        public static List<string> SelectedFields(this List<TprStatusForNodeRemoval> list)
+        public static List<string> SelectedFields(this List<PropertyExtension> list)
         {
             return StringUtils.FieldSpecStringToList(
                 list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
@@ -202,16 +167,16 @@ namespace RubrikSecurityCloud.Types
 
 
         public static void ApplyExploratoryFieldSpec(
-            this List<TprStatusForNodeRemoval> list, 
+            this List<PropertyExtension> list, 
             ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
-                list.Add(new TprStatusForNodeRemoval());
+                list.Add(new PropertyExtension());
             }
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void SelectForRetrieval(this List<TprStatusForNodeRemoval> list)
+        public static void SelectForRetrieval(this List<PropertyExtension> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
