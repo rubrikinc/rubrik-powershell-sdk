@@ -152,6 +152,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	shouldBypassProxy = $someBoolean
     /// 	# OPTIONAL
+    /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+    /// 	# OPTIONAL
     /// 	rsaKey = $someString
     /// 	# OPTIONAL
     /// 	azureKeyVaultKey = @{
@@ -418,6 +420,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	shouldBypassProxy = $someBoolean
+	# OPTIONAL
+	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
 	# OPTIONAL
 	rsaKey = $someString
 	# OPTIONAL

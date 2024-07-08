@@ -628,6 +628,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		targetHostId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldIgnoreError = $someBoolean
     /// 		# REQUIRED
     /// 		restoreConfigs = @(
     /// 			@{
@@ -1573,6 +1575,8 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		targetHostId = $someString
+		# OPTIONAL
+		shouldIgnoreError = $someBoolean
 		# REQUIRED
 		restoreConfigs = @(
 			@{

@@ -764,9 +764,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			replicationPairs = @(
     /// 				@{
     /// 					# REQUIRED
-    /// 					sourceClusterId = $someString
+    /// 					sourceClusterUuid = $someString
     /// 					# REQUIRED
-    /// 					targetClusterId = $someString
+    /// 					targetClusterUuid = $someString
     /// 				}
     /// 			)
     /// 			# OPTIONAL
@@ -1508,9 +1508,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			replicationPairs = @(
     /// 				@{
     /// 					# REQUIRED
-    /// 					sourceClusterId = $someString
+    /// 					sourceClusterUuid = $someString
     /// 					# REQUIRED
-    /// 					targetClusterId = $someString
+    /// 					targetClusterUuid = $someString
     /// 				}
     /// 			)
     /// 			# OPTIONAL
@@ -2453,9 +2453,9 @@ $query.Var.input = @{
 			replicationPairs = @(
 				@{
 					# REQUIRED
-					sourceClusterId = $someString
+					sourceClusterUuid = $someString
 					# REQUIRED
-					targetClusterId = $someString
+					targetClusterUuid = $someString
 				}
 			)
 			# OPTIONAL
@@ -3158,9 +3158,9 @@ $query.Var.input = @{
 			replicationPairs = @(
 				@{
 					# REQUIRED
-					sourceClusterId = $someString
+					sourceClusterUuid = $someString
 					# REQUIRED
-					targetClusterId = $someString
+					targetClusterUuid = $someString
 				}
 			)
 			# OPTIONAL

@@ -332,7 +332,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
         internal object GetValueFromParameterSet(string argName)
         {
             string fieldName = StringUtils.Capitalize(argName);
-            Type parentType = this.GetType();
+            System.Type parentType = this.GetType();
             PropertyInfo propertyInfo = parentType.GetProperty(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (propertyInfo == null)
             {
@@ -401,7 +401,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             List<string> lines = new();
             var indentStr = new string(' ', indent);
             lines.Add($"{indentStr}Cmdlet Inputs:");
-            Type cmdletType = this.GetType();
+            System.Type cmdletType = this.GetType();
             string cmdletName = cmdletType.Name;
             System.Reflection.PropertyInfo[] cmdletProperties = cmdletType
                 .GetProperties(BindingFlags.Public | BindingFlags.Instance);

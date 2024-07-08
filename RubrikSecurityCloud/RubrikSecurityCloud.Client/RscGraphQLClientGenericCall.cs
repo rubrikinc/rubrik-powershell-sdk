@@ -50,7 +50,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
         )
         {
             // Get the Type from the string
-            Type t = ReflectionUtils.GetType(fieldTypeName);
+            System.Type t = ReflectionUtils.GetType(fieldTypeName);
 
             // Get method info for generic method
             MethodInfo genericMethod = this.GetType()
@@ -208,7 +208,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
         )
         {
 
-            Type queryType = null;
+            System.Type queryType = null;
             queryStr = queryStr.Trim();
             if (queryStr.StartsWith("query"))
             {
