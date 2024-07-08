@@ -27,6 +27,8 @@ Information about MongoDB Source.
   - Discovery status of the MongoDB source.
 - hostDetails: list of MongoHostDetails
   - List of data host details associated with this MongoDB source.
+- managementType: MongoManagementType
+  - Management type of the MongoDB source.
 - descendantConnection: MongoSourceDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: MongoSourcePhysicalChildTypeConnection

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 31
+    /// Create a new RscQuery object for any of the 33
     /// operations in the 'Office 365' API domain:
-    /// AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
+    /// AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, ExportMailboxV2, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreMailboxV2, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
     /// </summary>
     /// <description>
     /// New-RscMutationO365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 31 operations
+    /// There are 33 operations
     /// in the 'Office 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
+    /// one of: AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, ExportMailboxV2, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreMailboxV2, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -577,6 +577,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ExportMailboxV2 operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: ExportMailboxV2
+    /// 
+    /// $query = New-RscMutationO365 -ExportMailboxV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	orgUuid = $someString
+    /// 	# REQUIRED
+    /// 	fromMailboxUuid = $someString
+    /// 	# REQUIRED
+    /// 	toMailboxUuid = $someString
+    /// 	# OPTIONAL
+    /// 	snapshotUuid = $someString
+    /// 	# REQUIRED
+    /// 	exportConfigs = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			SnapshotUUID = $someString
+    /// 			# OPTIONAL
+    /// 			EmailID = $someString
+    /// 			# OPTIONAL
+    /// 			FolderID = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	inplaceRestoreConfig = @{
+    /// 		# REQUIRED
+    /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;CreateOnDemandJobReply&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the InsertCustomerApp operation
     /// of the 'Office 365' API domain.
     /// <code>
@@ -811,6 +868,61 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CreateOnDemandJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RestoreMailboxV2 operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: RestoreMailboxV2
+    /// 
+    /// $query = New-RscMutationO365 -RestoreMailboxV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	orgUuid = $someString
+    /// 	# REQUIRED
+    /// 	mailboxUuid = $someString
+    /// 	# OPTIONAL
+    /// 	snapshotUuid = $someString
+    /// 	# REQUIRED
+    /// 	restoreConfigs = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			SnapshotUUID = $someString
+    /// 			# OPTIONAL
+    /// 			EmailID = $someString
+    /// 			# OPTIONAL
+    /// 			FolderID = $someString
+    /// 		}
+    /// 	)
+    /// 	# REQUIRED
+    /// 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	inplaceRestoreConfig = @{
+    /// 		# REQUIRED
+    /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;CreateOnDemandJobReply&gt;
     /// 
     /// 
     /// 
@@ -1952,12 +2064,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "EnableSharePoint",
                 "EnableTeams",
                 "ExportMailbox",
+                "ExportMailboxV2",
                 "InsertCustomerApp",
                 "OauthConsentComplete",
                 "OauthConsentKickoff",
                 "PdlGroups",
                 "RefreshOrg",
                 "RestoreMailbox",
+                "RestoreMailboxV2",
                 "RestoreSnappable",
                 "RestoreTeamsConversations",
                 "RestoreTeamsFiles",
@@ -2028,6 +2142,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ExportMailbox":
                         this.ProcessRecord_ExportMailbox();
                         break;
+                    case "ExportMailboxV2":
+                        this.ProcessRecord_ExportMailboxV2();
+                        break;
                     case "InsertCustomerApp":
                         this.ProcessRecord_InsertCustomerApp();
                         break;
@@ -2045,6 +2162,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RestoreMailbox":
                         this.ProcessRecord_RestoreMailbox();
+                        break;
+                    case "RestoreMailboxV2":
+                        this.ProcessRecord_RestoreMailboxV2();
                         break;
                     case "RestoreSnappable":
                         this.ProcessRecord_RestoreSnappable();
@@ -2222,6 +2342,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // exportO365MailboxV2.
+        internal void ProcessRecord_ExportMailboxV2()
+        {
+            this._logger.name += " -ExportMailboxV2";
+            // Create new graphql operation exportO365MailboxV2
+            InitMutationExportO365MailboxV2();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // insertCustomerO365App.
         internal void ProcessRecord_InsertCustomerApp()
         {
@@ -2273,6 +2402,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RestoreMailbox";
             // Create new graphql operation restoreO365Mailbox
             InitMutationRestoreO365Mailbox();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // restoreO365MailboxV2.
+        internal void ProcessRecord_RestoreMailboxV2()
+        {
+            this._logger.name += " -RestoreMailboxV2";
+            // Create new graphql operation restoreO365MailboxV2
+            InitMutationRestoreO365MailboxV2();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2379,7 +2517,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddO365Org",
                 "($input: AddO365OrgInput!)",
                 "AddO365OrgResponse",
-                Mutation.AddO365Org_ObjectFieldSpec,
+                Mutation.AddO365Org,
                 Mutation.AddO365OrgFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2410,7 +2548,7 @@ $query.Var.input = @{
                 "MutationBackupO365Mailbox",
                 "($mailboxIds: [UUID!]!)",
                 "BatchAsyncJobStatus",
-                Mutation.BackupO365Mailbox_ObjectFieldSpec,
+                Mutation.BackupO365Mailbox,
                 Mutation.BackupO365MailboxFieldSpec,
                 @"# REQUIRED
 $query.Var.mailboxIds = @(
@@ -2432,7 +2570,7 @@ $query.Var.mailboxIds = @(
                 "MutationBackupO365Onedrive",
                 "($input: BackupO365OnedriveInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.BackupO365Onedrive_ObjectFieldSpec,
+                Mutation.BackupO365Onedrive,
                 Mutation.BackupO365OnedriveFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2457,7 +2595,7 @@ $query.Var.input = @{
                 "MutationBackupO365SharePointSite",
                 "($input: BackupO365SharePointSiteInput!)",
                 "CreateOnDemandJobReply",
-                Mutation.BackupO365SharePointSite_ObjectFieldSpec,
+                Mutation.BackupO365SharePointSite,
                 Mutation.BackupO365SharePointSiteFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2480,7 +2618,7 @@ $query.Var.input = @{
                 "MutationBackupO365SharepointDrive",
                 "($input: BackupO365SharepointDriveInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.BackupO365SharepointDrive_ObjectFieldSpec,
+                Mutation.BackupO365SharepointDrive,
                 Mutation.BackupO365SharepointDriveFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2505,7 +2643,7 @@ $query.Var.input = @{
                 "MutationBackupO365SharepointList",
                 "($input: BackupO365SharePointListInput!)",
                 "CreateOnDemandJobReply",
-                Mutation.BackupO365SharepointList_ObjectFieldSpec,
+                Mutation.BackupO365SharepointList,
                 Mutation.BackupO365SharepointListFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2528,7 +2666,7 @@ $query.Var.input = @{
                 "MutationBackupO365Team",
                 "($input: BackupO365TeamInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.BackupO365Team_ObjectFieldSpec,
+                Mutation.BackupO365Team,
                 Mutation.BackupO365TeamFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2553,7 +2691,7 @@ $query.Var.input = @{
                 "MutationCreateO365AppComplete",
                 "($input: CreateO365AppCompleteInput!)",
                 "RequestStatus",
-                Mutation.CreateO365AppComplete_ObjectFieldSpec,
+                Mutation.CreateO365AppComplete,
                 Mutation.CreateO365AppCompleteFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2580,7 +2718,7 @@ $query.Var.input = @{
                 "MutationCreateO365AppKickoff",
                 "($input: CreateO365AppKickoffInput!)",
                 "CreateO365AppKickoffResp",
-                Mutation.CreateO365AppKickoff_ObjectFieldSpec,
+                Mutation.CreateO365AppKickoff,
                 Mutation.CreateO365AppKickoffFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2606,7 +2744,7 @@ $query.Var.input = @{
                 "MutationDeleteO365AzureApp",
                 "($o365AppClientId: String!,$o365AppType: String!)",
                 "RequestStatus",
-                Mutation.DeleteO365AzureApp_ObjectFieldSpec,
+                Mutation.DeleteO365AzureApp,
                 Mutation.DeleteO365AzureAppFieldSpec,
                 @"# REQUIRED
 $query.Var.o365AppClientId = $someString
@@ -2628,7 +2766,7 @@ $query.Var.o365AppType = $someString"
                 "MutationDeleteO365Org",
                 "($orgId: UUID!)",
                 "CreateOnDemandJobReply",
-                Mutation.DeleteO365Org_ObjectFieldSpec,
+                Mutation.DeleteO365Org,
                 Mutation.DeleteO365OrgFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString"
@@ -2648,7 +2786,7 @@ $query.Var.orgId = $someString"
                 "MutationDeleteO365ServiceAccount",
                 "($orgId: UUID!)",
                 "RequestStatus",
-                Mutation.DeleteO365ServiceAccount_ObjectFieldSpec,
+                Mutation.DeleteO365ServiceAccount,
                 Mutation.DeleteO365ServiceAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString"
@@ -2668,7 +2806,7 @@ $query.Var.orgId = $someString"
                 "MutationEnableO365SharePoint",
                 "($input: EnableO365SharePointInput!)",
                 "RequestStatus",
-                Mutation.EnableO365SharePoint_ObjectFieldSpec,
+                Mutation.EnableO365SharePoint,
                 Mutation.EnableO365SharePointFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2691,7 +2829,7 @@ $query.Var.input = @{
                 "MutationEnableO365Teams",
                 "($exocomputeClusterId: String!)",
                 "RequestStatus",
-                Mutation.EnableO365Teams_ObjectFieldSpec,
+                Mutation.EnableO365Teams,
                 Mutation.EnableO365TeamsFieldSpec,
                 @"# REQUIRED
 $query.Var.exocomputeClusterId = $someString"
@@ -2711,10 +2849,59 @@ $query.Var.exocomputeClusterId = $someString"
                 "MutationExportO365Mailbox",
                 "($exportConfig: ExportO365MailboxInput!)",
                 "CreateOnDemandJobReply",
-                Mutation.ExportO365Mailbox_ObjectFieldSpec,
+                Mutation.ExportO365Mailbox,
                 Mutation.ExportO365MailboxFieldSpec,
                 @"# REQUIRED
 $query.Var.exportConfig = @{
+	# OPTIONAL
+	orgUuid = $someString
+	# REQUIRED
+	fromMailboxUuid = $someString
+	# REQUIRED
+	toMailboxUuid = $someString
+	# OPTIONAL
+	snapshotUuid = $someString
+	# REQUIRED
+	exportConfigs = @(
+		@{
+			# REQUIRED
+			SnapshotUUID = $someString
+			# OPTIONAL
+			EmailID = $someString
+			# OPTIONAL
+			FolderID = $someString
+		}
+	)
+	# OPTIONAL
+	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+	# OPTIONAL
+	inplaceRestoreConfig = @{
+		# REQUIRED
+		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+	}
+	# OPTIONAL
+	skipRifItems = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // exportO365MailboxV2(input: ExportO365MailboxInput!): [CreateOnDemandJobReply!]!
+        internal void InitMutationExportO365MailboxV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExportO365MailboxInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExportO365MailboxV2",
+                "($input: ExportO365MailboxInput!)",
+                "List<CreateOnDemandJobReply>",
+                Mutation.ExportO365MailboxV2,
+                Mutation.ExportO365MailboxV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
 	# OPTIONAL
 	orgUuid = $someString
 	# REQUIRED
@@ -2760,7 +2947,7 @@ $query.Var.exportConfig = @{
                 "MutationInsertCustomerO365App",
                 "($input: InsertCustomerO365AppInput!)",
                 "RequestStatus",
-                Mutation.InsertCustomerO365App_ObjectFieldSpec,
+                Mutation.InsertCustomerO365App,
                 Mutation.InsertCustomerO365AppFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2795,7 +2982,7 @@ $query.Var.input = @{
                 "MutationO365OauthConsentComplete",
                 "($input: O365OauthConsentCompleteInput!)",
                 "O365OauthConsentCompleteReply",
-                Mutation.O365OauthConsentComplete_ObjectFieldSpec,
+                Mutation.O365OauthConsentComplete,
                 Mutation.O365OauthConsentCompleteFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2828,7 +3015,7 @@ $query.Var.input = @{
                 "MutationO365OauthConsentKickoff",
                 "($input: O365OauthConsentKickoffInput!)",
                 "O365OauthConsentKickoffReply",
-                Mutation.O365OauthConsentKickoff_ObjectFieldSpec,
+                Mutation.O365OauthConsentKickoff,
                 Mutation.O365OauthConsentKickoffFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2855,7 +3042,7 @@ $query.Var.input = @{
                 "MutationO365PdlGroups",
                 "($input: O365PdlGroupsInput!)",
                 "O365PdlGroupsReply",
-                Mutation.O365PdlGroups_ObjectFieldSpec,
+                Mutation.O365PdlGroups,
                 Mutation.O365PdlGroupsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2887,7 +3074,7 @@ $query.Var.input = @{
                 "MutationRefreshO365Org",
                 "($orgId: UUID!)",
                 "CreateOnDemandJobReply",
-                Mutation.RefreshO365Org_ObjectFieldSpec,
+                Mutation.RefreshO365Org,
                 Mutation.RefreshO365OrgFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString"
@@ -2907,10 +3094,57 @@ $query.Var.orgId = $someString"
                 "MutationRestoreO365Mailbox",
                 "($restoreConfig: RestoreO365MailboxInput!)",
                 "CreateOnDemandJobReply",
-                Mutation.RestoreO365Mailbox_ObjectFieldSpec,
+                Mutation.RestoreO365Mailbox,
                 Mutation.RestoreO365MailboxFieldSpec,
                 @"# REQUIRED
 $query.Var.restoreConfig = @{
+	# OPTIONAL
+	orgUuid = $someString
+	# REQUIRED
+	mailboxUuid = $someString
+	# OPTIONAL
+	snapshotUuid = $someString
+	# REQUIRED
+	restoreConfigs = @(
+		@{
+			# REQUIRED
+			SnapshotUUID = $someString
+			# OPTIONAL
+			EmailID = $someString
+			# OPTIONAL
+			FolderID = $someString
+		}
+	)
+	# REQUIRED
+	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+	# OPTIONAL
+	inplaceRestoreConfig = @{
+		# REQUIRED
+		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+	}
+	# OPTIONAL
+	skipRifItems = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // restoreO365MailboxV2(input: RestoreO365MailboxInput!): [CreateOnDemandJobReply!]!
+        internal void InitMutationRestoreO365MailboxV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestoreO365MailboxInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestoreO365MailboxV2",
+                "($input: RestoreO365MailboxInput!)",
+                "List<CreateOnDemandJobReply>",
+                Mutation.RestoreO365MailboxV2,
+                Mutation.RestoreO365MailboxV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
 	# OPTIONAL
 	orgUuid = $someString
 	# REQUIRED
@@ -2954,7 +3188,7 @@ $query.Var.restoreConfig = @{
                 "MutationRestoreO365Snappable",
                 "($input: RestoreO365SnappableInput!)",
                 "CreateOnDemandJobReply",
-                Mutation.RestoreO365Snappable_ObjectFieldSpec,
+                Mutation.RestoreO365Snappable,
                 Mutation.RestoreO365SnappableFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3559,7 +3793,7 @@ $query.Var.input = @{
                 "MutationRestoreO365TeamsConversations",
                 "($input: RestoreO365TeamsConversationsInput!)",
                 "CreateOnDemandJobReply",
-                Mutation.RestoreO365TeamsConversations_ObjectFieldSpec,
+                Mutation.RestoreO365TeamsConversations,
                 Mutation.RestoreO365TeamsConversationsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3674,7 +3908,7 @@ $query.Var.input = @{
                 "MutationRestoreO365TeamsFiles",
                 "($input: RestoreO365TeamsFilesInput!)",
                 "CreateOnDemandJobReply",
-                Mutation.RestoreO365TeamsFiles_ObjectFieldSpec,
+                Mutation.RestoreO365TeamsFiles,
                 Mutation.RestoreO365TeamsFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3789,7 +4023,7 @@ $query.Var.input = @{
                 "MutationO365SaaSsetupKickoff",
                 "",
                 "O365SaasSetupKickoffReply",
-                Mutation.O365SaaSsetupKickoff_ObjectFieldSpec,
+                Mutation.O365SaaSsetupKickoff,
                 Mutation.O365SaaSsetupKickoffFieldSpec,
                 @""
             );
@@ -3808,7 +4042,7 @@ $query.Var.input = @{
                 "MutationO365SaasSetupComplete",
                 "($input: O365SaasSetupCompleteInput!)",
                 "AddO365OrgResponse",
-                Mutation.O365SaasSetupComplete_ObjectFieldSpec,
+                Mutation.O365SaasSetupComplete,
                 Mutation.O365SaasSetupCompleteFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3860,7 +4094,7 @@ $query.Var.input = @{
                 "MutationSetO365ServiceAccount",
                 "($username: String!,$appPassword: String!,$orgId: UUID!)",
                 "RequestStatus",
-                Mutation.SetO365ServiceAccount_ObjectFieldSpec,
+                Mutation.SetO365ServiceAccount,
                 Mutation.SetO365ServiceAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.username = $someString
@@ -3883,7 +4117,7 @@ $query.Var.orgId = $someString"
                 "MutationO365SetupKickoff",
                 "",
                 "O365SetupKickoffResp",
-                Mutation.O365SetupKickoff_ObjectFieldSpec,
+                Mutation.O365SetupKickoff,
                 Mutation.O365SetupKickoffFieldSpec,
                 @""
             );
@@ -3902,7 +4136,7 @@ $query.Var.orgId = $someString"
                 "MutationUpdateO365AppAuthStatus",
                 "($input: UpdateO365AppAuthStatusInput!)",
                 "UpdateO365AppAuthStatusReply",
-                Mutation.UpdateO365AppAuthStatus_ObjectFieldSpec,
+                Mutation.UpdateO365AppAuthStatus,
                 Mutation.UpdateO365AppAuthStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3927,7 +4161,7 @@ $query.Var.input = @{
                 "MutationUpdateO365AppPermissions",
                 "($input: UpdateO365AppPermissionsInput!)",
                 "System.String",
-                Mutation.UpdateO365AppPermissions_ObjectFieldSpec,
+                Mutation.UpdateO365AppPermissions,
                 Mutation.UpdateO365AppPermissionsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3952,7 +4186,7 @@ $query.Var.input = @{
                 "MutationUpdateO365OrgCustomName",
                 "($input: UpdateO365OrgCustomNameInput!)",
                 "UpdateO365OrgCustomNameReply",
-                Mutation.UpdateO365OrgCustomName_ObjectFieldSpec,
+                Mutation.UpdateO365OrgCustomName,
                 Mutation.UpdateO365OrgCustomNameFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

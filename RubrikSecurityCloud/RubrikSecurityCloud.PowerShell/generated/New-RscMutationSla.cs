@@ -764,9 +764,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			replicationPairs = @(
     /// 				@{
     /// 					# REQUIRED
-    /// 					sourceClusterId = $someString
+    /// 					sourceClusterUuid = $someString
     /// 					# REQUIRED
-    /// 					targetClusterId = $someString
+    /// 					targetClusterUuid = $someString
     /// 				}
     /// 			)
     /// 			# OPTIONAL
@@ -1508,9 +1508,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			replicationPairs = @(
     /// 				@{
     /// 					# REQUIRED
-    /// 					sourceClusterId = $someString
+    /// 					sourceClusterUuid = $someString
     /// 					# REQUIRED
-    /// 					targetClusterId = $someString
+    /// 					targetClusterUuid = $someString
     /// 				}
     /// 			)
     /// 			# OPTIONAL
@@ -1772,7 +1772,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAssignSla",
                 "($input: AssignSlaInput!)",
                 "SlaAssignResult",
-                Mutation.AssignSla_ObjectFieldSpec,
+                Mutation.AssignSla,
                 Mutation.AssignSlaFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1823,7 +1823,7 @@ $query.Var.input = @{
                 "MutationAssignRetentionSlaToSnappables",
                 "($globalSlaOptionalFid: UUID,$globalSlaAssignType: SlaAssignTypeEnum!,$objectIds: [UUID!]!,$applicableSnappableType: WorkloadLevelHierarchy,$shouldApplyToNonPolicySnapshots: Boolean,$userNote: String)",
                 "SlaAssignResult",
-                Mutation.AssignRetentionSlaToSnappables_ObjectFieldSpec,
+                Mutation.AssignRetentionSlaToSnappables,
                 Mutation.AssignRetentionSlaToSnappablesFieldSpec,
                 @"# OPTIONAL
 $query.Var.globalSlaOptionalFid = $someString
@@ -1863,7 +1863,7 @@ $query.Var.userNote = $someString"
                 "MutationAssignRetentionSlaToSnapshots",
                 "($globalSlaOptionalFid: UUID,$globalSlaAssignType: SlaAssignTypeEnum!,$snapshotFids: [UUID!]!,$userNote: String)",
                 "SlaAssignResult",
-                Mutation.AssignRetentionSlaToSnapshots_ObjectFieldSpec,
+                Mutation.AssignRetentionSlaToSnapshots,
                 Mutation.AssignRetentionSlaToSnapshotsFieldSpec,
                 @"# OPTIONAL
 $query.Var.globalSlaOptionalFid = $someString
@@ -1907,7 +1907,7 @@ $query.Var.userNote = $someString"
                 "MutationAssignSlasForSnappableHierarchies",
                 "($globalSlaOptionalFid: UUID,$globalSlaAssignType: SlaAssignTypeEnum!,$objectIds: [UUID!]!,$applicableSnappableTypes: [WorkloadLevelHierarchy!],$shouldApplyToExistingSnapshots: Boolean,$shouldApplyToNonPolicySnapshots: Boolean,$globalExistingSnapshotRetention: GlobalExistingSnapshotRetention,$userNote: String)",
                 "List<SlaAssignResult>",
-                Mutation.AssignSlasForSnappableHierarchies_ObjectFieldSpec,
+                Mutation.AssignSlasForSnappableHierarchies,
                 Mutation.AssignSlasForSnappableHierarchiesFieldSpec,
                 @"# OPTIONAL
 $query.Var.globalSlaOptionalFid = $someString
@@ -1945,7 +1945,7 @@ $query.Var.userNote = $someString"
                 "MutationCreateGlobalSla",
                 "($input: CreateGlobalSlaInput!)",
                 "GlobalSlaReply",
-                Mutation.CreateGlobalSla_ObjectFieldSpec,
+                Mutation.CreateGlobalSla,
                 Mutation.CreateGlobalSlaFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2453,9 +2453,9 @@ $query.Var.input = @{
 			replicationPairs = @(
 				@{
 					# REQUIRED
-					sourceClusterId = $someString
+					sourceClusterUuid = $someString
 					# REQUIRED
-					targetClusterId = $someString
+					targetClusterUuid = $someString
 				}
 			)
 			# OPTIONAL
@@ -2490,7 +2490,7 @@ $query.Var.input = @{
                 "MutationDeleteGlobalSla",
                 "($id: UUID!,$userNote: String)",
                 "SlaResult",
-                Mutation.DeleteGlobalSla_ObjectFieldSpec,
+                Mutation.DeleteGlobalSla,
                 Mutation.DeleteGlobalSlaFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString
@@ -2512,7 +2512,7 @@ $query.Var.userNote = $someString"
                 "MutationExportSlaManagedVolumeSnapshot",
                 "($input: ExportSlaManagedVolumeSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.ExportSlaManagedVolumeSnapshot_ObjectFieldSpec,
+                Mutation.ExportSlaManagedVolumeSnapshot,
                 Mutation.ExportSlaManagedVolumeSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2577,7 +2577,7 @@ $query.Var.input = @{
                 "MutationGetPendingSlaAssignments",
                 "($input: GetPendingSlaAssignmentsInput!)",
                 "GetPendingSlaAssignmentsReply",
-                Mutation.GetPendingSlaAssignments_ObjectFieldSpec,
+                Mutation.GetPendingSlaAssignments,
                 Mutation.GetPendingSlaAssignmentsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2605,7 +2605,7 @@ $query.Var.input = @{
                 "MutationPauseSla",
                 "($input: PauseSlaInput!)",
                 "PauseSlaReply",
-                Mutation.PauseSla_ObjectFieldSpec,
+                Mutation.PauseSla,
                 Mutation.PauseSlaFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2634,7 +2634,7 @@ $query.Var.input = @{
                 "MutationUpdateGlobalSla",
                 "($input: UpdateGlobalSlaInput!)",
                 "GlobalSlaReply",
-                Mutation.UpdateGlobalSla_ObjectFieldSpec,
+                Mutation.UpdateGlobalSla,
                 Mutation.UpdateGlobalSlaFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3158,9 +3158,9 @@ $query.Var.input = @{
 			replicationPairs = @(
 				@{
 					# REQUIRED
-					sourceClusterId = $someString
+					sourceClusterUuid = $someString
 					# REQUIRED
-					targetClusterId = $someString
+					targetClusterUuid = $someString
 				}
 			)
 			# OPTIONAL
@@ -3194,7 +3194,7 @@ $query.Var.input = @{
                 "MutationUpgradeSlas",
                 "($input: UpgradeSlasInput!)",
                 "UpgradeSlasReply",
-                Mutation.UpgradeSlas_ObjectFieldSpec,
+                Mutation.UpgradeSlas,
                 Mutation.UpgradeSlasFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

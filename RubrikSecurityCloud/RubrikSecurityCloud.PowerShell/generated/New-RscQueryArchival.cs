@@ -512,7 +512,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryHierarchyObjectRecoveryTarget",
                 "($fid: UUID!)",
                 "HierarchyObject",
-                Query.HierarchyObjectRecoveryTarget_ObjectFieldSpec,
+                Query.HierarchyObjectRecoveryTarget,
                 Query.HierarchyObjectRecoveryTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -532,7 +532,7 @@ $query.Var.fid = $someString"
                 "QueryIsTotpMandatoryInTargetVersion",
                 "($version: String!)",
                 "System.Boolean",
-                Query.IsTotpMandatoryInTargetVersion_ObjectFieldSpec,
+                Query.IsTotpMandatoryInTargetVersion,
                 Query.IsTotpMandatoryInTargetVersionFieldSpec,
                 @"# REQUIRED
 $query.Var.version = $someString"
@@ -552,7 +552,7 @@ $query.Var.version = $someString"
                 "QueryRcsArchivalLocationsConsumptionStats",
                 "($rcsAzureTargetConsumptionStatsRequest: RcsConsumptionStatsInput!)",
                 "RcsAzureArchivalLocationsConsumptionStatsOutput",
-                Query.RcsArchivalLocationsConsumptionStats_ObjectFieldSpec,
+                Query.RcsArchivalLocationsConsumptionStats,
                 Query.RcsArchivalLocationsConsumptionStatsFieldSpec,
                 @"# REQUIRED
 $query.Var.rcsAzureTargetConsumptionStatsRequest = @{
@@ -581,7 +581,7 @@ $query.Var.rcsAzureTargetConsumptionStatsRequest = @{
                 "QueryArchivalStorageUsage",
                 "($input: UUID!)",
                 "List<ArchivalStorageUsage>",
-                Query.ArchivalStorageUsage_ObjectFieldSpec,
+                Query.ArchivalStorageUsage,
                 Query.ArchivalStorageUsageFieldSpec,
                 @"# REQUIRED
 $query.Var.input = $someString"
@@ -601,7 +601,7 @@ $query.Var.input = $someString"
                 "QueryTarget",
                 "($input: UUID!)",
                 "Target",
-                Query.Target_ObjectFieldSpec,
+                Query.Target,
                 Query.TargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = $someString"
@@ -621,7 +621,7 @@ $query.Var.input = $someString"
                 "QueryTargetMapping",
                 "($targetMappingId: UUID!)",
                 "TargetMapping",
-                Query.TargetMapping_ObjectFieldSpec,
+                Query.TargetMapping,
                 Query.TargetMappingFieldSpec,
                 @"# REQUIRED
 $query.Var.targetMappingId = $someString"
@@ -651,7 +651,7 @@ $query.Var.targetMappingId = $someString"
                 "QueryAllTargetMappings",
                 "($sortBy: ArchivalGroupQuerySortByField,$sortOrder: SortOrder,$filter: [TargetMappingFilterInput!],$contextFilter: ContextFilterTypeEnum,$isRcsStatsRequired: Boolean)",
                 "List<TargetMapping>",
-                Query.AllTargetMappings_ObjectFieldSpec,
+                Query.AllTargetMappings,
                 Query.AllTargetMappingsFieldSpec,
                 @"# OPTIONAL
 $query.Var.sortBy = $someArchivalGroupQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalGroupQuerySortByField]) for enum values.
@@ -706,7 +706,7 @@ $query.Var.isRcsStatsRequired = $someBoolean"
                 "QueryTargets",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: ArchivalLocationQuerySortByField,$sortOrder: SortOrder,$filter: [TargetFilterInput!],$contextFilter: ContextFilterTypeEnum)",
                 "TargetConnection",
-                Query.Targets_ObjectFieldSpec,
+                Query.Targets,
                 Query.TargetsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

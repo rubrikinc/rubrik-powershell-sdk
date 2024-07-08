@@ -97,6 +97,12 @@ Supported in v5.0+. Get Nutanix virtual machine snapshot details.
 
 - There is a single argument of type GetNutanixSnapshotDetailInput.
 - Returns NutanixVmSnapshotDetail.
+### snapshotvdisks
+Supported in v9.2+. Get virtual disks from Nutanix virtual machine snapshot.
+ Retrieve detailed information about the virtual disks.
+
+- There is a single argument of type GetNutanixVmSnapshotVdisksInput.
+- Returns NutanixVmSnapshotVdiskDetailListResponse.
 ### topleveldescendants
 Paginated list of the highest-level Nutanix Objects accessible by the current user.
 

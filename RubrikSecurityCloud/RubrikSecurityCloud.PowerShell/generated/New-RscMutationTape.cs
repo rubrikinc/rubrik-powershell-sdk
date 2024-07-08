@@ -307,7 +307,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCreateTapeReaderTarget",
                 "($input: CreateTapeReaderTargetInput!)",
                 "Target",
-                Mutation.CreateTapeReaderTarget_ObjectFieldSpec,
+                Mutation.CreateTapeReaderTarget,
                 Mutation.CreateTapeReaderTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -348,7 +348,7 @@ $query.Var.input = @{
                 "MutationCreateTapeTarget",
                 "($input: CreateTapeTargetInput!)",
                 "Target",
-                Mutation.CreateTapeTarget_ObjectFieldSpec,
+                Mutation.CreateTapeTarget,
                 Mutation.CreateTapeTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -387,7 +387,7 @@ $query.Var.input = @{
                 "MutationUpdateTapeTarget",
                 "($input: UpdateTapeTargetInput!)",
                 "Target",
-                Mutation.UpdateTapeTarget_ObjectFieldSpec,
+                Mutation.UpdateTapeTarget,
                 Mutation.UpdateTapeTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

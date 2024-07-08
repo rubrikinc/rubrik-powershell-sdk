@@ -25,7 +25,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <summary>
     /// Create a new RscQuery object for any of the 184
     /// operations in the 'Miscellaneous' API domain:
-    /// ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, KubernetesProtectionSet, KubernetesProtectionSets, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
+    /// ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, KubernetesProtectionSet, KubernetesProtectionSets, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
     /// </summary>
     /// <description>
     /// New-RscQueryMisc creates a new
@@ -39,7 +39,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, KubernetesProtectionSet, KubernetesProtectionSets, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
+    /// one of: ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, KubernetesProtectionSet, KubernetesProtectionSets, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -2760,34 +2760,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the GetPermissions operation
-    /// of the 'Miscellaneous' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Misc
-    /// # API Operation: GetPermissions
-    /// 
-    /// $query = New-RscQueryMisc -GetPermissions
-    /// 
-    /// # REQUIRED
-    /// $query.Var.roleId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;Permission&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the GetRolesByIds operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -4672,6 +4644,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the NodeTunnelStatuses operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: NodeTunnelStatuses
+    /// 
+    /// $query = New-RscQueryMisc -NodeTunnelStatuses
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NodeTunnelStatusConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the NosqlStorageLocations operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -5406,6 +5409,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.objectIdsFilter = @(
     /// 	$someString
     /// )
+    /// # OPTIONAL
+    /// $query.Var.platformFilter = @(
+    /// 	$somePlatform # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Platform]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.platformCategoryFilter = @(
+    /// 	$somePlatformCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PlatformCategory]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.cloudAccountIdsFilter = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.resourceGroupsFilter = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.regionsFilter = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.dataTypeIdsFilter = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.firstSeenTimeRange = @{
+    /// 	# OPTIONAL
+    /// 	startTime = $someString
+    /// 	# OPTIONAL
+    /// 	endTime = $someString
+    /// 	# OPTIONAL
+    /// 	timezone = $someString
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.lastAccessTimeRange = @{
+    /// 	# OPTIONAL
+    /// 	startTime = $someString
+    /// 	# OPTIONAL
+    /// 	endTime = $someString
+    /// 	# OPTIONAL
+    /// 	timezone = $someString
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.creationTimeRange = @{
+    /// 	# OPTIONAL
+    /// 	startTime = $someString
+    /// 	# OPTIONAL
+    /// 	endTime = $someString
+    /// 	# OPTIONAL
+    /// 	timezone = $someString
+    /// }
     /// # OPTIONAL
     /// $query.Var.first = $someInt
     /// # OPTIONAL
@@ -7579,7 +7633,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "GetGroupCountByUpgradeJobStatus",
                 "GetGroupCountByVersionStatus",
                 "GetKorgTaskchainStatus",
-                "GetPermissions",
                 "GetRolesByIds",
                 "GetUserDownloads",
                 "GlobalFileSearch",
@@ -7624,6 +7677,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "NfAnomalyResultsGrouped",
                 "NodeRemovalCancelPermission",
                 "NodeToReplace",
+                "NodeTunnelStatuses",
                 "NosqlStorageLocations",
                 "OauthCodesForEdgeReg",
                 "ObjectFiles",
@@ -7926,9 +7980,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "GetKorgTaskchainStatus":
                         this.ProcessRecord_GetKorgTaskchainStatus();
                         break;
-                    case "GetPermissions":
-                        this.ProcessRecord_GetPermissions();
-                        break;
                     case "GetRolesByIds":
                         this.ProcessRecord_GetRolesByIds();
                         break;
@@ -8060,6 +8111,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "NodeToReplace":
                         this.ProcessRecord_NodeToReplace();
+                        break;
+                    case "NodeTunnelStatuses":
+                        this.ProcessRecord_NodeTunnelStatuses();
                         break;
                     case "NosqlStorageLocations":
                         this.ProcessRecord_NosqlStorageLocations();
@@ -8933,15 +8987,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // getPermissions.
-        internal void ProcessRecord_GetPermissions()
-        {
-            this._logger.name += " -GetPermissions";
-            // Create new graphql operation getPermissions
-            InitQueryGetPermissions();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // getRolesByIds.
         internal void ProcessRecord_GetRolesByIds()
         {
@@ -9335,6 +9380,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -NodeToReplace";
             // Create new graphql operation nodeToReplace
             InitQueryNodeToReplace();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // nodeTunnelStatuses.
+        internal void ProcessRecord_NodeTunnelStatuses()
+        {
+            this._logger.name += " -NodeTunnelStatuses";
+            // Create new graphql operation nodeTunnelStatuses
+            InitQueryNodeTunnelStatuses();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -9935,7 +9989,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryActiveCustomAnalyzers",
                 "",
                 "AnalyzerConnection",
-                Query.ActiveCustomAnalyzers_ObjectFieldSpec,
+                Query.ActiveCustomAnalyzers,
                 Query.ActiveCustomAnalyzersFieldSpec,
                 @""
             );
@@ -9962,7 +10016,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAdGroupMembers",
                 "($first: Int,$after: String,$orgId: UUID!,$adGroupSpec: AdGroupSpecInput!)",
                 "O365AdGroupMemberConnection",
-                Query.AdGroupMembers_ObjectFieldSpec,
+                Query.AdGroupMembers,
                 Query.AdGroupMembersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -10014,7 +10068,7 @@ $query.Var.adGroupSpec = @{
                 "QueryAdVolumeExports",
                 "($first: Int,$after: String,$filters: [AdVolumeExportFilter!],$sortBy: AdVolumeExportSortByInput)",
                 "AdVolumeExportConnection",
-                Query.AdVolumeExports_ObjectFieldSpec,
+                Query.AdVolumeExports,
                 Query.AdVolumeExportsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -10054,7 +10108,7 @@ $query.Var.sortBy = @{
                 "QueryAgentDeploymentSetting",
                 "($input: GetVmAgentDeploymentSettingInput!)",
                 "AgentDeploymentSettings",
-                Query.AgentDeploymentSetting_ObjectFieldSpec,
+                Query.AgentDeploymentSetting,
                 Query.AgentDeploymentSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10077,7 +10131,7 @@ $query.Var.input = @{
                 "QueryAllAgentDeploymentSettings",
                 "($clusterUuids: [UUID!]!)",
                 "List<AgentDeploymentSettingsInfo>",
-                Query.AllAgentDeploymentSettings_ObjectFieldSpec,
+                Query.AllAgentDeploymentSettings,
                 Query.AllAgentDeploymentSettingsFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuids = @(
@@ -10098,7 +10152,7 @@ $query.Var.clusterUuids = @(
                 "QueryAllAllowedOrgAdminOperations",
                 "",
                 "List<Operation>",
-                Query.AllAllowedOrgAdminOperations_ObjectFieldSpec,
+                Query.AllAllowedOrgAdminOperations,
                 Query.AllAllowedOrgAdminOperationsFieldSpec,
                 @""
             );
@@ -10116,7 +10170,7 @@ $query.Var.clusterUuids = @(
                 "QueryAnalyzerGroups",
                 "",
                 "AnalyzerGroupConnection",
-                Query.AnalyzerGroups_ObjectFieldSpec,
+                Query.AnalyzerGroups,
                 Query.AnalyzerGroupsFieldSpec,
                 @""
             );
@@ -10134,7 +10188,7 @@ $query.Var.clusterUuids = @(
                 "QueryAnalyzerUsages",
                 "",
                 "AnalyzerUsageConnection",
-                Query.AnalyzerUsages_ObjectFieldSpec,
+                Query.AnalyzerUsages,
                 Query.AnalyzerUsagesFieldSpec,
                 @""
             );
@@ -10161,7 +10215,7 @@ $query.Var.clusterUuids = @(
                 "QueryAnomalyResultOpt",
                 "($clusterUuid: UUID,$snapshotId: String,$workloadId: UUID,$anomalyId: String)",
                 "GetAnomalyDetailsReply",
-                Query.AnomalyResultOpt_ObjectFieldSpec,
+                Query.AnomalyResultOpt,
                 Query.AnomalyResultOptFieldSpec,
                 @"# OPTIONAL
 $query.Var.clusterUuid = $someString
@@ -10203,7 +10257,7 @@ $query.Var.anomalyId = $someString"
                 "QueryAnomalyResults",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: AnomalyResultSortBy,$filter: AnomalyResultFilterInput,$timezoneOffset: Float)",
                 "AnomalyResultConnection",
-                Query.AnomalyResults_ObjectFieldSpec,
+                Query.AnomalyResults,
                 Query.AnomalyResultsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -10270,7 +10324,7 @@ $query.Var.timezoneOffset = $someSingle"
                 "QueryAnomalyResultsGrouped",
                 "($first: Int,$after: String,$last: Int,$before: String,$groupBy: AnomalyResultGroupBy!,$filter: AnomalyResultFilterInput,$timezoneOffset: Float)",
                 "AnomalyResultGroupedDataConnection",
-                Query.AnomalyResultsGrouped_ObjectFieldSpec,
+                Query.AnomalyResultsGrouped,
                 Query.AnomalyResultsGroupedFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -10321,7 +10375,7 @@ $query.Var.timezoneOffset = $someSingle"
                 "QueryAreMultiGeoBackupsEnabled",
                 "($orgId: UUID!)",
                 "System.Boolean",
-                Query.AreMultiGeoBackupsEnabled_ObjectFieldSpec,
+                Query.AreMultiGeoBackupsEnabled,
                 Query.AreMultiGeoBackupsEnabledFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString"
@@ -10340,7 +10394,7 @@ $query.Var.orgId = $someString"
                 "QueryAllAuthorizationsForGlobalResource",
                 "",
                 "List<Operation>",
-                Query.AllAuthorizationsForGlobalResource_ObjectFieldSpec,
+                Query.AllAuthorizationsForGlobalResource,
                 Query.AllAuthorizationsForGlobalResourceFieldSpec,
                 @""
             );
@@ -10359,7 +10413,7 @@ $query.Var.orgId = $someString"
                 "QueryAllAuthorizationsForObject",
                 "($fid: UUID!)",
                 "List<Operation>",
-                Query.AllAuthorizationsForObject_ObjectFieldSpec,
+                Query.AllAuthorizationsForObject,
                 Query.AllAuthorizationsForObjectFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -10379,7 +10433,7 @@ $query.Var.fid = $someString"
                 "QueryAllAuthorizationsForObjects",
                 "($fids: [UUID!]!)",
                 "List<AuthorizedOperations>",
-                Query.AllAuthorizationsForObjects_ObjectFieldSpec,
+                Query.AllAuthorizationsForObjects,
                 Query.AllAuthorizationsForObjectsFieldSpec,
                 @"# REQUIRED
 $query.Var.fids = @(
@@ -10409,7 +10463,7 @@ $query.Var.fids = @(
                 "QueryAllAwsComputeSettings",
                 "($sortBy: AwsCloudComputeSettingQuerySortByField,$sortOrder: SortOrder,$filter: [AwsCloudComputeSettingFilterInput!],$contextFilter: ContextFilterTypeEnum)",
                 "List<AwsComputeSettings>",
-                Query.AllAwsComputeSettings_ObjectFieldSpec,
+                Query.AllAwsComputeSettings,
                 Query.AllAwsComputeSettingsFieldSpec,
                 @"# OPTIONAL
 $query.Var.sortBy = $someAwsCloudComputeSettingQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudComputeSettingQuerySortByField]) for enum values.
@@ -10443,7 +10497,7 @@ $query.Var.contextFilter = $someContextFilterTypeEnum # Call [Enum]::GetValues([
                 "QueryAllAzureResourceGroups",
                 "($cloudAccountId: String!,$azureRegion: String!)",
                 "List<System.String>",
-                Query.AllAzureResourceGroups_ObjectFieldSpec,
+                Query.AllAzureResourceGroups,
                 Query.AllAzureResourceGroupsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString
@@ -10465,7 +10519,7 @@ $query.Var.azureRegion = $someString"
                 "QueryAllAzureSubnets",
                 "($subnetRequest: AzureSubnetReq!)",
                 "List<System.String>",
-                Query.AllAzureSubnets_ObjectFieldSpec,
+                Query.AllAzureSubnets,
                 Query.AllAzureSubnetsFieldSpec,
                 @"# REQUIRED
 $query.Var.subnetRequest = @{
@@ -10492,7 +10546,7 @@ $query.Var.subnetRequest = @{
                 "QueryAllBackupThrottleSettings",
                 "($clusterUuids: [UUID!]!)",
                 "List<BackupThrottleSetting>",
-                Query.AllBackupThrottleSettings_ObjectFieldSpec,
+                Query.AllBackupThrottleSettings,
                 Query.AllBackupThrottleSettingsFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuids = @(
@@ -10528,7 +10582,7 @@ $query.Var.clusterUuids = @(
                 "QueryBrowseCalendar",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$folderId: String!,$orgId: UUID!,$calendarSearchFilter: CalendarSearchFilter)",
                 "O365ExchangeObjectConnection",
-                Query.BrowseCalendar_ObjectFieldSpec,
+                Query.BrowseCalendar,
                 Query.BrowseCalendarFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -10625,7 +10679,7 @@ $query.Var.calendarSearchFilter = @{
                 "QueryBrowseContacts",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$folderId: String!,$orgId: UUID!,$contactsSearchFilter: ContactsSearchFilter)",
                 "O365ExchangeObjectConnection",
-                Query.BrowseContacts_ObjectFieldSpec,
+                Query.BrowseContacts,
                 Query.BrowseContactsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -10697,7 +10751,7 @@ $query.Var.contactsSearchFilter = @{
                 "QueryBrowseFolder",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$folderId: String!,$orgId: UUID!)",
                 "O365ExchangeObjectConnection",
-                Query.BrowseFolder_ObjectFieldSpec,
+                Query.BrowseFolder,
                 Query.BrowseFolderFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -10741,7 +10795,7 @@ $query.Var.orgId = $someString"
                 "QueryBrowseOnedrive",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$folderId: String,$onedriveSearchFilter: OnedriveSearchFilter,$orgId: UUID!)",
                 "O365OnedriveObjectConnection",
-                Query.BrowseOnedrive_ObjectFieldSpec,
+                Query.BrowseOnedrive,
                 Query.BrowseOnedriveFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -10841,7 +10895,7 @@ $query.Var.orgId = $someString"
                 "QueryBrowseTeamsChannels",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$orgId: UUID!,$channelMembershipTypeFilter: ChannelMembershipType!,$nameFilter: String)",
                 "O365TeamsChannelConnection",
-                Query.BrowseTeamsChannels_ObjectFieldSpec,
+                Query.BrowseTeamsChannels,
                 Query.BrowseTeamsChannelsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -10887,7 +10941,7 @@ $query.Var.nameFilter = $someString"
                 "QueryBrowseTeamsDrive",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$folderId: String,$teamsDriveSearchFilter: OnedriveSearchFilter,$orgId: UUID!)",
                 "O365OnedriveObjectConnection",
-                Query.BrowseTeamsDrive_ObjectFieldSpec,
+                Query.BrowseTeamsDrive,
                 Query.BrowseTeamsDriveFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -10973,7 +11027,7 @@ $query.Var.orgId = $someString"
                 "QueryAllCdmGuestCredentials",
                 "($clusterUuids: [UUID!]!)",
                 "List<CdmGuestCredential>",
-                Query.AllCdmGuestCredentials_ObjectFieldSpec,
+                Query.AllCdmGuestCredentials,
                 Query.AllCdmGuestCredentialsFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuids = @(
@@ -10995,7 +11049,7 @@ $query.Var.clusterUuids = @(
                 "QueryCdmInventorySubHierarchyRoot",
                 "($rootEnum: InventorySubHierarchyRootEnum!)",
                 "CdmInventorySubHierarchyRoot",
-                Query.CdmInventorySubHierarchyRoot_ObjectFieldSpec,
+                Query.CdmInventorySubHierarchyRoot,
                 Query.CdmInventorySubHierarchyRootFieldSpec,
                 @"# REQUIRED
 $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InventorySubHierarchyRootEnum]) for enum values."
@@ -11014,7 +11068,7 @@ $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValue
                 "QueryAllCdmOvaDetails",
                 "",
                 "List<CdmOvaDetail>",
-                Query.AllCdmOvaDetails_ObjectFieldSpec,
+                Query.AllCdmOvaDetails,
                 Query.AllCdmOvaDetailsFieldSpec,
                 @""
             );
@@ -11033,7 +11087,7 @@ $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValue
                 "QueryCdmVersionCheck",
                 "($featureToCdmVersion: FeatureCdmVersionInput!)",
                 "FeatureCdmVersionReply",
-                Query.CdmVersionCheck_ObjectFieldSpec,
+                Query.CdmVersionCheck,
                 Query.CdmVersionCheckFieldSpec,
                 @"# REQUIRED
 $query.Var.featureToCdmVersion = @{
@@ -11070,7 +11124,7 @@ $query.Var.featureToCdmVersion = @{
                 "QueryAllCdpVmsInfos",
                 "($first: Int,$after: String,$last: Int,$before: String,$allCdpVmInfoSort: CdpPerfDashboardSortParam,$allCdpVmInfoFilter: [CdpPerfDashboardFilterParam!])",
                 "CdpVmInfoConnection",
-                Query.AllCdpVmsInfos_ObjectFieldSpec,
+                Query.AllCdpVmsInfos,
                 Query.AllCdpVmsInfosFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -11132,7 +11186,7 @@ $query.Var.allCdpVmInfoFilter = @(
                 "QueryCheckCloudComputeConnectivityJobProgress",
                 "($input: GetCloudComputeConnectivityCheckRequestStatusInput!)",
                 "AsyncRequestStatus",
-                Query.CheckCloudComputeConnectivityJobProgress_ObjectFieldSpec,
+                Query.CheckCloudComputeConnectivityJobProgress,
                 Query.CheckCloudComputeConnectivityJobProgressFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -11155,7 +11209,7 @@ $query.Var.input = @{
                 "QueryCheckLatestVersionMgmtAppExists",
                 "($input: CheckLatestVersionMgmtAppExistsInput!)",
                 "CheckLatestVersionMgmtAppExistsReply",
-                Query.CheckLatestVersionMgmtAppExists_ObjectFieldSpec,
+                Query.CheckLatestVersionMgmtAppExists,
                 Query.CheckLatestVersionMgmtAppExistsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -11178,7 +11232,7 @@ $query.Var.input = @{
                 "QueryCloudDirectNasExport",
                 "($fid: UUID!)",
                 "CloudDirectNasExport",
-                Query.CloudDirectNasExport_ObjectFieldSpec,
+                Query.CloudDirectNasExport,
                 Query.CloudDirectNasExportFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -11198,7 +11252,7 @@ $query.Var.fid = $someString"
                 "QueryAllCloudDirectShares",
                 "($input: AllCloudDirectSharesInput!)",
                 "List<ShareExportIdPair>",
-                Query.AllCloudDirectShares_ObjectFieldSpec,
+                Query.AllCloudDirectShares,
                 Query.AllCloudDirectSharesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -11222,7 +11276,7 @@ $query.Var.input = @{
                 "QueryAllCloudDirectSites",
                 "",
                 "List<CloudDirectSite>",
-                Query.AllCloudDirectSites_ObjectFieldSpec,
+                Query.AllCloudDirectSites,
                 Query.AllCloudDirectSitesFieldSpec,
                 @""
             );
@@ -11241,7 +11295,7 @@ $query.Var.input = @{
                 "QueryCloudDirectSystems",
                 "($input: CloudDirectSystemsInput!)",
                 "CloudDirectSystems",
-                Query.CloudDirectSystems_ObjectFieldSpec,
+                Query.CloudDirectSystems,
                 Query.CloudDirectSystemsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -11278,7 +11332,7 @@ $query.Var.input = @{
                 "QueryConfiguredGroupMembers",
                 "($first: Int,$after: String,$orgId: UUID!,$wildcard: String,$pdls: [String!]!,$workloadHierarchy: WorkloadLevelHierarchy,$groupFilterAttributes: [GroupFilterAttribute!])",
                 "O365ConfiguredGroupMemberConnection",
-                Query.ConfiguredGroupMembers_ObjectFieldSpec,
+                Query.ConfiguredGroupMembers,
                 Query.ConfiguredGroupMembersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -11323,7 +11377,7 @@ $query.Var.groupFilterAttributes = @(
                 "QueryCrawl",
                 "($crawlId: String!)",
                 "Crawl",
-                Query.Crawl_ObjectFieldSpec,
+                Query.Crawl,
                 Query.CrawlFieldSpec,
                 @"# REQUIRED
 $query.Var.crawlId = $someString"
@@ -11342,7 +11396,7 @@ $query.Var.crawlId = $someString"
                 "QueryCrawls",
                 "",
                 "CrawlConnection",
-                Query.Crawls_ObjectFieldSpec,
+                Query.Crawls,
                 Query.CrawlsFieldSpec,
                 @""
             );
@@ -11375,7 +11429,7 @@ $query.Var.crawlId = $someString"
                 "QueryCrossAccountPairs",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: GetCrossAccountPairsSortByField,$filter: [GetCrossAccountPairsFilter!],$sortOrder: SortOrder)",
                 "CrossAccountPairInfoConnection",
-                Query.CrossAccountPairs_ObjectFieldSpec,
+                Query.CrossAccountPairs,
                 Query.CrossAccountPairsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -11413,7 +11467,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryCurrentIpAddress",
                 "",
                 "System.String",
-                Query.CurrentIpAddress_ObjectFieldSpec,
+                Query.CurrentIpAddress,
                 Query.CurrentIpAddressFieldSpec,
                 @""
             );
@@ -11431,7 +11485,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryCurrentOrg",
                 "",
                 "Org",
-                Query.CurrentOrg_ObjectFieldSpec,
+                Query.CurrentOrg,
                 Query.CurrentOrgFieldSpec,
                 @""
             );
@@ -11449,7 +11503,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryCurrentOrgAuthDomainConfig",
                 "",
                 "TenantAuthDomainConfig",
-                Query.CurrentOrgAuthDomainConfig_ObjectFieldSpec,
+                Query.CurrentOrgAuthDomainConfig,
                 Query.CurrentOrgAuthDomainConfigFieldSpec,
                 @""
             );
@@ -11467,7 +11521,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryAllCurrentOrgIdentityProviders",
                 "",
                 "List<IdentityProvider>",
-                Query.AllCurrentOrgIdentityProviders_ObjectFieldSpec,
+                Query.AllCurrentOrgIdentityProviders,
                 Query.AllCurrentOrgIdentityProvidersFieldSpec,
                 @""
             );
@@ -11486,7 +11540,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryCustomAnalyzer",
                 "($analyzerId: String!)",
                 "Analyzer",
-                Query.CustomAnalyzer_ObjectFieldSpec,
+                Query.CustomAnalyzer,
                 Query.CustomAnalyzerFieldSpec,
                 @"# REQUIRED
 $query.Var.analyzerId = $someString"
@@ -11506,7 +11560,7 @@ $query.Var.analyzerId = $someString"
                 "QueryDashboardSummary",
                 "($getWhitelistedResults: Boolean!)",
                 "GetDashboardSummaryReply",
-                Query.DashboardSummary_ObjectFieldSpec,
+                Query.DashboardSummary,
                 Query.DashboardSummaryFieldSpec,
                 @"# REQUIRED
 $query.Var.getWhitelistedResults = $someBoolean"
@@ -11536,7 +11590,7 @@ $query.Var.getWhitelistedResults = $someBoolean"
                 "QueryDatagovSecDesc",
                 "($snappableFid: String!,$snapshotFid: String!,$stdPath: String!,$skipResolveSids: Boolean,$filters: SddlRequestFiltersInput)",
                 "QuerySddlReply",
-                Query.DatagovSecDesc_ObjectFieldSpec,
+                Query.DatagovSecDesc,
                 Query.DatagovSecDescFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString
@@ -11568,7 +11622,7 @@ $query.Var.filters = @{
                 "QueryDecryptExportUrl",
                 "($workloadFid: UUID!,$exportUrlSpecsEnc: String!)",
                 "ExportUrlSpecs",
-                Query.DecryptExportUrl_ObjectFieldSpec,
+                Query.DecryptExportUrl,
                 Query.DecryptExportUrlFieldSpec,
                 @"# REQUIRED
 $query.Var.workloadFid = $someString
@@ -11589,7 +11643,7 @@ $query.Var.exportUrlSpecsEnc = $someString"
                 "QueryAllDeploymentIpAddresses",
                 "",
                 "List<System.String>",
-                Query.AllDeploymentIpAddresses_ObjectFieldSpec,
+                Query.AllDeploymentIpAddresses,
                 Query.AllDeploymentIpAddressesFieldSpec,
                 @""
             );
@@ -11607,7 +11661,7 @@ $query.Var.exportUrlSpecsEnc = $someString"
                 "QueryDeploymentVersion",
                 "",
                 "System.String",
-                Query.DeploymentVersion_ObjectFieldSpec,
+                Query.DeploymentVersion,
                 Query.DeploymentVersionFieldSpec,
                 @""
             );
@@ -11626,7 +11680,7 @@ $query.Var.exportUrlSpecsEnc = $someString"
                 "QueryAllDhrcActiveRecommendations",
                 "($categories: [DhrcCategory!])",
                 "List<DhrcActiveRecommendation>",
-                Query.AllDhrcActiveRecommendations_ObjectFieldSpec,
+                Query.AllDhrcActiveRecommendations,
                 Query.AllDhrcActiveRecommendationsFieldSpec,
                 @"# OPTIONAL
 $query.Var.categories = @(
@@ -11648,7 +11702,7 @@ $query.Var.categories = @(
                 "QueryAllDhrcLatestMetrics",
                 "($categories: [DhrcCategory!])",
                 "List<DhrcCollectedMetric>",
-                Query.AllDhrcLatestMetrics_ObjectFieldSpec,
+                Query.AllDhrcLatestMetrics,
                 Query.AllDhrcLatestMetricsFieldSpec,
                 @"# OPTIONAL
 $query.Var.categories = @(
@@ -11672,7 +11726,7 @@ $query.Var.categories = @(
                 "QueryAllDhrcScores",
                 "($categories: [DhrcCategory!],$beginTime: DateTime,$timespan: DhrcScoreTimespan)",
                 "List<DhrcScore>",
-                Query.AllDhrcScores_ObjectFieldSpec,
+                Query.AllDhrcScores,
                 Query.AllDhrcScoresFieldSpec,
                 @"# OPTIONAL
 $query.Var.categories = @(
@@ -11706,7 +11760,7 @@ $query.Var.timespan = $someDhrcScoreTimespan # Call [Enum]::GetValues([RubrikSec
                 "QueryDiffFmd",
                 "($clusterUuid: UUID!,$managedId: String!,$snapshotId: String!,$browseDiffPath: String!)",
                 "DiffResult",
-                Query.DiffFmd_ObjectFieldSpec,
+                Query.DiffFmd,
                 Query.DiffFmdFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString
@@ -11732,7 +11786,7 @@ $query.Var.browseDiffPath = $someString"
                 "QueryDiscoverNodes",
                 "($id: String!)",
                 "BootstrappableNodeInfoListResponse",
-                Query.DiscoverNodes_ObjectFieldSpec,
+                Query.DiscoverNodes,
                 Query.DiscoverNodesFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString"
@@ -11766,7 +11820,7 @@ $query.Var.id = $someString"
                 "QueryDiscoveryTimeline",
                 "($startDay: String!,$endDay: String!,$timezone: String!,$getWhitelistedResults: Boolean!,$workloadTypes: [DataGovObjectType!]!,$useOptimisedDiscoveryTimeline: Boolean,$subscriptionIdsFilter: [String!])",
                 "GetPoliciesTimelineReply",
-                Query.DiscoveryTimeline_ObjectFieldSpec,
+                Query.DiscoveryTimeline,
                 Query.DiscoveryTimelineFieldSpec,
                 @"# REQUIRED
 $query.Var.startDay = $someString
@@ -11802,7 +11856,7 @@ $query.Var.subscriptionIdsFilter = @(
                 "QueryDistributionListDigest",
                 "($input: DistributionDigestByIdInput!)",
                 "EventDigest",
-                Query.DistributionListDigest_ObjectFieldSpec,
+                Query.DistributionListDigest,
                 Query.DistributionListDigestFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -11824,7 +11878,7 @@ $query.Var.input = @{
                 "QueryAllDistributionListDigests",
                 "",
                 "List<EventDigest>",
-                Query.AllDistributionListDigests_ObjectFieldSpec,
+                Query.AllDistributionListDigests,
                 Query.AllDistributionListDigestsFieldSpec,
                 @""
             );
@@ -11842,7 +11896,7 @@ $query.Var.input = @{
                 "QueryDummyFieldWithAdminOnlyTag",
                 "",
                 "System.Boolean",
-                Query.DummyFieldWithAdminOnlyTag_ObjectFieldSpec,
+                Query.DummyFieldWithAdminOnlyTag,
                 Query.DummyFieldWithAdminOnlyTagFieldSpec,
                 @""
             );
@@ -11860,7 +11914,7 @@ $query.Var.input = @{
                 "QueryEdgeWindowsToolLink",
                 "",
                 "EdgeWindowsToolLink",
-                Query.EdgeWindowsToolLink_ObjectFieldSpec,
+                Query.EdgeWindowsToolLink,
                 Query.EdgeWindowsToolLinkFieldSpec,
                 @""
             );
@@ -11879,7 +11933,7 @@ $query.Var.input = @{
                 "QueryAllEffectiveRbacPermissions",
                 "($roleId: String!)",
                 "List<RbacPermission>",
-                Query.AllEffectiveRbacPermissions_ObjectFieldSpec,
+                Query.AllEffectiveRbacPermissions,
                 Query.AllEffectiveRbacPermissionsFieldSpec,
                 @"# REQUIRED
 $query.Var.roleId = $someString"
@@ -11899,7 +11953,7 @@ $query.Var.roleId = $someString"
                 "QueryAllEventDigests",
                 "($input: AllEventDigestsInput!)",
                 "List<EventDigest>",
-                Query.AllEventDigests_ObjectFieldSpec,
+                Query.AllEventDigests,
                 Query.AllEventDigestsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -11923,7 +11977,7 @@ $query.Var.input = @{
                 "QueryExternalDeploymentName",
                 "",
                 "System.String",
-                Query.ExternalDeploymentName_ObjectFieldSpec,
+                Query.ExternalDeploymentName,
                 Query.ExternalDeploymentNameFieldSpec,
                 @""
             );
@@ -11943,7 +11997,7 @@ $query.Var.input = @{
                 "QueryFailedRestoreItemsInfo",
                 "($workloadFid: UUID!,$failedItemsInstanceId: String!)",
                 "FailedRestoreItemsInfoReply",
-                Query.FailedRestoreItemsInfo_ObjectFieldSpec,
+                Query.FailedRestoreItemsInfo,
                 Query.FailedRestoreItemsInfoFieldSpec,
                 @"# REQUIRED
 $query.Var.workloadFid = $someString
@@ -11964,7 +12018,7 @@ $query.Var.failedItemsInstanceId = $someString"
                 "QueryFederatedLoginStatus",
                 "",
                 "FederatedLoginStatus",
-                Query.FederatedLoginStatus_ObjectFieldSpec,
+                Query.FederatedLoginStatus,
                 Query.FederatedLoginStatusFieldSpec,
                 @""
             );
@@ -11995,7 +12049,7 @@ $query.Var.failedItemsInstanceId = $someString"
                 "QueryAllFileActivities",
                 "($ListFileActivitiesInput: ListFileActivitiesInput!,$FileActivitiesSort: FileActivitiesSort!,$first: Int,$after: String,$last: Int,$before: String)",
                 "UserActivityResultConnection",
-                Query.AllFileActivities_ObjectFieldSpec,
+                Query.AllFileActivities,
                 Query.AllFileActivitiesFieldSpec,
                 @"# REQUIRED
 $query.Var.ListFileActivitiesInput = @{
@@ -12038,7 +12092,7 @@ $query.Var.before = $someString"
                 "QueryGeoLocationList",
                 "",
                 "List<GroupCount>",
-                Query.GeoLocationList_ObjectFieldSpec,
+                Query.GeoLocationList,
                 Query.GeoLocationListFieldSpec,
                 @""
             );
@@ -12073,7 +12127,7 @@ $query.Var.before = $someString"
                 "QueryGetAllRolesInOrgConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: RoleFieldEnum,$nameFilter: String,$assignedRoleIds: [UUID!])",
                 "RoleConnection",
-                Query.GetAllRolesInOrgConnection_ObjectFieldSpec,
+                Query.GetAllRolesInOrgConnection,
                 Query.GetAllRolesInOrgConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -12123,7 +12177,7 @@ $query.Var.assignedRoleIds = @(
                 "QueryGetCdmReleaseDetailsForVersionFromSupportPortal",
                 "($listClusterUuid: [UUID!]!,$filterVersion: String!,$fetchLinks: Boolean!,$filterUpgradeable: Boolean!,$shouldShowAll: Boolean!,$filterAfterSource: Boolean!,$sortOrder: SortOrder)",
                 "CdmUpgradeReleaseDetailsFromSupportPortalReply",
-                Query.GetCdmReleaseDetailsForVersionFromSupportPortal_ObjectFieldSpec,
+                Query.GetCdmReleaseDetailsForVersionFromSupportPortal,
                 Query.GetCdmReleaseDetailsForVersionFromSupportPortalFieldSpec,
                 @"# REQUIRED
 $query.Var.listClusterUuid = @(
@@ -12175,7 +12229,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryGetCdmReleaseDetailsFromSupportPortal",
                 "($platform: String!,$nodeCount: Long!,$sourceVersion: String!,$filterVersion: String!,$fetchLinks: Boolean!,$filterUpgradeable: Boolean!,$shouldShowAll: Boolean!,$filterAfterSource: Boolean!,$sortOrder: SortOrder)",
                 "CdmUpgradeReleaseDetailsFromSupportPortalReply",
-                Query.GetCdmReleaseDetailsFromSupportPortal_ObjectFieldSpec,
+                Query.GetCdmReleaseDetailsFromSupportPortal,
                 Query.GetCdmReleaseDetailsFromSupportPortalFieldSpec,
                 @"# REQUIRED
 $query.Var.platform = $someString
@@ -12210,7 +12264,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryGetGroupCountByPrechecksStatus",
                 "",
                 "List<GroupCount>",
-                Query.GetGroupCountByPrechecksStatus_ObjectFieldSpec,
+                Query.GetGroupCountByPrechecksStatus,
                 Query.GetGroupCountByPrechecksStatusFieldSpec,
                 @""
             );
@@ -12228,7 +12282,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryGetGroupCountByUpgradeJobStatus",
                 "",
                 "List<GroupCount>",
-                Query.GetGroupCountByUpgradeJobStatus_ObjectFieldSpec,
+                Query.GetGroupCountByUpgradeJobStatus,
                 Query.GetGroupCountByUpgradeJobStatusFieldSpec,
                 @""
             );
@@ -12246,7 +12300,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryGetGroupCountByVersionStatus",
                 "",
                 "List<GroupCount>",
-                Query.GetGroupCountByVersionStatus_ObjectFieldSpec,
+                Query.GetGroupCountByVersionStatus,
                 Query.GetGroupCountByVersionStatusFieldSpec,
                 @""
             );
@@ -12265,30 +12319,10 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryGetKorgTaskchainStatus",
                 "($taskchainId: String!)",
                 "GetTaskchainStatusReply",
-                Query.GetKorgTaskchainStatus_ObjectFieldSpec,
+                Query.GetKorgTaskchainStatus,
                 Query.GetKorgTaskchainStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.taskchainId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // getPermissions(roleId: String!): [Permission!]!
-        internal void InitQueryGetPermissions()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("roleId", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryGetPermissions",
-                "($roleId: String!)",
-                "List<Permission>",
-                Query.GetPermissions_ObjectFieldSpec,
-                Query.GetPermissionsFieldSpec,
-                @"# REQUIRED
-$query.Var.roleId = $someString"
             );
         }
 
@@ -12305,7 +12339,7 @@ $query.Var.roleId = $someString"
                 "QueryGetRolesByIds",
                 "($roleIds: [String!]!)",
                 "List<Role>",
-                Query.GetRolesByIds_ObjectFieldSpec,
+                Query.GetRolesByIds,
                 Query.GetRolesByIdsFieldSpec,
                 @"# REQUIRED
 $query.Var.roleIds = @(
@@ -12335,7 +12369,7 @@ $query.Var.roleIds = @(
                 "QueryGetUserDownloads",
                 "($first: Int,$after: String,$last: Int,$before: String)",
                 "List<UserDownload>",
-                Query.GetUserDownloads_ObjectFieldSpec,
+                Query.GetUserDownloads,
                 Query.GetUserDownloadsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -12361,7 +12395,7 @@ $query.Var.before = $someString"
                 "QueryGlobalFileSearch",
                 "($input: GlobalFileSearchInput!)",
                 "GlobalFileSearchReply",
-                Query.GlobalFileSearch_ObjectFieldSpec,
+                Query.GlobalFileSearch,
                 Query.GlobalFileSearchFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -12392,7 +12426,7 @@ $query.Var.input = @{
                 "QueryGlobalLockoutConfig",
                 "",
                 "LockoutConfig",
-                Query.GlobalLockoutConfig_ObjectFieldSpec,
+                Query.GlobalLockoutConfig,
                 Query.GlobalLockoutConfigFieldSpec,
                 @""
             );
@@ -12410,7 +12444,7 @@ $query.Var.input = @{
                 "QueryGlobalMfaSetting",
                 "",
                 "GetMfaSettingReply",
-                Query.GlobalMfaSetting_ObjectFieldSpec,
+                Query.GlobalMfaSetting,
                 Query.GlobalMfaSettingFieldSpec,
                 @""
             );
@@ -12443,7 +12477,7 @@ $query.Var.input = @{
                 "QueryGlobalSearchResults",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "HierarchyObjectConnection",
-                Query.GlobalSearchResults_ObjectFieldSpec,
+                Query.GlobalSearchResults,
                 Query.GlobalSearchResultsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -12529,7 +12563,7 @@ $query.Var.filter = @(
                 "QueryGroupsInCurrentAndDescendantOrganization",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: GroupFilterInput,$sortBy: GroupSortByParam,$shouldIncludeGroupsWithoutRole: Boolean)",
                 "GroupConnection",
-                Query.GroupsInCurrentAndDescendantOrganization_ObjectFieldSpec,
+                Query.GroupsInCurrentAndDescendantOrganization,
                 Query.GroupsInCurrentAndDescendantOrganizationFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -12577,7 +12611,7 @@ $query.Var.shouldIncludeGroupsWithoutRole = $someBoolean"
                 "QueryGuestCredentials",
                 "($input: QueryGuestCredentialInput!)",
                 "GuestCredentialDetailListResponse",
-                Query.GuestCredentials_ObjectFieldSpec,
+                Query.GuestCredentials,
                 Query.GuestCredentialsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -12608,7 +12642,7 @@ $query.Var.input = @{
                 "QueryGuestCredentialsV2",
                 "($first: Int,$after: String,$filter: [GuestOsCredentialFilterInput!],$sortBy: GuestOsCredentialSortBy)",
                 "GuestOsCredentialConnection",
-                Query.GuestCredentialsV2_ObjectFieldSpec,
+                Query.GuestCredentialsV2,
                 Query.GuestCredentialsV2FieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -12647,7 +12681,7 @@ $query.Var.sortBy = @{
                 "QueryHasIdpConfigured",
                 "",
                 "System.Boolean",
-                Query.HasIdpConfigured_ObjectFieldSpec,
+                Query.HasIdpConfigured,
                 Query.HasIdpConfiguredFieldSpec,
                 @""
             );
@@ -12676,7 +12710,7 @@ $query.Var.sortBy = @{
                 "QueryHelpContentSnippets",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: HelpContentSnippetsFilterInput!)",
                 "HelpContentSnippetConnection",
-                Query.HelpContentSnippets_ObjectFieldSpec,
+                Query.HelpContentSnippets,
                 Query.HelpContentSnippetsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -12721,7 +12755,7 @@ $query.Var.filter = @{
                 "QueryHierarchyObject",
                 "($fid: UUID!)",
                 "HierarchyObject",
-                Query.HierarchyObject_ObjectFieldSpec,
+                Query.HierarchyObject,
                 Query.HierarchyObjectFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -12742,7 +12776,7 @@ $query.Var.fid = $someString"
                 "QueryHierarchyObjects",
                 "($fids: [UUID!]!,$filter: [Filter!])",
                 "List<HierarchyObject>",
-                Query.HierarchyObjects_ObjectFieldSpec,
+                Query.HierarchyObjects,
                 Query.HierarchyObjectsFieldSpec,
                 @"# REQUIRED
 $query.Var.fids = @(
@@ -12805,7 +12839,7 @@ $query.Var.filter = @(
                 "QueryInstalledVersionList",
                 "",
                 "List<InstalledVersionGroupCount>",
-                Query.InstalledVersionList_ObjectFieldSpec,
+                Query.InstalledVersionList,
                 Query.InstalledVersionListFieldSpec,
                 @""
             );
@@ -12823,7 +12857,7 @@ $query.Var.filter = @(
                 "QueryInventoryRoot",
                 "",
                 "InventoryRoot",
-                Query.InventoryRoot_ObjectFieldSpec,
+                Query.InventoryRoot,
                 Query.InventoryRootFieldSpec,
                 @""
             );
@@ -12842,7 +12876,7 @@ $query.Var.filter = @(
                 "QueryInventorySubHierarchyRoot",
                 "($rootEnum: InventorySubHierarchyRootEnum!)",
                 "InventorySubHierarchyRoot",
-                Query.InventorySubHierarchyRoot_ObjectFieldSpec,
+                Query.InventorySubHierarchyRoot,
                 Query.InventorySubHierarchyRootFieldSpec,
                 @"# REQUIRED
 $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InventorySubHierarchyRootEnum]) for enum values."
@@ -12861,7 +12895,7 @@ $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValue
                 "QueryAllInventoryWorkloads",
                 "",
                 "List<InventoryCard>",
-                Query.AllInventoryWorkloads_ObjectFieldSpec,
+                Query.AllInventoryWorkloads,
                 Query.AllInventoryWorkloadsFieldSpec,
                 @""
             );
@@ -12882,7 +12916,7 @@ $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValue
                 "QueryInvestigationCsvDownloadLink",
                 "($clusterUuid: UUID!,$workloadId: String!,$snapshotId: String!)",
                 "InvestigationCsvDownloadLinkReply",
-                Query.InvestigationCsvDownloadLink_ObjectFieldSpec,
+                Query.InvestigationCsvDownloadLink,
                 Query.InvestigationCsvDownloadLinkFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString
@@ -12905,7 +12939,7 @@ $query.Var.snapshotId = $someString"
                 "QueryIpWhitelist",
                 "",
                 "GetWhitelistReply",
-                Query.IpWhitelist_ObjectFieldSpec,
+                Query.IpWhitelist,
                 Query.IpWhitelistFieldSpec,
                 @""
             );
@@ -12924,7 +12958,7 @@ $query.Var.snapshotId = $someString"
                 "QueryIsIpmiEnabled",
                 "($input: IsIpmiEnabledInput!)",
                 "System.Boolean",
-                Query.IsIpmiEnabled_ObjectFieldSpec,
+                Query.IsIpmiEnabled,
                 Query.IsIpmiEnabledFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -12946,7 +12980,7 @@ $query.Var.input = @{
                 "QueryIsLoggedIntoRubrikSupportPortal",
                 "",
                 "SupportPortalStatusReply",
-                Query.IsLoggedIntoRubrikSupportPortal_ObjectFieldSpec,
+                Query.IsLoggedIntoRubrikSupportPortal,
                 Query.IsLoggedIntoRubrikSupportPortalFieldSpec,
                 @""
             );
@@ -12965,7 +12999,7 @@ $query.Var.input = @{
                 "QueryIsReplaceNodeTprConfigured",
                 "($clusterUuid: UUID!)",
                 "System.Boolean",
-                Query.IsReplaceNodeTprConfigured_ObjectFieldSpec,
+                Query.IsReplaceNodeTprConfigured,
                 Query.IsReplaceNodeTprConfiguredFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -12986,7 +13020,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryIsSfdcReachable",
                 "($hostname: String!,$organizationId: String!)",
                 "System.Boolean",
-                Query.IsSfdcReachable_ObjectFieldSpec,
+                Query.IsSfdcReachable,
                 Query.IsSfdcReachableFieldSpec,
                 @"# REQUIRED
 $query.Var.hostname = $someString
@@ -13008,7 +13042,7 @@ $query.Var.organizationId = $someString"
                 "QueryIsUpgradeAvailable",
                 "($clusterUuid: UUID!)",
                 "CdmUpgradeAvailabilityReply",
-                Query.IsUpgradeAvailable_ObjectFieldSpec,
+                Query.IsUpgradeAvailable,
                 Query.IsUpgradeAvailableFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -13028,7 +13062,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryIsUpgradeRecommended",
                 "($clusterUuid: UUID!)",
                 "CdmUpgradeRecommendationReply",
-                Query.IsUpgradeRecommended_ObjectFieldSpec,
+                Query.IsUpgradeRecommended,
                 Query.IsUpgradeRecommendedFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -13050,7 +13084,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryIsZrsAvailableForLocation",
                 "($serviceTier: ServiceTier!,$region: AzureNativeRegion!,$subscriptionId: UUID!)",
                 "ZrsAvailabilityReply",
-                Query.IsZrsAvailableForLocation_ObjectFieldSpec,
+                Query.IsZrsAvailableForLocation,
                 Query.IsZrsAvailableForLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.serviceTier = $someServiceTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ServiceTier]) for enum values.
@@ -13074,7 +13108,7 @@ $query.Var.subscriptionId = $someString"
                 "QueryIssue",
                 "($issueId: String!)",
                 "Issue",
-                Query.Issue_ObjectFieldSpec,
+                Query.Issue,
                 Query.IssueFieldSpec,
                 @"# REQUIRED
 $query.Var.issueId = $someString"
@@ -13104,7 +13138,7 @@ $query.Var.issueId = $someString"
                 "QueryIssues",
                 "($status: IssueStatus!,$first: Int,$after: String,$last: Int,$before: String)",
                 "IssueConnection",
-                Query.Issues_ObjectFieldSpec,
+                Query.Issues,
                 Query.IssuesFieldSpec,
                 @"# REQUIRED
 $query.Var.status = $someIssueStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IssueStatus]) for enum values.
@@ -13132,7 +13166,7 @@ $query.Var.before = $someString"
                 "QueryAllIssuesJobIds",
                 "($queryIds: [String!]!)",
                 "List<System.String>",
-                Query.AllIssuesJobIds_ObjectFieldSpec,
+                Query.AllIssuesJobIds,
                 Query.AllIssuesJobIdsFieldSpec,
                 @"# REQUIRED
 $query.Var.queryIds = @(
@@ -13154,7 +13188,7 @@ $query.Var.queryIds = @(
                 "QueryJobInfo",
                 "($input: JobInfoRequest!)",
                 "JobInfo",
-                Query.JobInfo_ObjectFieldSpec,
+                Query.JobInfo,
                 Query.JobInfoFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -13502,7 +13536,7 @@ $query.Var.input = @{
                 "QueryKnowledgeBaseArticle",
                 "($id: String!)",
                 "KnowledgeBaseArticle",
-                Query.KnowledgeBaseArticle_ObjectFieldSpec,
+                Query.KnowledgeBaseArticle,
                 Query.KnowledgeBaseArticleFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString"
@@ -13522,7 +13556,7 @@ $query.Var.id = $someString"
                 "QueryKubernetesProtectionSet",
                 "($fid: UUID!)",
                 "KubernetesProtectionSet",
-                Query.KubernetesProtectionSet_ObjectFieldSpec,
+                Query.KubernetesProtectionSet,
                 Query.KubernetesProtectionSetFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -13554,7 +13588,7 @@ $query.Var.fid = $someString"
                 "QueryKubernetesProtectionSets",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$k8sClusterOptionalId: UUID)",
                 "KubernetesProtectionSetConnection",
-                Query.KubernetesProtectionSets_ObjectFieldSpec,
+                Query.KubernetesProtectionSets,
                 Query.KubernetesProtectionSetsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -13623,7 +13657,7 @@ $query.Var.k8sClusterOptionalId = $someString"
                 "QueryLambdaSettings",
                 "",
                 "LambdaSettings",
-                Query.LambdaSettings_ObjectFieldSpec,
+                Query.LambdaSettings,
                 Query.LambdaSettingsFieldSpec,
                 @""
             );
@@ -13641,7 +13675,7 @@ $query.Var.k8sClusterOptionalId = $someString"
                 "QueryAllLicensedProducts",
                 "",
                 "GetLicensedProductsInfoReply",
-                Query.AllLicensedProducts_ObjectFieldSpec,
+                Query.AllLicensedProducts,
                 Query.AllLicensedProductsFieldSpec,
                 @""
             );
@@ -13659,7 +13693,7 @@ $query.Var.k8sClusterOptionalId = $someString"
                 "QueryLockoutConfig",
                 "",
                 "LockoutConfig",
-                Query.LockoutConfig_ObjectFieldSpec,
+                Query.LockoutConfig,
                 Query.LockoutConfigFieldSpec,
                 @""
             );
@@ -13677,7 +13711,7 @@ $query.Var.k8sClusterOptionalId = $someString"
                 "QueryMaxProtectedAppsCount",
                 "",
                 "System.Int32",
-                Query.MaxProtectedAppsCount_ObjectFieldSpec,
+                Query.MaxProtectedAppsCount,
                 Query.MaxProtectedAppsCountFieldSpec,
                 @""
             );
@@ -13695,7 +13729,7 @@ $query.Var.k8sClusterOptionalId = $someString"
                 "QueryMfaSetting",
                 "",
                 "GetMfaSettingReply",
-                Query.MfaSetting_ObjectFieldSpec,
+                Query.MfaSetting,
                 Query.MfaSettingFieldSpec,
                 @""
             );
@@ -13714,7 +13748,7 @@ $query.Var.k8sClusterOptionalId = $someString"
                 "QueryMinimumCdmVersionForFeatureSet",
                 "($featureListMinimumCdmVersion: FeatureListMinimumCdmVersionInputType!)",
                 "FeatureListMinimumCdmVersionReply",
-                Query.MinimumCdmVersionForFeatureSet_ObjectFieldSpec,
+                Query.MinimumCdmVersionForFeatureSet,
                 Query.MinimumCdmVersionForFeatureSetFieldSpec,
                 @"# REQUIRED
 $query.Var.featureListMinimumCdmVersion = @{
@@ -13739,7 +13773,7 @@ $query.Var.featureListMinimumCdmVersion = @{
                 "QueryNetworkThrottle",
                 "($input: QueryNetworkThrottleInput!)",
                 "NetworkThrottleSummaryListResponse",
-                Query.NetworkThrottle_ObjectFieldSpec,
+                Query.NetworkThrottle,
                 Query.NetworkThrottleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -13780,7 +13814,7 @@ $query.Var.input = @{
                 "QueryNfAnomalyResults",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: NfAnomalyResultSortBy,$filter: NfAnomalyResultFilterInput,$timezoneOffset: Float)",
                 "NfAnomalyResultConnection",
-                Query.NfAnomalyResults_ObjectFieldSpec,
+                Query.NfAnomalyResults,
                 Query.NfAnomalyResultsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -13843,7 +13877,7 @@ $query.Var.timezoneOffset = $someSingle"
                 "QueryNfAnomalyResultsGrouped",
                 "($first: Int,$after: String,$last: Int,$before: String,$groupBy: NfAnomalyResultGroupBy!,$filter: NfAnomalyResultFilterInput,$timezoneOffset: Float)",
                 "NfAnomalyResultGroupedDataConnection",
-                Query.NfAnomalyResultsGrouped_ObjectFieldSpec,
+                Query.NfAnomalyResultsGrouped,
                 Query.NfAnomalyResultsGroupedFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -13890,7 +13924,7 @@ $query.Var.timezoneOffset = $someSingle"
                 "QueryNodeRemovalCancelPermission",
                 "($input: NodeRemovalCancelPermissionInput!)",
                 "NodeRemovalCancelPermissionReply",
-                Query.NodeRemovalCancelPermission_ObjectFieldSpec,
+                Query.NodeRemovalCancelPermission,
                 Query.NodeRemovalCancelPermissionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -13913,8 +13947,31 @@ $query.Var.input = @{
                 "QueryNodeToReplace",
                 "($input: NodeToReplaceInput!)",
                 "NodeToReplaceReply",
-                Query.NodeToReplace_ObjectFieldSpec,
+                Query.NodeToReplace,
                 Query.NodeToReplaceFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // nodeTunnelStatuses(input: GetNodesInput!): NodeTunnelStatusConnection!
+        internal void InitQueryNodeTunnelStatuses()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetNodesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNodeTunnelStatuses",
+                "($input: GetNodesInput!)",
+                "NodeTunnelStatusConnection",
+                Query.NodeTunnelStatuses,
+                Query.NodeTunnelStatusesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
@@ -13938,7 +13995,7 @@ $query.Var.input = @{
                 "QueryAllNosqlStorageLocations",
                 "($sortBy: MosaicStorageLocationQuerySortByField,$sortOrder: SortOrder,$filter: [MosaicStorageLocationFilterInput!])",
                 "List<MosaicStorageLocation>",
-                Query.AllNosqlStorageLocations_ObjectFieldSpec,
+                Query.AllNosqlStorageLocations,
                 Query.AllNosqlStorageLocationsFieldSpec,
                 @"# OPTIONAL
 $query.Var.sortBy = $someMosaicStorageLocationQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicStorageLocationQuerySortByField]) for enum values.
@@ -13970,7 +14027,7 @@ $query.Var.filter = @(
                 "QueryOauthCodesForEdgeReg",
                 "($numberOfEdges: Int!,$cdmOvaLink: String!)",
                 "OauthCodesForEdgeRegReply",
-                Query.OauthCodesForEdgeReg_ObjectFieldSpec,
+                Query.OauthCodesForEdgeReg,
                 Query.OauthCodesForEdgeRegFieldSpec,
                 @"# REQUIRED
 $query.Var.numberOfEdges = $someInt
@@ -14008,7 +14065,7 @@ $query.Var.cdmOvaLink = $someString"
                 "QueryObjectFiles",
                 "($filter: ListObjectFilesFiltersInput,$sort: FileResultSortInput,$day: String!,$timezone: String!,$first: Int,$after: String,$last: Int,$before: String)",
                 "FileResultConnection",
-                Query.ObjectFiles_ObjectFieldSpec,
+                Query.ObjectFiles,
                 Query.ObjectFilesFieldSpec,
                 @"# OPTIONAL
 $query.Var.filter = @{
@@ -14120,7 +14177,7 @@ $query.Var.before = $someString"
                 "QueryObjectTypeAccessSummary",
                 "($timelineDate: String!,$historicalDeltaDays: Int!,$includeWhitelistedResults: Boolean,$sortOrder: SortOrder,$filter: ObjectTypeSummariesFilter,$sort: ObjectTypeAccessSummarySortBy,$first: Int,$after: String,$last: Int,$before: String)",
                 "ObjectTypeAccessSummaryConnection",
-                Query.ObjectTypeAccessSummary_ObjectFieldSpec,
+                Query.ObjectTypeAccessSummary,
                 Query.ObjectTypeAccessSummaryFieldSpec,
                 @"# REQUIRED
 $query.Var.timelineDate = $someString
@@ -14167,7 +14224,7 @@ $query.Var.before = $someString"
                 "QueryAllObjectsAlreadyAssignedToOrgs",
                 "($objectIdsForHierarchyTypes: [ObjectIdsForHierarchyTypeInput!]!,$allowedClusters: [String!]!,$targetOrgId: String)",
                 "List<ObjectIdsForHierarchyType>",
-                Query.AllObjectsAlreadyAssignedToOrgs_ObjectFieldSpec,
+                Query.AllObjectsAlreadyAssignedToOrgs,
                 Query.AllObjectsAlreadyAssignedToOrgsFieldSpec,
                 @"# REQUIRED
 $query.Var.objectIdsForHierarchyTypes = @(
@@ -14202,7 +14259,7 @@ $query.Var.targetOrgId = $someString"
                 "QueryOrg",
                 "($orgId: String!)",
                 "Org",
-                Query.Org_ObjectFieldSpec,
+                Query.Org,
                 Query.OrgFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString"
@@ -14240,7 +14297,7 @@ $query.Var.orgId = $someString"
                 "QueryOrgs",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: OrgField,$nameFilter: String,$mfaEnforcedFilter: Boolean,$crossAccountEnabledFilter: Boolean)",
                 "OrgConnection",
-                Query.Orgs_ObjectFieldSpec,
+                Query.Orgs,
                 Query.OrgsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -14276,7 +14333,7 @@ $query.Var.crossAccountEnabledFilter = $someBoolean"
                 "QueryAllOrgsByIds",
                 "($orgIds: [String!]!)",
                 "List<Org>",
-                Query.AllOrgsByIds_ObjectFieldSpec,
+                Query.AllOrgsByIds,
                 Query.AllOrgsByIdsFieldSpec,
                 @"# REQUIRED
 $query.Var.orgIds = @(
@@ -14298,7 +14355,7 @@ $query.Var.orgIds = @(
                 "QueryOrgsForPrincipal",
                 "($orgSearchFilter: String)",
                 "OrgsForPrincipalReply",
-                Query.OrgsForPrincipal_ObjectFieldSpec,
+                Query.OrgsForPrincipal,
                 Query.OrgsForPrincipalFieldSpec,
                 @"# OPTIONAL
 $query.Var.orgSearchFilter = $someString"
@@ -14317,7 +14374,7 @@ $query.Var.orgSearchFilter = $someString"
                 "QueryPasskeyConfig",
                 "",
                 "GetPasskeyConfigReply",
-                Query.PasskeyConfig_ObjectFieldSpec,
+                Query.PasskeyConfig,
                 Query.PasskeyConfigFieldSpec,
                 @""
             );
@@ -14335,7 +14392,7 @@ $query.Var.orgSearchFilter = $someString"
                 "QueryPasskeyInfo",
                 "",
                 "GetPasskeyInfoReply",
-                Query.PasskeyInfo_ObjectFieldSpec,
+                Query.PasskeyInfo,
                 Query.PasskeyInfoFieldSpec,
                 @""
             );
@@ -14354,7 +14411,7 @@ $query.Var.orgSearchFilter = $someString"
                 "QueryPendingAction",
                 "($pendingActionId: String!)",
                 "PendingAction",
-                Query.PendingAction_ObjectFieldSpec,
+                Query.PendingAction,
                 Query.PendingActionFieldSpec,
                 @"# REQUIRED
 $query.Var.pendingActionId = $someString"
@@ -14390,7 +14447,7 @@ $query.Var.pendingActionId = $someString"
                 "QueryAllPendingActions",
                 "($clusterFilter: UUID,$pendingActionGroupTypeFilter: [PendingActionGroupTypeEnum!],$pendingActionSubGroupTypeFilter: [PendingActionSubGroupTypeEnum!],$statusFilter: [PendingActionStatus!],$objectIds: [String!],$sortedOrder: SortOrder,$historyOnly: Boolean,$limit: Long)",
                 "List<PendingAction>",
-                Query.AllPendingActions_ObjectFieldSpec,
+                Query.AllPendingActions,
                 Query.AllPendingActionsFieldSpec,
                 @"# OPTIONAL
 $query.Var.clusterFilter = $someString
@@ -14432,7 +14489,7 @@ $query.Var.limit = $someInt64"
                 "QueryPhoenixRolloutProgress",
                 "($orgId: UUID!)",
                 "PhoenixRolloutProgress",
-                Query.PhoenixRolloutProgress_ObjectFieldSpec,
+                Query.PhoenixRolloutProgress,
                 Query.PhoenixRolloutProgressFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString"
@@ -14453,7 +14510,7 @@ $query.Var.orgId = $someString"
                 "QueryPipelineHealthForTimeRange",
                 "($beginTime: DateTime!,$endTime: DateTime)",
                 "GetPipelineHealthReply",
-                Query.PipelineHealthForTimeRange_ObjectFieldSpec,
+                Query.PipelineHealthForTimeRange,
                 Query.PipelineHealthForTimeRangeFieldSpec,
                 @"# REQUIRED
 $query.Var.beginTime = $someDateTime
@@ -14475,7 +14532,7 @@ $query.Var.endTime = $someDateTime"
                 "QueryPolarisInventorySubHierarchyRoot",
                 "($rootEnum: InventorySubHierarchyRootEnum!)",
                 "PolarisInventorySubHierarchyRoot",
-                Query.PolarisInventorySubHierarchyRoot_ObjectFieldSpec,
+                Query.PolarisInventorySubHierarchyRoot,
                 Query.PolarisInventorySubHierarchyRootFieldSpec,
                 @"# REQUIRED
 $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InventorySubHierarchyRootEnum]) for enum values."
@@ -14494,7 +14551,7 @@ $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValue
                 "QueryPolicyDetails",
                 "",
                 "PolicyDetailConnection",
-                Query.PolicyDetails_ObjectFieldSpec,
+                Query.PolicyDetails,
                 Query.PolicyDetailsFieldSpec,
                 @""
             );
@@ -14515,7 +14572,7 @@ $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValue
                 "QueryPolicyObj",
                 "($snappableFid: String!,$snapshotFid: String!,$includeWhitelistedResults: Boolean)",
                 "PolicyObj",
-                Query.PolicyObj_ObjectFieldSpec,
+                Query.PolicyObj,
                 Query.PolicyObjFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString
@@ -14545,6 +14602,15 @@ $query.Var.includeWhitelistedResults = $someBoolean"
         //     includeInsightsMarker: Boolean
         //     userAccessObjectsFilter: Boolean! = false
         //     objectIdsFilter: [String!]
+        //     platformFilter: [Platform!]
+        //     platformCategoryFilter: [PlatformCategory!]
+        //     cloudAccountIdsFilter: [String!]
+        //     resourceGroupsFilter: [String!]
+        //     regionsFilter: [String!]
+        //     dataTypeIdsFilter: [String!]
+        //     firstSeenTimeRange: UserTimeRangeInput
+        //     lastAccessTimeRange: UserTimeRangeInput
+        //     creationTimeRange: UserTimeRangeInput
         //     first: Int
         //     after: String
         //     last: Int
@@ -14570,6 +14636,15 @@ $query.Var.includeWhitelistedResults = $someBoolean"
                 Tuple.Create("includeInsightsMarker", "Boolean"),
                 Tuple.Create("userAccessObjectsFilter", "Boolean!"),
                 Tuple.Create("objectIdsFilter", "[String!]"),
+                Tuple.Create("platformFilter", "[Platform!]"),
+                Tuple.Create("platformCategoryFilter", "[PlatformCategory!]"),
+                Tuple.Create("cloudAccountIdsFilter", "[String!]"),
+                Tuple.Create("resourceGroupsFilter", "[String!]"),
+                Tuple.Create("regionsFilter", "[String!]"),
+                Tuple.Create("dataTypeIdsFilter", "[String!]"),
+                Tuple.Create("firstSeenTimeRange", "UserTimeRangeInput"),
+                Tuple.Create("lastAccessTimeRange", "UserTimeRangeInput"),
+                Tuple.Create("creationTimeRange", "UserTimeRangeInput"),
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
@@ -14579,9 +14654,9 @@ $query.Var.includeWhitelistedResults = $someBoolean"
                 argDefs,
                 "query",
                 "QueryPolicyObjs",
-                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$insightsMetadataId: String,$includeInsightsMarker: Boolean,$userAccessObjectsFilter: Boolean!,$objectIdsFilter: [String!],$first: Int,$after: String,$last: Int,$before: String)",
+                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$insightsMetadataId: String,$includeInsightsMarker: Boolean,$userAccessObjectsFilter: Boolean!,$objectIdsFilter: [String!],$platformFilter: [Platform!],$platformCategoryFilter: [PlatformCategory!],$cloudAccountIdsFilter: [String!],$resourceGroupsFilter: [String!],$regionsFilter: [String!],$dataTypeIdsFilter: [String!],$firstSeenTimeRange: UserTimeRangeInput,$lastAccessTimeRange: UserTimeRangeInput,$creationTimeRange: UserTimeRangeInput,$first: Int,$after: String,$last: Int,$before: String)",
                 "PolicyObjConnection",
-                Query.PolicyObjs_ObjectFieldSpec,
+                Query.PolicyObjs,
                 Query.PolicyObjsFieldSpec,
                 @"# REQUIRED
 $query.Var.day = $someString
@@ -14634,6 +14709,57 @@ $query.Var.objectIdsFilter = @(
 	$someString
 )
 # OPTIONAL
+$query.Var.platformFilter = @(
+	$somePlatform # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Platform]) for enum values.
+)
+# OPTIONAL
+$query.Var.platformCategoryFilter = @(
+	$somePlatformCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PlatformCategory]) for enum values.
+)
+# OPTIONAL
+$query.Var.cloudAccountIdsFilter = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.resourceGroupsFilter = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.regionsFilter = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.dataTypeIdsFilter = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.firstSeenTimeRange = @{
+	# OPTIONAL
+	startTime = $someString
+	# OPTIONAL
+	endTime = $someString
+	# OPTIONAL
+	timezone = $someString
+}
+# OPTIONAL
+$query.Var.lastAccessTimeRange = @{
+	# OPTIONAL
+	startTime = $someString
+	# OPTIONAL
+	endTime = $someString
+	# OPTIONAL
+	timezone = $someString
+}
+# OPTIONAL
+$query.Var.creationTimeRange = @{
+	# OPTIONAL
+	startTime = $someString
+	# OPTIONAL
+	endTime = $someString
+	# OPTIONAL
+	timezone = $someString
+}
+# OPTIONAL
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
@@ -14657,7 +14783,7 @@ $query.Var.before = $someString"
                 "QueryPrechecksStatus",
                 "($clusterUuid: UUID!)",
                 "PrechecksStatusReply",
-                Query.PrechecksStatus_ObjectFieldSpec,
+                Query.PrechecksStatus,
                 Query.PrechecksStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -14677,7 +14803,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryPrechecksStatusWithNextJobInfo",
                 "($clusterUuid: UUID!)",
                 "PrechecksStatusReply",
-                Query.PrechecksStatusWithNextJobInfo_ObjectFieldSpec,
+                Query.PrechecksStatusWithNextJobInfo,
                 Query.PrechecksStatusWithNextJobInfoFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -14697,7 +14823,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryPrivateContainerRegistry",
                 "($input: PrivateContainerRegistryInput!)",
                 "PrivateContainerRegistryReplyType",
-                Query.PrivateContainerRegistry_ObjectFieldSpec,
+                Query.PrivateContainerRegistry,
                 Query.PrivateContainerRegistryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -14720,7 +14846,7 @@ $query.Var.input = @{
                 "QueryProductDocumentation",
                 "($id: String!)",
                 "ProductDocumentation",
-                Query.ProductDocumentation_ObjectFieldSpec,
+                Query.ProductDocumentation,
                 Query.ProductDocumentationFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString"
@@ -14760,7 +14886,7 @@ $query.Var.id = $someString"
                 "QueryProtectedObjectsConnection",
                 "($rootOptionalFid: UUID,$slaIds: [UUID!]!,$filter: [Filter!],$objectTypeFilter: [String!],$sortBy: HierarchySortByField,$sortOrder: SortOrder,$first: Int,$after: String,$last: Int,$before: String)",
                 "ProtectedObjectsConnection",
-                Query.ProtectedObjectsConnection_ObjectFieldSpec,
+                Query.ProtectedObjectsConnection,
                 Query.ProtectedObjectsConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.rootOptionalFid = $someString
@@ -14842,7 +14968,7 @@ $query.Var.before = $someString"
                 "QueryProtectedVolumesCount",
                 "($filter: [Filter!])",
                 "System.Int32",
-                Query.ProtectedVolumesCount_ObjectFieldSpec,
+                Query.ProtectedVolumesCount,
                 Query.ProtectedVolumesCountFieldSpec,
                 @"# OPTIONAL
 $query.Var.filter = @(
@@ -14902,7 +15028,7 @@ $query.Var.filter = @(
                 "QueryAllQuarantinedDetailsForWorkload",
                 "($workloadId: String!)",
                 "List<QuarantineSpec>",
-                Query.AllQuarantinedDetailsForWorkload_ObjectFieldSpec,
+                Query.AllQuarantinedDetailsForWorkload,
                 Query.AllQuarantinedDetailsForWorkloadFieldSpec,
                 @"# REQUIRED
 $query.Var.workloadId = $someString"
@@ -14922,7 +15048,7 @@ $query.Var.workloadId = $someString"
                 "QueryQueryDatastoreFreespaceThresholds",
                 "($queryDatastoreFreespaceThresholdsInput: [QueryDatastoreFreespaceThresholdInput!]!)",
                 "QueryDatastoreFreespaceThresholdsReply",
-                Query.QueryDatastoreFreespaceThresholds_ObjectFieldSpec,
+                Query.QueryDatastoreFreespaceThresholds,
                 Query.QueryDatastoreFreespaceThresholdsFieldSpec,
                 @"# REQUIRED
 $query.Var.queryDatastoreFreespaceThresholdsInput = @(
@@ -14949,7 +15075,7 @@ $query.Var.queryDatastoreFreespaceThresholdsInput = @(
                 "QueryRemovedNodeDetails",
                 "($input: RemovedNodeDetailsInput!)",
                 "RemoveNodeDetailsReply",
-                Query.RemovedNodeDetails_ObjectFieldSpec,
+                Query.RemovedNodeDetails,
                 Query.RemovedNodeDetailsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -14986,7 +15112,7 @@ $query.Var.input = @{
                 "QueryRoleTemplates",
                 "($first: Int,$after: String,$last: Int,$before: String,$nameFilter: String)",
                 "RoleTemplateConnection",
-                Query.RoleTemplates_ObjectFieldSpec,
+                Query.RoleTemplates,
                 Query.RoleTemplatesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -15024,7 +15150,7 @@ $query.Var.nameFilter = $someString"
                 "QuerySearchFileByPrefix",
                 "($clusterUuid: UUID!,$managedId: String!,$snapshotId: String!,$searchFolderPath: String!,$filenamePrefix: String!)",
                 "DiffResult",
-                Query.SearchFileByPrefix_ObjectFieldSpec,
+                Query.SearchFileByPrefix,
                 Query.SearchFileByPrefixFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString
@@ -15066,7 +15192,7 @@ $query.Var.filenamePrefix = $someString"
                 "QuerySnoozedDirectories",
                 "($first: Int,$after: String,$last: Int,$before: String,$snoozeStatusFilter: [SnoozeStatus!],$directorySearchFilter: String,$falsePositiveTypeFilter: [AnomalyFalsePositiveType!])",
                 "SnoozedDirectoryConnection",
-                Query.SnoozedDirectories_ObjectFieldSpec,
+                Query.SnoozedDirectories,
                 Query.SnoozedDirectoriesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -15102,7 +15228,7 @@ $query.Var.falsePositiveTypeFilter = @(
                 "QuerySupportBundle",
                 "($input: QuerySupportBundleInput!)",
                 "AsyncRequestStatus",
-                Query.SupportBundle_ObjectFieldSpec,
+                Query.SupportBundle,
                 Query.SupportBundleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -15141,7 +15267,7 @@ $query.Var.input = @{
                 "QuerySupportUserAccesses",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: SupportUserAccessSortByField,$sortOrder: SortOrder,$filters: [SupportUserAccessFilterInput!])",
                 "SupportUserAccessConnection",
-                Query.SupportUserAccesses_ObjectFieldSpec,
+                Query.SupportUserAccesses,
                 Query.SupportUserAccessesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -15179,7 +15305,7 @@ $query.Var.filters = @(
                 "QueryTableFilters",
                 "",
                 "TableFilters",
-                Query.TableFilters_ObjectFieldSpec,
+                Query.TableFilters,
                 Query.TableFiltersFieldSpec,
                 @""
             );
@@ -15206,7 +15332,7 @@ $query.Var.filters = @(
                 "QueryAllTargets",
                 "($sortBy: ArchivalLocationQuerySortByField,$sortOrder: SortOrder,$filter: [TargetFilterInput!],$contextFilter: ContextFilterTypeEnum)",
                 "List<Target>",
-                Query.AllTargets_ObjectFieldSpec,
+                Query.AllTargets,
                 Query.AllTargetsFieldSpec,
                 @"# OPTIONAL
 $query.Var.sortBy = $someArchivalLocationQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationQuerySortByField]) for enum values.
@@ -15257,7 +15383,7 @@ $query.Var.contextFilter = $someContextFilterTypeEnum # Call [Enum]::GetValues([
                 "QueryTaskDetailGroupByConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: TaskDetailFilterInput,$groupBy: TaskDetailGroupByEnum!,$timezoneOffset: Float)",
                 "TaskDetailGroupByConnection",
-                Query.TaskDetailGroupByConnection_ObjectFieldSpec,
+                Query.TaskDetailGroupByConnection,
                 Query.TaskDetailGroupByConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -15355,7 +15481,7 @@ $query.Var.timezoneOffset = $someSingle"
                 "QueryTaskDetailConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: TaskDetailFilterInput,$sortBy: TaskDetailSortByEnum,$sortOrder: SortOrder,$timezoneOffset: Float)",
                 "TaskDetailConnection",
-                Query.TaskDetailConnection_ObjectFieldSpec,
+                Query.TaskDetailConnection,
                 Query.TaskDetailConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -15439,7 +15565,7 @@ $query.Var.timezoneOffset = $someSingle"
                 "QueryTaskchain",
                 "($taskchainId: String!)",
                 "Taskchain",
-                Query.Taskchain_ObjectFieldSpec,
+                Query.Taskchain,
                 Query.TaskchainFieldSpec,
                 @"# REQUIRED
 $query.Var.taskchainId = $someString"
@@ -15460,7 +15586,7 @@ $query.Var.taskchainId = $someString"
                 "QueryTeamChannelNameAvailable",
                 "($teamUUID: UUID!,$channelName: String!)",
                 "System.Boolean",
-                Query.TeamChannelNameAvailable_ObjectFieldSpec,
+                Query.TeamChannelNameAvailable,
                 Query.TeamChannelNameAvailableFieldSpec,
                 @"# REQUIRED
 $query.Var.teamUUID = $someString
@@ -15482,7 +15608,7 @@ $query.Var.channelName = $someString"
                 "QueryTotpConfigStatus",
                 "($userId: String!)",
                 "GetTotpStatusReply",
-                Query.TotpConfigStatus_ObjectFieldSpec,
+                Query.TotpConfigStatus,
                 Query.TotpConfigStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.userId = $someString"
@@ -15502,7 +15628,7 @@ $query.Var.userId = $someString"
                 "QueryTprStatusForNodeRemoval",
                 "($input: TprStatusForNodeRemovalInput!)",
                 "TprStatusForNodeRemoval",
-                Query.TprStatusForNodeRemoval_ObjectFieldSpec,
+                Query.TprStatusForNodeRemoval,
                 Query.TprStatusForNodeRemovalFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -15527,7 +15653,7 @@ $query.Var.input = @{
                 "QueryTunnelStatus",
                 "($input: GetTunnelStatusInput!)",
                 "SupportTunnelInfo",
-                Query.TunnelStatus_ObjectFieldSpec,
+                Query.TunnelStatus,
                 Query.TunnelStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -15552,7 +15678,7 @@ $query.Var.input = @{
                 "QueryUniqueVcdCount",
                 "($filter: [Filter!])",
                 "System.Int32",
-                Query.UniqueVcdCount_ObjectFieldSpec,
+                Query.UniqueVcdCount,
                 Query.UniqueVcdCountFieldSpec,
                 @"# OPTIONAL
 $query.Var.filter = @(
@@ -15622,7 +15748,7 @@ $query.Var.filter = @(
                 "QueryUnmanagedObjects",
                 "($first: Int,$after: String,$last: Int,$before: String,$input: UnmanagedObjectsInput!)",
                 "UnmanagedObjectDetailConnection",
-                Query.UnmanagedObjects_ObjectFieldSpec,
+                Query.UnmanagedObjects,
                 Query.UnmanagedObjectsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -15694,7 +15820,7 @@ $query.Var.input = @{
                 "QueryAllUnmanagedObjectsSupportedTypes",
                 "($productType: ProductTargetType,$cloudVendor: CloudVendor)",
                 "List<ManagedObjectType>",
-                Query.AllUnmanagedObjectsSupportedTypes_ObjectFieldSpec,
+                Query.AllUnmanagedObjectsSupportedTypes,
                 Query.AllUnmanagedObjectsSupportedTypesFieldSpec,
                 @"# OPTIONAL
 $query.Var.productType = $someProductTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProductTargetType]) for enum values.
@@ -15716,7 +15842,7 @@ $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecuri
                 "QueryUpgradeStatus",
                 "($clusterUuid: UUID!)",
                 "UpgradeStatusReply",
-                Query.UpgradeStatus_ObjectFieldSpec,
+                Query.UpgradeStatus,
                 Query.UpgradeStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -15752,7 +15878,7 @@ $query.Var.clusterUuid = $someString"
                 "QueryUserActivities",
                 "($filter: ListObjectFilesFiltersInput,$sort: FileResultSortInput,$timeRange: UserTimeRangeInput,$userId: String!,$first: Int,$after: String,$last: Int,$before: String)",
                 "FileResultConnection",
-                Query.UserActivities_ObjectFieldSpec,
+                Query.UserActivities,
                 Query.UserActivitiesFieldSpec,
                 @"# OPTIONAL
 $query.Var.filter = @{
@@ -15859,7 +15985,7 @@ $query.Var.before = $someString"
                 "QueryUserAnalyzerAccess",
                 "($userId: String!,$startDay: String!,$timezone: String!,$limit: Int!)",
                 "AnalyzerAccessUsageConnection",
-                Query.UserAnalyzerAccess_ObjectFieldSpec,
+                Query.UserAnalyzerAccess,
                 Query.UserAnalyzerAccessFieldSpec,
                 @"# REQUIRED
 $query.Var.userId = $someString
@@ -15899,7 +16025,7 @@ $query.Var.limit = $someInt"
                 "QueryUserAuditConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: UserAuditSortField,$filters: UserAuditFilter)",
                 "UserAuditConnection",
-                Query.UserAuditConnection_ObjectFieldSpec,
+                Query.UserAuditConnection,
                 Query.UserAuditConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -15974,7 +16100,7 @@ $query.Var.filters = @{
                 "QueryUserDetail",
                 "($userId: String!,$startDay: String!,$timezone: String!)",
                 "GetUserDetailReply",
-                Query.UserDetail_ObjectFieldSpec,
+                Query.UserDetail,
                 Query.UserDetailFieldSpec,
                 @"# REQUIRED
 $query.Var.userId = $someString
@@ -16006,7 +16132,7 @@ $query.Var.timezone = $someString"
                 "QueryAllUserFiles",
                 "($first: Int,$after: String,$last: Int,$before: String)",
                 "List<GetCustomerFacingDownloadsReply>",
-                Query.AllUserFiles_ObjectFieldSpec,
+                Query.AllUserFiles,
                 Query.AllUserFilesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -16042,7 +16168,7 @@ $query.Var.before = $someString"
                 "QueryUserGroups",
                 "($first: Int,$after: String,$last: Int,$before: String,$roleIdsFilter: [UUID!])",
                 "List<Group>",
-                Query.UserGroups_ObjectFieldSpec,
+                Query.UserGroups,
                 Query.UserGroupsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -16071,7 +16197,7 @@ $query.Var.roleIdsFilter = @(
                 "QueryUserNotifications",
                 "",
                 "UserNotifications",
-                Query.UserNotifications_ObjectFieldSpec,
+                Query.UserNotifications,
                 Query.UserNotificationsFieldSpec,
                 @""
             );
@@ -16089,7 +16215,7 @@ $query.Var.roleIdsFilter = @(
                 "QueryUserSessionManagementConfig",
                 "",
                 "GetUserSessionManagementConfigReply",
-                Query.UserSessionManagementConfig_ObjectFieldSpec,
+                Query.UserSessionManagementConfig,
                 Query.UserSessionManagementConfigFieldSpec,
                 @""
             );
@@ -16107,7 +16233,7 @@ $query.Var.roleIdsFilter = @(
                 "QueryUserSettings",
                 "",
                 "UserSettings",
-                Query.UserSettings_ObjectFieldSpec,
+                Query.UserSettings,
                 Query.UserSettingsFieldSpec,
                 @""
             );
@@ -16140,7 +16266,7 @@ $query.Var.roleIdsFilter = @(
                 "QueryUsersInCurrentAndDescendantOrganization",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: UserSortByParam,$filter: UserFilterInput,$shouldIncludeUserWithoutRole: Boolean)",
                 "UserConnection",
-                Query.UsersInCurrentAndDescendantOrganization_ObjectFieldSpec,
+                Query.UsersInCurrentAndDescendantOrganization,
                 Query.UsersInCurrentAndDescendantOrganizationFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -16218,7 +16344,7 @@ $query.Var.shouldIncludeUserWithoutRole = $someBoolean"
                 "QueryAllUsersOnAccountConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: UserFieldEnum,$emailFilter: String,$roleIdsFilter: [UUID!],$lockoutStateFilter: LockoutStateFilter,$hiddenStateFilter: HiddenStateFilter,$shouldGetLocalUsersOnly: Boolean!)",
                 "UserConnection",
-                Query.AllUsersOnAccountConnection_ObjectFieldSpec,
+                Query.AllUsersOnAccountConnection,
                 Query.AllUsersOnAccountConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -16260,7 +16386,7 @@ $query.Var.shouldGetLocalUsersOnly = $someBoolean"
                 "QueryValidateOrgName",
                 "($input: ValidateOrgNameInput!)",
                 "ValidateOrgNameReply",
-                Query.ValidateOrgName_ObjectFieldSpec,
+                Query.ValidateOrgName,
                 Query.ValidateOrgNameFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -16295,7 +16421,7 @@ $query.Var.input = @{
                 "QueryVcdVappVms",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "VsphereVmConnection",
-                Query.VcdVappVms_ObjectFieldSpec,
+                Query.VcdVappVms,
                 Query.VcdVappVmsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -16363,7 +16489,7 @@ $query.Var.filter = @(
                 "QueryAllVirtualMachineFiles",
                 "($input: VirtualMachineFilesInput!)",
                 "VirtualMachineFilesReply",
-                Query.AllVirtualMachineFiles_ObjectFieldSpec,
+                Query.AllVirtualMachineFiles,
                 Query.AllVirtualMachineFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -16387,7 +16513,7 @@ $query.Var.input = @{
                 "QueryAllVmRecoveryJobsInfo",
                 "($fid: UUID!,$input: AllVmRecoveryJobsInfoInput!)",
                 "List<VmRecoveryJobInfo>",
-                Query.AllVmRecoveryJobsInfo_ObjectFieldSpec,
+                Query.AllVmRecoveryJobsInfo,
                 Query.AllVmRecoveryJobsInfoFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString
@@ -16420,7 +16546,7 @@ $query.Var.input = @{
                 "QueryVolumeGroupMounts",
                 "($first: Int,$after: String,$filters: [VolumeGroupLiveMountFilterInput!],$sortBy: VolumeGroupLiveMountSortByInput)",
                 "VolumeGroupLiveMountConnection",
-                Query.VolumeGroupMounts_ObjectFieldSpec,
+                Query.VolumeGroupMounts,
                 Query.VolumeGroupMountsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -16461,7 +16587,7 @@ $query.Var.sortBy = @{
                 "QueryWorkloadAlertSetting",
                 "($clusterUuid: UUID!,$workloadId: UUID!)",
                 "GetWorkloadAlertSettingReply",
-                Query.WorkloadAlertSetting_ObjectFieldSpec,
+                Query.WorkloadAlertSetting,
                 Query.WorkloadAlertSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString
@@ -16521,7 +16647,7 @@ $query.Var.workloadId = $someString"
                 "QueryWorkloadAnomalies",
                 "($first: Int,$after: String,$last: Int,$before: String,$beginTime: DateTime!,$endTime: DateTime,$workloadNameSearch: String,$objectTypeFilter: [String!],$clusterUuidFilter: [String!],$slaFidFilter: [String!],$encryptionFilter: [EncryptionLevel!],$severityFilter: [ActivitySeverityEnum!],$analyzerGroupFilter: [String!],$sortBy: WorkloadAnomaliesSortBy,$sortOrder: SortOrder,$orderParentsFirst: Boolean,$blueprintRecoveryTypes: [BlueprintRecoveryType!],$locationsFilter: [String!],$resolutionStatusFilter: [ResolutionStatus!])",
                 "WorkloadAnomalyConnection",
-                Query.WorkloadAnomalies_ObjectFieldSpec,
+                Query.WorkloadAnomalies,
                 Query.WorkloadAnomaliesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -16596,7 +16722,7 @@ $query.Var.resolutionStatusFilter = @(
                 "QueryWorkloadForeverId",
                 "($clusterUuid: UUID!,$managedId: String!)",
                 "System.String",
-                Query.WorkloadForeverId_ObjectFieldSpec,
+                Query.WorkloadForeverId,
                 Query.WorkloadForeverIdFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString

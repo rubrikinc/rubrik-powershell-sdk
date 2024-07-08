@@ -607,7 +607,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryNasFileset",
                 "($fid: UUID!)",
                 "NasFileset",
-                Query.NasFileset_ObjectFieldSpec,
+                Query.NasFileset,
                 Query.NasFilesetFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -627,7 +627,7 @@ $query.Var.fid = $someString"
                 "QueryNasNamespace",
                 "($fid: UUID!)",
                 "NasNamespace",
-                Query.NasNamespace_ObjectFieldSpec,
+                Query.NasNamespace,
                 Query.NasNamespaceFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -657,7 +657,7 @@ $query.Var.fid = $someString"
                 "QueryNasNamespaces",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "NasNamespaceConnection",
-                Query.NasNamespaces_ObjectFieldSpec,
+                Query.NasNamespaces,
                 Query.NasNamespacesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -725,7 +725,7 @@ $query.Var.filter = @(
                 "QueryNasShare",
                 "($fid: UUID!)",
                 "NasShare",
-                Query.NasShare_ObjectFieldSpec,
+                Query.NasShare,
                 Query.NasShareFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -745,7 +745,7 @@ $query.Var.fid = $someString"
                 "QueryNasSystem",
                 "($fid: UUID!)",
                 "NasSystem",
-                Query.NasSystem_ObjectFieldSpec,
+                Query.NasSystem,
                 Query.NasSystemFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -775,7 +775,7 @@ $query.Var.fid = $someString"
                 "QueryNasSystems",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "NasSystemConnection",
-                Query.NasSystems_ObjectFieldSpec,
+                Query.NasSystems,
                 Query.NasSystemsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -855,7 +855,7 @@ $query.Var.filter = @(
                 "QueryNasTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
                 "CdmHierarchyObjectConnection",
-                Query.NasTopLevelDescendants_ObjectFieldSpec,
+                Query.NasTopLevelDescendants,
                 Query.NasTopLevelDescendantsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -927,7 +927,7 @@ $query.Var.filter = @(
                 "QueryNasVolume",
                 "($fid: UUID!)",
                 "NasVolume",
-                Query.NasVolume_ObjectFieldSpec,
+                Query.NasVolume,
                 Query.NasVolumeFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"

@@ -134,6 +134,7 @@ All supported managed objects.
 - POSTGRES_DATABASE - Postgres Database.
 - ACTIVE_DIRECTORY_FOREST - On-prem Active Directory forest.
 - NUTANIX_ERA - Nutanix Era.
+- FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
  NB: ideally we should use 0, but we missed it.
  using 10000 to make coding and debugging easier with number in logs.

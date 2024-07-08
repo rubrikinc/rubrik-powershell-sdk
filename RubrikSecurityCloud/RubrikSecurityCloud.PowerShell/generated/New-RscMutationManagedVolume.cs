@@ -874,7 +874,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddManagedVolume",
                 "($input: AddManagedVolumeInput!)",
                 "AddManagedVolumeReply",
-                Mutation.AddManagedVolume_ObjectFieldSpec,
+                Mutation.AddManagedVolume,
                 Mutation.AddManagedVolumeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -983,7 +983,7 @@ $query.Var.input = @{
                 "MutationBeginManagedVolumeSnapshot",
                 "($input: BeginManagedVolumeSnapshotInput!)",
                 "BeginManagedVolumeSnapshotReply",
-                Mutation.BeginManagedVolumeSnapshot_ObjectFieldSpec,
+                Mutation.BeginManagedVolumeSnapshot,
                 Mutation.BeginManagedVolumeSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1031,7 +1031,7 @@ $query.Var.input = @{
                 "MutationDeleteManagedVolume",
                 "($input: DeleteManagedVolumeInput!)",
                 "DeleteManagedVolumeReply",
-                Mutation.DeleteManagedVolume_ObjectFieldSpec,
+                Mutation.DeleteManagedVolume,
                 Mutation.DeleteManagedVolumeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1056,7 +1056,7 @@ $query.Var.input = @{
                 "MutationDeleteManagedVolumeSnapshotExport",
                 "($input: DeleteManagedVolumeSnapshotExportInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteManagedVolumeSnapshotExport_ObjectFieldSpec,
+                Mutation.DeleteManagedVolumeSnapshotExport,
                 Mutation.DeleteManagedVolumeSnapshotExportFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1079,7 +1079,7 @@ $query.Var.input = @{
                 "MutationDownloadManagedVolumeFiles",
                 "($input: DownloadManagedVolumeFilesInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadManagedVolumeFiles_ObjectFieldSpec,
+                Mutation.DownloadManagedVolumeFiles,
                 Mutation.DownloadManagedVolumeFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1114,7 +1114,7 @@ $query.Var.input = @{
                 "MutationDownloadManagedVolumeFromLocation",
                 "($input: DownloadManagedVolumeFromLocationInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadManagedVolumeFromLocation_ObjectFieldSpec,
+                Mutation.DownloadManagedVolumeFromLocation,
                 Mutation.DownloadManagedVolumeFromLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1144,7 +1144,7 @@ $query.Var.input = @{
                 "MutationEndManagedVolumeSnapshot",
                 "($input: EndManagedVolumeSnapshotInput!)",
                 "EndManagedVolumeSnapshotReply",
-                Mutation.EndManagedVolumeSnapshot_ObjectFieldSpec,
+                Mutation.EndManagedVolumeSnapshot,
                 Mutation.EndManagedVolumeSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1181,7 +1181,7 @@ $query.Var.input = @{
                 "MutationExportManagedVolumeSnapshot",
                 "($input: ExportManagedVolumeSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.ExportManagedVolumeSnapshot_ObjectFieldSpec,
+                Mutation.ExportManagedVolumeSnapshot,
                 Mutation.ExportManagedVolumeSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1237,7 +1237,7 @@ $query.Var.input = @{
                 "MutationResizeManagedVolume",
                 "($input: ResizeManagedVolumeInput!)",
                 "AsyncRequestStatus",
-                Mutation.ResizeManagedVolume_ObjectFieldSpec,
+                Mutation.ResizeManagedVolume,
                 Mutation.ResizeManagedVolumeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1265,7 +1265,7 @@ $query.Var.input = @{
                 "MutationTakeManagedVolumeOnDemandSnapshot",
                 "($input: TakeManagedVolumeOnDemandSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.TakeManagedVolumeOnDemandSnapshot_ObjectFieldSpec,
+                Mutation.TakeManagedVolumeOnDemandSnapshot,
                 Mutation.TakeManagedVolumeOnDemandSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1296,7 +1296,7 @@ $query.Var.input = @{
                 "MutationUpdateManagedVolume",
                 "($input: UpdateManagedVolumeInput!)",
                 "UpdateManagedVolumeReply",
-                Mutation.UpdateManagedVolume_ObjectFieldSpec,
+                Mutation.UpdateManagedVolume,
                 Mutation.UpdateManagedVolumeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 130
+    /// Create a new RscQuery object for any of the 132
     /// operations in the 'Miscellaneous' API domain:
-    /// AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteVolumeGroupMount, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
+    /// AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
     /// </summary>
     /// <description>
     /// New-RscMutationMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 130 operations
+    /// There are 132 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteVolumeGroupMount, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
+    /// one of: AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1258,6 +1258,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DeleteIntelFeed operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: DeleteIntelFeed
+    /// 
+    /// $query = New-RscMutationMisc -DeleteIntelFeed
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	feedId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DeleteIntelFeedReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DeleteVolumeGroupMount operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -2086,7 +2117,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscMutationMisc -NotificationForGetLicense
     /// 
-    /// # No variables for this query.
+    /// # OPTIONAL
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	notificationType = $someGetLicenseNotificationRequest # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GetLicenseNotificationRequest]) for enum values.
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -4252,6 +4287,62 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdateCustomIntelFeed operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: UpdateCustomIntelFeed
+    /// 
+    /// $query = New-RscMutationMisc -UpdateCustomIntelFeed
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	feedId = $someString
+    /// 	# OPTIONAL
+    /// 	entriesToRemove = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	name = @{
+    /// 		# OPTIONAL
+    /// 		name = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	description = @{
+    /// 		# OPTIONAL
+    /// 		description = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	entriesToAdd = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			iocString = $someString
+    /// 			# OPTIONAL
+    /// 			threatFamily = $someString
+    /// 			# REQUIRED
+    /// 			iocType = $someThreatFeedType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatFeedType]) for enum values.
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateCustomIntelFeedReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateCustomerAppPermissions operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -5314,6 +5405,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteDistributionListDigestBatch",
                 "DeleteEventDigest",
                 "DeleteGuestCredentialById",
+                "DeleteIntelFeed",
                 "DeleteVolumeGroupMount",
                 "DeregisterPrivateContainerRegistry",
                 "DisableSupportUserAccess",
@@ -5393,6 +5485,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateBadDiskLedStatus",
                 "UpdateConfiguredGroup",
                 "UpdateCustomAnalyzer",
+                "UpdateCustomIntelFeed",
                 "UpdateCustomerAppPermissions",
                 "UpdateDistributionListDigest",
                 "UpdateDnsServersAndSearchDomains",
@@ -5512,6 +5605,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteGuestCredentialById":
                         this.ProcessRecord_DeleteGuestCredentialById();
+                        break;
+                    case "DeleteIntelFeed":
+                        this.ProcessRecord_DeleteIntelFeed();
                         break;
                     case "DeleteVolumeGroupMount":
                         this.ProcessRecord_DeleteVolumeGroupMount();
@@ -5749,6 +5845,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateCustomAnalyzer":
                         this.ProcessRecord_UpdateCustomAnalyzer();
+                        break;
+                    case "UpdateCustomIntelFeed":
+                        this.ProcessRecord_UpdateCustomIntelFeed();
                         break;
                     case "UpdateCustomerAppPermissions":
                         this.ProcessRecord_UpdateCustomerAppPermissions();
@@ -6073,6 +6172,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteGuestCredentialById";
             // Create new graphql operation deleteGuestCredentialById
             InitMutationDeleteGuestCredentialById();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteIntelFeed.
+        internal void ProcessRecord_DeleteIntelFeed()
+        {
+            this._logger.name += " -DeleteIntelFeed";
+            // Create new graphql operation deleteIntelFeed
+            InitMutationDeleteIntelFeed();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -6787,6 +6895,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // updateCustomIntelFeed.
+        internal void ProcessRecord_UpdateCustomIntelFeed()
+        {
+            this._logger.name += " -UpdateCustomIntelFeed";
+            // Create new graphql operation updateCustomIntelFeed
+            InitMutationUpdateCustomIntelFeed();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // updateCustomerAppPermissions.
         internal void ProcessRecord_UpdateCustomerAppPermissions()
         {
@@ -7016,7 +7133,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddAdGroupsToHierarchy",
                 "($input: AddAdGroupsToHierarchyInput!)",
                 "RequestStatus",
-                Mutation.AddAdGroupsToHierarchy_ObjectFieldSpec,
+                Mutation.AddAdGroupsToHierarchy,
                 Mutation.AddAdGroupsToHierarchyFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7065,7 +7182,7 @@ $query.Var.input = @{
                 "MutationAddConfiguredGroupToHierarchy",
                 "($input: AddConfiguredGroupToHierarchyInput!)",
                 "AddConfiguredGroupToHierarchyReply",
-                Mutation.AddConfiguredGroupToHierarchy_ObjectFieldSpec,
+                Mutation.AddConfiguredGroupToHierarchy,
                 Mutation.AddConfiguredGroupToHierarchyFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7111,7 +7228,7 @@ $query.Var.input = @{
                 "MutationAddCustomIntelFeed",
                 "($input: AddCustomIntelFeedInput!)",
                 "AddCustomIntelFeedReply",
-                Mutation.AddCustomIntelFeed_ObjectFieldSpec,
+                Mutation.AddCustomIntelFeed,
                 Mutation.AddCustomIntelFeedFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7147,7 +7264,7 @@ $query.Var.input = @{
                 "MutationAddInventoryWorkloads",
                 "($input: AddInventoryWorkloadsInput!)",
                 "System.Boolean",
-                Mutation.AddInventoryWorkloads_ObjectFieldSpec,
+                Mutation.AddInventoryWorkloads,
                 Mutation.AddInventoryWorkloadsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7174,7 +7291,7 @@ $query.Var.input = @{
                 "MutationAddRoleAssignments",
                 "($userIds: [String!],$groupIds: [String!],$roleIds: [String!]!)",
                 "System.Boolean",
-                Mutation.AddRoleAssignments_ObjectFieldSpec,
+                Mutation.AddRoleAssignments,
                 Mutation.AddRoleAssignmentsFieldSpec,
                 @"# OPTIONAL
 $query.Var.userIds = @(
@@ -7204,7 +7321,7 @@ $query.Var.roleIds = @(
                 "MutationAddVlan",
                 "($input: AddVlanInput!)",
                 "ResponseSuccess",
-                Mutation.AddVlan_ObjectFieldSpec,
+                Mutation.AddVlan,
                 Mutation.AddVlanFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7247,7 +7364,7 @@ $query.Var.input = @{
                 "MutationAddVmAppConsistentSpecs",
                 "($input: AddVmAppConsistentSpecsInput!)",
                 "AddVmAppConsistentSpecsReply",
-                Mutation.AddVmAppConsistentSpecs_ObjectFieldSpec,
+                Mutation.AddVmAppConsistentSpecs,
                 Mutation.AddVmAppConsistentSpecsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7284,7 +7401,7 @@ $query.Var.input = @{
                 "MutationAirGapStatus",
                 "($input: AirGapStatusInput!)",
                 "System.String",
-                Mutation.AirGapStatus_ObjectFieldSpec,
+                Mutation.AirGapStatus,
                 Mutation.AirGapStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7309,7 +7426,7 @@ $query.Var.input = @{
                 "MutationArchiveCrawl",
                 "($crawlId: String!)",
                 "System.String",
-                Mutation.ArchiveCrawl_ObjectFieldSpec,
+                Mutation.ArchiveCrawl,
                 Mutation.ArchiveCrawlFieldSpec,
                 @"# REQUIRED
 $query.Var.crawlId = $someString"
@@ -7329,7 +7446,7 @@ $query.Var.crawlId = $someString"
                 "MutationAssignProtection",
                 "($input: AssignProtectionInput!)",
                 "SlaAssignResult",
-                Mutation.AssignProtection_ObjectFieldSpec,
+                Mutation.AssignProtection,
                 Mutation.AssignProtectionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7381,7 +7498,7 @@ $query.Var.input = @{
                 "MutationBatchDeassignRoleFromUserGroups",
                 "($userGroupToRoles: [UserGroupToRolesInput!]!)",
                 "System.Boolean",
-                Mutation.BatchDeassignRoleFromUserGroups_ObjectFieldSpec,
+                Mutation.BatchDeassignRoleFromUserGroups,
                 Mutation.BatchDeassignRoleFromUserGroupsFieldSpec,
                 @"# REQUIRED
 $query.Var.userGroupToRoles = @(
@@ -7410,7 +7527,7 @@ $query.Var.userGroupToRoles = @(
                 "MutationBulkCreateNasFilesets",
                 "($input: BulkCreateNasFilesetsInput!)",
                 "BulkCreateNasFilesetsReply",
-                Mutation.BulkCreateNasFilesets_ObjectFieldSpec,
+                Mutation.BulkCreateNasFilesets,
                 Mutation.BulkCreateNasFilesetsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7486,7 +7603,7 @@ $query.Var.input = @{
                 "MutationCancelDownloadPackage",
                 "($clusterUuid: UUID!)",
                 "CancelJobReply",
-                Mutation.CancelDownloadPackage_ObjectFieldSpec,
+                Mutation.CancelDownloadPackage,
                 Mutation.CancelDownloadPackageFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -7506,7 +7623,7 @@ $query.Var.clusterUuid = $someString"
                 "MutationCancelScheduledUpgrade",
                 "($clusterUuid: UUID!)",
                 "CancelJobReply",
-                Mutation.CancelScheduledUpgrade_ObjectFieldSpec,
+                Mutation.CancelScheduledUpgrade,
                 Mutation.CancelScheduledUpgradeFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -7526,7 +7643,7 @@ $query.Var.clusterUuid = $someString"
                 "MutationCancelTaskchain",
                 "($taskchainId: String!)",
                 "RequestStatus",
-                Mutation.CancelTaskchain_ObjectFieldSpec,
+                Mutation.CancelTaskchain,
                 Mutation.CancelTaskchainFieldSpec,
                 @"# REQUIRED
 $query.Var.taskchainId = $someString"
@@ -7546,7 +7663,7 @@ $query.Var.taskchainId = $someString"
                 "MutationChangePassword",
                 "($input: ChangePasswordInput!)",
                 "System.Boolean",
-                Mutation.ChangePassword_ObjectFieldSpec,
+                Mutation.ChangePassword,
                 Mutation.ChangePasswordFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7571,7 +7688,7 @@ $query.Var.input = @{
                 "MutationCreateCustomAnalyzer",
                 "($input: CreateCustomAnalyzerInput!)",
                 "Analyzer",
-                Mutation.CreateCustomAnalyzer_ObjectFieldSpec,
+                Mutation.CreateCustomAnalyzer,
                 Mutation.CreateCustomAnalyzerFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7619,7 +7736,7 @@ $query.Var.input = @{
                 "MutationCreateEventDigestBatch",
                 "($input: CreateEventDigestBatchInput!)",
                 "System.String",
-                Mutation.CreateEventDigestBatch_ObjectFieldSpec,
+                Mutation.CreateEventDigestBatch,
                 Mutation.CreateEventDigestBatchFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7694,7 +7811,7 @@ $query.Var.input = @{
                 "MutationCreateGuestCredential",
                 "($input: CreateGuestCredentialInput!)",
                 "CreateGuestCredentialReply",
-                Mutation.CreateGuestCredential_ObjectFieldSpec,
+                Mutation.CreateGuestCredential,
                 Mutation.CreateGuestCredentialFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7731,7 +7848,7 @@ $query.Var.input = @{
                 "MutationCreateLegalHold",
                 "($input: CreateLegalHoldInput!)",
                 "CreateLegalHoldReply",
-                Mutation.CreateLegalHold_ObjectFieldSpec,
+                Mutation.CreateLegalHold,
                 Mutation.CreateLegalHoldFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7763,7 +7880,7 @@ $query.Var.input = @{
                 "MutationCreateOnDemandVolumeGroupBackup",
                 "($input: CreateOnDemandVolumeGroupBackupInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateOnDemandVolumeGroupBackup_ObjectFieldSpec,
+                Mutation.CreateOnDemandVolumeGroupBackup,
                 Mutation.CreateOnDemandVolumeGroupBackupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7798,7 +7915,7 @@ $query.Var.input = @{
                 "MutationCreateVappsInstantRecovery",
                 "($input: CreateVappsInstantRecoveryInput!)",
                 "CreateVappsInstantRecoveryReply",
-                Mutation.CreateVappsInstantRecovery_ObjectFieldSpec,
+                Mutation.CreateVappsInstantRecovery,
                 Mutation.CreateVappsInstantRecoveryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7861,7 +7978,7 @@ $query.Var.input = @{
                 "MutationDeactivateCustomAnalyzer",
                 "($analyzerId: String!)",
                 "System.String",
-                Mutation.DeactivateCustomAnalyzer_ObjectFieldSpec,
+                Mutation.DeactivateCustomAnalyzer,
                 Mutation.DeactivateCustomAnalyzerFieldSpec,
                 @"# REQUIRED
 $query.Var.analyzerId = $someString"
@@ -7881,7 +7998,7 @@ $query.Var.analyzerId = $someString"
                 "MutationDeleteAdGroupsFromHierarchy",
                 "($input: DeleteAdGroupsFromHierarchyInput!)",
                 "RequestStatus",
-                Mutation.DeleteAdGroupsFromHierarchy_ObjectFieldSpec,
+                Mutation.DeleteAdGroupsFromHierarchy,
                 Mutation.DeleteAdGroupsFromHierarchyFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7908,7 +8025,7 @@ $query.Var.input = @{
                 "MutationDeleteDistributionListDigestBatch",
                 "($input: DeleteDistributionListDigestBatchInput!)",
                 "System.String",
-                Mutation.DeleteDistributionListDigestBatch_ObjectFieldSpec,
+                Mutation.DeleteDistributionListDigestBatch,
                 Mutation.DeleteDistributionListDigestBatchFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7933,7 +8050,7 @@ $query.Var.input = @{
                 "MutationDeleteEventDigest",
                 "($input: DeleteEventDigestInput!)",
                 "System.String",
-                Mutation.DeleteEventDigest_ObjectFieldSpec,
+                Mutation.DeleteEventDigest,
                 Mutation.DeleteEventDigestFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7958,7 +8075,7 @@ $query.Var.input = @{
                 "MutationDeleteGuestCredentialById",
                 "($input: DeleteGuestCredentialByIdInput!)",
                 "System.Boolean",
-                Mutation.DeleteGuestCredentialById_ObjectFieldSpec,
+                Mutation.DeleteGuestCredentialById,
                 Mutation.DeleteGuestCredentialByIdFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -7966,6 +8083,29 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteIntelFeed(input: DeleteIntelFeedInput!): DeleteIntelFeedReply!
+        internal void InitMutationDeleteIntelFeed()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteIntelFeedInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteIntelFeed",
+                "($input: DeleteIntelFeedInput!)",
+                "DeleteIntelFeedReply",
+                Mutation.DeleteIntelFeed,
+                Mutation.DeleteIntelFeedFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	feedId = $someString
 }"
             );
         }
@@ -7983,7 +8123,7 @@ $query.Var.input = @{
                 "MutationDeleteVolumeGroupMount",
                 "($input: DeleteVolumeGroupMountInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteVolumeGroupMount_ObjectFieldSpec,
+                Mutation.DeleteVolumeGroupMount,
                 Mutation.DeleteVolumeGroupMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8006,7 +8146,7 @@ $query.Var.input = @{
                 "MutationDeregisterPrivateContainerRegistry",
                 "($input: DeregisterPrivateContainerRegistryInput!)",
                 "System.String",
-                Mutation.DeregisterPrivateContainerRegistry_ObjectFieldSpec,
+                Mutation.DeregisterPrivateContainerRegistry,
                 Mutation.DeregisterPrivateContainerRegistryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8029,7 +8169,7 @@ $query.Var.input = @{
                 "MutationDisableSupportUserAccess",
                 "($input: DisableSupportUserAccessInput!)",
                 "System.String",
-                Mutation.DisableSupportUserAccess_ObjectFieldSpec,
+                Mutation.DisableSupportUserAccess,
                 Mutation.DisableSupportUserAccessFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8054,7 +8194,7 @@ $query.Var.input = @{
                 "MutationDissolveLegalHold",
                 "($input: DissolveLegalHoldInput!)",
                 "DissolveLegalHoldReply",
-                Mutation.DissolveLegalHold_ObjectFieldSpec,
+                Mutation.DissolveLegalHold,
                 Mutation.DissolveLegalHoldFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8081,7 +8221,7 @@ $query.Var.input = @{
                 "MutationEnableAutomaticFmdUpload",
                 "($input: EnableAutomaticFmdUploadInput!)",
                 "EnableAutomaticFmdUploadReply",
-                Mutation.EnableAutomaticFmdUpload_ObjectFieldSpec,
+                Mutation.EnableAutomaticFmdUpload,
                 Mutation.EnableAutomaticFmdUploadFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8106,7 +8246,7 @@ $query.Var.input = @{
                 "MutationEnableDisableAppConsistency",
                 "($input: EnableDisableAppConsistencyInput!)",
                 "EnableDisableAppConsistencyReply",
-                Mutation.EnableDisableAppConsistency_ObjectFieldSpec,
+                Mutation.EnableDisableAppConsistency,
                 Mutation.EnableDisableAppConsistencyFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8135,7 +8275,7 @@ $query.Var.input = @{
                 "MutationEnableSupportUserAccess",
                 "($input: EnableSupportUserAccessInput!)",
                 "System.String",
-                Mutation.EnableSupportUserAccess_ObjectFieldSpec,
+                Mutation.EnableSupportUserAccess,
                 Mutation.EnableSupportUserAccessFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8162,7 +8302,7 @@ $query.Var.input = @{
                 "MutationExcludeVmDisks",
                 "($input: [ExcludeVmDisksInput!]!)",
                 "RequestSuccess",
-                Mutation.ExcludeVmDisks_ObjectFieldSpec,
+                Mutation.ExcludeVmDisks,
                 Mutation.ExcludeVmDisksFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @(
@@ -8189,7 +8329,7 @@ $query.Var.input = @(
                 "MutationExpireSnoozedDirectories",
                 "($input: ExpireSnoozedDirectoriesInput!)",
                 "ExpireSnoozedDirectoriesReply",
-                Mutation.ExpireSnoozedDirectories_ObjectFieldSpec,
+                Mutation.ExpireSnoozedDirectories,
                 Mutation.ExpireSnoozedDirectoriesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8214,7 +8354,7 @@ $query.Var.input = @{
                 "MutationGenerateConfigProtectionRestoreForm",
                 "($input: GenerateConfigProtectionRestoreFormInput!)",
                 "GenerateConfigProtectionRestoreFormReply",
-                Mutation.GenerateConfigProtectionRestoreForm_ObjectFieldSpec,
+                Mutation.GenerateConfigProtectionRestoreForm,
                 Mutation.GenerateConfigProtectionRestoreFormFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8244,7 +8384,7 @@ $query.Var.input = @{
                 "MutationGenerateSupportBundle",
                 "($input: GenerateSupportBundleInput!)",
                 "AsyncRequestStatus",
-                Mutation.GenerateSupportBundle_ObjectFieldSpec,
+                Mutation.GenerateSupportBundle,
                 Mutation.GenerateSupportBundleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8276,7 +8416,7 @@ $query.Var.input = @{
                 "MutationGetDownloadUrl",
                 "($downloadId: Long!)",
                 "UserDownloadUrl",
-                Mutation.GetDownloadUrl_ObjectFieldSpec,
+                Mutation.GetDownloadUrl,
                 Mutation.GetDownloadUrlFieldSpec,
                 @"# REQUIRED
 $query.Var.downloadId = $someInt64"
@@ -8296,7 +8436,7 @@ $query.Var.downloadId = $someInt64"
                 "MutationHideRevealNasNamespaces",
                 "($input: HideRevealNasNamespacesInput!)",
                 "System.String",
-                Mutation.HideRevealNasNamespaces_ObjectFieldSpec,
+                Mutation.HideRevealNasNamespaces,
                 Mutation.HideRevealNasNamespacesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8326,7 +8466,7 @@ $query.Var.input = @{
                 "MutationInstallIoFilter",
                 "($input: InstallIoFilterInput!)",
                 "RequestSuccess",
-                Mutation.InstallIoFilter_ObjectFieldSpec,
+                Mutation.InstallIoFilter,
                 Mutation.InstallIoFilterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8354,7 +8494,7 @@ $query.Var.input = @{
                 "MutationInviteSsoGroup",
                 "($input: InviteSsoGroupInput!)",
                 "System.Boolean",
-                Mutation.InviteSsoGroup_ObjectFieldSpec,
+                Mutation.InviteSsoGroup,
                 Mutation.InviteSsoGroupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8381,7 +8521,7 @@ $query.Var.input = @{
                 "MutationListCidrsForComputeSetting",
                 "($input: ListCidrsForComputeSettingInput!)",
                 "ListCidrsForComputeSettingReply",
-                Mutation.ListCidrsForComputeSetting_ObjectFieldSpec,
+                Mutation.ListCidrsForComputeSetting,
                 Mutation.ListCidrsForComputeSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8406,7 +8546,7 @@ $query.Var.input = @{
                 "MutationLockUsersByAdmin",
                 "($input: LockUsersByAdminInput!)",
                 "System.String",
-                Mutation.LockUsersByAdmin_ObjectFieldSpec,
+                Mutation.LockUsersByAdmin,
                 Mutation.LockUsersByAdminFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8430,7 +8570,7 @@ $query.Var.input = @{
                 "MutationLogoutFromRubrikSupportPortal",
                 "",
                 "SupportPortalLogoutReply",
-                Mutation.LogoutFromRubrikSupportPortal_ObjectFieldSpec,
+                Mutation.LogoutFromRubrikSupportPortal,
                 Mutation.LogoutFromRubrikSupportPortalFieldSpec,
                 @""
             );
@@ -8449,7 +8589,7 @@ $query.Var.input = @{
                 "MutationMakePrimary",
                 "($input: MakePrimaryInput!)",
                 "AsyncRequestStatus",
-                Mutation.MakePrimary_ObjectFieldSpec,
+                Mutation.MakePrimary,
                 Mutation.MakePrimaryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8479,7 +8619,7 @@ $query.Var.input = @{
                 "MutationModifyEventDigestBatch",
                 "($input: ModifyEventDigestBatchInput!)",
                 "System.String",
-                Mutation.ModifyEventDigestBatch_ObjectFieldSpec,
+                Mutation.ModifyEventDigestBatch,
                 Mutation.ModifyEventDigestBatchFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8554,7 +8694,7 @@ $query.Var.input = @{
                 "MutationModifyIpmi",
                 "($input: ModifyIpmiInput!)",
                 "ModifyIpmiReply",
-                Mutation.ModifyIpmi_ObjectFieldSpec,
+                Mutation.ModifyIpmi,
                 Mutation.ModifyIpmiFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8589,7 +8729,7 @@ $query.Var.input = @{
                 "MutationMountDisk",
                 "($input: MountDiskInput!)",
                 "MountDiskReply",
-                Mutation.MountDisk_ObjectFieldSpec,
+                Mutation.MountDisk,
                 Mutation.MountDiskFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8610,20 +8750,25 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // notificationForGetLicense: NotificationForGetLicenseReply!
+        // notificationForGetLicense(input: NotificationForGetLicenseInput): NotificationForGetLicenseReply!
         internal void InitMutationNotificationForGetLicense()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "NotificationForGetLicenseInput"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationNotificationForGetLicense",
-                "",
+                "($input: NotificationForGetLicenseInput)",
                 "NotificationForGetLicenseReply",
-                Mutation.NotificationForGetLicense_ObjectFieldSpec,
+                Mutation.NotificationForGetLicense,
                 Mutation.NotificationForGetLicenseFieldSpec,
-                @""
+                @"# OPTIONAL
+$query.Var.input = @{
+	# REQUIRED
+	notificationType = $someGetLicenseNotificationRequest # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GetLicenseNotificationRequest]) for enum values.
+}"
             );
         }
 
@@ -8640,7 +8785,7 @@ $query.Var.input = @{
                 "MutationRecoverCloudDirectMultiPaths",
                 "($input: RecoverCloudDirectMultiPathsInput!)",
                 "AsyncRequestStatus",
-                Mutation.RecoverCloudDirectMultiPaths_ObjectFieldSpec,
+                Mutation.RecoverCloudDirectMultiPaths,
                 Mutation.RecoverCloudDirectMultiPathsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8674,7 +8819,7 @@ $query.Var.input = @{
                 "MutationRecoverCloudDirectPath",
                 "($input: RecoverCloudDirectPathInput!)",
                 "AsyncRequestStatus",
-                Mutation.RecoverCloudDirectPath_ObjectFieldSpec,
+                Mutation.RecoverCloudDirectPath,
                 Mutation.RecoverCloudDirectPathFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8703,7 +8848,7 @@ $query.Var.input = @{
                 "MutationRefreshDomain",
                 "($input: RefreshDomainInput!)",
                 "AsyncRequestStatus",
-                Mutation.RefreshDomain_ObjectFieldSpec,
+                Mutation.RefreshDomain,
                 Mutation.RefreshDomainFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8726,7 +8871,7 @@ $query.Var.input = @{
                 "MutationRefreshGlobalManagerConnectivityStatus",
                 "($clusterUuid: UUID!)",
                 "GlobalManagerConnectivity",
-                Mutation.RefreshGlobalManagerConnectivityStatus_ObjectFieldSpec,
+                Mutation.RefreshGlobalManagerConnectivityStatus,
                 Mutation.RefreshGlobalManagerConnectivityStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -8746,7 +8891,7 @@ $query.Var.clusterUuid = $someString"
                 "MutationRemoveDisk",
                 "($input: RemoveDiskInput!)",
                 "ResponseSuccess",
-                Mutation.RemoveDisk_ObjectFieldSpec,
+                Mutation.RemoveDisk,
                 Mutation.RemoveDiskFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8771,7 +8916,7 @@ $query.Var.input = @{
                 "MutationRemoveInventoryWorkloads",
                 "($input: RemoveInventoryWorkloadsInput!)",
                 "System.Boolean",
-                Mutation.RemoveInventoryWorkloads_ObjectFieldSpec,
+                Mutation.RemoveInventoryWorkloads,
                 Mutation.RemoveInventoryWorkloadsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8796,7 +8941,7 @@ $query.Var.input = @{
                 "MutationRemovePrivateEndpointConnection",
                 "($input: RemovePrivateEndpointConnectionInput!)",
                 "System.String",
-                Mutation.RemovePrivateEndpointConnection_ObjectFieldSpec,
+                Mutation.RemovePrivateEndpointConnection,
                 Mutation.RemovePrivateEndpointConnectionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8821,7 +8966,7 @@ $query.Var.input = @{
                 "MutationRemoveProxyConfig",
                 "($input: RemoveProxyConfigInput!)",
                 "ResponseSuccess",
-                Mutation.RemoveProxyConfig_ObjectFieldSpec,
+                Mutation.RemoveProxyConfig,
                 Mutation.RemoveProxyConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8844,7 +8989,7 @@ $query.Var.input = @{
                 "MutationRemoveVlans",
                 "($input: RemoveVlansInput!)",
                 "RemoveVlansReply",
-                Mutation.RemoveVlans_ObjectFieldSpec,
+                Mutation.RemoveVlans,
                 Mutation.RemoveVlansFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8871,7 +9016,7 @@ $query.Var.input = @{
                 "MutationReseedLogShippingSecondary",
                 "($input: ReseedLogShippingSecondaryInput!)",
                 "AsyncRequestStatus",
-                Mutation.ReseedLogShippingSecondary_ObjectFieldSpec,
+                Mutation.ReseedLogShippingSecondary,
                 Mutation.ReseedLogShippingSecondaryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8903,7 +9048,7 @@ $query.Var.input = @{
                 "MutationResetAllOrgUsersPasswords",
                 "",
                 "System.String",
-                Mutation.ResetAllOrgUsersPasswords_ObjectFieldSpec,
+                Mutation.ResetAllOrgUsersPasswords,
                 Mutation.ResetAllOrgUsersPasswordsFieldSpec,
                 @""
             );
@@ -8922,7 +9067,7 @@ $query.Var.input = @{
                 "MutationResetUsersPasswordsWithUserIds",
                 "($input: ResetUsersPasswordsWithUserIdsInput!)",
                 "System.String",
-                Mutation.ResetUsersPasswordsWithUserIds_ObjectFieldSpec,
+                Mutation.ResetUsersPasswordsWithUserIds,
                 Mutation.ResetUsersPasswordsWithUserIdsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8947,7 +9092,7 @@ $query.Var.input = @{
                 "MutationResizeDisk",
                 "($input: ResizeDiskInput!)",
                 "ResponseSuccess",
-                Mutation.ResizeDisk_ObjectFieldSpec,
+                Mutation.ResizeDisk,
                 Mutation.ResizeDiskFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -8972,7 +9117,7 @@ $query.Var.input = @{
                 "MutationResolveAnomaly",
                 "($input: ResolveAnomalyInput!)",
                 "System.String",
-                Mutation.ResolveAnomaly_ObjectFieldSpec,
+                Mutation.ResolveAnomaly,
                 Mutation.ResolveAnomalyFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9010,7 +9155,7 @@ $query.Var.input = @{
                 "MutationResolveVolumeGroupsConflict",
                 "($input: ResolveVolumeGroupsConflictInput!)",
                 "RequestSuccess",
-                Mutation.ResolveVolumeGroupsConflict_ObjectFieldSpec,
+                Mutation.ResolveVolumeGroupsConflict,
                 Mutation.ResolveVolumeGroupsConflictFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9036,7 +9181,7 @@ $query.Var.input = @{
                 "MutationRetryBackup",
                 "($backupObjects: [BackupObject!]!,$backupRunConfig: BackupRunConfig)",
                 "RetryBackupResp",
-                Mutation.RetryBackup_ObjectFieldSpec,
+                Mutation.RetryBackup,
                 Mutation.RetryBackupFieldSpec,
                 @"# REQUIRED
 $query.Var.backupObjects = @(
@@ -9070,7 +9215,7 @@ $query.Var.backupRunConfig = @{
                 "MutationRetryDownloadPackageJob",
                 "($clusterUuid: UUID!)",
                 "DownloadPackageReply",
-                Mutation.RetryDownloadPackageJob_ObjectFieldSpec,
+                Mutation.RetryDownloadPackageJob,
                 Mutation.RetryDownloadPackageJobFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -9090,7 +9235,7 @@ $query.Var.clusterUuid = $someString"
                 "MutationRevokeAllOrgRoles",
                 "($input: RevokeAllOrgRolesInput!)",
                 "System.String",
-                Mutation.RevokeAllOrgRoles_ObjectFieldSpec,
+                Mutation.RevokeAllOrgRoles,
                 Mutation.RevokeAllOrgRolesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9119,7 +9264,7 @@ $query.Var.input = @{
                 "MutationRunCustomAnalyzer",
                 "($input: RunCustomAnalyzerInput!)",
                 "RunCustomAnalyzerReply",
-                Mutation.RunCustomAnalyzer_ObjectFieldSpec,
+                Mutation.RunCustomAnalyzer,
                 Mutation.RunCustomAnalyzerFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9158,7 +9303,7 @@ $query.Var.input = @{
                 "MutationScheduleUpgradeBatchJob",
                 "($listClusterUuid: [UUID!]!,$mode: String!,$action: ActionType!,$version: String!,$scheduleAt: DateTime!,$context_tag: String)",
                 "List<UpgradeJobReplyWithUuid>",
-                Mutation.ScheduleUpgradeBatchJob_ObjectFieldSpec,
+                Mutation.ScheduleUpgradeBatchJob,
                 Mutation.ScheduleUpgradeBatchJobFieldSpec,
                 @"# REQUIRED
 $query.Var.listClusterUuid = @(
@@ -9190,7 +9335,7 @@ $query.Var.context_tag = $someString"
                 "MutationSetAnalyzerRisks",
                 "($input: SetAnalyzerRisksInput!)",
                 "SetAnalyzerRisksReply",
-                Mutation.SetAnalyzerRisks_ObjectFieldSpec,
+                Mutation.SetAnalyzerRisks,
                 Mutation.SetAnalyzerRisksFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9220,7 +9365,7 @@ $query.Var.input = @{
                 "MutationSetBundleApprovalStatus",
                 "($input: SetBundleApprovalStatusInput!)",
                 "System.String",
-                Mutation.SetBundleApprovalStatus_ObjectFieldSpec,
+                Mutation.SetBundleApprovalStatus,
                 Mutation.SetBundleApprovalStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9250,7 +9395,7 @@ $query.Var.input = @{
                 "MutationSetCustomerTags",
                 "($input: SetCustomerTagsInput!)",
                 "System.String",
-                Mutation.SetCustomerTags_ObjectFieldSpec,
+                Mutation.SetCustomerTags,
                 Mutation.SetCustomerTagsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9287,7 +9432,7 @@ $query.Var.input = @{
                 "MutationSetDatastoreFreespaceThresholds",
                 "($input: SetDatastoreFreespaceThresholdsInput!)",
                 "SetDatastoreFreespaceThresholdsReply",
-                Mutation.SetDatastoreFreespaceThresholds_ObjectFieldSpec,
+                Mutation.SetDatastoreFreespaceThresholds,
                 Mutation.SetDatastoreFreespaceThresholdsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9322,7 +9467,7 @@ $query.Var.input = @{
                 "MutationSetIpWhitelistEnabled",
                 "($enabled: Boolean!)",
                 "System.Boolean",
-                Mutation.SetIpWhitelistEnabled_ObjectFieldSpec,
+                Mutation.SetIpWhitelistEnabled,
                 Mutation.SetIpWhitelistEnabledFieldSpec,
                 @"# REQUIRED
 $query.Var.enabled = $someBoolean"
@@ -9342,7 +9487,7 @@ $query.Var.enabled = $someBoolean"
                 "MutationSetMfaSetting",
                 "($input: SetMfaSettingInput!)",
                 "System.Boolean",
-                Mutation.SetMfaSetting_ObjectFieldSpec,
+                Mutation.SetMfaSetting,
                 Mutation.SetMfaSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9369,7 +9514,7 @@ $query.Var.input = @{
                 "MutationSetPrivateContainerRegistry",
                 "($input: SetPrivateContainerRegistryInput!)",
                 "System.String",
-                Mutation.SetPrivateContainerRegistry_ObjectFieldSpec,
+                Mutation.SetPrivateContainerRegistry,
                 Mutation.SetPrivateContainerRegistryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9399,7 +9544,7 @@ $query.Var.input = @{
                 "MutationSetTotpConfig",
                 "($input: SetTotpConfigInput!)",
                 "System.Boolean",
-                Mutation.SetTotpConfig_ObjectFieldSpec,
+                Mutation.SetTotpConfig,
                 Mutation.SetTotpConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9426,7 +9571,7 @@ $query.Var.input = @{
                 "MutationSetUpgradeType",
                 "($input: SetUpgradeTypeInput!)",
                 "SetUpgradeTypeReply",
-                Mutation.SetUpgradeType_ObjectFieldSpec,
+                Mutation.SetUpgradeType,
                 Mutation.SetUpgradeTypeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9451,7 +9596,7 @@ $query.Var.input = @{
                 "MutationSetUserLevelTotpEnforcement",
                 "($input: SetUserLevelTotpEnforcementInput!)",
                 "System.Boolean",
-                Mutation.SetUserLevelTotpEnforcement_ObjectFieldSpec,
+                Mutation.SetUserLevelTotpEnforcement,
                 Mutation.SetUserLevelTotpEnforcementFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9478,7 +9623,7 @@ $query.Var.input = @{
                 "MutationSetWorkloadAlertSetting",
                 "($input: SetWorkloadAlertSettingInput!)",
                 "SetWorkloadAlertSettingReply",
-                Mutation.SetWorkloadAlertSetting_ObjectFieldSpec,
+                Mutation.SetWorkloadAlertSetting,
                 Mutation.SetWorkloadAlertSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9505,7 +9650,7 @@ $query.Var.input = @{
                 "MutationSetupDisk",
                 "($input: SetupDiskInput!)",
                 "DiskInfo",
-                Mutation.SetupDisk_ObjectFieldSpec,
+                Mutation.SetupDisk,
                 Mutation.SetupDiskFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9538,7 +9683,7 @@ $query.Var.input = @{
                 "MutationStartCrawl",
                 "($name: String!,$resources: [ResourceInput!]!,$analyzerGroups: [AnalyzerGroupInput!]!,$extWhiteList: [String!])",
                 "StartCrawlReply",
-                Mutation.StartCrawl_ObjectFieldSpec,
+                Mutation.StartCrawl,
                 Mutation.StartCrawlFieldSpec,
                 @"# REQUIRED
 $query.Var.name = $someString
@@ -9624,7 +9769,7 @@ $query.Var.extWhiteList = @(
                 "MutationStartDownloadPackageBatchJob",
                 "($listClusterUuid: [UUID!]!,$downloadVersion: String,$packageUrl: String!,$md5checksum: String!,$size: Long)",
                 "List<DownloadPackageReplyWithUuid>",
-                Mutation.StartDownloadPackageBatchJob_ObjectFieldSpec,
+                Mutation.StartDownloadPackageBatchJob,
                 Mutation.StartDownloadPackageBatchJobFieldSpec,
                 @"# REQUIRED
 $query.Var.listClusterUuid = @(
@@ -9654,7 +9799,7 @@ $query.Var.size = $someInt64"
                 "MutationStartExportRdsInstanceJob",
                 "($input: StartExportRdsInstanceJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartExportRdsInstanceJob_ObjectFieldSpec,
+                Mutation.StartExportRdsInstanceJob,
                 Mutation.StartExportRdsInstanceJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9729,7 +9874,7 @@ $query.Var.input = @{
                 "MutationStartPeriodicUpgradePrechecksOnDemandJob",
                 "($clusterUuid: UUID!)",
                 "PrechecksJobReply",
-                Mutation.StartPeriodicUpgradePrechecksOnDemandJob_ObjectFieldSpec,
+                Mutation.StartPeriodicUpgradePrechecksOnDemandJob,
                 Mutation.StartPeriodicUpgradePrechecksOnDemandJobFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
@@ -9759,7 +9904,7 @@ $query.Var.clusterUuid = $someString"
                 "MutationStartUpgradeBatchJob",
                 "($listClusterUuid: [UUID!]!,$mode: String!,$action: ActionType!,$version: String!,$context_tag: String)",
                 "List<UpgradeJobReplyWithUuid>",
-                Mutation.StartUpgradeBatchJob_ObjectFieldSpec,
+                Mutation.StartUpgradeBatchJob,
                 Mutation.StartUpgradeBatchJobFieldSpec,
                 @"# REQUIRED
 $query.Var.listClusterUuid = @(
@@ -9789,7 +9934,7 @@ $query.Var.context_tag = $someString"
                 "MutationStartVolumeGroupMount",
                 "($input: StartVolumeGroupMountInput!)",
                 "AsyncRequestStatus",
-                Mutation.StartVolumeGroupMount_ObjectFieldSpec,
+                Mutation.StartVolumeGroupMount,
                 Mutation.StartVolumeGroupMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9836,7 +9981,7 @@ $query.Var.input = @{
                 "MutationStopJobInstance",
                 "($input: StopJobInstanceInput!)",
                 "StopJobInstanceReply",
-                Mutation.StopJobInstance_ObjectFieldSpec,
+                Mutation.StopJobInstance,
                 Mutation.StopJobInstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9861,7 +10006,7 @@ $query.Var.input = @{
                 "MutationStopJobInstanceFromEventSeries",
                 "($input: StopJobInstanceFromEventSeriesInput!)",
                 "System.String",
-                Mutation.StopJobInstanceFromEventSeries_ObjectFieldSpec,
+                Mutation.StopJobInstanceFromEventSeries,
                 Mutation.StopJobInstanceFromEventSeriesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9884,7 +10029,7 @@ $query.Var.input = @{
                 "MutationSupportPortalLogin",
                 "($input: SupportPortalLoginInput!)",
                 "SupportPortalLoginReply",
-                Mutation.SupportPortalLogin_ObjectFieldSpec,
+                Mutation.SupportPortalLogin,
                 Mutation.SupportPortalLoginFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9915,7 +10060,7 @@ $query.Var.input = @{
                 "MutationSwitchProductToOnboardingMode",
                 "($input: SwitchProductToOnboardingModeInput!)",
                 "SwitchProductToOnboardingModeReply",
-                Mutation.SwitchProductToOnboardingMode_ObjectFieldSpec,
+                Mutation.SwitchProductToOnboardingMode,
                 Mutation.SwitchProductToOnboardingModeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9940,7 +10085,7 @@ $query.Var.input = @{
                 "MutationTriggerCloudComputeConnectivityCheck",
                 "($input: TriggerCloudComputeConnectivityCheckInput!)",
                 "AsyncRequestStatus",
-                Mutation.TriggerCloudComputeConnectivityCheck_ObjectFieldSpec,
+                Mutation.TriggerCloudComputeConnectivityCheck,
                 Mutation.TriggerCloudComputeConnectivityCheckFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9967,7 +10112,7 @@ $query.Var.input = @{
                 "MutationTriggerExocomputeHealthCheck",
                 "($input: TriggerExocomputeHealthCheckInput!)",
                 "TriggerExocomputeHealthCheckReply",
-                Mutation.TriggerExocomputeHealthCheck_ObjectFieldSpec,
+                Mutation.TriggerExocomputeHealthCheck,
                 Mutation.TriggerExocomputeHealthCheckFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -9994,7 +10139,7 @@ $query.Var.input = @{
                 "MutationUninstallIoFilter",
                 "($input: UninstallIoFilterInput!)",
                 "RequestSuccess",
-                Mutation.UninstallIoFilter_ObjectFieldSpec,
+                Mutation.UninstallIoFilter,
                 Mutation.UninstallIoFilterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10017,7 +10162,7 @@ $query.Var.input = @{
                 "MutationUnlockUsersByAdmin",
                 "($input: UnlockUsersByAdminInput!)",
                 "System.String",
-                Mutation.UnlockUsersByAdmin_ObjectFieldSpec,
+                Mutation.UnlockUsersByAdmin,
                 Mutation.UnlockUsersByAdminFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10042,7 +10187,7 @@ $query.Var.input = @{
                 "MutationUnmountDisk",
                 "($input: UnmountDiskInput!)",
                 "System.String",
-                Mutation.UnmountDisk_ObjectFieldSpec,
+                Mutation.UnmountDisk,
                 Mutation.UnmountDiskFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10071,7 +10216,7 @@ $query.Var.input = @{
                 "MutationUpdateAccountOwner",
                 "($userId: String!)",
                 "System.Boolean",
-                Mutation.UpdateAccountOwner_ObjectFieldSpec,
+                Mutation.UpdateAccountOwner,
                 Mutation.UpdateAccountOwnerFieldSpec,
                 @"# REQUIRED
 $query.Var.userId = $someString"
@@ -10091,7 +10236,7 @@ $query.Var.userId = $someString"
                 "MutationUpdateAdGroup",
                 "($input: UpdateAdGroupInput!)",
                 "System.String",
-                Mutation.UpdateAdGroup_ObjectFieldSpec,
+                Mutation.UpdateAdGroup,
                 Mutation.UpdateAdGroupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10131,7 +10276,7 @@ $query.Var.input = @{
                 "MutationUpdateAgentDeploymentSetting",
                 "($input: UpdateVmAgentDeploymentSettingInput!)",
                 "AgentDeploymentSettings",
-                Mutation.UpdateAgentDeploymentSetting_ObjectFieldSpec,
+                Mutation.UpdateAgentDeploymentSetting,
                 Mutation.UpdateAgentDeploymentSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10159,7 +10304,7 @@ $query.Var.input = @{
                 "MutationUpdateAgentDeploymentSettingInBatch",
                 "($input: UpdateAgentDeploymentSettingInBatchInput!)",
                 "UpdateAgentDeploymentSettingInBatchReply",
-                Mutation.UpdateAgentDeploymentSettingInBatch_ObjectFieldSpec,
+                Mutation.UpdateAgentDeploymentSettingInBatch,
                 Mutation.UpdateAgentDeploymentSettingInBatchFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10192,7 +10337,7 @@ $query.Var.input = @{
                 "MutationUpdateAuthDomainUsersHiddenStatus",
                 "($input: UpdateAuthDomainUsersHiddenStatusInput!)",
                 "System.String",
-                Mutation.UpdateAuthDomainUsersHiddenStatus_ObjectFieldSpec,
+                Mutation.UpdateAuthDomainUsersHiddenStatus,
                 Mutation.UpdateAuthDomainUsersHiddenStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10219,7 +10364,7 @@ $query.Var.input = @{
                 "MutationUpdateBackupThrottleSetting",
                 "($input: UpdateBackupThrottleSettingInput!)",
                 "UpdateBackupThrottleSettingReply",
-                Mutation.UpdateBackupThrottleSetting_ObjectFieldSpec,
+                Mutation.UpdateBackupThrottleSetting,
                 Mutation.UpdateBackupThrottleSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10258,7 +10403,7 @@ $query.Var.input = @{
                 "MutationUpdateBadDiskLedStatus",
                 "($input: UpdateBadDiskLedStatusInput!)",
                 "UpdateBadDiskLedStatusReply",
-                Mutation.UpdateBadDiskLedStatus_ObjectFieldSpec,
+                Mutation.UpdateBadDiskLedStatus,
                 Mutation.UpdateBadDiskLedStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10287,7 +10432,7 @@ $query.Var.input = @{
                 "MutationUpdateConfiguredGroup",
                 "($input: UpdateConfiguredGroupInput!)",
                 "System.String",
-                Mutation.UpdateConfiguredGroup_ObjectFieldSpec,
+                Mutation.UpdateConfiguredGroup,
                 Mutation.UpdateConfiguredGroupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10335,7 +10480,7 @@ $query.Var.input = @{
                 "MutationUpdateCustomAnalyzer",
                 "($input: CreateCustomAnalyzerInput!)",
                 "Analyzer",
-                Mutation.UpdateCustomAnalyzer_ObjectFieldSpec,
+                Mutation.UpdateCustomAnalyzer,
                 Mutation.UpdateCustomAnalyzerFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10371,6 +10516,54 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // updateCustomIntelFeed(input: UpdateCustomIntelFeedInput!): UpdateCustomIntelFeedReply!
+        internal void InitMutationUpdateCustomIntelFeed()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateCustomIntelFeedInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateCustomIntelFeed",
+                "($input: UpdateCustomIntelFeedInput!)",
+                "UpdateCustomIntelFeedReply",
+                Mutation.UpdateCustomIntelFeed,
+                Mutation.UpdateCustomIntelFeedFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	feedId = $someString
+	# OPTIONAL
+	entriesToRemove = @(
+		$someString
+	)
+	# OPTIONAL
+	name = @{
+		# OPTIONAL
+		name = $someString
+	}
+	# OPTIONAL
+	description = @{
+		# OPTIONAL
+		description = $someString
+	}
+	# OPTIONAL
+	entriesToAdd = @(
+		@{
+			# OPTIONAL
+			iocString = $someString
+			# OPTIONAL
+			threatFamily = $someString
+			# REQUIRED
+			iocType = $someThreatFeedType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatFeedType]) for enum values.
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // updateCustomerAppPermissions(input: UpdateCustomerAppPermissionsInput!): UpdateCustomerAppPermissionsReply!
         internal void InitMutationUpdateCustomerAppPermissions()
         {
@@ -10383,7 +10576,7 @@ $query.Var.input = @{
                 "MutationUpdateCustomerAppPermissions",
                 "($input: UpdateCustomerAppPermissionsInput!)",
                 "UpdateCustomerAppPermissionsReply",
-                Mutation.UpdateCustomerAppPermissions_ObjectFieldSpec,
+                Mutation.UpdateCustomerAppPermissions,
                 Mutation.UpdateCustomerAppPermissionsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10408,7 +10601,7 @@ $query.Var.input = @{
                 "MutationUpdateDistributionListDigest",
                 "($input: UpdateDistributionListDigestInput!)",
                 "UpdateDistributionListDigestReply",
-                Mutation.UpdateDistributionListDigest_ObjectFieldSpec,
+                Mutation.UpdateDistributionListDigest,
                 Mutation.UpdateDistributionListDigestFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10480,7 +10673,7 @@ $query.Var.input = @{
                 "MutationUpdateDnsServersAndSearchDomains",
                 "($input: UpdateDnsServersAndSearchDomainsInput!)",
                 "ResponseSuccess",
-                Mutation.UpdateDnsServersAndSearchDomains_ObjectFieldSpec,
+                Mutation.UpdateDnsServersAndSearchDomains,
                 Mutation.UpdateDnsServersAndSearchDomainsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10511,7 +10704,7 @@ $query.Var.input = @{
                 "MutationUpdateEventDigest",
                 "($input: UpdateEventDigestInput!)",
                 "UpdateEventDigestReply",
-                Mutation.UpdateEventDigest_ObjectFieldSpec,
+                Mutation.UpdateEventDigest,
                 Mutation.UpdateEventDigestFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10583,7 +10776,7 @@ $query.Var.input = @{
                 "MutationUpdateFloatingIps",
                 "($input: UpdateFloatingIpsInput!)",
                 "UpdateFloatingIpsReply",
-                Mutation.UpdateFloatingIps_ObjectFieldSpec,
+                Mutation.UpdateFloatingIps,
                 Mutation.UpdateFloatingIpsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10610,7 +10803,7 @@ $query.Var.input = @{
                 "MutationUpdateGuestCredential",
                 "($input: UpdateGuestCredentialInput!)",
                 "UpdateGuestCredentialReply",
-                Mutation.UpdateGuestCredential_ObjectFieldSpec,
+                Mutation.UpdateGuestCredential,
                 Mutation.UpdateGuestCredentialFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10649,7 +10842,7 @@ $query.Var.input = @{
                 "MutationUpdateInsightState",
                 "($input: UpdateInsightStateInput!)",
                 "UpdateInsightStateReply",
-                Mutation.UpdateInsightState_ObjectFieldSpec,
+                Mutation.UpdateInsightState,
                 Mutation.UpdateInsightStateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10675,7 +10868,7 @@ $query.Var.input = @{
                 "MutationUpdateIpWhitelist",
                 "($whitelistMode: WhitelistModeEnum!,$ipCidrs: [String!]!)",
                 "System.Boolean",
-                Mutation.UpdateIpWhitelist_ObjectFieldSpec,
+                Mutation.UpdateIpWhitelist,
                 Mutation.UpdateIpWhitelistFieldSpec,
                 @"# REQUIRED
 $query.Var.whitelistMode = $someWhitelistModeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WhitelistModeEnum]) for enum values.
@@ -10701,7 +10894,7 @@ $query.Var.ipCidrs = @(
                 "MutationUpdateLambdaSettings",
                 "($anomalyThreshold: Float,$ransomwareThreshold: Float,$isAnomalyAlertEnabled: Boolean)",
                 "LambdaSettings",
-                Mutation.UpdateLambdaSettings_ObjectFieldSpec,
+                Mutation.UpdateLambdaSettings,
                 Mutation.UpdateLambdaSettingsFieldSpec,
                 @"# OPTIONAL
 $query.Var.anomalyThreshold = $someSingle
@@ -10725,7 +10918,7 @@ $query.Var.isAnomalyAlertEnabled = $someBoolean"
                 "MutationUpdateLockoutConfig",
                 "($input: UpdateLockoutConfigInput!)",
                 "UpdateLockoutConfigReply",
-                Mutation.UpdateLockoutConfig_ObjectFieldSpec,
+                Mutation.UpdateLockoutConfig,
                 Mutation.UpdateLockoutConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10760,7 +10953,7 @@ $query.Var.input = @{
                 "MutationUpdateManagedIdentities",
                 "($input: UpdateManagedIdentitiesInput!)",
                 "UpdateManagedIdentitiesReply",
-                Mutation.UpdateManagedIdentities_ObjectFieldSpec,
+                Mutation.UpdateManagedIdentities,
                 Mutation.UpdateManagedIdentitiesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10794,7 +10987,7 @@ $query.Var.input = @{
                 "MutationUpdateNetworkThrottle",
                 "($input: UpdateNetworkThrottleInput!)",
                 "UpdateNetworkThrottleReply",
-                Mutation.UpdateNetworkThrottle_ObjectFieldSpec,
+                Mutation.UpdateNetworkThrottle,
                 Mutation.UpdateNetworkThrottleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10845,7 +11038,7 @@ $query.Var.input = @{
                 "MutationUpdateProxyConfig",
                 "($input: UpdateProxyConfigInput!)",
                 "UpdateProxyConfigReply",
-                Mutation.UpdateProxyConfig_ObjectFieldSpec,
+                Mutation.UpdateProxyConfig,
                 Mutation.UpdateProxyConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10883,7 +11076,7 @@ $query.Var.input = @{
                 "MutationUpdateRoleAssignments",
                 "($userIds: [String!],$groupIds: [String!],$roleIds: [String!]!)",
                 "System.Boolean",
-                Mutation.UpdateRoleAssignments_ObjectFieldSpec,
+                Mutation.UpdateRoleAssignments,
                 Mutation.UpdateRoleAssignmentsFieldSpec,
                 @"# OPTIONAL
 $query.Var.userIds = @(
@@ -10913,7 +11106,7 @@ $query.Var.roleIds = @(
                 "MutationUpdateSupportUserAccess",
                 "($input: UpdateSupportUserAccessInput!)",
                 "System.String",
-                Mutation.UpdateSupportUserAccess_ObjectFieldSpec,
+                Mutation.UpdateSupportUserAccess,
                 Mutation.UpdateSupportUserAccessFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10940,7 +11133,7 @@ $query.Var.input = @{
                 "MutationUpdateTunnelStatus",
                 "($input: UpdateTunnelStatusInput!)",
                 "UpdateTunnelStatusReply",
-                Mutation.UpdateTunnelStatus_ObjectFieldSpec,
+                Mutation.UpdateTunnelStatus,
                 Mutation.UpdateTunnelStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -10972,7 +11165,7 @@ $query.Var.input = @{
                 "MutationUpdateVlan",
                 "($input: UpdateVlanInput!)",
                 "System.String",
-                Mutation.UpdateVlan_ObjectFieldSpec,
+                Mutation.UpdateVlan,
                 Mutation.UpdateVlanFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -11015,7 +11208,7 @@ $query.Var.input = @{
                 "MutationUpdateVolumeGroup",
                 "($input: UpdateVolumeGroupInput!)",
                 "UpdateVolumeGroupReply",
-                Mutation.UpdateVolumeGroup_ObjectFieldSpec,
+                Mutation.UpdateVolumeGroup,
                 Mutation.UpdateVolumeGroupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -11061,7 +11254,7 @@ $query.Var.input = @{
                 "MutationUpdateWhitelistedAnalyzers",
                 "($stdPath: String!,$snappableFid: String!,$snapshotFid: String!,$analyzerIds: [String!]!,$runAsync: Boolean!)",
                 "System.String",
-                Mutation.UpdateWhitelistedAnalyzers_ObjectFieldSpec,
+                Mutation.UpdateWhitelistedAnalyzers,
                 Mutation.UpdateWhitelistedAnalyzersFieldSpec,
                 @"# REQUIRED
 $query.Var.stdPath = $someString
@@ -11091,7 +11284,7 @@ $query.Var.runAsync = $someBoolean"
                 "MutationUpgradeIoFilter",
                 "($input: UpgradeIoFilterInput!)",
                 "RequestSuccess",
-                Mutation.UpgradeIoFilter_ObjectFieldSpec,
+                Mutation.UpgradeIoFilter,
                 Mutation.UpgradeIoFilterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -11118,7 +11311,7 @@ $query.Var.input = @{
                 "MutationUpgradeToRsc",
                 "",
                 "System.String",
-                Mutation.UpgradeToRsc_ObjectFieldSpec,
+                Mutation.UpgradeToRsc,
                 Mutation.UpgradeToRscFieldSpec,
                 @""
             );
@@ -11137,7 +11330,7 @@ $query.Var.input = @{
                 "MutationValidateAndSaveCustomerKmsInfo",
                 "($input: ValidateAndSaveCustomerKmsInfoInput!)",
                 "ValidateAndSaveCustomerKmsInfoReply",
-                Mutation.ValidateAndSaveCustomerKmsInfo_ObjectFieldSpec,
+                Mutation.ValidateAndSaveCustomerKmsInfo,
                 Mutation.ValidateAndSaveCustomerKmsInfoFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -11177,7 +11370,7 @@ $query.Var.input = @{
                 "MutationVmMakePrimary",
                 "($input: VmMakePrimaryInput!)",
                 "AsyncRequestStatus",
-                Mutation.VmMakePrimary_ObjectFieldSpec,
+                Mutation.VmMakePrimary,
                 Mutation.VmMakePrimaryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -11202,7 +11395,7 @@ $query.Var.input = @{
                 "MutationWarmSearchCache",
                 "($input: WarmSearchCacheInput!)",
                 "System.Boolean",
-                Mutation.WarmSearchCache_ObjectFieldSpec,
+                Mutation.WarmSearchCache,
                 Mutation.WarmSearchCacheFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

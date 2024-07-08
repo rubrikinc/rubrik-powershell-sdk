@@ -56,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nodeSecurityGroupId")]
         public System.String? NodeSecurityGroupId { get; set; }
 
+        //      C# -> System.String? PcrImagePullAwsNativeId
+        // GraphQL -> pcrImagePullAwsNativeId: String (scalar)
+        [JsonProperty("pcrImagePullAwsNativeId")]
+        public System.String? PcrImagePullAwsNativeId { get; set; }
+
         //      C# -> System.String? PcrUrl
         // GraphQL -> pcrUrl: String (scalar)
         [JsonProperty("pcrUrl")]
@@ -103,6 +108,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? HasPcr = null,
         System.String? Message = null,
         System.String? NodeSecurityGroupId = null,
+        System.String? PcrImagePullAwsNativeId = null,
         System.String? PcrUrl = null,
         System.String? VpcId = null,
         ExocomputeHealthCheckStatus? HealthCheckStatus = null,
@@ -131,6 +137,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NodeSecurityGroupId != null ) {
             this.NodeSecurityGroupId = NodeSecurityGroupId;
+        }
+        if ( PcrImagePullAwsNativeId != null ) {
+            this.PcrImagePullAwsNativeId = PcrImagePullAwsNativeId;
         }
         if ( PcrUrl != null ) {
             this.PcrUrl = PcrUrl;
@@ -225,6 +234,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "nodeSecurityGroupId\n" ;
             } else {
                 s += ind + "nodeSecurityGroupId\n" ;
+            }
+        }
+        //      C# -> System.String? PcrImagePullAwsNativeId
+        // GraphQL -> pcrImagePullAwsNativeId: String (scalar)
+        if (this.PcrImagePullAwsNativeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "pcrImagePullAwsNativeId\n" ;
+            } else {
+                s += ind + "pcrImagePullAwsNativeId\n" ;
             }
         }
         //      C# -> System.String? PcrUrl
@@ -418,6 +436,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NodeSecurityGroupId != null && ec.Excludes("nodeSecurityGroupId",true))
         {
             this.NodeSecurityGroupId = null;
+        }
+        //      C# -> System.String? PcrImagePullAwsNativeId
+        // GraphQL -> pcrImagePullAwsNativeId: String (scalar)
+        if (ec.Includes("pcrImagePullAwsNativeId",true))
+        {
+            if(this.PcrImagePullAwsNativeId == null) {
+
+                this.PcrImagePullAwsNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PcrImagePullAwsNativeId != null && ec.Excludes("pcrImagePullAwsNativeId",true))
+        {
+            this.PcrImagePullAwsNativeId = null;
         }
         //      C# -> System.String? PcrUrl
         // GraphQL -> pcrUrl: String (scalar)

@@ -1258,7 +1258,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryCdmHierarchySnappableNew",
                 "($snappableFid: UUID!)",
                 "CdmHierarchySnappableNew",
-                Query.CdmHierarchySnappableNew_ObjectFieldSpec,
+                Query.CdmHierarchySnappableNew,
                 Query.CdmHierarchySnappableNewFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString"
@@ -1278,7 +1278,7 @@ $query.Var.snappableFid = $someString"
                 "QueryCdmHierarchySnappablesNew",
                 "($fids: [UUID!]!)",
                 "List<CdmHierarchySnappableNew>",
-                Query.CdmHierarchySnappablesNew_ObjectFieldSpec,
+                Query.CdmHierarchySnappablesNew,
                 Query.CdmHierarchySnappablesNewFieldSpec,
                 @"# REQUIRED
 $query.Var.fids = @(
@@ -1310,7 +1310,7 @@ $query.Var.fids = @(
                 "QuerySnappableContactSearch",
                 "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$contactsSearchFilter: ContactsSearchFilter)",
                 "O365ExchangeObjectConnection",
-                Query.SnappableContactSearch_ObjectFieldSpec,
+                Query.SnappableContactSearch,
                 Query.SnappableContactSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1376,7 +1376,7 @@ $query.Var.contactsSearchFilter = @{
                 "QuerySnappableEmailSearch",
                 "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$searchFilter: SearchFilter)",
                 "O365ExchangeObjectConnection",
-                Query.SnappableEmailSearch_ObjectFieldSpec,
+                Query.SnappableEmailSearch,
                 Query.SnappableEmailSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1459,7 +1459,7 @@ $query.Var.searchFilter = @{
                 "QuerySnappableEventSearch",
                 "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$calendarSearchFilter: CalendarSearchFilter)",
                 "O365ExchangeObjectConnection",
-                Query.SnappableEventSearch_ObjectFieldSpec,
+                Query.SnappableEventSearch,
                 Query.SnappableEventSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1554,7 +1554,7 @@ $query.Var.calendarSearchFilter = @{
                 "QuerySnappableGroupByConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$groupBy: SnappableGroupByEnum!,$filter: SnappableGroupByFilterInput,$timezoneOffset: Float,$requestedAggregations: [SnappableAggregationsEnum!])",
                 "SnappableGroupByConnection",
-                Query.SnappableGroupByConnection_ObjectFieldSpec,
+                Query.SnappableGroupByConnection,
                 Query.SnappableGroupByConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1658,7 +1658,7 @@ $query.Var.requestedAggregations = @(
                 "QueryHierarchySnappables",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "HierarchySnappableConnection",
-                Query.HierarchySnappables_ObjectFieldSpec,
+                Query.HierarchySnappables,
                 Query.HierarchySnappablesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1740,7 +1740,7 @@ $query.Var.filter = @(
                 "QuerySnappableConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: SnappableSortByEnum,$filter: SnappableFilterInput)",
                 "SnappableConnection",
-                Query.SnappableConnection_ObjectFieldSpec,
+                Query.SnappableConnection,
                 Query.SnappableConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1835,7 +1835,7 @@ $query.Var.filter = @{
                 "QuerySnappableOnedriveSearch",
                 "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$onedriveSearchFilter: OnedriveSearchFilter)",
                 "O365OnedriveObjectConnection",
-                Query.SnappableOnedriveSearch_ObjectFieldSpec,
+                Query.SnappableOnedriveSearch,
                 Query.SnappableOnedriveSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1931,7 +1931,7 @@ $query.Var.onedriveSearchFilter = @{
                 "QuerySearchSnappableConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: SnappableSortByEnum,$filter: SnappableFilterInputWithSearch)",
                 "SnappableConnection",
-                Query.SearchSnappableConnection_ObjectFieldSpec,
+                Query.SearchSnappableConnection,
                 Query.SearchSnappableConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2031,7 +2031,7 @@ $query.Var.filter = @{
                 "QuerySearchSnappableVersionedFiles",
                 "($first: Int,$after: String,$snappableFid: UUID!,$searchQuery: String!)",
                 "VersionedFileConnection",
-                Query.SearchSnappableVersionedFiles_ObjectFieldSpec,
+                Query.SearchSnappableVersionedFiles,
                 Query.SearchSnappableVersionedFilesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2071,7 +2071,7 @@ $query.Var.searchQuery = $someString"
                 "QuerySnappableTeamsConversationsSearch",
                 "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$snapshotFidOpt: UUID,$teamConvChannels: [O365TeamConvChannelInput!]!,$teamsConversationsSearchFilter: TeamsConversationsSearchFilter)",
                 "O365TeamsConversationsConnection",
-                Query.SnappableTeamsConversationsSearch_ObjectFieldSpec,
+                Query.SnappableTeamsConversationsSearch,
                 Query.SnappableTeamsConversationsSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2156,7 +2156,7 @@ $query.Var.teamsConversationsSearchFilter = @{
                 "QuerySnappableTeamsDriveSearch",
                 "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$channelId: String,$channelFolderName: String,$teamsDriveSearchFilter: OnedriveSearchFilter)",
                 "O365OnedriveObjectConnection",
-                Query.SnappableTeamsDriveSearch_ObjectFieldSpec,
+                Query.SnappableTeamsDriveSearch,
                 Query.SnappableTeamsDriveSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

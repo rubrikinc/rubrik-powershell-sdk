@@ -195,7 +195,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationExcludeSharepointObjectsFromProtection",
                 "($input: ExcludeSharepointObjectsFromProtectionInput!)",
                 "System.String",
-                Mutation.ExcludeSharepointObjectsFromProtection_ObjectFieldSpec,
+                Mutation.ExcludeSharepointObjectsFromProtection,
                 Mutation.ExcludeSharepointObjectsFromProtectionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

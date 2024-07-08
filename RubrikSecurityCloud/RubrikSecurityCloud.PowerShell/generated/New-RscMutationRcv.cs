@@ -152,6 +152,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	shouldBypassProxy = $someBoolean
     /// 	# OPTIONAL
+    /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+    /// 	# OPTIONAL
     /// 	rsaKey = $someString
     /// 	# OPTIONAL
     /// 	azureKeyVaultKey = @{
@@ -362,7 +364,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationApproveRcvPrivateEndpoint",
                 "($input: ApproveRcvPrivateEndpointInput!)",
                 "ApproveRcvPrivateEndpointReply",
-                Mutation.ApproveRcvPrivateEndpoint_ObjectFieldSpec,
+                Mutation.ApproveRcvPrivateEndpoint,
                 Mutation.ApproveRcvPrivateEndpointFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -389,7 +391,7 @@ $query.Var.input = @{
                 "MutationCreateRcvLocationsFromTemplate",
                 "($input: CreateRcvLocationsFromTemplateInput!)",
                 "List<Target>",
-                Mutation.CreateRcvLocationsFromTemplate_ObjectFieldSpec,
+                Mutation.CreateRcvLocationsFromTemplate,
                 Mutation.CreateRcvLocationsFromTemplateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -419,6 +421,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	shouldBypassProxy = $someBoolean
 	# OPTIONAL
+	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+	# OPTIONAL
 	rsaKey = $someString
 	# OPTIONAL
 	azureKeyVaultKey = @{
@@ -446,7 +450,7 @@ $query.Var.input = @{
                 "MutationCreateRcvPrivateEndpointApprovalRequest",
                 "($input: CreateRcvPrivateEndpointApprovalRequestInput!)",
                 "CreateRcvPrivateEndpointApprovalRequestReply",
-                Mutation.CreateRcvPrivateEndpointApprovalRequest_ObjectFieldSpec,
+                Mutation.CreateRcvPrivateEndpointApprovalRequest,
                 Mutation.CreateRcvPrivateEndpointApprovalRequestFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -471,7 +475,7 @@ $query.Var.input = @{
                 "MutationUpdateRcvTarget",
                 "($input: UpdateRcvTargetInput!)",
                 "Target",
-                Mutation.UpdateRcvTarget_ObjectFieldSpec,
+                Mutation.UpdateRcvTarget,
                 Mutation.UpdateRcvTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

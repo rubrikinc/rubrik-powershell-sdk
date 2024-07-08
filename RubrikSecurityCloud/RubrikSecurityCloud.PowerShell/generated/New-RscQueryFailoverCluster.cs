@@ -490,7 +490,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryFailoverClusterApp",
                 "($fid: UUID!)",
                 "FailoverClusterApp",
-                Query.FailoverClusterApp_ObjectFieldSpec,
+                Query.FailoverClusterApp,
                 Query.FailoverClusterAppFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -522,7 +522,7 @@ $query.Var.fid = $someString"
                 "QueryFailoverClusterApps",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$hostFailoverClusterRoot: HostFailoverClusterRoot!)",
                 "FailoverClusterAppConnection",
-                Query.FailoverClusterApps_ObjectFieldSpec,
+                Query.FailoverClusterApps,
                 Query.FailoverClusterAppsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -592,7 +592,7 @@ $query.Var.hostFailoverClusterRoot = $someHostFailoverClusterRoot # Call [Enum]:
                 "QueryHostFailoverCluster",
                 "($fid: UUID!)",
                 "HostFailoverCluster",
-                Query.HostFailoverCluster_ObjectFieldSpec,
+                Query.HostFailoverCluster,
                 Query.HostFailoverClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -624,7 +624,7 @@ $query.Var.fid = $someString"
                 "QueryHostFailoverClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$hostFailoverClusterRoot: HostFailoverClusterRoot!)",
                 "HostFailoverClusterConnection",
-                Query.HostFailoverClusters_ObjectFieldSpec,
+                Query.HostFailoverClusters,
                 Query.HostFailoverClustersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -708,7 +708,7 @@ $query.Var.hostFailoverClusterRoot = $someHostFailoverClusterRoot # Call [Enum]:
                 "QueryFailoverClusterTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!],$hostFailoverClusterRoot: HostFailoverClusterRoot!)",
                 "FailoverClusterTopLevelDescendantTypeConnection",
-                Query.FailoverClusterTopLevelDescendants_ObjectFieldSpec,
+                Query.FailoverClusterTopLevelDescendants,
                 Query.FailoverClusterTopLevelDescendantsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

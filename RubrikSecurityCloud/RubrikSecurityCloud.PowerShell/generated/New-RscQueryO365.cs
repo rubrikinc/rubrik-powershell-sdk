@@ -2458,7 +2458,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAllO365AdGroups",
                 "($orgId: UUID!,$adGroupSearchFilter: String!)",
                 "List<AdGroup>",
-                Query.AllO365AdGroups_ObjectFieldSpec,
+                Query.AllO365AdGroups,
                 Query.AllO365AdGroupsFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString
@@ -2496,7 +2496,7 @@ $query.Var.adGroupSearchFilter = $someString"
                 "QueryBrowseO365TeamConvChannels",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFidOpt: UUID,$excludeArchived: Boolean!,$orgId: UUID!,$channelMembershipTypeFilter: ChannelMembershipType!,$nameFilter: String)",
                 "O365TeamConvChannelConnection",
-                Query.BrowseO365TeamConvChannels_ObjectFieldSpec,
+                Query.BrowseO365TeamConvChannels,
                 Query.BrowseO365TeamConvChannelsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2530,7 +2530,7 @@ $query.Var.nameFilter = $someString"
                 "QueryO365Calendar",
                 "($snappableFid: UUID!)",
                 "O365Calendar",
-                Query.O365Calendar_ObjectFieldSpec,
+                Query.O365Calendar,
                 Query.O365CalendarFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString"
@@ -2550,7 +2550,7 @@ $query.Var.snappableFid = $someString"
                 "QueryO365Consumption",
                 "($input: O365ConsumptionInput!)",
                 "O365Consumption",
-                Query.O365Consumption_ObjectFieldSpec,
+                Query.O365Consumption,
                 Query.O365ConsumptionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2589,7 +2589,7 @@ $query.Var.input = @{
                 "QueryO365Groups",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!,$snappableType: SnappableType!)",
                 "O365GroupConnection",
-                Query.O365Groups_ObjectFieldSpec,
+                Query.O365Groups,
                 Query.O365GroupsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2660,7 +2660,7 @@ $query.Var.snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSe
                 "QueryO365License",
                 "",
                 "O365License",
-                Query.O365License_ObjectFieldSpec,
+                Query.O365License,
                 Query.O365LicenseFieldSpec,
                 @""
             );
@@ -2687,7 +2687,7 @@ $query.Var.snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSe
                 "QueryListO365Apps",
                 "($first: Int,$after: String,$o365AppFilters: [AppFilter!]!,$o365AppSortByParam: AppSortByParam)",
                 "O365AppConnection",
-                Query.ListO365Apps_ObjectFieldSpec,
+                Query.ListO365Apps,
                 Query.ListO365AppsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2727,7 +2727,7 @@ $query.Var.o365AppSortByParam = @{
                 "QueryO365Mailbox",
                 "($snappableFid: UUID!)",
                 "O365Mailbox",
-                Query.O365Mailbox_ObjectFieldSpec,
+                Query.O365Mailbox,
                 Query.O365MailboxFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString"
@@ -2759,7 +2759,7 @@ $query.Var.snappableFid = $someString"
                 "QueryO365Mailboxes",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
                 "O365MailboxConnection",
-                Query.O365Mailboxes_ObjectFieldSpec,
+                Query.O365Mailboxes,
                 Query.O365MailboxesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2829,7 +2829,7 @@ $query.Var.o365OrgId = $someString"
                 "QueryO365ObjectAncestors",
                 "($snappableFid: UUID!)",
                 "GetImplicitlyAuthorizedAncestorSummariesResponse",
-                Query.O365ObjectAncestors_ObjectFieldSpec,
+                Query.O365ObjectAncestors,
                 Query.O365ObjectAncestorsFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString"
@@ -2849,7 +2849,7 @@ $query.Var.snappableFid = $someString"
                 "QueryO365Onedrive",
                 "($snappableFid: UUID!)",
                 "O365Onedrive",
-                Query.O365Onedrive_ObjectFieldSpec,
+                Query.O365Onedrive,
                 Query.O365OnedriveFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString"
@@ -2881,7 +2881,7 @@ $query.Var.snappableFid = $someString"
                 "QueryO365Onedrives",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
                 "O365OnedriveConnection",
-                Query.O365Onedrives_ObjectFieldSpec,
+                Query.O365Onedrives,
                 Query.O365OnedrivesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2951,7 +2951,7 @@ $query.Var.o365OrgId = $someString"
                 "QueryO365Org",
                 "($fid: UUID!)",
                 "O365Org",
-                Query.O365Org_ObjectFieldSpec,
+                Query.O365Org,
                 Query.O365OrgFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -2972,7 +2972,7 @@ $query.Var.fid = $someString"
                 "QueryO365OrgAtSnappableLevel",
                 "($fid: UUID!,$snappableType: SnappableType!)",
                 "O365Org",
-                Query.O365OrgAtSnappableLevel_ObjectFieldSpec,
+                Query.O365OrgAtSnappableLevel,
                 Query.O365OrgAtSnappableLevelFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString
@@ -2993,7 +2993,7 @@ $query.Var.snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSe
                 "QueryAllO365OrgStatuses",
                 "",
                 "List<O365OrgInfo>",
-                Query.AllO365OrgStatuses_ObjectFieldSpec,
+                Query.AllO365OrgStatuses,
                 Query.AllO365OrgStatusesFieldSpec,
                 @""
             );
@@ -3011,7 +3011,7 @@ $query.Var.snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSe
                 "QueryO365OrgSummaries",
                 "",
                 "GetImplicitlyAuthorizedObjectSummariesResponse",
-                Query.O365OrgSummaries_ObjectFieldSpec,
+                Query.O365OrgSummaries,
                 Query.O365OrgSummariesFieldSpec,
                 @""
             );
@@ -3042,7 +3042,7 @@ $query.Var.snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSe
                 "QueryO365Orgs",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$workloadHierarchy: WorkloadLevelHierarchy)",
                 "O365OrgConnection",
-                Query.O365Orgs_ObjectFieldSpec,
+                Query.O365Orgs,
                 Query.O365OrgsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3112,7 +3112,7 @@ $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetVal
                 "QueryO365ServiceAccount",
                 "($orgId: UUID!)",
                 "O365ServiceAccountStatusResp",
-                Query.O365ServiceAccount_ObjectFieldSpec,
+                Query.O365ServiceAccount,
                 Query.O365ServiceAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString"
@@ -3132,7 +3132,7 @@ $query.Var.orgId = $someString"
                 "QueryO365ServiceStatus",
                 "($orgID: UUID)",
                 "GetO365ServiceStatusResp",
-                Query.O365ServiceStatus_ObjectFieldSpec,
+                Query.O365ServiceStatus,
                 Query.O365ServiceStatusFieldSpec,
                 @"# OPTIONAL
 $query.Var.orgID = $someString"
@@ -3152,7 +3152,7 @@ $query.Var.orgID = $someString"
                 "QueryO365SharepointDrive",
                 "($snappableFid: UUID!)",
                 "O365SharepointDrive",
-                Query.O365SharepointDrive_ObjectFieldSpec,
+                Query.O365SharepointDrive,
                 Query.O365SharepointDriveFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString"
@@ -3184,7 +3184,7 @@ $query.Var.snappableFid = $someString"
                 "QueryO365SharepointDrives",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
                 "O365SharepointDriveConnection",
-                Query.O365SharepointDrives_ObjectFieldSpec,
+                Query.O365SharepointDrives,
                 Query.O365SharepointDrivesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3254,7 +3254,7 @@ $query.Var.o365OrgId = $someString"
                 "QueryO365SharepointList",
                 "($snappableFid: UUID!)",
                 "O365SharepointList",
-                Query.O365SharepointList_ObjectFieldSpec,
+                Query.O365SharepointList,
                 Query.O365SharepointListFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString"
@@ -3286,7 +3286,7 @@ $query.Var.snappableFid = $someString"
                 "QueryO365SharepointLists",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
                 "O365SharepointListConnection",
-                Query.O365SharepointLists_ObjectFieldSpec,
+                Query.O365SharepointLists,
                 Query.O365SharepointListsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3372,7 +3372,7 @@ $query.Var.o365OrgId = $someString"
                 "QueryO365SharepointObjectList",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$objectTypeFilter: [String!],$includeEntireHierarchy: Boolean!,$fid: UUID!)",
                 "O365SharepointObjectConnection",
-                Query.O365SharepointObjectList_ObjectFieldSpec,
+                Query.O365SharepointObjectList,
                 Query.O365SharepointObjectListFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3460,7 +3460,7 @@ $query.Var.fid = $someString"
                 "QueryO365SharepointObjects",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$fid: UUID!)",
                 "O365SharepointObjectConnection",
-                Query.O365SharepointObjects_ObjectFieldSpec,
+                Query.O365SharepointObjects,
                 Query.O365SharepointObjectsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3546,7 +3546,7 @@ $query.Var.fid = $someString"
                 "QueryO365SharepointObjectsNew",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$objectTypeFilter: [String!],$includeEntireHierarchy: Boolean!,$fid: UUID!)",
                 "O365SharepointObjectConnection",
-                Query.O365SharepointObjectsNew_ObjectFieldSpec,
+                Query.O365SharepointObjectsNew,
                 Query.O365SharepointObjectsNewFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3622,7 +3622,7 @@ $query.Var.fid = $someString"
                 "QueryO365SharepointSite",
                 "($siteFid: UUID!)",
                 "O365Site",
-                Query.O365SharepointSite_ObjectFieldSpec,
+                Query.O365SharepointSite,
                 Query.O365SharepointSiteFieldSpec,
                 @"# REQUIRED
 $query.Var.siteFid = $someString"
@@ -3654,7 +3654,7 @@ $query.Var.siteFid = $someString"
                 "QueryO365SharepointSites",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
                 "O365SiteConnection",
-                Query.O365SharepointSites_ObjectFieldSpec,
+                Query.O365SharepointSites,
                 Query.O365SharepointSitesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3724,7 +3724,7 @@ $query.Var.o365OrgId = $someString"
                 "QueryO365Site",
                 "($snappableFid: UUID!)",
                 "O365Site",
-                Query.O365Site_ObjectFieldSpec,
+                Query.O365Site,
                 Query.O365SiteFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString"
@@ -3758,7 +3758,7 @@ $query.Var.snappableFid = $someString"
                 "QueryO365Sites",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!,$excludeChildSites: Boolean)",
                 "O365SiteConnection",
-                Query.O365Sites_ObjectFieldSpec,
+                Query.O365Sites,
                 Query.O365SitesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3830,7 +3830,7 @@ $query.Var.excludeChildSites = $someBoolean"
                 "QueryO365StorageStats",
                 "($orgID: UUID)",
                 "GetO365StorageStatsResp",
-                Query.O365StorageStats_ObjectFieldSpec,
+                Query.O365StorageStats,
                 Query.O365StorageStatsFieldSpec,
                 @"# OPTIONAL
 $query.Var.orgID = $someString"
@@ -3849,7 +3849,7 @@ $query.Var.orgID = $someString"
                 "QueryAllO365SubscriptionsAppTypeCounts",
                 "",
                 "List<O365SubscriptionAppTypeCounts>",
-                Query.AllO365SubscriptionsAppTypeCounts_ObjectFieldSpec,
+                Query.AllO365SubscriptionsAppTypeCounts,
                 Query.AllO365SubscriptionsAppTypeCountsFieldSpec,
                 @""
             );
@@ -3868,7 +3868,7 @@ $query.Var.orgID = $someString"
                 "QueryO365Team",
                 "($snappableFid: UUID!)",
                 "O365Teams",
-                Query.O365Team_ObjectFieldSpec,
+                Query.O365Team,
                 Query.O365TeamFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString"
@@ -3900,7 +3900,7 @@ $query.Var.snappableFid = $someString"
                 "QueryO365TeamChannels",
                 "($first: Int,$after: String,$snappableFid: UUID!,$excludeArchived: Boolean!,$channelMembershipTypeFilter: ChannelMembershipType!,$nameFilter: String)",
                 "O365TeamsChannelConnection",
-                Query.O365TeamChannels_ObjectFieldSpec,
+                Query.O365TeamChannels,
                 Query.O365TeamChannelsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -3932,7 +3932,7 @@ $query.Var.nameFilter = $someString"
                 "QueryO365TeamConversationsFolderId",
                 "($snappableFid: UUID!,$snapshotFid: UUID!,$o365OrgId: UUID!)",
                 "System.String",
-                Query.O365TeamConversationsFolderId_ObjectFieldSpec,
+                Query.O365TeamConversationsFolderId,
                 Query.O365TeamConversationsFolderIdFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString
@@ -3966,7 +3966,7 @@ $query.Var.o365OrgId = $someString"
                 "QueryO365TeamPostedBy",
                 "($first: Int,$after: String,$snappableFid: UUID!,$o365OrgId: UUID!,$nameFilter: String)",
                 "O365TeamConversationsSenderConnection",
-                Query.O365TeamPostedBy_ObjectFieldSpec,
+                Query.O365TeamPostedBy,
                 Query.O365TeamPostedByFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -4006,7 +4006,7 @@ $query.Var.nameFilter = $someString"
                 "QueryO365Teams",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
                 "O365TeamsConnection",
-                Query.O365Teams_ObjectFieldSpec,
+                Query.O365Teams,
                 Query.O365TeamsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -4076,7 +4076,7 @@ $query.Var.o365OrgId = $someString"
                 "QueryO365User",
                 "($fid: UUID!)",
                 "O365User",
-                Query.O365User_ObjectFieldSpec,
+                Query.O365User,
                 Query.O365UserFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -4108,7 +4108,7 @@ $query.Var.fid = $someString"
                 "QueryO365UserObjects",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$fid: UUID!)",
                 "O365UserDescendantMetadataConnection",
-                Query.O365UserObjects_ObjectFieldSpec,
+                Query.O365UserObjects,
                 Query.O365UserObjectsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

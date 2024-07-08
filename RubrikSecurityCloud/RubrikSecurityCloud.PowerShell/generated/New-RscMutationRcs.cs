@@ -119,6 +119,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	shouldBypassProxy = $someBoolean
     /// 	# OPTIONAL
+    /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+    /// 	# OPTIONAL
     /// 	azureKeyVaultKey = @{
     /// 		# REQUIRED
     /// 		kmsKeyVaultId = $someString
@@ -373,7 +375,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCreateAutomaticRcsTargetMapping",
                 "($input: CreateAutomaticRcsTargetMappingInput!)",
                 "TargetMapping",
-                Mutation.CreateAutomaticRcsTargetMapping_ObjectFieldSpec,
+                Mutation.CreateAutomaticRcsTargetMapping,
                 Mutation.CreateAutomaticRcsTargetMappingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -405,6 +407,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	shouldBypassProxy = $someBoolean
 	# OPTIONAL
+	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+	# OPTIONAL
 	azureKeyVaultKey = @{
 		# REQUIRED
 		kmsKeyVaultId = $someString
@@ -430,7 +434,7 @@ $query.Var.input = @{
                 "MutationCreateRcsReaderTarget",
                 "($input: CreateRcsReaderTargetInput!)",
                 "Target",
-                Mutation.CreateRcsReaderTarget_ObjectFieldSpec,
+                Mutation.CreateRcsReaderTarget,
                 Mutation.CreateRcsReaderTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -459,7 +463,7 @@ $query.Var.input = @{
                 "MutationCreateRcsTarget",
                 "($input: CreateRcsTargetInput!)",
                 "Target",
-                Mutation.CreateRcsTarget_ObjectFieldSpec,
+                Mutation.CreateRcsTarget,
                 Mutation.CreateRcsTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -498,7 +502,7 @@ $query.Var.input = @{
                 "MutationUpdateRcsAutomaticTargetMapping",
                 "($input: UpdateRcsAutomaticTargetMappingInput!)",
                 "TargetMapping",
-                Mutation.UpdateRcsAutomaticTargetMapping_ObjectFieldSpec,
+                Mutation.UpdateRcsAutomaticTargetMapping,
                 Mutation.UpdateRcsAutomaticTargetMappingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

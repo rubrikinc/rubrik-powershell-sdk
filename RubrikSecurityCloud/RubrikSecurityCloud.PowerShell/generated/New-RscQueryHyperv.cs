@@ -1085,7 +1085,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryHypervCluster",
                 "($fid: UUID!)",
                 "HyperVcluster",
-                Query.HypervCluster_ObjectFieldSpec,
+                Query.HypervCluster,
                 Query.HypervClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1105,7 +1105,7 @@ $query.Var.fid = $someString"
                 "QueryHypervHostAsyncRequestStatus",
                 "($input: GetHypervHostAsyncRequestStatusInput!)",
                 "AsyncRequestStatus",
-                Query.HypervHostAsyncRequestStatus_ObjectFieldSpec,
+                Query.HypervHostAsyncRequestStatus,
                 Query.HypervHostAsyncRequestStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1138,7 +1138,7 @@ $query.Var.input = @{
                 "QueryHypervMounts",
                 "($first: Int,$after: String,$filters: [HypervLiveMountFilterInput!],$sortBy: HypervLiveMountSortByInput)",
                 "HyperVliveMountConnection",
-                Query.HypervMounts_ObjectFieldSpec,
+                Query.HypervMounts,
                 Query.HypervMountsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1178,7 +1178,7 @@ $query.Var.sortBy = @{
                 "QueryHypervScvmm",
                 "($fid: UUID!)",
                 "HyperVscvmm",
-                Query.HypervScvmm_ObjectFieldSpec,
+                Query.HypervScvmm,
                 Query.HypervScvmmFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1198,7 +1198,7 @@ $query.Var.fid = $someString"
                 "QueryHypervScvmmAsyncRequestStatus",
                 "($input: GetHypervScvmmAsyncRequestStatusInput!)",
                 "AsyncRequestStatus",
-                Query.HypervScvmmAsyncRequestStatus_ObjectFieldSpec,
+                Query.HypervScvmmAsyncRequestStatus,
                 Query.HypervScvmmAsyncRequestStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1233,7 +1233,7 @@ $query.Var.input = @{
                 "QueryHypervScvmms",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "HyperVscvmmConnection",
-                Query.HypervScvmms_ObjectFieldSpec,
+                Query.HypervScvmms,
                 Query.HypervScvmmsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1301,7 +1301,7 @@ $query.Var.filter = @(
                 "QueryHypervServer",
                 "($fid: UUID!)",
                 "HypervServer",
-                Query.HypervServer_ObjectFieldSpec,
+                Query.HypervServer,
                 Query.HypervServerFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1321,7 +1321,7 @@ $query.Var.fid = $someString"
                 "QueryHypervServers",
                 "($input: QueryHypervHostInput!)",
                 "HypervHostSummaryListResponse",
-                Query.HypervServers_ObjectFieldSpec,
+                Query.HypervServers,
                 Query.HypervServersFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1370,7 +1370,7 @@ $query.Var.input = @{
                 "QueryHypervServersPaginated",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "HypervServerConnection",
-                Query.HypervServersPaginated_ObjectFieldSpec,
+                Query.HypervServersPaginated,
                 Query.HypervServersPaginatedFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1450,7 +1450,7 @@ $query.Var.filter = @(
                 "QueryHypervTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
                 "HypervTopLevelDescendantTypeConnection",
-                Query.HypervTopLevelDescendants_ObjectFieldSpec,
+                Query.HypervTopLevelDescendants,
                 Query.HypervTopLevelDescendantsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1522,7 +1522,7 @@ $query.Var.filter = @(
                 "QueryUniqueHypervServersCount",
                 "($filter: [Filter!])",
                 "System.Int32",
-                Query.UniqueHypervServersCount_ObjectFieldSpec,
+                Query.UniqueHypervServersCount,
                 Query.UniqueHypervServersCountFieldSpec,
                 @"# OPTIONAL
 $query.Var.filter = @(
@@ -1582,7 +1582,7 @@ $query.Var.filter = @(
                 "QueryHypervVirtualMachine",
                 "($fid: UUID!)",
                 "HyperVvirtualMachine",
-                Query.HypervVirtualMachine_ObjectFieldSpec,
+                Query.HypervVirtualMachine,
                 Query.HypervVirtualMachineFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1602,7 +1602,7 @@ $query.Var.fid = $someString"
                 "QueryHypervVirtualMachineAsyncRequestStatus",
                 "($input: GetHypervVirtualMachineAsyncRequestStatusInput!)",
                 "AsyncRequestStatus",
-                Query.HypervVirtualMachineAsyncRequestStatus_ObjectFieldSpec,
+                Query.HypervVirtualMachineAsyncRequestStatus,
                 Query.HypervVirtualMachineAsyncRequestStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1627,7 +1627,7 @@ $query.Var.input = @{
                 "QueryHypervVirtualMachineLevelFileInfo",
                 "($input: GetVmLevelFilesFromSnapshotInput!)",
                 "HypervVirtualMachineSnapshotFileDetails",
-                Query.HypervVirtualMachineLevelFileInfo_ObjectFieldSpec,
+                Query.HypervVirtualMachineLevelFileInfo,
                 Query.HypervVirtualMachineLevelFileInfoFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1662,7 +1662,7 @@ $query.Var.input = @{
                 "QueryHypervVirtualMachines",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "HyperVvirtualMachineConnection",
-                Query.HypervVirtualMachines_ObjectFieldSpec,
+                Query.HypervVirtualMachines,
                 Query.HypervVirtualMachinesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1730,7 +1730,7 @@ $query.Var.filter = @(
                 "QueryHypervVmDetail",
                 "($input: GetHypervVirtualMachineInput!)",
                 "HypervVirtualMachineDetail",
-                Query.HypervVmDetail_ObjectFieldSpec,
+                Query.HypervVmDetail,
                 Query.HypervVmDetailFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

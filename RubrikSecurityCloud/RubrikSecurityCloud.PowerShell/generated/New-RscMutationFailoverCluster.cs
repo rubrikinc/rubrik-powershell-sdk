@@ -581,7 +581,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationBulkDeleteFailoverCluster",
                 "($input: BulkDeleteFailoverClusterInput!)",
                 "ResponseSuccess",
-                Mutation.BulkDeleteFailoverCluster_ObjectFieldSpec,
+                Mutation.BulkDeleteFailoverCluster,
                 Mutation.BulkDeleteFailoverClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -608,7 +608,7 @@ $query.Var.input = @{
                 "MutationBulkDeleteFailoverClusterApp",
                 "($input: BulkDeleteFailoverClusterAppInput!)",
                 "ResponseSuccess",
-                Mutation.BulkDeleteFailoverClusterApp_ObjectFieldSpec,
+                Mutation.BulkDeleteFailoverClusterApp,
                 Mutation.BulkDeleteFailoverClusterAppFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -635,7 +635,7 @@ $query.Var.input = @{
                 "MutationCreateFailoverCluster",
                 "($input: CreateFailoverClusterInput!)",
                 "CreateFailoverClusterReply",
-                Mutation.CreateFailoverCluster_ObjectFieldSpec,
+                Mutation.CreateFailoverCluster,
                 Mutation.CreateFailoverClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -669,7 +669,7 @@ $query.Var.input = @{
                 "MutationCreateFailoverClusterApp",
                 "($input: CreateFailoverClusterAppInput!)",
                 "CreateFailoverClusterAppReply",
-                Mutation.CreateFailoverClusterApp_ObjectFieldSpec,
+                Mutation.CreateFailoverClusterApp,
                 Mutation.CreateFailoverClusterAppFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -723,7 +723,7 @@ $query.Var.input = @{
                 "MutationDeleteFailoverCluster",
                 "($input: DeleteFailoverClusterInput!)",
                 "ResponseSuccess",
-                Mutation.DeleteFailoverCluster_ObjectFieldSpec,
+                Mutation.DeleteFailoverCluster,
                 Mutation.DeleteFailoverClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -748,7 +748,7 @@ $query.Var.input = @{
                 "MutationDeleteFailoverClusterApp",
                 "($input: DeleteFailoverClusterAppInput!)",
                 "ResponseSuccess",
-                Mutation.DeleteFailoverClusterApp_ObjectFieldSpec,
+                Mutation.DeleteFailoverClusterApp,
                 Mutation.DeleteFailoverClusterAppFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -773,7 +773,7 @@ $query.Var.input = @{
                 "MutationUpdateFailoverCluster",
                 "($input: UpdateFailoverClusterInput!)",
                 "UpdateFailoverClusterReply",
-                Mutation.UpdateFailoverCluster_ObjectFieldSpec,
+                Mutation.UpdateFailoverCluster,
                 Mutation.UpdateFailoverClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -807,7 +807,7 @@ $query.Var.input = @{
                 "MutationUpdateFailoverClusterApp",
                 "($input: UpdateFailoverClusterAppInput!)",
                 "UpdateFailoverClusterAppReply",
-                Mutation.UpdateFailoverClusterApp_ObjectFieldSpec,
+                Mutation.UpdateFailoverClusterApp,
                 Mutation.UpdateFailoverClusterAppFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

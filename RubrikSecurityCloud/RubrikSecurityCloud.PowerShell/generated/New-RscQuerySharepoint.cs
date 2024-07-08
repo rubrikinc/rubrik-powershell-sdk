@@ -917,7 +917,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryBrowseSharepointDrive",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$folderId: String,$sharepointDriveSearchFilter: OnedriveSearchFilter,$orgId: UUID!,$siteChildId: String,$siteChildType: SharePointDescendantType)",
                 "O365OnedriveObjectConnection",
-                Query.BrowseSharepointDrive_ObjectFieldSpec,
+                Query.BrowseSharepointDrive,
                 Query.BrowseSharepointDriveFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1023,7 +1023,7 @@ $query.Var.siteChildType = $someSharePointDescendantType # Call [Enum]::GetValue
                 "QueryBrowseSharepointList",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$folderId: String,$sharepointDriveSearchFilter: OnedriveSearchFilter,$orgId: UUID!,$siteChildId: String)",
                 "O365OnedriveObjectConnection",
-                Query.BrowseSharepointList_ObjectFieldSpec,
+                Query.BrowseSharepointList,
                 Query.BrowseSharepointListFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1125,7 +1125,7 @@ $query.Var.siteChildId = $someString"
                 "QuerySharepointSiteDescendants",
                 "($first: Int,$after: String,$siteFid: UUID!,$snapshotFid: UUID!,$naturalId: String,$sharepointSiteSearchFilter: SharePointSearchFilter,$orgId: UUID!)",
                 "O365FullSpObjectConnection",
-                Query.SharepointSiteDescendants_ObjectFieldSpec,
+                Query.SharepointSiteDescendants,
                 Query.SharepointSiteDescendantsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1200,7 +1200,7 @@ $query.Var.orgId = $someString"
                 "QueryAllSharepointSiteExclusions",
                 "($orgId: UUID!,$siteFids: [String!]!)",
                 "List<FullSpSiteExclusions>",
-                Query.AllSharepointSiteExclusions_ObjectFieldSpec,
+                Query.AllSharepointSiteExclusions,
                 Query.AllSharepointSiteExclusionsFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString
@@ -1234,7 +1234,7 @@ $query.Var.siteFids = @(
                 "QuerySharepointSiteSearch",
                 "($first: Int,$after: String,$siteFid: UUID!,$orgId: UUID!,$sharepointSiteSearchFilter: SharePointSearchFilter)",
                 "O365FullSpObjectConnection",
-                Query.SharepointSiteSearch_ObjectFieldSpec,
+                Query.SharepointSiteSearch,
                 Query.SharepointSiteSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1318,7 +1318,7 @@ $query.Var.sharepointSiteSearchFilter = @{
                 "QuerySnappableSharepointDriveSearch",
                 "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$sharepointDriveSearchFilter: OnedriveSearchFilter,$siteChildId: String,$siteChildType: SharePointDescendantType)",
                 "O365OnedriveObjectConnection",
-                Query.SnappableSharepointDriveSearch_ObjectFieldSpec,
+                Query.SnappableSharepointDriveSearch,
                 Query.SnappableSharepointDriveSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1416,7 +1416,7 @@ $query.Var.siteChildType = $someSharePointDescendantType # Call [Enum]::GetValue
                 "QuerySnappableSharepointListSearch",
                 "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$sharepointDriveSearchFilter: OnedriveSearchFilter,$siteChildId: String)",
                 "O365OnedriveObjectConnection",
-                Query.SnappableSharepointListSearch_ObjectFieldSpec,
+                Query.SnappableSharepointListSearch,
                 Query.SnappableSharepointListSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1512,7 +1512,7 @@ $query.Var.siteChildId = $someString"
                 "QuerySnapshotSharepointDriveSearch",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$orgId: UUID!,$sharepointDriveSearchFilter: OnedriveSearchFilter)",
                 "O365OnedriveObjectConnection",
-                Query.SnapshotSharepointDriveSearch_ObjectFieldSpec,
+                Query.SnapshotSharepointDriveSearch,
                 Query.SnapshotSharepointDriveSearchFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

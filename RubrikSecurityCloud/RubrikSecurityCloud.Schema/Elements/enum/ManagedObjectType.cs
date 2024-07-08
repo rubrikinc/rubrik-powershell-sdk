@@ -120,6 +120,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FAILOVER_CLUSTER_APP")]
         FAILOVER_CLUSTER_APP,
 
+        [EnumMember(Value = "FAKE_OBJECT_TYPE")]
+        FAKE_OBJECT_TYPE,
+
         [EnumMember(Value = "FELDSPAR_SITE")]
         FELDSPAR_SITE,
 

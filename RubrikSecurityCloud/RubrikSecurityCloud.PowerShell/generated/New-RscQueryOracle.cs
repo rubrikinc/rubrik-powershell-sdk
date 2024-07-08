@@ -1008,7 +1008,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryOracleAcoExampleDownloadLink",
                 "($input: ClusterUuidWithDbIdInput!)",
                 "OracleFileDownloadLink",
-                Query.OracleAcoExampleDownloadLink_ObjectFieldSpec,
+                Query.OracleAcoExampleDownloadLink,
                 Query.OracleAcoExampleDownloadLinkFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1033,7 +1033,7 @@ $query.Var.input = @{
                 "QueryOracleAcoParameters",
                 "($input: ClusterUuidWithDbIdInput!)",
                 "OracleAcoParameterList",
-                Query.OracleAcoParameters_ObjectFieldSpec,
+                Query.OracleAcoParameters,
                 Query.OracleAcoParametersFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1058,7 +1058,7 @@ $query.Var.input = @{
                 "QueryOracleDataGuardGroup",
                 "($fid: UUID!)",
                 "OracleDataGuardGroup",
-                Query.OracleDataGuardGroup_ObjectFieldSpec,
+                Query.OracleDataGuardGroup,
                 Query.OracleDataGuardGroupFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1078,7 +1078,7 @@ $query.Var.fid = $someString"
                 "QueryOracleDatabase",
                 "($fid: UUID!)",
                 "OracleDatabase",
-                Query.OracleDatabase_ObjectFieldSpec,
+                Query.OracleDatabase,
                 Query.OracleDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1098,7 +1098,7 @@ $query.Var.fid = $someString"
                 "QueryOracleDatabaseAsyncRequestDetails",
                 "($input: GetOracleAsyncRequestStatusInput!)",
                 "AsyncRequestStatus",
-                Query.OracleDatabaseAsyncRequestDetails_ObjectFieldSpec,
+                Query.OracleDatabaseAsyncRequestDetails,
                 Query.OracleDatabaseAsyncRequestDetailsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1123,7 +1123,7 @@ $query.Var.input = @{
                 "QueryOracleDatabaseLogBackupConfig",
                 "($input: OracleDbInput!)",
                 "OracleLogBackupConfig",
-                Query.OracleDatabaseLogBackupConfig_ObjectFieldSpec,
+                Query.OracleDatabaseLogBackupConfig,
                 Query.OracleDatabaseLogBackupConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1156,7 +1156,7 @@ $query.Var.input = @{
                 "QueryOracleDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "OracleDatabaseConnection",
-                Query.OracleDatabases_ObjectFieldSpec,
+                Query.OracleDatabases,
                 Query.OracleDatabasesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1224,7 +1224,7 @@ $query.Var.filter = @(
                 "QueryOracleHost",
                 "($fid: UUID!)",
                 "OracleHost",
-                Query.OracleHost_ObjectFieldSpec,
+                Query.OracleHost,
                 Query.OracleHostFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1244,7 +1244,7 @@ $query.Var.fid = $someString"
                 "QueryOracleHostLogBackupConfig",
                 "($input: OracleHostInput!)",
                 "OracleLogBackupConfig",
-                Query.OracleHostLogBackupConfig_ObjectFieldSpec,
+                Query.OracleHostLogBackupConfig,
                 Query.OracleHostLogBackupConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1275,7 +1275,7 @@ $query.Var.input = @{
                 "QueryOracleLiveMounts",
                 "($first: Int,$after: String,$filters: [OracleLiveMountFilterInput!],$sortBy: OracleLiveMountSortBy)",
                 "OracleLiveMountConnection",
-                Query.OracleLiveMounts_ObjectFieldSpec,
+                Query.OracleLiveMounts,
                 Query.OracleLiveMountsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1315,7 +1315,7 @@ $query.Var.sortBy = @{
                 "QueryOracleMissedRecoverableRanges",
                 "($input: GetOracleDbMissedRecoverableRangesInput!)",
                 "OracleMissedRecoverableRangeListResponse",
-                Query.OracleMissedRecoverableRanges_ObjectFieldSpec,
+                Query.OracleMissedRecoverableRanges,
                 Query.OracleMissedRecoverableRangesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1342,7 +1342,7 @@ $query.Var.input = @{
                 "QueryOracleMissedSnapshots",
                 "($input: GetMissedOracleDbSnapshotsInput!)",
                 "MissedSnapshotListResponse",
-                Query.OracleMissedSnapshots_ObjectFieldSpec,
+                Query.OracleMissedSnapshots,
                 Query.OracleMissedSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1369,7 +1369,7 @@ $query.Var.input = @{
                 "QueryOraclePdbDetails",
                 "($input: OraclePdbDetailsInput!)",
                 "OraclePdbDetails",
-                Query.OraclePdbDetails_ObjectFieldSpec,
+                Query.OraclePdbDetails,
                 Query.OraclePdbDetailsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1402,7 +1402,7 @@ $query.Var.input = @{
                 "QueryOracleRac",
                 "($fid: UUID!)",
                 "OracleRac",
-                Query.OracleRac_ObjectFieldSpec,
+                Query.OracleRac,
                 Query.OracleRacFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1422,7 +1422,7 @@ $query.Var.fid = $someString"
                 "QueryOracleRacLogBackupConfig",
                 "($input: OracleRacInput!)",
                 "OracleLogBackupConfig",
-                Query.OracleRacLogBackupConfig_ObjectFieldSpec,
+                Query.OracleRacLogBackupConfig,
                 Query.OracleRacLogBackupConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1445,7 +1445,7 @@ $query.Var.input = @{
                 "QueryOracleRecoverableRanges",
                 "($input: GetOracleDbRecoverableRangesInput!)",
                 "OracleRecoverableRangeListResponse",
-                Query.OracleRecoverableRanges_ObjectFieldSpec,
+                Query.OracleRecoverableRanges,
                 Query.OracleRecoverableRangesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1486,7 +1486,7 @@ $query.Var.input = @{
                 "QueryOracleTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
                 "OracleTopLevelDescendantTypeConnection",
-                Query.OracleTopLevelDescendants_ObjectFieldSpec,
+                Query.OracleTopLevelDescendants,
                 Query.OracleTopLevelDescendantsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

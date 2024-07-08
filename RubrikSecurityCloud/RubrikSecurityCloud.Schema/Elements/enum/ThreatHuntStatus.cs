@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PARTIALLY_SUCCEEDED")]
         PARTIALLY_SUCCEEDED,
 
+        [EnumMember(Value = "PENDING")]
+        PENDING,
+
         [EnumMember(Value = "STATUS_UNSPECIFIED")]
         STATUS_UNSPECIFIED,
 

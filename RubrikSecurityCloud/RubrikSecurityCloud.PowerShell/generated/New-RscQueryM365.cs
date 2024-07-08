@@ -484,7 +484,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryM365DayToDayModeBackupStats",
                 "($orgId: UUID!,$dashboardWorkloadType: M365DashboardWorkloadType!,$backupStatsTimeRange: BackupStatsTimeRange!)",
                 "DayToDayModeBackupStats",
-                Query.M365DayToDayModeBackupStats_ObjectFieldSpec,
+                Query.M365DayToDayModeBackupStats,
                 Query.M365DayToDayModeBackupStatsFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString
@@ -509,7 +509,7 @@ $query.Var.backupStatsTimeRange = $someBackupStatsTimeRange # Call [Enum]::GetVa
                 "QueryM365DayToDayModeStats",
                 "($orgId: UUID!,$dashboardWorkloadType: M365DashboardWorkloadType!)",
                 "DayToDayModeStats",
-                Query.M365DayToDayModeStats_ObjectFieldSpec,
+                Query.M365DayToDayModeStats,
                 Query.M365DayToDayModeStatsFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString
@@ -531,7 +531,7 @@ $query.Var.dashboardWorkloadType = $someM365DashboardWorkloadType # Call [Enum]:
                 "QueryM365DirectoryObjectAttributes",
                 "($input: ListM365DirectoryObjectAttributesInput!)",
                 "ListO365DirectoryObjectAttributesResp",
-                Query.M365DirectoryObjectAttributes_ObjectFieldSpec,
+                Query.M365DirectoryObjectAttributes,
                 Query.M365DirectoryObjectAttributesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -564,7 +564,7 @@ $query.Var.input = @{
                 "QueryM365OnboardingModeBackupStats",
                 "($orgId: UUID!,$dashboardWorkloadType: M365DashboardWorkloadType!,$backupStatsTimeRange: BackupStatsTimeRange!)",
                 "OnboardingModeBackupStats",
-                Query.M365OnboardingModeBackupStats_ObjectFieldSpec,
+                Query.M365OnboardingModeBackupStats,
                 Query.M365OnboardingModeBackupStatsFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString
@@ -589,7 +589,7 @@ $query.Var.backupStatsTimeRange = $someBackupStatsTimeRange # Call [Enum]::GetVa
                 "QueryM365OnboardingModeStats",
                 "($orgId: UUID!,$dashboardWorkloadType: M365DashboardWorkloadType!)",
                 "OnboardingModeStats",
-                Query.M365OnboardingModeStats_ObjectFieldSpec,
+                Query.M365OnboardingModeStats,
                 Query.M365OnboardingModeStatsFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString
@@ -611,7 +611,7 @@ $query.Var.dashboardWorkloadType = $someM365DashboardWorkloadType # Call [Enum]:
                 "QueryM365OrgBackupLocations",
                 "($orgId: UUID!)",
                 "M365OrgBackupLocations",
-                Query.M365OrgBackupLocations_ObjectFieldSpec,
+                Query.M365OrgBackupLocations,
                 Query.M365OrgBackupLocationsFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString"
@@ -631,7 +631,7 @@ $query.Var.orgId = $someString"
                 "QueryM365OrgOperationModes",
                 "($orgId: UUID!)",
                 "M365OrgOperationModes",
-                Query.M365OrgOperationModes_ObjectFieldSpec,
+                Query.M365OrgOperationModes,
                 Query.M365OrgOperationModesFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString"
@@ -651,7 +651,7 @@ $query.Var.orgId = $someString"
                 "QueryM365Regions",
                 "($orgId: UUID!)",
                 "M365RegionsResp",
-                Query.M365Regions_ObjectFieldSpec,
+                Query.M365Regions,
                 Query.M365RegionsFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString"

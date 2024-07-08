@@ -221,7 +221,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryIntegration",
                 "($id: Int!)",
                 "ReadIntegrationReply",
-                Query.Integration_ObjectFieldSpec,
+                Query.Integration,
                 Query.IntegrationFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someInt"
@@ -249,7 +249,7 @@ $query.Var.id = $someInt"
                 "QueryAllIntegrations",
                 "($integrationTypes: [IntegrationType!]!,$nameFilter: String,$integrationSortBy: IntegrationSortBy,$sortOrder: SortOrder)",
                 "ListIntegrationsReply",
-                Query.AllIntegrations_ObjectFieldSpec,
+                Query.AllIntegrations,
                 Query.AllIntegrationsFieldSpec,
                 @"# REQUIRED
 $query.Var.integrationTypes = @(

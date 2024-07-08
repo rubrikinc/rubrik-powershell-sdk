@@ -267,7 +267,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QuerySonarUserGroups",
                 "($filter: ListAccessGroupsFilterInput,$first: Int,$after: String,$last: Int,$before: String)",
                 "AccessGroupConnection",
-                Query.SonarUserGroups_ObjectFieldSpec,
+                Query.SonarUserGroups,
                 Query.SonarUserGroupsFieldSpec,
                 @"# OPTIONAL
 $query.Var.filter = @{
@@ -312,7 +312,7 @@ $query.Var.before = $someString"
                 "QuerySonarUsers",
                 "($sort: ListAccessUsersSortInput,$filter: ListAccessUsersFilterInput,$first: Int,$after: String,$last: Int,$before: String)",
                 "AccessUserConnection",
-                Query.SonarUsers_ObjectFieldSpec,
+                Query.SonarUsers,
                 Query.SonarUsersFieldSpec,
                 @"# OPTIONAL
 $query.Var.sort = @{

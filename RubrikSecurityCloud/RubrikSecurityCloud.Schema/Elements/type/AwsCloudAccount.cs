@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgName")]
         public System.String? OrgName { get; set; }
 
+        //      C# -> System.String? OutpostAwsNativeId
+        // GraphQL -> outpostAwsNativeId: String! (scalar)
+        [JsonProperty("outpostAwsNativeId")]
+        public System.String? OutpostAwsNativeId { get; set; }
+
         //      C# -> System.Boolean? SeamlessFlowEnabled
         // GraphQL -> seamlessFlowEnabled: Boolean! (scalar)
         [JsonProperty("seamlessFlowEnabled")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Message = null,
         System.String? NativeId = null,
         System.String? OrgName = null,
+        System.String? OutpostAwsNativeId = null,
         System.Boolean? SeamlessFlowEnabled = null
     ) 
     {
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OrgName != null ) {
             this.OrgName = OrgName;
+        }
+        if ( OutpostAwsNativeId != null ) {
+            this.OutpostAwsNativeId = OutpostAwsNativeId;
         }
         if ( SeamlessFlowEnabled != null ) {
             this.SeamlessFlowEnabled = SeamlessFlowEnabled;
@@ -161,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "orgName\n" ;
             } else {
                 s += ind + "orgName\n" ;
+            }
+        }
+        //      C# -> System.String? OutpostAwsNativeId
+        // GraphQL -> outpostAwsNativeId: String! (scalar)
+        if (this.OutpostAwsNativeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "outpostAwsNativeId\n" ;
+            } else {
+                s += ind + "outpostAwsNativeId\n" ;
             }
         }
         //      C# -> System.Boolean? SeamlessFlowEnabled
@@ -280,6 +298,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OrgName != null && ec.Excludes("orgName",true))
         {
             this.OrgName = null;
+        }
+        //      C# -> System.String? OutpostAwsNativeId
+        // GraphQL -> outpostAwsNativeId: String! (scalar)
+        if (ec.Includes("outpostAwsNativeId",true))
+        {
+            if(this.OutpostAwsNativeId == null) {
+
+                this.OutpostAwsNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OutpostAwsNativeId != null && ec.Excludes("outpostAwsNativeId",true))
+        {
+            this.OutpostAwsNativeId = null;
         }
         //      C# -> System.Boolean? SeamlessFlowEnabled
         // GraphQL -> seamlessFlowEnabled: Boolean! (scalar)

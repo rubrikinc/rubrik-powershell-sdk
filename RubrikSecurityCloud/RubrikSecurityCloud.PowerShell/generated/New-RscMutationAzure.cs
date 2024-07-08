@@ -630,6 +630,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
     /// 	# REQUIRED
     /// 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2940,7 +2942,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddAzureCloudAccount",
                 "($input: AddAzureCloudAccountInput!)",
                 "AddAzureCloudAccountReply",
-                Mutation.AddAzureCloudAccount_ObjectFieldSpec,
+                Mutation.AddAzureCloudAccount,
                 Mutation.AddAzureCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3011,7 +3013,7 @@ $query.Var.input = @{
                 "MutationAddAzureCloudAccountExocomputeConfigurations",
                 "($input: AddAzureCloudAccountExocomputeConfigurationsInput!)",
                 "AddAzureCloudAccountExocomputeConfigurationsReply",
-                Mutation.AddAzureCloudAccountExocomputeConfigurations_ObjectFieldSpec,
+                Mutation.AddAzureCloudAccountExocomputeConfigurations,
                 Mutation.AddAzureCloudAccountExocomputeConfigurationsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3051,7 +3053,7 @@ $query.Var.input = @{
                 "MutationAddAzureCloudAccountWithoutOauth",
                 "($input: AddAzureCloudAccountWithoutOauthInput!)",
                 "AddAzureCloudAccountWithoutOauthReply",
-                Mutation.AddAzureCloudAccountWithoutOauth_ObjectFieldSpec,
+                Mutation.AddAzureCloudAccountWithoutOauth,
                 Mutation.AddAzureCloudAccountWithoutOauthFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3143,7 +3145,7 @@ $query.Var.input = @{
                 "MutationBackupAzureAdDirectory",
                 "($input: BackupAzureAdDirectoryInput!)",
                 "List<CreateOnDemandJobReply>",
-                Mutation.BackupAzureAdDirectory_ObjectFieldSpec,
+                Mutation.BackupAzureAdDirectory,
                 Mutation.BackupAzureAdDirectoryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3170,7 +3172,7 @@ $query.Var.input = @{
                 "MutationCompleteAzureAdAppSetup",
                 "($input: CompleteAzureAdAppSetupInput!)",
                 "CompleteAzureAdAppSetupReply",
-                Mutation.CompleteAzureAdAppSetup_ObjectFieldSpec,
+                Mutation.CompleteAzureAdAppSetup,
                 Mutation.CompleteAzureAdAppSetupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3212,7 +3214,7 @@ $query.Var.input = @{
                 "MutationCompleteAzureAdAppUpdate",
                 "($input: CompleteAzureAdAppUpdateInput!)",
                 "System.String",
-                Mutation.CompleteAzureAdAppUpdate_ObjectFieldSpec,
+                Mutation.CompleteAzureAdAppUpdate,
                 Mutation.CompleteAzureAdAppUpdateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3237,7 +3239,7 @@ $query.Var.input = @{
                 "MutationCompleteAzureCloudAccountOauth",
                 "($input: CompleteAzureCloudAccountOauthInput!)",
                 "CompleteAzureCloudAccountOauthReply",
-                Mutation.CompleteAzureCloudAccountOauth_ObjectFieldSpec,
+                Mutation.CompleteAzureCloudAccountOauth,
                 Mutation.CompleteAzureCloudAccountOauthFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3284,7 +3286,7 @@ $query.Var.input = @{
                 "MutationCreateAzureAccount",
                 "($input: CreateAzureAccountInput!)",
                 "CloudAccount",
-                Mutation.CreateAzureAccount_ObjectFieldSpec,
+                Mutation.CreateAzureAccount,
                 Mutation.CreateAzureAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3311,7 +3313,7 @@ $query.Var.input = @{
                 "MutationCreateAutomaticAzureTargetMapping",
                 "($input: CreateAutomaticAzureTargetMappingInput!)",
                 "TargetMapping",
-                Mutation.CreateAutomaticAzureTargetMapping_ObjectFieldSpec,
+                Mutation.CreateAutomaticAzureTargetMapping,
                 Mutation.CreateAutomaticAzureTargetMappingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3401,7 +3403,7 @@ $query.Var.input = @{
                 "MutationCreateCloudNativeRcvAzureStorageSetting",
                 "($input: CreateCloudNativeRcvAzureStorageSettingInput!)",
                 "CreateCloudNativeRcvAzureStorageSettingReply",
-                Mutation.CreateCloudNativeRcvAzureStorageSetting_ObjectFieldSpec,
+                Mutation.CreateCloudNativeRcvAzureStorageSetting,
                 Mutation.CreateCloudNativeRcvAzureStorageSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3411,6 +3413,8 @@ $query.Var.input = @{
 	region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
 	# REQUIRED
 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
+	# OPTIONAL
+	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
 }"
             );
         }
@@ -3428,7 +3432,7 @@ $query.Var.input = @{
                 "MutationCreateCloudNativeAzureStorageSetting",
                 "($input: CreateCloudNativeAzureStorageSettingInput!)",
                 "CreateCloudNativeAzureStorageSettingReply",
-                Mutation.CreateCloudNativeAzureStorageSetting_ObjectFieldSpec,
+                Mutation.CreateCloudNativeAzureStorageSetting,
                 Mutation.CreateCloudNativeAzureStorageSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3492,7 +3496,7 @@ $query.Var.input = @{
                 "MutationCreateAzureCluster",
                 "($input: CreateAzureClusterInput!)",
                 "CcProvisionJobReply",
-                Mutation.CreateAzureCluster_ObjectFieldSpec,
+                Mutation.CreateAzureCluster,
                 Mutation.CreateAzureClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3612,7 +3616,7 @@ $query.Var.input = @{
                 "MutationCreateAzureReaderTarget",
                 "($input: CreateAzureReaderTargetInput!)",
                 "Target",
-                Mutation.CreateAzureReaderTarget_ObjectFieldSpec,
+                Mutation.CreateAzureReaderTarget,
                 Mutation.CreateAzureReaderTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3717,7 +3721,7 @@ $query.Var.input = @{
                 "MutationCreateAzureSaasAppAad",
                 "",
                 "CreateAzureSaasAppAadReply",
-                Mutation.CreateAzureSaasAppAad_ObjectFieldSpec,
+                Mutation.CreateAzureSaasAppAad,
                 Mutation.CreateAzureSaasAppAadFieldSpec,
                 @""
             );
@@ -3736,7 +3740,7 @@ $query.Var.input = @{
                 "MutationCreateAzureTarget",
                 "($input: CreateAzureTargetInput!)",
                 "Target",
-                Mutation.CreateAzureTarget_ObjectFieldSpec,
+                Mutation.CreateAzureTarget,
                 Mutation.CreateAzureTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3842,7 +3846,7 @@ $query.Var.input = @{
                 "MutationDeleteAzureAdDirectory",
                 "($input: DeleteAzureAdDirectoryInput!)",
                 "CreateOnDemandJobReply",
-                Mutation.DeleteAzureAdDirectory_ObjectFieldSpec,
+                Mutation.DeleteAzureAdDirectory,
                 Mutation.DeleteAzureAdDirectoryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3865,7 +3869,7 @@ $query.Var.input = @{
                 "MutationDeleteAzureCloudAccount",
                 "($input: DeleteAzureCloudAccountInput!)",
                 "DeleteAzureCloudAccountReply",
-                Mutation.DeleteAzureCloudAccount_ObjectFieldSpec,
+                Mutation.DeleteAzureCloudAccount,
                 Mutation.DeleteAzureCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3896,7 +3900,7 @@ $query.Var.input = @{
                 "MutationDeleteAzureCloudAccountExocomputeConfigurations",
                 "($input: DeleteAzureCloudAccountExocomputeConfigurationsInput!)",
                 "DeleteAzureCloudAccountExocomputeConfigurationsReply",
-                Mutation.DeleteAzureCloudAccountExocomputeConfigurations_ObjectFieldSpec,
+                Mutation.DeleteAzureCloudAccountExocomputeConfigurations,
                 Mutation.DeleteAzureCloudAccountExocomputeConfigurationsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3921,7 +3925,7 @@ $query.Var.input = @{
                 "MutationDeleteAzureCloudAccountWithoutOauth",
                 "($input: DeleteAzureCloudAccountWithoutOauthInput!)",
                 "DeleteAzureCloudAccountWithoutOauthReply",
-                Mutation.DeleteAzureCloudAccountWithoutOauth_ObjectFieldSpec,
+                Mutation.DeleteAzureCloudAccountWithoutOauth,
                 Mutation.DeleteAzureCloudAccountWithoutOauthFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3950,7 +3954,7 @@ $query.Var.input = @{
                 "MutationMapAzureCloudAccountExocomputeSubscription",
                 "($input: MapAzureCloudAccountExocomputeSubscriptionInput!)",
                 "MapAzureCloudAccountExocomputeSubscriptionReply",
-                Mutation.MapAzureCloudAccountExocomputeSubscription_ObjectFieldSpec,
+                Mutation.MapAzureCloudAccountExocomputeSubscription,
                 Mutation.MapAzureCloudAccountExocomputeSubscriptionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3977,7 +3981,7 @@ $query.Var.input = @{
                 "MutationMapAzureCloudAccountToPersistentStorageLocation",
                 "($input: MapAzureCloudAccountToPersistentStorageLocationInput!)",
                 "MapAzureCloudAccountToPersistentStorageLocationReply",
-                Mutation.MapAzureCloudAccountToPersistentStorageLocation_ObjectFieldSpec,
+                Mutation.MapAzureCloudAccountToPersistentStorageLocation,
                 Mutation.MapAzureCloudAccountToPersistentStorageLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4006,7 +4010,7 @@ $query.Var.input = @{
                 "MutationAzureOauthConsentComplete",
                 "($input: AzureOauthConsentCompleteInput!)",
                 "RequestStatus",
-                Mutation.AzureOauthConsentComplete_ObjectFieldSpec,
+                Mutation.AzureOauthConsentComplete,
                 Mutation.AzureOauthConsentCompleteFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4040,7 +4044,7 @@ $query.Var.input = @{
                 "MutationAzureOauthConsentKickoff",
                 "",
                 "AzureOauthConsentKickoffReply",
-                Mutation.AzureOauthConsentKickoff_ObjectFieldSpec,
+                Mutation.AzureOauthConsentKickoff,
                 Mutation.AzureOauthConsentKickoffFieldSpec,
                 @""
             );
@@ -4059,7 +4063,7 @@ $query.Var.input = @{
                 "MutationRestoreAzureAdObjectsWithPasswords",
                 "($input: RestoreAzureAdObjectsWithPasswordsInput!)",
                 "RestoreAzureAdObjectsWithPasswordsReply",
-                Mutation.RestoreAzureAdObjectsWithPasswords_ObjectFieldSpec,
+                Mutation.RestoreAzureAdObjectsWithPasswords,
                 Mutation.RestoreAzureAdObjectsWithPasswordsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4104,7 +4108,7 @@ $query.Var.input = @{
                 "MutationSetAzureCloudAccountCustomerAppCredentials",
                 "($input: SetAzureCloudAccountCustomerAppCredentialsInput!)",
                 "System.Boolean",
-                Mutation.SetAzureCloudAccountCustomerAppCredentials_ObjectFieldSpec,
+                Mutation.SetAzureCloudAccountCustomerAppCredentials,
                 Mutation.SetAzureCloudAccountCustomerAppCredentialsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4139,7 +4143,7 @@ $query.Var.input = @{
                 "MutationStartAzureAdAppSetup",
                 "($input: StartAzureAdAppSetupInput!)",
                 "StartAzureAdAppSetupReply",
-                Mutation.StartAzureAdAppSetup_ObjectFieldSpec,
+                Mutation.StartAzureAdAppSetup,
                 Mutation.StartAzureAdAppSetupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4171,7 +4175,7 @@ $query.Var.input = @{
                 "MutationStartAzureAdAppUpdate",
                 "($input: StartAzureAdAppUpdateInput!)",
                 "StartAzureAdAppUpdateReply",
-                Mutation.StartAzureAdAppUpdate_ObjectFieldSpec,
+                Mutation.StartAzureAdAppUpdate,
                 Mutation.StartAzureAdAppUpdateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4201,7 +4205,7 @@ $query.Var.input = @{
                 "MutationStartAzureCloudAccountOauth",
                 "($input: StartAzureCloudAccountOauthInput!)",
                 "StartAzureCloudAccountOauthReply",
-                Mutation.StartAzureCloudAccountOauth_ObjectFieldSpec,
+                Mutation.StartAzureCloudAccountOauth,
                 Mutation.StartAzureCloudAccountOauthFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4226,7 +4230,7 @@ $query.Var.input = @{
                 "MutationStartDisableAzureCloudAccountJob",
                 "($input: StartDisableAzureCloudAccountJobInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.StartDisableAzureCloudAccountJob_ObjectFieldSpec,
+                Mutation.StartDisableAzureCloudAccountJob,
                 Mutation.StartDisableAzureCloudAccountJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4253,7 +4257,7 @@ $query.Var.input = @{
                 "MutationStartExportAzureSqlDatabaseDbJob",
                 "($input: StartExportAzureSqlDatabaseDbJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartExportAzureSqlDatabaseDbJob_ObjectFieldSpec,
+                Mutation.StartExportAzureSqlDatabaseDbJob,
                 Mutation.StartExportAzureSqlDatabaseDbJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4326,7 +4330,7 @@ $query.Var.input = @{
                 "MutationStartExportAzureSqlManagedInstanceDbJob",
                 "($input: StartExportAzureSqlManagedInstanceDbJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartExportAzureSqlManagedInstanceDbJob_ObjectFieldSpec,
+                Mutation.StartExportAzureSqlManagedInstanceDbJob,
                 Mutation.StartExportAzureSqlManagedInstanceDbJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4391,7 +4395,7 @@ $query.Var.input = @{
                 "MutationUnmapAzureCloudAccountExocomputeSubscription",
                 "($input: UnmapAzureCloudAccountExocomputeSubscriptionInput!)",
                 "UnmapAzureCloudAccountExocomputeSubscriptionReply",
-                Mutation.UnmapAzureCloudAccountExocomputeSubscription_ObjectFieldSpec,
+                Mutation.UnmapAzureCloudAccountExocomputeSubscription,
                 Mutation.UnmapAzureCloudAccountExocomputeSubscriptionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4416,7 +4420,7 @@ $query.Var.input = @{
                 "MutationUnmapAzurePersistentStorageSubscription",
                 "($input: UnmapAzurePersistentStorageSubscriptionInput!)",
                 "System.String",
-                Mutation.UnmapAzurePersistentStorageSubscription_ObjectFieldSpec,
+                Mutation.UnmapAzurePersistentStorageSubscription,
                 Mutation.UnmapAzurePersistentStorageSubscriptionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4445,7 +4449,7 @@ $query.Var.input = @{
                 "MutationUpdateAzureAccount",
                 "($input: UpdateAzureAccountInput!)",
                 "CloudAccount",
-                Mutation.UpdateAzureAccount_ObjectFieldSpec,
+                Mutation.UpdateAzureAccount,
                 Mutation.UpdateAzureAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4474,7 +4478,7 @@ $query.Var.input = @{
                 "MutationUpdateAutomaticAzureTargetMapping",
                 "($input: UpdateAutomaticAzureTargetMappingInput!)",
                 "TargetMapping",
-                Mutation.UpdateAutomaticAzureTargetMapping_ObjectFieldSpec,
+                Mutation.UpdateAutomaticAzureTargetMapping,
                 Mutation.UpdateAutomaticAzureTargetMappingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4560,7 +4564,7 @@ $query.Var.input = @{
                 "MutationUpdateAzureCloudAccount",
                 "($input: UpdateAzureCloudAccountInput!)",
                 "UpdateAzureCloudAccountReply",
-                Mutation.UpdateAzureCloudAccount_ObjectFieldSpec,
+                Mutation.UpdateAzureCloudAccount,
                 Mutation.UpdateAzureCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4602,7 +4606,7 @@ $query.Var.input = @{
                 "MutationUpdateCloudNativeRcvAzureStorageSetting",
                 "($input: UpdateCloudNativeRcvAzureStorageSettingInput!)",
                 "UpdateCloudNativeRcvAzureStorageSettingReply",
-                Mutation.UpdateCloudNativeRcvAzureStorageSetting_ObjectFieldSpec,
+                Mutation.UpdateCloudNativeRcvAzureStorageSetting,
                 Mutation.UpdateCloudNativeRcvAzureStorageSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4627,7 +4631,7 @@ $query.Var.input = @{
                 "MutationUpdateCloudNativeAzureStorageSetting",
                 "($input: UpdateCloudNativeAzureStorageSettingInput!)",
                 "UpdateCloudNativeAzureStorageSettingReply",
-                Mutation.UpdateCloudNativeAzureStorageSetting_ObjectFieldSpec,
+                Mutation.UpdateCloudNativeAzureStorageSetting,
                 Mutation.UpdateCloudNativeAzureStorageSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4676,7 +4680,7 @@ $query.Var.input = @{
                 "MutationUpdateCustomerAppPermissionForAzureSql",
                 "",
                 "System.String",
-                Mutation.UpdateCustomerAppPermissionForAzureSql_ObjectFieldSpec,
+                Mutation.UpdateCustomerAppPermissionForAzureSql,
                 Mutation.UpdateCustomerAppPermissionForAzureSqlFieldSpec,
                 @""
             );
@@ -4695,7 +4699,7 @@ $query.Var.input = @{
                 "MutationUpdateAzureTarget",
                 "($input: UpdateAzureTargetInput!)",
                 "Target",
-                Mutation.UpdateAzureTarget_ObjectFieldSpec,
+                Mutation.UpdateAzureTarget,
                 Mutation.UpdateAzureTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4786,7 +4790,7 @@ $query.Var.input = @{
                 "MutationUpgradeAzureCloudAccount",
                 "($input: UpgradeAzureCloudAccountInput!)",
                 "UpgradeAzureCloudAccountReply",
-                Mutation.UpgradeAzureCloudAccount_ObjectFieldSpec,
+                Mutation.UpgradeAzureCloudAccount,
                 Mutation.UpgradeAzureCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4828,7 +4832,7 @@ $query.Var.input = @{
                 "MutationUpgradeAzureCloudAccountPermissionsWithoutOauth",
                 "($input: UpgradeAzureCloudAccountPermissionsWithoutOauthInput!)",
                 "UpgradeAzureCloudAccountPermissionsWithoutOauthReply",
-                Mutation.UpgradeAzureCloudAccountPermissionsWithoutOauth_ObjectFieldSpec,
+                Mutation.UpgradeAzureCloudAccountPermissionsWithoutOauth,
                 Mutation.UpgradeAzureCloudAccountPermissionsWithoutOauthFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

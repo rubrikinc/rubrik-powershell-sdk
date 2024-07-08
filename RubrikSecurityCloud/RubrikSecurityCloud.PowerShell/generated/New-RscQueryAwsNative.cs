@@ -706,6 +706,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.rdsInstanceRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -778,6 +780,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		relic = $someBoolean
     /// 	}
     /// 	# OPTIONAL
+    /// 	unaccessedFilter = @{
+    /// 		# REQUIRED
+    /// 		unaccessed = $someBoolean
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	sensitivityStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		sensitivityStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	protectionStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		protectionStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	tagFilter = @{
     /// 		# REQUIRED
     /// 		tagFilterParams = @(
@@ -820,6 +841,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// }
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1291,7 +1314,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAwsNativeAccount",
                 "($awsNativeAccountRubrikId: UUID!,$awsNativeProtectionFeature: AwsNativeProtectionFeature!)",
                 "AwsNativeAccount",
-                Query.AwsNativeAccount_ObjectFieldSpec,
+                Query.AwsNativeAccount,
                 Query.AwsNativeAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.awsNativeAccountRubrikId = $someString
@@ -1331,7 +1354,7 @@ $query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [
                 "QueryAwsNativeAccounts",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeAccountSortFields,$sortOrder: SortOrder,$accountFilters: AwsNativeAccountFilters,$authorizedOperationFilter: Operation,$awsNativeProtectionFeature: AwsNativeProtectionFeature!)",
                 "AwsNativeAccountConnection",
-                Query.AwsNativeAccounts_ObjectFieldSpec,
+                Query.AwsNativeAccounts,
                 Query.AwsNativeAccountsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1387,7 +1410,7 @@ $query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [
                 "QueryAmiTypeForAwsNativeArchivedSnapshotExport",
                 "($input: AmiTypeForAwsNativeArchivedSnapshotExportInput!)",
                 "AmiTypeForAwsNativeArchivedSnapshotExportReply",
-                Query.AmiTypeForAwsNativeArchivedSnapshotExport_ObjectFieldSpec,
+                Query.AmiTypeForAwsNativeArchivedSnapshotExport,
                 Query.AmiTypeForAwsNativeArchivedSnapshotExportFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1414,7 +1437,7 @@ $query.Var.input = @{
                 "QueryAwsNativeEbsVolume",
                 "($ebsVolumeRubrikId: UUID!)",
                 "AwsNativeEbsVolume",
-                Query.AwsNativeEbsVolume_ObjectFieldSpec,
+                Query.AwsNativeEbsVolume,
                 Query.AwsNativeEbsVolumeFieldSpec,
                 @"# REQUIRED
 $query.Var.ebsVolumeRubrikId = $someString"
@@ -1448,7 +1471,7 @@ $query.Var.ebsVolumeRubrikId = $someString"
                 "QueryAwsNativeEbsVolumes",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeFilters: AwsNativeEbsVolumeFilters)",
                 "AwsNativeEbsVolumeConnection",
-                Query.AwsNativeEbsVolumes_ObjectFieldSpec,
+                Query.AwsNativeEbsVolumes,
                 Query.AwsNativeEbsVolumesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1568,7 +1591,7 @@ $query.Var.ebsVolumeFilters = @{
                 "QueryAwsNativeEbsVolumesByName",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeName: String!)",
                 "AwsNativeEbsVolumeConnection",
-                Query.AwsNativeEbsVolumesByName_ObjectFieldSpec,
+                Query.AwsNativeEbsVolumesByName,
                 Query.AwsNativeEbsVolumesByNameFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1600,7 +1623,7 @@ $query.Var.ebsVolumeName = $someString"
                 "QueryAwsNativeEc2Instance",
                 "($ec2InstanceRubrikId: UUID!)",
                 "AwsNativeEc2Instance",
-                Query.AwsNativeEc2Instance_ObjectFieldSpec,
+                Query.AwsNativeEc2Instance,
                 Query.AwsNativeEc2InstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.ec2InstanceRubrikId = $someString"
@@ -1636,7 +1659,7 @@ $query.Var.ec2InstanceRubrikId = $someString"
                 "QueryAwsNativeEc2Instances",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$descendantTypeFilter: [HierarchyObjectTypeEnum!],$ec2InstanceFilters: AwsNativeEc2InstanceFilters)",
                 "AwsNativeEc2InstanceConnection",
-                Query.AwsNativeEc2Instances_ObjectFieldSpec,
+                Query.AwsNativeEc2Instances,
                 Query.AwsNativeEc2InstancesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1770,7 +1793,7 @@ $query.Var.ec2InstanceFilters = @{
                 "QueryAwsNativeEc2InstancesByName",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$ec2InstanceName: String!)",
                 "AwsNativeEc2InstanceConnection",
-                Query.AwsNativeEc2InstancesByName_ObjectFieldSpec,
+                Query.AwsNativeEc2InstancesByName,
                 Query.AwsNativeEc2InstancesByNameFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1802,7 +1825,7 @@ $query.Var.ec2InstanceName = $someString"
                 "QueryIsAwsNativeEbsVolumeSnapshotRestorable",
                 "($snapshotId: String!)",
                 "IsVolumeSnapshotRestorableReply",
-                Query.IsAwsNativeEbsVolumeSnapshotRestorable_ObjectFieldSpec,
+                Query.IsAwsNativeEbsVolumeSnapshotRestorable,
                 Query.IsAwsNativeEbsVolumeSnapshotRestorableFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotId = $someString"
@@ -1844,7 +1867,7 @@ $query.Var.snapshotId = $someString"
                 "QueryIsAwsNativeRdsInstanceLaunchConfigurationValid",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$dbClass: AwsNativeRdsDbInstanceClass!,$databaseInstanceClass: String,$primaryAz: String,$storageType: AwsNativeRdsStorageType,$isMultiAz: Boolean!,$kmsKeyId: String,$iops: Int)",
                 "System.Boolean",
-                Query.IsAwsNativeRdsInstanceLaunchConfigurationValid_ObjectFieldSpec,
+                Query.IsAwsNativeRdsInstanceLaunchConfigurationValid,
                 Query.IsAwsNativeRdsInstanceLaunchConfigurationValidFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
@@ -1886,7 +1909,7 @@ $query.Var.iops = $someInt"
                 "QueryAwsNativeRdsExportDefaults",
                 "($rdsInstanceRubrikId: UUID!,$snapshotId: String,$isPointInTime: Boolean!)",
                 "RdsInstanceExportDefaults",
-                Query.AwsNativeRdsExportDefaults_ObjectFieldSpec,
+                Query.AwsNativeRdsExportDefaults,
                 Query.AwsNativeRdsExportDefaultsFieldSpec,
                 @"# REQUIRED
 $query.Var.rdsInstanceRubrikId = $someString
@@ -1898,22 +1921,25 @@ $query.Var.isPointInTime = $someBoolean"
         }
 
         // Create new GraphQL Query:
-        // awsNativeRdsInstance(rdsInstanceRubrikId: UUID!): AwsNativeRdsInstance!
+        // awsNativeRdsInstance(rdsInstanceRubrikId: UUID!, includeSecurityMetadata: Boolean): AwsNativeRdsInstance!
         internal void InitQueryAwsNativeRdsInstance()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("rdsInstanceRubrikId", "UUID!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeRdsInstance",
-                "($rdsInstanceRubrikId: UUID!)",
+                "($rdsInstanceRubrikId: UUID!,$includeSecurityMetadata: Boolean)",
                 "AwsNativeRdsInstance",
-                Query.AwsNativeRdsInstance_ObjectFieldSpec,
+                Query.AwsNativeRdsInstance,
                 Query.AwsNativeRdsInstanceFieldSpec,
                 @"# REQUIRED
-$query.Var.rdsInstanceRubrikId = $someString"
+$query.Var.rdsInstanceRubrikId = $someString
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -1926,6 +1952,7 @@ $query.Var.rdsInstanceRubrikId = $someString"
         //     sortBy: AwsNativeRdsInstanceSortFields
         //     sortOrder: SortOrder
         //     rdsInstanceFilters: AwsNativeRdsInstanceFilters
+        //     includeSecurityMetadata: Boolean
         //   ): AwsNativeRdsInstanceConnection!
         internal void InitQueryAwsNativeRdsInstances()
         {
@@ -1937,14 +1964,15 @@ $query.Var.rdsInstanceRubrikId = $someString"
                 Tuple.Create("sortBy", "AwsNativeRdsInstanceSortFields"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("rdsInstanceFilters", "AwsNativeRdsInstanceFilters"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeRdsInstances",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeRdsInstanceSortFields,$sortOrder: SortOrder,$rdsInstanceFilters: AwsNativeRdsInstanceFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeRdsInstanceSortFields,$sortOrder: SortOrder,$rdsInstanceFilters: AwsNativeRdsInstanceFilters,$includeSecurityMetadata: Boolean)",
                 "AwsNativeRdsInstanceConnection",
-                Query.AwsNativeRdsInstances_ObjectFieldSpec,
+                Query.AwsNativeRdsInstances,
                 Query.AwsNativeRdsInstancesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1992,6 +2020,25 @@ $query.Var.rdsInstanceFilters = @{
 		relic = $someBoolean
 	}
 	# OPTIONAL
+	unaccessedFilter = @{
+		# REQUIRED
+		unaccessed = $someBoolean
+	}
+	# OPTIONAL
+	sensitivityStatusFilter = @{
+		# REQUIRED
+		sensitivityStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	protectionStatusFilter = @{
+		# REQUIRED
+		protectionStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	tagFilter = @{
 		# REQUIRED
 		tagFilterParams = @(
@@ -2033,7 +2080,9 @@ $query.Var.rdsInstanceFilters = @{
 			$someString
 		)
 	}
-}"
+}
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -2058,7 +2107,7 @@ $query.Var.rdsInstanceFilters = @{
                 "QueryAwsNativeRdsPointInTimeRestoreWindow",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)",
                 "AwsNativeRdsPointInTimeRestoreWindow",
-                Query.AwsNativeRdsPointInTimeRestoreWindow_ObjectFieldSpec,
+                Query.AwsNativeRdsPointInTimeRestoreWindow,
                 Query.AwsNativeRdsPointInTimeRestoreWindowFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
@@ -2083,7 +2132,7 @@ $query.Var.rdsDatabaseRubrikId = $someString"
                 "QueryAwsNativeRoot",
                 "",
                 "AwsNativeRoot",
-                Query.AwsNativeRoot_ObjectFieldSpec,
+                Query.AwsNativeRoot,
                 Query.AwsNativeRootFieldSpec,
                 @""
             );
@@ -2103,7 +2152,7 @@ $query.Var.rdsDatabaseRubrikId = $someString"
                 "QueryAwsNativeS3Bucket",
                 "($s3BucketRubrikId: UUID!,$includeSecurityMetadata: Boolean)",
                 "AwsNativeS3Bucket",
-                Query.AwsNativeS3Bucket_ObjectFieldSpec,
+                Query.AwsNativeS3Bucket,
                 Query.AwsNativeS3BucketFieldSpec,
                 @"# REQUIRED
 $query.Var.s3BucketRubrikId = $someString
@@ -2127,7 +2176,7 @@ $query.Var.includeSecurityMetadata = $someBoolean"
                 "QueryValidateAwsNativeRdsClusterNameForExport",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsClusterName: String!)",
                 "ValidateAwsNativeRdsClusterNameForExportReply",
-                Query.ValidateAwsNativeRdsClusterNameForExport_ObjectFieldSpec,
+                Query.ValidateAwsNativeRdsClusterNameForExport,
                 Query.ValidateAwsNativeRdsClusterNameForExportFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
@@ -2153,7 +2202,7 @@ $query.Var.rdsClusterName = $someString"
                 "QueryValidateAwsNativeRdsInstanceNameForExport",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!)",
                 "ValidateAwsNativeRdsInstanceNameForExportReply",
-                Query.ValidateAwsNativeRdsInstanceNameForExport_ObjectFieldSpec,
+                Query.ValidateAwsNativeRdsInstanceNameForExport,
                 Query.ValidateAwsNativeRdsInstanceNameForExportFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString

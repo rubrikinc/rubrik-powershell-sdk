@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 25
+    /// Create a new RscQuery object for any of the 27
     /// operations in the 'Nutanix' API domain:
-    /// BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
+    /// BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVdisks, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, MountVdisks, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
     /// </summary>
     /// <description>
     /// New-RscMutationNutanix creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 25 operations
+    /// There are 27 operations
     /// in the 'Nutanix' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
+    /// one of: BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVdisks, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, MountVdisks, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -627,6 +627,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DownloadVdisks operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: DownloadVdisks
+    /// 
+    /// $query = New-RscMutationNutanix -DownloadVdisks
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	vdiskIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DownloadVmFromLocation operation
     /// of the 'Nutanix' API domain.
     /// <code>
@@ -784,6 +819,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# REQUIRED
     /// 		shouldDisableMigration = $someBoolean
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MountVdisks operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: MountVdisks
+    /// 
+    /// $query = New-RscMutationNutanix -MountVdisks
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		shouldMigrateImmediately = $someBoolean
+    /// 		# OPTIONAL
+    /// 		containerNaturalId = $someString
+    /// 		# REQUIRED
+    /// 		shouldDisableMigration = $someBoolean
+    /// 		# REQUIRED
+    /// 		targetVirtualMachineId = $someString
+    /// 		# REQUIRED
+    /// 		virtualDiskIds = @(
+    /// 			$someString
+    /// 		)
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1176,10 +1257,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteSnapshots",
                 "DownloadFilesSnapshot",
                 "DownloadSnapshot",
+                "DownloadVdisks",
                 "DownloadVmFromLocation",
                 "ExportSnapshot",
                 "MigrateMountV1",
                 "MountSnapshotV1",
+                "MountVdisks",
                 "PatchMountV1",
                 "RefreshCluster",
                 "RefreshPrismCentral",
@@ -1242,6 +1325,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DownloadSnapshot":
                         this.ProcessRecord_DownloadSnapshot();
                         break;
+                    case "DownloadVdisks":
+                        this.ProcessRecord_DownloadVdisks();
+                        break;
                     case "DownloadVmFromLocation":
                         this.ProcessRecord_DownloadVmFromLocation();
                         break;
@@ -1253,6 +1339,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "MountSnapshotV1":
                         this.ProcessRecord_MountSnapshotV1();
+                        break;
+                    case "MountVdisks":
+                        this.ProcessRecord_MountVdisks();
                         break;
                     case "PatchMountV1":
                         this.ProcessRecord_PatchMountV1();
@@ -1406,6 +1495,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // downloadNutanixVdisks.
+        internal void ProcessRecord_DownloadVdisks()
+        {
+            this._logger.name += " -DownloadVdisks";
+            // Create new graphql operation downloadNutanixVdisks
+            InitMutationDownloadNutanixVdisks();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // downloadNutanixVmFromLocation.
         internal void ProcessRecord_DownloadVmFromLocation()
         {
@@ -1439,6 +1537,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -MountSnapshotV1";
             // Create new graphql operation mountNutanixSnapshotV1
             InitMutationMountNutanixSnapshotV1();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mountNutanixVdisks.
+        internal void ProcessRecord_MountVdisks()
+        {
+            this._logger.name += " -MountVdisks";
+            // Create new graphql operation mountNutanixVdisks
+            InitMutationMountNutanixVdisks();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1527,7 +1634,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationBatchExportNutanixVm",
                 "($input: BatchExportNutanixVmInput!)",
                 "BatchExportNutanixVmReply",
-                Mutation.BatchExportNutanixVm_ObjectFieldSpec,
+                Mutation.BatchExportNutanixVm,
                 Mutation.BatchExportNutanixVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1585,7 +1692,7 @@ $query.Var.input = @{
                 "MutationBatchMountNutanixVm",
                 "($input: BatchMountNutanixVmInput!)",
                 "BatchMountNutanixVmReply",
-                Mutation.BatchMountNutanixVm_ObjectFieldSpec,
+                Mutation.BatchMountNutanixVm,
                 Mutation.BatchMountNutanixVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1649,7 +1756,7 @@ $query.Var.input = @{
                 "MutationBulkOnDemandSnapshotNutanixVm",
                 "($input: BulkOnDemandSnapshotNutanixVmInput!)",
                 "BulkOnDemandSnapshotNutanixVmReply",
-                Mutation.BulkOnDemandSnapshotNutanixVm_ObjectFieldSpec,
+                Mutation.BulkOnDemandSnapshotNutanixVm,
                 Mutation.BulkOnDemandSnapshotNutanixVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1687,7 +1794,7 @@ $query.Var.input = @{
                 "MutationCreateNutanixCluster",
                 "($input: CreateNutanixClusterInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateNutanixCluster_ObjectFieldSpec,
+                Mutation.CreateNutanixCluster,
                 Mutation.CreateNutanixClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1723,7 +1830,7 @@ $query.Var.input = @{
                 "MutationCreateOnDemandNutanixBackup",
                 "($input: CreateOnDemandNutanixBackupInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateOnDemandNutanixBackup_ObjectFieldSpec,
+                Mutation.CreateOnDemandNutanixBackup,
                 Mutation.CreateOnDemandNutanixBackupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1753,7 +1860,7 @@ $query.Var.input = @{
                 "MutationCreateNutanixPrismCentral",
                 "($input: CreateNutanixPrismCentralInput!)",
                 "BatchAsyncRequestStatus",
-                Mutation.CreateNutanixPrismCentral_ObjectFieldSpec,
+                Mutation.CreateNutanixPrismCentral,
                 Mutation.CreateNutanixPrismCentralFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1796,7 +1903,7 @@ $query.Var.input = @{
                 "MutationDeleteNutanixCluster",
                 "($input: DeleteNutanixClusterInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteNutanixCluster_ObjectFieldSpec,
+                Mutation.DeleteNutanixCluster,
                 Mutation.DeleteNutanixClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1819,7 +1926,7 @@ $query.Var.input = @{
                 "MutationDeleteNutanixMountV1",
                 "($input: DeleteNutanixMountV1Input!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteNutanixMountV1_ObjectFieldSpec,
+                Mutation.DeleteNutanixMountV1,
                 Mutation.DeleteNutanixMountV1FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1842,7 +1949,7 @@ $query.Var.input = @{
                 "MutationDeleteNutanixPrismCentral",
                 "($input: DeleteNutanixPrismCentralInput!)",
                 "BatchAsyncRequestStatus",
-                Mutation.DeleteNutanixPrismCentral_ObjectFieldSpec,
+                Mutation.DeleteNutanixPrismCentral,
                 Mutation.DeleteNutanixPrismCentralFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1865,7 +1972,7 @@ $query.Var.input = @{
                 "MutationDeleteNutanixSnapshot",
                 "($input: DeleteNutanixSnapshotInput!)",
                 "RequestSuccess",
-                Mutation.DeleteNutanixSnapshot_ObjectFieldSpec,
+                Mutation.DeleteNutanixSnapshot,
                 Mutation.DeleteNutanixSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1890,7 +1997,7 @@ $query.Var.input = @{
                 "MutationDeleteNutanixSnapshots",
                 "($input: DeleteNutanixSnapshotsInput!)",
                 "RequestSuccess",
-                Mutation.DeleteNutanixSnapshots_ObjectFieldSpec,
+                Mutation.DeleteNutanixSnapshots,
                 Mutation.DeleteNutanixSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1913,7 +2020,7 @@ $query.Var.input = @{
                 "MutationDownloadFilesNutanixSnapshot",
                 "($input: DownloadFilesNutanixSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadFilesNutanixSnapshot_ObjectFieldSpec,
+                Mutation.DownloadFilesNutanixSnapshot,
                 Mutation.DownloadFilesNutanixSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1950,12 +2057,39 @@ $query.Var.input = @{
                 "MutationDownloadNutanixSnapshot",
                 "($input: DownloadNutanixSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadNutanixSnapshot_ObjectFieldSpec,
+                Mutation.DownloadNutanixSnapshot,
                 Mutation.DownloadNutanixSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadNutanixVdisks(input: DownloadNutanixVmSnapshotVirtualDisksInput!): AsyncRequestStatus!
+        internal void InitMutationDownloadNutanixVdisks()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadNutanixVmSnapshotVirtualDisksInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadNutanixVdisks",
+                "($input: DownloadNutanixVmSnapshotVirtualDisksInput!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadNutanixVdisks,
+                Mutation.DownloadNutanixVdisksFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	vdiskIds = @(
+		$someString
+	)
 }"
             );
         }
@@ -1973,7 +2107,7 @@ $query.Var.input = @{
                 "MutationDownloadNutanixVmFromLocation",
                 "($input: DownloadNutanixVmFromLocationInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadNutanixVmFromLocation_ObjectFieldSpec,
+                Mutation.DownloadNutanixVmFromLocation,
                 Mutation.DownloadNutanixVmFromLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2003,7 +2137,7 @@ $query.Var.input = @{
                 "MutationExportNutanixSnapshot",
                 "($input: ExportNutanixSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.ExportNutanixSnapshot_ObjectFieldSpec,
+                Mutation.ExportNutanixSnapshot,
                 Mutation.ExportNutanixSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2045,7 +2179,7 @@ $query.Var.input = @{
                 "MutationMigrateNutanixMountV1",
                 "($input: MigrateNutanixMountV1Input!)",
                 "AsyncRequestStatus",
-                Mutation.MigrateNutanixMountV1_ObjectFieldSpec,
+                Mutation.MigrateNutanixMountV1,
                 Mutation.MigrateNutanixMountV1FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2068,7 +2202,7 @@ $query.Var.input = @{
                 "MutationMountNutanixSnapshotV1",
                 "($input: MountNutanixSnapshotV1Input!)",
                 "AsyncRequestStatus",
-                Mutation.MountNutanixSnapshotV1_ObjectFieldSpec,
+                Mutation.MountNutanixSnapshotV1,
                 Mutation.MountNutanixSnapshotV1FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2104,6 +2238,44 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // mountNutanixVdisks(input: CreateNutanixVdisksMountInput!): AsyncRequestStatus!
+        internal void InitMutationMountNutanixVdisks()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateNutanixVdisksMountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationMountNutanixVdisks",
+                "($input: CreateNutanixVdisksMountInput!)",
+                "AsyncRequestStatus",
+                Mutation.MountNutanixVdisks,
+                Mutation.MountNutanixVdisksFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		shouldMigrateImmediately = $someBoolean
+		# OPTIONAL
+		containerNaturalId = $someString
+		# REQUIRED
+		shouldDisableMigration = $someBoolean
+		# REQUIRED
+		targetVirtualMachineId = $someString
+		# REQUIRED
+		virtualDiskIds = @(
+			$someString
+		)
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // patchNutanixMountV1(input: PatchNutanixMountV1Input!): PatchNutanixMountV1Reply!
         internal void InitMutationPatchNutanixMountV1()
         {
@@ -2116,7 +2288,7 @@ $query.Var.input = @{
                 "MutationPatchNutanixMountV1",
                 "($input: PatchNutanixMountV1Input!)",
                 "PatchNutanixMountV1Reply",
-                Mutation.PatchNutanixMountV1_ObjectFieldSpec,
+                Mutation.PatchNutanixMountV1,
                 Mutation.PatchNutanixMountV1FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2144,7 +2316,7 @@ $query.Var.input = @{
                 "MutationRefreshNutanixCluster",
                 "($input: RefreshNutanixClusterInput!)",
                 "AsyncRequestStatus",
-                Mutation.RefreshNutanixCluster_ObjectFieldSpec,
+                Mutation.RefreshNutanixCluster,
                 Mutation.RefreshNutanixClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2167,7 +2339,7 @@ $query.Var.input = @{
                 "MutationRefreshNutanixPrismCentral",
                 "($input: RefreshNutanixPrismCentralInput!)",
                 "BatchAsyncRequestStatus",
-                Mutation.RefreshNutanixPrismCentral_ObjectFieldSpec,
+                Mutation.RefreshNutanixPrismCentral,
                 Mutation.RefreshNutanixPrismCentralFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2190,7 +2362,7 @@ $query.Var.input = @{
                 "MutationRegisterAgentNutanixVm",
                 "($input: RegisterAgentNutanixVmInput!)",
                 "RequestSuccess",
-                Mutation.RegisterAgentNutanixVm_ObjectFieldSpec,
+                Mutation.RegisterAgentNutanixVm,
                 Mutation.RegisterAgentNutanixVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2213,7 +2385,7 @@ $query.Var.input = @{
                 "MutationRestoreFilesNutanixSnapshot",
                 "($input: RestoreFilesNutanixSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.RestoreFilesNutanixSnapshot_ObjectFieldSpec,
+                Mutation.RestoreFilesNutanixSnapshot,
                 Mutation.RestoreFilesNutanixSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2250,7 +2422,7 @@ $query.Var.input = @{
                 "MutationUpdateNutanixCluster",
                 "($input: UpdateNutanixClusterInput!)",
                 "UpdateNutanixClusterReply",
-                Mutation.UpdateNutanixCluster_ObjectFieldSpec,
+                Mutation.UpdateNutanixCluster,
                 Mutation.UpdateNutanixClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2288,7 +2460,7 @@ $query.Var.input = @{
                 "MutationUpdateNutanixPrismCentral",
                 "($input: UpdateNutanixPrismCentralInput!)",
                 "UpdateNutanixPrismCentralReply",
-                Mutation.UpdateNutanixPrismCentral_ObjectFieldSpec,
+                Mutation.UpdateNutanixPrismCentral,
                 Mutation.UpdateNutanixPrismCentralFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2335,7 +2507,7 @@ $query.Var.input = @{
                 "MutationUpdateNutanixVm",
                 "($input: UpdateNutanixVmInput!)",
                 "NutanixVmDetail",
-                Mutation.UpdateNutanixVm_ObjectFieldSpec,
+                Mutation.UpdateNutanixVm,
                 Mutation.UpdateNutanixVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

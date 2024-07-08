@@ -517,7 +517,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddMongoSource",
                 "($input: AddMongoSourceInput!)",
                 "AddMongoSourceReply",
-                Mutation.AddMongoSource_ObjectFieldSpec,
+                Mutation.AddMongoSource,
                 Mutation.AddMongoSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -574,7 +574,7 @@ $query.Var.input = @{
                 "MutationDeleteMongoSource",
                 "($input: DeleteMongoSourceInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteMongoSource_ObjectFieldSpec,
+                Mutation.DeleteMongoSource,
                 Mutation.DeleteMongoSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -597,7 +597,7 @@ $query.Var.input = @{
                 "MutationDiscoverMongoSource",
                 "($input: DiscoverMongoSourceInput!)",
                 "AsyncRequestStatus",
-                Mutation.DiscoverMongoSource_ObjectFieldSpec,
+                Mutation.DiscoverMongoSource,
                 Mutation.DiscoverMongoSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -620,7 +620,7 @@ $query.Var.input = @{
                 "MutationPatchMongoSource",
                 "($input: PatchMongoSourceInput!)",
                 "AsyncRequestStatus",
-                Mutation.PatchMongoSource_ObjectFieldSpec,
+                Mutation.PatchMongoSource,
                 Mutation.PatchMongoSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -664,7 +664,7 @@ $query.Var.input = @{
                 "MutationRecoverMongoSource",
                 "($input: RecoverMongoSourceInput!)",
                 "AsyncRequestStatus",
-                Mutation.RecoverMongoSource_ObjectFieldSpec,
+                Mutation.RecoverMongoSource,
                 Mutation.RecoverMongoSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -720,7 +720,7 @@ $query.Var.input = @{
                 "MutationRetryAddMongoSource",
                 "($input: RetryAddMongoSourceInput!)",
                 "AsyncRequestStatus",
-                Mutation.RetryAddMongoSource_ObjectFieldSpec,
+                Mutation.RetryAddMongoSource,
                 Mutation.RetryAddMongoSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 1.6
+
+New Features:
+ - Get-RscOrganization cmdlet
+
+Fixes:
+ - Get-RscPermission cmdlet parameters
+
 ## Version 1.5
 
 New Features:

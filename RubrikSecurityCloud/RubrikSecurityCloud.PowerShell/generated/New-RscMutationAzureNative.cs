@@ -574,7 +574,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationExcludeAzureNativeManagedDisksFromSnapshot",
                 "($input: ExcludeAzureNativeManagedDisksFromSnapshotInput!)",
                 "System.String",
-                Mutation.ExcludeAzureNativeManagedDisksFromSnapshot_ObjectFieldSpec,
+                Mutation.ExcludeAzureNativeManagedDisksFromSnapshot,
                 Mutation.ExcludeAzureNativeManagedDisksFromSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -606,7 +606,7 @@ $query.Var.input = @{
                 "MutationStartCreateAzureNativeManagedDiskSnapshotsJob",
                 "($input: StartCreateAzureNativeManagedDiskSnapshotsJobInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.StartCreateAzureNativeManagedDiskSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartCreateAzureNativeManagedDiskSnapshotsJob,
                 Mutation.StartCreateAzureNativeManagedDiskSnapshotsJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -633,7 +633,7 @@ $query.Var.input = @{
                 "MutationStartCreateAzureNativeVirtualMachineSnapshotsJob",
                 "($input: StartCreateAzureNativeVirtualMachineSnapshotsJobInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.StartCreateAzureNativeVirtualMachineSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartCreateAzureNativeVirtualMachineSnapshotsJob,
                 Mutation.StartCreateAzureNativeVirtualMachineSnapshotsJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -660,7 +660,7 @@ $query.Var.input = @{
                 "MutationStartDisableAzureNativeSubscriptionProtectionJob",
                 "($input: StartDisableAzureNativeSubscriptionProtectionJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartDisableAzureNativeSubscriptionProtectionJob_ObjectFieldSpec,
+                Mutation.StartDisableAzureNativeSubscriptionProtectionJob,
                 Mutation.StartDisableAzureNativeSubscriptionProtectionJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -687,7 +687,7 @@ $query.Var.input = @{
                 "MutationStartExportAzureNativeManagedDiskJob",
                 "($input: StartExportAzureNativeManagedDiskJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartExportAzureNativeManagedDiskJob_ObjectFieldSpec,
+                Mutation.StartExportAzureNativeManagedDiskJob,
                 Mutation.StartExportAzureNativeManagedDiskJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -734,7 +734,7 @@ $query.Var.input = @{
                 "MutationStartExportAzureNativeVirtualMachineJob",
                 "($input: StartExportAzureNativeVirtualMachineJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartExportAzureNativeVirtualMachineJob_ObjectFieldSpec,
+                Mutation.StartExportAzureNativeVirtualMachineJob,
                 Mutation.StartExportAzureNativeVirtualMachineJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -791,7 +791,7 @@ $query.Var.input = @{
                 "MutationStartRefreshAzureNativeSubscriptionsJob",
                 "($input: StartRefreshAzureNativeSubscriptionsJobInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.StartRefreshAzureNativeSubscriptionsJob_ObjectFieldSpec,
+                Mutation.StartRefreshAzureNativeSubscriptionsJob,
                 Mutation.StartRefreshAzureNativeSubscriptionsJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -816,7 +816,7 @@ $query.Var.input = @{
                 "MutationStartRestoreAzureNativeVirtualMachineJob",
                 "($input: StartRestoreAzureNativeVirtualMachineJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartRestoreAzureNativeVirtualMachineJob_ObjectFieldSpec,
+                Mutation.StartRestoreAzureNativeVirtualMachineJob,
                 Mutation.StartRestoreAzureNativeVirtualMachineJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

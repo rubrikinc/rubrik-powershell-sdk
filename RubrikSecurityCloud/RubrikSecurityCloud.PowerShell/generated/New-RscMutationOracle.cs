@@ -1348,7 +1348,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationBulkUpdateOracleDatabases",
                 "($input: BulkUpdateOracleDatabasesInput!)",
                 "BulkUpdateOracleDatabasesReply",
-                Mutation.BulkUpdateOracleDatabases_ObjectFieldSpec,
+                Mutation.BulkUpdateOracleDatabases,
                 Mutation.BulkUpdateOracleDatabasesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1427,7 +1427,7 @@ $query.Var.input = @{
                 "MutationBulkUpdateOracleHosts",
                 "($input: BulkUpdateOracleHostsInput!)",
                 "BulkUpdateOracleHostsReply",
-                Mutation.BulkUpdateOracleHosts_ObjectFieldSpec,
+                Mutation.BulkUpdateOracleHosts,
                 Mutation.BulkUpdateOracleHostsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1506,7 +1506,7 @@ $query.Var.input = @{
                 "MutationBulkUpdateOracleRacs",
                 "($input: BulkUpdateOracleRacsInput!)",
                 "BulkUpdateOracleRacsReply",
-                Mutation.BulkUpdateOracleRacs_ObjectFieldSpec,
+                Mutation.BulkUpdateOracleRacs,
                 Mutation.BulkUpdateOracleRacsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1585,7 +1585,7 @@ $query.Var.input = @{
                 "MutationCreateOraclePdbRestore",
                 "($input: CreateOraclePdbRestoreInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateOraclePdbRestore_ObjectFieldSpec,
+                Mutation.CreateOraclePdbRestore,
                 Mutation.CreateOraclePdbRestoreFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1622,7 +1622,7 @@ $query.Var.input = @{
                 "MutationDeleteAllOracleDatabaseSnapshots",
                 "($input: DeleteAllOracleDatabaseSnapshotsInput!)",
                 "System.String",
-                Mutation.DeleteAllOracleDatabaseSnapshots_ObjectFieldSpec,
+                Mutation.DeleteAllOracleDatabaseSnapshots,
                 Mutation.DeleteAllOracleDatabaseSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1645,7 +1645,7 @@ $query.Var.input = @{
                 "MutationDeleteOracleMount",
                 "($input: DeleteOracleMountInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteOracleMount_ObjectFieldSpec,
+                Mutation.DeleteOracleMount,
                 Mutation.DeleteOracleMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1670,7 +1670,7 @@ $query.Var.input = @{
                 "MutationDownloadOracleDatabaseSnapshot",
                 "($input: DownloadOracleDatabaseSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadOracleDatabaseSnapshot_ObjectFieldSpec,
+                Mutation.DownloadOracleDatabaseSnapshot,
                 Mutation.DownloadOracleDatabaseSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1693,7 +1693,7 @@ $query.Var.input = @{
                 "MutationExportOracleDatabase",
                 "($input: ExportOracleDatabaseInput!)",
                 "AsyncRequestStatus",
-                Mutation.ExportOracleDatabase_ObjectFieldSpec,
+                Mutation.ExportOracleDatabase,
                 Mutation.ExportOracleDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1776,7 +1776,7 @@ $query.Var.input = @{
                 "MutationExportOracleTablespace",
                 "($input: ExportOracleTablespaceInput!)",
                 "AsyncRequestStatus",
-                Mutation.ExportOracleTablespace_ObjectFieldSpec,
+                Mutation.ExportOracleTablespace,
                 Mutation.ExportOracleTablespaceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1815,7 +1815,7 @@ $query.Var.input = @{
                 "MutationInstantRecoverOracleSnapshot",
                 "($input: InstantRecoverOracleSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.InstantRecoverOracleSnapshot_ObjectFieldSpec,
+                Mutation.InstantRecoverOracleSnapshot,
                 Mutation.InstantRecoverOracleSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1852,7 +1852,7 @@ $query.Var.input = @{
                 "MutationMountOracleDatabase",
                 "($input: MountOracleDatabaseInput!)",
                 "AsyncRequestStatus",
-                Mutation.MountOracleDatabase_ObjectFieldSpec,
+                Mutation.MountOracleDatabase,
                 Mutation.MountOracleDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1931,7 +1931,7 @@ $query.Var.input = @{
                 "MutationRefreshOracleDatabase",
                 "($input: RefreshOracleDatabaseInput!)",
                 "AsyncRequestStatus",
-                Mutation.RefreshOracleDatabase_ObjectFieldSpec,
+                Mutation.RefreshOracleDatabase,
                 Mutation.RefreshOracleDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1954,7 +1954,7 @@ $query.Var.input = @{
                 "MutationRestoreOracleLogs",
                 "($input: RestoreOracleLogsInput!)",
                 "AsyncRequestStatus",
-                Mutation.RestoreOracleLogs_ObjectFieldSpec,
+                Mutation.RestoreOracleLogs,
                 Mutation.RestoreOracleLogsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1996,7 +1996,7 @@ $query.Var.input = @{
                 "MutationTakeOnDemandOracleDatabaseSnapshot",
                 "($input: TakeOnDemandOracleDatabaseSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.TakeOnDemandOracleDatabaseSnapshot_ObjectFieldSpec,
+                Mutation.TakeOnDemandOracleDatabaseSnapshot,
                 Mutation.TakeOnDemandOracleDatabaseSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2031,7 +2031,7 @@ $query.Var.input = @{
                 "MutationTakeOnDemandOracleLogSnapshot",
                 "($input: TakeOnDemandOracleLogSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.TakeOnDemandOracleLogSnapshot_ObjectFieldSpec,
+                Mutation.TakeOnDemandOracleLogSnapshot,
                 Mutation.TakeOnDemandOracleLogSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2054,7 +2054,7 @@ $query.Var.input = @{
                 "MutationUpdateOracleDataGuardGroup",
                 "($input: UpdateOracleDataGuardGroupInput!)",
                 "OracleDbDetail",
-                Mutation.UpdateOracleDataGuardGroup_ObjectFieldSpec,
+                Mutation.UpdateOracleDataGuardGroup,
                 Mutation.UpdateOracleDataGuardGroupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2113,7 +2113,7 @@ $query.Var.input = @{
                 "MutationValidateOracleAcoFile",
                 "($input: ValidateOracleAcoFileInput!)",
                 "ValidateOracleAcoFileReply",
-                Mutation.ValidateOracleAcoFile_ObjectFieldSpec,
+                Mutation.ValidateOracleAcoFile,
                 Mutation.ValidateOracleAcoFileFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2144,7 +2144,7 @@ $query.Var.input = @{
                 "MutationValidateOracleDatabaseBackups",
                 "($input: ValidateOracleDatabaseBackupsInput!)",
                 "AsyncRequestStatus",
-                Mutation.ValidateOracleDatabaseBackups_ObjectFieldSpec,
+                Mutation.ValidateOracleDatabaseBackups,
                 Mutation.ValidateOracleDatabaseBackupsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

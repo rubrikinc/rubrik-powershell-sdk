@@ -317,7 +317,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCreateNfsReaderTarget",
                 "($input: CreateNfsReaderTargetInput!)",
                 "Target",
-                Mutation.CreateNfsReaderTarget_ObjectFieldSpec,
+                Mutation.CreateNfsReaderTarget,
                 Mutation.CreateNfsReaderTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -362,7 +362,7 @@ $query.Var.input = @{
                 "MutationCreateNfsTarget",
                 "($input: CreateNfsTargetInput!)",
                 "Target",
-                Mutation.CreateNfsTarget_ObjectFieldSpec,
+                Mutation.CreateNfsTarget,
                 Mutation.CreateNfsTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -405,7 +405,7 @@ $query.Var.input = @{
                 "MutationUpdateNfsTarget",
                 "($input: UpdateNfsTargetInput!)",
                 "Target",
-                Mutation.UpdateNfsTarget_ObjectFieldSpec,
+                Mutation.UpdateNfsTarget,
                 Mutation.UpdateNfsTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

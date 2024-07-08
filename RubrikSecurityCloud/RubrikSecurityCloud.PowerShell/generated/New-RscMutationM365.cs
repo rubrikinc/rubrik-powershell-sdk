@@ -315,7 +315,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationBackupM365Mailbox",
                 "($input: BackupM365MailboxInput!)",
                 "List<CreateOnDemandJobReply>",
-                Mutation.BackupM365Mailbox_ObjectFieldSpec,
+                Mutation.BackupM365Mailbox,
                 Mutation.BackupM365MailboxFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -340,7 +340,7 @@ $query.Var.input = @{
                 "MutationBackupM365Onedrive",
                 "($input: BackupM365OnedriveInput!)",
                 "List<CreateOnDemandJobReply>",
-                Mutation.BackupM365Onedrive_ObjectFieldSpec,
+                Mutation.BackupM365Onedrive,
                 Mutation.BackupM365OnedriveFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -365,7 +365,7 @@ $query.Var.input = @{
                 "MutationBackupM365SharepointDrive",
                 "($input: BackupM365SharepointDriveInput!)",
                 "List<CreateOnDemandJobReply>",
-                Mutation.BackupM365SharepointDrive_ObjectFieldSpec,
+                Mutation.BackupM365SharepointDrive,
                 Mutation.BackupM365SharepointDriveFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -390,7 +390,7 @@ $query.Var.input = @{
                 "MutationBackupM365Team",
                 "($input: BackupM365TeamInput!)",
                 "List<CreateOnDemandJobReply>",
-                Mutation.BackupM365Team_ObjectFieldSpec,
+                Mutation.BackupM365Team,
                 Mutation.BackupM365TeamFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

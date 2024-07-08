@@ -707,7 +707,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationBulkDeleteHost",
                 "($input: BulkDeleteHostInput!)",
                 "ResponseSuccess",
-                Mutation.BulkDeleteHost_ObjectFieldSpec,
+                Mutation.BulkDeleteHost,
                 Mutation.BulkDeleteHostFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -732,7 +732,7 @@ $query.Var.input = @{
                 "MutationBulkRefreshHosts",
                 "($input: BulkRefreshHostsInput!)",
                 "BulkRefreshHostsReply",
-                Mutation.BulkRefreshHosts_ObjectFieldSpec,
+                Mutation.BulkRefreshHosts,
                 Mutation.BulkRefreshHostsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -759,7 +759,7 @@ $query.Var.input = @{
                 "MutationBulkRegisterHost",
                 "($input: BulkRegisterHostInput!)",
                 "BulkRegisterHostReply",
-                Mutation.BulkRegisterHost_ObjectFieldSpec,
+                Mutation.BulkRegisterHost,
                 Mutation.BulkRegisterHostFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -864,7 +864,7 @@ $query.Var.input = @{
                 "MutationBulkRegisterHostAsync",
                 "($input: BulkRegisterHostAsyncInput!)",
                 "BulkRegisterHostAsyncReply",
-                Mutation.BulkRegisterHostAsync_ObjectFieldSpec,
+                Mutation.BulkRegisterHostAsync,
                 Mutation.BulkRegisterHostAsyncFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -969,7 +969,7 @@ $query.Var.input = @{
                 "MutationBulkUpdateHost",
                 "($input: BulkUpdateHostInput!)",
                 "BulkUpdateHostReply",
-                Mutation.BulkUpdateHost_ObjectFieldSpec,
+                Mutation.BulkUpdateHost,
                 Mutation.BulkUpdateHostFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1083,7 +1083,7 @@ $query.Var.input = @{
                 "MutationChangeVfdOnHost",
                 "($input: ChangeVfdOnHostInput!)",
                 "ChangeVfdOnHostReply",
-                Mutation.ChangeVfdOnHost_ObjectFieldSpec,
+                Mutation.ChangeVfdOnHost,
                 Mutation.ChangeVfdOnHostFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1113,7 +1113,7 @@ $query.Var.input = @{
                 "MutationRefreshHost",
                 "($input: RefreshHostInput!)",
                 "RefreshHostReply",
-                Mutation.RefreshHost_ObjectFieldSpec,
+                Mutation.RefreshHost,
                 Mutation.RefreshHostFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

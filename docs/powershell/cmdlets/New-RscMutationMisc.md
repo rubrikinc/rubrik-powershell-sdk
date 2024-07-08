@@ -138,6 +138,11 @@ Delete guest OS credentials.
 
 - There is a single argument of type DeleteGuestCredentialByIdInput.
 - Returns System.Boolean.
+### deleteintelfeed
+Delete intel feed.
+
+- There is a single argument of type DeleteIntelFeedInput.
+- Returns DeleteIntelFeedReply.
 ### deletevolumegroupmount
 Requst to delete a mount
 
@@ -267,7 +272,7 @@ Mount disks to the given workload.
 ### notificationforgetlicense
 Send notification when the user clicks on the Get License button.
 
-- The notificationforgetlicense subcommand takes no arguments.
+- There is a single argument of type NotificationForGetLicenseInput.
 - Returns NotificationForGetLicenseReply.
 ### recoverclouddirectmultipaths
 Cloud Direct MultiPaths Recovery.
@@ -586,6 +591,11 @@ Updates the Azure app for the specified account with specified permissions in an
 
 - There is a single argument of type UpdateCustomerAppPermissionsInput.
 - Returns UpdateCustomerAppPermissionsReply.
+### updatecustomintelfeed
+Update custom intel feed.
+
+- There is a single argument of type UpdateCustomIntelFeedInput.
+- Returns UpdateCustomIntelFeedReply.
 ### updatedistributionlistdigest
 Update specific distribution list digests.
 

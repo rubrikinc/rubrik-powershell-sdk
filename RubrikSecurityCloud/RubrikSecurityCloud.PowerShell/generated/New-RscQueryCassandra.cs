@@ -641,7 +641,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryCassandraColumnFamilies",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "CassandraColumnFamilyConnection",
-                Query.CassandraColumnFamilies_ObjectFieldSpec,
+                Query.CassandraColumnFamilies,
                 Query.CassandraColumnFamiliesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -709,7 +709,7 @@ $query.Var.filter = @(
                 "QueryCassandraColumnFamily",
                 "($fid: UUID!)",
                 "CassandraColumnFamily",
-                Query.CassandraColumnFamily_ObjectFieldSpec,
+                Query.CassandraColumnFamily,
                 Query.CassandraColumnFamilyFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -729,7 +729,7 @@ $query.Var.fid = $someString"
                 "QueryCassandraColumnFamilyRecoverableRange",
                 "($input: GetMosaicRecoverableRangeInput!)",
                 "GetMosaicRecoverableRangeResponse",
-                Query.CassandraColumnFamilyRecoverableRange_ObjectFieldSpec,
+                Query.CassandraColumnFamilyRecoverableRange,
                 Query.CassandraColumnFamilyRecoverableRangeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -763,7 +763,7 @@ $query.Var.input = @{
                 "QueryCassandraColumnFamilySchema",
                 "($input: GetMosaicTableSchemaInput!)",
                 "GetSchemaResponse",
-                Query.CassandraColumnFamilySchema_ObjectFieldSpec,
+                Query.CassandraColumnFamilySchema,
                 Query.CassandraColumnFamilySchemaFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -797,7 +797,7 @@ $query.Var.input = @{
                 "QueryCassandraKeyspace",
                 "($fid: UUID!)",
                 "CassandraKeyspace",
-                Query.CassandraKeyspace_ObjectFieldSpec,
+                Query.CassandraKeyspace,
                 Query.CassandraKeyspaceFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -827,7 +827,7 @@ $query.Var.fid = $someString"
                 "QueryCassandraKeyspaces",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "CassandraKeyspaceConnection",
-                Query.CassandraKeyspaces_ObjectFieldSpec,
+                Query.CassandraKeyspaces,
                 Query.CassandraKeyspacesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -895,7 +895,7 @@ $query.Var.filter = @(
                 "QueryCassandraSource",
                 "($fid: UUID!)",
                 "CassandraSource",
-                Query.CassandraSource_ObjectFieldSpec,
+                Query.CassandraSource,
                 Query.CassandraSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -925,7 +925,7 @@ $query.Var.fid = $someString"
                 "QueryCassandraSources",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "CassandraSourceConnection",
-                Query.CassandraSources_ObjectFieldSpec,
+                Query.CassandraSources,
                 Query.CassandraSourcesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

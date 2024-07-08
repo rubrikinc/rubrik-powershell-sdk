@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterNativeId")]
         public System.String? ClusterNativeId { get; set; }
 
+        //      C# -> System.Boolean? IsExoclusterLongRunning
+        // GraphQL -> isExoclusterLongRunning: Boolean! (scalar)
+        [JsonProperty("isExoclusterLongRunning")]
+        public System.Boolean? IsExoclusterLongRunning { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public ExocomputeClusterDetails Set(
         ExoClusterStatus? ClusterStatus = null,
-        System.String? ClusterNativeId = null
+        System.String? ClusterNativeId = null,
+        System.Boolean? IsExoclusterLongRunning = null
     ) 
     {
         if ( ClusterStatus != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ClusterNativeId != null ) {
             this.ClusterNativeId = ClusterNativeId;
+        }
+        if ( IsExoclusterLongRunning != null ) {
+            this.IsExoclusterLongRunning = IsExoclusterLongRunning;
         }
         return this;
     }
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "clusterNativeId\n" ;
             } else {
                 s += ind + "clusterNativeId\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsExoclusterLongRunning
+        // GraphQL -> isExoclusterLongRunning: Boolean! (scalar)
+        if (this.IsExoclusterLongRunning != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isExoclusterLongRunning\n" ;
+            } else {
+                s += ind + "isExoclusterLongRunning\n" ;
             }
         }
         return s;
@@ -122,6 +140,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClusterNativeId != null && ec.Excludes("clusterNativeId",true))
         {
             this.ClusterNativeId = null;
+        }
+        //      C# -> System.Boolean? IsExoclusterLongRunning
+        // GraphQL -> isExoclusterLongRunning: Boolean! (scalar)
+        if (ec.Includes("isExoclusterLongRunning",true))
+        {
+            if(this.IsExoclusterLongRunning == null) {
+
+                this.IsExoclusterLongRunning = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExoclusterLongRunning != null && ec.Excludes("isExoclusterLongRunning",true))
+        {
+            this.IsExoclusterLongRunning = null;
         }
     }
 

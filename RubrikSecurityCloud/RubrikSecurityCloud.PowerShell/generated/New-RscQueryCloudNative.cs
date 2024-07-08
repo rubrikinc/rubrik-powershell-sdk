@@ -992,7 +992,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryCloudNativeCheckArchivedSnapshotsLocked",
                 "($workloadId: UUID!,$snapshotIds: [UUID!])",
                 "CheckArchivedSnapshotsLockedReply",
-                Query.CloudNativeCheckArchivedSnapshotsLocked_ObjectFieldSpec,
+                Query.CloudNativeCheckArchivedSnapshotsLocked,
                 Query.CloudNativeCheckArchivedSnapshotsLockedFieldSpec,
                 @"# REQUIRED
 $query.Var.workloadId = $someString
@@ -1017,7 +1017,7 @@ $query.Var.snapshotIds = @(
                 "QueryCheckCloudNativeLabelRuleNameUniqueness",
                 "($ruleName: String!,$objectType: CloudNativeLabelObjectType!)",
                 "IsCloudNativeTagRuleNameUniqueReply",
-                Query.CheckCloudNativeLabelRuleNameUniqueness_ObjectFieldSpec,
+                Query.CheckCloudNativeLabelRuleNameUniqueness,
                 Query.CheckCloudNativeLabelRuleNameUniquenessFieldSpec,
                 @"# REQUIRED
 $query.Var.ruleName = $someString
@@ -1040,7 +1040,7 @@ $query.Var.objectType = $someCloudNativeLabelObjectType # Call [Enum]::GetValues
                 "QueryCloudNativeCheckRequiredPermissionsForFeature",
                 "($cloudNativeAccountId: String!,$featurePermissionCheck: CloudNativeFeatureForPermissionsCheck!)",
                 "System.Boolean",
-                Query.CloudNativeCheckRequiredPermissionsForFeature_ObjectFieldSpec,
+                Query.CloudNativeCheckRequiredPermissionsForFeature,
                 Query.CloudNativeCheckRequiredPermissionsForFeatureFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudNativeAccountId = $someString
@@ -1068,7 +1068,7 @@ $query.Var.featurePermissionCheck = @{
                 "QueryCheckCloudNativeTagRuleNameUniqueness",
                 "($ruleName: String!,$objectType: CloudNativeTagObjectType!)",
                 "IsCloudNativeTagRuleNameUniqueReply",
-                Query.CheckCloudNativeTagRuleNameUniqueness_ObjectFieldSpec,
+                Query.CheckCloudNativeTagRuleNameUniqueness,
                 Query.CheckCloudNativeTagRuleNameUniquenessFieldSpec,
                 @"# REQUIRED
 $query.Var.ruleName = $someString
@@ -1091,7 +1091,7 @@ $query.Var.objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([
                 "QueryCloudNativeCustomerTags",
                 "($cloudVendor: CloudVendor!,$cloudAccountId: UUID)",
                 "CloudNativeCustomerTagsReply",
-                Query.CloudNativeCustomerTags_ObjectFieldSpec,
+                Query.CloudNativeCustomerTags,
                 Query.CloudNativeCustomerTagsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
@@ -1113,7 +1113,7 @@ $query.Var.cloudAccountId = $someString"
                 "QueryAllCloudNativeFileRecoveryEligibleSnapshots",
                 "($workloadId: UUID!)",
                 "List<System.String>",
-                Query.AllCloudNativeFileRecoveryEligibleSnapshots_ObjectFieldSpec,
+                Query.AllCloudNativeFileRecoveryEligibleSnapshots,
                 Query.AllCloudNativeFileRecoveryEligibleSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.workloadId = $someString"
@@ -1133,7 +1133,7 @@ $query.Var.workloadId = $someString"
                 "QueryIsCloudNativeFileRecoveryFeasible",
                 "($snapshotIds: [UUID!]!)",
                 "ValidateCloudNativeFileRecoveryFeasibilityReply",
-                Query.IsCloudNativeFileRecoveryFeasible_ObjectFieldSpec,
+                Query.IsCloudNativeFileRecoveryFeasible,
                 Query.IsCloudNativeFileRecoveryFeasibleFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotIds = @(
@@ -1157,7 +1157,7 @@ $query.Var.snapshotIds = @(
                 "QueryAllCloudNativeLabelKeys",
                 "($keySubStr: String!,$limit: Int!,$objectType: CloudNativeLabelObjectType!)",
                 "List<System.String>",
-                Query.AllCloudNativeLabelKeys_ObjectFieldSpec,
+                Query.AllCloudNativeLabelKeys,
                 Query.AllCloudNativeLabelKeysFieldSpec,
                 @"# REQUIRED
 $query.Var.keySubStr = $someString
@@ -1189,7 +1189,7 @@ $query.Var.objectType = $someCloudNativeLabelObjectType # Call [Enum]::GetValues
                 "QueryCloudNativeLabelRules",
                 "($objectType: CloudNativeLabelObjectType!,$filters: [CloudNativeFilter!],$sortBy: CloudNativeTagRuleSortByFields,$sortOrder: SortOrder)",
                 "GetCloudNativeLabelRulesReply",
-                Query.CloudNativeLabelRules_ObjectFieldSpec,
+                Query.CloudNativeLabelRules,
                 Query.CloudNativeLabelRulesFieldSpec,
                 @"# REQUIRED
 $query.Var.objectType = $someCloudNativeLabelObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLabelObjectType]) for enum values.
@@ -1232,7 +1232,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryAllCloudNativeLabelValues",
                 "($valueSubStr: String!,$key: String!,$limit: Int!,$objectType: CloudNativeLabelObjectType!)",
                 "List<System.String>",
-                Query.AllCloudNativeLabelValues_ObjectFieldSpec,
+                Query.AllCloudNativeLabelValues,
                 Query.AllCloudNativeLabelValuesFieldSpec,
                 @"# REQUIRED
 $query.Var.valueSubStr = $someString
@@ -1257,7 +1257,7 @@ $query.Var.objectType = $someCloudNativeLabelObjectType # Call [Enum]::GetValues
                 "QueryCloudNativeRbaInstallers",
                 "",
                 "RbaInstallerUrls",
-                Query.CloudNativeRbaInstallers_ObjectFieldSpec,
+                Query.CloudNativeRbaInstallers,
                 Query.CloudNativeRbaInstallersFieldSpec,
                 @""
             );
@@ -1276,7 +1276,7 @@ $query.Var.objectType = $someCloudNativeLabelObjectType # Call [Enum]::GetValues
                 "QueryCloudNativeSnapshotDetailsForRecovery",
                 "($snapshotId: UUID!)",
                 "CloudNativeSnapshotDetailsForRecoveryReply",
-                Query.CloudNativeSnapshotDetailsForRecovery_ObjectFieldSpec,
+                Query.CloudNativeSnapshotDetailsForRecovery,
                 Query.CloudNativeSnapshotDetailsForRecoveryFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotId = $someString"
@@ -1296,7 +1296,7 @@ $query.Var.snapshotId = $someString"
                 "QueryCloudNativeSnapshotTypeDetails",
                 "($snapshotId: UUID!)",
                 "CloudNativeSnapshotTypeDetailsReply",
-                Query.CloudNativeSnapshotTypeDetails_ObjectFieldSpec,
+                Query.CloudNativeSnapshotTypeDetails,
                 Query.CloudNativeSnapshotTypeDetailsFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotId = $someString"
@@ -1326,7 +1326,7 @@ $query.Var.snapshotId = $someString"
                 "QueryCloudNativeSnapshots",
                 "($first: Int,$after: String,$path: String!,$snapshotFid: UUID!,$searchPrefix: String)",
                 "SnapshotFileConnection",
-                Query.CloudNativeSnapshots_ObjectFieldSpec,
+                Query.CloudNativeSnapshots,
                 Query.CloudNativeSnapshotsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1353,7 +1353,7 @@ $query.Var.searchPrefix = $someString"
                 "QueryCloudNativeSqlServerSetupScript",
                 "",
                 "CloudNativeSqlServerSetupScript",
-                Query.CloudNativeSqlServerSetupScript_ObjectFieldSpec,
+                Query.CloudNativeSqlServerSetupScript,
                 Query.CloudNativeSqlServerSetupScriptFieldSpec,
                 @""
             );
@@ -1374,7 +1374,7 @@ $query.Var.searchPrefix = $someString"
                 "QueryAllCloudNativeTagKeys",
                 "($keySubStr: String!,$limit: Int!,$objectType: CloudNativeTagObjectType!)",
                 "List<System.String>",
-                Query.AllCloudNativeTagKeys_ObjectFieldSpec,
+                Query.AllCloudNativeTagKeys,
                 Query.AllCloudNativeTagKeysFieldSpec,
                 @"# REQUIRED
 $query.Var.keySubStr = $someString
@@ -1406,7 +1406,7 @@ $query.Var.objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([
                 "QueryCloudNativeTagRules",
                 "($objectType: CloudNativeTagObjectType!,$filters: [CloudNativeFilter!],$sortBy: CloudNativeTagRuleSortByFields,$sortOrder: SortOrder)",
                 "GetCloudNativeTagRulesReply",
-                Query.CloudNativeTagRules_ObjectFieldSpec,
+                Query.CloudNativeTagRules,
                 Query.CloudNativeTagRulesFieldSpec,
                 @"# REQUIRED
 $query.Var.objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeTagObjectType]) for enum values.
@@ -1449,7 +1449,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryAllCloudNativeTagValues",
                 "($valueSubStr: String!,$key: String!,$limit: Int!,$objectType: CloudNativeTagObjectType!)",
                 "List<System.String>",
-                Query.AllCloudNativeTagValues_ObjectFieldSpec,
+                Query.AllCloudNativeTagValues,
                 Query.AllCloudNativeTagValuesFieldSpec,
                 @"# REQUIRED
 $query.Var.valueSubStr = $someString
@@ -1483,7 +1483,7 @@ $query.Var.objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([
                 "QueryCloudNativeWorkloadVersionedFiles",
                 "($first: Int,$after: String,$snappableId: UUID!,$searchQuery: String!)",
                 "CloudNativeVersionedFileConnection",
-                Query.CloudNativeWorkloadVersionedFiles_ObjectFieldSpec,
+                Query.CloudNativeWorkloadVersionedFiles,
                 Query.CloudNativeWorkloadVersionedFilesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

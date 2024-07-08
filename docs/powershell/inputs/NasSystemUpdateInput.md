@@ -13,9 +13,11 @@ Supported in v7.0+
   - Supported in v9.0+
       Optional parameter that specifies whether to remove the system-generated (not user-supplied) SMB credentials in namespaces and recreate them. If this parameter is true, the system-generated SMB credentials in all namespaces are removed. In addition, when the NAS system does not have user-supplied (system level) SMB credentials, new SMB credentials are generated in each namespace that does not have user-supplied (namespace level) SMB credentials. The API credentials must be provided when this parameter is true.
 - shouldGrantSmbShareRootAccess: System.Boolean
-  - Optional parameter that specifies whether to grant root user access to SMB shares on Isilon NAS systems. The root user access is granted on first fileset creation for the SMB share. The default value is true. This setting is applicable only when system-generated credentials are used.
+  - Supported in v9.0+
+      Optional parameter that specifies whether to grant root user access to SMB shares on Isilon NAS systems. The root user access is granted on first fileset creation for the SMB share. The default value is true. This setting is applicable only when system-generated credentials are used.
 - shouldGrantNfsShareRootAccess: System.Boolean
-  - Optional parameter that specifies whether to grant root client access to NFS shares on Isilon and NetApp NAS systems. The root client access is granted on first fileset creation for the NFS share. The default value is true.
+  - Supported in v9.0+
+      Optional parameter that specifies whether to grant root client access to NFS shares on Isilon and NetApp NAS systems. The root client access is granted on first fileset creation for the NFS share. The default value is true.
 - genericNasSystemParameters: GenericNasSystemParametersInput
   - Supported in v7.0+
       The updated Generic NAS system parameters.

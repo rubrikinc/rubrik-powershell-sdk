@@ -24,11 +24,11 @@ function Get-RscPermission
 
     [CmdletBinding()]
     Param(
-        # SLA Domain Duration
-        [Parameter(ValueFromPipeline=$true,Mandatory=$true)]
+
+        [Parameter(Mandatory=$false)]
         [RubrikSecurityCloud.Types.Operation]$Operation,
 
-        [Parameter(ValueFromPipeline=$true,Mandatory=$true)]
+        [Parameter(ValueFromPipeline=$true, Mandatory=$true)]
         [RubrikSecurityCloud.Types.Role]$Role
     )
     Process {

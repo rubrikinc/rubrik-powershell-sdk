@@ -1064,6 +1064,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		orgName = $someString
     /// 		# OPTIONAL
+    /// 		outpostAwsNativeId = $someString
+    /// 		# OPTIONAL
     /// 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 	}
     /// 	# REQUIRED
@@ -1079,6 +1081,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			seamlessFlowEnabled = $someBoolean
     /// 			# OPTIONAL
     /// 			orgName = $someString
+    /// 			# OPTIONAL
+    /// 			outpostAwsNativeId = $someString
     /// 			# OPTIONAL
     /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 		}
@@ -1979,6 +1983,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		orgName = $someString
     /// 		# OPTIONAL
+    /// 		outpostAwsNativeId = $someString
+    /// 		# OPTIONAL
     /// 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 	}
     /// 	# REQUIRED
@@ -1994,6 +2000,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			seamlessFlowEnabled = $someBoolean
     /// 			# OPTIONAL
     /// 			orgName = $someString
+    /// 			# OPTIONAL
+    /// 			outpostAwsNativeId = $someString
     /// 			# OPTIONAL
     /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 		}
@@ -2037,6 +2045,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		awsIamRoleName = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	outpostAwsNativeId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2594,7 +2604,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddAwsAuthenticationServerBasedCloudAccount",
                 "($input: AddAwsAuthenticationServerBasedCloudAccountInput!)",
                 "AddAwsAuthenticationServerBasedCloudAccountReply",
-                Mutation.AddAwsAuthenticationServerBasedCloudAccount_ObjectFieldSpec,
+                Mutation.AddAwsAuthenticationServerBasedCloudAccount,
                 Mutation.AddAwsAuthenticationServerBasedCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2650,7 +2660,7 @@ $query.Var.input = @{
                 "MutationAddAwsIamUserBasedCloudAccount",
                 "($input: AddAwsIamUserBasedCloudAccountInput!)",
                 "AddAwsIamUserBasedCloudAccountReply",
-                Mutation.AddAwsIamUserBasedCloudAccount_ObjectFieldSpec,
+                Mutation.AddAwsIamUserBasedCloudAccount,
                 Mutation.AddAwsIamUserBasedCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2700,7 +2710,7 @@ $query.Var.input = @{
                 "MutationBulkDeleteAwsCloudAccountWithoutCft",
                 "($input: BulkDeleteAwsCloudAccountWithoutCftInput!)",
                 "BulkDeleteAwsCloudAccountWithoutCftReply",
-                Mutation.BulkDeleteAwsCloudAccountWithoutCft_ObjectFieldSpec,
+                Mutation.BulkDeleteAwsCloudAccountWithoutCft,
                 Mutation.BulkDeleteAwsCloudAccountWithoutCftFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2727,7 +2737,7 @@ $query.Var.input = @{
                 "MutationCreateAwsAccount",
                 "($input: CreateAwsAccountInput!)",
                 "CloudAccount",
-                Mutation.CreateAwsAccount_ObjectFieldSpec,
+                Mutation.CreateAwsAccount,
                 Mutation.CreateAwsAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2756,7 +2766,7 @@ $query.Var.input = @{
                 "MutationCreateAutomaticAwsTargetMapping",
                 "($input: CreateAutomaticAwsTargetMappingInput!)",
                 "TargetMapping",
-                Mutation.CreateAutomaticAwsTargetMapping_ObjectFieldSpec,
+                Mutation.CreateAutomaticAwsTargetMapping,
                 Mutation.CreateAutomaticAwsTargetMappingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2812,7 +2822,7 @@ $query.Var.input = @{
                 "MutationCreateCloudNativeAwsStorageSetting",
                 "($input: CreateCloudNativeAwsStorageSettingInput!)",
                 "CreateCloudNativeAwsStorageSettingReply",
-                Mutation.CreateCloudNativeAwsStorageSetting_ObjectFieldSpec,
+                Mutation.CreateCloudNativeAwsStorageSetting,
                 Mutation.CreateCloudNativeAwsStorageSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2859,7 +2869,7 @@ $query.Var.input = @{
                 "MutationCreateAwsCluster",
                 "($input: CreateAwsClusterInput!)",
                 "CcProvisionJobReply",
-                Mutation.CreateAwsCluster_ObjectFieldSpec,
+                Mutation.CreateAwsCluster,
                 Mutation.CreateAwsClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2982,7 +2992,7 @@ $query.Var.input = @{
                 "MutationCreateAwsComputeSetting",
                 "($input: CreateAwsComputeSettingInput!)",
                 "AwsComputeSettings",
-                Mutation.CreateAwsComputeSetting_ObjectFieldSpec,
+                Mutation.CreateAwsComputeSetting,
                 Mutation.CreateAwsComputeSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3037,7 +3047,7 @@ $query.Var.input = @{
                 "MutationCreateAwsExocomputeConfigs",
                 "($input: CreateAwsExocomputeConfigsInput!)",
                 "CreateAwsExocomputeConfigsReply",
-                Mutation.CreateAwsExocomputeConfigs_ObjectFieldSpec,
+                Mutation.CreateAwsExocomputeConfigs,
                 Mutation.CreateAwsExocomputeConfigsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3088,7 +3098,7 @@ $query.Var.input = @{
                 "MutationCreateAwsReaderTarget",
                 "($input: CreateAwsReaderTargetInput!)",
                 "Target",
-                Mutation.CreateAwsReaderTarget_ObjectFieldSpec,
+                Mutation.CreateAwsReaderTarget,
                 Mutation.CreateAwsReaderTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3191,7 +3201,7 @@ $query.Var.input = @{
                 "MutationCreateAwsTarget",
                 "($input: CreateAwsTargetInput!)",
                 "Target",
-                Mutation.CreateAwsTarget_ObjectFieldSpec,
+                Mutation.CreateAwsTarget,
                 Mutation.CreateAwsTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3297,7 +3307,7 @@ $query.Var.input = @{
                 "MutationDeleteAwsComputeSetting",
                 "($input: DeleteAwsComputeSettingInput!)",
                 "System.String",
-                Mutation.DeleteAwsComputeSetting_ObjectFieldSpec,
+                Mutation.DeleteAwsComputeSetting,
                 Mutation.DeleteAwsComputeSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3320,7 +3330,7 @@ $query.Var.input = @{
                 "MutationDeleteAwsExocomputeConfigs",
                 "($input: DeleteAwsExocomputeConfigsInput!)",
                 "DeleteAwsExocomputeConfigsReply",
-                Mutation.DeleteAwsExocomputeConfigs_ObjectFieldSpec,
+                Mutation.DeleteAwsExocomputeConfigs,
                 Mutation.DeleteAwsExocomputeConfigsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3345,7 +3355,7 @@ $query.Var.input = @{
                 "MutationDisconnectAwsExocomputeCluster",
                 "($input: DisconnectAwsExocomputeClusterInput!)",
                 "System.String",
-                Mutation.DisconnectAwsExocomputeCluster_ObjectFieldSpec,
+                Mutation.DisconnectAwsExocomputeCluster,
                 Mutation.DisconnectAwsExocomputeClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3368,7 +3378,7 @@ $query.Var.input = @{
                 "MutationAwsExocomputeClusterConnect",
                 "($input: AwsExocomputeClusterConnectInput!)",
                 "AwsExocomputeClusterConnectReply",
-                Mutation.AwsExocomputeClusterConnect_ObjectFieldSpec,
+                Mutation.AwsExocomputeClusterConnect,
                 Mutation.AwsExocomputeClusterConnectFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3393,7 +3403,7 @@ $query.Var.input = @{
                 "MutationFinalizeAwsCloudAccountDeletion",
                 "($input: FinalizeAwsCloudAccountDeletionInput!)",
                 "FinalizeAwsCloudAccountDeletionReply",
-                Mutation.FinalizeAwsCloudAccountDeletion_ObjectFieldSpec,
+                Mutation.FinalizeAwsCloudAccountDeletion,
                 Mutation.FinalizeAwsCloudAccountDeletionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3420,7 +3430,7 @@ $query.Var.input = @{
                 "MutationFinalizeAwsCloudAccountProtection",
                 "($input: FinalizeAwsCloudAccountProtectionInput!)",
                 "FinalizeAwsCloudAccountProtectionReply",
-                Mutation.FinalizeAwsCloudAccountProtection_ObjectFieldSpec,
+                Mutation.FinalizeAwsCloudAccountProtection,
                 Mutation.FinalizeAwsCloudAccountProtectionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3443,6 +3453,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		orgName = $someString
 		# OPTIONAL
+		outpostAwsNativeId = $someString
+		# OPTIONAL
 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 	}
 	# REQUIRED
@@ -3458,6 +3470,8 @@ $query.Var.input = @{
 			seamlessFlowEnabled = $someBoolean
 			# OPTIONAL
 			orgName = $someString
+			# OPTIONAL
+			outpostAwsNativeId = $someString
 			# OPTIONAL
 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 		}
@@ -3520,7 +3534,7 @@ $query.Var.input = @{
                 "MutationPatchAwsAuthenticationServerBasedCloudAccount",
                 "($input: PatchAwsAuthenticationServerBasedCloudAccountInput!)",
                 "System.Boolean",
-                Mutation.PatchAwsAuthenticationServerBasedCloudAccount_ObjectFieldSpec,
+                Mutation.PatchAwsAuthenticationServerBasedCloudAccount,
                 Mutation.PatchAwsAuthenticationServerBasedCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3567,7 +3581,7 @@ $query.Var.input = @{
                 "MutationPatchAwsIamUserBasedCloudAccount",
                 "($input: PatchAwsIamUserBasedCloudAccountInput!)",
                 "System.Boolean",
-                Mutation.PatchAwsIamUserBasedCloudAccount_ObjectFieldSpec,
+                Mutation.PatchAwsIamUserBasedCloudAccount,
                 Mutation.PatchAwsIamUserBasedCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3620,7 +3634,7 @@ $query.Var.input = @{
                 "MutationPrepareAwsCloudAccountDeletion",
                 "($input: PrepareAwsCloudAccountDeletionInput!)",
                 "PrepareAwsCloudAccountDeletionReply",
-                Mutation.PrepareAwsCloudAccountDeletion_ObjectFieldSpec,
+                Mutation.PrepareAwsCloudAccountDeletion,
                 Mutation.PrepareAwsCloudAccountDeletionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3668,7 +3682,7 @@ $query.Var.input = @{
                 "MutationPrepareFeatureUpdateForAwsCloudAccount",
                 "($input: PrepareFeatureUpdateForAwsCloudAccountInput!)",
                 "PrepareFeatureUpdateForAwsCloudAccountReply",
-                Mutation.PrepareFeatureUpdateForAwsCloudAccount_ObjectFieldSpec,
+                Mutation.PrepareFeatureUpdateForAwsCloudAccount,
                 Mutation.PrepareFeatureUpdateForAwsCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3729,7 +3743,7 @@ $query.Var.input = @{
                 "MutationRegisterAwsFeatureArtifacts",
                 "($input: RegisterAwsFeatureArtifactsInput!)",
                 "RegisterAwsFeatureArtifactsReply",
-                Mutation.RegisterAwsFeatureArtifacts_ObjectFieldSpec,
+                Mutation.RegisterAwsFeatureArtifacts,
                 Mutation.RegisterAwsFeatureArtifactsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3772,7 +3786,7 @@ $query.Var.input = @{
                 "MutationStartAwsExocomputeDisableJob",
                 "($input: StartAwsExocomputeDisableJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartAwsExocomputeDisableJob_ObjectFieldSpec,
+                Mutation.StartAwsExocomputeDisableJob,
                 Mutation.StartAwsExocomputeDisableJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3795,7 +3809,7 @@ $query.Var.input = @{
                 "MutationUpdateAwsAccount",
                 "($input: UpdateAwsAccountInput!)",
                 "CloudAccount",
-                Mutation.UpdateAwsAccount_ObjectFieldSpec,
+                Mutation.UpdateAwsAccount,
                 Mutation.UpdateAwsAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3826,7 +3840,7 @@ $query.Var.input = @{
                 "MutationUpdateAutomaticAwsTargetMapping",
                 "($input: UpdateAutomaticAwsTargetMappingInput!)",
                 "TargetMapping",
-                Mutation.UpdateAutomaticAwsTargetMapping_ObjectFieldSpec,
+                Mutation.UpdateAutomaticAwsTargetMapping,
                 Mutation.UpdateAutomaticAwsTargetMappingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3876,7 +3890,7 @@ $query.Var.input = @{
                 "MutationUpdateAwsCloudAccount",
                 "($input: UpdateAwsCloudAccountInput!)",
                 "System.String",
-                Mutation.UpdateAwsCloudAccount_ObjectFieldSpec,
+                Mutation.UpdateAwsCloudAccount,
                 Mutation.UpdateAwsCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3901,7 +3915,7 @@ $query.Var.input = @{
                 "MutationUpdateAwsCloudAccountFeature",
                 "($input: UpdateAwsCloudAccountFeatureInput!)",
                 "UpdateAwsCloudAccountFeatureReply",
-                Mutation.UpdateAwsCloudAccountFeature_ObjectFieldSpec,
+                Mutation.UpdateAwsCloudAccountFeature,
                 Mutation.UpdateAwsCloudAccountFeatureFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3938,7 +3952,7 @@ $query.Var.input = @{
                 "MutationUpdateCloudNativeAwsStorageSetting",
                 "($input: UpdateCloudNativeAwsStorageSettingInput!)",
                 "UpdateCloudNativeAwsStorageSettingReply",
-                Mutation.UpdateCloudNativeAwsStorageSetting_ObjectFieldSpec,
+                Mutation.UpdateCloudNativeAwsStorageSetting,
                 Mutation.UpdateCloudNativeAwsStorageSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3967,7 +3981,7 @@ $query.Var.input = @{
                 "MutationUpdateAwsComputeSetting",
                 "($input: UpdateAwsComputeSettingInput!)",
                 "AwsComputeSettings",
-                Mutation.UpdateAwsComputeSetting_ObjectFieldSpec,
+                Mutation.UpdateAwsComputeSetting,
                 Mutation.UpdateAwsComputeSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3998,7 +4012,7 @@ $query.Var.input = @{
                 "MutationUpdateAwsExocomputeConfigs",
                 "($input: UpdateAwsExocomputeConfigsInput!)",
                 "UpdateAwsExocomputeConfigsReply",
-                Mutation.UpdateAwsExocomputeConfigs_ObjectFieldSpec,
+                Mutation.UpdateAwsExocomputeConfigs,
                 Mutation.UpdateAwsExocomputeConfigsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4049,7 +4063,7 @@ $query.Var.input = @{
                 "MutationUpdateAwsTarget",
                 "($input: UpdateAwsTargetInput!)",
                 "Target",
-                Mutation.UpdateAwsTarget_ObjectFieldSpec,
+                Mutation.UpdateAwsTarget,
                 Mutation.UpdateAwsTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4145,7 +4159,7 @@ $query.Var.input = @{
                 "MutationUpgradeAwsCloudAccountFeaturesWithoutCft",
                 "($input: UpgradeAwsCloudAccountFeaturesWithoutCftInput!)",
                 "System.Boolean",
-                Mutation.UpgradeAwsCloudAccountFeaturesWithoutCft_ObjectFieldSpec,
+                Mutation.UpgradeAwsCloudAccountFeaturesWithoutCft,
                 Mutation.UpgradeAwsCloudAccountFeaturesWithoutCftFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4172,7 +4186,7 @@ $query.Var.input = @{
                 "MutationUpgradeAwsIamUserBasedCloudAccountPermissions",
                 "($input: UpgradeAwsIamUserBasedCloudAccountPermissionsInput!)",
                 "System.Boolean",
-                Mutation.UpgradeAwsIamUserBasedCloudAccountPermissions_ObjectFieldSpec,
+                Mutation.UpgradeAwsIamUserBasedCloudAccountPermissions,
                 Mutation.UpgradeAwsIamUserBasedCloudAccountPermissionsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4199,7 +4213,7 @@ $query.Var.input = @{
                 "MutationValidateAndCreateAwsCloudAccount",
                 "($input: ValidateAndCreateAwsCloudAccountInput!)",
                 "ValidateAndCreateAwsCloudAccountReply",
-                Mutation.ValidateAndCreateAwsCloudAccount_ObjectFieldSpec,
+                Mutation.ValidateAndCreateAwsCloudAccount,
                 Mutation.ValidateAndCreateAwsCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -4222,6 +4236,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		orgName = $someString
 		# OPTIONAL
+		outpostAwsNativeId = $someString
+		# OPTIONAL
 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 	}
 	# REQUIRED
@@ -4237,6 +4253,8 @@ $query.Var.input = @{
 			seamlessFlowEnabled = $someBoolean
 			# OPTIONAL
 			orgName = $someString
+			# OPTIONAL
+			outpostAwsNativeId = $someString
 			# OPTIONAL
 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 		}
@@ -4280,6 +4298,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		awsIamRoleName = $someString
 	}
+	# OPTIONAL
+	outpostAwsNativeId = $someString
 }"
             );
         }
@@ -4297,7 +4317,7 @@ $query.Var.input = @{
                 "MutationValidateAndInitiateAwsOutpostAccount",
                 "($input: ValidateAndInitiateAwsOutpostAccountInput!)",
                 "ValidateAndInitiateAwsOutpostAccountReply",
-                Mutation.ValidateAndInitiateAwsOutpostAccount_ObjectFieldSpec,
+                Mutation.ValidateAndInitiateAwsOutpostAccount,
                 Mutation.ValidateAndInitiateAwsOutpostAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

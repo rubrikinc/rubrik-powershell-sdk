@@ -236,7 +236,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QuerySmbConfiguration",
                 "($input: GetSmbConfigurationInput!)",
                 "GetSmbConfigurationReply",
-                Query.SmbConfiguration_ObjectFieldSpec,
+                Query.SmbConfiguration,
                 Query.SmbConfigurationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -267,7 +267,7 @@ $query.Var.input = @{
                 "QuerySmbDomains",
                 "($first: Int,$after: String,$filters: [SmbDomainFilterInput!],$sortBy: SmbDomainSortByInput)",
                 "SmbDomainConnection",
-                Query.SmbDomains_ObjectFieldSpec,
+                Query.SmbDomains,
                 Query.SmbDomainsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

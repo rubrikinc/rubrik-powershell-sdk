@@ -30,7 +30,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             return false;
         }
 
-        private static Type GetNullableUnderlyingType(PropertyInfo propertyInfo)
+        private static System.Type GetNullableUnderlyingType(PropertyInfo propertyInfo)
         {
             if (propertyInfo.PropertyType.IsGenericType &&
                 propertyInfo.PropertyType.GetGenericTypeDefinition() ==
@@ -52,8 +52,8 @@ namespace RubrikSecurityCloud.PowerShell.Private
                bool interfaces = false)
         {
             List<RscTypeSummary> types = new List<RscTypeSummary>();
-            Type baseType = typeof(BaseType);
-            Type fieldSpecInterface = typeof(IFieldSpec);
+            System.Type baseType = typeof(BaseType);
+            System.Type fieldSpecInterface = typeof(IFieldSpec);
             var assembly = Assembly.Load("RubrikSecurityCloud.Schema");
             if (assembly == null)
             {
@@ -89,7 +89,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
         /// <summary>
         /// Get an RSC schema type by name.
         /// </summary>
-        public static Type GetTypeByName(string name)
+        public static System.Type GetTypeByName(string name)
         {
             var assembly = Assembly.Load("RubrikSecurityCloud.Schema");
 
@@ -116,7 +116,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             string inputTypeName,
             Hashtable providedInputFields
         ){
-            Type inputType = GetTypeByName(inputTypeName);
+            System.Type inputType = GetTypeByName(inputTypeName);
 
             if (inputType == null) {
                 throw new Exception(
@@ -205,7 +205,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             string[] requestedProperties)
         {
 
-            Type returnType = GetTypeByName(objectClassName);
+            System.Type returnType = GetTypeByName(objectClassName);
 
             if (returnType != null)
             {
@@ -246,7 +246,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         if (currentProperty.PropertyType.IsGenericType &&
                             currentProperty.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
                         {
-                            Type genericArgumentType = currentProperty.PropertyType
+                            System.Type genericArgumentType = currentProperty.PropertyType
                                 .GetGenericArguments()[0];
 
                             if (currentObject.GetType()
@@ -257,7 +257,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             {
                                 // Reassign genericArgumentType to currentPropertyType
                                 // to make the code easier to read later on.
-                                Type currentPropertyType = genericArgumentType;
+                                System.Type currentPropertyType = genericArgumentType;
 
                                 // If the LIST is of an INTERFACE type,
                                 // instantiate a list of all types that implement

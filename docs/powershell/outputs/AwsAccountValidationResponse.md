@@ -13,3 +13,5 @@ Validate given aws accounts.
   - AWS account cloud type.
 - orgName: System.String
   - The AWS organization name with which you onboarded the AWS account.
+- outpostAwsNativeId: System.String
+  - Native ID of the AWS Outpost account.

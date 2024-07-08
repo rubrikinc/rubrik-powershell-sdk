@@ -61,6 +61,7 @@ User audit object type.
 - Mssql - MSSQL type.
 - AZURE_AD_DIRECTORY - Azure AD Directory type.
 - VmwareVm - VMware virtual machine type.
+- NAS_SYSTEM - NAS system type.
 - JobInstance - Job instance type.
 - SlaDomain - SLA Domain type.
 - AwsEventType - AWS event type.

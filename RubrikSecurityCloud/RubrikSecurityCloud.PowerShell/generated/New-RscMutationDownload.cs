@@ -1541,7 +1541,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationDownloadActiveDirectorySnapshotFromLocation",
                 "($input: DownloadActiveDirectorySnapshotFromLocationInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadActiveDirectorySnapshotFromLocation_ObjectFieldSpec,
+                Mutation.DownloadActiveDirectorySnapshotFromLocation,
                 Mutation.DownloadActiveDirectorySnapshotFromLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1571,7 +1571,7 @@ $query.Var.input = @{
                 "MutationDownloadAuditLogCsvAsync",
                 "($input: DownloadAuditLogCsvAsyncInput!)",
                 "AsyncDownloadReply",
-                Mutation.DownloadAuditLogCsvAsync_ObjectFieldSpec,
+                Mutation.DownloadAuditLogCsvAsync,
                 Mutation.DownloadAuditLogCsvAsyncFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1724,7 +1724,7 @@ $query.Var.input = @{
                 "MutationDownloadExchangeSnapshot",
                 "($input: DownloadExchangeSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadExchangeSnapshot_ObjectFieldSpec,
+                Mutation.DownloadExchangeSnapshot,
                 Mutation.DownloadExchangeSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1751,7 +1751,7 @@ $query.Var.input = @{
                 "MutationDownloadFilesetSnapshot",
                 "($input: DownloadFilesetSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadFilesetSnapshot_ObjectFieldSpec,
+                Mutation.DownloadFilesetSnapshot,
                 Mutation.DownloadFilesetSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1774,7 +1774,7 @@ $query.Var.input = @{
                 "MutationDownloadFilesetSnapshotFromLocation",
                 "($input: DownloadFilesetSnapshotFromLocationInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadFilesetSnapshotFromLocation_ObjectFieldSpec,
+                Mutation.DownloadFilesetSnapshotFromLocation,
                 Mutation.DownloadFilesetSnapshotFromLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1804,7 +1804,7 @@ $query.Var.input = @{
                 "MutationDownloadObjectFilesCsv",
                 "($input: DownloadObjectFilesCsvInput!)",
                 "DownloadCsvReply",
-                Mutation.DownloadObjectFilesCsv_ObjectFieldSpec,
+                Mutation.DownloadObjectFilesCsv,
                 Mutation.DownloadObjectFilesCsvFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1882,7 +1882,7 @@ $query.Var.input = @{
                 "MutationDownloadObjectsListCsv",
                 "($input: DownloadObjectsListCsvInput!)",
                 "DownloadCsvReply",
-                Mutation.DownloadObjectsListCsv_ObjectFieldSpec,
+                Mutation.DownloadObjectsListCsv,
                 Mutation.DownloadObjectsListCsvFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1907,7 +1907,7 @@ $query.Var.input = @{
                 "MutationDownloadReportCsvAsync",
                 "($input: DownloadReportCsvAsyncInput!)",
                 "AsyncDownloadReply",
-                Mutation.DownloadReportCsvAsync_ObjectFieldSpec,
+                Mutation.DownloadReportCsvAsync,
                 Mutation.DownloadReportCsvAsyncFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2107,7 +2107,7 @@ $query.Var.input = @{
                 "MutationDownloadReportPdfAsync",
                 "($input: DownloadReportPdfAsyncInput!)",
                 "AsyncDownloadReply",
-                Mutation.DownloadReportPdfAsync_ObjectFieldSpec,
+                Mutation.DownloadReportPdfAsync,
                 Mutation.DownloadReportPdfAsyncFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2308,7 +2308,7 @@ $query.Var.input = @{
                 "MutationDownloadResultsCsv",
                 "($crawlId: String!,$downloadFilter: DownloadResultsCsvFiltersInput)",
                 "DownloadResultsCsvReply",
-                Mutation.DownloadResultsCsv_ObjectFieldSpec,
+                Mutation.DownloadResultsCsv,
                 Mutation.DownloadResultsCsvFieldSpec,
                 @"# REQUIRED
 $query.Var.crawlId = $someString
@@ -2361,7 +2361,7 @@ $query.Var.downloadFilter = @{
                 "MutationDownloadSapHanaSnapshot",
                 "($input: DownloadSapHanaSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadSapHanaSnapshot_ObjectFieldSpec,
+                Mutation.DownloadSapHanaSnapshot,
                 Mutation.DownloadSapHanaSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2386,7 +2386,7 @@ $query.Var.input = @{
                 "MutationDownloadSapHanaSnapshotFromLocation",
                 "($input: DownloadSapHanaSnapshotFromLocationInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadSapHanaSnapshotFromLocation_ObjectFieldSpec,
+                Mutation.DownloadSapHanaSnapshotFromLocation,
                 Mutation.DownloadSapHanaSnapshotFromLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2416,7 +2416,7 @@ $query.Var.input = @{
                 "MutationDownloadSapHanaSnapshotsForPointInTimeRecovery",
                 "($input: DownloadSapHanaSnapshotsForPointInTimeRecoveryInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadSapHanaSnapshotsForPointInTimeRecovery_ObjectFieldSpec,
+                Mutation.DownloadSapHanaSnapshotsForPointInTimeRecovery,
                 Mutation.DownloadSapHanaSnapshotsForPointInTimeRecoveryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2448,7 +2448,7 @@ $query.Var.input = @{
                 "MutationDownloadSnapshotResultsCsv",
                 "($snappableFid: String!,$snapshotFid: String!,$downloadFilter: DownloadResultsCsvFiltersInput)",
                 "DownloadCsvReply",
-                Mutation.DownloadSnapshotResultsCsv_ObjectFieldSpec,
+                Mutation.DownloadSnapshotResultsCsv,
                 Mutation.DownloadSnapshotResultsCsvFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString
@@ -2503,7 +2503,7 @@ $query.Var.downloadFilter = @{
                 "MutationDownloadThreatHuntCsv",
                 "($input: DownloadThreatHuntCsvInput!)",
                 "DownloadThreatHuntCsvReply",
-                Mutation.DownloadThreatHuntCsv_ObjectFieldSpec,
+                Mutation.DownloadThreatHuntCsv,
                 Mutation.DownloadThreatHuntCsvFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2526,7 +2526,7 @@ $query.Var.input = @{
                 "MutationDownloadVolumeGroupSnapshotFiles",
                 "($input: DownloadVolumeGroupSnapshotFilesInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadVolumeGroupSnapshotFiles_ObjectFieldSpec,
+                Mutation.DownloadVolumeGroupSnapshotFiles,
                 Mutation.DownloadVolumeGroupSnapshotFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2567,7 +2567,7 @@ $query.Var.input = @{
                 "MutationDownloadVolumeGroupSnapshotFromLocation",
                 "($input: DownloadVolumeGroupSnapshotFromLocationInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadVolumeGroupSnapshotFromLocation_ObjectFieldSpec,
+                Mutation.DownloadVolumeGroupSnapshotFromLocation,
                 Mutation.DownloadVolumeGroupSnapshotFromLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

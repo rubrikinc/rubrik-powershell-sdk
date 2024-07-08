@@ -1115,7 +1115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddClusterNodes",
                 "($AddClusterNodesInput: AddClusterNodesInput!)",
                 "AddClusterNodesReply",
-                Mutation.AddClusterNodes_ObjectFieldSpec,
+                Mutation.AddClusterNodes,
                 Mutation.AddClusterNodesFieldSpec,
                 @"# REQUIRED
 $query.Var.AddClusterNodesInput = @{
@@ -1201,7 +1201,7 @@ $query.Var.AddClusterNodesInput = @{
                 "MutationAddNodesToCloudCluster",
                 "($input: AddNodesToCloudClusterInput!)",
                 "CcProvisionJobReply",
-                Mutation.AddNodesToCloudCluster_ObjectFieldSpec,
+                Mutation.AddNodesToCloudCluster,
                 Mutation.AddNodesToCloudClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1236,7 +1236,7 @@ $query.Var.input = @{
                 "MutationGenerateClusterRegistrationToken",
                 "($input: GenerateClusterRegistrationTokenInput)",
                 "ClusterRegistrationToken",
-                Mutation.GenerateClusterRegistrationToken_ObjectFieldSpec,
+                Mutation.GenerateClusterRegistrationToken,
                 Mutation.GenerateClusterRegistrationTokenFieldSpec,
                 @"# OPTIONAL
 $query.Var.input = @{
@@ -1284,7 +1284,7 @@ $query.Var.input = @{
                 "MutationRecoverCloudCluster",
                 "($input: RecoverCloudClusterInput!)",
                 "CcProvisionJobReply",
-                Mutation.RecoverCloudCluster_ObjectFieldSpec,
+                Mutation.RecoverCloudCluster,
                 Mutation.RecoverCloudClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1394,7 +1394,7 @@ $query.Var.input = @{
                 "MutationRegisterCloudCluster",
                 "($input: RegisterCloudClusterInput!)",
                 "RegisterCloudClusterReply",
-                Mutation.RegisterCloudCluster_ObjectFieldSpec,
+                Mutation.RegisterCloudCluster,
                 Mutation.RegisterCloudClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1417,7 +1417,7 @@ $query.Var.input = @{
                 "MutationReleasePersistentExoclusters",
                 "($input: ReleasePersistentExoclustersInput!)",
                 "System.String",
-                Mutation.ReleasePersistentExoclusters_ObjectFieldSpec,
+                Mutation.ReleasePersistentExoclusters,
                 Mutation.ReleasePersistentExoclustersFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1444,7 +1444,7 @@ $query.Var.input = @{
                 "MutationRemoveCdmCluster",
                 "($clusterUUID: UUID!,$isForce: Boolean!,$expireInDays: Long)",
                 "System.Boolean",
-                Mutation.RemoveCdmCluster_ObjectFieldSpec,
+                Mutation.RemoveCdmCluster,
                 Mutation.RemoveCdmClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUUID = $someString
@@ -1468,7 +1468,7 @@ $query.Var.expireInDays = $someInt64"
                 "MutationRemoveClusterNodes",
                 "($input: RemoveClusterNodesInput!)",
                 "CcProvisionJobReply",
-                Mutation.RemoveClusterNodes_ObjectFieldSpec,
+                Mutation.RemoveClusterNodes,
                 Mutation.RemoveClusterNodesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1512,7 +1512,7 @@ $query.Var.input = @{
                 "MutationRequestPersistentExocluster",
                 "($input: RequestPersistentExoclusterInput!)",
                 "RequestPersistentExoclusterReply",
-                Mutation.RequestPersistentExocluster_ObjectFieldSpec,
+                Mutation.RequestPersistentExocluster,
                 Mutation.RequestPersistentExoclusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1549,7 +1549,7 @@ $query.Var.input = @{
                 "MutationSetMissingClusterStatus",
                 "($input: SetMissingClusterStatusInput!)",
                 "SetMissingClusterStatusReply",
-                Mutation.SetMissingClusterStatus_ObjectFieldSpec,
+                Mutation.SetMissingClusterStatus,
                 Mutation.SetMissingClusterStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1576,7 +1576,7 @@ $query.Var.input = @{
                 "MutationUpdateClusterDefaultAddress",
                 "($input: UpdateClusterDefaultAddressInput!)",
                 "UpdateClusterDefaultAddressReply",
-                Mutation.UpdateClusterDefaultAddress_ObjectFieldSpec,
+                Mutation.UpdateClusterDefaultAddress,
                 Mutation.UpdateClusterDefaultAddressFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1604,7 +1604,7 @@ $query.Var.input = @{
                 "MutationUpdateClusterLocation",
                 "($clusterUuid: UUID!,$clusterLocation: ClusterLocationEdit!)",
                 "Cluster",
-                Mutation.UpdateClusterLocation_ObjectFieldSpec,
+                Mutation.UpdateClusterLocation,
                 Mutation.UpdateClusterLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString
@@ -1633,7 +1633,7 @@ $query.Var.clusterLocation = @{
                 "MutationUpdateClusterNtpServers",
                 "($input: UpdateClusterNtpServersInput!)",
                 "ResponseSuccess",
-                Mutation.UpdateClusterNtpServers_ObjectFieldSpec,
+                Mutation.UpdateClusterNtpServers,
                 Mutation.UpdateClusterNtpServersFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1672,7 +1672,7 @@ $query.Var.input = @{
                 "MutationUpdateClusterPauseStatus",
                 "($input: UpdateClusterPauseStatusInput!)",
                 "UpdateClusterPauseStatusReply",
-                Mutation.UpdateClusterPauseStatus_ObjectFieldSpec,
+                Mutation.UpdateClusterPauseStatus,
                 Mutation.UpdateClusterPauseStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1699,7 +1699,7 @@ $query.Var.input = @{
                 "MutationUpdateClusterSettings",
                 "($input: UpdateClusterSettingsInput!)",
                 "UpdateClusterSettingsReply",
-                Mutation.UpdateClusterSettings_ObjectFieldSpec,
+                Mutation.UpdateClusterSettings,
                 Mutation.UpdateClusterSettingsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1741,7 +1741,7 @@ $query.Var.input = @{
                 "MutationUpdatePreviewerClusterConfig",
                 "($previewerClusterConfig: PreviewerClusterConfigInput!)",
                 "Cluster",
-                Mutation.UpdatePreviewerClusterConfig_ObjectFieldSpec,
+                Mutation.UpdatePreviewerClusterConfig,
                 Mutation.UpdatePreviewerClusterConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.previewerClusterConfig = @{

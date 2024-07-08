@@ -246,7 +246,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationSetupAzureO365Exocompute",
                 "($tenantId: String!,$subscriptionId: UUID!,$exocomputeConfig: AzureO365ExocomputeConfig!)",
                 "SetupAzureO365ExocomputeResp",
-                Mutation.SetupAzureO365Exocompute_ObjectFieldSpec,
+                Mutation.SetupAzureO365Exocompute,
                 Mutation.SetupAzureO365ExocomputeFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString

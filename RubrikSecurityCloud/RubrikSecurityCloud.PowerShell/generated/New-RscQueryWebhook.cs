@@ -172,7 +172,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAllWebhooks",
                 "($name: String)",
                 "WebhookConnection",
-                Query.AllWebhooks_ObjectFieldSpec,
+                Query.AllWebhooks,
                 Query.AllWebhooksFieldSpec,
                 @"# OPTIONAL
 $query.Var.name = $someString"

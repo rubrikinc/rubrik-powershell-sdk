@@ -427,7 +427,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryCloudAccount",
                 "($cloudAccountId: UUID!)",
                 "CloudAccount",
-                Query.CloudAccount_ObjectFieldSpec,
+                Query.CloudAccount,
                 Query.CloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString"
@@ -455,7 +455,7 @@ $query.Var.cloudAccountId = $someString"
                 "QueryAllCloudAccounts",
                 "($sortBy: CloudAccountSortByFieldEnum,$sortOrder: SortOrder,$filter: [CloudAccountFilterInput!],$features: [CloudAccountFeature!])",
                 "List<CloudAccount>",
-                Query.AllCloudAccounts_ObjectFieldSpec,
+                Query.AllCloudAccounts,
                 Query.AllCloudAccountsFieldSpec,
                 @"# OPTIONAL
 $query.Var.sortBy = $someCloudAccountSortByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountSortByFieldEnum]) for enum values.
@@ -491,7 +491,7 @@ $query.Var.features = @(
                 "QueryAllCurrentFeaturePermissionsForCloudAccounts",
                 "($cloudVendor: CloudVendor!,$cloudAccountIds: [UUID!]!)",
                 "List<CloudAccountFeaturePermission>",
-                Query.AllCurrentFeaturePermissionsForCloudAccounts_ObjectFieldSpec,
+                Query.AllCurrentFeaturePermissionsForCloudAccounts,
                 Query.AllCurrentFeaturePermissionsForCloudAccountsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
@@ -516,7 +516,7 @@ $query.Var.cloudAccountIds = @(
                 "QueryAllCloudAccountExocomputeMappings",
                 "($cloudVendor: CloudVendor!,$exocomputeAccountIdsFilter: [UUID!]!)",
                 "List<CloudAccountsExocomputeAccountMapping>",
-                Query.AllCloudAccountExocomputeMappings_ObjectFieldSpec,
+                Query.AllCloudAccountExocomputeMappings,
                 Query.AllCloudAccountExocomputeMappingsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
@@ -548,7 +548,7 @@ $query.Var.exocomputeAccountIdsFilter = @(
                 "QueryAllLatestFeaturePermissionsForCloudAccounts",
                 "($cloudVendor: CloudVendor!,$cloudAccountIds: [UUID!]!,$features: [CloudAccountFeature!]!,$featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!]!)",
                 "List<CloudAccountFeaturePermission>",
-                Query.AllLatestFeaturePermissionsForCloudAccounts_ObjectFieldSpec,
+                Query.AllLatestFeaturePermissionsForCloudAccounts,
                 Query.AllLatestFeaturePermissionsForCloudAccountsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
@@ -589,7 +589,7 @@ $query.Var.featuresWithPermissionsGroups = @(
                 "QueryAllAccountsWithExocomputeMappings",
                 "($cloudVendor: CloudVendor!,$features: [CloudAccountFeature!]!,$exocomputeAccountIdsFilter: [UUID!]!)",
                 "List<CloudAccountWithExocomputeMapping>",
-                Query.AllAccountsWithExocomputeMappings_ObjectFieldSpec,
+                Query.AllAccountsWithExocomputeMappings,
                 Query.AllAccountsWithExocomputeMappingsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.

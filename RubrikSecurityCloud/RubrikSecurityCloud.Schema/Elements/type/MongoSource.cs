@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("discoveryStatus")]
         public MongoDiscoveryStatus? DiscoveryStatus { get; set; }
 
+        //      C# -> MongoManagementType? ManagementType
+        // GraphQL -> managementType: MongoManagementType! (enum)
+        [JsonProperty("managementType")]
+        public MongoManagementType? ManagementType { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -290,6 +295,7 @@ namespace RubrikSecurityCloud.Types
     public MongoSource Set(
         List<Operation>? AuthorizedOperations = null,
         MongoDiscoveryStatus? DiscoveryStatus = null,
+        MongoManagementType? ManagementType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         MongoSourceType? SourceType = null,
@@ -337,6 +343,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DiscoveryStatus != null ) {
             this.DiscoveryStatus = DiscoveryStatus;
+        }
+        if ( ManagementType != null ) {
+            this.ManagementType = ManagementType;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -488,6 +497,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "discoveryStatus\n" ;
             } else {
                 s += ind + "discoveryStatus\n" ;
+            }
+        }
+        //      C# -> MongoManagementType? ManagementType
+        // GraphQL -> managementType: MongoManagementType! (enum)
+        if (this.ManagementType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "managementType\n" ;
+            } else {
+                s += ind + "managementType\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -964,6 +982,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DiscoveryStatus != null && ec.Excludes("discoveryStatus",true))
         {
             this.DiscoveryStatus = null;
+        }
+        //      C# -> MongoManagementType? ManagementType
+        // GraphQL -> managementType: MongoManagementType! (enum)
+        if (ec.Includes("managementType",true))
+        {
+            if(this.ManagementType == null) {
+
+                this.ManagementType = new MongoManagementType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ManagementType != null && ec.Excludes("managementType",true))
+        {
+            this.ManagementType = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)

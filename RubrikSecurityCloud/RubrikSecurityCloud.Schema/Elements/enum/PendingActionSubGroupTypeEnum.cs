@@ -129,6 +129,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SECURITY_SETTING_EDIT_KMIP_SERVER")]
         SECURITY_SETTING_EDIT_KMIP_SERVER,
 
+        [EnumMember(Value = "SECURITY_SETTING_EDIT_KMS_KEY_VAULT")]
+        SECURITY_SETTING_EDIT_KMS_KEY_VAULT,
+
         [EnumMember(Value = "SERVICE_ACCOUNT_DELETE")]
         SERVICE_ACCOUNT_DELETE,
 

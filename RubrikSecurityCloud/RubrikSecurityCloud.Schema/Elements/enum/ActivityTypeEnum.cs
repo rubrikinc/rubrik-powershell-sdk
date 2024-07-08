@@ -174,6 +174,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "Tpr")]
         TPR,
 
+        [EnumMember(Value = "USER_INTELLIGENCE")]
+        USER_INTELLIGENCE,
+
         [EnumMember(Value = "UnknownEventType")]
         UNKNOWN_EVENT_TYPE,
 

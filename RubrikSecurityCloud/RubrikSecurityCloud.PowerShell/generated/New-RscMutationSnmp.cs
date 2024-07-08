@@ -526,7 +526,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationUpdateSnmpConfig",
                 "($input: UpdateSnmpConfigInput!)",
                 "UpdateSnmpConfigReply",
-                Mutation.UpdateSnmpConfig_ObjectFieldSpec,
+                Mutation.UpdateSnmpConfig,
                 Mutation.UpdateSnmpConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

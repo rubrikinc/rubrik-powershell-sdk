@@ -414,7 +414,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryOrgSecurityPolicy",
                 "",
                 "OrgSecurityPolicy",
-                Query.OrgSecurityPolicy_ObjectFieldSpec,
+                Query.OrgSecurityPolicy,
                 Query.OrgSecurityPolicyFieldSpec,
                 @""
             );
@@ -432,7 +432,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryPasswordComplexityPolicy",
                 "",
                 "PasswordComplexityPolicy",
-                Query.PasswordComplexityPolicy_ObjectFieldSpec,
+                Query.PasswordComplexityPolicy,
                 Query.PasswordComplexityPolicyFieldSpec,
                 @""
             );
@@ -452,7 +452,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryPolicies",
                 "($policyObjectFilter: PolicyObjectFilter,$excludeHierarchyObjectList: Boolean)",
                 "ClassificationPolicyDetailConnection",
-                Query.Policies_ObjectFieldSpec,
+                Query.Policies,
                 Query.PoliciesFieldSpec,
                 @"# OPTIONAL
 $query.Var.policyObjectFilter = $somePolicyObjectFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyObjectFilter]) for enum values.
@@ -500,7 +500,7 @@ $query.Var.excludeHierarchyObjectList = $someBoolean"
                 "QueryPolicy",
                 "($policyId: String!,$workloadTypes: [DataGovObjectType!],$sortBy: PolicyDetailsSortBy,$sortOrder: SortOrder,$clusterIdsFilter: [String!],$replicationFilter: [String!],$searchObjectName: String,$hierarchyAncestorIdFilter: String,$policyAssignmentType: PolicyAssignmentType,$first: Int,$after: String,$last: Int,$before: String)",
                 "ClassificationPolicyDetail",
-                Query.Policy_ObjectFieldSpec,
+                Query.Policy,
                 Query.PolicyFieldSpec,
                 @"# REQUIRED
 $query.Var.policyId = $someString
@@ -550,7 +550,7 @@ $query.Var.before = $someString"
                 "QueryPolicyObjectUsages",
                 "($objectIds: [String!]!)",
                 "PolicyObjectUsageConnection",
-                Query.PolicyObjectUsages_ObjectFieldSpec,
+                Query.PolicyObjectUsages,
                 Query.PolicyObjectUsagesFieldSpec,
                 @"# REQUIRED
 $query.Var.objectIds = @(
@@ -574,7 +574,7 @@ $query.Var.objectIds = @(
                 "QueryAllTopRiskPolicySummaries",
                 "($getWhitelistedResults: Boolean!,$limit: Int!,$workloadTypes: [DataGovObjectType!]!)",
                 "List<PolicySummary>",
-                Query.AllTopRiskPolicySummaries_ObjectFieldSpec,
+                Query.AllTopRiskPolicySummaries,
                 Query.AllTopRiskPolicySummariesFieldSpec,
                 @"# REQUIRED
 $query.Var.getWhitelistedResults = $someBoolean

@@ -502,9 +502,6 @@ Get available versions on support portal for a cluster.
 ### getkorgtaskchainstatus
 - There is a single argument of type System.String.
 - Returns GetTaskchainStatusReply.
-### getpermissions
-- There is a single argument of type System.String.
-- Returns list of Permissions.
 ### getrolesbyids
 - There is a single argument of type list of System.Strings.
 - Returns list of Roles.
@@ -766,6 +763,11 @@ The ID of the Rubrik cluster node to replace.
 
 - There is a single argument of type NodeToReplaceInput.
 - Returns NodeToReplaceReply.
+### nodetunnelstatuses
+List of node tunnel status.
+
+- There is a single argument of type GetNodesInput.
+- Returns NodeTunnelStatusConnection.
 ### nosqlstoragelocations
 List of Mosaic Storage Locations used for NoSQL backups
 
@@ -901,7 +903,7 @@ Returns details for one policy object.
 ### policyobjs
 Returns status for all objects at a specified timestamp.
 
-- There are 21 arguments.
+- There are 30 arguments.
     - day - System.String: Day in the format (YYYY-MM-DD).
     - timezone - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
@@ -919,6 +921,15 @@ Returns status for all objects at a specified timestamp.
     - includeInsightsMarker - System.Boolean: Specifies whether to include the insights marker.
     - userAccessObjectsFilter - System.Boolean: Filter objects with user access enabled.
     - objectIdsFilter - list of System.Strings: Object IDs to filter.
+    - platformFilter - list of Platforms: Platform to filter.
+    - platformCategoryFilter - list of PlatformCategorys: Platform category to filter.
+    - cloudAccountIdsFilter - list of System.Strings: Cloud account IDs to filter.
+    - resourceGroupsFilter - list of System.Strings: Resource groups to filter.
+    - regionsFilter - list of System.Strings: Regions to filter.
+    - dataTypeIdsFilter - list of System.Strings: Data Type IDs to filter.
+    - firstSeenTimeRange - UserTimeRangeInput: First seen time range specified in the local timezone of the user.
+    - lastAccessTimeRange - UserTimeRangeInput: Last access time range specified in the local timezone of the user.
+    - creationTimeRange - UserTimeRangeInput: Creation time range specified in the local timezone of the user.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -1082,7 +1093,7 @@ Get TOTP configuration status for a user.
 - There is a single argument of type System.String.
 - Returns GetTotpStatusReply.
 ### tprstatusfornoderemoval
-Check and update TPR request for node removal.
+Check and update TPR request for node removal or replacement.
 
 - There is a single argument of type TprStatusForNodeRemovalInput.
 - Returns TprStatusForNodeRemoval.

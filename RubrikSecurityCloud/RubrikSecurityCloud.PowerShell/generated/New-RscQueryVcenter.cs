@@ -694,7 +694,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryVcenterAdvancedTagPreview",
                 "($input: PreviewFilterInput!)",
                 "VcenterAdvancedTagPreviewReply",
-                Query.VcenterAdvancedTagPreview_ObjectFieldSpec,
+                Query.VcenterAdvancedTagPreview,
                 Query.VcenterAdvancedTagPreviewFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -723,7 +723,7 @@ $query.Var.input = @{
                 "QueryVcenterAsyncRequestStatus",
                 "($input: VcenterAsyncRequestStatusInput!)",
                 "AsyncRequestStatus",
-                Query.VcenterAsyncRequestStatus_ObjectFieldSpec,
+                Query.VcenterAsyncRequestStatus,
                 Query.VcenterAsyncRequestStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -748,7 +748,7 @@ $query.Var.input = @{
                 "QueryVcenterHotAddBandwidth",
                 "($input: GetHotAddBandwidthInput!)",
                 "HotAddBandwidthInfo",
-                Query.VcenterHotAddBandwidth_ObjectFieldSpec,
+                Query.VcenterHotAddBandwidth,
                 Query.VcenterHotAddBandwidthFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -771,7 +771,7 @@ $query.Var.input = @{
                 "QueryVcenterHotAddNetwork",
                 "($input: GetHotAddNetworkInput!)",
                 "HotAddNetworkConfigWithName",
-                Query.VcenterHotAddNetwork_ObjectFieldSpec,
+                Query.VcenterHotAddNetwork,
                 Query.VcenterHotAddNetworkFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -794,7 +794,7 @@ $query.Var.input = @{
                 "QueryAllVcenterHotAddProxyVms",
                 "($clusterUuids: [UUID!]!)",
                 "List<VcenterHotAddProxyVmInfo>",
-                Query.AllVcenterHotAddProxyVms_ObjectFieldSpec,
+                Query.AllVcenterHotAddProxyVms,
                 Query.AllVcenterHotAddProxyVmsFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuids = @(
@@ -824,7 +824,7 @@ $query.Var.clusterUuids = @(
                 "QueryVcenterHotAddProxyVmsV2",
                 "($first: Int,$after: String,$filter: [VcenterProxyVmsFilterInput!],$clusterUuids: [UUID!]!)",
                 "VsphereProxyVmInfoConnection",
-                Query.VcenterHotAddProxyVmsV2_ObjectFieldSpec,
+                Query.VcenterHotAddProxyVmsV2,
                 Query.VcenterHotAddProxyVmsV2FieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -871,7 +871,7 @@ $query.Var.clusterUuids = @(
                 "QueryVsphereVcenterConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "VsphereVcenterConnection",
-                Query.VsphereVcenterConnection_ObjectFieldSpec,
+                Query.VsphereVcenterConnection,
                 Query.VsphereVcenterConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -939,7 +939,7 @@ $query.Var.filter = @(
                 "QueryVcenterNetworks",
                 "($input: GetNetworksInput!)",
                 "NetworkInfoListResponse",
-                Query.VcenterNetworks_ObjectFieldSpec,
+                Query.VcenterNetworks,
                 Query.VcenterNetworksFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -962,7 +962,7 @@ $query.Var.input = @{
                 "QueryVcenterNumProxiesNeeded",
                 "($input: GetNumProxiesNeededInput!)",
                 "System.Int32",
-                Query.VcenterNumProxiesNeeded_ObjectFieldSpec,
+                Query.VcenterNumProxiesNeeded,
                 Query.VcenterNumProxiesNeededFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -985,7 +985,7 @@ $query.Var.input = @{
                 "QueryVcenterPreAddInfo",
                 "($input: PreAddVcenterInput!)",
                 "VcenterPreAddInfo",
-                Query.VcenterPreAddInfo_ObjectFieldSpec,
+                Query.VcenterPreAddInfo,
                 Query.VcenterPreAddInfoFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1024,7 +1024,7 @@ $query.Var.input = @{
                 "QueryVsphereVcenter",
                 "($fid: UUID!)",
                 "VsphereVcenter",
-                Query.VsphereVcenter_ObjectFieldSpec,
+                Query.VsphereVcenter,
                 Query.VsphereVcenterFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"

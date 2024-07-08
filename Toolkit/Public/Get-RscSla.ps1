@@ -64,7 +64,7 @@ function Get-RscSla {
             $result
         } 
         else {
-            $query = New-RscQuery -GqlQuery slaDomains -FieldProfile $fieldProfile
+            $query = New-RscQuery -GqlQuery slaDomains
             $query.var.shouldShowProtectedObjectCount = $true
             $query.var.filter = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaFilterInput
             $query.var.filter.Field = [RubrikSecurityCloud.Types.GlobalSlaQueryFilterInputField]::NAME

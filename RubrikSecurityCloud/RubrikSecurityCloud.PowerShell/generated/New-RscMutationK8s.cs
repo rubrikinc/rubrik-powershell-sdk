@@ -110,6 +110,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		transport = $someString
     /// 		# OPTIONAL
+    /// 		isAutoPsCreationEnabled = $someBoolean
+    /// 		# OPTIONAL
     /// 		clientSecret = $someString
     /// 		# OPTIONAL
     /// 		accessToken = $someString
@@ -1098,7 +1100,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddK8sCluster",
                 "($input: AddK8sClusterInput!)",
                 "K8sClusterSummary",
-                Mutation.AddK8sCluster_ObjectFieldSpec,
+                Mutation.AddK8sCluster,
                 Mutation.AddK8sClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1120,6 +1122,8 @@ $query.Var.input = @{
 		pullSecret = $someString
 		# OPTIONAL
 		transport = $someString
+		# OPTIONAL
+		isAutoPsCreationEnabled = $someBoolean
 		# OPTIONAL
 		clientSecret = $someString
 		# OPTIONAL
@@ -1166,7 +1170,7 @@ $query.Var.input = @{
                 "MutationAddK8sProtectionSet",
                 "($input: AddK8sProtectionSetInput!)",
                 "K8sProtectionSetSummary",
-                Mutation.AddK8sProtectionSet_ObjectFieldSpec,
+                Mutation.AddK8sProtectionSet,
                 Mutation.AddK8sProtectionSetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1206,7 +1210,7 @@ $query.Var.input = @{
                 "MutationArchiveK8sCluster",
                 "($input: ArchiveK8sClusterInput!)",
                 "ArchiveK8sClusterReply",
-                Mutation.ArchiveK8sCluster_ObjectFieldSpec,
+                Mutation.ArchiveK8sCluster,
                 Mutation.ArchiveK8sClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1229,7 +1233,7 @@ $query.Var.input = @{
                 "MutationCreateK8sAgentManifest",
                 "($input: CreateK8sAgentManifestInput!)",
                 "CreateK8sAgentManifestReply",
-                Mutation.CreateK8sAgentManifest_ObjectFieldSpec,
+                Mutation.CreateK8sAgentManifest,
                 Mutation.CreateK8sAgentManifestFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1254,7 +1258,7 @@ $query.Var.input = @{
                 "MutationCreateK8sCluster",
                 "($input: CreateK8sClusterInput!)",
                 "CreateK8sClusterReply",
-                Mutation.CreateK8sCluster_ObjectFieldSpec,
+                Mutation.CreateK8sCluster,
                 Mutation.CreateK8sClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1307,7 +1311,7 @@ $query.Var.input = @{
                 "MutationCreateK8sNamespaceSnapshots",
                 "($input: CreateK8sNamespaceSnapshotsInput!)",
                 "List<CreateOnDemandJobReply>",
-                Mutation.CreateK8sNamespaceSnapshots_ObjectFieldSpec,
+                Mutation.CreateK8sNamespaceSnapshots,
                 Mutation.CreateK8sNamespaceSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1337,7 +1341,7 @@ $query.Var.input = @{
                 "MutationCreateK8sProtectionSetSnapshot",
                 "($input: CreateK8sProtectionSetSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateK8sProtectionSetSnapshot_ObjectFieldSpec,
+                Mutation.CreateK8sProtectionSetSnapshot,
                 Mutation.CreateK8sProtectionSetSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1365,7 +1369,7 @@ $query.Var.input = @{
                 "MutationDeleteK8sCluster",
                 "($input: DeleteK8sClusterInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteK8sCluster_ObjectFieldSpec,
+                Mutation.DeleteK8sCluster,
                 Mutation.DeleteK8sClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1390,7 +1394,7 @@ $query.Var.input = @{
                 "MutationDeleteK8sProtectionSet",
                 "($input: DeleteK8sProtectionSetInput!)",
                 "ResponseSuccess",
-                Mutation.DeleteK8sProtectionSet_ObjectFieldSpec,
+                Mutation.DeleteK8sProtectionSet,
                 Mutation.DeleteK8sProtectionSetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1415,7 +1419,7 @@ $query.Var.input = @{
                 "MutationExportK8sNamespace",
                 "($input: ExportK8sNamespaceInput!)",
                 "CreateOnDemandJobReply",
-                Mutation.ExportK8sNamespace_ObjectFieldSpec,
+                Mutation.ExportK8sNamespace,
                 Mutation.ExportK8sNamespaceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1458,7 +1462,7 @@ $query.Var.input = @{
                 "MutationExportK8sProtectionSetSnapshot",
                 "($input: ExportK8sProtectionSetSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.ExportK8sProtectionSetSnapshot_ObjectFieldSpec,
+                Mutation.ExportK8sProtectionSetSnapshot,
                 Mutation.ExportK8sProtectionSetSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1498,7 +1502,7 @@ $query.Var.input = @{
                 "MutationRefreshK8sCluster",
                 "($input: RefreshK8sClusterInput!)",
                 "CreateOnDemandJobReply",
-                Mutation.RefreshK8sCluster_ObjectFieldSpec,
+                Mutation.RefreshK8sCluster,
                 Mutation.RefreshK8sClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1521,7 +1525,7 @@ $query.Var.input = @{
                 "MutationRefreshK8sV2Cluster",
                 "($input: RefreshK8sV2ClusterInput!)",
                 "AsyncRequestStatus",
-                Mutation.RefreshK8sV2Cluster_ObjectFieldSpec,
+                Mutation.RefreshK8sV2Cluster,
                 Mutation.RefreshK8sV2ClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1544,7 +1548,7 @@ $query.Var.input = @{
                 "MutationRestoreK8sNamespace",
                 "($input: RestoreK8sNamespaceInput!)",
                 "CreateOnDemandJobReply",
-                Mutation.RestoreK8sNamespace_ObjectFieldSpec,
+                Mutation.RestoreK8sNamespace,
                 Mutation.RestoreK8sNamespaceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1587,7 +1591,7 @@ $query.Var.input = @{
                 "MutationRestoreK8sProtectionSetSnapshot",
                 "($input: CreateK8sRestoreJobInput!)",
                 "AsyncRequestStatus",
-                Mutation.RestoreK8sProtectionSetSnapshot_ObjectFieldSpec,
+                Mutation.RestoreK8sProtectionSetSnapshot,
                 Mutation.RestoreK8sProtectionSetSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1621,7 +1625,7 @@ $query.Var.input = @{
                 "MutationUpdateK8sCluster",
                 "($input: UpdateK8sClusterInput!)",
                 "ResponseSuccess",
-                Mutation.UpdateK8sCluster_ObjectFieldSpec,
+                Mutation.UpdateK8sCluster,
                 Mutation.UpdateK8sClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1676,7 +1680,7 @@ $query.Var.input = @{
                 "MutationUpdateK8sProtectionSet",
                 "($input: UpdateK8sProtectionSetInput!)",
                 "ResponseSuccess",
-                Mutation.UpdateK8sProtectionSet_ObjectFieldSpec,
+                Mutation.UpdateK8sProtectionSet,
                 Mutation.UpdateK8sProtectionSetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

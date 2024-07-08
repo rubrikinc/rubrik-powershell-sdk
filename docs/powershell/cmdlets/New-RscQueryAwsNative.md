@@ -117,12 +117,14 @@ Refers to the default values for the export operation of the RDS DB Instance in 
 ### rdsinstance
 Refers to AWS Relational Database Service (RDS) represented by a specific ID. For more information, see https://aws.amazon.com/rds/.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - rdsInstanceRubrikId - System.String: The Rubrik ID for the AWS RDS Instance.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AwsNativeRdsInstance.
 ### rdsinstances
 Paginated list of AWS RDS Instances on AWS Native account.
 
-- There are 7 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -130,6 +132,7 @@ Paginated list of AWS RDS Instances on AWS Native account.
     - sortBy - AwsNativeRdsInstanceSortFields: Sort fields for list of AWS RDS instances.
     - sortOrder - SortOrder: Sort order of result.
     - rdsInstanceFilters - AwsNativeRdsInstanceFilters: Filter for RDS instances.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AwsNativeRdsInstanceConnection.
 ### rdspointintimerestorewindow
 Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information,see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html.

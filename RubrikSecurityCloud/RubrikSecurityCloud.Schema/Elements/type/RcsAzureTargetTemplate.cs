@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        [JsonProperty("redundancy")]
+        public RcvRedundancy? Redundancy { get; set; }
+
         //      C# -> RcsRegionEnumType? Region
         // GraphQL -> region: RcsRegionEnumType! (enum)
         [JsonProperty("region")]
@@ -51,12 +56,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RcsAzureTargetTemplate Set(
+        RcvRedundancy? Redundancy = null,
         RcsRegionEnumType? Region = null,
         TargetType? TargetType = null,
         RcsTierEnumType? Tier = null,
         RcsImmutabilitySettings? ImmutabilitySettings = null
     ) 
     {
+        if ( Redundancy != null ) {
+            this.Redundancy = Redundancy;
+        }
         if ( Region != null ) {
             this.Region = Region;
         }
@@ -83,6 +92,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        if (this.Redundancy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "redundancy\n" ;
+            } else {
+                s += ind + "redundancy\n" ;
+            }
+        }
         //      C# -> RcsRegionEnumType? Region
         // GraphQL -> region: RcsRegionEnumType! (enum)
         if (this.Region != null) {
@@ -129,6 +147,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        if (ec.Includes("redundancy",true))
+        {
+            if(this.Redundancy == null) {
+
+                this.Redundancy = new RcvRedundancy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Redundancy != null && ec.Excludes("redundancy",true))
+        {
+            this.Redundancy = null;
+        }
         //      C# -> RcsRegionEnumType? Region
         // GraphQL -> region: RcsRegionEnumType! (enum)
         if (ec.Includes("region",true))

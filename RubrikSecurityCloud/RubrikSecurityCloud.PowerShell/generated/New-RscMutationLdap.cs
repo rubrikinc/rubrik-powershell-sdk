@@ -335,7 +335,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationDeleteLdapPrincipals",
                 "($principalIds: [String!]!)",
                 "System.Boolean",
-                Mutation.DeleteLdapPrincipals_ObjectFieldSpec,
+                Mutation.DeleteLdapPrincipals,
                 Mutation.DeleteLdapPrincipalsFieldSpec,
                 @"# REQUIRED
 $query.Var.principalIds = @(
@@ -357,7 +357,7 @@ $query.Var.principalIds = @(
                 "MutationRemoveLdapIntegration",
                 "($id: UUID!)",
                 "System.Boolean",
-                Mutation.RemoveLdapIntegration_ObjectFieldSpec,
+                Mutation.RemoveLdapIntegration,
                 Mutation.RemoveLdapIntegrationFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString"
@@ -377,7 +377,7 @@ $query.Var.id = $someString"
                 "MutationSetLdapMfaSetting",
                 "($input: SetLdapMfaSettingInput!)",
                 "System.Boolean",
-                Mutation.SetLdapMfaSetting_ObjectFieldSpec,
+                Mutation.SetLdapMfaSetting,
                 Mutation.SetLdapMfaSettingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -428,7 +428,7 @@ $query.Var.input = @{
                 "MutationUpdateLdapIntegration",
                 "($id: UUID,$name: String!,$bindUserName: String!,$bindUserPassword: String!,$baseDn: String,$trustedCerts: String,$dynamicDnsName: String,$ldapServers: [LdapServerInput!],$userSearchFilter: String,$userNameAttr: String,$groupMembershipAttr: String,$groupSearchFilter: String,$groupMemberAttr: String)",
                 "System.String",
-                Mutation.UpdateLdapIntegration_ObjectFieldSpec,
+                Mutation.UpdateLdapIntegration,
                 Mutation.UpdateLdapIntegrationFieldSpec,
                 @"# OPTIONAL
 $query.Var.id = $someString

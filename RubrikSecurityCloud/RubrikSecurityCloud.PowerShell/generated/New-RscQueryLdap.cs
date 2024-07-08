@@ -310,7 +310,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryLdapAuthorizedPrincipalConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapAuthorizedPrincipalFieldEnum,$searchText: String!,$roleIds: [UUID!])",
                 "AuthorizedPrincipalConnection",
-                Query.LdapAuthorizedPrincipalConnection_ObjectFieldSpec,
+                Query.LdapAuthorizedPrincipalConnection,
                 Query.LdapAuthorizedPrincipalConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -358,7 +358,7 @@ $query.Var.roleIds = @(
                 "QueryLdapIntegrationConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapIntegrationFieldEnum)",
                 "LdapIntegrationConnection",
-                Query.LdapIntegrationConnection_ObjectFieldSpec,
+                Query.LdapIntegrationConnection,
                 Query.LdapIntegrationConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -404,7 +404,7 @@ $query.Var.sortBy = $someLdapIntegrationFieldEnum # Call [Enum]::GetValues([Rubr
                 "QueryLdapPrincipalConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapPrincipalFieldEnum,$id: UUID!,$searchText: String!)",
                 "PrincipalConnection",
-                Query.LdapPrincipalConnection_ObjectFieldSpec,
+                Query.LdapPrincipalConnection,
                 Query.LdapPrincipalConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

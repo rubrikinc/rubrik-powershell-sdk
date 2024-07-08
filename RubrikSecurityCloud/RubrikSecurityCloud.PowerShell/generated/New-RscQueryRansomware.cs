@@ -584,7 +584,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryRansomwareDetectionWorkloadLocations",
                 "($beginTime: DateTime!,$endTime: DateTime,$returnOnlyForAnomalousEntities: Boolean!)",
                 "ListLocationsReply",
-                Query.RansomwareDetectionWorkloadLocations_ObjectFieldSpec,
+                Query.RansomwareDetectionWorkloadLocations,
                 Query.RansomwareDetectionWorkloadLocationsFieldSpec,
                 @"# REQUIRED
 $query.Var.beginTime = $someDateTime
@@ -622,7 +622,7 @@ $query.Var.returnOnlyForAnomalousEntities = $someBoolean"
                 "QueryRansomwareInvestigationAnalysisSummary",
                 "($startDay: String!,$endDay: String!,$timezone: String!,$objectTypeFilter: [String!],$clusterUuidFilter: [String!],$slaFidFilter: [String!],$hideSuspiciousDataIfNonAnomalous: Boolean)",
                 "RansomwareInvestigationAnalysisSummaryReply",
-                Query.RansomwareInvestigationAnalysisSummary_ObjectFieldSpec,
+                Query.RansomwareInvestigationAnalysisSummary,
                 Query.RansomwareInvestigationAnalysisSummaryFieldSpec,
                 @"# REQUIRED
 $query.Var.startDay = $someString
@@ -659,7 +659,7 @@ $query.Var.hideSuspiciousDataIfNonAnomalous = $someBoolean"
                 "QueryRansomwareInvestigationEnablement",
                 "",
                 "RansomwareInvestigationEnablementReply",
-                Query.RansomwareInvestigationEnablement_ObjectFieldSpec,
+                Query.RansomwareInvestigationEnablement,
                 Query.RansomwareInvestigationEnablementFieldSpec,
                 @""
             );
@@ -678,7 +678,7 @@ $query.Var.hideSuspiciousDataIfNonAnomalous = $someBoolean"
                 "QueryOverallRansomwareInvestigationSummary",
                 "($historyNumHours: Int!)",
                 "OverallRansomwareInvestigationSummary",
-                Query.OverallRansomwareInvestigationSummary_ObjectFieldSpec,
+                Query.OverallRansomwareInvestigationSummary,
                 Query.OverallRansomwareInvestigationSummaryFieldSpec,
                 @"# REQUIRED
 $query.Var.historyNumHours = $someInt"
@@ -697,7 +697,7 @@ $query.Var.historyNumHours = $someInt"
                 "QueryProcessedRansomwareInvestigationWorkloadCount",
                 "",
                 "ProcessedRansomwareInvestigationWorkloadCountReply",
-                Query.ProcessedRansomwareInvestigationWorkloadCount_ObjectFieldSpec,
+                Query.ProcessedRansomwareInvestigationWorkloadCount,
                 Query.ProcessedRansomwareInvestigationWorkloadCountFieldSpec,
                 @""
             );
@@ -718,7 +718,7 @@ $query.Var.historyNumHours = $someInt"
                 "QueryRansomwareResult",
                 "($clusterUuid: UUID!,$managedId: String!,$snapshotId: String!)",
                 "RansomwareResult",
-                Query.RansomwareResult_ObjectFieldSpec,
+                Query.RansomwareResult,
                 Query.RansomwareResultFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString
@@ -744,7 +744,7 @@ $query.Var.snapshotId = $someString"
                 "QueryRansomwareResultOpt",
                 "($clusterUuid: UUID!,$managedId: String!,$snapshotId: String!)",
                 "RansomwareResult",
-                Query.RansomwareResultOpt_ObjectFieldSpec,
+                Query.RansomwareResultOpt,
                 Query.RansomwareResultOptFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString
@@ -782,7 +782,7 @@ $query.Var.snapshotId = $someString"
                 "QueryRansomwareResults",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: RansomwareResultSortBy,$filter: RansomwareResultFilterInput,$timezoneOffset: Float)",
                 "RansomwareResultConnection",
-                Query.RansomwareResults_ObjectFieldSpec,
+                Query.RansomwareResults,
                 Query.RansomwareResultsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -843,7 +843,7 @@ $query.Var.timezoneOffset = $someSingle"
                 "QueryRansomwareResultsGrouped",
                 "($first: Int,$after: String,$last: Int,$before: String,$groupBy: RansomwareResultGroupBy!,$filter: RansomwareResultFilterInput,$timezoneOffset: Float)",
                 "RansomwareResultGroupedDataConnection",
-                Query.RansomwareResultsGrouped_ObjectFieldSpec,
+                Query.RansomwareResultsGrouped,
                 Query.RansomwareResultsGroupedFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

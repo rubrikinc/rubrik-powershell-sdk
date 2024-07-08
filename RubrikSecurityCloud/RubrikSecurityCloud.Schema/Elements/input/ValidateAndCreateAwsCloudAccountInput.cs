@@ -58,6 +58,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsIamPair")]
         public AwsIamPairInput? AwsIamPair { get; set; }
 
+        //      C# -> System.String? OutpostAwsNativeId
+        // GraphQL -> outpostAwsNativeId: String (scalar)
+        [JsonProperty("outpostAwsNativeId")]
+        public System.String? OutpostAwsNativeId { get; set; }
+
 
         #endregion
 

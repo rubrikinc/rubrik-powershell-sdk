@@ -323,7 +323,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryThreatHuntDetail",
                 "($huntId: String!)",
                 "ThreatHunt",
-                Query.ThreatHuntDetail_ObjectFieldSpec,
+                Query.ThreatHuntDetail,
                 Query.ThreatHuntDetailFieldSpec,
                 @"# REQUIRED
 $query.Var.huntId = $someString"
@@ -344,7 +344,7 @@ $query.Var.huntId = $someString"
                 "QueryThreatHuntResult",
                 "($huntId: String!,$objectId: String)",
                 "ThreatHuntResult",
-                Query.ThreatHuntResult_ObjectFieldSpec,
+                Query.ThreatHuntResult,
                 Query.ThreatHuntResultFieldSpec,
                 @"# REQUIRED
 $query.Var.huntId = $someString
@@ -366,7 +366,7 @@ $query.Var.objectId = $someString"
                 "QueryThreatHuntSummary",
                 "($huntId: String!)",
                 "ThreatHuntSummaryReply",
-                Query.ThreatHuntSummary_ObjectFieldSpec,
+                Query.ThreatHuntSummary,
                 Query.ThreatHuntSummaryFieldSpec,
                 @"# REQUIRED
 $query.Var.huntId = $someString"
@@ -406,7 +406,7 @@ $query.Var.huntId = $someString"
                 "QueryThreatHunts",
                 "($first: Int,$after: String,$last: Int,$before: String,$beginTime: DateTime,$endTime: DateTime,$clusterUuidFilter: [String!],$statusFilter: [ThreatHuntStatus!],$matchesFoundFilter: [ThreatHuntMatchesFound!],$quarantinedMatchesFilter: [ThreatHuntQuarantinedMatchType!])",
                 "ThreatHuntConnection",
-                Query.ThreatHunts_ObjectFieldSpec,
+                Query.ThreatHunts,
                 Query.ThreatHuntsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

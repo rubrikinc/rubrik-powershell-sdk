@@ -484,7 +484,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationGcpNativeDisableProject",
                 "($input: GcpNativeDisableProjectInput!)",
                 "AsyncJobStatus",
-                Mutation.GcpNativeDisableProject_ObjectFieldSpec,
+                Mutation.GcpNativeDisableProject,
                 Mutation.GcpNativeDisableProjectFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -509,7 +509,7 @@ $query.Var.input = @{
                 "MutationGcpNativeExcludeDisksFromInstanceSnapshot",
                 "($input: GcpNativeExcludeDisksFromInstanceSnapshotInput!)",
                 "System.String",
-                Mutation.GcpNativeExcludeDisksFromInstanceSnapshot_ObjectFieldSpec,
+                Mutation.GcpNativeExcludeDisksFromInstanceSnapshot,
                 Mutation.GcpNativeExcludeDisksFromInstanceSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -541,7 +541,7 @@ $query.Var.input = @{
                 "MutationGcpNativeExportDisk",
                 "($input: GcpNativeExportDiskInput!)",
                 "AsyncJobStatus",
-                Mutation.GcpNativeExportDisk_ObjectFieldSpec,
+                Mutation.GcpNativeExportDisk,
                 Mutation.GcpNativeExportDiskFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -599,7 +599,7 @@ $query.Var.input = @{
                 "MutationGcpNativeExportGceInstance",
                 "($input: GcpNativeExportGceInstanceInput!)",
                 "AsyncJobStatus",
-                Mutation.GcpNativeExportGceInstance_ObjectFieldSpec,
+                Mutation.GcpNativeExportGceInstance,
                 Mutation.GcpNativeExportGceInstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -657,7 +657,7 @@ $query.Var.input = @{
                 "MutationGcpNativeRefreshProjects",
                 "($input: GcpNativeRefreshProjectsInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.GcpNativeRefreshProjects_ObjectFieldSpec,
+                Mutation.GcpNativeRefreshProjects,
                 Mutation.GcpNativeRefreshProjectsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -682,7 +682,7 @@ $query.Var.input = @{
                 "MutationGcpNativeRestoreGceInstance",
                 "($input: GcpNativeRestoreGceInstanceInput!)",
                 "AsyncJobStatus",
-                Mutation.GcpNativeRestoreGceInstance_ObjectFieldSpec,
+                Mutation.GcpNativeRestoreGceInstance,
                 Mutation.GcpNativeRestoreGceInstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

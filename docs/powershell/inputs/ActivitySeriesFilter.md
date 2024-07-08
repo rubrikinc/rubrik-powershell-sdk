@@ -31,3 +31,5 @@ Filters for list of event series.
   - Filter by search term.
 - orgIds: list of System.Strings
   - Filter by organization ID.
+- userIds: list of System.Strings
+  - IDs of the users who triggered the operation associated with the event series.
