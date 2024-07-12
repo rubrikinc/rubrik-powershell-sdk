@@ -8,7 +8,7 @@ Global certificates that can be assigned to an organization.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - sortBy - GlobalCertificateSortBy: Field on which to sort the certificates.
     - input - GlobalCertificatesQueryInput: Input to list global certificates.
 - Returns GlobalCertificateConnection.
@@ -20,7 +20,7 @@ Browse certificates.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - sortBy - CertMgmtSortBy: Certificate manager argument to sort by.
     - searchTerm - System.String: Search for a certificate.
 - Returns CertificateConnection.
@@ -66,7 +66,7 @@ Global certificates.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - sortBy - GlobalCertificateSortBy: Field on which to sort the certificates.
     - input - GlobalCertificatesQueryInput: Input to list global certificates.
 - Returns GlobalCertificateConnection.
@@ -88,7 +88,7 @@ Browse Certificate Signing Requests (CSRs).
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - sortBy - CertMgmtSortBy: Certificate manager argument to sort by.
     - searchTerm - System.String: Search for a CSR.
 - Returns CsrConnection.

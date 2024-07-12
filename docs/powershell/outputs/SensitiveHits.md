@@ -9,3 +9,5 @@ Sensitive hits for different risk categories.
   - Low risk-sensitive hits.
 - totalHits: SummaryHits
   - Total sensitive hits.
+- noRiskHits: SummaryHits
+  - No risk-sensitive hits.

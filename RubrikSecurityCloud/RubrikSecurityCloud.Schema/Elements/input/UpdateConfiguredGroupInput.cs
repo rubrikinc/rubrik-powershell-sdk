@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("updatedPdls")]
         public List<System.String>? UpdatedPdls { get; set; }
 
+        //      C# -> List<GroupFilterAttribute>? UpdatedGroupFilterAttributes
+        // GraphQL -> updatedGroupFilterAttributes: [GroupFilterAttribute!] (input)
+        [JsonProperty("updatedGroupFilterAttributes")]
+        public List<GroupFilterAttribute>? UpdatedGroupFilterAttributes { get; set; }
+
         //      C# -> System.Boolean? PerformArchival
         // GraphQL -> performArchival: Boolean! (scalar)
         [Required]

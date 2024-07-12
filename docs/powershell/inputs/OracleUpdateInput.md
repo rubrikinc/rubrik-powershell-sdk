@@ -22,11 +22,11 @@ Supported in v5.0+
 - configuredSlaDomainIdDeprecated: System.String
   - Supported in v6.0+
       ID of the SLA domain protecting the specified Oracle object. Log backup jobs are no longer scheduled if the SLA domain indicates the Oracle object is unprotected. The specified SLA domain is not used to configure the protection or retention for this Oracle object. This is a DEPRECATED field, and will be removed in later releases.
-- nodeOrder: list of OracleNodeOrderInputs
-  - Supported in v6.0+
-      Specifies an order for the RAC nodes. Automated Oracle backups use the RAC nodes in the specified order.
 - shouldDistributeBackupsAutomatically: System.Boolean
   - Supported in v6.0+
       Boolean value that specifies whether the Rubrik cluster should automatically distribute backups across Oracle database instances running on the RAC nodes. By default, backups are run from the first connected node in the RAC priority order.
+- nodeOrder: list of OracleNodeOrderInputs
+  - Supported in v6.0+
+      Specifies an order for the RAC nodes. Automated Oracle backups use the RAC nodes in the specified order.
 - oracleUpdateCommon: OracleUpdateCommonInput
   - 

@@ -91,6 +91,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# OPTIONAL
     /// 	syslogExportRuleV51 = @{
     /// 		# OPTIONAL
@@ -271,8 +273,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		port = $someInt
     /// 	}
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -335,6 +335,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# OPTIONAL
     /// 	syslogExportRuleV51 = @{
     /// 		# OPTIONAL
@@ -515,8 +517,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		port = $someInt
     /// 	}
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -546,6 +546,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	syslogSettingsV51 = @{
     /// 		# OPTIONAL
@@ -726,10 +730,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 	}
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -855,6 +855,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Mutation.AddSyslogExportRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
 	# OPTIONAL
 	syslogExportRuleV51 = @{
 		# OPTIONAL
@@ -1035,8 +1037,6 @@ $query.Var.input = @{
 		# REQUIRED
 		port = $someInt
 	}
-	# REQUIRED
-	clusterUuid = $someString
 }"
             );
         }
@@ -1083,6 +1083,8 @@ $query.Var.input = @{
                 Mutation.TestSyslogExportRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
 	# OPTIONAL
 	syslogExportRuleV51 = @{
 		# OPTIONAL
@@ -1263,8 +1265,6 @@ $query.Var.input = @{
 		# REQUIRED
 		port = $someInt
 	}
-	# REQUIRED
-	clusterUuid = $someString
 }"
             );
         }
@@ -1286,6 +1286,10 @@ $query.Var.input = @{
                 Mutation.UpdateSyslogExportRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	syslogSettingsV51 = @{
 		# OPTIONAL
@@ -1466,10 +1470,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 	}
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	id = $someString
 }"
             );
         }

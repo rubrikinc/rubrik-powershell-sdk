@@ -15,6 +15,8 @@ Replication specification.
   - Time snapshot is kept on local target cluster.
 - cascadingArchivalSpecs: list of CascadingArchivalSpecInputs
   - Cascading Archival Specifications.
+- replicationPairs: list of ReplicationPairInputs
+  - Datacenter replication pairs.
 - awsRegion: AwsNativeRegionForReplication
   - AWS region.
 - azureRegion: AzureNativeRegionForReplication

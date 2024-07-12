@@ -135,6 +135,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
     /// 		}
+    /// 		# OPTIONAL
+    /// 		serviceNowItsm = @{
+    /// 			# REQUIRED
+    /// 			serviceAccountId = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -211,6 +216,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					}
     /// 					# REQUIRED
     /// 					targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				serviceNowItsm = @{
+    /// 					# REQUIRED
+    /// 					serviceAccountId = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -354,6 +364,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
     /// 		}
+    /// 		# OPTIONAL
+    /// 		serviceNowItsm = @{
+    /// 			# REQUIRED
+    /// 			serviceAccountId = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -432,6 +447,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					}
     /// 					# REQUIRED
     /// 					targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				serviceNowItsm = @{
+    /// 					# REQUIRED
+    /// 					serviceAccountId = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -631,6 +651,11 @@ $query.Var.input = @{
 			# REQUIRED
 			targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
 		}
+		# OPTIONAL
+		serviceNowItsm = @{
+			# REQUIRED
+			serviceAccountId = $someString
+		}
 	}
 }"
             );
@@ -699,6 +724,11 @@ $query.Var.input = @{
 					}
 					# REQUIRED
 					targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
+				}
+				# OPTIONAL
+				serviceNowItsm = @{
+					# REQUIRED
+					serviceAccountId = $someString
 				}
 			}
 		}
@@ -818,6 +848,11 @@ $query.Var.input = @{
 			# REQUIRED
 			targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
 		}
+		# OPTIONAL
+		serviceNowItsm = @{
+			# REQUIRED
+			serviceAccountId = $someString
+		}
 	}
 }"
             );
@@ -888,6 +923,11 @@ $query.Var.input = @{
 					}
 					# REQUIRED
 					targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
+				}
+				# OPTIONAL
+				serviceNowItsm = @{
+					# REQUIRED
+					serviceAccountId = $someString
 				}
 			}
 		}

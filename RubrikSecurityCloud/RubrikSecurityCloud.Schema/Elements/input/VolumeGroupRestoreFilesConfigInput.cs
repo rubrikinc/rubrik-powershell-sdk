@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetHostId")]
         public System.String? TargetHostId { get; set; }
 
+        //      C# -> System.Boolean? ShouldIgnoreError
+        // GraphQL -> shouldIgnoreError: Boolean (scalar)
+        [JsonProperty("shouldIgnoreError")]
+        public System.Boolean? ShouldIgnoreError { get; set; }
+
         //      C# -> List<VolumeGroupRestoreFileConfigInput>? RestoreConfigs
         // GraphQL -> restoreConfigs: [VolumeGroupRestoreFileConfigInput!]! (input)
         [Required]

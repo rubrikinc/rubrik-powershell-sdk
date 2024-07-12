@@ -30,11 +30,13 @@ SAP HANA Database details object.
 - logSnapshotConnection: SapHanaLogSnapshotConnection
   - Log snapshots for given SAP HANA database.
 - oldestSnapshot: CdmSnapshot
-  - The oldest snapshot for SAP HANA database.
+  - The oldest snapshot for SAP HANA workload.
 - newestSnapshot: CdmSnapshot
-  - The most recent snapshot for SAP HANA database.
+  - The most recent snapshot for SAP HANA workload.
 - onDemandSnapshotCount: System.Int32
-  - The number of on-demand snapshots for SAP HANA database.
+  - The number of on-demand snapshots for SAP HANA workloads.
+- totalSnapshotCount: System.Int32
+  - The total number of snapshots for SAP HANA workloads.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation
@@ -81,6 +83,8 @@ SAP HANA Database details object.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - cdmLink: System.String
   - A link to view the workload on the CDM cluster. For dev use only.
 - missedSnapshotConnection: MissedSnapshotCommonConnection

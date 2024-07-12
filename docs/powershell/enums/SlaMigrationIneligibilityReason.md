@@ -16,8 +16,10 @@ Reasons for the SLA being ineligible for migration.
 - INVALID_CASCADING_ARCHIVAL_VERSION - This SLA Domain has cascading archival configured. However, the Rubrik CDM version on the replication target cluster does not support migration of SLA Domains with cascading archival configured.
 - UNSUPPORTED_PROTECTED_OBJECTS_MINUTE_FREQUENCY_CONFIGURED - The SLA Domain has frequency configured in minutes, which is currently not supported for objects other than Managed Volumes.
 - COMPLIANCE_RETENTION_LOCK_CONFIGURED - To upgrade to retention-locked SLA Domain in compliance mode, contact Rubrik Support to enable compliance mode. Also, make sure quorum authorization is enabled in RSC and your Rubrik cluster is running CDM version 7.0.2 or later.
-- GOVERNANCE_RETENTION_LOCK_CONFIGURED - To upgrade to a retention-locked SLA Domain in governance mode, make sure quorum authorization is enabled in RSC and your Rubrik cluster is running CDM version 9.0.1 or later.
+- GOVERNANCE_RETENTION_LOCK_CONFIGURED - To upgrade to a retention-locked SLA Domain in governance mode, make sure quorum authorization is enabled in RSC.
 - GOV_CLOUD_ARCHIVAL_LOCATION_REGISTERED_ON_CLUSTER - The commercial instance of RSC doesn't support archival to GovCloud regions. Contact the Rubrik Support team for more information.
 - GOVERNANCE_RETENTION_LOCK_UNSUPPORTED_CLUSTER_VERSION - To upgrade to a retention-locked SLA Domain in governance mode, make sure your Rubrik cluster is running CDM version 9.0.1 or later.
 - RETENTION_LOCKED_SLA_WITH_CROSS_ACCOUNT_REPLICATION_TARGETS - The SLA Domain is retention-locked and has cross-account replication targets configured in it. Upgrading such SLA Domains is not supported.
 - UNSUPPORTED_PROTECTED_OBJECTS_SHARE_FILESET - The SLA Domain protecting NAS on CDM is currently not eligible for upgrade.
+- SLA_OUT_OF_SYNC_ON_RSC - The SLA Domain on RSC is out of synchronization. To resynchronize, edit the local SLA Domain without making configuration changes.
+- RECOVERED_FROM_ARCHIVAL_LOCATION - The SLA Domain has been recovered from the archival location. It is not eligible for upgrade.

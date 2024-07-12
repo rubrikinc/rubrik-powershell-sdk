@@ -40,6 +40,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("backupCredentials")]
         public LoginCredentials? BackupCredentials { get; set; }
 
+        //      C# -> System.String? LogicAppName
+        // GraphQL -> logicAppName: String (scalar)
+        [JsonProperty("logicAppName")]
+        public System.String? LogicAppName { get; set; }
+
+        //      C# -> System.String? LogicAppApiKey
+        // GraphQL -> logicAppApiKey: String (scalar)
+        [JsonProperty("logicAppApiKey")]
+        public System.String? LogicAppApiKey { get; set; }
+
 
         #endregion
 

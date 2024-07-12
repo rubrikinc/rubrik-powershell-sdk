@@ -39,6 +39,8 @@ An Azure Native Managed Disk that refers to the block storage designed to be use
   - Resource Group of the Azure Native Managed Disk.
 - allAttachedAzureNativeVirtualMachines: list of AzureNativeVirtualMachines
   - All Virtual Machines (VMs) attached to the Managed Disk.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String
@@ -67,6 +69,8 @@ An Azure Native Managed Disk that refers to the block storage designed to be use
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

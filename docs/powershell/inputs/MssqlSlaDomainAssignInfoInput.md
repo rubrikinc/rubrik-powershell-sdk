@@ -7,10 +7,10 @@ Supported in v5.1+
 - shouldApplyToNonPolicySnapshots: System.Boolean
   - Supported in v7.0+
       A Boolean value. When true, specifies that the retention changes corresponding to the new SLA Domain are applied to non-policy snapshots in addition to existing policy-based snapshots.
-- mssqlSlaPatchProperties: MssqlSlaPatchPropertiesInput
-  - SLA Domain properties of a SQL Server object.
 - existingSnapshotRetention: ExistingSnapshotRetention
   - Supported in v5.1+
 - ids: list of System.Strings
   - Required. Supported in v5.1+
       List of SQL Server object IDs which should be assigned these properties.
+- mssqlSlaPatchProperties: MssqlSlaPatchPropertiesInput
+  - SLA Domain properties of a SQL Server object.

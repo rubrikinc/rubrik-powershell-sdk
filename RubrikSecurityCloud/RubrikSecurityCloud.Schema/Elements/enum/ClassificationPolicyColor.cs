@@ -51,6 +51,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "COLOR_012")]
         COLOR_012,
 
+        [EnumMember(Value = "COLOR_013")]
+        COLOR_013,
+
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN
 

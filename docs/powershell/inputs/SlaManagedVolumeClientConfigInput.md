@@ -1,17 +1,6 @@
 ### SlaManagedVolumeClientConfigInput
 Supported in v5.3+
 
-- postBackupScriptOnBackupFailure: SlaManagedVolumeScriptConfigInput
-  - Supported in v5.3+
-      v5.3-v6.0: Specifies configuration information for the optional post-backup script that runs after data backup failed.
-      v7.0+: Specifies configuration information for the optional post-backup script that runs if data backup fails.
-- postBackupScriptOnBackupSuccess: SlaManagedVolumeScriptConfigInput
-  - Supported in v5.3+
-      v5.3-v6.0: Specifies configuration information for the optional post-backup script that runs after data backup is complete.
-      v7.0+: Specifies configuration information for the optional post-backup script that runs after data backup completes.
-- preBackupScript: SlaManagedVolumeScriptConfigInput
-  - Supported in v5.3+
-      Specifies configuration information for the optional pre-backup script that runs before data backup begins.
 - shouldCancelBackupOnPreBackupScriptFailure: System.Boolean
   - Supported in v5.3+
       Specifies whether a failure of the pre-backup script halts the backup process.
@@ -29,6 +18,17 @@ Supported in v5.3+
   - Required. Supported in v5.3+
       v5.3-v6.0: The ID of the host that mounts the managed volume channels and where the backup scripts run.
       v7.0+: The ID of the host that mounts the Managed Volume channels and location where the backup scripts are run.
+- postBackupScriptOnBackupFailure: SlaManagedVolumeScriptConfigInput
+  - Supported in v5.3+
+      v5.3-v6.0: Specifies configuration information for the optional post-backup script that runs after data backup failed.
+      v7.0+: Specifies configuration information for the optional post-backup script that runs if data backup fails.
+- postBackupScriptOnBackupSuccess: SlaManagedVolumeScriptConfigInput
+  - Supported in v5.3+
+      v5.3-v6.0: Specifies configuration information for the optional post-backup script that runs after data backup is complete.
+      v7.0+: Specifies configuration information for the optional post-backup script that runs after data backup completes.
+- preBackupScript: SlaManagedVolumeScriptConfigInput
+  - Supported in v5.3+
+      Specifies configuration information for the optional pre-backup script that runs before data backup begins.
 - username: System.String
   - Required. Supported in v5.3+
       v5.3-v6.0: The name of the user that runs the scripts on the host.

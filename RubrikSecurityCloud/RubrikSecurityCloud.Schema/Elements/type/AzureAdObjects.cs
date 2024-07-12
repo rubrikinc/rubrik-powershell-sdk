@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureAdGroup")]
         public AzureAdGroup? AzureAdGroup { get; set; }
 
+        //      C# -> AzureAdRole? AzureAdRole
+        // GraphQL -> azureAdRole: AzureAdRole (type)
+        [JsonProperty("azureAdRole")]
+        public AzureAdRole? AzureAdRole { get; set; }
+
         //      C# -> AzureAdUser? AzureAdUser
         // GraphQL -> azureAdUser: AzureAdUser (type)
         [JsonProperty("azureAdUser")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public AzureAdObjects Set(
         AzureAdGroup? AzureAdGroup = null,
+        AzureAdRole? AzureAdRole = null,
         AzureAdUser? AzureAdUser = null
     ) 
     {
         if ( AzureAdGroup != null ) {
             this.AzureAdGroup = AzureAdGroup;
+        }
+        if ( AzureAdRole != null ) {
+            this.AzureAdRole = AzureAdRole;
         }
         if ( AzureAdUser != null ) {
             this.AzureAdUser = AzureAdUser;
@@ -71,6 +80,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureAdGroup" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdRole? AzureAdRole
+        // GraphQL -> azureAdRole: AzureAdRole (type)
+        if (this.AzureAdRole != null) {
+            var fspec = this.AzureAdRole.AsFieldSpec(conf.Child("azureAdRole"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdRole" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -112,6 +134,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureAdGroup != null && ec.Excludes("azureAdGroup",false))
         {
             this.AzureAdGroup = null;
+        }
+        //      C# -> AzureAdRole? AzureAdRole
+        // GraphQL -> azureAdRole: AzureAdRole (type)
+        if (ec.Includes("azureAdRole",false))
+        {
+            if(this.AzureAdRole == null) {
+
+                this.AzureAdRole = new AzureAdRole();
+                this.AzureAdRole.ApplyExploratoryFieldSpec(ec.NewChild("azureAdRole"));
+
+            } else {
+
+                this.AzureAdRole.ApplyExploratoryFieldSpec(ec.NewChild("azureAdRole"));
+
+            }
+        }
+        else if (this.AzureAdRole != null && ec.Excludes("azureAdRole",false))
+        {
+            this.AzureAdRole = null;
         }
         //      C# -> AzureAdUser? AzureAdUser
         // GraphQL -> azureAdUser: AzureAdUser (type)

@@ -93,6 +93,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	bulkUpdateProperties = @{
+    /// 		# REQUIRED
+    /// 		ids = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		oracleUpdate = @{
     /// 			# OPTIONAL
@@ -110,6 +114,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			configuredSlaDomainIdDeprecated = $someString
     /// 			# OPTIONAL
+    /// 			shouldDistributeBackupsAutomatically = $someBoolean
+    /// 			# OPTIONAL
     /// 			nodeOrder = @(
     /// 				@{
     /// 					# REQUIRED
@@ -118,8 +124,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					order = $someInt
     /// 				}
     /// 			)
-    /// 			# OPTIONAL
-    /// 			shouldDistributeBackupsAutomatically = $someBoolean
     /// 			# OPTIONAL
     /// 			oracleUpdateCommon = @{
     /// 				# OPTIONAL
@@ -144,10 +148,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				isPaused = $someBoolean
     /// 			}
     /// 		}
-    /// 		# REQUIRED
-    /// 		ids = @(
-    /// 			$someString
-    /// 		)
     /// 	}
     /// }
     /// 
@@ -180,6 +180,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	bulkUpdateProperties = @{
+    /// 		# REQUIRED
+    /// 		ids = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		oracleUpdate = @{
     /// 			# OPTIONAL
@@ -197,6 +201,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			configuredSlaDomainIdDeprecated = $someString
     /// 			# OPTIONAL
+    /// 			shouldDistributeBackupsAutomatically = $someBoolean
+    /// 			# OPTIONAL
     /// 			nodeOrder = @(
     /// 				@{
     /// 					# REQUIRED
@@ -205,8 +211,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					order = $someInt
     /// 				}
     /// 			)
-    /// 			# OPTIONAL
-    /// 			shouldDistributeBackupsAutomatically = $someBoolean
     /// 			# OPTIONAL
     /// 			oracleUpdateCommon = @{
     /// 				# OPTIONAL
@@ -231,10 +235,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				isPaused = $someBoolean
     /// 			}
     /// 		}
-    /// 		# REQUIRED
-    /// 		ids = @(
-    /// 			$someString
-    /// 		)
     /// 	}
     /// }
     /// 
@@ -267,6 +267,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	bulkUpdateProperties = @{
+    /// 		# REQUIRED
+    /// 		ids = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		oracleUpdate = @{
     /// 			# OPTIONAL
@@ -284,6 +288,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			configuredSlaDomainIdDeprecated = $someString
     /// 			# OPTIONAL
+    /// 			shouldDistributeBackupsAutomatically = $someBoolean
+    /// 			# OPTIONAL
     /// 			nodeOrder = @(
     /// 				@{
     /// 					# REQUIRED
@@ -292,8 +298,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					order = $someInt
     /// 				}
     /// 			)
-    /// 			# OPTIONAL
-    /// 			shouldDistributeBackupsAutomatically = $someBoolean
     /// 			# OPTIONAL
     /// 			oracleUpdateCommon = @{
     /// 				# OPTIONAL
@@ -318,10 +322,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				isPaused = $someBoolean
     /// 			}
     /// 		}
-    /// 		# REQUIRED
-    /// 		ids = @(
-    /// 			$someString
-    /// 		)
     /// 	}
     /// }
     /// 
@@ -928,6 +928,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldBackupFromPrimaryOnly = $someBoolean
     /// 		# OPTIONAL
+    /// 		shouldUseSepsWallet = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldForceDisableDgDiscovery = $someBoolean
+    /// 		# OPTIONAL
     /// 		oracleUpdateCommon = @{
     /// 			# OPTIONAL
     /// 			hostLogRetentionHours = $someInt
@@ -950,10 +954,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			isPaused = $someBoolean
     /// 		}
-    /// 		# OPTIONAL
-    /// 		shouldUseSepsWallet = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldForceDisableDgDiscovery = $someBoolean
     /// 	}
     /// }
     /// 
@@ -1354,6 +1354,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 $query.Var.input = @{
 	# REQUIRED
 	bulkUpdateProperties = @{
+		# REQUIRED
+		ids = @(
+			$someString
+		)
 		# OPTIONAL
 		oracleUpdate = @{
 			# OPTIONAL
@@ -1371,6 +1375,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			configuredSlaDomainIdDeprecated = $someString
 			# OPTIONAL
+			shouldDistributeBackupsAutomatically = $someBoolean
+			# OPTIONAL
 			nodeOrder = @(
 				@{
 					# REQUIRED
@@ -1379,8 +1385,6 @@ $query.Var.input = @{
 					order = $someInt
 				}
 			)
-			# OPTIONAL
-			shouldDistributeBackupsAutomatically = $someBoolean
 			# OPTIONAL
 			oracleUpdateCommon = @{
 				# OPTIONAL
@@ -1405,10 +1409,6 @@ $query.Var.input = @{
 				isPaused = $someBoolean
 			}
 		}
-		# REQUIRED
-		ids = @(
-			$someString
-		)
 	}
 }"
             );
@@ -1433,6 +1433,10 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	bulkUpdateProperties = @{
+		# REQUIRED
+		ids = @(
+			$someString
+		)
 		# OPTIONAL
 		oracleUpdate = @{
 			# OPTIONAL
@@ -1450,6 +1454,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			configuredSlaDomainIdDeprecated = $someString
 			# OPTIONAL
+			shouldDistributeBackupsAutomatically = $someBoolean
+			# OPTIONAL
 			nodeOrder = @(
 				@{
 					# REQUIRED
@@ -1458,8 +1464,6 @@ $query.Var.input = @{
 					order = $someInt
 				}
 			)
-			# OPTIONAL
-			shouldDistributeBackupsAutomatically = $someBoolean
 			# OPTIONAL
 			oracleUpdateCommon = @{
 				# OPTIONAL
@@ -1484,10 +1488,6 @@ $query.Var.input = @{
 				isPaused = $someBoolean
 			}
 		}
-		# REQUIRED
-		ids = @(
-			$someString
-		)
 	}
 }"
             );
@@ -1512,6 +1512,10 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	bulkUpdateProperties = @{
+		# REQUIRED
+		ids = @(
+			$someString
+		)
 		# OPTIONAL
 		oracleUpdate = @{
 			# OPTIONAL
@@ -1529,6 +1533,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			configuredSlaDomainIdDeprecated = $someString
 			# OPTIONAL
+			shouldDistributeBackupsAutomatically = $someBoolean
+			# OPTIONAL
 			nodeOrder = @(
 				@{
 					# REQUIRED
@@ -1537,8 +1543,6 @@ $query.Var.input = @{
 					order = $someInt
 				}
 			)
-			# OPTIONAL
-			shouldDistributeBackupsAutomatically = $someBoolean
 			# OPTIONAL
 			oracleUpdateCommon = @{
 				# OPTIONAL
@@ -1563,10 +1567,6 @@ $query.Var.input = @{
 				isPaused = $someBoolean
 			}
 		}
-		# REQUIRED
-		ids = @(
-			$someString
-		)
 	}
 }"
             );
@@ -2069,6 +2069,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldBackupFromPrimaryOnly = $someBoolean
 		# OPTIONAL
+		shouldUseSepsWallet = $someBoolean
+		# OPTIONAL
+		shouldForceDisableDgDiscovery = $someBoolean
+		# OPTIONAL
 		oracleUpdateCommon = @{
 			# OPTIONAL
 			hostLogRetentionHours = $someInt
@@ -2091,10 +2095,6 @@ $query.Var.input = @{
 			# OPTIONAL
 			isPaused = $someBoolean
 		}
-		# OPTIONAL
-		shouldUseSepsWallet = $someBoolean
-		# OPTIONAL
-		shouldForceDisableDgDiscovery = $someBoolean
 	}
 }"
             );

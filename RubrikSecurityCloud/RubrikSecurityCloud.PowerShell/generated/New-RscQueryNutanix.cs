@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 18
+    /// Create a new RscQuery object for any of the 20
     /// operations in the 'Nutanix' API domain:
-    /// BrowseSnapshot, Category, CategoryValue, Cluster, ClusterAsyncRequestStatus, ClusterContainers, ClusterNetworks, Clusters, Mounts, PrismCentral, PrismCentrals, SearchVm, SnapshotDetail, TopLevelDescendants, Vm, VmAsyncRequestStatus, VmMissedSnapshots, or Vms.
+    /// BrowseSnapshot, Category, CategoryValue, Cluster, ClusterAsyncRequestStatus, ClusterContainers, ClusterNetworks, Clusters, Mounts, PrismCentral, PrismCentrals, SearchVm, SnapshotDetail, SnapshotVdisks, TopLevelDescendants, VDiskMountableVms, Vm, VmAsyncRequestStatus, VmMissedSnapshots, or Vms.
     /// </summary>
     /// <description>
     /// New-RscQueryNutanix creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 18 operations
+    /// There are 20 operations
     /// in the 'Nutanix' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BrowseSnapshot, Category, CategoryValue, Cluster, ClusterAsyncRequestStatus, ClusterContainers, ClusterNetworks, Clusters, Mounts, PrismCentral, PrismCentrals, SearchVm, SnapshotDetail, TopLevelDescendants, Vm, VmAsyncRequestStatus, VmMissedSnapshots, or Vms.
+    /// one of: BrowseSnapshot, Category, CategoryValue, Cluster, ClusterAsyncRequestStatus, ClusterContainers, ClusterNetworks, Clusters, Mounts, PrismCentral, PrismCentrals, SearchVm, SnapshotDetail, SnapshotVdisks, TopLevelDescendants, VDiskMountableVms, Vm, VmAsyncRequestStatus, VmMissedSnapshots, or Vms.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -589,6 +589,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SnapshotVdisks operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: SnapshotVdisks
+    /// 
+    /// $query = New-RscQueryNutanix -SnapshotVdisks
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixVmSnapshotVdiskDetailListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the TopLevelDescendants operation
     /// of the 'Nutanix' API domain.
     /// <code>
@@ -661,6 +692,82 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CdmHierarchyObjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the VDiskMountableVms operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: VDiskMountableVms
+    /// 
+    /// $query = New-RscQueryNutanix -VDiskMountableVms
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixVmConnection
     /// 
     /// 
     /// 
@@ -865,7 +972,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "PrismCentrals",
                 "SearchVm",
                 "SnapshotDetail",
+                "SnapshotVdisks",
                 "TopLevelDescendants",
+                "VDiskMountableVms",
                 "Vm",
                 "VmAsyncRequestStatus",
                 "VmMissedSnapshots",
@@ -924,8 +1033,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "SnapshotDetail":
                         this.ProcessRecord_SnapshotDetail();
                         break;
+                    case "SnapshotVdisks":
+                        this.ProcessRecord_SnapshotVdisks();
+                        break;
                     case "TopLevelDescendants":
                         this.ProcessRecord_TopLevelDescendants();
+                        break;
+                    case "VDiskMountableVms":
+                        this.ProcessRecord_VDiskMountableVms();
                         break;
                     case "Vm":
                         this.ProcessRecord_Vm();
@@ -1067,12 +1182,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // nutanixSnapshotVdisks.
+        internal void ProcessRecord_SnapshotVdisks()
+        {
+            this._logger.name += " -SnapshotVdisks";
+            // Create new graphql operation nutanixSnapshotVdisks
+            InitQueryNutanixSnapshotVdisks();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // nutanixTopLevelDescendants.
         internal void ProcessRecord_TopLevelDescendants()
         {
             this._logger.name += " -TopLevelDescendants";
             // Create new graphql operation nutanixTopLevelDescendants
             InitQueryNutanixTopLevelDescendants();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vDiskMountableNutanixVms.
+        internal void ProcessRecord_VDiskMountableVms()
+        {
+            this._logger.name += " -VDiskMountableVms";
+            // Create new graphql operation vDiskMountableNutanixVms
+            InitQueryVdiskMountableNutanixVms();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1549,6 +1682,29 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
+        // nutanixSnapshotVdisks(input: GetNutanixVmSnapshotVdisksInput!): NutanixVmSnapshotVdiskDetailListResponse!
+        internal void InitQueryNutanixSnapshotVdisks()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetNutanixVmSnapshotVdisksInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixSnapshotVdisks",
+                "($input: GetNutanixVmSnapshotVdisksInput!)",
+                "NutanixVmSnapshotVdiskDetailListResponse",
+                Query.NutanixSnapshotVdisks,
+                Query.NutanixSnapshotVdisksFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // nutanixTopLevelDescendants(
         //     first: Int
         //     after: String
@@ -1587,6 +1743,84 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
 $query.Var.typeFilter = @(
 	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
 )
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vDiskMountableNutanixVms(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): NutanixVmConnection!
+        internal void InitQueryVdiskMountableNutanixVms()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVdiskMountableNutanixVms",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "NutanixVmConnection",
+                Query.VdiskMountableNutanixVms,
+                Query.VdiskMountableNutanixVmsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
 $query.Var.filter = @(
 	@{

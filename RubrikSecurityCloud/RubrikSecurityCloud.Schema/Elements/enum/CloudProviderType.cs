@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudProviderType
     {
+        [EnumMember(Value = "ALL")]
+        ALL,
+
         [EnumMember(Value = "AWS")]
         AWS,
 

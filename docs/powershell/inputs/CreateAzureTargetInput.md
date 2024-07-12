@@ -29,3 +29,5 @@ Input for creating an Azure archival target.
   - Retrieval tier to use for retrieving data from archive storage.
 - bypassProxy: System.Boolean
   - Specifies whether the proxy settings should be bypassed for creating this target location.
+- azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput
+  - Azure Key Vault key to encrypt the archival target.

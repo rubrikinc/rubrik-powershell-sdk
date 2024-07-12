@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dataLossPrevention")]
         public DlpConfig? DataLossPrevention { get; set; }
 
+        //      C# -> ServiceNowItsmIntegrationConfig? ServiceNowItsm
+        // GraphQL -> serviceNowItsm: ServiceNowItsmIntegrationConfig (type)
+        [JsonProperty("serviceNowItsm")]
+        public ServiceNowItsmIntegrationConfig? ServiceNowItsm { get; set; }
+
 
         #endregion
 
@@ -35,11 +40,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public IntegrationConfig Set(
-        DlpConfig? DataLossPrevention = null
+        DlpConfig? DataLossPrevention = null,
+        ServiceNowItsmIntegrationConfig? ServiceNowItsm = null
     ) 
     {
         if ( DataLossPrevention != null ) {
             this.DataLossPrevention = DataLossPrevention;
+        }
+        if ( ServiceNowItsm != null ) {
+            this.ServiceNowItsm = ServiceNowItsm;
         }
         return this;
     }
@@ -62,6 +71,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "dataLossPrevention" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ServiceNowItsmIntegrationConfig? ServiceNowItsm
+        // GraphQL -> serviceNowItsm: ServiceNowItsmIntegrationConfig (type)
+        if (this.ServiceNowItsm != null) {
+            var fspec = this.ServiceNowItsm.AsFieldSpec(conf.Child("serviceNowItsm"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "serviceNowItsm" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -90,6 +112,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.DataLossPrevention != null && ec.Excludes("dataLossPrevention",false))
         {
             this.DataLossPrevention = null;
+        }
+        //      C# -> ServiceNowItsmIntegrationConfig? ServiceNowItsm
+        // GraphQL -> serviceNowItsm: ServiceNowItsmIntegrationConfig (type)
+        if (ec.Includes("serviceNowItsm",false))
+        {
+            if(this.ServiceNowItsm == null) {
+
+                this.ServiceNowItsm = new ServiceNowItsmIntegrationConfig();
+                this.ServiceNowItsm.ApplyExploratoryFieldSpec(ec.NewChild("serviceNowItsm"));
+
+            } else {
+
+                this.ServiceNowItsm.ApplyExploratoryFieldSpec(ec.NewChild("serviceNowItsm"));
+
+            }
+        }
+        else if (this.ServiceNowItsm != null && ec.Excludes("serviceNowItsm",false))
+        {
+            this.ServiceNowItsm = null;
         }
     }
 

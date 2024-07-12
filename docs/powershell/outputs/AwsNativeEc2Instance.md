@@ -57,6 +57,8 @@ AWS native EC2 instance.
   - Attach an AWS Elastic Block Store (EBS) volume to your instance.
 - hostInfo: PhysicalHost
   - Rubrik CDM host information for the AWS EC2 instance added as a host to the cluster. The value is Null when the virtual machine is not added as a host on any Rubrik cluster.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String
@@ -85,6 +87,8 @@ AWS native EC2 instance.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

@@ -199,6 +199,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("postgresDbClusterInfo")]
         public PostgresDbClusterInfo? PostgresDbClusterInfo { get; set; }
 
+        //      C# -> HostsInfo? HostsInfo
+        // GraphQL -> hostsInfo: HostsInfo (input)
+        [JsonProperty("hostsInfo")]
+        public HostsInfo? HostsInfo { get; set; }
+
+        //      C# -> VsphereVmMakePrimaryInfo? VsphereVmMakePrimaryInfo
+        // GraphQL -> vsphereVmMakePrimaryInfo: VsphereVmMakePrimaryInfo (input)
+        [JsonProperty("vsphereVmMakePrimaryInfo")]
+        public VsphereVmMakePrimaryInfo? VsphereVmMakePrimaryInfo { get; set; }
+
+        //      C# -> MssqlAddHostOperation? MssqlAddHost
+        // GraphQL -> mssqlAddHost: MssqlAddHostOperation (input)
+        [JsonProperty("mssqlAddHost")]
+        public MssqlAddHostOperation? MssqlAddHost { get; set; }
+
 
         #endregion
 

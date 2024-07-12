@@ -24,11 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("caCerts")]
         public System.String? CaCerts { get; set; }
 
-        //      C# -> List<ClusterVisibilityConfigInput>? ComputeVisibilityFilter
-        // GraphQL -> computeVisibilityFilter: [ClusterVisibilityConfigInput!] (input)
-        [JsonProperty("computeVisibilityFilter")]
-        public List<ClusterVisibilityConfigInput>? ComputeVisibilityFilter { get; set; }
-
         //      C# -> System.Boolean? ShouldEnableHotAddProxyForOnPrem
         // GraphQL -> shouldEnableHotAddProxyForOnPrem: Boolean (scalar)
         [JsonProperty("shouldEnableHotAddProxyForOnPrem")]
@@ -38,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> conflictResolutionAuthz: VcenterConfigConflictResolutionAuthz (enum)
         [JsonProperty("conflictResolutionAuthz")]
         public VcenterConfigConflictResolutionAuthz? ConflictResolutionAuthz { get; set; }
+
+        //      C# -> List<ClusterVisibilityConfigInput>? ComputeVisibilityFilter
+        // GraphQL -> computeVisibilityFilter: [ClusterVisibilityConfigInput!] (input)
+        [JsonProperty("computeVisibilityFilter")]
+        public List<ClusterVisibilityConfigInput>? ComputeVisibilityFilter { get; set; }
 
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)

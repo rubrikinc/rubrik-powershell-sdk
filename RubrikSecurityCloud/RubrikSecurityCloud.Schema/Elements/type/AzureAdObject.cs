@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureAdObjects")]
         public AzureAdObjects? AzureAdObjects { get; set; }
 
+        //      C# -> List<AzureAdRelatedItemCount>? RelatedItemCount
+        // GraphQL -> relatedItemCount: [AzureAdRelatedItemCount!]! (type)
+        [JsonProperty("relatedItemCount")]
+        public List<AzureAdRelatedItemCount>? RelatedItemCount { get; set; }
+
         //      C# -> Map? Relationships
         // GraphQL -> relationships: Map! (type)
         [JsonProperty("relationships")]
@@ -64,6 +69,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ObjectId = null,
         System.String? SnapshotId = null,
         AzureAdObjects? AzureAdObjects = null,
+        List<AzureAdRelatedItemCount>? RelatedItemCount = null,
         Map? Relationships = null,
         List<AzureAdReverseRelationship>? ReverseRelationships = null
     ) 
@@ -79,6 +85,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureAdObjects != null ) {
             this.AzureAdObjects = AzureAdObjects;
+        }
+        if ( RelatedItemCount != null ) {
+            this.RelatedItemCount = RelatedItemCount;
         }
         if ( Relationships != null ) {
             this.Relationships = Relationships;
@@ -134,6 +143,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureAdObjects" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AzureAdRelatedItemCount>? RelatedItemCount
+        // GraphQL -> relatedItemCount: [AzureAdRelatedItemCount!]! (type)
+        if (this.RelatedItemCount != null) {
+            var fspec = this.RelatedItemCount.AsFieldSpec(conf.Child("relatedItemCount"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "relatedItemCount" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -239,6 +261,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureAdObjects != null && ec.Excludes("azureAdObjects",false))
         {
             this.AzureAdObjects = null;
+        }
+        //      C# -> List<AzureAdRelatedItemCount>? RelatedItemCount
+        // GraphQL -> relatedItemCount: [AzureAdRelatedItemCount!]! (type)
+        if (ec.Includes("relatedItemCount",false))
+        {
+            if(this.RelatedItemCount == null) {
+
+                this.RelatedItemCount = new List<AzureAdRelatedItemCount>();
+                this.RelatedItemCount.ApplyExploratoryFieldSpec(ec.NewChild("relatedItemCount"));
+
+            } else {
+
+                this.RelatedItemCount.ApplyExploratoryFieldSpec(ec.NewChild("relatedItemCount"));
+
+            }
+        }
+        else if (this.RelatedItemCount != null && ec.Excludes("relatedItemCount",false))
+        {
+            this.RelatedItemCount = null;
         }
         //      C# -> Map? Relationships
         // GraphQL -> relationships: Map! (type)

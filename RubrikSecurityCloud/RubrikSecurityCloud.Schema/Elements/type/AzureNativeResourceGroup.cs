@@ -141,6 +141,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("protectedObjectTypeToSla")]
         public List<ProtectedObjectTypeToSla>? ProtectedObjectTypeToSla { get; set; }
 
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        [JsonProperty("rscNativeObjectPendingSla")]
+        public CompactSlaDomain? RscNativeObjectPendingSla { get; set; }
+
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
+
         //      C# -> List<WorkloadTypeToBackupSetupSpecs>? SnappableTypeToBackupSetupSpecs
         // GraphQL -> snappableTypeToBackupSetupSpecs: [WorkloadTypeToBackupSetupSpecs!]! (type)
         [JsonProperty("snappableTypeToBackupSetupSpecs")]
@@ -225,6 +235,8 @@ namespace RubrikSecurityCloud.Types
         List<PathNode>? LogicalPath = null,
         List<PathNode>? PhysicalPath = null,
         List<ProtectedObjectTypeToSla>? ProtectedObjectTypeToSla = null,
+        CompactSlaDomain? RscNativeObjectPendingSla = null,
+        SecurityMetadata? SecurityMetadata = null,
         List<WorkloadTypeToBackupSetupSpecs>? SnappableTypeToBackupSetupSpecs = null,
         SnapshotDistribution? SnapshotDistribution = null,
         AzureNativeSubscription? Subscription = null,
@@ -303,6 +315,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ProtectedObjectTypeToSla != null ) {
             this.ProtectedObjectTypeToSla = ProtectedObjectTypeToSla;
+        }
+        if ( RscNativeObjectPendingSla != null ) {
+            this.RscNativeObjectPendingSla = RscNativeObjectPendingSla;
+        }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
         }
         if ( SnappableTypeToBackupSetupSpecs != null ) {
             this.SnappableTypeToBackupSetupSpecs = SnappableTypeToBackupSetupSpecs;
@@ -583,6 +601,32 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "protectedObjectTypeToSla" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        if (this.RscNativeObjectPendingSla != null) {
+            var fspec = this.RscNativeObjectPendingSla.AsFieldSpec(conf.Child("rscNativeObjectPendingSla"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rscNativeObjectPendingSla" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1085,6 +1129,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.ProtectedObjectTypeToSla != null && ec.Excludes("protectedObjectTypeToSla",false))
         {
             this.ProtectedObjectTypeToSla = null;
+        }
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        if (ec.Includes("rscNativeObjectPendingSla",false))
+        {
+            if(this.RscNativeObjectPendingSla == null) {
+
+                this.RscNativeObjectPendingSla = new CompactSlaDomain();
+                this.RscNativeObjectPendingSla.ApplyExploratoryFieldSpec(ec.NewChild("rscNativeObjectPendingSla"));
+
+            } else {
+
+                this.RscNativeObjectPendingSla.ApplyExploratoryFieldSpec(ec.NewChild("rscNativeObjectPendingSla"));
+
+            }
+        }
+        else if (this.RscNativeObjectPendingSla != null && ec.Excludes("rscNativeObjectPendingSla",false))
+        {
+            this.RscNativeObjectPendingSla = null;
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
         }
         //      C# -> List<WorkloadTypeToBackupSetupSpecs>? SnappableTypeToBackupSetupSpecs
         // GraphQL -> snappableTypeToBackupSetupSpecs: [WorkloadTypeToBackupSetupSpecs!]! (type)

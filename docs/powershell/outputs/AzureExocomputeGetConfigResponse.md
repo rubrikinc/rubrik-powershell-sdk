@@ -17,3 +17,5 @@ Azure Exocompute configuration.
   - Specifies the error message received if any.
 - healthCheckStatus: ExocomputeHealthCheckStatus
   - Status of the latest Exocompute health check.
+- latestExoclusterDetails: ExocomputeClusterDetails
+  - Details of the latest Exocompute cluster.

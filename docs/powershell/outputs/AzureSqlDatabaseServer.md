@@ -13,6 +13,8 @@ Retrieves an Azure SQL Database Server. Refers to the server the Azure SQL Datab
   - The authorized operations on the object.
 - azureNativeResourceGroup: AzureNativeResourceGroup
   - Resource Group of the Azure SQL Database Server.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String
@@ -41,3 +43,5 @@ Retrieves an Azure SQL Database Server. Refers to the server the Azure SQL Datab
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.

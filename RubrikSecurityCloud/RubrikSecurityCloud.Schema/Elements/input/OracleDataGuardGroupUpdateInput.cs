@@ -29,11 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldBackupFromPrimaryOnly")]
         public System.Boolean? ShouldBackupFromPrimaryOnly { get; set; }
 
-        //      C# -> OracleUpdateCommonInput? OracleUpdateCommon
-        // GraphQL -> oracleUpdateCommon: OracleUpdateCommonInput (input)
-        [JsonProperty("oracleUpdateCommon")]
-        public OracleUpdateCommonInput? OracleUpdateCommon { get; set; }
-
         //      C# -> System.Boolean? ShouldUseSepsWallet
         // GraphQL -> shouldUseSepsWallet: Boolean (scalar)
         [JsonProperty("shouldUseSepsWallet")]
@@ -43,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldForceDisableDgDiscovery: Boolean (scalar)
         [JsonProperty("shouldForceDisableDgDiscovery")]
         public System.Boolean? ShouldForceDisableDgDiscovery { get; set; }
+
+        //      C# -> OracleUpdateCommonInput? OracleUpdateCommon
+        // GraphQL -> oracleUpdateCommon: OracleUpdateCommonInput (input)
+        [JsonProperty("oracleUpdateCommon")]
+        public OracleUpdateCommonInput? OracleUpdateCommon { get; set; }
 
 
         #endregion

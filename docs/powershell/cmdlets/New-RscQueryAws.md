@@ -164,6 +164,11 @@ Retrieves the versioning and object ACL state of the Amazon S3 bucket, which is 
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
 - Returns GetS3BucketStateForRecoveryReply.
+### supportedeksversions
+List of all the AWS EKS versions supported by Rubrik.
+
+- The supportedeksversions subcommand takes no arguments.
+- Returns list of System.Strings.
 ### supportedrdsdatabaseinstanceclasses
 List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version.
 

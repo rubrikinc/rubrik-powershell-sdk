@@ -15,5 +15,9 @@ Input for creating Rubrik Cloud Vault locations.
   - IP mapping for each Rubrik cluster.
 - shouldBypassProxy: System.Boolean
   - Specifies whether the proxy settings must be bypassed for  the RCV archival target.
+- redundancy: RcvRedundancy
+  - Redundancy for the RCV location.
 - rsaKey: System.String
   - RSA key for the RCV location.
+- azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput
+  - Azure Key Vault key to encrypt the archival target.

@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("naturalIds")]
         public List<System.String>? NaturalIds { get; set; }
 
+        //      C# -> List<AdGroupSpecInput>? AdGroupSpec
+        // GraphQL -> adGroupSpec: [AdGroupSpecInput!] (input)
+        [JsonProperty("adGroupSpec")]
+        public List<AdGroupSpecInput>? AdGroupSpec { get; set; }
+
 
         #endregion
 

@@ -27,3 +27,5 @@ Filters for list of Azure virtual machines.
   - Filter by the protection status of the App.
 - rbsStatusFilter: AzureVmCcOrCnpRbsConnectionStatusFilter
   - Filter by RBS connection status.
+- orgFilter: OrgFilter
+  - Filter by organization ID.

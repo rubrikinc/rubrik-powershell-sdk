@@ -11,6 +11,12 @@ Specific information for Rubrik Cloud Vault (RCV) target created on Rubrik.
   - Region of RCV target.
 - tier: RcsTierEnumType
   - Tiers for RCV target.
+- redundancy: RcvRedundancy
+  - Redundancy for RCV target.
+- redundancyState: RcvRedundancyState
+  - Redundancy state for RCV target.
+- lastRedundancySyncTime: DateTime
+  - Last time when redundancy state was synchronized for the RCV target.
 - spaceUsageAlertThreshold: System.Int32
   - Space usage threshold of RCV target above which alert will be raised.
 - syncFailureReason: System.String

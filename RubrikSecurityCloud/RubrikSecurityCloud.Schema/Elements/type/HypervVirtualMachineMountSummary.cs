@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mountRequestId")]
         public System.String? MountRequestId { get; set; }
 
+        //      C# -> DateTime? MountTime
+        // GraphQL -> mountTime: DateTime (scalar)
+        [JsonProperty("mountTime")]
+        public DateTime? MountTime { get; set; }
+
         //      C# -> System.String? MountedVmId
         // GraphQL -> mountedVmId: String (scalar)
         [JsonProperty("mountedVmId")]
@@ -113,6 +118,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsDiskLevelMount = null,
         System.Boolean? IsReady = null,
         System.String? MountRequestId = null,
+        DateTime? MountTime = null,
         System.String? MountedVmId = null,
         System.String? MountedVmName = null,
         DateTime? SnapshotDate = null,
@@ -145,6 +151,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MountRequestId != null ) {
             this.MountRequestId = MountRequestId;
+        }
+        if ( MountTime != null ) {
+            this.MountTime = MountTime;
         }
         if ( MountedVmId != null ) {
             this.MountedVmId = MountedVmId;
@@ -248,6 +257,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "mountRequestId\n" ;
             } else {
                 s += ind + "mountRequestId\n" ;
+            }
+        }
+        //      C# -> DateTime? MountTime
+        // GraphQL -> mountTime: DateTime (scalar)
+        if (this.MountTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mountTime\n" ;
+            } else {
+                s += ind + "mountTime\n" ;
             }
         }
         //      C# -> System.String? MountedVmId
@@ -455,6 +473,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MountRequestId != null && ec.Excludes("mountRequestId",true))
         {
             this.MountRequestId = null;
+        }
+        //      C# -> DateTime? MountTime
+        // GraphQL -> mountTime: DateTime (scalar)
+        if (ec.Includes("mountTime",true))
+        {
+            if(this.MountTime == null) {
+
+                this.MountTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountTime != null && ec.Excludes("mountTime",true))
+        {
+            this.MountTime = null;
         }
         //      C# -> System.String? MountedVmId
         // GraphQL -> mountedVmId: String (scalar)

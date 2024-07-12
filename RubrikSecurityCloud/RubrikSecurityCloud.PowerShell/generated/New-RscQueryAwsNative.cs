@@ -706,6 +706,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.rdsInstanceRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -778,6 +780,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		relic = $someBoolean
     /// 	}
     /// 	# OPTIONAL
+    /// 	unaccessedFilter = @{
+    /// 		# REQUIRED
+    /// 		unaccessed = $someBoolean
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	sensitivityStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		sensitivityStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	protectionStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		protectionStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	tagFilter = @{
     /// 		# REQUIRED
     /// 		tagFilterParams = @(
@@ -820,6 +841,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// }
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -909,6 +932,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.s3BucketRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1896,22 +1921,25 @@ $query.Var.isPointInTime = $someBoolean"
         }
 
         // Create new GraphQL Query:
-        // awsNativeRdsInstance(rdsInstanceRubrikId: UUID!): AwsNativeRdsInstance!
+        // awsNativeRdsInstance(rdsInstanceRubrikId: UUID!, includeSecurityMetadata: Boolean): AwsNativeRdsInstance!
         internal void InitQueryAwsNativeRdsInstance()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("rdsInstanceRubrikId", "UUID!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeRdsInstance",
-                "($rdsInstanceRubrikId: UUID!)",
+                "($rdsInstanceRubrikId: UUID!,$includeSecurityMetadata: Boolean)",
                 "AwsNativeRdsInstance",
                 Query.AwsNativeRdsInstance,
                 Query.AwsNativeRdsInstanceFieldSpec,
                 @"# REQUIRED
-$query.Var.rdsInstanceRubrikId = $someString"
+$query.Var.rdsInstanceRubrikId = $someString
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -1924,6 +1952,7 @@ $query.Var.rdsInstanceRubrikId = $someString"
         //     sortBy: AwsNativeRdsInstanceSortFields
         //     sortOrder: SortOrder
         //     rdsInstanceFilters: AwsNativeRdsInstanceFilters
+        //     includeSecurityMetadata: Boolean
         //   ): AwsNativeRdsInstanceConnection!
         internal void InitQueryAwsNativeRdsInstances()
         {
@@ -1935,12 +1964,13 @@ $query.Var.rdsInstanceRubrikId = $someString"
                 Tuple.Create("sortBy", "AwsNativeRdsInstanceSortFields"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("rdsInstanceFilters", "AwsNativeRdsInstanceFilters"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeRdsInstances",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeRdsInstanceSortFields,$sortOrder: SortOrder,$rdsInstanceFilters: AwsNativeRdsInstanceFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeRdsInstanceSortFields,$sortOrder: SortOrder,$rdsInstanceFilters: AwsNativeRdsInstanceFilters,$includeSecurityMetadata: Boolean)",
                 "AwsNativeRdsInstanceConnection",
                 Query.AwsNativeRdsInstances,
                 Query.AwsNativeRdsInstancesFieldSpec,
@@ -1990,6 +2020,25 @@ $query.Var.rdsInstanceFilters = @{
 		relic = $someBoolean
 	}
 	# OPTIONAL
+	unaccessedFilter = @{
+		# REQUIRED
+		unaccessed = $someBoolean
+	}
+	# OPTIONAL
+	sensitivityStatusFilter = @{
+		# REQUIRED
+		sensitivityStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	protectionStatusFilter = @{
+		# REQUIRED
+		protectionStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	tagFilter = @{
 		# REQUIRED
 		tagFilterParams = @(
@@ -2031,7 +2080,9 @@ $query.Var.rdsInstanceFilters = @{
 			$someString
 		)
 	}
-}"
+}
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -2088,22 +2139,25 @@ $query.Var.rdsDatabaseRubrikId = $someString"
         }
 
         // Create new GraphQL Query:
-        // awsNativeS3Bucket(s3BucketRubrikId: UUID!): AwsNativeS3Bucket!
+        // awsNativeS3Bucket(s3BucketRubrikId: UUID!, includeSecurityMetadata: Boolean): AwsNativeS3Bucket!
         internal void InitQueryAwsNativeS3Bucket()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("s3BucketRubrikId", "UUID!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeS3Bucket",
-                "($s3BucketRubrikId: UUID!)",
+                "($s3BucketRubrikId: UUID!,$includeSecurityMetadata: Boolean)",
                 "AwsNativeS3Bucket",
                 Query.AwsNativeS3Bucket,
                 Query.AwsNativeS3BucketFieldSpec,
                 @"# REQUIRED
-$query.Var.s3BucketRubrikId = $someString"
+$query.Var.s3BucketRubrikId = $someString
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 

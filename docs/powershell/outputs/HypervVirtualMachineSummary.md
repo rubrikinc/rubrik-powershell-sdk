@@ -25,5 +25,7 @@ Supported in v5.0+
 - agentStatus: CdmAgentStatus
   - Supported in v9.0+
   The status of the Rubrik Backup Service agent for virtual machines.
+- agentConnectStatus: AgentConnectStatus
+  - 
 - snappable: CdmWorkload
   - 

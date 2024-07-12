@@ -84,6 +84,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("rbsStatusFilter")]
         public AzureVmCcOrCnpRbsConnectionStatusFilter? RbsStatusFilter { get; set; }
 
+        //      C# -> OrgFilter? OrgFilter
+        // GraphQL -> orgFilter: OrgFilter (input)
+        [JsonProperty("orgFilter")]
+        public OrgFilter? OrgFilter { get; set; }
+
 
         #endregion
 

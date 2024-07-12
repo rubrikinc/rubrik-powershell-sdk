@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("type")]
         public FileTypeEnumType? Type { get; set; }
 
+        //      C# -> DateTime? CompletedAt
+        // GraphQL -> completedAt: DateTime (scalar)
+        [JsonProperty("completedAt")]
+        public DateTime? CompletedAt { get; set; }
+
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
         [JsonProperty("createdAt")]
@@ -67,6 +72,7 @@ namespace RubrikSecurityCloud.Types
     public CustomerFacingFile Set(
         FileStateEnumType? State = null,
         FileTypeEnumType? Type = null,
+        DateTime? CompletedAt = null,
         DateTime? CreatedAt = null,
         System.String? Creator = null,
         DateTime? ExpiresAt = null,
@@ -79,6 +85,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Type != null ) {
             this.Type = Type;
+        }
+        if ( CompletedAt != null ) {
+            this.CompletedAt = CompletedAt;
         }
         if ( CreatedAt != null ) {
             this.CreatedAt = CreatedAt;
@@ -122,6 +131,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "type\n" ;
             } else {
                 s += ind + "type\n" ;
+            }
+        }
+        //      C# -> DateTime? CompletedAt
+        // GraphQL -> completedAt: DateTime (scalar)
+        if (this.CompletedAt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "completedAt\n" ;
+            } else {
+                s += ind + "completedAt\n" ;
             }
         }
         //      C# -> DateTime? CreatedAt
@@ -209,6 +227,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Type != null && ec.Excludes("type",true))
         {
             this.Type = null;
+        }
+        //      C# -> DateTime? CompletedAt
+        // GraphQL -> completedAt: DateTime (scalar)
+        if (ec.Includes("completedAt",true))
+        {
+            if(this.CompletedAt == null) {
+
+                this.CompletedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CompletedAt != null && ec.Excludes("completedAt",true))
+        {
+            this.CompletedAt = null;
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)

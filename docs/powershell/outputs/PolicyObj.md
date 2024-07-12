@@ -41,6 +41,12 @@
   - Unused sensitive file count for various risk levels.
 - isUserActivityEnabled: System.Boolean
   - Specifies whether the user activity for the object is enabled.
+- dataTypeResults: list of DataTypeResults
+  - Specifies the data type level results.
+- assetMetadata: AssetMetadata
+  - Specifies the metadata of the asset.
+- objectType: DataGovObjectType
+  - Specifies the object type of the asset.
 - id: System.String
 - folderChildConnection: FileResultConnection
 - fileResultConnection: FileResultConnection

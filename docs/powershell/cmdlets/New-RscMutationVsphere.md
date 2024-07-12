@@ -9,7 +9,8 @@ Trigger a bulk on demand snapshot.
 Create a multi-tag filter for vSphere tags
 
 Supported in v7.0+
-Create a filter consisting of vSphere tags joined with logical operators.
+v7.0-v9.1: Create a filter consisting of vSphere tags joined with logical operators.
+v9.2: Create a filter consisting of vSphere tags joined with logical operators. It is not supported onStandalone Hosts.
 
 - There is a single argument of type CreateVsphereAdvancedTagInput.
 - Returns CreateVsphereAdvancedTagReply.
@@ -17,7 +18,8 @@ Create a filter consisting of vSphere tags joined with logical operators.
 Remove the multi-tag filter
 
 Supported in v7.0+
-Remove the multi-tag filter.
+v7.0-v9.1: Remove the multi-tag filter.
+v9.2: Remove the multi-tag filter. It is not supported on Standalone Hosts.
 
 - There is a single argument of type DeleteVsphereAdvancedTagInput.
 - Returns RequestSuccess.
@@ -49,7 +51,8 @@ Export snapshot of a virtual machine to standalone ESXi server.
 Update the multi-tag filter
 
 Supported in v7.0+
-Updates the name, condition, and description of the specified multi-tag filter.
+v7.0-v9.1: Updates the name, condition, and description of the specified multi-tag filter.
+v9.2: Updates the name, condition, and description of the specified multi-tag filter. It is not supported on Standalone Hosts.
 
 - There is a single argument of type UpdateVsphereAdvancedTagInput.
 - Returns UpdateVsphereAdvancedTagReply.

@@ -15,6 +15,11 @@ Returns the statistics of an M365 organization product in day-to-day mode.
     - orgId - System.String: Org UUID.
     - dashboardWorkloadType - M365DashboardWorkloadType: Workload type for M365 dashboard.
 - Returns DayToDayModeStats.
+### directoryobjectattributes
+Lists down the directory object attribute present in the Microsoft tenant.
+
+- There is a single argument of type ListM365DirectoryObjectAttributesInput.
+- Returns ListO365DirectoryObjectAttributesResp.
 ### onboardingmodebackupstats
 Returns the backup statistics of an M365 organization product in onboarding mode.
 

@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("aksId")]
         public System.String? AksId { get; set; }
 
+        //      C# -> List<System.String>? AksLbIps
+        // GraphQL -> aksLbIps: [String!]! (scalar)
+        [JsonProperty("aksLbIps")]
+        public List<System.String>? AksLbIps { get; set; }
+
         //      C# -> System.String? AksVersion
         // GraphQL -> aksVersion: String! (scalar)
         [JsonProperty("aksVersion")]
@@ -79,6 +84,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsOnMultiTenantHost
+        // GraphQL -> isOnMultiTenantHost: Boolean! (scalar)
+        [JsonProperty("isOnMultiTenantHost")]
+        public System.Boolean? IsOnMultiTenantHost { get; set; }
 
         //      C# -> System.Boolean? IsProvisioned
         // GraphQL -> isProvisioned: Boolean! (scalar)
@@ -181,12 +191,14 @@ namespace RubrikSecurityCloud.Types
         SaasFeature? SaasFeature = null,
         System.String? AcrId = null,
         System.String? AksId = null,
+        List<System.String>? AksLbIps = null,
         System.String? AksVersion = null,
         System.String? AzureAppId = null,
         System.String? ColossusBackupStorageAccountId = null,
         System.String? ExocomputeInternalStorageAccountId = null,
         System.String? GroupName = null,
         System.String? Id = null,
+        System.Boolean? IsOnMultiTenantHost = null,
         System.Boolean? IsProvisioned = null,
         DateTime? KekBackupStartTime = null,
         System.String? KmsId = null,
@@ -224,6 +236,9 @@ namespace RubrikSecurityCloud.Types
         if ( AksId != null ) {
             this.AksId = AksId;
         }
+        if ( AksLbIps != null ) {
+            this.AksLbIps = AksLbIps;
+        }
         if ( AksVersion != null ) {
             this.AksVersion = AksVersion;
         }
@@ -241,6 +256,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsOnMultiTenantHost != null ) {
+            this.IsOnMultiTenantHost = IsOnMultiTenantHost;
         }
         if ( IsProvisioned != null ) {
             this.IsProvisioned = IsProvisioned;
@@ -358,6 +376,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "aksId\n" ;
             }
         }
+        //      C# -> List<System.String>? AksLbIps
+        // GraphQL -> aksLbIps: [String!]! (scalar)
+        if (this.AksLbIps != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "aksLbIps\n" ;
+            } else {
+                s += ind + "aksLbIps\n" ;
+            }
+        }
         //      C# -> System.String? AksVersion
         // GraphQL -> aksVersion: String! (scalar)
         if (this.AksVersion != null) {
@@ -410,6 +437,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsOnMultiTenantHost
+        // GraphQL -> isOnMultiTenantHost: Boolean! (scalar)
+        if (this.IsOnMultiTenantHost != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isOnMultiTenantHost\n" ;
+            } else {
+                s += ind + "isOnMultiTenantHost\n" ;
             }
         }
         //      C# -> System.Boolean? IsProvisioned
@@ -690,6 +726,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AksId = null;
         }
+        //      C# -> List<System.String>? AksLbIps
+        // GraphQL -> aksLbIps: [String!]! (scalar)
+        if (ec.Includes("aksLbIps",true))
+        {
+            if(this.AksLbIps == null) {
+
+                this.AksLbIps = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AksLbIps != null && ec.Excludes("aksLbIps",true))
+        {
+            this.AksLbIps = null;
+        }
         //      C# -> System.String? AksVersion
         // GraphQL -> aksVersion: String! (scalar)
         if (ec.Includes("aksVersion",true))
@@ -791,6 +844,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsOnMultiTenantHost
+        // GraphQL -> isOnMultiTenantHost: Boolean! (scalar)
+        if (ec.Includes("isOnMultiTenantHost",true))
+        {
+            if(this.IsOnMultiTenantHost == null) {
+
+                this.IsOnMultiTenantHost = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsOnMultiTenantHost != null && ec.Excludes("isOnMultiTenantHost",true))
+        {
+            this.IsOnMultiTenantHost = null;
         }
         //      C# -> System.Boolean? IsProvisioned
         // GraphQL -> isProvisioned: Boolean! (scalar)

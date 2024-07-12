@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cascadingArchivalSpecs")]
         public List<CascadingArchivalSpecInput>? CascadingArchivalSpecs { get; set; }
 
+        //      C# -> List<ReplicationPairInput>? ReplicationPairs
+        // GraphQL -> replicationPairs: [ReplicationPairInput!] (input)
+        [JsonProperty("replicationPairs")]
+        public List<ReplicationPairInput>? ReplicationPairs { get; set; }
+
         //      C# -> AwsNativeRegionForReplication? AwsRegion
         // GraphQL -> awsRegion: AwsNativeRegionForReplication (enum)
         [JsonProperty("awsRegion")]

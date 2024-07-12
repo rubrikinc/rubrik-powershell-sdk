@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterId")]
         public System.String? ClusterId { get; set; }
 
+        //      C# -> System.String? ErrorInfo
+        // GraphQL -> errorInfo: String (scalar)
+        [JsonProperty("errorInfo")]
+        public System.String? ErrorInfo { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: ID! (scalar)
         [JsonProperty("id")]
@@ -96,6 +101,7 @@ namespace RubrikSecurityCloud.Types
         ActivityTypeEnum? Type = null,
         System.String? ActivityInfo = null,
         System.String? ClusterId = null,
+        System.String? ErrorInfo = null,
         System.String? Id = null,
         System.String? Message = null,
         System.String? ObjectId = null,
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ClusterId != null ) {
             this.ClusterId = ClusterId;
+        }
+        if ( ErrorInfo != null ) {
+            this.ErrorInfo = ErrorInfo;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -203,6 +212,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "clusterId\n" ;
             } else {
                 s += ind + "clusterId\n" ;
+            }
+        }
+        //      C# -> System.String? ErrorInfo
+        // GraphQL -> errorInfo: String (scalar)
+        if (this.ErrorInfo != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "errorInfo\n" ;
+            } else {
+                s += ind + "errorInfo\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -371,6 +389,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClusterId != null && ec.Excludes("clusterId",true))
         {
             this.ClusterId = null;
+        }
+        //      C# -> System.String? ErrorInfo
+        // GraphQL -> errorInfo: String (scalar)
+        if (ec.Includes("errorInfo",true))
+        {
+            if(this.ErrorInfo == null) {
+
+                this.ErrorInfo = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ErrorInfo != null && ec.Excludes("errorInfo",true))
+        {
+            this.ErrorInfo = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: ID! (scalar)

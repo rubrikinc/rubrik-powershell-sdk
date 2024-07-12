@@ -47,6 +47,10 @@ Nutanix virtual machine live mount.
   - ID of the mounted virtual machine. This may be set to null if the mount specification does not contain this information.
 - nutanixClusterFid: System.String
   - ID of the Nutanix cluster.
+- isDiskLevelMount: System.Boolean
+  - Indicates whether the mount is a disk mount.
+- attachedDiskCount: System.Int32
+  - Number of disks attached to the target virtual machine.
 - id: System.String
   - Fid of the live mount.
 - cluster: Cluster

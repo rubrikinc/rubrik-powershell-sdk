@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isStickySmbService")]
         public System.Boolean? IsStickySmbService { get; set; }
 
+        //      C# -> System.String? OrgNetworkId
+        // GraphQL -> orgNetworkId: String (scalar)
+        [JsonProperty("orgNetworkId")]
+        public System.String? OrgNetworkId { get; set; }
+
         //      C# -> System.String? Password
         // GraphQL -> password: String! (scalar)
         [Required]

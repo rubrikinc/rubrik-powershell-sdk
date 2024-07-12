@@ -179,7 +179,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -254,9 +258,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	archiveFolderAction = $someArchiveFolderAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchiveFolderAction]) for enum values.
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -339,7 +347,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -698,6 +710,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
     /// }
     /// 
@@ -875,6 +889,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	@{
     /// 		# REQUIRED
     /// 		naturalId = $someString
+    /// 		# OPTIONAL
+    /// 		channelId = $someString
     /// 		# REQUIRED
     /// 		name = $someString
     /// 		# REQUIRED
@@ -1001,6 +1017,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
     /// }
     /// 
@@ -1326,7 +1344,11 @@ $query.Var.contactsSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	skipRifItems = $someBoolean
 }"
             );
         }
@@ -1403,9 +1425,13 @@ $query.Var.searchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
 	# OPTIONAL
 	archiveFolderAction = $someArchiveFolderAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchiveFolderAction]) for enum values.
+	# OPTIONAL
+	skipRifItems = $someBoolean
 }"
             );
         }
@@ -1490,7 +1516,11 @@ $query.Var.calendarSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	skipRifItems = $someBoolean
 }"
             );
         }
@@ -1867,6 +1897,8 @@ $query.Var.onedriveSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
 }"
             );
@@ -2056,6 +2088,8 @@ $query.Var.teamConvChannels = @(
 	@{
 		# REQUIRED
 		naturalId = $someString
+		# OPTIONAL
+		channelId = $someString
 		# REQUIRED
 		name = $someString
 		# REQUIRED
@@ -2188,6 +2222,8 @@ $query.Var.teamsDriveSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
 }"
             );

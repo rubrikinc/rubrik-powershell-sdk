@@ -18,6 +18,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS")]
         AWS,
 
+        [EnumMember(Value = "AWS_SECRET_REGION_DCA")]
+        AWS_SECRET_REGION_DCA,
+
+        [EnumMember(Value = "AWS_SECRET_REGION_LCK")]
+        AWS_SECRET_REGION_LCK,
+
         [EnumMember(Value = "AZURE")]
         AZURE,
 

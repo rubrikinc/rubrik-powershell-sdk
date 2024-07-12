@@ -378,6 +378,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HAS_EXPIRED_INDEXED_SNAPSHOTS")]
         HAS_EXPIRED_INDEXED_SNAPSHOTS,
 
+        [EnumMember(Value = "HAS_EXPIRED_NON_GCED_SNAPSHOTS")]
+        HAS_EXPIRED_NON_GCED_SNAPSHOTS,
+
+        [EnumMember(Value = "HAS_EXPIRED_NON_GCED_SNAPSHOT_COUNT_UNSET")]
+        HAS_EXPIRED_NON_GCED_SNAPSHOT_COUNT_UNSET,
+
         [EnumMember(Value = "HAS_PARENT_SNAPPABLE")]
         HAS_PARENT_SNAPPABLE,
 
@@ -458,6 +464,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "IS_REPLICATED")]
         IS_REPLICATED,
+
+        [EnumMember(Value = "IS_UNACCESSED")]
+        IS_UNACCESSED,
 
         [EnumMember(Value = "IS_UNMANAGED_OBJECT")]
         IS_UNMANAGED_OBJECT,
@@ -609,6 +618,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ON_OR_ABOVE_CLUSTER_VERSION")]
         ON_OR_ABOVE_CLUSTER_VERSION,
 
+        [EnumMember(Value = "ORACLE_OS_TYPE")]
+        ORACLE_OS_TYPE,
+
         [EnumMember(Value = "ORGANIZATION_ID")]
         ORGANIZATION_ID,
 
@@ -633,6 +645,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PHYSICAL_HOST_EFFECTIVE_SLA")]
         PHYSICAL_HOST_EFFECTIVE_SLA,
 
+        [EnumMember(Value = "PHYSICAL_HOST_EXCLUDE_IDS")]
+        PHYSICAL_HOST_EXCLUDE_IDS,
+
         [EnumMember(Value = "PHYSICAL_HOST_ID")]
         PHYSICAL_HOST_ID,
 
@@ -642,11 +657,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POSTGRES_DB_CLUSTER_ID")]
         POSTGRES_DB_CLUSTER_ID,
 
+        [EnumMember(Value = "PROTECTION_STATUS")]
+        PROTECTION_STATUS,
+
         [EnumMember(Value = "RECOVERY_PLAN_NAME")]
         RECOVERY_PLAN_NAME,
 
         [EnumMember(Value = "RECOVERY_PLAN_TYPE")]
         RECOVERY_PLAN_TYPE,
+
+        [EnumMember(Value = "RECOVERY_PLAN_WORKLOAD_TYPE")]
+        RECOVERY_PLAN_WORKLOAD_TYPE,
 
         [EnumMember(Value = "RECOVERY_STATUS")]
         RECOVERY_STATUS,
@@ -666,6 +687,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SAASAPPS_NATURAL_ID")]
         SAASAPPS_NATURAL_ID,
 
+        [EnumMember(Value = "SAASAPPS_ORGANIZATION_SCOPE")]
+        SAASAPPS_ORGANIZATION_SCOPE,
+
         [EnumMember(Value = "SALESFORCE_NAME_OR_LABEL")]
         SALESFORCE_NAME_OR_LABEL,
 
@@ -684,6 +708,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SAP_HANA_SYSTEM_STATUS")]
         SAP_HANA_SYSTEM_STATUS,
 
+        [EnumMember(Value = "SENSITIVITY_STATUS")]
+        SENSITIVITY_STATUS,
+
         [EnumMember(Value = "TOP_LEVEL_SITES_OF_O365_ORG")]
         TOP_LEVEL_SITES_OF_O365_ORG,
 
@@ -693,8 +720,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VCD_VAPP_TYPE")]
         VCD_VAPP_TYPE,
 
+        [EnumMember(Value = "VMWARE_IS_STANDALONE_HOST")]
+        VMWARE_IS_STANDALONE_HOST,
+
         [EnumMember(Value = "VMWARE_VCD_HOSTNAME")]
         VMWARE_VCD_HOSTNAME,
+
+        [EnumMember(Value = "VMWARE_VM_MOID")]
+        VMWARE_VM_MOID,
 
         [EnumMember(Value = "VMWARE_VM_TEMPLATE_TYPE")]
         VMWARE_VM_TEMPLATE_TYPE,

@@ -29,11 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("subnet")]
         public System.String? Subnet { get; set; }
 
-        //      C# -> SlaManagedVolumeClientConfigInput? SlaClientConfig
-        // GraphQL -> slaClientConfig: SlaManagedVolumeClientConfigInput (input)
-        [JsonProperty("slaClientConfig")]
-        public SlaManagedVolumeClientConfigInput? SlaClientConfig { get; set; }
-
         //      C# -> ManagedVolumeApplicationTag? ApplicationTag
         // GraphQL -> applicationTag: ManagedVolumeApplicationTag (enum)
         [JsonProperty("applicationTag")]
@@ -57,6 +52,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("name")]
         public System.String? Name { get; set; }
+
+        //      C# -> SlaManagedVolumeClientConfigInput? SlaClientConfig
+        // GraphQL -> slaClientConfig: SlaManagedVolumeClientConfigInput (input)
+        [JsonProperty("slaClientConfig")]
+        public SlaManagedVolumeClientConfigInput? SlaClientConfig { get; set; }
 
         //      C# -> System.Int64? VolumeSize
         // GraphQL -> volumeSize: Long! (scalar)

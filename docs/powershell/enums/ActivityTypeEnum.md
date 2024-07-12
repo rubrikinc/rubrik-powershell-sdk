@@ -48,6 +48,7 @@ Enum representing different type of activities.
 - ResourceOperations
 - Backup
 - Sync
+- TENANT_QUOTA - Activity representing tenant quota event type.
 - Hardware
 - TestFailover
 - Recovery
@@ -58,3 +59,4 @@ Enum representing different type of activities.
 - VCenter
 - Index
 - ThreatHunt
+- USER_INTELLIGENCE - Activity representing the user intelligence event type.

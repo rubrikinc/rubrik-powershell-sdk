@@ -131,6 +131,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allOrgs")]
         public List<Org>? AllOrgs { get; set; }
 
+        //      C# -> AzureApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs
+        // GraphQL -> applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig! (type)
+        [JsonProperty("applicationCloudAccountExoConfigs")]
+        public AzureApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs { get; set; }
+
         //      C# -> AzureNativeResourceGroupConnection? AzureNativeResourceGroups
         // GraphQL -> azureNativeResourceGroups: AzureNativeResourceGroupConnection! (type)
         [JsonProperty("azureNativeResourceGroups")]
@@ -160,6 +165,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> regionSpecs: [AzureNativeRegionSpec!]! (type)
         [JsonProperty("regionSpecs")]
         public List<AzureNativeRegionSpec>? RegionSpecs { get; set; }
+
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        [JsonProperty("rscNativeObjectPendingSla")]
+        public CompactSlaDomain? RscNativeObjectPendingSla { get; set; }
+
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
 
         //      C# -> List<WorkloadTypeToBackupSetupSpecs>? SnappableTypeToBackupSetupSpecs
         // GraphQL -> snappableTypeToBackupSetupSpecs: [WorkloadTypeToBackupSetupSpecs!]! (type)
@@ -228,12 +243,15 @@ namespace RubrikSecurityCloud.Types
         System.String? TenantId = null,
         System.Int32? VmsCount = null,
         List<Org>? AllOrgs = null,
+        AzureApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs = null,
         AzureNativeResourceGroupConnection? AzureNativeResourceGroups = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<AzureNativeSubscriptionEnabledFeature>? EnabledFeatures = null,
         List<PathNode>? LogicalPath = null,
         List<PathNode>? PhysicalPath = null,
         List<AzureNativeRegionSpec>? RegionSpecs = null,
+        CompactSlaDomain? RscNativeObjectPendingSla = null,
+        SecurityMetadata? SecurityMetadata = null,
         List<WorkloadTypeToBackupSetupSpecs>? SnappableTypeToBackupSetupSpecs = null,
         SnapshotDistribution? SnapshotDistribution = null
     ) 
@@ -304,6 +322,9 @@ namespace RubrikSecurityCloud.Types
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
         }
+        if ( ApplicationCloudAccountExoConfigs != null ) {
+            this.ApplicationCloudAccountExoConfigs = ApplicationCloudAccountExoConfigs;
+        }
         if ( AzureNativeResourceGroups != null ) {
             this.AzureNativeResourceGroups = AzureNativeResourceGroups;
         }
@@ -321,6 +342,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RegionSpecs != null ) {
             this.RegionSpecs = RegionSpecs;
+        }
+        if ( RscNativeObjectPendingSla != null ) {
+            this.RscNativeObjectPendingSla = RscNativeObjectPendingSla;
+        }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
         }
         if ( SnappableTypeToBackupSetupSpecs != null ) {
             this.SnappableTypeToBackupSetupSpecs = SnappableTypeToBackupSetupSpecs;
@@ -553,6 +580,19 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> AzureApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs
+        // GraphQL -> applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig! (type)
+        if (this.ApplicationCloudAccountExoConfigs != null) {
+            var fspec = this.ApplicationCloudAccountExoConfigs.AsFieldSpec(conf.Child("applicationCloudAccountExoConfigs"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "applicationCloudAccountExoConfigs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureNativeResourceGroupConnection? AzureNativeResourceGroups
         // GraphQL -> azureNativeResourceGroups: AzureNativeResourceGroupConnection! (type)
         if (this.AzureNativeResourceGroups != null) {
@@ -628,6 +668,32 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "regionSpecs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        if (this.RscNativeObjectPendingSla != null) {
+            var fspec = this.RscNativeObjectPendingSla.AsFieldSpec(conf.Child("rscNativeObjectPendingSla"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rscNativeObjectPendingSla" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1046,6 +1112,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.AllOrgs = null;
         }
+        //      C# -> AzureApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs
+        // GraphQL -> applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig! (type)
+        if (ec.Includes("applicationCloudAccountExoConfigs",false))
+        {
+            if(this.ApplicationCloudAccountExoConfigs == null) {
+
+                this.ApplicationCloudAccountExoConfigs = new AzureApplicationCloudAccountToExocomputeConfig();
+                this.ApplicationCloudAccountExoConfigs.ApplyExploratoryFieldSpec(ec.NewChild("applicationCloudAccountExoConfigs"));
+
+            } else {
+
+                this.ApplicationCloudAccountExoConfigs.ApplyExploratoryFieldSpec(ec.NewChild("applicationCloudAccountExoConfigs"));
+
+            }
+        }
+        else if (this.ApplicationCloudAccountExoConfigs != null && ec.Excludes("applicationCloudAccountExoConfigs",false))
+        {
+            this.ApplicationCloudAccountExoConfigs = null;
+        }
         //      C# -> AzureNativeResourceGroupConnection? AzureNativeResourceGroups
         // GraphQL -> azureNativeResourceGroups: AzureNativeResourceGroupConnection! (type)
         if (ec.Includes("azureNativeResourceGroups",false))
@@ -1159,6 +1244,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.RegionSpecs != null && ec.Excludes("regionSpecs",false))
         {
             this.RegionSpecs = null;
+        }
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        if (ec.Includes("rscNativeObjectPendingSla",false))
+        {
+            if(this.RscNativeObjectPendingSla == null) {
+
+                this.RscNativeObjectPendingSla = new CompactSlaDomain();
+                this.RscNativeObjectPendingSla.ApplyExploratoryFieldSpec(ec.NewChild("rscNativeObjectPendingSla"));
+
+            } else {
+
+                this.RscNativeObjectPendingSla.ApplyExploratoryFieldSpec(ec.NewChild("rscNativeObjectPendingSla"));
+
+            }
+        }
+        else if (this.RscNativeObjectPendingSla != null && ec.Excludes("rscNativeObjectPendingSla",false))
+        {
+            this.RscNativeObjectPendingSla = null;
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
         }
         //      C# -> List<WorkloadTypeToBackupSetupSpecs>? SnappableTypeToBackupSetupSpecs
         // GraphQL -> snappableTypeToBackupSetupSpecs: [WorkloadTypeToBackupSetupSpecs!]! (type)

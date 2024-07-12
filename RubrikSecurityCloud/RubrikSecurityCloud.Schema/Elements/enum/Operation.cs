@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APPROVE_TPR_REQUEST")]
         APPROVE_TPR_REQUEST,
 
+        [EnumMember(Value = "ASSIGN_KMS_KEY_VAULT")]
+        ASSIGN_KMS_KEY_VAULT,
+
         [EnumMember(Value = "CANCEL_RUNNING_ACTIVITY")]
         CANCEL_RUNNING_ACTIVITY,
 
@@ -119,6 +122,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "DOWNLOAD_FROM_ARCHIVAL_LOCATION")]
         DOWNLOAD_FROM_ARCHIVAL_LOCATION,
+
+        [EnumMember(Value = "DOWNLOAD_NUTANIX_VDISK")]
+        DOWNLOAD_NUTANIX_VDISK,
 
         [EnumMember(Value = "DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET")]
         DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET,
@@ -225,6 +231,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_GUEST_OS_CREDENTIAL")]
         MANAGE_GUEST_OS_CREDENTIAL,
 
+        [EnumMember(Value = "MANAGE_KMS_KEY_VAULT")]
+        MANAGE_KMS_KEY_VAULT,
+
         [EnumMember(Value = "MANAGE_LEGAL_HOLD")]
         MANAGE_LEGAL_HOLD,
 
@@ -252,8 +261,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_SNMP")]
         MANAGE_SNMP,
 
+        [EnumMember(Value = "MANAGE_STORAGE_ENCRYPTION")]
+        MANAGE_STORAGE_ENCRYPTION,
+
         [EnumMember(Value = "MANAGE_SUPPORT_BUNDLE")]
         MANAGE_SUPPORT_BUNDLE,
+
+        [EnumMember(Value = "MANAGE_SUPPORT_TUNNEL")]
+        MANAGE_SUPPORT_TUNNEL,
 
         [EnumMember(Value = "MANAGE_SYSLOG")]
         MANAGE_SYSLOG,
@@ -290,6 +305,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MOUNT")]
         MOUNT,
+
+        [EnumMember(Value = "MOUNT_NUTANIX_VDISK")]
+        MOUNT_NUTANIX_VDISK,
 
         [EnumMember(Value = "PROVISION_ON_INFRASTRUCTURE")]
         PROVISION_ON_INFRASTRUCTURE,
@@ -341,6 +359,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_ACCESS")]
         VIEW_ACCESS,
+
+        [EnumMember(Value = "VIEW_ANOMALY_DETECTION_RESULTS")]
+        VIEW_ANOMALY_DETECTION_RESULTS,
 
         [EnumMember(Value = "VIEW_ARCHIVAL_LOCATION")]
         VIEW_ARCHIVAL_LOCATION,
@@ -410,6 +431,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_IP_ADDRESS_IN_AUDITS")]
         VIEW_IP_ADDRESS_IN_AUDITS,
+
+        [EnumMember(Value = "VIEW_KMS_KEY_VAULT")]
+        VIEW_KMS_KEY_VAULT,
 
         [EnumMember(Value = "VIEW_LICENSE_DASHBOARD")]
         VIEW_LICENSE_DASHBOARD,

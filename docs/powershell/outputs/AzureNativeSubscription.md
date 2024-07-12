@@ -31,8 +31,12 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - Cloud account ID associated with the subscription.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
   - The authorized operations on the object.
+- applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig
+  - List of Exocompute configurations for the Azure subscription.
 - azureNativeResourceGroups: AzureNativeResourceGroupConnection
   - Paginated list of all Azure Resource Groups in the subscription.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String
@@ -61,3 +65,5 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.

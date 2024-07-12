@@ -123,6 +123,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// )
     /// # OPTIONAL
     /// $query.Var.nameFilter = $someString
+    /// # OPTIONAL
+    /// $query.Var.integrationSortBy = $someIntegrationSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IntegrationSortBy]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -225,18 +229,25 @@ $query.Var.id = $someInt"
         }
 
         // Create new GraphQL Query:
-        // allIntegrations(integrationTypes: [IntegrationType!]!, nameFilter: String): ListIntegrationsReply!
+        // allIntegrations(
+        //     integrationTypes: [IntegrationType!]!
+        //     nameFilter: String
+        //     integrationSortBy: IntegrationSortBy
+        //     sortOrder: SortOrder
+        //   ): ListIntegrationsReply!
         internal void InitQueryAllIntegrations()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("integrationTypes", "[IntegrationType!]!"),
                 Tuple.Create("nameFilter", "String"),
+                Tuple.Create("integrationSortBy", "IntegrationSortBy"),
+                Tuple.Create("sortOrder", "SortOrder"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllIntegrations",
-                "($integrationTypes: [IntegrationType!]!,$nameFilter: String)",
+                "($integrationTypes: [IntegrationType!]!,$nameFilter: String,$integrationSortBy: IntegrationSortBy,$sortOrder: SortOrder)",
                 "ListIntegrationsReply",
                 Query.AllIntegrations,
                 Query.AllIntegrationsFieldSpec,
@@ -245,7 +256,11 @@ $query.Var.integrationTypes = @(
 	$someIntegrationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IntegrationType]) for enum values.
 )
 # OPTIONAL
-$query.Var.nameFilter = $someString"
+$query.Var.nameFilter = $someString
+# OPTIONAL
+$query.Var.integrationSortBy = $someIntegrationSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IntegrationSortBy]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 

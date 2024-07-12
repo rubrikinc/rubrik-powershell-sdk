@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MEDIUM_RISK_ANALYZER_HITS")]
         MEDIUM_RISK_ANALYZER_HITS,
 
+        [EnumMember(Value = "NO_RISK_ANALYZER_HITS")]
+        NO_RISK_ANALYZER_HITS,
+
         [EnumMember(Value = "OPEN_ACCESS")]
         OPEN_ACCESS,
 

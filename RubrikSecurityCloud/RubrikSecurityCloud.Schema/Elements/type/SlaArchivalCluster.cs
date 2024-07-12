@@ -30,6 +30,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        [JsonProperty("version")]
+        public System.String? Version { get; set; }
+
+        //      C# -> DataLocationClusterInfo? ClusterInfo
+        // GraphQL -> clusterInfo: DataLocationClusterInfo! (union)
+        [JsonProperty("clusterInfo")]
+        public RscInterface<DataLocationClusterInfo> ClusterInfo { get; set; }
+
 
         #endregion
 
@@ -41,7 +51,9 @@ namespace RubrikSecurityCloud.Types
 
     public SlaArchivalCluster Set(
         System.String? Id = null,
-        System.String? Name = null
+        System.String? Name = null,
+        System.String? Version = null,
+        RscInterface<DataLocationClusterInfo> ClusterInfo = null
     ) 
     {
         if ( Id != null ) {
@@ -49,6 +61,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( Version != null ) {
+            this.Version = Version;
+        }
+        if ( ClusterInfo != null ) {
+            this.ClusterInfo = ClusterInfo;
         }
         return this;
     }
@@ -77,6 +95,28 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        if (this.Version != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
+            }
+        }
+        //      C# -> DataLocationClusterInfo? ClusterInfo
+        // GraphQL -> clusterInfo: DataLocationClusterInfo! (union)
+        if (this.ClusterInfo != null) {
+            var fspec = this.ClusterInfo.AsFieldSpec(conf.Child("clusterInfo"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "clusterInfo" + " " + "{\n" + fspec + ind + "}\n";
+                }
             }
         }
         return s;
@@ -119,6 +159,42 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        if (ec.Includes("version",true))
+        {
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
+        }
+        //      C# -> DataLocationClusterInfo? ClusterInfo
+        // GraphQL -> clusterInfo: DataLocationClusterInfo! (union)
+        if (ec.Includes("clusterInfo",false))
+        {
+            if(this.ClusterInfo == null) {
+
+                this.ClusterInfo = new RscInterface<DataLocationClusterInfo>();
+                this.ClusterInfo.ApplyExploratoryFieldSpec(ec.NewChild("clusterInfo"));
+
+            } else {
+
+                this.ClusterInfo.ApplyExploratoryFieldSpec(ec.NewChild("clusterInfo"));
+
+            }
+        }
+        else if (this.ClusterInfo != null && ec.Excludes("clusterInfo",false))
+        {
+            this.ClusterInfo = null;
         }
     }
 

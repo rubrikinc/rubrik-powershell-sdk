@@ -15,6 +15,8 @@ Details of the Azure AD directory object.
   - User count from the latest snapshot.
 - latestGroupCount: System.Int32
   - Group count from the latest snapshot.
+- latestRolesCount: System.Int32
+  - Roles count from the latest snapshot.
 - isProvisioned: System.Boolean
   - Specifies whether the infrastructure has been provisioned to enable protection for this Azure AD.
 - latestSnapshotTime: DateTime
@@ -53,6 +55,10 @@ Details of the Azure AD directory object.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

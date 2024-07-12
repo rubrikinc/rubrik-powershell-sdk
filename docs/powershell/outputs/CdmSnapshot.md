@@ -20,6 +20,8 @@
   - Contains info regarding legal hold on snapshot, null otherwise.
 - resourceSpec: System.String
   - Resource spec for a snapshot.
+- subObjs: list of SnapshotSubObjects
+  - Sub objects for the snapshot.
 - cluster: Cluster
 - parentSnapshotId: System.String
   - The ID of the parent snapshot.
@@ -33,6 +35,8 @@
   - Managed Volume specific metadata for the snapshot. Null if snapshot is not of a managed volume.
 - activeDirectoryAppMetadata: ActiveDirectoryAppMetadata
   - Active Directory specific metadata for the snapshot. Null if snapshot is not of a domain controller.
+- postgresDbClusterAppMetadata: KosmosWorkloadAppMetadata
+  - PostgreSQL Database Cluster-specific metadata. Null if the snapshot is not of a PostgreSQL Database Cluster.
 - fileCount: System.Int64
   - Number of files in the snapshot.
 - pendingSnapshotDeletion: PendingSnapshotDeletion

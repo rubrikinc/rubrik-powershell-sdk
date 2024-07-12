@@ -30,6 +30,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("description")]
         public System.String? Description { get; set; }
 
+        //      C# -> System.Int64? IntegrationId
+        // GraphQL -> integrationId: Long (scalar)
+        [JsonProperty("integrationId")]
+        public System.Int64? IntegrationId { get; set; }
+
+        //      C# -> System.String? IntegrationName
+        // GraphQL -> integrationName: String (scalar)
+        [JsonProperty("integrationName")]
+        public System.String? IntegrationName { get; set; }
+
         //      C# -> DateTime? LastLogin
         // GraphQL -> lastLogin: DateTime (scalar)
         [JsonProperty("lastLogin")]
@@ -57,6 +67,8 @@ namespace RubrikSecurityCloud.Types
     public ServiceAccount Set(
         System.String? ClientId = null,
         System.String? Description = null,
+        System.Int64? IntegrationId = null,
+        System.String? IntegrationName = null,
         DateTime? LastLogin = null,
         System.String? Name = null,
         List<Role>? Roles = null
@@ -67,6 +79,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Description != null ) {
             this.Description = Description;
+        }
+        if ( IntegrationId != null ) {
+            this.IntegrationId = IntegrationId;
+        }
+        if ( IntegrationName != null ) {
+            this.IntegrationName = IntegrationName;
         }
         if ( LastLogin != null ) {
             this.LastLogin = LastLogin;
@@ -104,6 +122,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "description\n" ;
             } else {
                 s += ind + "description\n" ;
+            }
+        }
+        //      C# -> System.Int64? IntegrationId
+        // GraphQL -> integrationId: Long (scalar)
+        if (this.IntegrationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "integrationId\n" ;
+            } else {
+                s += ind + "integrationId\n" ;
+            }
+        }
+        //      C# -> System.String? IntegrationName
+        // GraphQL -> integrationName: String (scalar)
+        if (this.IntegrationName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "integrationName\n" ;
+            } else {
+                s += ind + "integrationName\n" ;
             }
         }
         //      C# -> DateTime? LastLogin
@@ -177,6 +213,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.Description != null && ec.Excludes("description",true))
         {
             this.Description = null;
+        }
+        //      C# -> System.Int64? IntegrationId
+        // GraphQL -> integrationId: Long (scalar)
+        if (ec.Includes("integrationId",true))
+        {
+            if(this.IntegrationId == null) {
+
+                this.IntegrationId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IntegrationId != null && ec.Excludes("integrationId",true))
+        {
+            this.IntegrationId = null;
+        }
+        //      C# -> System.String? IntegrationName
+        // GraphQL -> integrationName: String (scalar)
+        if (ec.Includes("integrationName",true))
+        {
+            if(this.IntegrationName == null) {
+
+                this.IntegrationName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.IntegrationName != null && ec.Excludes("integrationName",true))
+        {
+            this.IntegrationName = null;
         }
         //      C# -> DateTime? LastLogin
         // GraphQL -> lastLogin: DateTime (scalar)

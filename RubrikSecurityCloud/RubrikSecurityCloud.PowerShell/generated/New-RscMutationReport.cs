@@ -319,6 +319,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	updateCreator = $someBoolean
     /// 	# OPTIONAL
+    /// 	timeZone = $someString
+    /// 	# OPTIONAL
     /// 	weeklyDays = @(
     /// 		$someWeekDay # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekDay]) for enum values.
     /// 	)
@@ -807,6 +809,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
+    /// 		timeZone = $someString
+    /// 		# OPTIONAL
     /// 		updateCreator = $someBoolean
     /// 		# OPTIONAL
     /// 		weeklyDays = @(
@@ -1241,6 +1245,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	updateCreator = $someBoolean
 	# OPTIONAL
+	timeZone = $someString
+	# OPTIONAL
 	weeklyDays = @(
 		$someWeekDay # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekDay]) for enum values.
 	)
@@ -1664,6 +1670,8 @@ $query.Var.input = @{
 		nonRubrikRecipientEmails = @(
 			$someString
 		)
+		# OPTIONAL
+		timeZone = $someString
 		# OPTIONAL
 		updateCreator = $someBoolean
 		# OPTIONAL

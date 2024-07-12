@@ -13,3 +13,5 @@ Configuration for O365 mailbox restore.
   - Specifies the recovery type for the job.
 - inplaceRestoreConfig: InplaceRestoreConfig
   - In-place restore configuration for restore job.
+- skipRifItems: System.Boolean
+  - Specifies whether to skip items in the Recoverable Items folder.

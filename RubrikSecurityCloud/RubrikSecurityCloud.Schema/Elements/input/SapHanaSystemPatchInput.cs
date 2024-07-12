@@ -49,20 +49,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("username")]
         public System.String? Username { get; set; }
 
-        //      C# -> SapHanaSslInfoInput? SslInfo
-        // GraphQL -> sslInfo: SapHanaSslInfoInput (input)
-        [JsonProperty("sslInfo")]
-        public SapHanaSslInfoInput? SslInfo { get; set; }
+        //      C# -> System.String? AzureFeatureId
+        // GraphQL -> azureFeatureId: String (scalar)
+        [JsonProperty("azureFeatureId")]
+        public System.String? AzureFeatureId { get; set; }
 
         //      C# -> SapHanaSystemAuthTypeSpecInput? AuthTypeSpec
         // GraphQL -> authTypeSpec: SapHanaSystemAuthTypeSpecInput (input)
         [JsonProperty("authTypeSpec")]
         public SapHanaSystemAuthTypeSpecInput? AuthTypeSpec { get; set; }
 
-        //      C# -> System.String? AzureFeatureId
-        // GraphQL -> azureFeatureId: String (scalar)
-        [JsonProperty("azureFeatureId")]
-        public System.String? AzureFeatureId { get; set; }
+        //      C# -> SapHanaSslInfoInput? SslInfo
+        // GraphQL -> sslInfo: SapHanaSslInfoInput (input)
+        [JsonProperty("sslInfo")]
+        public SapHanaSslInfoInput? SslInfo { get; set; }
 
 
         #endregion

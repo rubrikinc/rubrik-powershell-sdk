@@ -19,21 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> SlaManagedVolumeScriptConfigInput? PostBackupScriptOnBackupFailure
-        // GraphQL -> postBackupScriptOnBackupFailure: SlaManagedVolumeScriptConfigInput (input)
-        [JsonProperty("postBackupScriptOnBackupFailure")]
-        public SlaManagedVolumeScriptConfigInput? PostBackupScriptOnBackupFailure { get; set; }
-
-        //      C# -> SlaManagedVolumeScriptConfigInput? PostBackupScriptOnBackupSuccess
-        // GraphQL -> postBackupScriptOnBackupSuccess: SlaManagedVolumeScriptConfigInput (input)
-        [JsonProperty("postBackupScriptOnBackupSuccess")]
-        public SlaManagedVolumeScriptConfigInput? PostBackupScriptOnBackupSuccess { get; set; }
-
-        //      C# -> SlaManagedVolumeScriptConfigInput? PreBackupScript
-        // GraphQL -> preBackupScript: SlaManagedVolumeScriptConfigInput (input)
-        [JsonProperty("preBackupScript")]
-        public SlaManagedVolumeScriptConfigInput? PreBackupScript { get; set; }
-
         //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
         // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean (scalar)
         [JsonProperty("shouldCancelBackupOnPreBackupScriptFailure")]
@@ -64,6 +49,21 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("clientHostId")]
         public System.String? ClientHostId { get; set; }
+
+        //      C# -> SlaManagedVolumeScriptConfigInput? PostBackupScriptOnBackupFailure
+        // GraphQL -> postBackupScriptOnBackupFailure: SlaManagedVolumeScriptConfigInput (input)
+        [JsonProperty("postBackupScriptOnBackupFailure")]
+        public SlaManagedVolumeScriptConfigInput? PostBackupScriptOnBackupFailure { get; set; }
+
+        //      C# -> SlaManagedVolumeScriptConfigInput? PostBackupScriptOnBackupSuccess
+        // GraphQL -> postBackupScriptOnBackupSuccess: SlaManagedVolumeScriptConfigInput (input)
+        [JsonProperty("postBackupScriptOnBackupSuccess")]
+        public SlaManagedVolumeScriptConfigInput? PostBackupScriptOnBackupSuccess { get; set; }
+
+        //      C# -> SlaManagedVolumeScriptConfigInput? PreBackupScript
+        // GraphQL -> preBackupScript: SlaManagedVolumeScriptConfigInput (input)
+        [JsonProperty("preBackupScript")]
+        public SlaManagedVolumeScriptConfigInput? PreBackupScript { get; set; }
 
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)

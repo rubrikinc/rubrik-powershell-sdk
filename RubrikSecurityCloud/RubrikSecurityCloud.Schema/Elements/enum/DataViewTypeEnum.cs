@@ -15,8 +15,8 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DataViewTypeEnum
     {
-        [EnumMember(Value = "ANOMALY_DETECTION")]
-        ANOMALY_DETECTION,
+        [EnumMember(Value = "ANOMALIES")]
+        ANOMALIES,
 
         [EnumMember(Value = "AUDIT_LIST")]
         AUDIT_LIST,
@@ -26,6 +26,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CDM_UPGRADES")]
         CDM_UPGRADES,
+
+        [EnumMember(Value = "CLUSTERS")]
+        CLUSTERS,
 
         [EnumMember(Value = "GLOBAL_OBJECT")]
         GLOBAL_OBJECT,
@@ -69,8 +72,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MONITORING_TASK_COUNT_TIME_SERIES")]
         MONITORING_TASK_COUNT_TIME_SERIES,
 
-        [EnumMember(Value = "NF_ANOMALY_DETECTION")]
-        NF_ANOMALY_DETECTION,
+        [EnumMember(Value = "NF_ANOMALIES")]
+        NF_ANOMALIES,
 
         [EnumMember(Value = "OBJECT_AUDIT_DETAIL")]
         OBJECT_AUDIT_DETAIL,

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mediumRiskHits")]
         public SummaryHits? MediumRiskHits { get; set; }
 
+        //      C# -> SummaryHits? NoRiskHits
+        // GraphQL -> noRiskHits: SummaryHits (type)
+        [JsonProperty("noRiskHits")]
+        public SummaryHits? NoRiskHits { get; set; }
+
         //      C# -> SummaryHits? TotalHits
         // GraphQL -> totalHits: SummaryHits (type)
         [JsonProperty("totalHits")]
@@ -53,6 +58,7 @@ namespace RubrikSecurityCloud.Types
         SummaryHits? HighRiskHits = null,
         SummaryHits? LowRiskHits = null,
         SummaryHits? MediumRiskHits = null,
+        SummaryHits? NoRiskHits = null,
         SummaryHits? TotalHits = null
     ) 
     {
@@ -64,6 +70,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MediumRiskHits != null ) {
             this.MediumRiskHits = MediumRiskHits;
+        }
+        if ( NoRiskHits != null ) {
+            this.NoRiskHits = NoRiskHits;
         }
         if ( TotalHits != null ) {
             this.TotalHits = TotalHits;
@@ -115,6 +124,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "mediumRiskHits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SummaryHits? NoRiskHits
+        // GraphQL -> noRiskHits: SummaryHits (type)
+        if (this.NoRiskHits != null) {
+            var fspec = this.NoRiskHits.AsFieldSpec(conf.Child("noRiskHits"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "noRiskHits" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -194,6 +216,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.MediumRiskHits != null && ec.Excludes("mediumRiskHits",false))
         {
             this.MediumRiskHits = null;
+        }
+        //      C# -> SummaryHits? NoRiskHits
+        // GraphQL -> noRiskHits: SummaryHits (type)
+        if (ec.Includes("noRiskHits",false))
+        {
+            if(this.NoRiskHits == null) {
+
+                this.NoRiskHits = new SummaryHits();
+                this.NoRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("noRiskHits"));
+
+            } else {
+
+                this.NoRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("noRiskHits"));
+
+            }
+        }
+        else if (this.NoRiskHits != null && ec.Excludes("noRiskHits",false))
+        {
+            this.NoRiskHits = null;
         }
         //      C# -> SummaryHits? TotalHits
         // GraphQL -> totalHits: SummaryHits (type)

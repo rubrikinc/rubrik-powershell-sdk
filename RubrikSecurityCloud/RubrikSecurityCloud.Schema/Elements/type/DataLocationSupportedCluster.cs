@@ -25,6 +25,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("apiVersion")]
         public System.String? ApiVersion { get; set; }
 
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean! (scalar)
+        [JsonProperty("isAirGapped")]
+        public System.Boolean? IsAirGapped { get; set; }
+
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        [JsonProperty("isArchived")]
+        public System.Boolean? IsArchived { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -51,6 +61,8 @@ namespace RubrikSecurityCloud.Types
 
     public DataLocationSupportedCluster Set(
         System.String? ApiVersion = null,
+        System.Boolean? IsAirGapped = null,
+        System.Boolean? IsArchived = null,
         System.String? Name = null,
         System.String? Uuid = null,
         System.String? Version = null
@@ -58,6 +70,12 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ApiVersion != null ) {
             this.ApiVersion = ApiVersion;
+        }
+        if ( IsAirGapped != null ) {
+            this.IsAirGapped = IsAirGapped;
+        }
+        if ( IsArchived != null ) {
+            this.IsArchived = IsArchived;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -86,6 +104,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "apiVersion\n" ;
             } else {
                 s += ind + "apiVersion\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean! (scalar)
+        if (this.IsAirGapped != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAirGapped\n" ;
+            } else {
+                s += ind + "isAirGapped\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        if (this.IsArchived != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -138,6 +174,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.ApiVersion != null && ec.Excludes("apiVersion",true))
         {
             this.ApiVersion = null;
+        }
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean! (scalar)
+        if (ec.Includes("isAirGapped",true))
+        {
+            if(this.IsAirGapped == null) {
+
+                this.IsAirGapped = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAirGapped != null && ec.Excludes("isAirGapped",true))
+        {
+            this.IsAirGapped = null;
+        }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        if (ec.Includes("isArchived",true))
+        {
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

@@ -29,9 +29,11 @@ User account details.
   - The number of unread notifications for the current user.
 - eulaState: EulaState
   - The user's EULA acceptance state.
-- roles: list of Roles
-  - Permission of an user.
+- assignedRoles: list of RoleAssignments
+  - Roles assigned to the user.
 - allOrgs: list of Orgs
   - The suborganizations in which the user has roles.
 - emailConfig: list of EventDigests
   - Email notification configurations.
+- roles: list of Roles
+  - Roles assigned to the user.

@@ -307,20 +307,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	recoveryData = @{
     /// 		# OPTIONAL
-    /// 		destinationManagementObjects = @{
-    /// 			# OPTIONAL
-    /// 			databases = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					dbName = $someString
-    /// 					# OPTIONAL
-    /// 					tables = @(
-    /// 						$someString
-    /// 					)
-    /// 				}
-    /// 			)
-    /// 		}
-    /// 		# OPTIONAL
     /// 		destinationSourceName = $someString
     /// 		# OPTIONAL
     /// 		keyspaceConfig = $someString
@@ -338,6 +324,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		targetQuery = $someString
     /// 		# OPTIONAL
     /// 		sourceType = $someMosaicRetrieveRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		destinationManagementObjects = @{
+    /// 			# OPTIONAL
+    /// 			databases = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					dbName = $someString
+    /// 					# OPTIONAL
+    /// 					tables = @(
+    /// 						$someString
+    /// 					)
+    /// 				}
+    /// 			)
+    /// 		}
     /// 		# REQUIRED
     /// 		destinationPath = $someString
     /// 		# REQUIRED
@@ -792,20 +792,6 @@ $query.Var.input = @{
 	# REQUIRED
 	recoveryData = @{
 		# OPTIONAL
-		destinationManagementObjects = @{
-			# OPTIONAL
-			databases = @(
-				@{
-					# OPTIONAL
-					dbName = $someString
-					# OPTIONAL
-					tables = @(
-						$someString
-					)
-				}
-			)
-		}
-		# OPTIONAL
 		destinationSourceName = $someString
 		# OPTIONAL
 		keyspaceConfig = $someString
@@ -823,6 +809,20 @@ $query.Var.input = @{
 		targetQuery = $someString
 		# OPTIONAL
 		sourceType = $someMosaicRetrieveRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
+		# OPTIONAL
+		destinationManagementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = $someString
+					# OPTIONAL
+					tables = @(
+						$someString
+					)
+				}
+			)
+		}
 		# REQUIRED
 		destinationPath = $someString
 		# REQUIRED

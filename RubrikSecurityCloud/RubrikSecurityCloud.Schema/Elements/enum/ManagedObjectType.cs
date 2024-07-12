@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
+        [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
+        ACTIVE_DIRECTORY_FOREST,
+
         [EnumMember(Value = "APP_BLUEPRINT")]
         APP_BLUEPRINT,
 
@@ -116,6 +119,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "FAILOVER_CLUSTER_APP")]
         FAILOVER_CLUSTER_APP,
+
+        [EnumMember(Value = "FAKE_OBJECT_TYPE")]
+        FAKE_OBJECT_TYPE,
 
         [EnumMember(Value = "FELDSPAR_SITE")]
         FELDSPAR_SITE,
@@ -239,6 +245,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NUTANIX_CLUSTER")]
         NUTANIX_CLUSTER,
+
+        [EnumMember(Value = "NUTANIX_ERA")]
+        NUTANIX_ERA,
 
         [EnumMember(Value = "NUTANIX_PRISM_CENTRAL")]
         NUTANIX_PRISM_CENTRAL,

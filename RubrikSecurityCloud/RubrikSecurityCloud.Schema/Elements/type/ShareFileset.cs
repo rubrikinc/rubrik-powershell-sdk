@@ -236,6 +236,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("reportWorkload")]
         public Snappable? ReportWorkload { get; set; }
 
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
+
         //      C# -> HostShare? Share
         // GraphQL -> share: HostShare (type)
         [JsonProperty("share")]
@@ -317,6 +322,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("filter", "CdmSnapshotFilterInput"),
                     Tuple.Create("groupBy", "CdmSnapshotGroupByEnum!"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.SnapshotGroupByConnection =
                 new RscGqlVars(null, snapshotGroupByConnectionArgs, null, true);
@@ -326,6 +332,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("last", "Int"),
                     Tuple.Create("before", "String"),
                     Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("timezone", "Timezone"),
                     Tuple.Create("filter", "CdmSnapshotFilterInput"),
                     Tuple.Create("groupBy", "CdmSnapshotGroupByEnum!"),
                 };
@@ -387,6 +394,7 @@ namespace RubrikSecurityCloud.Types
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
         Snappable? ReportWorkload = null,
+        SecurityMetadata? SecurityMetadata = null,
         HostShare? Share = null,
         CdmSnapshotConnection? SnapshotConnection = null,
         SnapshotDistribution? SnapshotDistribution = null,
@@ -522,6 +530,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReportWorkload != null ) {
             this.ReportWorkload = ReportWorkload;
+        }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
         }
         if ( Share != null ) {
             this.Share = Share;
@@ -1025,6 +1036,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "reportWorkload" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1876,6 +1900,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReportWorkload != null && ec.Excludes("reportWorkload",false))
         {
             this.ReportWorkload = null;
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
         }
         //      C# -> HostShare? Share
         // GraphQL -> share: HostShare (type)

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mediumRiskCount")]
         public SummaryCount? MediumRiskCount { get; set; }
 
+        //      C# -> SummaryCount? NoRiskCount
+        // GraphQL -> noRiskCount: SummaryCount (type)
+        [JsonProperty("noRiskCount")]
+        public SummaryCount? NoRiskCount { get; set; }
+
         //      C# -> SummaryCount? TotalCount
         // GraphQL -> totalCount: SummaryCount (type)
         [JsonProperty("totalCount")]
@@ -53,6 +58,7 @@ namespace RubrikSecurityCloud.Types
         SummaryCount? HighRiskCount = null,
         SummaryCount? LowRiskCount = null,
         SummaryCount? MediumRiskCount = null,
+        SummaryCount? NoRiskCount = null,
         SummaryCount? TotalCount = null
     ) 
     {
@@ -64,6 +70,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MediumRiskCount != null ) {
             this.MediumRiskCount = MediumRiskCount;
+        }
+        if ( NoRiskCount != null ) {
+            this.NoRiskCount = NoRiskCount;
         }
         if ( TotalCount != null ) {
             this.TotalCount = TotalCount;
@@ -115,6 +124,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "mediumRiskCount" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SummaryCount? NoRiskCount
+        // GraphQL -> noRiskCount: SummaryCount (type)
+        if (this.NoRiskCount != null) {
+            var fspec = this.NoRiskCount.AsFieldSpec(conf.Child("noRiskCount"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "noRiskCount" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -194,6 +216,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.MediumRiskCount != null && ec.Excludes("mediumRiskCount",false))
         {
             this.MediumRiskCount = null;
+        }
+        //      C# -> SummaryCount? NoRiskCount
+        // GraphQL -> noRiskCount: SummaryCount (type)
+        if (ec.Includes("noRiskCount",false))
+        {
+            if(this.NoRiskCount == null) {
+
+                this.NoRiskCount = new SummaryCount();
+                this.NoRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("noRiskCount"));
+
+            } else {
+
+                this.NoRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("noRiskCount"));
+
+            }
+        }
+        else if (this.NoRiskCount != null && ec.Excludes("noRiskCount",false))
+        {
+            this.NoRiskCount = null;
         }
         //      C# -> SummaryCount? TotalCount
         // GraphQL -> totalCount: SummaryCount (type)

@@ -104,6 +104,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("physicalPath")]
         List<PathNode>? PhysicalPath { get; set; }
 
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        SecurityMetadata? SecurityMetadata { get; set; }
+
         //      C# -> PolarisSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: PolarisSnapshotConnection (type)
         [JsonProperty("snapshotConnection")]

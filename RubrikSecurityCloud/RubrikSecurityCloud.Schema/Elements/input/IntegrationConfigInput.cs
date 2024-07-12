@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dataLossPrevention")]
         public DlpConfigInput? DataLossPrevention { get; set; }
 
+        //      C# -> ServiceNowItsmIntegrationConfigInput? ServiceNowItsm
+        // GraphQL -> serviceNowItsm: ServiceNowItsmIntegrationConfigInput (input)
+        [JsonProperty("serviceNowItsm")]
+        public ServiceNowItsmIntegrationConfigInput? ServiceNowItsm { get; set; }
+
 
         #endregion
 

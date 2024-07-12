@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicationLocalRetentionDuration")]
         public Duration? ReplicationLocalRetentionDuration { get; set; }
 
+        //      C# -> List<SlaReplicationPair>? ReplicationPairs
+        // GraphQL -> replicationPairs: [SlaReplicationPair!] (type)
+        [JsonProperty("replicationPairs")]
+        public List<SlaReplicationPair>? ReplicationPairs { get; set; }
+
         //      C# -> Duration? RetentionDuration
         // GraphQL -> retentionDuration: Duration (type)
         [JsonProperty("retentionDuration")]
@@ -82,6 +87,7 @@ namespace RubrikSecurityCloud.Types
         List<CascadingArchivalSpec>? CascadingArchivalSpecs = null,
         SlaReplicationCluster? Cluster = null,
         Duration? ReplicationLocalRetentionDuration = null,
+        List<SlaReplicationPair>? ReplicationPairs = null,
         Duration? RetentionDuration = null,
         TargetMapping? TargetMapping = null
     ) 
@@ -106,6 +112,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicationLocalRetentionDuration != null ) {
             this.ReplicationLocalRetentionDuration = ReplicationLocalRetentionDuration;
+        }
+        if ( ReplicationPairs != null ) {
+            this.ReplicationPairs = ReplicationPairs;
         }
         if ( RetentionDuration != null ) {
             this.RetentionDuration = RetentionDuration;
@@ -204,6 +213,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "replicationLocalRetentionDuration" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<SlaReplicationPair>? ReplicationPairs
+        // GraphQL -> replicationPairs: [SlaReplicationPair!] (type)
+        if (this.ReplicationPairs != null) {
+            var fspec = this.ReplicationPairs.AsFieldSpec(conf.Child("replicationPairs"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "replicationPairs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -368,6 +390,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReplicationLocalRetentionDuration != null && ec.Excludes("replicationLocalRetentionDuration",false))
         {
             this.ReplicationLocalRetentionDuration = null;
+        }
+        //      C# -> List<SlaReplicationPair>? ReplicationPairs
+        // GraphQL -> replicationPairs: [SlaReplicationPair!] (type)
+        if (ec.Includes("replicationPairs",false))
+        {
+            if(this.ReplicationPairs == null) {
+
+                this.ReplicationPairs = new List<SlaReplicationPair>();
+                this.ReplicationPairs.ApplyExploratoryFieldSpec(ec.NewChild("replicationPairs"));
+
+            } else {
+
+                this.ReplicationPairs.ApplyExploratoryFieldSpec(ec.NewChild("replicationPairs"));
+
+            }
+        }
+        else if (this.ReplicationPairs != null && ec.Excludes("replicationPairs",false))
+        {
+            this.ReplicationPairs = null;
         }
         //      C# -> Duration? RetentionDuration
         // GraphQL -> retentionDuration: Duration (type)

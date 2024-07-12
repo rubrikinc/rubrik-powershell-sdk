@@ -7,3 +7,5 @@ Represents the calendar contents to be restored.
   - Calendar(s) to restore in this job.
 - calendarGroupsToRestore: list of CalendarGroupInfos
   - Calendar Group(s) to restore in this job.
+- skipRifItems: System.Boolean
+  - Specifies whether to skip items in the Recoverable Items folder.

@@ -100,49 +100,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		subnet = $someString
     /// 		# OPTIONAL
-    /// 		slaClientConfig = @{
-    /// 			# OPTIONAL
-    /// 			postBackupScriptOnBackupFailure = @{
-    /// 				# OPTIONAL
-    /// 				timeout = $someInt64
-    /// 				# REQUIRED
-    /// 				scriptCommand = $someString
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			postBackupScriptOnBackupSuccess = @{
-    /// 				# OPTIONAL
-    /// 				timeout = $someInt64
-    /// 				# REQUIRED
-    /// 				scriptCommand = $someString
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			preBackupScript = @{
-    /// 				# OPTIONAL
-    /// 				timeout = $someInt64
-    /// 				# REQUIRED
-    /// 				scriptCommand = $someString
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			shouldCancelBackupOnPreBackupScriptFailure = $someBoolean
-    /// 			# OPTIONAL
-    /// 			shouldEnableLogExport = $someBoolean
-    /// 			# REQUIRED
-    /// 			backupScript = @{
-    /// 				# OPTIONAL
-    /// 				timeout = $someInt64
-    /// 				# REQUIRED
-    /// 				scriptCommand = $someString
-    /// 			}
-    /// 			# REQUIRED
-    /// 			channelHostMountPaths = @(
-    /// 				$someString
-    /// 			)
-    /// 			# REQUIRED
-    /// 			clientHostId = $someString
-    /// 			# REQUIRED
-    /// 			username = $someString
-    /// 		}
-    /// 		# OPTIONAL
     /// 		applicationTag = $someManagedVolumeApplicationTag # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeApplicationTag]) for enum values.
     /// 		# OPTIONAL
     /// 		mvType = $someCdmManagedVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmManagedVolumeType]) for enum values.
@@ -150,6 +107,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		exportConfig = @{
     /// 			# OPTIONAL
     /// 			subnet = $someString
+    /// 			# OPTIONAL
+    /// 			shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
     /// 			# OPTIONAL
     /// 			managedVolumePatchConfig = @{
     /// 				# OPTIONAL
@@ -171,11 +130,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					$someString
     /// 				)
     /// 			}
-    /// 			# OPTIONAL
-    /// 			shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
     /// 		}
     /// 		# REQUIRED
     /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		slaClientConfig = @{
+    /// 			# OPTIONAL
+    /// 			shouldCancelBackupOnPreBackupScriptFailure = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldEnableLogExport = $someBoolean
+    /// 			# REQUIRED
+    /// 			backupScript = @{
+    /// 				# OPTIONAL
+    /// 				timeout = $someInt64
+    /// 				# REQUIRED
+    /// 				scriptCommand = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			channelHostMountPaths = @(
+    /// 				$someString
+    /// 			)
+    /// 			# REQUIRED
+    /// 			clientHostId = $someString
+    /// 			# OPTIONAL
+    /// 			postBackupScriptOnBackupFailure = @{
+    /// 				# OPTIONAL
+    /// 				timeout = $someInt64
+    /// 				# REQUIRED
+    /// 				scriptCommand = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			postBackupScriptOnBackupSuccess = @{
+    /// 				# OPTIONAL
+    /// 				timeout = $someInt64
+    /// 				# REQUIRED
+    /// 				scriptCommand = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			preBackupScript = @{
+    /// 				# OPTIONAL
+    /// 				timeout = $someInt64
+    /// 				# REQUIRED
+    /// 				scriptCommand = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 		}
     /// 		# REQUIRED
     /// 		volumeSize = $someInt64
     /// 	}
@@ -209,6 +209,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# OPTIONAL
+    /// 	ownerId = $someString
+    /// 	# OPTIONAL
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		isAsync = $someBoolean
@@ -231,8 +233,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		}
     /// 	}
-    /// 	# OPTIONAL
-    /// 	ownerId = $someString
     /// 	# REQUIRED
     /// 	id = $someString
     /// }
@@ -410,6 +410,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# OPTIONAL
+    /// 	endSnapshotDelayInSeconds = $someInt
+    /// 	# OPTIONAL
+    /// 	ownerId = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
     /// 	params = @{
     /// 		# OPTIONAL
     /// 		isAsync = $someBoolean
@@ -419,12 +425,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			slaId = $someString
     /// 		}
     /// 	}
-    /// 	# OPTIONAL
-    /// 	endSnapshotDelayInSeconds = $someInt
-    /// 	# OPTIONAL
-    /// 	ownerId = $someString
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -465,6 +465,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			subnet = $someString
     /// 			# OPTIONAL
+    /// 			shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
+    /// 			# OPTIONAL
     /// 			managedVolumePatchConfig = @{
     /// 				# OPTIONAL
     /// 				hostPatterns = @(
@@ -485,8 +487,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					$someString
     /// 				)
     /// 			}
-    /// 			# OPTIONAL
-    /// 			shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
     /// 		}
     /// 	}
     /// }
@@ -598,6 +598,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	update = @{
     /// 		# OPTIONAL
+    /// 		configuredSlaDomainId = $someString
+    /// 		# OPTIONAL
+    /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		volumeSize = $someInt64
+    /// 		# OPTIONAL
+    /// 		subnet = $someString
+    /// 		# OPTIONAL
     /// 		config = @{
     /// 			# OPTIONAL
     /// 			hostPatterns = @(
@@ -618,12 +626,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				$someString
     /// 			)
     /// 		}
-    /// 		# OPTIONAL
-    /// 		configuredSlaDomainId = $someString
-    /// 		# OPTIONAL
-    /// 		name = $someString
-    /// 		# OPTIONAL
-    /// 		volumeSize = $someInt64
     /// 		# OPTIONAL
     /// 		slaClientConfig = @{
     /// 			# OPTIONAL
@@ -659,8 +661,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			shouldDisablePreBackupScript = $someBoolean
     /// 		}
-    /// 		# OPTIONAL
-    /// 		subnet = $someString
     /// 	}
     /// }
     /// 
@@ -887,49 +887,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		subnet = $someString
 		# OPTIONAL
-		slaClientConfig = @{
-			# OPTIONAL
-			postBackupScriptOnBackupFailure = @{
-				# OPTIONAL
-				timeout = $someInt64
-				# REQUIRED
-				scriptCommand = $someString
-			}
-			# OPTIONAL
-			postBackupScriptOnBackupSuccess = @{
-				# OPTIONAL
-				timeout = $someInt64
-				# REQUIRED
-				scriptCommand = $someString
-			}
-			# OPTIONAL
-			preBackupScript = @{
-				# OPTIONAL
-				timeout = $someInt64
-				# REQUIRED
-				scriptCommand = $someString
-			}
-			# OPTIONAL
-			shouldCancelBackupOnPreBackupScriptFailure = $someBoolean
-			# OPTIONAL
-			shouldEnableLogExport = $someBoolean
-			# REQUIRED
-			backupScript = @{
-				# OPTIONAL
-				timeout = $someInt64
-				# REQUIRED
-				scriptCommand = $someString
-			}
-			# REQUIRED
-			channelHostMountPaths = @(
-				$someString
-			)
-			# REQUIRED
-			clientHostId = $someString
-			# REQUIRED
-			username = $someString
-		}
-		# OPTIONAL
 		applicationTag = $someManagedVolumeApplicationTag # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeApplicationTag]) for enum values.
 		# OPTIONAL
 		mvType = $someCdmManagedVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmManagedVolumeType]) for enum values.
@@ -937,6 +894,8 @@ $query.Var.input = @{
 		exportConfig = @{
 			# OPTIONAL
 			subnet = $someString
+			# OPTIONAL
+			shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
 			# OPTIONAL
 			managedVolumePatchConfig = @{
 				# OPTIONAL
@@ -958,11 +917,52 @@ $query.Var.input = @{
 					$someString
 				)
 			}
-			# OPTIONAL
-			shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
 		}
 		# REQUIRED
 		name = $someString
+		# OPTIONAL
+		slaClientConfig = @{
+			# OPTIONAL
+			shouldCancelBackupOnPreBackupScriptFailure = $someBoolean
+			# OPTIONAL
+			shouldEnableLogExport = $someBoolean
+			# REQUIRED
+			backupScript = @{
+				# OPTIONAL
+				timeout = $someInt64
+				# REQUIRED
+				scriptCommand = $someString
+			}
+			# REQUIRED
+			channelHostMountPaths = @(
+				$someString
+			)
+			# REQUIRED
+			clientHostId = $someString
+			# OPTIONAL
+			postBackupScriptOnBackupFailure = @{
+				# OPTIONAL
+				timeout = $someInt64
+				# REQUIRED
+				scriptCommand = $someString
+			}
+			# OPTIONAL
+			postBackupScriptOnBackupSuccess = @{
+				# OPTIONAL
+				timeout = $someInt64
+				# REQUIRED
+				scriptCommand = $someString
+			}
+			# OPTIONAL
+			preBackupScript = @{
+				# OPTIONAL
+				timeout = $someInt64
+				# REQUIRED
+				scriptCommand = $someString
+			}
+			# REQUIRED
+			username = $someString
+		}
 		# REQUIRED
 		volumeSize = $someInt64
 	}
@@ -988,6 +988,8 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# OPTIONAL
+	ownerId = $someString
+	# OPTIONAL
 	config = @{
 		# OPTIONAL
 		isAsync = $someBoolean
@@ -1010,8 +1012,6 @@ $query.Var.input = @{
 			}
 		}
 	}
-	# OPTIONAL
-	ownerId = $someString
 	# REQUIRED
 	id = $someString
 }"
@@ -1149,6 +1149,12 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# OPTIONAL
+	endSnapshotDelayInSeconds = $someInt
+	# OPTIONAL
+	ownerId = $someString
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
 	params = @{
 		# OPTIONAL
 		isAsync = $someBoolean
@@ -1158,12 +1164,6 @@ $query.Var.input = @{
 			slaId = $someString
 		}
 	}
-	# OPTIONAL
-	endSnapshotDelayInSeconds = $someInt
-	# OPTIONAL
-	ownerId = $someString
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -1196,6 +1196,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			subnet = $someString
 			# OPTIONAL
+			shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
+			# OPTIONAL
 			managedVolumePatchConfig = @{
 				# OPTIONAL
 				hostPatterns = @(
@@ -1216,8 +1218,6 @@ $query.Var.input = @{
 					$someString
 				)
 			}
-			# OPTIONAL
-			shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
 		}
 	}
 }"
@@ -1305,6 +1305,14 @@ $query.Var.input = @{
 	# REQUIRED
 	update = @{
 		# OPTIONAL
+		configuredSlaDomainId = $someString
+		# OPTIONAL
+		name = $someString
+		# OPTIONAL
+		volumeSize = $someInt64
+		# OPTIONAL
+		subnet = $someString
+		# OPTIONAL
 		config = @{
 			# OPTIONAL
 			hostPatterns = @(
@@ -1325,12 +1333,6 @@ $query.Var.input = @{
 				$someString
 			)
 		}
-		# OPTIONAL
-		configuredSlaDomainId = $someString
-		# OPTIONAL
-		name = $someString
-		# OPTIONAL
-		volumeSize = $someInt64
 		# OPTIONAL
 		slaClientConfig = @{
 			# OPTIONAL
@@ -1366,8 +1368,6 @@ $query.Var.input = @{
 			# REQUIRED
 			shouldDisablePreBackupScript = $someBoolean
 		}
-		# OPTIONAL
-		subnet = $someString
 	}
 }"
             );

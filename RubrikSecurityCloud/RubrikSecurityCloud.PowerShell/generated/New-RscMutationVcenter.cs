@@ -98,6 +98,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isStandaloneHost = $someBoolean
+    /// 		# OPTIONAL
+    /// 		orgNetworkId = $someString
+    /// 		# OPTIONAL
+    /// 		conflictResolutionAuthz = $someVcenterConfigV2ConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigV2ConflictResolutionAuthz]) for enum values.
+    /// 		# OPTIONAL
     /// 		computeVisibilityFilter = @(
     /// 			@{
     /// 				# OPTIONAL
@@ -110,12 +118,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				id = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		orgNetworkId = $someString
-    /// 		# OPTIONAL
-    /// 		conflictResolutionAuthz = $someVcenterConfigV2ConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigV2ConflictResolutionAuthz]) for enum values.
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
@@ -216,10 +218,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	updatePropertiesV50 = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 		# OPTIONAL
     /// 		computeVisibilityFilter = @(
     /// 			@{
@@ -233,10 +241,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				id = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
@@ -249,6 +253,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 		# OPTIONAL
     /// 		computeVisibilityFilter = @(
     /// 			@{
     /// 				# OPTIONAL
@@ -261,10 +269,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				id = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
@@ -277,6 +281,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 		# OPTIONAL
     /// 		computeVisibilityFilter = @(
     /// 			@{
     /// 				# OPTIONAL
@@ -289,10 +297,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				id = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
@@ -305,6 +309,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 		# OPTIONAL
     /// 		computeVisibilityFilter = @(
     /// 			@{
     /// 				# OPTIONAL
@@ -317,10 +325,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				id = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
@@ -333,6 +337,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 		# OPTIONAL
     /// 		computeVisibilityFilter = @(
     /// 			@{
     /// 				# OPTIONAL
@@ -345,10 +353,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				id = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
@@ -361,6 +365,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 		# OPTIONAL
     /// 		computeVisibilityFilter = @(
     /// 			@{
     /// 				# OPTIONAL
@@ -373,10 +381,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				id = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
@@ -389,6 +393,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 		# OPTIONAL
     /// 		computeVisibilityFilter = @(
     /// 			@{
     /// 				# OPTIONAL
@@ -401,10 +409,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				id = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
@@ -417,6 +421,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 		# OPTIONAL
     /// 		computeVisibilityFilter = @(
     /// 			@{
     /// 				# OPTIONAL
@@ -429,10 +437,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				id = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
@@ -445,6 +449,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 		# OPTIONAL
     /// 		computeVisibilityFilter = @(
     /// 			@{
     /// 				# OPTIONAL
@@ -457,10 +465,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				id = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
@@ -473,6 +477,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 		# OPTIONAL
     /// 		computeVisibilityFilter = @(
     /// 			@{
     /// 				# OPTIONAL
@@ -485,10 +493,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				id = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
@@ -499,9 +503,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	updatePropertiesV92 = @{
     /// 		# OPTIONAL
+    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
+    /// 		# OPTIONAL
     /// 		vcenterConfig = @{
     /// 			# OPTIONAL
     /// 			caCerts = $someString
+    /// 			# OPTIONAL
+    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 			# OPTIONAL
+    /// 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 			# OPTIONAL
     /// 			computeVisibilityFilter = @(
     /// 				@{
@@ -515,10 +525,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					id = $someString
     /// 				}
     /// 			)
-    /// 			# OPTIONAL
-    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 			# OPTIONAL
-    /// 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
     /// 			# REQUIRED
     /// 			hostname = $someString
     /// 			# REQUIRED
@@ -526,11 +532,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			username = $someString
     /// 		}
-    /// 		# OPTIONAL
-    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -600,6 +602,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	hotAddNetworkInfo = @{
+    /// 		# REQUIRED
+    /// 		networkId = $someString
     /// 		# OPTIONAL
     /// 		staticIpInfo = @{
     /// 			# OPTIONAL
@@ -615,8 +619,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			subnetMask = $someString
     /// 		}
-    /// 		# REQUIRED
-    /// 		networkId = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -778,6 +780,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		isStandaloneHost = $someBoolean
+		# OPTIONAL
+		orgNetworkId = $someString
+		# OPTIONAL
+		conflictResolutionAuthz = $someVcenterConfigV2ConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigV2ConflictResolutionAuthz]) for enum values.
+		# OPTIONAL
 		computeVisibilityFilter = @(
 			@{
 				# OPTIONAL
@@ -790,12 +800,6 @@ $query.Var.input = @{
 				id = $someString
 			}
 		)
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		orgNetworkId = $someString
-		# OPTIONAL
-		conflictResolutionAuthz = $someVcenterConfigV2ConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigV2ConflictResolutionAuthz]) for enum values.
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
@@ -872,10 +876,16 @@ $query.Var.input = @{
                 Mutation.UpdateVcenterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	updatePropertiesV50 = @{
 		# OPTIONAL
 		caCerts = $someString
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 		# OPTIONAL
 		computeVisibilityFilter = @(
 			@{
@@ -889,10 +899,6 @@ $query.Var.input = @{
 				id = $someString
 			}
 		)
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
@@ -905,6 +911,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+		# OPTIONAL
 		computeVisibilityFilter = @(
 			@{
 				# OPTIONAL
@@ -917,10 +927,6 @@ $query.Var.input = @{
 				id = $someString
 			}
 		)
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
@@ -933,6 +939,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+		# OPTIONAL
 		computeVisibilityFilter = @(
 			@{
 				# OPTIONAL
@@ -945,10 +955,6 @@ $query.Var.input = @{
 				id = $someString
 			}
 		)
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
@@ -961,6 +967,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+		# OPTIONAL
 		computeVisibilityFilter = @(
 			@{
 				# OPTIONAL
@@ -973,10 +983,6 @@ $query.Var.input = @{
 				id = $someString
 			}
 		)
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
@@ -989,6 +995,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+		# OPTIONAL
 		computeVisibilityFilter = @(
 			@{
 				# OPTIONAL
@@ -1001,10 +1011,6 @@ $query.Var.input = @{
 				id = $someString
 			}
 		)
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
@@ -1017,6 +1023,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+		# OPTIONAL
 		computeVisibilityFilter = @(
 			@{
 				# OPTIONAL
@@ -1029,10 +1039,6 @@ $query.Var.input = @{
 				id = $someString
 			}
 		)
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
@@ -1045,6 +1051,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+		# OPTIONAL
 		computeVisibilityFilter = @(
 			@{
 				# OPTIONAL
@@ -1057,10 +1067,6 @@ $query.Var.input = @{
 				id = $someString
 			}
 		)
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
@@ -1073,6 +1079,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+		# OPTIONAL
 		computeVisibilityFilter = @(
 			@{
 				# OPTIONAL
@@ -1085,10 +1095,6 @@ $query.Var.input = @{
 				id = $someString
 			}
 		)
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
@@ -1101,6 +1107,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+		# OPTIONAL
 		computeVisibilityFilter = @(
 			@{
 				# OPTIONAL
@@ -1113,10 +1123,6 @@ $query.Var.input = @{
 				id = $someString
 			}
 		)
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
@@ -1129,6 +1135,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+		# OPTIONAL
 		computeVisibilityFilter = @(
 			@{
 				# OPTIONAL
@@ -1141,10 +1151,6 @@ $query.Var.input = @{
 				id = $someString
 			}
 		)
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
@@ -1155,9 +1161,15 @@ $query.Var.input = @{
 	# OPTIONAL
 	updatePropertiesV92 = @{
 		# OPTIONAL
+		shouldUpdateComputeVisibilityFilter = $someBoolean
+		# OPTIONAL
 		vcenterConfig = @{
 			# OPTIONAL
 			caCerts = $someString
+			# OPTIONAL
+			shouldEnableHotAddProxyForOnPrem = $someBoolean
+			# OPTIONAL
+			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 			# OPTIONAL
 			computeVisibilityFilter = @(
 				@{
@@ -1171,10 +1183,6 @@ $query.Var.input = @{
 					id = $someString
 				}
 			)
-			# OPTIONAL
-			shouldEnableHotAddProxyForOnPrem = $someBoolean
-			# OPTIONAL
-			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
 			# REQUIRED
 			hostname = $someString
 			# REQUIRED
@@ -1182,11 +1190,7 @@ $query.Var.input = @{
 			# REQUIRED
 			username = $someString
 		}
-		# OPTIONAL
-		shouldUpdateComputeVisibilityFilter = $someBoolean
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -1240,6 +1244,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	hotAddNetworkInfo = @{
+		# REQUIRED
+		networkId = $someString
 		# OPTIONAL
 		staticIpInfo = @{
 			# OPTIONAL
@@ -1255,8 +1261,6 @@ $query.Var.input = @{
 			# REQUIRED
 			subnetMask = $someString
 		}
-		# REQUIRED
-		networkId = $someString
 	}
 	# REQUIRED
 	id = $someString

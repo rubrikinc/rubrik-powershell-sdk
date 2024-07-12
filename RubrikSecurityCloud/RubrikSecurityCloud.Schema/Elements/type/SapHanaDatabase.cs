@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("systemId")]
         public System.String? SystemId { get; set; }
 
+        //      C# -> System.Int32? TotalSnapshotCount
+        // GraphQL -> totalSnapshotCount: Int! (scalar)
+        [JsonProperty("totalSnapshotCount")]
+        public System.Int32? TotalSnapshotCount { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
@@ -240,6 +245,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sapHanaSystem: SapHanaSystem! (type)
         [JsonProperty("sapHanaSystem")]
         public SapHanaSystem? SapHanaSystem { get; set; }
+
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
 
         //      C# -> CdmSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
@@ -348,6 +358,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("filter", "CdmSnapshotFilterInput"),
                     Tuple.Create("groupBy", "CdmSnapshotGroupByEnum!"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.SnapshotGroupByConnection =
                 new RscGqlVars(null, snapshotGroupByConnectionArgs, null, true);
@@ -357,6 +368,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("last", "Int"),
                     Tuple.Create("before", "String"),
                     Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("timezone", "Timezone"),
                     Tuple.Create("filter", "CdmSnapshotFilterInput"),
                     Tuple.Create("groupBy", "CdmSnapshotGroupByEnum!"),
                 };
@@ -398,6 +410,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? SystemId = null,
+        System.Int32? TotalSnapshotCount = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
@@ -419,6 +432,7 @@ namespace RubrikSecurityCloud.Types
         DataLocation? PrimaryClusterLocation = null,
         SapHanaRecoverableRangeConnection? RecoverableRangeConnection = null,
         SapHanaSystem? SapHanaSystem = null,
+        SecurityMetadata? SecurityMetadata = null,
         CdmSnapshotConnection? SnapshotConnection = null,
         SnapshotDistribution? SnapshotDistribution = null,
         CdmSnapshotGroupByConnection? SnapshotGroupByConnection = null,
@@ -495,6 +509,9 @@ namespace RubrikSecurityCloud.Types
         if ( SystemId != null ) {
             this.SystemId = SystemId;
         }
+        if ( TotalSnapshotCount != null ) {
+            this.TotalSnapshotCount = TotalSnapshotCount;
+        }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
         }
@@ -557,6 +574,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SapHanaSystem != null ) {
             this.SapHanaSystem = SapHanaSystem;
+        }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
         }
         if ( SnapshotConnection != null ) {
             this.SnapshotConnection = SnapshotConnection;
@@ -809,6 +829,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "systemId\n" ;
             } else {
                 s += ind + "systemId\n" ;
+            }
+        }
+        //      C# -> System.Int32? TotalSnapshotCount
+        // GraphQL -> totalSnapshotCount: Int! (scalar)
+        if (this.TotalSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalSnapshotCount\n" ;
+            } else {
+                s += ind + "totalSnapshotCount\n" ;
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -1081,6 +1110,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "sapHanaSystem" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1557,6 +1599,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.SystemId = null;
         }
+        //      C# -> System.Int32? TotalSnapshotCount
+        // GraphQL -> totalSnapshotCount: Int! (scalar)
+        if (ec.Includes("totalSnapshotCount",true))
+        {
+            if(this.TotalSnapshotCount == null) {
+
+                this.TotalSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalSnapshotCount != null && ec.Excludes("totalSnapshotCount",true))
+        {
+            this.TotalSnapshotCount = null;
+        }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (ec.Includes("allOrgs",false))
@@ -1955,6 +2014,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SapHanaSystem != null && ec.Excludes("sapHanaSystem",false))
         {
             this.SapHanaSystem = null;
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
         }
         //      C# -> CdmSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)

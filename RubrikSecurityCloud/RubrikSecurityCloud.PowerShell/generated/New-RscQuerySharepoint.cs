@@ -151,6 +151,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
     /// }
     /// # REQUIRED
@@ -247,6 +249,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
     /// }
     /// # REQUIRED
@@ -329,6 +333,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
     /// }
     /// # REQUIRED
@@ -439,6 +445,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
     /// }
     /// 
@@ -527,6 +535,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
     /// }
     /// # OPTIONAL
@@ -619,6 +629,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
     /// }
     /// # OPTIONAL
@@ -711,6 +723,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
     /// }
     /// 
@@ -967,6 +981,8 @@ $query.Var.sharepointDriveSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
 }
 # REQUIRED
@@ -1071,6 +1087,8 @@ $query.Var.sharepointDriveSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
 }
 # REQUIRED
@@ -1159,6 +1177,8 @@ $query.Var.sharepointSiteSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
 }
 # REQUIRED
@@ -1264,6 +1284,8 @@ $query.Var.sharepointSiteSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
 }"
             );
@@ -1358,6 +1380,8 @@ $query.Var.sharepointDriveSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
 }
 # OPTIONAL
@@ -1454,6 +1478,8 @@ $query.Var.sharepointDriveSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
 }
 # OPTIONAL
@@ -1550,6 +1576,8 @@ $query.Var.sharepointDriveSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
 }"
             );

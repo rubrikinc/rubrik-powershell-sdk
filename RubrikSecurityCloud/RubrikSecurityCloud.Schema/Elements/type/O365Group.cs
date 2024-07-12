@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> O365GroupSubType? GroupSubType
+        // GraphQL -> groupSubType: O365GroupSubType! (enum)
+        [JsonProperty("groupSubType")]
+        public O365GroupSubType? GroupSubType { get; set; }
+
         //      C# -> O365GroupType? GroupType
         // GraphQL -> groupType: O365GroupType! (enum)
         [JsonProperty("groupType")]
@@ -136,6 +141,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("physicalPath")]
         public List<PathNode>? PhysicalPath { get; set; }
 
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        [JsonProperty("rscNativeObjectPendingSla")]
+        public CompactSlaDomain? RscNativeObjectPendingSla { get; set; }
+
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
@@ -152,6 +167,7 @@ namespace RubrikSecurityCloud.Types
 
     public O365Group Set(
         List<Operation>? AuthorizedOperations = null,
+        O365GroupSubType? GroupSubType = null,
         O365GroupType? GroupType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
@@ -174,11 +190,16 @@ namespace RubrikSecurityCloud.Types
         List<PathNode>? LogicalPath = null,
         O365GroupMetadata? Metadata = null,
         List<PathNode>? PhysicalPath = null,
+        CompactSlaDomain? RscNativeObjectPendingSla = null,
+        SecurityMetadata? SecurityMetadata = null,
         SnapshotDistribution? SnapshotDistribution = null
     ) 
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( GroupSubType != null ) {
+            this.GroupSubType = GroupSubType;
         }
         if ( GroupType != null ) {
             this.GroupType = GroupType;
@@ -246,6 +267,12 @@ namespace RubrikSecurityCloud.Types
         if ( PhysicalPath != null ) {
             this.PhysicalPath = PhysicalPath;
         }
+        if ( RscNativeObjectPendingSla != null ) {
+            this.RscNativeObjectPendingSla = RscNativeObjectPendingSla;
+        }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
+        }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
         }
@@ -267,6 +294,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> O365GroupSubType? GroupSubType
+        // GraphQL -> groupSubType: O365GroupSubType! (enum)
+        if (this.GroupSubType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "groupSubType\n" ;
+            } else {
+                s += ind + "groupSubType\n" ;
             }
         }
         //      C# -> O365GroupType? GroupType
@@ -503,6 +539,32 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        if (this.RscNativeObjectPendingSla != null) {
+            var fspec = this.RscNativeObjectPendingSla.AsFieldSpec(conf.Child("rscNativeObjectPendingSla"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rscNativeObjectPendingSla" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
@@ -539,6 +601,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> O365GroupSubType? GroupSubType
+        // GraphQL -> groupSubType: O365GroupSubType! (enum)
+        if (ec.Includes("groupSubType",true))
+        {
+            if(this.GroupSubType == null) {
+
+                this.GroupSubType = new O365GroupSubType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.GroupSubType != null && ec.Excludes("groupSubType",true))
+        {
+            this.GroupSubType = null;
         }
         //      C# -> O365GroupType? GroupType
         // GraphQL -> groupType: O365GroupType! (enum)
@@ -931,6 +1010,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.PhysicalPath != null && ec.Excludes("physicalPath",false))
         {
             this.PhysicalPath = null;
+        }
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        if (ec.Includes("rscNativeObjectPendingSla",false))
+        {
+            if(this.RscNativeObjectPendingSla == null) {
+
+                this.RscNativeObjectPendingSla = new CompactSlaDomain();
+                this.RscNativeObjectPendingSla.ApplyExploratoryFieldSpec(ec.NewChild("rscNativeObjectPendingSla"));
+
+            } else {
+
+                this.RscNativeObjectPendingSla.ApplyExploratoryFieldSpec(ec.NewChild("rscNativeObjectPendingSla"));
+
+            }
+        }
+        else if (this.RscNativeObjectPendingSla != null && ec.Excludes("rscNativeObjectPendingSla",false))
+        {
+            this.RscNativeObjectPendingSla = null;
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("message")]
         System.String? Message { get; set; }
 
+        //      C# -> System.String? PcrImagePullAwsNativeId
+        // GraphQL -> pcrImagePullAwsNativeId: String (scalar)
+        [JsonProperty("pcrImagePullAwsNativeId")]
+        System.String? PcrImagePullAwsNativeId { get; set; }
+
         //      C# -> System.String? PcrUrl
         // GraphQL -> pcrUrl: String (scalar)
         [JsonProperty("pcrUrl")]
@@ -48,6 +53,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
         [JsonProperty("healthCheckStatus")]
         ExocomputeHealthCheckStatus? HealthCheckStatus { get; set; }
+
+        //      C# -> ExocomputeClusterDetails? LatestExoclusterDetails
+        // GraphQL -> latestExoclusterDetails: ExocomputeClusterDetails (type)
+        [JsonProperty("latestExoclusterDetails")]
+        ExocomputeClusterDetails? LatestExoclusterDetails { get; set; }
 
 
         #endregion

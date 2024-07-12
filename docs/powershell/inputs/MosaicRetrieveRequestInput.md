@@ -2,9 +2,6 @@
 Supported in m3.2.0-m4.2.0
   Request object for retrieve request on mosaic.
 
-- destinationManagementObjects: MosaicDatabaseManagementObjectInput
-  - Supported in m3.2.0-m4.2.0
-      Destination Management objects for retrieve.
 - destinationSourceName: System.String
   - Supported in m3.2.0-m4.2.0
       m3.2.0-m4.0.1: Source name for destination (restore).
@@ -35,6 +32,9 @@ Supported in m3.2.0-m4.2.0
 - sourceType: MosaicRetrieveRequestSourceType
   - Supported in m4.1.0-m4.2.0
       Source type.
+- destinationManagementObjects: MosaicDatabaseManagementObjectInput
+  - Supported in m3.2.0-m4.2.0
+      Destination Management objects for retrieve.
 - destinationPath: System.String
   - Required. Supported in m3.2.0-m4.2.0
       Destination path for restore.

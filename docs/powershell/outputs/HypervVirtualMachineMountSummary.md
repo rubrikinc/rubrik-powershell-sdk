@@ -32,5 +32,7 @@ Supported in v5.0+
 - isDiskLevelMount: System.Boolean
   - Supported in v9.1+
   A boolean field that indicates whether the mount is a disk-level mount.
+- mountTime: DateTime
+  - This field indicates the time of mounting.
 - powerStatus: HypervVirtualMachineMountSummaryPowerStatus
   - 

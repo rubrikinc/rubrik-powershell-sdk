@@ -25,6 +25,8 @@ An Azure storage account that contains Azure storage data objects including blob
   - The authorized operations on the object.
 - resourceGroup: AzureNativeResourceGroup
   - Resource Group of the Azure storage account.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String
@@ -53,6 +55,8 @@ An Azure storage account that contains Azure storage data objects including blob
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

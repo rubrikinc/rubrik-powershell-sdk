@@ -29,11 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetDataFilePath")]
         public System.String? TargetDataFilePath { get; set; }
 
-        //      C# -> List<MssqlDbFileExportPathInput>? TargetFilePaths
-        // GraphQL -> targetFilePaths: [MssqlDbFileExportPathInput!] (input)
-        [JsonProperty("targetFilePaths")]
-        public List<MssqlDbFileExportPathInput>? TargetFilePaths { get; set; }
-
         //      C# -> System.String? TargetLogFilePath
         // GraphQL -> targetLogFilePath: String (scalar)
         [JsonProperty("targetLogFilePath")]
@@ -50,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("targetDatabaseName")]
         public System.String? TargetDatabaseName { get; set; }
+
+        //      C# -> List<MssqlDbFileExportPathInput>? TargetFilePaths
+        // GraphQL -> targetFilePaths: [MssqlDbFileExportPathInput!] (input)
+        [JsonProperty("targetFilePaths")]
+        public List<MssqlDbFileExportPathInput>? TargetFilePaths { get; set; }
 
         //      C# -> System.String? TargetInstanceId
         // GraphQL -> targetInstanceId: String! (scalar)

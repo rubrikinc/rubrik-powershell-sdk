@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterId")]
         public System.String? ClusterId { get; set; }
 
+        //      C# -> System.Int64? ClusterPhysicalDataIngest
+        // GraphQL -> clusterPhysicalDataIngest: Long! (scalar)
+        [JsonProperty("clusterPhysicalDataIngest")]
+        public System.Int64? ClusterPhysicalDataIngest { get; set; }
+
         //      C# -> System.Int64? CpuStat
         // GraphQL -> cpuStat: Long! (scalar)
         [JsonProperty("cpuStat")]
@@ -86,6 +91,7 @@ namespace RubrikSecurityCloud.Types
 
     public ClusterNodeStats Set(
         System.String? ClusterId = null,
+        System.Int64? ClusterPhysicalDataIngest = null,
         System.Int64? CpuStat = null,
         System.Int64? IopsReadsPerSecond = null,
         System.Int64? IopsWritesPerSecond = null,
@@ -100,6 +106,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ClusterId != null ) {
             this.ClusterId = ClusterId;
+        }
+        if ( ClusterPhysicalDataIngest != null ) {
+            this.ClusterPhysicalDataIngest = ClusterPhysicalDataIngest;
         }
         if ( CpuStat != null ) {
             this.CpuStat = CpuStat;
@@ -149,6 +158,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "clusterId\n" ;
             } else {
                 s += ind + "clusterId\n" ;
+            }
+        }
+        //      C# -> System.Int64? ClusterPhysicalDataIngest
+        // GraphQL -> clusterPhysicalDataIngest: Long! (scalar)
+        if (this.ClusterPhysicalDataIngest != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterPhysicalDataIngest\n" ;
+            } else {
+                s += ind + "clusterPhysicalDataIngest\n" ;
             }
         }
         //      C# -> System.Int64? CpuStat
@@ -264,6 +282,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClusterId != null && ec.Excludes("clusterId",true))
         {
             this.ClusterId = null;
+        }
+        //      C# -> System.Int64? ClusterPhysicalDataIngest
+        // GraphQL -> clusterPhysicalDataIngest: Long! (scalar)
+        if (ec.Includes("clusterPhysicalDataIngest",true))
+        {
+            if(this.ClusterPhysicalDataIngest == null) {
+
+                this.ClusterPhysicalDataIngest = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterPhysicalDataIngest != null && ec.Excludes("clusterPhysicalDataIngest",true))
+        {
+            this.ClusterPhysicalDataIngest = null;
         }
         //      C# -> System.Int64? CpuStat
         // GraphQL -> cpuStat: Long! (scalar)

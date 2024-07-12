@@ -39,6 +39,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("seamlessFlowEnabled")]
         public System.Boolean? SeamlessFlowEnabled { get; set; }
 
+        //      C# -> System.String? OrgName
+        // GraphQL -> orgName: String (scalar)
+        [JsonProperty("orgName")]
+        public System.String? OrgName { get; set; }
+
+        //      C# -> System.String? OutpostAwsNativeId
+        // GraphQL -> outpostAwsNativeId: String (scalar)
+        [JsonProperty("outpostAwsNativeId")]
+        public System.String? OutpostAwsNativeId { get; set; }
+
         //      C# -> AwsCloudType? CloudType
         // GraphQL -> cloudType: AwsCloudType (enum)
         [JsonProperty("cloudType")]

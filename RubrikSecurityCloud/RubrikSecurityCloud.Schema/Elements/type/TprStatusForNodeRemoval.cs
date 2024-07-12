@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public TprReqStatus? Status { get; set; }
 
+        //      C# -> TprRule? TprRule
+        // GraphQL -> tprRule: TprRule! (enum)
+        [JsonProperty("tprRule")]
+        public TprRule? TprRule { get; set; }
+
         //      C# -> System.String? TprRequestId
         // GraphQL -> tprRequestId: String! (scalar)
         [JsonProperty("tprRequestId")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public TprStatusForNodeRemoval Set(
         TprReqStatus? Status = null,
+        TprRule? TprRule = null,
         System.String? TprRequestId = null
     ) 
     {
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( TprRule != null ) {
+            this.TprRule = TprRule;
         }
         if ( TprRequestId != null ) {
             this.TprRequestId = TprRequestId;
@@ -68,6 +77,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> TprRule? TprRule
+        // GraphQL -> tprRule: TprRule! (enum)
+        if (this.TprRule != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "tprRule\n" ;
+            } else {
+                s += ind + "tprRule\n" ;
             }
         }
         //      C# -> System.String? TprRequestId
@@ -102,6 +120,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> TprRule? TprRule
+        // GraphQL -> tprRule: TprRule! (enum)
+        if (ec.Includes("tprRule",true))
+        {
+            if(this.TprRule == null) {
+
+                this.TprRule = new TprRule();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TprRule != null && ec.Excludes("tprRule",true))
+        {
+            this.TprRule = null;
         }
         //      C# -> System.String? TprRequestId
         // GraphQL -> tprRequestId: String! (scalar)

@@ -15,6 +15,8 @@
   - Is HotAdd enabled for this on-prem vCenter.
 - connectionStatus: RefreshableObjectConnectionStatus
   - Connection status for this vCenter Server.
+- isStandaloneHost: System.Boolean
+  - Specifies whether this entity is a standalone host.
 - conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz
 - descendantConnection: VsphereVcenterDescendantTypeConnection
   - List of descendants.
@@ -72,3 +74,5 @@
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.

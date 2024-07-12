@@ -1,6 +1,8 @@
 ### UpdateVcenterInput
 
 
+- id: System.String
+  - Required. ID of the vCenter Server.
 - updatePropertiesV50: VcenterConfigInput
   - Object containing updated vCenter Server information.
 - updatePropertiesV51: VcenterConfigInput
@@ -23,5 +25,3 @@
   - Object containing updated vCenter Server information.
 - updatePropertiesV92: VcenterUpdateConfigInput
   - Object containing updated vCenter Server information.
-- id: System.String
-  - Required. ID of the vCenter Server.

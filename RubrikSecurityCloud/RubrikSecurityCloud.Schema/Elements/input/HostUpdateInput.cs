@@ -39,11 +39,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mssqlCbtDriverInstalled")]
         public System.Boolean? MssqlCbtDriverInstalled { get; set; }
 
-        //      C# -> NasConfigInput? NasConfig
-        // GraphQL -> nasConfig: NasConfigInput (input)
-        [JsonProperty("nasConfig")]
-        public NasConfigInput? NasConfig { get; set; }
-
         //      C# -> System.String? OracleQueryUser
         // GraphQL -> oracleQueryUser: String (scalar)
         [JsonProperty("oracleQueryUser")]
@@ -58,11 +53,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> alias: String (scalar)
         [JsonProperty("alias")]
         public System.String? Alias { get; set; }
-
-        //      C# -> HdfsConfigInput? HdfsConfig
-        // GraphQL -> hdfsConfig: HdfsConfigInput (input)
-        [JsonProperty("hdfsConfig")]
-        public HdfsConfigInput? HdfsConfig { get; set; }
 
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean (scalar)
@@ -79,11 +69,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRefreshPaused")]
         public System.Boolean? IsRefreshPaused { get; set; }
 
-        //      C# -> SddUserCredentialsInput? MssqlSddUserCredentials
-        // GraphQL -> mssqlSddUserCredentials: SddUserCredentialsInput (input)
-        [JsonProperty("mssqlSddUserCredentials")]
-        public SddUserCredentialsInput? MssqlSddUserCredentials { get; set; }
-
         //      C# -> HostVfdInstallConfig? HostVfdEnabled
         // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
         [JsonProperty("hostVfdEnabled")]
@@ -93,6 +78,21 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mssqlCbtEnabled: MssqlCbtStatusType (enum)
         [JsonProperty("mssqlCbtEnabled")]
         public MssqlCbtStatusType? MssqlCbtEnabled { get; set; }
+
+        //      C# -> HdfsConfigInput? HdfsConfig
+        // GraphQL -> hdfsConfig: HdfsConfigInput (input)
+        [JsonProperty("hdfsConfig")]
+        public HdfsConfigInput? HdfsConfig { get; set; }
+
+        //      C# -> SddUserCredentialsInput? MssqlSddUserCredentials
+        // GraphQL -> mssqlSddUserCredentials: SddUserCredentialsInput (input)
+        [JsonProperty("mssqlSddUserCredentials")]
+        public SddUserCredentialsInput? MssqlSddUserCredentials { get; set; }
+
+        //      C# -> NasConfigInput? NasConfig
+        // GraphQL -> nasConfig: NasConfigInput (input)
+        [JsonProperty("nasConfig")]
+        public NasConfigInput? NasConfig { get; set; }
 
 
         #endregion

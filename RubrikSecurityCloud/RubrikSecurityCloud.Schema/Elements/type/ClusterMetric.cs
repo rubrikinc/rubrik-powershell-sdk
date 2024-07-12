@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("availableCapacity")]
         public System.Int64? AvailableCapacity { get; set; }
 
+        //      C# -> System.Int64? AverageDailyGrowth
+        // GraphQL -> averageDailyGrowth: Long! (scalar)
+        [JsonProperty("averageDailyGrowth")]
+        public System.Int64? AverageDailyGrowth { get; set; }
+
         //      C# -> System.Int64? CdpCapacity
         // GraphQL -> cdpCapacity: Long! (scalar)
         [JsonProperty("cdpCapacity")]
@@ -96,6 +101,7 @@ namespace RubrikSecurityCloud.Types
 
     public ClusterMetric Set(
         System.Int64? AvailableCapacity = null,
+        System.Int64? AverageDailyGrowth = null,
         System.Int64? CdpCapacity = null,
         System.Int64? IngestedArchivalStorage = null,
         System.Int64? IngestedSnapshotStorage = null,
@@ -112,6 +118,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AvailableCapacity != null ) {
             this.AvailableCapacity = AvailableCapacity;
+        }
+        if ( AverageDailyGrowth != null ) {
+            this.AverageDailyGrowth = AverageDailyGrowth;
         }
         if ( CdpCapacity != null ) {
             this.CdpCapacity = CdpCapacity;
@@ -167,6 +176,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "availableCapacity\n" ;
             } else {
                 s += ind + "availableCapacity\n" ;
+            }
+        }
+        //      C# -> System.Int64? AverageDailyGrowth
+        // GraphQL -> averageDailyGrowth: Long! (scalar)
+        if (this.AverageDailyGrowth != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "averageDailyGrowth\n" ;
+            } else {
+                s += ind + "averageDailyGrowth\n" ;
             }
         }
         //      C# -> System.Int64? CdpCapacity
@@ -300,6 +318,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AvailableCapacity != null && ec.Excludes("availableCapacity",true))
         {
             this.AvailableCapacity = null;
+        }
+        //      C# -> System.Int64? AverageDailyGrowth
+        // GraphQL -> averageDailyGrowth: Long! (scalar)
+        if (ec.Includes("averageDailyGrowth",true))
+        {
+            if(this.AverageDailyGrowth == null) {
+
+                this.AverageDailyGrowth = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AverageDailyGrowth != null && ec.Excludes("averageDailyGrowth",true))
+        {
+            this.AverageDailyGrowth = null;
         }
         //      C# -> System.Int64? CdpCapacity
         // GraphQL -> cdpCapacity: Long! (scalar)

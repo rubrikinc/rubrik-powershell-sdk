@@ -37,3 +37,5 @@ Filters for the cluster list.
   - Connection status of the Rubrik cluster.
 - isInFatalOrDisconnectedState: System.Boolean
   - Include Rubrik clusters which are disconnected  or in fatal state.
+- cyberEventLockdownMode: list of ClusterCyberEventLockdownModes
+  - Cyber Event Lockdown mode of the Rubrik cluster.

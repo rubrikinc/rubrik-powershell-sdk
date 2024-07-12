@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mediumRiskFileCount")]
         public SummaryCount? MediumRiskFileCount { get; set; }
 
+        //      C# -> SummaryCount? NoRiskFileCount
+        // GraphQL -> noRiskFileCount: SummaryCount (type)
+        [JsonProperty("noRiskFileCount")]
+        public SummaryCount? NoRiskFileCount { get; set; }
+
         //      C# -> SummaryCount? TotalFileCount
         // GraphQL -> totalFileCount: SummaryCount (type)
         [JsonProperty("totalFileCount")]
@@ -53,6 +58,7 @@ namespace RubrikSecurityCloud.Types
         SummaryCount? HighRiskFileCount = null,
         SummaryCount? LowRiskFileCount = null,
         SummaryCount? MediumRiskFileCount = null,
+        SummaryCount? NoRiskFileCount = null,
         SummaryCount? TotalFileCount = null
     ) 
     {
@@ -64,6 +70,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MediumRiskFileCount != null ) {
             this.MediumRiskFileCount = MediumRiskFileCount;
+        }
+        if ( NoRiskFileCount != null ) {
+            this.NoRiskFileCount = NoRiskFileCount;
         }
         if ( TotalFileCount != null ) {
             this.TotalFileCount = TotalFileCount;
@@ -115,6 +124,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "mediumRiskFileCount" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SummaryCount? NoRiskFileCount
+        // GraphQL -> noRiskFileCount: SummaryCount (type)
+        if (this.NoRiskFileCount != null) {
+            var fspec = this.NoRiskFileCount.AsFieldSpec(conf.Child("noRiskFileCount"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "noRiskFileCount" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -194,6 +216,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.MediumRiskFileCount != null && ec.Excludes("mediumRiskFileCount",false))
         {
             this.MediumRiskFileCount = null;
+        }
+        //      C# -> SummaryCount? NoRiskFileCount
+        // GraphQL -> noRiskFileCount: SummaryCount (type)
+        if (ec.Includes("noRiskFileCount",false))
+        {
+            if(this.NoRiskFileCount == null) {
+
+                this.NoRiskFileCount = new SummaryCount();
+                this.NoRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("noRiskFileCount"));
+
+            } else {
+
+                this.NoRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("noRiskFileCount"));
+
+            }
+        }
+        else if (this.NoRiskFileCount != null && ec.Excludes("noRiskFileCount",false))
+        {
+            this.NoRiskFileCount = null;
         }
         //      C# -> SummaryCount? TotalFileCount
         // GraphQL -> totalFileCount: SummaryCount (type)

@@ -10,6 +10,11 @@ Add a Configured Group to the O365 hierarchy.
 
 - There is a single argument of type AddConfiguredGroupToHierarchyInput.
 - Returns AddConfiguredGroupToHierarchyReply.
+### addcustomintelfeed
+Add custom intel feed.
+
+- There is a single argument of type AddCustomIntelFeedInput.
+- Returns AddCustomIntelFeedReply.
 ### addinventoryworkloads
 Add account level inventory workloads.
 
@@ -31,6 +36,11 @@ Add Vm App consistent specs info
 
 - There is a single argument of type AddVmAppConsistentSpecsInput.
 - Returns AddVmAppConsistentSpecsReply.
+### airgapstatus
+Update the air-gap status of the Rubrik cluster.
+
+- There is a single argument of type AirGapStatusInput.
+- Returns System.String.
 ### archivecrawl
 Archive a crawl.
 
@@ -128,6 +138,11 @@ Delete guest OS credentials.
 
 - There is a single argument of type DeleteGuestCredentialByIdInput.
 - Returns System.Boolean.
+### deleteintelfeed
+Delete intel feed.
+
+- There is a single argument of type DeleteIntelFeedInput.
+- Returns DeleteIntelFeedReply.
 ### deletevolumegroupmount
 Requst to delete a mount
 
@@ -136,6 +151,11 @@ Create a request to delete a mount. If there are volumes mounted on a target hos
 
 - There is a single argument of type DeleteVolumeGroupMountInput.
 - Returns AsyncRequestStatus.
+### deregisterprivatecontainerregistry
+Deregister the Private Container Registry (PCR) for an Exocompute account.
+
+- There is a single argument of type DeregisterPrivateContainerRegistryInput.
+- Returns System.String.
 ### disablesupportuseraccess
 Disables a Rubrik Support representative's access to the customer's account.
 
@@ -252,7 +272,7 @@ Mount disks to the given workload.
 ### notificationforgetlicense
 Send notification when the user clicks on the Get License button.
 
-- The notificationforgetlicense subcommand takes no arguments.
+- There is a single argument of type NotificationForGetLicenseInput.
 - Returns NotificationForGetLicenseReply.
 ### recoverclouddirectmultipaths
 Cloud Direct MultiPaths Recovery.
@@ -523,6 +543,11 @@ Unmount selected disks.
 ### updateaccountowner
 - There is a single argument of type System.String.
 - Returns System.Boolean.
+### updateadgroup
+Update the AD group display name, and it's filter attribute spec.
+
+- There is a single argument of type UpdateAdGroupInput.
+- Returns System.String.
 ### updateagentdeploymentsetting
 Change the Rubrik Backup Service deployment setting
 
@@ -531,11 +556,21 @@ Modify the global setting for automatic deployment of the Rubrik Backup Service 
 
 - There is a single argument of type UpdateVmAgentDeploymentSettingInput.
 - Returns AgentDeploymentSettings.
+### updateagentdeploymentsettinginbatch
+Change the Rubrik Backup Service deployment setting in batch.
+
+- There is a single argument of type UpdateAgentDeploymentSettingInBatchInput.
+- Returns UpdateAgentDeploymentSettingInBatchReply.
 ### updateauthdomainusershiddenstatus
 Update the hidden status for the given auth domain users.
 
 - There is a single argument of type UpdateAuthDomainUsersHiddenStatusInput.
 - Returns System.String.
+### updatebackupthrottlesetting
+Update backup throttle setting.
+
+- There is a single argument of type UpdateBackupThrottleSettingInput.
+- Returns UpdateBackupThrottleSettingReply.
 ### updatebaddiskledstatus
 Find bad disk of a node in the CDM cluster.
 
@@ -556,6 +591,11 @@ Updates the Azure app for the specified account with specified permissions in an
 
 - There is a single argument of type UpdateCustomerAppPermissionsInput.
 - Returns UpdateCustomerAppPermissionsReply.
+### updatecustomintelfeed
+Update custom intel feed.
+
+- There is a single argument of type UpdateCustomIntelFeedInput.
+- Returns UpdateCustomIntelFeedReply.
 ### updatedistributionlistdigest
 Update specific distribution list digests.
 
@@ -684,6 +724,14 @@ Validate KMS input provided on O365 subscription setup.
 
 - There is a single argument of type ValidateAndSaveCustomerKmsInfoInput.
 - Returns ValidateAndSaveCustomerKmsInfoReply.
+### vmmakeprimary
+Make this cluster the primary for agents on a set of VMs
+
+Supported in v5.3+
+Migrate the primary cluster with which the agent is able to communicate. For disaster recovery when migrating everything over from another cluster, the /host/make_primary endpoint can be used with the oldPrimaryClusterUuid parameter.
+
+- There is a single argument of type VmMakePrimaryInput.
+- Returns AsyncRequestStatus.
 ### warmsearchcache
 Warms the search cache for an O365 workload.
 

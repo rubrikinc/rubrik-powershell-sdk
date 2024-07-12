@@ -61,6 +61,7 @@ User audit object type.
 - Mssql - MSSQL type.
 - AZURE_AD_DIRECTORY - Azure AD Directory type.
 - VmwareVm - VMware virtual machine type.
+- NAS_SYSTEM - NAS system type.
 - JobInstance - Job instance type.
 - SlaDomain - SLA Domain type.
 - AwsEventType - AWS event type.
@@ -101,6 +102,7 @@ User audit object type.
 - Sla - SLA Domain type.
 - Blueprint - Blueprint type.
 - Ec2Instance - EC2 instance type.
+- NUTANIX_ERA - Nutanix Era type.
 - JIRA_PROJECT - Atlassian Jira project.
 - StorageArrayVolumeGroup - Storage array volume group type.
 - StorageSettings - Storage settings type.

@@ -69,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DELETE_MOSAIC_STORAGE_LOCATION")]
         DELETE_MOSAIC_STORAGE_LOCATION,
 
+        [EnumMember(Value = "DISCOVERED_MSSQL_OBJECTS_NOTIFICATIONS_POLLER")]
+        DISCOVERED_MSSQL_OBJECTS_NOTIFICATIONS_POLLER,
+
         [EnumMember(Value = "DISCOVERED_MSSQL_OBJECTS_SYNC_METRIC_POLLER")]
         DISCOVERED_MSSQL_OBJECTS_SYNC_METRIC_POLLER,
 
@@ -98,6 +101,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "EXPORT_VCD_VAPP_SNAPSHOT")]
         EXPORT_VCD_VAPP_SNAPSHOT,
+
+        [EnumMember(Value = "HOST_BULK_REGISTER_ASYNC")]
+        HOST_BULK_REGISTER_ASYNC,
 
         [EnumMember(Value = "HOST_MAKE_PRIMARY_POLLER")]
         HOST_MAKE_PRIMARY_POLLER,
@@ -149,6 +155,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MSSQL_RESTORE")]
         MSSQL_RESTORE,
+
+        [EnumMember(Value = "MSSQL_SNAPSHOT")]
+        MSSQL_SNAPSHOT,
 
         [EnumMember(Value = "MSSQL_UNMOUNT")]
         MSSQL_UNMOUNT,
@@ -226,7 +235,10 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_SNAPSHOT,
 
         [EnumMember(Value = "VSPHERE_UNMOUNT")]
-        VSPHERE_UNMOUNT
+        VSPHERE_UNMOUNT,
+
+        [EnumMember(Value = "VSPHERE_VM_MAKE_PRIMARY")]
+        VSPHERE_VM_MAKE_PRIMARY
 
 
     } // enum JobType

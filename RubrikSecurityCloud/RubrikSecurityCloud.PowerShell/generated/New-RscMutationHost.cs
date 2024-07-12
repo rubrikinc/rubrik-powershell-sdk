@@ -167,6 +167,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			hasAgent = $someBoolean
     /// 			# OPTIONAL
+    /// 			oracleQueryUser = $someString
+    /// 			# OPTIONAL
+    /// 			oracleSysDbaUser = $someString
+    /// 			# OPTIONAL
+    /// 			organizationId = $someString
+    /// 			# OPTIONAL
+    /// 			alias = $someString
+    /// 			# OPTIONAL
+    /// 			isOracleHost = $someBoolean
+    /// 			# OPTIONAL
+    /// 			orgNetworkId = $someString
+    /// 			# OPTIONAL
+    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			hdfsConfig = @{
+    /// 				# OPTIONAL
+    /// 				hdfsBaseConfig = @{
+    /// 					# OPTIONAL
+    /// 					apiToken = $someString
+    /// 					# OPTIONAL
+    /// 					kerberosTicket = $someString
+    /// 					# OPTIONAL
+    /// 					nameservices = $someString
+    /// 					# OPTIONAL
+    /// 					username = $someString
+    /// 					# REQUIRED
+    /// 					hosts = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							hostname = $someString
+    /// 							# REQUIRED
+    /// 							port = $someInt
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			}
+    /// 			# REQUIRED
+    /// 			hostname = $someString
+    /// 			# OPTIONAL
+    /// 			mssqlSddUserCredentials = @{
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
+    /// 			}
+    /// 			# OPTIONAL
     /// 			nasConfig = @{
     /// 				# OPTIONAL
     /// 				apiCertificate = $someString
@@ -195,52 +241,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				vendorType = $someString
     /// 			}
-    /// 			# OPTIONAL
-    /// 			oracleQueryUser = $someString
-    /// 			# OPTIONAL
-    /// 			oracleSysDbaUser = $someString
-    /// 			# OPTIONAL
-    /// 			organizationId = $someString
-    /// 			# OPTIONAL
-    /// 			alias = $someString
-    /// 			# OPTIONAL
-    /// 			hdfsConfig = @{
-    /// 				# OPTIONAL
-    /// 				hdfsBaseConfig = @{
-    /// 					# OPTIONAL
-    /// 					apiToken = $someString
-    /// 					# OPTIONAL
-    /// 					kerberosTicket = $someString
-    /// 					# OPTIONAL
-    /// 					nameservices = $someString
-    /// 					# OPTIONAL
-    /// 					username = $someString
-    /// 					# REQUIRED
-    /// 					hosts = @(
-    /// 						@{
-    /// 							# REQUIRED
-    /// 							hostname = $someString
-    /// 							# REQUIRED
-    /// 							port = $someInt
-    /// 						}
-    /// 					)
-    /// 				}
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			isOracleHost = $someBoolean
-    /// 			# OPTIONAL
-    /// 			mssqlSddUserCredentials = @{
-    /// 				# REQUIRED
-    /// 				password = $someString
-    /// 				# REQUIRED
-    /// 				username = $someString
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			orgNetworkId = $someString
-    /// 			# OPTIONAL
-    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
-    /// 			# REQUIRED
-    /// 			hostname = $someString
     /// 		}
     /// 	)
     /// }
@@ -280,6 +280,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			hasAgent = $someBoolean
     /// 			# OPTIONAL
+    /// 			oracleQueryUser = $someString
+    /// 			# OPTIONAL
+    /// 			oracleSysDbaUser = $someString
+    /// 			# OPTIONAL
+    /// 			organizationId = $someString
+    /// 			# OPTIONAL
+    /// 			alias = $someString
+    /// 			# OPTIONAL
+    /// 			isOracleHost = $someBoolean
+    /// 			# OPTIONAL
+    /// 			orgNetworkId = $someString
+    /// 			# OPTIONAL
+    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			hdfsConfig = @{
+    /// 				# OPTIONAL
+    /// 				hdfsBaseConfig = @{
+    /// 					# OPTIONAL
+    /// 					apiToken = $someString
+    /// 					# OPTIONAL
+    /// 					kerberosTicket = $someString
+    /// 					# OPTIONAL
+    /// 					nameservices = $someString
+    /// 					# OPTIONAL
+    /// 					username = $someString
+    /// 					# REQUIRED
+    /// 					hosts = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							hostname = $someString
+    /// 							# REQUIRED
+    /// 							port = $someInt
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			}
+    /// 			# REQUIRED
+    /// 			hostname = $someString
+    /// 			# OPTIONAL
+    /// 			mssqlSddUserCredentials = @{
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
+    /// 			}
+    /// 			# OPTIONAL
     /// 			nasConfig = @{
     /// 				# OPTIONAL
     /// 				apiCertificate = $someString
@@ -308,52 +354,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				vendorType = $someString
     /// 			}
-    /// 			# OPTIONAL
-    /// 			oracleQueryUser = $someString
-    /// 			# OPTIONAL
-    /// 			oracleSysDbaUser = $someString
-    /// 			# OPTIONAL
-    /// 			organizationId = $someString
-    /// 			# OPTIONAL
-    /// 			alias = $someString
-    /// 			# OPTIONAL
-    /// 			hdfsConfig = @{
-    /// 				# OPTIONAL
-    /// 				hdfsBaseConfig = @{
-    /// 					# OPTIONAL
-    /// 					apiToken = $someString
-    /// 					# OPTIONAL
-    /// 					kerberosTicket = $someString
-    /// 					# OPTIONAL
-    /// 					nameservices = $someString
-    /// 					# OPTIONAL
-    /// 					username = $someString
-    /// 					# REQUIRED
-    /// 					hosts = @(
-    /// 						@{
-    /// 							# REQUIRED
-    /// 							hostname = $someString
-    /// 							# REQUIRED
-    /// 							port = $someInt
-    /// 						}
-    /// 					)
-    /// 				}
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			isOracleHost = $someBoolean
-    /// 			# OPTIONAL
-    /// 			mssqlSddUserCredentials = @{
-    /// 				# REQUIRED
-    /// 				password = $someString
-    /// 				# REQUIRED
-    /// 				username = $someString
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			orgNetworkId = $someString
-    /// 			# OPTIONAL
-    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
-    /// 			# REQUIRED
-    /// 			hostname = $someString
     /// 		}
     /// 	)
     /// }
@@ -401,6 +401,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				mssqlCbtDriverInstalled = $someBoolean
     /// 				# OPTIONAL
+    /// 				oracleQueryUser = $someString
+    /// 				# OPTIONAL
+    /// 				oracleSysDbaUser = $someString
+    /// 				# OPTIONAL
+    /// 				alias = $someString
+    /// 				# OPTIONAL
+    /// 				isOracleHost = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isUpdateCertAndAgentIdEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isRefreshPaused = $someBoolean
+    /// 				# OPTIONAL
+    /// 				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
+    /// 				# OPTIONAL
+    /// 				mssqlCbtEnabled = $someMssqlCbtStatusType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCbtStatusType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				hdfsConfig = @{
+    /// 					# OPTIONAL
+    /// 					hdfsBaseConfig = @{
+    /// 						# OPTIONAL
+    /// 						apiToken = $someString
+    /// 						# OPTIONAL
+    /// 						kerberosTicket = $someString
+    /// 						# OPTIONAL
+    /// 						nameservices = $someString
+    /// 						# OPTIONAL
+    /// 						username = $someString
+    /// 						# REQUIRED
+    /// 						hosts = @(
+    /// 							@{
+    /// 								# REQUIRED
+    /// 								hostname = $someString
+    /// 								# REQUIRED
+    /// 								port = $someInt
+    /// 							}
+    /// 						)
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				mssqlSddUserCredentials = @{
+    /// 					# REQUIRED
+    /// 					password = $someString
+    /// 					# REQUIRED
+    /// 					username = $someString
+    /// 				}
+    /// 				# OPTIONAL
     /// 				nasConfig = @{
     /// 					# OPTIONAL
     /// 					apiCertificate = $someString
@@ -429,52 +475,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# REQUIRED
     /// 					vendorType = $someString
     /// 				}
-    /// 				# OPTIONAL
-    /// 				oracleQueryUser = $someString
-    /// 				# OPTIONAL
-    /// 				oracleSysDbaUser = $someString
-    /// 				# OPTIONAL
-    /// 				alias = $someString
-    /// 				# OPTIONAL
-    /// 				hdfsConfig = @{
-    /// 					# OPTIONAL
-    /// 					hdfsBaseConfig = @{
-    /// 						# OPTIONAL
-    /// 						apiToken = $someString
-    /// 						# OPTIONAL
-    /// 						kerberosTicket = $someString
-    /// 						# OPTIONAL
-    /// 						nameservices = $someString
-    /// 						# OPTIONAL
-    /// 						username = $someString
-    /// 						# REQUIRED
-    /// 						hosts = @(
-    /// 							@{
-    /// 								# REQUIRED
-    /// 								hostname = $someString
-    /// 								# REQUIRED
-    /// 								port = $someInt
-    /// 							}
-    /// 						)
-    /// 					}
-    /// 				}
-    /// 				# OPTIONAL
-    /// 				isOracleHost = $someBoolean
-    /// 				# OPTIONAL
-    /// 				isUpdateCertAndAgentIdEnabled = $someBoolean
-    /// 				# OPTIONAL
-    /// 				isRefreshPaused = $someBoolean
-    /// 				# OPTIONAL
-    /// 				mssqlSddUserCredentials = @{
-    /// 					# REQUIRED
-    /// 					password = $someString
-    /// 					# REQUIRED
-    /// 					username = $someString
-    /// 				}
-    /// 				# OPTIONAL
-    /// 				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
-    /// 				# OPTIONAL
-    /// 				mssqlCbtEnabled = $someMssqlCbtStatusType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCbtStatusType]) for enum values.
     /// 			}
     /// 		}
     /// 	)
@@ -771,6 +771,52 @@ $query.Var.input = @{
 			# OPTIONAL
 			hasAgent = $someBoolean
 			# OPTIONAL
+			oracleQueryUser = $someString
+			# OPTIONAL
+			oracleSysDbaUser = $someString
+			# OPTIONAL
+			organizationId = $someString
+			# OPTIONAL
+			alias = $someString
+			# OPTIONAL
+			isOracleHost = $someBoolean
+			# OPTIONAL
+			orgNetworkId = $someString
+			# OPTIONAL
+			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+			# OPTIONAL
+			hdfsConfig = @{
+				# OPTIONAL
+				hdfsBaseConfig = @{
+					# OPTIONAL
+					apiToken = $someString
+					# OPTIONAL
+					kerberosTicket = $someString
+					# OPTIONAL
+					nameservices = $someString
+					# OPTIONAL
+					username = $someString
+					# REQUIRED
+					hosts = @(
+						@{
+							# REQUIRED
+							hostname = $someString
+							# REQUIRED
+							port = $someInt
+						}
+					)
+				}
+			}
+			# REQUIRED
+			hostname = $someString
+			# OPTIONAL
+			mssqlSddUserCredentials = @{
+				# REQUIRED
+				password = $someString
+				# REQUIRED
+				username = $someString
+			}
+			# OPTIONAL
 			nasConfig = @{
 				# OPTIONAL
 				apiCertificate = $someString
@@ -799,52 +845,6 @@ $query.Var.input = @{
 				# REQUIRED
 				vendorType = $someString
 			}
-			# OPTIONAL
-			oracleQueryUser = $someString
-			# OPTIONAL
-			oracleSysDbaUser = $someString
-			# OPTIONAL
-			organizationId = $someString
-			# OPTIONAL
-			alias = $someString
-			# OPTIONAL
-			hdfsConfig = @{
-				# OPTIONAL
-				hdfsBaseConfig = @{
-					# OPTIONAL
-					apiToken = $someString
-					# OPTIONAL
-					kerberosTicket = $someString
-					# OPTIONAL
-					nameservices = $someString
-					# OPTIONAL
-					username = $someString
-					# REQUIRED
-					hosts = @(
-						@{
-							# REQUIRED
-							hostname = $someString
-							# REQUIRED
-							port = $someInt
-						}
-					)
-				}
-			}
-			# OPTIONAL
-			isOracleHost = $someBoolean
-			# OPTIONAL
-			mssqlSddUserCredentials = @{
-				# REQUIRED
-				password = $someString
-				# REQUIRED
-				username = $someString
-			}
-			# OPTIONAL
-			orgNetworkId = $someString
-			# OPTIONAL
-			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
-			# REQUIRED
-			hostname = $someString
 		}
 	)
 }"
@@ -876,6 +876,52 @@ $query.Var.input = @{
 			# OPTIONAL
 			hasAgent = $someBoolean
 			# OPTIONAL
+			oracleQueryUser = $someString
+			# OPTIONAL
+			oracleSysDbaUser = $someString
+			# OPTIONAL
+			organizationId = $someString
+			# OPTIONAL
+			alias = $someString
+			# OPTIONAL
+			isOracleHost = $someBoolean
+			# OPTIONAL
+			orgNetworkId = $someString
+			# OPTIONAL
+			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+			# OPTIONAL
+			hdfsConfig = @{
+				# OPTIONAL
+				hdfsBaseConfig = @{
+					# OPTIONAL
+					apiToken = $someString
+					# OPTIONAL
+					kerberosTicket = $someString
+					# OPTIONAL
+					nameservices = $someString
+					# OPTIONAL
+					username = $someString
+					# REQUIRED
+					hosts = @(
+						@{
+							# REQUIRED
+							hostname = $someString
+							# REQUIRED
+							port = $someInt
+						}
+					)
+				}
+			}
+			# REQUIRED
+			hostname = $someString
+			# OPTIONAL
+			mssqlSddUserCredentials = @{
+				# REQUIRED
+				password = $someString
+				# REQUIRED
+				username = $someString
+			}
+			# OPTIONAL
 			nasConfig = @{
 				# OPTIONAL
 				apiCertificate = $someString
@@ -904,52 +950,6 @@ $query.Var.input = @{
 				# REQUIRED
 				vendorType = $someString
 			}
-			# OPTIONAL
-			oracleQueryUser = $someString
-			# OPTIONAL
-			oracleSysDbaUser = $someString
-			# OPTIONAL
-			organizationId = $someString
-			# OPTIONAL
-			alias = $someString
-			# OPTIONAL
-			hdfsConfig = @{
-				# OPTIONAL
-				hdfsBaseConfig = @{
-					# OPTIONAL
-					apiToken = $someString
-					# OPTIONAL
-					kerberosTicket = $someString
-					# OPTIONAL
-					nameservices = $someString
-					# OPTIONAL
-					username = $someString
-					# REQUIRED
-					hosts = @(
-						@{
-							# REQUIRED
-							hostname = $someString
-							# REQUIRED
-							port = $someInt
-						}
-					)
-				}
-			}
-			# OPTIONAL
-			isOracleHost = $someBoolean
-			# OPTIONAL
-			mssqlSddUserCredentials = @{
-				# REQUIRED
-				password = $someString
-				# REQUIRED
-				username = $someString
-			}
-			# OPTIONAL
-			orgNetworkId = $someString
-			# OPTIONAL
-			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
-			# REQUIRED
-			hostname = $someString
 		}
 	)
 }"
@@ -989,6 +989,52 @@ $query.Var.input = @{
 				# OPTIONAL
 				mssqlCbtDriverInstalled = $someBoolean
 				# OPTIONAL
+				oracleQueryUser = $someString
+				# OPTIONAL
+				oracleSysDbaUser = $someString
+				# OPTIONAL
+				alias = $someString
+				# OPTIONAL
+				isOracleHost = $someBoolean
+				# OPTIONAL
+				isUpdateCertAndAgentIdEnabled = $someBoolean
+				# OPTIONAL
+				isRefreshPaused = $someBoolean
+				# OPTIONAL
+				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
+				# OPTIONAL
+				mssqlCbtEnabled = $someMssqlCbtStatusType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCbtStatusType]) for enum values.
+				# OPTIONAL
+				hdfsConfig = @{
+					# OPTIONAL
+					hdfsBaseConfig = @{
+						# OPTIONAL
+						apiToken = $someString
+						# OPTIONAL
+						kerberosTicket = $someString
+						# OPTIONAL
+						nameservices = $someString
+						# OPTIONAL
+						username = $someString
+						# REQUIRED
+						hosts = @(
+							@{
+								# REQUIRED
+								hostname = $someString
+								# REQUIRED
+								port = $someInt
+							}
+						)
+					}
+				}
+				# OPTIONAL
+				mssqlSddUserCredentials = @{
+					# REQUIRED
+					password = $someString
+					# REQUIRED
+					username = $someString
+				}
+				# OPTIONAL
 				nasConfig = @{
 					# OPTIONAL
 					apiCertificate = $someString
@@ -1017,52 +1063,6 @@ $query.Var.input = @{
 					# REQUIRED
 					vendorType = $someString
 				}
-				# OPTIONAL
-				oracleQueryUser = $someString
-				# OPTIONAL
-				oracleSysDbaUser = $someString
-				# OPTIONAL
-				alias = $someString
-				# OPTIONAL
-				hdfsConfig = @{
-					# OPTIONAL
-					hdfsBaseConfig = @{
-						# OPTIONAL
-						apiToken = $someString
-						# OPTIONAL
-						kerberosTicket = $someString
-						# OPTIONAL
-						nameservices = $someString
-						# OPTIONAL
-						username = $someString
-						# REQUIRED
-						hosts = @(
-							@{
-								# REQUIRED
-								hostname = $someString
-								# REQUIRED
-								port = $someInt
-							}
-						)
-					}
-				}
-				# OPTIONAL
-				isOracleHost = $someBoolean
-				# OPTIONAL
-				isUpdateCertAndAgentIdEnabled = $someBoolean
-				# OPTIONAL
-				isRefreshPaused = $someBoolean
-				# OPTIONAL
-				mssqlSddUserCredentials = @{
-					# REQUIRED
-					password = $someString
-					# REQUIRED
-					username = $someString
-				}
-				# OPTIONAL
-				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
-				# OPTIONAL
-				mssqlCbtEnabled = $someMssqlCbtStatusType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCbtStatusType]) for enum values.
 			}
 		}
 	)

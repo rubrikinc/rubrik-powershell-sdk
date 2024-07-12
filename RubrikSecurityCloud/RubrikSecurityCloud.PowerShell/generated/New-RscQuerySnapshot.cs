@@ -141,6 +141,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.excludeQuarantined = $someBoolean
     /// # OPTIONAL
     /// $query.Var.excludeAnomalous = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.getFullDetails = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -216,9 +218,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	archiveFolderAction = $someArchiveFolderAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchiveFolderAction]) for enum values.
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -303,7 +309,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -672,6 +682,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
     /// 	}
     /// }
     /// 
@@ -1547,6 +1559,7 @@ $query.Var.searchPrefix = $someString"
         //     ignoreActiveWorkloadCheck: Boolean
         //     excludeQuarantined: Boolean
         //     excludeAnomalous: Boolean
+        //     getFullDetails: Boolean
         //   ): [ClosestSnapshotSearchResult!]!
         internal void InitQueryAllSnapshotsClosestToPointInTime()
         {
@@ -1558,12 +1571,13 @@ $query.Var.searchPrefix = $someString"
                 Tuple.Create("ignoreActiveWorkloadCheck", "Boolean"),
                 Tuple.Create("excludeQuarantined", "Boolean"),
                 Tuple.Create("excludeAnomalous", "Boolean"),
+                Tuple.Create("getFullDetails", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllSnapshotsClosestToPointInTime",
-                "($beforeTime: DateTime,$afterTime: DateTime,$snappableIds: [String!]!,$includeLinked: Boolean,$ignoreActiveWorkloadCheck: Boolean,$excludeQuarantined: Boolean,$excludeAnomalous: Boolean)",
+                "($beforeTime: DateTime,$afterTime: DateTime,$snappableIds: [String!]!,$includeLinked: Boolean,$ignoreActiveWorkloadCheck: Boolean,$excludeQuarantined: Boolean,$excludeAnomalous: Boolean,$getFullDetails: Boolean)",
                 "List<ClosestSnapshotSearchResult>",
                 Query.AllSnapshotsClosestToPointInTime,
                 Query.AllSnapshotsClosestToPointInTimeFieldSpec,
@@ -1582,7 +1596,9 @@ $query.Var.ignoreActiveWorkloadCheck = $someBoolean
 # OPTIONAL
 $query.Var.excludeQuarantined = $someBoolean
 # OPTIONAL
-$query.Var.excludeAnomalous = $someBoolean"
+$query.Var.excludeAnomalous = $someBoolean
+# OPTIONAL
+$query.Var.getFullDetails = $someBoolean"
             );
         }
 
@@ -1662,9 +1678,13 @@ $query.Var.searchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
 	# OPTIONAL
 	archiveFolderAction = $someArchiveFolderAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchiveFolderAction]) for enum values.
+	# OPTIONAL
+	skipRifItems = $someBoolean
 }"
             );
         }
@@ -1753,7 +1773,11 @@ $query.Var.calendarSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	skipRifItems = $someBoolean
 }"
             );
         }
@@ -2137,6 +2161,8 @@ $query.Var.onedriveSearchFilter = @{
 		)
 		# OPTIONAL
 		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
 	}
 }"
             );

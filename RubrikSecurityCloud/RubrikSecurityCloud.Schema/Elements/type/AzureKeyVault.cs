@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAccessibleByUserAssignedManagedIdentity")]
         public System.Boolean? IsAccessibleByUserAssignedManagedIdentity { get; set; }
 
+        //      C# -> System.Boolean? IsPurgeProtectionEnabled
+        // GraphQL -> isPurgeProtectionEnabled: Boolean! (scalar)
+        [JsonProperty("isPurgeProtectionEnabled")]
+        public System.Boolean? IsPurgeProtectionEnabled { get; set; }
+
         //      C# -> System.String? KeyVaultName
         // GraphQL -> keyVaultName: String! (scalar)
         [JsonProperty("keyVaultName")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public AzureKeyVault Set(
         System.Boolean? IsAccessibleByUserAssignedManagedIdentity = null,
+        System.Boolean? IsPurgeProtectionEnabled = null,
         System.String? KeyVaultName = null,
         System.String? ResourceGroupName = null
     ) 
     {
         if ( IsAccessibleByUserAssignedManagedIdentity != null ) {
             this.IsAccessibleByUserAssignedManagedIdentity = IsAccessibleByUserAssignedManagedIdentity;
+        }
+        if ( IsPurgeProtectionEnabled != null ) {
+            this.IsPurgeProtectionEnabled = IsPurgeProtectionEnabled;
         }
         if ( KeyVaultName != null ) {
             this.KeyVaultName = KeyVaultName;
@@ -77,6 +86,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isAccessibleByUserAssignedManagedIdentity\n" ;
             } else {
                 s += ind + "isAccessibleByUserAssignedManagedIdentity\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsPurgeProtectionEnabled
+        // GraphQL -> isPurgeProtectionEnabled: Boolean! (scalar)
+        if (this.IsPurgeProtectionEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPurgeProtectionEnabled\n" ;
+            } else {
+                s += ind + "isPurgeProtectionEnabled\n" ;
             }
         }
         //      C# -> System.String? KeyVaultName
@@ -120,6 +138,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsAccessibleByUserAssignedManagedIdentity != null && ec.Excludes("isAccessibleByUserAssignedManagedIdentity",true))
         {
             this.IsAccessibleByUserAssignedManagedIdentity = null;
+        }
+        //      C# -> System.Boolean? IsPurgeProtectionEnabled
+        // GraphQL -> isPurgeProtectionEnabled: Boolean! (scalar)
+        if (ec.Includes("isPurgeProtectionEnabled",true))
+        {
+            if(this.IsPurgeProtectionEnabled == null) {
+
+                this.IsPurgeProtectionEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPurgeProtectionEnabled != null && ec.Excludes("isPurgeProtectionEnabled",true))
+        {
+            this.IsPurgeProtectionEnabled = null;
         }
         //      C# -> System.String? KeyVaultName
         // GraphQL -> keyVaultName: String! (scalar)

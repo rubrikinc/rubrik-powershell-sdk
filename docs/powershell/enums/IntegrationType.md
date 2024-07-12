@@ -5,3 +5,4 @@ Specifies the type of an integration. Note that the values are stored in a
 - INTEGRATION_TYPE_UNSPECIFIED - Represents an unspecified integration.
 - DATA_LOSS_PREVENTION - Represents a security integration that fingerprints files with sensitive
  data hits to prevent them from being exfiltrated.
+- SERVICENOW_ITSM - Represents a ServiceNow ITSM integration.

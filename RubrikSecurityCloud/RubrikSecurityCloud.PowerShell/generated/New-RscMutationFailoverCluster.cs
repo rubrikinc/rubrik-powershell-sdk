@@ -212,6 +212,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		failoverClusterAppSource = @{
     /// 			# OPTIONAL
+    /// 			virtualIps = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			vips = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
     /// 			nodeOrders = @(
     /// 				@{
     /// 					# OPTIONAL
@@ -221,14 +229,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# REQUIRED
     /// 					order = $someInt
     /// 				}
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			virtualIps = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			vips = @(
-    /// 				$someString
     /// 			)
     /// 		}
     /// 		# REQUIRED
@@ -384,6 +384,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		failoverClusterAppSource = @{
     /// 			# OPTIONAL
+    /// 			virtualIps = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			vips = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
     /// 			nodeOrders = @(
     /// 				@{
     /// 					# OPTIONAL
@@ -393,14 +401,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# REQUIRED
     /// 					order = $someInt
     /// 				}
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			virtualIps = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			vips = @(
-    /// 				$someString
     /// 			)
     /// 		}
     /// 		# REQUIRED
@@ -682,6 +682,14 @@ $query.Var.input = @{
 		# REQUIRED
 		failoverClusterAppSource = @{
 			# OPTIONAL
+			virtualIps = @(
+				$someString
+			)
+			# OPTIONAL
+			vips = @(
+				$someString
+			)
+			# OPTIONAL
 			nodeOrders = @(
 				@{
 					# OPTIONAL
@@ -691,14 +699,6 @@ $query.Var.input = @{
 					# REQUIRED
 					order = $someInt
 				}
-			)
-			# OPTIONAL
-			virtualIps = @(
-				$someString
-			)
-			# OPTIONAL
-			vips = @(
-				$someString
 			)
 		}
 		# REQUIRED
@@ -822,6 +822,14 @@ $query.Var.input = @{
 		# REQUIRED
 		failoverClusterAppSource = @{
 			# OPTIONAL
+			virtualIps = @(
+				$someString
+			)
+			# OPTIONAL
+			vips = @(
+				$someString
+			)
+			# OPTIONAL
 			nodeOrders = @(
 				@{
 					# OPTIONAL
@@ -831,14 +839,6 @@ $query.Var.input = @{
 					# REQUIRED
 					order = $someInt
 				}
-			)
-			# OPTIONAL
-			virtualIps = @(
-				$someString
-			)
-			# OPTIONAL
-			vips = @(
-				$someString
 			)
 		}
 		# REQUIRED

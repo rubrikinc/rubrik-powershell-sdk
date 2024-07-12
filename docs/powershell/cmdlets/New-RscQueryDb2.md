@@ -19,8 +19,8 @@ Connection of filtered db2 databases based on specific filters.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns Db2DatabaseConnection.
 ### instance
@@ -34,8 +34,8 @@ Connection of filtered db2 instances based on specific filters.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns Db2InstanceConnection.
 ### logsnapshot
@@ -51,7 +51,7 @@ Connection of all log snapshots for Db2.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - sortBy - Db2LogSnapshotSortBy: Field to sort Db2 log snapshots.
     - filter - Db2LogSnapshotFilterInput: Field to filter Db2 log snapshots.
 - Returns Db2LogSnapshotConnection.
@@ -68,7 +68,7 @@ Connection of all recoverable ranges for Db2.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - sortBy - Db2RecoverableRangeSortBy: Field to sort Db2 recoverable ranges.
     - filter - Db2RecoverableRangeFilterInput: Field to filter Db2 recoverable ranges.
 - Returns Db2RecoverableRangeConnection.

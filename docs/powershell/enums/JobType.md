@@ -72,3 +72,8 @@ Type of poller. Different types of jobs are polled by corresponding poller.
 - VCENTER_DIAGNOSTIC_REFRESH - Refresh vCenter diagnostics.
 - K8S_CLUSTER_REFRESH - Refresh Kubernetes cluster.
 - POSTGRES_DB_CLUSTER - Postgres DB cluster.
+- MSSQL_SNAPSHOT - Microsoft SQL Server database snapshot.
+- HOST_BULK_REGISTER_ASYNC - Register host async.
+- VSPHERE_VM_MAKE_PRIMARY - Vsphere update primary Rubrik cluster for RBS.
+- DISCOVERED_MSSQL_OBJECTS_NOTIFICATIONS_POLLER - Start a poller that will send a notification to user
+ of new MSSQL objects discovered for the given host.

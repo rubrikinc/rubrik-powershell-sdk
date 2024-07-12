@@ -10,7 +10,9 @@ Input for restoring O365 Teams files.
 - shouldCreateDestChannel: System.Boolean
   - Specifies whether destination channel should be created.
 - actionType: O365RestoreActionType
-  - Recovery action type for the job.
+  - Recovery action type for the restore job.
+- inplaceRestoreConfig: InplaceRestoreConfig
+  - In-place restore configuration for the restore job.
 - channelRecoveryType: ChannelMembershipType
   - Indicates whether the channel being restored is STANDARD or PRIVATE.
 - recoverWithLatestPermissions: System.Boolean

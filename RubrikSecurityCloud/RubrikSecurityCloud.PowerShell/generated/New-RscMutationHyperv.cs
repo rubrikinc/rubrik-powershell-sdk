@@ -1072,16 +1072,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	vmUpdateProperties = @{
     /// 		# OPTIONAL
-    /// 		cloudInstantiationSpec = @{
-    /// 			# REQUIRED
-    /// 			imageRetentionInSeconds = $someInt64
-    /// 		}
-    /// 		# OPTIONAL
     /// 		configuredSlaDomainId = $someString
     /// 		# OPTIONAL
     /// 		virtualDiskIdsExcludedFromSnapshot = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		cloudInstantiationSpec = @{
+    /// 			# REQUIRED
+    /// 			imageRetentionInSeconds = $someInt64
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -2319,16 +2319,16 @@ $query.Var.input = @{
 	# REQUIRED
 	vmUpdateProperties = @{
 		# OPTIONAL
-		cloudInstantiationSpec = @{
-			# REQUIRED
-			imageRetentionInSeconds = $someInt64
-		}
-		# OPTIONAL
 		configuredSlaDomainId = $someString
 		# OPTIONAL
 		virtualDiskIdsExcludedFromSnapshot = @(
 			$someString
 		)
+		# OPTIONAL
+		cloudInstantiationSpec = @{
+			# REQUIRED
+			imageRetentionInSeconds = $someInt64
+		}
 	}
 }"
             );

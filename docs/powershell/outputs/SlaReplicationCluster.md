@@ -7,3 +7,5 @@ Replication cluster specific information.
   - Name of the replication cluster.
 - version: System.String
   - Version of the replication cluster.
+- clusterInfo: DataLocationClusterInfo
+  - Specific information of the Rubrik cluster.

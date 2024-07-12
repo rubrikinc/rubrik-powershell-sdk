@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DataGovObjectType
     {
+        [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
+        AWS_NATIVE_S3_BUCKET,
+
         [EnumMember(Value = "AZURE_NATIVE_MANAGED_DISK")]
         AZURE_NATIVE_MANAGED_DISK,
 

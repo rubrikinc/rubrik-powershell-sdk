@@ -225,8 +225,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAS_HOST")]
         NAS_HOST,
 
+        [EnumMember(Value = "NAS_SYSTEM")]
+        NAS_SYSTEM,
+
         [EnumMember(Value = "NUTANIX_CLUSTER")]
         NUTANIX_CLUSTER,
+
+        [EnumMember(Value = "NUTANIX_ERA")]
+        NUTANIX_ERA,
 
         [EnumMember(Value = "NUTANIX_PRISM_CENTRAL")]
         NUTANIX_PRISM_CENTRAL,

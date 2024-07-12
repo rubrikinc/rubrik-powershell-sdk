@@ -18,7 +18,7 @@ NAS Fileset protected object.
 - hardlinkSupportEnabled: System.Boolean
   - Whether optimized backup of hardlinks is supported on this fileset.
 - nasMigrationInfo: System.String
-  - Information pertaining to migration of the NAS host from Rubrik CDM to RSC.
+  - Information pertaining to switching the NAS host from Rubrik CDM to RSC.
 - id: System.String
   - The object's FID.
 - nasShare: NasShare
@@ -69,6 +69,8 @@ NAS Fileset protected object.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - cdmLink: System.String
   - A link to view the workload on the CDM cluster. For dev use only.
 - missedSnapshotConnection: MissedSnapshotCommonConnection

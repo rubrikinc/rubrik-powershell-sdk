@@ -104,6 +104,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		password = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	logicAppName = $someString
+    /// 	# OPTIONAL
+    /// 	logicAppApiKey = $someString
     /// }
     /// 
     /// # Execute the query
@@ -906,6 +910,10 @@ $query.Var.input = @{
 		# REQUIRED
 		password = $someString
 	}
+	# OPTIONAL
+	logicAppName = $someString
+	# OPTIONAL
+	logicAppApiKey = $someString
 }"
             );
         }

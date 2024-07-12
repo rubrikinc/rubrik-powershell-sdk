@@ -81,6 +81,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isHotAddEnabledForOnPremVcenter")]
         public System.Boolean? IsHotAddEnabledForOnPremVcenter { get; set; }
 
+        //      C# -> System.Boolean? IsStandaloneHost
+        // GraphQL -> isStandaloneHost: Boolean! (scalar)
+        [JsonProperty("isStandaloneHost")]
+        public System.Boolean? IsStandaloneHost { get; set; }
+
         //      C# -> System.Boolean? IsVmc
         // GraphQL -> isVmc: Boolean! (scalar)
         [JsonProperty("isVmc")]
@@ -206,6 +211,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterLocation")]
         public DataLocation? PrimaryClusterLocation { get; set; }
 
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
@@ -320,6 +330,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CaCerts = null,
         System.String? Id = null,
         System.Boolean? IsHotAddEnabledForOnPremVcenter = null,
+        System.Boolean? IsStandaloneHost = null,
         System.Boolean? IsVmc = null,
         DateTime? LastRefreshTime = null,
         System.String? Name = null,
@@ -345,6 +356,7 @@ namespace RubrikSecurityCloud.Types
         VsphereVcenterPhysicalChildTypeConnection? PhysicalChildConnection = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
+        SecurityMetadata? SecurityMetadata = null,
         SnapshotDistribution? SnapshotDistribution = null,
         VsphereVcenterTagChildTypeConnection? TagChildConnection = null,
         List<PathNode>? VsphereTagPath = null
@@ -385,6 +397,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsHotAddEnabledForOnPremVcenter != null ) {
             this.IsHotAddEnabledForOnPremVcenter = IsHotAddEnabledForOnPremVcenter;
+        }
+        if ( IsStandaloneHost != null ) {
+            this.IsStandaloneHost = IsStandaloneHost;
         }
         if ( IsVmc != null ) {
             this.IsVmc = IsVmc;
@@ -460,6 +475,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterLocation != null ) {
             this.PrimaryClusterLocation = PrimaryClusterLocation;
+        }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
@@ -607,6 +625,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isHotAddEnabledForOnPremVcenter\n" ;
             } else {
                 s += ind + "isHotAddEnabledForOnPremVcenter\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsStandaloneHost
+        // GraphQL -> isStandaloneHost: Boolean! (scalar)
+        if (this.IsStandaloneHost != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isStandaloneHost\n" ;
+            } else {
+                s += ind + "isStandaloneHost\n" ;
             }
         }
         //      C# -> System.Boolean? IsVmc
@@ -898,6 +925,19 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
@@ -1157,6 +1197,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsHotAddEnabledForOnPremVcenter != null && ec.Excludes("isHotAddEnabledForOnPremVcenter",true))
         {
             this.IsHotAddEnabledForOnPremVcenter = null;
+        }
+        //      C# -> System.Boolean? IsStandaloneHost
+        // GraphQL -> isStandaloneHost: Boolean! (scalar)
+        if (ec.Includes("isStandaloneHost",true))
+        {
+            if(this.IsStandaloneHost == null) {
+
+                this.IsStandaloneHost = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsStandaloneHost != null && ec.Excludes("isStandaloneHost",true))
+        {
+            this.IsStandaloneHost = null;
         }
         //      C# -> System.Boolean? IsVmc
         // GraphQL -> isVmc: Boolean! (scalar)
@@ -1614,6 +1671,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
         {
             this.PrimaryClusterLocation = null;
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

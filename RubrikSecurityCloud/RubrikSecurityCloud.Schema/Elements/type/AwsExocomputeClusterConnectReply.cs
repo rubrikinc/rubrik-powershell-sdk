@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ClusterSetupYaml
+        // GraphQL -> clusterSetupYaml: String! (scalar)
+        [JsonProperty("clusterSetupYaml")]
+        public System.String? ClusterSetupYaml { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [JsonProperty("clusterUuid")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsExocomputeClusterConnectReply Set(
+        System.String? ClusterSetupYaml = null,
         System.String? ClusterUuid = null,
         System.String? ConnectionCommand = null
     ) 
     {
+        if ( ClusterSetupYaml != null ) {
+            this.ClusterSetupYaml = ClusterSetupYaml;
+        }
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
         }
@@ -61,6 +70,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? ClusterSetupYaml
+        // GraphQL -> clusterSetupYaml: String! (scalar)
+        if (this.ClusterSetupYaml != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterSetupYaml\n" ;
+            } else {
+                s += ind + "clusterSetupYaml\n" ;
+            }
+        }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid != null) {
@@ -86,6 +104,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? ClusterSetupYaml
+        // GraphQL -> clusterSetupYaml: String! (scalar)
+        if (ec.Includes("clusterSetupYaml",true))
+        {
+            if(this.ClusterSetupYaml == null) {
+
+                this.ClusterSetupYaml = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterSetupYaml != null && ec.Excludes("clusterSetupYaml",true))
+        {
+            this.ClusterSetupYaml = null;
+        }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (ec.Includes("clusterUuid",true))

@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analysisStatus")]
         public AnalysisStatus? AnalysisStatus { get; set; }
 
+        //      C# -> DataGovObjectType? ObjectType
+        // GraphQL -> objectType: DataGovObjectType! (enum)
+        [JsonProperty("objectType")]
+        public DataGovObjectType? ObjectType { get; set; }
+
         //      C# -> DataGovOsType? OsType
         // GraphQL -> osType: DataGovOsType! (enum)
         [JsonProperty("osType")]
@@ -94,6 +99,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> analyzerHits: AnalyzerHits (type)
         [JsonProperty("analyzerHits")]
         public AnalyzerHits? AnalyzerHits { get; set; }
+
+        //      C# -> AssetMetadata? AssetMetadata
+        // GraphQL -> assetMetadata: AssetMetadata (type)
+        [JsonProperty("assetMetadata")]
+        public AssetMetadata? AssetMetadata { get; set; }
+
+        //      C# -> List<DataTypeResult>? DataTypeResults
+        // GraphQL -> dataTypeResults: [DataTypeResult!]! (type)
+        [JsonProperty("dataTypeResults")]
+        public List<DataTypeResult>? DataTypeResults { get; set; }
 
         //      C# -> PrincipalCounts? DeltaUserCounts
         // GraphQL -> deltaUserCounts: PrincipalCounts (type)
@@ -220,6 +235,7 @@ namespace RubrikSecurityCloud.Types
     public PolicyObj Set(
         List<RiskReason>? AccessRiskReasons = null,
         AnalysisStatus? AnalysisStatus = null,
+        DataGovObjectType? ObjectType = null,
         DataGovOsType? OsType = null,
         RiskLevelType? RiskLevel = null,
         DataGovShareType? ShareType = null,
@@ -233,6 +249,8 @@ namespace RubrikSecurityCloud.Types
         System.String? TimeContext = null,
         List<AnalyzerMapping>? AllAnalyzerMappings = null,
         AnalyzerHits? AnalyzerHits = null,
+        AssetMetadata? AssetMetadata = null,
+        List<DataTypeResult>? DataTypeResults = null,
         PrincipalCounts? DeltaUserCounts = null,
         FileResultConnection? FileResultConnection = null,
         FileResultConnection? FolderChildConnection = null,
@@ -252,6 +270,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AnalysisStatus != null ) {
             this.AnalysisStatus = AnalysisStatus;
+        }
+        if ( ObjectType != null ) {
+            this.ObjectType = ObjectType;
         }
         if ( OsType != null ) {
             this.OsType = OsType;
@@ -291,6 +312,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AnalyzerHits != null ) {
             this.AnalyzerHits = AnalyzerHits;
+        }
+        if ( AssetMetadata != null ) {
+            this.AssetMetadata = AssetMetadata;
+        }
+        if ( DataTypeResults != null ) {
+            this.DataTypeResults = DataTypeResults;
         }
         if ( DeltaUserCounts != null ) {
             this.DeltaUserCounts = DeltaUserCounts;
@@ -355,6 +382,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "analysisStatus\n" ;
             } else {
                 s += ind + "analysisStatus\n" ;
+            }
+        }
+        //      C# -> DataGovObjectType? ObjectType
+        // GraphQL -> objectType: DataGovObjectType! (enum)
+        if (this.ObjectType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
             }
         }
         //      C# -> DataGovOsType? OsType
@@ -483,6 +519,32 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "analyzerHits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AssetMetadata? AssetMetadata
+        // GraphQL -> assetMetadata: AssetMetadata (type)
+        if (this.AssetMetadata != null) {
+            var fspec = this.AssetMetadata.AsFieldSpec(conf.Child("assetMetadata"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "assetMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<DataTypeResult>? DataTypeResults
+        // GraphQL -> dataTypeResults: [DataTypeResult!]! (type)
+        if (this.DataTypeResults != null) {
+            var fspec = this.DataTypeResults.AsFieldSpec(conf.Child("dataTypeResults"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "dataTypeResults" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -682,6 +744,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AnalysisStatus != null && ec.Excludes("analysisStatus",true))
         {
             this.AnalysisStatus = null;
+        }
+        //      C# -> DataGovObjectType? ObjectType
+        // GraphQL -> objectType: DataGovObjectType! (enum)
+        if (ec.Includes("objectType",true))
+        {
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new DataGovObjectType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> DataGovOsType? OsType
         // GraphQL -> osType: DataGovOsType! (enum)
@@ -909,6 +988,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.AnalyzerHits != null && ec.Excludes("analyzerHits",false))
         {
             this.AnalyzerHits = null;
+        }
+        //      C# -> AssetMetadata? AssetMetadata
+        // GraphQL -> assetMetadata: AssetMetadata (type)
+        if (ec.Includes("assetMetadata",false))
+        {
+            if(this.AssetMetadata == null) {
+
+                this.AssetMetadata = new AssetMetadata();
+                this.AssetMetadata.ApplyExploratoryFieldSpec(ec.NewChild("assetMetadata"));
+
+            } else {
+
+                this.AssetMetadata.ApplyExploratoryFieldSpec(ec.NewChild("assetMetadata"));
+
+            }
+        }
+        else if (this.AssetMetadata != null && ec.Excludes("assetMetadata",false))
+        {
+            this.AssetMetadata = null;
+        }
+        //      C# -> List<DataTypeResult>? DataTypeResults
+        // GraphQL -> dataTypeResults: [DataTypeResult!]! (type)
+        if (ec.Includes("dataTypeResults",false))
+        {
+            if(this.DataTypeResults == null) {
+
+                this.DataTypeResults = new List<DataTypeResult>();
+                this.DataTypeResults.ApplyExploratoryFieldSpec(ec.NewChild("dataTypeResults"));
+
+            } else {
+
+                this.DataTypeResults.ApplyExploratoryFieldSpec(ec.NewChild("dataTypeResults"));
+
+            }
+        }
+        else if (this.DataTypeResults != null && ec.Excludes("dataTypeResults",false))
+        {
+            this.DataTypeResults = null;
         }
         //      C# -> PrincipalCounts? DeltaUserCounts
         // GraphQL -> deltaUserCounts: PrincipalCounts (type)

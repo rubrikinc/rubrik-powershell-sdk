@@ -9,3 +9,7 @@ The supported Rubrik cluster-specific information.
   - Version of the supported Rubrik cluster.
 - apiVersion: System.String
   - API version of the supported Rubrik cluster.
+- isAirGapped: System.Boolean
+  - If the Rubrik cluster is air-gapped.
+- isArchived: System.Boolean
+  - If the cross-account cluster is archived.

@@ -14,11 +14,17 @@ Supported in v9.0+
 - serviceAccountName: System.String
   - Supported in v9.1+
       The name of the RSC service account.
-- eksConfig: EksConfigInput
-  - The configuration for adding an EKS cluster.
 - distribution: System.String
   - Supported in v9.1+
       Distribution of the Kubernetes cluster to be added.
+- pullSecret: System.String
+  - Supported in v9.1+
+      The pull secret required for pulling Rubrik container images.
+- transport: System.String
+  - Supported in v9.1+
+      The transport type used for communication with the Kubernetes cluster.
+- isAutoPsCreationEnabled: System.Boolean
+  - Specifies whether to enable automatic protection set creation for the Kubernetes cluster.
 - clientSecret: System.String
   - Supported in v9.1+
       The client secret for the service account.
@@ -28,9 +34,15 @@ Supported in v9.0+
 - region: System.String
   - Supported in v9.1+
       Region of the Kubernetes cluster to be added.
+- onboardingType: System.String
+  - The type of onboarding. It can be kubeconfig or manifest.
 - clientId: System.String
   - Supported in v9.1+
       The client ID for the service account.
+- eksConfig: EksConfigInput
+  - The configuration for adding an EKS cluster.
+- kuprServerProxyConfig: KuprServerProxyConfigInput
+  - The configuration for the kupr server proxy to be added.
 - name: System.String
   - Required. Supported in v9.0+
       Name of the Kubernetes cluster to be added.

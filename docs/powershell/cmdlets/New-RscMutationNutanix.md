@@ -112,6 +112,14 @@ Download a snapshot from archival.
 
 - There is a single argument of type DownloadNutanixSnapshotInput.
 - Returns AsyncRequestStatus.
+### downloadvdisks
+Download virtual disks from the snapshot of a Nutanix virtual machine
+
+Supported in v9.2
+Start an asynchronous job to download multiple virtual disks from a specified Nutanix virtual machine snapshot. Once initiated, you will receive an asynchronous request ID in response. To obtain the URL for downloading the virtual disk files, including the specific virtual disks, send a GET request to 'nutanix/vm/request/{id}'.
+
+- There is a single argument of type DownloadNutanixVmSnapshotVirtualDisksInput.
+- Returns AsyncRequestStatus.
 ### downloadvmfromlocation
 Download a snapshot from a replication target
 
@@ -145,6 +153,14 @@ Supported in v6.0+
 Initiates a request to perform a Live Mount of a Nutanix virtual machine snapshot identified by the snapshot ID.
 
 - There is a single argument of type MountNutanixSnapshotV1Input.
+- Returns AsyncRequestStatus.
+### mountvdisks
+Attaching disks from a snapshot to an existing virtual machine
+
+Supported in v9.2
+Requests a vDisk Mount to attach disks to an existing virtual machine.
+
+- There is a single argument of type CreateNutanixVdisksMountInput.
 - Returns AsyncRequestStatus.
 ### patchmountv1
 Change Nutanix Live Mount power status
@@ -215,4 +231,4 @@ v6.0-v8.0: Patch VM with specified properties.
 v8.1+: Patch virtual machine with specified properties.
 
 - There is a single argument of type UpdateNutanixVmInput.
-- Returns System.String.
+- Returns NutanixVmDetail.

@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean! (scalar)
+        [JsonProperty("isAirGapped")]
+        public System.Boolean? IsAirGapped { get; set; }
+
         //      C# -> System.Boolean? IsCrossAccount
         // GraphQL -> isCrossAccount: Boolean! (scalar)
         [JsonProperty("isCrossAccount")]
@@ -57,6 +62,7 @@ namespace RubrikSecurityCloud.Types
     public ReplicationCluster Set(
         System.String? AccountName = null,
         System.String? Id = null,
+        System.Boolean? IsAirGapped = null,
         System.Boolean? IsCrossAccount = null,
         System.String? Name = null,
         System.String? Version = null
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsAirGapped != null ) {
+            this.IsAirGapped = IsAirGapped;
         }
         if ( IsCrossAccount != null ) {
             this.IsCrossAccount = IsCrossAccount;
@@ -104,6 +113,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean! (scalar)
+        if (this.IsAirGapped != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAirGapped\n" ;
+            } else {
+                s += ind + "isAirGapped\n" ;
             }
         }
         //      C# -> System.Boolean? IsCrossAccount
@@ -173,6 +191,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean! (scalar)
+        if (ec.Includes("isAirGapped",true))
+        {
+            if(this.IsAirGapped == null) {
+
+                this.IsAirGapped = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAirGapped != null && ec.Excludes("isAirGapped",true))
+        {
+            this.IsAirGapped = null;
         }
         //      C# -> System.Boolean? IsCrossAccount
         // GraphQL -> isCrossAccount: Boolean! (scalar)

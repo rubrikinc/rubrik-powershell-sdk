@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 25
+    /// Create a new RscQuery object for any of the 27
     /// operations in the 'Nutanix' API domain:
-    /// BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
+    /// BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVdisks, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, MountVdisks, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
     /// </summary>
     /// <description>
     /// New-RscMutationNutanix creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 25 operations
+    /// There are 27 operations
     /// in the 'Nutanix' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
+    /// one of: BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVdisks, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, MountVdisks, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -377,6 +377,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			cdmClusterId = $someString
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isDrEnabled = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -625,6 +627,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DownloadVdisks operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: DownloadVdisks
+    /// 
+    /// $query = New-RscMutationNutanix -DownloadVdisks
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	vdiskIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DownloadVmFromLocation operation
     /// of the 'Nutanix' API domain.
     /// <code>
@@ -782,6 +819,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# REQUIRED
     /// 		shouldDisableMigration = $someBoolean
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MountVdisks operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: MountVdisks
+    /// 
+    /// $query = New-RscMutationNutanix -MountVdisks
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		shouldMigrateImmediately = $someBoolean
+    /// 		# OPTIONAL
+    /// 		containerNaturalId = $someString
+    /// 		# REQUIRED
+    /// 		shouldDisableMigration = $someBoolean
+    /// 		# REQUIRED
+    /// 		targetVirtualMachineId = $someString
+    /// 		# REQUIRED
+    /// 		virtualDiskIds = @(
+    /// 			$someString
+    /// 		)
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1102,6 +1185,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		isPaused = $someBoolean
     /// 		# OPTIONAL
+    /// 		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
+    /// 		# OPTIONAL
     /// 		postBackupScript = @{
     /// 			# REQUIRED
     /// 			failureHandling = $someNutanixVirtualMachineScriptDetailFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixVirtualMachineScriptDetailFailureHandling]) for enum values.
@@ -1128,8 +1213,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			timeoutMs = $someInt64
     /// 		}
-    /// 		# OPTIONAL
-    /// 		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
     /// 	}
     /// }
     /// 
@@ -1137,7 +1220,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
+    /// Write-Host $result.GetType().Name # prints: NutanixVmDetail
     /// 
     /// 
     /// 
@@ -1174,10 +1257,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteSnapshots",
                 "DownloadFilesSnapshot",
                 "DownloadSnapshot",
+                "DownloadVdisks",
                 "DownloadVmFromLocation",
                 "ExportSnapshot",
                 "MigrateMountV1",
                 "MountSnapshotV1",
+                "MountVdisks",
                 "PatchMountV1",
                 "RefreshCluster",
                 "RefreshPrismCentral",
@@ -1240,6 +1325,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DownloadSnapshot":
                         this.ProcessRecord_DownloadSnapshot();
                         break;
+                    case "DownloadVdisks":
+                        this.ProcessRecord_DownloadVdisks();
+                        break;
                     case "DownloadVmFromLocation":
                         this.ProcessRecord_DownloadVmFromLocation();
                         break;
@@ -1251,6 +1339,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "MountSnapshotV1":
                         this.ProcessRecord_MountSnapshotV1();
+                        break;
+                    case "MountVdisks":
+                        this.ProcessRecord_MountVdisks();
                         break;
                     case "PatchMountV1":
                         this.ProcessRecord_PatchMountV1();
@@ -1404,6 +1495,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // downloadNutanixVdisks.
+        internal void ProcessRecord_DownloadVdisks()
+        {
+            this._logger.name += " -DownloadVdisks";
+            // Create new graphql operation downloadNutanixVdisks
+            InitMutationDownloadNutanixVdisks();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // downloadNutanixVmFromLocation.
         internal void ProcessRecord_DownloadVmFromLocation()
         {
@@ -1437,6 +1537,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -MountSnapshotV1";
             // Create new graphql operation mountNutanixSnapshotV1
             InitMutationMountNutanixSnapshotV1();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mountNutanixVdisks.
+        internal void ProcessRecord_MountVdisks()
+        {
+            this._logger.name += " -MountVdisks";
+            // Create new graphql operation mountNutanixVdisks
+            InitMutationMountNutanixVdisks();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1775,6 +1884,8 @@ $query.Var.input = @{
 			cdmClusterId = $someString
 		}
 	)
+	# OPTIONAL
+	isDrEnabled = $someBoolean
 }"
             );
         }
@@ -1957,6 +2068,33 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // downloadNutanixVdisks(input: DownloadNutanixVmSnapshotVirtualDisksInput!): AsyncRequestStatus!
+        internal void InitMutationDownloadNutanixVdisks()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadNutanixVmSnapshotVirtualDisksInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadNutanixVdisks",
+                "($input: DownloadNutanixVmSnapshotVirtualDisksInput!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadNutanixVdisks,
+                Mutation.DownloadNutanixVdisksFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	vdiskIds = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // downloadNutanixVmFromLocation(input: DownloadNutanixVmFromLocationInput!): AsyncRequestStatus!
         internal void InitMutationDownloadNutanixVmFromLocation()
         {
@@ -2092,6 +2230,44 @@ $query.Var.input = @{
 		)
 		# REQUIRED
 		shouldDisableMigration = $someBoolean
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // mountNutanixVdisks(input: CreateNutanixVdisksMountInput!): AsyncRequestStatus!
+        internal void InitMutationMountNutanixVdisks()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateNutanixVdisksMountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationMountNutanixVdisks",
+                "($input: CreateNutanixVdisksMountInput!)",
+                "AsyncRequestStatus",
+                Mutation.MountNutanixVdisks,
+                Mutation.MountNutanixVdisksFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		shouldMigrateImmediately = $someBoolean
+		# OPTIONAL
+		containerNaturalId = $someString
+		# REQUIRED
+		shouldDisableMigration = $someBoolean
+		# REQUIRED
+		targetVirtualMachineId = $someString
+		# REQUIRED
+		virtualDiskIds = @(
+			$someString
+		)
 	}
 	# REQUIRED
 	id = $someString
@@ -2319,7 +2495,7 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // updateNutanixVm(input: UpdateNutanixVmInput!): Void
+        // updateNutanixVm(input: UpdateNutanixVmInput!): NutanixVmDetail!
         internal void InitMutationUpdateNutanixVm()
         {
             Tuple<string, string>[] argDefs = {
@@ -2330,7 +2506,7 @@ $query.Var.input = @{
                 "mutation",
                 "MutationUpdateNutanixVm",
                 "($input: UpdateNutanixVmInput!)",
-                "System.String",
+                "NutanixVmDetail",
                 Mutation.UpdateNutanixVm,
                 Mutation.UpdateNutanixVmFieldSpec,
                 @"# REQUIRED
@@ -2347,6 +2523,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		isPaused = $someBoolean
+		# OPTIONAL
+		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
 		# OPTIONAL
 		postBackupScript = @{
 			# REQUIRED
@@ -2374,8 +2552,6 @@ $query.Var.input = @{
 			# REQUIRED
 			timeoutMs = $someInt64
 		}
-		# OPTIONAL
-		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
 	}
 }"
             );

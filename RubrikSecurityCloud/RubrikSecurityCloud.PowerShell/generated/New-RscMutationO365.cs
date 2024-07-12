@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 31
+    /// Create a new RscQuery object for any of the 33
     /// operations in the 'Office 365' API domain:
-    /// AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
+    /// AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, ExportMailboxV2, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreMailboxV2, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
     /// </summary>
     /// <description>
     /// New-RscMutationO365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 31 operations
+    /// There are 33 operations
     /// in the 'Office 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
+    /// one of: AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, ExportMailboxV2, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreMailboxV2, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -560,6 +560,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -567,6 +569,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CreateOnDemandJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExportMailboxV2 operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: ExportMailboxV2
+    /// 
+    /// $query = New-RscMutationO365 -ExportMailboxV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	orgUuid = $someString
+    /// 	# REQUIRED
+    /// 	fromMailboxUuid = $someString
+    /// 	# REQUIRED
+    /// 	toMailboxUuid = $someString
+    /// 	# OPTIONAL
+    /// 	snapshotUuid = $someString
+    /// 	# REQUIRED
+    /// 	exportConfigs = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			SnapshotUUID = $someString
+    /// 			# OPTIONAL
+    /// 			EmailID = $someString
+    /// 			# OPTIONAL
+    /// 			FolderID = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	inplaceRestoreConfig = @{
+    /// 		# REQUIRED
+    /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;CreateOnDemandJobReply&gt;
     /// 
     /// 
     /// 
@@ -800,6 +859,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -807,6 +868,61 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CreateOnDemandJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RestoreMailboxV2 operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: RestoreMailboxV2
+    /// 
+    /// $query = New-RscMutationO365 -RestoreMailboxV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	orgUuid = $someString
+    /// 	# REQUIRED
+    /// 	mailboxUuid = $someString
+    /// 	# OPTIONAL
+    /// 	snapshotUuid = $someString
+    /// 	# REQUIRED
+    /// 	restoreConfigs = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			SnapshotUUID = $someString
+    /// 			# OPTIONAL
+    /// 			EmailID = $someString
+    /// 			# OPTIONAL
+    /// 			FolderID = $someString
+    /// 		}
+    /// 	)
+    /// 	# REQUIRED
+    /// 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	inplaceRestoreConfig = @{
+    /// 		# REQUIRED
+    /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;CreateOnDemandJobReply&gt;
     /// 
     /// 
     /// 
@@ -1333,6 +1449,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					FolderID = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			skipRifItems = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		calendarRestoreConfig = @{
@@ -1363,6 +1481,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					snapshotId = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			skipRifItems = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		contactsRestoreConfig = @{
@@ -1388,6 +1508,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					snapshotNum = $someInt
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			skipRifItems = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		inplaceRestoreConfig = @{
@@ -1456,9 +1578,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	shouldCreateDestChannel = $someBoolean
     /// 	# OPTIONAL
+    /// 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	inplaceRestoreConfig = @{
+    /// 		# REQUIRED
+    /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
     /// 	channelInfoForFullRestore = @{
     /// 		# REQUIRED
     /// 		naturalId = $someString
+    /// 		# OPTIONAL
+    /// 		channelId = $someString
     /// 		# REQUIRED
     /// 		name = $someString
     /// 		# REQUIRED
@@ -1473,6 +1604,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		@{
     /// 			# REQUIRED
     /// 			naturalId = $someString
+    /// 			# OPTIONAL
+    /// 			channelId = $someString
     /// 			# REQUIRED
     /// 			name = $someString
     /// 			# REQUIRED
@@ -1632,6 +1765,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	shouldCreateDestChannel = $someBoolean
     /// 	# REQUIRED
     /// 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	inplaceRestoreConfig = @{
+    /// 		# REQUIRED
+    /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+    /// 	}
     /// 	# REQUIRED
     /// 	channelRecoveryType = $someChannelMembershipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
     /// 	# REQUIRED
@@ -1926,12 +2064,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "EnableSharePoint",
                 "EnableTeams",
                 "ExportMailbox",
+                "ExportMailboxV2",
                 "InsertCustomerApp",
                 "OauthConsentComplete",
                 "OauthConsentKickoff",
                 "PdlGroups",
                 "RefreshOrg",
                 "RestoreMailbox",
+                "RestoreMailboxV2",
                 "RestoreSnappable",
                 "RestoreTeamsConversations",
                 "RestoreTeamsFiles",
@@ -2002,6 +2142,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ExportMailbox":
                         this.ProcessRecord_ExportMailbox();
                         break;
+                    case "ExportMailboxV2":
+                        this.ProcessRecord_ExportMailboxV2();
+                        break;
                     case "InsertCustomerApp":
                         this.ProcessRecord_InsertCustomerApp();
                         break;
@@ -2019,6 +2162,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RestoreMailbox":
                         this.ProcessRecord_RestoreMailbox();
+                        break;
+                    case "RestoreMailboxV2":
+                        this.ProcessRecord_RestoreMailboxV2();
                         break;
                     case "RestoreSnappable":
                         this.ProcessRecord_RestoreSnappable();
@@ -2196,6 +2342,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // exportO365MailboxV2.
+        internal void ProcessRecord_ExportMailboxV2()
+        {
+            this._logger.name += " -ExportMailboxV2";
+            // Create new graphql operation exportO365MailboxV2
+            InitMutationExportO365MailboxV2();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // insertCustomerO365App.
         internal void ProcessRecord_InsertCustomerApp()
         {
@@ -2247,6 +2402,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RestoreMailbox";
             // Create new graphql operation restoreO365Mailbox
             InitMutationRestoreO365Mailbox();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // restoreO365MailboxV2.
+        internal void ProcessRecord_RestoreMailboxV2()
+        {
+            this._logger.name += " -RestoreMailboxV2";
+            // Create new graphql operation restoreO365MailboxV2
+            InitMutationRestoreO365MailboxV2();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2715,6 +2879,57 @@ $query.Var.exportConfig = @{
 		# REQUIRED
 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
 	}
+	# OPTIONAL
+	skipRifItems = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // exportO365MailboxV2(input: ExportO365MailboxInput!): [CreateOnDemandJobReply!]!
+        internal void InitMutationExportO365MailboxV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExportO365MailboxInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExportO365MailboxV2",
+                "($input: ExportO365MailboxInput!)",
+                "List<CreateOnDemandJobReply>",
+                Mutation.ExportO365MailboxV2,
+                Mutation.ExportO365MailboxV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	orgUuid = $someString
+	# REQUIRED
+	fromMailboxUuid = $someString
+	# REQUIRED
+	toMailboxUuid = $someString
+	# OPTIONAL
+	snapshotUuid = $someString
+	# REQUIRED
+	exportConfigs = @(
+		@{
+			# REQUIRED
+			SnapshotUUID = $someString
+			# OPTIONAL
+			EmailID = $someString
+			# OPTIONAL
+			FolderID = $someString
+		}
+	)
+	# OPTIONAL
+	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+	# OPTIONAL
+	inplaceRestoreConfig = @{
+		# REQUIRED
+		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+	}
+	# OPTIONAL
+	skipRifItems = $someBoolean
 }"
             );
         }
@@ -2907,6 +3122,55 @@ $query.Var.restoreConfig = @{
 		# REQUIRED
 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
 	}
+	# OPTIONAL
+	skipRifItems = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // restoreO365MailboxV2(input: RestoreO365MailboxInput!): [CreateOnDemandJobReply!]!
+        internal void InitMutationRestoreO365MailboxV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestoreO365MailboxInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestoreO365MailboxV2",
+                "($input: RestoreO365MailboxInput!)",
+                "List<CreateOnDemandJobReply>",
+                Mutation.RestoreO365MailboxV2,
+                Mutation.RestoreO365MailboxV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	orgUuid = $someString
+	# REQUIRED
+	mailboxUuid = $someString
+	# OPTIONAL
+	snapshotUuid = $someString
+	# REQUIRED
+	restoreConfigs = @(
+		@{
+			# REQUIRED
+			SnapshotUUID = $someString
+			# OPTIONAL
+			EmailID = $someString
+			# OPTIONAL
+			FolderID = $someString
+		}
+	)
+	# REQUIRED
+	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+	# OPTIONAL
+	inplaceRestoreConfig = @{
+		# REQUIRED
+		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+	}
+	# OPTIONAL
+	skipRifItems = $someBoolean
 }"
             );
         }
@@ -3432,6 +3696,8 @@ $query.Var.input = @{
 					FolderID = $someString
 				}
 			)
+			# OPTIONAL
+			skipRifItems = $someBoolean
 		}
 		# OPTIONAL
 		calendarRestoreConfig = @{
@@ -3462,6 +3728,8 @@ $query.Var.input = @{
 					snapshotId = $someString
 				}
 			)
+			# OPTIONAL
+			skipRifItems = $someBoolean
 		}
 		# OPTIONAL
 		contactsRestoreConfig = @{
@@ -3487,6 +3755,8 @@ $query.Var.input = @{
 					snapshotNum = $someInt
 				}
 			)
+			# OPTIONAL
+			skipRifItems = $someBoolean
 		}
 		# OPTIONAL
 		inplaceRestoreConfig = @{
@@ -3547,9 +3817,18 @@ $query.Var.input = @{
 	# REQUIRED
 	shouldCreateDestChannel = $someBoolean
 	# OPTIONAL
+	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+	# OPTIONAL
+	inplaceRestoreConfig = @{
+		# REQUIRED
+		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+	}
+	# OPTIONAL
 	channelInfoForFullRestore = @{
 		# REQUIRED
 		naturalId = $someString
+		# OPTIONAL
+		channelId = $someString
 		# REQUIRED
 		name = $someString
 		# REQUIRED
@@ -3564,6 +3843,8 @@ $query.Var.input = @{
 		@{
 			# REQUIRED
 			naturalId = $someString
+			# OPTIONAL
+			channelId = $someString
 			# REQUIRED
 			name = $someString
 			# REQUIRED
@@ -3715,6 +3996,11 @@ $query.Var.input = @{
 	shouldCreateDestChannel = $someBoolean
 	# REQUIRED
 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+	# OPTIONAL
+	inplaceRestoreConfig = @{
+		# REQUIRED
+		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+	}
 	# REQUIRED
 	channelRecoveryType = $someChannelMembershipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
 	# REQUIRED

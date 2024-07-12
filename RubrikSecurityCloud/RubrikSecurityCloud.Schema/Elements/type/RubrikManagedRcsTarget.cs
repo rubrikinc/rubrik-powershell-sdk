@@ -36,6 +36,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("readerRetrievalMethod")]
         public ReaderRetrievalMethod? ReaderRetrievalMethod { get; set; }
 
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        [JsonProperty("redundancy")]
+        public RcvRedundancy? Redundancy { get; set; }
+
+        //      C# -> RcvRedundancyState? RedundancyState
+        // GraphQL -> redundancyState: RcvRedundancyState! (enum)
+        [JsonProperty("redundancyState")]
+        public RcvRedundancyState? RedundancyState { get; set; }
+
         //      C# -> RcsRegionEnumType? Region
         // GraphQL -> region: RcsRegionEnumType! (enum)
         [JsonProperty("region")]
@@ -106,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isVersionLevelImmutabilityEnabled")]
         public System.Boolean? IsVersionLevelImmutabilityEnabled { get; set; }
 
+        //      C# -> DateTime? LastRedundancySyncTime
+        // GraphQL -> lastRedundancySyncTime: DateTime (scalar)
+        [JsonProperty("lastRedundancySyncTime")]
+        public DateTime? LastRedundancySyncTime { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -174,6 +189,8 @@ namespace RubrikSecurityCloud.Types
         ConnectionStatusType? LocationConnectionStatus = null,
         LocationScope? LocationScope = null,
         ReaderRetrievalMethod? ReaderRetrievalMethod = null,
+        RcvRedundancy? Redundancy = null,
+        RcvRedundancyState? RedundancyState = null,
         RcsRegionEnumType? Region = null,
         ArchivalLocationStatus? Status = null,
         TargetSyncStatus? SyncStatus = null,
@@ -188,6 +205,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsActive = null,
         System.Boolean? IsArchived = null,
         System.Boolean? IsVersionLevelImmutabilityEnabled = null,
+        DateTime? LastRedundancySyncTime = null,
         System.String? Name = null,
         System.Int32? RunningTasks = null,
         System.Boolean? ShouldBypassProxy = null,
@@ -209,6 +227,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReaderRetrievalMethod != null ) {
             this.ReaderRetrievalMethod = ReaderRetrievalMethod;
+        }
+        if ( Redundancy != null ) {
+            this.Redundancy = Redundancy;
+        }
+        if ( RedundancyState != null ) {
+            this.RedundancyState = RedundancyState;
         }
         if ( Region != null ) {
             this.Region = Region;
@@ -251,6 +275,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsVersionLevelImmutabilityEnabled != null ) {
             this.IsVersionLevelImmutabilityEnabled = IsVersionLevelImmutabilityEnabled;
+        }
+        if ( LastRedundancySyncTime != null ) {
+            this.LastRedundancySyncTime = LastRedundancySyncTime;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -321,6 +348,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "readerRetrievalMethod\n" ;
             } else {
                 s += ind + "readerRetrievalMethod\n" ;
+            }
+        }
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        if (this.Redundancy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "redundancy\n" ;
+            } else {
+                s += ind + "redundancy\n" ;
+            }
+        }
+        //      C# -> RcvRedundancyState? RedundancyState
+        // GraphQL -> redundancyState: RcvRedundancyState! (enum)
+        if (this.RedundancyState != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "redundancyState\n" ;
+            } else {
+                s += ind + "redundancyState\n" ;
             }
         }
         //      C# -> RcsRegionEnumType? Region
@@ -447,6 +492,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isVersionLevelImmutabilityEnabled\n" ;
             } else {
                 s += ind + "isVersionLevelImmutabilityEnabled\n" ;
+            }
+        }
+        //      C# -> DateTime? LastRedundancySyncTime
+        // GraphQL -> lastRedundancySyncTime: DateTime (scalar)
+        if (this.LastRedundancySyncTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastRedundancySyncTime\n" ;
+            } else {
+                s += ind + "lastRedundancySyncTime\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -625,6 +679,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReaderRetrievalMethod != null && ec.Excludes("readerRetrievalMethod",true))
         {
             this.ReaderRetrievalMethod = null;
+        }
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        if (ec.Includes("redundancy",true))
+        {
+            if(this.Redundancy == null) {
+
+                this.Redundancy = new RcvRedundancy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Redundancy != null && ec.Excludes("redundancy",true))
+        {
+            this.Redundancy = null;
+        }
+        //      C# -> RcvRedundancyState? RedundancyState
+        // GraphQL -> redundancyState: RcvRedundancyState! (enum)
+        if (ec.Includes("redundancyState",true))
+        {
+            if(this.RedundancyState == null) {
+
+                this.RedundancyState = new RcvRedundancyState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RedundancyState != null && ec.Excludes("redundancyState",true))
+        {
+            this.RedundancyState = null;
         }
         //      C# -> RcsRegionEnumType? Region
         // GraphQL -> region: RcsRegionEnumType! (enum)
@@ -863,6 +951,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsVersionLevelImmutabilityEnabled != null && ec.Excludes("isVersionLevelImmutabilityEnabled",true))
         {
             this.IsVersionLevelImmutabilityEnabled = null;
+        }
+        //      C# -> DateTime? LastRedundancySyncTime
+        // GraphQL -> lastRedundancySyncTime: DateTime (scalar)
+        if (ec.Includes("lastRedundancySyncTime",true))
+        {
+            if(this.LastRedundancySyncTime == null) {
+
+                this.LastRedundancySyncTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastRedundancySyncTime != null && ec.Excludes("lastRedundancySyncTime",true))
+        {
+            this.LastRedundancySyncTime = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

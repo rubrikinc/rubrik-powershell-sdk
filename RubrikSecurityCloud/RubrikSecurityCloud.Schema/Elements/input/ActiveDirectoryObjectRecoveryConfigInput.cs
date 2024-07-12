@@ -24,11 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldMergeLinkedAttrs")]
         public System.Boolean? ShouldMergeLinkedAttrs { get; set; }
 
-        //      C# -> ActiveDirectoryUserRestoreOptionsInput? UserRestoreOptions
-        // GraphQL -> userRestoreOptions: ActiveDirectoryUserRestoreOptionsInput (input)
-        [JsonProperty("userRestoreOptions")]
-        public ActiveDirectoryUserRestoreOptionsInput? UserRestoreOptions { get; set; }
-
         //      C# -> System.String? RestoreToDifferentContainer
         // GraphQL -> restoreToDifferentContainer: String (scalar)
         [JsonProperty("restoreToDifferentContainer")]
@@ -44,25 +39,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clearUpAttrsIfNullInBackup")]
         public System.Boolean? ClearUpAttrsIfNullInBackup { get; set; }
 
-        //      C# -> ActiveDirectoryRecoveryLdapCredsInput? CredsForRestore
-        // GraphQL -> credsForRestore: ActiveDirectoryRecoveryLdapCredsInput (input)
-        [JsonProperty("credsForRestore")]
-        public ActiveDirectoryRecoveryLdapCredsInput? CredsForRestore { get; set; }
-
         //      C# -> System.Boolean? ShouldCreateMissingParents
         // GraphQL -> shouldCreateMissingParents: Boolean (scalar)
         [JsonProperty("shouldCreateMissingParents")]
         public System.Boolean? ShouldCreateMissingParents { get; set; }
 
-        //      C# -> ActiveDirectoryContainerRestoreOptionsInput? ContainerRestoreOptions
-        // GraphQL -> containerRestoreOptions: ActiveDirectoryContainerRestoreOptionsInput (input)
-        [JsonProperty("containerRestoreOptions")]
-        public ActiveDirectoryContainerRestoreOptionsInput? ContainerRestoreOptions { get; set; }
-
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String (scalar)
         [JsonProperty("locationId")]
         public System.String? LocationId { get; set; }
+
+        //      C# -> System.String? HostId
+        // GraphQL -> hostId: String (scalar)
+        [JsonProperty("hostId")]
+        public System.String? HostId { get; set; }
 
         //      C# -> ActiveDirectoryObjectNameConflictOption? NameConflict
         // GraphQL -> nameConflict: ActiveDirectoryObjectNameConflictOption (enum)
@@ -74,12 +64,27 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectMovedOptions")]
         public ActiveDirectoryObjectMovedOption? ObjectMovedOptions { get; set; }
 
+        //      C# -> ActiveDirectoryContainerRestoreOptionsInput? ContainerRestoreOptions
+        // GraphQL -> containerRestoreOptions: ActiveDirectoryContainerRestoreOptionsInput (input)
+        [JsonProperty("containerRestoreOptions")]
+        public ActiveDirectoryContainerRestoreOptionsInput? ContainerRestoreOptions { get; set; }
+
+        //      C# -> ActiveDirectoryRecoveryLdapCredsInput? CredsForRestore
+        // GraphQL -> credsForRestore: ActiveDirectoryRecoveryLdapCredsInput (input)
+        [JsonProperty("credsForRestore")]
+        public ActiveDirectoryRecoveryLdapCredsInput? CredsForRestore { get; set; }
+
         //      C# -> List<ActiveDirectoryRecoveryObjectInput>? DomainControllerRecoveryObjects
         // GraphQL -> domainControllerRecoveryObjects: [ActiveDirectoryRecoveryObjectInput!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("domainControllerRecoveryObjects")]
         public List<ActiveDirectoryRecoveryObjectInput>? DomainControllerRecoveryObjects { get; set; }
+
+        //      C# -> ActiveDirectoryUserRestoreOptionsInput? UserRestoreOptions
+        // GraphQL -> userRestoreOptions: ActiveDirectoryUserRestoreOptionsInput (input)
+        [JsonProperty("userRestoreOptions")]
+        public ActiveDirectoryUserRestoreOptionsInput? UserRestoreOptions { get; set; }
 
 
         #endregion

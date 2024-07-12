@@ -7,6 +7,8 @@ Azure Cloud Account Feature details.
   - Specifies the state of an Azure cloud account in Rubrik environment. For example, Refreshed, Disconnected, etc. A cloud account can only be in one state at a time.
 - regions: list of AzureCloudAccountRegions
   - Azure regions.
+- permissionsGroups: list of PermissionsGroups
+  - Permissions Groups represents the list of permissions groups onboarded for this feature.
 - customerFeatureId: System.String
   - Customer feature UUID.
 - userAssignedManagedIdentity: AzureUserAssignedManagedIdentity

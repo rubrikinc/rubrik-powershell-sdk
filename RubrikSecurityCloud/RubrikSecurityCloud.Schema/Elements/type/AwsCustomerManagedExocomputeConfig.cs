@@ -46,6 +46,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("message")]
         public System.String? Message { get; set; }
 
+        //      C# -> System.String? PcrImagePullAwsNativeId
+        // GraphQL -> pcrImagePullAwsNativeId: String (scalar)
+        [JsonProperty("pcrImagePullAwsNativeId")]
+        public System.String? PcrImagePullAwsNativeId { get; set; }
+
         //      C# -> System.String? PcrUrl
         // GraphQL -> pcrUrl: String (scalar)
         [JsonProperty("pcrUrl")]
@@ -55,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
         [JsonProperty("healthCheckStatus")]
         public ExocomputeHealthCheckStatus? HealthCheckStatus { get; set; }
+
+        //      C# -> ExocomputeClusterDetails? LatestExoclusterDetails
+        // GraphQL -> latestExoclusterDetails: ExocomputeClusterDetails (type)
+        [JsonProperty("latestExoclusterDetails")]
+        public ExocomputeClusterDetails? LatestExoclusterDetails { get; set; }
 
 
         #endregion
@@ -71,8 +81,10 @@ namespace RubrikSecurityCloud.Types
         System.String? ConfigUuid = null,
         System.Boolean? HasPcr = null,
         System.String? Message = null,
+        System.String? PcrImagePullAwsNativeId = null,
         System.String? PcrUrl = null,
-        ExocomputeHealthCheckStatus? HealthCheckStatus = null
+        ExocomputeHealthCheckStatus? HealthCheckStatus = null,
+        ExocomputeClusterDetails? LatestExoclusterDetails = null
     ) 
     {
         if ( Region != null ) {
@@ -90,11 +102,17 @@ namespace RubrikSecurityCloud.Types
         if ( Message != null ) {
             this.Message = Message;
         }
+        if ( PcrImagePullAwsNativeId != null ) {
+            this.PcrImagePullAwsNativeId = PcrImagePullAwsNativeId;
+        }
         if ( PcrUrl != null ) {
             this.PcrUrl = PcrUrl;
         }
         if ( HealthCheckStatus != null ) {
             this.HealthCheckStatus = HealthCheckStatus;
+        }
+        if ( LatestExoclusterDetails != null ) {
+            this.LatestExoclusterDetails = LatestExoclusterDetails;
         }
         return this;
     }
@@ -152,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "message\n" ;
             }
         }
+        //      C# -> System.String? PcrImagePullAwsNativeId
+        // GraphQL -> pcrImagePullAwsNativeId: String (scalar)
+        if (this.PcrImagePullAwsNativeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "pcrImagePullAwsNativeId\n" ;
+            } else {
+                s += ind + "pcrImagePullAwsNativeId\n" ;
+            }
+        }
         //      C# -> System.String? PcrUrl
         // GraphQL -> pcrUrl: String (scalar)
         if (this.PcrUrl != null) {
@@ -171,6 +198,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "healthCheckStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ExocomputeClusterDetails? LatestExoclusterDetails
+        // GraphQL -> latestExoclusterDetails: ExocomputeClusterDetails (type)
+        if (this.LatestExoclusterDetails != null) {
+            var fspec = this.LatestExoclusterDetails.AsFieldSpec(conf.Child("latestExoclusterDetails"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "latestExoclusterDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -266,6 +306,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Message = null;
         }
+        //      C# -> System.String? PcrImagePullAwsNativeId
+        // GraphQL -> pcrImagePullAwsNativeId: String (scalar)
+        if (ec.Includes("pcrImagePullAwsNativeId",true))
+        {
+            if(this.PcrImagePullAwsNativeId == null) {
+
+                this.PcrImagePullAwsNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PcrImagePullAwsNativeId != null && ec.Excludes("pcrImagePullAwsNativeId",true))
+        {
+            this.PcrImagePullAwsNativeId = null;
+        }
         //      C# -> System.String? PcrUrl
         // GraphQL -> pcrUrl: String (scalar)
         if (ec.Includes("pcrUrl",true))
@@ -301,6 +358,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.HealthCheckStatus != null && ec.Excludes("healthCheckStatus",false))
         {
             this.HealthCheckStatus = null;
+        }
+        //      C# -> ExocomputeClusterDetails? LatestExoclusterDetails
+        // GraphQL -> latestExoclusterDetails: ExocomputeClusterDetails (type)
+        if (ec.Includes("latestExoclusterDetails",false))
+        {
+            if(this.LatestExoclusterDetails == null) {
+
+                this.LatestExoclusterDetails = new ExocomputeClusterDetails();
+                this.LatestExoclusterDetails.ApplyExploratoryFieldSpec(ec.NewChild("latestExoclusterDetails"));
+
+            } else {
+
+                this.LatestExoclusterDetails.ApplyExploratoryFieldSpec(ec.NewChild("latestExoclusterDetails"));
+
+            }
+        }
+        else if (this.LatestExoclusterDetails != null && ec.Excludes("latestExoclusterDetails",false))
+        {
+            this.LatestExoclusterDetails = null;
         }
     }
 

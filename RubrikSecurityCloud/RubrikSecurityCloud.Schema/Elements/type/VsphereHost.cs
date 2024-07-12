@@ -171,6 +171,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("recoveryTargetDescendantConnection")]
         public VsphereHostDescendantTypeConnection? RecoveryTargetDescendantConnection { get; set; }
 
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
@@ -280,6 +285,7 @@ namespace RubrikSecurityCloud.Types
         DataLocation? PrimaryClusterLocation = null,
         VsphereHostPhysicalChildTypeConnection? RecoveryTargetChildConnection = null,
         VsphereHostDescendantTypeConnection? RecoveryTargetDescendantConnection = null,
+        SecurityMetadata? SecurityMetadata = null,
         SnapshotDistribution? SnapshotDistribution = null
     ) 
     {
@@ -372,6 +378,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RecoveryTargetDescendantConnection != null ) {
             this.RecoveryTargetDescendantConnection = RecoveryTargetDescendantConnection;
+        }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
@@ -726,6 +735,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "recoveryTargetDescendantConnection" + "\n(" + this.Vars.RecoveryTargetDescendantConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1294,6 +1316,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.RecoveryTargetDescendantConnection != null && ec.Excludes("recoveryTargetDescendantConnection",false))
         {
             this.RecoveryTargetDescendantConnection = null;
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

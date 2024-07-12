@@ -69,9 +69,7 @@ namespace RubrikSecurityCloud.Types
         public InstanceTypeEnum? InstanceType { get; set; }
 
         //      C# -> System.String? RsaKey
-        // GraphQL -> rsaKey: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> rsaKey: String (scalar)
         [JsonProperty("rsaKey")]
         public System.String? RsaKey { get; set; }
 
@@ -115,6 +113,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("bypassProxy")]
         public System.Boolean? BypassProxy { get; set; }
+
+        //      C# -> AzureKeyVaultKeyIdentifierWithoutKeyVersionInput? AzureKeyVaultKey
+        // GraphQL -> azureKeyVaultKey: AzureKeyVaultKeyIdentifierWithoutKeyVersionInput (input)
+        [JsonProperty("azureKeyVaultKey")]
+        public AzureKeyVaultKeyIdentifierWithoutKeyVersionInput? AzureKeyVaultKey { get; set; }
 
 
         #endregion

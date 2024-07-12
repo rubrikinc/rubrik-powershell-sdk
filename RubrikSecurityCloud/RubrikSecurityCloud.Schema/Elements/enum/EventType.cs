@@ -156,6 +156,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "TENANT_OVERLAP")]
         TENANT_OVERLAP,
 
+        [EnumMember(Value = "TENANT_QUOTA")]
+        TENANT_QUOTA,
+
         [EnumMember(Value = "TEST_FAILOVER")]
         TEST_FAILOVER,
 
@@ -176,6 +179,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "UPGRADE")]
         UPGRADE,
+
+        [EnumMember(Value = "USER_INTELLIGENCE")]
+        USER_INTELLIGENCE,
 
         [EnumMember(Value = "VCD")]
         VCD,

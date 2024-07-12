@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("RestoreConfigs")]
         public List<RestoreObjectConfig>? RestoreConfigs { get; set; }
 
+        //      C# -> System.Boolean? SkipRifItems
+        // GraphQL -> skipRifItems: Boolean (scalar)
+        [JsonProperty("skipRifItems")]
+        public System.Boolean? SkipRifItems { get; set; }
+
 
         #endregion
 

@@ -96,10 +96,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	sapHanaSystem = @{
     /// 		# OPTIONAL
+    /// 		azureFeatureId = $someString
+    /// 		# OPTIONAL
+    /// 		authTypeSpec = @{
+    /// 			# REQUIRED
+    /// 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
     /// 		dataPathSpec = @{
     /// 			# OPTIONAL
     /// 			dataPathType = $someSapHanaDataPathType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaDataPathType]) for enum values.
     /// 		}
+    /// 		# REQUIRED
+    /// 		hostIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# REQUIRED
+    /// 		instanceNumber = $someString
+    /// 		# REQUIRED
+    /// 		password = $someString
+    /// 		# REQUIRED
+    /// 		sid = $someString
     /// 		# OPTIONAL
     /// 		sslInfo = @{
     /// 			# OPTIONAL
@@ -117,23 +134,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			keyStorePath = $someString
     /// 		}
-    /// 		# OPTIONAL
-    /// 		authTypeSpec = @{
-    /// 			# REQUIRED
-    /// 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
-    /// 		}
-    /// 		# OPTIONAL
-    /// 		azureFeatureId = $someString
-    /// 		# REQUIRED
-    /// 		hostIds = @(
-    /// 			$someString
-    /// 		)
-    /// 		# REQUIRED
-    /// 		instanceNumber = $someString
-    /// 		# REQUIRED
-    /// 		password = $someString
-    /// 		# REQUIRED
-    /// 		sid = $someString
     /// 		# REQUIRED
     /// 		username = $someString
     /// 	}
@@ -423,6 +423,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		username = $someString
     /// 		# OPTIONAL
+    /// 		azureFeatureId = $someString
+    /// 		# OPTIONAL
+    /// 		authTypeSpec = @{
+    /// 			# REQUIRED
+    /// 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
     /// 		sslInfo = @{
     /// 			# OPTIONAL
     /// 			cryptoLibPath = $someString
@@ -439,13 +446,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			keyStorePath = $someString
     /// 		}
-    /// 		# OPTIONAL
-    /// 		authTypeSpec = @{
-    /// 			# REQUIRED
-    /// 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
-    /// 		}
-    /// 		# OPTIONAL
-    /// 		azureFeatureId = $someString
     /// 	}
     /// }
     /// 
@@ -735,10 +735,27 @@ $query.Var.input = @{
 	# REQUIRED
 	sapHanaSystem = @{
 		# OPTIONAL
+		azureFeatureId = $someString
+		# OPTIONAL
+		authTypeSpec = @{
+			# REQUIRED
+			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
+		}
+		# OPTIONAL
 		dataPathSpec = @{
 			# OPTIONAL
 			dataPathType = $someSapHanaDataPathType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaDataPathType]) for enum values.
 		}
+		# REQUIRED
+		hostIds = @(
+			$someString
+		)
+		# REQUIRED
+		instanceNumber = $someString
+		# REQUIRED
+		password = $someString
+		# REQUIRED
+		sid = $someString
 		# OPTIONAL
 		sslInfo = @{
 			# OPTIONAL
@@ -756,23 +773,6 @@ $query.Var.input = @{
 			# REQUIRED
 			keyStorePath = $someString
 		}
-		# OPTIONAL
-		authTypeSpec = @{
-			# REQUIRED
-			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
-		}
-		# OPTIONAL
-		azureFeatureId = $someString
-		# REQUIRED
-		hostIds = @(
-			$someString
-		)
-		# REQUIRED
-		instanceNumber = $someString
-		# REQUIRED
-		password = $someString
-		# REQUIRED
-		sid = $someString
 		# REQUIRED
 		username = $someString
 	}
@@ -998,6 +998,13 @@ $query.Var.input = @{
 		# OPTIONAL
 		username = $someString
 		# OPTIONAL
+		azureFeatureId = $someString
+		# OPTIONAL
+		authTypeSpec = @{
+			# REQUIRED
+			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
+		}
+		# OPTIONAL
 		sslInfo = @{
 			# OPTIONAL
 			cryptoLibPath = $someString
@@ -1014,13 +1021,6 @@ $query.Var.input = @{
 			# REQUIRED
 			keyStorePath = $someString
 		}
-		# OPTIONAL
-		authTypeSpec = @{
-			# REQUIRED
-			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
-		}
-		# OPTIONAL
-		azureFeatureId = $someString
 	}
 }"
             );

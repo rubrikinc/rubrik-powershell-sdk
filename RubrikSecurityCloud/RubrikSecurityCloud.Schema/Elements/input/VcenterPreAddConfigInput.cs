@@ -19,15 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> VcenterConnectionConfigInput? ConnectionConfig
-        // GraphQL -> connectionConfig: VcenterConnectionConfigInput (input)
-        [JsonProperty("connectionConfig")]
-        public VcenterConnectionConfigInput? ConnectionConfig { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> VcenterConnectionConfigInput? ConnectionConfig
+        // GraphQL -> connectionConfig: VcenterConnectionConfigInput (input)
+        [JsonProperty("connectionConfig")]
+        public VcenterConnectionConfigInput? ConnectionConfig { get; set; }
 
 
         #endregion

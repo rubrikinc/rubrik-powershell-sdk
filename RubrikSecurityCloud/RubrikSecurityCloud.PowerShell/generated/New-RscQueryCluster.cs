@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 30
+    /// Create a new RscQuery object for any of the 32
     /// operations in the 'Cluster' API domain:
-    /// Cluster, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, Kubernetes, LicensesForClusterProductSummary, List, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// Cluster, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, Kubernetes, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 30 operations
+    /// There are 32 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Cluster, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, Kubernetes, LicensesForClusterProductSummary, List, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// one of: Cluster, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, Kubernetes, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -412,6 +412,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isInFatalOrDisconnectedState = $someBoolean
+    /// 	# OPTIONAL
+    /// 	cyberEventLockdownMode = @(
+    /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.timezoneOffset = $someSingle
@@ -713,6 +717,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isInFatalOrDisconnectedState = $someBoolean
+    /// 	# OPTIONAL
+    /// 	cyberEventLockdownMode = @(
+    /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -724,6 +732,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ClusterConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Missing operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: Missing
+    /// 
+    /// $query = New-RscQueryCluster -Missing
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.connectionStatus = $someMissingClusterConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterConnectionStatus]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.isExcluded = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MissingClusterConnection
     /// 
     /// 
     /// 
@@ -975,6 +1013,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isInFatalOrDisconnectedState = $someBoolean
+    /// 	# OPTIONAL
+    /// 	cyberEventLockdownMode = @(
+    /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -1041,6 +1083,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;ClusterReplicationTarget&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Routes operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: Routes
+    /// 
+    /// $query = New-RscQueryCluster -Routes
+    /// 
+    /// # REQUIRED
+    /// $query.Var.clusterUuid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ClusterRoutesReply
     /// 
     /// 
     /// 
@@ -1381,6 +1451,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Kubernetes",
                 "LicensesForClusterProductSummary",
                 "List",
+                "Missing",
                 "NetworkInterfaces",
                 "Nodes",
                 "NtpServers",
@@ -1389,6 +1460,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RadarClusterList",
                 "RegistrationProductInfo",
                 "ReplicationTargets",
+                "Routes",
                 "TotpAckStatus",
                 "TypeList",
                 "ValidateClusterLicenseCapacity",
@@ -1456,6 +1528,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "List":
                         this.ProcessRecord_List();
                         break;
+                    case "Missing":
+                        this.ProcessRecord_Missing();
+                        break;
                     case "NetworkInterfaces":
                         this.ProcessRecord_NetworkInterfaces();
                         break;
@@ -1479,6 +1554,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ReplicationTargets":
                         this.ProcessRecord_ReplicationTargets();
+                        break;
+                    case "Routes":
+                        this.ProcessRecord_Routes();
                         break;
                     case "TotpAckStatus":
                         this.ProcessRecord_TotpAckStatus();
@@ -1647,6 +1725,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // allMissingClusters.
+        internal void ProcessRecord_Missing()
+        {
+            this._logger.name += " -Missing";
+            // Create new graphql operation allMissingClusters
+            InitQueryAllMissingClusters();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // clusterNetworkInterfaces.
         internal void ProcessRecord_NetworkInterfaces()
         {
@@ -1716,6 +1803,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ReplicationTargets";
             // Create new graphql operation allClusterReplicationTargets
             InitQueryAllClusterReplicationTargets();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // clusterRoutes.
+        internal void ProcessRecord_Routes()
+        {
+            this._logger.name += " -Routes";
+            // Create new graphql operation clusterRoutes
+            InitQueryClusterRoutes();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2083,6 +2179,10 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isInFatalOrDisconnectedState = $someBoolean
+	# OPTIONAL
+	cyberEventLockdownMode = @(
+		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
+	)
 }
 # OPTIONAL
 $query.Var.timezoneOffset = $someSingle"
@@ -2360,11 +2460,38 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isInFatalOrDisconnectedState = $someBoolean
+	# OPTIONAL
+	cyberEventLockdownMode = @(
+		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
+	)
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
 $query.Var.sortBy = $someClusterSortByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSortByEnum]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allMissingClusters(connectionStatus: MissingClusterConnectionStatus, isExcluded: Boolean): MissingClusterConnection!
+        internal void InitQueryAllMissingClusters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("connectionStatus", "MissingClusterConnectionStatus"),
+                Tuple.Create("isExcluded", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllMissingClusters",
+                "($connectionStatus: MissingClusterConnectionStatus,$isExcluded: Boolean)",
+                "MissingClusterConnection",
+                Query.AllMissingClusters,
+                Query.AllMissingClustersFieldSpec,
+                @"# OPTIONAL
+$query.Var.connectionStatus = $someMissingClusterConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterConnectionStatus]) for enum values.
+# OPTIONAL
+$query.Var.isExcluded = $someBoolean"
             );
         }
 
@@ -2588,6 +2715,10 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isInFatalOrDisconnectedState = $someBoolean
+	# OPTIONAL
+	cyberEventLockdownMode = @(
+		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
+	)
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -2629,6 +2760,26 @@ $query.Var.sortBy = $someClusterSortByEnum # Call [Enum]::GetValues([RubrikSecur
                 "List<ClusterReplicationTarget>",
                 Query.AllClusterReplicationTargets,
                 Query.AllClusterReplicationTargetsFieldSpec,
+                @"# REQUIRED
+$query.Var.clusterUuid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // clusterRoutes(clusterUuid: UUID!): ClusterRoutesReply!
+        internal void InitQueryClusterRoutes()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusterUuid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryClusterRoutes",
+                "($clusterUuid: UUID!)",
+                "ClusterRoutesReply",
+                Query.ClusterRoutes,
+                Query.ClusterRoutesFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
             );

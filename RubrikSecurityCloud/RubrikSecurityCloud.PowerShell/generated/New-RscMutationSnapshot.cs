@@ -465,12 +465,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
+    /// 		zipPassword = $someString
+    /// 		# OPTIONAL
     /// 		legalHoldDownloadConfig = @{
     /// 			# REQUIRED
     /// 			isLegalHoldDownload = $someBoolean
     /// 		}
-    /// 		# OPTIONAL
-    /// 		zipPassword = $someString
     /// 		# REQUIRED
     /// 		sourceDirs = @(
     /// 			$someString
@@ -628,6 +628,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		targetHostId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldIgnoreError = $someBoolean
     /// 		# REQUIRED
     /// 		restoreConfigs = @(
     /// 			@{
@@ -1434,12 +1436,12 @@ $query.Var.input = @{
 	# REQUIRED
 	config = @{
 		# OPTIONAL
+		zipPassword = $someString
+		# OPTIONAL
 		legalHoldDownloadConfig = @{
 			# REQUIRED
 			isLegalHoldDownload = $someBoolean
 		}
-		# OPTIONAL
-		zipPassword = $someString
 		# REQUIRED
 		sourceDirs = @(
 			$someString
@@ -1573,6 +1575,8 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		targetHostId = $someString
+		# OPTIONAL
+		shouldIgnoreError = $someBoolean
 		# REQUIRED
 		restoreConfigs = @(
 			@{

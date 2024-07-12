@@ -39,6 +39,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KUBERNETES")]
         KUBERNETES,
 
+        [EnumMember(Value = "LAMINAR")]
+        LAMINAR,
+
+        [EnumMember(Value = "LAMINAR_LITE_UCL")]
+        LAMINAR_LITE_UCL,
+
         [EnumMember(Value = "NAS_CLOUDDIRECT")]
         NAS_CLOUDDIRECT,
 
@@ -68,6 +74,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RDP")]
         RDP,
+
+        [EnumMember(Value = "SALESFORCE")]
+        SALESFORCE,
 
         [EnumMember(Value = "SAPHANA")]
         SAPHANA,

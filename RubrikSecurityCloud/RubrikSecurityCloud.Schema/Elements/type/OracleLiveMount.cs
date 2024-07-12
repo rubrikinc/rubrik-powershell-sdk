@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mountedDatabaseName")]
         public System.String? MountedDatabaseName { get; set; }
 
+        //      C# -> System.String? SourceDatabaseName
+        // GraphQL -> sourceDatabaseName: String! (scalar)
+        [JsonProperty("sourceDatabaseName")]
+        public System.String? SourceDatabaseName { get; set; }
+
         //      C# -> System.String? TargetHostMount
         // GraphQL -> targetHostMount: String! (scalar)
         [JsonProperty("targetHostMount")]
@@ -118,6 +123,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsInstantRecovered = null,
         System.Boolean? IsReady = null,
         System.String? MountedDatabaseName = null,
+        System.String? SourceDatabaseName = null,
         System.String? TargetHostMount = null,
         Cluster? Cluster = null,
         OracleDatabase? MountedDatabase = null,
@@ -151,6 +157,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MountedDatabaseName != null ) {
             this.MountedDatabaseName = MountedDatabaseName;
+        }
+        if ( SourceDatabaseName != null ) {
+            this.SourceDatabaseName = SourceDatabaseName;
         }
         if ( TargetHostMount != null ) {
             this.TargetHostMount = TargetHostMount;
@@ -257,6 +266,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "mountedDatabaseName\n" ;
             } else {
                 s += ind + "mountedDatabaseName\n" ;
+            }
+        }
+        //      C# -> System.String? SourceDatabaseName
+        // GraphQL -> sourceDatabaseName: String! (scalar)
+        if (this.SourceDatabaseName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceDatabaseName\n" ;
+            } else {
+                s += ind + "sourceDatabaseName\n" ;
             }
         }
         //      C# -> System.String? TargetHostMount
@@ -501,6 +519,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MountedDatabaseName != null && ec.Excludes("mountedDatabaseName",true))
         {
             this.MountedDatabaseName = null;
+        }
+        //      C# -> System.String? SourceDatabaseName
+        // GraphQL -> sourceDatabaseName: String! (scalar)
+        if (ec.Includes("sourceDatabaseName",true))
+        {
+            if(this.SourceDatabaseName == null) {
+
+                this.SourceDatabaseName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceDatabaseName != null && ec.Excludes("sourceDatabaseName",true))
+        {
+            this.SourceDatabaseName = null;
         }
         //      C# -> System.String? TargetHostMount
         // GraphQL -> targetHostMount: String! (scalar)

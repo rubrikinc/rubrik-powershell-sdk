@@ -1,6 +1,10 @@
 ### UpdateSnmpConfigInput
 Input for updating an SNMP configuration.
 
+- clusterUuid: System.String
+  - Required. UUID used to identify the cluster the request goes to.
+- id: System.String
+  - Required. ID of the Rubrik cluster or *me* for self.
 - snmpConfigV50: SnmpConfigurationInput
   - SNMP configuration updates for the specified Rubrik cluster.
 - snmpConfigV51: SnmpConfigurationInput
@@ -23,7 +27,3 @@ Input for updating an SNMP configuration.
   - SNMP configuration updates for the specified Rubrik cluster.
 - snmpConfigV92: SnmpConfigurationPatchInput
   - SNMP configuration updates for the specified Rubrik cluster.
-- clusterUuid: System.String
-  - Required. UUID used to identify the cluster the request goes to.
-- id: System.String
-  - Required. ID of the Rubrik cluster or *me* for self.

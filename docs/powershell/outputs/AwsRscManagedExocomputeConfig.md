@@ -21,7 +21,11 @@ AWS RSC Managed Exocompute Configuration in a region.
   - Exocompute configuration region.
 - healthCheckStatus: ExocomputeHealthCheckStatus
   - Status of the latest Exocompute health check.
+- latestExoclusterDetails: ExocomputeClusterDetails
+  - Details of the latest Exocompute cluster.
 - hasPcr: System.Boolean
   - Whether this Exocompute uses a Private Container Registry (PCR).
 - pcrUrl: System.String
   - URL of the user's PCR.
+- pcrImagePullAwsNativeId: System.String
+  - AWS native account ID authorized to pull images from Rubrik's Elastic Container Registry.

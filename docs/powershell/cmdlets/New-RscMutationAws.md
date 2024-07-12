@@ -148,3 +148,8 @@ Validate and create AWS cloud account. If validation fails, no error is returned
 
 - There is a single argument of type ValidateAndCreateAwsCloudAccountInput.
 - Returns ValidateAndCreateAwsCloudAccountReply.
+### validateandinitiateoutpostaccount
+Validate and initiates the setup of AWS Outpost account. If validation fails, no error is returned and the cause is present in the "message" field of return object In case validation succeeds, it initiates creation of AWS Outpost account cloud formation stack. This is the first step to set up Laminar data classification on RSC.
+
+- There is a single argument of type ValidateAndInitiateAwsOutpostAccountInput.
+- Returns ValidateAndInitiateAwsOutpostAccountReply.

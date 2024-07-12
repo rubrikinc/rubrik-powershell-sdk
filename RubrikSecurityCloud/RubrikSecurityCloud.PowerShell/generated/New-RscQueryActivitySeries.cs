@@ -182,6 +182,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	orgIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	userIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -479,6 +483,10 @@ $query.Var.filters = @{
 	searchTerm = $someString
 	# OPTIONAL
 	orgIds = @(
+		$someString
+	)
+	# OPTIONAL
+	userIds = @(
 		$someString
 	)
 }"

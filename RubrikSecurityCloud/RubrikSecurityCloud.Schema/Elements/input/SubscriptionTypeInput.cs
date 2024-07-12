@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("auditTypes")]
         public List<UserAuditTypeEnum>? AuditTypes { get; set; }
 
+        //      C# -> List<EventObjectType>? ObjectTypes
+        // GraphQL -> objectTypes: [EventObjectType!] (enum)
+        [JsonProperty("objectTypes")]
+        public List<EventObjectType>? ObjectTypes { get; set; }
+
         //      C# -> System.Boolean? IsSubscribedToAllEvents
         // GraphQL -> isSubscribedToAllEvents: Boolean (scalar)
         [JsonProperty("isSubscribedToAllEvents")]
@@ -38,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isSubscribedToAllAudits: Boolean (scalar)
         [JsonProperty("isSubscribedToAllAudits")]
         public System.Boolean? IsSubscribedToAllAudits { get; set; }
+
+        //      C# -> System.Boolean? IsSubscribedToAllObjectTypes
+        // GraphQL -> isSubscribedToAllObjectTypes: Boolean (scalar)
+        [JsonProperty("isSubscribedToAllObjectTypes")]
+        public System.Boolean? IsSubscribedToAllObjectTypes { get; set; }
 
 
         #endregion

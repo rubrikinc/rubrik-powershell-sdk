@@ -29,16 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("maxDataStreams")]
         public System.Int32? MaxDataStreams { get; set; }
 
-        //      C# -> MssqlScriptDetailInput? PostBackupScript
-        // GraphQL -> postBackupScript: MssqlScriptDetailInput (input)
-        [JsonProperty("postBackupScript")]
-        public MssqlScriptDetailInput? PostBackupScript { get; set; }
-
-        //      C# -> MssqlScriptDetailInput? PreBackupScript
-        // GraphQL -> preBackupScript: MssqlScriptDetailInput (input)
-        [JsonProperty("preBackupScript")]
-        public MssqlScriptDetailInput? PreBackupScript { get; set; }
-
         //      C# -> System.Boolean? IsPaused
         // GraphQL -> isPaused: Boolean (scalar)
         [JsonProperty("isPaused")]
@@ -48,6 +38,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldForceFull: Boolean (scalar)
         [JsonProperty("shouldForceFull")]
         public System.Boolean? ShouldForceFull { get; set; }
+
+        //      C# -> System.Boolean? ShouldClearPostBackupScript
+        // GraphQL -> shouldClearPostBackupScript: Boolean (scalar)
+        [JsonProperty("shouldClearPostBackupScript")]
+        public System.Boolean? ShouldClearPostBackupScript { get; set; }
+
+        //      C# -> System.Boolean? ShouldClearPreBackupScript
+        // GraphQL -> shouldClearPreBackupScript: Boolean (scalar)
+        [JsonProperty("shouldClearPreBackupScript")]
+        public System.Boolean? ShouldClearPreBackupScript { get; set; }
 
         //      C# -> MssqlNonSlaPropertiesInput? MssqlNonSlaProperties
         // GraphQL -> mssqlNonSlaProperties: MssqlNonSlaPropertiesInput (input)
@@ -63,6 +63,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mssqlSlaRelatedProperties: MssqlSlaRelatedPropertiesInput (input)
         [JsonProperty("mssqlSlaRelatedProperties")]
         public MssqlSlaRelatedPropertiesInput? MssqlSlaRelatedProperties { get; set; }
+
+        //      C# -> MssqlScriptDetailInput? PostBackupScript
+        // GraphQL -> postBackupScript: MssqlScriptDetailInput (input)
+        [JsonProperty("postBackupScript")]
+        public MssqlScriptDetailInput? PostBackupScript { get; set; }
+
+        //      C# -> MssqlScriptDetailInput? PreBackupScript
+        // GraphQL -> preBackupScript: MssqlScriptDetailInput (input)
+        [JsonProperty("preBackupScript")]
+        public MssqlScriptDetailInput? PreBackupScript { get; set; }
 
 
         #endregion

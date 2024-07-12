@@ -38,6 +38,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldCreateDestChannel")]
         public System.Boolean? ShouldCreateDestChannel { get; set; }
 
+        //      C# -> O365RestoreActionType? ActionType
+        // GraphQL -> actionType: O365RestoreActionType (enum)
+        [JsonProperty("actionType")]
+        public O365RestoreActionType? ActionType { get; set; }
+
+        //      C# -> InplaceRestoreConfig? InplaceRestoreConfig
+        // GraphQL -> inplaceRestoreConfig: InplaceRestoreConfig (input)
+        [JsonProperty("inplaceRestoreConfig")]
+        public InplaceRestoreConfig? InplaceRestoreConfig { get; set; }
+
         //      C# -> O365TeamConvChannelInput? ChannelInfoForFullRestore
         // GraphQL -> channelInfoForFullRestore: O365TeamConvChannelInput (input)
         [JsonProperty("channelInfoForFullRestore")]

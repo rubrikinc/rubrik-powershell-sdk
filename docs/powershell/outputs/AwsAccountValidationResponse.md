@@ -11,3 +11,7 @@ Validate given aws accounts.
   - Specfies whether seamless flow is enabled for this AWS account.
 - cloudType: AwsCloudType
   - AWS account cloud type.
+- orgName: System.String
+  - The AWS organization name with which you onboarded the AWS account.
+- outpostAwsNativeId: System.String
+  - Native ID of the AWS Outpost account.

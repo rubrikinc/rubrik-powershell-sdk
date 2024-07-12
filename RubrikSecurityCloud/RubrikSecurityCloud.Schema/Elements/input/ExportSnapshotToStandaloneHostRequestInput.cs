@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> MountExportSnapshotJobCommonOptionsInput? MountExportSnapshotJobCommonOptions
-        // GraphQL -> mountExportSnapshotJobCommonOptions: MountExportSnapshotJobCommonOptionsInput (input)
-        [JsonProperty("mountExportSnapshotJobCommonOptions")]
-        public MountExportSnapshotJobCommonOptionsInput? MountExportSnapshotJobCommonOptions { get; set; }
-
         //      C# -> System.String? DatastoreName
         // GraphQL -> datastoreName: String! (scalar)
         [Required]
@@ -51,6 +46,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("hostUsername")]
         public System.String? HostUsername { get; set; }
+
+        //      C# -> MountExportSnapshotJobCommonOptionsInput? MountExportSnapshotJobCommonOptions
+        // GraphQL -> mountExportSnapshotJobCommonOptions: MountExportSnapshotJobCommonOptionsInput (input)
+        [JsonProperty("mountExportSnapshotJobCommonOptions")]
+        public MountExportSnapshotJobCommonOptionsInput? MountExportSnapshotJobCommonOptions { get; set; }
 
 
         #endregion

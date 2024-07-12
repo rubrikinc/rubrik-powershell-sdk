@@ -9,3 +9,5 @@ Parameters to use lambda filters in query.
   - Retrieves all the folders whose ID's are provided in the list used for generating absolute paths for passed items primarily.
 - searchRecurseFolderId: System.String
   - The Folder ID under which recursive search will be performed.
+- includeAncestors: System.Boolean
+  - Determines if ancestors are included in the search results.
