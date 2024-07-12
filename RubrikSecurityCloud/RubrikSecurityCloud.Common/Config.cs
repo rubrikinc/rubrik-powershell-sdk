@@ -86,6 +86,7 @@ namespace RubrikSecurityCloud
             "^pageinfo$",
             "^asyncrequeststatus$",
             "^jobids$",
+            "^output$",
         };
 
         /// <summary>

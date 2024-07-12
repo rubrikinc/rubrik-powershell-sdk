@@ -56,6 +56,5 @@ namespace RubrikSecurityCloud.Types
         List<string> SelectedFields();
         void ApplyExploratoryFieldSpec(ExplorationContext ec);
         void SelectForRetrieval();
-
     }
 }
