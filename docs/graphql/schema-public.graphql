@@ -11439,7 +11439,7 @@ type Mutation {
   # Moves an M365 organization product from day-to-day mode to onboarding mode.
   switchProductToOnboardingMode(
     # OrgID and workload type used to switch the dashboard mode.
-    input: SwitchProductToOnboardingModeInput!): SwitchProductToOnboardingModeReply!
+    input: SwitchProductToOnboardingModeInput!): Void
 
   # Take an on-demand snapshot of an SLA Managed Volume
   # 
@@ -61305,6 +61305,9 @@ input ListFileResultFiltersInput {
 
   # List of principal IDs to filter the paths.
   sids: [String!] = []
+
+  # List of data type IDs to filter snapshot file results.
+  dataTypeIds: [String!] = []
   fileType: FileCountType!
 }
 # Returned in response to a ListIntegrationsReq and
@@ -85012,6 +85015,9 @@ input PrivateContainerRegistryInput {
 type PrivateContainerRegistryReplyType {
   # Details of PCR consisting of registry URL and how user pulls images into their registry from their AWS account.
   pcrDetails: PrivateContainerRegistryDetailsType
+
+  # Latest approved Exotask bundle version for your Private Container. If no approved bundle is available, this field will be empty.
+  pcrLatestApprovedBundleVersion: String!
 }
 # RCV private endpoint connection details.
 type PrivateEndpointConnection {
@@ -96403,16 +96409,10 @@ type SuspiciousFileInfo {
 # Inputs to switch an m365 product to onboarding mode.
 input SwitchProductToOnboardingModeInput {
   # OrgID of the m365 org.
-  orgId: String = ""
+  orgId: UUID!
 
   # Dashboard workload type for which mode needs to be switched for.
   workloadType: M365DashboardWorkloadType!
-}
-# Stores the response of the switch product to onboarding mode
-# operation.
-type SwitchProductToOnboardingModeReply {
-  # Boolean which specifies whether the switch is successful or not.
-  success: Boolean!
 }
 type SyslogCertificateInfo {
   # Syslog server's X.509 certificate in Base64 encoded DER format. The certificate should start with -----BEGIN CERTIFICATE-----
