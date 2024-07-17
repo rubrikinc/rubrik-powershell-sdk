@@ -43,6 +43,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
 
     public partial class RscGraphQLClient
     {
+        internal IRscLogger _logger = null;
         private readonly string _clientId;
         private readonly string _clientSecret;
         private readonly string _polarisBaseUrl;
@@ -73,6 +74,18 @@ namespace RubrikSecurityCloud.NetSDK.Client
             get
             {
                 return _clientId;
+            }
+        }
+
+        public IRscLogger Logger
+        {
+            get
+            {
+                return _logger;
+            }
+            set
+            {
+                _logger = value;
             }
         }
 
@@ -116,7 +129,11 @@ namespace RubrikSecurityCloud.NetSDK.Client
         /// <param name="ClientId">Client ID</param>
         /// <param name="ClientSecret">Client secret</param>
         /// <param name="PolarisBaseUrl">Polaris URL, in the format: "domain.my.rubrik.com"</param>
-        public RscGraphQLClient(string ClientId, string ClientSecret, string PolarisBaseUrl)
+        public RscGraphQLClient(
+            string ClientId,
+            string ClientSecret,
+            string PolarisBaseUrl,
+            IRscLogger logger)
         {
             _clientId = ClientId;
             _clientSecret = ClientSecret;
@@ -148,6 +165,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
                     _polarisUrlScheme = "https";
                 }
             }
+            _logger = logger;
         }
 
         public async Task RenewAuthAsyncIfNeeded()
@@ -168,12 +186,22 @@ namespace RubrikSecurityCloud.NetSDK.Client
             }
         }
 
+        public Uri ServerBaseAddress()
+        {
+            return new Uri($"{_polarisUrlScheme}://{_polarisBaseUrl}");
+        }
+
+        public string Info()
+        {
+            return $"Server: {this.ServerBaseAddress()} ClientId: {ClientId} Auth Status: {AuthenticationState}";
+        }
+
         public async Task AuthAsync()
         {
             HttpClientHandler httpHandler = new HttpClientHandler();
             HttpClient apiClient = new HttpClient(httpHandler)
             {
-                BaseAddress = new Uri($"{_polarisUrlScheme}://{_polarisBaseUrl}")
+                BaseAddress = this.ServerBaseAddress()
             };
             apiClient.DefaultRequestHeaders.Accept.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -181,6 +209,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
             ClientCredential clientCredential = new ClientCredential(_clientId, _clientSecret);
 
             HttpContent requestcontent = new StringContent(JsonConvert.SerializeObject(clientCredential), Encoding.UTF8, "application/json");
+            this._logger?.Verbose($"Authenticating ClientID {ClientId} with RSC at {apiClient.BaseAddress} .");
 
             HttpResponseMessage response = await apiClient.PostAsync("api/client_token", requestcontent).ConfigureAwait(false);
 
@@ -197,7 +226,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
             }
             else
             {
-                throw new Exception($"Call to \"api/client_token\" failed with : {response.ReasonPhrase}");
+                throw new Exception($"{Info()}. Call to \"api/client_token\" failed with : {response.ReasonPhrase}");
             }
         }
 
@@ -212,7 +241,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
             HttpClientHandler httpHandler = new HttpClientHandler();
             HttpClient apiClient = new HttpClient(httpHandler)
             {
-                BaseAddress = new Uri($"{_polarisUrlScheme}://{_polarisBaseUrl}")
+                BaseAddress = this.ServerBaseAddress()
             };
             apiClient.DefaultRequestHeaders.Accept.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -222,7 +251,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
 
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine($"Call DELETE to \"api/session\" failed with : {response.ReasonPhrase}");
+                this._logger?.Error($"Call DELETE to \"api/session\" failed with : {response.ReasonPhrase}");
             }
 
             this.AuthenticationState = AuthenticationState.NOT_AUTHORIZED;
@@ -363,7 +392,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
                 // log request to file in cwd
                 string logFileName = Path.GetFullPath($"RscApiRequest_{_apiCallCount}_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.gql");
                 File.WriteAllText(logFileName, $"/*\nVariables:\n{request.Variables}\n*/\n{request.Query}\n");
-                logger?.Info($"API request saved to file: {logFileName}");
+                logger?.Verbose($"API request saved to file: {logFileName}");
             }
         }
 
@@ -376,7 +405,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
                 // log response to file in cwd
                 string logFileName = Path.GetFullPath($"RscApiResponse_{_apiCallCount}_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.json");
                 File.WriteAllText(logFileName, JsonConvert.SerializeObject(response, Formatting.Indented));
-                logger?.Info($"API response saved to file: {logFileName}");
+                logger?.Verbose($"API response saved to file: {logFileName}");
             }
         }
 

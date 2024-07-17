@@ -105,32 +105,56 @@ namespace RubrikSecurityCloud.PowerShell.Private
             return null; // never reached
         }
 
-        protected void RetrieveConnection()
+        protected bool RetrieveConnection(bool throwIfNotRetrieved = true)
         {
             try
             {
-                this._rbkClient = (RscGraphQLClient)SessionState.PSVariable.GetValue(Config.SessionVariableName);
-
-                //Check if the token has expired. If it has, attempt a new the session and return.
-                if (this._rbkClient != null && _rbkClient.AuthenticationState == AuthenticationState.EXPIRED)
+                var psVar = SessionState.PSVariable.GetValue(Config.SessionVariableName);
+                var sessionClient = (RscGraphQLClient)psVar;
+                if(sessionClient == null)
                 {
-                    Console.WriteLine("Client session expired, attempting to renew...");
-                    Task AuthTask = _rbkClient.AuthAsync();
-                    AuthTask.Wait();
-                    if (this._rbkClient.AuthenticationState == AuthenticationState.AUTHORIZED)
+                    if(throwIfNotRetrieved)
                     {
-                        Console.WriteLine("Client session renewed.");
-                        return;
+                        throw new Exception("No active session found. Use 'Connect-Rsc'. ");
                     }
+                    return false;
                 }
+                this._rbkClient = sessionClient;
+                // reset the logger to the current session
+                this._rbkClient.Logger = this._logger;
+                this._logger?.Debug($"Retrieved connection from session variable {Config.SessionVariableName}: {this._rbkClient.Info()}");
 
-                if (this._rbkClient == null || _rbkClient.AuthenticationState != AuthenticationState.AUTHORIZED)
+                //Check if the token has expired. If it has, attempt a new session and return.
+                if (_rbkClient.AuthenticationState == AuthenticationState.EXPIRED)
                 {
-                    throw new Exception("No active session found. Use 'Connect-Rsc'. ");
+                    this._logger?.Verbose("Client session expired, attempting to renew...");
+                    if (this.Connect())
+                    {
+                        this._logger?.Verbose("Client session renewed.");
+                        return true;
+                    }
+                    else
+                    {
+                        if (throwIfNotRetrieved)
+                        {
+                            throw new Exception("Could not renew expired session. Use 'Connect-Rsc'. ");
+                        }
+                        return false;
+                    }
                 }
 
                 Task RenewAuthTask = this._rbkClient.RenewAuthAsyncIfNeeded();
                 RenewAuthTask.Wait();
+
+                if (_rbkClient.AuthenticationState != AuthenticationState.AUTHORIZED)
+                {
+                    if (throwIfNotRetrieved)
+                    {
+                        throw new Exception("No valid session found. Use 'Connect-Rsc'. ");
+                    }
+                    return false;
+                }
+
             }
             catch (Exception ex)
             {
@@ -142,6 +166,43 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     null);
                 ThrowTerminatingError(error);
             }
+            return true;
+        }
+
+        protected bool Connect()
+        {
+            try
+            {
+                var authStateBefore = this._rbkClient.AuthenticationState;
+                var psVarBefore = (null!=SessionState.PSVariable.GetValue(Config.SessionVariableName));
+                this._logger?.Debug($"Before Auth: Auth State: {authStateBefore}, Connection object in session: {psVarBefore}");
+                Task authTask = this._rbkClient.AuthAsync();
+                authTask.Wait();
+
+                this._logger?.Verbose($"Authentication Status: " +
+                        $"{this._rbkClient.AuthenticationState}");
+
+                if (this._rbkClient.AuthenticationState == AuthenticationState.AUTHORIZED)
+                {
+                    SessionState.PSVariable.Set(
+                        new PSVariable(
+                            Config.SessionVariableName,
+                            this._rbkClient,
+                            ScopedItemOptions.AllScope));
+                    this._logger?.Debug("Connected. Connection stored in session variable.");
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                var error = new ErrorRecord(
+                    ex,
+                    "UnableToAuthenticateToRubrikSecurityCloud",
+                    ErrorCategory.AuthenticationError,
+                    null);
+                ThrowTerminatingError(error);
+            }
+            return false;
         }
 
 
