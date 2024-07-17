@@ -11,13 +11,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(VerbsCommunications.Disconnect, "Rsc")]
     public class Disconnect_Rsc : RscBasePSCmdlet
     {
-        public Disconnect_Rsc() : base(retrieveConnection: true)
+        private bool _doDisconnect = true;
+        public Disconnect_Rsc() : base(retrieveConnection: false)
         {
+        }
+
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            if(!this.RetrieveConnection(throwIfNotRetrieved:false))
+            {
+                this._doDisconnect=false;
+                WriteObject("No connection to disconnect from.");
+            }
         }
 
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
+            if(!_doDisconnect)
+            {
+                return;
+            }
             try
             {
                 Task delSessionTask = this._rbkClient.Disconnect();
@@ -27,6 +42,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 if (SessionState.PSVariable.GetValue(Config.SessionVariableName) == null)
                 {
                     WriteObject("The Rubrik Security Cloud session has been terminated.");
+                }
+                else
+                {
+                    WriteObject("Could not remove the Rubrik Security Cloud session variable. Please remove it manually.");
                 }
             }
             catch (Exception ex)

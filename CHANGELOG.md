@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 1.8
+
+Fixes:
+
+- Fixed an issue with access token auto-renewal not being saved in the
+  PowerShell session (rseulting in multiple token renew calls).
+
 ## Version 1.7
 
 Fixes:

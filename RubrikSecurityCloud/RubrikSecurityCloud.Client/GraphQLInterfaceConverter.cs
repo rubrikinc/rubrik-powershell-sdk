@@ -64,7 +64,7 @@ public class GraphQLInterfaceConverter : JsonConverter
             {
                 if (RubrikSecurityCloud.Config.MuteSchemaWarnings)
                 {
-                    _logger?.Info(msg);
+                    _logger?.Verbose(msg);
                 }
                 else
                 {
@@ -99,7 +99,7 @@ public class GraphQLInterfaceConverter : JsonConverter
             {
                 if (RubrikSecurityCloud.Config.MuteSchemaWarnings)
                 {
-                    _logger?.Info(msg);
+                    _logger?.Verbose(msg);
                 }
                 else
                 {
