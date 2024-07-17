@@ -117,28 +117,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 RscOp op = SchemaMeta.RscOpLookupByGqlRootField(this.gqlRootField);
                 _logger?.Debug($"Gql root field {this.gqlRootField} maps to {op}. cmdletName={op.CmdletName}, cmdletSwitchName={op.CmdletSwitchName}, gqlRootFieldName={op.GqlRootFieldName}, gqlReturnTypeName={op.GqlReturnTypeName}, gqlReturnTypeName={op.GqlReturnTypeName},DomainName={op.DomainName()},OpName={op.OpName()}");
                 ProcessDomainOp(op.DomainName(), op.OpName());
-                return;
             }
+            else
+            {
+                if (this.ApiDomainName() == SchemaMeta.ApiDomainName.Unknown)
+                {
+                    throw new Exception("Operation not supported");
+                }
 
-            if (this.ApiDomainName() == SchemaMeta.ApiDomainName.Unknown)
-            {
-                throw new Exception("Operation not supported");
+                string operation = "";
+                string? dynOp = this.GetStringDynParam("Operation");
+                if (!string.IsNullOrEmpty(dynOp))
+                {
+                    operation = (dynOp ?? "").Trim();
+                    _logger?.Debug("Operation from -Operation: " + operation);
+                }
+                else if (this.Copy != null && this.Copy.rscOp != null)
+                {
+                    operation = this.Copy.rscOp.OpName();
+                    _logger?.Debug("Operation from Copy: " + operation);
+                }
+                operation = this.ValidateOperation(operation, unknownOk: false);
+                ProcessDomainOp(this.ApiDomainName().ToString(), operation);
             }
-
-            string operation = "";
-            string? dynOp = this.GetStringDynParam("Operation");
-            if (!string.IsNullOrEmpty(dynOp))
-            {
-                operation = (dynOp ?? "").Trim();
-                _logger?.Debug("Operation from -Operation: " + operation);
-            }
-            else if (this.Copy != null && this.Copy.rscOp != null)
-            {
-                operation = this.Copy.rscOp.OpName();
-                _logger?.Debug("Operation from Copy: " + operation);
-            }
-            operation = this.ValidateOperation(operation, unknownOk: false);
-            ProcessDomainOp(this.ApiDomainName().ToString(), operation);
         }
 
         protected void ProcessDomainOp(string domain, string op)
@@ -176,7 +177,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     }
                     if (r is RscQuery query)
                     {
-                        _query = query;
+                        this._query = query;
                         // RscGqlPSCmdlet.EndProcessing()
                         // will write the object to the pipeline
                     }

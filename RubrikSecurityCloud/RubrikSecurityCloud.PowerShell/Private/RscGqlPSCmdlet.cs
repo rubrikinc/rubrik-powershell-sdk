@@ -468,17 +468,25 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 return;
             }
 
-            if (_config.SendQueryOnExitIfAny && _query != null)
+            if (this._query != null)
             {
-                RscGqlRequest gqlReq = _query.GqlRequest();
-                if (gqlReq != null && _rbkClient != null)
+                if (this.MyInvocation.BoundParameters.ContainsKey("Verbose"))
                 {
-                    this.SendGqlRequest(gqlReq);
+                    this._query.InvokedWithVerboseFlag = true;
                 }
-            }
-            else
-            {
-                if (_query != null)
+                if (this.MyInvocation.BoundParameters.ContainsKey("Debug"))
+                {
+                    this._query.InvokedWithDebugFlag = true;
+                }
+                if (_config.SendQueryOnExitIfAny)
+                {
+                    RscGqlRequest gqlReq = _query.GqlRequest();
+                    if (gqlReq != null && _rbkClient != null)
+                    {
+                        this.SendGqlRequest(gqlReq);
+                    }
+                }
+                else
                 {
                     //InterfaceHelper.ConvertListsToRscInterfaces(_query.Field);
                     this.WriteObject(_query);
