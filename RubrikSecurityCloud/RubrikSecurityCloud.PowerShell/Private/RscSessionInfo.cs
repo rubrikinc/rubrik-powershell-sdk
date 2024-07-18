@@ -59,7 +59,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
 			_logger.Debug($"Sending GQL Query:\n{request.Query}");
 
 			Task<string> dataTask =
-				_client.InvokeGenericCallAsync<string>(request);
+				_client.InvokeGenericCallAsync<string>(request, logger: logger);
 			dataTask.Wait();
 
 			this._serverVersion = dataTask.Result;

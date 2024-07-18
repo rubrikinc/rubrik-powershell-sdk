@@ -45,9 +45,9 @@ try{
 
 			$sa_file_full_path = $envConfig.filePath
 			$sa_file_name = Split-Path $sa_file_full_path -Leaf
-			$sa_file_extension = Split-Path $sa_file_full_path -Extension
-	
-			$sa_enc_file_name = "$(Split-Path $sa_file_name -LeafBase).xml"
+			$sa_file_extension = [System.IO.Path]::GetExtension($sa_file_full_path)
+			$sa_file_base_name = [System.IO.Path]::GetFileNameWithoutExtension($sa_file_name)
+			$sa_enc_file_name = "$sa_file_base_name.xml"
 			$sa_enc_file_full_path = Join-Path $sa_profile_dir -ChildPath $sa_enc_file_name
 		}
 		catch{
@@ -86,11 +86,11 @@ try{
 		try{
 			Write-Output("Connecting to Rubrik Security Cloud using `"Connect-Rsc`"...")
 
-			Connect-Rsc -ServiceAccountFile $sa_enc_file_full_path
+			Connect-Rsc -ServiceAccountFile $sa_enc_file_full_path -Verbose
 			Set-Location \
 		}
 		catch{
-			Throw "Unable to connect to Rubtik Security Cloud: $_"
+			Write-Output "Unable to connect to Rubrik Security Cloud: $_"
 		}
 	} 
 	else
