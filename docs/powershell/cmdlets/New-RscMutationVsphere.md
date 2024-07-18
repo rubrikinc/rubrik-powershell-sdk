@@ -47,6 +47,22 @@ Export snapshot of a virtual machine to standalone ESXi server.
 ### ondemandsnapshot
 - There is a single argument of type VsphereOnDemandSnapshotInput.
 - Returns AsyncRequestStatus.
+### snapshotdownloadfilesfromlocation
+Initiate a job to download multiple files or folders
+
+Supported in v8.0+
+Initiates a job to download one or more files or folders from an archived virtual machine snapshot. Returns the job instance ID.
+
+- There is a single argument of type VsphereSnapshotDownloadFilesFromLocationInput.
+- Returns AsyncRequestStatus.
+### snapshotrestorefilesfromlocation
+Initiate a job to restore multiple files or folders
+
+Supported in v8.0+
+Initiates a job to restore one or more files or folders from an archived virtual machine snapshot. Returns the job instance ID.
+
+- There is a single argument of type VsphereSnapshotRestoreFilesFromLocationInput.
+- Returns AsyncRequestStatus.
 ### updateadvancedtag
 Update the multi-tag filter
 

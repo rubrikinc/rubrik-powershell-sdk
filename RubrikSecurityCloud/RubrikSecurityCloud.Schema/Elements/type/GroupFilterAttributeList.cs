@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("attributeType")]
         public AttributeType? AttributeType { get; set; }
 
+        //      C# -> AttributeDataType? DataType
+        // GraphQL -> dataType: AttributeDataType! (enum)
+        [JsonProperty("dataType")]
+        public AttributeDataType? DataType { get; set; }
+
         //      C# -> JoinOpType? FilterOpType
         // GraphQL -> filterOpType: JoinOpType! (enum)
         [JsonProperty("filterOpType")]
@@ -40,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("attributeValue")]
         public System.String? AttributeValue { get; set; }
 
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        [JsonProperty("isArchived")]
+        public System.Boolean? IsArchived { get; set; }
+
 
         #endregion
 
@@ -51,13 +61,18 @@ namespace RubrikSecurityCloud.Types
 
     public GroupFilterAttributeList Set(
         AttributeType? AttributeType = null,
+        AttributeDataType? DataType = null,
         JoinOpType? FilterOpType = null,
         System.String? AttributeKey = null,
-        System.String? AttributeValue = null
+        System.String? AttributeValue = null,
+        System.Boolean? IsArchived = null
     ) 
     {
         if ( AttributeType != null ) {
             this.AttributeType = AttributeType;
+        }
+        if ( DataType != null ) {
+            this.DataType = DataType;
         }
         if ( FilterOpType != null ) {
             this.FilterOpType = FilterOpType;
@@ -67,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AttributeValue != null ) {
             this.AttributeValue = AttributeValue;
+        }
+        if ( IsArchived != null ) {
+            this.IsArchived = IsArchived;
         }
         return this;
     }
@@ -89,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "attributeType\n" ;
             } else {
                 s += ind + "attributeType\n" ;
+            }
+        }
+        //      C# -> AttributeDataType? DataType
+        // GraphQL -> dataType: AttributeDataType! (enum)
+        if (this.DataType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dataType\n" ;
+            } else {
+                s += ind + "dataType\n" ;
             }
         }
         //      C# -> JoinOpType? FilterOpType
@@ -118,6 +145,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "attributeValue\n" ;
             }
         }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        if (this.IsArchived != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
+        }
         return s;
     }
 
@@ -141,6 +177,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AttributeType != null && ec.Excludes("attributeType",true))
         {
             this.AttributeType = null;
+        }
+        //      C# -> AttributeDataType? DataType
+        // GraphQL -> dataType: AttributeDataType! (enum)
+        if (ec.Includes("dataType",true))
+        {
+            if(this.DataType == null) {
+
+                this.DataType = new AttributeDataType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DataType != null && ec.Excludes("dataType",true))
+        {
+            this.DataType = null;
         }
         //      C# -> JoinOpType? FilterOpType
         // GraphQL -> filterOpType: JoinOpType! (enum)
@@ -192,6 +245,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AttributeValue != null && ec.Excludes("attributeValue",true))
         {
             this.AttributeValue = null;
+        }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        if (ec.Includes("isArchived",true))
+        {
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
     }
 

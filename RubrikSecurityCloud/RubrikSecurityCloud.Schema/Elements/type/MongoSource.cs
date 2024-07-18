@@ -226,6 +226,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotDistribution")]
         public SnapshotDistribution? SnapshotDistribution { get; set; }
 
+        //      C# -> SourceMetadata? SourceMetadata
+        // GraphQL -> sourceMetadata: SourceMetadata (type)
+        [JsonProperty("sourceMetadata")]
+        public SourceMetadata? SourceMetadata { get; set; }
+
         //      C# -> List<CdmMongoNode>? SourceNodes
         // GraphQL -> sourceNodes: [CdmMongoNode!]! (type)
         [JsonProperty("sourceNodes")]
@@ -334,6 +339,7 @@ namespace RubrikSecurityCloud.Types
         DataLocation? PrimaryClusterLocation = null,
         SecurityMetadata? SecurityMetadata = null,
         SnapshotDistribution? SnapshotDistribution = null,
+        SourceMetadata? SourceMetadata = null,
         List<CdmMongoNode>? SourceNodes = null,
         CdmMongoSslParams? SslParams = null
     ) 
@@ -460,6 +466,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
+        }
+        if ( SourceMetadata != null ) {
+            this.SourceMetadata = SourceMetadata;
         }
         if ( SourceNodes != null ) {
             this.SourceNodes = SourceNodes;
@@ -915,6 +924,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "snapshotDistribution" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SourceMetadata? SourceMetadata
+        // GraphQL -> sourceMetadata: SourceMetadata (type)
+        if (this.SourceMetadata != null) {
+            var fspec = this.SourceMetadata.AsFieldSpec(conf.Child("sourceMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sourceMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1707,6 +1728,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotDistribution != null && ec.Excludes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = null;
+        }
+        //      C# -> SourceMetadata? SourceMetadata
+        // GraphQL -> sourceMetadata: SourceMetadata (type)
+        if (ec.Includes("sourceMetadata",false))
+        {
+            if(this.SourceMetadata == null) {
+
+                this.SourceMetadata = new SourceMetadata();
+                this.SourceMetadata.ApplyExploratoryFieldSpec(ec.NewChild("sourceMetadata"));
+
+            } else {
+
+                this.SourceMetadata.ApplyExploratoryFieldSpec(ec.NewChild("sourceMetadata"));
+
+            }
+        }
+        else if (this.SourceMetadata != null && ec.Excludes("sourceMetadata",false))
+        {
+            this.SourceMetadata = null;
         }
         //      C# -> List<CdmMongoNode>? SourceNodes
         // GraphQL -> sourceNodes: [CdmMongoNode!]! (type)

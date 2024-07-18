@@ -577,7 +577,9 @@ Paginated list of help content snippets.
     - filter - HelpContentSnippetsFilterInput: Filter for help content snippets.
 - Returns HelpContentSnippetConnection.
 ### hierarchyobject
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - fid - System.String: The Rubrik UUID for the object.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
 - Returns HierarchyObject.
 ### hierarchyobjects
 - There are 2 arguments.

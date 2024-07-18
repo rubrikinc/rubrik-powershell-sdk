@@ -543,6 +543,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MONGO_DATABASE_ID")]
         MONGO_DATABASE_ID,
 
+        [EnumMember(Value = "MONGO_MANAGEMENT_TYPE")]
+        MONGO_MANAGEMENT_TYPE,
+
         [EnumMember(Value = "MONGO_SOURCE_ID")]
         MONGO_SOURCE_ID,
 

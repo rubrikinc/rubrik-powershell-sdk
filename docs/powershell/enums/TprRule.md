@@ -28,3 +28,4 @@ The different TPR rules.
 - MODIFY_AIR_GAPPED_STATUS - The TPR rule for updating air gapped status of cluster.
 - REPLACE_CLUSTER_NODE - The TPR rule is for replacing a cluster node.
 - TRIGGER_RCV_CUSTOM_FAIL_OVER - The TPR rule for triggering custom failover on the RCV location.
+- EDIT_TPR_CONFIG - The TPR rule for editing any QAuth configuration.

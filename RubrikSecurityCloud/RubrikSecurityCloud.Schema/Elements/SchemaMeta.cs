@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20240701-23" ;
+        public static string GraphqlSchemaVersion = "v20240708-24" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -579,6 +579,7 @@ namespace RubrikSecurityCloud.Types
             CdmHierarchyObjectEdge,
             CdmHostVolume,
             CdmInventorySubHierarchyRoot,
+            CdmLightweightHost,
             CdmManagedAwsTarget,
             CdmManagedAzureTarget,
             CdmManagedGcpTarget,
@@ -1644,8 +1645,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharepointDrive,
             O365SharePointDrive,
+            O365SharepointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -2122,6 +2123,7 @@ namespace RubrikSecurityCloud.Types
             SonarReportRowEdge,
             SonarReportTable,
             SourceConfigParams,
+            SourceMetadata,
             SpecificReplicationSpec,
             SsoGroup,
             StartAzureAdAppSetupReply,
@@ -3071,6 +3073,7 @@ namespace RubrikSecurityCloud.Types
             DownloadExchangeSnapshotInput,
             DownloadFilesetSnapshotFromLocationInput,
             DownloadFilesetSnapshotInput,
+            DownloadFilesJobConfigInput,
             DownloadFilesNutanixSnapshotInput,
             DownloadHypervSnapshotFromLocationInput,
             DownloadHypervVirtualMachineSnapshotFilesInput,
@@ -4123,6 +4126,8 @@ namespace RubrikSecurityCloud.Types
             VsphereLoginInfoInput,
             VsphereMountFilter,
             VsphereOnDemandSnapshotInput,
+            VsphereSnapshotDownloadFilesFromLocationInput,
+            VsphereSnapshotRestoreFilesFromLocationInput,
             VsphereVirtualDiskFilter,
             VsphereVmBatchExportInput,
             VsphereVmBatchExportV3Input,
@@ -5689,6 +5694,8 @@ namespace RubrikSecurityCloud.Types
             vsphereExcludeVmDisks,
             vsphereExportSnapshotToStandaloneHostV2,
             vsphereOnDemandSnapshot,
+            vsphereSnapshotDownloadFilesFromLocation,
+            vsphereSnapshotRestoreFilesFromLocation,
             vsphereVmBatchExport,
             vsphereVmBatchExportV3,
             vsphereVmBatchInPlaceRecovery,
@@ -5767,6 +5774,7 @@ namespace RubrikSecurityCloud.Types
             ArchivalLocationUpgradeUnsupportedReason,
             ArchiveFolderAction,
             ArmTemplateDeploymentLevel,
+            AttributeDataType,
             AttributeType,
             AuditObjectType,
             AuditSeverity,
@@ -9685,6 +9693,8 @@ namespace RubrikSecurityCloud.Types
             vsphereExcludeVmDisks,
             vsphereExportSnapshotToStandaloneHostV2,
             vsphereOnDemandSnapshot,
+            vsphereSnapshotDownloadFilesFromLocation,
+            vsphereSnapshotRestoreFilesFromLocation,
             vsphereVMMissedRecoverableRange,
             vsphereVMRecoverableRange,
             vsphereVMRecoverableRangeInBatch,
@@ -21752,6 +21762,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.vsphereSnapshotDownloadFilesFromLocation,
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphere",
+                        cmdletSwitchName: "SnapshotDownloadFilesFromLocation",
+                        gqlRootFieldName: "vsphereSnapshotDownloadFilesFromLocation"
+                    )
+                },
+                {
+                    GqlRootFieldName.vsphereSnapshotRestoreFilesFromLocation,
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphere",
+                        cmdletSwitchName: "SnapshotRestoreFilesFromLocation",
+                        gqlRootFieldName: "vsphereSnapshotRestoreFilesFromLocation"
+                    )
+                },
+                {
                     GqlRootFieldName.vsphereVMMissedRecoverableRange,
                     new RscOp(
                         cmdletName: "New-RscQueryVsphereVm",
@@ -28067,6 +28093,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.vsphereOnDemandSnapshot
                 },
                 {
+                    "New-RscMutationVsphere -Op SnapshotDownloadFilesFromLocation",
+                    GqlRootFieldName.vsphereSnapshotDownloadFilesFromLocation
+                },
+                {
+                    "New-RscMutationVsphere -Op SnapshotRestoreFilesFromLocation",
+                    GqlRootFieldName.vsphereSnapshotRestoreFilesFromLocation
+                },
+                {
                     "New-RscQueryVsphereVm -Op MissedRecoverableRange",
                     GqlRootFieldName.vsphereVMMissedRecoverableRange
                 },
@@ -28591,6 +28625,8 @@ namespace RubrikSecurityCloud.Types
                         "vsphereDeleteVcenter",
                         "vsphereExportSnapshotToStandaloneHostV2",
                         "vsphereOnDemandSnapshot",
+                        "vsphereSnapshotDownloadFilesFromLocation",
+                        "vsphereSnapshotRestoreFilesFromLocation",
                         "vSphereVMAsyncRequestStatus",
                         "vsphereVmDownloadSnapshot",
                         "vsphereVmDownloadSnapshotFiles",
@@ -33165,6 +33201,10 @@ namespace RubrikSecurityCloud.Types
                         "allValidReplicationTargets",
                         "assignRetentionSLAToSnappables",
                         "assignSlasForSnappableHierarchies",
+                        "awsNativeEbsVolume",
+                        "awsNativeEbsVolumes",
+                        "awsNativeEc2Instance",
+                        "awsNativeEc2Instances",
                         "awsNativeRdsExportDefaults",
                         "awsNativeRdsInstance",
                         "awsNativeRdsInstances",
@@ -37806,6 +37846,14 @@ namespace RubrikSecurityCloud.Types
                         "vsphereOnDemandSnapshot",
                     }
                 },
+                {   "VsphereSnapshotDownloadFilesFromLocationInput", new List<string> {
+                        "vsphereSnapshotDownloadFilesFromLocation",
+                    }
+                },
+                {   "VsphereSnapshotRestoreFilesFromLocationInput", new List<string> {
+                        "vsphereSnapshotRestoreFilesFromLocation",
+                    }
+                },
                 {   "VsphereVmBatchExportInput", new List<string> {
                         "vsphereVmBatchExport",
                     }
@@ -37920,6 +37968,7 @@ namespace RubrikSecurityCloud.Types
                         "azureNativeSubscriptions",
                         "configuredGroupMembers",
                         "gcpNativeProjects",
+                        "hierarchyObject",
                         "o365Orgs",
                     }
                 },
@@ -38661,6 +38710,8 @@ namespace RubrikSecurityCloud.Types
                 { "vsphereDeleteVcenter", "AsyncRequestStatus"},
                 { "vsphereExportSnapshotToStandaloneHostV2", "AsyncRequestStatus"},
                 { "vsphereOnDemandSnapshot", "AsyncRequestStatus"},
+                { "vsphereSnapshotDownloadFilesFromLocation", "AsyncRequestStatus"},
+                { "vsphereSnapshotRestoreFilesFromLocation", "AsyncRequestStatus"},
                 { "vSphereVMAsyncRequestStatus", "AsyncRequestStatus"},
                 { "vsphereVmDownloadSnapshot", "AsyncRequestStatus"},
                 { "vsphereVmDownloadSnapshotFiles", "AsyncRequestStatus"},
@@ -42085,6 +42136,8 @@ namespace RubrikSecurityCloud.Types
                     "OnDemandSnapshot",
                     "ResourcePool",
                     "RootRecoveryHierarchy",
+                    "SnapshotDownloadFilesFromLocation",
+                    "SnapshotRestoreFilesFromLocation",
                     "Tag",
                     "TagCategory",
                     "TopLevelDescendantsList",

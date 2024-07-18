@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EDIT_SLA")]
         EDIT_SLA,
 
+        [EnumMember(Value = "EDIT_TPR_CONFIG")]
+        EDIT_TPR_CONFIG,
+
         [EnumMember(Value = "EDIT_TPR_POLICY")]
         EDIT_TPR_POLICY,
 

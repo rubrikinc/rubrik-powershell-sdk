@@ -17,6 +17,8 @@ Db2 Instance details object.
   - Specifies whether the Db2 instance contains an HADR database.
 - instanceType: Db2InstanceType
   - Type of Db2 instance: STANDALONE, PARTITIONED, PURESCALE, or UNSPECIFIED.
+- hosts: list of CdmLightweightHosts
+  - List of hosts associated with the Db2 instance.
 - descendantConnection: Db2InstanceDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: Db2InstancePhysicalChildTypeConnection

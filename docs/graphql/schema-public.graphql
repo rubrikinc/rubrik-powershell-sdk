@@ -2445,7 +2445,7 @@ type Query {
     # Returns the elements in the list that come after the specified cursor.
     after: String,
 
-    # Sort by argument for Mssql log shipping targets. Default sort is by id in ascending order.
+    # Sort by argument for MSSQL log shipping targets. Default sort is by ID in ascending order.
     sortBy: MssqlLogShippingTargetSortByInput,
 
     # Filters for Mssql log shipping targets. No filters by default.
@@ -4730,6 +4730,34 @@ type Query {
     # The Rubrik UUID for the object.
     fid: UUID!): MssqlAvailabilityGroup!
 
+  # Paginated list of virtual groups for MSSQL databases.
+  mssqlAvailabilityGroupDatabaseVirtualGroups(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # The Rubrik UUIDs for the objects.
+    fids: [UUID!]!): MssqlDatabaseVirtualGroupConnection!
+
+  # Paginated list of virtual groups for MSSQL availability groups.
+  mssqlAvailabilityGroupVirtualGroups(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Filters for MSSQL availability group virtual groups. Default to no filters and all objects are returned.
+    filters: [MssqlAvailabilityGroupVirtualGroupFilterInput!],
+
+    # Sort by argument for MSSQL availability group virtual groups. Default sort is by ID in ascending order.
+    sortBy: MssqlAvailabilityGroupVirtualGroupSortByInput,
+
+    # Sort order argument for MSSQL availability group virtual groups.
+    sortOrder: MssqlAvailabilityGroupVirtualGroupSortOrderInput): MssqlAvailabilityGroupVirtualGroupConnection!
+
   # Returns all compatible instances for export for the specified recovery time.
   mssqlCompatibleInstances(
     # Returns the first n elements from the list.
@@ -6016,6 +6044,21 @@ type Query {
 
     # Object tags associated with workloads as key-value pairs.
     objectTagsFilter: ObjectTagsFilterInput,
+
+    # Filter by backup status.
+    backupStatusFilter: [BackupStatus!],
+
+    # Filter by SLA Domain IDs.
+    slaIdsFilter: [String!],
+
+    # Filter by network access type.
+    networkAccessFilter: [NetworkAccess!],
+
+    # Filter by encryption type.
+    encryptionFilter: [Encryption!],
+
+    # Filter by logging type.
+    loggingFilter: [Logging!],
 
     # Returns the first n elements from the list.
     first: Int,
@@ -7585,7 +7628,7 @@ type Query {
   # 
   # Supported in v7.0+
   # v7.0-v9.1: Preview list of virtual machines of a proposed filter condition. The result might not be accurate if new virtual machines were added after last vCenter refresh.
-  # v9.2: Preview list of virtual machines of a proposed filter condition. The result might not be accurate if new virtual machines were added after last vCenter refresh. It is not supported on Standalone Hosts.
+  # v9.2+: Preview list of virtual machines of a proposed filter condition. The result might not be accurate if new virtual machines were added after last vCenter refresh. It is not supported on Standalone Hosts.
   vCenterAdvancedTagPreview(
     # Input for V1PreviewFilter.
     input: PreviewFilterInput!): VcenterAdvancedTagPreviewReply!
@@ -9300,7 +9343,7 @@ type Mutation {
   # 
   # Supported in v7.0+
   # v7.0-v9.1: Create a filter consisting of vSphere tags joined with logical operators.
-  # v9.2: Create a filter consisting of vSphere tags joined with logical operators. It is not supported onStandalone Hosts.
+  # v9.2+: Create a filter consisting of vSphere tags joined with logical operators. It is not supported onStandalone Hosts.
   createVsphereAdvancedTag(
     # Input for V1CreateFilter.
     input: CreateVsphereAdvancedTagInput!): CreateVsphereAdvancedTagReply!
@@ -9744,7 +9787,7 @@ type Mutation {
   # 
   # Supported in v7.0+
   # v7.0-v9.1: Remove the multi-tag filter.
-  # v9.2: Remove the multi-tag filter. It is not supported on Standalone Hosts.
+  # v9.2+: Remove the multi-tag filter. It is not supported on Standalone Hosts.
   deleteVsphereAdvancedTag(
     # Input for V1DeleteFilter.
     input: DeleteVsphereAdvancedTagInput!): RequestSuccess!
@@ -9939,7 +9982,7 @@ type Mutation {
 
   # Download virtual disks from the snapshot of a Nutanix virtual machine
   # 
-  # Supported in v9.2
+  # Supported in v9.2+
   # Start an asynchronous job to download multiple virtual disks from a specified Nutanix virtual machine snapshot. Once initiated, you will receive an asynchronous request ID in response. To obtain the URL for downloading the virtual disk files, including the specific virtual disks, send a GET request to 'nutanix/vm/request/{id}'.
   downloadNutanixVdisks(
     # Input for downloading vdisks from Nutanix.
@@ -9970,6 +10013,14 @@ type Mutation {
   downloadOracleDatabaseSnapshot(
     # Input for InternalDownloadOracleDbSnapshot.
     input: DownloadOracleDatabaseSnapshotInput!): AsyncRequestStatus!
+
+  # Download Oracle snapshot from an archival location
+  # 
+  # Supported in v9.0+
+  # Initiates an asynchronous job to download an Oracle database snapshot and associated log snapshots using the snapshot ID. The response includes the ID of the asynchronous job request. To see the status of the request, poll /oracle/request/{id}.
+  downloadOracleSnapshotFromLocation(
+    # Input for V1DownloadOracleSnapshotFromLocation.
+    input: DownloadOracleSnapshotFromLocationInput!): AsyncRequestStatus!
 
   # Download a report in CSV format asynchronously.
   downloadReportCsvAsync(input: DownloadReportCsvAsyncInput!): AsyncDownloadReply!
@@ -10554,7 +10605,7 @@ type Mutation {
 
   # Attaching disks from a snapshot to an existing virtual machine
   # 
-  # Supported in v9.2
+  # Supported in v9.2+
   # Requests a vDisk Mount to attach disks to an existing virtual machine.
   mountNutanixVdisks(
     # Input for V1CreateNutanixVdisksMount.
@@ -11831,6 +11882,11 @@ type Mutation {
   updateIntegrations(
     # Update integrations input.
     input: UpdateIntegrationsInput!): Void
+
+  # Update IOC status.
+  updateIocStatus(
+    # Update Ioc Status input.
+    input: [UpdateIocStatusInput!]!): Void
   updateIpWhitelist(whitelistMode: WhitelistModeEnum!, ipCidrs: [String!]!): Boolean!
 
   # Update a Kubernetes cluster
@@ -12168,7 +12224,7 @@ type Mutation {
   # 
   # Supported in v7.0+
   # v7.0-v9.1: Updates the name, condition, and description of the specified multi-tag filter.
-  # v9.2: Updates the name, condition, and description of the specified multi-tag filter. It is not supported on Standalone Hosts.
+  # v9.2+: Updates the name, condition, and description of the specified multi-tag filter. It is not supported on Standalone Hosts.
   updateVsphereAdvancedTag(
     # Input for V1UpdateFilter.
     input: UpdateVsphereAdvancedTagInput!): UpdateVsphereAdvancedTagReply!
@@ -12180,6 +12236,11 @@ type Mutation {
   updateVsphereVm(
     # Input for V1UpdateVm.
     input: UpdateVsphereVmInput!): RequestSuccess!
+
+  # Supported in v9.2+. Update a virtual machine withspecified properties. Use the guestCredential field to update the guest credential for a specified virtual machine.
+  updateVsphereVmNew(
+    # Input for updating a VM.
+    input: UpdateVsphereVmNewInput!): RequestSuccess!
 
   # Update a webhook.
   updateWebhook(
@@ -13290,6 +13351,7 @@ input ActiveDirectoryLiveMountConfigInput {
   # IP subnet specifying an outgoing VLAN interface for a Rubrik node. This is a required value when creating an export on a Rubrik node that has multiple VLAN interfaces.
   subnet: String
 
+  # Supported in v9.2+
   # Specifies whether the Virtual Hard Disk Extended (VHDX) must be mounted during export.
   shouldMountVhdx: Boolean
 }
@@ -13354,6 +13416,7 @@ input ActiveDirectoryObjectRecoveryConfigInput {
   # ID of the archival or replication location.
   locationId: String
 
+  # Supported in v9.2+
   # Specify the Host ID for performing this restore on the alternate domain controller.
   hostId: String
 
@@ -13406,6 +13469,7 @@ enum ActiveDirectoryObjectType {
 
   # Active Directory group policy.
   ACTIVE_DIRECTORY_OBJECT_TYPE_GROUP_POLICY_OBJECT
+  ACTIVE_DIRECTORY_OBJECT_TYPE_MS_FVE_RECOVERY_INFORMATION
 
   # Active Directory organization unit.
   ACTIVE_DIRECTORY_OBJECT_TYPE_ORGANIZATION_UNIT
@@ -13451,6 +13515,7 @@ input ActiveDirectoryRecoveryLdapCredsInput {
 }
 # Supported in v9.0+
 input ActiveDirectoryRecoveryObjectInput {
+  # Supported in v9.2+
   # Selected attributes that would be restored for the object.
   attributes: [String!] = []
 
@@ -15237,6 +15302,9 @@ input AddSyslogExportRuleInput {
 
   # Syslog export rule.
   syslogExportRuleV92: SyslogExportRuleFullInput
+
+  # Syslog export rule.
+  syslogExportRuleV93: SyslogExportRuleFullInput
 }
 # Reply Object for AddSyslogExportRule.
 type AddSyslogExportRuleReply {
@@ -16698,6 +16766,23 @@ type AssetMetadata {
   # Last access time signifies the last access time of the asset in
   # milliseconds.
   lastAccessTime: Long!
+
+  # Backup status signifies the status of backup of the asset.
+  backupStatus: BackupStatus!
+
+  # Rubrik SLA Domain information signifies the SLA Domain information for
+  # the asset. This field will only be populated when Rubrik backs up the
+  # asset.
+  rubrikSlaInfo: RubrikSlaInfo
+
+  # Signifies the encryption status for the asset.
+  encryption: Encryption!
+
+  # Signifies logging status for the asset.
+  logging: Logging!
+
+  # Signifies network access for the asset.
+  networkAccess: NetworkAccess!
 }
 # Input for assigning SLA Domain to SQL Server objects.
 input AssignMssqlSlaDomainPropertiesAsyncInput {
@@ -24114,6 +24199,20 @@ enum AzureAdRelationshipEnumType {
   # Role assignment relationship for an Azure AD object.
   ROLE_ASSIGNMENT
 }
+# Represents the modes for relationship restores for Azure AD objects.
+enum AzureAdRelationshipRestoreModeEnumType {
+  # Restore adds missing relationships from snapshot to the Azure AD object being restored.
+  MERGE
+
+  # Unspecified relationship restore mode.
+  RELATIONSHIP_RESTORE_MODE_UNSPECIFIED
+
+  # Restore will add or remove relationships to match those that existed in the snapshot of the Azure AD object being restored.
+  ROLLBACK
+
+  # Restore does not reestablish relationships to the Azure AD object being restored.
+  SKIP
+}
 # Reverse Relationships of an Azure Active Directory object.
 type AzureAdReverseRelationship {
   # List of related objects in the Azure AD reverse relationship.
@@ -28955,6 +29054,20 @@ enum BackupStatsTimeRange {
   # Last 7 days.
   BSTR_LAST_7_DAYS
 }
+# BackupStatus stores the status of the backup.
+enum BackupStatus {
+  # Specifies whether the backup status is unknown.
+  BACKUP_UNKNOWN
+
+  # Specifies whether the asset is backed up natively.
+  NATIVELY_BACKED_UP
+
+  # Specifies whether the asset is not backed up.
+  NOT_BACKED_UP
+
+  # Specifies whether the asset is backed up by Rubrik.
+  RUBRIK_BACKED_UP
+}
 # Supported in v5.1+
 type BackupTaskDiagnosticInfo {
   # Supported in v5.1+
@@ -29480,6 +29593,24 @@ input BrowseDirectoryFiltersInput {
 
   # List of principal IDs to filter the paths.
   sids: [String!] = []
+
+  # List of sensitivity levels to filter the paths.
+  riskLevelTypesFilter: [RiskLevelType!] = []
+
+  # List of data type IDs to filter the paths.
+  dataTypeIds: [String!] = []
+
+  # Last access time range specified in the local timezone of the user.
+  lastAccessFilter: UserTimeRangeInput
+
+  # Last modified time range specified in the local timezone of the user.
+  lastModifiedFilter: UserTimeRangeInput
+
+  # Creation time range specified in the local timezone of the user.
+  creationTimeFilter: UserTimeRangeInput
+
+  # Last scan time range specified in the local timezone of the user.
+  lastScanFilter: UserTimeRangeInput
 }
 # Input for browsing SQL Server database snapshots.
 input BrowseMssqlDatabaseSnapshotInput {
@@ -30051,6 +30182,9 @@ input CalendarGroupInfo {
 
   # ID of the snapshot from which to restore.
   snapshotId: UUID!
+
+  # Specifies the hierarchy type of the calendar group to be restored.
+  hierarchyType: ExchangeItemHierarchyType
 }
 # Represents the Calendar to be restored.
 input CalendarInfo {
@@ -30059,6 +30193,9 @@ input CalendarInfo {
 
   # ID of the snapshot from which to restore.
   snapshotId: UUID!
+
+  # Specifies the hierarchy type of the calendar to be restored.
+  hierarchyType: ExchangeItemHierarchyType
 }
 # Calendar recurrence object type.
 input CalendarRecurrenceFilter {
@@ -34743,6 +34880,9 @@ type Cluster {
   # The cluster status.
   status: ClusterStatus!
 
+  # The cluster status from the database.
+  statusFromDb: ClusterConnectionStatusFromDb!
+
   # The cluster sub status.
   subStatus: ClusterSubStatus!
 
@@ -35036,6 +35176,14 @@ enum ClusterConnectionStatus {
 
   # Cluster was not added or got removed from Rubrik.
   NOT_ATTACHED
+}
+# Connection status of the Rubrik cluster with RSC.
+enum ClusterConnectionStatusFromDb {
+  # The Rubrik cluster is connected to RSC.
+  CONNECTED
+
+  # The Rubrik cluster is disconnected from RSC.
+  DISCONNECTED
 }
 # Supported in v7.0+
 type ClusterCsr {
@@ -38785,6 +38933,8 @@ type CreateGuestCredentialReply {
 
   # Base guest credential details.
   baseGuestCredentialDetail: BaseGuestCredentialDetail
+
+  # Supported in v9.2+
   description: String
 }
 # Input for initiating Live Mount for a Hyper-V virtual machine.
@@ -40581,7 +40731,7 @@ type DataStoreSummary {
   # Supported in v5.0+
   name: String
 
-  # Supported in v9.2
+  # Supported in v9.2+
   # Amount of free space in the datastore.
   freeSpaceInBytes: Long
 }
@@ -40652,6 +40802,9 @@ type DataTypeStats {
 }
 # All reporting table schemas.
 enum DataViewTypeEnum {
+  # Specifies the database schema for activity series.
+  ACTIVITY_SERIES
+
   # Specifies the Readable Snapshots report information.
   ANOMALIES
 
@@ -43833,6 +43986,14 @@ input DownloadOracleDatabaseSnapshotInput {
   # Required. ID assigned to an Oracle database snapshot.
   snapshotId: String!
 }
+# Input for downloading Oracle snapshot from a location.
+input DownloadOracleSnapshotFromLocationInput {
+  # Required. ID of the archival location.
+  locationId: String!
+
+  # Required. ID assigned to an Oracle database snapshot.
+  snapshotId: String!
+}
 # Download package response.
 type DownloadPackageReply {
   # Download job ID.
@@ -44259,6 +44420,17 @@ input EnableThreatMonitoringInput {
   # Threat Monitoring enablement status.
   status: ThreatMonitoringEnablementStatusInput!
 }
+# Encryption represents the encryption status of the asset.
+enum Encryption {
+  # Not enabled status.
+  ENCRYPTION_DISABLED
+
+  # Enabled status.
+  ENCRYPTION_ENABLED
+
+  # Unknown status.
+  ENCRYPTION_UNSPECIFIED
+}
 # Level of encryption detected.
 enum EncryptionLevel {
   # High level of encryption.
@@ -44494,6 +44666,9 @@ input EventInfo {
 
   # ID of the snapshot from which to restore.
   snapshotId: UUID!
+
+  # Specifies the hierarchy type of the event to be restored.
+  hierarchyType: ExchangeItemHierarchyType
 }
 # Enum representing all the possible object types which generate events.
 enum EventObjectType {
@@ -46233,12 +46408,12 @@ input ExportMssqlDatabaseInput {
 input ExportMssqlDbJobConfigInput {
   # Supported in v5.0+
   # v5.0-v9.1: A Boolean value that determines whether an existing database can be overwritten by a database this is exported from a backup. Set to false to prevent overwrites. This is the default. Set to true to allow overwrites.
-  # v9.2: Boolean value determining whether an existing database can be overwritten by a database that is exported from a backup. Set to false to prevent overwrites. This is the default. Set to true to allow overwrites.
+  # v9.2+: Boolean value determining whether an existing database can be overwritten by a database that is exported from a backup. Set to false to prevent overwrites. This is the default. Set to true to allow overwrites.
   allowOverwrite: Boolean
 
   # Supported in v5.0+
   # v5.0-v9.1: A Boolean value that determines the recovery option to use during database restore. When this value is 'true', the database is restored using the RECOVERY option and is fully functional at the end of the restore operation. When this value is 'false', the database is restored using the NORECOVERY option and remains in recovering mode at the end of the restore operation.
-  # v9.2: Boolean value determining which recovery option to use during a database restore. When this value is 'true', the database is restored using the RECOVERY option and is fully functional at the end of the restore operation. When this value is 'false', the database is restored using the NORECOVERY option and remains in recovering mode at the end of the restore operation.
+  # v9.2+: Boolean value determining which recovery option to use during a database restore. When this value is 'true', the database is restored using the RECOVERY option and is fully functional at the end of the restore operation. When this value is 'false', the database is restored using the NORECOVERY option and remains in recovering mode at the end of the restore operation.
   finishRecovery: Boolean
 
   # Supported in v5.0+
@@ -46247,12 +46422,12 @@ input ExportMssqlDbJobConfigInput {
 
   # Supported in v5.0+
   # v5.0-v9.1: The target path to store all data files.
-  # v9.2: Target path in which store all data files.
+  # v9.2+: Target path in which store all data files.
   targetDataFilePath: String
 
   # Supported in v5.0+
   # v5.0-v9.1: The target path to store all log files.
-  # v9.2: Target path in which store all log files.
+  # v9.2+: Target path in which store all log files.
   targetLogFilePath: String
 
   # Required. Supported in v5.0+
@@ -47602,16 +47777,6 @@ type FederatedLoginStatus {
   # Specifies whether UI should display the inventory cards after Federated login.
   inventoryCardEnabled: Boolean!
 }
-# Custom feed description.
-input FeedDescription {
-  # Feed description.
-  description: String = ""
-}
-# Custom feed name.
-input FeedName {
-  # Feed name.
-  name: String = ""
-}
 enum FieldEnum {
   ALL
 
@@ -47832,6 +47997,12 @@ type FileResult {
 
   # Represents data type of column for databases.
   type: String!
+
+  # Represents the creation time of the file.
+  creationTime: Long!
+
+  # Represents the last scan time of the file.
+  lastScanTime: Long!
   snappable: HierarchyObject!
 }
 # Paginated list of FileResult objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
@@ -52284,6 +52455,8 @@ enum GuestCredentialAuthorizationStatus {
 input GuestCredentialDefinitionInput {
   # Supported in v5.0+
   domain: String
+
+  # Supported in v9.2+
   description: String
   baseGuestCredential: BaseGuestCredentialInput
 }
@@ -52345,18 +52518,21 @@ type GuestOsCredentialEdge {
   # The actual GuestOsCredential object wrapped by this edge.
   node: GuestOsCredential!
 }
-# Filter for Guest OS credential results.
+# Filter for guest OS credentials.
 enum GuestOsCredentialFilterField {
-  # Cluster UUID filter for Guest OS credential results.
+  # Cluster UUID filter for guest OS credentials.
   CLUSTER_UUID
 
-  # Domain filter for Guest OS credential results.
+  # Domain filter for guest OS credentials.
   DOMAIN
 
   # A filter has not been specified, and any provided filter text will not be taken into consideration.
   FIELD_UNSPECIFIED
 
-  # Username filter for Guest OS credential results.
+  # Domain or username filter for guest OS credentials.
+  USERNAME_OR_DOMAIN
+
+  # Username filter for guest OS credentials.
   USER_NAME
 }
 # Filter for Guest OS credential results.
@@ -52375,7 +52551,7 @@ input GuestOsCredentialSortBy {
   # Sort order for Guest OS credential.
   sortOrder: SortOrder = ASC
 }
-# Sort by the field for Guest OS credential results.
+# Sort by the field for guest OS credentials.
 enum GuestOsCredentialSortByField {
   # Sort by the cluster name.
   CLUSTER_NAME
@@ -53364,6 +53540,12 @@ enum HierarchyFilterField {
   # Filter by recovery plan name.
   RECOVERY_PLAN_NAME
 
+  # Filter by recovery plan source location.
+  RECOVERY_PLAN_SOURCE_LOCATION
+
+  # Filter by recovery plan target location.
+  RECOVERY_PLAN_TARGET_LOCATION
+
   # Filter by recovery plan type.
   RECOVERY_PLAN_TYPE
 
@@ -54246,7 +54428,7 @@ type HostDetail {
   isRefreshPaused: Boolean
   hostSummary: HostSummary
 
-  # Supported in v9.2
+  # Supported in v9.2+
   # Specifies the username configured for the SQL server instance for sensitive data discovery.
   mssqlSddUsername: String
 
@@ -54749,7 +54931,7 @@ input HostRegisterInput {
   # Required. Supported in v5.0+
   hostname: String!
 
-  # Supported in v9.2
+  # Supported in v9.2+
   # The user credentials for querying SQL server instance on the host for Sensitive Data Discovery.
   mssqlSddUserCredentials: SddUserCredentialsInput
 
@@ -55172,7 +55354,7 @@ type HostSummary {
   # Supported in v5.0+
   # v5.0-v5.2:
   # v5.3-v9.1: Specifies the connect status for the host. Status is Refreshing while discovery is running or Connected once discovery was successful and the host is available.
-  # v9.2: This field is deprecated, use statusEnum field instead.
+  # v9.2+: This field is deprecated, use statusEnum field instead.
   status: String
 
   # Supported in v5.1+
@@ -55200,7 +55382,7 @@ type HostSummary {
   # Supported in v5.0+
   nasBaseConfig: NasBaseConfig
 
-  # Supported in v9.2
+  # Supported in v9.2+
   # Volume Group info for the host if applicable.
   volumeGroupInfo: VolumeGroupDetailInfo
 }
@@ -55271,7 +55453,7 @@ input HostUpdateInput {
   # Supported in v7.0+
   # v7.0-v9.1: A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.
   # 
-  # v9.2: A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.
+  # v9.2+: A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.
   isUpdateCertAndAgentIdEnabled: Boolean
 
   # Supported in v9.0+
@@ -55287,7 +55469,7 @@ input HostUpdateInput {
   # Supported in v5.2-v9.1
   hdfsConfig: HdfsConfigInput
 
-  # Supported in v9.2
+  # Supported in v9.2+
   # The user credentials for querying SQL server instance on the host for Sensitive Data Discovery.
   mssqlSddUserCredentials: SddUserCredentialsInput
 
@@ -57545,6 +57727,7 @@ type HypervVirtualMachineMountSummary {
   # A boolean field that indicates whether the mount is a disk-level mount.
   isDiskLevelMount: Boolean
 
+  # Supported in v9.2+
   # This field indicates the time of mounting.
   mountTime: DateTime
   powerStatus: HypervVirtualMachineMountSummaryPowerStatus!
@@ -58403,6 +58586,38 @@ enum IoFilterStatus {
   IO_FILTER_STATUS_UPGRADE_ERROR
   IO_FILTER_STATUS_UPGRADE_IN_PROGRESS
 }
+# IOC hash only.
+input IocHashOnly {
+  # IOC hash.
+  iocHashHex: String!
+}
+# IOC hash with provider.
+input IocHashWithProvider {
+  # IOC hash.
+  iocHashHex: String!
+
+  # Provider Id.
+  providerId: String!
+}
+# Operation to enable or disable IOC.
+enum IocOperation {
+  # Disable IOC.
+  DISABLE
+
+  # Enable IOC.
+  ENABLE
+
+  # IOC Operation unspecified.
+  OPERATION_UNSPECIFIED
+}
+# IOC provider with threat feed type.
+input IocProviderWithThreatFeedType {
+  # Provider Id.
+  providerId: String!
+
+  # Threat feed type.
+  type: ThreatFeedType!
+}
 # Details of IP configuration.
 input IpConfigInput {
   # VLAN ID.
@@ -58762,6 +58977,9 @@ enum JobType {
 
   # Configure log export of a managed volume.
   CONFIGURE_MANAGED_VOLUME_LOG_EXPORT
+
+  # Data-At-Rest-Encryption operation job poller.
+  DARE_OPERATION_POLLER
 
   # DB2 database.
   DB2_DATABASE
@@ -59132,6 +59350,7 @@ input K8sClusterAddInput {
   # The transport type used for communication with the Kubernetes cluster.
   transport: String
 
+  # Supported in v9.2+
   # Specifies whether to enable automatic protection set creation for the Kubernetes cluster.
   isAutoPsCreationEnabled: Boolean
 
@@ -59147,6 +59366,7 @@ input K8sClusterAddInput {
   # Region of the Kubernetes cluster to be added.
   region: String
 
+  # Supported in v9.2+
   # The type of onboarding. It can be kubeconfig or manifest.
   onboardingType: String
 
@@ -59157,6 +59377,7 @@ input K8sClusterAddInput {
   # The configuration for adding an EKS cluster.
   eksConfig: EksConfigInput
 
+  # Supported in v9.2+
   # The configuration for the kupr server proxy to be added.
   kuprServerProxyConfig: KuprServerProxyConfigInput
 
@@ -59341,6 +59562,7 @@ type K8sClusterSummary {
   # Distribution of the Kubernetes cluster.
   distribution: String
 
+  # Supported in v9.2+
   # The configuration for the kupr server proxy being used.
   kuprServerProxyConfig: KuprServerProxyConfig
 
@@ -59356,12 +59578,21 @@ type K8sClusterSummary {
   # Region of the Kubernetes cluster.
   region: String
 
+  # Supported in v9.2+
   # The type of onboarding. It can be kubeconfig or manifest.
   onboardingType: String
 
   # Required. Supported in v9.0+
   # Connection status of the Kubernetes cluster.
   status: String!
+
+  # Supported in v9.2+
+  # The details of the RSC service account used for CRD operations.
+  crdServiceAccountInfo: ServiceAccountInfo
+
+  # Supported in v9.2+
+  # The details of the RSC service account used for onboarding using manifest.
+  onboardingServiceAccountInfo: ServiceAccountInfo
 }
 # Type of the Kubernetes cluster.
 enum K8sClusterType {
@@ -59400,6 +59631,7 @@ input K8sClusterUpdateConfigInput {
   # The transport type used for communication with the Kubernetes cluster.
   transport: String
 
+  # Supported in v9.2+
   # Specifies whether to enable automatic protection set creation for the Kubernetes cluster.
   isAutoPsCreationEnabled: Boolean
 
@@ -59419,6 +59651,7 @@ input K8sClusterUpdateConfigInput {
   # The client ID for the service account.
   clientId: String
 
+  # Supported in v9.2+
   # The configuration for the kupr server proxy to be updated.
   kuprServerProxyConfig: KuprServerProxyConfigInput
 }
@@ -59686,6 +59919,7 @@ input K8sNamespaceSnapshot {
 # Supported in v9.1+
 # Input to add a Kubernetes protection set.
 input K8sProtectionSetAddInput {
+  # Supported in v9.2+
   # The type of method used to create a protection set. Possible values are: automatic, RSC, or CRD.
   creationType: String
 
@@ -60480,26 +60714,34 @@ enum KuprClusterPortsType {
   # USER_DRIVEN type of ports.
   USER_DRIVEN
 }
+# Supported in v9.2+
 # The configuration of kupr server proxy.
 type KuprServerProxyConfig {
-  # Required. Public Certificate of kupr server proxy.
+  # Required. Supported in v9.2+
+  # Public Certificate of kupr server proxy.
   cert: String!
 
+  # Supported in v9.2+
   # Port number of kupr server proxy.
   port: Int
 
-  # Required. The IP address of kupr server proxy for either nodeport or loadbalancer.
+  # Required. Supported in v9.2+
+  # The IP address of kupr server proxy for either nodeport or loadbalancer.
   ipAddress: String!
 }
+# Supported in v9.2+
 # The configuration of kupr server proxy.
 input KuprServerProxyConfigInput {
+  # Supported in v9.2+
   # Port number of kupr server proxy.
   port: Int
 
-  # Required. Public Certificate of kupr server proxy.
+  # Required. Supported in v9.2+
+  # Public Certificate of kupr server proxy.
   cert: String!
 
-  # Required. The IP address of kupr server proxy for either nodeport or loadbalancer.
+  # Required. Supported in v9.2+
+  # The IP address of kupr server proxy for either nodeport or loadbalancer.
   ipAddress: String!
 }
 type Label {
@@ -61308,6 +61550,21 @@ input ListFileResultFiltersInput {
 
   # List of data type IDs to filter snapshot file results.
   dataTypeIds: [String!] = []
+
+  # List of sensitivity levels to filter the paths.
+  riskLevelTypesFilter: [RiskLevelType!] = []
+
+  # Last access time range specified in the local timezone of the user.
+  lastAccessFilter: UserTimeRangeInput
+
+  # Last modified time range specified in the local timezone of the user.
+  lastModifiedFilter: UserTimeRangeInput
+
+  # Creation time range specified in the local timezone of the user.
+  creationTimeFilter: UserTimeRangeInput
+
+  # Last scan time range specified in the local timezone of the user.
+  lastScanFilter: UserTimeRangeInput
   fileType: FileCountType!
 }
 # Returned in response to a ListIntegrationsReq and
@@ -61602,6 +61859,17 @@ input LogShippingInfo {
 
   # ID of the database.
   databaseFid: String = ""
+}
+# Logging represents the logging status of the asset.
+enum Logging {
+  # Not enabled status.
+  LOGGING_DISABLED
+
+  # Enabled status.
+  LOGGING_ENABLED
+
+  # Unknown status.
+  LOGGING_UNSPECIFIED
 }
 # Input for logging in.
 input LoginCredentials {
@@ -67618,6 +67886,9 @@ input MountDiskJobConfigInput {
   # Supported in v5.0+
   # The VMDK files to attach to the existing virtual machine. By default, this value is empty, which attaches all of the VMDKs in the snapshot to the target virtual machine.
   vmdkIds: [String!] = []
+
+  # Specifies an optional future unmount time for the current live mount.
+  unmountTimeOpt: Long
 }
 # Contains the information about taskchain ID of the mount job if succeeded.
 type MountDiskReply {
@@ -67837,6 +68108,9 @@ input MountSnapshotJobConfigV2Input {
   # Supported in v9.1+
   # ID of the virtual machine folder where the new virtual machine will be mounted.
   folderId: String
+
+  # Specifies an optional future unmount time for the current live mount.
+  unmountTimeOpt: Long
 
   # Supported in v8.1+
   # Configuration for migration.
@@ -68269,6 +68543,79 @@ input MssqlAvailabilityGroupUpdateInput {
 
   # Supported in Rubrik cluster versions 9.0 and later. Non-SLA-Domain properties of a Microsoft SQL Server Availability Group.
   mssqlSlaRelatedProperties: MssqlSlaRelatedPropertiesInput
+}
+# Virtual group object for SQL Server availability group.
+type MssqlAvailabilityGroupVirtualGroup {
+  # Name of the virtual group.
+  name: String!
+
+  # The list of linked FIDs of AGs that are already linked.
+  linkedFids: [UUID!]!
+
+  # List of availability groups in the virtual group.
+  groups: [MssqlAvailabilityGroup!]!
+}
+# Paginated list of MssqlAvailabilityGroupVirtualGroup objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type MssqlAvailabilityGroupVirtualGroupConnection {
+  # List of MssqlAvailabilityGroupVirtualGroup objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [MssqlAvailabilityGroupVirtualGroupEdge!]!
+
+  # List of MssqlAvailabilityGroupVirtualGroup objects.
+  nodes: [MssqlAvailabilityGroupVirtualGroup!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of MssqlAvailabilityGroupVirtualGroup objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the MssqlAvailabilityGroupVirtualGroup object. This wrapper is used for pagination.
+type MssqlAvailabilityGroupVirtualGroupEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual MssqlAvailabilityGroupVirtualGroup object wrapped by this edge.
+  node: MssqlAvailabilityGroupVirtualGroup!
+}
+# Parameters to filter MSSQL Availability Group Virtual Groups.
+enum MssqlAvailabilityGroupVirtualGroupFilterField {
+  # ClusterUUID filter field for MSSQL Availability Group virtual group results.
+  CLUSTER_UUID
+
+  # Unspecified sort by field for MSSQL Availability Group virtual group results.
+  FIELD_UNSPECIFIED
+
+  # Name filter field for MSSQL Availability Group virtual group results.
+  NAME
+
+  # Org Id filter field for MSSQL Availability Group virtual group results.
+  ORG_ID
+}
+# Filter MSSQL availability group virtual group results.
+input MssqlAvailabilityGroupVirtualGroupFilterInput {
+  # Type of filter.
+  field: MssqlAvailabilityGroupVirtualGroupFilterField = FIELD_UNSPECIFIED
+
+  # Values for the filter type.
+  texts: [String!] = []
+}
+# Parameters to sort MSSQL Availability Group Virtual Groups.
+enum MssqlAvailabilityGroupVirtualGroupSortByField {
+  # Unspecified sort by field for MSSQL Availability Group virtual group results.
+  FIELD_UNSPECIFIED
+
+  # Name sort by field for MSSQL Availability Group virtual group results.
+  NAME
+}
+# Sort By MSSQL availability group virtual group results.
+input MssqlAvailabilityGroupVirtualGroupSortByInput {
+  # Field for MSSQL availability group virtual group sort by.
+  field: MssqlAvailabilityGroupVirtualGroupSortByField = FIELD_UNSPECIFIED
+}
+# Sort Order MSSQL availability group virtual group results.
+input MssqlAvailabilityGroupVirtualGroupSortOrderInput {
+  # Sort order for MSSQL availability group virtual group.
+  sortOrder: SortOrder = ASC
 }
 # Supported in v5.2+
 type MssqlBackup {
@@ -68893,6 +69240,39 @@ enum MssqlDatabaseRecoveryModel {
   MSSQL_DATABASE_RECOVERY_MODEL_FULL
   MSSQL_DATABASE_RECOVERY_MODEL_SIMPLE
 }
+# Virtual group object for SQL Server databases.
+type MssqlDatabaseVirtualGroup {
+  # Name of the virtual group.
+  name: String!
+
+  # The list of linked FIDs of AGs that are already linked.
+  linkedFids: [UUID!]!
+
+  # List of databases in the virtual group.
+  databases: [MssqlDatabase!]!
+}
+# Paginated list of MssqlDatabaseVirtualGroup objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type MssqlDatabaseVirtualGroupConnection {
+  # List of MssqlDatabaseVirtualGroup objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [MssqlDatabaseVirtualGroupEdge!]!
+
+  # List of MssqlDatabaseVirtualGroup objects.
+  nodes: [MssqlDatabaseVirtualGroup!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of MssqlDatabaseVirtualGroup objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the MssqlDatabaseVirtualGroup object. This wrapper is used for pagination.
+type MssqlDatabaseVirtualGroupEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual MssqlDatabaseVirtualGroup object wrapped by this edge.
+  node: MssqlDatabaseVirtualGroup!
+}
 # Supported in v5.0+
 input MssqlDbDefaultsUpdateInput {
   # Supported in v5.0+
@@ -68971,10 +69351,13 @@ type MssqlDbDetail {
   protectionDateV90: DateTime
   oldestRecoveryPointV91: DateTime
   oldestRecoveryPointV92: DateTime
+  oldestRecoveryPointV93: DateTime
   latestRecoveryPointV91: DateTime
   latestRecoveryPointV92: DateTime
+  latestRecoveryPointV93: DateTime
   protectionDateV91: DateTime
   protectionDateV92: DateTime
+  protectionDateV93: DateTime
 }
 # Supported in v5.0+
 input MssqlDbFileExportPathInput {
@@ -69191,6 +69574,9 @@ type MssqlDbSummary {
 
   # A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
   unprotectableReasonsV92: [String!]!
+
+  # A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
+  unprotectableReasonsV93: [String!]!
   recoveryModel: MssqlDbSummaryRecoveryModel
   snappable: CdmWorkload
 }
@@ -69225,11 +69611,11 @@ input MssqlDbUpdateInput {
   # Determines whether to force a full for the next snapshot of a SQL Server database. When this value is true, the Rubrik cluster takes a full snapshot. This value is false by default and is reset to false after a successful full snapshot.
   shouldForceFull: Boolean
 
-  # Supported in v9.2
+  # Supported in v9.2+
   # Specifies whether to clear the post-backup script. When true, the post-backup script parameters are cleared and set to null.
   shouldClearPostBackupScript: Boolean
 
-  # Supported in v9.2
+  # Supported in v9.2+
   # Specifies whether to clear the pre-backup script. When true, the pre-backup script parameters are cleared and set to null.
   shouldClearPreBackupScript: Boolean
 
@@ -69711,12 +70097,16 @@ type MssqlInstanceSummary {
   unprotectableReasonsV90: [String!]!
   protectionDateV91: DateTime
   protectionDateV92: DateTime
+  protectionDateV93: DateTime
 
   # A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.
   unprotectableReasonsV91: [String!]!
 
   # A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.
   unprotectableReasonsV92: [String!]!
+
+  # A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.
+  unprotectableReasonsV93: [String!]!
 }
 # Supported in v5.0+
 type MssqlInstanceSummaryListResponse {
@@ -69770,12 +70160,12 @@ input MssqlLogShippingCreateConfigInput {
 
   # Supported in v5.0+
   # v5.0-v9.1: The path to the default target location for data file storage.
-  # v9.2: Target path in which store all data files.
+  # v9.2+: Target path in which store all data files.
   targetDataFilePath: String
 
   # Supported in v5.0+
   # v5.0-v9.1: The path to the location of the log files.
-  # v9.2: Target path in which store all log files.
+  # v9.2+: Target path in which store all log files.
   targetLogFilePath: String
 
   # State options of a SQL Server log shipping target.
@@ -72579,6 +72969,17 @@ type NcdVmImageUrl {
   # Size of the NAS Cloud Direct virtual machine image.
   size: Long!
 }
+# NetworkAccess represents the network access of the asset.
+enum NetworkAccess {
+  # Internal network access.
+  NETWORK_ACCESS_INTERNAL
+
+  # Internet facing network access.
+  NETWORK_ACCESS_INTERNET_FACING
+
+  # Unknown network access.
+  NETWORK_ACCESS_UNSPECIFIED
+}
 # Represents a GCP native network host project.
 type NetworkHostProject {
   # GCP project ID.
@@ -74521,6 +74922,14 @@ input NutanixClustersListElementInput {
   # Name of the Nutanix Cluster.
   name: String
 
+  # Supported in v9.2+
+  # Password for the Nutanix Cluster.
+  password: String
+
+  # Supported in v9.2+
+  # Username for the Nutanix Cluster.
+  username: String
+
   # Required. Supported in v9.0+
   # Natural ID of the Nutanix Cluster.
   clusterUuid: String!
@@ -74821,20 +75230,26 @@ input NutanixMountSnapshotJobConfigForBatchInput {
   # ID of the virtual machine whose snapshot requires mounting.
   vmId: String!
 }
+# Supported in v9.2+
 input NutanixMountVdisksJobConfigInput {
+  # Supported in v9.2+
   # Specifies whether to trigger migration immediately when the vDisk Mount succeeds.
   shouldMigrateImmediately: Boolean
 
+  # Supported in v9.2+
   # The ID of the storage container that stores the disks of the mounted virtual machine when migration is selected.
   containerNaturalId: String
 
-  # Required. Specifies whether the migration option should not be enabled for the vDisk Mount.
+  # Required. Supported in v9.2+
+  # Specifies whether the migration option should not be enabled for the vDisk Mount.
   shouldDisableMigration: Boolean!
 
-  # Required. ID of the target Nutanix virtual machine where the vDisks will be mounted.
+  # Required. Supported in v9.2+
+  # ID of the target Nutanix virtual machine where the vDisks will be mounted.
   targetVirtualMachineId: String!
 
-  # Required. vDisk IDs to be mounted from the given snapshot.
+  # Required. Supported in v9.2+
+  # vDisk IDs to be mounted from the given snapshot.
   virtualDiskIds: [String!]!
 }
 # Nutanix Multi Cluster Object type.
@@ -75315,6 +75730,7 @@ input NutanixPrismCentralPatchInput {
   # Username for the Nutanix Prism Central used for all the cluster connections.
   username: String
 
+  # Supported in v9.2+
   # Specifies whether Nutanix DR support is enabled for the the Prism Central object.
   isDrEnabled: Boolean
 
@@ -76127,26 +76543,35 @@ type NutanixVmSnapshotSummary {
   # This field contains the base information of a snapshot which are common across other workloads.
   baseSnapshotSummary: BaseSnapshotSummary
 }
+# Supported in v9.2+
 type NutanixVmSnapshotVdiskDetail {
+  # Supported in v9.2+
   # UUID of the virtual machine disk.
   vmDiskUuid: String
 
+  # Supported in v9.2+
   # Label of the disk assigned by Nutanix.
   label: String
 
+  # Supported in v9.2+
   # Size of the virtual disk in bytes.
   sizeInBytes: Long
 }
+# Supported in v9.2+
 type NutanixVmSnapshotVdiskDetailListResponse {
+  # Supported in v9.2+
   # List of matching objects.
   data: [NutanixVmSnapshotVdiskDetail!]!
 
+  # Supported in v9.2+
   # Total list responses.
   total: Int
 
+  # Supported in v9.2+
   # Cursor to retrieve the next set of results.
   nextCursor: String
 
+  # Supported in v9.2+
   # If there is more.
   hasMore: Boolean
 }
@@ -81139,11 +81564,17 @@ type OracleDbDetail {
   # The time stamp of the earliest recovery point for this database.
   oldestRecoveryPointV92: DateTime
 
+  # The time stamp of the earliest recovery point for this database.
+  oldestRecoveryPointV93: DateTime
+
   # The time stamp of the most recent recovery point for this database.
   latestRecoveryPointV91: DateTime
 
   # The time stamp of the most recent recovery point for this database.
   latestRecoveryPointV92: DateTime
+
+  # The time stamp of the most recent recovery point for this database.
+  latestRecoveryPointV93: DateTime
 
   # Supported in v5.3+
   # An array that contains the host info for each instance.
@@ -84618,6 +85049,9 @@ type PolicyObj {
 
   # Specifies the object type of the asset.
   objectType: DataGovObjectType!
+
+  # Specifies the scan status of the asset.
+  scanStatus: ScanStatus!
   id: String!
   folderChildConnection(
     # Returns the first n elements from the list.
@@ -85406,6 +85840,14 @@ type ProtectionTaskDetailsTableFilter {
   status: [FilterOption!]!
   object_type: [FilterOption!]!
   replication_source: [FilterOption!]!
+}
+# Custom Provider description.
+input ProviderDescription {
+  description: String = ""
+}
+# Provider name.
+input ProviderName {
+  name: String = ""
 }
 # The provider of the endpoint to which the webhook will be sent.
 enum ProviderType {
@@ -87902,6 +88344,9 @@ input RestoreAzureAdObjectsWithPasswordsInput {
 
   # Specifies whether to enable MFA during the recovery of one or more users.
   forceChangePasswordWithMfa: Boolean!
+
+  # Represents the modes for relationship restore for Azure AD objects.
+  relationshipRestoreMode: AzureAdRelationshipRestoreModeEnumType!
 }
 # Response of the Scheduled OnDemand Restore job.
 type RestoreAzureAdObjectsWithPasswordsReply {
@@ -87977,7 +88422,7 @@ input RestoreFilesJobConfigInput {
   # v8.0+: ID of the guest OS credential used for authentication when restoring files through the VMware tools. When this ID is specified, the 'domainName', 'username', 'password', and 'shouldSaveCredentials' fields are ignored.
   guestCredentialId: String
 
-  # Supported in v9.2
+  # Supported in v9.2+
   # Description.
   description: String
 
@@ -88282,7 +88727,7 @@ input RestoreMssqlDatabaseInput {
 input RestoreMssqlDbJobConfigInput {
   # Supported in v5.0+
   # v5.0-v9.1: A Boolean value that determines the recovery option to use during database restore. When this value is 'true', the database is restored using the RECOVERY option and is fully functional at the end of the restore operation. When this value is 'false', the database is restored using the NORECOVERY option and remains in recovering mode at the end of the restore operation.
-  # v9.2: Boolean value determining which recovery option to use during a database restore. When this value is 'true', the database is restored using the RECOVERY option and is fully functional at the end of the restore operation. When this value is 'false', the database is restored using the NORECOVERY option and remains in recovering mode at the end of the restore operation.
+  # v9.2+: Boolean value determining which recovery option to use during a database restore. When this value is 'true', the database is restored using the RECOVERY option and is fully functional at the end of the restore operation. When this value is 'false', the database is restored using the NORECOVERY option and remains in recovering mode at the end of the restore operation.
   finishRecovery: Boolean
 
   # Supported in v5.0+
@@ -89540,6 +89985,15 @@ type RubrikManagedTapeTargetType implements Target {
 
   # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
+}
+# RubrikSlaInfo stores the SLA Domain information of the objects
+# protected by Rubrik.
+type RubrikSlaInfo {
+  # Name of the SLA Domain.
+  slaName: String!
+
+  # ID of the SLA Domain.
+  slaId: String!
 }
 # Status of the data syncing jobs from CDM to RSC.
 type RubrikSyncStatus {
@@ -91285,6 +91739,20 @@ type ScaleRuntime {
   taskchainUuid: String!
   deadline: DateTime
 }
+# ScanStatus is status of the scan for an asset.
+enum ScanStatus {
+  # Specifies whether the asset has been classified.
+  CLASSIFIED
+
+  # Specifies whether the asset classification has failed.
+  FAILED
+
+  # Specifies the unknown scan status.
+  SCAN_STATUS_UNKNOWN
+
+  # Specifies whether the asset is not scanned.
+  UNSCANNED
+}
 # Metadata for rendering a scheduled report.
 type ScheduledReport {
   # ID of the schedule of the custom report.
@@ -91411,11 +91879,11 @@ type ScvmmInfo {
 }
 # Supported in v9.2+.
 input SddUserCredentialsInput {
-  # Required. Supported in v9.2
+  # Required. Supported in v9.2+
   # Password to connect to the database for Sensitive Data Discovery.
   password: String!
 
-  # Required. Supported in v9.2
+  # Required. Supported in v9.2+
   # Username to connect to the database for Sensitive Data Discovery.
   username: String!
 }
@@ -91723,6 +92191,21 @@ type ServiceAccountEdge {
 
   # The actual ServiceAccount object wrapped by this edge.
   node: ServiceAccount!
+}
+# Supported in v9.2+
+# The details of the RSC service account.
+type ServiceAccountInfo {
+  # Required. Supported in v9.2+
+  # The name of the RSC service account.
+  serviceAccountName: String!
+
+  # Required. Supported in v9.2+
+  # The access token for the service account.
+  accessToken: String!
+
+  # Required. Supported in v9.2+
+  # The client ID for the service account.
+  clientId: String!
 }
 # Fields by which service accounts may be sorted.
 enum ServiceAccountSortBy {
@@ -93279,6 +93762,7 @@ input SmbDomainJoinRequestInput {
   # A Boolean value that determines whether to run the SMB service when no shares are exposed. When this value is 'true,' the SMB service runs even when no shares are exposed. When this value is 'false,' the SMB service does not run when no shares are exposed.
   isStickySmbService: Boolean
 
+  # Supported in v9.2+
   # Organizational network ID used by the domain. Applicable only when Rubrik Envoy is used to reach SMB domain from the Rubrik cluster.
   orgNetworkId: String
 
@@ -97474,6 +97958,9 @@ input TeamsConversationsSearchFilter {
 
   # Describes whether to skip attachments(shouldn't be called by UI).
   skipPostsAttachments: Boolean = false
+
+  # Parameters for using Lambda filters in the query.
+  lambdaFilters: LambdaPathFilters
 }
 # Represents the teams conversations search filter.
 input TeamsConversationsSearchFilterJson {
@@ -97582,6 +98069,9 @@ input TestSyslogExportRuleInput {
 
   # Syslog export rule.
   syslogExportRuleV92: SyslogExportRuleFullInput
+
+  # Syslog export rule.
+  syslogExportRuleV93: SyslogExportRuleFullInput
 }
 # Reply Object for TestSyslogExportRule.
 type TestSyslogExportRuleReply {
@@ -98895,6 +99385,12 @@ input UpdateCloudNativeAwsStorageSettingInput {
   name: String
   storageClass: AwsStorageClass
   kmsMasterKeyId: String
+
+  # AWS target bucket tags.
+  bucketTags: TagsInput
+
+  # Set as true to delete all bucket tags.
+  deleteAllBucketTags: Boolean
 }
 # Response of the mutation to update a storage setting for AWS.
 type UpdateCloudNativeAwsStorageSettingReply {
@@ -99091,20 +99587,25 @@ input UpdateConfiguredGroupInput {
 }
 # Input request for update custom intel feed.
 input UpdateCustomIntelFeedInput {
-  # Feed ID.
-  feedId: String = ""
+  # User.
+  user: String = ""
 
-  # Optional - The string corresponds to a hash or yara rule that needs to be removed.
-  entriesToRemove: [String!] = []
+  # Provider name - optional.
+  name: ProviderName
 
-  # Feed Name - optional.
-  name: FeedName
+  # Provider ID.
+  providerId: String
 
-  # Feed Description - optional.
-  description: FeedDescription
+  # Provider description - optional.
+  description: ProviderDescription
 
   # Entries to add - optional.
   entriesToAdd: [CustomEntries!]
+
+  # Optional - The string to be removed, corresponding to the hex representation of either:
+  # 1) A hash (MD5/SHA1/SHA256)
+  # 2) MD5 of a yara rule
+  entriesToRemove: [String!]
 }
 # Update custom intel feed reply.
 type UpdateCustomIntelFeedReply {
@@ -99556,6 +100057,20 @@ input UpdateIntegrationsInput {
   # The integrations.
   integrations: [UpdateIntegrationInput!]!
 }
+# Specify IOC operation and IOC. One and only one IOC type should be set.
+input UpdateIocStatusInput {
+  # IOC operation.
+  operation: IocOperation!
+
+  # IOC hash only.
+  iocHashOnly: IocHashOnly
+
+  # IOC hash with provider.
+  iocHashWithProvider: IocHashWithProvider
+
+  # IOC provider with threat feed type.
+  iocProviderWithThreatFeedType: IocProviderWithThreatFeedType
+}
 # Input for updating a Kubernetes cluster.
 input UpdateK8sClusterInput {
   # Required. Properties of the Kubernetes cluster to update.
@@ -99993,6 +100508,7 @@ type UpdateNutanixPrismCentralReply {
   # Username for the Nutanix Prism Central that we use for all the cluster connections.
   username: String!
 
+  # Supported in v9.2+
   # Specifies whether Nutanix DR support is enabled for the the Prism Central object.
   isDrEnabled: Boolean
 
@@ -100321,6 +100837,9 @@ input UpdateSnmpConfigInput {
 
   # SNMP configuration updates for the specified Rubrik cluster.
   snmpConfigV92: SnmpConfigurationPatchInput
+
+  # SNMP configuration updates for the specified Rubrik cluster.
+  snmpConfigV93: SnmpConfigurationPatchInput
 }
 # Reply Object for UpdateSnmpConfig.
 type UpdateSnmpConfigReply {
@@ -100422,6 +100941,9 @@ input UpdateSyslogExportRuleInput {
 
   # Syslog export rule.
   syslogSettingsV92: SyslogExportRulePartialInput
+
+  # Syslog export rule.
+  syslogSettingsV93: SyslogExportRulePartialInput
 }
 # Reply Object for UpdateSyslogExportRule.
 type UpdateSyslogExportRuleReply {
@@ -100512,6 +101034,9 @@ input UpdateVcenterInput {
 
   # Object containing updated vCenter Server information.
   updatePropertiesV92: VcenterUpdateConfigInput
+
+  # Object containing updated vCenter Server information.
+  updatePropertiesV93: VcenterUpdateConfigInput
 }
 # Reply Object for UpdateVcenter.
 type UpdateVcenterReply {
@@ -100566,6 +101091,7 @@ type UpdateVolumeGroupReply {
   # Blackout window information.
   blackoutWindowResponseInfo: BlackoutWindowResponseInfo
 
+  # Supported in v9.2+
   # Configuration details for the volumes in the Volume Group.
   excludedVolumes: [HostVolumeSummary!]!
 }
@@ -100589,6 +101115,17 @@ input UpdateVsphereVmInput {
 
   # Required. Properties to update.
   vmUpdateProperties: VirtualMachineUpdateWithSecretInput!
+}
+# Supported in v9.2+. Update a virtual machine with specified properties. Use the guestCredential field to update the guest credential for a specified virtual machine.
+input UpdateVsphereVmNewInput {
+  # ID of vSphere Virtual Machine.
+  id: String!
+
+  # Properties to update.
+  vmUpdateProperties: VirtualMachineUpdateWithSecretV2Input
+
+  # Uuid of the CDM cluster.
+  clusterUuid: String
 }
 # Webhook configuration to update.
 input UpdateWebhookInput {
@@ -104191,6 +104728,7 @@ input VcenterConfigV2Input {
   # A Boolean value that determines whether to enable HotAdd transport mode for On-Premise vCenter. When this value is `true`, VMware virtual machines can use HotAdd proxy to transport virtual disk data in addition to NBD(SSL). When this value is `false`, VMware virtual machines can ONLY usee NBD(SSL) to transport virtual disk data. Default value is `false`.
   shouldEnableHotAddProxyForOnPrem: Boolean
 
+  # Supported in v9.2+
   # Specifies whether the API call is creating a standalone host or a virtual center.
   isStandaloneHost: Boolean
 
@@ -104348,6 +104886,7 @@ enum VcenterSummaryConflictResolutionAuthz {
 }
 # Input for configuration containing updated vCenter Server information.
 input VcenterUpdateConfigInput {
+  # Supported in v9.2+
   # A Boolean value that determines whether to update compute cluster visibility settings for the vCenter. When this value is `true`, 'computeVisibilityFilter' will be effective. The default value is `true`.
   shouldUpdateComputeVisibilityFilter: Boolean
 
@@ -104675,6 +105214,20 @@ input VirtualMachineUpdateWithSecretInput {
   guestCredential: BaseGuestCredentialInput
   virtualMachineUpdate: VirtualMachineUpdateInput
 }
+# Supported in v9.2+. Update a virtual machine with specified properties. Use the guestCredential field to update the guest credential for a specified virtual machine.
+input VirtualMachineUpdateWithSecretV2Input {
+  # A boolean value that specifies whether an updatealso refreshes the in-memory cache. When 'false' updates do notrefresh the in-memory cache. When 'true' updates refresh thein-memory cache. By default, this value is 'true'. Setting thisvalue to 'false' reduces the time required for updates to complete.
+  shouldRefreshCacheAfterUpdate: Boolean
+
+  # ID of the guest OS credential to be used for authenticationto the virtual machine guest OS. When this ID is specified, theguestCredential field will be ignored.
+  guestCredentialId: String
+
+  # Object for guest OS credential definition.
+  guestCredential: GuestCredentialDefinitionInput
+
+  # Object for guest OS credential definition.
+  virtualMachineUpdate: VirtualMachineUpdateInput
+}
 # Supported in v5.0+
 type VlanConfig {
   # Required. Supported in v5.0+
@@ -104688,17 +105241,21 @@ type VlanConfig {
   # Required. Supported in v5.0+
   vlan: Int!
 
+  # Supported in v9.2+
   # Gateway for the VLAN.
   gateway: String
 
+  # Supported in v9.2+
   # Alias for the VLAN.
   alias: String
 }
 # Supported in v5.0+
 input VlanConfigInput {
+  # Supported in v9.2+
   # Gateway for the VLAN.
   gateway: String
 
+  # Supported in v9.2+
   # Alias for the VLAN.
   alias: String
 
@@ -105316,25 +105873,25 @@ type VnetEdge {
 }
 # No value is returned.
 scalar Void
-# Supported in v9.2
+# Supported in v9.2+
 type VolumeGroupDetailInfo {
-  # Required. Supported in v9.2
+  # Required. Supported in v9.2+
   # The unique ID of the Volume Group.
   id: String!
 
-  # Required. Supported in v9.2
+  # Required. Supported in v9.2+
   # Indicates whether backup, archival, and replication are paused for this Volume Group.
   isPaused: Boolean!
 
-  # Required. Supported in v9.2
+  # Required. Supported in v9.2+
   # The ID of the SLA Domain policy to assign to the Volume Group.
   configuredSlaDomainId: String!
 
-  # Supported in v9.2
+  # Supported in v9.2+
   # Describes any pending SLA Domain assignment on this object.
   pendingSlaDomain: ManagedObjectPendingSlaInfo
 
-  # Required. Supported in v9.2
+  # Required. Supported in v9.2+
   # Configuration details for the volumes in the Volume Group.
   volumes: [HostVolumeSummary!]!
 }
@@ -105544,8 +106101,9 @@ input VolumeGroupRestoreFilesConfigInput {
   # Windows Host ID to restore files to. If left empty, the host ID of the Volume Group will be used.
   targetHostId: String
 
-  # Supported in v9.1
-  # Specifies whether to ignore the error during restoration.
+  # Supported in v9.1+
+  # v9.1: Specifies whether to ignore the error during restoration.
+  # v9.2+: Specify whether to ignore the error during restoration.
   shouldIgnoreError: Boolean
 
   # Required. Supported in v5.0+
@@ -105629,13 +106187,16 @@ type VolumeGroupSummary {
   needsMigration: Boolean
   snappable: CdmWorkload
 
+  # Supported in v9.2+
   # Operating system of the host. One of Windows, Linux, AIX, HPUX, or SunOS.
   operatingSystem: String
 
+  # Supported in v9.2+
   # Indicates whether backup, archiving, and replication are paused for this Volume Group.
   isPaused: Boolean
   rbsConnectionStatus: HostRbsConnectionStatus
 
+  # Supported in v9.2+
   # Configuration details for the volumes in the Volume Group.
   volumes: [HostVolumeSummary!]!
 }

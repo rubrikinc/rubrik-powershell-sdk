@@ -29,6 +29,8 @@ Information about MongoDB Source.
   - List of data host details associated with this MongoDB source.
 - managementType: MongoManagementType
   - Management type of the MongoDB source.
+- sourceMetadata: SourceMetadata
+  - Metadata of the MongoDB source.
 - descendantConnection: MongoSourceDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: MongoSourcePhysicalChildTypeConnection

@@ -139,6 +139,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			attributeKey = $someString
     /// 			# OPTIONAL
     /// 			attributeValue = $someString
+    /// 			# OPTIONAL
+    /// 			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// 		}
     /// 	)
     /// }
@@ -1580,6 +1582,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		attributeKey = $someString
     /// 		# OPTIONAL
     /// 		attributeValue = $someString
+    /// 		# OPTIONAL
+    /// 		dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// }
     /// )
     /// 
@@ -3227,6 +3231,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
+    /// # OPTIONAL
+    /// $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -10041,6 +10047,8 @@ $query.Var.adGroupSpec = @{
 			attributeKey = $someString
 			# OPTIONAL
 			attributeValue = $someString
+			# OPTIONAL
+			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 		}
 	)
 }"
@@ -11359,6 +11367,8 @@ $query.Var.groupFilterAttributes = @(
 		attributeKey = $someString
 		# OPTIONAL
 		attributeValue = $someString
+		# OPTIONAL
+		dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 }
 )"
             );
@@ -12743,22 +12753,25 @@ $query.Var.filter = @{
         }
 
         // Create new GraphQL Query:
-        // hierarchyObject(fid: UUID!): HierarchyObject!
+        // hierarchyObject(fid: UUID!, workloadHierarchy: WorkloadLevelHierarchy): HierarchyObject!
         internal void InitQueryHierarchyObject()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
+                Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryHierarchyObject",
-                "($fid: UUID!)",
+                "($fid: UUID!,$workloadHierarchy: WorkloadLevelHierarchy)",
                 "HierarchyObject",
                 Query.HierarchyObject,
                 Query.HierarchyObjectFieldSpec,
                 @"# REQUIRED
-$query.Var.fid = $someString"
+$query.Var.fid = $someString
+# OPTIONAL
+$query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values."
             );
         }
 

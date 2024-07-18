@@ -12889,6 +12889,42 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? VsphereSnapshotDownloadFilesFromLocation
+        // GraphQL -> vsphereSnapshotDownloadFilesFromLocation: AsyncRequestStatus! (type)
+        public static string VsphereSnapshotDownloadFilesFromLocation(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "vsphereSnapshotDownloadFilesFromLocation" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object VsphereSnapshotDownloadFilesFromLocationFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? VsphereSnapshotRestoreFilesFromLocation
+        // GraphQL -> vsphereSnapshotRestoreFilesFromLocation: AsyncRequestStatus! (type)
+        public static string VsphereSnapshotRestoreFilesFromLocation(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "vsphereSnapshotRestoreFilesFromLocation" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object VsphereSnapshotRestoreFilesFromLocationFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> BatchAsyncRequestStatus? VsphereVmBatchExport
         // GraphQL -> vsphereVmBatchExport: BatchAsyncRequestStatus! (type)
         public static string VsphereVmBatchExport(object fsObj)

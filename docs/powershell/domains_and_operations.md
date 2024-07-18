@@ -18,7 +18,7 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | [Azure (47,42)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (4,3)](#threat-domain) |
 | [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [Microsoft SQL Server (17,24)](#microsoft-sql-server-domain) | [SAP HANA (8,11)](#sap-hana-domain) | [VMware vSphere vCenter (11,6)](#vmware-vsphere-vcenter-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (8,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
-| [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (24,8)](#vmware-vsphere-domain) |
+| [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (24,10)](#vmware-vsphere-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (6,25)](#vmware-vsphere-vm-domain) |
 | [Cloud Account (6,2)](#cloud-account-domain) | [Integration (2,6)](#integration-domain) | [Nutanix (20,27)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (1,5)](#webhook-domain) |
 | [Cloud Native (19,13)](#cloud-native-domain) | [Kubernetes (8,17)](#kubernetes-domain) | [Office 365 (39,33)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
@@ -3486,6 +3486,14 @@ Supported in v9.0+
 Start an asynchronous job to download multiple Virtual Machine files, such as .vmdk, .vmx, and .nvram files, from the specified Virtual Machine snapshot. | `New-RscMutationVsphere -Operation DownloadVirtualMachineFiles`<BR> | [downloadVsphereVirtualMachineFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExportSnapshotToStandaloneHostV2 | Export snapshot of a virtual machine to standalone ESXi server. | `New-RscMutationVsphere -Operation ExportSnapshotToStandaloneHostV2`<BR> | [vsphereExportSnapshotToStandaloneHostV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | OnDemandSnapshot | N/A | `New-RscMutationVsphere -Operation OnDemandSnapshot`<BR> | [vsphereOnDemandSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SnapshotDownloadFilesFromLocation | Initiate a job to download multiple files or folders  
+  
+Supported in v8.0+  
+Initiates a job to download one or more files or folders from an archived virtual machine snapshot. Returns the job instance ID. | `New-RscMutationVsphere -Operation SnapshotDownloadFilesFromLocation`<BR> | [vsphereSnapshotDownloadFilesFromLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SnapshotRestoreFilesFromLocation | Initiate a job to restore multiple files or folders  
+  
+Supported in v8.0+  
+Initiates a job to restore one or more files or folders from an archived virtual machine snapshot. Returns the job instance ID. | `New-RscMutationVsphere -Operation SnapshotRestoreFilesFromLocation`<BR> | [vsphereSnapshotRestoreFilesFromLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateAdvancedTag | Update the multi-tag filter  
   
 Supported in v7.0+  

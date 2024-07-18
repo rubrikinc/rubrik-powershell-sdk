@@ -115,6 +115,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					attributeKey = $someString
     /// 					# OPTIONAL
     /// 					attributeValue = $someString
+    /// 					# OPTIONAL
+    /// 					dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// 				}
     /// 			)
     /// 		}
@@ -171,6 +173,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			attributeKey = $someString
     /// 			# OPTIONAL
     /// 			attributeValue = $someString
+    /// 			# OPTIONAL
+    /// 			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// 		}
     /// 	)
     /// }
@@ -206,6 +210,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	name = $someString
     /// 	# OPTIONAL
     /// 	description = $someString
+    /// 	# OPTIONAL
+    /// 	userId = $someString
     /// 	# REQUIRED
     /// 	entries = @(
     /// 		@{
@@ -3962,6 +3968,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			attributeKey = $someString
     /// 			# OPTIONAL
     /// 			attributeValue = $someString
+    /// 			# OPTIONAL
+    /// 			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// 		}
     /// 	)
     /// }
@@ -4212,6 +4220,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			attributeKey = $someString
     /// 			# OPTIONAL
     /// 			attributeValue = $someString
+    /// 			# OPTIONAL
+    /// 			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// 		}
     /// 	)
     /// 	# REQUIRED
@@ -7161,6 +7171,8 @@ $query.Var.input = @{
 					attributeKey = $someString
 					# OPTIONAL
 					attributeValue = $someString
+					# OPTIONAL
+					dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 				}
 			)
 		}
@@ -7209,6 +7221,8 @@ $query.Var.input = @{
 			attributeKey = $someString
 			# OPTIONAL
 			attributeValue = $someString
+			# OPTIONAL
+			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 		}
 	)
 }"
@@ -7236,6 +7250,8 @@ $query.Var.input = @{
 	name = $someString
 	# OPTIONAL
 	description = $someString
+	# OPTIONAL
+	userId = $someString
 	# REQUIRED
 	entries = @(
 		@{
@@ -10257,6 +10273,8 @@ $query.Var.input = @{
 			attributeKey = $someString
 			# OPTIONAL
 			attributeValue = $someString
+			# OPTIONAL
+			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 		}
 	)
 }"
@@ -10459,6 +10477,8 @@ $query.Var.input = @{
 			attributeKey = $someString
 			# OPTIONAL
 			attributeValue = $someString
+			# OPTIONAL
+			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 		}
 	)
 	# REQUIRED

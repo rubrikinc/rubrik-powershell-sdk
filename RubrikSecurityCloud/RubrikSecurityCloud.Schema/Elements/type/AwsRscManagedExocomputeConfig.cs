@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pcrImagePullAwsNativeId")]
         public System.String? PcrImagePullAwsNativeId { get; set; }
 
+        //      C# -> System.String? PcrLatestApprovedBundleVersion
+        // GraphQL -> pcrLatestApprovedBundleVersion: String (scalar)
+        [JsonProperty("pcrLatestApprovedBundleVersion")]
+        public System.String? PcrLatestApprovedBundleVersion { get; set; }
+
         //      C# -> System.String? PcrUrl
         // GraphQL -> pcrUrl: String (scalar)
         [JsonProperty("pcrUrl")]
@@ -109,6 +114,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Message = null,
         System.String? NodeSecurityGroupId = null,
         System.String? PcrImagePullAwsNativeId = null,
+        System.String? PcrLatestApprovedBundleVersion = null,
         System.String? PcrUrl = null,
         System.String? VpcId = null,
         ExocomputeHealthCheckStatus? HealthCheckStatus = null,
@@ -140,6 +146,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PcrImagePullAwsNativeId != null ) {
             this.PcrImagePullAwsNativeId = PcrImagePullAwsNativeId;
+        }
+        if ( PcrLatestApprovedBundleVersion != null ) {
+            this.PcrLatestApprovedBundleVersion = PcrLatestApprovedBundleVersion;
         }
         if ( PcrUrl != null ) {
             this.PcrUrl = PcrUrl;
@@ -243,6 +252,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "pcrImagePullAwsNativeId\n" ;
             } else {
                 s += ind + "pcrImagePullAwsNativeId\n" ;
+            }
+        }
+        //      C# -> System.String? PcrLatestApprovedBundleVersion
+        // GraphQL -> pcrLatestApprovedBundleVersion: String (scalar)
+        if (this.PcrLatestApprovedBundleVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "pcrLatestApprovedBundleVersion\n" ;
+            } else {
+                s += ind + "pcrLatestApprovedBundleVersion\n" ;
             }
         }
         //      C# -> System.String? PcrUrl
@@ -453,6 +471,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PcrImagePullAwsNativeId != null && ec.Excludes("pcrImagePullAwsNativeId",true))
         {
             this.PcrImagePullAwsNativeId = null;
+        }
+        //      C# -> System.String? PcrLatestApprovedBundleVersion
+        // GraphQL -> pcrLatestApprovedBundleVersion: String (scalar)
+        if (ec.Includes("pcrLatestApprovedBundleVersion",true))
+        {
+            if(this.PcrLatestApprovedBundleVersion == null) {
+
+                this.PcrLatestApprovedBundleVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PcrLatestApprovedBundleVersion != null && ec.Excludes("pcrLatestApprovedBundleVersion",true))
+        {
+            this.PcrLatestApprovedBundleVersion = null;
         }
         //      C# -> System.String? PcrUrl
         // GraphQL -> pcrUrl: String (scalar)

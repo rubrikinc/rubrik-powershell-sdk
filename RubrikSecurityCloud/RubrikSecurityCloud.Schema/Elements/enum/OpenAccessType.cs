@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NOT_OPEN")]
         NOT_OPEN,
 
+        [EnumMember(Value = "PUBLIC")]
+        PUBLIC,
+
         [EnumMember(Value = "UNKNOWN_ACCESS")]
         UNKNOWN_ACCESS
 

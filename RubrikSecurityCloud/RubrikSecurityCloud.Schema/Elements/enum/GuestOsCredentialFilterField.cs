@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
+        [EnumMember(Value = "DOMAIN")]
+        DOMAIN,
+
         [EnumMember(Value = "FIELD_UNSPECIFIED")]
         FIELD_UNSPECIFIED,
 

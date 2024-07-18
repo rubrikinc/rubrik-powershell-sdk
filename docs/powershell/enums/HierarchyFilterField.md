@@ -291,3 +291,5 @@
 - PHYSICAL_HOST_EXCLUDE_IDS - Filter physical host objects by excluding hosts from the output that
  that have IDs specified by the caller.
 - PROTECTION_STATUS - Filter by the protection status of the object.
+- MONGO_MANAGEMENT_TYPE - Filter the MongoDB source by the management type.
+ NATIVE for Native management type and OPSMANAGER for OpsManager management type.

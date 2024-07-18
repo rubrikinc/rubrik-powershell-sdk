@@ -11,6 +11,12 @@ Filters for list of AWS EC2 instances.
   - Filter by file recovery status.
 - regionFilter: AwsNativeRegionFilter
   - Filter by region.
+- unaccessedFilter: UnaccessedFilter
+  - Filter by unaccessed status.
+- sensitivityStatusFilter: SensitivityStatusFilter
+  - Filter by sensitivity status.
+- protectionStatusFilter: ProtectionStatusFilter
+  - Filter by protection status.
 - typeFilter: AwsNativeEc2InstanceTypeFilter
   - Filter by EC2 instance type.
 - vpcFilter: AwsNativeVpcFilter

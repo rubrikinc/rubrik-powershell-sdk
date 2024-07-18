@@ -15,17 +15,17 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PlatformCategory
     {
-        [EnumMember(Value = "CLOUD_CATEGORY")]
-        CLOUD_CATEGORY,
+        [EnumMember(Value = "PLATFORM_CATEGORY_CLOUD")]
+        PLATFORM_CATEGORY_CLOUD,
 
-        [EnumMember(Value = "DATA_CENTRE_CATEGORY")]
-        DATA_CENTRE_CATEGORY,
+        [EnumMember(Value = "PLATFORM_CATEGORY_DATA_CENTER")]
+        PLATFORM_CATEGORY_DATA_CENTER,
+
+        [EnumMember(Value = "PLATFORM_CATEGORY_SAAS")]
+        PLATFORM_CATEGORY_SAAS,
 
         [EnumMember(Value = "PLATFORM_CATEGORY_UNSPECIFIED")]
-        PLATFORM_CATEGORY_UNSPECIFIED,
-
-        [EnumMember(Value = "SAAS_CATEGORY")]
-        SAAS_CATEGORY
+        PLATFORM_CATEGORY_UNSPECIFIED
 
 
     } // enum PlatformCategory

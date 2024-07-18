@@ -284,7 +284,7 @@ namespace RubrikSecurityCloud.Types
         public static string HierarchyObject(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfid: $fid\n)";
+            string args = "\n(\nfid: $fid\nworkloadHierarchy: $workloadHierarchy\n)";
             return "hierarchyObject" + args + "\n{\n" + fs + "}\n";
         }
         public static object HierarchyObjectFieldSpec(ExplorationContext? ec=null)
@@ -3954,7 +3954,7 @@ namespace RubrikSecurityCloud.Types
         public static string AwsNativeEbsVolume(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nebsVolumeRubrikId: $ebsVolumeRubrikId\n)";
+            string args = "\n(\nebsVolumeRubrikId: $ebsVolumeRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeEbsVolume" + args + "\n{\n" + fs + "}\n";
         }
         public static object AwsNativeEbsVolumeFieldSpec(ExplorationContext? ec=null)
@@ -3972,7 +3972,7 @@ namespace RubrikSecurityCloud.Types
         public static string AwsNativeEbsVolumes(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nebsVolumeFilters: $ebsVolumeFilters\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nebsVolumeFilters: $ebsVolumeFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeEbsVolumes" + args + "\n{\n" + fs + "}\n";
         }
         public static object AwsNativeEbsVolumesFieldSpec(ExplorationContext? ec=null)
@@ -4008,7 +4008,7 @@ namespace RubrikSecurityCloud.Types
         public static string AwsNativeEc2Instance(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nec2InstanceRubrikId: $ec2InstanceRubrikId\n)";
+            string args = "\n(\nec2InstanceRubrikId: $ec2InstanceRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeEc2Instance" + args + "\n{\n" + fs + "}\n";
         }
         public static object AwsNativeEc2InstanceFieldSpec(ExplorationContext? ec=null)
@@ -4026,7 +4026,7 @@ namespace RubrikSecurityCloud.Types
         public static string AwsNativeEc2Instances(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndescendantTypeFilter: $descendantTypeFilter\nec2InstanceFilters: $ec2InstanceFilters\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndescendantTypeFilter: $descendantTypeFilter\nec2InstanceFilters: $ec2InstanceFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeEc2Instances" + args + "\n{\n" + fs + "}\n";
         }
         public static object AwsNativeEc2InstancesFieldSpec(ExplorationContext? ec=null)

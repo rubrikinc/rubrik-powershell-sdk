@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 10
     /// operations in the 'VMware vSphere' API domain:
-    /// BulkOnDemandSnapshot, CreateAdvancedTag, DeleteAdvancedTag, DeleteLiveMount, DownloadVirtualMachineFiles, ExportSnapshotToStandaloneHostV2, OnDemandSnapshot, or UpdateAdvancedTag.
+    /// BulkOnDemandSnapshot, CreateAdvancedTag, DeleteAdvancedTag, DeleteLiveMount, DownloadVirtualMachineFiles, ExportSnapshotToStandaloneHostV2, OnDemandSnapshot, SnapshotDownloadFilesFromLocation, SnapshotRestoreFilesFromLocation, or UpdateAdvancedTag.
     /// </summary>
     /// <description>
     /// New-RscMutationVsphere creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 10 operations
     /// in the 'VMware vSphere' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkOnDemandSnapshot, CreateAdvancedTag, DeleteAdvancedTag, DeleteLiveMount, DownloadVirtualMachineFiles, ExportSnapshotToStandaloneHostV2, OnDemandSnapshot, or UpdateAdvancedTag.
+    /// one of: BulkOnDemandSnapshot, CreateAdvancedTag, DeleteAdvancedTag, DeleteLiveMount, DownloadVirtualMachineFiles, ExportSnapshotToStandaloneHostV2, OnDemandSnapshot, SnapshotDownloadFilesFromLocation, SnapshotRestoreFilesFromLocation, or UpdateAdvancedTag.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -356,6 +356,127 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SnapshotDownloadFilesFromLocation operation
+    /// of the 'VMware vSphere' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vsphere
+    /// # API Operation: SnapshotDownloadFilesFromLocation
+    /// 
+    /// $query = New-RscMutationVsphere -SnapshotDownloadFilesFromLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	snapshotFid = $someString
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
+    /// 		# OPTIONAL
+    /// 		legalHoldDownloadConfig = @{
+    /// 			# REQUIRED
+    /// 			isLegalHoldDownload = $someBoolean
+    /// 		}
+    /// 		# REQUIRED
+    /// 		paths = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SnapshotRestoreFilesFromLocation operation
+    /// of the 'VMware vSphere' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vsphere
+    /// # API Operation: SnapshotRestoreFilesFromLocation
+    /// 
+    /// $query = New-RscMutationVsphere -SnapshotRestoreFilesFromLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	snapshotFid = $someString
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		domainName = $someString
+    /// 		# OPTIONAL
+    /// 		ignoreErrors = $someBoolean
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		shouldSaveCredentials = $someBoolean
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		destObjectId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldRestoreXAttrs = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldUseAgent = $someBoolean
+    /// 		# OPTIONAL
+    /// 		guestCredentialId = $someString
+    /// 		# OPTIONAL
+    /// 		description = $someString
+    /// 		# OPTIONAL
+    /// 		shouldUseMountDisks = $someBoolean
+    /// 		# REQUIRED
+    /// 		restoreConfig = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				restorePathPair = @{
+    /// 					# OPTIONAL
+    /// 					restorePath = $someString
+    /// 					# REQUIRED
+    /// 					path = $someString
+    /// 				}
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateAdvancedTag operation
     /// of the 'VMware vSphere' API domain.
     /// <code>
@@ -420,6 +541,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DownloadVirtualMachineFiles",
                 "ExportSnapshotToStandaloneHostV2",
                 "OnDemandSnapshot",
+                "SnapshotDownloadFilesFromLocation",
+                "SnapshotRestoreFilesFromLocation",
                 "UpdateAdvancedTag",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -456,6 +579,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "OnDemandSnapshot":
                         this.ProcessRecord_OnDemandSnapshot();
+                        break;
+                    case "SnapshotDownloadFilesFromLocation":
+                        this.ProcessRecord_SnapshotDownloadFilesFromLocation();
+                        break;
+                    case "SnapshotRestoreFilesFromLocation":
+                        this.ProcessRecord_SnapshotRestoreFilesFromLocation();
                         break;
                     case "UpdateAdvancedTag":
                         this.ProcessRecord_UpdateAdvancedTag();
@@ -531,6 +660,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -OnDemandSnapshot";
             // Create new graphql operation vsphereOnDemandSnapshot
             InitMutationVsphereOnDemandSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vsphereSnapshotDownloadFilesFromLocation.
+        internal void ProcessRecord_SnapshotDownloadFilesFromLocation()
+        {
+            this._logger.name += " -SnapshotDownloadFilesFromLocation";
+            // Create new graphql operation vsphereSnapshotDownloadFilesFromLocation
+            InitMutationVsphereSnapshotDownloadFilesFromLocation();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vsphereSnapshotRestoreFilesFromLocation.
+        internal void ProcessRecord_SnapshotRestoreFilesFromLocation()
+        {
+            this._logger.name += " -SnapshotRestoreFilesFromLocation";
+            // Create new graphql operation vsphereSnapshotRestoreFilesFromLocation
+            InitMutationVsphereSnapshotRestoreFilesFromLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -762,6 +909,111 @@ $query.Var.input = @{
 	id = $someString
 	# OPTIONAL
 	userNote = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // vsphereSnapshotDownloadFilesFromLocation(input: VsphereSnapshotDownloadFilesFromLocationInput!): AsyncRequestStatus!
+        internal void InitMutationVsphereSnapshotDownloadFilesFromLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "VsphereSnapshotDownloadFilesFromLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereSnapshotDownloadFilesFromLocation",
+                "($input: VsphereSnapshotDownloadFilesFromLocationInput!)",
+                "AsyncRequestStatus",
+                Mutation.VsphereSnapshotDownloadFilesFromLocation,
+                Mutation.VsphereSnapshotDownloadFilesFromLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	snapshotFid = $someString
+	# REQUIRED
+	locationId = $someString
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		zipPassword = $someString
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = $someBoolean
+		}
+		# REQUIRED
+		paths = @(
+			$someString
+		)
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // vsphereSnapshotRestoreFilesFromLocation(input: VsphereSnapshotRestoreFilesFromLocationInput!): AsyncRequestStatus!
+        internal void InitMutationVsphereSnapshotRestoreFilesFromLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "VsphereSnapshotRestoreFilesFromLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereSnapshotRestoreFilesFromLocation",
+                "($input: VsphereSnapshotRestoreFilesFromLocationInput!)",
+                "AsyncRequestStatus",
+                Mutation.VsphereSnapshotRestoreFilesFromLocation,
+                Mutation.VsphereSnapshotRestoreFilesFromLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	snapshotFid = $someString
+	# REQUIRED
+	locationId = $someString
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		domainName = $someString
+		# OPTIONAL
+		ignoreErrors = $someBoolean
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		shouldSaveCredentials = $someBoolean
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		destObjectId = $someString
+		# OPTIONAL
+		shouldRestoreXAttrs = $someBoolean
+		# OPTIONAL
+		shouldUseAgent = $someBoolean
+		# OPTIONAL
+		guestCredentialId = $someString
+		# OPTIONAL
+		description = $someString
+		# OPTIONAL
+		shouldUseMountDisks = $someBoolean
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# OPTIONAL
+				restorePathPair = @{
+					# OPTIONAL
+					restorePath = $someString
+					# REQUIRED
+					path = $someString
+				}
+			}
+		)
+	}
 }"
             );
         }

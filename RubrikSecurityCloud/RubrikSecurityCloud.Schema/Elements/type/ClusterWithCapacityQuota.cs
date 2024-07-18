@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int64? CurrentUsageGb
+        // GraphQL -> currentUsageGb: Long! (scalar)
+        [JsonProperty("currentUsageGb")]
+        public System.Int64? CurrentUsageGb { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ClusterWithCapacityQuota Set(
+        System.Int64? CurrentUsageGb = null,
         Cluster? Cluster = null,
         ClusterCapacityQuota? QuotaOpt = null
     ) 
     {
+        if ( CurrentUsageGb != null ) {
+            this.CurrentUsageGb = CurrentUsageGb;
+        }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int64? CurrentUsageGb
+        // GraphQL -> currentUsageGb: Long! (scalar)
+        if (this.CurrentUsageGb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "currentUsageGb\n" ;
+            } else {
+                s += ind + "currentUsageGb\n" ;
+            }
+        }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
@@ -95,6 +113,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.Int64? CurrentUsageGb
+        // GraphQL -> currentUsageGb: Long! (scalar)
+        if (ec.Includes("currentUsageGb",true))
+        {
+            if(this.CurrentUsageGb == null) {
+
+                this.CurrentUsageGb = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentUsageGb != null && ec.Excludes("currentUsageGb",true))
+        {
+            this.CurrentUsageGb = null;
+        }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (ec.Includes("cluster",false))

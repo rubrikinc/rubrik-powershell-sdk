@@ -27,5 +27,7 @@ AWS RSC Managed Exocompute Configuration in a region.
   - Whether this Exocompute uses a Private Container Registry (PCR).
 - pcrUrl: System.String
   - URL of the user's PCR.
+- pcrLatestApprovedBundleVersion: System.String
+  - Latest approved exotask bundle version for your Private Container Registry.
 - pcrImagePullAwsNativeId: System.String
   - AWS native account ID authorized to pull images from Rubrik's Elastic Container Registry.

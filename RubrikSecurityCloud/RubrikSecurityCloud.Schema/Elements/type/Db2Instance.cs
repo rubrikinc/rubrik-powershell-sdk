@@ -151,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> List<CdmLightweightHost>? Hosts
+        // GraphQL -> hosts: [CdmLightweightHost!]! (type)
+        [JsonProperty("hosts")]
+        public List<CdmLightweightHost>? Hosts { get; set; }
+
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         [JsonProperty("latestUserNote")]
@@ -265,6 +270,7 @@ namespace RubrikSecurityCloud.Types
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         Db2InstanceDescendantTypeConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
+        List<CdmLightweightHost>? Hosts = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
@@ -352,6 +358,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( Hosts != null ) {
+            this.Hosts = Hosts;
         }
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
@@ -657,6 +666,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<CdmLightweightHost>? Hosts
+        // GraphQL -> hosts: [CdmLightweightHost!]! (type)
+        if (this.Hosts != null) {
+            var fspec = this.Hosts.AsFieldSpec(conf.Child("hosts"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hosts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1244,6 +1265,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> List<CdmLightweightHost>? Hosts
+        // GraphQL -> hosts: [CdmLightweightHost!]! (type)
+        if (ec.Includes("hosts",false))
+        {
+            if(this.Hosts == null) {
+
+                this.Hosts = new List<CdmLightweightHost>();
+                this.Hosts.ApplyExploratoryFieldSpec(ec.NewChild("hosts"));
+
+            } else {
+
+                this.Hosts.ApplyExploratoryFieldSpec(ec.NewChild("hosts"));
+
+            }
+        }
+        else if (this.Hosts != null && ec.Excludes("hosts",false))
+        {
+            this.Hosts = null;
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)

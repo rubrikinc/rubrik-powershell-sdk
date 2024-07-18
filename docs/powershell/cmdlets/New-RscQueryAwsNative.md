@@ -29,12 +29,14 @@ Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot.
 ### ebsvolume
 Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - ebsVolumeRubrikId - System.String: Rubrik ID for the AWS EBS Volume object.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AwsNativeEbsVolume.
 ### ebsvolumes
 Paginated list of all AWS EBS Volumes.
 
-- There are 7 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -42,6 +44,7 @@ Paginated list of all AWS EBS Volumes.
     - sortBy - AwsNativeEbsVolumeSortFields: Sort fields for list of AWS EBS volumes.
     - sortOrder - SortOrder: Sort order of result.
     - ebsVolumeFilters - AwsNativeEbsVolumeFilters: Filter for EBS volumes.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AwsNativeEbsVolumeConnection.
 ### ebsvolumesbyname
 Paginated list of all AWS EBS Volumes by name or substring of name.
@@ -58,12 +61,14 @@ Paginated list of all AWS EBS Volumes by name or substring of name.
 ### ec2instance
 Refers to Amazon Elastic Compute Cloud (EC2) Instance represented by a specific ID. For more information, see https://aws.amazon.com/ec2/.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - ec2InstanceRubrikId - System.String: Rubrik ID for the AWS EC2 Instance.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AwsNativeEc2Instance.
 ### ec2instances
 Paginated list of all AWS EC2 Instances.
 
-- There are 8 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -72,6 +77,7 @@ Paginated list of all AWS EC2 Instances.
     - sortOrder - SortOrder: Sort order of result.
     - descendantTypeFilter - list of HierarchyObjectTypeEnums: Filter the CDM cloud hosts by workload type.
     - ec2InstanceFilters - AwsNativeEc2InstanceFilters: Filter for EC2 instances.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AwsNativeEc2InstanceConnection.
 ### ec2instancesbyname
 Paginated list of all AWS EC2 Instances by name or substring of name.
