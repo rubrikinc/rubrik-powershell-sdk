@@ -7,6 +7,8 @@ Fixes:
 - Fixed an issue with access token auto-renewal not being saved in the
   PowerShell session (rseulting in multiple token renew calls).
 
+- Fixed -Relic switch in Get-RscVmwareVm. It is now working.
+
 ## Version 1.7
 
 Fixes:
