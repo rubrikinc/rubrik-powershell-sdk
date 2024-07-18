@@ -268,7 +268,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
 
             HttpClient apiClient = new HttpClient(loggingHandler)
             {
-                BaseAddress = new Uri($"{_polarisUrlScheme}://{_polarisBaseUrl}")
+                BaseAddress = this.ServerBaseAddress()
             };
             apiClient.Timeout = TimeSpan.FromMinutes(
                 RubrikSecurityCloud.Config.ApiClientTimeOutMinutes
