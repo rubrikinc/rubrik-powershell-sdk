@@ -108,7 +108,7 @@ function Get-RscVmwareVm {
                 $query.var.filter += $slaFilter
             }
 
-            if ($Relic.IsPresent) {
+            if ($PSBoundParameters.ContainsKey('relic')) {
                 $relicFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $relicFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_RELIC
                 $relicFilter.Texts = $Relic
