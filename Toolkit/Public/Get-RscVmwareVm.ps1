@@ -123,7 +123,7 @@ function Get-RscVmwareVm {
                 $query.var.filter += $clusterFilter
             }
 
-            if ($PSBoundParameters.ContainsKey('Replica')) {
+            if ($PSBoundParameters.ContainsKey('relic')) {
                 $relicFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $relicFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_RELIC
                 $relicFilter.Texts = $Relic
