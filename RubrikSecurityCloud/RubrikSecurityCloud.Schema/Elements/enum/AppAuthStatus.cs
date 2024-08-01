@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         PARTIALLY_AUTHENTICATED,
 
         [EnumMember(Value = "UNAUTHENTICATED")]
-        UNAUTHENTICATED
+        UNAUTHENTICATED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AppAuthStatus

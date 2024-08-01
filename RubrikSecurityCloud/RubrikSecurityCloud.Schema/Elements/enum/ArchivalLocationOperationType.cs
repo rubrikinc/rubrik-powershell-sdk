@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         PROMOTE_TO_OWNER,
 
         [EnumMember(Value = "READER_REFRESH")]
-        READER_REFRESH
+        READER_REFRESH,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ArchivalLocationOperationType

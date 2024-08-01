@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         AMI_BASED,
 
         [EnumMember(Value = "CRASH_CONSISTENT")]
-        CRASH_CONSISTENT
+        CRASH_CONSISTENT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnapshotServiceConsistencyLevel

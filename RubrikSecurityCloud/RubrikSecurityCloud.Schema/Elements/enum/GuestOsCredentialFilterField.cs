@@ -24,8 +24,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FIELD_UNSPECIFIED")]
         FIELD_UNSPECIFIED,
 
+        [EnumMember(Value = "USERNAME_OR_DOMAIN")]
+        USERNAME_OR_DOMAIN,
+
         [EnumMember(Value = "USER_NAME")]
-        USER_NAME
+        USER_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GuestOsCredentialFilterField

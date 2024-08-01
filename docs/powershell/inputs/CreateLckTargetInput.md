@@ -1,0 +1,31 @@
+### CreateLckTargetInput
+Input for creating a LCK archival location.
+
+- clusterUuid: System.String
+  - Field for specifying cluster UUID of the LCK archival location.
+- name: System.String
+  - Name for the LCK archival target.
+- bucketName: System.String
+  - Bucket name of the LCK archival target.
+- s3Endpoint: System.String
+  - Field for specifying an AWS S3 endpoint.
+- roleName: System.String
+  - Role name of the LCK archival target.
+- agency: System.String
+  - Agency for the LCK archival target.
+- accountName: System.String
+  - Account name of the LCK archival target.
+- geoAxisEndpoint: System.String
+  - GeoAxIS endpoint for LCK archival target.
+- storageClass: AwsStorageClass
+  - Field for specifying storage class of the target.
+- region: AwsLckRegion
+  - Region for LCK archival target.
+- certificateContent: System.String
+  - Certificate for LCK target.
+- rsaKey: System.String
+  - Optional field for specifying RSA key for encryption.
+- kmsMasterKeyId: System.String
+  - Optional field for specifying the KMS server endpoint when usingKMS-based encryption.
+- awsRetrievalTier: AwsRetrievalTier
+  - Field for specifying retrieval tier for this target.

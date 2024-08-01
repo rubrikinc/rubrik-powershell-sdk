@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         CREATION_DATE,
 
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CertMgmtSortBy

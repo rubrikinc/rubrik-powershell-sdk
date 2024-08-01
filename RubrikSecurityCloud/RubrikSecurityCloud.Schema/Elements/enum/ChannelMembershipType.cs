@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         SHARED,
 
         [EnumMember(Value = "STANDARD")]
-        STANDARD
+        STANDARD,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ChannelMembershipType

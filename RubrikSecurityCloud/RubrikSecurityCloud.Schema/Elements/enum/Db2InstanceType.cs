@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         PURESCALE,
 
         [EnumMember(Value = "STANDALONE")]
-        STANDALONE
+        STANDALONE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum Db2InstanceType

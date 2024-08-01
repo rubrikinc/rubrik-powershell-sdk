@@ -19,10 +19,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? FeedId
-        // GraphQL -> feedId: String (scalar)
-        [JsonProperty("feedId")]
-        public System.String? FeedId { get; set; }
+        //      C# -> System.String? ProviderId
+        // GraphQL -> providerId: String (scalar)
+        [JsonProperty("providerId")]
+        public System.String? ProviderId { get; set; }
 
 
         #endregion

@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         STALE_HITS,
 
         [EnumMember(Value = "UNUSED_HITS")]
-        UNUSED_HITS
+        UNUSED_HITS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FileCountType

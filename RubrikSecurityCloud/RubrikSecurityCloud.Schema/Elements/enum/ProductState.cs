@@ -43,7 +43,10 @@ namespace RubrikSecurityCloud.Types
         INACTIVE,
 
         [EnumMember(Value = "UNSPECIFIED_STATE")]
-        UNSPECIFIED_STATE
+        UNSPECIFIED_STATE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ProductState

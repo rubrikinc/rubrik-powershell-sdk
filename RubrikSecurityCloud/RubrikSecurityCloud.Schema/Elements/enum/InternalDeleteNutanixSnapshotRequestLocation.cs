@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         INTERNAL_DELETE_NUTANIX_SNAPSHOT_REQUEST_LOCATION_ALL,
 
         [EnumMember(Value = "INTERNAL_DELETE_NUTANIX_SNAPSHOT_REQUEST_LOCATION_LOCAL")]
-        INTERNAL_DELETE_NUTANIX_SNAPSHOT_REQUEST_LOCATION_LOCAL
+        INTERNAL_DELETE_NUTANIX_SNAPSHOT_REQUEST_LOCATION_LOCAL,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum InternalDeleteNutanixSnapshotRequestLocation

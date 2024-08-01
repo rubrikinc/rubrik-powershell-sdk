@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         REPORT_ATTACHMENT_TYPE_PDF,
 
         [EnumMember(Value = "REPORT_ATTACHMENT_TYPE_UNSPECIFIED")]
-        REPORT_ATTACHMENT_TYPE_UNSPECIFIED
+        REPORT_ATTACHMENT_TYPE_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ReportAttachmentType

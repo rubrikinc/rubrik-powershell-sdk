@@ -1,0 +1,20 @@
+### SonarContentReport
+- id: System.String
+- fileName: System.String
+- path: System.String
+- hits: Hits
+- analyzerGroupResults: list of AnalyzerGroupResults
+- analyzerResults: list of AnalyzerResults
+- snappableFid: System.String
+- snapshotTimestamp: System.Int64
+- cluster: System.String
+- size: System.Int64
+- filesWithHits: System.Int32
+- slaDomainId: System.String
+- policyId: System.String
+- analyzerId: System.String
+- objectName: System.String
+- location: System.String
+- objectType: HierarchyObjectTypeEnum
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.

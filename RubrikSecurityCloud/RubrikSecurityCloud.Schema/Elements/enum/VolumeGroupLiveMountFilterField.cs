@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         ORG_ID,
 
         [EnumMember(Value = "SOURCE_HOST_ID")]
-        SOURCE_HOST_ID
+        SOURCE_HOST_ID,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum VolumeGroupLiveMountFilterField

@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         IS_USER_VISIBLE,
 
         [EnumMember(Value = "SNAPSHOT")]
-        SNAPSHOT
+        SNAPSHOT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AdVolumeExportFilterField

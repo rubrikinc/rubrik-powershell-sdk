@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ACCESS_DENIED,
 
         [EnumMember(Value = "NoSnapshotFound")]
-        NO_SNAPSHOT_FOUND
+        NO_SNAPSHOT_FOUND,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnapshotSearchError

@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         DATABASE_TYPE_ORACLE,
 
         [EnumMember(Value = "DATABASE_TYPE_SQL")]
-        DATABASE_TYPE_SQL
+        DATABASE_TYPE_SQL,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DatabaseType

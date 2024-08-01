@@ -43,7 +43,10 @@ namespace RubrikSecurityCloud.Types
         AZURE_STORAGE_ACCOUNT,
 
         [EnumMember(Value = "AZURE_VIRTUAL_MACHINE")]
-        AZURE_VIRTUAL_MACHINE
+        AZURE_VIRTUAL_MACHINE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudNativeTagObjectType

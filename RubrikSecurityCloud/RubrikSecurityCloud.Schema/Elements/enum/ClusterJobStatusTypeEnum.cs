@@ -55,7 +55,10 @@ namespace RubrikSecurityCloud.Types
         UPGRADE_FAILED,
 
         [EnumMember(Value = "Upgrading")]
-        UPGRADING
+        UPGRADING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterJobStatusTypeEnum

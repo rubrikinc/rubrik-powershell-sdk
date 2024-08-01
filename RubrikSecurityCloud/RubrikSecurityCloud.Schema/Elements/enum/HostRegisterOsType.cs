@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         HOST_REGISTER_OS_TYPE_SUN_OS,
 
         [EnumMember(Value = "HOST_REGISTER_OS_TYPE_WINDOWS")]
-        HOST_REGISTER_OS_TYPE_WINDOWS
+        HOST_REGISTER_OS_TYPE_WINDOWS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HostRegisterOsType

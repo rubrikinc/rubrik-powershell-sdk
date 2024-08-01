@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         UNAVAILABLE,
 
         [EnumMember(Value = "UNMOUNTING")]
-        UNMOUNTING
+        UNMOUNTING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum OracleLiveMountStatus

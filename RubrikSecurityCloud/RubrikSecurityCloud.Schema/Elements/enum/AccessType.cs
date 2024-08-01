@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         READ_ACCESS,
 
         [EnumMember(Value = "WRITE_ACCESS")]
-        WRITE_ACCESS
+        WRITE_ACCESS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AccessType

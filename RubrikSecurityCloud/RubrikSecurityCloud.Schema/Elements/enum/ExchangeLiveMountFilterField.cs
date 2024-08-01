@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         ORG_ID,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED
+        UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ExchangeLiveMountFilterField

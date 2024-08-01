@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         RSA_KEY_BASED,
 
         [EnumMember(Value = "UNKNOWN_ENCRYPTION_TYPE")]
-        UNKNOWN_ENCRYPTION_TYPE
+        UNKNOWN_ENCRYPTION_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TargetEncryptionTypeEnum

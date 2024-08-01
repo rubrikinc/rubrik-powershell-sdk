@@ -59,6 +59,7 @@ User audit object type.
 - AuthDomain - Auth domain type.
 - CERTIFICATE_MANAGEMENT - Certificate management type.
 - Mssql - MSSQL type.
+- ACTIVE_DIRECTORY_FOREST - Active Directory forest type.
 - AZURE_AD_DIRECTORY - Azure AD Directory type.
 - VmwareVm - VMware virtual machine type.
 - NAS_SYSTEM - NAS system type.

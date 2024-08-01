@@ -140,6 +140,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("setupConfiguration")]
         public System.String? SetupConfiguration { get; set; }
 
+        //      C# -> System.Int32? ShardPoolType
+        // GraphQL -> shardPoolType: Int! (scalar)
+        [JsonProperty("shardPoolType")]
+        public System.Int32? ShardPoolType { get; set; }
+
         //      C# -> System.String? StorageId
         // GraphQL -> storageId: String! (scalar)
         [JsonProperty("storageId")]
@@ -209,6 +214,7 @@ namespace RubrikSecurityCloud.Types
         System.String? PolarisAccount = null,
         System.String? RegionName = null,
         System.String? SetupConfiguration = null,
+        System.Int32? ShardPoolType = null,
         System.String? StorageId = null,
         System.String? SubscriptionId = null,
         System.String? TenantId = null,
@@ -289,6 +295,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SetupConfiguration != null ) {
             this.SetupConfiguration = SetupConfiguration;
+        }
+        if ( ShardPoolType != null ) {
+            this.ShardPoolType = ShardPoolType;
         }
         if ( StorageId != null ) {
             this.StorageId = StorageId;
@@ -539,6 +548,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "setupConfiguration\n" ;
             } else {
                 s += ind + "setupConfiguration\n" ;
+            }
+        }
+        //      C# -> System.Int32? ShardPoolType
+        // GraphQL -> shardPoolType: Int! (scalar)
+        if (this.ShardPoolType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shardPoolType\n" ;
+            } else {
+                s += ind + "shardPoolType\n" ;
             }
         }
         //      C# -> System.String? StorageId
@@ -1030,6 +1048,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SetupConfiguration != null && ec.Excludes("setupConfiguration",true))
         {
             this.SetupConfiguration = null;
+        }
+        //      C# -> System.Int32? ShardPoolType
+        // GraphQL -> shardPoolType: Int! (scalar)
+        if (ec.Includes("shardPoolType",true))
+        {
+            if(this.ShardPoolType == null) {
+
+                this.ShardPoolType = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShardPoolType != null && ec.Excludes("shardPoolType",true))
+        {
+            this.ShardPoolType = null;
         }
         //      C# -> System.String? StorageId
         // GraphQL -> storageId: String! (scalar)

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         FILTER_FIELD_UNSPECIFIED,
 
         [EnumMember(Value = "ORG_ID")]
-        ORG_ID
+        ORG_ID,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GetCrossAccountClustersFilterField

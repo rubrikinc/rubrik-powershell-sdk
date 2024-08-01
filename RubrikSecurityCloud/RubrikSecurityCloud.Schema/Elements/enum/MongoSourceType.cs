@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         REPLICA_SET,
 
         [EnumMember(Value = "SHARDED")]
-        SHARDED
+        SHARDED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MongoSourceType

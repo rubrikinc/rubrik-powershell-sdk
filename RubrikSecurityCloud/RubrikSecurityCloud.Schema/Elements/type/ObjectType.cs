@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region ObjectType
  
-    public class ObjectType: BaseType, SnappableGroupByInfo
+    public class ObjectType: BaseType, SnappableGroupByInfo, TaskSummaryGroupByInfo
     {
         #region members
 

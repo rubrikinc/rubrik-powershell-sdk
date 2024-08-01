@@ -34,6 +34,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mfaRememberHours")]
         public System.Int32? MfaRememberHours { get; set; }
 
+        //      C# -> PasskeyConfigInput? PasskeyConfig
+        // GraphQL -> passkeyConfig: PasskeyConfigInput (input)
+        [JsonProperty("passkeyConfig")]
+        public PasskeyConfigInput? PasskeyConfig { get; set; }
+
+        //      C# -> System.Boolean? DeletePasskeys
+        // GraphQL -> deletePasskeys: Boolean (scalar)
+        [JsonProperty("deletePasskeys")]
+        public System.Boolean? DeletePasskeys { get; set; }
+
 
         #endregion
 

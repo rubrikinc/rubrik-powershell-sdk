@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         UNIDIRECTIONAL_REPLICATION_TO_CLUSTER,
 
         [EnumMember(Value = "UNKNOWN_REPLICATION_TYPE")]
-        UNKNOWN_REPLICATION_TYPE
+        UNKNOWN_REPLICATION_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ReplicationType

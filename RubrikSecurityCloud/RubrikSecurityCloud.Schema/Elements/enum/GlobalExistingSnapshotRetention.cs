@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         NOT_APPLICABLE,
 
         [EnumMember(Value = "RETAIN_SNAPSHOTS")]
-        RETAIN_SNAPSHOTS
+        RETAIN_SNAPSHOTS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GlobalExistingSnapshotRetention

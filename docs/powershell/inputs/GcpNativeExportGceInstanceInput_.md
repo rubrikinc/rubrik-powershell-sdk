@@ -1,0 +1,29 @@
+### GcpNativeExportGceInstanceInput
+Input required to export a GCP GCE instance snapshot.
+
+- snapshotId: System.String
+  - Snapshot Rubrik ID.
+- targetZone: System.String
+  - The zone of the exported disk.
+- targetInstanceName: System.String
+  - The name of the exported instance.
+- targetMachineType: System.String
+  - The machine type of the exported instance.
+- targetSubnetName: System.String
+  - The subnet name of the exported instance.
+- targetNetworkTags: list of System.Strings
+  - The network tags of the exported instance.
+- shouldPowerOff: System.Boolean
+  - Specifies whether the exported instance will be created in a powered-off state.
+- shouldCopyLabels: System.Boolean
+  - Specfies whether the labels will be copied to the exported disk from the source disk that were there at the time of taking the snapshot or not.
+- shouldAddRubrikLabels: System.Boolean
+  - Specifies whether to allow Rubrik labels on the exported disk or not.
+- sharedVpcHostProjectNativeId: System.String
+  - Native ID of the shared VPC host project for the current service project.
+- diskEncryptionType: DiskEncryptionType
+  - Encryption type of created disk.
+- kmsCryptoKey: KmsCryptoKey
+  - Customer managed key to encrypt exported instance. This is only applicable when encryption type is CustomerManagedKey.
+- kmsCryptoKeyResourceId: System.String
+  - Customer managed key to encrypt exported instance. This is only applicable when encryption type is CustomerManagedKeyResourceId.

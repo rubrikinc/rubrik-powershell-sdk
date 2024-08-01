@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SOURCE_REGION,
 
         [EnumMember(Value = "SPECIFIC_REGION")]
-        SPECIFIC_REGION
+        SPECIFIC_REGION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudNativeLocTemplateType

@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         UNKNOWN_SYSTEM_STATUS,
 
         [EnumMember(Value = "WARNING")]
-        WARNING
+        WARNING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SapHanaSystemStatus

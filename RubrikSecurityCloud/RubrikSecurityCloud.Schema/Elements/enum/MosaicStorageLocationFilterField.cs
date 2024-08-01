@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         NAME,
 
         [EnumMember(Value = "STORE_TYPE")]
-        STORE_TYPE
+        STORE_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MosaicStorageLocationFilterField

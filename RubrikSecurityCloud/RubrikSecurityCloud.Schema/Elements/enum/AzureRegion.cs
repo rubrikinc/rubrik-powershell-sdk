@@ -181,7 +181,10 @@ namespace RubrikSecurityCloud.Types
         US_WEST_CENTRAL,
 
         [EnumMember(Value = "WEST_US3")]
-        WEST_US3
+        WEST_US3,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureRegion

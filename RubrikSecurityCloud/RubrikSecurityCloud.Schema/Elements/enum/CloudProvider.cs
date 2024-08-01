@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         AWS,
 
         [EnumMember(Value = "AZURE")]
-        AZURE
+        AZURE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudProvider

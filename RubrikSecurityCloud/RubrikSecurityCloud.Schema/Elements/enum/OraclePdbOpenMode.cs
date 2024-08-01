@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         READ_WRITE,
 
         [EnumMember(Value = "UNKNOWN_OPEN_MODE")]
-        UNKNOWN_OPEN_MODE
+        UNKNOWN_OPEN_MODE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum OraclePdbOpenMode

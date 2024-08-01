@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         DISCONNECTED,
 
         [EnumMember(Value = "Initializing")]
-        INITIALIZING
+        INITIALIZING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterStatus

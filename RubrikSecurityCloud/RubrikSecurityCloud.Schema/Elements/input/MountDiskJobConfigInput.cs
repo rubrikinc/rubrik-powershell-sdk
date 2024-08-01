@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vmdkIds")]
         public List<System.String>? VmdkIds { get; set; }
 
+        //      C# -> System.Int64? UnmountTimeOpt
+        // GraphQL -> unmountTimeOpt: Long (scalar)
+        [JsonProperty("unmountTimeOpt")]
+        public System.Int64? UnmountTimeOpt { get; set; }
+
 
         #endregion
 

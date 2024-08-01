@@ -1,0 +1,2 @@
+### ChunkerConfigInput
+- variant: ChunkerConfigVariantInput

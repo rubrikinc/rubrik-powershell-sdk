@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ALLOW,
 
         [EnumMember(Value = "DENY")]
-        DENY
+        DENY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DefaultActionType

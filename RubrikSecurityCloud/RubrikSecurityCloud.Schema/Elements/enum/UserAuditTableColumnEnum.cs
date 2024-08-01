@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         USER_AUDIT_STATUS,
 
         [EnumMember(Value = "UserAuditType")]
-        USER_AUDIT_TYPE
+        USER_AUDIT_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UserAuditTableColumnEnum

@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         WEEK,
 
         [EnumMember(Value = "Year")]
-        YEAR
+        YEAR,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterGroupByEnum

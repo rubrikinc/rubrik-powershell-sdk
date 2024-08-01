@@ -1,0 +1,35 @@
+### CreateDcaReaderTargetInput
+Input for creating a DCA reader target.
+
+- clusterUuid: System.String
+  - Cluster UUID of the target.
+- name: System.String
+  - Name of the target.
+- bucketName: System.String
+  - Bucket name of the DCA archival target.
+- s3Endpoint: System.String
+  - Field for specifying an AWS S3 endpoint.
+- roleName: System.String
+  - Role name of the DCA archival target.
+- agency: System.String
+  - Agency for the DCA archival target.
+- storageClass: AwsStorageClass
+  - Field for specifying storage class of the target.
+- region: AwsDcaRegion
+  - Region for DCA archival target.
+- certificateContent: System.String
+  - CSR certificate for DCA archival target.
+- rsaKey: System.String
+  - Optional Field for specifying RSA key for encryption.
+- kmsMasterKeyId: System.String
+  - Optional field for specifying the KMS server endpoint when usingKMS-based encryption.
+- mission: System.String
+  - Mission for DCA archival target.
+- tokenDuration: System.Int32
+  - Token duration in minutes for DCA archival target.
+- capEndPoint: System.String
+  - Cap endpoint for DCA archival target.
+- awsRetrievalTier: AwsRetrievalTier
+  - Field for specifying retrieval tier for this target.
+- readerRetrievalMethod: ReaderRetrievalMethod
+  - Field for specifying the metadata to be retrieved from a target.

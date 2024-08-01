@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Ransomware' API domain:
-    /// DetectionWorkloadLocations, InvestigationAnalysisSummary, InvestigationEnablement, OverallInvestigationSummary, ProcessedInvestigationWorkloadCount, Result, ResultOpt, Results, or ResultsGrouped.
+    /// DetectionWorkloadLocations, InvestigationAnalysisSummary, InvestigationEnablement, InvestigationObjects, MonitoringPipelineHealth, MonitoringTimelineAnalysis, OverallInvestigationSummary, ProcessedInvestigationWorkloadCount, Result, ResultOpt, Results, or ResultsGrouped.
     /// </summary>
     /// <description>
     /// New-RscQueryRansomware creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 12 operations
     /// in the 'Ransomware' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: DetectionWorkloadLocations, InvestigationAnalysisSummary, InvestigationEnablement, OverallInvestigationSummary, ProcessedInvestigationWorkloadCount, Result, ResultOpt, Results, or ResultsGrouped.
+    /// one of: DetectionWorkloadLocations, InvestigationAnalysisSummary, InvestigationEnablement, InvestigationObjects, MonitoringPipelineHealth, MonitoringTimelineAnalysis, OverallInvestigationSummary, ProcessedInvestigationWorkloadCount, Result, ResultOpt, Results, or ResultsGrouped.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -174,6 +174,90 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RansomwareInvestigationEnablementReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the InvestigationObjects operation
+    /// of the 'Ransomware' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Ransomware
+    /// # API Operation: InvestigationObjects
+    /// 
+    /// $query = New-RscQueryRansomware -InvestigationObjects
+    /// 
+    /// # REQUIRED
+    /// $query.Var.beginTime = $someDateTime
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RansomwareInvestigationObjectsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MonitoringPipelineHealth operation
+    /// of the 'Ransomware' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Ransomware
+    /// # API Operation: MonitoringPipelineHealth
+    /// 
+    /// $query = New-RscQueryRansomware -MonitoringPipelineHealth
+    /// 
+    /// # REQUIRED
+    /// $query.Var.beginTime = $someDateTime
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RansomwareMonitoringPipelineHealth
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MonitoringTimelineAnalysis operation
+    /// of the 'Ransomware' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Ransomware
+    /// # API Operation: MonitoringTimelineAnalysis
+    /// 
+    /// $query = New-RscQueryRansomware -MonitoringTimelineAnalysis
+    /// 
+    /// # REQUIRED
+    /// $query.Var.beginTime = $someDateTime
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RansomwareMonitoringTimelineAnalysis
     /// 
     /// 
     /// 
@@ -429,6 +513,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DetectionWorkloadLocations",
                 "InvestigationAnalysisSummary",
                 "InvestigationEnablement",
+                "InvestigationObjects",
+                "MonitoringPipelineHealth",
+                "MonitoringTimelineAnalysis",
                 "OverallInvestigationSummary",
                 "ProcessedInvestigationWorkloadCount",
                 "Result",
@@ -458,6 +545,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "InvestigationEnablement":
                         this.ProcessRecord_InvestigationEnablement();
+                        break;
+                    case "InvestigationObjects":
+                        this.ProcessRecord_InvestigationObjects();
+                        break;
+                    case "MonitoringPipelineHealth":
+                        this.ProcessRecord_MonitoringPipelineHealth();
+                        break;
+                    case "MonitoringTimelineAnalysis":
+                        this.ProcessRecord_MonitoringTimelineAnalysis();
                         break;
                     case "OverallInvestigationSummary":
                         this.ProcessRecord_OverallInvestigationSummary();
@@ -512,6 +608,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -InvestigationEnablement";
             // Create new graphql operation ransomwareInvestigationEnablement
             InitQueryRansomwareInvestigationEnablement();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // ransomwareInvestigationObjects.
+        internal void ProcessRecord_InvestigationObjects()
+        {
+            this._logger.name += " -InvestigationObjects";
+            // Create new graphql operation ransomwareInvestigationObjects
+            InitQueryRansomwareInvestigationObjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // ransomwareMonitoringPipelineHealth.
+        internal void ProcessRecord_MonitoringPipelineHealth()
+        {
+            this._logger.name += " -MonitoringPipelineHealth";
+            // Create new graphql operation ransomwareMonitoringPipelineHealth
+            InitQueryRansomwareMonitoringPipelineHealth();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // ransomwareMonitoringTimelineAnalysis.
+        internal void ProcessRecord_MonitoringTimelineAnalysis()
+        {
+            this._logger.name += " -MonitoringTimelineAnalysis";
+            // Create new graphql operation ransomwareMonitoringTimelineAnalysis
+            InitQueryRansomwareMonitoringTimelineAnalysis();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -662,6 +785,66 @@ $query.Var.hideSuspiciousDataIfNonAnomalous = $someBoolean"
                 Query.RansomwareInvestigationEnablement,
                 Query.RansomwareInvestigationEnablementFieldSpec,
                 @""
+            );
+        }
+
+        // Create new GraphQL Query:
+        // ransomwareInvestigationObjects(beginTime: DateTime!): RansomwareInvestigationObjectsReply!
+        internal void InitQueryRansomwareInvestigationObjects()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("beginTime", "DateTime!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryRansomwareInvestigationObjects",
+                "($beginTime: DateTime!)",
+                "RansomwareInvestigationObjectsReply",
+                Query.RansomwareInvestigationObjects,
+                Query.RansomwareInvestigationObjectsFieldSpec,
+                @"# REQUIRED
+$query.Var.beginTime = $someDateTime"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // ransomwareMonitoringPipelineHealth(beginTime: DateTime!): RansomwareMonitoringPipelineHealth!
+        internal void InitQueryRansomwareMonitoringPipelineHealth()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("beginTime", "DateTime!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryRansomwareMonitoringPipelineHealth",
+                "($beginTime: DateTime!)",
+                "RansomwareMonitoringPipelineHealth",
+                Query.RansomwareMonitoringPipelineHealth,
+                Query.RansomwareMonitoringPipelineHealthFieldSpec,
+                @"# REQUIRED
+$query.Var.beginTime = $someDateTime"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // ransomwareMonitoringTimelineAnalysis(beginTime: DateTime!): RansomwareMonitoringTimelineAnalysis!
+        internal void InitQueryRansomwareMonitoringTimelineAnalysis()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("beginTime", "DateTime!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryRansomwareMonitoringTimelineAnalysis",
+                "($beginTime: DateTime!)",
+                "RansomwareMonitoringTimelineAnalysis",
+                Query.RansomwareMonitoringTimelineAnalysis,
+                Query.RansomwareMonitoringTimelineAnalysisFieldSpec,
+                @"# REQUIRED
+$query.Var.beginTime = $someDateTime"
             );
         }
 

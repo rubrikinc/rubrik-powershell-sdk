@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         VCD,
 
         [EnumMember(Value = "VSPHERE")]
-        VSPHERE
+        VSPHERE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DownloadSnapshotFromLocationSnappableType

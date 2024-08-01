@@ -1,0 +1,69 @@
+### AzureNativeSubscription
+An Azure Native Subscription. Refers to the logical entity that provides entitlement to deploy and consume Azure resources.
+
+- azureSubscriptionNativeId: System.String
+  - Native ID of the subscription.
+- tenantId: System.String
+  - Tenant ID associated with the subscription.
+- azureSubscriptionStatus: AzureSubscriptionStatus
+  - Status of the subscription at a given time. Some examples are: added, deleted, refreshed. For more information, see https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/subscription-states.
+- lastRefreshedAt: DateTime
+  - Last refresh time of the subscription, in UTC date-time format.
+- regionSpecs: list of AzureNativeRegionSpecs
+  - List of Azure region specifications associated with the subscription.
+- vmsCount: System.Int32
+  - Count of virtual machines (VMs) in the subscription.
+- disksCount: System.Int32
+  - Count of managed disks in the subscription.
+- azureSqlDatabaseDbCount: System.Int32
+  - Count of Azure SQL databases in the subscription.
+- azureSqlManagedInstanceDbCount: System.Int32
+  - Count of Azure SQL Managed Instance databases in the subscription.
+- azureStorageAccountCount: System.Int32
+  - The number of Azure storage accounts in the subscription.
+- azureCloudType: AzureCloudType
+  - Type of Azure cloud, for example, Azure Public Cloud and Azure China Cloud.
+- enabledFeatures: list of AzureNativeSubscriptionEnabledFeatures
+  - Details of features enabled for the subscription.
+- snappableTypeToBackupSetupSpecs: list of WorkloadTypeToBackupSetupSpecss
+  - A list of mappings between object types and details about the backup setup.
+- accountConnectionId: System.String
+  - Cloud account ID associated with the subscription.
+- authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig
+  - List of Exocompute configurations for the Azure subscription.
+- azureNativeResourceGroups: AzureNativeResourceGroupConnection
+  - Paginated list of all Azure Resource Groups in the subscription.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- id: System.String
+  - The FID of the hierarchy object.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.

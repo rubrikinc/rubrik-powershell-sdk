@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         INITIALIZING_METADATA,
 
         [EnumMember(Value = "INITIALIZING_REPORTS")]
-        INITIALIZING_REPORTS
+        INITIALIZING_REPORTS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterSubStatus

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SAP_HANA_SSL_INFO_ENCRYPTION_PROVIDER_OPENSSL,
 
         [EnumMember(Value = "SAP_HANA_SSL_INFO_ENCRYPTION_PROVIDER_SAP_CRYPTO")]
-        SAP_HANA_SSL_INFO_ENCRYPTION_PROVIDER_SAP_CRYPTO
+        SAP_HANA_SSL_INFO_ENCRYPTION_PROVIDER_SAP_CRYPTO,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SapHanaSslInfoEncryptionProvider

@@ -49,7 +49,10 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_TIME,
 
         [EnumMember(Value = "TOTAL_HITS")]
-        TOTAL_HITS
+        TOTAL_HITS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DiscoveryContentReportSortBy

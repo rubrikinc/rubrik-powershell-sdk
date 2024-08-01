@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         IS_SG_RUBRIK_MANAGED,
 
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsCloudComputeSettingFilterField

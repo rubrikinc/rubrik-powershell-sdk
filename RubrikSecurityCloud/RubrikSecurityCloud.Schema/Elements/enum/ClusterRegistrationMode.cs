@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         LIFE_OF_DEVICE,
 
         [EnumMember(Value = "NOT_REGISTERED")]
-        NOT_REGISTERED
+        NOT_REGISTERED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterRegistrationMode

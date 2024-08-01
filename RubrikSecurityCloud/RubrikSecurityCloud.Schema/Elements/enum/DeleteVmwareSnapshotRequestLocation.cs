@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         V1_DELETE_VMWARE_SNAPSHOT_REQUEST_LOCATION_ALL,
 
         [EnumMember(Value = "V1_DELETE_VMWARE_SNAPSHOT_REQUEST_LOCATION_LOCAL")]
-        V1_DELETE_VMWARE_SNAPSHOT_REQUEST_LOCATION_LOCAL
+        V1_DELETE_VMWARE_SNAPSHOT_REQUEST_LOCATION_LOCAL,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DeleteVmwareSnapshotRequestLocation

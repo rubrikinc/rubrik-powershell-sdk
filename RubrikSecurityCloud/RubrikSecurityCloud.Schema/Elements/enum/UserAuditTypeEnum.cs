@@ -97,7 +97,10 @@ namespace RubrikSecurityCloud.Types
         THREAT_HUNT,
 
         [EnumMember(Value = "UnknownUserAuditType")]
-        UNKNOWN_USER_AUDIT_TYPE
+        UNKNOWN_USER_AUDIT_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UserAuditTypeEnum

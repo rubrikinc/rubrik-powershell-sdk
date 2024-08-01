@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         UNSPECIFIED,
 
         [EnumMember(Value = "VM_STATUS")]
-        VM_STATUS
+        VM_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum VsphereLiveMountSortByField

@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         UPDATE_PERMISSIONS,
 
         [EnumMember(Value = "UPDATE_REGIONS")]
-        UPDATE_REGIONS
+        UPDATE_REGIONS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudAccountAction

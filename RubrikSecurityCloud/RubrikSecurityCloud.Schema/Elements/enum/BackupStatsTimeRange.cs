@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         BSTR_LAST_30_DAYS,
 
         [EnumMember(Value = "BSTR_LAST_7_DAYS")]
-        BSTR_LAST_7_DAYS
+        BSTR_LAST_7_DAYS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum BackupStatsTimeRange

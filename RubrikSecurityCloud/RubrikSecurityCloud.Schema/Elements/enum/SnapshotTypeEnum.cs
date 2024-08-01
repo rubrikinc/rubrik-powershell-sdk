@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         ON_DEMAND,
 
         [EnumMember(Value = "SCHEDULED")]
-        SCHEDULED
+        SCHEDULED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnapshotTypeEnum

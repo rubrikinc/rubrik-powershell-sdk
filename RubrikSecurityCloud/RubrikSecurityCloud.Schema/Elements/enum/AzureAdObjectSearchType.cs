@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         USER_NAME,
 
         [EnumMember(Value = "USER_TYPE")]
-        USER_TYPE
+        USER_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureAdObjectSearchType

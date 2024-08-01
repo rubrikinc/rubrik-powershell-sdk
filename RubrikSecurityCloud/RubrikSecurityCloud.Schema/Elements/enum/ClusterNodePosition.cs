@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         RIGHT_BOTTOM,
 
         [EnumMember(Value = "RIGHT_TOP")]
-        RIGHT_TOP
+        RIGHT_TOP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterNodePosition

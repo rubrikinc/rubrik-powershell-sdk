@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         SENSITIVITY_HITS,
 
         [EnumMember(Value = "SENSITIVITY_STATUS")]
-        SENSITIVITY_STATUS
+        SENSITIVITY_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsNativeEc2InstanceSortFields

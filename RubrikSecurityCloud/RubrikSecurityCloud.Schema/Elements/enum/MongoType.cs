@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         MONGO_TYPE_REPLICA_SET,
 
         [EnumMember(Value = "MONGO_TYPE_SHARDED_CLUSTER")]
-        MONGO_TYPE_SHARDED_CLUSTER
+        MONGO_TYPE_SHARDED_CLUSTER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MongoType

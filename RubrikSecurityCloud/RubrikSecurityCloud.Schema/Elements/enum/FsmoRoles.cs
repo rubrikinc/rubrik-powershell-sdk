@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         SCHEMA_MASTER,
 
         [EnumMember(Value = "UNKNOWN_ROLE")]
-        UNKNOWN_ROLE
+        UNKNOWN_ROLE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FsmoRoles

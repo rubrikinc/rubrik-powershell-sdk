@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         LICENSE_NOT_FOUND,
 
         [EnumMember(Value = "VALID_LICENSE")]
-        VALID_LICENSE
+        VALID_LICENSE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterLicenseInfoType

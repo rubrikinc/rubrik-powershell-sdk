@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         CDM,
 
         [EnumMember(Value = "POLARIS")]
-        POLARIS
+        POLARIS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ProductTargetType

@@ -62,6 +62,7 @@ The list of object types for activities.
 - CERTIFICATE_MANAGEMENT - Specifies that the activity object type is a certificate.
 - Mssql - Specifies that the activity object type is MSSQL.
 - NAS_FILESET - Specifies that the activity object type is NAS Fileset.
+- ACTIVE_DIRECTORY_FOREST - Specifies that the activity object type is related to Active Directory forest.
 - CloudNativeVirtualMachine - Specifies that the activity object type is Cloud Native Virtual Machine.
 - AZURE_AD_DIRECTORY - Specifies that the activity object type is Azure AD Directory.
 - VmwareVm - Specifies that the activity object type is VMware Virtual Machine.

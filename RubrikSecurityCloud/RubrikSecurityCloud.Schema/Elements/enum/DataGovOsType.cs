@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         NONE,
 
         [EnumMember(Value = "WINDOWS")]
-        WINDOWS
+        WINDOWS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DataGovOsType

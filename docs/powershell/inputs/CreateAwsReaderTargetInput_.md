@@ -1,0 +1,43 @@
+### CreateAwsReaderTargetInput
+Input for creating an AWS Reader Target.
+
+- name: System.String
+  - Field for specifying name of the target.
+- cloudAccountId: System.String
+  - Field for specifying cloud account ID.
+- bucketName: System.String
+  - Field for specifying AWS bucket name.
+- storageClass: AwsStorageClass
+  - Field for specifying storage class of the target.
+- region: AwsRegion
+  - Field for specifying region of the target.
+- kmsMasterKeyId: System.String
+  - Field for specifying KMS master key for encryption.
+- rsaKey: System.String
+  - Field for specifying RSA key for encryption.
+- encryptionPassword: System.String
+  - Field for specifying a password for encrypting the AWS location contents.
+- clusterUuid: System.String
+  - Field for specifying cluster UUID of the target.
+- isConsolidationEnabled: System.Boolean
+  - Field for specifying whether consolidation is enabled or not.
+- proxySettings: ProxySettingsInput
+  - Field for creating proxy settings.
+- awsComputeSettingsId: System.String
+  - Field for creating AWS compute settings ID.
+- cloudComputeSettings: AwsCloudComputeSettingsInput
+  - Field for specifying cloud compute Settings.
+- awsRetrievalTier: AwsRetrievalTier
+  - Field for specifying retrieval tier for this target.
+- readerRetrievalMethod: ReaderRetrievalMethod
+  - Field for specifying the metadata to be retrieved from a target.
+- s3Endpoint: System.String
+  - Optional field for specifying an AWS S3 endpoint, for example a VPC endpoint. When not specified, the default, region-based S3 endpoint is used.
+- kmsEndpoint: System.String
+  - Optional field for specifying the KMS server endpoint when using KMS-based encryption, for example a VPC endpoint. When not specified, the default, region-based KMS server endpoint is used.
+- computeProxySettings: ProxySettingsInput
+  - Compute proxy settings for AWS reader target.
+- awsIamPairId: System.String
+  - Internal ID of the AWS IAM pair. This field is required only when connecting as a reader to Data Center AWS role-based archival locations.
+- bypassProxy: System.Boolean
+  - Specifies whether the proxy settings should be bypassed for creating this target location.

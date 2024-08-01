@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         DOMAIN_NAME,
 
         [EnumMember(Value = "FIELD_UNSPECIFIED")]
-        FIELD_UNSPECIFIED
+        FIELD_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SmbDomainSortByField

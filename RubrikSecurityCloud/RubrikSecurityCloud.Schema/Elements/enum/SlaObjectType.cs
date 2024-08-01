@@ -115,7 +115,10 @@ namespace RubrikSecurityCloud.Types
         VOLUME_GROUP_OBJECT_TYPE,
 
         [EnumMember(Value = "VSPHERE_OBJECT_TYPE")]
-        VSPHERE_OBJECT_TYPE
+        VSPHERE_OBJECT_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SlaObjectType

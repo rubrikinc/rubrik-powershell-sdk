@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 9
     /// operations in the 'Azure Native' API domain:
-    /// ExcludeManagedDisksFromSnapshot, StartCreateManagedDiskSnapshotsJob, StartCreateVirtualMachineSnapshotsJob, StartDisableSubscriptionProtectionJob, StartExportManagedDiskJob, StartExportVirtualMachineJob, StartRefreshSubscriptionsJob, or StartRestoreVirtualMachineJob.
+    /// ExcludeManagedDisksFromSnapshot, StartCreateManagedDiskSnapshotsJob, StartCreateVirtualMachineSnapshotsJob, StartDisableSubscriptionProtectionJob, StartExportManagedDiskJob, StartExportVirtualMachineJob, StartRecoverStorageAccountJob, StartRefreshSubscriptionsJob, or StartRestoreVirtualMachineJob.
     /// </summary>
     /// <description>
     /// New-RscMutationAzureNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 9 operations
     /// in the 'Azure Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ExcludeManagedDisksFromSnapshot, StartCreateManagedDiskSnapshotsJob, StartCreateVirtualMachineSnapshotsJob, StartDisableSubscriptionProtectionJob, StartExportManagedDiskJob, StartExportVirtualMachineJob, StartRefreshSubscriptionsJob, or StartRestoreVirtualMachineJob.
+    /// one of: ExcludeManagedDisksFromSnapshot, StartCreateManagedDiskSnapshotsJob, StartCreateVirtualMachineSnapshotsJob, StartDisableSubscriptionProtectionJob, StartExportManagedDiskJob, StartExportVirtualMachineJob, StartRecoverStorageAccountJob, StartRefreshSubscriptionsJob, or StartRestoreVirtualMachineJob.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -342,6 +342,53 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StartRecoverStorageAccountJob operation
+    /// of the 'Azure Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureNative
+    /// # API Operation: StartRecoverStorageAccountJob
+    /// 
+    /// $query = New-RscMutationAzureNative -StartRecoverStorageAccountJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	destinationSubscriptionRubrikId = $someString
+    /// 	# REQUIRED
+    /// 	shouldExportTags = $someBoolean
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+    /// 	# OPTIONAL
+    /// 	resourceGroupName = $someString
+    /// 	# OPTIONAL
+    /// 	objectKeys = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	tier = $someAzureStorageAccessTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageAccessTier]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the StartRefreshSubscriptionsJob operation
     /// of the 'Azure Native' API domain.
     /// <code>
@@ -437,6 +484,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "StartDisableSubscriptionProtectionJob",
                 "StartExportManagedDiskJob",
                 "StartExportVirtualMachineJob",
+                "StartRecoverStorageAccountJob",
                 "StartRefreshSubscriptionsJob",
                 "StartRestoreVirtualMachineJob",
                 IgnoreCase = true)]
@@ -471,6 +519,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "StartExportVirtualMachineJob":
                         this.ProcessRecord_StartExportVirtualMachineJob();
+                        break;
+                    case "StartRecoverStorageAccountJob":
+                        this.ProcessRecord_StartRecoverStorageAccountJob();
                         break;
                     case "StartRefreshSubscriptionsJob":
                         this.ProcessRecord_StartRefreshSubscriptionsJob();
@@ -540,6 +591,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -StartExportVirtualMachineJob";
             // Create new graphql operation startExportAzureNativeVirtualMachineJob
             InitMutationStartExportAzureNativeVirtualMachineJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startRecoverAzureNativeStorageAccountJob.
+        internal void ProcessRecord_StartRecoverStorageAccountJob()
+        {
+            this._logger.name += " -StartRecoverStorageAccountJob";
+            // Create new graphql operation startRecoverAzureNativeStorageAccountJob
+            InitMutationStartRecoverAzureNativeStorageAccountJob();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -774,6 +834,45 @@ $query.Var.input = @{
 	recoveryDiskIds = @(
 		$someString
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startRecoverAzureNativeStorageAccountJob(input: StartRecoverAzureNativeStorageAccountJobInput!): AsyncJobStatus!
+        internal void InitMutationStartRecoverAzureNativeStorageAccountJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartRecoverAzureNativeStorageAccountJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartRecoverAzureNativeStorageAccountJob",
+                "($input: StartRecoverAzureNativeStorageAccountJobInput!)",
+                "AsyncJobStatus",
+                Mutation.StartRecoverAzureNativeStorageAccountJob,
+                Mutation.StartRecoverAzureNativeStorageAccountJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	snapshotId = $someString
+	# OPTIONAL
+	destinationSubscriptionRubrikId = $someString
+	# REQUIRED
+	shouldExportTags = $someBoolean
+	# OPTIONAL
+	name = $someString
+	# OPTIONAL
+	region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+	# OPTIONAL
+	resourceGroupName = $someString
+	# OPTIONAL
+	objectKeys = @(
+		$someString
+	)
+	# REQUIRED
+	tier = $someAzureStorageAccessTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageAccessTier]) for enum values.
 }"
             );
         }

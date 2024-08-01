@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         HIDE_REVEAL_ACTION_HIDE,
 
         [EnumMember(Value = "HIDE_REVEAL_ACTION_REVEAL")]
-        HIDE_REVEAL_ACTION_REVEAL
+        HIDE_REVEAL_ACTION_REVEAL,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HideRevealAction

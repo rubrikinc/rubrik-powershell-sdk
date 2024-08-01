@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         PRIMARY_NAME,
 
         [EnumMember(Value = "SECONDARY_NAME")]
-        SECONDARY_NAME
+        SECONDARY_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MssqlLogShippingTargetSortByField

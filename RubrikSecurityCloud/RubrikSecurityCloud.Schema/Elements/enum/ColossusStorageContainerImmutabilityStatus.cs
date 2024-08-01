@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         MIGRATION_IN_PROGRESS,
 
         [EnumMember(Value = "STATUS_UNSPECIFIED")]
-        STATUS_UNSPECIFIED
+        STATUS_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ColossusStorageContainerImmutabilityStatus

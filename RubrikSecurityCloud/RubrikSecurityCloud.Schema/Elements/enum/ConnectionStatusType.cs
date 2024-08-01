@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         DISCONNECTED,
 
         [EnumMember(Value = "UNAVAILABLE")]
-        UNAVAILABLE
+        UNAVAILABLE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ConnectionStatusType

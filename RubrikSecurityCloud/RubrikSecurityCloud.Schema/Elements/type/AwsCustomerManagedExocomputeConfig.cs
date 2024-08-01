@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("region")]
         public AwsCloudAccountRegion? Region { get; set; }
 
+        //      C# -> System.String? ByokClusterId
+        // GraphQL -> byokClusterId: String! (scalar)
+        [JsonProperty("byokClusterId")]
+        public System.String? ByokClusterId { get; set; }
+
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
         [JsonProperty("clusterName")]
@@ -82,6 +87,7 @@ namespace RubrikSecurityCloud.Types
 
     public AwsCustomerManagedExocomputeConfig Set(
         AwsCloudAccountRegion? Region = null,
+        System.String? ByokClusterId = null,
         System.String? ClusterName = null,
         System.String? ConfigUuid = null,
         System.Boolean? HasPcr = null,
@@ -95,6 +101,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Region != null ) {
             this.Region = Region;
+        }
+        if ( ByokClusterId != null ) {
+            this.ByokClusterId = ByokClusterId;
         }
         if ( ClusterName != null ) {
             this.ClusterName = ClusterName;
@@ -144,6 +153,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "region\n" ;
             } else {
                 s += ind + "region\n" ;
+            }
+        }
+        //      C# -> System.String? ByokClusterId
+        // GraphQL -> byokClusterId: String! (scalar)
+        if (this.ByokClusterId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "byokClusterId\n" ;
+            } else {
+                s += ind + "byokClusterId\n" ;
             }
         }
         //      C# -> System.String? ClusterName
@@ -256,6 +274,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Region != null && ec.Excludes("region",true))
         {
             this.Region = null;
+        }
+        //      C# -> System.String? ByokClusterId
+        // GraphQL -> byokClusterId: String! (scalar)
+        if (ec.Includes("byokClusterId",true))
+        {
+            if(this.ByokClusterId == null) {
+
+                this.ByokClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ByokClusterId != null && ec.Excludes("byokClusterId",true))
+        {
+            this.ByokClusterId = null;
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)

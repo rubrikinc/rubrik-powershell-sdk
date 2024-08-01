@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 18
+    /// Create a new RscQuery object for any of the 19
     /// operations in the 'Oracle' API domain:
-    /// BulkUpdateDatabases, BulkUpdateHosts, BulkUpdateRacs, CreatePdbRestore, DeleteAllDatabaseSnapshots, DeleteMount, DownloadDatabaseSnapshot, ExportDatabase, ExportTablespace, InstantRecoverSnapshot, MountDatabase, RefreshDatabase, RestoreLogs, TakeOnDemandDatabaseSnapshot, TakeOnDemandLogSnapshot, UpdateDataGuardGroup, ValidateAcoFile, or ValidateDatabaseBackups.
+    /// BulkUpdateDatabases, BulkUpdateHosts, BulkUpdateRacs, CreatePdbRestore, DeleteAllDatabaseSnapshots, DeleteMount, DownloadDatabaseSnapshot, DownloadSnapshotFromLocation, ExportDatabase, ExportTablespace, InstantRecoverSnapshot, MountDatabase, RefreshDatabase, RestoreLogs, TakeOnDemandDatabaseSnapshot, TakeOnDemandLogSnapshot, UpdateDataGuardGroup, ValidateAcoFile, or ValidateDatabaseBackups.
     /// </summary>
     /// <description>
     /// New-RscMutationOracle creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 18 operations
+    /// There are 19 operations
     /// in the 'Oracle' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkUpdateDatabases, BulkUpdateHosts, BulkUpdateRacs, CreatePdbRestore, DeleteAllDatabaseSnapshots, DeleteMount, DownloadDatabaseSnapshot, ExportDatabase, ExportTablespace, InstantRecoverSnapshot, MountDatabase, RefreshDatabase, RestoreLogs, TakeOnDemandDatabaseSnapshot, TakeOnDemandLogSnapshot, UpdateDataGuardGroup, ValidateAcoFile, or ValidateDatabaseBackups.
+    /// one of: BulkUpdateDatabases, BulkUpdateHosts, BulkUpdateRacs, CreatePdbRestore, DeleteAllDatabaseSnapshots, DeleteMount, DownloadDatabaseSnapshot, DownloadSnapshotFromLocation, ExportDatabase, ExportTablespace, InstantRecoverSnapshot, MountDatabase, RefreshDatabase, RestoreLogs, TakeOnDemandDatabaseSnapshot, TakeOnDemandLogSnapshot, UpdateDataGuardGroup, ValidateAcoFile, or ValidateDatabaseBackups.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -461,6 +461,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DownloadSnapshotFromLocation operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: DownloadSnapshotFromLocation
+    /// 
+    /// $query = New-RscMutationOracle -DownloadSnapshotFromLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	locationId = $someString
     /// 	# REQUIRED
     /// 	snapshotId = $someString
     /// }
@@ -1082,6 +1115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteAllDatabaseSnapshots",
                 "DeleteMount",
                 "DownloadDatabaseSnapshot",
+                "DownloadSnapshotFromLocation",
                 "ExportDatabase",
                 "ExportTablespace",
                 "InstantRecoverSnapshot",
@@ -1128,6 +1162,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DownloadDatabaseSnapshot":
                         this.ProcessRecord_DownloadDatabaseSnapshot();
+                        break;
+                    case "DownloadSnapshotFromLocation":
+                        this.ProcessRecord_DownloadSnapshotFromLocation();
                         break;
                     case "ExportDatabase":
                         this.ProcessRecord_ExportDatabase();
@@ -1233,6 +1270,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DownloadDatabaseSnapshot";
             // Create new graphql operation downloadOracleDatabaseSnapshot
             InitMutationDownloadOracleDatabaseSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadOracleSnapshotFromLocation.
+        internal void ProcessRecord_DownloadSnapshotFromLocation()
+        {
+            this._logger.name += " -DownloadSnapshotFromLocation";
+            // Create new graphql operation downloadOracleSnapshotFromLocation
+            InitMutationDownloadOracleSnapshotFromLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1674,6 +1720,31 @@ $query.Var.input = @{
                 Mutation.DownloadOracleDatabaseSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	snapshotId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadOracleSnapshotFromLocation(input: DownloadOracleSnapshotFromLocationInput!): AsyncRequestStatus!
+        internal void InitMutationDownloadOracleSnapshotFromLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadOracleSnapshotFromLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadOracleSnapshotFromLocation",
+                "($input: DownloadOracleSnapshotFromLocationInput!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadOracleSnapshotFromLocation,
+                Mutation.DownloadOracleSnapshotFromLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	locationId = $someString
 	# REQUIRED
 	snapshotId = $someString
 }"

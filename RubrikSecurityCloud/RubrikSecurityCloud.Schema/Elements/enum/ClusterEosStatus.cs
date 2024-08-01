@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         EOS_STATUS_UNKNOWN,
 
         [EnumMember(Value = "EOS_STATUS_UNSUPPORTED")]
-        EOS_STATUS_UNSUPPORTED
+        EOS_STATUS_UNSUPPORTED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterEosStatus

@@ -76,7 +76,10 @@ namespace RubrikSecurityCloud.Types
         PAUSED,
 
         [EnumMember(Value = "TEST_FAILOVER_SUCCEEDED")]
-        TEST_FAILOVER_SUCCEEDED
+        TEST_FAILOVER_SUCCEEDED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FailoverStatusEnum

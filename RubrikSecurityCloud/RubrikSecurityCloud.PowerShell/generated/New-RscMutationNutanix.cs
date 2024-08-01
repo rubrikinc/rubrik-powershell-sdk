@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 27
+    /// Create a new RscQuery object for any of the 28
     /// operations in the 'Nutanix' API domain:
-    /// BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVdisks, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, MountVdisks, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
+    /// BatchExportVm, BatchMountVm, BatchUnmountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVdisks, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, MountVdisks, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
     /// </summary>
     /// <description>
     /// New-RscMutationNutanix creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 27 operations
+    /// There are 28 operations
     /// in the 'Nutanix' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVdisks, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, MountVdisks, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
+    /// one of: BatchExportVm, BatchMountVm, BatchUnmountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVdisks, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, MountVdisks, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -207,6 +207,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: BatchMountNutanixVmReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the BatchUnmountVm operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: BatchUnmountVm
+    /// 
+    /// $query = New-RscMutationNutanix -BatchUnmountVm
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		mountIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BatchUnmountNutanixVmReply
     /// 
     /// 
     /// 
@@ -1138,6 +1174,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			@{
     /// 				# OPTIONAL
     /// 				name = $someString
+    /// 				# OPTIONAL
+    /// 				password = $someString
+    /// 				# OPTIONAL
+    /// 				username = $someString
     /// 				# REQUIRED
     /// 				clusterUuid = $someString
     /// 			}
@@ -1246,6 +1286,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "BatchExportVm",
                 "BatchMountVm",
+                "BatchUnmountVm",
                 "BulkOnDemandSnapshotVm",
                 "CreateCluster",
                 "CreateOnDemandBackup",
@@ -1291,6 +1332,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "BatchMountVm":
                         this.ProcessRecord_BatchMountVm();
+                        break;
+                    case "BatchUnmountVm":
+                        this.ProcessRecord_BatchUnmountVm();
                         break;
                     case "BulkOnDemandSnapshotVm":
                         this.ProcessRecord_BulkOnDemandSnapshotVm();
@@ -1393,6 +1437,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -BatchMountVm";
             // Create new graphql operation batchMountNutanixVm
             InitMutationBatchMountNutanixVm();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // batchUnmountNutanixVm.
+        internal void ProcessRecord_BatchUnmountVm()
+        {
+            this._logger.name += " -BatchUnmountVm";
+            // Create new graphql operation batchUnmountNutanixVm
+            InitMutationBatchUnmountNutanixVm();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1737,6 +1790,34 @@ $query.Var.input = @{
 				# REQUIRED
 				vmId = $someString
 			}
+		)
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // batchUnmountNutanixVm(input: BatchUnmountNutanixVmInput!): BatchUnmountNutanixVmReply!
+        internal void InitMutationBatchUnmountNutanixVm()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BatchUnmountNutanixVmInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBatchUnmountNutanixVm",
+                "($input: BatchUnmountNutanixVmInput!)",
+                "BatchUnmountNutanixVmReply",
+                Mutation.BatchUnmountNutanixVm,
+                Mutation.BatchUnmountNutanixVmFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		mountIds = @(
+			$someString
 		)
 	}
 }"
@@ -2485,6 +2566,10 @@ $query.Var.input = @{
 			@{
 				# OPTIONAL
 				name = $someString
+				# OPTIONAL
+				password = $someString
+				# OPTIONAL
+				username = $someString
 				# REQUIRED
 				clusterUuid = $someString
 			}

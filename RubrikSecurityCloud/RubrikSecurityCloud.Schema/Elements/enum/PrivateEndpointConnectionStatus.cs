@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         REMOVED,
 
         [EnumMember(Value = "UNSPECIFIED_PE_CONNECTION_STATUS")]
-        UNSPECIFIED_PE_CONNECTION_STATUS
+        UNSPECIFIED_PE_CONNECTION_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PrivateEndpointConnectionStatus

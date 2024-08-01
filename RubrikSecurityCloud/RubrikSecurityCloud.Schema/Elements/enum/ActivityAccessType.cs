@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         READ_ACTIVITY,
 
         [EnumMember(Value = "WRITE_ACTIVITY")]
-        WRITE_ACTIVITY
+        WRITE_ACTIVITY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ActivityAccessType

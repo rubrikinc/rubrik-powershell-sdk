@@ -1,0 +1,4 @@
+### ValidationStatus
+- SUCCESS
+- FAILURE
+- WARNING

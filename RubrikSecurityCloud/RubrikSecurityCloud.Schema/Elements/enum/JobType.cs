@@ -54,6 +54,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CONFIGURE_MANAGED_VOLUME_LOG_EXPORT")]
         CONFIGURE_MANAGED_VOLUME_LOG_EXPORT,
 
+        [EnumMember(Value = "DARE_OPERATION_POLLER")]
+        DARE_OPERATION_POLLER,
+
         [EnumMember(Value = "DB2_DATABASE")]
         DB2_DATABASE,
 
@@ -238,7 +241,10 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_UNMOUNT,
 
         [EnumMember(Value = "VSPHERE_VM_MAKE_PRIMARY")]
-        VSPHERE_VM_MAKE_PRIMARY
+        VSPHERE_VM_MAKE_PRIMARY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum JobType

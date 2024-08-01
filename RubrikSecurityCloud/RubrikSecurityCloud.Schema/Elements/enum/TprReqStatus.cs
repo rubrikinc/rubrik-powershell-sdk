@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         PENDING,
 
         [EnumMember(Value = "STAGED")]
-        STAGED
+        STAGED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TprReqStatus

@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         PARSING,
 
         [EnumMember(Value = "READING")]
-        READING
+        READING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AnalyzerErrorCode

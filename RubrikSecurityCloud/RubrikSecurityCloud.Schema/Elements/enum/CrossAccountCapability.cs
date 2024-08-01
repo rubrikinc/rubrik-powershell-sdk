@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         CROSS_ACCOUNT_CAPABILITY_UNSPECIFIED,
 
         [EnumMember(Value = "REPLICATION_AS_A_SERVICE")]
-        REPLICATION_AS_A_SERVICE
+        REPLICATION_AS_A_SERVICE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CrossAccountCapability

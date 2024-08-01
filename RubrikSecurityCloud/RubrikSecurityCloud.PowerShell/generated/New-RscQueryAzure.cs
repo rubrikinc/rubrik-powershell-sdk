@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 47
+    /// Create a new RscQuery object for any of the 61
     /// operations in the 'Azure' API domain:
-    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// AdDirectories, AdDirectory, AdObjectsByType, AdRelatedObjects, ArmTemplatesByFeature, ArmTemplatesByFeatureForRecovery, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountCheckRefreshTokenExistsForRecovery, CloudAccountDetailsForFeature, CloudAccountGrantedPermissionsGroups, CloudAccountGrantedPermissionsGroupsForRecovery, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, CloudAccountTenantsWithExoConfigs, ContainersInStorageAccountSnapshot, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsCloudAccountManagedViaOauth, IsStorageAccountNameAvailable, KeyNamesInKeyVault, KeyVaultsByRegion, KeyVersionsForKeyNameInKeyVault, LatestPermissionsByPermissionsGroup, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccount, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, ValidateCloudAccountExocomputeConfigurations, ValidateCreateClusterInput, or VerifyKeyVault.
     /// </summary>
     /// <description>
     /// New-RscQueryAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 47 operations
+    /// There are 61 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// one of: AdDirectories, AdDirectory, AdObjectsByType, AdRelatedObjects, ArmTemplatesByFeature, ArmTemplatesByFeatureForRecovery, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountCheckRefreshTokenExistsForRecovery, CloudAccountDetailsForFeature, CloudAccountGrantedPermissionsGroups, CloudAccountGrantedPermissionsGroupsForRecovery, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, CloudAccountTenantsWithExoConfigs, ContainersInStorageAccountSnapshot, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsCloudAccountManagedViaOauth, IsStorageAccountNameAvailable, KeyNamesInKeyVault, KeyVaultsByRegion, KeyVersionsForKeyNameInKeyVault, LatestPermissionsByPermissionsGroup, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccount, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, ValidateCloudAccountExocomputeConfigurations, ValidateCreateClusterInput, or VerifyKeyVault.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -235,6 +235,68 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the AdRelatedObjects operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: AdRelatedObjects
+    /// 
+    /// $query = New-RscQueryAzure -AdRelatedObjects
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # REQUIRED
+    /// $query.Var.sortByOptionCommonSearch = @(
+    /// 	$someAzureAdObjectCommonSearchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectCommonSearchType]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotFid = $someString
+    /// 	# REQUIRED
+    /// 	workloadFid = $someString
+    /// 	# REQUIRED
+    /// 	azureAdObjectUuid = $someString
+    /// 	# OPTIONAL
+    /// 	azureAdCommonSearchKeyword = $someString
+    /// 	# REQUIRED
+    /// 	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+    /// 	# REQUIRED
+    /// 	azureAdRelationshipType = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			relationshipType = $someAzureAdRelationshipEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipEnumType]) for enum values.
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	azureAdCommonSearchKeywordType = $someAzureAdObjectCommonSearchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectCommonSearchType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	azureAdRelatedObjectTypeFilter = @(
+    /// 		$someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureAdObjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ArmTemplatesByFeature operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -277,6 +339,99 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;AzureArmTemplateByFeature&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ArmTemplatesByFeatureForRecovery operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: ArmTemplatesByFeatureForRecovery
+    /// 
+    /// $query = New-RscQueryAzure -ArmTemplatesByFeatureForRecovery
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	customerTenantDomainName = $someString
+    /// 	# OPTIONAL
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
+    /// 	# REQUIRED
+    /// 	operationType = $someCloudAccountOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountOperation]) for enum values.
+    /// 	# REQUIRED
+    /// 	cloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	featuresToInclude = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			permissionsGroups = @(
+    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
+    /// 			# REQUIRED
+    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureArmTemplateByFeature&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the BlobContainersByStorageAccount operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: BlobContainersByStorageAccount
+    /// 
+    /// $query = New-RscQueryAzure -BlobContainersByStorageAccount
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	resourceGroup = $someString
+    /// 	# OPTIONAL
+    /// 	storageAccount = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureBlobContainerCcprovisionConnection
     /// 
     /// 
     /// 
@@ -350,6 +505,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CloudAccountCheckRefreshTokenExistsForRecovery operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: CloudAccountCheckRefreshTokenExistsForRecovery
+    /// 
+    /// $query = New-RscQueryAzure -CloudAccountCheckRefreshTokenExistsForRecovery
+    /// 
+    /// # REQUIRED
+    /// $query.Var.cloudAccountId = $someString
+    /// # OPTIONAL
+    /// $query.Var.azureNativeSubscriptionId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureCloudAccountCheckRefreshTokenExistsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the CloudAccountDetailsForFeature operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -370,6 +555,68 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AzureCloudAccountDetailsForFeatureReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudAccountGrantedPermissionsGroups operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: CloudAccountGrantedPermissionsGroups
+    /// 
+    /// $query = New-RscQueryAzure -CloudAccountGrantedPermissionsGroups
+    /// 
+    /// # REQUIRED
+    /// $query.Var.cloudAccountId = $someString
+    /// # REQUIRED
+    /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureCloudAccountGrantedPermissionsGroupsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudAccountGrantedPermissionsGroupsForRecovery operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: CloudAccountGrantedPermissionsGroupsForRecovery
+    /// 
+    /// $query = New-RscQueryAzure -CloudAccountGrantedPermissionsGroupsForRecovery
+    /// 
+    /// # REQUIRED
+    /// $query.Var.cloudAccountId = $someString
+    /// # OPTIONAL
+    /// $query.Var.azureNativeSubscriptionId = $someString
+    /// # REQUIRED
+    /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureCloudAccountGrantedPermissionsGroupsReply
     /// 
     /// 
     /// 
@@ -659,6 +906,66 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CloudAccountTenantsWithExoConfigs operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: CloudAccountTenantsWithExoConfigs
+    /// 
+    /// $query = New-RscQueryAzure -CloudAccountTenantsWithExoConfigs
+    /// 
+    /// # REQUIRED
+    /// $query.Var.features = @(
+    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureCloudAccountTenantWithExoConfigs&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ContainersInStorageAccountSnapshot operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: ContainersInStorageAccountSnapshot
+    /// 
+    /// $query = New-RscQueryAzure -ContainersInStorageAccountSnapshot
+    /// 
+    /// # REQUIRED
+    /// $query.Var.snapshotId = $someString
+    /// # OPTIONAL
+    /// $query.Var.prefix = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DiskEncryptionSetsByRegion operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -814,6 +1121,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the IsCloudAccountManagedViaOauth operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: IsCloudAccountManagedViaOauth
+    /// 
+    /// $query = New-RscQueryAzure -IsCloudAccountManagedViaOauth
+    /// 
+    /// # REQUIRED
+    /// $query.Var.cloudAccountId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the IsStorageAccountNameAvailable operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -836,6 +1171,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the KeyNamesInKeyVault operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: KeyNamesInKeyVault
+    /// 
+    /// $query = New-RscQueryAzure -KeyNamesInKeyVault
+    /// 
+    /// # REQUIRED
+    /// $query.Var.kmsKeyVaultId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
     /// 
     /// 
     /// 
@@ -871,6 +1234,71 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;AzureKeyVault&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the KeyVersionsForKeyNameInKeyVault operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: KeyVersionsForKeyNameInKeyVault
+    /// 
+    /// $query = New-RscQueryAzure -KeyVersionsForKeyNameInKeyVault
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	kmsKeyVaultId = $someString
+    /// 	# REQUIRED
+    /// 	keyName = $someString
+    /// 	# OPTIONAL
+    /// 	locationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;KeyVersionInAzureKeyVault&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the LatestPermissionsByPermissionsGroup operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: LatestPermissionsByPermissionsGroup
+    /// 
+    /// $query = New-RscQueryAzure -LatestPermissionsByPermissionsGroup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.features = @(
+    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureFeaturePermissions&gt;
     /// 
     /// 
     /// 
@@ -1643,6 +2071,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StorageAccount operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: StorageAccount
+    /// 
+    /// $query = New-RscQueryAzure -StorageAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.azureStorageAccountRubrikId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureStorageAccount
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the StorageAccounts operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -1993,6 +2449,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	validations = @(
+    /// 		$someClusterCreateValidations # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCreateValidations]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -2000,6 +2460,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ValidationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the VerifyKeyVault operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: VerifyKeyVault
+    /// 
+    /// $query = New-RscQueryAzure -VerifyKeyVault
+    /// 
+    /// # REQUIRED
+    /// $query.Var.azureKeyVaultInfo = @{
+    /// 	# REQUIRED
+    /// 	instanceName = $someString
+    /// 	# OPTIONAL
+    /// 	description = $someString
+    /// 	# REQUIRED
+    /// 	tenantId = $someString
+    /// 	# REQUIRED
+    /// 	clientId = $someString
+    /// 	# REQUIRED
+    /// 	clientSecret = $someString
+    /// 	# REQUIRED
+    /// 	vaultUrl = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureKeyVaultVerification
     /// 
     /// 
     /// 
@@ -2026,10 +2527,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AdDirectories",
                 "AdDirectory",
                 "AdObjectsByType",
+                "AdRelatedObjects",
                 "ArmTemplatesByFeature",
+                "ArmTemplatesByFeatureForRecovery",
+                "BlobContainersByStorageAccount",
                 "CdmVersions",
                 "CheckPersistentStorageSubscriptionCanUnmap",
+                "CloudAccountCheckRefreshTokenExistsForRecovery",
                 "CloudAccountDetailsForFeature",
+                "CloudAccountGrantedPermissionsGroups",
+                "CloudAccountGrantedPermissionsGroupsForRecovery",
                 "CloudAccountMissingPermissions",
                 "CloudAccountPermissionConfig",
                 "CloudAccountSubnetsByRegion",
@@ -2038,13 +2545,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CloudAccountTenant",
                 "CloudAccountTenantWithExoConfigs",
                 "CloudAccountTenants",
+                "CloudAccountTenantsWithExoConfigs",
+                "ContainersInStorageAccountSnapshot",
                 "DiskEncryptionSetsByRegion",
                 "EncryptionKeys",
                 "ExocomputeConfigsInAccount",
                 "HasRelicAdSnapshot",
                 "HostedAzureRegions",
+                "IsCloudAccountManagedViaOauth",
                 "IsStorageAccountNameAvailable",
+                "KeyNamesInKeyVault",
                 "KeyVaultsByRegion",
+                "KeyVersionsForKeyNameInKeyVault",
+                "LatestPermissionsByPermissionsGroup",
                 "ManagedIdentities",
                 "Nsgs",
                 "Regions",
@@ -2062,6 +2575,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
                 "SqlManagedInstanceServer",
                 "SqlManagedInstanceServers",
+                "StorageAccount",
                 "StorageAccounts",
                 "StorageAccountsByRegion",
                 "Subnets",
@@ -2070,6 +2584,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "VNets",
                 "ValidateCloudAccountExocomputeConfigurations",
                 "ValidateCreateClusterInput",
+                "VerifyKeyVault",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -2094,8 +2609,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AdObjectsByType":
                         this.ProcessRecord_AdObjectsByType();
                         break;
+                    case "AdRelatedObjects":
+                        this.ProcessRecord_AdRelatedObjects();
+                        break;
                     case "ArmTemplatesByFeature":
                         this.ProcessRecord_ArmTemplatesByFeature();
+                        break;
+                    case "ArmTemplatesByFeatureForRecovery":
+                        this.ProcessRecord_ArmTemplatesByFeatureForRecovery();
+                        break;
+                    case "BlobContainersByStorageAccount":
+                        this.ProcessRecord_BlobContainersByStorageAccount();
                         break;
                     case "CdmVersions":
                         this.ProcessRecord_CdmVersions();
@@ -2103,8 +2627,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CheckPersistentStorageSubscriptionCanUnmap":
                         this.ProcessRecord_CheckPersistentStorageSubscriptionCanUnmap();
                         break;
+                    case "CloudAccountCheckRefreshTokenExistsForRecovery":
+                        this.ProcessRecord_CloudAccountCheckRefreshTokenExistsForRecovery();
+                        break;
                     case "CloudAccountDetailsForFeature":
                         this.ProcessRecord_CloudAccountDetailsForFeature();
+                        break;
+                    case "CloudAccountGrantedPermissionsGroups":
+                        this.ProcessRecord_CloudAccountGrantedPermissionsGroups();
+                        break;
+                    case "CloudAccountGrantedPermissionsGroupsForRecovery":
+                        this.ProcessRecord_CloudAccountGrantedPermissionsGroupsForRecovery();
                         break;
                     case "CloudAccountMissingPermissions":
                         this.ProcessRecord_CloudAccountMissingPermissions();
@@ -2130,6 +2663,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CloudAccountTenants":
                         this.ProcessRecord_CloudAccountTenants();
                         break;
+                    case "CloudAccountTenantsWithExoConfigs":
+                        this.ProcessRecord_CloudAccountTenantsWithExoConfigs();
+                        break;
+                    case "ContainersInStorageAccountSnapshot":
+                        this.ProcessRecord_ContainersInStorageAccountSnapshot();
+                        break;
                     case "DiskEncryptionSetsByRegion":
                         this.ProcessRecord_DiskEncryptionSetsByRegion();
                         break;
@@ -2145,11 +2684,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "HostedAzureRegions":
                         this.ProcessRecord_HostedAzureRegions();
                         break;
+                    case "IsCloudAccountManagedViaOauth":
+                        this.ProcessRecord_IsCloudAccountManagedViaOauth();
+                        break;
                     case "IsStorageAccountNameAvailable":
                         this.ProcessRecord_IsStorageAccountNameAvailable();
                         break;
+                    case "KeyNamesInKeyVault":
+                        this.ProcessRecord_KeyNamesInKeyVault();
+                        break;
                     case "KeyVaultsByRegion":
                         this.ProcessRecord_KeyVaultsByRegion();
+                        break;
+                    case "KeyVersionsForKeyNameInKeyVault":
+                        this.ProcessRecord_KeyVersionsForKeyNameInKeyVault();
+                        break;
+                    case "LatestPermissionsByPermissionsGroup":
+                        this.ProcessRecord_LatestPermissionsByPermissionsGroup();
                         break;
                     case "ManagedIdentities":
                         this.ProcessRecord_ManagedIdentities();
@@ -2202,6 +2753,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "SqlManagedInstanceServers":
                         this.ProcessRecord_SqlManagedInstanceServers();
                         break;
+                    case "StorageAccount":
+                        this.ProcessRecord_StorageAccount();
+                        break;
                     case "StorageAccounts":
                         this.ProcessRecord_StorageAccounts();
                         break;
@@ -2225,6 +2779,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ValidateCreateClusterInput":
                         this.ProcessRecord_ValidateCreateClusterInput();
+                        break;
+                    case "VerifyKeyVault":
+                        this.ProcessRecord_VerifyKeyVault();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -2264,12 +2821,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // azureAdRelatedObjects.
+        internal void ProcessRecord_AdRelatedObjects()
+        {
+            this._logger.name += " -AdRelatedObjects";
+            // Create new graphql operation azureAdRelatedObjects
+            InitQueryAzureAdRelatedObjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allAzureArmTemplatesByFeature.
         internal void ProcessRecord_ArmTemplatesByFeature()
         {
             this._logger.name += " -ArmTemplatesByFeature";
             // Create new graphql operation allAzureArmTemplatesByFeature
             InitQueryAllAzureArmTemplatesByFeature();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAzureArmTemplatesByFeatureForRecovery.
+        internal void ProcessRecord_ArmTemplatesByFeatureForRecovery()
+        {
+            this._logger.name += " -ArmTemplatesByFeatureForRecovery";
+            // Create new graphql operation allAzureArmTemplatesByFeatureForRecovery
+            InitQueryAllAzureArmTemplatesByFeatureForRecovery();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAzureBlobContainersByStorageAccount.
+        internal void ProcessRecord_BlobContainersByStorageAccount()
+        {
+            this._logger.name += " -BlobContainersByStorageAccount";
+            // Create new graphql operation allAzureBlobContainersByStorageAccount
+            InitQueryAllAzureBlobContainersByStorageAccount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2291,12 +2875,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // azureCloudAccountCheckRefreshTokenExistsForRecovery.
+        internal void ProcessRecord_CloudAccountCheckRefreshTokenExistsForRecovery()
+        {
+            this._logger.name += " -CloudAccountCheckRefreshTokenExistsForRecovery";
+            // Create new graphql operation azureCloudAccountCheckRefreshTokenExistsForRecovery
+            InitQueryAzureCloudAccountCheckRefreshTokenExistsForRecovery();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // azureCloudAccountDetailsForFeature.
         internal void ProcessRecord_CloudAccountDetailsForFeature()
         {
             this._logger.name += " -CloudAccountDetailsForFeature";
             // Create new graphql operation azureCloudAccountDetailsForFeature
             InitQueryAzureCloudAccountDetailsForFeature();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureCloudAccountGrantedPermissionsGroups.
+        internal void ProcessRecord_CloudAccountGrantedPermissionsGroups()
+        {
+            this._logger.name += " -CloudAccountGrantedPermissionsGroups";
+            // Create new graphql operation azureCloudAccountGrantedPermissionsGroups
+            InitQueryAzureCloudAccountGrantedPermissionsGroups();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureCloudAccountGrantedPermissionsGroupsForRecovery.
+        internal void ProcessRecord_CloudAccountGrantedPermissionsGroupsForRecovery()
+        {
+            this._logger.name += " -CloudAccountGrantedPermissionsGroupsForRecovery";
+            // Create new graphql operation azureCloudAccountGrantedPermissionsGroupsForRecovery
+            InitQueryAzureCloudAccountGrantedPermissionsGroupsForRecovery();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2372,6 +2983,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // allAzureCloudAccountTenantsWithExoConfigs.
+        internal void ProcessRecord_CloudAccountTenantsWithExoConfigs()
+        {
+            this._logger.name += " -CloudAccountTenantsWithExoConfigs";
+            // Create new graphql operation allAzureCloudAccountTenantsWithExoConfigs
+            InitQueryAllAzureCloudAccountTenantsWithExoConfigs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allContainersInAzureStorageAccountSnapshot.
+        internal void ProcessRecord_ContainersInStorageAccountSnapshot()
+        {
+            this._logger.name += " -ContainersInStorageAccountSnapshot";
+            // Create new graphql operation allContainersInAzureStorageAccountSnapshot
+            InitQueryAllContainersInAzureStorageAccountSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allAzureDiskEncryptionSetsByRegion.
         internal void ProcessRecord_DiskEncryptionSetsByRegion()
         {
@@ -2417,6 +3046,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // isAzureCloudAccountManagedViaOauth.
+        internal void ProcessRecord_IsCloudAccountManagedViaOauth()
+        {
+            this._logger.name += " -IsCloudAccountManagedViaOauth";
+            // Create new graphql operation isAzureCloudAccountManagedViaOauth
+            InitQueryIsAzureCloudAccountManagedViaOauth();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // isAzureStorageAccountNameAvailable.
         internal void ProcessRecord_IsStorageAccountNameAvailable()
         {
@@ -2426,12 +3064,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // keyNamesInAzureKeyVault.
+        internal void ProcessRecord_KeyNamesInKeyVault()
+        {
+            this._logger.name += " -KeyNamesInKeyVault";
+            // Create new graphql operation keyNamesInAzureKeyVault
+            InitQueryKeyNamesInAzureKeyVault();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allAzureKeyVaultsByRegion.
         internal void ProcessRecord_KeyVaultsByRegion()
         {
             this._logger.name += " -KeyVaultsByRegion";
             // Create new graphql operation allAzureKeyVaultsByRegion
             InitQueryAllAzureKeyVaultsByRegion();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // keyVersionsForKeyNameInAzureKeyVault.
+        internal void ProcessRecord_KeyVersionsForKeyNameInKeyVault()
+        {
+            this._logger.name += " -KeyVersionsForKeyNameInKeyVault";
+            // Create new graphql operation keyVersionsForKeyNameInAzureKeyVault
+            InitQueryKeyVersionsForKeyNameInAzureKeyVault();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAzureLatestPermissionsByPermissionsGroup.
+        internal void ProcessRecord_LatestPermissionsByPermissionsGroup()
+        {
+            this._logger.name += " -LatestPermissionsByPermissionsGroup";
+            // Create new graphql operation allAzureLatestPermissionsByPermissionsGroup
+            InitQueryAllAzureLatestPermissionsByPermissionsGroup();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2588,6 +3253,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // azureStorageAccount.
+        internal void ProcessRecord_StorageAccount()
+        {
+            this._logger.name += " -StorageAccount";
+            // Create new graphql operation azureStorageAccount
+            InitQueryAzureStorageAccount();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // azureStorageAccounts.
         internal void ProcessRecord_StorageAccounts()
         {
@@ -2657,6 +3331,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ValidateCreateClusterInput";
             // Create new graphql operation validateCreateAzureClusterInput
             InitQueryValidateCreateAzureClusterInput();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // verifyAzureKeyVault.
+        internal void ProcessRecord_VerifyKeyVault()
+        {
+            this._logger.name += " -VerifyKeyVault";
+            // Create new graphql operation verifyAzureKeyVault
+            InitQueryVerifyAzureKeyVault();
         }
 
 
@@ -2815,6 +3498,70 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
+        // azureAdRelatedObjects(
+        //     first: Int
+        //     after: String
+        //     sortByOptionCommonSearch: [AzureAdObjectCommonSearchType!]! = [NAME]
+        //     sortOrder: SortOrder
+        //     input: AzureAdRelatedObjectsInput!
+        //   ): AzureAdObjectConnection!
+        internal void InitQueryAzureAdRelatedObjects()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortByOptionCommonSearch", "[AzureAdObjectCommonSearchType!]!"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("input", "AzureAdRelatedObjectsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureAdRelatedObjects",
+                "($first: Int,$after: String,$sortByOptionCommonSearch: [AzureAdObjectCommonSearchType!]!,$sortOrder: SortOrder,$input: AzureAdRelatedObjectsInput!)",
+                "AzureAdObjectConnection",
+                Query.AzureAdRelatedObjects,
+                Query.AzureAdRelatedObjectsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# REQUIRED
+$query.Var.sortByOptionCommonSearch = @(
+	$someAzureAdObjectCommonSearchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectCommonSearchType]) for enum values.
+)
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	snapshotFid = $someString
+	# REQUIRED
+	workloadFid = $someString
+	# REQUIRED
+	azureAdObjectUuid = $someString
+	# OPTIONAL
+	azureAdCommonSearchKeyword = $someString
+	# REQUIRED
+	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+	# REQUIRED
+	azureAdRelationshipType = @(
+		@{
+			# REQUIRED
+			relationshipType = $someAzureAdRelationshipEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipEnumType]) for enum values.
+		}
+	)
+	# OPTIONAL
+	azureAdCommonSearchKeywordType = $someAzureAdObjectCommonSearchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectCommonSearchType]) for enum values.
+	# OPTIONAL
+	azureAdRelatedObjectTypeFilter = @(
+		$someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // allAzureArmTemplatesByFeature(input: AzureArmTemplatesByFeatureInput!): [AzureArmTemplateByFeature!]!
         internal void InitQueryAllAzureArmTemplatesByFeature()
         {
@@ -2852,6 +3599,93 @@ $query.Var.input = @{
 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 		}
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allAzureArmTemplatesByFeatureForRecovery(input: AzureArmTemplatesByFeatureInput!): [AzureArmTemplateByFeature!]!
+        internal void InitQueryAllAzureArmTemplatesByFeatureForRecovery()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AzureArmTemplatesByFeatureInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllAzureArmTemplatesByFeatureForRecovery",
+                "($input: AzureArmTemplatesByFeatureInput!)",
+                "List<AzureArmTemplateByFeature>",
+                Query.AllAzureArmTemplatesByFeatureForRecovery,
+                Query.AllAzureArmTemplatesByFeatureForRecoveryFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	customerTenantDomainName = $someString
+	# OPTIONAL
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# REQUIRED
+	operationType = $someCloudAccountOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountOperation]) for enum values.
+	# REQUIRED
+	cloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
+	# OPTIONAL
+	featuresToInclude = @(
+		@{
+			# OPTIONAL
+			permissionsGroups = @(
+				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+			# REQUIRED
+			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allAzureBlobContainersByStorageAccount(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     input: AzureBlobContainersByStorageAccountInput!
+        //   ): AzureBlobContainerCcprovisionConnection!
+        internal void InitQueryAllAzureBlobContainersByStorageAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("input", "AzureBlobContainersByStorageAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllAzureBlobContainersByStorageAccount",
+                "($first: Int,$after: String,$last: Int,$before: String,$input: AzureBlobContainersByStorageAccountInput!)",
+                "AzureBlobContainerCcprovisionConnection",
+                Query.AllAzureBlobContainersByStorageAccount,
+                Query.AllAzureBlobContainersByStorageAccountFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
+	resourceGroup = $someString
+	# OPTIONAL
+	storageAccount = $someString
 }"
             );
         }
@@ -2908,6 +3742,29 @@ $query.Var.unmappingValidationType = $someUnmappingValidationType # Call [Enum]:
         }
 
         // Create new GraphQL Query:
+        // azureCloudAccountCheckRefreshTokenExistsForRecovery(cloudAccountId: UUID!, azureNativeSubscriptionId: UUID): AzureCloudAccountCheckRefreshTokenExistsReply!
+        internal void InitQueryAzureCloudAccountCheckRefreshTokenExistsForRecovery()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountId", "UUID!"),
+                Tuple.Create("azureNativeSubscriptionId", "UUID"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureCloudAccountCheckRefreshTokenExistsForRecovery",
+                "($cloudAccountId: UUID!,$azureNativeSubscriptionId: UUID)",
+                "AzureCloudAccountCheckRefreshTokenExistsReply",
+                Query.AzureCloudAccountCheckRefreshTokenExistsForRecovery,
+                Query.AzureCloudAccountCheckRefreshTokenExistsForRecoveryFieldSpec,
+                @"# REQUIRED
+$query.Var.cloudAccountId = $someString
+# OPTIONAL
+$query.Var.azureNativeSubscriptionId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // azureCloudAccountDetailsForFeature(featureId: UUID!): AzureCloudAccountDetailsForFeatureReply!
         internal void InitQueryAzureCloudAccountDetailsForFeature()
         {
@@ -2924,6 +3781,55 @@ $query.Var.unmappingValidationType = $someUnmappingValidationType # Call [Enum]:
                 Query.AzureCloudAccountDetailsForFeatureFieldSpec,
                 @"# REQUIRED
 $query.Var.featureId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureCloudAccountGrantedPermissionsGroups(cloudAccountId: UUID!, feature: CloudAccountFeature!): AzureCloudAccountGrantedPermissionsGroupsReply!
+        internal void InitQueryAzureCloudAccountGrantedPermissionsGroups()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountId", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureCloudAccountGrantedPermissionsGroups",
+                "($cloudAccountId: UUID!,$feature: CloudAccountFeature!)",
+                "AzureCloudAccountGrantedPermissionsGroupsReply",
+                Query.AzureCloudAccountGrantedPermissionsGroups,
+                Query.AzureCloudAccountGrantedPermissionsGroupsFieldSpec,
+                @"# REQUIRED
+$query.Var.cloudAccountId = $someString
+# REQUIRED
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureCloudAccountGrantedPermissionsGroupsForRecovery(cloudAccountId: UUID!, azureNativeSubscriptionId: UUID, feature: CloudAccountFeature!): AzureCloudAccountGrantedPermissionsGroupsReply!
+        internal void InitQueryAzureCloudAccountGrantedPermissionsGroupsForRecovery()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountId", "UUID!"),
+                Tuple.Create("azureNativeSubscriptionId", "UUID"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureCloudAccountGrantedPermissionsGroupsForRecovery",
+                "($cloudAccountId: UUID!,$azureNativeSubscriptionId: UUID,$feature: CloudAccountFeature!)",
+                "AzureCloudAccountGrantedPermissionsGroupsReply",
+                Query.AzureCloudAccountGrantedPermissionsGroupsForRecovery,
+                Query.AzureCloudAccountGrantedPermissionsGroupsForRecoveryFieldSpec,
+                @"# REQUIRED
+$query.Var.cloudAccountId = $someString
+# OPTIONAL
+$query.Var.azureNativeSubscriptionId = $someString
+# REQUIRED
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
             );
         }
 
@@ -3173,6 +4079,51 @@ $query.Var.includeSubscriptionDetails = $someBoolean"
         }
 
         // Create new GraphQL Query:
+        // allAzureCloudAccountTenantsWithExoConfigs(features: [CloudAccountFeature!]!): [AzureCloudAccountTenantWithExoConfigs!]!
+        internal void InitQueryAllAzureCloudAccountTenantsWithExoConfigs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("features", "[CloudAccountFeature!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllAzureCloudAccountTenantsWithExoConfigs",
+                "($features: [CloudAccountFeature!]!)",
+                "List<AzureCloudAccountTenantWithExoConfigs>",
+                Query.AllAzureCloudAccountTenantsWithExoConfigs,
+                Query.AllAzureCloudAccountTenantsWithExoConfigsFieldSpec,
+                @"# REQUIRED
+$query.Var.features = @(
+	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allContainersInAzureStorageAccountSnapshot(snapshotId: UUID!, prefix: String): [String!]!
+        internal void InitQueryAllContainersInAzureStorageAccountSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("snapshotId", "UUID!"),
+                Tuple.Create("prefix", "String"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllContainersInAzureStorageAccountSnapshot",
+                "($snapshotId: UUID!,$prefix: String)",
+                "List<System.String>",
+                Query.AllContainersInAzureStorageAccountSnapshot,
+                Query.AllContainersInAzureStorageAccountSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.snapshotId = $someString
+# OPTIONAL
+$query.Var.prefix = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // allAzureDiskEncryptionSetsByRegion(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!): [AzureNativeDiskEncryptionSet!]!
         internal void InitQueryAllAzureDiskEncryptionSetsByRegion()
         {
@@ -3289,6 +4240,26 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
+        // isAzureCloudAccountManagedViaOauth(cloudAccountId: UUID!): Boolean!
+        internal void InitQueryIsAzureCloudAccountManagedViaOauth()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryIsAzureCloudAccountManagedViaOauth",
+                "($cloudAccountId: UUID!)",
+                "System.Boolean",
+                Query.IsAzureCloudAccountManagedViaOauth,
+                Query.IsAzureCloudAccountManagedViaOauthFieldSpec,
+                @"# REQUIRED
+$query.Var.cloudAccountId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // isAzureStorageAccountNameAvailable(azureSubscriptionRubrikId: UUID!, storageAccountName: String!): Boolean!
         internal void InitQueryIsAzureStorageAccountNameAvailable()
         {
@@ -3308,6 +4279,26 @@ $query.Var.input = @{
 $query.Var.azureSubscriptionRubrikId = $someString
 # REQUIRED
 $query.Var.storageAccountName = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // keyNamesInAzureKeyVault(kmsKeyVaultId: UUID!): [String!]!
+        internal void InitQueryKeyNamesInAzureKeyVault()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("kmsKeyVaultId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryKeyNamesInAzureKeyVault",
+                "($kmsKeyVaultId: UUID!)",
+                "List<System.String>",
+                Query.KeyNamesInAzureKeyVault,
+                Query.KeyNamesInAzureKeyVaultFieldSpec,
+                @"# REQUIRED
+$query.Var.kmsKeyVaultId = $someString"
             );
         }
 
@@ -3335,6 +4326,55 @@ $query.Var.azureKeyVaultsInput = @{
 	# OPTIONAL
 	userAssignedManagedIdentityPrincipalId = $someString
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // keyVersionsForKeyNameInAzureKeyVault(input: GetKeyVersionsOfAzureKeyInput!): [KeyVersionInAzureKeyVault!]!
+        internal void InitQueryKeyVersionsForKeyNameInAzureKeyVault()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetKeyVersionsOfAzureKeyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryKeyVersionsForKeyNameInAzureKeyVault",
+                "($input: GetKeyVersionsOfAzureKeyInput!)",
+                "List<KeyVersionInAzureKeyVault>",
+                Query.KeyVersionsForKeyNameInAzureKeyVault,
+                Query.KeyVersionsForKeyNameInAzureKeyVaultFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	kmsKeyVaultId = $someString
+	# REQUIRED
+	keyName = $someString
+	# OPTIONAL
+	locationId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allAzureLatestPermissionsByPermissionsGroup(features: [CloudAccountFeature!]!): [AzureFeaturePermissions!]!
+        internal void InitQueryAllAzureLatestPermissionsByPermissionsGroup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("features", "[CloudAccountFeature!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllAzureLatestPermissionsByPermissionsGroup",
+                "($features: [CloudAccountFeature!]!)",
+                "List<AzureFeaturePermissions>",
+                Query.AllAzureLatestPermissionsByPermissionsGroup,
+                Query.AllAzureLatestPermissionsByPermissionsGroupFieldSpec,
+                @"# REQUIRED
+$query.Var.features = @(
+	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)"
             );
         }
 
@@ -4052,6 +5092,26 @@ $query.Var.azureSqlManagedInstanceServerFilters = @{
         }
 
         // Create new GraphQL Query:
+        // azureStorageAccount(azureStorageAccountRubrikId: UUID!): AzureStorageAccount!
+        internal void InitQueryAzureStorageAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("azureStorageAccountRubrikId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureStorageAccount",
+                "($azureStorageAccountRubrikId: UUID!)",
+                "AzureStorageAccount",
+                Query.AzureStorageAccount,
+                Query.AzureStorageAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.azureStorageAccountRubrikId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // azureStorageAccounts(tenantId: String!, subscriptionId: UUID!, regionName: String!): StorageAccountConnection!
         internal void InitQueryAzureStorageAccounts()
         {
@@ -4355,6 +5415,43 @@ $query.Var.input = @{
 		# OPTIONAL
 		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
 	}
+	# OPTIONAL
+	validations = @(
+		$someClusterCreateValidations # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCreateValidations]) for enum values.
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // verifyAzureKeyVault(azureKeyVaultInfo: AzureKeyVaultInfoInput!): AzureKeyVaultVerification!
+        internal void InitQueryVerifyAzureKeyVault()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("azureKeyVaultInfo", "AzureKeyVaultInfoInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVerifyAzureKeyVault",
+                "($azureKeyVaultInfo: AzureKeyVaultInfoInput!)",
+                "AzureKeyVaultVerification",
+                Query.VerifyAzureKeyVault,
+                Query.VerifyAzureKeyVaultFieldSpec,
+                @"# REQUIRED
+$query.Var.azureKeyVaultInfo = @{
+	# REQUIRED
+	instanceName = $someString
+	# OPTIONAL
+	description = $someString
+	# REQUIRED
+	tenantId = $someString
+	# REQUIRED
+	clientId = $someString
+	# REQUIRED
+	clientSecret = $someString
+	# REQUIRED
+	vaultUrl = $someString
 }"
             );
         }

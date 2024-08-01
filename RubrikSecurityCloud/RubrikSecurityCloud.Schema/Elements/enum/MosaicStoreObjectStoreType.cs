@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         MOSAIC_STORE_OBJECT_STORE_TYPE_SWIFT_STORE,
 
         [EnumMember(Value = "MOSAIC_STORE_OBJECT_STORE_TYPE_VFS_STORE")]
-        MOSAIC_STORE_OBJECT_STORE_TYPE_VFS_STORE
+        MOSAIC_STORE_OBJECT_STORE_TYPE_VFS_STORE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MosaicStoreObjectStoreType

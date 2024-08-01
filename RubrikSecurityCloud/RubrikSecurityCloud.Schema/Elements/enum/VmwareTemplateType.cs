@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         UNDEFINED,
 
         [EnumMember(Value = "VM")]
-        VM
+        VM,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum VmwareTemplateType

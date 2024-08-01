@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         NAME,
 
         [EnumMember(Value = "SLA_DOMAIN")]
-        SLA_DOMAIN
+        SLA_DOMAIN,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudNativeTagRuleFilterFields

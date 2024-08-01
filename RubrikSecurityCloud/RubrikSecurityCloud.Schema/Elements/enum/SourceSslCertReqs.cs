@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SOURCE_SSL_CERT_REQS_OPTIONAL,
 
         [EnumMember(Value = "SOURCE_SSL_CERT_REQS_REQUIRED")]
-        SOURCE_SSL_CERT_REQS_REQUIRED
+        SOURCE_SSL_CERT_REQS_REQUIRED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SourceSslCertReqs

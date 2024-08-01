@@ -127,3 +127,4 @@ Represents all the object types for which we expect to see audits.
 - INTEL_FEED - Threat intel.
 - NUTANIX_ERA - Nutanix Era audit object.
 - NAS_SYSTEM - NAS system.
+- ACTIVE_DIRECTORY_FOREST - Active Directory forest.

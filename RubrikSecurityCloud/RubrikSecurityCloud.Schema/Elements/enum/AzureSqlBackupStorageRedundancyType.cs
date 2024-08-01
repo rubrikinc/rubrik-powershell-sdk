@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         LRS,
 
         [EnumMember(Value = "ZRS")]
-        ZRS
+        ZRS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureSqlBackupStorageRedundancyType

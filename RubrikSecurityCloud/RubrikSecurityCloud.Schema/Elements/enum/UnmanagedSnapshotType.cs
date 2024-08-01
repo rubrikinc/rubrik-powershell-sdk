@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         UNMANAGED_SNAPSHOT_TYPE_POLICY_BASED,
 
         [EnumMember(Value = "UNMANAGED_SNAPSHOT_TYPE_RETRIEVED")]
-        UNMANAGED_SNAPSHOT_TYPE_RETRIEVED
+        UNMANAGED_SNAPSHOT_TYPE_RETRIEVED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UnmanagedSnapshotType

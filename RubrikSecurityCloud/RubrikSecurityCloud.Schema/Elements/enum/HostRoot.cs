@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         NAS_HOST_ROOT,
 
         [EnumMember(Value = "WINDOWS_HOST_ROOT")]
-        WINDOWS_HOST_ROOT
+        WINDOWS_HOST_ROOT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HostRoot

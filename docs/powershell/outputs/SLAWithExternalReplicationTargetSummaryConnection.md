@@ -1,0 +1,11 @@
+### SLAWithExternalReplicationTargetSummaryConnection
+Paginated list of SLAWithExternalReplicationTargetSummary objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+
+- edges: list of SLAWithExternalReplicationTargetSummaryEdges
+  - List of SLAWithExternalReplicationTargetSummary objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+- nodes: list of SLAWithExternalReplicationTargetSummarys
+  - List of SLAWithExternalReplicationTargetSummary objects.
+- pageInfo: PageInfo
+  - General information about this page of results.
+- count: System.Int32
+  - Total number of SLAWithExternalReplicationTargetSummary objects matching the request arguments.

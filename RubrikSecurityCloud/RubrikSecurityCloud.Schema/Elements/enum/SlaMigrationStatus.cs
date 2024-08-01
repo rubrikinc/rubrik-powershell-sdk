@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         STUCK,
 
         [EnumMember(Value = "SUCCEEDED")]
-        SUCCEEDED
+        SUCCEEDED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SlaMigrationStatus

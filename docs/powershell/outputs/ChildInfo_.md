@@ -1,0 +1,2 @@
+### ChildInfo
+- vSphereVmInfo: VsphereBlueprintChildSnapshotInfo

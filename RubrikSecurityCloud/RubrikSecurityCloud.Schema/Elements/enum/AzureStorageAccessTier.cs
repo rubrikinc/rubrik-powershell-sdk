@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         HOT,
 
         [EnumMember(Value = "UNKNOWN_STORAGE_TIER")]
-        UNKNOWN_STORAGE_TIER
+        UNKNOWN_STORAGE_TIER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureStorageAccessTier

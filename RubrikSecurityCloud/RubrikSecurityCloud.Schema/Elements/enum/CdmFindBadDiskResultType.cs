@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         FIND_BAD_DISK_RESULT_ENUM_OKAY,
 
         [EnumMember(Value = "FIND_BAD_DISK_RESULT_ENUM_TURNED_OFF")]
-        FIND_BAD_DISK_RESULT_ENUM_TURNED_OFF
+        FIND_BAD_DISK_RESULT_ENUM_TURNED_OFF,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CdmFindBadDiskResultType

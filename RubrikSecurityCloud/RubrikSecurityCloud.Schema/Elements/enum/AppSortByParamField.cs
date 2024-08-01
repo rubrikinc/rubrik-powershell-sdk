@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         IS_AUTHENTICATED,
 
         [EnumMember(Value = "SUBSCRIPTION")]
-        SUBSCRIPTION
+        SUBSCRIPTION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AppSortByParamField

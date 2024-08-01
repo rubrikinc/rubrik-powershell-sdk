@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         AND,
 
         [EnumMember(Value = "OR")]
-        OR
+        OR,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum JoinOpType

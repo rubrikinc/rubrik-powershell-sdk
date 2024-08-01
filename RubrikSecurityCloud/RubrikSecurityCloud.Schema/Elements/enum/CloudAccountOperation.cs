@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ADD,
 
         [EnumMember(Value = "UPGRADE")]
-        UPGRADE
+        UPGRADE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudAccountOperation

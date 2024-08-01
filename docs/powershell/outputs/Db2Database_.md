@@ -1,0 +1,109 @@
+### Db2Database
+Db2 Database details object.
+
+- primaryClusterUuid: System.String
+  - Uuid of the primary cluster.
+- lastSyncTime: DateTime
+  - Time stamp of when last metadata sync happened for the Db2 database.
+- cdmId: System.String
+  - Id associated with Db2 database in CDM.
+- isRelic: System.Boolean
+  - Whether the db2 database is a relic.
+- logBackupThreshold: System.String
+  - Threshold before new log backup takes place.
+- protectionDate: DateTime
+  - Db2 database SLA Domain protection start date.
+- db2DbType: Db2DatabaseType
+  - Type of Db2 database: STANDALONE, PARTITIONED, HADR, or UNKNOWN.
+- backupParallelism: System.Int32
+  - Specifies the value of the configuration parameter for parallelism in backup operations.
+- backupSessions: System.Int32
+  - Specifies the value of the configuration parameter for sessions in backup operations.
+- status: Db2DatabaseStatus
+  - Status of Db2 database: OK, WARNING, ERROR, UNKNOWN or UNSPECIFIED.
+- statusMessage: list of System.Strings
+  - Additional information about the current status of the Db2 database.
+- reportWorkload: Snappable
+  - Stats for DB2 database.
+- db2Instance: Db2Instance
+  - Db2 instance parent for the given database.
+- db2HadrMetadata: Db2HadrMetadata
+  - HADR metadata object for the specified Db2 database.
+- recoverableRanges: Db2RecoverableRangeConnection
+  - Connection of recoverable ranges for given Db2 database.
+- logSnapshots: Db2LogSnapshotConnection
+  - Connection of log snapshots for given Db2 database.
+- crossHostRecoveryMetadata: Db2CrossHostRecoveryMetadata
+  - Db2 cross host recovery enabled target hosts.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- id: System.String
+  - The FID of the hierarchy object.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- cdmLink: System.String
+  - A link to view the workload on the CDM cluster. For dev use only.
+- missedSnapshotConnection: MissedSnapshotCommonConnection
+  - The list of missed snapshots for this workload.
+- missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection
+  - The list of missed snapshots for this workload.
+- snapshotConnection: CdmSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: CdmSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestIndexedSnapshot: CdmSnapshot
+  - The most recent indexed snapshot of this workload.
+- newestSnapshot: CdmSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: CdmSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestArchivedSnapshot: CdmSnapshot
+  - The newest snapshot archived to AWS.
+- newestReplicatedSnapshot: CdmSnapshot
+  - The newest snapshot replicated to a cluster.

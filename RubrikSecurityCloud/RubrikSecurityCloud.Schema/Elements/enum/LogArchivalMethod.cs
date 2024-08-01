@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         LOGARCHMET_H1,
 
         [EnumMember(Value = "LOGARCHMETH2")]
-        LOGARCHMET_H2
+        LOGARCHMET_H2,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum LogArchivalMethod

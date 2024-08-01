@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         NOT_SPECIFIED,
 
         [EnumMember(Value = "RELIC")]
-        RELIC
+        RELIC,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ObjectState

@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ONEZONE_IA")]
         ONEZONE_IA,
 
+        [EnumMember(Value = "REDUCED_REDUNDANCY")]
+        REDUCED_REDUNDANCY,
+
         [EnumMember(Value = "STANDARD")]
         STANDARD,
 
@@ -34,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         STANDARD_IA,
 
         [EnumMember(Value = "UNKNOWN_STORAGE_CLASS")]
-        UNKNOWN_STORAGE_CLASS
+        UNKNOWN_STORAGE_CLASS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsStorageClass

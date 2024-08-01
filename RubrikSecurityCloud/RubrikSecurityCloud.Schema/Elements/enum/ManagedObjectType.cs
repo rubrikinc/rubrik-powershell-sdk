@@ -418,7 +418,10 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_CLUSTER,
 
         [EnumMember(Value = "WINDOWS_FILESET")]
-        WINDOWS_FILESET
+        WINDOWS_FILESET,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ManagedObjectType

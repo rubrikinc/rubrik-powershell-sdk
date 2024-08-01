@@ -97,7 +97,10 @@ namespace RubrikSecurityCloud.Types
         TRIGGER_RCV_CUSTOM_FAIL_OVER,
 
         [EnumMember(Value = "UNLOCK_TPR_USER")]
-        UNLOCK_TPR_USER
+        UNLOCK_TPR_USER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TprRule

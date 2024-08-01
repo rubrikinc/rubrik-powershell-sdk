@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         CUSTOM_RETENTION,
 
         [EnumMember(Value = "DOWNLOAD")]
-        DOWNLOAD
+        DOWNLOAD,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnapshotCustomization

@@ -61,7 +61,13 @@ namespace RubrikSecurityCloud.Types
         SAP_HANA_SS_RECOVERY,
 
         [EnumMember(Value = "SNAPSHOT_PRIVATE_ACCESS")]
-        SNAPSHOT_PRIVATE_ACCESS
+        SNAPSHOT_PRIVATE_ACCESS,
+
+        [EnumMember(Value = "SQL_ARCHIVAL")]
+        SQL_ARCHIVAL,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PermissionsGroup

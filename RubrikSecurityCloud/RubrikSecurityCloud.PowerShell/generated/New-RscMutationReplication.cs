@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 6
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Replication' API domain:
-    /// CreatePair, DeletePair, DisablePause, EnablePause, UpdateNetworkThrottleBypass, or UpdateTarget.
+    /// AddDisabledLocation, CreatePair, DeletePair, DisablePause, EnablePause, UpdateNetworkThrottleBypass, or UpdateTarget.
     /// </summary>
     /// <description>
     /// New-RscMutationReplication creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 6 operations
+    /// There are 7 operations
     /// in the 'Replication' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreatePair, DeletePair, DisablePause, EnablePause, UpdateNetworkThrottleBypass, or UpdateTarget.
+    /// one of: AddDisabledLocation, CreatePair, DeletePair, DisablePause, EnablePause, UpdateNetworkThrottleBypass, or UpdateTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationReplication -CreatePair).Info().
+    /// (New-RscMutationReplication -AddDisabledLocation).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationReplication -CreatePair).Info().
+    /// (New-RscMutationReplication -AddDisabledLocation).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the AddDisabledLocation operation
+    /// of the 'Replication' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Replication
+    /// # API Operation: AddDisabledLocation
+    /// 
+    /// $query = New-RscMutationReplication -AddDisabledLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	definition = @{
+    /// 		# OPTIONAL
+    /// 		peerClusterCertificate = $someString
+    /// 		# REQUIRED
+    /// 		peerClusterName = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AddDisabledReplicationLocationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the CreatePair operation
@@ -113,6 +153,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	targetNetworkInterface = @{
     /// 		# OPTIONAL
     /// 		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	networkInterface = @{
+    /// 		# OPTIONAL
+    /// 		targetInterfaceName = $someString
+    /// 		# OPTIONAL
+    /// 		sourceInterfaceName = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	sourceClusterUuid = $someString
@@ -363,6 +410,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "AddDisabledLocation",
                 "CreatePair",
                 "DeletePair",
                 "DisablePause",
@@ -384,6 +432,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "AddDisabledLocation":
+                        this.ProcessRecord_AddDisabledLocation();
+                        break;
                     case "CreatePair":
                         this.ProcessRecord_CreatePair();
                         break;
@@ -410,6 +461,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // addDisabledReplicationLocation.
+        internal void ProcessRecord_AddDisabledLocation()
+        {
+            this._logger.name += " -AddDisabledLocation";
+            // Create new graphql operation addDisabledReplicationLocation
+            InitMutationAddDisabledReplicationLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -468,6 +528,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
 
         // Create new GraphQL Mutation:
+        // addDisabledReplicationLocation(input: AddDisabledReplicationLocationInput!): AddDisabledReplicationLocationReply!
+        internal void InitMutationAddDisabledReplicationLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AddDisabledReplicationLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAddDisabledReplicationLocation",
+                "($input: AddDisabledReplicationLocationInput!)",
+                "AddDisabledReplicationLocationReply",
+                Mutation.AddDisabledReplicationLocation,
+                Mutation.AddDisabledReplicationLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	definition = @{
+		# OPTIONAL
+		peerClusterCertificate = $someString
+		# REQUIRED
+		peerClusterName = $someString
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // createReplicationPair(input: CreateReplicationPairInput!): Void
         internal void InitMutationCreateReplicationPair()
         {
@@ -506,6 +598,13 @@ $query.Var.input = @{
 	targetNetworkInterface = @{
 		# OPTIONAL
 		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
+	}
+	# OPTIONAL
+	networkInterface = @{
+		# OPTIONAL
+		targetInterfaceName = $someString
+		# OPTIONAL
+		sourceInterfaceName = $someString
 	}
 	# REQUIRED
 	sourceClusterUuid = $someString

@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         COMPLIANCE,
 
         [EnumMember(Value = "DISCOVERY")]
-        DISCOVERY
+        DISCOVERY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClassificationPolicyMode

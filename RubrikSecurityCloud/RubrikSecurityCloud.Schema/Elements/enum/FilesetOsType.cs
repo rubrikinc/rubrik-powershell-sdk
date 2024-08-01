@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         UNIX_LIKE,
 
         [EnumMember(Value = "WINDOWS")]
-        WINDOWS
+        WINDOWS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FilesetOsType

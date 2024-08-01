@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region NutanixVm
  
-    public class NutanixVm: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, NutanixCategoryDescendantType, NutanixCategoryValueDescendantType, NutanixCategoryValueLogicalChildType, NutanixClusterDescendantType, NutanixClusterLogicalChildType, NutanixPrismCentralDescendantType
+    public class NutanixVm: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, NutanixCategoryDescendantType, NutanixCategoryValueDescendantType, NutanixCategoryValueLogicalChildType, NutanixClusterDescendantType, NutanixClusterLogicalChildType, NutanixPrismCentralDescendantType, RecoveryPlanChildWorkload
     {
         #region members
 

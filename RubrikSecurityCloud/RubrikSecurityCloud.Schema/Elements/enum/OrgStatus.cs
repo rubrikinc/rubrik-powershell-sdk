@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         REFRESHING,
 
         [EnumMember(Value = "UNHEALTHY")]
-        UNHEALTHY
+        UNHEALTHY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum OrgStatus

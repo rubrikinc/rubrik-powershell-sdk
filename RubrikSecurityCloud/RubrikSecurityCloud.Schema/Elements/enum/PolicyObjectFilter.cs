@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         HAS_OBJECTS,
 
         [EnumMember(Value = "NO_OBJECTS")]
-        NO_OBJECTS
+        NO_OBJECTS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PolicyObjectFilter

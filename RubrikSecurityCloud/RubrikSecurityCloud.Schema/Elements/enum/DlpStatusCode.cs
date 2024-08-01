@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         SERVICE_ACCOUNT_INSUFFICIENT_PERMISSIONS,
 
         [EnumMember(Value = "SERVICE_ACCOUNT_MISSING")]
-        SERVICE_ACCOUNT_MISSING
+        SERVICE_ACCOUNT_MISSING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DlpStatusCode

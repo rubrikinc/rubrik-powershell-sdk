@@ -3590,6 +3590,11 @@ type Query {
   getKorgTaskchainStatus(
     # Taskchain ID.
     taskchainId: String!): GetTaskchainStatusReply! @deprecated(reason: "Use `taskchain` field instead.")
+
+  # Permissions assigned to the role that are in effect.
+  getPermissions(
+    # ID of the role.
+    roleId: String!): [Permission!]! @deprecated(reason: "Use allEffectiveRbacPermissions instead.")
   getRolesByIds(roleIds: [String!]!): [Role!]!
   getUserDownloads(
     # Returns the first n elements from the list.
@@ -4459,6 +4464,9 @@ type Query {
     # The input for the ListO365DirectoryObjectAttributes mutation.
     input: ListM365DirectoryObjectAttributesInput!): ListO365DirectoryObjectAttributesResp!
 
+  # Display license entitlement for M365 workloads.
+  m365LicenseEntitlement: M365LicenseEntitlementReply!
+
   # Returns the backup statistics of an M365 organization product in onboarding mode.
   m365OnboardingModeBackupStats(
     # Org UUID.
@@ -4840,6 +4848,14 @@ type Query {
   mssqlInstance(
     # The Rubrik UUID for the object.
     fid: UUID!): MssqlInstance!
+
+  # Get details for an async request
+  # 
+  # Supported in v5.0+
+  # Returns the task object for an async request related to SQL Server databases.
+  mssqlJobStatus(
+    # Input for V1GetMssqlAsyncRequestStatus.
+    input: GetMssqlAsyncRequestStatusInput!): AsyncRequestStatus!
 
   # List of filtered Microsoft SQL log shipping targets.
   mssqlLogShippingTargets(
@@ -5617,7 +5633,7 @@ type Query {
     cdmOvaLink: String!): OauthCodesForEdgeRegReply!
   objectFiles(filter: ListObjectFilesFiltersInput, sort: FileResultSortInput,
 
-    # Day in the format (YYYY-MM-DD).
+    # Date in the format (YYYY-MM-DD).
     day: String!, timezone: String!,
 
     # Returns the first n elements from the list.
@@ -5967,7 +5983,7 @@ type Query {
 
   # Returns status for all objects at a specified timestamp.
   policyObjs(
-    # Day in the format (YYYY-MM-DD).
+    # Date in the format (YYYY-MM-DD).
     day: String!, timezone: String!,
 
     # Types of workloads that can be used for filtering query results.
@@ -7239,7 +7255,7 @@ type Query {
     # Sort order of result.
     sortOrder: SortOrder, filters: SonarContentReportFilter,
 
-    # Day in the format (YYYY-MM-DD).
+    # Date in the format (YYYY-MM-DD).
     day: String!, timezone: String!,
 
     # Types of workloads that can be used for filtering query results.
@@ -7431,21 +7447,52 @@ type Query {
 
   # The details of a threat hunt.
   threatHuntDetail(
-    # The ID of the threat hunt.
+    # ID of the threat hunt.
     huntId: String!): ThreatHunt!
+
+  # The details of a threat hunt v2.
+  threatHuntDetailV2(
+    # ID of the threat hunt.
+    huntId: String!): ThreatHuntDetailsV2!
 
   # The results of the Threat Hunt.
   threatHuntResult(
-    # The ID of the threat hunt.
+    # ID of the threat hunt.
     huntId: String!,
 
     # The ID of the object in the threat hunt.
     objectId: String): ThreatHuntResult!
 
-  # The summary of a threat hunt.
+  # The summary of the threat hunt.
   threatHuntSummary(
-    # The ID of the threat hunt.
+    # ID of the threat hunt.
     huntId: String!): ThreatHuntSummaryReply!
+
+  # The summary of the threat hunt.
+  threatHuntSummaryV2(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # ID of the threat hunt.
+    huntId: String!,
+
+    # Optional list of object types to filter by. Should be of type ManagedObjectType.
+    objectTypeFilter: [String!],
+
+    # Optionally filter by if the hunt had any matches.
+    matchesFoundFilter: ThreatHuntMatchesFound,
+
+    # Optionally filter hunts based on whether they have quarantined matches.
+    quarantinedMatchesFilter: ThreatHuntQuarantinedMatchType): ThreatHuntResultObjectsSummaryConnection!
 
   # List of Threat Hunts.
   threatHunts(
@@ -8040,6 +8087,11 @@ type Query {
     # Include archived SLA Domain.
     includeArchived: Boolean!): VerifySlaWithReplicationToClusterResponse!
 
+  # Verify TOTP for current user.
+  verifyTotp(
+    # Input required for verifying TOTP.
+    input: VerifyTotpInput!): VerifyTotpReply!
+
   # Get missed time ranges for point in time recovery
   # 
   # Supported in v5.1+
@@ -8219,6 +8271,11 @@ type Mutation {
   addClusterNodes(
     # Input for add nodes.
     AddClusterNodesInput: AddClusterNodesInput!): AddClusterNodesReply!
+
+  # Add a new route config to all hosts in a Rubrik cluster. Supported in Rubrik CDM v5.0+
+  addClusterRoute(
+    # Input for InternalAddRoute.
+    input: AddClusterRouteInput!): AddClusterRouteReply!
 
   # Add a Configured Group to the O365 hierarchy.
   addConfiguredGroupToHierarchy(
@@ -9430,6 +9487,11 @@ type Mutation {
     # Input to delete Rubrik Security Cloud snapshot.
     input: DeleteCloudWorkloadSnapshotInput!): Boolean!
 
+  # Delete an existing route on a Rubrik cluster. Supported in Rubrik CDM v5.0+
+  deleteClusterRoute(
+    # Input for InternalDeleteRoute.
+    input: DeleteClusterRouteInput!): Void
+
   # Delete cross-account pair.
   deleteCrossAccountPair(
     # Cross-account ID input for pair deletion.
@@ -9538,7 +9600,7 @@ type Mutation {
   # Delete intel feed.
   deleteIntelFeed(
     # Delete intel feed input.
-    input: DeleteIntelFeedInput!): DeleteIntelFeedReply!
+    input: DeleteIntelFeedInput!): Void
 
   # Delete a Kubernetes cluster
   # 
@@ -10021,6 +10083,14 @@ type Mutation {
   downloadOracleSnapshotFromLocation(
     # Input for V1DownloadOracleSnapshotFromLocation.
     input: DownloadOracleSnapshotFromLocationInput!): AsyncRequestStatus!
+
+  # Download Oracle snapshot from an archival location
+  # 
+  # Supported in v9.3
+  # Initiates an asynchronous job to download an Oracle database snapshot and associated log snapshots using the snapshot ID. The response includes the ID of the asynchronous job request. To see the status of the request, poll /oracle/request/{id}.
+  downloadOracleSnapshotFromLocationV2(
+    # Input for V2DownloadOracleSnapshotFromLocationV2.
+    input: DownloadOracleSnapshotFromLocationV2Input!): AsyncRequestStatus!
 
   # Download a report in CSV format asynchronously.
   downloadReportCsvAsync(input: DownloadReportCsvAsyncInput!): AsyncDownloadReply!
@@ -10540,6 +10610,11 @@ type Mutation {
   makePrimary(
     # Input for V1HostMakePrimary.
     input: MakePrimaryInput!): AsyncRequestStatus!
+
+  # Manage protection for linked objects, allowing objects to be linked or unlinked and allow changes in SLA Domain assignment for linked objects.
+  manageProtectionForLinkedObjects(
+    # Input for manage protection for linked objects.
+    input: ManageProtectionForLinkedObjectsInput!): CreateOnDemandJobReply!
 
   # Map Azure cloud accounts to an Exocompute subscription.
   mapAzureCloudAccountExocomputeSubscription(
@@ -11766,7 +11841,7 @@ type Mutation {
   # Update custom intel feed.
   updateCustomIntelFeed(
     # Input for update custom intel feed.
-    input: UpdateCustomIntelFeedInput!): UpdateCustomIntelFeedReply!
+    input: UpdateCustomIntelFeedInput!): Void
 
   # Update a custom report.
   updateCustomReport(input: UpdateCustomReportInput!): UpdateCustomReportReply!
@@ -12204,6 +12279,14 @@ type Mutation {
     # Input for V1SetHotAddNetwork.
     input: UpdateVcenterHotAddNetworkInput!): RequestSuccess!
 
+  # Update vCenter Server
+  # 
+  # Supported in v8.1+
+  # Update the address, username, and password of the specified vCenter Server object.
+  updateVcenterV2(
+    # Input for V2UpdateVcenterV2.
+    input: UpdateVcenterV2Input!): UpdateVcenterV2Reply!
+
   # Update a VLAN interface on the Rubrik cluster
   # 
   # Supported in v8.0+
@@ -12524,6 +12607,11 @@ type Mutation {
     # Input for register Virtual Machine agent with CDM.
     input: VsphereVmRegisterAgentWithOrgInput!): RequestSuccess!
 
+  # Update auto unmount time for a virtual machine.
+  vsphereVmUpdateUnmountTime(
+    # Input for V1UpdateVmUnmountTime.
+    input: VsphereVmUpdateUnmountTimeInput!): Void
+
   # Warms the search cache for an O365 workload.
   warmSearchCache(
     # The input for warm search cache for an O365 workload.
@@ -12706,6 +12794,24 @@ enum ActionType {
   # Upgrade start.
   START
 }
+# Supported in v9.3
+type ActiveDirectoryAdditionalInfo {
+  # Supported in v9.3
+  # The ID of the forest to which the host belongs.
+  forestId: String
+
+  # Supported in v9.3
+  # The domains in the forest to which the host belongs.
+  forestDomains: [String!]!
+
+  # Supported in v9.3
+  # Specify the name of active directory domain.
+  hostDomainName: String
+
+  # Supported in v9.3
+  # Id of the Active Directory Domain if the windows host has domain controller hosted.
+  hostDomainId: String
+}
 # Active Directory workload related app metadata for a snapshot.
 type ActiveDirectoryAppMetadata {
   # Count of different type of objects in the snapshot.
@@ -12731,6 +12837,9 @@ type ActiveDirectoryDomain implements CdmHierarchyObject , HierarchyObject {
 
   # ID of the Active Directory domain.
   domainSid: String
+
+  # Number of domain controllers that are added to RSC from this domain.
+  registeredDomainControllersCount: Int!
 
   # Rubrik cluster.
   cluster: Cluster!
@@ -13714,6 +13823,9 @@ enum ActivityObjectTypeEnum {
 
   # Specifies that the activity object type is related to Activity Directory domain controller.
   ACTIVE_DIRECTORY_DOMAIN_CONTROLLER
+
+  # Specifies that the activity object type is related to Active Directory forest.
+  ACTIVE_DIRECTORY_FOREST
 
   # Specifies that the activity object type is Atlassian site.
   ATLASSIAN_SITE
@@ -14979,6 +15091,18 @@ type AddClusterNodesReply {
 
   # Add nodes job status.
   status: String!
+}
+# Input for adding a route on a CDM cluster.
+input AddClusterRouteInput {
+  # Required. UUID used to identify to which Rubrik cluster the request goes.
+  clusterUuid: String!
+
+  # Required. Network, netmask, gateway, and device.
+  routeConfig: RouteConfigInput!
+}
+# Reply Object for AddRoute.
+type AddClusterRouteReply {
+  output: RouteConfig
 }
 # Configuration for the addition of Configured Groups in O365.
 input AddConfiguredGroupToHierarchyInput {
@@ -17041,6 +17165,9 @@ enum AuditObjectType {
   # Active Directory domain controller.
   ACTIVE_DIRECTORY_DOMAIN_CONTROLLER
 
+  # Active Directory forest.
+  ACTIVE_DIRECTORY_FOREST
+
   # App blueprint audit object.
   APP_BLUEPRINT
 
@@ -18240,6 +18367,9 @@ type AwsComputeSettings {
 # AWS Customer Managed Exocompute Configuration in a region.
 type AwsCustomerManagedExocomputeConfig implements AwsExocomputeGetConfigurationResponse {
   clusterName: String! @deprecated(reason: "Use  clusterName from AwsExocomputeClusterConnect API instead.")
+
+  # Cluster ID of the customer managed exocompute.
+  byokClusterId: String!
 
   # Exocompute configuration UUID.
   configUuid: UUID!
@@ -23564,6 +23694,9 @@ enum AwsStorageClass {
   # Amazon S3 One Zone-IA storage class.
   ONEZONE_IA
 
+  # Deprecated: REDUCED_REDUNDANCY class for legacy locations.
+  REDUCED_REDUNDANCY
+
   # Amazon S3 Standard storage class.
   STANDARD
 
@@ -27069,6 +27202,9 @@ type AzureO365ExocomputeCluster {
   # Specifies whether Exocompute is on a multitenant host.
   isOnMultiTenantHost: Boolean!
 
+  # Sharding strategy for the Exocompute.
+  shardPoolType: Int!
+
   # List of AKS load balancer IPs.
   aksLbIps: [String!]!
 
@@ -28960,7 +29096,7 @@ input BackupAzureAdDirectoryInput {
   # SLA Domain ID required for snapshot retention.
   snapshotRetentionSlaId: UUID
 }
-# Represents the status of the backup for a specific M365 snapshot.
+# Status of the backup for a specific SaaS snapshot.
 type BackupEventStatus {
   # Status of the backup.
   status: SnapshotServiceBackupStatus!
@@ -31464,6 +31600,9 @@ enum CdmFeatureFlagType {
 
   # ARCHIVAL_QSTAR.
   ARCHIVAL_QSTAR
+
+  # Supports assigning an SLA Domain for snapshot downloaded from archival location.
+  ASSIGN_SLA_FOR_CDM_ARCHIVAL_SNAPSHOT_DOWNLOAD
 
   # Upgrade CDM managed archival locations.
   CDM_LOCATION_UPGRADE
@@ -35185,6 +35324,53 @@ enum ClusterConnectionStatusFromDb {
   # The Rubrik cluster is disconnected from RSC.
   DISCONNECTED
 }
+# List of all validations to perform.
+enum ClusterCreateValidations {
+  # Perform all checks.
+  ALL_CHECKS
+
+  # Check if the instance profile is valid.
+  AWS_INSTANCE_PROFILE_CHECK
+
+  # Check if the AWS network config is valid, if passed.
+  AWS_NETWORK_CONFIG_CHECK
+
+  # Check if the availability zone exists in the specified Azure region.
+  AZURE_AVAILABILITY_ZONE_CHECK
+
+  # Check if the managed identity is valid and supported.
+  AZURE_MI_CHECK
+
+  # Check if sufficient quota is available to launch the cluster nodes.
+  AZURE_QUOTA_CHECK
+
+  # Check if names of the VMs to be created on Azure are valid.
+  AZURE_VM_IMAGE_CHECK
+
+  # Check if the selected cloud account supports cluster provisioning.
+  CLOUD_ACCOUNT_CHECK
+
+  # Check if a cluster exists with the same name.
+  CLUSTER_NAME_CHECK
+
+  # Validate DNS servers in the request.
+  DNS_SERVERS_CHECK
+
+  # Check if the immutability config is valid in the request.
+  IMMUTABILITY_CHECK
+
+  # Check if the node count is supported for the cluster type and version.
+  NODE_COUNT_CHECK
+
+  # Skip all checks.
+  NO_CHECKS
+
+  # Validate NTP servers in the request.
+  NTP_SERVERS_CHECK
+
+  # Check if the selected object store is supported by the cloud cluster.
+  OBJECT_STORE_CHECK
+}
 # Supported in v7.0+
 type ClusterCsr {
   # Required. Supported in v7.0+
@@ -37523,6 +37709,9 @@ type ComplianceState {
 
   # Describes if a switch to onboarding mode can be allowed.
   shouldAllowSwitchToOnboardingMode: Boolean!
+
+  # Returns the last compliance update time.
+  lastComplianceUpdateTime: DateTime
 }
 type ComplianceStatus {
   enumValue: ComplianceStatusEnum!
@@ -38159,6 +38348,9 @@ input CreateAwsClusterInput {
 
   # Virtual Machine configuration to create nodes.
   vmConfig: AwsVmConfig
+
+  # Validations to perform on the request.
+  validations: [ClusterCreateValidations!]
 }
 # Cloud compute settings input for the AWS archival target.
 input CreateAwsComputeSettingInput {
@@ -38356,6 +38548,9 @@ input CreateAzureClusterInput {
 
   # Virtual Machine input configuration.
   vmConfig: AzureVmConfig
+
+  # Validations to perform on the request.
+  validations: [ClusterCreateValidations!]
 }
 # Input for creating an Azure Reader Target.
 input CreateAzureReaderTargetInput {
@@ -39516,6 +39711,9 @@ input CreateReplicationPairInput {
   # Network interface for communication between the source and target clusters.
   targetNetworkInterface: NetworkInterfaceDetails
 
+  # Network interface names for communication between the source and target clusters. This is only applicable for private network setup type.
+  networkInterface: NetworkInterfaceSelection
+
   # Source Rubrik cluster UUID.
   sourceClusterUuid: UUID!
 
@@ -40425,6 +40623,12 @@ enum DataGovFileMode {
 # Filters objects by object type.
 # Note: All the object types, except CDM, are granular object types.
 enum DataGovObjectType {
+  # Represents AWS EBS volume.
+  AWS_NATIVE_EBS_VOLUME
+
+  # Represents AWS RDS Instance.
+  AWS_NATIVE_RDS_INSTANCE
+
   # Represents AWS S3 bucket.
   AWS_NATIVE_S3_BUCKET
 
@@ -42448,6 +42652,14 @@ input DeleteCloudWorkloadSnapshotInput {
   # The forever UUID in Rubrik Security Cloud for the snapshot to be deleted.
   snapshotId: UUID!
 }
+# Input for deleting a static route on a CDM cluster.
+input DeleteClusterRouteInput {
+  # Required. UUID used to identify to which Rubrik cluster the request goes.
+  clusterUuid: String!
+
+  # Required. Network and netmask.
+  routeConfig: RouteDeletionConfigInput!
+}
 # Input for deleting cross-account pair.
 input DeleteCrossAccountPairInput {
   # Cross-account ID for pair deletion.
@@ -42562,13 +42774,8 @@ input DeleteIntegrationsInput {
 }
 # Delete intel feed input.
 input DeleteIntelFeedInput {
-  # Feed ID.
-  feedId: String = ""
-}
-# Return information after deleting an intel feed.
-type DeleteIntelFeedReply {
-  # Feed ID.
-  feedId: UUID!
+  # Provider ID.
+  providerId: String = ""
 }
 # Input for deleting a Kubernetes cluster.
 input DeleteK8sClusterInput {
@@ -43994,6 +44201,17 @@ input DownloadOracleSnapshotFromLocationInput {
   # Required. ID assigned to an Oracle database snapshot.
   snapshotId: String!
 }
+# Input for downloading Oracle snapshot from a location for V2 API.
+input DownloadOracleSnapshotFromLocationV2Input {
+  # Additional configuration for the snapshot download operation.
+  downloadConfig: OracleSnapshotDownloadRequestInput
+
+  # Required. ID of the archival location.
+  locationId: String!
+
+  # Required. ID assigned to an Oracle database snapshot.
+  snapshotId: String!
+}
 # Download package response.
 type DownloadPackageReply {
   # Download job ID.
@@ -44677,6 +44895,9 @@ enum EventObjectType {
 
   # Active Directory domain controller.
   ACTIVE_DIRECTORY_DOMAIN_CONTROLLER
+
+  # Active Directory forest.
+  ACTIVE_DIRECTORY_FOREST
 
   # App Blueprint object.
   APP_BLUEPRINT
@@ -48264,6 +48485,10 @@ input FilesetExportFilesJobConfigInput {
   # Network share ID.
   shareId: String
 
+  # Supported in v9.3
+  # Optional field which excludes the paths specified during recovery.
+  excludePaths: [String!] = []
+
   # Supported in v8.1, v9.1+
   # v8.1: Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
   # v9.1+: Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
@@ -48368,6 +48593,10 @@ input FilesetRestoreFilesJobConfigInput {
   # Supported in v5.0+
   # Optional field to determine if we should ignore single error during restore. Default value is false.
   ignoreErrors: Boolean
+
+  # Supported in v9.3
+  # Optional field which excludes the paths specified during recovery.
+  excludePaths: [String!] = []
 
   # Supported in v8.1, v9.1+
   # v8.1: Optional field that specifies whether to recreate directory structure when using the 'Restore to separate folder' option in the UI.
@@ -51429,6 +51658,14 @@ input GetMosaicVersionInput {
   # Required. Version filters.
   versionData: VersionInput!
 }
+# Input for retrieving details about an SQL Server object-related job.
+input GetMssqlAsyncRequestStatusInput {
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
+
+  # Required. ID of the SQL Server object-related job.
+  id: String!
+}
 # Input for getting missed recoverable ranges of a SQL Server database.
 input GetMssqlDbMissedRecoverableRangesInput {
   # Filter the missed ranges to end after this time. The date-time string should be in ISO8601 format, such as \"2016-01-01T01:23:45.678\".
@@ -54020,6 +54257,7 @@ type HierarchySnappableFileVersion {
 
   # Quarantine information corresponding to the path.
   quarantineInfo: QuarantineInfo
+  snapshotTime: DateTime
   snapshot: CdmSnapshot
 }
 enum HierarchySortByField {
@@ -54428,16 +54666,22 @@ type HostDetail {
   isRefreshPaused: Boolean
   hostSummary: HostSummary
 
+  # Supported in v9.3
+  # Additional Active Directory info for the host if applicable.
+  activeDirectoryAdditionalInfo: ActiveDirectoryAdditionalInfo
+
   # Supported in v9.2+
   # Specifies the username configured for the SQL server instance for sensitive data discovery.
   mssqlSddUsername: String
 
   # Supported in v9.0+
-  # Specify the name of active directory domain.
+  # v9.0-v9.2: Specify the name of active directory domain.
+  # v9.3: (DEPRECATED) This field is deprecate in favor of activeDirectoryAdditionalInfo. Specify the name of active directory domain.
   hostDomainName: String
 
   # Supported in v9.0+
-  # Id of the Active Directory Domain if the windows host has domain controller hosted.
+  # v9.0-v9.2: Id of the Active Directory Domain if the windows host has domain controller hosted.
+  # v9.3: (DEPRECATED) This field is deprecate in favor of activeDirectoryAdditionalInfo. Id of the Active Directory Domain if the windows host has domain controller hosted.
   hostDomainId: String
   hostVfdDriverState: HostVfdState!
   hostVfdEnabled: HostVfdInstallConfig
@@ -55664,6 +55908,65 @@ type HourlySnapshotSchedule {
 input HourlySnapshotScheduleInput {
   # Basic hourly snapshot schedule.
   basicSchedule: BasicSnapshotScheduleInput
+}
+# Hunt scan file criteria.
+type HuntScanFileCriteria {
+  # Specify the smallest and largest files to scan. This option is only
+  # compatible with Yara or Hash IOCs. Limits for Path IOC are
+  # ignored.
+  fileSizeLimits: HuntScanFileSizeLimits
+
+  # Specify limits around file creation and modification time.
+  fileTimeLimits: HuntScanFileTimeLimits
+
+  # Specify allow-list and deny-list of file paths. This option is only
+  # compatible with Yara or Hash IOCs. Filters for Path IOC are
+  # ignored.
+  pathFilter: HuntScanPathFilters
+}
+# Supported in Rubrik CDM v6.0+
+type HuntScanFileSizeLimits {
+  # Supported in Rubrik CDM v6.0+
+  # Maximum size of files to scan. Files that are larger than this size are ignored.
+  maximumSizeInBytes: Long
+
+  # Supported in Rubrik CDM v6.0+
+  # Minimum size of files to scan. Files smaller than this size are ignored.
+  minimumSizeInBytes: Long
+}
+# Supported in Rubrik CDM v6.0+
+type HuntScanFileTimeLimits {
+  # Earliest file creation time. Files created before this time are
+  # omitted.
+  earliestCreationTime: DateTime
+
+  # Earliest file modification time. Files last modified before this
+  # time are omitted.
+  earliestModificationTime: DateTime
+
+  # Latest file creation time. Files created after this time are
+  # omitted.
+  latestCreationTime: DateTime
+
+  # Latest file modification time. Files modified after this time are
+  # omitted.
+  latestModificationTime: DateTime
+}
+# Hunt scan path filters.
+type HuntScanPathFilters {
+  # Paths to include.
+  inclusions: [String!]!
+
+  # Paths to exclude.
+  exclusions: [String!]!
+
+  # Paths to exempt from exclusions.
+  exemptions: [String!]!
+}
+# Scan scope of each object with respect to its snapshots.
+type HuntScanSnapshotLimit {
+  # Specifies the scan limit.
+  scanLimit: ScanLimit!
 }
 # Hyper-V cluster details.
 type HyperVCluster implements HierarchyObject , CdmHierarchyObject , HyperVSCVMMDescendantType , HyperVSCVMMLogicalChildType , HypervTopLevelDescendantType {
@@ -57939,10 +58242,10 @@ input InPlaceRecoveryJobConfigV2Input {
 }
 # Indicator of Compromise.
 type IndicatorOfCompromise {
-  # IOC kind.
+  # Specifies the ioc kind.
   iocKind: IndicatorOfCompromiseKind!
 
-  # IOC value as a string.
+  # Specifies the ioc value.
   iocValue: String!
 }
 # The data which represents indicator of compromise: a file path/pattern, hash, or YARA rule.
@@ -58585,6 +58888,14 @@ enum IoFilterStatus {
   IO_FILTER_STATUS_UNSUPPORTED_BY_VMWARE
   IO_FILTER_STATUS_UPGRADE_ERROR
   IO_FILTER_STATUS_UPGRADE_IN_PROGRESS
+}
+# Indicator of compromise.
+type Ioc {
+  # Specifies the indicator of compromise list.
+  iocList: [IndicatorOfCompromise!]!
+
+  # Specifies the feed provider ID.
+  feedProviderId: String!
 }
 # IOC hash only.
 input IocHashOnly {
@@ -61200,10 +61511,10 @@ type License {
 # Stores license consumption statistics.
 type LicenseConsumptionType {
   # Total number of licensed users protected.
-  usersProtected: Int!
+  usersProtected: Int
 
   # Total amount of frontend storage consumed in bytes.
-  fetbConsumed: Long!
+  fetbConsumed: Long
 }
 # Represents a single licensed product.
 type LicensedClusterProduct {
@@ -61952,6 +62263,14 @@ enum M365DashboardWorkloadType {
   # Teams workload type.
   DST_TEAMS
 }
+# Stores the Microsoft 365 license entitlement.
+type M365LicenseEntitlementReply {
+  # Total number of entitlements for protected users.
+  usersEntitled: Long!
+
+  # Total backup capacity purchased in bytes.
+  capacityEntitledInBytes: Long!
+}
 # Stores the backup locations of an M365 organization.
 type M365OrgBackupLocations {
   # Primary backup data location of an M365 organization.
@@ -61985,14 +62304,6 @@ type M365Region {
 type M365RegionsResp {
   # The list of regions.
   regions: [M365Region!]!
-}
-# Represents backup information for a specific M365 snapshot taken by Rubrik.
-type M365Snapshot implements PolarisSpecificSnapshot {
-  # BackupEventStatus for the M365 snapshot.
-  backupEventStatus: BackupEventStatus
-
-  # ID of the snapshot.
-  snapshotId: UUID!
 }
 # Type representing the mailbox contents to be restored.
 input MailboxRestoreConfig {
@@ -62233,6 +62544,25 @@ type MalwareScanStats {
   # v8.1: The total time in seconds spent in yara analysis.
   # v9.0+: The total time, in seconds, spent on YARA analysis.
   totalYaraAnalysisDurationInSeconds: Long
+}
+# Input for manage protection for linked objects.
+input ManageProtectionForLinkedObjectsInput {
+  # Type of operation.
+  operation: ManageProtectionForLinkedObjectsOperationType!
+
+  # Request parameters for SLA assignment.
+  assignSlaReq: AssignSlaInput!
+}
+# Operation to manage protection for linked objects.
+enum ManageProtectionForLinkedObjectsOperationType {
+  # Update the SLA Domain assignment for the linked objects.
+  ASSIGN_SLA
+
+  # Link the objects together and update the SLA Domain assignment.
+  LINK
+
+  # Unlink the linked objects and update the SLA Domain assignment.
+  UNLINK
 }
 # Represents whether a cluster is managed by Rubrik Security Cloud.
 enum ManagedByRubrik {
@@ -72844,6 +73174,12 @@ type NcdFilesObjectProtectionStatusData {
 type NcdFrontEndCapacity {
   # The front-end capacity usage in bytes.
   usageInBytes: Long!
+
+  # The new front-end capacity backup usage in bytes.
+  backupFetb: Long!
+
+  # The new front-end capacity archive usage in bytes.
+  archiveFetb: Long!
 }
 # Type of NAS Cloud Direct virtual machine disk.
 enum NcdHypervisorType {
@@ -73070,6 +73406,14 @@ type NetworkInterfaceListResponse {
   # v9.0: Cursor to fetch the next set of results.
   # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
+}
+# Network interface names for source and target clusters.
+input NetworkInterfaceSelection {
+  # Network interface name for the target cluster.
+  targetInterfaceName: String = ""
+
+  # Network interface name for the source cluster.
+  sourceInterfaceName: String = ""
 }
 # Supported in v5.0+
 # Type of network interfaces.
@@ -79808,6 +80152,15 @@ enum ObjectPolicyStatus {
   UNKNOWN
   UP_TO_DATE
 }
+# Object snapshot mapping.
+type ObjectSnapshotMapping {
+  # TODO(SPARK-398306): Object fid from string to uuid.
+  # Object FID.
+  objectFid: String!
+
+  # Snapshot FIDs.
+  snapshotFid: [String!]!
+}
 # Object-specific configurations.
 type ObjectSpecificConfigs {
   # SLA Domain configuration for SAP HANA object.
@@ -80358,7 +80711,7 @@ enum Operation {
   # Manage Recovery Plans within Orchestrated Recovery.
   MANAGE_RECOVERY_PLAN
 
-  # Manage ServiceNow Integration.
+  # Manage ServiceNow integration.
   MANAGE_SERVICENOW_INTEGRATION
   MANAGE_SLA
 
@@ -80431,7 +80784,7 @@ enum Operation {
   USE_AS_REPLICATION_TARGET
   VIEW_ACCESS
 
-  # View anomaly detection results.
+  # View Anomaly Detection results.
   VIEW_ANOMALY_DETECTION_RESULTS
 
   # View archival location.
@@ -80498,7 +80851,7 @@ enum Operation {
   VIEW_REPORT
   VIEW_SECURITY_SETTINGS
 
-  # View ServiceNow Integration.
+  # View ServiceNow integration.
   VIEW_SERVICENOW_INTEGRATION
   VIEW_SLA
 
@@ -82917,6 +83270,11 @@ input OracleRecoveryPointInput {
   # v5.3+: A timestamp in milliseconds that specifies a recovery point.
   timestampMs: Long
 }
+# Input for snapshot download from location for V2 API.
+input OracleSnapshotDownloadRequestInput {
+  # ID of the SLA Domain to manage downloaded snapshot retention. Log snapshot retention is not managed by this configuration.
+  slaId: String
+}
 # Supported in v6.0+
 input OracleTimeRangeInput {
   # Required. Supported in v6.0+
@@ -83951,6 +84309,11 @@ enum PermissionsGroup {
   # snapshots. These permissions are applicable to the cloud native
   # protection feature.
   SNAPSHOT_PRIVATE_ACCESS
+
+  # Represents the permissions required to enable Azure AD authorization to
+  # store Azure SQL and MI snapshots in an archival location using Colossus.
+  # These permissions apply to Cloud Native Archival Feature.
+  SQL_ARCHIVAL
 }
 # Permissions group with accompanying version number.
 type PermissionsGroupWithVersion {
@@ -84013,6 +84376,12 @@ type PhysicalHost implements CdmHierarchyObject , HierarchyObject , MssqlTopLeve
 
   # ID of the Rubrik Backup Service (RBS) installed on the host.
   agentId: String
+
+  # Specifies the NAS API endpoint.
+  nasApiEndpoint: String
+
+  # Specifies the NAS API hostname.
+  nasApiHostname: String
 
   # The operating system type of the physical host.
   osType: GuestOsType
@@ -84891,7 +85260,7 @@ enum PolarisSnapshotSortByEnum {
   SnappableId
   SnapshotId
 }
-# Rubrik-specific information about snapshots of specific object types. Currently, this is only valid for Azure virtual machine, Azure storage account, AWS EC2, AWS S3, and M365 snapshots.
+# Rubrik-specific information about snapshots of specific object types. Currently, this is only valid for Azure virtual machine, Azure storage account, AWS EC2, AWS S3, and SaaS snapshots.
 interface PolarisSpecificSnapshot {
   # ID of the snapshot.
   snapshotId: UUID!
@@ -84947,6 +85316,12 @@ type PolicyDetail {
 
   # Time when the policy was last updated.
   lastUpdatedTime: Long!
+
+  # Total sensitive hits in a policy.
+  totalHits: Long!
+
+  # List of datatype IDs in a policy.
+  dataTypeIds: [String!]!
 
   # Policy creator.
   creator: User
@@ -88863,6 +89238,9 @@ input RestoreObjectConfig {
 
   # Specify the hierarchy type of the mailbox object to be restored, whether it is an email or a folder.
   hierarchyType: ExchangeItemHierarchyType
+
+  # ID of the parent folder of the mailbox object being restored, whether the object is an email or a folder.
+  parentFolderId: String
 }
 # Supported in v6.0+
 input RestoreOracleLogsConfigInput {
@@ -89064,6 +89442,9 @@ type Role {
   # Role permissions.
   permissions: [Permission!]!
 
+  # Role permissions that are in effect.
+  effectivePermissions: [Permission!]! @deprecated(reason: "Use effectiveRbacPermissions instead.")
+
   # Permissions assigned to the role that are in effect.
   effectiveRbacPermissions: [RbacPermission!]!
 
@@ -89200,6 +89581,28 @@ type RouteConfig {
   netmask: String!
 
   # Required. Supported in v5.0+
+  network: String!
+}
+# Supported in Rubrik CDM v5.0+.
+input RouteConfigInput {
+  # Required. Supported in Rubrik CDM v5.0+.
+  device: String!
+
+  # Required. Supported in Rubrik CDM v5.0+.
+  gateway: String!
+
+  # Required. Supported in Rubrik CDM v5.0+.
+  netmask: String!
+
+  # Required. Supported in Rubrik CDM v5.0+.
+  network: String!
+}
+# Supported in Rubrik CDM v5.0+
+input RouteDeletionConfigInput {
+  # Required. Supported in Rubrik CDM v5.0+.
+  netmask: String!
+
+  # Required. Supported in Rubrik CDM v5.0+.
   network: String!
 }
 type Row {
@@ -90122,6 +90525,14 @@ enum SaasFeature {
 
   # Rubrik-hosted Exocompute cluster for SaaS Protection.
   TYPE_SAAS_PROTECTION
+}
+# Backup information for a specific SaaS snapshot taken by Rubrik.
+type SaasSnapshot implements PolarisSpecificSnapshot {
+  # BackupEventStatus for the Saas snapshot.
+  backupEventStatus: BackupEventStatus
+
+  # ID of the snapshot.
+  snapshotId: UUID!
 }
 # SAP HANA workload related app metadata for a snapshot.
 type SapHanaAppMetadata {
@@ -91738,6 +92149,14 @@ type ScaleRuntime {
   newCount: Int!
   taskchainUuid: String!
   deadline: DateTime
+}
+# Scan limit.
+type ScanLimit {
+  # Specifies the snapshot scan config.
+  scanConfig: SnapshotScanConfig!
+
+  # Specifies the object snapshot mapping list.
+  objectSnapshotConfig: [ObjectSnapshotMapping!]!
 }
 # ScanStatus is status of the scan for an asset.
 enum ScanStatus {
@@ -93455,6 +93874,9 @@ enum SlaObjectType {
   # Kubernetes object.
   KUPR_OBJECT_TYPE
 
+  # Microsoft 365 Backup Storage object.
+  M365_BACKUP_STORAGE_OBJECT_TYPE
+
   # Managed Volume object.
   MANAGED_VOLUME_OBJECT_TYPE
 
@@ -94841,6 +95263,17 @@ type SnapshotRetentionInfo {
   # Required. Supported in v5.2+
   # List of snapshot retention information on the replicated locations.
   replicationInfos: [SnapshotLocationRetentionInfo!]!
+}
+# Snapshot scan config.
+type SnapshotScanConfig {
+  # Specifies the max snapshots per object.
+  maxSnapshotsPerObject: Int!
+
+  # Specifies the start time of the snapshot scan.
+  startTime: DateTime!
+
+  # Specifies the end time of the snapshot scan.
+  endTime: DateTime!
 }
 # Snapshot schedule for different frequencies.
 type SnapshotSchedule {
@@ -98122,8 +98555,44 @@ type ThreatHunt {
   # The stats based on results of the threat hunt.
   stats: ThreatHuntStats
 
+  # Name of the threat hunt.
+  name: String!
+
+  # Start time of the threat hunt.
+  startTime: DateTime
+
+  # Name of the user who created the threat hunt.
+  createdBy: String!
+
+  # Type of threat hunt.
+  huntType: ThreatHuntType!
+
   # The details/configuration of the threat hunt.
   huntDetails: ThreatHuntDetails!
+}
+# Base config for a threat hunt.
+type ThreatHuntBaseConfig {
+  # Name of the threat hunt.
+  name: String!
+
+  # Notes to describe this threat hunt.
+  notes: String!
+
+  # Indicator Of Compromise within a snapshot terminates once this number
+  # of matches have been detected.
+  maxMatchesPerSnapshot: Int
+
+  # Threat hunt type.
+  threatHuntType: ThreatHuntType!
+
+  # Threat hunt IOC input.
+  ioc: ThreatHuntIocInput!
+
+  # Hunt scan snapshot limit.
+  snapshotScanLimit: HuntScanSnapshotLimit!
+
+  # Hunt scan file criteria.
+  fileScanCriteria: HuntScanFileCriteria!
 }
 # Config as the input to start a threat hunt.
 type ThreatHuntConfig {
@@ -98173,10 +98642,10 @@ type ThreatHuntConnection {
 }
 # Details for the threat hunt.
 type ThreatHuntDetails {
-  # Start time of the hunt.
+  # Start time of the threat hunt.
   startTime: DateTime
 
-  # End time of the hunt.
+  # End time of the threat hunt.
   endTime: DateTime
 
   # The object ids and corresponding snapshot ids targeted for scanning.
@@ -98191,6 +98660,20 @@ type ThreatHuntDetails {
   # The cluster of the scan.
   cluster: Cluster!
 }
+# Details for the threat hunt v2.
+type ThreatHuntDetailsV2 {
+  # Total number of object FIDs.
+  totalObjectFids: Long!
+
+  # Start time of the threat hunt.
+  startTime: DateTime
+
+  # End time of the threat hunt.
+  endTime: DateTime
+
+  # The configuration of the threat hunt v2 scan.
+  baseConfig: ThreatHuntBaseConfig!
+}
 # Wrapper around the ThreatHunt object. This wrapper is used for pagination.
 type ThreatHuntEdge {
   # String used to identify this edge.
@@ -98198,6 +98681,11 @@ type ThreatHuntEdge {
 
   # The actual ThreatHunt object wrapped by this edge.
   node: ThreatHunt!
+}
+# IOC input of threat hunt.
+type ThreatHuntIocInput {
+  # Specifies the ioc.
+  ioc: Ioc!
 }
 # Any matches found during the threat hunt.
 enum ThreatHuntMatchesFound {
@@ -98270,6 +98758,28 @@ type ThreatHuntResultObjectsSummary {
   # The object location.
   location: String!
 }
+# Paginated list of ThreatHuntResultObjectsSummary objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type ThreatHuntResultObjectsSummaryConnection {
+  # List of ThreatHuntResultObjectsSummary objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [ThreatHuntResultObjectsSummaryEdge!]!
+
+  # List of ThreatHuntResultObjectsSummary objects.
+  nodes: [ThreatHuntResultObjectsSummary!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of ThreatHuntResultObjectsSummary objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the ThreatHuntResultObjectsSummary object. This wrapper is used for pagination.
+type ThreatHuntResultObjectsSummaryEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual ThreatHuntResultObjectsSummary object wrapped by this edge.
+  node: ThreatHuntResultObjectsSummary!
+}
 # Summary of a threat hunt for a snapshot.
 type ThreatHuntResultSnapshotStats {
   # ID of the snapshot.
@@ -98286,6 +98796,9 @@ type ThreatHuntResultSnapshotStats {
 
   # List of IOCs found in this snapshot.
   matchTypes: [IndicatorOfCompromise!]!
+
+  # Status of scanning this snapshot.
+  snapshotScanStatus: ThreatHuntStatus!
 
   # Specifies whether the snapshot has expired.
   isExpired: Boolean!
@@ -98315,6 +98828,9 @@ type ThreatHuntStats {
 
   # Total objects scanned.
   totalObjectsScanned: Long!
+
+  # Total number of IOCs.
+  totalIocs: Long!
 }
 # Status of the running threat hunt.
 enum ThreatHuntStatus {
@@ -98359,6 +98875,17 @@ type ThreatHuntSummaryReply {
 
   # Threat hunt summaries for each object.
   objectsSummary: [ThreatHuntResultObjectsSummary!]!
+}
+# Specifies the threat hunt type.
+enum ThreatHuntType {
+  # Threat hunt type v1.
+  THREAT_HUNT_V1
+
+  # Threat hunt type v2.
+  THREAT_HUNT_V2
+
+  # Turbo threat hunt type.
+  TURBO_THREAT_HUNT
 }
 # Entity type for Threat Monitoring.
 enum ThreatMonitoringEnablementEntity {
@@ -99606,11 +100133,6 @@ input UpdateCustomIntelFeedInput {
   # 1) A hash (MD5/SHA1/SHA256)
   # 2) MD5 of a yara rule
   entriesToRemove: [String!]
-}
-# Update custom intel feed reply.
-type UpdateCustomIntelFeedReply {
-  # Feed ID.
-  feedId: UUID!
 }
 # Input for updating a custom report.
 input UpdateCustomReportInput {
@@ -101042,6 +101564,18 @@ input UpdateVcenterInput {
 type UpdateVcenterReply {
   output: VcenterSummary
 }
+# Input for update the vSphere vCenter.
+input UpdateVcenterV2Input {
+  # Required. ID of the vCenter Server.
+  id: String!
+
+  # Required. Object containing updated vCenter Server information.
+  updateProperties: VcenterUpdateConfigV2Input!
+}
+# Reply Object for UpdateVcenterV2.
+type UpdateVcenterV2Reply {
+  output: VcenterSummaryV2
+}
 input UpdateVlanInput {
   # Required. ID of the Rubrik cluster, or *me* for self.
   id: String!
@@ -101172,6 +101706,11 @@ type UpdateWebhookReply {
 
   # This field is empty if the webhook test was not requested (shouldSendTestEvent request field), or was carried out successfully. In case of a webhook test failure, this field contains the failure details.
   testError: ErrorInfo
+}
+# Input for the updated unmount time of a Live Mount.
+input UpdatedUnmountTimeInput {
+  # Required. The absolute new unmount time.
+  newUnmountTime: Long!
 }
 # Input to update status of features of AWS cloud account to connected from update permissions state.
 input UpgradeAwsCloudAccountFeaturesWithoutCftInput {
@@ -101644,6 +102183,9 @@ enum UserAuditObjectTypeEnum {
 
   # Active Directory domain controller type.
   ACTIVE_DIRECTORY_DOMAIN_CONTROLLER
+
+  # Active Directory forest type.
+  ACTIVE_DIRECTORY_FOREST
 
   # Atlassian site.
   ATLASSIAN_SITE
@@ -104884,6 +105426,35 @@ enum VcenterSummaryConflictResolutionAuthz {
   VCENTER_SUMMARY_CONFLICT_RESOLUTION_AUTHZ_ALLOW_AUTO_CONFLICT_RESOLUTION
   VCENTER_SUMMARY_CONFLICT_RESOLUTION_AUTHZ_NO_CONFLICT_RESOLUTION
 }
+# Supported in v8.1+
+type VcenterSummaryV2 {
+  # Supported in v9.0+ An optional field that specifies whether HotAdd transport mode is enabled for On-Premise vCenter. When this value is `true`, HotAdd transport mode is enabled for this vCenter. When this value is `false`, HotAdd transport mode is not enabled for this vCenter. If this value is not specified, it indicates that this is a VMware Cloud (VMC) vCenter.
+  isHotAddProxyEnabledForOnPremVcenter: Boolean
+
+  # Supported in v8.1+
+  # Concatenated X.509 certificates in Base64 encoded DER format. Each certificate must start with -----BEGIN CERTIFICATE----- and end with -----END CERTIFICATE-----. Use an empty string to remove the existing certificates for the vCenter.
+  caCerts: String
+
+  # Details of the SLA Domain assigned to vSphere vCenter.
+  slaAssignable: SlaAssignable
+
+  # Required. Supported in v8.1+
+  hostname: String!
+
+  # Required. Supported in v8.1+
+  username: String!
+
+  # Supported in v9.0+ Set to 'AllowAutoConflictResolution' to link the relic virtual machine objects of a virtual machine to the current object for the virtual machine or to 'NoConflictResolution' to prevent linking. When a vCenter Server is added, the Rubrik cluster generates a unique ID for each virtual machine. If a virtual machine moves to another vCenter Server or is unregistered and then registered again with the same vCenter Server, a new unique ID is generated. This results in the original virtual machine object becoming a relic. This option links relic virtual machine objects with the current virtual machine object, allowing the snapshot history to be accessed through the current object. The default value is 'NoConflictResolution'.
+  conflictResolutionAuthz: VcenterSummaryV2ConflictResolutionAuthz
+}
+# Enum for vCenter conflictResolutionAuthz.
+enum VcenterSummaryV2ConflictResolutionAuthz {
+  # Link the relic virtual machine objects of a virtual machine to the current object for the virtual machine.
+  VCENTER_SUMMARY_V2_CONFLICT_RESOLUTION_AUTHZ_ALLOW_AUTO_CONFLICT_RESOLUTION
+
+  # Prevent linking the relic virtual machine objects of a virtual machine to the current object for the virtual machine.
+  VCENTER_SUMMARY_V2_CONFLICT_RESOLUTION_AUTHZ_NO_CONFLICT_RESOLUTION
+}
 # Input for configuration containing updated vCenter Server information.
 input VcenterUpdateConfigInput {
   # Supported in v9.2+
@@ -104893,10 +105464,53 @@ input VcenterUpdateConfigInput {
   # Configuration containing a part of updated vCenter Server information.
   vcenterConfig: VcenterConfigInput
 }
+# Enum for vCenter conflictResolutionAuthz.
+enum VcenterUpdateConfigV2ConflictResolutionAuthz {
+  # Link the relic virtual machine objects of a virtual machine to the current object for the virtual machine.
+  VCENTER_UPDATE_CONFIG_V2_CONFLICT_RESOLUTION_AUTHZ_ALLOW_AUTO_CONFLICT_RESOLUTION
+
+  # Prevent linking the relic virtual machine objects of a virtual machine to the current object for the virtual machine.
+  VCENTER_UPDATE_CONFIG_V2_CONFLICT_RESOLUTION_AUTHZ_NO_CONFLICT_RESOLUTION
+}
+# Supported in v8.1+
+input VcenterUpdateConfigV2Input {
+  # Supported in v8.1+
+  # Concatenated X.509 certificates in Base64 encoded DER format. Each certificate must start with -----BEGIN CERTIFICATE----- and end with -----END CERTIFICATE-----.
+  caCerts: String
+
+  # Supported in v8.1+
+  # v8.1-v9.1: A Boolean value that determines whether to enable HotAdd transport mode for On-Premise vCenter. When this value is `true`, VMware virtual machines can use HotAdd proxy to transport virtual disk data in addition to NBDSSL. When this value is `false`, VMware virtual machines can only use NBDSSL to transport virtual disk data. Default value is `false`.
+  # v9.2+: A Boolean value that determines whether to enable HotAdd transport mode for On-Premise vCenter. When this value is `true`, VMware virtual machines can use HotAdd proxy to transport virtual disk data in addition to NBD(SSL). When this value is `false`, VMware virtual machines can only use NBD(SSL) to transport virtual disk data. Default value is `false`.
+  shouldEnableHotAddProxyForOnPrem: Boolean
+
+  # Supported in v8.1+
+  # v8.1-v9.1: Set to 'AllowAutoConflictResolution' to link the relic virtual machine objects of a virtual machine to the current object for the virtual machine or to 'NoConflictResolution' to prevent linking. The Rubrik cluster generates a unique ID for each virtual machine when a vCenter Server is added. When a virtual machine changes to another vCenter Server or unregisters and registers with the same vCenter Server, a new unique ID is generated for that virtual machine. When this happens, the virtual machine object associated with the original ID becomes a relic. Setting this option to 'AllowAutoConflictResolution' links relic virtual machine objects with the current virtual machine object of a specific virtual machine, and makes the collective snapshot history available through the current object. Default value is 'NoConflictResolution'.
+  # v9.2+: Set to 'AllowAutoConflictResolution' to link the relic virtual machine objects of a virtual machine to the current object for the virtual machine or to 'NoConflictResolution' to prevent linking. The Rubrik cluster generates a unique ID for each virtual machine when a vCenter Server is added. When a virtual machine changes to another vCenter Server or unregisters and registers with the same vCenter Server, a new unique ID is generated for that virtual machine. When this happens, the virtual machine object associated with the original ID becomes a relic. This option links relic virtual machine objects with the current virtual machine object of a specific virtual machine, and makes the collective snapshot history available through the current object. Default value is 'NoConflictResolution'.
+  conflictResolutionAuthz: VcenterUpdateConfigV2ConflictResolutionAuthz
+
+  # Required. Supported in v8.1+
+  hostname: String!
+
+  # Required. Supported in v8.1+
+  password: String!
+
+  # Required. Supported in v8.1+
+  username: String!
+}
 # Response verifying if the cluster is replication target in a SLA Domain.
 type VerifySlaWithReplicationToClusterResponse {
   # Specifies whether SLA domain is active or not.
   isActiveSla: Boolean!
+}
+# Input required for verifying TOTP.
+input VerifyTotpInput {
+  # Required. TOTP one-time password.
+  otp: String!
+}
+# Represents the reply returned by verifyTotp.
+type VerifyTotpReply {
+  # Given OTP is valid or not.
+  valid: Boolean!
 }
 # Supported in m3.2.0-m4.2.0
 # Mosaic management object version.
@@ -108975,7 +109589,7 @@ type VsphereNetwork implements CdmHierarchyObject , HierarchyObject , VsphereHos
   # Security posture metadata.
   securityMetadata: SecurityMetadata
 }
-# Input for taking on demand snapshot of vSphere virtual machine.
+# Input for tqaking on demand snapshot of vSphere virtual machine.
 input VsphereOnDemandSnapshotInput {
   # Configuration for the on-demand snapshot.
   config: BaseOnDemandSnapshotConfigInput
@@ -111349,6 +111963,14 @@ input VsphereVmRegisterAgentWithOrgInput {
 
   # Uuid of the CDM cluster.
   clusterUuid: UUID!
+}
+# Input for updating the unmount time of a Live Mount.
+input VsphereVmUpdateUnmountTimeInput {
+  # Required. The new unmount time.
+  config: UpdatedUnmountTimeInput!
+
+  # Required. ID of a Live Mount.
+  mountId: String!
 }
 # Input for warm search cache for an O365 workload.
 input WarmSearchCacheInput {

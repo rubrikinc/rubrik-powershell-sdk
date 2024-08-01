@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         MANAGED_VOLUME_APPLICATION_TAG_SAP_HANA,
 
         [EnumMember(Value = "MANAGED_VOLUME_APPLICATION_TAG_SAP_HANA_LOG")]
-        MANAGED_VOLUME_APPLICATION_TAG_SAP_HANA_LOG
+        MANAGED_VOLUME_APPLICATION_TAG_SAP_HANA_LOG,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ManagedVolumeApplicationTag

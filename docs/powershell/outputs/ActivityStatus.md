@@ -1,0 +1,2 @@
+### ActivityStatus
+- enumValue: ActivityStatusEnum

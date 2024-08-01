@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         TOTAL_LOW_RISK_HITS,
 
         [EnumMember(Value = "TOTAL_MEDIUM_RISK_HITS")]
-        TOTAL_MEDIUM_RISK_HITS
+        TOTAL_MEDIUM_RISK_HITS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ObjectTypeAccessSummarySortBy

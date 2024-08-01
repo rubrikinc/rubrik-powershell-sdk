@@ -16,7 +16,10 @@ namespace RubrikSecurityCloud.Types
     public enum FileVersionSourceEnum
     {
         [EnumMember(Value = "CLOUD")]
-        CLOUD
+        CLOUD,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FileVersionSourceEnum

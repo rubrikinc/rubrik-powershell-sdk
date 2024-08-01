@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         AZURE_ACTIVE_DIRECTORY_AUTH_CODE,
 
         [EnumMember(Value = "SQL_AUTHENTICATION")]
-        SQL_AUTHENTICATION
+        SQL_AUTHENTICATION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SqlAuthenticationMechanism

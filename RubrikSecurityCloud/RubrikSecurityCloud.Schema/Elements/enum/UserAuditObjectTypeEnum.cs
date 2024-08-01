@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
+        [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
+        ACTIVE_DIRECTORY_FOREST,
+
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 
@@ -382,7 +385,10 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_FILESET,
 
         [EnumMember(Value = "WindowsHost")]
-        WINDOWS_HOST
+        WINDOWS_HOST,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UserAuditObjectTypeEnum

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         NOTIFICATION_LICENSING,
 
         [EnumMember(Value = "NOTIFICATION_UNSPECIFIED")]
-        NOTIFICATION_UNSPECIFIED
+        NOTIFICATION_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GetLicenseNotificationRequest

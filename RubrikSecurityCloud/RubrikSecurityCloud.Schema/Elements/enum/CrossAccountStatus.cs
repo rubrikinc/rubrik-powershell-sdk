@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         STATUS_UNSPECIFIED,
 
         [EnumMember(Value = "TEMPORARILY_DISCONNECTED")]
-        TEMPORARILY_DISCONNECTED
+        TEMPORARILY_DISCONNECTED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CrossAccountStatus

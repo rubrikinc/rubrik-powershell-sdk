@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         TAG_KEY,
 
         [EnumMember(Value = "TAG_KEY_VALUE")]
-        TAG_KEY_VALUE
+        TAG_KEY_VALUE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TagFilterType

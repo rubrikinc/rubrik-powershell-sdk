@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 6
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'VMware vSphere vCenter' API domain:
-    /// Create, Delete, Refresh, Update, UpdateHotAddBandwidth, or UpdateHotAddNetwork.
+    /// Create, Delete, Edit, Refresh, Update, UpdateHotAddBandwidth, or UpdateHotAddNetwork.
     /// </summary>
     /// <description>
     /// New-RscMutationVcenter creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 6 operations
+    /// There are 7 operations
     /// in the 'VMware vSphere vCenter' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Create, Delete, Refresh, Update, UpdateHotAddBandwidth, or UpdateHotAddNetwork.
+    /// one of: Create, Delete, Edit, Refresh, Update, UpdateHotAddBandwidth, or UpdateHotAddNetwork.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -90,48 +90,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscMutationVcenter -Create
     /// 
     /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	vcenterDetail = @{
-    /// 		# OPTIONAL
-    /// 		caCerts = $someString
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isStandaloneHost = $someBoolean
-    /// 		# OPTIONAL
-    /// 		orgNetworkId = $someString
-    /// 		# OPTIONAL
-    /// 		conflictResolutionAuthz = $someVcenterConfigV2ConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigV2ConflictResolutionAuthz]) for enum values.
-    /// 		# OPTIONAL
-    /// 		computeVisibilityFilter = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				isVmwareMetroStorageCluster = $someBoolean
-    /// 				# REQUIRED
-    /// 				hostGroupFilter = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
-    /// 			}
-    /// 		)
-    /// 		# REQUIRED
-    /// 		hostname = $someString
-    /// 		# REQUIRED
-    /// 		password = $someString
-    /// 		# REQUIRED
-    /// 		username = $someString
-    /// 	}
-    /// }
+    /// $query.Var.clusterUuid = $someString
+    /// # REQUIRED
+    /// $query.Var.hostname = $someString
+    /// # REQUIRED
+    /// $query.Var.username = $someString
+    /// # REQUIRED
+    /// $query.Var.password = $someString
+    /// # REQUIRED
+    /// $query.Var.conflictResolutionAuthz = $someConflictResolutionAuthzEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConflictResolutionAuthzEnum]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.caCert = $someString
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: CreateVsphereVcenterReply
+    /// Write-Host $result.GetType().Name # prints: VsphereAsyncRequestStatus
     /// 
     /// 
     /// 
@@ -171,6 +146,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the Edit operation
+    /// of the 'VMware vSphere vCenter' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vcenter
+    /// # API Operation: Edit
+    /// 
+    /// $query = New-RscMutationVcenter -Edit
+    /// 
+    /// # REQUIRED
+    /// $query.Var.vcenterId = $someString
+    /// # REQUIRED
+    /// $query.Var.hostname = $someString
+    /// # REQUIRED
+    /// $query.Var.username = $someString
+    /// # REQUIRED
+    /// $query.Var.password = $someString
+    /// # REQUIRED
+    /// $query.Var.conflictResolutionAuthz = $someConflictResolutionAuthzEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConflictResolutionAuthzEnum]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.caCert = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RequestSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Refresh operation
     /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
@@ -184,18 +197,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscMutationVcenter -Refresh
     /// 
     /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	fid = $someString
-    /// 	# OPTIONAL
-    /// 	shouldDiagnose = $someBoolean
-    /// }
+    /// $query.Var.vcenterId = $someString
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// Write-Host $result.GetType().Name # prints: VsphereAsyncRequestStatus
     /// 
     /// 
     /// 
@@ -533,6 +541,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			username = $someString
     /// 		}
     /// 	}
+    /// 	# OPTIONAL
+    /// 	updatePropertiesV93 = @{
+    /// 		# OPTIONAL
+    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
+    /// 		# OPTIONAL
+    /// 		vcenterConfig = @{
+    /// 			# OPTIONAL
+    /// 			caCerts = $someString
+    /// 			# OPTIONAL
+    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 			# OPTIONAL
+    /// 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 			# OPTIONAL
+    /// 			computeVisibilityFilter = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					isVmwareMetroStorageCluster = $someBoolean
+    /// 					# REQUIRED
+    /// 					hostGroupFilter = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					id = $someString
+    /// 				}
+    /// 			)
+    /// 			# REQUIRED
+    /// 			hostname = $someString
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 		}
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -654,6 +695,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "Create",
                 "Delete",
+                "Edit",
                 "Refresh",
                 "Update",
                 "UpdateHotAddBandwidth",
@@ -679,6 +721,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Delete":
                         this.ProcessRecord_Delete();
                         break;
+                    case "Edit":
+                        this.ProcessRecord_Edit();
+                        break;
                     case "Refresh":
                         this.ProcessRecord_Refresh();
                         break;
@@ -702,12 +747,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // createVsphereVcenter.
+        // vsphereCreateVCenter.
         internal void ProcessRecord_Create()
         {
             this._logger.name += " -Create";
-            // Create new graphql operation createVsphereVcenter
-            InitMutationCreateVsphereVcenter();
+            // Create new graphql operation vsphereCreateVCenter
+            InitMutationVsphereCreateVcenter();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -720,12 +765,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // refreshVsphereVcenter.
+        // vsphereEditVCenter.
+        internal void ProcessRecord_Edit()
+        {
+            this._logger.name += " -Edit";
+            // Create new graphql operation vsphereEditVCenter
+            InitMutationVsphereEditVcenter();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vsphereRefreshVCenter.
         internal void ProcessRecord_Refresh()
         {
             this._logger.name += " -Refresh";
-            // Create new graphql operation refreshVsphereVcenter
-            InitMutationRefreshVsphereVcenter();
+            // Create new graphql operation vsphereRefreshVCenter
+            InitMutationVsphereRefreshVcenter();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -757,57 +811,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
 
         // Create new GraphQL Mutation:
-        // createVsphereVcenter(input: CreateVsphereVcenterInput!): CreateVsphereVcenterReply!
-        internal void InitMutationCreateVsphereVcenter()
+        // vsphereCreateVCenter(
+        //     clusterUuid: UUID!
+        //     hostname: String!
+        //     username: String!
+        //     password: String!
+        //     conflictResolutionAuthz: ConflictResolutionAuthzEnum!
+        //     caCert: String
+        //   ): VsphereAsyncRequestStatus!
+        internal void InitMutationVsphereCreateVcenter()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateVsphereVcenterInput!"),
+                Tuple.Create("clusterUuid", "UUID!"),
+                Tuple.Create("hostname", "String!"),
+                Tuple.Create("username", "String!"),
+                Tuple.Create("password", "String!"),
+                Tuple.Create("conflictResolutionAuthz", "ConflictResolutionAuthzEnum!"),
+                Tuple.Create("caCert", "String"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationCreateVsphereVcenter",
-                "($input: CreateVsphereVcenterInput!)",
-                "CreateVsphereVcenterReply",
-                Mutation.CreateVsphereVcenter,
-                Mutation.CreateVsphereVcenterFieldSpec,
+                "MutationVsphereCreateVcenter",
+                "($clusterUuid: UUID!,$hostname: String!,$username: String!,$password: String!,$conflictResolutionAuthz: ConflictResolutionAuthzEnum!,$caCert: String)",
+                "VsphereAsyncRequestStatus",
+                Mutation.VsphereCreateVcenter,
+                Mutation.VsphereCreateVcenterFieldSpec,
                 @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	vcenterDetail = @{
-		# OPTIONAL
-		caCerts = $someString
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		isStandaloneHost = $someBoolean
-		# OPTIONAL
-		orgNetworkId = $someString
-		# OPTIONAL
-		conflictResolutionAuthz = $someVcenterConfigV2ConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigV2ConflictResolutionAuthz]) for enum values.
-		# OPTIONAL
-		computeVisibilityFilter = @(
-			@{
-				# OPTIONAL
-				isVmwareMetroStorageCluster = $someBoolean
-				# REQUIRED
-				hostGroupFilter = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
-			}
-		)
-		# REQUIRED
-		hostname = $someString
-		# REQUIRED
-		password = $someString
-		# REQUIRED
-		username = $someString
-	}
-}"
+$query.Var.clusterUuid = $someString
+# REQUIRED
+$query.Var.hostname = $someString
+# REQUIRED
+$query.Var.username = $someString
+# REQUIRED
+$query.Var.password = $someString
+# REQUIRED
+$query.Var.conflictResolutionAuthz = $someConflictResolutionAuthzEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConflictResolutionAuthzEnum]) for enum values.
+# OPTIONAL
+$query.Var.caCert = $someString"
             );
         }
 
@@ -835,27 +876,64 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // refreshVsphereVcenter(input: RefreshVsphereVcenterInput!): AsyncRequestStatus!
-        internal void InitMutationRefreshVsphereVcenter()
+        // vsphereEditVCenter(
+        //     vcenterId: UUID!
+        //     hostname: String!
+        //     username: String!
+        //     password: String!
+        //     conflictResolutionAuthz: ConflictResolutionAuthzEnum!
+        //     caCert: String
+        //   ): RequestSuccess!
+        internal void InitMutationVsphereEditVcenter()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "RefreshVsphereVcenterInput!"),
+                Tuple.Create("vcenterId", "UUID!"),
+                Tuple.Create("hostname", "String!"),
+                Tuple.Create("username", "String!"),
+                Tuple.Create("password", "String!"),
+                Tuple.Create("conflictResolutionAuthz", "ConflictResolutionAuthzEnum!"),
+                Tuple.Create("caCert", "String"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationRefreshVsphereVcenter",
-                "($input: RefreshVsphereVcenterInput!)",
-                "AsyncRequestStatus",
-                Mutation.RefreshVsphereVcenter,
-                Mutation.RefreshVsphereVcenterFieldSpec,
+                "MutationVsphereEditVcenter",
+                "($vcenterId: UUID!,$hostname: String!,$username: String!,$password: String!,$conflictResolutionAuthz: ConflictResolutionAuthzEnum!,$caCert: String)",
+                "RequestSuccess",
+                Mutation.VsphereEditVcenter,
+                Mutation.VsphereEditVcenterFieldSpec,
                 @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	fid = $someString
-	# OPTIONAL
-	shouldDiagnose = $someBoolean
-}"
+$query.Var.vcenterId = $someString
+# REQUIRED
+$query.Var.hostname = $someString
+# REQUIRED
+$query.Var.username = $someString
+# REQUIRED
+$query.Var.password = $someString
+# REQUIRED
+$query.Var.conflictResolutionAuthz = $someConflictResolutionAuthzEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConflictResolutionAuthzEnum]) for enum values.
+# OPTIONAL
+$query.Var.caCert = $someString"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // vsphereRefreshVCenter(vcenterId: UUID!): VsphereAsyncRequestStatus!
+        internal void InitMutationVsphereRefreshVcenter()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("vcenterId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereRefreshVcenter",
+                "($vcenterId: UUID!)",
+                "VsphereAsyncRequestStatus",
+                Mutation.VsphereRefreshVcenter,
+                Mutation.VsphereRefreshVcenterFieldSpec,
+                @"# REQUIRED
+$query.Var.vcenterId = $someString"
             );
         }
 
@@ -1160,6 +1238,39 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	updatePropertiesV92 = @{
+		# OPTIONAL
+		shouldUpdateComputeVisibilityFilter = $someBoolean
+		# OPTIONAL
+		vcenterConfig = @{
+			# OPTIONAL
+			caCerts = $someString
+			# OPTIONAL
+			shouldEnableHotAddProxyForOnPrem = $someBoolean
+			# OPTIONAL
+			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+			# OPTIONAL
+			computeVisibilityFilter = @(
+				@{
+					# OPTIONAL
+					isVmwareMetroStorageCluster = $someBoolean
+					# REQUIRED
+					hostGroupFilter = @(
+						$someString
+					)
+					# REQUIRED
+					id = $someString
+				}
+			)
+			# REQUIRED
+			hostname = $someString
+			# REQUIRED
+			password = $someString
+			# REQUIRED
+			username = $someString
+		}
+	}
+	# OPTIONAL
+	updatePropertiesV93 = @{
 		# OPTIONAL
 		shouldUpdateComputeVisibilityFilter = $someBoolean
 		# OPTIONAL

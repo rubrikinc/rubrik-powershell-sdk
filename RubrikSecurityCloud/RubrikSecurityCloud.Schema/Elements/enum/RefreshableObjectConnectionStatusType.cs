@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_REFRESHING,
 
         [EnumMember(Value = "REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_REMOTE")]
-        REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_REMOTE
+        REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_REMOTE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RefreshableObjectConnectionStatusType

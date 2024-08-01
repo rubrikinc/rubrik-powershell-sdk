@@ -1,0 +1,173 @@
+### AuthorizedOperation
+Authorized operations on an object.
+
+- CREATE_REPORT - Reports.
+- VIEW_REPORT
+- MODIFY_REPORT
+- DELETE_REPORT
+- ADD_CLUSTER - Cluster config.
+- VIEW_CLUSTER
+- MODIFY_CLUSTER
+- DELETE_CLUSTER
+- UPGRADE_CLUSTER
+- RECOVER_CLUSTER
+- MANAGE_CLUSTER_SETTINGS - Modify cluster settings.
+- MANAGE_CLUSTER_DISKS - Modify cluster disks.
+- ADD_CLUSTER_NODES - Add cluster nodes.
+- REMOVE_CLUSTER_NODES - Remove cluster nodes.
+- VIEW_DASHBOARD - Dashboard.
+- VIEW_SLA - SLA Domain.
+- MODIFY_SLA
+- CREATE_SLA
+- DELETE_SLA
+- MANAGE_SLA
+- TOGGLE_BLACKOUT_WINDOW
+- VIEW_SYS_EVENT - Events.
+- VIEW_NON_SYS_EVENT
+- CANCEL_RUNNING_EVENT
+- VIEW_AUDIT_LOG
+- VIEW_SYS_PREFERENCE - RSC system preference.
+- EDIT_SYS_PREFERENCE
+- VIEW_INVENTORY - Data source.
+- MODIFY_INVENTORY
+- ADD_INVENTORY
+- DELETE_INVENTORY
+- MOUNT
+- EXPORT
+- INSTANT_RECOVER
+- DOWNLOAD
+- DOWNLOAD_FROM_ARCHIVAL_LOCATION
+- DELETE_SNAPSHOT
+- RESTORE
+- TAKE_ONDEMAND_SNAPSHOT
+- MANAGE_PROTECTION
+- MANAGE_DATA_SOURCE
+- REFRESH_DATA_SOURCE
+- EXPORT_FILES
+- EXPORT_SNAPSHOTS
+- RESTORE_TO_ORIGIN
+- PROVISION_ON_INFRASTRUCTURE - Recovery Target.
+- TRANSFER_ACCOUNT_OWNER - special rules
+ TRANFER_ACCOUNT_OWNER operation was used when there was a single owner.
+ It will be replaced with UPDATE_ACCOUNT_OWNERSHIP when multiple account
+ owners are supported.
+- UPDATE_ACCOUNT_OWNERSHIP
+- CONFIGURE_DATA_CLASS_GLOBAL - Data governance.
+- VIEW_DATA_CLASS_GLOBAL
+- EXPORT_DATA_CLASS_GLOBAL
+- ADD_AWS_CLOUD_ACCOUNT - AWS cloud accounts.
+- EDIT_AWS_CLOUD_ACCOUNT
+- VIEW_AWS_CLOUD_ACCOUNT
+- DELETE_AWS_CLOUD_ACCOUNT
+- ADD_STORAGE_SETTINGS - Storage Settings.
+- EDIT_STORAGE_SETTINGS
+- VIEW_STORAGE_SETTINGS
+- DELETE_STORAGE_SETTINGS
+- VIEW_SECURITY_SETTINGS - Access management.
+- EDIT_SECURITY_SETTINGS
+- VIEW_USER_MANAGEMENT
+- EDIT_USER_MANAGEMENT
+- VIEW_ACCESS
+- MANAGE_ACCESS
+- ADD_AZURE_CLOUD_ACCOUNT - Azure cloud accounts.
+- EDIT_AZURE_CLOUD_ACCOUNT
+- VIEW_AZURE_CLOUD_ACCOUNT
+- DELETE_AZURE_CLOUD_ACCOUNT
+- ADD_GCP_CLOUD_ACCOUNT - GCP cloud accounts.
+- EDIT_GCP_CLOUD_ACCOUNT
+- VIEW_GCP_CLOUD_ACCOUNT
+- DELETE_GCP_CLOUD_ACCOUNT
+- VIEW_CDM_SYS_CONFIG - CDM Configurations.
+- EDIT_CDM_SYS_CONFIG
+- VIEW_CDM_SUPPORT_SETTING
+- EDIT_CDM_SUPPORT_SETTING
+- VIEW_CDM_NETWORK_SETTING
+- EDIT_CDM_NETWORK_SETTING
+- ACCESS_CDM_CLUSTER - Access Rubrik clusters via federated access.
+- MANAGE_LEGAL_HOLD - Legal Hold: currently administrator only.
+- CATEGORY_VIEW_DATA_SOURCE - Privilege category: should never be used as GQL Tags.
+- CATEGORY_MANAGE_DATA_SOURCE
+- CATEGORY_PROTECTION
+- CATEGORY_RECOVERY
+- VIEW_ORGANIZATION - Multitenancy: organization management.
+- EDIT_ORGANIZATION
+- VIEW_REPLICATION_SETTINGS - replication settings
+- EDIT_REPLICATION_SETTINGS
+- EDIT_NETWORK_THROTTLE_SETTINGS - Network throttle settings.
+- VIEW_THREAT_HUNT_RESULTS - Threat hunt.
+- CREATE_THREAT_HUNT
+- EDIT_QUARANTINE - Quarantine.
+- RECOVER_FROM_QUARANTINE
+- DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET - Download replicated snapshot.
+- VIEW_WEBHOOKS - Webhooks.
+- MANAGE_WEBHOOKS
+- RESIZE_MANAGED_VOLUME - Managed volume.
+- VIEW_DATA_SECURITY_DETAILS - Data Security Command Center.
+- VIEW_SMB_DOMAIN - SMB domains.
+- MANAGE_SMB_DOMAIN
+- MANAGE_CDP_IO_FILTER - CDP IO filter operations.
+- VIEW_CERTIFICATE - Certificate management.
+- MANAGE_CERTIFICATE
+- ALLOW_SUPPORT_USER_SESSIONS - Impersonation.
+- VIEW_ORCHESTRATED_RECOVERY_APP - Orchestrated Recovery (AppFlows).
+- MANAGE_RECOVERY_PLAN
+- MANAGE_ORCHESTRATED_RECOVERY
+- VIEW_NETWORK_THROTTLE_SETTINGS - View network throttle settings.
+- VIEW_CLUSTER_LICENSES - Licenses.
+- MANAGE_ARCHIVAL_NETWORK_THROTTLE_SETTINGS - Manage archival network throttle settings.
+- VIEW_SYSLOG - Syslog.
+- MANAGE_SYSLOG
+- VIEW_SNMP - SNMP.
+- MANAGE_SNMP
+- VIEW_SUPPORT_BUNDLE - Support bundle.
+- MANAGE_SUPPORT_BUNDLE
+- MANAGE_TPR_ENABLEMENT - TPR management.
+- VIEW_TPR_CONFIGURATION
+- MANAGE_TPR_CONFIGURATION
+- CANCEL_TPR_REQUEST
+- VIEW_TPR_REQUEST
+- APPROVE_TPR_REQUEST
+- VIEW_TPR_POLICY
+- MANAGE_TPR_POLICY
+- VIEW_ARCHIVAL_LOCATION - Archival location.
+- DOWNLOAD_VIRTUAL_MACHINE_FILE - Download virtual machine file (e.g. .VMDK).
+- MANAGE_GPS_TO_RSC_UPGRADE - GPS to RSC Upgrade.
+- VIEW_GUEST_OS_CREDENTIAL - Guest OS credential.
+- MANAGE_GUEST_OS_CREDENTIAL
+- VIEW_EVENT_CLUSTER_SETTING - Event cluster setting.
+- MODIFY_EVENT_CLUSTER_SETTING
+- USE_AS_REPLICATION_TARGET - Replication target usage permissions in SLA Domain.
+- TIER_EXISTING_SNAPSHOTS - Executing a one-time tier existing snapshots background job.
+- VIEW_ZSCALER_DLP_INTEGRATION - integration hub
+- MANAGE_ZSCALER_DLP_INTEGRATION
+- ADD_CERTIFICATE - Certificate management self service in tenant organization.
+- MANAGE_CORS_SETTINGS - Managing CORS settings permission.
+- VIEW_DB_LOG_REPORT_PROPERTIES - View database log reporting properties.
+- CONFIGURE_DB_LOG_REPORT_PROPERTIES - Configure database log reporting properties.
+- VIEW_CORS_SETTINGS - View CORS settings permission.
+- MANAGE_MIGRATION_DASHBOARD - Manage migration dashboard
+- VIEW_DL_EMAIL_SETTINGS - View distribution list email settings
+- MANAGE_DL_EMAIL_SETTINGS - Manage distribution list email settings
+- CROSS_ACCOUNT_REPLICATION - Cross-account replication
+- CREATE_CROSS_ACCOUNT_PAIR - Create cross-account pair.
+- MANAGE_CROSS_ACCOUNT_PAIR - Manage cross-account pair.
+- GRANULAR_RECOVERY - Operation for granular recovery.
+- VIEW_CROSS_ACCOUNT_PAIR - View cross-account pair.
+- VIEW_SERVICENOW_INTEGRATION - View serviceNow integrations.
+- MANAGE_SERVICENOW_INTEGRATION - Manage serviceNow integrations.
+- VIEW_IP_ADDRESS_IN_AUDITS - View IP Address In Audits
+- VIEW_CHATBOT - View chatbot.
+- MANAGE_CHATBOT - Manage chatbot.
+- CHAT_WITH_CHATBOT - Chat with chatbot.
+- VIEW_LICENSE_DASHBOARD - View license dashboard.
+- VIEW_ANOMALY_DETECTION_RESULTS - Anomaly Detection.
+- MANAGE_STORAGE_ENCRYPTION - Manage storage encryption.
+- MANAGE_SUPPORT_TUNNEL - Manage support tunnel.
+- VIEW_KMS_KEY_VAULT - View KMS Key Vault.
+- MANAGE_KMS_KEY_VAULT - Add or edit KMS Key Vault.
+- ASSIGN_KMS_KEY_VAULT - Assign KMS Key Vault.
+- MOUNT_NUTANIX_VDISK - Mount Nutanix virtual disks.
+- DOWNLOAD_NUTANIX_VDISK - Download Nutanix virtual disks.
+- UNKNOWN_OPERATION - Unsupported operation.
+ NB: ideally we should use 0, but we missed it.
+ using 10000 to make debugging easier with number in logs.

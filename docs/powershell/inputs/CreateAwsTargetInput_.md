@@ -1,0 +1,43 @@
+### CreateAwsTargetInput
+Input for creating ab AWS archival target.
+
+- name: System.String
+  - Name of the AWS archival target.
+- cloudAccountId: System.String
+  - Cloud account ID of the AWS archival target.
+- bucketName: System.String
+  - Bucket name of the AWS archival target.
+- storageClass: AwsStorageClass
+  - Storage class of the AWS archival target.
+- region: AwsRegion
+  - Region of the AWS archival target.
+- kmsMasterKeyId: System.String
+  - KMS master key ID to be used for encryption.
+- rsaKey: System.String
+  - RSA key to be used for encryption.
+- encryptionPassword: System.String
+  - Encryption password for the AWS archival target.
+- clusterUuid: System.String
+  - Cluster UUID to which the AWS archival target is associated.
+- isConsolidationEnabled: System.Boolean
+  - Flag to determine if consolidation is enabled in this AWS archival target.
+- proxySettings: ProxySettingsInput
+  - Proxy settings of the AWS archival target.
+- awsComputeSettingsId: System.String
+  - Compute settings ID of the AWS archival target.
+- cloudComputeSettings: AwsCloudComputeSettingsInput
+  - Cloud compute settings of the AWS archival target.
+- computeProxySettings: ProxySettingsInput
+  - Compute Proxy settings of the AWS archival target.
+- awsRetrievalTier: AwsRetrievalTier
+  - Retrieval tier of the AWS archival target.
+- immutabilitySettings: AwsImmutabilitySettings
+  - AWS immutability settings.
+- s3Endpoint: System.String
+  - Optional field for specifying an AWS S3 endpoint, for example a VPC endpoint. When not specified, the default, region-based S3 endpoint is used.
+- kmsEndpoint: System.String
+  - Optional field for specifying the KMS server endpoint when using KMS-based encryption, for example a VPC endpoint. When not specified, the default, region-based KMS server endpoint is used.
+- awsIamPairId: System.String
+  - Internal ID of the AWS IAM pair. This field is required only when creating Data Center AWS role-based archival locations.
+- bypassProxy: System.Boolean
+  - Specifies whether the proxy settings should be bypassed for creating this AWS archival target.

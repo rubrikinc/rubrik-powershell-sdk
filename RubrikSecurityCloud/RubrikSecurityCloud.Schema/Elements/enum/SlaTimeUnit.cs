@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         SLA_TIME_UNIT_WEEKLY,
 
         [EnumMember(Value = "SLA_TIME_UNIT_YEARLY")]
-        SLA_TIME_UNIT_YEARLY
+        SLA_TIME_UNIT_YEARLY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SlaTimeUnit

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SUPPORT_ACCESS_STATUS_OPEN,
 
         [EnumMember(Value = "SUPPORT_ACCESS_STATUS_UNSPECIFIED")]
-        SUPPORT_ACCESS_STATUS_UNSPECIFIED
+        SUPPORT_ACCESS_STATUS_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SupportUserAccessStatus

@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         PUBLIC,
 
         [EnumMember(Value = "UNKNOWN_ACCESS")]
-        UNKNOWN_ACCESS
+        UNKNOWN_ACCESS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum OpenAccessType

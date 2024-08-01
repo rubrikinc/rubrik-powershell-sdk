@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         DISCONNECTED,
 
         [EnumMember(Value = "NA")]
-        NA
+        NA,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudInstanceRbsConnectionStatus

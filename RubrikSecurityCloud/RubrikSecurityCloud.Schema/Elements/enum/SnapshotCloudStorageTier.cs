@@ -46,7 +46,10 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_CLOUD_STORAGE_TIER_ONE_ZONE_IA,
 
         [EnumMember(Value = "SNAPSHOT_CLOUD_STORAGE_TIER_STANDARD_IA")]
-        SNAPSHOT_CLOUD_STORAGE_TIER_STANDARD_IA
+        SNAPSHOT_CLOUD_STORAGE_TIER_STANDARD_IA,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnapshotCloudStorageTier

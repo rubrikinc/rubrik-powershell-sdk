@@ -415,7 +415,10 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_FILESET,
 
         [EnumMember(Value = "WindowsVolumeGroup")]
-        WINDOWS_VOLUME_GROUP
+        WINDOWS_VOLUME_GROUP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HierarchyObjectTypeEnum

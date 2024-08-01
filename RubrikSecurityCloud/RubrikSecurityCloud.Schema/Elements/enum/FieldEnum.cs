@@ -64,7 +64,10 @@ namespace RubrikSecurityCloud.Types
         SPECIFIC_SNAPSHOT_NOT_REQUIRED,
 
         [EnumMember(Value = "TIME_RANGE_WITH_OFFSET")]
-        TIME_RANGE_WITH_OFFSET
+        TIME_RANGE_WITH_OFFSET,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FieldEnum

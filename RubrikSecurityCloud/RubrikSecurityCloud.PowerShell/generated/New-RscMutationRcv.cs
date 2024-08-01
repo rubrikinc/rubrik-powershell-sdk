@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 5
     /// operations in the 'RCV' API domain:
-    /// ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, or UpdateTarget.
+    /// ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, TriggerGrsCustomFailover, or UpdateTarget.
     /// </summary>
     /// <description>
     /// New-RscMutationRcv creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 5 operations
     /// in the 'RCV' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, or UpdateTarget.
+    /// one of: ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, TriggerGrsCustomFailover, or UpdateTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -212,6 +212,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the TriggerGrsCustomFailover operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: TriggerGrsCustomFailover
+    /// 
+    /// $query = New-RscMutationRcv -TriggerGrsCustomFailover
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateTarget operation
     /// of the 'RCV' API domain.
     /// <code>
@@ -276,6 +307,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ApprovePrivateEndpoint",
                 "CreateLocationsFromTemplate",
                 "CreatePrivateEndpointApprovalRequest",
+                "TriggerGrsCustomFailover",
                 "UpdateTarget",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -300,6 +332,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CreatePrivateEndpointApprovalRequest":
                         this.ProcessRecord_CreatePrivateEndpointApprovalRequest();
+                        break;
+                    case "TriggerGrsCustomFailover":
+                        this.ProcessRecord_TriggerGrsCustomFailover();
                         break;
                     case "UpdateTarget":
                         this.ProcessRecord_UpdateTarget();
@@ -339,6 +374,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreatePrivateEndpointApprovalRequest";
             // Create new graphql operation createRcvPrivateEndpointApprovalRequest
             InitMutationCreateRcvPrivateEndpointApprovalRequest();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // triggerRcvGrsCustomFailover.
+        internal void ProcessRecord_TriggerGrsCustomFailover()
+        {
+            this._logger.name += " -TriggerGrsCustomFailover";
+            // Create new graphql operation triggerRcvGrsCustomFailover
+            InitMutationTriggerRcvGrsCustomFailover();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -458,6 +502,29 @@ $query.Var.input = @{
 	locationId = $someString
 	# REQUIRED
 	privateEndpointId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // triggerRcvGrsCustomFailover(input: TriggerRcvGrsCustomFailoverInput!): Void
+        internal void InitMutationTriggerRcvGrsCustomFailover()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "TriggerRcvGrsCustomFailoverInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationTriggerRcvGrsCustomFailover",
+                "($input: TriggerRcvGrsCustomFailoverInput!)",
+                "System.String",
+                Mutation.TriggerRcvGrsCustomFailover,
+                Mutation.TriggerRcvGrsCustomFailoverFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	locationId = $someString
 }"
             );
         }

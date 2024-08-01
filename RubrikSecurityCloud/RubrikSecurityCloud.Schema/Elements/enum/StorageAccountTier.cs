@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         COOL,
 
         [EnumMember(Value = "HOT")]
-        HOT
+        HOT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum StorageAccountTier

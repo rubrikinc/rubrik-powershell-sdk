@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 6
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Host' API domain:
-    /// Diagnosis, PhysicalHost, PhysicalHosts, Search, Share, or Shares.
+    /// Diagnosis, PhysicalHost, PhysicalHosts, Search, Share, Shares, or VolumesCount.
     /// </summary>
     /// <description>
     /// New-RscQueryHost creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 6 operations
+    /// There are 7 operations
     /// in the 'Host' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Diagnosis, PhysicalHost, PhysicalHosts, Search, Share, or Shares.
+    /// one of: Diagnosis, PhysicalHost, PhysicalHosts, Search, Share, Shares, or VolumesCount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -346,6 +346,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the VolumesCount operation
+    /// of the 'Host' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Host
+    /// # API Operation: VolumesCount
+    /// 
+    /// $query = New-RscQueryHost -VolumesCount
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Int32
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -368,6 +395,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Search",
                 "Share",
                 "Shares",
+                "VolumesCount",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -400,6 +428,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Shares":
                         this.ProcessRecord_Shares();
+                        break;
+                    case "VolumesCount":
+                        this.ProcessRecord_VolumesCount();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -463,6 +494,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Shares";
             // Create new graphql operation hostShares
             InitQueryHostShares();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hostVolumesCount.
+        internal void ProcessRecord_VolumesCount()
+        {
+            this._logger.name += " -VolumesCount";
+            // Create new graphql operation hostVolumesCount
+            InitQueryHostVolumesCount();
         }
 
 
@@ -710,6 +750,24 @@ $query.Var.filter = @(
 		)
 }
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // hostVolumesCount: Int!
+        internal void InitQueryHostVolumesCount()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHostVolumesCount",
+                "",
+                "System.Int32",
+                Query.HostVolumesCount,
+                Query.HostVolumesCountFieldSpec,
+                @""
             );
         }
 

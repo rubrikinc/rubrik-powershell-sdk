@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         SOURCE_OR_ACTIVE_VM_CDMID,
 
         [EnumMember(Value = "SOURCE_VM_CDMID")]
-        SOURCE_VM_CDMID
+        SOURCE_VM_CDMID,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum NutanixLiveMountFilterField

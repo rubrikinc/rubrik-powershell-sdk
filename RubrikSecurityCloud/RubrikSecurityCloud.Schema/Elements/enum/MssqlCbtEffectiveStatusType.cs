@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         MSSQL_CBT_EFFECTIVE_STATUS_TYPE_ON,
 
         [EnumMember(Value = "MSSQL_CBT_EFFECTIVE_STATUS_TYPE_ON_DEFAULT")]
-        MSSQL_CBT_EFFECTIVE_STATUS_TYPE_ON_DEFAULT
+        MSSQL_CBT_EFFECTIVE_STATUS_TYPE_ON_DEFAULT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MssqlCbtEffectiveStatusType

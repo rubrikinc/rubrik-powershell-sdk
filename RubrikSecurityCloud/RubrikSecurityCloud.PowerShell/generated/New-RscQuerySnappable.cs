@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 13
+    /// Create a new RscQuery object for any of the 16
     /// operations in the 'Snappable' API domain:
-    /// CdmHierarchySnappableNew, CdmHierarchySnappablesNew, ContactSearch, EmailSearch, EventSearch, GroupByList, Hierarchy, List, OnedriveSearch, Search, SearchVersionedFiles, TeamsConversationsSearch, or TeamsDriveSearch.
+    /// CdmHierarchySnappableNew, CdmHierarchySnappablesNew, ContactSearch, EmailSearch, EventSearch, GroupByAtSpecifiedTimeList, GroupByList, Hierarchy, List, OnedriveSearch, RecoveryPermissionCheck, ResourceSpecs, Search, SearchVersionedFiles, TeamsConversationsSearch, or TeamsDriveSearch.
     /// </summary>
     /// <description>
     /// New-RscQuerySnappable creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 13 operations
+    /// There are 16 operations
     /// in the 'Snappable' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CdmHierarchySnappableNew, CdmHierarchySnappablesNew, ContactSearch, EmailSearch, EventSearch, GroupByList, Hierarchy, List, OnedriveSearch, Search, SearchVersionedFiles, TeamsConversationsSearch, or TeamsDriveSearch.
+    /// one of: CdmHierarchySnappableNew, CdmHierarchySnappablesNew, ContactSearch, EmailSearch, EventSearch, GroupByAtSpecifiedTimeList, GroupByList, Hierarchy, List, OnedriveSearch, RecoveryPermissionCheck, ResourceSpecs, Search, SearchVersionedFiles, TeamsConversationsSearch, or TeamsDriveSearch.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -359,6 +359,110 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: O365ExchangeObjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the GroupByAtSpecifiedTimeList operation
+    /// of the 'Snappable' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snappable
+    /// # API Operation: GroupByAtSpecifiedTimeList
+    /// 
+    /// $query = New-RscQuerySnappable -GroupByAtSpecifiedTimeList
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.groupBy = $someSnappableGroupByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableGroupByEnum]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	protectionStatus = @(
+    /// 		$someProtectionStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProtectionStatusEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	slaDomain = @{
+    /// 		# OPTIONAL
+    /// 		id = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	complianceStatus = @(
+    /// 		$someComplianceStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ComplianceStatusEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	objectType = @(
+    /// 		$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	excludedObjectTypes = @(
+    /// 		$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	cluster = @{
+    /// 		# OPTIONAL
+    /// 		id = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		type = @(
+    /// 			$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	timeRange = @{
+    /// 		# REQUIRED
+    /// 		start = $someDateTime
+    /// 		# REQUIRED
+    /// 		end = $someDateTime
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	slaTimeRange = $someSlaComplianceTimeRange # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaComplianceTimeRange]) for enum values.
+    /// 	# OPTIONAL
+    /// 	orgId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	objectState = @(
+    /// 		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	isLocal = $someBoolean
+    /// 	# OPTIONAL
+    /// 	objectFid = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.timezoneOffset = $someSingle
+    /// # REQUIRED
+    /// $query.Var.specifiedTime = $someDateTime
+    /// # OPTIONAL
+    /// $query.Var.requestedAggregations = @(
+    /// 	$someSnappableAggregationsEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableAggregationsEnum]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SnappableGroupByAtSpecifiedTimeConnection
     /// 
     /// 
     /// 
@@ -728,6 +832,78 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RecoveryPermissionCheck operation
+    /// of the 'Snappable' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snappable
+    /// # API Operation: RecoveryPermissionCheck
+    /// 
+    /// $query = New-RscQuerySnappable -RecoveryPermissionCheck
+    /// 
+    /// # REQUIRED
+    /// $query.Var.checkSnappablesRecoveryPermission = @{
+    /// 	# REQUIRED
+    /// 	snappableIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	dataTransferType = $someDataTransferType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataTransferType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CheckSnappablesRecoveryPermissionReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ResourceSpecs operation
+    /// of the 'Snappable' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snappable
+    /// # API Operation: ResourceSpecs
+    /// 
+    /// $query = New-RscQuerySnappable -ResourceSpecs
+    /// 
+    /// # REQUIRED
+    /// $query.Var.ids = @(
+    /// 	@{
+    /// 		# REQUIRED
+    /// 		snappableId = $someString
+    /// 		# REQUIRED
+    /// 		snappableType = $someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
+    /// 		# OPTIONAL
+    /// 		recoveryPoint = $someInt64
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;ResourceSpec&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Search operation
     /// of the 'Snappable' API domain.
     /// <code>
@@ -926,6 +1102,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	fetchAllPostSenders = $someString
     /// 	# OPTIONAL
     /// 	skipPostsAttachments = $someBoolean
+    /// 	# OPTIONAL
+    /// 	lambdaFilters = @{
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePaths = $someBoolean
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePathCachePreload = $someBoolean
+    /// 		# OPTIONAL
+    /// 		parentFolderIdBatch = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1055,10 +1246,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ContactSearch",
                 "EmailSearch",
                 "EventSearch",
+                "GroupByAtSpecifiedTimeList",
                 "GroupByList",
                 "Hierarchy",
                 "List",
                 "OnedriveSearch",
+                "RecoveryPermissionCheck",
+                "ResourceSpecs",
                 "Search",
                 "SearchVersionedFiles",
                 "TeamsConversationsSearch",
@@ -1093,6 +1287,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "EventSearch":
                         this.ProcessRecord_EventSearch();
                         break;
+                    case "GroupByAtSpecifiedTimeList":
+                        this.ProcessRecord_GroupByAtSpecifiedTimeList();
+                        break;
                     case "GroupByList":
                         this.ProcessRecord_GroupByList();
                         break;
@@ -1104,6 +1301,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "OnedriveSearch":
                         this.ProcessRecord_OnedriveSearch();
+                        break;
+                    case "RecoveryPermissionCheck":
+                        this.ProcessRecord_RecoveryPermissionCheck();
+                        break;
+                    case "ResourceSpecs":
+                        this.ProcessRecord_ResourceSpecs();
                         break;
                     case "Search":
                         this.ProcessRecord_Search();
@@ -1173,6 +1376,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // snappableGroupByAtSpecifiedTimeConnection.
+        internal void ProcessRecord_GroupByAtSpecifiedTimeList()
+        {
+            this._logger.name += " -GroupByAtSpecifiedTimeList";
+            // Create new graphql operation snappableGroupByAtSpecifiedTimeConnection
+            InitQuerySnappableGroupByAtSpecifiedTimeConnection();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // snappableGroupByConnection.
         internal void ProcessRecord_GroupByList()
         {
@@ -1206,6 +1418,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -OnedriveSearch";
             // Create new graphql operation snappableOnedriveSearch
             InitQuerySnappableOnedriveSearch();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // snappablesRecoveryPermissionCheck.
+        internal void ProcessRecord_RecoveryPermissionCheck()
+        {
+            this._logger.name += " -RecoveryPermissionCheck";
+            // Create new graphql operation snappablesRecoveryPermissionCheck
+            InitQuerySnappablesRecoveryPermissionCheck();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allSnappableResourceSpecs.
+        internal void ProcessRecord_ResourceSpecs()
+        {
+            this._logger.name += " -ResourceSpecs";
+            // Create new graphql operation allSnappableResourceSpecs
+            InitQueryAllSnappableResourceSpecs();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1522,6 +1752,120 @@ $query.Var.calendarSearchFilter = @{
 	# OPTIONAL
 	skipRifItems = $someBoolean
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // snappableGroupByAtSpecifiedTimeConnection(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     groupBy: SnappableGroupByEnum!
+        //     filter: SnappableGroupByFilterInput
+        //     timezoneOffset: Float = 0.0
+        //     specifiedTime: DateTime!
+        //     requestedAggregations: [SnappableAggregationsEnum!]
+        //   ): SnappableGroupByAtSpecifiedTimeConnection!
+        internal void InitQuerySnappableGroupByAtSpecifiedTimeConnection()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("groupBy", "SnappableGroupByEnum!"),
+                Tuple.Create("filter", "SnappableGroupByFilterInput"),
+                Tuple.Create("timezoneOffset", "Float"),
+                Tuple.Create("specifiedTime", "DateTime!"),
+                Tuple.Create("requestedAggregations", "[SnappableAggregationsEnum!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySnappableGroupByAtSpecifiedTimeConnection",
+                "($first: Int,$after: String,$last: Int,$before: String,$groupBy: SnappableGroupByEnum!,$filter: SnappableGroupByFilterInput,$timezoneOffset: Float,$specifiedTime: DateTime!,$requestedAggregations: [SnappableAggregationsEnum!])",
+                "SnappableGroupByAtSpecifiedTimeConnection",
+                Query.SnappableGroupByAtSpecifiedTimeConnection,
+                Query.SnappableGroupByAtSpecifiedTimeConnectionFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.groupBy = $someSnappableGroupByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableGroupByEnum]) for enum values.
+# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	protectionStatus = @(
+		$someProtectionStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProtectionStatusEnum]) for enum values.
+	)
+	# OPTIONAL
+	slaDomain = @{
+		# OPTIONAL
+		id = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	complianceStatus = @(
+		$someComplianceStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ComplianceStatusEnum]) for enum values.
+	)
+	# OPTIONAL
+	objectType = @(
+		$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	excludedObjectTypes = @(
+		$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	cluster = @{
+		# OPTIONAL
+		id = @(
+			$someString
+		)
+		# OPTIONAL
+		type = @(
+			$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+		)
+	}
+	# OPTIONAL
+	timeRange = @{
+		# REQUIRED
+		start = $someDateTime
+		# REQUIRED
+		end = $someDateTime
+	}
+	# OPTIONAL
+	slaTimeRange = $someSlaComplianceTimeRange # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaComplianceTimeRange]) for enum values.
+	# OPTIONAL
+	orgId = @(
+		$someString
+	)
+	# OPTIONAL
+	objectState = @(
+		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
+	)
+	# OPTIONAL
+	isLocal = $someBoolean
+	# OPTIONAL
+	objectFid = @(
+		$someString
+	)
+}
+# OPTIONAL
+$query.Var.timezoneOffset = $someSingle
+# REQUIRED
+$query.Var.specifiedTime = $someDateTime
+# OPTIONAL
+$query.Var.requestedAggregations = @(
+	$someSnappableAggregationsEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableAggregationsEnum]) for enum values.
+)"
             );
         }
 
@@ -1905,6 +2249,62 @@ $query.Var.onedriveSearchFilter = @{
         }
 
         // Create new GraphQL Query:
+        // snappablesRecoveryPermissionCheck(checkSnappablesRecoveryPermission: CheckSnappablesRecoveryPermissionInput!): CheckSnappablesRecoveryPermissionReply!
+        internal void InitQuerySnappablesRecoveryPermissionCheck()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("checkSnappablesRecoveryPermission", "CheckSnappablesRecoveryPermissionInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySnappablesRecoveryPermissionCheck",
+                "($checkSnappablesRecoveryPermission: CheckSnappablesRecoveryPermissionInput!)",
+                "CheckSnappablesRecoveryPermissionReply",
+                Query.SnappablesRecoveryPermissionCheck,
+                Query.SnappablesRecoveryPermissionCheckFieldSpec,
+                @"# REQUIRED
+$query.Var.checkSnappablesRecoveryPermission = @{
+	# REQUIRED
+	snappableIds = @(
+		$someString
+	)
+	# REQUIRED
+	dataTransferType = $someDataTransferType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataTransferType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allSnappableResourceSpecs(ids: [SnappableIdentifierInput!]!): [ResourceSpec!]!
+        internal void InitQueryAllSnappableResourceSpecs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("ids", "[SnappableIdentifierInput!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllSnappableResourceSpecs",
+                "($ids: [SnappableIdentifierInput!]!)",
+                "List<ResourceSpec>",
+                Query.AllSnappableResourceSpecs,
+                Query.AllSnappableResourceSpecsFieldSpec,
+                @"# REQUIRED
+$query.Var.ids = @(
+	@{
+		# REQUIRED
+		snappableId = $someString
+		# REQUIRED
+		snappableType = $someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
+		# OPTIONAL
+		recoveryPoint = $someInt64
+}
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
         // searchSnappableConnection(
         //     first: Int
         //     after: String
@@ -2125,6 +2525,21 @@ $query.Var.teamsConversationsSearchFilter = @{
 	fetchAllPostSenders = $someString
 	# OPTIONAL
 	skipPostsAttachments = $someBoolean
+	# OPTIONAL
+	lambdaFilters = @{
+		# OPTIONAL
+		enableAbsolutePaths = $someBoolean
+		# OPTIONAL
+		enableAbsolutePathCachePreload = $someBoolean
+		# OPTIONAL
+		parentFolderIdBatch = @(
+			$someString
+		)
+		# OPTIONAL
+		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
+	}
 }"
             );
         }

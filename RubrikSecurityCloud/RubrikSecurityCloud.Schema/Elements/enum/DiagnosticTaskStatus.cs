@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         DIAGNOSTIC_TASK_STATUS_STARTED,
 
         [EnumMember(Value = "DIAGNOSTIC_TASK_STATUS_SUCCEEDED")]
-        DIAGNOSTIC_TASK_STATUS_SUCCEEDED
+        DIAGNOSTIC_TASK_STATUS_SUCCEEDED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DiagnosticTaskStatus

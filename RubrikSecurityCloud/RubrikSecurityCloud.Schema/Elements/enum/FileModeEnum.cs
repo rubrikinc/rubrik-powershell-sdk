@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         SHARE,
 
         [EnumMember(Value = "SYMLINK")]
-        SYMLINK
+        SYMLINK,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FileModeEnum

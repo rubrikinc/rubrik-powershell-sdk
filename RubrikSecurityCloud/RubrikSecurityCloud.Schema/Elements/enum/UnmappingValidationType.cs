@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         AST,
 
         [EnumMember(Value = "EMPTY_STORAGE_ACCOUNT")]
-        EMPTY_STORAGE_ACCOUNT
+        EMPTY_STORAGE_ACCOUNT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UnmappingValidationType

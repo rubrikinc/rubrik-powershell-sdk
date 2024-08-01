@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         PENDING,
 
         [EnumMember(Value = "READY")]
-        READY
+        READY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FileStateEnumType

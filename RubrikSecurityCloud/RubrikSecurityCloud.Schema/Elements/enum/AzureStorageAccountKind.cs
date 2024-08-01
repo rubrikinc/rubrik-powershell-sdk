@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         STORAGE_KIND_UNKNOWN,
 
         [EnumMember(Value = "STORAGE_V2")]
-        STORAGE_V2
+        STORAGE_V2,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureStorageAccountKind

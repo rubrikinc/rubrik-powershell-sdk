@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 24
+    /// Create a new RscQuery object for any of the 28
     /// operations in the 'VMware vSphere' API domain:
-    /// ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, VmsByFids, or VmwareCdpLiveInfo.
+    /// Blueprint, ComputeCluster, ComputeClusters, ContentLibraries, ContentLibrary, Datacenter, DatacenterFolder, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, VmsByFids, or VmwareCdpLiveInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryVsphere creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 24 operations
+    /// There are 28 operations
     /// in the 'VMware vSphere' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, VmsByFids, or VmwareCdpLiveInfo.
+    /// one of: Blueprint, ComputeCluster, ComputeClusters, ContentLibraries, ContentLibrary, Datacenter, DatacenterFolder, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, VmsByFids, or VmwareCdpLiveInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryVsphere -ComputeCluster).Info().
+    /// (New-RscQueryVsphere -Blueprint).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryVsphere -ComputeCluster).Info().
+    /// (New-RscQueryVsphere -Blueprint).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the Blueprint operation
+    /// of the 'VMware vSphere' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vsphere
+    /// # API Operation: Blueprint
+    /// 
+    /// $query = New-RscQueryVsphere -Blueprint
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VsphereBlueprint
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the ComputeCluster operation
@@ -181,6 +209,110 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ContentLibraries operation
+    /// of the 'VMware vSphere' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vsphere
+    /// # API Operation: ContentLibraries
+    /// 
+    /// $query = New-RscQueryVsphere -ContentLibraries
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VsphereContentLibraryConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ContentLibrary operation
+    /// of the 'VMware vSphere' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vsphere
+    /// # API Operation: ContentLibrary
+    /// 
+    /// $query = New-RscQueryVsphere -ContentLibrary
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VsphereContentLibrary
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Datacenter operation
     /// of the 'VMware vSphere' API domain.
     /// <code>
@@ -201,6 +333,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: VsphereDatacenter
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DatacenterFolder operation
+    /// of the 'VMware vSphere' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vsphere
+    /// # API Operation: DatacenterFolder
+    /// 
+    /// $query = New-RscQueryVsphere -DatacenterFolder
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VsphereDatacenterFolder
     /// 
     /// 
     /// 
@@ -1166,9 +1326,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "Blueprint",
                 "ComputeCluster",
                 "ComputeClusters",
+                "ContentLibraries",
+                "ContentLibrary",
                 "Datacenter",
+                "DatacenterFolder",
                 "Datastore",
                 "DatastoreCluster",
                 "DatastoreClusters",
@@ -1205,14 +1369,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "Blueprint":
+                        this.ProcessRecord_Blueprint();
+                        break;
                     case "ComputeCluster":
                         this.ProcessRecord_ComputeCluster();
                         break;
                     case "ComputeClusters":
                         this.ProcessRecord_ComputeClusters();
                         break;
+                    case "ContentLibraries":
+                        this.ProcessRecord_ContentLibraries();
+                        break;
+                    case "ContentLibrary":
+                        this.ProcessRecord_ContentLibrary();
+                        break;
                     case "Datacenter":
                         this.ProcessRecord_Datacenter();
+                        break;
+                    case "DatacenterFolder":
+                        this.ProcessRecord_DatacenterFolder();
                         break;
                     case "Datastore":
                         this.ProcessRecord_Datastore();
@@ -1288,6 +1464,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // vSphereBlueprint.
+        internal void ProcessRecord_Blueprint()
+        {
+            this._logger.name += " -Blueprint";
+            // Create new graphql operation vSphereBlueprint
+            InitQueryVsphereBlueprint();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // vSphereComputeCluster.
         internal void ProcessRecord_ComputeCluster()
         {
@@ -1306,12 +1491,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // vSphereContentLibraries.
+        internal void ProcessRecord_ContentLibraries()
+        {
+            this._logger.name += " -ContentLibraries";
+            // Create new graphql operation vSphereContentLibraries
+            InitQueryVsphereContentLibraries();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vSphereContentLibrary.
+        internal void ProcessRecord_ContentLibrary()
+        {
+            this._logger.name += " -ContentLibrary";
+            // Create new graphql operation vSphereContentLibrary
+            InitQueryVsphereContentLibrary();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // vSphereDatacenter.
         internal void ProcessRecord_Datacenter()
         {
             this._logger.name += " -Datacenter";
             // Create new graphql operation vSphereDatacenter
             InitQueryVsphereDatacenter();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vSphereDatacenterFolder.
+        internal void ProcessRecord_DatacenterFolder()
+        {
+            this._logger.name += " -DatacenterFolder";
+            // Create new graphql operation vSphereDatacenterFolder
+            InitQueryVsphereDatacenterFolder();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1505,6 +1717,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
 
         // Create new GraphQL Query:
+        // vSphereBlueprint(fid: UUID!): VSphereBlueprint!
+        internal void InitQueryVsphereBlueprint()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVsphereBlueprint",
+                "($fid: UUID!)",
+                "VsphereBlueprint",
+                Query.VsphereBlueprint,
+                Query.VsphereBlueprintFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // vSphereComputeCluster(fid: UUID!): VsphereComputeCluster!
         internal void InitQueryVsphereComputeCluster()
         {
@@ -1603,6 +1835,104 @@ $query.Var.filter = @(
         }
 
         // Create new GraphQL Query:
+        // vSphereContentLibraries(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): VsphereContentLibraryConnection!
+        internal void InitQueryVsphereContentLibraries()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVsphereContentLibraries",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "VsphereContentLibraryConnection",
+                Query.VsphereContentLibraries,
+                Query.VsphereContentLibrariesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vSphereContentLibrary(fid: UUID!): VsphereContentLibrary!
+        internal void InitQueryVsphereContentLibrary()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVsphereContentLibrary",
+                "($fid: UUID!)",
+                "VsphereContentLibrary",
+                Query.VsphereContentLibrary,
+                Query.VsphereContentLibraryFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // vSphereDatacenter(fid: UUID!): VsphereDatacenter!
         internal void InitQueryVsphereDatacenter()
         {
@@ -1617,6 +1947,26 @@ $query.Var.filter = @(
                 "VsphereDatacenter",
                 Query.VsphereDatacenter,
                 Query.VsphereDatacenterFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vSphereDatacenterFolder(fid: UUID!): VsphereDatacenterFolder!
+        internal void InitQueryVsphereDatacenterFolder()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVsphereDatacenterFolder",
+                "($fid: UUID!)",
+                "VsphereDatacenterFolder",
+                Query.VsphereDatacenterFolder,
+                Query.VsphereDatacenterFolderFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
             );

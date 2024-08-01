@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         IS_KEY_BASED,
 
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudAccountFilterFieldEnum

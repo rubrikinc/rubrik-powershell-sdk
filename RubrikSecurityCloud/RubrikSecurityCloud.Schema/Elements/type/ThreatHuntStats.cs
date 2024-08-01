@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalAffectedSnapshots")]
         public System.Int64? TotalAffectedSnapshots { get; set; }
 
+        //      C# -> System.Int64? TotalIocs
+        // GraphQL -> totalIocs: Long! (scalar)
+        [JsonProperty("totalIocs")]
+        public System.Int64? TotalIocs { get; set; }
+
         //      C# -> System.Int64? TotalObjectsScanned
         // GraphQL -> totalObjectsScanned: Long! (scalar)
         [JsonProperty("totalObjectsScanned")]
@@ -67,6 +72,7 @@ namespace RubrikSecurityCloud.Types
     public ThreatHuntStats Set(
         System.Int64? TotalAffectedObjects = null,
         System.Int64? TotalAffectedSnapshots = null,
+        System.Int64? TotalIocs = null,
         System.Int64? TotalObjectsScanned = null,
         System.Int64? TotalSnapshotsScanned = null,
         System.Int64? TotalSucceededScans = null,
@@ -79,6 +85,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalAffectedSnapshots != null ) {
             this.TotalAffectedSnapshots = TotalAffectedSnapshots;
+        }
+        if ( TotalIocs != null ) {
+            this.TotalIocs = TotalIocs;
         }
         if ( TotalObjectsScanned != null ) {
             this.TotalObjectsScanned = TotalObjectsScanned;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalAffectedSnapshots\n" ;
             } else {
                 s += ind + "totalAffectedSnapshots\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalIocs
+        // GraphQL -> totalIocs: Long! (scalar)
+        if (this.TotalIocs != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalIocs\n" ;
+            } else {
+                s += ind + "totalIocs\n" ;
             }
         }
         //      C# -> System.Int64? TotalObjectsScanned
@@ -212,6 +230,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalAffectedSnapshots != null && ec.Excludes("totalAffectedSnapshots",true))
         {
             this.TotalAffectedSnapshots = null;
+        }
+        //      C# -> System.Int64? TotalIocs
+        // GraphQL -> totalIocs: Long! (scalar)
+        if (ec.Includes("totalIocs",true))
+        {
+            if(this.TotalIocs == null) {
+
+                this.TotalIocs = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalIocs != null && ec.Excludes("totalIocs",true))
+        {
+            this.TotalIocs = null;
         }
         //      C# -> System.Int64? TotalObjectsScanned
         // GraphQL -> totalObjectsScanned: Long! (scalar)

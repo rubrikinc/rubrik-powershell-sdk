@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ALL_USERS,
 
         [EnumMember(Value = "LOCAL_USERS")]
-        LOCAL_USERS
+        LOCAL_USERS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum WhitelistModeEnum

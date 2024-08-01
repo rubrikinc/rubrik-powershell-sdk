@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         INTERNAL_QUERY_HYPERV_HOST_REQUEST_SORT_ORDER_ASC,
 
         [EnumMember(Value = "INTERNAL_QUERY_HYPERV_HOST_REQUEST_SORT_ORDER_DESC")]
-        INTERNAL_QUERY_HYPERV_HOST_REQUEST_SORT_ORDER_DESC
+        INTERNAL_QUERY_HYPERV_HOST_REQUEST_SORT_ORDER_DESC,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum InternalQueryHypervHostRequestSortOrder

@@ -1,0 +1,2 @@
+### ChunkerConfigVariantInput
+- recursiveCharacterChunkerConfig: RecursiveCharacterChunkerConfigInput

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 18
+    /// Create a new RscQuery object for any of the 25
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, or UploadDatabaseToBlobstore.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateSnapMirrorCloud, CreateVappTemplateExport, CreateVapps, DeleteAllSnapMirrorClouds, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteSnapMirrorCloud, DeleteUnmanageds, DeleteVapps, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, TakeSaasOnDemand, or UploadDatabaseToBlobstore.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 18 operations
+    /// There are 25 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, or UploadDatabaseToBlobstore.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateSnapMirrorCloud, CreateVappTemplateExport, CreateVapps, DeleteAllSnapMirrorClouds, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteSnapMirrorCloud, DeleteUnmanageds, DeleteVapps, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, TakeSaasOnDemand, or UploadDatabaseToBlobstore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -310,6 +310,156 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CreateSnapMirrorCloud operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: CreateSnapMirrorCloud
+    /// 
+    /// $query = New-RscMutationSnapshot -CreateSnapMirrorCloud
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		slaId = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreateVappTemplateExport operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: CreateVappTemplateExport
+    /// 
+    /// $query = New-RscMutationSnapshot -CreateVappTemplateExport
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		storagePolicyId = $someString
+    /// 		# REQUIRED
+    /// 		catalogId = $someString
+    /// 		# REQUIRED
+    /// 		name = $someString
+    /// 		# REQUIRED
+    /// 		orgVdcId = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreateVapps operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: CreateVapps
+    /// 
+    /// $query = New-RscMutationSnapshot -CreateVapps
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	inputs = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			config = @{
+    /// 				# OPTIONAL
+    /// 				slaId = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			id = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateVappSnapshotsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteAllSnapMirrorClouds operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: DeleteAllSnapMirrorClouds
+    /// 
+    /// $query = New-RscMutationSnapshot -DeleteAllSnapMirrorClouds
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ResponseSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DeleteCloudWorkloadSnapshot operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -374,6 +524,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DeleteSnapMirrorCloud operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: DeleteSnapMirrorCloud
+    /// 
+    /// $query = New-RscMutationSnapshot -DeleteSnapMirrorCloud
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ResponseSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DeleteUnmanageds operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -399,6 +582,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RequestSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteVapps operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: DeleteVapps
+    /// 
+    /// $query = New-RscMutationSnapshot -DeleteVapps
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	inputs = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			id = $someString
+    /// 			# REQUIRED
+    /// 			location = $someDeleteVappSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeleteVappSnapshotRequestLocation]) for enum values.
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DeleteVappSnapshotsReply
     /// 
     /// 
     /// 
@@ -525,6 +746,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreErrors = $someBoolean
     /// 		# OPTIONAL
     /// 		shareId = $someString
+    /// 		# OPTIONAL
+    /// 		excludePaths = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		shouldRecreateDirectoryStructure = $someBoolean
     /// 		# REQUIRED
@@ -798,6 +1023,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the TakeSaasOnDemand operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: TakeSaasOnDemand
+    /// 
+    /// $query = New-RscMutationSnapshot -TakeSaasOnDemand
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	workloadIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UploadDatabaseToBlobstore operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -871,9 +1131,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateDomainController",
                 "CreateDownloadForVolumeGroup",
                 "CreateFileset",
+                "CreateSnapMirrorCloud",
+                "CreateVappTemplateExport",
+                "CreateVapps",
+                "DeleteAllSnapMirrorClouds",
                 "DeleteCloudWorkloadSnapshot",
                 "DeleteFilesetSnapshots",
+                "DeleteSnapMirrorCloud",
                 "DeleteUnmanageds",
+                "DeleteVapps",
                 "DeletesOfUnmanagedObjects",
                 "FilesetDownloadFiles",
                 "FilesetExportFiles",
@@ -882,6 +1148,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "StartEc2InstanceExportJob",
                 "StartRecoverS3Job",
                 "TakeOnDemand",
+                "TakeSaasOnDemand",
                 "UploadDatabaseToBlobstore",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -916,14 +1183,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CreateFileset":
                         this.ProcessRecord_CreateFileset();
                         break;
+                    case "CreateSnapMirrorCloud":
+                        this.ProcessRecord_CreateSnapMirrorCloud();
+                        break;
+                    case "CreateVappTemplateExport":
+                        this.ProcessRecord_CreateVappTemplateExport();
+                        break;
+                    case "CreateVapps":
+                        this.ProcessRecord_CreateVapps();
+                        break;
+                    case "DeleteAllSnapMirrorClouds":
+                        this.ProcessRecord_DeleteAllSnapMirrorClouds();
+                        break;
                     case "DeleteCloudWorkloadSnapshot":
                         this.ProcessRecord_DeleteCloudWorkloadSnapshot();
                         break;
                     case "DeleteFilesetSnapshots":
                         this.ProcessRecord_DeleteFilesetSnapshots();
                         break;
+                    case "DeleteSnapMirrorCloud":
+                        this.ProcessRecord_DeleteSnapMirrorCloud();
+                        break;
                     case "DeleteUnmanageds":
                         this.ProcessRecord_DeleteUnmanageds();
+                        break;
+                    case "DeleteVapps":
+                        this.ProcessRecord_DeleteVapps();
                         break;
                     case "DeletesOfUnmanagedObjects":
                         this.ProcessRecord_DeletesOfUnmanagedObjects();
@@ -948,6 +1233,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "TakeOnDemand":
                         this.ProcessRecord_TakeOnDemand();
+                        break;
+                    case "TakeSaasOnDemand":
+                        this.ProcessRecord_TakeSaasOnDemand();
                         break;
                     case "UploadDatabaseToBlobstore":
                         this.ProcessRecord_UploadDatabaseToBlobstore();
@@ -1017,6 +1305,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // createSnapMirrorCloudSnapshot.
+        internal void ProcessRecord_CreateSnapMirrorCloud()
+        {
+            this._logger.name += " -CreateSnapMirrorCloud";
+            // Create new graphql operation createSnapMirrorCloudSnapshot
+            InitMutationCreateSnapMirrorCloudSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createVappTemplateSnapshotExport.
+        internal void ProcessRecord_CreateVappTemplateExport()
+        {
+            this._logger.name += " -CreateVappTemplateExport";
+            // Create new graphql operation createVappTemplateSnapshotExport
+            InitMutationCreateVappTemplateSnapshotExport();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createVappSnapshots.
+        internal void ProcessRecord_CreateVapps()
+        {
+            this._logger.name += " -CreateVapps";
+            // Create new graphql operation createVappSnapshots
+            InitMutationCreateVappSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteAllSnapMirrorCloudSnapshots.
+        internal void ProcessRecord_DeleteAllSnapMirrorClouds()
+        {
+            this._logger.name += " -DeleteAllSnapMirrorClouds";
+            // Create new graphql operation deleteAllSnapMirrorCloudSnapshots
+            InitMutationDeleteAllSnapMirrorCloudSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // deleteCloudWorkloadSnapshot.
         internal void ProcessRecord_DeleteCloudWorkloadSnapshot()
         {
@@ -1035,12 +1359,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // deleteSnapMirrorCloudSnapshot.
+        internal void ProcessRecord_DeleteSnapMirrorCloud()
+        {
+            this._logger.name += " -DeleteSnapMirrorCloud";
+            // Create new graphql operation deleteSnapMirrorCloudSnapshot
+            InitMutationDeleteSnapMirrorCloudSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // deleteUnmanagedSnapshots.
         internal void ProcessRecord_DeleteUnmanageds()
         {
             this._logger.name += " -DeleteUnmanageds";
             // Create new graphql operation deleteUnmanagedSnapshots
             InitMutationDeleteUnmanagedSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteVappSnapshots.
+        internal void ProcessRecord_DeleteVapps()
+        {
+            this._logger.name += " -DeleteVapps";
+            // Create new graphql operation deleteVappSnapshots
+            InitMutationDeleteVappSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1113,6 +1455,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -TakeOnDemand";
             // Create new graphql operation takeOnDemandSnapshot
             InitMutationTakeOnDemandSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // takeSaasOnDemandSnapshot.
+        internal void ProcessRecord_TakeSaasOnDemand()
+        {
+            this._logger.name += " -TakeSaasOnDemand";
+            // Create new graphql operation takeSaasOnDemandSnapshot
+            InitMutationTakeSaasOnDemandSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1311,6 +1662,124 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // createSnapMirrorCloudSnapshot(input: CreateSnapMirrorCloudSnapshotInput!): AsyncRequestStatus!
+        internal void InitMutationCreateSnapMirrorCloudSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateSnapMirrorCloudSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateSnapMirrorCloudSnapshot",
+                "($input: CreateSnapMirrorCloudSnapshotInput!)",
+                "AsyncRequestStatus",
+                Mutation.CreateSnapMirrorCloudSnapshot,
+                Mutation.CreateSnapMirrorCloudSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = $someString
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createVappTemplateSnapshotExport(input: CreateVappTemplateSnapshotExportInput!): AsyncRequestStatus!
+        internal void InitMutationCreateVappTemplateSnapshotExport()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateVappTemplateSnapshotExportInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateVappTemplateSnapshotExport",
+                "($input: CreateVappTemplateSnapshotExportInput!)",
+                "AsyncRequestStatus",
+                Mutation.CreateVappTemplateSnapshotExport,
+                Mutation.CreateVappTemplateSnapshotExportFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		storagePolicyId = $someString
+		# REQUIRED
+		catalogId = $someString
+		# REQUIRED
+		name = $someString
+		# REQUIRED
+		orgVdcId = $someString
+	}
+	# REQUIRED
+	snapshotId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createVappSnapshots(input: CreateVappSnapshotsInput!): CreateVappSnapshotsReply!
+        internal void InitMutationCreateVappSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateVappSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateVappSnapshots",
+                "($input: CreateVappSnapshotsInput!)",
+                "CreateVappSnapshotsReply",
+                Mutation.CreateVappSnapshots,
+                Mutation.CreateVappSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	inputs = @(
+		@{
+			# REQUIRED
+			config = @{
+				# OPTIONAL
+				slaId = $someString
+			}
+			# REQUIRED
+			id = $someString
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteAllSnapMirrorCloudSnapshots(input: DeleteAllSnapMirrorCloudSnapshotsInput!): ResponseSuccess!
+        internal void InitMutationDeleteAllSnapMirrorCloudSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteAllSnapMirrorCloudSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteAllSnapMirrorCloudSnapshots",
+                "($input: DeleteAllSnapMirrorCloudSnapshotsInput!)",
+                "ResponseSuccess",
+                Mutation.DeleteAllSnapMirrorCloudSnapshots,
+                Mutation.DeleteAllSnapMirrorCloudSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // deleteCloudWorkloadSnapshot(input: DeleteCloudWorkloadSnapshotInput!): Boolean!
         internal void InitMutationDeleteCloudWorkloadSnapshot()
         {
@@ -1359,6 +1828,31 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // deleteSnapMirrorCloudSnapshot(input: DeleteSnapMirrorCloudSnapshotInput!): ResponseSuccess!
+        internal void InitMutationDeleteSnapMirrorCloudSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteSnapMirrorCloudSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteSnapMirrorCloudSnapshot",
+                "($input: DeleteSnapMirrorCloudSnapshotInput!)",
+                "ResponseSuccess",
+                Mutation.DeleteSnapMirrorCloudSnapshot,
+                Mutation.DeleteSnapMirrorCloudSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // deleteUnmanagedSnapshots(input: DeleteUnmanagedSnapshotsInput!): RequestSuccess!
         internal void InitMutationDeleteUnmanagedSnapshots()
         {
@@ -1378,6 +1872,36 @@ $query.Var.input = @{
 	# REQUIRED
 	snapshotIds = @(
 		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteVappSnapshots(input: DeleteVappSnapshotsInput!): DeleteVappSnapshotsReply!
+        internal void InitMutationDeleteVappSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteVappSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteVappSnapshots",
+                "($input: DeleteVappSnapshotsInput!)",
+                "DeleteVappSnapshotsReply",
+                Mutation.DeleteVappSnapshots,
+                Mutation.DeleteVappSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	inputs = @(
+		@{
+			# REQUIRED
+			id = $someString
+			# REQUIRED
+			location = $someDeleteVappSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeleteVappSnapshotRequestLocation]) for enum values.
+		}
 	)
 }"
             );
@@ -1488,6 +2012,10 @@ $query.Var.input = @{
 		ignoreErrors = $someBoolean
 		# OPTIONAL
 		shareId = $someString
+		# OPTIONAL
+		excludePaths = @(
+			$someString
+		)
 		# OPTIONAL
 		shouldRecreateDirectoryStructure = $someBoolean
 		# REQUIRED
@@ -1706,6 +2234,33 @@ $query.Var.input = @{
 	)
 	# REQUIRED
 	slaId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // takeSaasOnDemandSnapshot(input: TakeSaasOnDemandSnapshotInput!): BatchAsyncJobStatus!
+        internal void InitMutationTakeSaasOnDemandSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "TakeSaasOnDemandSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationTakeSaasOnDemandSnapshot",
+                "($input: TakeSaasOnDemandSnapshotInput!)",
+                "BatchAsyncJobStatus",
+                Mutation.TakeSaasOnDemandSnapshot,
+                Mutation.TakeSaasOnDemandSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	workloadIds = @(
+		$someString
+	)
+	# REQUIRED
+	saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
 }"
             );
         }

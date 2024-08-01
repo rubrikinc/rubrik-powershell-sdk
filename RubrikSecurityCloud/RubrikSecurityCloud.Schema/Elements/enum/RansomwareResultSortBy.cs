@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_ID,
 
         [EnumMember(Value = "WORKLOAD_ID")]
-        WORKLOAD_ID
+        WORKLOAD_ID,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RansomwareResultSortBy

@@ -76,7 +76,10 @@ namespace RubrikSecurityCloud.Types
         UPGRADE_SCHEDULED_WITH_WARNING,
 
         [EnumMember(Value = "Upgrading")]
-        UPGRADING
+        UPGRADING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CdmClusterStatusTypeEnum

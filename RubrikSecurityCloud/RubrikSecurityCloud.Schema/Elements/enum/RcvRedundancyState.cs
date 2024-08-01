@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         S_RIP,
 
         [EnumMember(Value = "UNKNOWN_REDUNDANCY_STATE")]
-        UNKNOWN_REDUNDANCY_STATE
+        UNKNOWN_REDUNDANCY_STATE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RcvRedundancyState

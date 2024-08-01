@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 12
+    /// Create a new RscQuery object for any of the 15
     /// operations in the 'Policy' API domain:
-    /// AddPolicyObjects, CreatePolicy, DeactivatePolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, or UpdatePolicy.
+    /// AddPolicyObjects, CreatePolicy, CreateTprPolicy, DeactivatePolicy, DeleteTprPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, or UpdateTprPolicy.
     /// </summary>
     /// <description>
     /// New-RscMutationPolicy creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 12 operations
+    /// There are 15 operations
     /// in the 'Policy' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddPolicyObjects, CreatePolicy, DeactivatePolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, or UpdatePolicy.
+    /// one of: AddPolicyObjects, CreatePolicy, CreateTprPolicy, DeactivatePolicy, DeleteTprPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, or UpdateTprPolicy.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -170,6 +170,65 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CreateTprPolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: CreateTprPolicy
+    /// 
+    /// $query = New-RscMutationPolicy -CreateTprPolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	name = $someString
+    /// 	# REQUIRED
+    /// 	description = $someString
+    /// 	# REQUIRED
+    /// 	policyScope = $someTprPolicyScope # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprPolicyScope]) for enum values.
+    /// 	# REQUIRED
+    /// 	policyRules = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			tprPolicyObject = @{
+    /// 				# REQUIRED
+    /// 				objectId = $someString
+    /// 				# REQUIRED
+    /// 				managedObjectType = $someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 				# REQUIRED
+    /// 				workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+    /// 				# REQUIRED
+    /// 				clusterId = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			tprRules = @(
+    /// 				$someTprRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprRule]) for enum values.
+    /// 			)
+    /// 		}
+    /// 	)
+    /// 	# REQUIRED
+    /// 	exemptServiceAccounts = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateTprPolicyReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DeactivatePolicy operation
     /// of the 'Policy' API domain.
     /// <code>
@@ -192,6 +251,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteTprPolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: DeleteTprPolicy
+    /// 
+    /// $query = New-RscMutationPolicy -DeleteTprPolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	policyId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -615,6 +705,65 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the UpdateTprPolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: UpdateTprPolicy
+    /// 
+    /// $query = New-RscMutationPolicy -UpdateTprPolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	policyId = $someString
+    /// 	# REQUIRED
+    /// 	name = $someString
+    /// 	# REQUIRED
+    /// 	description = $someString
+    /// 	# REQUIRED
+    /// 	policyRules = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			tprPolicyObject = @{
+    /// 				# REQUIRED
+    /// 				objectId = $someString
+    /// 				# REQUIRED
+    /// 				managedObjectType = $someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 				# REQUIRED
+    /// 				workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+    /// 				# REQUIRED
+    /// 				clusterId = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			tprRules = @(
+    /// 				$someTprRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprRule]) for enum values.
+    /// 			)
+    /// 		}
+    /// 	)
+    /// 	# REQUIRED
+    /// 	exemptServiceAccounts = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -633,7 +782,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "AddPolicyObjects",
                 "CreatePolicy",
+                "CreateTprPolicy",
                 "DeactivatePolicy",
+                "DeleteTprPolicy",
                 "GetHealthMonitorPolicyStatus",
                 "RemovePolicyObjects",
                 "SeedEnabledPolicies",
@@ -643,6 +794,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateHealthMonitorPolicyStatus",
                 "UpdateOrgSecurityPolicy",
                 "UpdatePolicy",
+                "UpdateTprPolicy",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -664,8 +816,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CreatePolicy":
                         this.ProcessRecord_CreatePolicy();
                         break;
+                    case "CreateTprPolicy":
+                        this.ProcessRecord_CreateTprPolicy();
+                        break;
                     case "DeactivatePolicy":
                         this.ProcessRecord_DeactivatePolicy();
+                        break;
+                    case "DeleteTprPolicy":
+                        this.ProcessRecord_DeleteTprPolicy();
                         break;
                     case "GetHealthMonitorPolicyStatus":
                         this.ProcessRecord_GetHealthMonitorPolicyStatus();
@@ -693,6 +851,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdatePolicy":
                         this.ProcessRecord_UpdatePolicy();
+                        break;
+                    case "UpdateTprPolicy":
+                        this.ProcessRecord_UpdateTprPolicy();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -723,12 +884,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // createTprPolicy.
+        internal void ProcessRecord_CreateTprPolicy()
+        {
+            this._logger.name += " -CreateTprPolicy";
+            // Create new graphql operation createTprPolicy
+            InitMutationCreateTprPolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // deactivatePolicy.
         internal void ProcessRecord_DeactivatePolicy()
         {
             this._logger.name += " -DeactivatePolicy";
             // Create new graphql operation deactivatePolicy
             InitMutationDeactivatePolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteTprPolicy.
+        internal void ProcessRecord_DeleteTprPolicy()
+        {
+            this._logger.name += " -DeleteTprPolicy";
+            // Create new graphql operation deleteTprPolicy
+            InitMutationDeleteTprPolicy();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -810,6 +989,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdatePolicy";
             // Create new graphql operation updatePolicy
             InitMutationUpdatePolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateTprPolicy.
+        internal void ProcessRecord_UpdateTprPolicy()
+        {
+            this._logger.name += " -UpdateTprPolicy";
+            // Create new graphql operation updateTprPolicy
+            InitMutationUpdateTprPolicy();
         }
 
 
@@ -899,6 +1087,57 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // createTprPolicy(input: CreateTprPolicyInput!): CreateTprPolicyReply!
+        internal void InitMutationCreateTprPolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateTprPolicyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateTprPolicy",
+                "($input: CreateTprPolicyInput!)",
+                "CreateTprPolicyReply",
+                Mutation.CreateTprPolicy,
+                Mutation.CreateTprPolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	name = $someString
+	# REQUIRED
+	description = $someString
+	# REQUIRED
+	policyScope = $someTprPolicyScope # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprPolicyScope]) for enum values.
+	# REQUIRED
+	policyRules = @(
+		@{
+			# REQUIRED
+			tprPolicyObject = @{
+				# REQUIRED
+				objectId = $someString
+				# REQUIRED
+				managedObjectType = $someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+				# REQUIRED
+				workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+				# REQUIRED
+				clusterId = $someString
+			}
+			# REQUIRED
+			tprRules = @(
+				$someTprRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprRule]) for enum values.
+			)
+		}
+	)
+	# REQUIRED
+	exemptServiceAccounts = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // deactivatePolicy(policyId: String!, runAsync: Boolean!): [String!]!
         internal void InitMutationDeactivatePolicy()
         {
@@ -918,6 +1157,29 @@ $query.Var.input = @{
 $query.Var.policyId = $someString
 # REQUIRED
 $query.Var.runAsync = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteTprPolicy(input: DeleteTprPolicyInput!): Void
+        internal void InitMutationDeleteTprPolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteTprPolicyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteTprPolicy",
+                "($input: DeleteTprPolicyInput!)",
+                "System.String",
+                Mutation.DeleteTprPolicy,
+                Mutation.DeleteTprPolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	policyId = $someString
+}"
             );
         }
 
@@ -1269,6 +1531,57 @@ $query.Var.input = @{
 	updateMode = $someBoolean
 	# OPTIONAL
 	updateAnalyzerIds = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateTprPolicy(input: UpdateTprPolicyInput!): Void
+        internal void InitMutationUpdateTprPolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateTprPolicyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateTprPolicy",
+                "($input: UpdateTprPolicyInput!)",
+                "System.String",
+                Mutation.UpdateTprPolicy,
+                Mutation.UpdateTprPolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	policyId = $someString
+	# REQUIRED
+	name = $someString
+	# REQUIRED
+	description = $someString
+	# REQUIRED
+	policyRules = @(
+		@{
+			# REQUIRED
+			tprPolicyObject = @{
+				# REQUIRED
+				objectId = $someString
+				# REQUIRED
+				managedObjectType = $someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+				# REQUIRED
+				workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+				# REQUIRED
+				clusterId = $someString
+			}
+			# REQUIRED
+			tprRules = @(
+				$someTprRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprRule]) for enum values.
+			)
+		}
+	)
+	# REQUIRED
+	exemptServiceAccounts = @(
+		$someString
+	)
 }"
             );
         }

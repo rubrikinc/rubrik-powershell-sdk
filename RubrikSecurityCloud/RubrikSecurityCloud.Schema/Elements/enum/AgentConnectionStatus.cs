@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         SECONDARY_CLUSTER,
 
         [EnumMember(Value = "UNREGISTERED")]
-        UNREGISTERED
+        UNREGISTERED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AgentConnectionStatus

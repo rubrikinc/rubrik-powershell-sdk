@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region ClusterType
  
-    public class ClusterType: BaseType, ClusterGroupByInfo, SnappableGroupByInfo
+    public class ClusterType: BaseType, ActivitySeriesGroupByInfo, ClusterGroupByInfo, SnappableGroupByInfo, TaskSummaryGroupByInfo
     {
         #region members
 

@@ -83,6 +83,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("syslogSettingsV92")]
         public SyslogExportRulePartialInput? SyslogSettingsV92 { get; set; }
 
+        //      C# -> SyslogExportRulePartialInput? SyslogSettingsV93
+        // GraphQL -> syslogSettingsV93: SyslogExportRulePartialInput (input)
+        [JsonProperty("syslogSettingsV93")]
+        public SyslogExportRulePartialInput? SyslogSettingsV93 { get; set; }
+
 
         #endregion
 

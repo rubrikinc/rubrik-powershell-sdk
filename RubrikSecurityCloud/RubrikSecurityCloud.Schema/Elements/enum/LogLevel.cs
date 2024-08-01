@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         DEBUG,
 
         [EnumMember(Value = "INFO")]
-        INFO
+        INFO,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum LogLevel

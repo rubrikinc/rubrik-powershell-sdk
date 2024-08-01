@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_CRASH_CONSISTENT,
 
         [EnumMember(Value = "UNKNOWN_CONSISTENCY_LEVEL")]
-        UNKNOWN_CONSISTENCY_LEVEL
+        UNKNOWN_CONSISTENCY_LEVEL,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnapshotConsistencyLevel

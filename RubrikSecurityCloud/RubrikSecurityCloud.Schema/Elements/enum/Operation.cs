@@ -505,7 +505,10 @@ namespace RubrikSecurityCloud.Types
         VIEW_WEBHOOKS,
 
         [EnumMember(Value = "VIEW_ZSCALER_DLP_INTEGRATION")]
-        VIEW_ZSCALER_DLP_INTEGRATION
+        VIEW_ZSCALER_DLP_INTEGRATION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum Operation

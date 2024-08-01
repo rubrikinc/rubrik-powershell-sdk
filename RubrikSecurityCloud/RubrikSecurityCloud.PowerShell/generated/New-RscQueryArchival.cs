@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Archival' API domain:
-    /// HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// BandwidthStats, Entities, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, LocationEncryptionDetails, LocationEncryptionJobsSummary, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// </summary>
     /// <description>
     /// New-RscQueryArchival creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 12 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// one of: BandwidthStats, Entities, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, LocationEncryptionDetails, LocationEncryptionJobsSummary, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryArchival -HierarchyObjectRecoveryTarget).Info().
+    /// (New-RscQueryArchival -BandwidthStats).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,97 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryArchival -HierarchyObjectRecoveryTarget).Info().
+    /// (New-RscQueryArchival -BandwidthStats).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the BandwidthStats operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: BandwidthStats
+    /// 
+    /// $query = New-RscQueryArchival -BandwidthStats
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	dataLocationId = $someString
+    /// 	# OPTIONAL
+    /// 	range = $someString
+    /// 	# OPTIONAL
+    /// 	bandwidthType = $someArchivalBandwidthStatsRequestType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalBandwidthStatsRequestType]) for enum values.
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ArchivalBandwidthStatsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Entities operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: Entities
+    /// 
+    /// $query = New-RscQueryArchival -Entities
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someArchivalEntityQueryFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalEntityQueryFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		textList = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someArchivalEntityQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalEntityQuerySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ArchivalEntityConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the HierarchyObjectRecoveryTarget operation
@@ -125,6 +211,93 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the LocationEncryptionDetails operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: LocationEncryptionDetails
+    /// 
+    /// $query = New-RscQueryArchival -LocationEncryptionDetails
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.nameSearchPrefix = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someQueryArchivalLocationsEncryptionDetailsSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryArchivalLocationsEncryptionDetailsSortByField]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.archivalLocationRekeyStatusFilterArg = @(
+    /// 	$someArchivalLocationEncryptionJobStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationEncryptionJobStatus]) for enum values.
+    /// )
+    /// # REQUIRED
+    /// $query.Var.archivalLocationRotationStatusFilterArg = @(
+    /// 	$someArchivalLocationEncryptionJobStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationEncryptionJobStatus]) for enum values.
+    /// )
+    /// # REQUIRED
+    /// $query.Var.archivalLocationKeyTypeFilterArg = @(
+    /// 	$someArchivalLocationEncryptionKeyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationEncryptionKeyType]) for enum values.
+    /// )
+    /// # REQUIRED
+    /// $query.Var.archivalLocationEncryptionStatusFilterArg = @(
+    /// 	$someArchivalLocationEncryptionStatusFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationEncryptionStatusFilter]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ArchivalLocationEncryptionDetailsConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the LocationEncryptionJobsSummary operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: LocationEncryptionJobsSummary
+    /// 
+    /// $query = New-RscQueryArchival -LocationEncryptionJobsSummary
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	locationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ArchivalLocationEncryptionJobsSummary
     /// 
     /// 
     /// 
@@ -369,8 +542,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "BandwidthStats",
+                "Entities",
                 "HierarchyObjectRecoveryTarget",
                 "IsTotpMandatoryInTargetVersion",
+                "LocationEncryptionDetails",
+                "LocationEncryptionJobsSummary",
                 "RcsLocationsConsumptionStats",
                 "StorageUsage",
                 "Target",
@@ -392,11 +569,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "BandwidthStats":
+                        this.ProcessRecord_BandwidthStats();
+                        break;
+                    case "Entities":
+                        this.ProcessRecord_Entities();
+                        break;
                     case "HierarchyObjectRecoveryTarget":
                         this.ProcessRecord_HierarchyObjectRecoveryTarget();
                         break;
                     case "IsTotpMandatoryInTargetVersion":
                         this.ProcessRecord_IsTotpMandatoryInTargetVersion();
+                        break;
+                    case "LocationEncryptionDetails":
+                        this.ProcessRecord_LocationEncryptionDetails();
+                        break;
+                    case "LocationEncryptionJobsSummary":
+                        this.ProcessRecord_LocationEncryptionJobsSummary();
                         break;
                     case "RcsLocationsConsumptionStats":
                         this.ProcessRecord_RcsLocationsConsumptionStats();
@@ -427,6 +616,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // archivalBandwidthStats.
+        internal void ProcessRecord_BandwidthStats()
+        {
+            this._logger.name += " -BandwidthStats";
+            // Create new graphql operation archivalBandwidthStats
+            InitQueryArchivalBandwidthStats();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // archivalEntities.
+        internal void ProcessRecord_Entities()
+        {
+            this._logger.name += " -Entities";
+            // Create new graphql operation archivalEntities
+            InitQueryArchivalEntities();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // hierarchyObjectRecoveryTarget.
         internal void ProcessRecord_HierarchyObjectRecoveryTarget()
         {
@@ -442,6 +649,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -IsTotpMandatoryInTargetVersion";
             // Create new graphql operation isTotpMandatoryInTargetVersion
             InitQueryIsTotpMandatoryInTargetVersion();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // archivalLocationEncryptionDetails.
+        internal void ProcessRecord_LocationEncryptionDetails()
+        {
+            this._logger.name += " -LocationEncryptionDetails";
+            // Create new graphql operation archivalLocationEncryptionDetails
+            InitQueryArchivalLocationEncryptionDetails();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // archivalLocationEncryptionJobsSummary.
+        internal void ProcessRecord_LocationEncryptionJobsSummary()
+        {
+            this._logger.name += " -LocationEncryptionJobsSummary";
+            // Create new graphql operation archivalLocationEncryptionJobsSummary
+            InitQueryArchivalLocationEncryptionJobsSummary();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -500,6 +725,90 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
 
         // Create new GraphQL Query:
+        // archivalBandwidthStats(input: ArchivalBandwidthStatsInput!): ArchivalBandwidthStatsReply!
+        internal void InitQueryArchivalBandwidthStats()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ArchivalBandwidthStatsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryArchivalBandwidthStats",
+                "($input: ArchivalBandwidthStatsInput!)",
+                "ArchivalBandwidthStatsReply",
+                Query.ArchivalBandwidthStats,
+                Query.ArchivalBandwidthStatsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	dataLocationId = $someString
+	# OPTIONAL
+	range = $someString
+	# OPTIONAL
+	bandwidthType = $someArchivalBandwidthStatsRequestType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalBandwidthStatsRequestType]) for enum values.
+	# REQUIRED
+	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // archivalEntities(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: [ArchivalEntityFilterInput!]
+        //     sortBy: ArchivalEntityQuerySortByField
+        //     sortOrder: SortOrder
+        //   ): ArchivalEntityConnection!
+        internal void InitQueryArchivalEntities()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "[ArchivalEntityFilterInput!]"),
+                Tuple.Create("sortBy", "ArchivalEntityQuerySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryArchivalEntities",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [ArchivalEntityFilterInput!],$sortBy: ArchivalEntityQuerySortByField,$sortOrder: SortOrder)",
+                "ArchivalEntityConnection",
+                Query.ArchivalEntities,
+                Query.ArchivalEntitiesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someArchivalEntityQueryFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalEntityQueryFilterField]) for enum values.
+		# OPTIONAL
+		textList = @(
+			$someString
+		)
+}
+)
+# OPTIONAL
+$query.Var.sortBy = $someArchivalEntityQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalEntityQuerySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
         // hierarchyObjectRecoveryTarget(fid: UUID!): HierarchyObject!
         internal void InitQueryHierarchyObjectRecoveryTarget()
         {
@@ -536,6 +845,99 @@ $query.Var.fid = $someString"
                 Query.IsTotpMandatoryInTargetVersionFieldSpec,
                 @"# REQUIRED
 $query.Var.version = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // archivalLocationEncryptionDetails(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortOrder: SortOrder
+        //     nameSearchPrefix: String
+        //     sortBy: QueryArchivalLocationsEncryptionDetailsSortByField
+        //     archivalLocationRekeyStatusFilterArg: [ArchivalLocationEncryptionJobStatus!]! = []
+        //     archivalLocationRotationStatusFilterArg: [ArchivalLocationEncryptionJobStatus!]! = []
+        //     archivalLocationKeyTypeFilterArg: [ArchivalLocationEncryptionKeyType!]! = []
+        //     archivalLocationEncryptionStatusFilterArg: [ArchivalLocationEncryptionStatusFilter!]! = []
+        //   ): ArchivalLocationEncryptionDetailsConnection!
+        internal void InitQueryArchivalLocationEncryptionDetails()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("nameSearchPrefix", "String"),
+                Tuple.Create("sortBy", "QueryArchivalLocationsEncryptionDetailsSortByField"),
+                Tuple.Create("archivalLocationRekeyStatusFilterArg", "[ArchivalLocationEncryptionJobStatus!]!"),
+                Tuple.Create("archivalLocationRotationStatusFilterArg", "[ArchivalLocationEncryptionJobStatus!]!"),
+                Tuple.Create("archivalLocationKeyTypeFilterArg", "[ArchivalLocationEncryptionKeyType!]!"),
+                Tuple.Create("archivalLocationEncryptionStatusFilterArg", "[ArchivalLocationEncryptionStatusFilter!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryArchivalLocationEncryptionDetails",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$nameSearchPrefix: String,$sortBy: QueryArchivalLocationsEncryptionDetailsSortByField,$archivalLocationRekeyStatusFilterArg: [ArchivalLocationEncryptionJobStatus!]!,$archivalLocationRotationStatusFilterArg: [ArchivalLocationEncryptionJobStatus!]!,$archivalLocationKeyTypeFilterArg: [ArchivalLocationEncryptionKeyType!]!,$archivalLocationEncryptionStatusFilterArg: [ArchivalLocationEncryptionStatusFilter!]!)",
+                "ArchivalLocationEncryptionDetailsConnection",
+                Query.ArchivalLocationEncryptionDetails,
+                Query.ArchivalLocationEncryptionDetailsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.nameSearchPrefix = $someString
+# OPTIONAL
+$query.Var.sortBy = $someQueryArchivalLocationsEncryptionDetailsSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryArchivalLocationsEncryptionDetailsSortByField]) for enum values.
+# REQUIRED
+$query.Var.archivalLocationRekeyStatusFilterArg = @(
+	$someArchivalLocationEncryptionJobStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationEncryptionJobStatus]) for enum values.
+)
+# REQUIRED
+$query.Var.archivalLocationRotationStatusFilterArg = @(
+	$someArchivalLocationEncryptionJobStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationEncryptionJobStatus]) for enum values.
+)
+# REQUIRED
+$query.Var.archivalLocationKeyTypeFilterArg = @(
+	$someArchivalLocationEncryptionKeyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationEncryptionKeyType]) for enum values.
+)
+# REQUIRED
+$query.Var.archivalLocationEncryptionStatusFilterArg = @(
+	$someArchivalLocationEncryptionStatusFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationEncryptionStatusFilter]) for enum values.
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // archivalLocationEncryptionJobsSummary(input: ArchivalLocationEncryptionJobsSummaryInput!): ArchivalLocationEncryptionJobsSummary!
+        internal void InitQueryArchivalLocationEncryptionJobsSummary()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ArchivalLocationEncryptionJobsSummaryInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryArchivalLocationEncryptionJobsSummary",
+                "($input: ArchivalLocationEncryptionJobsSummaryInput!)",
+                "ArchivalLocationEncryptionJobsSummary",
+                Query.ArchivalLocationEncryptionJobsSummary,
+                Query.ArchivalLocationEncryptionJobsSummaryFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	locationId = $someString
+}"
             );
         }
 

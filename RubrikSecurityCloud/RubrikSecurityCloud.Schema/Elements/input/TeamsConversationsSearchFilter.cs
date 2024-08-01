@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("skipPostsAttachments")]
         public System.Boolean? SkipPostsAttachments { get; set; }
 
+        //      C# -> LambdaPathFilters? LambdaFilters
+        // GraphQL -> lambdaFilters: LambdaPathFilters (input)
+        [JsonProperty("lambdaFilters")]
+        public LambdaPathFilters? LambdaFilters { get; set; }
+
 
         #endregion
 

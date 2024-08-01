@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         CONNECTION_STATUS_NOT_SPECIFIED,
 
         [EnumMember(Value = "NOT_CONNECTED")]
-        NOT_CONNECTED
+        NOT_CONNECTED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MissingClusterConnectionStatus

@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         SYSTEM_ALARM,
 
         [EnumMember(Value = "SYSTEM_AUDIT")]
-        SYSTEM_AUDIT
+        SYSTEM_AUDIT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AceQualifier

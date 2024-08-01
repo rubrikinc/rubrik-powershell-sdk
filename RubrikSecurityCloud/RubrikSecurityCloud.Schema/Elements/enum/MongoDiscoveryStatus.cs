@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         ON_DEMAND_DISCOVERY_IN_PROGRESS,
 
         [EnumMember(Value = "SCHEDULED_DISCOVERY_IN_PROGRESS")]
-        SCHEDULED_DISCOVERY_IN_PROGRESS
+        SCHEDULED_DISCOVERY_IN_PROGRESS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MongoDiscoveryStatus

@@ -43,7 +43,10 @@ namespace RubrikSecurityCloud.Types
         S3_COMPATIBLE,
 
         [EnumMember(Value = "TAPE")]
-        TAPE
+        TAPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TargetType

@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         NUTANIX_AHV_HYPERVISOR_TYPE,
 
         [EnumMember(Value = "VMWARE_HYPERVISOR_TYPE")]
-        VMWARE_HYPERVISOR_TYPE
+        VMWARE_HYPERVISOR_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum NcdHypervisorType

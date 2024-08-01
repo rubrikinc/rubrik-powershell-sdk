@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("folderId")]
         public System.String? FolderId { get; set; }
 
+        //      C# -> System.Int64? UnmountTimeOpt
+        // GraphQL -> unmountTimeOpt: Long (scalar)
+        [JsonProperty("unmountTimeOpt")]
+        public System.Int64? UnmountTimeOpt { get; set; }
+
         //      C# -> RelocateMountConfigV2Input? MigrationConfig
         // GraphQL -> migrationConfig: RelocateMountConfigV2Input (input)
         [JsonProperty("migrationConfig")]

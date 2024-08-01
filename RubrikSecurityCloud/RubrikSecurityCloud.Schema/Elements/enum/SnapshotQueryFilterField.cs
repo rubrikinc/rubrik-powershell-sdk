@@ -106,7 +106,10 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_STATUS,
 
         [EnumMember(Value = "SNAPSHOT_TYPE")]
-        SNAPSHOT_TYPE
+        SNAPSHOT_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnapshotQueryFilterField

@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         INSTALLED_VERSION,
 
         [EnumMember(Value = "RegisteredAt")]
-        REGISTERED_AT
+        REGISTERED_AT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterSortByEnum

@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         SEVERITY,
 
         [EnumMember(Value = "StartTime")]
-        START_TIME
+        START_TIME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ActivitySeriesSortByEnum

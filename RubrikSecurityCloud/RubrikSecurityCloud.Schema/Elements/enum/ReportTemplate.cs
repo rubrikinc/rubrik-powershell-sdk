@@ -43,7 +43,10 @@ namespace RubrikSecurityCloud.Types
         SYSTEM_CAPACITY,
 
         [EnumMember(Value = "TEMPLATE_UNSPECIFIED")]
-        TEMPLATE_UNSPECIFIED
+        TEMPLATE_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ReportTemplate

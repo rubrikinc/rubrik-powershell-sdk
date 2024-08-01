@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 21
+    /// Create a new RscQuery object for any of the 34
     /// operations in the 'Snapshot' API domain:
-    /// BrowseFileList, ClosestToPointInTime, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// BrowseFileList, ClosestToPointInTime, CloudDirect, CloudDirects, CompareSalesforceRecordsBetweenAndLive, ComparisonsBetweenSaasAppAndLive, ComparisonsBetweenSaasApps, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SAnomalyInfo, SMalwareInfo, SaasAppItemIndividuals, SaasAppItemOverlappings, SaasAppLatestItems, SnapMirrorCloudFiles, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, StorageAccountDetailDownloadUrl, UnmanagedObject, VappExportOptions, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// </summary>
     /// <description>
     /// New-RscQuerySnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 21 operations
+    /// There are 34 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BrowseFileList, ClosestToPointInTime, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// one of: BrowseFileList, ClosestToPointInTime, CloudDirect, CloudDirects, CompareSalesforceRecordsBetweenAndLive, ComparisonsBetweenSaasAppAndLive, ComparisonsBetweenSaasApps, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SAnomalyInfo, SMalwareInfo, SaasAppItemIndividuals, SaasAppItemOverlappings, SaasAppLatestItems, SnapMirrorCloudFiles, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, StorageAccountDetailDownloadUrl, UnmanagedObject, VappExportOptions, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -149,6 +149,206 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;ClosestSnapshotSearchResult&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudDirect operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: CloudDirect
+    /// 
+    /// $query = New-RscQuerySnapshot -CloudDirect
+    /// 
+    /// # REQUIRED
+    /// $query.Var.snapshotFid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudDirectSnapshot
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudDirects operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: CloudDirects
+    /// 
+    /// $query = New-RscQuerySnapshot -CloudDirects
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someCloudDirectNasSnapshotsFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudDirectNasSnapshotsFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = @{
+    /// 	# OPTIONAL
+    /// 	field = $someCloudDirectNasSnapshotsSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudDirectNasSnapshotsSortByField]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudDirectSnapshotConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CompareSalesforceRecordsBetweenAndLive operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: CompareSalesforceRecordsBetweenAndLive
+    /// 
+    /// $query = New-RscQuerySnapshot -CompareSalesforceRecordsBetweenAndLive
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.workloadId = $someString
+    /// # OPTIONAL
+    /// $query.Var.salesforceRecordIds = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.leftSnapshotNumber = $someInt
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.fieldNames = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CompareSalesforceRecords
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ComparisonsBetweenSaasAppAndLive operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: ComparisonsBetweenSaasAppAndLive
+    /// 
+    /// $query = New-RscQuerySnapshot -ComparisonsBetweenSaasAppAndLive
+    /// 
+    /// # REQUIRED
+    /// $query.Var.saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.workloadId = $someString
+    /// # REQUIRED
+    /// $query.Var.itemId = $someString
+    /// # REQUIRED
+    /// $query.Var.snapshotId = $someString
+    /// # REQUIRED
+    /// $query.Var.appItemTypeToken = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CompareSnapshotsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ComparisonsBetweenSaasApps operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: ComparisonsBetweenSaasApps
+    /// 
+    /// $query = New-RscQuerySnapshot -ComparisonsBetweenSaasApps
+    /// 
+    /// # REQUIRED
+    /// $query.Var.saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.workloadId = $someString
+    /// # REQUIRED
+    /// $query.Var.itemId = $someString
+    /// # REQUIRED
+    /// $query.Var.leftSnapshotNumber = $someInt
+    /// # REQUIRED
+    /// $query.Var.rightSnapshotNumber = $someInt
+    /// # REQUIRED
+    /// $query.Var.appItemTypeToken = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CompareSnapshotsReply
     /// 
     /// 
     /// 
@@ -822,6 +1022,282 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SAnomalyInfo operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: SAnomalyInfo
+    /// 
+    /// $query = New-RscQuerySnapshot -SAnomalyInfo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.snapshotMalware = @{
+    /// 	# REQUIRED
+    /// 	workloadFids = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	startTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	endTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	pagination = @{
+    /// 		# OPTIONAL
+    /// 		offset = $someInt
+    /// 		# OPTIONAL
+    /// 		limit = $someInt
+    /// 	}
+    /// 	# REQUIRED
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SnapshotsMalwareInfoReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SMalwareInfo operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: SMalwareInfo
+    /// 
+    /// $query = New-RscQuerySnapshot -SMalwareInfo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.snapshotMalware = @{
+    /// 	# REQUIRED
+    /// 	workloadFids = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	startTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	endTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	pagination = @{
+    /// 		# OPTIONAL
+    /// 		offset = $someInt
+    /// 		# OPTIONAL
+    /// 		limit = $someInt
+    /// 	}
+    /// 	# REQUIRED
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SnapshotsMalwareInfoReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SaasAppItemIndividuals operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: SaasAppItemIndividuals
+    /// 
+    /// $query = New-RscQuerySnapshot -SaasAppItemIndividuals
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.workloadId = $someString
+    /// # REQUIRED
+    /// $query.Var.itemId = $someString
+    /// # REQUIRED
+    /// $query.Var.saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.appItemTypeToken = $someString
+    /// # REQUIRED
+    /// $query.Var.timeFilter = @{
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SaasAppSnapshotConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SaasAppItemOverlappings operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: SaasAppItemOverlappings
+    /// 
+    /// $query = New-RscQuerySnapshot -SaasAppItemOverlappings
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.workloadId = $someString
+    /// # REQUIRED
+    /// $query.Var.itemIds = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.appItemTypeToken = $someString
+    /// # REQUIRED
+    /// $query.Var.saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.timeFilter = @{
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someSnapshotSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotSortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SaasAppSnapshotConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SaasAppLatestItems operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: SaasAppLatestItems
+    /// 
+    /// $query = New-RscQuerySnapshot -SaasAppLatestItems
+    /// 
+    /// # REQUIRED
+    /// $query.Var.workloadId = $someString
+    /// # REQUIRED
+    /// $query.Var.itemIds = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.appItemTypeToken = $someString
+    /// # REQUIRED
+    /// $query.Var.timeFilter = @{
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;ItemSnapshot&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SnapMirrorCloudFiles operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: SnapMirrorCloudFiles
+    /// 
+    /// $query = New-RscQuerySnapshot -SnapMirrorCloudFiles
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	limit = $someInt
+    /// 	# OPTIONAL
+    /// 	offset = $someInt
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	path = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BrowseResponseListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the SnappableList operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -1073,6 +1549,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StorageAccountDetailDownloadUrl operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: StorageAccountDetailDownloadUrl
+    /// 
+    /// $query = New-RscQuerySnapshot -StorageAccountDetailDownloadUrl
+    /// 
+    /// # REQUIRED
+    /// $query.Var.snapshotId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: StorageAccountSnapshotDetailDownloadUrlReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UnmanagedObject operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -1122,6 +1626,43 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: SnapshotSummaryConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the VappExportOptions operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: VappExportOptions
+    /// 
+    /// $query = New-RscQuerySnapshot -VappExportOptions
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	exportMode = $someGetVappSnapshotExportOptionsRequestExportMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GetVappSnapshotExportOptionsRequestExportMode]) for enum values.
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	targetOrgVdcId = $someString
+    /// 	# OPTIONAL
+    /// 	targetVappId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VappExportOptions
     /// 
     /// 
     /// 
@@ -1215,6 +1756,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "BrowseFileList",
                 "ClosestToPointInTime",
+                "CloudDirect",
+                "CloudDirects",
+                "CompareSalesforceRecordsBetweenAndLive",
+                "ComparisonsBetweenSaasAppAndLive",
+                "ComparisonsBetweenSaasApps",
                 "EmailSearch",
                 "EventSearch",
                 "FilesDelta",
@@ -1227,11 +1773,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Pvcs",
                 "QuarantinedDetails",
                 "Results",
+                "SAnomalyInfo",
+                "SMalwareInfo",
+                "SaasAppItemIndividuals",
+                "SaasAppItemOverlappings",
+                "SaasAppLatestItems",
+                "SnapMirrorCloudFiles",
                 "SnappableList",
                 "SnappablesList",
                 "SnappablesWithLegalHoldsSummary",
                 "Snapshot",
+                "StorageAccountDetailDownloadUrl",
                 "UnmanagedObject",
+                "VappExportOptions",
                 "VappInstantRecoveryOptions",
                 "VappTemplateExportOptions",
                 IgnoreCase = true)]
@@ -1254,6 +1808,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ClosestToPointInTime":
                         this.ProcessRecord_ClosestToPointInTime();
+                        break;
+                    case "CloudDirect":
+                        this.ProcessRecord_CloudDirect();
+                        break;
+                    case "CloudDirects":
+                        this.ProcessRecord_CloudDirects();
+                        break;
+                    case "CompareSalesforceRecordsBetweenAndLive":
+                        this.ProcessRecord_CompareSalesforceRecordsBetweenAndLive();
+                        break;
+                    case "ComparisonsBetweenSaasAppAndLive":
+                        this.ProcessRecord_ComparisonsBetweenSaasAppAndLive();
+                        break;
+                    case "ComparisonsBetweenSaasApps":
+                        this.ProcessRecord_ComparisonsBetweenSaasApps();
                         break;
                     case "EmailSearch":
                         this.ProcessRecord_EmailSearch();
@@ -1291,6 +1860,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Results":
                         this.ProcessRecord_Results();
                         break;
+                    case "SAnomalyInfo":
+                        this.ProcessRecord_SAnomalyInfo();
+                        break;
+                    case "SMalwareInfo":
+                        this.ProcessRecord_SMalwareInfo();
+                        break;
+                    case "SaasAppItemIndividuals":
+                        this.ProcessRecord_SaasAppItemIndividuals();
+                        break;
+                    case "SaasAppItemOverlappings":
+                        this.ProcessRecord_SaasAppItemOverlappings();
+                        break;
+                    case "SaasAppLatestItems":
+                        this.ProcessRecord_SaasAppLatestItems();
+                        break;
+                    case "SnapMirrorCloudFiles":
+                        this.ProcessRecord_SnapMirrorCloudFiles();
+                        break;
                     case "SnappableList":
                         this.ProcessRecord_SnappableList();
                         break;
@@ -1303,8 +1890,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Snapshot":
                         this.ProcessRecord_Snapshot();
                         break;
+                    case "StorageAccountDetailDownloadUrl":
+                        this.ProcessRecord_StorageAccountDetailDownloadUrl();
+                        break;
                     case "UnmanagedObject":
                         this.ProcessRecord_UnmanagedObject();
+                        break;
+                    case "VappExportOptions":
+                        this.ProcessRecord_VappExportOptions();
                         break;
                     case "VappInstantRecoveryOptions":
                         this.ProcessRecord_VappInstantRecoveryOptions();
@@ -1338,6 +1931,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ClosestToPointInTime";
             // Create new graphql operation allSnapshotsClosestToPointInTime
             InitQueryAllSnapshotsClosestToPointInTime();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudDirectSnapshot.
+        internal void ProcessRecord_CloudDirect()
+        {
+            this._logger.name += " -CloudDirect";
+            // Create new graphql operation cloudDirectSnapshot
+            InitQueryCloudDirectSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudDirectSnapshots.
+        internal void ProcessRecord_CloudDirects()
+        {
+            this._logger.name += " -CloudDirects";
+            // Create new graphql operation cloudDirectSnapshots
+            InitQueryCloudDirectSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // compareSalesforceRecordsBetweenSnapshotAndLive.
+        internal void ProcessRecord_CompareSalesforceRecordsBetweenAndLive()
+        {
+            this._logger.name += " -CompareSalesforceRecordsBetweenAndLive";
+            // Create new graphql operation compareSalesforceRecordsBetweenSnapshotAndLive
+            InitQueryCompareSalesforceRecordsBetweenSnapshotAndLive();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allComparisonsBetweenSaasAppSnapshotAndLive.
+        internal void ProcessRecord_ComparisonsBetweenSaasAppAndLive()
+        {
+            this._logger.name += " -ComparisonsBetweenSaasAppAndLive";
+            // Create new graphql operation allComparisonsBetweenSaasAppSnapshotAndLive
+            InitQueryAllComparisonsBetweenSaasAppSnapshotAndLive();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allComparisonsBetweenSaasAppSnapshots.
+        internal void ProcessRecord_ComparisonsBetweenSaasApps()
+        {
+            this._logger.name += " -ComparisonsBetweenSaasApps";
+            // Create new graphql operation allComparisonsBetweenSaasAppSnapshots
+            InitQueryAllComparisonsBetweenSaasAppSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1449,6 +2087,60 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // snapshotsAnomalyInfo.
+        internal void ProcessRecord_SAnomalyInfo()
+        {
+            this._logger.name += " -SAnomalyInfo";
+            // Create new graphql operation snapshotsAnomalyInfo
+            InitQuerySnapshotsAnomalyInfo();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // snapshotsMalwareInfo.
+        internal void ProcessRecord_SMalwareInfo()
+        {
+            this._logger.name += " -SMalwareInfo";
+            // Create new graphql operation snapshotsMalwareInfo
+            InitQuerySnapshotsMalwareInfo();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // saasAppItemIndividualSnapshots.
+        internal void ProcessRecord_SaasAppItemIndividuals()
+        {
+            this._logger.name += " -SaasAppItemIndividuals";
+            // Create new graphql operation saasAppItemIndividualSnapshots
+            InitQuerySaasAppItemIndividualSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // saasAppItemOverlappingSnapshots.
+        internal void ProcessRecord_SaasAppItemOverlappings()
+        {
+            this._logger.name += " -SaasAppItemOverlappings";
+            // Create new graphql operation saasAppItemOverlappingSnapshots
+            InitQuerySaasAppItemOverlappingSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // saasAppLatestSnapshotsForItems.
+        internal void ProcessRecord_SaasAppLatestItems()
+        {
+            this._logger.name += " -SaasAppLatestItems";
+            // Create new graphql operation saasAppLatestSnapshotsForItems
+            InitQuerySaasAppLatestSnapshotsForItems();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // snapMirrorCloudSnapshotFiles.
+        internal void ProcessRecord_SnapMirrorCloudFiles()
+        {
+            this._logger.name += " -SnapMirrorCloudFiles";
+            // Create new graphql operation snapMirrorCloudSnapshotFiles
+            InitQuerySnapMirrorCloudSnapshotFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // snapshotOfASnappableConnection.
         internal void ProcessRecord_SnappableList()
         {
@@ -1485,12 +2177,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // storageAccountSnapshotDetailDownloadUrl.
+        internal void ProcessRecord_StorageAccountDetailDownloadUrl()
+        {
+            this._logger.name += " -StorageAccountDetailDownloadUrl";
+            // Create new graphql operation storageAccountSnapshotDetailDownloadUrl
+            InitQueryStorageAccountSnapshotDetailDownloadUrl();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // snapshotsForUnmanagedObject.
         internal void ProcessRecord_UnmanagedObject()
         {
             this._logger.name += " -UnmanagedObject";
             // Create new graphql operation snapshotsForUnmanagedObject
             InitQuerySnapshotsForUnmanagedObject();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vappSnapshotExportOptions.
+        internal void ProcessRecord_VappExportOptions()
+        {
+            this._logger.name += " -VappExportOptions";
+            // Create new graphql operation vappSnapshotExportOptions
+            InitQueryVappSnapshotExportOptions();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1599,6 +2309,216 @@ $query.Var.excludeQuarantined = $someBoolean
 $query.Var.excludeAnomalous = $someBoolean
 # OPTIONAL
 $query.Var.getFullDetails = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // cloudDirectSnapshot(snapshotFid: UUID!): CloudDirectSnapshot!
+        internal void InitQueryCloudDirectSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("snapshotFid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudDirectSnapshot",
+                "($snapshotFid: UUID!)",
+                "CloudDirectSnapshot",
+                Query.CloudDirectSnapshot,
+                Query.CloudDirectSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.snapshotFid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // cloudDirectSnapshots(
+        //     first: Int
+        //     after: String
+        //     filter: [CloudDirectNasSnapshotsFilterInput!]
+        //     sortBy: CloudDirectNasSnapshotsSortByInput
+        //   ): CloudDirectSnapshotConnection!
+        internal void InitQueryCloudDirectSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("filter", "[CloudDirectNasSnapshotsFilterInput!]"),
+                Tuple.Create("sortBy", "CloudDirectNasSnapshotsSortByInput"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudDirectSnapshots",
+                "($first: Int,$after: String,$filter: [CloudDirectNasSnapshotsFilterInput!],$sortBy: CloudDirectNasSnapshotsSortByInput)",
+                "CloudDirectSnapshotConnection",
+                Query.CloudDirectSnapshots,
+                Query.CloudDirectSnapshotsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someCloudDirectNasSnapshotsFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudDirectNasSnapshotsFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+}
+)
+# OPTIONAL
+$query.Var.sortBy = @{
+	# OPTIONAL
+	field = $someCloudDirectNasSnapshotsSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudDirectNasSnapshotsSortByField]) for enum values.
+	# OPTIONAL
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // compareSalesforceRecordsBetweenSnapshotAndLive(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     workloadId: UUID!
+        //     salesforceRecordIds: [String!]
+        //     leftSnapshotNumber: Int!
+        //     sortBy: String
+        //     sortOrder: SortOrder
+        //     fieldNames: [String!]
+        //   ): CompareSalesforceRecords!
+        internal void InitQueryCompareSalesforceRecordsBetweenSnapshotAndLive()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("workloadId", "UUID!"),
+                Tuple.Create("salesforceRecordIds", "[String!]"),
+                Tuple.Create("leftSnapshotNumber", "Int!"),
+                Tuple.Create("sortBy", "String"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("fieldNames", "[String!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCompareSalesforceRecordsBetweenSnapshotAndLive",
+                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: UUID!,$salesforceRecordIds: [String!],$leftSnapshotNumber: Int!,$sortBy: String,$sortOrder: SortOrder,$fieldNames: [String!])",
+                "CompareSalesforceRecords",
+                Query.CompareSalesforceRecordsBetweenSnapshotAndLive,
+                Query.CompareSalesforceRecordsBetweenSnapshotAndLiveFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.workloadId = $someString
+# OPTIONAL
+$query.Var.salesforceRecordIds = @(
+	$someString
+)
+# REQUIRED
+$query.Var.leftSnapshotNumber = $someInt
+# OPTIONAL
+$query.Var.sortBy = $someString
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.fieldNames = @(
+	$someString
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allComparisonsBetweenSaasAppSnapshotAndLive(
+        //     saasAppType: SaasAppType!
+        //     workloadId: UUID!
+        //     itemId: String!
+        //     snapshotId: UUID!
+        //     appItemTypeToken: String!
+        //   ): CompareSnapshotsReply!
+        internal void InitQueryAllComparisonsBetweenSaasAppSnapshotAndLive()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("saasAppType", "SaasAppType!"),
+                Tuple.Create("workloadId", "UUID!"),
+                Tuple.Create("itemId", "String!"),
+                Tuple.Create("snapshotId", "UUID!"),
+                Tuple.Create("appItemTypeToken", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllComparisonsBetweenSaasAppSnapshotAndLive",
+                "($saasAppType: SaasAppType!,$workloadId: UUID!,$itemId: String!,$snapshotId: UUID!,$appItemTypeToken: String!)",
+                "CompareSnapshotsReply",
+                Query.AllComparisonsBetweenSaasAppSnapshotAndLive,
+                Query.AllComparisonsBetweenSaasAppSnapshotAndLiveFieldSpec,
+                @"# REQUIRED
+$query.Var.saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
+# REQUIRED
+$query.Var.workloadId = $someString
+# REQUIRED
+$query.Var.itemId = $someString
+# REQUIRED
+$query.Var.snapshotId = $someString
+# REQUIRED
+$query.Var.appItemTypeToken = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allComparisonsBetweenSaasAppSnapshots(
+        //     saasAppType: SaasAppType!
+        //     workloadId: UUID!
+        //     itemId: String!
+        //     leftSnapshotNumber: Int!
+        //     rightSnapshotNumber: Int!
+        //     appItemTypeToken: String!
+        //   ): CompareSnapshotsReply!
+        internal void InitQueryAllComparisonsBetweenSaasAppSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("saasAppType", "SaasAppType!"),
+                Tuple.Create("workloadId", "UUID!"),
+                Tuple.Create("itemId", "String!"),
+                Tuple.Create("leftSnapshotNumber", "Int!"),
+                Tuple.Create("rightSnapshotNumber", "Int!"),
+                Tuple.Create("appItemTypeToken", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllComparisonsBetweenSaasAppSnapshots",
+                "($saasAppType: SaasAppType!,$workloadId: UUID!,$itemId: String!,$leftSnapshotNumber: Int!,$rightSnapshotNumber: Int!,$appItemTypeToken: String!)",
+                "CompareSnapshotsReply",
+                Query.AllComparisonsBetweenSaasAppSnapshots,
+                Query.AllComparisonsBetweenSaasAppSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
+# REQUIRED
+$query.Var.workloadId = $someString
+# REQUIRED
+$query.Var.itemId = $someString
+# REQUIRED
+$query.Var.leftSnapshotNumber = $someInt
+# REQUIRED
+$query.Var.rightSnapshotNumber = $someInt
+# REQUIRED
+$query.Var.appItemTypeToken = $someString"
             );
         }
 
@@ -2263,6 +3183,284 @@ $query.Var.endTimeMs = $someInt64"
         }
 
         // Create new GraphQL Query:
+        // snapshotsAnomalyInfo(snapshotMalware: SnapshotsMalwareInfoInput!): SnapshotsMalwareInfoReply!
+        internal void InitQuerySnapshotsAnomalyInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("snapshotMalware", "SnapshotsMalwareInfoInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySnapshotsAnomalyInfo",
+                "($snapshotMalware: SnapshotsMalwareInfoInput!)",
+                "SnapshotsMalwareInfoReply",
+                Query.SnapshotsAnomalyInfo,
+                Query.SnapshotsAnomalyInfoFieldSpec,
+                @"# REQUIRED
+$query.Var.snapshotMalware = @{
+	# REQUIRED
+	workloadFids = @(
+		$someString
+	)
+	# OPTIONAL
+	startTime = $someDateTime
+	# OPTIONAL
+	endTime = $someDateTime
+	# OPTIONAL
+	pagination = @{
+		# OPTIONAL
+		offset = $someInt
+		# OPTIONAL
+		limit = $someInt
+	}
+	# REQUIRED
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // snapshotsMalwareInfo(snapshotMalware: SnapshotsMalwareInfoInput!): SnapshotsMalwareInfoReply!
+        internal void InitQuerySnapshotsMalwareInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("snapshotMalware", "SnapshotsMalwareInfoInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySnapshotsMalwareInfo",
+                "($snapshotMalware: SnapshotsMalwareInfoInput!)",
+                "SnapshotsMalwareInfoReply",
+                Query.SnapshotsMalwareInfo,
+                Query.SnapshotsMalwareInfoFieldSpec,
+                @"# REQUIRED
+$query.Var.snapshotMalware = @{
+	# REQUIRED
+	workloadFids = @(
+		$someString
+	)
+	# OPTIONAL
+	startTime = $someDateTime
+	# OPTIONAL
+	endTime = $someDateTime
+	# OPTIONAL
+	pagination = @{
+		# OPTIONAL
+		offset = $someInt
+		# OPTIONAL
+		limit = $someInt
+	}
+	# REQUIRED
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // saasAppItemIndividualSnapshots(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     workloadId: UUID!
+        //     itemId: String!
+        //     saasAppType: SaasAppType!
+        //     appItemTypeToken: String!
+        //     timeFilter: TimeFilter!
+        //   ): SaasAppSnapshotConnection!
+        internal void InitQuerySaasAppItemIndividualSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("workloadId", "UUID!"),
+                Tuple.Create("itemId", "String!"),
+                Tuple.Create("saasAppType", "SaasAppType!"),
+                Tuple.Create("appItemTypeToken", "String!"),
+                Tuple.Create("timeFilter", "TimeFilter!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySaasAppItemIndividualSnapshots",
+                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: UUID!,$itemId: String!,$saasAppType: SaasAppType!,$appItemTypeToken: String!,$timeFilter: TimeFilter!)",
+                "SaasAppSnapshotConnection",
+                Query.SaasAppItemIndividualSnapshots,
+                Query.SaasAppItemIndividualSnapshotsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.workloadId = $someString
+# REQUIRED
+$query.Var.itemId = $someString
+# REQUIRED
+$query.Var.saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
+# REQUIRED
+$query.Var.appItemTypeToken = $someString
+# REQUIRED
+$query.Var.timeFilter = @{
+	# OPTIONAL
+	beforeTime = $someDateTime
+	# OPTIONAL
+	afterTime = $someDateTime
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // saasAppItemOverlappingSnapshots(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     workloadId: UUID!
+        //     itemIds: [String!]!
+        //     appItemTypeToken: String!
+        //     saasAppType: SaasAppType!
+        //     timeFilter: TimeFilter!
+        //     sortBy: SnapshotSortByField
+        //     sortOrder: SortOrder
+        //   ): SaasAppSnapshotConnection!
+        internal void InitQuerySaasAppItemOverlappingSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("workloadId", "UUID!"),
+                Tuple.Create("itemIds", "[String!]!"),
+                Tuple.Create("appItemTypeToken", "String!"),
+                Tuple.Create("saasAppType", "SaasAppType!"),
+                Tuple.Create("timeFilter", "TimeFilter!"),
+                Tuple.Create("sortBy", "SnapshotSortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySaasAppItemOverlappingSnapshots",
+                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: UUID!,$itemIds: [String!]!,$appItemTypeToken: String!,$saasAppType: SaasAppType!,$timeFilter: TimeFilter!,$sortBy: SnapshotSortByField,$sortOrder: SortOrder)",
+                "SaasAppSnapshotConnection",
+                Query.SaasAppItemOverlappingSnapshots,
+                Query.SaasAppItemOverlappingSnapshotsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.workloadId = $someString
+# REQUIRED
+$query.Var.itemIds = @(
+	$someString
+)
+# REQUIRED
+$query.Var.appItemTypeToken = $someString
+# REQUIRED
+$query.Var.saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
+# REQUIRED
+$query.Var.timeFilter = @{
+	# OPTIONAL
+	beforeTime = $someDateTime
+	# OPTIONAL
+	afterTime = $someDateTime
+}
+# OPTIONAL
+$query.Var.sortBy = $someSnapshotSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotSortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // saasAppLatestSnapshotsForItems(
+        //     workloadId: UUID!
+        //     itemIds: [String!]!
+        //     saasAppType: SaasAppType!
+        //     appItemTypeToken: String!
+        //     timeFilter: TimeFilter!
+        //   ): [ItemSnapshot!]!
+        internal void InitQuerySaasAppLatestSnapshotsForItems()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("workloadId", "UUID!"),
+                Tuple.Create("itemIds", "[String!]!"),
+                Tuple.Create("saasAppType", "SaasAppType!"),
+                Tuple.Create("appItemTypeToken", "String!"),
+                Tuple.Create("timeFilter", "TimeFilter!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySaasAppLatestSnapshotsForItems",
+                "($workloadId: UUID!,$itemIds: [String!]!,$saasAppType: SaasAppType!,$appItemTypeToken: String!,$timeFilter: TimeFilter!)",
+                "List<ItemSnapshot>",
+                Query.SaasAppLatestSnapshotsForItems,
+                Query.SaasAppLatestSnapshotsForItemsFieldSpec,
+                @"# REQUIRED
+$query.Var.workloadId = $someString
+# REQUIRED
+$query.Var.itemIds = @(
+	$someString
+)
+# REQUIRED
+$query.Var.saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
+# REQUIRED
+$query.Var.appItemTypeToken = $someString
+# REQUIRED
+$query.Var.timeFilter = @{
+	# OPTIONAL
+	beforeTime = $someDateTime
+	# OPTIONAL
+	afterTime = $someDateTime
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // snapMirrorCloudSnapshotFiles(input: SnapMirrorCloudSnapshotFilesInput!): BrowseResponseListResponse!
+        internal void InitQuerySnapMirrorCloudSnapshotFiles()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SnapMirrorCloudSnapshotFilesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySnapMirrorCloudSnapshotFiles",
+                "($input: SnapMirrorCloudSnapshotFilesInput!)",
+                "BrowseResponseListResponse",
+                Query.SnapMirrorCloudSnapshotFiles,
+                Query.SnapMirrorCloudSnapshotFilesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	limit = $someInt
+	# OPTIONAL
+	offset = $someInt
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	path = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // snapshotOfASnappableConnection(
         //     first: Int
         //     after: String
@@ -2533,6 +3731,26 @@ $query.Var.clusterUuid = $someString"
         }
 
         // Create new GraphQL Query:
+        // storageAccountSnapshotDetailDownloadUrl(snapshotId: UUID!): StorageAccountSnapshotDetailDownloadUrlReply!
+        internal void InitQueryStorageAccountSnapshotDetailDownloadUrl()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("snapshotId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryStorageAccountSnapshotDetailDownloadUrl",
+                "($snapshotId: UUID!)",
+                "StorageAccountSnapshotDetailDownloadUrlReply",
+                Query.StorageAccountSnapshotDetailDownloadUrl,
+                Query.StorageAccountSnapshotDetailDownloadUrlFieldSpec,
+                @"# REQUIRED
+$query.Var.snapshotId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // snapshotsForUnmanagedObject(
         //     first: Int
         //     after: String
@@ -2587,6 +3805,35 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vappSnapshotExportOptions(input: VappSnapshotExportOptionsInput!): VappExportOptions!
+        internal void InitQueryVappSnapshotExportOptions()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "VappSnapshotExportOptionsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVappSnapshotExportOptions",
+                "($input: VappSnapshotExportOptionsInput!)",
+                "VappExportOptions",
+                Query.VappSnapshotExportOptions,
+                Query.VappSnapshotExportOptionsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	exportMode = $someGetVappSnapshotExportOptionsRequestExportMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GetVappSnapshotExportOptionsRequestExportMode]) for enum values.
+	# REQUIRED
+	snapshotId = $someString
+	# OPTIONAL
+	targetOrgVdcId = $someString
+	# OPTIONAL
+	targetVappId = $someString
 }"
             );
         }

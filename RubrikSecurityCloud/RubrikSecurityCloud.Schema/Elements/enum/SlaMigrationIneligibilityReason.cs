@@ -79,7 +79,10 @@ namespace RubrikSecurityCloud.Types
         UNSUPPORTED_PROTECTED_OBJECTS_MINUTE_FREQUENCY_CONFIGURED,
 
         [EnumMember(Value = "UNSUPPORTED_PROTECTED_OBJECTS_SHARE_FILESET")]
-        UNSUPPORTED_PROTECTED_OBJECTS_SHARE_FILESET
+        UNSUPPORTED_PROTECTED_OBJECTS_SHARE_FILESET,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SlaMigrationIneligibilityReason

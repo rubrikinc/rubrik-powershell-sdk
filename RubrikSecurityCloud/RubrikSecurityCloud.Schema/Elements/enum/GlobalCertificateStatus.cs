@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         STATUS_UNSPECIFIED,
 
         [EnumMember(Value = "VALID")]
-        VALID
+        VALID,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GlobalCertificateStatus

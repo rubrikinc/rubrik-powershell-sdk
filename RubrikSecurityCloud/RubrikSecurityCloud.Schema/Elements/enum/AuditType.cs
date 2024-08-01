@@ -100,7 +100,10 @@ namespace RubrikSecurityCloud.Types
         THREAT_HUNT,
 
         [EnumMember(Value = "TPR")]
-        TPR
+        TPR,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AuditType

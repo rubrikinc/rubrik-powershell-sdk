@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         AWS_EXPORT_VM_WITH_IAM_INSTANCE_PROFILE,
 
         [EnumMember(Value = "AWS_UNSPECIFIED")]
-        AWS_UNSPECIFIED
+        AWS_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsFeatureForPermissionCheck

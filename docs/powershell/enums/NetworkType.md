@@ -1,0 +1,3 @@
+### NetworkType
+- STATIC
+- DHCP

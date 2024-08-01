@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         ORIGINAL_VM_ID,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED
+        UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HypervLiveMountFilterField

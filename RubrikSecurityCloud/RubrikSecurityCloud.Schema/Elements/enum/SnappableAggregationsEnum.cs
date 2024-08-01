@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         TRANSFERRED_BYTES,
 
         [EnumMember(Value = "TotalSnapshots")]
-        TOTAL_SNAPSHOTS
+        TOTAL_SNAPSHOTS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnappableAggregationsEnum

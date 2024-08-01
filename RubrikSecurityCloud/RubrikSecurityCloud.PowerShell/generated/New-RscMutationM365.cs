@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Microsoft 365' API domain:
-    /// BackupMailbox, BackupOnedrive, BackupSharepointDrive, or BackupTeam.
+    /// BackupMailbox, BackupOnedrive, BackupSharepointDrive, BackupStorageSetupComplete, BackupStorageSetupKickoff, BackupTeam, or PersistCustomerApp.
     /// </summary>
     /// <description>
     /// New-RscMutationM365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 7 operations
     /// in the 'Microsoft 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BackupMailbox, BackupOnedrive, BackupSharepointDrive, or BackupTeam.
+    /// one of: BackupMailbox, BackupOnedrive, BackupSharepointDrive, BackupStorageSetupComplete, BackupStorageSetupKickoff, BackupTeam, or PersistCustomerApp.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -176,6 +176,81 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the BackupStorageSetupComplete operation
+    /// of the 'Microsoft 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    M365
+    /// # API Operation: BackupStorageSetupComplete
+    /// 
+    /// $query = New-RscMutationM365 -BackupStorageSetupComplete
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	stateToken = $someString
+    /// 	# REQUIRED
+    /// 	appTypes = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	authInfoForType = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			appId = $someString
+    /// 			# OPTIONAL
+    /// 			authCode = $someString
+    /// 			# OPTIONAL
+    /// 			redirectUrl = $someString
+    /// 			# OPTIONAL
+    /// 			appType = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: M365BackupStorageSetupCompleteReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the BackupStorageSetupKickoff operation
+    /// of the 'Microsoft 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    M365
+    /// # API Operation: BackupStorageSetupKickoff
+    /// 
+    /// $query = New-RscMutationM365 -BackupStorageSetupKickoff
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: M365BackupStorageSetupKickoffReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the BackupTeam operation
     /// of the 'Microsoft 365' API domain.
     /// <code>
@@ -208,6 +283,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the PersistCustomerApp operation
+    /// of the 'Microsoft 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    M365
+    /// # API Operation: PersistCustomerApp
+    /// 
+    /// $query = New-RscMutationM365 -PersistCustomerApp
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	tenantId = $someString
+    /// 	# REQUIRED
+    /// 	m365CloudType = $someM365Cloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365Cloud]) for enum values.
+    /// 	# REQUIRED
+    /// 	appType = $someO365AppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365AppType]) for enum values.
+    /// 	# REQUIRED
+    /// 	appClientId = $someString
+    /// 	# REQUIRED
+    /// 	appClientSecret = $someString
+    /// 	# OPTIONAL
+    /// 	appCertificate = $someString
+    /// 	# OPTIONAL
+    /// 	appPrivateKey = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -227,7 +345,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "BackupMailbox",
                 "BackupOnedrive",
                 "BackupSharepointDrive",
+                "BackupStorageSetupComplete",
+                "BackupStorageSetupKickoff",
                 "BackupTeam",
+                "PersistCustomerApp",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -252,8 +373,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "BackupSharepointDrive":
                         this.ProcessRecord_BackupSharepointDrive();
                         break;
+                    case "BackupStorageSetupComplete":
+                        this.ProcessRecord_BackupStorageSetupComplete();
+                        break;
+                    case "BackupStorageSetupKickoff":
+                        this.ProcessRecord_BackupStorageSetupKickoff();
+                        break;
                     case "BackupTeam":
                         this.ProcessRecord_BackupTeam();
+                        break;
+                    case "PersistCustomerApp":
+                        this.ProcessRecord_PersistCustomerApp();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -293,12 +423,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // m365BackupStorageSetupComplete.
+        internal void ProcessRecord_BackupStorageSetupComplete()
+        {
+            this._logger.name += " -BackupStorageSetupComplete";
+            // Create new graphql operation m365BackupStorageSetupComplete
+            InitMutationM365BackupStorageSetupComplete();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // m365BackupStorageSetupKickoff.
+        internal void ProcessRecord_BackupStorageSetupKickoff()
+        {
+            this._logger.name += " -BackupStorageSetupKickoff";
+            // Create new graphql operation m365BackupStorageSetupKickoff
+            InitMutationM365BackupStorageSetupKickoff();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // backupM365Team.
         internal void ProcessRecord_BackupTeam()
         {
             this._logger.name += " -BackupTeam";
             // Create new graphql operation backupM365Team
             InitMutationBackupM365Team();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // persistCustomerM365App.
+        internal void ProcessRecord_PersistCustomerApp()
+        {
+            this._logger.name += " -PersistCustomerApp";
+            // Create new graphql operation persistCustomerM365App
+            InitMutationPersistCustomerM365App();
         }
 
 
@@ -378,6 +535,64 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // m365BackupStorageSetupComplete(input: M365BackupStorageSetupCompleteInput!): M365BackupStorageSetupCompleteReply!
+        internal void InitMutationM365BackupStorageSetupComplete()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "M365BackupStorageSetupCompleteInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationM365BackupStorageSetupComplete",
+                "($input: M365BackupStorageSetupCompleteInput!)",
+                "M365BackupStorageSetupCompleteReply",
+                Mutation.M365BackupStorageSetupComplete,
+                Mutation.M365BackupStorageSetupCompleteFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	stateToken = $someString
+	# REQUIRED
+	appTypes = @(
+		$someString
+	)
+	# REQUIRED
+	authInfoForType = @(
+		@{
+			# OPTIONAL
+			appId = $someString
+			# OPTIONAL
+			authCode = $someString
+			# OPTIONAL
+			redirectUrl = $someString
+			# OPTIONAL
+			appType = $someString
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // m365BackupStorageSetupKickoff: M365BackupStorageSetupKickoffReply!
+        internal void InitMutationM365BackupStorageSetupKickoff()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationM365BackupStorageSetupKickoff",
+                "",
+                "M365BackupStorageSetupKickoffReply",
+                Mutation.M365BackupStorageSetupKickoff,
+                Mutation.M365BackupStorageSetupKickoffFieldSpec,
+                @""
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // backupM365Team(input: BackupM365TeamInput!): [CreateOnDemandJobReply!]!
         internal void InitMutationBackupM365Team()
         {
@@ -398,6 +613,41 @@ $query.Var.input = @{
 	workloadUuids = @(
 		$someString
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // persistCustomerM365App(input: PersistCustomerM365AppInput!): Void
+        internal void InitMutationPersistCustomerM365App()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "PersistCustomerM365AppInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationPersistCustomerM365App",
+                "($input: PersistCustomerM365AppInput!)",
+                "System.String",
+                Mutation.PersistCustomerM365App,
+                Mutation.PersistCustomerM365AppFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	tenantId = $someString
+	# REQUIRED
+	m365CloudType = $someM365Cloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365Cloud]) for enum values.
+	# REQUIRED
+	appType = $someO365AppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365AppType]) for enum values.
+	# REQUIRED
+	appClientId = $someString
+	# REQUIRED
+	appClientSecret = $someString
+	# OPTIONAL
+	appCertificate = $someString
+	# OPTIONAL
+	appPrivateKey = $someString
 }"
             );
         }

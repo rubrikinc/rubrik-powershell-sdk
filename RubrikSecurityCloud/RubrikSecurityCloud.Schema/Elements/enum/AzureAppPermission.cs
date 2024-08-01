@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         AZURE_SQL_IMPERSONATION,
 
         [EnumMember(Value = "AZURE_STORAGE_IMPERSONATION")]
-        AZURE_STORAGE_IMPERSONATION
+        AZURE_STORAGE_IMPERSONATION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureAppPermission

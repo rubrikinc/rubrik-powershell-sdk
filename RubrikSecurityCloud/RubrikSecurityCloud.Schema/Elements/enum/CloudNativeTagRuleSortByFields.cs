@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SLA_DOMAIN,
 
         [EnumMember(Value = "TAG")]
-        TAG
+        TAG,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudNativeTagRuleSortByFields

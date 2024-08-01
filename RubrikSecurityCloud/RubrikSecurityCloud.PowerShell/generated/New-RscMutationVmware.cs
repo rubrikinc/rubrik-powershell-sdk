@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 1
+    /// Create a new RscQuery object for any of the 2
     /// operations in the 'VMware' API domain:
-    /// ['DownloadSnapshotFromLocation'].
+    /// DownloadSnapshotFromLocation, or ToggleManagementEnabled.
     /// </summary>
     /// <description>
     /// New-RscMutationVmware creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 1 operations
+    /// There are 2 operations
     /// in the 'VMware' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ['DownloadSnapshotFromLocation'].
+    /// one of: DownloadSnapshotFromLocation, or ToggleManagementEnabled.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -114,6 +114,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the ToggleManagementEnabled operation
+    /// of the 'VMware' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vmware
+    /// # API Operation: ToggleManagementEnabled
+    /// 
+    /// $query = New-RscMutationVmware -ToggleManagementEnabled
+    /// 
+    /// # REQUIRED
+    /// $query.Var.enableVmwareManagement = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -131,6 +159,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "DownloadSnapshotFromLocation",
+                "ToggleManagementEnabled",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -149,6 +178,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DownloadSnapshotFromLocation":
                         this.ProcessRecord_DownloadSnapshotFromLocation();
                         break;
+                    case "ToggleManagementEnabled":
+                        this.ProcessRecord_ToggleManagementEnabled();
+                        break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
                 }
@@ -166,6 +198,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DownloadSnapshotFromLocation";
             // Create new graphql operation vmwareDownloadSnapshotFromLocation
             InitMutationVmwareDownloadSnapshotFromLocation();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // toggleVMwareManagementEnabled.
+        internal void ProcessRecord_ToggleManagementEnabled()
+        {
+            this._logger.name += " -ToggleManagementEnabled";
+            // Create new graphql operation toggleVMwareManagementEnabled
+            InitMutationToggleVmwareManagementEnabled();
         }
 
 
@@ -196,6 +237,26 @@ $query.Var.input = @{
 	# REQUIRED
 	snapshotId = $someString
 }"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // toggleVMwareManagementEnabled(enableVmwareManagement: Boolean!): Boolean!
+        internal void InitMutationToggleVmwareManagementEnabled()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("enableVmwareManagement", "Boolean!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationToggleVmwareManagementEnabled",
+                "($enableVmwareManagement: Boolean!)",
+                "System.Boolean",
+                Mutation.ToggleVmwareManagementEnabled,
+                Mutation.ToggleVmwareManagementEnabledFieldSpec,
+                @"# REQUIRED
+$query.Var.enableVmwareManagement = $someBoolean"
             );
         }
 

@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         LOCALRECOVERY,
 
         [EnumMember(Value = "TEST_FAILOVER")]
-        TEST_FAILOVER
+        TEST_FAILOVER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FailoverTypeEnum

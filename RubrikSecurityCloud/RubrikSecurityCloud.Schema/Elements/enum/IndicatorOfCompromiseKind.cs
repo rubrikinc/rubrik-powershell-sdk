@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         IOC_UNSPECIFIED,
 
         [EnumMember(Value = "IOC_YARA")]
-        IOC_YARA
+        IOC_YARA,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum IndicatorOfCompromiseKind

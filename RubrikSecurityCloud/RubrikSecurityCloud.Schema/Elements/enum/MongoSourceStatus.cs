@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         ADD_SOURCE_SUCCESSFUL,
 
         [EnumMember(Value = "_UNSUPPORTED")]
-        UNSUPPORTED
+        UNSUPPORTED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MongoSourceStatus

@@ -109,7 +109,10 @@ namespace RubrikSecurityCloud.Types
         US_WEST_1,
 
         [EnumMember(Value = "US_WEST_2")]
-        US_WEST_2
+        US_WEST_2,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsNativeRegion

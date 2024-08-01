@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vmConfig")]
         public AzureVmConfig? VmConfig { get; set; }
 
+        //      C# -> List<ClusterCreateValidations>? Validations
+        // GraphQL -> validations: [ClusterCreateValidations!] (enum)
+        [JsonProperty("validations")]
+        public List<ClusterCreateValidations>? Validations { get; set; }
+
 
         #endregion
 

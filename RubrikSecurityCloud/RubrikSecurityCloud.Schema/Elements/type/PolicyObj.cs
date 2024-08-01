@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("riskLevel")]
         public RiskLevelType? RiskLevel { get; set; }
 
+        //      C# -> ScanStatus? ScanStatus
+        // GraphQL -> scanStatus: ScanStatus! (enum)
+        [JsonProperty("scanStatus")]
+        public ScanStatus? ScanStatus { get; set; }
+
         //      C# -> DataGovShareType? ShareType
         // GraphQL -> shareType: DataGovShareType! (enum)
         [JsonProperty("shareType")]
@@ -238,6 +243,7 @@ namespace RubrikSecurityCloud.Types
         DataGovObjectType? ObjectType = null,
         DataGovOsType? OsType = null,
         RiskLevelType? RiskLevel = null,
+        ScanStatus? ScanStatus = null,
         DataGovShareType? ShareType = null,
         HierarchyObject? Snappable = null,
         System.Boolean? HasInsights = null,
@@ -279,6 +285,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RiskLevel != null ) {
             this.RiskLevel = RiskLevel;
+        }
+        if ( ScanStatus != null ) {
+            this.ScanStatus = ScanStatus;
         }
         if ( ShareType != null ) {
             this.ShareType = ShareType;
@@ -412,6 +421,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "riskLevel\n" ;
             } else {
                 s += ind + "riskLevel\n" ;
+            }
+        }
+        //      C# -> ScanStatus? ScanStatus
+        // GraphQL -> scanStatus: ScanStatus! (enum)
+        if (this.ScanStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "scanStatus\n" ;
+            } else {
+                s += ind + "scanStatus\n" ;
             }
         }
         //      C# -> DataGovShareType? ShareType
@@ -782,6 +800,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.RiskLevel != null && ec.Excludes("riskLevel",true))
         {
             this.RiskLevel = null;
+        }
+        //      C# -> ScanStatus? ScanStatus
+        // GraphQL -> scanStatus: ScanStatus! (enum)
+        if (ec.Includes("scanStatus",true))
+        {
+            if(this.ScanStatus == null) {
+
+                this.ScanStatus = new ScanStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ScanStatus != null && ec.Excludes("scanStatus",true))
+        {
+            this.ScanStatus = null;
         }
         //      C# -> DataGovShareType? ShareType
         // GraphQL -> shareType: DataGovShareType! (enum)

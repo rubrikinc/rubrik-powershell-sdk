@@ -16,7 +16,10 @@ namespace RubrikSecurityCloud.Types
     public enum SapHanaLogSnapshotSortBy
     {
         [EnumMember(Value = "DATE")]
-        DATE
+        DATE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SapHanaLogSnapshotSortBy

@@ -52,3 +52,6 @@ PermissionsGroup represents the collection of various permission groups that
  for data center archival location.
  These permission are applicable to the Data Center Role-based archival
  feature.
+- SQL_ARCHIVAL - Represents the permissions required to enable Azure AD authorization to
+ store Azure SQL and MI snapshots in an archival location using Colossus.
+ These permissions apply to Cloud Native Archival Feature.

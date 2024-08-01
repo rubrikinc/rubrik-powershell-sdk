@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         READ_ONLY,
 
         [EnumMember(Value = "WRITABLE")]
-        WRITABLE
+        WRITABLE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MountState

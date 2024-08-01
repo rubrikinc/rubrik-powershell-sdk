@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_WEEK,
 
         [EnumMember(Value = "SNAPSHOT_YEAR")]
-        SNAPSHOT_YEAR
+        SNAPSHOT_YEAR,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RansomwareResultGroupBy

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         NATIVE,
 
         [EnumMember(Value = "OPSMANAGER")]
-        OPSMANAGER
+        OPSMANAGER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MongoManagementType

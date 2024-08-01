@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         STANDARD_LRS,
 
         [EnumMember(Value = "STANDARD_ZRS")]
-        STANDARD_ZRS
+        STANDARD_ZRS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum StorageAccountSku

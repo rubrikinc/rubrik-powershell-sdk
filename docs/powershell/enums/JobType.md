@@ -77,3 +77,4 @@ Type of poller. Different types of jobs are polled by corresponding poller.
 - VSPHERE_VM_MAKE_PRIMARY - Vsphere update primary Rubrik cluster for RBS.
 - DISCOVERED_MSSQL_OBJECTS_NOTIFICATIONS_POLLER - Start a poller that will send a notification to user
  of new MSSQL objects discovered for the given host.
+- DARE_OPERATION_POLLER - Data-At-Rest-Encryption operation job poller.

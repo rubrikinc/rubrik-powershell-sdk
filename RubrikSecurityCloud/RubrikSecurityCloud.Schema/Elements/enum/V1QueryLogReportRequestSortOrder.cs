@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         V1_QUERY_LOG_REPORT_REQUEST_SORT_ORDER_ASC,
 
         [EnumMember(Value = "V1_QUERY_LOG_REPORT_REQUEST_SORT_ORDER_DESC")]
-        V1_QUERY_LOG_REPORT_REQUEST_SORT_ORDER_DESC
+        V1_QUERY_LOG_REPORT_REQUEST_SORT_ORDER_DESC,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum V1QueryLogReportRequestSortOrder

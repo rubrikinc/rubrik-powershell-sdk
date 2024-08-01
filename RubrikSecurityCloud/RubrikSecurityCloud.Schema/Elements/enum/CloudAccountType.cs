@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         CLOUD_ACCOUNT_GCP,
 
         [EnumMember(Value = "UNKNOWN_CLOUD_ACCOUNT")]
-        UNKNOWN_CLOUD_ACCOUNT
+        UNKNOWN_CLOUD_ACCOUNT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudAccountType

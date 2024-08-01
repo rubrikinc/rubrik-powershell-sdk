@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         STORAGE_ARRAY_TYPE_NET_APP_ONTAP,
 
         [EnumMember(Value = "STORAGE_ARRAY_TYPE_PURE_STORAGE")]
-        STORAGE_ARRAY_TYPE_PURE_STORAGE
+        STORAGE_ARRAY_TYPE_PURE_STORAGE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum StorageArrayType

@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         TRANSPORT_LAYER_PROTOCOL_TCP,
 
         [EnumMember(Value = "TRANSPORT_LAYER_PROTOCOL_UDP")]
-        TRANSPORT_LAYER_PROTOCOL_UDP
+        TRANSPORT_LAYER_PROTOCOL_UDP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TransportLayerProtocol

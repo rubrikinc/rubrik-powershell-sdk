@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         SSO_SP_ENCRYPTION,
 
         [EnumMember(Value = "SSO_SP_SIGNING")]
-        SSO_SP_SIGNING
+        SSO_SP_SIGNING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CertificateUsage

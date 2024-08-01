@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOTS_COUNT,
 
         [EnumMember(Value = "UNMANAGED_STATUS")]
-        UNMANAGED_STATUS
+        UNMANAGED_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UnmanagedObjectsSortType

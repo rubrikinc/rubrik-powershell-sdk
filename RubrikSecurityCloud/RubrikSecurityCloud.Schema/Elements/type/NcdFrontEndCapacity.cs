@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int64? ArchiveFetb
+        // GraphQL -> archiveFetb: Long! (scalar)
+        [JsonProperty("archiveFetb")]
+        public System.Int64? ArchiveFetb { get; set; }
+
+        //      C# -> System.Int64? BackupFetb
+        // GraphQL -> backupFetb: Long! (scalar)
+        [JsonProperty("backupFetb")]
+        public System.Int64? BackupFetb { get; set; }
+
         //      C# -> System.Int64? UsageInBytes
         // GraphQL -> usageInBytes: Long! (scalar)
         [JsonProperty("usageInBytes")]
@@ -35,9 +45,17 @@ namespace RubrikSecurityCloud.Types
     }
 
     public NcdFrontEndCapacity Set(
+        System.Int64? ArchiveFetb = null,
+        System.Int64? BackupFetb = null,
         System.Int64? UsageInBytes = null
     ) 
     {
+        if ( ArchiveFetb != null ) {
+            this.ArchiveFetb = ArchiveFetb;
+        }
+        if ( BackupFetb != null ) {
+            this.BackupFetb = BackupFetb;
+        }
         if ( UsageInBytes != null ) {
             this.UsageInBytes = UsageInBytes;
         }
@@ -55,6 +73,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int64? ArchiveFetb
+        // GraphQL -> archiveFetb: Long! (scalar)
+        if (this.ArchiveFetb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archiveFetb\n" ;
+            } else {
+                s += ind + "archiveFetb\n" ;
+            }
+        }
+        //      C# -> System.Int64? BackupFetb
+        // GraphQL -> backupFetb: Long! (scalar)
+        if (this.BackupFetb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupFetb\n" ;
+            } else {
+                s += ind + "backupFetb\n" ;
+            }
+        }
         //      C# -> System.Int64? UsageInBytes
         // GraphQL -> usageInBytes: Long! (scalar)
         if (this.UsageInBytes != null) {
@@ -71,6 +107,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.Int64? ArchiveFetb
+        // GraphQL -> archiveFetb: Long! (scalar)
+        if (ec.Includes("archiveFetb",true))
+        {
+            if(this.ArchiveFetb == null) {
+
+                this.ArchiveFetb = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchiveFetb != null && ec.Excludes("archiveFetb",true))
+        {
+            this.ArchiveFetb = null;
+        }
+        //      C# -> System.Int64? BackupFetb
+        // GraphQL -> backupFetb: Long! (scalar)
+        if (ec.Includes("backupFetb",true))
+        {
+            if(this.BackupFetb == null) {
+
+                this.BackupFetb = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupFetb != null && ec.Excludes("backupFetb",true))
+        {
+            this.BackupFetb = null;
+        }
         //      C# -> System.Int64? UsageInBytes
         // GraphQL -> usageInBytes: Long! (scalar)
         if (ec.Includes("usageInBytes",true))

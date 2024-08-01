@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ARCHIVED,
 
         [EnumMember(Value = "REPLICATED")]
-        REPLICATED
+        REPLICATED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnapshotTypeForRestoreIfSourceExpired

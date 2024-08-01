@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         FIELD_UNSPECIFIED,
 
         [EnumMember(Value = "USER_NAME")]
-        USER_NAME
+        USER_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GuestOsCredentialSortByField

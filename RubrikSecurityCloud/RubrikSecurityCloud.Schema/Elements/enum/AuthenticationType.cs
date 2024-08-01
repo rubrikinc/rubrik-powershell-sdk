@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         CUSTOM_HEADER,
 
         [EnumMember(Value = "URL")]
-        URL
+        URL,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AuthenticationType

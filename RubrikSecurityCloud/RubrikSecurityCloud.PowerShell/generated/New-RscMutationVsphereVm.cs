@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 25
+    /// Create a new RscQuery object for any of the 30
     /// operations in the 'VMware vSphere VM' API domain:
-    /// BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, RegisterAgentWithOrg, or Update.
+    /// BatchExport, BatchExportV3, BatchInPlaceRecovery, BatchLiveMount, DeleteLiveMount, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshot, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecovery, InitiateInstantRecoveryV2, InitiateLiveMount, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, RegisterAgentWithOrg, or Update.
     /// </summary>
     /// <description>
     /// New-RscMutationVsphereVm creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 25 operations
+    /// There are 30 operations
     /// in the 'VMware vSphere VM' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, RegisterAgentWithOrg, or Update.
+    /// one of: BatchExport, BatchExportV3, BatchInPlaceRecovery, BatchLiveMount, DeleteLiveMount, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshot, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecovery, InitiateInstantRecoveryV2, InitiateLiveMount, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, RegisterAgentWithOrg, or Update.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -367,6 +367,106 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the BatchLiveMount operation
+    /// of the 'VMware vSphere VM' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    VsphereVm
+    /// # API Operation: BatchLiveMount
+    /// 
+    /// $query = New-RscMutationVsphereVm -BatchLiveMount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.clusterUuid = $someString
+    /// # REQUIRED
+    /// $query.Var.config = @{
+    /// 	# REQUIRED
+    /// 	snapshots = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			snapshotAfterDate = $someDateTime
+    /// 			# OPTIONAL
+    /// 			snapshotBeforeDate = $someDateTime
+    /// 			# OPTIONAL
+    /// 			snapshotId = $someString
+    /// 			# REQUIRED
+    /// 			config = @{
+    /// 				# OPTIONAL
+    /// 				createDatastoreOnly = $someBoolean
+    /// 				# OPTIONAL
+    /// 				dataStoreName = $someString
+    /// 				# OPTIONAL
+    /// 				hostId = $someString
+    /// 				# OPTIONAL
+    /// 				shouldRecoverTags = $someBoolean
+    /// 				# OPTIONAL
+    /// 				vlan = $someInt
+    /// 				# OPTIONAL
+    /// 				mountExportSnapshotJobCommonOptions = @{
+    /// 					# OPTIONAL
+    /// 					disableNetwork = $someBoolean
+    /// 					# OPTIONAL
+    /// 					keepMacAddresses = $someBoolean
+    /// 					# OPTIONAL
+    /// 					powerOn = $someBoolean
+    /// 					# OPTIONAL
+    /// 					removeNetworkDevices = $someBoolean
+    /// 					# OPTIONAL
+    /// 					vmName = $someString
+    /// 				}
+    /// 			}
+    /// 			# REQUIRED
+    /// 			vmId = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BatchAsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteLiveMount operation
+    /// of the 'VMware vSphere VM' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    VsphereVm
+    /// # API Operation: DeleteLiveMount
+    /// 
+    /// $query = New-RscMutationVsphereVm -DeleteLiveMount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.livemountId = $someString
+    /// # OPTIONAL
+    /// $query.Var.force = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VsphereAsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DeleteSnapshot operation
     /// of the 'VMware vSphere VM' API domain.
     /// <code>
@@ -505,6 +605,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RequestSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExportSnapshot operation
+    /// of the 'VMware vSphere VM' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    VsphereVm
+    /// # API Operation: ExportSnapshot
+    /// 
+    /// $query = New-RscMutationVsphereVm -ExportSnapshot
+    /// 
+    /// # REQUIRED
+    /// $query.Var.snapshotFid = $someString
+    /// # OPTIONAL
+    /// $query.Var.vmName = $someString
+    /// # OPTIONAL
+    /// $query.Var.disableNetwork = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.removeNetworkDevices = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.powerOn = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.keepMacAddresses = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.hostID = $someString
+    /// # REQUIRED
+    /// $query.Var.datastoreId = $someString
+    /// # OPTIONAL
+    /// $query.Var.unregsiterVm = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.shouldRecoverTags = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VsphereAsyncRequestStatus
     /// 
     /// 
     /// 
@@ -983,6 +1129,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					folderId = $someString
     /// 					# OPTIONAL
+    /// 					unmountTimeOpt = $someInt64
+    /// 					# OPTIONAL
     /// 					migrationConfig = @{
     /// 						# OPTIONAL
     /// 						storageLocationId = $someString
@@ -1095,6 +1243,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		vmdkIds = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		unmountTimeOpt = $someInt64
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1148,6 +1298,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the InitiateInstantRecovery operation
+    /// of the 'VMware vSphere VM' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    VsphereVm
+    /// # API Operation: InitiateInstantRecovery
+    /// 
+    /// $query = New-RscMutationVsphereVm -InitiateInstantRecovery
+    /// 
+    /// # REQUIRED
+    /// $query.Var.snapshotFid = $someString
+    /// # OPTIONAL
+    /// $query.Var.vmName = $someString
+    /// # OPTIONAL
+    /// $query.Var.disableNetwork = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.removeNetworkDevices = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.powerOn = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.keepMacAddresses = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.hostID = $someString
+    /// # OPTIONAL
+    /// $query.Var.preserveMOID = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.vlan = $someInt
+    /// # OPTIONAL
+    /// $query.Var.shouldRecoverTags = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VsphereAsyncRequestStatus
     /// 
     /// 
     /// 
@@ -1272,6 +1468,54 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the InitiateLiveMount operation
+    /// of the 'VMware vSphere VM' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    VsphereVm
+    /// # API Operation: InitiateLiveMount
+    /// 
+    /// $query = New-RscMutationVsphereVm -InitiateLiveMount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.snapshotFid = $someString
+    /// # OPTIONAL
+    /// $query.Var.vmName = $someString
+    /// # OPTIONAL
+    /// $query.Var.disableNetwork = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.removeNetworkDevices = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.powerOn = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.keepMacAddresses = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.hostID = $someString
+    /// # OPTIONAL
+    /// $query.Var.datastoreName = $someString
+    /// # OPTIONAL
+    /// $query.Var.createDatastoreOnly = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.vlan = $someInt
+    /// # OPTIONAL
+    /// $query.Var.shouldRecoverTags = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VsphereAsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the InitiateLiveMountV2 operation
     /// of the 'VMware vSphere VM' API domain.
     /// <code>
@@ -1306,6 +1550,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		shouldMigrateImmediately = $someBoolean
     /// 		# OPTIONAL
     /// 		folderId = $someString
+    /// 		# OPTIONAL
+    /// 		unmountTimeOpt = $someInt64
     /// 		# OPTIONAL
     /// 		migrationConfig = @{
     /// 			# OPTIONAL
@@ -1789,78 +2035,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscMutationVsphereVm -Update
     /// 
     /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
-    /// 	vmUpdateProperties = @{
-    /// 		# OPTIONAL
-    /// 		shouldRefreshCacheAfterUpdate = $someBoolean
-    /// 		# OPTIONAL
-    /// 		guestCredentialId = $someString
-    /// 		# OPTIONAL
-    /// 		guestCredential = @{
-    /// 			# REQUIRED
-    /// 			password = $someString
-    /// 			# REQUIRED
-    /// 			username = $someString
-    /// 		}
-    /// 		# OPTIONAL
-    /// 		virtualMachineUpdate = @{
-    /// 			# OPTIONAL
-    /// 			configuredSlaDomainId = $someString
-    /// 			# OPTIONAL
-    /// 			isArrayIntegrationEnabled = $someBoolean
-    /// 			# OPTIONAL
-    /// 			isVmPaused = $someBoolean
-    /// 			# OPTIONAL
-    /// 			maxNestedVsphereSnapshots = $someInt
-    /// 			# OPTIONAL
-    /// 			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
-    /// 			# OPTIONAL
-    /// 			cloudInstantiationSpec = @{
-    /// 				# REQUIRED
-    /// 				imageRetentionInSeconds = $someInt64
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			postBackupScript = @{
-    /// 				# REQUIRED
-    /// 				failureHandling = $someVirtualMachineScriptDetailFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineScriptDetailFailureHandling]) for enum values.
-    /// 				# REQUIRED
-    /// 				scriptPath = $someString
-    /// 				# REQUIRED
-    /// 				timeoutMs = $someInt64
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			postSnapScript = @{
-    /// 				# REQUIRED
-    /// 				failureHandling = $someVirtualMachineScriptDetailFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineScriptDetailFailureHandling]) for enum values.
-    /// 				# REQUIRED
-    /// 				scriptPath = $someString
-    /// 				# REQUIRED
-    /// 				timeoutMs = $someInt64
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			preBackupScript = @{
-    /// 				# REQUIRED
-    /// 				failureHandling = $someVirtualMachineScriptDetailFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineScriptDetailFailureHandling]) for enum values.
-    /// 				# REQUIRED
-    /// 				scriptPath = $someString
-    /// 				# REQUIRED
-    /// 				timeoutMs = $someInt64
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			throttlingSettings = @{
-    /// 				# OPTIONAL
-    /// 				cpuUtilizationThreshold = $someInt
-    /// 				# OPTIONAL
-    /// 				datastoreIoLatencyThreshold = $someInt
-    /// 				# OPTIONAL
-    /// 				ioLatencyThreshold = $someInt
-    /// 			}
-    /// 		}
-    /// 	}
+    /// $query.Var.snappableFid = $someString
+    /// # OPTIONAL
+    /// $query.Var.snapshotConsistencyMandate = $someString
+    /// # OPTIONAL
+    /// $query.Var.preBackupScript = @{
+    /// 	# OPTIONAL
+    /// 	scriptPath = $someString
+    /// 	# OPTIONAL
+    /// 	timeoutInMs = $someInt64
+    /// 	# OPTIONAL
+    /// 	failureHandling = $someString
     /// }
+    /// # OPTIONAL
+    /// $query.Var.postBackupScript = @{
+    /// 	# OPTIONAL
+    /// 	scriptPath = $someString
+    /// 	# OPTIONAL
+    /// 	timeoutInMs = $someInt64
+    /// 	# OPTIONAL
+    /// 	failureHandling = $someString
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.postSnapScript = @{
+    /// 	# OPTIONAL
+    /// 	scriptPath = $someString
+    /// 	# OPTIONAL
+    /// 	timeoutInMs = $someInt64
+    /// 	# OPTIONAL
+    /// 	failureHandling = $someString
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.isArrayIntegrationEnabled = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1893,10 +2099,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "BatchExport",
                 "BatchExportV3",
                 "BatchInPlaceRecovery",
+                "BatchLiveMount",
+                "DeleteLiveMount",
                 "DeleteSnapshot",
                 "DownloadSnapshot",
                 "DownloadSnapshotFiles",
                 "ExcludeVmDisks",
+                "ExportSnapshot",
                 "ExportSnapshotV2",
                 "ExportSnapshotV3",
                 "ExportSnapshotWithDownloadFromCloud",
@@ -1904,7 +2113,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "InitiateBatchLiveMountV2",
                 "InitiateDiskMount",
                 "InitiateInPlaceRecovery",
+                "InitiateInstantRecovery",
                 "InitiateInstantRecoveryV2",
+                "InitiateLiveMount",
                 "InitiateLiveMountV2",
                 "ListEsxiDatastores",
                 "MountRelocate",
@@ -1939,6 +2150,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "BatchInPlaceRecovery":
                         this.ProcessRecord_BatchInPlaceRecovery();
                         break;
+                    case "BatchLiveMount":
+                        this.ProcessRecord_BatchLiveMount();
+                        break;
+                    case "DeleteLiveMount":
+                        this.ProcessRecord_DeleteLiveMount();
+                        break;
                     case "DeleteSnapshot":
                         this.ProcessRecord_DeleteSnapshot();
                         break;
@@ -1950,6 +2167,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ExcludeVmDisks":
                         this.ProcessRecord_ExcludeVmDisks();
+                        break;
+                    case "ExportSnapshot":
+                        this.ProcessRecord_ExportSnapshot();
                         break;
                     case "ExportSnapshotV2":
                         this.ProcessRecord_ExportSnapshotV2();
@@ -1972,8 +2192,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "InitiateInPlaceRecovery":
                         this.ProcessRecord_InitiateInPlaceRecovery();
                         break;
+                    case "InitiateInstantRecovery":
+                        this.ProcessRecord_InitiateInstantRecovery();
+                        break;
                     case "InitiateInstantRecoveryV2":
                         this.ProcessRecord_InitiateInstantRecoveryV2();
+                        break;
+                    case "InitiateLiveMount":
+                        this.ProcessRecord_InitiateLiveMount();
                         break;
                     case "InitiateLiveMountV2":
                         this.ProcessRecord_InitiateLiveMountV2();
@@ -2043,6 +2269,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // vSphereVMBatchLiveMount.
+        internal void ProcessRecord_BatchLiveMount()
+        {
+            this._logger.name += " -BatchLiveMount";
+            // Create new graphql operation vSphereVMBatchLiveMount
+            InitMutationVsphereVmBatchLiveMount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vsphereVMDeleteLiveMount.
+        internal void ProcessRecord_DeleteLiveMount()
+        {
+            this._logger.name += " -DeleteLiveMount";
+            // Create new graphql operation vsphereVMDeleteLiveMount
+            InitMutationVsphereVmDeleteLiveMount();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // vsphereVmDeleteSnapshot.
         internal void ProcessRecord_DeleteSnapshot()
         {
@@ -2076,6 +2320,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ExcludeVmDisks";
             // Create new graphql operation vsphereExcludeVmDisks
             InitMutationVsphereExcludeVmDisks();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vsphereVMExportSnapshot.
+        internal void ProcessRecord_ExportSnapshot()
+        {
+            this._logger.name += " -ExportSnapshot";
+            // Create new graphql operation vsphereVMExportSnapshot
+            InitMutationVsphereVmExportSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2142,12 +2395,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // vsphereVMInitiateInstantRecovery.
+        internal void ProcessRecord_InitiateInstantRecovery()
+        {
+            this._logger.name += " -InitiateInstantRecovery";
+            // Create new graphql operation vsphereVMInitiateInstantRecovery
+            InitMutationVsphereVmInitiateInstantRecovery();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateInstantRecoveryV2.
         internal void ProcessRecord_InitiateInstantRecoveryV2()
         {
             this._logger.name += " -InitiateInstantRecoveryV2";
             // Create new graphql operation vsphereVmInitiateInstantRecoveryV2
             InitMutationVsphereVmInitiateInstantRecoveryV2();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vsphereVMInitiateLiveMount.
+        internal void ProcessRecord_InitiateLiveMount()
+        {
+            this._logger.name += " -InitiateLiveMount";
+            // Create new graphql operation vsphereVMInitiateLiveMount
+            InitMutationVsphereVmInitiateLiveMount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2232,12 +2503,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // updateVsphereVm.
+        // vsphereVMUpdate.
         internal void ProcessRecord_Update()
         {
             this._logger.name += " -Update";
-            // Create new graphql operation updateVsphereVm
-            InitMutationUpdateVsphereVm();
+            // Create new graphql operation vsphereVMUpdate
+            InitMutationVsphereVmUpdate();
         }
 
 
@@ -2508,6 +2779,92 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // vSphereVMBatchLiveMount(clusterUuid: UUID!, config: BatchMountSnapshotJobConfigInput!): BatchAsyncRequestStatus!
+        internal void InitMutationVsphereVmBatchLiveMount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusterUuid", "UUID!"),
+                Tuple.Create("config", "BatchMountSnapshotJobConfigInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereVmBatchLiveMount",
+                "($clusterUuid: UUID!,$config: BatchMountSnapshotJobConfigInput!)",
+                "BatchAsyncRequestStatus",
+                Mutation.VsphereVmBatchLiveMount,
+                Mutation.VsphereVmBatchLiveMountFieldSpec,
+                @"# REQUIRED
+$query.Var.clusterUuid = $someString
+# REQUIRED
+$query.Var.config = @{
+	# REQUIRED
+	snapshots = @(
+		@{
+			# OPTIONAL
+			snapshotAfterDate = $someDateTime
+			# OPTIONAL
+			snapshotBeforeDate = $someDateTime
+			# OPTIONAL
+			snapshotId = $someString
+			# REQUIRED
+			config = @{
+				# OPTIONAL
+				createDatastoreOnly = $someBoolean
+				# OPTIONAL
+				dataStoreName = $someString
+				# OPTIONAL
+				hostId = $someString
+				# OPTIONAL
+				shouldRecoverTags = $someBoolean
+				# OPTIONAL
+				vlan = $someInt
+				# OPTIONAL
+				mountExportSnapshotJobCommonOptions = @{
+					# OPTIONAL
+					disableNetwork = $someBoolean
+					# OPTIONAL
+					keepMacAddresses = $someBoolean
+					# OPTIONAL
+					powerOn = $someBoolean
+					# OPTIONAL
+					removeNetworkDevices = $someBoolean
+					# OPTIONAL
+					vmName = $someString
+				}
+			}
+			# REQUIRED
+			vmId = $someString
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // vsphereVMDeleteLiveMount(livemountId: UUID!, force: Boolean): VsphereAsyncRequestStatus!
+        internal void InitMutationVsphereVmDeleteLiveMount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("livemountId", "UUID!"),
+                Tuple.Create("force", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereVmDeleteLiveMount",
+                "($livemountId: UUID!,$force: Boolean)",
+                "VsphereAsyncRequestStatus",
+                Mutation.VsphereVmDeleteLiveMount,
+                Mutation.VsphereVmDeleteLiveMountFieldSpec,
+                @"# REQUIRED
+$query.Var.livemountId = $someString
+# OPTIONAL
+$query.Var.force = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // vsphereVmDeleteSnapshot(input: VsphereVmDeleteSnapshotInput!): Void
         internal void InitMutationVsphereVmDeleteSnapshot()
         {
@@ -2618,6 +2975,64 @@ $query.Var.input = @(
 		excludeFromSnapshots = $someBoolean
 }
 )"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // vsphereVMExportSnapshot(
+        //     snapshotFid: UUID!
+        //     vmName: String
+        //     disableNetwork: Boolean
+        //     removeNetworkDevices: Boolean
+        //     powerOn: Boolean
+        //     keepMacAddresses: Boolean
+        //     hostID: String
+        //     datastoreId: UUID!
+        //     unregsiterVm: Boolean
+        //     shouldRecoverTags: Boolean
+        //   ): VsphereAsyncRequestStatus!
+        internal void InitMutationVsphereVmExportSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("snapshotFid", "UUID!"),
+                Tuple.Create("vmName", "String"),
+                Tuple.Create("disableNetwork", "Boolean"),
+                Tuple.Create("removeNetworkDevices", "Boolean"),
+                Tuple.Create("powerOn", "Boolean"),
+                Tuple.Create("keepMacAddresses", "Boolean"),
+                Tuple.Create("hostID", "String"),
+                Tuple.Create("datastoreId", "UUID!"),
+                Tuple.Create("unregsiterVm", "Boolean"),
+                Tuple.Create("shouldRecoverTags", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereVmExportSnapshot",
+                "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostID: String,$datastoreId: UUID!,$unregsiterVm: Boolean,$shouldRecoverTags: Boolean)",
+                "VsphereAsyncRequestStatus",
+                Mutation.VsphereVmExportSnapshot,
+                Mutation.VsphereVmExportSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.snapshotFid = $someString
+# OPTIONAL
+$query.Var.vmName = $someString
+# OPTIONAL
+$query.Var.disableNetwork = $someBoolean
+# OPTIONAL
+$query.Var.removeNetworkDevices = $someBoolean
+# OPTIONAL
+$query.Var.powerOn = $someBoolean
+# OPTIONAL
+$query.Var.keepMacAddresses = $someBoolean
+# OPTIONAL
+$query.Var.hostID = $someString
+# REQUIRED
+$query.Var.datastoreId = $someString
+# OPTIONAL
+$query.Var.unregsiterVm = $someBoolean
+# OPTIONAL
+$query.Var.shouldRecoverTags = $someBoolean"
             );
         }
 
@@ -3062,6 +3477,8 @@ $query.Var.input = @{
 					# OPTIONAL
 					folderId = $someString
 					# OPTIONAL
+					unmountTimeOpt = $someInt64
+					# OPTIONAL
 					migrationConfig = @{
 						# OPTIONAL
 						storageLocationId = $someString
@@ -3166,6 +3583,8 @@ $query.Var.input = @{
 		vmdkIds = @(
 			$someString
 		)
+		# OPTIONAL
+		unmountTimeOpt = $someInt64
 	}
 	# REQUIRED
 	id = $someString
@@ -3205,6 +3624,64 @@ $query.Var.input = @{
 	# REQUIRED
 	id = $someString
 }"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // vsphereVMInitiateInstantRecovery(
+        //     snapshotFid: UUID!
+        //     vmName: String
+        //     disableNetwork: Boolean
+        //     removeNetworkDevices: Boolean
+        //     powerOn: Boolean
+        //     keepMacAddresses: Boolean
+        //     hostID: String
+        //     preserveMOID: Boolean
+        //     vlan: Int
+        //     shouldRecoverTags: Boolean
+        //   ): VsphereAsyncRequestStatus!
+        internal void InitMutationVsphereVmInitiateInstantRecovery()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("snapshotFid", "UUID!"),
+                Tuple.Create("vmName", "String"),
+                Tuple.Create("disableNetwork", "Boolean"),
+                Tuple.Create("removeNetworkDevices", "Boolean"),
+                Tuple.Create("powerOn", "Boolean"),
+                Tuple.Create("keepMacAddresses", "Boolean"),
+                Tuple.Create("hostID", "String"),
+                Tuple.Create("preserveMOID", "Boolean"),
+                Tuple.Create("vlan", "Int"),
+                Tuple.Create("shouldRecoverTags", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereVmInitiateInstantRecovery",
+                "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostID: String,$preserveMOID: Boolean,$vlan: Int,$shouldRecoverTags: Boolean)",
+                "VsphereAsyncRequestStatus",
+                Mutation.VsphereVmInitiateInstantRecovery,
+                Mutation.VsphereVmInitiateInstantRecoveryFieldSpec,
+                @"# REQUIRED
+$query.Var.snapshotFid = $someString
+# OPTIONAL
+$query.Var.vmName = $someString
+# OPTIONAL
+$query.Var.disableNetwork = $someBoolean
+# OPTIONAL
+$query.Var.removeNetworkDevices = $someBoolean
+# OPTIONAL
+$query.Var.powerOn = $someBoolean
+# OPTIONAL
+$query.Var.keepMacAddresses = $someBoolean
+# OPTIONAL
+$query.Var.hostID = $someString
+# OPTIONAL
+$query.Var.preserveMOID = $someBoolean
+# OPTIONAL
+$query.Var.vlan = $someInt
+# OPTIONAL
+$query.Var.shouldRecoverTags = $someBoolean"
             );
         }
 
@@ -3317,6 +3794,68 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // vsphereVMInitiateLiveMount(
+        //     snapshotFid: UUID!
+        //     vmName: String
+        //     disableNetwork: Boolean
+        //     removeNetworkDevices: Boolean
+        //     powerOn: Boolean
+        //     keepMacAddresses: Boolean
+        //     hostID: String
+        //     datastoreName: String
+        //     createDatastoreOnly: Boolean
+        //     vlan: Int
+        //     shouldRecoverTags: Boolean
+        //   ): VsphereAsyncRequestStatus!
+        internal void InitMutationVsphereVmInitiateLiveMount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("snapshotFid", "UUID!"),
+                Tuple.Create("vmName", "String"),
+                Tuple.Create("disableNetwork", "Boolean"),
+                Tuple.Create("removeNetworkDevices", "Boolean"),
+                Tuple.Create("powerOn", "Boolean"),
+                Tuple.Create("keepMacAddresses", "Boolean"),
+                Tuple.Create("hostID", "String"),
+                Tuple.Create("datastoreName", "String"),
+                Tuple.Create("createDatastoreOnly", "Boolean"),
+                Tuple.Create("vlan", "Int"),
+                Tuple.Create("shouldRecoverTags", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereVmInitiateLiveMount",
+                "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostID: String,$datastoreName: String,$createDatastoreOnly: Boolean,$vlan: Int,$shouldRecoverTags: Boolean)",
+                "VsphereAsyncRequestStatus",
+                Mutation.VsphereVmInitiateLiveMount,
+                Mutation.VsphereVmInitiateLiveMountFieldSpec,
+                @"# REQUIRED
+$query.Var.snapshotFid = $someString
+# OPTIONAL
+$query.Var.vmName = $someString
+# OPTIONAL
+$query.Var.disableNetwork = $someBoolean
+# OPTIONAL
+$query.Var.removeNetworkDevices = $someBoolean
+# OPTIONAL
+$query.Var.powerOn = $someBoolean
+# OPTIONAL
+$query.Var.keepMacAddresses = $someBoolean
+# OPTIONAL
+$query.Var.hostID = $someString
+# OPTIONAL
+$query.Var.datastoreName = $someString
+# OPTIONAL
+$query.Var.createDatastoreOnly = $someBoolean
+# OPTIONAL
+$query.Var.vlan = $someInt
+# OPTIONAL
+$query.Var.shouldRecoverTags = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // vsphereVmInitiateLiveMountV2(input: VsphereVmInitiateLiveMountV2Input!): AsyncRequestStatus!
         internal void InitMutationVsphereVmInitiateLiveMountV2()
         {
@@ -3353,6 +3892,8 @@ $query.Var.input = @{
 		shouldMigrateImmediately = $someBoolean
 		# OPTIONAL
 		folderId = $someString
+		# OPTIONAL
+		unmountTimeOpt = $someInt64
 		# OPTIONAL
 		migrationConfig = @{
 			# OPTIONAL
@@ -3749,93 +4290,65 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // updateVsphereVm(input: UpdateVsphereVmInput!): RequestSuccess!
-        internal void InitMutationUpdateVsphereVm()
+        // vsphereVMUpdate(
+        //     snappableFid: UUID!
+        //     snapshotConsistencyMandate: String
+        //     preBackupScript: PreBackupScriptInputType
+        //     postBackupScript: PostBackupScriptInputType
+        //     postSnapScript: PostSnapScriptInputType
+        //     isArrayIntegrationEnabled: Boolean
+        //   ): RequestSuccess!
+        internal void InitMutationVsphereVmUpdate()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateVsphereVmInput!"),
+                Tuple.Create("snappableFid", "UUID!"),
+                Tuple.Create("snapshotConsistencyMandate", "String"),
+                Tuple.Create("preBackupScript", "PreBackupScriptInputType"),
+                Tuple.Create("postBackupScript", "PostBackupScriptInputType"),
+                Tuple.Create("postSnapScript", "PostSnapScriptInputType"),
+                Tuple.Create("isArrayIntegrationEnabled", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationUpdateVsphereVm",
-                "($input: UpdateVsphereVmInput!)",
+                "MutationVsphereVmUpdate",
+                "($snappableFid: UUID!,$snapshotConsistencyMandate: String,$preBackupScript: PreBackupScriptInputType,$postBackupScript: PostBackupScriptInputType,$postSnapScript: PostSnapScriptInputType,$isArrayIntegrationEnabled: Boolean)",
                 "RequestSuccess",
-                Mutation.UpdateVsphereVm,
-                Mutation.UpdateVsphereVmFieldSpec,
+                Mutation.VsphereVmUpdate,
+                Mutation.VsphereVmUpdateFieldSpec,
                 @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	id = $someString
-	# REQUIRED
-	vmUpdateProperties = @{
-		# OPTIONAL
-		shouldRefreshCacheAfterUpdate = $someBoolean
-		# OPTIONAL
-		guestCredentialId = $someString
-		# OPTIONAL
-		guestCredential = @{
-			# REQUIRED
-			password = $someString
-			# REQUIRED
-			username = $someString
-		}
-		# OPTIONAL
-		virtualMachineUpdate = @{
-			# OPTIONAL
-			configuredSlaDomainId = $someString
-			# OPTIONAL
-			isArrayIntegrationEnabled = $someBoolean
-			# OPTIONAL
-			isVmPaused = $someBoolean
-			# OPTIONAL
-			maxNestedVsphereSnapshots = $someInt
-			# OPTIONAL
-			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
-			# OPTIONAL
-			cloudInstantiationSpec = @{
-				# REQUIRED
-				imageRetentionInSeconds = $someInt64
-			}
-			# OPTIONAL
-			postBackupScript = @{
-				# REQUIRED
-				failureHandling = $someVirtualMachineScriptDetailFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineScriptDetailFailureHandling]) for enum values.
-				# REQUIRED
-				scriptPath = $someString
-				# REQUIRED
-				timeoutMs = $someInt64
-			}
-			# OPTIONAL
-			postSnapScript = @{
-				# REQUIRED
-				failureHandling = $someVirtualMachineScriptDetailFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineScriptDetailFailureHandling]) for enum values.
-				# REQUIRED
-				scriptPath = $someString
-				# REQUIRED
-				timeoutMs = $someInt64
-			}
-			# OPTIONAL
-			preBackupScript = @{
-				# REQUIRED
-				failureHandling = $someVirtualMachineScriptDetailFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineScriptDetailFailureHandling]) for enum values.
-				# REQUIRED
-				scriptPath = $someString
-				# REQUIRED
-				timeoutMs = $someInt64
-			}
-			# OPTIONAL
-			throttlingSettings = @{
-				# OPTIONAL
-				cpuUtilizationThreshold = $someInt
-				# OPTIONAL
-				datastoreIoLatencyThreshold = $someInt
-				# OPTIONAL
-				ioLatencyThreshold = $someInt
-			}
-		}
-	}
-}"
+$query.Var.snappableFid = $someString
+# OPTIONAL
+$query.Var.snapshotConsistencyMandate = $someString
+# OPTIONAL
+$query.Var.preBackupScript = @{
+	# OPTIONAL
+	scriptPath = $someString
+	# OPTIONAL
+	timeoutInMs = $someInt64
+	# OPTIONAL
+	failureHandling = $someString
+}
+# OPTIONAL
+$query.Var.postBackupScript = @{
+	# OPTIONAL
+	scriptPath = $someString
+	# OPTIONAL
+	timeoutInMs = $someInt64
+	# OPTIONAL
+	failureHandling = $someString
+}
+# OPTIONAL
+$query.Var.postSnapScript = @{
+	# OPTIONAL
+	scriptPath = $someString
+	# OPTIONAL
+	timeoutInMs = $someInt64
+	# OPTIONAL
+	failureHandling = $someString
+}
+# OPTIONAL
+$query.Var.isArrayIntegrationEnabled = $someBoolean"
             );
         }
 

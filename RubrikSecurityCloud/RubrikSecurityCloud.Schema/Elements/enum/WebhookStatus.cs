@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         ENABLED,
 
         [EnumMember(Value = "WEBHOOK_STATUS_UNSPECIFIED")]
-        WEBHOOK_STATUS_UNSPECIFIED
+        WEBHOOK_STATUS_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum WebhookStatus

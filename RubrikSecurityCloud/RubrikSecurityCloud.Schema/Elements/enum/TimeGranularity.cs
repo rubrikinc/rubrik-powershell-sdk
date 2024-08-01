@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         DAY,
 
         [EnumMember(Value = "MONTH")]
-        MONTH
+        MONTH,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TimeGranularity

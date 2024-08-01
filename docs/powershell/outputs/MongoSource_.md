@@ -1,0 +1,91 @@
+### MongoSource
+Information about MongoDB Source.
+
+- clusterUuid: System.String
+  - UUID of the CDM cluster.
+- primaryClusterUuid: System.String
+  - IP of the MongoDB source.
+- cdmId: System.String
+  - CDM ID of the MongoDB source.
+- isRelic: System.Boolean
+  - Specifies whether the MongoDB source is a relic in CDM.
+- sourceType: MongoSourceType
+  - Type of the MongoDB source.
+- sourceNodes: list of CdmMongoNodes
+  - List of source nodes.
+- status: MongoSourceStatus
+  - Status of the MongoDB source.
+- username: System.String
+  - MongoDB username.
+- sslParams: CdmMongoSslParams
+  - SSL Options.
+- lastRefreshTime: DateTime
+  - Timestamp of the latest successful MongoDB source refresh.
+- ignoreSecondaryNodes: list of CdmMongoNodes
+  - List of ignored secondary MongoDB source nodes.
+- discoveryStatus: MongoDiscoveryStatus
+  - Discovery status of the MongoDB source.
+- hostDetails: list of MongoHostDetails
+  - List of data host details associated with this MongoDB source.
+- managementType: MongoManagementType
+  - Management type of the MongoDB source.
+- sourceMetadata: SourceMetadata
+  - Metadata of the MongoDB source.
+- descendantConnection: MongoSourceDescendantTypeConnection
+  - List of descendants.
+- physicalChildConnection: MongoSourcePhysicalChildTypeConnection
+  - List of physical children.
+- cluster: Cluster
+  - Information about CDM cluster for this MongoDB cluster.
+- activeCollectionCount: System.Int32
+  - Count of active collections for this MongoDB source.
+- protectedCollectionCount: System.Int32
+  - Count of protected collections for this MongoDB source.
+- dataHosts: PhysicalHostConnection
+  - The list of data hosts associated with this MongoDB source.
+- id: System.String
+  - The FID of the hierarchy object.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.

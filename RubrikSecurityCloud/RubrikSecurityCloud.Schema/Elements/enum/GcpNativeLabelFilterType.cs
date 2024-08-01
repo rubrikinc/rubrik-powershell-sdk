@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         LABEL_KEY,
 
         [EnumMember(Value = "LABEL_KEY_VALUE")]
-        LABEL_KEY_VALUE
+        LABEL_KEY_VALUE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GcpNativeLabelFilterType

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         HASH,
 
         [EnumMember(Value = "YARA")]
-        YARA
+        YARA,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ThreatFeedType

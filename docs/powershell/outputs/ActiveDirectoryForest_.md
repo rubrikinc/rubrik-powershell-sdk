@@ -1,0 +1,59 @@
+### ActiveDirectoryForest
+Active Directory Forest.
+
+- cdmId: System.String
+  - ID of the Rubrik CDM cluster.
+- forestName: System.String
+  - Name of the Active Directory Forest.
+- cluster: Cluster
+  - Rubrik cluster.
+- descendantConnection: ActiveDirectoryForestDescendantTypeConnection
+  - List of descendants.
+- physicalChildConnection: ActiveDirectoryForestPhysicalChildTypeConnection
+  - List of physical children.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- id: System.String
+  - The FID of the hierarchy object.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.

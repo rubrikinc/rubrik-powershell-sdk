@@ -31,6 +31,9 @@ namespace RubrikSecurityCloud.Types
         ROBO,
 
         [EnumMember(Value = "Unknown")]
+        UNKNOWN,
+
+        [EnumMember(Value = "UNKNOWN")]
         UNKNOWN
 
 

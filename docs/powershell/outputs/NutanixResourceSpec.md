@@ -1,0 +1,20 @@
+### NutanixResourceSpec
+- snappableId: System.String
+  - ID of child workload.
+- snapshotId: System.String
+  - ID of snapshot.
+- snappableName: System.String
+  - Name of child workload.
+- vCpus: System.Int32
+  - The number of vCPUs to assign to the recovered virtual machine.
+- memoryMbs: System.Int32
+  - The amount of memory, in megabytes, to assign to the recovered virtual machine.
+- osType: System.String
+- nutanixVolumeSpecs: list of NutanixVirtualMachineVolumes
+  - Storage volume configuration for the recovered virtual machine.
+- nutanixNics: list of NutanixVirtualMachineNics
+  - Network configuration for the recovered virtual machine.
+- isArchived: System.Boolean
+  - Specifies whether resource specification is archived.
+- recoveryPointOpt: System.Int64
+  - Recovery point of the workload.

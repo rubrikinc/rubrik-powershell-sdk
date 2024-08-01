@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         SORT_UNSPECIFIED,
 
         [EnumMember(Value = "WORKLOAD_NAME")]
-        WORKLOAD_NAME
+        WORKLOAD_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PolicyDetailsSortBy

@@ -934,7 +934,10 @@ namespace RubrikSecurityCloud.Types
         CLUSTER_TIMEZONE_UTC,
 
         [EnumMember(Value = "CLUSTER_TIMEZONE_WET")]
-        CLUSTER_TIMEZONE_WET
+        CLUSTER_TIMEZONE_WET,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterTimezoneType

@@ -293,3 +293,5 @@
 - PROTECTION_STATUS - Filter by the protection status of the object.
 - MONGO_MANAGEMENT_TYPE - Filter the MongoDB source by the management type.
  NATIVE for Native management type and OPSMANAGER for OpsManager management type.
+- RECOVERY_PLAN_SOURCE_LOCATION - Filter by recovery plan source location.
+- RECOVERY_PLAN_TARGET_LOCATION - Filter by recovery plan target location.

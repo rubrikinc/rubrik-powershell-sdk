@@ -1,0 +1,53 @@
+### MongodbDatabase
+Information about MongoDB Database.
+
+- clusterUuid: System.String
+  - UUID of the Nosql cluster.
+- backupCount: System.Int32
+  - Backup count for the MongoDB database.
+- watcherEnabled: System.Boolean
+  - Watcher status of this MongoDB database.
+- backupParams: MongodbBackupParams
+  - Backup parameters for the MongoDB database.
+- isRelic: System.Boolean
+  - Specifies whether MongoDB database is relic.
+- descendantConnection: MongodbDatabaseDescendantTypeConnection
+  - List of descendants.
+- physicalChildConnection: MongodbDatabasePhysicalChildTypeConnection
+  - List of physical children.
+- source: MongodbSource
+  - Parent source connection.
+- cluster: Cluster
+  - Mosaic cluster information.
+- id: System.String
+  - The FID of the hierarchy object.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.

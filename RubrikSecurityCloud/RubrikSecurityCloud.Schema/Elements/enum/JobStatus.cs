@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         SUCCESS,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED
+        UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum JobStatus

@@ -666,6 +666,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RECOVERY_PLAN_NAME")]
         RECOVERY_PLAN_NAME,
 
+        [EnumMember(Value = "RECOVERY_PLAN_SOURCE_LOCATION")]
+        RECOVERY_PLAN_SOURCE_LOCATION,
+
+        [EnumMember(Value = "RECOVERY_PLAN_TARGET_LOCATION")]
+        RECOVERY_PLAN_TARGET_LOCATION,
+
         [EnumMember(Value = "RECOVERY_PLAN_TYPE")]
         RECOVERY_PLAN_TYPE,
 
@@ -739,7 +745,10 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_DATASTORE_IS_LOCAL,
 
         [EnumMember(Value = "VSPHERE_GET_ROOT_RESTORE_HIERARCHY")]
-        VSPHERE_GET_ROOT_RESTORE_HIERARCHY
+        VSPHERE_GET_ROOT_RESTORE_HIERARCHY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HierarchyFilterField

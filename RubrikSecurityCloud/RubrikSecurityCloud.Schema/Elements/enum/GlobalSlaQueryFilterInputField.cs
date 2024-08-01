@@ -52,7 +52,10 @@ namespace RubrikSecurityCloud.Types
         SHOW_CLUSTER_SLAS_ONLY,
 
         [EnumMember(Value = "UPGRADE_STATUS")]
-        UPGRADE_STATUS
+        UPGRADE_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GlobalSlaQueryFilterInputField

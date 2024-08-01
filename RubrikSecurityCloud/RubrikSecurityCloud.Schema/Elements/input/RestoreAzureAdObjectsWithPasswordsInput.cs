@@ -54,6 +54,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("forceChangePasswordWithMfa")]
         public System.Boolean? ForceChangePasswordWithMfa { get; set; }
 
+        //      C# -> AzureAdRelationshipRestoreModeEnumType? RelationshipRestoreMode
+        // GraphQL -> relationshipRestoreMode: AzureAdRelationshipRestoreModeEnumType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("relationshipRestoreMode")]
+        public AzureAdRelationshipRestoreModeEnumType? RelationshipRestoreMode { get; set; }
+
 
         #endregion
 

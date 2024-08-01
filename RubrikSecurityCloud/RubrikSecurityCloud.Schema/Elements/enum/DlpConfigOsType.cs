@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         OS_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "WINDOWS")]
-        WINDOWS
+        WINDOWS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DlpConfigOsType

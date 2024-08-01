@@ -16,7 +16,10 @@ namespace RubrikSecurityCloud.Types
     public enum LdapPrincipalFieldEnum
     {
         [EnumMember(Value = "Name")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum LdapPrincipalFieldEnum

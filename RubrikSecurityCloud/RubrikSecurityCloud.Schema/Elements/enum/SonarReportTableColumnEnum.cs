@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         POLICY_NAME,
 
         [EnumMember(Value = "PolicyStatus")]
-        POLICY_STATUS
+        POLICY_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SonarReportTableColumnEnum

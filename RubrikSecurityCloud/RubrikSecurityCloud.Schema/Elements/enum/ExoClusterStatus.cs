@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         TEARDOWN_RUNNING,
 
         [EnumMember(Value = "TERMINATED")]
-        TERMINATED
+        TERMINATED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ExoClusterStatus

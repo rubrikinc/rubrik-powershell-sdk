@@ -1,0 +1,2 @@
+### TaskDetailObjectType
+- stringValue: System.String

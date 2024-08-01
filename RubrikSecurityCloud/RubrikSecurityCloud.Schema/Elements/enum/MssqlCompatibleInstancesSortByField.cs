@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         NAME,
 
         [EnumMember(Value = "SORT_UNSPECIFIED")]
-        SORT_UNSPECIFIED
+        SORT_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MssqlCompatibleInstancesSortByField

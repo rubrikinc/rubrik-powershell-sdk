@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 3
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'RCV' API domain:
-    /// AccountEntitlement, AccountEntitlements, or PrivateEndpointConnections.
+    /// AccountEntitlement, AccountEntitlements, ClusterLocations, CustomerZonesDetailsList, PrivateEndpointConnections, ReaderOwnerEncryptionKey, or Regions.
     /// </summary>
     /// <description>
     /// New-RscQueryRcv creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 3 operations
+    /// There are 7 operations
     /// in the 'RCV' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AccountEntitlement, AccountEntitlements, or PrivateEndpointConnections.
+    /// one of: AccountEntitlement, AccountEntitlements, ClusterLocations, CustomerZonesDetailsList, PrivateEndpointConnections, ReaderOwnerEncryptionKey, or Regions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -131,6 +131,71 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ClusterLocations operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: ClusterLocations
+    /// 
+    /// $query = New-RscQueryRcv -ClusterLocations
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.cdmClusterUUID = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RcvLocationBasicInfoConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CustomerZonesDetailsList operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: CustomerZonesDetailsList
+    /// 
+    /// $query = New-RscQueryRcv -CustomerZonesDetailsList
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CustomerRcvZonesDetails
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the PrivateEndpointConnections operation
     /// of the 'RCV' API domain.
     /// <code>
@@ -158,6 +223,72 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the ReaderOwnerEncryptionKey operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: ReaderOwnerEncryptionKey
+    /// 
+    /// $query = New-RscQueryRcv -ReaderOwnerEncryptionKey
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	readerLocationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: QueryRcvReadersOwnerEncryptionKeyReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Regions operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: Regions
+    /// 
+    /// $query = New-RscQueryRcv -Regions
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someGetRCVRegionsFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GetRCVRegionsFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		text = $someString
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetRcvRegionsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -176,7 +307,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "AccountEntitlement",
                 "AccountEntitlements",
+                "ClusterLocations",
+                "CustomerZonesDetailsList",
                 "PrivateEndpointConnections",
+                "ReaderOwnerEncryptionKey",
+                "Regions",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -198,8 +333,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AccountEntitlements":
                         this.ProcessRecord_AccountEntitlements();
                         break;
+                    case "ClusterLocations":
+                        this.ProcessRecord_ClusterLocations();
+                        break;
+                    case "CustomerZonesDetailsList":
+                        this.ProcessRecord_CustomerZonesDetailsList();
+                        break;
                     case "PrivateEndpointConnections":
                         this.ProcessRecord_PrivateEndpointConnections();
+                        break;
+                    case "ReaderOwnerEncryptionKey":
+                        this.ProcessRecord_ReaderOwnerEncryptionKey();
+                        break;
+                    case "Regions":
+                        this.ProcessRecord_Regions();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -230,12 +377,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // clusterRcvLocations.
+        internal void ProcessRecord_ClusterLocations()
+        {
+            this._logger.name += " -ClusterLocations";
+            // Create new graphql operation clusterRcvLocations
+            InitQueryClusterRcvLocations();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // customerRcvZonesDetailsList.
+        internal void ProcessRecord_CustomerZonesDetailsList()
+        {
+            this._logger.name += " -CustomerZonesDetailsList";
+            // Create new graphql operation customerRcvZonesDetailsList
+            InitQueryCustomerRcvZonesDetailsList();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allRcvPrivateEndpointConnections.
         internal void ProcessRecord_PrivateEndpointConnections()
         {
             this._logger.name += " -PrivateEndpointConnections";
             // Create new graphql operation allRcvPrivateEndpointConnections
             InitQueryAllRcvPrivateEndpointConnections();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // readerRcvOwnerEncryptionKey.
+        internal void ProcessRecord_ReaderOwnerEncryptionKey()
+        {
+            this._logger.name += " -ReaderOwnerEncryptionKey";
+            // Create new graphql operation readerRcvOwnerEncryptionKey
+            InitQueryReaderRcvOwnerEncryptionKey();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // rcvRegions.
+        internal void ProcessRecord_Regions()
+        {
+            this._logger.name += " -Regions";
+            // Create new graphql operation rcvRegions
+            InitQueryRcvRegions();
         }
 
 
@@ -276,6 +459,66 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // Create new GraphQL Query:
+        // clusterRcvLocations(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortOrder: SortOrder
+        //     cdmClusterUUID: UUID!
+        //   ): RcvLocationBasicInfoConnection!
+        internal void InitQueryClusterRcvLocations()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("cdmClusterUUID", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryClusterRcvLocations",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$cdmClusterUUID: UUID!)",
+                "RcvLocationBasicInfoConnection",
+                Query.ClusterRcvLocations,
+                Query.ClusterRcvLocationsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# REQUIRED
+$query.Var.cdmClusterUUID = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // customerRcvZonesDetailsList: CustomerRcvZonesDetails!
+        internal void InitQueryCustomerRcvZonesDetailsList()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCustomerRcvZonesDetailsList",
+                "",
+                "CustomerRcvZonesDetails",
+                Query.CustomerRcvZonesDetailsList,
+                Query.CustomerRcvZonesDetailsListFieldSpec,
+                @""
+            );
+        }
+
+        // Create new GraphQL Query:
         // allRcvPrivateEndpointConnections(input: UUID!): [DetailedPrivateEndpointConnection!]!
         internal void InitQueryAllRcvPrivateEndpointConnections()
         {
@@ -292,6 +535,56 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.AllRcvPrivateEndpointConnectionsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // readerRcvOwnerEncryptionKey(input: QueryRCVReadersOwnerEncryptionKeyInput!): QueryRCVReadersOwnerEncryptionKeyReply!
+        internal void InitQueryReaderRcvOwnerEncryptionKey()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "QueryRCVReadersOwnerEncryptionKeyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryReaderRcvOwnerEncryptionKey",
+                "($input: QueryRCVReadersOwnerEncryptionKeyInput!)",
+                "QueryRcvReadersOwnerEncryptionKeyReply",
+                Query.ReaderRcvOwnerEncryptionKey,
+                Query.ReaderRcvOwnerEncryptionKeyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	readerLocationId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // rcvRegions(filter: [GetRCVRegionsFilter!]): GetRCVRegionsReply!
+        internal void InitQueryRcvRegions()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("filter", "[GetRCVRegionsFilter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryRcvRegions",
+                "($filter: [GetRCVRegionsFilter!])",
+                "GetRcvRegionsReply",
+                Query.RcvRegions,
+                Query.RcvRegionsFieldSpec,
+                @"# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someGetRCVRegionsFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GetRCVRegionsFilterField]) for enum values.
+		# OPTIONAL
+		text = $someString
+}
+)"
             );
         }
 

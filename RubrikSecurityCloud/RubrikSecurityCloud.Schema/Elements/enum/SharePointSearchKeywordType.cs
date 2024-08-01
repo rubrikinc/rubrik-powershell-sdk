@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         KEYWORD_UNSPECIFIED,
 
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SharePointSearchKeywordType

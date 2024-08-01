@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         LOGICAL_BYTES,
 
         [EnumMember(Value = "PHYSICAL_BYTES")]
-        PHYSICAL_BYTES
+        PHYSICAL_BYTES,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterCapacityQuotaType

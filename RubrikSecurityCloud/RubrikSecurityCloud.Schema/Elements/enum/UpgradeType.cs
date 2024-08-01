@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         FAST,
 
         [EnumMember(Value = "ROLLING")]
-        ROLLING
+        ROLLING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UpgradeType

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         RDS,
 
         [EnumMember(Value = "S3")]
-        S3
+        S3,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsNativeProtectionFeature

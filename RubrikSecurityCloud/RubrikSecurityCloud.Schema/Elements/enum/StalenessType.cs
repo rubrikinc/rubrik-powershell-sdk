@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         IS_STALE,
 
         [EnumMember(Value = "NOT_STALE")]
-        NOT_STALE
+        NOT_STALE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum StalenessType

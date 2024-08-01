@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ARCHIVE,
 
         [EnumMember(Value = "BACKUP")]
-        BACKUP
+        BACKUP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RcvTier

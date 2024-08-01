@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         CUSTOM,
 
         [EnumMember(Value = "UNKNOWN_TYPE")]
-        UNKNOWN_TYPE
+        UNKNOWN_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum InterfaceType

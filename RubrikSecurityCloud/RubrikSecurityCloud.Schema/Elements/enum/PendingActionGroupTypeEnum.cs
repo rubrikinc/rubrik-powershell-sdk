@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         SERVICE_ACCOUNT,
 
         [EnumMember(Value = "UNMANAGED_OBJECTS")]
-        UNMANAGED_OBJECTS
+        UNMANAGED_OBJECTS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PendingActionGroupTypeEnum

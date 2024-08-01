@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         KERBEROS,
 
         [EnumMember(Value = "NONE")]
-        NONE
+        NONE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AuthTypeEnum

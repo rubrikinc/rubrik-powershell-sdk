@@ -1,0 +1,85 @@
+### Snappable
+An object that can be backed-up by taking snapshots.
+
+- id: System.String
+  - The ID of the workload.
+- name: System.String
+  - The name of the workload.
+- complianceStatus: ComplianceStatusEnum
+  - The current compliance status of the workload.
+- protectionStatus: ProtectionStatusEnum
+  - The protection status of the workload.
+- objectType: ObjectTypeEnum
+  - The type of the workload.
+- objectState: ObjectState
+  - The state of the workload (Active, Relic or Archived).
+- protectedOn: DateTime
+  - The date and time when the workload was last protected.
+- totalSnapshots: System.Int32
+  - The total number of snapshots present for the workload.
+- missedSnapshots: System.Int32
+  - The number of snapshots that were missed.
+- lastSnapshot: DateTime
+  - The timestamp of the last taken snapshot.
+- latestArchivalSnapshot: DateTime
+- latestReplicationSnapshot: DateTime
+- localOnDemandSnapshots: System.Int32
+- localSlaSnapshots: System.Int32
+- archivalSnapshotLag: System.Int32
+- replicationSnapshotLag: System.Int32
+- archivalComplianceStatus: ComplianceStatusEnum
+- replicationComplianceStatus: ComplianceStatusEnum
+- awaitingFirstFull: System.Boolean
+- pullTime: DateTime
+  - The time at which the workload data was retrieved from CDM.
+- location: System.String
+- localStorage: System.Int64
+  - The local storage size in bytes.
+- localMeteredData: System.Int64
+  - The local metered data size in bytes.
+- usedBytes: System.Int64
+  - Total bytes used.
+- provisionedBytes: System.Int64
+  - The provisioned bytes size.
+- localProtectedData: System.Int64
+  - The local protected data size in bytes.
+- localEffectiveStorage: System.Int64
+  - The local effective storage size in bytes.
+- lastSnapshotLogicalBytes: System.Int64
+  - The logical size of the workload's last snapshot.
+- orgId: System.String
+  - The organization ID of this workload.
+- sourceProtocol: System.String
+  - The source NAS protocol.
+- ncdPolicyName: System.String
+  - The NASCD policy name.
+- ncdLatestArchiveSnapshot: DateTime
+  - The timestamp of the last taken NASCD archive snapshot.
+- slaDomain: SlaDomain
+  - The SLA Domain of the protected objects.
+- cluster: Cluster
+  - The Rubrik cluster to which the protected objects belong.
+- fid: System.String
+- localSnapshots: System.Int32
+  - The number of snapshots locally present.
+- replicaSnapshots: System.Int32
+  - The number of snapshots that have been replicated.
+- archiveSnapshots: System.Int32
+  - The number of snapshots that have been archived.
+- physicalBytes: System.Int64
+  - Physical bytes used by snapshots of this workload.
+- transferredBytes: System.Int64
+  - Bytes ingested over the network for this workload.
+- logicalBytes: System.Int64
+  - Logical bytes used by snapshots of this workload.
+- replicaStorage: System.Int64
+  - The amount of storage used by replicated snapshots.
+- archiveStorage: System.Int64
+  - The amount of storage used by archived snapshots.
+- dataReduction: System.Single
+  - The change from transferred bytes to physical bytes.
+- logicalDataReduction: System.Single
+- workloadOrg: WorkloadOrganization
+  - Specifies the owner organization of the workload.
+- orgName: System.String
+  - The organization name related to the workload. This is deprecated.

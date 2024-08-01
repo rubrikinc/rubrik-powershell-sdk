@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         LINUX_HOST_ROOT,
 
         [EnumMember(Value = "WINDOWS_HOST_ROOT")]
-        WINDOWS_HOST_ROOT
+        WINDOWS_HOST_ROOT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HostFailoverClusterRoot

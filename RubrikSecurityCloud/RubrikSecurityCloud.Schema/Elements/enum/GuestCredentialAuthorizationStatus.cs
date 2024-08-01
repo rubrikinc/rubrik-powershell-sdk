@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         PENDING,
 
         [EnumMember(Value = "SUCCESSFUL")]
-        SUCCESSFUL
+        SUCCESSFUL,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GuestCredentialAuthorizationStatus

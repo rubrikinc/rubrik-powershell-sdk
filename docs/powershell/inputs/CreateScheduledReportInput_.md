@@ -1,0 +1,24 @@
+### CreateScheduledReportInput
+- reportId: System.Int32
+  - ID of the report for which a schedule needs to be created.
+- title: System.String
+  - Title of the report.
+- dailyTime: DateTime
+  - Time of the day for daily report delivery.
+- weeklyTime: DateTime
+  - Time of the day for weekly report delivery on the configured weekdays.
+- monthlyDate: System.Int32
+  - Date of the month for monthly report delivery.
+- monthlyTime: DateTime
+  - Time of the day for monthly report delivery on the configured monthly date.
+- rubrikRecipientUserIds: list of System.Strings
+  - List of Rubrik user IDs that are the intended recipients of the scheduled report.
+- nonRubrikRecipientEmails: list of System.Strings
+  - List of email addresses of non-Rubrik user recipients of the scheduled report.
+- updateCreator: System.Boolean
+- timeZone: System.String
+  - Time zone of the schedule time in IANA format.
+- weeklyDays: list of WeekDays
+  - List of weekdays for weekly schedule of reports.
+- attachmentTypes: list of ReportAttachmentTypes
+  - List of attachment types for report emails.

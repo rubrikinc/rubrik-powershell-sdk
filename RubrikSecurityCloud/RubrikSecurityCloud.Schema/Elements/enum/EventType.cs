@@ -190,7 +190,10 @@ namespace RubrikSecurityCloud.Types
         VCENTER,
 
         [EnumMember(Value = "VOLUME_GROUP")]
-        VOLUME_GROUP
+        VOLUME_GROUP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum EventType

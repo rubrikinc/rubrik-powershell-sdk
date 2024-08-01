@@ -1,0 +1,48 @@
+### TableViewType
+All valid table views.
+
+- TABLE_UNSPECIFIED - The table view type is unspecified.
+- PROTECTION_TASKS_DETAIL_TABLE - Protection task detail report's main table.
+- PROTECTION_TASKS_DETAIL_BY_CLUSTER_TABLE - Table displaying task status statistics for each cluster.
+- PROTECTION_TASKS_DETAIL_BY_CLUSTER_TYPE_TABLE - Table displaying task status statistics for each cluster type.
+- PROTECTION_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE - Table displaying task status statistics for each object type.
+- PROTECTION_TASKS_DETAIL_BY_TIME_TABLE - Table displaying task status statistics for a period of time.
+- OBJECT_CAPACITY_OVERTIME_ALL_TABLE - Table displaying capacity per object over time.
+- OBJECT_CAPACITY_OVERTIME_BY_TIME_TABLE - Table displaying total capacity over time.
+- OBJECT_CAPACITY_OVERTIME_BY_CLUSTER_TABLE - Table displaying capacity per cluster over time.
+- RECOVERY_TASKS_DETAIL_TABLE
+- RECOVERY_TASKS_DETAIL_BY_CLUSTER_TABLE
+- RECOVERY_TASKS_DETAIL_BY_CLUSTER_TYPE_TABLE
+- RECOVERY_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE
+- RECOVERY_TASKS_DETAIL_BY_TIME_TABLE
+- THREAT_MONITORING_LIST_TABLE - Table displaying a list of workloads where files were matched by IOC rules.
+- SLA_AUDIT_LIST_TABLE - Table displaying a list of latest audits for each SLA Domain.
+- SLA_AUDIT_DETAIL_TABLE - Table displaying a list of audits for the single SLA Domain.
+- OBJECT_AUDIT_LIST_TABLE - Table displaying a list of latest protection audits for each protected workload.
+- OBJECT_AUDIT_LIST_EXPORT_TABLE - Table in the exported file displaying a list of protection audits for all protected workloads.
+- OBJECT_AUDIT_DETAIL_TABLE - Table displaying a list of protection audits for the single protected workload.
+- COMPLIANCE_ALL_TABLE - Main table for the compliance report.
+- COMPLIANCE_BY_CLUSTER_TABLE - Table displaying compliance status statistics for each cluster.
+- COMPLIANCE_BY_OBJECT_TYPE_TABLE - Table displaying compliance status statistics for each object type.
+- COMPLIANCE_BY_CLUSTER_TYPE_TABLE - Table displaying compliance status statistics for each cluster type.
+- INDEXING_REPORT_ALL_TABLE - Main table for the indexing report.
+- INDEXING_REPORT_BY_SLA_TABLE - Table displaying indexing statistics for each SLA Domain.
+- INDEXING_REPORT_BY_OBJECT_TYPE_TABLE - Table displaying indexing statistics for each Object Type.
+- INDEXING_REPORT_BY_LOCATION_TABLE - Table displaying indexing statistics for each Location.
+- QAUTH_OBJECTS_ALL_TABLE
+- QAUTH_ROLES_ALL_TABLE
+- OBJECT_CAPACITY_ALL_TABLE - Main table for the object capacity report.
+- OBJECT_CAPACITY_BY_CLUSTER_TABLE - Table displaying object capacity for each cluster.
+- OBJECT_CAPACITY_BY_CLUSTER_TYPE_TABLE - Table displaying object capacity for each cluster type.
+- OBJECT_CAPACITY_BY_OBJECT_TYPE_TABLE - Table displaying object capacity for each object type.
+- OBJECT_BACKUP_TASK_SUMMARY_ALL_TABLE - Table displaying object backup task summary data.
+- PROTECTION_ALL_TABLE
+- PROTECTION_BY_CLUSTER_TABLE
+- PROTECTION_BY_CLUSTER_TYPE_TABLE
+- PROTECTION_BY_OBJECT_TYPE_TABLE
+- PROTECTION_BY_TIME_TABLE
+- AUDIT_ALL_TABLE
+- READABLE_SNAPSHOTS_TABLE - Table displaying a list of readable snapshots.
+- UNREADABLE_OBJECTS_TABLE - Table displaying a list of unreadable objects.
+- INFRASTRUCTURE_ALL_TABLE - Table displaying statistics for each cluster.
+- ACTIVITY_SERIES_ALL_TABLE

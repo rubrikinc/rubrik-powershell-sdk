@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         GCP,
 
         [EnumMember(Value = "VENDOR_UNKNOWN")]
-        VENDOR_UNKNOWN
+        VENDOR_UNKNOWN,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CcpVendorType

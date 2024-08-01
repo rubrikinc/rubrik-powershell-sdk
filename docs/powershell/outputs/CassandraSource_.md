@@ -1,0 +1,63 @@
+### CassandraSource
+Cassandra Source information.
+
+- clusterUuid: System.String
+  - UUID of the Mosaic cluster.
+- sourceIp: System.String
+  - IP of the source.
+- nodeCount: System.Int32
+  - Number of source nodes.
+- size: System.Int64
+  - Data size of source.
+- backupCount: System.Int32
+  - Number of backups for the source.
+- status: CassandraSourceStatus
+  - Source connectivity status.
+- watcherEnabled: System.Boolean
+  - Watcher status of the source.
+- backupParams: CassandraBackupParams
+  - Backup Params of the source.
+- configParams: SourceConfigParams
+  - Configuration Params of the source.
+- lastRefreshTime: DateTime
+  - The last time the source was refreshed.
+- isRelic: System.Boolean
+  - Is the source object a relic.
+- descendantConnection: CassandraSourceDescendantTypeConnection
+  - List of descendants.
+- physicalChildConnection: CassandraSourcePhysicalChildTypeConnection
+  - List of physical children.
+- cluster: Cluster
+  - Mosaic cluster information.
+- id: System.String
+  - The FID of the hierarchy object.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         FROM,
 
         [EnumMember(Value = "TO")]
-        TO
+        TO,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum EmailAddressFilterType

@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         SQL_MI,
 
         [EnumMember(Value = "VM")]
-        VM
+        VM,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureNativeProtectionFeature

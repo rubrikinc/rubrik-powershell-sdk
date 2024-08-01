@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Syslog' API domain:
-    /// AddExportRule, DeleteExportRule, TestExportRule, or UpdateExportRule.
+    /// AddConfiguration, AddExportRule, DeleteConfiguration, DeleteExportRule, SendTest, TestExportRule, or UpdateExportRule.
     /// </summary>
     /// <description>
     /// New-RscMutationSyslog creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 7 operations
     /// in the 'Syslog' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddExportRule, DeleteExportRule, TestExportRule, or UpdateExportRule.
+    /// one of: AddConfiguration, AddExportRule, DeleteConfiguration, DeleteExportRule, SendTest, TestExportRule, or UpdateExportRule.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationSyslog -AddExportRule).Info().
+    /// (New-RscMutationSyslog -AddConfiguration).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationSyslog -AddExportRule).Info().
+    /// (New-RscMutationSyslog -AddConfiguration).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the AddConfiguration operation
+    /// of the 'Syslog' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Syslog
+    /// # API Operation: AddConfiguration
+    /// 
+    /// $query = New-RscMutationSyslog -AddConfiguration
+    /// 
+    /// # REQUIRED
+    /// $query.Var.hostName = $someString
+    /// # REQUIRED
+    /// $query.Var.port = $someInt
+    /// # REQUIRED
+    /// $query.Var.networkProtocolType = $someNetworkProtocolTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkProtocolTypeEnum]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.useTLS = $someBoolean
+    /// # REQUIRED
+    /// $query.Var.syslogFacility = $someSyslogFacilityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacilityTypeEnum]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.syslogSeverity = $someSyslogSeverityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverityTypeEnum]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.trustedCerts = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the AddExportRule operation
@@ -273,6 +313,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		port = $someInt
     /// 	}
+    /// 	# OPTIONAL
+    /// 	syslogExportRuleV93 = @{
+    /// 		# OPTIONAL
+    /// 		certificateId = $someString
+    /// 		# REQUIRED
+    /// 		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+    /// 		# REQUIRED
+    /// 		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+    /// 		# REQUIRED
+    /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+    /// 		# REQUIRED
+    /// 		enableTls = $someBoolean
+    /// 		# REQUIRED
+    /// 		hostname = $someString
+    /// 		# REQUIRED
+    /// 		port = $someInt
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -280,6 +337,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AddSyslogExportRuleReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteConfiguration operation
+    /// of the 'Syslog' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Syslog
+    /// # API Operation: DeleteConfiguration
+    /// 
+    /// $query = New-RscMutationSyslog -DeleteConfiguration
+    /// 
+    /// # REQUIRED
+    /// $query.Var.ids = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
     /// 
     /// 
     /// 
@@ -313,6 +400,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SendTest operation
+    /// of the 'Syslog' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Syslog
+    /// # API Operation: SendTest
+    /// 
+    /// $query = New-RscMutationSyslog -SendTest
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.config = @{
+    /// 	# OPTIONAL
+    /// 	id = $someInt
+    /// 	# OPTIONAL
+    /// 	notificationConf = @{
+    /// 		# OPTIONAL
+    /// 		hostname = $someString
+    /// 		# OPTIONAL
+    /// 		port = $someInt
+    /// 		# OPTIONAL
+    /// 		networkType = $someNetworkProtocolTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkProtocolTypeEnum]) for enum values.
+    /// 		# OPTIONAL
+    /// 		securityType = $someSMTPSecurityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SMTPSecurityTypeEnum]) for enum values.
+    /// 		# OPTIONAL
+    /// 		trustedCerts = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	syslogConf = @{
+    /// 		# OPTIONAL
+    /// 		facility = $someSyslogFacilityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacilityTypeEnum]) for enum values.
+    /// 		# OPTIONAL
+    /// 		severity = $someSyslogSeverityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverityTypeEnum]) for enum values.
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
     /// 
     /// 
     /// 
@@ -502,6 +640,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV92 = @{
+    /// 		# OPTIONAL
+    /// 		certificateId = $someString
+    /// 		# REQUIRED
+    /// 		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+    /// 		# REQUIRED
+    /// 		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+    /// 		# REQUIRED
+    /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+    /// 		# REQUIRED
+    /// 		enableTls = $someBoolean
+    /// 		# REQUIRED
+    /// 		hostname = $someString
+    /// 		# REQUIRED
+    /// 		port = $someInt
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	syslogExportRuleV93 = @{
     /// 		# OPTIONAL
     /// 		certificateId = $someString
     /// 		# REQUIRED
@@ -730,6 +885,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	syslogSettingsV93 = @{
+    /// 		# OPTIONAL
+    /// 		enableTls = $someBoolean
+    /// 		# OPTIONAL
+    /// 		hostname = $someString
+    /// 		# OPTIONAL
+    /// 		port = $someInt
+    /// 		# OPTIONAL
+    /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+    /// 		# OPTIONAL
+    /// 		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+    /// 		# OPTIONAL
+    /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -760,8 +932,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "AddConfiguration",
                 "AddExportRule",
+                "DeleteConfiguration",
                 "DeleteExportRule",
+                "SendTest",
                 "TestExportRule",
                 "UpdateExportRule",
                 IgnoreCase = true)]
@@ -779,11 +954,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "AddConfiguration":
+                        this.ProcessRecord_AddConfiguration();
+                        break;
                     case "AddExportRule":
                         this.ProcessRecord_AddExportRule();
                         break;
+                    case "DeleteConfiguration":
+                        this.ProcessRecord_DeleteConfiguration();
+                        break;
                     case "DeleteExportRule":
                         this.ProcessRecord_DeleteExportRule();
+                        break;
+                    case "SendTest":
+                        this.ProcessRecord_SendTest();
                         break;
                     case "TestExportRule":
                         this.ProcessRecord_TestExportRule();
@@ -802,6 +986,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // addSyslogConfiguration.
+        internal void ProcessRecord_AddConfiguration()
+        {
+            this._logger.name += " -AddConfiguration";
+            // Create new graphql operation addSyslogConfiguration
+            InitMutationAddSyslogConfiguration();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // addSyslogExportRule.
         internal void ProcessRecord_AddExportRule()
         {
@@ -811,12 +1004,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // deleteSyslogConfiguration.
+        internal void ProcessRecord_DeleteConfiguration()
+        {
+            this._logger.name += " -DeleteConfiguration";
+            // Create new graphql operation deleteSyslogConfiguration
+            InitMutationDeleteSyslogConfiguration();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // deleteSyslogExportRule.
         internal void ProcessRecord_DeleteExportRule()
         {
             this._logger.name += " -DeleteExportRule";
             // Create new graphql operation deleteSyslogExportRule
             InitMutationDeleteSyslogExportRule();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // sendTestSyslog.
+        internal void ProcessRecord_SendTest()
+        {
+            this._logger.name += " -SendTest";
+            // Create new graphql operation sendTestSyslog
+            InitMutationSendTestSyslog();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -837,6 +1048,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationUpdateSyslogExportRule();
         }
 
+
+        // Create new GraphQL Mutation:
+        // addSyslogConfiguration(
+        //     hostName: String!
+        //     port: Int!
+        //     networkProtocolType: NetworkProtocolTypeEnum!
+        //     useTLS: Boolean!
+        //     syslogFacility: SyslogFacilityTypeEnum!
+        //     syslogSeverity: SyslogSeverityTypeEnum!
+        //     trustedCerts: String!
+        //   ): Boolean!
+        internal void InitMutationAddSyslogConfiguration()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("hostName", "String!"),
+                Tuple.Create("port", "Int!"),
+                Tuple.Create("networkProtocolType", "NetworkProtocolTypeEnum!"),
+                Tuple.Create("useTLS", "Boolean!"),
+                Tuple.Create("syslogFacility", "SyslogFacilityTypeEnum!"),
+                Tuple.Create("syslogSeverity", "SyslogSeverityTypeEnum!"),
+                Tuple.Create("trustedCerts", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAddSyslogConfiguration",
+                "($hostName: String!,$port: Int!,$networkProtocolType: NetworkProtocolTypeEnum!,$useTLS: Boolean!,$syslogFacility: SyslogFacilityTypeEnum!,$syslogSeverity: SyslogSeverityTypeEnum!,$trustedCerts: String!)",
+                "System.Boolean",
+                Mutation.AddSyslogConfiguration,
+                Mutation.AddSyslogConfigurationFieldSpec,
+                @"# REQUIRED
+$query.Var.hostName = $someString
+# REQUIRED
+$query.Var.port = $someInt
+# REQUIRED
+$query.Var.networkProtocolType = $someNetworkProtocolTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkProtocolTypeEnum]) for enum values.
+# REQUIRED
+$query.Var.useTLS = $someBoolean
+# REQUIRED
+$query.Var.syslogFacility = $someSyslogFacilityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacilityTypeEnum]) for enum values.
+# REQUIRED
+$query.Var.syslogSeverity = $someSyslogSeverityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverityTypeEnum]) for enum values.
+# REQUIRED
+$query.Var.trustedCerts = $someString"
+            );
+        }
 
         // Create new GraphQL Mutation:
         // addSyslogExportRule(input: AddSyslogExportRuleInput!): AddSyslogExportRuleReply!
@@ -1037,7 +1294,46 @@ $query.Var.input = @{
 		# REQUIRED
 		port = $someInt
 	}
+	# OPTIONAL
+	syslogExportRuleV93 = @{
+		# OPTIONAL
+		certificateId = $someString
+		# REQUIRED
+		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+		# REQUIRED
+		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+		# REQUIRED
+		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+		# REQUIRED
+		enableTls = $someBoolean
+		# REQUIRED
+		hostname = $someString
+		# REQUIRED
+		port = $someInt
+	}
 }"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteSyslogConfiguration(ids: [String!]!): Boolean!
+        internal void InitMutationDeleteSyslogConfiguration()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("ids", "[String!]!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteSyslogConfiguration",
+                "($ids: [String!]!)",
+                "System.Boolean",
+                Mutation.DeleteSyslogConfiguration,
+                Mutation.DeleteSyslogConfigurationFieldSpec,
+                @"# REQUIRED
+$query.Var.ids = @(
+	$someString
+)"
             );
         }
 
@@ -1062,6 +1358,49 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // sendTestSyslog(config: SyslogConfigInputType): Boolean!
+        internal void InitMutationSendTestSyslog()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("config", "SyslogConfigInputType"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSendTestSyslog",
+                "($config: SyslogConfigInputType)",
+                "System.Boolean",
+                Mutation.SendTestSyslog,
+                Mutation.SendTestSyslogFieldSpec,
+                @"# OPTIONAL
+$query.Var.config = @{
+	# OPTIONAL
+	id = $someInt
+	# OPTIONAL
+	notificationConf = @{
+		# OPTIONAL
+		hostname = $someString
+		# OPTIONAL
+		port = $someInt
+		# OPTIONAL
+		networkType = $someNetworkProtocolTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkProtocolTypeEnum]) for enum values.
+		# OPTIONAL
+		securityType = $someSMTPSecurityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SMTPSecurityTypeEnum]) for enum values.
+		# OPTIONAL
+		trustedCerts = $someString
+	}
+	# OPTIONAL
+	syslogConf = @{
+		# OPTIONAL
+		facility = $someSyslogFacilityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacilityTypeEnum]) for enum values.
+		# OPTIONAL
+		severity = $someSyslogSeverityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverityTypeEnum]) for enum values.
+	}
 }"
             );
         }
@@ -1250,6 +1589,23 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	syslogExportRuleV92 = @{
+		# OPTIONAL
+		certificateId = $someString
+		# REQUIRED
+		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+		# REQUIRED
+		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+		# REQUIRED
+		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+		# REQUIRED
+		enableTls = $someBoolean
+		# REQUIRED
+		hostname = $someString
+		# REQUIRED
+		port = $someInt
+	}
+	# OPTIONAL
+	syslogExportRuleV93 = @{
 		# OPTIONAL
 		certificateId = $someString
 		# REQUIRED
@@ -1455,6 +1811,23 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	syslogSettingsV92 = @{
+		# OPTIONAL
+		enableTls = $someBoolean
+		# OPTIONAL
+		hostname = $someString
+		# OPTIONAL
+		port = $someInt
+		# OPTIONAL
+		certificateId = $someString
+		# OPTIONAL
+		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+		# OPTIONAL
+		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+		# OPTIONAL
+		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+	}
+	# OPTIONAL
+	syslogSettingsV93 = @{
 		# OPTIONAL
 		enableTls = $someBoolean
 		# OPTIONAL

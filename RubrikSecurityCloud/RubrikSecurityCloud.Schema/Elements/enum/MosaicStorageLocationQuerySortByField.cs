@@ -16,7 +16,10 @@ namespace RubrikSecurityCloud.Types
     public enum MosaicStorageLocationQuerySortByField
     {
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MosaicStorageLocationQuerySortByField

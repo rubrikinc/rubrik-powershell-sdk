@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SORT_BY_NAME,
 
         [EnumMember(Value = "SORT_BY_UNSPECIFIED")]
-        SORT_BY_UNSPECIFIED
+        SORT_BY_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GlobalCertificateSortBy

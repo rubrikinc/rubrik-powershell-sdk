@@ -175,7 +175,10 @@ namespace RubrikSecurityCloud.Types
         WESTU_S2,
 
         [EnumMember(Value = "WESTUS3")]
-        WESTU_S3
+        WESTU_S3,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureCloudAccountRegion

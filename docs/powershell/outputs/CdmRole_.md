@@ -1,0 +1,11 @@
+### CdmRole
+- cdmId: System.String
+- cdmName: System.String
+- rscName: System.String
+- description: System.String
+- canMigrate: System.Boolean
+- cannotMigrateReason: CannotMigrateReasonEnum
+- cluster: Cluster
+  - The Rubrik cluster to which this role belongs.
+- isPartiallyUnavailable: System.Boolean
+  - True if the role contains at least one rule that cannot be migrated, false otherwise.

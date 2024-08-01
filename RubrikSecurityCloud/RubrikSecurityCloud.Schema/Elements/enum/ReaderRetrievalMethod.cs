@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         OBJECT_LIST_ONLY,
 
         [EnumMember(Value = "UNKNOWN_RETRIEVAL_METHOD")]
-        UNKNOWN_RETRIEVAL_METHOD
+        UNKNOWN_RETRIEVAL_METHOD,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ReaderRetrievalMethod

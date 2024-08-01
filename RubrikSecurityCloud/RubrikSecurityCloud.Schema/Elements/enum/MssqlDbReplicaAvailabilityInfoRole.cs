@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         MSSQL_DB_REPLICA_AVAILABILITY_INFO_ROLE_RESOLVING,
 
         [EnumMember(Value = "MSSQL_DB_REPLICA_AVAILABILITY_INFO_ROLE_SECONDARY")]
-        MSSQL_DB_REPLICA_AVAILABILITY_INFO_ROLE_SECONDARY
+        MSSQL_DB_REPLICA_AVAILABILITY_INFO_ROLE_SECONDARY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MssqlDbReplicaAvailabilityInfoRole

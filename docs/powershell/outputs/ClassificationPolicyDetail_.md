@@ -1,0 +1,21 @@
+### ClassificationPolicyDetail
+- id: System.String
+- name: System.String
+- description: System.String
+- colorEnum: ClassificationPolicyColor
+- createdTime: System.Int64
+- lastUpdatedTime: System.Int64
+- mode: ClassificationPolicyMode
+- hierarchyObjectIds: list of System.Strings
+- analyzers: list of Analyzers
+- deletable: System.Boolean
+- creator: User
+- hierarchyObjectConnection: HierarchyObjectConnection
+  - Connection on hierarchy objects.
+- assignmentResources: AssignmentResourceDetailsConnection
+  - Connection on AssignmentResourceDetails.
+- hierarchyObjects: list of HierarchyObjects
+- objectStatuses: list of ObjectStatuss
+- totalObjects: System.Int32
+- numAnalyzers: System.Int32
+- whitelists: list of ClassificationPolicyWhitelistDetailedEntrys

@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         HOT_ADD_PROXY_VM_STATUS_TYPE_MAINTAINING,
 
         [EnumMember(Value = "HOT_ADD_PROXY_VM_STATUS_TYPE_RUNNING")]
-        HOT_ADD_PROXY_VM_STATUS_TYPE_RUNNING
+        HOT_ADD_PROXY_VM_STATUS_TYPE_RUNNING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HotAddProxyVmStatusType

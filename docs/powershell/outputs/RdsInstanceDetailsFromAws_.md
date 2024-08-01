@@ -1,0 +1,41 @@
+### RdsInstanceDetailsFromAws
+RDS DB Instance details from AWS.
+
+- rdsInstanceArn: System.String
+  - Amazon Resource Name (ARN) of RDS Instance.
+- dbEngine: System.String
+  - DB Engine of RDS Instance.
+- dbInstanceClass: System.String
+  - DB class for RDS Instance.
+- dbInstanceStatus: System.String
+  - Status of an RDS Instance. Refers to the health of the RDS Instance.
+- allocatedStorageInGb: System.Int64
+  - Allocated size of an RDS Instance.
+- vpcId: System.String
+  - ID of VPC in AWS.
+- optionGroupName: System.String
+  - Name of option group of RDS Instance.
+- dbParameterGroupName: System.String
+  - Name of parameter group of RDS Instance.
+- dbSubnetGroupName: System.String
+  - Subnet group name of RDS Instance.
+- dbMaintenanceWindow: System.String
+  - Maintenance window for the RDS Instance.
+- isMultiAz: System.Boolean
+  - Specifies whether RDS is available in multi Availability Zones (AZs). If true, it means it is a multi-AZ RDS Instance.
+- primaryAz: System.String
+  - Primary Availability Zone (AZ) of RDS Instance.
+- backupRetentionPeriod: System.Int64
+  - Retention time for RDS backups.
+- iops: System.Int64
+  - Input/Output (IO) operation limit per second for RDS Instance.
+- engineVersion: System.String
+  - RDS DB Instance engine version.
+- kmsKeyId: System.String
+  - Key Management System (KMS) key ID associated with RDS Instance.
+- storageType: System.String
+  - Storage type of RDS Instance. Amazon RDS provides four storage types: General Purpose SSD (gp2), General Purpose SSD (gp3), Provisioned IOPS SSD (io1), and magnetic (standard).
+- port: System.Int64
+  - Port used to connect to the RDS Instance.
+- dbEngineVersion: System.String
+  - Version of the database engine.

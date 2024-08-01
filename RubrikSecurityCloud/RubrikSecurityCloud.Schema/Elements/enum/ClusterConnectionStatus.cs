@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         DISCONNECTED,
 
         [EnumMember(Value = "NOT_ATTACHED")]
-        NOT_ATTACHED
+        NOT_ATTACHED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterConnectionStatus

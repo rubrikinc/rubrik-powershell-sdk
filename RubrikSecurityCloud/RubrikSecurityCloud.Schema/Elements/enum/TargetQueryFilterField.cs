@@ -64,7 +64,10 @@ namespace RubrikSecurityCloud.Types
         NAME,
 
         [EnumMember(Value = "STATUS")]
-        STATUS
+        STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TargetQueryFilterField

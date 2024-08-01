@@ -24,6 +24,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? Password
+        // GraphQL -> password: String (scalar)
+        [JsonProperty("password")]
+        public System.String? Password { get; set; }
+
+        //      C# -> System.String? Username
+        // GraphQL -> username: String (scalar)
+        [JsonProperty("username")]
+        public System.String? Username { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         [Required]

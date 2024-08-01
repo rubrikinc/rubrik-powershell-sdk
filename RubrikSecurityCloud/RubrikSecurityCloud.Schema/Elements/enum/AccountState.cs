@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         PENDING_MIGRATION,
 
         [EnumMember(Value = "PENDING_POST_PROCESSING")]
-        PENDING_POST_PROCESSING
+        PENDING_POST_PROCESSING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AccountState

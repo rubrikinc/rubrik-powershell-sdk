@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         EFFECTIVE_SLA_DOMAIN,
 
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureNativeVirtualMachineSortFields

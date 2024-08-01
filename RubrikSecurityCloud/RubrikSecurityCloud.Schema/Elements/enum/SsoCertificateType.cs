@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         ENCRYPTION,
 
         [EnumMember(Value = "SIGNING")]
-        SIGNING
+        SIGNING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SsoCertificateType

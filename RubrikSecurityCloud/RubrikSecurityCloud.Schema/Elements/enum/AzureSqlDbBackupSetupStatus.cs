@@ -46,7 +46,10 @@ namespace RubrikSecurityCloud.Types
         UNSUPPORTED_COLLATION_CONFIG,
 
         [EnumMember(Value = "UNSUPPORTED_COLUMNS_EXIST")]
-        UNSUPPORTED_COLUMNS_EXIST
+        UNSUPPORTED_COLUMNS_EXIST,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureSqlDbBackupSetupStatus

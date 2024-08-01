@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         IN_COMPLIANCE,
 
         [EnumMember(Value = "OUT_OF_COMPLIANCE")]
-        OUT_OF_COMPLIANCE
+        OUT_OF_COMPLIANCE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DiscoveryReportTablePolicyStatus

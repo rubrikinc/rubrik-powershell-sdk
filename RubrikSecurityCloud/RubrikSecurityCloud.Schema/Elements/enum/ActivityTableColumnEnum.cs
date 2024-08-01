@@ -46,7 +46,10 @@ namespace RubrikSecurityCloud.Types
         SLA_DOMAIN,
 
         [EnumMember(Value = "StartTime")]
-        START_TIME
+        START_TIME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ActivityTableColumnEnum

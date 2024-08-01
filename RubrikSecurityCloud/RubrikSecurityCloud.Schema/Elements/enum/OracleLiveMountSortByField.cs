@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         SOURCE_DATABASE_NAME,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED
+        UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum OracleLiveMountSortByField

@@ -73,7 +73,10 @@ namespace RubrikSecurityCloud.Types
         RDS_PROTECTION,
 
         [EnumMember(Value = "SERVERS_AND_APPS")]
-        SERVERS_AND_APPS
+        SERVERS_AND_APPS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudAccountFeature

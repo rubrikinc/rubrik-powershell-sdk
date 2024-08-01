@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         STORE_CONNECTED,
 
         [EnumMember(Value = "STORE_DISCONNECTED")]
-        STORE_DISCONNECTED
+        STORE_DISCONNECTED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MosaicStoreConnectionStatus

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         MATCHES_FOUND_UNSPECIFIED,
 
         [EnumMember(Value = "NO_MATCHES")]
-        NO_MATCHES
+        NO_MATCHES,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ThreatHuntMatchesFound

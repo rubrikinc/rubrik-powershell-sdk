@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         WEEKS,
 
         [EnumMember(Value = "YEARS")]
-        YEARS
+        YEARS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RetentionUnit

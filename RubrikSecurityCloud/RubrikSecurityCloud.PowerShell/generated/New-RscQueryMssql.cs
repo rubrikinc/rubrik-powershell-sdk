@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 17
+    /// Create a new RscQuery object for any of the 21
     /// operations in the 'Microsoft SQL Server' API domain:
-    /// AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, DefaultPropertiesOnCluster, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
+    /// AvailabilityGroup, AvailabilityGroupDatabaseVirtualGroups, AvailabilityGroupVirtualGroups, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, DefaultPropertiesOnCluster, Instance, JobStatus, LogShippingTargets, QueryInstances, RecoverableRanges, or TopLevelDescendants.
     /// </summary>
     /// <description>
     /// New-RscQueryMssql creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 17 operations
+    /// There are 21 operations
     /// in the 'Microsoft SQL Server' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, DefaultPropertiesOnCluster, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
+    /// one of: AvailabilityGroup, AvailabilityGroupDatabaseVirtualGroups, AvailabilityGroupVirtualGroups, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, DefaultPropertiesOnCluster, Instance, JobStatus, LogShippingTargets, QueryInstances, RecoverableRanges, or TopLevelDescendants.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -97,6 +97,91 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: MssqlAvailabilityGroup
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the AvailabilityGroupDatabaseVirtualGroups operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: AvailabilityGroupDatabaseVirtualGroups
+    /// 
+    /// $query = New-RscQueryMssql -AvailabilityGroupDatabaseVirtualGroups
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # REQUIRED
+    /// $query.Var.fids = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MssqlDatabaseVirtualGroupConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the AvailabilityGroupVirtualGroups operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: AvailabilityGroupVirtualGroups
+    /// 
+    /// $query = New-RscQueryMssql -AvailabilityGroupVirtualGroups
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.filters = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someMssqlAvailabilityGroupVirtualGroupFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlAvailabilityGroupVirtualGroupFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = @{
+    /// 	# OPTIONAL
+    /// 	field = $someMssqlAvailabilityGroupVirtualGroupSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlAvailabilityGroupVirtualGroupSortByField]) for enum values.
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = @{
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MssqlAvailabilityGroupVirtualGroupConnection
     /// 
     /// 
     /// 
@@ -626,6 +711,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the JobStatus operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: JobStatus
+    /// 
+    /// $query = New-RscQueryMssql -JobStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the LogShippingTargets operation
     /// of the 'Microsoft SQL Server' API domain.
     /// <code>
@@ -667,6 +785,43 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: MssqlLogShippingSummaryV2ListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the QueryInstances operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: QueryInstances
+    /// 
+    /// $query = New-RscQueryMssql -QueryInstances
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	rootId = $someString
+    /// 	# OPTIONAL
+    /// 	primaryClusterId = $someString
+    /// 	# OPTIONAL
+    /// 	snappableStatus = $someQueryMssqlInstanceRequestWorkloadStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryMssqlInstanceRequestWorkloadStatus]) for enum values.
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MssqlInstanceSummaryListResponse
     /// 
     /// 
     /// 
@@ -806,6 +961,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "AvailabilityGroup",
+                "AvailabilityGroupDatabaseVirtualGroups",
+                "AvailabilityGroupVirtualGroups",
                 "CdmLogShippingTarget",
                 "CdmLogShippingTargets",
                 "CompatibleInstances",
@@ -819,7 +976,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DefaultProperties",
                 "DefaultPropertiesOnCluster",
                 "Instance",
+                "JobStatus",
                 "LogShippingTargets",
+                "QueryInstances",
                 "RecoverableRanges",
                 "TopLevelDescendants",
                 IgnoreCase = true)]
@@ -839,6 +998,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "AvailabilityGroup":
                         this.ProcessRecord_AvailabilityGroup();
+                        break;
+                    case "AvailabilityGroupDatabaseVirtualGroups":
+                        this.ProcessRecord_AvailabilityGroupDatabaseVirtualGroups();
+                        break;
+                    case "AvailabilityGroupVirtualGroups":
+                        this.ProcessRecord_AvailabilityGroupVirtualGroups();
                         break;
                     case "CdmLogShippingTarget":
                         this.ProcessRecord_CdmLogShippingTarget();
@@ -879,8 +1044,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Instance":
                         this.ProcessRecord_Instance();
                         break;
+                    case "JobStatus":
+                        this.ProcessRecord_JobStatus();
+                        break;
                     case "LogShippingTargets":
                         this.ProcessRecord_LogShippingTargets();
+                        break;
+                    case "QueryInstances":
+                        this.ProcessRecord_QueryInstances();
                         break;
                     case "RecoverableRanges":
                         this.ProcessRecord_RecoverableRanges();
@@ -905,6 +1076,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AvailabilityGroup";
             // Create new graphql operation mssqlAvailabilityGroup
             InitQueryMssqlAvailabilityGroup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mssqlAvailabilityGroupDatabaseVirtualGroups.
+        internal void ProcessRecord_AvailabilityGroupDatabaseVirtualGroups()
+        {
+            this._logger.name += " -AvailabilityGroupDatabaseVirtualGroups";
+            // Create new graphql operation mssqlAvailabilityGroupDatabaseVirtualGroups
+            InitQueryMssqlAvailabilityGroupDatabaseVirtualGroups();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mssqlAvailabilityGroupVirtualGroups.
+        internal void ProcessRecord_AvailabilityGroupVirtualGroups()
+        {
+            this._logger.name += " -AvailabilityGroupVirtualGroups";
+            // Create new graphql operation mssqlAvailabilityGroupVirtualGroups
+            InitQueryMssqlAvailabilityGroupVirtualGroups();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1025,12 +1214,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // mssqlJobStatus.
+        internal void ProcessRecord_JobStatus()
+        {
+            this._logger.name += " -JobStatus";
+            // Create new graphql operation mssqlJobStatus
+            InitQueryMssqlJobStatus();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // mssqlLogShippingTargets.
         internal void ProcessRecord_LogShippingTargets()
         {
             this._logger.name += " -LogShippingTargets";
             // Create new graphql operation mssqlLogShippingTargets
             InitQueryMssqlLogShippingTargets();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // queryMssqlInstances.
+        internal void ProcessRecord_QueryInstances()
+        {
+            this._logger.name += " -QueryInstances";
+            // Create new graphql operation queryMssqlInstances
+            InitQueryQueryMssqlInstances();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1069,6 +1276,87 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.MssqlAvailabilityGroupFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // mssqlAvailabilityGroupDatabaseVirtualGroups(first: Int, after: String, fids: [UUID!]!): MssqlDatabaseVirtualGroupConnection!
+        internal void InitQueryMssqlAvailabilityGroupDatabaseVirtualGroups()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("fids", "[UUID!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryMssqlAvailabilityGroupDatabaseVirtualGroups",
+                "($first: Int,$after: String,$fids: [UUID!]!)",
+                "MssqlDatabaseVirtualGroupConnection",
+                Query.MssqlAvailabilityGroupDatabaseVirtualGroups,
+                Query.MssqlAvailabilityGroupDatabaseVirtualGroupsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# REQUIRED
+$query.Var.fids = @(
+	$someString
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // mssqlAvailabilityGroupVirtualGroups(
+        //     first: Int
+        //     after: String
+        //     filters: [MssqlAvailabilityGroupVirtualGroupFilterInput!]
+        //     sortBy: MssqlAvailabilityGroupVirtualGroupSortByInput
+        //     sortOrder: MssqlAvailabilityGroupVirtualGroupSortOrderInput
+        //   ): MssqlAvailabilityGroupVirtualGroupConnection!
+        internal void InitQueryMssqlAvailabilityGroupVirtualGroups()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("filters", "[MssqlAvailabilityGroupVirtualGroupFilterInput!]"),
+                Tuple.Create("sortBy", "MssqlAvailabilityGroupVirtualGroupSortByInput"),
+                Tuple.Create("sortOrder", "MssqlAvailabilityGroupVirtualGroupSortOrderInput"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryMssqlAvailabilityGroupVirtualGroups",
+                "($first: Int,$after: String,$filters: [MssqlAvailabilityGroupVirtualGroupFilterInput!],$sortBy: MssqlAvailabilityGroupVirtualGroupSortByInput,$sortOrder: MssqlAvailabilityGroupVirtualGroupSortOrderInput)",
+                "MssqlAvailabilityGroupVirtualGroupConnection",
+                Query.MssqlAvailabilityGroupVirtualGroups,
+                Query.MssqlAvailabilityGroupVirtualGroupsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.filters = @(
+	@{
+		# OPTIONAL
+		field = $someMssqlAvailabilityGroupVirtualGroupFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlAvailabilityGroupVirtualGroupFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+}
+)
+# OPTIONAL
+$query.Var.sortBy = @{
+	# OPTIONAL
+	field = $someMssqlAvailabilityGroupVirtualGroupSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlAvailabilityGroupVirtualGroupSortByField]) for enum values.
+}
+# OPTIONAL
+$query.Var.sortOrder = @{
+	# OPTIONAL
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}"
             );
         }
 
@@ -1526,6 +1814,31 @@ $query.Var.fid = $someString"
         }
 
         // Create new GraphQL Query:
+        // mssqlJobStatus(input: GetMssqlAsyncRequestStatusInput!): AsyncRequestStatus!
+        internal void InitQueryMssqlJobStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetMssqlAsyncRequestStatusInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryMssqlJobStatus",
+                "($input: GetMssqlAsyncRequestStatusInput!)",
+                "AsyncRequestStatus",
+                Query.MssqlJobStatus,
+                Query.MssqlJobStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // mssqlLogShippingTargets(input: QueryLogShippingConfigurationsV2Input!): MssqlLogShippingSummaryV2ListResponse
         internal void InitQueryMssqlLogShippingTargets()
         {
@@ -1560,6 +1873,35 @@ $query.Var.input = @{
 	sortOrder = $someV2QueryLogShippingConfigurationsV2RequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2QueryLogShippingConfigurationsV2RequestSortOrder]) for enum values.
 	# OPTIONAL
 	status = $someV2QueryLogShippingConfigurationsV2RequestStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2QueryLogShippingConfigurationsV2RequestStatus]) for enum values.
+	# REQUIRED
+	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // queryMssqlInstances(input: QueryMssqlInstanceInput!): MssqlInstanceSummaryListResponse
+        internal void InitQueryQueryMssqlInstances()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "QueryMssqlInstanceInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryQueryMssqlInstances",
+                "($input: QueryMssqlInstanceInput!)",
+                "MssqlInstanceSummaryListResponse",
+                Query.QueryMssqlInstances,
+                Query.QueryMssqlInstancesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	rootId = $someString
+	# OPTIONAL
+	primaryClusterId = $someString
+	# OPTIONAL
+	snappableStatus = $someQueryMssqlInstanceRequestWorkloadStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryMssqlInstanceRequestWorkloadStatus]) for enum values.
 	# REQUIRED
 	clusterUuid = $someString
 }"

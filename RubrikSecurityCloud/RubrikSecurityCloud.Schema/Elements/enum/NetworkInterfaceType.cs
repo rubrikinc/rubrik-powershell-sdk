@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         NETWORK_INTERFACE_TYPE_OTHER,
 
         [EnumMember(Value = "NETWORK_INTERFACE_TYPE_SERVICE")]
-        NETWORK_INTERFACE_TYPE_SERVICE
+        NETWORK_INTERFACE_TYPE_SERVICE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum NetworkInterfaceType

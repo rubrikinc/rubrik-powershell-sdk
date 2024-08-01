@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         MANAGED_VOLUME_SHARE_TYPE_NFS,
 
         [EnumMember(Value = "MANAGED_VOLUME_SHARE_TYPE_SMB")]
-        MANAGED_VOLUME_SHARE_TYPE_SMB
+        MANAGED_VOLUME_SHARE_TYPE_SMB,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ManagedVolumeShareType

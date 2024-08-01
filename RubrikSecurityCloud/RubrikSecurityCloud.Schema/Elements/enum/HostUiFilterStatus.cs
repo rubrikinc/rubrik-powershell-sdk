@@ -49,7 +49,10 @@ namespace RubrikSecurityCloud.Types
         HOST_UI_FILTER_STATUS_UPGRADE_IN_PROGRESS,
 
         [EnumMember(Value = "HOST_UI_FILTER_STATUS_UPGRADE_NEEDED")]
-        HOST_UI_FILTER_STATUS_UPGRADE_NEEDED
+        HOST_UI_FILTER_STATUS_UPGRADE_NEEDED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HostUiFilterStatus

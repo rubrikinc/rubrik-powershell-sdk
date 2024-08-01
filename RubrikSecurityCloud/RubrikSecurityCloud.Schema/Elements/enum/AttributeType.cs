@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         EXTENSION_ATTRIBUTES,
 
         [EnumMember(Value = "SCHEMA_EXTENSION_ATTRIBUTES")]
-        SCHEMA_EXTENSION_ATTRIBUTES
+        SCHEMA_EXTENSION_ATTRIBUTES,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AttributeType

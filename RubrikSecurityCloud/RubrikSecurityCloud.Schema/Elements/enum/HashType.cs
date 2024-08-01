@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         HASH_TYPE_SH_A1,
 
         [EnumMember(Value = "HASH_TYPE_SH_A256")]
-        HASH_TYPE_SH_A256
+        HASH_TYPE_SH_A256,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HashType

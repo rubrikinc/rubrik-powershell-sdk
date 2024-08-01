@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         FULL_SUCCESS,
 
         [EnumMember(Value = "PARTIAL_SUCCESS")]
-        PARTIAL_SUCCESS
+        PARTIAL_SUCCESS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnapshotServiceBackupStatus

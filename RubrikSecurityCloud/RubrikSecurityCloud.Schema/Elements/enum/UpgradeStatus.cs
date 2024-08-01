@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         UPGRADE_SUCCESS,
 
         [EnumMember(Value = "UPGRADE_UNSUPPORTED")]
-        UPGRADE_UNSUPPORTED
+        UPGRADE_UNSUPPORTED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UpgradeStatus

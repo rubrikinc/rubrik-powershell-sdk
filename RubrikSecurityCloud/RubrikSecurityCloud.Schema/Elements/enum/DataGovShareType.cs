@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SMB,
 
         [EnumMember(Value = "UNKNOWN_SHARE_TYPE")]
-        UNKNOWN_SHARE_TYPE
+        UNKNOWN_SHARE_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DataGovShareType

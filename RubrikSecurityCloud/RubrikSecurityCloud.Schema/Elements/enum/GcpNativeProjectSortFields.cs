@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         GCP_PROJECT_ORG_NAME,
 
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GcpNativeProjectSortFields

@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         US_ISO_EAST_1,
 
         [EnumMember(Value = "US_ISO_WEST_1")]
-        US_ISO_WEST_1
+        US_ISO_WEST_1,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsAuthServerBasedCloudAccountRegion

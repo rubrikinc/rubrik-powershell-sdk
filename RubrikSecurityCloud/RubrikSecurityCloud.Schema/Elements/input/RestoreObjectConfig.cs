@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hierarchyType")]
         public ExchangeItemHierarchyType? HierarchyType { get; set; }
 
+        //      C# -> System.String? ParentFolderId
+        // GraphQL -> parentFolderId: String (scalar)
+        [JsonProperty("parentFolderId")]
+        public System.String? ParentFolderId { get; set; }
+
 
         #endregion
 

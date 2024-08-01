@@ -1,0 +1,51 @@
+### CustomReportFilters
+Filter configs for a report.
+
+- activityObjectType: list of ActivityObjectTypeEnums
+  - List of activity object types to filter on.
+- objectType: list of ObjectTypeEnums
+  - List of snappable types to filter on.
+- lastActivityStatus: list of ActivityStatusEnums
+  - List of activity statuses to filter on.
+- lastActivityType: list of ActivityTypeEnums
+  - List of activity types to filter on.
+- clusterType: list of ClusterTypeEnums
+  - List of cluster types to filter on.
+- cluster: list of Clusters
+  - List of clusters to filter on.
+- timeRange: GenericTimeRange
+  - Start and end time range to filter data on.
+- slaTimeRange: SlaComplianceTimeRange
+  - The time range for SLA Domain compliance report.
+- orgId: list of System.Strings
+  - List of organization IDs to filter on.
+- managedId: list of System.Strings
+  - List of managed ids to filter data on.
+- isAnomaly: System.Boolean
+  - Anomalous value to filter data on.
+- searchTerm: System.String
+- complianceStatus: list of ComplianceStatusEnums
+- protectionStatus: list of ProtectionStatusEnums
+- failoverStatus: list of FailoverStatusEnums
+- failoverType: FailoverTypeEnum
+- source: list of System.Strings
+- targetSite: list of System.Strings
+- userAuditObjectType: list of UserAuditObjectTypeEnums
+  - List of object types to filter on for Audits.
+- userAuditType: list of UserAuditTypeEnums
+  - List of user audit types to filter on.
+- userAuditStatus: list of UserAuditStatusEnums
+  - List of user audit status to filter on.
+- replicationSource: list of System.Strings
+- clusterLocation: list of System.Strings
+- taskCategory: list of System.Strings
+- taskStatus: list of System.Strings
+- taskType: list of System.Strings
+- policyId: list of System.Strings
+  - List of policy IDs to filter on.
+- sonarObjectTypes: list of HierarchyObjectTypeEnums
+- shouldApplyWhitelists: System.Boolean
+  - Whether to apply whitelists for the report.
+- date: DateTime
+  - The date for the report.
+- slaDomain: list of SlaDomains

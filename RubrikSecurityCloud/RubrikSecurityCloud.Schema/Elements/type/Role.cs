@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("protectableClusters")]
         public List<System.String>? ProtectableClusters { get; set; }
 
+        //      C# -> List<Permission>? EffectivePermissions
+        // GraphQL -> effectivePermissions: [Permission!]! (type)
+        [JsonProperty("effectivePermissions")]
+        public List<Permission>? EffectivePermissions { get; set; }
+
         //      C# -> List<RbacPermission>? EffectiveRbacPermissions
         // GraphQL -> effectiveRbacPermissions: [RbacPermission!]! (type)
         [JsonProperty("effectiveRbacPermissions")]
@@ -87,6 +92,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.String? OrgId = null,
         List<System.String>? ProtectableClusters = null,
+        List<Permission>? EffectivePermissions = null,
         List<RbacPermission>? EffectiveRbacPermissions = null,
         List<Permission>? ExplicitlyAssignedPermissions = null,
         List<Permission>? Permissions = null
@@ -112,6 +118,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ProtectableClusters != null ) {
             this.ProtectableClusters = ProtectableClusters;
+        }
+        if ( EffectivePermissions != null ) {
+            this.EffectivePermissions = EffectivePermissions;
         }
         if ( EffectiveRbacPermissions != null ) {
             this.EffectiveRbacPermissions = EffectiveRbacPermissions;
@@ -197,6 +206,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "protectableClusters\n" ;
             } else {
                 s += ind + "protectableClusters\n" ;
+            }
+        }
+        //      C# -> List<Permission>? EffectivePermissions
+        // GraphQL -> effectivePermissions: [Permission!]! (type)
+        if (this.EffectivePermissions != null) {
+            var fspec = this.EffectivePermissions.AsFieldSpec(conf.Child("effectivePermissions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectivePermissions" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<RbacPermission>? EffectiveRbacPermissions
@@ -360,6 +381,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ProtectableClusters != null && ec.Excludes("protectableClusters",true))
         {
             this.ProtectableClusters = null;
+        }
+        //      C# -> List<Permission>? EffectivePermissions
+        // GraphQL -> effectivePermissions: [Permission!]! (type)
+        if (ec.Includes("effectivePermissions",false))
+        {
+            if(this.EffectivePermissions == null) {
+
+                this.EffectivePermissions = new List<Permission>();
+                this.EffectivePermissions.ApplyExploratoryFieldSpec(ec.NewChild("effectivePermissions"));
+
+            } else {
+
+                this.EffectivePermissions.ApplyExploratoryFieldSpec(ec.NewChild("effectivePermissions"));
+
+            }
+        }
+        else if (this.EffectivePermissions != null && ec.Excludes("effectivePermissions",false))
+        {
+            this.EffectivePermissions = null;
         }
         //      C# -> List<RbacPermission>? EffectiveRbacPermissions
         // GraphQL -> effectiveRbacPermissions: [RbacPermission!]! (type)

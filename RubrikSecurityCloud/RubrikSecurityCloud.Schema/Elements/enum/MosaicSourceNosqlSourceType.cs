@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         MONGODB,
 
         [EnumMember(Value = "UNDEFINED")]
-        UNDEFINED
+        UNDEFINED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MosaicSourceNosqlSourceType

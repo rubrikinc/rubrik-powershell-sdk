@@ -1,0 +1,31 @@
+### ProtectionSummary
+Protection summary.
+
+- totalVmwareVmsWithSlaProtection: System.Int32
+  - Total number of VMware virtual machines with SLA protection.
+- numVmwareVmsCoveredByRecoveryPlan: System.Int32
+  - Number of VMware virtual machines covered by Recovery Plan.
+- totalIrPlans: System.Int32
+  - Total number of Isolated Recovery Plans.
+- totalDrPlans: System.Int32
+  - Total number of Disaster Recovery Plans.
+- totalLrPlans: System.Int32
+  - Total number of Local Recovery Plans.
+- totalIrPlansWithTestScheduled: System.Int32
+  - Total number of Isolated Recovery Plans with test scheduled.
+- totalDrPlansWithTestScheduled: System.Int32
+  - Total number of Disaster Recovery Plans with test scheduled.
+- numDrPlansFailedLastQuarter: System.Int32
+  - Number of Disaster Recovery Plans failed to test or recover last quarter.
+- numDrPlansSucceededLastQuarter: System.Int32
+  - Number of Disaster Recovery Plans succeeded to test or recover last quarter.
+- numIrPlansFailedLastQuarter: System.Int32
+  - Number of Isolated Recovery Plans failed to test or recover last quarter.
+- numIrPlansSucceededLastQuarter: System.Int32
+  - Number of Isolated Recovery Plans succeeded to test or recover last quarter.
+- numLrPlansFailedLastQuarter: System.Int32
+  - Number of Local Recovery Plans failed to test or recover last quarter.
+- numLrPlansSucceededLastQuarter: System.Int32
+  - Number of Local Recovery Plans succeeded to test or recover last quarter.
+- numDrPlansHasConfigError: System.Int32
+  - Number of Disaster Recovery Plans that have configuration errors.

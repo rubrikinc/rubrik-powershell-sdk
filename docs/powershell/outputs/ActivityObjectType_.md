@@ -1,0 +1,2 @@
+### ActivityObjectType
+- enumValue: ActivityObjectTypeEnum

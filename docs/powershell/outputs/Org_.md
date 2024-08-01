@@ -1,0 +1,43 @@
+### Org
+Details of an org.
+
+- id: System.String
+  - ID of the organization.
+- name: System.String
+  - Name of the organization.
+- description: System.String
+  - Description of the organization.
+- fullName: System.String
+  - Full name of the organization.
+- authDomainConfig: TenantAuthDomainConfig
+  - Specifies whether to use the SSO/LDAP configuration of the global organization or to use configuration specific to this organization.
+- shouldEnforceMfaForAll: System.Boolean
+  - Specifies whether MFA is enforced for all users in the organization.
+- isEnvoyRequired: System.Boolean
+  - Specifies whether organization is forced to use Rubrik Envoy to connect their hosts.
+- allowedClusters: list of System.Strings
+  - Allowed clusters for the organization.
+- tenantNetworkHealth: TenantNetworkHealth
+  - Health of the tenant networks associated with the organization.
+- hasOwnIdpConfigured: System.Boolean
+  - Specifies whether this tenant organization has configured its own identity providers.
+- isServiceAccountDisabled: System.Boolean
+  - Specifies whether service accounts are not enabled for this organization.
+- orgAdminRole: Role
+  - Organization admin role.
+- users: list of ExistingUsers
+  - Existing users in the organization.
+- permissions: list of Permissions
+  - Permissions given to the organization.
+- selfServicePermissions: list of SelfServicePermissions
+  - Self-service permissions assigned to the organization.
+- ssoGroups: list of SsoGroups
+  - SSO groups authorized for the organization.
+- physicalStorageUsed: System.Int64
+  - Physical storage used by the organization.
+- allUrls: list of System.Strings
+  - All URLs associated with the organization.
+- allClusterCapacityQuotas: list of ClusterWithCapacityQuotas
+  - All cluster capacity quotas enforced on the organization.
+- crossAccountCapabilities: list of CrossAccountCapabilitys
+  - Specifies cross-account capabilities enabled for this organization.

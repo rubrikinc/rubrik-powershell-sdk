@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         GCP,
 
         [EnumMember(Value = "ON_PREM")]
-        ON_PREM
+        ON_PREM,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum K8sClusterType

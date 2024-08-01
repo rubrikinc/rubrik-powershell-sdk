@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         SCALITY,
 
         [EnumMember(Value = "TYPE_UNSPECIFIED")]
-        TYPE_UNSPECIFIED
+        TYPE_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum S3CompatibleSubType

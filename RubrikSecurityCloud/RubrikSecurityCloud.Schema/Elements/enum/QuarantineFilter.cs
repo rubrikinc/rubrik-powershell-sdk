@@ -16,7 +16,10 @@ namespace RubrikSecurityCloud.Types
     public enum QuarantineFilter
     {
         [EnumMember(Value = "INCLUDE_ONLY_QUARANTINE")]
-        INCLUDE_ONLY_QUARANTINE
+        INCLUDE_ONLY_QUARANTINE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum QuarantineFilter

@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         START_TIME,
 
         [EnumMember(Value = "TargetSiteName")]
-        TARGET_SITE_NAME
+        TARGET_SITE_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FailoverSortByEnum

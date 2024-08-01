@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         DO_NOT_PROTECT,
 
         [EnumMember(Value = "PROTECT_WITH_SLA_ID")]
-        PROTECT_WITH_SLA_ID
+        PROTECT_WITH_SLA_ID,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TagRuleSlaAssignType
