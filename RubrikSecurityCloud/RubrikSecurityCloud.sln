@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.PowerShell", "RubrikSecurityCloud.PowerShell\RubrikSecurityCloud.PowerShell.csproj", "{299AA422-2BD2-44B0-8AB7-32BAC6AAEDCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RubrikSecurityCloud.PowerShell", "RubrikSecurityCloud.PowerShell\RubrikSecurityCloud.PowerShell.csproj", "{299AA422-2BD2-44B0-8AB7-32BAC6AAEDCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Client", "RubrikSecurityCloud.Client\RubrikSecurityCloud.Client.csproj", "{31BC8B67-8AF6-4EF3-918E-F623508A4E4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RubrikSecurityCloud.Client", "RubrikSecurityCloud.Client\RubrikSecurityCloud.Client.csproj", "{31BC8B67-8AF6-4EF3-918E-F623508A4E4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Schema", "RubrikSecurityCloud.Schema\RubrikSecurityCloud.Schema.csproj", "{0E9D7EC7-E238-46F7-AADF-CD94C4B0C2E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RubrikSecurityCloud.Schema", "RubrikSecurityCloud.Schema\RubrikSecurityCloud.Schema.csproj", "{0E9D7EC7-E238-46F7-AADF-CD94C4B0C2E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Common.Tests", "RubrikSecurityCloud.Common.Tests\RubrikSecurityCloud.Common.Tests.csproj", "{42975AE7-8245-46C5-9566-D23C71FAF6E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RubrikSecurityCloud.Common.Tests", "RubrikSecurityCloud.Common.Tests\RubrikSecurityCloud.Common.Tests.csproj", "{42975AE7-8245-46C5-9566-D23C71FAF6E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Common", "RubrikSecurityCloud.Common\RubrikSecurityCloud.Common.csproj", "{58FD176D-FB34-44D2-BD77-6C1F278FEE19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RubrikSecurityCloud.Common", "RubrikSecurityCloud.Common\RubrikSecurityCloud.Common.csproj", "{58FD176D-FB34-44D2-BD77-6C1F278FEE19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Client.Tests", "RubrikSecurityCloud.Client.Tests\RubrikSecurityCloud.Client.Tests.csproj", "{0170091A-FFA0-452B-BDBC-DB03792BD7ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{58FD176D-FB34-44D2-BD77-6C1F278FEE19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58FD176D-FB34-44D2-BD77-6C1F278FEE19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58FD176D-FB34-44D2-BD77-6C1F278FEE19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0170091A-FFA0-452B-BDBC-DB03792BD7ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0170091A-FFA0-452B-BDBC-DB03792BD7ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0170091A-FFA0-452B-BDBC-DB03792BD7ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0170091A-FFA0-452B-BDBC-DB03792BD7ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,16 +56,14 @@ Global
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
-		$0.TextStylePolicy = $2
+		$0.TextStylePolicy = $5
 		$2.inheritsSet = null
 		$2.scope = text/x-csharp
 		$0.CSharpFormattingPolicy = $3
 		$3.scope = text/x-csharp
-		$0.TextStylePolicy = $4
 		$4.FileWidth = 80
 		$4.TabsToSpaces = True
 		$4.scope = text/plain
-		$0.TextStylePolicy = $5
 		$5.inheritsSet = null
 		$5.scope = application/xml
 		$0.XmlFormattingPolicy = $6
