@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("frequency")]
         public List<RetentionUnit>? Frequency { get; set; }
 
+        //      C# -> List<ArchivalLocationToClusterMappingInput>? ArchivalLocationToClusterMapping
+        // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMappingInput!] (input)
+        [JsonProperty("archivalLocationToClusterMapping")]
+        public List<ArchivalLocationToClusterMappingInput>? ArchivalLocationToClusterMapping { get; set; }
+
 
         #endregion
 

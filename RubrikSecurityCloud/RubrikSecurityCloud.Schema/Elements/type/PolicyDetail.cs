@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analyzers")]
         public System.Int32? Analyzers { get; set; }
 
+        //      C# -> List<System.String>? DataTypeIds
+        // GraphQL -> dataTypeIds: [String!]! (scalar)
+        [JsonProperty("dataTypeIds")]
+        public List<System.String>? DataTypeIds { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         [JsonProperty("description")]
@@ -45,10 +50,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.Int32? ObjectsPercentCoverage
+        // GraphQL -> objectsPercentCoverage: Int! (scalar)
+        [JsonProperty("objectsPercentCoverage")]
+        public System.Int32? ObjectsPercentCoverage { get; set; }
+
         //      C# -> System.Int32? PendingAnalysisObjects
         // GraphQL -> pendingAnalysisObjects: Int! (scalar)
         [JsonProperty("pendingAnalysisObjects")]
         public System.Int32? PendingAnalysisObjects { get; set; }
+
+        //      C# -> System.Int64? TotalHits
+        // GraphQL -> totalHits: Long! (scalar)
+        [JsonProperty("totalHits")]
+        public System.Int64? TotalHits { get; set; }
 
         //      C# -> System.Int32? TotalObjects
         // GraphQL -> totalObjects: Int! (scalar)
@@ -71,17 +86,23 @@ namespace RubrikSecurityCloud.Types
 
     public PolicyDetail Set(
         System.Int32? Analyzers = null,
+        List<System.String>? DataTypeIds = null,
         System.String? Description = null,
         System.String? Id = null,
         System.Int64? LastUpdatedTime = null,
         System.String? Name = null,
+        System.Int32? ObjectsPercentCoverage = null,
         System.Int32? PendingAnalysisObjects = null,
+        System.Int64? TotalHits = null,
         System.Int32? TotalObjects = null,
         User? Creator = null
     ) 
     {
         if ( Analyzers != null ) {
             this.Analyzers = Analyzers;
+        }
+        if ( DataTypeIds != null ) {
+            this.DataTypeIds = DataTypeIds;
         }
         if ( Description != null ) {
             this.Description = Description;
@@ -95,8 +116,14 @@ namespace RubrikSecurityCloud.Types
         if ( Name != null ) {
             this.Name = Name;
         }
+        if ( ObjectsPercentCoverage != null ) {
+            this.ObjectsPercentCoverage = ObjectsPercentCoverage;
+        }
         if ( PendingAnalysisObjects != null ) {
             this.PendingAnalysisObjects = PendingAnalysisObjects;
+        }
+        if ( TotalHits != null ) {
+            this.TotalHits = TotalHits;
         }
         if ( TotalObjects != null ) {
             this.TotalObjects = TotalObjects;
@@ -125,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "analyzers\n" ;
             } else {
                 s += ind + "analyzers\n" ;
+            }
+        }
+        //      C# -> List<System.String>? DataTypeIds
+        // GraphQL -> dataTypeIds: [String!]! (scalar)
+        if (this.DataTypeIds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dataTypeIds\n" ;
+            } else {
+                s += ind + "dataTypeIds\n" ;
             }
         }
         //      C# -> System.String? Description
@@ -163,6 +199,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
+        //      C# -> System.Int32? ObjectsPercentCoverage
+        // GraphQL -> objectsPercentCoverage: Int! (scalar)
+        if (this.ObjectsPercentCoverage != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectsPercentCoverage\n" ;
+            } else {
+                s += ind + "objectsPercentCoverage\n" ;
+            }
+        }
         //      C# -> System.Int32? PendingAnalysisObjects
         // GraphQL -> pendingAnalysisObjects: Int! (scalar)
         if (this.PendingAnalysisObjects != null) {
@@ -170,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "pendingAnalysisObjects\n" ;
             } else {
                 s += ind + "pendingAnalysisObjects\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalHits
+        // GraphQL -> totalHits: Long! (scalar)
+        if (this.TotalHits != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalHits\n" ;
+            } else {
+                s += ind + "totalHits\n" ;
             }
         }
         //      C# -> System.Int32? TotalObjects
@@ -216,6 +270,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Analyzers != null && ec.Excludes("analyzers",true))
         {
             this.Analyzers = null;
+        }
+        //      C# -> List<System.String>? DataTypeIds
+        // GraphQL -> dataTypeIds: [String!]! (scalar)
+        if (ec.Includes("dataTypeIds",true))
+        {
+            if(this.DataTypeIds == null) {
+
+                this.DataTypeIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DataTypeIds != null && ec.Excludes("dataTypeIds",true))
+        {
+            this.DataTypeIds = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
@@ -285,6 +356,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Name = null;
         }
+        //      C# -> System.Int32? ObjectsPercentCoverage
+        // GraphQL -> objectsPercentCoverage: Int! (scalar)
+        if (ec.Includes("objectsPercentCoverage",true))
+        {
+            if(this.ObjectsPercentCoverage == null) {
+
+                this.ObjectsPercentCoverage = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectsPercentCoverage != null && ec.Excludes("objectsPercentCoverage",true))
+        {
+            this.ObjectsPercentCoverage = null;
+        }
         //      C# -> System.Int32? PendingAnalysisObjects
         // GraphQL -> pendingAnalysisObjects: Int! (scalar)
         if (ec.Includes("pendingAnalysisObjects",true))
@@ -301,6 +389,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PendingAnalysisObjects != null && ec.Excludes("pendingAnalysisObjects",true))
         {
             this.PendingAnalysisObjects = null;
+        }
+        //      C# -> System.Int64? TotalHits
+        // GraphQL -> totalHits: Long! (scalar)
+        if (ec.Includes("totalHits",true))
+        {
+            if(this.TotalHits == null) {
+
+                this.TotalHits = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalHits != null && ec.Excludes("totalHits",true))
+        {
+            this.TotalHits = null;
         }
         //      C# -> System.Int32? TotalObjects
         // GraphQL -> totalObjects: Int! (scalar)

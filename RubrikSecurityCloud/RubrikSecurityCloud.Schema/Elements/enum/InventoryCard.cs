@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MSSQL")]
         MSSQL,
 
+        [EnumMember(Value = "MYSQL")]
+        MYSQL,
+
         [EnumMember(Value = "NAS_SHARES")]
         NAS_SHARES,
 

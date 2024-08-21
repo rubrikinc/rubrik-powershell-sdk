@@ -21,12 +21,12 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> System.Int64? CapacityEntitledInBytes
-        // GraphQL -> capacityEntitledInBytes: Long! (scalar)
+        // GraphQL -> capacityEntitledInBytes: Long (scalar)
         [JsonProperty("capacityEntitledInBytes")]
         public System.Int64? CapacityEntitledInBytes { get; set; }
 
         //      C# -> System.Int64? UsersEntitled
-        // GraphQL -> usersEntitled: Long! (scalar)
+        // GraphQL -> usersEntitled: Long (scalar)
         [JsonProperty("usersEntitled")]
         public System.Int64? UsersEntitled { get; set; }
 
@@ -65,7 +65,7 @@ namespace RubrikSecurityCloud.Types
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? CapacityEntitledInBytes
-        // GraphQL -> capacityEntitledInBytes: Long! (scalar)
+        // GraphQL -> capacityEntitledInBytes: Long (scalar)
         if (this.CapacityEntitledInBytes != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "capacityEntitledInBytes\n" ;
@@ -74,7 +74,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.Int64? UsersEntitled
-        // GraphQL -> usersEntitled: Long! (scalar)
+        // GraphQL -> usersEntitled: Long (scalar)
         if (this.UsersEntitled != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "usersEntitled\n" ;
@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? CapacityEntitledInBytes
-        // GraphQL -> capacityEntitledInBytes: Long! (scalar)
+        // GraphQL -> capacityEntitledInBytes: Long (scalar)
         if (ec.Includes("capacityEntitledInBytes",true))
         {
             if(this.CapacityEntitledInBytes == null) {
@@ -107,7 +107,7 @@ namespace RubrikSecurityCloud.Types
             this.CapacityEntitledInBytes = null;
         }
         //      C# -> System.Int64? UsersEntitled
-        // GraphQL -> usersEntitled: Long! (scalar)
+        // GraphQL -> usersEntitled: Long (scalar)
         if (ec.Includes("usersEntitled",true))
         {
             if(this.UsersEntitled == null) {

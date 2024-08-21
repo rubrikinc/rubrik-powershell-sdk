@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KOREASOUTH")]
         KOREASOUTH,
 
+        [EnumMember(Value = "MEXICOCENTRAL")]
+        MEXICOCENTRAL,
+
         [EnumMember(Value = "NORTHCENTRALUS")]
         NORTHCENTRALUS,
 
@@ -125,6 +128,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SOUTHINDIA")]
         SOUTHINDIA,
+
+        [EnumMember(Value = "SPAINCENTRAL")]
+        SPAINCENTRAL,
 
         [EnumMember(Value = "SWEDENCENTRAL")]
         SWEDENCENTRAL,

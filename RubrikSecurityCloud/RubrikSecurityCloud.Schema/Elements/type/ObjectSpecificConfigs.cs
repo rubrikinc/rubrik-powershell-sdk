@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mssqlConfig")]
         public MssqlConfig? MssqlConfig { get; set; }
 
+        //      C# -> MysqldbSlaConfig? MysqldbSlaConfig
+        // GraphQL -> mysqldbSlaConfig: MysqldbSlaConfig (type)
+        [JsonProperty("mysqldbSlaConfig")]
+        public MysqldbSlaConfig? MysqldbSlaConfig { get; set; }
+
         //      C# -> OracleConfig? OracleConfig
         // GraphQL -> oracleConfig: OracleConfig (type)
         [JsonProperty("oracleConfig")]
@@ -104,6 +109,7 @@ namespace RubrikSecurityCloud.Types
         ManagedVolumeSlaConfig? ManagedVolumeSlaConfig = null,
         MongoConfig? MongoConfig = null,
         MssqlConfig? MssqlConfig = null,
+        MysqldbSlaConfig? MysqldbSlaConfig = null,
         OracleConfig? OracleConfig = null,
         PostgresDbClusterSlaConfig? PostgresDbClusterSlaConfig = null,
         SapHanaConfig? SapHanaConfig = null,
@@ -136,6 +142,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MssqlConfig != null ) {
             this.MssqlConfig = MssqlConfig;
+        }
+        if ( MysqldbSlaConfig != null ) {
+            this.MysqldbSlaConfig = MysqldbSlaConfig;
         }
         if ( OracleConfig != null ) {
             this.OracleConfig = OracleConfig;
@@ -268,6 +277,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "mssqlConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> MysqldbSlaConfig? MysqldbSlaConfig
+        // GraphQL -> mysqldbSlaConfig: MysqldbSlaConfig (type)
+        if (this.MysqldbSlaConfig != null) {
+            var fspec = this.MysqldbSlaConfig.AsFieldSpec(conf.Child("mysqldbSlaConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mysqldbSlaConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -496,6 +517,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.MssqlConfig != null && ec.Excludes("mssqlConfig",false))
         {
             this.MssqlConfig = null;
+        }
+        //      C# -> MysqldbSlaConfig? MysqldbSlaConfig
+        // GraphQL -> mysqldbSlaConfig: MysqldbSlaConfig (type)
+        if (ec.Includes("mysqldbSlaConfig",false))
+        {
+            if(this.MysqldbSlaConfig == null) {
+
+                this.MysqldbSlaConfig = new MysqldbSlaConfig();
+                this.MysqldbSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("mysqldbSlaConfig"));
+
+            } else {
+
+                this.MysqldbSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("mysqldbSlaConfig"));
+
+            }
+        }
+        else if (this.MysqldbSlaConfig != null && ec.Excludes("mysqldbSlaConfig",false))
+        {
+            this.MysqldbSlaConfig = null;
         }
         //      C# -> OracleConfig? OracleConfig
         // GraphQL -> oracleConfig: OracleConfig (type)

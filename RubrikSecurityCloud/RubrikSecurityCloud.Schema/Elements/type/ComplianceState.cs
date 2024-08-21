@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("compliancePercentage")]
         public System.Int32? CompliancePercentage { get; set; }
 
+        //      C# -> DateTime? LastComplianceUpdateTime
+        // GraphQL -> lastComplianceUpdateTime: DateTime (scalar)
+        [JsonProperty("lastComplianceUpdateTime")]
+        public DateTime? LastComplianceUpdateTime { get; set; }
+
         //      C# -> System.String? LowComplianceReason
         // GraphQL -> lowComplianceReason: String! (scalar)
         [JsonProperty("lowComplianceReason")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public ComplianceState Set(
         System.Int32? CompliancePercentage = null,
+        DateTime? LastComplianceUpdateTime = null,
         System.String? LowComplianceReason = null,
         System.Boolean? ShouldAllowSwitchToOnboardingMode = null
     ) 
     {
         if ( CompliancePercentage != null ) {
             this.CompliancePercentage = CompliancePercentage;
+        }
+        if ( LastComplianceUpdateTime != null ) {
+            this.LastComplianceUpdateTime = LastComplianceUpdateTime;
         }
         if ( LowComplianceReason != null ) {
             this.LowComplianceReason = LowComplianceReason;
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "compliancePercentage\n" ;
             } else {
                 s += ind + "compliancePercentage\n" ;
+            }
+        }
+        //      C# -> DateTime? LastComplianceUpdateTime
+        // GraphQL -> lastComplianceUpdateTime: DateTime (scalar)
+        if (this.LastComplianceUpdateTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastComplianceUpdateTime\n" ;
+            } else {
+                s += ind + "lastComplianceUpdateTime\n" ;
             }
         }
         //      C# -> System.String? LowComplianceReason
@@ -123,6 +141,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CompliancePercentage != null && ec.Excludes("compliancePercentage",true))
         {
             this.CompliancePercentage = null;
+        }
+        //      C# -> DateTime? LastComplianceUpdateTime
+        // GraphQL -> lastComplianceUpdateTime: DateTime (scalar)
+        if (ec.Includes("lastComplianceUpdateTime",true))
+        {
+            if(this.LastComplianceUpdateTime == null) {
+
+                this.LastComplianceUpdateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastComplianceUpdateTime != null && ec.Excludes("lastComplianceUpdateTime",true))
+        {
+            this.LastComplianceUpdateTime = null;
         }
         //      C# -> System.String? LowComplianceReason
         // GraphQL -> lowComplianceReason: String! (scalar)

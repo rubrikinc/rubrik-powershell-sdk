@@ -84,6 +84,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("postgresDbClusterSlaConfigInput")]
         public PostgresDbClusterSlaConfigInput? PostgresDbClusterSlaConfigInput { get; set; }
 
+        //      C# -> MysqldbSlaConfigInput? MysqldbConfigInput
+        // GraphQL -> mysqldbConfigInput: MysqldbSlaConfigInput (input)
+        [JsonProperty("mysqldbConfigInput")]
+        public MysqldbSlaConfigInput? MysqldbConfigInput { get; set; }
+
 
         #endregion
 

@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region GlobalSlaReply
  
-    public class GlobalSlaReply: BaseType, SlaDomain, TaskSummaryGroupByInfo
+    public class GlobalSlaReply: BaseType, SlaDomain
     {
         #region members
 

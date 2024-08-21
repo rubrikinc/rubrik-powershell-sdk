@@ -243,6 +243,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DOMAIN_CONTROLLER_FSMO_ROLE")]
         DOMAIN_CONTROLLER_FSMO_ROLE,
 
+        [EnumMember(Value = "DOMAIN_HAS_FOREST")]
+        DOMAIN_HAS_FOREST,
+
         [EnumMember(Value = "EBS_VOLUME_ID")]
         EBS_VOLUME_ID,
 

@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetNetworkInterface")]
         public NetworkInterfaceDetails? TargetNetworkInterface { get; set; }
 
+        //      C# -> NetworkInterfaceSelection? NetworkInterface
+        // GraphQL -> networkInterface: NetworkInterfaceSelection (input)
+        [JsonProperty("networkInterface")]
+        public NetworkInterfaceSelection? NetworkInterface { get; set; }
+
         //      C# -> System.String? SourceClusterUuid
         // GraphQL -> sourceClusterUuid: UUID! (scalar)
         [Required]

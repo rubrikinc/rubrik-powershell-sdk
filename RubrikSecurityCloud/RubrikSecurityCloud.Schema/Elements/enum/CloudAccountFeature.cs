@@ -24,6 +24,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ARCHIVAL")]
         ARCHIVAL,
 
+        [EnumMember(Value = "AZURE_LAMINAR_OUTPOST_APPLICATION")]
+        AZURE_LAMINAR_OUTPOST_APPLICATION,
+
+        [EnumMember(Value = "AZURE_LAMINAR_OUTPOST_MANAGED_IDENTITY")]
+        AZURE_LAMINAR_OUTPOST_MANAGED_IDENTITY,
+
+        [EnumMember(Value = "AZURE_LAMINAR_TARGET_APPLICATION")]
+        AZURE_LAMINAR_TARGET_APPLICATION,
+
+        [EnumMember(Value = "AZURE_LAMINAR_TARGET_MANAGED_IDENTITY")]
+        AZURE_LAMINAR_TARGET_MANAGED_IDENTITY,
+
         [EnumMember(Value = "AZURE_SQL_DB_PROTECTION")]
         AZURE_SQL_DB_PROTECTION,
 

@@ -28,9 +28,6 @@ namespace RubrikSecurityCloud.Types
         PRECHECKS_SUCCESS,
 
         [EnumMember(Value = "Unknown")]
-        UNKNOWN,
-
-        [EnumMember(Value = "UNKNOWN")]
         UNKNOWN
 
 

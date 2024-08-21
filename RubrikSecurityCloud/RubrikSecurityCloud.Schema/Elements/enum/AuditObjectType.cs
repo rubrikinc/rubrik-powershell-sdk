@@ -105,6 +105,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER")]
         CLUSTER,
 
+        [EnumMember(Value = "CONFLUENCE_SPACE")]
+        CONFLUENCE_SPACE,
+
         [EnumMember(Value = "CROSS_ACCOUNT_PAIR")]
         CROSS_ACCOUNT_PAIR,
 
@@ -224,6 +227,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MSSQL_OBJECT")]
         MSSQL_OBJECT,
+
+        [EnumMember(Value = "NAS_FILESET")]
+        NAS_FILESET,
 
         [EnumMember(Value = "NAS_HOST")]
         NAS_HOST,

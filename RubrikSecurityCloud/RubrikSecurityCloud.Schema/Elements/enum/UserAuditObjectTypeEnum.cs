@@ -222,6 +222,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MssqlDatabase")]
         MSSQL_DATABASE,
 
+        [EnumMember(Value = "NAS_FILESET")]
+        NAS_FILESET,
+
         [EnumMember(Value = "NAS_SYSTEM")]
         NAS_SYSTEM,
 
@@ -385,10 +388,7 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_FILESET,
 
         [EnumMember(Value = "WindowsHost")]
-        WINDOWS_HOST,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS_HOST
 
 
     } // enum UserAuditObjectTypeEnum

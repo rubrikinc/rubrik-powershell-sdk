@@ -34,9 +34,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? TagRuleName { get; set; }
 
         //      C# -> TagRuleSlaAssignType? SlaAssignType
-        // GraphQL -> slaAssignType: TagRuleSlaAssignType! (enum)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> slaAssignType: TagRuleSlaAssignType (enum)
         [JsonProperty("slaAssignType")]
         public TagRuleSlaAssignType? SlaAssignType { get; set; }
 

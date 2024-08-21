@@ -66,6 +66,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LINUX_HOST_ROOT")]
         LINUX_HOST_ROOT,
 
+        [EnumMember(Value = "M365_BACKUP_STORAGE_ROOT")]
+        M365_BACKUP_STORAGE_ROOT,
+
         [EnumMember(Value = "MANAGED_VOLUME_ROOT")]
         MANAGED_VOLUME_ROOT,
 
@@ -77,6 +80,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MSSQL_ROOT")]
         MSSQL_ROOT,
+
+        [EnumMember(Value = "MYSQLDB_ROOT")]
+        MYSQLDB_ROOT,
 
         [EnumMember(Value = "NAS_HOST_ROOT")]
         NAS_HOST_ROOT,

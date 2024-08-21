@@ -29,10 +29,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("validIps")]
         public List<System.String>? ValidIps { get; set; }
 
+        //      C# -> System.Int32? MountExpiryInMinutes
+        // GraphQL -> mountExpiryInMinutes: Int (scalar)
+        [JsonProperty("mountExpiryInMinutes")]
+        public System.Int32? MountExpiryInMinutes { get; set; }
+
+        //      C# -> System.String? DomainControllerId
+        // GraphQL -> domainControllerId: String (scalar)
+        [JsonProperty("domainControllerId")]
+        public System.String? DomainControllerId { get; set; }
+
         //      C# -> System.String? Password
         // GraphQL -> password: String (scalar)
         [JsonProperty("password")]
         public System.String? Password { get; set; }
+
+        //      C# -> System.Boolean? ShouldBeWritable
+        // GraphQL -> shouldBeWritable: Boolean (scalar)
+        [JsonProperty("shouldBeWritable")]
+        public System.Boolean? ShouldBeWritable { get; set; }
 
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String (scalar)

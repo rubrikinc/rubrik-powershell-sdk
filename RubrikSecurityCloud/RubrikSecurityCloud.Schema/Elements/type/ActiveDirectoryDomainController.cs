@@ -106,6 +106,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsGlobalCatalog
+        // GraphQL -> isGlobalCatalog: Boolean (scalar)
+        [JsonProperty("isGlobalCatalog")]
+        public System.Boolean? IsGlobalCatalog { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -272,6 +277,8 @@ namespace RubrikSecurityCloud.Types
 
         public RscGqlVars MissedSnapshotGroupByConnection { get; set; }
 
+        public RscGqlVars NewestSnapshot { get; set; }
+
         public RscGqlVars SnapshotConnection { get; set; }
 
         public RscGqlVars SnapshotGroupByConnection { get; set; }
@@ -298,6 +305,11 @@ namespace RubrikSecurityCloud.Types
                 };
             this.MissedSnapshotGroupByConnection =
                 new RscGqlVars(null, missedSnapshotGroupByConnectionArgs, null, true);
+            Tuple<string, string>[] newestSnapshotArgs = {
+                    Tuple.Create("beforeTime", "DateTime"),
+                };
+            this.NewestSnapshot =
+                new RscGqlVars(null, newestSnapshotArgs, null, true);
             Tuple<string, string>[] snapshotConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -363,6 +375,7 @@ namespace RubrikSecurityCloud.Types
         System.String? DomainControllerGuid = null,
         System.String? Hostname = null,
         System.String? Id = null,
+        System.Boolean? IsGlobalCatalog = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -446,6 +459,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsGlobalCatalog != null ) {
+            this.IsGlobalCatalog = IsGlobalCatalog;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -727,6 +743,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
+        //      C# -> System.Boolean? IsGlobalCatalog
+        // GraphQL -> isGlobalCatalog: Boolean (scalar)
+        if (this.IsGlobalCatalog != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isGlobalCatalog\n" ;
+            } else {
+                s += ind + "isGlobalCatalog\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
@@ -945,7 +970,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "newestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "newestSnapshot" + "\n(" + this.Vars.NewestSnapshot.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1406,6 +1431,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsGlobalCatalog
+        // GraphQL -> isGlobalCatalog: Boolean (scalar)
+        if (ec.Includes("isGlobalCatalog",true))
+        {
+            if(this.IsGlobalCatalog == null) {
+
+                this.IsGlobalCatalog = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsGlobalCatalog != null && ec.Excludes("isGlobalCatalog",true))
+        {
+            this.IsGlobalCatalog = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)

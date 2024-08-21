@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivalLocation")]
         public Target? ArchivalLocation { get; set; }
 
+        //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
+        // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!] (type)
+        [JsonProperty("archivalLocationToClusterMapping")]
+        public List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping { get; set; }
+
         //      C# -> Duration? ArchivalThreshold
         // GraphQL -> archivalThreshold: Duration (type)
         [JsonProperty("archivalThreshold")]
@@ -52,6 +57,7 @@ namespace RubrikSecurityCloud.Types
     public CascadingArchivalSpec Set(
         List<RetentionUnit>? Frequency = null,
         Target? ArchivalLocation = null,
+        List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping = null,
         Duration? ArchivalThreshold = null,
         ArchivalTieringSpec? ArchivalTieringSpec = null
     ) 
@@ -61,6 +67,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ArchivalLocation != null ) {
             this.ArchivalLocation = ArchivalLocation;
+        }
+        if ( ArchivalLocationToClusterMapping != null ) {
+            this.ArchivalLocationToClusterMapping = ArchivalLocationToClusterMapping;
         }
         if ( ArchivalThreshold != null ) {
             this.ArchivalThreshold = ArchivalThreshold;
@@ -101,6 +110,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "archivalLocation" + " " + "{\n" + fspec + ind + "}\n";
+                }
+            }
+        }
+        //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
+        // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!] (type)
+        if (this.ArchivalLocationToClusterMapping != null) {
+            var fspec = this.ArchivalLocationToClusterMapping.AsFieldSpec(conf.Child("archivalLocationToClusterMapping"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archivalLocationToClusterMapping" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -175,6 +196,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ArchivalLocation != null && ec.Excludes("archivalLocation",false))
         {
             this.ArchivalLocation = null;
+        }
+        //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
+        // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!] (type)
+        if (ec.Includes("archivalLocationToClusterMapping",false))
+        {
+            if(this.ArchivalLocationToClusterMapping == null) {
+
+                this.ArchivalLocationToClusterMapping = new List<ArchivalLocationToClusterMapping>();
+                this.ArchivalLocationToClusterMapping.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocationToClusterMapping"));
+
+            } else {
+
+                this.ArchivalLocationToClusterMapping.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocationToClusterMapping"));
+
+            }
+        }
+        else if (this.ArchivalLocationToClusterMapping != null && ec.Excludes("archivalLocationToClusterMapping",false))
+        {
+            this.ArchivalLocationToClusterMapping = null;
         }
         //      C# -> Duration? ArchivalThreshold
         // GraphQL -> archivalThreshold: Duration (type)
