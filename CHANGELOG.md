@@ -12,6 +12,7 @@ Fixes:
 - Fixed an issue with access token auto-renewal not being saved in the
   PowerShell session (rseulting in multiple token renew calls).
 - Corrected the -Relic switch in Get-RscVmwareVm to properly filter on relic status.
+- Fixed an issue with mapping UNKNOWN values to schema enums.
 
 ## Version 1.7
 
