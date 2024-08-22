@@ -9,6 +9,8 @@ New Features:
 
 Fixes:
 
+- Fixed issue with publishing SDK to PowerShell Gallery due to
+  PowerShell 5.1 dependencies issues.
 - Fixed an issue with access token auto-renewal not being saved in the
   PowerShell session (rseulting in multiple token renew calls).
 - Corrected the -Relic switch in Get-RscVmwareVm to properly filter on relic status.
