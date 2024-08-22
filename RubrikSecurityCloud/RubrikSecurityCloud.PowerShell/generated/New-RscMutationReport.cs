@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 19
+    /// Create a new RscQuery object for any of the 10
     /// operations in the 'Report' API domain:
-    /// BlueprintFailoverGenerate, Create, CreateCustom, CreatePolaris, CreateScheduled, Delete, DeleteCustom, DeleteScheduledReport, RefreshTrial, SendPdf, SendScheduled, SendScheduledReportAsync, ShareTrial, StartClusterMigrationJob, Update, UpdateCustom, UpdateDatabaseLogingPropertiesForCluster, UpdatePolaris, or UpdateScheduledReport.
+    /// CreateCustom, CreateScheduled, DeleteCustom, DeleteScheduledReport, SendPdf, SendScheduledReportAsync, StartClusterMigrationJob, UpdateCustom, UpdateDatabaseLogingPropertiesForCluster, or UpdateScheduledReport.
     /// </summary>
     /// <description>
     /// New-RscMutationReport creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 19 operations
+    /// There are 10 operations
     /// in the 'Report' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BlueprintFailoverGenerate, Create, CreateCustom, CreatePolaris, CreateScheduled, Delete, DeleteCustom, DeleteScheduledReport, RefreshTrial, SendPdf, SendScheduled, SendScheduledReportAsync, ShareTrial, StartClusterMigrationJob, Update, UpdateCustom, UpdateDatabaseLogingPropertiesForCluster, UpdatePolaris, or UpdateScheduledReport.
+    /// one of: CreateCustom, CreateScheduled, DeleteCustom, DeleteScheduledReport, SendPdf, SendScheduledReportAsync, StartClusterMigrationJob, UpdateCustom, UpdateDatabaseLogingPropertiesForCluster, or UpdateScheduledReport.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationReport -BlueprintFailoverGenerate).Info().
+    /// (New-RscMutationReport -CreateCustom).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,113 +70,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationReport -BlueprintFailoverGenerate).Info().
+    /// (New-RscMutationReport -CreateCustom).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
-    ///
-    /// <example>
-    /// Runs the BlueprintFailoverGenerate operation
-    /// of the 'Report' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Report
-    /// # API Operation: BlueprintFailoverGenerate
-    /// 
-    /// $query = New-RscMutationReport -BlueprintFailoverGenerate
-    /// 
-    /// # REQUIRED
-    /// $query.Var.failoverReportGeneratorJobConfig = @{
-    /// 	# REQUIRED
-    /// 	failoverIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	isNewReportEnabled = $someBoolean
-    /// 	# OPTIONAL
-    /// 	timezoneOffset = $someSingle
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CreateOnDemandJobReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the Create operation
-    /// of the 'Report' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Report
-    /// # API Operation: Create
-    /// 
-    /// $query = New-RscMutationReport -Create
-    /// 
-    /// # REQUIRED
-    /// $query.Var.reportConfig = @{
-    /// 	# REQUIRED
-    /// 	name = $someString
-    /// 	# REQUIRED
-    /// 	dataViewType = $someDataViewTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataViewTypeEnum]) for enum values.
-    /// 	# REQUIRED
-    /// 	columns = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	groupBy = @{
-    /// 		# REQUIRED
-    /// 		groupById = $someString
-    /// 		# REQUIRED
-    /// 		aggregations = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# REQUIRED
-    /// 	aggregations = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	filters = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			name = $someString
-    /// 			# REQUIRED
-    /// 			values = @(
-    /// 				$someString
-    /// 			)
-    /// 		}
-    /// 	)
-    /// 	# REQUIRED
-    /// 	sortBy = $someString
-    /// 	# OPTIONAL
-    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.Int32
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
     ///
     /// <example>
     /// Runs the CreateCustom operation
@@ -384,62 +282,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the CreatePolaris operation
-    /// of the 'Report' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Report
-    /// # API Operation: CreatePolaris
-    /// 
-    /// $query = New-RscMutationReport -CreatePolaris
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	name = $someString
-    /// 	# REQUIRED
-    /// 	reportViewType = $somePolarisReportViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolarisReportViewType]) for enum values.
-    /// 	# OPTIONAL
-    /// 	room = $someReportRoomType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportRoomType]) for enum values.
-    /// 	# REQUIRED
-    /// 	charts = @(
-    /// 		$someChartViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChartViewType]) for enum values.
-    /// 	)
-    /// 	# REQUIRED
-    /// 	table = $someTableViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TableViewType]) for enum values.
-    /// 	# REQUIRED
-    /// 	filters = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			name = $someString
-    /// 			# REQUIRED
-    /// 			values = @(
-    /// 				$someString
-    /// 			)
-    /// 		}
-    /// 	)
-    /// 	# REQUIRED
-    /// 	sortBy = $someString
-    /// 	# OPTIONAL
-    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CreatePolarisReportReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the CreateScheduled operation
     /// of the 'Report' API domain.
     /// <code>
@@ -493,34 +335,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CreateScheduledReportReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the Delete operation
-    /// of the 'Report' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Report
-    /// # API Operation: Delete
-    /// 
-    /// $query = New-RscMutationReport -Delete
-    /// 
-    /// # REQUIRED
-    /// $query.Var.reportID = $someInt
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -593,37 +407,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the RefreshTrial operation
-    /// of the 'Report' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Report
-    /// # API Operation: RefreshTrial
-    /// 
-    /// $query = New-RscMutationReport -RefreshTrial
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	trialId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the SendPdf operation
     /// of the 'Report' API domain.
     /// <code>
@@ -655,45 +438,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: SendPdfReportReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the SendScheduled operation
-    /// of the 'Report' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Report
-    /// # API Operation: SendScheduled
-    /// 
-    /// $query = New-RscMutationReport -SendScheduled
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someInt
-    /// 	# REQUIRED
-    /// 	recipients = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	attachmentTypes = @(
-    /// 		$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.Boolean
     /// 
     /// 
     /// 
@@ -745,41 +489,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the ShareTrial operation
-    /// of the 'Report' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Report
-    /// # API Operation: ShareTrial
-    /// 
-    /// $query = New-RscMutationReport -ShareTrial
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	trialId = $someString
-    /// 	# REQUIRED
-    /// 	recipientEmails = @(
-    /// 		$someString
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ShareTrialReportReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the StartClusterMigrationJob operation
     /// of the 'Report' API domain.
     /// <code>
@@ -805,73 +514,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: StartClusterReportMigrationJobReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the Update operation
-    /// of the 'Report' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Report
-    /// # API Operation: Update
-    /// 
-    /// $query = New-RscMutationReport -Update
-    /// 
-    /// # REQUIRED
-    /// $query.Var.reportID = $someInt
-    /// # REQUIRED
-    /// $query.Var.reportConfig = @{
-    /// 	# REQUIRED
-    /// 	name = $someString
-    /// 	# REQUIRED
-    /// 	dataViewType = $someDataViewTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataViewTypeEnum]) for enum values.
-    /// 	# REQUIRED
-    /// 	columns = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	groupBy = @{
-    /// 		# REQUIRED
-    /// 		groupById = $someString
-    /// 		# REQUIRED
-    /// 		aggregations = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# REQUIRED
-    /// 	aggregations = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	filters = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			name = $someString
-    /// 			# REQUIRED
-    /// 			values = @(
-    /// 				$someString
-    /// 			)
-    /// 		}
-    /// 	)
-    /// 	# REQUIRED
-    /// 	sortBy = $someString
-    /// 	# OPTIONAL
-    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.Boolean
     /// 
     /// 
     /// 
@@ -1128,68 +770,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the UpdatePolaris operation
-    /// of the 'Report' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Report
-    /// # API Operation: UpdatePolaris
-    /// 
-    /// $query = New-RscMutationReport -UpdatePolaris
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	reportId = $someInt64
-    /// 	# REQUIRED
-    /// 	name = $someString
-    /// 	# REQUIRED
-    /// 	reportViewType = $somePolarisReportViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolarisReportViewType]) for enum values.
-    /// 	# OPTIONAL
-    /// 	room = $someReportRoomType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportRoomType]) for enum values.
-    /// 	# REQUIRED
-    /// 	charts = @(
-    /// 		$someChartViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChartViewType]) for enum values.
-    /// 	)
-    /// 	# REQUIRED
-    /// 	table = $someTableViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TableViewType]) for enum values.
-    /// 	# REQUIRED
-    /// 	filters = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			name = $someString
-    /// 			# REQUIRED
-    /// 			values = @(
-    /// 				$someString
-    /// 			)
-    /// 		}
-    /// 	)
-    /// 	# REQUIRED
-    /// 	sortBy = $someString
-    /// 	# OPTIONAL
-    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// 	# OPTIONAL
-    /// 	displayableColumns = @(
-    /// 		$someString
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the UpdateScheduledReport operation
     /// of the 'Report' API domain.
     /// <code>
@@ -1271,24 +851,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "BlueprintFailoverGenerate",
-                "Create",
                 "CreateCustom",
-                "CreatePolaris",
                 "CreateScheduled",
-                "Delete",
                 "DeleteCustom",
                 "DeleteScheduledReport",
-                "RefreshTrial",
                 "SendPdf",
-                "SendScheduled",
                 "SendScheduledReportAsync",
-                "ShareTrial",
                 "StartClusterMigrationJob",
-                "Update",
                 "UpdateCustom",
                 "UpdateDatabaseLogingPropertiesForCluster",
-                "UpdatePolaris",
                 "UpdateScheduledReport",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -1305,23 +876,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "BlueprintFailoverGenerate":
-                        this.ProcessRecord_BlueprintFailoverGenerate();
-                        break;
-                    case "Create":
-                        this.ProcessRecord_Create();
-                        break;
                     case "CreateCustom":
                         this.ProcessRecord_CreateCustom();
                         break;
-                    case "CreatePolaris":
-                        this.ProcessRecord_CreatePolaris();
-                        break;
                     case "CreateScheduled":
                         this.ProcessRecord_CreateScheduled();
-                        break;
-                    case "Delete":
-                        this.ProcessRecord_Delete();
                         break;
                     case "DeleteCustom":
                         this.ProcessRecord_DeleteCustom();
@@ -1329,35 +888,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DeleteScheduledReport":
                         this.ProcessRecord_DeleteScheduledReport();
                         break;
-                    case "RefreshTrial":
-                        this.ProcessRecord_RefreshTrial();
-                        break;
                     case "SendPdf":
                         this.ProcessRecord_SendPdf();
-                        break;
-                    case "SendScheduled":
-                        this.ProcessRecord_SendScheduled();
                         break;
                     case "SendScheduledReportAsync":
                         this.ProcessRecord_SendScheduledReportAsync();
                         break;
-                    case "ShareTrial":
-                        this.ProcessRecord_ShareTrial();
-                        break;
                     case "StartClusterMigrationJob":
                         this.ProcessRecord_StartClusterMigrationJob();
-                        break;
-                    case "Update":
-                        this.ProcessRecord_Update();
                         break;
                     case "UpdateCustom":
                         this.ProcessRecord_UpdateCustom();
                         break;
                     case "UpdateDatabaseLogingPropertiesForCluster":
                         this.ProcessRecord_UpdateDatabaseLogingPropertiesForCluster();
-                        break;
-                    case "UpdatePolaris":
-                        this.ProcessRecord_UpdatePolaris();
                         break;
                     case "UpdateScheduledReport":
                         this.ProcessRecord_UpdateScheduledReport();
@@ -1373,24 +917,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // blueprintFailoverReportGenerate.
-        internal void ProcessRecord_BlueprintFailoverGenerate()
-        {
-            this._logger.name += " -BlueprintFailoverGenerate";
-            // Create new graphql operation blueprintFailoverReportGenerate
-            InitMutationBlueprintFailoverReportGenerate();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // createReport.
-        internal void ProcessRecord_Create()
-        {
-            this._logger.name += " -Create";
-            // Create new graphql operation createReport
-            InitMutationCreateReport();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // createCustomReport.
         internal void ProcessRecord_CreateCustom()
         {
@@ -1400,30 +926,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // createPolarisReport.
-        internal void ProcessRecord_CreatePolaris()
-        {
-            this._logger.name += " -CreatePolaris";
-            // Create new graphql operation createPolarisReport
-            InitMutationCreatePolarisReport();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // createScheduledReport.
         internal void ProcessRecord_CreateScheduled()
         {
             this._logger.name += " -CreateScheduled";
             // Create new graphql operation createScheduledReport
             InitMutationCreateScheduledReport();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // deleteReport.
-        internal void ProcessRecord_Delete()
-        {
-            this._logger.name += " -Delete";
-            // Create new graphql operation deleteReport
-            InitMutationDeleteReport();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1445,30 +953,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // refreshTrialReport.
-        internal void ProcessRecord_RefreshTrial()
-        {
-            this._logger.name += " -RefreshTrial";
-            // Create new graphql operation refreshTrialReport
-            InitMutationRefreshTrialReport();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // sendPdfReport.
         internal void ProcessRecord_SendPdf()
         {
             this._logger.name += " -SendPdf";
             // Create new graphql operation sendPdfReport
             InitMutationSendPdfReport();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // sendScheduledReport.
-        internal void ProcessRecord_SendScheduled()
-        {
-            this._logger.name += " -SendScheduled";
-            // Create new graphql operation sendScheduledReport
-            InitMutationSendScheduledReport();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1481,30 +971,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // shareTrialReport.
-        internal void ProcessRecord_ShareTrial()
-        {
-            this._logger.name += " -ShareTrial";
-            // Create new graphql operation shareTrialReport
-            InitMutationShareTrialReport();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // startClusterReportMigrationJob.
         internal void ProcessRecord_StartClusterMigrationJob()
         {
             this._logger.name += " -StartClusterMigrationJob";
             // Create new graphql operation startClusterReportMigrationJob
             InitMutationStartClusterReportMigrationJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // updateReport.
-        internal void ProcessRecord_Update()
-        {
-            this._logger.name += " -Update";
-            // Create new graphql operation updateReport
-            InitMutationUpdateReport();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1526,15 +998,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // updatePolarisReport.
-        internal void ProcessRecord_UpdatePolaris()
-        {
-            this._logger.name += " -UpdatePolaris";
-            // Create new graphql operation updatePolarisReport
-            InitMutationUpdatePolarisReport();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // updateScheduledReport.
         internal void ProcessRecord_UpdateScheduledReport()
         {
@@ -1543,92 +1006,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationUpdateScheduledReport();
         }
 
-
-        // Create new GraphQL Mutation:
-        // blueprintFailoverReportGenerate(failoverReportGeneratorJobConfig: BlueprintFailoverReportGeneratorJobInfo!): CreateOnDemandJobReply!
-        internal void InitMutationBlueprintFailoverReportGenerate()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("failoverReportGeneratorJobConfig", "BlueprintFailoverReportGeneratorJobInfo!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationBlueprintFailoverReportGenerate",
-                "($failoverReportGeneratorJobConfig: BlueprintFailoverReportGeneratorJobInfo!)",
-                "CreateOnDemandJobReply",
-                Mutation.BlueprintFailoverReportGenerate,
-                Mutation.BlueprintFailoverReportGenerateFieldSpec,
-                @"# REQUIRED
-$query.Var.failoverReportGeneratorJobConfig = @{
-	# REQUIRED
-	failoverIds = @(
-		$someString
-	)
-	# REQUIRED
-	isNewReportEnabled = $someBoolean
-	# OPTIONAL
-	timezoneOffset = $someSingle
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // createReport(reportConfig: ReportConfigInput!): Int!
-        internal void InitMutationCreateReport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("reportConfig", "ReportConfigInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateReport",
-                "($reportConfig: ReportConfigInput!)",
-                "System.Int32",
-                Mutation.CreateReport,
-                Mutation.CreateReportFieldSpec,
-                @"# REQUIRED
-$query.Var.reportConfig = @{
-	# REQUIRED
-	name = $someString
-	# REQUIRED
-	dataViewType = $someDataViewTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataViewTypeEnum]) for enum values.
-	# REQUIRED
-	columns = @(
-		$someString
-	)
-	# REQUIRED
-	groupBy = @{
-		# REQUIRED
-		groupById = $someString
-		# REQUIRED
-		aggregations = @(
-			$someString
-		)
-	}
-	# REQUIRED
-	aggregations = @(
-		$someString
-	)
-	# REQUIRED
-	filters = @(
-		@{
-			# REQUIRED
-			name = $someString
-			# REQUIRED
-			values = @(
-				$someString
-			)
-		}
-	)
-	# REQUIRED
-	sortBy = $someString
-	# OPTIONAL
-	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}"
-            );
-        }
 
         // Create new GraphQL Mutation:
         // createCustomReport(input: CreateCustomReportInput!, reportRoom: String): CreateCustomReportReply!
@@ -1829,54 +1206,6 @@ $query.Var.reportRoom = $someString"
         }
 
         // Create new GraphQL Mutation:
-        // createPolarisReport(input: CreatePolarisReportInput!): CreatePolarisReportReply!
-        internal void InitMutationCreatePolarisReport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreatePolarisReportInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreatePolarisReport",
-                "($input: CreatePolarisReportInput!)",
-                "CreatePolarisReportReply",
-                Mutation.CreatePolarisReport,
-                Mutation.CreatePolarisReportFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	name = $someString
-	# REQUIRED
-	reportViewType = $somePolarisReportViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolarisReportViewType]) for enum values.
-	# OPTIONAL
-	room = $someReportRoomType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportRoomType]) for enum values.
-	# REQUIRED
-	charts = @(
-		$someChartViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChartViewType]) for enum values.
-	)
-	# REQUIRED
-	table = $someTableViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TableViewType]) for enum values.
-	# REQUIRED
-	filters = @(
-		@{
-			# REQUIRED
-			name = $someString
-			# REQUIRED
-			values = @(
-				$someString
-			)
-		}
-	)
-	# REQUIRED
-	sortBy = $someString
-	# OPTIONAL
-	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // createScheduledReport(input: CreateScheduledReportInput!): CreateScheduledReportReply!
         internal void InitMutationCreateScheduledReport()
         {
@@ -1930,26 +1259,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // deleteReport(reportID: Int!): Void
-        internal void InitMutationDeleteReport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("reportID", "Int!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteReport",
-                "($reportID: Int!)",
-                "System.String",
-                Mutation.DeleteReport,
-                Mutation.DeleteReportFieldSpec,
-                @"# REQUIRED
-$query.Var.reportID = $someInt"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // deleteCustomReport(input: DeleteCustomReportInput!): Void
         internal void InitMutationDeleteCustomReport()
         {
@@ -1998,29 +1307,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // refreshTrialReport(input: RefreshTrialReportsInput!): Void
-        internal void InitMutationRefreshTrialReport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "RefreshTrialReportsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationRefreshTrialReport",
-                "($input: RefreshTrialReportsInput!)",
-                "System.String",
-                Mutation.RefreshTrialReport,
-                Mutation.RefreshTrialReportFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	trialId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // sendPdfReport(input: SendPdfReportInput!): SendPdfReportReply!
         internal void InitMutationSendPdfReport()
         {
@@ -2047,37 +1333,6 @@ $query.Var.input = @{
 	)
 	# REQUIRED
 	password = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // sendScheduledReport(input: SendScheduledReportInput!): Boolean!
-        internal void InitMutationSendScheduledReport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "SendScheduledReportInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationSendScheduledReport",
-                "($input: SendScheduledReportInput!)",
-                "System.Boolean",
-                Mutation.SendScheduledReport,
-                Mutation.SendScheduledReportFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	id = $someInt
-	# REQUIRED
-	recipients = @(
-		$someString
-	)
-	# OPTIONAL
-	attachmentTypes = @(
-		$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
-	)
 }"
             );
         }
@@ -2118,33 +1373,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // shareTrialReport(input: ShareTrialReportInput!): ShareTrialReportReply!
-        internal void InitMutationShareTrialReport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "ShareTrialReportInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationShareTrialReport",
-                "($input: ShareTrialReportInput!)",
-                "ShareTrialReportReply",
-                Mutation.ShareTrialReport,
-                Mutation.ShareTrialReportFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	trialId = $someString
-	# REQUIRED
-	recipientEmails = @(
-		$someString
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // startClusterReportMigrationJob(input: StartClusterReportMigrationJobInput!): StartClusterReportMigrationJobReply!
         internal void InitMutationStartClusterReportMigrationJob()
         {
@@ -2165,66 +1393,6 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# OPTIONAL
 	shouldDeleteCdmSchedules = $someBoolean
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateReport(reportID: Int!, reportConfig: ReportConfigInput!): Boolean!
-        internal void InitMutationUpdateReport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("reportID", "Int!"),
-                Tuple.Create("reportConfig", "ReportConfigInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateReport",
-                "($reportID: Int!,$reportConfig: ReportConfigInput!)",
-                "System.Boolean",
-                Mutation.UpdateReport,
-                Mutation.UpdateReportFieldSpec,
-                @"# REQUIRED
-$query.Var.reportID = $someInt
-# REQUIRED
-$query.Var.reportConfig = @{
-	# REQUIRED
-	name = $someString
-	# REQUIRED
-	dataViewType = $someDataViewTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataViewTypeEnum]) for enum values.
-	# REQUIRED
-	columns = @(
-		$someString
-	)
-	# REQUIRED
-	groupBy = @{
-		# REQUIRED
-		groupById = $someString
-		# REQUIRED
-		aggregations = @(
-			$someString
-		)
-	}
-	# REQUIRED
-	aggregations = @(
-		$someString
-	)
-	# REQUIRED
-	filters = @(
-		@{
-			# REQUIRED
-			name = $someString
-			# REQUIRED
-			values = @(
-				$someString
-			)
-		}
-	)
-	# REQUIRED
-	sortBy = $someString
-	# OPTIONAL
-	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 }"
             );
         }
@@ -2457,60 +1625,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		logDelayNotificationFrequencyInMin = $someInt64
 	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updatePolarisReport(input: UpdatePolarisReportInput!): Void
-        internal void InitMutationUpdatePolarisReport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdatePolarisReportInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdatePolarisReport",
-                "($input: UpdatePolarisReportInput!)",
-                "System.String",
-                Mutation.UpdatePolarisReport,
-                Mutation.UpdatePolarisReportFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	reportId = $someInt64
-	# REQUIRED
-	name = $someString
-	# REQUIRED
-	reportViewType = $somePolarisReportViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolarisReportViewType]) for enum values.
-	# OPTIONAL
-	room = $someReportRoomType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportRoomType]) for enum values.
-	# REQUIRED
-	charts = @(
-		$someChartViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChartViewType]) for enum values.
-	)
-	# REQUIRED
-	table = $someTableViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TableViewType]) for enum values.
-	# REQUIRED
-	filters = @(
-		@{
-			# REQUIRED
-			name = $someString
-			# REQUIRED
-			values = @(
-				$someString
-			)
-		}
-	)
-	# REQUIRED
-	sortBy = $someString
-	# OPTIONAL
-	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-	# OPTIONAL
-	displayableColumns = @(
-		$someString
-	)
 }"
             );
         }

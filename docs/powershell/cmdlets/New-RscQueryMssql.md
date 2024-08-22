@@ -119,11 +119,6 @@ List of filtered Microsoft SQL log shipping targets.
 
 - There is a single argument of type QueryLogShippingConfigurationsV2Input.
 - Returns MssqlLogShippingSummaryV2ListResponse.
-### queryinstances
-Query multiple Microsoft SQL Server instances.
-
-- There is a single argument of type QueryMssqlInstanceInput.
-- Returns MssqlInstanceSummaryListResponse.
 ### recoverableranges
 List of recoverable ranges for a Microsoft SQL Database.
 

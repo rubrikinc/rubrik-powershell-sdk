@@ -1,4 +1,0 @@
-### AppflowsBlueprintFailoverReportStatusEnum
-- CREATING
-- ACTIVE
-- EXPIRED

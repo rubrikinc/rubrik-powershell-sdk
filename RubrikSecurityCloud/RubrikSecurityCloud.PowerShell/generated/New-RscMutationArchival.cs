@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 25
+    /// Create a new RscQuery object for any of the 16
     /// operations in the 'Archival' API domain:
-    /// CreateDcaReaderTarget, CreateDcaTarget, CreateGlacierReaderTarget, CreateLckReaderTarget, CreateLckTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, PauseTarget, PreprocessEnablement, PromoteReaderTarget, RefreshReaderTarget, RekeyLocationMasterKeyWithRsaKey, RekeyLocationRootKey, ResumeTarget, UpdateDcaTarget, UpdateGlacierTarget, UpdateLckTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
+    /// CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, ResumeTarget, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
     /// </summary>
     /// <description>
     /// New-RscMutationArchival creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 25 operations
+    /// There are 16 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateDcaReaderTarget, CreateDcaTarget, CreateGlacierReaderTarget, CreateLckReaderTarget, CreateLckTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, PauseTarget, PreprocessEnablement, PromoteReaderTarget, RefreshReaderTarget, RekeyLocationMasterKeyWithRsaKey, RekeyLocationRootKey, ResumeTarget, UpdateDcaTarget, UpdateGlacierTarget, UpdateLckTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
+    /// one of: CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, ResumeTarget, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationArchival -CreateDcaReaderTarget).Info().
+    /// (New-RscMutationArchival -CreateGlacierReaderTarget).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,131 +70,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationArchival -CreateDcaReaderTarget).Info().
+    /// (New-RscMutationArchival -CreateGlacierReaderTarget).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
-    ///
-    /// <example>
-    /// Runs the CreateDcaReaderTarget operation
-    /// of the 'Archival' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Archival
-    /// # API Operation: CreateDcaReaderTarget
-    /// 
-    /// $query = New-RscMutationArchival -CreateDcaReaderTarget
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	name = $someString
-    /// 	# REQUIRED
-    /// 	bucketName = $someString
-    /// 	# REQUIRED
-    /// 	s3Endpoint = $someString
-    /// 	# REQUIRED
-    /// 	roleName = $someString
-    /// 	# REQUIRED
-    /// 	agency = $someString
-    /// 	# REQUIRED
-    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-    /// 	# REQUIRED
-    /// 	region = $someAwsDcaRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsDcaRegion]) for enum values.
-    /// 	# REQUIRED
-    /// 	certificateContent = $someString
-    /// 	# REQUIRED
-    /// 	rsaKey = $someString
-    /// 	# REQUIRED
-    /// 	kmsMasterKeyId = $someString
-    /// 	# REQUIRED
-    /// 	mission = $someString
-    /// 	# REQUIRED
-    /// 	tokenDuration = $someInt
-    /// 	# REQUIRED
-    /// 	capEndPoint = $someString
-    /// 	# REQUIRED
-    /// 	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
-    /// 	# REQUIRED
-    /// 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: Target
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the CreateDcaTarget operation
-    /// of the 'Archival' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Archival
-    /// # API Operation: CreateDcaTarget
-    /// 
-    /// $query = New-RscMutationArchival -CreateDcaTarget
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	name = $someString
-    /// 	# REQUIRED
-    /// 	bucketName = $someString
-    /// 	# REQUIRED
-    /// 	s3Endpoint = $someString
-    /// 	# REQUIRED
-    /// 	roleName = $someString
-    /// 	# REQUIRED
-    /// 	agency = $someString
-    /// 	# REQUIRED
-    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-    /// 	# REQUIRED
-    /// 	region = $someAwsDcaRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsDcaRegion]) for enum values.
-    /// 	# REQUIRED
-    /// 	certificateContent = $someString
-    /// 	# REQUIRED
-    /// 	rsaKey = $someString
-    /// 	# REQUIRED
-    /// 	kmsMasterKeyId = $someString
-    /// 	# REQUIRED
-    /// 	mission = $someString
-    /// 	# REQUIRED
-    /// 	tokenDuration = $someInt
-    /// 	# REQUIRED
-    /// 	capEndPoint = $someString
-    /// 	# REQUIRED
-    /// 	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: Target
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
     ///
     /// <example>
     /// Runs the CreateGlacierReaderTarget operation
@@ -227,122 +107,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
     /// 	# REQUIRED
     /// 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: Target
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the CreateLckReaderTarget operation
-    /// of the 'Archival' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Archival
-    /// # API Operation: CreateLckReaderTarget
-    /// 
-    /// $query = New-RscMutationArchival -CreateLckReaderTarget
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	name = $someString
-    /// 	# REQUIRED
-    /// 	bucketName = $someString
-    /// 	# REQUIRED
-    /// 	s3Endpoint = $someString
-    /// 	# REQUIRED
-    /// 	roleName = $someString
-    /// 	# REQUIRED
-    /// 	agency = $someString
-    /// 	# REQUIRED
-    /// 	accountName = $someString
-    /// 	# REQUIRED
-    /// 	geoAxisEndpoint = $someString
-    /// 	# REQUIRED
-    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-    /// 	# REQUIRED
-    /// 	region = $someAwsLckRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsLckRegion]) for enum values.
-    /// 	# REQUIRED
-    /// 	certificateContent = $someString
-    /// 	# REQUIRED
-    /// 	rsaKey = $someString
-    /// 	# REQUIRED
-    /// 	kmsMasterKeyId = $someString
-    /// 	# REQUIRED
-    /// 	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
-    /// 	# REQUIRED
-    /// 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: Target
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the CreateLckTarget operation
-    /// of the 'Archival' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Archival
-    /// # API Operation: CreateLckTarget
-    /// 
-    /// $query = New-RscMutationArchival -CreateLckTarget
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	name = $someString
-    /// 	# REQUIRED
-    /// 	bucketName = $someString
-    /// 	# REQUIRED
-    /// 	s3Endpoint = $someString
-    /// 	# REQUIRED
-    /// 	roleName = $someString
-    /// 	# REQUIRED
-    /// 	agency = $someString
-    /// 	# REQUIRED
-    /// 	accountName = $someString
-    /// 	# REQUIRED
-    /// 	geoAxisEndpoint = $someString
-    /// 	# REQUIRED
-    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-    /// 	# REQUIRED
-    /// 	region = $someAwsLckRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsLckRegion]) for enum values.
-    /// 	# REQUIRED
-    /// 	certificateContent = $someString
-    /// 	# REQUIRED
-    /// 	rsaKey = $someString
-    /// 	# REQUIRED
-    /// 	kmsMasterKeyId = $someString
-    /// 	# REQUIRED
-    /// 	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -687,37 +451,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the PreprocessEnablement operation
-    /// of the 'Archival' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Archival
-    /// # API Operation: PreprocessEnablement
-    /// 
-    /// $query = New-RscMutationArchival -PreprocessEnablement
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	locationType = $someTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TargetType]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the PromoteReaderTarget operation
     /// of the 'Archival' API domain.
     /// <code>
@@ -792,72 +525,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the RekeyLocationMasterKeyWithRsaKey operation
-    /// of the 'Archival' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Archival
-    /// # API Operation: RekeyLocationMasterKeyWithRsaKey
-    /// 
-    /// $query = New-RscMutationArchival -RekeyLocationMasterKeyWithRsaKey
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	locationId = $someString
-    /// 	# OPTIONAL
-    /// 	newRsaKey = $someString
-    /// 	# OPTIONAL
-    /// 	existingRsaKey = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: RekeyArchivalLocationReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the RekeyLocationRootKey operation
-    /// of the 'Archival' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Archival
-    /// # API Operation: RekeyLocationRootKey
-    /// 
-    /// $query = New-RscMutationArchival -RekeyLocationRootKey
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	locationId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: RekeyArchivalLocationReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the ResumeTarget operation
     /// of the 'Archival' API domain.
     /// <code>
@@ -889,55 +556,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the UpdateDcaTarget operation
-    /// of the 'Archival' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Archival
-    /// # API Operation: UpdateDcaTarget
-    /// 
-    /// $query = New-RscMutationArchival -UpdateDcaTarget
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# OPTIONAL
-    /// 	name = $someString
-    /// 	# OPTIONAL
-    /// 	roleName = $someString
-    /// 	# OPTIONAL
-    /// 	agency = $someString
-    /// 	# OPTIONAL
-    /// 	mission = $someString
-    /// 	# OPTIONAL
-    /// 	tokenDuration = $someInt
-    /// 	# OPTIONAL
-    /// 	capEndPoint = $someString
-    /// 	# OPTIONAL
-    /// 	certificateContent = $someString
-    /// 	# OPTIONAL
-    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-    /// 	# OPTIONAL
-    /// 	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: Target
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the UpdateGlacierTarget operation
     /// of the 'Archival' API domain.
     /// <code>
@@ -960,53 +578,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
     /// 	# OPTIONAL
     /// 	cloudAccountId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: Target
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the UpdateLckTarget operation
-    /// of the 'Archival' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Archival
-    /// # API Operation: UpdateLckTarget
-    /// 
-    /// $query = New-RscMutationArchival -UpdateLckTarget
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# OPTIONAL
-    /// 	name = $someString
-    /// 	# OPTIONAL
-    /// 	roleName = $someString
-    /// 	# OPTIONAL
-    /// 	agency = $someString
-    /// 	# OPTIONAL
-    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-    /// 	# OPTIONAL
-    /// 	geoAxisEndpoint = $someString
-    /// 	# OPTIONAL
-    /// 	accountName = $someString
-    /// 	# OPTIONAL
-    /// 	certificateContent = $someString
-    /// 	# OPTIONAL
-    /// 	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1162,11 +733,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "CreateDcaReaderTarget",
-                "CreateDcaTarget",
                 "CreateGlacierReaderTarget",
-                "CreateLckReaderTarget",
-                "CreateLckTarget",
                 "CreateManualTargetMapping",
                 "CreateS3CompatibleReaderTarget",
                 "CreateS3CompatibleTarget",
@@ -1175,15 +742,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DisableTarget",
                 "EnableTarget",
                 "PauseTarget",
-                "PreprocessEnablement",
                 "PromoteReaderTarget",
                 "RefreshReaderTarget",
-                "RekeyLocationMasterKeyWithRsaKey",
-                "RekeyLocationRootKey",
                 "ResumeTarget",
-                "UpdateDcaTarget",
                 "UpdateGlacierTarget",
-                "UpdateLckTarget",
                 "UpdateManualTargetMapping",
                 "UpdateS3CompatibleTarget",
                 "UpgradeCdmManagedTarget",
@@ -1202,20 +764,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "CreateDcaReaderTarget":
-                        this.ProcessRecord_CreateDcaReaderTarget();
-                        break;
-                    case "CreateDcaTarget":
-                        this.ProcessRecord_CreateDcaTarget();
-                        break;
                     case "CreateGlacierReaderTarget":
                         this.ProcessRecord_CreateGlacierReaderTarget();
-                        break;
-                    case "CreateLckReaderTarget":
-                        this.ProcessRecord_CreateLckReaderTarget();
-                        break;
-                    case "CreateLckTarget":
-                        this.ProcessRecord_CreateLckTarget();
                         break;
                     case "CreateManualTargetMapping":
                         this.ProcessRecord_CreateManualTargetMapping();
@@ -1241,32 +791,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "PauseTarget":
                         this.ProcessRecord_PauseTarget();
                         break;
-                    case "PreprocessEnablement":
-                        this.ProcessRecord_PreprocessEnablement();
-                        break;
                     case "PromoteReaderTarget":
                         this.ProcessRecord_PromoteReaderTarget();
                         break;
                     case "RefreshReaderTarget":
                         this.ProcessRecord_RefreshReaderTarget();
                         break;
-                    case "RekeyLocationMasterKeyWithRsaKey":
-                        this.ProcessRecord_RekeyLocationMasterKeyWithRsaKey();
-                        break;
-                    case "RekeyLocationRootKey":
-                        this.ProcessRecord_RekeyLocationRootKey();
-                        break;
                     case "ResumeTarget":
                         this.ProcessRecord_ResumeTarget();
                         break;
-                    case "UpdateDcaTarget":
-                        this.ProcessRecord_UpdateDcaTarget();
-                        break;
                     case "UpdateGlacierTarget":
                         this.ProcessRecord_UpdateGlacierTarget();
-                        break;
-                    case "UpdateLckTarget":
-                        this.ProcessRecord_UpdateLckTarget();
                         break;
                     case "UpdateManualTargetMapping":
                         this.ProcessRecord_UpdateManualTargetMapping();
@@ -1288,48 +823,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // createDcaReaderTarget.
-        internal void ProcessRecord_CreateDcaReaderTarget()
-        {
-            this._logger.name += " -CreateDcaReaderTarget";
-            // Create new graphql operation createDcaReaderTarget
-            InitMutationCreateDcaReaderTarget();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // createDcaTarget.
-        internal void ProcessRecord_CreateDcaTarget()
-        {
-            this._logger.name += " -CreateDcaTarget";
-            // Create new graphql operation createDcaTarget
-            InitMutationCreateDcaTarget();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // createGlacierReaderTarget.
         internal void ProcessRecord_CreateGlacierReaderTarget()
         {
             this._logger.name += " -CreateGlacierReaderTarget";
             // Create new graphql operation createGlacierReaderTarget
             InitMutationCreateGlacierReaderTarget();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // createLckReaderTarget.
-        internal void ProcessRecord_CreateLckReaderTarget()
-        {
-            this._logger.name += " -CreateLckReaderTarget";
-            // Create new graphql operation createLckReaderTarget
-            InitMutationCreateLckReaderTarget();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // createLckTarget.
-        internal void ProcessRecord_CreateLckTarget()
-        {
-            this._logger.name += " -CreateLckTarget";
-            // Create new graphql operation createLckTarget
-            InitMutationCreateLckTarget();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1405,15 +904,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // preprocessArchivalEnablement.
-        internal void ProcessRecord_PreprocessEnablement()
-        {
-            this._logger.name += " -PreprocessEnablement";
-            // Create new graphql operation preprocessArchivalEnablement
-            InitMutationPreprocessArchivalEnablement();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // promoteReaderTarget.
         internal void ProcessRecord_PromoteReaderTarget()
         {
@@ -1432,24 +922,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // rekeyArchivalLocationMasterKeyWithRsaKey.
-        internal void ProcessRecord_RekeyLocationMasterKeyWithRsaKey()
-        {
-            this._logger.name += " -RekeyLocationMasterKeyWithRsaKey";
-            // Create new graphql operation rekeyArchivalLocationMasterKeyWithRsaKey
-            InitMutationRekeyArchivalLocationMasterKeyWithRsaKey();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // rekeyArchivalLocationRootKey.
-        internal void ProcessRecord_RekeyLocationRootKey()
-        {
-            this._logger.name += " -RekeyLocationRootKey";
-            // Create new graphql operation rekeyArchivalLocationRootKey
-            InitMutationRekeyArchivalLocationRootKey();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // resumeTarget.
         internal void ProcessRecord_ResumeTarget()
         {
@@ -1459,30 +931,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // updateDcaTarget.
-        internal void ProcessRecord_UpdateDcaTarget()
-        {
-            this._logger.name += " -UpdateDcaTarget";
-            // Create new graphql operation updateDcaTarget
-            InitMutationUpdateDcaTarget();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // updateGlacierTarget.
         internal void ProcessRecord_UpdateGlacierTarget()
         {
             this._logger.name += " -UpdateGlacierTarget";
             // Create new graphql operation updateGlacierTarget
             InitMutationUpdateGlacierTarget();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // updateLckTarget.
-        internal void ProcessRecord_UpdateLckTarget()
-        {
-            this._logger.name += " -UpdateLckTarget";
-            // Create new graphql operation updateLckTarget
-            InitMutationUpdateLckTarget();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1512,110 +966,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationUpgradeCdmManagedTarget();
         }
 
-
-        // Create new GraphQL Mutation:
-        // createDcaReaderTarget(input: CreateDcaReaderTargetInput!): Target!
-        internal void InitMutationCreateDcaReaderTarget()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateDcaReaderTargetInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateDcaReaderTarget",
-                "($input: CreateDcaReaderTargetInput!)",
-                "Target",
-                Mutation.CreateDcaReaderTarget,
-                Mutation.CreateDcaReaderTargetFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	name = $someString
-	# REQUIRED
-	bucketName = $someString
-	# REQUIRED
-	s3Endpoint = $someString
-	# REQUIRED
-	roleName = $someString
-	# REQUIRED
-	agency = $someString
-	# REQUIRED
-	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-	# REQUIRED
-	region = $someAwsDcaRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsDcaRegion]) for enum values.
-	# REQUIRED
-	certificateContent = $someString
-	# REQUIRED
-	rsaKey = $someString
-	# REQUIRED
-	kmsMasterKeyId = $someString
-	# REQUIRED
-	mission = $someString
-	# REQUIRED
-	tokenDuration = $someInt
-	# REQUIRED
-	capEndPoint = $someString
-	# REQUIRED
-	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
-	# REQUIRED
-	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // createDcaTarget(input: CreateDcaTargetInput!): Target!
-        internal void InitMutationCreateDcaTarget()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateDcaTargetInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateDcaTarget",
-                "($input: CreateDcaTargetInput!)",
-                "Target",
-                Mutation.CreateDcaTarget,
-                Mutation.CreateDcaTargetFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	name = $someString
-	# REQUIRED
-	bucketName = $someString
-	# REQUIRED
-	s3Endpoint = $someString
-	# REQUIRED
-	roleName = $someString
-	# REQUIRED
-	agency = $someString
-	# REQUIRED
-	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-	# REQUIRED
-	region = $someAwsDcaRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsDcaRegion]) for enum values.
-	# REQUIRED
-	certificateContent = $someString
-	# REQUIRED
-	rsaKey = $someString
-	# REQUIRED
-	kmsMasterKeyId = $someString
-	# REQUIRED
-	mission = $someString
-	# REQUIRED
-	tokenDuration = $someInt
-	# REQUIRED
-	capEndPoint = $someString
-	# REQUIRED
-	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
-}"
-            );
-        }
 
         // Create new GraphQL Mutation:
         // createGlacierReaderTarget(input: CreateGlacierReaderTargetInput!): Target!
@@ -1650,106 +1000,6 @@ $query.Var.input = @{
 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
 	# REQUIRED
 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // createLckReaderTarget(input: CreateLckReaderTargetInput!): Target!
-        internal void InitMutationCreateLckReaderTarget()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateLckReaderTargetInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateLckReaderTarget",
-                "($input: CreateLckReaderTargetInput!)",
-                "Target",
-                Mutation.CreateLckReaderTarget,
-                Mutation.CreateLckReaderTargetFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	name = $someString
-	# REQUIRED
-	bucketName = $someString
-	# REQUIRED
-	s3Endpoint = $someString
-	# REQUIRED
-	roleName = $someString
-	# REQUIRED
-	agency = $someString
-	# REQUIRED
-	accountName = $someString
-	# REQUIRED
-	geoAxisEndpoint = $someString
-	# REQUIRED
-	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-	# REQUIRED
-	region = $someAwsLckRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsLckRegion]) for enum values.
-	# REQUIRED
-	certificateContent = $someString
-	# REQUIRED
-	rsaKey = $someString
-	# REQUIRED
-	kmsMasterKeyId = $someString
-	# REQUIRED
-	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
-	# REQUIRED
-	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // createLckTarget(input: CreateLckTargetInput!): Target!
-        internal void InitMutationCreateLckTarget()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateLckTargetInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateLckTarget",
-                "($input: CreateLckTargetInput!)",
-                "Target",
-                Mutation.CreateLckTarget,
-                Mutation.CreateLckTargetFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	name = $someString
-	# REQUIRED
-	bucketName = $someString
-	# REQUIRED
-	s3Endpoint = $someString
-	# REQUIRED
-	roleName = $someString
-	# REQUIRED
-	agency = $someString
-	# REQUIRED
-	accountName = $someString
-	# REQUIRED
-	geoAxisEndpoint = $someString
-	# REQUIRED
-	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-	# REQUIRED
-	region = $someAwsLckRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsLckRegion]) for enum values.
-	# REQUIRED
-	certificateContent = $someString
-	# REQUIRED
-	rsaKey = $someString
-	# REQUIRED
-	kmsMasterKeyId = $someString
-	# REQUIRED
-	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
 }"
             );
         }
@@ -2020,29 +1270,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // preprocessArchivalEnablement(input: PreprocessArchivalEnablementInput!): Void
-        internal void InitMutationPreprocessArchivalEnablement()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "PreprocessArchivalEnablementInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationPreprocessArchivalEnablement",
-                "($input: PreprocessArchivalEnablementInput!)",
-                "System.String",
-                Mutation.PreprocessArchivalEnablement,
-                Mutation.PreprocessArchivalEnablementFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	locationType = $someTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TargetType]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // promoteReaderTarget(input: PromoteReaderTargetInput!): Void
         internal void InitMutationPromoteReaderTarget()
         {
@@ -2101,56 +1328,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // rekeyArchivalLocationMasterKeyWithRsaKey(input: RekeyArchivalLocationMasterKeyWithRsaKeyInput!): RekeyArchivalLocationReply!
-        internal void InitMutationRekeyArchivalLocationMasterKeyWithRsaKey()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "RekeyArchivalLocationMasterKeyWithRsaKeyInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationRekeyArchivalLocationMasterKeyWithRsaKey",
-                "($input: RekeyArchivalLocationMasterKeyWithRsaKeyInput!)",
-                "RekeyArchivalLocationReply",
-                Mutation.RekeyArchivalLocationMasterKeyWithRsaKey,
-                Mutation.RekeyArchivalLocationMasterKeyWithRsaKeyFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	locationId = $someString
-	# OPTIONAL
-	newRsaKey = $someString
-	# OPTIONAL
-	existingRsaKey = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // rekeyArchivalLocationRootKey(input: RekeyArchivalLocationRootKeyInput!): RekeyArchivalLocationReply!
-        internal void InitMutationRekeyArchivalLocationRootKey()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "RekeyArchivalLocationRootKeyInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationRekeyArchivalLocationRootKey",
-                "($input: RekeyArchivalLocationRootKeyInput!)",
-                "RekeyArchivalLocationReply",
-                Mutation.RekeyArchivalLocationRootKey,
-                Mutation.RekeyArchivalLocationRootKeyFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	locationId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // resumeTarget(input: ResumeTargetInput!): ResumeTargetReply!
         internal void InitMutationResumeTarget()
         {
@@ -2169,47 +1346,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# OPTIONAL
 	id = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateDcaTarget(input: UpdateDcaTargetInput!): Target!
-        internal void InitMutationUpdateDcaTarget()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateDcaTargetInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateDcaTarget",
-                "($input: UpdateDcaTargetInput!)",
-                "Target",
-                Mutation.UpdateDcaTarget,
-                Mutation.UpdateDcaTargetFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	id = $someString
-	# OPTIONAL
-	name = $someString
-	# OPTIONAL
-	roleName = $someString
-	# OPTIONAL
-	agency = $someString
-	# OPTIONAL
-	mission = $someString
-	# OPTIONAL
-	tokenDuration = $someInt
-	# OPTIONAL
-	capEndPoint = $someString
-	# OPTIONAL
-	certificateContent = $someString
-	# OPTIONAL
-	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-	# OPTIONAL
-	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
 }"
             );
         }
@@ -2239,45 +1375,6 @@ $query.Var.input = @{
 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
 	# OPTIONAL
 	cloudAccountId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateLckTarget(input: UpdateLckTargetInput!): Target!
-        internal void InitMutationUpdateLckTarget()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateLckTargetInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateLckTarget",
-                "($input: UpdateLckTargetInput!)",
-                "Target",
-                Mutation.UpdateLckTarget,
-                Mutation.UpdateLckTargetFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	id = $someString
-	# OPTIONAL
-	name = $someString
-	# OPTIONAL
-	roleName = $someString
-	# OPTIONAL
-	agency = $someString
-	# OPTIONAL
-	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-	# OPTIONAL
-	geoAxisEndpoint = $someString
-	# OPTIONAL
-	accountName = $someString
-	# OPTIONAL
-	certificateContent = $someString
-	# OPTIONAL
-	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
 }"
             );
         }

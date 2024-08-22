@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 10
+    /// Create a new RscQuery object for any of the 8
     /// operations in the 'NAS' API domain:
-    /// AutomigrationTaskStatus, Fileset, Namespace, Namespaces, Share, Shares, System, Systems, TopLevelDescendants, or Volume.
+    /// Fileset, Namespace, Namespaces, Share, System, Systems, TopLevelDescendants, or Volume.
     /// </summary>
     /// <description>
     /// New-RscQueryNas creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 10 operations
+    /// There are 8 operations
     /// in the 'NAS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AutomigrationTaskStatus, Fileset, Namespace, Namespaces, Share, Shares, System, Systems, TopLevelDescendants, or Volume.
+    /// one of: Fileset, Namespace, Namespaces, Share, System, Systems, TopLevelDescendants, or Volume.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryNas -AutomigrationTaskStatus).Info().
+    /// (New-RscQueryNas -Fileset).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,39 +70,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryNas -AutomigrationTaskStatus).Info().
+    /// (New-RscQueryNas -Fileset).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
-    ///
-    /// <example>
-    /// Runs the AutomigrationTaskStatus operation
-    /// of the 'NAS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Nas
-    /// # API Operation: AutomigrationTaskStatus
-    /// 
-    /// $query = New-RscQueryNas -AutomigrationTaskStatus
-    /// 
-    /// # REQUIRED
-    /// $query.Var.taskchainId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: NasAutomigrationTaskStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
     ///
     /// <example>
     /// Runs the Fileset operation
@@ -257,82 +229,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: NasShare
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the Shares operation
-    /// of the 'NAS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Nas
-    /// # API Operation: Shares
-    /// 
-    /// $query = New-RscQueryNas -Shares
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.filter = @(
-    /// 	@{
-    /// 		# OPTIONAL
-    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-    /// 		# OPTIONAL
-    /// 		texts = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		objectTypeFilterParams = @(
-    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		awsNativeProtectionFeatureNames = @(
-    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		isNegative = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isSlowSearchEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		azureNativeProtectionFeatureNames = @(
-    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		unmanagedObjectAvailabilityFilter = @(
-    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-    /// 		)
-    /// }
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: NasShareConnection
     /// 
     /// 
     /// 
@@ -568,12 +464,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "AutomigrationTaskStatus",
                 "Fileset",
                 "Namespace",
                 "Namespaces",
                 "Share",
-                "Shares",
                 "System",
                 "Systems",
                 "TopLevelDescendants",
@@ -593,9 +487,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "AutomigrationTaskStatus":
-                        this.ProcessRecord_AutomigrationTaskStatus();
-                        break;
                     case "Fileset":
                         this.ProcessRecord_Fileset();
                         break;
@@ -607,9 +498,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Share":
                         this.ProcessRecord_Share();
-                        break;
-                    case "Shares":
-                        this.ProcessRecord_Shares();
                         break;
                     case "System":
                         this.ProcessRecord_System();
@@ -631,15 +519,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // nasAutomigrationTaskStatus.
-        internal void ProcessRecord_AutomigrationTaskStatus()
-        {
-            this._logger.name += " -AutomigrationTaskStatus";
-            // Create new graphql operation nasAutomigrationTaskStatus
-            InitQueryNasAutomigrationTaskStatus();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -679,15 +558,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // nasShares.
-        internal void ProcessRecord_Shares()
-        {
-            this._logger.name += " -Shares";
-            // Create new graphql operation nasShares
-            InitQueryNasShares();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // nasSystem.
         internal void ProcessRecord_System()
         {
@@ -723,26 +593,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryNasVolume();
         }
 
-
-        // Create new GraphQL Query:
-        // nasAutomigrationTaskStatus(taskchainId: String!): NasAutomigrationTaskStatus!
-        internal void InitQueryNasAutomigrationTaskStatus()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("taskchainId", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNasAutomigrationTaskStatus",
-                "($taskchainId: String!)",
-                "NasAutomigrationTaskStatus",
-                Query.NasAutomigrationTaskStatus,
-                Query.NasAutomigrationTaskStatusFieldSpec,
-                @"# REQUIRED
-$query.Var.taskchainId = $someString"
-            );
-        }
 
         // Create new GraphQL Query:
         // nasFileset(fid: UUID!): NasFileset!
@@ -879,84 +729,6 @@ $query.Var.filter = @(
                 Query.NasShareFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // nasShares(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): NasShareConnection!
-        internal void InitQueryNasShares()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNasShares",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "NasShareConnection",
-                Query.NasShares,
-                Query.NasSharesFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			$someString
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = $someBoolean
-		# OPTIONAL
-		isSlowSearchEnabled = $someBoolean
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
             );
         }
 

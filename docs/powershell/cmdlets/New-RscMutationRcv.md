@@ -15,11 +15,6 @@ Create RCV private endpoint approval request.
 
 - There is a single argument of type CreateRcvPrivateEndpointApprovalRequestInput.
 - Returns CreateRcvPrivateEndpointApprovalRequestReply.
-### triggergrscustomfailover
-Trigger a custom failover for Geo Redundant Storage (GRS) RCV location.
-
-- There is a single argument of type TriggerRcvGrsCustomFailoverInput.
-- Returns System.String.
 ### updatetarget
 Updates the Rubrik Cloud Vault archival location.
 

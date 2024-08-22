@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 14
+    /// Create a new RscQuery object for any of the 13
     /// operations in the 'Cloud Native' API domain:
-    /// AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, UpdateTagRule, or WarmIndexCache.
+    /// AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, or UpdateTagRule.
     /// </summary>
     /// <description>
     /// New-RscMutationCloudNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 14 operations
+    /// There are 13 operations
     /// in the 'Cloud Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, UpdateTagRule, or WarmIndexCache.
+    /// one of: AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, or UpdateTagRule.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -218,7 +218,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		matchAllValues = $someBoolean
     /// 	}
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
     /// 	# OPTIONAL
     /// 	slaId = $someString
@@ -281,7 +281,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		matchAllValues = $someBoolean
     /// 	}
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
     /// 	# OPTIONAL
     /// 	slaId = $someString
@@ -580,7 +580,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	labelRuleId = $someString
     /// 	# REQUIRED
     /// 	labelRuleName = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
     /// 	# OPTIONAL
     /// 	slaId = $someString
@@ -634,7 +634,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	tagRuleId = $someString
     /// 	# REQUIRED
     /// 	tagRuleName = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
     /// 	# OPTIONAL
     /// 	slaId = $someString
@@ -662,34 +662,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the WarmIndexCache operation
-    /// of the 'Cloud Native' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    CloudNative
-    /// # API Operation: WarmIndexCache
-    /// 
-    /// $query = New-RscMutationCloudNative -WarmIndexCache
-    /// 
-    /// # REQUIRED
-    /// $query.Var.workloadId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.Boolean
     /// 
     /// 
     /// 
@@ -726,7 +698,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateIndexingStatus",
                 "UpdateLabelRule",
                 "UpdateTagRule",
-                "WarmIndexCache",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -780,9 +751,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateTagRule":
                         this.ProcessRecord_UpdateTagRule();
-                        break;
-                    case "WarmIndexCache":
-                        this.ProcessRecord_WarmIndexCache();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -911,15 +879,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationUpdateCloudNativeTagRule();
         }
 
-        // This parameter set invokes a single graphql operation:
-        // warmCloudNativeIndexCache.
-        internal void ProcessRecord_WarmIndexCache()
-        {
-            this._logger.name += " -WarmIndexCache";
-            // Create new graphql operation warmCloudNativeIndexCache
-            InitMutationWarmCloudNativeIndexCache();
-        }
-
 
         // Create new GraphQL Mutation:
         // addCloudNativeSqlServerBackupCredentials(input: AddCloudNativeSqlServerBackupCredentialsInput!): AddCloudNativeSqlServerBackupCredentialsReply!
@@ -1041,7 +1000,7 @@ $query.Var.input = @{
 		# REQUIRED
 		matchAllValues = $someBoolean
 	}
-	# REQUIRED
+	# OPTIONAL
 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
 	# OPTIONAL
 	slaId = $someString
@@ -1096,7 +1055,7 @@ $query.Var.input = @{
 		# REQUIRED
 		matchAllValues = $someBoolean
 	}
-	# REQUIRED
+	# OPTIONAL
 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
 	# OPTIONAL
 	slaId = $someString
@@ -1339,7 +1298,7 @@ $query.Var.input = @{
 	labelRuleId = $someString
 	# REQUIRED
 	labelRuleName = $someString
-	# REQUIRED
+	# OPTIONAL
 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
 	# OPTIONAL
 	slaId = $someString
@@ -1385,7 +1344,7 @@ $query.Var.input = @{
 	tagRuleId = $someString
 	# REQUIRED
 	tagRuleName = $someString
-	# REQUIRED
+	# OPTIONAL
 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
 	# OPTIONAL
 	slaId = $someString
@@ -1407,26 +1366,6 @@ $query.Var.input = @{
 	# OPTIONAL
 	applyToAllCloudAccounts = $someBoolean
 }"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // warmCloudNativeIndexCache(workloadId: UUID!): Boolean!
-        internal void InitMutationWarmCloudNativeIndexCache()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("workloadId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationWarmCloudNativeIndexCache",
-                "($workloadId: UUID!)",
-                "System.Boolean",
-                Mutation.WarmCloudNativeIndexCache,
-                Mutation.WarmCloudNativeIndexCacheFieldSpec,
-                @"# REQUIRED
-$query.Var.workloadId = $someString"
             );
         }
 

@@ -19,6 +19,8 @@ Active Directory Domain Controller.
   - Different master roles played by the Domain Controller.
 - serverRoles: list of ServerRoless
   - Mentions if services like DNS or DHCP are hosted.
+- isGlobalCatalog: System.Boolean
+  - Indicates whether the domain controller is a global catalog.
 - reportWorkload: Snappable
   - Includes statistics for the protected objects, for example, archive storage.
 - activeDirectoryDomain: ActiveDirectoryDomain

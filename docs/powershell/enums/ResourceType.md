@@ -1,4 +1,0 @@
-### ResourceType
-- BLUEPRINT
-- CLUSTER
-- SNAPPABLE

@@ -1,7 +1,0 @@
-### AppSearchResponseEdge
-Wrapper around the AppSearchResponse object. This wrapper is used for pagination.
-
-- cursor: System.String
-  - String used to identify this edge.
-- node: AppSearchResponse
-  - The actual AppSearchResponse object wrapped by this edge.

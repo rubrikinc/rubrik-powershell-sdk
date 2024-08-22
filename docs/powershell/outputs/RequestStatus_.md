@@ -1,2 +1,0 @@
-### RequestStatus
-- success: System.Boolean

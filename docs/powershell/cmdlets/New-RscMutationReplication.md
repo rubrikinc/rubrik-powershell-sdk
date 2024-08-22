@@ -1,10 +1,5 @@
 # New-RscMutationReplication
 ## Subcommands
-### adddisabledlocation
-Add replication location in disabled state.
-
-- There is a single argument of type AddDisabledReplicationLocationInput.
-- Returns AddDisabledReplicationLocationReply.
 ### createpair
 Creates replication pairing between two Rubrik clusters.
 

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 3
     /// operations in the 'Activity series' API domain:
-    /// Cancel, DownloadUserCsv, DownloadUserFileCsv, or ExportUserSummaries.
+    /// Cancel, DownloadUserCsv, or DownloadUserFileCsv.
     /// </summary>
     /// <description>
     /// New-RscMutationActivitySeries creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 3 operations
     /// in the 'Activity series' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Cancel, DownloadUserCsv, DownloadUserFileCsv, or ExportUserSummaries.
+    /// one of: Cancel, DownloadUserCsv, or DownloadUserFileCsv.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -239,53 +239,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
-    /// <example>
-    /// Runs the ExportUserSummaries operation
-    /// of the 'Activity series' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    ActivitySeries
-    /// # API Operation: ExportUserSummaries
-    /// 
-    /// $query = New-RscMutationActivitySeries -ExportUserSummaries
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.filter = @{
-    /// 	# OPTIONAL
-    /// 	userNamePrefix = $someString
-    /// 	# OPTIONAL
-    /// 	objectId = $someString
-    /// 	# OPTIONAL
-    /// 	groupId = $someString
-    /// 	# OPTIONAL
-    /// 	policyId = $someString
-    /// 	# REQUIRED
-    /// 	userRisk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
-    /// 	# REQUIRED
-    /// 	principalSummaryCategory = $somePrincipalSummaryCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PrincipalSummaryCategory]) for enum values.
-    /// 	# OPTIONAL
-    /// 	userActivityType = $someUserActivityType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserActivityType]) for enum values.
-    /// }
-    /// # REQUIRED
-    /// $query.Var.endTime = $someDateTime
-    /// # REQUIRED
-    /// $query.Var.timePeriod = $someTimePeriod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimePeriod]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ExportUserActivitySummariesResp
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -305,7 +258,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Cancel",
                 "DownloadUserCsv",
                 "DownloadUserFileCsv",
-                "ExportUserSummaries",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -329,9 +281,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DownloadUserFileCsv":
                         this.ProcessRecord_DownloadUserFileCsv();
-                        break;
-                    case "ExportUserSummaries":
-                        this.ProcessRecord_ExportUserSummaries();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -368,15 +317,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DownloadUserFileCsv";
             // Create new graphql operation downloadUserFileActivityCsv
             InitMutationDownloadUserFileActivityCsv();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // exportUserActivitySummaries.
-        internal void ProcessRecord_ExportUserSummaries()
-        {
-            this._logger.name += " -ExportUserSummaries";
-            // Create new graphql operation exportUserActivitySummaries
-            InitMutationExportUserActivitySummaries();
         }
 
 
@@ -516,47 +456,6 @@ $query.Var.input = @{
 	# REQUIRED
 	startDay = $someString
 }"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // exportUserActivitySummaries(filter: ExportUserActivitySummariesFilterInput, endTime: DateTime!, timePeriod: TimePeriod!): ExportUserActivitySummariesResp!
-        internal void InitMutationExportUserActivitySummaries()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("filter", "ExportUserActivitySummariesFilterInput"),
-                Tuple.Create("endTime", "DateTime!"),
-                Tuple.Create("timePeriod", "TimePeriod!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationExportUserActivitySummaries",
-                "($filter: ExportUserActivitySummariesFilterInput,$endTime: DateTime!,$timePeriod: TimePeriod!)",
-                "ExportUserActivitySummariesResp",
-                Mutation.ExportUserActivitySummaries,
-                Mutation.ExportUserActivitySummariesFieldSpec,
-                @"# OPTIONAL
-$query.Var.filter = @{
-	# OPTIONAL
-	userNamePrefix = $someString
-	# OPTIONAL
-	objectId = $someString
-	# OPTIONAL
-	groupId = $someString
-	# OPTIONAL
-	policyId = $someString
-	# REQUIRED
-	userRisk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
-	# REQUIRED
-	principalSummaryCategory = $somePrincipalSummaryCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PrincipalSummaryCategory]) for enum values.
-	# OPTIONAL
-	userActivityType = $someUserActivityType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserActivityType]) for enum values.
-}
-# REQUIRED
-$query.Var.endTime = $someDateTime
-# REQUIRED
-$query.Var.timePeriod = $someTimePeriod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimePeriod]) for enum values."
             );
         }
 

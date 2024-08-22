@@ -1,15 +1,5 @@
 # New-RscMutationCertificate
 ## Subcommands
-### add
-Add Certificate.
-
-- There are 5 arguments.
-    - name - System.String: Certificate name.
-    - description - System.String: Certificate description.
-    - csrId - System.Int64: CSR ID.
-    - privateKey - System.String: Certificate private key.
-    - certificate - System.String: Certificate.
-- Returns System.Int64.
 ### addclustercertificate
 Import a certificate
 
@@ -39,10 +29,20 @@ Delete an existing global certificate.
 - There is a single argument of type DeleteGlobalCertificateInput.
 - Returns DeleteGlobalCertificateReply.
 ### generatecsr
-Generate a CSR certificate for a Rubrik cluster.
+Generate CSR.
 
-- There is a single argument of type GenerateCSRInput.
-- Returns GenerateCSRReply.
+- There are 10 arguments.
+    - name - System.String: Name for your CSR.
+    - hostnames - list of System.Strings: Hostnames for your CSR.
+    - organization - System.String: Organization for your CSR.
+    - organizationUnit - System.String: Organization unit for your CSR.
+    - country - System.String: Country for your CSR.
+    - state - System.String: State for your CSR.
+    - city - System.String: City for your CSR.
+    - email - System.String: Email for your CSR.
+    - surname - System.String: Surname for your CSR.
+    - userId - System.String: User ID for your CSR.
+- Returns Csr.
 ### markagentsecondary
 Mark a secondary cluster certificate to be asynchronously synced to all Rubrik Backup Service instances for which this cluster is the primary.
 

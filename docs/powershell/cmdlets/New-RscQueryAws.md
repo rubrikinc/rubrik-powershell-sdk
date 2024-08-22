@@ -22,12 +22,6 @@ List of all AWS cloud account configurations with the given search query.
 
 - There is a single argument of type AwsCloudAccountConfigsInput.
 - Returns list of AwsFeatureConfigs.
-### cloudaccountlistkmskeys
-- There are 3 arguments.
-    - cloudAccountUuid - System.String: The ID of the cloud account.
-    - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
-    - region - AwsRegion: AWS region argument for archival use case.
-- Returns AwsCloudAccountListKMSKeysResponse.
 ### cloudaccountlistsecuritygroups
 Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC).
 
@@ -54,11 +48,6 @@ Retrieves a list of virtual private clouds (VPCs) in the specific cloud account.
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
     - region - AwsRegion: AWS region argument for archival use case.
 - Returns AwsCloudAccountListVpcResponse.
-### cloudaccountsfeatureswithexoconfigs
-List of active AWS cloud account features and the Exocompute mapping information for the accounts. A cloud account is an AWS account added to the Rubrik platform.
-
-- There is a single argument of type AwsCloudAccountsWithFeaturesInput.
-- Returns list of AwsCloudAccountFeaturesWithExoConfigss.
 ### cloudaccountswithfeatures
 List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
 
@@ -105,6 +94,11 @@ List of all AWS exocompute configurations filtered by a cloud account ID or a cl
 
 - There is a single argument of type System.String.
 - Returns list of AwsExocomputeConfigs.
+### exocomputegetclusterconnectioninfo
+Obtains the connection command and yaml which can be used to connect a customer-managed cluster to RSC.
+
+- There is a single argument of type AwsExocomputeGetClusterConnectionInput.
+- Returns AwsExocomputeGetClusterConnectionInfoReply.
 ### instanceprofilenames
 All Rubrik CC-ES instance profiles in the AWS account.
 
@@ -126,11 +120,6 @@ List of encryption keys in the specified region on the specified AWS Native acco
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
 - Returns list of KmsEncryptionKeys.
-### latestpermissionsbypermissionsgroup
-Retrieves the latest permissions required for each of the provided features. Permissions for each feature are grouped by permissions group.
-
-- There is a single argument of type list of CloudAccountFeatures.
-- Returns list of AwsFeaturePermissionss.
 ### optiongroupsbyregion
 List of all RDS option groups in a given region. Refers to settings of how a particular option works for an RDS Instance. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
 
@@ -141,21 +130,11 @@ List of all RDS option groups in a given region. Refers to settings of how a par
     - dbEngineVersion - System.String: Version of DB engine.
     - majorEngineVersion - System.String: Major version of the option group engine.
 - Returns list of OptionGroups.
-### outpostaccount
-Retrieves the details of the AWS Outpost account configured for Laminar. Laminar requires you to configure an AWS Outpost account to scan and classify the data on your AWS accounts. 
-
-- There is a single argument of type AwsCloudType.
-- Returns AwsOutpostAccountGetAccountReply.
 ### permissionpolicies
 Retrieves the permissions policy for all the input features along with any AWS-managed policy ARNs which need to be attached to the roles. Each policy document can be used to create an AWS-managed policy which then needs to be attached to corresponding role.
 
 - There is a single argument of type AwsGetPermissionPoliciesInput.
 - Returns list of PermissionPolicys.
-### rdsaurorainstanceclasses
-List of all the database instance classes supported by AWS RDS Aurora databases.
-
-- The rdsaurorainstanceclasses subcommand takes no arguments.
-- Returns AwsNativeRdsAuroraInstanceClassesReply.
 ### rdsinstancedetails
 Details of the RDS Instance in the AWS Native account.
 

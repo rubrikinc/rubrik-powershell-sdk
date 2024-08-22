@@ -8,7 +8,7 @@ Request to create a replication pair between two Rubrik clusters.
 - targetNetworkInterface: NetworkInterfaceDetails
   - Network interface for communication between the source and target clusters.
 - networkInterface: NetworkInterfaceSelection
-  - Network interface names for communication between the source and target clusters. This is only applicable for private network setup type.
+  - Network interface names for communication between the source and target clusters. This applies only to the private network setup type.
 - sourceClusterUuid: System.String
   - Source Rubrik cluster UUID.
 - targetClusterUuid: System.String

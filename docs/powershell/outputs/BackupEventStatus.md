@@ -1,5 +1,5 @@
 ### BackupEventStatus
-Represents the status of the backup for a specific M365 snapshot.
+Status of the backup for a specific SaaS snapshot.
 
 - status: SnapshotServiceBackupStatus
   - Status of the backup.

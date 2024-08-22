@@ -6,9 +6,9 @@ Input required to update a cloud-native label rule.
 - labelRuleName: System.String
   - Name of the label rule.
 - slaAssignType: TagRuleSlaAssignType
-  - Corresponds to the assignment type for the SLA.
+  - Deprecated: use bulkAssignSlas to assign SLA Domain to tag rule.
 - slaId: System.String
-  - Corresponds to optional global SLA Rubrik ID.
+  - Deprecated: use bulkAssignSlas to assign SLA Domain to tag rule.
 - cloudNativeAccountIds: CloudNativeIds
   - Cloud native accounts on which label rule will be applied.
 - applyToAllCloudAccounts: System.Boolean

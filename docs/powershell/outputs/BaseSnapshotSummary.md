@@ -26,11 +26,11 @@ Supported in v5.0+
   - Required. Supported in v5.0+
 - slaId: System.String
   - Required. Supported in v5.0+
-  v5.0-v5.1: 
+  v5.0-v5.1:
   v5.2+: (Deprecated) For a policy based snapshot this parameter contains the ID of the SLA Domain currently assigned to the data source of that snapshot. For an on demand snapshot this field corresponds to the SLA Domain that was assigned when the snapshot was taken. A data source, and individual snapshots, can be reassigned to a different SLA Domain, or the SLA Domain can be modified. In any of these cases this parameter can contain a stale and incorrect value. To view retention information for this snapshot, use snapshotRetentionInfo instead.
 - slaName: System.String
   - Required. Supported in v5.0+
-  v5.0-v5.1: 
+  v5.0-v5.1:
   v5.2+: (Deprecated) For a policy based snapshot this parameter contains the name of the SLA Domain currently assigned to the data source of that snapshot. For an on demand snapshot this field corresponds to the SLA Domain that was assigned when the snapshot was taken. A data source, and individual snapshots, can be reassigned to a different SLA Domain, or the SLA Domain can be modified. In any of these cases this parameter can contain a stale and incorrect value. To view retention information for this snapshot, use snapshotRetentionInfo instead.
 - sourceObjectType: System.String
   - Supported in v5.0+

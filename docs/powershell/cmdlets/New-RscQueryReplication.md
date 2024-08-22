@@ -20,16 +20,6 @@ Get the time series of total outgoing bandwidth from the replication clusters.
 
 - There is a single argument of type ReplicationBandwidthOutgoingInput.
 - Returns InternalReplicationBandwidthOutgoingResponse.
-### pairedtargets
-Lists all paired replication target clusters.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - pairedReplicationTargetFilter - ListPairedReplicationTargetFilter: Filter to retrieve paired replication targets.
-- Returns PairedReplicationTargetConnection.
 ### pairs
 List of all replication pair Rubrik clusters.
 

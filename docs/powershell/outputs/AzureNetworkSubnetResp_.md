@@ -1,2 +1,0 @@
-### AzureNetworkSubnetResp
-- valid: System.Boolean

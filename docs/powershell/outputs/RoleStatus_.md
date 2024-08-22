@@ -1,2 +1,0 @@
-### RoleStatus
-- hasRole: System.Boolean

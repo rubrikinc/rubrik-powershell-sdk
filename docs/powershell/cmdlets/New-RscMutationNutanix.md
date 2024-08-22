@@ -16,14 +16,6 @@ Mounts a batch of snapshots from a group of specified virtual machines.
 
 - There is a single argument of type BatchMountNutanixVmInput.
 - Returns BatchMountNutanixVmReply.
-### batchunmountvm
-Unmount snapshots from multiple virtual machines
-
-Supported in v9.2+
-Unmounts a batch of snapshots from a group of specified virtual machines.
-
-- There is a single argument of type BatchUnmountNutanixVmInput.
-- Returns BatchUnmountNutanixVmReply.
 ### bulkondemandsnapshotvm
 Take an on-demand snapshot for selected Nutanix virtual machines
 

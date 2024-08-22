@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 13
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Certificates' API domain:
-    /// Add, AddClusterCertificate, AddGlobalCertificate, Delete, DeleteCsr, DeleteGlobalCertificate, GenerateCsr, MarkAgentSecondary, SetSso, SetWebSigned, Update, UpdateGlobalCertificate, or UpdateHost.
+    /// AddClusterCertificate, AddGlobalCertificate, Delete, DeleteCsr, DeleteGlobalCertificate, GenerateCsr, MarkAgentSecondary, SetSso, SetWebSigned, Update, UpdateGlobalCertificate, or UpdateHost.
     /// </summary>
     /// <description>
     /// New-RscMutationCertificate creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 13 operations
+    /// There are 12 operations
     /// in the 'Certificates' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Add, AddClusterCertificate, AddGlobalCertificate, Delete, DeleteCsr, DeleteGlobalCertificate, GenerateCsr, MarkAgentSecondary, SetSso, SetWebSigned, Update, UpdateGlobalCertificate, or UpdateHost.
+    /// one of: AddClusterCertificate, AddGlobalCertificate, Delete, DeleteCsr, DeleteGlobalCertificate, GenerateCsr, MarkAgentSecondary, SetSso, SetWebSigned, Update, UpdateGlobalCertificate, or UpdateHost.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationCertificate -Add).Info().
+    /// (New-RscMutationCertificate -AddClusterCertificate).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,47 +70,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationCertificate -Add).Info().
+    /// (New-RscMutationCertificate -AddClusterCertificate).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
-    ///
-    /// <example>
-    /// Runs the Add operation
-    /// of the 'Certificates' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Certificate
-    /// # API Operation: Add
-    /// 
-    /// $query = New-RscMutationCertificate -Add
-    /// 
-    /// # REQUIRED
-    /// $query.Var.name = $someString
-    /// # OPTIONAL
-    /// $query.Var.description = $someString
-    /// # OPTIONAL
-    /// $query.Var.csrId = $someInt64
-    /// # OPTIONAL
-    /// $query.Var.privateKey = $someString
-    /// # REQUIRED
-    /// $query.Var.certificate = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.Int64
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
     ///
     /// <example>
     /// Runs the AddClusterCertificate operation
@@ -312,36 +276,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscMutationCertificate -GenerateCsr
     /// 
     /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	clusterUuid = $someString
-    /// 	# OPTIONAL
-    /// 	hostnames = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	organization = $someString
-    /// 	# OPTIONAL
-    /// 	organizationalUnit = $someString
-    /// 	# OPTIONAL
-    /// 	country = $someString
-    /// 	# OPTIONAL
-    /// 	state = $someString
-    /// 	# OPTIONAL
-    /// 	city = $someString
-    /// 	# OPTIONAL
-    /// 	surname = $someString
-    /// 	# OPTIONAL
-    /// 	emailAddress = $someString
-    /// 	# OPTIONAL
-    /// 	name = $someString
-    /// }
+    /// $query.Var.name = $someString
+    /// # REQUIRED
+    /// $query.Var.hostnames = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.organization = $someString
+    /// # OPTIONAL
+    /// $query.Var.organizationUnit = $someString
+    /// # OPTIONAL
+    /// $query.Var.country = $someString
+    /// # OPTIONAL
+    /// $query.Var.state = $someString
+    /// # OPTIONAL
+    /// $query.Var.city = $someString
+    /// # OPTIONAL
+    /// $query.Var.email = $someString
+    /// # OPTIONAL
+    /// $query.Var.surname = $someString
+    /// # OPTIONAL
+    /// $query.Var.userId = $someString
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: GenerateCsrReply
+    /// Write-Host $result.GetType().Name # prints: Csr
     /// 
     /// 
     /// 
@@ -576,7 +537,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "Add",
                 "AddClusterCertificate",
                 "AddGlobalCertificate",
                 "Delete",
@@ -604,9 +564,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "Add":
-                        this.ProcessRecord_Add();
-                        break;
                     case "AddClusterCertificate":
                         this.ProcessRecord_AddClusterCertificate();
                         break;
@@ -651,15 +608,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // addCertificate.
-        internal void ProcessRecord_Add()
-        {
-            this._logger.name += " -Add";
-            // Create new graphql operation addCertificate
-            InitMutationAddCertificate();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -708,11 +656,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // generateCSR.
+        // generateCsr.
         internal void ProcessRecord_GenerateCsr()
         {
             this._logger.name += " -GenerateCsr";
-            // Create new graphql operation generateCSR
+            // Create new graphql operation generateCsr
             InitMutationGenerateCsr();
         }
 
@@ -770,44 +718,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationUpdateCertificateHost();
         }
 
-
-        // Create new GraphQL Mutation:
-        // addCertificate(
-        //     name: String!
-        //     description: String
-        //     csrId: Long
-        //     privateKey: String
-        //     certificate: String!
-        //   ): Long!
-        internal void InitMutationAddCertificate()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("name", "String!"),
-                Tuple.Create("description", "String"),
-                Tuple.Create("csrId", "Long"),
-                Tuple.Create("privateKey", "String"),
-                Tuple.Create("certificate", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationAddCertificate",
-                "($name: String!,$description: String,$csrId: Long,$privateKey: String,$certificate: String!)",
-                "System.Int64",
-                Mutation.AddCertificate,
-                Mutation.AddCertificateFieldSpec,
-                @"# REQUIRED
-$query.Var.name = $someString
-# OPTIONAL
-$query.Var.description = $someString
-# OPTIONAL
-$query.Var.csrId = $someInt64
-# OPTIONAL
-$query.Var.privateKey = $someString
-# REQUIRED
-$query.Var.certificate = $someString"
-            );
-        }
 
         // Create new GraphQL Mutation:
         // addClusterCertificate(input: AddClusterCertificateInput!): AddClusterCertificateReply!
@@ -956,45 +866,62 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // generateCSR(input: GenerateCSRInput!): GenerateCSRReply!
+        // generateCsr(
+        //     name: String!
+        //     hostnames: [String!]!
+        //     organization: String
+        //     organizationUnit: String
+        //     country: String
+        //     state: String
+        //     city: String
+        //     email: String
+        //     surname: String
+        //     userId: String
+        //   ): Csr!
         internal void InitMutationGenerateCsr()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GenerateCSRInput!"),
+                Tuple.Create("name", "String!"),
+                Tuple.Create("hostnames", "[String!]!"),
+                Tuple.Create("organization", "String"),
+                Tuple.Create("organizationUnit", "String"),
+                Tuple.Create("country", "String"),
+                Tuple.Create("state", "String"),
+                Tuple.Create("city", "String"),
+                Tuple.Create("email", "String"),
+                Tuple.Create("surname", "String"),
+                Tuple.Create("userId", "String"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationGenerateCsr",
-                "($input: GenerateCSRInput!)",
-                "GenerateCsrReply",
+                "($name: String!,$hostnames: [String!]!,$organization: String,$organizationUnit: String,$country: String,$state: String,$city: String,$email: String,$surname: String,$userId: String)",
+                "Csr",
                 Mutation.GenerateCsr,
                 Mutation.GenerateCsrFieldSpec,
                 @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	clusterUuid = $someString
-	# OPTIONAL
-	hostnames = @(
-		$someString
-	)
-	# OPTIONAL
-	organization = $someString
-	# OPTIONAL
-	organizationalUnit = $someString
-	# OPTIONAL
-	country = $someString
-	# OPTIONAL
-	state = $someString
-	# OPTIONAL
-	city = $someString
-	# OPTIONAL
-	surname = $someString
-	# OPTIONAL
-	emailAddress = $someString
-	# OPTIONAL
-	name = $someString
-}"
+$query.Var.name = $someString
+# REQUIRED
+$query.Var.hostnames = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.organization = $someString
+# OPTIONAL
+$query.Var.organizationUnit = $someString
+# OPTIONAL
+$query.Var.country = $someString
+# OPTIONAL
+$query.Var.state = $someString
+# OPTIONAL
+$query.Var.city = $someString
+# OPTIONAL
+$query.Var.email = $someString
+# OPTIONAL
+$query.Var.surname = $someString
+# OPTIONAL
+$query.Var.userId = $someString"
             );
         }
 

@@ -1,8 +1,5 @@
 # New-RscQueryVsphere
 ## Subcommands
-### blueprint
-- There is a single argument of type System.String.
-- Returns VSphereBlueprint.
 ### computecluster
 - There is a single argument of type System.String.
 - Returns VsphereComputeCluster.
@@ -16,29 +13,9 @@ Query compute clusters
     - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns VsphereComputeClusterConnection.
-### contentlibraries
-Query content libraries.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns VsphereContentLibraryConnection.
-### contentlibrary
-vSphere content library based on ID passed in.
-
-- There is a single argument of type System.String.
-- Returns VsphereContentLibrary.
 ### datacenter
 - There is a single argument of type System.String.
 - Returns VsphereDatacenter.
-### datacenterfolder
-Vsphere datacenter folder based on id passed in.
-
-- There is a single argument of type System.String.
-- Returns VsphereDatacenterFolder.
 ### datastore
 Vsphere datastore based on id passed in.
 

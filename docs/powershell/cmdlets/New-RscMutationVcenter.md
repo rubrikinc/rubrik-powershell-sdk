@@ -1,14 +1,10 @@
 # New-RscMutationVcenter
 ## Subcommands
 ### create
-- There are 6 arguments.
-    - clusterUuid - System.String
-    - hostname - System.String
-    - username - System.String
-    - password - System.String
-    - conflictResolutionAuthz - ConflictResolutionAuthzEnum
-    - caCert - System.String
-- Returns VsphereAsyncRequestStatus.
+Add a vCenter server.
+
+- There is a single argument of type CreateVsphereVcenterInput.
+- Returns CreateVsphereVcenterReply.
 ### delete
 Remove vCenter Server
 
@@ -17,18 +13,14 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
 
 - There is a single argument of type VsphereDeleteVcenterInput.
 - Returns AsyncRequestStatus.
-### edit
-- There are 6 arguments.
-    - vcenterId - System.String: vcenter Id
-    - hostname - System.String
-    - username - System.String
-    - password - System.String
-    - conflictResolutionAuthz - ConflictResolutionAuthzEnum
-    - caCert - System.String
-- Returns RequestSuccess.
 ### refresh
-- There is a single argument of type System.String.
-- Returns VsphereAsyncRequestStatus.
+Refresh vCenter Server metadata
+
+Supported in v5.0+
+Create a job to refresh the metadata for the specified vCenter Server.
+
+- There is a single argument of type RefreshVsphereVcenterInput.
+- Returns AsyncRequestStatus.
 ### update
 Update vCenter Server
 
@@ -53,3 +45,11 @@ Set the user-configured network for HotAdd backup and recovery operations on VMw
 
 - There is a single argument of type UpdateVcenterHotAddNetworkInput.
 - Returns RequestSuccess.
+### updatev2
+Update vCenter Server
+
+Supported in v8.1+
+Update the address, username, and password of the specified vCenter Server object.
+
+- There is a single argument of type UpdateVcenterV2Input.
+- Returns UpdateVcenterV2Reply.

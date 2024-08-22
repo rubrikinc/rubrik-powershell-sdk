@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 10
+    /// Create a new RscQuery object for any of the 6
     /// operations in the 'Mongo' API domain:
-    /// AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, DeleteSource, DiscoverSource, PatchOpsManagerManagedSource, PatchSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
+    /// AddSource, DeleteSource, DiscoverSource, PatchSource, RecoverSource, or RetryAddSource.
     /// </summary>
     /// <description>
     /// New-RscMutationMongo creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 10 operations
+    /// There are 6 operations
     /// in the 'Mongo' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, DeleteSource, DiscoverSource, PatchOpsManagerManagedSource, PatchSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
+    /// one of: AddSource, DeleteSource, DiscoverSource, PatchSource, RecoverSource, or RetryAddSource.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationMongo -AddOpsManagerManagedSource).Info().
+    /// (New-RscMutationMongo -AddSource).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,61 +70,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationMongo -AddOpsManagerManagedSource).Info().
+    /// (New-RscMutationMongo -AddSource).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
-    ///
-    /// <example>
-    /// Runs the AddOpsManagerManagedSource operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: AddOpsManagerManagedSource
-    /// 
-    /// $query = New-RscMutationMongo -AddOpsManagerManagedSource
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	mongoOpsmanagerSourceAddRequestConfig = @{
-    /// 		# OPTIONAL
-    /// 		ignoreNodes = @(
-    /// 			$someString
-    /// 		)
-    /// 		# REQUIRED
-    /// 		opsManagerApiToken = $someString
-    /// 		# REQUIRED
-    /// 		opsManagerClusterId = $someString
-    /// 		# REQUIRED
-    /// 		opsManagerGroupId = $someString
-    /// 		# REQUIRED
-    /// 		opsManagerNodes = @(
-    /// 			$someString
-    /// 		)
-    /// 		# REQUIRED
-    /// 		sourceName = $someString
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AddOpsManagerMongoSourceResponse
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
     ///
     /// <example>
     /// Runs the AddSource operation
@@ -192,53 +142,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the CreateOnDemandDatabaseBackup operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: CreateOnDemandDatabaseBackup
-    /// 
-    /// $query = New-RscMutationMongo -CreateOnDemandDatabaseBackup
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	config = @{
-    /// 		# REQUIRED
-    /// 		isFullbackup = $someBoolean
-    /// 		# REQUIRED
-    /// 		slaId = $someString
-    /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// }
-    /// # REQUIRED
-    /// $query.Var.attributes = @(
-    /// 	@{
-    /// 		# REQUIRED
-    /// 		value = $someString
-    /// 		# REQUIRED
-    /// 		attribute = $someFlagAttribute # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlagAttribute]) for enum values.
-    /// }
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the DeleteSource operation
     /// of the 'Mongo' API domain.
     /// <code>
@@ -286,46 +189,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the PatchOpsManagerManagedSource operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: PatchOpsManagerManagedSource
-    /// 
-    /// $query = New-RscMutationMongo -PatchOpsManagerManagedSource
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
-    /// 	patch = @{
-    /// 		# OPTIONAL
-    /// 		ignoreNodes = @(
-    /// 			$someString
-    /// 		)
-    /// 		# REQUIRED
-    /// 		opsManagerApiToken = $someString
-    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -457,56 +320,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the RetryAddOpsManagerManagedSource operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: RetryAddOpsManagerManagedSource
-    /// 
-    /// $query = New-RscMutationMongo -RetryAddOpsManagerManagedSource
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
-    /// 	mongoOpsmanagerSourceUpdateRequestConfig = @{
-    /// 		# OPTIONAL
-    /// 		ignoreNodes = @(
-    /// 			$someString
-    /// 		)
-    /// 		# REQUIRED
-    /// 		opsManagerApiToken = $someString
-    /// 		# REQUIRED
-    /// 		opsManagerClusterId = $someString
-    /// 		# REQUIRED
-    /// 		opsManagerGroupId = $someString
-    /// 		# REQUIRED
-    /// 		opsManagerNodes = @(
-    /// 			$someString
-    /// 		)
-    /// 		# REQUIRED
-    /// 		sourceName = $someString
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the RetryAddSource operation
     /// of the 'Mongo' API domain.
     /// <code>
@@ -587,15 +400,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "AddOpsManagerManagedSource",
                 "AddSource",
-                "CreateOnDemandDatabaseBackup",
                 "DeleteSource",
                 "DiscoverSource",
-                "PatchOpsManagerManagedSource",
                 "PatchSource",
                 "RecoverSource",
-                "RetryAddOpsManagerManagedSource",
                 "RetryAddSource",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -612,14 +421,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "AddOpsManagerManagedSource":
-                        this.ProcessRecord_AddOpsManagerManagedSource();
-                        break;
                     case "AddSource":
                         this.ProcessRecord_AddSource();
-                        break;
-                    case "CreateOnDemandDatabaseBackup":
-                        this.ProcessRecord_CreateOnDemandDatabaseBackup();
                         break;
                     case "DeleteSource":
                         this.ProcessRecord_DeleteSource();
@@ -627,17 +430,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DiscoverSource":
                         this.ProcessRecord_DiscoverSource();
                         break;
-                    case "PatchOpsManagerManagedSource":
-                        this.ProcessRecord_PatchOpsManagerManagedSource();
-                        break;
                     case "PatchSource":
                         this.ProcessRecord_PatchSource();
                         break;
                     case "RecoverSource":
                         this.ProcessRecord_RecoverSource();
-                        break;
-                    case "RetryAddOpsManagerManagedSource":
-                        this.ProcessRecord_RetryAddOpsManagerManagedSource();
                         break;
                     case "RetryAddSource":
                         this.ProcessRecord_RetryAddSource();
@@ -653,30 +450,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // addOpsManagerManagedMongoSource.
-        internal void ProcessRecord_AddOpsManagerManagedSource()
-        {
-            this._logger.name += " -AddOpsManagerManagedSource";
-            // Create new graphql operation addOpsManagerManagedMongoSource
-            InitMutationAddOpsManagerManagedMongoSource();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // addMongoSource.
         internal void ProcessRecord_AddSource()
         {
             this._logger.name += " -AddSource";
             // Create new graphql operation addMongoSource
             InitMutationAddMongoSource();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // createOnDemandMongoDatabaseBackup.
-        internal void ProcessRecord_CreateOnDemandDatabaseBackup()
-        {
-            this._logger.name += " -CreateOnDemandDatabaseBackup";
-            // Create new graphql operation createOnDemandMongoDatabaseBackup
-            InitMutationCreateOnDemandMongoDatabaseBackup();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -698,15 +477,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // patchOpsManagerManagedMongoSource.
-        internal void ProcessRecord_PatchOpsManagerManagedSource()
-        {
-            this._logger.name += " -PatchOpsManagerManagedSource";
-            // Create new graphql operation patchOpsManagerManagedMongoSource
-            InitMutationPatchOpsManagerManagedMongoSource();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // patchMongoSource.
         internal void ProcessRecord_PatchSource()
         {
@@ -725,15 +495,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // retryAddOpsManagerManagedMongoSource.
-        internal void ProcessRecord_RetryAddOpsManagerManagedSource()
-        {
-            this._logger.name += " -RetryAddOpsManagerManagedSource";
-            // Create new graphql operation retryAddOpsManagerManagedMongoSource
-            InitMutationRetryAddOpsManagerManagedMongoSource();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // retryAddMongoSource.
         internal void ProcessRecord_RetryAddSource()
         {
@@ -742,48 +503,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationRetryAddMongoSource();
         }
 
-
-        // Create new GraphQL Mutation:
-        // addOpsManagerManagedMongoSource(input: AddOpsManagerManagedMongoSourceInput!): AddOpsManagerMongoSourceResponse!
-        internal void InitMutationAddOpsManagerManagedMongoSource()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "AddOpsManagerManagedMongoSourceInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationAddOpsManagerManagedMongoSource",
-                "($input: AddOpsManagerManagedMongoSourceInput!)",
-                "AddOpsManagerMongoSourceResponse",
-                Mutation.AddOpsManagerManagedMongoSource,
-                Mutation.AddOpsManagerManagedMongoSourceFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	mongoOpsmanagerSourceAddRequestConfig = @{
-		# OPTIONAL
-		ignoreNodes = @(
-			$someString
-		)
-		# REQUIRED
-		opsManagerApiToken = $someString
-		# REQUIRED
-		opsManagerClusterId = $someString
-		# REQUIRED
-		opsManagerGroupId = $someString
-		# REQUIRED
-		opsManagerNodes = @(
-			$someString
-		)
-		# REQUIRED
-		sourceName = $someString
-	}
-}"
-            );
-        }
 
         // Create new GraphQL Mutation:
         // addMongoSource(input: AddMongoSourceInput!): AddMongoSourceReply!
@@ -843,46 +562,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // createOnDemandMongoDatabaseBackup(input: CreateOnDemandMongoDatabaseSnapshotInput!, attributes: [FeatureFlagAttributeInput!]!): AsyncRequestStatus!
-        internal void InitMutationCreateOnDemandMongoDatabaseBackup()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateOnDemandMongoDatabaseSnapshotInput!"),
-                Tuple.Create("attributes", "[FeatureFlagAttributeInput!]!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateOnDemandMongoDatabaseBackup",
-                "($input: CreateOnDemandMongoDatabaseSnapshotInput!,$attributes: [FeatureFlagAttributeInput!]!)",
-                "AsyncRequestStatus",
-                Mutation.CreateOnDemandMongoDatabaseBackup,
-                Mutation.CreateOnDemandMongoDatabaseBackupFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	config = @{
-		# REQUIRED
-		isFullbackup = $someBoolean
-		# REQUIRED
-		slaId = $someString
-	}
-	# REQUIRED
-	id = $someString
-}
-# REQUIRED
-$query.Var.attributes = @(
-	@{
-		# REQUIRED
-		value = $someString
-		# REQUIRED
-		attribute = $someFlagAttribute # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlagAttribute]) for enum values.
-}
-)"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // deleteMongoSource(input: DeleteMongoSourceInput!): AsyncRequestStatus!
         internal void InitMutationDeleteMongoSource()
         {
@@ -924,38 +603,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // patchOpsManagerManagedMongoSource(input: PatchOpsManagerManagedMongoSourceInput!): AsyncRequestStatus!
-        internal void InitMutationPatchOpsManagerManagedMongoSource()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "PatchOpsManagerManagedMongoSourceInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationPatchOpsManagerManagedMongoSource",
-                "($input: PatchOpsManagerManagedMongoSourceInput!)",
-                "AsyncRequestStatus",
-                Mutation.PatchOpsManagerManagedMongoSource,
-                Mutation.PatchOpsManagerManagedMongoSourceFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	id = $someString
-	# REQUIRED
-	patch = @{
-		# OPTIONAL
-		ignoreNodes = @(
-			$someString
-		)
-		# REQUIRED
-		opsManagerApiToken = $someString
-	}
 }"
             );
         }
@@ -1055,48 +702,6 @@ $query.Var.input = @{
 		sourceMongoClusterId = $someString
 		# REQUIRED
 		targetMongoClusterId = $someString
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // retryAddOpsManagerManagedMongoSource(input: PutOpsManagerManagedMongoSourceInput!): AsyncRequestStatus!
-        internal void InitMutationRetryAddOpsManagerManagedMongoSource()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "PutOpsManagerManagedMongoSourceInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationRetryAddOpsManagerManagedMongoSource",
-                "($input: PutOpsManagerManagedMongoSourceInput!)",
-                "AsyncRequestStatus",
-                Mutation.RetryAddOpsManagerManagedMongoSource,
-                Mutation.RetryAddOpsManagerManagedMongoSourceFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	id = $someString
-	# REQUIRED
-	mongoOpsmanagerSourceUpdateRequestConfig = @{
-		# OPTIONAL
-		ignoreNodes = @(
-			$someString
-		)
-		# REQUIRED
-		opsManagerApiToken = $someString
-		# REQUIRED
-		opsManagerClusterId = $someString
-		# REQUIRED
-		opsManagerGroupId = $someString
-		# REQUIRED
-		opsManagerNodes = @(
-			$someString
-		)
-		# REQUIRED
-		sourceName = $someString
 	}
 }"
             );

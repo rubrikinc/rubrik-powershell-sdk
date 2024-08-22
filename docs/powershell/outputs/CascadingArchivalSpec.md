@@ -9,3 +9,5 @@ Cascading archival specification info.
   - Frequencies that are associated with this cascaded archival location.
 - archivalLocation: Target
   - Archival location for snapshot on target.
+- archivalLocationToClusterMapping: list of ArchivalLocationToClusterMappings
+  - Mapping between archival location and Rubrik cluster.

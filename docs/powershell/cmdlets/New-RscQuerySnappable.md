@@ -32,18 +32,6 @@ Search over Exchange contacts.
     - orgId - System.String: Org UUID.
     - calendarSearchFilter - CalendarSearchFilter: Search filter for calendar search.
 - Returns O365ExchangeObjectConnection.
-### groupbyatspecifiedtimelist
-- There are 9 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - groupBy - SnappableGroupByEnum: Group workloads by field.
-    - filter - SnappableGroupByFilterInput: Filter workloads by groups.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
-    - specifiedTime - DateTime: Time to calculate the group by.
-    - requestedAggregations - list of SnappableAggregationsEnums: List of workload aggregations to retrieve. You can significantly reduce the runtime of the query by specifying a subset of aggregations to retrieve.
-- Returns SnappableGroupByAtSpecifiedTimeConnection.
 ### groupbylist
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -81,16 +69,6 @@ Search over Exchange contacts.
     - orgId - System.String: Org UUID.
     - onedriveSearchFilter - OnedriveSearchFilter
 - Returns O365OnedriveObjectConnection.
-### recoverypermissioncheck
-Get information about whether or not a user can recover specific objects.
-
-- There is a single argument of type CheckSnappablesRecoveryPermissionInput.
-- Returns CheckSnappablesRecoveryPermissionReply.
-### resourcespecs
-Describes the snappable resource specs.
-
-- There is a single argument of type list of SnappableIdentifierInputs.
-- Returns list of ResourceSpecs.
 ### search
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.

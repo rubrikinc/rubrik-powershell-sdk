@@ -1,4 +1,0 @@
-### GetObjectProtectionAndSensitivitySummaryReply
-- objectProtectionSummaryPerSnappableType: list of ObjectProtectionSummaryPerSnappableTypes
-- unaccessedSummaryPerSnappableType: list of UnaccessedSummaryPerSnappableTypes
-- relicObjectSummaryPerSnappableType: list of RelicObjectSummaryPerSnappableTypes

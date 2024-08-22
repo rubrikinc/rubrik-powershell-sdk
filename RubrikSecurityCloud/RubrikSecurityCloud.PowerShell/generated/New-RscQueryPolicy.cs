@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 11
+    /// Create a new RscQuery object for any of the 6
     /// operations in the 'Policy' API domain:
-    /// CustomTprPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyObjectUsages, PolicyRiskSummaries, SidsPolicyHitsSummary, TopRiskPolicySummaries, or TprPolicyDetail.
+    /// OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyObjectUsages, or TopRiskPolicySummaries.
     /// </summary>
     /// <description>
     /// New-RscQueryPolicy creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 11 operations
+    /// There are 6 operations
     /// in the 'Policy' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CustomTprPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyObjectUsages, PolicyRiskSummaries, SidsPolicyHitsSummary, TopRiskPolicySummaries, or TprPolicyDetail.
+    /// one of: OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyObjectUsages, or TopRiskPolicySummaries.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryPolicy -CustomTprPolicies).Info().
+    /// (New-RscQueryPolicy -OrgSecurityPolicy).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,86 +70,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryPolicy -CustomTprPolicies).Info().
+    /// (New-RscQueryPolicy -OrgSecurityPolicy).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
-    ///
-    /// <example>
-    /// Runs the CustomTprPolicies operation
-    /// of the 'Policy' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Policy
-    /// # API Operation: CustomTprPolicies
-    /// 
-    /// $query = New-RscQueryPolicy -CustomTprPolicies
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someTprPolicySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprPolicySortByField]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.filter = @{
-    /// 	# OPTIONAL
-    /// 	policyName = $someString
-    /// 	# OPTIONAL
-    /// 	policyIds = @(
-    /// 		$someString
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CustomTprPolicyConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the IsValidTprPolicyName operation
-    /// of the 'Policy' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Policy
-    /// # API Operation: IsValidTprPolicyName
-    /// 
-    /// $query = New-RscQueryPolicy -IsValidTprPolicyName
-    /// 
-    /// # REQUIRED
-    /// $query.Var.tprPolicyName = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.Boolean
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
     ///
     /// <example>
     /// Runs the OrgSecurityPolicy operation
@@ -324,82 +249,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the PolicyRiskSummaries operation
-    /// of the 'Policy' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Policy
-    /// # API Operation: PolicyRiskSummaries
-    /// 
-    /// $query = New-RscQueryPolicy -PolicyRiskSummaries
-    /// 
-    /// # REQUIRED
-    /// $query.Var.policyIds = @(
-    /// 	$someString
-    /// )
-    /// # REQUIRED
-    /// $query.Var.summaryDate = $someString
-    /// # OPTIONAL
-    /// $query.Var.includeWhitelistedResults = $someBoolean
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;PolicyRiskSummary&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the SidsPolicyHitsSummary operation
-    /// of the 'Policy' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Policy
-    /// # API Operation: SidsPolicyHitsSummary
-    /// 
-    /// $query = New-RscQueryPolicy -SidsPolicyHitsSummary
-    /// 
-    /// # REQUIRED
-    /// $query.Var.sids = @(
-    /// 	$someString
-    /// )
-    /// # REQUIRED
-    /// $query.Var.day = $someString
-    /// # REQUIRED
-    /// $query.Var.historicalDeltaDays = $someInt
-    /// # OPTIONAL
-    /// $query.Var.policyId = $someString
-    /// # OPTIONAL
-    /// $query.Var.includeWhitelistedResults = $someBoolean
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someSidPolicySummarySortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SidPolicySummarySortBy]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: SidsPolicyHitsSummaries
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the TopRiskPolicySummaries operation
     /// of the 'Policy' API domain.
     /// <code>
@@ -433,34 +282,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
-    /// <example>
-    /// Runs the TprPolicyDetail operation
-    /// of the 'Policy' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Policy
-    /// # API Operation: TprPolicyDetail
-    /// 
-    /// $query = New-RscQueryPolicy -TprPolicyDetail
-    /// 
-    /// # REQUIRED
-    /// $query.Var.tprPolicyId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: TprPolicyDetail
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -477,17 +298,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "CustomTprPolicies",
-                "IsValidTprPolicyName",
                 "OrgSecurityPolicy",
                 "PasswordComplexityPolicy",
                 "Policies",
                 "Policy",
                 "PolicyObjectUsages",
-                "PolicyRiskSummaries",
-                "SidsPolicyHitsSummary",
                 "TopRiskPolicySummaries",
-                "TprPolicyDetail",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -503,12 +319,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "CustomTprPolicies":
-                        this.ProcessRecord_CustomTprPolicies();
-                        break;
-                    case "IsValidTprPolicyName":
-                        this.ProcessRecord_IsValidTprPolicyName();
-                        break;
                     case "OrgSecurityPolicy":
                         this.ProcessRecord_OrgSecurityPolicy();
                         break;
@@ -524,17 +334,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "PolicyObjectUsages":
                         this.ProcessRecord_PolicyObjectUsages();
                         break;
-                    case "PolicyRiskSummaries":
-                        this.ProcessRecord_PolicyRiskSummaries();
-                        break;
-                    case "SidsPolicyHitsSummary":
-                        this.ProcessRecord_SidsPolicyHitsSummary();
-                        break;
                     case "TopRiskPolicySummaries":
                         this.ProcessRecord_TopRiskPolicySummaries();
-                        break;
-                    case "TprPolicyDetail":
-                        this.ProcessRecord_TprPolicyDetail();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -544,24 +345,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // customTprPolicies.
-        internal void ProcessRecord_CustomTprPolicies()
-        {
-            this._logger.name += " -CustomTprPolicies";
-            // Create new graphql operation customTprPolicies
-            InitQueryCustomTprPolicies();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // isValidTprPolicyName.
-        internal void ProcessRecord_IsValidTprPolicyName()
-        {
-            this._logger.name += " -IsValidTprPolicyName";
-            // Create new graphql operation isValidTprPolicyName
-            InitQueryIsValidTprPolicyName();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -610,24 +393,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // allPolicyRiskSummaries.
-        internal void ProcessRecord_PolicyRiskSummaries()
-        {
-            this._logger.name += " -PolicyRiskSummaries";
-            // Create new graphql operation allPolicyRiskSummaries
-            InitQueryAllPolicyRiskSummaries();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // sidsPolicyHitsSummary.
-        internal void ProcessRecord_SidsPolicyHitsSummary()
-        {
-            this._logger.name += " -SidsPolicyHitsSummary";
-            // Create new graphql operation sidsPolicyHitsSummary
-            InitQuerySidsPolicyHitsSummary();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // allTopRiskPolicySummaries.
         internal void ProcessRecord_TopRiskPolicySummaries()
         {
@@ -636,88 +401,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryAllTopRiskPolicySummaries();
         }
 
-        // This parameter set invokes a single graphql operation:
-        // tprPolicyDetail.
-        internal void ProcessRecord_TprPolicyDetail()
-        {
-            this._logger.name += " -TprPolicyDetail";
-            // Create new graphql operation tprPolicyDetail
-            InitQueryTprPolicyDetail();
-        }
-
-
-        // Create new GraphQL Query:
-        // customTprPolicies(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortBy: TprPolicySortByField
-        //     sortOrder: SortOrder
-        //     filter: TprPolicyFilterInput
-        //   ): CustomTprPolicyConnection!
-        internal void InitQueryCustomTprPolicies()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortBy", "TprPolicySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "TprPolicyFilterInput"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryCustomTprPolicies",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: TprPolicySortByField,$sortOrder: SortOrder,$filter: TprPolicyFilterInput)",
-                "CustomTprPolicyConnection",
-                Query.CustomTprPolicies,
-                Query.CustomTprPoliciesFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortBy = $someTprPolicySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprPolicySortByField]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.filter = @{
-	# OPTIONAL
-	policyName = $someString
-	# OPTIONAL
-	policyIds = @(
-		$someString
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // isValidTprPolicyName(tprPolicyName: String!): Boolean!
-        internal void InitQueryIsValidTprPolicyName()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("tprPolicyName", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryIsValidTprPolicyName",
-                "($tprPolicyName: String!)",
-                "System.Boolean",
-                Query.IsValidTprPolicyName,
-                Query.IsValidTprPolicyNameFieldSpec,
-                @"# REQUIRED
-$query.Var.tprPolicyName = $someString"
-            );
-        }
 
         // Create new GraphQL Query:
         // orgSecurityPolicy: OrgSecurityPolicy!
@@ -877,82 +560,6 @@ $query.Var.objectIds = @(
         }
 
         // Create new GraphQL Query:
-        // allPolicyRiskSummaries(policyIds: [String!]!, summaryDate: String!, includeWhitelistedResults: Boolean): [PolicyRiskSummary!]!
-        internal void InitQueryAllPolicyRiskSummaries()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("policyIds", "[String!]!"),
-                Tuple.Create("summaryDate", "String!"),
-                Tuple.Create("includeWhitelistedResults", "Boolean"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllPolicyRiskSummaries",
-                "($policyIds: [String!]!,$summaryDate: String!,$includeWhitelistedResults: Boolean)",
-                "List<PolicyRiskSummary>",
-                Query.AllPolicyRiskSummaries,
-                Query.AllPolicyRiskSummariesFieldSpec,
-                @"# REQUIRED
-$query.Var.policyIds = @(
-	$someString
-)
-# REQUIRED
-$query.Var.summaryDate = $someString
-# OPTIONAL
-$query.Var.includeWhitelistedResults = $someBoolean"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // sidsPolicyHitsSummary(
-        //     sids: [String!]!
-        //     day: String!
-        //     historicalDeltaDays: Int! = 0
-        //     policyId: String
-        //     includeWhitelistedResults: Boolean
-        //     sortBy: SidPolicySummarySortBy
-        //     sortOrder: SortOrder
-        //   ): SidsPolicyHitsSummaries!
-        internal void InitQuerySidsPolicyHitsSummary()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("sids", "[String!]!"),
-                Tuple.Create("day", "String!"),
-                Tuple.Create("historicalDeltaDays", "Int!"),
-                Tuple.Create("policyId", "String"),
-                Tuple.Create("includeWhitelistedResults", "Boolean"),
-                Tuple.Create("sortBy", "SidPolicySummarySortBy"),
-                Tuple.Create("sortOrder", "SortOrder"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QuerySidsPolicyHitsSummary",
-                "($sids: [String!]!,$day: String!,$historicalDeltaDays: Int!,$policyId: String,$includeWhitelistedResults: Boolean,$sortBy: SidPolicySummarySortBy,$sortOrder: SortOrder)",
-                "SidsPolicyHitsSummaries",
-                Query.SidsPolicyHitsSummary,
-                Query.SidsPolicyHitsSummaryFieldSpec,
-                @"# REQUIRED
-$query.Var.sids = @(
-	$someString
-)
-# REQUIRED
-$query.Var.day = $someString
-# REQUIRED
-$query.Var.historicalDeltaDays = $someInt
-# OPTIONAL
-$query.Var.policyId = $someString
-# OPTIONAL
-$query.Var.includeWhitelistedResults = $someBoolean
-# OPTIONAL
-$query.Var.sortBy = $someSidPolicySummarySortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SidPolicySummarySortBy]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
         // allTopRiskPolicySummaries(getWhitelistedResults: Boolean!, limit: Int! = 0, workloadTypes: [DataGovObjectType!]! = []): [PolicySummary!]!
         internal void InitQueryAllTopRiskPolicySummaries()
         {
@@ -977,26 +584,6 @@ $query.Var.limit = $someInt
 $query.Var.workloadTypes = @(
 	$someDataGovObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovObjectType]) for enum values.
 )"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // tprPolicyDetail(tprPolicyId: UUID!): TprPolicyDetail!
-        internal void InitQueryTprPolicyDetail()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("tprPolicyId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryTprPolicyDetail",
-                "($tprPolicyId: UUID!)",
-                "TprPolicyDetail",
-                Query.TprPolicyDetail,
-                Query.TprPolicyDetailFieldSpec,
-                @"# REQUIRED
-$query.Var.tprPolicyId = $someString"
             );
         }
 

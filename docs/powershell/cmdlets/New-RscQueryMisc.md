@@ -3,20 +3,6 @@
 ### activecustomanalyzers
 - The activecustomanalyzers subcommand takes no arguments.
 - Returns AnalyzerConnection.
-### activeinsights
-The active insights for the account.
-
-- There are 9 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - clusterUUIDs - list of System.Strings: List of Rubrik Cluster ID's to filter by.
-    - severities - list of InsightSeveritys: List of severities to filter by.
-    - includeClusterLevelInsights - System.Boolean: Specifies whether to include cluster level insights.
-    - includeAccountLevelInsights - System.Boolean: Specifies whether to include account level insights.
-    - includeDismissedInsights - System.Boolean: Specifies whether to include previously dismissed insights.
-- Returns ActiveInsightConnection.
 ### adgroupmembers
 Objects that match the specifications of the AD group.
 
@@ -61,16 +47,6 @@ Returns which policies are using each analyzer.
 
 - The analyzerusages subcommand takes no arguments.
 - Returns AnalyzerUsageConnection.
-### anomaliesobjects
-Object level stats for anomalies.
-
-- There is a single argument of type DateTime.
-- Returns AnomaliesObjects.
-### anomalydetectionobjectenablementstats
-Anomaly Detection object enablement stats.
-
-- There is a single argument of type DateTime.
-- Returns GetAnomalyDetectionObjectEnablementStatsResponse.
 ### anomalyresultopt
 Optional result of the Anomaly Investigation.
 
@@ -105,38 +81,11 @@ Results for Anomaly Investigations grouped by an argument.
     - filter - AnomalyResultFilterInput: Filter anomaly results by input.
     - timezoneOffset - System.Single: Offset based on customer timezone.
 - Returns AnomalyResultGroupedDataConnection.
-### appflowssummary
-- The appflowssummary subcommand takes no arguments.
-- Returns AppflowsSummary.
 ### aremultigeobackupsenabled
 Retrieves the status of multi-geo backups for the specified organization.
 
 - There is a single argument of type System.String.
 - Returns System.Boolean.
-### atlassiansite
-RSC details for an Atlassian site.
-
-- There is a single argument of type System.String.
-- Returns AtlassianSite.
-### atlassiansites
-Atlassian sites in an account.
-
-- There are 7 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns AtlassianSiteConnection.
-### attributedfeatureflag
-Evaluate the feature flag with attributes.
-
-- There are 2 arguments.
-    - key - AttributedFeatureFlagName: Feature flag key.
-    - attributes - list of FeatureFlagAttributeInputs: List of attributes used to evaluate the feature flag.
-- Returns AttributedFeatureFlag.
 ### authorizationsforglobalresource
 List of authorized operations for global resource.
 
@@ -178,60 +127,6 @@ Get all backup throttle settings.
 
 - There is a single argument of type list of System.Strings.
 - Returns list of BackupThrottleSettings.
-### blueprint
-- There is a single argument of type System.String.
-- Returns Blueprint.
-### blueprintlist
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns BlueprintConnection.
-### blueprintnew
-- There is a single argument of type System.String.
-- Returns BlueprintNew.
-### blueprintrecoveryspecs
-list the recovery specs associated with the given blueprint
-
-- There are 7 arguments.
-    - blueprintId - System.String: The Blueprint ID.
-    - ignoreErrors - System.Boolean: Ignore invalid recovery specs or raise an error.
-    - validate - System.Boolean: Validate the recovery specs if true.
-    - getInvalidSpecs - System.Boolean: Get invalid recovery spec if true.
-    - snappableInfos - list of SnappableInfoTypes: The list of workload recovery points.
-    - failoverId - System.String: Failover summary ID.
-    - resourceSpecType - list of ResourceSpecTypes: The type of resource specification TEMPLATE or INSTANCE.
-- Returns BlueprintRecoverySpecs.
-### blueprintresourcespecs
-Describes the Blueprint resource specs.
-
-- There are 3 arguments.
-    - blueprintId - System.String: The Blueprint ID.
-    - snappableInfos - list of SnappableInfoTypes: The list of workload recovery points.
-    - failoverId - System.String: Failover summary ID.
-- Returns list of ResourceSpecs.
-### blueprints
-All Blueprints.
-
-- There are 12 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-    - sourceLocationIdOpt - System.String: The ID of the source location.
-    - targetLocationIdOpt - System.String: The ID of the intended remote target location.
-    - statusOpt - BlueprintStatus: The status of the Recovery Plan.
-    - failoverStatusOpt - FailoverStatusEnum: The status of the Recovery Plan failover.
-    - blueprintRecoveryTypes - list of BlueprintRecoveryTypes: Recovery type of the Recovery Plan.
-    - isBlueprintVisible - System.Boolean: Flag to enable visibility of the Recovery Plan.
-    - blueprintIds - list of System.Strings: Recovery plan IDs.
-- Returns BlueprintNewConnection.
-### brandlogo
-- The brandlogo subcommand takes no arguments.
-- Returns GetBrandLogoReply.
 ### browsecalendar
 Browse Exchange calendar.
 
@@ -301,11 +196,6 @@ Browse team files.
     - teamsDriveSearchFilter - OnedriveSearchFilter
     - orgId - System.String: Org UUID.
 - Returns O365OnedriveObjectConnection.
-### bulkrecoveryprogress
-Get bulk recovery progress.
-
-- There is a single argument of type BulkRecoveryProgressInput.
-- Returns BulkRecoveryProgressReply.
 ### cdmguestcredentials
 Get all cdm guest credentials.
 
@@ -319,41 +209,6 @@ The Rubrik CDM OVA details.
 
 - The cdmovadetails subcommand takes no arguments.
 - Returns list of CdmOvaDetails.
-### cdmrbacmigrationstatuses
-Returns CDM-to-RSC RBAC migration statuses for the specified clusters.
-
-- There is a single argument of type list of System.Strings.
-- Returns list of CdmMigrationStatuss.
-### cdmrolesformigration
-Authentication domain configuration of the current organization.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - clusterId - System.String: The target cluster ID of the CDM RBAC migration API.
-- Returns CdmRoleConnection.
-### cdmssogroupsformigration
-Details of the user's current organization.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - clusterId - System.String: The target cluster ID of the CDM RBAC migration API.
-- Returns CdmSSOGroupConnection.
-### cdmusersformigration
-Org details of the given org ID.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - clusterId - System.String: The target cluster ID of the CDM RBAC migration API.
-- Returns CdmUserConnection.
 ### cdmversioncheck
 Check supported feature for cluster version.
 
@@ -370,49 +225,6 @@ Details of all the virtual machines with Continuous Data Protection (CDP) SLA Do
     - allCdpVmInfoSort - CdpPerfDashboardSortParam: Sort Type for getting all CDP VMs for CDP performance dashboard.
     - allCdpVmInfoFilter - list of CdpPerfDashboardFilterParams: Filter Type for getting all CDP VMs for CDP performance dashboard.
 - Returns CdpVmInfoConnection.
-### chatbot
-Chatbot information.
-
-- There is a single argument of type GetChatbotInput.
-- Returns Chatbot.
-### chatbots
-List of chatbots.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - nameSearchFilter - System.String: String used for case-insensitive infix search on the chatbot name.
-- Returns ChatbotConnection.
-### chatbykey
-Returns the ID of the chat with the specified key and usage, or undefined if no such chat exists.
-
-- There are 2 arguments.
-    - chatKey - System.String: The unique key of the chat.
-    - chatUsage - ChatUsage: The usage of the chat.
-- Returns GetChatByKeyReply.
-### chatmessages
-List of messages in a chat.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - chatId - System.String: The ID of the chat.
-- Returns ChatMessageConnection.
-### chats
-List of chats.
-
-- There are 6 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - includeChatUsages - list of ChatUsages: The chat usages to be included from the list.
-    - excludeChatUsages - list of ChatUsages: The chat usages to be excluded from the list.
-- Returns ChatConnection.
 ### checkcloudcomputeconnectivityjobprogress
 Get details of the cloud compute connectivity check request
 
@@ -421,27 +233,11 @@ Gets the details of the request that was triggered to check the cloud compute co
 
 - There is a single argument of type GetCloudComputeConnectivityCheckRequestStatusInput.
 - Returns AsyncRequestStatus.
-### checkguestosforappblueprint
-check the child vm guestOS for given app blueprint
-
-- There is a single argument of type System.String.
-- Returns CheckGuestOsReply.
 ### checklatestversionmgmtappexists
 Checks whether the latest version of the Microsoft 365 Management App exists.
 
 - There is a single argument of type CheckLatestVersionMgmtAppExistsInput.
 - Returns CheckLatestVersionMgmtAppExistsReply.
-### classifiableassetcount
-Returns the count of classifiable assets by platform.
-
-- There is a single argument of type System.String.
-- Returns list of ClassifiableAssetCounts.
-### classificationbannersettings
-- The classificationbannersettings subcommand takes no arguments.
-- Returns ClassificationBannerSettings.
-### classificationloginsettings
-- The classificationloginsettings subcommand takes no arguments.
-- Returns ClassificationLoginSettings.
 ### clouddirectnasexport
 A Cloud Direct NAS export object.
 
@@ -462,37 +258,6 @@ Retrieve systems managed by the Cloud Direct site.
 
 - There is a single argument of type CloudDirectSystemsInput.
 - Returns CloudDirectSystems.
-### complianceretentionlockstatus
-Status of the compliance retention lock configuration.
-
-- The complianceretentionlockstatus subcommand takes no arguments.
-- Returns ComplianceRetentionLockStatus.
-### compliancetimeseries
-Seven days of compliance status history for the specified lookback period.
-
-- There are 4 arguments.
-    - clusterUuid - System.String: The Rubrik cluster ID.
-    - lookbackPeriod - LookbackPeriod: Period of time to look back when evaluating compliance status.
-    - objectTypes - list of ObjectTypeEnums: Types of objects to limit the results. If absent, all object types are returned.
-    - orgIds - list of System.Strings: Input for orgId filter.
-- Returns list of DailyComplianceStatss.
-### configprotectionbackups
-List of configuration backups available.
-
-- There are 7 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - input - ConfigProtectionBackupFilterInput: Filters to list configuration backups.
-    - sortOrder - SortOrder: Sort order of result.
-    - sortBy - ConfigProtectionBackupsSortByEnum: Sort configuration protection backup information.
-- Returns ConfigProtectionBackupsConnection.
-### configprotectionsetupinfo
-Configuration protection setup information for a cluster.
-
-- There is a single argument of type System.String.
-- Returns ConfigProtectionSetupInfo.
 ### configuredgroupmembers
 Objects that match the specifications of a configured group.
 
@@ -505,11 +270,6 @@ Objects that match the specifications of a configured group.
     - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     - groupFilterAttributes - list of GroupFilterAttributes: A list of attributes to filter out group members.
 - Returns O365ConfiguredGroupMemberConnection.
-### corssettings
-CORS setting for the customer's organization. Equals to `null` if CORS is not configured.
-
-- The corssettings subcommand takes no arguments.
-- Returns CorsSetting.
 ### crawl
 Returns details for one crawl.
 
@@ -553,27 +313,11 @@ Lists all identity providers for the current organization.
 ### customanalyzer
 - There is a single argument of type System.String.
 - Returns Analyzer.
-### cyberrecoveryobjects
-Details of all the cyber recovery objects.
-
-- There are 6 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - cyberRecoveryObjectsFilter - CyberRecoveryObjectsFilterParams: Cyber recovery objects filter parameters.
-    - cyberRecoveryObjectsSort - CyberRecoveryObjectsSortParams: Cyber recovery objects sorting parameters.
-- Returns CyberRecoveryObjectConnection.
 ### dashboardsummary
 Returns hits grouped by analyzer and policy.
 
 - There is a single argument of type System.Boolean.
 - Returns GetDashboardSummaryReply.
-### datadiscoveryobjectscount
-Returns the counts of objects that are assigned policies, objects that are not assigned policies, and objects that are not supported by Data Discovery.
-
-- The datadiscoveryobjectscount subcommand takes no arguments.
-- Returns DataDiscoveryObjectsCount.
 ### datagovsecdesc
 Returns permissions associated with a path.
 
@@ -584,35 +328,6 @@ Returns permissions associated with a path.
     - skipResolveSids - System.Boolean: Skip converting SIDs in response to friendly names
     - filters - SddlRequestFiltersInput: Filter for resolving security descriptor.
 - Returns QuerySDDLReply.
-### datalocationsperkmipserver
-Get all data locations assigned to this KMIP Server.
-
-- There are 7 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
-    - kmipServerKeyAssignmentInfoSortBy - KmipServerKeyAssignmentInfoSortBy: The order to sort the KMIP server information.
-    - serverAddressArg - System.String: The URL address of the KMIP server.
-- Returns DataLocationsPerKmipServerConnection.
-### datalocationsperkmskeyvault
-Get all data locations assigned to this KMS Key Vault.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - kmsKeyVaultId - System.String: The ID of the KMS server instance.
-- Returns DataLocationsPerKmsKeyVaultConnection.
-### dataviewmetadata
-NG Alpha version report metadata.
-
-- There are 2 arguments.
-    - searchTerm - System.String: Search term to be used for testing all the report names.
-    - polarisReportsFilters - list of PolarisReportsFilterInputs: A list of filters for CustomReports.
-- Returns list of dataViewMetadatas.
 ### decryptexporturl
 Decrypt Export URL.
 
@@ -702,31 +417,11 @@ Permissions assigned to the role that are in effect.
 
 - There is a single argument of type System.String.
 - Returns list of RbacPermissions.
-### entityinsights
-List entity insights.
-
-- There are 5 arguments.
-    - filter - ListEntityInsightsFilterInput: Filter to be applied when retrieving entity insights.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns NotificationConnection.
-### envoyregistrationtoken
-Retrieve access token for the Rubrik Envoy registration script.
-
-- There is a single argument of type System.String.
-- Returns EnvoyRegistrationToken.
 ### eventdigests
 Retrieve event digests for specific recipients.
 
 - There is a single argument of type AllEventDigestsInput.
 - Returns list of EventDigests.
-### exotaskimagebundle
-Gets the list of exo-task images in the bundle along with information on how to download the images.
-
-- There is a single argument of type GetExotaskImageBundleInput.
-- Returns GetExotaskImageBundleReply.
 ### externaldeploymentname
 Customer facing Polaris deployment name.
 
@@ -739,90 +434,11 @@ Information on Microsoft 365 restore failed items.
     - workloadFid - System.String: The FID of the workload.
     - failedItemsInstanceId - System.String: The instance ID corresponding to the failed restore items.
 - Returns FailedRestoreItemsInfoReply.
-### failover
-failover
-
-- There is a single argument of type System.String.
-- Returns Failover.
-### failoverallsourcelist
-- There are 4 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns FailoverSourceConnection.
-### failoveralltargetsitelist
-- There are 4 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns FailoverTargetSiteConnection.
-### failovergroupbylist
-- There are 7 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - filter - FailoverFilterInput: filter appflows failover jobs by input
-    - groupBy - FailoverGroupByEnum: group appflows failover jobs by a field.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
-- Returns FailoverGroupByConnection.
-### failoverlist
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - filter - FailoverFilterInput: filter appflows failover jobs by input
-    - sortBy - FailoverSortByEnum: sort appflows failover jobs by field.
-    - sortOrder - SortOrder: failover jobs sort order.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
-- Returns FailoverConnection.
-### failuresandwarningsstats
-Returns the failures and warnings stats of an M365 organization.
-
-- There is a single argument of type System.String.
-- Returns list of FailuresAndWarningsStatss.
-### featureflag
-Evaluate a single feature flag and get the result
-
-- There are 3 arguments.
-    - flagName - FeatureFlagName: Name of flag to evaluate
-    - entityType - FeatureFlagEntityType: The type of entity context to evaluate against. The value of this arg determines how the entity ID is inferred.
-    - entityContext - list of FeatureFlagContextFields: List of flag names to evaluate
-- Returns FeatureFlag.
-### featureflagall
-Evaluate all known feature flags.
-
-- There are 2 arguments.
-    - entityType - FeatureFlagEntityType: The type of entity context to evaluate against. The value of this arg determines how the entity ID is inferred.
-    - entityContext - list of FeatureFlagContextFields: List of flag names to evaluate
-- Returns FeatureFlagAll.
-### featureflagnames
-Get names of feature flags that surfaced in APIs
-
-- The featureflagnames subcommand takes no arguments.
-- Returns list of System.Strings.
 ### federatedloginstatus
 Status of the federated login.
 
 - The federatedloginstatus subcommand takes no arguments.
 - Returns FederatedLoginStatus.
-### fetchedcdmrbacconfigsummarystats
-A numerical summary of the RBAC configuration fetched from the specified Rubrik cluster.
-
-- There is a single argument of type System.String.
-- Returns CdmRbacConfigSummaryStats.
-### fetchfakedata
-Fetch fake data for testing purpose.
-
-- There are 4 arguments.
-    - responsePeriodMs - System.Int64: Time taken by the request to serve the response.
-    - shouldBlock - System.Boolean: Whether the request blocks the processing thread.
-    - preProcessingBufferBytes - System.Int64: Buffer space allocated before making an RPC.
-    - responseSizeBytes - System.Int64: Approx size of the response payload.
-- Returns FakeDataConnection.
 ### fileactivities
 List user activity for a specific file on a specific snapshot.
 
@@ -834,41 +450,9 @@ List user activity for a specific file on a specific snapshot.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns UserActivityResultConnection.
-### filesummariescount
-Returns the counts of used and unused files categorized by risk level.
-
-- There is a single argument of type System.String.
-- Returns FilesSummaryCountResultType.
-### flagrfeatureflagnames
-Get names of checkr-flagr feature flags that are surfaced in APIs
-
-- The flagrfeatureflagnames subcommand takes no arguments.
-- Returns list of System.Strings.
-### generatecontent
-Generate content for a query.
-
-- There are 2 arguments.
-    - chatUsage - ChatUsage: The usage of the chat.
-    - query - System.String: The query to input.
-- Returns GenerateContentReply.
 ### geolocationlist
 - The geolocationlist subcommand takes no arguments.
 - Returns list of GroupCounts.
-### getaccountsettingvalue
-Obtain account settings value.
-
-- There are 2 arguments.
-    - aspName - System.String: Name of Account Setting Parameter (ASP) in account setting table.
-    - aspComponent - ComponentEnum: Name of component that uses ASP in account setting table.
-- Returns ASPValue.
-### getaccountsettingvaluewithdefault
-Obtains account settings value. Returns a default value when it is not set in the account setting table.
-
-- There are 3 arguments.
-    - aspName - System.String: Name of Account Setting Parameter (ASP) in account setting table.
-    - aspComponent - ComponentEnum: Name of component that uses ASP in account setting table.
-    - aspDefaultValue - System.String: Default value of ASP to use if it is absent in account setting table.
-- Returns ASPValue.
 ### getallrolesinorglist
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -906,16 +490,6 @@ Get available versions on support portal for a cluster.
     - filterAfterSource - System.Boolean: Filter to include only the versions released after the source version.
     - sortOrder - SortOrder: Sort order of result.
 - Returns CdmUpgradeReleaseDetailsFromSupportPortalReply.
-### getcloudobjectscountbyregion
-Get a count of cloud objects by region
-
-- The getcloudobjectscountbyregion subcommand takes no arguments.
-- Returns GetCloudObjectsCountByRegionReply.
-### getdns
-Get DNS server addresses.
-
-- The getdns subcommand takes no arguments.
-- Returns list of System.Strings.
 ### getgroupcountbyprechecksstatus
 - The getgroupcountbyprechecksstatus subcommand takes no arguments.
 - Returns list of GroupCounts.
@@ -928,26 +502,6 @@ Get DNS server addresses.
 ### getkorgtaskchainstatus
 - There is a single argument of type System.String.
 - Returns GetTaskchainStatusReply.
-### getlaminarfeaturestatus
-Retrieve the status of laminar feature enablement for various cloud types
-
-- The getlaminarfeaturestatus subcommand takes no arguments.
-- Returns GetLaminarFeatureStatusReply.
-### getmountdetails
-Returns the details of mount disks.
-
-- There is a single argument of type GetMountDetailsInput.
-- Returns GetMountDetailsReply.
-### getntp
-Get NTP server addresses.
-
-- The getntp subcommand takes no arguments.
-- Returns list of System.Strings.
-### getobjectprotectionandsensitivitysummary
-Get object protection and sensitivity summary
-
-- There is a single argument of type list of ManagedObjectTypes.
-- Returns GetObjectProtectionAndSensitivitySummaryReply.
 ### getpermissions
 Permissions assigned to the role that are in effect.
 
@@ -956,9 +510,6 @@ Permissions assigned to the role that are in effect.
 ### getrolesbyids
 - There is a single argument of type list of System.Strings.
 - Returns list of Roles.
-### getssowizardinfo
-- The getssowizardinfo subcommand takes no arguments.
-- Returns GetSSOWizardInfoReply.
 ### getuserdownloads
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -981,18 +532,6 @@ Get global multifactor authentication (MFA) for an account.
 
 - The globalmfasetting subcommand takes no arguments.
 - Returns GetMfaSettingReply.
-### globalobjectlocations
-Get a list of object locations.
-
-- There are 7 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - reportRoom - ReportRoomType: Room of the report view.
-    - globalObjectLocationsFilters - list of GlobalObjectLocationsFilterInputs: A list of filters to filter locations.
-    - shouldIncludePath - System.Boolean: Specifies whether the query result should include the path of a location.
-- Returns GlobalObjectLocationConnection.
 ### globalsearchresults
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -1003,17 +542,6 @@ Get a list of object locations.
     - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns HierarchyObjectConnection.
-### groupedreleasesnotes
-List of release notes grouped by release and type.
-
-- There are 6 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - version - System.String: Specifies the release version of the Release Note group.
-    - filters - ReleaseNotesFiltersInput: Filter for release notes.
-- Returns GroupedReleaseNoteConnection.
 ### groupsincurrentanddescendantorganization
 Retrieve groups from current and descendant organizations based on the specified filters.
 
@@ -1085,19 +613,6 @@ Link to downloadable investigation results in CSV format.
     - workloadId - System.String: ID of the object and not the FID.
     - snapshotId - System.String: Corresponds to snapshot ID in Rubrik CDM tables.
 - Returns InvestigationCsvDownloadLinkReply.
-### iocfeedentries
-Lists IOC entries for a threat feed.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - providerId - System.String: ID of threat feed
-    - threatFeedType - list of ThreatFeedTypes: Type of IOCs to return
-    - feedEntryStatusFilter - FeedEntryStatusFilter: Filter feed entries by entry status.
-    - feedEntrySort - FeedEntrySort: Sorts feed entries
-- Returns IocFeedEntryConnection.
 ### ipwhitelist
 - The ipwhitelist subcommand takes no arguments.
 - Returns GetWhitelistReply.
@@ -1106,11 +621,6 @@ Check if IPMI is enabled on the cluster.
 
 - There is a single argument of type IsIpmiEnabledInput.
 - Returns System.Boolean.
-### isllmenabled
-Returns whether the account has enabled LLMs.
-
-- The isllmenabled subcommand takes no arguments.
-- Returns GetLlmEnabledReply.
 ### isloggedintorubriksupportportal
 Is Logged into Rubrik support portal.
 
@@ -1166,306 +676,29 @@ Checks if Zone Redundant Storage (ZRS) is available for a given combination of a
     - region - AzureNativeRegion: The azure region.
     - subscriptionId - System.String: Subscription ID.
 - Returns ZrsAvailabilityReply.
-### jirachangesummary
-Returns the change summary across an Atlassian site.
-
-- There are 4 arguments.
-    - siteId - System.String: Rubrik ID of the Atlassian site.
-    - jiraObjectType - JiraObjectType: Jira object type.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
-    - duration - PastNdayScope: The scope of the query, defined in past number of days.
-- Returns ChangeSummary.
-### jiraissueassignees
-Issue assignees in a Jira project.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - siteId - System.String: Rubrik ID of the Atlassian site.
-    - sortBy - JiraUserSortByField: Field to sort Jira users by.
-    - sortOrder - SortOrder: Sort order of result.
-    - searchTerm - System.String: The search term by which results will be filtered.
-- Returns AtlassianUserConnection.
-### jiraissuechangedetails
-Returns the Jira issue change details across an Atlassian site.
-
-- There are 9 arguments.
-    - siteId - System.String: Rubrik ID of the Atlassian site.
-    - startTime - DateTime: Start time of the day for which changes are aggregated.
-    - filter - JiraIssueChangeDetailsFilter: Input for filtering a list of Jira project change details.
-    - sortBy - JiraIssueChangeDetailsSortByField: Field used to sort Jira issue change summary.
-    - sortOrder - SortOrder: Sort order of result.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns AppItemChangeCountConnection.
-### jiraissuechangesummary
-Returns the Jira issue change summary across an Atlassian site.
-
-- There are 3 arguments.
-    - siteId - System.String: Rubrik ID of the Atlassian site.
-    - startTime - DateTime: Start time of the day for which changes are aggregated.
-    - filter - JiraIssueChangeDetailsFilter: Input for filtering a list of Jira project change details.
-- Returns ChangeSummary.
-### jiraissues
-Jira issues in a Jira project.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - jiraProjectId - System.String: The Rubrik ID of the Jira project.
-    - sortBy - JiraIssueSortByField: Field to sort Jira issues by.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - JiraIssueFilterInput: Input for filtering a list of Jira issues.
-- Returns JiraIssueConnection.
-### jiraissuetypes
-Jira issue types.
-
-- There is a single argument of type System.String.
-- Returns list of JiraIssueTypes.
-### jiraprojectcomponents
-Jira project components in an Atlassian site.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - siteId - System.String: Rubrik ID of the Atlassian site.
-    - sortBy - JiraProjectComponentsSortByField: Field used to sort Jira components.
-    - filter - JiraProjectComponentsFilterInput: Input for filtering a list of Jira project components.
-    - sortOrder - SortOrder: Sort order of result.
-- Returns JiraProjectComponentConnection.
-### jiraprojectleads
-Project leads in an Atlassian site.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - siteId - System.String: Rubrik ID of the Atlassian site.
-    - sortBy - JiraUserSortByField: Field to sort Jira users by.
-    - sortOrder - SortOrder: Sort order of result.
-    - searchTerm - System.String: The search term by which results will be filtered.
-- Returns AtlassianUserConnection.
-### jiraprojects
-Jira projects in an Atlassian site.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - siteId - System.String: Rubrik ID of the Atlassian site.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns JiraProjectConnection.
-### jirasettings
-List of Jira settings of the given type.
-
-- There are 9 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - siteId - System.String: Rubrik ID of the Atlassian site.
-    - jiraSettingsType - JiraSettingsType: Type of the settings to retrieve.
-    - sortBy - JiraSettingsSortByField: Field to sort Jira settings by.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - JiraSettingsFilterInput: Input for filtering a list of Jira settings.
-- Returns JiraSettingsConnection.
-### jirasettingschangedetails
-Returns details of changes for Jira settings across an Atlassian site.
-
-- There are 9 arguments.
-    - siteId - System.String: Rubrik ID of the Atlassian site.
-    - startTime - DateTime: Start time of the day for which changes are aggregated.
-    - filter - JiraSettingsChangeDetailsFilter: Input for filtering a list of Jira settings change details.
-    - sortBy - JiraSettingsChangeDetailsSortByField: Field used to sort Jira settings change summary.
-    - sortOrder - SortOrder: Sort order of result.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns AppItemChangeCountConnection.
-### jirasettingschangesummary
-Returns the Jira issue change summary across an Atlassian site.
-
-- There are 3 arguments.
-    - siteId - System.String: Rubrik ID of the Atlassian site.
-    - startTime - DateTime: Start time of the day for which changes are aggregated.
-    - filter - JiraSettingsChangeDetailsFilter: Input for filtering a list of Jira settings change details.
-- Returns ChangeSummary.
 ### jobinfo
 Information about a job running on CDM. Note that some types of jobs cannot be queries using this field. Refer to `JobType` enum to see which jobs types are available. Only users with Admin or Owner roles are allowed to access the field.
 
 - There is a single argument of type JobInfoRequest.
 - Returns JobInfo.
-### jobinstance
-REQUIRES SUPPORT TOKEN - Get details about a job instance
-
-Supported in v5.0+
-REQUIRES SUPPORT TOKEN - Retrieve the following information about job instance- ID of job instance, job status, error details, start time of job, end time of job, job type, ID of the node and job progress. A support token is required for this operation.
-
-- There is a single argument of type GetJobInstanceInput.
-- Returns InternalJobInstanceDetail.
-### kmipserverlist
-Filter KMIP Servers.
-
-- There are 7 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
-    - serverAddressArg - System.String: The URL address of the KMIP server.
-    - kmipServerClustersArg - list of System.Strings: The IDs of the Rubrik clusters that use the KMIP server.
-- Returns KmipServerConnection.
-### kmsinstances
-Get all KMS instances.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
-    - kmsSortBy - KmsInstancesSortBy: The order to sort the KMS instances.
-    - kmsName - System.String: The prefix of the name of the KMS instance.
-    - kmsTypeFilter - list of KmsTypes: The type of KMS instance to filter.
-- Returns KmsInstanceConnection.
 ### knowledgebasearticle
 A knowledge base article.
 
 - There is a single argument of type System.String.
 - Returns KnowledgeBaseArticle.
-### kubernetesnamespacelist
-Kubernetes namespace connection.
-
-- There are 4 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - KubernetesNamespaceSortByInput: Sort by argument for Kubernetes namespaces.
-    - kubernetesClusterId - System.String: Kubernetes cluster UUID.
-- Returns KubernetesNamespaceConnection.
-### kubernetesprotectionset
-Summary of a Kubernetes Protection Set.
-
-- There is a single argument of type System.String.
-- Returns KubernetesProtectionSet.
-### kubernetesprotectionsets
-Summary of all Kubernetes Protection Sets.
-
-- There are 6 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-    - k8sClusterOptionalId - System.String: Kubernetes cluster optional UUID.
-- Returns KubernetesProtectionSetConnection.
 ### lambdasettings
 - The lambdasettings subcommand takes no arguments.
 - Returns LambdaSettings.
-### latestconfigprotectionbackupsbyversion
-Cluster with latest configuration backup.
-
-- There is a single argument of type LatestConfigBackupFilterInput.
-- Returns list of LatestConfigProtectionBackupss.
-### latestinsightsync
-Most recent time insights from Sentry AI were synced for the account.
-
-- The latestinsightsync subcommand takes no arguments.
-- Returns GetLastInsightSyncReply.
-### licensedetails
-Retrieves the license details for a product.
-
-- There is a single argument of type LicenseDetailsInput.
-- Returns list of LicenseDetailss.
 ### licensedproducts
 Information about the licenses at the product level.
 
 - The licensedproducts subcommand takes no arguments.
 - Returns GetLicensedProductsInfoReply.
-### licenseinsights
-Retrieves the license insights.
-
-- There is a single argument of type list of LicenseProducts.
-- Returns GetLicenseInsightsReply.
-### licenseproductusage
-Retrieves the most recent product usage data.
-
-- There is a single argument of type LicenseProduct.
-- Returns GetLicenseProductUsageReply.
-### listnasautomigrationtasks
-List NAS Automigration tasks.
-
-- The listnasautomigrationtasks subcommand takes no arguments.
-- Returns NasAutomigrationTaskList.
-### listrecentlyviewed
-The viewed history for users searches.
-
-- There is a single argument of type SearchComponent.
-- Returns RecentlyViewedItem.
-### llmoperations
-List of operations initiated by the LLM.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - chatId - System.String: The ID of the chat.
-- Returns LlmOperationConnection.
 ### lockoutconfig
 Get the lockout configurations of the current organization.
 
 - The lockoutconfig subcommand takes no arguments.
 - Returns LockoutConfig.
-### malwaredetectiontaskresult
-Get the result of a completed detection
-
-Supported in v6.0+
-Get the details of a completed malware detection.
-
-- There is a single argument of type GetLambdaDetectMalwareResultInput.
-- Returns MalwareScanResults.
-### malwaredetectiontaskstatus
-Get the result of a completed detection
-
-Supported in v6.0+
-Get the details of a completed malware detection.
-
-- There is a single argument of type GetLambdaDetectMalwareRequestStatusInput.
-- Returns AsyncRequestStatus.
-### malwarescandetail
-Get asynchronous request details for a malware detection
-
-Supported in v6.0+
-Get the details of an asynchronous malware detection.
-
-- There is a single argument of type GetLambdaMalwareScanDetailInput.
-- Returns GetLambdaMalwareScanDetailReply.
-### malwarescans
-List malware scans
-
-Supported in v6.0+
-List the malware scans.
-
-- There is a single argument of type ListMalwareScansInput.
-- Returns MalwareScanDetailListResponse.
-### mandatorytotpgraceperiod
-Get mandatory TOTP settings for an account.
-
-- The mandatorytotpgraceperiod subcommand takes no arguments.
-- Returns mandatoryTotpGracePeriod.
 ### maxprotectedappscount
 Maximum number of protected apps that can be added per account.
 
@@ -1476,31 +709,6 @@ Get multifactor authentication (MFA) settings for an account.
 
 - The mfasetting subcommand takes no arguments.
 - Returns GetMfaSettingReply.
-### migrationchoiceregistered
-Get the customer type for migration.
-
-- The migrationchoiceregistered subcommand takes no arguments.
-- Returns MigrationChoiceRegisteredReply.
-### migrationcustomer
-Get the customer type for migration.
-
-- The migrationcustomer subcommand takes no arguments.
-- Returns MigrationCustomer.
-### migrationmetadata
-Get migration metadata of CDM clusters.
-
-- The migrationmetadata subcommand takes no arguments.
-- Returns list of MigrationMetadatas.
-### migrationprechecks
-Get all the prechecks for the CDM clusters.
-
-- There is a single argument of type PrechecksFilterInput.
-- Returns list of Precheckss.
-### migrationsupportcase
-Get migration support case details.
-
-- The migrationsupportcase subcommand takes no arguments.
-- Returns MigrationSupportCase.
 ### minimumcdmversionforfeatureset
 Get minimum cluster version to support feature set.
 
@@ -1536,20 +744,6 @@ Results for Non-Filesystem Anomaly Investigations grouped by an argument.
     - filter - NfAnomalyResultFilterInput: Filter non-filesystem anomaly results by input.
     - timezoneOffset - System.Single: Offset based on customer timezone.
 - Returns NfAnomalyResultGroupedDataConnection.
-### nodekeyrotation
-Get latest key rotation for a Rubrik cluster.
-
-- There are 9 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
-    - clusterID - System.String: The ID of the cluster.
-    - nodeID - System.String: The name of the node.
-    - rotationStates - list of CdmKeyRotationStates: The state of the rotation.
-    - nodeSortBy - NodeKeyRotationSortBy: The order to sort the nodes.
-- Returns NodeKeyRotationConnection.
 ### noderemovalcancelpermission
 Check if the running node-removal job is cancelable.
 
@@ -1573,16 +767,6 @@ List of Mosaic Storage Locations used for NoSQL backups
     - sortOrder - SortOrder: Sort order of result.
     - filter - list of MosaicStorageLocationFilterInputs: Specification on how to filter a list of Mosaic Storage Locations.
 - Returns list of MosaicStorageLocations.
-### notifications
-List notifications.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - filter - NotificationListFilterInput: Filter for notifications.
-- Returns NotificationConnection.
 ### oauthcodesforedgereg
 Reply for request to download Rubrik Edge from Rubrik Security Cloud.
 
@@ -1629,23 +813,6 @@ Org details of the given org ID.
 
 - There is a single argument of type System.String.
 - Returns Org.
-### orgnetwork
-Retrieve organization network information for a specific ID.
-
-- There is a single argument of type System.String.
-- Returns OrgNetwork.
-### orgnetworks
-Retrieve organization networks information.
-
-- There are 7 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortBy - OrgNetworkSortByField: Field to sort organization networks by.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - OrgNetworkFilterInput: Input for filtering a list of organization networks.
-- Returns OrgNetworkConnection.
 ### orgs
 All orgs.
 
@@ -1670,16 +837,6 @@ Returns the list of organizations to which the principal has access.
 
 - There is a single argument of type System.String.
 - Returns OrgsForPrincipalReply.
-### pactsafecontract
-Get Pactsafe contract state.
-
-- There is a single argument of type ContractType.
-- Returns PactsafeContract.
-### pactsafeeulastate
-Get EULA state.
-
-- The pactsafeeulastate subcommand takes no arguments.
-- Returns PactsafeEulaState.
 ### passkeyconfig
 Passkey config for current org.
 
@@ -1724,18 +881,13 @@ Get the health metric for the radar pipeline covering the backup, indexing, and 
 ### policydetails
 Returns active policies for an account.
 
-- The policydetails subcommand takes no arguments.
+- There are 3 arguments.
+    - dataCategoryIds - list of System.Strings: Filter for data category IDs.
+    - dataTypeIds - list of System.Strings: Data type IDs to filter.
+    - dataCategoryType - DataCategoryType: Filter for data category type.
 - Returns PolicyDetailConnection.
 ### policyobj
 Returns details for one policy object.
-
-- There are 3 arguments.
-    - snappableFid - System.String
-    - snapshotFid - System.String
-    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
-- Returns PolicyObj.
-### policyobjopt
-Returns details for one policy object if it exists.
 
 - There are 3 arguments.
     - snappableFid - System.String
@@ -1783,21 +935,6 @@ Returns status for all objects at a specified timestamp.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns PolicyObjConnection.
-### postgresqldatabase
-Details of a PostgreSQL database for a given FID.
-
-- There is a single argument of type System.String.
-- Returns PostgreSQLDatabase.
-### postgresqldatabases
-Connection of filtered postgres database based on specific filters.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns PostgreSQLDatabaseConnection.
 ### prechecksstatus
 Gets status of last prechecks job.
 
@@ -1808,76 +945,6 @@ Get status of last completed prechecks Job along with details of currently runni
 
 - There is a single argument of type System.String.
 - Returns PrechecksStatusReply.
-### principaldetails
-Get principal details.
-
-- There are 3 arguments.
-    - sid - System.String: Security identifier.
-    - timelineDate - System.String: Date for which the results will be retrieved.
-    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
-- Returns PrincipalDetails.
-### principalobjectsummaries
-List of principal object summaries.
-
-- There are 9 arguments.
-    - sids - list of System.Strings: List of security identifiers.
-    - filter - PrincipalObjectSummariesFilterInput: Filter to be applied when retrieving principal object summaries.
-    - timelineDate - System.String: Date for which the results will be retrieved.
-    - includeCount - System.Boolean: Include counts in the results.
-    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns PrincipalObjectSummaryConnection.
-### principalriskchanges
-Return the principals whose risk has changed.
-
-- There are 5 arguments.
-    - principalRiskSummaryPrincipalType - PrincipalRiskySummaryPrincipalType: Specifies the type of principal.
-    - limit - System.Int32: Maximum number of entries in the response.
-    - startTime - DateTime: Start time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
-    - endTime - DateTime: End time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
-    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
-- Returns GetPrincipalRiskChangesReply.
-### principalrisksummaries
-Get principal risk summaries.
-
-- There are 5 arguments.
-    - queryDate - System.String: Date for which the principal risk summary is retrieved.
-    - historicalDeltaDays - System.Int32: Historical days to go backward in time to calculate the delta.
-    - principalRiskSummaryPrincipalType - PrincipalRiskySummaryPrincipalType: Specifies the type of principal.
-    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
-    - PrincipalSummaryFilterType - PrincipalSummaryFilter
-- Returns GetPrincipalRiskSummaryReply.
-### principalrisktrend
-Return the date-wise risk summary of a principal.
-
-- There are 6 arguments.
-    - sid - System.String: Security identifier.
-    - startTime - DateTime: Start time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
-    - endTime - DateTime: End time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
-    - policyId - System.String: Policy id.
-    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
-    - includeInsightsMarker - System.Boolean: Specifies whether to include the insights marker.
-- Returns GetPrincipalRiskTrendReply.
-### principalsummaries
-List of principal summaries.
-
-- There are 12 arguments.
-    - filter - PrincipalSummariesFilterInput: Filter to be applied when retrieving principal summaries.
-    - timelineDate - System.String: Date for which the results will be retrieved.
-    - sort - ListPrincipalsSummarySortInput: Field on which to perform the sorting operation.
-    - includeCount - System.Boolean: Include counts in the results.
-    - historicalDeltaDays - System.Int32: Historical days to go backward in time to calculate the delta.
-    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
-    - insightsMetadataId - System.String: Filter objects with insights metadata ID.
-    - includeInsightsMarker - System.Boolean: Specifies whether to include the insights marker.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns PrincipalSummaryConnection.
 ### privatecontainerregistry
 Retrieves the Private Container Registry (PCR) details for an Exocompute cloud account.
 
@@ -1908,9 +975,6 @@ Total number of protected volumes across all hosts.
 
 - There is a single argument of type list of Filters.
 - Returns System.Int32.
-### protectionsummary
-- The protectionsummary subcommand takes no arguments.
-- Returns ProtectionSummary.
 ### quarantineddetailsforworkload
 Quarantine details of a workload.
 
@@ -1921,75 +985,11 @@ Query datastore threshold configurations.
 
 - There is a single argument of type list of QueryDatastoreFreespaceThresholdInputs.
 - Returns QueryDatastoreFreespaceThresholdsReply.
-### recoverypermissioncheck
-Get information about permissions on the specific orchestrated recoveries.
-
-- There is a single argument of type RecoveryPermissionCheckInput.
-- Returns RecoveryPermissionCheckReply.
-### recoveryplan
-Recovery Plan.
-
-- There is a single argument of type System.String.
-- Returns RecoveryPlan.
-### recoveryplanpermissioncheck
-Get information about permissions on the specific Recovery Plans.
-
-- There is a single argument of type RecoveryPlanPermissionCheckInput.
-- Returns RecoveryPlanPermissionCheckReply.
-### recoveryplans
-List Recovery Plans based on filters.
-
-- There are 6 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-    - fids - list of System.Strings: The Rubrik UUIDs for the objects.
-- Returns RecoveryPlanConnection.
-### recoveryschedule
-- There is a single argument of type GetRecoveryScheduleInput.
-- Returns Schedule.
-### regions
-List of regions.
-
-- There is a single argument of type System.String.
-- Returns list of System.Strings.
-### releasenote
-Get a release note with the specified ID.
-               A release note ID can be pulled from a ReleaseNote object
-               and a list of release notes can be obtained by using the existing
-               releasesNotes and groupedReleasesNotes endpoints.
-            
-
-- There is a single argument of type System.String.
-- Returns ReleaseNote.
-### releasesnotes
-List of release notes matching the specified filter.
-
-- There are 6 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - query - System.String: The keyword to search for release notes.
-    - filters - ReleaseNotesFiltersInput: Filter for release notes.
-- Returns ReleaseNoteConnection.
 ### removednodedetails
 Get the information for removed nodes.
 
 - There is a single argument of type RemovedNodeDetailsInput.
 - Returns RemoveNodeDetailsReply.
-### replicatedobjects
-Lists all objects related by replication.
-
-- There is a single argument of type GetReplicatedObjectsRequest.
-- Returns list of ReplicatedObjectInfos.
-### resourcegroups
-List of resource groups.
-
-- There is a single argument of type System.String.
-- Returns list of ResourceGroupInfos.
 ### roletemplates
 The list of available role templates.
 
@@ -2000,218 +1000,6 @@ The list of available role templates.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - nameFilter - System.String: Name to filter the results.
 - Returns RoleTemplateConnection.
-### rscautoupgradeinfo
-Get RSC auto upgrade info.
-
-- The rscautoupgradeinfo subcommand takes no arguments.
-- Returns RscAutoUpgradeInfo.
-### runningjobsstatus
-Status of all running jobs for an account.
-
-- The runningjobsstatus subcommand takes no arguments.
-- Returns RunningJobsReply.
-### saasappcascadeimpactkeys
-Returns the keys of the items that are impacted by a given restore operation.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - orgId - System.String: The Rubrik ID of the SaaS organization.
-    - operationId - System.String: The ID of the cascading impact job.
-    - pathIdentifier - System.String: The unique identifier for the path to the cascade impact summary.
-    - cascadeActionType - CascadingImpactActionType: The different types of actions that can be performed on the keys to be restored.
-- Returns SaasAppCascadeImpactKeysConnection.
-### saasappcascadingimpact
-Returns the list of object types that can be potentially impacted/restored when restoring the selected objects.
-
-- There are 4 arguments.
-    - saasAppType - SaasAppType: SaaS application type.
-    - restoreConfig - AppItemRestoreConfig: Configuration for the items to be restored.
-    - resolutionMode - CascadingImpactResolutionMode: The mode of cascading impact resolution. By default, the mode is set to `SYNCHRONOUS`.
-    - stateToken - System.String: Token storing the current state of the current flow.
-- Returns CascadingImpactResult.
-### saasappcascadingimpactjobresult
-Returns the status of the job and the list of object types that can be potentially impacted/restored when restoring the selected objects.
-
-- There are 2 arguments.
-    - orgId - System.String: The Rubrik ID of the SaaS organization.
-    - operationId - System.String: The ID of the cascading impact job.
-- Returns CascadingImpactJobResultReply.
-### saasapporganizations
-List of SaaS app organization.
-
-- There are 9 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-    - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
-    - recoveryTargetFilter - RecoveryTargetFilter: Filter for organizations that are valid recovery targets for a source organization.
-- Returns SaasAppsOrganizationConnection.
-### saasapporgdetails
-RSC details for a SaaS app organization.
-
-- There are 2 arguments.
-    - orgId - System.String: The Rubrik ID of the SaaS organization.
-    - saasAppType - SaasAppType: SaaS application type.
-- Returns SaasAppsOrganization.
-### saasappschangesummary
-Returns the change summary for the requested app item tokens or analyze object type.
-
-- There are 5 arguments.
-    - orgId - System.String: The Rubrik ID of the SaaS organization.
-    - saasAppAnalyzeObjectTypes - list of SaasAppAnalyzeObjectTypes: Saas App object types to analyze.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
-    - duration - PastNdayScope: The scope of the query, defined in past number of days.
-    - appItemTypeTokens - list of System.Strings: Token[s] specifying the type of the data items. The tokens should match the tokens retrieved by the GraphQL query.
-- Returns ChangeSummary.
-### saasappsstorageregions
-List of supported storage regions for backup data.
-
-- There is a single argument of type SaasAppType.
-- Returns SaasAppsRegionsReply.
-### saasbackupjobinformation
-Returns backup job information for a SaaS app.
-
-- There are 4 arguments.
-    - orgId - System.String: The Rubrik ID of the SaaS organization.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
-    - duration - PastNdayScope: The scope of the query, defined in past number of days.
-    - saasAppType - SaasAppType: SaaS application type.
-- Returns OrgBackupJobInformation.
-### saasconnectionstatus
-Returns the connection status of a SaaS app.
-
-- There are 2 arguments.
-    - orgId - System.String: The Rubrik ID of the SaaS organization.
-    - saasAppType - SaasAppType: SaaS application type.
-- Returns ConnectionStatus.
-### saaslicensedetails
-Returns the SaaS license details.
-
-- There are 2 arguments.
-    - orgId - System.String: The Rubrik ID of the SaaS organization.
-    - saasAppType - SaasAppType: SaaS application type.
-- Returns SaasLicenseDetails.
-### salesforcemetadatachangedetails
-The change details for metadata components on a given day.
-
-- There are 10 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - orgId - System.String: Rubrik ID of the Salesforce organization.
-    - metadataType - System.String: The type of the Salesforce metadata components.
-    - startTime - DateTime: Start time of the day for which changes are aggregated.
-    - sortBy - SalesforceMetadataChangeDetailsSortByField: Field name to sort Salesforce metadata components.
-    - filter - MetadataChangeFilter: Input for filtering records of the Salesforce Metadata Type for which RSC is calculating the summary changes.
-    - sortOrder - SortOrder: Sort order of result.
-- Returns MetadataComponentChangeConnection.
-### salesforcemetadatachangesummary
-The change summary for a given Salesforce metadata type.
-
-- There are 4 arguments.
-    - orgId - System.String: Rubrik ID of the Salesforce organization.
-    - metadataType - System.String: The type of the Salesforce metadata components.
-    - startTime - DateTime: Start time of the day for which changes are aggregated.
-    - filter - MetadataChangeFilter: Input for filtering records of the Salesforce Metadata Type for which RSC is calculating the summary changes.
-- Returns ChangeSummary.
-### salesforcemetadatacomponents
-The metadata components of a given metadata type in the Salesforce organization.
-
-- There are 9 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - orgId - System.String: Rubrik ID of the Salesforce organization.
-    - metadataType - System.String: The type of the Salesforce metadata components.
-    - sortBy - SalesforceMetadataComponentsSortByField: Field to sort Salesforce metadata components by.
-    - filter - SalesforceMetadataComponentsFilterInput: Input for filtering a list of Salesforce metadata components.
-    - sortOrder - SortOrder: Sort order of result.
-- Returns SalesforceMetadataComponentConnection.
-### salesforcemetadatatypes
-The metadata types in the Salesforce organization.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - orgId - System.String: Rubrik ID of the Salesforce organization.
-    - sortBy - SalesforceMetadataTypesSortByField: Field to sort Salesforce metadata types by.
-    - filter - SalesforceMetadataTypesFilterInput: Input for filtering a list of Salesforce metadata types.
-    - sortOrder - SortOrder: Sort order of result.
-- Returns SalesforceMetadataTypeConnection.
-### salesforceobjectfields
-The fields of a Salesforce object.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - workloadId - System.String: The ID of the workload.
-    - filter - SalesforceObjectFieldsFilterInput: Input for filtering a list of Salesforce object fields.
-    - sortBy - SalesforceObjectFieldsSortByField: Field to sort Salesforce object fields by.
-    - sortOrder - SortOrder: Sort order of result.
-- Returns SalesforceObjectFieldConnection.
-### salesforceobjectrecords
-The records in a Salesforce object.
-
-- There are 9 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - workloadId - System.String: The ID of the workload.
-    - filter - SalesforceRecordsFilterInput: Input for filtering a list of Salesforce records.
-    - sortBy - System.String: Field to sort Salesforce records by.
-    - sortOrder - SortOrder: Sort order of result.
-    - fieldNames - list of System.Strings: The list of fields for which the record values must be returned. An empty input returns values for the ID and name fields only.
-- Returns SalesforceRecords.
-### salesforceobjects
-The objects in the Salesforce organization.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - orgId - System.String: Rubrik ID of the Salesforce organization.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - filter - list of Filters: The hierarchy object filter.
-    - sortOrder - SortOrder: Sort order of result.
-- Returns SalesforceObjectConnection.
-### salesforcerecordschangedetails
-The change details for records on a given day.
-
-- There are 10 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - workloadId - System.String: The ID of the workload.
-    - startTime - DateTime: Start time of the day for which changes are aggregated.
-    - filter - ObjectRecordsChangeFilter: Input for filtering records of the Salesforce object for which RSC is calculating the summary changes.
-    - sortBy - System.String: Field name used to sort Salesforce records.
-    - sortOrder - SortOrder: Sort order of result.
-    - fieldNames - list of System.Strings: The list of fields for which the record values must be returned. An empty input returns values for the ID and name fields only.
-- Returns SalesforceRecordsChangeDetails.
-### salesforcerecordschangesummary
-The change summary for records of a given Salesforce object.
-
-- There are 3 arguments.
-    - workloadId - System.String: The ID of the workload.
-    - startTime - DateTime: Start time of the day for which changes are aggregated.
-    - filter - ObjectRecordsChangeFilter: Input for filtering records of the Salesforce object for which RSC is calculating the summary changes.
-- Returns ChangeSummary.
 ### searchfilebyprefix
 Search file under given folder and with given prefix.
 
@@ -2222,55 +1010,6 @@ Search file under given folder and with given prefix.
     - searchFolderPath - System.String: Root path to search file inside FMD.
     - filenamePrefix - System.String: Filename prefix that should match.
 - Returns DiffResult.
-### searchiocs
-Intel search response.
-
-- There is a single argument of type list of System.Strings.
-- Returns SearchIntelResponse.
-### searchsnapmirrorcloud
-Search for a file within the SnapMirrorCloud
-
-Supported in v7.0+
-Search for a file within the SnapMirrorCloud. The search can use the full path prefix or the filename prefix.
-
-- There is a single argument of type SearchSnapMirrorCloudInput.
-- Returns SearchResponseListResponse.
-### searchvappfiles
-Search for a file in a vApp.
-
-- There are 3 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - input - SearchVappFilesInput: Fid of vApp and path to search for files.
-- Returns AppSearchResponseConnection.
-### searchvectordb
-Search VectorDB.
-
-- There is a single argument of type SearchVectorDBInput.
-- Returns SearchVectorDBReply.
-### serviceprovidermetadatafields
-- The serviceprovidermetadatafields subcommand takes no arguments.
-- Returns GetSPExplicitReply.
-### singleunifiedfeatureflag
-Evaluate the requested feature flag in the unified feature flag framework.
-
-- There is a single argument of type UnifiedFeatureFlagInput.
-- Returns UnifiedFeatureFlag.
-### skippediteminfo
-Gets skipped item information.
-
-- There are 2 arguments.
-    - workloadFid - System.String: Optional FID of the workload.
-    - snapshotFid - System.String: The ID of the snapshot.
-- Returns SkippedItemInfoResponse.
-### smtpconfiguration
-- The smtpconfiguration subcommand takes no arguments.
-- Returns GetSMTPConfigurationReply.
-### snapmirrorcloud
-A SnapMirror Cloud.
-
-- There is a single argument of type System.String.
-- Returns SnapMirrorCloud.
 ### snoozeddirectories
 Lists the snoozed directories for the account.
 
@@ -2283,18 +1022,6 @@ Lists the snoozed directories for the account.
     - directorySearchFilter - System.String: Optional directory search.
     - falsePositiveTypeFilter - list of AnomalyFalsePositiveTypes: Filter by false positive type.
 - Returns SnoozedDirectoryConnection.
-### sourceblueprintinfo
-- There is a single argument of type System.String.
-- Returns SourceBlueprintInfo.
-### sourcerecoveryspecs
-Source recovery specifications.
-
-- There are 4 arguments.
-    - workloadInfos - list of SnappableInfoTypes: The list of workload recovery points.
-    - sourceLocation - LocationInfo: Source location.
-    - blueprintId - System.String: The Blueprint ID.
-    - planType - PlanName: Type of the Recovery Plan, PROD, TEST, or PROD_LOCAL.
-- Returns list of SourceRecoverySpecsReplys.
 ### supportbundle
 Get the status of generating support bundle
 
@@ -2303,11 +1030,6 @@ Given a request ID for generate support bundle request, provide the status of th
 
 - There is a single argument of type QuerySupportBundleInput.
 - Returns AsyncRequestStatus.
-### supportportalrole
-Rubrik Support portal role.
-
-- The supportportalrole subcommand takes no arguments.
-- Returns SupportPortalRole.
 ### supportuseraccesses
 All support user access objects that satisfy the query criteria.
 
@@ -2337,11 +1059,6 @@ Details of a taskchain.
 
 - There is a single argument of type System.String.
 - Returns Taskchain.
-### taskchaininfo
-- There are 2 arguments.
-    - taskchainId - System.String: Taskchain uuid
-    - jobType - System.String: Job type
-- Returns TaskchainInfoReply.
 ### taskdetailgroupbylist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -2363,27 +1080,6 @@ Details of a taskchain.
     - sortOrder - SortOrder: Task detail sort order.
     - timezoneOffset - System.Single: Offset based on customer timezone.
 - Returns TaskDetailConnection.
-### tasksummarygroupbylist
-- There are 7 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - filter - TaskSummaryFilterInput: filter task summary by input
-    - groupBy - TaskSummaryGroupByEnum: group task summary by a field
-    - timezoneOffset - System.Single: Offset based on customer timezone.
-- Returns TaskSummaryGroupByConnection.
-### tasksummarylist
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - filter - TaskSummaryFilterInput: filter task summary by input
-    - sortBy - TaskSummarySortByEnum: sort task summary by field
-    - sortOrder - SortOrder: Sort order of result.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
-- Returns TaskSummaryConnection.
 ### teamchannelnameavailable
 Checks the availability of the channel name in the Team.
 
@@ -2391,96 +1087,16 @@ Checks the availability of the channel name in the Team.
     - teamUUID - System.String
     - channelName - System.String
 - Returns System.Boolean.
-### ticketcreators
-List ticket creators.
-
-- There is a single argument of type TicketCreatorsInput.
-- Returns TicketCreatorsReply.
-### ticketingplatforminfo
-Retrieve ticketing platform information.
-
-- There is a single argument of type TicketingPlatformInfoInput.
-- Returns TicketingPlatformInfoReply.
-### tickets
-List all tickets.
-
-- There are 5 arguments.
-    - input - TicketsInput: Input for retrieving tickets.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns TicketConnection.
-### toggleablefeaturesenabled
-- The toggleablefeaturesenabled subcommand takes no arguments.
-- Returns list of FeatureNames.
-### topriskprincipals
-Return policy summary for security identifiers.
-
-- There are 3 arguments.
-    - principalRiskSummaryPrincipalType - PrincipalRiskySummaryPrincipalType: Specifies the type of principal.
-    - limit - System.Int32: Maximum number of entries in the response.
-    - policyId - System.String: Policy id.
-- Returns TopRiskPrincipalsReply.
 ### totpconfigstatus
 Get TOTP configuration status for a user.
 
 - There is a single argument of type System.String.
 - Returns GetTotpStatusReply.
-### tprconfiguration
-Specifies the current two-person rule (TPR) configuration for an organization.
-
-- There is a single argument of type System.String.
-- Returns GetTprConfigurationReply.
-### tprpublicconfiguration
-Specifies the publicly available two-person rule (TPR) configuration for an organization.
-
-- There is a single argument of type System.String.
-- Returns TprConfigurationPublic.
-### tprrequestdetail
-Details for a TPR request.
-
-- There is a single argument of type System.String.
-- Returns TprRequestDetailReply.
-### tprrequestsummaries
-Details of TPR requests.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - filter - TprRequestFilterInput: Specifies the TPR request filters.
-- Returns TprRequestSummaryConnection.
-### tprroleeligibility
-Checks if a user can be assigned a TPR role.
-
-- There are 2 arguments.
-    - orgId - System.String: Specifies the organization ID.
-    - email - System.String: Specifies the user's email.
-- Returns TprRoleEligibilityType.
-### tprrulesmap
-Map of TPR policy types to TPR rules.
-
-- The tprrulesmap subcommand takes no arguments.
-- Returns TprRulesMap.
 ### tprstatusfornoderemoval
 Check and update TPR request for node removal or replacement.
 
 - There is a single argument of type TprStatusForNodeRemovalInput.
 - Returns TprStatusForNodeRemoval.
-### trials
-Lists all trials for a given user.
-
-- There are 2 arguments.
-    - states - list of TrialStates: Trial states.
-    - types - list of TrialTypes: Trial types.
-- Returns list of Trials.
-### trialusers
-Returns the list of users associated with the trial.
-
-- There is a single argument of type System.String.
-- Returns list of TrialUsers.
 ### tunnelstatus
 Check support tunnel status for a particular node
 
@@ -2489,25 +1105,6 @@ To be used by Admin to check status of the support tunnel.
 
 - There is a single argument of type GetTunnelStatusInput.
 - Returns SupportTunnelInfo.
-### unaccesseduserssummary
-UnAccessed users summaries.
-
-- There are 9 arguments.
-    - timePeriod - TimePeriod: Time period for the activity.
-    - filter - unAccessedUsersSummaryFilterInput: un-accessed users summary filter.
-    - sortBy - UnAccessedUsersSummarySortBy: Field on which to perform the sorting operation.
-    - endTime - DateTime: End time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
-    - sortOrder - SortOrder: Sort order of result.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns UnAccessedDataUserSummaryConnection.
-### unifiedfeatureflags
-Evaluate all known feature flags in unified feature flag framework.
-
-- The unifiedfeatureflags subcommand takes no arguments.
-- Returns list of UnifiedFeatureFlags.
 ### uniquevcdcount
 Number of unique vCloud Director instances.
 
@@ -2530,43 +1127,11 @@ List of supported object types.
     - productType - ProductTargetType: Type of the product.
     - cloudVendor - CloudVendor: The cloud vendor type.
 - Returns list of ManagedObjectTypes.
-### unreadnotificationscount
-Get unread notifications count.
-
-- There is a single argument of type UnreadNotificationsCountInput.
-- Returns System.Int32.
 ### upgradestatus
 Gets the status for completed/running upgrade process.
 
 - There is a single argument of type System.String.
 - Returns UpgradeStatusReply.
-### usagetimeseries
-Retrieves product usage timeseries data.
-
-- There is a single argument of type UsageTimeseriesInput.
-- Returns UsageTimeseries.
-### useraccessinsights
-Return the user access insights for the given time range.
-
-- There are 7 arguments.
-    - startTime - DateTime: Start time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
-    - endTime - DateTime: End time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
-    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns PrincipalInsightConnection.
-### useraccessinsightticketdefaults
-Default field values for user access insight ticket.
-
-- There is a single argument of type UserAccessInsightTicketDefaultsInput.
-- Returns UserAccessInsightTicketDefaultsReply.
-### useraccessmetrics
-User access metrics.
-
-- The useraccessmetrics subcommand takes no arguments.
-- Returns UserAccessMetrics.
 ### useractivities
 - There are 8 arguments.
     - filter - ListObjectFilesFiltersInput
@@ -2585,14 +1150,6 @@ User access metrics.
     - timezone - System.String
     - limit - System.Int32: Maximum number of entries in the response.
 - Returns AnalyzerAccessUsageConnection.
-### userauditgroupbylist
-- There are 5 arguments.
-    - sortOrder - SortOrder: User audit sort order.
-    - sortBy - UserAuditSortByEnum: Sort user audit by field.
-    - filters - UserAuditFilter
-    - primaryGroupBy - UserAuditGroupBy: Primary field for grouping audits.
-    - secondaryGroupBy - UserAuditGroupBy: Secondary field for grouping audits. This field is optional.
-- Returns UserAuditGroupByInfoConnection.
 ### userauditlist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -2609,6 +1166,11 @@ User access metrics.
     - startDay - System.String: Start time, in string format (YYYY-MM-DD).
     - timezone - System.String
 - Returns GetUserDetailReply.
+### userfile
+User file.
+
+- There is a single argument of type System.String.
+- Returns CustomerFacingFile.
 ### userfiles
 All user files.
 
@@ -2665,85 +1227,11 @@ Retrieve users from current and descendant organizations based on the specified 
     - hiddenStateFilter - HiddenStateFilter: Filter users based on hidden status.
     - shouldGetLocalUsersOnly - System.Boolean: Get local users only.
 - Returns UserConnection.
-### userssummary
-Returns the count of secure and insecure users.
-
-- There are 3 arguments.
-    - startDay - System.String: Start time, in string format (YYYY-MM-DD).
-    - endDay - System.String: End time, in string format (YYYY-MM-DD).
-    - filter - UsersSummaryFilterInput: Filter for users summary.
-- Returns GetUsersSummaryReply.
-### validateiocentry
-Validates IOC entry.
-
-- There is a single argument of type System.String.
-- Returns ValidateEntryReply.
 ### validateorgname
 Checks whether the tenant org name is valid and unique.
 
 - There is a single argument of type ValidateOrgNameInput.
 - Returns ValidateOrgNameReply.
-### validatersakey
-Verify RSA Key for encryption.
-
-- There is a single argument of type System.String.
-- Returns RsaKeyVerification.
-### vcd
-A vCloud Director.
-
-- There is a single argument of type System.String.
-- Returns Vcd.
-### vcdcatalog
-A vCloud Director Catalog.
-
-- There is a single argument of type System.String.
-- Returns VcdCatalog.
-### vcdorg
-A vCloud Director Organization.
-
-- There is a single argument of type System.String.
-- Returns VcdOrg.
-### vcdorgs
-Paginated list of vCloud Director orgs.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns VcdOrgConnection.
-### vcdorgvdc
-A vCloud Director Organization Virtual Data Center.
-
-- There is a single argument of type System.String.
-- Returns VcdOrgVdc.
-### vcdtopleveldescendants
-Paginated list of the highest-level vCloud Director Objects accessible by the current user.
-
-- There are 6 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns VcdTopLevelDescendantTypeConnection.
-### vcdvapp
-A vCloud Director vApp.
-
-- There is a single argument of type System.String.
-- Returns VcdVapp.
-### vcdvapps
-Paginated list of vCloud Director vApps.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns VcdVappConnection.
 ### vcdvappvms
 Paginated list of virtual machines under vCloud Director hiearchy.
 
@@ -2754,31 +1242,11 @@ Paginated list of virtual machines under vCloud Director hiearchy.
     - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns VsphereVmConnection.
-### vcdvimserver
-A vCloud Director VIM Server.
-
-- There is a single argument of type System.String.
-- Returns VcdVimServer.
-### vcdvimservers
-List of VIM servers belonging to the vCD.
-
-- There is a single argument of type QueryVcdVimServerInput.
-- Returns VimserverSummaryListResponse.
-### verifykmsname
-Verify KMS Name.
-
-- There is a single argument of type System.String.
-- Returns KmsNameVerification.
 ### verifytotp
 Verify TOTP for current user.
 
 - There is a single argument of type VerifyTotpInput.
 - Returns VerifyTotpReply.
-### verifyvapptemplatename
-Verify new vApp template name is unique.
-
-- There is a single argument of type VerifyVappTemplateNameInput.
-- Returns System.Boolean.
 ### virtualmachinefiles
 Get virtual machine files for a snapshot
 
@@ -2787,11 +1255,6 @@ Returns all virtual machine files, such as .vmdk, .vmx, and .nvram files, for th
 
 - There is a single argument of type VirtualMachineFilesInput.
 - Returns VirtualMachineFilesReply.
-### vmiofilterstatuses
-The iofilter installation status of the compute clusters related to these virtual machines.
-
-- There is a single argument of type list of System.Strings.
-- Returns list of ComputeClusterIofilterStatuss.
 ### vmrecoveryjobsinfo
 All Vm recovery jobs info.
 
@@ -2799,22 +1262,6 @@ All Vm recovery jobs info.
     - fid - System.String: The Rubrik UUID for the object.
     - input - AllVmRecoveryJobsInfoInput: Input to get all vm recovery jobs info.
 - Returns list of VmRecoveryJobInfos.
-### volumegroup
-- There is a single argument of type System.String.
-- Returns VolumeGroup.
-### volumegroupasyncrequeststatus
-Get async status of volume group request.
-
-- There is a single argument of type GetVolumeGroupAsyncRequestStatusInput.
-- Returns AsyncRequestStatus.
-### volumegrouplist
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns VolumeGroupConnection.
 ### volumegroupmounts
 Volume Group Live Mount Connection.
 
@@ -2862,15 +1309,3 @@ Returns the RSC forever ID of a workload.
     - clusterUuid - System.String: The Rubrik cluster ID.
     - managedId - System.String: Workload managed ID.
 - Returns System.String.
-### workloadgroupbyatspecifiedtime
-- There are 4 arguments.
-    - filters - WorkloadFilter: Filters of workloads.
-    - primaryGroupBy - WorkloadGroupByEnum: Primary Group workloads by field.
-    - secondaryGroupBy - WorkloadGroupByEnum: Secondary Group workloads by field.
-    - specifiedTime - DateTime: Time to calculate the group by.
-- Returns WorkloadGroupByReply.
-### wwwtlscert
-Configured web TLS cert.
-
-- The wwwtlscert subcommand takes no arguments.
-- Returns CertificateInfo.

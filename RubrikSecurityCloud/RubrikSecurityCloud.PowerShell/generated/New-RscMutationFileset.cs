@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 6
     /// operations in the 'Fileset' API domain:
-    /// BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkMigrateRelicShare, BulkUpdateTemplate, MigrateLegacyNasHost, or RecoverFiles.
+    /// BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkUpdateTemplate, or RecoverFiles.
     /// </summary>
     /// <description>
     /// New-RscMutationFileset creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 6 operations
     /// in the 'Fileset' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkMigrateRelicShare, BulkUpdateTemplate, MigrateLegacyNasHost, or RecoverFiles.
+    /// one of: BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkUpdateTemplate, or RecoverFiles.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -287,42 +287,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the BulkMigrateRelicShare operation
-    /// of the 'Fileset' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Fileset
-    /// # API Operation: BulkMigrateRelicShare
-    /// 
-    /// $query = New-RscMutationFileset -BulkMigrateRelicShare
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	migrateRelicShareFilesetsRequest = @{
-    /// 		# REQUIRED
-    /// 		ids = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: BulkMigrateRelicShareFilesetsReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the BulkUpdateTemplate operation
     /// of the 'Fileset' API domain.
     /// <code>
@@ -390,45 +354,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: BulkUpdateFilesetTemplateReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the MigrateLegacyNasHost operation
-    /// of the 'Fileset' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Fileset
-    /// # API Operation: MigrateLegacyNasHost
-    /// 
-    /// $query = New-RscMutationFileset -MigrateLegacyNasHost
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	migrateLegacyNasHostFilesetsRequest = @{
-    /// 		# REQUIRED
-    /// 		hostIds = @{
-    /// 			# REQUIRED
-    /// 			ids = @(
-    /// 				$someString
-    /// 			)
-    /// 		}
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: MigrateLegacyNasHostFilesetsReply
     /// 
     /// 
     /// 
@@ -529,9 +454,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "BulkCreateTemplates",
                 "BulkDelete",
                 "BulkDeleteTemplate",
-                "BulkMigrateRelicShare",
                 "BulkUpdateTemplate",
-                "MigrateLegacyNasHost",
                 "RecoverFiles",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -560,14 +483,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "BulkDeleteTemplate":
                         this.ProcessRecord_BulkDeleteTemplate();
                         break;
-                    case "BulkMigrateRelicShare":
-                        this.ProcessRecord_BulkMigrateRelicShare();
-                        break;
                     case "BulkUpdateTemplate":
                         this.ProcessRecord_BulkUpdateTemplate();
-                        break;
-                    case "MigrateLegacyNasHost":
-                        this.ProcessRecord_MigrateLegacyNasHost();
                         break;
                     case "RecoverFiles":
                         this.ProcessRecord_RecoverFiles();
@@ -619,30 +536,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // bulkMigrateRelicShareFilesets.
-        internal void ProcessRecord_BulkMigrateRelicShare()
-        {
-            this._logger.name += " -BulkMigrateRelicShare";
-            // Create new graphql operation bulkMigrateRelicShareFilesets
-            InitMutationBulkMigrateRelicShareFilesets();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // bulkUpdateFilesetTemplate.
         internal void ProcessRecord_BulkUpdateTemplate()
         {
             this._logger.name += " -BulkUpdateTemplate";
             // Create new graphql operation bulkUpdateFilesetTemplate
             InitMutationBulkUpdateFilesetTemplate();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // migrateLegacyNasHostFilesets.
-        internal void ProcessRecord_MigrateLegacyNasHost()
-        {
-            this._logger.name += " -MigrateLegacyNasHost";
-            // Create new graphql operation migrateLegacyNasHostFilesets
-            InitMutationMigrateLegacyNasHostFilesets();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -834,34 +733,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // bulkMigrateRelicShareFilesets(input: BulkMigrateRelicShareFilesetsInput!): BulkMigrateRelicShareFilesetsReply!
-        internal void InitMutationBulkMigrateRelicShareFilesets()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "BulkMigrateRelicShareFilesetsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationBulkMigrateRelicShareFilesets",
-                "($input: BulkMigrateRelicShareFilesetsInput!)",
-                "BulkMigrateRelicShareFilesetsReply",
-                Mutation.BulkMigrateRelicShareFilesets,
-                Mutation.BulkMigrateRelicShareFilesetsFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	migrateRelicShareFilesetsRequest = @{
-		# REQUIRED
-		ids = @(
-			$someString
-		)
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // bulkUpdateFilesetTemplate(input: BulkUpdateFilesetTemplateInput!): BulkUpdateFilesetTemplateReply!
         internal void InitMutationBulkUpdateFilesetTemplate()
         {
@@ -924,37 +795,6 @@ $query.Var.input = @{
 			id = $someString
 		}
 	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // migrateLegacyNasHostFilesets(input: MigrateLegacyNasHostFilesetsInput!): MigrateLegacyNasHostFilesetsReply!
-        internal void InitMutationMigrateLegacyNasHostFilesets()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "MigrateLegacyNasHostFilesetsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationMigrateLegacyNasHostFilesets",
-                "($input: MigrateLegacyNasHostFilesetsInput!)",
-                "MigrateLegacyNasHostFilesetsReply",
-                Mutation.MigrateLegacyNasHostFilesets,
-                Mutation.MigrateLegacyNasHostFilesetsFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	migrateLegacyNasHostFilesetsRequest = @{
-		# REQUIRED
-		hostIds = @{
-			# REQUIRED
-			ids = @(
-				$someString
-			)
-		}
-	}
 }"
             );
         }

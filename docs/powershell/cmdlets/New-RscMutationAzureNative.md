@@ -30,11 +30,6 @@ Start a job to export the Azure native virtual machine for a specified snapshot 
 
 - There is a single argument of type StartExportAzureNativeVirtualMachineJobInput.
 - Returns AsyncJobStatus.
-### startrecoverstorageaccountjob
-Start a job to recover storage account or blobs from a storage account snapshot.
-
-- There is a single argument of type StartRecoverAzureNativeStorageAccountJobInput.
-- Returns AsyncJobStatus.
 ### startrefreshsubscriptionsjob
 Start a job to refresh Azure Native subscription for the given subscription IDs. When started, this job will update the Rubrik platform with any changes that have been done on Azure for the respective subscription.
 

@@ -41,8 +41,3 @@ Get all host shares.
     - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns HostShareConnection.
-### volumescount
-Total number of host volumes the account has.
-
-- The volumescount subcommand takes no arguments.
-- Returns System.Int32.

@@ -29,11 +29,6 @@ Certificates having private key.
 
 - The certificateswithkey subcommand takes no arguments.
 - Returns CertificateConnection.
-### cluster
-Get cluster certificate for replication target.
-
-- There is a single argument of type GetClusterCertificateInput.
-- Returns ClusterCertificate.
 ### clustercertificates
 Get all certificates
 
@@ -97,8 +92,3 @@ Browse Certificate Signing Requests (CSRs).
     - sortBy - CertMgmtSortBy: Certificate manager argument to sort by.
     - searchTerm - System.String: Search for a CSR.
 - Returns CsrConnection.
-### validate
-Validate a certificate and private key pair.
-
-- There is a single argument of type ValidateCertificateInput.
-- Returns ValidateCertificateReply.

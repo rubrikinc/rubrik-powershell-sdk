@@ -19,5 +19,9 @@ Cloud account features.
 - DATA_CENTER_ROLE_BASED_ARCHIVAL - Cloud account feature is Data Center Role Based Archival.
 - LAMINAR_CROSS_ACCOUNT - Cloud account feature is Laminar Cross Account.
 - LAMINAR_INTERNAL - Cloud account feature is Laminar Internal.
+- AZURE_LAMINAR_OUTPOST_APPLICATION - Cloud account feature is Azure Laminar Outpost Application.
+- AZURE_LAMINAR_OUTPOST_MANAGED_IDENTITY - Cloud account feature is Azure Laminar Outpost Managed Identity.
+- AZURE_LAMINAR_TARGET_APPLICATION - Cloud account feature is Azure Laminar Target Application.
+- AZURE_LAMINAR_TARGET_MANAGED_IDENTITY - Cloud account feature is Azure Laminar Target Managed Identity.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

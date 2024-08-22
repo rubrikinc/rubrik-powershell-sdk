@@ -9,3 +9,5 @@ Cascading archiving specification.
   - Archival tiering specification input.
 - frequency: list of RetentionUnits
   - Frequencies that are associated with this cascaded archival location.
+- archivalLocationToClusterMapping: list of ArchivalLocationToClusterMappingInputs
+  - Mapping between archival location and Rubrik cluster.

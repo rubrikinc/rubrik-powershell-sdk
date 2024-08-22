@@ -1,29 +1,9 @@
 # New-RscMutationArchival
 ## Subcommands
-### createdcareadertarget
-Creates a reader location for a DCA archival location ona Rubrik cluster.
-
-- There is a single argument of type CreateDcaReaderTargetInput.
-- Returns Target.
-### createdcatarget
-Creates a DCA archival location on a Rubrik cluster.
-
-- There is a single argument of type CreateDcaTargetInput.
-- Returns Target.
 ### createglacierreadertarget
 Create a reader target of type Glacier on a Rubrik cluster.
 
 - There is a single argument of type CreateGlacierReaderTargetInput.
-- Returns Target.
-### createlckreadertarget
-Creates a reader location for an LCK archival location ona Rubrik cluster.
-
-- There is a single argument of type CreateLckReaderTargetInput.
-- Returns Target.
-### createlcktarget
-Creates an LCK archival location on a Rubrik cluster.
-
-- There is a single argument of type CreateLckTargetInput.
 - Returns Target.
 ### createmanualtargetmapping
 - There is a single argument of type CreateManualTargetMappingInput.
@@ -59,11 +39,6 @@ Enables an Archival Location.
 ### pausetarget
 - There is a single argument of type PauseTargetInput.
 - Returns PauseTargetReply.
-### preprocessenablement
-Performs preprocessing tasks to enable certain archival operations.
-
-- There is a single argument of type PreprocessArchivalEnablementInput.
-- Returns System.String.
 ### promotereadertarget
 Promotes a reader Archival Location.
 
@@ -74,33 +49,13 @@ Refreshes a reader Archival Location.
 
 - There is a single argument of type RefreshReaderTargetInput.
 - Returns System.String.
-### rekeylocationmasterkeywithrsakey
-Re-keys archival location's master key with an RSA key.
-
-- There is a single argument of type RekeyArchivalLocationMasterKeyWithRsaKeyInput.
-- Returns RekeyArchivalLocationReply.
-### rekeylocationrootkey
-Re-keys archival location's root key.
-
-- There is a single argument of type RekeyArchivalLocationRootKeyInput.
-- Returns RekeyArchivalLocationReply.
 ### resumetarget
 - There is a single argument of type ResumeTargetInput.
 - Returns ResumeTargetReply.
-### updatedcatarget
-Update the DCA archival location on a Rubrik cluster.
-
-- There is a single argument of type UpdateDcaTargetInput.
-- Returns Target.
 ### updateglaciertarget
 Edit a target of type Glacier on a Rubrik cluster.
 
 - There is a single argument of type UpdateGlacierTargetInput.
-- Returns Target.
-### updatelcktarget
-Update the LCK archival location on a Rubrik cluster.
-
-- There is a single argument of type UpdateLckTargetInput.
 - Returns Target.
 ### updatemanualtargetmapping
 - There is a single argument of type UpdateManualTargetMappingInput.

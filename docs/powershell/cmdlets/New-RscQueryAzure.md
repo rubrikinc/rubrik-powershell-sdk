@@ -25,26 +25,26 @@ Details of the Azure AD objects corresponding to the type.
     - sortOrder - SortOrder: Sort order of result.
     - input - AzureAdObjectTypeInput: Input for the azureAdObjectsByType API.
 - Returns AzureAdObjectConnection.
-### adrelatedobjects
-Details of the Azure AD objects corresponding to a group membership.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortByOptionCommonSearch - list of AzureAdObjectCommonSearchTypes: Ordered list sorted by common column names.
-    - sortOrder - SortOrder: Sort order of result.
-    - input - AzureAdRelatedObjectsInput: Input for azureAdRelatedObjects API.
-- Returns AzureAdObjectConnection.
 ### armtemplatesbyfeature
 Retrieve ARM templates for role definition and role assignment.
 
 - There is a single argument of type AzureArmTemplatesByFeatureInput.
 - Returns list of AzureArmTemplateByFeatures.
-### armtemplatesbyfeatureforrecovery
-Retrieve ARM templates for role definition and role assignment to a specific user.
+### azureregions
+Get all available regions for Azure.
 
-- There is a single argument of type AzureArmTemplatesByFeatureInput.
-- Returns list of AzureArmTemplateByFeatures.
+- There is a single argument of type System.String.
+- Returns list of AzureCloudAccountRegions.
+### azurestorageaccounts
+List all Azure storage accounts by resource group.
+
+- There is a single argument of type AzureStorageAccountsReq.
+- Returns list of System.Strings.
+### azurevnets
+Get VNets for a given account in Azure.
+
+- There is a single argument of type AzureVnetReq.
+- Returns list of System.Strings.
 ### blobcontainersbystorageaccount
 List all Azure blob containers by storage account.
 
@@ -68,33 +68,11 @@ Checks if we can unmap the archival location from the subscription.
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
     - unmappingValidationType - UnmappingValidationType: Unmapping validation type.
 - Returns CheckAzurePersistentStorageSubscriptionCanUnmapReply.
-### cloudaccountcheckrefreshtokenexistsforrecovery
-Check whether a refresh token exists for the current user.
-
-- There are 2 arguments.
-    - cloudAccountId - System.String: The Rubrik ID of the cloud account.
-    - azureNativeSubscriptionId - System.String: Azure native subscription ID.
-- Returns AzureCloudAccountCheckRefreshTokenExistsReply.
 ### cloudaccountdetailsforfeature
 Retrieves the cloud account details from azure customer feature ID.
 
 - There is a single argument of type System.String.
 - Returns AzureCloudAccountDetailsForFeatureReply.
-### cloudaccountgrantedpermissionsgroups
-Retrieves the permissions groups which have been granted for a specific feature.
-
-- There are 2 arguments.
-    - cloudAccountId - System.String: The Rubrik ID of the cloud account.
-    - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
-- Returns AzureCloudAccountGrantedPermissionsGroupsReply.
-### cloudaccountgrantedpermissionsgroupsforrecovery
-Retrieves the permissions groups which have been granted for a specific feature.
-
-- There are 3 arguments.
-    - cloudAccountId - System.String: The Rubrik ID of the cloud account.
-    - azureNativeSubscriptionId - System.String: Azure native subscription ID.
-    - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
-- Returns AzureCloudAccountGrantedPermissionsGroupsReply.
 ### cloudaccountmissingpermissions
 Retrieves a list of all the missing permissions on Azure subscriptions that are a part of the Azure Cloud Account.
 
@@ -148,11 +126,6 @@ Retrieves a list of all the Azure tenants and tenant subscriptions for features.
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
     - includeSubscriptionDetails - System.Boolean: Specifies whether the details about the subscriptions in the tenants are included in the response or not.
 - Returns list of AzureCloudAccountTenants.
-### cloudaccounttenantswithexoconfigs
-Retrieves details about all the Azure cloud account tenants including the Exocompute configurations for the tenant subscriptions, for specified set of features.
-
-- There is a single argument of type list of CloudAccountFeatures.
-- Returns list of AzureCloudAccountTenantWithExoConfigss.
 ### cloudaccounttenantwithexoconfigs
 Retrieves details about the Azure cloud account tenant including the Exocompute configurations for the tenant subscriptions, for a specified feature.
 
@@ -163,13 +136,6 @@ Retrieves details about the Azure cloud account tenant including the Exocompute 
     - subscriptionSearchText - System.String: Search text for subscription name and native ID.
     - subscriptionIdsFilter - list of System.Strings: List of subscription IDs to filter on.
 - Returns AzureCloudAccountTenantWithExoConfigs.
-### containersinstorageaccountsnapshot
-Retrieves a list of containers with given prefix in a storage account snapshot.
-
-- There are 2 arguments.
-    - snapshotId - System.String: Snapshot ID
-    - prefix - System.String: Prefix
-- Returns list of System.Strings.
 ### diskencryptionsetsbyregion
 List of all Azure Disk Encryption Sets in a region.
 
@@ -199,11 +165,6 @@ Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
 
 - The hostedazureregions subcommand takes no arguments.
 - Returns AzureRegionsResp.
-### iscloudaccountmanagedviaoauth
-Determines whether the cloud account is managed using OAuth.
-
-- There is a single argument of type System.String.
-- Returns System.Boolean.
 ### isstorageaccountnameavailable
 Specifies whether the given storage account name is valid and available in Azure to be assigned to a new storage account. When the value is true, the specified account name is available in Azure.
 
@@ -211,26 +172,11 @@ Specifies whether the given storage account name is valid and available in Azure
     - azureSubscriptionRubrikId - System.String: Rubrik ID of the Azure Subscription.
     - storageAccountName - System.String: A unique name for the storage account. Storage account names must be between 3 and 24 characters in length and may contain numbers and lowercase letters only.
 - Returns System.Boolean.
-### keynamesinkeyvault
-Get all key IDs in the Azure Key Vault.
-
-- There is a single argument of type System.String.
-- Returns list of System.Strings.
 ### keyvaultsbyregion
 List of all Azure Key Vaults in a region.
 
 - There is a single argument of type AzureKeyVaultsInput.
 - Returns list of AzureKeyVaults.
-### keyversionsforkeynameinkeyvault
-Get information for a specific key in the Azure Key Vault.
-
-- There is a single argument of type GetKeyVersionsOfAzureKeyInput.
-- Returns list of KeyVersionInAzureKeyVaults.
-### latestpermissionsbypermissionsgroup
-Retrieves the latest permissions required for each of the provided features. Permissions for each feature are grouped by permissions group.
-
-- There is a single argument of type list of CloudAccountFeatures.
-- Returns list of AzureFeaturePermissionss.
 ### managedidentities
 List all managed identities for Azure resources.
 
@@ -254,6 +200,13 @@ Retrieve all available regions for Azure with availability zone details.
 - There is a single argument of type System.String.
 - Returns list of AzureLocationDetailTypes.
 ### resourcegroups
+Gets the Azure resource groups for the given subscription.
+
+- There are 2 arguments.
+    - tenantId - System.String
+    - subscriptionId - System.String
+- Returns ResourceGroupConnection.
+### resourcegroupsfromazure
 Retrieves a list og all resource groups in the specified account.
 
 - There are 3 arguments.
@@ -364,11 +317,6 @@ Retrieves a paginated list of all Azure SQL Managed Instance Servers.
     - sortOrder - SortOrder: Sort order of result.
     - azureSqlManagedInstanceServerFilters - AzureSqlManagedInstanceServerFilters: Filters for listing Azure SQL Managed Instance Servers.
 - Returns AzureSqlManagedInstanceServerConnection.
-### storageaccount
-Represents the Azure Storage Account by it's Rubrik ID. For more information, see https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview.
-
-- There is a single argument of type System.String.
-- Returns AzureStorageAccount.
 ### storageaccounts
 Gets the storage accounts for the given subscription.
 
@@ -412,11 +360,6 @@ Validates azure cluster create request.
 
 - There is a single argument of type CreateAzureClusterInput.
 - Returns ValidationReply.
-### verifykeyvault
-Verify the new Azure Key Vault.
-
-- There is a single argument of type AzureKeyVaultInfoInput.
-- Returns AzureKeyVaultVerification.
 ### vnets
 Gets the VNets for the given subscription.
 

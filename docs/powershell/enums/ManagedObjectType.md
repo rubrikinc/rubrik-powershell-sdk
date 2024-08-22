@@ -134,6 +134,15 @@ All supported managed objects.
 - POSTGRES_DATABASE - Postgres Database.
 - ACTIVE_DIRECTORY_FOREST - On-prem Active Directory forest.
 - NUTANIX_ERA - Nutanix Era.
+- CONFLUENCE_SPACE - Confluence Space.
+- M365_BACKUP_STORAGE_ORGANIZATION - M365 Backup Storage Organization.
+- M365_BACKUP_STORAGE_USER - M365 Backup Storage User.
+- M365_BACKUP_STORAGE_MAILBOX - M365 Backup Storage Mailbox.
+- M365_BACKUP_STORAGE_ONEDRIVE - M365 Backup Storage Onedrive.
+- M365_BACKUP_STORAGE_SHAREPOINT_SITE - M365 Backup Storage Sharepoint Site.
+- M365_BACKUP_STORAGE_GROUP - M365 Backup Storage Group.
+- MYSQLDB_INSTANCE - MySQL Instance.
+- MYSQLDB_DATABASE - MySQL Database.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
  NB: ideally we should use 0, but we missed it.

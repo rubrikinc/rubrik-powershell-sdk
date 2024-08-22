@@ -102,6 +102,7 @@ The list of object types for activities.
 - CapacityBundle - Specifies that the activity object type is Capacity Bundle.
 - MONGO_DATABASE - Specifies that the activity object type is MongoDB database.
 - Ec2Instance - Specifies that the activity object type is EC2 Instance.
+- CONFLUENCE_SPACE - Specifies that the activity object type is Confluence Space.
 - NUTANIX_ERA - Specifies that the activity object type is Nutanix Era.
 - JIRA_PROJECT - Specifies that the activity object type is Jira project.
 - StorageArrayVolumeGroup - Specifies that the activity object type is Storage Array Volume Group.

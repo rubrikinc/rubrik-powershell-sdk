@@ -1,2 +1,0 @@
-### TaskDetailClusterType
-- stringValue: System.String

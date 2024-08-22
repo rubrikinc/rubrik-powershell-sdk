@@ -129,3 +129,4 @@ Enum representing all the possible object types which generate events.
 - ORGANIZATION - Organization object.
 - OBJECT_TYPE_NUTANIX_ERA - Nutanix Era object.
 - ACTIVE_DIRECTORY_FOREST - Active Directory forest.
+- CONFLUENCE_SPACE - Confluence Space.

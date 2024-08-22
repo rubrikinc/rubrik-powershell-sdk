@@ -11,9 +11,24 @@ Kubernetes Rubrik Backup Service manifest.
     - k8sClusterId - System.String: Optional Kubernetes cluster UUID.
 - Returns K8sAppManifest.
 ### cluster
+Summary of a Kubernetes Cluster.
+
+- There is a single argument of type System.String.
+- Returns KubernetesCluster.
+### clusters
+Summary of all Kubernetes Clusters.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
+    - filter - list of Filters: The hierarchy object filter.
+- Returns KubernetesClusterConnection.
+### k8scluster
 - There is a single argument of type System.String.
 - Returns K8sCluster.
-### clusters
+### k8sclusters
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
@@ -33,34 +48,22 @@ Kubernetes Rubrik Backup Service manifest.
     - filter - list of Filters: The hierarchy object filter.
     - k8sClusterId - System.String: Optional Kubernetes cluster UUID.
 - Returns K8sNamespaceConnection.
-### objectfid
-Get FID from Internal ID.
-
-- There are 2 arguments.
-    - clusterUuid - System.String: The Rubrik cluster ID.
-    - K8sObjectInternalIDArg - System.String: The Kubernetes object internal ID.
-- Returns System.String.
-### objectfidbytype
-Get FID from Internal ID by object type.
-
-- There are 3 arguments.
-    - clusterUuid - System.String: The Rubrik cluster ID.
-    - K8sObjectInternalIDArg - System.String: The Kubernetes object internal ID.
-    - kubernetesObjectType - KubernetesObjectType: Type of Kubernetes object.
-- Returns System.String.
-### objectinternalid
-Get Internal ID from FID.
+### protectionset
+Summary of a Kubernetes Protection Set.
 
 - There is a single argument of type System.String.
-- Returns System.String.
-### objectinternalidbytype
-Get Internal ID from FID by object type.
+- Returns KubernetesProtectionSet.
+### protectionsets
+Summary of all Kubernetes Protection Sets.
 
-- There are 3 arguments.
-    - clusterUuid - System.String: The Rubrik cluster ID.
-    - fid - System.String: The Rubrik UUID for the object.
-    - kubernetesObjectType - KubernetesObjectType: Type of Kubernetes object.
-- Returns System.String.
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
+    - filter - list of Filters: The hierarchy object filter.
+    - k8sClusterOptionalId - System.String: Kubernetes cluster optional UUID.
+- Returns KubernetesProtectionSetConnection.
 ### protectionsetsnapshots
 Get a list of snapshots of a Kubernetes protection set workload
 
@@ -76,14 +79,6 @@ Information of all replicas for a Kubernetes snapshot.
     - snapshotId - System.String: The snapshot ID.
     - snappableId - System.String: The FID of the workload.
 - Returns list of ReplicatedSnapshotInfos.
-### resourcesetsnapshots
-Get a list of snapshots of a Kubernetes protection set workload
-
-Supported in v9.1+
-Retrieves summary information for each of the snapshots of a specified Kubernetes protection set workload.
-
-- There is a single argument of type QueryK8sSnapshotInput.
-- Returns K8sSnapshotSummaryListResponse.
 ### snapshotinfo
 Kubernetes snapshot information.
 

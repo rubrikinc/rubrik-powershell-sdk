@@ -1,4 +1,0 @@
-### CustomReportSortByEnum
-- UpdateTime
-- CreationTime
-- ViewTime

@@ -1,10 +1,5 @@
 # New-RscQueryCloudNative
 ## Subcommands
-### accountsforcloudtype
-Retrieves all the cloud accounts for the given cloud provider type.
-
-- There is a single argument of type CloudVendor.
-- Returns list of CloudNativeAccounts.
 ### checkarchivedsnapshotslocked
 Archived snapshot locking related details for a workload. If no snapshots IDs are passed, all the expired source snapshots and the source snapshots that have a unexpired archival copy will be checked.
 
@@ -76,32 +71,6 @@ List of cloud native label values matched by substring.
     - limit - System.Int32: Number of results to return.
     - objectType - CloudNativeLabelObjectType: Type of managed object on which label rule will be applied.
 - Returns list of System.Strings.
-### objectstore
-List of all files across snapshots with the specified prefix in the name.
-
-- There are 4 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - workloadId - System.String: Workload ID.
-    - searchQuery - System.String: Specify either the name or path prefix argument to search for files within a workload.
-- Returns ObjectVersionWithSnapshotConnection.
-### objectstoresnapshot
-List of all files and directories in a given path with the specified prefix in the name.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - path - System.String: The path under which you want your search to run.
-    - snapshotFid - System.String: ID of the snapshot to be searched or browsed.
-    - searchPrefix - System.String: Name prefix to search for files within a snapshot.
-- Returns ObjectVersionConnection.
-### objectstoresnapshotsforobject
-List of all snapshots that contain the specified object.
-
-- There are 2 arguments.
-    - workloadId - System.String: Workload ID.
-    - path - System.String: The path under which you want your search to run.
-- Returns ListObjectStoreSnapshotsForObjectReply.
 ### rbainstallers
 Fetches the URLs for the windows, linux and debian RBA installers.
 

@@ -1,2 +1,0 @@
-# New-RscQueryNfs
-## Subcommands

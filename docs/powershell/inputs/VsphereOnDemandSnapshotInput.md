@@ -1,5 +1,5 @@
 ### VsphereOnDemandSnapshotInput
-Input for taking on demand snapshot of vSphere virtual machine.
+Input for tqaking on demand snapshot of vSphere virtual machine.
 
 - config: BaseOnDemandSnapshotConfigInput
   - Configuration for the on-demand snapshot.

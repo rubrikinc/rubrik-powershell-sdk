@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 8
     /// operations in the 'AWS Native' API domain:
-    /// ExcludeEbsVolumesFromSnapshot, ProtectionAccountAdd, StartAccountDisableJob, StartCreateEbsVolumeSnapshotsJob, StartEc2InstanceSnapshotsJob, StartExportEbsVolumeSnapshotJob, StartRdsInstanceSnapshotsJob, StartRefreshAccountsJob, or StartRestoreEc2InstanceSnapshotJob.
+    /// ExcludeEbsVolumesFromSnapshot, StartAccountDisableJob, StartCreateEbsVolumeSnapshotsJob, StartEc2InstanceSnapshotsJob, StartExportEbsVolumeSnapshotJob, StartRdsInstanceSnapshotsJob, StartRefreshAccountsJob, or StartRestoreEc2InstanceSnapshotJob.
     /// </summary>
     /// <description>
     /// New-RscMutationAwsNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 8 operations
     /// in the 'AWS Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ExcludeEbsVolumesFromSnapshot, ProtectionAccountAdd, StartAccountDisableJob, StartCreateEbsVolumeSnapshotsJob, StartEc2InstanceSnapshotsJob, StartExportEbsVolumeSnapshotJob, StartRdsInstanceSnapshotsJob, StartRefreshAccountsJob, or StartRestoreEc2InstanceSnapshotJob.
+    /// one of: ExcludeEbsVolumesFromSnapshot, StartAccountDisableJob, StartCreateEbsVolumeSnapshotsJob, StartEc2InstanceSnapshotsJob, StartExportEbsVolumeSnapshotJob, StartRdsInstanceSnapshotsJob, StartRefreshAccountsJob, or StartRestoreEc2InstanceSnapshotJob.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -109,43 +109,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the ProtectionAccountAdd operation
-    /// of the 'AWS Native' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AwsNative
-    /// # API Operation: ProtectionAccountAdd
-    /// 
-    /// $query = New-RscMutationAwsNative -ProtectionAccountAdd
-    /// 
-    /// # REQUIRED
-    /// $query.Var.awsNativeProtectionAccountAddArg = @{
-    /// 	# REQUIRED
-    /// 	accountId = $someString
-    /// 	# REQUIRED
-    /// 	name = $someString
-    /// 	# REQUIRED
-    /// 	regions = @(
-    /// 		$someString
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeProtectionAccountAddResponse
     /// 
     /// 
     /// 
@@ -437,7 +400,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "ExcludeEbsVolumesFromSnapshot",
-                "ProtectionAccountAdd",
                 "StartAccountDisableJob",
                 "StartCreateEbsVolumeSnapshotsJob",
                 "StartEc2InstanceSnapshotsJob",
@@ -462,9 +424,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "ExcludeEbsVolumesFromSnapshot":
                         this.ProcessRecord_ExcludeEbsVolumesFromSnapshot();
-                        break;
-                    case "ProtectionAccountAdd":
-                        this.ProcessRecord_ProtectionAccountAdd();
                         break;
                     case "StartAccountDisableJob":
                         this.ProcessRecord_StartAccountDisableJob();
@@ -504,15 +463,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ExcludeEbsVolumesFromSnapshot";
             // Create new graphql operation excludeAwsNativeEbsVolumesFromSnapshot
             InitMutationExcludeAwsNativeEbsVolumesFromSnapshot();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeProtectionAccountAdd.
-        internal void ProcessRecord_ProtectionAccountAdd()
-        {
-            this._logger.name += " -ProtectionAccountAdd";
-            // Create new graphql operation awsNativeProtectionAccountAdd
-            InitMutationAwsNativeProtectionAccountAdd();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -606,35 +556,6 @@ $query.Var.input = @{
 			# REQUIRED
 			isExcluded = $someBoolean
 		}
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // awsNativeProtectionAccountAdd(awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAddRequest!): AwsNativeProtectionAccountAddResponse!
-        internal void InitMutationAwsNativeProtectionAccountAdd()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("awsNativeProtectionAccountAddArg", "AwsNativeProtectionAccountAddRequest!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationAwsNativeProtectionAccountAdd",
-                "($awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAddRequest!)",
-                "AwsNativeProtectionAccountAddResponse",
-                Mutation.AwsNativeProtectionAccountAdd,
-                Mutation.AwsNativeProtectionAccountAddFieldSpec,
-                @"# REQUIRED
-$query.Var.awsNativeProtectionAccountAddArg = @{
-	# REQUIRED
-	accountId = $someString
-	# REQUIRED
-	name = $someString
-	# REQUIRED
-	regions = @(
-		$someString
 	)
 }"
             );

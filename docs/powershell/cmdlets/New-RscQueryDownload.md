@@ -1,10 +1,5 @@
 # New-RscQueryDownload
 ## Subcommands
-### cdmapimetricscsv
-Download all the CDM API metrics as a CSV file.
-
-- The cdmapimetricscsv subcommand takes no arguments.
-- Returns DownloadCDMAPIMetricsCSVReply.
 ### cdmupgradespdf
 Download cdm upgrades table pdf.
 

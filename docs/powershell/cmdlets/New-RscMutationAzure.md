@@ -15,11 +15,6 @@ Add the Azure Subscription cloud account for the given feature without OAuth.
 
 - There is a single argument of type AddAzureCloudAccountWithoutOauthInput.
 - Returns AddAzureCloudAccountWithoutOauthReply.
-### addkeyvaultkms
-Add a new Azure Key Vault.
-
-- There is a single argument of type AddAzureKeyVaultKmsInput.
-- Returns AddAzureKeyVaultKmsReply.
 ### backupaddirectory
 Backs up the Azure AD directory.
 
@@ -96,16 +91,6 @@ Delete the Azure Subscriptions cloud account for the given feature without OAuth
 
 - There is a single argument of type DeleteAzureCloudAccountWithoutOauthInput.
 - Returns DeleteAzureCloudAccountWithoutOauthReply.
-### deletecluster
-Delete a Rubrik Cloud Cluster on Azure.
-
-- There is a single argument of type DeleteAzureClusterInput.
-- Returns CcProvisionJobReply.
-### deletedatacentercloudaccount
-Deletes an Azure cloud account for data center archival workloads.
-
-- There is a single argument of type DeleteAzureDataCenterAccountInput.
-- Returns System.String.
 ### mapcloudaccountexocomputesubscription
 Map Azure cloud accounts to an Exocompute subscription.
 
@@ -126,21 +111,6 @@ Kicks off an OAuth consent flow for Azure resource access.
 
 - The oauthconsentkickoff subcommand takes no arguments.
 - Returns AzureOauthConsentKickoffReply.
-### persistexocomputeappcreds
-Persists the Exocompute Azure App Credentials.
-
-- There is a single argument of type PersistExocomputeAzureAppCredsInput.
-- Returns System.String.
-### rekeyarchivallocationmasterkeywithkeyvaultkey
-Re-keys archival location's master key with an Azure Key Vault key.
-
-- There is a single argument of type RekeyArchivalLocationMasterKeyWithAzureKeyVaultKeyInput.
-- Returns RekeyArchivalLocationReply.
-### restoreadobjectswithpassword
-Restores the Azure AD directory.
-
-- There is a single argument of type RestoreAzureAdObjectsWithPasswordInput.
-- Returns list of CreateOnDemandJobReplys.
 ### restoreadobjectswithpasswords
 Restores the Azure AD directory with multiple passwords.
 
@@ -214,16 +184,6 @@ Updates an existing Rubrik Cloud Vault Storage Settings for the archival of azur
 Updates the Azure app for the specified account in an idempotent manner to support Azure SQL Database and  Managed Instance Database authentication.
 
 - The updatecustomerapppermissionforsql subcommand takes no arguments.
-- Returns System.String.
-### updatekeyvaultkms
-Update an existing Azure Key Vault.
-
-- There is a single argument of type UpdateAzureKeyVaultKmsInput.
-- Returns System.String.
-### updatereaderlocationmasterkeywithkeyvaultkey
-Updates reader location's master key with Azure Key Vault key.
-
-- There is a single argument of type UpdateReaderLocationMasterKeyWithAzureKeyVaultKeyInput.
 - Returns System.String.
 ### updatetarget
 - There is a single argument of type UpdateAzureTargetInput.

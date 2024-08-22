@@ -15,23 +15,6 @@ Deletes specified AWS cloud accounts without using CloudFormation Template (CFT)
 
 - There is a single argument of type BulkDeleteAwsCloudAccountWithoutCftInput.
 - Returns BulkDeleteAwsCloudAccountWithoutCftReply.
-### cloudaccountinitiate
-This endpoint is deprecated.
-
-- There is a single argument of type AwsCloudAccountInitiateInput.
-- Returns AwsCloudAccountCreateResponse.
-### cloudaccountupdatefeature
-This endpoint is deprecated.
-
-- There are 2 arguments.
-    - cloudAccountUuid - System.String: The ID of the cloud account.
-    - features - list of CloudAccountFeatures: Cloud account features.
-- Returns AwsCloudAccountUpdateFeatureResponse.
-### cloudaccountvalidate
-This endpoint is deprecated.
-
-- There is a single argument of type AwsCloudAccountValidateInput.
-- Returns AwsCloudAccountValidateResponse.
 ### createaccount
 - There is a single argument of type CreateAwsAccountInput.
 - Returns CloudAccount.
@@ -62,34 +45,14 @@ Create a reader type for AWS archival location on a Rubrik cluster.
 ### createtarget
 - There is a single argument of type CreateAwsTargetInput.
 - Returns Target.
-### deletecloudaccountwithoutcft
-Removes AWS cloud account without cleaning up the associated permissions from the AWS cloud account. Customer needs to clean up the permissions in the AWS account themselves. This mutation is supported only for IAM user-based and authentication server-based AWS cloud accounts.
-
-- There is a single argument of type DeleteAwsCloudAccountWithoutCftInput.
-- Returns DeleteAwsCloudAccountWithoutCftReply.
-### deletecluster
-Delete a Rubrik Cloud Cluster on AWS.
-
-- There is a single argument of type DeleteAwsClusterInput.
-- Returns CcProvisionJobReply.
 ### deletecomputesetting
 - There is a single argument of type DeleteAwsComputeSettingInput.
-- Returns System.String.
-### deletedatacenterkeybasedcloudaccount
-Deletes an AWS key-based cloud account for data center archival workloads.
-
-- There is a single argument of type DeleteAwsDataCenterKeyBasedCloudAccountInput.
 - Returns System.String.
 ### deleteexocomputeconfigs
 Deletes AWS Exocompute configs.
 
 - There is a single argument of type DeleteAwsExocomputeConfigsInput.
 - Returns DeleteAwsExocomputeConfigsReply.
-### deleteiamuserbasedcloudaccount
-Deletes IAM user-based AWS cloud account.
-
-- There is a single argument of type DeleteAwsIamUserBasedCloudAccountInput.
-- Returns DeleteAwsIamUserBasedCloudAccountReply.
 ### disconnectexocomputecluster
 Disconnects a customer-managed cluster from RSC.
 

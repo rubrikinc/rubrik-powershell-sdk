@@ -37,34 +37,6 @@ Download a snapshot from archival.
 ### createfileset
 - There is a single argument of type CreateFilesetSnapshotInput.
 - Returns AsyncRequestStatus.
-### createsnapmirrorcloud
-v7.0-v8.0: Initiate an on-demand backup for SnapMirror Cloud protected object
-v8.1+: Initiate an on-demand backup for SnapMirror Cloud workload
-
-Supported in v7.0+
-v7.0-v8.0: Create an on-demand backup request for the specified SnapMirror Cloud protected object.
-v8.1+: Create an on-demand backup request for the specified SnapMirror Cloud workload.
-
-- There is a single argument of type CreateSnapMirrorCloudSnapshotInput.
-- Returns AsyncRequestStatus.
-### createvapps
-Create Vapp Snapshots.
-
-- There is a single argument of type CreateVappSnapshotsInput.
-- Returns CreateVappSnapshotsReply.
-### createvapptemplateexport
-Export of a vApp template snapshot.
-
-- There is a single argument of type CreateVappTemplateSnapshotExportInput.
-- Returns AsyncRequestStatus.
-### deleteallsnapmirrorclouds
-Delete all snapshots for a SnapMirror Cloud object
-
-Supported in v7.0+
-Deletes all snapshots for a given SnapMirror Cloud object. For this operation to work as intended, the SnapMirror Cloud object must be unprotected.
-
-- There is a single argument of type DeleteAllSnapMirrorCloudSnapshotsInput.
-- Returns ResponseSuccess.
 ### deletecloudworkloadsnapshot
 Deletes the Rubrik Security Cloud on-demand snapshot by ID.
 
@@ -72,14 +44,6 @@ Deletes the Rubrik Security Cloud on-demand snapshot by ID.
 - Returns System.Boolean.
 ### deletefilesetsnapshots
 - There is a single argument of type DeleteFilesetSnapshotsInput.
-- Returns ResponseSuccess.
-### deletesnapmirrorcloud
-Delete a SnapMirror Cloud snapshot
-
-Supported in v7.0+
-Deletes a SnapMirror Cloud snapshot. A snapshot can be deleted only if it is an on-demand snapshot or a snapshot of an unprotected SnapMirror Cloud object.
-
-- There is a single argument of type DeleteSnapMirrorCloudSnapshotInput.
 - Returns ResponseSuccess.
 ### deletesofunmanagedobjects
 Deletes all the snapshots of the unmanaged objects in the request.
@@ -91,11 +55,6 @@ Deletes the snapshots of an unmanaged object using the object IDs.
 
 - There is a single argument of type DeleteUnmanagedSnapshotsInput.
 - Returns RequestSuccess.
-### deletevapps
-Delete vApp snapshots.
-
-- There is a single argument of type DeleteVappSnapshotsInput.
-- Returns DeleteVappSnapshotsReply.
 ### filesetdownloadfiles
 Download files from a fileset backup
 
@@ -143,11 +102,6 @@ Triggers on-demand snapshot for the given workloads.
 
 - There is a single argument of type TakeOnDemandSnapshotInput.
 - Returns TakeOnDemandSnapshotReply.
-### takesaasondemand
-Takes on-demand snapshots for the provided workloads.
-
-- There is a single argument of type TakeSaasOnDemandSnapshotInput.
-- Returns BatchAsyncJobStatus.
 ### uploaddatabasetoblobstore
 Start a job to upload a database snapshot to a target blobstore.
 

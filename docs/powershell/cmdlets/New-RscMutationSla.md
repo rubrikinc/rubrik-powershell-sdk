@@ -50,9 +50,6 @@ Create SLA Domain.
     - id - System.String: SLA Domain ID.
     - userNote - System.String: Optional user note.
 - Returns SlaResult.
-### editglobal
-- There is a single argument of type GlobalSlaEditRequest.
-- Returns GlobalSlaReply.
 ### exportmanagedvolumesnapshot
 Create a request to export a snapshot and mount it on a host
 
@@ -74,26 +71,6 @@ Pause or resume SLA Domain on the given Rubrik clusters.
 
 - There is a single argument of type PauseSlaInput.
 - Returns PauseSlaReply.
-### pushstoclusters
-Push given SLA IDs to their corresponding list of clusters.
-
-- There is a single argument of type PushSLAsToClustersInput.
-- Returns PushSLAsToClustersResult.
-### startautomigration
-Initiates the SLA Domain auto-migration campaign.
-
-- The startautomigration subcommand takes no arguments.
-- Returns StartSlaAutoMigrationReply.
-### submituserconcernforautomigration
-Allows users to submit concerns or problems encountered during the SLA Domain auto-migration campaign.
-
-- There is a single argument of type SubmitUserConcernForSlaAutoMigrationInput.
-- Returns System.String.
-### switchalls
-Switches all SLA Domains over which the user has the required permission.
-
-- The switchalls subcommand takes no arguments.
-- Returns SwitchAllSlasReply.
 ### updateglobal
 Update SLA Domain.
 

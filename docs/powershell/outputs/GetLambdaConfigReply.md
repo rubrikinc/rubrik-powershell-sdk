@@ -15,3 +15,5 @@ Lambda configuration details of the Rubrik cluster.
   - The maximum number of snapshots to upload automatically.
 - isThreatMonitoringEnabled: System.Boolean
   - Enable or disable threat monitoring.
+- enableThreatMonitoringFullScan: System.Boolean
+  - Enable or disable full scans for threat monitoring.

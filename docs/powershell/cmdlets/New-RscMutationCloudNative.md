@@ -65,8 +65,3 @@ Update cloud native tag rule
 
 - There is a single argument of type UpdateCloudNativeTagRuleInput.
 - Returns System.String.
-### warmindexcache
-Warm cache for search in cloud native snappables
-
-- There is a single argument of type System.String.
-- Returns System.Boolean.

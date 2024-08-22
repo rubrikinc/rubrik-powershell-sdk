@@ -24,8 +24,3 @@ Gets time ranges available for point-in-time recovery. The time ranges are indic
 
 - There is a single argument of type VmwareRecoverableRangesInput.
 - Returns VmwareRecoverableRangeListResponse.
-### vmsrecoverypermissioncheck
-Get information about whether or not a user can recover specific VMware virtual machines.
-
-- There is a single argument of type CheckVmwareVmsRecoveryPermissionInput.
-- Returns CheckVmwareVmsRecoveryPermissionReply.

@@ -1,5 +1,5 @@
 ### ActiveDirectoryAdditionalInfo
-Supported in v9.3.
+Supported in v9.3
 
 - forestId: System.String
   - Supported in v9.3

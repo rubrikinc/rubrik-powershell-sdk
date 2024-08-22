@@ -22,14 +22,6 @@ Deletes specfied fileset templates. Detaches and retains all associated filesets
 
 - There is a single argument of type BulkDeleteFilesetTemplateInput.
 - Returns ResponseSuccess.
-### bulkmigraterelicshare
-Migrate a relic share fileset to RSC
-
-Supported in v8.1+
-Migrate a relic share fileset to a NAS fileset in RSC.
-
-- There is a single argument of type BulkMigrateRelicShareFilesetsInput.
-- Returns BulkMigrateRelicShareFilesetsReply.
 ### bulkupdatetemplate
 Modify fileset templates
 
@@ -38,14 +30,6 @@ Modify the values of specified fileset templates.
 
 - There is a single argument of type BulkUpdateFilesetTemplateInput.
 - Returns BulkUpdateFilesetTemplateReply.
-### migratelegacynashost
-Migrate legacy host share filesets to RSC
-
-Supported in v8.0+
-Migrates the legacy host share filesets to RSC for protection.
-
-- There is a single argument of type MigrateLegacyNasHostFilesetsInput.
-- Returns MigrateLegacyNasHostFilesetsReply.
 ### recoverfiles
 Create restore job to restore multiple files/directories
 

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Replication' API domain:
-    /// IncomingStats, NetworkThrottleBypass, NetworkThrottleBypassById, OutgoingStats, PairedTargets, Pairs, ValidSources, or ValidTargets.
+    /// IncomingStats, NetworkThrottleBypass, NetworkThrottleBypassById, OutgoingStats, Pairs, ValidSources, or ValidTargets.
     /// </summary>
     /// <description>
     /// New-RscQueryReplication creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 7 operations
     /// in the 'Replication' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: IncomingStats, NetworkThrottleBypass, NetworkThrottleBypassById, OutgoingStats, PairedTargets, Pairs, ValidSources, or ValidTargets.
+    /// one of: IncomingStats, NetworkThrottleBypass, NetworkThrottleBypassById, OutgoingStats, Pairs, ValidSources, or ValidTargets.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -199,47 +199,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: InternalReplicationBandwidthOutgoingResponse
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the PairedTargets operation
-    /// of the 'Replication' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Replication
-    /// # API Operation: PairedTargets
-    /// 
-    /// $query = New-RscQueryReplication -PairedTargets
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.pairedReplicationTargetFilter = @{
-    /// 	# OPTIONAL
-    /// 	sourceClusterUuidList = @(
-    /// 		$someString
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: PairedReplicationTargetConnection
     /// 
     /// 
     /// 
@@ -413,7 +372,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "NetworkThrottleBypass",
                 "NetworkThrottleBypassById",
                 "OutgoingStats",
-                "PairedTargets",
                 "Pairs",
                 "ValidSources",
                 "ValidTargets",
@@ -443,9 +401,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "OutgoingStats":
                         this.ProcessRecord_OutgoingStats();
-                        break;
-                    case "PairedTargets":
-                        this.ProcessRecord_PairedTargets();
                         break;
                     case "Pairs":
                         this.ProcessRecord_Pairs();
@@ -500,15 +455,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -OutgoingStats";
             // Create new graphql operation replicationOutgoingStats
             InitQueryReplicationOutgoingStats();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // pairedReplicationTargets.
-        internal void ProcessRecord_PairedTargets()
-        {
-            this._logger.name += " -PairedTargets";
-            // Create new graphql operation pairedReplicationTargets
-            InitQueryPairedReplicationTargets();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -633,49 +579,6 @@ $query.Var.input = @{
 	range = $someString
 	# REQUIRED
 	clusterUuid = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // pairedReplicationTargets(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     pairedReplicationTargetFilter: ListPairedReplicationTargetFilter
-        //   ): PairedReplicationTargetConnection!
-        internal void InitQueryPairedReplicationTargets()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("pairedReplicationTargetFilter", "ListPairedReplicationTargetFilter"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryPairedReplicationTargets",
-                "($first: Int,$after: String,$last: Int,$before: String,$pairedReplicationTargetFilter: ListPairedReplicationTargetFilter)",
-                "PairedReplicationTargetConnection",
-                Query.PairedReplicationTargets,
-                Query.PairedReplicationTargetsFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString
-# OPTIONAL
-$query.Var.pairedReplicationTargetFilter = @{
-	# OPTIONAL
-	sourceClusterUuidList = @(
-		$someString
-	)
 }"
             );
         }

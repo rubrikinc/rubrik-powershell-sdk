@@ -34,3 +34,5 @@ Inventory workloads that are supported on Rubrik.
 - K8S_ROOT - K8S root.
 - SALESFORCE_ROOT - Salesforce root.
 - POSTGRES_ROOT - Postgres root.
+- M365_BACKUP_STORAGE_ROOT - M365 Backup Storage Root.
+- MYSQLDB_ROOT - MySQL root.

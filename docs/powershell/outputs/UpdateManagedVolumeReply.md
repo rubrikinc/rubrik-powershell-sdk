@@ -27,7 +27,7 @@ Supported in v5.0+
   v7.0+: List of links for the Managed Volume.
 - mainExport: ManagedVolumeExport
   - Supported in v5.0+
-  v5.0-v8.0: 
+  v5.0-v8.0:
   v8.1+: The Main export of the Managed Volume.
 - numChannels: System.Int32
   - Required. Supported in v5.0+

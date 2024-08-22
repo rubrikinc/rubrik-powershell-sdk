@@ -6,4 +6,5 @@
 - source: FileVersionSourceEnum
 - quarantineInfo: QuarantineInfo
   - Quarantine information corresponding to the path.
+- snapshotTime: DateTime
 - snapshot: CdmSnapshot

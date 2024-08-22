@@ -72,15 +72,6 @@ Details of the given Prism Central.
 
 - There is a single argument of type System.String.
 - Returns NutanixPrismCentral.
-### prismcentralasyncrequeststatus
-Get Nutanix Prism Central async request status
-
-Supported in v9.0+
-v9.0: Get details about a Nutanix pc-related async request.
-v9.1+: Retrieve the status for the Nutanix Prism Central async request.
-
-- There is a single argument of type GetNutanixPrismCentralAsyncRequestStatusInput.
-- Returns AsyncRequestStatus.
 ### prismcentrals
 Paginated list of Nutanix Prism Central objects.
 

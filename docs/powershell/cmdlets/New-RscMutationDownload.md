@@ -13,11 +13,6 @@ Download audit log in CSV format asynchronously.
 
 - There is a single argument of type DownloadAuditLogCsvAsyncInput.
 - Returns AsyncDownloadReply.
-### cdmtprconfigurationasync
-Download CDM two-person rule (TPR) configuration report for all Rubrik clusters connected to this RSC account.
-
-- The cdmtprconfigurationasync subcommand takes no arguments.
-- Returns DownloadCdmTprConfigAsyncReply.
 ### exchangesnapshot
 Download exchange database snapshot from archive
 
@@ -26,9 +21,14 @@ Downloads a Microsoft Exchange database snapshot from the specified archival loc
 
 - There is a single argument of type DownloadExchangeSnapshotInput.
 - Returns AsyncRequestStatus.
-### file
-- There is a single argument of type DownloadReportFileInput.
-- Returns AsyncDownloadReply.
+### exchangesnapshotv2
+Download exchange database snapshot from archive
+
+Supported in v9.3
+Downloads a Microsoft Exchange database snapshot from the specified archival location.
+
+- There is a single argument of type DownloadExchangeSnapshotV2Input.
+- Returns AsyncRequestStatus.
 ### filesetsnapshot
 - There is a single argument of type DownloadFilesetSnapshotInput.
 - Returns AsyncRequestStatus.
@@ -39,6 +39,11 @@ Supported in v7.0+
 Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a replication target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
 
 - There is a single argument of type DownloadFilesetSnapshotFromLocationInput.
+- Returns AsyncRequestStatus.
+### fromarchivev2
+Download Microsoft SQL Server Database snapshot from archival location.
+
+- There is a single argument of type DownloadFromArchiveV2Input.
 - Returns AsyncRequestStatus.
 ### objectfilescsv
 Schedule a download CSV job for cross object files.
@@ -67,17 +72,6 @@ Download file results in CSV format.
     - crawlId - System.String
     - downloadFilter - DownloadResultsCsvFiltersInput
 - Returns DownloadResultsCsvReply.
-### salesforcerecordschangedetails
-Download the change details of the specified Salesforce object on a specific day.
-
-- There are 6 arguments.
-    - workloadId - System.String: The ID of the workload.
-    - startTime - DateTime: Start time of the day for which changes are aggregated.
-    - filter - ObjectRecordsChangeFilter: Input for filtering records of the Salesforce object for which RSC is calculating the summary changes.
-    - sortBy - System.String: Field name used to sort Salesforce records.
-    - sortOrder - SortOrder: Sort order of result.
-    - fieldNames - list of System.Strings: The list of fields for which the record values must be returned. An empty input returns values for the ID and name fields only.
-- Returns CreateOnDemandJobReply.
 ### saphanasnapshot
 Download SAP HANA database snapshot from archive
 
@@ -115,14 +109,6 @@ Download threat hunt result in CSV format.
 
 - There is a single argument of type DownloadThreatHuntCsvInput.
 - Returns DownloadThreatHuntCsvReply.
-### vcdvappsnapshotfromlocation
-Download a snapshot from a replication target.
-
-            Supported in Rubrik CDM version 7.0 and later.
-            Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. If an SLA Domain is not provided, the snapshot will be retained forever.
-
-- There is a single argument of type DownloadVcdVappSnapshotFromLocationInput.
-- Returns AsyncRequestStatus.
 ### volumegroupsnapshotfiles
 Download files from Volume Group snapshot
 

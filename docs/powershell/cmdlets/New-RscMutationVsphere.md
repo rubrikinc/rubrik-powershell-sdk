@@ -39,19 +39,6 @@ Start an asynchronous job to download multiple Virtual Machine files, such as .v
 
 - There is a single argument of type DownloadVsphereVirtualMachineFilesInput.
 - Returns AsyncRequestStatus.
-### exportsnapshottostandalonehost
-- There are 10 arguments.
-    - snapshotFid - System.String: Snapshot persistent UUID in RSC.
-    - vmName - System.String
-    - disableNetwork - System.Boolean
-    - removeNetworkDevices - System.Boolean
-    - powerOn - System.Boolean
-    - keepMacAddresses - System.Boolean
-    - hostIpAddress - System.String
-    - datastoreName - System.String
-    - hostUsername - System.String
-    - hostPassword - System.String
-- Returns VsphereAsyncRequestStatus.
 ### exportsnapshottostandalonehostv2
 Export snapshot of a virtual machine to standalone ESXi server.
 

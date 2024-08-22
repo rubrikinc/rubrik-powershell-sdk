@@ -5,11 +5,6 @@ Mark AWS Native EBS Volumes to be excluded from EC2 Instance snapshot. By defaul
 
 - There is a single argument of type ExcludeAwsNativeEbsVolumesFromSnapshotInput.
 - Returns System.String.
-### protectionaccountadd
-This endpoint is deprecated.
-
-- There is a single argument of type AwsNativeProtectionAccountAddRequest.
-- Returns AwsNativeProtectionAccountAddResponse.
 ### startaccountdisablejob
 Starts a job to disable a specific AWS Native account. When complete, the job will disable protection for the specified AWS Native account.
 

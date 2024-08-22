@@ -25,21 +25,6 @@ Get the enablement status of entities on which Ransomware Monitoring can be enab
 
 - The investigationenablement subcommand takes no arguments.
 - Returns RansomwareInvestigationEnablementReply.
-### investigationobjects
-Object level stats for ransomware investigation dashboard.
-
-- There is a single argument of type DateTime.
-- Returns RansomwareInvestigationObjectsReply.
-### monitoringpipelinehealth
-Retrieve the ransomware monitoring pipeline health metric.
-
-- There is a single argument of type DateTime.
-- Returns RansomwareMonitoringPipelineHealth.
-### monitoringtimelineanalysis
-Retrieve the Ransomware Monitoring timeline analysis data.
-
-- There is a single argument of type DateTime.
-- Returns RansomwareMonitoringTimelineAnalysis.
 ### overallinvestigationsummary
 Overall ransomware investigation summary.
 

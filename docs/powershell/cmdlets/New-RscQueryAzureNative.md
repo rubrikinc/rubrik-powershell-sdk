@@ -44,19 +44,6 @@ Checks if an Azure SQL Database Snapshot or an Azure SQL Managed Instance Databa
 
 - There is a single argument of type System.String.
 - Returns System.Boolean.
-### livemountdisks
-List of mounted disks for Azure.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - cloudNativeObjectType - CloudNativeObjectType: Cloud Native Object Type.
-    - liveMountFilters - list of CloudNativeLiveMountFilters: Fields and values according to which rules will be filtered.
-    - sortBy - CloudNativeLiveMountSortByFields: Fields and values according to which rules will be sorted.
-    - sortOrder - SortOrder: Sort order of result.
-- Returns LiveMountDetailsConnection.
 ### manageddisk
 Retrieves an Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
 

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 17
+    /// Create a new RscQuery object for any of the 11
     /// operations in the 'VMware vSphere vCenter' API domain:
-    /// AdvancedTagPreview, AsyncRequestStatus, ConnectivityStatus, HotAddBandwidth, HotAddNetwork, HotAddProxy, HotAddProxyVmsV2, List, MissingPrivilegeSummary, MissingPrivileges, MissingPrivilegesV2, Networks, NumProxiesNeeded, PreAddInfo, RequiredPrivileges, UniqueCount, or Vcenter.
+    /// AdvancedTagPreview, AsyncRequestStatus, HotAddBandwidth, HotAddNetwork, HotAddProxy, HotAddProxyVmsV2, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
     /// </summary>
     /// <description>
     /// New-RscQueryVcenter creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 17 operations
+    /// There are 11 operations
     /// in the 'VMware vSphere vCenter' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdvancedTagPreview, AsyncRequestStatus, ConnectivityStatus, HotAddBandwidth, HotAddNetwork, HotAddProxy, HotAddProxyVmsV2, List, MissingPrivilegeSummary, MissingPrivileges, MissingPrivilegesV2, Networks, NumProxiesNeeded, PreAddInfo, RequiredPrivileges, UniqueCount, or Vcenter.
+    /// one of: AdvancedTagPreview, AsyncRequestStatus, HotAddBandwidth, HotAddNetwork, HotAddProxy, HotAddProxyVmsV2, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -139,37 +139,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the ConnectivityStatus operation
-    /// of the 'VMware vSphere vCenter' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Vcenter
-    /// # API Operation: ConnectivityStatus
-    /// 
-    /// $query = New-RscQueryVcenter -ConnectivityStatus
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: VcenterConnectivityStatus
     /// 
     /// 
     /// 
@@ -391,118 +360,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the MissingPrivilegeSummary operation
-    /// of the 'VMware vSphere vCenter' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Vcenter
-    /// # API Operation: MissingPrivilegeSummary
-    /// 
-    /// $query = New-RscQueryVcenter -MissingPrivilegeSummary
-    /// 
-    /// # REQUIRED
-    /// $query.Var.vcenterId = $someString
-    /// # REQUIRED
-    /// $query.Var.jobId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;VcenterEntitySummary&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the MissingPrivileges operation
-    /// of the 'VMware vSphere vCenter' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Vcenter
-    /// # API Operation: MissingPrivileges
-    /// 
-    /// $query = New-RscQueryVcenter -MissingPrivileges
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	limit = $someInt
-    /// 	# OPTIONAL
-    /// 	offset = $someInt
-    /// 	# REQUIRED
-    /// 	entityType = $someString
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: MissingEntityPrivilegesList
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the MissingPrivilegesV2 operation
-    /// of the 'VMware vSphere vCenter' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Vcenter
-    /// # API Operation: MissingPrivilegesV2
-    /// 
-    /// $query = New-RscQueryVcenter -MissingPrivilegesV2
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # REQUIRED
-    /// $query.Var.vcenterId = $someString
-    /// # REQUIRED
-    /// $query.Var.jobId = $someString
-    /// # OPTIONAL
-    /// $query.Var.filter = @(
-    /// 	@{
-    /// 		# OPTIONAL
-    /// 		field = $someVcenterMissingPrivilegeFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterMissingPrivilegeFilterField]) for enum values.
-    /// 		# OPTIONAL
-    /// 		texts = @(
-    /// 			$someString
-    /// 		)
-    /// }
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: VcenterEntityConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the Networks operation
     /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
@@ -612,105 +469,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the RequiredPrivileges operation
-    /// of the 'VMware vSphere vCenter' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Vcenter
-    /// # API Operation: RequiredPrivileges
-    /// 
-    /// $query = New-RscQueryVcenter -RequiredPrivileges
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: RequiredEntityPrivilegeListResponse
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the UniqueCount operation
-    /// of the 'VMware vSphere vCenter' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Vcenter
-    /// # API Operation: UniqueCount
-    /// 
-    /// $query = New-RscQueryVcenter -UniqueCount
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.filter = @(
-    /// 	@{
-    /// 		# OPTIONAL
-    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-    /// 		# OPTIONAL
-    /// 		texts = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		objectTypeFilterParams = @(
-    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		awsNativeProtectionFeatureNames = @(
-    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		isNegative = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isSlowSearchEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		azureNativeProtectionFeatureNames = @(
-    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		unmanagedObjectAvailabilityFilter = @(
-    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-    /// 		)
-    /// }
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.Int32
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the Vcenter operation
     /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
@@ -756,20 +514,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "AdvancedTagPreview",
                 "AsyncRequestStatus",
-                "ConnectivityStatus",
                 "HotAddBandwidth",
                 "HotAddNetwork",
                 "HotAddProxy",
                 "HotAddProxyVmsV2",
                 "List",
-                "MissingPrivilegeSummary",
-                "MissingPrivileges",
-                "MissingPrivilegesV2",
                 "Networks",
                 "NumProxiesNeeded",
                 "PreAddInfo",
-                "RequiredPrivileges",
-                "UniqueCount",
                 "Vcenter",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -792,9 +544,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AsyncRequestStatus":
                         this.ProcessRecord_AsyncRequestStatus();
                         break;
-                    case "ConnectivityStatus":
-                        this.ProcessRecord_ConnectivityStatus();
-                        break;
                     case "HotAddBandwidth":
                         this.ProcessRecord_HotAddBandwidth();
                         break;
@@ -810,15 +559,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "List":
                         this.ProcessRecord_List();
                         break;
-                    case "MissingPrivilegeSummary":
-                        this.ProcessRecord_MissingPrivilegeSummary();
-                        break;
-                    case "MissingPrivileges":
-                        this.ProcessRecord_MissingPrivileges();
-                        break;
-                    case "MissingPrivilegesV2":
-                        this.ProcessRecord_MissingPrivilegesV2();
-                        break;
                     case "Networks":
                         this.ProcessRecord_Networks();
                         break;
@@ -827,12 +567,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "PreAddInfo":
                         this.ProcessRecord_PreAddInfo();
-                        break;
-                    case "RequiredPrivileges":
-                        this.ProcessRecord_RequiredPrivileges();
-                        break;
-                    case "UniqueCount":
-                        this.ProcessRecord_UniqueCount();
                         break;
                     case "Vcenter":
                         this.ProcessRecord_Vcenter();
@@ -863,15 +597,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AsyncRequestStatus";
             // Create new graphql operation vcenterAsyncRequestStatus
             InitQueryVcenterAsyncRequestStatus();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vCenterConnectivityStatus.
-        internal void ProcessRecord_ConnectivityStatus()
-        {
-            this._logger.name += " -ConnectivityStatus";
-            // Create new graphql operation vCenterConnectivityStatus
-            InitQueryVcenterConnectivityStatus();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -920,33 +645,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // allVcenterMissingPrivilegeSummary.
-        internal void ProcessRecord_MissingPrivilegeSummary()
-        {
-            this._logger.name += " -MissingPrivilegeSummary";
-            // Create new graphql operation allVcenterMissingPrivilegeSummary
-            InitQueryAllVcenterMissingPrivilegeSummary();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vCenterMissingPrivileges.
-        internal void ProcessRecord_MissingPrivileges()
-        {
-            this._logger.name += " -MissingPrivileges";
-            // Create new graphql operation vCenterMissingPrivileges
-            InitQueryVcenterMissingPrivileges();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vCenterMissingPrivilegesV2.
-        internal void ProcessRecord_MissingPrivilegesV2()
-        {
-            this._logger.name += " -MissingPrivilegesV2";
-            // Create new graphql operation vCenterMissingPrivilegesV2
-            InitQueryVcenterMissingPrivilegesV2();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // vCenterNetworks.
         internal void ProcessRecord_Networks()
         {
@@ -971,24 +669,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -PreAddInfo";
             // Create new graphql operation vCenterPreAddInfo
             InitQueryVcenterPreAddInfo();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vCenterRequiredPrivileges.
-        internal void ProcessRecord_RequiredPrivileges()
-        {
-            this._logger.name += " -RequiredPrivileges";
-            // Create new graphql operation vCenterRequiredPrivileges
-            InitQueryVcenterRequiredPrivileges();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // uniqueVSphereVCenterCount.
-        internal void ProcessRecord_UniqueCount()
-        {
-            this._logger.name += " -UniqueCount";
-            // Create new graphql operation uniqueVSphereVCenterCount
-            InitQueryUniqueVsphereVcenterCount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1049,29 +729,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	clusterUuid = $someString
-	# REQUIRED
-	id = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // vCenterConnectivityStatus(input: VcenterConnectivityStatusInput!): VcenterConnectivityStatus!
-        internal void InitQueryVcenterConnectivityStatus()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "VcenterConnectivityStatusInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryVcenterConnectivityStatus",
-                "($input: VcenterConnectivityStatusInput!)",
-                "VcenterConnectivityStatus",
-                Query.VcenterConnectivityStatus,
-                Query.VcenterConnectivityStatusFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
 	# REQUIRED
 	id = $someString
 }"
@@ -1270,105 +927,6 @@ $query.Var.filter = @(
         }
 
         // Create new GraphQL Query:
-        // allVcenterMissingPrivilegeSummary(vcenterId: UUID!, jobId: String!): [vCenterEntitySummary!]!
-        internal void InitQueryAllVcenterMissingPrivilegeSummary()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("vcenterId", "UUID!"),
-                Tuple.Create("jobId", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllVcenterMissingPrivilegeSummary",
-                "($vcenterId: UUID!,$jobId: String!)",
-                "List<VcenterEntitySummary>",
-                Query.AllVcenterMissingPrivilegeSummary,
-                Query.AllVcenterMissingPrivilegeSummaryFieldSpec,
-                @"# REQUIRED
-$query.Var.vcenterId = $someString
-# REQUIRED
-$query.Var.jobId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // vCenterMissingPrivileges(input: VcenterMissingPrivilegesInput!): MissingEntityPrivilegesList!
-        internal void InitQueryVcenterMissingPrivileges()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "VcenterMissingPrivilegesInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryVcenterMissingPrivileges",
-                "($input: VcenterMissingPrivilegesInput!)",
-                "MissingEntityPrivilegesList",
-                Query.VcenterMissingPrivileges,
-                Query.VcenterMissingPrivilegesFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	limit = $someInt
-	# OPTIONAL
-	offset = $someInt
-	# REQUIRED
-	entityType = $someString
-	# REQUIRED
-	id = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // vCenterMissingPrivilegesV2(
-        //     first: Int
-        //     after: String
-        //     vcenterId: UUID!
-        //     jobId: String!
-        //     filter: [VcenterMissingPrivilegeFilterInput!]
-        //   ): VcenterEntityConnection!
-        internal void InitQueryVcenterMissingPrivilegesV2()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("vcenterId", "UUID!"),
-                Tuple.Create("jobId", "String!"),
-                Tuple.Create("filter", "[VcenterMissingPrivilegeFilterInput!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryVcenterMissingPrivilegesV2",
-                "($first: Int,$after: String,$vcenterId: UUID!,$jobId: String!,$filter: [VcenterMissingPrivilegeFilterInput!])",
-                "VcenterEntityConnection",
-                Query.VcenterMissingPrivilegesV2,
-                Query.VcenterMissingPrivilegesV2FieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# REQUIRED
-$query.Var.vcenterId = $someString
-# REQUIRED
-$query.Var.jobId = $someString
-# OPTIONAL
-$query.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = $someVcenterMissingPrivilegeFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterMissingPrivilegeFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			$someString
-		)
-}
-)"
-            );
-        }
-
-        // Create new GraphQL Query:
         // vCenterNetworks(input: GetNetworksInput!): NetworkInfoListResponse!
         internal void InitQueryVcenterNetworks()
         {
@@ -1450,89 +1008,6 @@ $query.Var.input = @{
 		}
 	}
 }"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // vCenterRequiredPrivileges(input: VcenterRequiredPrivilegesInput!): RequiredEntityPrivilegeListResponse!
-        internal void InitQueryVcenterRequiredPrivileges()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "VcenterRequiredPrivilegesInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryVcenterRequiredPrivileges",
-                "($input: VcenterRequiredPrivilegesInput!)",
-                "RequiredEntityPrivilegeListResponse",
-                Query.VcenterRequiredPrivileges,
-                Query.VcenterRequiredPrivilegesFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	id = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // uniqueVSphereVCenterCount(filter: [Filter!]): Int!
-        internal void InitQueryUniqueVsphereVcenterCount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryUniqueVsphereVcenterCount",
-                "($filter: [Filter!])",
-                "System.Int32",
-                Query.UniqueVsphereVcenterCount,
-                Query.UniqueVsphereVcenterCountFieldSpec,
-                @"# OPTIONAL
-$query.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			$someString
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = $someBoolean
-		# OPTIONAL
-		isSlowSearchEnabled = $someBoolean
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
             );
         }
 

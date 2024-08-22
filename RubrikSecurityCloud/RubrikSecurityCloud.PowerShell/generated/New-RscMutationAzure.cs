@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 51
+    /// Create a new RscQuery object for any of the 43
     /// operations in the 'Azure' API domain:
-    /// AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, AddKeyVaultKms, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteCluster, DeleteDataCenterCloudAccount, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, PersistExocomputeAppCreds, RekeyArchivalLocationMasterKeyWithKeyVaultKey, RestoreAdObjectsWithPassword, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateKeyVaultKms, UpdateReaderLocationMasterKeyWithKeyVaultKey, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
+    /// AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
     /// </summary>
     /// <description>
     /// New-RscMutationAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 51 operations
+    /// There are 43 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, AddKeyVaultKms, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteCluster, DeleteDataCenterCloudAccount, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, PersistExocomputeAppCreds, RekeyArchivalLocationMasterKeyWithKeyVaultKey, RestoreAdObjectsWithPassword, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateKeyVaultKms, UpdateReaderLocationMasterKeyWithKeyVaultKey, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
+    /// one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -296,50 +296,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AddAzureCloudAccountWithoutOauthReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AddKeyVaultKms operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AddKeyVaultKms
-    /// 
-    /// $query = New-RscMutationAzure -AddKeyVaultKms
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	azureKeyVault = @{
-    /// 		# REQUIRED
-    /// 		instanceName = $someString
-    /// 		# OPTIONAL
-    /// 		description = $someString
-    /// 		# REQUIRED
-    /// 		tenantId = $someString
-    /// 		# REQUIRED
-    /// 		clientId = $someString
-    /// 		# REQUIRED
-    /// 		clientSecret = $someString
-    /// 		# REQUIRED
-    /// 		vaultUrl = $someString
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AddAzureKeyVaultKmsReply
     /// 
     /// 
     /// 
@@ -1296,86 +1252,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the DeleteCluster operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: DeleteCluster
-    /// 
-    /// $query = New-RscMutationAzure -DeleteCluster
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	cloudAccountId = $someString
-    /// 	# OPTIONAL
-    /// 	numNodes = $someInt
-    /// 	# OPTIONAL
-    /// 	resourceGroupName = $someString
-    /// 	# OPTIONAL
-    /// 	networkResourceGroup = $someString
-    /// 	# OPTIONAL
-    /// 	isEsType = $someBoolean
-    /// 	# OPTIONAL
-    /// 	storageAccount = $someString
-    /// 	# OPTIONAL
-    /// 	containerName = $someString
-    /// 	# OPTIONAL
-    /// 	storageResourceGroup = $someString
-    /// 	# OPTIONAL
-    /// 	isNewContainer = $someBoolean
-    /// 	# OPTIONAL
-    /// 	clusterUuid = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CcProvisionJobReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the DeleteDataCenterCloudAccount operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: DeleteDataCenterCloudAccount
-    /// 
-    /// $query = New-RscMutationAzure -DeleteDataCenterCloudAccount
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	cloudAccountId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the MapCloudAccountExocomputeSubscription operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -1510,129 +1386,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AzureOauthConsentKickoffReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the PersistExocomputeAppCreds operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: PersistExocomputeAppCreds
-    /// 
-    /// $query = New-RscMutationAzure -PersistExocomputeAppCreds
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	tenantId = $someString
-    /// 	# REQUIRED
-    /// 	azureAppId = $someString
-    /// 	# REQUIRED
-    /// 	azureAppSecret = $someString
-    /// 	# REQUIRED
-    /// 	azureCloudType = $someO365AzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365AzureCloudType]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the RekeyArchivalLocationMasterKeyWithKeyVaultKey operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: RekeyArchivalLocationMasterKeyWithKeyVaultKey
-    /// 
-    /// $query = New-RscMutationAzure -RekeyArchivalLocationMasterKeyWithKeyVaultKey
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	locationId = $someString
-    /// 	# OPTIONAL
-    /// 	existingRsaKey = $someString
-    /// 	# REQUIRED
-    /// 	newAzureKeyIdentifier = @{
-    /// 		# REQUIRED
-    /// 		kmsKeyVaultId = $someString
-    /// 		# REQUIRED
-    /// 		keyName = $someString
-    /// 		# REQUIRED
-    /// 		keyVersion = $someString
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: RekeyArchivalLocationReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the RestoreAdObjectsWithPassword operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: RestoreAdObjectsWithPassword
-    /// 
-    /// $query = New-RscMutationAzure -RestoreAdObjectsWithPassword
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	workloadFid = $someString
-    /// 	# REQUIRED
-    /// 	snapshotFid = $someString
-    /// 	# REQUIRED
-    /// 	password = $someString
-    /// 	# REQUIRED
-    /// 	objectTypeToIdMap = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			objectId = $someString
-    /// 			# REQUIRED
-    /// 			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
-    /// 		}
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;CreateOnDemandJobReply&gt;
     /// 
     /// 
     /// 
@@ -2410,83 +2163,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the UpdateKeyVaultKms operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: UpdateKeyVaultKms
-    /// 
-    /// $query = New-RscMutationAzure -UpdateKeyVaultKms
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	kmsKeyVaultId = $someString
-    /// 	# OPTIONAL
-    /// 	instanceName = $someString
-    /// 	# OPTIONAL
-    /// 	description = $someString
-    /// 	# OPTIONAL
-    /// 	clientId = $someString
-    /// 	# OPTIONAL
-    /// 	clientSecret = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the UpdateReaderLocationMasterKeyWithKeyVaultKey operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: UpdateReaderLocationMasterKeyWithKeyVaultKey
-    /// 
-    /// $query = New-RscMutationAzure -UpdateReaderLocationMasterKeyWithKeyVaultKey
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	locationId = $someString
-    /// 	# REQUIRED
-    /// 	newAzureKeyIdentifier = @{
-    /// 		# REQUIRED
-    /// 		kmsKeyVaultId = $someString
-    /// 		# REQUIRED
-    /// 		keyName = $someString
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the UpdateTarget operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -2735,7 +2411,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AddCloudAccount",
                 "AddCloudAccountExocomputeConfigurations",
                 "AddCloudAccountWithoutOauth",
-                "AddKeyVaultKms",
                 "BackupAdDirectory",
                 "CompleteAdAppSetup",
                 "CompleteAdAppUpdate",
@@ -2752,15 +2427,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteCloudAccount",
                 "DeleteCloudAccountExocomputeConfigurations",
                 "DeleteCloudAccountWithoutOauth",
-                "DeleteCluster",
-                "DeleteDataCenterCloudAccount",
                 "MapCloudAccountExocomputeSubscription",
                 "MapCloudAccountToPersistentStorageLocation",
                 "OauthConsentComplete",
                 "OauthConsentKickoff",
-                "PersistExocomputeAppCreds",
-                "RekeyArchivalLocationMasterKeyWithKeyVaultKey",
-                "RestoreAdObjectsWithPassword",
                 "RestoreAdObjectsWithPasswords",
                 "SetCloudAccountCustomerAppCredentials",
                 "StartAdAppSetup",
@@ -2777,8 +2447,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateCloudNativeRcvStorageSetting",
                 "UpdateCloudNativeStorageSetting",
                 "UpdateCustomerAppPermissionForSql",
-                "UpdateKeyVaultKms",
-                "UpdateReaderLocationMasterKeyWithKeyVaultKey",
                 "UpdateTarget",
                 "UpdateTenantForSubscription",
                 "UpgradeCloudAccount",
@@ -2806,9 +2474,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "AddCloudAccountWithoutOauth":
                         this.ProcessRecord_AddCloudAccountWithoutOauth();
-                        break;
-                    case "AddKeyVaultKms":
-                        this.ProcessRecord_AddKeyVaultKms();
                         break;
                     case "BackupAdDirectory":
                         this.ProcessRecord_BackupAdDirectory();
@@ -2858,12 +2523,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DeleteCloudAccountWithoutOauth":
                         this.ProcessRecord_DeleteCloudAccountWithoutOauth();
                         break;
-                    case "DeleteCluster":
-                        this.ProcessRecord_DeleteCluster();
-                        break;
-                    case "DeleteDataCenterCloudAccount":
-                        this.ProcessRecord_DeleteDataCenterCloudAccount();
-                        break;
                     case "MapCloudAccountExocomputeSubscription":
                         this.ProcessRecord_MapCloudAccountExocomputeSubscription();
                         break;
@@ -2875,15 +2534,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "OauthConsentKickoff":
                         this.ProcessRecord_OauthConsentKickoff();
-                        break;
-                    case "PersistExocomputeAppCreds":
-                        this.ProcessRecord_PersistExocomputeAppCreds();
-                        break;
-                    case "RekeyArchivalLocationMasterKeyWithKeyVaultKey":
-                        this.ProcessRecord_RekeyArchivalLocationMasterKeyWithKeyVaultKey();
-                        break;
-                    case "RestoreAdObjectsWithPassword":
-                        this.ProcessRecord_RestoreAdObjectsWithPassword();
                         break;
                     case "RestoreAdObjectsWithPasswords":
                         this.ProcessRecord_RestoreAdObjectsWithPasswords();
@@ -2933,12 +2583,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "UpdateCustomerAppPermissionForSql":
                         this.ProcessRecord_UpdateCustomerAppPermissionForSql();
                         break;
-                    case "UpdateKeyVaultKms":
-                        this.ProcessRecord_UpdateKeyVaultKms();
-                        break;
-                    case "UpdateReaderLocationMasterKeyWithKeyVaultKey":
-                        this.ProcessRecord_UpdateReaderLocationMasterKeyWithKeyVaultKey();
-                        break;
                     case "UpdateTarget":
                         this.ProcessRecord_UpdateTarget();
                         break;
@@ -2986,15 +2630,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AddCloudAccountWithoutOauth";
             // Create new graphql operation addAzureCloudAccountWithoutOauth
             InitMutationAddAzureCloudAccountWithoutOauth();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // addAzureKeyVaultKms.
-        internal void ProcessRecord_AddKeyVaultKms()
-        {
-            this._logger.name += " -AddKeyVaultKms";
-            // Create new graphql operation addAzureKeyVaultKms
-            InitMutationAddAzureKeyVaultKms();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3142,24 +2777,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // deleteAzureCluster.
-        internal void ProcessRecord_DeleteCluster()
-        {
-            this._logger.name += " -DeleteCluster";
-            // Create new graphql operation deleteAzureCluster
-            InitMutationDeleteAzureCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // deleteAzureDataCenterCloudAccount.
-        internal void ProcessRecord_DeleteDataCenterCloudAccount()
-        {
-            this._logger.name += " -DeleteDataCenterCloudAccount";
-            // Create new graphql operation deleteAzureDataCenterCloudAccount
-            InitMutationDeleteAzureDataCenterCloudAccount();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // mapAzureCloudAccountExocomputeSubscription.
         internal void ProcessRecord_MapCloudAccountExocomputeSubscription()
         {
@@ -3193,33 +2810,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -OauthConsentKickoff";
             // Create new graphql operation azureOauthConsentKickoff
             InitMutationAzureOauthConsentKickoff();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // persistExocomputeAzureAppCreds.
-        internal void ProcessRecord_PersistExocomputeAppCreds()
-        {
-            this._logger.name += " -PersistExocomputeAppCreds";
-            // Create new graphql operation persistExocomputeAzureAppCreds
-            InitMutationPersistExocomputeAzureAppCreds();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // rekeyArchivalLocationMasterKeyWithAzureKeyVaultKey.
-        internal void ProcessRecord_RekeyArchivalLocationMasterKeyWithKeyVaultKey()
-        {
-            this._logger.name += " -RekeyArchivalLocationMasterKeyWithKeyVaultKey";
-            // Create new graphql operation rekeyArchivalLocationMasterKeyWithAzureKeyVaultKey
-            InitMutationRekeyArchivalLocationMasterKeyWithAzureKeyVaultKey();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // restoreAzureAdObjectsWithPassword.
-        internal void ProcessRecord_RestoreAdObjectsWithPassword()
-        {
-            this._logger.name += " -RestoreAdObjectsWithPassword";
-            // Create new graphql operation restoreAzureAdObjectsWithPassword
-            InitMutationRestoreAzureAdObjectsWithPassword();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3364,24 +2954,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdateCustomerAppPermissionForSql";
             // Create new graphql operation updateCustomerAppPermissionForAzureSql
             InitMutationUpdateCustomerAppPermissionForAzureSql();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // updateAzureKeyVaultKms.
-        internal void ProcessRecord_UpdateKeyVaultKms()
-        {
-            this._logger.name += " -UpdateKeyVaultKms";
-            // Create new graphql operation updateAzureKeyVaultKms
-            InitMutationUpdateAzureKeyVaultKms();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // updateReaderLocationMasterKeyWithAzureKeyVaultKey.
-        internal void ProcessRecord_UpdateReaderLocationMasterKeyWithKeyVaultKey()
-        {
-            this._logger.name += " -UpdateReaderLocationMasterKeyWithKeyVaultKey";
-            // Create new graphql operation updateReaderLocationMasterKeyWithAzureKeyVaultKey
-            InitMutationUpdateReaderLocationMasterKeyWithAzureKeyVaultKey();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3620,42 +3192,6 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // addAzureKeyVaultKms(input: AddAzureKeyVaultKmsInput!): AddAzureKeyVaultKmsReply!
-        internal void InitMutationAddAzureKeyVaultKms()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "AddAzureKeyVaultKmsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationAddAzureKeyVaultKms",
-                "($input: AddAzureKeyVaultKmsInput!)",
-                "AddAzureKeyVaultKmsReply",
-                Mutation.AddAzureKeyVaultKms,
-                Mutation.AddAzureKeyVaultKmsFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	azureKeyVault = @{
-		# REQUIRED
-		instanceName = $someString
-		# OPTIONAL
-		description = $someString
-		# REQUIRED
-		tenantId = $someString
-		# REQUIRED
-		clientId = $someString
-		# REQUIRED
-		clientSecret = $someString
-		# REQUIRED
-		vaultUrl = $someString
-	}
 }"
             );
         }
@@ -4480,70 +4016,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // deleteAzureCluster(input: DeleteAzureClusterInput!): CcProvisionJobReply!
-        internal void InitMutationDeleteAzureCluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteAzureClusterInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteAzureCluster",
-                "($input: DeleteAzureClusterInput!)",
-                "CcProvisionJobReply",
-                Mutation.DeleteAzureCluster,
-                Mutation.DeleteAzureClusterFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	cloudAccountId = $someString
-	# OPTIONAL
-	numNodes = $someInt
-	# OPTIONAL
-	resourceGroupName = $someString
-	# OPTIONAL
-	networkResourceGroup = $someString
-	# OPTIONAL
-	isEsType = $someBoolean
-	# OPTIONAL
-	storageAccount = $someString
-	# OPTIONAL
-	containerName = $someString
-	# OPTIONAL
-	storageResourceGroup = $someString
-	# OPTIONAL
-	isNewContainer = $someBoolean
-	# OPTIONAL
-	clusterUuid = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // deleteAzureDataCenterCloudAccount(input: DeleteAzureDataCenterAccountInput!): Void
-        internal void InitMutationDeleteAzureDataCenterCloudAccount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteAzureDataCenterAccountInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteAzureDataCenterCloudAccount",
-                "($input: DeleteAzureDataCenterAccountInput!)",
-                "System.String",
-                Mutation.DeleteAzureDataCenterCloudAccount,
-                Mutation.DeleteAzureDataCenterCloudAccountFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	cloudAccountId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // mapAzureCloudAccountExocomputeSubscription(input: MapAzureCloudAccountExocomputeSubscriptionInput!): MapAzureCloudAccountExocomputeSubscriptionReply!
         internal void InitMutationMapAzureCloudAccountExocomputeSubscription()
         {
@@ -4649,105 +4121,6 @@ $query.Var.input = @{
                 Mutation.AzureOauthConsentKickoff,
                 Mutation.AzureOauthConsentKickoffFieldSpec,
                 @""
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // persistExocomputeAzureAppCreds(input: PersistExocomputeAzureAppCredsInput!): Void
-        internal void InitMutationPersistExocomputeAzureAppCreds()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "PersistExocomputeAzureAppCredsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationPersistExocomputeAzureAppCreds",
-                "($input: PersistExocomputeAzureAppCredsInput!)",
-                "System.String",
-                Mutation.PersistExocomputeAzureAppCreds,
-                Mutation.PersistExocomputeAzureAppCredsFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	tenantId = $someString
-	# REQUIRED
-	azureAppId = $someString
-	# REQUIRED
-	azureAppSecret = $someString
-	# REQUIRED
-	azureCloudType = $someO365AzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365AzureCloudType]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // rekeyArchivalLocationMasterKeyWithAzureKeyVaultKey(input: RekeyArchivalLocationMasterKeyWithAzureKeyVaultKeyInput!): RekeyArchivalLocationReply!
-        internal void InitMutationRekeyArchivalLocationMasterKeyWithAzureKeyVaultKey()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "RekeyArchivalLocationMasterKeyWithAzureKeyVaultKeyInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationRekeyArchivalLocationMasterKeyWithAzureKeyVaultKey",
-                "($input: RekeyArchivalLocationMasterKeyWithAzureKeyVaultKeyInput!)",
-                "RekeyArchivalLocationReply",
-                Mutation.RekeyArchivalLocationMasterKeyWithAzureKeyVaultKey,
-                Mutation.RekeyArchivalLocationMasterKeyWithAzureKeyVaultKeyFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	locationId = $someString
-	# OPTIONAL
-	existingRsaKey = $someString
-	# REQUIRED
-	newAzureKeyIdentifier = @{
-		# REQUIRED
-		kmsKeyVaultId = $someString
-		# REQUIRED
-		keyName = $someString
-		# REQUIRED
-		keyVersion = $someString
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // restoreAzureAdObjectsWithPassword(input: RestoreAzureAdObjectsWithPasswordInput!): [CreateOnDemandJobReply!]!
-        internal void InitMutationRestoreAzureAdObjectsWithPassword()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "RestoreAzureAdObjectsWithPasswordInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationRestoreAzureAdObjectsWithPassword",
-                "($input: RestoreAzureAdObjectsWithPasswordInput!)",
-                "List<CreateOnDemandJobReply>",
-                Mutation.RestoreAzureAdObjectsWithPassword,
-                Mutation.RestoreAzureAdObjectsWithPasswordFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	workloadFid = $someString
-	# REQUIRED
-	snapshotFid = $someString
-	# REQUIRED
-	password = $someString
-	# REQUIRED
-	objectTypeToIdMap = @(
-		@{
-			# REQUIRED
-			objectId = $someString
-			# REQUIRED
-			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
-		}
-	)
-}"
             );
         }
 
@@ -5388,67 +4761,6 @@ $query.Var.input = @{
                 Mutation.UpdateCustomerAppPermissionForAzureSql,
                 Mutation.UpdateCustomerAppPermissionForAzureSqlFieldSpec,
                 @""
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateAzureKeyVaultKms(input: UpdateAzureKeyVaultKmsInput!): Void
-        internal void InitMutationUpdateAzureKeyVaultKms()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateAzureKeyVaultKmsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateAzureKeyVaultKms",
-                "($input: UpdateAzureKeyVaultKmsInput!)",
-                "System.String",
-                Mutation.UpdateAzureKeyVaultKms,
-                Mutation.UpdateAzureKeyVaultKmsFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	kmsKeyVaultId = $someString
-	# OPTIONAL
-	instanceName = $someString
-	# OPTIONAL
-	description = $someString
-	# OPTIONAL
-	clientId = $someString
-	# OPTIONAL
-	clientSecret = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateReaderLocationMasterKeyWithAzureKeyVaultKey(input: UpdateReaderLocationMasterKeyWithAzureKeyVaultKeyInput!): Void
-        internal void InitMutationUpdateReaderLocationMasterKeyWithAzureKeyVaultKey()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateReaderLocationMasterKeyWithAzureKeyVaultKeyInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateReaderLocationMasterKeyWithAzureKeyVaultKey",
-                "($input: UpdateReaderLocationMasterKeyWithAzureKeyVaultKeyInput!)",
-                "System.String",
-                Mutation.UpdateReaderLocationMasterKeyWithAzureKeyVaultKey,
-                Mutation.UpdateReaderLocationMasterKeyWithAzureKeyVaultKeyFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	locationId = $someString
-	# REQUIRED
-	newAzureKeyIdentifier = @{
-		# REQUIRED
-		kmsKeyVaultId = $someString
-		# REQUIRED
-		keyName = $someString
-	}
-}"
             );
         }
 

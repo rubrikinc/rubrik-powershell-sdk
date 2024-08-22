@@ -1,8 +1,5 @@
 # New-RscQuerySyslog
 ## Subcommands
-### configuration
-- The configuration subcommand takes no arguments.
-- Returns GetSyslogConfigurationReply.
 ### exportrules
 Get the configured syslog export rules
 

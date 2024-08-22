@@ -57,3 +57,5 @@ Regions for Azure.
 - POLAND_CENTRAL - Azure region is Poland Central.
 - ISRAEL_CENTRAL - Azure region is Israel Central.
 - ITALY_NORTH - Azure region is Italy North.
+- SPAIN_CENTRAL - Azure region is Spain Central.
+- MEXICO_CENTRAL - Azure region is Mexico Central.

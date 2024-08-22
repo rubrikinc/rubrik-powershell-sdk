@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 21
+    /// Create a new RscQuery object for any of the 19
     /// operations in the 'Report Download' API domain:
-    /// ActiveDirectorySnapshotFromLocation, AuditLogCsvAsync, CdmTprConfigurationAsync, ExchangeSnapshot, File, FilesetSnapshot, FilesetSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SalesforceRecordsChangeDetails, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VcdVappSnapshotFromLocation, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
+    /// ActiveDirectorySnapshotFromLocation, AuditLogCsvAsync, ExchangeSnapshot, ExchangeSnapshotV2, FilesetSnapshot, FilesetSnapshotFromLocation, FromArchiveV2, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
     /// </summary>
     /// <description>
     /// New-RscMutationDownload creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 21 operations
+    /// There are 19 operations
     /// in the 'Report Download' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActiveDirectorySnapshotFromLocation, AuditLogCsvAsync, CdmTprConfigurationAsync, ExchangeSnapshot, File, FilesetSnapshot, FilesetSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SalesforceRecordsChangeDetails, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VcdVappSnapshotFromLocation, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
+    /// one of: ActiveDirectorySnapshotFromLocation, AuditLogCsvAsync, ExchangeSnapshot, ExchangeSnapshotV2, FilesetSnapshot, FilesetSnapshotFromLocation, FromArchiveV2, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -276,33 +276,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the CdmTprConfigurationAsync operation
-    /// of the 'Report Download' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Download
-    /// # API Operation: CdmTprConfigurationAsync
-    /// 
-    /// $query = New-RscMutationDownload -CdmTprConfigurationAsync
-    /// 
-    /// # No variables for this query.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: DownloadCdmTprConfigAsyncReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the ExchangeSnapshot operation
     /// of the 'Report Download' API domain.
     /// <code>
@@ -338,7 +311,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the File operation
+    /// Runs the ExchangeSnapshotV2 operation
     /// of the 'Report Download' API domain.
     /// <code>
     /// PS &gt;
@@ -346,97 +319,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Download
-    /// # API Operation: File
+    /// # API Operation: ExchangeSnapshotV2
     /// 
-    /// $query = New-RscMutationDownload -File
+    /// $query = New-RscMutationDownload -ExchangeSnapshotV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	fileType = $someFileTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FileTypeEnum]) for enum values.
-    /// 	# REQUIRED
-    /// 	reportId = $someInt64
     /// 	# OPTIONAL
-    /// 	timezone = $someString
-    /// 	# OPTIONAL
-    /// 	config = @{
+    /// 	downloadConfig = @{
     /// 		# OPTIONAL
-    /// 		ngAlphaConfig = @{
-    /// 			# REQUIRED
-    /// 			name = $someString
-    /// 			# REQUIRED
-    /// 			dataViewType = $someDataViewTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataViewTypeEnum]) for enum values.
-    /// 			# REQUIRED
-    /// 			columns = @(
-    /// 				$someString
-    /// 			)
-    /// 			# REQUIRED
-    /// 			groupBy = @{
-    /// 				# REQUIRED
-    /// 				groupById = $someString
-    /// 				# REQUIRED
-    /// 				aggregations = @(
-    /// 					$someString
-    /// 				)
-    /// 			}
-    /// 			# REQUIRED
-    /// 			aggregations = @(
-    /// 				$someString
-    /// 			)
-    /// 			# REQUIRED
-    /// 			filters = @(
-    /// 				@{
-    /// 					# REQUIRED
-    /// 					name = $someString
-    /// 					# REQUIRED
-    /// 					values = @(
-    /// 						$someString
-    /// 					)
-    /// 				}
-    /// 			)
-    /// 			# REQUIRED
-    /// 			sortBy = $someString
-    /// 			# OPTIONAL
-    /// 			sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// 		}
-    /// 		# OPTIONAL
-    /// 		ngConfig = @{
-    /// 			# REQUIRED
-    /// 			name = $someString
-    /// 			# REQUIRED
-    /// 			reportViewType = $somePolarisReportViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolarisReportViewType]) for enum values.
-    /// 			# REQUIRED
-    /// 			charts = @(
-    /// 				$someChartViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChartViewType]) for enum values.
-    /// 			)
-    /// 			# REQUIRED
-    /// 			table = $someTableViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TableViewType]) for enum values.
-    /// 			# REQUIRED
-    /// 			filters = @(
-    /// 				@{
-    /// 					# REQUIRED
-    /// 					name = $someString
-    /// 					# REQUIRED
-    /// 					values = @(
-    /// 						$someString
-    /// 					)
-    /// 				}
-    /// 			)
-    /// 			# REQUIRED
-    /// 			sortBy = $someString
-    /// 			# OPTIONAL
-    /// 			sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// 		}
-    /// 		# REQUIRED
-    /// 		reportVersion = $someReportVersionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportVersionType]) for enum values.
+    /// 		slaId = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
     /// }
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncDownloadReply
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -499,6 +403,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	locationId = $someString
     /// 	# REQUIRED
     /// 	snapshotId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the FromArchiveV2 operation
+    /// of the 'Report Download' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Download
+    /// # API Operation: FromArchiveV2
+    /// 
+    /// $query = New-RscMutationDownload -FromArchiveV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		slaId = $someString
+    /// 		# REQUIRED
+    /// 		recoveryPoint = @{
+    /// 			# OPTIONAL
+    /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			date = $someDateTime
+    /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 			}
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	locationId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1110,64 +1066,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the SalesforceRecordsChangeDetails operation
-    /// of the 'Report Download' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Download
-    /// # API Operation: SalesforceRecordsChangeDetails
-    /// 
-    /// $query = New-RscMutationDownload -SalesforceRecordsChangeDetails
-    /// 
-    /// # REQUIRED
-    /// $query.Var.workloadId = $someString
-    /// # REQUIRED
-    /// $query.Var.startTime = $someDateTime
-    /// # OPTIONAL
-    /// $query.Var.filter = @{
-    /// 	# OPTIONAL
-    /// 	actionTypes = @(
-    /// 		$someAppItemActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AppItemActionType]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	clauseItems = @(
-    /// 		@{
-    /// 			# OPTIONAL
-    /// 			fieldName = $someString
-    /// 			# OPTIONAL
-    /// 			value = $someString
-    /// 			# REQUIRED
-    /// 			operatorType = $someSqlOperatorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SqlOperatorType]) for enum values.
-    /// 		}
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	searchTerm = $someString
-    /// }
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.fieldNames = @(
-    /// 	$someString
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CreateOnDemandJobReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the SapHanaSnapshot operation
     /// of the 'Report Download' API domain.
     /// <code>
@@ -1371,44 +1269,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the VcdVappSnapshotFromLocation operation
-    /// of the 'Report Download' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Download
-    /// # API Operation: VcdVappSnapshotFromLocation
-    /// 
-    /// $query = New-RscMutationDownload -VcdVappSnapshotFromLocation
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	downloadConfig = @{
-    /// 		# OPTIONAL
-    /// 		slaId = $someString
-    /// 	}
-    /// 	# REQUIRED
-    /// 	locationId = $someString
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the VolumeGroupSnapshotFiles operation
     /// of the 'Report Download' API domain.
     /// <code>
@@ -1513,23 +1373,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "ActiveDirectorySnapshotFromLocation",
                 "AuditLogCsvAsync",
-                "CdmTprConfigurationAsync",
                 "ExchangeSnapshot",
-                "File",
+                "ExchangeSnapshotV2",
                 "FilesetSnapshot",
                 "FilesetSnapshotFromLocation",
+                "FromArchiveV2",
                 "ObjectFilesCsv",
                 "ObjectsListCsv",
                 "ReportCsvAsync",
                 "ReportPdfAsync",
                 "ResultsCsv",
-                "SalesforceRecordsChangeDetails",
                 "SapHanaSnapshot",
                 "SapHanaSnapshotFromLocation",
                 "SapHanaSnapshotsForPointInTimeRecovery",
                 "SnapshotResultsCsv",
                 "ThreatHuntCsv",
-                "VcdVappSnapshotFromLocation",
                 "VolumeGroupSnapshotFiles",
                 "VolumeGroupSnapshotFromLocation",
                 IgnoreCase = true)]
@@ -1553,20 +1411,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AuditLogCsvAsync":
                         this.ProcessRecord_AuditLogCsvAsync();
                         break;
-                    case "CdmTprConfigurationAsync":
-                        this.ProcessRecord_CdmTprConfigurationAsync();
-                        break;
                     case "ExchangeSnapshot":
                         this.ProcessRecord_ExchangeSnapshot();
                         break;
-                    case "File":
-                        this.ProcessRecord_File();
+                    case "ExchangeSnapshotV2":
+                        this.ProcessRecord_ExchangeSnapshotV2();
                         break;
                     case "FilesetSnapshot":
                         this.ProcessRecord_FilesetSnapshot();
                         break;
                     case "FilesetSnapshotFromLocation":
                         this.ProcessRecord_FilesetSnapshotFromLocation();
+                        break;
+                    case "FromArchiveV2":
+                        this.ProcessRecord_FromArchiveV2();
                         break;
                     case "ObjectFilesCsv":
                         this.ProcessRecord_ObjectFilesCsv();
@@ -1583,9 +1441,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ResultsCsv":
                         this.ProcessRecord_ResultsCsv();
                         break;
-                    case "SalesforceRecordsChangeDetails":
-                        this.ProcessRecord_SalesforceRecordsChangeDetails();
-                        break;
                     case "SapHanaSnapshot":
                         this.ProcessRecord_SapHanaSnapshot();
                         break;
@@ -1600,9 +1455,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ThreatHuntCsv":
                         this.ProcessRecord_ThreatHuntCsv();
-                        break;
-                    case "VcdVappSnapshotFromLocation":
-                        this.ProcessRecord_VcdVappSnapshotFromLocation();
                         break;
                     case "VolumeGroupSnapshotFiles":
                         this.ProcessRecord_VolumeGroupSnapshotFiles();
@@ -1639,15 +1491,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // downloadCdmTprConfigurationAsync.
-        internal void ProcessRecord_CdmTprConfigurationAsync()
-        {
-            this._logger.name += " -CdmTprConfigurationAsync";
-            // Create new graphql operation downloadCdmTprConfigurationAsync
-            InitMutationDownloadCdmTprConfigurationAsync();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // downloadExchangeSnapshot.
         internal void ProcessRecord_ExchangeSnapshot()
         {
@@ -1657,12 +1500,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // downloadFile.
-        internal void ProcessRecord_File()
+        // downloadExchangeSnapshotV2.
+        internal void ProcessRecord_ExchangeSnapshotV2()
         {
-            this._logger.name += " -File";
-            // Create new graphql operation downloadFile
-            InitMutationDownloadFile();
+            this._logger.name += " -ExchangeSnapshotV2";
+            // Create new graphql operation downloadExchangeSnapshotV2
+            InitMutationDownloadExchangeSnapshotV2();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1681,6 +1524,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -FilesetSnapshotFromLocation";
             // Create new graphql operation downloadFilesetSnapshotFromLocation
             InitMutationDownloadFilesetSnapshotFromLocation();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadFromArchiveV2.
+        internal void ProcessRecord_FromArchiveV2()
+        {
+            this._logger.name += " -FromArchiveV2";
+            // Create new graphql operation downloadFromArchiveV2
+            InitMutationDownloadFromArchiveV2();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1729,15 +1581,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // downloadSalesforceRecordsChangeDetails.
-        internal void ProcessRecord_SalesforceRecordsChangeDetails()
-        {
-            this._logger.name += " -SalesforceRecordsChangeDetails";
-            // Create new graphql operation downloadSalesforceRecordsChangeDetails
-            InitMutationDownloadSalesforceRecordsChangeDetails();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // downloadSapHanaSnapshot.
         internal void ProcessRecord_SapHanaSnapshot()
         {
@@ -1780,15 +1623,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ThreatHuntCsv";
             // Create new graphql operation downloadThreatHuntCsv
             InitMutationDownloadThreatHuntCsv();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // downloadVcdVappSnapshotFromLocation.
-        internal void ProcessRecord_VcdVappSnapshotFromLocation()
-        {
-            this._logger.name += " -VcdVappSnapshotFromLocation";
-            // Create new graphql operation downloadVcdVappSnapshotFromLocation
-            InitMutationDownloadVcdVappSnapshotFromLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1994,24 +1828,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // downloadCdmTprConfigurationAsync: DownloadCdmTprConfigAsyncReply!
-        internal void InitMutationDownloadCdmTprConfigurationAsync()
-        {
-            Tuple<string, string>[] argDefs = {
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDownloadCdmTprConfigurationAsync",
-                "",
-                "DownloadCdmTprConfigAsyncReply",
-                Mutation.DownloadCdmTprConfigurationAsync,
-                Mutation.DownloadCdmTprConfigurationAsyncFieldSpec,
-                @""
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // downloadExchangeSnapshot(input: DownloadExchangeSnapshotInput!): AsyncRequestStatus!
         internal void InitMutationDownloadExchangeSnapshot()
         {
@@ -2039,100 +1855,31 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // downloadFile(input: DownloadReportFileInput!): AsyncDownloadReply!
-        internal void InitMutationDownloadFile()
+        // downloadExchangeSnapshotV2(input: DownloadExchangeSnapshotV2Input!): AsyncRequestStatus!
+        internal void InitMutationDownloadExchangeSnapshotV2()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DownloadReportFileInput!"),
+                Tuple.Create("input", "DownloadExchangeSnapshotV2Input!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationDownloadFile",
-                "($input: DownloadReportFileInput!)",
-                "AsyncDownloadReply",
-                Mutation.DownloadFile,
-                Mutation.DownloadFileFieldSpec,
+                "MutationDownloadExchangeSnapshotV2",
+                "($input: DownloadExchangeSnapshotV2Input!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadExchangeSnapshotV2,
+                Mutation.DownloadExchangeSnapshotV2FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
-	fileType = $someFileTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FileTypeEnum]) for enum values.
-	# REQUIRED
-	reportId = $someInt64
 	# OPTIONAL
-	timezone = $someString
-	# OPTIONAL
-	config = @{
+	downloadConfig = @{
 		# OPTIONAL
-		ngAlphaConfig = @{
-			# REQUIRED
-			name = $someString
-			# REQUIRED
-			dataViewType = $someDataViewTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataViewTypeEnum]) for enum values.
-			# REQUIRED
-			columns = @(
-				$someString
-			)
-			# REQUIRED
-			groupBy = @{
-				# REQUIRED
-				groupById = $someString
-				# REQUIRED
-				aggregations = @(
-					$someString
-				)
-			}
-			# REQUIRED
-			aggregations = @(
-				$someString
-			)
-			# REQUIRED
-			filters = @(
-				@{
-					# REQUIRED
-					name = $someString
-					# REQUIRED
-					values = @(
-						$someString
-					)
-				}
-			)
-			# REQUIRED
-			sortBy = $someString
-			# OPTIONAL
-			sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-		}
-		# OPTIONAL
-		ngConfig = @{
-			# REQUIRED
-			name = $someString
-			# REQUIRED
-			reportViewType = $somePolarisReportViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolarisReportViewType]) for enum values.
-			# REQUIRED
-			charts = @(
-				$someChartViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChartViewType]) for enum values.
-			)
-			# REQUIRED
-			table = $someTableViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TableViewType]) for enum values.
-			# REQUIRED
-			filters = @(
-				@{
-					# REQUIRED
-					name = $someString
-					# REQUIRED
-					values = @(
-						$someString
-					)
-				}
-			)
-			# REQUIRED
-			sortBy = $someString
-			# OPTIONAL
-			sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-		}
-		# REQUIRED
-		reportVersion = $someReportVersionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportVersionType]) for enum values.
+		slaId = $someString
 	}
+	# REQUIRED
+	locationId = $someString
+	# REQUIRED
+	snapshotId = $someString
 }"
             );
         }
@@ -2186,6 +1933,50 @@ $query.Var.input = @{
 	locationId = $someString
 	# REQUIRED
 	snapshotId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadFromArchiveV2(input: DownloadFromArchiveV2Input!): AsyncRequestStatus!
+        internal void InitMutationDownloadFromArchiveV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadFromArchiveV2Input!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadFromArchiveV2",
+                "($input: DownloadFromArchiveV2Input!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadFromArchiveV2,
+                Mutation.DownloadFromArchiveV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		slaId = $someString
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			timestampMs = $someInt64
+			# OPTIONAL
+			date = $someDateTime
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = $someString
+				# REQUIRED
+				lsn = $someString
+			}
+		}
+	}
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	locationId = $someString
 }"
             );
         }
@@ -2748,68 +2539,6 @@ $query.Var.downloadFilter = @{
         }
 
         // Create new GraphQL Mutation:
-        // downloadSalesforceRecordsChangeDetails(
-        //     workloadId: UUID!
-        //     startTime: DateTime!
-        //     filter: ObjectRecordsChangeFilter
-        //     sortBy: String
-        //     sortOrder: SortOrder
-        //     fieldNames: [String!]
-        //   ): CreateOnDemandJobReply!
-        internal void InitMutationDownloadSalesforceRecordsChangeDetails()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("workloadId", "UUID!"),
-                Tuple.Create("startTime", "DateTime!"),
-                Tuple.Create("filter", "ObjectRecordsChangeFilter"),
-                Tuple.Create("sortBy", "String"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("fieldNames", "[String!]"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDownloadSalesforceRecordsChangeDetails",
-                "($workloadId: UUID!,$startTime: DateTime!,$filter: ObjectRecordsChangeFilter,$sortBy: String,$sortOrder: SortOrder,$fieldNames: [String!])",
-                "CreateOnDemandJobReply",
-                Mutation.DownloadSalesforceRecordsChangeDetails,
-                Mutation.DownloadSalesforceRecordsChangeDetailsFieldSpec,
-                @"# REQUIRED
-$query.Var.workloadId = $someString
-# REQUIRED
-$query.Var.startTime = $someDateTime
-# OPTIONAL
-$query.Var.filter = @{
-	# OPTIONAL
-	actionTypes = @(
-		$someAppItemActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AppItemActionType]) for enum values.
-	)
-	# OPTIONAL
-	clauseItems = @(
-		@{
-			# OPTIONAL
-			fieldName = $someString
-			# OPTIONAL
-			value = $someString
-			# REQUIRED
-			operatorType = $someSqlOperatorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SqlOperatorType]) for enum values.
-		}
-	)
-	# OPTIONAL
-	searchTerm = $someString
-}
-# OPTIONAL
-$query.Var.sortBy = $someString
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.fieldNames = @(
-	$someString
-)"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // downloadSapHanaSnapshot(input: DownloadSapHanaSnapshotInput!): AsyncRequestStatus!
         internal void InitMutationDownloadSapHanaSnapshot()
         {
@@ -2970,36 +2699,6 @@ $query.Var.downloadFilter = @{
 $query.Var.input = @{
 	# REQUIRED
 	huntId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // downloadVcdVappSnapshotFromLocation(input: DownloadVcdVappSnapshotFromLocationInput!): AsyncRequestStatus!
-        internal void InitMutationDownloadVcdVappSnapshotFromLocation()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DownloadVcdVappSnapshotFromLocationInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDownloadVcdVappSnapshotFromLocation",
-                "($input: DownloadVcdVappSnapshotFromLocationInput!)",
-                "AsyncRequestStatus",
-                Mutation.DownloadVcdVappSnapshotFromLocation,
-                Mutation.DownloadVcdVappSnapshotFromLocationFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	downloadConfig = @{
-		# OPTIONAL
-		slaId = $someString
-	}
-	# REQUIRED
-	locationId = $someString
-	# REQUIRED
-	snapshotId = $someString
 }"
             );
         }

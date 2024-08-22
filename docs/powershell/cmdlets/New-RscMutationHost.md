@@ -1,13 +1,5 @@
 # New-RscMutationHost
 ## Subcommands
-### bulkcopyautomigratablenas
-Register NAS systems corresponding to CDM NAS hosts
-
-Supported in v8.1+
-Create NAS systems and child objects for auto-migratable NAS Hosts.
-
-- There is a single argument of type BulkCopyAutomigratableNasHostsInput.
-- Returns BulkCopyAutomigratableNasHostsReply.
 ### bulkdelete
 - There is a single argument of type BulkDeleteHostInput.
 - Returns ResponseSuccess.

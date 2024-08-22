@@ -3,11 +3,14 @@ Type of hierarchy object.
 
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
 - K8S_CLUSTER - Kubernetes cluster.
+- MYSQLDB_DATABASE - MySQL Database.
+- M365_BACKUP_STORAGE_GROUP - M365 Backup Storage Group.
 - KuprNamespace
 - HostShare
 - SALESFORCE_OBJECT - Salesforce object.
 - MssqlDatabaseBatchMaintenance
 - OracleRac
+- MYSQLDB_INSTANCE - MySQL Instance.
 - NUTANIX_CATEGORY - Nutanix Category.
 - VcdOrg
 - O365Teams
@@ -28,6 +31,8 @@ Type of hierarchy object.
 - MONGO_COLLECTION - MongoDB Collection.
 - SAP_HANA_SYSTEM - SAP HANA System.
 - RubrikEc2Instance
+- M365_BACKUP_STORAGE_ORG - M365 Backup Storage Organization.
+- M365_BACKUP_STORAGE_MAILBOX - M365 Backup Storage Mailbox.
 - O365Group
 - FilesetTemplate
 - MONGO_COLLECTION_SET - MongoDB Database.
@@ -98,6 +103,7 @@ Type of hierarchy object.
 - LinuxFileset
 - O365Site
 - SALESFORCE_ORGANIZATION - Salesforce organization.
+- M365_BACKUP_STORAGE_USER - M365 Backup Storage User.
 - RubrikEbsVolume
 - NasShare
 - VcdVapp
@@ -105,11 +111,13 @@ Type of hierarchy object.
 - VSphereTag
 - ExchangeDatabase - Exchange Database.
 - MssqlAvailabilityGroup
+- M365_BACKUP_STORAGE_SITE - M365 Backup Storage Sharepoint Site.
 - VSPHERE_CONTENT_LIBRARY - VSphere Content Library.
 - Blueprint
 - VcdVimServer
 - MONGO_DATABASE - MongoDB Database.
 - Ec2Instance
+- CONFLUENCE_SPACE - Confluence space.
 - NUTANIX_ERA - Nutanix Era.
 - ORCHESTRATED_APPLICATION_RECOVERY_BLUEPRINT - Orchestrated Application Recovery Blueprint.
 - HypervCluster
@@ -128,6 +136,7 @@ Type of hierarchy object.
 - EXCHANGE_DAG - Exchange DAG.
 - FAILOVER_CLUSTER_APP - Failover Cluster App.
 - VSphereHost
+- M365_BACKUP_STORAGE_ONEDRIVE - M365 Backup Storage Onedrive.
 - SapHanaDatabase - SAP HANA Database.
 - GcpNativeDisk
 - NutanixCluster

@@ -27,3 +27,5 @@ Object-specific configurations.
   - Input to configure the SLA Domain for Managed Volume.
 - postgresDbClusterSlaConfigInput: PostgresDbClusterSlaConfigInput
   - Input to configure the SLA Domain for Postgres DB Cluster.
+- mysqldbConfigInput: MysqldbSlaConfigInput
+  - Input to configure the SLA Domain for MySQL.

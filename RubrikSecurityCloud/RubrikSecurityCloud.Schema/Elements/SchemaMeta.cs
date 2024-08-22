@@ -8372,9 +8372,11 @@ namespace RubrikSecurityCloud.Types
             allAzureRegionsWithAzDetails,
             allAzureResourceGroups,
             allAzureSqlDatabaseServerElasticPools,
+            allAzureStorageAccounts,
             allAzureStorageAccountsByRegion,
             allAzureSubnets,
             allAzureSubscriptionWithExocomputeMappings,
+            allAzureVnets,
             allBackupThrottleSettings,
             allCdmGuestCredentials,
             allCdmOvaDetails,
@@ -8388,6 +8390,7 @@ namespace RubrikSecurityCloud.Types
             allCloudNativeLabelValues,
             allCloudNativeTagKeys,
             allCloudNativeTagValues,
+            allClusterConnection,
             allClusterGlobalSlas,
             allClusterReplicationTargets,
             allClusterWebCertsAndIpmis,
@@ -8549,6 +8552,8 @@ namespace RubrikSecurityCloud.Types
             azureO365ValidateUserRoles,
             azureOauthConsentComplete,
             azureOauthConsentKickoff,
+            azureRegions,
+            azureResourceGroups,
             azureSqlDatabase,
             azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure,
             azureSqlDatabaseServer,
@@ -9135,6 +9140,7 @@ namespace RubrikSecurityCloud.Types
             k8sProtectionSetSnapshots,
             k8sSnapshotInfo,
             knowledgeBaseArticle,
+            kubernetesCluster,
             kubernetesClusters,
             kubernetesProtectionSet,
             kubernetesProtectionSets,
@@ -10536,7 +10542,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureRegions,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "Regions",
+                        cmdletSwitchName: "AzureRegions",
                         gqlRootFieldName: "allAzureRegions"
                     )
                 },
@@ -10565,6 +10571,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.allAzureStorageAccounts,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AzureStorageAccounts",
+                        gqlRootFieldName: "allAzureStorageAccounts"
+                    )
+                },
+                {
                     GqlRootFieldName.allAzureStorageAccountsByRegion,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
@@ -10586,6 +10600,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryAzure",
                         cmdletSwitchName: "SubscriptionWithExocomputeMappings",
                         gqlRootFieldName: "allAzureSubscriptionWithExocomputeMappings"
+                    )
+                },
+                {
+                    GqlRootFieldName.allAzureVnets,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AzureVnets",
+                        gqlRootFieldName: "allAzureVnets"
                     )
                 },
                 {
@@ -10690,6 +10712,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryCloudNative",
                         cmdletSwitchName: "TagValues",
                         gqlRootFieldName: "allCloudNativeTagValues"
+                    )
+                },
+                {
+                    GqlRootFieldName.allClusterConnection,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "ClusterList",
+                        gqlRootFieldName: "allClusterConnection"
                     )
                 },
                 {
@@ -11184,7 +11214,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allResourceGroupsFromAzure,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "ResourceGroups",
+                        cmdletSwitchName: "ResourceGroupsFromAzure",
                         gqlRootFieldName: "allResourceGroupsFromAzure"
                     )
                 },
@@ -11978,6 +12008,22 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationAzure",
                         cmdletSwitchName: "OauthConsentKickoff",
                         gqlRootFieldName: "azureOauthConsentKickoff"
+                    )
+                },
+                {
+                    GqlRootFieldName.azureRegions,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "Regions",
+                        gqlRootFieldName: "azureRegions"
+                    )
+                },
+                {
+                    GqlRootFieldName.azureResourceGroups,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "ResourceGroups",
+                        gqlRootFieldName: "azureResourceGroups"
                     )
                 },
                 {
@@ -16616,7 +16662,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.k8sCluster,
                     new RscOp(
                         cmdletName: "New-RscQueryK8s",
-                        cmdletSwitchName: "Cluster",
+                        cmdletSwitchName: "K8sCluster",
                         gqlRootFieldName: "k8sCluster"
                     )
                 },
@@ -16624,7 +16670,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.k8sClusters,
                     new RscOp(
                         cmdletName: "New-RscQueryK8s",
-                        cmdletSwitchName: "Clusters",
+                        cmdletSwitchName: "K8sClusters",
                         gqlRootFieldName: "k8sClusters"
                     )
                 },
@@ -16669,26 +16715,34 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.kubernetesCluster,
+                    new RscOp(
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "Cluster",
+                        gqlRootFieldName: "kubernetesCluster"
+                    )
+                },
+                {
                     GqlRootFieldName.kubernetesClusters,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "Kubernetes",
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "Clusters",
                         gqlRootFieldName: "kubernetesClusters"
                     )
                 },
                 {
                     GqlRootFieldName.kubernetesProtectionSet,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "KubernetesProtectionSet",
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "ProtectionSet",
                         gqlRootFieldName: "kubernetesProtectionSet"
                     )
                 },
                 {
                     GqlRootFieldName.kubernetesProtectionSets,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "KubernetesProtectionSets",
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "ProtectionSets",
                         gqlRootFieldName: "kubernetesProtectionSets"
                     )
                 },
@@ -22712,7 +22766,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureNsgs
                 },
                 {
-                    "New-RscQueryAzure -Op Regions",
+                    "New-RscQueryAzure -Op AzureRegions",
                     GqlRootFieldName.allAzureRegions
                 },
                 {
@@ -22728,6 +22782,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureSqlDatabaseServerElasticPools
                 },
                 {
+                    "New-RscQueryAzure -Op AzureStorageAccounts",
+                    GqlRootFieldName.allAzureStorageAccounts
+                },
+                {
                     "New-RscQueryAzure -Op StorageAccountsByRegion",
                     GqlRootFieldName.allAzureStorageAccountsByRegion
                 },
@@ -22738,6 +22796,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryAzure -Op SubscriptionWithExocomputeMappings",
                     GqlRootFieldName.allAzureSubscriptionWithExocomputeMappings
+                },
+                {
+                    "New-RscQueryAzure -Op AzureVnets",
+                    GqlRootFieldName.allAzureVnets
                 },
                 {
                     "New-RscQueryMisc -Op BackupThrottleSettings",
@@ -22790,6 +22852,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryCloudNative -Op TagValues",
                     GqlRootFieldName.allCloudNativeTagValues
+                },
+                {
+                    "New-RscQueryCluster -Op ClusterList",
+                    GqlRootFieldName.allClusterConnection
                 },
                 {
                     "New-RscQuerySla -Op ClusterGlobals",
@@ -23036,7 +23102,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allRcvPrivateEndpointConnections
                 },
                 {
-                    "New-RscQueryAzure -Op ResourceGroups",
+                    "New-RscQueryAzure -Op ResourceGroupsFromAzure",
                     GqlRootFieldName.allResourceGroupsFromAzure
                 },
                 {
@@ -23434,6 +23500,14 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationAzure -Op OauthConsentKickoff",
                     GqlRootFieldName.azureOauthConsentKickoff
+                },
+                {
+                    "New-RscQueryAzure -Op Regions",
+                    GqlRootFieldName.azureRegions
+                },
+                {
+                    "New-RscQueryAzure -Op ResourceGroups",
+                    GqlRootFieldName.azureResourceGroups
                 },
                 {
                     "New-RscQueryAzure -Op SqlDatabase",
@@ -25752,11 +25826,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.k8sAppManifest
                 },
                 {
-                    "New-RscQueryK8s -Op Cluster",
+                    "New-RscQueryK8s -Op K8sCluster",
                     GqlRootFieldName.k8sCluster
                 },
                 {
-                    "New-RscQueryK8s -Op Clusters",
+                    "New-RscQueryK8s -Op K8sClusters",
                     GqlRootFieldName.k8sClusters
                 },
                 {
@@ -25780,15 +25854,19 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.knowledgeBaseArticle
                 },
                 {
-                    "New-RscQueryCluster -Op Kubernetes",
+                    "New-RscQueryK8s -Op Cluster",
+                    GqlRootFieldName.kubernetesCluster
+                },
+                {
+                    "New-RscQueryK8s -Op Clusters",
                     GqlRootFieldName.kubernetesClusters
                 },
                 {
-                    "New-RscQueryMisc -Op KubernetesProtectionSet",
+                    "New-RscQueryK8s -Op ProtectionSet",
                     GqlRootFieldName.kubernetesProtectionSet
                 },
                 {
-                    "New-RscQueryMisc -Op KubernetesProtectionSets",
+                    "New-RscQueryK8s -Op ProtectionSets",
                     GqlRootFieldName.kubernetesProtectionSets
                 },
                 {
@@ -41089,6 +41167,9 @@ namespace RubrikSecurityCloud.Types
                     "AddCloudAccountExocomputeConfigurations",
                     "AddCloudAccountWithoutOauth",
                     "ArmTemplatesByFeature",
+                    "AzureRegions",
+                    "AzureStorageAccounts",
+                    "AzureVnets",
                     "BackupAdDirectory",
                     "BlobContainersByStorageAccount",
                     "CdmVersions",
@@ -41133,6 +41214,7 @@ namespace RubrikSecurityCloud.Types
                     "Regions",
                     "RegionsWithAzDetails",
                     "ResourceGroups",
+                    "ResourceGroupsFromAzure",
                     "RestoreAdObjectsWithPasswords",
                     "SearchAdSnapshot",
                     "SetCloudAccountCustomerAppCredentials",
@@ -41331,6 +41413,7 @@ namespace RubrikSecurityCloud.Types
                     "AddClusterRoute",
                     "AddNodesToCloud",
                     "Cluster",
+                    "ClusterList",
                     "ComputeClusterStatus",
                     "Connected",
                     "DefaultGateway",
@@ -41344,7 +41427,6 @@ namespace RubrikSecurityCloud.Types
                     "Ipmi",
                     "Ipv6Mode",
                     "IsTotpAckNecessary",
-                    "Kubernetes",
                     "LicensesForClusterProductSummary",
                     "List",
                     "Missing",
@@ -41639,9 +41721,13 @@ namespace RubrikSecurityCloud.Types
                     "DeleteProtectionSet",
                     "ExportNamespace",
                     "ExportProtectionSetSnapshot",
+                    "K8sCluster",
+                    "K8sClusters",
                     "Namespace",
                     "Namespaces",
+                    "ProtectionSet",
                     "ProtectionSetSnapshots",
+                    "ProtectionSets",
                     "RefreshCluster",
                     "RefreshV2Cluster",
                     "ReplicaSnapshotInfos",
@@ -41854,8 +41940,6 @@ namespace RubrikSecurityCloud.Types
                     "IssuesJobIds",
                     "JobInfo",
                     "KnowledgeBaseArticle",
-                    "KubernetesProtectionSet",
-                    "KubernetesProtectionSets",
                     "LambdaSettings",
                     "LicensedProducts",
                     "ListCidrsForComputeSetting",
