@@ -53,7 +53,13 @@ function Get-RscVmwareVm {
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
         )]
-        [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla
+        [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true,
+            ParameterSetName = "Name"
+        )]
+        [RubrikSecurityCloud.Types.Cluster]$Cluster
     )
     
     Process {
@@ -75,6 +81,7 @@ function Get-RscVmwareVm {
             $query.Field.GuestOsName = "TACOS"
             $query.Field.AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
             $query.Field.AgentStatus.AgentStatusField = New-Object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
+            $query.Field.snapshotConsistencyMandate = New-Object -TypeName [RubrikSecurityCloud.Types.ConsistencyLevelEnum]::CRASH_CONSISTENT
             $result = Invoke-Rsc -Query $query
             $result
         } else {
@@ -85,7 +92,8 @@ function Get-RscVmwareVm {
             $query.Field.Nodes.Cluster.id = "PIZZA"
             $query.Field.Nodes[0].GuestOsName = "TACOS"
             $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
-            $query.Field.Nodes[0].AgentStatus.AgentStatusField = New-Object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
+            $query.Field.Nodes[0].AgentStatus.AgentStatusField = New-Object -TypeName RubrikSecurityCloud.Types.AgentConnectionStatus
+            $query.Field.Nodes[0].snapshotConsistencyMandate = [RubrikSecurityCloud.Types.ConsistencyLevelEnum]::CRASH_CONSISTENT
             if ($Name) {
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 # Regex filter doesn't work in the API right now, but we're going to play pretend. 
@@ -108,7 +116,14 @@ function Get-RscVmwareVm {
                 $query.var.filter += $slaFilter
             }
 
-            if ($Relic.IsPresent) {
+            if ($Cluster) {
+                $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
+                $clusterFilter.Texts = $Cluster.id
+                $query.var.filter += $clusterFilter
+            }
+
+            if ($PSBoundParameters.ContainsKey('relic')) {
                 $relicFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $relicFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_RELIC
                 $relicFilter.Texts = $Relic
