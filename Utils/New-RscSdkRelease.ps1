@@ -111,7 +111,8 @@ Write-Host $versionEntry -ForegroundColor Cyan
 
 # Make sure this version tag is not already published:
 $existingTag = gh release list --json tagName --jq ".[] | select(.tagName == `"$versionTag`")"
-if ($existingTag -ne "") {
+$existingTag = $existingTag.Trim()
+if ( -not [string]::IsNullOrEmpty($existingTag)) {
     throw "Version tag $versionTag already exists in the GitHub repository."
 }
 
