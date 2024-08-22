@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("eventType")]
         public CalendarEventType? EventType { get; set; }
 
+        //      C# -> ExchangeItemHierarchyType? HierarchyType
+        // GraphQL -> hierarchyType: ExchangeItemHierarchyType! (enum)
+        [JsonProperty("hierarchyType")]
+        public ExchangeItemHierarchyType? HierarchyType { get; set; }
+
         //      C# -> List<System.String>? Attendees
         // GraphQL -> attendees: [String!]! (scalar)
         [JsonProperty("attendees")]
@@ -40,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> DateTime? LastModifiedDateTime
+        // GraphQL -> lastModifiedDateTime: DateTime (scalar)
+        [JsonProperty("lastModifiedDateTime")]
+        public DateTime? LastModifiedDateTime { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
@@ -92,9 +102,11 @@ namespace RubrikSecurityCloud.Types
 
     public O365CalendarEvent Set(
         CalendarEventType? EventType = null,
+        ExchangeItemHierarchyType? HierarchyType = null,
         List<System.String>? Attendees = null,
         DateTime? EndDateTime = null,
         System.String? Id = null,
+        DateTime? LastModifiedDateTime = null,
         System.String? Name = null,
         System.String? Organizer = null,
         System.String? ParentFolderId = null,
@@ -108,6 +120,9 @@ namespace RubrikSecurityCloud.Types
         if ( EventType != null ) {
             this.EventType = EventType;
         }
+        if ( HierarchyType != null ) {
+            this.HierarchyType = HierarchyType;
+        }
         if ( Attendees != null ) {
             this.Attendees = Attendees;
         }
@@ -116,6 +131,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( LastModifiedDateTime != null ) {
+            this.LastModifiedDateTime = LastModifiedDateTime;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -164,6 +182,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "eventType\n" ;
             }
         }
+        //      C# -> ExchangeItemHierarchyType? HierarchyType
+        // GraphQL -> hierarchyType: ExchangeItemHierarchyType! (enum)
+        if (this.HierarchyType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hierarchyType\n" ;
+            } else {
+                s += ind + "hierarchyType\n" ;
+            }
+        }
         //      C# -> List<System.String>? Attendees
         // GraphQL -> attendees: [String!]! (scalar)
         if (this.Attendees != null) {
@@ -189,6 +216,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> DateTime? LastModifiedDateTime
+        // GraphQL -> lastModifiedDateTime: DateTime (scalar)
+        if (this.LastModifiedDateTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastModifiedDateTime\n" ;
+            } else {
+                s += ind + "lastModifiedDateTime\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -290,6 +326,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.EventType = null;
         }
+        //      C# -> ExchangeItemHierarchyType? HierarchyType
+        // GraphQL -> hierarchyType: ExchangeItemHierarchyType! (enum)
+        if (ec.Includes("hierarchyType",true))
+        {
+            if(this.HierarchyType == null) {
+
+                this.HierarchyType = new ExchangeItemHierarchyType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HierarchyType != null && ec.Excludes("hierarchyType",true))
+        {
+            this.HierarchyType = null;
+        }
         //      C# -> List<System.String>? Attendees
         // GraphQL -> attendees: [String!]! (scalar)
         if (ec.Includes("attendees",true))
@@ -340,6 +393,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> DateTime? LastModifiedDateTime
+        // GraphQL -> lastModifiedDateTime: DateTime (scalar)
+        if (ec.Includes("lastModifiedDateTime",true))
+        {
+            if(this.LastModifiedDateTime == null) {
+
+                this.LastModifiedDateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastModifiedDateTime != null && ec.Excludes("lastModifiedDateTime",true))
+        {
+            this.LastModifiedDateTime = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)

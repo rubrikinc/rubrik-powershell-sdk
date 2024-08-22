@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         FIRST_DAY,
 
         [EnumMember(Value = "LAST_DAY")]
-        LAST_DAY
+        LAST_DAY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DayOfQuarter

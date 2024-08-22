@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         PRIVATE,
 
         [EnumMember(Value = "REPLICATION_SETUP_TYPE_UNSPECIFIED")]
-        REPLICATION_SETUP_TYPE_UNSPECIFIED
+        REPLICATION_SETUP_TYPE_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ReplicationSetupType

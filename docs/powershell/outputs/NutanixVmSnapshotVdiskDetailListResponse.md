@@ -1,11 +1,15 @@
 ### NutanixVmSnapshotVdiskDetailListResponse
-
+Supported in v9.2+
 
 - data: list of NutanixVmSnapshotVdiskDetails
-  - List of matching objects.
+  - Supported in v9.2+
+  List of matching objects.
 - total: System.Int32
-  - Total list responses.
+  - Supported in v9.2+
+  Total list responses.
 - nextCursor: System.String
-  - Cursor to retrieve the next set of results.
+  - Supported in v9.2+
+  Cursor to retrieve the next set of results.
 - hasMore: System.Boolean
-  - If there is more.
+  - Supported in v9.2+
+  If there is more.

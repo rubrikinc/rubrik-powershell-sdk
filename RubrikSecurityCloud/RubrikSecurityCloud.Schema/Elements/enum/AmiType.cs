@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         EXISTING,
 
         [EnumMember(Value = "USER_SPECIFIED")]
-        USER_SPECIFIED
+        USER_SPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AmiType

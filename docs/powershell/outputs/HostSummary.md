@@ -6,19 +6,19 @@ Supported in v5.0+
   Deprecated. Please use 'name' instead.
 - id: System.String
   - Required. Supported in v5.0+
-  v5.0-v5.2: 
+  v5.0-v5.2:
   v5.3+: Unique identifier for host.
 - name: System.String
   - Supported in v5.0+
-  v5.0-v5.2: 
+  v5.0-v5.2:
   v5.3+: IP address or hostname of the host.
 - operatingSystem: System.String
   - Supported in v5.0+
-  v5.0-v5.2: 
+  v5.0-v5.2:
   v5.3+: Operating system of the host. One of Windows, Linux, AIX, HPUX, and SunOS.
 - operatingSystemType: System.String
   - Supported in v5.0+
-  v5.0-v5.2: 
+  v5.0-v5.2:
   v5.3+: The operating system of the host. Possible choices are Windows, Linux, AIX, HPUX, SunOS.
 - organizationId: System.String
   - Supported in v5.0+
@@ -28,13 +28,13 @@ Supported in v5.0+
   The name of the organization to which the host is assigned (set by envoy).
 - primaryClusterId: System.String
   - Supported in v5.0+
-  v5.0-v5.2: 
+  v5.0-v5.2:
   v5.3+: ID of the Rubrik cluster to which the host belongs.
 - status: System.String
   - Supported in v5.0+
-  v5.0-v5.2: 
+  v5.0-v5.2:
   v5.3-v9.1: Specifies the connect status for the host. Status is Refreshing while discovery is running or Connected once discovery was successful and the host is available.
-  v9.2: This field is deprecated, use statusEnum field instead.
+  v9.2+: This field is deprecated, use statusEnum field instead.
 - alias: System.String
   - Supported in v5.1+
   A user-specified string that returns this host in searches.
@@ -58,5 +58,5 @@ Supported in v5.0+
 - nasBaseConfig: NasBaseConfig
   - Supported in v5.0+
 - volumeGroupInfo: VolumeGroupDetailInfo
-  - Supported in v9.2
+  - Supported in v9.2+
   Volume Group info for the host if applicable.

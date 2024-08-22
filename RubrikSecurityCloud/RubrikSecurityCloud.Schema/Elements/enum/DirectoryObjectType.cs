@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         UNSPECIFIED,
 
         [EnumMember(Value = "USER")]
-        USER
+        USER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DirectoryObjectType

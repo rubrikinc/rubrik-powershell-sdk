@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
         //      C# -> System.String? Endpoint
         // GraphQL -> endpoint: String! (scalar)
         [JsonProperty("endpoint")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CloudDirectSite Set(
+        System.String? ClusterUuid = null,
         System.String? Endpoint = null,
         System.String? Id = null,
         System.String? Name = null
     ) 
     {
+        if ( ClusterUuid != null ) {
+            this.ClusterUuid = ClusterUuid;
+        }
         if ( Endpoint != null ) {
             this.Endpoint = Endpoint;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
+        }
         //      C# -> System.String? Endpoint
         // GraphQL -> endpoint: String! (scalar)
         if (this.Endpoint != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (ec.Includes("clusterUuid",true))
+        {
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
+        }
         //      C# -> System.String? Endpoint
         // GraphQL -> endpoint: String! (scalar)
         if (ec.Includes("endpoint",true))

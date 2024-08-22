@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         REFRESHING,
 
         [EnumMember(Value = "UNKNOWN_SYSTEM_STATUS")]
-        UNKNOWN_SYSTEM_STATUS
+        UNKNOWN_SYSTEM_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MongodbSourceStatus

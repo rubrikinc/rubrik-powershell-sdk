@@ -58,7 +58,10 @@ namespace RubrikSecurityCloud.Types
         IO_FILTER_STATUS_UPGRADE_ERROR,
 
         [EnumMember(Value = "IO_FILTER_STATUS_UPGRADE_IN_PROGRESS")]
-        IO_FILTER_STATUS_UPGRADE_IN_PROGRESS
+        IO_FILTER_STATUS_UPGRADE_IN_PROGRESS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum IoFilterStatus

@@ -54,4 +54,8 @@
   - Represents number of children at each level.
 - type: System.String
   - Represents data type of column for databases.
+- creationTime: System.Int64
+  - Represents the creation time of the file.
+- lastScanTime: System.Int64
+  - Represents the last scan time of the file.
 - snappable: HierarchyObject

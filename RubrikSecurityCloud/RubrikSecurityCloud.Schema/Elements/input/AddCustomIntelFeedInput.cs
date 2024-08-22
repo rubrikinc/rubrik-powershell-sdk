@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("description")]
         public System.String? Description { get; set; }
 
+        //      C# -> System.String? UserId
+        // GraphQL -> userId: String (scalar)
+        [JsonProperty("userId")]
+        public System.String? UserId { get; set; }
+
         //      C# -> List<CustomEntries>? Entries
         // GraphQL -> entries: [CustomEntries!]! (input)
         [Required]

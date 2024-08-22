@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ADMINISTRATIVE_UNLOCK,
 
         [EnumMember(Value = "UNLOCK_REASON_UNSPECIFIED")]
-        UNLOCK_REASON_UNSPECIFIED
+        UNLOCK_REASON_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum LdapUnlockReason

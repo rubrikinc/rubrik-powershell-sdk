@@ -1,9 +1,12 @@
 ### NutanixVmSnapshotVdiskDetail
-
+Supported in v9.2+
 
 - vmDiskUuid: System.String
-  - UUID of the virtual machine disk.
+  - Supported in v9.2+
+  UUID of the virtual machine disk.
 - label: System.String
-  - Label of the disk assigned by Nutanix.
+  - Supported in v9.2+
+  Label of the disk assigned by Nutanix.
 - sizeInBytes: System.Int64
-  - Size of the virtual disk in bytes.
+  - Supported in v9.2+
+  Size of the virtual disk in bytes.

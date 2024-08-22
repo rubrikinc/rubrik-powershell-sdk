@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         VSPHERE,
 
         [EnumMember(Value = "WINDOWS_VOLUME_GROUP")]
-        WINDOWS_VOLUME_GROUP
+        WINDOWS_VOLUME_GROUP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnapshotFileDownloadSnappableType

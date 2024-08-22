@@ -317,6 +317,8 @@ namespace RubrikSecurityCloud.Types
 
         public RscGqlVars MissedSnapshotGroupByConnection { get; set; }
 
+        public RscGqlVars NewestSnapshot { get; set; }
+
         public RscGqlVars SnapshotConnection { get; set; }
 
         public RscGqlVars SnapshotGroupByConnection { get; set; }
@@ -343,6 +345,11 @@ namespace RubrikSecurityCloud.Types
                 };
             this.MissedSnapshotGroupByConnection =
                 new RscGqlVars(null, missedSnapshotGroupByConnectionArgs, null, true);
+            Tuple<string, string>[] newestSnapshotArgs = {
+                    Tuple.Create("beforeTime", "DateTime"),
+                };
+            this.NewestSnapshot =
+                new RscGqlVars(null, newestSnapshotArgs, null, true);
             Tuple<string, string>[] snapshotConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -1080,7 +1087,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "newestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "newestSnapshot" + "\n(" + this.Vars.NewestSnapshot.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

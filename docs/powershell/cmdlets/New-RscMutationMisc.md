@@ -142,7 +142,7 @@ Delete guest OS credentials.
 Delete intel feed.
 
 - There is a single argument of type DeleteIntelFeedInput.
-- Returns DeleteIntelFeedReply.
+- Returns System.String.
 ### deletevolumegroupmount
 Requst to delete a mount
 
@@ -251,6 +251,11 @@ Migrate the primary cluster with which the agent is able to perform regular oper
 
 - There is a single argument of type MakePrimaryInput.
 - Returns AsyncRequestStatus.
+### manageprotectionforlinkedobjects
+Manage protection for linked objects, allowing objects to be linked or unlinked and allow changes in SLA Domain assignment for linked objects.
+
+- There is a single argument of type ManageProtectionForLinkedObjectsInput.
+- Returns CreateOnDemandJobReply.
 ### modifyeventdigestbatch
 Modify event digests for specific recipients.
 
@@ -508,7 +513,7 @@ Log in to the Rubrik Support portal using username and password.
 Moves an M365 organization product from day-to-day mode to onboarding mode.
 
 - There is a single argument of type SwitchProductToOnboardingModeInput.
-- Returns SwitchProductToOnboardingModeReply.
+- Returns System.String.
 ### triggercloudcomputeconnectivitycheck
 Trigger cloud compute connectivity check
 
@@ -595,7 +600,7 @@ Updates the Azure app for the specified account with specified permissions in an
 Update custom intel feed.
 
 - There is a single argument of type UpdateCustomIntelFeedInput.
-- Returns UpdateCustomIntelFeedReply.
+- Returns System.String.
 ### updatedistributionlistdigest
 Update specific distribution list digests.
 
@@ -629,6 +634,11 @@ Toggle the dismissed state of an insight.
 
 - There is a single argument of type UpdateInsightStateInput.
 - Returns UpdateInsightStateReply.
+### updateiocstatus
+Update IOC status.
+
+- There is a single argument of type list of UpdateIocStatusInputs.
+- Returns System.String.
 ### updateipwhitelist
 - There are 2 arguments.
     - whitelistMode - WhitelistModeEnum

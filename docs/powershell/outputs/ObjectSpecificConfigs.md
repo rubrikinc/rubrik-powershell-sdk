@@ -27,3 +27,5 @@ Object-specific configurations.
   - SLA Domain configuration for Managed Volume object.
 - postgresDbClusterSlaConfig: PostgresDbClusterSlaConfig
   - SLA Domain configuration for Postgres DB Cluster object.
+- mysqldbSlaConfig: MysqldbSlaConfig
+  - SLA Domain configuration for MySQL object.

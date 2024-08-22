@@ -46,7 +46,10 @@ namespace RubrikSecurityCloud.Types
         JOB_SUCCEEDED,
 
         [EnumMember(Value = "JOB_UNDOING")]
-        JOB_UNDOING
+        JOB_UNDOING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CdmJobStatus

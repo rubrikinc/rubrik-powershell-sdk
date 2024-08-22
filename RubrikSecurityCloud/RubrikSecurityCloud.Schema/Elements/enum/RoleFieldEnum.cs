@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ASSIGNMENT,
 
         [EnumMember(Value = "Name")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RoleFieldEnum

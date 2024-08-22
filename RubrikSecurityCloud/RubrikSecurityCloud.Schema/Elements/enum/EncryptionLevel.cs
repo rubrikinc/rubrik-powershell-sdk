@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         MEDIUM,
 
         [EnumMember(Value = "UNAVAILABLE")]
-        UNAVAILABLE
+        UNAVAILABLE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum EncryptionLevel

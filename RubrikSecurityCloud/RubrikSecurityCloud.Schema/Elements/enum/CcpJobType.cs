@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         REMOVE_NODE,
 
         [EnumMember(Value = "REPLACE_NODE")]
-        REPLACE_NODE
+        REPLACE_NODE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CcpJobType

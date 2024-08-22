@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         M6I_4XLARGE,
 
         [EnumMember(Value = "M6I_8XLARGE")]
-        M6I_8XLARGE
+        M6I_8XLARGE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsInstanceType

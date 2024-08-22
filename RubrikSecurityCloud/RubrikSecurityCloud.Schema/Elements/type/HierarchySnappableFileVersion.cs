@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
 
+        //      C# -> DateTime? SnapshotTime
+        // GraphQL -> snapshotTime: DateTime (scalar)
+        [JsonProperty("snapshotTime")]
+        public DateTime? SnapshotTime { get; set; }
+
         //      C# -> QuarantineInfo? QuarantineInfo
         // GraphQL -> quarantineInfo: QuarantineInfo (type)
         [JsonProperty("quarantineInfo")]
@@ -70,6 +75,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? LastModified = null,
         System.Int64? Size = null,
         System.String? SnapshotId = null,
+        DateTime? SnapshotTime = null,
         QuarantineInfo? QuarantineInfo = null,
         CdmSnapshot? Snapshot = null
     ) 
@@ -88,6 +94,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotId != null ) {
             this.SnapshotId = SnapshotId;
+        }
+        if ( SnapshotTime != null ) {
+            this.SnapshotTime = SnapshotTime;
         }
         if ( QuarantineInfo != null ) {
             this.QuarantineInfo = QuarantineInfo;
@@ -152,6 +161,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotId\n" ;
             } else {
                 s += ind + "snapshotId\n" ;
+            }
+        }
+        //      C# -> DateTime? SnapshotTime
+        // GraphQL -> snapshotTime: DateTime (scalar)
+        if (this.SnapshotTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotTime\n" ;
+            } else {
+                s += ind + "snapshotTime\n" ;
             }
         }
         //      C# -> QuarantineInfo? QuarantineInfo
@@ -269,6 +287,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
         {
             this.SnapshotId = null;
+        }
+        //      C# -> DateTime? SnapshotTime
+        // GraphQL -> snapshotTime: DateTime (scalar)
+        if (ec.Includes("snapshotTime",true))
+        {
+            if(this.SnapshotTime == null) {
+
+                this.SnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotTime != null && ec.Excludes("snapshotTime",true))
+        {
+            this.SnapshotTime = null;
         }
         //      C# -> QuarantineInfo? QuarantineInfo
         // GraphQL -> quarantineInfo: QuarantineInfo (type)

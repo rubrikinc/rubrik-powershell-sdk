@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         INTERFACE_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "MANAGEMENT")]
-        MANAGEMENT
+        MANAGEMENT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ReplicationInterfaceType

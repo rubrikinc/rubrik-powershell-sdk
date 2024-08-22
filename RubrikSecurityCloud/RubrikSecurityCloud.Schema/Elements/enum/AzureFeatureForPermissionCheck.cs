@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         AZURE_LIST_AVAILABILITY_SET,
 
         [EnumMember(Value = "AZURE_UNSPECIFIED")]
-        AZURE_UNSPECIFIED
+        AZURE_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureFeatureForPermissionCheck

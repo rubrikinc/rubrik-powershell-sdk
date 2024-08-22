@@ -220,6 +220,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.ebsVolumeRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -313,6 +315,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		relic = $someBoolean
     /// 	}
     /// 	# OPTIONAL
+    /// 	unaccessedFilter = @{
+    /// 		# REQUIRED
+    /// 		unaccessed = $someBoolean
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	sensitivityStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		sensitivityStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	protectionStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		protectionStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	tagFilter = @{
     /// 		# REQUIRED
     /// 		tagFilterParams = @(
@@ -334,6 +355,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// }
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -402,6 +425,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.ec2InstanceRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -480,6 +505,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
+    /// 	unaccessedFilter = @{
+    /// 		# REQUIRED
+    /// 		unaccessed = $someBoolean
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	sensitivityStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		sensitivityStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	protectionStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		protectionStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	typeFilter = @{
     /// 		# REQUIRED
     /// 		ec2InstanceTypes = @(
@@ -530,6 +574,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// }
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1425,22 +1471,25 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
-        // awsNativeEbsVolume(ebsVolumeRubrikId: UUID!): AwsNativeEbsVolume!
+        // awsNativeEbsVolume(ebsVolumeRubrikId: UUID!, includeSecurityMetadata: Boolean): AwsNativeEbsVolume!
         internal void InitQueryAwsNativeEbsVolume()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("ebsVolumeRubrikId", "UUID!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeEbsVolume",
-                "($ebsVolumeRubrikId: UUID!)",
+                "($ebsVolumeRubrikId: UUID!,$includeSecurityMetadata: Boolean)",
                 "AwsNativeEbsVolume",
                 Query.AwsNativeEbsVolume,
                 Query.AwsNativeEbsVolumeFieldSpec,
                 @"# REQUIRED
-$query.Var.ebsVolumeRubrikId = $someString"
+$query.Var.ebsVolumeRubrikId = $someString
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -1453,6 +1502,7 @@ $query.Var.ebsVolumeRubrikId = $someString"
         //     sortBy: AwsNativeEbsVolumeSortFields
         //     sortOrder: SortOrder
         //     ebsVolumeFilters: AwsNativeEbsVolumeFilters
+        //     includeSecurityMetadata: Boolean
         //   ): AwsNativeEbsVolumeConnection!
         internal void InitQueryAwsNativeEbsVolumes()
         {
@@ -1464,12 +1514,13 @@ $query.Var.ebsVolumeRubrikId = $someString"
                 Tuple.Create("sortBy", "AwsNativeEbsVolumeSortFields"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("ebsVolumeFilters", "AwsNativeEbsVolumeFilters"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeEbsVolumes",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeFilters: AwsNativeEbsVolumeFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeFilters: AwsNativeEbsVolumeFilters,$includeSecurityMetadata: Boolean)",
                 "AwsNativeEbsVolumeConnection",
                 Query.AwsNativeEbsVolumes,
                 Query.AwsNativeEbsVolumesFieldSpec,
@@ -1540,6 +1591,25 @@ $query.Var.ebsVolumeFilters = @{
 		relic = $someBoolean
 	}
 	# OPTIONAL
+	unaccessedFilter = @{
+		# REQUIRED
+		unaccessed = $someBoolean
+	}
+	# OPTIONAL
+	sensitivityStatusFilter = @{
+		# REQUIRED
+		sensitivityStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	protectionStatusFilter = @{
+		# REQUIRED
+		protectionStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	tagFilter = @{
 		# REQUIRED
 		tagFilterParams = @(
@@ -1560,7 +1630,9 @@ $query.Var.ebsVolumeFilters = @{
 			$someString
 		)
 	}
-}"
+}
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -1611,22 +1683,25 @@ $query.Var.ebsVolumeName = $someString"
         }
 
         // Create new GraphQL Query:
-        // awsNativeEc2Instance(ec2InstanceRubrikId: UUID!): AwsNativeEc2Instance!
+        // awsNativeEc2Instance(ec2InstanceRubrikId: UUID!, includeSecurityMetadata: Boolean): AwsNativeEc2Instance!
         internal void InitQueryAwsNativeEc2Instance()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("ec2InstanceRubrikId", "UUID!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeEc2Instance",
-                "($ec2InstanceRubrikId: UUID!)",
+                "($ec2InstanceRubrikId: UUID!,$includeSecurityMetadata: Boolean)",
                 "AwsNativeEc2Instance",
                 Query.AwsNativeEc2Instance,
                 Query.AwsNativeEc2InstanceFieldSpec,
                 @"# REQUIRED
-$query.Var.ec2InstanceRubrikId = $someString"
+$query.Var.ec2InstanceRubrikId = $someString
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -1640,6 +1715,7 @@ $query.Var.ec2InstanceRubrikId = $someString"
         //     sortOrder: SortOrder
         //     descendantTypeFilter: [HierarchyObjectTypeEnum!]
         //     ec2InstanceFilters: AwsNativeEc2InstanceFilters
+        //     includeSecurityMetadata: Boolean
         //   ): AwsNativeEc2InstanceConnection!
         internal void InitQueryAwsNativeEc2Instances()
         {
@@ -1652,12 +1728,13 @@ $query.Var.ec2InstanceRubrikId = $someString"
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("descendantTypeFilter", "[HierarchyObjectTypeEnum!]"),
                 Tuple.Create("ec2InstanceFilters", "AwsNativeEc2InstanceFilters"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeEc2Instances",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$descendantTypeFilter: [HierarchyObjectTypeEnum!],$ec2InstanceFilters: AwsNativeEc2InstanceFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$descendantTypeFilter: [HierarchyObjectTypeEnum!],$ec2InstanceFilters: AwsNativeEc2InstanceFilters,$includeSecurityMetadata: Boolean)",
                 "AwsNativeEc2InstanceConnection",
                 Query.AwsNativeEc2Instances,
                 Query.AwsNativeEc2InstancesFieldSpec,
@@ -1713,6 +1790,25 @@ $query.Var.ec2InstanceFilters = @{
 		)
 	}
 	# OPTIONAL
+	unaccessedFilter = @{
+		# REQUIRED
+		unaccessed = $someBoolean
+	}
+	# OPTIONAL
+	sensitivityStatusFilter = @{
+		# REQUIRED
+		sensitivityStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	protectionStatusFilter = @{
+		# REQUIRED
+		protectionStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	typeFilter = @{
 		# REQUIRED
 		ec2InstanceTypes = @(
@@ -1762,7 +1858,9 @@ $query.Var.ec2InstanceFilters = @{
 			$someString
 		)
 	}
-}"
+}
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 

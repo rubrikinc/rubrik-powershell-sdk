@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SHARE_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "SMB")]
-        SMB
+        SMB,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DlpConfigShareType

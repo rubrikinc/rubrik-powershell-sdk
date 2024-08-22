@@ -49,7 +49,10 @@ namespace RubrikSecurityCloud.Types
         GCP_DISK,
 
         [EnumMember(Value = "GCP_GCE_INSTANCE")]
-        GCP_GCE_INSTANCE
+        GCP_GCE_INSTANCE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudNativeObjectType

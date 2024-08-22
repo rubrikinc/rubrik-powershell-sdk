@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         STORAGE,
 
         [EnumMember(Value = "TARGET_CLUSTER_NAME")]
-        TARGET_CLUSTER_NAME
+        TARGET_CLUSTER_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ReplicationPairsQuerySortByField

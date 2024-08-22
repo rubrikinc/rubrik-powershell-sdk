@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         SORT_UNSPECIFIED,
 
         [EnumMember(Value = "TIME")]
-        TIME
+        TIME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AdVolumeExportSortByField

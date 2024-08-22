@@ -2,6 +2,6 @@
 Indicator of Compromise.
 
 - iocKind: IndicatorOfCompromiseKind
-  - IOC kind.
+  - Specifies the ioc kind.
 - iocValue: System.String
-  - IOC value as a string.
+  - Specifies the ioc value.

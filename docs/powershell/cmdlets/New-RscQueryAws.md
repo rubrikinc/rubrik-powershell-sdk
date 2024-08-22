@@ -94,6 +94,11 @@ List of all AWS exocompute configurations filtered by a cloud account ID or a cl
 
 - There is a single argument of type System.String.
 - Returns list of AwsExocomputeConfigs.
+### exocomputegetclusterconnectioninfo
+Obtains the connection command and yaml which can be used to connect a customer-managed cluster to RSC.
+
+- There is a single argument of type AwsExocomputeGetClusterConnectionInput.
+- Returns AwsExocomputeGetClusterConnectionInfoReply.
 ### instanceprofilenames
 All Rubrik CC-ES instance profiles in the AWS account.
 

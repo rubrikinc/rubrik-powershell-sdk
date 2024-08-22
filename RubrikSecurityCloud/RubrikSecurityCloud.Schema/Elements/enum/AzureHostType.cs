@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         RUBRIK_HOST,
 
         [EnumMember(Value = "UNDEFINED")]
-        UNDEFINED
+        UNDEFINED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureHostType

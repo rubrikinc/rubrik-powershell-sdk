@@ -37,6 +37,8 @@ namespace RubrikSecurityCloud
         internal IRscLogger Logger = null;
         internal string OperationsDir = null;
         internal string CustomOperationsDir = null;
+        internal bool InvokedWithDebugFlag = false;
+        internal bool InvokedWithVerboseFlag = false;
 
         // temporary until Op becomes an RscOp
         internal RscOp? rscOp { get; set; } = null;
@@ -113,6 +115,18 @@ namespace RubrikSecurityCloud
             {
                 powerShell.AddCommand("Invoke-Rsc")
                     .AddParameter("Query", this);
+
+                // Check if the parent cmdlet is called with -Verbose and/or -Debug
+                if (this.InvokedWithVerboseFlag)
+                {
+                    powerShell.AddParameter("Verbose", true);
+                }
+
+                if (this.InvokedWithDebugFlag)
+                {
+                    powerShell.AddParameter("Debug", true);
+                }
+
                 var result = powerShell.Invoke();
                 return result;
             }

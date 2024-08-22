@@ -41,6 +41,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("kmsMasterKeyId")]
         public System.String? KmsMasterKeyId { get; set; }
 
+        //      C# -> TagsInput? BucketTags
+        // GraphQL -> bucketTags: TagsInput (input)
+        [JsonProperty("bucketTags")]
+        public TagsInput? BucketTags { get; set; }
+
+        //      C# -> System.Boolean? DeleteAllBucketTags
+        // GraphQL -> deleteAllBucketTags: Boolean (scalar)
+        [JsonProperty("deleteAllBucketTags")]
+        public System.Boolean? DeleteAllBucketTags { get; set; }
+
 
         #endregion
 

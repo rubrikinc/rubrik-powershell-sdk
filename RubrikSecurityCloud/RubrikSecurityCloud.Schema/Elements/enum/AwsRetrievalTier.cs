@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         EXPEDITED_TIER,
 
         [EnumMember(Value = "STANDARD_TIER")]
-        STANDARD_TIER
+        STANDARD_TIER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsRetrievalTier

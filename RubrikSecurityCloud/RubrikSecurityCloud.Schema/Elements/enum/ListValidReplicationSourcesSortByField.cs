@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         NAME,
 
         [EnumMember(Value = "SORT_BY_FIELD_UNSPECIFIED")]
-        SORT_BY_FIELD_UNSPECIFIED
+        SORT_BY_FIELD_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ListValidReplicationSourcesSortByField

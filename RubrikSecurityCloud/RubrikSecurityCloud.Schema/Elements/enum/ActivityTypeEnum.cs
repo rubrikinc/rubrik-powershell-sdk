@@ -190,7 +190,10 @@ namespace RubrikSecurityCloud.Types
         VCD,
 
         [EnumMember(Value = "VolumeGroup")]
-        VOLUME_GROUP
+        VOLUME_GROUP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ActivityTypeEnum

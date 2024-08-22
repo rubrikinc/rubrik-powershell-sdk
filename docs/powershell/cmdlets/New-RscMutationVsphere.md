@@ -10,7 +10,7 @@ Create a multi-tag filter for vSphere tags
 
 Supported in v7.0+
 v7.0-v9.1: Create a filter consisting of vSphere tags joined with logical operators.
-v9.2: Create a filter consisting of vSphere tags joined with logical operators. It is not supported onStandalone Hosts.
+v9.2+: Create a filter consisting of vSphere tags joined with logical operators. It is not supported onStandalone Hosts.
 
 - There is a single argument of type CreateVsphereAdvancedTagInput.
 - Returns CreateVsphereAdvancedTagReply.
@@ -19,7 +19,7 @@ Remove the multi-tag filter
 
 Supported in v7.0+
 v7.0-v9.1: Remove the multi-tag filter.
-v9.2: Remove the multi-tag filter. It is not supported on Standalone Hosts.
+v9.2+: Remove the multi-tag filter. It is not supported on Standalone Hosts.
 
 - There is a single argument of type DeleteVsphereAdvancedTagInput.
 - Returns RequestSuccess.
@@ -47,12 +47,33 @@ Export snapshot of a virtual machine to standalone ESXi server.
 ### ondemandsnapshot
 - There is a single argument of type VsphereOnDemandSnapshotInput.
 - Returns AsyncRequestStatus.
+### snapshotdownloadfilesfromlocation
+Initiate a job to download multiple files or folders
+
+Supported in v8.0+
+Initiates a job to download one or more files or folders from an archived virtual machine snapshot. Returns the job instance ID.
+
+- There is a single argument of type VsphereSnapshotDownloadFilesFromLocationInput.
+- Returns AsyncRequestStatus.
+### snapshotrestorefilesfromlocation
+Initiate a job to restore multiple files or folders
+
+Supported in v8.0+
+Initiates a job to restore one or more files or folders from an archived virtual machine snapshot. Returns the job instance ID.
+
+- There is a single argument of type VsphereSnapshotRestoreFilesFromLocationInput.
+- Returns AsyncRequestStatus.
 ### updateadvancedtag
 Update the multi-tag filter
 
 Supported in v7.0+
 v7.0-v9.1: Updates the name, condition, and description of the specified multi-tag filter.
-v9.2: Updates the name, condition, and description of the specified multi-tag filter. It is not supported on Standalone Hosts.
+v9.2+: Updates the name, condition, and description of the specified multi-tag filter. It is not supported on Standalone Hosts.
 
 - There is a single argument of type UpdateVsphereAdvancedTagInput.
 - Returns UpdateVsphereAdvancedTagReply.
+### updatevmnew
+Supported in v9.2+. Update a virtual machine withspecified properties. Use the guestCredential field to update the guest credential for a specified virtual machine.
+
+- There is a single argument of type UpdateVsphereVmNewInput.
+- Returns RequestSuccess.

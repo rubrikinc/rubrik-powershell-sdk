@@ -506,6 +506,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	validations = @(
+    /// 		$someClusterCreateValidations # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCreateValidations]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -1663,6 +1667,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
     /// 	# OPTIONAL
     /// 	kmsMasterKeyId = $someString
+    /// 	# OPTIONAL
+    /// 	bucketTags = @{
+    /// 		# REQUIRED
+    /// 		tagList = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				key = $someString
+    /// 				# REQUIRED
+    /// 				value = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	deleteAllBucketTags = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -2975,6 +2993,10 @@ $query.Var.input = @{
 			}
 		)
 	}
+	# OPTIONAL
+	validations = @(
+		$someClusterCreateValidations # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCreateValidations]) for enum values.
+	)
 }"
             );
         }
@@ -3964,6 +3986,20 @@ $query.Var.input = @{
 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
 	# OPTIONAL
 	kmsMasterKeyId = $someString
+	# OPTIONAL
+	bucketTags = @{
+		# REQUIRED
+		tagList = @(
+			@{
+				# REQUIRED
+				key = $someString
+				# REQUIRED
+				value = $someString
+			}
+		)
+	}
+	# OPTIONAL
+	deleteAllBucketTags = $someBoolean
 }"
             );
         }

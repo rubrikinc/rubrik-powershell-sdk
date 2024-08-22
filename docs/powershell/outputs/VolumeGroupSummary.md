@@ -11,7 +11,7 @@ Supported in v5.0+
   v5.3+: The name of the host that contains the Volume Group.
 - id: System.String
   - Required. Supported in v5.0+
-  v5.0-v5.2: 
+  v5.0-v5.2:
   v5.3+: The unique ID of the Volume Group.
 - isRelic: System.Boolean
   - Required. Supported in v5.0+
@@ -19,7 +19,7 @@ Supported in v5.0+
   v5.3+: Specifies whether the Volume Group is accessible on the Rubrik cluster.
 - name: System.String
   - Required. Supported in v5.0+
-  v5.0-v5.2: 
+  v5.0-v5.2:
   v5.3+: The name of the Volume Group.
 - forceFull: System.Boolean
   - Supported in v5.3+
@@ -30,10 +30,13 @@ Supported in v5.0+
 - snappable: CdmWorkload
   - 
 - operatingSystem: System.String
-  - Operating system of the host. One of Windows, Linux, AIX, HPUX, or SunOS.
+  - Supported in v9.2+
+  Operating system of the host. One of Windows, Linux, AIX, HPUX, or SunOS.
 - isPaused: System.Boolean
-  - Indicates whether backup, archiving, and replication are paused for this Volume Group.
+  - Supported in v9.2+
+  Indicates whether backup, archiving, and replication are paused for this Volume Group.
 - rbsConnectionStatus: HostRbsConnectionStatus
   - 
 - volumes: list of HostVolumeSummarys
-  - Configuration details for the volumes in the Volume Group.
+  - Supported in v9.2+
+  Configuration details for the volumes in the Volume Group.

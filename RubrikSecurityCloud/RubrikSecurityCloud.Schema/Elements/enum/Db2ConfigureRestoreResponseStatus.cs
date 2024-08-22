@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         DB2_CONFIGURE_RESTORE_RESPONSE_STATUS_UNKNOWN,
 
         [EnumMember(Value = "DB2_CONFIGURE_RESTORE_RESPONSE_STATUS_WARNING")]
-        DB2_CONFIGURE_RESTORE_RESPONSE_STATUS_WARNING
+        DB2_CONFIGURE_RESTORE_RESPONSE_STATUS_WARNING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum Db2ConfigureRestoreResponseStatus

@@ -8,4 +8,4 @@ Supported in v5.0+
 - baseGuestCredentialDetail: BaseGuestCredentialDetail
   - Base guest credential details.
 - description: System.String
-  - 
+  - Supported in v9.2+

@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         REPLICATION_TARGET,
 
         [EnumMember(Value = "UNKNOWN_CONNECTIVITY_STATUS")]
-        UNKNOWN_CONNECTIVITY_STATUS
+        UNKNOWN_CONNECTIVITY_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FailoverClusterConnectivityStatus

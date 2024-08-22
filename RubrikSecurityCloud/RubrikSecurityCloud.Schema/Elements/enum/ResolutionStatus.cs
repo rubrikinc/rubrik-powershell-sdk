@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         RESOLVED,
 
         [EnumMember(Value = "UNRESOLVED")]
-        UNRESOLVED
+        UNRESOLVED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ResolutionStatus

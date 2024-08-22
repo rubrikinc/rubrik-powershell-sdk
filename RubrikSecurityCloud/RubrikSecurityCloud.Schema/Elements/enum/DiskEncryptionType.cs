@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         GOOGLE_MANAGED_KEY,
 
         [EnumMember(Value = "SOURCE_DISK_ENCRYPTION")]
-        SOURCE_DISK_ENCRYPTION
+        SOURCE_DISK_ENCRYPTION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DiskEncryptionType

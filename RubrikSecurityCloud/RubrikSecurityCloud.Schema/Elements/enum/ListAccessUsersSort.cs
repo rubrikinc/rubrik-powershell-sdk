@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         NUM_ACTIVITY_DELTA,
 
         [EnumMember(Value = "USERNAME")]
-        USERNAME
+        USERNAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ListAccessUsersSort

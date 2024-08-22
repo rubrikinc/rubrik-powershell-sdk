@@ -8,9 +8,9 @@ Input required to create a cloud-native tag rule.
 - tag: TagType
   - Tag key-value pair for tag rule.
 - slaAssignType: TagRuleSlaAssignType
-  - Corresponds to the assignment type for the SLA.
+  - Deprecated: use bulkAssignSlas to assign SLA Domain to tag rule.
 - slaId: System.String
-  - Corresponds to optional global SLA Rubrik ID.
+  - Deprecated: use bulkAssignSlas to assign SLA Domain to tag rule.
 - cloudNativeAccountIds: CloudNativeIds
   - Cloud native accounts on which tag rule will be applied.
 - applyToAllCloudAccounts: System.Boolean

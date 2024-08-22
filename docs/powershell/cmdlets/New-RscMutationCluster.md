@@ -5,11 +5,21 @@ Add nodes to the CDM cluster.
 
 - There is a single argument of type AddClusterNodesInput.
 - Returns AddClusterNodesReply.
+### addclusterroute
+Add a new route config to all hosts in a Rubrik cluster. Supported in Rubrik CDM v5.0+
+
+- There is a single argument of type AddClusterRouteInput.
+- Returns AddClusterRouteReply.
 ### addnodestocloud
 Add nodes to cloud cluster.
 
 - There is a single argument of type AddNodesToCloudClusterInput.
 - Returns CcProvisionJobReply.
+### deleteclusterroute
+Delete an existing route on a Rubrik cluster. Supported in Rubrik CDM v5.0+
+
+- There is a single argument of type DeleteClusterRouteInput.
+- Returns System.String.
 ### generateclusterregistrationtoken
 Generate a JWT that can be used to register clusters with Rubrik. If ManagedByRubrikArg is not given, the product type is inferred automatically.
 

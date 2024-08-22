@@ -62,6 +62,7 @@ The list of object types for activities.
 - CERTIFICATE_MANAGEMENT - Specifies that the activity object type is a certificate.
 - Mssql - Specifies that the activity object type is MSSQL.
 - NAS_FILESET - Specifies that the activity object type is NAS Fileset.
+- ACTIVE_DIRECTORY_FOREST - Specifies that the activity object type is related to Active Directory forest.
 - CloudNativeVirtualMachine - Specifies that the activity object type is Cloud Native Virtual Machine.
 - AZURE_AD_DIRECTORY - Specifies that the activity object type is Azure AD Directory.
 - VmwareVm - Specifies that the activity object type is VMware Virtual Machine.
@@ -101,6 +102,7 @@ The list of object types for activities.
 - CapacityBundle - Specifies that the activity object type is Capacity Bundle.
 - MONGO_DATABASE - Specifies that the activity object type is MongoDB database.
 - Ec2Instance - Specifies that the activity object type is EC2 Instance.
+- CONFLUENCE_SPACE - Specifies that the activity object type is Confluence Space.
 - NUTANIX_ERA - Specifies that the activity object type is Nutanix Era.
 - JIRA_PROJECT - Specifies that the activity object type is Jira project.
 - StorageArrayVolumeGroup - Specifies that the activity object type is Storage Array Volume Group.

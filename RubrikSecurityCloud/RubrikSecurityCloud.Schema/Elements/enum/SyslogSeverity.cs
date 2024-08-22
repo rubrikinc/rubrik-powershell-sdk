@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         SYSLOG_SEVERITY_NOTICE,
 
         [EnumMember(Value = "SYSLOG_SEVERITY_WARNING")]
-        SYSLOG_SEVERITY_WARNING
+        SYSLOG_SEVERITY_WARNING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SyslogSeverity

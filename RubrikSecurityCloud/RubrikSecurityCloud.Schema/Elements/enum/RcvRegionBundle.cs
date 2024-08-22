@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         BUNDLE_2,
 
         [EnumMember(Value = "DSAAS_BUNDLE")]
-        DSAAS_BUNDLE
+        DSAAS_BUNDLE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RcvRegionBundle

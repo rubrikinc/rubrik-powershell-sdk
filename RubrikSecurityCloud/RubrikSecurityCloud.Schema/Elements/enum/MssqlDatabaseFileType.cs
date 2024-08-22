@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         MSSQL_DATABASE_FILE_TYPE_FILESTREAM,
 
         [EnumMember(Value = "MSSQL_DATABASE_FILE_TYPE_LOG")]
-        MSSQL_DATABASE_FILE_TYPE_LOG
+        MSSQL_DATABASE_FILE_TYPE_LOG,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MssqlDatabaseFileType

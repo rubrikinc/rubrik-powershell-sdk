@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         STANDARD_DS5_V2,
 
         [EnumMember(Value = "TYPE_UNSPECIFIED")]
-        TYPE_UNSPECIFIED
+        TYPE_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureInstanceType

@@ -34,7 +34,16 @@ namespace RubrikSecurityCloud.Types
         EC2_INSTANCE_TYPE,
 
         [EnumMember(Value = "EFFECTIVE_SLA_DOMAIN")]
-        EFFECTIVE_SLA_DOMAIN
+        EFFECTIVE_SLA_DOMAIN,
+
+        [EnumMember(Value = "SENSITIVITY_HITS")]
+        SENSITIVITY_HITS,
+
+        [EnumMember(Value = "SENSITIVITY_STATUS")]
+        SENSITIVITY_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsNativeEc2InstanceSortFields

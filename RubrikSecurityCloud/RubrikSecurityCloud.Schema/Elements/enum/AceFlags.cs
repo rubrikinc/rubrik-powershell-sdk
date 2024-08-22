@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         OBJECT_INHERIT,
 
         [EnumMember(Value = "SUCCESSFUL_ACCESS")]
-        SUCCESSFUL_ACCESS
+        SUCCESSFUL_ACCESS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AceFlags

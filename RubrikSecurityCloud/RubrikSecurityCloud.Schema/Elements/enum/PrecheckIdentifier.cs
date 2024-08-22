@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         PRECHECK_OTHER,
 
         [EnumMember(Value = "PRECHECK_UNSPECIFIED")]
-        PRECHECK_UNSPECIFIED
+        PRECHECK_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PrecheckIdentifier

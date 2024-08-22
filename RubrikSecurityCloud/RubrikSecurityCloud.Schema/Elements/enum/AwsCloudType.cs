@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         SC2_S,
 
         [EnumMember(Value = "STANDARD")]
-        STANDARD
+        STANDARD,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsCloudType

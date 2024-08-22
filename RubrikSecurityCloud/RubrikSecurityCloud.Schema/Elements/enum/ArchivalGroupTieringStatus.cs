@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SMART_TIERING_NOT_SUPPORTED,
 
         [EnumMember(Value = "UNKNOWN_ARCHIVAL_GROUP_TIERING_STATUS")]
-        UNKNOWN_ARCHIVAL_GROUP_TIERING_STATUS
+        UNKNOWN_ARCHIVAL_GROUP_TIERING_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ArchivalGroupTieringStatus

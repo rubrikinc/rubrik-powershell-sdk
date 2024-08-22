@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.Int32? NamespaceCount
+        // GraphQL -> namespaceCount: Int! (scalar)
+        [JsonProperty("namespaceCount")]
+        public System.Int32? NamespaceCount { get; set; }
+
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
@@ -120,6 +125,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> status: String! (scalar)
         [JsonProperty("status")]
         public System.String? Status { get; set; }
+
+        //      C# -> System.String? Transport
+        // GraphQL -> transport: String (scalar)
+        [JsonProperty("transport")]
+        public System.String? Transport { get; set; }
 
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
@@ -246,12 +256,14 @@ namespace RubrikSecurityCloud.Types
         System.String? K8sName = null,
         System.String? K8sVersion = null,
         System.String? Name = null,
+        System.Int32? NamespaceCount = null,
         System.Int32? NumWorkloadDescendants = null,
         System.String? PrimaryClusterUuid = null,
         System.String? Registry = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? Status = null,
+        System.String? Transport = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
@@ -309,6 +321,9 @@ namespace RubrikSecurityCloud.Types
         if ( Name != null ) {
             this.Name = Name;
         }
+        if ( NamespaceCount != null ) {
+            this.NamespaceCount = NamespaceCount;
+        }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
         }
@@ -326,6 +341,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( Transport != null ) {
+            this.Transport = Transport;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -526,6 +544,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
+        //      C# -> System.Int32? NamespaceCount
+        // GraphQL -> namespaceCount: Int! (scalar)
+        if (this.NamespaceCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "namespaceCount\n" ;
+            } else {
+                s += ind + "namespaceCount\n" ;
+            }
+        }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants != null) {
@@ -578,6 +605,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> System.String? Transport
+        // GraphQL -> transport: String (scalar)
+        if (this.Transport != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "transport\n" ;
+            } else {
+                s += ind + "transport\n" ;
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -1011,6 +1047,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Name = null;
         }
+        //      C# -> System.Int32? NamespaceCount
+        // GraphQL -> namespaceCount: Int! (scalar)
+        if (ec.Includes("namespaceCount",true))
+        {
+            if(this.NamespaceCount == null) {
+
+                this.NamespaceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NamespaceCount != null && ec.Excludes("namespaceCount",true))
+        {
+            this.NamespaceCount = null;
+        }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (ec.Includes("numWorkloadDescendants",true))
@@ -1112,6 +1165,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> System.String? Transport
+        // GraphQL -> transport: String (scalar)
+        if (ec.Includes("transport",true))
+        {
+            if(this.Transport == null) {
+
+                this.Transport = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Transport != null && ec.Excludes("transport",true))
+        {
+            this.Transport = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

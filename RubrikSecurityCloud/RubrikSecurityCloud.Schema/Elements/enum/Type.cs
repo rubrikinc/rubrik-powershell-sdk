@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         ISO_8601_DATETIME,
 
         [EnumMember(Value = "STRING")]
-        STRING
+        STRING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum Type

@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         UNREGISTERED,
 
         [EnumMember(Value = "WAITING_FOR_DATA_DELETION")]
-        WAITING_FOR_DATA_DELETION
+        WAITING_FOR_DATA_DELETION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterRemovalState

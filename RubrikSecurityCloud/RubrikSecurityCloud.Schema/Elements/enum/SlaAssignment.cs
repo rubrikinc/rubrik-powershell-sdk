@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SLA_ASSIGNMENT_DIRECT,
 
         [EnumMember(Value = "SLA_ASSIGNMENT_UNASSIGNED")]
-        SLA_ASSIGNMENT_UNASSIGNED
+        SLA_ASSIGNMENT_UNASSIGNED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SlaAssignment

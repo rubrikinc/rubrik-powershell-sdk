@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         DOWN,
 
         [EnumMember(Value = "ONLINE")]
-        ONLINE
+        ONLINE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum O365ServiceStatusIndication

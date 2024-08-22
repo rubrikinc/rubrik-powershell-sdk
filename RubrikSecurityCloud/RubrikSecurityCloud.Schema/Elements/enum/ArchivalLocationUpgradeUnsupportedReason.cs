@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         RSC_MANAGED_LOCATION,
 
         [EnumMember(Value = "UNKNOWN_REASON")]
-        UNKNOWN_REASON
+        UNKNOWN_REASON,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ArchivalLocationUpgradeUnsupportedReason

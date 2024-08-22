@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         FILE,
 
         [EnumMember(Value = "UNKNOWN_INODE")]
-        UNKNOWN_INODE
+        UNKNOWN_INODE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum InodeType

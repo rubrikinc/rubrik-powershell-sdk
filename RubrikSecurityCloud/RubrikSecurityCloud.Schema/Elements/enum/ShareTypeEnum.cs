@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         NO_SHARE_TYPE,
 
         [EnumMember(Value = "SMB")]
-        SMB
+        SMB,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ShareTypeEnum

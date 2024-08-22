@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         VAPP_VM_IP_ADDRESSING_MODE_NONE,
 
         [EnumMember(Value = "VAPP_VM_IP_ADDRESSING_MODE_POOL")]
-        VAPP_VM_IP_ADDRESSING_MODE_POOL
+        VAPP_VM_IP_ADDRESSING_MODE_POOL,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum VmNetworkAddressingMode

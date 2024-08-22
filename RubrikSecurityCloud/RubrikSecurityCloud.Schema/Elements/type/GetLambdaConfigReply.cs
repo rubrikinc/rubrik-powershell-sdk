@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("enableFmdUploadForAllResources")]
         public System.Boolean? EnableFmdUploadForAllResources { get; set; }
 
+        //      C# -> System.Boolean? EnableThreatMonitoringFullScan
+        // GraphQL -> enableThreatMonitoringFullScan: Boolean! (scalar)
+        [JsonProperty("enableThreatMonitoringFullScan")]
+        public System.Boolean? EnableThreatMonitoringFullScan { get; set; }
+
         //      C# -> System.Boolean? IsThreatMonitoringEnabled
         // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)
         [JsonProperty("isThreatMonitoringEnabled")]
@@ -70,6 +75,7 @@ namespace RubrikSecurityCloud.Types
         System.String? DefaultDiffFmdUploadPrefix = null,
         System.Boolean? EnableAutomaticFmdUpload = null,
         System.Boolean? EnableFmdUploadForAllResources = null,
+        System.Boolean? EnableThreatMonitoringFullScan = null,
         System.Boolean? IsThreatMonitoringEnabled = null,
         System.Int32? MaxSnapshotsToUploadAutomatically = null
     ) 
@@ -88,6 +94,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EnableFmdUploadForAllResources != null ) {
             this.EnableFmdUploadForAllResources = EnableFmdUploadForAllResources;
+        }
+        if ( EnableThreatMonitoringFullScan != null ) {
+            this.EnableThreatMonitoringFullScan = EnableThreatMonitoringFullScan;
         }
         if ( IsThreatMonitoringEnabled != null ) {
             this.IsThreatMonitoringEnabled = IsThreatMonitoringEnabled;
@@ -152,6 +161,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "enableFmdUploadForAllResources\n" ;
             } else {
                 s += ind + "enableFmdUploadForAllResources\n" ;
+            }
+        }
+        //      C# -> System.Boolean? EnableThreatMonitoringFullScan
+        // GraphQL -> enableThreatMonitoringFullScan: Boolean! (scalar)
+        if (this.EnableThreatMonitoringFullScan != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "enableThreatMonitoringFullScan\n" ;
+            } else {
+                s += ind + "enableThreatMonitoringFullScan\n" ;
             }
         }
         //      C# -> System.Boolean? IsThreatMonitoringEnabled
@@ -263,6 +281,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EnableFmdUploadForAllResources != null && ec.Excludes("enableFmdUploadForAllResources",true))
         {
             this.EnableFmdUploadForAllResources = null;
+        }
+        //      C# -> System.Boolean? EnableThreatMonitoringFullScan
+        // GraphQL -> enableThreatMonitoringFullScan: Boolean! (scalar)
+        if (ec.Includes("enableThreatMonitoringFullScan",true))
+        {
+            if(this.EnableThreatMonitoringFullScan == null) {
+
+                this.EnableThreatMonitoringFullScan = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.EnableThreatMonitoringFullScan != null && ec.Excludes("enableThreatMonitoringFullScan",true))
+        {
+            this.EnableThreatMonitoringFullScan = null;
         }
         //      C# -> System.Boolean? IsThreatMonitoringEnabled
         // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)

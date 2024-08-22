@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         AZURE_ARCHIVE,
 
         [EnumMember(Value = "COLD_STORAGE_CLASS_UNKNOWN")]
-        COLD_STORAGE_CLASS_UNKNOWN
+        COLD_STORAGE_CLASS_UNKNOWN,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ColdStorageClass

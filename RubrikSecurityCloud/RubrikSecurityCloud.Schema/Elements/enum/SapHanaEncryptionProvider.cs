@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         OPENSSL,
 
         [EnumMember(Value = "SAP_CRYPTO")]
-        SAP_CRYPTO
+        SAP_CRYPTO,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SapHanaEncryptionProvider

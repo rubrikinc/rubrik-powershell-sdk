@@ -46,7 +46,10 @@ namespace RubrikSecurityCloud.Types
         STACK_ARN,
 
         [EnumMember(Value = "STACK_NAME")]
-        STACK_NAME
+        STACK_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsCloudExternalArtifact

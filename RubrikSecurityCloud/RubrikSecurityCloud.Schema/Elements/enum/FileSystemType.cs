@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         FILE_SYSTEM_TYPE_NTFS,
 
         [EnumMember(Value = "FILE_SYSTEM_TYPE_RE_FS")]
-        FILE_SYSTEM_TYPE_RE_FS
+        FILE_SYSTEM_TYPE_RE_FS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FileSystemType

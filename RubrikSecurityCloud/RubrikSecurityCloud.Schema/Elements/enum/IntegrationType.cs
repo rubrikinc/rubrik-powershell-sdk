@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         INTEGRATION_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "SERVICENOW_ITSM")]
-        SERVICENOW_ITSM
+        SERVICENOW_ITSM,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum IntegrationType

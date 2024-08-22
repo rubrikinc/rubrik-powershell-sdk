@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         FORECASTED_BLOB_CAPACITY,
 
         [EnumMember(Value = "INGRESS")]
-        INGRESS
+        INGRESS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RcsConsumptionMetricOutputNameType

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SECURE,
 
         [EnumMember(Value = "USER_ACCESS_TYPE_UNKNOWN")]
-        USER_ACCESS_TYPE_UNKNOWN
+        USER_ACCESS_TYPE_UNKNOWN,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UserAccessType

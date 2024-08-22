@@ -49,7 +49,10 @@ namespace RubrikSecurityCloud.Types
         OCTOBER,
 
         [EnumMember(Value = "SEPTEMBER")]
-        SEPTEMBER
+        SEPTEMBER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum Month

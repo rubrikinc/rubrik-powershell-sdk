@@ -70,7 +70,10 @@ namespace RubrikSecurityCloud.Types
         O365_SITE,
 
         [EnumMember(Value = "O365Teams")]
-        O365_TEAMS
+        O365_TEAMS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum WorkloadLevelHierarchy

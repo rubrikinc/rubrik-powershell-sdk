@@ -5,7 +5,7 @@ Preview list of virtual machines of a proposed filter condition
 
 Supported in v7.0+
 v7.0-v9.1: Preview list of virtual machines of a proposed filter condition. The result might not be accurate if new virtual machines were added after last vCenter refresh.
-v9.2: Preview list of virtual machines of a proposed filter condition. The result might not be accurate if new virtual machines were added after last vCenter refresh. It is not supported on Standalone Hosts.
+v9.2+: Preview list of virtual machines of a proposed filter condition. The result might not be accurate if new virtual machines were added after last vCenter refresh. It is not supported on Standalone Hosts.
 
 - There is a single argument of type PreviewFilterInput.
 - Returns VcenterAdvancedTagPreviewReply.

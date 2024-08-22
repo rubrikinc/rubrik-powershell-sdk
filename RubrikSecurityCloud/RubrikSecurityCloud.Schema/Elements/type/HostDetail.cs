@@ -85,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oracleSysDbaUser")]
         public System.String? OracleSysDbaUser { get; set; }
 
+        //      C# -> ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo
+        // GraphQL -> activeDirectoryAdditionalInfo: ActiveDirectoryAdditionalInfo (type)
+        [JsonProperty("activeDirectoryAdditionalInfo")]
+        public ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo { get; set; }
+
         //      C# -> HostSummary? HostSummary
         // GraphQL -> hostSummary: HostSummary (type)
         [JsonProperty("hostSummary")]
@@ -113,6 +118,7 @@ namespace RubrikSecurityCloud.Types
         System.String? MssqlSddUsername = null,
         System.String? OracleQueryUser = null,
         System.String? OracleSysDbaUser = null,
+        ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo = null,
         HostSummary? HostSummary = null
     ) 
     {
@@ -154,6 +160,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OracleSysDbaUser != null ) {
             this.OracleSysDbaUser = OracleSysDbaUser;
+        }
+        if ( ActiveDirectoryAdditionalInfo != null ) {
+            this.ActiveDirectoryAdditionalInfo = ActiveDirectoryAdditionalInfo;
         }
         if ( HostSummary != null ) {
             this.HostSummary = HostSummary;
@@ -287,6 +296,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "oracleSysDbaUser\n" ;
             } else {
                 s += ind + "oracleSysDbaUser\n" ;
+            }
+        }
+        //      C# -> ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo
+        // GraphQL -> activeDirectoryAdditionalInfo: ActiveDirectoryAdditionalInfo (type)
+        if (this.ActiveDirectoryAdditionalInfo != null) {
+            var fspec = this.ActiveDirectoryAdditionalInfo.AsFieldSpec(conf.Child("activeDirectoryAdditionalInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "activeDirectoryAdditionalInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> HostSummary? HostSummary
@@ -528,6 +549,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.OracleSysDbaUser != null && ec.Excludes("oracleSysDbaUser",true))
         {
             this.OracleSysDbaUser = null;
+        }
+        //      C# -> ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo
+        // GraphQL -> activeDirectoryAdditionalInfo: ActiveDirectoryAdditionalInfo (type)
+        if (ec.Includes("activeDirectoryAdditionalInfo",false))
+        {
+            if(this.ActiveDirectoryAdditionalInfo == null) {
+
+                this.ActiveDirectoryAdditionalInfo = new ActiveDirectoryAdditionalInfo();
+                this.ActiveDirectoryAdditionalInfo.ApplyExploratoryFieldSpec(ec.NewChild("activeDirectoryAdditionalInfo"));
+
+            } else {
+
+                this.ActiveDirectoryAdditionalInfo.ApplyExploratoryFieldSpec(ec.NewChild("activeDirectoryAdditionalInfo"));
+
+            }
+        }
+        else if (this.ActiveDirectoryAdditionalInfo != null && ec.Excludes("activeDirectoryAdditionalInfo",false))
+        {
+            this.ActiveDirectoryAdditionalInfo = null;
         }
         //      C# -> HostSummary? HostSummary
         // GraphQL -> hostSummary: HostSummary (type)

@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         GCP_INSTANCE_REGION,
 
         [EnumMember(Value = "GCP_INSTANCE_TYPE")]
-        GCP_INSTANCE_TYPE
+        GCP_INSTANCE_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GcpNativeGceInstanceSortFields

@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         RECOMMENDATION,
 
         [EnumMember(Value = "USER")]
-        USER
+        USER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HelpContentSnippetsFilterInitiator

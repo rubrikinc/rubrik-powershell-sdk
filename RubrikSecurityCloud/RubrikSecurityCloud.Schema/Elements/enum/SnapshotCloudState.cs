@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         LOCAL_AND_ON_CLOUD,
 
         [EnumMember(Value = "ON_CLOUD")]
-        ON_CLOUD
+        ON_CLOUD,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnapshotCloudState

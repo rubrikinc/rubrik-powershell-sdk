@@ -28,6 +28,8 @@ Supported in v5.1+
 - folderId: System.String
   - Supported in v9.1+
       ID of the virtual machine folder where the new virtual machine will be mounted.
+- unmountTimeOpt: System.Int64
+  - Specifies an optional future unmount time for the current live mount.
 - migrationConfig: RelocateMountConfigV2Input
   - Supported in v8.1+
       Configuration for migration.

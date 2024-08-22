@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         CDP_REPLICATION_STATUS_INITIALIZING,
 
         [EnumMember(Value = "CDP_REPLICATION_STATUS_NOT_ENABLED")]
-        CDP_REPLICATION_STATUS_NOT_ENABLED
+        CDP_REPLICATION_STATUS_NOT_ENABLED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CdpReplicationStatus

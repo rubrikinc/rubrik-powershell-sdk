@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         CONTINUE,
 
         [EnumMember(Value = "UNKNOWN_FAILURE_HANDLING")]
-        UNKNOWN_FAILURE_HANDLING
+        UNKNOWN_FAILURE_HANDLING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum NutanixBackupScriptFailureHandling

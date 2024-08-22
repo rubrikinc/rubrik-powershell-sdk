@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         IN_PROGRESS,
 
         [EnumMember(Value = "PENDING")]
-        PENDING
+        PENDING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DownloadStatusEnum

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         HOUR,
 
         [EnumMember(Value = "MONTH")]
-        MONTH
+        MONTH,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TimeDuration

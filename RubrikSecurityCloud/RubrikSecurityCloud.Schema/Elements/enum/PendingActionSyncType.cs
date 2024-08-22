@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         MOSAIC,
 
         [EnumMember(Value = "POLARIS")]
-        POLARIS
+        POLARIS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PendingActionSyncType

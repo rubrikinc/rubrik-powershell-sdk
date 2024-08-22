@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         DIRECT,
 
         [EnumMember(Value = "Unassigned")]
-        UNASSIGNED
+        UNASSIGNED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SlaAssignmentTypeEnum

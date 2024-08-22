@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         V2_BULK_DELETE_MOSAIC_SOURCES_REQUEST_SOURCE_TYPE_CASSANDRA,
 
         [EnumMember(Value = "V2_BULK_DELETE_MOSAIC_SOURCES_REQUEST_SOURCE_TYPE_MONGO")]
-        V2_BULK_DELETE_MOSAIC_SOURCES_REQUEST_SOURCE_TYPE_MONGO
+        V2_BULK_DELETE_MOSAIC_SOURCES_REQUEST_SOURCE_TYPE_MONGO,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum V2BulkDeleteMosaicSourcesRequestSourceType

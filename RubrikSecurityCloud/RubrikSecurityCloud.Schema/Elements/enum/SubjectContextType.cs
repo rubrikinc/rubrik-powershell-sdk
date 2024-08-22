@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         USER,
 
         [EnumMember(Value = "USER_GROUP")]
-        USER_GROUP
+        USER_GROUP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SubjectContextType

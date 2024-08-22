@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         NO_SLA,
 
         [EnumMember(Value = "Protected")]
-        PROTECTED
+        PROTECTED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ProtectionStatusEnum

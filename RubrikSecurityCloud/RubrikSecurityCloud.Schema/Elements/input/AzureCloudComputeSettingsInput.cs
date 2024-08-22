@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudAccountId")]
         public System.String? CloudAccountId { get; set; }
 
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String (scalar)
+        [JsonProperty("subscriptionId")]
+        public System.String? SubscriptionId { get; set; }
+
 
         #endregion
 

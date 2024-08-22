@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         GCP_DISK_PROJECT_NAME,
 
         [EnumMember(Value = "GCP_DISK_SIZE")]
-        GCP_DISK_SIZE
+        GCP_DISK_SIZE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GcpNativeDiskSortFields

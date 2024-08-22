@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SAP_HANA_DATA_PATH_TYPE_LOCAL,
 
         [EnumMember(Value = "SAP_HANA_DATA_PATH_TYPE_MANAGED_VOLUME")]
-        SAP_HANA_DATA_PATH_TYPE_MANAGED_VOLUME
+        SAP_HANA_DATA_PATH_TYPE_MANAGED_VOLUME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SapHanaDataPathType

@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ACTIVE_DIRECTORY_OBJECT_NAME_CONFLICT_OPTION_RESTORE_ATTRIBUTES,
 
         [EnumMember(Value = "ACTIVE_DIRECTORY_OBJECT_NAME_CONFLICT_OPTION_SKIP")]
-        ACTIVE_DIRECTORY_OBJECT_NAME_CONFLICT_OPTION_SKIP
+        ACTIVE_DIRECTORY_OBJECT_NAME_CONFLICT_OPTION_SKIP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ActiveDirectoryObjectNameConflictOption

@@ -49,7 +49,10 @@ namespace RubrikSecurityCloud.Types
         SETUP_FAILED,
 
         [EnumMember(Value = "SETUP_RUNNING")]
-        SETUP_RUNNING
+        SETUP_RUNNING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ConfigProtectionStatus

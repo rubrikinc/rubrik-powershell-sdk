@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         NO_ASSIGNMENT,
 
         [EnumMember(Value = "protectWithSlaId")]
-        PROTECT_WITH_SLA_ID
+        PROTECT_WITH_SLA_ID,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SlaAssignTypeEnum

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         EXISTING_SNAPSHOT_RETENTION_KEEP_FOREVER,
 
         [EnumMember(Value = "EXISTING_SNAPSHOT_RETENTION_RETAIN_SNAPSHOTS")]
-        EXISTING_SNAPSHOT_RETENTION_RETAIN_SNAPSHOTS
+        EXISTING_SNAPSHOT_RETENTION_RETAIN_SNAPSHOTS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ExistingSnapshotRetention

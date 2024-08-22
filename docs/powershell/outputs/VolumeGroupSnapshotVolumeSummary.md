@@ -3,7 +3,7 @@ Supported in v5.0+
 
 - id: System.String
   - Required. Supported in v5.0+
-  v5.0-v5.2: 
+  v5.0-v5.2:
   v5.3+: The unique ID of the snapshot volume summary.
 - mountPoints: list of System.Strings
   - Required. Supported in v5.0+

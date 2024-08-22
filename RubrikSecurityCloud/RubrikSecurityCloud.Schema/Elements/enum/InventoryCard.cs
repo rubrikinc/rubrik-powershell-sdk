@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MSSQL")]
         MSSQL,
 
+        [EnumMember(Value = "MYSQL")]
+        MYSQL,
+
         [EnumMember(Value = "NAS_SHARES")]
         NAS_SHARES,
 
@@ -145,7 +148,10 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_HOSTS_CDM,
 
         [EnumMember(Value = "WINDOWS_VOLUME_GROUP")]
-        WINDOWS_VOLUME_GROUP
+        WINDOWS_VOLUME_GROUP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum InventoryCard

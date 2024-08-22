@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         ENABLED,
 
         [EnumMember(Value = "NOT_ENABLED")]
-        NOT_ENABLED
+        NOT_ENABLED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterCyberEventLockdownMode

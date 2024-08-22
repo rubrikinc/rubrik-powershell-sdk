@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         WEEKLY,
 
         [EnumMember(Value = "YEARLY")]
-        YEARLY
+        YEARLY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnapshotFrequency

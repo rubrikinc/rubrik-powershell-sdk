@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         AZURE,
 
         [EnumMember(Value = "GCP")]
-        GCP
+        GCP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudVendor

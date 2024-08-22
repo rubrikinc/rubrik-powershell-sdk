@@ -11,6 +11,8 @@ Summary of a threat hunt for a snapshot.
   - Status of scanning this snapshot.
 - matchTypes: list of IndicatorOfCompromises
   - List of IOCs found in this snapshot.
+- snapshotScanStatus: ThreatHuntStatus
+  - Status of scanning this snapshot.
 - isExpired: System.Boolean
   - Specifies whether the snapshot has expired.
 - isQuarantined: System.Boolean

@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         SUCCEEDED,
 
         [EnumMember(Value = "SYNCED_TO_CDM")]
-        SYNCED_TO_CDM
+        SYNCED_TO_CDM,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PendingActionStatus

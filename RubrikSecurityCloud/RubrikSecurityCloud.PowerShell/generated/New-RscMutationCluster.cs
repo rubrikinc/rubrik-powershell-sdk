@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 16
+    /// Create a new RscQuery object for any of the 18
     /// operations in the 'Cluster' API domain:
-    /// AddClusterNodes, AddNodesToCloud, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// AddClusterNodes, AddClusterRoute, AddNodesToCloud, DeleteClusterRoute, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// </summary>
     /// <description>
     /// New-RscMutationCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 16 operations
+    /// There are 18 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddClusterNodes, AddNodesToCloud, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// one of: AddClusterNodes, AddClusterRoute, AddNodesToCloud, DeleteClusterRoute, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -171,6 +171,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the AddClusterRoute operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: AddClusterRoute
+    /// 
+    /// $query = New-RscMutationCluster -AddClusterRoute
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	routeConfig = @{
+    /// 		# REQUIRED
+    /// 		device = $someString
+    /// 		# REQUIRED
+    /// 		gateway = $someString
+    /// 		# REQUIRED
+    /// 		netmask = $someString
+    /// 		# REQUIRED
+    /// 		network = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AddClusterRouteReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the AddNodesToCloud operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -206,6 +248,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CcProvisionJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteClusterRoute operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: DeleteClusterRoute
+    /// 
+    /// $query = New-RscMutationCluster -DeleteClusterRoute
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	routeConfig = @{
+    /// 		# REQUIRED
+    /// 		netmask = $someString
+    /// 		# REQUIRED
+    /// 		network = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -869,7 +949,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "AddClusterNodes",
+                "AddClusterRoute",
                 "AddNodesToCloud",
+                "DeleteClusterRoute",
                 "GenerateClusterRegistrationToken",
                 "RecoverCloud",
                 "RegisterCloud",
@@ -902,8 +984,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AddClusterNodes":
                         this.ProcessRecord_AddClusterNodes();
                         break;
+                    case "AddClusterRoute":
+                        this.ProcessRecord_AddClusterRoute();
+                        break;
                     case "AddNodesToCloud":
                         this.ProcessRecord_AddNodesToCloud();
+                        break;
+                    case "DeleteClusterRoute":
+                        this.ProcessRecord_DeleteClusterRoute();
                         break;
                     case "GenerateClusterRegistrationToken":
                         this.ProcessRecord_GenerateClusterRegistrationToken();
@@ -967,12 +1055,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // addClusterRoute.
+        internal void ProcessRecord_AddClusterRoute()
+        {
+            this._logger.name += " -AddClusterRoute";
+            // Create new graphql operation addClusterRoute
+            InitMutationAddClusterRoute();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // addNodesToCloudCluster.
         internal void ProcessRecord_AddNodesToCloud()
         {
             this._logger.name += " -AddNodesToCloud";
             // Create new graphql operation addNodesToCloudCluster
             InitMutationAddNodesToCloudCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteClusterRoute.
+        internal void ProcessRecord_DeleteClusterRoute()
+        {
+            this._logger.name += " -DeleteClusterRoute";
+            // Create new graphql operation deleteClusterRoute
+            InitMutationDeleteClusterRoute();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1189,6 +1295,40 @@ $query.Var.AddClusterNodesInput = @{
         }
 
         // Create new GraphQL Mutation:
+        // addClusterRoute(input: AddClusterRouteInput!): AddClusterRouteReply!
+        internal void InitMutationAddClusterRoute()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AddClusterRouteInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAddClusterRoute",
+                "($input: AddClusterRouteInput!)",
+                "AddClusterRouteReply",
+                Mutation.AddClusterRoute,
+                Mutation.AddClusterRouteFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	routeConfig = @{
+		# REQUIRED
+		device = $someString
+		# REQUIRED
+		gateway = $someString
+		# REQUIRED
+		netmask = $someString
+		# REQUIRED
+		network = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // addNodesToCloudCluster(input: AddNodesToCloudClusterInput!): CcProvisionJobReply!
         internal void InitMutationAddNodesToCloudCluster()
         {
@@ -1219,6 +1359,36 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# REQUIRED
 	shouldKeepResourcesOnFailure = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteClusterRoute(input: DeleteClusterRouteInput!): Void
+        internal void InitMutationDeleteClusterRoute()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteClusterRouteInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteClusterRoute",
+                "($input: DeleteClusterRouteInput!)",
+                "System.String",
+                Mutation.DeleteClusterRoute,
+                Mutation.DeleteClusterRouteFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	routeConfig = @{
+		# REQUIRED
+		netmask = $someString
+		# REQUIRED
+		network = $someString
+	}
 }"
             );
         }

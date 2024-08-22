@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("externalId")]
         public System.String? ExternalId { get; set; }
 
+        //      C# -> System.String? StackName
+        // GraphQL -> stackName: String! (scalar)
+        [JsonProperty("stackName")]
+        public System.String? StackName { get; set; }
+
         //      C# -> System.String? TemplateUrl
         // GraphQL -> templateUrl: String! (scalar)
         [JsonProperty("templateUrl")]
@@ -47,6 +52,7 @@ namespace RubrikSecurityCloud.Types
     public AwsOutpostAccountInitiateResponse Set(
         System.String? CloudFormationUrl = null,
         System.String? ExternalId = null,
+        System.String? StackName = null,
         System.String? TemplateUrl = null
     ) 
     {
@@ -55,6 +61,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ExternalId != null ) {
             this.ExternalId = ExternalId;
+        }
+        if ( StackName != null ) {
+            this.StackName = StackName;
         }
         if ( TemplateUrl != null ) {
             this.TemplateUrl = TemplateUrl;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "externalId\n" ;
             } else {
                 s += ind + "externalId\n" ;
+            }
+        }
+        //      C# -> System.String? StackName
+        // GraphQL -> stackName: String! (scalar)
+        if (this.StackName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "stackName\n" ;
+            } else {
+                s += ind + "stackName\n" ;
             }
         }
         //      C# -> System.String? TemplateUrl
@@ -140,6 +158,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExternalId != null && ec.Excludes("externalId",true))
         {
             this.ExternalId = null;
+        }
+        //      C# -> System.String? StackName
+        // GraphQL -> stackName: String! (scalar)
+        if (ec.Includes("stackName",true))
+        {
+            if(this.StackName == null) {
+
+                this.StackName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StackName != null && ec.Excludes("stackName",true))
+        {
+            this.StackName = null;
         }
         //      C# -> System.String? TemplateUrl
         // GraphQL -> templateUrl: String! (scalar)

@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         ROLE,
 
         [EnumMember(Value = "USER")]
-        USER
+        USER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureAdObjectType

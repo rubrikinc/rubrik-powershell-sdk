@@ -444,6 +444,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	snmpConfigV93 = @{
+    /// 		# OPTIONAL
+    /// 		communityString = $someString
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		snmpAgentPort = $someInt
+    /// 		# OPTIONAL
+    /// 		trapReceiverConfigs = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				user = $someString
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# REQUIRED
+    /// 				address = $someString
+    /// 				# REQUIRED
+    /// 				port = $someInt
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		users = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				authPassword = $someString
+    /// 				# REQUIRED
+    /// 				privPassword = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
+    /// 			}
+    /// 		)
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -852,6 +885,39 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	snmpConfigV92 = @{
+		# OPTIONAL
+		communityString = $someString
+		# REQUIRED
+		isEnabled = $someBoolean
+		# REQUIRED
+		snmpAgentPort = $someInt
+		# OPTIONAL
+		trapReceiverConfigs = @(
+			@{
+				# OPTIONAL
+				user = $someString
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# REQUIRED
+				address = $someString
+				# REQUIRED
+				port = $someInt
+			}
+		)
+		# OPTIONAL
+		users = @(
+			@{
+				# REQUIRED
+				authPassword = $someString
+				# REQUIRED
+				privPassword = $someString
+				# REQUIRED
+				username = $someString
+			}
+		)
+	}
+	# OPTIONAL
+	snmpConfigV93 = @{
 		# OPTIONAL
 		communityString = $someString
 		# REQUIRED

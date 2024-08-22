@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         ISOLATED,
 
         [EnumMember(Value = "OTHER_REASON")]
-        OTHER_REASON
+        OTHER_REASON,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MissingClusterDisconnectedState

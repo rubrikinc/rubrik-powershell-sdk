@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         INHERIT_AUTH_DOMAIN,
 
         [EnumMember(Value = "LOCAL_AUTH_DOMAIN_ONLY")]
-        LOCAL_AUTH_DOMAIN_ONLY
+        LOCAL_AUTH_DOMAIN_ONLY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TenantAuthDomainConfig

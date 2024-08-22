@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         OBJECT_TYPE,
 
         [EnumMember(Value = "WORKLOAD_NAME")]
-        WORKLOAD_NAME
+        WORKLOAD_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum NfAnomalyResultSortBy

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         INFO,
 
         [EnumMember(Value = "Warning")]
-        WARNING
+        WARNING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ActivitySeverityEnum

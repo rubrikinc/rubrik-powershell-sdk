@@ -21,3 +21,5 @@ Compute setting for Azure Target.
   - Compute proxy settings of the Azure target.
 - cloudAccountId: System.String
   - Cloud account ID of the AWS target.
+- subscriptionId: System.String
+  - Subscription ID of the Azure target that hosts the compute resources.

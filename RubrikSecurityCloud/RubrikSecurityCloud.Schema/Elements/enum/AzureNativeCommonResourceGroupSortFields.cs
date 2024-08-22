@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         AZURE_RG_VM_EFFECTIVE_SLA,
 
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureNativeCommonResourceGroupSortFields

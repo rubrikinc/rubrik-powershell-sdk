@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("attributeValue")]
         public System.String? AttributeValue { get; set; }
 
+        //      C# -> AttributeDataType? DataType
+        // GraphQL -> dataType: AttributeDataType (enum)
+        [JsonProperty("dataType")]
+        public AttributeDataType? DataType { get; set; }
+
 
         #endregion
 

@@ -16,7 +16,10 @@ namespace RubrikSecurityCloud.Types
     public enum AwsCloudComputeSettingQuerySortByField
     {
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsCloudComputeSettingQuerySortByField

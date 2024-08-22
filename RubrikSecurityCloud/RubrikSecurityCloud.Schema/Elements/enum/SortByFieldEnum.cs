@@ -271,7 +271,10 @@ namespace RubrikSecurityCloud.Types
         WORKLOAD_NAME,
 
         [EnumMember(Value = "WORKLOAD_TYPE")]
-        WORKLOAD_TYPE
+        WORKLOAD_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SortByFieldEnum

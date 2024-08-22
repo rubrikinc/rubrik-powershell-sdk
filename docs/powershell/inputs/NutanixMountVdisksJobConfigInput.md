@@ -1,13 +1,18 @@
 ### NutanixMountVdisksJobConfigInput
-
+Supported in v9.2+
 
 - shouldMigrateImmediately: System.Boolean
-  - Specifies whether to trigger migration immediately when the vDisk Mount succeeds.
+  - Supported in v9.2+
+      Specifies whether to trigger migration immediately when the vDisk Mount succeeds.
 - containerNaturalId: System.String
-  - The ID of the storage container that stores the disks of the mounted virtual machine when migration is selected.
+  - Supported in v9.2+
+      The ID of the storage container that stores the disks of the mounted virtual machine when migration is selected.
 - shouldDisableMigration: System.Boolean
-  - Required. Specifies whether the migration option should not be enabled for the vDisk Mount.
+  - Required. Supported in v9.2+
+      Specifies whether the migration option should not be enabled for the vDisk Mount.
 - targetVirtualMachineId: System.String
-  - Required. ID of the target Nutanix virtual machine where the vDisks will be mounted.
+  - Required. Supported in v9.2+
+      ID of the target Nutanix virtual machine where the vDisks will be mounted.
 - virtualDiskIds: list of System.Strings
-  - Required. vDisk IDs to be mounted from the given snapshot.
+  - Required. Supported in v9.2+
+      vDisk IDs to be mounted from the given snapshot.

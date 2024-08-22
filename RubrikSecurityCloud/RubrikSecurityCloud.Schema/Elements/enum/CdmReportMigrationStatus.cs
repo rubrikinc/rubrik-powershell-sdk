@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         UNAVAILABLE,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED
+        UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CdmReportMigrationStatus

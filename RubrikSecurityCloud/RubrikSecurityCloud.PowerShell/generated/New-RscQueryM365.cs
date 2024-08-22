@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 9
     /// operations in the 'Microsoft 365' API domain:
-    /// DayToDayModeBackupStats, DayToDayModeStats, DirectoryObjectAttributes, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, or Regions.
+    /// DayToDayModeBackupStats, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, or Regions.
     /// </summary>
     /// <description>
     /// New-RscQueryM365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 9 operations
     /// in the 'Microsoft 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: DayToDayModeBackupStats, DayToDayModeStats, DirectoryObjectAttributes, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, or Regions.
+    /// one of: DayToDayModeBackupStats, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, or Regions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -170,6 +170,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ListO365DirectoryObjectAttributesResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the LicenseEntitlement operation
+    /// of the 'Microsoft 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    M365
+    /// # API Operation: LicenseEntitlement
+    /// 
+    /// $query = New-RscQueryM365 -LicenseEntitlement
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: M365LicenseEntitlementReply
     /// 
     /// 
     /// 
@@ -342,6 +369,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DayToDayModeBackupStats",
                 "DayToDayModeStats",
                 "DirectoryObjectAttributes",
+                "LicenseEntitlement",
                 "OnboardingModeBackupStats",
                 "OnboardingModeStats",
                 "OrgBackupLocations",
@@ -370,6 +398,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DirectoryObjectAttributes":
                         this.ProcessRecord_DirectoryObjectAttributes();
+                        break;
+                    case "LicenseEntitlement":
+                        this.ProcessRecord_LicenseEntitlement();
                         break;
                     case "OnboardingModeBackupStats":
                         this.ProcessRecord_OnboardingModeBackupStats();
@@ -421,6 +452,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DirectoryObjectAttributes";
             // Create new graphql operation m365DirectoryObjectAttributes
             InitQueryM365DirectoryObjectAttributes();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // m365LicenseEntitlement.
+        internal void ProcessRecord_LicenseEntitlement()
+        {
+            this._logger.name += " -LicenseEntitlement";
+            // Create new graphql operation m365LicenseEntitlement
+            InitQueryM365LicenseEntitlement();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -546,6 +586,24 @@ $query.Var.input = @{
 	# REQUIRED
 	maxResults = $someInt
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // m365LicenseEntitlement: M365LicenseEntitlementReply!
+        internal void InitQueryM365LicenseEntitlement()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryM365LicenseEntitlement",
+                "",
+                "M365LicenseEntitlementReply",
+                Query.M365LicenseEntitlement,
+                Query.M365LicenseEntitlementFieldSpec,
+                @""
             );
         }
 

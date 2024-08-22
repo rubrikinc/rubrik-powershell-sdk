@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         KEY_TYPE_ROAMING,
 
         [EnumMember(Value = "KEY_TYPE_UNSPECIFIED")]
-        KEY_TYPE_UNSPECIFIED
+        KEY_TYPE_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum KeyTypeEnumType

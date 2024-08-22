@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         MSSQL_BACKUP_TYPE_LOG,
 
         [EnumMember(Value = "MSSQL_BACKUP_TYPE_SNAPSHOT")]
-        MSSQL_BACKUP_TYPE_SNAPSHOT
+        MSSQL_BACKUP_TYPE_SNAPSHOT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MssqlBackupType

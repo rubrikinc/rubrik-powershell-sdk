@@ -20,6 +20,26 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> BackupStatus? BackupStatus
+        // GraphQL -> backupStatus: BackupStatus! (enum)
+        [JsonProperty("backupStatus")]
+        public BackupStatus? BackupStatus { get; set; }
+
+        //      C# -> Encryption? Encryption
+        // GraphQL -> encryption: Encryption! (enum)
+        [JsonProperty("encryption")]
+        public Encryption? Encryption { get; set; }
+
+        //      C# -> Logging? Logging
+        // GraphQL -> logging: Logging! (enum)
+        [JsonProperty("logging")]
+        public Logging? Logging { get; set; }
+
+        //      C# -> NetworkAccess? NetworkAccess
+        // GraphQL -> networkAccess: NetworkAccess! (enum)
+        [JsonProperty("networkAccess")]
+        public NetworkAccess? NetworkAccess { get; set; }
+
         //      C# -> Platform? Platform
         // GraphQL -> platform: Platform! (enum)
         [JsonProperty("platform")]
@@ -70,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterInfo")]
         public ClusterInfo? ClusterInfo { get; set; }
 
+        //      C# -> RubrikSlaInfo? RubrikSlaInfo
+        // GraphQL -> rubrikSlaInfo: RubrikSlaInfo (type)
+        [JsonProperty("rubrikSlaInfo")]
+        public RubrikSlaInfo? RubrikSlaInfo { get; set; }
+
 
         #endregion
 
@@ -80,6 +105,10 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AssetMetadata Set(
+        BackupStatus? BackupStatus = null,
+        Encryption? Encryption = null,
+        Logging? Logging = null,
+        NetworkAccess? NetworkAccess = null,
         Platform? Platform = null,
         PlatformCategory? PlatformCategory = null,
         System.Int64? CreationTime = null,
@@ -89,9 +118,22 @@ namespace RubrikSecurityCloud.Types
         System.String? Region = null,
         System.Int64? Size = null,
         CloudAccountInfo? CloudAccountInfo = null,
-        ClusterInfo? ClusterInfo = null
+        ClusterInfo? ClusterInfo = null,
+        RubrikSlaInfo? RubrikSlaInfo = null
     ) 
     {
+        if ( BackupStatus != null ) {
+            this.BackupStatus = BackupStatus;
+        }
+        if ( Encryption != null ) {
+            this.Encryption = Encryption;
+        }
+        if ( Logging != null ) {
+            this.Logging = Logging;
+        }
+        if ( NetworkAccess != null ) {
+            this.NetworkAccess = NetworkAccess;
+        }
         if ( Platform != null ) {
             this.Platform = Platform;
         }
@@ -122,6 +164,9 @@ namespace RubrikSecurityCloud.Types
         if ( ClusterInfo != null ) {
             this.ClusterInfo = ClusterInfo;
         }
+        if ( RubrikSlaInfo != null ) {
+            this.RubrikSlaInfo = RubrikSlaInfo;
+        }
         return this;
     }
 
@@ -136,6 +181,42 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> BackupStatus? BackupStatus
+        // GraphQL -> backupStatus: BackupStatus! (enum)
+        if (this.BackupStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupStatus\n" ;
+            } else {
+                s += ind + "backupStatus\n" ;
+            }
+        }
+        //      C# -> Encryption? Encryption
+        // GraphQL -> encryption: Encryption! (enum)
+        if (this.Encryption != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "encryption\n" ;
+            } else {
+                s += ind + "encryption\n" ;
+            }
+        }
+        //      C# -> Logging? Logging
+        // GraphQL -> logging: Logging! (enum)
+        if (this.Logging != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "logging\n" ;
+            } else {
+                s += ind + "logging\n" ;
+            }
+        }
+        //      C# -> NetworkAccess? NetworkAccess
+        // GraphQL -> networkAccess: NetworkAccess! (enum)
+        if (this.NetworkAccess != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "networkAccess\n" ;
+            } else {
+                s += ind + "networkAccess\n" ;
+            }
+        }
         //      C# -> Platform? Platform
         // GraphQL -> platform: Platform! (enum)
         if (this.Platform != null) {
@@ -232,6 +313,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> RubrikSlaInfo? RubrikSlaInfo
+        // GraphQL -> rubrikSlaInfo: RubrikSlaInfo (type)
+        if (this.RubrikSlaInfo != null) {
+            var fspec = this.RubrikSlaInfo.AsFieldSpec(conf.Child("rubrikSlaInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rubrikSlaInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -239,6 +332,74 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> BackupStatus? BackupStatus
+        // GraphQL -> backupStatus: BackupStatus! (enum)
+        if (ec.Includes("backupStatus",true))
+        {
+            if(this.BackupStatus == null) {
+
+                this.BackupStatus = new BackupStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupStatus != null && ec.Excludes("backupStatus",true))
+        {
+            this.BackupStatus = null;
+        }
+        //      C# -> Encryption? Encryption
+        // GraphQL -> encryption: Encryption! (enum)
+        if (ec.Includes("encryption",true))
+        {
+            if(this.Encryption == null) {
+
+                this.Encryption = new Encryption();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Encryption != null && ec.Excludes("encryption",true))
+        {
+            this.Encryption = null;
+        }
+        //      C# -> Logging? Logging
+        // GraphQL -> logging: Logging! (enum)
+        if (ec.Includes("logging",true))
+        {
+            if(this.Logging == null) {
+
+                this.Logging = new Logging();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Logging != null && ec.Excludes("logging",true))
+        {
+            this.Logging = null;
+        }
+        //      C# -> NetworkAccess? NetworkAccess
+        // GraphQL -> networkAccess: NetworkAccess! (enum)
+        if (ec.Includes("networkAccess",true))
+        {
+            if(this.NetworkAccess == null) {
+
+                this.NetworkAccess = new NetworkAccess();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkAccess != null && ec.Excludes("networkAccess",true))
+        {
+            this.NetworkAccess = null;
+        }
         //      C# -> Platform? Platform
         // GraphQL -> platform: Platform! (enum)
         if (ec.Includes("platform",true))
@@ -412,6 +573,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClusterInfo != null && ec.Excludes("clusterInfo",false))
         {
             this.ClusterInfo = null;
+        }
+        //      C# -> RubrikSlaInfo? RubrikSlaInfo
+        // GraphQL -> rubrikSlaInfo: RubrikSlaInfo (type)
+        if (ec.Includes("rubrikSlaInfo",false))
+        {
+            if(this.RubrikSlaInfo == null) {
+
+                this.RubrikSlaInfo = new RubrikSlaInfo();
+                this.RubrikSlaInfo.ApplyExploratoryFieldSpec(ec.NewChild("rubrikSlaInfo"));
+
+            } else {
+
+                this.RubrikSlaInfo.ApplyExploratoryFieldSpec(ec.NewChild("rubrikSlaInfo"));
+
+            }
+        }
+        else if (this.RubrikSlaInfo != null && ec.Excludes("rubrikSlaInfo",false))
+        {
+            this.RubrikSlaInfo = null;
         }
     }
 

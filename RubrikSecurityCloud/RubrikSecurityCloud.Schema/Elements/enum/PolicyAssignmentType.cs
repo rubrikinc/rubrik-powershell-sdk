@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         DIRECT,
 
         [EnumMember(Value = "INHERITED")]
-        INHERITED
+        INHERITED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PolicyAssignmentType

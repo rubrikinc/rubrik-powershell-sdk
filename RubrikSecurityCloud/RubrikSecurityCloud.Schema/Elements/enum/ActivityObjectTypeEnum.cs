@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
+        [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
+        ACTIVE_DIRECTORY_FOREST,
+
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 
@@ -95,6 +98,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
         CLOUD_DIRECT_NAS_EXPORT,
+
+        [EnumMember(Value = "CONFLUENCE_SPACE")]
+        CONFLUENCE_SPACE,
 
         [EnumMember(Value = "CROSS_ACCOUNT_PAIR")]
         CROSS_ACCOUNT_PAIR,
@@ -394,7 +400,10 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_FILESET,
 
         [EnumMember(Value = "WindowsHost")]
-        WINDOWS_HOST
+        WINDOWS_HOST,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ActivityObjectTypeEnum

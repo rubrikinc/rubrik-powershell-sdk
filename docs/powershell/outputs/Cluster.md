@@ -45,6 +45,8 @@ A Rubrik CDM Cluster.
   - The cluster type.
 - status: ClusterStatus
   - The cluster status.
+- statusFromDb: ClusterConnectionStatusFromDb
+  - The cluster status from the database.
 - subStatus: ClusterSubStatus
   - The cluster sub status.
 - state: clusterState

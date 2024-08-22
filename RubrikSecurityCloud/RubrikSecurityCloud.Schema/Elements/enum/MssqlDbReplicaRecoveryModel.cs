@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         MSSQL_DB_REPLICA_RECOVERY_MODEL_FULL,
 
         [EnumMember(Value = "MSSQL_DB_REPLICA_RECOVERY_MODEL_SIMPLE")]
-        MSSQL_DB_REPLICA_RECOVERY_MODEL_SIMPLE
+        MSSQL_DB_REPLICA_RECOVERY_MODEL_SIMPLE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MssqlDbReplicaRecoveryModel

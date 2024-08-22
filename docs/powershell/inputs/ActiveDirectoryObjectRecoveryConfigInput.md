@@ -20,7 +20,8 @@ Supported in v9.0+
   - Supported in v9.0+
       ID of the archival or replication location.
 - hostId: System.String
-  - Specify the Host ID for performing this restore on the alternate domain controller.
+  - Supported in v9.2+
+      Specify the Host ID for performing this restore on the alternate domain controller.
 - nameConflict: ActiveDirectoryObjectNameConflictOption
   - Supported in v9.0+
       Behavior to be followed when an object name conflicts with an existing object in Active Directory.

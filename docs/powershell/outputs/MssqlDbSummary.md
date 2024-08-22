@@ -98,6 +98,8 @@ Supported in v5.0+
   - A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
 - unprotectableReasonsV92: list of System.Strings
   - A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
+- unprotectableReasonsV93: list of System.Strings
+  - A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
 - recoveryModel: MssqlDbSummaryRecoveryModel
   - 
 - snappable: CdmWorkload

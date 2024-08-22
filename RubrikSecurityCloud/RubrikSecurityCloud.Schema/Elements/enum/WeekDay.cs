@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         TUESDAY,
 
         [EnumMember(Value = "WEDNESDAY")]
-        WEDNESDAY
+        WEDNESDAY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum WeekDay

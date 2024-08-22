@@ -79,7 +79,10 @@ namespace RubrikSecurityCloud.Types
         S3_COMPATIBLE,
 
         [EnumMember(Value = "SCALITY")]
-        SCALITY
+        SCALITY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DataLocationName

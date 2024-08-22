@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         OUT_OF_COMPLIANCE,
 
         [EnumMember(Value = "UNPROTECTED")]
-        UNPROTECTED
+        UNPROTECTED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ComplianceStatusEnum

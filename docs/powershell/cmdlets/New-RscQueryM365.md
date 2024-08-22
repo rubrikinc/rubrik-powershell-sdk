@@ -20,6 +20,11 @@ Lists down the directory object attribute present in the Microsoft tenant.
 
 - There is a single argument of type ListM365DirectoryObjectAttributesInput.
 - Returns ListO365DirectoryObjectAttributesResp.
+### licenseentitlement
+Display license entitlement for M365 workloads.
+
+- The licenseentitlement subcommand takes no arguments.
+- Returns M365LicenseEntitlementReply.
 ### onboardingmodebackupstats
 Returns the backup statistics of an M365 organization product in onboarding mode.
 

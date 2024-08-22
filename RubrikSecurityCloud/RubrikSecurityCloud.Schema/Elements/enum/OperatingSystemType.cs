@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         OPERATING_SYSTEM_TYPE_UNKNOWN,
 
         [EnumMember(Value = "OPERATING_SYSTEM_TYPE_WINDOWS")]
-        OPERATING_SYSTEM_TYPE_WINDOWS
+        OPERATING_SYSTEM_TYPE_WINDOWS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum OperatingSystemType

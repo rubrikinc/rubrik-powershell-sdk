@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         PAST_90_DAYS,
 
         [EnumMember(Value = "SINCE_PROTECTION")]
-        SINCE_PROTECTION
+        SINCE_PROTECTION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SlaComplianceTimeRange

@@ -7,3 +7,7 @@ MFA settings to update for an account.
   - Optional integer value indicating the period of showing TOTP configuration reminder in hours. If omitted, existing value of the setting is kept.
 - mfaRememberHours: System.Int32
   - Optional integer value indicating the time of remembering the MFA login in hours. If omitted, existing value of the setting is kept.
+- passkeyConfig: PasskeyConfigInput
+  - Optional. New passkey configuration.
+- deletePasskeys: System.Boolean
+  - Optional. Should passkeys be deleted?

@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
 
+        //      C# -> System.Int32? RegisteredDomainControllersCount
+        // GraphQL -> registeredDomainControllersCount: Int! (scalar)
+        [JsonProperty("registeredDomainControllersCount")]
+        public System.Int32? RegisteredDomainControllersCount { get; set; }
+
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         [JsonProperty("replicatedObjectCount")]
@@ -233,6 +238,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
+        System.Int32? RegisteredDomainControllersCount = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
@@ -292,6 +298,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
+        }
+        if ( RegisteredDomainControllersCount != null ) {
+            this.RegisteredDomainControllersCount = RegisteredDomainControllersCount;
         }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
@@ -499,6 +508,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "numWorkloadDescendants\n" ;
             } else {
                 s += ind + "numWorkloadDescendants\n" ;
+            }
+        }
+        //      C# -> System.Int32? RegisteredDomainControllersCount
+        // GraphQL -> registeredDomainControllersCount: Int! (scalar)
+        if (this.RegisteredDomainControllersCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "registeredDomainControllersCount\n" ;
+            } else {
+                s += ind + "registeredDomainControllersCount\n" ;
             }
         }
         //      C# -> System.Int32? ReplicatedObjectCount
@@ -961,6 +979,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = null;
+        }
+        //      C# -> System.Int32? RegisteredDomainControllersCount
+        // GraphQL -> registeredDomainControllersCount: Int! (scalar)
+        if (ec.Includes("registeredDomainControllersCount",true))
+        {
+            if(this.RegisteredDomainControllersCount == null) {
+
+                this.RegisteredDomainControllersCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.RegisteredDomainControllersCount != null && ec.Excludes("registeredDomainControllersCount",true))
+        {
+            this.RegisteredDomainControllersCount = null;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)

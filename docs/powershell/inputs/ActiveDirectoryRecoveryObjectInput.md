@@ -2,7 +2,8 @@
 Supported in v9.0+
 
 - attributes: list of System.Strings
-  - Selected attributes that would be restored for the object.
+  - Supported in v9.2+
+      Selected attributes that would be restored for the object.
 - objectType: ActiveDirectoryObjectType
   - Supported in v9.0+
       Type of the object.

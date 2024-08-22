@@ -23,3 +23,5 @@ Cloud compute settings input for the Azure archival target.
   - Compute proxy settings of the Azure target.
 - cloudAccountId: System.String
   - Cloud account ID of the Azure target.
+- subscriptionId: System.String
+  - Subscription ID of the Azure target that hosts the compute resources. If subscriptionId is provided then there is noneed to specify cloudAccountId.

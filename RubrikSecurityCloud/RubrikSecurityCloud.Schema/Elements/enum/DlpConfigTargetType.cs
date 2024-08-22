@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         TARGET_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "VMWARE_VM")]
-        VMWARE_VM
+        VMWARE_VM,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DlpConfigTargetType

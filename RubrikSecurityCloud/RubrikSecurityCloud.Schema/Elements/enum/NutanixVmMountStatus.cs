@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         NUTANIX_VM_MOUNT_STATUS_POWERED_OFF,
 
         [EnumMember(Value = "NUTANIX_VM_MOUNT_STATUS_POWERED_ON")]
-        NUTANIX_VM_MOUNT_STATUS_POWERED_ON
+        NUTANIX_VM_MOUNT_STATUS_POWERED_ON,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum NutanixVmMountStatus

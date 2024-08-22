@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         UNSPECIFIED,
 
         [EnumMember(Value = "UP_TO_DATE")]
-        UP_TO_DATE
+        UP_TO_DATE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AnalysisStatus

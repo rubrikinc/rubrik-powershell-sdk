@@ -36,7 +36,7 @@ Supported in v5.0+
       v7.0: ID of the guest OS credential that should be used for authentication when restoring files through the VMware tools. When this ID is specified, the 'domainName', 'username', 'password', and 'shouldSaveCredentials' fields will be ignored.
       v8.0+: ID of the guest OS credential used for authentication when restoring files through the VMware tools. When this ID is specified, the 'domainName', 'username', 'password', and 'shouldSaveCredentials' fields are ignored.
 - description: System.String
-  - Supported in v9.2
+  - Supported in v9.2+
       Description.
 - shouldUseMountDisks: System.Boolean
   - Supported in v9.1+

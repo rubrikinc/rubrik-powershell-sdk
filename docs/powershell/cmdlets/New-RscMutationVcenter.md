@@ -45,3 +45,11 @@ Set the user-configured network for HotAdd backup and recovery operations on VMw
 
 - There is a single argument of type UpdateVcenterHotAddNetworkInput.
 - Returns RequestSuccess.
+### updatev2
+Update vCenter Server
+
+Supported in v8.1+
+Update the address, username, and password of the specified vCenter Server object.
+
+- There is a single argument of type UpdateVcenterV2Input.
+- Returns UpdateVcenterV2Reply.

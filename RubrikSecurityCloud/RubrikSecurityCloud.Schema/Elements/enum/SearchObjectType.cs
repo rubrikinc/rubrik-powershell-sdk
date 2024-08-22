@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         EMAIL,
 
         [EnumMember(Value = "FOLDER")]
-        FOLDER
+        FOLDER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SearchObjectType

@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         SEVERITY_UNSPECIFIED,
 
         [EnumMember(Value = "WARNING")]
-        WARNING
+        WARNING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AuditSeverity

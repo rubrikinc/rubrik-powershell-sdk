@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EDIT_SLA")]
         EDIT_SLA,
 
+        [EnumMember(Value = "EDIT_TPR_CONFIG")]
+        EDIT_TPR_CONFIG,
+
         [EnumMember(Value = "EDIT_TPR_POLICY")]
         EDIT_TPR_POLICY,
 
@@ -94,7 +97,10 @@ namespace RubrikSecurityCloud.Types
         TRIGGER_RCV_CUSTOM_FAIL_OVER,
 
         [EnumMember(Value = "UNLOCK_TPR_USER")]
-        UNLOCK_TPR_USER
+        UNLOCK_TPR_USER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TprRule

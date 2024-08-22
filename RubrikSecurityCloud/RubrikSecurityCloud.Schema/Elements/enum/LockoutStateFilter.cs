@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         LOCKED,
 
         [EnumMember(Value = "NOT_LOCKED")]
-        NOT_LOCKED
+        NOT_LOCKED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum LockoutStateFilter

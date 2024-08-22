@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         PROTOCOL_UNSPECIFIED,
 
         [EnumMember(Value = "SOCKS5")]
-        SOCK_S5
+        SOCK_S5,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ProxyProtocol

@@ -31,7 +31,7 @@ Supported in v5.0+
 - hostname: System.String
   - Required. Supported in v5.0+
 - mssqlSddUserCredentials: SddUserCredentialsInput
-  - Supported in v9.2
+  - Supported in v9.2+
       The user credentials for querying SQL server instance on the host for Sensitive Data Discovery.
 - nasConfig: NasConfigInput
   - Supported in v5.0+

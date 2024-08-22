@@ -21,12 +21,12 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> System.Int64? FetbConsumed
-        // GraphQL -> fetbConsumed: Long! (scalar)
+        // GraphQL -> fetbConsumed: Long (scalar)
         [JsonProperty("fetbConsumed")]
         public System.Int64? FetbConsumed { get; set; }
 
         //      C# -> System.Int32? UsersProtected
-        // GraphQL -> usersProtected: Int! (scalar)
+        // GraphQL -> usersProtected: Int (scalar)
         [JsonProperty("usersProtected")]
         public System.Int32? UsersProtected { get; set; }
 
@@ -65,7 +65,7 @@ namespace RubrikSecurityCloud.Types
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? FetbConsumed
-        // GraphQL -> fetbConsumed: Long! (scalar)
+        // GraphQL -> fetbConsumed: Long (scalar)
         if (this.FetbConsumed != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "fetbConsumed\n" ;
@@ -74,7 +74,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.Int32? UsersProtected
-        // GraphQL -> usersProtected: Int! (scalar)
+        // GraphQL -> usersProtected: Int (scalar)
         if (this.UsersProtected != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "usersProtected\n" ;
@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? FetbConsumed
-        // GraphQL -> fetbConsumed: Long! (scalar)
+        // GraphQL -> fetbConsumed: Long (scalar)
         if (ec.Includes("fetbConsumed",true))
         {
             if(this.FetbConsumed == null) {
@@ -107,7 +107,7 @@ namespace RubrikSecurityCloud.Types
             this.FetbConsumed = null;
         }
         //      C# -> System.Int32? UsersProtected
-        // GraphQL -> usersProtected: Int! (scalar)
+        // GraphQL -> usersProtected: Int (scalar)
         if (ec.Includes("usersProtected",true))
         {
             if(this.UsersProtected == null) {

@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         END_TIME,
 
         [EnumMember(Value = "START_TIME")]
-        START_TIME
+        START_TIME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum Db2RecoverableRangeSortBy

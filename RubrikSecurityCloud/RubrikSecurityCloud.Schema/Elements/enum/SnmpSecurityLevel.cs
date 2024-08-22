@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SNMP_SECURITY_LEVEL_ENUM_AUTH_PRIV,
 
         [EnumMember(Value = "SNMP_SECURITY_LEVEL_ENUM_NO_AUTH_NO_PRIV")]
-        SNMP_SECURITY_LEVEL_ENUM_NO_AUTH_NO_PRIV
+        SNMP_SECURITY_LEVEL_ENUM_NO_AUTH_NO_PRIV,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnmpSecurityLevel

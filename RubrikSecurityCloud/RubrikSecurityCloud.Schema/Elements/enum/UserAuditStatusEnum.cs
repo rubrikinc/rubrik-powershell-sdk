@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         FAILURE,
 
         [EnumMember(Value = "Success")]
-        SUCCESS
+        SUCCESS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UserAuditStatusEnum

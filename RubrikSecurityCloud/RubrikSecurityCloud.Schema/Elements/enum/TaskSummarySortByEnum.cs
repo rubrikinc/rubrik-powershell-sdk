@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         OBJECT_TYPE,
 
         [EnumMember(Value = "SlaDomainName")]
-        SLA_DOMAIN_NAME
+        SLA_DOMAIN_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TaskSummarySortByEnum

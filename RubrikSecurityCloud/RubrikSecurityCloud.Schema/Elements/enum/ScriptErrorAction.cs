@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         SCRIPT_ERROR_ACTION_ABORT,
 
         [EnumMember(Value = "SCRIPT_ERROR_ACTION_CONTINUE")]
-        SCRIPT_ERROR_ACTION_CONTINUE
+        SCRIPT_ERROR_ACTION_CONTINUE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ScriptErrorAction

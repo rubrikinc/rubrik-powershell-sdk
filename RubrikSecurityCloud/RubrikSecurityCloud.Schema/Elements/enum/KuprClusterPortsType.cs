@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         BACKUP,
 
         [EnumMember(Value = "USER_DRIVEN")]
-        USER_DRIVEN
+        USER_DRIVEN,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum KuprClusterPortsType

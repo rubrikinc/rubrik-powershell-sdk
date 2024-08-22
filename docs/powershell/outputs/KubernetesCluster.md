@@ -15,6 +15,10 @@ Kubernetes cluster.
   - Registry of Kubernetes Cluster.
 - k8sVersion: System.String
   - Version of Kubernetes Cluster.
+- transport: System.String
+  - Transport type of Kubernetes Cluster.
+- namespaceCount: System.Int32
+  - Number of namespaces in the cluster.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - descendantConnection: KubernetesClusterDescendantConnection

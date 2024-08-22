@@ -17,6 +17,8 @@ RBAC role.
   - If this role is a tenant organization administrator.
 - permissions: list of Permissions
   - Role permissions.
+- effectivePermissions: list of Permissions
+  - Role permissions that are in effect.
 - effectiveRbacPermissions: list of RbacPermissions
   - Permissions assigned to the role that are in effect.
 - explicitlyAssignedPermissions: list of Permissions

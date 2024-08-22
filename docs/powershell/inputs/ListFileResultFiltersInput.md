@@ -6,4 +6,16 @@
 - whitelistEnabled: System.Boolean
 - sids: list of System.Strings
   - List of principal IDs to filter the paths.
+- dataTypeIds: list of System.Strings
+  - List of data type IDs to filter snapshot file results.
+- riskLevelTypesFilter: list of RiskLevelTypes
+  - List of sensitivity levels to filter the paths.
+- lastAccessFilter: UserTimeRangeInput
+  - Last access time range specified in the local timezone of the user.
+- lastModifiedFilter: UserTimeRangeInput
+  - Last modified time range specified in the local timezone of the user.
+- creationTimeFilter: UserTimeRangeInput
+  - Creation time range specified in the local timezone of the user.
+- lastScanFilter: UserTimeRangeInput
+  - Last scan time range specified in the local timezone of the user.
 - fileType: FileCountType

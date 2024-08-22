@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         SOURCE_DATABASE_ID,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED
+        UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum OracleLiveMountFilterField

@@ -21,4 +21,5 @@ Supported in v5.0+
 - blackoutWindowResponseInfo: BlackoutWindowResponseInfo
   - Blackout window information.
 - excludedVolumes: list of HostVolumeSummarys
-  - Configuration details for the volumes in the Volume Group.
+  - Supported in v9.2+
+  Configuration details for the volumes in the Volume Group.

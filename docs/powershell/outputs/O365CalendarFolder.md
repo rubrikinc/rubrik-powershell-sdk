@@ -7,3 +7,5 @@
   - The snapshot time of this version of the event.
 - isCalendarGroup: System.Boolean
   - Indicates if this folder represents a Calendar Group.
+- hierarchyType: ExchangeItemHierarchyType
+  - Type of hierarchy for the specified calendar folder.

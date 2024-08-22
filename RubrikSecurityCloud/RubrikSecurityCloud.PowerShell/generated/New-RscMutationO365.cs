@@ -551,6 +551,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			EmailID = $someString
     /// 			# OPTIONAL
     /// 			FolderID = $someString
+    /// 			# OPTIONAL
+    /// 			hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			parentFolderId = $someString
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -608,6 +612,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			EmailID = $someString
     /// 			# OPTIONAL
     /// 			FolderID = $someString
+    /// 			# OPTIONAL
+    /// 			hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			parentFolderId = $someString
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -850,6 +858,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			EmailID = $someString
     /// 			# OPTIONAL
     /// 			FolderID = $someString
+    /// 			# OPTIONAL
+    /// 			hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			parentFolderId = $someString
     /// 		}
     /// 	)
     /// 	# REQUIRED
@@ -905,6 +917,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			EmailID = $someString
     /// 			# OPTIONAL
     /// 			FolderID = $someString
+    /// 			# OPTIONAL
+    /// 			hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			parentFolderId = $someString
     /// 		}
     /// 	)
     /// 	# REQUIRED
@@ -1447,6 +1463,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					EmailID = $someString
     /// 					# OPTIONAL
     /// 					FolderID = $someString
+    /// 					# OPTIONAL
+    /// 					hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
+    /// 					# OPTIONAL
+    /// 					parentFolderId = $someString
     /// 				}
     /// 			)
     /// 			# OPTIONAL
@@ -1461,6 +1481,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					eventId = $someString
     /// 					# REQUIRED
     /// 					snapshotId = $someString
+    /// 					# OPTIONAL
+    /// 					hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
     /// 				}
     /// 			)
     /// 			# REQUIRED
@@ -1470,6 +1492,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					calendarId = $someString
     /// 					# REQUIRED
     /// 					snapshotId = $someString
+    /// 					# OPTIONAL
+    /// 					hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
     /// 				}
     /// 			)
     /// 			# REQUIRED
@@ -1479,6 +1503,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					calendarGroupId = $someString
     /// 					# REQUIRED
     /// 					snapshotId = $someString
+    /// 					# OPTIONAL
+    /// 					hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
     /// 				}
     /// 			)
     /// 			# OPTIONAL
@@ -1641,6 +1667,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		fetchAllPostSenders = $someString
     /// 		# OPTIONAL
     /// 		skipPostsAttachments = $someBoolean
+    /// 		# OPTIONAL
+    /// 		lambdaFilters = @{
+    /// 			# OPTIONAL
+    /// 			enableAbsolutePaths = $someBoolean
+    /// 			# OPTIONAL
+    /// 			enableAbsolutePathCachePreload = $someBoolean
+    /// 			# OPTIONAL
+    /// 			parentFolderIdBatch = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			searchRecurseFolderId = $someString
+    /// 			# OPTIONAL
+    /// 			includeAncestors = $someBoolean
+    /// 		}
     /// 	}
     /// 	# REQUIRED
     /// 	refreshTokenEncrypted = $someString
@@ -2870,6 +2911,10 @@ $query.Var.exportConfig = @{
 			EmailID = $someString
 			# OPTIONAL
 			FolderID = $someString
+			# OPTIONAL
+			hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
+			# OPTIONAL
+			parentFolderId = $someString
 		}
 	)
 	# OPTIONAL
@@ -2919,6 +2964,10 @@ $query.Var.input = @{
 			EmailID = $someString
 			# OPTIONAL
 			FolderID = $someString
+			# OPTIONAL
+			hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
+			# OPTIONAL
+			parentFolderId = $someString
 		}
 	)
 	# OPTIONAL
@@ -3113,6 +3162,10 @@ $query.Var.restoreConfig = @{
 			EmailID = $someString
 			# OPTIONAL
 			FolderID = $someString
+			# OPTIONAL
+			hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
+			# OPTIONAL
+			parentFolderId = $someString
 		}
 	)
 	# REQUIRED
@@ -3160,6 +3213,10 @@ $query.Var.input = @{
 			EmailID = $someString
 			# OPTIONAL
 			FolderID = $someString
+			# OPTIONAL
+			hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
+			# OPTIONAL
+			parentFolderId = $someString
 		}
 	)
 	# REQUIRED
@@ -3694,6 +3751,10 @@ $query.Var.input = @{
 					EmailID = $someString
 					# OPTIONAL
 					FolderID = $someString
+					# OPTIONAL
+					hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
+					# OPTIONAL
+					parentFolderId = $someString
 				}
 			)
 			# OPTIONAL
@@ -3708,6 +3769,8 @@ $query.Var.input = @{
 					eventId = $someString
 					# REQUIRED
 					snapshotId = $someString
+					# OPTIONAL
+					hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
 				}
 			)
 			# REQUIRED
@@ -3717,6 +3780,8 @@ $query.Var.input = @{
 					calendarId = $someString
 					# REQUIRED
 					snapshotId = $someString
+					# OPTIONAL
+					hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
 				}
 			)
 			# REQUIRED
@@ -3726,6 +3791,8 @@ $query.Var.input = @{
 					calendarGroupId = $someString
 					# REQUIRED
 					snapshotId = $someString
+					# OPTIONAL
+					hierarchyType = $someExchangeItemHierarchyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExchangeItemHierarchyType]) for enum values.
 				}
 			)
 			# OPTIONAL
@@ -3880,6 +3947,21 @@ $query.Var.input = @{
 		fetchAllPostSenders = $someString
 		# OPTIONAL
 		skipPostsAttachments = $someBoolean
+		# OPTIONAL
+		lambdaFilters = @{
+			# OPTIONAL
+			enableAbsolutePaths = $someBoolean
+			# OPTIONAL
+			enableAbsolutePathCachePreload = $someBoolean
+			# OPTIONAL
+			parentFolderIdBatch = @(
+				$someString
+			)
+			# OPTIONAL
+			searchRecurseFolderId = $someString
+			# OPTIONAL
+			includeAncestors = $someBoolean
+		}
 	}
 	# REQUIRED
 	refreshTokenEncrypted = $someString

@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         NODES_RANSOMWARE_STRAIN_NOTE,
 
         [EnumMember(Value = "NODES_SUSPICIOUS")]
-        NODES_SUSPICIOUS
+        NODES_SUSPICIOUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DeltaType

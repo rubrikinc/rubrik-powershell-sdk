@@ -9,3 +9,5 @@ Group filter attribute configuration.
   - Specifies the name of the attribute to apply filter.
 - attributeValue: System.String
   - Specifies the value of the attribute key.
+- dataType: AttributeDataType
+  - Specifies the data type of attribute.

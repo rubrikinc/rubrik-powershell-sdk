@@ -926,6 +926,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	fetchAllPostSenders = $someString
     /// 	# OPTIONAL
     /// 	skipPostsAttachments = $someBoolean
+    /// 	# OPTIONAL
+    /// 	lambdaFilters = @{
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePaths = $someBoolean
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePathCachePreload = $someBoolean
+    /// 		# OPTIONAL
+    /// 		parentFolderIdBatch = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -2125,6 +2140,21 @@ $query.Var.teamsConversationsSearchFilter = @{
 	fetchAllPostSenders = $someString
 	# OPTIONAL
 	skipPostsAttachments = $someBoolean
+	# OPTIONAL
+	lambdaFilters = @{
+		# OPTIONAL
+		enableAbsolutePaths = $someBoolean
+		# OPTIONAL
+		enableAbsolutePathCachePreload = $someBoolean
+		# OPTIONAL
+		parentFolderIdBatch = @(
+			$someString
+		)
+		# OPTIONAL
+		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
+	}
 }"
             );
         }

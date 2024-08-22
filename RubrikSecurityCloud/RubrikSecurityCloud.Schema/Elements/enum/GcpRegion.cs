@@ -106,7 +106,10 @@ namespace RubrikSecurityCloud.Types
         US_WEST3,
 
         [EnumMember(Value = "US_WEST4")]
-        US_WEST4
+        US_WEST4,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GcpRegion

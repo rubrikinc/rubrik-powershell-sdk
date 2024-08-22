@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         REGULAR_RDS,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED
+        UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsNativeRdsType

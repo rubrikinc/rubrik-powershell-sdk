@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ThreatHuntStatus? SnapshotScanStatus
+        // GraphQL -> snapshotScanStatus: ThreatHuntStatus! (enum)
+        [JsonProperty("snapshotScanStatus")]
+        public ThreatHuntStatus? SnapshotScanStatus { get; set; }
+
         //      C# -> MalwareScanInSnapshotStatus? Status
         // GraphQL -> status: MalwareScanInSnapshotStatus! (enum)
         [JsonProperty("status")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ThreatHuntResultSnapshotStats Set(
+        ThreatHuntStatus? SnapshotScanStatus = null,
         MalwareScanInSnapshotStatus? Status = null,
         System.Boolean? IsExpired = null,
         System.Boolean? IsQuarantined = null,
@@ -74,6 +80,9 @@ namespace RubrikSecurityCloud.Types
         List<IndicatorOfCompromise>? MatchTypes = null
     ) 
     {
+        if ( SnapshotScanStatus != null ) {
+            this.SnapshotScanStatus = SnapshotScanStatus;
+        }
         if ( Status != null ) {
             this.Status = Status;
         }
@@ -109,6 +118,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ThreatHuntStatus? SnapshotScanStatus
+        // GraphQL -> snapshotScanStatus: ThreatHuntStatus! (enum)
+        if (this.SnapshotScanStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotScanStatus\n" ;
+            } else {
+                s += ind + "snapshotScanStatus\n" ;
+            }
+        }
         //      C# -> MalwareScanInSnapshotStatus? Status
         // GraphQL -> status: MalwareScanInSnapshotStatus! (enum)
         if (this.Status != null) {
@@ -182,6 +200,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> ThreatHuntStatus? SnapshotScanStatus
+        // GraphQL -> snapshotScanStatus: ThreatHuntStatus! (enum)
+        if (ec.Includes("snapshotScanStatus",true))
+        {
+            if(this.SnapshotScanStatus == null) {
+
+                this.SnapshotScanStatus = new ThreatHuntStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotScanStatus != null && ec.Excludes("snapshotScanStatus",true))
+        {
+            this.SnapshotScanStatus = null;
+        }
         //      C# -> MalwareScanInSnapshotStatus? Status
         // GraphQL -> status: MalwareScanInSnapshotStatus! (enum)
         if (ec.Includes("status",true))

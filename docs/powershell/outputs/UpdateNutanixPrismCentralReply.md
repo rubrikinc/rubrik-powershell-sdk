@@ -13,7 +13,8 @@ Response for the update Nutanix Prism Central operation.
   - Required. Supported in v9.0+
   Username for the Nutanix Prism Central that we use for all the cluster connections.
 - isDrEnabled: System.Boolean
-  - Specifies whether Nutanix DR support is enabled for the the Prism Central object.
+  - Supported in v9.2+
+  Specifies whether Nutanix DR support is enabled for the the Prism Central object.
 - pendingSlaDomain: ManagedObjectPendingSlaInfo
   - Supported in v9.0+
   Describes any pending SLA Domain assignment on this object.

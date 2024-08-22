@@ -56,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public ClusterStatus? Status { get; set; }
 
+        //      C# -> ClusterConnectionStatusFromDb? StatusFromDb
+        // GraphQL -> statusFromDb: ClusterConnectionStatusFromDb! (enum)
+        [JsonProperty("statusFromDb")]
+        public ClusterConnectionStatusFromDb? StatusFromDb { get; set; }
+
         //      C# -> ClusterSubStatus? SubStatus
         // GraphQL -> subStatus: ClusterSubStatus! (enum)
         [JsonProperty("subStatus")]
@@ -416,6 +421,7 @@ namespace RubrikSecurityCloud.Types
         ClusterProductEnum? ProductType = null,
         ClusterRegistrationMode? RegisteredMode = null,
         ClusterStatus? Status = null,
+        ClusterConnectionStatusFromDb? StatusFromDb = null,
         ClusterSubStatus? SubStatus = null,
         ClusterSystemStatus? SystemStatus = null,
         ClusterTypeEnum? Type = null,
@@ -492,6 +498,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( StatusFromDb != null ) {
+            this.StatusFromDb = StatusFromDb;
         }
         if ( SubStatus != null ) {
             this.SubStatus = SubStatus;
@@ -730,6 +739,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> ClusterConnectionStatusFromDb? StatusFromDb
+        // GraphQL -> statusFromDb: ClusterConnectionStatusFromDb! (enum)
+        if (this.StatusFromDb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "statusFromDb\n" ;
+            } else {
+                s += ind + "statusFromDb\n" ;
             }
         }
         //      C# -> ClusterSubStatus? SubStatus
@@ -1433,6 +1451,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> ClusterConnectionStatusFromDb? StatusFromDb
+        // GraphQL -> statusFromDb: ClusterConnectionStatusFromDb! (enum)
+        if (ec.Includes("statusFromDb",true))
+        {
+            if(this.StatusFromDb == null) {
+
+                this.StatusFromDb = new ClusterConnectionStatusFromDb();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StatusFromDb != null && ec.Excludes("statusFromDb",true))
+        {
+            this.StatusFromDb = null;
         }
         //      C# -> ClusterSubStatus? SubStatus
         // GraphQL -> subStatus: ClusterSubStatus! (enum)

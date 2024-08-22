@@ -46,7 +46,10 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_DATE,
 
         [EnumMember(Value = "SUSPICIOUS_FILE_COUNT")]
-        SUSPICIOUS_FILE_COUNT
+        SUSPICIOUS_FILE_COUNT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum WorkloadAnomaliesSortBy

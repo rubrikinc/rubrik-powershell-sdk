@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         DATOS,
 
         [EnumMember(Value = "POLARIS")]
-        POLARIS
+        POLARIS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterProductEnum

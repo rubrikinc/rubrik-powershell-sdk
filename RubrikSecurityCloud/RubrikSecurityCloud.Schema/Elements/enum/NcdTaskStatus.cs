@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         STATUS_UNSPECIFIED,
 
         [EnumMember(Value = "SUCCESS")]
-        SUCCESS
+        SUCCESS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum NcdTaskStatus

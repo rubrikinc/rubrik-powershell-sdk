@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? PcrLatestApprovedBundleVersion
+        // GraphQL -> pcrLatestApprovedBundleVersion: String! (scalar)
+        [JsonProperty("pcrLatestApprovedBundleVersion")]
+        public System.String? PcrLatestApprovedBundleVersion { get; set; }
+
         //      C# -> PrivateContainerRegistryDetailsType? PcrDetails
         // GraphQL -> pcrDetails: PrivateContainerRegistryDetailsType (type)
         [JsonProperty("pcrDetails")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PrivateContainerRegistryReplyType Set(
+        System.String? PcrLatestApprovedBundleVersion = null,
         PrivateContainerRegistryDetailsType? PcrDetails = null
     ) 
     {
+        if ( PcrLatestApprovedBundleVersion != null ) {
+            this.PcrLatestApprovedBundleVersion = PcrLatestApprovedBundleVersion;
+        }
         if ( PcrDetails != null ) {
             this.PcrDetails = PcrDetails;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? PcrLatestApprovedBundleVersion
+        // GraphQL -> pcrLatestApprovedBundleVersion: String! (scalar)
+        if (this.PcrLatestApprovedBundleVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "pcrLatestApprovedBundleVersion\n" ;
+            } else {
+                s += ind + "pcrLatestApprovedBundleVersion\n" ;
+            }
+        }
         //      C# -> PrivateContainerRegistryDetailsType? PcrDetails
         // GraphQL -> pcrDetails: PrivateContainerRegistryDetailsType (type)
         if (this.PcrDetails != null) {
@@ -74,6 +92,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? PcrLatestApprovedBundleVersion
+        // GraphQL -> pcrLatestApprovedBundleVersion: String! (scalar)
+        if (ec.Includes("pcrLatestApprovedBundleVersion",true))
+        {
+            if(this.PcrLatestApprovedBundleVersion == null) {
+
+                this.PcrLatestApprovedBundleVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PcrLatestApprovedBundleVersion != null && ec.Excludes("pcrLatestApprovedBundleVersion",true))
+        {
+            this.PcrLatestApprovedBundleVersion = null;
+        }
         //      C# -> PrivateContainerRegistryDetailsType? PcrDetails
         // GraphQL -> pcrDetails: PrivateContainerRegistryDetailsType (type)
         if (ec.Includes("pcrDetails",false))

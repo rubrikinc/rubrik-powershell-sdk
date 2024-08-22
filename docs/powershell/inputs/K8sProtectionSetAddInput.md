@@ -3,7 +3,8 @@ Supported in v9.1+
   Input to add a Kubernetes protection set.
 
 - creationType: System.String
-  - The type of method used to create a protection set. Possible values are: automatic, RSC, or CRD.
+  - Supported in v9.2+
+      The type of method used to create a protection set. Possible values are: automatic, RSC, or CRD.
 - kubernetesNamespace: System.String
   - Supported in v9.1+
       Kubernetes namespace to which the protection set to be added belongs.

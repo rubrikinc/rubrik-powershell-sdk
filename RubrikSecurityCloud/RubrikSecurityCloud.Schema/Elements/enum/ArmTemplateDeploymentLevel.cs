@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         RESOURCE_GROUP,
 
         [EnumMember(Value = "SUBSCRIPTION")]
-        SUBSCRIPTION
+        SUBSCRIPTION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ArmTemplateDeploymentLevel

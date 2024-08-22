@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         CLUSTER_UUID,
 
         [EnumMember(Value = "PAUSE_STATUS")]
-        PAUSE_STATUS
+        PAUSE_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SlaStatusFilterField

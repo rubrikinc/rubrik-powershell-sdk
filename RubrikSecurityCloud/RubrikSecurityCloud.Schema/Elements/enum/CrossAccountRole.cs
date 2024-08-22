@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SERVICE_CONSUMER,
 
         [EnumMember(Value = "SERVICE_PROVIDER")]
-        SERVICE_PROVIDER
+        SERVICE_PROVIDER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CrossAccountRole

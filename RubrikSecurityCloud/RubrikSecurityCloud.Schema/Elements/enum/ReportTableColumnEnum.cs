@@ -283,7 +283,10 @@ namespace RubrikSecurityCloud.Types
         WORKLOAD_NAME,
 
         [EnumMember(Value = "WorkloadType")]
-        WORKLOAD_TYPE
+        WORKLOAD_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ReportTableColumnEnum

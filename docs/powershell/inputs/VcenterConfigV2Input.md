@@ -8,7 +8,8 @@ Supported in v5.3+
   - Supported in v7.0+
       A Boolean value that determines whether to enable HotAdd transport mode for On-Premise vCenter. When this value is `true`, VMware virtual machines can use HotAdd proxy to transport virtual disk data in addition to NBD(SSL). When this value is `false`, VMware virtual machines can ONLY usee NBD(SSL) to transport virtual disk data. Default value is `false`.
 - isStandaloneHost: System.Boolean
-  - Specifies whether the API call is creating a standalone host or a virtual center.
+  - Supported in v9.2+
+      Specifies whether the API call is creating a standalone host or a virtual center.
 - orgNetworkId: System.String
   - Supported in v8.1+
       The managed ID of the organization network to which the vCenter Server is assigned.

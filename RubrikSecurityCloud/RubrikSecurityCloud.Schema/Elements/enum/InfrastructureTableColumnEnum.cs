@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         TOTAL_CAPACITY,
 
         [EnumMember(Value = "UsedCapacity")]
-        USED_CAPACITY
+        USED_CAPACITY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum InfrastructureTableColumnEnum

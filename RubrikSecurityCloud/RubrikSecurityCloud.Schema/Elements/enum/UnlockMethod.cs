@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         SUPPORT_UNLOCK,
 
         [EnumMember(Value = "UNLOCK_METHOD_UNSPECIFIED")]
-        UNLOCK_METHOD_UNSPECIFIED
+        UNLOCK_METHOD_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UnlockMethod

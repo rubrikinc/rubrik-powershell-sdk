@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         NUM_ACTIVITIES,
 
         [EnumMember(Value = "USER_NAME")]
-        USER_NAME
+        USER_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FileActivitiesSortBy

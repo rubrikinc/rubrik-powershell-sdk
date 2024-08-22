@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KOREASOUTH")]
         KOREASOUTH,
 
+        [EnumMember(Value = "MEXICOCENTRAL")]
+        MEXICOCENTRAL,
+
         [EnumMember(Value = "NORTHCENTRALUS")]
         NORTHCENTRALUS,
 
@@ -125,6 +128,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SOUTHINDIA")]
         SOUTHINDIA,
+
+        [EnumMember(Value = "SPAINCENTRAL")]
+        SPAINCENTRAL,
 
         [EnumMember(Value = "SWEDENCENTRAL")]
         SWEDENCENTRAL,
@@ -175,7 +181,10 @@ namespace RubrikSecurityCloud.Types
         WESTU_S2,
 
         [EnumMember(Value = "WESTUS3")]
-        WESTU_S3
+        WESTU_S3,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureCloudAccountRegion

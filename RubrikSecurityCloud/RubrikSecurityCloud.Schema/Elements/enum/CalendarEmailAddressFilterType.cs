@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         ATTENDEE,
 
         [EnumMember(Value = "ORGANIZER")]
-        ORGANIZER
+        ORGANIZER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CalendarEmailAddressFilterType

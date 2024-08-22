@@ -7,6 +7,8 @@ Active Directory Domain.
   - Name of the Active Directory domain.
 - domainSid: System.String
   - ID of the Active Directory domain.
+- registeredDomainControllersCount: System.Int32
+  - Number of domain controllers that are added to RSC from this domain.
 - cluster: Cluster
   - Rubrik cluster.
 - descendantConnection: ActiveDirectoryDomainDescendantTypeConnection

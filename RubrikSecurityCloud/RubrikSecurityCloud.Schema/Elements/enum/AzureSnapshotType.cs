@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         REPLICATED,
 
         [EnumMember(Value = "SOURCE")]
-        SOURCE
+        SOURCE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureSnapshotType

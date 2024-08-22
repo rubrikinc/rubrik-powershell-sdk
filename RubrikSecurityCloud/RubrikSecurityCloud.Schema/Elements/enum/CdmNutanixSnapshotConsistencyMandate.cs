@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         NUTANIX_SNAPSHOT_CONSISTENCY_MANDATE_AUTOMATIC,
 
         [EnumMember(Value = "NUTANIX_SNAPSHOT_CONSISTENCY_MANDATE_CRASH_CONSISTENT")]
-        NUTANIX_SNAPSHOT_CONSISTENCY_MANDATE_CRASH_CONSISTENT
+        NUTANIX_SNAPSHOT_CONSISTENCY_MANDATE_CRASH_CONSISTENT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CdmNutanixSnapshotConsistencyMandate

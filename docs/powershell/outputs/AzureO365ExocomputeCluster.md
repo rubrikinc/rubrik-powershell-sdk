@@ -36,6 +36,8 @@ Azure O365 Exocompute cluster details.
   - Storage account used for exocompute internal storage.
 - isOnMultiTenantHost: System.Boolean
   - Specifies whether Exocompute is on a multitenant host.
+- shardPoolType: System.Int32
+  - Sharding strategy for the Exocompute.
 - aksLbIps: list of System.Strings
   - List of AKS load balancer IPs.
 - kmsHostType: AzureHostType

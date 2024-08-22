@@ -130,6 +130,12 @@ namespace RubrikSecurityCloud.NetSDK.Client
                     $"Could not parse query:\n\n{request.Query}\n\n{ex}"
                 );
             }
+            catch (Exception ex)
+            {
+                string error = $"Could not parse query:\n\n{request.Query}\n\n{ex}";
+                logger?.Error(error);
+                throw new InvalidOperationException(error);
+            }
             if (queryDocument.Definitions != null)
             {
                 var parent = (ASTNode)(
@@ -185,7 +191,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
                     NullValueHandling = NullValueHandling.Ignore,
                     Converters =
                     {
-                        //new EnumJsonConverter(), //Might be needed in the future.
+                        new EnumJsonConverter(),
                         new GraphQLInterfaceConverter(typeof(T).FullName,logger)
                     },
                 }

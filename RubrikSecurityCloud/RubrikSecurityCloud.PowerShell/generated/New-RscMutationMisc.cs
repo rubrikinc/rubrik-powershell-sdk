@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 132
+    /// Create a new RscQuery object for any of the 134
     /// operations in the 'Miscellaneous' API domain:
-    /// AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
+    /// AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
     /// </summary>
     /// <description>
     /// New-RscMutationMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 132 operations
+    /// There are 134 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
+    /// one of: AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -115,6 +115,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					attributeKey = $someString
     /// 					# OPTIONAL
     /// 					attributeValue = $someString
+    /// 					# OPTIONAL
+    /// 					dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// 				}
     /// 			)
     /// 		}
@@ -171,6 +173,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			attributeKey = $someString
     /// 			# OPTIONAL
     /// 			attributeValue = $someString
+    /// 			# OPTIONAL
+    /// 			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// 		}
     /// 	)
     /// }
@@ -206,6 +210,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	name = $someString
     /// 	# OPTIONAL
     /// 	description = $someString
+    /// 	# OPTIONAL
+    /// 	userId = $someString
     /// 	# REQUIRED
     /// 	entries = @(
     /// 		@{
@@ -1273,14 +1279,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# OPTIONAL
-    /// 	feedId = $someString
+    /// 	providerId = $someString
     /// }
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: DeleteIntelFeedReply
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -1930,6 +1936,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ManageProtectionForLinkedObjects operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: ManageProtectionForLinkedObjects
+    /// 
+    /// $query = New-RscMutationMisc -ManageProtectionForLinkedObjects
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	operation = $someManageProtectionForLinkedObjectsOperationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManageProtectionForLinkedObjectsOperationType]) for enum values.
+    /// 	# REQUIRED
+    /// 	assignSlaReq = @{
+    /// 		# REQUIRED
+    /// 		slaDomainAssignType = $someSlaAssignTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaAssignTypeEnum]) for enum values.
+    /// 		# OPTIONAL
+    /// 		slaOptionalId = $someString
+    /// 		# REQUIRED
+    /// 		objectIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		applicableWorkloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+    /// 		# OPTIONAL
+    /// 		shouldApplyToExistingSnapshots = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldApplyToNonPolicySnapshots = $someBoolean
+    /// 		# OPTIONAL
+    /// 		existingSnapshotRetention = $someGlobalExistingSnapshotRetention # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalExistingSnapshotRetention]) for enum values.
+    /// 		# OPTIONAL
+    /// 		userNote = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateOnDemandJobReply
     /// 
     /// 
     /// 
@@ -3046,6 +3104,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	totpReminderHours = $someInt
     /// 	# OPTIONAL
     /// 	mfaRememberHours = $someInt
+    /// 	# OPTIONAL
+    /// 	passkeyConfig = @{
+    /// 		# REQUIRED
+    /// 		passkeysAllowed = $someBoolean
+    /// 		# REQUIRED
+    /// 		platformPasskeyAllowed = $someBoolean
+    /// 		# REQUIRED
+    /// 		roamingPasskeyAllowed = $someBoolean
+    /// 		# REQUIRED
+    /// 		maxPasskeysAllowed = $someInt
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	deletePasskeys = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -3713,7 +3784,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
+    /// 	# REQUIRED
     /// 	orgId = $someString
     /// 	# REQUIRED
     /// 	workloadType = $someM365DashboardWorkloadType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365DashboardWorkloadType]) for enum values.
@@ -3723,7 +3794,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: SwitchProductToOnboardingModeReply
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -3962,6 +4033,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			attributeKey = $someString
     /// 			# OPTIONAL
     /// 			attributeValue = $someString
+    /// 			# OPTIONAL
+    /// 			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// 		}
     /// 	)
     /// }
@@ -4212,6 +4285,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			attributeKey = $someString
     /// 			# OPTIONAL
     /// 			attributeValue = $someString
+    /// 			# OPTIONAL
+    /// 			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// 		}
     /// 	)
     /// 	# REQUIRED
@@ -4302,16 +4377,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# OPTIONAL
-    /// 	feedId = $someString
-    /// 	# OPTIONAL
-    /// 	entriesToRemove = @(
-    /// 		$someString
-    /// 	)
+    /// 	user = $someString
     /// 	# OPTIONAL
     /// 	name = @{
     /// 		# OPTIONAL
     /// 		name = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	providerId = $someString
     /// 	# OPTIONAL
     /// 	description = @{
     /// 		# OPTIONAL
@@ -4328,13 +4401,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			iocType = $someThreatFeedType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatFeedType]) for enum values.
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	entriesToRemove = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: UpdateCustomIntelFeedReply
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -4682,6 +4759,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: UpdateInsightStateReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateIocStatus operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: UpdateIocStatus
+    /// 
+    /// $query = New-RscMutationMisc -UpdateIocStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @(
+    /// 	@{
+    /// 		# REQUIRED
+    /// 		operation = $someIocOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IocOperation]) for enum values.
+    /// 		# OPTIONAL
+    /// 		iocHashOnly = @{
+    /// 			# REQUIRED
+    /// 			iocHashHex = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		iocHashWithProvider = @{
+    /// 			# REQUIRED
+    /// 			iocHashHex = $someString
+    /// 			# REQUIRED
+    /// 			providerId = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		iocProviderWithThreatFeedType = @{
+    /// 			# REQUIRED
+    /// 			providerId = $someString
+    /// 			# REQUIRED
+    /// 			type = $someThreatFeedType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatFeedType]) for enum values.
+    /// 		}
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -5425,6 +5554,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "LockUsersByAdmin",
                 "LogoutFromRubrikSupportPortal",
                 "MakePrimary",
+                "ManageProtectionForLinkedObjects",
                 "ModifyEventDigestBatch",
                 "ModifyIpmi",
                 "MountDisk",
@@ -5493,6 +5623,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateFloatingIps",
                 "UpdateGuestCredential",
                 "UpdateInsightState",
+                "UpdateIocStatus",
                 "UpdateIpWhitelist",
                 "UpdateLambdaSettings",
                 "UpdateLockoutConfig",
@@ -5665,6 +5796,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "MakePrimary":
                         this.ProcessRecord_MakePrimary();
+                        break;
+                    case "ManageProtectionForLinkedObjects":
+                        this.ProcessRecord_ManageProtectionForLinkedObjects();
                         break;
                     case "ModifyEventDigestBatch":
                         this.ProcessRecord_ModifyEventDigestBatch();
@@ -5869,6 +6003,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateInsightState":
                         this.ProcessRecord_UpdateInsightState();
+                        break;
+                    case "UpdateIocStatus":
+                        this.ProcessRecord_UpdateIocStatus();
                         break;
                     case "UpdateIpWhitelist":
                         this.ProcessRecord_UpdateIpWhitelist();
@@ -6352,6 +6489,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -MakePrimary";
             // Create new graphql operation makePrimary
             InitMutationMakePrimary();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // manageProtectionForLinkedObjects.
+        internal void ProcessRecord_ManageProtectionForLinkedObjects()
+        {
+            this._logger.name += " -ManageProtectionForLinkedObjects";
+            // Create new graphql operation manageProtectionForLinkedObjects
+            InitMutationManageProtectionForLinkedObjects();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -6967,6 +7113,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // updateIocStatus.
+        internal void ProcessRecord_UpdateIocStatus()
+        {
+            this._logger.name += " -UpdateIocStatus";
+            // Create new graphql operation updateIocStatus
+            InitMutationUpdateIocStatus();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // updateIpWhitelist.
         internal void ProcessRecord_UpdateIpWhitelist()
         {
@@ -7161,6 +7316,8 @@ $query.Var.input = @{
 					attributeKey = $someString
 					# OPTIONAL
 					attributeValue = $someString
+					# OPTIONAL
+					dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 				}
 			)
 		}
@@ -7209,6 +7366,8 @@ $query.Var.input = @{
 			attributeKey = $someString
 			# OPTIONAL
 			attributeValue = $someString
+			# OPTIONAL
+			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 		}
 	)
 }"
@@ -7236,6 +7395,8 @@ $query.Var.input = @{
 	name = $someString
 	# OPTIONAL
 	description = $someString
+	# OPTIONAL
+	userId = $someString
 	# REQUIRED
 	entries = @(
 		@{
@@ -8088,7 +8249,7 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // deleteIntelFeed(input: DeleteIntelFeedInput!): DeleteIntelFeedReply!
+        // deleteIntelFeed(input: DeleteIntelFeedInput!): Void
         internal void InitMutationDeleteIntelFeed()
         {
             Tuple<string, string>[] argDefs = {
@@ -8099,13 +8260,13 @@ $query.Var.input = @{
                 "mutation",
                 "MutationDeleteIntelFeed",
                 "($input: DeleteIntelFeedInput!)",
-                "DeleteIntelFeedReply",
+                "System.String",
                 Mutation.DeleteIntelFeed,
                 Mutation.DeleteIntelFeedFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
 	# OPTIONAL
-	feedId = $someString
+	providerId = $someString
 }"
             );
         }
@@ -8601,6 +8762,50 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		oldPrimaryClusterUuid = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // manageProtectionForLinkedObjects(input: ManageProtectionForLinkedObjectsInput!): CreateOnDemandJobReply!
+        internal void InitMutationManageProtectionForLinkedObjects()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ManageProtectionForLinkedObjectsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationManageProtectionForLinkedObjects",
+                "($input: ManageProtectionForLinkedObjectsInput!)",
+                "CreateOnDemandJobReply",
+                Mutation.ManageProtectionForLinkedObjects,
+                Mutation.ManageProtectionForLinkedObjectsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	operation = $someManageProtectionForLinkedObjectsOperationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManageProtectionForLinkedObjectsOperationType]) for enum values.
+	# REQUIRED
+	assignSlaReq = @{
+		# REQUIRED
+		slaDomainAssignType = $someSlaAssignTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaAssignTypeEnum]) for enum values.
+		# OPTIONAL
+		slaOptionalId = $someString
+		# REQUIRED
+		objectIds = @(
+			$someString
+		)
+		# OPTIONAL
+		applicableWorkloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+		# OPTIONAL
+		shouldApplyToExistingSnapshots = $someBoolean
+		# OPTIONAL
+		shouldApplyToNonPolicySnapshots = $someBoolean
+		# OPTIONAL
+		existingSnapshotRetention = $someGlobalExistingSnapshotRetention # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalExistingSnapshotRetention]) for enum values.
+		# OPTIONAL
+		userNote = $someString
 	}
 }"
             );
@@ -9497,6 +9702,19 @@ $query.Var.input = @{
 	totpReminderHours = $someInt
 	# OPTIONAL
 	mfaRememberHours = $someInt
+	# OPTIONAL
+	passkeyConfig = @{
+		# REQUIRED
+		passkeysAllowed = $someBoolean
+		# REQUIRED
+		platformPasskeyAllowed = $someBoolean
+		# REQUIRED
+		roamingPasskeyAllowed = $someBoolean
+		# REQUIRED
+		maxPasskeysAllowed = $someInt
+	}
+	# OPTIONAL
+	deletePasskeys = $someBoolean
 }"
             );
         }
@@ -10048,7 +10266,7 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // switchProductToOnboardingMode(input: SwitchProductToOnboardingModeInput!): SwitchProductToOnboardingModeReply!
+        // switchProductToOnboardingMode(input: SwitchProductToOnboardingModeInput!): Void
         internal void InitMutationSwitchProductToOnboardingMode()
         {
             Tuple<string, string>[] argDefs = {
@@ -10059,12 +10277,12 @@ $query.Var.input = @{
                 "mutation",
                 "MutationSwitchProductToOnboardingMode",
                 "($input: SwitchProductToOnboardingModeInput!)",
-                "SwitchProductToOnboardingModeReply",
+                "System.String",
                 Mutation.SwitchProductToOnboardingMode,
                 Mutation.SwitchProductToOnboardingModeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
+	# REQUIRED
 	orgId = $someString
 	# REQUIRED
 	workloadType = $someM365DashboardWorkloadType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365DashboardWorkloadType]) for enum values.
@@ -10257,6 +10475,8 @@ $query.Var.input = @{
 			attributeKey = $someString
 			# OPTIONAL
 			attributeValue = $someString
+			# OPTIONAL
+			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 		}
 	)
 }"
@@ -10459,6 +10679,8 @@ $query.Var.input = @{
 			attributeKey = $someString
 			# OPTIONAL
 			attributeValue = $someString
+			# OPTIONAL
+			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 		}
 	)
 	# REQUIRED
@@ -10516,7 +10738,7 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // updateCustomIntelFeed(input: UpdateCustomIntelFeedInput!): UpdateCustomIntelFeedReply!
+        // updateCustomIntelFeed(input: UpdateCustomIntelFeedInput!): Void
         internal void InitMutationUpdateCustomIntelFeed()
         {
             Tuple<string, string>[] argDefs = {
@@ -10527,22 +10749,20 @@ $query.Var.input = @{
                 "mutation",
                 "MutationUpdateCustomIntelFeed",
                 "($input: UpdateCustomIntelFeedInput!)",
-                "UpdateCustomIntelFeedReply",
+                "System.String",
                 Mutation.UpdateCustomIntelFeed,
                 Mutation.UpdateCustomIntelFeedFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
 	# OPTIONAL
-	feedId = $someString
-	# OPTIONAL
-	entriesToRemove = @(
-		$someString
-	)
+	user = $someString
 	# OPTIONAL
 	name = @{
 		# OPTIONAL
 		name = $someString
 	}
+	# OPTIONAL
+	providerId = $someString
 	# OPTIONAL
 	description = @{
 		# OPTIONAL
@@ -10558,6 +10778,10 @@ $query.Var.input = @{
 			# REQUIRED
 			iocType = $someThreatFeedType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatFeedType]) for enum values.
 		}
+	)
+	# OPTIONAL
+	entriesToRemove = @(
+		$someString
 	)
 }"
             );
@@ -10851,6 +11075,50 @@ $query.Var.input = @{
 	# OPTIONAL
 	isDismissed = $someBoolean
 }"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateIocStatus(input: [UpdateIocStatusInput!]!): Void
+        internal void InitMutationUpdateIocStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "[UpdateIocStatusInput!]!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateIocStatus",
+                "($input: [UpdateIocStatusInput!]!)",
+                "System.String",
+                Mutation.UpdateIocStatus,
+                Mutation.UpdateIocStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @(
+	@{
+		# REQUIRED
+		operation = $someIocOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IocOperation]) for enum values.
+		# OPTIONAL
+		iocHashOnly = @{
+			# REQUIRED
+			iocHashHex = $someString
+		}
+		# OPTIONAL
+		iocHashWithProvider = @{
+			# REQUIRED
+			iocHashHex = $someString
+			# REQUIRED
+			providerId = $someString
+		}
+		# OPTIONAL
+		iocProviderWithThreatFeedType = @{
+			# REQUIRED
+			providerId = $someString
+			# REQUIRED
+			type = $someThreatFeedType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatFeedType]) for enum values.
+		}
+}
+)"
             );
         }
 

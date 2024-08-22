@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         CREATION_DATE,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED
+        UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ExchangeLiveMountSortByField

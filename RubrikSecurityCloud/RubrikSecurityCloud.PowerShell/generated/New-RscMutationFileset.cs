@@ -398,6 +398,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		ignoreErrors = $someBoolean
     /// 		# OPTIONAL
+    /// 		excludePaths = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
     /// 		shouldRecreateDirectoryStructure = $someBoolean
     /// 		# REQUIRED
     /// 		restoreConfig = @(
@@ -833,6 +837,10 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		ignoreErrors = $someBoolean
+		# OPTIONAL
+		excludePaths = @(
+			$someString
+		)
 		# OPTIONAL
 		shouldRecreateDirectoryStructure = $someBoolean
 		# REQUIRED

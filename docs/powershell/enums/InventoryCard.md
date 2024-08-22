@@ -45,3 +45,4 @@ Inventory Card options that the user can select as a workload.
 - AZURE_BLOB_STORAGE - Inventory Card is Azure Blob Storage.
 - POSTGRESQL - Inventory Card is PostgreSQL.
 - SALESFORCE - Inventory card is Salesforce.
+- MYSQL - Inventory Card is MySQL.

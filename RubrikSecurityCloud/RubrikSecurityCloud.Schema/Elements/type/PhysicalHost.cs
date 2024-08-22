@@ -121,6 +121,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? NasApiEndpoint
+        // GraphQL -> nasApiEndpoint: String (scalar)
+        [JsonProperty("nasApiEndpoint")]
+        public System.String? NasApiEndpoint { get; set; }
+
+        //      C# -> System.String? NasApiHostname
+        // GraphQL -> nasApiHostname: String (scalar)
+        [JsonProperty("nasApiHostname")]
+        public System.String? NasApiHostname { get; set; }
+
         //      C# -> System.String? NasMigrationInfo
         // GraphQL -> nasMigrationInfo: String (scalar)
         [JsonProperty("nasMigrationInfo")]
@@ -304,6 +314,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsChangelistEnabled = null,
         System.Boolean? IsOracleHost = null,
         System.String? Name = null,
+        System.String? NasApiEndpoint = null,
+        System.String? NasApiHostname = null,
         System.String? NasMigrationInfo = null,
         System.String? NasVendorType = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -388,6 +400,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( NasApiEndpoint != null ) {
+            this.NasApiEndpoint = NasApiEndpoint;
+        }
+        if ( NasApiHostname != null ) {
+            this.NasApiHostname = NasApiHostname;
         }
         if ( NasMigrationInfo != null ) {
             this.NasMigrationInfo = NasMigrationInfo;
@@ -670,6 +688,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? NasApiEndpoint
+        // GraphQL -> nasApiEndpoint: String (scalar)
+        if (this.NasApiEndpoint != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nasApiEndpoint\n" ;
+            } else {
+                s += ind + "nasApiEndpoint\n" ;
+            }
+        }
+        //      C# -> System.String? NasApiHostname
+        // GraphQL -> nasApiHostname: String (scalar)
+        if (this.NasApiHostname != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nasApiHostname\n" ;
+            } else {
+                s += ind + "nasApiHostname\n" ;
             }
         }
         //      C# -> System.String? NasMigrationInfo
@@ -1303,6 +1339,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.String? NasApiEndpoint
+        // GraphQL -> nasApiEndpoint: String (scalar)
+        if (ec.Includes("nasApiEndpoint",true))
+        {
+            if(this.NasApiEndpoint == null) {
+
+                this.NasApiEndpoint = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NasApiEndpoint != null && ec.Excludes("nasApiEndpoint",true))
+        {
+            this.NasApiEndpoint = null;
+        }
+        //      C# -> System.String? NasApiHostname
+        // GraphQL -> nasApiHostname: String (scalar)
+        if (ec.Includes("nasApiHostname",true))
+        {
+            if(this.NasApiHostname == null) {
+
+                this.NasApiHostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NasApiHostname != null && ec.Excludes("nasApiHostname",true))
+        {
+            this.NasApiHostname = null;
         }
         //      C# -> System.String? NasMigrationInfo
         // GraphQL -> nasMigrationInfo: String (scalar)

@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         LAST_LOGIN,
 
         [EnumMember(Value = "Status")]
-        STATUS
+        STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UserFieldEnum

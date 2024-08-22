@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         FAIL,
 
         [EnumMember(Value = "IN_PROGRESS")]
-        IN_PROGRESS
+        IN_PROGRESS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnappableCrawlStatus

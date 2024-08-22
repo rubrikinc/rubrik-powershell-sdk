@@ -109,6 +109,15 @@ Write-Host $versionTag -ForegroundColor Cyan
 Write-Host "Latest version entry:"
 Write-Host $versionEntry -ForegroundColor Cyan
 
+# Make sure this version tag is not already published:
+$existingTag = gh release list --json tagName --jq ".[] | select(.tagName == `"$versionTag`")"
+if ($null -ne $existingTag) {
+    $existingTag = $existingTag.Trim()
+}
+if ( -not [string]::IsNullOrEmpty($existingTag)) {
+    throw "Version tag $versionTag already exists in the GitHub repository."
+}
+
 # Update main branch
 $CommitMessage = ""
 RunIfNotDry {

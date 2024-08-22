@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         CROSS_ACCOUNT,
 
         [EnumMember(Value = "TARGET_TYPE_UNSPECIFIED")]
-        TARGET_TYPE_UNSPECIFIED
+        TARGET_TYPE_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ReplicationTargetsType

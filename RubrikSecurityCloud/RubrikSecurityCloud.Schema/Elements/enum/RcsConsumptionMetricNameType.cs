@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         BLOB_CAPACITY,
 
         [EnumMember(Value = "EGRESS_INGRESS")]
-        EGRESS_INGRESS
+        EGRESS_INGRESS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RcsConsumptionMetricNameType

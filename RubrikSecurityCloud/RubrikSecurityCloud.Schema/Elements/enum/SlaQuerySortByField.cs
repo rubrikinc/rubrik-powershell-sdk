@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         PROTECTED_OBJECT_COUNT,
 
         [EnumMember(Value = "RETENTION")]
-        RETENTION
+        RETENTION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SlaQuerySortByField

@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         TRIAL,
 
         [EnumMember(Value = "UNSPECIFIED_TYPE")]
-        UNSPECIFIED_TYPE
+        UNSPECIFIED_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ProductType

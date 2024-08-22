@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         FOLDER_NAME,
 
         [EnumMember(Value = "SUBJECT")]
-        SUBJECT
+        SUBJECT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SearchKeywordType

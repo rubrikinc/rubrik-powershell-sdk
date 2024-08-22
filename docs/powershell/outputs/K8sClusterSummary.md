@@ -15,7 +15,8 @@ Supported in v9.0+
   - Supported in v9.1+
   Distribution of the Kubernetes cluster.
 - kuprServerProxyConfig: KuprServerProxyConfig
-  - The configuration for the kupr server proxy being used.
+  - Supported in v9.2+
+  The configuration for the kupr server proxy being used.
 - transport: System.String
   - Supported in v9.1+
   The transport type used for communication with the Kubernetes cluster.
@@ -26,7 +27,14 @@ Supported in v9.0+
   - Supported in v9.1+
   Region of the Kubernetes cluster.
 - onboardingType: System.String
-  - The type of onboarding. It can be kubeconfig or manifest.
+  - Supported in v9.2+
+  The type of onboarding. It can be kubeconfig or manifest.
 - status: System.String
   - Required. Supported in v9.0+
   Connection status of the Kubernetes cluster.
+- crdServiceAccountInfo: ServiceAccountInfo
+  - Supported in v9.2+
+  The details of the RSC service account used for CRD operations.
+- onboardingServiceAccountInfo: ServiceAccountInfo
+  - Supported in v9.2+
+  The details of the RSC service account used for onboarding using manifest.

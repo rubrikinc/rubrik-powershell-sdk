@@ -11,3 +11,5 @@ CreateAzureClusterInput for Azure account.
   - Input cluster configuration.
 - vmConfig: AzureVmConfig
   - Virtual Machine input configuration.
+- validations: list of ClusterCreateValidationss
+  - Validations to perform on the request.

@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
+        [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
+        ACTIVE_DIRECTORY_FOREST,
+
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 
@@ -218,6 +221,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MssqlDatabase")]
         MSSQL_DATABASE,
+
+        [EnumMember(Value = "NAS_FILESET")]
+        NAS_FILESET,
 
         [EnumMember(Value = "NAS_SYSTEM")]
         NAS_SYSTEM,

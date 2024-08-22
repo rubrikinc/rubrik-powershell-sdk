@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         ROLLBACK,
 
         [EnumMember(Value = "START")]
-        START
+        START,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ActionType

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         RECURRING,
 
         [EnumMember(Value = "SINGLE")]
-        SINGLE
+        SINGLE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CalendarRecurrenceType

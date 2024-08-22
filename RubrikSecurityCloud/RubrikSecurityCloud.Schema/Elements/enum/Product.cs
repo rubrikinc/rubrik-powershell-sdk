@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         SCALE,
 
         [EnumMember(Value = "THIRDPARTY_HARDWARE")]
-        THIRDPARTY_HARDWARE
+        THIRDPARTY_HARDWARE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum Product

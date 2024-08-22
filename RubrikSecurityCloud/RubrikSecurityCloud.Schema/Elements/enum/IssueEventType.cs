@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         REMOVE_WHITELIST_EVENT,
 
         [EnumMember(Value = "SNAPSHOT_EVENT")]
-        SNAPSHOT_EVENT
+        SNAPSHOT_EVENT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum IssueEventType

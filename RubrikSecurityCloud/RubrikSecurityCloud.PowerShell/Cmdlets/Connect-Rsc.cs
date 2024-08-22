@@ -155,16 +155,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 case "IfNeeded":
                     {
-                        var psVar = SessionState.PSVariable.GetValue(Config.SessionVariableName);
-                        var sessionClient = (RscGraphQLClient)psVar;
-                        if (sessionClient == null ||
-                            sessionClient.AuthenticationState != AuthenticationState.AUTHORIZED)
+                        if (!this.RetrieveConnection(throwIfNotRetrieved: false))
                         {
                             goto case "ServiceAccountFile";
                         }
-                        this._rbkClient = sessionClient;
                         this._doConnect = false;
-                        this.WriteVerbose("Already connected.");
+                        this._logger?.Verbose("Already connected. " + this._rbkClient.Info());
                         return;
                     }
                 case "ServiceAccountFileFromEnv":
@@ -201,6 +197,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                                     Files.DefaultServiceAccountFileName
                                 );
                             }
+                            this._logger?.Verbose($"Using Service Account File: {ServiceAccountFile}");
 
                             if (!File.Exists(ServiceAccountFile))
                             {
@@ -282,7 +279,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._rbkClient = new RscGraphQLClient(
                 this._clientId,
                 this._clientSecret,
-                this._server);
+                this._server,
+                this._logger);
         }
 
         protected override void ProcessRecord()
@@ -290,46 +288,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             base.ProcessRecord();
             if (this._doConnect)
             {
-                this._Connect();
-            }
-        }
-
-        protected void _Connect()
-        {
-            try
-            {
-                var authStateBefore = this._rbkClient.AuthenticationState;
-                var psVarBefore = SessionState.PSVariable.Get(Config.SessionVariableName);
-                this._logger?.Debug($"Before Auth: AuthState={authStateBefore}, PSVar={psVarBefore}");
-                Task authTask = this._rbkClient.AuthAsync();
-                authTask.Wait();
-
-                if (this._rbkClient.AuthenticationState ==
-                AuthenticationState.AUTHORIZED)
+                if (this.Connect())
                 {
-                    SessionState.PSVariable.Set(
-                        new PSVariable(
-                            Config.SessionVariableName,
-                            this._rbkClient,
-                            ScopedItemOptions.AllScope));
-
                     RscSessionInfo sessionInfo = new RscSessionInfo(
                         this._rbkClient, new RscLogger(this));
-
                     WriteObject(sessionInfo.GetSessionInfo());
                 }
-
-                this.WriteVerbose($"Authentication Status: " +
-                        $"{ this._rbkClient.AuthenticationState.ToString()}");
-            }
-            catch (Exception ex)
-            {
-                var error = new ErrorRecord(
-                    ex,
-                    "UnableToAuthenticateToRubrikSecurityCloud",
-                    ErrorCategory.AuthenticationError,
-                    null);
-                ThrowTerminatingError(error);
+                else
+                {
+                    this._logger?.Error(
+                        "Failed to connect to Rubrik Security Cloud. " +
+                        this._rbkClient.Info());
+                }
             }
         }
     }

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         FULL,
 
         [EnumMember(Value = "INCREMENTAL")]
-        INCREMENTAL
+        INCREMENTAL,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum Db2SnapshotType

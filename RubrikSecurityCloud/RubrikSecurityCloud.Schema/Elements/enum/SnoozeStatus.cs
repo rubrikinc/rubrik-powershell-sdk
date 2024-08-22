@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ACTIVE,
 
         [EnumMember(Value = "EXPIRED")]
-        EXPIRED
+        EXPIRED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnoozeStatus

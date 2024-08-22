@@ -69,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KUPR_OBJECT_TYPE")]
         KUPR_OBJECT_TYPE,
 
+        [EnumMember(Value = "M365_BACKUP_STORAGE_OBJECT_TYPE")]
+        M365_BACKUP_STORAGE_OBJECT_TYPE,
+
         [EnumMember(Value = "MANAGED_VOLUME_OBJECT_TYPE")]
         MANAGED_VOLUME_OBJECT_TYPE,
 
@@ -80,6 +83,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MSSQL_OBJECT_TYPE")]
         MSSQL_OBJECT_TYPE,
+
+        [EnumMember(Value = "MYSQLDB_OBJECT_TYPE")]
+        MYSQLDB_OBJECT_TYPE,
 
         [EnumMember(Value = "NAS_OBJECT_TYPE")]
         NAS_OBJECT_TYPE,
@@ -115,7 +121,10 @@ namespace RubrikSecurityCloud.Types
         VOLUME_GROUP_OBJECT_TYPE,
 
         [EnumMember(Value = "VSPHERE_OBJECT_TYPE")]
-        VSPHERE_OBJECT_TYPE
+        VSPHERE_OBJECT_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SlaObjectType

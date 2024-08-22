@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         V1_QUERY_CERTIFICATES_REQUEST_SORT_BY_HAS_KEY,
 
         [EnumMember(Value = "V1_QUERY_CERTIFICATES_REQUEST_SORT_BY_NAME")]
-        V1_QUERY_CERTIFICATES_REQUEST_SORT_BY_NAME
+        V1_QUERY_CERTIFICATES_REQUEST_SORT_BY_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum V1QueryCertificatesRequestSortBy

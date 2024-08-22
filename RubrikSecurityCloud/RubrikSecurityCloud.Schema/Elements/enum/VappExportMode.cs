@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         VAPP_EXPORT_MODE_EXPORT_TO_NEW_VAPP,
 
         [EnumMember(Value = "VAPP_EXPORT_MODE_EXPORT_TO_TARGET_VAPP")]
-        VAPP_EXPORT_MODE_EXPORT_TO_TARGET_VAPP
+        VAPP_EXPORT_MODE_EXPORT_TO_TARGET_VAPP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum VappExportMode

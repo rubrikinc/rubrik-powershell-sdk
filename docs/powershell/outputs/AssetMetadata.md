@@ -23,3 +23,15 @@ AssetMetadata stores the metadata of the asset.
 - lastAccessTime: System.Int64
   - Last access time signifies the last access time of the asset in
  milliseconds.
+- backupStatus: BackupStatus
+  - Backup status signifies the status of backup of the asset.
+- rubrikSlaInfo: RubrikSlaInfo
+  - Rubrik SLA Domain information signifies the SLA Domain information for
+ the asset. This field will only be populated when Rubrik backs up the
+ asset.
+- encryption: Encryption
+  - Signifies the encryption status for the asset.
+- logging: Logging
+  - Signifies logging status for the asset.
+- networkAccess: NetworkAccess
+  - Signifies network access for the asset.

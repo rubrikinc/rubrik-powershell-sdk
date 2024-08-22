@@ -243,6 +243,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_ORCHESTRATED_RECOVERY")]
         MANAGE_ORCHESTRATED_RECOVERY,
 
+        [EnumMember(Value = "MANAGE_ORGANIZATION_NETWORKS")]
+        MANAGE_ORGANIZATION_NETWORKS,
+
         [EnumMember(Value = "MANAGE_PROTECTION")]
         MANAGE_PROTECTION,
 
@@ -450,6 +453,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_ORGANIZATION")]
         VIEW_ORGANIZATION,
 
+        [EnumMember(Value = "VIEW_ORGANIZATION_NETWORKS")]
+        VIEW_ORGANIZATION_NETWORKS,
+
         [EnumMember(Value = "VIEW_REPLICATION_SETTINGS")]
         VIEW_REPLICATION_SETTINGS,
 
@@ -505,7 +511,10 @@ namespace RubrikSecurityCloud.Types
         VIEW_WEBHOOKS,
 
         [EnumMember(Value = "VIEW_ZSCALER_DLP_INTEGRATION")]
-        VIEW_ZSCALER_DLP_INTEGRATION
+        VIEW_ZSCALER_DLP_INTEGRATION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum Operation

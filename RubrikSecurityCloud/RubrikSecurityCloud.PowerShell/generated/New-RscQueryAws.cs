@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 30
+    /// Create a new RscQuery object for any of the 31
     /// operations in the 'AWS' API domain:
-    /// ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
+    /// ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
     /// </summary>
     /// <description>
     /// New-RscQueryAws creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 30 operations
+    /// There are 31 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
+    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -532,6 +532,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;AwsExocomputeConfig&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExocomputeGetClusterConnectionInfo operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: ExocomputeGetClusterConnectionInfo
+    /// 
+    /// $query = New-RscQueryAws -ExocomputeGetClusterConnectionInfo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	clusterName = $someString
+    /// 	# REQUIRED
+    /// 	exocomputeConfigId = $someString
+    /// 	# OPTIONAL
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AwsExocomputeGetClusterConnectionInfoReply
     /// 
     /// 
     /// 
@@ -1090,6 +1125,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	validations = @(
+    /// 		$someClusterCreateValidations # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCreateValidations]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -1192,6 +1231,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DbSubnetGroupsByRegion",
                 "Ec2KeyPairsByRegion",
                 "ExocomputeConfigs",
+                "ExocomputeGetClusterConnectionInfo",
                 "InstanceProfileNames",
                 "IsS3BucketNameAvailable",
                 "KmsEncryptionKeysByRegion",
@@ -1264,6 +1304,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ExocomputeConfigs":
                         this.ProcessRecord_ExocomputeConfigs();
+                        break;
+                    case "ExocomputeGetClusterConnectionInfo":
+                        this.ProcessRecord_ExocomputeGetClusterConnectionInfo();
                         break;
                     case "InstanceProfileNames":
                         this.ProcessRecord_InstanceProfileNames();
@@ -1447,6 +1490,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ExocomputeConfigs";
             // Create new graphql operation allAwsExocomputeConfigs
             InitQueryAllAwsExocomputeConfigs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // awsExocomputeGetClusterConnectionInfo.
+        internal void ProcessRecord_ExocomputeGetClusterConnectionInfo()
+        {
+            this._logger.name += " -ExocomputeGetClusterConnectionInfo";
+            // Create new graphql operation awsExocomputeGetClusterConnectionInfo
+            InitQueryAwsExocomputeGetClusterConnectionInfo();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1978,6 +2030,33 @@ $query.Var.awsNativeAccountIdOrNamePrefix = $someString"
         }
 
         // Create new GraphQL Query:
+        // awsExocomputeGetClusterConnectionInfo(input: AwsExocomputeGetClusterConnectionInput!): AwsExocomputeGetClusterConnectionInfoReply!
+        internal void InitQueryAwsExocomputeGetClusterConnectionInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AwsExocomputeGetClusterConnectionInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAwsExocomputeGetClusterConnectionInfo",
+                "($input: AwsExocomputeGetClusterConnectionInput!)",
+                "AwsExocomputeGetClusterConnectionInfoReply",
+                Query.AwsExocomputeGetClusterConnectionInfo,
+                Query.AwsExocomputeGetClusterConnectionInfoFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	clusterName = $someString
+	# REQUIRED
+	exocomputeConfigId = $someString
+	# OPTIONAL
+	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // allAwsInstanceProfileNames(cloudAccountId: String!, region: String!): [String!]!
         internal void InitQueryAllAwsInstanceProfileNames()
         {
@@ -2457,6 +2536,10 @@ $query.Var.input = @{
 			}
 		)
 	}
+	# OPTIONAL
+	validations = @(
+		$someClusterCreateValidations # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCreateValidations]) for enum values.
+	)
 }"
             );
         }

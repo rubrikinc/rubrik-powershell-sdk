@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         CONTACT,
 
         [EnumMember(Value = "CONTACT_FOLDER")]
-        CONTACT_FOLDER
+        CONTACT_FOLDER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum O365ContactsSearchObjectType

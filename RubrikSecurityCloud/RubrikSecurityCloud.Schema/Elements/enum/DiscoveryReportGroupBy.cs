@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         TIME_ISSUES,
 
         [EnumMember(Value = "TIME_VIOLATIONS")]
-        TIME_VIOLATIONS
+        TIME_VIOLATIONS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DiscoveryReportGroupBy

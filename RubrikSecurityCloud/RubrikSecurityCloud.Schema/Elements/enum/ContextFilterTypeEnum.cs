@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         APPFLOWS_FAILOVER_TO_CDM,
 
         [EnumMember(Value = "DEFAULT")]
-        DEFAULT
+        DEFAULT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ContextFilterTypeEnum

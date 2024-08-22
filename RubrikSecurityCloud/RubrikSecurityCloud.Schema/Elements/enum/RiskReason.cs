@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         OPEN_ACCESS,
 
         [EnumMember(Value = "RISK_REASON_UNSPECIFIED")]
-        RISK_REASON_UNSPECIFIED
+        RISK_REASON_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RiskReason

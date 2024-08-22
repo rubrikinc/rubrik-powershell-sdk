@@ -43,7 +43,10 @@ namespace RubrikSecurityCloud.Types
         STRING,
 
         [EnumMember(Value = "URL")]
-        URL
+        URL,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DataTypeEnum

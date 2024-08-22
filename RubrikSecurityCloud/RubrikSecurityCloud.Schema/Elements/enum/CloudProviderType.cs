@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         GCP,
 
         [EnumMember(Value = "NOT_SPECIFIED")]
-        NOT_SPECIFIED
+        NOT_SPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudProviderType

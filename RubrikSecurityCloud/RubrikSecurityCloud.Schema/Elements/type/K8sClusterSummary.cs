@@ -65,10 +65,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("transport")]
         public System.String? Transport { get; set; }
 
+        //      C# -> ServiceAccountInfo? CrdServiceAccountInfo
+        // GraphQL -> crdServiceAccountInfo: ServiceAccountInfo (type)
+        [JsonProperty("crdServiceAccountInfo")]
+        public ServiceAccountInfo? CrdServiceAccountInfo { get; set; }
+
         //      C# -> KuprServerProxyConfig? KuprServerProxyConfig
         // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfig (type)
         [JsonProperty("kuprServerProxyConfig")]
         public KuprServerProxyConfig? KuprServerProxyConfig { get; set; }
+
+        //      C# -> ServiceAccountInfo? OnboardingServiceAccountInfo
+        // GraphQL -> onboardingServiceAccountInfo: ServiceAccountInfo (type)
+        [JsonProperty("onboardingServiceAccountInfo")]
+        public ServiceAccountInfo? OnboardingServiceAccountInfo { get; set; }
 
 
         #endregion
@@ -89,7 +99,9 @@ namespace RubrikSecurityCloud.Types
         System.String? Registry = null,
         System.String? Status = null,
         System.String? Transport = null,
-        KuprServerProxyConfig? KuprServerProxyConfig = null
+        ServiceAccountInfo? CrdServiceAccountInfo = null,
+        KuprServerProxyConfig? KuprServerProxyConfig = null,
+        ServiceAccountInfo? OnboardingServiceAccountInfo = null
     ) 
     {
         if ( Distribution != null ) {
@@ -119,8 +131,14 @@ namespace RubrikSecurityCloud.Types
         if ( Transport != null ) {
             this.Transport = Transport;
         }
+        if ( CrdServiceAccountInfo != null ) {
+            this.CrdServiceAccountInfo = CrdServiceAccountInfo;
+        }
         if ( KuprServerProxyConfig != null ) {
             this.KuprServerProxyConfig = KuprServerProxyConfig;
+        }
+        if ( OnboardingServiceAccountInfo != null ) {
+            this.OnboardingServiceAccountInfo = OnboardingServiceAccountInfo;
         }
         return this;
     }
@@ -217,6 +235,18 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "transport\n" ;
             }
         }
+        //      C# -> ServiceAccountInfo? CrdServiceAccountInfo
+        // GraphQL -> crdServiceAccountInfo: ServiceAccountInfo (type)
+        if (this.CrdServiceAccountInfo != null) {
+            var fspec = this.CrdServiceAccountInfo.AsFieldSpec(conf.Child("crdServiceAccountInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "crdServiceAccountInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> KuprServerProxyConfig? KuprServerProxyConfig
         // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfig (type)
         if (this.KuprServerProxyConfig != null) {
@@ -226,6 +256,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "kuprServerProxyConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ServiceAccountInfo? OnboardingServiceAccountInfo
+        // GraphQL -> onboardingServiceAccountInfo: ServiceAccountInfo (type)
+        if (this.OnboardingServiceAccountInfo != null) {
+            var fspec = this.OnboardingServiceAccountInfo.AsFieldSpec(conf.Child("onboardingServiceAccountInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "onboardingServiceAccountInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -389,6 +431,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.Transport = null;
         }
+        //      C# -> ServiceAccountInfo? CrdServiceAccountInfo
+        // GraphQL -> crdServiceAccountInfo: ServiceAccountInfo (type)
+        if (ec.Includes("crdServiceAccountInfo",false))
+        {
+            if(this.CrdServiceAccountInfo == null) {
+
+                this.CrdServiceAccountInfo = new ServiceAccountInfo();
+                this.CrdServiceAccountInfo.ApplyExploratoryFieldSpec(ec.NewChild("crdServiceAccountInfo"));
+
+            } else {
+
+                this.CrdServiceAccountInfo.ApplyExploratoryFieldSpec(ec.NewChild("crdServiceAccountInfo"));
+
+            }
+        }
+        else if (this.CrdServiceAccountInfo != null && ec.Excludes("crdServiceAccountInfo",false))
+        {
+            this.CrdServiceAccountInfo = null;
+        }
         //      C# -> KuprServerProxyConfig? KuprServerProxyConfig
         // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfig (type)
         if (ec.Includes("kuprServerProxyConfig",false))
@@ -407,6 +468,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.KuprServerProxyConfig != null && ec.Excludes("kuprServerProxyConfig",false))
         {
             this.KuprServerProxyConfig = null;
+        }
+        //      C# -> ServiceAccountInfo? OnboardingServiceAccountInfo
+        // GraphQL -> onboardingServiceAccountInfo: ServiceAccountInfo (type)
+        if (ec.Includes("onboardingServiceAccountInfo",false))
+        {
+            if(this.OnboardingServiceAccountInfo == null) {
+
+                this.OnboardingServiceAccountInfo = new ServiceAccountInfo();
+                this.OnboardingServiceAccountInfo.ApplyExploratoryFieldSpec(ec.NewChild("onboardingServiceAccountInfo"));
+
+            } else {
+
+                this.OnboardingServiceAccountInfo.ApplyExploratoryFieldSpec(ec.NewChild("onboardingServiceAccountInfo"));
+
+            }
+        }
+        else if (this.OnboardingServiceAccountInfo != null && ec.Excludes("onboardingServiceAccountInfo",false))
+        {
+            this.OnboardingServiceAccountInfo = null;
         }
     }
 

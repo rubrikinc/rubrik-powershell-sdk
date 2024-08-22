@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectId")]
         public System.String? ObjectId { get; set; }
 
+        //      C# -> ManagedId? ManagedId
+        // GraphQL -> managedId: ManagedId! (type)
+        [JsonProperty("managedId")]
+        public ManagedId? ManagedId { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public RbacObject Set(
         WorkloadLevelHierarchy? WorkloadHierarchy = null,
         System.String? ClusterId = null,
-        System.String? ObjectId = null
+        System.String? ObjectId = null,
+        ManagedId? ManagedId = null
     ) 
     {
         if ( WorkloadHierarchy != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectId != null ) {
             this.ObjectId = ObjectId;
+        }
+        if ( ManagedId != null ) {
+            this.ManagedId = ManagedId;
         }
         return this;
     }
@@ -98,6 +107,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectId\n" ;
             } else {
                 s += ind + "objectId\n" ;
+            }
+        }
+        //      C# -> ManagedId? ManagedId
+        // GraphQL -> managedId: ManagedId! (type)
+        if (this.ManagedId != null) {
+            var fspec = this.ManagedId.AsFieldSpec(conf.Child("managedId"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "managedId" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -157,6 +178,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectId != null && ec.Excludes("objectId",true))
         {
             this.ObjectId = null;
+        }
+        //      C# -> ManagedId? ManagedId
+        // GraphQL -> managedId: ManagedId! (type)
+        if (ec.Includes("managedId",false))
+        {
+            if(this.ManagedId == null) {
+
+                this.ManagedId = new ManagedId();
+                this.ManagedId.ApplyExploratoryFieldSpec(ec.NewChild("managedId"));
+
+            } else {
+
+                this.ManagedId.ApplyExploratoryFieldSpec(ec.NewChild("managedId"));
+
+            }
+        }
+        else if (this.ManagedId != null && ec.Excludes("managedId",false))
+        {
+            this.ManagedId = null;
         }
     }
 

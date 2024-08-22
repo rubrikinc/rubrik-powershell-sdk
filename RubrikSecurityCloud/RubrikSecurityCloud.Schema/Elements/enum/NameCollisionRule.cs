@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         APPEND,
 
         [EnumMember(Value = "OVERWRITE")]
-        OVERWRITE
+        OVERWRITE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum NameCollisionRule

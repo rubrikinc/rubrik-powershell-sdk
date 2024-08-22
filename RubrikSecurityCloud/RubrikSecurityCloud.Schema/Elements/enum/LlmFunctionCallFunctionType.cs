@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_DOWNLOAD_SNAPSHOT,
 
         [EnumMember(Value = "VSPHERE_IN_PLACE_RECOVERY")]
-        VSPHERE_IN_PLACE_RECOVERY
+        VSPHERE_IN_PLACE_RECOVERY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum LlmFunctionCallFunctionType

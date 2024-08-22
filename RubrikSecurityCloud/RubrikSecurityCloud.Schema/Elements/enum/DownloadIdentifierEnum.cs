@@ -43,7 +43,10 @@ namespace RubrikSecurityCloud.Types
         SONAR_DOWNLOAD,
 
         [EnumMember(Value = "USER_AWARENESS_DOWNLOAD")]
-        USER_AWARENESS_DOWNLOAD
+        USER_AWARENESS_DOWNLOAD,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DownloadIdentifierEnum

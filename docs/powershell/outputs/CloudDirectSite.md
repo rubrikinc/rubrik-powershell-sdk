@@ -7,3 +7,5 @@ A NAS Cloud Direct site.
   - The display name for the site.
 - endpoint: System.String
   - The management endpoint URL for the site.
+- clusterUuid: System.String
+  - The Rubrik cluster UUID for the site.

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 184
+    /// Create a new RscQuery object for any of the 185
     /// operations in the 'Miscellaneous' API domain:
-    /// ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, KubernetesProtectionSet, KubernetesProtectionSets, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
+    /// ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VerifyTotp, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
     /// </summary>
     /// <description>
     /// New-RscQueryMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 184 operations
+    /// There are 185 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, KubernetesProtectionSet, KubernetesProtectionSets, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
+    /// one of: ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VerifyTotp, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -139,6 +139,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			attributeKey = $someString
     /// 			# OPTIONAL
     /// 			attributeValue = $someString
+    /// 			# OPTIONAL
+    /// 			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// 		}
     /// 	)
     /// }
@@ -1580,6 +1582,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		attributeKey = $someString
     /// 		# OPTIONAL
     /// 		attributeValue = $someString
+    /// 		# OPTIONAL
+    /// 		dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// }
     /// )
     /// 
@@ -2760,6 +2764,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the GetPermissions operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: GetPermissions
+    /// 
+    /// $query = New-RscQueryMisc -GetPermissions
+    /// 
+    /// # REQUIRED
+    /// $query.Var.roleId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;Permission&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the GetRolesByIds operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -3227,6 +3259,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
+    /// # OPTIONAL
+    /// $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -4155,112 +4189,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: KnowledgeBaseArticle
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the KubernetesProtectionSet operation
-    /// of the 'Miscellaneous' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Misc
-    /// # API Operation: KubernetesProtectionSet
-    /// 
-    /// $query = New-RscQueryMisc -KubernetesProtectionSet
-    /// 
-    /// # REQUIRED
-    /// $query.Var.fid = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: KubernetesProtectionSet
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the KubernetesProtectionSets operation
-    /// of the 'Miscellaneous' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Misc
-    /// # API Operation: KubernetesProtectionSets
-    /// 
-    /// $query = New-RscQueryMisc -KubernetesProtectionSets
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.filter = @(
-    /// 	@{
-    /// 		# OPTIONAL
-    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-    /// 		# OPTIONAL
-    /// 		texts = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		objectTypeFilterParams = @(
-    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		awsNativeProtectionFeatureNames = @(
-    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		isNegative = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isSlowSearchEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		azureNativeProtectionFeatureNames = @(
-    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		unmanagedObjectAvailabilityFilter = @(
-    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-    /// 		)
-    /// }
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.k8sClusterOptionalId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: KubernetesProtectionSetConnection
     /// 
     /// 
     /// 
@@ -5300,7 +5228,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryMisc -PolicyDetails
     /// 
-    /// # No variables for this query.
+    /// # OPTIONAL
+    /// $query.Var.dataCategoryIds = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.dataTypeIds = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.dataCategoryType = $someDataCategoryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataCategoryType]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -5460,6 +5397,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	timezone = $someString
     /// }
+    /// # OPTIONAL
+    /// $query.Var.objectTagsFilter = @{
+    /// 	# REQUIRED
+    /// 	objectTags = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			key = $someString
+    /// 			# OPTIONAL
+    /// 			value = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.backupStatusFilter = @(
+    /// 	$someBackupStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupStatus]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.slaIdsFilter = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.networkAccessFilter = @(
+    /// 	$someNetworkAccess # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAccess]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.encryptionFilter = @(
+    /// 	$someEncryption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Encryption]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.loggingFilter = @(
+    /// 	$someLogging # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Logging]) for enum values.
+    /// )
     /// # OPTIONAL
     /// $query.Var.first = $someInt
     /// # OPTIONAL
@@ -6914,6 +6883,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UserFile operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: UserFile
+    /// 
+    /// $query = New-RscQueryMisc -UserFile
+    /// 
+    /// # REQUIRED
+    /// $query.Var.externalId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CustomerFacingFile
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UserFiles operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -7290,6 +7287,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the VerifyTotp operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: VerifyTotp
+    /// 
+    /// $query = New-RscQueryMisc -VerifyTotp
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	otp = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VerifyTotpReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the VirtualMachineFiles operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -7633,6 +7661,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "GetGroupCountByUpgradeJobStatus",
                 "GetGroupCountByVersionStatus",
                 "GetKorgTaskchainStatus",
+                "GetPermissions",
                 "GetRolesByIds",
                 "GetUserDownloads",
                 "GlobalFileSearch",
@@ -7664,8 +7693,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "IssuesJobIds",
                 "JobInfo",
                 "KnowledgeBaseArticle",
-                "KubernetesProtectionSet",
-                "KubernetesProtectionSets",
                 "LambdaSettings",
                 "LicensedProducts",
                 "LockoutConfig",
@@ -7728,6 +7755,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UserAnalyzerAccess",
                 "UserAuditList",
                 "UserDetail",
+                "UserFile",
                 "UserFiles",
                 "UserGroups",
                 "UserNotifications",
@@ -7737,6 +7765,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UsersOnAccountList",
                 "ValidateOrgName",
                 "VcdVappVms",
+                "VerifyTotp",
                 "VirtualMachineFiles",
                 "VmRecoveryJobsInfo",
                 "VolumeGroupMounts",
@@ -7980,6 +8009,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "GetKorgTaskchainStatus":
                         this.ProcessRecord_GetKorgTaskchainStatus();
                         break;
+                    case "GetPermissions":
+                        this.ProcessRecord_GetPermissions();
+                        break;
                     case "GetRolesByIds":
                         this.ProcessRecord_GetRolesByIds();
                         break;
@@ -8072,12 +8104,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "KnowledgeBaseArticle":
                         this.ProcessRecord_KnowledgeBaseArticle();
-                        break;
-                    case "KubernetesProtectionSet":
-                        this.ProcessRecord_KubernetesProtectionSet();
-                        break;
-                    case "KubernetesProtectionSets":
-                        this.ProcessRecord_KubernetesProtectionSets();
                         break;
                     case "LambdaSettings":
                         this.ProcessRecord_LambdaSettings();
@@ -8265,6 +8291,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "UserDetail":
                         this.ProcessRecord_UserDetail();
                         break;
+                    case "UserFile":
+                        this.ProcessRecord_UserFile();
+                        break;
                     case "UserFiles":
                         this.ProcessRecord_UserFiles();
                         break;
@@ -8291,6 +8320,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "VcdVappVms":
                         this.ProcessRecord_VcdVappVms();
+                        break;
+                    case "VerifyTotp":
+                        this.ProcessRecord_VerifyTotp();
                         break;
                     case "VirtualMachineFiles":
                         this.ProcessRecord_VirtualMachineFiles();
@@ -8987,6 +9019,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // getPermissions.
+        internal void ProcessRecord_GetPermissions()
+        {
+            this._logger.name += " -GetPermissions";
+            // Create new graphql operation getPermissions
+            InitQueryGetPermissions();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // getRolesByIds.
         internal void ProcessRecord_GetRolesByIds()
         {
@@ -9263,24 +9304,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -KnowledgeBaseArticle";
             // Create new graphql operation knowledgeBaseArticle
             InitQueryKnowledgeBaseArticle();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // kubernetesProtectionSet.
-        internal void ProcessRecord_KubernetesProtectionSet()
-        {
-            this._logger.name += " -KubernetesProtectionSet";
-            // Create new graphql operation kubernetesProtectionSet
-            InitQueryKubernetesProtectionSet();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // kubernetesProtectionSets.
-        internal void ProcessRecord_KubernetesProtectionSets()
-        {
-            this._logger.name += " -KubernetesProtectionSets";
-            // Create new graphql operation kubernetesProtectionSets
-            InitQueryKubernetesProtectionSets();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -9842,6 +9865,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // userFile.
+        internal void ProcessRecord_UserFile()
+        {
+            this._logger.name += " -UserFile";
+            // Create new graphql operation userFile
+            InitQueryUserFile();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allUserFiles.
         internal void ProcessRecord_UserFiles()
         {
@@ -9920,6 +9952,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -VcdVappVms";
             // Create new graphql operation vcdVappVms
             InitQueryVcdVappVms();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // verifyTotp.
+        internal void ProcessRecord_VerifyTotp()
+        {
+            this._logger.name += " -VerifyTotp";
+            // Create new graphql operation verifyTotp
+            InitQueryVerifyTotp();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -10041,6 +10082,8 @@ $query.Var.adGroupSpec = @{
 			attributeKey = $someString
 			# OPTIONAL
 			attributeValue = $someString
+			# OPTIONAL
+			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 		}
 	)
 }"
@@ -11359,6 +11402,8 @@ $query.Var.groupFilterAttributes = @(
 		attributeKey = $someString
 		# OPTIONAL
 		attributeValue = $someString
+		# OPTIONAL
+		dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 }
 )"
             );
@@ -12327,6 +12372,26 @@ $query.Var.taskchainId = $someString"
         }
 
         // Create new GraphQL Query:
+        // getPermissions(roleId: String!): [Permission!]!
+        internal void InitQueryGetPermissions()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("roleId", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryGetPermissions",
+                "($roleId: String!)",
+                "List<Permission>",
+                Query.GetPermissions,
+                Query.GetPermissionsFieldSpec,
+                @"# REQUIRED
+$query.Var.roleId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // getRolesByIds(roleIds: [String!]!): [Role!]!
         internal void InitQueryGetRolesByIds()
         {
@@ -12743,22 +12808,25 @@ $query.Var.filter = @{
         }
 
         // Create new GraphQL Query:
-        // hierarchyObject(fid: UUID!): HierarchyObject!
+        // hierarchyObject(fid: UUID!, workloadHierarchy: WorkloadLevelHierarchy): HierarchyObject!
         internal void InitQueryHierarchyObject()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
+                Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryHierarchyObject",
-                "($fid: UUID!)",
+                "($fid: UUID!,$workloadHierarchy: WorkloadLevelHierarchy)",
                 "HierarchyObject",
                 Query.HierarchyObject,
                 Query.HierarchyObjectFieldSpec,
                 @"# REQUIRED
-$query.Var.fid = $someString"
+$query.Var.fid = $someString
+# OPTIONAL
+$query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values."
             );
         }
 
@@ -13540,108 +13608,6 @@ $query.Var.input = @{
                 Query.KnowledgeBaseArticleFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // kubernetesProtectionSet(fid: UUID!): KubernetesProtectionSet!
-        internal void InitQueryKubernetesProtectionSet()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryKubernetesProtectionSet",
-                "($fid: UUID!)",
-                "KubernetesProtectionSet",
-                Query.KubernetesProtectionSet,
-                Query.KubernetesProtectionSetFieldSpec,
-                @"# REQUIRED
-$query.Var.fid = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // kubernetesProtectionSets(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //     k8sClusterOptionalId: UUID
-        //   ): KubernetesProtectionSetConnection!
-        internal void InitQueryKubernetesProtectionSets()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-                Tuple.Create("k8sClusterOptionalId", "UUID"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryKubernetesProtectionSets",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$k8sClusterOptionalId: UUID)",
-                "KubernetesProtectionSetConnection",
-                Query.KubernetesProtectionSets,
-                Query.KubernetesProtectionSetsFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			$someString
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = $someBoolean
-		# OPTIONAL
-		isSlowSearchEnabled = $someBoolean
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)
-# OPTIONAL
-$query.Var.k8sClusterOptionalId = $someString"
             );
         }
 
@@ -14540,20 +14506,32 @@ $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValue
         }
 
         // Create new GraphQL Query:
-        // policyDetails: PolicyDetailConnection!
+        // policyDetails(dataCategoryIds: [String!], dataTypeIds: [String!], dataCategoryType: DataCategoryType): PolicyDetailConnection!
         internal void InitQueryPolicyDetails()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("dataCategoryIds", "[String!]"),
+                Tuple.Create("dataTypeIds", "[String!]"),
+                Tuple.Create("dataCategoryType", "DataCategoryType"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryPolicyDetails",
-                "",
+                "($dataCategoryIds: [String!],$dataTypeIds: [String!],$dataCategoryType: DataCategoryType)",
                 "PolicyDetailConnection",
                 Query.PolicyDetails,
                 Query.PolicyDetailsFieldSpec,
-                @""
+                @"# OPTIONAL
+$query.Var.dataCategoryIds = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.dataTypeIds = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.dataCategoryType = $someDataCategoryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataCategoryType]) for enum values."
             );
         }
 
@@ -14611,6 +14589,12 @@ $query.Var.includeWhitelistedResults = $someBoolean"
         //     firstSeenTimeRange: UserTimeRangeInput
         //     lastAccessTimeRange: UserTimeRangeInput
         //     creationTimeRange: UserTimeRangeInput
+        //     objectTagsFilter: ObjectTagsFilterInput
+        //     backupStatusFilter: [BackupStatus!]
+        //     slaIdsFilter: [String!]
+        //     networkAccessFilter: [NetworkAccess!]
+        //     encryptionFilter: [Encryption!]
+        //     loggingFilter: [Logging!]
         //     first: Int
         //     after: String
         //     last: Int
@@ -14645,6 +14629,12 @@ $query.Var.includeWhitelistedResults = $someBoolean"
                 Tuple.Create("firstSeenTimeRange", "UserTimeRangeInput"),
                 Tuple.Create("lastAccessTimeRange", "UserTimeRangeInput"),
                 Tuple.Create("creationTimeRange", "UserTimeRangeInput"),
+                Tuple.Create("objectTagsFilter", "ObjectTagsFilterInput"),
+                Tuple.Create("backupStatusFilter", "[BackupStatus!]"),
+                Tuple.Create("slaIdsFilter", "[String!]"),
+                Tuple.Create("networkAccessFilter", "[NetworkAccess!]"),
+                Tuple.Create("encryptionFilter", "[Encryption!]"),
+                Tuple.Create("loggingFilter", "[Logging!]"),
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
@@ -14654,7 +14644,7 @@ $query.Var.includeWhitelistedResults = $someBoolean"
                 argDefs,
                 "query",
                 "QueryPolicyObjs",
-                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$insightsMetadataId: String,$includeInsightsMarker: Boolean,$userAccessObjectsFilter: Boolean!,$objectIdsFilter: [String!],$platformFilter: [Platform!],$platformCategoryFilter: [PlatformCategory!],$cloudAccountIdsFilter: [String!],$resourceGroupsFilter: [String!],$regionsFilter: [String!],$dataTypeIdsFilter: [String!],$firstSeenTimeRange: UserTimeRangeInput,$lastAccessTimeRange: UserTimeRangeInput,$creationTimeRange: UserTimeRangeInput,$first: Int,$after: String,$last: Int,$before: String)",
+                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$insightsMetadataId: String,$includeInsightsMarker: Boolean,$userAccessObjectsFilter: Boolean!,$objectIdsFilter: [String!],$platformFilter: [Platform!],$platformCategoryFilter: [PlatformCategory!],$cloudAccountIdsFilter: [String!],$resourceGroupsFilter: [String!],$regionsFilter: [String!],$dataTypeIdsFilter: [String!],$firstSeenTimeRange: UserTimeRangeInput,$lastAccessTimeRange: UserTimeRangeInput,$creationTimeRange: UserTimeRangeInput,$objectTagsFilter: ObjectTagsFilterInput,$backupStatusFilter: [BackupStatus!],$slaIdsFilter: [String!],$networkAccessFilter: [NetworkAccess!],$encryptionFilter: [Encryption!],$loggingFilter: [Logging!],$first: Int,$after: String,$last: Int,$before: String)",
                 "PolicyObjConnection",
                 Query.PolicyObjs,
                 Query.PolicyObjsFieldSpec,
@@ -14759,6 +14749,38 @@ $query.Var.creationTimeRange = @{
 	# OPTIONAL
 	timezone = $someString
 }
+# OPTIONAL
+$query.Var.objectTagsFilter = @{
+	# REQUIRED
+	objectTags = @(
+		@{
+			# OPTIONAL
+			key = $someString
+			# OPTIONAL
+			value = $someString
+		}
+	)
+}
+# OPTIONAL
+$query.Var.backupStatusFilter = @(
+	$someBackupStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupStatus]) for enum values.
+)
+# OPTIONAL
+$query.Var.slaIdsFilter = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.networkAccessFilter = @(
+	$someNetworkAccess # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAccess]) for enum values.
+)
+# OPTIONAL
+$query.Var.encryptionFilter = @(
+	$someEncryption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Encryption]) for enum values.
+)
+# OPTIONAL
+$query.Var.loggingFilter = @(
+	$someLogging # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Logging]) for enum values.
+)
 # OPTIONAL
 $query.Var.first = $someInt
 # OPTIONAL
@@ -16112,6 +16134,26 @@ $query.Var.timezone = $someString"
         }
 
         // Create new GraphQL Query:
+        // userFile(externalId: String!): CustomerFacingFile!
+        internal void InitQueryUserFile()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("externalId", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryUserFile",
+                "($externalId: String!)",
+                "CustomerFacingFile",
+                Query.UserFile,
+                Query.UserFileFieldSpec,
+                @"# REQUIRED
+$query.Var.externalId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // allUserFiles(
         //     first: Int
         //     after: String
@@ -16473,6 +16515,29 @@ $query.Var.filter = @(
 		)
 }
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // verifyTotp(input: VerifyTotpInput!): VerifyTotpReply!
+        internal void InitQueryVerifyTotp()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "VerifyTotpInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVerifyTotp",
+                "($input: VerifyTotpInput!)",
+                "VerifyTotpReply",
+                Query.VerifyTotp,
+                Query.VerifyTotpFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	otp = $someString
+}"
             );
         }
 

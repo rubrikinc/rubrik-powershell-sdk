@@ -16,7 +16,10 @@ namespace RubrikSecurityCloud.Types
     public enum SlaAuditDetailFilterFieldEnum
     {
         [EnumMember(Value = "USER_NAME")]
-        USER_NAME
+        USER_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SlaAuditDetailFilterFieldEnum

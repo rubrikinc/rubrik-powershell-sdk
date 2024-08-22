@@ -188,6 +188,11 @@ Updates the Azure app for the specified account in an idempotent manner to suppo
 ### updatetarget
 - There is a single argument of type UpdateAzureTargetInput.
 - Returns Target.
+### updatetenantforsubscription
+Updates the Tenant of the Azure Subscription added in RSC.
+
+- There is a single argument of type AzureUpdateTenantForSubscriptionInput.
+- Returns System.String.
 ### upgradecloudaccount
 Update permissions of the Azure Subscriptions cloud account for given feature.
 

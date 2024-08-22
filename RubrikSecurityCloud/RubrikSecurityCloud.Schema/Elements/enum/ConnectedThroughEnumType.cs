@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         NAS_DA,
 
         [EnumMember(Value = "SRC_UNSPECIFIED")]
-        SRC_UNSPECIFIED
+        SRC_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ConnectedThroughEnumType

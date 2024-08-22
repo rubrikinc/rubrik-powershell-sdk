@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         SITE,
 
         [EnumMember(Value = "WEBPART")]
-        WEBPART
+        WEBPART,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SharePointDescendantType

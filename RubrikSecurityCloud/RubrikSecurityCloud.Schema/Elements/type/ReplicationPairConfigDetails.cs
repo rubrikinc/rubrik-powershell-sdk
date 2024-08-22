@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("setupType")]
         public System.String? SetupType { get; set; }
 
+        //      C# -> NetworkInterfaceSelectionType? NetworkInterface
+        // GraphQL -> networkInterface: NetworkInterfaceSelectionType (type)
+        [JsonProperty("networkInterface")]
+        public NetworkInterfaceSelectionType? NetworkInterface { get; set; }
+
         //      C# -> GatewayInfo? SourceGateway
         // GraphQL -> sourceGateway: GatewayInfo (type)
         [JsonProperty("sourceGateway")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public ReplicationPairConfigDetails Set(
         System.String? SetupType = null,
+        NetworkInterfaceSelectionType? NetworkInterface = null,
         GatewayInfo? SourceGateway = null,
         GatewayInfo? TargetGateway = null
     ) 
     {
         if ( SetupType != null ) {
             this.SetupType = SetupType;
+        }
+        if ( NetworkInterface != null ) {
+            this.NetworkInterface = NetworkInterface;
         }
         if ( SourceGateway != null ) {
             this.SourceGateway = SourceGateway;
@@ -80,6 +89,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "setupType\n" ;
             } else {
                 s += ind + "setupType\n" ;
+            }
+        }
+        //      C# -> NetworkInterfaceSelectionType? NetworkInterface
+        // GraphQL -> networkInterface: NetworkInterfaceSelectionType (type)
+        if (this.NetworkInterface != null) {
+            var fspec = this.NetworkInterface.AsFieldSpec(conf.Child("networkInterface"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "networkInterface" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> GatewayInfo? SourceGateway
@@ -129,6 +150,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SetupType != null && ec.Excludes("setupType",true))
         {
             this.SetupType = null;
+        }
+        //      C# -> NetworkInterfaceSelectionType? NetworkInterface
+        // GraphQL -> networkInterface: NetworkInterfaceSelectionType (type)
+        if (ec.Includes("networkInterface",false))
+        {
+            if(this.NetworkInterface == null) {
+
+                this.NetworkInterface = new NetworkInterfaceSelectionType();
+                this.NetworkInterface.ApplyExploratoryFieldSpec(ec.NewChild("networkInterface"));
+
+            } else {
+
+                this.NetworkInterface.ApplyExploratoryFieldSpec(ec.NewChild("networkInterface"));
+
+            }
+        }
+        else if (this.NetworkInterface != null && ec.Excludes("networkInterface",false))
+        {
+            this.NetworkInterface = null;
         }
         //      C# -> GatewayInfo? SourceGateway
         // GraphQL -> sourceGateway: GatewayInfo (type)

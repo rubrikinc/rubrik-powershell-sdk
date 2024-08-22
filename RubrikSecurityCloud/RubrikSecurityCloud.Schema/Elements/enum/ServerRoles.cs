@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         DNS,
 
         [EnumMember(Value = "UNKNOWN_SERVER_ROLE")]
-        UNKNOWN_SERVER_ROLE
+        UNKNOWN_SERVER_ROLE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ServerRoles

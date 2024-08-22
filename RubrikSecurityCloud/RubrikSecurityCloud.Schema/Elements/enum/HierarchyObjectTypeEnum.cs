@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
         CLOUD_DIRECT_NAS_EXPORT,
 
+        [EnumMember(Value = "CONFLUENCE_SPACE")]
+        CONFLUENCE_SPACE,
+
         [EnumMember(Value = "CloudNativeTagRule")]
         CLOUD_NATIVE_TAG_RULE,
 
@@ -177,6 +180,24 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LinuxFileset")]
         LINUX_FILESET,
 
+        [EnumMember(Value = "M365_BACKUP_STORAGE_GROUP")]
+        M365_BACKUP_STORAGE_GROUP,
+
+        [EnumMember(Value = "M365_BACKUP_STORAGE_MAILBOX")]
+        M365_BACKUP_STORAGE_MAILBOX,
+
+        [EnumMember(Value = "M365_BACKUP_STORAGE_ONEDRIVE")]
+        M365_BACKUP_STORAGE_ONEDRIVE,
+
+        [EnumMember(Value = "M365_BACKUP_STORAGE_ORG")]
+        M365_BACKUP_STORAGE_ORG,
+
+        [EnumMember(Value = "M365_BACKUP_STORAGE_SITE")]
+        M365_BACKUP_STORAGE_SITE,
+
+        [EnumMember(Value = "M365_BACKUP_STORAGE_USER")]
+        M365_BACKUP_STORAGE_USER,
+
         [EnumMember(Value = "MANAGED_VOLUME_EXPORT")]
         MANAGED_VOLUME_EXPORT,
 
@@ -203,6 +224,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MONGO_SOURCE")]
         MONGO_SOURCE,
+
+        [EnumMember(Value = "MYSQLDB_DATABASE")]
+        MYSQLDB_DATABASE,
+
+        [EnumMember(Value = "MYSQLDB_INSTANCE")]
+        MYSQLDB_INSTANCE,
 
         [EnumMember(Value = "ManagedVolume")]
         MANAGED_VOLUME,
@@ -415,7 +442,10 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_FILESET,
 
         [EnumMember(Value = "WindowsVolumeGroup")]
-        WINDOWS_VOLUME_GROUP
+        WINDOWS_VOLUME_GROUP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HierarchyObjectTypeEnum

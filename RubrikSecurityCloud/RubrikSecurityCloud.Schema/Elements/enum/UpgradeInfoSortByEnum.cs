@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         REGISTERED_AT,
 
         [EnumMember(Value = "VersionStatus")]
-        VERSION_STATUS
+        VERSION_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UpgradeInfoSortByEnum

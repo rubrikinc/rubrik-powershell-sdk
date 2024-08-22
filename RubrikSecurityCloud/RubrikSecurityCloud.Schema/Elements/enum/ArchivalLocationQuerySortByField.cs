@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         STATUS,
 
         [EnumMember(Value = "STORAGE_CONSUMED_BYTES")]
-        STORAGE_CONSUMED_BYTES
+        STORAGE_CONSUMED_BYTES,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ArchivalLocationQuerySortByField

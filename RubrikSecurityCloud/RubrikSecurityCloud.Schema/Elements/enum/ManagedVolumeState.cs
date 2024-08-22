@@ -49,7 +49,10 @@ namespace RubrikSecurityCloud.Types
         MANAGED_VOLUME_STATE_UNEXPORTING,
 
         [EnumMember(Value = "MANAGED_VOLUME_STATE_UNEXPORT_REQUESTED")]
-        MANAGED_VOLUME_STATE_UNEXPORT_REQUESTED
+        MANAGED_VOLUME_STATE_UNEXPORT_REQUESTED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ManagedVolumeState

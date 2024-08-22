@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
 
+        //      C# -> ExchangeItemHierarchyType? HierarchyType
+        // GraphQL -> hierarchyType: ExchangeItemHierarchyType (enum)
+        [JsonProperty("hierarchyType")]
+        public ExchangeItemHierarchyType? HierarchyType { get; set; }
+
 
         #endregion
 

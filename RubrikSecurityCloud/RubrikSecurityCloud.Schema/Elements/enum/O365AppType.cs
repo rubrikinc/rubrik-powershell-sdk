@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         SPOINT,
 
         [EnumMember(Value = "TEAMS")]
-        TEAMS
+        TEAMS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum O365AppType

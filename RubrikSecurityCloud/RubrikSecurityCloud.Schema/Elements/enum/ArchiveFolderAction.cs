@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         EXCLUDE_ARCHIVE,
 
         [EnumMember(Value = "NO_ACTION")]
-        NO_ACTION
+        NO_ACTION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ArchiveFolderAction

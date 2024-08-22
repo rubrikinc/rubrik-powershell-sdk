@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("region")]
         public AwsCloudAccountRegion? Region { get; set; }
 
+        //      C# -> System.String? ByokClusterId
+        // GraphQL -> byokClusterId: String! (scalar)
+        [JsonProperty("byokClusterId")]
+        public System.String? ByokClusterId { get; set; }
+
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
         [JsonProperty("clusterName")]
@@ -50,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pcrImagePullAwsNativeId: String (scalar)
         [JsonProperty("pcrImagePullAwsNativeId")]
         public System.String? PcrImagePullAwsNativeId { get; set; }
+
+        //      C# -> System.String? PcrLatestApprovedBundleVersion
+        // GraphQL -> pcrLatestApprovedBundleVersion: String (scalar)
+        [JsonProperty("pcrLatestApprovedBundleVersion")]
+        public System.String? PcrLatestApprovedBundleVersion { get; set; }
 
         //      C# -> System.String? PcrUrl
         // GraphQL -> pcrUrl: String (scalar)
@@ -77,11 +87,13 @@ namespace RubrikSecurityCloud.Types
 
     public AwsCustomerManagedExocomputeConfig Set(
         AwsCloudAccountRegion? Region = null,
+        System.String? ByokClusterId = null,
         System.String? ClusterName = null,
         System.String? ConfigUuid = null,
         System.Boolean? HasPcr = null,
         System.String? Message = null,
         System.String? PcrImagePullAwsNativeId = null,
+        System.String? PcrLatestApprovedBundleVersion = null,
         System.String? PcrUrl = null,
         ExocomputeHealthCheckStatus? HealthCheckStatus = null,
         ExocomputeClusterDetails? LatestExoclusterDetails = null
@@ -89,6 +101,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Region != null ) {
             this.Region = Region;
+        }
+        if ( ByokClusterId != null ) {
+            this.ByokClusterId = ByokClusterId;
         }
         if ( ClusterName != null ) {
             this.ClusterName = ClusterName;
@@ -104,6 +119,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PcrImagePullAwsNativeId != null ) {
             this.PcrImagePullAwsNativeId = PcrImagePullAwsNativeId;
+        }
+        if ( PcrLatestApprovedBundleVersion != null ) {
+            this.PcrLatestApprovedBundleVersion = PcrLatestApprovedBundleVersion;
         }
         if ( PcrUrl != null ) {
             this.PcrUrl = PcrUrl;
@@ -135,6 +153,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "region\n" ;
             } else {
                 s += ind + "region\n" ;
+            }
+        }
+        //      C# -> System.String? ByokClusterId
+        // GraphQL -> byokClusterId: String! (scalar)
+        if (this.ByokClusterId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "byokClusterId\n" ;
+            } else {
+                s += ind + "byokClusterId\n" ;
             }
         }
         //      C# -> System.String? ClusterName
@@ -180,6 +207,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "pcrImagePullAwsNativeId\n" ;
             } else {
                 s += ind + "pcrImagePullAwsNativeId\n" ;
+            }
+        }
+        //      C# -> System.String? PcrLatestApprovedBundleVersion
+        // GraphQL -> pcrLatestApprovedBundleVersion: String (scalar)
+        if (this.PcrLatestApprovedBundleVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "pcrLatestApprovedBundleVersion\n" ;
+            } else {
+                s += ind + "pcrLatestApprovedBundleVersion\n" ;
             }
         }
         //      C# -> System.String? PcrUrl
@@ -238,6 +274,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Region != null && ec.Excludes("region",true))
         {
             this.Region = null;
+        }
+        //      C# -> System.String? ByokClusterId
+        // GraphQL -> byokClusterId: String! (scalar)
+        if (ec.Includes("byokClusterId",true))
+        {
+            if(this.ByokClusterId == null) {
+
+                this.ByokClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ByokClusterId != null && ec.Excludes("byokClusterId",true))
+        {
+            this.ByokClusterId = null;
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
@@ -323,6 +376,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PcrImagePullAwsNativeId != null && ec.Excludes("pcrImagePullAwsNativeId",true))
         {
             this.PcrImagePullAwsNativeId = null;
+        }
+        //      C# -> System.String? PcrLatestApprovedBundleVersion
+        // GraphQL -> pcrLatestApprovedBundleVersion: String (scalar)
+        if (ec.Includes("pcrLatestApprovedBundleVersion",true))
+        {
+            if(this.PcrLatestApprovedBundleVersion == null) {
+
+                this.PcrLatestApprovedBundleVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PcrLatestApprovedBundleVersion != null && ec.Excludes("pcrLatestApprovedBundleVersion",true))
+        {
+            this.PcrLatestApprovedBundleVersion = null;
         }
         //      C# -> System.String? PcrUrl
         // GraphQL -> pcrUrl: String (scalar)

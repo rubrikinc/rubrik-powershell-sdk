@@ -49,7 +49,10 @@ namespace RubrikSecurityCloud.Types
         TABLE_ROW_HOVER_COLOR,
 
         [EnumMember(Value = "TABLE_ROW_NAME")]
-        TABLE_ROW_NAME
+        TABLE_ROW_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MetadataKey

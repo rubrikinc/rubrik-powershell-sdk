@@ -5,6 +5,16 @@ A cluster object.
 
 - There is a single argument of type System.String.
 - Returns Cluster.
+### clusterlist
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - filter - ClusterFilterInput: Filter by cluster.
+    - sortOrder - SortOrder: Cluster sort order.
+    - sortBy - ClusterSortByEnum: Sort clusters by field.
+- Returns ClusterConnection.
 ### computeclusterstatus
 Get details for the compute cluster
 
@@ -82,16 +92,6 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
 
 - There is a single argument of type System.String.
 - Returns System.Boolean.
-### kubernetes
-Summary of all Kubernetes Clusters.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns KubernetesClusterConnection.
 ### licensesforclusterproductsummary
 Information about licenses for a specific cluster product, grouped by the product type.
 

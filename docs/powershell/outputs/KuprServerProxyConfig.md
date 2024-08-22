@@ -1,9 +1,13 @@
 ### KuprServerProxyConfig
-The configuration of kupr server proxy.
+Supported in v9.2+
+  The configuration of kupr server proxy.
 
 - cert: System.String
-  - Required. Public Certificate of kupr server proxy.
+  - Required. Supported in v9.2+
+  Public Certificate of kupr server proxy.
 - port: System.Int32
-  - Port number of kupr server proxy.
+  - Supported in v9.2+
+  Port number of kupr server proxy.
 - ipAddress: System.String
-  - Required. The IP address of kupr server proxy for either nodeport or loadbalancer.
+  - Required. Supported in v9.2+
+  The IP address of kupr server proxy for either nodeport or loadbalancer.

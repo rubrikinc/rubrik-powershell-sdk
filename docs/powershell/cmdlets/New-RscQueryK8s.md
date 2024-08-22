@@ -11,9 +11,24 @@ Kubernetes Rubrik Backup Service manifest.
     - k8sClusterId - System.String: Optional Kubernetes cluster UUID.
 - Returns K8sAppManifest.
 ### cluster
+Summary of a Kubernetes Cluster.
+
+- There is a single argument of type System.String.
+- Returns KubernetesCluster.
+### clusters
+Summary of all Kubernetes Clusters.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
+    - filter - list of Filters: The hierarchy object filter.
+- Returns KubernetesClusterConnection.
+### k8scluster
 - There is a single argument of type System.String.
 - Returns K8sCluster.
-### clusters
+### k8sclusters
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
@@ -33,6 +48,22 @@ Kubernetes Rubrik Backup Service manifest.
     - filter - list of Filters: The hierarchy object filter.
     - k8sClusterId - System.String: Optional Kubernetes cluster UUID.
 - Returns K8sNamespaceConnection.
+### protectionset
+Summary of a Kubernetes Protection Set.
+
+- There is a single argument of type System.String.
+- Returns KubernetesProtectionSet.
+### protectionsets
+Summary of all Kubernetes Protection Sets.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
+    - filter - list of Filters: The hierarchy object filter.
+    - k8sClusterOptionalId - System.String: Kubernetes cluster optional UUID.
+- Returns KubernetesProtectionSetConnection.
 ### protectionsetsnapshots
 Get a list of snapshots of a Kubernetes protection set workload
 

@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ABORT,
 
         [EnumMember(Value = "continue")]
-        CONTINUE
+        CONTINUE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PrePostScriptFailureHandlingEnum

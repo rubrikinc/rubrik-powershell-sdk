@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         SUPPORT_ACCESS_ID,
 
         [EnumMember(Value = "SUPPORT_USER_ID")]
-        SUPPORT_USER_ID
+        SUPPORT_USER_ID,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SupportUserAccessFilterField

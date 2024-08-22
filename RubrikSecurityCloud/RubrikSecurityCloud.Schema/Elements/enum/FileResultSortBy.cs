@@ -58,7 +58,10 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_TIME,
 
         [EnumMember(Value = "STALE_FILES_WITH_HITS")]
-        STALE_FILES_WITH_HITS
+        STALE_FILES_WITH_HITS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FileResultSortBy

@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         FILESET_TEMPLATE_CREATE_OPERATING_SYSTEM_TYPE_UNIX_LIKE,
 
         [EnumMember(Value = "FILESET_TEMPLATE_CREATE_OPERATING_SYSTEM_TYPE_WINDOWS")]
-        FILESET_TEMPLATE_CREATE_OPERATING_SYSTEM_TYPE_WINDOWS
+        FILESET_TEMPLATE_CREATE_OPERATING_SYSTEM_TYPE_WINDOWS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum FilesetTemplateCreateOperatingSystemType

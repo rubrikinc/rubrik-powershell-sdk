@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         SMB_DOMAIN_STATUS_FAILED,
 
         [EnumMember(Value = "SMB_DOMAIN_STATUS_NOT_CONFIGURED")]
-        SMB_DOMAIN_STATUS_NOT_CONFIGURED
+        SMB_DOMAIN_STATUS_NOT_CONFIGURED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SmbDomainStatus

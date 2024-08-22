@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         VERSION_SOURCE_TYPE_CASSANDRA,
 
         [EnumMember(Value = "VERSION_SOURCE_TYPE_MONGO")]
-        VERSION_SOURCE_TYPE_MONGO
+        VERSION_SOURCE_TYPE_MONGO,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum VersionSourceType

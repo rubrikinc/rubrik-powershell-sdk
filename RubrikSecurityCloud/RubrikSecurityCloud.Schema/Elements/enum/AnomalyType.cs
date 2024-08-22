@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         FILESYSTEM,
 
         [EnumMember(Value = "HYPERVISOR")]
-        HYPERVISOR
+        HYPERVISOR,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AnomalyType

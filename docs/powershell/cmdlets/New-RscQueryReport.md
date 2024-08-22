@@ -99,7 +99,7 @@ Returns groupBy results for SonarContentReport.
     - sortBy - DiscoveryContentReportSortBy
     - sortOrder - SortOrder: Sort order of result.
     - filters - SonarContentReportFilter
-    - day - System.String: Day in the format (YYYY-MM-DD).
+    - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
     - first - System.Int32: Returns the first n elements from the list.

@@ -102,7 +102,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
+    /// 		mountExpiryInMinutes = $someInt
+    /// 		# OPTIONAL
+    /// 		domainControllerId = $someString
+    /// 		# OPTIONAL
     /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		shouldBeWritable = $someBoolean
     /// 		# OPTIONAL
     /// 		domainName = $someString
     /// 		# OPTIONAL
@@ -411,7 +417,13 @@ $query.Var.input = @{
 			$someString
 		)
 		# OPTIONAL
+		mountExpiryInMinutes = $someInt
+		# OPTIONAL
+		domainControllerId = $someString
+		# OPTIONAL
 		password = $someString
+		# OPTIONAL
+		shouldBeWritable = $someBoolean
 		# OPTIONAL
 		domainName = $someString
 		# OPTIONAL

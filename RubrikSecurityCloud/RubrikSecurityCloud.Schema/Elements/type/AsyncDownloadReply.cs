@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("downloadId")]
         public System.Int64? DownloadId { get; set; }
 
+        //      C# -> System.String? ExternalId
+        // GraphQL -> externalId: String! (scalar)
+        [JsonProperty("externalId")]
+        public System.String? ExternalId { get; set; }
+
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long! (scalar)
         [JsonProperty("jobId")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public AsyncDownloadReply Set(
         System.Int64? DownloadId = null,
+        System.String? ExternalId = null,
         System.Int64? JobId = null,
         System.String? ReferenceId = null
     ) 
     {
         if ( DownloadId != null ) {
             this.DownloadId = DownloadId;
+        }
+        if ( ExternalId != null ) {
+            this.ExternalId = ExternalId;
         }
         if ( JobId != null ) {
             this.JobId = JobId;
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "downloadId\n" ;
             } else {
                 s += ind + "downloadId\n" ;
+            }
+        }
+        //      C# -> System.String? ExternalId
+        // GraphQL -> externalId: String! (scalar)
+        if (this.ExternalId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "externalId\n" ;
+            } else {
+                s += ind + "externalId\n" ;
             }
         }
         //      C# -> System.Int64? JobId
@@ -123,6 +141,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DownloadId != null && ec.Excludes("downloadId",true))
         {
             this.DownloadId = null;
+        }
+        //      C# -> System.String? ExternalId
+        // GraphQL -> externalId: String! (scalar)
+        if (ec.Includes("externalId",true))
+        {
+            if(this.ExternalId == null) {
+
+                this.ExternalId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExternalId != null && ec.Excludes("externalId",true))
+        {
+            this.ExternalId = null;
         }
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long! (scalar)

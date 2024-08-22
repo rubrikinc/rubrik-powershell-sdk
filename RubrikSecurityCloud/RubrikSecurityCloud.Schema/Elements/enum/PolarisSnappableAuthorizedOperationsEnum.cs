@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         TAKE_ON_DEMAND_SNAPSHOT,
 
         [EnumMember(Value = "VIEW_INVENTORY")]
-        VIEW_INVENTORY
+        VIEW_INVENTORY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PolarisSnappableAuthorizedOperationsEnum

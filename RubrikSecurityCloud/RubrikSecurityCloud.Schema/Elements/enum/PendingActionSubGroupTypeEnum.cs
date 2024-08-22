@@ -142,7 +142,10 @@ namespace RubrikSecurityCloud.Types
         UNMANAGED_OBJECT_DELETE_SNAPSHOTS,
 
         [EnumMember(Value = "UNMANAGED_OBJECT_DELETE_SNAPSHOTS_OF_OBJECT")]
-        UNMANAGED_OBJECT_DELETE_SNAPSHOTS_OF_OBJECT
+        UNMANAGED_OBJECT_DELETE_SNAPSHOTS_OF_OBJECT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PendingActionSubGroupTypeEnum

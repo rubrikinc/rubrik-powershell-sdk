@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         FIELD_UNSPECIFIED,
 
         [EnumMember(Value = "MOUNT_NAME")]
-        MOUNT_NAME
+        MOUNT_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum NutanixLiveMountSortByField

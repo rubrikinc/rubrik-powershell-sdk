@@ -58,6 +58,14 @@ Downloads the most recent full snapshot and the log snapshots taken after the fu
 
 - There is a single argument of type DownloadDb2SnapshotsForPointInTimeRecoveryInput.
 - Returns AsyncRequestStatus.
+### downloadsnapshotv2
+Download Db2 database snapshot from archive
+
+Supported in v9.3
+Downloads a specific Db2 database snapshot from the specified archival location.
+
+- There is a single argument of type DownloadDb2SnapshotV2Input.
+- Returns AsyncRequestStatus.
 ### expiredownloadedsnapshots
 Expire downloaded snapshots of a Db2 database
 

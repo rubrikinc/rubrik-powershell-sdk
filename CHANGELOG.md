@@ -1,5 +1,21 @@
 # Changelog
 
+## Version 1.8
+
+New Features: 
+
+- Get-RscVmwareVm now takes a cluster object via pipeline. e.g. `Get-RscCluster "foo" | Get-RscVmwareVm`
+- Add snapshotconsistencylevel to vSphereVM fields that are fetched from API.
+
+Fixes:
+
+- Fixed issue with publishing SDK to PowerShell Gallery due to
+  PowerShell 5.1 dependencies issues.
+- Fixed an issue with access token auto-renewal not being saved in the
+  PowerShell session (rseulting in multiple token renew calls).
+- Corrected the -Relic switch in Get-RscVmwareVm to properly filter on relic status.
+- Fixed an issue with mapping UNKNOWN values to schema enums.
+
 ## Version 1.7
 
 Fixes:

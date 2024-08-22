@@ -218,7 +218,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		matchAllValues = $someBoolean
     /// 	}
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
     /// 	# OPTIONAL
     /// 	slaId = $someString
@@ -281,7 +281,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		matchAllValues = $someBoolean
     /// 	}
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
     /// 	# OPTIONAL
     /// 	slaId = $someString
@@ -580,7 +580,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	labelRuleId = $someString
     /// 	# REQUIRED
     /// 	labelRuleName = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
     /// 	# OPTIONAL
     /// 	slaId = $someString
@@ -634,7 +634,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	tagRuleId = $someString
     /// 	# REQUIRED
     /// 	tagRuleName = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
     /// 	# OPTIONAL
     /// 	slaId = $someString
@@ -1000,7 +1000,7 @@ $query.Var.input = @{
 		# REQUIRED
 		matchAllValues = $someBoolean
 	}
-	# REQUIRED
+	# OPTIONAL
 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
 	# OPTIONAL
 	slaId = $someString
@@ -1055,7 +1055,7 @@ $query.Var.input = @{
 		# REQUIRED
 		matchAllValues = $someBoolean
 	}
-	# REQUIRED
+	# OPTIONAL
 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
 	# OPTIONAL
 	slaId = $someString
@@ -1298,7 +1298,7 @@ $query.Var.input = @{
 	labelRuleId = $someString
 	# REQUIRED
 	labelRuleName = $someString
-	# REQUIRED
+	# OPTIONAL
 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
 	# OPTIONAL
 	slaId = $someString
@@ -1344,7 +1344,7 @@ $query.Var.input = @{
 	tagRuleId = $someString
 	# REQUIRED
 	tagRuleName = $someString
-	# REQUIRED
+	# OPTIONAL
 	slaAssignType = $someTagRuleSlaAssignType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagRuleSlaAssignType]) for enum values.
 	# OPTIONAL
 	slaId = $someString

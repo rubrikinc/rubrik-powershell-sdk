@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         EXCHANGE_BACKUP_PREFERENCE_PASSIVE_ONLY,
 
         [EnumMember(Value = "EXCHANGE_BACKUP_PREFERENCE_PREFER_PASSIVE")]
-        EXCHANGE_BACKUP_PREFERENCE_PREFER_PASSIVE
+        EXCHANGE_BACKUP_PREFERENCE_PREFER_PASSIVE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ExchangeBackupPreference

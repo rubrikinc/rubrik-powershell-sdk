@@ -9,7 +9,7 @@ The details of a threat hunt.
 The results of the Threat Hunt.
 
 - There are 2 arguments.
-    - huntId - System.String: The ID of the threat hunt.
+    - huntId - System.String: ID of the threat hunt.
     - objectId - System.String: The ID of the object in the threat hunt.
 - Returns ThreatHuntResult.
 ### hunts
@@ -28,7 +28,7 @@ List of Threat Hunts.
     - quarantinedMatchesFilter - list of ThreatHuntQuarantinedMatchTypes: Optionally filter hunts based on whether they have quarantined matches.
 - Returns ThreatHuntConnection.
 ### huntsummary
-The summary of a threat hunt.
+The summary of the threat hunt.
 
 - There is a single argument of type System.String.
 - Returns ThreatHuntSummaryReply.

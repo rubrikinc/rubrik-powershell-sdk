@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         EXCLUDE_GROUP_TYPE,
 
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TargetMappingQueryFilterField

@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         FILE_TYPE,
 
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum OnedriveSearchKeywordType

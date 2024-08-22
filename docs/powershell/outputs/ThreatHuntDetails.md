@@ -2,9 +2,9 @@
 Details for the threat hunt.
 
 - startTime: DateTime
-  - Start time of the hunt.
+  - Start time of the threat hunt.
 - endTime: DateTime
-  - End time of the hunt.
+  - End time of the threat hunt.
 - snapshots: list of WorkloadIdToSnapshotIdss
   - The object ids and corresponding snapshot ids targeted for scanning.
 - cdmId: System.String

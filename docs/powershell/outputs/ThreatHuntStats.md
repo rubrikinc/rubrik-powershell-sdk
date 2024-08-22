@@ -15,3 +15,5 @@ Represents the statistics related to the threat hunt.
   - Total unique paths for which malware was found which are also quarantined.
 - totalObjectsScanned: System.Int64
   - Total objects scanned.
+- totalIocs: System.Int64
+  - Total number of IOCs.

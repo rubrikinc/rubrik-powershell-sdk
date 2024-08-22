@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         REFRESH_DATA_SOURCE,
 
         [EnumMember(Value = "VIEW_INVENTORY")]
-        VIEW_INVENTORY
+        VIEW_INVENTORY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum PolarisObjectAuthorizedOperationsEnum

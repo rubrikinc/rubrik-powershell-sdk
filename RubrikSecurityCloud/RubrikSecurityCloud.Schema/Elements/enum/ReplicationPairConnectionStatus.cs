@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         REPLICATION_DISCONNECTED,
 
         [EnumMember(Value = "REPLICATION_PAUSED")]
-        REPLICATION_PAUSED
+        REPLICATION_PAUSED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ReplicationPairConnectionStatus

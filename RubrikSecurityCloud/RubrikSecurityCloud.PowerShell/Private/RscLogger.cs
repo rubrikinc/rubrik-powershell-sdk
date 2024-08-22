@@ -48,7 +48,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
         }
         public void Verbose(string message)
         {
-            var m = ($"{name}: {message}");
+            var m = ($"[{name}] {message}");
             if (_cmdlet != null)
             {
                 this._logQueue.Enqueue("V" + m);
@@ -62,7 +62,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
         public void Info(string message)
         {
-            var m = ($"{name}: {message}");
+            var m = ($"[{name}] {message}");
             if (_cmdlet != null)
             {
                 this._logQueue.Enqueue("I" + m);
@@ -76,7 +76,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
         public void Warning(string message)
         {
-            var m = ($"{name}: {message}");
+            var m = ($"[{name}] {message}");
             if (_cmdlet != null)
             {
                 this._logQueue.Enqueue("W" + m);
@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
         public void Error(string message)
         {
-            var m = ($"{name}: {message}");
+            var m = ($"[{name}] {message}");
             if (_cmdlet != null)
             {
                 this._logQueue.Enqueue("E" + m);

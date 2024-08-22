@@ -11,3 +11,5 @@ Configuration to initiate recovery of AzureAdDirectory with multiple passwords.
   - Map of azureAdObjectType to object IDs.
 - forceChangePasswordWithMfa: System.Boolean
   - Specifies whether to enable MFA during the recovery of one or more users.
+- relationshipRestoreMode: AzureAdRelationshipRestoreModeEnumType
+  - Represents the modes for relationship restore for Azure AD objects.

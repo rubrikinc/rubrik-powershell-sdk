@@ -220,7 +220,10 @@ namespace RubrikSecurityCloud.Types
         US_VIN,
 
         [EnumMember(Value = "WORD_FREQUENCY")]
-        WORD_FREQUENCY
+        WORD_FREQUENCY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AnalyzerTypeEnum

@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
+        [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
+        ACTIVE_DIRECTORY_FOREST,
+
         [EnumMember(Value = "APP_BLUEPRINT")]
         APP_BLUEPRINT,
 
@@ -101,6 +104,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLUSTER")]
         CLUSTER,
+
+        [EnumMember(Value = "CONFLUENCE_SPACE")]
+        CONFLUENCE_SPACE,
 
         [EnumMember(Value = "CROSS_ACCOUNT_PAIR")]
         CROSS_ACCOUNT_PAIR,
@@ -221,6 +227,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MSSQL_OBJECT")]
         MSSQL_OBJECT,
+
+        [EnumMember(Value = "NAS_FILESET")]
+        NAS_FILESET,
 
         [EnumMember(Value = "NAS_HOST")]
         NAS_HOST,
@@ -391,7 +400,10 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_FILESET,
 
         [EnumMember(Value = "WINDOWS_HOST")]
-        WINDOWS_HOST
+        WINDOWS_HOST,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AuditObjectType

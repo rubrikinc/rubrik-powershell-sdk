@@ -21,11 +21,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ASIA_SOUTHEAST")]
         ASIA_SOUTHEAST,
 
+        [EnumMember(Value = "AUSTRALIA_CENTRAL")]
+        AUSTRALIA_CENTRAL,
+
         [EnumMember(Value = "AUSTRALIA_EAST")]
         AUSTRALIA_EAST,
 
         [EnumMember(Value = "AUSTRALIA_SOUTHEAST")]
         AUSTRALIA_SOUTHEAST,
+
+        [EnumMember(Value = "BRAZIL_SOUTH")]
+        BRAZIL_SOUTH,
 
         [EnumMember(Value = "CANADA_CENTRAL")]
         CANADA_CENTRAL,
@@ -51,8 +57,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GOV_US_VIRGINIA")]
         GOV_US_VIRGINIA,
 
+        [EnumMember(Value = "INDIA_CENTRAL")]
+        INDIA_CENTRAL,
+
         [EnumMember(Value = "INDIA_SOUTH")]
         INDIA_SOUTH,
+
+        [EnumMember(Value = "INDIA_WEST")]
+        INDIA_WEST,
+
+        [EnumMember(Value = "ISRAEL_CENTRAL")]
+        ISRAEL_CENTRAL,
+
+        [EnumMember(Value = "ITALY_NORTH")]
+        ITALY_NORTH,
 
         [EnumMember(Value = "JAPAN_EAST")]
         JAPAN_EAST,
@@ -60,14 +78,29 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "JAPAN_WEST")]
         JAPAN_WEST,
 
+        [EnumMember(Value = "KOREA_CENTRAL")]
+        KOREA_CENTRAL,
+
+        [EnumMember(Value = "KOREA_SOUTH")]
+        KOREA_SOUTH,
+
+        [EnumMember(Value = "MEXICO_CENTRAL")]
+        MEXICO_CENTRAL,
+
         [EnumMember(Value = "NORWAY_EAST")]
         NORWAY_EAST,
 
         [EnumMember(Value = "POLAND_CENTRAL")]
         POLAND_CENTRAL,
 
+        [EnumMember(Value = "QATAR_CENTRAL")]
+        QATAR_CENTRAL,
+
         [EnumMember(Value = "SOUTH_AFRICA_NORTH")]
         SOUTH_AFRICA_NORTH,
+
+        [EnumMember(Value = "SPAIN_CENTRAL")]
+        SPAIN_CENTRAL,
 
         [EnumMember(Value = "SWEDEN_CENTRAL")]
         SWEDEN_CENTRAL,
@@ -112,7 +145,10 @@ namespace RubrikSecurityCloud.Types
         US_WEST_CENTRAL,
 
         [EnumMember(Value = "WEST_US3")]
-        WEST_US3
+        WEST_US3,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RcsRegionEnumType

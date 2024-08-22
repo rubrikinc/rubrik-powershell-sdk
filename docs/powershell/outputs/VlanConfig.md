@@ -10,6 +10,8 @@ Supported in v5.0+
 - vlan: System.Int32
   - Required. Supported in v5.0+
 - gateway: System.String
-  - Gateway for the VLAN.
+  - Supported in v9.2+
+  Gateway for the VLAN.
 - alias: System.String
-  - Alias for the VLAN.
+  - Supported in v9.2+
+  Alias for the VLAN.

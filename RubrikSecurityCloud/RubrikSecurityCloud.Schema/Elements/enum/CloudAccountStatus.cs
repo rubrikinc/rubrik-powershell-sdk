@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         DISCONNECTED,
 
         [EnumMember(Value = "MISSING_PERMISSIONS")]
-        MISSING_PERMISSIONS
+        MISSING_PERMISSIONS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudAccountStatus

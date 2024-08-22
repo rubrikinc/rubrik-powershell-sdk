@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         CONFIGURED_GROUP,
 
         [EnumMember(Value = "UNTYPED_GROUP")]
-        UNTYPED_GROUP
+        UNTYPED_GROUP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum O365GroupType

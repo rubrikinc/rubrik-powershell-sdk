@@ -24,7 +24,8 @@ Supported in v9.0+
   - Supported in v9.1+
       The transport type used for communication with the Kubernetes cluster.
 - isAutoPsCreationEnabled: System.Boolean
-  - Specifies whether to enable automatic protection set creation for the Kubernetes cluster.
+  - Supported in v9.2+
+      Specifies whether to enable automatic protection set creation for the Kubernetes cluster.
 - clientSecret: System.String
   - Supported in v9.1+
       The client secret for the service account.
@@ -35,14 +36,16 @@ Supported in v9.0+
   - Supported in v9.1+
       Region of the Kubernetes cluster to be added.
 - onboardingType: System.String
-  - The type of onboarding. It can be kubeconfig or manifest.
+  - Supported in v9.2+
+      The type of onboarding. It can be kubeconfig or manifest.
 - clientId: System.String
   - Supported in v9.1+
       The client ID for the service account.
 - eksConfig: EksConfigInput
   - The configuration for adding an EKS cluster.
 - kuprServerProxyConfig: KuprServerProxyConfigInput
-  - The configuration for the kupr server proxy to be added.
+  - Supported in v9.2+
+      The configuration for the kupr server proxy to be added.
 - name: System.String
   - Required. Supported in v9.0+
       Name of the Kubernetes cluster to be added.

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         DATA_GUARD_TYPE_DATA_GUARD_MEMBER,
 
         [EnumMember(Value = "DATA_GUARD_TYPE_NON_DATA_GUARD")]
-        DATA_GUARD_TYPE_NON_DATA_GUARD
+        DATA_GUARD_TYPE_NON_DATA_GUARD,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CdmDataGuardType

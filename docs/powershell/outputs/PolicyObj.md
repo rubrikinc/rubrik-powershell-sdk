@@ -47,6 +47,8 @@
   - Specifies the metadata of the asset.
 - objectType: DataGovObjectType
   - Specifies the object type of the asset.
+- scanStatus: ScanStatus
+  - Specifies the scan status of the asset.
 - id: System.String
 - folderChildConnection: FileResultConnection
 - fileResultConnection: FileResultConnection

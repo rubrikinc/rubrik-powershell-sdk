@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KOREA_SOUTH")]
         KOREA_SOUTH,
 
+        [EnumMember(Value = "MEXICO_CENTRAL")]
+        MEXICO_CENTRAL,
+
         [EnumMember(Value = "NORTH_CENTRAL_US")]
         NORTH_CENTRAL_US,
 
@@ -131,6 +134,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SOUTH_INDIA")]
         SOUTH_INDIA,
+
+        [EnumMember(Value = "SPAIN_CENTRAL")]
+        SPAIN_CENTRAL,
 
         [EnumMember(Value = "SWEDEN_CENTRAL")]
         SWEDEN_CENTRAL,
@@ -178,7 +184,10 @@ namespace RubrikSecurityCloud.Types
         WEST_US2,
 
         [EnumMember(Value = "WEST_US3")]
-        WEST_US3
+        WEST_US3,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureNativeRegionForReplication

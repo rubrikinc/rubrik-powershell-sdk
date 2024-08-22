@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ACCEPTED,
 
         [EnumMember(Value = "REJECTED")]
-        REJECTED
+        REJECTED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ExoBundleApprovalStatus

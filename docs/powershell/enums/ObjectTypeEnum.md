@@ -2,6 +2,7 @@
 - KuprNamespace
 - SALESFORCE_OBJECT - Salesforce object.
 - MssqlDatabaseBatchMaintenance
+- MYSQLDB_INSTANCE - MySQL Instance.
 - O365Teams
 - CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS Export.
 - O365Onedrive
@@ -14,6 +15,7 @@
 - MONGO_COLLECTION - MongoDB Collection.
 - SAP_HANA_SYSTEM - SAP HANA System.
 - RubrikEc2Instance
+- M365_BACKUP_STORAGE_MAILBOX - M365 Backup Storage Mailbox.
 - MONGO_COLLECTION_SET - MongoDB Database.
 - OracleDatabase
 - MONGODB_SOURCE - MongoDB Source Cluster.
@@ -53,14 +55,17 @@
 - RubrikEbsVolume
 - VcdVapp
 - ExchangeDatabase - Exchange Database.
+- M365_BACKUP_STORAGE_SITE - M365 Backup Storage Sharepoint Site.
 - MONGO_DATABASE - MongoDB Database.
 - Ec2Instance
+- CONFLUENCE_SPACE - Confluence Space.
 - JIRA_PROJECT - Jira project.
 - StorageArrayVolumeGroup
 - SnapMirrorCloud
 - SALESFORCE_FIXED_OBJECT - Salesforce metadata.
 - AppBlueprint
 - NutanixVirtualMachine
+- M365_BACKUP_STORAGE_ONEDRIVE - M365 Backup Storage Onedrive.
 - SapHanaDatabase - SAP HANA Database.
 - GcpNativeDisk
 - CASSANDRA_KEYSPACE - Cassandra Keyspace.

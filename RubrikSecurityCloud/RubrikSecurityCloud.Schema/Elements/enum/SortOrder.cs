@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         ASC,
 
         [EnumMember(Value = "DESC")]
-        DESC
+        DESC,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SortOrder

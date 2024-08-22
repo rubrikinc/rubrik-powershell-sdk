@@ -59,6 +59,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("relicFilter")]
         public RelicFilter? RelicFilter { get; set; }
 
+        //      C# -> UnaccessedFilter? UnaccessedFilter
+        // GraphQL -> unaccessedFilter: UnaccessedFilter (input)
+        [JsonProperty("unaccessedFilter")]
+        public UnaccessedFilter? UnaccessedFilter { get; set; }
+
+        //      C# -> SensitivityStatusFilter? SensitivityStatusFilter
+        // GraphQL -> sensitivityStatusFilter: SensitivityStatusFilter (input)
+        [JsonProperty("sensitivityStatusFilter")]
+        public SensitivityStatusFilter? SensitivityStatusFilter { get; set; }
+
+        //      C# -> ProtectionStatusFilter? ProtectionStatusFilter
+        // GraphQL -> protectionStatusFilter: ProtectionStatusFilter (input)
+        [JsonProperty("protectionStatusFilter")]
+        public ProtectionStatusFilter? ProtectionStatusFilter { get; set; }
+
         //      C# -> AwsNativeTagFilter? TagFilter
         // GraphQL -> tagFilter: AwsNativeTagFilter (input)
         [JsonProperty("tagFilter")]

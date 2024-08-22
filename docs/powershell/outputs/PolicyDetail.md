@@ -15,5 +15,11 @@ Represents the policy detail.
   - Total analyzers in a policy.
 - lastUpdatedTime: System.Int64
   - Time when the policy was last updated.
+- totalHits: System.Int64
+  - Total sensitive hits in a policy.
+- dataTypeIds: list of System.Strings
+  - List of datatype IDs in a policy.
+- objectsPercentCoverage: System.Int32
+  - Percentage of objects covered.
 - creator: User
   - Policy creator.

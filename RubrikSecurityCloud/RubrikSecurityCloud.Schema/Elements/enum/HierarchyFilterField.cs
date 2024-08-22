@@ -243,6 +243,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DOMAIN_CONTROLLER_FSMO_ROLE")]
         DOMAIN_CONTROLLER_FSMO_ROLE,
 
+        [EnumMember(Value = "DOMAIN_HAS_FOREST")]
+        DOMAIN_HAS_FOREST,
+
         [EnumMember(Value = "EBS_VOLUME_ID")]
         EBS_VOLUME_ID,
 
@@ -543,6 +546,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MONGO_DATABASE_ID")]
         MONGO_DATABASE_ID,
 
+        [EnumMember(Value = "MONGO_MANAGEMENT_TYPE")]
+        MONGO_MANAGEMENT_TYPE,
+
         [EnumMember(Value = "MONGO_SOURCE_ID")]
         MONGO_SOURCE_ID,
 
@@ -663,6 +669,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RECOVERY_PLAN_NAME")]
         RECOVERY_PLAN_NAME,
 
+        [EnumMember(Value = "RECOVERY_PLAN_SOURCE_LOCATION")]
+        RECOVERY_PLAN_SOURCE_LOCATION,
+
+        [EnumMember(Value = "RECOVERY_PLAN_TARGET_LOCATION")]
+        RECOVERY_PLAN_TARGET_LOCATION,
+
         [EnumMember(Value = "RECOVERY_PLAN_TYPE")]
         RECOVERY_PLAN_TYPE,
 
@@ -736,7 +748,10 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_DATASTORE_IS_LOCAL,
 
         [EnumMember(Value = "VSPHERE_GET_ROOT_RESTORE_HIERARCHY")]
-        VSPHERE_GET_ROOT_RESTORE_HIERARCHY
+        VSPHERE_GET_ROOT_RESTORE_HIERARCHY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HierarchyFilterField

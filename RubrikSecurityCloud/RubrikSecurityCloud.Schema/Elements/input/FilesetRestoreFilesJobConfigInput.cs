@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ignoreErrors")]
         public System.Boolean? IgnoreErrors { get; set; }
 
+        //      C# -> List<System.String>? ExcludePaths
+        // GraphQL -> excludePaths: [String!] (scalar)
+        [JsonProperty("excludePaths")]
+        public List<System.String>? ExcludePaths { get; set; }
+
         //      C# -> System.Boolean? ShouldRecreateDirectoryStructure
         // GraphQL -> shouldRecreateDirectoryStructure: Boolean (scalar)
         [JsonProperty("shouldRecreateDirectoryStructure")]

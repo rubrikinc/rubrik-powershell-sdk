@@ -115,7 +115,7 @@ Download a snapshot from archival.
 ### downloadvdisks
 Download virtual disks from the snapshot of a Nutanix virtual machine
 
-Supported in v9.2
+Supported in v9.2+
 Start an asynchronous job to download multiple virtual disks from a specified Nutanix virtual machine snapshot. Once initiated, you will receive an asynchronous request ID in response. To obtain the URL for downloading the virtual disk files, including the specific virtual disks, send a GET request to 'nutanix/vm/request/{id}'.
 
 - There is a single argument of type DownloadNutanixVmSnapshotVirtualDisksInput.
@@ -157,7 +157,7 @@ Initiates a request to perform a Live Mount of a Nutanix virtual machine snapsho
 ### mountvdisks
 Attaching disks from a snapshot to an existing virtual machine
 
-Supported in v9.2
+Supported in v9.2+
 Requests a vDisk Mount to attach disks to an existing virtual machine.
 
 - There is a single argument of type CreateNutanixVdisksMountInput.

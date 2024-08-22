@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accessibleBySidsRepresentationShortForm")]
         public System.String? AccessibleBySidsRepresentationShortForm { get; set; }
 
+        //      C# -> System.Int64? CreationTime
+        // GraphQL -> creationTime: Long! (scalar)
+        [JsonProperty("creationTime")]
+        public System.Int64? CreationTime { get; set; }
+
         //      C# -> System.String? Directory
         // GraphQL -> directory: String! (scalar)
         [JsonProperty("directory")]
@@ -94,6 +99,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lastModifiedTime: Long! (scalar)
         [JsonProperty("lastModifiedTime")]
         public System.Int64? LastModifiedTime { get; set; }
+
+        //      C# -> System.Int64? LastScanTime
+        // GraphQL -> lastScanTime: Long! (scalar)
+        [JsonProperty("lastScanTime")]
+        public System.Int64? LastScanTime { get; set; }
 
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)
@@ -265,11 +275,13 @@ namespace RubrikSecurityCloud.Types
         HierarchyObject? Snappable = null,
         System.String? AccessibleBySidsRepresentation = null,
         System.String? AccessibleBySidsRepresentationShortForm = null,
+        System.Int64? CreationTime = null,
         System.String? Directory = null,
         System.String? Filename = null,
         System.Boolean? IsDirectAcl = null,
         System.Int64? LastAccessTime = null,
         System.Int64? LastModifiedTime = null,
+        System.Int64? LastScanTime = null,
         System.String? NativePath = null,
         System.Int64? NumActivities = null,
         System.Int64? NumActivitiesDelta = null,
@@ -332,6 +344,9 @@ namespace RubrikSecurityCloud.Types
         if ( AccessibleBySidsRepresentationShortForm != null ) {
             this.AccessibleBySidsRepresentationShortForm = AccessibleBySidsRepresentationShortForm;
         }
+        if ( CreationTime != null ) {
+            this.CreationTime = CreationTime;
+        }
         if ( Directory != null ) {
             this.Directory = Directory;
         }
@@ -346,6 +361,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LastModifiedTime != null ) {
             this.LastModifiedTime = LastModifiedTime;
+        }
+        if ( LastScanTime != null ) {
+            this.LastScanTime = LastScanTime;
         }
         if ( NativePath != null ) {
             this.NativePath = NativePath;
@@ -545,6 +563,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "accessibleBySidsRepresentationShortForm\n" ;
             }
         }
+        //      C# -> System.Int64? CreationTime
+        // GraphQL -> creationTime: Long! (scalar)
+        if (this.CreationTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "creationTime\n" ;
+            } else {
+                s += ind + "creationTime\n" ;
+            }
+        }
         //      C# -> System.String? Directory
         // GraphQL -> directory: String! (scalar)
         if (this.Directory != null) {
@@ -588,6 +615,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "lastModifiedTime\n" ;
             } else {
                 s += ind + "lastModifiedTime\n" ;
+            }
+        }
+        //      C# -> System.Int64? LastScanTime
+        // GraphQL -> lastScanTime: Long! (scalar)
+        if (this.LastScanTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastScanTime\n" ;
+            } else {
+                s += ind + "lastScanTime\n" ;
             }
         }
         //      C# -> System.String? NativePath
@@ -1086,6 +1122,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AccessibleBySidsRepresentationShortForm = null;
         }
+        //      C# -> System.Int64? CreationTime
+        // GraphQL -> creationTime: Long! (scalar)
+        if (ec.Includes("creationTime",true))
+        {
+            if(this.CreationTime == null) {
+
+                this.CreationTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreationTime != null && ec.Excludes("creationTime",true))
+        {
+            this.CreationTime = null;
+        }
         //      C# -> System.String? Directory
         // GraphQL -> directory: String! (scalar)
         if (ec.Includes("directory",true))
@@ -1170,6 +1223,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LastModifiedTime != null && ec.Excludes("lastModifiedTime",true))
         {
             this.LastModifiedTime = null;
+        }
+        //      C# -> System.Int64? LastScanTime
+        // GraphQL -> lastScanTime: Long! (scalar)
+        if (ec.Includes("lastScanTime",true))
+        {
+            if(this.LastScanTime == null) {
+
+                this.LastScanTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastScanTime != null && ec.Excludes("lastScanTime",true))
+        {
+            this.LastScanTime = null;
         }
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)

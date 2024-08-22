@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         REFRESHED,
 
         [EnumMember(Value = "REFRESHING")]
-        REFRESHING
+        REFRESHING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum GcpNativeProjectStatus

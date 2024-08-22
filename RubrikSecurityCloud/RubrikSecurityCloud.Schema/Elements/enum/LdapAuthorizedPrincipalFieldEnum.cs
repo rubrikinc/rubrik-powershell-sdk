@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         LAST_LOGIN,
 
         [EnumMember(Value = "Name")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum LdapAuthorizedPrincipalFieldEnum

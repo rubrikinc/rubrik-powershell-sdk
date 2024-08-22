@@ -43,7 +43,10 @@ namespace RubrikSecurityCloud.Types
         SLA_DOMAIN_NAME,
 
         [EnumMember(Value = "StartDate")]
-        START_DATE
+        START_DATE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TaskReportTableColumnEnum

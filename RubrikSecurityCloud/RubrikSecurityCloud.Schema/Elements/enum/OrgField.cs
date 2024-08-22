@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         FULL_NAME,
 
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum OrgField

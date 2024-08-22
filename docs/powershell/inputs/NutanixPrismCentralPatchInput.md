@@ -17,7 +17,8 @@ Input for patching the Nutanix Prism Central.
   - Supported in v9.0+
       Username for the Nutanix Prism Central used for all the cluster connections.
 - isDrEnabled: System.Boolean
-  - Specifies whether Nutanix DR support is enabled for the the Prism Central object.
+  - Supported in v9.2+
+      Specifies whether Nutanix DR support is enabled for the the Prism Central object.
 - nutanixClusters: list of NutanixClustersListElementInputs
   - Supported in v9.1+
       The list of new Nutanix Clusters to protect as part of the given Nutanix Prism Central object.

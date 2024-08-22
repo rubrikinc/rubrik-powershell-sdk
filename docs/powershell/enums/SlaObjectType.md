@@ -35,3 +35,5 @@ Type of objects managed by SLA Domains.
 - ATLASSIAN_JIRA_OBJECT_TYPE - Atlassian Jira object.
 - POSTGRES_DB_CLUSTER_OBJECT_TYPE - PostgreSQL DB Cluster object.
 - SALESFORCE_OBJECT_TYPE - Salesforce object.
+- M365_BACKUP_STORAGE_OBJECT_TYPE - Microsoft 365 Backup Storage object.
+- MYSQLDB_OBJECT_TYPE - MySQL object.

@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         STATUS_INIT,
 
         [EnumMember(Value = "STATUS_UNKNOWN")]
-        STATUS_UNKNOWN
+        STATUS_UNKNOWN,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum K8sClusterStatus

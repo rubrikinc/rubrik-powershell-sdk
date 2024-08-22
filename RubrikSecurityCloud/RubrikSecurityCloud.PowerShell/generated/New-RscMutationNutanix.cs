@@ -1138,6 +1138,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			@{
     /// 				# OPTIONAL
     /// 				name = $someString
+    /// 				# OPTIONAL
+    /// 				password = $someString
+    /// 				# OPTIONAL
+    /// 				username = $someString
     /// 				# REQUIRED
     /// 				clusterUuid = $someString
     /// 			}
@@ -2485,6 +2489,10 @@ $query.Var.input = @{
 			@{
 				# OPTIONAL
 				name = $someString
+				# OPTIONAL
+				password = $someString
+				# OPTIONAL
+				username = $someString
 				# REQUIRED
 				clusterUuid = $someString
 			}

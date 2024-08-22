@@ -44,6 +44,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("regionFilter")]
         public AwsNativeRegionFilter? RegionFilter { get; set; }
 
+        //      C# -> UnaccessedFilter? UnaccessedFilter
+        // GraphQL -> unaccessedFilter: UnaccessedFilter (input)
+        [JsonProperty("unaccessedFilter")]
+        public UnaccessedFilter? UnaccessedFilter { get; set; }
+
+        //      C# -> SensitivityStatusFilter? SensitivityStatusFilter
+        // GraphQL -> sensitivityStatusFilter: SensitivityStatusFilter (input)
+        [JsonProperty("sensitivityStatusFilter")]
+        public SensitivityStatusFilter? SensitivityStatusFilter { get; set; }
+
+        //      C# -> ProtectionStatusFilter? ProtectionStatusFilter
+        // GraphQL -> protectionStatusFilter: ProtectionStatusFilter (input)
+        [JsonProperty("protectionStatusFilter")]
+        public ProtectionStatusFilter? ProtectionStatusFilter { get; set; }
+
         //      C# -> AwsNativeEc2InstanceTypeFilter? TypeFilter
         // GraphQL -> typeFilter: AwsNativeEc2InstanceTypeFilter (input)
         [JsonProperty("typeFilter")]

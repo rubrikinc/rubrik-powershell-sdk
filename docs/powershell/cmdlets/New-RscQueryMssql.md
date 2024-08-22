@@ -5,6 +5,24 @@ A Microsoft SQL Availability Group.
 
 - There is a single argument of type System.String.
 - Returns MssqlAvailabilityGroup.
+### availabilitygroupdatabasevirtualgroups
+Paginated list of virtual groups for MSSQL databases.
+
+- There are 3 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - fids - list of System.Strings: The Rubrik UUIDs for the objects.
+- Returns MssqlDatabaseVirtualGroupConnection.
+### availabilitygroupvirtualgroups
+Paginated list of virtual groups for MSSQL availability groups.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - filters - list of MssqlAvailabilityGroupVirtualGroupFilterInputs: Filters for MSSQL availability group virtual groups. Default to no filters and all objects are returned.
+    - sortBy - MssqlAvailabilityGroupVirtualGroupSortByInput: Sort by argument for MSSQL availability group virtual groups. Default sort is by ID in ascending order.
+    - sortOrder - MssqlAvailabilityGroupVirtualGroupSortOrderInput: Sort order argument for MSSQL availability group virtual groups.
+- Returns MssqlAvailabilityGroupVirtualGroupConnection.
 ### cdmlogshippingtarget
 A single Microsoft SQL log shipping target.
 
@@ -16,7 +34,7 @@ Paginated list of Microsoft SQL log shipping target.
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - MssqlLogShippingTargetSortByInput: Sort by argument for Mssql log shipping targets. Default sort is by id in ascending order.
+    - sortBy - MssqlLogShippingTargetSortByInput: Sort by argument for MSSQL log shipping targets. Default sort is by ID in ascending order.
     - filters - list of MssqlLogShippingTargetFilterInputs: Filters for Mssql log shipping targets. No filters by default.
 - Returns MssqlLogShippingTargetConnection.
 ### compatibleinstances
@@ -88,6 +106,14 @@ A Microsoft SQL Instance.
 
 - There is a single argument of type System.String.
 - Returns MssqlInstance.
+### jobstatus
+Get details for an async request
+
+Supported in v5.0+
+Returns the task object for an async request related to SQL Server databases.
+
+- There is a single argument of type GetMssqlAsyncRequestStatusInput.
+- Returns AsyncRequestStatus.
 ### logshippingtargets
 List of filtered Microsoft SQL log shipping targets.
 

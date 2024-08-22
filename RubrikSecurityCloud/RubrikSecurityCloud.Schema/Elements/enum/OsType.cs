@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         UNDEFINED,
 
         [EnumMember(Value = "WINDOWS")]
-        WINDOWS
+        WINDOWS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum OsType

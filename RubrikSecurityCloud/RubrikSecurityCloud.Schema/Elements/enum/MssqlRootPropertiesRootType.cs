@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         MSSQL_ROOT_PROPERTIES_ROOT_TYPE_MSSQL_AVAILABILITY_GROUP,
 
         [EnumMember(Value = "MSSQL_ROOT_PROPERTIES_ROOT_TYPE_WINDOWS_CLUSTER")]
-        MSSQL_ROOT_PROPERTIES_ROOT_TYPE_WINDOWS_CLUSTER
+        MSSQL_ROOT_PROPERTIES_ROOT_TYPE_WINDOWS_CLUSTER,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MssqlRootPropertiesRootType

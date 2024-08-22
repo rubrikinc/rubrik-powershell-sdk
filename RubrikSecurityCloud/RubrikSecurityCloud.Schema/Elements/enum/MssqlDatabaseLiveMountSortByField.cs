@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         CREATION_DATE,
 
         [EnumMember(Value = "MOUNTED_DATABASE_NAME")]
-        MOUNTED_DATABASE_NAME
+        MOUNTED_DATABASE_NAME,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MssqlDatabaseLiveMountSortByField

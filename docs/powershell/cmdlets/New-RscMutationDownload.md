@@ -21,6 +21,14 @@ Downloads a Microsoft Exchange database snapshot from the specified archival loc
 
 - There is a single argument of type DownloadExchangeSnapshotInput.
 - Returns AsyncRequestStatus.
+### exchangesnapshotv2
+Download exchange database snapshot from archive
+
+Supported in v9.3
+Downloads a Microsoft Exchange database snapshot from the specified archival location.
+
+- There is a single argument of type DownloadExchangeSnapshotV2Input.
+- Returns AsyncRequestStatus.
 ### filesetsnapshot
 - There is a single argument of type DownloadFilesetSnapshotInput.
 - Returns AsyncRequestStatus.
@@ -31,6 +39,11 @@ Supported in v7.0+
 Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a replication target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
 
 - There is a single argument of type DownloadFilesetSnapshotFromLocationInput.
+- Returns AsyncRequestStatus.
+### fromarchivev2
+Download Microsoft SQL Server Database snapshot from archival location.
+
+- There is a single argument of type DownloadFromArchiveV2Input.
 - Returns AsyncRequestStatus.
 ### objectfilescsv
 Schedule a download CSV job for cross object files.

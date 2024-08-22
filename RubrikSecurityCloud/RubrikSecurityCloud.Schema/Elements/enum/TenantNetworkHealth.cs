@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         HEALTHY_TENANT_NETWORK_HEALTH,
 
         [EnumMember(Value = "TENANT_NETWORK_HEALTH_UNSPECIFIED")]
-        TENANT_NETWORK_HEALTH_UNSPECIFIED
+        TENANT_NETWORK_HEALTH_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TenantNetworkHealth

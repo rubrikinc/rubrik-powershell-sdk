@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         AZUREPUBLICCLOUD,
 
         [EnumMember(Value = "AZUREUSGOVERNMENTCLOUD")]
-        AZUREUSGOVERNMENTCLOUD
+        AZUREUSGOVERNMENTCLOUD,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureCloudType

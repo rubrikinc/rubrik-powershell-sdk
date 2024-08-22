@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         PRODUCT_DOCS,
 
         [EnumMember(Value = "SOURCE_UNSPECIFIED")]
-        SOURCE_UNSPECIFIED
+        SOURCE_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HelpContentSource

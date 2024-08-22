@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 25
+    /// Create a new RscQuery object for any of the 26
     /// operations in the 'VMware vSphere VM' API domain:
-    /// BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, RegisterAgentWithOrg, or Update.
+    /// BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, RegisterAgentWithOrg, Update, or UpdateUnmountTime.
     /// </summary>
     /// <description>
     /// New-RscMutationVsphereVm creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 25 operations
+    /// There are 26 operations
     /// in the 'VMware vSphere VM' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, RegisterAgentWithOrg, or Update.
+    /// one of: BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, RegisterAgentWithOrg, Update, or UpdateUnmountTime.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -983,6 +983,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					folderId = $someString
     /// 					# OPTIONAL
+    /// 					unmountTimeOpt = $someInt64
+    /// 					# OPTIONAL
     /// 					migrationConfig = @{
     /// 						# OPTIONAL
     /// 						storageLocationId = $someString
@@ -1095,6 +1097,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		vmdkIds = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		unmountTimeOpt = $someInt64
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1306,6 +1310,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		shouldMigrateImmediately = $someBoolean
     /// 		# OPTIONAL
     /// 		folderId = $someString
+    /// 		# OPTIONAL
+    /// 		unmountTimeOpt = $someInt64
     /// 		# OPTIONAL
     /// 		migrationConfig = @{
     /// 			# OPTIONAL
@@ -1874,6 +1880,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the UpdateUnmountTime operation
+    /// of the 'VMware vSphere VM' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    VsphereVm
+    /// # API Operation: UpdateUnmountTime
+    /// 
+    /// $query = New-RscMutationVsphereVm -UpdateUnmountTime
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		newUnmountTime = $someInt64
+    /// 	}
+    /// 	# REQUIRED
+    /// 	mountId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -1915,6 +1957,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RegisterAgent",
                 "RegisterAgentWithOrg",
                 "Update",
+                "UpdateUnmountTime",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -2004,6 +2047,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Update":
                         this.ProcessRecord_Update();
+                        break;
+                    case "UpdateUnmountTime":
+                        this.ProcessRecord_UpdateUnmountTime();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -2238,6 +2284,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Update";
             // Create new graphql operation updateVsphereVm
             InitMutationUpdateVsphereVm();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vsphereVmUpdateUnmountTime.
+        internal void ProcessRecord_UpdateUnmountTime()
+        {
+            this._logger.name += " -UpdateUnmountTime";
+            // Create new graphql operation vsphereVmUpdateUnmountTime
+            InitMutationVsphereVmUpdateUnmountTime();
         }
 
 
@@ -3062,6 +3117,8 @@ $query.Var.input = @{
 					# OPTIONAL
 					folderId = $someString
 					# OPTIONAL
+					unmountTimeOpt = $someInt64
+					# OPTIONAL
 					migrationConfig = @{
 						# OPTIONAL
 						storageLocationId = $someString
@@ -3166,6 +3223,8 @@ $query.Var.input = @{
 		vmdkIds = @(
 			$someString
 		)
+		# OPTIONAL
+		unmountTimeOpt = $someInt64
 	}
 	# REQUIRED
 	id = $someString
@@ -3353,6 +3412,8 @@ $query.Var.input = @{
 		shouldMigrateImmediately = $someBoolean
 		# OPTIONAL
 		folderId = $someString
+		# OPTIONAL
+		unmountTimeOpt = $someInt64
 		# OPTIONAL
 		migrationConfig = @{
 			# OPTIONAL
@@ -3835,6 +3896,34 @@ $query.Var.input = @{
 			}
 		}
 	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // vsphereVmUpdateUnmountTime(input: VsphereVmUpdateUnmountTimeInput!): Void
+        internal void InitMutationVsphereVmUpdateUnmountTime()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "VsphereVmUpdateUnmountTimeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereVmUpdateUnmountTime",
+                "($input: VsphereVmUpdateUnmountTimeInput!)",
+                "System.String",
+                Mutation.VsphereVmUpdateUnmountTime,
+                Mutation.VsphereVmUpdateUnmountTimeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		newUnmountTime = $someInt64
+	}
+	# REQUIRED
+	mountId = $someString
 }"
             );
         }

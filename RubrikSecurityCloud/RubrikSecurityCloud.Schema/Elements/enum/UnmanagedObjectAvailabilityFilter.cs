@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         UNMANAGED_OBJECT_UNKNOWN,
 
         [EnumMember(Value = "UNPROTECTED")]
-        UNPROTECTED
+        UNPROTECTED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum UnmanagedObjectAvailabilityFilter

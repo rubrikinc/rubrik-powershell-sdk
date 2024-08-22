@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         DENSE,
 
         [EnumMember(Value = "STANDARD")]
-        STANDARD
+        STANDARD,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum VmType

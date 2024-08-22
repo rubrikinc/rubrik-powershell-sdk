@@ -3,11 +3,11 @@ Supported in v5.0+
 
 - agentId: System.String
   - Supported in v5.0-v9.0
-  v5.0-v5.2: 
+  v5.0-v5.2:
   v5.3-v9.0: ID of the Rubrik Backup Service (RBS) installed on the host.
 - compressionEnabled: System.Boolean
   - Supported in v5.0+
-  v5.0-v5.2: 
+  v5.0-v5.2:
   v5.3+: Indicates if compression is enabled while transferring data between the host and the Rubrik cluster.
 - isRelic: System.Boolean
   - Required. Supported in v5.0+
@@ -33,15 +33,20 @@ Supported in v5.0+
   Specifies whether the refresh of host metadata for this host is paused.
 - hostSummary: HostSummary
   - 
+- activeDirectoryAdditionalInfo: ActiveDirectoryAdditionalInfo
+  - Supported in v9.3
+  Additional Active Directory info for the host if applicable.
 - mssqlSddUsername: System.String
-  - Supported in v9.2
+  - Supported in v9.2+
   Specifies the username configured for the SQL server instance for sensitive data discovery.
 - hostDomainName: System.String
   - Supported in v9.0+
-  Specify the name of active directory domain.
+  v9.0-v9.2: Specify the name of active directory domain.
+  v9.3: (DEPRECATED) This field is deprecate in favor of activeDirectoryAdditionalInfo. Specify the name of active directory domain.
 - hostDomainId: System.String
   - Supported in v9.0+
-  Id of the Active Directory Domain if the windows host has domain controller hosted.
+  v9.0-v9.2: Id of the Active Directory Domain if the windows host has domain controller hosted.
+  v9.3: (DEPRECATED) This field is deprecate in favor of activeDirectoryAdditionalInfo. Id of the Active Directory Domain if the windows host has domain controller hosted.
 - hostVfdDriverState: HostVfdState
   - 
 - hostVfdEnabled: HostVfdInstallConfig

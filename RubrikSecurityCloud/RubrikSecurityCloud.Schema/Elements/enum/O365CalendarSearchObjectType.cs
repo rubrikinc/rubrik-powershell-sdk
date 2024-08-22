@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         CALENDAR,
 
         [EnumMember(Value = "EVENT")]
-        EVENT
+        EVENT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum O365CalendarSearchObjectType

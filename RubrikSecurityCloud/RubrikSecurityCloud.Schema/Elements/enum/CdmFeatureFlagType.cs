@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ARCHIVAL_QSTAR")]
         ARCHIVAL_QSTAR,
 
+        [EnumMember(Value = "ASSIGN_SLA_FOR_CDM_ARCHIVAL_SNAPSHOT_DOWNLOAD")]
+        ASSIGN_SLA_FOR_CDM_ARCHIVAL_SNAPSHOT_DOWNLOAD,
+
         [EnumMember(Value = "CDM_LOCATION_UPGRADE")]
         CDM_LOCATION_UPGRADE,
 
@@ -235,7 +238,10 @@ namespace RubrikSecurityCloud.Types
         REPLICATION_TARGET_SETUP_UPDATE,
 
         [EnumMember(Value = "SAP_HANA_STATIC_RETENTION")]
-        SAP_HANA_STATIC_RETENTION
+        SAP_HANA_STATIC_RETENTION,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CdmFeatureFlagType

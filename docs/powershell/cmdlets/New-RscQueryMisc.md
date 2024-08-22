@@ -502,6 +502,11 @@ Get available versions on support portal for a cluster.
 ### getkorgtaskchainstatus
 - There is a single argument of type System.String.
 - Returns GetTaskchainStatusReply.
+### getpermissions
+Permissions assigned to the role that are in effect.
+
+- There is a single argument of type System.String.
+- Returns list of Permissions.
 ### getrolesbyids
 - There is a single argument of type list of System.Strings.
 - Returns list of Roles.
@@ -577,7 +582,9 @@ Paginated list of help content snippets.
     - filter - HelpContentSnippetsFilterInput: Filter for help content snippets.
 - Returns HelpContentSnippetConnection.
 ### hierarchyobject
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - fid - System.String: The Rubrik UUID for the object.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
 - Returns HierarchyObject.
 ### hierarchyobjects
 - There are 2 arguments.
@@ -679,22 +686,6 @@ A knowledge base article.
 
 - There is a single argument of type System.String.
 - Returns KnowledgeBaseArticle.
-### kubernetesprotectionset
-Summary of a Kubernetes Protection Set.
-
-- There is a single argument of type System.String.
-- Returns KubernetesProtectionSet.
-### kubernetesprotectionsets
-Summary of all Kubernetes Protection Sets.
-
-- There are 6 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
-    - filter - list of Filters: The hierarchy object filter.
-    - k8sClusterOptionalId - System.String: Kubernetes cluster optional UUID.
-- Returns KubernetesProtectionSetConnection.
 ### lambdasettings
 - The lambdasettings subcommand takes no arguments.
 - Returns LambdaSettings.
@@ -787,7 +778,7 @@ Reply for request to download Rubrik Edge from Rubrik Security Cloud.
 - There are 8 arguments.
     - filter - ListObjectFilesFiltersInput
     - sort - FileResultSortInput
-    - day - System.String: Day in the format (YYYY-MM-DD).
+    - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
@@ -890,7 +881,10 @@ Get the health metric for the radar pipeline covering the backup, indexing, and 
 ### policydetails
 Returns active policies for an account.
 
-- The policydetails subcommand takes no arguments.
+- There are 3 arguments.
+    - dataCategoryIds - list of System.Strings: Filter for data category IDs.
+    - dataTypeIds - list of System.Strings: Data type IDs to filter.
+    - dataCategoryType - DataCategoryType: Filter for data category type.
 - Returns PolicyDetailConnection.
 ### policyobj
 Returns details for one policy object.
@@ -903,8 +897,8 @@ Returns details for one policy object.
 ### policyobjs
 Returns status for all objects at a specified timestamp.
 
-- There are 30 arguments.
-    - day - System.String: Day in the format (YYYY-MM-DD).
+- There are 36 arguments.
+    - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
     - sortBy - System.String: Name of the column to sort result by.
@@ -930,6 +924,12 @@ Returns status for all objects at a specified timestamp.
     - firstSeenTimeRange - UserTimeRangeInput: First seen time range specified in the local timezone of the user.
     - lastAccessTimeRange - UserTimeRangeInput: Last access time range specified in the local timezone of the user.
     - creationTimeRange - UserTimeRangeInput: Creation time range specified in the local timezone of the user.
+    - objectTagsFilter - ObjectTagsFilterInput: Object tags associated with workloads as key-value pairs.
+    - backupStatusFilter - list of BackupStatuss: Filter by backup status.
+    - slaIdsFilter - list of System.Strings: Filter by SLA Domain IDs.
+    - networkAccessFilter - list of NetworkAccesss: Filter by network access type.
+    - encryptionFilter - list of Encryptions: Filter by encryption type.
+    - loggingFilter - list of Loggings: Filter by logging type.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -1166,6 +1166,11 @@ Gets the status for completed/running upgrade process.
     - startDay - System.String: Start time, in string format (YYYY-MM-DD).
     - timezone - System.String
 - Returns GetUserDetailReply.
+### userfile
+User file.
+
+- There is a single argument of type System.String.
+- Returns CustomerFacingFile.
 ### userfiles
 All user files.
 
@@ -1237,6 +1242,11 @@ Paginated list of virtual machines under vCloud Director hiearchy.
     - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns VsphereVmConnection.
+### verifytotp
+Verify TOTP for current user.
+
+- There is a single argument of type VerifyTotpInput.
+- Returns VerifyTotpReply.
 ### virtualmachinefiles
 Get virtual machine files for a snapshot
 

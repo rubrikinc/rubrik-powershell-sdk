@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         IN_PROGRESS,
 
         [EnumMember(Value = "IN_PROGRESS_WITH_FAIL")]
-        IN_PROGRESS_WITH_FAIL
+        IN_PROGRESS_WITH_FAIL,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CrawlStatusEnum

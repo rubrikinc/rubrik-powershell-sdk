@@ -16,7 +16,10 @@ namespace RubrikSecurityCloud.Types
     public enum SupportUserAccessSortByField
     {
         [EnumMember(Value = "ENABLE_AT")]
-        ENABLE_AT
+        ENABLE_AT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SupportUserAccessSortByField

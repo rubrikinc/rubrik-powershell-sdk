@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         HIDDEN,
 
         [EnumMember(Value = "NOT_HIDDEN")]
-        NOT_HIDDEN
+        NOT_HIDDEN,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HiddenStateFilter

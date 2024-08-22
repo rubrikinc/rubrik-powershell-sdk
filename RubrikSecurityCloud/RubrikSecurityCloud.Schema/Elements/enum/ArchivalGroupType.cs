@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         MANUAL_ARCHIVAL_GROUP,
 
         [EnumMember(Value = "UNKNOWN_ARCHIVAL_GROUP")]
-        UNKNOWN_ARCHIVAL_GROUP
+        UNKNOWN_ARCHIVAL_GROUP,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ArchivalGroupType

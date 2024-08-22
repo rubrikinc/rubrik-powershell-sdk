@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         MONGO_AUTHENTICATION_TYPE_LDAP,
 
         [EnumMember(Value = "MONGO_AUTHENTICATION_TYPE_SCRAM")]
-        MONGO_AUTHENTICATION_TYPE_SCRAM
+        MONGO_AUTHENTICATION_TYPE_SCRAM,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MongoAuthenticationType

@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         OWNER,
 
         [EnumMember(Value = "ROLE_ASSIGNMENT")]
-        ROLE_ASSIGNMENT
+        ROLE_ASSIGNMENT,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureAdRelationshipEnumType

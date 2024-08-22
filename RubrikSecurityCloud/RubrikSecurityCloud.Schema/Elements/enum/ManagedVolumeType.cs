@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         MANAGED_VOLUME_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "SLA_BASED")]
-        SLA_BASED
+        SLA_BASED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ManagedVolumeType

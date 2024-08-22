@@ -46,7 +46,10 @@ namespace RubrikSecurityCloud.Types
         TASK_SUCCESS,
 
         [EnumMember(Value = "Warning")]
-        WARNING
+        WARNING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ActivityStatusEnum

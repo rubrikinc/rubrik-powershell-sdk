@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("subnetId")]
         public System.String? SubnetId { get; set; }
 
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        [JsonProperty("subscriptionId")]
+        public System.String? SubscriptionId { get; set; }
+
         //      C# -> System.String? VirtualNetworkId
         // GraphQL -> virtualNetworkId: String! (scalar)
         [JsonProperty("virtualNetworkId")]
@@ -88,6 +93,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ResourceGroup = null,
         System.String? SecurityGroupId = null,
         System.String? SubnetId = null,
+        System.String? SubscriptionId = null,
         System.String? VirtualNetworkId = null,
         ProxySettings? ComputeProxySettings = null
     ) 
@@ -115,6 +121,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SubnetId != null ) {
             this.SubnetId = SubnetId;
+        }
+        if ( SubscriptionId != null ) {
+            this.SubscriptionId = SubscriptionId;
         }
         if ( VirtualNetworkId != null ) {
             this.VirtualNetworkId = VirtualNetworkId;
@@ -206,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "subnetId\n" ;
             } else {
                 s += ind + "subnetId\n" ;
+            }
+        }
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        if (this.SubscriptionId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionId\n" ;
+            } else {
+                s += ind + "subscriptionId\n" ;
             }
         }
         //      C# -> System.String? VirtualNetworkId
@@ -371,6 +389,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SubnetId != null && ec.Excludes("subnetId",true))
         {
             this.SubnetId = null;
+        }
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        if (ec.Includes("subscriptionId",true))
+        {
+            if(this.SubscriptionId == null) {
+
+                this.SubscriptionId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionId != null && ec.Excludes("subscriptionId",true))
+        {
+            this.SubscriptionId = null;
         }
         //      C# -> System.String? VirtualNetworkId
         // GraphQL -> virtualNetworkId: String! (scalar)

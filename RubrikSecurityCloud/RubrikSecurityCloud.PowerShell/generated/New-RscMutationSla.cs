@@ -670,6 +670,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
     /// 		}
+    /// 		# OPTIONAL
+    /// 		mysqldbConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			logFrequency = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			logRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	archivalSpecs = @(
@@ -757,6 +774,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					frequency = @(
     /// 						$someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					)
+    /// 					# OPTIONAL
+    /// 					archivalLocationToClusterMapping = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							clusterUuid = $someString
+    /// 							# OPTIONAL
+    /// 							locationId = $someString
+    /// 						}
     /// 					)
     /// 				}
     /// 			)
@@ -1402,6 +1428,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
     /// 		}
+    /// 		# OPTIONAL
+    /// 		mysqldbConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			logFrequency = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			logRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	shouldApplyToExistingSnapshots = @{
@@ -1501,6 +1544,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					frequency = @(
     /// 						$someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					)
+    /// 					# OPTIONAL
+    /// 					archivalLocationToClusterMapping = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							clusterUuid = $someString
+    /// 							# OPTIONAL
+    /// 							locationId = $someString
+    /// 						}
     /// 					)
     /// 				}
     /// 			)
@@ -2359,6 +2411,23 @@ $query.Var.input = @{
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
 		}
+		# OPTIONAL
+		mysqldbConfigInput = @{
+			# OPTIONAL
+			logFrequency = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
 	}
 	# OPTIONAL
 	archivalSpecs = @(
@@ -2446,6 +2515,15 @@ $query.Var.input = @{
 					# OPTIONAL
 					frequency = @(
 						$someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					)
+					# OPTIONAL
+					archivalLocationToClusterMapping = @(
+						@{
+							# OPTIONAL
+							clusterUuid = $someString
+							# OPTIONAL
+							locationId = $someString
+						}
 					)
 				}
 			)
@@ -3052,6 +3130,23 @@ $query.Var.input = @{
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
 		}
+		# OPTIONAL
+		mysqldbConfigInput = @{
+			# OPTIONAL
+			logFrequency = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
 	}
 	# OPTIONAL
 	shouldApplyToExistingSnapshots = @{
@@ -3151,6 +3246,15 @@ $query.Var.input = @{
 					# OPTIONAL
 					frequency = @(
 						$someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					)
+					# OPTIONAL
+					archivalLocationToClusterMapping = @(
+						@{
+							# OPTIONAL
+							clusterUuid = $someString
+							# OPTIONAL
+							locationId = $someString
+						}
 					)
 				}
 			)

@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         NODE_INFO_EXTRACTION,
 
         [EnumMember(Value = "ROTATE_TOKEN")]
-        ROTATE_TOKEN
+        ROTATE_TOKEN,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CcpJobStatus

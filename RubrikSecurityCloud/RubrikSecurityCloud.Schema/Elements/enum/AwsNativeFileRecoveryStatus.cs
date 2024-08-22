@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         ENABLED,
 
         [EnumMember(Value = "NOT_SPECIFIED")]
-        NOT_SPECIFIED
+        NOT_SPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsNativeFileRecoveryStatus

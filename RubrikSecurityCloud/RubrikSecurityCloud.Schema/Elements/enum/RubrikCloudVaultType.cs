@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         NAS_CD,
 
         [EnumMember(Value = "USE_CASE_TYPE_UNSPECIFIED")]
-        USE_CASE_TYPE_UNSPECIFIED
+        USE_CASE_TYPE_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RubrikCloudVaultType

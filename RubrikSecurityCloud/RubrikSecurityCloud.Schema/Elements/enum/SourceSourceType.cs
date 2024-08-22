@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         SOURCE_SOURCE_TYPE_CASSANDRA,
 
         [EnumMember(Value = "SOURCE_SOURCE_TYPE_MONGO")]
-        SOURCE_SOURCE_TYPE_MONGO
+        SOURCE_SOURCE_TYPE_MONGO,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SourceSourceType

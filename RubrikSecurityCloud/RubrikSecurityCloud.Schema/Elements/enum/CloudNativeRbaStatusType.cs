@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         REGISTERED,
 
         [EnumMember(Value = "UNAVAILABLE")]
-        UNAVAILABLE
+        UNAVAILABLE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudNativeRbaStatusType

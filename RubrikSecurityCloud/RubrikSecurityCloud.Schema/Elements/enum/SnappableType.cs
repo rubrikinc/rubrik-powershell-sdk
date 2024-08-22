@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         SHAREPOINT_SITE,
 
         [EnumMember(Value = "TEAMS")]
-        TEAMS
+        TEAMS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnappableType

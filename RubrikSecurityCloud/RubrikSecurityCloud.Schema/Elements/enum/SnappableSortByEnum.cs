@@ -112,7 +112,10 @@ namespace RubrikSecurityCloud.Types
         TOTAL_SNAPSHOTS,
 
         [EnumMember(Value = "TransferredBytes")]
-        TRANSFERRED_BYTES
+        TRANSFERRED_BYTES,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum SnappableSortByEnum

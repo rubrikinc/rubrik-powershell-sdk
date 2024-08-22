@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         MISSING_PERMISSIONS,
 
         [EnumMember(Value = "STATUS_UNSPECIFIED")]
-        STATUS_UNSPECIFIED
+        STATUS_UNSPECIFIED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum CloudAccountState

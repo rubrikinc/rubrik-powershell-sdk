@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         UNKNOWN_AZURE_REDUNDANCY,
 
         [EnumMember(Value = "ZRS")]
-        ZRS
+        ZRS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AzureRedundancy

@@ -331,7 +331,10 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_DATASTORE_FREE_SPACE,
 
         [EnumMember(Value = "VSPHERE_DATASTORE_TYPE")]
-        VSPHERE_DATASTORE_TYPE
+        VSPHERE_DATASTORE_TYPE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum HierarchySortByField

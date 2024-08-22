@@ -25,7 +25,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <summary>
     /// Create a new RscQuery object for any of the 32
     /// operations in the 'Cluster' API domain:
-    /// Cluster, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, Kubernetes, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// Cluster, ClusterList, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryCluster creates a new
@@ -39,7 +39,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Cluster, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, Kubernetes, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// one of: Cluster, ClusterList, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -97,6 +97,116 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: Cluster
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ClusterList operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: ClusterList
+    /// 
+    /// $query = New-RscQueryCluster -ClusterList
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	id = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	name = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	type = @(
+    /// 		$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	objectType = @(
+    /// 		$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	registrationTime_gt = $someDateTime
+    /// 	# OPTIONAL
+    /// 	registrationTime_lt = $someDateTime
+    /// 	# OPTIONAL
+    /// 	minSoftwareVersion = $someString
+    /// 	# OPTIONAL
+    /// 	clusterLocation = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	excludeEmptyCluster = $someBoolean
+    /// 	# OPTIONAL
+    /// 	productType = @(
+    /// 		$someClusterProductEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	registeredMode = @(
+    /// 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+    /// 	# OPTIONAL
+    /// 	orgId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	productFilters = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			productType = $someClusterProductEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+    /// 			# OPTIONAL
+    /// 			minSoftwareVersion = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	excludeId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	systemStatus = @(
+    /// 		$someClusterSystemStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSystemStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	connectionState = @(
+    /// 		$someClusterStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	isInFatalOrDisconnectedState = $someBoolean
+    /// 	# OPTIONAL
+    /// 	cyberEventLockdownMode = @(
+    /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
+    /// 	)
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someClusterSortByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSortByEnum]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ClusterConnection
     /// 
     /// 
     /// 
@@ -515,82 +625,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.Boolean
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the Kubernetes operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: Kubernetes
-    /// 
-    /// $query = New-RscQueryCluster -Kubernetes
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.filter = @(
-    /// 	@{
-    /// 		# OPTIONAL
-    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-    /// 		# OPTIONAL
-    /// 		texts = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		objectTypeFilterParams = @(
-    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		awsNativeProtectionFeatureNames = @(
-    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		isNegative = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isSlowSearchEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		azureNativeProtectionFeatureNames = @(
-    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		unmanagedObjectAvailabilityFilter = @(
-    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-    /// 		)
-    /// }
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: KubernetesClusterConnection
     /// 
     /// 
     /// 
@@ -1437,6 +1471,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "Cluster",
+                "ClusterList",
                 "ComputeClusterStatus",
                 "Connected",
                 "DefaultGateway",
@@ -1448,7 +1483,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Ipmi",
                 "Ipv6Mode",
                 "IsTotpAckNecessary",
-                "Kubernetes",
                 "LicensesForClusterProductSummary",
                 "List",
                 "Missing",
@@ -1486,6 +1520,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Cluster":
                         this.ProcessRecord_Cluster();
                         break;
+                    case "ClusterList":
+                        this.ProcessRecord_ClusterList();
+                        break;
                     case "ComputeClusterStatus":
                         this.ProcessRecord_ComputeClusterStatus();
                         break;
@@ -1518,9 +1555,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "IsTotpAckNecessary":
                         this.ProcessRecord_IsTotpAckNecessary();
-                        break;
-                    case "Kubernetes":
-                        this.ProcessRecord_Kubernetes();
                         break;
                     case "LicensesForClusterProductSummary":
                         this.ProcessRecord_LicensesForClusterProductSummary();
@@ -1596,6 +1630,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Cluster";
             // Create new graphql operation cluster
             InitQueryCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allClusterConnection.
+        internal void ProcessRecord_ClusterList()
+        {
+            this._logger.name += " -ClusterList";
+            // Create new graphql operation allClusterConnection
+            InitQueryAllClusterConnection();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1695,15 +1738,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -IsTotpAckNecessary";
             // Create new graphql operation isTotpAckNecessaryForCluster
             InitQueryIsTotpAckNecessaryForCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // kubernetesClusters.
-        internal void ProcessRecord_Kubernetes()
-        {
-            this._logger.name += " -Kubernetes";
-            // Create new graphql operation kubernetesClusters
-            InitQueryKubernetesClusters();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1895,6 +1929,122 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.ClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allClusterConnection(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: ClusterFilterInput
+        //     sortOrder: SortOrder = DESC
+        //     sortBy: ClusterSortByEnum = ClusterType
+        //   ): ClusterConnection!
+        internal void InitQueryAllClusterConnection()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "ClusterFilterInput"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("sortBy", "ClusterSortByEnum"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllClusterConnection",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: ClusterFilterInput,$sortOrder: SortOrder,$sortBy: ClusterSortByEnum)",
+                "ClusterConnection",
+                Query.AllClusterConnection,
+                Query.AllClusterConnectionFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	id = @(
+		$someString
+	)
+	# OPTIONAL
+	name = @(
+		$someString
+	)
+	# OPTIONAL
+	type = @(
+		$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	objectType = @(
+		$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	registrationTime_gt = $someDateTime
+	# OPTIONAL
+	registrationTime_lt = $someDateTime
+	# OPTIONAL
+	minSoftwareVersion = $someString
+	# OPTIONAL
+	clusterLocation = @(
+		$someString
+	)
+	# OPTIONAL
+	excludeEmptyCluster = $someBoolean
+	# OPTIONAL
+	productType = @(
+		$someClusterProductEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+	)
+	# OPTIONAL
+	registeredMode = @(
+		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
+	)
+	# OPTIONAL
+	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+	# OPTIONAL
+	orgId = @(
+		$someString
+	)
+	# OPTIONAL
+	productFilters = @(
+		@{
+			# REQUIRED
+			productType = $someClusterProductEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+			# OPTIONAL
+			minSoftwareVersion = $someString
+		}
+	)
+	# OPTIONAL
+	excludeId = @(
+		$someString
+	)
+	# OPTIONAL
+	systemStatus = @(
+		$someClusterSystemStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSystemStatus]) for enum values.
+	)
+	# OPTIONAL
+	connectionState = @(
+		$someClusterStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
+	)
+	# OPTIONAL
+	isInFatalOrDisconnectedState = $someBoolean
+	# OPTIONAL
+	cyberEventLockdownMode = @(
+		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
+	)
+}
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.sortBy = $someClusterSortByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSortByEnum]) for enum values."
             );
         }
 
@@ -2252,84 +2402,6 @@ $query.Var.input = @{
                 Query.IsTotpAckNecessaryForClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // kubernetesClusters(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): KubernetesClusterConnection!
-        internal void InitQueryKubernetesClusters()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryKubernetesClusters",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "KubernetesClusterConnection",
-                Query.KubernetesClusters,
-                Query.KubernetesClustersFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			$someString
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = $someBoolean
-		# OPTIONAL
-		isSlowSearchEnabled = $someBoolean
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
             );
         }
 

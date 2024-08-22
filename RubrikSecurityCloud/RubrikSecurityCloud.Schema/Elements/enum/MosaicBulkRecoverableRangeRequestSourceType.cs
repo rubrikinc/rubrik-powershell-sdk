@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         MOSAIC_BULK_RECOVERABLE_RANGE_REQUEST_SOURCE_TYPE_CASSANDRA,
 
         [EnumMember(Value = "MOSAIC_BULK_RECOVERABLE_RANGE_REQUEST_SOURCE_TYPE_MONGO")]
-        MOSAIC_BULK_RECOVERABLE_RANGE_REQUEST_SOURCE_TYPE_MONGO
+        MOSAIC_BULK_RECOVERABLE_RANGE_REQUEST_SOURCE_TYPE_MONGO,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum MosaicBulkRecoverableRangeRequestSourceType

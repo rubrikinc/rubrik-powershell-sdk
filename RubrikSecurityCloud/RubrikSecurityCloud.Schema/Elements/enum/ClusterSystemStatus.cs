@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         OK,
 
         [EnumMember(Value = "WARNING")]
-        WARNING
+        WARNING,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ClusterSystemStatus

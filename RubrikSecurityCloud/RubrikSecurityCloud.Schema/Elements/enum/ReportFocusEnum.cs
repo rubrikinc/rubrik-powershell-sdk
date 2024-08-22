@@ -52,7 +52,10 @@ namespace RubrikSecurityCloud.Types
         SONAR_CONTENT,
 
         [EnumMember(Value = "TaskSummary")]
-        TASK_SUMMARY
+        TASK_SUMMARY,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ReportFocusEnum

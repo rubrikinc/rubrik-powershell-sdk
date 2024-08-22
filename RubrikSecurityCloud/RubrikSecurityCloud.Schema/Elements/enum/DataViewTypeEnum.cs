@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DataViewTypeEnum
     {
+        [EnumMember(Value = "ACTIVITY_SERIES")]
+        ACTIVITY_SERIES,
+
         [EnumMember(Value = "ANOMALIES")]
         ANOMALIES,
 
@@ -124,7 +127,10 @@ namespace RubrikSecurityCloud.Types
         THREAT_MONITORING_LIST,
 
         [EnumMember(Value = "THREAT_MONITORING_SNAPSHOT_RESULTS")]
-        THREAT_MONITORING_SNAPSHOT_RESULTS
+        THREAT_MONITORING_SNAPSHOT_RESULTS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum DataViewTypeEnum

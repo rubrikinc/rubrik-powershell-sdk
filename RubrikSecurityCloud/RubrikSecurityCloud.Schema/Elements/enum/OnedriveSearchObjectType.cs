@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         O365_FOLDER,
 
         [EnumMember(Value = "ONEDRIVE_FILE")]
-        ONEDRIVE_FILE
+        ONEDRIVE_FILE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum OnedriveSearchObjectType

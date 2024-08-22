@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         PENDING_SYNC,
 
         [EnumMember(Value = "SYNCED")]
-        SYNCED
+        SYNCED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum TargetSyncStatus

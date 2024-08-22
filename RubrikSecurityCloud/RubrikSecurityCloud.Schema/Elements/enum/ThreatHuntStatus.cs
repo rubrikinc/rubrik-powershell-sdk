@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         STATUS_UNSPECIFIED,
 
         [EnumMember(Value = "SUCCEEDED")]
-        SUCCEEDED
+        SUCCEEDED,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum ThreatHuntStatus

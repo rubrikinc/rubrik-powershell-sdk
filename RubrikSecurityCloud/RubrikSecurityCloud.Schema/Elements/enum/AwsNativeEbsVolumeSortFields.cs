@@ -31,7 +31,16 @@ namespace RubrikSecurityCloud.Types
         EBS_VOLUME_TYPE,
 
         [EnumMember(Value = "EFFECTIVE_SLA_DOMAIN")]
-        EFFECTIVE_SLA_DOMAIN
+        EFFECTIVE_SLA_DOMAIN,
+
+        [EnumMember(Value = "SENSITIVITY_HITS")]
+        SENSITIVITY_HITS,
+
+        [EnumMember(Value = "SENSITIVITY_STATUS")]
+        SENSITIVITY_STATUS,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum AwsNativeEbsVolumeSortFields

@@ -15,3 +15,5 @@ CreateAwsClusterInput for Aws account.
   - Cluster configuration to initialize cluster.
 - vmConfig: AwsVmConfig
   - Virtual Machine configuration to create nodes.
+- validations: list of ClusterCreateValidationss
+  - Validations to perform on the request.

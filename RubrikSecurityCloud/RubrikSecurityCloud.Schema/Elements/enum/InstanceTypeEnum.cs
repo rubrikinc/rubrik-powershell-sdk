@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         AZURE_GOVERNMENT,
 
         [EnumMember(Value = "UNKNOWN_INSTANCE")]
-        UNKNOWN_INSTANCE
+        UNKNOWN_INSTANCE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum InstanceTypeEnum

@@ -152,3 +152,8 @@ Update a virtual machine with specified properties. Use the guestCredential fiel
 
 - There is a single argument of type UpdateVsphereVmInput.
 - Returns RequestSuccess.
+### updateunmounttime
+Update auto unmount time for a virtual machine.
+
+- There is a single argument of type VsphereVmUpdateUnmountTimeInput.
+- Returns System.String.

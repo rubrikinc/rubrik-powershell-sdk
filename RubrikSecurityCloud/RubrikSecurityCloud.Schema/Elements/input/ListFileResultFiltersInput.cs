@@ -49,6 +49,36 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sids")]
         public List<System.String>? Sids { get; set; }
 
+        //      C# -> List<System.String>? DataTypeIds
+        // GraphQL -> dataTypeIds: [String!] (scalar)
+        [JsonProperty("dataTypeIds")]
+        public List<System.String>? DataTypeIds { get; set; }
+
+        //      C# -> List<RiskLevelType>? RiskLevelTypesFilter
+        // GraphQL -> riskLevelTypesFilter: [RiskLevelType!] (enum)
+        [JsonProperty("riskLevelTypesFilter")]
+        public List<RiskLevelType>? RiskLevelTypesFilter { get; set; }
+
+        //      C# -> UserTimeRangeInput? LastAccessFilter
+        // GraphQL -> lastAccessFilter: UserTimeRangeInput (input)
+        [JsonProperty("lastAccessFilter")]
+        public UserTimeRangeInput? LastAccessFilter { get; set; }
+
+        //      C# -> UserTimeRangeInput? LastModifiedFilter
+        // GraphQL -> lastModifiedFilter: UserTimeRangeInput (input)
+        [JsonProperty("lastModifiedFilter")]
+        public UserTimeRangeInput? LastModifiedFilter { get; set; }
+
+        //      C# -> UserTimeRangeInput? CreationTimeFilter
+        // GraphQL -> creationTimeFilter: UserTimeRangeInput (input)
+        [JsonProperty("creationTimeFilter")]
+        public UserTimeRangeInput? CreationTimeFilter { get; set; }
+
+        //      C# -> UserTimeRangeInput? LastScanFilter
+        // GraphQL -> lastScanFilter: UserTimeRangeInput (input)
+        [JsonProperty("lastScanFilter")]
+        public UserTimeRangeInput? LastScanFilter { get; set; }
+
         //      C# -> FileCountType? FileType
         // GraphQL -> fileType: FileCountType! (enum)
         [Required]

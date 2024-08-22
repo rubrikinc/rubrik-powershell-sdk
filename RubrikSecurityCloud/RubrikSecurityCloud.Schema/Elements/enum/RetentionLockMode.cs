@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         GOVERNANCE,
 
         [EnumMember(Value = "NO_MODE")]
-        NO_MODE
+        NO_MODE,
+
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN
 
 
     } // enum RetentionLockMode

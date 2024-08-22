@@ -34,7 +34,7 @@ Supported in v5.0+
   - Supported in v7.0+
       v7.0-v9.1: A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.  
       
-      v9.2: A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.
+      v9.2+: A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.
 - isRefreshPaused: System.Boolean
   - Supported in v9.0+
       A Boolean that specifies whether the host refresh is paused or not.
@@ -45,7 +45,7 @@ Supported in v5.0+
 - hdfsConfig: HdfsConfigInput
   - Supported in v5.2-v9.1
 - mssqlSddUserCredentials: SddUserCredentialsInput
-  - Supported in v9.2
+  - Supported in v9.2+
       The user credentials for querying SQL server instance on the host for Sensitive Data Discovery.
 - nasConfig: NasConfigInput
   - Supported in v5.0+

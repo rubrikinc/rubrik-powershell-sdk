@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Kubernetes' API domain:
-    /// AppManifest, Cluster, Clusters, Namespace, Namespaces, ProtectionSetSnapshots, ReplicaSnapshotInfos, or SnapshotInfo.
+    /// AppManifest, Cluster, Clusters, K8sCluster, K8sClusters, Namespace, Namespaces, ProtectionSet, ProtectionSetSnapshots, ProtectionSets, ReplicaSnapshotInfos, or SnapshotInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryK8s creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 12 operations
     /// in the 'Kubernetes' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AppManifest, Cluster, Clusters, Namespace, Namespaces, ProtectionSetSnapshots, ReplicaSnapshotInfos, or SnapshotInfo.
+    /// one of: AppManifest, Cluster, Clusters, K8sCluster, K8sClusters, Namespace, Namespaces, ProtectionSet, ProtectionSetSnapshots, ProtectionSets, ReplicaSnapshotInfos, or SnapshotInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: K8sCluster
+    /// Write-Host $result.GetType().Name # prints: KubernetesCluster
     /// 
     /// 
     /// 
@@ -152,6 +152,110 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Operation: Clusters
     /// 
     /// $query = New-RscQueryK8s -Clusters
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: KubernetesClusterConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the K8sCluster operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: K8sCluster
+    /// 
+    /// $query = New-RscQueryK8s -K8sCluster
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: K8sCluster
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the K8sClusters operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: K8sClusters
+    /// 
+    /// $query = New-RscQueryK8s -K8sClusters
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -323,6 +427,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ProtectionSet operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: ProtectionSet
+    /// 
+    /// $query = New-RscQueryK8s -ProtectionSet
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: KubernetesProtectionSet
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ProtectionSetSnapshots operation
     /// of the 'Kubernetes' API domain.
     /// <code>
@@ -346,6 +478,84 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: K8sSnapshotSummaryListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ProtectionSets operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: ProtectionSets
+    /// 
+    /// $query = New-RscQueryK8s -ProtectionSets
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.k8sClusterOptionalId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: KubernetesProtectionSetConnection
     /// 
     /// 
     /// 
@@ -434,9 +644,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AppManifest",
                 "Cluster",
                 "Clusters",
+                "K8sCluster",
+                "K8sClusters",
                 "Namespace",
                 "Namespaces",
+                "ProtectionSet",
                 "ProtectionSetSnapshots",
+                "ProtectionSets",
                 "ReplicaSnapshotInfos",
                 "SnapshotInfo",
                 IgnoreCase = true)]
@@ -463,14 +677,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Clusters":
                         this.ProcessRecord_Clusters();
                         break;
+                    case "K8sCluster":
+                        this.ProcessRecord_K8sCluster();
+                        break;
+                    case "K8sClusters":
+                        this.ProcessRecord_K8sClusters();
+                        break;
                     case "Namespace":
                         this.ProcessRecord_Namespace();
                         break;
                     case "Namespaces":
                         this.ProcessRecord_Namespaces();
                         break;
+                    case "ProtectionSet":
+                        this.ProcessRecord_ProtectionSet();
+                        break;
                     case "ProtectionSetSnapshots":
                         this.ProcessRecord_ProtectionSetSnapshots();
+                        break;
+                    case "ProtectionSets":
+                        this.ProcessRecord_ProtectionSets();
                         break;
                     case "ReplicaSnapshotInfos":
                         this.ProcessRecord_ReplicaSnapshotInfos();
@@ -498,19 +724,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // k8sCluster.
+        // kubernetesCluster.
         internal void ProcessRecord_Cluster()
         {
             this._logger.name += " -Cluster";
+            // Create new graphql operation kubernetesCluster
+            InitQueryKubernetesCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // kubernetesClusters.
+        internal void ProcessRecord_Clusters()
+        {
+            this._logger.name += " -Clusters";
+            // Create new graphql operation kubernetesClusters
+            InitQueryKubernetesClusters();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // k8sCluster.
+        internal void ProcessRecord_K8sCluster()
+        {
+            this._logger.name += " -K8sCluster";
             // Create new graphql operation k8sCluster
             InitQueryK8sCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // k8sClusters.
-        internal void ProcessRecord_Clusters()
+        internal void ProcessRecord_K8sClusters()
         {
-            this._logger.name += " -Clusters";
+            this._logger.name += " -K8sClusters";
             // Create new graphql operation k8sClusters
             InitQueryK8sClusters();
         }
@@ -534,12 +778,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // kubernetesProtectionSet.
+        internal void ProcessRecord_ProtectionSet()
+        {
+            this._logger.name += " -ProtectionSet";
+            // Create new graphql operation kubernetesProtectionSet
+            InitQueryKubernetesProtectionSet();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // k8sProtectionSetSnapshots.
         internal void ProcessRecord_ProtectionSetSnapshots()
         {
             this._logger.name += " -ProtectionSetSnapshots";
             // Create new graphql operation k8sProtectionSetSnapshots
             InitQueryK8sProtectionSetSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // kubernetesProtectionSets.
+        internal void ProcessRecord_ProtectionSets()
+        {
+            this._logger.name += " -ProtectionSets";
+            // Create new graphql operation kubernetesProtectionSets
+            InitQueryKubernetesProtectionSets();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -596,6 +858,104 @@ $query.Var.retrieveLatestVersion = $someBoolean
 $query.Var.targetVersion = $someString
 # OPTIONAL
 $query.Var.k8sClusterId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // kubernetesCluster(fid: UUID!): KubernetesCluster!
+        internal void InitQueryKubernetesCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryKubernetesCluster",
+                "($fid: UUID!)",
+                "KubernetesCluster",
+                Query.KubernetesCluster,
+                Query.KubernetesClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // kubernetesClusters(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): KubernetesClusterConnection!
+        internal void InitQueryKubernetesClusters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryKubernetesClusters",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "KubernetesClusterConnection",
+                Query.KubernetesClusters,
+                Query.KubernetesClustersFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
             );
         }
 
@@ -800,6 +1160,26 @@ $query.Var.k8sClusterId = $someString"
         }
 
         // Create new GraphQL Query:
+        // kubernetesProtectionSet(fid: UUID!): KubernetesProtectionSet!
+        internal void InitQueryKubernetesProtectionSet()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryKubernetesProtectionSet",
+                "($fid: UUID!)",
+                "KubernetesProtectionSet",
+                Query.KubernetesProtectionSet,
+                Query.KubernetesProtectionSetFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // k8sProtectionSetSnapshots(input: QueryK8sSnapshotInput!): K8sSnapshotSummaryListResponse!
         internal void InitQueryK8sProtectionSetSnapshots()
         {
@@ -819,6 +1199,88 @@ $query.Var.input = @{
 	# REQUIRED
 	id = $someString
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // kubernetesProtectionSets(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //     k8sClusterOptionalId: UUID
+        //   ): KubernetesProtectionSetConnection!
+        internal void InitQueryKubernetesProtectionSets()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("k8sClusterOptionalId", "UUID"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryKubernetesProtectionSets",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$k8sClusterOptionalId: UUID)",
+                "KubernetesProtectionSetConnection",
+                Query.KubernetesProtectionSets,
+                Query.KubernetesProtectionSetsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)
+# OPTIONAL
+$query.Var.k8sClusterOptionalId = $someString"
             );
         }
 
