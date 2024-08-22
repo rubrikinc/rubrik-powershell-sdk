@@ -70,6 +70,15 @@ foreach ($memberItem in $xml.doc.members.member){
         $cmdletName = $cmdLetName.Replace("_","-")
         #Write-Output("`nFound Cmdlet: " + $cmdletName);
         #Write-Output("Opening markdownd for $cmdletName")
+
+        # TODO: SPARK-410830 GenerateDocs.ps1 fails on New-RscMutationSyslog
+        # see https://rubrik.atlassian.net/browse/SPARK-410830
+        # for description of the issue
+        if ($cmdletName -eq "New-RscMutationSyslog"){
+            Write-Output("Skipping New-RscMutationSyslog due to known issue SPARK-410830")
+            continue
+        }
+
         $mdFile = "tmp_help/$($cmdletName).md"
         $cmdletMarkdown = Get-Content -Path $mdFile -Raw -ErrorAction Stop
 
