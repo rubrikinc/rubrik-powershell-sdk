@@ -1,5 +1,5 @@
 #Requires -Version 3
-function Get-RscMssqlInstance{
+function Get-RscMssqlInstance {
     <#
     .SYNOPSIS
     Returns information about the SQL Server Instances connected to Rubrik Security Cloud
@@ -32,6 +32,9 @@ function Get-RscMssqlInstance{
     .PARAMETER Detail
     Changes the data profile. This can affect the fields returned
 
+    .PARAMETER AsQuery
+    Instead of running the command, the query object is returned.
+
     .EXAMPLE
     Returns a list of all SQL Server Instances connected to RSC
     Get-RscMssqlInstance -List
@@ -60,7 +63,7 @@ function Get-RscMssqlInstance{
         DefaultParameterSetName = "List"
     )]
     Param(
-        [Parameter(ParameterSetName = "List",Mandatory = $false)]
+        [Parameter(ParameterSetName = "List", Mandatory = $false)]
         [Switch]$List,
         
         [Parameter(ParameterSetName = "ByHostName", Mandatory = $true)]
@@ -77,23 +80,29 @@ function Get-RscMssqlInstance{
         [String]$Id,
        
         [Parameter(Mandatory = $false)]
-        [RubrikSecurityCloud.Types.Cluster]$RscCluster
+        [RubrikSecurityCloud.Types.Cluster]$RscCluster,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     Process {
         Write-Verbose "-Running Get-RscMssqlInstance"
         #region Create Query
-        switch($PSCmdlet.ParameterSetName){
-            "List"{
+        switch ($PSCmdlet.ParameterSetName) {
+            "List" {
                 Write-Verbose "-  Creating List Query"
                 $query = New-RscQueryMssql -Op TopLevelDescendants 
                 $query.Var.typeFilter = @()
                 $query.Var.typeFilter += "PhysicalHost"
                 $query.Var.typeFilter += "WindowsCluster"
             }
-            {($_ -eq "ByHostName") -or ($_ -eq "ByWindowsClusterName")}{
+            { ($_ -eq "ByHostName") -or ($_ -eq "ByWindowsClusterName") } {
                 $Name = ""
-                if($HostName){$Name = $HostName}
-                if($WindowsClusterName){$Name = $WindowsClusterName}
+                if ($HostName) { $Name = $HostName }
+                if ($WindowsClusterName) { $Name = $WindowsClusterName }
                 $query = New-RscQueryMssql -Operation TopLevelDescendants 
                 $query.Var.filter = @()
                 $query.Field.Nodes[3].PhysicalChildConnection.Nodes[5].Cluster = New-Object RubrikSecurityCloud.Types.Cluster
@@ -111,7 +120,7 @@ function Get-RscMssqlInstance{
                 $nameFilter.texts = $Name
                 $query.Var.filter += $nameFilter
             }
-            "Id"{
+            "Id" {
                 Write-Verbose "-  Creating Id Query"
                 $query = New-RscQueryMssql -Operation Instance 
                 $query.Field.PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
@@ -130,25 +139,31 @@ function Get-RscMssqlInstance{
         }
         #endregion
         
+        # Skip sending, return query object:
+        if ( $AsQuery ) {
+            return $query
+        }
+        
+        # Invoke the query:
         $results = $query.Invoke()
         
-        switch($PSCmdlet.ParameterSetName){
-            "List"{
+        switch ($PSCmdlet.ParameterSetName) {
+            "List" {
                 $results.Nodes
             }
-            {($_ -eq "ByHostName") -or ($_ -eq "ByWindowsClusterName")}{
-                switch($results.nodes.objectType){
-                    "PHYSICAL_HOST"{
-                        $results = $results.Nodes.PhysicalChildConnection.Nodes | Where-Object {$_.Name -eq $InstanceName}
+            { ($_ -eq "ByHostName") -or ($_ -eq "ByWindowsClusterName") } {
+                switch ($results.nodes.objectType) {
+                    "PHYSICAL_HOST" {
+                        $results = $results.Nodes.PhysicalChildConnection.Nodes | Where-Object { $_.Name -eq $InstanceName }
                         $results
                     }
-                    "WINDOWS_CLUSTER"{
-                        $results = $results.Nodes.LogicalChildConnection.Nodes | Where-Object {$_.Name -eq $InstanceName}
+                    "WINDOWS_CLUSTER" {
+                        $results = $results.Nodes.LogicalChildConnection.Nodes | Where-Object { $_.Name -eq $InstanceName }
                         $results
                     }
                 }
             }
-            "Id"{
+            "Id" {
                 $results
             }
         }
