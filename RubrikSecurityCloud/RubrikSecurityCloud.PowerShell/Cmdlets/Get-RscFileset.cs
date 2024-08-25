@@ -219,6 +219,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         }
                         //PhysicalHost listQuery = new PhysicalHost();
 
+                        string physicalHostString = Query.PhysicalHost(nodeObj) ;
+                        physicalHostString = physicalHostString.Replace("typefilter:null","typeFilter: [LinuxFileset, WindowsFileset]");
+                        physicalHostString = physicalHostString.Replace("first:null","first: $first");
+                        physicalHostString = physicalHostString.Replace("after:null","after: $after");
+                        physicalHostString = physicalHostString.Replace("sortBy:null","sortBy: $sortBy");
+                        physicalHostString = physicalHostString.Replace("sortOrder:null","sortOrder: $sortOrder");
+                        physicalHostString = physicalHostString.Replace("filter:null","filter: $filter");
                         string listQueryString = $"query PhysicalHostQuery(" +
                             $"$fid: UUID!, " +
                             $"$first: Int, " +
@@ -227,17 +234,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                             $"$sortOrder: SortOrder, " +
                             $"$filter: [Filter!]" +
                             $"){{\n" +
-                            $"{Query.PhysicalHost(nodeObj)}" +
+                            $"{physicalHostString}" +
                             $"\n}}";
 
-                        listQueryString = listQueryString.Replace("physicalChildConnection",
-                            $"physicalChildConnection(" +
-                            $"typeFilter: [LinuxFileset, WindowsFileset], " +
-                            $"first: $first, " +
-                            $"after: $after, " +
-                            $"sortBy: $sortBy, " +
-                            $"sortOrder: $sortOrder, " +
-                            $"filter: $filter)");
+
 
 
                         //Initialize the variable set
