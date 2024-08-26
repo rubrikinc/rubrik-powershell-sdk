@@ -92,6 +92,7 @@ function Get-RscSla {
 
             # uiColor: String!
             # Color of the SLA Domain on the User Interface.
+            # Skip this. No one here needs UI color.
 
             # snapshotSchedule: SnapshotSchedule
             # Snapshot schedule for the SLA Domain.
@@ -269,8 +270,8 @@ function Get-RscSla {
 
                     # archivalLocation: Target
                     # Archival location for snapshot on target.
-                    # No constructor on target type, so I have to construct an object for each implementation
-                    #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocation = @()
+                    # No constructor on target type, so I have to construct an object for each implementation, but I can't because archivalLocation is not a list.
+                    #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocation = 
                     $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocation = New-Object RubrikSecurityCloud.Types.RubrikManagedAwsTarget
                     $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocation.id = "FETCH"
                     #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocation += New-Object RubrikSecurityCloud.Types.RubrikManagedAzureTarget
@@ -280,32 +281,60 @@ function Get-RscSla {
                     #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocation += New-Object RubrikSecurityCloud.Types.RubrikManagedRcsTarget
                     #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocation += New-Object RubrikSecurityCloud.Types.RubrikManagedS3CompatibleTarget
                     #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocation += New-Object RubrikSecurityCloud.Types.RubrikManagedTapeTargetType
-                    #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocation | ForEach-Object {$_.id = "FETCH"}
-
 
                     # archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]
                     # Mapping between archival location and Rubrik cluster.
+                    #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocationToClusterMapping = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalLocationToClusterMapping
+                    #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocationToClusterMapping[0].cluster = New-Object -TypeName RubrikSecurityCloud.Types.SlaArchivalCluster
+                    #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocationToClusterMapping[0].cluster.id = "FETCH"
+                    #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocationToClusterMapping[0].cluster.name = "FETCH"
+                    #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocationToClusterMapping[0].location = New-Object -TypeName RubrikSecurityCloud.Types.DlsArchivalLocation
+                    #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocationToClusterMapping[0].location.id = "FETCH"
+                    #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].archivalLocationToClusterMapping[0].location.name = "FETCH"
 
                 # targetMapping: TargetMapping
                 # Replication target mapping.
+                # Skipping for now as it's not needed to update an SLA
 
                 # cluster: SlaReplicationCluster
                 # Rubrik cluster used as the replication target.
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cluster = New-Object -TypeName RubrikSecurityCloud.Types.SlaReplicationCluster
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cluster.id = "FETCH"
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cluster.name = "FETCH"
 
                 # replicationPairs: [SlaReplicationPair!]
                 # Datacenter replication pairs.
+                # Feature still in development
+                #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].replicationPairs = New-Object -TypeName RubrikSecurityCloud.Types.SlaReplicationPair
+                #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].replicationPairs[0].sourceCluster = New-Object -TypeName RubrikSecurityCloud.Types.SlaDataLocationCluster
+                #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].replicationPairs[0].sourceCluster.id = "FETCH"
+                #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].replicationPairs[0].sourceCluster.name = "FETCH"
+                #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].replicationPairs[0].targetCluster = New-Object -TypeName RubrikSecurityCloud.Types.SlaDataLocationCluster
+                #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].replicationPairs[0].targetCluster.id = "FETCH"
+                #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].replicationPairs[0].targetCluster.name = "FETCH"
 
                 # awsRegion: String!
                 # AWS region.
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].awsRegion = "FETCH"
 
                 # azureRegion: String!
                 # Azure Region.
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].azureRegion = "FETCH"
 
                 # awsTarget: AwsReplicationTarget!
                 # AWS location used as the replication target.
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].awsTarget = New-Object -TypeName RubrikSecurityCloud.Types.AwsReplicationTarget
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].awsTarget.accountId = "FETCH"
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].awsTarget.accountName = "FETCH"
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].awsTarget.region = [RubrikSecurityCloud.Types.AwsNativeRegionForReplication]::US_EAST_1
 
                 # azureTarget: AzureReplicationTarget!
                 # Azure location used as the replication target.
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].azureTarget = New-Object -TypeName RubrikSecurityCloud.Types.AzureReplicationTarget
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].azureTarget.subscriptionId = "FETCH"
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].azureTarget.subscriptionName = "FETCH"
+                $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].azureTarget.region = [RubrikSecurityCloud.Types.AzureNativeRegionForReplication]::EAST_US
+
 
             # snapshotScheduleLastUpdatedAt: DateTime
             # Last update timestamp of the snapshot schedule of the SLA Domain.
@@ -314,6 +343,8 @@ function Get-RscSla {
             # baseFrequency: Duration
             # Base frequency for the SLA Domain.
             $query.field.nodes[$globalSlaReply].baseFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+            $query.field.nodes[$globalSlaReply].baseFrequency.durationField = 1
+            $query.field.nodes[$globalSlaReply].baseFrequency.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
 
             # isArchived: Boolean!
             # Specifies whether the SLA Domain is archived or not.
@@ -326,22 +357,165 @@ function Get-RscSla {
             # firstFullBackupWindows: [BackupWindow!]!
             # First full backup windows.
             $query.field.nodes[$globalSlaReply].firstFullBackupWindows = New-Object -TypeName RubrikSecurityCloud.Types.BackupWindow
+            $query.field.nodes[$globalSlaReply].firstFullBackupWindows[0].durationInHours = 1
+            $query.field.nodes[$globalSlaReply].firstFullBackupWindows[0].startTimeAttributes = New-Object -TypeName RubrikSecurityCloud.Types.StartTimeAttributes
+            $query.field.nodes[$globalSlaReply].firstFullBackupWindows[0].startTimeAttributes.dayOfWeek = New-Object RubrikSecurityCloud.Types.DayOfWeekOpt
+            $query.field.nodes[$globalSlaReply].firstFullBackupWindows[0].startTimeAttributes.dayOfWeek.day = [RubrikSecurityCloud.Types.DayOfWeek]::FRIDAY
+            $query.field.nodes[$globalSlaReply].firstFullBackupWindows[0].startTimeAttributes.hour = 1
+            $query.field.nodes[$globalSlaReply].firstFullBackupWindows[0].startTimeAttributes.minute = 1
+            
 
             # backupWindows: [BackupWindow!]!
             # Backup windows for the SLA Domain.
             $query.field.nodes[$globalSlaReply].backupWindows = New-Object -TypeName RubrikSecurityCloud.Types.BackupWindow
+            $query.field.nodes[$globalSlaReply].backupWindows[0].durationInHours = 1
+            $query.field.nodes[$globalSlaReply].backupWindows[0].startTimeAttributes = New-Object -TypeName RubrikSecurityCloud.Types.StartTimeAttributes
+            $query.field.nodes[$globalSlaReply].backupWindows[0].startTimeAttributes.dayOfWeek = New-Object RubrikSecurityCloud.Types.DayOfWeekOpt
+            $query.field.nodes[$globalSlaReply].backupWindows[0].startTimeAttributes.dayOfWeek.day = [RubrikSecurityCloud.Types.DayOfWeek]::FRIDAY
+            $query.field.nodes[$globalSlaReply].backupWindows[0].startTimeAttributes.hour = 1
+            $query.field.nodes[$globalSlaReply].backupWindows[0].startTimeAttributes.minute = 1
 
             # clusterToSyncStatusMap: [GlobalSlaSyncStatus!]!
             # Sync status of the clusters.
             $query.field.nodes[$globalSlaReply].clusterToSyncStatusMap = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaSyncStatus
+            $query.field.nodes[$globalSlaReply].clusterToSyncStatusMap[0].clusterUuid = "FETCH"
+            $query.field.nodes[$globalSlaReply].clusterToSyncStatusMap[0].slaSyncStatus = [RubrikSecurityCloud.Types.SlaSyncStatus]::SUCCEEDED
 
             # objectSpecificConfigs: ObjectSpecificConfigs
             # The object-specific configurations of the SLA Domain.
             $query.field.nodes[$globalSlaReply].objectSpecificConfigs = New-Object -TypeName RubrikSecurityCloud.Types.ObjectSpecificConfigs
+                    # sapHanaConfig: SapHanaConfig
+                    # SLA Domain configuration for SAP HANA object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig = New-Object -TypeName RubrikSecurityCloud.Types.SapHanaConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.incrementalFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.incrementalFrequency.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.incrementalFrequency.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.logRetention = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.logRetention.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.logRetention.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.differentialFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.differentialFrequency.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.differentialFrequency.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.storageSnapshotConfig = New-Object -TypeName RubrikSecurityCloud.Types.SapHanaStorageSnapshotConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.storageSnapshotConfig.frequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.storageSnapshotConfig.frequency.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.storageSnapshotConfig.frequency.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.storageSnapshotConfig.retention = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.storageSnapshotConfig.retention.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.SapHanaConfig.storageSnapshotConfig.retention.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+
+
+                    # awsRdsConfig: AwsRdsConfig
+                    # SLA Domain configuration for AWS RDS object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.awsRdsConfig = New-Object -TypeName RubrikSecurityCloud.Types.AwsRdsConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.awsRdsConfig.logRetention = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.awsRdsConfig.logRetention.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.awsRdsConfig.logRetention.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    
+                    # vmwareVmConfig: VmwareVmConfig
+                    # SLA Domain configuration for VMware virtual machine object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.vmwareVmConfig = New-Object -TypeName RubrikSecurityCloud.Types.VmwareVmConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.vmwareVmConfig.logRetentionSeconds = 1
+                    
+                    # azureSqlDatabaseDbConfig: AzureSqlDatabaseDbConfig
+                    # SLA Domain configuration for Azure SQL Database DB object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.AzureSqlDatabaseDbConfig = New-Object -TypeName RubrikSecurityCloud.Types.AzureSqlDatabaseDbConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.AzureSqlDatabaseDbConfig.logRetentionInDays = 1
+                    
+                    # azureSqlManagedInstanceDbConfig: AzureSqlManagedInstanceDbConfig
+                    # SLA Domain configuration for Azure SQL Managed Instance DB object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.AzureSqlManagedInstanceDbConfig = New-Object -TypeName RubrikSecurityCloud.Types.AzureSqlManagedInstanceDbConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.AzureSqlManagedInstanceDbConfig.logRetentionInDays = 1
+                    
+                    # db2Config: Db2Config
+                    # SLA Domain configuration for Db2 database object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.db2Config = New-Object -TypeName RubrikSecurityCloud.Types.Db2Config
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.db2Config.incrementalFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.db2Config.incrementalFrequency.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.db2Config.incrementalFrequency.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.db2Config.logRetention = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.db2Config.logRetention.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.db2Config.logRetention.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.db2Config.differentialFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.db2Config.differentialFrequency.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.db2Config.differentialFrequency.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.db2Config.logArchivalMethod = [RubrikSecurityCloud.Types.LogArchivalMethod]::LOGARCHMET_H1
+                    
+                    # mssqlConfig: MssqlConfig
+                    # SLA Domain configuration for SQL Server database object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mssqlConfig = New-Object -TypeName RubrikSecurityCloud.Types.MssqlConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mssqlConfig.frequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mssqlConfig.frequency.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mssqlConfig.frequency.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mssqlConfig.logRetention = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mssqlConfig.logRetention.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mssqlConfig.logRetention.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    
+                    # oracleConfig: OracleConfig
+                    # SLA Domain configuration for Oracle database object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.oracleConfig = New-Object -TypeName RubrikSecurityCloud.Types.OracleConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.oracleConfig.frequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.oracleConfig.frequency.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.oracleConfig.frequency.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.oracleConfig.logRetention = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.oracleConfig.logRetention.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.oracleConfig.logRetention.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.oracleConfig.hostLogRetention = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.oracleConfig.hostLogRetention.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.oracleConfig.hostLogRetention.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    
+                    # mongoConfig: MongoConfig
+                    # SLA Domain configuration for MongoDB database object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mongoConfig = New-Object -TypeName RubrikSecurityCloud.Types.MongoConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mongoConfig.logFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mongoConfig.logFrequency.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mongoConfig.logFrequency.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mongoConfig.logRetention = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mongoConfig.logRetention.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mongoConfig.logRetention.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    
+                    # azureBlobConfig: AzureBlobConfig
+                    # SLA Domain configuration for Azure Blob object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.azureBlobConfig = New-Object -TypeName RubrikSecurityCloud.Types.AzureBlobConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.azureBlobConfig.continuousBackupRetentionInDays = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.azureBlobConfig.backupLocationId = "FETCH"
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.azureBlobConfig.backupLocationName = "FETCH"
+                    
+                    # awsNativeS3SlaConfig: AwsNativeS3SlaConfig
+                    # SLA Domain configuration for AWS S3 bucket.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.awsNativeS3SlaConfig = New-Object -TypeName RubrikSecurityCloud.Types.AwsNativeS3SlaConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.awsNativeS3SlaConfig.continuousBackupRetentionInDays = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.awsNativeS3SlaConfig.archivalLocationId = "FETCH"
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.awsNativeS3SlaConfig.archivalLocationName = "FETCH"
+                    
+                    # managedVolumeSlaConfig: ManagedVolumeSlaConfig
+                    # SLA Domain configuration for Managed Volume object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.managedVolumeSlaConfig = New-Object -TypeName RubrikSecurityCloud.Types.ManagedVolumeSlaConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.managedVolumeSlaConfig.logRetention = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.managedVolumeSlaConfig.logRetention.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.managedVolumeSlaConfig.logRetention.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    
+                    # postgresDbClusterSlaConfig: PostgresDbClusterSlaConfig
+                    # SLA Domain configuration for Postgres DB Cluster object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.postgresDbClusterSlaConfig = New-Object -TypeName RubrikSecurityCloud.Types.PostgresDbClusterSlaConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.postgresDbClusterSlaConfig.logRetention = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.postgresDbClusterSlaConfig.logRetention.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.postgresDbClusterSlaConfig.logRetention.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+
+                    
+                    # mysqldbSlaConfig: MysqldbSlaConfig
+                    # SLA Domain configuration for MySQL object.
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mysqldbSlaConfig = New-Object -TypeName RubrikSecurityCloud.Types.MysqldbSlaConfig
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mysqldbSlaConfig.logFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mysqldbSlaConfig.logFrequency.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mysqldbSlaConfig.logFrequency.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mysqldbSlaConfig.logRetention = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mysqldbSlaConfig.logRetention.durationField = 1
+                    $query.field.nodes[$globalSlaReply].objectSpecificConfigs.mysqldbSlaConfig.logRetention.unit = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
 
             # objectTypes: [SlaObjectType!]!
             # The object-types supported by the SLA Domain.
-            #$query.field.nodes[$globalSlaReply].objectTypes = [RubrikSecurityCloud.Types.SlaObjectType]::KUPR_OBJECT_TYPE
+            $query.field.nodes[$globalSlaReply].objectTypes = [RubrikSecurityCloud.Types.SlaObjectType]::KUPR_OBJECT_TYPE
 
             # clusterUuid: String!
             # Rubrik cluster ID of the SLA Domain.
@@ -354,10 +528,17 @@ function Get-RscSla {
             # upgradeInfo: SlaUpgradeInfo
             # SLA Domain upgrade information.
             $query.field.nodes[$globalSlaReply].upgradeInfo = New-Object -TypeName RubrikSecurityCloud.Types.SlaUpgradeInfo
+            $query.field.nodes[$globalSlaReply].upgradeInfo.eligibility = New-Object -TypeName RubrikSecurityCloud.Types.SlaUpgradeEligibility
+            $query.field.nodes[$globalSlaReply].upgradeInfo.eligibility.isEligible = $true
+            $query.field.nodes[$globalSlaReply].upgradeInfo.eligibility.ineligibilityReason = [RubrikSecurityCloud.Types.SlaMigrationIneligibilityReason]::CLUSTER_DISCONNECTED
+
 
             # pausedClustersInfo: PausedClustersInfo
             # Information about Rubrik clusters where this SLA Domain is paused.
             $query.field.nodes[$globalSlaReply].pausedClustersInfo = New-Object -TypeName RubrikSecurityCloud.Types.PausedClustersInfo
+            $query.field.nodes[$globalSlaReply].pausedClustersInfo.pausedClustersCount = 1
+            $query.field.nodes[$globalSlaReply].pausedClustersInfo.pausedClusters = New-Object RubrikSecurityCloud.Types.Cluster
+            $query.field.nodes[$globalSlaReply].pausedClustersInfo.pausedClusters[0].id = "FETCH"
 
             # isRetentionLockedSla: Boolean!
             # Specifies if this SLA Domain is retention-locked or not.
@@ -374,30 +555,25 @@ function Get-RscSla {
             # allOrgsHavingAccess: [SlaAssociatedOrganization!]!
             # Specifies the list of organizations that have view access for the SLA Domain.
             $query.field.nodes[$globalSlaReply].allOrgsHavingAccess = New-Object -TypeName RubrikSecurityCloud.Types.SlaAssociatedOrganization
+            $query.field.nodes[$globalSlaReply].allOrgsHavingAccess[0].name = "FETCH"
+            $query.field.nodes[$globalSlaReply].allOrgsHavingAccess[0].id = "FETCH"
 
             # ownerOrg: SlaAssociatedOrganization!
             # Specifies the owner organization of the SLA Domain.
             $query.field.nodes[$globalSlaReply].ownerOrg = New-Object -TypeName RubrikSecurityCloud.Types.SlaAssociatedOrganization
+            $query.field.nodes[$globalSlaReply].ownerOrg.name = "FETCH"
+            $query.field.nodes[$globalSlaReply].ownerOrg.id = "FETCH"
 
             # archivalLocationsUpgradeInfo: [ArchivalLocationUpgradeInfo!]
             # Upgrade information about the configured archival locations and cascading archival locations.
             $query.field.nodes[$globalSlaReply].archivalLocationsUpgradeInfo = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalLocationUpgradeInfo
+            $query.field.nodes[$globalSlaReply].archivalLocationsUpgradeInfo[0].locationId = "FETCH"
 
             # sourceClusters: [SlaDataLocationCluster!]!
             # Source clusters configured in the SLA Domain.
-            $query.field.nodes[$globalSlaReply].sourceClusters = New-Object -TypeName RubrikSecurityCloud.Types.SlaDataLocationCluster
+            #$query.field.nodes[$globalSlaReply].sourceClusters = New-Object -TypeName RubrikSecurityCloud.Types.SlaDataLocationCluster
+            #$query.field.nodes[$globalSlaReply].sourceClusters[0].id = "FETCH"
 
-            #$query.field.nodes[$globalSlaReply].BaseFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
-            #$query.field.nodes[$globalSlaReply].BaseFrequency.Unit = New-Object -TypeName RubrikSecurityCloud.Types.RetentionUnit
-            #$query.field.nodes[$globalSlaReply].BaseFrequency.DurationField = 1
-            #$query.field.nodes[$globalSlaReply].ProtectedObjectCount = 1
-            #$query.field.nodes[$globalSlaReply].ArchivalSpecs = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalSpec
-            #$query.field.nodes[$globalSlaReply].ArchivalSpecs[0].ArchivalLocationToClusterMapping = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalLocationToClusterMapping
-            #$query.field.nodes[$globalSlaReply].ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location = New-Object -TypeName RubrikSecurityCloud.Types.DlsArchivalLocation
-            #$query.field.nodes[$globalSlaReply].ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location.Name = "Foo"
-            #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2 = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2
-            #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].Cluster = New-Object RubrikSecurityCloud.Types.SlaReplicationCluster
-            #$query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
             $result = $query.Invoke()
             $result.Nodes
         }
