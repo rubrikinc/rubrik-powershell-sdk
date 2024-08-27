@@ -231,6 +231,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		clearUpAttrsIfNullInBackup = $someBoolean
     /// 		# OPTIONAL
+    /// 		alternateDcId = $someString
+    /// 		# OPTIONAL
     /// 		shouldCreateMissingParents = $someBoolean
     /// 		# OPTIONAL
     /// 		locationId = $someString
@@ -521,6 +523,8 @@ $query.Var.input = @{
 		shouldContinueOnError = $someBoolean
 		# OPTIONAL
 		clearUpAttrsIfNullInBackup = $someBoolean
+		# OPTIONAL
+		alternateDcId = $someString
 		# OPTIONAL
 		shouldCreateMissingParents = $someBoolean
 		# OPTIONAL

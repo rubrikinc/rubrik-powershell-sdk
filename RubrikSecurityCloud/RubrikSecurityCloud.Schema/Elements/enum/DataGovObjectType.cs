@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_EBS_VOLUME")]
         AWS_NATIVE_EBS_VOLUME,
 
+        [EnumMember(Value = "AWS_NATIVE_EC2_INSTANCE")]
+        AWS_NATIVE_EC2_INSTANCE,
+
         [EnumMember(Value = "AWS_NATIVE_RDS_INSTANCE")]
         AWS_NATIVE_RDS_INSTANCE,
 

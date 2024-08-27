@@ -75,6 +75,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "REPLACE_CLUSTER_NODE")]
         REPLACE_CLUSTER_NODE,
 
+        [EnumMember(Value = "RESET_USER_PASSKEYS")]
+        RESET_USER_PASSKEYS,
+
         [EnumMember(Value = "RESET_USER_TOTP_CONFIG")]
         RESET_USER_TOTP_CONFIG,
 

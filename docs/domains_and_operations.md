@@ -9,11 +9,11 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
-| [Account (9,14)](#account-domain) | [Cluster (32,18)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,20)](#oracle-domain) | [Snapshot (21,18)](#snapshot-domain) |
+| [Account (9,14)](#account-domain) | [Cluster (32,19)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,20)](#oracle-domain) | [Snapshot (21,18)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (9,4)](#microsoft-365-domain) | [Policy (6,12)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (4,3)](#activity-series-domain) | [Db2 (9,13)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
 | [Archival (8,16)](#archival-domain) | [Report Download (3,19)](#report-download-domain) | [Miscellaneous (185,134)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
-| [AWS (31,35)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (3,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
+| [AWS (31,35)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (4,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (19,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (52,43)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (4,3)](#threat-domain) |
 | [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,24)](#microsoft-sql-server-domain) | [SAP HANA (8,11)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
@@ -731,6 +731,7 @@ Retrieve a list of the NTP servers assigned to the Rubrik cluster. Encryption ke
 | AddNodesToCloud | Add nodes to cloud cluster. | `New-RscMutationCluster -Operation AddNodesToCloud`<BR> | [addNodesToCloudCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteClusterRoute | Delete an existing route on a Rubrik cluster. Supported in Rubrik CDM v5.0+ | `New-RscMutationCluster -Operation DeleteClusterRoute`<BR> | [deleteClusterRoute](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | GenerateClusterRegistrationToken | Generate a JWT that can be used to register clusters with Rubrik. If ManagedByRubrikArg is not given, the product type is inferred automatically. | `New-RscMutationCluster -Operation GenerateClusterRegistrationToken`<BR> | [generateClusterRegistrationToken](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MigrateCloudClusterDisks | Migrate the disks on cloud cluster. | `New-RscMutationCluster -Operation MigrateCloudClusterDisks`<BR> | [migrateCloudClusterDisks](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RecoverCloud | Recover a Rubrik Cloud Cluster. | `New-RscMutationCluster -Operation RecoverCloud`<BR> | [recoverCloudCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RegisterCloud | Register a cloud cluster. | `New-RscMutationCluster -Operation RegisterCloud`<BR> | [registerCloudCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ReleasePersistentExo | Releases all the persistent Exocompute clusters for a region configuration in a cloud account. | `New-RscMutationCluster -Operation ReleasePersistentExo`<BR> | [releasePersistentExoclusters](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -824,7 +825,7 @@ Supported in v8.0+
 Downloads a specific Db2 database snapshot from the specified archival location. | `New-RscMutationDb2 -Operation DownloadSnapshot`<BR> | [downloadDb2Snapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DownloadSnapshotV2 | Download Db2 database snapshot from archive  
   
-Supported in v9.3  
+Supported in v9.2+  
 Downloads a specific Db2 database snapshot from the specified archival location. | `New-RscMutationDb2 -Operation DownloadSnapshotV2`<BR> | [downloadDb2SnapshotV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DownloadSnapshotsForPointInTimeRecovery | Download Db2 database snapshots from archive for a point in time recovery  
   
@@ -875,7 +876,7 @@ Supported in v8.0+
 Downloads a Microsoft Exchange database snapshot from the specified archival location. | `New-RscMutationDownload -Operation ExchangeSnapshot`<BR> | [downloadExchangeSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExchangeSnapshotV2 | Download exchange database snapshot from archive  
   
-Supported in v9.3  
+Supported in v9.2+  
 Downloads a Microsoft Exchange database snapshot from the specified archival location. | `New-RscMutationDownload -Operation ExchangeSnapshotV2`<BR> | [downloadExchangeSnapshotV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | FilesetSnapshot | N/A | `New-RscMutationDownload -Operation FilesetSnapshot`<BR> | [downloadFilesetSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | FilesetSnapshotFromLocation | Download a snapshot from a replication target  
@@ -2643,7 +2644,7 @@ Supported in v9.0+
 Initiates an asynchronous job to download an Oracle database snapshot and associated log snapshots using the snapshot ID. The response includes the ID of the asynchronous job request. To see the status of the request, poll /oracle/request/{id}. | `New-RscMutationOracle -Operation DownloadSnapshotFromLocation`<BR> | [downloadOracleSnapshotFromLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DownloadSnapshotFromLocationV2 | Download Oracle snapshot from an archival location  
   
-Supported in v9.3  
+Supported in v9.2+  
 Initiates an asynchronous job to download an Oracle database snapshot and associated log snapshots using the snapshot ID. The response includes the ID of the asynchronous job request. To see the status of the request, poll /oracle/request/{id}. | `New-RscMutationOracle -Operation DownloadSnapshotFromLocationV2`<BR> | [downloadOracleSnapshotFromLocationV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExportDatabase | Export an Oracle database  
   
@@ -2791,6 +2792,7 @@ Cmdlets: `New-RscQueryRcv` and `New-RscMutationRcv`
 | --- | --- | --- | --- |
 | AccountEntitlement | Rubrik Cloud Vault (RCV) Account entitlement details. | `New-RscQueryRcv -Operation AccountEntitlement`<BR> | [rcvAccountEntitlement](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AccountEntitlements | Rubrik Cloud Vault (RCV) account entitlements with their respective order numbers. | `New-RscQueryRcv -Operation AccountEntitlements`<BR> | [allRcvAccountEntitlements](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IsTriggerGrsTprConfigured | Verify whether the trigger RCV GRS failover quorum authorization policy is set. | `New-RscQueryRcv -Operation IsTriggerGrsTprConfigured`<BR> | [isTriggerRcvGrsTprConfigured](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | PrivateEndpointConnections | Get private endpoint connection approval request. | `New-RscQueryRcv -Operation PrivateEndpointConnections`<BR> | [allRcvPrivateEndpointConnections](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)

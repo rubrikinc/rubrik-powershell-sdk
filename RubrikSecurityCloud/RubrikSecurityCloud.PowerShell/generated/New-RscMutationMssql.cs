@@ -109,6 +109,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			isOracleHost = $someBoolean
     /// 			# OPTIONAL
+    /// 			mssqlSddCertificateId = $someString
+    /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
     /// 			# OPTIONAL
     /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
@@ -1867,6 +1869,8 @@ $query.Var.input = @{
 			alias = $someString
 			# OPTIONAL
 			isOracleHost = $someBoolean
+			# OPTIONAL
+			mssqlSddCertificateId = $someString
 			# OPTIONAL
 			orgNetworkId = $someString
 			# OPTIONAL

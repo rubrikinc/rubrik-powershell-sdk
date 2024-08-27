@@ -9,3 +9,5 @@ Represents security metadata of a workload.
   - Total hits with high sensitivity.
 - sensitivityStatus: SensitivityStatus
   - Sensitivity status of a workload.
+- isLaminarEnabled: System.Boolean
+  - True if Laminar is enabled for a given workload.

@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("region")]
         public AzureRegion? Region { get; set; }
 
+        //      C# -> AzureStorageTier? Tier
+        // GraphQL -> tier: AzureStorageTier (enum)
+        [JsonProperty("tier")]
+        public AzureStorageTier? Tier { get; set; }
+
         //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
         // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
         [Required]

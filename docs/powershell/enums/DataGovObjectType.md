@@ -52,3 +52,4 @@ TODO: SPARK-150447 - Deprecate this enum to use managed object type
 - AWS_NATIVE_S3_BUCKET - Represents AWS S3 bucket.
 - AWS_NATIVE_EBS_VOLUME - Represents AWS EBS volume.
 - AWS_NATIVE_RDS_INSTANCE - Represents AWS RDS Instance.
+- AWS_NATIVE_EC2_INSTANCE - Represents AWS EC2 Instance.

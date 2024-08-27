@@ -532,7 +532,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryCloudNative -SqlServerSetupScript
     /// 
-    /// # No variables for this query.
+    /// # OPTIONAL
+    /// $query.Var.cloudNativeObjectType = $someCloudNativeObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeObjectType]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -1342,20 +1343,22 @@ $query.Var.searchPrefix = $someString"
         }
 
         // Create new GraphQL Query:
-        // cloudNativeSqlServerSetupScript: CloudNativeSqlServerSetupScript!
+        // cloudNativeSqlServerSetupScript(cloudNativeObjectType: CloudNativeObjectType): CloudNativeSqlServerSetupScript!
         internal void InitQueryCloudNativeSqlServerSetupScript()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudNativeObjectType", "CloudNativeObjectType"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryCloudNativeSqlServerSetupScript",
-                "",
+                "($cloudNativeObjectType: CloudNativeObjectType)",
                 "CloudNativeSqlServerSetupScript",
                 Query.CloudNativeSqlServerSetupScript,
                 Query.CloudNativeSqlServerSetupScriptFieldSpec,
-                @""
+                @"# OPTIONAL
+$query.Var.cloudNativeObjectType = $someCloudNativeObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeObjectType]) for enum values."
             );
         }
 

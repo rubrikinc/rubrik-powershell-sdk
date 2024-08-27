@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "REPORT")]
         REPORT,
 
+        [EnumMember(Value = "SAAS_APPS")]
+        SAAS_APPS,
+
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN
 

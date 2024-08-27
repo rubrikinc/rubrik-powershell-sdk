@@ -67,7 +67,7 @@ Initiates an asynchronous job to download an Oracle database snapshot and associ
 ### downloadsnapshotfromlocationv2
 Download Oracle snapshot from an archival location
 
-Supported in v9.3
+Supported in v9.2+
 Initiates an asynchronous job to download an Oracle database snapshot and associated log snapshots using the snapshot ID. The response includes the ID of the asynchronous job request. To see the status of the request, poll /oracle/request/{id}.
 
 - There is a single argument of type DownloadOracleSnapshotFromLocationV2Input.

@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRefreshPaused")]
         public System.Boolean? IsRefreshPaused { get; set; }
 
+        //      C# -> System.String? MssqlSddCertificateId
+        // GraphQL -> mssqlSddCertificateId: String (scalar)
+        [JsonProperty("mssqlSddCertificateId")]
+        public System.String? MssqlSddCertificateId { get; set; }
+
         //      C# -> HostVfdInstallConfig? HostVfdEnabled
         // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
         [JsonProperty("hostVfdEnabled")]

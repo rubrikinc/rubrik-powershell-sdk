@@ -35,6 +35,22 @@
   - List of all descendants of O365Org.
 - unprotectedUsersCount: System.Int32
   - Number of O365 Users with no SLA assigned.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for this workload's snapshots.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for this workload's snapshots.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The newest snapshot that is indexed and unexpired, and therefore restorable.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String
@@ -65,5 +81,7 @@
   - The organizations to which this hierarchy object belongs.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
+- workloadSummary: list of O365WorkloadSummarys
+  - Summary of workload by type.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.

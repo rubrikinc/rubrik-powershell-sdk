@@ -54,6 +54,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KuprNamespace")]
         KUPR_NAMESPACE,
 
+        [EnumMember(Value = "M365_BACKUP_STORAGE_MAILBOX")]
+        M365_BACKUP_STORAGE_MAILBOX,
+
+        [EnumMember(Value = "M365_BACKUP_STORAGE_ONEDRIVE")]
+        M365_BACKUP_STORAGE_ONEDRIVE,
+
+        [EnumMember(Value = "M365_BACKUP_STORAGE_SHAREPOINT_SITE")]
+        M365_BACKUP_STORAGE_SHAREPOINT_SITE,
+
         [EnumMember(Value = "O365Mailbox")]
         O365_MAILBOX,
 

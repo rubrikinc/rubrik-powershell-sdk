@@ -29,6 +29,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isPassthrough")]
         public System.Boolean? IsPassthrough { get; set; }
 
+        //      C# -> System.String? SnapMirrorLabelForFullBackup
+        // GraphQL -> snapMirrorLabelForFullBackup: String (scalar)
+        [JsonProperty("snapMirrorLabelForFullBackup")]
+        public System.String? SnapMirrorLabelForFullBackup { get; set; }
+
+        //      C# -> System.String? SnapMirrorLabelForIncrementalBackup
+        // GraphQL -> snapMirrorLabelForIncrementalBackup: String (scalar)
+        [JsonProperty("snapMirrorLabelForIncrementalBackup")]
+        public System.String? SnapMirrorLabelForIncrementalBackup { get; set; }
+
         //      C# -> FilesetTemplateCreateInput? FilesetTemplate
         // GraphQL -> filesetTemplate: FilesetTemplateCreateInput! (input)
         [Required]

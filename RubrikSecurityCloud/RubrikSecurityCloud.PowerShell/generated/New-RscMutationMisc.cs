@@ -583,6 +583,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		isHardlinkSupportEnabled = $someBoolean
     /// 		# OPTIONAL
     /// 		isPassthrough = $someBoolean
+    /// 		# OPTIONAL
+    /// 		snapMirrorLabelForFullBackup = $someString
+    /// 		# OPTIONAL
+    /// 		snapMirrorLabelForIncrementalBackup = $someString
     /// 		# REQUIRED
     /// 		filesetTemplate = @{
     /// 			# OPTIONAL
@@ -7698,6 +7702,10 @@ $query.Var.input = @{
 		isHardlinkSupportEnabled = $someBoolean
 		# OPTIONAL
 		isPassthrough = $someBoolean
+		# OPTIONAL
+		snapMirrorLabelForFullBackup = $someString
+		# OPTIONAL
+		snapMirrorLabelForIncrementalBackup = $someString
 		# REQUIRED
 		filesetTemplate = @{
 			# OPTIONAL

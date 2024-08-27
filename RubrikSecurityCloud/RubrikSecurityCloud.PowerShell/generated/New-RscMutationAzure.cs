@@ -630,6 +630,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	name = $someString
     /// 	# REQUIRED
     /// 	region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
+    /// 	# OPTIONAL
+    /// 	tier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
     /// 	# REQUIRED
     /// 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
     /// 	# OPTIONAL
@@ -3477,6 +3479,8 @@ $query.Var.input = @{
 	name = $someString
 	# REQUIRED
 	region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
+	# OPTIONAL
+	tier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
 	# REQUIRED
 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
 	# OPTIONAL

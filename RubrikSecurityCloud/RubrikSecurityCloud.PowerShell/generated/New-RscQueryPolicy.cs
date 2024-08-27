@@ -198,6 +198,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.policyAssignmentType = $somePolicyAssignmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyAssignmentType]) for enum values.
     /// # OPTIONAL
+    /// $query.Var.includeDataTypeHits = $someBoolean
+    /// # OPTIONAL
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
@@ -472,6 +474,7 @@ $query.Var.excludeHierarchyObjectList = $someBoolean"
         //     searchObjectName: String
         //     hierarchyAncestorIdFilter: String
         //     policyAssignmentType: PolicyAssignmentType
+        //     includeDataTypeHits: Boolean
         //     first: Int
         //     after: String
         //     last: Int
@@ -489,6 +492,7 @@ $query.Var.excludeHierarchyObjectList = $someBoolean"
                 Tuple.Create("searchObjectName", "String"),
                 Tuple.Create("hierarchyAncestorIdFilter", "String"),
                 Tuple.Create("policyAssignmentType", "PolicyAssignmentType"),
+                Tuple.Create("includeDataTypeHits", "Boolean"),
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
@@ -498,7 +502,7 @@ $query.Var.excludeHierarchyObjectList = $someBoolean"
                 argDefs,
                 "query",
                 "QueryPolicy",
-                "($policyId: String!,$workloadTypes: [DataGovObjectType!],$sortBy: PolicyDetailsSortBy,$sortOrder: SortOrder,$clusterIdsFilter: [String!],$replicationFilter: [String!],$searchObjectName: String,$hierarchyAncestorIdFilter: String,$policyAssignmentType: PolicyAssignmentType,$first: Int,$after: String,$last: Int,$before: String)",
+                "($policyId: String!,$workloadTypes: [DataGovObjectType!],$sortBy: PolicyDetailsSortBy,$sortOrder: SortOrder,$clusterIdsFilter: [String!],$replicationFilter: [String!],$searchObjectName: String,$hierarchyAncestorIdFilter: String,$policyAssignmentType: PolicyAssignmentType,$includeDataTypeHits: Boolean,$first: Int,$after: String,$last: Int,$before: String)",
                 "ClassificationPolicyDetail",
                 Query.Policy,
                 Query.PolicyFieldSpec,
@@ -526,6 +530,8 @@ $query.Var.searchObjectName = $someString
 $query.Var.hierarchyAncestorIdFilter = $someString
 # OPTIONAL
 $query.Var.policyAssignmentType = $somePolicyAssignmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyAssignmentType]) for enum values.
+# OPTIONAL
+$query.Var.includeDataTypeHits = $someBoolean
 # OPTIONAL
 $query.Var.first = $someInt
 # OPTIONAL

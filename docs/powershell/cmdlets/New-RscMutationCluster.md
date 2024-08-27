@@ -25,6 +25,11 @@ Generate a JWT that can be used to register clusters with Rubrik. If ManagedByRu
 
 - There is a single argument of type GenerateClusterRegistrationTokenInput.
 - Returns ClusterRegistrationToken.
+### migratecloudclusterdisks
+Migrate the disks on cloud cluster.
+
+- There is a single argument of type MigrateCloudClusterDisksInput.
+- Returns CcProvisionJobReply.
 ### recovercloud
 Recover a Rubrik Cloud Cluster.
 

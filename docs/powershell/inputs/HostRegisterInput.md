@@ -20,6 +20,9 @@ Supported in v5.0+
 - isOracleHost: System.Boolean
   - Supported in v5.2+
       A Boolean that specifies whether to discover Oracle information at registration. A value of 'true' discovers Oracle information at registration.
+- mssqlSddCertificateId: System.String
+  - Supported in v9.3
+      Certificate ID corresponding to the public key certificate of the CA that signed the SQL server certificate. This will be used to validate identity of the SQL server host when using Sensitive Data Discovery.
 - orgNetworkId: System.String
   - Supported in v8.1+
       The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.

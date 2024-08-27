@@ -4,6 +4,7 @@
 - O365Onedrive
 - AWS_NATIVE_S3_BUCKET - AWS native S3 Bucket.
 - AwsNativeRdsInstance
+- M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
 - O365SharePointList
 - AllSubHierarchyType
 - AzureSqlManagedInstanceDb
@@ -17,4 +18,6 @@
 - AzureSqlDatabaseDb
 - AzureNativeManagedDisk
 - O365Site
+- M365_BACKUP_STORAGE_SHAREPOINT_SITE - Microsoft 365 Backup Storage SharePoint site.
 - AzureNativeVirtualMachine
+- M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.

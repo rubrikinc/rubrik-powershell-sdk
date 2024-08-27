@@ -4450,6 +4450,17 @@ type Query {
     # Input required for retrieving account information.
     input: LookupAccountInput!): LookupAccountReply!
 
+  # Lists the Microsoft 365 backup storage object restore points.
+  m365BackupStorageObjectRestorePoints(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # The input to list Microsoft 365 Backup Storage restore points.
+    m365BackupStorageObjectRestorePointsInput: M365BackupStorageObjectRestorePointsInput!): M365BackupStorageRestorePointConnection!
+
   # Returns the backup statistics of an M365 organization product in day-to-day mode.
   m365DayToDayModeBackupStats(
     # Org UUID.
@@ -6070,14 +6081,17 @@ type Query {
     # Data Type IDs to filter.
     dataTypeIdsFilter: [String!],
 
-    # First seen time range specified in the local timezone of the user.
+    # The first seen time range specified in the UTC timezone.
     firstSeenTimeRange: UserTimeRangeInput,
 
-    # Last access time range specified in the local timezone of the user.
+    # The last access time range specified in the UTC timezone.
     lastAccessTimeRange: UserTimeRangeInput,
 
-    # Creation time range specified in the local timezone of the user.
+    # The creation time range specified in the UTC timezone.
     creationTimeRange: UserTimeRangeInput,
+
+    # The last scan time range specified in the UTC timezone.
+    lastScanTimeRange: UserTimeRangeInput,
 
     # Object tags associated with workloads as key-value pairs.
     objectTagsFilter: ObjectTagsFilterInput,
@@ -34280,6 +34294,18 @@ enum CloudAccountFeature {
   # Cloud account feature is Laminar Internal.
   LAMINAR_INTERNAL
 
+  # Cloud account feature is Azure Laminar Outpost Application.
+  LAMINAR_OUTPOST_APPLICATION
+
+  # Cloud account feature is Azure Laminar Outpost Managed Identity.
+  LAMINAR_OUTPOST_MANAGED_IDENTITY
+
+  # Cloud account feature is Azure Laminar Target Application.
+  LAMINAR_TARGET_APPLICATION
+
+  # Cloud account feature is Azure Laminar Target Managed Identity.
+  LAMINAR_TARGET_MANAGED_IDENTITY
+
   # Cloud account feature is RDS Protection.
   RDS_PROTECTION
 
@@ -35165,7 +35191,7 @@ type Cluster {
   cyberEventLockdownMode: ClusterCyberEventLockdownMode
 
   # Cyber Event Lockdown support case details.
-  cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails!
+  cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails
 
   # End of support date.
   eosDate: String
@@ -40723,6 +40749,9 @@ type CustomerManagedPolicy {
 }
 # Cyber Event Lockdown support case details.
 type CyberEventLockdownSupportCaseDetails {
+  # ID of the Rubrik cluster.
+  clusterUuid: String!
+
   # The support case ID.
   caseId: String!
 
@@ -48603,7 +48632,7 @@ input FileResultSortInput {
   analyzerGroupId: String = ""
 
   # ID of data type to sort file results.
-  dataTypeId: String
+  dataTypeId: String = ""
 }
 # Represents the OneDrive file snapshot to be restored.
 input FileSnapshotInfo {
@@ -52645,8 +52674,13 @@ enum GlobalSlaQueryFilterInputField {
 }
 # Metadata for rendering an SLA Domain.
 type GlobalSlaReply implements SlaDomain {
+  # SLA Domain ID.
   id: String!
+
+  # SLA Domain name.
   name: String!
+
+  # Version for the SLA Domain.
   version: String
 
   # Description of the SLA Domain.
@@ -52703,36 +52737,43 @@ type GlobalSlaReply implements SlaDomain {
   # The object-specific configurations of the SLA Domain.
   objectSpecificConfigs: ObjectSpecificConfigs
 
-  clusterUuid: String!
-  description: String!
-  isArchived: Boolean!
-  isDefault: Boolean!
-  isReadOnly: Boolean
-  isRetentionLockedSla: Boolean!
-  stateVersion: Long!
-
-  protectedObjectCount: Int!
-  uiColor: String!
-  snapshotSchedule: SnapshotSchedule
-  localRetentionLimit: Duration
-  archivalSpec: ArchivalSpec
-  archivalSpecs: [ArchivalSpec!]!
-  replicationSpec: ReplicationSpec
-  replicationSpecsV2: [ReplicationSpecV2!]!
-  snapshotScheduleLastUpdatedAt: DateTime
-  baseFrequency: Duration
-  firstFullBackupWindows: [BackupWindow!]!
-  backupWindows: [BackupWindow!]!
-  clusterToSyncStatusMap: [GlobalSlaSyncStatus!]!
-  logConfig: LogConfigResult
+  # The object-types supported by the SLA Domain.
   objectTypes: [SlaObjectType!]!
+
+  # Rubrik cluster ID of the SLA Domain.
+  clusterUuid: String!
+
+  # Specifies whether the SLA Domain is a default SLA Domain or not.
+  isDefault: Boolean!
+
+  # SLA Domain upgrade information.
   upgradeInfo: SlaUpgradeInfo
+
+  # Information about Rubrik clusters where this SLA Domain is paused.
   pausedClustersInfo: PausedClustersInfo
+
+  # Specifies if this SLA Domain is retention-locked or not.
+  isRetentionLockedSla: Boolean!
+
+  # Specifies whether the SLA Domain is read-only.
+  isReadOnly: Boolean
+
+  # Specifies the retention lock mode when enabled for the SLA Domain.
   retentionLockMode: RetentionLockMode!
+
+  # This field is deprecated.
   allOrgsWithAccess: [Org!]! @deprecated(reason: "This field is deprecated and has been replaced by the allOrgsHavingAccess field, which must be used instead.")
+
+  # Specifies the list of organizations that have view access for the SLA Domain.
   allOrgsHavingAccess: [SlaAssociatedOrganization!]!
+
+  # This field is deprecated.
   ownerOrgName: String! @deprecated(reason: "This field has been deprecated in favor of ownerOrg field.")
+
+  # Specifies the owner organization of the SLA Domain.
   ownerOrg: SlaAssociatedOrganization!
+
+  # Upgrade information about the configured archival locations and cascading archival locations.
   archivalLocationsUpgradeInfo: [ArchivalLocationUpgradeInfo!]
 
   # Source clusters configured in the SLA Domain.
@@ -58787,6 +58828,9 @@ type IntegrationConfig {
 
   # The ServiceNow ITSM configuration.
   serviceNowItsm: ServiceNowItsmIntegrationConfig
+
+  # The OKTA configuration.
+  okta: OktaIntegrationConfig
 }
 # Holds the configuration of a single integration. Note that IntegrationConfig
 # can hold multiple configurations at once but only the configuration specified
@@ -58797,6 +58841,9 @@ input IntegrationConfigInput {
 
   # The ServiceNow ITSM configuration.
   serviceNowItsm: ServiceNowItsmIntegrationConfigInput
+
+  # The OKTA configuration.
+  okta: OktaIntegrationConfigInput
 }
 # Fields by which you can sort the integrations.
 enum IntegrationSortBy {
@@ -58812,6 +58859,9 @@ enum IntegrationType {
 
   # Represents an unspecified integration.
   INTEGRATION_TYPE_UNSPECIFIED
+
+  # Represents a OKTA ITP integration.
+  OKTA
 
   # Represents a ServiceNow ITSM integration.
   SERVICENOW_ITSM
@@ -60846,6 +60896,27 @@ type KubernetesCluster implements HierarchyObject , CdmHierarchyObject {
   # Number of namespaces in the cluster.
   namespaceCount: Int!
 
+  # Distribution indicates the type of Kubernetes distribution used by the cluster, such as VANILLA, RED_HAT, EKS, AKS, or others.
+  distribution: String!
+
+  # Specifies whether the pull secret is configured.
+  isPullSecretConfigured: Boolean!
+
+  # ID of the cloud account used to establish a connection with the EKS Kubernetes cluster.
+  cloudAccountId: String
+
+  # Amazon Resource Name (ARN) for the EKS Kubernetes cluster.
+  eksClusterArn: String
+
+  # Specifies whether automatic protection set creation is enabled.
+  isAutoPsCreationEnabled: Boolean!
+
+  # The IP for connecting to the Kubernetes cluster on a NodePort.
+  externalIp: String
+
+  # Port number for connecting to the Kubernetes cluster.
+  port: Int
+
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
 
@@ -60888,6 +60959,9 @@ type KubernetesCluster implements HierarchyObject , CdmHierarchyObject {
 
     # The hierarchy object filter.
     filter: [Filter!]): KubernetesProtectionSetConnection!
+
+  # Onboarding type of Kubernetes cluster.
+  onboardingType: KubernetesOnboardingType!
 
   # The FID of the hierarchy object.
   id: UUID!
@@ -61076,6 +61150,14 @@ type KubernetesClusterEdge {
   # The actual KubernetesCluster object wrapped by this edge.
   node: KubernetesCluster!
 }
+# Onboarding type of Kubernetes cluster.
+enum KubernetesOnboardingType {
+  # The onboarding is done using kubeconfig.
+  KUBECONFIG
+
+  # The onboarding is done using manifest.
+  MANIFEST
+}
 # Kubernetes Protection Set.
 type KubernetesProtectionSet implements HierarchyObject , HierarchySnappable , CdmHierarchyObject , CdmHierarchySnappableNew , KubernetesClusterDescendant {
   # ID of Protection Set on CDM.
@@ -61113,6 +61195,9 @@ type KubernetesProtectionSet implements HierarchyObject , HierarchySnappable , C
 
   # Object ID.
   id: UUID!
+
+  # Creation type of protection set.
+  creationType: KubernetesProtectionSetCreationType!
 
   # The name of the hierarchy object.
   name: String!
@@ -61325,6 +61410,20 @@ type KubernetesProtectionSetConnection {
 
   # Total number of KubernetesProtectionSet objects matching the request arguments.
   count: Int!
+}
+# Creation type of protection set.
+enum KubernetesProtectionSetCreationType {
+  # The protection set is created using API, the default type.
+  API
+
+  # The protection set is created automatically.
+  AUTO
+
+  # The protection set is created using Rubrik CRD.
+  CRD
+
+  # The protection set is created from the RSC UI.
+  RSC
 }
 # Wrapper around the KubernetesProtectionSet object. This wrapper is used for pagination.
 type KubernetesProtectionSetEdge {
@@ -62549,6 +62648,20 @@ input LsnRecoveryPointInput {
   # LSN of the recovery point.
   lsn: String!
 }
+# List M365 backup storage object restore points configuration.
+input M365BackupStorageObjectRestorePointsInput {
+  # RSC ID for workload.
+  objectId: UUID!
+
+  # Represents the time range filter.
+  rangeFilter: TimeSpanFilter!
+
+  # Represents the type of restore point.
+  restorePointTagType: [RestorePointTagType!]
+
+  # Represents the ordering of restore points.
+  sortOrder: SortOrder
+}
 # Microsoft 365 Backup Storage OneDrive.
 type M365BackupStorageOnedrive implements HierarchyObject , HierarchySnappable , PolarisHierarchyObject , PolarisHierarchySnappable , MicrosoftOnedrive {
   # Specifies whether the OneDrive is a relic.
@@ -62900,6 +63013,42 @@ type M365BackupStorageOrg implements MicrosoftOrg , HierarchyObject , PolarisHie
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
   rscNativeObjectPendingSla: CompactSlaDomain
+}
+# Represents the definitions of M365 backup storage object restore point.
+type M365BackupStorageRestorePoint {
+  # Represents id of restore point.
+  id: String!
+
+  # Represents the backup time of M365 backup storage object.
+  protectionDateTime: DateTime
+
+  # Represents the expiration time for M365 backup storage backup snapshot.
+  expirationDateTime: DateTime
+
+  # Represents the type of restore point.
+  type: RestorePointTagType!
+}
+# Paginated list of M365BackupStorageRestorePoint objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type M365BackupStorageRestorePointConnection {
+  # List of M365BackupStorageRestorePoint objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [M365BackupStorageRestorePointEdge!]!
+
+  # List of M365BackupStorageRestorePoint objects.
+  nodes: [M365BackupStorageRestorePoint!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of M365BackupStorageRestorePoint objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the M365BackupStorageRestorePoint object. This wrapper is used for pagination.
+type M365BackupStorageRestorePointEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual M365BackupStorageRestorePoint object wrapped by this edge.
+  node: M365BackupStorageRestorePoint!
 }
 # The cloud type for o365 subscription.
 enum M365Cloud {
@@ -73049,6 +73198,9 @@ type NasShare implements CdmHierarchyObject , HierarchyObject , NasSystemDescend
   # The NAS System to which this NAS Share belongs.
   nasSystem: NasSystem
 
+  # The NAS Volume to which this NAS Share belongs.
+  nasVolume: NasVolume
+
   # NAS Share Protection Fileset.
   primaryFileset: NasFileset
 
@@ -81707,6 +81859,16 @@ input ObjectTypeSummariesFilter {
 
   # Object types to filter.
   objectTypes: [DataGovObjectType!] = []
+}
+# Holds the configuration of the Okta integration.
+type OktaIntegrationConfig {
+  # The Okta tenant URL.
+  oktaTenantUrl: String!
+}
+# Holds the configuration of the Okta integration.
+input OktaIntegrationConfigInput {
+  # The Okta tenant URL.
+  oktaTenantUrl: String!
 }
 # Input for restore path pair.
 input OldRestorePathPairInput {
@@ -90589,6 +90751,17 @@ input RestorePathPairInput {
   # v6.0-v7.0: Original file path to be restored.
   # v8.0+: Path of the original file to be restored.
   path: String!
+}
+# Specifies the tag type of RestorePoints.
+enum RestorePointTagType {
+  # Represents fast restore point.
+  FAST
+
+  # UNSPECIFIED.
+  RESTORE_POINT_TAG_TYPE_UNSPECIFIED
+
+  # Represents standard restore point.
+  STANDARD
 }
 # Input for SAP HANA system storage restore.
 input RestoreSapHanaSystemStorageInput {
@@ -100202,6 +100375,14 @@ type TimeSeriesResult {
   timestamp: String!
   count: Long!
 }
+# Configuration for Time span filter.
+input TimeSpanFilter {
+  # Represents start time of range filter.
+  fromTime: DateTime
+
+  # Represents end time of range filter.
+  untilTime: DateTime
+}
 # Supported in v5.0+
 type TimeStat {
   # Required. Supported in v5.0+
@@ -100297,6 +100478,9 @@ enum TprReqStatus {
 enum TprRule {
   # The TPR rule is for assigning TPR roles to a user.
   ASSIGN_TPR_ROLE
+
+  # Quorum authorization is required for deleting data sources.
+  DELETE_DATA_SOURCE
 
   # The TPR rule is for deleting RCV locations.
   DELETE_RCV
@@ -110575,6 +110759,9 @@ type VsphereLiveMount {
 
   # Migrate datastore request id of the vSphere Live Mount.
   migrateDatastoreRequestId: String!
+
+  # Vcenter of the Live Mount.
+  vCenter: VsphereVcenter
 
   # Cluster id of the vSphere Live Mount.
   cluster: Cluster!

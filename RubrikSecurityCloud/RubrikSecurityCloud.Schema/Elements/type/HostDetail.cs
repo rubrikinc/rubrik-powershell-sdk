@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mssqlCbtDriverInstalled")]
         public System.Boolean? MssqlCbtDriverInstalled { get; set; }
 
+        //      C# -> System.String? MssqlSddCertificateId
+        // GraphQL -> mssqlSddCertificateId: String (scalar)
+        [JsonProperty("mssqlSddCertificateId")]
+        public System.String? MssqlSddCertificateId { get; set; }
+
         //      C# -> System.String? MssqlSddUsername
         // GraphQL -> mssqlSddUsername: String (scalar)
         [JsonProperty("mssqlSddUsername")]
@@ -115,6 +120,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsRefreshPaused = null,
         System.Boolean? IsRelic = null,
         System.Boolean? MssqlCbtDriverInstalled = null,
+        System.String? MssqlSddCertificateId = null,
         System.String? MssqlSddUsername = null,
         System.String? OracleQueryUser = null,
         System.String? OracleSysDbaUser = null,
@@ -151,6 +157,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MssqlCbtDriverInstalled != null ) {
             this.MssqlCbtDriverInstalled = MssqlCbtDriverInstalled;
+        }
+        if ( MssqlSddCertificateId != null ) {
+            this.MssqlSddCertificateId = MssqlSddCertificateId;
         }
         if ( MssqlSddUsername != null ) {
             this.MssqlSddUsername = MssqlSddUsername;
@@ -269,6 +278,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "mssqlCbtDriverInstalled\n" ;
             } else {
                 s += ind + "mssqlCbtDriverInstalled\n" ;
+            }
+        }
+        //      C# -> System.String? MssqlSddCertificateId
+        // GraphQL -> mssqlSddCertificateId: String (scalar)
+        if (this.MssqlSddCertificateId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mssqlSddCertificateId\n" ;
+            } else {
+                s += ind + "mssqlSddCertificateId\n" ;
             }
         }
         //      C# -> System.String? MssqlSddUsername
@@ -498,6 +516,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MssqlCbtDriverInstalled != null && ec.Excludes("mssqlCbtDriverInstalled",true))
         {
             this.MssqlCbtDriverInstalled = null;
+        }
+        //      C# -> System.String? MssqlSddCertificateId
+        // GraphQL -> mssqlSddCertificateId: String (scalar)
+        if (ec.Includes("mssqlSddCertificateId",true))
+        {
+            if(this.MssqlSddCertificateId == null) {
+
+                this.MssqlSddCertificateId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MssqlSddCertificateId != null && ec.Excludes("mssqlSddCertificateId",true))
+        {
+            this.MssqlSddCertificateId = null;
         }
         //      C# -> System.String? MssqlSddUsername
         // GraphQL -> mssqlSddUsername: String (scalar)

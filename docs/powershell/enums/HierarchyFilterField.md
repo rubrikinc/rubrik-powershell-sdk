@@ -296,3 +296,5 @@
 - RECOVERY_PLAN_SOURCE_LOCATION - Filter by recovery plan source location.
 - RECOVERY_PLAN_TARGET_LOCATION - Filter by recovery plan target location.
 - DOMAIN_HAS_FOREST - Filter domains by forest.
+- M365_BACKUP_STORAGE_PROTECTION_STATUS_MISMATCH - Filter objects with mismatched SLA Domain and backup storage protection
+ status.
