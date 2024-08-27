@@ -1,12 +1,11 @@
 # Changelog
 
-## ~ Upcoming Version ~
-
-New Features:
+## Version 1.9
 
 Fixes:
 
-Breaking Changes:
+- Get-RscFileSet : fix arg assignment in nested query
+  [#134](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/134)
 
 ## Version 1.8
 
