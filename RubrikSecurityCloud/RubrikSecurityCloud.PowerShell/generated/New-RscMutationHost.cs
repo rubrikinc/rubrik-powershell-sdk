@@ -177,6 +177,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			isOracleHost = $someBoolean
     /// 			# OPTIONAL
+    /// 			mssqlSddCertificateId = $someString
+    /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
     /// 			# OPTIONAL
     /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
@@ -289,6 +291,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			alias = $someString
     /// 			# OPTIONAL
     /// 			isOracleHost = $someBoolean
+    /// 			# OPTIONAL
+    /// 			mssqlSddCertificateId = $someString
     /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
     /// 			# OPTIONAL
@@ -412,6 +416,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				isUpdateCertAndAgentIdEnabled = $someBoolean
     /// 				# OPTIONAL
     /// 				isRefreshPaused = $someBoolean
+    /// 				# OPTIONAL
+    /// 				mssqlSddCertificateId = $someString
     /// 				# OPTIONAL
     /// 				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
     /// 				# OPTIONAL
@@ -781,6 +787,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			isOracleHost = $someBoolean
 			# OPTIONAL
+			mssqlSddCertificateId = $someString
+			# OPTIONAL
 			orgNetworkId = $someString
 			# OPTIONAL
 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
@@ -885,6 +893,8 @@ $query.Var.input = @{
 			alias = $someString
 			# OPTIONAL
 			isOracleHost = $someBoolean
+			# OPTIONAL
+			mssqlSddCertificateId = $someString
 			# OPTIONAL
 			orgNetworkId = $someString
 			# OPTIONAL
@@ -1000,6 +1010,8 @@ $query.Var.input = @{
 				isUpdateCertAndAgentIdEnabled = $someBoolean
 				# OPTIONAL
 				isRefreshPaused = $someBoolean
+				# OPTIONAL
+				mssqlSddCertificateId = $someString
 				# OPTIONAL
 				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
 				# OPTIONAL

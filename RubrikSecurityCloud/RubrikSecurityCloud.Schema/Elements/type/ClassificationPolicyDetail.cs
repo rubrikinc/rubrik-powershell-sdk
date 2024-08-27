@@ -95,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("creator")]
         public User? Creator { get; set; }
 
+        //      C# -> DataCategoryResult? DataCategoryResult
+        // GraphQL -> dataCategoryResult: DataCategoryResult (type)
+        [JsonProperty("dataCategoryResult")]
+        public DataCategoryResult? DataCategoryResult { get; set; }
+
         //      C# -> HierarchyObjectConnection? HierarchyObjectConnection
         // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)
         [JsonProperty("hierarchyObjectConnection")]
@@ -172,6 +177,7 @@ namespace RubrikSecurityCloud.Types
         List<Analyzer>? Analyzers = null,
         AssignmentResourceDetailsConnection? AssignmentResources = null,
         User? Creator = null,
+        DataCategoryResult? DataCategoryResult = null,
         HierarchyObjectConnection? HierarchyObjectConnection = null,
         List<ObjectStatus>? ObjectStatuses = null,
         List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists = null
@@ -221,6 +227,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Creator != null ) {
             this.Creator = Creator;
+        }
+        if ( DataCategoryResult != null ) {
+            this.DataCategoryResult = DataCategoryResult;
         }
         if ( HierarchyObjectConnection != null ) {
             this.HierarchyObjectConnection = HierarchyObjectConnection;
@@ -390,6 +399,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "creator" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> DataCategoryResult? DataCategoryResult
+        // GraphQL -> dataCategoryResult: DataCategoryResult (type)
+        if (this.DataCategoryResult != null) {
+            var fspec = this.DataCategoryResult.AsFieldSpec(conf.Child("dataCategoryResult"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "dataCategoryResult" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -698,6 +719,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Creator != null && ec.Excludes("creator",false))
         {
             this.Creator = null;
+        }
+        //      C# -> DataCategoryResult? DataCategoryResult
+        // GraphQL -> dataCategoryResult: DataCategoryResult (type)
+        if (ec.Includes("dataCategoryResult",false))
+        {
+            if(this.DataCategoryResult == null) {
+
+                this.DataCategoryResult = new DataCategoryResult();
+                this.DataCategoryResult.ApplyExploratoryFieldSpec(ec.NewChild("dataCategoryResult"));
+
+            } else {
+
+                this.DataCategoryResult.ApplyExploratoryFieldSpec(ec.NewChild("dataCategoryResult"));
+
+            }
+        }
+        else if (this.DataCategoryResult != null && ec.Excludes("dataCategoryResult",false))
+        {
+            this.DataCategoryResult = null;
         }
         //      C# -> HierarchyObjectConnection? HierarchyObjectConnection
         // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)

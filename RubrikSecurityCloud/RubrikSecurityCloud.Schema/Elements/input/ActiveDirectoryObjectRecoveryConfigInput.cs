@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clearUpAttrsIfNullInBackup")]
         public System.Boolean? ClearUpAttrsIfNullInBackup { get; set; }
 
+        //      C# -> System.String? AlternateDcId
+        // GraphQL -> alternateDcId: String (scalar)
+        [JsonProperty("alternateDcId")]
+        public System.String? AlternateDcId { get; set; }
+
         //      C# -> System.Boolean? ShouldCreateMissingParents
         // GraphQL -> shouldCreateMissingParents: Boolean (scalar)
         [JsonProperty("shouldCreateMissingParents")]

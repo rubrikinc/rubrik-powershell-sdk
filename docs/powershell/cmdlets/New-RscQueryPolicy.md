@@ -20,7 +20,7 @@ Returns active policies for an account.
 ### policy
 Returns detailed policy information.
 
-- There are 13 arguments.
+- There are 14 arguments.
     - policyId - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads used for filtering the query results.
     - sortBy - PolicyDetailsSortBy: Name of the column to sort result by.
@@ -30,6 +30,7 @@ Returns detailed policy information.
     - searchObjectName - System.String: Object name to search.
     - hierarchyAncestorIdFilter - System.String: Hierarchy ancestor ID.
     - policyAssignmentType - PolicyAssignmentType: Specifies whether the policy assignment type is direct or inherited.
+    - includeDataTypeHits - System.Boolean: Include data type hits.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.

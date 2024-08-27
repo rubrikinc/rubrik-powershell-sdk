@@ -61,7 +61,7 @@ Downloads the most recent full snapshot and the log snapshots taken after the fu
 ### downloadsnapshotv2
 Download Db2 database snapshot from archive
 
-Supported in v9.3
+Supported in v9.2+
 Downloads a specific Db2 database snapshot from the specified archival location.
 
 - There is a single argument of type DownloadDb2SnapshotV2Input.

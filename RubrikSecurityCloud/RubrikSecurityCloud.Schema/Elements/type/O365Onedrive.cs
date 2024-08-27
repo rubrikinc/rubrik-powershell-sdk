@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region O365Onedrive
  
-    public class O365Onedrive: BaseType, HierarchyObject, HierarchySnappable, O365OrgDescendant, O365UserDescendant, O365UserDescendantMetadata, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class O365Onedrive: BaseType, HierarchyObject, HierarchySnappable, MicrosoftOnedrive, O365OrgDescendant, O365UserDescendant, O365UserDescendantMetadata, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 

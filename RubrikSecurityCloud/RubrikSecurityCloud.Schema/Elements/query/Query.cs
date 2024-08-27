@@ -1267,6 +1267,24 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.Boolean? IsTriggerRcvGrsTprConfigured
+        // GraphQL -> isTriggerRcvGrsTprConfigured: Boolean! (scalar)
+        public static string IsTriggerRcvGrsTprConfigured(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "isTriggerRcvGrsTprConfigured" + args + "\n";
+        }
+        public static object IsTriggerRcvGrsTprConfiguredFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return true ;
+        }
+
         //      C# -> System.Boolean? IsVmwareManagementEnabled
         // GraphQL -> isVMwareManagementEnabled: Boolean! (scalar)
         public static string IsVmwareManagementEnabled(object fsObj)
@@ -5754,7 +5772,7 @@ namespace RubrikSecurityCloud.Types
         public static string CloudNativeSqlServerSetupScript(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "";
+            string args = "\n(\ncloudNativeObjectType: $cloudNativeObjectType\n)";
             return "cloudNativeSqlServerSetupScript" + args + "\n{\n" + fs + "}\n";
         }
         public static object CloudNativeSqlServerSetupScriptFieldSpec(ExplorationContext? ec=null)
@@ -11622,7 +11640,7 @@ namespace RubrikSecurityCloud.Types
         public static string Policy(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\npolicyId: $policyId\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nclusterIdsFilter: $clusterIdsFilter\nreplicationFilter: $replicationFilter\nsearchObjectName: $searchObjectName\nhierarchyAncestorIdFilter: $hierarchyAncestorIdFilter\npolicyAssignmentType: $policyAssignmentType\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\npolicyId: $policyId\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nclusterIdsFilter: $clusterIdsFilter\nreplicationFilter: $replicationFilter\nsearchObjectName: $searchObjectName\nhierarchyAncestorIdFilter: $hierarchyAncestorIdFilter\npolicyAssignmentType: $policyAssignmentType\nincludeDataTypeHits: $includeDataTypeHits\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "policy" + args + "\n{\n" + fs + "}\n";
         }
         public static object PolicyFieldSpec(ExplorationContext? ec=null)

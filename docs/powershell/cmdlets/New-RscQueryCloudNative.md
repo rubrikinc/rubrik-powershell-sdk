@@ -99,7 +99,7 @@ Details of the available snapshot types.
 ### sqlserversetupscript
 Returns the script to setup backup for a SQL Server database.
 
-- The sqlserversetupscript subcommand takes no arguments.
+- There is a single argument of type CloudNativeObjectType.
 - Returns CloudNativeSqlServerSetupScript.
 ### tagkeys
 List of cloud native tag keys matched by substring.

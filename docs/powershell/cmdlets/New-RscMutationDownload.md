@@ -24,7 +24,7 @@ Downloads a Microsoft Exchange database snapshot from the specified archival loc
 ### exchangesnapshotv2
 Download exchange database snapshot from archive
 
-Supported in v9.3
+Supported in v9.2+
 Downloads a Microsoft Exchange database snapshot from the specified archival location.
 
 - There is a single argument of type DownloadExchangeSnapshotV2Input.

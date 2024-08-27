@@ -46,3 +46,4 @@ Inventory Card options that the user can select as a workload.
 - POSTGRESQL - Inventory Card is PostgreSQL.
 - SALESFORCE - Inventory card is Salesforce.
 - MYSQL - Inventory Card is MySQL.
+- M365_BACKUP_STORAGE - Inventory Card is Microsoft 365 Backup Storage.

@@ -1,4 +1,6 @@
 ### ClassificationPolicyDetail
+Detailed view of a data classification policy.
+
 - id: System.String
 - name: System.String
 - description: System.String
@@ -9,6 +11,8 @@
 - hierarchyObjectIds: list of System.Strings
 - analyzers: list of Analyzers
 - deletable: System.Boolean
+- dataCategoryResult: DataCategoryResult
+  - Data category classification result.
 - creator: User
 - hierarchyObjectConnection: HierarchyObjectConnection
   - Connection on hierarchy objects.

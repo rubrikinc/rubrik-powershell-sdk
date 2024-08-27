@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20240812-12" ;
+        public static string GraphqlSchemaVersion = "v20240819-24" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -69,6 +69,8 @@ namespace RubrikSecurityCloud.Types
             KubernetesClusterDescendant,
             ManagedVolumeDescendantType,
             ManagedVolumePhysicalChildType,
+            MicrosoftOnedrive,
+            MicrosoftOrg,
             MongoCollectionSetDescendantType,
             MongoCollectionSetPhysicalChildType,
             MongoDatabaseDescendantType,
@@ -799,6 +801,8 @@ namespace RubrikSecurityCloud.Types
             DailyAnalysisDetails,
             DailyRecurrencePattern,
             DailySnapshotSchedule,
+            DataCategoryHits,
+            DataCategoryResult,
             DataCenterSummary,
             DataGuardGroupMember,
             DataLocation,
@@ -806,6 +810,7 @@ namespace RubrikSecurityCloud.Types
             Datastore,
             DatastoreFreespaceThresholdType,
             DataStoreSummary,
+            DataTypeHits,
             DataTypeResult,
             DataTypeStats,
             DayOfWeekOpt,
@@ -1274,6 +1279,8 @@ namespace RubrikSecurityCloud.Types
             LockoutState,
             LogConfigResult,
             LookupAccountReply,
+            M365BackupStorageOnedrive,
+            M365BackupStorageOrg,
             M365LicenseEntitlementReply,
             M365OrgBackupLocations,
             M365OrgOperationModes,
@@ -1659,8 +1666,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -1696,6 +1703,7 @@ namespace RubrikSecurityCloud.Types
             O365UserDescendantMetadataConnection,
             O365UserDescendantMetadataEdge,
             O365UserEdge,
+            O365WorkloadSummary,
             OauthAccessToken,
             OauthCodesForEdgeRegReply,
             OauthRequestPayload,
@@ -3473,6 +3481,7 @@ namespace RubrikSecurityCloud.Types
             MapAzureCloudAccountToPersistentStorageLocationInput,
             MapCloudAccountExocomputeAccountInput,
             MarkAgentSecondaryCertificateInput,
+            MigrateCloudClusterDisksInput,
             MigrateNutanixMountV1Input,
             MinuteSnapshotScheduleInput,
             MissedSnapshotFilterInput,
@@ -4671,6 +4680,7 @@ namespace RubrikSecurityCloud.Types
             issues,
             isTotpAckNecessaryForCluster,
             isTotpMandatoryInTargetVersion,
+            isTriggerRcvGrsTprConfigured,
             isUpgradeAvailable,
             isUpgradeRecommended,
             isVMwareManagementEnabled,
@@ -5456,6 +5466,7 @@ namespace RubrikSecurityCloud.Types
             mapAzureCloudAccountToPersistentStorageLocation,
             mapCloudAccountExocomputeAccount,
             markAgentSecondaryCertificate,
+            migrateCloudClusterDisks,
             migrateNutanixMountV1,
             modifyActiveDirectoryLiveMount,
             modifyEventDigestBatch,
@@ -6948,6 +6959,8 @@ namespace RubrikSecurityCloud.Types
                     "KubernetesCluster",
                     "KubernetesProtectionSet",
                     "LinuxFileset",
+                    "M365BackupStorageOnedrive",
+                    "M365BackupStorageOrg",
                     "ManagedVolume",
                     "ManagedVolumeMount",
                     "MongoCollection",
@@ -7018,6 +7031,7 @@ namespace RubrikSecurityCloud.Types
                     "K8sNamespace",
                     "KubernetesProtectionSet",
                     "LinuxFileset",
+                    "M365BackupStorageOnedrive",
                     "MssqlDatabase",
                     "NasFileset",
                     "NutanixVm",
@@ -7145,6 +7159,20 @@ namespace RubrikSecurityCloud.Types
                     new HashSet<string> {
                     "ManagedVolumeMount",
                     "ManagedVolumePhysicalChildType",
+                    }
+                },
+                {
+                    "MicrosoftOnedrive",
+                    new HashSet<string> {
+                    "M365BackupStorageOnedrive",
+                    "O365Onedrive",
+                    }
+                },
+                {
+                    "MicrosoftOrg",
+                    new HashSet<string> {
+                    "M365BackupStorageOrg",
+                    "O365Org",
                     }
                 },
                 {
@@ -7566,6 +7594,8 @@ namespace RubrikSecurityCloud.Types
                     "GcpNativeProject",
                     "K8sCluster",
                     "K8sNamespace",
+                    "M365BackupStorageOnedrive",
+                    "M365BackupStorageOrg",
                     "MongodbCollection",
                     "MongodbDatabase",
                     "MongodbSource",
@@ -7597,6 +7627,7 @@ namespace RubrikSecurityCloud.Types
                     "GcpNativeDisk",
                     "GcpNativeGceInstance",
                     "K8sNamespace",
+                    "M365BackupStorageOnedrive",
                     "O365Calendar",
                     "O365Mailbox",
                     "O365Onedrive",
@@ -9124,6 +9155,7 @@ namespace RubrikSecurityCloud.Types
             isSfdcReachable,
             isTotpAckNecessaryForCluster,
             isTotpMandatoryInTargetVersion,
+            isTriggerRcvGrsTprConfigured,
             isUpgradeAvailable,
             isUpgradeRecommended,
             isVMwareManagementEnabled,
@@ -9178,6 +9210,7 @@ namespace RubrikSecurityCloud.Types
             markAgentSecondaryCertificate,
             maxProtectedAppsCount,
             mfaSetting,
+            migrateCloudClusterDisks,
             migrateNutanixMountV1,
             minimumCdmVersionForFeatureSet,
             modifyActiveDirectoryLiveMount,
@@ -16587,6 +16620,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.isTriggerRcvGrsTprConfigured,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRcv",
+                        cmdletSwitchName: "IsTriggerGrsTprConfigured",
+                        gqlRootFieldName: "isTriggerRcvGrsTprConfigured"
+                    )
+                },
+                {
                     GqlRootFieldName.isUpgradeAvailable,
                     new RscOp(
                         cmdletName: "New-RscQueryMisc",
@@ -17016,6 +17057,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMisc",
                         cmdletSwitchName: "MfaSetting",
                         gqlRootFieldName: "mfaSetting"
+                    )
+                },
+                {
+                    GqlRootFieldName.migrateCloudClusterDisks,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "MigrateCloudClusterDisks",
+                        gqlRootFieldName: "migrateCloudClusterDisks"
                     )
                 },
                 {
@@ -25790,6 +25839,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.isTotpMandatoryInTargetVersion
                 },
                 {
+                    "New-RscQueryRcv -Op IsTriggerGrsTprConfigured",
+                    GqlRootFieldName.isTriggerRcvGrsTprConfigured
+                },
+                {
                     "New-RscQueryMisc -Op IsUpgradeAvailable",
                     GqlRootFieldName.isUpgradeAvailable
                 },
@@ -26004,6 +26057,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryMisc -Op MfaSetting",
                     GqlRootFieldName.mfaSetting
+                },
+                {
+                    "New-RscMutationCluster -Op MigrateCloudClusterDisks",
+                    GqlRootFieldName.migrateCloudClusterDisks
                 },
                 {
                     "New-RscMutationNutanix -Op MigrateMountV1",
@@ -29453,6 +29510,7 @@ namespace RubrikSecurityCloud.Types
                         "isSfdcReachable",
                         "isTotpAckNecessaryForCluster",
                         "isTotpMandatoryInTargetVersion",
+                        "isTriggerRcvGrsTprConfigured",
                         "isVMwareManagementEnabled",
                         "patchAwsAuthenticationServerBasedCloudAccount",
                         "patchAwsIamUserBasedCloudAccount",
@@ -29603,6 +29661,7 @@ namespace RubrikSecurityCloud.Types
                         "addNodesToCloudCluster",
                         "createAwsCluster",
                         "createAzureCluster",
+                        "migrateCloudClusterDisks",
                         "recoverCloudCluster",
                         "removeClusterNodes",
                     }
@@ -33750,6 +33809,7 @@ namespace RubrikSecurityCloud.Types
                         "orgs",
                         "physicalHosts",
                         "policies",
+                        "policy",
                         "policyObj",
                         "policyObjs",
                         "ransomwareDetectionWorkloadLocations",
@@ -34005,6 +34065,10 @@ namespace RubrikSecurityCloud.Types
                         "allCloudNativeLabelValues",
                         "checkCloudNativeLabelRuleNameUniqueness",
                         "cloudNativeLabelRules",
+                    }
+                },
+                {   "CloudNativeObjectType", new List<string> {
+                        "cloudNativeSqlServerSetupScript",
                     }
                 },
                 {   "CloudNativeTagObjectType", new List<string> {
@@ -35978,6 +36042,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "MarkAgentSecondaryCertificateInput", new List<string> {
                         "markAgentSecondaryCertificate",
+                    }
+                },
+                {   "MigrateCloudClusterDisksInput", new List<string> {
+                        "migrateCloudClusterDisks",
                     }
                 },
                 {   "MigrateNutanixMountV1Input", new List<string> {
@@ -39482,6 +39550,7 @@ namespace RubrikSecurityCloud.Types
                 { "isSfdcReachable", "Boolean"},
                 { "isTotpAckNecessaryForCluster", "Boolean"},
                 { "isTotpMandatoryInTargetVersion", "Boolean"},
+                { "isTriggerRcvGrsTprConfigured", "Boolean"},
                 { "isVMwareManagementEnabled", "Boolean"},
                 { "patchAwsAuthenticationServerBasedCloudAccount", "Boolean"},
                 { "patchAwsIamUserBasedCloudAccount", "Boolean"},
@@ -39539,6 +39608,7 @@ namespace RubrikSecurityCloud.Types
                 { "addNodesToCloudCluster", "CcProvisionJobReply"},
                 { "createAwsCluster", "CcProvisionJobReply"},
                 { "createAzureCluster", "CcProvisionJobReply"},
+                { "migrateCloudClusterDisks", "CcProvisionJobReply"},
                 { "recoverCloudCluster", "CcProvisionJobReply"},
                 { "removeClusterNodes", "CcProvisionJobReply"},
                 { "nasTopLevelDescendants", "CdmHierarchyObjectConnection"},
@@ -41429,6 +41499,7 @@ namespace RubrikSecurityCloud.Types
                     "IsTotpAckNecessary",
                     "LicensesForClusterProductSummary",
                     "List",
+                    "MigrateCloudClusterDisks",
                     "Missing",
                     "NetworkInterfaces",
                     "Nodes",
@@ -42481,6 +42552,7 @@ namespace RubrikSecurityCloud.Types
                     "ApprovePrivateEndpoint",
                     "CreateLocationsFromTemplate",
                     "CreatePrivateEndpointApprovalRequest",
+                    "IsTriggerGrsTprConfigured",
                     "PrivateEndpointConnections",
                     "UpdateTarget",
                     }

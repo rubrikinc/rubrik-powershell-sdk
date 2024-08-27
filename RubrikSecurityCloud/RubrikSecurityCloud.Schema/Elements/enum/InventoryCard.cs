@@ -75,6 +75,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LINUX_UNIX_HOSTS_CDM")]
         LINUX_UNIX_HOSTS_CDM,
 
+        [EnumMember(Value = "M365_BACKUP_STORAGE")]
+        M365_BACKUP_STORAGE,
+
         [EnumMember(Value = "MANAGED_VOLUMES")]
         MANAGED_VOLUMES,
 

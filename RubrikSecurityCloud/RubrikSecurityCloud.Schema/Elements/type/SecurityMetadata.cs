@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("highSensitiveHits")]
         public System.Int64? HighSensitiveHits { get; set; }
 
+        //      C# -> System.Boolean? IsLaminarEnabled
+        // GraphQL -> isLaminarEnabled: Boolean! (scalar)
+        [JsonProperty("isLaminarEnabled")]
+        public System.Boolean? IsLaminarEnabled { get; set; }
+
         //      C# -> System.Int64? LowSensitiveHits
         // GraphQL -> lowSensitiveHits: Long! (scalar)
         [JsonProperty("lowSensitiveHits")]
@@ -52,6 +57,7 @@ namespace RubrikSecurityCloud.Types
     public SecurityMetadata Set(
         SensitivityStatus? SensitivityStatus = null,
         System.Int64? HighSensitiveHits = null,
+        System.Boolean? IsLaminarEnabled = null,
         System.Int64? LowSensitiveHits = null,
         System.Int64? MediumSensitiveHits = null
     ) 
@@ -61,6 +67,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HighSensitiveHits != null ) {
             this.HighSensitiveHits = HighSensitiveHits;
+        }
+        if ( IsLaminarEnabled != null ) {
+            this.IsLaminarEnabled = IsLaminarEnabled;
         }
         if ( LowSensitiveHits != null ) {
             this.LowSensitiveHits = LowSensitiveHits;
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "highSensitiveHits\n" ;
             } else {
                 s += ind + "highSensitiveHits\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsLaminarEnabled
+        // GraphQL -> isLaminarEnabled: Boolean! (scalar)
+        if (this.IsLaminarEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isLaminarEnabled\n" ;
+            } else {
+                s += ind + "isLaminarEnabled\n" ;
             }
         }
         //      C# -> System.Int64? LowSensitiveHits
@@ -158,6 +176,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.HighSensitiveHits != null && ec.Excludes("highSensitiveHits",true))
         {
             this.HighSensitiveHits = null;
+        }
+        //      C# -> System.Boolean? IsLaminarEnabled
+        // GraphQL -> isLaminarEnabled: Boolean! (scalar)
+        if (ec.Includes("isLaminarEnabled",true))
+        {
+            if(this.IsLaminarEnabled == null) {
+
+                this.IsLaminarEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsLaminarEnabled != null && ec.Excludes("isLaminarEnabled",true))
+        {
+            this.IsLaminarEnabled = null;
         }
         //      C# -> System.Int64? LowSensitiveHits
         // GraphQL -> lowSensitiveHits: Long! (scalar)

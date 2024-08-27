@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? LogicAppArmTemplate
+        // GraphQL -> logicAppArmTemplate: String! (scalar)
+        [JsonProperty("logicAppArmTemplate")]
+        public System.String? LogicAppArmTemplate { get; set; }
+
         //      C# -> System.String? Script
         // GraphQL -> script: String! (scalar)
         [JsonProperty("script")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CloudNativeSqlServerSetupScript Set(
+        System.String? LogicAppArmTemplate = null,
         System.String? Script = null
     ) 
     {
+        if ( LogicAppArmTemplate != null ) {
+            this.LogicAppArmTemplate = LogicAppArmTemplate;
+        }
         if ( Script != null ) {
             this.Script = Script;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? LogicAppArmTemplate
+        // GraphQL -> logicAppArmTemplate: String! (scalar)
+        if (this.LogicAppArmTemplate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "logicAppArmTemplate\n" ;
+            } else {
+                s += ind + "logicAppArmTemplate\n" ;
+            }
+        }
         //      C# -> System.String? Script
         // GraphQL -> script: String! (scalar)
         if (this.Script != null) {
@@ -71,6 +89,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? LogicAppArmTemplate
+        // GraphQL -> logicAppArmTemplate: String! (scalar)
+        if (ec.Includes("logicAppArmTemplate",true))
+        {
+            if(this.LogicAppArmTemplate == null) {
+
+                this.LogicAppArmTemplate = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogicAppArmTemplate != null && ec.Excludes("logicAppArmTemplate",true))
+        {
+            this.LogicAppArmTemplate = null;
+        }
         //      C# -> System.String? Script
         // GraphQL -> script: String! (scalar)
         if (ec.Includes("script",true))

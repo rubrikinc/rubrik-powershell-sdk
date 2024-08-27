@@ -504,6 +504,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LOCATION")]
         LOCATION,
 
+        [EnumMember(Value = "M365_BACKUP_STORAGE_PROTECTION_STATUS_MISMATCH")]
+        M365_BACKUP_STORAGE_PROTECTION_STATUS_MISMATCH,
+
         [EnumMember(Value = "M365_PREFERRED_DATA_LOCATION")]
         M365_PREFERRED_DATA_LOCATION,
 

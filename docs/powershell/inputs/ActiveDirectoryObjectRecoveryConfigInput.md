@@ -13,6 +13,9 @@ Supported in v9.0+
 - clearUpAttrsIfNullInBackup: System.Boolean
   - Supported in v9.0+
       Specifies whether to remove the attribute if it is not present in the backup copy but is present in the Active Directory live copy.
+- alternateDcId: System.String
+  - Supported in v9.2+
+      Specify the Domain Controller ID for performing this restore on the alternate domain controller.
 - shouldCreateMissingParents: System.Boolean
   - Supported in v9.0+
       Whether to restore the parent objects of the provided Distinguished Name Tag if the parent objects are absent.
@@ -21,7 +24,7 @@ Supported in v9.0+
       ID of the archival or replication location.
 - hostId: System.String
   - Supported in v9.2+
-      Specify the Host ID for performing this restore on the alternate domain controller.
+      Deprecated - Specify the Host ID for performing this restore on the alternate domain controller. Use alternateDcId instead.
 - nameConflict: ActiveDirectoryObjectNameConflictOption
   - Supported in v9.0+
       Behavior to be followed when an object name conflicts with an existing object in Active Directory.
