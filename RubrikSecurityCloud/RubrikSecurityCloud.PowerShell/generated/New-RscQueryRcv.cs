@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 3
+    /// Create a new RscQuery object for any of the 4
     /// operations in the 'RCV' API domain:
-    /// AccountEntitlement, AccountEntitlements, or PrivateEndpointConnections.
+    /// AccountEntitlement, AccountEntitlements, IsTriggerGrsTprConfigured, or PrivateEndpointConnections.
     /// </summary>
     /// <description>
     /// New-RscQueryRcv creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 3 operations
+    /// There are 4 operations
     /// in the 'RCV' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AccountEntitlement, AccountEntitlements, or PrivateEndpointConnections.
+    /// one of: AccountEntitlement, AccountEntitlements, IsTriggerGrsTprConfigured, or PrivateEndpointConnections.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -131,6 +131,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the IsTriggerGrsTprConfigured operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: IsTriggerGrsTprConfigured
+    /// 
+    /// $query = New-RscQueryRcv -IsTriggerGrsTprConfigured
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the PrivateEndpointConnections operation
     /// of the 'RCV' API domain.
     /// <code>
@@ -176,6 +203,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "AccountEntitlement",
                 "AccountEntitlements",
+                "IsTriggerGrsTprConfigured",
                 "PrivateEndpointConnections",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -197,6 +225,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "AccountEntitlements":
                         this.ProcessRecord_AccountEntitlements();
+                        break;
+                    case "IsTriggerGrsTprConfigured":
+                        this.ProcessRecord_IsTriggerGrsTprConfigured();
                         break;
                     case "PrivateEndpointConnections":
                         this.ProcessRecord_PrivateEndpointConnections();
@@ -227,6 +258,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AccountEntitlements";
             // Create new graphql operation allRcvAccountEntitlements
             InitQueryAllRcvAccountEntitlements();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // isTriggerRcvGrsTprConfigured.
+        internal void ProcessRecord_IsTriggerGrsTprConfigured()
+        {
+            this._logger.name += " -IsTriggerGrsTprConfigured";
+            // Create new graphql operation isTriggerRcvGrsTprConfigured
+            InitQueryIsTriggerRcvGrsTprConfigured();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -271,6 +311,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AllRcvAccountEntitlements",
                 Query.AllRcvAccountEntitlements,
                 Query.AllRcvAccountEntitlementsFieldSpec,
+                @""
+            );
+        }
+
+        // Create new GraphQL Query:
+        // isTriggerRcvGrsTprConfigured: Boolean!
+        internal void InitQueryIsTriggerRcvGrsTprConfigured()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryIsTriggerRcvGrsTprConfigured",
+                "",
+                "System.Boolean",
+                Query.IsTriggerRcvGrsTprConfigured,
+                Query.IsTriggerRcvGrsTprConfiguredFieldSpec,
                 @""
             );
         }

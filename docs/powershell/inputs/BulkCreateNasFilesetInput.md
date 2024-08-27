@@ -5,6 +5,10 @@ Supported in v7.0+
   - Supported in v7.0+
 - isPassthrough: System.Boolean
   - Supported in v7.0+
+- snapMirrorLabelForFullBackup: System.String
+  - 
+- snapMirrorLabelForIncrementalBackup: System.String
+  - 
 - filesetTemplate: FilesetTemplateCreateInput
   - Required. Supported in v7.0+
       Fileset Template object.

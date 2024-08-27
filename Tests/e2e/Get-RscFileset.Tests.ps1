@@ -6,8 +6,6 @@ BeforeAll {
     . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
-# TODO: SPARK-225906 fix this test
-return
 
 Describe -Name 'Get-RscFileset' -Tag 'Public' -Fixture{
     #Fileset by  FilesetId tests
@@ -18,6 +16,25 @@ Describe -Name 'Get-RscFileset' -Tag 'Public' -Fixture{
         }
     }
 
+    Context -Name "Call with HostId" {
+
+        It -Name "First 3 Windows Hosts from Get-RscHost" -Test {
+            $hosts = Get-RscHost -OsType Windows -First 3
+            # Bypass the test if there are no Windows hosts
+            if ($hosts.Count -eq 0) {
+                Skip "No Windows hosts found"
+            }
+            # for each host, get the filesets
+            $hosts | ForEach-Object {
+                $hostId = $_.Id
+                Get-RscFileset -HostId $hostId
+            }
+        }
+    }
+
+    # TODO: SPARK-225906 fix this test
+    return
+
     #Query tests
     Context -Name 'Query ParameterSet Validation' {
 
@@ -26,6 +43,7 @@ Describe -Name 'Get-RscFileset' -Tag 'Public' -Fixture{
             { New-Object PSObject -Property @{"Id"="0058bb59-adc4-598e-972a-ecd702624c7a"} | Get-RscFileset } | 
                 Should -Not -Throw
         }
+
 
         It -Name 'Parameter HostId(alias: Id) cannot be $null' -Test {
             { Get-RscFileset -HostId $null} |

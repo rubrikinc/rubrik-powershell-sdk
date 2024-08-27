@@ -11,7 +11,7 @@ Supported in v5.0+
   - Supported in v5.0+
       Network share ID.
 - excludePaths: list of System.Strings
-  - Supported in v9.3
+  - Supported in v9.2+
       Optional field which excludes the paths specified during recovery.
 - shouldRecreateDirectoryStructure: System.Boolean
   - Supported in v8.1, v9.1+

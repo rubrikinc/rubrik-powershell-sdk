@@ -10,6 +10,11 @@ Rubrik Cloud Vault (RCV) account entitlements with their respective order number
 
 - The accountentitlements subcommand takes no arguments.
 - Returns AllRcvAccountEntitlements.
+### istriggergrstprconfigured
+Verify whether the trigger RCV GRS failover quorum authorization policy is set.
+
+- The istriggergrstprconfigured subcommand takes no arguments.
+- Returns System.Boolean.
 ### privateendpointconnections
 Get private endpoint connection approval request.
 

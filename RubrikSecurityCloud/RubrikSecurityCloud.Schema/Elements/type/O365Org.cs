@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region O365Org
  
-    public class O365Org: BaseType, HierarchyObject, PolarisHierarchyObject
+    public class O365Org: BaseType, HierarchyObject, MicrosoftOrg, PolarisHierarchyObject
     {
         #region members
 
@@ -80,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
+
+        //      C# -> System.Int32? OnDemandSnapshotCount
+        // GraphQL -> onDemandSnapshotCount: Int! (scalar)
+        [JsonProperty("onDemandSnapshotCount")]
+        public System.Int32? OnDemandSnapshotCount { get; set; }
 
         //      C# -> System.Int32? Past1DayMailboxComplianceCount
         // GraphQL -> past1DayMailboxComplianceCount: Int! (scalar)
@@ -171,6 +176,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> PolarisSnapshot? NewestIndexedSnapshot
+        // GraphQL -> newestIndexedSnapshot: PolarisSnapshot (type)
+        [JsonProperty("newestIndexedSnapshot")]
+        public PolarisSnapshot? NewestIndexedSnapshot { get; set; }
+
+        //      C# -> PolarisSnapshot? NewestSnapshot
+        // GraphQL -> newestSnapshot: PolarisSnapshot (type)
+        [JsonProperty("newestSnapshot")]
+        public PolarisSnapshot? NewestSnapshot { get; set; }
+
+        //      C# -> PolarisSnapshot? OldestSnapshot
+        // GraphQL -> oldestSnapshot: PolarisSnapshot (type)
+        [JsonProperty("oldestSnapshot")]
+        public PolarisSnapshot? OldestSnapshot { get; set; }
+
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         [JsonProperty("physicalPath")]
@@ -191,10 +211,35 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("securityMetadata")]
         public SecurityMetadata? SecurityMetadata { get; set; }
 
+        //      C# -> PolarisSnapshotConnection? SnapshotConnection
+        // GraphQL -> snapshotConnection: PolarisSnapshotConnection (type)
+        [JsonProperty("snapshotConnection")]
+        public PolarisSnapshotConnection? SnapshotConnection { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
         public SnapshotDistribution? SnapshotDistribution { get; set; }
+
+        //      C# -> PolarisSnapshotGroupByConnection? SnapshotGroupByConnection
+        // GraphQL -> snapshotGroupByConnection: PolarisSnapshotGroupByConnection (type)
+        [JsonProperty("snapshotGroupByConnection")]
+        public PolarisSnapshotGroupByConnection? SnapshotGroupByConnection { get; set; }
+
+        //      C# -> PolarisSnapshotGroupByNewConnection? SnapshotGroupByNewConnection
+        // GraphQL -> snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection (type)
+        [JsonProperty("snapshotGroupByNewConnection")]
+        public PolarisSnapshotGroupByNewConnection? SnapshotGroupByNewConnection { get; set; }
+
+        //      C# -> GenericSnapshotConnection? WorkloadSnapshotConnection
+        // GraphQL -> workloadSnapshotConnection: GenericSnapshotConnection (type)
+        [JsonProperty("workloadSnapshotConnection")]
+        public GenericSnapshotConnection? WorkloadSnapshotConnection { get; set; }
+
+        //      C# -> List<O365WorkloadSummary>? WorkloadSummary
+        // GraphQL -> workloadSummary: [O365WorkloadSummary!]! (type)
+        [JsonProperty("workloadSummary")]
+        public List<O365WorkloadSummary>? WorkloadSummary { get; set; }
 
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
@@ -206,6 +251,16 @@ namespace RubrikSecurityCloud.Types
         public RscGqlVars ChildConnection { get; set; }
 
         public RscGqlVars SearchDescendantConnection { get; set; }
+
+        public RscGqlVars SnapshotConnection { get; set; }
+
+        public RscGqlVars SnapshotGroupByConnection { get; set; }
+
+        public RscGqlVars SnapshotGroupByNewConnection { get; set; }
+
+        public RscGqlVars WorkloadSnapshotConnection { get; set; }
+
+        public RscGqlVars WorkloadSummary { get; set; }
 
 
         public InlineVars() {
@@ -227,6 +282,58 @@ namespace RubrikSecurityCloud.Types
                 };
             this.SearchDescendantConnection =
                 new RscGqlVars(null, searchDescendantConnectionArgs, null, true);
+            Tuple<string, string>[] snapshotConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("filter", "PolarisSnapshotFilterInput"),
+                    Tuple.Create("sortBy", "PolarisSnapshotSortByEnum"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                };
+            this.SnapshotConnection =
+                new RscGqlVars(null, snapshotConnectionArgs, null, true);
+            Tuple<string, string>[] snapshotGroupByConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("filter", "PolarisSnapshotFilterInput"),
+                    Tuple.Create("groupBy", "PolarisSnapshotGroupByEnum!"),
+                };
+            this.SnapshotGroupByConnection =
+                new RscGqlVars(null, snapshotGroupByConnectionArgs, null, true);
+            Tuple<string, string>[] snapshotGroupByNewConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("snapshotFilter", "[PolarisSnapshotFilterNewInput!]!"),
+                    Tuple.Create("snapshotGroupBy", "SnapshotGroupByTime!"),
+                };
+            this.SnapshotGroupByNewConnection =
+                new RscGqlVars(null, snapshotGroupByNewConnectionArgs, null, true);
+            Tuple<string, string>[] workloadSnapshotConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("workloadId", "String!"),
+                    Tuple.Create("snapshotFilter", "[SnapshotQueryFilterInput!]"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("sortBy", "SnapshotQuerySortByField"),
+                    Tuple.Create("timeRange", "TimeRangeInput"),
+                    Tuple.Create("ignoreActiveWorkloadCheck", "Boolean"),
+                };
+            this.WorkloadSnapshotConnection =
+                new RscGqlVars(null, workloadSnapshotConnectionArgs, null, true);
+            Tuple<string, string>[] workloadSummaryArgs = {
+                    Tuple.Create("workloadTypes", "[ManagedObjectType!]!"),
+                };
+            this.WorkloadSummary =
+                new RscGqlVars(null, workloadSummaryArgs, null, true);
         }
     }
 
@@ -252,6 +359,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
+        System.Int32? OnDemandSnapshotCount = null,
         System.Int32? Past1DayMailboxComplianceCount = null,
         System.Int32? Past1DayMailboxOutOfComplianceCount = null,
         System.Int32? Past1DayOnedriveComplianceCount = null,
@@ -270,11 +378,19 @@ namespace RubrikSecurityCloud.Types
         O365UserConnection? ChildConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
+        PolarisSnapshot? NewestIndexedSnapshot = null,
+        PolarisSnapshot? NewestSnapshot = null,
+        PolarisSnapshot? OldestSnapshot = null,
         List<PathNode>? PhysicalPath = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
         O365OrgDescendantConnection? SearchDescendantConnection = null,
         SecurityMetadata? SecurityMetadata = null,
-        SnapshotDistribution? SnapshotDistribution = null
+        PolarisSnapshotConnection? SnapshotConnection = null,
+        SnapshotDistribution? SnapshotDistribution = null,
+        PolarisSnapshotGroupByConnection? SnapshotGroupByConnection = null,
+        PolarisSnapshotGroupByNewConnection? SnapshotGroupByNewConnection = null,
+        GenericSnapshotConnection? WorkloadSnapshotConnection = null,
+        List<O365WorkloadSummary>? WorkloadSummary = null
     ) 
     {
         if ( AuthorizedOperations != null ) {
@@ -312,6 +428,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
+        }
+        if ( OnDemandSnapshotCount != null ) {
+            this.OnDemandSnapshotCount = OnDemandSnapshotCount;
         }
         if ( Past1DayMailboxComplianceCount != null ) {
             this.Past1DayMailboxComplianceCount = Past1DayMailboxComplianceCount;
@@ -367,6 +486,15 @@ namespace RubrikSecurityCloud.Types
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
         }
+        if ( NewestIndexedSnapshot != null ) {
+            this.NewestIndexedSnapshot = NewestIndexedSnapshot;
+        }
+        if ( NewestSnapshot != null ) {
+            this.NewestSnapshot = NewestSnapshot;
+        }
+        if ( OldestSnapshot != null ) {
+            this.OldestSnapshot = OldestSnapshot;
+        }
         if ( PhysicalPath != null ) {
             this.PhysicalPath = PhysicalPath;
         }
@@ -379,8 +507,23 @@ namespace RubrikSecurityCloud.Types
         if ( SecurityMetadata != null ) {
             this.SecurityMetadata = SecurityMetadata;
         }
+        if ( SnapshotConnection != null ) {
+            this.SnapshotConnection = SnapshotConnection;
+        }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
+        }
+        if ( SnapshotGroupByConnection != null ) {
+            this.SnapshotGroupByConnection = SnapshotGroupByConnection;
+        }
+        if ( SnapshotGroupByNewConnection != null ) {
+            this.SnapshotGroupByNewConnection = SnapshotGroupByNewConnection;
+        }
+        if ( WorkloadSnapshotConnection != null ) {
+            this.WorkloadSnapshotConnection = WorkloadSnapshotConnection;
+        }
+        if ( WorkloadSummary != null ) {
+            this.WorkloadSummary = WorkloadSummary;
         }
         return this;
     }
@@ -514,6 +657,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "numWorkloadDescendants\n" ;
             } else {
                 s += ind + "numWorkloadDescendants\n" ;
+            }
+        }
+        //      C# -> System.Int32? OnDemandSnapshotCount
+        // GraphQL -> onDemandSnapshotCount: Int! (scalar)
+        if (this.OnDemandSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "onDemandSnapshotCount\n" ;
+            } else {
+                s += ind + "onDemandSnapshotCount\n" ;
             }
         }
         //      C# -> System.Int32? Past1DayMailboxComplianceCount
@@ -690,6 +842,42 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> PolarisSnapshot? NewestIndexedSnapshot
+        // GraphQL -> newestIndexedSnapshot: PolarisSnapshot (type)
+        if (this.NewestIndexedSnapshot != null) {
+            var fspec = this.NewestIndexedSnapshot.AsFieldSpec(conf.Child("newestIndexedSnapshot"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newestIndexedSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> PolarisSnapshot? NewestSnapshot
+        // GraphQL -> newestSnapshot: PolarisSnapshot (type)
+        if (this.NewestSnapshot != null) {
+            var fspec = this.NewestSnapshot.AsFieldSpec(conf.Child("newestSnapshot"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> PolarisSnapshot? OldestSnapshot
+        // GraphQL -> oldestSnapshot: PolarisSnapshot (type)
+        if (this.OldestSnapshot != null) {
+            var fspec = this.OldestSnapshot.AsFieldSpec(conf.Child("oldestSnapshot"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "oldestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         if (this.PhysicalPath != null) {
@@ -738,6 +926,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> PolarisSnapshotConnection? SnapshotConnection
+        // GraphQL -> snapshotConnection: PolarisSnapshotConnection (type)
+        if (this.SnapshotConnection != null) {
+            var fspec = this.SnapshotConnection.AsFieldSpec(conf.Child("snapshotConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotConnection" + "\n(" + this.Vars.SnapshotConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
@@ -747,6 +947,54 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "snapshotDistribution" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> PolarisSnapshotGroupByConnection? SnapshotGroupByConnection
+        // GraphQL -> snapshotGroupByConnection: PolarisSnapshotGroupByConnection (type)
+        if (this.SnapshotGroupByConnection != null) {
+            var fspec = this.SnapshotGroupByConnection.AsFieldSpec(conf.Child("snapshotGroupByConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotGroupByConnection" + "\n(" + this.Vars.SnapshotGroupByConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> PolarisSnapshotGroupByNewConnection? SnapshotGroupByNewConnection
+        // GraphQL -> snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection (type)
+        if (this.SnapshotGroupByNewConnection != null) {
+            var fspec = this.SnapshotGroupByNewConnection.AsFieldSpec(conf.Child("snapshotGroupByNewConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotGroupByNewConnection" + "\n(" + this.Vars.SnapshotGroupByNewConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> GenericSnapshotConnection? WorkloadSnapshotConnection
+        // GraphQL -> workloadSnapshotConnection: GenericSnapshotConnection (type)
+        if (this.WorkloadSnapshotConnection != null) {
+            var fspec = this.WorkloadSnapshotConnection.AsFieldSpec(conf.Child("workloadSnapshotConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "workloadSnapshotConnection" + "\n(" + this.Vars.WorkloadSnapshotConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<O365WorkloadSummary>? WorkloadSummary
+        // GraphQL -> workloadSummary: [O365WorkloadSummary!]! (type)
+        if (this.WorkloadSummary != null) {
+            var fspec = this.WorkloadSummary.AsFieldSpec(conf.Child("workloadSummary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "workloadSummary" + "\n(" + this.Vars.WorkloadSummary.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -981,6 +1229,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = null;
+        }
+        //      C# -> System.Int32? OnDemandSnapshotCount
+        // GraphQL -> onDemandSnapshotCount: Int! (scalar)
+        if (ec.Includes("onDemandSnapshotCount",true))
+        {
+            if(this.OnDemandSnapshotCount == null) {
+
+                this.OnDemandSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.OnDemandSnapshotCount != null && ec.Excludes("onDemandSnapshotCount",true))
+        {
+            this.OnDemandSnapshotCount = null;
         }
         //      C# -> System.Int32? Past1DayMailboxComplianceCount
         // GraphQL -> past1DayMailboxComplianceCount: Int! (scalar)
@@ -1296,6 +1561,63 @@ namespace RubrikSecurityCloud.Types
         {
             this.LogicalPath = null;
         }
+        //      C# -> PolarisSnapshot? NewestIndexedSnapshot
+        // GraphQL -> newestIndexedSnapshot: PolarisSnapshot (type)
+        if (ec.Includes("newestIndexedSnapshot",false))
+        {
+            if(this.NewestIndexedSnapshot == null) {
+
+                this.NewestIndexedSnapshot = new PolarisSnapshot();
+                this.NewestIndexedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestIndexedSnapshot"));
+
+            } else {
+
+                this.NewestIndexedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestIndexedSnapshot"));
+
+            }
+        }
+        else if (this.NewestIndexedSnapshot != null && ec.Excludes("newestIndexedSnapshot",false))
+        {
+            this.NewestIndexedSnapshot = null;
+        }
+        //      C# -> PolarisSnapshot? NewestSnapshot
+        // GraphQL -> newestSnapshot: PolarisSnapshot (type)
+        if (ec.Includes("newestSnapshot",false))
+        {
+            if(this.NewestSnapshot == null) {
+
+                this.NewestSnapshot = new PolarisSnapshot();
+                this.NewestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestSnapshot"));
+
+            } else {
+
+                this.NewestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestSnapshot"));
+
+            }
+        }
+        else if (this.NewestSnapshot != null && ec.Excludes("newestSnapshot",false))
+        {
+            this.NewestSnapshot = null;
+        }
+        //      C# -> PolarisSnapshot? OldestSnapshot
+        // GraphQL -> oldestSnapshot: PolarisSnapshot (type)
+        if (ec.Includes("oldestSnapshot",false))
+        {
+            if(this.OldestSnapshot == null) {
+
+                this.OldestSnapshot = new PolarisSnapshot();
+                this.OldestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("oldestSnapshot"));
+
+            } else {
+
+                this.OldestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("oldestSnapshot"));
+
+            }
+        }
+        else if (this.OldestSnapshot != null && ec.Excludes("oldestSnapshot",false))
+        {
+            this.OldestSnapshot = null;
+        }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         if (ec.Includes("physicalPath",false))
@@ -1372,6 +1694,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.SecurityMetadata = null;
         }
+        //      C# -> PolarisSnapshotConnection? SnapshotConnection
+        // GraphQL -> snapshotConnection: PolarisSnapshotConnection (type)
+        if (ec.Includes("snapshotConnection",false))
+        {
+            if(this.SnapshotConnection == null) {
+
+                this.SnapshotConnection = new PolarisSnapshotConnection();
+                this.SnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotConnection"));
+
+            } else {
+
+                this.SnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotConnection"));
+
+            }
+        }
+        else if (this.SnapshotConnection != null && ec.Excludes("snapshotConnection",false))
+        {
+            this.SnapshotConnection = null;
+        }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (ec.Includes("snapshotDistribution",false))
@@ -1390,6 +1731,82 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotDistribution != null && ec.Excludes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = null;
+        }
+        //      C# -> PolarisSnapshotGroupByConnection? SnapshotGroupByConnection
+        // GraphQL -> snapshotGroupByConnection: PolarisSnapshotGroupByConnection (type)
+        if (ec.Includes("snapshotGroupByConnection",false))
+        {
+            if(this.SnapshotGroupByConnection == null) {
+
+                this.SnapshotGroupByConnection = new PolarisSnapshotGroupByConnection();
+                this.SnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupByConnection"));
+
+            } else {
+
+                this.SnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupByConnection"));
+
+            }
+        }
+        else if (this.SnapshotGroupByConnection != null && ec.Excludes("snapshotGroupByConnection",false))
+        {
+            this.SnapshotGroupByConnection = null;
+        }
+        //      C# -> PolarisSnapshotGroupByNewConnection? SnapshotGroupByNewConnection
+        // GraphQL -> snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection (type)
+        if (ec.Includes("snapshotGroupByNewConnection",false))
+        {
+            if(this.SnapshotGroupByNewConnection == null) {
+
+                this.SnapshotGroupByNewConnection = new PolarisSnapshotGroupByNewConnection();
+                this.SnapshotGroupByNewConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupByNewConnection"));
+
+            } else {
+
+                this.SnapshotGroupByNewConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupByNewConnection"));
+
+            }
+        }
+        else if (this.SnapshotGroupByNewConnection != null && ec.Excludes("snapshotGroupByNewConnection",false))
+        {
+            this.SnapshotGroupByNewConnection = null;
+        }
+        //      C# -> GenericSnapshotConnection? WorkloadSnapshotConnection
+        // GraphQL -> workloadSnapshotConnection: GenericSnapshotConnection (type)
+        if (ec.Includes("workloadSnapshotConnection",false))
+        {
+            if(this.WorkloadSnapshotConnection == null) {
+
+                this.WorkloadSnapshotConnection = new GenericSnapshotConnection();
+                this.WorkloadSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("workloadSnapshotConnection"));
+
+            } else {
+
+                this.WorkloadSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("workloadSnapshotConnection"));
+
+            }
+        }
+        else if (this.WorkloadSnapshotConnection != null && ec.Excludes("workloadSnapshotConnection",false))
+        {
+            this.WorkloadSnapshotConnection = null;
+        }
+        //      C# -> List<O365WorkloadSummary>? WorkloadSummary
+        // GraphQL -> workloadSummary: [O365WorkloadSummary!]! (type)
+        if (ec.Includes("workloadSummary",false))
+        {
+            if(this.WorkloadSummary == null) {
+
+                this.WorkloadSummary = new List<O365WorkloadSummary>();
+                this.WorkloadSummary.ApplyExploratoryFieldSpec(ec.NewChild("workloadSummary"));
+
+            } else {
+
+                this.WorkloadSummary.ApplyExploratoryFieldSpec(ec.NewChild("workloadSummary"));
+
+            }
+        }
+        else if (this.WorkloadSummary != null && ec.Excludes("workloadSummary",false))
+        {
+            this.WorkloadSummary = null;
         }
     }
 

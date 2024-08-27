@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 1.9
+
+Fixes:
+
+- Get-RscFileSet : fix arg assignment in nested query
+  [#134](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/134)
+
 ## Version 1.8
 
 New Features: 
@@ -558,6 +565,7 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
+
 
 
 

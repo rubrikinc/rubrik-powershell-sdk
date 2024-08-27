@@ -8749,6 +8749,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CcProvisionJobReply? MigrateCloudClusterDisks
+        // GraphQL -> migrateCloudClusterDisks: CcProvisionJobReply! (type)
+        public static string MigrateCloudClusterDisks(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "migrateCloudClusterDisks" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object MigrateCloudClusterDisksFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new CcProvisionJobReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? MigrateNutanixMountV1
         // GraphQL -> migrateNutanixMountV1: AsyncRequestStatus! (type)
         public static string MigrateNutanixMountV1(object fsObj)

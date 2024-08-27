@@ -38,6 +38,9 @@ Supported in v5.0+
 - isRefreshPaused: System.Boolean
   - Supported in v9.0+
       A Boolean that specifies whether the host refresh is paused or not.
+- mssqlSddCertificateId: System.String
+  - Supported in v9.3
+      Certificate ID corresponding to the public key certificate of the CA that signed the SQL server certificate. This will be used to validate identity of the SQL server host when using Sensitive Data Discovery.
 - hostVfdEnabled: HostVfdInstallConfig
   - Supported in v5.0+
 - mssqlCbtEnabled: MssqlCbtStatusType
