@@ -8,6 +8,8 @@ Fixes:
 
 Breaking Changes:
 
+- Get-RscVmwareVm : The `-Name` parameter now returns all VMs that partially match the specified `-Name` value, aligning with standard PowerShell conventions. Use the new `-ExactName` parameter to match the exact `-Name` value. e.g. `Get-RscVmwareVm -Name MyExactVmName -ExactName`
+
 ## Version 1.9
 
 Fixes:

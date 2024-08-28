@@ -47,6 +47,11 @@ function Get-RscVmwareVm {
             Mandatory = $false,
             ParameterSetName = "Name"
         )]
+        [switch]$ExactName = $false,
+        [Parameter(
+            Mandatory = $false,
+            ParameterSetName = "Name"
+        )]
         [switch]$Relic,
         [Parameter(
             Mandatory = $false,
@@ -102,9 +107,12 @@ function Get-RscVmwareVm {
                     $name.Replace("*",'')
                     $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::REGEX
                     $nameFilter.texts = $Name.Replace("*",'')
-                } else {
+                } elseif ($ExactName){
                     $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
                     $nameFilter.texts = $Name
+                } else {
+                    $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME
+                    $nameFilter.texts = $Name                    
                 }
                 $query.var.filter += $nameFilter
             }
