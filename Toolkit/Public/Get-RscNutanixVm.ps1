@@ -47,7 +47,13 @@ function Get-RscNutanixVm {
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
         )]
-        [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla
+        [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true,
+            ParameterSetName = "Name"
+        )]
+        [RubrikSecurityCloud.Types.Cluster]$Cluster
     )
     
     Process {
@@ -99,6 +105,14 @@ function Get-RscNutanixVm {
                 $slaFilter.Texts = $Sla.id
                 $query.var.filter += $slaFilter
             }
+
+            if ($Cluster) {
+                $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
+                $clusterFilter.Texts = $Cluster.id
+                $query.var.filter += $clusterFilter
+            }
+            
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }
