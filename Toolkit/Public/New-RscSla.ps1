@@ -162,25 +162,25 @@ function New-RscSla
             $query.var.input.SnapshotSchedule.Yearly = $YearlySchedule
         }
         if ($LocalRetentionLimit) {
-            $mutation.Var.Input.LocalRetentionLimit = $LocalRetentionLimit
+            $query.Var.Input.LocalRetentionLimit = $LocalRetentionLimit
         }
         if ($BackupWindows) {
-            $mutation.Var.Input.BackupWindows = $BackupWindows
+            $query.Var.Input.BackupWindows = $BackupWindows
         }
         if ($FirstFullBackupWindows) {
-            $mutation.Var.Input.FirstFullBackupWindows = $FirstFullBackupWindows
+            $query.Var.Input.FirstFullBackupWindows = $FirstFullBackupWindows
         }
         if ($RetentionLockSla) {
-            $mutation.Var.Input.IsRetentionLockedSla = $true
+            $query.Var.Input.IsRetentionLockedSla = $true
         }
         if ($RetentionLockMode) {
-            $mutation.Var.Input.RetentionLockMode = $RetentionLockMode
+            $query.Var.Input.RetentionLockMode = $RetentionLockMode
         }
         if ($ArchivalSpecs) {
-            $mutation.Var.Input.ArchivalSpecs = $ArchivalSpecs
+            $query.Var.Input.ArchivalSpecs = $ArchivalSpecs
         }
         if ($ReplicationSpecs) {
-            $mutation.Var.Input.ReplicationSpecsV2 = $ReplicationSpecs
+            $query.Var.Input.ReplicationSpecsV2 = $ReplicationSpecs
         }
 
         # object specific config
