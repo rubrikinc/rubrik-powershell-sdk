@@ -6,7 +6,7 @@ We rely on
 [your feedback](https://github.com/rubrikinc/rubrik-powershell-sdk/discussions)
 to improve the SDK !
 
-This is a fully supported SDK to work with Rubrik Security Cloud (RSC).
+Rubrik fully supports this SDK. If you have problems with the SDK, please open a GitHub issue or contact your account team. Please note that Rubrik supports the SDK, but can't debug your scripts.
 
 If you need to work with the CDM SDK, please see:
 [github.com/rubrikinc/rubrik-sdk-for-powershell](https://github.com/rubrikinc/rubrik-sdk-for-powershell)
