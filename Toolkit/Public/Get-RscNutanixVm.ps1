@@ -34,10 +34,6 @@ function Get-RscNutanixVm {
         )]
         [String]$Id,
         [Parameter(
-            Mandatory = $false
-        )]
-        [Switch]$Detail,
-        [Parameter(
             Mandatory = $false,
             ParameterSetName = "Name"
         )]
@@ -58,15 +54,9 @@ function Get-RscNutanixVm {
     
     Process {
 
-        # Determine input profile:
-        $inputProfile = "DEFAULT"
-        if ( $Detail -eq $true ) {
-            $inputProfile = "DETAIL"
-        }
-
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery nutanixVm -FieldProfile $inputProfile
+            $query = New-RscQuery -GqlQuery nutanixVm
             $query.var.filter = @()
             $query.Var.fid = $Id
             $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
@@ -77,7 +67,7 @@ function Get-RscNutanixVm {
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery nutanixVms -FieldProfile $inputProfile
+            $query = New-RscQuery -GqlQuery nutanixVms
             $query.var.filter = @()
             $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
             $query.Field.Nodes.Cluster.id = "PIZZA"
@@ -112,7 +102,7 @@ function Get-RscNutanixVm {
                 $clusterFilter.Texts = $Cluster.id
                 $query.var.filter += $clusterFilter
             }
-            
+
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }
