@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterInfo")]
         public ClusterInfo? ClusterInfo { get; set; }
 
+        //      C# -> List<AssetTag>? ObjectTags
+        // GraphQL -> objectTags: [AssetTag!]! (type)
+        [JsonProperty("objectTags")]
+        public List<AssetTag>? ObjectTags { get; set; }
+
         //      C# -> RubrikSlaInfo? RubrikSlaInfo
         // GraphQL -> rubrikSlaInfo: RubrikSlaInfo (type)
         [JsonProperty("rubrikSlaInfo")]
@@ -119,6 +124,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? Size = null,
         CloudAccountInfo? CloudAccountInfo = null,
         ClusterInfo? ClusterInfo = null,
+        List<AssetTag>? ObjectTags = null,
         RubrikSlaInfo? RubrikSlaInfo = null
     ) 
     {
@@ -163,6 +169,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ClusterInfo != null ) {
             this.ClusterInfo = ClusterInfo;
+        }
+        if ( ObjectTags != null ) {
+            this.ObjectTags = ObjectTags;
         }
         if ( RubrikSlaInfo != null ) {
             this.RubrikSlaInfo = RubrikSlaInfo;
@@ -310,6 +319,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "clusterInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AssetTag>? ObjectTags
+        // GraphQL -> objectTags: [AssetTag!]! (type)
+        if (this.ObjectTags != null) {
+            var fspec = this.ObjectTags.AsFieldSpec(conf.Child("objectTags"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectTags" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -573,6 +594,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClusterInfo != null && ec.Excludes("clusterInfo",false))
         {
             this.ClusterInfo = null;
+        }
+        //      C# -> List<AssetTag>? ObjectTags
+        // GraphQL -> objectTags: [AssetTag!]! (type)
+        if (ec.Includes("objectTags",false))
+        {
+            if(this.ObjectTags == null) {
+
+                this.ObjectTags = new List<AssetTag>();
+                this.ObjectTags.ApplyExploratoryFieldSpec(ec.NewChild("objectTags"));
+
+            } else {
+
+                this.ObjectTags.ApplyExploratoryFieldSpec(ec.NewChild("objectTags"));
+
+            }
+        }
+        else if (this.ObjectTags != null && ec.Excludes("objectTags",false))
+        {
+            this.ObjectTags = null;
         }
         //      C# -> RubrikSlaInfo? RubrikSlaInfo
         // GraphQL -> rubrikSlaInfo: RubrikSlaInfo (type)

@@ -171,6 +171,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> HyperVvirtualMachineConnection? HypervVirtualMachines
+        // GraphQL -> hypervVirtualMachines: HyperVVirtualMachineConnection (type)
+        [JsonProperty("hypervVirtualMachines")]
+        public HyperVvirtualMachineConnection? HypervVirtualMachines { get; set; }
+
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         [JsonProperty("latestUserNote")]
@@ -265,6 +270,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
         [JsonProperty("snapshotGroupBySummary")]
         public CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary { get; set; }
+
+        //      C# -> VsphereVmConnection? VsphereVirtualMachines
+        // GraphQL -> vsphereVirtualMachines: VsphereVmConnection (type)
+        [JsonProperty("vsphereVirtualMachines")]
+        public VsphereVmConnection? VsphereVirtualMachines { get; set; }
 
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
@@ -388,6 +398,7 @@ namespace RubrikSecurityCloud.Types
         Cluster? Cluster = null,
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         PathNode? EffectiveSlaSourceObject = null,
+        HyperVvirtualMachineConnection? HypervVirtualMachines = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
         MissedSnapshotCommonConnection? MissedSnapshotConnection = null,
@@ -406,7 +417,8 @@ namespace RubrikSecurityCloud.Types
         CdmSnapshotConnection? SnapshotConnection = null,
         SnapshotDistribution? SnapshotDistribution = null,
         CdmSnapshotGroupByConnection? SnapshotGroupByConnection = null,
-        CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary = null
+        CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary = null,
+        VsphereVmConnection? VsphereVirtualMachines = null
     ) 
     {
         if ( AuthorizedOperations != null ) {
@@ -499,6 +511,9 @@ namespace RubrikSecurityCloud.Types
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
         }
+        if ( HypervVirtualMachines != null ) {
+            this.HypervVirtualMachines = HypervVirtualMachines;
+        }
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
         }
@@ -555,6 +570,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotGroupBySummary != null ) {
             this.SnapshotGroupBySummary = SnapshotGroupBySummary;
+        }
+        if ( VsphereVirtualMachines != null ) {
+            this.VsphereVirtualMachines = VsphereVirtualMachines;
         }
         return this;
     }
@@ -878,6 +896,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> HyperVvirtualMachineConnection? HypervVirtualMachines
+        // GraphQL -> hypervVirtualMachines: HyperVVirtualMachineConnection (type)
+        if (this.HypervVirtualMachines != null) {
+            var fspec = this.HypervVirtualMachines.AsFieldSpec(conf.Child("hypervVirtualMachines"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hypervVirtualMachines" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
@@ -1103,6 +1133,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "snapshotGroupBySummary" + "\n(" + this.Vars.SnapshotGroupBySummary.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> VsphereVmConnection? VsphereVirtualMachines
+        // GraphQL -> vsphereVirtualMachines: VsphereVmConnection (type)
+        if (this.VsphereVirtualMachines != null) {
+            var fspec = this.VsphereVirtualMachines.AsFieldSpec(conf.Child("vsphereVirtualMachines"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "vsphereVirtualMachines" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1665,6 +1707,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaSourceObject = null;
         }
+        //      C# -> HyperVvirtualMachineConnection? HypervVirtualMachines
+        // GraphQL -> hypervVirtualMachines: HyperVVirtualMachineConnection (type)
+        if (ec.Includes("hypervVirtualMachines",false))
+        {
+            if(this.HypervVirtualMachines == null) {
+
+                this.HypervVirtualMachines = new HyperVvirtualMachineConnection();
+                this.HypervVirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachines"));
+
+            } else {
+
+                this.HypervVirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachines"));
+
+            }
+        }
+        else if (this.HypervVirtualMachines != null && ec.Excludes("hypervVirtualMachines",false))
+        {
+            this.HypervVirtualMachines = null;
+        }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (ec.Includes("latestUserNote",false))
@@ -2025,6 +2086,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotGroupBySummary != null && ec.Excludes("snapshotGroupBySummary",false))
         {
             this.SnapshotGroupBySummary = null;
+        }
+        //      C# -> VsphereVmConnection? VsphereVirtualMachines
+        // GraphQL -> vsphereVirtualMachines: VsphereVmConnection (type)
+        if (ec.Includes("vsphereVirtualMachines",false))
+        {
+            if(this.VsphereVirtualMachines == null) {
+
+                this.VsphereVirtualMachines = new VsphereVmConnection();
+                this.VsphereVirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("vsphereVirtualMachines"));
+
+            } else {
+
+                this.VsphereVirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("vsphereVirtualMachines"));
+
+            }
+        }
+        else if (this.VsphereVirtualMachines != null && ec.Excludes("vsphereVirtualMachines",false))
+        {
+            this.VsphereVirtualMachines = null;
         }
     }
 

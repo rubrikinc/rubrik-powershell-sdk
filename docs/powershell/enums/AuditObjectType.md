@@ -130,3 +130,8 @@ Represents all the object types for which we expect to see audits.
 - ACTIVE_DIRECTORY_FOREST - Active Directory forest.
 - CONFLUENCE_SPACE - Confluence Space.
 - NAS_FILESET - NAS Fileset.
+- M365_BACKUP_STORAGE_ORG - Microsoft 365 Backup Storage Organization.
+- M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
+- M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
+- M365_BACKUP_STORAGE_SITE - Microsoft 365 Backup Storage SharePoint Site.
+- M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.

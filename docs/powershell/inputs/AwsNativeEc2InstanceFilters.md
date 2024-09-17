@@ -31,3 +31,5 @@ Filters for list of AWS EC2 instances.
   - Filter by RBS connection status.
 - orgFilter: OrgFilter
   - Filter by organization ID.
+- awsNativeFeatureStatusFilter: AwsNativeFeatureStatusFilter
+  - Filter by connected status for the AWS native feature.

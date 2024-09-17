@@ -12,7 +12,7 @@ Configuration for creating Active Directory Live Mount.
       Expiry hint of the mount in minutes.
 - domainControllerId: System.String
   - Supported in v9.2+
-      Domain Controller ID for which this mount is valid. If this parameter is present in the request, the validUsers, validIps, and password fields are ignored.
+      Domain Controller ID for which this mount is valid. If this parameter is present in the request, the validUsers, validIPs, and password fields are ignored.
 - password: System.String
   - Supported in v9.0+
       Password to authenticate the mounting of the share on host.

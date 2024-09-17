@@ -9,6 +9,8 @@ Response to the azureAdObjectsByType API.
   - Relationships of the Azure AD object.
 - reverseRelationships: list of AzureAdReverseRelationships
   - Reverse relationships of the Azure Active Directory object.
+- latestSnapshotDetails: LatestSnapshotDetails
+  - Latest snapshot containing the Azure AD object.
 - azureAdObjects: AzureAdObjects
   - Populate either AzureAdUser or AzureAdGroup.
 - type: AzureAdObjectType

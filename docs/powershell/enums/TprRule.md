@@ -30,3 +30,4 @@ The different TPR rules.
 - TRIGGER_RCV_CUSTOM_FAIL_OVER - The TPR rule for triggering custom failover on the RCV location.
 - EDIT_TPR_CONFIG - The TPR rule for editing any QAuth configuration.
 - RESET_USER_PASSKEYS - Quorum authorization is required for resetting passkeys for a QAuth user.
+- DELETE_DATA_SOURCE - Quorum authorization is required for deleting data sources.

@@ -211,6 +211,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> MssqlSddDetail? MssqlSddDetail
+        // GraphQL -> mssqlSddDetail: MssqlSddDetail (type)
+        [JsonProperty("mssqlSddDetail")]
+        public MssqlSddDetail? MssqlSddDetail { get; set; }
+
         //      C# -> OracleUserDetails? OracleUserDetails
         // GraphQL -> oracleUserDetails: OracleUserDetails (type)
         [JsonProperty("oracleUserDetails")]
@@ -332,6 +337,7 @@ namespace RubrikSecurityCloud.Types
         List<CdmHostVolume>? HostVolumes = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
+        MssqlSddDetail? MssqlSddDetail = null,
         OracleUserDetails? OracleUserDetails = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         PhysicalHostPhysicalChildTypeConnection? PhysicalChildConnection = null,
@@ -454,6 +460,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( MssqlSddDetail != null ) {
+            this.MssqlSddDetail = MssqlSddDetail;
         }
         if ( OracleUserDetails != null ) {
             this.OracleUserDetails = OracleUserDetails;
@@ -876,6 +885,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> MssqlSddDetail? MssqlSddDetail
+        // GraphQL -> mssqlSddDetail: MssqlSddDetail (type)
+        if (this.MssqlSddDetail != null) {
+            var fspec = this.MssqlSddDetail.AsFieldSpec(conf.Child("mssqlSddDetail"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mssqlSddDetail" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1663,6 +1684,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> MssqlSddDetail? MssqlSddDetail
+        // GraphQL -> mssqlSddDetail: MssqlSddDetail (type)
+        if (ec.Includes("mssqlSddDetail",false))
+        {
+            if(this.MssqlSddDetail == null) {
+
+                this.MssqlSddDetail = new MssqlSddDetail();
+                this.MssqlSddDetail.ApplyExploratoryFieldSpec(ec.NewChild("mssqlSddDetail"));
+
+            } else {
+
+                this.MssqlSddDetail.ApplyExploratoryFieldSpec(ec.NewChild("mssqlSddDetail"));
+
+            }
+        }
+        else if (this.MssqlSddDetail != null && ec.Excludes("mssqlSddDetail",false))
+        {
+            this.MssqlSddDetail = null;
         }
         //      C# -> OracleUserDetails? OracleUserDetails
         // GraphQL -> oracleUserDetails: OracleUserDetails (type)

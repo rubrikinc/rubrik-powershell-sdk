@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ruCurrentNodes")]
         public List<System.String>? RuCurrentNodes { get; set; }
 
+        //      C# -> System.String? RuNodesPlan
+        // GraphQL -> ruNodesPlan: String! (scalar)
+        [JsonProperty("ruNodesPlan")]
+        public System.String? RuNodesPlan { get; set; }
+
         //      C# -> List<RollingUpgradeNodeInfoEntry>? RuNodeInfoList
         // GraphQL -> ruNodeInfoList: [RollingUpgradeNodeInfoEntry!]! (type)
         [JsonProperty("ruNodeInfoList")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public RollingUpgradeInfo Set(
         List<System.String>? RuCurrentNodes = null,
+        System.String? RuNodesPlan = null,
         List<RollingUpgradeNodeInfoEntry>? RuNodeInfoList = null
     ) 
     {
         if ( RuCurrentNodes != null ) {
             this.RuCurrentNodes = RuCurrentNodes;
+        }
+        if ( RuNodesPlan != null ) {
+            this.RuNodesPlan = RuNodesPlan;
         }
         if ( RuNodeInfoList != null ) {
             this.RuNodeInfoList = RuNodeInfoList;
@@ -71,6 +80,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ruCurrentNodes\n" ;
             } else {
                 s += ind + "ruCurrentNodes\n" ;
+            }
+        }
+        //      C# -> System.String? RuNodesPlan
+        // GraphQL -> ruNodesPlan: String! (scalar)
+        if (this.RuNodesPlan != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ruNodesPlan\n" ;
+            } else {
+                s += ind + "ruNodesPlan\n" ;
             }
         }
         //      C# -> List<RollingUpgradeNodeInfoEntry>? RuNodeInfoList
@@ -108,6 +126,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.RuCurrentNodes != null && ec.Excludes("ruCurrentNodes",true))
         {
             this.RuCurrentNodes = null;
+        }
+        //      C# -> System.String? RuNodesPlan
+        // GraphQL -> ruNodesPlan: String! (scalar)
+        if (ec.Includes("ruNodesPlan",true))
+        {
+            if(this.RuNodesPlan == null) {
+
+                this.RuNodesPlan = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RuNodesPlan != null && ec.Excludes("ruNodesPlan",true))
+        {
+            this.RuNodesPlan = null;
         }
         //      C# -> List<RollingUpgradeNodeInfoEntry>? RuNodeInfoList
         // GraphQL -> ruNodeInfoList: [RollingUpgradeNodeInfoEntry!]! (type)

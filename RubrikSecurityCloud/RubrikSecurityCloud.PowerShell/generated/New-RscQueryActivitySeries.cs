@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 5
     /// operations in the 'Activity series' API domain:
-    /// ActivitySeries, List, UserFileTimeline, or UserTimeline.
+    /// ActivitySeries, List, SessionInTimeoutInSeconds, UserFileTimeline, or UserTimeline.
     /// </summary>
     /// <description>
     /// New-RscQueryActivitySeries creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 5 operations
     /// in the 'Activity series' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActivitySeries, List, UserFileTimeline, or UserTimeline.
+    /// one of: ActivitySeries, List, SessionInTimeoutInSeconds, UserFileTimeline, or UserTimeline.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -201,6 +201,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SessionInTimeoutInSeconds operation
+    /// of the 'Activity series' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    ActivitySeries
+    /// # API Operation: SessionInTimeoutInSeconds
+    /// 
+    /// $query = New-RscQueryActivitySeries -SessionInTimeoutInSeconds
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Int64
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UserFileTimeline operation
     /// of the 'Activity series' API domain.
     /// <code>
@@ -295,6 +322,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "ActivitySeries",
                 "List",
+                "SessionInTimeoutInSeconds",
                 "UserFileTimeline",
                 "UserTimeline",
                 IgnoreCase = true)]
@@ -317,6 +345,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "List":
                         this.ProcessRecord_List();
+                        break;
+                    case "SessionInTimeoutInSeconds":
+                        this.ProcessRecord_SessionInTimeoutInSeconds();
                         break;
                     case "UserFileTimeline":
                         this.ProcessRecord_UserFileTimeline();
@@ -350,6 +381,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -List";
             // Create new graphql operation activitySeriesConnection
             InitQueryActivitySeriesConnection();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // sessionInactivityTimeoutInSeconds.
+        internal void ProcessRecord_SessionInTimeoutInSeconds()
+        {
+            this._logger.name += " -SessionInTimeoutInSeconds";
+            // Create new graphql operation sessionInactivityTimeoutInSeconds
+            InitQuerySessionInactivityTimeoutInSeconds();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -490,6 +530,24 @@ $query.Var.filters = @{
 		$someString
 	)
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // sessionInactivityTimeoutInSeconds: Long!
+        internal void InitQuerySessionInactivityTimeoutInSeconds()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySessionInactivityTimeoutInSeconds",
+                "",
+                "System.Int64",
+                Query.SessionInactivityTimeoutInSeconds,
+                Query.SessionInactivityTimeoutInSecondsFieldSpec,
+                @""
             );
         }
 

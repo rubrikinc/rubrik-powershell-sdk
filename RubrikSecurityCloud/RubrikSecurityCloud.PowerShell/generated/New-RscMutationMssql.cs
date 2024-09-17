@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 24
+    /// Create a new RscQuery object for any of the 25
     /// operations in the 'Microsoft SQL Server' API domain:
-    /// AddHost, AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, UpdateLogShippingConfiguration, or UpdateLogShippingConfigurationV1.
+    /// AddHost, AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkExportDatabases, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, UpdateLogShippingConfiguration, or UpdateLogShippingConfigurationV1.
     /// </summary>
     /// <description>
     /// New-RscMutationMssql creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 24 operations
+    /// There are 25 operations
     /// in the 'Microsoft SQL Server' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddHost, AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, UpdateLogShippingConfiguration, or UpdateLogShippingConfigurationV1.
+    /// one of: AddHost, AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkExportDatabases, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, UpdateLogShippingConfiguration, or UpdateLogShippingConfigurationV1.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -447,6 +447,66 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	userNote = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the BulkExportDatabases operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: BulkExportDatabases
+    /// 
+    /// $query = New-RscMutationMssql -BulkExportDatabases
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		allowOverwrite = $someBoolean
+    /// 		# OPTIONAL
+    /// 		targetDataFilePath = $someString
+    /// 		# OPTIONAL
+    /// 		targetLogFilePath = $someString
+    /// 		# OPTIONAL
+    /// 		finishRecovery = $someBoolean
+    /// 		# OPTIONAL
+    /// 		recoveryPoint = @{
+    /// 			# OPTIONAL
+    /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			date = $someDateTime
+    /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 			}
+    /// 		}
+    /// 		# REQUIRED
+    /// 		sourceInstanceIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# REQUIRED
+    /// 		targetInstanceId = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1502,6 +1562,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AssignSlaDomainPropertiesAsync",
                 "BrowseDatabaseSnapshot",
                 "BulkCreateOnDemandBackup",
+                "BulkExportDatabases",
                 "BulkUpdateAvailabilityGroup",
                 "BulkUpdateDbs",
                 "BulkUpdateInstance",
@@ -1550,6 +1611,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "BulkCreateOnDemandBackup":
                         this.ProcessRecord_BulkCreateOnDemandBackup();
+                        break;
+                    case "BulkExportDatabases":
+                        this.ProcessRecord_BulkExportDatabases();
                         break;
                     case "BulkUpdateAvailabilityGroup":
                         this.ProcessRecord_BulkUpdateAvailabilityGroup();
@@ -1661,6 +1725,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -BulkCreateOnDemandBackup";
             // Create new graphql operation bulkCreateOnDemandMssqlBackup
             InitMutationBulkCreateOnDemandMssqlBackup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // bulkExportMssqlDatabases.
+        internal void ProcessRecord_BulkExportDatabases()
+        {
+            this._logger.name += " -BulkExportDatabases";
+            // Create new graphql operation bulkExportMssqlDatabases
+            InitMutationBulkExportMssqlDatabases();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2176,6 +2249,58 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	userNote = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // bulkExportMssqlDatabases(input: BulkExportMssqlDatabasesInput!): AsyncRequestStatus!
+        internal void InitMutationBulkExportMssqlDatabases()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkExportMssqlDatabasesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkExportMssqlDatabases",
+                "($input: BulkExportMssqlDatabasesInput!)",
+                "AsyncRequestStatus",
+                Mutation.BulkExportMssqlDatabases,
+                Mutation.BulkExportMssqlDatabasesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		allowOverwrite = $someBoolean
+		# OPTIONAL
+		targetDataFilePath = $someString
+		# OPTIONAL
+		targetLogFilePath = $someString
+		# OPTIONAL
+		finishRecovery = $someBoolean
+		# OPTIONAL
+		recoveryPoint = @{
+			# OPTIONAL
+			timestampMs = $someInt64
+			# OPTIONAL
+			date = $someDateTime
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = $someString
+				# REQUIRED
+				lsn = $someString
+			}
+		}
+		# REQUIRED
+		sourceInstanceIds = @(
+			$someString
+		)
+		# REQUIRED
+		targetInstanceId = $someString
+	}
 }"
             );
         }

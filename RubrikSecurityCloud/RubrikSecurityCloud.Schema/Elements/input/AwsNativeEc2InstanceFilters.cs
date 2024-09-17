@@ -94,6 +94,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgFilter")]
         public OrgFilter? OrgFilter { get; set; }
 
+        //      C# -> AwsNativeFeatureStatusFilter? AwsNativeFeatureStatusFilter
+        // GraphQL -> awsNativeFeatureStatusFilter: AwsNativeFeatureStatusFilter (input)
+        [JsonProperty("awsNativeFeatureStatusFilter")]
+        public AwsNativeFeatureStatusFilter? AwsNativeFeatureStatusFilter { get; set; }
+
 
         #endregion
 

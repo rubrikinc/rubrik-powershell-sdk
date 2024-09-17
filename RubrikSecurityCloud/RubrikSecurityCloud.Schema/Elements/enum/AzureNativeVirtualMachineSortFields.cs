@@ -42,6 +42,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAME")]
         NAME,
 
+        [EnumMember(Value = "SENSITIVITY_HITS")]
+        SENSITIVITY_HITS,
+
+        [EnumMember(Value = "SENSITIVITY_STATUS")]
+        SENSITIVITY_STATUS,
+
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN
 

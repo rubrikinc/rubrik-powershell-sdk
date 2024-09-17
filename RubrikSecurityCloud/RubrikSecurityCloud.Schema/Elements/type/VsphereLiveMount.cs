@@ -95,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sourceVm")]
         public VsphereVm? SourceVm { get; set; }
 
+        //      C# -> VsphereVcenter? Vcenter
+        // GraphQL -> vCenter: VsphereVcenter (type)
+        [JsonProperty("vCenter")]
+        public VsphereVcenter? Vcenter { get; set; }
+
 
         #endregion
 
@@ -119,7 +124,8 @@ namespace RubrikSecurityCloud.Types
         VsphereHost? Host = null,
         VsphereVm? MountedVm = null,
         CdmSnapshot? SourceSnapshot = null,
-        VsphereVm? SourceVm = null
+        VsphereVm? SourceVm = null,
+        VsphereVcenter? Vcenter = null
     ) 
     {
         if ( VmStatus != null ) {
@@ -166,6 +172,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SourceVm != null ) {
             this.SourceVm = SourceVm;
+        }
+        if ( Vcenter != null ) {
+            this.Vcenter = Vcenter;
         }
         return this;
     }
@@ -328,6 +337,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "sourceVm" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> VsphereVcenter? Vcenter
+        // GraphQL -> vCenter: VsphereVcenter (type)
+        if (this.Vcenter != null) {
+            var fspec = this.Vcenter.AsFieldSpec(conf.Child("vCenter"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "vCenter" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -602,6 +623,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SourceVm != null && ec.Excludes("sourceVm",false))
         {
             this.SourceVm = null;
+        }
+        //      C# -> VsphereVcenter? Vcenter
+        // GraphQL -> vCenter: VsphereVcenter (type)
+        if (ec.Includes("vCenter",false))
+        {
+            if(this.Vcenter == null) {
+
+                this.Vcenter = new VsphereVcenter();
+                this.Vcenter.ApplyExploratoryFieldSpec(ec.NewChild("vCenter"));
+
+            } else {
+
+                this.Vcenter.ApplyExploratoryFieldSpec(ec.NewChild("vCenter"));
+
+            }
+        }
+        else if (this.Vcenter != null && ec.Excludes("vCenter",false))
+        {
+            this.Vcenter = null;
         }
     }
 

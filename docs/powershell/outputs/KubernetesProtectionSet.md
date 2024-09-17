@@ -25,6 +25,8 @@ Kubernetes Protection Set.
   - The authorized operations on the object.
 - id: System.String
   - Object ID.
+- creationType: KubernetesProtectionSetCreationType
+  - Creation type of protection set.
 - name: System.String
   - The name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum

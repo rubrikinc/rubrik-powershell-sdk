@@ -298,3 +298,11 @@
 - DOMAIN_HAS_FOREST - Filter domains by forest.
 - M365_BACKUP_STORAGE_PROTECTION_STATUS_MISMATCH - Filter objects with mismatched SLA Domain and backup storage protection
  status.
+- AWS_NATIVE_FEATURE_CONNECTED_STATUS - Filter those objects for which the given AWS feature status is
+ connected.
+- HYPERV_VM_MAC_ADDRESS - Filter Hyper-V virtual machine using a MAC Address.
+ +mo:filter:db:table=cdm_hyperv_virtual_machine
+ +mo:filter:db:column=mac_addresses
+- VMWARE_VM_MAC_ADDRESS - Filter VMWare virtual machine using a MAC Address.
+ +mo:filter:db:table=cdm_vmware_virtual_machine
+ +mo:filter:db:column=resource_spec

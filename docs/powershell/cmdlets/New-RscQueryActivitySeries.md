@@ -17,6 +17,11 @@ Paginated list of event series objects. Each page of the results will include at
     - sortBy - ActivitySeriesSortField: Sort activity series by field.
     - filters - ActivitySeriesFilter
 - Returns ActivitySeriesConnection.
+### sessionintimeoutinseconds
+The session inactivity timeout in seconds.
+
+- The sessionintimeoutinseconds subcommand takes no arguments.
+- Returns System.Int64.
 ### userfiletimeline
 - There are 6 arguments.
     - userId - System.String

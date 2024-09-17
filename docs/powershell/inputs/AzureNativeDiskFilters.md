@@ -17,6 +17,10 @@ Filters for list of Azure disks.
   - Filter by attached Azure Virtual Machine.
 - relicFilter: RelicFilter
   - Filter by disk relic status.
+- sensitivityStatusFilter: SensitivityStatusFilter
+  - Filter by sensitivity status.
+- protectionStatusFilter: ProtectionStatusFilter
+  - Filter by protection status.
 - tagFilter: AzureNativeTagFilter
   - Filter by disk tags.
 - exocomputeConnectedFilter: AzureNativeDiskExocomputeConnectedFilter

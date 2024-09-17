@@ -17,6 +17,10 @@ Filters for list of Azure virtual machines.
   - Filter by VNet.
 - relicFilter: RelicFilter
   - Filter by relics.
+- sensitivityStatusFilter: SensitivityStatusFilter
+  - Filter by sensitivity status.
+- protectionStatusFilter: ProtectionStatusFilter
+  - Filter by protection status.
 - tagFilter: AzureNativeTagFilter
   - Filter by tag.
 - exocomputeConnectedFilter: AzureNativeVmExocomputeConnectedFilter

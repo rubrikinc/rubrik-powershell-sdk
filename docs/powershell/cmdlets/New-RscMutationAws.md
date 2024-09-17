@@ -130,6 +130,11 @@ Update AWS Exocompute configs.
 
 - There is a single argument of type UpdateAwsExocomputeConfigsInput.
 - Returns UpdateAwsExocomputeConfigsReply.
+### updateiampair
+Updates the role name for AWS IAM pair.
+
+- There is a single argument of type UpdateAwsIamPairInput.
+- Returns System.String.
 ### updatetarget
 - There is a single argument of type UpdateAwsTargetInput.
 - Returns Target.

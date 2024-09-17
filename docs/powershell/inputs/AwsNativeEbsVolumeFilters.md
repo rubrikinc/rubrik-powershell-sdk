@@ -27,3 +27,5 @@ Filters for list of AWS EBS volumes.
   - Filter by tags.
 - orgFilter: OrgFilter
   - Filter by organization ID.
+- awsNativeFeatureStatusFilter: AwsNativeFeatureStatusFilter
+  - Filter by connected status for the AWS native feature.

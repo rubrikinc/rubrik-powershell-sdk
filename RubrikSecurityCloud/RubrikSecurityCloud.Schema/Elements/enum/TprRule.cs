@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ASSIGN_TPR_ROLE")]
         ASSIGN_TPR_ROLE,
 
+        [EnumMember(Value = "DELETE_DATA_SOURCE")]
+        DELETE_DATA_SOURCE,
+
         [EnumMember(Value = "DELETE_RCV")]
         DELETE_RCV,
 

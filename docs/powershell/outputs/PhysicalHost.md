@@ -20,6 +20,8 @@
   - Specifies the NAS API endpoint.
 - nasApiHostname: System.String
   - Specifies the NAS API hostname.
+- mssqlSddDetail: MssqlSddDetail
+  - Specifies the MSSQL SDD details.
 - osType: GuestOsType
   - The operating system type of the physical host.
 - defaultCbt: System.Boolean

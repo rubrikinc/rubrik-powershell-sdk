@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analyzerGroupId")]
         public System.String? AnalyzerGroupId { get; set; }
 
+        //      C# -> System.String? DataTypeId
+        // GraphQL -> dataTypeId: String (scalar)
+        [JsonProperty("dataTypeId")]
+        public System.String? DataTypeId { get; set; }
+
 
         #endregion
 

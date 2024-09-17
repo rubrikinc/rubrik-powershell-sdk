@@ -45,7 +45,9 @@ Returns privileges that are allowed to be asssigned to org admin roles.
 ### analyzerusages
 Returns which policies are using each analyzer.
 
-- The analyzerusages subcommand takes no arguments.
+- There are 2 arguments.
+    - dataCategoryIdsFilter - list of System.Strings: List of data categories used for filtering results.
+    - riskLevelsFilter - list of RiskLevelTypes: List of risk levels used for filtering results.
 - Returns AnalyzerUsageConnection.
 ### anomalyresultopt
 Optional result of the Anomaly Investigation.
@@ -709,6 +711,19 @@ Get multifactor authentication (MFA) settings for an account.
 
 - The mfasetting subcommand takes no arguments.
 - Returns GetMfaSettingReply.
+### microsoftsites
+List of sites in the Microsoft 365 organization.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
+    - filter - list of Filters: The hierarchy object filter.
+    - o365OrgId - System.String: The fid for the O365 organization.
+    - excludeChildSites - System.Boolean: When excludeChildSites is set to true, nested child sites are excluded from the results. If not specified, nested child sites are included.
+    - protectionType - ProtectionType: Protection type for Microsoft 365 protection.
+- Returns MicrosoftSiteConnection.
 ### minimumcdmversionforfeatureset
 Get minimum cluster version to support feature set.
 
@@ -897,7 +912,7 @@ Returns details for one policy object.
 ### policyobjs
 Returns status for all objects at a specified timestamp.
 
-- There are 36 arguments.
+- There are 37 arguments.
     - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
@@ -921,9 +936,10 @@ Returns status for all objects at a specified timestamp.
     - resourceGroupsFilter - list of System.Strings: Resource groups to filter.
     - regionsFilter - list of System.Strings: Regions to filter.
     - dataTypeIdsFilter - list of System.Strings: Data Type IDs to filter.
-    - firstSeenTimeRange - UserTimeRangeInput: First seen time range specified in the local timezone of the user.
-    - lastAccessTimeRange - UserTimeRangeInput: Last access time range specified in the local timezone of the user.
-    - creationTimeRange - UserTimeRangeInput: Creation time range specified in the local timezone of the user.
+    - firstSeenTimeRange - UserTimeRangeInput: The first seen time range specified in the UTC timezone.
+    - lastAccessTimeRange - UserTimeRangeInput: The last access time range specified in the UTC timezone.
+    - creationTimeRange - UserTimeRangeInput: The creation time range specified in the UTC timezone.
+    - lastScanTimeRange - UserTimeRangeInput: The last scan time range specified in the UTC timezone.
     - objectTagsFilter - ObjectTagsFilterInput: Object tags associated with workloads as key-value pairs.
     - backupStatusFilter - list of BackupStatuss: Filter by backup status.
     - slaIdsFilter - list of System.Strings: Filter by SLA Domain IDs.

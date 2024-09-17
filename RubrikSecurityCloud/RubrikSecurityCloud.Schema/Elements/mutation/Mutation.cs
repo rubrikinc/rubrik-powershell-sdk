@@ -883,6 +883,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? CreateDistributionListDigestBatch
+        // GraphQL -> createDistributionListDigestBatch: Void (scalar)
+        public static string CreateDistributionListDigestBatch(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "createDistributionListDigestBatch" + args + "\n";
+        }
+        public static object CreateDistributionListDigestBatchFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? CreateEventDigestBatch
         // GraphQL -> createEventDigestBatch: Void (scalar)
         public static string CreateEventDigestBatch(object fsObj)
@@ -1837,6 +1855,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? ModifyDistributionListDigestBatch
+        // GraphQL -> modifyDistributionListDigestBatch: Void (scalar)
+        public static string ModifyDistributionListDigestBatch(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "modifyDistributionListDigestBatch" + args + "\n";
+        }
+        public static object ModifyDistributionListDigestBatchFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? ModifyEventDigestBatch
         // GraphQL -> modifyEventDigestBatch: Void (scalar)
         public static string ModifyEventDigestBatch(object fsObj)
@@ -2476,6 +2512,24 @@ namespace RubrikSecurityCloud.Types
             return "updateAwsCloudAccount" + args + "\n";
         }
         public static object UpdateAwsCloudAccountFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? UpdateAwsIamPair
+        // GraphQL -> updateAwsIamPair: Void (scalar)
+        public static string UpdateAwsIamPair(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateAwsIamPair" + args + "\n";
+        }
+        public static object UpdateAwsIamPairFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -4353,6 +4407,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new BatchAsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? BulkExportMssqlDatabases
+        // GraphQL -> bulkExportMssqlDatabases: AsyncRequestStatus! (type)
+        public static string BulkExportMssqlDatabases(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "bulkExportMssqlDatabases" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object BulkExportMssqlDatabasesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

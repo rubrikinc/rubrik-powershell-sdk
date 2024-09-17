@@ -1262,6 +1262,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.azureSqlDatabaseRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1511,6 +1513,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		relic = $someBoolean
     /// 	}
     /// 	# OPTIONAL
+    /// 	sensitivityStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		sensitivityStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	protectionStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		protectionStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	tagFilter = @{
     /// 		# REQUIRED
     /// 		tagFilterParams = @(
@@ -1532,6 +1548,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// }
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1560,6 +1578,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.azureSqlManagedInstanceDatabaseRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1639,6 +1659,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		relic = $someBoolean
     /// 	}
     /// 	# OPTIONAL
+    /// 	sensitivityStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		sensitivityStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	protectionStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		protectionStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	serverFilter = @{
     /// 		# REQUIRED
     /// 		serverNames = @(
@@ -1646,6 +1680,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// }
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -3872,22 +3908,25 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
-        // azureSqlDatabase(azureSqlDatabaseRubrikId: UUID!): AzureSqlDatabaseDb!
+        // azureSqlDatabase(azureSqlDatabaseRubrikId: UUID!, includeSecurityMetadata: Boolean): AzureSqlDatabaseDb!
         internal void InitQueryAzureSqlDatabase()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSqlDatabaseRubrikId", "UUID!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureSqlDatabase",
-                "($azureSqlDatabaseRubrikId: UUID!)",
+                "($azureSqlDatabaseRubrikId: UUID!,$includeSecurityMetadata: Boolean)",
                 "AzureSqlDatabaseDb",
                 Query.AzureSqlDatabase,
                 Query.AzureSqlDatabaseFieldSpec,
                 @"# REQUIRED
-$query.Var.azureSqlDatabaseRubrikId = $someString"
+$query.Var.azureSqlDatabaseRubrikId = $someString
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -4068,6 +4107,7 @@ $query.Var.azureSqlDatabaseServerFilters = @{
         //     sortBy: AzureSqlDatabaseSortFields
         //     sortOrder: SortOrder
         //     azureSqlDatabaseFilters: AzureSqlDatabaseFilters
+        //     includeSecurityMetadata: Boolean
         //   ): AzureSqlDatabaseDbConnection!
         internal void InitQueryAzureSqlDatabases()
         {
@@ -4079,12 +4119,13 @@ $query.Var.azureSqlDatabaseServerFilters = @{
                 Tuple.Create("sortBy", "AzureSqlDatabaseSortFields"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("azureSqlDatabaseFilters", "AzureSqlDatabaseFilters"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureSqlDatabases",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlDatabaseSortFields,$sortOrder: SortOrder,$azureSqlDatabaseFilters: AzureSqlDatabaseFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlDatabaseSortFields,$sortOrder: SortOrder,$azureSqlDatabaseFilters: AzureSqlDatabaseFilters,$includeSecurityMetadata: Boolean)",
                 "AzureSqlDatabaseDbConnection",
                 Query.AzureSqlDatabases,
                 Query.AzureSqlDatabasesFieldSpec,
@@ -4141,6 +4182,20 @@ $query.Var.azureSqlDatabaseFilters = @{
 		relic = $someBoolean
 	}
 	# OPTIONAL
+	sensitivityStatusFilter = @{
+		# REQUIRED
+		sensitivityStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	protectionStatusFilter = @{
+		# REQUIRED
+		protectionStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	tagFilter = @{
 		# REQUIRED
 		tagFilterParams = @(
@@ -4161,27 +4216,32 @@ $query.Var.azureSqlDatabaseFilters = @{
 			$someString
 		)
 	}
-}"
+}
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
         // Create new GraphQL Query:
-        // azureSqlManagedInstanceDatabase(azureSqlManagedInstanceDatabaseRubrikId: UUID!): AzureSqlManagedInstanceDatabase!
+        // azureSqlManagedInstanceDatabase(azureSqlManagedInstanceDatabaseRubrikId: UUID!, includeSecurityMetadata: Boolean): AzureSqlManagedInstanceDatabase!
         internal void InitQueryAzureSqlManagedInstanceDatabase()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSqlManagedInstanceDatabaseRubrikId", "UUID!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureSqlManagedInstanceDatabase",
-                "($azureSqlManagedInstanceDatabaseRubrikId: UUID!)",
+                "($azureSqlManagedInstanceDatabaseRubrikId: UUID!,$includeSecurityMetadata: Boolean)",
                 "AzureSqlManagedInstanceDatabase",
                 Query.AzureSqlManagedInstanceDatabase,
                 Query.AzureSqlManagedInstanceDatabaseFieldSpec,
                 @"# REQUIRED
-$query.Var.azureSqlManagedInstanceDatabaseRubrikId = $someString"
+$query.Var.azureSqlManagedInstanceDatabaseRubrikId = $someString
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -4194,6 +4254,7 @@ $query.Var.azureSqlManagedInstanceDatabaseRubrikId = $someString"
         //     sortBy: AzureSqlManagedInstanceDatabaseSortFields
         //     sortOrder: SortOrder
         //     azureSqlManagedInstanceDatabaseFilters: AzureSqlManagedInstanceDatabaseFilters
+        //     includeSecurityMetadata: Boolean
         //   ): AzureSqlManagedInstanceDatabaseConnection!
         internal void InitQueryAzureSqlManagedInstanceDatabases()
         {
@@ -4205,12 +4266,13 @@ $query.Var.azureSqlManagedInstanceDatabaseRubrikId = $someString"
                 Tuple.Create("sortBy", "AzureSqlManagedInstanceDatabaseSortFields"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("azureSqlManagedInstanceDatabaseFilters", "AzureSqlManagedInstanceDatabaseFilters"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureSqlManagedInstanceDatabases",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlManagedInstanceDatabaseSortFields,$sortOrder: SortOrder,$azureSqlManagedInstanceDatabaseFilters: AzureSqlManagedInstanceDatabaseFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlManagedInstanceDatabaseSortFields,$sortOrder: SortOrder,$azureSqlManagedInstanceDatabaseFilters: AzureSqlManagedInstanceDatabaseFilters,$includeSecurityMetadata: Boolean)",
                 "AzureSqlManagedInstanceDatabaseConnection",
                 Query.AzureSqlManagedInstanceDatabases,
                 Query.AzureSqlManagedInstanceDatabasesFieldSpec,
@@ -4267,13 +4329,29 @@ $query.Var.azureSqlManagedInstanceDatabaseFilters = @{
 		relic = $someBoolean
 	}
 	# OPTIONAL
+	sensitivityStatusFilter = @{
+		# REQUIRED
+		sensitivityStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	protectionStatusFilter = @{
+		# REQUIRED
+		protectionStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	serverFilter = @{
 		# REQUIRED
 		serverNames = @(
 			$someString
 		)
 	}
-}"
+}
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
