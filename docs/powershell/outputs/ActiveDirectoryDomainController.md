@@ -25,6 +25,10 @@ Active Directory Domain Controller.
   - Includes statistics for the protected objects, for example, archive storage.
 - activeDirectoryDomain: ActiveDirectoryDomain
   - Active Directory Domain to which this domain controller belongs to.
+- hypervVirtualMachines: HyperVVirtualMachineConnection
+  - Hyper-V virtual machine associated with the domain controller.
+- vsphereVirtualMachines: VsphereVmConnection
+  - VMWare virtual machine associated with the domain controller.
 - cluster: Cluster
   - Rubrik cluster UUID.
 - dcLocation: System.String

@@ -189,6 +189,21 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LINUX_HOST")]
         LINUX_HOST,
 
+        [EnumMember(Value = "M365_BACKUP_STORAGE_GROUP")]
+        M365_BACKUP_STORAGE_GROUP,
+
+        [EnumMember(Value = "M365_BACKUP_STORAGE_MAILBOX")]
+        M365_BACKUP_STORAGE_MAILBOX,
+
+        [EnumMember(Value = "M365_BACKUP_STORAGE_ONEDRIVE")]
+        M365_BACKUP_STORAGE_ONEDRIVE,
+
+        [EnumMember(Value = "M365_BACKUP_STORAGE_ORG")]
+        M365_BACKUP_STORAGE_ORG,
+
+        [EnumMember(Value = "M365_BACKUP_STORAGE_SITE")]
+        M365_BACKUP_STORAGE_SITE,
+
         [EnumMember(Value = "MANAGED_VOLUME")]
         MANAGED_VOLUME,
 

@@ -33,6 +33,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmClusterId")]
         public System.String? CdmClusterId { get; set; }
 
+        //      C# -> System.String? Username
+        // GraphQL -> username: String (scalar)
+        [JsonProperty("username")]
+        public System.String? Username { get; set; }
+
+        //      C# -> System.String? Password
+        // GraphQL -> password: String (scalar)
+        [JsonProperty("password")]
+        public System.String? Password { get; set; }
+
 
         #endregion
 

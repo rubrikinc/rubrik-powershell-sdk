@@ -5,6 +5,7 @@ User audit object type.
 - TPR_POLICY - TPR policy type.
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain type.
 - K8S_CLUSTER - Kubernetes Cluster type.
+- M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
 - DATA_CENTER_CLOUD_ACCOUNT - Data Center Cloud Account.
 - OracleRac - Oracle RAC type.
 - IpWhitelist - IP whitelist type.
@@ -25,6 +26,8 @@ User audit object type.
 - TPR_REQUEST - TPR request type.
 - VolumeGroup - Volume group type.
 - MONGO_COLLECTION - MongoDB Collection type.
+- M365_BACKUP_STORAGE_ORG - M365 Backup Storage Organization.
+- M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
 - O365Group - Office 365 Group type.
 - NutanixVm - Nutanix virtual machine type.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
@@ -102,6 +105,7 @@ User audit object type.
 - O365SharepointList - Office 365 SharePoint list type.
 - Storm - Storm type.
 - Sla - SLA Domain type.
+- M365_BACKUP_STORAGE_SITE - Microsoft 365 Backup Storage SharePoint Site.
 - Blueprint - Blueprint type.
 - Ec2Instance - EC2 instance type.
 - NUTANIX_ERA - Nutanix Era type.
@@ -116,6 +120,7 @@ User audit object type.
 - EXCHANGE_DAG - Exchange DAG type.
 - OracleDb - Oracle database type.
 - FailoverClusterApp - Failover cluster app type.
+- M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
 - Host - Host type.
 - GcpNativeDisk - GCP native disk type.
 - JIRA_SETTINGS - Atlassian Jira settings.

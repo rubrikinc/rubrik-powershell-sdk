@@ -186,6 +186,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nasSystem")]
         public NasSystem? NasSystem { get; set; }
 
+        //      C# -> NasVolume? NasVolume
+        // GraphQL -> nasVolume: NasVolume (type)
+        [JsonProperty("nasVolume")]
+        public NasVolume? NasVolume { get; set; }
+
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
         [JsonProperty("pendingObjectDeletionStatus")]
@@ -297,6 +302,7 @@ namespace RubrikSecurityCloud.Types
         NasShareLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
         NasSystem? NasSystem = null,
+        NasVolume? NasVolume = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
@@ -403,6 +409,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NasSystem != null ) {
             this.NasSystem = NasSystem;
+        }
+        if ( NasVolume != null ) {
+            this.NasVolume = NasVolume;
         }
         if ( PendingObjectDeletionStatus != null ) {
             this.PendingObjectDeletionStatus = PendingObjectDeletionStatus;
@@ -777,6 +786,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "nasSystem" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> NasVolume? NasVolume
+        // GraphQL -> nasVolume: NasVolume (type)
+        if (this.NasVolume != null) {
+            var fspec = this.NasVolume.AsFieldSpec(conf.Child("nasVolume"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nasVolume" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1467,6 +1488,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NasSystem != null && ec.Excludes("nasSystem",false))
         {
             this.NasSystem = null;
+        }
+        //      C# -> NasVolume? NasVolume
+        // GraphQL -> nasVolume: NasVolume (type)
+        if (ec.Includes("nasVolume",false))
+        {
+            if(this.NasVolume == null) {
+
+                this.NasVolume = new NasVolume();
+                this.NasVolume.ApplyExploratoryFieldSpec(ec.NewChild("nasVolume"));
+
+            } else {
+
+                this.NasVolume.ApplyExploratoryFieldSpec(ec.NewChild("nasVolume"));
+
+            }
+        }
+        else if (this.NasVolume != null && ec.Excludes("nasVolume",false))
+        {
+            this.NasVolume = null;
         }
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)

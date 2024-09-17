@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_EC2_INSTANCE_ID")]
         AWS_NATIVE_EC2_INSTANCE_ID,
 
+        [EnumMember(Value = "AWS_NATIVE_FEATURE_CONNECTED_STATUS")]
+        AWS_NATIVE_FEATURE_CONNECTED_STATUS,
+
         [EnumMember(Value = "AWS_NATIVE_RDS_DB_ENGINE")]
         AWS_NATIVE_RDS_DB_ENGINE,
 
@@ -417,6 +420,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_VM_BY_AGENT_STATUS")]
         HYPERV_VM_BY_AGENT_STATUS,
 
+        [EnumMember(Value = "HYPERV_VM_MAC_ADDRESS")]
+        HYPERV_VM_MAC_ADDRESS,
+
         [EnumMember(Value = "IS_ACTIVE")]
         IS_ACTIVE,
 
@@ -740,6 +746,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VMWARE_VCD_HOSTNAME")]
         VMWARE_VCD_HOSTNAME,
+
+        [EnumMember(Value = "VMWARE_VM_MAC_ADDRESS")]
+        VMWARE_VM_MAC_ADDRESS,
 
         [EnumMember(Value = "VMWARE_VM_MOID")]
         VMWARE_VM_MOID,

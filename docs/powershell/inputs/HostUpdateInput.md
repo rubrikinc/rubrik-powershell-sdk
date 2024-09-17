@@ -39,8 +39,7 @@ Supported in v5.0+
   - Supported in v9.0+
       A Boolean that specifies whether the host refresh is paused or not.
 - mssqlSddCertificateId: System.String
-  - Supported in v9.3
-      Certificate ID corresponding to the public key certificate of the CA that signed the SQL server certificate. This will be used to validate identity of the SQL server host when using Sensitive Data Discovery.
+  - Supported in v9.3. The certificate ID is the identifier associated with the public key certificate issued by the Certificate Authority (CA) that signed the SQL Server certificate. This ID is used to validate the identity of the SQL Server host during Sensitive Data Discovery.
 - hostVfdEnabled: HostVfdInstallConfig
   - Supported in v5.0+
 - mssqlCbtEnabled: MssqlCbtStatusType

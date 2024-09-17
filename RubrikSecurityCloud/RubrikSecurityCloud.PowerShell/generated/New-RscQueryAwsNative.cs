@@ -354,6 +354,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	awsNativeFeatureStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -572,6 +577,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		orgIds = @(
     /// 			$someString
     /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsNativeFeatureStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	}
     /// }
     /// # OPTIONAL
@@ -885,6 +895,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		orgIds = @(
     /// 			$someString
     /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsNativeFeatureStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	}
     /// }
     /// # OPTIONAL
@@ -1630,6 +1645,11 @@ $query.Var.ebsVolumeFilters = @{
 			$someString
 		)
 	}
+	# OPTIONAL
+	awsNativeFeatureStatusFilter = @{
+		# REQUIRED
+		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	}
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -1857,6 +1877,11 @@ $query.Var.ec2InstanceFilters = @{
 		orgIds = @(
 			$someString
 		)
+	}
+	# OPTIONAL
+	awsNativeFeatureStatusFilter = @{
+		# REQUIRED
+		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	}
 }
 # OPTIONAL
@@ -2177,6 +2202,11 @@ $query.Var.rdsInstanceFilters = @{
 		orgIds = @(
 			$someString
 		)
+	}
+	# OPTIONAL
+	awsNativeFeatureStatusFilter = @{
+		# REQUIRED
+		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	}
 }
 # OPTIONAL

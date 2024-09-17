@@ -1,7 +1,7 @@
 ### ArchivalLocationToClusterMapping
-Mapping between archival location and Rubrik cluster.
+Mapping between the archival location and the Rubrik cluster.
 
 - cluster: SlaArchivalCluster
-  - Cluster on which the archival location is created.
+  - Cluster on which you created the archival location.
 - location: DlsArchivalLocation
-  - Location used as archival target.
+  - Location used as the archival target.

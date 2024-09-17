@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> BackupStorageProtectionStatus? BackupStorageProtectionStatus
+        // GraphQL -> backupStorageProtectionStatus: BackupStorageProtectionStatus! (enum)
+        [JsonProperty("backupStorageProtectionStatus")]
+        public BackupStorageProtectionStatus? BackupStorageProtectionStatus { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -239,6 +244,7 @@ namespace RubrikSecurityCloud.Types
 
     public M365BackupStorageOnedrive Set(
         List<Operation>? AuthorizedOperations = null,
+        BackupStorageProtectionStatus? BackupStorageProtectionStatus = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
@@ -270,6 +276,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( BackupStorageProtectionStatus != null ) {
+            this.BackupStorageProtectionStatus = BackupStorageProtectionStatus;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -373,6 +382,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> BackupStorageProtectionStatus? BackupStorageProtectionStatus
+        // GraphQL -> backupStorageProtectionStatus: BackupStorageProtectionStatus! (enum)
+        if (this.BackupStorageProtectionStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupStorageProtectionStatus\n" ;
+            } else {
+                s += ind + "backupStorageProtectionStatus\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -695,6 +713,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> BackupStorageProtectionStatus? BackupStorageProtectionStatus
+        // GraphQL -> backupStorageProtectionStatus: BackupStorageProtectionStatus! (enum)
+        if (ec.Includes("backupStorageProtectionStatus",true))
+        {
+            if(this.BackupStorageProtectionStatus == null) {
+
+                this.BackupStorageProtectionStatus = new BackupStorageProtectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupStorageProtectionStatus != null && ec.Excludes("backupStorageProtectionStatus",true))
+        {
+            this.BackupStorageProtectionStatus = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)

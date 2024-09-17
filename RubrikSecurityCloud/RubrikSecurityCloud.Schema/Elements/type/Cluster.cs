@@ -242,7 +242,7 @@ namespace RubrikSecurityCloud.Types
         public ConfigProtectionInfo? ConfigProtectionInfo { get; set; }
 
         //      C# -> CyberEventLockdownSupportCaseDetails? CyberEventLockdownSupportCaseDetails
-        // GraphQL -> cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails! (type)
+        // GraphQL -> cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails (type)
         [JsonProperty("cyberEventLockdownSupportCaseDetails")]
         public CyberEventLockdownSupportCaseDetails? CyberEventLockdownSupportCaseDetails { get; set; }
 
@@ -1111,7 +1111,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> CyberEventLockdownSupportCaseDetails? CyberEventLockdownSupportCaseDetails
-        // GraphQL -> cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails! (type)
+        // GraphQL -> cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails (type)
         if (this.CyberEventLockdownSupportCaseDetails != null) {
             var fspec = this.CyberEventLockdownSupportCaseDetails.AsFieldSpec(conf.Child("cyberEventLockdownSupportCaseDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -2106,7 +2106,7 @@ namespace RubrikSecurityCloud.Types
             this.ConfigProtectionInfo = null;
         }
         //      C# -> CyberEventLockdownSupportCaseDetails? CyberEventLockdownSupportCaseDetails
-        // GraphQL -> cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails! (type)
+        // GraphQL -> cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails (type)
         if (ec.Includes("cyberEventLockdownSupportCaseDetails",false))
         {
             if(this.CyberEventLockdownSupportCaseDetails == null) {

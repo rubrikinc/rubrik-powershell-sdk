@@ -85,6 +85,11 @@ Create a new custom analyzer.
 
 - There is a single argument of type CreateCustomAnalyzerInput.
 - Returns Analyzer.
+### createdistributionlistdigestbatch
+Create distribution list digests for specific recipients.
+
+- There is a single argument of type CreateDistributionListDigestBatchInput.
+- Returns System.String.
 ### createeventdigestbatch
 Create event digests for specific recipients.
 
@@ -256,6 +261,11 @@ Manage protection for linked objects, allowing objects to be linked or unlinked 
 
 - There is a single argument of type ManageProtectionForLinkedObjectsInput.
 - Returns CreateOnDemandJobReply.
+### modifydistributionlistdigestbatch
+Modify distribution list digests.
+
+- There is a single argument of type ModifyDistributionListDigestBatchInput.
+- Returns System.String.
 ### modifyeventdigestbatch
 Modify event digests for specific recipients.
 

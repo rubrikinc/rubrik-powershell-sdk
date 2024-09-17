@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> KubernetesProtectionSetCreationType? CreationType
+        // GraphQL -> creationType: KubernetesProtectionSetCreationType! (enum)
+        [JsonProperty("creationType")]
+        public KubernetesProtectionSetCreationType? CreationType { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -344,6 +349,7 @@ namespace RubrikSecurityCloud.Types
 
     public KubernetesProtectionSet Set(
         List<Operation>? AuthorizedOperations = null,
+        KubernetesProtectionSetCreationType? CreationType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
@@ -393,6 +399,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( CreationType != null ) {
+            this.CreationType = CreationType;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -550,6 +559,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> KubernetesProtectionSetCreationType? CreationType
+        // GraphQL -> creationType: KubernetesProtectionSetCreationType! (enum)
+        if (this.CreationType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "creationType\n" ;
+            } else {
+                s += ind + "creationType\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -1063,6 +1081,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> KubernetesProtectionSetCreationType? CreationType
+        // GraphQL -> creationType: KubernetesProtectionSetCreationType! (enum)
+        if (ec.Includes("creationType",true))
+        {
+            if(this.CreationType == null) {
+
+                this.CreationType = new KubernetesProtectionSetCreationType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreationType != null && ec.Excludes("creationType",true))
+        {
+            this.CreationType = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)

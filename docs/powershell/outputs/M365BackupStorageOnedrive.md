@@ -7,6 +7,8 @@ Microsoft 365 Backup Storage OneDrive.
   - The user principal name of the OneDrive.
 - preferredDataLocation: System.String
   - The preferred data location of the OneDrive.
+- backupStorageProtectionStatus: BackupStorageProtectionStatus
+  - Protection status in Microsoft 365 Backup Storage.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String

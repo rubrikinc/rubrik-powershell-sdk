@@ -230,7 +230,7 @@ List of sites in the O365Org.
     - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
     - o365OrgId - System.String: The fid for the O365 organization.
-    - excludeChildSites - System.Boolean: If true, nested children sites will be excluded from the results.
+    - excludeChildSites - System.Boolean: When excludeChildSites is set to true, nested child sites are excluded from the results. If not specified, nested child sites are included.
 - Returns O365SiteConnection.
 ### storagestats
 Returns the storage stats of an O365 org.

@@ -23,5 +23,9 @@ Cloud account features.
 - AZURE_LAMINAR_OUTPOST_MANAGED_IDENTITY - Cloud account feature is Azure Laminar Outpost Managed Identity.
 - AZURE_LAMINAR_TARGET_APPLICATION - Cloud account feature is Azure Laminar Target Application.
 - AZURE_LAMINAR_TARGET_MANAGED_IDENTITY - Cloud account feature is Azure Laminar Target Managed Identity.
+- LAMINAR_OUTPOST_APPLICATION - Cloud account feature is Azure Laminar Outpost Application.
+- LAMINAR_OUTPOST_MANAGED_IDENTITY - Cloud account feature is Azure Laminar Outpost Managed Identity.
+- LAMINAR_TARGET_APPLICATION - Cloud account feature is Azure Laminar Target Application.
+- LAMINAR_TARGET_MANAGED_IDENTITY - Cloud account feature is Azure Laminar Target Managed Identity.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

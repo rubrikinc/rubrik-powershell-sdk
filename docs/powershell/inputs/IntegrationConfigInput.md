@@ -7,3 +7,5 @@ Holds the configuration of a single integration. Note that IntegrationConfig
   - The Data Loss Prevention configuration.
 - serviceNowItsm: ServiceNowItsmIntegrationConfigInput
   - The ServiceNow ITSM configuration.
+- okta: OktaIntegrationConfigInput
+  - The OKTA configuration.

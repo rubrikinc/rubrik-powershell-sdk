@@ -28,6 +28,11 @@ Take a bulk on-demand backup of a Microsoft SQL Database.
 
 - There is a single argument of type BulkCreateOnDemandMssqlBackupInput.
 - Returns AsyncRequestStatus.
+### bulkexportdatabases
+Supported in v9.2+. Create a request to export multiple SQL Server databases to a new location. To check the result of the request, use `mssqlJobStatus` query with the `id` of the request object returned by this API.
+
+- There is a single argument of type BulkExportMssqlDatabasesInput.
+- Returns AsyncRequestStatus.
 ### bulkupdateavailabilitygroup
 Update multiple Microsoft SQL Availability Groups with the specified properties.
 

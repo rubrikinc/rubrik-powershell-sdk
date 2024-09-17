@@ -375,6 +375,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			nutanixClusterId = $someString
     /// 			# REQUIRED
     /// 			cdmClusterId = $someString
+    /// 			# OPTIONAL
+    /// 			username = $someString
+    /// 			# OPTIONAL
+    /// 			password = $someString
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1886,6 +1890,10 @@ $query.Var.input = @{
 			nutanixClusterId = $someString
 			# REQUIRED
 			cdmClusterId = $someString
+			# OPTIONAL
+			username = $someString
+			# OPTIONAL
+			password = $someString
 		}
 	)
 	# OPTIONAL
