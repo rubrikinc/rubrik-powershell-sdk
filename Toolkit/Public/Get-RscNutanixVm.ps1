@@ -70,7 +70,8 @@ function Get-RscNutanixVm {
             $query = New-RscQuery -GqlQuery nutanixVms
             $query.var.filter = @()
             $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-            $query.Field.Nodes.Cluster.id = "PIZZA"
+            $query.Field.Nodes[0].Cluster.id = "FETCH"
+            $query.Field.Nodes[0].Cluster.name = "FETCH"
             $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.NutanixVmAgentStatus
             $query.Field.Nodes[0].AgentStatus.connectionStatus = New-Object -typename RubrikSecurityCloud.Types.NutanixVmAgentConnectionStatus
             $query.Field.Nodes[0].osType = New-Object -TypeName RubrikSecurityCloud.Types.OsType
