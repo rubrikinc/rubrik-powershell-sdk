@@ -10,6 +10,11 @@ Delete a webhook.
 
 - There is a single argument of type DeleteWebhookInput.
 - Returns System.String.
+### deletev2
+Delete webhook config.
+
+- There is a single argument of type DeleteWebhookV2Input.
+- Returns System.String.
 ### test
 Test a webhook configuration.
 

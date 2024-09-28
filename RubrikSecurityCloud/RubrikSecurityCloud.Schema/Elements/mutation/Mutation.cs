@@ -703,6 +703,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? ApproveTprRequest
+        // GraphQL -> approveTprRequest: Void (scalar)
+        public static string ApproveTprRequest(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "approveTprRequest" + args + "\n";
+        }
+        public static object ApproveTprRequestFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? ArchiveCrawl
         // GraphQL -> archiveCrawl: String! (scalar)
         public static string ArchiveCrawl(object fsObj)
@@ -820,6 +838,24 @@ namespace RubrikSecurityCloud.Types
             return "cancelThreatHunt" + args + "\n";
         }
         public static object CancelThreatHuntFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? CancelTprRequest
+        // GraphQL -> cancelTprRequest: Void (scalar)
+        public static string CancelTprRequest(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cancelTprRequest" + args + "\n";
+        }
+        public static object CancelTprRequestFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -1531,6 +1567,24 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.String? DeleteTprPolicy
+        // GraphQL -> deleteTprPolicy: Void (scalar)
+        public static string DeleteTprPolicy(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteTprPolicy" + args + "\n";
+        }
+        public static object DeleteTprPolicyFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.Boolean? DeleteUsersFromAccount
         // GraphQL -> deleteUsersFromAccount: Boolean! (scalar)
         public static string DeleteUsersFromAccount(object fsObj)
@@ -1567,6 +1621,42 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? DeleteWebhookV2
+        // GraphQL -> deleteWebhookV2: Void (scalar)
+        public static string DeleteWebhookV2(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteWebhookV2" + args + "\n";
+        }
+        public static object DeleteWebhookV2FieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? DenyTprRequests
+        // GraphQL -> denyTprRequests: Void (scalar)
+        public static string DenyTprRequests(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "denyTprRequests" + args + "\n";
+        }
+        public static object DenyTprRequestsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? DeregisterPrivateContainerRegistry
         // GraphQL -> deregisterPrivateContainerRegistry: Void (scalar)
         public static string DeregisterPrivateContainerRegistry(object fsObj)
@@ -1594,6 +1684,24 @@ namespace RubrikSecurityCloud.Types
             return "disableSupportUserAccess" + args + "\n";
         }
         public static object DisableSupportUserAccessFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? DisableTprOrg
+        // GraphQL -> disableTprOrg: Void (scalar)
+        public static string DisableTprOrg(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "disableTprOrg" + args + "\n";
+        }
+        public static object DisableTprOrgFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -1657,6 +1765,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? EnableTprOrg
+        // GraphQL -> enableTprOrg: Void (scalar)
+        public static string EnableTprOrg(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "enableTprOrg" + args + "\n";
+        }
+        public static object EnableTprOrgFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? ExcludeAwsNativeEbsVolumesFromSnapshot
         // GraphQL -> excludeAwsNativeEbsVolumesFromSnapshot: Void (scalar)
         public static string ExcludeAwsNativeEbsVolumesFromSnapshot(object fsObj)
@@ -1702,6 +1828,24 @@ namespace RubrikSecurityCloud.Types
             return "excludeSharepointObjectsFromProtection" + args + "\n";
         }
         public static object ExcludeSharepointObjectsFromProtectionFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? ExecuteTprRequests
+        // GraphQL -> executeTprRequests: Void (scalar)
+        public static string ExecuteTprRequests(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "executeTprRequests" + args + "\n";
+        }
+        public static object ExecuteTprRequestsFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -2377,6 +2521,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? SubmitTprRequest
+        // GraphQL -> submitTprRequest: Void (scalar)
+        public static string SubmitTprRequest(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "submitTprRequest" + args + "\n";
+        }
+        public static object SubmitTprRequestFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? SwitchProductToOnboardingMode
         // GraphQL -> switchProductToOnboardingMode: Void (scalar)
         public static string SwitchProductToOnboardingMode(object fsObj)
@@ -2566,6 +2728,24 @@ namespace RubrikSecurityCloud.Types
             return "updateCloudNativeLabelRule" + args + "\n";
         }
         public static object UpdateCloudNativeLabelRuleFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? UpdateCloudNativeRootThreatMonitoringEnablement
+        // GraphQL -> updateCloudNativeRootThreatMonitoringEnablement: Void (scalar)
+        public static string UpdateCloudNativeRootThreatMonitoringEnablement(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateCloudNativeRootThreatMonitoringEnablement" + args + "\n";
+        }
+        public static object UpdateCloudNativeRootThreatMonitoringEnablementFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -2854,6 +3034,42 @@ namespace RubrikSecurityCloud.Types
             return "updateSupportUserAccess" + args + "\n";
         }
         public static object UpdateSupportUserAccessFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? UpdateTprConfiguration
+        // GraphQL -> updateTprConfiguration: Void (scalar)
+        public static string UpdateTprConfiguration(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateTprConfiguration" + args + "\n";
+        }
+        public static object UpdateTprConfigurationFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? UpdateTprPolicy
+        // GraphQL -> updateTprPolicy: Void (scalar)
+        public static string UpdateTprPolicy(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateTprPolicy" + args + "\n";
+        }
+        public static object UpdateTprPolicyFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -5995,6 +6211,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CreateTprPolicyReply? CreateTprPolicy
+        // GraphQL -> createTprPolicy: CreateTprPolicyReply! (type)
+        public static string CreateTprPolicy(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "createTprPolicy" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CreateTprPolicyFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new CreateTprPolicyReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CreateVappsInstantRecoveryReply? CreateVappsInstantRecovery
         // GraphQL -> createVappsInstantRecovery: CreateVappsInstantRecoveryReply! (type)
         public static string CreateVappsInstantRecovery(object fsObj)
@@ -7003,6 +7237,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> DownloadCdmTprConfigAsyncReply? DownloadCdmTprConfigurationAsync
+        // GraphQL -> downloadCdmTprConfigurationAsync: DownloadCdmTprConfigAsyncReply! (type)
+        public static string DownloadCdmTprConfigurationAsync(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "downloadCdmTprConfigurationAsync" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadCdmTprConfigurationAsyncFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new DownloadCdmTprConfigAsyncReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? DownloadDb2Snapshot
         // GraphQL -> downloadDb2Snapshot: AsyncRequestStatus! (type)
         public static string DownloadDb2Snapshot(object fsObj)
@@ -7228,6 +7480,24 @@ namespace RubrikSecurityCloud.Types
             return "downloadHypervVirtualMachineSnapshotFiles" + args + "\n{\n" + fs + "}\n";
         }
         public static object DownloadHypervVirtualMachineSnapshotFilesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? DownloadK8sSnapshotFromLocation
+        // GraphQL -> downloadK8sSnapshotFromLocation: AsyncRequestStatus! (type)
+        public static string DownloadK8sSnapshotFromLocation(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "downloadK8sSnapshotFromLocation" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadK8sSnapshotFromLocationFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -7827,6 +8097,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new RequestSuccess() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ExocomputeClusterConnectReply? ExocomputeClusterConnect
+        // GraphQL -> exocomputeClusterConnect: ExocomputeClusterConnectReply! (type)
+        public static string ExocomputeClusterConnect(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "exocomputeClusterConnect" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ExocomputeClusterConnectFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ExocomputeClusterConnectReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

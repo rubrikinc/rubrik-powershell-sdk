@@ -42,7 +42,7 @@ Paginated list of HyperV SCVMMs.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns HyperVSCVMMConnection.
 ### server
@@ -65,7 +65,7 @@ Paginated list of Hyper-V Servers.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns HypervServerConnection.
 ### topleveldescendants
@@ -75,7 +75,7 @@ Paginated list of the highest-level HyperV Objects accessible by the current use
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
     - filter - list of Filters: The hierarchy object filter.
 - Returns HypervTopLevelDescendantTypeConnection.
@@ -112,7 +112,7 @@ Paginated list of HyperV Virtual Machines.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns HyperVVirtualMachineConnection.
 ### vmdetail

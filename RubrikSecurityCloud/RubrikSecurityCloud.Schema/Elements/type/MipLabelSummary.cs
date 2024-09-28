@@ -1,4 +1,4 @@
-// LatestSnapshotDetails.cs
+// MipLabelSummary.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -15,20 +15,20 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region LatestSnapshotDetails
-    public class LatestSnapshotDetails: BaseType
+    #region MipLabelSummary
+    public class MipLabelSummary: BaseType
     {
         #region members
 
-        //      C# -> System.String? SnapshotId
-        // GraphQL -> snapshotId: String! (scalar)
-        [JsonProperty("snapshotId")]
-        public System.String? SnapshotId { get; set; }
+        //      C# -> SummaryCount? FilesCount
+        // GraphQL -> filesCount: SummaryCount (type)
+        [JsonProperty("filesCount")]
+        public SummaryCount? FilesCount { get; set; }
 
-        //      C# -> DateTime? SnapshotTime
-        // GraphQL -> snapshotTime: DateTime (scalar)
-        [JsonProperty("snapshotTime")]
-        public DateTime? SnapshotTime { get; set; }
+        //      C# -> MipLabel? MipLabel
+        // GraphQL -> mipLabel: MipLabel (type)
+        [JsonProperty("mipLabel")]
+        public MipLabel? MipLabel { get; set; }
 
 
         #endregion
@@ -36,19 +36,19 @@ namespace RubrikSecurityCloud.Types
     #region methods
 
     public override string GetGqlTypeName() {
-        return "LatestSnapshotDetails";
+        return "MipLabelSummary";
     }
 
-    public LatestSnapshotDetails Set(
-        System.String? SnapshotId = null,
-        DateTime? SnapshotTime = null
+    public MipLabelSummary Set(
+        SummaryCount? FilesCount = null,
+        MipLabel? MipLabel = null
     ) 
     {
-        if ( SnapshotId != null ) {
-            this.SnapshotId = SnapshotId;
+        if ( FilesCount != null ) {
+            this.FilesCount = FilesCount;
         }
-        if ( SnapshotTime != null ) {
-            this.SnapshotTime = SnapshotTime;
+        if ( MipLabel != null ) {
+            this.MipLabel = MipLabel;
         }
         return this;
     }
@@ -64,22 +64,28 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> System.String? SnapshotId
-        // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "snapshotId\n" ;
-            } else {
-                s += ind + "snapshotId\n" ;
+        //      C# -> SummaryCount? FilesCount
+        // GraphQL -> filesCount: SummaryCount (type)
+        if (this.FilesCount != null) {
+            var fspec = this.FilesCount.AsFieldSpec(conf.Child("filesCount"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "filesCount" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
-        //      C# -> DateTime? SnapshotTime
-        // GraphQL -> snapshotTime: DateTime (scalar)
-        if (this.SnapshotTime != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "snapshotTime\n" ;
-            } else {
-                s += ind + "snapshotTime\n" ;
+        //      C# -> MipLabel? MipLabel
+        // GraphQL -> mipLabel: MipLabel (type)
+        if (this.MipLabel != null) {
+            var fspec = this.MipLabel.AsFieldSpec(conf.Child("mipLabel"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mipLabel" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -89,50 +95,54 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
-        //      C# -> System.String? SnapshotId
-        // GraphQL -> snapshotId: String! (scalar)
-        if (ec.Includes("snapshotId",true))
+        //      C# -> SummaryCount? FilesCount
+        // GraphQL -> filesCount: SummaryCount (type)
+        if (ec.Includes("filesCount",false))
         {
-            if(this.SnapshotId == null) {
+            if(this.FilesCount == null) {
 
-                this.SnapshotId = "FETCH";
+                this.FilesCount = new SummaryCount();
+                this.FilesCount.ApplyExploratoryFieldSpec(ec.NewChild("filesCount"));
 
             } else {
 
+                this.FilesCount.ApplyExploratoryFieldSpec(ec.NewChild("filesCount"));
 
             }
         }
-        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        else if (this.FilesCount != null && ec.Excludes("filesCount",false))
         {
-            this.SnapshotId = null;
+            this.FilesCount = null;
         }
-        //      C# -> DateTime? SnapshotTime
-        // GraphQL -> snapshotTime: DateTime (scalar)
-        if (ec.Includes("snapshotTime",true))
+        //      C# -> MipLabel? MipLabel
+        // GraphQL -> mipLabel: MipLabel (type)
+        if (ec.Includes("mipLabel",false))
         {
-            if(this.SnapshotTime == null) {
+            if(this.MipLabel == null) {
 
-                this.SnapshotTime = new DateTime();
+                this.MipLabel = new MipLabel();
+                this.MipLabel.ApplyExploratoryFieldSpec(ec.NewChild("mipLabel"));
 
             } else {
 
+                this.MipLabel.ApplyExploratoryFieldSpec(ec.NewChild("mipLabel"));
 
             }
         }
-        else if (this.SnapshotTime != null && ec.Excludes("snapshotTime",true))
+        else if (this.MipLabel != null && ec.Excludes("mipLabel",false))
         {
-            this.SnapshotTime = null;
+            this.MipLabel = null;
         }
     }
 
 
     #endregion
 
-    } // class LatestSnapshotDetails
+    } // class MipLabelSummary
     
     #endregion
 
-    public static class ListLatestSnapshotDetailsExtensions
+    public static class ListMipLabelSummaryExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of properties that are not null in an object.
@@ -151,14 +161,14 @@ namespace RubrikSecurityCloud.Types
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
-            this List<LatestSnapshotDetails> list,
+            this List<MipLabelSummary> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
             return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
-        public static List<string> SelectedFields(this List<LatestSnapshotDetails> list)
+        public static List<string> SelectedFields(this List<MipLabelSummary> list)
         {
             return StringUtils.FieldSpecStringToList(
                 list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
@@ -167,16 +177,16 @@ namespace RubrikSecurityCloud.Types
 
 
         public static void ApplyExploratoryFieldSpec(
-            this List<LatestSnapshotDetails> list, 
+            this List<MipLabelSummary> list, 
             ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
-                list.Add(new LatestSnapshotDetails());
+                list.Add(new MipLabelSummary());
             }
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void SelectForRetrieval(this List<LatestSnapshotDetails> list)
+        public static void SelectForRetrieval(this List<MipLabelSummary> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

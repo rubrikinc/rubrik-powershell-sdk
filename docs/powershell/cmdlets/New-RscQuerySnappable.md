@@ -48,7 +48,7 @@ Search over Exchange contacts.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns HierarchySnappableConnection.
 ### list
@@ -57,7 +57,7 @@ Search over Exchange contacts.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - SnappableSortByEnum: Sort workloads by field.
     - filter - SnappableFilterInput: Filter protected objects by input.
 - Returns SnappableConnection.
@@ -75,7 +75,7 @@ Search over Exchange contacts.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - SnappableSortByEnum: Sort workloads by field.
     - filter - SnappableFilterInputWithSearch: Filter workloads by input (with search by name).
 - Returns SnappableConnection.

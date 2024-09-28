@@ -16,7 +16,7 @@ Paginated list of all AWS Native accounts.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeAccountSortFields: Sort fields for list of AWS accounts.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - accountFilters - AwsNativeAccountFilters
     - authorizedOperationFilter - Operation
     - awsNativeProtectionFeature - AwsNativeProtectionFeature: Cloud native protection feature.
@@ -42,7 +42,7 @@ Paginated list of all AWS EBS Volumes.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeEbsVolumeSortFields: Sort fields for list of AWS EBS volumes.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - ebsVolumeFilters - AwsNativeEbsVolumeFilters: Filter for EBS volumes.
     - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AwsNativeEbsVolumeConnection.
@@ -55,7 +55,7 @@ Paginated list of all AWS EBS Volumes by name or substring of name.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeEbsVolumeSortFields: Sort fields for list of AWS EBS volumes.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - ebsVolumeName - System.String: The native name for the AWS EBS Volume object.
 - Returns AwsNativeEbsVolumeConnection.
 ### ec2instance
@@ -74,7 +74,7 @@ Paginated list of all AWS EC2 Instances.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeEc2InstanceSortFields: Sort fields for list of AWS EC2 instances.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - descendantTypeFilter - list of HierarchyObjectTypeEnums: Filter the CDM cloud hosts by workload type.
     - ec2InstanceFilters - AwsNativeEc2InstanceFilters: Filter for EC2 instances.
     - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
@@ -88,7 +88,7 @@ Paginated list of all AWS EC2 Instances by name or substring of name.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeEc2InstanceSortFields: Sort fields for list of AWS EC2 instances.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - ec2InstanceName - System.String: Native name for the AWS EC2 Instance object.
 - Returns AwsNativeEc2InstanceConnection.
 ### isebsvolumesnapshotrestorable
@@ -136,7 +136,7 @@ Paginated list of AWS RDS Instances on AWS Native account.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeRdsInstanceSortFields: Sort fields for list of AWS RDS instances.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - rdsInstanceFilters - AwsNativeRdsInstanceFilters: Filter for RDS instances.
     - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AwsNativeRdsInstanceConnection.

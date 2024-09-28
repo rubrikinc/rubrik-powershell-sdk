@@ -88,7 +88,7 @@ Paginated list of Microsoft SQL Databases.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns MssqlDatabaseConnection.
 ### defaultproperties
@@ -131,7 +131,7 @@ Paginated list of the highest-level Microsoft SQL Objects accessible by the curr
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
     - filter - list of Filters: The hierarchy object filter.
 - Returns MssqlTopLevelDescendantTypeConnection.

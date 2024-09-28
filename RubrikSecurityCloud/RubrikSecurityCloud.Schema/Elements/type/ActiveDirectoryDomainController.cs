@@ -171,6 +171,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> PhysicalHost? Host
+        // GraphQL -> host: PhysicalHost (type)
+        [JsonProperty("host")]
+        public PhysicalHost? Host { get; set; }
+
         //      C# -> HyperVvirtualMachineConnection? HypervVirtualMachines
         // GraphQL -> hypervVirtualMachines: HyperVVirtualMachineConnection (type)
         [JsonProperty("hypervVirtualMachines")]
@@ -398,6 +403,7 @@ namespace RubrikSecurityCloud.Types
         Cluster? Cluster = null,
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         PathNode? EffectiveSlaSourceObject = null,
+        PhysicalHost? Host = null,
         HyperVvirtualMachineConnection? HypervVirtualMachines = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
@@ -510,6 +516,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( Host != null ) {
+            this.Host = Host;
         }
         if ( HypervVirtualMachines != null ) {
             this.HypervVirtualMachines = HypervVirtualMachines;
@@ -893,6 +902,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> PhysicalHost? Host
+        // GraphQL -> host: PhysicalHost (type)
+        if (this.Host != null) {
+            var fspec = this.Host.AsFieldSpec(conf.Child("host"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "host" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1706,6 +1727,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> PhysicalHost? Host
+        // GraphQL -> host: PhysicalHost (type)
+        if (ec.Includes("host",false))
+        {
+            if(this.Host == null) {
+
+                this.Host = new PhysicalHost();
+                this.Host.ApplyExploratoryFieldSpec(ec.NewChild("host"));
+
+            } else {
+
+                this.Host.ApplyExploratoryFieldSpec(ec.NewChild("host"));
+
+            }
+        }
+        else if (this.Host != null && ec.Excludes("host",false))
+        {
+            this.Host = null;
         }
         //      C# -> HyperVvirtualMachineConnection? HypervVirtualMachines
         // GraphQL -> hypervVirtualMachines: HyperVVirtualMachineConnection (type)

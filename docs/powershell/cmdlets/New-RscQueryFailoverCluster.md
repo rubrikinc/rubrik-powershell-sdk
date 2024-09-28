@@ -12,7 +12,7 @@ Get a summary of all failover cluster apps.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - hostFailoverClusterRoot - HostFailoverClusterRoot: Host failover cluster root type.
 - Returns FailoverClusterAppConnection.
@@ -28,7 +28,7 @@ Get a summary of all host failover clusters.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - hostFailoverClusterRoot - HostFailoverClusterRoot: Host failover cluster root type.
 - Returns HostFailoverClusterConnection.
@@ -39,7 +39,7 @@ Get a summary of all failover cluster top level descendants.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
     - filter - list of Filters: The hierarchy object filter.
     - hostFailoverClusterRoot - HostFailoverClusterRoot: Host failover cluster root type.

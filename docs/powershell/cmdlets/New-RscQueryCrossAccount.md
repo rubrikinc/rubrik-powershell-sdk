@@ -10,5 +10,5 @@ List all cross-account clusters.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - filter - list of GetCrossAccountClustersFilters: Specification on how to filter a list of cross-account clusters.
     - sortBy - GetCrossAccountClustersSortByField: Specifies the field by which the list of cross-account clusters will be sorted.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
 - Returns CrossAccountClusterConnection.

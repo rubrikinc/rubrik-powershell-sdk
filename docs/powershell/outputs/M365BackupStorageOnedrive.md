@@ -9,6 +9,8 @@ Microsoft 365 Backup Storage OneDrive.
   - The preferred data location of the OneDrive.
 - backupStorageProtectionStatus: BackupStorageProtectionStatus
   - Protection status in Microsoft 365 Backup Storage.
+- isSyncingStatus: System.Boolean
+  - Specifies whether the OneDrive status is syncing with Microsoft 365 Backup Storage.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String

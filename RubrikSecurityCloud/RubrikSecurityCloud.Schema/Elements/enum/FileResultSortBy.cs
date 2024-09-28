@@ -78,6 +78,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "STALE_FILES_WITH_HITS")]
         STALE_FILES_WITH_HITS,
 
+        [EnumMember(Value = "TOTAL_SENSITIVE_HITS")]
+        TOTAL_SENSITIVE_HITS,
+
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN
 

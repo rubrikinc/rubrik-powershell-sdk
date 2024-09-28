@@ -19,3 +19,5 @@ Input to create RCS location.
   - Immutability lock period, in days.
 - shouldBypassProxy: System.Boolean
   - Specifies whether the proxy settings must be bypassed for  the RCV archival target.
+- redundancy: RcvRedundancy
+  - Redundancy for the RCV location.

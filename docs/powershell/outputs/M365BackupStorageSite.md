@@ -11,6 +11,8 @@ Microsoft 365 Backup Storage SharePoint Site.
   - The preferred data location of the SharePoint Site.
 - backupStorageProtectionStatus: BackupStorageProtectionStatus
   - Protection status in Microsoft 365 Backup Storage.
+- isSyncingStatus: System.Boolean
+  - Specifies whether the SharePoint Site status is syncing with Microsoft 365 Backup Storage.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String

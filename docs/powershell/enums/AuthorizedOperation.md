@@ -1,0 +1,175 @@
+### AuthorizedOperation
+Authorized operations on an object.
+
+- CREATE_REPORT
+- VIEW_REPORT
+- MODIFY_REPORT
+- DELETE_REPORT
+- ADD_CLUSTER
+- VIEW_CLUSTER
+- MODIFY_CLUSTER
+- DELETE_CLUSTER
+- UPGRADE_CLUSTER
+- MANAGE_CLUSTER_SETTINGS - Edit cluster settings.
+- MANAGE_CLUSTER_DISKS - Set up or remove disks on a cluster.
+- ADD_CLUSTER_NODES - Add nodes to the cluster.
+- REMOVE_CLUSTER_NODES - Remove nodes from the cluster.
+- VIEW_DASHBOARD
+- VIEW_SLA
+- MODIFY_SLA
+- CREATE_SLA
+- DELETE_SLA
+- MANAGE_SLA
+- TOGGLE_BLACKOUT_WINDOW
+- VIEW_SYS_EVENT
+- VIEW_NON_SYS_EVENT
+- CANCEL_RUNNING_EVENT
+- VIEW_AUDIT_LOG
+- VIEW_SYS_PREFERENCE
+- EDIT_SYS_PREFERENCE
+- VIEW_INVENTORY
+- MODIFY_INVENTORY
+- ADD_INVENTORY
+- DELETE_INVENTORY
+- MOUNT
+- EXPORT
+- INSTANT_RECOVER
+- DOWNLOAD
+- DOWNLOAD_FROM_ARCHIVAL_LOCATION
+- DELETE_SNAPSHOT
+- RESTORE
+- TAKE_ONDEMAND_SNAPSHOT
+- MANAGE_PROTECTION
+- MANAGE_DATA_SOURCE
+- REFRESH_DATA_SOURCE
+- EXPORT_FILES
+- EXPORT_SNAPSHOTS
+- RESTORE_TO_ORIGIN
+- PROVISION_ON_INFRASTRUCTURE
+- TRANSFER_ACCOUNT_OWNER
+- UPDATE_ACCOUNT_OWNERSHIP
+- CONFIGURE_DATA_CLASS_GLOBAL
+- VIEW_DATA_CLASS_GLOBAL
+- EXPORT_DATA_CLASS_GLOBAL
+- ADD_AWS_CLOUD_ACCOUNT
+- EDIT_AWS_CLOUD_ACCOUNT
+- VIEW_AWS_CLOUD_ACCOUNT
+- DELETE_AWS_CLOUD_ACCOUNT
+- ADD_STORAGE_SETTINGS
+- EDIT_STORAGE_SETTINGS
+- VIEW_STORAGE_SETTINGS
+- DELETE_STORAGE_SETTINGS
+- VIEW_SECURITY_SETTINGS
+- EDIT_SECURITY_SETTINGS
+- VIEW_USER_MANAGEMENT
+- EDIT_USER_MANAGEMENT
+- VIEW_ACCESS
+- MANAGE_ACCESS
+- ADD_AZURE_CLOUD_ACCOUNT
+- EDIT_AZURE_CLOUD_ACCOUNT
+- VIEW_AZURE_CLOUD_ACCOUNT
+- DELETE_AZURE_CLOUD_ACCOUNT
+- ADD_GCP_CLOUD_ACCOUNT
+- EDIT_GCP_CLOUD_ACCOUNT
+- VIEW_GCP_CLOUD_ACCOUNT
+- DELETE_GCP_CLOUD_ACCOUNT
+- VIEW_CDM_SYS_CONFIG
+- EDIT_CDM_SYS_CONFIG
+- VIEW_CDM_SUPPORT_SETTING
+- EDIT_CDM_SUPPORT_SETTING
+- VIEW_CDM_NETWORK_SETTING
+- EDIT_CDM_NETWORK_SETTING
+- MANAGE_LEGAL_HOLD
+- VIEW_ORGANIZATION
+- EDIT_ORGANIZATION
+- VIEW_REPLICATION_SETTINGS
+- EDIT_REPLICATION_SETTINGS
+- EDIT_NETWORK_THROTTLE_SETTINGS
+- VIEW_THREAT_HUNT_RESULTS
+- CREATE_THREAT_HUNT
+- EDIT_QUARANTINE
+- RECOVER_FROM_QUARANTINE
+- DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET
+- VIEW_WEBHOOKS
+- MANAGE_WEBHOOKS
+- RESIZE_MANAGED_VOLUME - Operation to Resize Managed Volume.
+- VIEW_DATA_SECURITY_DETAILS - View account-wide data security risk metrics, scores, and recommendations.
+- VIEW_SMB_DOMAIN - The operation to view the SMB domain.
+- MANAGE_SMB_DOMAIN - The operation to manage the SMB domain.
+- MANAGE_CDP_IO_FILTER - The operation to manage CDP IO Filter.
+- VIEW_CERTIFICATE - View certificates and certificate signing requests.
+- MANAGE_CERTIFICATE - Manage certificates and certificate signing requests.
+- ALLOW_SUPPORT_USER_SESSIONS
+- VIEW_ORCHESTRATED_RECOVERY_APP - View Orchestrated Recovery application.
+- MANAGE_RECOVERY_PLAN - Manage Recovery Plans within Orchestrated Recovery.
+- MANAGE_ORCHESTRATED_RECOVERY - Manage recoveries within Orchestrated Recovery.
+- VIEW_NETWORK_THROTTLE_SETTINGS - View Network Throttle Settings.
+- VIEW_CLUSTER_LICENSES - View cluster licenses.
+- MANAGE_ARCHIVAL_NETWORK_THROTTLE_SETTINGS - Manage archival network throttle settings.
+- VIEW_SYSLOG - View syslog rules.
+- MANAGE_SYSLOG - Manage syslog rules.
+- VIEW_SNMP - View SNMP configuration.
+- MANAGE_SNMP - Manage SNMP configuration.
+- VIEW_SUPPORT_BUNDLE - Download support bundle.
+- MANAGE_SUPPORT_BUNDLE - Manage support bundle.
+- MANAGE_TPR_ENABLEMENT - Manage TPR enablement.
+- VIEW_TPR_CONFIGURATION - View TPR configuration.
+- MANAGE_TPR_CONFIGURATION - Manage TPR configuration.
+- CANCEL_TPR_REQUEST - Cancel TPR request.
+- VIEW_TPR_REQUEST - View TPR request.
+- APPROVE_TPR_REQUEST - Approve TPR request.
+- VIEW_TPR_POLICY - View TPR policy.
+- MANAGE_TPR_POLICY - Manage TPR policy.
+- VIEW_ARCHIVAL_LOCATION - View archival location.
+- DOWNLOAD_VIRTUAL_MACHINE_FILE - Download VM-level files.
+- MANAGE_GPS_TO_RSC_UPGRADE - Manage GPS to RSC upgrade.
+- VIEW_GUEST_OS_CREDENTIAL - View Guest OS credentials.
+- MANAGE_GUEST_OS_CREDENTIAL - Manage Guest OS credentials.
+- VIEW_EVENT_CLUSTER_SETTING - View event cluster settings.
+- MODIFY_EVENT_CLUSTER_SETTING - Modify event cluster settings.
+- USE_AS_REPLICATION_TARGET - Use the Rubrik cluster as a replication target.
+- TIER_EXISTING_SNAPSHOTS - The operation to tier existing snapshots in bulk through snapshot management.
+- VIEW_ZSCALER_DLP_INTEGRATION - View Zscaler integration.
+- MANAGE_ZSCALER_DLP_INTEGRATION - Manage Zscaler integration.
+- ADD_CERTIFICATE - Add certificates and certificate signing requests in tenant organization.
+- MANAGE_CORS_SETTINGS - Manage CORS settings.
+- VIEW_DB_LOG_REPORT_PROPERTIES - View the database log reporting properties for a cluster.
+- CONFIGURE_DB_LOG_REPORT_PROPERTIES - Configure the database log reporting properties for a cluster.
+- VIEW_CORS_SETTINGS - View CORS settings.
+- MANAGE_MIGRATION_DASHBOARD - Manage migration dashboard.
+- VIEW_DL_EMAIL_SETTINGS - View distribution list email settings.
+- MANAGE_DL_EMAIL_SETTINGS - Manage distribution list email settings.
+- CROSS_ACCOUNT_REPLICATION - Internal permission to support cross-account replication.
+- CREATE_CROSS_ACCOUNT_PAIR - Create cross-account pair.
+- MANAGE_CROSS_ACCOUNT_PAIR - Manage cross-account pair.
+- GRANULAR_RECOVERY - Recover specific objects from backup.
+- VIEW_CROSS_ACCOUNT_PAIR - View cross-account pair.
+- VIEW_SERVICENOW_INTEGRATION - View ServiceNow integration.
+- MANAGE_SERVICENOW_INTEGRATION - Manage ServiceNow integration.
+- VIEW_IP_ADDRESS_IN_AUDITS - View client IP address in audits.
+- VIEW_CHATBOT - View chatbot configuration.
+- MANAGE_CHATBOT - Manage chatbot configuration.
+- CHAT_WITH_CHATBOT - Chat with chatbot.
+- VIEW_LICENSE_DASHBOARD - View license dashboard.
+- VIEW_ANOMALY_DETECTION_RESULTS - View Anomaly Detection results.
+- RECOVER_CLUSTER - Recover Cloud Cluster from object store data.
+- ACCESS_CDM_CLUSTER - Access Rubrik clusters via federated access.
+- MANAGE_STORAGE_ENCRYPTION - Manage storage encryption settings.
+- MANAGE_SUPPORT_TUNNEL - Manage support tunnel.
+- VIEW_KMS_KEY_VAULT - View KMS Key Vaults.
+- MANAGE_KMS_KEY_VAULT - Manage KMS Key Vault settings.
+- ASSIGN_KMS_KEY_VAULT - Assign KMS Key Vault to data locations.
+- MOUNT_NUTANIX_VDISK - Mount Nutanix virtual disks.
+- DOWNLOAD_NUTANIX_VDISK - Download Nutanix virtual disks.
+- VIEW_ORGANIZATION_NETWORKS - View Organization Networks.
+- MANAGE_ORGANIZATION_NETWORKS - Manage Organization Networks.
+- MANAGE_CYBER_EVENT_LOCKDOWN - Manage Cyber Event Lockdown.
+- VIEW_OKTA_INTEGRATION - View Okta integration.
+- MANAGE_OKTA_INTEGRATION - Manage Okta integration.
+- USE_OAUTH_APPLICATIONS - Use OAuth applications.
+- MANAGE_OAUTH_APPLICATIONS - Manage OAuth applications.
+- CATEGORY_VIEW_DATA_SOURCE
+- CATEGORY_MANAGE_DATA_SOURCE
+- CATEGORY_PROTECTION
+- CATEGORY_RECOVERY
+- UNKNOWN_OPERATION

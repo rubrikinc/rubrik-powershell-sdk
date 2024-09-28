@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("description")]
         public System.String? Description { get; set; }
 
+        //      C# -> List<System.String>? ExplicitProtectableClusters
+        // GraphQL -> explicitProtectableClusters: [String!] (scalar)
+        [JsonProperty("explicitProtectableClusters")]
+        public List<System.String>? ExplicitProtectableClusters { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -86,6 +91,7 @@ namespace RubrikSecurityCloud.Types
 
     public Role Set(
         System.String? Description = null,
+        List<System.String>? ExplicitProtectableClusters = null,
         System.String? Id = null,
         System.Boolean? IsOrgAdmin = null,
         System.Boolean? IsReadOnly = null,
@@ -100,6 +106,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Description != null ) {
             this.Description = Description;
+        }
+        if ( ExplicitProtectableClusters != null ) {
+            this.ExplicitProtectableClusters = ExplicitProtectableClusters;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -152,6 +161,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "description\n" ;
             } else {
                 s += ind + "description\n" ;
+            }
+        }
+        //      C# -> List<System.String>? ExplicitProtectableClusters
+        // GraphQL -> explicitProtectableClusters: [String!] (scalar)
+        if (this.ExplicitProtectableClusters != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "explicitProtectableClusters\n" ;
+            } else {
+                s += ind + "explicitProtectableClusters\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -279,6 +297,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Description != null && ec.Excludes("description",true))
         {
             this.Description = null;
+        }
+        //      C# -> List<System.String>? ExplicitProtectableClusters
+        // GraphQL -> explicitProtectableClusters: [String!] (scalar)
+        if (ec.Includes("explicitProtectableClusters",true))
+        {
+            if(this.ExplicitProtectableClusters == null) {
+
+                this.ExplicitProtectableClusters = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExplicitProtectableClusters != null && ec.Excludes("explicitProtectableClusters",true))
+        {
+            this.ExplicitProtectableClusters = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)

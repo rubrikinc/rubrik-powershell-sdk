@@ -396,6 +396,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HAS_UNEXPIRED_SNAPSHOTS")]
         HAS_UNEXPIRED_SNAPSHOTS,
 
+        [EnumMember(Value = "HOST_BY_AGENT_ID")]
+        HOST_BY_AGENT_ID,
+
         [EnumMember(Value = "HOST_CBT_STATUS")]
         HOST_CBT_STATUS,
 

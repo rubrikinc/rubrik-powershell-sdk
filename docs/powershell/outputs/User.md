@@ -29,6 +29,8 @@ User account details.
   - The number of unread notifications for the current user.
 - eulaState: EulaState
   - The user's EULA acceptance state.
+- domainName: System.String
+  - Name of the domain to which the SSO user belongs.
 - assignedRoles: list of RoleAssignments
   - Roles assigned to the user.
 - allOrgs: list of Orgs

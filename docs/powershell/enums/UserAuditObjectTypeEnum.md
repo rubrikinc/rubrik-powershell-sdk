@@ -108,6 +108,7 @@ User audit object type.
 - M365_BACKUP_STORAGE_SITE - Microsoft 365 Backup Storage SharePoint Site.
 - Blueprint - Blueprint type.
 - Ec2Instance - EC2 instance type.
+- KMS_KEY_VAULT - KMS Key Vault.
 - NUTANIX_ERA - Nutanix Era type.
 - JIRA_PROJECT - Atlassian Jira project.
 - StorageArrayVolumeGroup - Storage array volume group type.

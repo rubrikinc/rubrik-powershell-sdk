@@ -23,3 +23,5 @@ RBAC role.
   - Permissions assigned to the role that are in effect.
 - explicitlyAssignedPermissions: list of Permissions
   - Role permissions that are explicitly assigned by user.
+- explicitProtectableClusters: list of System.Strings
+  - Explicit list of protectable Rubrik clusters.

@@ -1132,6 +1132,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	awsIamPairId = $someString
+    /// 	# OPTIONAL
+    /// 	orgId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3585,6 +3587,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	awsIamPairId = $someString
+	# OPTIONAL
+	orgId = $someString
 }"
             );
         }

@@ -14,6 +14,11 @@ Create a classification policy.
 
 - There is a single argument of type CreatePolicyInput.
 - Returns ClassificationPolicyDetail.
+### createtprpolicy
+Create a TPR policy.
+
+- There is a single argument of type CreateTprPolicyInput.
+- Returns CreateTprPolicyReply.
 ### deactivatepolicy
 Deactivate a classification policy.
 
@@ -21,6 +26,11 @@ Deactivate a classification policy.
     - policyId - System.String
     - runAsync - System.Boolean
 - Returns list of System.Strings.
+### deletetprpolicy
+Delete a TPR policy.
+
+- There is a single argument of type DeleteTprPolicyInput.
+- Returns System.String.
 ### gethealthmonitorpolicystatus
 Get health monitor policies on the Rubrik cluster.
 
@@ -71,3 +81,8 @@ Update a classification policy.
 
 - There is a single argument of type UpdatePolicyInput.
 - Returns ClassificationPolicyDetail.
+### updatetprpolicy
+Update a TPR policy.
+
+- There is a single argument of type UpdateTprPolicyInput.
+- Returns System.String.

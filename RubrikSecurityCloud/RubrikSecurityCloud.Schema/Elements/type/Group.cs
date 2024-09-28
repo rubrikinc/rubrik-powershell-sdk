@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? DomainName
+        // GraphQL -> domainName: String! (scalar)
+        [JsonProperty("domainName")]
+        public System.String? DomainName { get; set; }
+
         //      C# -> System.String? GroupId
         // GraphQL -> groupId: String! (scalar)
         [JsonProperty("groupId")]
@@ -60,6 +65,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Group Set(
+        System.String? DomainName = null,
         System.String? GroupId = null,
         System.String? GroupName = null,
         List<User>? ActiveUsers = null,
@@ -68,6 +74,9 @@ namespace RubrikSecurityCloud.Types
         List<User>? Users = null
     ) 
     {
+        if ( DomainName != null ) {
+            this.DomainName = DomainName;
+        }
         if ( GroupId != null ) {
             this.GroupId = GroupId;
         }
@@ -100,6 +109,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? DomainName
+        // GraphQL -> domainName: String! (scalar)
+        if (this.DomainName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "domainName\n" ;
+            } else {
+                s += ind + "domainName\n" ;
+            }
+        }
         //      C# -> System.String? GroupId
         // GraphQL -> groupId: String! (scalar)
         if (this.GroupId != null) {
@@ -173,6 +191,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? DomainName
+        // GraphQL -> domainName: String! (scalar)
+        if (ec.Includes("domainName",true))
+        {
+            if(this.DomainName == null) {
+
+                this.DomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DomainName != null && ec.Excludes("domainName",true))
+        {
+            this.DomainName = null;
+        }
         //      C# -> System.String? GroupId
         // GraphQL -> groupId: String! (scalar)
         if (ec.Includes("groupId",true))

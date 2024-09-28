@@ -30,6 +30,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("expirationDate")]
         public DateTime? ExpirationDate { get; set; }
 
+        //      C# -> System.String? Id
+        // GraphQL -> id: UUID! (scalar)
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsDefault
+        // GraphQL -> isDefault: Boolean! (scalar)
+        [JsonProperty("isDefault")]
+        public System.Boolean? IsDefault { get; set; }
+
         //      C# -> System.String? MetadataJson
         // GraphQL -> metadataJson: String! (scalar)
         [JsonProperty("metadataJson")]
@@ -82,6 +92,8 @@ namespace RubrikSecurityCloud.Types
     public IdentityProvider Set(
         System.String? EntityId = null,
         DateTime? ExpirationDate = null,
+        System.String? Id = null,
+        System.Boolean? IsDefault = null,
         System.String? MetadataJson = null,
         System.String? Name = null,
         System.String? OwnerOrgId = null,
@@ -97,6 +109,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ExpirationDate != null ) {
             this.ExpirationDate = ExpirationDate;
+        }
+        if ( Id != null ) {
+            this.Id = Id;
+        }
+        if ( IsDefault != null ) {
+            this.IsDefault = IsDefault;
         }
         if ( MetadataJson != null ) {
             this.MetadataJson = MetadataJson;
@@ -152,6 +170,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "expirationDate\n" ;
             } else {
                 s += ind + "expirationDate\n" ;
+            }
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: UUID! (scalar)
+        if (this.Id != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsDefault
+        // GraphQL -> isDefault: Boolean! (scalar)
+        if (this.IsDefault != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isDefault\n" ;
+            } else {
+                s += ind + "isDefault\n" ;
             }
         }
         //      C# -> System.String? MetadataJson
@@ -266,6 +302,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExpirationDate != null && ec.Excludes("expirationDate",true))
         {
             this.ExpirationDate = null;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: UUID! (scalar)
+        if (ec.Includes("id",true))
+        {
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
+        }
+        //      C# -> System.Boolean? IsDefault
+        // GraphQL -> isDefault: Boolean! (scalar)
+        if (ec.Includes("isDefault",true))
+        {
+            if(this.IsDefault == null) {
+
+                this.IsDefault = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDefault != null && ec.Excludes("isDefault",true))
+        {
+            this.IsDefault = null;
         }
         //      C# -> System.String? MetadataJson
         // GraphQL -> metadataJson: String! (scalar)

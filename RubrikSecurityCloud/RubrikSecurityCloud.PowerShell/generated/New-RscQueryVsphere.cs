@@ -888,6 +888,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// # OPTIONAL
+    /// $query.Var.typeFilter = @(
+    /// 	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+    /// )
+    /// # OPTIONAL
     /// $query.Var.filter = @(
     /// 	@{
     /// 		# OPTIONAL
@@ -2224,6 +2228,7 @@ $query.Var.fid = $someString"
         //     after: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
+        //     typeFilter: [HierarchyObjectTypeEnum!]
         //     filter: [Filter!]
         //   ): CdmHierarchyObjectConnection!
         internal void InitQueryVsphereRootRecoveryHierarchy()
@@ -2233,13 +2238,14 @@ $query.Var.fid = $someString"
                 Tuple.Create("after", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
                 Tuple.Create("filter", "[Filter!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryVsphereRootRecoveryHierarchy",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
                 "CdmHierarchyObjectConnection",
                 Query.VsphereRootRecoveryHierarchy,
                 Query.VsphereRootRecoveryHierarchyFieldSpec,
@@ -2251,6 +2257,10 @@ $query.Var.after = $someString
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.typeFilter = @(
+	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+)
 # OPTIONAL
 $query.Var.filter = @(
 	@{

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 13
+    /// Create a new RscQuery object for any of the 14
     /// operations in the 'Cloud Native' API domain:
-    /// AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, or UpdateTagRule.
+    /// AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
     /// </summary>
     /// <description>
     /// New-RscMutationCloudNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 13 operations
+    /// There are 14 operations
     /// in the 'Cloud Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, or UpdateTagRule.
+    /// one of: AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -616,6 +616,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdateRootThreatMonitoringEnablement operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: UpdateRootThreatMonitoringEnablement
+    /// 
+    /// $query = New-RscMutationCloudNative -UpdateRootThreatMonitoringEnablement
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	isEnabled = $someBoolean
+    /// 	# REQUIRED
+    /// 	rootIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateTagRule operation
     /// of the 'Cloud Native' API domain.
     /// <code>
@@ -697,6 +732,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "StartSnapshotsIndexJob",
                 "UpdateIndexingStatus",
                 "UpdateLabelRule",
+                "UpdateRootThreatMonitoringEnablement",
                 "UpdateTagRule",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -748,6 +784,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateLabelRule":
                         this.ProcessRecord_UpdateLabelRule();
+                        break;
+                    case "UpdateRootThreatMonitoringEnablement":
+                        this.ProcessRecord_UpdateRootThreatMonitoringEnablement();
                         break;
                     case "UpdateTagRule":
                         this.ProcessRecord_UpdateTagRule();
@@ -868,6 +907,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdateLabelRule";
             // Create new graphql operation updateCloudNativeLabelRule
             InitMutationUpdateCloudNativeLabelRule();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateCloudNativeRootThreatMonitoringEnablement.
+        internal void ProcessRecord_UpdateRootThreatMonitoringEnablement()
+        {
+            this._logger.name += " -UpdateRootThreatMonitoringEnablement";
+            // Create new graphql operation updateCloudNativeRootThreatMonitoringEnablement
+            InitMutationUpdateCloudNativeRootThreatMonitoringEnablement();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1319,6 +1367,33 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	applyToAllCloudAccounts = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateCloudNativeRootThreatMonitoringEnablement(input: UpdateCloudNativeRootThreatMonitoringEnablementInput!): Void
+        internal void InitMutationUpdateCloudNativeRootThreatMonitoringEnablement()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateCloudNativeRootThreatMonitoringEnablementInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateCloudNativeRootThreatMonitoringEnablement",
+                "($input: UpdateCloudNativeRootThreatMonitoringEnablementInput!)",
+                "System.String",
+                Mutation.UpdateCloudNativeRootThreatMonitoringEnablement,
+                Mutation.UpdateCloudNativeRootThreatMonitoringEnablementFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	isEnabled = $someBoolean
+	# REQUIRED
+	rootIds = @(
+		$someString
+	)
 }"
             );
         }

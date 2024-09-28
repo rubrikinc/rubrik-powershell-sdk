@@ -32,3 +32,8 @@ The summary of the threat hunt.
 
 - There is a single argument of type System.String.
 - Returns ThreatHuntSummaryReply.
+### monitoringcloudrootenablement
+Get the enablement status of cloud-native accounts on which Threat Monitoring can be enabled.
+
+- The monitoringcloudrootenablement subcommand takes no arguments.
+- Returns ThreatMonitoringCloudRootEnablement.

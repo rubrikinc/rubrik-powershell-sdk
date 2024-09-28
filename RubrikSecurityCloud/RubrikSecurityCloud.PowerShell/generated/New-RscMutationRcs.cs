@@ -213,6 +213,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	lockDurationDays = $someInt64
     /// 	# OPTIONAL
     /// 	shouldBypassProxy = $someBoolean
+    /// 	# OPTIONAL
+    /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -485,6 +487,8 @@ $query.Var.input = @{
 	lockDurationDays = $someInt64
 	# OPTIONAL
 	shouldBypassProxy = $someBoolean
+	# OPTIONAL
+	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
 }"
             );
         }

@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M6I_8XLARGE")]
         M6I_8XLARGE,
 
+        [EnumMember(Value = "R6I_4XLARGE")]
+        R6I_4XLARGE,
+
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN
 

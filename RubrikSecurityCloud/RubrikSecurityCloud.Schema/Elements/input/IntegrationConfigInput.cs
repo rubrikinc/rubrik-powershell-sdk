@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("okta")]
         public OktaIntegrationConfigInput? Okta { get; set; }
 
+        //      C# -> MicrosoftPurviewConfigInput? MicrosoftPurview
+        // GraphQL -> microsoftPurview: MicrosoftPurviewConfigInput (input)
+        [JsonProperty("microsoftPurview")]
+        public MicrosoftPurviewConfigInput? MicrosoftPurview { get; set; }
+
 
         #endregion
 

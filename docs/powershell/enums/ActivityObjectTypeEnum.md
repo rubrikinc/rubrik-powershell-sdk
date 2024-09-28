@@ -22,6 +22,7 @@ The list of object types for activities.
 - GcpNativeProject - Specifies that the activity object type is GCP Native Project.
 - AwsNativeRdsInstance - Specifies that the activity object type is AWS Native RDS Instance.
 - O365Organization - Specifies that the activity object type is O365 Organization.
+- K8S_VIRTUAL_MACHINE - Specifies that the activity object type is Kubernetes Virtual Machine.
 - VolumeGroup - Specifies that the activity object type is Volume Group.
 - MONGO_COLLECTION - Specifies that the activity object type is MongoDB collection.
 - RubrikEc2Instance - Specifies that the activity object type is Rubrik EC2 Instance.
@@ -106,6 +107,7 @@ The list of object types for activities.
 - CapacityBundle - Specifies that the activity object type is Capacity Bundle.
 - MONGO_DATABASE - Specifies that the activity object type is MongoDB database.
 - Ec2Instance - Specifies that the activity object type is EC2 Instance.
+- KMS_KEY_VAULT - Specifies that the activity object type is KMS Key Vault.
 - CONFLUENCE_SPACE - Specifies that the activity object type is Confluence Space.
 - NUTANIX_ERA - Specifies that the activity object type is Nutanix Era.
 - JIRA_PROJECT - Specifies that the activity object type is Jira project.

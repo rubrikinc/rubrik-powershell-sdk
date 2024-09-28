@@ -11,5 +11,7 @@ Filter help contents results.
   - Datasource.
 - categories: list of System.Strings
   - List of categories to filter by.
+- url: System.String
+  - URL to filter by.
 - productDocumentationTypes: list of ProductDocumentationTypes
   - List of product documentation types to filter by.

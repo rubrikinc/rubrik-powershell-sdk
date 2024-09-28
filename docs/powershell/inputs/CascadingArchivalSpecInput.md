@@ -2,7 +2,7 @@
 Cascading archiving specification.
 
 - archivalLocationId: System.String
-  - CDM archival location on the replication target the snapshot will be uploaded to.
+  - CDM archival location on the replication target where the snapshot is uploaded. Deprecated: use archivalLocationToClusterMapping instead.
 - archivalThreshold: SlaDurationInput
   - Threshold after which the snapshot will be archived.
 - archivalTieringSpecInput: ArchivalTieringSpecInput

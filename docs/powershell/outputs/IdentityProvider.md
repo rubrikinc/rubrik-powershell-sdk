@@ -19,5 +19,9 @@ Identity Provider is an entity responsible for authenticating a user account.
   - Metadata of the identity provider in JSON format.
 - signingCertificate: System.String
   - Signing certificate of the identity provider.
+- isDefault: System.Boolean
+  - Specifies whether the identity provider is the default.
 - expirationDate: DateTime
   - Expiration date of the identity providers metadata.
+- id: System.String
+  - Unique identifier of the identity provider.

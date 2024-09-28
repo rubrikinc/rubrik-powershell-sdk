@@ -139,7 +139,7 @@ Returns a list of snapshots for a workload.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - workloadId - System.String: The FID of the workload.
     - snapshotFilter - list of SnapshotQueryFilterInputs: Filter for snapshot connection.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - SnapshotQuerySortByField: Sort snapshots by field.
     - timeRange - TimeRangeInput: Time range input.
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.
@@ -154,7 +154,7 @@ Returns list of snapshots for a list of workloads.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - snappableIds - list of System.Strings: Workload UUIDs.
     - snapshotFilter - list of SnapshotQueryFilterInputs: Filter for snapshot connection.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - SnapshotQuerySortByField: Sort snapshots by field.
     - timeRange - TimeRangeInput: Time range input.
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.

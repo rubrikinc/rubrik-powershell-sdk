@@ -29,6 +29,8 @@ Active Directory Domain Controller.
   - Hyper-V virtual machine associated with the domain controller.
 - vsphereVirtualMachines: VsphereVmConnection
   - VMWare virtual machine associated with the domain controller.
+- host: PhysicalHost
+  - Host information of this Active Directory Domain Controller.
 - cluster: Cluster
   - Rubrik cluster UUID.
 - dcLocation: System.String

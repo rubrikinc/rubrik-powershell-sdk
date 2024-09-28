@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_NATIVE_ROOT")]
         AZURE_NATIVE_ROOT,
 
+        [EnumMember(Value = "AZURE_NATIVE_STORAGE_ACCOUNT")]
+        AZURE_NATIVE_STORAGE_ACCOUNT,
+
         [EnumMember(Value = "AZURE_NATIVE_VIRTUAL_MACHINE")]
         AZURE_NATIVE_VIRTUAL_MACHINE,
 

@@ -9,3 +9,7 @@ Configuration details about the replication pair of Rubrik clusters.
   - Target Rubrik cluster gateway information.
 - networkInterface: NetworkInterfaceSelectionType
   - Network interface names for communication between the source and target clusters. This only applies to the private network setup type.
+- sourceNetworkInterfaceDetails: ClusterNetworkInterfaceDetails
+  - Network interface names and types for communication between the source and target clusters. This only applies to the private network setup type.
+- targetNetworkInterfaceDetails: ClusterNetworkInterfaceDetails
+  - Network interface names and types for communication between the source and target clusters. This only applies to the private network setup type.

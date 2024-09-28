@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 1
+    /// Create a new RscQuery object for any of the 2
     /// operations in the 'Webhook' API domain:
-    /// ['Webhook'].
+    /// ById, or Webhook.
     /// </summary>
     /// <description>
     /// New-RscQueryWebhook creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 1 operations
+    /// There are 2 operations
     /// in the 'Webhook' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ['Webhook'].
+    /// one of: ById, or Webhook.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryWebhook -Webhook).Info().
+    /// (New-RscQueryWebhook -ById).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryWebhook -Webhook).Info().
+    /// (New-RscQueryWebhook -ById).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the ById operation
+    /// of the 'Webhook' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Webhook
+    /// # API Operation: ById
+    /// 
+    /// $query = New-RscQueryWebhook -ById
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = $someInt
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetWebhookByIdReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the Webhook operation
@@ -120,6 +148,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "ById",
                 "Webhook",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -136,6 +165,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "ById":
+                        this.ProcessRecord_ById();
+                        break;
                     case "Webhook":
                         this.ProcessRecord_Webhook();
                         break;
@@ -150,6 +182,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // webhookById.
+        internal void ProcessRecord_ById()
+        {
+            this._logger.name += " -ById";
+            // Create new graphql operation webhookById
+            InitQueryWebhookById();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allWebhooks.
         internal void ProcessRecord_Webhook()
         {
@@ -158,6 +199,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryAllWebhooks();
         }
 
+
+        // Create new GraphQL Query:
+        // webhookById(input: Int!): GetWebhookByIdReply!
+        internal void InitQueryWebhookById()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "Int!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryWebhookById",
+                "($input: Int!)",
+                "GetWebhookByIdReply",
+                Query.WebhookById,
+                Query.WebhookByIdFieldSpec,
+                @"# REQUIRED
+$query.Var.input = $someInt"
+            );
+        }
 
         // Create new GraphQL Query:
         // allWebhooks(name: String): WebhookConnection!

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dataLossPrevention")]
         public DlpConfig? DataLossPrevention { get; set; }
 
+        //      C# -> MicrosoftPurviewConfig? MicrosoftPurview
+        // GraphQL -> microsoftPurview: MicrosoftPurviewConfig (type)
+        [JsonProperty("microsoftPurview")]
+        public MicrosoftPurviewConfig? MicrosoftPurview { get; set; }
+
         //      C# -> OktaIntegrationConfig? Okta
         // GraphQL -> okta: OktaIntegrationConfig (type)
         [JsonProperty("okta")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public IntegrationConfig Set(
         DlpConfig? DataLossPrevention = null,
+        MicrosoftPurviewConfig? MicrosoftPurview = null,
         OktaIntegrationConfig? Okta = null,
         ServiceNowItsmIntegrationConfig? ServiceNowItsm = null
     ) 
     {
         if ( DataLossPrevention != null ) {
             this.DataLossPrevention = DataLossPrevention;
+        }
+        if ( MicrosoftPurview != null ) {
+            this.MicrosoftPurview = MicrosoftPurview;
         }
         if ( Okta != null ) {
             this.Okta = Okta;
@@ -82,6 +91,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "dataLossPrevention" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> MicrosoftPurviewConfig? MicrosoftPurview
+        // GraphQL -> microsoftPurview: MicrosoftPurviewConfig (type)
+        if (this.MicrosoftPurview != null) {
+            var fspec = this.MicrosoftPurview.AsFieldSpec(conf.Child("microsoftPurview"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "microsoftPurview" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -134,6 +155,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.DataLossPrevention != null && ec.Excludes("dataLossPrevention",false))
         {
             this.DataLossPrevention = null;
+        }
+        //      C# -> MicrosoftPurviewConfig? MicrosoftPurview
+        // GraphQL -> microsoftPurview: MicrosoftPurviewConfig (type)
+        if (ec.Includes("microsoftPurview",false))
+        {
+            if(this.MicrosoftPurview == null) {
+
+                this.MicrosoftPurview = new MicrosoftPurviewConfig();
+                this.MicrosoftPurview.ApplyExploratoryFieldSpec(ec.NewChild("microsoftPurview"));
+
+            } else {
+
+                this.MicrosoftPurview.ApplyExploratoryFieldSpec(ec.NewChild("microsoftPurview"));
+
+            }
+        }
+        else if (this.MicrosoftPurview != null && ec.Excludes("microsoftPurview",false))
+        {
+            this.MicrosoftPurview = null;
         }
         //      C# -> OktaIntegrationConfig? Okta
         // GraphQL -> okta: OktaIntegrationConfig (type)

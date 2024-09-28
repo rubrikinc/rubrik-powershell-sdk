@@ -135,3 +135,4 @@ Represents all the object types for which we expect to see audits.
 - M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
 - M365_BACKUP_STORAGE_SITE - Microsoft 365 Backup Storage SharePoint Site.
 - M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
+- KMS_KEY_VAULT - KMS Key Vault.

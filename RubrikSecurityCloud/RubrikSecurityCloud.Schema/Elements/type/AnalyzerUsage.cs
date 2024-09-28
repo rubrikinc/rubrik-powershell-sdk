@@ -20,10 +20,20 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> DataTypeSource? DataTypeSource
+        // GraphQL -> dataTypeSource: DataTypeSource! (enum)
+        [JsonProperty("dataTypeSource")]
+        public DataTypeSource? DataTypeSource { get; set; }
+
         //      C# -> Analyzer? Analyzer
         // GraphQL -> analyzer: Analyzer! (type)
         [JsonProperty("analyzer")]
         public Analyzer? Analyzer { get; set; }
+
+        //      C# -> DataTypeHits? DataTypeHits
+        // GraphQL -> dataTypeHits: DataTypeHits (type)
+        [JsonProperty("dataTypeHits")]
+        public DataTypeHits? DataTypeHits { get; set; }
 
         //      C# -> List<ClassificationPolicySummary>? Policies
         // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
@@ -40,12 +50,20 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AnalyzerUsage Set(
+        DataTypeSource? DataTypeSource = null,
         Analyzer? Analyzer = null,
+        DataTypeHits? DataTypeHits = null,
         List<ClassificationPolicySummary>? Policies = null
     ) 
     {
+        if ( DataTypeSource != null ) {
+            this.DataTypeSource = DataTypeSource;
+        }
         if ( Analyzer != null ) {
             this.Analyzer = Analyzer;
+        }
+        if ( DataTypeHits != null ) {
+            this.DataTypeHits = DataTypeHits;
         }
         if ( Policies != null ) {
             this.Policies = Policies;
@@ -64,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> DataTypeSource? DataTypeSource
+        // GraphQL -> dataTypeSource: DataTypeSource! (enum)
+        if (this.DataTypeSource != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dataTypeSource\n" ;
+            } else {
+                s += ind + "dataTypeSource\n" ;
+            }
+        }
         //      C# -> Analyzer? Analyzer
         // GraphQL -> analyzer: Analyzer! (type)
         if (this.Analyzer != null) {
@@ -73,6 +100,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "analyzer" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> DataTypeHits? DataTypeHits
+        // GraphQL -> dataTypeHits: DataTypeHits (type)
+        if (this.DataTypeHits != null) {
+            var fspec = this.DataTypeHits.AsFieldSpec(conf.Child("dataTypeHits"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "dataTypeHits" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -95,6 +134,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> DataTypeSource? DataTypeSource
+        // GraphQL -> dataTypeSource: DataTypeSource! (enum)
+        if (ec.Includes("dataTypeSource",true))
+        {
+            if(this.DataTypeSource == null) {
+
+                this.DataTypeSource = new DataTypeSource();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DataTypeSource != null && ec.Excludes("dataTypeSource",true))
+        {
+            this.DataTypeSource = null;
+        }
         //      C# -> Analyzer? Analyzer
         // GraphQL -> analyzer: Analyzer! (type)
         if (ec.Includes("analyzer",false))
@@ -113,6 +169,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Analyzer != null && ec.Excludes("analyzer",false))
         {
             this.Analyzer = null;
+        }
+        //      C# -> DataTypeHits? DataTypeHits
+        // GraphQL -> dataTypeHits: DataTypeHits (type)
+        if (ec.Includes("dataTypeHits",false))
+        {
+            if(this.DataTypeHits == null) {
+
+                this.DataTypeHits = new DataTypeHits();
+                this.DataTypeHits.ApplyExploratoryFieldSpec(ec.NewChild("dataTypeHits"));
+
+            } else {
+
+                this.DataTypeHits.ApplyExploratoryFieldSpec(ec.NewChild("dataTypeHits"));
+
+            }
+        }
+        else if (this.DataTypeHits != null && ec.Excludes("dataTypeHits",false))
+        {
+            this.DataTypeHits = null;
         }
         //      C# -> List<ClassificationPolicySummary>? Policies
         // GraphQL -> policies: [ClassificationPolicySummary!]! (type)

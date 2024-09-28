@@ -11,3 +11,13 @@
   - Represents risk associated with the given analyzer.
 - tagId: System.Int32
   - Represents the tag ID for the given analyzer.
+- ruleTypes: list of AnalyzerRuleTypes
+  - Represents the types of data you need to analyze using this analyzer.
+- keyRegex: System.String
+  - Regex to filter fields which need to be analyzed for structured data.
+- structuredValueRegex: System.String
+  - Regex to analyze the structured data.
+- structuredDictionaryCsv: System.String
+  - Dictionary to analyze for the structured data.
+- structuredDictionary: list of System.Strings
+  - Parsed list of keywords from structuredDictionaryCsv.
