@@ -145,6 +145,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			oktaTenantUrl = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		microsoftPurview = @{
+    /// 			# REQUIRED
+    /// 			tenantId = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -231,6 +236,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				okta = @{
     /// 					# REQUIRED
     /// 					oktaTenantUrl = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				microsoftPurview = @{
+    /// 					# REQUIRED
+    /// 					tenantId = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -384,6 +394,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			oktaTenantUrl = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		microsoftPurview = @{
+    /// 			# REQUIRED
+    /// 			tenantId = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -472,6 +487,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				okta = @{
     /// 					# REQUIRED
     /// 					oktaTenantUrl = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				microsoftPurview = @{
+    /// 					# REQUIRED
+    /// 					tenantId = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -681,6 +701,11 @@ $query.Var.input = @{
 			# REQUIRED
 			oktaTenantUrl = $someString
 		}
+		# OPTIONAL
+		microsoftPurview = @{
+			# REQUIRED
+			tenantId = $someString
+		}
 	}
 }"
             );
@@ -759,6 +784,11 @@ $query.Var.input = @{
 				okta = @{
 					# REQUIRED
 					oktaTenantUrl = $someString
+				}
+				# OPTIONAL
+				microsoftPurview = @{
+					# REQUIRED
+					tenantId = $someString
 				}
 			}
 		}
@@ -888,6 +918,11 @@ $query.Var.input = @{
 			# REQUIRED
 			oktaTenantUrl = $someString
 		}
+		# OPTIONAL
+		microsoftPurview = @{
+			# REQUIRED
+			tenantId = $someString
+		}
 	}
 }"
             );
@@ -968,6 +1003,11 @@ $query.Var.input = @{
 				okta = @{
 					# REQUIRED
 					oktaTenantUrl = $someString
+				}
+				# OPTIONAL
+				microsoftPurview = @{
+					# REQUIRED
+					tenantId = $someString
 				}
 			}
 		}

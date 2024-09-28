@@ -7,7 +7,7 @@ Lists all Azure AD directories for the account.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns AzureAdDirectoryConnection.
 ### addirectory
@@ -22,7 +22,7 @@ Details of the Azure AD objects corresponding to the type.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortByOption - list of AzureAdObjectSearchTypes: Ordered list sorted by column names.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - input - AzureAdObjectTypeInput: Input for the azureAdObjectsByType API.
 - Returns AzureAdObjectConnection.
 ### armtemplatesbyfeature
@@ -247,7 +247,7 @@ Retrieves a paginated list of all Azure SQL Databases.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureSqlDatabaseSortFields: Sort fields for list of Azure SQL Databases.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlDatabaseFilters - AzureSqlDatabaseFilters: Filters for listing Azure SQL Databases.
     - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureSqlDatabaseDbConnection.
@@ -274,7 +274,7 @@ Retrieves a paginated list of all Azure SQL Database Servers.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureSqlDatabaseServerSortFields: Sort fields for list of Azure SQL Database Servers.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlDatabaseServerFilters - AzureSqlDatabaseServerFilters: Filters for listing Azure SQL Database Servers.
 - Returns AzureSqlDatabaseServerConnection.
 ### sqlmanagedinstancedatabase
@@ -293,7 +293,7 @@ Retrieves a paginated list of all Azure SQL Managed Instance Databases.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureSqlManagedInstanceDatabaseSortFields: Sort fields for list of Azure SQL Managed Instance Databases.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlManagedInstanceDatabaseFilters - AzureSqlManagedInstanceDatabaseFilters: Filters for listing Azure SQL Managed Instance Databases.
     - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureSqlManagedInstanceDatabaseConnection.
@@ -320,7 +320,7 @@ Retrieves a paginated list of all Azure SQL Managed Instance Servers.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureSqlManagedInstanceServerSortFields: Sort fields for list of Azure SQL Managed Instance Servers.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlManagedInstanceServerFilters - AzureSqlManagedInstanceServerFilters: Filters for listing Azure SQL Managed Instance Servers.
 - Returns AzureSqlManagedInstanceServerConnection.
 ### storageaccounts

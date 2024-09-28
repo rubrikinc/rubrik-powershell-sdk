@@ -48,7 +48,7 @@ Retrieve details of the Rubrik clusters' reports migration.
            count(*)
         
     - sortBy - System.String: Name of the column to sort results by.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - timezone - System.String: The timezone to be used in the results.
 - Returns RowConnection.
 ### databaselogforcluster
@@ -97,7 +97,7 @@ Returns groupBy results for SonarContentReport.
 - There are 11 arguments.
     - groupBy - DiscoveryContentReportGroupBy
     - sortBy - DiscoveryContentReportSortBy
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filters - SonarContentReportFilter
     - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
@@ -112,7 +112,7 @@ Returns rows for SonarReport table.
 
 - There are 8 arguments.
     - sortBy - DiscoveryReportSortBy
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of System.Strings
     - endTime - System.String
     - first - System.Int32: Returns the first n elements from the list.

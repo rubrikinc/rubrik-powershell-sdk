@@ -60,6 +60,14 @@ Deletes a Kubernetes protection set by specifying the protection set ID.
 
 - There is a single argument of type DeleteK8sProtectionSetInput.
 - Returns ResponseSuccess.
+### downloadsnapshotfromlocation
+Download a snapshot from a remote target
+
+Supported in v9.3
+Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a remote target connected to this Rubrik cluster. If no SLA Domain is selected, the snapshot is retained forever.
+
+- There is a single argument of type DownloadK8sSnapshotFromLocationInput.
+- Returns AsyncRequestStatus.
 ### exportnamespace
 Export Kubernetes Namespace snapshot.
 

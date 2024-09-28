@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 17
+    /// Create a new RscQuery object for any of the 18
     /// operations in the 'Kubernetes' API domain:
-    /// AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, ExportNamespace, ExportProtectionSetSnapshot, RefreshCluster, RefreshV2Cluster, RestoreNamespace, RestoreProtectionSetSnapshot, UpdateCluster, or UpdateProtectionSet.
+    /// AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, RefreshCluster, RefreshV2Cluster, RestoreNamespace, RestoreProtectionSetSnapshot, UpdateCluster, or UpdateProtectionSet.
     /// </summary>
     /// <description>
     /// New-RscMutationK8s creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 17 operations
+    /// There are 18 operations
     /// in the 'Kubernetes' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, ExportNamespace, ExportProtectionSetSnapshot, RefreshCluster, RefreshV2Cluster, RestoreNamespace, RestoreProtectionSetSnapshot, UpdateCluster, or UpdateProtectionSet.
+    /// one of: AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, RefreshCluster, RefreshV2Cluster, RestoreNamespace, RestoreProtectionSetSnapshot, UpdateCluster, or UpdateProtectionSet.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -468,6 +468,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DownloadSnapshotFromLocation operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: DownloadSnapshotFromLocation
+    /// 
+    /// $query = New-RscMutationK8s -DownloadSnapshotFromLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	downloadConfig = @{
+    /// 		# OPTIONAL
+    /// 		slaId = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ExportNamespace operation
     /// of the 'Kubernetes' API domain.
     /// <code>
@@ -849,6 +887,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateProtectionSetSnapshot",
                 "DeleteCluster",
                 "DeleteProtectionSet",
+                "DownloadSnapshotFromLocation",
                 "ExportNamespace",
                 "ExportProtectionSetSnapshot",
                 "RefreshCluster",
@@ -898,6 +937,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteProtectionSet":
                         this.ProcessRecord_DeleteProtectionSet();
+                        break;
+                    case "DownloadSnapshotFromLocation":
+                        this.ProcessRecord_DownloadSnapshotFromLocation();
                         break;
                     case "ExportNamespace":
                         this.ProcessRecord_ExportNamespace();
@@ -1012,6 +1054,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteProtectionSet";
             // Create new graphql operation deleteK8sProtectionSet
             InitMutationDeleteK8sProtectionSet();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadK8sSnapshotFromLocation.
+        internal void ProcessRecord_DownloadSnapshotFromLocation()
+        {
+            this._logger.name += " -DownloadSnapshotFromLocation";
+            // Create new graphql operation downloadK8sSnapshotFromLocation
+            InitMutationDownloadK8sSnapshotFromLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1402,6 +1453,36 @@ $query.Var.input = @{
 	preserveSnapshots = $someBoolean
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadK8sSnapshotFromLocation(input: DownloadK8sSnapshotFromLocationInput!): AsyncRequestStatus!
+        internal void InitMutationDownloadK8sSnapshotFromLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadK8sSnapshotFromLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadK8sSnapshotFromLocation",
+                "($input: DownloadK8sSnapshotFromLocationInput!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadK8sSnapshotFromLocation,
+                Mutation.DownloadK8sSnapshotFromLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	downloadConfig = @{
+		# OPTIONAL
+		slaId = $someString
+	}
+	# REQUIRED
+	locationId = $someString
+	# REQUIRED
+	snapshotId = $someString
 }"
             );
         }

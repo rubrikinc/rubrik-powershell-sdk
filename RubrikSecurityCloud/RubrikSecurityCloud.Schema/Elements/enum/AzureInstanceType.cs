@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "STANDARD_DS5_V2")]
         STANDARD_DS5_V2,
 
+        [EnumMember(Value = "STANDARD_E16S_V5")]
+        STANDARD_E16S_V5,
+
         [EnumMember(Value = "TYPE_UNSPECIFIED")]
         TYPE_UNSPECIFIED,
 

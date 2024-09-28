@@ -41,6 +41,11 @@ Update the air-gap status of the Rubrik cluster.
 
 - There is a single argument of type AirGapStatusInput.
 - Returns System.String.
+### approvetprrequest
+Approve a two-person rule (TPR) request with optional comments.
+
+- There is a single argument of type ApproveTprRequestInput.
+- Returns System.String.
 ### archivecrawl
 Archive a crawl.
 
@@ -77,6 +82,11 @@ Cancels the taskchain.
 
 - There is a single argument of type System.String.
 - Returns RequestStatus.
+### canceltprrequest
+Cancel a two-person rule (TPR) request with optional comments.
+
+- There is a single argument of type CancelTprRequestInput.
+- Returns System.String.
 ### changepassword
 - There is a single argument of type ChangePasswordInput.
 - Returns System.Boolean.
@@ -156,6 +166,11 @@ Create a request to delete a mount. If there are volumes mounted on a target hos
 
 - There is a single argument of type DeleteVolumeGroupMountInput.
 - Returns AsyncRequestStatus.
+### denytprrequests
+Deny two-person rule (TPR) requests with optional comments.
+
+- There is a single argument of type DenyTprRequestsInput.
+- Returns System.String.
 ### deregisterprivatecontainerregistry
 Deregister the Private Container Registry (PCR) for an Exocompute account.
 
@@ -165,6 +180,11 @@ Deregister the Private Container Registry (PCR) for an Exocompute account.
 Disables a Rubrik Support representative's access to the customer's account.
 
 - There is a single argument of type DisableSupportUserAccessInput.
+- Returns System.String.
+### disabletprorg
+Disable TPR for an organization.
+
+- There is a single argument of type DisableTprOrgInput.
 - Returns System.String.
 ### dissolvelegalhold
 Dissolve legal hold on snapshots.
@@ -186,11 +206,21 @@ Enables a Rubrik Support representative's access to the customer's account.
 
 - There is a single argument of type EnableSupportUserAccessInput.
 - Returns System.String.
+### enabletprorg
+Enable TPR for an organization.
+
+- There is a single argument of type EnableTprOrgInput.
+- Returns System.String.
 ### excludevmdisks
 Exclude or include virtual disks during snapshot.
 
 - There is a single argument of type list of ExcludeVmDisksInputs.
 - Returns RequestSuccess.
+### executetprrequests
+Execute two-person rule (TPR) requests.
+
+- There is a single argument of type ExecuteTprRequestsInput.
+- Returns System.String.
 ### expiresnoozeddirectories
 Expire snoozed directories.
 
@@ -514,6 +544,11 @@ Send a request to stop a job instance with the event series ID. If successful, s
 
 - There is a single argument of type StopJobInstanceFromEventSeriesInput.
 - Returns System.String.
+### submittprrequest
+Submit a TPR request.
+
+- There is a single argument of type SubmitTprRequestInput.
+- Returns System.String.
 ### supportportallogin
 Log in to the Rubrik Support portal using username and password.
 
@@ -691,6 +726,11 @@ Update proxy config.
 Updates a Rubrik Support representative's access to the customer's account.
 
 - There is a single argument of type UpdateSupportUserAccessInput.
+- Returns System.String.
+### updatetprconfiguration
+Update TPR configuration.
+
+- There is a single argument of type UpdateTprConfigurationInput.
 - Returns System.String.
 ### updatetunnelstatus
 Enable or disable the SSH Tunnel for Support Access

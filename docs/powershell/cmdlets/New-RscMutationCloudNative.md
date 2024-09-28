@@ -60,6 +60,11 @@ Update cloud native label rule
 
 - There is a single argument of type UpdateCloudNativeLabelRuleInput.
 - Returns System.String.
+### updaterootthreatmonitoringenablement
+Update Threat Monitoring enablement for cloud native roots.
+
+- There is a single argument of type UpdateCloudNativeRootThreatMonitoringEnablementInput.
+- Returns System.String.
 ### updatetagrule
 Update cloud native tag rule
 

@@ -8,7 +8,7 @@ List all cloud accounts.
 
 - There are 4 arguments.
     - sortBy - CloudAccountSortByFieldEnum: Specification on how to sort a list of cloud accounts.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of CloudAccountFilterInputs: Specification on how to filter a list of cloud accounts.
     - features - list of CloudAccountFeatures: Filters and shows cloud accounts for a specific use-cases or features. Default value: [ARCHIVAL].
 - Returns list of CloudAccounts.

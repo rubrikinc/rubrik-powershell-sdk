@@ -22,3 +22,4 @@ Parameter for sorting file results.
 - LAST_SCAN_TIME - Sort by last scan time.
 - DATA_CATEGORY - Sort by number of hits for a data category.
 - DATA_TYPE - Sort by number of hits for a data type.
+- TOTAL_SENSITIVE_HITS - Sort by total sensitive hits.

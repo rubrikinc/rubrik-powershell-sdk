@@ -1,5 +1,10 @@
 # New-RscQueryM365
 ## Subcommands
+### backupstoragelicenseusage
+Returns usage of Microsoft backups storage for an account.
+
+- The backupstoragelicenseusage subcommand takes no arguments.
+- Returns M365BackupStorageLicenseUsage.
 ### backupstorageobjectrestorepoints
 Lists the Microsoft 365 backup storage object restore points.
 

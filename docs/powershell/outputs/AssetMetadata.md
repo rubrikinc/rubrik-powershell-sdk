@@ -37,3 +37,5 @@ AssetMetadata stores the metadata of the asset.
   - Signifies network access for the asset.
 - objectTags: list of AssetTags
   - Signifies the object tags for the asset.
+- name: System.String
+  - Signifies the name of the asset.

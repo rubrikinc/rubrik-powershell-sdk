@@ -18,4 +18,6 @@
   - Creation time range specified in the local timezone of the user.
 - lastScanFilter: UserTimeRangeInput
   - Last scan time range specified in the local timezone of the user.
+- mipLabelsFilter: list of MipLabelsFilterInputs
+  - List of mip labels to filter the paths.
 - fileType: FileCountType

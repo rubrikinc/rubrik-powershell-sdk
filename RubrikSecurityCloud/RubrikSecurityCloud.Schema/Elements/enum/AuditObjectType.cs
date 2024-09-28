@@ -192,6 +192,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,
 
+        [EnumMember(Value = "KMS_KEY_VAULT")]
+        KMS_KEY_VAULT,
+
         [EnumMember(Value = "LDAP")]
         LDAP,
 

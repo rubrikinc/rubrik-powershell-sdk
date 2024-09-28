@@ -20,7 +20,7 @@ This endpoint is deprecated.
 - Returns System.String.
 ### createuser
 - There are 2 arguments.
-    - email - System.String
+    - email - System.String: User email.
     - roleIds - list of System.Strings
 - Returns System.String.
 ### createuserwithpassword

@@ -49,6 +49,8 @@
   - Specifies the object type of the asset.
 - scanStatus: ScanStatus
   - Specifies the scan status of the asset.
+- mipLabelsSummary: list of MipLabelSummarys
+  - Specifies the sensitive files count summary for MIP Labels.
 - id: System.String
 - folderChildConnection: FileResultConnection
 - fileResultConnection: FileResultConnection

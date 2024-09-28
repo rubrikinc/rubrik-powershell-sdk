@@ -130,6 +130,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("folderChildConnection")]
         public FileResultConnection? FolderChildConnection { get; set; }
 
+        //      C# -> List<MipLabelSummary>? MipLabelsSummary
+        // GraphQL -> mipLabelsSummary: [MipLabelSummary!]! (type)
+        [JsonProperty("mipLabelsSummary")]
+        public List<MipLabelSummary>? MipLabelsSummary { get; set; }
+
         //      C# -> ObjectStatus? ObjectStatus
         // GraphQL -> objectStatus: ObjectStatus! (type)
         [JsonProperty("objectStatus")]
@@ -260,6 +265,7 @@ namespace RubrikSecurityCloud.Types
         PrincipalCounts? DeltaUserCounts = null,
         FileResultConnection? FileResultConnection = null,
         FileResultConnection? FolderChildConnection = null,
+        List<MipLabelSummary>? MipLabelsSummary = null,
         ObjectStatus? ObjectStatus = null,
         List<ClassificationPolicySummary>? PolicySummaries = null,
         SensitiveHits? RiskHits = null,
@@ -336,6 +342,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( FolderChildConnection != null ) {
             this.FolderChildConnection = FolderChildConnection;
+        }
+        if ( MipLabelsSummary != null ) {
+            this.MipLabelsSummary = MipLabelsSummary;
         }
         if ( ObjectStatus != null ) {
             this.ObjectStatus = ObjectStatus;
@@ -598,6 +607,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "folderChildConnection" + "\n(" + this.Vars.FolderChildConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<MipLabelSummary>? MipLabelsSummary
+        // GraphQL -> mipLabelsSummary: [MipLabelSummary!]! (type)
+        if (this.MipLabelsSummary != null) {
+            var fspec = this.MipLabelsSummary.AsFieldSpec(conf.Child("mipLabelsSummary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mipLabelsSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1110,6 +1131,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.FolderChildConnection != null && ec.Excludes("folderChildConnection",false))
         {
             this.FolderChildConnection = null;
+        }
+        //      C# -> List<MipLabelSummary>? MipLabelsSummary
+        // GraphQL -> mipLabelsSummary: [MipLabelSummary!]! (type)
+        if (ec.Includes("mipLabelsSummary",false))
+        {
+            if(this.MipLabelsSummary == null) {
+
+                this.MipLabelsSummary = new List<MipLabelSummary>();
+                this.MipLabelsSummary.ApplyExploratoryFieldSpec(ec.NewChild("mipLabelsSummary"));
+
+            } else {
+
+                this.MipLabelsSummary.ApplyExploratoryFieldSpec(ec.NewChild("mipLabelsSummary"));
+
+            }
+        }
+        else if (this.MipLabelsSummary != null && ec.Excludes("mipLabelsSummary",false))
+        {
+            this.MipLabelsSummary = null;
         }
         //      C# -> ObjectStatus? ObjectStatus
         // GraphQL -> objectStatus: ObjectStatus! (type)

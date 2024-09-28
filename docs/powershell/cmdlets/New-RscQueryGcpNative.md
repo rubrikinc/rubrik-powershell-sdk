@@ -14,7 +14,7 @@ List of GCP disks.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - GcpNativeDiskSortFields: Sort fields for list of GCP disks.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - diskFilters - GcpNativeDiskFilters
 - Returns GcpNativeDiskConnection.
 ### gceinstance
@@ -31,7 +31,7 @@ List of GCE instances.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - GcpNativeGceInstanceSortFields: Sort fields for list of GCP GCE instances.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - gceInstanceFilters - GcpNativeGceInstanceFilters
 - Returns GcpNativeGceInstanceConnection.
 ### project
@@ -48,7 +48,7 @@ List of GCP projects.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - GcpNativeProjectSortFields: Sort fields for list of GCP projects.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - projectFilters - GcpNativeProjectFilters
     - authorizedOperationFilter - Operation
     - workloadHierarchy - WorkloadLevelHierarchy: Provide optional workload hierarchy for RBAC and SLA, none value is assumed to be All workload hierarchy.

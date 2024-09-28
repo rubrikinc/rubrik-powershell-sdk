@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region MongoSource
  
-    public class MongoSource: BaseType, CdmHierarchyObject, HierarchyObject
+    public class MongoSource: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject
     {
         #region members
 
@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmId")]
         public System.String? CdmId { get; set; }
 
+        //      C# -> System.String? CdmLink
+        // GraphQL -> cdmLink: String! (scalar)
+        [JsonProperty("cdmLink")]
+        public System.String? CdmLink { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [JsonProperty("clusterUuid")]
@@ -120,6 +125,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
+
+        //      C# -> System.Int32? OnDemandSnapshotCount
+        // GraphQL -> onDemandSnapshotCount: Int! (scalar)
+        [JsonProperty("onDemandSnapshotCount")]
+        public System.Int32? OnDemandSnapshotCount { get; set; }
 
         //      C# -> System.String? PrimaryClusterUuid
         // GraphQL -> primaryClusterUuid: UUID! (scalar)
@@ -196,6 +206,41 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
+        // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
+        [JsonProperty("missedSnapshotConnection")]
+        public MissedSnapshotCommonConnection? MissedSnapshotConnection { get; set; }
+
+        //      C# -> MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection
+        // GraphQL -> missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection (type)
+        [JsonProperty("missedSnapshotGroupByConnection")]
+        public MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection { get; set; }
+
+        //      C# -> CdmSnapshot? NewestArchivedSnapshot
+        // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
+        [JsonProperty("newestArchivedSnapshot")]
+        public CdmSnapshot? NewestArchivedSnapshot { get; set; }
+
+        //      C# -> CdmSnapshot? NewestIndexedSnapshot
+        // GraphQL -> newestIndexedSnapshot: CdmSnapshot (type)
+        [JsonProperty("newestIndexedSnapshot")]
+        public CdmSnapshot? NewestIndexedSnapshot { get; set; }
+
+        //      C# -> CdmSnapshot? NewestReplicatedSnapshot
+        // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)
+        [JsonProperty("newestReplicatedSnapshot")]
+        public CdmSnapshot? NewestReplicatedSnapshot { get; set; }
+
+        //      C# -> CdmSnapshot? NewestSnapshot
+        // GraphQL -> newestSnapshot: CdmSnapshot (type)
+        [JsonProperty("newestSnapshot")]
+        public CdmSnapshot? NewestSnapshot { get; set; }
+
+        //      C# -> CdmSnapshot? OldestSnapshot
+        // GraphQL -> oldestSnapshot: CdmSnapshot (type)
+        [JsonProperty("oldestSnapshot")]
+        public CdmSnapshot? OldestSnapshot { get; set; }
+
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
         [JsonProperty("pendingObjectDeletionStatus")]
@@ -221,10 +266,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("securityMetadata")]
         public SecurityMetadata? SecurityMetadata { get; set; }
 
+        //      C# -> CdmSnapshotConnection? SnapshotConnection
+        // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
+        [JsonProperty("snapshotConnection")]
+        public CdmSnapshotConnection? SnapshotConnection { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
         public SnapshotDistribution? SnapshotDistribution { get; set; }
+
+        //      C# -> CdmSnapshotGroupByConnection? SnapshotGroupByConnection
+        // GraphQL -> snapshotGroupByConnection: CdmSnapshotGroupByConnection (type)
+        [JsonProperty("snapshotGroupByConnection")]
+        public CdmSnapshotGroupByConnection? SnapshotGroupByConnection { get; set; }
+
+        //      C# -> CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary
+        // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
+        [JsonProperty("snapshotGroupBySummary")]
+        public CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary { get; set; }
 
         //      C# -> SourceMetadata? SourceMetadata
         // GraphQL -> sourceMetadata: SourceMetadata (type)
@@ -252,7 +312,19 @@ namespace RubrikSecurityCloud.Types
 
         public RscGqlVars DescendantConnection { get; set; }
 
+        public RscGqlVars MissedSnapshotConnection { get; set; }
+
+        public RscGqlVars MissedSnapshotGroupByConnection { get; set; }
+
+        public RscGqlVars NewestSnapshot { get; set; }
+
         public RscGqlVars PhysicalChildConnection { get; set; }
+
+        public RscGqlVars SnapshotConnection { get; set; }
+
+        public RscGqlVars SnapshotGroupByConnection { get; set; }
+
+        public RscGqlVars SnapshotGroupBySummary { get; set; }
 
 
         public InlineVars() {
@@ -274,6 +346,29 @@ namespace RubrikSecurityCloud.Types
                 };
             this.DescendantConnection =
                 new RscGqlVars(null, descendantConnectionArgs, null, true);
+            Tuple<string, string>[] missedSnapshotConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("filter", "MissedSnapshotFilterInput"),
+                };
+            this.MissedSnapshotConnection =
+                new RscGqlVars(null, missedSnapshotConnectionArgs, null, true);
+            Tuple<string, string>[] missedSnapshotGroupByConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("filter", "MissedSnapshotFilterInput"),
+                    Tuple.Create("groupBy", "MissedSnapshotGroupByTime!"),
+                    Tuple.Create("timezoneOffset", "Float"),
+                };
+            this.MissedSnapshotGroupByConnection =
+                new RscGqlVars(null, missedSnapshotGroupByConnectionArgs, null, true);
+            Tuple<string, string>[] newestSnapshotArgs = {
+                    Tuple.Create("beforeTime", "DateTime"),
+                };
+            this.NewestSnapshot =
+                new RscGqlVars(null, newestSnapshotArgs, null, true);
             Tuple<string, string>[] physicalChildConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -285,6 +380,41 @@ namespace RubrikSecurityCloud.Types
                 };
             this.PhysicalChildConnection =
                 new RscGqlVars(null, physicalChildConnectionArgs, null, true);
+            Tuple<string, string>[] snapshotConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("filter", "CdmSnapshotFilterInput"),
+                    Tuple.Create("sortBy", "CdmSnapshotSortByEnum"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                };
+            this.SnapshotConnection =
+                new RscGqlVars(null, snapshotConnectionArgs, null, true);
+            Tuple<string, string>[] snapshotGroupByConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("filter", "CdmSnapshotFilterInput"),
+                    Tuple.Create("groupBy", "CdmSnapshotGroupByEnum!"),
+                    Tuple.Create("timezone", "Timezone"),
+                };
+            this.SnapshotGroupByConnection =
+                new RscGqlVars(null, snapshotGroupByConnectionArgs, null, true);
+            Tuple<string, string>[] snapshotGroupBySummaryArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("timezone", "Timezone"),
+                    Tuple.Create("filter", "CdmSnapshotFilterInput"),
+                    Tuple.Create("groupBy", "CdmSnapshotGroupByEnum!"),
+                };
+            this.SnapshotGroupBySummary =
+                new RscGqlVars(null, snapshotGroupBySummaryArgs, null, true);
         }
     }
 
@@ -312,12 +442,14 @@ namespace RubrikSecurityCloud.Types
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.Int32? ActiveCollectionCount = null,
         System.String? CdmId = null,
+        System.String? CdmLink = null,
         System.String? ClusterUuid = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
         DateTime? LastRefreshTime = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
+        System.Int32? OnDemandSnapshotCount = null,
         System.String? PrimaryClusterUuid = null,
         System.Int32? ProtectedCollectionCount = null,
         System.Int32? ReplicatedObjectCount = null,
@@ -333,12 +465,22 @@ namespace RubrikSecurityCloud.Types
         List<CdmMongoNode>? IgnoreSecondaryNodes = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
+        MissedSnapshotCommonConnection? MissedSnapshotConnection = null,
+        MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection = null,
+        CdmSnapshot? NewestArchivedSnapshot = null,
+        CdmSnapshot? NewestIndexedSnapshot = null,
+        CdmSnapshot? NewestReplicatedSnapshot = null,
+        CdmSnapshot? NewestSnapshot = null,
+        CdmSnapshot? OldestSnapshot = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         MongoSourcePhysicalChildTypeConnection? PhysicalChildConnection = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
         SecurityMetadata? SecurityMetadata = null,
+        CdmSnapshotConnection? SnapshotConnection = null,
         SnapshotDistribution? SnapshotDistribution = null,
+        CdmSnapshotGroupByConnection? SnapshotGroupByConnection = null,
+        CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary = null,
         SourceMetadata? SourceMetadata = null,
         List<CdmMongoNode>? SourceNodes = null,
         CdmMongoSslParams? SslParams = null
@@ -386,6 +528,9 @@ namespace RubrikSecurityCloud.Types
         if ( CdmId != null ) {
             this.CdmId = CdmId;
         }
+        if ( CdmLink != null ) {
+            this.CdmLink = CdmLink;
+        }
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
         }
@@ -403,6 +548,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
+        }
+        if ( OnDemandSnapshotCount != null ) {
+            this.OnDemandSnapshotCount = OnDemandSnapshotCount;
         }
         if ( PrimaryClusterUuid != null ) {
             this.PrimaryClusterUuid = PrimaryClusterUuid;
@@ -449,6 +597,27 @@ namespace RubrikSecurityCloud.Types
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
         }
+        if ( MissedSnapshotConnection != null ) {
+            this.MissedSnapshotConnection = MissedSnapshotConnection;
+        }
+        if ( MissedSnapshotGroupByConnection != null ) {
+            this.MissedSnapshotGroupByConnection = MissedSnapshotGroupByConnection;
+        }
+        if ( NewestArchivedSnapshot != null ) {
+            this.NewestArchivedSnapshot = NewestArchivedSnapshot;
+        }
+        if ( NewestIndexedSnapshot != null ) {
+            this.NewestIndexedSnapshot = NewestIndexedSnapshot;
+        }
+        if ( NewestReplicatedSnapshot != null ) {
+            this.NewestReplicatedSnapshot = NewestReplicatedSnapshot;
+        }
+        if ( NewestSnapshot != null ) {
+            this.NewestSnapshot = NewestSnapshot;
+        }
+        if ( OldestSnapshot != null ) {
+            this.OldestSnapshot = OldestSnapshot;
+        }
         if ( PendingObjectDeletionStatus != null ) {
             this.PendingObjectDeletionStatus = PendingObjectDeletionStatus;
         }
@@ -464,8 +633,17 @@ namespace RubrikSecurityCloud.Types
         if ( SecurityMetadata != null ) {
             this.SecurityMetadata = SecurityMetadata;
         }
+        if ( SnapshotConnection != null ) {
+            this.SnapshotConnection = SnapshotConnection;
+        }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
+        }
+        if ( SnapshotGroupByConnection != null ) {
+            this.SnapshotGroupByConnection = SnapshotGroupByConnection;
+        }
+        if ( SnapshotGroupBySummary != null ) {
+            this.SnapshotGroupBySummary = SnapshotGroupBySummary;
         }
         if ( SourceMetadata != null ) {
             this.SourceMetadata = SourceMetadata;
@@ -636,6 +814,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "cdmId\n" ;
             }
         }
+        //      C# -> System.String? CdmLink
+        // GraphQL -> cdmLink: String! (scalar)
+        if (this.CdmLink != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmLink\n" ;
+            } else {
+                s += ind + "cdmLink\n" ;
+            }
+        }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid != null) {
@@ -688,6 +875,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "numWorkloadDescendants\n" ;
             } else {
                 s += ind + "numWorkloadDescendants\n" ;
+            }
+        }
+        //      C# -> System.Int32? OnDemandSnapshotCount
+        // GraphQL -> onDemandSnapshotCount: Int! (scalar)
+        if (this.OnDemandSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "onDemandSnapshotCount\n" ;
+            } else {
+                s += ind + "onDemandSnapshotCount\n" ;
             }
         }
         //      C# -> System.String? PrimaryClusterUuid
@@ -855,6 +1051,90 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
+        // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
+        if (this.MissedSnapshotConnection != null) {
+            var fspec = this.MissedSnapshotConnection.AsFieldSpec(conf.Child("missedSnapshotConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "missedSnapshotConnection" + "\n(" + this.Vars.MissedSnapshotConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection
+        // GraphQL -> missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection (type)
+        if (this.MissedSnapshotGroupByConnection != null) {
+            var fspec = this.MissedSnapshotGroupByConnection.AsFieldSpec(conf.Child("missedSnapshotGroupByConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "missedSnapshotGroupByConnection" + "\n(" + this.Vars.MissedSnapshotGroupByConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CdmSnapshot? NewestArchivedSnapshot
+        // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
+        if (this.NewestArchivedSnapshot != null) {
+            var fspec = this.NewestArchivedSnapshot.AsFieldSpec(conf.Child("newestArchivedSnapshot"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newestArchivedSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CdmSnapshot? NewestIndexedSnapshot
+        // GraphQL -> newestIndexedSnapshot: CdmSnapshot (type)
+        if (this.NewestIndexedSnapshot != null) {
+            var fspec = this.NewestIndexedSnapshot.AsFieldSpec(conf.Child("newestIndexedSnapshot"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newestIndexedSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CdmSnapshot? NewestReplicatedSnapshot
+        // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)
+        if (this.NewestReplicatedSnapshot != null) {
+            var fspec = this.NewestReplicatedSnapshot.AsFieldSpec(conf.Child("newestReplicatedSnapshot"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newestReplicatedSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CdmSnapshot? NewestSnapshot
+        // GraphQL -> newestSnapshot: CdmSnapshot (type)
+        if (this.NewestSnapshot != null) {
+            var fspec = this.NewestSnapshot.AsFieldSpec(conf.Child("newestSnapshot"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newestSnapshot" + "\n(" + this.Vars.NewestSnapshot.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CdmSnapshot? OldestSnapshot
+        // GraphQL -> oldestSnapshot: CdmSnapshot (type)
+        if (this.OldestSnapshot != null) {
+            var fspec = this.OldestSnapshot.AsFieldSpec(conf.Child("oldestSnapshot"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "oldestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
         if (this.PendingObjectDeletionStatus != null) {
@@ -915,6 +1195,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> CdmSnapshotConnection? SnapshotConnection
+        // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
+        if (this.SnapshotConnection != null) {
+            var fspec = this.SnapshotConnection.AsFieldSpec(conf.Child("snapshotConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotConnection" + "\n(" + this.Vars.SnapshotConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
@@ -924,6 +1216,30 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "snapshotDistribution" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CdmSnapshotGroupByConnection? SnapshotGroupByConnection
+        // GraphQL -> snapshotGroupByConnection: CdmSnapshotGroupByConnection (type)
+        if (this.SnapshotGroupByConnection != null) {
+            var fspec = this.SnapshotGroupByConnection.AsFieldSpec(conf.Child("snapshotGroupByConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotGroupByConnection" + "\n(" + this.Vars.SnapshotGroupByConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary
+        // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
+        if (this.SnapshotGroupBySummary != null) {
+            var fspec = this.SnapshotGroupBySummary.AsFieldSpec(conf.Child("snapshotGroupBySummary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotGroupBySummary" + "\n(" + this.Vars.SnapshotGroupBySummary.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1238,6 +1554,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.CdmId = null;
         }
+        //      C# -> System.String? CdmLink
+        // GraphQL -> cdmLink: String! (scalar)
+        if (ec.Includes("cdmLink",true))
+        {
+            if(this.CdmLink == null) {
+
+                this.CdmLink = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmLink != null && ec.Excludes("cdmLink",true))
+        {
+            this.CdmLink = null;
+        }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (ec.Includes("clusterUuid",true))
@@ -1339,6 +1672,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = null;
+        }
+        //      C# -> System.Int32? OnDemandSnapshotCount
+        // GraphQL -> onDemandSnapshotCount: Int! (scalar)
+        if (ec.Includes("onDemandSnapshotCount",true))
+        {
+            if(this.OnDemandSnapshotCount == null) {
+
+                this.OnDemandSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.OnDemandSnapshotCount != null && ec.Excludes("onDemandSnapshotCount",true))
+        {
+            this.OnDemandSnapshotCount = null;
         }
         //      C# -> System.String? PrimaryClusterUuid
         // GraphQL -> primaryClusterUuid: UUID! (scalar)
@@ -1615,6 +1965,139 @@ namespace RubrikSecurityCloud.Types
         {
             this.LogicalPath = null;
         }
+        //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
+        // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
+        if (ec.Includes("missedSnapshotConnection",false))
+        {
+            if(this.MissedSnapshotConnection == null) {
+
+                this.MissedSnapshotConnection = new MissedSnapshotCommonConnection();
+                this.MissedSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotConnection"));
+
+            } else {
+
+                this.MissedSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotConnection"));
+
+            }
+        }
+        else if (this.MissedSnapshotConnection != null && ec.Excludes("missedSnapshotConnection",false))
+        {
+            this.MissedSnapshotConnection = null;
+        }
+        //      C# -> MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection
+        // GraphQL -> missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection (type)
+        if (ec.Includes("missedSnapshotGroupByConnection",false))
+        {
+            if(this.MissedSnapshotGroupByConnection == null) {
+
+                this.MissedSnapshotGroupByConnection = new MissedSnapshotGroupByConnection();
+                this.MissedSnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotGroupByConnection"));
+
+            } else {
+
+                this.MissedSnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotGroupByConnection"));
+
+            }
+        }
+        else if (this.MissedSnapshotGroupByConnection != null && ec.Excludes("missedSnapshotGroupByConnection",false))
+        {
+            this.MissedSnapshotGroupByConnection = null;
+        }
+        //      C# -> CdmSnapshot? NewestArchivedSnapshot
+        // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
+        if (ec.Includes("newestArchivedSnapshot",false))
+        {
+            if(this.NewestArchivedSnapshot == null) {
+
+                this.NewestArchivedSnapshot = new CdmSnapshot();
+                this.NewestArchivedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestArchivedSnapshot"));
+
+            } else {
+
+                this.NewestArchivedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestArchivedSnapshot"));
+
+            }
+        }
+        else if (this.NewestArchivedSnapshot != null && ec.Excludes("newestArchivedSnapshot",false))
+        {
+            this.NewestArchivedSnapshot = null;
+        }
+        //      C# -> CdmSnapshot? NewestIndexedSnapshot
+        // GraphQL -> newestIndexedSnapshot: CdmSnapshot (type)
+        if (ec.Includes("newestIndexedSnapshot",false))
+        {
+            if(this.NewestIndexedSnapshot == null) {
+
+                this.NewestIndexedSnapshot = new CdmSnapshot();
+                this.NewestIndexedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestIndexedSnapshot"));
+
+            } else {
+
+                this.NewestIndexedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestIndexedSnapshot"));
+
+            }
+        }
+        else if (this.NewestIndexedSnapshot != null && ec.Excludes("newestIndexedSnapshot",false))
+        {
+            this.NewestIndexedSnapshot = null;
+        }
+        //      C# -> CdmSnapshot? NewestReplicatedSnapshot
+        // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)
+        if (ec.Includes("newestReplicatedSnapshot",false))
+        {
+            if(this.NewestReplicatedSnapshot == null) {
+
+                this.NewestReplicatedSnapshot = new CdmSnapshot();
+                this.NewestReplicatedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestReplicatedSnapshot"));
+
+            } else {
+
+                this.NewestReplicatedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestReplicatedSnapshot"));
+
+            }
+        }
+        else if (this.NewestReplicatedSnapshot != null && ec.Excludes("newestReplicatedSnapshot",false))
+        {
+            this.NewestReplicatedSnapshot = null;
+        }
+        //      C# -> CdmSnapshot? NewestSnapshot
+        // GraphQL -> newestSnapshot: CdmSnapshot (type)
+        if (ec.Includes("newestSnapshot",false))
+        {
+            if(this.NewestSnapshot == null) {
+
+                this.NewestSnapshot = new CdmSnapshot();
+                this.NewestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestSnapshot"));
+
+            } else {
+
+                this.NewestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestSnapshot"));
+
+            }
+        }
+        else if (this.NewestSnapshot != null && ec.Excludes("newestSnapshot",false))
+        {
+            this.NewestSnapshot = null;
+        }
+        //      C# -> CdmSnapshot? OldestSnapshot
+        // GraphQL -> oldestSnapshot: CdmSnapshot (type)
+        if (ec.Includes("oldestSnapshot",false))
+        {
+            if(this.OldestSnapshot == null) {
+
+                this.OldestSnapshot = new CdmSnapshot();
+                this.OldestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("oldestSnapshot"));
+
+            } else {
+
+                this.OldestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("oldestSnapshot"));
+
+            }
+        }
+        else if (this.OldestSnapshot != null && ec.Excludes("oldestSnapshot",false))
+        {
+            this.OldestSnapshot = null;
+        }
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
         if (ec.Includes("pendingObjectDeletionStatus",false))
@@ -1710,6 +2193,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.SecurityMetadata = null;
         }
+        //      C# -> CdmSnapshotConnection? SnapshotConnection
+        // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
+        if (ec.Includes("snapshotConnection",false))
+        {
+            if(this.SnapshotConnection == null) {
+
+                this.SnapshotConnection = new CdmSnapshotConnection();
+                this.SnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotConnection"));
+
+            } else {
+
+                this.SnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotConnection"));
+
+            }
+        }
+        else if (this.SnapshotConnection != null && ec.Excludes("snapshotConnection",false))
+        {
+            this.SnapshotConnection = null;
+        }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (ec.Includes("snapshotDistribution",false))
@@ -1728,6 +2230,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotDistribution != null && ec.Excludes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = null;
+        }
+        //      C# -> CdmSnapshotGroupByConnection? SnapshotGroupByConnection
+        // GraphQL -> snapshotGroupByConnection: CdmSnapshotGroupByConnection (type)
+        if (ec.Includes("snapshotGroupByConnection",false))
+        {
+            if(this.SnapshotGroupByConnection == null) {
+
+                this.SnapshotGroupByConnection = new CdmSnapshotGroupByConnection();
+                this.SnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupByConnection"));
+
+            } else {
+
+                this.SnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupByConnection"));
+
+            }
+        }
+        else if (this.SnapshotGroupByConnection != null && ec.Excludes("snapshotGroupByConnection",false))
+        {
+            this.SnapshotGroupByConnection = null;
+        }
+        //      C# -> CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary
+        // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
+        if (ec.Includes("snapshotGroupBySummary",false))
+        {
+            if(this.SnapshotGroupBySummary == null) {
+
+                this.SnapshotGroupBySummary = new CdmSnapshotGroupBySummaryConnection();
+                this.SnapshotGroupBySummary.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupBySummary"));
+
+            } else {
+
+                this.SnapshotGroupBySummary.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupBySummary"));
+
+            }
+        }
+        else if (this.SnapshotGroupBySummary != null && ec.Excludes("snapshotGroupBySummary",false))
+        {
+            this.SnapshotGroupBySummary = null;
         }
         //      C# -> SourceMetadata? SourceMetadata
         // GraphQL -> sourceMetadata: SourceMetadata (type)

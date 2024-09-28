@@ -12,7 +12,7 @@ Connection of filtered SAP HANA databases based on specific filters.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns SapHanaDatabaseConnection.
 ### logsnapshot
@@ -28,7 +28,7 @@ Connection of all log snapshots for SAP HANA.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - SapHanaLogSnapshotSortBy: Field to sort SAP HANA log snapshots.
     - filter - SapHanaLogSnapshotFilterInput: Field to filter SAP HANA log snapshots.
 - Returns SapHanaLogSnapshotConnection.
@@ -45,7 +45,7 @@ Connection of all recoverable ranges for SAP HANA.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - SapHanaRecoverableRangeSortBy: Field to sort SAP HANA recoverable ranges.
     - filter - SapHanaRecoverableRangeFilterInput: Field to filter SAP HANA recoverable ranges.
 - Returns SapHanaRecoverableRangeConnection.
@@ -61,6 +61,6 @@ Connection of filtered SAP HANA systems based on specific filters.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns SapHanaSystemConnection.

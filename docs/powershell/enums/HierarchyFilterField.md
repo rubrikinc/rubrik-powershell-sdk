@@ -306,3 +306,10 @@
 - VMWARE_VM_MAC_ADDRESS - Filter VMWare virtual machine using a MAC Address.
  +mo:filter:db:table=cdm_vmware_virtual_machine
  +mo:filter:db:column=resource_spec
+- HOST_BY_AGENT_ID - Filter Host by Agent ID.
+ +mo:filter:db:table=cdm_host
+ +mo:filter:db:column=agent_id
+ +mo:filter:db:index:key=agent_id_idx
+ +mo:filter:db:index:seq=1
+ +mo:filter:db:index:type=BTREE
+ +mo:filter:db:index:unique=false

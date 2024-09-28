@@ -7,3 +7,4 @@ Specifies the type of an integration. Note that the values are stored in a
  data hits to prevent them from being exfiltrated.
 - SERVICENOW_ITSM - Represents a ServiceNow ITSM integration.
 - OKTA - Represents a OKTA ITP integration.
+- MICROSOFT_PURVIEW - Represents a Microsoft Purview integration.

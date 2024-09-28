@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public UserStatus? Status { get; set; }
 
+        //      C# -> System.String? DomainName
+        // GraphQL -> domainName: String (scalar)
+        [JsonProperty("domainName")]
+        public System.String? DomainName { get; set; }
+
         //      C# -> System.String? Email
         // GraphQL -> email: String! (scalar)
         [JsonProperty("email")]
@@ -122,6 +127,7 @@ namespace RubrikSecurityCloud.Types
     public User Set(
         UserDomainEnum? Domain = null,
         UserStatus? Status = null,
+        System.String? DomainName = null,
         System.String? Email = null,
         List<System.String>? Groups = null,
         System.String? Id = null,
@@ -145,6 +151,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( DomainName != null ) {
+            this.DomainName = DomainName;
         }
         if ( Email != null ) {
             this.Email = Email;
@@ -224,6 +233,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> System.String? DomainName
+        // GraphQL -> domainName: String (scalar)
+        if (this.DomainName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "domainName\n" ;
+            } else {
+                s += ind + "domainName\n" ;
             }
         }
         //      C# -> System.String? Email
@@ -434,6 +452,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> System.String? DomainName
+        // GraphQL -> domainName: String (scalar)
+        if (ec.Includes("domainName",true))
+        {
+            if(this.DomainName == null) {
+
+                this.DomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DomainName != null && ec.Excludes("domainName",true))
+        {
+            this.DomainName = null;
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String! (scalar)

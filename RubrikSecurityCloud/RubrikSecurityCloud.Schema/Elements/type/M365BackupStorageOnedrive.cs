@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
 
+        //      C# -> System.Boolean? IsSyncingStatus
+        // GraphQL -> isSyncingStatus: Boolean! (scalar)
+        [JsonProperty("isSyncingStatus")]
+        public System.Boolean? IsSyncingStatus { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -252,6 +257,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
+        System.Boolean? IsSyncingStatus = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
@@ -300,6 +306,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( IsSyncingStatus != null ) {
+            this.IsSyncingStatus = IsSyncingStatus;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -466,6 +475,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRelic\n" ;
             } else {
                 s += ind + "isRelic\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSyncingStatus
+        // GraphQL -> isSyncingStatus: Boolean! (scalar)
+        if (this.IsSyncingStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSyncingStatus\n" ;
+            } else {
+                s += ind + "isSyncingStatus\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -870,6 +888,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRelic != null && ec.Excludes("isRelic",true))
         {
             this.IsRelic = null;
+        }
+        //      C# -> System.Boolean? IsSyncingStatus
+        // GraphQL -> isSyncingStatus: Boolean! (scalar)
+        if (ec.Includes("isSyncingStatus",true))
+        {
+            if(this.IsSyncingStatus == null) {
+
+                this.IsSyncingStatus = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSyncingStatus != null && ec.Excludes("isSyncingStatus",true))
+        {
+            this.IsSyncingStatus = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

@@ -79,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastScanFilter")]
         public UserTimeRangeInput? LastScanFilter { get; set; }
 
+        //      C# -> List<MipLabelsFilterInput>? MipLabelsFilter
+        // GraphQL -> mipLabelsFilter: [MipLabelsFilterInput!] (input)
+        [JsonProperty("mipLabelsFilter")]
+        public List<MipLabelsFilterInput>? MipLabelsFilter { get; set; }
+
         //      C# -> FileCountType? FileType
         // GraphQL -> fileType: FileCountType! (enum)
         [Required]

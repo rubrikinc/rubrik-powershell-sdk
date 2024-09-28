@@ -26,6 +26,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("userIds")]
         public List<System.String>? UserIds { get; set; }
 
+        //      C# -> System.Boolean? InvalidateAllSessions
+        // GraphQL -> invalidateAllSessions: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("invalidateAllSessions")]
+        public System.Boolean? InvalidateAllSessions { get; set; }
+
 
         #endregion
 

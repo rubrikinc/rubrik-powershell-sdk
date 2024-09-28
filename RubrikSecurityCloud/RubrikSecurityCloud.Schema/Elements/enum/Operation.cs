@@ -243,6 +243,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_MIGRATION_DASHBOARD")]
         MANAGE_MIGRATION_DASHBOARD,
 
+        [EnumMember(Value = "MANAGE_OAUTH_APPLICATIONS")]
+        MANAGE_OAUTH_APPLICATIONS,
+
         [EnumMember(Value = "MANAGE_OKTA_INTEGRATION")]
         MANAGE_OKTA_INTEGRATION,
 
@@ -365,6 +368,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "USE_AS_REPLICATION_TARGET")]
         USE_AS_REPLICATION_TARGET,
+
+        [EnumMember(Value = "USE_OAUTH_APPLICATIONS")]
+        USE_OAUTH_APPLICATIONS,
 
         [EnumMember(Value = "VIEW_ACCESS")]
         VIEW_ACCESS,
