@@ -51,10 +51,10 @@ function RunIfNotDry {
 # Change to the root of the repository
 Set-Location $PSScriptRoot\..
 
-# bail out if not on the devel branch
-$currentBranch = git rev-parse --abbrev-ref HEAD
-if ($currentBranch -ne 'devel') {
-    throw "You are not on the 'devel' branch. Current branch is '$currentBranch'."
+# bail out if on the main branch
+$sourceBranch = git rev-parse --abbrev-ref HEAD
+if ($sourceBranch -eq 'main') {
+    throw "You are on the 'main' branch. Start from the source branch."
 }
 
 # Get the latest changelog entry
@@ -123,7 +123,9 @@ $CommitMessage = ""
 RunIfNotDry {
     $script:CommitMessage = $versionEntry
 }
-.\Utils\Update-RscSdkMainBranch.ps1 -CommitMessage "$CommitMessage"
+
+# Passing an empty CommitMessage makes it a dry run
+.\Utils\Update-RscSdkMainBranch.ps1 -CommitMessage "$CommitMessage" -StayOnMain
 
 # Create a new GitHub release
 RunIfNotDry {
@@ -137,12 +139,15 @@ if ($script:NotDry) {
     .\Utils\Publish-RscSdk.ps1
 }
 
+git checkout $sourceBranch
+
 # Prepare devel branch for further development
 RunIfNotDry {
-    git checkout devel
-    Set-Location $PSScriptRoot\..
-    .\Utils\New-RscSdkChangeLogEntry.ps1 -Commit
-    git push origin devel
+    if ($sourceBranch -eq 'devel') {
+        Set-Location $PSScriptRoot\..
+        .\Utils\New-RscSdkChangeLogEntry.ps1 -Commit
+        git push origin devel
+    }
 }
 
 Write-Host "Done." -ForegroundColor Green
