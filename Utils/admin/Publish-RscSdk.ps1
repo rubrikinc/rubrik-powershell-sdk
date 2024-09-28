@@ -29,8 +29,7 @@ $ErrorActionPreference = "Stop"
 # Uncomment this to enable Write-Debug output
 # $DebugPreference = "Continue"
 
-# Change to the root of the repository
-Set-Location $PSScriptRoot\..
+$SdkRoot = Join-Path -Path $PSScriptRoot -ChildPath '..\..' -Resolve
 
 # bail out if not on the main branch
 $currentBranch = git rev-parse --abbrev-ref HEAD
@@ -38,13 +37,13 @@ if ($currentBranch -ne 'main') {
     throw "You are not on the 'main' branch. Current branch is '$currentBranch'."
 }
 
-$publishDir = ".\Output.Publish"
+$publishDir = "$SdkRoot\Output.Publish"
 # bail out if already there
 if (Test-Path $publishDir) {
     throw "$publishDir already exists. Remove it first."
 }
 
-$releaseDir= ".\Output.Release"
+$releaseDir= "$SdkRoot\Output.Release"
 # bail out if Output.Release is missing
 if (-Not (Test-Path $releaseDir)) {
     throw "$releaseDir is missing. Run .\Utils\Build-RscSdk.ps1 -Release first."
@@ -68,7 +67,7 @@ if (-Not $apiKey) {
 }
 
 # Assemble the module for publishing
-$sdkVersion = .\Utils\Get-RscSdkVersion.ps1
+$sdkVersion = (& "$SdkRoot\Utils\Get-RscSdkVersion.ps1")
 Write-Host "Publishing version $sdkVersion to the PowerShell Gallery."
 New-Item -Path $publishDir -ItemType Directory
 $galleryDir = Join-Path $publishDir RubrikSecurityCloud
