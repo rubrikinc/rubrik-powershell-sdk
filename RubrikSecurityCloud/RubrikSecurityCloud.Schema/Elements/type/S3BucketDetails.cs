@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AwsCloudAccountRegion? RegionEnum
+        // GraphQL -> regionEnum: AwsCloudAccountRegion! (enum)
+        [JsonProperty("regionEnum")]
+        public AwsCloudAccountRegion? RegionEnum { get; set; }
+
         //      C# -> System.String? Arn
         // GraphQL -> arn: String! (scalar)
         [JsonProperty("arn")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public S3BucketDetails Set(
+        AwsCloudAccountRegion? RegionEnum = null,
         System.String? Arn = null,
         System.String? Name = null,
         System.String? Region = null
     ) 
     {
+        if ( RegionEnum != null ) {
+            this.RegionEnum = RegionEnum;
+        }
         if ( Arn != null ) {
             this.Arn = Arn;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AwsCloudAccountRegion? RegionEnum
+        // GraphQL -> regionEnum: AwsCloudAccountRegion! (enum)
+        if (this.RegionEnum != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "regionEnum\n" ;
+            } else {
+                s += ind + "regionEnum\n" ;
+            }
+        }
         //      C# -> System.String? Arn
         // GraphQL -> arn: String! (scalar)
         if (this.Arn != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> AwsCloudAccountRegion? RegionEnum
+        // GraphQL -> regionEnum: AwsCloudAccountRegion! (enum)
+        if (ec.Includes("regionEnum",true))
+        {
+            if(this.RegionEnum == null) {
+
+                this.RegionEnum = new AwsCloudAccountRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RegionEnum != null && ec.Excludes("regionEnum",true))
+        {
+            this.RegionEnum = null;
+        }
         //      C# -> System.String? Arn
         // GraphQL -> arn: String! (scalar)
         if (ec.Includes("arn",true))

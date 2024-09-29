@@ -21,6 +21,8 @@ NAS share instance of a registered NAS system.
   - Object ID.
 - nasSystem: NasSystem
   - The NAS System to which this NAS Share belongs.
+- nasVolume: NasVolume
+  - The NAS Volume to which this NAS Share belongs.
 - primaryFileset: NasFileset
   - NAS Share Protection Fileset.
 - connectedThrough: ConnectedThroughEnumType

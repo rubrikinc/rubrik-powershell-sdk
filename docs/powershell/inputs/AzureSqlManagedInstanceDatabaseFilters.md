@@ -13,5 +13,9 @@ Filters for list of Azure SQL Managed Instance Databases.
   - Filter by region.
 - relicFilter: RelicFilter
   - Filter by relic.
+- sensitivityStatusFilter: SensitivityStatusFilter
+  - Filter by sensitivity status.
+- protectionStatusFilter: ProtectionStatusFilter
+  - Filter by protection status.
 - serverFilter: CloudNativeDatabaseServerFilter
   - Filter by server.

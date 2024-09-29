@@ -1303,6 +1303,24 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.Boolean? IsValidTprPolicyName
+        // GraphQL -> isValidTprPolicyName: Boolean! (scalar)
+        public static string IsValidTprPolicyName(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ntprPolicyName: $tprPolicyName\n)";
+            return "isValidTprPolicyName" + args + "\n";
+        }
+        public static object IsValidTprPolicyNameFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return true ;
+        }
+
         //      C# -> System.Int32? MaxProtectedAppsCount
         // GraphQL -> maxProtectedAppsCount: Int! (scalar)
         public static string MaxProtectedAppsCount(object fsObj)
@@ -1355,6 +1373,24 @@ namespace RubrikSecurityCloud.Types
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
             return Int32.MinValue ;
+        }
+
+        //      C# -> System.Int64? SessionInactivityTimeoutInSeconds
+        // GraphQL -> sessionInactivityTimeoutInSeconds: Long! (scalar)
+        public static string SessionInactivityTimeoutInSeconds(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "sessionInactivityTimeoutInSeconds" + args + "\n";
+        }
+        public static object SessionInactivityTimeoutInSecondsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return new System.Int64() ;
         }
 
         //      C# -> System.Boolean? TeamChannelNameAvailable
@@ -3738,7 +3774,7 @@ namespace RubrikSecurityCloud.Types
         public static string AnalyzerUsages(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "";
+            string args = "\n(\ndataCategoryIdsFilter: $dataCategoryIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\ndataTypeSourceFilter: $dataTypeSourceFilter\ndataTypeNameSearchFilter: $dataTypeNameSearchFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "analyzerUsages" + args + "\n{\n" + fs + "}\n";
         }
         public static object AnalyzerUsagesFieldSpec(ExplorationContext? ec=null)
@@ -4386,7 +4422,7 @@ namespace RubrikSecurityCloud.Types
         public static string AzureNativeManagedDisk(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nazureManagedDiskRubrikId: $azureManagedDiskRubrikId\n)";
+            string args = "\n(\nazureManagedDiskRubrikId: $azureManagedDiskRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureNativeManagedDisk" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureNativeManagedDiskFieldSpec(ExplorationContext? ec=null)
@@ -4404,7 +4440,7 @@ namespace RubrikSecurityCloud.Types
         public static string AzureNativeManagedDisks(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndiskFilters: $diskFilters\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndiskFilters: $diskFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureNativeManagedDisks" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureNativeManagedDisksFieldSpec(ExplorationContext? ec=null)
@@ -4512,7 +4548,7 @@ namespace RubrikSecurityCloud.Types
         public static string AzureNativeVirtualMachine(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nazureVirtualMachineRubrikId: $azureVirtualMachineRubrikId\n)";
+            string args = "\n(\nazureVirtualMachineRubrikId: $azureVirtualMachineRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureNativeVirtualMachine" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureNativeVirtualMachineFieldSpec(ExplorationContext? ec=null)
@@ -4530,7 +4566,7 @@ namespace RubrikSecurityCloud.Types
         public static string AzureNativeVirtualMachines(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndescendantTypeFilter: $descendantTypeFilter\nvirtualMachineFilters: $virtualMachineFilters\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndescendantTypeFilter: $descendantTypeFilter\nvirtualMachineFilters: $virtualMachineFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureNativeVirtualMachines" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureNativeVirtualMachinesFieldSpec(ExplorationContext? ec=null)
@@ -4782,7 +4818,7 @@ namespace RubrikSecurityCloud.Types
         public static string AzureSqlDatabase(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nazureSqlDatabaseRubrikId: $azureSqlDatabaseRubrikId\n)";
+            string args = "\n(\nazureSqlDatabaseRubrikId: $azureSqlDatabaseRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureSqlDatabase" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureSqlDatabaseFieldSpec(ExplorationContext? ec=null)
@@ -4854,7 +4890,7 @@ namespace RubrikSecurityCloud.Types
         public static string AzureSqlDatabases(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlDatabaseFilters: $azureSqlDatabaseFilters\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlDatabaseFilters: $azureSqlDatabaseFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureSqlDatabases" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureSqlDatabasesFieldSpec(ExplorationContext? ec=null)
@@ -4872,7 +4908,7 @@ namespace RubrikSecurityCloud.Types
         public static string AzureSqlManagedInstanceDatabase(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nazureSqlManagedInstanceDatabaseRubrikId: $azureSqlManagedInstanceDatabaseRubrikId\n)";
+            string args = "\n(\nazureSqlManagedInstanceDatabaseRubrikId: $azureSqlManagedInstanceDatabaseRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureSqlManagedInstanceDatabase" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureSqlManagedInstanceDatabaseFieldSpec(ExplorationContext? ec=null)
@@ -4890,7 +4926,7 @@ namespace RubrikSecurityCloud.Types
         public static string AzureSqlManagedInstanceDatabases(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlManagedInstanceDatabaseFilters: $azureSqlManagedInstanceDatabaseFilters\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlManagedInstanceDatabaseFilters: $azureSqlManagedInstanceDatabaseFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureSqlManagedInstanceDatabases" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureSqlManagedInstanceDatabasesFieldSpec(ExplorationContext? ec=null)
@@ -6447,6 +6483,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new Analyzer() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CustomTprPolicyConnection? CustomTprPolicies
+        // GraphQL -> customTprPolicies: CustomTprPolicyConnection! (type)
+        public static string CustomTprPolicies(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "customTprPolicies" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CustomTprPoliciesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new CustomTprPolicyConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -8809,20 +8863,38 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> DayToDayModeBackupStats? M365DayToDayModeBackupStats
-        // GraphQL -> m365DayToDayModeBackupStats: DayToDayModeBackupStats! (type)
-        public static string M365DayToDayModeBackupStats(object fsObj)
+        //      C# -> M365BackupStorageLicenseUsage? M365BackupStorageLicenseUsage
+        // GraphQL -> m365BackupStorageLicenseUsage: M365BackupStorageLicenseUsage! (type)
+        public static string M365BackupStorageLicenseUsage(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\norgId: $orgId\ndashboardWorkloadType: $dashboardWorkloadType\nbackupStatsTimeRange: $backupStatsTimeRange\n)";
-            return "m365DayToDayModeBackupStats" + args + "\n{\n" + fs + "}\n";
+            string args = "";
+            return "m365BackupStorageLicenseUsage" + args + "\n{\n" + fs + "}\n";
         }
-        public static object M365DayToDayModeBackupStatsFieldSpec(ExplorationContext? ec=null)
+        public static object M365BackupStorageLicenseUsageFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new DayToDayModeBackupStats() ;
+            var fieldSpecObj = new M365BackupStorageLicenseUsage() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> M365BackupStorageRestorePointConnection? M365BackupStorageObjectRestorePoints
+        // GraphQL -> m365BackupStorageObjectRestorePoints: M365BackupStorageRestorePointConnection! (type)
+        public static string M365BackupStorageObjectRestorePoints(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nm365BackupStorageObjectRestorePointsInput: $m365BackupStorageObjectRestorePointsInput\n)";
+            return "m365BackupStorageObjectRestorePoints" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object M365BackupStorageObjectRestorePointsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new M365BackupStorageRestorePointConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -9057,6 +9129,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new GetMfaSettingReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> MicrosoftSiteConnection? MicrosoftSites
+        // GraphQL -> microsoftSites: MicrosoftSiteConnection! (type)
+        public static string MicrosoftSites(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\nexcludeChildSites: $excludeChildSites\nprotectionType: $protectionType\n)";
+            return "microsoftSites" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object MicrosoftSitesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new MicrosoftSiteConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -11712,7 +11802,7 @@ namespace RubrikSecurityCloud.Types
         public static string PolicyObjs(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nobjectIdsFilter: $objectIdsFilter\nplatformFilter: $platformFilter\nplatformCategoryFilter: $platformCategoryFilter\ncloudAccountIdsFilter: $cloudAccountIdsFilter\nresourceGroupsFilter: $resourceGroupsFilter\nregionsFilter: $regionsFilter\ndataTypeIdsFilter: $dataTypeIdsFilter\nfirstSeenTimeRange: $firstSeenTimeRange\nlastAccessTimeRange: $lastAccessTimeRange\ncreationTimeRange: $creationTimeRange\nobjectTagsFilter: $objectTagsFilter\nbackupStatusFilter: $backupStatusFilter\nslaIdsFilter: $slaIdsFilter\nnetworkAccessFilter: $networkAccessFilter\nencryptionFilter: $encryptionFilter\nloggingFilter: $loggingFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nobjectIdsFilter: $objectIdsFilter\nplatformFilter: $platformFilter\nplatformCategoryFilter: $platformCategoryFilter\ncloudAccountIdsFilter: $cloudAccountIdsFilter\nresourceGroupsFilter: $resourceGroupsFilter\nregionsFilter: $regionsFilter\ndataTypeIdsFilter: $dataTypeIdsFilter\nfirstSeenTimeRange: $firstSeenTimeRange\nlastAccessTimeRange: $lastAccessTimeRange\ncreationTimeRange: $creationTimeRange\nlastScanTimeRange: $lastScanTimeRange\nobjectTagsFilter: $objectTagsFilter\nmipLabelsFilter: $mipLabelsFilter\nbackupStatusFilter: $backupStatusFilter\nslaIdsFilter: $slaIdsFilter\nnetworkAccessFilter: $networkAccessFilter\nencryptionFilter: $encryptionFilter\nloggingFilter: $loggingFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "policyObjs" + args + "\n{\n" + fs + "}\n";
         }
         public static object PolicyObjsFieldSpec(ExplorationContext? ec=null)
@@ -13201,6 +13291,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> SsoGroupAlreadyExistsReply? SsoGroupAlreadyExists
+        // GraphQL -> ssoGroupAlreadyExists: SsoGroupAlreadyExistsReply! (type)
+        public static string SsoGroupAlreadyExists(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nssoGroupName: $ssoGroupName\nuserDomainId: $userDomainId\n)";
+            return "ssoGroupAlreadyExists" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SsoGroupAlreadyExistsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new SsoGroupAlreadyExistsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? SupportBundle
         // GraphQL -> supportBundle: AsyncRequestStatus! (type)
         public static string SupportBundle(object fsObj)
@@ -13435,6 +13543,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ThreatMonitoringCloudRootEnablement? ThreatMonitoringCloudRootEnablement
+        // GraphQL -> threatMonitoringCloudRootEnablement: ThreatMonitoringCloudRootEnablement! (type)
+        public static string ThreatMonitoringCloudRootEnablement(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "threatMonitoringCloudRootEnablement" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatMonitoringCloudRootEnablementFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ThreatMonitoringCloudRootEnablement() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GetTotpStatusReply? TotpConfigStatus
         // GraphQL -> totpConfigStatus: GetTotpStatusReply! (type)
         public static string TotpConfigStatus(object fsObj)
@@ -13449,6 +13575,132 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new GetTotpStatusReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> TprConfiguration? TprConfiguration
+        // GraphQL -> tprConfiguration: TprConfiguration! (type)
+        public static string TprConfiguration(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\norgId: $orgId\n)";
+            return "tprConfiguration" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TprConfigurationFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new TprConfiguration() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> TprPolicyDetail? TprPolicyDetail
+        // GraphQL -> tprPolicyDetail: TprPolicyDetail! (type)
+        public static string TprPolicyDetail(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ntprPolicyId: $tprPolicyId\n)";
+            return "tprPolicyDetail" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TprPolicyDetailFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new TprPolicyDetail() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> TprPublicConfiguration? TprPublicConfiguration
+        // GraphQL -> tprPublicConfiguration: TprPublicConfiguration! (type)
+        public static string TprPublicConfiguration(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\norgId: $orgId\n)";
+            return "tprPublicConfiguration" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TprPublicConfigurationFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new TprPublicConfiguration() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> TprRequestDetailReply? TprRequestDetail
+        // GraphQL -> tprRequestDetail: TprRequestDetailReply! (type)
+        public static string TprRequestDetail(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ntprRequestId: $tprRequestId\n)";
+            return "tprRequestDetail" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TprRequestDetailFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new TprRequestDetailReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> TprRequestSummaryConnection? TprRequestSummaries
+        // GraphQL -> tprRequestSummaries: TprRequestSummaryConnection! (type)
+        public static string TprRequestSummaries(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\n)";
+            return "tprRequestSummaries" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TprRequestSummariesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new TprRequestSummaryConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> TprRoleEligibilityType? TprRoleEligibility
+        // GraphQL -> tprRoleEligibility: TprRoleEligibilityType! (type)
+        public static string TprRoleEligibility(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\norgId: $orgId\nemail: $email\n)";
+            return "tprRoleEligibility" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TprRoleEligibilityFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new TprRoleEligibilityType() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> TprRulesMap? TprRulesMap
+        // GraphQL -> tprRulesMap: TprRulesMap! (type)
+        public static string TprRulesMap(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "tprRulesMap" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TprRulesMapFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new TprRulesMap() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -13557,6 +13809,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new ActivityTimelineResultConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UserAlreadyExistsReply? UserAlreadyExists
+        // GraphQL -> userAlreadyExists: UserAlreadyExistsReply! (type)
+        public static string UserAlreadyExists(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nemailOrUsername: $emailOrUsername\nuserDomain: $userDomain\nuserDomainId: $userDomainId\n)";
+            return "userAlreadyExists" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UserAlreadyExistsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new UserAlreadyExistsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -14196,7 +14466,7 @@ namespace RubrikSecurityCloud.Types
         public static string VsphereRootRecoveryHierarchy(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "vSphereRootRecoveryHierarchy" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereRootRecoveryHierarchyFieldSpec(ExplorationContext? ec=null)
@@ -14745,6 +15015,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new BatchVmwareCdpLiveInfo() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetWebhookByIdReply? WebhookById
+        // GraphQL -> webhookById: GetWebhookByIdReply! (type)
+        public static string WebhookById(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "webhookById" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object WebhookByIdFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new GetWebhookByIdReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

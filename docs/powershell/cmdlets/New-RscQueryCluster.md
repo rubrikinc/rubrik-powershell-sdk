@@ -59,7 +59,7 @@ Get CDM release details from support portal for a given list of clusters.
     - filterUpgradeable - System.Boolean: Filters for the available upgrade versions.
     - shouldShowAll - System.Boolean: Shows all versions.
     - filterAfterSource - System.Boolean: Filter to include only the versions released after the source version.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
 - Returns CdmUpgradeReleaseDetailsFromSupportPortalReply.
 ### getgroupcountbycdmclusterstatus
 - The getgroupcountbycdmclusterstatus subcommand takes no arguments.

@@ -13,6 +13,11 @@ Download audit log in CSV format asynchronously.
 
 - There is a single argument of type DownloadAuditLogCsvAsyncInput.
 - Returns AsyncDownloadReply.
+### cdmtprconfigurationasync
+Download CDM two-person rule (TPR) configuration report for all Rubrik clusters connected to this RSC account.
+
+- The cdmtprconfigurationasync subcommand takes no arguments.
+- Returns DownloadCdmTprConfigAsyncReply.
 ### exchangesnapshot
 Download exchange database snapshot from archive
 

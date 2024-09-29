@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 19
+    /// Create a new RscQuery object for any of the 20
     /// operations in the 'Report Download' API domain:
-    /// ActiveDirectorySnapshotFromLocation, AuditLogCsvAsync, ExchangeSnapshot, ExchangeSnapshotV2, FilesetSnapshot, FilesetSnapshotFromLocation, FromArchiveV2, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
+    /// ActiveDirectorySnapshotFromLocation, AuditLogCsvAsync, CdmTprConfigurationAsync, ExchangeSnapshot, ExchangeSnapshotV2, FilesetSnapshot, FilesetSnapshotFromLocation, FromArchiveV2, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
     /// </summary>
     /// <description>
     /// New-RscMutationDownload creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 19 operations
+    /// There are 20 operations
     /// in the 'Report Download' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActiveDirectorySnapshotFromLocation, AuditLogCsvAsync, ExchangeSnapshot, ExchangeSnapshotV2, FilesetSnapshot, FilesetSnapshotFromLocation, FromArchiveV2, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
+    /// one of: ActiveDirectorySnapshotFromLocation, AuditLogCsvAsync, CdmTprConfigurationAsync, ExchangeSnapshot, ExchangeSnapshotV2, FilesetSnapshot, FilesetSnapshotFromLocation, FromArchiveV2, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -268,6 +268,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AsyncDownloadReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CdmTprConfigurationAsync operation
+    /// of the 'Report Download' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Download
+    /// # API Operation: CdmTprConfigurationAsync
+    /// 
+    /// $query = New-RscMutationDownload -CdmTprConfigurationAsync
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DownloadCdmTprConfigAsyncReply
     /// 
     /// 
     /// 
@@ -1373,6 +1400,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "ActiveDirectorySnapshotFromLocation",
                 "AuditLogCsvAsync",
+                "CdmTprConfigurationAsync",
                 "ExchangeSnapshot",
                 "ExchangeSnapshotV2",
                 "FilesetSnapshot",
@@ -1410,6 +1438,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "AuditLogCsvAsync":
                         this.ProcessRecord_AuditLogCsvAsync();
+                        break;
+                    case "CdmTprConfigurationAsync":
+                        this.ProcessRecord_CdmTprConfigurationAsync();
                         break;
                     case "ExchangeSnapshot":
                         this.ProcessRecord_ExchangeSnapshot();
@@ -1488,6 +1519,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AuditLogCsvAsync";
             // Create new graphql operation downloadAuditLogCsvAsync
             InitMutationDownloadAuditLogCsvAsync();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadCdmTprConfigurationAsync.
+        internal void ProcessRecord_CdmTprConfigurationAsync()
+        {
+            this._logger.name += " -CdmTprConfigurationAsync";
+            // Create new graphql operation downloadCdmTprConfigurationAsync
+            InitMutationDownloadCdmTprConfigurationAsync();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1824,6 +1864,24 @@ $query.Var.input = @{
 		date = $someDateTime
 	}
 }"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadCdmTprConfigurationAsync: DownloadCdmTprConfigAsyncReply!
+        internal void InitMutationDownloadCdmTprConfigurationAsync()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadCdmTprConfigurationAsync",
+                "",
+                "DownloadCdmTprConfigAsyncReply",
+                Mutation.DownloadCdmTprConfigurationAsync,
+                Mutation.DownloadCdmTprConfigurationAsyncFieldSpec,
+                @""
             );
         }
 

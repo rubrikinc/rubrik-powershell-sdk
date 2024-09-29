@@ -7,7 +7,7 @@ Lists all Azure AD directories for the account.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns AzureAdDirectoryConnection.
 ### addirectory
@@ -22,7 +22,7 @@ Details of the Azure AD objects corresponding to the type.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortByOption - list of AzureAdObjectSearchTypes: Ordered list sorted by column names.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - input - AzureAdObjectTypeInput: Input for the azureAdObjectsByType API.
 - Returns AzureAdObjectConnection.
 ### armtemplatesbyfeature
@@ -225,7 +225,9 @@ Search for azureAdObjects in a snapshot.
 ### sqldatabase
 Retrieves an Azure SQL Database. Refers to the fully managed SQL database built for the cloud. For more information, see https://azure.microsoft.com/en-us/products/azure-sql/database/.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - azureSqlDatabaseRubrikId - System.String: Rubrik ID of the Azure SQL Database.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureSqlDatabaseDb.
 ### sqldatabasedbpointintimerestorewindowfromazure
 Point-in-Time (PiT) restore window of the Azure SQL Database instance in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://azure.microsoft.com/en-in/blog/azure-sql-database-point-in-time-restore/.
@@ -239,14 +241,15 @@ Point-in-Time (PiT) restore window of the Azure SQL Database instance in the Azu
 ### sqldatabases
 Retrieves a paginated list of all Azure SQL Databases.
 
-- There are 7 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureSqlDatabaseSortFields: Sort fields for list of Azure SQL Databases.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlDatabaseFilters - AzureSqlDatabaseFilters: Filters for listing Azure SQL Databases.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureSqlDatabaseDbConnection.
 ### sqldatabaseserver
 Retrieves an Azure SQL Database Server. Refers to the server that contains the Azure SQL Databases. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/logical-servers.
@@ -271,25 +274,28 @@ Retrieves a paginated list of all Azure SQL Database Servers.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureSqlDatabaseServerSortFields: Sort fields for list of Azure SQL Database Servers.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlDatabaseServerFilters - AzureSqlDatabaseServerFilters: Filters for listing Azure SQL Database Servers.
 - Returns AzureSqlDatabaseServerConnection.
 ### sqlmanagedinstancedatabase
 Retrieves an Azure SQL Managed Instance Database. Refers to the database engine compatible with the latest SQL Server (Enterprise Edition) database engine. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - azureSqlManagedInstanceDatabaseRubrikId - System.String: Rubrik ID of the Azure SQL Managed Instance Database.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureSqlManagedInstanceDatabase.
 ### sqlmanagedinstancedatabases
 Retrieves a paginated list of all Azure SQL Managed Instance Databases.
 
-- There are 7 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureSqlManagedInstanceDatabaseSortFields: Sort fields for list of Azure SQL Managed Instance Databases.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlManagedInstanceDatabaseFilters - AzureSqlManagedInstanceDatabaseFilters: Filters for listing Azure SQL Managed Instance Databases.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureSqlManagedInstanceDatabaseConnection.
 ### sqlmanagedinstancedbpointintimerestorewindowfromazure
 Point-in-Time (PiT) restore window of the Azure SQL Managed Instance database in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal.
@@ -314,7 +320,7 @@ Retrieves a paginated list of all Azure SQL Managed Instance Servers.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureSqlManagedInstanceServerSortFields: Sort fields for list of Azure SQL Managed Instance Servers.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlManagedInstanceServerFilters - AzureSqlManagedInstanceServerFilters: Filters for listing Azure SQL Managed Instance Servers.
 - Returns AzureSqlManagedInstanceServerConnection.
 ### storageaccounts

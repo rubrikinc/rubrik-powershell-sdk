@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("protectedObjectCount")]
         public System.Int32? ProtectedObjectCount { get; set; }
 
+        //      C# -> System.Int32? TotalObjectCount
+        // GraphQL -> totalObjectCount: Int! (scalar)
+        [JsonProperty("totalObjectCount")]
+        public System.Int32? TotalObjectCount { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public O365WorkloadSummary Set(
         ManagedObjectType? ObjectType = null,
-        System.Int32? ProtectedObjectCount = null
+        System.Int32? ProtectedObjectCount = null,
+        System.Int32? TotalObjectCount = null
     ) 
     {
         if ( ObjectType != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ProtectedObjectCount != null ) {
             this.ProtectedObjectCount = ProtectedObjectCount;
+        }
+        if ( TotalObjectCount != null ) {
+            this.TotalObjectCount = TotalObjectCount;
         }
         return this;
     }
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "protectedObjectCount\n" ;
             } else {
                 s += ind + "protectedObjectCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? TotalObjectCount
+        // GraphQL -> totalObjectCount: Int! (scalar)
+        if (this.TotalObjectCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalObjectCount\n" ;
+            } else {
+                s += ind + "totalObjectCount\n" ;
             }
         }
         return s;
@@ -122,6 +140,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ProtectedObjectCount != null && ec.Excludes("protectedObjectCount",true))
         {
             this.ProtectedObjectCount = null;
+        }
+        //      C# -> System.Int32? TotalObjectCount
+        // GraphQL -> totalObjectCount: Int! (scalar)
+        if (ec.Includes("totalObjectCount",true))
+        {
+            if(this.TotalObjectCount == null) {
+
+                this.TotalObjectCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalObjectCount != null && ec.Excludes("totalObjectCount",true))
+        {
+            this.TotalObjectCount = null;
         }
     }
 

@@ -45,7 +45,17 @@ Returns privileges that are allowed to be asssigned to org admin roles.
 ### analyzerusages
 Returns which policies are using each analyzer.
 
-- The analyzerusages subcommand takes no arguments.
+- There are 10 arguments.
+    - dataCategoryIdsFilter - list of System.Strings: List of data categories used for filtering results.
+    - riskLevelsFilter - list of RiskLevelTypes: List of risk levels used for filtering results.
+    - sortBy - AnalyzerUsagesSortBy: Name of the column to sort result by.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - dataTypeSourceFilter - DataTypeSource: Filter for data category type.
+    - dataTypeNameSearchFilter - System.String: Data type name to search.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns AnalyzerUsageConnection.
 ### anomalyresultopt
 Optional result of the Anomaly Investigation.
@@ -64,7 +74,7 @@ Results for Anomaly Investigations.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - AnomalyResultSortBy: Sort anomaly results by field.
     - filter - AnomalyResultFilterInput: Filter anomaly results by input.
     - timezoneOffset - System.Single: Offset based on customer timezone.
@@ -106,7 +116,7 @@ List all aws compute settings.
 
 - There are 4 arguments.
     - sortBy - AwsCloudComputeSettingQuerySortByField: Specification on how to sort a list of compute settings.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of AwsCloudComputeSettingFilterInputs: Specification on how to filter a list of compute settings.
     - contextFilter - ContextFilterTypeEnum: Specifies the context filter to use.
 - Returns list of AwsComputeSettingss.
@@ -290,7 +300,7 @@ Lists all cross-account pairs.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - GetCrossAccountPairsSortByField: Specifies the field by which the list of cross-account pairs will be sorted.
     - filter - list of GetCrossAccountPairsFilters: Specification on how to filter a list of cross-account pairs.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
 - Returns CrossAccountPairInfoConnection.
 ### currentipaddress
 - The currentipaddress subcommand takes no arguments.
@@ -459,7 +469,7 @@ List user activity for a specific file on a specific snapshot.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - RoleFieldEnum
     - nameFilter - System.String: Name to filter the results.
     - assignedRoleIds - list of System.Strings: List of role IDs that have already been assigned to a set of users. This list will be used to sort the set of all roles.
@@ -474,7 +484,7 @@ Get CDM release details from support portal for a given list of clusters specifi
     - filterUpgradeable - System.Boolean: Filters for the available upgrade versions.
     - shouldShowAll - System.Boolean: Shows all versions.
     - filterAfterSource - System.Boolean: Filter to include only the versions released after the source version.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
 - Returns CdmUpgradeReleaseDetailsFromSupportPortalReply.
 ### getcdmreleasedetailsfromsupportportal
 Get available versions on support portal for a cluster.
@@ -488,7 +498,7 @@ Get available versions on support portal for a cluster.
     - filterUpgradeable - System.Boolean: Filters for the available upgrade versions.
     - shouldShowAll - System.Boolean: Shows all versions.
     - filterAfterSource - System.Boolean: Filter to include only the versions released after the source version.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
 - Returns CdmUpgradeReleaseDetailsFromSupportPortalReply.
 ### getgroupcountbyprechecksstatus
 - The getgroupcountbyprechecksstatus subcommand takes no arguments.
@@ -539,7 +549,7 @@ Get global multifactor authentication (MFA) for an account.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns HierarchyObjectConnection.
 ### groupsincurrentanddescendantorganization
@@ -709,6 +719,19 @@ Get multifactor authentication (MFA) settings for an account.
 
 - The mfasetting subcommand takes no arguments.
 - Returns GetMfaSettingReply.
+### microsoftsites
+List of sites in the Microsoft 365 organization.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: The hierarchy object filter.
+    - o365OrgId - System.String: The fid for the O365 organization.
+    - excludeChildSites - System.Boolean: When excludeChildSites is set to true, nested child sites are excluded from the results. If not specified, nested child sites are included.
+    - protectionType - ProtectionType: Protection type for Microsoft 365 protection.
+- Returns MicrosoftSiteConnection.
 ### minimumcdmversionforfeatureset
 Get minimum cluster version to support feature set.
 
@@ -727,7 +750,7 @@ Results for Non-Filesystem Anomaly Investigations.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - NfAnomalyResultSortBy: Sort non-filesystem anomaly results by field.
     - filter - NfAnomalyResultFilterInput: Filter non-filesystem anomaly results by input.
     - timezoneOffset - System.Single: Offset based on customer timezone.
@@ -764,7 +787,7 @@ List of Mosaic Storage Locations used for NoSQL backups
 
 - There are 3 arguments.
     - sortBy - MosaicStorageLocationQuerySortByField: Specification on how to sort a list of Mosaic Storage Locations.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of MosaicStorageLocationFilterInputs: Specification on how to filter a list of Mosaic Storage Locations.
 - Returns list of MosaicStorageLocations.
 ### oauthcodesforedgereg
@@ -800,7 +823,7 @@ Returns total sensitive hits grouped by object type and also gives policy level 
     - timelineDate - System.String: Date for which the results will be retrieved.
     - historicalDeltaDays - System.Int32: Historical days to go backward in time to calculate the delta.
     - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - ObjectTypeSummariesFilter: Filter for object type summary.
     - sort - ObjectTypeAccessSummarySortBy: Field on which to perform the sorting operation.
     - first - System.Int32: Returns the first n elements from the list.
@@ -821,7 +844,7 @@ All orgs.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - OrgField: Field in the org to sort orgs by.
     - nameFilter - System.String: Name to filter the results.
     - mfaEnforcedFilter - System.Boolean: Filter orgs by the status of MFA enforcement. When the field is not used, all orgs are returned. When the field is set to true, only orgs that have MFA enforced are returned. When the field is set to false, only orgs that do not have MFA enforced are returned.
@@ -897,12 +920,12 @@ Returns details for one policy object.
 ### policyobjs
 Returns status for all objects at a specified timestamp.
 
-- There are 36 arguments.
+- There are 38 arguments.
     - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
     - sortBy - System.String: Name of the column to sort result by.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - analysisStatusesFilter - list of AnalysisStatuss: List of analysis statuses used for filtering results.
     - policyIdsFilter - list of System.Strings: List of policies used for filtering results.
     - riskLevelsFilter - list of RiskLevelTypes: List of risk levels used for filtering results.
@@ -921,10 +944,12 @@ Returns status for all objects at a specified timestamp.
     - resourceGroupsFilter - list of System.Strings: Resource groups to filter.
     - regionsFilter - list of System.Strings: Regions to filter.
     - dataTypeIdsFilter - list of System.Strings: Data Type IDs to filter.
-    - firstSeenTimeRange - UserTimeRangeInput: First seen time range specified in the local timezone of the user.
-    - lastAccessTimeRange - UserTimeRangeInput: Last access time range specified in the local timezone of the user.
-    - creationTimeRange - UserTimeRangeInput: Creation time range specified in the local timezone of the user.
+    - firstSeenTimeRange - UserTimeRangeInput: The first seen time range specified in the UTC timezone.
+    - lastAccessTimeRange - UserTimeRangeInput: The last access time range specified in the UTC timezone.
+    - creationTimeRange - UserTimeRangeInput: The creation time range specified in the UTC timezone.
+    - lastScanTimeRange - UserTimeRangeInput: The last scan time range specified in the UTC timezone.
     - objectTagsFilter - ObjectTagsFilterInput: Object tags associated with workloads as key-value pairs.
+    - mipLabelsFilter - list of MipLabelsFilterInputs: List of MIP Labels that will be used for filtering the result.
     - backupStatusFilter - list of BackupStatuss: Filter by backup status.
     - slaIdsFilter - list of System.Strings: Filter by SLA Domain IDs.
     - networkAccessFilter - list of NetworkAccesss: Filter by network access type.
@@ -964,7 +989,7 @@ List of all objects protected by the SLA Domains.
     - filter - list of Filters: The hierarchy object filter.
     - objectTypeFilter - list of System.Strings: Types of objects to include.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -1022,6 +1047,13 @@ Lists the snoozed directories for the account.
     - directorySearchFilter - System.String: Optional directory search.
     - falsePositiveTypeFilter - list of AnomalyFalsePositiveTypes: Filter by false positive type.
 - Returns SnoozedDirectoryConnection.
+### ssogroupalreadyexists
+Determines if the SSO group already exists in the account.
+
+- There are 2 arguments.
+    - ssoGroupName - System.String: SSO group name.
+    - userDomainId - System.String: User auth domain ID.
+- Returns SsoGroupAlreadyExistsReply.
 ### supportbundle
 Get the status of generating support bundle
 
@@ -1050,7 +1082,7 @@ List all targets.
 
 - There are 4 arguments.
     - sortBy - ArchivalLocationQuerySortByField: Specifies the field by which the list of targets will be sorted.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of TargetFilterInputs: Specifies how to filter the list of targets.
     - contextFilter - ContextFilterTypeEnum: Specifies the context filter to use.
 - Returns list of Targets.
@@ -1092,6 +1124,43 @@ Get TOTP configuration status for a user.
 
 - There is a single argument of type System.String.
 - Returns GetTotpStatusReply.
+### tprconfiguration
+Specifies the current two-person rule (TPR) configuration for an organization.
+
+- There is a single argument of type System.String.
+- Returns TprConfiguration.
+### tprpublicconfiguration
+Specifies the publicly available two-person rule (TPR) configuration for an organization.
+
+- There is a single argument of type System.String.
+- Returns TprPublicConfiguration.
+### tprrequestdetail
+Details for a TPR request.
+
+- There is a single argument of type System.String.
+- Returns TprRequestDetailReply.
+### tprrequestsummaries
+Details of TPR requests.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - filter - TprRequestFilterInput: Specifies the TPR request filters.
+- Returns TprRequestSummaryConnection.
+### tprroleeligibility
+Checks if a user can be assigned a TPR role.
+
+- There are 2 arguments.
+    - orgId - System.String: Specifies the organization ID.
+    - email - System.String: Specifies the user's email.
+- Returns TprRoleEligibilityType.
+### tprrulesmap
+Map of TPR policy types to TPR rules.
+
+- The tprrulesmap subcommand takes no arguments.
+- Returns TprRulesMap.
 ### tprstatusfornoderemoval
 Check and update TPR request for node removal or replacement.
 
@@ -1143,6 +1212,14 @@ Gets the status for completed/running upgrade process.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns FileResultConnection.
+### useralreadyexists
+Determines if the user already exists in the account.
+
+- There are 3 arguments.
+    - emailOrUsername - System.String: User email or username.
+    - userDomain - UserDomainEnum: User auth domain.
+    - userDomainId - System.String: User auth domain ID.
+- Returns UserAlreadyExistsReply.
 ### useranalyzeraccess
 - There are 4 arguments.
     - userId - System.String
@@ -1219,7 +1296,7 @@ Retrieve users from current and descendant organizations based on the specified 
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - UserFieldEnum
     - emailFilter - System.String
     - roleIdsFilter - list of System.Strings
@@ -1239,7 +1316,7 @@ Paginated list of virtual machines under vCloud Director hiearchy.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns VsphereVmConnection.
 ### verifytotp
@@ -1296,7 +1373,7 @@ Specifies workloads that have an anomalous snapshot.
     - severityFilter - list of ActivitySeverityEnums: Optional list of severity levels to filter by.
     - analyzerGroupFilter - list of System.Strings: Optional list of analyzer group IDs to filter by.
     - sortBy - WorkloadAnomaliesSortBy: Sort object anomalies by field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - orderParentsFirst - System.Boolean: Order objects with children ahead of non-parents.
     - blueprintRecoveryTypes - list of BlueprintRecoveryTypes: Recovery type of the Recovery Plan.
     - locationsFilter - list of System.Strings: Filter results by their location.

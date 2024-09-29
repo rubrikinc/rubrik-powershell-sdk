@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("reverseRelationships")]
         public List<AzureAdReverseRelationship>? ReverseRelationships { get; set; }
 
+        //      C# -> AzureAdSnapshotRange? SnapshotRange
+        // GraphQL -> snapshotRange: AzureAdSnapshotRange (type)
+        [JsonProperty("snapshotRange")]
+        public AzureAdSnapshotRange? SnapshotRange { get; set; }
+
 
         #endregion
 
@@ -71,7 +76,8 @@ namespace RubrikSecurityCloud.Types
         AzureAdObjects? AzureAdObjects = null,
         List<AzureAdRelatedItemCount>? RelatedItemCount = null,
         Map? Relationships = null,
-        List<AzureAdReverseRelationship>? ReverseRelationships = null
+        List<AzureAdReverseRelationship>? ReverseRelationships = null,
+        AzureAdSnapshotRange? SnapshotRange = null
     ) 
     {
         if ( Type != null ) {
@@ -94,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReverseRelationships != null ) {
             this.ReverseRelationships = ReverseRelationships;
+        }
+        if ( SnapshotRange != null ) {
+            this.SnapshotRange = SnapshotRange;
         }
         return this;
     }
@@ -181,6 +190,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "reverseRelationships" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdSnapshotRange? SnapshotRange
+        // GraphQL -> snapshotRange: AzureAdSnapshotRange (type)
+        if (this.SnapshotRange != null) {
+            var fspec = this.SnapshotRange.AsFieldSpec(conf.Child("snapshotRange"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotRange" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -317,6 +338,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReverseRelationships != null && ec.Excludes("reverseRelationships",false))
         {
             this.ReverseRelationships = null;
+        }
+        //      C# -> AzureAdSnapshotRange? SnapshotRange
+        // GraphQL -> snapshotRange: AzureAdSnapshotRange (type)
+        if (ec.Includes("snapshotRange",false))
+        {
+            if(this.SnapshotRange == null) {
+
+                this.SnapshotRange = new AzureAdSnapshotRange();
+                this.SnapshotRange.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRange"));
+
+            } else {
+
+                this.SnapshotRange.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRange"));
+
+            }
+        }
+        else if (this.SnapshotRange != null && ec.Excludes("snapshotRange",false))
+        {
+            this.SnapshotRange = null;
         }
     }
 

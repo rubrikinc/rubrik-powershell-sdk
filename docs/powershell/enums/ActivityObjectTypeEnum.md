@@ -3,6 +3,7 @@ The list of object types for activities.
 
 - ACTIVE_DIRECTORY_DOMAIN - Specifies that the activity object type is related to Activity Directory domain.
 - K8S_CLUSTER - Specifies that the activity object type is Kubernetes Cluster.
+- M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
 - KuprNamespace - Specifies that the activity object type is Kubernetes Namespace.
 - SALESFORCE_OBJECT - Specifies that the activity object type is a Salesforce object.
 - OracleRac - Specifies that the activity object type is Oracle RAC.
@@ -21,9 +22,12 @@ The list of object types for activities.
 - GcpNativeProject - Specifies that the activity object type is GCP Native Project.
 - AwsNativeRdsInstance - Specifies that the activity object type is AWS Native RDS Instance.
 - O365Organization - Specifies that the activity object type is O365 Organization.
+- K8S_VIRTUAL_MACHINE - Specifies that the activity object type is Kubernetes Virtual Machine.
 - VolumeGroup - Specifies that the activity object type is Volume Group.
 - MONGO_COLLECTION - Specifies that the activity object type is MongoDB collection.
 - RubrikEc2Instance - Specifies that the activity object type is Rubrik EC2 Instance.
+- M365_BACKUP_STORAGE_ORG - M365 Backup Storage Organization.
+- M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
 - O365Group - Specifies that the activity object type is O365 Group.
 - ObjectProtection - Specifies that the activity object type is Object Protection.
 - NutanixVm - Specifies that the activity object type is Nutanix Virtual Machine.
@@ -99,9 +103,11 @@ The list of object types for activities.
 - Storm - Specifies that the activity object type is Storm.
 - VmwareComputeCluster - Specifies that the activity object type is VMware Compute Cluster.
 - ExchangeDatabase - Specifies that the activity object type is Exchange Database.
+- M365_BACKUP_STORAGE_SITE - Microsoft 365 Backup Storage SharePoint Site.
 - CapacityBundle - Specifies that the activity object type is Capacity Bundle.
 - MONGO_DATABASE - Specifies that the activity object type is MongoDB database.
 - Ec2Instance - Specifies that the activity object type is EC2 Instance.
+- KMS_KEY_VAULT - Specifies that the activity object type is KMS Key Vault.
 - CONFLUENCE_SPACE - Specifies that the activity object type is Confluence Space.
 - NUTANIX_ERA - Specifies that the activity object type is Nutanix Era.
 - JIRA_PROJECT - Specifies that the activity object type is Jira project.
@@ -116,6 +122,7 @@ The list of object types for activities.
 - SamlSso - Specifies that the activity object type is Saml SSO.
 - OracleDb - Specifies that the activity object type is Oracle Database.
 - FailoverClusterApp - Specifies that the activity object type is Failover Cluster App.
+- M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
 - Host - Specifies that the activity object type is Host.
 - GcpNativeDisk - Specifies that the activity object type is GCP Native Disk.
 - JIRA_SETTINGS - Specifies that the activity object type is Jira settings.

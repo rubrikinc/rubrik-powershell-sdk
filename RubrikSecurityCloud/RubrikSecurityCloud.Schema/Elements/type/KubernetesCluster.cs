@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public HierarchyObjectTypeEnum? ObjectType { get; set; }
 
+        //      C# -> KubernetesOnboardingType? OnboardingType
+        // GraphQL -> onboardingType: KubernetesOnboardingType! (enum)
+        [JsonProperty("onboardingType")]
+        public KubernetesOnboardingType? OnboardingType { get; set; }
+
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         [JsonProperty("slaAssignment")]
@@ -66,15 +71,45 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmId")]
         public System.String? CdmId { get; set; }
 
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: String (scalar)
+        [JsonProperty("cloudAccountId")]
+        public System.String? CloudAccountId { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
+        //      C# -> System.String? Distribution
+        // GraphQL -> distribution: String! (scalar)
+        [JsonProperty("distribution")]
+        public System.String? Distribution { get; set; }
+
+        //      C# -> System.String? EksClusterArn
+        // GraphQL -> eksClusterArn: String (scalar)
+        [JsonProperty("eksClusterArn")]
+        public System.String? EksClusterArn { get; set; }
+
+        //      C# -> System.String? ExternalIp
+        // GraphQL -> externalIp: String (scalar)
+        [JsonProperty("externalIp")]
+        public System.String? ExternalIp { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsAutoPsCreationEnabled
+        // GraphQL -> isAutoPsCreationEnabled: Boolean! (scalar)
+        [JsonProperty("isAutoPsCreationEnabled")]
+        public System.Boolean? IsAutoPsCreationEnabled { get; set; }
+
+        //      C# -> System.Boolean? IsPullSecretConfigured
+        // GraphQL -> isPullSecretConfigured: Boolean! (scalar)
+        [JsonProperty("isPullSecretConfigured")]
+        public System.Boolean? IsPullSecretConfigured { get; set; }
 
         //      C# -> System.String? K8sName
         // GraphQL -> k8sName: String! (scalar)
@@ -100,6 +135,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
+
+        //      C# -> System.Int32? Port
+        // GraphQL -> port: Int (scalar)
+        [JsonProperty("port")]
+        public System.Int32? Port { get; set; }
 
         //      C# -> System.String? PrimaryClusterUuid
         // GraphQL -> primaryClusterUuid: UUID! (scalar)
@@ -244,6 +284,7 @@ namespace RubrikSecurityCloud.Types
     public KubernetesCluster Set(
         List<Operation>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,
+        KubernetesOnboardingType? OnboardingType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
@@ -251,13 +292,20 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.String? CdmId = null,
+        System.String? CloudAccountId = null,
         System.String? ClusterUuid = null,
+        System.String? Distribution = null,
+        System.String? EksClusterArn = null,
+        System.String? ExternalIp = null,
         System.String? Id = null,
+        System.Boolean? IsAutoPsCreationEnabled = null,
+        System.Boolean? IsPullSecretConfigured = null,
         System.String? K8sName = null,
         System.String? K8sVersion = null,
         System.String? Name = null,
         System.Int32? NamespaceCount = null,
         System.Int32? NumWorkloadDescendants = null,
+        System.Int32? Port = null,
         System.String? PrimaryClusterUuid = null,
         System.String? Registry = null,
         System.Int32? ReplicatedObjectCount = null,
@@ -285,6 +333,9 @@ namespace RubrikSecurityCloud.Types
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
         }
+        if ( OnboardingType != null ) {
+            this.OnboardingType = OnboardingType;
+        }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
         }
@@ -306,11 +357,29 @@ namespace RubrikSecurityCloud.Types
         if ( CdmId != null ) {
             this.CdmId = CdmId;
         }
+        if ( CloudAccountId != null ) {
+            this.CloudAccountId = CloudAccountId;
+        }
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
         }
+        if ( Distribution != null ) {
+            this.Distribution = Distribution;
+        }
+        if ( EksClusterArn != null ) {
+            this.EksClusterArn = EksClusterArn;
+        }
+        if ( ExternalIp != null ) {
+            this.ExternalIp = ExternalIp;
+        }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsAutoPsCreationEnabled != null ) {
+            this.IsAutoPsCreationEnabled = IsAutoPsCreationEnabled;
+        }
+        if ( IsPullSecretConfigured != null ) {
+            this.IsPullSecretConfigured = IsPullSecretConfigured;
         }
         if ( K8sName != null ) {
             this.K8sName = K8sName;
@@ -326,6 +395,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
+        }
+        if ( Port != null ) {
+            this.Port = Port;
         }
         if ( PrimaryClusterUuid != null ) {
             this.PrimaryClusterUuid = PrimaryClusterUuid;
@@ -416,6 +488,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "objectType\n" ;
             }
         }
+        //      C# -> KubernetesOnboardingType? OnboardingType
+        // GraphQL -> onboardingType: KubernetesOnboardingType! (enum)
+        if (this.OnboardingType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "onboardingType\n" ;
+            } else {
+                s += ind + "onboardingType\n" ;
+            }
+        }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         if (this.SlaAssignment != null) {
@@ -499,6 +580,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "cdmId\n" ;
             }
         }
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: String (scalar)
+        if (this.CloudAccountId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudAccountId\n" ;
+            } else {
+                s += ind + "cloudAccountId\n" ;
+            }
+        }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid != null) {
@@ -508,6 +598,33 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "clusterUuid\n" ;
             }
         }
+        //      C# -> System.String? Distribution
+        // GraphQL -> distribution: String! (scalar)
+        if (this.Distribution != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "distribution\n" ;
+            } else {
+                s += ind + "distribution\n" ;
+            }
+        }
+        //      C# -> System.String? EksClusterArn
+        // GraphQL -> eksClusterArn: String (scalar)
+        if (this.EksClusterArn != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "eksClusterArn\n" ;
+            } else {
+                s += ind + "eksClusterArn\n" ;
+            }
+        }
+        //      C# -> System.String? ExternalIp
+        // GraphQL -> externalIp: String (scalar)
+        if (this.ExternalIp != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "externalIp\n" ;
+            } else {
+                s += ind + "externalIp\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -515,6 +632,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAutoPsCreationEnabled
+        // GraphQL -> isAutoPsCreationEnabled: Boolean! (scalar)
+        if (this.IsAutoPsCreationEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAutoPsCreationEnabled\n" ;
+            } else {
+                s += ind + "isAutoPsCreationEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsPullSecretConfigured
+        // GraphQL -> isPullSecretConfigured: Boolean! (scalar)
+        if (this.IsPullSecretConfigured != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPullSecretConfigured\n" ;
+            } else {
+                s += ind + "isPullSecretConfigured\n" ;
             }
         }
         //      C# -> System.String? K8sName
@@ -560,6 +695,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "numWorkloadDescendants\n" ;
             } else {
                 s += ind + "numWorkloadDescendants\n" ;
+            }
+        }
+        //      C# -> System.Int32? Port
+        // GraphQL -> port: Int (scalar)
+        if (this.Port != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "port\n" ;
+            } else {
+                s += ind + "port\n" ;
             }
         }
         //      C# -> System.String? PrimaryClusterUuid
@@ -813,6 +957,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ObjectType = null;
         }
+        //      C# -> KubernetesOnboardingType? OnboardingType
+        // GraphQL -> onboardingType: KubernetesOnboardingType! (enum)
+        if (ec.Includes("onboardingType",true))
+        {
+            if(this.OnboardingType == null) {
+
+                this.OnboardingType = new KubernetesOnboardingType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OnboardingType != null && ec.Excludes("onboardingType",true))
+        {
+            this.OnboardingType = null;
+        }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         if (ec.Includes("slaAssignment",true))
@@ -962,6 +1123,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.CdmId = null;
         }
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: String (scalar)
+        if (ec.Includes("cloudAccountId",true))
+        {
+            if(this.CloudAccountId == null) {
+
+                this.CloudAccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudAccountId != null && ec.Excludes("cloudAccountId",true))
+        {
+            this.CloudAccountId = null;
+        }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (ec.Includes("clusterUuid",true))
@@ -979,6 +1157,57 @@ namespace RubrikSecurityCloud.Types
         {
             this.ClusterUuid = null;
         }
+        //      C# -> System.String? Distribution
+        // GraphQL -> distribution: String! (scalar)
+        if (ec.Includes("distribution",true))
+        {
+            if(this.Distribution == null) {
+
+                this.Distribution = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Distribution != null && ec.Excludes("distribution",true))
+        {
+            this.Distribution = null;
+        }
+        //      C# -> System.String? EksClusterArn
+        // GraphQL -> eksClusterArn: String (scalar)
+        if (ec.Includes("eksClusterArn",true))
+        {
+            if(this.EksClusterArn == null) {
+
+                this.EksClusterArn = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EksClusterArn != null && ec.Excludes("eksClusterArn",true))
+        {
+            this.EksClusterArn = null;
+        }
+        //      C# -> System.String? ExternalIp
+        // GraphQL -> externalIp: String (scalar)
+        if (ec.Includes("externalIp",true))
+        {
+            if(this.ExternalIp == null) {
+
+                this.ExternalIp = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExternalIp != null && ec.Excludes("externalIp",true))
+        {
+            this.ExternalIp = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (ec.Includes("id",true))
@@ -995,6 +1224,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsAutoPsCreationEnabled
+        // GraphQL -> isAutoPsCreationEnabled: Boolean! (scalar)
+        if (ec.Includes("isAutoPsCreationEnabled",true))
+        {
+            if(this.IsAutoPsCreationEnabled == null) {
+
+                this.IsAutoPsCreationEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAutoPsCreationEnabled != null && ec.Excludes("isAutoPsCreationEnabled",true))
+        {
+            this.IsAutoPsCreationEnabled = null;
+        }
+        //      C# -> System.Boolean? IsPullSecretConfigured
+        // GraphQL -> isPullSecretConfigured: Boolean! (scalar)
+        if (ec.Includes("isPullSecretConfigured",true))
+        {
+            if(this.IsPullSecretConfigured == null) {
+
+                this.IsPullSecretConfigured = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPullSecretConfigured != null && ec.Excludes("isPullSecretConfigured",true))
+        {
+            this.IsPullSecretConfigured = null;
         }
         //      C# -> System.String? K8sName
         // GraphQL -> k8sName: String! (scalar)
@@ -1080,6 +1343,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = null;
+        }
+        //      C# -> System.Int32? Port
+        // GraphQL -> port: Int (scalar)
+        if (ec.Includes("port",true))
+        {
+            if(this.Port == null) {
+
+                this.Port = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Port != null && ec.Excludes("port",true))
+        {
+            this.Port = null;
         }
         //      C# -> System.String? PrimaryClusterUuid
         // GraphQL -> primaryClusterUuid: UUID! (scalar)

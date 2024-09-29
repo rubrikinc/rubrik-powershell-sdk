@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 134
+    /// Create a new RscQuery object for any of the 144
     /// operations in the 'Miscellaneous' API domain:
-    /// AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
+    /// AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangePassword, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
     /// </summary>
     /// <description>
     /// New-RscMutationMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 134 operations
+    /// There are 144 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
+    /// one of: AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangePassword, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -438,6 +438,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ApproveTprRequest operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: ApproveTprRequest
+    /// 
+    /// $query = New-RscMutationMisc -ApproveTprRequest
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	requestId = $someString
+    /// 	# OPTIONAL
+    /// 	comment = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ArchiveCrawl operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -735,6 +768,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CancelTprRequest operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CancelTprRequest
+    /// 
+    /// $query = New-RscMutationMisc -CancelTprRequest
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	requestIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	comment = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ChangePassword operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -808,6 +876,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	tagId = $someInt
     /// 	# OPTIONAL
+    /// 	ruleTypes = @(
+    /// 		$someAnalyzerRuleType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerRuleType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	keyRegex = $someString
+    /// 	# OPTIONAL
+    /// 	structuredValueRegex = $someString
+    /// 	# OPTIONAL
+    /// 	structuredDictionaryCsv = $someString
+    /// 	# OPTIONAL
+    /// 	structuredDictionary = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
     /// 	risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
     /// }
     /// 
@@ -816,6 +898,89 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: Analyzer
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreateDistributionListDigestBatch operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CreateDistributionListDigestBatch
+    /// 
+    /// $query = New-RscMutationMisc -CreateDistributionListDigestBatch
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	digests = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			digestId = $someInt
+    /// 			# REQUIRED
+    /// 			digestName = $someString
+    /// 			# REQUIRED
+    /// 			frequencyHours = $someInt
+    /// 			# REQUIRED
+    /// 			isImmediate = $someBoolean
+    /// 			# REQUIRED
+    /// 			includeAudits = $someBoolean
+    /// 			# REQUIRED
+    /// 			includeEvents = $someBoolean
+    /// 			# REQUIRED
+    /// 			eventDigestConfig = @{
+    /// 				# OPTIONAL
+    /// 				objectType = @(
+    /// 					$someActivityObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityObjectTypeEnum]) for enum values.
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				activityStatus = @(
+    /// 					$someActivityStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityStatusEnum]) for enum values.
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				activityType = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				auditType = @(
+    /// 					$someUserAuditTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditTypeEnum]) for enum values.
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				activitySeverity = @(
+    /// 					$someActivitySeverityEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivitySeverityEnum]) for enum values.
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				clusters = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				emailAddresses = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 			# REQUIRED
+    /// 			recipientUserId = $someString
+    /// 			# REQUIRED
+    /// 			clusterUuids = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -1330,6 +1495,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DenyTprRequests operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: DenyTprRequests
+    /// 
+    /// $query = New-RscMutationMisc -DenyTprRequests
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	requestIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	comment = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DeregisterPrivateContainerRegistry operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -1379,6 +1579,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	id = $someInt
     /// 	# OPTIONAL
     /// 	impersonatedUserId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DisableTprOrg operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: DisableTprOrg
+    /// 
+    /// $query = New-RscMutationMisc -DisableTprOrg
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	organizationId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1534,6 +1765,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the EnableTprOrg operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: EnableTprOrg
+    /// 
+    /// $query = New-RscMutationMisc -EnableTprOrg
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	organizationId = $someString
+    /// 	# REQUIRED
+    /// 	newTprAdminEmail = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ExcludeVmDisks operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -1561,6 +1825,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RequestSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExecuteTprRequests operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: ExecuteTprRequests
+    /// 
+    /// $query = New-RscMutationMisc -ExecuteTprRequests
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	requestIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -1992,6 +2289,89 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CreateOnDemandJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ModifyDistributionListDigestBatch operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: ModifyDistributionListDigestBatch
+    /// 
+    /// $query = New-RscMutationMisc -ModifyDistributionListDigestBatch
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	digests = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			digestId = $someInt
+    /// 			# REQUIRED
+    /// 			digestName = $someString
+    /// 			# REQUIRED
+    /// 			frequencyHours = $someInt
+    /// 			# REQUIRED
+    /// 			isImmediate = $someBoolean
+    /// 			# REQUIRED
+    /// 			includeAudits = $someBoolean
+    /// 			# REQUIRED
+    /// 			includeEvents = $someBoolean
+    /// 			# REQUIRED
+    /// 			eventDigestConfig = @{
+    /// 				# OPTIONAL
+    /// 				objectType = @(
+    /// 					$someActivityObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityObjectTypeEnum]) for enum values.
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				activityStatus = @(
+    /// 					$someActivityStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityStatusEnum]) for enum values.
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				activityType = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				auditType = @(
+    /// 					$someUserAuditTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditTypeEnum]) for enum values.
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				activitySeverity = @(
+    /// 					$someActivitySeverityEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivitySeverityEnum]) for enum values.
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				clusters = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				emailAddresses = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 			# REQUIRED
+    /// 			recipientUserId = $someString
+    /// 			# REQUIRED
+    /// 			clusterUuids = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -2587,6 +2967,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	userIds = @(
     /// 		$someString
     /// 	)
+    /// 	# REQUIRED
+    /// 	invalidateAllSessions = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -3406,6 +3788,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				tagId = $someInt
     /// 				# OPTIONAL
+    /// 				ruleTypes = @(
+    /// 					$someAnalyzerRuleType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerRuleType]) for enum values.
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				keyRegex = $someString
+    /// 				# OPTIONAL
+    /// 				structuredValueRegex = $someString
+    /// 				# OPTIONAL
+    /// 				structuredDictionaryCsv = $someString
+    /// 				# OPTIONAL
+    /// 				structuredDictionary = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
     /// 				risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
     /// 			}
     /// 		)
@@ -3720,6 +4116,43 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	eventSeriesId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SubmitTprRequest operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: SubmitTprRequest
+    /// 
+    /// $query = New-RscMutationMisc -SubmitTprRequest
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	requestId = $someString
+    /// 	# OPTIONAL
+    /// 	comment = $someString
+    /// 	# REQUIRED
+    /// 	executionType = $someTprExecutionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprExecutionType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	executionTimeoutHours = $someInt
     /// }
     /// 
     /// # Execute the query
@@ -4349,6 +4782,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	tagId = $someInt
+    /// 	# OPTIONAL
+    /// 	ruleTypes = @(
+    /// 		$someAnalyzerRuleType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerRuleType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	keyRegex = $someString
+    /// 	# OPTIONAL
+    /// 	structuredValueRegex = $someString
+    /// 	# OPTIONAL
+    /// 	structuredDictionaryCsv = $someString
+    /// 	# OPTIONAL
+    /// 	structuredDictionary = @(
+    /// 		$someString
+    /// 	)
     /// 	# OPTIONAL
     /// 	risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
     /// }
@@ -5148,6 +5595,45 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdateTprConfiguration operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: UpdateTprConfiguration
+    /// 
+    /// $query = New-RscMutationMisc -UpdateTprConfiguration
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	organizationId = $someString
+    /// 	# OPTIONAL
+    /// 	executionMaxTimeoutHours = $someInt
+    /// 	# OPTIONAL
+    /// 	requestTimeoutHours = $someInt
+    /// 	# OPTIONAL
+    /// 	reminderHours = $someInt
+    /// 	# OPTIONAL
+    /// 	staticQuorumApprovalsRequirement = $someInt
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateTunnelStatus operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -5519,6 +6005,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AddVlan",
                 "AddVmAppConsistentSpecs",
                 "AirGapStatus",
+                "ApproveTprRequest",
                 "ArchiveCrawl",
                 "AssignProtection",
                 "BatchDeassignRoleFromUserGroups",
@@ -5526,8 +6013,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CancelDownloadPackage",
                 "CancelScheduledUpgrade",
                 "CancelTaskchain",
+                "CancelTprRequest",
                 "ChangePassword",
                 "CreateCustomAnalyzer",
+                "CreateDistributionListDigestBatch",
                 "CreateEventDigestBatch",
                 "CreateGuestCredential",
                 "CreateLegalHold",
@@ -5540,13 +6029,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteGuestCredentialById",
                 "DeleteIntelFeed",
                 "DeleteVolumeGroupMount",
+                "DenyTprRequests",
                 "DeregisterPrivateContainerRegistry",
                 "DisableSupportUserAccess",
+                "DisableTprOrg",
                 "DissolveLegalHold",
                 "EnableAutomaticFmdUpload",
                 "EnableDisableAppConsistency",
                 "EnableSupportUserAccess",
+                "EnableTprOrg",
                 "ExcludeVmDisks",
+                "ExecuteTprRequests",
                 "ExpireSnoozedDirectories",
                 "GenerateConfigProtectionRestoreForm",
                 "GenerateSupportBundle",
@@ -5559,6 +6052,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "LogoutFromRubrikSupportPortal",
                 "MakePrimary",
                 "ManageProtectionForLinkedObjects",
+                "ModifyDistributionListDigestBatch",
                 "ModifyEventDigestBatch",
                 "ModifyIpmi",
                 "MountDisk",
@@ -5603,6 +6097,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "StartVolumeGroupMount",
                 "StopJobInstance",
                 "StopJobInstanceFromEventSeries",
+                "SubmitTprRequest",
                 "SupportPortalLogin",
                 "SwitchProductToOnboardingMode",
                 "TriggerCloudComputeConnectivityCheck",
@@ -5636,6 +6131,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateProxyConfig",
                 "UpdateRoleAssignments",
                 "UpdateSupportUserAccess",
+                "UpdateTprConfiguration",
                 "UpdateTunnelStatus",
                 "UpdateVlan",
                 "UpdateVolumeGroup",
@@ -5684,6 +6180,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AirGapStatus":
                         this.ProcessRecord_AirGapStatus();
                         break;
+                    case "ApproveTprRequest":
+                        this.ProcessRecord_ApproveTprRequest();
+                        break;
                     case "ArchiveCrawl":
                         this.ProcessRecord_ArchiveCrawl();
                         break;
@@ -5705,11 +6204,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CancelTaskchain":
                         this.ProcessRecord_CancelTaskchain();
                         break;
+                    case "CancelTprRequest":
+                        this.ProcessRecord_CancelTprRequest();
+                        break;
                     case "ChangePassword":
                         this.ProcessRecord_ChangePassword();
                         break;
                     case "CreateCustomAnalyzer":
                         this.ProcessRecord_CreateCustomAnalyzer();
+                        break;
+                    case "CreateDistributionListDigestBatch":
+                        this.ProcessRecord_CreateDistributionListDigestBatch();
                         break;
                     case "CreateEventDigestBatch":
                         this.ProcessRecord_CreateEventDigestBatch();
@@ -5747,11 +6252,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DeleteVolumeGroupMount":
                         this.ProcessRecord_DeleteVolumeGroupMount();
                         break;
+                    case "DenyTprRequests":
+                        this.ProcessRecord_DenyTprRequests();
+                        break;
                     case "DeregisterPrivateContainerRegistry":
                         this.ProcessRecord_DeregisterPrivateContainerRegistry();
                         break;
                     case "DisableSupportUserAccess":
                         this.ProcessRecord_DisableSupportUserAccess();
+                        break;
+                    case "DisableTprOrg":
+                        this.ProcessRecord_DisableTprOrg();
                         break;
                     case "DissolveLegalHold":
                         this.ProcessRecord_DissolveLegalHold();
@@ -5765,8 +6276,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "EnableSupportUserAccess":
                         this.ProcessRecord_EnableSupportUserAccess();
                         break;
+                    case "EnableTprOrg":
+                        this.ProcessRecord_EnableTprOrg();
+                        break;
                     case "ExcludeVmDisks":
                         this.ProcessRecord_ExcludeVmDisks();
+                        break;
+                    case "ExecuteTprRequests":
+                        this.ProcessRecord_ExecuteTprRequests();
                         break;
                     case "ExpireSnoozedDirectories":
                         this.ProcessRecord_ExpireSnoozedDirectories();
@@ -5803,6 +6320,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ManageProtectionForLinkedObjects":
                         this.ProcessRecord_ManageProtectionForLinkedObjects();
+                        break;
+                    case "ModifyDistributionListDigestBatch":
+                        this.ProcessRecord_ModifyDistributionListDigestBatch();
                         break;
                     case "ModifyEventDigestBatch":
                         this.ProcessRecord_ModifyEventDigestBatch();
@@ -5936,6 +6456,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "StopJobInstanceFromEventSeries":
                         this.ProcessRecord_StopJobInstanceFromEventSeries();
                         break;
+                    case "SubmitTprRequest":
+                        this.ProcessRecord_SubmitTprRequest();
+                        break;
                     case "SupportPortalLogin":
                         this.ProcessRecord_SupportPortalLogin();
                         break;
@@ -6034,6 +6557,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateSupportUserAccess":
                         this.ProcessRecord_UpdateSupportUserAccess();
+                        break;
+                    case "UpdateTprConfiguration":
+                        this.ProcessRecord_UpdateTprConfiguration();
                         break;
                     case "UpdateTunnelStatus":
                         this.ProcessRecord_UpdateTunnelStatus();
@@ -6145,6 +6671,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // approveTprRequest.
+        internal void ProcessRecord_ApproveTprRequest()
+        {
+            this._logger.name += " -ApproveTprRequest";
+            // Create new graphql operation approveTprRequest
+            InitMutationApproveTprRequest();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // archiveCrawl.
         internal void ProcessRecord_ArchiveCrawl()
         {
@@ -6208,6 +6743,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // cancelTprRequest.
+        internal void ProcessRecord_CancelTprRequest()
+        {
+            this._logger.name += " -CancelTprRequest";
+            // Create new graphql operation cancelTprRequest
+            InitMutationCancelTprRequest();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // changePassword.
         internal void ProcessRecord_ChangePassword()
         {
@@ -6223,6 +6767,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreateCustomAnalyzer";
             // Create new graphql operation createCustomAnalyzer
             InitMutationCreateCustomAnalyzer();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createDistributionListDigestBatch.
+        internal void ProcessRecord_CreateDistributionListDigestBatch()
+        {
+            this._logger.name += " -CreateDistributionListDigestBatch";
+            // Create new graphql operation createDistributionListDigestBatch
+            InitMutationCreateDistributionListDigestBatch();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -6334,6 +6887,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // denyTprRequests.
+        internal void ProcessRecord_DenyTprRequests()
+        {
+            this._logger.name += " -DenyTprRequests";
+            // Create new graphql operation denyTprRequests
+            InitMutationDenyTprRequests();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // deregisterPrivateContainerRegistry.
         internal void ProcessRecord_DeregisterPrivateContainerRegistry()
         {
@@ -6349,6 +6911,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DisableSupportUserAccess";
             // Create new graphql operation disableSupportUserAccess
             InitMutationDisableSupportUserAccess();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // disableTprOrg.
+        internal void ProcessRecord_DisableTprOrg()
+        {
+            this._logger.name += " -DisableTprOrg";
+            // Create new graphql operation disableTprOrg
+            InitMutationDisableTprOrg();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -6388,12 +6959,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // enableTprOrg.
+        internal void ProcessRecord_EnableTprOrg()
+        {
+            this._logger.name += " -EnableTprOrg";
+            // Create new graphql operation enableTprOrg
+            InitMutationEnableTprOrg();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // excludeVmDisks.
         internal void ProcessRecord_ExcludeVmDisks()
         {
             this._logger.name += " -ExcludeVmDisks";
             // Create new graphql operation excludeVmDisks
             InitMutationExcludeVmDisks();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // executeTprRequests.
+        internal void ProcessRecord_ExecuteTprRequests()
+        {
+            this._logger.name += " -ExecuteTprRequests";
+            // Create new graphql operation executeTprRequests
+            InitMutationExecuteTprRequests();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -6502,6 +7091,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ManageProtectionForLinkedObjects";
             // Create new graphql operation manageProtectionForLinkedObjects
             InitMutationManageProtectionForLinkedObjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // modifyDistributionListDigestBatch.
+        internal void ProcessRecord_ModifyDistributionListDigestBatch()
+        {
+            this._logger.name += " -ModifyDistributionListDigestBatch";
+            // Create new graphql operation modifyDistributionListDigestBatch
+            InitMutationModifyDistributionListDigestBatch();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -6901,6 +7499,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // submitTprRequest.
+        internal void ProcessRecord_SubmitTprRequest()
+        {
+            this._logger.name += " -SubmitTprRequest";
+            // Create new graphql operation submitTprRequest
+            InitMutationSubmitTprRequest();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // supportPortalLogin.
         internal void ProcessRecord_SupportPortalLogin()
         {
@@ -7195,6 +7802,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdateSupportUserAccess";
             // Create new graphql operation updateSupportUserAccess
             InitMutationUpdateSupportUserAccess();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateTprConfiguration.
+        internal void ProcessRecord_UpdateTprConfiguration()
+        {
+            this._logger.name += " -UpdateTprConfiguration";
+            // Create new graphql operation updateTprConfiguration
+            InitMutationUpdateTprConfiguration();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -7579,6 +8195,31 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // approveTprRequest(input: ApproveTprRequestInput!): Void
+        internal void InitMutationApproveTprRequest()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ApproveTprRequestInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationApproveTprRequest",
+                "($input: ApproveTprRequestInput!)",
+                "System.String",
+                Mutation.ApproveTprRequest,
+                Mutation.ApproveTprRequestFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	requestId = $someString
+	# OPTIONAL
+	comment = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // archiveCrawl(crawlId: String!): String!
         internal void InitMutationArchiveCrawl()
         {
@@ -7820,6 +8461,33 @@ $query.Var.taskchainId = $someString"
         }
 
         // Create new GraphQL Mutation:
+        // cancelTprRequest(input: CancelTprRequestInput!): Void
+        internal void InitMutationCancelTprRequest()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CancelTprRequestInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCancelTprRequest",
+                "($input: CancelTprRequestInput!)",
+                "System.String",
+                Mutation.CancelTprRequest,
+                Mutation.CancelTprRequestFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	requestIds = @(
+		$someString
+	)
+	# OPTIONAL
+	comment = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // changePassword(input: ChangePasswordInput!): Boolean!
         internal void InitMutationChangePassword()
         {
@@ -7887,7 +8555,96 @@ $query.Var.input = @{
 	# OPTIONAL
 	tagId = $someInt
 	# OPTIONAL
+	ruleTypes = @(
+		$someAnalyzerRuleType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerRuleType]) for enum values.
+	)
+	# OPTIONAL
+	keyRegex = $someString
+	# OPTIONAL
+	structuredValueRegex = $someString
+	# OPTIONAL
+	structuredDictionaryCsv = $someString
+	# OPTIONAL
+	structuredDictionary = @(
+		$someString
+	)
+	# OPTIONAL
 	risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createDistributionListDigestBatch(input: CreateDistributionListDigestBatchInput!): Void
+        internal void InitMutationCreateDistributionListDigestBatch()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateDistributionListDigestBatchInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateDistributionListDigestBatch",
+                "($input: CreateDistributionListDigestBatchInput!)",
+                "System.String",
+                Mutation.CreateDistributionListDigestBatch,
+                Mutation.CreateDistributionListDigestBatchFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	digests = @(
+		@{
+			# OPTIONAL
+			digestId = $someInt
+			# REQUIRED
+			digestName = $someString
+			# REQUIRED
+			frequencyHours = $someInt
+			# REQUIRED
+			isImmediate = $someBoolean
+			# REQUIRED
+			includeAudits = $someBoolean
+			# REQUIRED
+			includeEvents = $someBoolean
+			# REQUIRED
+			eventDigestConfig = @{
+				# OPTIONAL
+				objectType = @(
+					$someActivityObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityObjectTypeEnum]) for enum values.
+				)
+				# OPTIONAL
+				activityStatus = @(
+					$someActivityStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityStatusEnum]) for enum values.
+				)
+				# OPTIONAL
+				activityType = @(
+					$someString
+				)
+				# OPTIONAL
+				auditType = @(
+					$someUserAuditTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditTypeEnum]) for enum values.
+				)
+				# OPTIONAL
+				activitySeverity = @(
+					$someActivitySeverityEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivitySeverityEnum]) for enum values.
+				)
+				# OPTIONAL
+				clusters = @(
+					$someString
+				)
+				# OPTIONAL
+				emailAddresses = @(
+					$someString
+				)
+			}
+			# REQUIRED
+			recipientUserId = $someString
+			# REQUIRED
+			clusterUuids = @(
+				$someString
+			)
+		}
+	)
 }"
             );
         }
@@ -8303,6 +9060,33 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // denyTprRequests(input: DenyTprRequestsInput!): Void
+        internal void InitMutationDenyTprRequests()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DenyTprRequestsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDenyTprRequests",
+                "($input: DenyTprRequestsInput!)",
+                "System.String",
+                Mutation.DenyTprRequests,
+                Mutation.DenyTprRequestsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	requestIds = @(
+		$someString
+	)
+	# OPTIONAL
+	comment = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // deregisterPrivateContainerRegistry(input: DeregisterPrivateContainerRegistryInput!): Void
         internal void InitMutationDeregisterPrivateContainerRegistry()
         {
@@ -8346,6 +9130,29 @@ $query.Var.input = @{
 	id = $someInt
 	# OPTIONAL
 	impersonatedUserId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // disableTprOrg(input: DisableTprOrgInput!): Void
+        internal void InitMutationDisableTprOrg()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DisableTprOrgInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDisableTprOrg",
+                "($input: DisableTprOrgInput!)",
+                "System.String",
+                Mutation.DisableTprOrg,
+                Mutation.DisableTprOrgFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	organizationId = $someString
 }"
             );
         }
@@ -8459,6 +9266,31 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // enableTprOrg(input: EnableTprOrgInput!): Void
+        internal void InitMutationEnableTprOrg()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "EnableTprOrgInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationEnableTprOrg",
+                "($input: EnableTprOrgInput!)",
+                "System.String",
+                Mutation.EnableTprOrg,
+                Mutation.EnableTprOrgFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	organizationId = $someString
+	# REQUIRED
+	newTprAdminEmail = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // excludeVmDisks(input: [ExcludeVmDisksInput!]!): RequestSuccess!
         internal void InitMutationExcludeVmDisks()
         {
@@ -8482,6 +9314,31 @@ $query.Var.input = @(
 		excludeFromSnapshots = $someBoolean
 }
 )"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // executeTprRequests(input: ExecuteTprRequestsInput!): Void
+        internal void InitMutationExecuteTprRequests()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExecuteTprRequestsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExecuteTprRequests",
+                "($input: ExecuteTprRequestsInput!)",
+                "System.String",
+                Mutation.ExecuteTprRequests,
+                Mutation.ExecuteTprRequestsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	requestIds = @(
+		$someString
+	)
+}"
             );
         }
 
@@ -8815,6 +9672,81 @@ $query.Var.input = @{
 		# OPTIONAL
 		userNote = $someString
 	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // modifyDistributionListDigestBatch(input: ModifyDistributionListDigestBatchInput!): Void
+        internal void InitMutationModifyDistributionListDigestBatch()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ModifyDistributionListDigestBatchInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationModifyDistributionListDigestBatch",
+                "($input: ModifyDistributionListDigestBatchInput!)",
+                "System.String",
+                Mutation.ModifyDistributionListDigestBatch,
+                Mutation.ModifyDistributionListDigestBatchFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	digests = @(
+		@{
+			# OPTIONAL
+			digestId = $someInt
+			# REQUIRED
+			digestName = $someString
+			# REQUIRED
+			frequencyHours = $someInt
+			# REQUIRED
+			isImmediate = $someBoolean
+			# REQUIRED
+			includeAudits = $someBoolean
+			# REQUIRED
+			includeEvents = $someBoolean
+			# REQUIRED
+			eventDigestConfig = @{
+				# OPTIONAL
+				objectType = @(
+					$someActivityObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityObjectTypeEnum]) for enum values.
+				)
+				# OPTIONAL
+				activityStatus = @(
+					$someActivityStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityStatusEnum]) for enum values.
+				)
+				# OPTIONAL
+				activityType = @(
+					$someString
+				)
+				# OPTIONAL
+				auditType = @(
+					$someUserAuditTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditTypeEnum]) for enum values.
+				)
+				# OPTIONAL
+				activitySeverity = @(
+					$someActivitySeverityEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivitySeverityEnum]) for enum values.
+				)
+				# OPTIONAL
+				clusters = @(
+					$someString
+				)
+				# OPTIONAL
+				emailAddresses = @(
+					$someString
+				)
+			}
+			# REQUIRED
+			recipientUserId = $someString
+			# REQUIRED
+			clusterUuids = @(
+				$someString
+			)
+		}
+	)
 }"
             );
         }
@@ -9288,6 +10220,8 @@ $query.Var.input = @{
 	userIds = @(
 		$someString
 	)
+	# REQUIRED
+	invalidateAllSessions = $someBoolean
 }"
             );
         }
@@ -9960,6 +10894,20 @@ $query.Var.analyzerGroups = @(
 				# OPTIONAL
 				tagId = $someInt
 				# OPTIONAL
+				ruleTypes = @(
+					$someAnalyzerRuleType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerRuleType]) for enum values.
+				)
+				# OPTIONAL
+				keyRegex = $someString
+				# OPTIONAL
+				structuredValueRegex = $someString
+				# OPTIONAL
+				structuredDictionaryCsv = $someString
+				# OPTIONAL
+				structuredDictionary = @(
+					$someString
+				)
+				# OPTIONAL
 				risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
 			}
 		)
@@ -10238,6 +11186,35 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	eventSeriesId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // submitTprRequest(input: SubmitTprRequestInput!): Void
+        internal void InitMutationSubmitTprRequest()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SubmitTprRequestInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSubmitTprRequest",
+                "($input: SubmitTprRequestInput!)",
+                "System.String",
+                Mutation.SubmitTprRequest,
+                Mutation.SubmitTprRequestFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	requestId = $someString
+	# OPTIONAL
+	comment = $someString
+	# REQUIRED
+	executionType = $someTprExecutionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprExecutionType]) for enum values.
+	# OPTIONAL
+	executionTimeoutHours = $someInt
 }"
             );
         }
@@ -10739,6 +11716,20 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	tagId = $someInt
+	# OPTIONAL
+	ruleTypes = @(
+		$someAnalyzerRuleType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerRuleType]) for enum values.
+	)
+	# OPTIONAL
+	keyRegex = $someString
+	# OPTIONAL
+	structuredValueRegex = $someString
+	# OPTIONAL
+	structuredDictionaryCsv = $someString
+	# OPTIONAL
+	structuredDictionary = @(
+		$someString
+	)
 	# OPTIONAL
 	risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
 }"
@@ -11392,6 +12383,37 @@ $query.Var.input = @{
 	impersonatedUserId = $someString
 	# OPTIONAL
 	newDurationInHours = $someInt
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateTprConfiguration(input: UpdateTprConfigurationInput!): Void
+        internal void InitMutationUpdateTprConfiguration()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateTprConfigurationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateTprConfiguration",
+                "($input: UpdateTprConfigurationInput!)",
+                "System.String",
+                Mutation.UpdateTprConfiguration,
+                Mutation.UpdateTprConfigurationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	organizationId = $someString
+	# OPTIONAL
+	executionMaxTimeoutHours = $someInt
+	# OPTIONAL
+	requestTimeoutHours = $someInt
+	# OPTIONAL
+	reminderHours = $someInt
+	# OPTIONAL
+	staticQuorumApprovalsRequirement = $someInt
 }"
             );
         }

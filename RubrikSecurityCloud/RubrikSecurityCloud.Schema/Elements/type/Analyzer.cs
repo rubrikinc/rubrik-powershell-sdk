@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("risk")]
         public RiskLevelType? Risk { get; set; }
 
+        //      C# -> List<AnalyzerRuleType>? RuleTypes
+        // GraphQL -> ruleTypes: [AnalyzerRuleType!]! (enum)
+        [JsonProperty("ruleTypes")]
+        public List<AnalyzerRuleType>? RuleTypes { get; set; }
+
         //      C# -> List<System.String>? Dictionary
         // GraphQL -> dictionary: [String!]! (scalar)
         [JsonProperty("dictionary")]
@@ -45,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? KeyRegex
+        // GraphQL -> keyRegex: String! (scalar)
+        [JsonProperty("keyRegex")]
+        public System.String? KeyRegex { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -54,6 +64,21 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> regex: String! (scalar)
         [JsonProperty("regex")]
         public System.String? Regex { get; set; }
+
+        //      C# -> List<System.String>? StructuredDictionary
+        // GraphQL -> structuredDictionary: [String!]! (scalar)
+        [JsonProperty("structuredDictionary")]
+        public List<System.String>? StructuredDictionary { get; set; }
+
+        //      C# -> System.String? StructuredDictionaryCsv
+        // GraphQL -> structuredDictionaryCsv: String! (scalar)
+        [JsonProperty("structuredDictionaryCsv")]
+        public System.String? StructuredDictionaryCsv { get; set; }
+
+        //      C# -> System.String? StructuredValueRegex
+        // GraphQL -> structuredValueRegex: String! (scalar)
+        [JsonProperty("structuredValueRegex")]
+        public System.String? StructuredValueRegex { get; set; }
 
         //      C# -> System.Int32? TagId
         // GraphQL -> tagId: Int! (scalar)
@@ -77,11 +102,16 @@ namespace RubrikSecurityCloud.Types
     public Analyzer Set(
         AnalyzerTypeEnum? AnalyzerType = null,
         RiskLevelType? Risk = null,
+        List<AnalyzerRuleType>? RuleTypes = null,
         List<System.String>? Dictionary = null,
         System.String? DictionaryCsv = null,
         System.String? Id = null,
+        System.String? KeyRegex = null,
         System.String? Name = null,
         System.String? Regex = null,
+        List<System.String>? StructuredDictionary = null,
+        System.String? StructuredDictionaryCsv = null,
+        System.String? StructuredValueRegex = null,
         System.Int32? TagId = null,
         AnalyzerRiskInstance? AnalyzerRiskInstance = null
     ) 
@@ -92,6 +122,9 @@ namespace RubrikSecurityCloud.Types
         if ( Risk != null ) {
             this.Risk = Risk;
         }
+        if ( RuleTypes != null ) {
+            this.RuleTypes = RuleTypes;
+        }
         if ( Dictionary != null ) {
             this.Dictionary = Dictionary;
         }
@@ -101,11 +134,23 @@ namespace RubrikSecurityCloud.Types
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( KeyRegex != null ) {
+            this.KeyRegex = KeyRegex;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
         if ( Regex != null ) {
             this.Regex = Regex;
+        }
+        if ( StructuredDictionary != null ) {
+            this.StructuredDictionary = StructuredDictionary;
+        }
+        if ( StructuredDictionaryCsv != null ) {
+            this.StructuredDictionaryCsv = StructuredDictionaryCsv;
+        }
+        if ( StructuredValueRegex != null ) {
+            this.StructuredValueRegex = StructuredValueRegex;
         }
         if ( TagId != null ) {
             this.TagId = TagId;
@@ -145,6 +190,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "risk\n" ;
             }
         }
+        //      C# -> List<AnalyzerRuleType>? RuleTypes
+        // GraphQL -> ruleTypes: [AnalyzerRuleType!]! (enum)
+        if (this.RuleTypes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ruleTypes\n" ;
+            } else {
+                s += ind + "ruleTypes\n" ;
+            }
+        }
         //      C# -> List<System.String>? Dictionary
         // GraphQL -> dictionary: [String!]! (scalar)
         if (this.Dictionary != null) {
@@ -172,6 +226,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
+        //      C# -> System.String? KeyRegex
+        // GraphQL -> keyRegex: String! (scalar)
+        if (this.KeyRegex != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "keyRegex\n" ;
+            } else {
+                s += ind + "keyRegex\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -188,6 +251,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "regex\n" ;
             } else {
                 s += ind + "regex\n" ;
+            }
+        }
+        //      C# -> List<System.String>? StructuredDictionary
+        // GraphQL -> structuredDictionary: [String!]! (scalar)
+        if (this.StructuredDictionary != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "structuredDictionary\n" ;
+            } else {
+                s += ind + "structuredDictionary\n" ;
+            }
+        }
+        //      C# -> System.String? StructuredDictionaryCsv
+        // GraphQL -> structuredDictionaryCsv: String! (scalar)
+        if (this.StructuredDictionaryCsv != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "structuredDictionaryCsv\n" ;
+            } else {
+                s += ind + "structuredDictionaryCsv\n" ;
+            }
+        }
+        //      C# -> System.String? StructuredValueRegex
+        // GraphQL -> structuredValueRegex: String! (scalar)
+        if (this.StructuredValueRegex != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "structuredValueRegex\n" ;
+            } else {
+                s += ind + "structuredValueRegex\n" ;
             }
         }
         //      C# -> System.Int32? TagId
@@ -252,6 +342,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Risk = null;
         }
+        //      C# -> List<AnalyzerRuleType>? RuleTypes
+        // GraphQL -> ruleTypes: [AnalyzerRuleType!]! (enum)
+        if (ec.Includes("ruleTypes",true))
+        {
+            if(this.RuleTypes == null) {
+
+                this.RuleTypes = new List<AnalyzerRuleType>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RuleTypes != null && ec.Excludes("ruleTypes",true))
+        {
+            this.RuleTypes = null;
+        }
         //      C# -> List<System.String>? Dictionary
         // GraphQL -> dictionary: [String!]! (scalar)
         if (ec.Includes("dictionary",true))
@@ -303,6 +410,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> System.String? KeyRegex
+        // GraphQL -> keyRegex: String! (scalar)
+        if (ec.Includes("keyRegex",true))
+        {
+            if(this.KeyRegex == null) {
+
+                this.KeyRegex = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KeyRegex != null && ec.Excludes("keyRegex",true))
+        {
+            this.KeyRegex = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -336,6 +460,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.Regex != null && ec.Excludes("regex",true))
         {
             this.Regex = null;
+        }
+        //      C# -> List<System.String>? StructuredDictionary
+        // GraphQL -> structuredDictionary: [String!]! (scalar)
+        if (ec.Includes("structuredDictionary",true))
+        {
+            if(this.StructuredDictionary == null) {
+
+                this.StructuredDictionary = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StructuredDictionary != null && ec.Excludes("structuredDictionary",true))
+        {
+            this.StructuredDictionary = null;
+        }
+        //      C# -> System.String? StructuredDictionaryCsv
+        // GraphQL -> structuredDictionaryCsv: String! (scalar)
+        if (ec.Includes("structuredDictionaryCsv",true))
+        {
+            if(this.StructuredDictionaryCsv == null) {
+
+                this.StructuredDictionaryCsv = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StructuredDictionaryCsv != null && ec.Excludes("structuredDictionaryCsv",true))
+        {
+            this.StructuredDictionaryCsv = null;
+        }
+        //      C# -> System.String? StructuredValueRegex
+        // GraphQL -> structuredValueRegex: String! (scalar)
+        if (ec.Includes("structuredValueRegex",true))
+        {
+            if(this.StructuredValueRegex == null) {
+
+                this.StructuredValueRegex = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StructuredValueRegex != null && ec.Excludes("structuredValueRegex",true))
+        {
+            this.StructuredValueRegex = null;
         }
         //      C# -> System.Int32? TagId
         // GraphQL -> tagId: Int! (scalar)

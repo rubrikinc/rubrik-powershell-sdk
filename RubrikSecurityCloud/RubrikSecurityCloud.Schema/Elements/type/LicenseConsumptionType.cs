@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("usersProtected")]
         public System.Int32? UsersProtected { get; set; }
 
+        //      C# -> ProtectedUserDetails? ProtectedUserDetails
+        // GraphQL -> protectedUserDetails: ProtectedUserDetails (type)
+        [JsonProperty("protectedUserDetails")]
+        public ProtectedUserDetails? ProtectedUserDetails { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public LicenseConsumptionType Set(
         System.Int64? FetbConsumed = null,
-        System.Int32? UsersProtected = null
+        System.Int32? UsersProtected = null,
+        ProtectedUserDetails? ProtectedUserDetails = null
     ) 
     {
         if ( FetbConsumed != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UsersProtected != null ) {
             this.UsersProtected = UsersProtected;
+        }
+        if ( ProtectedUserDetails != null ) {
+            this.ProtectedUserDetails = ProtectedUserDetails;
         }
         return this;
     }
@@ -80,6 +89,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "usersProtected\n" ;
             } else {
                 s += ind + "usersProtected\n" ;
+            }
+        }
+        //      C# -> ProtectedUserDetails? ProtectedUserDetails
+        // GraphQL -> protectedUserDetails: ProtectedUserDetails (type)
+        if (this.ProtectedUserDetails != null) {
+            var fspec = this.ProtectedUserDetails.AsFieldSpec(conf.Child("protectedUserDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "protectedUserDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -122,6 +143,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.UsersProtected != null && ec.Excludes("usersProtected",true))
         {
             this.UsersProtected = null;
+        }
+        //      C# -> ProtectedUserDetails? ProtectedUserDetails
+        // GraphQL -> protectedUserDetails: ProtectedUserDetails (type)
+        if (ec.Includes("protectedUserDetails",false))
+        {
+            if(this.ProtectedUserDetails == null) {
+
+                this.ProtectedUserDetails = new ProtectedUserDetails();
+                this.ProtectedUserDetails.ApplyExploratoryFieldSpec(ec.NewChild("protectedUserDetails"));
+
+            } else {
+
+                this.ProtectedUserDetails.ApplyExploratoryFieldSpec(ec.NewChild("protectedUserDetails"));
+
+            }
+        }
+        else if (this.ProtectedUserDetails != null && ec.Excludes("protectedUserDetails",false))
+        {
+            this.ProtectedUserDetails = null;
         }
     }
 

@@ -105,6 +105,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAS_SHARES_CDM")]
         NAS_SHARES_CDM,
 
+        [EnumMember(Value = "NCD")]
+        NCD,
+
         [EnumMember(Value = "NUTANIX_AHV")]
         NUTANIX_AHV,
 

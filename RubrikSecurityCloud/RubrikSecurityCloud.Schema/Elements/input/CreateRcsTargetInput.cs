@@ -80,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldBypassProxy")]
         public System.Boolean? ShouldBypassProxy { get; set; }
 
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy (enum)
+        [JsonProperty("redundancy")]
+        public RcvRedundancy? Redundancy { get; set; }
+
 
         #endregion
 

@@ -54,6 +54,6 @@ Lists all valid replication target clusters.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - ListValidReplicationTargetsSortByField: Field to sort by for valid replication targets.
     - sortOrder - SortOrder: Sort order.
-    - isCrossAccount - System.Boolean: Specification for Rubrik clusters to be retrieved - local or cross-account.
+    - isCrossAccount - System.Boolean: Deprecated. Use ListValidReplicationTargetFilter instead.
     - validReplicationTargetFilter - ListValidReplicationTargetFilter: Filter to retrieve valid replication targets.
 - Returns ValidReplicationTargetConnection.

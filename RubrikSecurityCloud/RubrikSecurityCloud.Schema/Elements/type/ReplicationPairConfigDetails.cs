@@ -35,10 +35,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sourceGateway")]
         public GatewayInfo? SourceGateway { get; set; }
 
+        //      C# -> ClusterNetworkInterfaceDetails? SourceNetworkInterfaceDetails
+        // GraphQL -> sourceNetworkInterfaceDetails: ClusterNetworkInterfaceDetails (type)
+        [JsonProperty("sourceNetworkInterfaceDetails")]
+        public ClusterNetworkInterfaceDetails? SourceNetworkInterfaceDetails { get; set; }
+
         //      C# -> GatewayInfo? TargetGateway
         // GraphQL -> targetGateway: GatewayInfo (type)
         [JsonProperty("targetGateway")]
         public GatewayInfo? TargetGateway { get; set; }
+
+        //      C# -> ClusterNetworkInterfaceDetails? TargetNetworkInterfaceDetails
+        // GraphQL -> targetNetworkInterfaceDetails: ClusterNetworkInterfaceDetails (type)
+        [JsonProperty("targetNetworkInterfaceDetails")]
+        public ClusterNetworkInterfaceDetails? TargetNetworkInterfaceDetails { get; set; }
 
 
         #endregion
@@ -53,7 +63,9 @@ namespace RubrikSecurityCloud.Types
         System.String? SetupType = null,
         NetworkInterfaceSelectionType? NetworkInterface = null,
         GatewayInfo? SourceGateway = null,
-        GatewayInfo? TargetGateway = null
+        ClusterNetworkInterfaceDetails? SourceNetworkInterfaceDetails = null,
+        GatewayInfo? TargetGateway = null,
+        ClusterNetworkInterfaceDetails? TargetNetworkInterfaceDetails = null
     ) 
     {
         if ( SetupType != null ) {
@@ -65,8 +77,14 @@ namespace RubrikSecurityCloud.Types
         if ( SourceGateway != null ) {
             this.SourceGateway = SourceGateway;
         }
+        if ( SourceNetworkInterfaceDetails != null ) {
+            this.SourceNetworkInterfaceDetails = SourceNetworkInterfaceDetails;
+        }
         if ( TargetGateway != null ) {
             this.TargetGateway = TargetGateway;
+        }
+        if ( TargetNetworkInterfaceDetails != null ) {
+            this.TargetNetworkInterfaceDetails = TargetNetworkInterfaceDetails;
         }
         return this;
     }
@@ -115,6 +133,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> ClusterNetworkInterfaceDetails? SourceNetworkInterfaceDetails
+        // GraphQL -> sourceNetworkInterfaceDetails: ClusterNetworkInterfaceDetails (type)
+        if (this.SourceNetworkInterfaceDetails != null) {
+            var fspec = this.SourceNetworkInterfaceDetails.AsFieldSpec(conf.Child("sourceNetworkInterfaceDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sourceNetworkInterfaceDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> GatewayInfo? TargetGateway
         // GraphQL -> targetGateway: GatewayInfo (type)
         if (this.TargetGateway != null) {
@@ -124,6 +154,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "targetGateway" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ClusterNetworkInterfaceDetails? TargetNetworkInterfaceDetails
+        // GraphQL -> targetNetworkInterfaceDetails: ClusterNetworkInterfaceDetails (type)
+        if (this.TargetNetworkInterfaceDetails != null) {
+            var fspec = this.TargetNetworkInterfaceDetails.AsFieldSpec(conf.Child("targetNetworkInterfaceDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "targetNetworkInterfaceDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -189,6 +231,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.SourceGateway = null;
         }
+        //      C# -> ClusterNetworkInterfaceDetails? SourceNetworkInterfaceDetails
+        // GraphQL -> sourceNetworkInterfaceDetails: ClusterNetworkInterfaceDetails (type)
+        if (ec.Includes("sourceNetworkInterfaceDetails",false))
+        {
+            if(this.SourceNetworkInterfaceDetails == null) {
+
+                this.SourceNetworkInterfaceDetails = new ClusterNetworkInterfaceDetails();
+                this.SourceNetworkInterfaceDetails.ApplyExploratoryFieldSpec(ec.NewChild("sourceNetworkInterfaceDetails"));
+
+            } else {
+
+                this.SourceNetworkInterfaceDetails.ApplyExploratoryFieldSpec(ec.NewChild("sourceNetworkInterfaceDetails"));
+
+            }
+        }
+        else if (this.SourceNetworkInterfaceDetails != null && ec.Excludes("sourceNetworkInterfaceDetails",false))
+        {
+            this.SourceNetworkInterfaceDetails = null;
+        }
         //      C# -> GatewayInfo? TargetGateway
         // GraphQL -> targetGateway: GatewayInfo (type)
         if (ec.Includes("targetGateway",false))
@@ -207,6 +268,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.TargetGateway != null && ec.Excludes("targetGateway",false))
         {
             this.TargetGateway = null;
+        }
+        //      C# -> ClusterNetworkInterfaceDetails? TargetNetworkInterfaceDetails
+        // GraphQL -> targetNetworkInterfaceDetails: ClusterNetworkInterfaceDetails (type)
+        if (ec.Includes("targetNetworkInterfaceDetails",false))
+        {
+            if(this.TargetNetworkInterfaceDetails == null) {
+
+                this.TargetNetworkInterfaceDetails = new ClusterNetworkInterfaceDetails();
+                this.TargetNetworkInterfaceDetails.ApplyExploratoryFieldSpec(ec.NewChild("targetNetworkInterfaceDetails"));
+
+            } else {
+
+                this.TargetNetworkInterfaceDetails.ApplyExploratoryFieldSpec(ec.NewChild("targetNetworkInterfaceDetails"));
+
+            }
+        }
+        else if (this.TargetNetworkInterfaceDetails != null && ec.Excludes("targetNetworkInterfaceDetails",false))
+        {
+            this.TargetNetworkInterfaceDetails = null;
         }
     }
 

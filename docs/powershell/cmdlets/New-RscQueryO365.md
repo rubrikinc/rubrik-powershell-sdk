@@ -37,7 +37,7 @@ List of O365 Groups in the O365Org.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - o365OrgId - System.String: The fid for the O365 organization.
     - snappableType - SnappableType
@@ -68,7 +68,7 @@ List of Mailboxes in the O365Org.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - o365OrgId - System.String: The fid for the O365 organization.
 - Returns O365MailboxConnection.
@@ -87,7 +87,7 @@ List of Onedrives in the O365Org.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - o365OrgId - System.String: The fid for the O365 organization.
 - Returns O365OnedriveConnection.
@@ -110,7 +110,7 @@ All O365 orgs for the account.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
 - Returns O365OrgConnection.
@@ -144,7 +144,7 @@ List of sharepoint drives (document libraries) in the O365Org.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - o365OrgId - System.String: The fid for the O365 organization.
 - Returns O365SharepointDriveConnection.
@@ -160,7 +160,7 @@ Paginated list of sharepoint lists in the O365Org.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - o365OrgId - System.String: The fid for the O365 organization.
 - Returns O365SharepointListConnection.
@@ -171,7 +171,7 @@ Returns the sharepoint objects after filtering on the object types and includeEn
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - objectTypeFilter - list of System.Strings: Types of objects to include.
     - includeEntireHierarchy - System.Boolean: If true, the entire hierarchy will be searched.
@@ -182,7 +182,7 @@ Returns the sharepoint objects after filtering on the object types and includeEn
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - fid - System.String: The Rubrik UUID for the object.
 - Returns O365SharepointObjectConnection.
@@ -193,7 +193,7 @@ Compared to the endpoint o365SharepointObjectList, this endpoint retrieves and p
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - objectTypeFilter - list of System.Strings: Types of objects to include.
     - includeEntireHierarchy - System.Boolean: If true, the entire hierarchy will be searched.
@@ -211,7 +211,7 @@ Paginated list of sharepoint sites in the O365Org.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - o365OrgId - System.String: The fid for the O365 organization.
 - Returns O365SiteConnection.
@@ -227,10 +227,10 @@ List of sites in the O365Org.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - o365OrgId - System.String: The fid for the O365 organization.
-    - excludeChildSites - System.Boolean: If true, nested children sites will be excluded from the results.
+    - excludeChildSites - System.Boolean: When excludeChildSites is set to true, nested child sites are excluded from the results. If not specified, nested child sites are included.
 - Returns O365SiteConnection.
 ### storagestats
 Returns the storage stats of an O365 org.
@@ -283,7 +283,7 @@ List of O365 Teams in the O365Org.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - o365OrgId - System.String: The fid for the O365 organization.
 - Returns O365TeamsConnection.
@@ -299,7 +299,7 @@ Name, id, object type, and mail address of user descendant object.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
     - fid - System.String: The Rubrik UUID for the object.
 - Returns O365UserDescendantMetadataConnection.

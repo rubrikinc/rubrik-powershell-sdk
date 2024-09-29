@@ -60,7 +60,7 @@ Cloud native label rules.
     - objectType - CloudNativeLabelObjectType: Type of managed object on which label rule will be applied.
     - filters - list of CloudNativeFilters: Fields and values according to which rules will be filtered.
     - sortBy - CloudNativeTagRuleSortByFields
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
 - Returns GetCloudNativeLabelRulesReply.
 ### labelvalues
 List of cloud native label values matched by substring.
@@ -116,7 +116,7 @@ Cloud native tag rules.
     - objectType - CloudNativeTagObjectType: Type of managed object on which tag rule will be applied.
     - filters - list of CloudNativeFilters: Fields and values according to which rules will be filtered.
     - sortBy - CloudNativeTagRuleSortByFields
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
 - Returns GetCloudNativeTagRulesReply.
 ### tagvalues
 List of cloud native tag values matched by substring.

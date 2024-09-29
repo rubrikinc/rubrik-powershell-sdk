@@ -7,3 +7,7 @@ Holds the configuration of a single integration. Note that IntegrationConfig
   - The Data Loss Prevention configuration.
 - serviceNowItsm: ServiceNowItsmIntegrationConfig
   - The ServiceNow ITSM configuration.
+- okta: OktaIntegrationConfig
+  - The OKTA configuration.
+- microsoftPurview: MicrosoftPurviewConfig
+  - The Microsoft Purview configuration.

@@ -21,6 +21,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INTEGRATION_TYPE_UNSPECIFIED")]
         INTEGRATION_TYPE_UNSPECIFIED,
 
+        [EnumMember(Value = "MICROSOFT_PURVIEW")]
+        MICROSOFT_PURVIEW,
+
+        [EnumMember(Value = "OKTA")]
+        OKTA,
+
         [EnumMember(Value = "SERVICENOW_ITSM")]
         SERVICENOW_ITSM,
 

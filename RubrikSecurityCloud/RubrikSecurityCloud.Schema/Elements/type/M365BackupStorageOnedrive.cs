@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> BackupStorageProtectionStatus? BackupStorageProtectionStatus
+        // GraphQL -> backupStorageProtectionStatus: BackupStorageProtectionStatus! (enum)
+        [JsonProperty("backupStorageProtectionStatus")]
+        public BackupStorageProtectionStatus? BackupStorageProtectionStatus { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -60,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
+
+        //      C# -> System.Boolean? IsSyncingStatus
+        // GraphQL -> isSyncingStatus: Boolean! (scalar)
+        [JsonProperty("isSyncingStatus")]
+        public System.Boolean? IsSyncingStatus { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -239,6 +249,7 @@ namespace RubrikSecurityCloud.Types
 
     public M365BackupStorageOnedrive Set(
         List<Operation>? AuthorizedOperations = null,
+        BackupStorageProtectionStatus? BackupStorageProtectionStatus = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
@@ -246,6 +257,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
+        System.Boolean? IsSyncingStatus = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
@@ -271,6 +283,9 @@ namespace RubrikSecurityCloud.Types
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
         }
+        if ( BackupStorageProtectionStatus != null ) {
+            this.BackupStorageProtectionStatus = BackupStorageProtectionStatus;
+        }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
         }
@@ -291,6 +306,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( IsSyncingStatus != null ) {
+            this.IsSyncingStatus = IsSyncingStatus;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -375,6 +393,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "authorizedOperations\n" ;
             }
         }
+        //      C# -> BackupStorageProtectionStatus? BackupStorageProtectionStatus
+        // GraphQL -> backupStorageProtectionStatus: BackupStorageProtectionStatus! (enum)
+        if (this.BackupStorageProtectionStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupStorageProtectionStatus\n" ;
+            } else {
+                s += ind + "backupStorageProtectionStatus\n" ;
+            }
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
@@ -448,6 +475,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRelic\n" ;
             } else {
                 s += ind + "isRelic\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSyncingStatus
+        // GraphQL -> isSyncingStatus: Boolean! (scalar)
+        if (this.IsSyncingStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSyncingStatus\n" ;
+            } else {
+                s += ind + "isSyncingStatus\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -696,6 +732,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AuthorizedOperations = null;
         }
+        //      C# -> BackupStorageProtectionStatus? BackupStorageProtectionStatus
+        // GraphQL -> backupStorageProtectionStatus: BackupStorageProtectionStatus! (enum)
+        if (ec.Includes("backupStorageProtectionStatus",true))
+        {
+            if(this.BackupStorageProtectionStatus == null) {
+
+                this.BackupStorageProtectionStatus = new BackupStorageProtectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupStorageProtectionStatus != null && ec.Excludes("backupStorageProtectionStatus",true))
+        {
+            this.BackupStorageProtectionStatus = null;
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (ec.Includes("objectType",true))
@@ -835,6 +888,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRelic != null && ec.Excludes("isRelic",true))
         {
             this.IsRelic = null;
+        }
+        //      C# -> System.Boolean? IsSyncingStatus
+        // GraphQL -> isSyncingStatus: Boolean! (scalar)
+        if (ec.Includes("isSyncingStatus",true))
+        {
+            if(this.IsSyncingStatus == null) {
+
+                this.IsSyncingStatus = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSyncingStatus != null && ec.Excludes("isSyncingStatus",true))
+        {
+            this.IsSyncingStatus = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

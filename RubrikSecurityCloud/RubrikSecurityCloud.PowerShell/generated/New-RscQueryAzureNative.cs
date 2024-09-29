@@ -277,6 +277,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.azureManagedDiskRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -370,6 +372,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		relic = $someBoolean
     /// 	}
     /// 	# OPTIONAL
+    /// 	sensitivityStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		sensitivityStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	protectionStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		protectionStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	tagFilter = @{
     /// 		# REQUIRED
     /// 		tagFilterParams = @(
@@ -403,6 +419,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// }
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -836,6 +854,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.azureVirtualMachineRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -961,6 +981,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		relic = $someBoolean
     /// 	}
     /// 	# OPTIONAL
+    /// 	sensitivityStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		sensitivityStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	protectionStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		protectionStatuses = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	tagFilter = @{
     /// 		# REQUIRED
     /// 		tagFilterParams = @(
@@ -1004,6 +1038,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// }
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1539,22 +1575,25 @@ $query.Var.snapshotId = $someString"
         }
 
         // Create new GraphQL Query:
-        // azureNativeManagedDisk(azureManagedDiskRubrikId: UUID!): AzureNativeManagedDisk!
+        // azureNativeManagedDisk(azureManagedDiskRubrikId: UUID!, includeSecurityMetadata: Boolean): AzureNativeManagedDisk!
         internal void InitQueryAzureNativeManagedDisk()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureManagedDiskRubrikId", "UUID!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureNativeManagedDisk",
-                "($azureManagedDiskRubrikId: UUID!)",
+                "($azureManagedDiskRubrikId: UUID!,$includeSecurityMetadata: Boolean)",
                 "AzureNativeManagedDisk",
                 Query.AzureNativeManagedDisk,
                 Query.AzureNativeManagedDiskFieldSpec,
                 @"# REQUIRED
-$query.Var.azureManagedDiskRubrikId = $someString"
+$query.Var.azureManagedDiskRubrikId = $someString
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -1567,6 +1606,7 @@ $query.Var.azureManagedDiskRubrikId = $someString"
         //     sortBy: AzureNativeDiskSortFields
         //     sortOrder: SortOrder
         //     diskFilters: AzureNativeDiskFilters
+        //     includeSecurityMetadata: Boolean
         //   ): AzureNativeManagedDiskConnection!
         internal void InitQueryAzureNativeManagedDisks()
         {
@@ -1578,12 +1618,13 @@ $query.Var.azureManagedDiskRubrikId = $someString"
                 Tuple.Create("sortBy", "AzureNativeDiskSortFields"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("diskFilters", "AzureNativeDiskFilters"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureNativeManagedDisks",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeDiskSortFields,$sortOrder: SortOrder,$diskFilters: AzureNativeDiskFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeDiskSortFields,$sortOrder: SortOrder,$diskFilters: AzureNativeDiskFilters,$includeSecurityMetadata: Boolean)",
                 "AzureNativeManagedDiskConnection",
                 Query.AzureNativeManagedDisks,
                 Query.AzureNativeManagedDisksFieldSpec,
@@ -1654,6 +1695,20 @@ $query.Var.diskFilters = @{
 		relic = $someBoolean
 	}
 	# OPTIONAL
+	sensitivityStatusFilter = @{
+		# REQUIRED
+		sensitivityStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	protectionStatusFilter = @{
+		# REQUIRED
+		protectionStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	tagFilter = @{
 		# REQUIRED
 		tagFilterParams = @(
@@ -1686,7 +1741,9 @@ $query.Var.diskFilters = @{
 			$someString
 		)
 	}
-}"
+}
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -2049,22 +2106,25 @@ $query.Var.azureSqlManagedInstanceServerRubrikId = $someString"
         }
 
         // Create new GraphQL Query:
-        // azureNativeVirtualMachine(azureVirtualMachineRubrikId: UUID!): AzureNativeVirtualMachine!
+        // azureNativeVirtualMachine(azureVirtualMachineRubrikId: UUID!, includeSecurityMetadata: Boolean): AzureNativeVirtualMachine!
         internal void InitQueryAzureNativeVirtualMachine()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureVirtualMachineRubrikId", "UUID!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureNativeVirtualMachine",
-                "($azureVirtualMachineRubrikId: UUID!)",
+                "($azureVirtualMachineRubrikId: UUID!,$includeSecurityMetadata: Boolean)",
                 "AzureNativeVirtualMachine",
                 Query.AzureNativeVirtualMachine,
                 Query.AzureNativeVirtualMachineFieldSpec,
                 @"# REQUIRED
-$query.Var.azureVirtualMachineRubrikId = $someString"
+$query.Var.azureVirtualMachineRubrikId = $someString
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -2098,6 +2158,7 @@ $query.Var.azureSubscriptionRubrikId = $someString"
         //     sortOrder: SortOrder
         //     descendantTypeFilter: [HierarchyObjectTypeEnum!]
         //     virtualMachineFilters: AzureNativeVirtualMachineFilters
+        //     includeSecurityMetadata: Boolean
         //   ): AzureNativeVirtualMachineConnection!
         internal void InitQueryAzureNativeVirtualMachines()
         {
@@ -2110,12 +2171,13 @@ $query.Var.azureSubscriptionRubrikId = $someString"
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("descendantTypeFilter", "[HierarchyObjectTypeEnum!]"),
                 Tuple.Create("virtualMachineFilters", "AzureNativeVirtualMachineFilters"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureNativeVirtualMachines",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeVirtualMachineSortFields,$sortOrder: SortOrder,$descendantTypeFilter: [HierarchyObjectTypeEnum!],$virtualMachineFilters: AzureNativeVirtualMachineFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeVirtualMachineSortFields,$sortOrder: SortOrder,$descendantTypeFilter: [HierarchyObjectTypeEnum!],$virtualMachineFilters: AzureNativeVirtualMachineFilters,$includeSecurityMetadata: Boolean)",
                 "AzureNativeVirtualMachineConnection",
                 Query.AzureNativeVirtualMachines,
                 Query.AzureNativeVirtualMachinesFieldSpec,
@@ -2190,6 +2252,20 @@ $query.Var.virtualMachineFilters = @{
 		relic = $someBoolean
 	}
 	# OPTIONAL
+	sensitivityStatusFilter = @{
+		# REQUIRED
+		sensitivityStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	protectionStatusFilter = @{
+		# REQUIRED
+		protectionStatuses = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	tagFilter = @{
 		# REQUIRED
 		tagFilterParams = @(
@@ -2232,7 +2308,9 @@ $query.Var.virtualMachineFilters = @{
 			$someString
 		)
 	}
-}"
+}
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 

@@ -126,6 +126,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? ResourceGroup
+        // GraphQL -> resourceGroup: String! (scalar)
+        [JsonProperty("resourceGroup")]
+        public System.String? ResourceGroup { get; set; }
+
         //      C# -> System.Int32? RunningTasks
         // GraphQL -> runningTasks: Int (scalar)
         [JsonProperty("runningTasks")]
@@ -141,10 +146,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("spaceUsageAlertThreshold")]
         public System.Int32? SpaceUsageAlertThreshold { get; set; }
 
+        //      C# -> System.String? StorageAccountName
+        // GraphQL -> storageAccountName: String! (scalar)
+        [JsonProperty("storageAccountName")]
+        public System.String? StorageAccountName { get; set; }
+
         //      C# -> System.Single? StorageConsumptionValue
         // GraphQL -> storageConsumptionValue: Float! (scalar)
         [JsonProperty("storageConsumptionValue")]
         public System.Single? StorageConsumptionValue { get; set; }
+
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        [JsonProperty("subscriptionId")]
+        public System.String? SubscriptionId { get; set; }
 
         //      C# -> System.String? SyncFailureReason
         // GraphQL -> syncFailureReason: String! (scalar)
@@ -207,10 +222,13 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsVersionLevelImmutabilityEnabled = null,
         DateTime? LastRedundancySyncTime = null,
         System.String? Name = null,
+        System.String? ResourceGroup = null,
         System.Int32? RunningTasks = null,
         System.Boolean? ShouldBypassProxy = null,
         System.Int32? SpaceUsageAlertThreshold = null,
+        System.String? StorageAccountName = null,
         System.Single? StorageConsumptionValue = null,
+        System.String? SubscriptionId = null,
         System.String? SyncFailureReason = null,
         Cluster? Cluster = null,
         ClusterIpMapping? ClusterIpMapping = null,
@@ -282,6 +300,9 @@ namespace RubrikSecurityCloud.Types
         if ( Name != null ) {
             this.Name = Name;
         }
+        if ( ResourceGroup != null ) {
+            this.ResourceGroup = ResourceGroup;
+        }
         if ( RunningTasks != null ) {
             this.RunningTasks = RunningTasks;
         }
@@ -291,8 +312,14 @@ namespace RubrikSecurityCloud.Types
         if ( SpaceUsageAlertThreshold != null ) {
             this.SpaceUsageAlertThreshold = SpaceUsageAlertThreshold;
         }
+        if ( StorageAccountName != null ) {
+            this.StorageAccountName = StorageAccountName;
+        }
         if ( StorageConsumptionValue != null ) {
             this.StorageConsumptionValue = StorageConsumptionValue;
+        }
+        if ( SubscriptionId != null ) {
+            this.SubscriptionId = SubscriptionId;
         }
         if ( SyncFailureReason != null ) {
             this.SyncFailureReason = SyncFailureReason;
@@ -515,6 +542,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
+        //      C# -> System.String? ResourceGroup
+        // GraphQL -> resourceGroup: String! (scalar)
+        if (this.ResourceGroup != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceGroup\n" ;
+            } else {
+                s += ind + "resourceGroup\n" ;
+            }
+        }
         //      C# -> System.Int32? RunningTasks
         // GraphQL -> runningTasks: Int (scalar)
         if (this.RunningTasks != null) {
@@ -542,6 +578,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "spaceUsageAlertThreshold\n" ;
             }
         }
+        //      C# -> System.String? StorageAccountName
+        // GraphQL -> storageAccountName: String! (scalar)
+        if (this.StorageAccountName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "storageAccountName\n" ;
+            } else {
+                s += ind + "storageAccountName\n" ;
+            }
+        }
         //      C# -> System.Single? StorageConsumptionValue
         // GraphQL -> storageConsumptionValue: Float! (scalar)
         if (this.StorageConsumptionValue != null) {
@@ -549,6 +594,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "storageConsumptionValue\n" ;
             } else {
                 s += ind + "storageConsumptionValue\n" ;
+            }
+        }
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        if (this.SubscriptionId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionId\n" ;
+            } else {
+                s += ind + "subscriptionId\n" ;
             }
         }
         //      C# -> System.String? SyncFailureReason
@@ -984,6 +1038,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Name = null;
         }
+        //      C# -> System.String? ResourceGroup
+        // GraphQL -> resourceGroup: String! (scalar)
+        if (ec.Includes("resourceGroup",true))
+        {
+            if(this.ResourceGroup == null) {
+
+                this.ResourceGroup = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceGroup != null && ec.Excludes("resourceGroup",true))
+        {
+            this.ResourceGroup = null;
+        }
         //      C# -> System.Int32? RunningTasks
         // GraphQL -> runningTasks: Int (scalar)
         if (ec.Includes("runningTasks",true))
@@ -1035,6 +1106,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.SpaceUsageAlertThreshold = null;
         }
+        //      C# -> System.String? StorageAccountName
+        // GraphQL -> storageAccountName: String! (scalar)
+        if (ec.Includes("storageAccountName",true))
+        {
+            if(this.StorageAccountName == null) {
+
+                this.StorageAccountName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageAccountName != null && ec.Excludes("storageAccountName",true))
+        {
+            this.StorageAccountName = null;
+        }
         //      C# -> System.Single? StorageConsumptionValue
         // GraphQL -> storageConsumptionValue: Float! (scalar)
         if (ec.Includes("storageConsumptionValue",true))
@@ -1051,6 +1139,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.StorageConsumptionValue != null && ec.Excludes("storageConsumptionValue",true))
         {
             this.StorageConsumptionValue = null;
+        }
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        if (ec.Includes("subscriptionId",true))
+        {
+            if(this.SubscriptionId == null) {
+
+                this.SubscriptionId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionId != null && ec.Excludes("subscriptionId",true))
+        {
+            this.SubscriptionId = null;
         }
         //      C# -> System.String? SyncFailureReason
         // GraphQL -> syncFailureReason: String! (scalar)

@@ -58,4 +58,6 @@
   - Represents the creation time of the file.
 - lastScanTime: System.Int64
   - Represents the last scan time of the file.
+- mipLabels: list of MipLabels
+  - Represents the MIP Labels attached to the file.
 - snappable: HierarchyObject

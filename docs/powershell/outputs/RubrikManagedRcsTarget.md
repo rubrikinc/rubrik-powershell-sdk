@@ -11,6 +11,12 @@ Specific information for Rubrik Cloud Vault (RCV) target created on Rubrik.
   - Region of RCV target.
 - tier: RcsTierEnumType
   - Tiers for RCV target.
+- subscriptionId: System.String
+  - Subscription ID for RCV target.
+- resourceGroup: System.String
+  - Resource group for RCV target.
+- storageAccountName: System.String
+  - Storage account name for RCV target.
 - redundancy: RcvRedundancy
   - Redundancy for RCV target.
 - redundancyState: RcvRedundancyState

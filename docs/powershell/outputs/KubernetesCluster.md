@@ -19,12 +19,28 @@ Kubernetes cluster.
   - Transport type of Kubernetes Cluster.
 - namespaceCount: System.Int32
   - Number of namespaces in the cluster.
+- distribution: System.String
+  - Distribution indicates the type of Kubernetes distribution used by the cluster, such as VANILLA, RED_HAT, EKS, AKS, or others.
+- isPullSecretConfigured: System.Boolean
+  - Specifies whether the pull secret is configured.
+- cloudAccountId: System.String
+  - ID of the cloud account used to establish a connection with the EKS Kubernetes cluster.
+- eksClusterArn: System.String
+  - Amazon Resource Name (ARN) for the EKS Kubernetes cluster.
+- isAutoPsCreationEnabled: System.Boolean
+  - Specifies whether automatic protection set creation is enabled.
+- externalIp: System.String
+  - The IP for connecting to the Kubernetes cluster on a NodePort.
+- port: System.Int32
+  - Port number for connecting to the Kubernetes cluster.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - descendantConnection: KubernetesClusterDescendantConnection
   - List of descendants.
 - k8sDescendantProtectionSets: KubernetesProtectionSetConnection
   - Protection Sets belonging to the Kubernetes cluster.
+- onboardingType: KubernetesOnboardingType
+  - Onboarding type of Kubernetes cluster.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String

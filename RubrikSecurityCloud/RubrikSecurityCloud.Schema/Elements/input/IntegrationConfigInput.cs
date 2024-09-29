@@ -29,6 +29,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serviceNowItsm")]
         public ServiceNowItsmIntegrationConfigInput? ServiceNowItsm { get; set; }
 
+        //      C# -> OktaIntegrationConfigInput? Okta
+        // GraphQL -> okta: OktaIntegrationConfigInput (input)
+        [JsonProperty("okta")]
+        public OktaIntegrationConfigInput? Okta { get; set; }
+
+        //      C# -> MicrosoftPurviewConfigInput? MicrosoftPurview
+        // GraphQL -> microsoftPurview: MicrosoftPurviewConfigInput (input)
+        [JsonProperty("microsoftPurview")]
+        public MicrosoftPurviewConfigInput? MicrosoftPurview { get; set; }
+
 
         #endregion
 

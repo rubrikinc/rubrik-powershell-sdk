@@ -59,6 +59,31 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tagId")]
         public System.Int32? TagId { get; set; }
 
+        //      C# -> List<AnalyzerRuleType>? RuleTypes
+        // GraphQL -> ruleTypes: [AnalyzerRuleType!] (enum)
+        [JsonProperty("ruleTypes")]
+        public List<AnalyzerRuleType>? RuleTypes { get; set; }
+
+        //      C# -> System.String? KeyRegex
+        // GraphQL -> keyRegex: String (scalar)
+        [JsonProperty("keyRegex")]
+        public System.String? KeyRegex { get; set; }
+
+        //      C# -> System.String? StructuredValueRegex
+        // GraphQL -> structuredValueRegex: String (scalar)
+        [JsonProperty("structuredValueRegex")]
+        public System.String? StructuredValueRegex { get; set; }
+
+        //      C# -> System.String? StructuredDictionaryCsv
+        // GraphQL -> structuredDictionaryCsv: String (scalar)
+        [JsonProperty("structuredDictionaryCsv")]
+        public System.String? StructuredDictionaryCsv { get; set; }
+
+        //      C# -> List<System.String>? StructuredDictionary
+        // GraphQL -> structuredDictionary: [String!] (scalar)
+        [JsonProperty("structuredDictionary")]
+        public List<System.String>? StructuredDictionary { get; set; }
+
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType (enum)
         [JsonProperty("risk")]

@@ -5,6 +5,8 @@ User group details.
   - The ID of the user group.
 - groupName: System.String
   - The name of the user group.
+- domainName: System.String
+  - Domain name of the user group.
 - users: list of Users
   - Users from the user group who are logged-in to the account.
 - roles: list of Roles

@@ -130,3 +130,10 @@ Enum representing all the possible object types which generate events.
 - OBJECT_TYPE_NUTANIX_ERA - Nutanix Era object.
 - ACTIVE_DIRECTORY_FOREST - Active Directory forest.
 - CONFLUENCE_SPACE - Confluence Space.
+- M365_BACKUP_STORAGE_ORG - Microsoft 365 Backup Storage Organization.
+- M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
+- M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
+- M365_BACKUP_STORAGE_SITE - Microsoft 365 Backup Storage SharePoint Site.
+- M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
+- KMS_KEY_VAULT - KMS Key Vault.
+- K8S_VIRTUAL_MACHINE - Kubernetes Virtual Machine object.

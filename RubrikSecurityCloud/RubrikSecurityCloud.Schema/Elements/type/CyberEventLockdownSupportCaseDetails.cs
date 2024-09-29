@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("caseNumber")]
         public System.String? CaseNumber { get; set; }
 
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public CyberEventLockdownSupportCaseDetails Set(
         System.String? CaseId = null,
         System.String? CaseLink = null,
-        System.String? CaseNumber = null
+        System.String? CaseNumber = null,
+        System.String? ClusterUuid = null
     ) 
     {
         if ( CaseId != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CaseNumber != null ) {
             this.CaseNumber = CaseNumber;
+        }
+        if ( ClusterUuid != null ) {
+            this.ClusterUuid = ClusterUuid;
         }
         return this;
     }
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "caseNumber\n" ;
             } else {
                 s += ind + "caseNumber\n" ;
+            }
+        }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        if (this.ClusterUuid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
             }
         }
         return s;
@@ -157,6 +175,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CaseNumber != null && ec.Excludes("caseNumber",true))
         {
             this.CaseNumber = null;
+        }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        if (ec.Includes("clusterUuid",true))
+        {
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
     }
 

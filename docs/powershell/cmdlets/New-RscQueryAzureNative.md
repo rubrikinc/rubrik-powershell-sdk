@@ -47,19 +47,22 @@ Checks if an Azure SQL Database Snapshot or an Azure SQL Managed Instance Databa
 ### manageddisk
 Retrieves an Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - azureManagedDiskRubrikId - System.String: Rubrik ID of the Azure Managed Disk.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureNativeManagedDisk.
 ### manageddisks
 Retrieves a paginated list of all Azure Native Managed Disks.
 
-- There are 7 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureNativeDiskSortFields: Sort fields for list of Azure disks.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - diskFilters - AzureNativeDiskFilters
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureNativeManagedDiskConnection.
 ### resourcegroup
 Retrieves an Azure Native Resource Group. Refers to a collection of resources in which multiple Azure services can reside.
@@ -75,7 +78,7 @@ Retrieves a paginated list of all Azure Native Resource Groups.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureNativeCommonResourceGroupSortFields: Sort fields for listing Azure resource groups.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - commonResourceGroupFilters - AzureNativeCommonResourceGroupFilters: Filters for listing Azure resource groups.
     - protectedObjectTypes - list of WorkloadLevelHierarchys: List of protected object types.
     - azureNativeProtectionFeatures - list of AzureNativeProtectionFeatures: The type of Azure Native features that Polaris supports.
@@ -123,7 +126,7 @@ Retrieves a paginated list of all Azure Native Subscriptions.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureNativeSubscriptionSortFields: Sort fields for list of Azure subscriptions.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - subscriptionFilters - AzureNativeSubscriptionFilters
     - authorizedOperationFilter - Operation: Filters according to the operation given.
     - workloadHierarchy - WorkloadLevelHierarchy: Workload hierarchy.
@@ -146,20 +149,23 @@ Validates the name used for an Managed Instance Database during an export operat
 ### virtualmachine
 Retrieves an Azure Virtual Machine that refers to the Azure infrastructure as a service (IaaS) used to deploy persistent VMs. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - azureVirtualMachineRubrikId - System.String: Rubrik ID of the Azure Virtual Machine.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureNativeVirtualMachine.
 ### virtualmachines
 Retrieves a paginated list of all Azure Virtual Machines (VMs).
 
-- There are 8 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureNativeVirtualMachineSortFields: Sort fields for list of Azure virtual machines.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
     - descendantTypeFilter - list of HierarchyObjectTypeEnums: Filter the CDM cloud hosts by workload type.
     - virtualMachineFilters - AzureNativeVirtualMachineFilters
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureNativeVirtualMachineConnection.
 ### virtualmachinesizes
 Retrieves all virtual machine (VM) sizes in the subscriptions protected by Rubrik that have been configured for protection. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.

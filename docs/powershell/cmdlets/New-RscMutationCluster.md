@@ -20,6 +20,11 @@ Delete an existing route on a Rubrik cluster. Supported in Rubrik CDM v5.0+
 
 - There is a single argument of type DeleteClusterRouteInput.
 - Returns System.String.
+### exocomputeclusterconnect
+Connects an Exocompute cluster to RSC and retrieves the Kubernetes configuration YAML file.
+
+- There is a single argument of type ExocomputeClusterConnectInput.
+- Returns ExocomputeClusterConnectReply.
 ### generateclusterregistrationtoken
 Generate a JWT that can be used to register clusters with Rubrik. If ManagedByRubrikArg is not given, the product type is inferred automatically.
 

@@ -8,7 +8,7 @@ Information required to save a distribution list digest.
 - frequencyHours: System.Int32
   - Frequency, in hours, with which the distribution list digests are sent.
 - isImmediate: System.Boolean
-  - Specifies whether to send distribution list  digest immediately or not.
+  - Specifies whether to immediately send distribution list digest.
 - includeAudits: System.Boolean
   - Specifies whether to include audits in the distribution list digest or not.
 - includeEvents: System.Boolean

@@ -219,6 +219,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_CROSS_ACCOUNT_PAIR")]
         MANAGE_CROSS_ACCOUNT_PAIR,
 
+        [EnumMember(Value = "MANAGE_CYBER_EVENT_LOCKDOWN")]
+        MANAGE_CYBER_EVENT_LOCKDOWN,
+
         [EnumMember(Value = "MANAGE_DATA_SOURCE")]
         MANAGE_DATA_SOURCE,
 
@@ -239,6 +242,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_MIGRATION_DASHBOARD")]
         MANAGE_MIGRATION_DASHBOARD,
+
+        [EnumMember(Value = "MANAGE_OAUTH_APPLICATIONS")]
+        MANAGE_OAUTH_APPLICATIONS,
+
+        [EnumMember(Value = "MANAGE_OKTA_INTEGRATION")]
+        MANAGE_OKTA_INTEGRATION,
 
         [EnumMember(Value = "MANAGE_ORCHESTRATED_RECOVERY")]
         MANAGE_ORCHESTRATED_RECOVERY,
@@ -360,6 +369,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "USE_AS_REPLICATION_TARGET")]
         USE_AS_REPLICATION_TARGET,
 
+        [EnumMember(Value = "USE_OAUTH_APPLICATIONS")]
+        USE_OAUTH_APPLICATIONS,
+
         [EnumMember(Value = "VIEW_ACCESS")]
         VIEW_ACCESS,
 
@@ -446,6 +458,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_NON_SYSTEM_EVENT")]
         VIEW_NON_SYSTEM_EVENT,
+
+        [EnumMember(Value = "VIEW_OKTA_INTEGRATION")]
+        VIEW_OKTA_INTEGRATION,
 
         [EnumMember(Value = "VIEW_ORCHESTRATED_RECOVERY_APP")]
         VIEW_ORCHESTRATED_RECOVERY_APP,

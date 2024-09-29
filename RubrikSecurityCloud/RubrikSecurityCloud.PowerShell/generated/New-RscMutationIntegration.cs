@@ -140,6 +140,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			serviceAccountId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		okta = @{
+    /// 			# REQUIRED
+    /// 			oktaTenantUrl = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		microsoftPurview = @{
+    /// 			# REQUIRED
+    /// 			tenantId = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -221,6 +231,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				serviceNowItsm = @{
     /// 					# REQUIRED
     /// 					serviceAccountId = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				okta = @{
+    /// 					# REQUIRED
+    /// 					oktaTenantUrl = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				microsoftPurview = @{
+    /// 					# REQUIRED
+    /// 					tenantId = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -369,6 +389,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			serviceAccountId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		okta = @{
+    /// 			# REQUIRED
+    /// 			oktaTenantUrl = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		microsoftPurview = @{
+    /// 			# REQUIRED
+    /// 			tenantId = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -452,6 +482,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				serviceNowItsm = @{
     /// 					# REQUIRED
     /// 					serviceAccountId = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				okta = @{
+    /// 					# REQUIRED
+    /// 					oktaTenantUrl = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				microsoftPurview = @{
+    /// 					# REQUIRED
+    /// 					tenantId = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -656,6 +696,16 @@ $query.Var.input = @{
 			# REQUIRED
 			serviceAccountId = $someString
 		}
+		# OPTIONAL
+		okta = @{
+			# REQUIRED
+			oktaTenantUrl = $someString
+		}
+		# OPTIONAL
+		microsoftPurview = @{
+			# REQUIRED
+			tenantId = $someString
+		}
 	}
 }"
             );
@@ -729,6 +779,16 @@ $query.Var.input = @{
 				serviceNowItsm = @{
 					# REQUIRED
 					serviceAccountId = $someString
+				}
+				# OPTIONAL
+				okta = @{
+					# REQUIRED
+					oktaTenantUrl = $someString
+				}
+				# OPTIONAL
+				microsoftPurview = @{
+					# REQUIRED
+					tenantId = $someString
 				}
 			}
 		}
@@ -853,6 +913,16 @@ $query.Var.input = @{
 			# REQUIRED
 			serviceAccountId = $someString
 		}
+		# OPTIONAL
+		okta = @{
+			# REQUIRED
+			oktaTenantUrl = $someString
+		}
+		# OPTIONAL
+		microsoftPurview = @{
+			# REQUIRED
+			tenantId = $someString
+		}
 	}
 }"
             );
@@ -928,6 +998,16 @@ $query.Var.input = @{
 				serviceNowItsm = @{
 					# REQUIRED
 					serviceAccountId = $someString
+				}
+				# OPTIONAL
+				okta = @{
+					# REQUIRED
+					oktaTenantUrl = $someString
+				}
+				# OPTIONAL
+				microsoftPurview = @{
+					# REQUIRED
+					tenantId = $someString
 				}
 			}
 		}

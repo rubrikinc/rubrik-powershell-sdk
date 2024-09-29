@@ -210,6 +210,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hits")]
         public Hits? Hits { get; set; }
 
+        //      C# -> List<MipLabel>? MipLabels
+        // GraphQL -> mipLabels: [MipLabel!]! (type)
+        [JsonProperty("mipLabels")]
+        public List<MipLabel>? MipLabels { get; set; }
+
         //      C# -> List<ActivityResult>? NumActivitiesBreakdown
         // GraphQL -> numActivitiesBreakdown: [ActivityResult!]! (type)
         [JsonProperty("numActivitiesBreakdown")]
@@ -303,6 +308,7 @@ namespace RubrikSecurityCloud.Types
         AnalyzerHits? AnalyzerRiskHits = null,
         Hits? FilesWithHits = null,
         Hits? Hits = null,
+        List<MipLabel>? MipLabels = null,
         List<ActivityResult>? NumActivitiesBreakdown = null,
         Hits? OpenAccessFiles = null,
         Hits? OpenAccessFilesWithHits = null,
@@ -427,6 +433,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Hits != null ) {
             this.Hits = Hits;
+        }
+        if ( MipLabels != null ) {
+            this.MipLabels = MipLabels;
         }
         if ( NumActivitiesBreakdown != null ) {
             this.NumActivitiesBreakdown = NumActivitiesBreakdown;
@@ -827,6 +836,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "hits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<MipLabel>? MipLabels
+        // GraphQL -> mipLabels: [MipLabel!]! (type)
+        if (this.MipLabels != null) {
+            var fspec = this.MipLabels.AsFieldSpec(conf.Child("mipLabels"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mipLabels" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1607,6 +1628,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Hits != null && ec.Excludes("hits",false))
         {
             this.Hits = null;
+        }
+        //      C# -> List<MipLabel>? MipLabels
+        // GraphQL -> mipLabels: [MipLabel!]! (type)
+        if (ec.Includes("mipLabels",false))
+        {
+            if(this.MipLabels == null) {
+
+                this.MipLabels = new List<MipLabel>();
+                this.MipLabels.ApplyExploratoryFieldSpec(ec.NewChild("mipLabels"));
+
+            } else {
+
+                this.MipLabels.ApplyExploratoryFieldSpec(ec.NewChild("mipLabels"));
+
+            }
+        }
+        else if (this.MipLabels != null && ec.Excludes("mipLabels",false))
+        {
+            this.MipLabels = null;
         }
         //      C# -> List<ActivityResult>? NumActivitiesBreakdown
         // GraphQL -> numActivitiesBreakdown: [ActivityResult!]! (type)

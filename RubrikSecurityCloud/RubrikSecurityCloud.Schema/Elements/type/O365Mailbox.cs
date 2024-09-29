@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region O365Mailbox
  
-    public class O365Mailbox: BaseType, HierarchyObject, HierarchySnappable, O365OrgDescendant, O365UserDescendant, O365UserDescendantMetadata, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class O365Mailbox: BaseType, HierarchyObject, HierarchySnappable, MicrosoftMailbox, O365OrgDescendant, O365UserDescendant, O365UserDescendantMetadata, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 

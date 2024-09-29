@@ -6,3 +6,4 @@ Azure instance types.
 - STANDARD_D16S_V5 - V5 Dense Node.
 - STANDARD_D8S_V5 - V5 Standard Node.
 - STANDARD_D32S_V5 - V5 Custom Node Type - STANDARD_D32S_V5.
+- STANDARD_E16S_V5 - V5 New Dense Node.

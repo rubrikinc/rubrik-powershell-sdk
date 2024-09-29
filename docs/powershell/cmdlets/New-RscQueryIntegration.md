@@ -12,5 +12,5 @@ List the integrations of the specified types.
     - integrationTypes - list of IntegrationTypes: List of integration types.
     - nameFilter - System.String: Optional filter for integration names.
     - integrationSortBy - IntegrationSortBy: Optional filter for sorting integrations.
-    - sortOrder - SortOrder: Sort order of result.
+    - sortOrder - SortOrder: Sorts the order of results.
 - Returns ListIntegrationsReply.

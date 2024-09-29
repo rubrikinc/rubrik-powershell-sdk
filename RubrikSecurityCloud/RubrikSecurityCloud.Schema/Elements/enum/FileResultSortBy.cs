@@ -18,8 +18,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER")]
         CLUSTER,
 
+        [EnumMember(Value = "CREATION_TIME")]
+        CREATION_TIME,
+
         [EnumMember(Value = "DAILY_CHANGE")]
         DAILY_CHANGE,
+
+        [EnumMember(Value = "DATA_CATEGORY")]
+        DATA_CATEGORY,
+
+        [EnumMember(Value = "DATA_TYPE")]
+        DATA_TYPE,
 
         [EnumMember(Value = "FILES_WITH_HITS")]
         FILES_WITH_HITS,
@@ -30,8 +39,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HITS")]
         HITS,
 
+        [EnumMember(Value = "HITS_BY_SENSITIVITY")]
+        HITS_BY_SENSITIVITY,
+
         [EnumMember(Value = "LAST_ACCESS_TIME")]
         LAST_ACCESS_TIME,
+
+        [EnumMember(Value = "LAST_MODIFIED")]
+        LAST_MODIFIED,
+
+        [EnumMember(Value = "LAST_SCAN_TIME")]
+        LAST_SCAN_TIME,
 
         [EnumMember(Value = "NAME")]
         NAME,
@@ -59,6 +77,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "STALE_FILES_WITH_HITS")]
         STALE_FILES_WITH_HITS,
+
+        [EnumMember(Value = "TOTAL_SENSITIVE_HITS")]
+        TOTAL_SENSITIVE_HITS,
 
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN

@@ -1,4 +1,6 @@
 ### FileResultSortBy
+Parameter for sorting file results.
+
 - HITS
 - NAME
 - DAILY_CHANGE
@@ -14,3 +16,10 @@
 - NUM_ACTIVITIES
 - NUM_ACTIVITIES_DELTA
 - NATIVE_PATH
+- HITS_BY_SENSITIVITY - Sort by number of hits by sensitivity.
+- LAST_MODIFIED - Sort by last modified time.
+- CREATION_TIME - Sort by creation time.
+- LAST_SCAN_TIME - Sort by last scan time.
+- DATA_CATEGORY - Sort by number of hits for a data category.
+- DATA_TYPE - Sort by number of hits for a data type.
+- TOTAL_SENSITIVE_HITS - Sort by total sensitive hits.
