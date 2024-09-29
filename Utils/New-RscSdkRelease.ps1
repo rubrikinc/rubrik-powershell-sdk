@@ -51,10 +51,10 @@ function RunIfNotDry {
 # Change to the root of the repository
 Set-Location $PSScriptRoot\..
 
-# bail out if not on the devel branch
-$currentBranch = git rev-parse --abbrev-ref HEAD
-if ($currentBranch -ne 'devel') {
-    throw "You are not on the 'devel' branch. Current branch is '$currentBranch'."
+# bail out if on the main branch
+$sourceBranch = git rev-parse --abbrev-ref HEAD
+if ($sourceBranch -eq 'main') {
+    throw "You are on the 'main' branch. Start from the source branch."
 }
 
 # Get the latest changelog entry
@@ -139,10 +139,12 @@ if ($script:NotDry) {
 
 # Prepare devel branch for further development
 RunIfNotDry {
-    git checkout devel
-    Set-Location $PSScriptRoot\..
-    .\Utils\New-RscSdkChangeLogEntry.ps1 -Commit
-    git push origin devel
+    git checkout $sourceBranch
+    if ($sourceBranch -eq 'devel') {
+        Set-Location $PSScriptRoot\..
+        .\Utils\New-RscSdkChangeLogEntry.ps1 -Commit
+        git push origin devel
+    }
 }
 
 Write-Host "Done." -ForegroundColor Green
