@@ -25,7 +25,8 @@ so it is effectively a dry run.
 #>
 param(
     [switch]$SkipBuild = $false,
-    [string]$CommitMessage = ""
+    [string]$CommitMessage = "",
+    [switch]$StayOnMain = $false
 )
 
 # Change to the root of the repository
@@ -77,7 +78,9 @@ if ($CommitMessage) {
     git push origin main
 }
 
-git checkout $sourceBranch
+if ( -not $StayOnMain ) {
+    git checkout $sourceBranch
+}
 
 Write-Host "Done." -ForegroundColor Green
 Write-Host "git status:"

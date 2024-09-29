@@ -123,7 +123,9 @@ $CommitMessage = ""
 RunIfNotDry {
     $script:CommitMessage = $versionEntry
 }
-.\Utils\Update-RscSdkMainBranch.ps1 -CommitMessage "$CommitMessage"
+
+# Passing an empty CommitMessage makes it a dry run
+.\Utils\Update-RscSdkMainBranch.ps1 -CommitMessage "$CommitMessage" -StayOnMain
 
 # Create a new GitHub release
 RunIfNotDry {
@@ -137,9 +139,10 @@ if ($script:NotDry) {
     .\Utils\Publish-RscSdk.ps1
 }
 
+git checkout $sourceBranch
+
 # Prepare devel branch for further development
 RunIfNotDry {
-    git checkout $sourceBranch
     if ($sourceBranch -eq 'devel') {
         Set-Location $PSScriptRoot\..
         .\Utils\New-RscSdkChangeLogEntry.ps1 -Commit
