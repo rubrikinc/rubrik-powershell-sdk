@@ -72,8 +72,7 @@ function New-RscSla
 
     # The retention lock mode for the intended SLA Domain update.
     [Parameter()]
-    [RubrikSecurityCloud.Types.RetentionLockMode]
-    $RetentionLockMode = [RubrikSecurityCloud.Types.RetentionLockMode]::NO_MODE,
+    [RubrikSecurityCloud.Types.RetentionLockMode]$RetentionLockMode,
 
     # Archival specs for this SLA.
     [Parameter()]
@@ -224,7 +223,7 @@ function New-RscSla
         if ($PostgresDbClusterConfig) {
             $objectSpecificConfig.PostgresDbClusterSlaConfigInput = $PostgresDbClusterConfig
         }
-        $mutation.Var.Input.ObjectSpecificConfigsInput = $objectSpecificConfig
+        $query.Var.Input.ObjectSpecificConfigsInput = $objectSpecificConfig
 
         $result = Invoke-Rsc -Query $query
         $result
