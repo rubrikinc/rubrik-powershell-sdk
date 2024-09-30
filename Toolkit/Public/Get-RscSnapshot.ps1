@@ -62,17 +62,131 @@ function Get-RscSnapshot {
     
     Process {
 
+        function snapshotById($snapshotQuery) {
+            try {
+                $result = Invoke-Rsc $snapshotQuery
+                return $result
+            }
+            catch {
+                return $null
+            }
+        }
         # The query is different for getting a single object by ID.
+        # getting an error with a specific snapshot? It's probably SPARK-20396.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery polarisSnapshot
-
-            $result = Invoke-Rsc -Query $query
+            Write-Verbose "Trying RSC snapshot query..."
+            $polarisSnapshotQuery = New-RscQuery -GqlQuery polarisSnapshot
+            $polarisSnapshotQuery.var.snapshotFid = $Id
+            $polarisSnapshotQuery.field.id = "FETCH"
+            $polarisSnapshotQuery.field.date = "1999-01-01"
+            $polarisSnapshotQuery.field.isCorrupted = $true
+            $polarisSnapshotQuery.field.isIndexed = $true
+            $polarisSnapshotQuery.field.isUnindexable = $true
+            $polarisSnapshotQuery.field.indexingAttempts = 1
+            $polarisSnapshotQuery.field.expirationDate = "1999-01-01"
+            $polarisSnapshotQuery.field.isOnDemandSnapshot = $true
+            $polarisSnapshotQuery.field.snappableId = "FETCH"
+            $polarisSnapshotQuery.field.isQuarantined = $true
+            $polarisSnapshotQuery.field.slaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
+            $polarisSnapshotQuery.field.slaDomain.name = "FETCH"
+            $polarisSnapshotQuery.field.slaDomain.id = "FETCH"
+            $polarisSnapshotQuery.field.isDownloadedSnapshot = $true
+            $polarisSnapshotQuery.field.expiryHint = $true
+            $polarisSnapshotQuery.field.isExpired = $true
+            $polarisSnapshotQuery.field.parentSnapshotId = "FETCH"
+            $polarisSnapshotQuery.field.isDeletedFromSource = $true
+            $polarisSnapshotQuery.field.isReplicated = $true
+            $polarisSnapshotQuery.field.isArchived = $true
+            $polarisSnapshotQuery.field.indexTime = "1999-01-01"
+            $polarisSnapshotQuery.field.unexpiredArchivedSnapshotCount = 1
+            $polarisSnapshotQuery.field.consistencyLevel = [RubrikSecurityCloud.Types.SnapshotConsistencyLevel]::SNAPSHOT_CRASH_CONSISTENT
+            $polarisSnapshotQuery.field.isReplica = $true
+            $polarisSnapshotQuery.field.isArchivalCopy = $true
+            #$polarisSnapshotQuery.field.replicationLocations = New-Object -TypeName RubrikSecurityCloud.Types.DataLocation
+            #$polarisSnapshotQuery.field.replicationLocations[0].name = "FETCH"
+            #$polarisSnapshotQuery.field.replicationLocations[0].id = "FETCH"
+            $polarisSnapshotQuery.field.hasUnexpiredReplica = $true
+            $polarisSnapshotQuery.field.hasUnexpiredArchivedCopy = $true
+            $result = snapshotById($polarisSnapshotQuery)
+            if ($null -ne $result) {
+                return $result
+            }
+            else {
+                Write-Verbose "Trying CDM snapshot query..."
+                $cdmSnapshotQuery = New-RscQuery -GqlQuery snapshot
+                $cdmSnapshotQuery.var.snapshotFid = $Id
+                $cdmSnapshotQuery.field.id = "FETCH"
+                $cdmSnapshotQuery.field.date = "1999-01-01"
+                $cdmSnapshotQuery.field.isCorrupted = $true
+                $cdmSnapshotQuery.field.isIndexed = $true
+                $cdmSnapshotQuery.field.isUnindexable = $true
+                $cdmSnapshotQuery.field.indexingAttempts = 1
+                $cdmSnapshotQuery.field.expirationDate = "1999-01-01"
+                $cdmSnapshotQuery.field.isOnDemandSnapshot = $true
+                $cdmSnapshotQuery.field.snappableId = "FETCH"
+                $cdmSnapshotQuery.field.isQuarantined = $true
+                $cdmSnapshotQuery.field.slaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
+                $cdmSnapshotQuery.field.slaDomain.name = "FETCH"
+                $cdmSnapshotQuery.field.slaDomain.id = "FETCH"
+                $cdmSnapshotQuery.field.isDownloadedSnapshot = $true
+                $cdmSnapshotQuery.field.expiryHint = $true
+                $cdmSnapshotQuery.field.isExpired = $true
+                $cdmSnapshotQuery.field.parentSnapshotId = "FETCH"
+                $cdmSnapshotQuery.field.isRetentionLocked = $true
+                $cdmSnapshotQuery.field.cdmid = "FETCH"
+                $cdmSnapshotQuery.field.cdmVersion = "FETCH"
+                $cdmSnapshotQuery.field.snapshotRetentionInfo = New-Object -TypeName RubrikSecurityCloud.Types.CdmSnapshotRetentionInfo
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.localInfo = New-Object -TypeName RubrikSecurityCloud.Types.CdmSnapshotLocationRetentionInfo
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.localInfo.name = "FETCH"
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.localInfo.isSnapshotPresent = $true
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.localInfo.isExpirationDateCalculated = $true
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.localInfo.expirationTime = "1999/01/01"
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.localInfo.snapshotFrequency = [RubrikSecurityCloud.Types.SnapshotFrequency]::NA
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.localInfo.isExpirationInformationUnavailable = $true
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.localInfo.locationId = "FETCH"
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.isCustomRetentionApplied = $true
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.archivalInfos = New-Object RubrikSecurityCloud.Types.CdmSnapshotLocationRetentionInfo
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.archivalInfos[0].name = "FETCH"
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.archivalInfos[0].isSnapshotPresent = $true
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.archivalInfos[0].isExpirationDateCalculated = $true
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.archivalInfos[0].expirationTime = "1999/01/01"
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.archivalInfos[0].snapshotFrequency = [RubrikSecurityCloud.Types.SnapshotFrequency]::NA
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.archivalInfos[0].isExpirationInformationUnavailable = $true
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.archivalInfos[0].locationId = "FETCH"
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.replicationInfos = New-Object RubrikSecurityCloud.Types.CdmSnapshotLocationRetentionInfo
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.replicationInfos[0].name = "FETCH"
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.replicationInfos[0].isSnapshotPresent = $true
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.replicationInfos[0].isExpirationDateCalculated = $true
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.replicationInfos[0].expirationTime = "1999/01/01"
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.replicationInfos[0].snapshotFrequency = [RubrikSecurityCloud.Types.SnapshotFrequency]::NA
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.replicationInfos[0].isExpirationInformationUnavailable = $true
+                $cdmSnapshotQuery.field.snapshotRetentionInfo.replicationInfos[0].locationId = "FETCH"
+                $cdmSnapshotQuery.field.isSapHanaIncrementalSnapshot = $true
+                $cdmSnapshotQuery.field.legalHoldInfo = New-Object -TypeName RubrikSecurityCloud.Types.LegalHoldInfo
+                $cdmSnapshotQuery.field.legalHoldInfo.shouldHoldInPlace = $true
+                $cdmSnapshotQuery.field.resourceSpec = "FETCH"
+                $cdmSnapshotQuery.field.cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+                $cdmSnapshotQuery.field.cluster.name = "FETCH"
+                $cdmSnapshotQuery.field.cluster.id = "FETCH"
+                $cdmSnapshotQuery.field.fileCount = 1
+                $cdmSnapshotQuery.field.isAnomaly = $true
+                $cdmSnapshotQuery.field.hasDelta = $true
+                $cdmSnapshotQuery.field.slaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
+                $cdmSnapshotQuery.field.slaDomain.name = "FETCH"
+                $cdmSnapshotQuery.field.slaDomain.id = "FETCH"
+                $cdmSnapshotQuery.field.consistencyLevel = [RubrikSecurityCloud.Types.SnapshotConsistencyLevel]::CRASH_CONSISTENT
+                $result = snapshotById($cdmSnapshotQuery)
+                if ($null -ne $result) {
+                    return $result
+                }
+            }
             $result
         }
         else {
             $query = New-RscQuery -GqlQuery snapshotOfASnappableConnection
 
-            # Most objects in the API return .id with the RSC FID, but snappableConnection returns .fid for the RSC FID, and .id is the CDM ID.
+            # This is for pipeline support from Get-RscWorkload. 
+            # Most objects in the API return .id with the RSC FID, but Get-RscWorkload(snappableConnection) returns .fid for the RSC FID, and .id is the CDM ID.
             if ($InputObject.fid) {
                 $query.var.workloadId = $InputObject.fid
             }
@@ -127,9 +241,9 @@ function Get-RscSnapshot {
             $query.field.nodes[$polarisSnapshot].consistencyLevel = [RubrikSecurityCloud.Types.SnapshotConsistencyLevel]::SNAPSHOT_CRASH_CONSISTENT
             $query.field.nodes[$polarisSnapshot].isReplica = $true
             $query.field.nodes[$polarisSnapshot].isArchivalCopy = $true
-            $query.field.nodes[$polarisSnapshot].replicationLocations = New-Object -TypeName RubrikSecurityCloud.Types.DataLocation
-            $query.field.nodes[$polarisSnapshot].replicationLocations[0].name = "FETCH"
-            $query.field.nodes[$polarisSnapshot].replicationLocations[0].id = "FETCH"
+            #$query.field.nodes[$polarisSnapshot].replicationLocations = New-Object -TypeName RubrikSecurityCloud.Types.DataLocation
+            #$query.field.nodes[$polarisSnapshot].replicationLocations[0].name = "FETCH"
+            #$query.field.nodes[$polarisSnapshot].replicationLocations[0].id = "FETCH"
             $query.field.nodes[$polarisSnapshot].hasUnexpiredReplica = $true
             $query.field.nodes[$polarisSnapshot].hasUnexpiredArchivedCopy = $true
 
@@ -178,9 +292,8 @@ function Get-RscSnapshot {
             $query.field.nodes[$cdmSnapshot].slaDomain.id = "FETCH"
             $query.field.nodes[$cdmSnapshot].consistencyLevel = [RubrikSecurityCloud.Types.SnapshotConsistencyLevel]::CRASH_CONSISTENT
 
+            $result = Invoke-Rsc -Query $query
+            $result.nodes
         }    
-
-        $result = Invoke-Rsc -Query $query
-        $result.nodes
     }
 } 
