@@ -177,7 +177,7 @@ function Set-RscSla
     -ClusterUuid '33eab10e-c0d8-459d-907c-b19c6958ef76'
     -RetentionDuration (New-RscSlaDuration -Duration 12 -Unit DAYS)
 
-    Set-RscSlaDomain -ID 'daa1807c-c766-4826-9ddb-fa3e87774a77' -Name $name
+    Set-RscSla -ID 'daa1807c-c766-4826-9ddb-fa3e87774a77' -Name $name
     -Description $description -ObjectTypes $objectTypes
     -HourlySchedule $hourlySchedule -WeeklySchedule $weeklySchedule
     -LocalRetentionLimit $slaDuration -ReplicationSpecs @($replicationSpec)
@@ -186,13 +186,16 @@ function Set-RscSla
     [CmdletBinding()]
     Param(
         # Global SLA ID
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
+        [Parameter(ParameterSetName="Id")]
         [String]$Id,
 
         # SLA Domain Name
         [Parameter()]
         [String]$Name,
+
+        # SLA Domain Object
+        [Parameter(ValueFromPipeline=$true)]
+        [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla,
 
         # SLA Domain Description
         [Parameter()]
@@ -340,8 +343,14 @@ function Set-RscSla
         if ($Name) {
             $mutation.Var.Input.Name = $Name
         }
+        else {
+            $mutation.Var.Input.Name = $Sla.Name
+        }
         if ($Description) {
             $mutation.Var.Input.Description = $Description
+        }
+        else {
+            $mutation.Var.Input.Description = $Sla.Description
         }
         if ($UserNote) {
             $mutation.Var.Input.UserNote = $UserNote
@@ -349,29 +358,53 @@ function Set-RscSla
         if ($ObjectTypes) {
             $mutation.Var.Input.ObjectTypes = $ObjectTypes
         }
+        else {
+            $mutation.Var.Input.ObjectTypes = $sla.ObjectTypes
+        }
 
         $mutation.Var.Input.SnapshotSchedule =
             New-Object -TypeName RubrikSecurityCloud.Types.GlobalSnapshotScheduleInput
         if ($MinuteSchedule) {
             $mutation.Var.Input.SnapshotSchedule.Minute = $MinuteSchedule
         }
+        else {
+            # Convert snapshot schedule to input
+        }
         if ($HourlySchedule) {
             $mutation.Var.Input.SnapshotSchedule.Hourly = $HourlySchedule
+        }
+        else {
+            # Convert snapshot schedule to input
         }
         if ($DailySchedule) {
             $mutation.Var.Input.SnapshotSchedule.Daily = $DailySchedule
         }
+        else {
+            # Convert snapshot schedule to input
+        }
         if ($WeeklySchedule) {
             $mutation.Var.Input.SnapshotSchedule.Weekly = $WeeklySchedule
+        }
+        else {
+            # Convert snapshot schedule to input
         }
         if ($MonthlySchedule) {
             $mutation.Var.Input.SnapshotSchedule.Monthly = $MonthlySchedule
         }
+        else {
+            # Convert snapshot schedule to input
+        }
         if ($QuarterlySchedule) {
             $mutation.Var.Input.SnapshotSchedule.Quarterly = $QuarterlySchedule
         }
+        else {
+            # Convert snapshot schedule to input
+        }
         if ($YearlySchedule) {
             $mutation.Var.Input.SnapshotSchedule.Yearly = $YearlySchedule
+        }
+        else {
+            # Convert snapshot schedule to input
         }
 
         if ($LocalRetentionLimit) {
