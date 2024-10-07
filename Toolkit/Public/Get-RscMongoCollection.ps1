@@ -1,11 +1,11 @@
 #Requires -Version 3
-function Get-RscOracleDatabase {
+function Get-RscMongoCollection {
     <#
     .SYNOPSIS
-    Retrieves RscOracleDatabase objects protected by Rubrik Security Cloud
+    Retrieves RscMongoCollection objects protected by Rubrik Security Cloud
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'oracleDatabases' to retrieve a list of VMs with a predetermined set of properties.
+    This cmdlet uses the GQL query 'mongoCollections' to retrieve a list of VMs with a predetermined set of properties.
 
     .LINK
     Schema reference:
@@ -13,15 +13,15 @@ function Get-RscOracleDatabase {
 
     .EXAMPLE
     # Get all
-    Get-RscOracleDatabase
+    Get-RscMongoCollection
 
     .EXAMPLE
     # Get object with specific name
-    Get-RscOracleDatabase -Name "jake-001"
+    Get-RscMongoCollection -Name "jake-001"
 
     .EXAMPLE
     # Get objects by specifying part of a name
-    Get-RscOracleDatabase -Name "*jake*"
+    Get-RscMongoCollection -Name "*jake*"
     #>
 
     [CmdletBinding(
@@ -34,12 +34,12 @@ function Get-RscOracleDatabase {
         )]
         [String]$Id,
         [Parameter(
+            Position = 0,
             Mandatory = $false,
             ParameterSetName = "Name"
         )]
         [String]$Name,
         [Parameter(
-            Position = 0,
             Mandatory = $false,
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
@@ -51,27 +51,32 @@ function Get-RscOracleDatabase {
             ParameterSetName = "Name"
         )]
         [RubrikSecurityCloud.Types.Cluster]$Cluster,
-
         [Parameter(
             Mandatory = $false,
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
         )]
-        [RubrikSecurityCloud.Types.OracleHost]$OracleHost
+        [RubrikSecurityCloud.Types.MongoDatabase]$MongoDatabase,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true,
+            ParameterSetName = "Name"
+        )]
+        [RubrikSecurityCloud.Types.MongoSource]$MongoSource
     )
     
     Process {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery oracleDatabase
+            $query = New-RscQuery -GqlQuery mongoCollection
             $query.var.filter = @()
             $query.Var.fid = $Id
 
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery oracleDatabases
+            $query = New-RscQuery -GqlQuery mongoCollections
             $query.var.filter = @()
 
             if ($Name) {
@@ -103,11 +108,18 @@ function Get-RscOracleDatabase {
                 $query.var.filter += $clusterFilter
             }
 
-            if ($OracleHost) {
-                $OracleHostFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-                $OracleHostFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::LOCATION
-                $OracleHostFilter.Texts = $OracleHost.Name
-                $query.var.filter += $OracleHostFilter
+            if ($MongoSource) {
+                $MongoSourceFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $MongoSourceFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::MONGO_SOURCE_ID
+                $MongoSourceFilter.Texts = $MongoSource.id
+                $query.var.filter += $MongoSourceFilter
+            }
+
+            if ($MongoDatabase) {
+                $MongoDatabaseFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $MongoDatabaseFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::MONGO_DATABASE_ID
+                $MongoDatabaseFilter.Texts = $MongoDatabase.id
+                $query.var.filter += $MongoDatabaseFilter
             }
 
             $result = Invoke-Rsc -Query $query
