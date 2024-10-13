@@ -48,6 +48,10 @@ catch {
     throw "Failed to checkout 'main' branch."
 }
 
+# CHANGELOG.md can be a source of conflict so we check it out manually
+git checkout $sourceBranch -- CHANGELOG.md
+# Same with RubrikSecurityCloud.psd1
+git checkout $sourceBranch -- RubrikSecurityCloud\RubrikSecurityCloud.PowerShell\RubrikSecurityCloud.psd1
 # Merge $sourceBranch into main without commit
 try {
     git merge $sourceBranch --no-commit --no-ff
