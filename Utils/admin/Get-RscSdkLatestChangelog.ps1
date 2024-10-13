@@ -20,7 +20,7 @@
 [CmdletBinding()]
 param()
 
-$changelogPath = Join-Path -Path $PSScriptRoot\.. -ChildPath "CHANGELOG.md"
+$changelogPath = Join-Path -Path $PSScriptRoot\..\.. -ChildPath "CHANGELOG.md"
 $changelogContent = Get-Content -Path $changelogPath -Raw
 
 # Normalize line endings

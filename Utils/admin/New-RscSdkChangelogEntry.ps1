@@ -10,7 +10,7 @@ param(
     [switch]$Commit = $false
 )
 
-$latestVersion = (.\Utils\Get-RscSdkLatestChangelog.ps1).latestVersion
+$latestVersion = (& "$PSScriptRoot\Get-RscSdkLatestChangelog.ps1").latestVersion
 
 if ($Version -eq $latestVersion) {
     Write-Host "Error: The new version $Version is the same as the latest version." -ForegroundColor Red
@@ -18,7 +18,7 @@ if ($Version -eq $latestVersion) {
 }
 
 $body = "`nNew Features:`n`nFixes:`n`nBreaking Changes:`n"
-$changelogPath = Join-Path -Path $PSScriptRoot\.. -ChildPath "CHANGELOG.md"
+$changelogPath = Join-Path -Path $PSScriptRoot\..\.. -ChildPath "CHANGELOG.md"
 $changelogContent = Get-Content -Path $changelogPath -Raw
 $changelogContent = $changelogContent -replace "`r`n", "`n"
 $changelogContent = $changelogContent -replace "(?<=# Changelog`n)", "`n## Version $Version`n$body"
@@ -26,5 +26,5 @@ Set-Content -Path $changelogPath -Value $changelogContent
 
 if ($Commit) {
     git add $changelogPath
-    git commit -m "Update changelog with new version entry"
+    git commit -m "Update changelog with new entry for version $Version"
 }

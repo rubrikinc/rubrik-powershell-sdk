@@ -66,8 +66,8 @@ if ( -Not $changelogLatest ) {
 $versionTag = $changelogLatest.latestVersionTag
 $versionEntry = $changelogLatest.latestVersionEntry
 
-# $versionTag must have the format "Version_<integer>.<integer>"
-if ($versionTag -notmatch "^Version_\d+\.\d+$") {
+# $versionTag must have the format "Version_<integer>.<integer>[<anything>]"
+if ($versionTag -notmatch "^Version_\d+\.\d+.*$") {
     throw "Latest version in ./CHANGELOG.md is invalid. It must have the format 'Version_<integer>.<integer>'."
 }
 

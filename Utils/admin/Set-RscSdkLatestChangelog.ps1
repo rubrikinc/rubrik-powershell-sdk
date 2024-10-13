@@ -17,8 +17,10 @@ param (
     [string]$Version
 )
 
+$SdkRoot = Join-Path -Path $PSScriptRoot -ChildPath '..\..' -Resolve
+
 # Path to CHANGELOG.md
-$changelogPath = Join-Path -Path $PSScriptRoot\.. -ChildPath "CHANGELOG.md"
+$changelogPath = "$SdkRoot\CHANGELOG.md"
 
 # Ensure the changelog file exists
 if (-not (Test-Path -Path $changelogPath)) {

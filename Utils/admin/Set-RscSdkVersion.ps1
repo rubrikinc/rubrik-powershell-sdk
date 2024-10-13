@@ -11,10 +11,12 @@ $ErrorActionPreference = "Stop"
 # Uncomment this to enable Write-Debug output
 # $DebugPreference = "Continue"
 
+$SdkRoot = Join-Path -Path $PSScriptRoot -ChildPath '..\..' -Resolve
+
 function updateModuleVersion {
 
     # Path to the PSD1 file
-    $moduleFile = "$PSScriptRoot\..\RubrikSecurityCloud\RubrikSecurityCloud.PowerShell\RubrikSecurityCloud.psd1"
+    $moduleFile = "$SdkRoot\RubrikSecurityCloud\RubrikSecurityCloud.PowerShell\RubrikSecurityCloud.psd1"
 
     # Read the existing psd1 file as text
     $psd1Content = Get-Content -Path $ModuleFile -Raw
@@ -31,7 +33,11 @@ function updateModuleVersion {
     Write-Host "Updated ModuleVersion to $NewVersion in $ModuleFile"
 }
 
-$mainSdkVersion = & "$PSScriptRoot\Test-RscSdkRelease.ps1"
+# Before updating the version, check if the new version is the same as the main
+# branch version.
+# Also, Test-RscSdkRelease will throw an error if the current release
+# is corrupted (e.g. the main branch's version is not what's on the gallery).
+$mainSdkVersion = & "$SdkRoot\Utils\Test-RscSdkRelease.ps1"
 
 if ($NewVersion -eq $mainSdkVersion -and -not $Force) {
     Write-Host "Error: The new version $NewVersion is the same as the main branch version." -ForegroundColor Red
