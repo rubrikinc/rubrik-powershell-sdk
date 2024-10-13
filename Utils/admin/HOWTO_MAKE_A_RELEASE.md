@@ -60,3 +60,23 @@ If everything looks good, run the script again with the `-NotDryRun` switch:
 ```powershell
 .\Utils\admin\New-RscSdkRelease.ps1 -NotDry
 ```
+
+## Troubleshoting
+
+```powershell
+Exception:
+Line |
+     | Remove-Item:
+     | ..\Utils\Clean-RscSdk.ps1:15 Line
+     | -Recurse -Force .\Output.Release -ErrorAction Stop
+     | Access to the path
+     | '..\Output.Release\...'
+     | is denied.
+```
+
+Part of the release process is to clean up build and output directories,
+if you're on Windows and you get this error, it's likely because you have
+a PowerShell session or an IDE that is using files that the script is
+trying to clean up. Other OSes handle this better, but on Windows you
+need to close your IDEs, your explorer windows, your PowerShell sessions,
+and start a new one and start over...
