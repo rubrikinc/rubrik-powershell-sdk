@@ -6,7 +6,7 @@ BeforeAll {
     . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
-Describe -Name 'Cluster' -Fixture {
+Describe -Name 'Cluster Tests' -Fixture {
     Context -Name 'New-RscQueryCluster' {
         It -Name '-Op List' -Test {
             $r = (New-RscQueryCluster -Op List -RemoveField Nodes).Invoke()

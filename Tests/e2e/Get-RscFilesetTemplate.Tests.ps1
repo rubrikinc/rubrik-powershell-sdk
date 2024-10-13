@@ -7,7 +7,7 @@ BeforeAll {
 }
 
 
-Describe -Name 'Get-RscFilesetTemplate' -Tag 'Public' -Fixture{
+Describe -Name 'Get-RscFilesetTemplate Tests' -Tag 'Public' -Fixture{
     Context -Name 'Parameter Validation' {
         It -Name 'Parameter Name can be $null' -Test {
             { Get-RscFilesetTemplate -OsType Windows -Name $null } |

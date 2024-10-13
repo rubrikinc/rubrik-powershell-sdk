@@ -1,7 +1,7 @@
 BeforeAll {
     . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
-Describe -Name "Connection Page Size Overrides" -Fixture {
+Describe -Name "Connection Page Size Override Tests" -Fixture {
     It -Name "Connection Page Size Overrides" -Test {
         # Retrieve the number of clusters
         $clusterCount = Get-RscCluster -Count

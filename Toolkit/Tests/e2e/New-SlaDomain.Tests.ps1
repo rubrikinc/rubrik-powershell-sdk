@@ -3,13 +3,13 @@
 Run tests around sla domains
 #>
 BeforeAll {
-  . "$PSScriptRoot\..\..\Utils\E2eTestInit.ps1"
+  . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
 # TODO: SPARK-234573 fix this test
 return
 
-Describe -Name 'New-SlaDomain' -Tag 'Public' -Fixture{
+Describe -Name 'New-SlaDomain Tests' -Tag 'Public' -Fixture{
     Context -Name 'Sla Creation' {
         It -Name 'Sla is created' -Test {
             $name="e2e-test-sla"

@@ -81,7 +81,7 @@ function Get-RscVmwareVm {
             $query.Field.GuestOsName = "TACOS"
             $query.Field.AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
             $query.Field.AgentStatus.AgentStatusField = New-Object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
-            $query.Field.snapshotConsistencyMandate = New-Object -TypeName [RubrikSecurityCloud.Types.ConsistencyLevelEnum]::CRASH_CONSISTENT
+            $query.Field.snapshotConsistencyMandate = [RubrikSecurityCloud.Types.ConsistencyLevelEnum]::CRASH_CONSISTENT
             $result = Invoke-Rsc -Query $query
             $result
         } else {
