@@ -69,7 +69,7 @@ try {
     }
 }
 catch {
-    throw "Failed to build the SDK."
+    throw "Failed to build the SDK: $($_ | Out-String)"
 }
 
 
