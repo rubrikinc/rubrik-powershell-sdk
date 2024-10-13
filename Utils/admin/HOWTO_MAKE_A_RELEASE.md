@@ -38,7 +38,9 @@ branch with the updated version:
 .\Utils\admin\Set-RscSdkVersion.ps1 <maj>.<min>
 ```
 
-Then run `Test-RscSdkCandidate.ps1` again to verify, and:
+Then run `Test-RscSdkCandidate.ps1` again to verify.
+
+Verify also that the latest entry in `CHANGELOG.md` is correct.
 
 ```powershell
 git commit -a -m "Bump version to <maj>.<min>"
