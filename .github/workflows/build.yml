@@ -1,18 +1,18 @@
 name: Build SDK
 
 on:
-  push:
-    branches: [ "main", "devel" ]
-  pull_request:
-    branches: [ "main", "devel" ]
-  pull_request_target:
-    branches: [ "main", "devel" ]
+  # push:
+  #   branches: [ "main", "devel" ]
+  # pull_request:
+  #   branches: [ "main", "devel" ]
+  # pull_request_target:
+  #   branches: [ "main", "devel" ]
   workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to build'
-        required: true
-        default: 'main'
+    # inputs:
+    #   branch:
+    #     description: 'Branch to build'
+    #     required: true
+    #     default: 'main'
 
 jobs:
   build:
