@@ -37,6 +37,11 @@ if ($versionTag -notmatch "^Version_\d+\.\d+.*$") {
 # Check if the version tag matches the module version
 $psd1SemanticVersion = (& "$SdkRoot\Utils\Get-RscSdkVersion.ps1")
 
+Write-Host "Version in RubrikSecurityCloud.psd1: " -NoNewline
+Write-Host $psd1SemanticVersion -ForegroundColor Cyan
+Write-Host "Version in CHANGELOG.md:             " -NoNewLine
+Write-Host $changelogSemanticVersion -ForegroundColor Cyan
+
 if ( $changelogSemanticVersion -ne $psd1SemanticVersion ) {
     Write-Host @"
 
@@ -64,22 +69,24 @@ $psd1SemanticVersion
     throw "Version mismatch. CHANGELOG: $changelogSemanticVersion, psd1: $psd1SemanticVersion."
 }
 
-Write-Host "Latest version tag: " -NoNewline
-Write-Host $versionTag -ForegroundColor Cyan
-Write-Host "Latest version entry:"
-Write-Host $versionEntry -ForegroundColor Cyan
 
 # Make sure this version tag is not already published:
 $existingTag = gh release list --json tagName --jq ".[] | select(.tagName == `"$versionTag`")"
 if ($null -ne $existingTag) {
     $existingTag = $existingTag.Trim()
 }
-if ( -not [string]::IsNullOrEmpty($existingTag)) {
+$isPublished = -not [string]::IsNullOrEmpty($existingTag)
+Write-Host "Published on GitHub repo:            " -NoNewline
+Write-Host $isPublished -ForegroundColor Cyan
+if ( $isPublished ) {
     throw "Version tag $versionTag already exists in the GitHub repository."
 }
 
+Write-Host "`nThis branch is a candidate for a release." -ForegroundColor Green
+
 [PSCustomObject]@{
+    semanticVersion = $psd1SemanticVersion
+    isPublished = $isPublished
     versionTag = $versionTag
     versionEntry = $versionEntry
-    semanticVersion = $psd1SemanticVersion
 }

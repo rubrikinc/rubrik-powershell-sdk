@@ -23,28 +23,52 @@ branch is what's on GitHub and also what's on the PowerShell gallery.
 
 The release candidate is the `devel` branch.
 
-We want to make sure the package version is newer than what is currently
-released, and that it matches the latest entry in `CHANGELOG.md`.
+#### 2.1. Curate the changelog
 
-```powershell
-.\Utils\admin\Test-RscSdkCandidate.ps1
+The top entry in `CHANGELOG.md` should say `TBD` :
+
+```markdown
+# Changelog
+
+## Version TBD
+
+... changes ...
 ```
 
-If the version is not set on the package, or if it is not the same as the
-latest entry in `CHANGELOG.md`, you need to push a new commit to the `devel`
-branch with the updated version:
+At this point leave the "TBD" as is, we will update it later. Make sure
+the content of the last entry is correct. In particular, make sure PR
+links are included and that the PRs are closed.
+
+#### 2.2. bump the version
 
 ```powershell
 .\Utils\admin\Set-RscSdkVersion.ps1 <maj>.<min>
 ```
 
-Then run `Test-RscSdkCandidate.ps1` again to verify.
-
-Verify also that the latest entry in `CHANGELOG.md` is correct.
+and push it to the branch:
 
 ```powershell
 git commit -a -m "Bump version to <maj>.<min>"
 git push
+```
+
+#### 2.3. Test the release candidate
+
+We're not running SDK tests here, we are only testing if the package
+is well formed.
+
+```powershell
+PS > .\Utils\admin\Test-RscSdkCandidate.ps1
+
+version in RubrikSecurityCloud.psd1: 1.11
+version in CHANGELOG.md:             1.11
+Published on GitHub repo:            False
+
+This branch is a candidate for a release.
+
+semanticVersion isPublished versionTag   versionEntry
+--------------- ----------- ----------   ------------
+1.11                  False Version_1.11 Version 1.11…
 ```
 
 ### 3. Create a new release
