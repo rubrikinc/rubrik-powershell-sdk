@@ -83,6 +83,11 @@ if ($script:NotDry) {
     .\Utils\admin\Publish-RscSdk.ps1
 }
 
+# Clean up published artifacts
+Remove-Item -Recurse .\Output.Publish\ -Force -ErrorAction SilentlyContinue
+git restore .
+
+# Pop back
 git checkout $sourceBranch
 
 # Prepare devel branch for further development
@@ -94,6 +99,9 @@ RunIfNotDry {
     }
 }
 
-Write-Host "Done." -ForegroundColor Green
-Write-Host "git status:"
-git status
+if ($script:NotDry) {
+    $DoneMessage = "GitHub Release $versionTag created and published to the PowerShell Gallery."
+} else {
+    $DoneMessage = "Dry run completed. Local changes were not pushed to the remote repository."
+}
+Write-Host $DoneMessage -ForegroundColor Green

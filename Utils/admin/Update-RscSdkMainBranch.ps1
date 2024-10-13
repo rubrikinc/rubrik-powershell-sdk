@@ -69,6 +69,8 @@ try {
     }
 }
 catch {
+    git reset --hard HEAD
+    git checkout $sourceBranch
     throw "Failed to build the SDK: $($_ | Out-String)"
 }
 

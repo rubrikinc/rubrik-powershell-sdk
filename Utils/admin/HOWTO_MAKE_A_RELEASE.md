@@ -23,40 +23,85 @@ branch is what's on GitHub and also what's on the PowerShell gallery.
 
 The release candidate is the `devel` branch.
 
-We want to make sure the package version is newer than what is currently
-released, and that it matches the latest entry in `CHANGELOG.md`.
+#### 2.1. Curate the changelog
 
-```powershell
-.\Utils\admin\Test-RscSdkCandidate.ps1
+The top entry in `CHANGELOG.md` should say `TBD` :
+
+```markdown
+# Changelog
+
+## Version TBD
+
+... changes ...
 ```
 
-If the version is not set on the package, or if it is not the same as the
-latest entry in `CHANGELOG.md`, you need push a new commit to the `devel`
-branch with the updated version:
+At this point leave the "TBD" as is, we will update it later. Make sure
+the content of the last entry is correct. In particular, make sure PR
+links are included and that the PRs are closed.
+
+#### 2.2. bump the version
 
 ```powershell
 .\Utils\admin\Set-RscSdkVersion.ps1 <maj>.<min>
 ```
 
-Then run `Test-RscSdkCandidate.ps1` again to verify.
-
-Verify also that the latest entry in `CHANGELOG.md` is correct.
+and push it to the branch:
 
 ```powershell
 git commit -a -m "Bump version to <maj>.<min>"
 git push
 ```
 
-### 3. Create a new release
+#### 2.3. Test the release candidate
 
-First do a dry run to see what will be released:
+We're not running SDK tests here, we are only testing if the package
+is well formed.
 
 ```powershell
-.\Utils\admin\New-RscSdkRelease.ps1
+PS > .\Utils\admin\Test-RscSdkCandidate.ps1
+
+version in RubrikSecurityCloud.psd1: 1.11
+version in CHANGELOG.md:             1.11
+Published on GitHub repo:            False
+
+This branch is a candidate for a release.
+
+semanticVersion isPublished versionTag   versionEntry
+--------------- ----------- ----------   ------------
+1.11                  False Version_1.11 Version 1.11…
 ```
 
-If everything looks good, run the script again with the `-NotDryRun` switch:
+### 3. Create a new release
+
+We first do a dry run to see if any error occurs during build, tests, packaging,
+and commiting to the `main` branch.
+
+```powershell
+PS> .\Utils\admin\New-RscSdkRelease.ps1
+...
+Dry run completed. Local changes were not pushed to the remote repository.
+```
+
+If no error occured, run the script again with the `-NotDry` switch:
 
 ```powershell
 .\Utils\admin\New-RscSdkRelease.ps1 -NotDry
 ```
+
+## Troubleshoting
+
+```powershell
+Exception:
+Line |
+     | Remove-Item:
+     | ..\Utils\Clean-RscSdk.ps1:15 Line
+     | -Recurse -Force .\Output.Release -ErrorAction Stop
+     | Access to the path
+     | '..\Output.Release\...'
+     | is denied.
+```
+
+Part of the release process is to clean up build and output directories,
+if you're on Windows and you get this error, it's likely because you have
+a PowerShell session or an IDE holding files that the script is
+trying to clean up. Close everything and start a new `pwsh.exe` session.
