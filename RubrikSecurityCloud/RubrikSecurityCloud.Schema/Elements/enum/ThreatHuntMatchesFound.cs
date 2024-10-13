@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NO_MATCHES")]
         NO_MATCHES,
 
+        [EnumMember(Value = "UNSCANNED")]
+        UNSCANNED,
+
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN
 

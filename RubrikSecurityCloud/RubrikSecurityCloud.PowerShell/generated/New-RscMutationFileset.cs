@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 6
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Fileset' API domain:
-    /// BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkUpdateTemplate, or RecoverFiles.
+    /// BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkUpdateTemplate, RecoverFiles, or Update.
     /// </summary>
     /// <description>
     /// New-RscMutationFileset creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 6 operations
+    /// There are 7 operations
     /// in the 'Fileset' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkUpdateTemplate, or RecoverFiles.
+    /// one of: BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkUpdateTemplate, RecoverFiles, or Update.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -434,6 +434,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the Update operation
+    /// of the 'Fileset' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Fileset
+    /// # API Operation: Update
+    /// 
+    /// $query = New-RscMutationFileset -Update
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	filesetUpdateProperties = @{
+    /// 		# OPTIONAL
+    /// 		configuredSlaDomainId = $someString
+    /// 		# OPTIONAL
+    /// 		forceFull = $someBoolean
+    /// 		# OPTIONAL
+    /// 		forceFullPartitionIds = @(
+    /// 			$someInt
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		snapMirrorLabelForFullBackup = $someString
+    /// 		# OPTIONAL
+    /// 		snapMirrorLabelForIncrementalBackup = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: FilesetDetail
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -456,6 +502,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "BulkDeleteTemplate",
                 "BulkUpdateTemplate",
                 "RecoverFiles",
+                "Update",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -488,6 +535,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RecoverFiles":
                         this.ProcessRecord_RecoverFiles();
+                        break;
+                    case "Update":
+                        this.ProcessRecord_Update();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -551,6 +601,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RecoverFiles";
             // Create new graphql operation filesetRecoverFiles
             InitMutationFilesetRecoverFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateFileset.
+        internal void ProcessRecord_Update()
+        {
+            this._logger.name += " -Update";
+            // Create new graphql operation updateFileset
+            InitMutationUpdateFileset();
         }
 
 
@@ -860,6 +919,44 @@ $query.Var.input = @{
 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
 	# REQUIRED
 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateFileset(input: UpdateFilesetInput!): FilesetDetail!
+        internal void InitMutationUpdateFileset()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateFilesetInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateFileset",
+                "($input: UpdateFilesetInput!)",
+                "FilesetDetail",
+                Mutation.UpdateFileset,
+                Mutation.UpdateFilesetFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	filesetUpdateProperties = @{
+		# OPTIONAL
+		configuredSlaDomainId = $someString
+		# OPTIONAL
+		forceFull = $someBoolean
+		# OPTIONAL
+		forceFullPartitionIds = @(
+			$someInt
+		)
+		# OPTIONAL
+		snapMirrorLabelForFullBackup = $someString
+		# OPTIONAL
+		snapMirrorLabelForIncrementalBackup = $someString
+	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }

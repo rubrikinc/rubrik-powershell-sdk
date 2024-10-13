@@ -29,6 +29,8 @@
   - SAP HANA specific metadata for the snapshot.
 - db2AppMetadata: Db2AppMetadata
   - Db2 specific metadata for the snapshot.
+- mongoSourceAppMetadata: MongoSourceAppMetadata
+  - Mongo source specific metadata for the snapshot.
 - vmwareAppMetadata: VmwareAppMetadata
   - VMware specific metadata for the snapshot.
 - managedVolumeAppMetadata: ManagedVolumeAppMetadata

@@ -20,10 +20,20 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        [JsonProperty("retentionLockMode")]
+        public RetentionLockMode? RetentionLockMode { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsRetentionLockedSla
+        // GraphQL -> isRetentionLockedSla: Boolean! (scalar)
+        [JsonProperty("isRetentionLockedSla")]
+        public System.Boolean? IsRetentionLockedSla { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -40,12 +50,20 @@ namespace RubrikSecurityCloud.Types
     }
 
     public TagRuleEffectiveSla Set(
+        RetentionLockMode? RetentionLockMode = null,
         System.String? Id = null,
+        System.Boolean? IsRetentionLockedSla = null,
         System.String? Name = null
     ) 
     {
+        if ( RetentionLockMode != null ) {
+            this.RetentionLockMode = RetentionLockMode;
+        }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsRetentionLockedSla != null ) {
+            this.IsRetentionLockedSla = IsRetentionLockedSla;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -64,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        if (this.RetentionLockMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "retentionLockMode\n" ;
+            } else {
+                s += ind + "retentionLockMode\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -71,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsRetentionLockedSla
+        // GraphQL -> isRetentionLockedSla: Boolean! (scalar)
+        if (this.IsRetentionLockedSla != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isRetentionLockedSla\n" ;
+            } else {
+                s += ind + "isRetentionLockedSla\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -89,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        if (ec.Includes("retentionLockMode",true))
+        {
+            if(this.RetentionLockMode == null) {
+
+                this.RetentionLockMode = new RetentionLockMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RetentionLockMode != null && ec.Excludes("retentionLockMode",true))
+        {
+            this.RetentionLockMode = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (ec.Includes("id",true))
@@ -105,6 +158,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsRetentionLockedSla
+        // GraphQL -> isRetentionLockedSla: Boolean! (scalar)
+        if (ec.Includes("isRetentionLockedSla",true))
+        {
+            if(this.IsRetentionLockedSla == null) {
+
+                this.IsRetentionLockedSla = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRetentionLockedSla != null && ec.Excludes("isRetentionLockedSla",true))
+        {
+            this.IsRetentionLockedSla = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

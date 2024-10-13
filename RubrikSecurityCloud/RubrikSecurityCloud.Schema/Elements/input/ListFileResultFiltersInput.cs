@@ -84,6 +84,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mipLabelsFilter")]
         public List<MipLabelsFilterInput>? MipLabelsFilter { get; set; }
 
+        //      C# -> System.String? ViolationId
+        // GraphQL -> violationId: String (scalar)
+        [JsonProperty("violationId")]
+        public System.String? ViolationId { get; set; }
+
+        //      C# -> List<OpenAccessType>? ExposureFilter
+        // GraphQL -> exposureFilter: [OpenAccessType!] (enum)
+        [JsonProperty("exposureFilter")]
+        public List<OpenAccessType>? ExposureFilter { get; set; }
+
         //      C# -> FileCountType? FileType
         // GraphQL -> fileType: FileCountType! (enum)
         [Required]

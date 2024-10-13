@@ -143,6 +143,9 @@ All supported managed objects.
 - M365_BACKUP_STORAGE_GROUP - M365 Backup Storage Group.
 - MYSQLDB_INSTANCE - MySQL Instance.
 - MYSQLDB_DATABASE - MySQL Database.
+- CLOUD_DIRECT_NAS_SYSTEM
+- CLOUD_DIRECT_NAS_NAMESPACE
+- CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS share replaces CLOUD_DIRECT_NAS_EXPORT.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
  NB: ideally we should use 0, but we missed it.

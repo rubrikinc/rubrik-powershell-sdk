@@ -54,3 +54,5 @@ TODO: SPARK-150447 - Deprecate this enum to use managed object type
 - AWS_NATIVE_RDS_INSTANCE - Represents AWS RDS Instance.
 - AWS_NATIVE_EC2_INSTANCE - Represents AWS EC2 Instance.
 - AZURE_NATIVE_STORAGE_ACCOUNT - Represents an Azure Native Storage Account.
+- AZURE_NATIVE_SQL_DATABASE_DB - Represents an Azure SQL Database DB.
+- AZURE_NATIVE_SQL_MANAGED_INSTANCE_DB - Represents an Azure SQL Managed Instance DB.

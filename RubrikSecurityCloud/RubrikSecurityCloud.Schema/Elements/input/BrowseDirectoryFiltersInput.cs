@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastScanFilter")]
         public UserTimeRangeInput? LastScanFilter { get; set; }
 
+        //      C# -> List<OpenAccessType>? ExposureFilter
+        // GraphQL -> exposureFilter: [OpenAccessType!] (enum)
+        [JsonProperty("exposureFilter")]
+        public List<OpenAccessType>? ExposureFilter { get; set; }
+
 
         #endregion
 

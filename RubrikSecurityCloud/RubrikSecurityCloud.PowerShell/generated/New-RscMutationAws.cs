@@ -256,6 +256,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	accessKey = $someString
     /// 	# REQUIRED
     /// 	secretKey = $someString
+    /// 	# OPTIONAL
+    /// 	stsEndpoint = $someString
+    /// 	# OPTIONAL
+    /// 	stsRegion = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1496,6 +1500,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	accessKey = $someString
     /// 	# REQUIRED
     /// 	secretKey = $someString
+    /// 	# OPTIONAL
+    /// 	stsEndpoint = $someString
+    /// 	# OPTIONAL
+    /// 	stsRegion = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2100,6 +2108,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	outpostAwsNativeId = $someString
+    /// 	# OPTIONAL
+    /// 	orgId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2815,6 +2825,10 @@ $query.Var.input = @{
 	accessKey = $someString
 	# REQUIRED
 	secretKey = $someString
+	# OPTIONAL
+	stsEndpoint = $someString
+	# OPTIONAL
+	stsRegion = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
 }"
             );
         }
@@ -3895,6 +3909,10 @@ $query.Var.input = @{
 	accessKey = $someString
 	# REQUIRED
 	secretKey = $someString
+	# OPTIONAL
+	stsEndpoint = $someString
+	# OPTIONAL
+	stsRegion = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
 }"
             );
         }
@@ -4411,6 +4429,8 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	outpostAwsNativeId = $someString
+	# OPTIONAL
+	orgId = $someString
 }"
             );
         }

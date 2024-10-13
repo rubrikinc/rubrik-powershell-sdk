@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT_ROOT")]
         CLOUD_DIRECT_NAS_EXPORT_ROOT,
 
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_ROOT")]
+        CLOUD_DIRECT_NAS_ROOT,
+
         [EnumMember(Value = "CLOUD_NATIVE_TAG_RULE_ROOT")]
         CLOUD_NATIVE_TAG_RULE_ROOT,
 

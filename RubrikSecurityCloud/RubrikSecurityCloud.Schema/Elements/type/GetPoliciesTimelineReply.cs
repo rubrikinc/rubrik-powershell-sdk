@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("highRiskObjects")]
         public List<TimelineEntry>? HighRiskObjects { get; set; }
 
+        //      C# -> List<TimelineEntry>? HighSensitivityHits
+        // GraphQL -> highSensitivityHits: [TimelineEntry!]! (type)
+        [JsonProperty("highSensitivityHits")]
+        public List<TimelineEntry>? HighSensitivityHits { get; set; }
+
         //      C# -> List<TimelineCountEntry>? InitialAnalysisStatus
         // GraphQL -> initialAnalysisStatus: [TimelineCountEntry!]! (type)
         [JsonProperty("initialAnalysisStatus")]
@@ -35,15 +40,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lowRiskObjects")]
         public List<TimelineEntry>? LowRiskObjects { get; set; }
 
+        //      C# -> List<TimelineEntry>? LowSensitivityHits
+        // GraphQL -> lowSensitivityHits: [TimelineEntry!]! (type)
+        [JsonProperty("lowSensitivityHits")]
+        public List<TimelineEntry>? LowSensitivityHits { get; set; }
+
         //      C# -> List<TimelineEntry>? MediumRiskObjects
         // GraphQL -> mediumRiskObjects: [TimelineEntry!]! (type)
         [JsonProperty("mediumRiskObjects")]
         public List<TimelineEntry>? MediumRiskObjects { get; set; }
 
+        //      C# -> List<TimelineEntry>? MediumSensitivityHits
+        // GraphQL -> mediumSensitivityHits: [TimelineEntry!]! (type)
+        [JsonProperty("mediumSensitivityHits")]
+        public List<TimelineEntry>? MediumSensitivityHits { get; set; }
+
         //      C# -> List<TimelineEntry>? NoRiskObjects
         // GraphQL -> noRiskObjects: [TimelineEntry!]! (type)
         [JsonProperty("noRiskObjects")]
         public List<TimelineEntry>? NoRiskObjects { get; set; }
+
+        //      C# -> List<TimelineEntry>? NonSensitivityHits
+        // GraphQL -> nonSensitivityHits: [TimelineEntry!]! (type)
+        [JsonProperty("nonSensitivityHits")]
+        public List<TimelineEntry>? NonSensitivityHits { get; set; }
 
         //      C# -> List<TimelineCountEntry>? OutOfDateStatus
         // GraphQL -> outOfDateStatus: [TimelineCountEntry!]! (type)
@@ -126,10 +146,14 @@ namespace RubrikSecurityCloud.Types
 
     public GetPoliciesTimelineReply Set(
         List<TimelineEntry>? HighRiskObjects = null,
+        List<TimelineEntry>? HighSensitivityHits = null,
         List<TimelineCountEntry>? InitialAnalysisStatus = null,
         List<TimelineEntry>? LowRiskObjects = null,
+        List<TimelineEntry>? LowSensitivityHits = null,
         List<TimelineEntry>? MediumRiskObjects = null,
+        List<TimelineEntry>? MediumSensitivityHits = null,
         List<TimelineEntry>? NoRiskObjects = null,
+        List<TimelineEntry>? NonSensitivityHits = null,
         List<TimelineCountEntry>? OutOfDateStatus = null,
         List<TimelineEntry>? PolicyFilesHitsEntries = null,
         List<TimelineEntry>? PolicyHitsEntries = null,
@@ -149,17 +173,29 @@ namespace RubrikSecurityCloud.Types
         if ( HighRiskObjects != null ) {
             this.HighRiskObjects = HighRiskObjects;
         }
+        if ( HighSensitivityHits != null ) {
+            this.HighSensitivityHits = HighSensitivityHits;
+        }
         if ( InitialAnalysisStatus != null ) {
             this.InitialAnalysisStatus = InitialAnalysisStatus;
         }
         if ( LowRiskObjects != null ) {
             this.LowRiskObjects = LowRiskObjects;
         }
+        if ( LowSensitivityHits != null ) {
+            this.LowSensitivityHits = LowSensitivityHits;
+        }
         if ( MediumRiskObjects != null ) {
             this.MediumRiskObjects = MediumRiskObjects;
         }
+        if ( MediumSensitivityHits != null ) {
+            this.MediumSensitivityHits = MediumSensitivityHits;
+        }
         if ( NoRiskObjects != null ) {
             this.NoRiskObjects = NoRiskObjects;
+        }
+        if ( NonSensitivityHits != null ) {
+            this.NonSensitivityHits = NonSensitivityHits;
         }
         if ( OutOfDateStatus != null ) {
             this.OutOfDateStatus = OutOfDateStatus;
@@ -229,6 +265,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<TimelineEntry>? HighSensitivityHits
+        // GraphQL -> highSensitivityHits: [TimelineEntry!]! (type)
+        if (this.HighSensitivityHits != null) {
+            var fspec = this.HighSensitivityHits.AsFieldSpec(conf.Child("highSensitivityHits"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "highSensitivityHits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<TimelineCountEntry>? InitialAnalysisStatus
         // GraphQL -> initialAnalysisStatus: [TimelineCountEntry!]! (type)
         if (this.InitialAnalysisStatus != null) {
@@ -253,6 +301,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<TimelineEntry>? LowSensitivityHits
+        // GraphQL -> lowSensitivityHits: [TimelineEntry!]! (type)
+        if (this.LowSensitivityHits != null) {
+            var fspec = this.LowSensitivityHits.AsFieldSpec(conf.Child("lowSensitivityHits"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lowSensitivityHits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<TimelineEntry>? MediumRiskObjects
         // GraphQL -> mediumRiskObjects: [TimelineEntry!]! (type)
         if (this.MediumRiskObjects != null) {
@@ -265,6 +325,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<TimelineEntry>? MediumSensitivityHits
+        // GraphQL -> mediumSensitivityHits: [TimelineEntry!]! (type)
+        if (this.MediumSensitivityHits != null) {
+            var fspec = this.MediumSensitivityHits.AsFieldSpec(conf.Child("mediumSensitivityHits"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mediumSensitivityHits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<TimelineEntry>? NoRiskObjects
         // GraphQL -> noRiskObjects: [TimelineEntry!]! (type)
         if (this.NoRiskObjects != null) {
@@ -274,6 +346,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "noRiskObjects" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<TimelineEntry>? NonSensitivityHits
+        // GraphQL -> nonSensitivityHits: [TimelineEntry!]! (type)
+        if (this.NonSensitivityHits != null) {
+            var fspec = this.NonSensitivityHits.AsFieldSpec(conf.Child("nonSensitivityHits"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nonSensitivityHits" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -471,6 +555,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.HighRiskObjects = null;
         }
+        //      C# -> List<TimelineEntry>? HighSensitivityHits
+        // GraphQL -> highSensitivityHits: [TimelineEntry!]! (type)
+        if (ec.Includes("highSensitivityHits",false))
+        {
+            if(this.HighSensitivityHits == null) {
+
+                this.HighSensitivityHits = new List<TimelineEntry>();
+                this.HighSensitivityHits.ApplyExploratoryFieldSpec(ec.NewChild("highSensitivityHits"));
+
+            } else {
+
+                this.HighSensitivityHits.ApplyExploratoryFieldSpec(ec.NewChild("highSensitivityHits"));
+
+            }
+        }
+        else if (this.HighSensitivityHits != null && ec.Excludes("highSensitivityHits",false))
+        {
+            this.HighSensitivityHits = null;
+        }
         //      C# -> List<TimelineCountEntry>? InitialAnalysisStatus
         // GraphQL -> initialAnalysisStatus: [TimelineCountEntry!]! (type)
         if (ec.Includes("initialAnalysisStatus",false))
@@ -509,6 +612,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.LowRiskObjects = null;
         }
+        //      C# -> List<TimelineEntry>? LowSensitivityHits
+        // GraphQL -> lowSensitivityHits: [TimelineEntry!]! (type)
+        if (ec.Includes("lowSensitivityHits",false))
+        {
+            if(this.LowSensitivityHits == null) {
+
+                this.LowSensitivityHits = new List<TimelineEntry>();
+                this.LowSensitivityHits.ApplyExploratoryFieldSpec(ec.NewChild("lowSensitivityHits"));
+
+            } else {
+
+                this.LowSensitivityHits.ApplyExploratoryFieldSpec(ec.NewChild("lowSensitivityHits"));
+
+            }
+        }
+        else if (this.LowSensitivityHits != null && ec.Excludes("lowSensitivityHits",false))
+        {
+            this.LowSensitivityHits = null;
+        }
         //      C# -> List<TimelineEntry>? MediumRiskObjects
         // GraphQL -> mediumRiskObjects: [TimelineEntry!]! (type)
         if (ec.Includes("mediumRiskObjects",false))
@@ -528,6 +650,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.MediumRiskObjects = null;
         }
+        //      C# -> List<TimelineEntry>? MediumSensitivityHits
+        // GraphQL -> mediumSensitivityHits: [TimelineEntry!]! (type)
+        if (ec.Includes("mediumSensitivityHits",false))
+        {
+            if(this.MediumSensitivityHits == null) {
+
+                this.MediumSensitivityHits = new List<TimelineEntry>();
+                this.MediumSensitivityHits.ApplyExploratoryFieldSpec(ec.NewChild("mediumSensitivityHits"));
+
+            } else {
+
+                this.MediumSensitivityHits.ApplyExploratoryFieldSpec(ec.NewChild("mediumSensitivityHits"));
+
+            }
+        }
+        else if (this.MediumSensitivityHits != null && ec.Excludes("mediumSensitivityHits",false))
+        {
+            this.MediumSensitivityHits = null;
+        }
         //      C# -> List<TimelineEntry>? NoRiskObjects
         // GraphQL -> noRiskObjects: [TimelineEntry!]! (type)
         if (ec.Includes("noRiskObjects",false))
@@ -546,6 +687,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NoRiskObjects != null && ec.Excludes("noRiskObjects",false))
         {
             this.NoRiskObjects = null;
+        }
+        //      C# -> List<TimelineEntry>? NonSensitivityHits
+        // GraphQL -> nonSensitivityHits: [TimelineEntry!]! (type)
+        if (ec.Includes("nonSensitivityHits",false))
+        {
+            if(this.NonSensitivityHits == null) {
+
+                this.NonSensitivityHits = new List<TimelineEntry>();
+                this.NonSensitivityHits.ApplyExploratoryFieldSpec(ec.NewChild("nonSensitivityHits"));
+
+            } else {
+
+                this.NonSensitivityHits.ApplyExploratoryFieldSpec(ec.NewChild("nonSensitivityHits"));
+
+            }
+        }
+        else if (this.NonSensitivityHits != null && ec.Excludes("nonSensitivityHits",false))
+        {
+            this.NonSensitivityHits = null;
         }
         //      C# -> List<TimelineCountEntry>? OutOfDateStatus
         // GraphQL -> outOfDateStatus: [TimelineCountEntry!]! (type)

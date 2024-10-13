@@ -14,6 +14,7 @@ Type of hierarchy object.
 - NUTANIX_CATEGORY - Nutanix Category.
 - VcdOrg
 - O365Teams
+- CLOUD_DIRECT_NAS_NAMESPACE
 - VSPHERE_VIRTUAL_DISK - VSphere Virtual Disk.
 - CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS export.
 - MONGO_DB - MongoDB database.
@@ -42,6 +43,7 @@ Type of hierarchy object.
 - VSphereDatacenter
 - PhysicalHost
 - ATLASSIAN_SITE - Atlassian site.
+- CLOUD_DIRECT_NAS_SHARE
 - MONGODB_SOURCE - MongoDB Source Cluster.
 - POSTGRES_DB_CLUSTER - Postgres Database Cluster.
 - VSphereVCenter
@@ -76,6 +78,7 @@ Type of hierarchy object.
 - Mssql
 - NAS_FILESET - NAS Fileset.
 - ACTIVE_DIRECTORY_FOREST - Active Directory forest.
+- CLOUD_DIRECT_NAS_SYSTEM
 - AZURE_AD_DIRECTORY - Azure AD Directory.
 - AzureNativeResourceGroup
 - VSphereTagCategory

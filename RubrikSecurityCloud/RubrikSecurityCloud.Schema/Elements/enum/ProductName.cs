@@ -45,6 +45,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LAMINAR_LITE_UCL")]
         LAMINAR_LITE_UCL,
 
+        [EnumMember(Value = "M365_BACKUP_STORAGE")]
+        M365_BACKUP_STORAGE,
+
         [EnumMember(Value = "NAS_CLOUDDIRECT")]
         NAS_CLOUDDIRECT,
 

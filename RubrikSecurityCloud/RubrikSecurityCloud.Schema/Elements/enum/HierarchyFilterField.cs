@@ -426,6 +426,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_VM_MAC_ADDRESS")]
         HYPERV_VM_MAC_ADDRESS,
 
+        [EnumMember(Value = "INCLUDE_INDEPENDENT_REPLICA")]
+        INCLUDE_INDEPENDENT_REPLICA,
+
         [EnumMember(Value = "IS_ACTIVE")]
         IS_ACTIVE,
 

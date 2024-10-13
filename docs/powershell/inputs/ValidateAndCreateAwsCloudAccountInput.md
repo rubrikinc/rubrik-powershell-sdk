@@ -17,3 +17,5 @@ Input to validate and set up an AWS account.
   - Details of IAM role to be used for data center role-based archival.
 - outpostAwsNativeId: System.String
   - AWS Outpost account native ID.
+- orgId: System.String
+  - The ID of the organization to which the AWS accounts belong.

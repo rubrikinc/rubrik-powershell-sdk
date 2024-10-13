@@ -5,7 +5,7 @@ Global certificates that can be assigned to an organization.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -17,7 +17,7 @@ Browse certificates.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -63,7 +63,7 @@ Global certificates.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -85,7 +85,7 @@ Browse Certificate Signing Requests (CSRs).
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ipCidrs")]
         public List<System.String>? IpCidrs { get; set; }
 
+        //      C# -> List<IpInfo>? IpInfos
+        // GraphQL -> ipInfos: [IpInfo!]! (type)
+        [JsonProperty("ipInfos")]
+        public List<IpInfo>? IpInfos { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public GetWhitelistReply Set(
         WhitelistModeEnum? Mode = null,
         System.Boolean? Enabled = null,
-        List<System.String>? IpCidrs = null
+        List<System.String>? IpCidrs = null,
+        List<IpInfo>? IpInfos = null
     ) 
     {
         if ( Mode != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IpCidrs != null ) {
             this.IpCidrs = IpCidrs;
+        }
+        if ( IpInfos != null ) {
+            this.IpInfos = IpInfos;
         }
         return this;
     }
@@ -98,6 +107,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ipCidrs\n" ;
             } else {
                 s += ind + "ipCidrs\n" ;
+            }
+        }
+        //      C# -> List<IpInfo>? IpInfos
+        // GraphQL -> ipInfos: [IpInfo!]! (type)
+        if (this.IpInfos != null) {
+            var fspec = this.IpInfos.AsFieldSpec(conf.Child("ipInfos"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ipInfos" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -157,6 +178,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.IpCidrs != null && ec.Excludes("ipCidrs",true))
         {
             this.IpCidrs = null;
+        }
+        //      C# -> List<IpInfo>? IpInfos
+        // GraphQL -> ipInfos: [IpInfo!]! (type)
+        if (ec.Includes("ipInfos",false))
+        {
+            if(this.IpInfos == null) {
+
+                this.IpInfos = new List<IpInfo>();
+                this.IpInfos.ApplyExploratoryFieldSpec(ec.NewChild("ipInfos"));
+
+            } else {
+
+                this.IpInfos.ApplyExploratoryFieldSpec(ec.NewChild("ipInfos"));
+
+            }
+        }
+        else if (this.IpInfos != null && ec.Excludes("ipInfos",false))
+        {
+            this.IpInfos = null;
         }
     }
 

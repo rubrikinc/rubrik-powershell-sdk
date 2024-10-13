@@ -21,6 +21,10 @@ Identity Provider is an entity responsible for authenticating a user account.
   - Signing certificate of the identity provider.
 - isDefault: System.Boolean
   - Specifies whether the identity provider is the default.
+- authorizedGroupsCount: System.Int32
+  - Number of authorized groups for the identity provider.
+- activeUserCount: System.Int32
+  - Number of users from the identity provider that have an active session.
 - expirationDate: DateTime
   - Expiration date of the identity providers metadata.
 - id: System.String

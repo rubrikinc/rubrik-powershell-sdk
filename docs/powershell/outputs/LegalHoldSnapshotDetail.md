@@ -10,3 +10,5 @@ LegalHoldSnapshotDetails.
 - legalHoldTime: DateTime
   - Legal hold time.
 - customizations: list of SnapshotCustomizations
+- snapshotRetentionInfo: CdmSnapshotRetentionInfo
+  - Provides snapshot details for each location.

@@ -10,7 +10,7 @@ Browse service accounts.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.

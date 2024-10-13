@@ -12295,6 +12295,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> FilesetDetail? UpdateFileset
+        // GraphQL -> updateFileset: FilesetDetail! (type)
+        public static string UpdateFileset(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateFileset" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateFilesetFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new FilesetDetail() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> UpdateFloatingIpsReply? UpdateFloatingIps
         // GraphQL -> updateFloatingIps: UpdateFloatingIpsReply! (type)
         public static string UpdateFloatingIps(object fsObj)

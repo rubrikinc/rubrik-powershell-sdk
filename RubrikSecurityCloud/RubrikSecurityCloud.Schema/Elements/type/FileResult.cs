@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> DatabaseEntityType? DbEntityType
+        // GraphQL -> dbEntityType: DatabaseEntityType! (enum)
+        [JsonProperty("dbEntityType")]
+        public DatabaseEntityType? DbEntityType { get; set; }
+
         //      C# -> AnalyzerErrorCode? ErrorCode
         // GraphQL -> errorCode: AnalyzerErrorCode! (enum)
         [JsonProperty("errorCode")]
@@ -180,6 +185,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("stdPath")]
         public System.String? StdPath { get; set; }
 
+        //      C# -> System.Int64? TotalSensitiveHits
+        // GraphQL -> totalSensitiveHits: Long! (scalar)
+        [JsonProperty("totalSensitiveHits")]
+        public System.Int64? TotalSensitiveHits { get; set; }
+
         //      C# -> System.String? Type
         // GraphQL -> type: String! (scalar)
         [JsonProperty("type")]
@@ -200,20 +210,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analyzerRiskHits")]
         public AnalyzerHits? AnalyzerRiskHits { get; set; }
 
+        //      C# -> List<ExposureSummary>? ExposureSummary
+        // GraphQL -> exposureSummary: [ExposureSummary!]! (type)
+        [JsonProperty("exposureSummary")]
+        public List<ExposureSummary>? ExposureSummary { get; set; }
+
         //      C# -> Hits? FilesWithHits
         // GraphQL -> filesWithHits: Hits (type)
         [JsonProperty("filesWithHits")]
         public Hits? FilesWithHits { get; set; }
+
+        //      C# -> Hits? FilesWithTotalHits
+        // GraphQL -> filesWithTotalHits: Hits (type)
+        [JsonProperty("filesWithTotalHits")]
+        public Hits? FilesWithTotalHits { get; set; }
 
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits! (type)
         [JsonProperty("hits")]
         public Hits? Hits { get; set; }
 
-        //      C# -> List<MipLabel>? MipLabels
-        // GraphQL -> mipLabels: [MipLabel!]! (type)
-        [JsonProperty("mipLabels")]
-        public List<MipLabel>? MipLabels { get; set; }
+        //      C# -> List<MipLabelSummary>? MipLabelsSummary
+        // GraphQL -> mipLabelsSummary: [MipLabelSummary!]! (type)
+        [JsonProperty("mipLabelsSummary")]
+        public List<MipLabelSummary>? MipLabelsSummary { get; set; }
 
         //      C# -> List<ActivityResult>? NumActivitiesBreakdown
         // GraphQL -> numActivitiesBreakdown: [ActivityResult!]! (type)
@@ -250,6 +270,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sensitiveFiles")]
         public SensitiveFiles? SensitiveFiles { get; set; }
 
+        //      C# -> SensitiveHits? SensitiveHits
+        // GraphQL -> sensitiveHits: SensitiveHits (type)
+        [JsonProperty("sensitiveHits")]
+        public SensitiveHits? SensitiveHits { get; set; }
+
         //      C# -> Hits? StaleFiles
         // GraphQL -> staleFiles: Hits (type)
         [JsonProperty("staleFiles")]
@@ -259,6 +284,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> staleFilesWithHits: Hits (type)
         [JsonProperty("staleFilesWithHits")]
         public Hits? StaleFilesWithHits { get; set; }
+
+        //      C# -> Hits? TotalHits
+        // GraphQL -> totalHits: Hits (type)
+        [JsonProperty("totalHits")]
+        public Hits? TotalHits { get; set; }
 
 
         #endregion
@@ -270,6 +300,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public FileResult Set(
+        DatabaseEntityType? DbEntityType = null,
         AnalyzerErrorCode? ErrorCode = null,
         DataGovFileMode? Mode = null,
         OpenAccessType? OpenAccessType = null,
@@ -302,13 +333,16 @@ namespace RubrikSecurityCloud.Types
         System.String? SnapshotFid = null,
         System.Int64? SnapshotTimestamp = null,
         System.String? StdPath = null,
+        System.Int64? TotalSensitiveHits = null,
         System.String? Type = null,
         List<AnalyzerGroupResult>? AnalyzerGroupResults = null,
         List<AnalyzerResult>? AnalyzerResults = null,
         AnalyzerHits? AnalyzerRiskHits = null,
+        List<ExposureSummary>? ExposureSummary = null,
         Hits? FilesWithHits = null,
+        Hits? FilesWithTotalHits = null,
         Hits? Hits = null,
-        List<MipLabel>? MipLabels = null,
+        List<MipLabelSummary>? MipLabelsSummary = null,
         List<ActivityResult>? NumActivitiesBreakdown = null,
         Hits? OpenAccessFiles = null,
         Hits? OpenAccessFilesWithHits = null,
@@ -316,10 +350,15 @@ namespace RubrikSecurityCloud.Types
         Hits? OpenAccessStaleFiles = null,
         PrincipalAccessInfo? PrincipalAccessInfo = null,
         SensitiveFiles? SensitiveFiles = null,
+        SensitiveHits? SensitiveHits = null,
         Hits? StaleFiles = null,
-        Hits? StaleFilesWithHits = null
+        Hits? StaleFilesWithHits = null,
+        Hits? TotalHits = null
     ) 
     {
+        if ( DbEntityType != null ) {
+            this.DbEntityType = DbEntityType;
+        }
         if ( ErrorCode != null ) {
             this.ErrorCode = ErrorCode;
         }
@@ -416,6 +455,9 @@ namespace RubrikSecurityCloud.Types
         if ( StdPath != null ) {
             this.StdPath = StdPath;
         }
+        if ( TotalSensitiveHits != null ) {
+            this.TotalSensitiveHits = TotalSensitiveHits;
+        }
         if ( Type != null ) {
             this.Type = Type;
         }
@@ -428,14 +470,20 @@ namespace RubrikSecurityCloud.Types
         if ( AnalyzerRiskHits != null ) {
             this.AnalyzerRiskHits = AnalyzerRiskHits;
         }
+        if ( ExposureSummary != null ) {
+            this.ExposureSummary = ExposureSummary;
+        }
         if ( FilesWithHits != null ) {
             this.FilesWithHits = FilesWithHits;
+        }
+        if ( FilesWithTotalHits != null ) {
+            this.FilesWithTotalHits = FilesWithTotalHits;
         }
         if ( Hits != null ) {
             this.Hits = Hits;
         }
-        if ( MipLabels != null ) {
-            this.MipLabels = MipLabels;
+        if ( MipLabelsSummary != null ) {
+            this.MipLabelsSummary = MipLabelsSummary;
         }
         if ( NumActivitiesBreakdown != null ) {
             this.NumActivitiesBreakdown = NumActivitiesBreakdown;
@@ -458,11 +506,17 @@ namespace RubrikSecurityCloud.Types
         if ( SensitiveFiles != null ) {
             this.SensitiveFiles = SensitiveFiles;
         }
+        if ( SensitiveHits != null ) {
+            this.SensitiveHits = SensitiveHits;
+        }
         if ( StaleFiles != null ) {
             this.StaleFiles = StaleFiles;
         }
         if ( StaleFilesWithHits != null ) {
             this.StaleFilesWithHits = StaleFilesWithHits;
+        }
+        if ( TotalHits != null ) {
+            this.TotalHits = TotalHits;
         }
         return this;
     }
@@ -478,6 +532,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> DatabaseEntityType? DbEntityType
+        // GraphQL -> dbEntityType: DatabaseEntityType! (enum)
+        if (this.DbEntityType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dbEntityType\n" ;
+            } else {
+                s += ind + "dbEntityType\n" ;
+            }
+        }
         //      C# -> AnalyzerErrorCode? ErrorCode
         // GraphQL -> errorCode: AnalyzerErrorCode! (enum)
         if (this.ErrorCode != null) {
@@ -770,6 +833,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "stdPath\n" ;
             }
         }
+        //      C# -> System.Int64? TotalSensitiveHits
+        // GraphQL -> totalSensitiveHits: Long! (scalar)
+        if (this.TotalSensitiveHits != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalSensitiveHits\n" ;
+            } else {
+                s += ind + "totalSensitiveHits\n" ;
+            }
+        }
         //      C# -> System.String? Type
         // GraphQL -> type: String! (scalar)
         if (this.Type != null) {
@@ -815,6 +887,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<ExposureSummary>? ExposureSummary
+        // GraphQL -> exposureSummary: [ExposureSummary!]! (type)
+        if (this.ExposureSummary != null) {
+            var fspec = this.ExposureSummary.AsFieldSpec(conf.Child("exposureSummary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "exposureSummary" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> Hits? FilesWithHits
         // GraphQL -> filesWithHits: Hits (type)
         if (this.FilesWithHits != null) {
@@ -824,6 +908,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "filesWithHits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> Hits? FilesWithTotalHits
+        // GraphQL -> filesWithTotalHits: Hits (type)
+        if (this.FilesWithTotalHits != null) {
+            var fspec = this.FilesWithTotalHits.AsFieldSpec(conf.Child("filesWithTotalHits"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "filesWithTotalHits" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -839,15 +935,15 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
-        //      C# -> List<MipLabel>? MipLabels
-        // GraphQL -> mipLabels: [MipLabel!]! (type)
-        if (this.MipLabels != null) {
-            var fspec = this.MipLabels.AsFieldSpec(conf.Child("mipLabels"));
+        //      C# -> List<MipLabelSummary>? MipLabelsSummary
+        // GraphQL -> mipLabelsSummary: [MipLabelSummary!]! (type)
+        if (this.MipLabelsSummary != null) {
+            var fspec = this.MipLabelsSummary.AsFieldSpec(conf.Child("mipLabelsSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mipLabels" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "mipLabelsSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -935,6 +1031,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> SensitiveHits? SensitiveHits
+        // GraphQL -> sensitiveHits: SensitiveHits (type)
+        if (this.SensitiveHits != null) {
+            var fspec = this.SensitiveHits.AsFieldSpec(conf.Child("sensitiveHits"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sensitiveHits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> Hits? StaleFiles
         // GraphQL -> staleFiles: Hits (type)
         if (this.StaleFiles != null) {
@@ -959,6 +1067,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> Hits? TotalHits
+        // GraphQL -> totalHits: Hits (type)
+        if (this.TotalHits != null) {
+            var fspec = this.TotalHits.AsFieldSpec(conf.Child("totalHits"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "totalHits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -966,6 +1086,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> DatabaseEntityType? DbEntityType
+        // GraphQL -> dbEntityType: DatabaseEntityType! (enum)
+        if (ec.Includes("dbEntityType",true))
+        {
+            if(this.DbEntityType == null) {
+
+                this.DbEntityType = new DatabaseEntityType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbEntityType != null && ec.Excludes("dbEntityType",true))
+        {
+            this.DbEntityType = null;
+        }
         //      C# -> AnalyzerErrorCode? ErrorCode
         // GraphQL -> errorCode: AnalyzerErrorCode! (enum)
         if (ec.Includes("errorCode",true))
@@ -1517,6 +1654,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.StdPath = null;
         }
+        //      C# -> System.Int64? TotalSensitiveHits
+        // GraphQL -> totalSensitiveHits: Long! (scalar)
+        if (ec.Includes("totalSensitiveHits",true))
+        {
+            if(this.TotalSensitiveHits == null) {
+
+                this.TotalSensitiveHits = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalSensitiveHits != null && ec.Excludes("totalSensitiveHits",true))
+        {
+            this.TotalSensitiveHits = null;
+        }
         //      C# -> System.String? Type
         // GraphQL -> type: String! (scalar)
         if (ec.Includes("type",true))
@@ -1591,6 +1745,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.AnalyzerRiskHits = null;
         }
+        //      C# -> List<ExposureSummary>? ExposureSummary
+        // GraphQL -> exposureSummary: [ExposureSummary!]! (type)
+        if (ec.Includes("exposureSummary",false))
+        {
+            if(this.ExposureSummary == null) {
+
+                this.ExposureSummary = new List<ExposureSummary>();
+                this.ExposureSummary.ApplyExploratoryFieldSpec(ec.NewChild("exposureSummary"));
+
+            } else {
+
+                this.ExposureSummary.ApplyExploratoryFieldSpec(ec.NewChild("exposureSummary"));
+
+            }
+        }
+        else if (this.ExposureSummary != null && ec.Excludes("exposureSummary",false))
+        {
+            this.ExposureSummary = null;
+        }
         //      C# -> Hits? FilesWithHits
         // GraphQL -> filesWithHits: Hits (type)
         if (ec.Includes("filesWithHits",false))
@@ -1609,6 +1782,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.FilesWithHits != null && ec.Excludes("filesWithHits",false))
         {
             this.FilesWithHits = null;
+        }
+        //      C# -> Hits? FilesWithTotalHits
+        // GraphQL -> filesWithTotalHits: Hits (type)
+        if (ec.Includes("filesWithTotalHits",false))
+        {
+            if(this.FilesWithTotalHits == null) {
+
+                this.FilesWithTotalHits = new Hits();
+                this.FilesWithTotalHits.ApplyExploratoryFieldSpec(ec.NewChild("filesWithTotalHits"));
+
+            } else {
+
+                this.FilesWithTotalHits.ApplyExploratoryFieldSpec(ec.NewChild("filesWithTotalHits"));
+
+            }
+        }
+        else if (this.FilesWithTotalHits != null && ec.Excludes("filesWithTotalHits",false))
+        {
+            this.FilesWithTotalHits = null;
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits! (type)
@@ -1629,24 +1821,24 @@ namespace RubrikSecurityCloud.Types
         {
             this.Hits = null;
         }
-        //      C# -> List<MipLabel>? MipLabels
-        // GraphQL -> mipLabels: [MipLabel!]! (type)
-        if (ec.Includes("mipLabels",false))
+        //      C# -> List<MipLabelSummary>? MipLabelsSummary
+        // GraphQL -> mipLabelsSummary: [MipLabelSummary!]! (type)
+        if (ec.Includes("mipLabelsSummary",false))
         {
-            if(this.MipLabels == null) {
+            if(this.MipLabelsSummary == null) {
 
-                this.MipLabels = new List<MipLabel>();
-                this.MipLabels.ApplyExploratoryFieldSpec(ec.NewChild("mipLabels"));
+                this.MipLabelsSummary = new List<MipLabelSummary>();
+                this.MipLabelsSummary.ApplyExploratoryFieldSpec(ec.NewChild("mipLabelsSummary"));
 
             } else {
 
-                this.MipLabels.ApplyExploratoryFieldSpec(ec.NewChild("mipLabels"));
+                this.MipLabelsSummary.ApplyExploratoryFieldSpec(ec.NewChild("mipLabelsSummary"));
 
             }
         }
-        else if (this.MipLabels != null && ec.Excludes("mipLabels",false))
+        else if (this.MipLabelsSummary != null && ec.Excludes("mipLabelsSummary",false))
         {
-            this.MipLabels = null;
+            this.MipLabelsSummary = null;
         }
         //      C# -> List<ActivityResult>? NumActivitiesBreakdown
         // GraphQL -> numActivitiesBreakdown: [ActivityResult!]! (type)
@@ -1781,6 +1973,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.SensitiveFiles = null;
         }
+        //      C# -> SensitiveHits? SensitiveHits
+        // GraphQL -> sensitiveHits: SensitiveHits (type)
+        if (ec.Includes("sensitiveHits",false))
+        {
+            if(this.SensitiveHits == null) {
+
+                this.SensitiveHits = new SensitiveHits();
+                this.SensitiveHits.ApplyExploratoryFieldSpec(ec.NewChild("sensitiveHits"));
+
+            } else {
+
+                this.SensitiveHits.ApplyExploratoryFieldSpec(ec.NewChild("sensitiveHits"));
+
+            }
+        }
+        else if (this.SensitiveHits != null && ec.Excludes("sensitiveHits",false))
+        {
+            this.SensitiveHits = null;
+        }
         //      C# -> Hits? StaleFiles
         // GraphQL -> staleFiles: Hits (type)
         if (ec.Includes("staleFiles",false))
@@ -1818,6 +2029,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.StaleFilesWithHits != null && ec.Excludes("staleFilesWithHits",false))
         {
             this.StaleFilesWithHits = null;
+        }
+        //      C# -> Hits? TotalHits
+        // GraphQL -> totalHits: Hits (type)
+        if (ec.Includes("totalHits",false))
+        {
+            if(this.TotalHits == null) {
+
+                this.TotalHits = new Hits();
+                this.TotalHits.ApplyExploratoryFieldSpec(ec.NewChild("totalHits"));
+
+            } else {
+
+                this.TotalHits.ApplyExploratoryFieldSpec(ec.NewChild("totalHits"));
+
+            }
+        }
+        else if (this.TotalHits != null && ec.Excludes("totalHits",false))
+        {
+            this.TotalHits = null;
         }
     }
 

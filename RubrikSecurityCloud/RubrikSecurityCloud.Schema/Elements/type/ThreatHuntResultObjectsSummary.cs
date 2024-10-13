@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalUniqueMatchedPaths")]
         public System.Int64? TotalUniqueMatchedPaths { get; set; }
 
+        //      C# -> ClusterInfoType? ClusterInfo
+        // GraphQL -> clusterInfo: ClusterInfoType (type)
+        [JsonProperty("clusterInfo")]
+        public ClusterInfoType? ClusterInfo { get; set; }
+
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
         // GraphQL -> matchTypes: [IndicatorOfCompromise!]! (type)
         [JsonProperty("matchTypes")]
@@ -88,6 +93,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? TotalMatchedPaths = null,
         System.Int32? TotalMatchedSnapshots = null,
         System.Int64? TotalUniqueMatchedPaths = null,
+        ClusterInfoType? ClusterInfo = null,
         List<IndicatorOfCompromise>? MatchTypes = null,
         List<ThreatHuntResultSnapshotStats>? SnapshotsStats = null
     ) 
@@ -115,6 +121,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalUniqueMatchedPaths != null ) {
             this.TotalUniqueMatchedPaths = TotalUniqueMatchedPaths;
+        }
+        if ( ClusterInfo != null ) {
+            this.ClusterInfo = ClusterInfo;
         }
         if ( MatchTypes != null ) {
             this.MatchTypes = MatchTypes;
@@ -210,6 +219,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalUniqueMatchedPaths\n" ;
             } else {
                 s += ind + "totalUniqueMatchedPaths\n" ;
+            }
+        }
+        //      C# -> ClusterInfoType? ClusterInfo
+        // GraphQL -> clusterInfo: ClusterInfoType (type)
+        if (this.ClusterInfo != null) {
+            var fspec = this.ClusterInfo.AsFieldSpec(conf.Child("clusterInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "clusterInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
@@ -385,6 +406,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalUniqueMatchedPaths != null && ec.Excludes("totalUniqueMatchedPaths",true))
         {
             this.TotalUniqueMatchedPaths = null;
+        }
+        //      C# -> ClusterInfoType? ClusterInfo
+        // GraphQL -> clusterInfo: ClusterInfoType (type)
+        if (ec.Includes("clusterInfo",false))
+        {
+            if(this.ClusterInfo == null) {
+
+                this.ClusterInfo = new ClusterInfoType();
+                this.ClusterInfo.ApplyExploratoryFieldSpec(ec.NewChild("clusterInfo"));
+
+            } else {
+
+                this.ClusterInfo.ApplyExploratoryFieldSpec(ec.NewChild("clusterInfo"));
+
+            }
+        }
+        else if (this.ClusterInfo != null && ec.Excludes("clusterInfo",false))
+        {
+            this.ClusterInfo = null;
         }
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
         // GraphQL -> matchTypes: [IndicatorOfCompromise!]! (type)

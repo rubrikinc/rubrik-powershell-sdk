@@ -56,7 +56,7 @@ Retrieves a paginated list of all Azure Native Managed Disks.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureNativeDiskSortFields: Sort fields for list of Azure disks.
@@ -74,7 +74,7 @@ Retrieves a paginated list of all Azure Native Resource Groups.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureNativeCommonResourceGroupSortFields: Sort fields for listing Azure resource groups.
@@ -122,7 +122,7 @@ Retrieves a paginated list of all Azure Native Subscriptions.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureNativeSubscriptionSortFields: Sort fields for list of Azure subscriptions.
@@ -158,7 +158,7 @@ Retrieves a paginated list of all Azure Virtual Machines (VMs).
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureNativeVirtualMachineSortFields: Sort fields for list of Azure virtual machines.

@@ -9,16 +9,16 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
-| [Account (9,14)](#account-domain) | [Cluster (32,20)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,20)](#oracle-domain) | [Snapshot (21,18)](#snapshot-domain) |
+| [Account (9,14)](#account-domain) | [Cluster (33,20)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,20)](#oracle-domain) | [Snapshot (21,18)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (10,4)](#microsoft-365-domain) | [Policy (9,15)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (5,3)](#activity-series-domain) | [Db2 (9,13)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (8,16)](#archival-domain) | [Report Download (3,20)](#report-download-domain) | [Miscellaneous (194,144)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (8,16)](#archival-domain) | [Report Download (3,20)](#report-download-domain) | [Miscellaneous (197,144)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (31,36)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (4,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (19,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
-| [Azure (52,43)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (5,3)](#threat-domain) |
+| [Azure (52,43)](#azure-domain) | [Fileset (6,7)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (5,3)](#threat-domain) |
 | [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,11)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
-| [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (8,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
-| [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (24,11)](#vmware-vsphere-domain) |
+| [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (10,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
+| [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (25,11)](#vmware-vsphere-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (6,26)](#vmware-vsphere-vm-domain) |
 | [Cloud Account (6,2)](#cloud-account-domain) | [Integration (2,6)](#integration-domain) | [Nutanix (20,27)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (2,6)](#webhook-domain) |
 | [Cloud Native (19,14)](#cloud-native-domain) | [Kubernetes (12,18)](#kubernetes-domain) | [Office 365 (39,33)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
@@ -670,6 +670,7 @@ Cmdlets: `New-RscQueryCluster` and `New-RscMutationCluster`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| CloudClusterRecoveryValidation | Validate if a Cloud Cluster can be recovered. | `New-RscQueryCluster -Operation CloudClusterRecoveryValidation`<BR> | [cloudClusterRecoveryValidation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Cluster | A cluster object. | `New-RscQueryCluster -Operation Cluster`<BR> | [cluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ClusterList | N/A | `New-RscQueryCluster -Operation ClusterList`<BR> | [allClusterConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ComputeClusterStatus | Get details for the compute cluster  
@@ -1057,6 +1058,10 @@ Modify the values of specified fileset templates. | `New-RscMutationFileset -Ope
   
 Supported in v5.0+  
 Initiate a job to copy one or more file or folder from a fileset backup to the source host. Returns the job instance ID. | `New-RscMutationFileset -Operation RecoverFiles`<BR> | [filesetRecoverFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Update | Update a Fileset  
+  
+Supported in v5.0+  
+Update a Fileset with the specified properties. | `New-RscMutationFileset -Operation Update`<BR> | [updateFileset](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Google Cloud Platform domain
@@ -1601,7 +1606,10 @@ Retrieve the global setting for automatic deployment of the Rubrik Backup Servic
 Supported in v6.0+  
 Gets the details of the request that was triggered to check the cloud compute connectivity of an archival location. | `New-RscQueryMisc -Operation CheckCloudComputeConnectivityJobProgress`<BR> | [checkCloudComputeConnectivityJobProgress](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CheckLatestVersionMgmtAppExists | Checks whether the latest version of the Microsoft 365 Management App exists. | `New-RscQueryMisc -Operation CheckLatestVersionMgmtAppExists`<BR> | [checkLatestVersionMgmtAppExists](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CloudDirectNasExport | A Cloud Direct NAS export object. | `New-RscQueryMisc -Operation CloudDirectNasExport`<BR> | [cloudDirectNasExport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectNasExport | Cloud Direct NAS export object. | `New-RscQueryMisc -Operation CloudDirectNasExport`<BR> | [cloudDirectNasExport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectNasNamespace | Cloud Direct NAS namespace. | `New-RscQueryMisc -Operation CloudDirectNasNamespace`<BR> | [cloudDirectNasNamespace](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectNasNamespaces | Paginated list of NAS namespaces. | `New-RscQueryMisc -Operation CloudDirectNasNamespaces`<BR> | [cloudDirectNasNamespaces](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectNasShare | Cloud Direct NAS share. | `New-RscQueryMisc -Operation CloudDirectNasShare`<BR> | [cloudDirectNasShare](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectShares | Retrieve shares from Cloud Direct site. | `New-RscQueryMisc -Operation CloudDirectShares`<BR> | [allCloudDirectShares](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectSites | List of the Cloud Direct Sites accessible by the current user. | `New-RscQueryMisc -Operation CloudDirectSites`<BR> | [allCloudDirectSites](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectSystems | Retrieve systems managed by the Cloud Direct site. | `New-RscQueryMisc -Operation CloudDirectSystems`<BR> | [cloudDirectSystems](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2203,6 +2211,8 @@ Cmdlets: `New-RscQueryNas` and `New-RscMutationNas`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| CloudDirectNasSystem | Cloud Direct NAS system. | `New-RscQueryNas -Operation CloudDirectNasSystem`<BR> | [cloudDirectNasSystem](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectNasSystems | Paginated list of Cloud Direct NAS systems. | `New-RscQueryNas -Operation CloudDirectNasSystems`<BR> | [cloudDirectNasSystems](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Fileset | A NAS Fileset. | `New-RscQueryNas -Operation Fileset`<BR> | [nasFileset](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Namespace | A NAS Namespace. | `New-RscQueryNas -Operation Namespace`<BR> | [nasNamespace](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Namespaces | Paginated list of NAS Namespaces. | `New-RscQueryNas -Operation Namespaces`<BR> | [nasNamespaces](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -3540,6 +3550,7 @@ Get details of a ESXi hypervisor. | `New-RscQueryVsphere -Operation HostDetails`
 | Tag | N/A | `New-RscQueryVsphere -Operation Tag`<BR> | [vSphereTag](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | TagCategory | N/A | `New-RscQueryVsphere -Operation TagCategory`<BR> | [vSphereTagCategory](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | TopLevelDescendantsList | N/A | `New-RscQueryVsphere -Operation TopLevelDescendantsList`<BR> | [vSphereTopLevelDescendantsConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TopLevelRecoveryTargets | Returns the top level recovery targets for vSphere. | `New-RscQueryVsphere -Operation TopLevelRecoveryTargets`<BR> | [vSphereTopLevelRecoveryTargets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | VmsByFids | All vSphere virtual machines, based on the FIDs passed. | `New-RscQueryVsphere -Operation VmsByFids`<BR> | [allVsphereVmsByFids](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | VmwareCdpLiveInfo | N/A | `New-RscQueryVsphere -Operation VmwareCdpLiveInfo`<BR> | [vsphereVmwareCdpLiveInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 

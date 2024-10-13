@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTERS")]
         CLUSTERS,
 
+        [EnumMember(Value = "EVENT_SERIES")]
+        EVENT_SERIES,
+
         [EnumMember(Value = "GLOBAL_OBJECT")]
         GLOBAL_OBJECT,
 

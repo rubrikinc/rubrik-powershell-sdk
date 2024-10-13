@@ -19,14 +19,14 @@ Retrieve details of the Rubrik clusters' reports migration.
     - clusterUuid - System.String: The Rubrik cluster ID.
     - status - list of CdmReportMigrationStatuss: Rubrik cluster report migration status.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns ReportMigrationStatusConnection.
 ### data
 - There are 13 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - dataView - DataViewTypeEnum
@@ -78,7 +78,7 @@ Retrieve details of scheduled reports. If the reportId is None, return schedules
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - filter - ScheduledReportFilterInput: Filter report schedules.
@@ -103,7 +103,7 @@ Returns groupBy results for SonarContentReport.
     - timezone - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns SonarContentReportConnection.
@@ -116,7 +116,7 @@ Returns rows for SonarReport table.
     - filter - list of System.Strings
     - endTime - System.String
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns SonarReportRowConnection.

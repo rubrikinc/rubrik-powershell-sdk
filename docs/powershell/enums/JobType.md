@@ -78,3 +78,6 @@ Type of poller. Different types of jobs are polled by corresponding poller.
 - DISCOVERED_MSSQL_OBJECTS_NOTIFICATIONS_POLLER - Start a poller that will send a notification to user
  of new MSSQL objects discovered for the given host.
 - DARE_OPERATION_POLLER - Data-At-Rest-Encryption operation job poller.
+- KOSMOS_RECOVERY - Kosmos Recovery.
+- MSSQL_BULK_EXPORT - Bulk export of SQL Server databases.
+- MYSQLDB_INSTANCE - MySQL DB instance.

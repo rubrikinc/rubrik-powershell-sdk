@@ -52,6 +52,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("secretKey")]
         public System.String? SecretKey { get; set; }
 
+        //      C# -> System.String? StsEndpoint
+        // GraphQL -> stsEndpoint: String (scalar)
+        [JsonProperty("stsEndpoint")]
+        public System.String? StsEndpoint { get; set; }
+
+        //      C# -> AwsRegion? StsRegion
+        // GraphQL -> stsRegion: AwsRegion (enum)
+        [JsonProperty("stsRegion")]
+        public AwsRegion? StsRegion { get; set; }
+
 
         #endregion
 

@@ -38,4 +38,5 @@ All reporting table schemas.
 - ANOMALIES - Specifies the Readable Snapshots report information.
 - NF_ANOMALIES - Specifies the Unreadable Objects report information.
 - CLUSTERS - Clusters database table schema.
-- ACTIVITY_SERIES - Specifies the database schema for activity series.
+- ACTIVITY_SERIES - Deprecated. Use EVENT_SERIES.
+- EVENT_SERIES - Specified the Events report information.

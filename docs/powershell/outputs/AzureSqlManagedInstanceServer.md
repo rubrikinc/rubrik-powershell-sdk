@@ -30,32 +30,32 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - id: System.String
-  - The FID of the hierarchy object.
+  - FID of the hierarchy object.
 - name: System.String
-  - The name of the hierarchy object.
+  - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
-  - The type of this object.
+  - Type of this object.
 - slaAssignment: SlaAssignmentTypeEnum
-  - The SLA Domain assignment type for this object.
+  - SLA Domain assignment type for this object.
 - effectiveSlaDomain: SlaDomain
-  - The effective SLA Domain of the hierarchy object.
+  - Effective SLA Domain of the hierarchy object.
 - slaPauseStatus: System.Boolean
-  - The pause status of the effective SLA Domain of the hierarchy object.
+  - Pause status of the effective SLA Domain of the hierarchy object.
 - snapshotDistribution: SnapshotDistribution
-  - The distribution of the snapshots of the hierarchy object.
+  - Distribution of the snapshots of the hierarchy object.
 - effectiveRetentionSlaDomain: SlaDomain
-  - The effective retention of the SLA Domain of the hierarchy object.
+  - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
-  - The SLA Domain configured for the hierarchy object.
+  - SLA Domain configured for the hierarchy object.
 - effectiveSlaSourceObject: PathNode
-  - The path node of the effective SLA Domain source.
+  - Path node of the effective SLA Domain source.
 - logicalPath: list of PathNodes
-  - A sequential list of this object's logical ancestors.
+  - Sequential list of this object's logical ancestors.
 - physicalPath: list of PathNodes
-  - A sequential list of this object's physical ancestors.
+  - Sequential list of this object's physical ancestors.
 - numWorkloadDescendants: System.Int32
-  - The number of descendant workloads of this object.
+  - Number of descendant workloads of this object.
 - allOrgs: list of Orgs
-  - The organizations to which this hierarchy object belongs.
+  - Organizations to which this hierarchy object belongs.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.

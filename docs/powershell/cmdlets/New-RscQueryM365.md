@@ -10,7 +10,7 @@ Lists the Microsoft 365 backup storage object restore points.
 
 - There are 3 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - m365BackupStorageObjectRestorePointsInput - M365BackupStorageObjectRestorePointsInput: The input to list Microsoft 365 Backup Storage restore points.
 - Returns M365BackupStorageRestorePointConnection.
 ### daytodaymodestats
@@ -28,7 +28,7 @@ Lists down the directory object attribute present in the Microsoft tenant.
 ### licenseentitlement
 Display license entitlement for M365 workloads.
 
-- The licenseentitlement subcommand takes no arguments.
+- There is a single argument of type System.String.
 - Returns M365LicenseEntitlementReply.
 ### onboardingmodebackupstats
 Returns the backup statistics of an M365 organization product in onboarding mode.

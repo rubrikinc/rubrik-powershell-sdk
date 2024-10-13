@@ -10,7 +10,7 @@ Paginated list of virtual groups for MSSQL databases.
 
 - There are 3 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - fids - list of System.Strings: The Rubrik UUIDs for the objects.
 - Returns MssqlDatabaseVirtualGroupConnection.
 ### availabilitygroupvirtualgroups
@@ -18,7 +18,7 @@ Paginated list of virtual groups for MSSQL availability groups.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - filters - list of MssqlAvailabilityGroupVirtualGroupFilterInputs: Filters for MSSQL availability group virtual groups. Default to no filters and all objects are returned.
     - sortBy - MssqlAvailabilityGroupVirtualGroupSortByInput: Sort by argument for MSSQL availability group virtual groups. Default sort is by ID in ascending order.
     - sortOrder - MssqlAvailabilityGroupVirtualGroupSortOrderInput: Sort order argument for MSSQL availability group virtual groups.
@@ -33,7 +33,7 @@ Paginated list of Microsoft SQL log shipping target.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortBy - MssqlLogShippingTargetSortByInput: Sort by argument for MSSQL log shipping targets. Default sort is by ID in ascending order.
     - filters - list of MssqlLogShippingTargetFilterInputs: Filters for Mssql log shipping targets. No filters by default.
 - Returns MssqlLogShippingTargetConnection.
@@ -42,7 +42,7 @@ Returns all compatible instances for export for the specified recovery time.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - input - GetCompatibleMssqlInstancesV1Input: Input for V1GetCompatibleMssqlInstancesV1.
     - sortBy - MssqlCompatibleInstancesSortByInput: Sort by argument for MSSQL compatible instances.
     - filters - list of MssqlCompatibleInstancesFilterInputs: Filters for MSSQL compatible instances.
@@ -57,7 +57,7 @@ Paginated list of Microsoft SQL Database live mounts.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortBy - MssqlDatabaseLiveMountSortByInput: Sort by argument for Mssql database live mounts.
     - filters - list of MssqlDatabaseLiveMountFilterInputs: Filters for Mssql database live mounts.
 - Returns MssqlDatabaseLiveMountConnection.
@@ -86,10 +86,10 @@ Paginated list of Microsoft SQL Databases.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
 - Returns MssqlDatabaseConnection.
 ### defaultproperties
 The current default properties for Microsoft SQL databases.
@@ -129,9 +129,9 @@ Paginated list of the highest-level Microsoft SQL Objects accessible by the curr
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
 - Returns MssqlTopLevelDescendantTypeConnection.

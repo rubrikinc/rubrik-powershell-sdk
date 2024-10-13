@@ -33,6 +33,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_NATIVE_ROOT")]
         AZURE_NATIVE_ROOT,
 
+        [EnumMember(Value = "AZURE_NATIVE_SQL_DATABASE_DB")]
+        AZURE_NATIVE_SQL_DATABASE_DB,
+
+        [EnumMember(Value = "AZURE_NATIVE_SQL_MANAGED_INSTANCE_DB")]
+        AZURE_NATIVE_SQL_MANAGED_INSTANCE_DB,
+
         [EnumMember(Value = "AZURE_NATIVE_STORAGE_ACCOUNT")]
         AZURE_NATIVE_STORAGE_ACCOUNT,
 

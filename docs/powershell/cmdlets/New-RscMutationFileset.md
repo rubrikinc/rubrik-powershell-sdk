@@ -38,3 +38,11 @@ Initiate a job to copy one or more file or folder from a fileset backup to the s
 
 - There is a single argument of type FilesetRecoverFilesInput.
 - Returns AsyncRequestStatus.
+### update
+Update a Fileset
+
+Supported in v5.0+
+Update a Fileset with the specified properties.
+
+- There is a single argument of type UpdateFilesetInput.
+- Returns FilesetDetail.

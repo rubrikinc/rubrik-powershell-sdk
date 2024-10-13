@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("source")]
         public FileVersionSourceEnum? Source { get; set; }
 
+        //      C# -> DateTime? FileCreationTime
+        // GraphQL -> fileCreationTime: DateTime (scalar)
+        [JsonProperty("fileCreationTime")]
+        public DateTime? FileCreationTime { get; set; }
+
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)
         [JsonProperty("lastModified")]
@@ -72,6 +77,7 @@ namespace RubrikSecurityCloud.Types
     public HierarchySnappableFileVersion Set(
         FileModeEnum? FileMode = null,
         FileVersionSourceEnum? Source = null,
+        DateTime? FileCreationTime = null,
         DateTime? LastModified = null,
         System.Int64? Size = null,
         System.String? SnapshotId = null,
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Source != null ) {
             this.Source = Source;
+        }
+        if ( FileCreationTime != null ) {
+            this.FileCreationTime = FileCreationTime;
         }
         if ( LastModified != null ) {
             this.LastModified = LastModified;
@@ -134,6 +143,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "source\n" ;
             } else {
                 s += ind + "source\n" ;
+            }
+        }
+        //      C# -> DateTime? FileCreationTime
+        // GraphQL -> fileCreationTime: DateTime (scalar)
+        if (this.FileCreationTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "fileCreationTime\n" ;
+            } else {
+                s += ind + "fileCreationTime\n" ;
             }
         }
         //      C# -> DateTime? LastModified
@@ -236,6 +254,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Source != null && ec.Excludes("source",true))
         {
             this.Source = null;
+        }
+        //      C# -> DateTime? FileCreationTime
+        // GraphQL -> fileCreationTime: DateTime (scalar)
+        if (ec.Includes("fileCreationTime",true))
+        {
+            if(this.FileCreationTime == null) {
+
+                this.FileCreationTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileCreationTime != null && ec.Excludes("fileCreationTime",true))
+        {
+            this.FileCreationTime = null;
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)

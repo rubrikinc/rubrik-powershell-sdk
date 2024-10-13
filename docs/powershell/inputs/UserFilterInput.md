@@ -14,3 +14,5 @@ Input for filtering a list of users.
   - Filter users by lockout state.
 - hiddenStateFilter: HiddenStateFilter
   - Filter users by hidden status.
+- authDomainIdsFilter: list of System.Strings
+  - Filter according to the authentication doamin ID.

@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("destinationOrgUuid")]
         public System.String? DestinationOrgUuid { get; set; }
 
+        //      C# -> System.String? RubrikOrgUuid
+        // GraphQL -> rubrikOrgUuid: String (scalar)
+        [JsonProperty("rubrikOrgUuid")]
+        public System.String? RubrikOrgUuid { get; set; }
+
         //      C# -> SharePointDriveRestoreConfig? SharePointDriveRestoreConfig
         // GraphQL -> SharePointDriveRestoreConfig: SharePointDriveRestoreConfig (input)
         [JsonProperty("SharePointDriveRestoreConfig")]

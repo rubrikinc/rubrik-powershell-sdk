@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isExpirationInformationUnavailable")]
         public System.Boolean? IsExpirationInformationUnavailable { get; set; }
 
+        //      C# -> System.Boolean? IsSnapshotOnLegalHold
+        // GraphQL -> isSnapshotOnLegalHold: Boolean! (scalar)
+        [JsonProperty("isSnapshotOnLegalHold")]
+        public System.Boolean? IsSnapshotOnLegalHold { get; set; }
+
         //      C# -> System.Boolean? IsSnapshotPresent
         // GraphQL -> isSnapshotPresent: Boolean! (scalar)
         [JsonProperty("isSnapshotPresent")]
@@ -69,6 +74,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? ExpirationTime = null,
         System.Boolean? IsExpirationDateCalculated = null,
         System.Boolean? IsExpirationInformationUnavailable = null,
+        System.Boolean? IsSnapshotOnLegalHold = null,
         System.Boolean? IsSnapshotPresent = null,
         System.String? LocationId = null,
         System.String? Name = null
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsExpirationInformationUnavailable != null ) {
             this.IsExpirationInformationUnavailable = IsExpirationInformationUnavailable;
+        }
+        if ( IsSnapshotOnLegalHold != null ) {
+            this.IsSnapshotOnLegalHold = IsSnapshotOnLegalHold;
         }
         if ( IsSnapshotPresent != null ) {
             this.IsSnapshotPresent = IsSnapshotPresent;
@@ -143,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isExpirationInformationUnavailable\n" ;
             } else {
                 s += ind + "isExpirationInformationUnavailable\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSnapshotOnLegalHold
+        // GraphQL -> isSnapshotOnLegalHold: Boolean! (scalar)
+        if (this.IsSnapshotOnLegalHold != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSnapshotOnLegalHold\n" ;
+            } else {
+                s += ind + "isSnapshotOnLegalHold\n" ;
             }
         }
         //      C# -> System.Boolean? IsSnapshotPresent
@@ -246,6 +264,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsExpirationInformationUnavailable != null && ec.Excludes("isExpirationInformationUnavailable",true))
         {
             this.IsExpirationInformationUnavailable = null;
+        }
+        //      C# -> System.Boolean? IsSnapshotOnLegalHold
+        // GraphQL -> isSnapshotOnLegalHold: Boolean! (scalar)
+        if (ec.Includes("isSnapshotOnLegalHold",true))
+        {
+            if(this.IsSnapshotOnLegalHold == null) {
+
+                this.IsSnapshotOnLegalHold = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSnapshotOnLegalHold != null && ec.Excludes("isSnapshotOnLegalHold",true))
+        {
+            this.IsSnapshotOnLegalHold = null;
         }
         //      C# -> System.Boolean? IsSnapshotPresent
         // GraphQL -> isSnapshotPresent: Boolean! (scalar)
