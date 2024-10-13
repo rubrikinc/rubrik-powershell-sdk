@@ -78,9 +78,9 @@ RunIfNotDry {
 
 # Publish the module to the PowerShell Gallery
 if ($script:NotDry) {
-    .\Utils\Publish-RscSdk.ps1 -NotDry
+    .\Utils\admin\Publish-RscSdk.ps1 -NotDry
 } else {
-    .\Utils\Publish-RscSdk.ps1
+    .\Utils\admin\Publish-RscSdk.ps1
 }
 
 git checkout $sourceBranch
