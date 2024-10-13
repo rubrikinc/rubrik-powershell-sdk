@@ -31,7 +31,7 @@ released, and that it matches the latest entry in `CHANGELOG.md`.
 ```
 
 If the version is not set on the package, or if it is not the same as the
-latest entry in `CHANGELOG.md`, you need push a new commit to the `devel`
+latest entry in `CHANGELOG.md`, you need to push a new commit to the `devel`
 branch with the updated version:
 
 ```powershell
@@ -49,13 +49,16 @@ git push
 
 ### 3. Create a new release
 
-First do a dry run to see what will be released:
+We first do a dry run to see if any error occurs during build, tests, packaging,
+and commiting to the `main` branch.
 
 ```powershell
-.\Utils\admin\New-RscSdkRelease.ps1
+PS> .\Utils\admin\New-RscSdkRelease.ps1
+...
+Dry run completed. Local changes were not pushed to the remote repository.
 ```
 
-If everything looks good, run the script again with the `-NotDryRun` switch:
+If no error occured, run the script again with the `-NotDry` switch:
 
 ```powershell
 .\Utils\admin\New-RscSdkRelease.ps1 -NotDry
@@ -76,7 +79,5 @@ Line |
 
 Part of the release process is to clean up build and output directories,
 if you're on Windows and you get this error, it's likely because you have
-a PowerShell session or an IDE that is using files that the script is
-trying to clean up. Other OSes handle this better, but on Windows you
-need to close your IDEs, your explorer windows, your PowerShell sessions,
-and start a new one and start over...
+a PowerShell session or an IDE holding files that the script is
+trying to clean up. Close everything and start a new `pwsh.exe` session.
