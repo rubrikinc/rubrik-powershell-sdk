@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.11
+
+Schema update.
+
 ## Version 1.10
 
 - Updated schema,
@@ -14,7 +18,7 @@ Fixes:
 
 ## Version 1.8
 
-New Features: 
+New Features:
 
 - Get-RscVmwareVm now takes a cluster object via pipeline. e.g. `Get-RscCluster "foo" | Get-RscVmwareVm`
 - Add snapshotconsistencylevel to vSphereVM fields that are fetched from API.

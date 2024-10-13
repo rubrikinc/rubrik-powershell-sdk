@@ -20,10 +20,10 @@ Summary of all Kubernetes Clusters.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
 - Returns KubernetesClusterConnection.
 ### k8scluster
 - There is a single argument of type System.String.
@@ -31,10 +31,10 @@ Summary of all Kubernetes Clusters.
 ### k8sclusters
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
 - Returns K8sClusterConnection.
 ### namespace
 - There is a single argument of type System.String.
@@ -42,10 +42,10 @@ Summary of all Kubernetes Clusters.
 ### namespaces
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
     - k8sClusterId - System.String: Optional Kubernetes cluster UUID.
 - Returns K8sNamespaceConnection.
 ### protectionset
@@ -58,10 +58,10 @@ Summary of all Kubernetes Protection Sets.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
     - k8sClusterOptionalId - System.String: Kubernetes cluster optional UUID.
 - Returns KubernetesProtectionSetConnection.
 ### protectionsetsnapshots

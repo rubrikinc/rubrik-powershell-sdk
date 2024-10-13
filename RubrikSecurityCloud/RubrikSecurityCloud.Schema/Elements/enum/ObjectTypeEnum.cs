@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
         CLOUD_DIRECT_NAS_EXPORT,
 
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_SHARE")]
+        CLOUD_DIRECT_NAS_SHARE,
+
         [EnumMember(Value = "CONFLUENCE_SPACE")]
         CONFLUENCE_SPACE,
 

@@ -5,7 +5,7 @@ All unarchived custom TPR policies.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - TprPolicySortByField: Fields to sort TPR policies.
@@ -49,7 +49,7 @@ Returns detailed policy information.
     - policyAssignmentType - PolicyAssignmentType: Specifies whether the policy assignment type is direct or inherited.
     - includeDataTypeHits - System.Boolean: Include data type hits.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns ClassificationPolicyDetail.

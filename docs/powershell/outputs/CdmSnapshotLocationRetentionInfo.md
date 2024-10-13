@@ -21,3 +21,5 @@ The tag to determine what frequency the snapshot corresponds to at this location
 Indicates whether expiration information of the snapshot is unavailable at this location. This field is always and only present for replication locations. Its value is true if and only if the replicated snapshots are from pre-5.2 cluster.
 - locationId: System.String
   - Location ID for snapshot retention.
+- isSnapshotOnLegalHold: System.Boolean
+  - Boolean to indicate whether the snapshot is legally held at the specified location.

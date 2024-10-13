@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hits")]
         public Hits? Hits { get; set; }
 
+        //      C# -> Hits? TotalHits
+        // GraphQL -> totalHits: Hits (type)
+        [JsonProperty("totalHits")]
+        public Hits? TotalHits { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public AnalyzerGroupResult Set(
         AnalyzerGroup? AnalyzerGroup = null,
         List<AnalyzerResult>? AnalyzerResults = null,
-        Hits? Hits = null
+        Hits? Hits = null,
+        Hits? TotalHits = null
     ) 
     {
         if ( AnalyzerGroup != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Hits != null ) {
             this.Hits = Hits;
+        }
+        if ( TotalHits != null ) {
+            this.TotalHits = TotalHits;
         }
         return this;
     }
@@ -106,6 +115,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "hits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> Hits? TotalHits
+        // GraphQL -> totalHits: Hits (type)
+        if (this.TotalHits != null) {
+            var fspec = this.TotalHits.AsFieldSpec(conf.Child("totalHits"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "totalHits" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -172,6 +193,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Hits != null && ec.Excludes("hits",false))
         {
             this.Hits = null;
+        }
+        //      C# -> Hits? TotalHits
+        // GraphQL -> totalHits: Hits (type)
+        if (ec.Includes("totalHits",false))
+        {
+            if(this.TotalHits == null) {
+
+                this.TotalHits = new Hits();
+                this.TotalHits.ApplyExploratoryFieldSpec(ec.NewChild("totalHits"));
+
+            } else {
+
+                this.TotalHits.ApplyExploratoryFieldSpec(ec.NewChild("totalHits"));
+
+            }
+        }
+        else if (this.TotalHits != null && ec.Excludes("totalHits",false))
+        {
+            this.TotalHits = null;
         }
     }
 

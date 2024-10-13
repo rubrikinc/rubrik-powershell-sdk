@@ -15,3 +15,5 @@
   - Creation time range specified in the local timezone of the user.
 - lastScanFilter: UserTimeRangeInput
   - Last scan time range specified in the local timezone of the user.
+- exposureFilter: list of OpenAccessTypes
+  - List to exposure types to filter the paths.

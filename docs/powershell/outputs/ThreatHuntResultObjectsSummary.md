@@ -15,6 +15,8 @@ Summary of a threat hunt for an object.
   - Latest snapshot date not containing a match.
 - totalMatchedSnapshots: System.Int32
   - Total snapshots where a match was found.
+- clusterInfo: ClusterInfoType
+  - Rubrik cluster information.
 - snapshotsStats: list of ThreatHuntResultSnapshotStatss
   - Threat hunt summaries for each snapshot.
 - object: CdmHierarchySnappableNew

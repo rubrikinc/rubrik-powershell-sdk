@@ -148,6 +148,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cloudAccountsProjectIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	projectIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	featuresWithPermissionGroups = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 			# OPTIONAL
+    /// 			permissionsGroups = @(
+    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
+    /// 		}
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -802,6 +817,21 @@ $query.Var.input = @{
 	# REQUIRED
 	cloudAccountsProjectIds = @(
 		$someString
+	)
+	# OPTIONAL
+	projectIds = @(
+		$someString
+	)
+	# OPTIONAL
+	featuresWithPermissionGroups = @(
+		@{
+			# OPTIONAL
+			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			# OPTIONAL
+			permissionsGroups = @(
+				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+		}
 	)
 }"
             );

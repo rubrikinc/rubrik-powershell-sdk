@@ -5,7 +5,7 @@ Returns a list files whose name is prefixed by the query in the given snapshot.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - path - System.String: The path under which you want your search to run.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - searchPrefix - System.String: Prefix arg for searching for files within a snapshot.
@@ -26,7 +26,7 @@ Details of the unexpired snapshot closest to the specified point in time for eac
 ### emailsearch
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - snappableFid - System.String: The fid for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
@@ -35,7 +35,7 @@ Details of the unexpired snapshot closest to the specified point in time for eac
 ### eventsearch
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - snappableFid - System.String: The fid for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
@@ -46,7 +46,7 @@ Browse or search the given path for files and directories along with their delta
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - path - System.String: The path under which you want your search to run.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - filter - SnapshotDeltaFilterInput: Filter snapshot delta based on delta types.
@@ -59,7 +59,7 @@ Browse or search the given path for files and directories along with their delta
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - path - System.String: The path under which you want your search to run.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - filter - SnapshotDeltaFilterInput: Filter snapshot delta based on delta types.
@@ -89,7 +89,7 @@ List of legal hold snapshots for a workload.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - input - LegalHoldSnapshotsForSnappableInput: Query legal hold snapshots for a workload.
@@ -97,7 +97,7 @@ List of legal hold snapshots for a workload.
 ### onedrivesearch
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - snappableFid - System.String: The fid for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
@@ -134,7 +134,7 @@ Returns a list of snapshots for a workload.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - workloadId - System.String: The FID of the workload.
@@ -149,7 +149,7 @@ Returns list of snapshots for a list of workloads.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - snappableIds - list of System.Strings: Workload UUIDs.
@@ -164,7 +164,7 @@ List of workloads with legal hold snapshots.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - input - SnappablesWithLegalHoldSnapshotsInput: Input to retrieve workloads with legal hold snapshots.
@@ -181,7 +181,7 @@ List of snapshots for unmanaged objects.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - input - QueryUnmanagedObjectSnapshotsV1Input: Input for V1QueryUnmanagedObjectSnapshotsV1.

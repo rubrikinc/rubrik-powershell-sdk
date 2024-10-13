@@ -1,5 +1,10 @@
 # New-RscQueryCluster
 ## Subcommands
+### cloudclusterrecoveryvalidation
+Validate if a Cloud Cluster can be recovered.
+
+- There is a single argument of type System.String.
+- Returns ValidationRecoveryReply.
 ### cluster
 A cluster object.
 
@@ -8,7 +13,7 @@ A cluster object.
 ### clusterlist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - filter - ClusterFilterInput: Filter by cluster.
@@ -67,7 +72,7 @@ Get CDM release details from support portal for a given list of clusters.
 ### groupbylist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - groupBy - ClusterGroupByEnum: Group by field.
@@ -102,7 +107,7 @@ List of the available cluster objects.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - filter - ClusterFilterInput: Filter by cluster.
@@ -153,7 +158,7 @@ Rubrik cluster proxy information.
 ### radarclusterlist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - filter - ClusterFilterInput: Filter by cluster.
@@ -206,7 +211,7 @@ A Windows Cluster.
 ### withupgradesinfo
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - upgradeFilter - CdmUpgradeInfoFilterInput

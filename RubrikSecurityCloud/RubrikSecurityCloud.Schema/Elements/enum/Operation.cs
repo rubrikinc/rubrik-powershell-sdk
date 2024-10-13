@@ -51,6 +51,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ASSIGN_KMS_KEY_VAULT")]
         ASSIGN_KMS_KEY_VAULT,
 
+        [EnumMember(Value = "ASSIGN_MIP_LABELS")]
+        ASSIGN_MIP_LABELS,
+
         [EnumMember(Value = "CANCEL_RUNNING_ACTIVITY")]
         CANCEL_RUNNING_ACTIVITY,
 
@@ -174,6 +177,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EDIT_USER_MANAGEMENT")]
         EDIT_USER_MANAGEMENT,
 
+        [EnumMember(Value = "ENABLE_ACCESS_LOGGING")]
+        ENABLE_ACCESS_LOGGING,
+
         [EnumMember(Value = "EXPORT")]
         EXPORT,
 
@@ -240,6 +246,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_LEGAL_HOLD")]
         MANAGE_LEGAL_HOLD,
 
+        [EnumMember(Value = "MANAGE_LOG_SHIPPING")]
+        MANAGE_LOG_SHIPPING,
+
         [EnumMember(Value = "MANAGE_MIGRATION_DASHBOARD")]
         MANAGE_MIGRATION_DASHBOARD,
 
@@ -260,6 +269,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_RECOVERY_PLAN")]
         MANAGE_RECOVERY_PLAN,
+
+        [EnumMember(Value = "MANAGE_SECURITY_POLICIES")]
+        MANAGE_SECURITY_POLICIES,
+
+        [EnumMember(Value = "MANAGE_SECURITY_VIOLATIONS")]
+        MANAGE_SECURITY_VIOLATIONS,
 
         [EnumMember(Value = "MANAGE_SERVICENOW_INTEGRATION")]
         MANAGE_SERVICENOW_INTEGRATION,
@@ -345,11 +360,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RESTORE")]
         RESTORE,
 
+        [EnumMember(Value = "RESTORE_ACTIVE_DIRECTORY_FOREST")]
+        RESTORE_ACTIVE_DIRECTORY_FOREST,
+
         [EnumMember(Value = "RESTORE_TO_ORIGIN")]
         RESTORE_TO_ORIGIN,
 
         [EnumMember(Value = "TAKE_ON_DEMAND_SNAPSHOT")]
         TAKE_ON_DEMAND_SNAPSHOT,
+
+        [EnumMember(Value = "TAKE_REMEDIATION_ACTIONS")]
+        TAKE_REMEDIATION_ACTIONS,
 
         [EnumMember(Value = "TIER_EXISTING_SNAPSHOTS")]
         TIER_EXISTING_SNAPSHOTS,
@@ -420,8 +441,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_DASHBOARD")]
         VIEW_DASHBOARD,
 
+        [EnumMember(Value = "VIEW_DATA_ACCESS_GOVERNANCE")]
+        VIEW_DATA_ACCESS_GOVERNANCE,
+
         [EnumMember(Value = "VIEW_DATA_CLASS_GLOBAL")]
         VIEW_DATA_CLASS_GLOBAL,
+
+        [EnumMember(Value = "VIEW_DATA_DETECTION_AND_RESPONSE_ALERTS")]
+        VIEW_DATA_DETECTION_AND_RESPONSE_ALERTS,
 
         [EnumMember(Value = "VIEW_DATA_SECURITY_DETAILS")]
         VIEW_DATA_SECURITY_DETAILS,

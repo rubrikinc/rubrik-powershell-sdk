@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20240923-11" ;
+        public static string GraphqlSchemaVersion = "v20241007-35" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -39,6 +39,10 @@ namespace RubrikSecurityCloud.Types
             CloudAccount,
             CloudDirectHierarchyObject,
             CloudDirectHierarchyWorkload,
+            CloudDirectNasNamespaceDescendantType,
+            CloudDirectNasNamespaceLogicalChildType,
+            CloudDirectNasSystemDescendantType,
+            CloudDirectNasSystemLogicalChildType,
             Db2InstanceDescendantType,
             Db2InstancePhysicalChildType,
             DisplayableValue,
@@ -676,6 +680,21 @@ namespace RubrikSecurityCloud.Types
             CloudDirectCluster,
             CloudDirectClusterRansomwareInvestigationEnablement,
             CloudDirectNasExport,
+            CloudDirectNasNamespace,
+            CloudDirectNasNamespaceConnection,
+            CloudDirectNasNamespaceDescendantTypeConnection,
+            CloudDirectNasNamespaceDescendantTypeEdge,
+            CloudDirectNasNamespaceEdge,
+            CloudDirectNasNamespaceLogicalChildTypeConnection,
+            CloudDirectNasNamespaceLogicalChildTypeEdge,
+            CloudDirectNasShare,
+            CloudDirectNasSystem,
+            CloudDirectNasSystemConnection,
+            CloudDirectNasSystemDescendantTypeConnection,
+            CloudDirectNasSystemDescendantTypeEdge,
+            CloudDirectNasSystemEdge,
+            CloudDirectNasSystemLogicalChildTypeConnection,
+            CloudDirectNasSystemLogicalChildTypeEdge,
             CloudDirectSite,
             CloudDirectSystems,
             CloudInstantiationSpec,
@@ -715,6 +734,7 @@ namespace RubrikSecurityCloud.Types
             ClusterHostGroupInfo,
             ClusterInfCidrs,
             ClusterInfo,
+            ClusterInfoType,
             ClusterIpMapping,
             ClusterIpv6ModeReply,
             ClusterLicenseCapacityValidations,
@@ -960,6 +980,7 @@ namespace RubrikSecurityCloud.Types
             ExocomputeStorageAccountIds,
             ExpireSnoozedDirectoriesReply,
             ExportUrlSpecs,
+            ExposureSummary,
             ExternalArtifactMapReply,
             FailedRestoreItemInfo,
             FailedRestoreItemsInfoReply,
@@ -1220,6 +1241,7 @@ namespace RubrikSecurityCloud.Types
             InventoryRoot,
             InventorySubHierarchyRoot,
             InvestigationCsvDownloadLinkReply,
+            IpInfo,
             IpmiAccess,
             IpmiInfo,
             IpRule,
@@ -1440,6 +1462,7 @@ namespace RubrikSecurityCloud.Types
             MongoSnapshotGroupByConnection,
             MongoSnapshotGroupByEdge,
             MongoSource,
+            MongoSourceAppMetadata,
             MongoSourceConnection,
             MongoSourceDescendantTypeConnection,
             MongoSourceDescendantTypeEdge,
@@ -1707,8 +1730,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharepointDrive,
             O365SharePointDrive,
+            O365SharepointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -2426,6 +2449,7 @@ namespace RubrikSecurityCloud.Types
             ValidateCloudNativeFileRecoveryFeasibilityReply,
             ValidateOracleAcoFileReply,
             ValidateOrgNameReply,
+            ValidationRecoveryReply,
             ValidationReply,
             ValidReplicationSource,
             ValidReplicationSourceConnection,
@@ -3329,6 +3353,7 @@ namespace RubrikSecurityCloud.Types
             FilesetRestorePathPairInput,
             FilesetTemplateCreateInput,
             FilesetTemplatePatchInput,
+            FilesetUpdateInput,
             FileSnapshotInfo,
             Filter,
             FilterInfoInput,
@@ -3522,6 +3547,7 @@ namespace RubrikSecurityCloud.Types
             K8sSnapshotDownloadConfigInput,
             KmsCryptoKey,
             KmsSpecInput,
+            KosmosRecoveryInfo,
             KuprServerProxyConfigInput,
             LabelFilterParams,
             LabelSelector,
@@ -3655,6 +3681,7 @@ namespace RubrikSecurityCloud.Types
             MssqlGetRestoreFilesV1Input,
             MssqlHostUpdateIdInput,
             MssqlHostUpdateInput,
+            MssqlInstanceInfo,
             MssqlInstanceUpdateIdInput,
             MssqlInstanceUpdateInput,
             MssqlLogShippingCreateConfigInput,
@@ -3674,6 +3701,7 @@ namespace RubrikSecurityCloud.Types
             MssqlSlaRelatedPropertiesInput,
             MssqlWindowsClusterUpdateIdInput,
             MssqlWindowsClusterUpdateInput,
+            MysqldbInstanceInfo,
             MysqldbSlaConfigInput,
             NameSubstringFilter,
             NasApiCredentialsInput,
@@ -4147,6 +4175,7 @@ namespace RubrikSecurityCloud.Types
             UpdateEventDigestInput,
             UpdateFailoverClusterAppInput,
             UpdateFailoverClusterInput,
+            UpdateFilesetInput,
             UpdateFloatingIpsInput,
             UpdateGcpTargetInput,
             UpdateGlacierTargetInput,
@@ -4621,7 +4650,13 @@ namespace RubrikSecurityCloud.Types
             checkCloudNativeTagRuleNameUniqueness,
             checkLatestVersionMgmtAppExists,
             cloudAccount,
+            cloudClusterRecoveryValidation,
             cloudDirectNasExport,
+            cloudDirectNasNamespace,
+            cloudDirectNasNamespaces,
+            cloudDirectNasShare,
+            cloudDirectNasSystem,
+            cloudDirectNasSystems,
             cloudDirectSystems,
             cloudNativeCheckArchivedSnapshotsLocked,
             cloudNativeCheckRequiredPermissionsForFeature,
@@ -5170,6 +5205,7 @@ namespace RubrikSecurityCloud.Types
             vSphereTag,
             vSphereTagCategory,
             vSphereTopLevelDescendantsConnection,
+            vSphereTopLevelRecoveryTargets,
             vSphereVCenter,
             vSphereVCenterConnection,
             vSphereVMAsyncRequestStatus,
@@ -5840,6 +5876,7 @@ namespace RubrikSecurityCloud.Types
             updateEventDigest,
             updateFailoverCluster,
             updateFailoverClusterApp,
+            updateFileset,
             updateFloatingIps,
             updateGcpTarget,
             updateGlacierTarget,
@@ -6130,6 +6167,7 @@ namespace RubrikSecurityCloud.Types
             CloudAccountState,
             CloudAccountStatus,
             CloudAccountType,
+            CloudDirectNasConnectivityStatus,
             CloudInstanceRbsConnectionStatus,
             CloudNativeLabelObjectType,
             CloudNativeLocTemplateType,
@@ -6184,6 +6222,7 @@ namespace RubrikSecurityCloud.Types
             CrossAccountCapability,
             CrossAccountRole,
             CrossAccountStatus,
+            DatabaseEntityType,
             DatabaseType,
             DataCategoryType,
             DataGovFileMode,
@@ -6708,6 +6747,7 @@ namespace RubrikSecurityCloud.Types
             VcenterUpdateConfigV2ConflictResolutionAuthz,
             VersionSourceType,
             VersionStatus,
+            ViolationSeverity,
             VirtualMachineFileType,
             VirtualMachineScriptDetailFailureHandling,
             VirtualMachineSummarySnapshotConsistencyMandate,
@@ -6974,12 +7014,44 @@ namespace RubrikSecurityCloud.Types
                     "CloudDirectHierarchyObject",
                     new HashSet<string> {
                     "CloudDirectNasExport",
+                    "CloudDirectNasNamespace",
+                    "CloudDirectNasShare",
+                    "CloudDirectNasSystem",
                     }
                 },
                 {
                     "CloudDirectHierarchyWorkload",
                     new HashSet<string> {
                     "CloudDirectNasExport",
+                    "CloudDirectNasShare",
+                    }
+                },
+                {
+                    "CloudDirectNasNamespaceDescendantType",
+                    new HashSet<string> {
+                    "CloudDirectNasNamespaceDescendantType",
+                    "CloudDirectNasShare",
+                    }
+                },
+                {
+                    "CloudDirectNasNamespaceLogicalChildType",
+                    new HashSet<string> {
+                    "CloudDirectNasNamespaceLogicalChildType",
+                    "CloudDirectNasShare",
+                    }
+                },
+                {
+                    "CloudDirectNasSystemDescendantType",
+                    new HashSet<string> {
+                    "CloudDirectNasNamespace",
+                    "CloudDirectNasShare",
+                    }
+                },
+                {
+                    "CloudDirectNasSystemLogicalChildType",
+                    new HashSet<string> {
+                    "CloudDirectNasNamespace",
+                    "CloudDirectNasShare",
                     }
                 },
                 {
@@ -7111,6 +7183,9 @@ namespace RubrikSecurityCloud.Types
                     "CassandraKeyspace",
                     "CassandraSource",
                     "CloudDirectNasExport",
+                    "CloudDirectNasNamespace",
+                    "CloudDirectNasShare",
+                    "CloudDirectNasSystem",
                     "Db2Database",
                     "Db2Instance",
                     "ExchangeDag",
@@ -8903,7 +8978,13 @@ namespace RubrikSecurityCloud.Types
             checkLatestVersionMgmtAppExists,
             clearCloudNativeSqlServerBackupCredentials,
             cloudAccount,
+            cloudClusterRecoveryValidation,
             cloudDirectNasExport,
+            cloudDirectNasNamespace,
+            cloudDirectNasNamespaces,
+            cloudDirectNasShare,
+            cloudDirectNasSystem,
+            cloudDirectNasSystems,
             cloudDirectSystems,
             cloudNativeCheckArchivedSnapshotsLocked,
             cloudNativeCheckRbaConnectivity,
@@ -9923,6 +10004,7 @@ namespace RubrikSecurityCloud.Types
             updateEventDigest,
             updateFailoverCluster,
             updateFailoverClusterApp,
+            updateFileset,
             updateFloatingIps,
             updateGcpTarget,
             updateGlacierTarget,
@@ -10048,6 +10130,7 @@ namespace RubrikSecurityCloud.Types
             vSphereTag,
             vSphereTagCategory,
             vSphereTopLevelDescendantsConnection,
+            vSphereTopLevelRecoveryTargets,
             vSphereVCenter,
             vSphereVCenterConnection,
             vSphereVMAsyncRequestStatus,
@@ -13226,11 +13309,59 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.cloudClusterRecoveryValidation,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "CloudClusterRecoveryValidation",
+                        gqlRootFieldName: "cloudClusterRecoveryValidation"
+                    )
+                },
+                {
                     GqlRootFieldName.cloudDirectNasExport,
                     new RscOp(
                         cmdletName: "New-RscQueryMisc",
                         cmdletSwitchName: "CloudDirectNasExport",
                         gqlRootFieldName: "cloudDirectNasExport"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudDirectNasNamespace,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "CloudDirectNasNamespace",
+                        gqlRootFieldName: "cloudDirectNasNamespace"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudDirectNasNamespaces,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "CloudDirectNasNamespaces",
+                        gqlRootFieldName: "cloudDirectNasNamespaces"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudDirectNasShare,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "CloudDirectNasShare",
+                        gqlRootFieldName: "cloudDirectNasShare"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudDirectNasSystem,
+                    new RscOp(
+                        cmdletName: "New-RscQueryNas",
+                        cmdletSwitchName: "CloudDirectNasSystem",
+                        gqlRootFieldName: "cloudDirectNasSystem"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudDirectNasSystems,
+                    new RscOp(
+                        cmdletName: "New-RscQueryNas",
+                        cmdletSwitchName: "CloudDirectNasSystems",
+                        gqlRootFieldName: "cloudDirectNasSystems"
                     )
                 },
                 {
@@ -21386,6 +21517,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.updateFileset,
+                    new RscOp(
+                        cmdletName: "New-RscMutationFileset",
+                        cmdletSwitchName: "Update",
+                        gqlRootFieldName: "updateFileset"
+                    )
+                },
+                {
                     GqlRootFieldName.updateFloatingIps,
                     new RscOp(
                         cmdletName: "New-RscMutationMisc",
@@ -22383,6 +22522,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryVsphere",
                         cmdletSwitchName: "TopLevelDescendantsList",
                         gqlRootFieldName: "vSphereTopLevelDescendantsConnection"
+                    )
+                },
+                {
+                    GqlRootFieldName.vSphereTopLevelRecoveryTargets,
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "TopLevelRecoveryTargets",
+                        gqlRootFieldName: "vSphereTopLevelRecoveryTargets"
                     )
                 },
                 {
@@ -24549,8 +24696,32 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.cloudAccount
                 },
                 {
+                    "New-RscQueryCluster -Op CloudClusterRecoveryValidation",
+                    GqlRootFieldName.cloudClusterRecoveryValidation
+                },
+                {
                     "New-RscQueryMisc -Op CloudDirectNasExport",
                     GqlRootFieldName.cloudDirectNasExport
+                },
+                {
+                    "New-RscQueryMisc -Op CloudDirectNasNamespace",
+                    GqlRootFieldName.cloudDirectNasNamespace
+                },
+                {
+                    "New-RscQueryMisc -Op CloudDirectNasNamespaces",
+                    GqlRootFieldName.cloudDirectNasNamespaces
+                },
+                {
+                    "New-RscQueryMisc -Op CloudDirectNasShare",
+                    GqlRootFieldName.cloudDirectNasShare
+                },
+                {
+                    "New-RscQueryNas -Op CloudDirectNasSystem",
+                    GqlRootFieldName.cloudDirectNasSystem
+                },
+                {
+                    "New-RscQueryNas -Op CloudDirectNasSystems",
+                    GqlRootFieldName.cloudDirectNasSystems
                 },
                 {
                     "New-RscQueryMisc -Op CloudDirectSystems",
@@ -28629,6 +28800,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateFailoverClusterApp
                 },
                 {
+                    "New-RscMutationFileset -Op Update",
+                    GqlRootFieldName.updateFileset
+                },
+                {
                     "New-RscMutationMisc -Op UpdateFloatingIps",
                     GqlRootFieldName.updateFloatingIps
                 },
@@ -29127,6 +29302,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryVsphere -Op TopLevelDescendantsList",
                     GqlRootFieldName.vSphereTopLevelDescendantsConnection
+                },
+                {
+                    "New-RscQueryVsphere -Op TopLevelRecoveryTargets",
+                    GqlRootFieldName.vSphereTopLevelRecoveryTargets
                 },
                 {
                     "New-RscQueryVcenter -Op Vcenter",
@@ -30344,6 +30523,7 @@ namespace RubrikSecurityCloud.Types
                         "nutanixTopLevelDescendants",
                         "vSphereRootRecoveryHierarchy",
                         "vSphereTopLevelDescendantsConnection",
+                        "vSphereTopLevelRecoveryTargets",
                     }
                 },
                 {   "CdmHierarchySnappableNew", new List<string> {
@@ -30425,6 +30605,26 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "CloudDirectNasExport", new List<string> {
                         "cloudDirectNasExport",
+                    }
+                },
+                {   "CloudDirectNasNamespace", new List<string> {
+                        "cloudDirectNasNamespace",
+                    }
+                },
+                {   "CloudDirectNasNamespaceConnection", new List<string> {
+                        "cloudDirectNasNamespaces",
+                    }
+                },
+                {   "CloudDirectNasShare", new List<string> {
+                        "cloudDirectNasShare",
+                    }
+                },
+                {   "CloudDirectNasSystem", new List<string> {
+                        "cloudDirectNasSystem",
+                    }
+                },
+                {   "CloudDirectNasSystemConnection", new List<string> {
+                        "cloudDirectNasSystems",
                     }
                 },
                 {   "CloudDirectSystems", new List<string> {
@@ -30927,6 +31127,10 @@ namespace RubrikSecurityCloud.Types
                 {   "FileResultConnection", new List<string> {
                         "objectFiles",
                         "userActivities",
+                    }
+                },
+                {   "FilesetDetail", new List<string> {
+                        "updateFileset",
                     }
                 },
                 {   "FilesetSnapshotDetail", new List<string> {
@@ -33133,6 +33337,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "ValidateOrgNameReply", new List<string> {
                         "validateOrgName",
+                    }
+                },
+                {   "ValidationRecoveryReply", new List<string> {
+                        "cloudClusterRecoveryValidation",
                     }
                 },
                 {   "ValidationReply", new List<string> {
@@ -36368,6 +36576,8 @@ namespace RubrikSecurityCloud.Types
                         "cassandraColumnFamilies",
                         "cassandraKeyspaces",
                         "cassandraSources",
+                        "cloudDirectNasNamespaces",
+                        "cloudDirectNasSystems",
                         "db2Databases",
                         "db2Instances",
                         "exchangeDags",
@@ -36435,6 +36645,7 @@ namespace RubrikSecurityCloud.Types
                         "vSphereHostConnection",
                         "vSphereRootRecoveryHierarchy",
                         "vSphereTopLevelDescendantsConnection",
+                        "vSphereTopLevelRecoveryTargets",
                         "vSphereVCenterConnection",
                         "vSphereVmNewConnection",
                     }
@@ -36549,6 +36760,8 @@ namespace RubrikSecurityCloud.Types
                         "cdmMssqlLogShippingTargets",
                         "certificates",
                         "certificateSigningRequests",
+                        "cloudDirectNasNamespaces",
+                        "cloudDirectNasSystems",
                         "cloudNativeSnapshots",
                         "cloudNativeWorkloadVersionedFiles",
                         "clusterConnection",
@@ -36728,6 +36941,7 @@ namespace RubrikSecurityCloud.Types
                         "vSphereMountConnection",
                         "vSphereRootRecoveryHierarchy",
                         "vSphereTopLevelDescendantsConnection",
+                        "vSphereTopLevelRecoveryTargets",
                         "vSphereVCenterConnection",
                         "vSphereVmNewConnection",
                         "webhookById",
@@ -37731,6 +37945,8 @@ namespace RubrikSecurityCloud.Types
                         "cassandraSources",
                         "certificates",
                         "certificateSigningRequests",
+                        "cloudDirectNasNamespaces",
+                        "cloudDirectNasSystems",
                         "cloudNativeLabelRules",
                         "cloudNativeTagRules",
                         "clusterConnection",
@@ -37841,6 +38057,7 @@ namespace RubrikSecurityCloud.Types
                         "vSphereMountConnection",
                         "vSphereRootRecoveryHierarchy",
                         "vSphereTopLevelDescendantsConnection",
+                        "vSphereTopLevelRecoveryTargets",
                         "vSphereVCenterConnection",
                         "vSphereVmNewConnection",
                         "workloadAnomalies",
@@ -38082,6 +38299,9 @@ namespace RubrikSecurityCloud.Types
                         "certificateSigningRequests",
                         "checkCloudNativeLabelRuleNameUniqueness",
                         "checkCloudNativeTagRuleNameUniqueness",
+                        "cloudClusterRecoveryValidation",
+                        "cloudDirectNasNamespaces",
+                        "cloudDirectNasSystems",
                         "cloudNativeCheckRequiredPermissionsForFeature",
                         "cloudNativeSnapshots",
                         "cloudNativeWorkloadVersionedFiles",
@@ -38345,6 +38565,7 @@ namespace RubrikSecurityCloud.Types
                         "vSphereMountConnection",
                         "vSphereRootRecoveryHierarchy",
                         "vSphereTopLevelDescendantsConnection",
+                        "vSphereTopLevelRecoveryTargets",
                         "vSphereVCenterConnection",
                         "vSphereVMAsyncRequestStatus",
                         "vSphereVmNewConnection",
@@ -38572,6 +38793,9 @@ namespace RubrikSecurityCloud.Types
                         "checkAzurePersistentStorageSubscriptionCanUnmap",
                         "cloudAccount",
                         "cloudDirectNasExport",
+                        "cloudDirectNasNamespace",
+                        "cloudDirectNasShare",
+                        "cloudDirectNasSystem",
                         "cloudNativeCheckArchivedSnapshotsLocked",
                         "cloudNativeCustomerTags",
                         "cloudNativeSnapshotDetailsForRecovery",
@@ -38640,6 +38864,7 @@ namespace RubrikSecurityCloud.Types
                         "ldapPrincipalConnection",
                         "linuxFileset",
                         "m365DayToDayModeStats",
+                        "m365LicenseEntitlement",
                         "m365OnboardingModeBackupStats",
                         "m365OnboardingModeStats",
                         "m365OrgBackupLocations",
@@ -38973,6 +39198,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "UpdateFailoverClusterInput", new List<string> {
                         "updateFailoverCluster",
+                    }
+                },
+                {   "UpdateFilesetInput", new List<string> {
+                        "updateFileset",
                     }
                 },
                 {   "UpdateFloatingIpsInput", new List<string> {
@@ -39655,6 +39884,8 @@ namespace RubrikSecurityCloud.Types
                         "cassandraColumnFamilies",
                         "cassandraKeyspaces",
                         "cassandraSources",
+                        "cloudDirectNasNamespaces",
+                        "cloudDirectNasSystems",
                         "countOfObjectsProtectedBySlas",
                         "db2Databases",
                         "db2Instances",
@@ -39727,6 +39958,7 @@ namespace RubrikSecurityCloud.Types
                         "vSphereHostConnection",
                         "vSphereRootRecoveryHierarchy",
                         "vSphereTopLevelDescendantsConnection",
+                        "vSphereTopLevelRecoveryTargets",
                         "vSphereVCenterConnection",
                         "vSphereVmNewConnection",
                     }
@@ -39764,6 +39996,7 @@ namespace RubrikSecurityCloud.Types
                         "oracleTopLevelDescendants",
                         "vSphereRootRecoveryHierarchy",
                         "vSphereTopLevelDescendantsConnection",
+                        "vSphereTopLevelRecoveryTargets",
                     }
                 },
                 {   "[HypervLiveMountFilterInput]", new List<string> {
@@ -40043,12 +40276,20 @@ namespace RubrikSecurityCloud.Types
                         "updateIocStatus",
                     }
                 },
+                {   "[UserDomainEnum]", new List<string> {
+                        "allUsersOnAccountConnection",
+                    }
+                },
                 {   "[UserGroupToRolesInput]", new List<string> {
                         "batchDeassignRoleFromUserGroups",
                     }
                 },
                 {   "[VcenterProxyVmsFilterInput]", new List<string> {
                         "vCenterHotAddProxyVmsV2",
+                    }
+                },
+                {   "[ViolationSeverity]", new List<string> {
+                        "policyObjs",
                     }
                 },
                 {   "[VolumeGroupLiveMountFilterInput]", new List<string> {
@@ -40524,6 +40765,7 @@ namespace RubrikSecurityCloud.Types
                 { "nutanixTopLevelDescendants", "CdmHierarchyObjectConnection"},
                 { "vSphereRootRecoveryHierarchy", "CdmHierarchyObjectConnection"},
                 { "vSphereTopLevelDescendantsConnection", "CdmHierarchyObjectConnection"},
+                { "vSphereTopLevelRecoveryTargets", "CdmHierarchyObjectConnection"},
                 { "cdmHierarchySnappableNew", "CdmHierarchySnappableNew"},
                 { "cdmInventorySubHierarchyRoot", "CdmInventorySubHierarchyRoot"},
                 { "snapshot", "CdmSnapshot"},
@@ -40551,6 +40793,11 @@ namespace RubrikSecurityCloud.Types
                 { "updateAwsAccount", "CloudAccount"},
                 { "updateAzureAccount", "CloudAccount"},
                 { "cloudDirectNasExport", "CloudDirectNasExport"},
+                { "cloudDirectNasNamespace", "CloudDirectNasNamespace"},
+                { "cloudDirectNasNamespaces", "CloudDirectNasNamespaceConnection"},
+                { "cloudDirectNasShare", "CloudDirectNasShare"},
+                { "cloudDirectNasSystem", "CloudDirectNasSystem"},
+                { "cloudDirectNasSystems", "CloudDirectNasSystemConnection"},
                 { "cloudDirectSystems", "CloudDirectSystems"},
                 { "cloudNativeCheckRbaConnectivity", "CloudNativeCheckRbaConnectivityReply"},
                 { "cloudNativeCustomerTags", "CloudNativeCustomerTagsReply"},
@@ -40696,6 +40943,7 @@ namespace RubrikSecurityCloud.Types
                 { "federatedLoginStatus", "FederatedLoginStatus"},
                 { "objectFiles", "FileResultConnection"},
                 { "userActivities", "FileResultConnection"},
+                { "updateFileset", "FilesetDetail"},
                 { "filesetSnapshot", "FilesetSnapshotDetail"},
                 { "filesetTemplate", "FilesetTemplate"},
                 { "filesetTemplates", "FilesetTemplateConnection"},
@@ -41375,6 +41623,7 @@ namespace RubrikSecurityCloud.Types
                 { "isCloudNativeFileRecoveryFeasible", "ValidateCloudNativeFileRecoveryFeasibilityReply"},
                 { "validateOracleAcoFile", "ValidateOracleAcoFileReply"},
                 { "validateOrgName", "ValidateOrgNameReply"},
+                { "cloudClusterRecoveryValidation", "ValidationRecoveryReply"},
                 { "validateCreateAwsClusterInput", "ValidationReply"},
                 { "validateCreateAzureClusterInput", "ValidationReply"},
                 { "vappSnapshotInstantRecoveryOptions", "VappInstantRecoveryOptions"},
@@ -42427,6 +42676,7 @@ namespace RubrikSecurityCloud.Types
                     "AddClusterNodes",
                     "AddClusterRoute",
                     "AddNodesToCloud",
+                    "CloudClusterRecoveryValidation",
                     "Cluster",
                     "ClusterList",
                     "ComputeClusterStatus",
@@ -42591,6 +42841,7 @@ namespace RubrikSecurityCloud.Types
                     "Share",
                     "Template",
                     "Templates",
+                    "Update",
                     "Windows",
                     }
                 },
@@ -42862,6 +43113,9 @@ namespace RubrikSecurityCloud.Types
                     "CheckCloudComputeConnectivityJobProgress",
                     "CheckLatestVersionMgmtAppExists",
                     "CloudDirectNasExport",
+                    "CloudDirectNasNamespace",
+                    "CloudDirectNasNamespaces",
+                    "CloudDirectNasShare",
                     "CloudDirectShares",
                     "CloudDirectSites",
                     "CloudDirectSystems",
@@ -43258,6 +43512,8 @@ namespace RubrikSecurityCloud.Types
                     "BulkDeleteNasShares",
                     "BulkDeleteNasSystems",
                     "BulkUpdateNasShares",
+                    "CloudDirectNasSystem",
+                    "CloudDirectNasSystems",
                     "DeleteNasSystem",
                     "Fileset",
                     "HideRevealNasShares",
@@ -43851,6 +44107,7 @@ namespace RubrikSecurityCloud.Types
                     "Tag",
                     "TagCategory",
                     "TopLevelDescendantsList",
+                    "TopLevelRecoveryTargets",
                     "UpdateAdvancedTag",
                     "UpdateVmNew",
                     "VmsByFids",

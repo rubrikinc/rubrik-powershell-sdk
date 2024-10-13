@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotTime")]
         public DateTime? SnapshotTime { get; set; }
 
+        //      C# -> CdmSnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: CdmSnapshotRetentionInfo (type)
+        [JsonProperty("snapshotRetentionInfo")]
+        public CdmSnapshotRetentionInfo? SnapshotRetentionInfo { get; set; }
+
 
         #endregion
 
@@ -59,7 +64,8 @@ namespace RubrikSecurityCloud.Types
         SnapshotTypeEnum? Type = null,
         System.String? Id = null,
         DateTime? LegalHoldTime = null,
-        DateTime? SnapshotTime = null
+        DateTime? SnapshotTime = null,
+        CdmSnapshotRetentionInfo? SnapshotRetentionInfo = null
     ) 
     {
         if ( Customizations != null ) {
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotTime != null ) {
             this.SnapshotTime = SnapshotTime;
+        }
+        if ( SnapshotRetentionInfo != null ) {
+            this.SnapshotRetentionInfo = SnapshotRetentionInfo;
         }
         return this;
     }
@@ -134,6 +143,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotTime\n" ;
             } else {
                 s += ind + "snapshotTime\n" ;
+            }
+        }
+        //      C# -> CdmSnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: CdmSnapshotRetentionInfo (type)
+        if (this.SnapshotRetentionInfo != null) {
+            var fspec = this.SnapshotRetentionInfo.AsFieldSpec(conf.Child("snapshotRetentionInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotRetentionInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -227,6 +248,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotTime != null && ec.Excludes("snapshotTime",true))
         {
             this.SnapshotTime = null;
+        }
+        //      C# -> CdmSnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: CdmSnapshotRetentionInfo (type)
+        if (ec.Includes("snapshotRetentionInfo",false))
+        {
+            if(this.SnapshotRetentionInfo == null) {
+
+                this.SnapshotRetentionInfo = new CdmSnapshotRetentionInfo();
+                this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
+
+            } else {
+
+                this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
+
+            }
+        }
+        else if (this.SnapshotRetentionInfo != null && ec.Excludes("snapshotRetentionInfo",false))
+        {
+            this.SnapshotRetentionInfo = null;
         }
     }
 

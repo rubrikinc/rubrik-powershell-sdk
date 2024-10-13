@@ -1,0 +1,55 @@
+### CloudDirectNasNamespace
+Cloud Direct NAS namespace object.
+
+- clusterUuid: System.String
+  - Cloud Direct NAS Cluster ID.
+- cloudDirectId: System.String
+  - UUID of the Cloud Direct NAS namespace on the NCD Cluster.
+- systemId: System.String
+  - SystemID of the system to which Cloud Direct NAS namespace belongs.
+- namespaceName: System.String
+  - Name of the namespace.
+- isArchived: System.Boolean
+  - Specifies whether the namespace is archived.
+- isHidden: System.Boolean
+  - Specifies whether the namespace is hidden.
+- isStale: System.Boolean
+  - Specifies whether the namespace is stale.
+- id: System.String
+  - Object ID.
+- descendantConnection: CloudDirectNasNamespaceDescendantTypeConnection
+  - List of descendants.
+- logicalChildConnection: CloudDirectNasNamespaceLogicalChildTypeConnection
+  - List of logical children.
+- shareCount: System.Int32
+  - Total number of shares in this NAS namespace.
+- cluster: Cluster
+  - NAS Cloud Direct cluster where this object originated.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - Sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - Sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.

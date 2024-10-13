@@ -8,3 +8,5 @@ Input for filtering user groups.
  organization.
 - nameFilter: System.String
   - Filter user groups by name.
+- authDomainIdsFilter: list of System.Strings
+  - Filter according to the authentication domain ID.

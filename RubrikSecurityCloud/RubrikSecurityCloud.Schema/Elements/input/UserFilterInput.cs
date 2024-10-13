@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hiddenStateFilter")]
         public HiddenStateFilter? HiddenStateFilter { get; set; }
 
+        //      C# -> List<System.String>? AuthDomainIdsFilter
+        // GraphQL -> authDomainIdsFilter: [String!] (scalar)
+        [JsonProperty("authDomainIdsFilter")]
+        public List<System.String>? AuthDomainIdsFilter { get; set; }
+
 
         #endregion
 

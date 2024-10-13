@@ -168,6 +168,15 @@ Authorized operations on an object.
 - MANAGE_OKTA_INTEGRATION - Manage Okta integration.
 - USE_OAUTH_APPLICATIONS - Use OAuth applications.
 - MANAGE_OAUTH_APPLICATIONS - Manage OAuth applications.
+- RESTORE_ACTIVE_DIRECTORY_FOREST - Restore Active Directory Forest.
+- MANAGE_SECURITY_POLICIES - Manage security policies.
+- MANAGE_SECURITY_VIOLATIONS - Manage security violations.
+- ASSIGN_MIP_LABELS - Assign Microsoft Information Protection(MIP) labels.
+- ENABLE_ACCESS_LOGGING - Enable access logging.
+- MANAGE_LOG_SHIPPING - Manage log shipping.
+- TAKE_REMEDIATION_ACTIONS - Take remediation actions.
+- VIEW_DATA_ACCESS_GOVERNANCE - View data access governance.
+- VIEW_DATA_DETECTION_AND_RESPONSE_ALERTS - View data detection and response alerts.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

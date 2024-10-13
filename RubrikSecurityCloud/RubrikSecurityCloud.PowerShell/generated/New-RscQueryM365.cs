@@ -233,7 +233,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryM365 -LicenseEntitlement
     /// 
-    /// # No variables for this query.
+    /// # OPTIONAL
+    /// $query.Var.orgID = $someString
     /// 
     /// # Execute the query
     /// 
@@ -680,20 +681,22 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
-        // m365LicenseEntitlement: M365LicenseEntitlementReply!
+        // m365LicenseEntitlement(orgID: UUID): M365LicenseEntitlementReply!
         internal void InitQueryM365LicenseEntitlement()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("orgID", "UUID"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryM365LicenseEntitlement",
-                "",
+                "($orgID: UUID)",
                 "M365LicenseEntitlementReply",
                 Query.M365LicenseEntitlement,
                 Query.M365LicenseEntitlementFieldSpec,
-                @""
+                @"# OPTIONAL
+$query.Var.orgID = $someString"
             );
         }
 

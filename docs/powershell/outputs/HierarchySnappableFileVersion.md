@@ -7,4 +7,5 @@
 - quarantineInfo: QuarantineInfo
   - Quarantine information corresponding to the path.
 - snapshotTime: DateTime
+- fileCreationTime: DateTime
 - snapshot: CdmSnapshot

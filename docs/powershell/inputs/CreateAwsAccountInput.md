@@ -9,3 +9,7 @@ Input for creating an AWS account.
   - Access key of the AWS account.
 - secretKey: System.String
   - Secret key of the AWS account.
+- stsEndpoint: System.String
+  - STS VPC endpoint of the AWS account.
+- stsRegion: AwsRegion
+  - Region for STS VPC endpoint.

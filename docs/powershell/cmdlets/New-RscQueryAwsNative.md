@@ -12,7 +12,7 @@ Paginated list of all AWS Native accounts.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeAccountSortFields: Sort fields for list of AWS accounts.
@@ -38,7 +38,7 @@ Paginated list of all AWS EBS Volumes.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeEbsVolumeSortFields: Sort fields for list of AWS EBS volumes.
@@ -51,7 +51,7 @@ Paginated list of all AWS EBS Volumes by name or substring of name.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeEbsVolumeSortFields: Sort fields for list of AWS EBS volumes.
@@ -70,7 +70,7 @@ Paginated list of all AWS EC2 Instances.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeEc2InstanceSortFields: Sort fields for list of AWS EC2 instances.
@@ -84,7 +84,7 @@ Paginated list of all AWS EC2 Instances by name or substring of name.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeEc2InstanceSortFields: Sort fields for list of AWS EC2 instances.
@@ -132,7 +132,7 @@ Paginated list of AWS RDS Instances on AWS Native account.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeRdsInstanceSortFields: Sort fields for list of AWS RDS instances.

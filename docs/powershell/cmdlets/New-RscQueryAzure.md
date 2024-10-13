@@ -5,10 +5,10 @@ Lists all Azure AD directories for the account.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
 - Returns AzureAdDirectoryConnection.
 ### addirectory
 Details of the Azure AD corresponding to the workload ID.
@@ -20,7 +20,7 @@ Details of the Azure AD objects corresponding to the type.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortByOption - list of AzureAdObjectSearchTypes: Ordered list sorted by column names.
     - sortOrder - SortOrder: Sorts the order of results.
     - input - AzureAdObjectTypeInput: Input for the azureAdObjectsByType API.
@@ -50,7 +50,7 @@ List all Azure blob containers by storage account.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - input - AzureBlobContainersByStorageAccountInput: Azure blob containers request parameters by storage account.
@@ -219,7 +219,7 @@ Search for azureAdObjects in a snapshot.
 
 - There are 3 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - input - SearchAzureAdSnapshotInput: Input for searching for Azure AD objects in a snapshot.
 - Returns AzureAdObjectConnection.
 ### sqldatabase
@@ -243,7 +243,7 @@ Retrieves a paginated list of all Azure SQL Databases.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureSqlDatabaseSortFields: Sort fields for list of Azure SQL Databases.
@@ -270,7 +270,7 @@ Retrieves a paginated list of all Azure SQL Database Servers.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureSqlDatabaseServerSortFields: Sort fields for list of Azure SQL Database Servers.
@@ -289,7 +289,7 @@ Retrieves a paginated list of all Azure SQL Managed Instance Databases.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureSqlManagedInstanceDatabaseSortFields: Sort fields for list of Azure SQL Managed Instance Databases.
@@ -316,7 +316,7 @@ Retrieves a paginated list of all Azure SQL Managed Instance Servers.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureSqlManagedInstanceServerSortFields: Sort fields for list of Azure SQL Managed Instance Servers.

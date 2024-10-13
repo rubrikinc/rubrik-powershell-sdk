@@ -972,6 +972,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		destinationOrgUuid = $someString
     /// 		# OPTIONAL
+    /// 		rubrikOrgUuid = $someString
+    /// 		# OPTIONAL
     /// 		SharePointDriveRestoreConfig = @{
     /// 			# REQUIRED
     /// 			driveRestoreConfig = @{
@@ -3259,6 +3261,8 @@ $query.Var.input = @{
 	restoreConfig = @{
 		# OPTIONAL
 		destinationOrgUuid = $someString
+		# OPTIONAL
+		rubrikOrgUuid = $someString
 		# OPTIONAL
 		SharePointDriveRestoreConfig = @{
 			# REQUIRED

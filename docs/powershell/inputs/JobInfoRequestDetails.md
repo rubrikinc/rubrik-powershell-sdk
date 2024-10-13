@@ -82,3 +82,9 @@ Additional information needed to fetch the status of the job. At most one field 
   - Populate for `VSPHERE_VM_MAKE_PRIMARY` jobs.
 - mssqlAddHost: MssqlAddHostOperation
   - Populate for `DISCOVERED_MSSQL_OBJECTS_NOTIFICATIONS_POLLER` jobs.
+- kosmosRecoveryInfo: KosmosRecoveryInfo
+  - Populate for `KOSMOS_RECOVERY` jobs.
+- mssqlInstanceInfo: MssqlInstanceInfo
+  - Populate for `SQL Server instance` specific jobs.
+- mysqldbInstanceInfo: MysqldbInstanceInfo
+  - Populate for `MYSQLDB_INSTANCE` jobs.

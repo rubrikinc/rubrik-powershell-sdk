@@ -9,3 +9,7 @@ Input required to add a GCP cloud account.
   - List of GCP shared VPC host project native IDs.
 - cloudAccountsProjectIds: list of System.Strings
   - List of project native IDs.
+- projectIds: list of System.Strings
+  - List of project IDs.
+- featuresWithPermissionGroups: list of FeatureWithPermissionsGroupss
+  - Features with respected permission groups to be added.

@@ -1,0 +1,63 @@
+### CloudDirectNasSystem
+Cloud Direct NAS System object.
+
+- clusterUuid: System.String
+  - Cloud Direct NAS Cluster ID.
+- cloudDirectId: System.String
+  - UUID of the Cloud Direct NAS System on the NCD Cluster.
+- systemName: System.String
+  - Name of the system.
+- vendorType: System.String
+  - Vendor type of the system.
+- lastStatus: CloudDirectNasConnectivityStatus
+  - Last connectivity status of the system.
+- lastRefreshTime: DateTime
+  - Timestamp of the last refresh.
+- osVersion: System.String
+  - OS version running of the system.
+- apiVersion: System.String
+  - API version of the system.
+- isArchived: System.Boolean
+  - Specifies whether the system has been deleted.
+- isRelic: System.Boolean
+  - Specifies whether the system is a relic.
+- id: System.String
+  - Object ID.
+- descendantConnection: CloudDirectNasSystemDescendantTypeConnection
+  - List of descendants.
+- logicalChildConnection: CloudDirectNasSystemLogicalChildTypeConnection
+  - List of logical children.
+- shareCount: System.Int32
+  - Total number of shares in this NAS system.
+- namespaceCount: System.Int32
+  - Total number of namespaces in this NAS system.
+- cluster: Cluster
+  - NAS Cloud Direct cluster where this object originated.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - Sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - Sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.

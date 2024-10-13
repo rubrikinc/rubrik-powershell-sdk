@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? CreationTime
+        // GraphQL -> creationTime: String (scalar)
+        [JsonProperty("creationTime")]
+        public System.String? CreationTime { get; set; }
+
         //      C# -> System.String? FileMode
         // GraphQL -> fileMode: String (scalar)
         [JsonProperty("fileMode")]
@@ -55,6 +60,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public FileVersion Set(
+        System.String? CreationTime = null,
         System.String? FileMode = null,
         System.String? LastModified = null,
         System.Int64? Size = null,
@@ -62,6 +68,9 @@ namespace RubrikSecurityCloud.Types
         System.String? Source = null
     ) 
     {
+        if ( CreationTime != null ) {
+            this.CreationTime = CreationTime;
+        }
         if ( FileMode != null ) {
             this.FileMode = FileMode;
         }
@@ -91,6 +100,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? CreationTime
+        // GraphQL -> creationTime: String (scalar)
+        if (this.CreationTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "creationTime\n" ;
+            } else {
+                s += ind + "creationTime\n" ;
+            }
+        }
         //      C# -> System.String? FileMode
         // GraphQL -> fileMode: String (scalar)
         if (this.FileMode != null) {
@@ -143,6 +161,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? CreationTime
+        // GraphQL -> creationTime: String (scalar)
+        if (ec.Includes("creationTime",true))
+        {
+            if(this.CreationTime == null) {
+
+                this.CreationTime = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreationTime != null && ec.Excludes("creationTime",true))
+        {
+            this.CreationTime = null;
+        }
         //      C# -> System.String? FileMode
         // GraphQL -> fileMode: String (scalar)
         if (ec.Includes("fileMode",true))

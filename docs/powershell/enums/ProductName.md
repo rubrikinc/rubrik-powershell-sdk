@@ -30,3 +30,4 @@ Name of product.
 - SALESFORCE - Salesforce protection.
 - LAMINAR - Laminar feature.
 - LAMINAR_LITE_UCL - Laminar Lite UCL feature.
+- M365_BACKUP_STORAGE - Microsoft 365 Backup Storage feature.

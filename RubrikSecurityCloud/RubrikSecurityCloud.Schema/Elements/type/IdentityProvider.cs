@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int32? ActiveUserCount
+        // GraphQL -> activeUserCount: Int! (scalar)
+        [JsonProperty("activeUserCount")]
+        public System.Int32? ActiveUserCount { get; set; }
+
+        //      C# -> System.Int32? AuthorizedGroupsCount
+        // GraphQL -> authorizedGroupsCount: Int! (scalar)
+        [JsonProperty("authorizedGroupsCount")]
+        public System.Int32? AuthorizedGroupsCount { get; set; }
+
         //      C# -> System.String? EntityId
         // GraphQL -> entityId: String! (scalar)
         [JsonProperty("entityId")]
@@ -90,6 +100,8 @@ namespace RubrikSecurityCloud.Types
     }
 
     public IdentityProvider Set(
+        System.Int32? ActiveUserCount = null,
+        System.Int32? AuthorizedGroupsCount = null,
         System.String? EntityId = null,
         DateTime? ExpirationDate = null,
         System.String? Id = null,
@@ -104,6 +116,12 @@ namespace RubrikSecurityCloud.Types
         System.String? SpInitiatedTestUrl = null
     ) 
     {
+        if ( ActiveUserCount != null ) {
+            this.ActiveUserCount = ActiveUserCount;
+        }
+        if ( AuthorizedGroupsCount != null ) {
+            this.AuthorizedGroupsCount = AuthorizedGroupsCount;
+        }
         if ( EntityId != null ) {
             this.EntityId = EntityId;
         }
@@ -154,6 +172,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int32? ActiveUserCount
+        // GraphQL -> activeUserCount: Int! (scalar)
+        if (this.ActiveUserCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "activeUserCount\n" ;
+            } else {
+                s += ind + "activeUserCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? AuthorizedGroupsCount
+        // GraphQL -> authorizedGroupsCount: Int! (scalar)
+        if (this.AuthorizedGroupsCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "authorizedGroupsCount\n" ;
+            } else {
+                s += ind + "authorizedGroupsCount\n" ;
+            }
+        }
         //      C# -> System.String? EntityId
         // GraphQL -> entityId: String! (scalar)
         if (this.EntityId != null) {
@@ -269,6 +305,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.Int32? ActiveUserCount
+        // GraphQL -> activeUserCount: Int! (scalar)
+        if (ec.Includes("activeUserCount",true))
+        {
+            if(this.ActiveUserCount == null) {
+
+                this.ActiveUserCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActiveUserCount != null && ec.Excludes("activeUserCount",true))
+        {
+            this.ActiveUserCount = null;
+        }
+        //      C# -> System.Int32? AuthorizedGroupsCount
+        // GraphQL -> authorizedGroupsCount: Int! (scalar)
+        if (ec.Includes("authorizedGroupsCount",true))
+        {
+            if(this.AuthorizedGroupsCount == null) {
+
+                this.AuthorizedGroupsCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthorizedGroupsCount != null && ec.Excludes("authorizedGroupsCount",true))
+        {
+            this.AuthorizedGroupsCount = null;
+        }
         //      C# -> System.String? EntityId
         // GraphQL -> entityId: String! (scalar)
         if (ec.Includes("entityId",true))

@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shareType")]
         public DataGovShareType? ShareType { get; set; }
 
+        //      C# -> ViolationSeverity? ViolationSeverity
+        // GraphQL -> violationSeverity: ViolationSeverity! (enum)
+        [JsonProperty("violationSeverity")]
+        public ViolationSeverity? ViolationSeverity { get; set; }
+
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject (interface)
         [JsonProperty("snappable")]
@@ -250,6 +255,7 @@ namespace RubrikSecurityCloud.Types
         RiskLevelType? RiskLevel = null,
         ScanStatus? ScanStatus = null,
         DataGovShareType? ShareType = null,
+        ViolationSeverity? ViolationSeverity = null,
         HierarchyObject? Snappable = null,
         System.Boolean? HasInsights = null,
         System.String? Id = null,
@@ -297,6 +303,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ShareType != null ) {
             this.ShareType = ShareType;
+        }
+        if ( ViolationSeverity != null ) {
+            this.ViolationSeverity = ViolationSeverity;
         }
         if ( Snappable != null ) {
             this.Snappable = Snappable;
@@ -448,6 +457,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "shareType\n" ;
             } else {
                 s += ind + "shareType\n" ;
+            }
+        }
+        //      C# -> ViolationSeverity? ViolationSeverity
+        // GraphQL -> violationSeverity: ViolationSeverity! (enum)
+        if (this.ViolationSeverity != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "violationSeverity\n" ;
+            } else {
+                s += ind + "violationSeverity\n" ;
             }
         }
         //      C# -> HierarchyObject? Snappable
@@ -855,6 +873,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ShareType != null && ec.Excludes("shareType",true))
         {
             this.ShareType = null;
+        }
+        //      C# -> ViolationSeverity? ViolationSeverity
+        // GraphQL -> violationSeverity: ViolationSeverity! (enum)
+        if (ec.Includes("violationSeverity",true))
+        {
+            if(this.ViolationSeverity == null) {
+
+                this.ViolationSeverity = new ViolationSeverity();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ViolationSeverity != null && ec.Excludes("violationSeverity",true))
+        {
+            this.ViolationSeverity = null;
         }
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject (interface)

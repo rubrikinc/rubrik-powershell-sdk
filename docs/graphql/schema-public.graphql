@@ -914,6 +914,17 @@ type Query {
   # Information about the licenses at the product level.
   allLicensedProducts: GetLicensedProductsInfoReply!
 
+  # Returns all the MIP Labels for an account.
+  allMipLabels(
+    # Restricts the search to active labels only.
+    onlyActiveFilter: Boolean,
+
+    # Restricts the search to appliable labels only.
+    onlyAppliableFilter: Boolean,
+
+    # Filter for Tenant ID.
+    tenantIdFilter: String): [MicrosoftMipLabel!]!
+
   # All missing clusters from the account.
   allMissingClusters(
     # Rubrik cluster connection status.
@@ -1248,7 +1259,10 @@ type Query {
     hiddenStateFilter: HiddenStateFilter,
 
     # Get local users only.
-    shouldGetLocalUsersOnly: Boolean! = false): UserConnection!
+    shouldGetLocalUsersOnly: Boolean! = false,
+
+    # Filter users based on their authentication domain.
+    userDomainsFilter: [UserDomainEnum!]): UserConnection!
 
   # Lists all valid replication source clusters.
   allValidReplicationSources(
@@ -2615,6 +2629,11 @@ type Query {
   cloudAccount(
     # Corresponds to Cloud Account Id in Rubrik tables
     cloudAccountId: UUID!): CloudAccount!
+
+  # Validate if a Cloud Cluster can be recovered.
+  cloudClusterRecoveryValidation(
+    # Cloud Cluster UUID.
+    clusterUuid: String!): ValidationRecoveryReply!
 
   # Cloud Direct NAS export object.
   cloudDirectNasExport(
@@ -4608,7 +4627,9 @@ type Query {
     input: ListM365DirectoryObjectAttributesInput!): ListO365DirectoryObjectAttributesResp!
 
   # Display license entitlement for M365 workloads.
-  m365LicenseEntitlement: M365LicenseEntitlementReply!
+  m365LicenseEntitlement(
+    # Optional UUID of the organization.
+    orgID: UUID): M365LicenseEntitlementReply!
 
   # Returns the backup statistics of an M365 organization product in onboarding mode.
   m365OnboardingModeBackupStats(
@@ -5523,7 +5544,7 @@ type Query {
 
   # Returns the service status of the O365 service running on MSFT server.
   o365ServiceStatus(
-    # Optional org UUID.
+    # Optional UUID of the organization.
     orgID: UUID): GetO365ServiceStatusResp!
 
   # Details for the SharePoint drive corresponding to the snappable ID.
@@ -5701,7 +5722,7 @@ type Query {
 
   # Returns the storage stats of an O365 org.
   o365StorageStats(
-    # Optional org UUID.
+    # Optional UUID of the organization.
     orgID: UUID): GetO365StorageStatsResp!
 
   # Details for the team corresponding to the snappable ID.
@@ -6264,6 +6285,9 @@ type Query {
 
     # Violation Severity list input arg.
     violationSeverityFilter: [ViolationSeverity!],
+
+    # Exposure to filter.
+    exposureFilter: [OpenAccessType!],
 
     # Returns the first n elements from the list.
     first: Int,
@@ -10953,6 +10977,11 @@ type Mutation {
     # Input to get the list of CIDRs for compute settings.
     input: ListCidrsForComputeSettingInput!): ListCidrsForComputeSettingReply!
 
+  # List the IAM pairs of the provided cloud account and any missing permission groups, if applicable, for an optional archival location.
+  listIamPairsByCloudAccountAndLocation(
+    # Input for listing the IAM pairs of the provided cloud account and any missing permission groups, if applicable, for an optional archival location.
+    input: ListIamPairsByCloudAccountAndLocationInput!): ListIamPairsByCloudAccountAndLocationReply!
+
   # Specifies the endpoint through which the admin can lock the user accounts.
   lockUsersByAdmin(
     # Specifies the list of user IDs.
@@ -12275,6 +12304,14 @@ type Mutation {
   updateFailoverClusterApp(
     # Input for V1UpdateFailoverClusterApp.
     input: UpdateFailoverClusterAppInput!): UpdateFailoverClusterAppReply!
+
+  # Update a Fileset
+  # 
+  # Supported in v5.0+
+  # Update a Fileset with the specified properties.
+  updateFileset(
+    # Input for V1UpdateFileset.
+    input: UpdateFilesetInput!): FilesetDetail!
 
   # Modify the list of cluster IPs
   # 
@@ -15038,6 +15075,7 @@ enum ActivityTypeEnum {
 
   # Activity representing change of account ownership.
   OWNERSHIP
+  PROTECTED_OBJECT_DELETION
   RadarAnalysis
   Recovery
   Replication
@@ -17335,6 +17373,14 @@ type ArchiveK8sClusterReply {
   # UUID of the archived Kubernetes cluster.
   clusterId: UUID!
 }
+# Archived snapshot metadata.
+type ArchivedSnapshot {
+  # The ID of the snapshot.
+  id: UUID!
+
+  # Archival location ID of the snapshot.
+  locationId: UUID!
+}
 # Specifies the level at which an ARM template should be deployed.
 enum ArmTemplateDeploymentLevel {
   # Unspecified deployment level.
@@ -17899,7 +17945,7 @@ enum AuditObjectType {
   # Microsoft 365 Backup Storage OneDrive.
   M365_BACKUP_STORAGE_ONEDRIVE
 
-  # Microsoft 365 Backup Storage Organization.
+  # Microsoft 365 Backup Storage Subscription.
   M365_BACKUP_STORAGE_ORG
 
   # Microsoft 365 Backup Storage SharePoint Site.
@@ -18160,6 +18206,9 @@ enum AuditType {
   # Configuration audit.
   CONFIGURATION
 
+  # Data Risks audit
+  DATA_RISKS
+
   # Diagnostic audit.
   DIAGNOSTIC
 
@@ -18417,6 +18466,9 @@ enum AuthorizedOperation {
   # Manage distribution list email settings.
   MANAGE_DL_EMAIL_SETTINGS
 
+  # Manage DSPM Integrations.
+  MANAGE_DSPM_INTEGRATIONS
+
   # Manage GPS to RSC upgrade.
   MANAGE_GPS_TO_RSC_UPGRADE
 
@@ -18426,6 +18478,9 @@ enum AuthorizedOperation {
   # Manage KMS Key Vault settings.
   MANAGE_KMS_KEY_VAULT
   MANAGE_LEGAL_HOLD
+
+  # Manage log shipping.
+  MANAGE_LOG_SHIPPING
 
   # Manage migration dashboard.
   MANAGE_MIGRATION_DASHBOARD
@@ -18516,6 +18571,9 @@ enum AuthorizedOperation {
   RESTORE_TO_ORIGIN
   TAKE_ONDEMAND_SNAPSHOT
 
+  # Take remediation actions.
+  TAKE_REMEDIATION_ACTIONS
+
   # The operation to tier existing snapshots in bulk through snapshot management.
   TIER_EXISTING_SNAPSHOTS
   TOGGLE_BLACKOUT_WINDOW
@@ -18559,7 +18617,13 @@ enum AuthorizedOperation {
   # View cross-account pair.
   VIEW_CROSS_ACCOUNT_PAIR
   VIEW_DASHBOARD
+
+  # View data access governance.
+  VIEW_DATA_ACCESS_GOVERNANCE
   VIEW_DATA_CLASS_GLOBAL
+
+  # View data detection and response alerts.
+  VIEW_DATA_DETECTION_AND_RESPONSE_ALERTS
 
   # View account-wide data security risk metrics, scores, and recommendations.
   VIEW_DATA_SECURITY_DETAILS
@@ -18569,6 +18633,9 @@ enum AuthorizedOperation {
 
   # View distribution list email settings.
   VIEW_DL_EMAIL_SETTINGS
+
+  # View DSPM integrations.
+  VIEW_DSPM_INTEGRATIONS
 
   # View event cluster settings.
   VIEW_EVENT_CLUSTER_SETTING
@@ -19584,6 +19651,20 @@ input AwsGetPermissionPoliciesInput {
   # List of cloud account features with specific permissions group. This is a valid input only for customer-managed cluster users.
   featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!]
 }
+# Represents the AWS IAM pair.
+type AwsIamPair {
+  # ID of the AWS IAM pair.
+  awsIamPairId: String!
+
+  # Name of the AWS IAM role.
+  awsIamRoleName: String!
+
+  # ARN of the AWS IAM role.
+  awsIamRoleArn: String!
+
+  # The list of features with permission groups of the AWS IAM pair.
+  featuresWithPermissionsGroups: [FeatureWithPermissionsGroupsOutputType!]!
+}
 # Input to specify either AWS IAM pair ID or AWS IAM role name.
 input AwsIamPairInput {
   # ID of the AWS IAM pair.
@@ -19591,6 +19672,14 @@ input AwsIamPairInput {
 
   # Name of the AWS IAM role.
   awsIamRoleName: String = ""
+}
+# Represents the IAM pairs with missing permission.
+type AwsIamPairsWithMissingPermission {
+  # AWS IAM pair details.
+  awsIamPair: AwsIamPair!
+
+  # The missing permissions groups that is needed to be used with archival location.
+  missingPermissionsGroups: [PermissionsGroup!]!
 }
 # Immutability settings for creating AWS locations.
 input AwsImmutabilitySettings {
@@ -19999,7 +20088,10 @@ type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnap
   authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]!
 
   # AWS Native account associated with the EBS Volumes.
-  awsNativeAccount: AwsNativeAccount!
+  awsNativeAccount: AwsNativeAccount! @deprecated(reason: "Deprecated, use awsAccount instead.")
+
+  # AWS Native account associated with the EBS Volumes.
+  awsAccount: AwsNativeAccount
 
   # EC2 Instances to which this volume is attached.
   attachedEc2Instances: [AwsNativeEc2Instance!]!
@@ -20379,7 +20471,10 @@ type AwsNativeEc2Instance implements PolarisHierarchyObject , PolarisHierarchySn
   authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]!
 
   # AWS account of the EC2 instance.
-  awsNativeAccount: AwsNativeAccount!
+  awsNativeAccount: AwsNativeAccount! @deprecated(reason: "Deprecated, use awsAccount instead.")
+
+  # AWS account of the EC2 instance.
+  awsAccount: AwsNativeAccount
 
   # Attach an AWS Elastic Block Store (EBS) volume to your instance.
   attachedEbsVolumes: [AwsNativeEbsVolume!]!
@@ -23622,7 +23717,10 @@ type AwsNativeRdsInstance implements PolarisHierarchyObject , PolarisHierarchySn
   authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]!
 
   # AWS account of the Amazon Relational Database Service (RDS) instance.
-  awsNativeAccount: AwsNativeAccount!
+  awsNativeAccount: AwsNativeAccount! @deprecated(reason: "Deprecated, use awsAccount instead.")
+
+  # AWS account of the Amazon Relational Database Service (RDS) instance.
+  awsAccount: AwsNativeAccount
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
   rscNativeObjectPendingSla: CompactSlaDomain
@@ -24154,7 +24252,10 @@ type AwsNativeRoot {
     filter: [Filter!],
 
     # Filter to include the security metadata.
-    includeSecurityMetadata: Boolean): AwsNativeHierarchyObjectConnection!
+    includeSecurityMetadata: Boolean,
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): AwsNativeHierarchyObjectConnection!
 }
 # AWS native S3 Bucket.
 type AwsNativeS3Bucket implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchyObject , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
@@ -24192,7 +24293,10 @@ type AwsNativeS3Bucket implements PolarisHierarchyObject , PolarisHierarchySnapp
   authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]!
 
   # AWS account of the Amazon S3 bucket.
-  awsNativeAccount: AwsNativeAccount!
+  awsNativeAccount: AwsNativeAccount! @deprecated(reason: "Deprecated, use awsAccount instead.")
+
+  # AWS account of the Amazon S3 bucket.
+  awsAccount: AwsNativeAccount
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
   rscNativeObjectPendingSla: CompactSlaDomain
@@ -25129,9 +25233,6 @@ type AzureAdObject {
   # Reverse relationships of the Azure Active Directory object.
   reverseRelationships: [AzureAdReverseRelationship!]!
 
-  # Snapshot range containing the Azure AD object.
-  snapshotRange: AzureAdSnapshotRange
-
   # Populate either AzureAdUser or AzureAdGroup.
   azureAdObjects: AzureAdObjects!
 
@@ -25140,6 +25241,9 @@ type AzureAdObject {
 
   # Represents count of related items for relationship type.
   relatedItemCount: [AzureAdRelatedItemCount!]!
+
+  # Snapshot range containing the Azure AD object.
+  snapshotRange: AzureAdSnapshotRange!
 }
 # Paginated list of AzureAdObject objects. Each page of the results includes at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type AzureAdObjectConnection {
@@ -27525,7 +27629,10 @@ type AzureNativeRoot {
     filter: [Filter!],
 
     # Filter to include the security metadata.
-    includeSecurityMetadata: Boolean): AzureNativeHierarchyObjectTypeConnection!
+    includeSecurityMetadata: Boolean,
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): AzureNativeHierarchyObjectTypeConnection!
 }
 # An Azure security group. Security groups enable you to configure network security as a natural extension of an application's structure, allowing you to group virtual machines and define network security policies based on those groups. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/application-security-groups.
 type AzureNativeSecurityGroup {
@@ -28262,6 +28369,9 @@ type AzureO365ExocomputeCluster {
 
   # Sharding strategy for the Exocompute.
   shardPoolType: Int!
+
+  # Specifies the multitenant host details.
+  multiTenantHostSpec: MultiTenantHostSpec
 
   # List of AKS load balancer IPs.
   aksLbIps: [String!]!
@@ -30870,6 +30980,9 @@ input BrowseDirectoryFiltersInput {
 
   # Last scan time range specified in the local timezone of the user.
   lastScanFilter: UserTimeRangeInput
+
+  # List to exposure types to filter the paths.
+  exposureFilter: [OpenAccessType!] = []
 }
 # Input for browsing SQL Server database snapshots.
 input BrowseMssqlDatabaseSnapshotInput {
@@ -34016,6 +34129,9 @@ type CdmSnapshot implements GenericSnapshot {
 
   # Db2 specific metadata for the snapshot.
   db2AppMetadata: Db2AppMetadata
+
+  # Mongo source specific metadata for the snapshot.
+  mongoSourceAppMetadata: MongoSourceAppMetadata
 
   # VMware specific metadata for the snapshot.
   vmwareAppMetadata: VmwareAppMetadata
@@ -37874,6 +37990,9 @@ type ClusterNetworkInterfaceDetails {
 
   # Network interface name for the corresponding cluster.
   interfaceName: String!
+
+  # Network interface display name for the corresponding cluster.
+  interfaceDisplayName: String!
 }
 # Rubrik cluster node.
 type ClusterNode {
@@ -42753,6 +42872,12 @@ enum DataGovObjectType {
   # Represents Microsoft Azure native root.
   AZURE_NATIVE_ROOT
 
+  # Represents an Azure SQL Database DB.
+  AZURE_NATIVE_SQL_DATABASE_DB
+
+  # Represents an Azure SQL Managed Instance DB.
+  AZURE_NATIVE_SQL_MANAGED_INSTANCE_DB
+
   # Represents an Azure Native Storage Account.
   AZURE_NATIVE_STORAGE_ACCOUNT
 
@@ -43229,6 +43354,20 @@ enum DataViewTypeEnum {
 
   # Specifies the Threat Monitoring snapshot result information.
   THREAT_MONITORING_SNAPSHOT_RESULTS
+}
+# Represents the type of entity in the context of database workloads.
+enum DatabaseEntityType {
+  # Database entity type.
+  DATABASE
+
+  # Schema entity type.
+  SCHEMA
+
+  # Table entity type.
+  TABLE
+
+  # Undefined entity.
+  UNDEFINED_ENTITY
 }
 # Supported in v5.3+
 # Type of database.
@@ -45047,6 +45186,17 @@ input DeleteReplicationPairInput {
 
   # Target Rubrik cluster UUID.
   targetClusterUuid: UUID!
+}
+# Template for delete replication pair tpr request changes.
+type DeleteReplicationPairTprReqChangesTemplate implements RequestedChangesTemplate {
+  # Requested action string.
+  requestedAction: String!
+
+  # Replication pair details containing source and target cluster names.
+  replicationPair: TprReplicationPair
+
+  # Name of the requested changes template for quorum authorization.
+  templateName: String!
 }
 # Input for deleting a SAP HANA snapshot.
 input DeleteSapHanaDbSnapshotInput {
@@ -47046,10 +47196,10 @@ input EventDigestConfig {
   # Activity statuses to include in event digest.
   activityStatus: [ActivityStatusEnum!]
 
-  # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, TENANT_QUOTA, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, USER_INTELLIGENCE, and OTHER_FILTER_ITEM.
+  # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, TENANT_QUOTA, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, PROTECTED_OBJECT_DELETION, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, USER_INTELLIGENCE, and OTHER_FILTER_ITEM.
   activityType: [String!]
 
-  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, THREAT_FEED, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, RUBY_AI, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, ANOMALY, Recovery, Download, FILE_DOWNLOAD, and Index.
+  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, THREAT_FEED, BULK_RECOVERY, DATA_RISKS, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, RUBY_AI, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, ANOMALY, Recovery, Download, FILE_DOWNLOAD, and Index.
   auditType: [UserAuditTypeEnum!]
 
   # Activity severities to include in event digest.
@@ -47069,10 +47219,10 @@ type EventDigestConfigInfo {
   # Activity statuses to include in event digest.
   activityStatus: [ActivityStatusEnum!]
 
-  # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, TENANT_QUOTA, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, USER_INTELLIGENCE, and OTHER_FILTER_ITEM.
+  # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, TENANT_QUOTA, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, PROTECTED_OBJECT_DELETION, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, USER_INTELLIGENCE, and OTHER_FILTER_ITEM.
   activityType: [String!]
 
-  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, THREAT_FEED, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, RUBY_AI, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, ANOMALY, Recovery, Download, FILE_DOWNLOAD, and Index.
+  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, THREAT_FEED, BULK_RECOVERY, DATA_RISKS, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, RUBY_AI, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, ANOMALY, Recovery, Download, FILE_DOWNLOAD, and Index.
   auditType: [UserAuditTypeEnum!]
 
   # Activity severities to include in event digest.
@@ -47315,7 +47465,7 @@ enum EventObjectType {
   # Microsoft 365 Backup Storage OneDrive.
   M365_BACKUP_STORAGE_ONEDRIVE
 
-  # Microsoft 365 Backup Storage Organization.
+  # Microsoft 365 Backup Storage Subscription.
   M365_BACKUP_STORAGE_ORG
 
   # Microsoft 365 Backup Storage SharePoint Site.
@@ -47689,6 +47839,9 @@ enum EventType {
 
   # Ownership change event.
   OWNERSHIP
+
+  # Protected object deletion event type.
+  PROTECTED_OBJECT_DELETION
 
   # Ransomware Investigation analysis event.
   RANSOMWARE_INVESTIGATION_ANALYSIS
@@ -49310,6 +49463,14 @@ input ExportVcdVappSnapshotInfo {
   # Configuration of vApp snapshot export job.
   config: VappExportSnapshotJobConfigInput
 }
+# ExposureSummary contains exposure type and associated aggregated results.
+type ExposureSummary {
+  # Type of exposure.
+  exposureType: OpenAccessType!
+
+  # Number of files.
+  fileCount: SummaryCount
+}
 # Key value pair for external artifacts associated with an AWS account.
 input ExternalArtifactMap {
   # AWS unique identifier of the external artifact.
@@ -50282,6 +50443,14 @@ input FeatureWithPermissionsGroups {
   # List of permissions groups to include for the feature. If the list is empty, all permissions groups will be included.
   permissionsGroups: [PermissionsGroup!] = []
 }
+# Represents the feature with permission groups.
+type FeatureWithPermissionsGroupsOutputType {
+  # Feature type.
+  featureType: [CloudAccountFeature!]!
+
+  # Permissions groups of feature.
+  permissionsGroups: [PermissionsGroup!]!
+}
 # Status of the Federated Access feature for the specified account.
 type FederatedLoginStatus {
   # Specifies whether Federated Access is enabled.
@@ -50531,6 +50700,12 @@ type FileResult {
 
   # Represents files with the total number of hits, including sensitive and non-sensitive hits.
   filesWithTotalHits: Hits
+
+  # Represents the type of database entity.
+  dbEntityType: DatabaseEntityType!
+
+  # Represents the number of files associated with different exposure types.
+  exposureSummary: [ExposureSummary!]!
   snappable: HierarchyObject!
 }
 # Paginated list of FileResult objects. Each page of the results includes at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
@@ -50574,6 +50749,9 @@ enum FileResultSortBy {
 
   # Sort by number of hits for a data type.
   DATA_TYPE
+
+  # Sort by number of files for PUBLIC, EXPLICIT, and NOT_OPEN access types.
+  EXPOSED_FILES
   FILES_WITH_HITS
   FILES_WITH_OPEN_ACCESS_HITS
   HITS
@@ -50824,9 +51002,8 @@ input FilesetExportFilesJobConfigInput {
   # Network share ID.
   shareId: String
 
-  # Supported in v9.0, v9.2+
-  # v9.0: Optional field which excludes the paths specified during recovery.
-  # v9.2+: Optional field which excludes the paths specified during recovery.
+  # Supported in v8.1+
+  # Optional field which excludes the paths specified during recovery.
   excludePaths: [String!] = []
 
   # Supported in v8.1+
@@ -50933,9 +51110,8 @@ input FilesetRestoreFilesJobConfigInput {
   # Optional field to determine if we should ignore single error during restore. Default value is false.
   ignoreErrors: Boolean
 
-  # Supported in v9.0, v9.2+
-  # v9.0: Optional field which excludes the paths specified during recovery.
-  # v9.2+: Optional field which excludes the paths specified during recovery.
+  # Supported in v8.1+
+  # Optional field which excludes the paths specified during recovery.
   excludePaths: [String!] = []
 
   # Supported in v8.1+
@@ -51649,6 +51825,29 @@ type FilesetUpdate {
   # Supported in v5.2+
   # Assign partition ids to set the force full. In order for this to be valid input, forceFull must be set to true.
   forceFullPartitionIds: [Int!]!
+
+  # Supported in v5.3+
+  # Rubrik CDM uses a prefix match to select the latest SnapMirror snapshot that matches this value during a full backup of a SnapMirror destination share.
+  snapMirrorLabelForFullBackup: String
+
+  # Supported in v5.3+
+  # Rubrik CDM selects the latest SnapMirror snapshot that matches this value using a prefix match during an incremental backup of a SnapMirror destination share.
+  snapMirrorLabelForIncrementalBackup: String
+}
+# Supported in v5.0+
+input FilesetUpdateInput {
+  # Supported in v5.0+
+  # v5.0-v5.1: Assign Fileset to SLA domain
+  # v5.2+: Assign Fileset to SLA domain. Existing snapshots of the object will be retained with the configuration of specified SLA Domain.
+  configuredSlaDomainId: String
+
+  # Supported in v5.2+
+  # Whether to force a full on the whole fileset or certain partitions of the fileset. If this is set to true and no partitionIds are provided, then a full will be forced on the whole fileset. If set to true and partitionIds are provided, then we will force a full on only those partitions.
+  forceFull: Boolean
+
+  # Supported in v5.2+
+  # Assign partition ids to set the force full. In order for this to be valid input, forceFull must be set to true.
+  forceFullPartitionIds: [Int!] = []
 
   # Supported in v5.3+
   # Rubrik CDM uses a prefix match to select the latest SnapMirror snapshot that matches this value during a full backup of a SnapMirror destination share.
@@ -54356,6 +54555,9 @@ type GetWhitelistReply {
   enabled: Boolean!
   mode: WhitelistModeEnum!
   ipCidrs: [String!]!
+
+  # List of all IP entries in the allowlist.
+  ipInfos: [IpInfo!]!
 }
 # Specifies the Ransomware Investigation alert enablement for a workload.
 type GetWorkloadAlertSettingReply {
@@ -55034,6 +55236,9 @@ input GroupFilterInput {
 
   # Filter user groups by name.
   nameFilter: String = ""
+
+  # Filter according to the authentication domain ID.
+  authDomainIdsFilter: [String!] = []
 }
 # Fields by which we can sort user groups.
 enum GroupSortByField {
@@ -56041,6 +56246,9 @@ enum HierarchyFilterField {
   # Filter Microsoft SQL Server failover clusters that are protected by an SLA Domain.
   MSSQL_IS_FAILOVER_CLUSTER_PROTECTED
 
+  # Filter Microsoft SQL Server failover clusters that are unprotectable.
+  MSSQL_IS_FAILOVER_CLUSTER_UNPROTECTABLE
+
   # Filter Microsoft SQL Server hosts that are protected by an SLA Domain.
   MSSQL_IS_HOST_PROTECTED
 
@@ -56404,6 +56612,9 @@ enum HierarchyObjectTypeEnum {
   # Exchange DAG.
   EXCHANGE_DAG
 
+  # Exchange Host.
+  EXCHANGE_HOST
+
   # Exchange Server.
   EXCHANGE_SERVER
   Ec2Instance
@@ -56488,6 +56699,9 @@ enum HierarchyObjectTypeEnum {
 
   # MongoDB Source.
   MONGO_SOURCE
+
+  # MSSQL Host.
+  MSSQL_HOST
 
   # MySQL Database.
   MYSQLDB_DATABASE
@@ -60594,6 +60808,12 @@ type IdentityProvider {
   # Specifies whether the identity provider is the default.
   isDefault: Boolean!
 
+  # Number of authorized groups for the identity provider.
+  authorizedGroupsCount: Int!
+
+  # Number of users from the identity provider that have an active session.
+  activeUserCount: Int!
+
   # Expiration date of the identity providers metadata.
   expirationDate: DateTime
 
@@ -61360,6 +61580,23 @@ input IpConfigInput {
   # Subnet mask.
   netmask: String!
 }
+# Information about an entry in the IP allowlist.
+type IpInfo {
+  # The IP address/range/subnet of the entry.
+  ipCidr: String!
+
+  # The IP address/range/subnet of the entry.
+  description: String!
+
+  # Whether the entry contains the user's current IP address.
+  containsCurrentIpAddress: Boolean!
+
+  # The timestamp for when the entry was first created.
+  createdAt: DateTime!
+
+  # The timestamp for when the entry was last updated.
+  updatedAt: DateTime!
+}
 # IP allow list of Rubrik cluster mappings.
 input IpMappingInput {
   # Rubrik cluster UUID.
@@ -61626,6 +61863,9 @@ input JobInfoRequestDetails {
 
   # Populate for `SQL Server instance` specific jobs.
   mssqlInstanceInfo: MssqlInstanceInfo
+
+  # Populate for `MYSQLDB_INSTANCE` jobs.
+  mysqldbInstanceInfo: MysqldbInstanceInfo
 }
 type JobMetadata {
   id: Long!
@@ -61829,6 +62069,9 @@ enum JobType {
 
   # Unmount of a Microsoft SQL Server.
   MSSQL_UNMOUNT
+
+  # MySQL DB instance.
+  MYSQLDB_INSTANCE
 
   # NAS system operation.
   NAS_SYSTEM_CRUD
@@ -64377,7 +64620,26 @@ input ListFileResultFiltersInput {
 
   # List of mip labels to filter the paths.
   mipLabelsFilter: [MipLabelsFilterInput!] = []
+
+  # Violation ID to filter the paths.
+  violationId: String = ""
+
+  # List to exposure types to filter the paths.
+  exposureFilter: [OpenAccessType!] = []
   fileType: FileCountType!
+}
+# Input for listing the IAM pairs of the provided cloud account and any missing permission groups, if applicable, for an optional archival location.
+input ListIamPairsByCloudAccountAndLocationInput {
+  # Optional Rubrik archival location ID.
+  locationId: String
+
+  # The Rubrik ID of the cloud account.
+  cloudAccountId: String = ""
+}
+# Represents the reply of list IAM pairs for cloud account for location query.
+type ListIamPairsByCloudAccountAndLocationReply {
+  # The list of IAM pairs and their missing permissions for the specified archival location.
+  iamPairs: [AwsIamPairsWithMissingPermission!]!
 }
 # Returned in response to a ListIntegrationsReq and
 # holds the requested integrations.
@@ -66075,6 +66337,9 @@ enum ManagedObjectType {
   # Exchange Database.
   EXCHANGE_DATABASE
 
+  # Exchange Host.
+  EXCHANGE_HOST
+
   # Exchange Server.
   EXCHANGE_SERVER
 
@@ -66197,6 +66462,9 @@ enum ManagedObjectType {
 
   # MSSQL database.
   MSSQL_DATABASE
+
+  # MSSQL Host.
+  MSSQL_HOST
 
   # MSSQL instance.
   MSSQL_INSTANCE
@@ -67917,6 +68185,9 @@ enum MetadataKey {
   # Cluster ID used to generate cluster hyperlink.
   CLUSTER_LINK_ID
 
+  # Specifies custom UI components to use for the column.
+  CUSTOM_CELL_TYPE
+
   # Specifies whether to hide the chart legend component.
   HIDE_CHART_LEGEND
 
@@ -68131,6 +68402,44 @@ interface MicrosoftMailbox {
 
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
+}
+# Represents the Microsoft Information Protection Label.
+type MicrosoftMipLabel {
+  # Represents label ID of the label.
+  labelId: String!
+
+  # Represents the display name of the label.
+  displayName: String!
+
+  # Represents the description for the Users.
+  descriptionForUsers: String!
+
+  # Represents the description for the Admins.
+  descriptionForAdmins: String!
+
+  # Represents the color of the label.
+  color: String!
+
+  # Represents the sensitivity of the label.
+  sensitivity: Int!
+
+  # Represents the active status of the label.
+  isActive: Boolean!
+
+  # Represents the appliable status of the label.
+  isAppliable: Boolean!
+
+  # Determines whether this label has protection.
+  hasProtection: Boolean!
+
+  # Represents the content format of the label.
+  contentFormats: [String!]!
+
+  # Represents the parent label ID of the label.
+  parentLabelId: String!
+
+  # Represents the tenant ID of the label.
+  tenantId: String!
 }
 # An interface for Microsoft Onedrive.
 interface MicrosoftOnedrive {
@@ -70587,6 +70896,11 @@ input MongoSourceAddRequestConfigInput {
   # Required. Supported in v8.1+
   # Name of the MongoDB cluster.
   sourceName: String!
+}
+# App metadata for snapshot of a Mongo Source.
+type MongoSourceAppMetadata {
+  # Size of the snapshot in bytes.
+  snapshotSize: Long
 }
 # Paginated list of MongoSource objects. Each page of the results includes at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type MongoSourceConnection {
@@ -75482,6 +75796,14 @@ type MultiTenancyConsumptionType {
   # Consumption statistics of a multitenancy tenant.
   consumption: LicenseConsumptionType
 }
+# MultiTenant host specification.
+type MultiTenantHostSpec {
+  # Azure App ID of the multi-tenant host.
+  multiTenantHostAzureAppId: String!
+
+  # Network configuration of the multi-tenant host.
+  multiTenantHostNetworkConfig: NetworkConfig
+}
 # TPR requested changes template for editing TPR policies for a role.
 type MutateRoleReqChangesTemplate implements RequestedChangesTemplate {
   # Old policies on the role.
@@ -75495,6 +75817,11 @@ type MutateRoleReqChangesTemplate implements RequestedChangesTemplate {
 
   # Name of the requested changes template for quorum authorization.
   templateName: String!
+}
+# Additional information for `MYSQL` jobs.
+input MysqldbInstanceInfo {
+  # ID of the MySQL Instance.
+  mysqldbInstanceFid: String = ""
 }
 # SLA Domain configuration for MySQL.
 type MysqldbSlaConfig {
@@ -77630,6 +77957,17 @@ enum NetworkAccess {
 
   # Unknown network access.
   NETWORK_ACCESS_UNSPECIFIED
+}
+# Network configuration used for multi-tenancy.
+type NetworkConfig {
+  # Virtual network ID.
+  vnetId: String!
+
+  # Subnet ID.
+  subnetId: String!
+
+  # Security group ID.
+  securityGroupId: String!
 }
 # Represents a GCP native network host project.
 type NetworkHostProject {
@@ -83953,7 +84291,12 @@ type O365TeamConvChannel {
 
   # The RSC ID of channel, used only for browsing files.
   channelId: String
+
+  # Display name of the channel.
   name: String!
+
+  # Specifies whether the channel is relic or not.
+  isArchived: Boolean
 
   # The ID of sharepoint folder of the channel.
   folderId: String!
@@ -83990,7 +84333,12 @@ input O365TeamConvChannelInput {
 
   # The RSC ID of channel, used only for browsing files.
   channelId: String
+
+  # Display name of the channel.
   name: String!
+
+  # Specifies whether the channel is relic or not.
+  isArchived: Boolean
 
   # The ID of sharepoint folder of the channel.
   folderId: String!
@@ -84199,14 +84547,26 @@ type O365Teams implements HierarchyObject , HierarchySnappable , PolarisHierarch
   newestIndexedSnapshot: PolarisSnapshot
 }
 type O365TeamsChannel implements O365TeamsChannelObject {
+  # The Rubrik ID of Microsoft 365 Teams channel.
   id: String
+
+  # The natural ID of Microsoft 365 Teams channel.
   naturalId: String
+
+  # Display name of the channel.
   name: String
+
+  # The ID of SharePoint folder of the channel.
   folderId: String
+
+  # The name of SharePoint folder of the channel.
   folderName: String
 
   # The membership type of the channel.
   membershipType: ChannelMembershipType
+
+  # Specifies whether the channel is relic or not.
+  isArchived: Boolean
 }
 # Paginated list of O365TeamsChannel objects. Each page of the results includes at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type O365TeamsChannelConnection {
@@ -85177,6 +85537,9 @@ enum Operation {
   # Manage distribution list email settings.
   MANAGE_DL_EMAIL_SETTINGS
 
+  # Manage DSPM Integrations.
+  MANAGE_DSPM_INTEGRATIONS
+
   # Manage GPS to RSC upgrade.
   MANAGE_GPS_TO_RSC_UPGRADE
 
@@ -85186,6 +85549,9 @@ enum Operation {
   # Manage KMS Key Vault settings.
   MANAGE_KMS_KEY_VAULT
   MANAGE_LEGAL_HOLD
+
+  # Manage log shipping.
+  MANAGE_LOG_SHIPPING
 
   # Manage migration dashboard.
   MANAGE_MIGRATION_DASHBOARD
@@ -85277,6 +85643,9 @@ enum Operation {
   RESTORE_TO_ORIGIN
   TAKE_ON_DEMAND_SNAPSHOT
 
+  # Take remediation actions.
+  TAKE_REMEDIATION_ACTIONS
+
   # The operation to tier existing snapshots in bulk through snapshot management.
   TIER_EXISTING_SNAPSHOTS
   TOGGLE_BLACKOUT_WINDOW
@@ -85319,7 +85688,13 @@ enum Operation {
   # View cross-account pair.
   VIEW_CROSS_ACCOUNT_PAIR
   VIEW_DASHBOARD
+
+  # View data access governance.
+  VIEW_DATA_ACCESS_GOVERNANCE
   VIEW_DATA_CLASS_GLOBAL
+
+  # View data detection and response alerts.
+  VIEW_DATA_DETECTION_AND_RESPONSE_ALERTS
 
   # View account-wide data security risk metrics, scores, and recommendations.
   VIEW_DATA_SECURITY_DETAILS
@@ -85329,6 +85704,9 @@ enum Operation {
 
   # View distribution list email settings.
   VIEW_DL_EMAIL_SETTINGS
+
+  # View DSPM integrations.
+  VIEW_DSPM_INTEGRATIONS
 
   # View event cluster settings.
   VIEW_EVENT_CLUSTER_SETTING
@@ -88571,7 +88949,7 @@ type PausedClustersInfo {
   # Rubrik clusters where the SLA Domain is paused.
   pausedClusters: [Cluster!]
 }
-# Details related to how user will be pulling image from our container registry.
+# Details on how users can retrieve images from Rubrik's AWS container registry.
 type PcrAwsImagePullDetails {
   # AWS account ID of the account from which user will be pulling.
   awsNativeId: String!
@@ -88581,8 +88959,18 @@ input PcrAwsImagePullDetailsInput {
   # Native ID of the AWS account from which user will be retrieving images.
   awsNativeId: String = ""
 }
+# Details on how users can retrieve images from Rubrik's Azure container registry.
+type PcrAzureImagePullDetails {
+  # App ID of the user's Azure app which will be permitted to pull images from Rubrik's Azure Container Registry.
+  customerAppId: String!
+}
+# Azure-specific details on how users will retrieve images from Rubrik's Azure container registry.
+input PcrAzureImagePullDetailsInput {
+  # The app ID of the user's Azure app that will retrieve images from Rubrik's Azure Container Registry. This app will be granted azurePull permissions to the repository.
+  customerAppId: String = ""
+}
 # Details related to how user will retrieve images from our registry.
-union PcrImagePullDetails = PcrAwsImagePullDetails
+union PcrImagePullDetails = PcrAwsImagePullDetails | PcrAzureImagePullDetails
 # The group type for the pending action.
 enum PendingActionGroupTypeEnum {
   APP_FLOW
@@ -89631,6 +90019,9 @@ type PolarisSnapshot implements GenericSnapshot {
   isReplica: Boolean
   isArchivalCopy: Boolean
 
+  # Archived copies of the snapshot.
+  archivedSnapshots: [ArchivedSnapshot!]
+
   # Specifies whether the snapshot is quarantined.
   isQuarantined: Boolean!
   replicationLocations: [DataLocation!]
@@ -89957,6 +90348,9 @@ type PolicyObj {
 
   # Signifies the violation severity of the asset.
   violationSeverity: ViolationSeverity!
+
+  # Signifies the file exposure summary of the asset.
+  exposureSummary: [ExposureSummary!]!
   id: String!
   folderChildConnection(
     # Returns the first n elements from the list.
@@ -89985,7 +90379,10 @@ type PolicyObj {
   whitelistedAnalyzerList(stdPath: String!): [WhitelistedAnalyzer!]!
   policySummaries: [ClassificationPolicySummary!]!
   objectStatus: ObjectStatus!
-  allAnalyzerMappings(stdPath: String!): [AnalyzerMapping!]!
+  allAnalyzerMappings(stdPath: String!,
+
+    # FileMode represents the type of object at the path (File/Directory/Symlink).
+    fileMode: DataGovFileMode): [AnalyzerMapping!]!
   snappable: HierarchyObject
 }
 # Paginated list of PolicyObj objects. Each page of the results includes at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
@@ -90348,7 +90745,7 @@ type PrivateContainerRegistryDetailsType {
   # URL of user's Private Container Registry.
   registryUrl: String!
 
-  # Details of how a user retrieves images to their AWS account from our container registry.
+  # Details on how users can retrieve images from Rubrik's container registry to their private container registry.
   imagePullDetails: PcrImagePullDetails
 }
 # Input to retrieve Private Container Registry details.
@@ -90358,7 +90755,7 @@ input PrivateContainerRegistryInput {
 }
 # Response to the request to retrieve details of a PCR.
 type PrivateContainerRegistryReplyType {
-  # Details of PCR consisting of registry URL and how user pulls images into their registry from their AWS account.
+  # Details of PCR, including the registry URL and how users retrieve images from Rubrik's container registry into their registry.
   pcrDetails: PrivateContainerRegistryDetailsType
 
   # Latest approved Exotask bundle version for your Private Container. If no approved bundle is available, this field will be empty.
@@ -94097,7 +94494,7 @@ type Role {
   isOrgAdmin: Boolean!
 
   # Role permissions.
-  permissions: [Permission!]!
+  permissions: [Permission!]! @deprecated(reason: "Use effectiveRbacPermissions and explicitlyAssignedPermissions instead.")
 
   # Role permissions that are in effect.
   effectivePermissions: [Permission!]! @deprecated(reason: "Use effectiveRbacPermissions instead.")
@@ -94164,7 +94561,7 @@ type RoleTemplate {
   id: String!
   name: String!
   description: String!
-  permissions: [Permission!]!
+  permissions: [Permission!]! @deprecated(reason: "Use explicitlyAssignedPermissions instead.")
 
   # Role permissions that are explicitly assigned to the template.
   explicitlyAssignedPermissions: [Permission!]!
@@ -97521,8 +97918,14 @@ input SetPrivateContainerRegistryInput {
   # URL of user's Private Container Registry.
   registryUrl: String!
 
-  # Details of how a user retrieves images from their AWS account from our container registry.
+  # Cloud type for which PCR is being set up.
+  cloudType: CloudType = AWS
+
+  # Details on how users can retrieve images from Rubrik's AWS container registry into their PCR.
   pcrAwsImagePullDetails: PcrAwsImagePullDetailsInput
+
+  # Details on how users can retrieve images from Rubrik's Azure container registry into their PCR.
+  pcrAzureImagePullDetails: PcrAzureImagePullDetailsInput
 }
 # Custom certs to be added for org's Service Provider.
 input SetSsoCertificateInput {
@@ -99335,6 +99738,9 @@ union SnappableLocationType = AzureSnappableLocation | CdmSnappableLocation | Wo
 input SnappablePathInput {
   snappableFid: String = ""
   stdPath: String = ""
+
+  # Mode of the path selected (DIRECTORY/FILE/SYMLINK).
+  mode: DataGovFileMode = UNKNOWN
 }
 # Represents the snappable contents to be restored.
 input SnappableRestoreConfig {
@@ -102295,6 +102701,12 @@ type TagRuleEffectiveSla {
 
   # The effective SLA Domain name.
   name: String!
+
+  # Specifies if this SLA Domain is retention-locked or not.
+  isRetentionLockedSla: Boolean!
+
+  # Specifies the retention lock mode when enabled for the SLA Domain.
+  retentionLockMode: RetentionLockMode!
 }
 # SLA assignment type of a tag rule.
 enum TagRuleSlaAssignType {
@@ -103392,6 +103804,10 @@ enum ThreatHuntMatchesFound {
 
   # No matches found.
   NO_MATCHES
+
+  # The objects were unscannable, or scanning failed, or scanning was partially
+  # successful and no matches were found.
+  UNSCANNED
 }
 # Matches found during the threat hunt that are also quarantined.
 enum ThreatHuntQuarantinedMatchType {
@@ -103886,6 +104302,14 @@ type TprPublicConfiguration {
   # Maximum timeout for on-demand execution of TPR requests, in hours.
   executionMaxTimeoutHours: Int
 }
+# Replication pair details containing source and target cluster names.
+type TprReplicationPair {
+  # Source Cluster Name.
+  sourceClusterName: String!
+
+  # Target Cluster Name.
+  targetClusterName: String!
+}
 # Operation applied on a TPR request.
 enum TprReqOperation {
   # The request was approved.
@@ -104174,6 +104598,9 @@ enum TprRule {
 
   # The TPR rule is for deleting RCV locations.
   DELETE_RCV
+
+  # Quorum authorization is required for deleting replication pair.
+  DELETE_REPLICATION_PAIR
 
   # The TPR rule is for deleting snapshots.
   DELETE_SNAPSHOT
@@ -105511,6 +105938,13 @@ input UpdateFailoverClusterInput {
 # Reply Object for UpdateFailoverCluster.
 type UpdateFailoverClusterReply {
   output: FailoverClusterDetail
+}
+input UpdateFilesetInput {
+  # Required. Properties to update.
+  filesetUpdateProperties: FilesetUpdateInput!
+
+  # Required. ID of the Fileset. to update.
+  id: String!
 }
 input UpdateFloatingIpsInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -107929,6 +108363,7 @@ enum UserAuditTypeEnum {
   Backup
   Classification
   Configuration
+  DATA_RISKS
   Diagnostic
   Download
 
@@ -108058,6 +108493,9 @@ input UserFilterInput {
 
   # Filter users by hidden status.
   hiddenStateFilter: HiddenStateFilter = ALL_USERS
+
+  # Filter according to the authentication doamin ID.
+  authDomainIdsFilter: [String!] = []
 }
 # Summary of group information.
 type UserGroupSummary {
@@ -108619,6 +109057,14 @@ type ValidateOrgNameReply {
 
   # Validity of the organization name.
   nameValidity: NameValidity!
+}
+# Result of validating cloud cluster recover request.
+type ValidationRecoveryReply {
+  # Boolean message generated by validation.
+  canBeRecovered: Boolean!
+
+  # Detailed message generated by validation.
+  message: String!
 }
 # Result of validating cloud cluster create request.
 type ValidationReply {

@@ -214,6 +214,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mssqlAddHost")]
         public MssqlAddHostOperation? MssqlAddHost { get; set; }
 
+        //      C# -> KosmosRecoveryInfo? KosmosRecoveryInfo
+        // GraphQL -> kosmosRecoveryInfo: KosmosRecoveryInfo (input)
+        [JsonProperty("kosmosRecoveryInfo")]
+        public KosmosRecoveryInfo? KosmosRecoveryInfo { get; set; }
+
+        //      C# -> MssqlInstanceInfo? MssqlInstanceInfo
+        // GraphQL -> mssqlInstanceInfo: MssqlInstanceInfo (input)
+        [JsonProperty("mssqlInstanceInfo")]
+        public MssqlInstanceInfo? MssqlInstanceInfo { get; set; }
+
+        //      C# -> MysqldbInstanceInfo? MysqldbInstanceInfo
+        // GraphQL -> mysqldbInstanceInfo: MysqldbInstanceInfo (input)
+        [JsonProperty("mysqldbInstanceInfo")]
+        public MysqldbInstanceInfo? MysqldbInstanceInfo { get; set; }
+
 
         #endregion
 

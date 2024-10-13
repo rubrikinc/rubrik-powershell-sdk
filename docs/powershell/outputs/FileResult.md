@@ -58,6 +58,18 @@
   - Represents the creation time of the file.
 - lastScanTime: System.Int64
   - Represents the last scan time of the file.
-- mipLabels: list of MipLabels
-  - Represents the MIP Labels attached to the file.
+- mipLabelsSummary: list of MipLabelSummarys
+  - Represents the MIP Labels attached inside files for the path and their sensitive files count.
+- totalSensitiveHits: System.Int64
+  - Represents the sum of high, medium, and low sensitive hits.
+- sensitiveHits: SensitiveHits
+  - Represents sensitivity hits for various sensitivity levels.
+- totalHits: Hits
+  - Represents the total number of hits, including sensitive and non-sensitive hits.
+- filesWithTotalHits: Hits
+  - Represents files with the total number of hits, including sensitive and non-sensitive hits.
+- dbEntityType: DatabaseEntityType
+  - Represents the type of database entity.
+- exposureSummary: list of ExposureSummarys
+  - Represents the number of files associated with different exposure types.
 - snappable: HierarchyObject

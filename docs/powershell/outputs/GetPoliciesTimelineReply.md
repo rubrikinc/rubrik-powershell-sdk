@@ -24,4 +24,12 @@
   - Count of workloads that are not up to date.
 - mediumRiskObjects: list of TimelineEntrys
   - Count of medium-risk objects.
+- highSensitivityHits: list of TimelineEntrys
+  - Count of high sensitivity hits.
+- mediumSensitivityHits: list of TimelineEntrys
+  - Count of medium sensitivity hits.
+- lowSensitivityHits: list of TimelineEntrys
+  - Count of low sensitivity hits.
+- nonSensitivityHits: list of TimelineEntrys
+  - Count of non sensitivity hits.
 - policySummaries: list of ClassificationPolicySummarys

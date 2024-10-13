@@ -211,6 +211,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterLocation")]
         public DataLocation? PrimaryClusterLocation { get; set; }
 
+        //      C# -> VsphereVcenterLogicalChildTypeConnection? RecoveryLogicalChildConnection
+        // GraphQL -> recoveryLogicalChildConnection: VsphereVcenterLogicalChildTypeConnection! (type)
+        [JsonProperty("recoveryLogicalChildConnection")]
+        public VsphereVcenterLogicalChildTypeConnection? RecoveryLogicalChildConnection { get; set; }
+
         //      C# -> SecurityMetadata? SecurityMetadata
         // GraphQL -> securityMetadata: SecurityMetadata (type)
         [JsonProperty("securityMetadata")]
@@ -245,6 +250,8 @@ namespace RubrikSecurityCloud.Types
         public RscGqlVars LogicalChildConnection { get; set; }
 
         public RscGqlVars PhysicalChildConnection { get; set; }
+
+        public RscGqlVars RecoveryLogicalChildConnection { get; set; }
 
         public RscGqlVars TagChildConnection { get; set; }
 
@@ -294,6 +301,17 @@ namespace RubrikSecurityCloud.Types
                 };
             this.PhysicalChildConnection =
                 new RscGqlVars(null, physicalChildConnectionArgs, null, true);
+            Tuple<string, string>[] recoveryLogicalChildConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortBy", "HierarchySortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
+                    Tuple.Create("filter", "[Filter!]"),
+                    Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
+                };
+            this.RecoveryLogicalChildConnection =
+                new RscGqlVars(null, recoveryLogicalChildConnectionArgs, null, true);
             Tuple<string, string>[] tagChildConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -356,6 +374,7 @@ namespace RubrikSecurityCloud.Types
         VsphereVcenterPhysicalChildTypeConnection? PhysicalChildConnection = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
+        VsphereVcenterLogicalChildTypeConnection? RecoveryLogicalChildConnection = null,
         SecurityMetadata? SecurityMetadata = null,
         SnapshotDistribution? SnapshotDistribution = null,
         VsphereVcenterTagChildTypeConnection? TagChildConnection = null,
@@ -475,6 +494,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterLocation != null ) {
             this.PrimaryClusterLocation = PrimaryClusterLocation;
+        }
+        if ( RecoveryLogicalChildConnection != null ) {
+            this.RecoveryLogicalChildConnection = RecoveryLogicalChildConnection;
         }
         if ( SecurityMetadata != null ) {
             this.SecurityMetadata = SecurityMetadata;
@@ -909,6 +931,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "primaryClusterLocation" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> VsphereVcenterLogicalChildTypeConnection? RecoveryLogicalChildConnection
+        // GraphQL -> recoveryLogicalChildConnection: VsphereVcenterLogicalChildTypeConnection! (type)
+        if (this.RecoveryLogicalChildConnection != null) {
+            var fspec = this.RecoveryLogicalChildConnection.AsFieldSpec(conf.Child("recoveryLogicalChildConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "recoveryLogicalChildConnection" + "\n(" + this.Vars.RecoveryLogicalChildConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1674,6 +1708,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
         {
             this.PrimaryClusterLocation = null;
+        }
+        //      C# -> VsphereVcenterLogicalChildTypeConnection? RecoveryLogicalChildConnection
+        // GraphQL -> recoveryLogicalChildConnection: VsphereVcenterLogicalChildTypeConnection! (type)
+        if (ec.Includes("recoveryLogicalChildConnection",false))
+        {
+            if(this.RecoveryLogicalChildConnection == null) {
+
+                this.RecoveryLogicalChildConnection = new VsphereVcenterLogicalChildTypeConnection();
+                this.RecoveryLogicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("recoveryLogicalChildConnection"));
+
+            } else {
+
+                this.RecoveryLogicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("recoveryLogicalChildConnection"));
+
+            }
+        }
+        else if (this.RecoveryLogicalChildConnection != null && ec.Excludes("recoveryLogicalChildConnection",false))
+        {
+            this.RecoveryLogicalChildConnection = null;
         }
         //      C# -> SecurityMetadata? SecurityMetadata
         // GraphQL -> securityMetadata: SecurityMetadata (type)

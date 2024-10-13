@@ -86,7 +86,7 @@ List of all files and directories in a given path with the given prefix in name.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - path - System.String: The path under which you want your search to run.
     - snapshotFid - System.String: ID of the snapshot to be searched or browsed.
     - searchPrefix - System.String: Name prefix to search for files within a snapshot.
@@ -132,7 +132,7 @@ List all files and directories in a given snappable with the given prefix in nam
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - snappableId - System.String: Snappable ID.
     - searchQuery - System.String: Specify either the name or path prefix argument to search for files within a workload.
 - Returns CloudNativeVersionedFileConnection.

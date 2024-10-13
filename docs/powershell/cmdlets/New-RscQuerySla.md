@@ -5,7 +5,7 @@ List of audit details for a given SLA Domain.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - SlaId - System.String: SLA Domain ID for global SLA Domains and internal ID for SLA Domains created on Rubrik clusters.
@@ -17,7 +17,7 @@ Returns paginated list of SLA domains that were created on Rubrik CDM.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns ClusterSlaDomainConnection.
@@ -37,7 +37,7 @@ The number of objects protected by the SLA Domains.
 - There are 4 arguments.
     - rootOptionalFid - System.String: Forever UUID of the object root. The value of  `none` represents the global hierarchy root.
     - slaIds - list of System.Strings: A list of SLA Domain IDs.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
 - Returns CountOfObjectsProtectedBySLAsResult.
 ### domain
@@ -54,7 +54,7 @@ Retrieves a list of SLA Domains.
 
 - There are 14 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - SlaQuerySortByField: Field to sort the SLA Domains list.
@@ -80,7 +80,7 @@ Retrieves a list of SLA Domains.
 
 - There are 14 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - SlaQuerySortByField: Field to sort the SLA Domains list.
@@ -99,7 +99,7 @@ Status on the clusters where global SLA is synced.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - filter - list of SlaStatusFilterInputs: Filters for SLAStatus.
@@ -115,10 +115,10 @@ Paginated list of SLA Managed Volumes.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
 - Returns ManagedVolumeConnection.
 ### ncdcompliancedata
 NAS Cloud Direct SLA Domain compliance data for the requested clusters.

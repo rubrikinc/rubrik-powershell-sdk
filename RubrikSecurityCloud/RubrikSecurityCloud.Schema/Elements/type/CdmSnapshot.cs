@@ -216,6 +216,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("managedVolumeAppMetadata")]
         public ManagedVolumeAppMetadata? ManagedVolumeAppMetadata { get; set; }
 
+        //      C# -> MongoSourceAppMetadata? MongoSourceAppMetadata
+        // GraphQL -> mongoSourceAppMetadata: MongoSourceAppMetadata (type)
+        [JsonProperty("mongoSourceAppMetadata")]
+        public MongoSourceAppMetadata? MongoSourceAppMetadata { get; set; }
+
         //      C# -> MssqlAppMetadata? MssqlAppMetadata
         // GraphQL -> mssqlAppMetadata: MssqlAppMetadata (type)
         [JsonProperty("mssqlAppMetadata")]
@@ -310,6 +315,7 @@ namespace RubrikSecurityCloud.Types
         List<DataLocation>? LocalLocations = null,
         List<DataLocation>? Locations = null,
         ManagedVolumeAppMetadata? ManagedVolumeAppMetadata = null,
+        MongoSourceAppMetadata? MongoSourceAppMetadata = null,
         MssqlAppMetadata? MssqlAppMetadata = null,
         PendingSnapshotDeletion? PendingSnapshotDeletion = null,
         KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata = null,
@@ -437,6 +443,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ManagedVolumeAppMetadata != null ) {
             this.ManagedVolumeAppMetadata = ManagedVolumeAppMetadata;
+        }
+        if ( MongoSourceAppMetadata != null ) {
+            this.MongoSourceAppMetadata = MongoSourceAppMetadata;
         }
         if ( MssqlAppMetadata != null ) {
             this.MssqlAppMetadata = MssqlAppMetadata;
@@ -875,6 +884,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "managedVolumeAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> MongoSourceAppMetadata? MongoSourceAppMetadata
+        // GraphQL -> mongoSourceAppMetadata: MongoSourceAppMetadata (type)
+        if (this.MongoSourceAppMetadata != null) {
+            var fspec = this.MongoSourceAppMetadata.AsFieldSpec(conf.Child("mongoSourceAppMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mongoSourceAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1700,6 +1721,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ManagedVolumeAppMetadata != null && ec.Excludes("managedVolumeAppMetadata",false))
         {
             this.ManagedVolumeAppMetadata = null;
+        }
+        //      C# -> MongoSourceAppMetadata? MongoSourceAppMetadata
+        // GraphQL -> mongoSourceAppMetadata: MongoSourceAppMetadata (type)
+        if (ec.Includes("mongoSourceAppMetadata",false))
+        {
+            if(this.MongoSourceAppMetadata == null) {
+
+                this.MongoSourceAppMetadata = new MongoSourceAppMetadata();
+                this.MongoSourceAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("mongoSourceAppMetadata"));
+
+            } else {
+
+                this.MongoSourceAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("mongoSourceAppMetadata"));
+
+            }
+        }
+        else if (this.MongoSourceAppMetadata != null && ec.Excludes("mongoSourceAppMetadata",false))
+        {
+            this.MongoSourceAppMetadata = null;
         }
         //      C# -> MssqlAppMetadata? MssqlAppMetadata
         // GraphQL -> mssqlAppMetadata: MssqlAppMetadata (type)

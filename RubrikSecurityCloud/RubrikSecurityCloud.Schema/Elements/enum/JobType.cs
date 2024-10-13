@@ -132,6 +132,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KEY_ROTATION")]
         KEY_ROTATION,
 
+        [EnumMember(Value = "KOSMOS_RECOVERY")]
+        KOSMOS_RECOVERY,
+
         [EnumMember(Value = "LIVE_MOUNT_ORACLE")]
         LIVE_MOUNT_ORACLE,
 
@@ -143,6 +146,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MOSAIC_STORAGE_LOCATION")]
         MOSAIC_STORAGE_LOCATION,
+
+        [EnumMember(Value = "MSSQL_BULK_EXPORT")]
+        MSSQL_BULK_EXPORT,
 
         [EnumMember(Value = "MSSQL_CREATE_LOG_SHIPPING")]
         MSSQL_CREATE_LOG_SHIPPING,
@@ -164,6 +170,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MSSQL_UNMOUNT")]
         MSSQL_UNMOUNT,
+
+        [EnumMember(Value = "MYSQLDB_INSTANCE")]
+        MYSQLDB_INSTANCE,
 
         [EnumMember(Value = "NAS_SYSTEM_CRUD")]
         NAS_SYSTEM_CRUD,

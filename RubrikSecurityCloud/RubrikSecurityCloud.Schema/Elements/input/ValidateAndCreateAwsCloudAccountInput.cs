@@ -63,6 +63,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("outpostAwsNativeId")]
         public System.String? OutpostAwsNativeId { get; set; }
 
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String (scalar)
+        [JsonProperty("orgId")]
+        public System.String? OrgId { get; set; }
+
 
         #endregion
 

@@ -8,7 +8,7 @@ Objects that match the specifications of the AD group.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - orgId - System.String: Org UUID.
     - adGroupSpec - AdGroupSpecInput: The Azure Active Directory group spec.
 - Returns O365AdGroupMemberConnection.
@@ -17,7 +17,7 @@ Active Directory volume export connection.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - filters - list of AdVolumeExportFilters: Filter for Active Directory volume exports.
     - sortBy - AdVolumeExportSortByInput: Sort by argument for Active Directory volume exports.
 - Returns AdVolumeExportConnection.
@@ -53,7 +53,7 @@ Returns which policies are using each analyzer.
     - dataTypeSourceFilter - DataTypeSource: Filter for data category type.
     - dataTypeNameSearchFilter - System.String: Data type name to search.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns AnalyzerUsageConnection.
@@ -71,7 +71,7 @@ Results for Anomaly Investigations.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -84,7 +84,7 @@ Results for Anomaly Investigations grouped by an argument.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - groupBy - AnomalyResultGroupBy: Group anomaly results by field.
@@ -142,7 +142,7 @@ Browse Exchange calendar.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - snappableFid - System.String: The fid for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - folderId - System.String
@@ -154,7 +154,7 @@ Browse Exchange contacts.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - snappableFid - System.String: The fid for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - folderId - System.String
@@ -164,7 +164,7 @@ Browse Exchange contacts.
 ### browsefolder
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - snappableFid - System.String: The fid for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - folderId - System.String
@@ -175,7 +175,7 @@ Browse OneDrive files and folders.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - snappableFid - System.String: The fid for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - folderId - System.String
@@ -187,7 +187,7 @@ Browse channels in a Teams files snapshot.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - snappableFid - System.String: The fid for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
@@ -199,7 +199,7 @@ Browse team files.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - snappableFid - System.String: The fid for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - folderId - System.String
@@ -229,7 +229,7 @@ Details of all the virtual machines with Continuous Data Protection (CDP) SLA Do
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - allCdpVmInfoSort - CdpPerfDashboardSortParam: Sort Type for getting all CDP VMs for CDP performance dashboard.
@@ -249,10 +249,30 @@ Checks whether the latest version of the Microsoft 365 Management App exists.
 - There is a single argument of type CheckLatestVersionMgmtAppExistsInput.
 - Returns CheckLatestVersionMgmtAppExistsReply.
 ### clouddirectnasexport
-A Cloud Direct NAS export object.
+Cloud Direct NAS export object.
 
 - There is a single argument of type System.String.
 - Returns CloudDirectNasExport.
+### clouddirectnasnamespace
+Cloud Direct NAS namespace.
+
+- There is a single argument of type System.String.
+- Returns CloudDirectNasNamespace.
+### clouddirectnasnamespaces
+Paginated list of NAS namespaces.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns CloudDirectNasNamespaceConnection.
+### clouddirectnasshare
+Cloud Direct NAS share.
+
+- There is a single argument of type System.String.
+- Returns CloudDirectNasShare.
 ### clouddirectshares
 Retrieve shares from Cloud Direct site.
 
@@ -273,11 +293,11 @@ Objects that match the specifications of a configured group.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - orgId - System.String: Org UUID.
     - wildcard - System.String: A wildcard pattern that group members' names or URLs must match.
     - pdls - list of System.Strings: A list of preferred data locations that group members must match.
-    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
     - groupFilterAttributes - list of GroupFilterAttributes: A list of attributes to filter out group members.
 - Returns O365ConfiguredGroupMemberConnection.
 ### crawl
@@ -295,7 +315,7 @@ Lists all cross-account pairs.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - GetCrossAccountPairsSortByField: Specifies the field by which the list of cross-account pairs will be sorted.
@@ -456,7 +476,7 @@ List user activity for a specific file on a specific snapshot.
     - ListFileActivitiesInput - ListFileActivitiesInput: Request for getting user activity for a specific path on a specific snapshot.
     - FileActivitiesSort - FileActivitiesSort: Sorts to apply when listing a file's user activities.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns UserActivityResultConnection.
@@ -466,7 +486,7 @@ List user activity for a specific file on a specific snapshot.
 ### getallrolesinorglist
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -523,7 +543,7 @@ Permissions assigned to the role that are in effect.
 ### getuserdownloads
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns list of UserDownloads.
@@ -545,19 +565,19 @@ Get global multifactor authentication (MFA) for an account.
 ### globalsearchresults
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
 - Returns HierarchyObjectConnection.
 ### groupsincurrentanddescendantorganization
 Retrieve groups from current and descendant organizations based on the specified filters.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - filter - GroupFilterInput: Specifies user group filters.
@@ -572,7 +592,7 @@ Get Guest OS credentials.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - filter - list of GuestOsCredentialFilterInputs: Filter for Guest OS credentials.
     - sortBy - GuestOsCredentialSortBy: Sort Guest OS credentials.
 - Returns GuestOsCredentialConnection.
@@ -586,20 +606,20 @@ Paginated list of help content snippets.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - filter - HelpContentSnippetsFilterInput: Filter for help content snippets.
 - Returns HelpContentSnippetConnection.
 ### hierarchyobject
 - There are 2 arguments.
-    - fid - System.String: The Rubrik UUID for the object.
-    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
+    - fid - System.String: Rubrik UUID for the object.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
 - Returns HierarchyObject.
 ### hierarchyobjects
 - There are 2 arguments.
     - fids - list of System.Strings: The Rubrik UUIDs for the objects.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
 - Returns list of HierarchyObjects.
 ### installedversionlist
 - The installedversionlist subcommand takes no arguments.
@@ -659,7 +679,7 @@ Returns all issues filtered by status.
 - There are 5 arguments.
     - status - IssueStatus
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns IssueConnection.
@@ -724,10 +744,10 @@ List of sites in the Microsoft 365 organization.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
     - o365OrgId - System.String: The fid for the O365 organization.
     - excludeChildSites - System.Boolean: When excludeChildSites is set to true, nested child sites are excluded from the results. If not specified, nested child sites are included.
     - protectionType - ProtectionType: Protection type for Microsoft 365 protection.
@@ -747,7 +767,7 @@ Results for Non-Filesystem Anomaly Investigations.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -760,7 +780,7 @@ Results for Non-Filesystem Anomaly Investigations grouped by an argument.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - groupBy - NfAnomalyResultGroupBy: Group non-filesystem anomaly results by field.
@@ -804,7 +824,7 @@ Reply for request to download Rubrik Edge from Rubrik Security Cloud.
     - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns FileResultConnection.
@@ -827,7 +847,7 @@ Returns total sensitive hits grouped by object type and also gives policy level 
     - filter - ObjectTypeSummariesFilter: Filter for object type summary.
     - sort - ObjectTypeAccessSummarySortBy: Field on which to perform the sorting operation.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns ObjectTypeAccessSummaryConnection.
@@ -841,7 +861,7 @@ All orgs.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -920,7 +940,7 @@ Returns details for one policy object.
 ### policyobjs
 Returns status for all objects at a specified timestamp.
 
-- There are 38 arguments.
+- There are 39 arguments.
     - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
@@ -955,8 +975,9 @@ Returns status for all objects at a specified timestamp.
     - networkAccessFilter - list of NetworkAccesss: Filter by network access type.
     - encryptionFilter - list of Encryptions: Filter by encryption type.
     - loggingFilter - list of Loggings: Filter by logging type.
+    - violationSeverityFilter - list of ViolationSeveritys: Violation Severity list input arg.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns PolicyObjConnection.
@@ -986,12 +1007,12 @@ List of all objects protected by the SLA Domains.
 - There are 10 arguments.
     - rootOptionalFid - System.String: Forever UUID of the object root. The value of  `none` represents the global hierarchy root.
     - slaIds - list of System.Strings: A list of SLA Domain IDs.
-    - filter - list of Filters: The hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filter.
     - objectTypeFilter - list of System.Strings: Types of objects to include.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns ProtectedObjectsConnection.
@@ -1020,7 +1041,7 @@ The list of available role templates.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - nameFilter - System.String: Name to filter the results.
@@ -1040,7 +1061,7 @@ Lists the snoozed directories for the account.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - snoozeStatusFilter - list of SnoozeStatuss: Filter by snooze status.
@@ -1067,7 +1088,7 @@ All support user access objects that satisfy the query criteria.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - SupportUserAccessSortByField: Sorting field for support access.
@@ -1094,7 +1115,7 @@ Details of a taskchain.
 ### taskdetailgroupbylist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - filter - TaskDetailFilterInput: Filter task summary by input.
@@ -1104,7 +1125,7 @@ Details of a taskchain.
 ### taskdetaillist
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - filter - TaskDetailFilterInput: Filter task summary by input.
@@ -1144,7 +1165,7 @@ Details of TPR requests.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - filter - TprRequestFilterInput: Specifies the TPR request filters.
@@ -1184,7 +1205,7 @@ List of unmanaged objects.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - input - UnmanagedObjectsInput: Query unmanaged objects.
@@ -1208,7 +1229,7 @@ Gets the status for completed/running upgrade process.
     - timeRange - UserTimeRangeInput: Time range specified in the user's local timezone.
     - userId - System.String
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns FileResultConnection.
@@ -1230,7 +1251,7 @@ Determines if the user already exists in the account.
 ### userauditlist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortOrder - SortOrder: User audit sort order.
@@ -1253,14 +1274,14 @@ All user files.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns list of GetCustomerFacingDownloadsReplys.
 ### usergroups
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - roleIdsFilter - list of System.Strings
@@ -1283,7 +1304,7 @@ Retrieve users from current and descendant organizations based on the specified 
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - UserSortByParam: Specifies sort parameter.
@@ -1291,9 +1312,9 @@ Retrieve users from current and descendant organizations based on the specified 
     - shouldIncludeUserWithoutRole - System.Boolean: Specifies whether we should include users without any roles assigned either in current or descendant orgs. If roleIdsFilter is not empty and this field is set to true, users without any roles will be included as well.
 - Returns UserConnection.
 ### usersonaccountlist
-- There are 11 arguments.
+- There are 12 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -1303,6 +1324,7 @@ Retrieve users from current and descendant organizations based on the specified 
     - lockoutStateFilter - LockoutStateFilter: Filter users based on lockout status.
     - hiddenStateFilter - HiddenStateFilter: Filter users based on hidden status.
     - shouldGetLocalUsersOnly - System.Boolean: Get local users only.
+    - userDomainsFilter - list of UserDomainEnums: Filter users based on their authentication domain.
 - Returns UserConnection.
 ### validateorgname
 Checks whether the tenant org name is valid and unique.
@@ -1314,7 +1336,7 @@ Paginated list of virtual machines under vCloud Director hiearchy.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
@@ -1336,7 +1358,7 @@ Returns all virtual machine files, such as .vmdk, .vmx, and .nvram files, for th
 All Vm recovery jobs info.
 
 - There are 2 arguments.
-    - fid - System.String: The Rubrik UUID for the object.
+    - fid - System.String: Rubrik UUID for the object.
     - input - AllVmRecoveryJobsInfoInput: Input to get all vm recovery jobs info.
 - Returns list of VmRecoveryJobInfos.
 ### volumegroupmounts
@@ -1344,7 +1366,7 @@ Volume Group Live Mount Connection.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - filters - list of VolumeGroupLiveMountFilterInputs: Filter for volume group live mounts.
     - sortBy - VolumeGroupLiveMountSortByInput: Sort by argument for volume group live mounts.
 - Returns VolumeGroupLiveMountConnection.
@@ -1360,7 +1382,7 @@ Specifies workloads that have an anomalous snapshot.
 
 - There are 19 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - beginTime - DateTime: Filters results that started after this time.
