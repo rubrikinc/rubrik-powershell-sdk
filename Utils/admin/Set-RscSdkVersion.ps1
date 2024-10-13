@@ -37,7 +37,7 @@ function updateModuleVersion {
 # branch version.
 # Also, Test-RscSdkRelease will throw an error if the current release
 # is corrupted (e.g. the main branch's version is not what's on the gallery).
-$mainSdkVersion = & "$SdkRoot\Utils\Test-RscSdkRelease.ps1"
+$mainSdkVersion = & "$SdkRoot\Utils\admin\Test-RscSdkRelease.ps1"
 
 if ($NewVersion -eq $mainSdkVersion -and -not $Force) {
     Write-Host "Error: The new version $NewVersion is the same as the main branch version." -ForegroundColor Red
@@ -48,4 +48,4 @@ if ($NewVersion -eq $mainSdkVersion -and -not $Force) {
 updateModuleVersion
 
 # Update CHANGELOG.md
-& "$PSScriptRoot\Set-RscSdkLatestChangelog.ps1" -Version $NewVersion
+& "$SdkRoot\Utils\admin\Set-RscSdkLatestChangelog.ps1" -Version $NewVersion

@@ -21,7 +21,7 @@ If not given, the script will not commit or push the changes to the main branch,
 so it is effectively a dry run.
 
 .EXAMPLE
-.\Utils\Update-RscSdkMainBranch.ps1 -SkipBuild
+.\Utils\admin\Update-RscSdkMainBranch.ps1 -SkipBuild
 #>
 param(
     [switch]$SkipBuild = $false,
@@ -30,7 +30,7 @@ param(
 )
 
 # Change to the root of the repository
-Set-Location $PSScriptRoot\..
+Set-Location $PSScriptRoot\..\..
 
 # Check for a clean repo
 $gitStatus = git status --porcelain
