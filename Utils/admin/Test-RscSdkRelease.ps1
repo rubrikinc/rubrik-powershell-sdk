@@ -27,6 +27,8 @@ $ErrorActionPreference = "Stop"
 # Uncomment this to enable Write-Debug output
 # $DebugPreference = "Continue"
 
+$SdkRoot = Join-Path -Path $PSScriptRoot -ChildPath '..\..' -Resolve
+
 # Private function to retrieve information from the 'main' branch
 function RetrieveMainBranchInfo {
     # Store the initial branch to always return to it
@@ -48,11 +50,11 @@ function RetrieveMainBranchInfo {
         }
 
         # Get the SDK version on the main branch
-        $mainSdkVersion = .\Utils\Get-RscSdkVersion.ps1
+        $mainSdkVersion = ( & "$SdkRoot\Utils\Get-RscSdkVersion.ps1")
         Write-Host "SDK Version on main branch: $mainSdkVersion" -ForegroundColor Blue
         
         # Get the latest changelog version
-        $mainChangelogLatestVersionTag = (.\Utils\Get-RscSdkLatestChangelog.ps1).latestVersionTag
+        $mainChangelogLatestVersionTag = (& "$PSScriptRoot\Get-RscSdkLatestChangelog.ps1").latestVersionTag
         Write-Host "Latest version tag from changelog on main branch: $mainChangelogLatestVersionTag" -ForegroundColor Blue
            
                 

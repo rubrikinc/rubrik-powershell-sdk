@@ -1,6 +1,6 @@
 # Changelog
 
-## ~ Upcoming Version ~
+## Version TBD
 
 New Features:
 
@@ -578,3 +578,4 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
+
