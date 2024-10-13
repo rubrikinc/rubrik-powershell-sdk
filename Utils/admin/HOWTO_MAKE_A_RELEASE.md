@@ -3,9 +3,6 @@
 ## 1. Prerequisites
 
 - You need to be an admin on the github repo.
-- Start in the `devel` branch on your local machine,
-  make sure it is up to date with
-  the `origin/devel` branch, and that there are no uncommitted changes.
 - If you know what's on the dev branch right now is exactly
   what you want to release, you can skip to [step 3](#3-create-a-new-release).
 - Step 2 is about curating the release: changing the version number,
@@ -25,7 +22,8 @@ branch on GitHub is what's on the PowerShell gallery, etc.
 
 ### 2.2. Check the release candidate
 
-The release candidate is the `devel` branch.
+The release candidate is the `devel` branch. Make sure it is up to date and
+clean of any uncommitted changes.
 
 Run a local build and test:
 
@@ -45,7 +43,7 @@ The top entry in `CHANGELOG.md` should say `TBD` :
 ... changes ...
 ```
 
-At this point leave the "TBD" as is, we will update it later. Make sure
+At this point leave the "TBD" as is, we will update it next. Make sure
 the content of the last entry is correct. In particular, make sure PR
 links are included and that the PRs are closed.
 
