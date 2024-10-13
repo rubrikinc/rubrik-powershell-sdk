@@ -1,20 +1,9 @@
-name: Build SDK
+name: Release SDK
 
 on:
-  # push:
-  #   branches: [ "main", "devel" ]
-  # pull_request:
-  #   branches: [ "main", "devel" ]
-  # pull_request_target:
-  #   branches: [ "main", "devel" ]
   workflow_dispatch:
     branches:
       - devel
-    # inputs:
-    #   branch:
-    #     description: 'Branch to build'
-    #     required: true
-    #     default: 'main'
 
 jobs:
   build:
@@ -49,12 +38,22 @@ jobs:
       with:
         dotnet-version: 6.0.x
     
-    # Build SDK
-    - name: Build SDK
-      run: pwsh -NoProfile -NonInteractive -File Utils/Build-RscSdk.ps1 -NoTests -CI
-    
-    # Test SDK
-    - name: Test SDK
+    # Check what is currently the latest release
+    - name: Check Published Release
+      run: pwsh -NoProfile -NonInteractive -File Utils/admin/Test-RscSdkRelease.ps1
+
+    # Check if the current branch is correctly put together
+    - name: Check Release candidate
+      run: pwsh -NoProfile -NonInteractive -File Utils/admin/Test-RscSdkCandidate.ps1
+
+    # Dry run the release
+    - name: Dry run release
       env:
         RSC_SERVICE_ACCOUNT_FILE: ${{ github.workspace }}/service_account.json
-      run: pwsh -NoProfile -NonInteractive -File Utils/Test-RscSdk.ps1 -CI
+      run: pwsh -NoProfile -NonInteractive -File Utils/admin/New-RscSdkRelease.ps1
+
+    # Release
+    - name: Release
+      env:
+        RSC_SERVICE_ACCOUNT_FILE: ${{ github.workspace }}/service_account.json
+      run: pwsh -NoProfile -NonInteractive -File Utils/admin/New-RscSdkRelease.ps1 -NotDry
