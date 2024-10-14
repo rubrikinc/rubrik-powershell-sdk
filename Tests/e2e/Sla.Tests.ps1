@@ -14,7 +14,7 @@ BeforeAll {
     . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
-Describe -Name 'SLAs' -Fixture {
+Describe -Name 'SLA Tests' -Fixture {
     It -Name 'SLA Domains' -Test {
 
         # ----------------------------------------------------------

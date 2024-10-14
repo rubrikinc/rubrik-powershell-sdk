@@ -80,7 +80,8 @@ namespace RubrikSecurityCloud
             {
                 filename = DefaultFileName();
             }
-            Files.WriteFile(filename, this.Query, true);
+            string q = this.Query==null ? "" : this.Query;
+            Files.WriteFile(filename, q, true);
             return filename;
         }
     }

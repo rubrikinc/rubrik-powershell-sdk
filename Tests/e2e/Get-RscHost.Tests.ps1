@@ -4,7 +4,7 @@ Run tests around hosts
 #>
 
 
-Describe -Name 'Get-RscHost' -Tag 'Public' -Fixture{
+Describe -Name 'Get-RscHost Tests' -Tag 'Public' -Fixture{
     BeforeAll {
         . "$PSScriptRoot\..\E2eTestInit.ps1"
     }

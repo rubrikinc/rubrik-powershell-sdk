@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud
             return variables;
         }
 
-        private JToken processVariable(object obj)
+        private JToken processVariable(object? obj)
         {
             if (obj is null)
             {

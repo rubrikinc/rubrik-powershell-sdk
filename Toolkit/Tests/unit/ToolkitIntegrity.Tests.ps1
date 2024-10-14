@@ -3,10 +3,10 @@
 Basic tests to check that the Toolkit is intact
 #>
 BeforeAll {
-    . "$PSScriptRoot\..\..\Utils\ToolkitDev.ps1" -Quiet
+    . "$PSScriptRoot\..\UnitTestInit.ps1"
 }
 
-Describe -Name "Toolkit" -Fixture {
+Describe -Name "Toolkit Integrity Tests" -Fixture {
 
     It -Name 'Toolkit' -Test {
         # Check that toolkit directories exist and are readable
