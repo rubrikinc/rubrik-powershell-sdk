@@ -32,7 +32,7 @@ Describe -Name "Toolkit Integrity Tests" -Fixture {
             $verb = $file.BaseName.Split('-')[0]
             $validVerbs = (Get-Verb).Verb
             $verb | Should -BeIn $validVerbs
-            $file.name | Should -Match "^[a-zA-Z]+-Rsc[a-zA-Z]+\.ps1$"
+            $file.name | Should -Match "^[a-zA-Z]+-Rsc[a-zA-Z0-9]+\.ps1$"
 
             # Check that the file can be loaded without error or side effects
             { . $file.FullName } | Should -Not -Throw
