@@ -4,7 +4,28 @@
 
 New Features:
 
+- Get-RscSla now retrieves all fields required to update or create SLA Domains.
+- Get-RscNutanixVm can now filter by cluster.
+- Register-RscRubrikBackupService now supports adding physical hosts by hostname.
+- New Get cmdlets
+ - Get-RscArchivalLocation
+ - Get-RscAzureNativeVm
+ - Get-RscCloudNativeTagRule
+ - Get-RscDb2Database
+ - Get-RscDb2Instance
+ - Get-RscHypervVm
+ - Get-RscMongoCollection
+ - Get-RscMongoDatabase
+ - Get-RscMongoSource
+ - Get-RscOracleDatabase
+ - Get-RscOracleHost
+ - Get-RscSapHanaDatabase
+ - Get-RscSapHanaSystem
+
 Fixes:
+
+ - Get-RscSnapshot no longer throws an exception due to overfetch of fields.
+ - New-RscSla now properly adds arguments to query.
 
 Breaking Changes:
 

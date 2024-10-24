@@ -72,8 +72,7 @@ function New-RscSla
 
     # The retention lock mode for the intended SLA Domain update.
     [Parameter()]
-    [RubrikSecurityCloud.Types.RetentionLockMode]
-    $RetentionLockMode = [RubrikSecurityCloud.Types.RetentionLockMode]::NO_MODE,
+    [RubrikSecurityCloud.Types.RetentionLockMode]$RetentionLockMode,
 
     # Archival specs for this SLA.
     [Parameter()]
@@ -162,25 +161,25 @@ function New-RscSla
             $query.var.input.SnapshotSchedule.Yearly = $YearlySchedule
         }
         if ($LocalRetentionLimit) {
-            $mutation.Var.Input.LocalRetentionLimit = $LocalRetentionLimit
+            $query.Var.Input.LocalRetentionLimit = $LocalRetentionLimit
         }
         if ($BackupWindows) {
-            $mutation.Var.Input.BackupWindows = $BackupWindows
+            $query.Var.Input.BackupWindows = $BackupWindows
         }
         if ($FirstFullBackupWindows) {
-            $mutation.Var.Input.FirstFullBackupWindows = $FirstFullBackupWindows
+            $query.Var.Input.FirstFullBackupWindows = $FirstFullBackupWindows
         }
         if ($RetentionLockSla) {
-            $mutation.Var.Input.IsRetentionLockedSla = $true
+            $query.Var.Input.IsRetentionLockedSla = $true
         }
         if ($RetentionLockMode) {
-            $mutation.Var.Input.RetentionLockMode = $RetentionLockMode
+            $query.Var.Input.RetentionLockMode = $RetentionLockMode
         }
         if ($ArchivalSpecs) {
-            $mutation.Var.Input.ArchivalSpecs = $ArchivalSpecs
+            $query.Var.Input.ArchivalSpecs = $ArchivalSpecs
         }
         if ($ReplicationSpecs) {
-            $mutation.Var.Input.ReplicationSpecsV2 = $ReplicationSpecs
+            $query.Var.Input.ReplicationSpecsV2 = $ReplicationSpecs
         }
 
         # object specific config
@@ -224,7 +223,7 @@ function New-RscSla
         if ($PostgresDbClusterConfig) {
             $objectSpecificConfig.PostgresDbClusterSlaConfigInput = $PostgresDbClusterConfig
         }
-        $mutation.Var.Input.ObjectSpecificConfigsInput = $objectSpecificConfig
+        $query.Var.Input.ObjectSpecificConfigsInput = $objectSpecificConfig
 
         $result = Invoke-Rsc -Query $query
         $result
