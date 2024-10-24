@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: BatchExportVm
     /// 
-    /// $query = New-RscMutationNutanix -BatchExportVm
+    /// $query = New-RscMutationNutanix -Operation BatchExportVm
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: BatchMountVm
     /// 
-    /// $query = New-RscMutationNutanix -BatchMountVm
+    /// $query = New-RscMutationNutanix -Operation BatchMountVm
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -225,7 +225,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: BulkOnDemandSnapshotVm
     /// 
-    /// $query = New-RscMutationNutanix -BulkOnDemandSnapshotVm
+    /// $query = New-RscMutationNutanix -Operation BulkOnDemandSnapshotVm
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -271,7 +271,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: CreateCluster
     /// 
-    /// $query = New-RscMutationNutanix -CreateCluster
+    /// $query = New-RscMutationNutanix -Operation CreateCluster
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -315,7 +315,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: CreateOnDemandBackup
     /// 
-    /// $query = New-RscMutationNutanix -CreateOnDemandBackup
+    /// $query = New-RscMutationNutanix -Operation CreateOnDemandBackup
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -353,7 +353,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: CreatePrismCentral
     /// 
-    /// $query = New-RscMutationNutanix -CreatePrismCentral
+    /// $query = New-RscMutationNutanix -Operation CreatePrismCentral
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -408,7 +408,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: DeleteCluster
     /// 
-    /// $query = New-RscMutationNutanix -DeleteCluster
+    /// $query = New-RscMutationNutanix -Operation DeleteCluster
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -439,7 +439,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: DeleteMountV1
     /// 
-    /// $query = New-RscMutationNutanix -DeleteMountV1
+    /// $query = New-RscMutationNutanix -Operation DeleteMountV1
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -470,7 +470,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: DeletePrismCentral
     /// 
-    /// $query = New-RscMutationNutanix -DeletePrismCentral
+    /// $query = New-RscMutationNutanix -Operation DeletePrismCentral
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -501,7 +501,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: DeleteSnapshot
     /// 
-    /// $query = New-RscMutationNutanix -DeleteSnapshot
+    /// $query = New-RscMutationNutanix -Operation DeleteSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -534,7 +534,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: DeleteSnapshots
     /// 
-    /// $query = New-RscMutationNutanix -DeleteSnapshots
+    /// $query = New-RscMutationNutanix -Operation DeleteSnapshots
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -565,12 +565,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: DownloadFilesSnapshot
     /// 
-    /// $query = New-RscMutationNutanix -DownloadFilesSnapshot
+    /// $query = New-RscMutationNutanix -Operation DownloadFilesSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
     /// 		# OPTIONAL
     /// 		legalHoldDownloadConfig = @{
     /// 			# REQUIRED
@@ -610,7 +612,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: DownloadSnapshot
     /// 
-    /// $query = New-RscMutationNutanix -DownloadSnapshot
+    /// $query = New-RscMutationNutanix -Operation DownloadSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -641,7 +643,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: DownloadVdisks
     /// 
-    /// $query = New-RscMutationNutanix -DownloadVdisks
+    /// $query = New-RscMutationNutanix -Operation DownloadVdisks
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -676,7 +678,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: DownloadVmFromLocation
     /// 
-    /// $query = New-RscMutationNutanix -DownloadVmFromLocation
+    /// $query = New-RscMutationNutanix -Operation DownloadVmFromLocation
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -714,7 +716,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: ExportSnapshot
     /// 
-    /// $query = New-RscMutationNutanix -ExportSnapshot
+    /// $query = New-RscMutationNutanix -Operation ExportSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -764,7 +766,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: MigrateMountV1
     /// 
-    /// $query = New-RscMutationNutanix -MigrateMountV1
+    /// $query = New-RscMutationNutanix -Operation MigrateMountV1
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -795,7 +797,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: MountSnapshotV1
     /// 
-    /// $query = New-RscMutationNutanix -MountSnapshotV1
+    /// $query = New-RscMutationNutanix -Operation MountSnapshotV1
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -851,7 +853,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: MountVdisks
     /// 
-    /// $query = New-RscMutationNutanix -MountVdisks
+    /// $query = New-RscMutationNutanix -Operation MountVdisks
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -897,7 +899,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: PatchMountV1
     /// 
-    /// $query = New-RscMutationNutanix -PatchMountV1
+    /// $query = New-RscMutationNutanix -Operation PatchMountV1
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -933,7 +935,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: RefreshCluster
     /// 
-    /// $query = New-RscMutationNutanix -RefreshCluster
+    /// $query = New-RscMutationNutanix -Operation RefreshCluster
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -964,7 +966,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: RefreshPrismCentral
     /// 
-    /// $query = New-RscMutationNutanix -RefreshPrismCentral
+    /// $query = New-RscMutationNutanix -Operation RefreshPrismCentral
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -995,7 +997,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: RegisterAgentVm
     /// 
-    /// $query = New-RscMutationNutanix -RegisterAgentVm
+    /// $query = New-RscMutationNutanix -Operation RegisterAgentVm
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1026,7 +1028,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: RestoreFilesSnapshot
     /// 
-    /// $query = New-RscMutationNutanix -RestoreFilesSnapshot
+    /// $query = New-RscMutationNutanix -Operation RestoreFilesSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1071,7 +1073,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: UpdateCluster
     /// 
-    /// $query = New-RscMutationNutanix -UpdateCluster
+    /// $query = New-RscMutationNutanix -Operation UpdateCluster
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1117,7 +1119,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: UpdatePrismCentral
     /// 
-    /// $query = New-RscMutationNutanix -UpdatePrismCentral
+    /// $query = New-RscMutationNutanix -Operation UpdatePrismCentral
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1176,7 +1178,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nutanix
     /// # API Operation: UpdateVm
     /// 
-    /// $query = New-RscMutationNutanix -UpdateVm
+    /// $query = New-RscMutationNutanix -Operation UpdateVm
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -2038,6 +2040,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
+		# OPTIONAL
+		zipPassword = $someString
 		# OPTIONAL
 		legalHoldDownloadConfig = @{
 			# REQUIRED

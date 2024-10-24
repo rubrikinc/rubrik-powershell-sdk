@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: DisableProject
     /// 
-    /// $query = New-RscMutationGcpNative -DisableProject
+    /// $query = New-RscMutationGcpNative -Operation DisableProject
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: ExcludeDisksFromInstanceSnapshot
     /// 
-    /// $query = New-RscMutationGcpNative -ExcludeDisksFromInstanceSnapshot
+    /// $query = New-RscMutationGcpNative -Operation ExcludeDisksFromInstanceSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -160,7 +160,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: ExportDisk
     /// 
-    /// $query = New-RscMutationGcpNative -ExportDisk
+    /// $query = New-RscMutationGcpNative -Operation ExportDisk
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -226,7 +226,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: ExportGceInstance
     /// 
-    /// $query = New-RscMutationGcpNative -ExportGceInstance
+    /// $query = New-RscMutationGcpNative -Operation ExportGceInstance
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -292,7 +292,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: RefreshProjects
     /// 
-    /// $query = New-RscMutationGcpNative -RefreshProjects
+    /// $query = New-RscMutationGcpNative -Operation RefreshProjects
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -325,7 +325,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: RestoreGceInstance
     /// 
-    /// $query = New-RscMutationGcpNative -RestoreGceInstance
+    /// $query = New-RscMutationGcpNative -Operation RestoreGceInstance
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

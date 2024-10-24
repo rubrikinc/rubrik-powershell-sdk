@@ -117,6 +117,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXCHANGE_DAG")]
         EXCHANGE_DAG,
 
+        [EnumMember(Value = "EXCHANGE_HOST")]
+        EXCHANGE_HOST,
+
         [EnumMember(Value = "EXCHANGE_SERVER")]
         EXCHANGE_SERVER,
 
@@ -233,6 +236,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MONGO_SOURCE")]
         MONGO_SOURCE,
+
+        [EnumMember(Value = "MSSQL_HOST")]
+        MSSQL_HOST,
 
         [EnumMember(Value = "MYSQLDB_DATABASE")]
         MYSQLDB_DATABASE,

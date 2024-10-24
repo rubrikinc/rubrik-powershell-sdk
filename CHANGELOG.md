@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.11.2
+
+Schema update.
+
 ## Version 1.11
 
 Schema update.

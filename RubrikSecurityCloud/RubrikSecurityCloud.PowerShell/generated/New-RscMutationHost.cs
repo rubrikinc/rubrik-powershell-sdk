@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: BulkDelete
     /// 
-    /// $query = New-RscMutationHost -BulkDelete
+    /// $query = New-RscMutationHost -Operation BulkDelete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: BulkRefresh
     /// 
-    /// $query = New-RscMutationHost -BulkRefresh
+    /// $query = New-RscMutationHost -Operation BulkRefresh
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -155,7 +155,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: BulkRegister
     /// 
-    /// $query = New-RscMutationHost -BulkRegister
+    /// $query = New-RscMutationHost -Operation BulkRegister
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -270,7 +270,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: BulkRegisterAsync
     /// 
-    /// $query = New-RscMutationHost -BulkRegisterAsync
+    /// $query = New-RscMutationHost -Operation BulkRegisterAsync
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -385,7 +385,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: BulkUpdate
     /// 
-    /// $query = New-RscMutationHost -BulkUpdate
+    /// $query = New-RscMutationHost -Operation BulkUpdate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -509,7 +509,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: ChangeVfd
     /// 
-    /// $query = New-RscMutationHost -ChangeVfd
+    /// $query = New-RscMutationHost -Operation ChangeVfd
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -547,7 +547,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: Refresh
     /// 
-    /// $query = New-RscMutationHost -Refresh
+    /// $query = New-RscMutationHost -Operation Refresh
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

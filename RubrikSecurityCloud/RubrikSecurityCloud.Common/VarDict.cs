@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud
         {
             var sb = new StringBuilder();
             sb.Append("[vardict]{");
-            foreach(KeyValuePair<string, object> entry in this)
+            foreach(KeyValuePair<string, object?> entry in this)
             {
                 sb.Append(entry.Key).Append('=').Append(
                     StringUtils.FormatObjectForLogging(entry.Value))

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    K8s
     /// # API Operation: AppManifest
     /// 
-    /// $query = New-RscQueryK8s -AppManifest
+    /// $query = New-RscQueryK8s -Operation AppManifest
     /// 
     /// # REQUIRED
     /// $query.Var.app = $someString
@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    K8s
     /// # API Operation: Cluster
     /// 
-    /// $query = New-RscQueryK8s -Cluster
+    /// $query = New-RscQueryK8s -Operation Cluster
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    K8s
     /// # API Operation: Clusters
     /// 
-    /// $query = New-RscQueryK8s -Clusters
+    /// $query = New-RscQueryK8s -Operation Clusters
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -227,7 +227,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    K8s
     /// # API Operation: K8sCluster
     /// 
-    /// $query = New-RscQueryK8s -K8sCluster
+    /// $query = New-RscQueryK8s -Operation K8sCluster
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -255,7 +255,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    K8s
     /// # API Operation: K8sClusters
     /// 
-    /// $query = New-RscQueryK8s -K8sClusters
+    /// $query = New-RscQueryK8s -Operation K8sClusters
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -331,7 +331,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    K8s
     /// # API Operation: Namespace
     /// 
-    /// $query = New-RscQueryK8s -Namespace
+    /// $query = New-RscQueryK8s -Operation Namespace
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -359,7 +359,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    K8s
     /// # API Operation: Namespaces
     /// 
-    /// $query = New-RscQueryK8s -Namespaces
+    /// $query = New-RscQueryK8s -Operation Namespaces
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -437,7 +437,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    K8s
     /// # API Operation: ProtectionSet
     /// 
-    /// $query = New-RscQueryK8s -ProtectionSet
+    /// $query = New-RscQueryK8s -Operation ProtectionSet
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -465,7 +465,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    K8s
     /// # API Operation: ProtectionSetSnapshots
     /// 
-    /// $query = New-RscQueryK8s -ProtectionSetSnapshots
+    /// $query = New-RscQueryK8s -Operation ProtectionSetSnapshots
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -496,7 +496,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    K8s
     /// # API Operation: ProtectionSets
     /// 
-    /// $query = New-RscQueryK8s -ProtectionSets
+    /// $query = New-RscQueryK8s -Operation ProtectionSets
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -574,7 +574,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    K8s
     /// # API Operation: ReplicaSnapshotInfos
     /// 
-    /// $query = New-RscQueryK8s -ReplicaSnapshotInfos
+    /// $query = New-RscQueryK8s -Operation ReplicaSnapshotInfos
     /// 
     /// # REQUIRED
     /// $query.Var.snapshotId = $someString
@@ -604,7 +604,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    K8s
     /// # API Operation: SnapshotInfo
     /// 
-    /// $query = New-RscQueryK8s -SnapshotInfo
+    /// $query = New-RscQueryK8s -Operation SnapshotInfo
     /// 
     /// # REQUIRED
     /// $query.Var.snapshotId = $someString

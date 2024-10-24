@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActiveDirectory
     /// # API Operation: Domain
     /// 
-    /// $query = New-RscQueryActiveDirectory -Domain
+    /// $query = New-RscQueryActiveDirectory -Operation Domain
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActiveDirectory
     /// # API Operation: DomainController
     /// 
-    /// $query = New-RscQueryActiveDirectory -DomainController
+    /// $query = New-RscQueryActiveDirectory -Operation DomainController
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActiveDirectory
     /// # API Operation: DomainControllers
     /// 
-    /// $query = New-RscQueryActiveDirectory -DomainControllers
+    /// $query = New-RscQueryActiveDirectory -Operation DomainControllers
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -219,7 +219,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActiveDirectory
     /// # API Operation: Domains
     /// 
-    /// $query = New-RscQueryActiveDirectory -Domains
+    /// $query = New-RscQueryActiveDirectory -Operation Domains
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -295,7 +295,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActiveDirectory
     /// # API Operation: SearchSnapshots
     /// 
-    /// $query = New-RscQueryActiveDirectory -SearchSnapshots
+    /// $query = New-RscQueryActiveDirectory -Operation SearchSnapshots
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

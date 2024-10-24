@@ -53,6 +53,8 @@ AWS native EC2 instance.
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount
   - AWS account of the EC2 instance.
+- awsAccount: AwsNativeAccount
+  - AWS account of the EC2 instance.
 - attachedEbsVolumes: list of AwsNativeEbsVolumes
   - Attach an AWS Elastic Block Store (EBS) volume to your instance.
 - hostInfo: PhysicalHost

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: App
     /// 
-    /// $query = New-RscQueryFailoverCluster -App
+    /// $query = New-RscQueryFailoverCluster -Operation App
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: Apps
     /// 
-    /// $query = New-RscQueryFailoverCluster -Apps
+    /// $query = New-RscQueryFailoverCluster -Operation Apps
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -193,7 +193,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: Host
     /// 
-    /// $query = New-RscQueryFailoverCluster -Host
+    /// $query = New-RscQueryFailoverCluster -Operation Host
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -221,7 +221,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: Hosts
     /// 
-    /// $query = New-RscQueryFailoverCluster -Hosts
+    /// $query = New-RscQueryFailoverCluster -Operation Hosts
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -299,7 +299,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: TopLevelDescendants
     /// 
-    /// $query = New-RscQueryFailoverCluster -TopLevelDescendants
+    /// $query = New-RscQueryFailoverCluster -Operation TopLevelDescendants
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

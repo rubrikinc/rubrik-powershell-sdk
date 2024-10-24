@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: BulkDelete
     /// 
-    /// $query = New-RscMutationFailoverCluster -BulkDelete
+    /// $query = New-RscMutationFailoverCluster -Operation BulkDelete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: BulkDeleteApp
     /// 
-    /// $query = New-RscMutationFailoverCluster -BulkDeleteApp
+    /// $query = New-RscMutationFailoverCluster -Operation BulkDeleteApp
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -157,7 +157,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: Create
     /// 
-    /// $query = New-RscMutationFailoverCluster -Create
+    /// $query = New-RscMutationFailoverCluster -Operation Create
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -199,7 +199,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: CreateApp
     /// 
-    /// $query = New-RscMutationFailoverCluster -CreateApp
+    /// $query = New-RscMutationFailoverCluster -Operation CreateApp
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -261,7 +261,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: Delete
     /// 
-    /// $query = New-RscMutationFailoverCluster -Delete
+    /// $query = New-RscMutationFailoverCluster -Operation Delete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -294,7 +294,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: DeleteApp
     /// 
-    /// $query = New-RscMutationFailoverCluster -DeleteApp
+    /// $query = New-RscMutationFailoverCluster -Operation DeleteApp
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -327,7 +327,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: Update
     /// 
-    /// $query = New-RscMutationFailoverCluster -Update
+    /// $query = New-RscMutationFailoverCluster -Operation Update
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -369,7 +369,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    FailoverCluster
     /// # API Operation: UpdateApp
     /// 
-    /// $query = New-RscMutationFailoverCluster -UpdateApp
+    /// $query = New-RscMutationFailoverCluster -Operation UpdateApp
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

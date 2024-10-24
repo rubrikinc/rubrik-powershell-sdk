@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: CloudAccountAddManualAuthProject
     /// 
-    /// $query = New-RscMutationGcp -CloudAccountAddManualAuthProject
+    /// $query = New-RscMutationGcp -Operation CloudAccountAddManualAuthProject
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -130,7 +130,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: CloudAccountAddProjects
     /// 
-    /// $query = New-RscMutationGcp -CloudAccountAddProjects
+    /// $query = New-RscMutationGcp -Operation CloudAccountAddProjects
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -188,7 +188,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: CloudAccountDeleteProjects
     /// 
-    /// $query = New-RscMutationGcp -CloudAccountDeleteProjects
+    /// $query = New-RscMutationGcp -Operation CloudAccountDeleteProjects
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -233,7 +233,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: CloudAccountOauthComplete
     /// 
-    /// $query = New-RscMutationGcp -CloudAccountOauthComplete
+    /// $query = New-RscMutationGcp -Operation CloudAccountOauthComplete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -268,7 +268,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: CloudAccountOauthInitiate
     /// 
-    /// $query = New-RscMutationGcp -CloudAccountOauthInitiate
+    /// $query = New-RscMutationGcp -Operation CloudAccountOauthInitiate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -299,7 +299,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: CloudAccountUpgradeProjects
     /// 
-    /// $query = New-RscMutationGcp -CloudAccountUpgradeProjects
+    /// $query = New-RscMutationGcp -Operation CloudAccountUpgradeProjects
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -336,7 +336,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: CreateReaderTarget
     /// 
-    /// $query = New-RscMutationGcp -CreateReaderTarget
+    /// $query = New-RscMutationGcp -Operation CreateReaderTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -396,7 +396,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: CreateTarget
     /// 
-    /// $query = New-RscMutationGcp -CreateTarget
+    /// $query = New-RscMutationGcp -Operation CreateTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -454,7 +454,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: SetDefaultServiceAccountJwtConfig
     /// 
-    /// $query = New-RscMutationGcp -SetDefaultServiceAccountJwtConfig
+    /// $query = New-RscMutationGcp -Operation SetDefaultServiceAccountJwtConfig
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -487,7 +487,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: UpdateTarget
     /// 
-    /// $query = New-RscMutationGcp -UpdateTarget
+    /// $query = New-RscMutationGcp -Operation UpdateTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -545,7 +545,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: UpgradeCloudAccountPermissionsWithoutOauth
     /// 
-    /// $query = New-RscMutationGcp -UpgradeCloudAccountPermissionsWithoutOauth
+    /// $query = New-RscMutationGcp -Operation UpgradeCloudAccountPermissionsWithoutOauth
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: InventoryStats
     /// 
-    /// $query = New-RscQueryManagedVolume -InventoryStats
+    /// $query = New-RscQueryManagedVolume -Operation InventoryStats
     /// 
     /// # No variables for this query.
     /// 
@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: LiveMounts
     /// 
-    /// $query = New-RscQueryManagedVolume -LiveMounts
+    /// $query = New-RscQueryManagedVolume -Operation LiveMounts
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -190,7 +190,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: ManagedVolume
     /// 
-    /// $query = New-RscQueryManagedVolume -ManagedVolume
+    /// $query = New-RscQueryManagedVolume -Operation ManagedVolume
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -218,7 +218,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: ManagedVolumes
     /// 
-    /// $query = New-RscQueryManagedVolume -ManagedVolumes
+    /// $query = New-RscQueryManagedVolume -Operation ManagedVolumes
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

@@ -757,6 +757,14 @@ Get minimum cluster version to support feature set.
 
 - There is a single argument of type FeatureListMinimumCdmVersionInputType.
 - Returns FeatureListMinimumCdmVersionReply.
+### miplabels
+Returns all the MIP Labels for an account.
+
+- There are 3 arguments.
+    - onlyActiveFilter - System.Boolean: Restricts the search to active labels only.
+    - onlyAppliableFilter - System.Boolean: Restricts the search to appliable labels only.
+    - tenantIdFilter - System.String: Filter for Tenant ID.
+- Returns list of MicrosoftMipLabels.
 ### networkthrottle
 Network Throttle Information.
 
@@ -940,7 +948,7 @@ Returns details for one policy object.
 ### policyobjs
 Returns status for all objects at a specified timestamp.
 
-- There are 39 arguments.
+- There are 40 arguments.
     - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
@@ -976,6 +984,7 @@ Returns status for all objects at a specified timestamp.
     - encryptionFilter - list of Encryptions: Filter by encryption type.
     - loggingFilter - list of Loggings: Filter by logging type.
     - violationSeverityFilter - list of ViolationSeveritys: Violation Severity list input arg.
+    - exposureFilter - list of OpenAccessTypes: Exposure to filter.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.

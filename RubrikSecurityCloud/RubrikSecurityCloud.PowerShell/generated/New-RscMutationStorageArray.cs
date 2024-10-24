@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    StorageArray
     /// # API Operation: Add
     /// 
-    /// $query = New-RscMutationStorageArray -Add
+    /// $query = New-RscMutationStorageArray -Operation Add
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -138,7 +138,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    StorageArray
     /// # API Operation: Delete
     /// 
-    /// $query = New-RscMutationStorageArray -Delete
+    /// $query = New-RscMutationStorageArray -Operation Delete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -176,7 +176,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    StorageArray
     /// # API Operation: Refresh
     /// 
-    /// $query = New-RscMutationStorageArray -Refresh
+    /// $query = New-RscMutationStorageArray -Operation Refresh
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -214,7 +214,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    StorageArray
     /// # API Operation: Update
     /// 
-    /// $query = New-RscMutationStorageArray -Update
+    /// $query = New-RscMutationStorageArray -Operation Update
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

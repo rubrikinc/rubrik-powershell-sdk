@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: AddSystem
     /// 
-    /// $query = New-RscMutationSapHana -AddSystem
+    /// $query = New-RscMutationSapHana -Operation AddSystem
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: ConfigureRestore
     /// 
-    /// $query = New-RscMutationSapHana -ConfigureRestore
+    /// $query = New-RscMutationSapHana -Operation ConfigureRestore
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -198,7 +198,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: CreateOnDemandBackup
     /// 
-    /// $query = New-RscMutationSapHana -CreateOnDemandBackup
+    /// $query = New-RscMutationSapHana -Operation CreateOnDemandBackup
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -234,7 +234,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: CreateOnDemandStorageSnapshot
     /// 
-    /// $query = New-RscMutationSapHana -CreateOnDemandStorageSnapshot
+    /// $query = New-RscMutationSapHana -Operation CreateOnDemandStorageSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -270,7 +270,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: CreateSystemRefresh
     /// 
-    /// $query = New-RscMutationSapHana -CreateSystemRefresh
+    /// $query = New-RscMutationSapHana -Operation CreateSystemRefresh
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -301,7 +301,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: DeleteDbSnapshot
     /// 
-    /// $query = New-RscMutationSapHana -DeleteDbSnapshot
+    /// $query = New-RscMutationSapHana -Operation DeleteDbSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -332,7 +332,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: DeleteSystem
     /// 
-    /// $query = New-RscMutationSapHana -DeleteSystem
+    /// $query = New-RscMutationSapHana -Operation DeleteSystem
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -363,7 +363,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: ExpireDownloadedSnapshots
     /// 
-    /// $query = New-RscMutationSapHana -ExpireDownloadedSnapshots
+    /// $query = New-RscMutationSapHana -Operation ExpireDownloadedSnapshots
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -400,7 +400,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: PatchSystem
     /// 
-    /// $query = New-RscMutationSapHana -PatchSystem
+    /// $query = New-RscMutationSapHana -Operation PatchSystem
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -472,7 +472,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: RestoreSystemStorage
     /// 
-    /// $query = New-RscMutationSapHana -RestoreSystemStorage
+    /// $query = New-RscMutationSapHana -Operation RestoreSystemStorage
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -508,7 +508,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: UnconfigureRestore
     /// 
-    /// $query = New-RscMutationSapHana -UnconfigureRestore
+    /// $query = New-RscMutationSapHana -Operation UnconfigureRestore
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

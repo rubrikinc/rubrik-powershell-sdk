@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: AdDirectories
     /// 
-    /// $query = New-RscQueryAzure -AdDirectories
+    /// $query = New-RscQueryAzure -Operation AdDirectories
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -163,7 +163,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: AdDirectory
     /// 
-    /// $query = New-RscQueryAzure -AdDirectory
+    /// $query = New-RscQueryAzure -Operation AdDirectory
     /// 
     /// # REQUIRED
     /// $query.Var.workloadFid = $someString
@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: AdObjectsByType
     /// 
-    /// $query = New-RscQueryAzure -AdObjectsByType
+    /// $query = New-RscQueryAzure -Operation AdObjectsByType
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -245,7 +245,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: ArmTemplatesByFeature
     /// 
-    /// $query = New-RscQueryAzure -ArmTemplatesByFeature
+    /// $query = New-RscQueryAzure -Operation ArmTemplatesByFeature
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -295,7 +295,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: AzureRegions
     /// 
-    /// $query = New-RscQueryAzure -AzureRegions
+    /// $query = New-RscQueryAzure -Operation AzureRegions
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountId = $someString
@@ -323,7 +323,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: AzureStorageAccounts
     /// 
-    /// $query = New-RscQueryAzure -AzureStorageAccounts
+    /// $query = New-RscQueryAzure -Operation AzureStorageAccounts
     /// 
     /// # REQUIRED
     /// $query.Var.storageAccountsRequest = @{
@@ -356,7 +356,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: AzureVnets
     /// 
-    /// $query = New-RscQueryAzure -AzureVnets
+    /// $query = New-RscQueryAzure -Operation AzureVnets
     /// 
     /// # REQUIRED
     /// $query.Var.vnetRequest = @{
@@ -389,7 +389,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: BlobContainersByStorageAccount
     /// 
-    /// $query = New-RscQueryAzure -BlobContainersByStorageAccount
+    /// $query = New-RscQueryAzure -Operation BlobContainersByStorageAccount
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -432,7 +432,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: CdmVersions
     /// 
-    /// $query = New-RscQueryAzure -CdmVersions
+    /// $query = New-RscQueryAzure -Operation CdmVersions
     /// 
     /// # REQUIRED
     /// $query.Var.cdmVersionRequest = @{
@@ -465,7 +465,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: CheckPersistentStorageSubscriptionCanUnmap
     /// 
-    /// $query = New-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap
+    /// $query = New-RscQueryAzure -Operation CheckPersistentStorageSubscriptionCanUnmap
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountId = $someString
@@ -497,7 +497,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: CloudAccountDetailsForFeature
     /// 
-    /// $query = New-RscQueryAzure -CloudAccountDetailsForFeature
+    /// $query = New-RscQueryAzure -Operation CloudAccountDetailsForFeature
     /// 
     /// # REQUIRED
     /// $query.Var.featureId = $someString
@@ -525,7 +525,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: CloudAccountMissingPermissions
     /// 
-    /// $query = New-RscQueryAzure -CloudAccountMissingPermissions
+    /// $query = New-RscQueryAzure -Operation CloudAccountMissingPermissions
     /// 
     /// # REQUIRED
     /// $query.Var.sessionId = $someString
@@ -559,7 +559,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: CloudAccountPermissionConfig
     /// 
-    /// $query = New-RscQueryAzure -CloudAccountPermissionConfig
+    /// $query = New-RscQueryAzure -Operation CloudAccountPermissionConfig
     /// 
     /// # REQUIRED
     /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -591,7 +591,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: CloudAccountSubnetsByRegion
     /// 
-    /// $query = New-RscQueryAzure -CloudAccountSubnetsByRegion
+    /// $query = New-RscQueryAzure -Operation CloudAccountSubnetsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountId = $someString
@@ -621,7 +621,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: CloudAccountSubscriptionWithFeatures
     /// 
-    /// $query = New-RscQueryAzure -CloudAccountSubscriptionWithFeatures
+    /// $query = New-RscQueryAzure -Operation CloudAccountSubscriptionWithFeatures
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountId = $someString
@@ -649,7 +649,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: CloudAccountSubscriptionsByFeature
     /// 
-    /// $query = New-RscQueryAzure -CloudAccountSubscriptionsByFeature
+    /// $query = New-RscQueryAzure -Operation CloudAccountSubscriptionsByFeature
     /// 
     /// # REQUIRED
     /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -692,7 +692,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: CloudAccountTenant
     /// 
-    /// $query = New-RscQueryAzure -CloudAccountTenant
+    /// $query = New-RscQueryAzure -Operation CloudAccountTenant
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -732,7 +732,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: CloudAccountTenantWithExoConfigs
     /// 
-    /// $query = New-RscQueryAzure -CloudAccountTenantWithExoConfigs
+    /// $query = New-RscQueryAzure -Operation CloudAccountTenantWithExoConfigs
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -772,7 +772,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: CloudAccountTenants
     /// 
-    /// $query = New-RscQueryAzure -CloudAccountTenants
+    /// $query = New-RscQueryAzure -Operation CloudAccountTenants
     /// 
     /// # OPTIONAL
     /// $query.Var.features = @(
@@ -806,7 +806,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: DiskEncryptionSetsByRegion
     /// 
-    /// $query = New-RscQueryAzure -DiskEncryptionSetsByRegion
+    /// $query = New-RscQueryAzure -Operation DiskEncryptionSetsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
@@ -836,7 +836,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: EncryptionKeys
     /// 
-    /// $query = New-RscQueryAzure -EncryptionKeys
+    /// $query = New-RscQueryAzure -Operation EncryptionKeys
     /// 
     /// # REQUIRED
     /// $query.Var.azureEncryptionKeysInput = @{
@@ -871,7 +871,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: ExocomputeConfigsInAccount
     /// 
-    /// $query = New-RscQueryAzure -ExocomputeConfigsInAccount
+    /// $query = New-RscQueryAzure -Operation ExocomputeConfigsInAccount
     /// 
     /// # OPTIONAL
     /// $query.Var.azureExocomputeSearchQuery = $someString
@@ -903,7 +903,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: HasRelicAdSnapshot
     /// 
-    /// $query = New-RscQueryAzure -HasRelicAdSnapshot
+    /// $query = New-RscQueryAzure -Operation HasRelicAdSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -934,7 +934,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: HostedAzureRegions
     /// 
-    /// $query = New-RscQueryAzure -HostedAzureRegions
+    /// $query = New-RscQueryAzure -Operation HostedAzureRegions
     /// 
     /// # No variables for this query.
     /// 
@@ -961,7 +961,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: IsStorageAccountNameAvailable
     /// 
-    /// $query = New-RscQueryAzure -IsStorageAccountNameAvailable
+    /// $query = New-RscQueryAzure -Operation IsStorageAccountNameAvailable
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
@@ -991,7 +991,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: KeyVaultsByRegion
     /// 
-    /// $query = New-RscQueryAzure -KeyVaultsByRegion
+    /// $query = New-RscQueryAzure -Operation KeyVaultsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.azureKeyVaultsInput = @{
@@ -1026,7 +1026,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: ManagedIdentities
     /// 
-    /// $query = New-RscQueryAzure -ManagedIdentities
+    /// $query = New-RscQueryAzure -Operation ManagedIdentities
     /// 
     /// # REQUIRED
     /// $query.Var.managedIdentitiesRequest = @{
@@ -1057,7 +1057,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: Nsgs
     /// 
-    /// $query = New-RscQueryAzure -Nsgs
+    /// $query = New-RscQueryAzure -Operation Nsgs
     /// 
     /// # REQUIRED
     /// $query.Var.nsgRequest = @{
@@ -1090,7 +1090,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: Regions
     /// 
-    /// $query = New-RscQueryAzure -Regions
+    /// $query = New-RscQueryAzure -Operation Regions
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -1120,7 +1120,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: RegionsWithAzDetails
     /// 
-    /// $query = New-RscQueryAzure -RegionsWithAzDetails
+    /// $query = New-RscQueryAzure -Operation RegionsWithAzDetails
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountId = $someString
@@ -1148,7 +1148,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: ResourceGroups
     /// 
-    /// $query = New-RscQueryAzure -ResourceGroups
+    /// $query = New-RscQueryAzure -Operation ResourceGroups
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -1178,7 +1178,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: ResourceGroupsFromAzure
     /// 
-    /// $query = New-RscQueryAzure -ResourceGroupsFromAzure
+    /// $query = New-RscQueryAzure -Operation ResourceGroupsFromAzure
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountId = $someString
@@ -1210,7 +1210,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SearchAdSnapshot
     /// 
-    /// $query = New-RscQueryAzure -SearchAdSnapshot
+    /// $query = New-RscQueryAzure -Operation SearchAdSnapshot
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1258,7 +1258,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SqlDatabase
     /// 
-    /// $query = New-RscQueryAzure -SqlDatabase
+    /// $query = New-RscQueryAzure -Operation SqlDatabase
     /// 
     /// # REQUIRED
     /// $query.Var.azureSqlDatabaseRubrikId = $someString
@@ -1288,7 +1288,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SqlDatabaseDbPointInTimeRestoreWindowFromAzure
     /// 
-    /// $query = New-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure
+    /// $query = New-RscQueryAzure -Operation SqlDatabaseDbPointInTimeRestoreWindowFromAzure
     /// 
     /// # REQUIRED
     /// $query.Var.subscriptionId = $someString
@@ -1322,7 +1322,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SqlDatabaseServer
     /// 
-    /// $query = New-RscQueryAzure -SqlDatabaseServer
+    /// $query = New-RscQueryAzure -Operation SqlDatabaseServer
     /// 
     /// # REQUIRED
     /// $query.Var.azureSqlDatabaseServerRubrikId = $someString
@@ -1350,7 +1350,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SqlDatabaseServerElasticPools
     /// 
-    /// $query = New-RscQueryAzure -SqlDatabaseServerElasticPools
+    /// $query = New-RscQueryAzure -Operation SqlDatabaseServerElasticPools
     /// 
     /// # REQUIRED
     /// $query.Var.subscriptionId = $someString
@@ -1384,7 +1384,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SqlDatabaseServers
     /// 
-    /// $query = New-RscQueryAzure -SqlDatabaseServers
+    /// $query = New-RscQueryAzure -Operation SqlDatabaseServers
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1458,7 +1458,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SqlDatabases
     /// 
-    /// $query = New-RscQueryAzure -SqlDatabases
+    /// $query = New-RscQueryAzure -Operation SqlDatabases
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1574,7 +1574,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SqlManagedInstanceDatabase
     /// 
-    /// $query = New-RscQueryAzure -SqlManagedInstanceDatabase
+    /// $query = New-RscQueryAzure -Operation SqlManagedInstanceDatabase
     /// 
     /// # REQUIRED
     /// $query.Var.azureSqlManagedInstanceDatabaseRubrikId = $someString
@@ -1604,7 +1604,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SqlManagedInstanceDatabases
     /// 
-    /// $query = New-RscQueryAzure -SqlManagedInstanceDatabases
+    /// $query = New-RscQueryAzure -Operation SqlManagedInstanceDatabases
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1706,7 +1706,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure
     /// 
-    /// $query = New-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure
+    /// $query = New-RscQueryAzure -Operation SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure
     /// 
     /// # REQUIRED
     /// $query.Var.subscriptionId = $someString
@@ -1740,7 +1740,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SqlManagedInstanceServer
     /// 
-    /// $query = New-RscQueryAzure -SqlManagedInstanceServer
+    /// $query = New-RscQueryAzure -Operation SqlManagedInstanceServer
     /// 
     /// # REQUIRED
     /// $query.Var.azureSqlManagedInstanceServerRubrikId = $someString
@@ -1768,7 +1768,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SqlManagedInstanceServers
     /// 
-    /// $query = New-RscQueryAzure -SqlManagedInstanceServers
+    /// $query = New-RscQueryAzure -Operation SqlManagedInstanceServers
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1856,7 +1856,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: StorageAccounts
     /// 
-    /// $query = New-RscQueryAzure -StorageAccounts
+    /// $query = New-RscQueryAzure -Operation StorageAccounts
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -1888,7 +1888,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: StorageAccountsByRegion
     /// 
-    /// $query = New-RscQueryAzure -StorageAccountsByRegion
+    /// $query = New-RscQueryAzure -Operation StorageAccountsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1921,7 +1921,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: Subnets
     /// 
-    /// $query = New-RscQueryAzure -Subnets
+    /// $query = New-RscQueryAzure -Operation Subnets
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -1953,7 +1953,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: SubscriptionWithExocomputeMappings
     /// 
-    /// $query = New-RscQueryAzure -SubscriptionWithExocomputeMappings
+    /// $query = New-RscQueryAzure -Operation SubscriptionWithExocomputeMappings
     /// 
     /// # OPTIONAL
     /// $query.Var.features = @(
@@ -1987,7 +1987,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: Subscriptions
     /// 
-    /// $query = New-RscQueryAzure -Subscriptions
+    /// $query = New-RscQueryAzure -Operation Subscriptions
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -2015,7 +2015,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: VNets
     /// 
-    /// $query = New-RscQueryAzure -VNets
+    /// $query = New-RscQueryAzure -Operation VNets
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -2047,7 +2047,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: ValidateCloudAccountExocomputeConfigurations
     /// 
-    /// $query = New-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations
+    /// $query = New-RscQueryAzure -Operation ValidateCloudAccountExocomputeConfigurations
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -2093,7 +2093,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Azure
     /// # API Operation: ValidateCreateClusterInput
     /// 
-    /// $query = New-RscQueryAzure -ValidateCreateClusterInput
+    /// $query = New-RscQueryAzure -Operation ValidateCreateClusterInput
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

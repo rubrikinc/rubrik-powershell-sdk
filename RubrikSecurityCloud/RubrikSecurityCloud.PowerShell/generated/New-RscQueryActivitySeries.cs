@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActivitySeries
     /// # API Operation: ActivitySeries
     /// 
-    /// $query = New-RscQueryActivitySeries -ActivitySeries
+    /// $query = New-RscQueryActivitySeries -Operation ActivitySeries
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActivitySeries
     /// # API Operation: List
     /// 
-    /// $query = New-RscQueryActivitySeries -List
+    /// $query = New-RscQueryActivitySeries -Operation List
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -211,7 +211,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActivitySeries
     /// # API Operation: SessionInTimeoutInSeconds
     /// 
-    /// $query = New-RscQueryActivitySeries -SessionInTimeoutInSeconds
+    /// $query = New-RscQueryActivitySeries -Operation SessionInTimeoutInSeconds
     /// 
     /// # No variables for this query.
     /// 
@@ -238,7 +238,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActivitySeries
     /// # API Operation: UserFileTimeline
     /// 
-    /// $query = New-RscQueryActivitySeries -UserFileTimeline
+    /// $query = New-RscQueryActivitySeries -Operation UserFileTimeline
     /// 
     /// # REQUIRED
     /// $query.Var.userId = $someString
@@ -281,7 +281,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActivitySeries
     /// # API Operation: UserTimeline
     /// 
-    /// $query = New-RscQueryActivitySeries -UserTimeline
+    /// $query = New-RscQueryActivitySeries -Operation UserTimeline
     /// 
     /// # REQUIRED
     /// $query.Var.userId = $someString

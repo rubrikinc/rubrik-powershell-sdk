@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: ExcludeManagedDisksFromSnapshot
     /// 
-    /// $query = New-RscMutationAzureNative -ExcludeManagedDisksFromSnapshot
+    /// $query = New-RscMutationAzureNative -Operation ExcludeManagedDisksFromSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -127,7 +127,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: StartCreateManagedDiskSnapshotsJob
     /// 
-    /// $query = New-RscMutationAzureNative -StartCreateManagedDiskSnapshotsJob
+    /// $query = New-RscMutationAzureNative -Operation StartCreateManagedDiskSnapshotsJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: StartCreateVirtualMachineSnapshotsJob
     /// 
-    /// $query = New-RscMutationAzureNative -StartCreateVirtualMachineSnapshotsJob
+    /// $query = New-RscMutationAzureNative -Operation StartCreateVirtualMachineSnapshotsJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -197,7 +197,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: StartDisableSubscriptionProtectionJob
     /// 
-    /// $query = New-RscMutationAzureNative -StartDisableSubscriptionProtectionJob
+    /// $query = New-RscMutationAzureNative -Operation StartDisableSubscriptionProtectionJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -232,7 +232,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: StartExportManagedDiskJob
     /// 
-    /// $query = New-RscMutationAzureNative -StartExportManagedDiskJob
+    /// $query = New-RscMutationAzureNative -Operation StartExportManagedDiskJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -287,7 +287,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: StartExportVirtualMachineJob
     /// 
-    /// $query = New-RscMutationAzureNative -StartExportVirtualMachineJob
+    /// $query = New-RscMutationAzureNative -Operation StartExportVirtualMachineJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -352,7 +352,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: StartRefreshSubscriptionsJob
     /// 
-    /// $query = New-RscMutationAzureNative -StartRefreshSubscriptionsJob
+    /// $query = New-RscMutationAzureNative -Operation StartRefreshSubscriptionsJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -385,7 +385,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: StartRestoreVirtualMachineJob
     /// 
-    /// $query = New-RscMutationAzureNative -StartRestoreVirtualMachineJob
+    /// $query = New-RscMutationAzureNative -Operation StartRestoreVirtualMachineJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: Add
     /// 
-    /// $query = New-RscMutationManagedVolume -Add
+    /// $query = New-RscMutationManagedVolume -Operation Add
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -204,7 +204,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: BeginSnapshot
     /// 
-    /// $query = New-RscMutationManagedVolume -BeginSnapshot
+    /// $query = New-RscMutationManagedVolume -Operation BeginSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -260,7 +260,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: Delete
     /// 
-    /// $query = New-RscMutationManagedVolume -Delete
+    /// $query = New-RscMutationManagedVolume -Operation Delete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -293,7 +293,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: DeleteSnapshotExport
     /// 
-    /// $query = New-RscMutationManagedVolume -DeleteSnapshotExport
+    /// $query = New-RscMutationManagedVolume -Operation DeleteSnapshotExport
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -324,7 +324,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: DownloadFiles
     /// 
-    /// $query = New-RscMutationManagedVolume -DownloadFiles
+    /// $query = New-RscMutationManagedVolume -Operation DownloadFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -367,7 +367,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: DownloadFromLocation
     /// 
-    /// $query = New-RscMutationManagedVolume -DownloadFromLocation
+    /// $query = New-RscMutationManagedVolume -Operation DownloadFromLocation
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -405,7 +405,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: EndSnapshot
     /// 
-    /// $query = New-RscMutationManagedVolume -EndSnapshot
+    /// $query = New-RscMutationManagedVolume -Operation EndSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -450,7 +450,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: ExportSnapshot
     /// 
-    /// $query = New-RscMutationManagedVolume -ExportSnapshot
+    /// $query = New-RscMutationManagedVolume -Operation ExportSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -514,7 +514,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: Resize
     /// 
-    /// $query = New-RscMutationManagedVolume -Resize
+    /// $query = New-RscMutationManagedVolume -Operation Resize
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -550,7 +550,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: TakeOnDemandSnapshot
     /// 
-    /// $query = New-RscMutationManagedVolume -TakeOnDemandSnapshot
+    /// $query = New-RscMutationManagedVolume -Operation TakeOnDemandSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -589,7 +589,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ManagedVolume
     /// # API Operation: Update
     /// 
-    /// $query = New-RscMutationManagedVolume -Update
+    /// $query = New-RscMutationManagedVolume -Operation Update
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: Assign
     /// 
-    /// $query = New-RscMutationSla -Assign
+    /// $query = New-RscMutationSla -Operation Assign
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -134,7 +134,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: AssignRetentionToSnappables
     /// 
-    /// $query = New-RscMutationSla -AssignRetentionToSnappables
+    /// $query = New-RscMutationSla -Operation AssignRetentionToSnappables
     /// 
     /// # OPTIONAL
     /// $query.Var.globalSlaOptionalFid = $someString
@@ -174,7 +174,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: AssignRetentionToSnapshots
     /// 
-    /// $query = New-RscMutationSla -AssignRetentionToSnapshots
+    /// $query = New-RscMutationSla -Operation AssignRetentionToSnapshots
     /// 
     /// # OPTIONAL
     /// $query.Var.globalSlaOptionalFid = $someString
@@ -210,7 +210,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: AssignsForSnappableHierarchies
     /// 
-    /// $query = New-RscMutationSla -AssignsForSnappableHierarchies
+    /// $query = New-RscMutationSla -Operation AssignsForSnappableHierarchies
     /// 
     /// # OPTIONAL
     /// $query.Var.globalSlaOptionalFid = $someString
@@ -256,7 +256,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: CreateGlobal
     /// 
-    /// $query = New-RscMutationSla -CreateGlobal
+    /// $query = New-RscMutationSla -Operation CreateGlobal
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -834,7 +834,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: DeleteGlobal
     /// 
-    /// $query = New-RscMutationSla -DeleteGlobal
+    /// $query = New-RscMutationSla -Operation DeleteGlobal
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someString
@@ -864,7 +864,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: ExportManagedVolumeSnapshot
     /// 
-    /// $query = New-RscMutationSla -ExportManagedVolumeSnapshot
+    /// $query = New-RscMutationSla -Operation ExportManagedVolumeSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -937,7 +937,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: GetPendingAssignments
     /// 
-    /// $query = New-RscMutationSla -GetPendingAssignments
+    /// $query = New-RscMutationSla -Operation GetPendingAssignments
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -973,7 +973,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: Pause
     /// 
-    /// $query = New-RscMutationSla -Pause
+    /// $query = New-RscMutationSla -Operation Pause
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1010,7 +1010,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: UpdateGlobal
     /// 
-    /// $query = New-RscMutationSla -UpdateGlobal
+    /// $query = New-RscMutationSla -Operation UpdateGlobal
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1604,7 +1604,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: Upgrades
     /// 
-    /// $query = New-RscMutationSla -Upgrades
+    /// $query = New-RscMutationSla -Operation Upgrades
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

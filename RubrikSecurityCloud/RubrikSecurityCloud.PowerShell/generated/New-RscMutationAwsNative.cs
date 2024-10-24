@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: ExcludeEbsVolumesFromSnapshot
     /// 
-    /// $query = New-RscMutationAwsNative -ExcludeEbsVolumesFromSnapshot
+    /// $query = New-RscMutationAwsNative -Operation ExcludeEbsVolumesFromSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -127,7 +127,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: StartAccountDisableJob
     /// 
-    /// $query = New-RscMutationAwsNative -StartAccountDisableJob
+    /// $query = New-RscMutationAwsNative -Operation StartAccountDisableJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: StartCreateEbsVolumeSnapshotsJob
     /// 
-    /// $query = New-RscMutationAwsNative -StartCreateEbsVolumeSnapshotsJob
+    /// $query = New-RscMutationAwsNative -Operation StartCreateEbsVolumeSnapshotsJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -197,7 +197,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: StartEc2InstanceSnapshotsJob
     /// 
-    /// $query = New-RscMutationAwsNative -StartEc2InstanceSnapshotsJob
+    /// $query = New-RscMutationAwsNative -Operation StartEc2InstanceSnapshotsJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -232,7 +232,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: StartExportEbsVolumeSnapshotJob
     /// 
-    /// $query = New-RscMutationAwsNative -StartExportEbsVolumeSnapshotJob
+    /// $query = New-RscMutationAwsNative -Operation StartExportEbsVolumeSnapshotJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -285,7 +285,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: StartRdsInstanceSnapshotsJob
     /// 
-    /// $query = New-RscMutationAwsNative -StartRdsInstanceSnapshotsJob
+    /// $query = New-RscMutationAwsNative -Operation StartRdsInstanceSnapshotsJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -320,7 +320,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: StartRefreshAccountsJob
     /// 
-    /// $query = New-RscMutationAwsNative -StartRefreshAccountsJob
+    /// $query = New-RscMutationAwsNative -Operation StartRefreshAccountsJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -357,7 +357,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: StartRestoreEc2InstanceSnapshotJob
     /// 
-    /// $query = New-RscMutationAwsNative -StartRestoreEc2InstanceSnapshotJob
+    /// $query = New-RscMutationAwsNative -Operation StartRestoreEc2InstanceSnapshotJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

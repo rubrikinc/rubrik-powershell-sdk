@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: AdGroups
     /// 
-    /// $query = New-RscQueryO365 -AdGroups
+    /// $query = New-RscQueryO365 -Operation AdGroups
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -117,7 +117,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: BrowseTeamConvChannels
     /// 
-    /// $query = New-RscQueryO365 -BrowseTeamConvChannels
+    /// $query = New-RscQueryO365 -Operation BrowseTeamConvChannels
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Calendar
     /// 
-    /// $query = New-RscQueryO365 -Calendar
+    /// $query = New-RscQueryO365 -Operation Calendar
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -187,7 +187,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Consumption
     /// 
-    /// $query = New-RscQueryO365 -Consumption
+    /// $query = New-RscQueryO365 -Operation Consumption
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -220,7 +220,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Groups
     /// 
-    /// $query = New-RscQueryO365 -Groups
+    /// $query = New-RscQueryO365 -Operation Groups
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -300,7 +300,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: License
     /// 
-    /// $query = New-RscQueryO365 -License
+    /// $query = New-RscQueryO365 -Operation License
     /// 
     /// # No variables for this query.
     /// 
@@ -327,7 +327,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: ListApps
     /// 
-    /// $query = New-RscQueryO365 -ListApps
+    /// $query = New-RscQueryO365 -Operation ListApps
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -375,7 +375,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Mailbox
     /// 
-    /// $query = New-RscQueryO365 -Mailbox
+    /// $query = New-RscQueryO365 -Operation Mailbox
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -403,7 +403,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Mailboxes
     /// 
-    /// $query = New-RscQueryO365 -Mailboxes
+    /// $query = New-RscQueryO365 -Operation Mailboxes
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -481,7 +481,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: ObjectAncestors
     /// 
-    /// $query = New-RscQueryO365 -ObjectAncestors
+    /// $query = New-RscQueryO365 -Operation ObjectAncestors
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -509,7 +509,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Onedrive
     /// 
-    /// $query = New-RscQueryO365 -Onedrive
+    /// $query = New-RscQueryO365 -Operation Onedrive
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -537,7 +537,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Onedrives
     /// 
-    /// $query = New-RscQueryO365 -Onedrives
+    /// $query = New-RscQueryO365 -Operation Onedrives
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -615,7 +615,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Org
     /// 
-    /// $query = New-RscQueryO365 -Org
+    /// $query = New-RscQueryO365 -Operation Org
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -643,7 +643,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: OrgAtSnappableLevel
     /// 
-    /// $query = New-RscQueryO365 -OrgAtSnappableLevel
+    /// $query = New-RscQueryO365 -Operation OrgAtSnappableLevel
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -673,7 +673,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: OrgStatuses
     /// 
-    /// $query = New-RscQueryO365 -OrgStatuses
+    /// $query = New-RscQueryO365 -Operation OrgStatuses
     /// 
     /// # No variables for this query.
     /// 
@@ -700,7 +700,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: OrgSummaries
     /// 
-    /// $query = New-RscQueryO365 -OrgSummaries
+    /// $query = New-RscQueryO365 -Operation OrgSummaries
     /// 
     /// # No variables for this query.
     /// 
@@ -727,7 +727,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Orgs
     /// 
-    /// $query = New-RscQueryO365 -Orgs
+    /// $query = New-RscQueryO365 -Operation Orgs
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -805,7 +805,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: ServiceAccount
     /// 
-    /// $query = New-RscQueryO365 -ServiceAccount
+    /// $query = New-RscQueryO365 -Operation ServiceAccount
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -833,7 +833,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: ServiceStatus
     /// 
-    /// $query = New-RscQueryO365 -ServiceStatus
+    /// $query = New-RscQueryO365 -Operation ServiceStatus
     /// 
     /// # OPTIONAL
     /// $query.Var.orgID = $someString
@@ -861,7 +861,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SharepointDrive
     /// 
-    /// $query = New-RscQueryO365 -SharepointDrive
+    /// $query = New-RscQueryO365 -Operation SharepointDrive
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -889,7 +889,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SharepointDrives
     /// 
-    /// $query = New-RscQueryO365 -SharepointDrives
+    /// $query = New-RscQueryO365 -Operation SharepointDrives
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -967,7 +967,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SharepointList
     /// 
-    /// $query = New-RscQueryO365 -SharepointList
+    /// $query = New-RscQueryO365 -Operation SharepointList
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -995,7 +995,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SharepointLists
     /// 
-    /// $query = New-RscQueryO365 -SharepointLists
+    /// $query = New-RscQueryO365 -Operation SharepointLists
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1073,7 +1073,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SharepointObjectList
     /// 
-    /// $query = New-RscQueryO365 -SharepointObjectList
+    /// $query = New-RscQueryO365 -Operation SharepointObjectList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1157,7 +1157,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SharepointObjects
     /// 
-    /// $query = New-RscQueryO365 -SharepointObjects
+    /// $query = New-RscQueryO365 -Operation SharepointObjects
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1235,7 +1235,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SharepointObjectsNew
     /// 
-    /// $query = New-RscQueryO365 -SharepointObjectsNew
+    /// $query = New-RscQueryO365 -Operation SharepointObjectsNew
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1319,7 +1319,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SharepointSite
     /// 
-    /// $query = New-RscQueryO365 -SharepointSite
+    /// $query = New-RscQueryO365 -Operation SharepointSite
     /// 
     /// # REQUIRED
     /// $query.Var.siteFid = $someString
@@ -1347,7 +1347,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SharepointSites
     /// 
-    /// $query = New-RscQueryO365 -SharepointSites
+    /// $query = New-RscQueryO365 -Operation SharepointSites
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1425,7 +1425,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Site
     /// 
-    /// $query = New-RscQueryO365 -Site
+    /// $query = New-RscQueryO365 -Operation Site
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -1453,7 +1453,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Sites
     /// 
-    /// $query = New-RscQueryO365 -Sites
+    /// $query = New-RscQueryO365 -Operation Sites
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1533,7 +1533,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: StorageStats
     /// 
-    /// $query = New-RscQueryO365 -StorageStats
+    /// $query = New-RscQueryO365 -Operation StorageStats
     /// 
     /// # OPTIONAL
     /// $query.Var.orgID = $someString
@@ -1561,7 +1561,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SubscriptionsAppTypeCounts
     /// 
-    /// $query = New-RscQueryO365 -SubscriptionsAppTypeCounts
+    /// $query = New-RscQueryO365 -Operation SubscriptionsAppTypeCounts
     /// 
     /// # No variables for this query.
     /// 
@@ -1588,7 +1588,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Team
     /// 
-    /// $query = New-RscQueryO365 -Team
+    /// $query = New-RscQueryO365 -Operation Team
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -1616,7 +1616,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: TeamChannels
     /// 
-    /// $query = New-RscQueryO365 -TeamChannels
+    /// $query = New-RscQueryO365 -Operation TeamChannels
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1654,7 +1654,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: TeamConversationsFolderID
     /// 
-    /// $query = New-RscQueryO365 -TeamConversationsFolderID
+    /// $query = New-RscQueryO365 -Operation TeamConversationsFolderID
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -1686,7 +1686,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: TeamPostedBy
     /// 
-    /// $query = New-RscQueryO365 -TeamPostedBy
+    /// $query = New-RscQueryO365 -Operation TeamPostedBy
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1722,7 +1722,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: Teams
     /// 
-    /// $query = New-RscQueryO365 -Teams
+    /// $query = New-RscQueryO365 -Operation Teams
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1800,7 +1800,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: User
     /// 
-    /// $query = New-RscQueryO365 -User
+    /// $query = New-RscQueryO365 -Operation User
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -1828,7 +1828,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: UserObjects
     /// 
-    /// $query = New-RscQueryO365 -UserObjects
+    /// $query = New-RscQueryO365 -Operation UserObjects
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

@@ -54,6 +54,7 @@ Enum representing different type of activities.
 - Recovery
 - Download
 - EmbeddedEvent
+- PROTECTED_OBJECT_DELETION
 - TENANT_OVERLAP - Activity representing tenant permission overlap.
 - NutanixCluster
 - VCenter

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: Cluster
     /// 
-    /// $query = New-RscQueryHyperv -Cluster
+    /// $query = New-RscQueryHyperv -Operation Cluster
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: HostAsyncRequestStatus
     /// 
-    /// $query = New-RscQueryHyperv -HostAsyncRequestStatus
+    /// $query = New-RscQueryHyperv -Operation HostAsyncRequestStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -148,7 +148,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: Mounts
     /// 
-    /// $query = New-RscQueryHyperv -Mounts
+    /// $query = New-RscQueryHyperv -Operation Mounts
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -196,7 +196,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: Scvmm
     /// 
-    /// $query = New-RscQueryHyperv -Scvmm
+    /// $query = New-RscQueryHyperv -Operation Scvmm
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -224,7 +224,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: ScvmmAsyncRequestStatus
     /// 
-    /// $query = New-RscQueryHyperv -ScvmmAsyncRequestStatus
+    /// $query = New-RscQueryHyperv -Operation ScvmmAsyncRequestStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -257,7 +257,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: Scvmms
     /// 
-    /// $query = New-RscQueryHyperv -Scvmms
+    /// $query = New-RscQueryHyperv -Operation Scvmms
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -333,7 +333,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: Server
     /// 
-    /// $query = New-RscQueryHyperv -Server
+    /// $query = New-RscQueryHyperv -Operation Server
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -361,7 +361,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: Servers
     /// 
-    /// $query = New-RscQueryHyperv -Servers
+    /// $query = New-RscQueryHyperv -Operation Servers
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -408,7 +408,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: ServersPaginated
     /// 
-    /// $query = New-RscQueryHyperv -ServersPaginated
+    /// $query = New-RscQueryHyperv -Operation ServersPaginated
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -484,7 +484,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: TopLevelDescendants
     /// 
-    /// $query = New-RscQueryHyperv -TopLevelDescendants
+    /// $query = New-RscQueryHyperv -Operation TopLevelDescendants
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -564,7 +564,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: UniqueServersCount
     /// 
-    /// $query = New-RscQueryHyperv -UniqueServersCount
+    /// $query = New-RscQueryHyperv -Operation UniqueServersCount
     /// 
     /// # OPTIONAL
     /// $query.Var.filter = @(
@@ -632,7 +632,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: VirtualMachine
     /// 
-    /// $query = New-RscQueryHyperv -VirtualMachine
+    /// $query = New-RscQueryHyperv -Operation VirtualMachine
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -660,7 +660,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: VirtualMachineAsyncRequestStatus
     /// 
-    /// $query = New-RscQueryHyperv -VirtualMachineAsyncRequestStatus
+    /// $query = New-RscQueryHyperv -Operation VirtualMachineAsyncRequestStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -693,7 +693,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: VirtualMachineLevelFileInfo
     /// 
-    /// $query = New-RscQueryHyperv -VirtualMachineLevelFileInfo
+    /// $query = New-RscQueryHyperv -Operation VirtualMachineLevelFileInfo
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -726,7 +726,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: VirtualMachines
     /// 
-    /// $query = New-RscQueryHyperv -VirtualMachines
+    /// $query = New-RscQueryHyperv -Operation VirtualMachines
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -802,7 +802,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: VmDetail
     /// 
-    /// $query = New-RscQueryHyperv -VmDetail
+    /// $query = New-RscQueryHyperv -Operation VmDetail
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

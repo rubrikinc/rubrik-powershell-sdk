@@ -237,6 +237,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_DL_EMAIL_SETTINGS")]
         MANAGE_DL_EMAIL_SETTINGS,
 
+        [EnumMember(Value = "MANAGE_DSPM_INTEGRATIONS")]
+        MANAGE_DSPM_INTEGRATIONS,
+
         [EnumMember(Value = "MANAGE_GPS_TO_RSC_UPGRADE")]
         MANAGE_GPS_TO_RSC_UPGRADE,
 
@@ -461,6 +464,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_DL_EMAIL_SETTINGS")]
         VIEW_DL_EMAIL_SETTINGS,
+
+        [EnumMember(Value = "VIEW_DSPM_INTEGRATIONS")]
+        VIEW_DSPM_INTEGRATIONS,
 
         [EnumMember(Value = "VIEW_EVENT_CLUSTER_SETTING")]
         VIEW_EVENT_CLUSTER_SETTING,

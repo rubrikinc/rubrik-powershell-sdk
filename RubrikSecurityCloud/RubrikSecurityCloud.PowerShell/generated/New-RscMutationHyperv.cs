@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: BatchExportVm
     /// 
-    /// $query = New-RscMutationHyperv -BatchExportVm
+    /// $query = New-RscMutationHyperv -Operation BatchExportVm
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: BatchInstantRecoverVm
     /// 
-    /// $query = New-RscMutationHyperv -BatchInstantRecoverVm
+    /// $query = New-RscMutationHyperv -Operation BatchInstantRecoverVm
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -205,7 +205,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: BatchMountVm
     /// 
-    /// $query = New-RscMutationHyperv -BatchMountVm
+    /// $query = New-RscMutationHyperv -Operation BatchMountVm
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -267,7 +267,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: BatchOnDemandBackupVm
     /// 
-    /// $query = New-RscMutationHyperv -BatchOnDemandBackupVm
+    /// $query = New-RscMutationHyperv -Operation BatchOnDemandBackupVm
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -313,7 +313,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: CreateVirtualMachineSnapshotDiskMount
     /// 
-    /// $query = New-RscMutationHyperv -CreateVirtualMachineSnapshotDiskMount
+    /// $query = New-RscMutationHyperv -Operation CreateVirtualMachineSnapshotDiskMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -353,7 +353,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: CreateVirtualMachineSnapshotMount
     /// 
-    /// $query = New-RscMutationHyperv -CreateVirtualMachineSnapshotMount
+    /// $query = New-RscMutationHyperv -Operation CreateVirtualMachineSnapshotMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -397,7 +397,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: DeleteAllSnapshots
     /// 
-    /// $query = New-RscMutationHyperv -DeleteAllSnapshots
+    /// $query = New-RscMutationHyperv -Operation DeleteAllSnapshots
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -428,7 +428,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: DeleteVirtualMachineSnapshot
     /// 
-    /// $query = New-RscMutationHyperv -DeleteVirtualMachineSnapshot
+    /// $query = New-RscMutationHyperv -Operation DeleteVirtualMachineSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -461,7 +461,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: DeleteVirtualMachineSnapshotMount
     /// 
-    /// $query = New-RscMutationHyperv -DeleteVirtualMachineSnapshotMount
+    /// $query = New-RscMutationHyperv -Operation DeleteVirtualMachineSnapshotMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -494,7 +494,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: DownloadSnapshotFromLocation
     /// 
-    /// $query = New-RscMutationHyperv -DownloadSnapshotFromLocation
+    /// $query = New-RscMutationHyperv -Operation DownloadSnapshotFromLocation
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -532,7 +532,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: DownloadVirtualMachineLevelFiles
     /// 
-    /// $query = New-RscMutationHyperv -DownloadVirtualMachineLevelFiles
+    /// $query = New-RscMutationHyperv -Operation DownloadVirtualMachineLevelFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -574,7 +574,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: DownloadVirtualMachineSnapshot
     /// 
-    /// $query = New-RscMutationHyperv -DownloadVirtualMachineSnapshot
+    /// $query = New-RscMutationHyperv -Operation DownloadVirtualMachineSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -605,7 +605,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: DownloadVirtualMachineSnapshotFiles
     /// 
-    /// $query = New-RscMutationHyperv -DownloadVirtualMachineSnapshotFiles
+    /// $query = New-RscMutationHyperv -Operation DownloadVirtualMachineSnapshotFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -650,7 +650,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: ExportVirtualMachine
     /// 
-    /// $query = New-RscMutationHyperv -ExportVirtualMachine
+    /// $query = New-RscMutationHyperv -Operation ExportVirtualMachine
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -696,7 +696,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: InplaceExportVirtualMachine
     /// 
-    /// $query = New-RscMutationHyperv -InplaceExportVirtualMachine
+    /// $query = New-RscMutationHyperv -Operation InplaceExportVirtualMachine
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -736,7 +736,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: InstantRecoverVirtualMachineSnapshot
     /// 
-    /// $query = New-RscMutationHyperv -InstantRecoverVirtualMachineSnapshot
+    /// $query = New-RscMutationHyperv -Operation InstantRecoverVirtualMachineSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -774,7 +774,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: OnDemandSnapshot
     /// 
-    /// $query = New-RscMutationHyperv -OnDemandSnapshot
+    /// $query = New-RscMutationHyperv -Operation OnDemandSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -812,7 +812,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: RefreshScvmm
     /// 
-    /// $query = New-RscMutationHyperv -RefreshScvmm
+    /// $query = New-RscMutationHyperv -Operation RefreshScvmm
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -843,7 +843,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: RefreshServer
     /// 
-    /// $query = New-RscMutationHyperv -RefreshServer
+    /// $query = New-RscMutationHyperv -Operation RefreshServer
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -874,7 +874,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: RegisterAgentVirtualMachine
     /// 
-    /// $query = New-RscMutationHyperv -RegisterAgentVirtualMachine
+    /// $query = New-RscMutationHyperv -Operation RegisterAgentVirtualMachine
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -905,7 +905,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: RegisterScvmm
     /// 
-    /// $query = New-RscMutationHyperv -RegisterScvmm
+    /// $query = New-RscMutationHyperv -Operation RegisterScvmm
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -945,7 +945,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: RestoreVirtualMachineSnapshotFiles
     /// 
-    /// $query = New-RscMutationHyperv -RestoreVirtualMachineSnapshotFiles
+    /// $query = New-RscMutationHyperv -Operation RestoreVirtualMachineSnapshotFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -953,6 +953,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		targetVirtualMachineId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldIgnoreError = $someBoolean
     /// 		# REQUIRED
     /// 		restoreConfig = @(
     /// 			@{
@@ -990,7 +992,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: ScvmmDelete
     /// 
-    /// $query = New-RscMutationHyperv -ScvmmDelete
+    /// $query = New-RscMutationHyperv -Operation ScvmmDelete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1021,7 +1023,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: ScvmmUpdate
     /// 
-    /// $query = New-RscMutationHyperv -ScvmmUpdate
+    /// $query = New-RscMutationHyperv -Operation ScvmmUpdate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1063,7 +1065,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: UpdateVirtualMachine
     /// 
-    /// $query = New-RscMutationHyperv -UpdateVirtualMachine
+    /// $query = New-RscMutationHyperv -Operation UpdateVirtualMachine
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1108,7 +1110,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Hyperv
     /// # API Operation: UpdateVirtualMachineSnapshotMount
     /// 
-    /// $query = New-RscMutationHyperv -UpdateVirtualMachineSnapshotMount
+    /// $query = New-RscMutationHyperv -Operation UpdateVirtualMachineSnapshotMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -2224,6 +2226,8 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		targetVirtualMachineId = $someString
+		# OPTIONAL
+		shouldIgnoreError = $someBoolean
 		# REQUIRED
 		restoreConfig = @(
 			@{

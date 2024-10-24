@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: CreatePair
     /// 
-    /// $query = New-RscMutationReplication -CreatePair
+    /// $query = New-RscMutationReplication -Operation CreatePair
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -152,7 +152,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: DeletePair
     /// 
-    /// $query = New-RscMutationReplication -DeletePair
+    /// $query = New-RscMutationReplication -Operation DeletePair
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -187,7 +187,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: DisablePause
     /// 
-    /// $query = New-RscMutationReplication -DisablePause
+    /// $query = New-RscMutationReplication -Operation DisablePause
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -227,7 +227,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: EnablePause
     /// 
-    /// $query = New-RscMutationReplication -EnablePause
+    /// $query = New-RscMutationReplication -Operation EnablePause
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -269,7 +269,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: UpdateNetworkThrottleBypass
     /// 
-    /// $query = New-RscMutationReplication -UpdateNetworkThrottleBypass
+    /// $query = New-RscMutationReplication -Operation UpdateNetworkThrottleBypass
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -307,7 +307,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: UpdateTarget
     /// 
-    /// $query = New-RscMutationReplication -UpdateTarget
+    /// $query = New-RscMutationReplication -Operation UpdateTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

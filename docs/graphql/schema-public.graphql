@@ -2498,7 +2498,9 @@ type Query {
 
     # Hierarchy object filter.
     filter: [Filter!]): CassandraSourceConnection!
-  cdmHierarchySnappableNew(snappableFid: UUID!): CdmHierarchySnappableNew!
+  cdmHierarchySnappableNew(
+    # The ID of the workload.
+    snappableFid: UUID!): CdmHierarchySnappableNew!
   cdmHierarchySnappablesNew(
     # The Rubrik UUIDs for the objects.
     fids: [UUID!]!): [CdmHierarchySnappableNew!]!
@@ -3040,6 +3042,11 @@ type Query {
     # A list of attributes to filter out group members.
     groupFilterAttributes: [GroupFilterAttribute!]): O365ConfiguredGroupMemberConnection!
 
+  # Count Rubrik clusters grouped by status.
+  countClusters(
+    # Filter by cluster.
+    filter: ClusterFilterInput): CountClustersReply!
+
   # The number of objects protected by the SLA Domains.
   countOfObjectsProtectedBySlas(
     # Forever UUID of the object root. The value of  `none` represents the global hierarchy root.
@@ -3312,7 +3319,10 @@ type Query {
     useOptimisedDiscoveryTimeline: Boolean,
 
     # List of subscriptions for filtering results.
-    subscriptionIdsFilter: [String!]): GetPoliciesTimelineReply!
+    subscriptionIdsFilter: [String!],
+
+    # Object IDs to filter.
+    objectIdsFilter: [String!]): GetPoliciesTimelineReply!
 
   # Retrieve a custom distribution list event digest by ID.
   distributionListDigest(
@@ -5858,6 +5868,9 @@ type Query {
     # Field on which to perform the sorting operation.
     sort: ObjectTypeAccessSummarySortBy,
 
+    # Field on which to perform the grouping operation.
+    groupBy: ObjectTypeAccessSummaryGroupBy,
+
     # Returns the first n elements from the list.
     first: Int,
 
@@ -6821,12 +6834,23 @@ type Query {
 
     # Filter workloads by input (with search by name).
     filter: SnappableFilterInputWithSearch): SnappableConnection!
+
+  # List of all files in snapshots whose names match the specified search query.
   searchSnappableVersionedFiles(
     # Returns the first n elements from the list.
     first: Int,
 
     # Returns the elements in the list that occur after the specified cursor.
-    after: String, snappableFid: UUID!, searchQuery: String!): VersionedFileConnection!
+    after: String,
+
+    # The ID of the workload.
+    snappableFid: UUID!,
+
+    # Specifies the name or path prefix used to search for files within a workload.
+    searchQuery: String!,
+
+    # Determines whether to use a prefix search.
+    usePrefixSearch: Boolean): VersionedFileConnection!
 
   # Browse service accounts.
   serviceAccounts(
@@ -7638,7 +7662,10 @@ type Query {
     sortOrder: SortOrder = DESC,
 
     # Offset based on customer timezone.
-    timezoneOffset: Float = 0.0): TaskDetailConnection!
+    timezoneOffset: Float = 0.0,
+
+    # Time zone identifier string, for the U.S. Pacific Time zone, it is 'America/Los_Angeles'.
+    timezone: Timezone): TaskDetailConnection!
   taskDetailGroupByConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -7718,9 +7745,6 @@ type Query {
 
     # Optionally filter hunts based on whether they have quarantined matches.
     quarantinedMatchesFilter: [ThreatHuntQuarantinedMatchType!]): ThreatHuntConnection!
-
-  # Get the enablement status of cloud-native accounts on which Threat Monitoring can be enabled.
-  threatMonitoringCloudRootEnablement: ThreatMonitoringCloudRootEnablement!
 
   # Get TOTP configuration status for a user.
   totpConfigStatus(
@@ -8404,8 +8428,12 @@ type Query {
 
     # Sort by argument for volume group live mounts.
     sortBy: VolumeGroupLiveMountSortByInput): VolumeGroupLiveMountConnection!
-  vsphereVMMissedRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime): RecoverableRangeResponse! @deprecated(reason: "Deprecated. Use vmwareVmMissedRecoverableRange instead.")
-  vsphereVMRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime): RecoverableRangeResponse! @deprecated(reason: "Deprecated. Use vmwareRecoverableRanges instead.")
+  vsphereVMMissedRecoverableRange(
+    # The ID of the workload.
+    snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime): RecoverableRangeResponse! @deprecated(reason: "Deprecated. Use vmwareVmMissedRecoverableRange instead.")
+  vsphereVMRecoverableRange(
+    # The ID of the workload.
+    snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime): RecoverableRangeResponse! @deprecated(reason: "Deprecated. Use vmwareRecoverableRanges instead.")
   vsphereVMRecoverableRangeInBatch(
     # The batch request, which includes the ID of each CDP-enabled virtual machine for which recoverable ranges are being retrieved, and optionally the date ranges as a filter.
     requestInfo: BatchVmwareVmRecoverableRangesRequestInput!): BatchVmwareVmRecoverableRanges!
@@ -10134,6 +10162,11 @@ type Mutation {
     # Request for deleting the mapping of a target.
     input: DeleteTargetMappingInput!): Void
 
+  # Delete the metadata of a Rubrik cluster operation job that is in a terminal state.
+  deleteTerminatedClusterOperationJobData(
+    # Input for deleting the metadata of a failed Rubrik cluster operation job.
+    input: DeleteTerminatedClusterOperationJobDataInput!): DeleteTerminatedClusterOperationJobDataReply!
+
   # Reset TOTP configuration for a user. Return true when the operation succeeds.
   deleteTotpConfig(
     # Specifies the user ID.
@@ -10157,7 +10190,7 @@ type Mutation {
     # List of IDs.
     ids: [String!]!): Boolean!
 
-  # Requst to delete a mount
+  # Request to delete a mount
   # 
   # Supported in v5.0+
   # Create a request to delete a mount. If there are volumes mounted on a target host, this will use best-effort to unmount those volumes from the host, and proceed to unmount storage on Rubrik.
@@ -10226,6 +10259,11 @@ type Mutation {
   disconnectAwsExocomputeCluster(
     # Input to disconnect a customer-managed cluster from RSC.
     input: DisconnectAwsExocomputeClusterInput!): Void
+
+  # Disconnects a customer-managed Exocompute cluster from RSC.
+  disconnectExocomputeCluster(
+    # Input to disconnect a customer-managed Exocompute cluster from RSC.
+    input: DisconnectExocomputeClusterInput!): Void
 
   # On-demand discovery of a Db2 instance
   # 
@@ -11409,6 +11447,11 @@ type Mutation {
     # ID for your LDAP integration.
     id: UUID!): Boolean!
 
+  # Remove a node for replacement.
+  removeNodeForReplacement(
+    # Input for removing a node for replacement on a Rubrik cluster.
+    input: RemoveNodeForReplacementInput!): RemoveNodeForReplacementReply!
+
   # Remove policies from objects.
   removePolicyObjects(policyIds: [String!]!, objectIds: [String!]! = [],
 
@@ -11435,6 +11478,11 @@ type Mutation {
   removeVlans(
     # Input for RemoveVlans.
     input: RemoveVlansInput!): RemoveVlansReply!
+
+  # Replace a removed node with a new node.
+  replaceClusterNode(
+    # Input for replacing a node on a Rubrik cluster.
+    input: ReplaceClusterNodeInput!): ReplaceClusterNodeReply!
 
   # Requests a persistent Exocompute clusters for a region configuration in a cloud account.
   requestPersistentExocluster(
@@ -14452,6 +14500,9 @@ enum ActivityObjectTypeEnum {
   # Specifies that the activity object type is Kubernetes Cluster.
   K8S_CLUSTER
 
+  # Specifies that the activity object type is Kubernetes Virtual Machine namespace.
+  K8S_NAMESPACE_V2
+
   # Specifies that the activity object type is Kubernetes Protection Set.
   K8S_PROTECTION_SET
 
@@ -15083,6 +15134,7 @@ enum ActivityTypeEnum {
 
   # Activity representing schedule-recovery event type.
   SCHEDULE_RECOVERY
+  SECURITY_VIOLATION
   Storage
   StorageArray
   StormResource
@@ -15402,6 +15454,9 @@ input AddAzureCloudAccountInput {
 
   # Regions to be added to the Azure Cloud Account.
   regions: [AzureCloudAccountRegion!]!
+
+  # Indicates whether the Azure cloud account can be onboarded asynchronously.
+  isAsynchronous: Boolean!
 }
 # Response of the operation to add an Azure Cloud Account.
 type AddAzureCloudAccountReply {
@@ -15478,6 +15533,9 @@ input AddAzureCloudAccountWithoutOauthInput {
 
   # Regions to be added to the Azure Cloud Account.
   regions: [AzureCloudAccountRegion!]!
+
+  # Indicates whether the Azure cloud account can be onboarded asynchronously.
+  isAsynchronous: Boolean!
 
   # Type of Azure Tenant. Possible values: Azure Public Cloud, Azure China Cloud.
   azureCloudType: AzureCloudType = AZUREPUBLICCLOUD
@@ -17037,6 +17095,11 @@ type AppManifestInfo {
   # Content type of the Kubernetes manifest information.
   manifestContentType: K8sContentType!
 }
+# AppMetadata stores the application-specific metadata.
+type AppMetadata {
+  # Signifies one of the application-specific metadata.
+  metadata: ApplicationSpecificMetadata
+}
 # Parameters to sort O365 apps.
 input AppSortByParam {
   field: AppSortByParamField = APP_ID
@@ -17076,6 +17139,8 @@ type ApplicationCloudAccountToExocomputeConfig {
   # Mapped Exocompute account details.
   mappedExocomputeAccount: CloudAccountDetails
 }
+# Signifies one of the application-specific metadata.
+union ApplicationSpecificMetadata = AwsEbsMetadata | AzureManagedDiskMetadata
 # Input for approving private endpoint.
 input ApproveRcvPrivateEndpointInput {
   # Field for specifying Rubrik location identifier of RCV location.
@@ -17467,6 +17532,9 @@ type AssetMetadata {
 
   # Signifies the name of the asset.
   name: String!
+
+  # Signifies the application-specific metadata.
+  appSpecificMetadata: AppMetadata
 }
 # Object tag stores key value pair associated with workloads.
 type AssetTag {
@@ -17921,8 +17989,14 @@ enum AuditObjectType {
   # Kubernetes cluster object.
   K8S_CLUSTER
 
+  # Kubernetes Virtual Machine namespace object.
+  K8S_NAMESPACE_V2
+
   # Kubernetes protection set object.
   K8S_PROTECTION_SET
+
+  # Kubernetes Virtual Machine object.
+  K8S_VIRTUAL_MACHINE
 
   # KMS Key Vault.
   KMS_KEY_VAULT
@@ -18628,6 +18702,9 @@ enum AuthorizedOperation {
   # View account-wide data security risk metrics, scores, and recommendations.
   VIEW_DATA_SECURITY_DETAILS
 
+  # View data security posture results.
+  VIEW_DATA_SECURITY_POSTURE_RESULTS
+
   # View the database log reporting properties for a cluster.
   VIEW_DB_LOG_REPORT_PROPERTIES
 
@@ -18853,20 +18930,6 @@ enum AwsAccountStatus {
 
   # The AWS account has failed to refresh.
   REFRESH_FAILED
-}
-# AWS accounts on which Threat Monitoring can be enabled.
-type AwsAccountThreatMonitoringEnablement {
-  # AWS account ID.
-  id: String!
-
-  # AWS account name.
-  accountName: String!
-
-  # Indicates whether Threat Monitoring is enabled.
-  enabled: Boolean!
-
-  # Indicates whether the AWS account is healthy.
-  isHealthy: Boolean!
 }
 # Validate given aws accounts.
 type AwsAccountValidationResponse {
@@ -19417,6 +19480,14 @@ type AwsCustomerManagedExocomputeConfig implements AwsExocomputeGetConfiguration
   # AWS native account ID authorized to pull images from Rubrik's Elastic Container Registry.
   pcrImagePullAwsNativeId: String
 }
+# AwsEbsMetadata represents the metadata for the AWS EBS volume.
+type AwsEbsMetadata {
+  # The ID of the EC2 instance to which the EBS volume is attached.
+  attachedEc2Id: String!
+
+  # The name of the EC2 instance to which the EBS volume is attached.
+  attachedEc2Name: String!
+}
 # ES storage for AWS account.
 input AwsEsConfigInput {
   # Bucket name in AWS.
@@ -19751,6 +19822,9 @@ type AwsNativeAccount implements PolarisHierarchyObject , HierarchyObject {
   # List of Exocompute configurations for the AWS account.
   applicationCloudAccountExoConfigs: ApplicationCloudAccountToExocomputeConfig!
 
+  # CloudSlab DNS that must be in the allowlist to protect object store workloads.
+  cloudSlabDns: String!
+
   # List of all EC2 instances under this AWS Native account.
   awsNativeEc2Instances(
     # Returns the first n elements from the list.
@@ -19931,6 +20005,17 @@ interface AwsNativeAccountDescendantType {
   # Security posture metadata.
   securityMetadata: SecurityMetadata
 }
+# AWS native account details.
+type AwsNativeAccountDetails {
+  # Rubrik ID of the AWS account.
+  id: String!
+
+  # Name of the AWS account.
+  name: String!
+
+  # Status of the AWS account for the relevant feature.
+  status: String!
+}
 # Wrapper around the AwsNativeAccount object. This wrapper is used for pagination.
 type AwsNativeAccountEdge {
   # String used to identify this edge.
@@ -20083,6 +20168,9 @@ type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnap
 
   # AWS Native name of the object.
   nativeName: String!
+
+  # AWS native account details.
+  awsNativeAccountDetails: AwsNativeAccountDetails
 
   # The authorized operations on the object.
   authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]!
@@ -20466,6 +20554,9 @@ type AwsNativeEc2Instance implements PolarisHierarchyObject , PolarisHierarchySn
 
   # Specifies whether application consistent snapshots are enabled for this EC2 instance. When enabled, Rubrik informs the AWS applications before taking snapshots, allowing them to prepare. During the preparation phrase, Rubrik freezes the IO, takes the snapshot, and then unfreezes IO, enabling the apps to resume regular operation.
   isAppConsistencyEnabled: Boolean!
+
+  # AWS native account details.
+  awsNativeAccountDetails: AwsNativeAccountDetails
 
   # The authorized operations on the object.
   authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]!
@@ -23713,6 +23804,9 @@ type AwsNativeRdsInstance implements PolarisHierarchyObject , PolarisHierarchySn
   # Availability zones if this is an Aurora cluster.
   auroraAvailabilityZones: [String!]!
 
+  # AWS native account details.
+  awsNativeAccountDetails: AwsNativeAccountDetails
+
   # The authorized operations on the object.
   authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]!
 
@@ -24288,6 +24382,9 @@ type AwsNativeS3Bucket implements PolarisHierarchyObject , PolarisHierarchySnapp
 
   # A boolean specifying whether exocompute is configured in the region.
   isExocomputeConfigured: Boolean!
+
+  # AWS native account details.
+  awsNativeAccountDetails: AwsNativeAccountDetails
 
   # The authorized operations on the object.
   authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]!
@@ -24908,6 +25005,9 @@ input AwsVmConfig {
   # AWS marketplace product ID.
   cdmProduct: String = ""
 
+  # Placement Group name.
+  placementGroupName: String = ""
+
   # Create dense or standard nodes.
   vmType: VmType
 
@@ -25497,19 +25597,19 @@ type AzureAdRole {
 }
 # Represents snapshot details of the directory.
 type AzureAdSnapshotDetails {
-  # Time of the snapshot.
-  snapshotTime: DateTime
-
   # ID of the snapshot.
   snapshotId: UUID!
+
+  # Time of the snapshot.
+  snapshotTime: DateTime!
 }
 # Snapshot range containing the Azure AD object.
 type AzureAdSnapshotRange {
   # Timestamp of the snapshot from which the Azure AD object is present.
-  from: AzureAdSnapshotDetails
+  from: AzureAdSnapshotDetails!
 
   # Timestamp of the snapshot till which the Azure AD object is present.
-  to: AzureAdSnapshotDetails
+  to: AzureAdSnapshotDetails!
 }
 # Azure AD user.
 type AzureAdUser {
@@ -26215,7 +26315,7 @@ input AzureExocomputeAddConfigInputType {
   region: AzureCloudAccountRegion!
 
   # Subnet native ID where Exocompute cluster should be launched.
-  subnetNativeId: String!
+  subnetNativeId: String
 
   # Specifies if this configuration is managed by Rubrik.
   isRscManaged: Boolean!
@@ -26251,6 +26351,24 @@ type AzureExocomputeConfigDetails {
 
   # Status of the latest Exocompute health check.
   healthCheckStatus: ExocomputeHealthCheckStatus!
+
+  # Whether this Exocompute uses a Private Container Registry (PCR).
+  hasPcr: Boolean!
+
+  # URL of the user's PCR.
+  pcrUrl: String!
+
+  # Latest approved exotask bundle version for your Private Container Registry.
+  pcrLatestApprovedBundleVersion: String!
+
+  # Customer Azure App ID authorized to pull images from Rubrik's Elastic Container Registry.
+  pcrImagePullAzureAppId: String!
+
+  # Cluster name of the customer-managed Exocompute.
+  byokClusterName: String!
+
+  # Cluster ID of the customer-managed Exocompute.
+  byokClusterId: String!
 
   # Details of the latest Exocompute cluster.
   latestExoclusterDetails: ExocomputeClusterDetails
@@ -26329,6 +26447,24 @@ type AzureExocomputeGetConfigResponse {
 
   # Status of the latest Exocompute health check.
   healthCheckStatus: ExocomputeHealthCheckStatus!
+
+  # Whether this Exocompute uses a Private Container Registry (PCR).
+  hasPcr: Boolean!
+
+  # URL of the user's PCR.
+  pcrUrl: String!
+
+  # Latest approved exotask bundle version for your Private Container Registry.
+  pcrLatestApprovedBundleVersion: String!
+
+  # Customer Azure App ID authorized to pull images from Rubrik's Elastic Container Registry.
+  pcrImagePullAzureAppId: String!
+
+  # Cluster name of the customer-managed Exocompute.
+  byokClusterName: String!
+
+  # Cluster ID of the customer-managed Exocompute.
+  byokClusterId: String!
 
   # Details of the latest Exocompute cluster.
   latestExoclusterDetails: ExocomputeClusterDetails
@@ -26467,6 +26603,15 @@ type AzureLocationDetailType {
 
   # Available availability zones in the region.
   logicalAvailabilityZones: [String!]!
+}
+# AzureManagedDiskMetadata represents the metadata for the Azure Managed Disk.
+type AzureManagedDiskMetadata {
+  # The ID of the Azure virtual machine to which the managed disk is attached.
+  attachedVmId: String!
+
+  # The name of the Azure virtual machine to which the managed disk is
+  # attached.
+  attachedVmName: String!
 }
 # AzureManagedIdentitiesRequest input for the Azure account.
 input AzureManagedIdentitiesRequest {
@@ -27600,6 +27745,9 @@ type AzureNativeResourceGroupSlaAssignment {
 
   # Configured SLA domain.
   configuredSlaDomain: GlobalSlaReply!
+
+  # SLA Domain assignment which is pending on the cloud native objects.
+  rscNativeObjectPendingSla: CompactSlaDomain
 }
 # Returns Azure resource groups containing objects that are protected by the SLA domains identified by the specified SLA IDs.
 input AzureNativeRgSlaFilter {
@@ -27747,6 +27895,9 @@ type AzureNativeSubscription implements PolarisHierarchyObject , HierarchyObject
 
   # List of Exocompute configurations for the Azure subscription.
   applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig!
+
+  # CloudSlab DNS that must be in the allowlist to protect object store workloads.
+  cloudSlabDns: String!
 
   # Paginated list of all Azure Resource Groups in the subscription.
   azureNativeResourceGroups(
@@ -30096,20 +30247,6 @@ enum AzureSubscriptionStatus {
 
   # The Azure subscription has failed to refresh.
   REFRESH_FAILED
-}
-# Azure subscriptions on which Threat Monitoring can be enabled.
-type AzureSubscriptionThreatMonitoringEnablement {
-  # Azure subscription ID.
-  id: String!
-
-  # Azure subscription name.
-  subscriptionName: String!
-
-  # Indicates whether Threat Monitoring is enabled.
-  enabled: Boolean!
-
-  # Indicates whether the Azure subscription is healthy.
-  isHealthy: Boolean!
 }
 # Azure Cloud Account Subscription with exocompute configurations for feature configured.
 type AzureSubscriptionWithExoConfigs {
@@ -35354,6 +35491,14 @@ type CloudAccountAddressBlockV4 {
   # CIDR block.
   cidrBlock: String!
 }
+# Details for each cloud account.
+type CloudAccountDetail {
+  # Native ID of the cloud account.
+  nativeId: String!
+
+  # Name of the cloud account.
+  name: String!
+}
 # Cloud Account with mapped Exocompute account.
 type CloudAccountDetails {
   # Rubrik ID of cloud account.
@@ -35485,6 +35630,9 @@ type CloudAccountInfo {
 
   # Name of the account.
   accountName: String!
+
+  # Platform of the account.
+  cloudPlatform: Platform!
 }
 # Cloud account operation type.
 enum CloudAccountOperation {
@@ -35585,6 +35733,9 @@ enum CloudAccountType {
   # Cloud account type is GCP.
   CLOUD_ACCOUNT_GCP
 
+  # Cloud account type is role-based GCP.
+  CLOUD_ACCOUNT_GCP_ROLE_BASED
+
   # Cloud account type is unknown.
   UNKNOWN_CLOUD_ACCOUNT
 }
@@ -35617,6 +35768,26 @@ type CloudAccountsExocomputeAccountMapping {
 
   # Represents the Exocompute account to which the application account is mapped.
   exocomputeCloudAccountId: UUID!
+}
+# Template for TPR request changes regarding the cloud account deletion.
+type CloudAccountsTprReqChangesTemplate implements RequestedChangesTemplate {
+  # Vendor of the cloud account.
+  cloudVendor: CloudVendor!
+
+  # Cloud account IDs for customer accounts.
+  cloudAccountIds: [String!]!
+
+  # Features corresponding to cloud accounts.
+  features: [CloudAccountFeature!]!
+
+  # Details of the cloud accounts.
+  cloudAccountsDetails: [CloudAccountDetail!]!
+
+  # Requested action string.
+  requestedAction: String!
+
+  # Name of the requested changes template for quorum authorization.
+  templateName: String!
 }
 # Cloud Direct cluster location details.
 type CloudDirectCluster {
@@ -35856,6 +36027,9 @@ type CloudDirectNasNamespace implements CloudDirectHierarchyObject , HierarchyOb
 
   # Object ID.
   id: UUID!
+
+  # The Cloud Direct NAS system to which this NAS namespace belongs.
+  cloudDirectNasSystem: CloudDirectNasSystem!
 
   # List of descendants.
   descendantConnection(
@@ -36131,10 +36305,10 @@ type CloudDirectNasShare implements CloudDirectHierarchyWorkload , CloudDirectHi
   # Cloud Direct NAS Share Protecting Policy name.
   ncdPolicyName: String!
 
-  # SystemID of the system the Cloud Direct NAS Share belongs.
+  # SystemID of the system the Cloud Direct NAS share belongs.
   systemId: UUID!
 
-  # NamespaceID of the namespace(if any) to which the Cloud Direct NAS Share belongs to.
+  # NamespaceID of the namespace(if any) to which the Cloud Direct NAS share belongs to.
   namespaceId: String
 
   # Specifies whether the share is archived.
@@ -36157,6 +36331,12 @@ type CloudDirectNasShare implements CloudDirectHierarchyWorkload , CloudDirectHi
 
   # Object ID.
   id: UUID!
+
+  # The Cloud Direct NAS system to which this NAS share belongs.
+  cloudDirectNasSystem: CloudDirectNasSystem!
+
+  # The Cloud Direct NAS namespace to which this NAS share belongs.
+  cloudDirectNasNamespace: CloudDirectNasNamespace
 
   # Cluster from which this workload originated.
   cluster: Cluster!
@@ -36208,7 +36388,7 @@ type CloudDirectNasSystem implements CloudDirectHierarchyObject , HierarchyObjec
   # Cloud Direct NAS Cluster ID.
   clusterUuid: UUID!
 
-  # UUID of the Cloud Direct NAS System on the NCD Cluster.
+  # UUID of the Cloud Direct NAS system on the NCD Cluster.
   cloudDirectId: UUID!
 
   # Name of the system.
@@ -36885,6 +37065,9 @@ type CloudNativeTagRule {
 
   # Does this tag rule apply to all cloud accounts.
   applyToAllCloudAccounts: Boolean!
+
+  # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+  rscNativeObjectPendingSla: CompactSlaDomain
 }
 # Fields to filter tag rules.
 enum CloudNativeTagRuleFilterFields {
@@ -37813,10 +37996,10 @@ type ClusterInfo {
 }
 # Rubrik cluster information.
 type ClusterInfoType {
-  # Name of the cluster.
+  # Rubrik cluster name.
   name: String!
 
-  # Version of the cluster.
+  # Rubrik cluster version.
   version: String!
 
   # UUID of the cluster.
@@ -37993,6 +38176,9 @@ type ClusterNetworkInterfaceDetails {
 
   # Network interface display name for the corresponding cluster.
   interfaceDisplayName: String!
+
+  # Network interface alias set by the user.
+  alias: String
 }
 # Rubrik cluster node.
 type ClusterNode {
@@ -40172,6 +40358,23 @@ input ConversationsRestoreConfig {
   ChannelsToRestore: [TeamsConvChannelInfo!]!
   ShouldRestoreFileAttachments: Boolean!
 }
+# Cluster Count grouped by status.
+type CountClustersReply {
+  # Total number of clusters based on input filters.
+  totalClusters: Int!
+
+  # The number of Rubrik clusters that have an OK status.
+  okClusters: Int!
+
+  # The number of Rubrik clusters that have a WARNING status.
+  warningClusters: Int!
+
+  # The number of Rubrik clusters that have a FATAL status.
+  fatalClusters: Int!
+
+  # The number of Rubrik clusters that are in disconnected state.
+  disconnectedClusters: Int!
+}
 # Response for the query to retrieve the number of objects protected by the SLA Domains.
 type CountOfObjectsProtectedBySLAsResult {
   # Number of objects protected by SLA Domains.
@@ -40441,6 +40644,9 @@ input CreateAwsClusterInput {
 
   # Disable API termination on AWS instances.
   disableApiTermination: Boolean = false
+
+  # Flag to enable use of placement group on the cluster.
+  usePlacementGroups: Boolean = false
 
   # Cluster configuration to initialize cluster.
   clusterConfig: ClusterConfigInput
@@ -43283,10 +43489,16 @@ enum DataViewTypeEnum {
   # Specifies the database schema for audits.
   AUDIT_LIST
   BACKUP_COMPLIANCE
+
+  # Specifies the backup strikes information.
+  BACKUP_STRIKES
   CDM_UPGRADES
 
   # Clusters database table schema.
   CLUSTERS
+
+  # Specifies Rubrik DSPM information for a given workload over time.
+  DATAGOV_TIMELINE
 
   # Specified the Events report information.
   EVENT_SERIES
@@ -43336,6 +43548,9 @@ enum DataViewTypeEnum {
 
   #  Specifies the database schema for QAuth roles.
   QAUTH_ROLES
+
+  # Specified the database schema for service account
+  SERVICE_ACCOUNT
   SLA_AUDIT_DETAIL
 
   # Specifies all audit information for the single SLA Domain.
@@ -45187,12 +45402,12 @@ input DeleteReplicationPairInput {
   # Target Rubrik cluster UUID.
   targetClusterUuid: UUID!
 }
-# Template for delete replication pair tpr request changes.
+# Template for deleting a replication pair with the quorum authorization request.
 type DeleteReplicationPairTprReqChangesTemplate implements RequestedChangesTemplate {
   # Requested action string.
   requestedAction: String!
 
-  # Replication pair details containing source and target cluster names.
+  # Details of the replication pair, including the names of the source and target clusters.
   replicationPair: TprReplicationPair
 
   # Name of the requested changes template for quorum authorization.
@@ -45257,6 +45472,28 @@ input DeleteTargetInput {
 input DeleteTargetMappingInput {
   # ID of the target to which the archival location is mapped.
   id: String = ""
+}
+# Request parameters for deleting the metadata of a failed Rubrik cluster operation job.
+input DeleteTerminatedClusterOperationJobDataInput {
+  # Rubrik cluster UUID.
+  clusterUuid: UUID!
+
+  # Job type.
+  jobType: CcpJobType!
+}
+# Status and progress of a Rubrik cluster operation job. 
+type DeleteTerminatedClusterOperationJobDataReply {
+  # Job progress percentage.
+  jobProgress: Int!
+
+  # Job progress detail.
+  message: String!
+
+  # Job status.
+  jobStatus: CdmJobStatus!
+
+  # Job type.
+  jobType: CcpJobType!
 }
 # Input required for resetting TOTP for multiple users.
 input DeleteTotpConfigsInput {
@@ -45794,6 +46031,14 @@ input DisableTprOrgInput {
 input DisconnectAwsExocomputeClusterInput {
   # Represents the ID of the customer-managed cluster that must be disconnected from RSC.
   clusterId: UUID!
+}
+# Input to disconnect a customer-managed Exocompute cluster from RSC and mark it as terminated.
+input DisconnectExocomputeClusterInput {
+  # Represents the ID of the customer-managed Exocompute cluster that must be disconnected from RSC.
+  clusterId: UUID!
+
+  # Cloud type for the Exocompute cluster to be disconnected.
+  cloudType: CloudType!
 }
 # Input for discovering a Db2 instance.
 input DiscoverDb2InstanceInput {
@@ -46829,6 +47074,20 @@ type EdgeWindowsToolLink {
   # Download link for Rubrik Edge Deployment Tool for Microsoft Windows.
   downloadLink: String!
 }
+# Template for editing a replication pair with the quorum authorization request.
+type EditReplicationPairTprReqChangesTemplate implements RequestedChangesTemplate {
+  # Requested action string.
+  requestedAction: String!
+
+  # Action description string.
+  actionDescription: String!
+
+  # Details of the replication pair, including the names of the source and target clusters.
+  replicationPair: TprReplicationPair
+
+  # Name of the requested changes template for quorum authorization.
+  templateName: String!
+}
 type EditSlaTprReqChangesTemplate implements RequestedChangesTemplate {
   # Summary of the existing SLA Domain.
   oldSlaSummary: GlobalSlaReply!
@@ -47196,7 +47455,7 @@ input EventDigestConfig {
   # Activity statuses to include in event digest.
   activityStatus: [ActivityStatusEnum!]
 
-  # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, TENANT_QUOTA, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, PROTECTED_OBJECT_DELETION, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, USER_INTELLIGENCE, and OTHER_FILTER_ITEM.
+  # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, SECURITY_VIOLATION, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, TENANT_QUOTA, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, PROTECTED_OBJECT_DELETION, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, USER_INTELLIGENCE, and OTHER_FILTER_ITEM.
   activityType: [String!]
 
   # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, THREAT_FEED, BULK_RECOVERY, DATA_RISKS, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, RUBY_AI, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, ANOMALY, Recovery, Download, FILE_DOWNLOAD, and Index.
@@ -47219,7 +47478,7 @@ type EventDigestConfigInfo {
   # Activity statuses to include in event digest.
   activityStatus: [ActivityStatusEnum!]
 
-  # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, TENANT_QUOTA, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, PROTECTED_OBJECT_DELETION, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, USER_INTELLIGENCE, and OTHER_FILTER_ITEM.
+  # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, SECURITY_VIOLATION, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, TENANT_QUOTA, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, PROTECTED_OBJECT_DELETION, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, USER_INTELLIGENCE, and OTHER_FILTER_ITEM.
   activityType: [String!]
 
   # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, THREAT_FEED, BULK_RECOVERY, DATA_RISKS, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, RUBY_AI, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, ANOMALY, Recovery, Download, FILE_DOWNLOAD, and Index.
@@ -47431,6 +47690,9 @@ enum EventObjectType {
 
   # Kubernetes Cluster object.
   K8S_CLUSTER
+
+  # Kubernetes Virtual Machine namespace object.
+  K8S_NAMESPACE_V2
 
   # Kubernetes Protection Set object.
   K8S_PROTECTION_SET
@@ -47857,6 +48119,10 @@ enum EventType {
 
   # Orchestrated Application Recovery schedule-recovery event type.
   SCHEDULE_RECOVERY
+
+  # SECURITY_VIOLATION captures life cycle of security violations raised
+  # by PolicyEngine component.
+  SECURITY_VIOLATION
 
   # Storage event.
   STORAGE
@@ -48434,6 +48700,205 @@ type ExchangeDatabaseEdge {
   # The actual ExchangeDatabase object wrapped by this edge.
   node: ExchangeDatabase!
 }
+# Exchange Host details object.
+type ExchangeHost implements CdmHierarchyObject , HierarchyObject {
+  # UUID of the primary cluster.
+  primaryClusterUuid: UUID!
+
+  # ID associated with the Exchange Host in CDM.
+  cdmId: String!
+
+  # List of descendants.
+  descendantConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects according to the hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorts the order of results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # Hierarchy object filter.
+    filter: [Filter!],
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): ExchangeHostDescendantTypeConnection!
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # FID of the hierarchy object.
+  id: UUID!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # Sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # Sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+}
+# Descendant of the Exchange Host object.
+interface ExchangeHostDescendantType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # FID of the hierarchy object.
+  id: UUID!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # Sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # Sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+}
+# Paginated list of ExchangeHostDescendantType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type ExchangeHostDescendantTypeConnection {
+  # List of ExchangeHostDescendantType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [ExchangeHostDescendantTypeEdge!]!
+
+  # List of ExchangeHostDescendantType objects.
+  nodes: [ExchangeHostDescendantType!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of ExchangeHostDescendantType objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the ExchangeHostDescendantType object. This wrapper is used for pagination.
+type ExchangeHostDescendantTypeEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual ExchangeHostDescendantType object wrapped by this edge.
+  node: ExchangeHostDescendantType!
+}
 # Type of hierarchy for all exchange items like emails, calendars, contacts, calendar groups, etc.
 enum ExchangeItemHierarchyType {
   # Denotes items (emails, folders, calendars, etc.) that belong to the default mailbox hierarchy.
@@ -48592,6 +49057,9 @@ type ExchangeServer implements CdmHierarchyObject , HierarchyObject , PhysicalHo
 
   # Host parent for the Exchange Server.
   host: PhysicalHost!
+
+  # Exchange Host parent for the Exchange Server.
+  exchangeHost: ExchangeHost!
 
   # Dag parent for Exchange Server.
   exchangeDag: ExchangeDag
@@ -50495,6 +50963,9 @@ enum FieldEnum {
   # Returns snapshots with a sequence number greater than the
   # specified sequence number.
   SEQUENCE_NUMBER_GREATER_THAN
+
+  # When configured, it returns snapshots with IDs present in the list.
+  SNAPSHOT_IDS
 
   # SPECIFIC_SNAPSHOT_NOT_REQUIRED when added as a filter returns Snapshots
   # without the specific snapshots details. When not provided, Specific
@@ -54431,6 +54902,30 @@ type GetPoliciesTimelineReply {
 
   # Count of non sensitivity hits.
   nonSensitivityHits: [TimelineEntry!]!
+
+  # Count of cloud objects with high risk.
+  highRiskCloudObjects: [TimelineEntry!]!
+
+  # Count of data center objects with high risk.
+  highRiskDatacenterObjects: [TimelineEntry!]!
+
+  # Count of SaaS objects with high risk.
+  highRiskSaasObjects: [TimelineEntry!]!
+
+  # Count of high-risk sensitive files.
+  highRiskSensitiveFiles: [TimelineEntry!]!
+
+  # Count of medium-risk sensitive files.
+  mediumRiskSensitiveFiles: [TimelineEntry!]!
+
+  # Count of low-risk sensitive files.
+  lowRiskSensitiveFiles: [TimelineEntry!]!
+
+  # Count of no risk-sensitive files.
+  noRiskSensitiveFiles: [TimelineEntry!]!
+
+  # Count of objects with non-zero sensitive hits.
+  totalRiskObjects: [TimelineEntry!]!
   policySummaries: [ClassificationPolicySummary!]!
 }
 # Specifies the versioning and object ACL state of the AWS S3 bucket.
@@ -56606,6 +57101,15 @@ enum HierarchyObjectTypeEnum {
   # Confluence space.
   CONFLUENCE_SPACE
   CloudNativeTagRule
+
+  # D365 Dataverse Table.
+  D365_DATAVERSE_TABLE
+
+  # D365 Metadata.
+  D365_FIXED_OBJECT
+
+  # D365 Organization.
+  D365_ORGANIZATION
   Db2Database
   Db2Instance
 
@@ -56649,8 +57153,14 @@ enum HierarchyObjectTypeEnum {
   # Kubernetes cluster.
   K8S_CLUSTER
 
+  # Kubernetes namespace v2.
+  K8S_NAMESPACE_V2
+
   # Kubernetes Protection Set.
   K8S_PROTECTION_SET
+
+  # Kubernetes virtual machine.
+  K8S_VIRTUAL_MACHINE
   KuprCluster
   KuprNamespace
   LinuxFileset
@@ -59999,6 +60509,10 @@ input HypervRestoreFilesConfigInput {
   # Workload ID of the target HyperV virtual machine, which is the destination for the recovered data.
   targetVirtualMachineId: String
 
+  # Supported in v9.3
+  # Specify whether to ignore the error during restoration.
+  shouldIgnoreError: Boolean
+
   # Required. Supported in v5.0+
   # v5.0-v5.3: Absolute path of the target location for the copied files
   # v6.0-v7.0: Absolute path of the target location for the copied files.
@@ -60819,6 +61333,20 @@ type IdentityProvider {
 
   # Unique identifier of the identity provider.
   id: UUID!
+
+  # List of claim attributes of the identity provider.
+  idpClaimAttributes: [IdpClaimAttributeType!]!
+}
+# Name and type of the IdP claim.
+type IdpClaimAttributeType {
+  # Name of the claim. The claim name depends on your IdP.
+  name: String!
+
+  # Type of claim. For example email or group.
+  type: String!
+
+  # SAML attribute type enum.
+  attributeType: SamlAttributeType!
 }
 # Supported in v6.0+
 input InPlaceRecoveryJobConfigForBatchInput {
@@ -61459,6 +61987,9 @@ enum InventorySubHierarchyRootEnum {
   # Replaces CLOUD_DIRECT_NAS_EXPORT_ROOT
   CLOUD_DIRECT_NAS_ROOT
   CLOUD_NATIVE_TAG_RULE_ROOT
+
+  # D365 root.
+  D365_ROOT
   DB2_ROOT
 
   # Root of exchange hierarchy.
@@ -63828,6 +64359,9 @@ type LabelRule {
 
   # Does this tag rule apply to all cloud accounts.
   applyToAllCloudAccounts: Boolean!
+
+  # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+  rscNativeObjectPendingSla: CompactSlaDomain
 }
 # Label query over a set of K8's resources.
 input LabelSelector {
@@ -66325,6 +66859,15 @@ enum ManagedObjectType {
   # Confluence Space.
   CONFLUENCE_SPACE
 
+  # D365 Dataverse Table.
+  D365_DATAVERSE_TABLE
+
+  # D365 metadata.
+  D365_FIXED_OBJECT
+
+  # D365 Organization.
+  D365_ORGANIZATION
+
   # DB2 database.
   DB2_DATABASE
 
@@ -66394,8 +66937,14 @@ enum ManagedObjectType {
   # On-prem Kubernetes Cluster.
   K8S_CLUSTER
 
+  # Kubernetes Namespace V2.
+  K8S_NAMESPACE_V2
+
   # On-prem Kubernetes Protection Set.
   K8S_PROTECTION_SET
+
+  # Kubernetes Virtual Machine.
+  K8S_VIRTUAL_MACHINE
 
   # Kubernetes cluster.
   KUPR_CLUSTER
@@ -67491,6 +68040,26 @@ type ManagedVolumeMountSpec {
   # CDM node specification for the channel mount.
   node: ClusterNode
 }
+# Supported in v9.3
+# Settings related to NFS for the Managed Volume.
+type ManagedVolumeNFSSettings {
+  # Supported in v9.3
+  # Specifies the NFS version to use.
+  version: ManagedVolumeNFSVersion
+}
+# Supported in v9.3
+# Settings related to NFS for the Managed Volume.
+input ManagedVolumeNFSSettingsInput {
+  # Supported in v9.3
+  # Specifies the NFS version to use.
+  version: ManagedVolumeNFSVersion
+}
+# Supported in v9.3
+# Version of NFS used for Managed Volume.
+enum ManagedVolumeNFSVersion {
+  MANAGED_VOLUME_NFS_VERSION_NF_SV3
+  MANAGED_VOLUME_NFS_VERSION_NF_SV4
+}
 # Supported in v5.0+
 # v5.0-v8.0:
 # v8.1+: Config for updating a Managed Volume.
@@ -67524,6 +68093,10 @@ type ManagedVolumePatchConfig {
   # v6.0: List of valid usersnames in the domain that can access the SMB share for this managed volume. This parameter is required when the value of shareType is SMB.
   # v7.0+: List of valid usersnames in the domain that can access the SMB share for this Managed Volume. This parameter is required when the value of shareType is SMB.
   smbValidUsers: [String!]!
+
+  # Supported in v9.3
+  # Settings related to NFS for the Managed Volume.
+  nfsSettings: ManagedVolumeNFSSettings
 }
 # Supported in v5.0+
 # v5.0-v8.0:
@@ -67558,6 +68131,10 @@ input ManagedVolumePatchConfigInput {
   # v6.0: List of valid usersnames in the domain that can access the SMB share for this managed volume. This parameter is required when the value of shareType is SMB.
   # v7.0+: List of valid usersnames in the domain that can access the SMB share for this Managed Volume. This parameter is required when the value of shareType is SMB.
   smbValidUsers: [String!] = []
+
+  # Supported in v9.3
+  # Settings related to NFS for the Managed Volume.
+  nfsSettings: ManagedVolumeNFSSettingsInput
 }
 # Supported in v5.3+
 input ManagedVolumePatchSlaClientConfigInput {
@@ -68785,11 +69362,17 @@ interface MicrosoftOrg {
 type MicrosoftPurviewConfig {
   # The Azure tenant ID.
   tenantId: String!
+
+  # The Microsoft 365 organization ID.
+  o365OrgId: String!
 }
 # Holds the configuration of the Microsoft purview integration.
 input MicrosoftPurviewConfigInput {
   # The Azure tenant ID.
   tenantId: String!
+
+  # The Microsoft 365 organization ID.
+  o365OrgId: String!
 }
 # An interface for Microsoft SharePoint Site.
 interface MicrosoftSite {
@@ -74580,6 +75163,321 @@ input MssqlGetRestoreFilesV1Input {
   # Required. ID of the Microsoft SQL database.
   id: String!
 }
+# Microsoft SQL Host.
+type MssqlHost implements HierarchyObject , CdmHierarchyObject , MssqlTopLevelDescendantType {
+  # ID associated with the Microsoft SQL Host in CDM.
+  cdmId: String!
+
+  # List of descendants.
+  descendantConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects according to the hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorts the order of results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # Hierarchy object filter.
+    filter: [Filter!],
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): MssqlHostDescendantTypeConnection!
+
+  # List of logical children.
+  logicalChildConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects according to the hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorts the order of results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # Hierarchy object filter.
+    filter: [Filter!],
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): MssqlHostLogicalChildTypeConnection!
+
+  # FID of the hierarchy object.
+  id: UUID!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # Sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # Sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+}
+# Microsoft SQL Host descendant.
+interface MssqlHostDescendantType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # FID of the hierarchy object.
+  id: UUID!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # Sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # Sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+}
+# Paginated list of MssqlHostDescendantType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type MssqlHostDescendantTypeConnection {
+  # List of MssqlHostDescendantType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [MssqlHostDescendantTypeEdge!]!
+
+  # List of MssqlHostDescendantType objects.
+  nodes: [MssqlHostDescendantType!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of MssqlHostDescendantType objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the MssqlHostDescendantType object. This wrapper is used for pagination.
+type MssqlHostDescendantTypeEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual MssqlHostDescendantType object wrapped by this edge.
+  node: MssqlHostDescendantType!
+}
+# Microsoft SQL Host logical child.
+interface MssqlHostLogicalChildType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # FID of the hierarchy object.
+  id: UUID!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # Sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # Sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+}
+# Paginated list of MssqlHostLogicalChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type MssqlHostLogicalChildTypeConnection {
+  # List of MssqlHostLogicalChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [MssqlHostLogicalChildTypeEdge!]!
+
+  # List of MssqlHostLogicalChildType objects.
+  nodes: [MssqlHostLogicalChildType!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of MssqlHostLogicalChildType objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the MssqlHostLogicalChildType object. This wrapper is used for pagination.
+type MssqlHostLogicalChildTypeEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual MssqlHostLogicalChildType object wrapped by this edge.
+  node: MssqlHostLogicalChildType!
+}
 # Input for updating Microsoft SQL Server hosts in bulk.
 input MssqlHostUpdateIdInput {
   # Required. Supported in v9.0+
@@ -79970,6 +80868,10 @@ type NutanixContainerListResponse {
 }
 # Supported in v5.0+
 input NutanixDownloadFilesJobConfigInput {
+  # Supported in v9.3
+  # Password to protect the generated zip file.
+  zipPassword: String
+
   # Supported in v5.2+
   # v5.2-v7.0: An optional argument containing a Boolean parameter to depict if the download is being triggered for Legal Hold use case.
   # v8.0+: Optional Boolean argument indicating if the download is being triggered due to a Legal Hold.
@@ -85110,6 +86012,12 @@ type ObjectTypeAccessSummary {
 
   # Policy summaries.
   policySummaryDetails: [PolicySummaryDetails!]!
+
+  # Store the account name here in case the grouping is based on the account.
+  accountName: String!
+
+  # Store the account id here in case the grouping is based on the account.
+  accountId: String!
 }
 # Paginated list of ObjectTypeAccessSummary objects. Each page of the results includes at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type ObjectTypeAccessSummaryConnection {
@@ -85132,6 +86040,18 @@ type ObjectTypeAccessSummaryEdge {
 
   # The actual ObjectTypeAccessSummary object wrapped by this edge.
   node: ObjectTypeAccessSummary!
+}
+# GetObjectTypeAccessSummariesGroupBy specifies the grouping criteria for
+# object type access summaries.
+enum ObjectTypeAccessSummaryGroupBy {
+  # Group by account.
+  ACCOUNT
+
+  # Unspecified group by criteria.
+  GROUP_BY_UNSPECIFIED
+
+  # Group by object type.
+  OBJECT_TYPE
 }
 # GetObjectTypeAccessSummariesSortBy specifies the sort criteria for
 # object type access summaries.
@@ -85187,6 +86107,12 @@ enum ObjectTypeEnum {
 
   # Confluence Space.
   CONFLUENCE_SPACE
+
+  # D365 Dataverse Table.
+  D365_DATAVERSE_TABLE
+
+  # D365 Metadata.
+  D365_FIXED_OBJECT
   Db2Database
   Ec2Instance
 
@@ -85206,6 +86132,9 @@ enum ObjectTypeEnum {
 
   # Kubernetes Protection Set.
   K8S_PROTECTION_SET
+
+  # Kubernetes virtual machine.
+  K8S_VIRTUAL_MACHINE
   KuprNamespace
   LinuxFileset
 
@@ -85291,6 +86220,9 @@ input ObjectTypeSummariesFilter {
 
   # Object types to filter.
   objectTypes: [DataGovObjectType!] = []
+
+  # Platform Categories to filter.
+  platformCategories: [PlatformCategory!] = []
 }
 # Holds the configuration of the Okta integration.
 type OktaIntegrationConfig {
@@ -85698,6 +86630,9 @@ enum Operation {
 
   # View account-wide data security risk metrics, scores, and recommendations.
   VIEW_DATA_SECURITY_DETAILS
+
+  # View data security posture results.
+  VIEW_DATA_SECURITY_POSTURE_RESULTS
 
   # View the database log reporting properties for a cluster.
   VIEW_DB_LOG_REPORT_PROPERTIES
@@ -88164,6 +89099,10 @@ input OracleRecoveryPointInput {
   # v5.0-v5.2: Recovery point specified in the form of a timestamp (in milliseconds).
   # v5.3+: A timestamp in milliseconds that specifies a recovery point.
   timestampMs: Long
+
+  # Supported in v9.3
+  # Desired Oracle System Change Number (SCN) for recovery.
+  scn: Long
 }
 # Input for snapshot download from location for V2 API.
 input OracleSnapshotDownloadRequestInput {
@@ -88901,6 +89840,20 @@ type PathSecInfo {
   owner: String!
   permissions: [SDDLPermission!]!
 }
+# Template for pausing replication with the quorum authorization request.
+type PauseReplicationTprReqChangesTemplate implements RequestedChangesTemplate {
+  # Requested action string.
+  requestedAction: String!
+
+  # Action description string.
+  actionDescription: String!
+
+  # Details of the replication pair, including the names of the source and target clusters.
+  replicationPair: TprReplicationPair
+
+  # Name of the requested changes template for quorum authorization.
+  templateName: String!
+}
 # Input to pause or resume SLA Domain.
 input PauseSlaInput {
   # SLA Domain ID.
@@ -89010,6 +89963,12 @@ enum PendingActionSubGroupTypeEnum {
   CLUSTER_PEER_TOKEN_GET
   CLUSTER_PEER_TOKEN_GET_AND_SET
   CLUSTER_PEER_TOKEN_SET
+
+  # The subgroup type of the pending action is for creating DCA archival location.
+  DCA_LOCATION_PUT
+
+  # The subgroup type of the pending action is for creating DCA reader archival location.
+  DCA_LOCATION_READER_POST
   DISABLE_REPLICATION_LOCATION_PUT
   ENABLE_LOCATION_AS_REPLICATION_TARGET
   ENABLE_POLARIS_AS_REPLICATION_SOURCE
@@ -89022,6 +89981,12 @@ enum PendingActionSubGroupTypeEnum {
   GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPSHOT_V2
   GLOBAL_SLA_DELETE
   GLOBAL_SLA_PUT
+
+  # The subgroup type of the pending action is for creating LCK archival location.
+  LCK_LOCATION_PUT
+
+  # The subgroup type of the pending action is for creating LCK reader archival location.
+  LCK_LOCATION_READER_POST
   NFS_LOCATION_PUT
   NFS_LOCATION_READER_POST
   OBJECT_STORE_LOCATION_PUT
@@ -89150,6 +90115,10 @@ enum PermissionsGroup {
   # operation. These permissions are applicable to the cloud native
   # protection feature.
   CLOUD_CLUSTER_ES
+
+  # Represents the permissions required to enable customer-managed Exocompute feature.
+  # These permissions apply only to the Azure Exocompute feature.
+  CUSTOMER_MANAGED_BASIC
 
   # Represents the set of permissions required to enabled the Consolidation
   # feature for data center archival location.
@@ -92818,6 +93787,31 @@ type RemoveNodeDetailsReply {
   # The details of removed nodes.
   removeNodeDetails: [RemovedNodeDetail!]!
 }
+# Request parameters for removing a node on a Rubrik cluster for replacement.
+input RemoveNodeForReplacementInput {
+  # Node ID to be removed in list form.
+  nodeIds: [String!] = []
+
+  # Use quick drain instead of full data drain (not recommended).
+  useQuickDrain: Boolean = false
+
+  # Rubrik cluster UUID.
+  clusterUuid: UUID!
+
+  # Metadata for the nodes.
+  nodeMetadata: [NodeMetadataInput!]
+}
+# Asynchronous reply for a submitted removal job.
+type RemoveNodeForReplacementReply {
+  # Details of submitted job including job name and function parameters.
+  message: String!
+
+  # Job ID of the submitted job.
+  jobId: Long!
+
+  # Specifies if the operation was a success.
+  isSuccessful: Boolean!
+}
 type RemoveNodesTprReqChangesTemplate implements RequestedChangesTemplate {
   # The details of the selected nodes to remove.
   clusterNodeDetails: [ClusterNodeDetail!]!
@@ -92874,6 +93868,28 @@ input RemovedNodeDetailsInput {
 
   # Names of the removed nodes.
   nodeNames: [String!]!
+}
+# Request parameters for replacing a node on a Rubrik cluster.
+input ReplaceClusterNodeInput {
+  # New node ID.
+  newNodeId: String = ""
+
+  # IPMI password.
+  ipmiPassword: String = ""
+
+  # Cluster UUID.
+  clusterUuid: UUID!
+}
+# Asynchronous reply for a submitted job.
+type ReplaceClusterNodeReply {
+  # Details of submitted job including job name and function parameters.
+  message: String!
+
+  # Job ID of the submitted job.
+  jobId: Long!
+
+  # Specifies if the operation was a success.
+  isSuccessful: Boolean!
 }
 # The replicated object information.
 type ReplicatedObjectInfo {
@@ -95623,6 +96639,17 @@ type SaasSnapshot implements PolarisSpecificSnapshot {
 
   # ID of the snapshot.
   snapshotId: UUID!
+}
+# Type of the SAML attribute.
+enum SamlAttributeType {
+  # The SAML attribute type is email.
+  EMAIL
+
+  # The SAML attribute type is groups.
+  GROUPS
+
+  # The SAML attribute type is unknown.
+  UNSPECIFIED_ATTRIBUTE
 }
 # SAP HANA workload related app metadata for a snapshot.
 type SapHanaAppMetadata {
@@ -98965,6 +99992,9 @@ enum SlaObjectType {
 
   # Cassandra object.
   CASSANDRA_OBJECT_TYPE
+
+  # D365 Object.
+  D365_OBJECT_TYPE
 
   # Db2.
   DB2_OBJECT_TYPE
@@ -103115,10 +104145,10 @@ enum TargetType {
 }
 # Task details.
 type TaskDetail {
-  # The task monitoring ID.
+  # The invisible column.
   id: Long!
 
-  # The job instance ID.
+  # The invisible column.
   reportJobInstanceId: String!
 
   # The cluster UUID of the task.
@@ -103282,7 +104312,7 @@ input TaskDetailFilterInput {
   # The replication source of the task.
   replicationSource: [String!]
 
-  # The task category.
+  # The task category. It is a required filter and must be either the Protection or Recovery option.
   taskCategory: [String!]
 
   # The task status.
@@ -103979,14 +105009,6 @@ enum ThreatHuntType {
   # Turbo threat hunt type.
   TURBO_THREAT_HUNT
 }
-# Lists of entities and their Threat Monitoring enablement status.
-type ThreatMonitoringCloudRootEnablement {
-  # The Azure subscriptions and their Threat Monitoring enablement status.
-  azureSubscriptions: [AzureSubscriptionThreatMonitoringEnablement!]!
-
-  # The AWS accounts and their Threat Monitoring enablement status.
-  awsAccounts: [AwsAccountThreatMonitoringEnablement!]!
-}
 # Entity type for Threat Monitoring.
 enum ThreatMonitoringEnablementEntity {
   # Rubrik cluster.
@@ -104302,13 +105324,19 @@ type TprPublicConfiguration {
   # Maximum timeout for on-demand execution of TPR requests, in hours.
   executionMaxTimeoutHours: Int
 }
-# Replication pair details containing source and target cluster names.
+# Details of the replication pair, including the names of the source and target clusters.
 type TprReplicationPair {
   # Source Cluster Name.
   sourceClusterName: String!
 
   # Target Cluster Name.
   targetClusterName: String!
+
+  # Existing configuration details JSON string.
+  existingConfigDetails: String!
+
+  # New configuration details JSON string.
+  newConfigDetails: String!
 }
 # Operation applied on a TPR request.
 enum TprReqOperation {
@@ -104593,13 +105621,16 @@ enum TprRule {
   # The TPR rule is for assigning TPR roles to a user.
   ASSIGN_TPR_ROLE
 
+  # Quorum authorization is required for deleting cloud accounts.
+  DELETE_CLOUD_ACCOUNTS
+
   # Quorum authorization is required for deleting data sources.
   DELETE_DATA_SOURCE
 
   # The TPR rule is for deleting RCV locations.
   DELETE_RCV
 
-  # Quorum authorization is required for deleting replication pair.
+  # Quorum authorization is required for deleting a replication pair.
   DELETE_REPLICATION_PAIR
 
   # The TPR rule is for deleting snapshots.
@@ -104619,6 +105650,9 @@ enum TprRule {
 
   # The TPR rule is disabling TPR.
   DISABLE_TPR
+
+  # Quorum authorization is required for editing a replication pair.
+  EDIT_REPLICATION_PAIR
 
   # The TPR rule is for editing an SLA.
   EDIT_SLA
@@ -104643,6 +105677,9 @@ enum TprRule {
 
   # The TPR rule is for pausing cluster.
   PAUSE_CLUSTER
+
+  # Quorum authorization is required to pause replication.
+  PAUSE_REPLICATION
 
   # The TPR rule is for pausing and resuming RCV locations.
   PAUSE_RESUME_RCV
@@ -108089,8 +109126,14 @@ enum UserAuditObjectTypeEnum {
   # Kubernetes Cluster type.
   K8S_CLUSTER
 
+  # Kubernetes Virtual Machine namespace type.
+  K8S_NAMESPACE_V2
+
   # Kubernetes Protection Set type.
   K8S_PROTECTION_SET
+
+  # Kubernetes Virtual Machine type.
+  K8S_VIRTUAL_MACHINE
 
   # KMS Key Vault.
   KMS_KEY_VAULT
@@ -108596,6 +109639,15 @@ type UserSessionManagementConfig {
 
   # Specifies whether the Global Organization has enforced it's policy.
   isGlobalPolicyEnforced: Boolean!
+
+  # Indicates the number of seconds before the service account session logs out.
+  clientSessionTimeoutInSeconds: Long!
+
+  # Minimum value, in seconds, for service account session timeout configuration.
+  clientSessionTimeoutInSecondsMinLimit: Long!
+
+  # Maximum value, in seconds, for service account session timeout configuration.
+  clientSessionTimeoutInSecondsMaxLimit: Long!
 }
 # User settings represented by key-value pairs for the predefined keys in Rubrik.
 type UserSetting {
@@ -111064,6 +112116,9 @@ type VcdVmInfo {
 
   # Specifies whether the virtual machine is excluded from the snapshot.
   isExcludedFromSnapshot: Boolean!
+
+  # ID of the virtual machine on the Rubrik cluster.
+  cdmVmId: String!
 }
 # Reply Object for PreviewFilter.
 type VcenterAdvancedTagPreviewReply {
@@ -112530,11 +113585,13 @@ input VolumeGroupMountSnapshotJobConfigInput {
   smbValidUsers: [String!] = []
 
   # Supported in v5.0+
-  # Only specified if mounting on a specific Host is desired. If not specified, Rubrik will simply expose addresses of SMB mounts per recovered Volume. If a mount point is specified in any of the volumeConfigs, this must be defined. If this is specified, but no mount points are, Rubrik will generate mount paths to mount on the target Host for each volume.
+  # v5.0-v9.2: Only specified if mounting on a specific Host is desired. If not specified, Rubrik will simply expose addresses of SMB mounts per recovered Volume. If a mount point is specified in any of the volumeConfigs, this must be defined. If this is specified, but no mount points are, Rubrik will generate mount paths to mount on the target Host for each volume.
+  # v9.3: Specify only if mounting on a specific host is desired. If not specified, Rubrik exposes addresses of SMB mounts for each recovered volume by default. If a mount point is specified in any of the volumeConfigs, this field must be defined. If a host is specified but no mount points are provided, Rubrik generates mount paths for each volume to mount on the target host.
   targetHostId: String
 
   # Required. Supported in v5.0+
-  # The configuration of the Volumes to be mounted on the Host.
+  # v5.0-v9.2: The configuration of the Volumes to be mounted on the Host.
+  # v9.3: The configuration of the Volume Group snapshots to be mounted on the host.
   volumeConfigs: [VolumeGroupVolumeMountConfigInput!]!
 }
 # Supported in v5.0+
@@ -112691,7 +113748,8 @@ input VolumeGroupUnmountInfo {
 # Supported in v5.0+
 input VolumeGroupVolumeMountConfigInput {
   # Supported in v5.0+
-  # The path on the Host on which the Volume will be mounted. It must be either an untaken drive letter name, a directory that does not exist but on a valid drive letter, or an empty directory that already exists.
+  # v5.0-v9.2: The path on the Host on which the Volume will be mounted. It must be either an untaken drive letter name, a directory that does not exist but on a valid drive letter, or an empty directory that already exists.
+  # v9.3: The path on the host on which the volume is mounted. It must be an unused drive letter name, a directory that does not exist but on a valid drive letter, or an empty directory that already exists.
   mountPointOnHost: String
 
   # Required. Supported in v5.0+
@@ -118151,6 +119209,9 @@ type WhitelistedAnalyzer {
 type WindowsCluster implements HierarchyObject , CdmHierarchyObject , MssqlTopLevelDescendantType {
   # The list of hosts associated with a Windows Cluster.
   hosts: [PhysicalHost!]!
+
+  # The list of Microsoft SQL hosts associated with a Windows Cluster.
+  mssqlHosts: [MssqlHost!]!
 
   # List of descendants.
   descendantConnection(

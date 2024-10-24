@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Smb
     /// # API Operation: AddAndJoinDomain
     /// 
-    /// $query = New-RscMutationSmb -AddAndJoinDomain
+    /// $query = New-RscMutationSmb -Operation AddAndJoinDomain
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -142,7 +142,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Smb
     /// # API Operation: DeleteDomain
     /// 
-    /// $query = New-RscMutationSmb -DeleteDomain
+    /// $query = New-RscMutationSmb -Operation DeleteDomain
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -173,7 +173,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Smb
     /// # API Operation: JoinDomain
     /// 
-    /// $query = New-RscMutationSmb -JoinDomain
+    /// $query = New-RscMutationSmb -Operation JoinDomain
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -223,7 +223,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Smb
     /// # API Operation: PutConfiguration
     /// 
-    /// $query = New-RscMutationSmb -PutConfiguration
+    /// $query = New-RscMutationSmb -Operation PutConfiguration
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

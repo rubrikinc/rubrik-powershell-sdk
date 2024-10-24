@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "Configuration")]
         CONFIGURATION,
 
+        [EnumMember(Value = "DATA_RISKS")]
+        DATA_RISKS,
+
         [EnumMember(Value = "Diagnostic")]
         DIAGNOSTIC,
 

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ransomware
     /// # API Operation: DetectionWorkloadLocations
     /// 
-    /// $query = New-RscQueryRansomware -DetectionWorkloadLocations
+    /// $query = New-RscQueryRansomware -Operation DetectionWorkloadLocations
     /// 
     /// # REQUIRED
     /// $query.Var.beginTime = $someDateTime
@@ -119,7 +119,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ransomware
     /// # API Operation: InvestigationAnalysisSummary
     /// 
-    /// $query = New-RscQueryRansomware -InvestigationAnalysisSummary
+    /// $query = New-RscQueryRansomware -Operation InvestigationAnalysisSummary
     /// 
     /// # REQUIRED
     /// $query.Var.startDay = $someString
@@ -165,7 +165,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ransomware
     /// # API Operation: InvestigationEnablement
     /// 
-    /// $query = New-RscQueryRansomware -InvestigationEnablement
+    /// $query = New-RscQueryRansomware -Operation InvestigationEnablement
     /// 
     /// # No variables for this query.
     /// 
@@ -192,7 +192,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ransomware
     /// # API Operation: OverallInvestigationSummary
     /// 
-    /// $query = New-RscQueryRansomware -OverallInvestigationSummary
+    /// $query = New-RscQueryRansomware -Operation OverallInvestigationSummary
     /// 
     /// # REQUIRED
     /// $query.Var.historyNumHours = $someInt
@@ -220,7 +220,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ransomware
     /// # API Operation: ProcessedInvestigationWorkloadCount
     /// 
-    /// $query = New-RscQueryRansomware -ProcessedInvestigationWorkloadCount
+    /// $query = New-RscQueryRansomware -Operation ProcessedInvestigationWorkloadCount
     /// 
     /// # No variables for this query.
     /// 
@@ -247,7 +247,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ransomware
     /// # API Operation: Result
     /// 
-    /// $query = New-RscQueryRansomware -Result
+    /// $query = New-RscQueryRansomware -Operation Result
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -279,7 +279,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ransomware
     /// # API Operation: ResultOpt
     /// 
-    /// $query = New-RscQueryRansomware -ResultOpt
+    /// $query = New-RscQueryRansomware -Operation ResultOpt
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -311,7 +311,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ransomware
     /// # API Operation: Results
     /// 
-    /// $query = New-RscQueryRansomware -Results
+    /// $query = New-RscQueryRansomware -Operation Results
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -366,7 +366,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ransomware
     /// # API Operation: ResultsGrouped
     /// 
-    /// $query = New-RscQueryRansomware -ResultsGrouped
+    /// $query = New-RscQueryRansomware -Operation ResultsGrouped
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 2
+    /// Create a new RscQuery object for any of the 3
     /// operations in the 'Cloud Account' API domain:
-    /// MapExocomputeAccount, or UnmapExocomputeAccount.
+    /// ListIamPairsByAndLocation, MapExocomputeAccount, or UnmapExocomputeAccount.
     /// </summary>
     /// <description>
     /// New-RscMutationCloudAccount creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 2 operations
+    /// There are 3 operations
     /// in the 'Cloud Account' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: MapExocomputeAccount, or UnmapExocomputeAccount.
+    /// one of: ListIamPairsByAndLocation, MapExocomputeAccount, or UnmapExocomputeAccount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationCloudAccount -MapExocomputeAccount).Info().
+    /// (New-RscMutationCloudAccount -ListIamPairsByAndLocation).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationCloudAccount -MapExocomputeAccount).Info().
+    /// (New-RscMutationCloudAccount -ListIamPairsByAndLocation).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the ListIamPairsByAndLocation operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: ListIamPairsByAndLocation
+    /// 
+    /// $query = New-RscMutationCloudAccount -Operation ListIamPairsByAndLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	locationId = $someString
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ListIamPairsByCloudAccountAndLocationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the MapExocomputeAccount operation
@@ -87,7 +120,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudAccount
     /// # API Operation: MapExocomputeAccount
     /// 
-    /// $query = New-RscMutationCloudAccount -MapExocomputeAccount
+    /// $query = New-RscMutationCloudAccount -Operation MapExocomputeAccount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -124,7 +157,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudAccount
     /// # API Operation: UnmapExocomputeAccount
     /// 
-    /// $query = New-RscMutationCloudAccount -UnmapExocomputeAccount
+    /// $query = New-RscMutationCloudAccount -Operation UnmapExocomputeAccount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -164,6 +197,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "ListIamPairsByAndLocation",
                 "MapExocomputeAccount",
                 "UnmapExocomputeAccount",
                 IgnoreCase = true)]
@@ -181,6 +215,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "ListIamPairsByAndLocation":
+                        this.ProcessRecord_ListIamPairsByAndLocation();
+                        break;
                     case "MapExocomputeAccount":
                         this.ProcessRecord_MapExocomputeAccount();
                         break;
@@ -195,6 +232,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // listIamPairsByCloudAccountAndLocation.
+        internal void ProcessRecord_ListIamPairsByAndLocation()
+        {
+            this._logger.name += " -ListIamPairsByAndLocation";
+            // Create new graphql operation listIamPairsByCloudAccountAndLocation
+            InitMutationListIamPairsByCloudAccountAndLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -215,6 +261,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationUnmapCloudAccountExocomputeAccount();
         }
 
+
+        // Create new GraphQL Mutation:
+        // listIamPairsByCloudAccountAndLocation(input: ListIamPairsByCloudAccountAndLocationInput!): ListIamPairsByCloudAccountAndLocationReply!
+        internal void InitMutationListIamPairsByCloudAccountAndLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ListIamPairsByCloudAccountAndLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationListIamPairsByCloudAccountAndLocation",
+                "($input: ListIamPairsByCloudAccountAndLocationInput!)",
+                "ListIamPairsByCloudAccountAndLocationReply",
+                Mutation.ListIamPairsByCloudAccountAndLocation,
+                Mutation.ListIamPairsByCloudAccountAndLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	locationId = $someString
+	# OPTIONAL
+	cloudAccountId = $someString
+}"
+            );
+        }
 
         // Create new GraphQL Mutation:
         // mapCloudAccountExocomputeAccount(input: MapCloudAccountExocomputeAccountInput!): MapCloudAccountExocomputeAccountReply!

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: CurrentUser
     /// 
-    /// $query = New-RscQueryAccount -CurrentUser
+    /// $query = New-RscQueryAccount -Operation CurrentUser
     /// 
     /// # No variables for this query.
     /// 
@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: CurrentUserLoginContext
     /// 
-    /// $query = New-RscQueryAccount -CurrentUserLoginContext
+    /// $query = New-RscQueryAccount -Operation CurrentUserLoginContext
     /// 
     /// # No variables for this query.
     /// 
@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: EnabledFeatures
     /// 
-    /// $query = New-RscQueryAccount -EnabledFeatures
+    /// $query = New-RscQueryAccount -Operation EnabledFeatures
     /// 
     /// # No variables for this query.
     /// 
@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: Id
     /// 
-    /// $query = New-RscQueryAccount -Id
+    /// $query = New-RscQueryAccount -Operation Id
     /// 
     /// # No variables for this query.
     /// 
@@ -195,7 +195,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: Lookup
     /// 
-    /// $query = New-RscQueryAccount -Lookup
+    /// $query = New-RscQueryAccount -Operation Lookup
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -226,7 +226,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: Owners
     /// 
-    /// $query = New-RscQueryAccount -Owners
+    /// $query = New-RscQueryAccount -Operation Owners
     /// 
     /// # No variables for this query.
     /// 
@@ -253,7 +253,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: Products
     /// 
-    /// $query = New-RscQueryAccount -Products
+    /// $query = New-RscQueryAccount -Operation Products
     /// 
     /// # REQUIRED
     /// $query.Var.nameFilter = @(
@@ -295,7 +295,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: Settings
     /// 
-    /// $query = New-RscQueryAccount -Settings
+    /// $query = New-RscQueryAccount -Operation Settings
     /// 
     /// # No variables for this query.
     /// 
@@ -322,7 +322,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: Users
     /// 
-    /// $query = New-RscQueryAccount -Users
+    /// $query = New-RscQueryAccount -Operation Users
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

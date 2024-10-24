@@ -9,11 +9,11 @@ Response to the azureAdObjectsByType API.
   - Relationships of the Azure AD object.
 - reverseRelationships: list of AzureAdReverseRelationships
   - Reverse relationships of the Azure Active Directory object.
-- snapshotRange: AzureAdSnapshotRange
-  - Snapshot range containing the Azure AD object.
 - azureAdObjects: AzureAdObjects
   - Populate either AzureAdUser or AzureAdGroup.
 - type: AzureAdObjectType
   - Azure AD object type.
 - relatedItemCount: list of AzureAdRelatedItemCounts
   - Represents count of related items for relationship type.
+- snapshotRange: AzureAdSnapshotRange
+  - Snapshot range containing the Azure AD object.

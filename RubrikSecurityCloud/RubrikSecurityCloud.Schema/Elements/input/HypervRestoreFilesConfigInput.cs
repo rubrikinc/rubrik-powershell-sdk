@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetVirtualMachineId")]
         public System.String? TargetVirtualMachineId { get; set; }
 
+        //      C# -> System.Boolean? ShouldIgnoreError
+        // GraphQL -> shouldIgnoreError: Boolean (scalar)
+        [JsonProperty("shouldIgnoreError")]
+        public System.Boolean? ShouldIgnoreError { get; set; }
+
         //      C# -> List<HypervRestoreFileConfigInput>? RestoreConfig
         // GraphQL -> restoreConfig: [HypervRestoreFileConfigInput!]! (input)
         [Required]

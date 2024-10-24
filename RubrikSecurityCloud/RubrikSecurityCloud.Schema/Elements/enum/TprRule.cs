@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DELETE_RCV")]
         DELETE_RCV,
 
+        [EnumMember(Value = "DELETE_REPLICATION_PAIR")]
+        DELETE_REPLICATION_PAIR,
+
         [EnumMember(Value = "DELETE_SNAPSHOT")]
         DELETE_SNAPSHOT,
 

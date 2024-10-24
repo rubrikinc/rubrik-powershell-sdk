@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: AddAuthenticationServerBasedCloudAccount
     /// 
-    /// $query = New-RscMutationAws -AddAuthenticationServerBasedCloudAccount
+    /// $query = New-RscMutationAws -Operation AddAuthenticationServerBasedCloudAccount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: AddIamUserBasedCloudAccount
     /// 
-    /// $query = New-RscMutationAws -AddIamUserBasedCloudAccount
+    /// $query = New-RscMutationAws -Operation AddIamUserBasedCloudAccount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -209,7 +209,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: BulkDeleteCloudAccountWithoutCft
     /// 
-    /// $query = New-RscMutationAws -BulkDeleteCloudAccountWithoutCft
+    /// $query = New-RscMutationAws -Operation BulkDeleteCloudAccountWithoutCft
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -244,7 +244,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CreateAccount
     /// 
-    /// $query = New-RscMutationAws -CreateAccount
+    /// $query = New-RscMutationAws -Operation CreateAccount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -285,7 +285,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CreateAutomaticTargetMapping
     /// 
-    /// $query = New-RscMutationAws -CreateAutomaticTargetMapping
+    /// $query = New-RscMutationAws -Operation CreateAutomaticTargetMapping
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -349,7 +349,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CreateCloudNativeStorageSetting
     /// 
-    /// $query = New-RscMutationAws -CreateCloudNativeStorageSetting
+    /// $query = New-RscMutationAws -Operation CreateCloudNativeStorageSetting
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -404,7 +404,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CreateCluster
     /// 
-    /// $query = New-RscMutationAws -CreateCluster
+    /// $query = New-RscMutationAws -Operation CreateCluster
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -539,7 +539,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CreateComputeSetting
     /// 
-    /// $query = New-RscMutationAws -CreateComputeSetting
+    /// $query = New-RscMutationAws -Operation CreateComputeSetting
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -602,7 +602,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CreateExocomputeConfigs
     /// 
-    /// $query = New-RscMutationAws -CreateExocomputeConfigs
+    /// $query = New-RscMutationAws -Operation CreateExocomputeConfigs
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -661,7 +661,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CreateReaderTarget
     /// 
-    /// $query = New-RscMutationAws -CreateReaderTarget
+    /// $query = New-RscMutationAws -Operation CreateReaderTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -772,7 +772,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CreateTarget
     /// 
-    /// $query = New-RscMutationAws -CreateTarget
+    /// $query = New-RscMutationAws -Operation CreateTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -886,7 +886,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: DeleteComputeSetting
     /// 
-    /// $query = New-RscMutationAws -DeleteComputeSetting
+    /// $query = New-RscMutationAws -Operation DeleteComputeSetting
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -917,7 +917,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: DeleteExocomputeConfigs
     /// 
-    /// $query = New-RscMutationAws -DeleteExocomputeConfigs
+    /// $query = New-RscMutationAws -Operation DeleteExocomputeConfigs
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -950,7 +950,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: DisconnectExocomputeCluster
     /// 
-    /// $query = New-RscMutationAws -DisconnectExocomputeCluster
+    /// $query = New-RscMutationAws -Operation DisconnectExocomputeCluster
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -981,7 +981,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: ExocomputeClusterConnect
     /// 
-    /// $query = New-RscMutationAws -ExocomputeClusterConnect
+    /// $query = New-RscMutationAws -Operation ExocomputeClusterConnect
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1014,7 +1014,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: FinalizeCloudAccountDeletion
     /// 
-    /// $query = New-RscMutationAws -FinalizeCloudAccountDeletion
+    /// $query = New-RscMutationAws -Operation FinalizeCloudAccountDeletion
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1049,7 +1049,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: FinalizeCloudAccountProtection
     /// 
-    /// $query = New-RscMutationAws -FinalizeCloudAccountProtection
+    /// $query = New-RscMutationAws -Operation FinalizeCloudAccountProtection
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1163,7 +1163,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: PatchAuthenticationServerBasedCloudAccount
     /// 
-    /// $query = New-RscMutationAws -PatchAuthenticationServerBasedCloudAccount
+    /// $query = New-RscMutationAws -Operation PatchAuthenticationServerBasedCloudAccount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1218,7 +1218,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: PatchIamUserBasedCloudAccount
     /// 
-    /// $query = New-RscMutationAws -PatchIamUserBasedCloudAccount
+    /// $query = New-RscMutationAws -Operation PatchIamUserBasedCloudAccount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1279,7 +1279,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: PrepareCloudAccountDeletion
     /// 
-    /// $query = New-RscMutationAws -PrepareCloudAccountDeletion
+    /// $query = New-RscMutationAws -Operation PrepareCloudAccountDeletion
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1335,7 +1335,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: PrepareFeatureUpdateForCloudAccount
     /// 
-    /// $query = New-RscMutationAws -PrepareFeatureUpdateForCloudAccount
+    /// $query = New-RscMutationAws -Operation PrepareFeatureUpdateForCloudAccount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1404,7 +1404,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: RegisterFeatureArtifacts
     /// 
-    /// $query = New-RscMutationAws -RegisterFeatureArtifacts
+    /// $query = New-RscMutationAws -Operation RegisterFeatureArtifacts
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1455,7 +1455,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: StartExocomputeDisableJob
     /// 
-    /// $query = New-RscMutationAws -StartExocomputeDisableJob
+    /// $query = New-RscMutationAws -Operation StartExocomputeDisableJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1486,7 +1486,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: UpdateAccount
     /// 
-    /// $query = New-RscMutationAws -UpdateAccount
+    /// $query = New-RscMutationAws -Operation UpdateAccount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1529,7 +1529,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: UpdateAutomaticTargetMapping
     /// 
-    /// $query = New-RscMutationAws -UpdateAutomaticTargetMapping
+    /// $query = New-RscMutationAws -Operation UpdateAutomaticTargetMapping
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1587,7 +1587,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: UpdateCloudAccount
     /// 
-    /// $query = New-RscMutationAws -UpdateCloudAccount
+    /// $query = New-RscMutationAws -Operation UpdateCloudAccount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1620,7 +1620,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: UpdateCloudAccountFeature
     /// 
-    /// $query = New-RscMutationAws -UpdateCloudAccountFeature
+    /// $query = New-RscMutationAws -Operation UpdateCloudAccountFeature
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1665,7 +1665,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: UpdateCloudNativeStorageSetting
     /// 
-    /// $query = New-RscMutationAws -UpdateCloudNativeStorageSetting
+    /// $query = New-RscMutationAws -Operation UpdateCloudNativeStorageSetting
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1716,7 +1716,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: UpdateComputeSetting
     /// 
-    /// $query = New-RscMutationAws -UpdateComputeSetting
+    /// $query = New-RscMutationAws -Operation UpdateComputeSetting
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1755,7 +1755,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: UpdateExocomputeConfigs
     /// 
-    /// $query = New-RscMutationAws -UpdateExocomputeConfigs
+    /// $query = New-RscMutationAws -Operation UpdateExocomputeConfigs
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1814,7 +1814,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: UpdateIamPair
     /// 
-    /// $query = New-RscMutationAws -UpdateIamPair
+    /// $query = New-RscMutationAws -Operation UpdateIamPair
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1847,7 +1847,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: UpdateTarget
     /// 
-    /// $query = New-RscMutationAws -UpdateTarget
+    /// $query = New-RscMutationAws -Operation UpdateTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1951,7 +1951,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: UpgradeCloudAccountFeaturesWithoutCft
     /// 
-    /// $query = New-RscMutationAws -UpgradeCloudAccountFeaturesWithoutCft
+    /// $query = New-RscMutationAws -Operation UpgradeCloudAccountFeaturesWithoutCft
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1986,7 +1986,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: UpgradeIamUserBasedCloudAccountPermissions
     /// 
-    /// $query = New-RscMutationAws -UpgradeIamUserBasedCloudAccountPermissions
+    /// $query = New-RscMutationAws -Operation UpgradeIamUserBasedCloudAccountPermissions
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -2021,7 +2021,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: ValidateAndCreateCloudAccount
     /// 
-    /// $query = New-RscMutationAws -ValidateAndCreateCloudAccount
+    /// $query = New-RscMutationAws -Operation ValidateAndCreateCloudAccount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -2135,7 +2135,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: ValidateAndInitiateOutpostAccount
     /// 
-    /// $query = New-RscMutationAws -ValidateAndInitiateOutpostAccount
+    /// $query = New-RscMutationAws -Operation ValidateAndInitiateOutpostAccount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

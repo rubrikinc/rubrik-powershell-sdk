@@ -7,6 +7,7 @@ User audit type.
 - LegalHold
 - THREAT_FEED - Audit type for Intel feed.
 - BULK_RECOVERY - Audit type for bulk recovery use cases.
+- DATA_RISKS
 - THREAT_HUNT - Audit type for threat hunt use cases.
 - ISOLATED_RECOVERY
 - Configuration

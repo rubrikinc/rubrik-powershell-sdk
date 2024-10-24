@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Threat
     /// # API Operation: HuntDetail
     /// 
-    /// $query = New-RscQueryThreat -HuntDetail
+    /// $query = New-RscQueryThreat -Operation HuntDetail
     /// 
     /// # REQUIRED
     /// $query.Var.huntId = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Threat
     /// # API Operation: HuntResult
     /// 
-    /// $query = New-RscQueryThreat -HuntResult
+    /// $query = New-RscQueryThreat -Operation HuntResult
     /// 
     /// # REQUIRED
     /// $query.Var.huntId = $someString
@@ -145,7 +145,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Threat
     /// # API Operation: HuntSummary
     /// 
-    /// $query = New-RscQueryThreat -HuntSummary
+    /// $query = New-RscQueryThreat -Operation HuntSummary
     /// 
     /// # REQUIRED
     /// $query.Var.huntId = $someString
@@ -173,7 +173,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Threat
     /// # API Operation: Hunts
     /// 
-    /// $query = New-RscQueryThreat -Hunts
+    /// $query = New-RscQueryThreat -Operation Hunts
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -227,7 +227,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Threat
     /// # API Operation: MonitoringCloudRootEnablement
     /// 
-    /// $query = New-RscQueryThreat -MonitoringCloudRootEnablement
+    /// $query = New-RscQueryThreat -Operation MonitoringCloudRootEnablement
     /// 
     /// # No variables for this query.
     /// 

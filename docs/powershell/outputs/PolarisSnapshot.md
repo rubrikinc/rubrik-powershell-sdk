@@ -20,6 +20,8 @@
 - isDownloadedSnapshot: System.Boolean
 - isReplica: System.Boolean
 - isArchivalCopy: System.Boolean
+- archivedSnapshots: list of ArchivedSnapshots
+  - Archived copies of the snapshot.
 - isQuarantined: System.Boolean
   - Specifies whether the snapshot is quarantined.
 - replicationLocations: list of DataLocations

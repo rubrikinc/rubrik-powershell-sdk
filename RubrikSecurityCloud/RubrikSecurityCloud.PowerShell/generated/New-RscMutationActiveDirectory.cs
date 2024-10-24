@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActiveDirectory
     /// # API Operation: CreateLiveMount
     /// 
-    /// $query = New-RscMutationActiveDirectory -CreateLiveMount
+    /// $query = New-RscMutationActiveDirectory -Operation CreateLiveMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActiveDirectory
     /// # API Operation: CreateUnmount
     /// 
-    /// $query = New-RscMutationActiveDirectory -CreateUnmount
+    /// $query = New-RscMutationActiveDirectory -Operation CreateUnmount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -174,7 +174,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActiveDirectory
     /// # API Operation: ModifyLiveMount
     /// 
-    /// $query = New-RscMutationActiveDirectory -ModifyLiveMount
+    /// $query = New-RscMutationActiveDirectory -Operation ModifyLiveMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -216,7 +216,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActiveDirectory
     /// # API Operation: RestoreObjects
     /// 
-    /// $query = New-RscMutationActiveDirectory -RestoreObjects
+    /// $query = New-RscMutationActiveDirectory -Operation RestoreObjects
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

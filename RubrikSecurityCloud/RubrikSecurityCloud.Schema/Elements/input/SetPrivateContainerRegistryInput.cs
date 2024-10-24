@@ -33,10 +33,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("registryUrl")]
         public System.String? RegistryUrl { get; set; }
 
+        //      C# -> CloudType? CloudType
+        // GraphQL -> cloudType: CloudType (enum)
+        [JsonProperty("cloudType")]
+        public CloudType? CloudType { get; set; }
+
         //      C# -> PcrAwsImagePullDetailsInput? PcrAwsImagePullDetails
         // GraphQL -> pcrAwsImagePullDetails: PcrAwsImagePullDetailsInput (input)
         [JsonProperty("pcrAwsImagePullDetails")]
         public PcrAwsImagePullDetailsInput? PcrAwsImagePullDetails { get; set; }
+
+        //      C# -> PcrAzureImagePullDetailsInput? PcrAzureImagePullDetails
+        // GraphQL -> pcrAzureImagePullDetails: PcrAzureImagePullDetailsInput (input)
+        [JsonProperty("pcrAzureImagePullDetails")]
+        public PcrAzureImagePullDetailsInput? PcrAzureImagePullDetails { get; set; }
 
 
         #endregion

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Exchange
     /// # API Operation: BulkUpdateDag
     /// 
-    /// $query = New-RscMutationExchange -BulkUpdateDag
+    /// $query = New-RscMutationExchange -Operation BulkUpdateDag
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -130,7 +130,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Exchange
     /// # API Operation: CreateMount
     /// 
-    /// $query = New-RscMutationExchange -CreateMount
+    /// $query = New-RscMutationExchange -Operation CreateMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -176,7 +176,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Exchange
     /// # API Operation: CreateOnDemandBackup
     /// 
-    /// $query = New-RscMutationExchange -CreateOnDemandBackup
+    /// $query = New-RscMutationExchange -Operation CreateOnDemandBackup
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -217,7 +217,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Exchange
     /// # API Operation: DeleteSnapshotMount
     /// 
-    /// $query = New-RscMutationExchange -DeleteSnapshotMount
+    /// $query = New-RscMutationExchange -Operation DeleteSnapshotMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

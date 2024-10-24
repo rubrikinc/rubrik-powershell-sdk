@@ -3,14 +3,15 @@
 Basic tests for the Get-RscCluster cmdlet
 #>
 BeforeAll {
-    . "$PSScriptRoot\..\..\Utils\ToolkitDev.ps1" -Quiet
+    . "$PSScriptRoot\..\UnitTestInit.ps1"
 }
 
-Describe -Name "Get-RscCluster" -Fixture {
+Describe -Name "Get-RscCluster Tests" -Fixture {
 
-    It -Name 'Get-RscCluster' -Test {
-        (Get-Help Get-RscCluster).Name | Should -Be "Get-RscCluster"
-        (Get-Help Get-RscCluster).Synopsis | Should -Not -BeNullOrEmpty
-        (Get-Help Get-RscCluster).Description | Should -Not -BeNullOrEmpty
+    It -Name 'checks help is not empty' -Test {
+        $help = Get-Help Get-RscCluster
+        $help.Name | Should -Be "Get-RscCluster"
+        $help.Synopsis | Should -Not -BeNullOrEmpty
+        $help.Description | Should -Not -BeNullOrEmpty
     }
 }

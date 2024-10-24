@@ -120,6 +120,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OWNERSHIP")]
         OWNERSHIP,
 
+        [EnumMember(Value = "PROTECTED_OBJECT_DELETION")]
+        PROTECTED_OBJECT_DELETION,
+
         [EnumMember(Value = "RANSOMWARE_INVESTIGATION_ANALYSIS")]
         RANSOMWARE_INVESTIGATION_ANALYSIS,
 

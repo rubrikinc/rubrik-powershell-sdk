@@ -6,7 +6,7 @@ BeforeAll {
     . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
-Describe -Name 'Connect to API' -Fixture {
+Describe -Name 'Account Tests' -Fixture {
     It -Name 'New-RscQueryAccount' -Test {
 
         # API Domain: Account

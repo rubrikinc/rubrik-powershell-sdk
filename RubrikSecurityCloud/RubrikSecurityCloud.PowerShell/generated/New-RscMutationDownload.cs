@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: ActiveDirectorySnapshotFromLocation
     /// 
-    /// $query = New-RscMutationDownload -ActiveDirectorySnapshotFromLocation
+    /// $query = New-RscMutationDownload -Operation ActiveDirectorySnapshotFromLocation
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -125,7 +125,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: AuditLogCsvAsync
     /// 
-    /// $query = New-RscMutationDownload -AuditLogCsvAsync
+    /// $query = New-RscMutationDownload -Operation AuditLogCsvAsync
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -286,7 +286,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: CdmTprConfigurationAsync
     /// 
-    /// $query = New-RscMutationDownload -CdmTprConfigurationAsync
+    /// $query = New-RscMutationDownload -Operation CdmTprConfigurationAsync
     /// 
     /// # No variables for this query.
     /// 
@@ -313,7 +313,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: ExchangeSnapshot
     /// 
-    /// $query = New-RscMutationDownload -ExchangeSnapshot
+    /// $query = New-RscMutationDownload -Operation ExchangeSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -348,7 +348,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: ExchangeSnapshotV2
     /// 
-    /// $query = New-RscMutationDownload -ExchangeSnapshotV2
+    /// $query = New-RscMutationDownload -Operation ExchangeSnapshotV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -386,7 +386,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: FilesetSnapshot
     /// 
-    /// $query = New-RscMutationDownload -FilesetSnapshot
+    /// $query = New-RscMutationDownload -Operation FilesetSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -417,7 +417,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: FilesetSnapshotFromLocation
     /// 
-    /// $query = New-RscMutationDownload -FilesetSnapshotFromLocation
+    /// $query = New-RscMutationDownload -Operation FilesetSnapshotFromLocation
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -455,7 +455,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: FromArchiveV2
     /// 
-    /// $query = New-RscMutationDownload -FromArchiveV2
+    /// $query = New-RscMutationDownload -Operation FromArchiveV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -507,7 +507,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: ObjectFilesCsv
     /// 
-    /// $query = New-RscMutationDownload -ObjectFilesCsv
+    /// $query = New-RscMutationDownload -Operation ObjectFilesCsv
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -593,7 +593,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: ObjectsListCsv
     /// 
-    /// $query = New-RscMutationDownload -ObjectsListCsv
+    /// $query = New-RscMutationDownload -Operation ObjectsListCsv
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -626,7 +626,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: ReportCsvAsync
     /// 
-    /// $query = New-RscMutationDownload -ReportCsvAsync
+    /// $query = New-RscMutationDownload -Operation ReportCsvAsync
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -834,7 +834,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: ReportPdfAsync
     /// 
-    /// $query = New-RscMutationDownload -ReportPdfAsync
+    /// $query = New-RscMutationDownload -Operation ReportPdfAsync
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1042,7 +1042,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: ResultsCsv
     /// 
-    /// $query = New-RscMutationDownload -ResultsCsv
+    /// $query = New-RscMutationDownload -Operation ResultsCsv
     /// 
     /// # REQUIRED
     /// $query.Var.crawlId = $someString
@@ -1058,6 +1058,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		snappableFid = $someString
     /// 		# OPTIONAL
     /// 		stdPath = $someString
+    /// 		# OPTIONAL
+    /// 		mode = $someDataGovFileMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovFileMode]) for enum values.
     /// 	}
     /// 	# OPTIONAL
     /// 	listFileResultsSnappablePaths = @(
@@ -1066,6 +1068,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			snappableFid = $someString
     /// 			# OPTIONAL
     /// 			stdPath = $someString
+    /// 			# OPTIONAL
+    /// 			mode = $someDataGovFileMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovFileMode]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1103,7 +1107,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: SapHanaSnapshot
     /// 
-    /// $query = New-RscMutationDownload -SapHanaSnapshot
+    /// $query = New-RscMutationDownload -Operation SapHanaSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1136,7 +1140,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: SapHanaSnapshotFromLocation
     /// 
-    /// $query = New-RscMutationDownload -SapHanaSnapshotFromLocation
+    /// $query = New-RscMutationDownload -Operation SapHanaSnapshotFromLocation
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1174,7 +1178,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: SapHanaSnapshotsForPointInTimeRecovery
     /// 
-    /// $query = New-RscMutationDownload -SapHanaSnapshotsForPointInTimeRecovery
+    /// $query = New-RscMutationDownload -Operation SapHanaSnapshotsForPointInTimeRecovery
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1212,7 +1216,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: SnapshotResultsCsv
     /// 
-    /// $query = New-RscMutationDownload -SnapshotResultsCsv
+    /// $query = New-RscMutationDownload -Operation SnapshotResultsCsv
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -1230,6 +1234,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		snappableFid = $someString
     /// 		# OPTIONAL
     /// 		stdPath = $someString
+    /// 		# OPTIONAL
+    /// 		mode = $someDataGovFileMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovFileMode]) for enum values.
     /// 	}
     /// 	# OPTIONAL
     /// 	listFileResultsSnappablePaths = @(
@@ -1238,6 +1244,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			snappableFid = $someString
     /// 			# OPTIONAL
     /// 			stdPath = $someString
+    /// 			# OPTIONAL
+    /// 			mode = $someDataGovFileMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovFileMode]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1275,7 +1283,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: ThreatHuntCsv
     /// 
-    /// $query = New-RscMutationDownload -ThreatHuntCsv
+    /// $query = New-RscMutationDownload -Operation ThreatHuntCsv
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1306,7 +1314,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: VolumeGroupSnapshotFiles
     /// 
-    /// $query = New-RscMutationDownload -VolumeGroupSnapshotFiles
+    /// $query = New-RscMutationDownload -Operation VolumeGroupSnapshotFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1355,7 +1363,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: VolumeGroupSnapshotFromLocation
     /// 
-    /// $query = New-RscMutationDownload -VolumeGroupSnapshotFromLocation
+    /// $query = New-RscMutationDownload -Operation VolumeGroupSnapshotFromLocation
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -2572,6 +2580,8 @@ $query.Var.downloadFilter = @{
 		snappableFid = $someString
 		# OPTIONAL
 		stdPath = $someString
+		# OPTIONAL
+		mode = $someDataGovFileMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovFileMode]) for enum values.
 	}
 	# OPTIONAL
 	listFileResultsSnappablePaths = @(
@@ -2580,6 +2590,8 @@ $query.Var.downloadFilter = @{
 			snappableFid = $someString
 			# OPTIONAL
 			stdPath = $someString
+			# OPTIONAL
+			mode = $someDataGovFileMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovFileMode]) for enum values.
 		}
 	)
 	# OPTIONAL
@@ -2714,6 +2726,8 @@ $query.Var.downloadFilter = @{
 		snappableFid = $someString
 		# OPTIONAL
 		stdPath = $someString
+		# OPTIONAL
+		mode = $someDataGovFileMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovFileMode]) for enum values.
 	}
 	# OPTIONAL
 	listFileResultsSnappablePaths = @(
@@ -2722,6 +2736,8 @@ $query.Var.downloadFilter = @{
 			snappableFid = $someString
 			# OPTIONAL
 			stdPath = $someString
+			# OPTIONAL
+			mode = $someDataGovFileMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovFileMode]) for enum values.
 		}
 	)
 	# OPTIONAL

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: BulkRecoverableRange
     /// 
-    /// $query = New-RscQueryMongoDb -BulkRecoverableRange
+    /// $query = New-RscQueryMongoDb -Operation BulkRecoverableRange
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -139,7 +139,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: Collection
     /// 
-    /// $query = New-RscQueryMongoDb -Collection
+    /// $query = New-RscQueryMongoDb -Operation Collection
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -167,7 +167,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: CollectionRecoverableRange
     /// 
-    /// $query = New-RscQueryMongoDb -CollectionRecoverableRange
+    /// $query = New-RscQueryMongoDb -Operation CollectionRecoverableRange
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -209,7 +209,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: Collections
     /// 
-    /// $query = New-RscQueryMongoDb -Collections
+    /// $query = New-RscQueryMongoDb -Operation Collections
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -285,7 +285,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: Database
     /// 
-    /// $query = New-RscQueryMongoDb -Database
+    /// $query = New-RscQueryMongoDb -Operation Database
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -313,7 +313,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: Databases
     /// 
-    /// $query = New-RscQueryMongoDb -Databases
+    /// $query = New-RscQueryMongoDb -Operation Databases
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -389,7 +389,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: Source
     /// 
-    /// $query = New-RscQueryMongoDb -Source
+    /// $query = New-RscQueryMongoDb -Operation Source
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -417,7 +417,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: Sources
     /// 
-    /// $query = New-RscQueryMongoDb -Sources
+    /// $query = New-RscQueryMongoDb -Operation Sources
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

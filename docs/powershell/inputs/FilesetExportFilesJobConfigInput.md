@@ -11,9 +11,8 @@ Supported in v5.0+
   - Supported in v5.0+
       Network share ID.
 - excludePaths: list of System.Strings
-  - Supported in v9.0, v9.2+
-      v9.0: Optional field which excludes the paths specified during recovery.
-      v9.2+: Optional field which excludes the paths specified during recovery.
+  - Supported in v8.1+
+      Optional field which excludes the paths specified during recovery.
 - shouldRecreateDirectoryStructure: System.Boolean
   - Supported in v8.1+
       Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.

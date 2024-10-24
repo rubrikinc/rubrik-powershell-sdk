@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: CreateCustom
     /// 
-    /// $query = New-RscMutationReport -CreateCustom
+    /// $query = New-RscMutationReport -Operation CreateCustom
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -292,7 +292,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: CreateScheduled
     /// 
-    /// $query = New-RscMutationReport -CreateScheduled
+    /// $query = New-RscMutationReport -Operation CreateScheduled
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -353,7 +353,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: DeleteCustom
     /// 
-    /// $query = New-RscMutationReport -DeleteCustom
+    /// $query = New-RscMutationReport -Operation DeleteCustom
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -384,7 +384,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: DeleteScheduledReport
     /// 
-    /// $query = New-RscMutationReport -DeleteScheduledReport
+    /// $query = New-RscMutationReport -Operation DeleteScheduledReport
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -417,7 +417,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: SendPdf
     /// 
-    /// $query = New-RscMutationReport -SendPdf
+    /// $query = New-RscMutationReport -Operation SendPdf
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -456,7 +456,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: SendScheduledReportAsync
     /// 
-    /// $query = New-RscMutationReport -SendScheduledReportAsync
+    /// $query = New-RscMutationReport -Operation SendScheduledReportAsync
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -499,7 +499,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: StartClusterMigrationJob
     /// 
-    /// $query = New-RscMutationReport -StartClusterMigrationJob
+    /// $query = New-RscMutationReport -Operation StartClusterMigrationJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -532,7 +532,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: UpdateCustom
     /// 
-    /// $query = New-RscMutationReport -UpdateCustom
+    /// $query = New-RscMutationReport -Operation UpdateCustom
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -740,7 +740,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: UpdateDatabaseLogingPropertiesForCluster
     /// 
-    /// $query = New-RscMutationReport -UpdateDatabaseLogingPropertiesForCluster
+    /// $query = New-RscMutationReport -Operation UpdateDatabaseLogingPropertiesForCluster
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -780,7 +780,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: UpdateScheduledReport
     /// 
-    /// $query = New-RscMutationReport -UpdateScheduledReport
+    /// $query = New-RscMutationReport -Operation UpdateScheduledReport
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

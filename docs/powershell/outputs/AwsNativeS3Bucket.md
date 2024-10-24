@@ -25,6 +25,8 @@ AWS native S3 Bucket.
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount
   - AWS account of the Amazon S3 bucket.
+- awsAccount: AwsNativeAccount
+  - AWS account of the Amazon S3 bucket.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - id: System.String

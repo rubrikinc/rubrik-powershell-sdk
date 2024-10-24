@@ -161,6 +161,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allOrgs")]
         public List<Org>? AllOrgs { get; set; }
 
+        //      C# -> AwsNativeAccount? AwsAccount
+        // GraphQL -> awsAccount: AwsNativeAccount (type)
+        [JsonProperty("awsAccount")]
+        public AwsNativeAccount? AwsAccount { get; set; }
+
         //      C# -> AwsNativeAccount? AwsNativeAccount
         // GraphQL -> awsNativeAccount: AwsNativeAccount! (type)
         [JsonProperty("awsNativeAccount")]
@@ -341,6 +346,7 @@ namespace RubrikSecurityCloud.Types
         System.String? VpcId = null,
         System.String? VpcName = null,
         List<Org>? AllOrgs = null,
+        AwsNativeAccount? AwsAccount = null,
         AwsNativeAccount? AwsNativeAccount = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
@@ -441,6 +447,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
+        }
+        if ( AwsAccount != null ) {
+            this.AwsAccount = AwsAccount;
         }
         if ( AwsNativeAccount != null ) {
             this.AwsNativeAccount = AwsNativeAccount;
@@ -765,6 +774,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AwsNativeAccount? AwsAccount
+        // GraphQL -> awsAccount: AwsNativeAccount (type)
+        if (this.AwsAccount != null) {
+            var fspec = this.AwsAccount.AsFieldSpec(conf.Child("awsAccount"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsAccount" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1453,6 +1474,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AllOrgs != null && ec.Excludes("allOrgs",false))
         {
             this.AllOrgs = null;
+        }
+        //      C# -> AwsNativeAccount? AwsAccount
+        // GraphQL -> awsAccount: AwsNativeAccount (type)
+        if (ec.Includes("awsAccount",false))
+        {
+            if(this.AwsAccount == null) {
+
+                this.AwsAccount = new AwsNativeAccount();
+                this.AwsAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsAccount"));
+
+            } else {
+
+                this.AwsAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsAccount"));
+
+            }
+        }
+        else if (this.AwsAccount != null && ec.Excludes("awsAccount",false))
+        {
+            this.AwsAccount = null;
         }
         //      C# -> AwsNativeAccount? AwsNativeAccount
         // GraphQL -> awsNativeAccount: AwsNativeAccount! (type)

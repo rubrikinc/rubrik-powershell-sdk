@@ -125,6 +125,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("deltaUserCounts")]
         public PrincipalCounts? DeltaUserCounts { get; set; }
 
+        //      C# -> List<ExposureSummary>? ExposureSummary
+        // GraphQL -> exposureSummary: [ExposureSummary!]! (type)
+        [JsonProperty("exposureSummary")]
+        public List<ExposureSummary>? ExposureSummary { get; set; }
+
         //      C# -> FileResultConnection? FileResultConnection
         // GraphQL -> fileResultConnection: FileResultConnection! (type)
         [JsonProperty("fileResultConnection")]
@@ -204,6 +209,7 @@ namespace RubrikSecurityCloud.Types
         public InlineVars() {
             Tuple<string, string>[] allAnalyzerMappingsArgs = {
                     Tuple.Create("stdPath", "String!"),
+                    Tuple.Create("fileMode", "DataGovFileMode"),
                 };
             this.AllAnalyzerMappings =
                 new RscGqlVars(null, allAnalyzerMappingsArgs, null, true);
@@ -269,6 +275,7 @@ namespace RubrikSecurityCloud.Types
         AssetMetadata? AssetMetadata = null,
         List<DataTypeResult>? DataTypeResults = null,
         PrincipalCounts? DeltaUserCounts = null,
+        List<ExposureSummary>? ExposureSummary = null,
         FileResultConnection? FileResultConnection = null,
         FileResultConnection? FolderChildConnection = null,
         List<MipLabelSummary>? MipLabelsSummary = null,
@@ -345,6 +352,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DeltaUserCounts != null ) {
             this.DeltaUserCounts = DeltaUserCounts;
+        }
+        if ( ExposureSummary != null ) {
+            this.ExposureSummary = ExposureSummary;
         }
         if ( FileResultConnection != null ) {
             this.FileResultConnection = FileResultConnection;
@@ -601,6 +611,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "deltaUserCounts" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<ExposureSummary>? ExposureSummary
+        // GraphQL -> exposureSummary: [ExposureSummary!]! (type)
+        if (this.ExposureSummary != null) {
+            var fspec = this.ExposureSummary.AsFieldSpec(conf.Child("exposureSummary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "exposureSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1128,6 +1150,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.DeltaUserCounts != null && ec.Excludes("deltaUserCounts",false))
         {
             this.DeltaUserCounts = null;
+        }
+        //      C# -> List<ExposureSummary>? ExposureSummary
+        // GraphQL -> exposureSummary: [ExposureSummary!]! (type)
+        if (ec.Includes("exposureSummary",false))
+        {
+            if(this.ExposureSummary == null) {
+
+                this.ExposureSummary = new List<ExposureSummary>();
+                this.ExposureSummary.ApplyExploratoryFieldSpec(ec.NewChild("exposureSummary"));
+
+            } else {
+
+                this.ExposureSummary.ApplyExploratoryFieldSpec(ec.NewChild("exposureSummary"));
+
+            }
+        }
+        else if (this.ExposureSummary != null && ec.Excludes("exposureSummary",false))
+        {
+            this.ExposureSummary = null;
         }
         //      C# -> FileResultConnection? FileResultConnection
         // GraphQL -> fileResultConnection: FileResultConnection! (type)

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mosaic
     /// # API Operation: BulkRecoveryRange
     /// 
-    /// $query = New-RscQueryMosaic -BulkRecoveryRange
+    /// $query = New-RscQueryMosaic -Operation BulkRecoveryRange
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -139,7 +139,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mosaic
     /// # API Operation: Snapshots
     /// 
-    /// $query = New-RscQueryMosaic -Snapshots
+    /// $query = New-RscQueryMosaic -Operation Snapshots
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -187,7 +187,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mosaic
     /// # API Operation: Stores
     /// 
-    /// $query = New-RscQueryMosaic -Stores
+    /// $query = New-RscQueryMosaic -Operation Stores
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -218,7 +218,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mosaic
     /// # API Operation: Versions
     /// 
-    /// $query = New-RscQueryMosaic -Versions
+    /// $query = New-RscQueryMosaic -Operation Versions
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

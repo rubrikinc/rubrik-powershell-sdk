@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 197
+    /// Create a new RscQuery object for any of the 198
     /// operations in the 'Miscellaneous' API domain:
-    /// ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectNasNamespace, CloudDirectNasNamespaces, CloudDirectNasShare, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MicrosoftSites, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SsoGroupAlreadyExists, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprConfiguration, TprPublicConfiguration, TprRequestDetail, TprRequestSummaries, TprRoleEligibility, TprRulesMap, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAlreadyExists, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VerifyTotp, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
+    /// ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectNasNamespace, CloudDirectNasNamespaces, CloudDirectNasShare, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MicrosoftSites, MinimumCdmVersionForFeatureSet, MipLabels, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SsoGroupAlreadyExists, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprConfiguration, TprPublicConfiguration, TprRequestDetail, TprRequestSummaries, TprRoleEligibility, TprRulesMap, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAlreadyExists, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VerifyTotp, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
     /// </summary>
     /// <description>
     /// New-RscQueryMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 197 operations
+    /// There are 198 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectNasNamespace, CloudDirectNasNamespaces, CloudDirectNasShare, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MicrosoftSites, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SsoGroupAlreadyExists, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprConfiguration, TprPublicConfiguration, TprRequestDetail, TprRequestSummaries, TprRoleEligibility, TprRulesMap, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAlreadyExists, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VerifyTotp, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
+    /// one of: ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectNasNamespace, CloudDirectNasNamespaces, CloudDirectNasShare, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MicrosoftSites, MinimumCdmVersionForFeatureSet, MipLabels, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SsoGroupAlreadyExists, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprConfiguration, TprPublicConfiguration, TprRequestDetail, TprRequestSummaries, TprRoleEligibility, TprRulesMap, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAlreadyExists, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VerifyTotp, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: ActiveCustomAnalyzers
     /// 
-    /// $query = New-RscQueryMisc -ActiveCustomAnalyzers
+    /// $query = New-RscQueryMisc -Operation ActiveCustomAnalyzers
     /// 
     /// # No variables for this query.
     /// 
@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AdGroupMembers
     /// 
-    /// $query = New-RscQueryMisc -AdGroupMembers
+    /// $query = New-RscQueryMisc -Operation AdGroupMembers
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AdVolumeExports
     /// 
-    /// $query = New-RscQueryMisc -AdVolumeExports
+    /// $query = New-RscQueryMisc -Operation AdVolumeExports
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -216,7 +216,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AgentDeploymentSetting
     /// 
-    /// $query = New-RscQueryMisc -AgentDeploymentSetting
+    /// $query = New-RscQueryMisc -Operation AgentDeploymentSetting
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -247,7 +247,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AgentDeploymentSettings
     /// 
-    /// $query = New-RscQueryMisc -AgentDeploymentSettings
+    /// $query = New-RscQueryMisc -Operation AgentDeploymentSettings
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuids = @(
@@ -277,7 +277,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AllowedOrgAdminOperations
     /// 
-    /// $query = New-RscQueryMisc -AllowedOrgAdminOperations
+    /// $query = New-RscQueryMisc -Operation AllowedOrgAdminOperations
     /// 
     /// # No variables for this query.
     /// 
@@ -304,7 +304,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AnalyzerGroups
     /// 
-    /// $query = New-RscQueryMisc -AnalyzerGroups
+    /// $query = New-RscQueryMisc -Operation AnalyzerGroups
     /// 
     /// # No variables for this query.
     /// 
@@ -331,7 +331,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AnalyzerUsages
     /// 
-    /// $query = New-RscQueryMisc -AnalyzerUsages
+    /// $query = New-RscQueryMisc -Operation AnalyzerUsages
     /// 
     /// # OPTIONAL
     /// $query.Var.dataCategoryIdsFilter = @(
@@ -381,7 +381,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AnomalyResultOpt
     /// 
-    /// $query = New-RscQueryMisc -AnomalyResultOpt
+    /// $query = New-RscQueryMisc -Operation AnomalyResultOpt
     /// 
     /// # OPTIONAL
     /// $query.Var.clusterUuid = $someString
@@ -415,7 +415,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AnomalyResults
     /// 
-    /// $query = New-RscQueryMisc -AnomalyResults
+    /// $query = New-RscQueryMisc -Operation AnomalyResults
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -476,7 +476,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AnomalyResultsGrouped
     /// 
-    /// $query = New-RscQueryMisc -AnomalyResultsGrouped
+    /// $query = New-RscQueryMisc -Operation AnomalyResultsGrouped
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -535,7 +535,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AreMultiGeoBackupsEnabled
     /// 
-    /// $query = New-RscQueryMisc -AreMultiGeoBackupsEnabled
+    /// $query = New-RscQueryMisc -Operation AreMultiGeoBackupsEnabled
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -563,7 +563,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AuthorizationsForGlobalResource
     /// 
-    /// $query = New-RscQueryMisc -AuthorizationsForGlobalResource
+    /// $query = New-RscQueryMisc -Operation AuthorizationsForGlobalResource
     /// 
     /// # No variables for this query.
     /// 
@@ -590,7 +590,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AuthorizationsForObject
     /// 
-    /// $query = New-RscQueryMisc -AuthorizationsForObject
+    /// $query = New-RscQueryMisc -Operation AuthorizationsForObject
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -618,7 +618,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AuthorizationsForObjects
     /// 
-    /// $query = New-RscQueryMisc -AuthorizationsForObjects
+    /// $query = New-RscQueryMisc -Operation AuthorizationsForObjects
     /// 
     /// # REQUIRED
     /// $query.Var.fids = @(
@@ -648,7 +648,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AwsComputeSettings
     /// 
-    /// $query = New-RscQueryMisc -AwsComputeSettings
+    /// $query = New-RscQueryMisc -Operation AwsComputeSettings
     /// 
     /// # OPTIONAL
     /// $query.Var.sortBy = $someAwsCloudComputeSettingQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudComputeSettingQuerySortByField]) for enum values.
@@ -689,7 +689,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AzureResourceGroups
     /// 
-    /// $query = New-RscQueryMisc -AzureResourceGroups
+    /// $query = New-RscQueryMisc -Operation AzureResourceGroups
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountId = $someString
@@ -719,7 +719,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: AzureSubnets
     /// 
-    /// $query = New-RscQueryMisc -AzureSubnets
+    /// $query = New-RscQueryMisc -Operation AzureSubnets
     /// 
     /// # REQUIRED
     /// $query.Var.subnetRequest = @{
@@ -754,7 +754,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: BackupThrottleSettings
     /// 
-    /// $query = New-RscQueryMisc -BackupThrottleSettings
+    /// $query = New-RscQueryMisc -Operation BackupThrottleSettings
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuids = @(
@@ -784,7 +784,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: BrowseCalendar
     /// 
-    /// $query = New-RscQueryMisc -BrowseCalendar
+    /// $query = New-RscQueryMisc -Operation BrowseCalendar
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -875,7 +875,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: BrowseContacts
     /// 
-    /// $query = New-RscQueryMisc -BrowseContacts
+    /// $query = New-RscQueryMisc -Operation BrowseContacts
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -943,7 +943,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: BrowseFolder
     /// 
-    /// $query = New-RscQueryMisc -BrowseFolder
+    /// $query = New-RscQueryMisc -Operation BrowseFolder
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -981,7 +981,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: BrowseOnedrive
     /// 
-    /// $query = New-RscQueryMisc -BrowseOnedrive
+    /// $query = New-RscQueryMisc -Operation BrowseOnedrive
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1075,7 +1075,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: BrowseTeamsChannels
     /// 
-    /// $query = New-RscQueryMisc -BrowseTeamsChannels
+    /// $query = New-RscQueryMisc -Operation BrowseTeamsChannels
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1115,7 +1115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: BrowseTeamsDrive
     /// 
-    /// $query = New-RscQueryMisc -BrowseTeamsDrive
+    /// $query = New-RscQueryMisc -Operation BrowseTeamsDrive
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1209,7 +1209,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CdmGuestCredentials
     /// 
-    /// $query = New-RscQueryMisc -CdmGuestCredentials
+    /// $query = New-RscQueryMisc -Operation CdmGuestCredentials
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuids = @(
@@ -1239,7 +1239,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CdmInventorySubHierarchyRoot
     /// 
-    /// $query = New-RscQueryMisc -CdmInventorySubHierarchyRoot
+    /// $query = New-RscQueryMisc -Operation CdmInventorySubHierarchyRoot
     /// 
     /// # REQUIRED
     /// $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InventorySubHierarchyRootEnum]) for enum values.
@@ -1267,7 +1267,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CdmOvaDetails
     /// 
-    /// $query = New-RscQueryMisc -CdmOvaDetails
+    /// $query = New-RscQueryMisc -Operation CdmOvaDetails
     /// 
     /// # No variables for this query.
     /// 
@@ -1294,7 +1294,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CdmVersionCheck
     /// 
-    /// $query = New-RscQueryMisc -CdmVersionCheck
+    /// $query = New-RscQueryMisc -Operation CdmVersionCheck
     /// 
     /// # REQUIRED
     /// $query.Var.featureToCdmVersion = @{
@@ -1327,7 +1327,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CdpVmsInfos
     /// 
-    /// $query = New-RscQueryMisc -CdpVmsInfos
+    /// $query = New-RscQueryMisc -Operation CdpVmsInfos
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1397,7 +1397,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CheckCloudComputeConnectivityJobProgress
     /// 
-    /// $query = New-RscQueryMisc -CheckCloudComputeConnectivityJobProgress
+    /// $query = New-RscQueryMisc -Operation CheckCloudComputeConnectivityJobProgress
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1428,7 +1428,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CheckLatestVersionMgmtAppExists
     /// 
-    /// $query = New-RscQueryMisc -CheckLatestVersionMgmtAppExists
+    /// $query = New-RscQueryMisc -Operation CheckLatestVersionMgmtAppExists
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1459,7 +1459,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CloudDirectNasExport
     /// 
-    /// $query = New-RscQueryMisc -CloudDirectNasExport
+    /// $query = New-RscQueryMisc -Operation CloudDirectNasExport
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -1487,7 +1487,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CloudDirectNasNamespace
     /// 
-    /// $query = New-RscQueryMisc -CloudDirectNasNamespace
+    /// $query = New-RscQueryMisc -Operation CloudDirectNasNamespace
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -1515,7 +1515,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CloudDirectNasNamespaces
     /// 
-    /// $query = New-RscQueryMisc -CloudDirectNasNamespaces
+    /// $query = New-RscQueryMisc -Operation CloudDirectNasNamespaces
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1591,7 +1591,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CloudDirectNasShare
     /// 
-    /// $query = New-RscQueryMisc -CloudDirectNasShare
+    /// $query = New-RscQueryMisc -Operation CloudDirectNasShare
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -1619,7 +1619,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CloudDirectShares
     /// 
-    /// $query = New-RscQueryMisc -CloudDirectShares
+    /// $query = New-RscQueryMisc -Operation CloudDirectShares
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1652,7 +1652,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CloudDirectSites
     /// 
-    /// $query = New-RscQueryMisc -CloudDirectSites
+    /// $query = New-RscQueryMisc -Operation CloudDirectSites
     /// 
     /// # No variables for this query.
     /// 
@@ -1679,7 +1679,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CloudDirectSystems
     /// 
-    /// $query = New-RscQueryMisc -CloudDirectSystems
+    /// $query = New-RscQueryMisc -Operation CloudDirectSystems
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1710,7 +1710,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: ConfiguredGroupMembers
     /// 
-    /// $query = New-RscQueryMisc -ConfiguredGroupMembers
+    /// $query = New-RscQueryMisc -Operation ConfiguredGroupMembers
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1765,7 +1765,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: Crawl
     /// 
-    /// $query = New-RscQueryMisc -Crawl
+    /// $query = New-RscQueryMisc -Operation Crawl
     /// 
     /// # REQUIRED
     /// $query.Var.crawlId = $someString
@@ -1793,7 +1793,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: Crawls
     /// 
-    /// $query = New-RscQueryMisc -Crawls
+    /// $query = New-RscQueryMisc -Operation Crawls
     /// 
     /// # No variables for this query.
     /// 
@@ -1820,7 +1820,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CrossAccountPairs
     /// 
-    /// $query = New-RscQueryMisc -CrossAccountPairs
+    /// $query = New-RscQueryMisc -Operation CrossAccountPairs
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1867,7 +1867,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CurrentIpAddress
     /// 
-    /// $query = New-RscQueryMisc -CurrentIpAddress
+    /// $query = New-RscQueryMisc -Operation CurrentIpAddress
     /// 
     /// # No variables for this query.
     /// 
@@ -1894,7 +1894,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CurrentOrg
     /// 
-    /// $query = New-RscQueryMisc -CurrentOrg
+    /// $query = New-RscQueryMisc -Operation CurrentOrg
     /// 
     /// # No variables for this query.
     /// 
@@ -1921,7 +1921,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CurrentOrgAuthDomainConfig
     /// 
-    /// $query = New-RscQueryMisc -CurrentOrgAuthDomainConfig
+    /// $query = New-RscQueryMisc -Operation CurrentOrgAuthDomainConfig
     /// 
     /// # No variables for this query.
     /// 
@@ -1948,7 +1948,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CurrentOrgIdentityProviders
     /// 
-    /// $query = New-RscQueryMisc -CurrentOrgIdentityProviders
+    /// $query = New-RscQueryMisc -Operation CurrentOrgIdentityProviders
     /// 
     /// # No variables for this query.
     /// 
@@ -1975,7 +1975,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: CustomAnalyzer
     /// 
-    /// $query = New-RscQueryMisc -CustomAnalyzer
+    /// $query = New-RscQueryMisc -Operation CustomAnalyzer
     /// 
     /// # REQUIRED
     /// $query.Var.analyzerId = $someString
@@ -2003,7 +2003,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DashboardSummary
     /// 
-    /// $query = New-RscQueryMisc -DashboardSummary
+    /// $query = New-RscQueryMisc -Operation DashboardSummary
     /// 
     /// # REQUIRED
     /// $query.Var.getWhitelistedResults = $someBoolean
@@ -2031,7 +2031,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DatagovSecDesc
     /// 
-    /// $query = New-RscQueryMisc -DatagovSecDesc
+    /// $query = New-RscQueryMisc -Operation DatagovSecDesc
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -2070,7 +2070,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DecryptExportUrl
     /// 
-    /// $query = New-RscQueryMisc -DecryptExportUrl
+    /// $query = New-RscQueryMisc -Operation DecryptExportUrl
     /// 
     /// # REQUIRED
     /// $query.Var.workloadFid = $someString
@@ -2100,7 +2100,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DeploymentIpAddresses
     /// 
-    /// $query = New-RscQueryMisc -DeploymentIpAddresses
+    /// $query = New-RscQueryMisc -Operation DeploymentIpAddresses
     /// 
     /// # No variables for this query.
     /// 
@@ -2127,7 +2127,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DeploymentVersion
     /// 
-    /// $query = New-RscQueryMisc -DeploymentVersion
+    /// $query = New-RscQueryMisc -Operation DeploymentVersion
     /// 
     /// # No variables for this query.
     /// 
@@ -2154,7 +2154,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DhrcActiveRecommendations
     /// 
-    /// $query = New-RscQueryMisc -DhrcActiveRecommendations
+    /// $query = New-RscQueryMisc -Operation DhrcActiveRecommendations
     /// 
     /// # OPTIONAL
     /// $query.Var.categories = @(
@@ -2184,7 +2184,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DhrcLatestMetrics
     /// 
-    /// $query = New-RscQueryMisc -DhrcLatestMetrics
+    /// $query = New-RscQueryMisc -Operation DhrcLatestMetrics
     /// 
     /// # OPTIONAL
     /// $query.Var.categories = @(
@@ -2214,7 +2214,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DhrcScores
     /// 
-    /// $query = New-RscQueryMisc -DhrcScores
+    /// $query = New-RscQueryMisc -Operation DhrcScores
     /// 
     /// # OPTIONAL
     /// $query.Var.categories = @(
@@ -2248,7 +2248,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DiffFmd
     /// 
-    /// $query = New-RscQueryMisc -DiffFmd
+    /// $query = New-RscQueryMisc -Operation DiffFmd
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -2282,7 +2282,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DiscoverNodes
     /// 
-    /// $query = New-RscQueryMisc -DiscoverNodes
+    /// $query = New-RscQueryMisc -Operation DiscoverNodes
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someString
@@ -2310,7 +2310,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DiscoveryTimeline
     /// 
-    /// $query = New-RscQueryMisc -DiscoveryTimeline
+    /// $query = New-RscQueryMisc -Operation DiscoveryTimeline
     /// 
     /// # REQUIRED
     /// $query.Var.startDay = $someString
@@ -2354,7 +2354,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DistributionListDigest
     /// 
-    /// $query = New-RscQueryMisc -DistributionListDigest
+    /// $query = New-RscQueryMisc -Operation DistributionListDigest
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -2385,7 +2385,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DistributionListDigests
     /// 
-    /// $query = New-RscQueryMisc -DistributionListDigests
+    /// $query = New-RscQueryMisc -Operation DistributionListDigests
     /// 
     /// # No variables for this query.
     /// 
@@ -2412,7 +2412,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: DummyFieldWithAdminOnlyTag
     /// 
-    /// $query = New-RscQueryMisc -DummyFieldWithAdminOnlyTag
+    /// $query = New-RscQueryMisc -Operation DummyFieldWithAdminOnlyTag
     /// 
     /// # No variables for this query.
     /// 
@@ -2439,7 +2439,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: EdgeWindowsToolLink
     /// 
-    /// $query = New-RscQueryMisc -EdgeWindowsToolLink
+    /// $query = New-RscQueryMisc -Operation EdgeWindowsToolLink
     /// 
     /// # No variables for this query.
     /// 
@@ -2466,7 +2466,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: EffectiveRbacPermissions
     /// 
-    /// $query = New-RscQueryMisc -EffectiveRbacPermissions
+    /// $query = New-RscQueryMisc -Operation EffectiveRbacPermissions
     /// 
     /// # REQUIRED
     /// $query.Var.roleId = $someString
@@ -2494,7 +2494,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: EventDigests
     /// 
-    /// $query = New-RscQueryMisc -EventDigests
+    /// $query = New-RscQueryMisc -Operation EventDigests
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -2527,7 +2527,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: ExternalDeploymentName
     /// 
-    /// $query = New-RscQueryMisc -ExternalDeploymentName
+    /// $query = New-RscQueryMisc -Operation ExternalDeploymentName
     /// 
     /// # No variables for this query.
     /// 
@@ -2554,7 +2554,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: FailedRestoreItemsInfo
     /// 
-    /// $query = New-RscQueryMisc -FailedRestoreItemsInfo
+    /// $query = New-RscQueryMisc -Operation FailedRestoreItemsInfo
     /// 
     /// # REQUIRED
     /// $query.Var.workloadFid = $someString
@@ -2584,7 +2584,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: FederatedLoginStatus
     /// 
-    /// $query = New-RscQueryMisc -FederatedLoginStatus
+    /// $query = New-RscQueryMisc -Operation FederatedLoginStatus
     /// 
     /// # No variables for this query.
     /// 
@@ -2611,7 +2611,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: FileActivities
     /// 
-    /// $query = New-RscQueryMisc -FileActivities
+    /// $query = New-RscQueryMisc -Operation FileActivities
     /// 
     /// # REQUIRED
     /// $query.Var.ListFileActivitiesInput = @{
@@ -2663,7 +2663,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GeoLocationList
     /// 
-    /// $query = New-RscQueryMisc -GeoLocationList
+    /// $query = New-RscQueryMisc -Operation GeoLocationList
     /// 
     /// # No variables for this query.
     /// 
@@ -2690,7 +2690,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GetAllRolesInOrgList
     /// 
-    /// $query = New-RscQueryMisc -GetAllRolesInOrgList
+    /// $query = New-RscQueryMisc -Operation GetAllRolesInOrgList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -2734,7 +2734,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GetCdmReleaseDetailsForVersionFromSupportPortal
     /// 
-    /// $query = New-RscQueryMisc -GetCdmReleaseDetailsForVersionFromSupportPortal
+    /// $query = New-RscQueryMisc -Operation GetCdmReleaseDetailsForVersionFromSupportPortal
     /// 
     /// # REQUIRED
     /// $query.Var.listClusterUuid = @(
@@ -2776,7 +2776,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GetCdmReleaseDetailsFromSupportPortal
     /// 
-    /// $query = New-RscQueryMisc -GetCdmReleaseDetailsFromSupportPortal
+    /// $query = New-RscQueryMisc -Operation GetCdmReleaseDetailsFromSupportPortal
     /// 
     /// # REQUIRED
     /// $query.Var.platform = $someString
@@ -2820,7 +2820,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GetGroupCountByPrechecksStatus
     /// 
-    /// $query = New-RscQueryMisc -GetGroupCountByPrechecksStatus
+    /// $query = New-RscQueryMisc -Operation GetGroupCountByPrechecksStatus
     /// 
     /// # No variables for this query.
     /// 
@@ -2847,7 +2847,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GetGroupCountByUpgradeJobStatus
     /// 
-    /// $query = New-RscQueryMisc -GetGroupCountByUpgradeJobStatus
+    /// $query = New-RscQueryMisc -Operation GetGroupCountByUpgradeJobStatus
     /// 
     /// # No variables for this query.
     /// 
@@ -2874,7 +2874,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GetGroupCountByVersionStatus
     /// 
-    /// $query = New-RscQueryMisc -GetGroupCountByVersionStatus
+    /// $query = New-RscQueryMisc -Operation GetGroupCountByVersionStatus
     /// 
     /// # No variables for this query.
     /// 
@@ -2901,7 +2901,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GetKorgTaskchainStatus
     /// 
-    /// $query = New-RscQueryMisc -GetKorgTaskchainStatus
+    /// $query = New-RscQueryMisc -Operation GetKorgTaskchainStatus
     /// 
     /// # REQUIRED
     /// $query.Var.taskchainId = $someString
@@ -2929,7 +2929,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GetPermissions
     /// 
-    /// $query = New-RscQueryMisc -GetPermissions
+    /// $query = New-RscQueryMisc -Operation GetPermissions
     /// 
     /// # REQUIRED
     /// $query.Var.roleId = $someString
@@ -2957,7 +2957,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GetRolesByIds
     /// 
-    /// $query = New-RscQueryMisc -GetRolesByIds
+    /// $query = New-RscQueryMisc -Operation GetRolesByIds
     /// 
     /// # REQUIRED
     /// $query.Var.roleIds = @(
@@ -2987,7 +2987,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GetUserDownloads
     /// 
-    /// $query = New-RscQueryMisc -GetUserDownloads
+    /// $query = New-RscQueryMisc -Operation GetUserDownloads
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -3021,7 +3021,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GlobalFileSearch
     /// 
-    /// $query = New-RscQueryMisc -GlobalFileSearch
+    /// $query = New-RscQueryMisc -Operation GlobalFileSearch
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -3061,7 +3061,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GlobalLockoutConfig
     /// 
-    /// $query = New-RscQueryMisc -GlobalLockoutConfig
+    /// $query = New-RscQueryMisc -Operation GlobalLockoutConfig
     /// 
     /// # No variables for this query.
     /// 
@@ -3088,7 +3088,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GlobalMfaSetting
     /// 
-    /// $query = New-RscQueryMisc -GlobalMfaSetting
+    /// $query = New-RscQueryMisc -Operation GlobalMfaSetting
     /// 
     /// # No variables for this query.
     /// 
@@ -3115,7 +3115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GlobalSearchResults
     /// 
-    /// $query = New-RscQueryMisc -GlobalSearchResults
+    /// $query = New-RscQueryMisc -Operation GlobalSearchResults
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -3195,7 +3195,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GroupsInCurrentAndDescendantOrganization
     /// 
-    /// $query = New-RscQueryMisc -GroupsInCurrentAndDescendantOrganization
+    /// $query = New-RscQueryMisc -Operation GroupsInCurrentAndDescendantOrganization
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -3255,7 +3255,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GuestCredentials
     /// 
-    /// $query = New-RscQueryMisc -GuestCredentials
+    /// $query = New-RscQueryMisc -Operation GuestCredentials
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -3286,7 +3286,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: GuestCredentialsV2
     /// 
-    /// $query = New-RscQueryMisc -GuestCredentialsV2
+    /// $query = New-RscQueryMisc -Operation GuestCredentialsV2
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -3334,7 +3334,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: HasIdpConfigured
     /// 
-    /// $query = New-RscQueryMisc -HasIdpConfigured
+    /// $query = New-RscQueryMisc -Operation HasIdpConfigured
     /// 
     /// # No variables for this query.
     /// 
@@ -3361,7 +3361,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: HelpContentSnippets
     /// 
-    /// $query = New-RscQueryMisc -HelpContentSnippets
+    /// $query = New-RscQueryMisc -Operation HelpContentSnippets
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -3416,7 +3416,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: HierarchyObject
     /// 
-    /// $query = New-RscQueryMisc -HierarchyObject
+    /// $query = New-RscQueryMisc -Operation HierarchyObject
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -3446,7 +3446,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: HierarchyObjects
     /// 
-    /// $query = New-RscQueryMisc -HierarchyObjects
+    /// $query = New-RscQueryMisc -Operation HierarchyObjects
     /// 
     /// # REQUIRED
     /// $query.Var.fids = @(
@@ -3518,7 +3518,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: InstalledVersionList
     /// 
-    /// $query = New-RscQueryMisc -InstalledVersionList
+    /// $query = New-RscQueryMisc -Operation InstalledVersionList
     /// 
     /// # No variables for this query.
     /// 
@@ -3545,7 +3545,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: InventoryRoot
     /// 
-    /// $query = New-RscQueryMisc -InventoryRoot
+    /// $query = New-RscQueryMisc -Operation InventoryRoot
     /// 
     /// # No variables for this query.
     /// 
@@ -3572,7 +3572,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: InventorySubHierarchyRoot
     /// 
-    /// $query = New-RscQueryMisc -InventorySubHierarchyRoot
+    /// $query = New-RscQueryMisc -Operation InventorySubHierarchyRoot
     /// 
     /// # REQUIRED
     /// $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InventorySubHierarchyRootEnum]) for enum values.
@@ -3600,7 +3600,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: InventoryWorkloads
     /// 
-    /// $query = New-RscQueryMisc -InventoryWorkloads
+    /// $query = New-RscQueryMisc -Operation InventoryWorkloads
     /// 
     /// # No variables for this query.
     /// 
@@ -3627,7 +3627,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: InvestigationCsvDownloadLink
     /// 
-    /// $query = New-RscQueryMisc -InvestigationCsvDownloadLink
+    /// $query = New-RscQueryMisc -Operation InvestigationCsvDownloadLink
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -3659,7 +3659,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: IpWhitelist
     /// 
-    /// $query = New-RscQueryMisc -IpWhitelist
+    /// $query = New-RscQueryMisc -Operation IpWhitelist
     /// 
     /// # No variables for this query.
     /// 
@@ -3686,7 +3686,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: IsIpmiEnabled
     /// 
-    /// $query = New-RscQueryMisc -IsIpmiEnabled
+    /// $query = New-RscQueryMisc -Operation IsIpmiEnabled
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -3717,7 +3717,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: IsLoggedIntoRubrikSupportPortal
     /// 
-    /// $query = New-RscQueryMisc -IsLoggedIntoRubrikSupportPortal
+    /// $query = New-RscQueryMisc -Operation IsLoggedIntoRubrikSupportPortal
     /// 
     /// # No variables for this query.
     /// 
@@ -3744,7 +3744,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: IsReplaceNodeTprConfigured
     /// 
-    /// $query = New-RscQueryMisc -IsReplaceNodeTprConfigured
+    /// $query = New-RscQueryMisc -Operation IsReplaceNodeTprConfigured
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -3772,7 +3772,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: IsSfdcReachable
     /// 
-    /// $query = New-RscQueryMisc -IsSfdcReachable
+    /// $query = New-RscQueryMisc -Operation IsSfdcReachable
     /// 
     /// # REQUIRED
     /// $query.Var.hostname = $someString
@@ -3802,7 +3802,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: IsUpgradeAvailable
     /// 
-    /// $query = New-RscQueryMisc -IsUpgradeAvailable
+    /// $query = New-RscQueryMisc -Operation IsUpgradeAvailable
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -3830,7 +3830,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: IsUpgradeRecommended
     /// 
-    /// $query = New-RscQueryMisc -IsUpgradeRecommended
+    /// $query = New-RscQueryMisc -Operation IsUpgradeRecommended
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -3858,7 +3858,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: IsZrsAvailableForLocation
     /// 
-    /// $query = New-RscQueryMisc -IsZrsAvailableForLocation
+    /// $query = New-RscQueryMisc -Operation IsZrsAvailableForLocation
     /// 
     /// # REQUIRED
     /// $query.Var.serviceTier = $someServiceTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ServiceTier]) for enum values.
@@ -3890,7 +3890,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: Issue
     /// 
-    /// $query = New-RscQueryMisc -Issue
+    /// $query = New-RscQueryMisc -Operation Issue
     /// 
     /// # REQUIRED
     /// $query.Var.issueId = $someString
@@ -3918,7 +3918,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: Issues
     /// 
-    /// $query = New-RscQueryMisc -Issues
+    /// $query = New-RscQueryMisc -Operation Issues
     /// 
     /// # REQUIRED
     /// $query.Var.status = $someIssueStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IssueStatus]) for enum values.
@@ -3954,7 +3954,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: IssuesJobIds
     /// 
-    /// $query = New-RscQueryMisc -IssuesJobIds
+    /// $query = New-RscQueryMisc -Operation IssuesJobIds
     /// 
     /// # REQUIRED
     /// $query.Var.queryIds = @(
@@ -3984,7 +3984,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: JobInfo
     /// 
-    /// $query = New-RscQueryMisc -JobInfo
+    /// $query = New-RscQueryMisc -Operation JobInfo
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -4355,7 +4355,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: KnowledgeBaseArticle
     /// 
-    /// $query = New-RscQueryMisc -KnowledgeBaseArticle
+    /// $query = New-RscQueryMisc -Operation KnowledgeBaseArticle
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someString
@@ -4383,7 +4383,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: LambdaSettings
     /// 
-    /// $query = New-RscQueryMisc -LambdaSettings
+    /// $query = New-RscQueryMisc -Operation LambdaSettings
     /// 
     /// # No variables for this query.
     /// 
@@ -4410,7 +4410,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: LicensedProducts
     /// 
-    /// $query = New-RscQueryMisc -LicensedProducts
+    /// $query = New-RscQueryMisc -Operation LicensedProducts
     /// 
     /// # No variables for this query.
     /// 
@@ -4437,7 +4437,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: LockoutConfig
     /// 
-    /// $query = New-RscQueryMisc -LockoutConfig
+    /// $query = New-RscQueryMisc -Operation LockoutConfig
     /// 
     /// # No variables for this query.
     /// 
@@ -4464,7 +4464,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: MaxProtectedAppsCount
     /// 
-    /// $query = New-RscQueryMisc -MaxProtectedAppsCount
+    /// $query = New-RscQueryMisc -Operation MaxProtectedAppsCount
     /// 
     /// # No variables for this query.
     /// 
@@ -4491,7 +4491,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: MfaSetting
     /// 
-    /// $query = New-RscQueryMisc -MfaSetting
+    /// $query = New-RscQueryMisc -Operation MfaSetting
     /// 
     /// # No variables for this query.
     /// 
@@ -4518,7 +4518,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: MicrosoftSites
     /// 
-    /// $query = New-RscQueryMisc -MicrosoftSites
+    /// $query = New-RscQueryMisc -Operation MicrosoftSites
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -4600,7 +4600,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: MinimumCdmVersionForFeatureSet
     /// 
-    /// $query = New-RscQueryMisc -MinimumCdmVersionForFeatureSet
+    /// $query = New-RscQueryMisc -Operation MinimumCdmVersionForFeatureSet
     /// 
     /// # REQUIRED
     /// $query.Var.featureListMinimumCdmVersion = @{
@@ -4623,6 +4623,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the MipLabels operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: MipLabels
+    /// 
+    /// $query = New-RscQueryMisc -Operation MipLabels
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.onlyActiveFilter = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.onlyAppliableFilter = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.tenantIdFilter = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;MicrosoftMipLabel&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the NetworkThrottle operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -4633,7 +4665,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: NetworkThrottle
     /// 
-    /// $query = New-RscQueryMisc -NetworkThrottle
+    /// $query = New-RscQueryMisc -Operation NetworkThrottle
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -4666,7 +4698,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: NfAnomalyResults
     /// 
-    /// $query = New-RscQueryMisc -NfAnomalyResults
+    /// $query = New-RscQueryMisc -Operation NfAnomalyResults
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -4723,7 +4755,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: NfAnomalyResultsGrouped
     /// 
-    /// $query = New-RscQueryMisc -NfAnomalyResultsGrouped
+    /// $query = New-RscQueryMisc -Operation NfAnomalyResultsGrouped
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -4778,7 +4810,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: NodeRemovalCancelPermission
     /// 
-    /// $query = New-RscQueryMisc -NodeRemovalCancelPermission
+    /// $query = New-RscQueryMisc -Operation NodeRemovalCancelPermission
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -4809,7 +4841,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: NodeToReplace
     /// 
-    /// $query = New-RscQueryMisc -NodeToReplace
+    /// $query = New-RscQueryMisc -Operation NodeToReplace
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -4840,7 +4872,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: NodeTunnelStatuses
     /// 
-    /// $query = New-RscQueryMisc -NodeTunnelStatuses
+    /// $query = New-RscQueryMisc -Operation NodeTunnelStatuses
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -4871,7 +4903,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: NosqlStorageLocations
     /// 
-    /// $query = New-RscQueryMisc -NosqlStorageLocations
+    /// $query = New-RscQueryMisc -Operation NosqlStorageLocations
     /// 
     /// # OPTIONAL
     /// $query.Var.sortBy = $someMosaicStorageLocationQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicStorageLocationQuerySortByField]) for enum values.
@@ -4910,7 +4942,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: OauthCodesForEdgeReg
     /// 
-    /// $query = New-RscQueryMisc -OauthCodesForEdgeReg
+    /// $query = New-RscQueryMisc -Operation OauthCodesForEdgeReg
     /// 
     /// # REQUIRED
     /// $query.Var.numberOfEdges = $someInt
@@ -4940,7 +4972,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: ObjectFiles
     /// 
-    /// $query = New-RscQueryMisc -ObjectFiles
+    /// $query = New-RscQueryMisc -Operation ObjectFiles
     /// 
     /// # OPTIONAL
     /// $query.Var.filter = @{
@@ -5042,7 +5074,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: ObjectTypeAccessSummary
     /// 
-    /// $query = New-RscQueryMisc -ObjectTypeAccessSummary
+    /// $query = New-RscQueryMisc -Operation ObjectTypeAccessSummary
     /// 
     /// # REQUIRED
     /// $query.Var.timelineDate = $someString
@@ -5095,7 +5127,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: ObjectsAlreadyAssignedToOrgs
     /// 
-    /// $query = New-RscQueryMisc -ObjectsAlreadyAssignedToOrgs
+    /// $query = New-RscQueryMisc -Operation ObjectsAlreadyAssignedToOrgs
     /// 
     /// # REQUIRED
     /// $query.Var.objectIdsForHierarchyTypes = @(
@@ -5138,7 +5170,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: Org
     /// 
-    /// $query = New-RscQueryMisc -Org
+    /// $query = New-RscQueryMisc -Operation Org
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -5166,7 +5198,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: Orgs
     /// 
-    /// $query = New-RscQueryMisc -Orgs
+    /// $query = New-RscQueryMisc -Operation Orgs
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -5210,7 +5242,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: OrgsByIds
     /// 
-    /// $query = New-RscQueryMisc -OrgsByIds
+    /// $query = New-RscQueryMisc -Operation OrgsByIds
     /// 
     /// # REQUIRED
     /// $query.Var.orgIds = @(
@@ -5240,7 +5272,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: OrgsForPrincipal
     /// 
-    /// $query = New-RscQueryMisc -OrgsForPrincipal
+    /// $query = New-RscQueryMisc -Operation OrgsForPrincipal
     /// 
     /// # OPTIONAL
     /// $query.Var.orgSearchFilter = $someString
@@ -5268,7 +5300,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PasskeyConfig
     /// 
-    /// $query = New-RscQueryMisc -PasskeyConfig
+    /// $query = New-RscQueryMisc -Operation PasskeyConfig
     /// 
     /// # No variables for this query.
     /// 
@@ -5295,7 +5327,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PasskeyInfo
     /// 
-    /// $query = New-RscQueryMisc -PasskeyInfo
+    /// $query = New-RscQueryMisc -Operation PasskeyInfo
     /// 
     /// # No variables for this query.
     /// 
@@ -5322,7 +5354,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PendingAction
     /// 
-    /// $query = New-RscQueryMisc -PendingAction
+    /// $query = New-RscQueryMisc -Operation PendingAction
     /// 
     /// # REQUIRED
     /// $query.Var.pendingActionId = $someString
@@ -5350,7 +5382,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PendingActions
     /// 
-    /// $query = New-RscQueryMisc -PendingActions
+    /// $query = New-RscQueryMisc -Operation PendingActions
     /// 
     /// # OPTIONAL
     /// $query.Var.clusterFilter = $someString
@@ -5400,7 +5432,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PhoenixRolloutProgress
     /// 
-    /// $query = New-RscQueryMisc -PhoenixRolloutProgress
+    /// $query = New-RscQueryMisc -Operation PhoenixRolloutProgress
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -5428,7 +5460,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PipelineHealthForTimeRange
     /// 
-    /// $query = New-RscQueryMisc -PipelineHealthForTimeRange
+    /// $query = New-RscQueryMisc -Operation PipelineHealthForTimeRange
     /// 
     /// # REQUIRED
     /// $query.Var.beginTime = $someDateTime
@@ -5458,7 +5490,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PolarisInventorySubHierarchyRoot
     /// 
-    /// $query = New-RscQueryMisc -PolarisInventorySubHierarchyRoot
+    /// $query = New-RscQueryMisc -Operation PolarisInventorySubHierarchyRoot
     /// 
     /// # REQUIRED
     /// $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InventorySubHierarchyRootEnum]) for enum values.
@@ -5486,7 +5518,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PolicyDetails
     /// 
-    /// $query = New-RscQueryMisc -PolicyDetails
+    /// $query = New-RscQueryMisc -Operation PolicyDetails
     /// 
     /// # OPTIONAL
     /// $query.Var.dataCategoryIds = @(
@@ -5522,7 +5554,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PolicyObj
     /// 
-    /// $query = New-RscQueryMisc -PolicyObj
+    /// $query = New-RscQueryMisc -Operation PolicyObj
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -5554,7 +5586,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PolicyObjs
     /// 
-    /// $query = New-RscQueryMisc -PolicyObjs
+    /// $query = New-RscQueryMisc -Operation PolicyObjs
     /// 
     /// # REQUIRED
     /// $query.Var.day = $someString
@@ -5714,6 +5746,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	$someViolationSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ViolationSeverity]) for enum values.
     /// )
     /// # OPTIONAL
+    /// $query.Var.exposureFilter = @(
+    /// 	$someOpenAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OpenAccessType]) for enum values.
+    /// )
+    /// # OPTIONAL
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
@@ -5745,7 +5781,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PrechecksStatus
     /// 
-    /// $query = New-RscQueryMisc -PrechecksStatus
+    /// $query = New-RscQueryMisc -Operation PrechecksStatus
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -5773,7 +5809,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PrechecksStatusWithNextJobInfo
     /// 
-    /// $query = New-RscQueryMisc -PrechecksStatusWithNextJobInfo
+    /// $query = New-RscQueryMisc -Operation PrechecksStatusWithNextJobInfo
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -5801,7 +5837,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: PrivateContainerRegistry
     /// 
-    /// $query = New-RscQueryMisc -PrivateContainerRegistry
+    /// $query = New-RscQueryMisc -Operation PrivateContainerRegistry
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -5832,7 +5868,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: ProductDocumentation
     /// 
-    /// $query = New-RscQueryMisc -ProductDocumentation
+    /// $query = New-RscQueryMisc -Operation ProductDocumentation
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someString
@@ -5860,7 +5896,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: ProtectedObjectsList
     /// 
-    /// $query = New-RscQueryMisc -ProtectedObjectsList
+    /// $query = New-RscQueryMisc -Operation ProtectedObjectsList
     /// 
     /// # OPTIONAL
     /// $query.Var.rootOptionalFid = $someString
@@ -5950,7 +5986,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: ProtectedVolumesCount
     /// 
-    /// $query = New-RscQueryMisc -ProtectedVolumesCount
+    /// $query = New-RscQueryMisc -Operation ProtectedVolumesCount
     /// 
     /// # OPTIONAL
     /// $query.Var.filter = @(
@@ -6018,7 +6054,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: QuarantinedDetailsForWorkload
     /// 
-    /// $query = New-RscQueryMisc -QuarantinedDetailsForWorkload
+    /// $query = New-RscQueryMisc -Operation QuarantinedDetailsForWorkload
     /// 
     /// # REQUIRED
     /// $query.Var.workloadId = $someString
@@ -6046,7 +6082,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: QueryDatastoreFreespaceThresholds
     /// 
-    /// $query = New-RscQueryMisc -QueryDatastoreFreespaceThresholds
+    /// $query = New-RscQueryMisc -Operation QueryDatastoreFreespaceThresholds
     /// 
     /// # REQUIRED
     /// $query.Var.queryDatastoreFreespaceThresholdsInput = @(
@@ -6081,7 +6117,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: RemovedNodeDetails
     /// 
-    /// $query = New-RscQueryMisc -RemovedNodeDetails
+    /// $query = New-RscQueryMisc -Operation RemovedNodeDetails
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -6116,7 +6152,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: RoleTemplates
     /// 
-    /// $query = New-RscQueryMisc -RoleTemplates
+    /// $query = New-RscQueryMisc -Operation RoleTemplates
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -6152,7 +6188,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: SearchFileByPrefix
     /// 
-    /// $query = New-RscQueryMisc -SearchFileByPrefix
+    /// $query = New-RscQueryMisc -Operation SearchFileByPrefix
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -6188,7 +6224,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: SnoozedDirectories
     /// 
-    /// $query = New-RscQueryMisc -SnoozedDirectories
+    /// $query = New-RscQueryMisc -Operation SnoozedDirectories
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -6232,7 +6268,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: SsoGroupAlreadyExists
     /// 
-    /// $query = New-RscQueryMisc -SsoGroupAlreadyExists
+    /// $query = New-RscQueryMisc -Operation SsoGroupAlreadyExists
     /// 
     /// # REQUIRED
     /// $query.Var.ssoGroupName = $someString
@@ -6262,7 +6298,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: SupportBundle
     /// 
-    /// $query = New-RscQueryMisc -SupportBundle
+    /// $query = New-RscQueryMisc -Operation SupportBundle
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -6295,7 +6331,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: SupportUserAccesses
     /// 
-    /// $query = New-RscQueryMisc -SupportUserAccesses
+    /// $query = New-RscQueryMisc -Operation SupportUserAccesses
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -6342,7 +6378,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TableFilters
     /// 
-    /// $query = New-RscQueryMisc -TableFilters
+    /// $query = New-RscQueryMisc -Operation TableFilters
     /// 
     /// # No variables for this query.
     /// 
@@ -6369,7 +6405,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: Targets
     /// 
-    /// $query = New-RscQueryMisc -Targets
+    /// $query = New-RscQueryMisc -Operation Targets
     /// 
     /// # OPTIONAL
     /// $query.Var.sortBy = $someArchivalLocationQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationQuerySortByField]) for enum values.
@@ -6414,7 +6450,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TaskDetailGroupByList
     /// 
-    /// $query = New-RscQueryMisc -TaskDetailGroupByList
+    /// $query = New-RscQueryMisc -Operation TaskDetailGroupByList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -6504,7 +6540,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TaskDetailList
     /// 
-    /// $query = New-RscQueryMisc -TaskDetailList
+    /// $query = New-RscQueryMisc -Operation TaskDetailList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -6596,7 +6632,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: Taskchain
     /// 
-    /// $query = New-RscQueryMisc -Taskchain
+    /// $query = New-RscQueryMisc -Operation Taskchain
     /// 
     /// # REQUIRED
     /// $query.Var.taskchainId = $someString
@@ -6624,7 +6660,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TeamChannelNameAvailable
     /// 
-    /// $query = New-RscQueryMisc -TeamChannelNameAvailable
+    /// $query = New-RscQueryMisc -Operation TeamChannelNameAvailable
     /// 
     /// # REQUIRED
     /// $query.Var.teamUUID = $someString
@@ -6654,7 +6690,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TotpConfigStatus
     /// 
-    /// $query = New-RscQueryMisc -TotpConfigStatus
+    /// $query = New-RscQueryMisc -Operation TotpConfigStatus
     /// 
     /// # REQUIRED
     /// $query.Var.userId = $someString
@@ -6682,7 +6718,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TprConfiguration
     /// 
-    /// $query = New-RscQueryMisc -TprConfiguration
+    /// $query = New-RscQueryMisc -Operation TprConfiguration
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -6710,7 +6746,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TprPublicConfiguration
     /// 
-    /// $query = New-RscQueryMisc -TprPublicConfiguration
+    /// $query = New-RscQueryMisc -Operation TprPublicConfiguration
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -6738,7 +6774,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TprRequestDetail
     /// 
-    /// $query = New-RscQueryMisc -TprRequestDetail
+    /// $query = New-RscQueryMisc -Operation TprRequestDetail
     /// 
     /// # REQUIRED
     /// $query.Var.tprRequestId = $someString
@@ -6766,7 +6802,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TprRequestSummaries
     /// 
-    /// $query = New-RscQueryMisc -TprRequestSummaries
+    /// $query = New-RscQueryMisc -Operation TprRequestSummaries
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -6817,7 +6853,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TprRoleEligibility
     /// 
-    /// $query = New-RscQueryMisc -TprRoleEligibility
+    /// $query = New-RscQueryMisc -Operation TprRoleEligibility
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -6847,7 +6883,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TprRulesMap
     /// 
-    /// $query = New-RscQueryMisc -TprRulesMap
+    /// $query = New-RscQueryMisc -Operation TprRulesMap
     /// 
     /// # No variables for this query.
     /// 
@@ -6874,7 +6910,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TprStatusForNodeRemoval
     /// 
-    /// $query = New-RscQueryMisc -TprStatusForNodeRemoval
+    /// $query = New-RscQueryMisc -Operation TprStatusForNodeRemoval
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -6907,7 +6943,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: TunnelStatus
     /// 
-    /// $query = New-RscQueryMisc -TunnelStatus
+    /// $query = New-RscQueryMisc -Operation TunnelStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -6940,7 +6976,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UniqueVcdCount
     /// 
-    /// $query = New-RscQueryMisc -UniqueVcdCount
+    /// $query = New-RscQueryMisc -Operation UniqueVcdCount
     /// 
     /// # OPTIONAL
     /// $query.Var.filter = @(
@@ -7008,7 +7044,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UnmanagedObjects
     /// 
-    /// $query = New-RscQueryMisc -UnmanagedObjects
+    /// $query = New-RscQueryMisc -Operation UnmanagedObjects
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -7087,7 +7123,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UnmanagedObjectsSupportedTypes
     /// 
-    /// $query = New-RscQueryMisc -UnmanagedObjectsSupportedTypes
+    /// $query = New-RscQueryMisc -Operation UnmanagedObjectsSupportedTypes
     /// 
     /// # OPTIONAL
     /// $query.Var.productType = $someProductTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProductTargetType]) for enum values.
@@ -7117,7 +7153,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UpgradeStatus
     /// 
-    /// $query = New-RscQueryMisc -UpgradeStatus
+    /// $query = New-RscQueryMisc -Operation UpgradeStatus
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -7145,7 +7181,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UserActivities
     /// 
-    /// $query = New-RscQueryMisc -UserActivities
+    /// $query = New-RscQueryMisc -Operation UserActivities
     /// 
     /// # OPTIONAL
     /// $query.Var.filter = @{
@@ -7254,7 +7290,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UserAlreadyExists
     /// 
-    /// $query = New-RscQueryMisc -UserAlreadyExists
+    /// $query = New-RscQueryMisc -Operation UserAlreadyExists
     /// 
     /// # REQUIRED
     /// $query.Var.emailOrUsername = $someString
@@ -7286,7 +7322,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UserAnalyzerAccess
     /// 
-    /// $query = New-RscQueryMisc -UserAnalyzerAccess
+    /// $query = New-RscQueryMisc -Operation UserAnalyzerAccess
     /// 
     /// # REQUIRED
     /// $query.Var.userId = $someString
@@ -7320,7 +7356,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UserAuditList
     /// 
-    /// $query = New-RscQueryMisc -UserAuditList
+    /// $query = New-RscQueryMisc -Operation UserAuditList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -7401,7 +7437,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UserDetail
     /// 
-    /// $query = New-RscQueryMisc -UserDetail
+    /// $query = New-RscQueryMisc -Operation UserDetail
     /// 
     /// # REQUIRED
     /// $query.Var.userId = $someString
@@ -7433,7 +7469,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UserFile
     /// 
-    /// $query = New-RscQueryMisc -UserFile
+    /// $query = New-RscQueryMisc -Operation UserFile
     /// 
     /// # REQUIRED
     /// $query.Var.externalId = $someString
@@ -7461,7 +7497,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UserFiles
     /// 
-    /// $query = New-RscQueryMisc -UserFiles
+    /// $query = New-RscQueryMisc -Operation UserFiles
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -7495,7 +7531,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UserGroups
     /// 
-    /// $query = New-RscQueryMisc -UserGroups
+    /// $query = New-RscQueryMisc -Operation UserGroups
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -7533,7 +7569,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UserNotifications
     /// 
-    /// $query = New-RscQueryMisc -UserNotifications
+    /// $query = New-RscQueryMisc -Operation UserNotifications
     /// 
     /// # No variables for this query.
     /// 
@@ -7560,7 +7596,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UserSessionManagementConfig
     /// 
-    /// $query = New-RscQueryMisc -UserSessionManagementConfig
+    /// $query = New-RscQueryMisc -Operation UserSessionManagementConfig
     /// 
     /// # No variables for this query.
     /// 
@@ -7587,7 +7623,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UserSettings
     /// 
-    /// $query = New-RscQueryMisc -UserSettings
+    /// $query = New-RscQueryMisc -Operation UserSettings
     /// 
     /// # No variables for this query.
     /// 
@@ -7614,7 +7650,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UsersInCurrentAndDescendantOrganization
     /// 
-    /// $query = New-RscQueryMisc -UsersInCurrentAndDescendantOrganization
+    /// $query = New-RscQueryMisc -Operation UsersInCurrentAndDescendantOrganization
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -7682,7 +7718,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: UsersOnAccountList
     /// 
-    /// $query = New-RscQueryMisc -UsersOnAccountList
+    /// $query = New-RscQueryMisc -Operation UsersOnAccountList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -7736,7 +7772,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: ValidateOrgName
     /// 
-    /// $query = New-RscQueryMisc -ValidateOrgName
+    /// $query = New-RscQueryMisc -Operation ValidateOrgName
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -7769,7 +7805,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: VcdVappVms
     /// 
-    /// $query = New-RscQueryMisc -VcdVappVms
+    /// $query = New-RscQueryMisc -Operation VcdVappVms
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -7845,7 +7881,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: VerifyTotp
     /// 
-    /// $query = New-RscQueryMisc -VerifyTotp
+    /// $query = New-RscQueryMisc -Operation VerifyTotp
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -7876,7 +7912,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: VirtualMachineFiles
     /// 
-    /// $query = New-RscQueryMisc -VirtualMachineFiles
+    /// $query = New-RscQueryMisc -Operation VirtualMachineFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -7907,7 +7943,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: VmRecoveryJobsInfo
     /// 
-    /// $query = New-RscQueryMisc -VmRecoveryJobsInfo
+    /// $query = New-RscQueryMisc -Operation VmRecoveryJobsInfo
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -7940,7 +7976,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: VolumeGroupMounts
     /// 
-    /// $query = New-RscQueryMisc -VolumeGroupMounts
+    /// $query = New-RscQueryMisc -Operation VolumeGroupMounts
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -7988,7 +8024,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: WorkloadAlertSetting
     /// 
-    /// $query = New-RscQueryMisc -WorkloadAlertSetting
+    /// $query = New-RscQueryMisc -Operation WorkloadAlertSetting
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -8018,7 +8054,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: WorkloadAnomalies
     /// 
-    /// $query = New-RscQueryMisc -WorkloadAnomalies
+    /// $query = New-RscQueryMisc -Operation WorkloadAnomalies
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -8100,7 +8136,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Misc
     /// # API Operation: WorkloadForeverId
     /// 
-    /// $query = New-RscQueryMisc -WorkloadForeverId
+    /// $query = New-RscQueryMisc -Operation WorkloadForeverId
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -8251,6 +8287,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MfaSetting",
                 "MicrosoftSites",
                 "MinimumCdmVersionForFeatureSet",
+                "MipLabels",
                 "NetworkThrottle",
                 "NfAnomalyResults",
                 "NfAnomalyResultsGrouped",
@@ -8694,6 +8731,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "MinimumCdmVersionForFeatureSet":
                         this.ProcessRecord_MinimumCdmVersionForFeatureSet();
+                        break;
+                    case "MipLabels":
+                        this.ProcessRecord_MipLabels();
                         break;
                     case "NetworkThrottle":
                         this.ProcessRecord_NetworkThrottle();
@@ -9990,6 +10030,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -MinimumCdmVersionForFeatureSet";
             // Create new graphql operation minimumCdmVersionForFeatureSet
             InitQueryMinimumCdmVersionForFeatureSet();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allMipLabels.
+        internal void ProcessRecord_MipLabels()
+        {
+            this._logger.name += " -MipLabels";
+            // Create new graphql operation allMipLabels
+            InitQueryAllMipLabels();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -14704,6 +14753,32 @@ $query.Var.featureListMinimumCdmVersion = @{
         }
 
         // Create new GraphQL Query:
+        // allMipLabels(onlyActiveFilter: Boolean, onlyAppliableFilter: Boolean, tenantIdFilter: String): [MicrosoftMipLabel!]!
+        internal void InitQueryAllMipLabels()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("onlyActiveFilter", "Boolean"),
+                Tuple.Create("onlyAppliableFilter", "Boolean"),
+                Tuple.Create("tenantIdFilter", "String"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllMipLabels",
+                "($onlyActiveFilter: Boolean,$onlyAppliableFilter: Boolean,$tenantIdFilter: String)",
+                "List<MicrosoftMipLabel>",
+                Query.AllMipLabels,
+                Query.AllMipLabelsFieldSpec,
+                @"# OPTIONAL
+$query.Var.onlyActiveFilter = $someBoolean
+# OPTIONAL
+$query.Var.onlyAppliableFilter = $someBoolean
+# OPTIONAL
+$query.Var.tenantIdFilter = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // networkThrottle(input: QueryNetworkThrottleInput!): NetworkThrottleSummaryListResponse!
         internal void InitQueryNetworkThrottle()
         {
@@ -15577,6 +15652,7 @@ $query.Var.includeWhitelistedResults = $someBoolean"
         //     encryptionFilter: [Encryption!]
         //     loggingFilter: [Logging!]
         //     violationSeverityFilter: [ViolationSeverity!]
+        //     exposureFilter: [OpenAccessType!]
         //     first: Int
         //     after: String
         //     last: Int
@@ -15620,6 +15696,7 @@ $query.Var.includeWhitelistedResults = $someBoolean"
                 Tuple.Create("encryptionFilter", "[Encryption!]"),
                 Tuple.Create("loggingFilter", "[Logging!]"),
                 Tuple.Create("violationSeverityFilter", "[ViolationSeverity!]"),
+                Tuple.Create("exposureFilter", "[OpenAccessType!]"),
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
@@ -15629,7 +15706,7 @@ $query.Var.includeWhitelistedResults = $someBoolean"
                 argDefs,
                 "query",
                 "QueryPolicyObjs",
-                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$insightsMetadataId: String,$includeInsightsMarker: Boolean,$userAccessObjectsFilter: Boolean!,$objectIdsFilter: [String!],$platformFilter: [Platform!],$platformCategoryFilter: [PlatformCategory!],$cloudAccountIdsFilter: [String!],$resourceGroupsFilter: [String!],$regionsFilter: [String!],$dataTypeIdsFilter: [String!],$firstSeenTimeRange: UserTimeRangeInput,$lastAccessTimeRange: UserTimeRangeInput,$creationTimeRange: UserTimeRangeInput,$lastScanTimeRange: UserTimeRangeInput,$objectTagsFilter: ObjectTagsFilterInput,$mipLabelsFilter: [MipLabelsFilterInput!],$backupStatusFilter: [BackupStatus!],$slaIdsFilter: [String!],$networkAccessFilter: [NetworkAccess!],$encryptionFilter: [Encryption!],$loggingFilter: [Logging!],$violationSeverityFilter: [ViolationSeverity!],$first: Int,$after: String,$last: Int,$before: String)",
+                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$insightsMetadataId: String,$includeInsightsMarker: Boolean,$userAccessObjectsFilter: Boolean!,$objectIdsFilter: [String!],$platformFilter: [Platform!],$platformCategoryFilter: [PlatformCategory!],$cloudAccountIdsFilter: [String!],$resourceGroupsFilter: [String!],$regionsFilter: [String!],$dataTypeIdsFilter: [String!],$firstSeenTimeRange: UserTimeRangeInput,$lastAccessTimeRange: UserTimeRangeInput,$creationTimeRange: UserTimeRangeInput,$lastScanTimeRange: UserTimeRangeInput,$objectTagsFilter: ObjectTagsFilterInput,$mipLabelsFilter: [MipLabelsFilterInput!],$backupStatusFilter: [BackupStatus!],$slaIdsFilter: [String!],$networkAccessFilter: [NetworkAccess!],$encryptionFilter: [Encryption!],$loggingFilter: [Logging!],$violationSeverityFilter: [ViolationSeverity!],$exposureFilter: [OpenAccessType!],$first: Int,$after: String,$last: Int,$before: String)",
                 "PolicyObjConnection",
                 Query.PolicyObjs,
                 Query.PolicyObjsFieldSpec,
@@ -15789,6 +15866,10 @@ $query.Var.loggingFilter = @(
 # OPTIONAL
 $query.Var.violationSeverityFilter = @(
 	$someViolationSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ViolationSeverity]) for enum values.
+)
+# OPTIONAL
+$query.Var.exposureFilter = @(
+	$someOpenAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OpenAccessType]) for enum values.
 )
 # OPTIONAL
 $query.Var.first = $someInt

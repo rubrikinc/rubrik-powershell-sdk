@@ -39,6 +39,8 @@ AWS native EBS volume.
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount
   - AWS Native account associated with the EBS Volumes.
+- awsAccount: AwsNativeAccount
+  - AWS Native account associated with the EBS Volumes.
 - attachedEc2Instances: list of AwsNativeEc2Instances
   - EC2 Instances to which this volume is attached.
 - rscNativeObjectPendingSla: CompactSlaDomain

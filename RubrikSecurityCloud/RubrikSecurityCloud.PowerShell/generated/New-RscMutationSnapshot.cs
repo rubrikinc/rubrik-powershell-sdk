@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: BatchQuarantine
     /// 
-    /// $query = New-RscMutationSnapshot -BatchQuarantine
+    /// $query = New-RscMutationSnapshot -Operation BatchQuarantine
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -130,7 +130,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: BatchReleaseFromQuarantine
     /// 
-    /// $query = New-RscMutationSnapshot -BatchReleaseFromQuarantine
+    /// $query = New-RscMutationSnapshot -Operation BatchReleaseFromQuarantine
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -173,7 +173,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: BulkTierExistings
     /// 
-    /// $query = New-RscMutationSnapshot -BulkTierExistings
+    /// $query = New-RscMutationSnapshot -Operation BulkTierExistings
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: CreateDomainController
     /// 
-    /// $query = New-RscMutationSnapshot -CreateDomainController
+    /// $query = New-RscMutationSnapshot -Operation CreateDomainController
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -251,7 +251,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: CreateDownloadForVolumeGroup
     /// 
-    /// $query = New-RscMutationSnapshot -CreateDownloadForVolumeGroup
+    /// $query = New-RscMutationSnapshot -Operation CreateDownloadForVolumeGroup
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -282,7 +282,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: CreateFileset
     /// 
-    /// $query = New-RscMutationSnapshot -CreateFileset
+    /// $query = New-RscMutationSnapshot -Operation CreateFileset
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -320,7 +320,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: DeleteCloudWorkloadSnapshot
     /// 
-    /// $query = New-RscMutationSnapshot -DeleteCloudWorkloadSnapshot
+    /// $query = New-RscMutationSnapshot -Operation DeleteCloudWorkloadSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -351,7 +351,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: DeleteFilesetSnapshots
     /// 
-    /// $query = New-RscMutationSnapshot -DeleteFilesetSnapshots
+    /// $query = New-RscMutationSnapshot -Operation DeleteFilesetSnapshots
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -384,7 +384,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: DeleteUnmanageds
     /// 
-    /// $query = New-RscMutationSnapshot -DeleteUnmanageds
+    /// $query = New-RscMutationSnapshot -Operation DeleteUnmanageds
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -417,7 +417,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: DeletesOfUnmanagedObjects
     /// 
-    /// $query = New-RscMutationSnapshot -DeletesOfUnmanagedObjects
+    /// $query = New-RscMutationSnapshot -Operation DeletesOfUnmanagedObjects
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -450,7 +450,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: FilesetDownloadFiles
     /// 
-    /// $query = New-RscMutationSnapshot -FilesetDownloadFiles
+    /// $query = New-RscMutationSnapshot -Operation FilesetDownloadFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -505,7 +505,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: FilesetExportFiles
     /// 
-    /// $query = New-RscMutationSnapshot -FilesetExportFiles
+    /// $query = New-RscMutationSnapshot -Operation FilesetExportFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -573,7 +573,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: RestoreDomainController
     /// 
-    /// $query = New-RscMutationSnapshot -RestoreDomainController
+    /// $query = New-RscMutationSnapshot -Operation RestoreDomainController
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -620,7 +620,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: RestoreVolumeGroupFiles
     /// 
-    /// $query = New-RscMutationSnapshot -RestoreVolumeGroupFiles
+    /// $query = New-RscMutationSnapshot -Operation RestoreVolumeGroupFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -673,7 +673,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: StartEc2InstanceExportJob
     /// 
-    /// $query = New-RscMutationSnapshot -StartEc2InstanceExportJob
+    /// $query = New-RscMutationSnapshot -Operation StartEc2InstanceExportJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -732,7 +732,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: StartRecoverS3Job
     /// 
-    /// $query = New-RscMutationSnapshot -StartRecoverS3Job
+    /// $query = New-RscMutationSnapshot -Operation StartRecoverS3Job
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -777,7 +777,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: TakeOnDemand
     /// 
-    /// $query = New-RscMutationSnapshot -TakeOnDemand
+    /// $query = New-RscMutationSnapshot -Operation TakeOnDemand
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -812,7 +812,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: UploadDatabaseToBlobstore
     /// 
-    /// $query = New-RscMutationSnapshot -UploadDatabaseToBlobstore
+    /// $query = New-RscMutationSnapshot -Operation UploadDatabaseToBlobstore
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

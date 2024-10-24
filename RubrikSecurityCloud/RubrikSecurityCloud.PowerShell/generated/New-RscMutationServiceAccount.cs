@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ServiceAccount
     /// # API Operation: Create
     /// 
-    /// $query = New-RscMutationServiceAccount -Create
+    /// $query = New-RscMutationServiceAccount -Operation Create
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -124,7 +124,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ServiceAccount
     /// # API Operation: Delete
     /// 
-    /// $query = New-RscMutationServiceAccount -Delete
+    /// $query = New-RscMutationServiceAccount -Operation Delete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -157,7 +157,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ServiceAccount
     /// # API Operation: Rotate
     /// 
-    /// $query = New-RscMutationServiceAccount -Rotate
+    /// $query = New-RscMutationServiceAccount -Operation Rotate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -188,7 +188,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ServiceAccount
     /// # API Operation: Update
     /// 
-    /// $query = New-RscMutationServiceAccount -Update
+    /// $query = New-RscMutationServiceAccount -Operation Update
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

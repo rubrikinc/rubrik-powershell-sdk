@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: BackupMailbox
     /// 
-    /// $query = New-RscMutationM365 -BackupMailbox
+    /// $query = New-RscMutationM365 -Operation BackupMailbox
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: BackupOnedrive
     /// 
-    /// $query = New-RscMutationM365 -BackupOnedrive
+    /// $query = New-RscMutationM365 -Operation BackupOnedrive
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: BackupSharepointDrive
     /// 
-    /// $query = New-RscMutationM365 -BackupSharepointDrive
+    /// $query = New-RscMutationM365 -Operation BackupSharepointDrive
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -186,7 +186,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: BackupTeam
     /// 
-    /// $query = New-RscMutationM365 -BackupTeam
+    /// $query = New-RscMutationM365 -Operation BackupTeam
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

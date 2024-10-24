@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: CloudDirectNasSystem
     /// 
-    /// $query = New-RscQueryNas -CloudDirectNasSystem
+    /// $query = New-RscQueryNas -Operation CloudDirectNasSystem
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: CloudDirectNasSystems
     /// 
-    /// $query = New-RscQueryNas -CloudDirectNasSystems
+    /// $query = New-RscQueryNas -Operation CloudDirectNasSystems
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: Fileset
     /// 
-    /// $query = New-RscQueryNas -Fileset
+    /// $query = New-RscQueryNas -Operation Fileset
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -219,7 +219,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: Namespace
     /// 
-    /// $query = New-RscQueryNas -Namespace
+    /// $query = New-RscQueryNas -Operation Namespace
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -247,7 +247,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: Namespaces
     /// 
-    /// $query = New-RscQueryNas -Namespaces
+    /// $query = New-RscQueryNas -Operation Namespaces
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -323,7 +323,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: Share
     /// 
-    /// $query = New-RscQueryNas -Share
+    /// $query = New-RscQueryNas -Operation Share
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -351,7 +351,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: System
     /// 
-    /// $query = New-RscQueryNas -System
+    /// $query = New-RscQueryNas -Operation System
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -379,7 +379,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: Systems
     /// 
-    /// $query = New-RscQueryNas -Systems
+    /// $query = New-RscQueryNas -Operation Systems
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -455,7 +455,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: TopLevelDescendants
     /// 
-    /// $query = New-RscQueryNas -TopLevelDescendants
+    /// $query = New-RscQueryNas -Operation TopLevelDescendants
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -535,7 +535,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: Volume
     /// 
-    /// $query = New-RscQueryNas -Volume
+    /// $query = New-RscQueryNas -Operation Volume
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString

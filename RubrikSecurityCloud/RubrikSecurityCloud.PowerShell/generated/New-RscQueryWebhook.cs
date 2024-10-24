@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Webhook
     /// # API Operation: ById
     /// 
-    /// $query = New-RscQueryWebhook -ById
+    /// $query = New-RscQueryWebhook -Operation ById
     /// 
     /// # REQUIRED
     /// $query.Var.input = $someInt
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Webhook
     /// # API Operation: Webhook
     /// 
-    /// $query = New-RscQueryWebhook -Webhook
+    /// $query = New-RscQueryWebhook -Operation Webhook
     /// 
     /// # OPTIONAL
     /// $query.Var.name = $someString

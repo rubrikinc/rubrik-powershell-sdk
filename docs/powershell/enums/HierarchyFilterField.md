@@ -315,3 +315,10 @@
  +mo:filter:db:index:unique=false
 - INCLUDE_INDEPENDENT_REPLICA - Filter independent replica objects on which you can assign
  an SLA Domain independently, without depending on source objects.
+- MSSQL_IS_FAILOVER_CLUSTER_UNPROTECTABLE - Filter Microsoft SQL Server failover clusters that are unprotectable.
+ +mo:filter:db:table=cdm_windows_cluster
+ +mo:filter:db:column=fid
+ +mo:filter:db:index:key=fid
+ +mo:filter:db:index:seq=1
+ +mo:filter:db:index:type=BTREE
+ +mo:filter:db:index:unique=true

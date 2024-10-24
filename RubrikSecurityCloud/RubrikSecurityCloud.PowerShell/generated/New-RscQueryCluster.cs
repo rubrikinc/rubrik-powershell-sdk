@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: CloudClusterRecoveryValidation
     /// 
-    /// $query = New-RscQueryCluster -CloudClusterRecoveryValidation
+    /// $query = New-RscQueryCluster -Operation CloudClusterRecoveryValidation
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: Cluster
     /// 
-    /// $query = New-RscQueryCluster -Cluster
+    /// $query = New-RscQueryCluster -Operation Cluster
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: ClusterList
     /// 
-    /// $query = New-RscQueryCluster -ClusterList
+    /// $query = New-RscQueryCluster -Operation ClusterList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -253,7 +253,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: ComputeClusterStatus
     /// 
-    /// $query = New-RscQueryCluster -ComputeClusterStatus
+    /// $query = New-RscQueryCluster -Operation ComputeClusterStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -284,7 +284,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: Connected
     /// 
-    /// $query = New-RscQueryCluster -Connected
+    /// $query = New-RscQueryCluster -Operation Connected
     /// 
     /// # OPTIONAL
     /// $query.Var.clusterFilterArg = $someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
@@ -312,7 +312,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: DefaultGateway
     /// 
-    /// $query = New-RscQueryCluster -DefaultGateway
+    /// $query = New-RscQueryCluster -Operation DefaultGateway
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -343,7 +343,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: Dns
     /// 
-    /// $query = New-RscQueryCluster -Dns
+    /// $query = New-RscQueryCluster -Operation Dns
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -371,7 +371,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: FloatingIps
     /// 
-    /// $query = New-RscQueryCluster -FloatingIps
+    /// $query = New-RscQueryCluster -Operation FloatingIps
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -402,7 +402,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: GetCdmReleaseDetailsForClusterFromSupportPortal
     /// 
-    /// $query = New-RscQueryCluster -GetCdmReleaseDetailsForClusterFromSupportPortal
+    /// $query = New-RscQueryCluster -Operation GetCdmReleaseDetailsForClusterFromSupportPortal
     /// 
     /// # REQUIRED
     /// $query.Var.listClusterUuid = @(
@@ -444,7 +444,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: GetGroupCountByCdmClusterStatus
     /// 
-    /// $query = New-RscQueryCluster -GetGroupCountByCdmClusterStatus
+    /// $query = New-RscQueryCluster -Operation GetGroupCountByCdmClusterStatus
     /// 
     /// # No variables for this query.
     /// 
@@ -471,7 +471,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: GroupByList
     /// 
-    /// $query = New-RscQueryCluster -GroupByList
+    /// $query = New-RscQueryCluster -Operation GroupByList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -581,7 +581,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: Ipmi
     /// 
-    /// $query = New-RscQueryCluster -Ipmi
+    /// $query = New-RscQueryCluster -Operation Ipmi
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -612,7 +612,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: Ipv6Mode
     /// 
-    /// $query = New-RscQueryCluster -Ipv6Mode
+    /// $query = New-RscQueryCluster -Operation Ipv6Mode
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -643,7 +643,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: IsTotpAckNecessary
     /// 
-    /// $query = New-RscQueryCluster -IsTotpAckNecessary
+    /// $query = New-RscQueryCluster -Operation IsTotpAckNecessary
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -671,7 +671,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: LicensesForClusterProductSummary
     /// 
-    /// $query = New-RscQueryCluster -LicensesForClusterProductSummary
+    /// $query = New-RscQueryCluster -Operation LicensesForClusterProductSummary
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -702,7 +702,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: List
     /// 
-    /// $query = New-RscQueryCluster -List
+    /// $query = New-RscQueryCluster -Operation List
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -812,7 +812,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: Missing
     /// 
-    /// $query = New-RscQueryCluster -Missing
+    /// $query = New-RscQueryCluster -Operation Missing
     /// 
     /// # OPTIONAL
     /// $query.Var.connectionStatus = $someMissingClusterConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterConnectionStatus]) for enum values.
@@ -842,7 +842,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: NetworkInterfaces
     /// 
-    /// $query = New-RscQueryCluster -NetworkInterfaces
+    /// $query = New-RscQueryCluster -Operation NetworkInterfaces
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -875,7 +875,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: Nodes
     /// 
-    /// $query = New-RscQueryCluster -Nodes
+    /// $query = New-RscQueryCluster -Operation Nodes
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -906,7 +906,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: NtpServers
     /// 
-    /// $query = New-RscQueryCluster -NtpServers
+    /// $query = New-RscQueryCluster -Operation NtpServers
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -937,7 +937,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: OperationJobProgress
     /// 
-    /// $query = New-RscQueryCluster -OperationJobProgress
+    /// $query = New-RscQueryCluster -Operation OperationJobProgress
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -970,7 +970,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: Proxy
     /// 
-    /// $query = New-RscQueryCluster -Proxy
+    /// $query = New-RscQueryCluster -Operation Proxy
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -998,7 +998,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: RadarClusterList
     /// 
-    /// $query = New-RscQueryCluster -RadarClusterList
+    /// $query = New-RscQueryCluster -Operation RadarClusterList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1108,7 +1108,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: RegistrationProductInfo
     /// 
-    /// $query = New-RscQueryCluster -RegistrationProductInfo
+    /// $query = New-RscQueryCluster -Operation RegistrationProductInfo
     /// 
     /// # No variables for this query.
     /// 
@@ -1135,7 +1135,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: ReplicationTargets
     /// 
-    /// $query = New-RscQueryCluster -ReplicationTargets
+    /// $query = New-RscQueryCluster -Operation ReplicationTargets
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -1163,7 +1163,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: Routes
     /// 
-    /// $query = New-RscQueryCluster -Routes
+    /// $query = New-RscQueryCluster -Operation Routes
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -1191,7 +1191,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: TotpAckStatus
     /// 
-    /// $query = New-RscQueryCluster -TotpAckStatus
+    /// $query = New-RscQueryCluster -Operation TotpAckStatus
     /// 
     /// # REQUIRED
     /// $query.Var.listClusterUuid = @(
@@ -1221,7 +1221,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: TypeList
     /// 
-    /// $query = New-RscQueryCluster -TypeList
+    /// $query = New-RscQueryCluster -Operation TypeList
     /// 
     /// # No variables for this query.
     /// 
@@ -1248,7 +1248,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: ValidateClusterLicenseCapacity
     /// 
-    /// $query = New-RscQueryCluster -ValidateClusterLicenseCapacity
+    /// $query = New-RscQueryCluster -Operation ValidateClusterLicenseCapacity
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1302,7 +1302,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: Vlans
     /// 
-    /// $query = New-RscQueryCluster -Vlans
+    /// $query = New-RscQueryCluster -Operation Vlans
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1335,7 +1335,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: WebCertsAndIpmis
     /// 
-    /// $query = New-RscQueryCluster -WebCertsAndIpmis
+    /// $query = New-RscQueryCluster -Operation WebCertsAndIpmis
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1368,7 +1368,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: Windows
     /// 
-    /// $query = New-RscQueryCluster -Windows
+    /// $query = New-RscQueryCluster -Operation Windows
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -1396,7 +1396,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: WithUpgradesInfo
     /// 
-    /// $query = New-RscQueryCluster -WithUpgradesInfo
+    /// $query = New-RscQueryCluster -Operation WithUpgradesInfo
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

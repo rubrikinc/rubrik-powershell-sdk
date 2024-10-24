@@ -12,7 +12,7 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | [Account (9,14)](#account-domain) | [Cluster (33,20)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,20)](#oracle-domain) | [Snapshot (21,18)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (10,4)](#microsoft-365-domain) | [Policy (9,15)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (5,3)](#activity-series-domain) | [Db2 (9,13)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (8,16)](#archival-domain) | [Report Download (3,20)](#report-download-domain) | [Miscellaneous (197,144)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (8,16)](#archival-domain) | [Report Download (3,20)](#report-download-domain) | [Miscellaneous (198,144)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (31,36)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (4,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (19,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (52,43)](#azure-domain) | [Fileset (6,7)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (5,3)](#threat-domain) |
@@ -20,7 +20,7 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (10,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
 | [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (25,11)](#vmware-vsphere-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (6,26)](#vmware-vsphere-vm-domain) |
-| [Cloud Account (6,2)](#cloud-account-domain) | [Integration (2,6)](#integration-domain) | [Nutanix (20,27)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (2,6)](#webhook-domain) |
+| [Cloud Account (6,3)](#cloud-account-domain) | [Integration (2,6)](#integration-domain) | [Nutanix (20,27)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (2,6)](#webhook-domain) |
 | [Cloud Native (19,14)](#cloud-native-domain) | [Kubernetes (12,18)](#kubernetes-domain) | [Office 365 (39,33)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
 
 ## Account domain
@@ -605,6 +605,7 @@ Cmdlets: `New-RscQueryCloudAccount` and `New-RscMutationCloudAccount`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| ListIamPairsByAndLocation | List the IAM pairs of the provided cloud account and any missing permission groups, if applicable, for an optional archival location. | `New-RscMutationCloudAccount -Operation ListIamPairsByAndLocation`<BR> | [listIamPairsByCloudAccountAndLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MapExocomputeAccount | Map cloud accounts to an Exocompute account. | `New-RscMutationCloudAccount -Operation MapExocomputeAccount`<BR> | [mapCloudAccountExocomputeAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UnmapExocomputeAccount | Unmap cloud accounts from the mapped Exocompute account. | `New-RscMutationCloudAccount -Operation UnmapExocomputeAccount`<BR> | [unmapCloudAccountExocomputeAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
@@ -1695,6 +1696,7 @@ v5.2+: Searches for nodes that can bootstrap into the specified Rubrik cluster. 
 | MfaSetting | Get multifactor authentication (MFA) settings for an account. | `New-RscQueryMisc -Operation MfaSetting`<BR> | [mfaSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MicrosoftSites | List of sites in the Microsoft 365 organization. | `New-RscQueryMisc -Operation MicrosoftSites`<BR> | [microsoftSites](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MinimumCdmVersionForFeatureSet | Get minimum cluster version to support feature set. | `New-RscQueryMisc -Operation MinimumCdmVersionForFeatureSet`<BR> | [minimumCdmVersionForFeatureSet](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MipLabels | Returns all the MIP Labels for an account. | `New-RscQueryMisc -Operation MipLabels`<BR> | [allMipLabels](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NetworkThrottle | Network Throttle Information. | `New-RscQueryMisc -Operation NetworkThrottle`<BR> | [networkThrottle](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NfAnomalyResults | Results for Non-Filesystem Anomaly Investigations. | `New-RscQueryMisc -Operation NfAnomalyResults`<BR> | [nfAnomalyResults](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NfAnomalyResultsGrouped | Results for Non-Filesystem Anomaly Investigations grouped by an argument. | `New-RscQueryMisc -Operation NfAnomalyResultsGrouped`<BR> | [nfAnomalyResultsGrouped](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1828,7 +1830,7 @@ Create an on-demand snapshot for the given Volume Group ID. | `New-RscMutationMi
 | DeleteEventDigest | Delete event digests for specific recipients. | `New-RscMutationMisc -Operation DeleteEventDigest`<BR> | [deleteEventDigest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteGuestCredentialById | Delete guest OS credentials. | `New-RscMutationMisc -Operation DeleteGuestCredentialById`<BR> | [deleteGuestCredentialById](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteIntelFeed | Delete intel feed. | `New-RscMutationMisc -Operation DeleteIntelFeed`<BR> | [deleteIntelFeed](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| DeleteVolumeGroupMount | Requst to delete a mount  
+| DeleteVolumeGroupMount | Request to delete a mount  
   
 Supported in v5.0+  
 Create a request to delete a mount. If there are volumes mounted on a target host, this will use best-effort to unmount those volumes from the host, and proceed to unmount storage on Rubrik. | `New-RscMutationMisc -Operation DeleteVolumeGroupMount`<BR> | [deleteVolumeGroupMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |

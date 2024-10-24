@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("stdPath")]
         public System.String? StdPath { get; set; }
 
+        //      C# -> DataGovFileMode? Mode
+        // GraphQL -> mode: DataGovFileMode (enum)
+        [JsonProperty("mode")]
+        public DataGovFileMode? Mode { get; set; }
+
 
         #endregion
 

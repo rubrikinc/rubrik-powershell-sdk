@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean (scalar)
+        [JsonProperty("isArchived")]
+        public System.Boolean? IsArchived { get; set; }
+
         //      C# -> System.String? FolderId
         // GraphQL -> folderId: String! (scalar)
         [Required]

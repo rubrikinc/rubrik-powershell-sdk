@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Smb
     /// # API Operation: Configuration
     /// 
-    /// $query = New-RscQuerySmb -Configuration
+    /// $query = New-RscQuerySmb -Operation Configuration
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -118,7 +118,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Smb
     /// # API Operation: Domains
     /// 
-    /// $query = New-RscQuerySmb -Domains
+    /// $query = New-RscQuerySmb -Operation Domains
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

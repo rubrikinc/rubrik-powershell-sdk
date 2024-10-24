@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: AssignableGlobalCertificates
     /// 
-    /// $query = New-RscQueryCertificate -AssignableGlobalCertificates
+    /// $query = New-RscQueryCertificate -Operation AssignableGlobalCertificates
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: Certificates
     /// 
-    /// $query = New-RscQueryCertificate -Certificates
+    /// $query = New-RscQueryCertificate -Operation Certificates
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -184,7 +184,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: CertificatesWithKey
     /// 
-    /// $query = New-RscQueryCertificate -CertificatesWithKey
+    /// $query = New-RscQueryCertificate -Operation CertificatesWithKey
     /// 
     /// # No variables for this query.
     /// 
@@ -211,7 +211,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: ClusterCertificates
     /// 
-    /// $query = New-RscQueryCertificate -ClusterCertificates
+    /// $query = New-RscQueryCertificate -Operation ClusterCertificates
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -258,7 +258,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: ClusterCsr
     /// 
-    /// $query = New-RscQueryCertificate -ClusterCsr
+    /// $query = New-RscQueryCertificate -Operation ClusterCsr
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -289,7 +289,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: ClusterWebSigned
     /// 
-    /// $query = New-RscQueryCertificate -ClusterWebSigned
+    /// $query = New-RscQueryCertificate -Operation ClusterWebSigned
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -320,7 +320,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: GlobalCertificate
     /// 
-    /// $query = New-RscQueryCertificate -GlobalCertificate
+    /// $query = New-RscQueryCertificate -Operation GlobalCertificate
     /// 
     /// # REQUIRED
     /// $query.Var.certificateId = $someString
@@ -348,7 +348,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: GlobalCertificates
     /// 
-    /// $query = New-RscQueryCertificate -GlobalCertificates
+    /// $query = New-RscQueryCertificate -Operation GlobalCertificates
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -405,7 +405,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: Info
     /// 
-    /// $query = New-RscQueryCertificate -Info
+    /// $query = New-RscQueryCertificate -Operation Info
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -436,7 +436,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: SigningRequest
     /// 
-    /// $query = New-RscQueryCertificate -SigningRequest
+    /// $query = New-RscQueryCertificate -Operation SigningRequest
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -467,7 +467,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: SigningRequests
     /// 
-    /// $query = New-RscQueryCertificate -SigningRequests
+    /// $query = New-RscQueryCertificate -Operation SigningRequests
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

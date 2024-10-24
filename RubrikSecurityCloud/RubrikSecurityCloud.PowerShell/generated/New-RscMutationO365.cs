@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: AddOrg
     /// 
-    /// $query = New-RscMutationO365 -AddOrg
+    /// $query = New-RscMutationO365 -Operation AddOrg
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: BackupMailbox
     /// 
-    /// $query = New-RscMutationO365 -BackupMailbox
+    /// $query = New-RscMutationO365 -Operation BackupMailbox
     /// 
     /// # REQUIRED
     /// $query.Var.mailboxIds = @(
@@ -156,7 +156,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: BackupOnedrive
     /// 
-    /// $query = New-RscMutationO365 -BackupOnedrive
+    /// $query = New-RscMutationO365 -Operation BackupOnedrive
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: BackupSharePointSite
     /// 
-    /// $query = New-RscMutationO365 -BackupSharePointSite
+    /// $query = New-RscMutationO365 -Operation BackupSharePointSite
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -220,7 +220,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: BackupSharepointDrive
     /// 
-    /// $query = New-RscMutationO365 -BackupSharepointDrive
+    /// $query = New-RscMutationO365 -Operation BackupSharepointDrive
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -253,7 +253,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: BackupSharepointList
     /// 
-    /// $query = New-RscMutationO365 -BackupSharepointList
+    /// $query = New-RscMutationO365 -Operation BackupSharepointList
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -284,7 +284,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: BackupTeam
     /// 
-    /// $query = New-RscMutationO365 -BackupTeam
+    /// $query = New-RscMutationO365 -Operation BackupTeam
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -317,7 +317,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: CreateAppComplete
     /// 
-    /// $query = New-RscMutationO365 -CreateAppComplete
+    /// $query = New-RscMutationO365 -Operation CreateAppComplete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -352,7 +352,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: CreateAppKickoff
     /// 
-    /// $query = New-RscMutationO365 -CreateAppKickoff
+    /// $query = New-RscMutationO365 -Operation CreateAppKickoff
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -385,7 +385,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: DeleteAzureApp
     /// 
-    /// $query = New-RscMutationO365 -DeleteAzureApp
+    /// $query = New-RscMutationO365 -Operation DeleteAzureApp
     /// 
     /// # REQUIRED
     /// $query.Var.o365AppClientId = $someString
@@ -415,7 +415,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: DeleteOrg
     /// 
-    /// $query = New-RscMutationO365 -DeleteOrg
+    /// $query = New-RscMutationO365 -Operation DeleteOrg
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -443,7 +443,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: DeleteServiceAccount
     /// 
-    /// $query = New-RscMutationO365 -DeleteServiceAccount
+    /// $query = New-RscMutationO365 -Operation DeleteServiceAccount
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -471,7 +471,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: EnableSharePoint
     /// 
-    /// $query = New-RscMutationO365 -EnableSharePoint
+    /// $query = New-RscMutationO365 -Operation EnableSharePoint
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -502,7 +502,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: EnableTeams
     /// 
-    /// $query = New-RscMutationO365 -EnableTeams
+    /// $query = New-RscMutationO365 -Operation EnableTeams
     /// 
     /// # REQUIRED
     /// $query.Var.exocomputeClusterId = $someString
@@ -530,7 +530,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: ExportMailbox
     /// 
-    /// $query = New-RscMutationO365 -ExportMailbox
+    /// $query = New-RscMutationO365 -Operation ExportMailbox
     /// 
     /// # REQUIRED
     /// $query.Var.exportConfig = @{
@@ -591,7 +591,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: ExportMailboxV2
     /// 
-    /// $query = New-RscMutationO365 -ExportMailboxV2
+    /// $query = New-RscMutationO365 -Operation ExportMailboxV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -652,7 +652,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: InsertCustomerApp
     /// 
-    /// $query = New-RscMutationO365 -InsertCustomerApp
+    /// $query = New-RscMutationO365 -Operation InsertCustomerApp
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -695,7 +695,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: OauthConsentComplete
     /// 
-    /// $query = New-RscMutationO365 -OauthConsentComplete
+    /// $query = New-RscMutationO365 -Operation OauthConsentComplete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -736,7 +736,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: OauthConsentKickoff
     /// 
-    /// $query = New-RscMutationO365 -OauthConsentKickoff
+    /// $query = New-RscMutationO365 -Operation OauthConsentKickoff
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -771,7 +771,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: PdlGroups
     /// 
-    /// $query = New-RscMutationO365 -PdlGroups
+    /// $query = New-RscMutationO365 -Operation PdlGroups
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -811,7 +811,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: RefreshOrg
     /// 
-    /// $query = New-RscMutationO365 -RefreshOrg
+    /// $query = New-RscMutationO365 -Operation RefreshOrg
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -839,7 +839,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: RestoreMailbox
     /// 
-    /// $query = New-RscMutationO365 -RestoreMailbox
+    /// $query = New-RscMutationO365 -Operation RestoreMailbox
     /// 
     /// # REQUIRED
     /// $query.Var.restoreConfig = @{
@@ -898,7 +898,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: RestoreMailboxV2
     /// 
-    /// $query = New-RscMutationO365 -RestoreMailboxV2
+    /// $query = New-RscMutationO365 -Operation RestoreMailboxV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -957,7 +957,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: RestoreSnappable
     /// 
-    /// $query = New-RscMutationO365 -RestoreSnappable
+    /// $query = New-RscMutationO365 -Operation RestoreSnappable
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1582,7 +1582,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: RestoreTeamsConversations
     /// 
-    /// $query = New-RscMutationO365 -RestoreTeamsConversations
+    /// $query = New-RscMutationO365 -Operation RestoreTeamsConversations
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1620,6 +1620,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		channelId = $someString
     /// 		# REQUIRED
     /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		isArchived = $someBoolean
     /// 		# REQUIRED
     /// 		folderId = $someString
     /// 		# REQUIRED
@@ -1636,6 +1638,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			channelId = $someString
     /// 			# REQUIRED
     /// 			name = $someString
+    /// 			# OPTIONAL
+    /// 			isArchived = $someBoolean
     /// 			# REQUIRED
     /// 			folderId = $someString
     /// 			# REQUIRED
@@ -1720,7 +1724,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: RestoreTeamsFiles
     /// 
-    /// $query = New-RscMutationO365 -RestoreTeamsFiles
+    /// $query = New-RscMutationO365 -Operation RestoreTeamsFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1844,7 +1848,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SaaSSetupKickoff
     /// 
-    /// $query = New-RscMutationO365 -SaaSSetupKickoff
+    /// $query = New-RscMutationO365 -Operation SaaSSetupKickoff
     /// 
     /// # No variables for this query.
     /// 
@@ -1871,7 +1875,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SaasSetupComplete
     /// 
-    /// $query = New-RscMutationO365 -SaasSetupComplete
+    /// $query = New-RscMutationO365 -Operation SaasSetupComplete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1929,7 +1933,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SetServiceAccount
     /// 
-    /// $query = New-RscMutationO365 -SetServiceAccount
+    /// $query = New-RscMutationO365 -Operation SetServiceAccount
     /// 
     /// # REQUIRED
     /// $query.Var.username = $someString
@@ -1961,7 +1965,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: SetupKickoff
     /// 
-    /// $query = New-RscMutationO365 -SetupKickoff
+    /// $query = New-RscMutationO365 -Operation SetupKickoff
     /// 
     /// # No variables for this query.
     /// 
@@ -1988,7 +1992,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: UpdateAppAuthStatus
     /// 
-    /// $query = New-RscMutationO365 -UpdateAppAuthStatus
+    /// $query = New-RscMutationO365 -Operation UpdateAppAuthStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -2021,7 +2025,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: UpdateAppPermissions
     /// 
-    /// $query = New-RscMutationO365 -UpdateAppPermissions
+    /// $query = New-RscMutationO365 -Operation UpdateAppPermissions
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -2054,7 +2058,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    O365
     /// # API Operation: UpdateOrgCustomName
     /// 
-    /// $query = New-RscMutationO365 -UpdateOrgCustomName
+    /// $query = New-RscMutationO365 -Operation UpdateOrgCustomName
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -3902,6 +3906,8 @@ $query.Var.input = @{
 		channelId = $someString
 		# REQUIRED
 		name = $someString
+		# OPTIONAL
+		isArchived = $someBoolean
 		# REQUIRED
 		folderId = $someString
 		# REQUIRED
@@ -3918,6 +3924,8 @@ $query.Var.input = @{
 			channelId = $someString
 			# REQUIRED
 			name = $someString
+			# OPTIONAL
+			isArchived = $someBoolean
 			# REQUIRED
 			folderId = $someString
 			# REQUIRED

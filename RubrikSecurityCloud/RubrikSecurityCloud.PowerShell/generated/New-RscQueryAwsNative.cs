@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: Account
     /// 
-    /// $query = New-RscQueryAwsNative -Account
+    /// $query = New-RscQueryAwsNative -Operation Account
     /// 
     /// # REQUIRED
     /// $query.Var.awsNativeAccountRubrikId = $someString
@@ -117,7 +117,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: Accounts
     /// 
-    /// $query = New-RscQueryAwsNative -Accounts
+    /// $query = New-RscQueryAwsNative -Operation Accounts
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: AmiTypeForArchivedSnapshotExport
     /// 
-    /// $query = New-RscQueryAwsNative -AmiTypeForArchivedSnapshotExport
+    /// $query = New-RscQueryAwsNative -Operation AmiTypeForArchivedSnapshotExport
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -216,7 +216,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: EbsVolume
     /// 
-    /// $query = New-RscQueryAwsNative -EbsVolume
+    /// $query = New-RscQueryAwsNative -Operation EbsVolume
     /// 
     /// # REQUIRED
     /// $query.Var.ebsVolumeRubrikId = $someString
@@ -246,7 +246,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: EbsVolumes
     /// 
-    /// $query = New-RscQueryAwsNative -EbsVolumes
+    /// $query = New-RscQueryAwsNative -Operation EbsVolumes
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -386,7 +386,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: EbsVolumesByName
     /// 
-    /// $query = New-RscQueryAwsNative -EbsVolumesByName
+    /// $query = New-RscQueryAwsNative -Operation EbsVolumesByName
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -426,7 +426,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: Ec2Instance
     /// 
-    /// $query = New-RscQueryAwsNative -Ec2Instance
+    /// $query = New-RscQueryAwsNative -Operation Ec2Instance
     /// 
     /// # REQUIRED
     /// $query.Var.ec2InstanceRubrikId = $someString
@@ -456,7 +456,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: Ec2Instances
     /// 
-    /// $query = New-RscQueryAwsNative -Ec2Instances
+    /// $query = New-RscQueryAwsNative -Operation Ec2Instances
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -610,7 +610,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: Ec2InstancesByName
     /// 
-    /// $query = New-RscQueryAwsNative -Ec2InstancesByName
+    /// $query = New-RscQueryAwsNative -Operation Ec2InstancesByName
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -650,7 +650,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: IsEbsVolumeSnapshotRestorable
     /// 
-    /// $query = New-RscQueryAwsNative -IsEbsVolumeSnapshotRestorable
+    /// $query = New-RscQueryAwsNative -Operation IsEbsVolumeSnapshotRestorable
     /// 
     /// # REQUIRED
     /// $query.Var.snapshotId = $someString
@@ -678,7 +678,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: IsRdsInstanceLaunchConfigurationValid
     /// 
-    /// $query = New-RscQueryAwsNative -IsRdsInstanceLaunchConfigurationValid
+    /// $query = New-RscQueryAwsNative -Operation IsRdsInstanceLaunchConfigurationValid
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -726,7 +726,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: RdsExportDefaults
     /// 
-    /// $query = New-RscQueryAwsNative -RdsExportDefaults
+    /// $query = New-RscQueryAwsNative -Operation RdsExportDefaults
     /// 
     /// # REQUIRED
     /// $query.Var.rdsInstanceRubrikId = $someString
@@ -758,7 +758,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: RdsInstance
     /// 
-    /// $query = New-RscQueryAwsNative -RdsInstance
+    /// $query = New-RscQueryAwsNative -Operation RdsInstance
     /// 
     /// # REQUIRED
     /// $query.Var.rdsInstanceRubrikId = $someString
@@ -788,7 +788,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: RdsInstances
     /// 
-    /// $query = New-RscQueryAwsNative -RdsInstances
+    /// $query = New-RscQueryAwsNative -Operation RdsInstances
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -928,7 +928,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: RdsPointInTimeRestoreWindow
     /// 
-    /// $query = New-RscQueryAwsNative -RdsPointInTimeRestoreWindow
+    /// $query = New-RscQueryAwsNative -Operation RdsPointInTimeRestoreWindow
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -962,7 +962,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: Root
     /// 
-    /// $query = New-RscQueryAwsNative -Root
+    /// $query = New-RscQueryAwsNative -Operation Root
     /// 
     /// # No variables for this query.
     /// 
@@ -989,7 +989,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: S3Bucket
     /// 
-    /// $query = New-RscQueryAwsNative -S3Bucket
+    /// $query = New-RscQueryAwsNative -Operation S3Bucket
     /// 
     /// # REQUIRED
     /// $query.Var.s3BucketRubrikId = $someString
@@ -1019,7 +1019,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: ValidateRdsClusterNameForExport
     /// 
-    /// $query = New-RscQueryAwsNative -ValidateRdsClusterNameForExport
+    /// $query = New-RscQueryAwsNative -Operation ValidateRdsClusterNameForExport
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -1051,7 +1051,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AwsNative
     /// # API Operation: ValidateRdsInstanceNameForExport
     /// 
-    /// $query = New-RscQueryAwsNative -ValidateRdsInstanceNameForExport
+    /// $query = New-RscQueryAwsNative -Operation ValidateRdsInstanceNameForExport
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString

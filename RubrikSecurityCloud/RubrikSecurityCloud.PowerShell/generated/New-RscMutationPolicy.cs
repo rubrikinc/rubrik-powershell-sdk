@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: AddPolicyObjects
     /// 
-    /// $query = New-RscMutationPolicy -AddPolicyObjects
+    /// $query = New-RscMutationPolicy -Operation AddPolicyObjects
     /// 
     /// # REQUIRED
     /// $query.Var.policyIds = @(
@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: CreatePolicy
     /// 
-    /// $query = New-RscMutationPolicy -CreatePolicy
+    /// $query = New-RscMutationPolicy -Operation CreatePolicy
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -180,7 +180,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: CreateTprPolicy
     /// 
-    /// $query = New-RscMutationPolicy -CreateTprPolicy
+    /// $query = New-RscMutationPolicy -Operation CreateTprPolicy
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -241,7 +241,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: DeactivatePolicy
     /// 
-    /// $query = New-RscMutationPolicy -DeactivatePolicy
+    /// $query = New-RscMutationPolicy -Operation DeactivatePolicy
     /// 
     /// # REQUIRED
     /// $query.Var.policyId = $someString
@@ -271,7 +271,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: DeleteTprPolicy
     /// 
-    /// $query = New-RscMutationPolicy -DeleteTprPolicy
+    /// $query = New-RscMutationPolicy -Operation DeleteTprPolicy
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -302,7 +302,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: GetHealthMonitorPolicyStatus
     /// 
-    /// $query = New-RscMutationPolicy -GetHealthMonitorPolicyStatus
+    /// $query = New-RscMutationPolicy -Operation GetHealthMonitorPolicyStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -343,7 +343,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: RemovePolicyObjects
     /// 
-    /// $query = New-RscMutationPolicy -RemovePolicyObjects
+    /// $query = New-RscMutationPolicy -Operation RemovePolicyObjects
     /// 
     /// # REQUIRED
     /// $query.Var.policyIds = @(
@@ -387,7 +387,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: SeedEnabledPolicies
     /// 
-    /// $query = New-RscMutationPolicy -SeedEnabledPolicies
+    /// $query = New-RscMutationPolicy -Operation SeedEnabledPolicies
     /// 
     /// # No variables for this query.
     /// 
@@ -414,7 +414,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: SeedInitialPolicies
     /// 
-    /// $query = New-RscMutationPolicy -SeedInitialPolicies
+    /// $query = New-RscMutationPolicy -Operation SeedInitialPolicies
     /// 
     /// # No variables for this query.
     /// 
@@ -441,7 +441,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: SetPasswordComplexityPolicy
     /// 
-    /// $query = New-RscMutationPolicy -SetPasswordComplexityPolicy
+    /// $query = New-RscMutationPolicy -Operation SetPasswordComplexityPolicy
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -561,7 +561,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: UpdateAutoEnablePolicyClusterConfig
     /// 
-    /// $query = New-RscMutationPolicy -UpdateAutoEnablePolicyClusterConfig
+    /// $query = New-RscMutationPolicy -Operation UpdateAutoEnablePolicyClusterConfig
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -594,7 +594,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: UpdateHealthMonitorPolicyStatus
     /// 
-    /// $query = New-RscMutationPolicy -UpdateHealthMonitorPolicyStatus
+    /// $query = New-RscMutationPolicy -Operation UpdateHealthMonitorPolicyStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -636,7 +636,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: UpdateOrgSecurityPolicy
     /// 
-    /// $query = New-RscMutationPolicy -UpdateOrgSecurityPolicy
+    /// $query = New-RscMutationPolicy -Operation UpdateOrgSecurityPolicy
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -667,7 +667,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: UpdatePolicy
     /// 
-    /// $query = New-RscMutationPolicy -UpdatePolicy
+    /// $query = New-RscMutationPolicy -Operation UpdatePolicy
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -718,7 +718,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: UpdateTprPolicy
     /// 
-    /// $query = New-RscMutationPolicy -UpdateTprPolicy
+    /// $query = New-RscMutationPolicy -Operation UpdateTprPolicy
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

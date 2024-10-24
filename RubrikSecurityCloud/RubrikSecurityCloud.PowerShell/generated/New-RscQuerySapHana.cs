@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: Database
     /// 
-    /// $query = New-RscQuerySapHana -Database
+    /// $query = New-RscQuerySapHana -Operation Database
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: Databases
     /// 
-    /// $query = New-RscQuerySapHana -Databases
+    /// $query = New-RscQuerySapHana -Operation Databases
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: LogSnapshot
     /// 
-    /// $query = New-RscQuerySapHana -LogSnapshot
+    /// $query = New-RscQuerySapHana -Operation LogSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -219,7 +219,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: LogSnapshots
     /// 
-    /// $query = New-RscQuerySapHana -LogSnapshots
+    /// $query = New-RscQuerySapHana -Operation LogSnapshots
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -274,7 +274,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: RecoverableRange
     /// 
-    /// $query = New-RscQuerySapHana -RecoverableRange
+    /// $query = New-RscQuerySapHana -Operation RecoverableRange
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -302,7 +302,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: RecoverableRanges
     /// 
-    /// $query = New-RscQuerySapHana -RecoverableRanges
+    /// $query = New-RscQuerySapHana -Operation RecoverableRanges
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -357,7 +357,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: System
     /// 
-    /// $query = New-RscQuerySapHana -System
+    /// $query = New-RscQuerySapHana -Operation System
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -385,7 +385,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    SapHana
     /// # API Operation: Systems
     /// 
-    /// $query = New-RscQuerySapHana -Systems
+    /// $query = New-RscQuerySapHana -Operation Systems
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

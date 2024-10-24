@@ -39,6 +39,8 @@ AWS native RDS instance.
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount
   - AWS account of the Amazon Relational Database Service (RDS) instance.
+- awsAccount: AwsNativeAccount
+  - AWS account of the Amazon Relational Database Service (RDS) instance.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - id: System.String

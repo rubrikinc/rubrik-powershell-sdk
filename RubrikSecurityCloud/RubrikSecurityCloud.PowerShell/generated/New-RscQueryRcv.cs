@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Rcv
     /// # API Operation: AccountEntitlement
     /// 
-    /// $query = New-RscQueryRcv -AccountEntitlement
+    /// $query = New-RscQueryRcv -Operation AccountEntitlement
     /// 
     /// # No variables for this query.
     /// 
@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Rcv
     /// # API Operation: AccountEntitlements
     /// 
-    /// $query = New-RscQueryRcv -AccountEntitlements
+    /// $query = New-RscQueryRcv -Operation AccountEntitlements
     /// 
     /// # No variables for this query.
     /// 
@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Rcv
     /// # API Operation: IsTriggerGrsTprConfigured
     /// 
-    /// $query = New-RscQueryRcv -IsTriggerGrsTprConfigured
+    /// $query = New-RscQueryRcv -Operation IsTriggerGrsTprConfigured
     /// 
     /// # No variables for this query.
     /// 
@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Rcv
     /// # API Operation: PrivateEndpointConnections
     /// 
-    /// $query = New-RscQueryRcv -PrivateEndpointConnections
+    /// $query = New-RscQueryRcv -Operation PrivateEndpointConnections
     /// 
     /// # REQUIRED
     /// $query.Var.input = $someString

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: ArtifactsToDelete
     /// 
-    /// $query = New-RscQueryAws -ArtifactsToDelete
+    /// $query = New-RscQueryAws -Operation ArtifactsToDelete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: AvailabilityZonesByRegion
     /// 
-    /// $query = New-RscQueryAws -AvailabilityZonesByRegion
+    /// $query = New-RscQueryAws -Operation AvailabilityZonesByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -152,7 +152,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CdmVersions
     /// 
-    /// $query = New-RscQueryAws -CdmVersions
+    /// $query = New-RscQueryAws -Operation CdmVersions
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -185,7 +185,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CloudAccountConfigs
     /// 
-    /// $query = New-RscQueryAws -CloudAccountConfigs
+    /// $query = New-RscQueryAws -Operation CloudAccountConfigs
     /// 
     /// # REQUIRED
     /// $query.Var.awsCloudAccountsArg = @{
@@ -224,7 +224,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CloudAccountListSecurityGroups
     /// 
-    /// $query = New-RscQueryAws -CloudAccountListSecurityGroups
+    /// $query = New-RscQueryAws -Operation CloudAccountListSecurityGroups
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountUuid = $someString
@@ -258,7 +258,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CloudAccountListSubnets
     /// 
-    /// $query = New-RscQueryAws -CloudAccountListSubnets
+    /// $query = New-RscQueryAws -Operation CloudAccountListSubnets
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountUuid = $someString
@@ -292,7 +292,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CloudAccountListVpcs
     /// 
-    /// $query = New-RscQueryAws -CloudAccountListVpcs
+    /// $query = New-RscQueryAws -Operation CloudAccountListVpcs
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountUuid = $someString
@@ -324,7 +324,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CloudAccountWithFeatures
     /// 
-    /// $query = New-RscQueryAws -CloudAccountWithFeatures
+    /// $query = New-RscQueryAws -Operation CloudAccountWithFeatures
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountId = $someString
@@ -359,7 +359,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: CloudAccountsWithFeatures
     /// 
-    /// $query = New-RscQueryAws -CloudAccountsWithFeatures
+    /// $query = New-RscQueryAws -Operation CloudAccountsWithFeatures
     /// 
     /// # REQUIRED
     /// $query.Var.awsCloudAccountsArg = @{
@@ -398,7 +398,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: ComputeSettings
     /// 
-    /// $query = New-RscQueryAws -ComputeSettings
+    /// $query = New-RscQueryAws -Operation ComputeSettings
     /// 
     /// # REQUIRED
     /// $query.Var.computeSettingId = $someString
@@ -426,7 +426,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: DbParameterGroupsByRegion
     /// 
-    /// $query = New-RscQueryAws -DbParameterGroupsByRegion
+    /// $query = New-RscQueryAws -Operation DbParameterGroupsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -462,7 +462,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: DbSubnetGroupsByRegion
     /// 
-    /// $query = New-RscQueryAws -DbSubnetGroupsByRegion
+    /// $query = New-RscQueryAws -Operation DbSubnetGroupsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -492,7 +492,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: Ec2KeyPairsByRegion
     /// 
-    /// $query = New-RscQueryAws -Ec2KeyPairsByRegion
+    /// $query = New-RscQueryAws -Operation Ec2KeyPairsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -522,7 +522,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: ExocomputeConfigs
     /// 
-    /// $query = New-RscQueryAws -ExocomputeConfigs
+    /// $query = New-RscQueryAws -Operation ExocomputeConfigs
     /// 
     /// # REQUIRED
     /// $query.Var.awsNativeAccountIdOrNamePrefix = $someString
@@ -550,7 +550,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: ExocomputeGetClusterConnectionInfo
     /// 
-    /// $query = New-RscQueryAws -ExocomputeGetClusterConnectionInfo
+    /// $query = New-RscQueryAws -Operation ExocomputeGetClusterConnectionInfo
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -585,7 +585,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: InstanceProfileNames
     /// 
-    /// $query = New-RscQueryAws -InstanceProfileNames
+    /// $query = New-RscQueryAws -Operation InstanceProfileNames
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountId = $someString
@@ -615,7 +615,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: IsS3BucketNameAvailable
     /// 
-    /// $query = New-RscQueryAws -IsS3BucketNameAvailable
+    /// $query = New-RscQueryAws -Operation IsS3BucketNameAvailable
     /// 
     /// # REQUIRED
     /// $query.Var.bucketName = $someString
@@ -645,7 +645,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: KmsEncryptionKeysByRegion
     /// 
-    /// $query = New-RscQueryAws -KmsEncryptionKeysByRegion
+    /// $query = New-RscQueryAws -Operation KmsEncryptionKeysByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -675,7 +675,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: OptionGroupsByRegion
     /// 
-    /// $query = New-RscQueryAws -OptionGroupsByRegion
+    /// $query = New-RscQueryAws -Operation OptionGroupsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -711,7 +711,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: PermissionPolicies
     /// 
-    /// $query = New-RscQueryAws -PermissionPolicies
+    /// $query = New-RscQueryAws -Operation PermissionPolicies
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -762,7 +762,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: RdsInstanceDetails
     /// 
-    /// $query = New-RscQueryAws -RdsInstanceDetails
+    /// $query = New-RscQueryAws -Operation RdsInstanceDetails
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -796,7 +796,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: Regions
     /// 
-    /// $query = New-RscQueryAws -Regions
+    /// $query = New-RscQueryAws -Operation Regions
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountId = $someString
@@ -824,7 +824,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: S3BucketStateForRecovery
     /// 
-    /// $query = New-RscQueryAws -S3BucketStateForRecovery
+    /// $query = New-RscQueryAws -Operation S3BucketStateForRecovery
     /// 
     /// # REQUIRED
     /// $query.Var.bucketName = $someString
@@ -856,7 +856,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: S3Buckets
     /// 
-    /// $query = New-RscQueryAws -S3Buckets
+    /// $query = New-RscQueryAws -Operation S3Buckets
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -884,7 +884,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: S3BucketsDetails
     /// 
-    /// $query = New-RscQueryAws -S3BucketsDetails
+    /// $query = New-RscQueryAws -Operation S3BucketsDetails
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -914,7 +914,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: SupportedEksVersions
     /// 
-    /// $query = New-RscQueryAws -SupportedEksVersions
+    /// $query = New-RscQueryAws -Operation SupportedEksVersions
     /// 
     /// # No variables for this query.
     /// 
@@ -941,7 +941,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: SupportedRdsDatabaseInstanceClasses
     /// 
-    /// $query = New-RscQueryAws -SupportedRdsDatabaseInstanceClasses
+    /// $query = New-RscQueryAws -Operation SupportedRdsDatabaseInstanceClasses
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -975,7 +975,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: TrustPolicy
     /// 
-    /// $query = New-RscQueryAws -TrustPolicy
+    /// $query = New-RscQueryAws -Operation TrustPolicy
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1019,7 +1019,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: ValidateCreateClusterInput
     /// 
-    /// $query = New-RscQueryAws -ValidateCreateClusterInput
+    /// $query = New-RscQueryAws -Operation ValidateCreateClusterInput
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1154,7 +1154,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: Vpcs
     /// 
-    /// $query = New-RscQueryAws -Vpcs
+    /// $query = New-RscQueryAws -Operation Vpcs
     /// 
     /// # OPTIONAL
     /// $query.Var.awsAccountRubrikId = $someString
@@ -1182,7 +1182,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Aws
     /// # API Operation: VpcsByRegion
     /// 
-    /// $query = New-RscQueryAws -VpcsByRegion
+    /// $query = New-RscQueryAws -Operation VpcsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString

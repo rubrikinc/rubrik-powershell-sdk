@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: AuditDetail
     /// 
-    /// $query = New-RscQuerySla -AuditDetail
+    /// $query = New-RscQuerySla -Operation AuditDetail
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -134,7 +134,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: ClusterDomains
     /// 
-    /// $query = New-RscQuerySla -ClusterDomains
+    /// $query = New-RscQuerySla -Operation ClusterDomains
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: ClusterGlobals
     /// 
-    /// $query = New-RscQuerySla -ClusterGlobals
+    /// $query = New-RscQuerySla -Operation ClusterGlobals
     /// 
     /// # REQUIRED
     /// $query.Var.cdmClusterUUID = $someString
@@ -196,7 +196,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: ConflictObjects
     /// 
-    /// $query = New-RscQuerySla -ConflictObjects
+    /// $query = New-RscQuerySla -Operation ConflictObjects
     /// 
     /// # REQUIRED
     /// $query.Var.fids = @(
@@ -226,7 +226,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: CountOfObjectsProtected
     /// 
-    /// $query = New-RscQuerySla -CountOfObjectsProtected
+    /// $query = New-RscQuerySla -Operation CountOfObjectsProtected
     /// 
     /// # OPTIONAL
     /// $query.Var.rootOptionalFid = $someString
@@ -304,7 +304,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: Domain
     /// 
-    /// $query = New-RscQuerySla -Domain
+    /// $query = New-RscQuerySla -Operation Domain
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someString
@@ -338,7 +338,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: Domains
     /// 
-    /// $query = New-RscQuerySla -Domains
+    /// $query = New-RscQuerySla -Operation Domains
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -414,7 +414,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: DownloadWithReplicationCsv
     /// 
-    /// $query = New-RscQuerySla -DownloadWithReplicationCsv
+    /// $query = New-RscQuerySla -Operation DownloadWithReplicationCsv
     /// 
     /// # REQUIRED
     /// $query.Var.cdmClusterUUID = $someString
@@ -444,7 +444,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: GlobalFilterList
     /// 
-    /// $query = New-RscQuerySla -GlobalFilterList
+    /// $query = New-RscQuerySla -Operation GlobalFilterList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -520,7 +520,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: GlobalStatuses
     /// 
-    /// $query = New-RscQuerySla -GlobalStatuses
+    /// $query = New-RscQuerySla -Operation GlobalStatuses
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -565,7 +565,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: ManagedVolume
     /// 
-    /// $query = New-RscQuerySla -ManagedVolume
+    /// $query = New-RscQuerySla -Operation ManagedVolume
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -593,7 +593,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: ManagedVolumes
     /// 
-    /// $query = New-RscQuerySla -ManagedVolumes
+    /// $query = New-RscQuerySla -Operation ManagedVolumes
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -669,7 +669,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: NcdComplianceData
     /// 
-    /// $query = New-RscQuerySla -NcdComplianceData
+    /// $query = New-RscQuerySla -Operation NcdComplianceData
     /// 
     /// # REQUIRED
     /// $query.Var.clusters = @(
@@ -699,7 +699,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: SummariesByIds
     /// 
-    /// $query = New-RscQuerySla -SummariesByIds
+    /// $query = New-RscQuerySla -Operation SummariesByIds
     /// 
     /// # REQUIRED
     /// $query.Var.slaIds = @(
@@ -729,7 +729,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sla
     /// # API Operation: VerifyWithReplicationToCluster
     /// 
-    /// $query = New-RscQuerySla -VerifyWithReplicationToCluster
+    /// $query = New-RscQuerySla -Operation VerifyWithReplicationToCluster
     /// 
     /// # REQUIRED
     /// $query.Var.cdmClusterUUID = $someString
