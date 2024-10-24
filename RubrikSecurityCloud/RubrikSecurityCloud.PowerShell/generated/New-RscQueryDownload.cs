@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: CdmUpgradesPdf
     /// 
-    /// $query = New-RscQueryDownload -CdmUpgradesPdf
+    /// $query = New-RscQueryDownload -Operation CdmUpgradesPdf
     /// 
     /// # OPTIONAL
     /// $query.Var.downloadFilter = @{
@@ -152,7 +152,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: DownloadedVersionList
     /// 
-    /// $query = New-RscQueryDownload -DownloadedVersionList
+    /// $query = New-RscQueryDownload -Operation DownloadedVersionList
     /// 
     /// # No variables for this query.
     /// 
@@ -179,7 +179,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Download
     /// # API Operation: PackageStatus
     /// 
-    /// $query = New-RscQueryDownload -PackageStatus
+    /// $query = New-RscQueryDownload -Operation PackageStatus
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString

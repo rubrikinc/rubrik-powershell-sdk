@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sonar
     /// # API Operation: UserGroups
     /// 
-    /// $query = New-RscQuerySonar -UserGroups
+    /// $query = New-RscQuerySonar -Operation UserGroups
     /// 
     /// # OPTIONAL
     /// $query.Var.filter = @{
@@ -128,7 +128,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sonar
     /// # API Operation: Users
     /// 
-    /// $query = New-RscQuerySonar -Users
+    /// $query = New-RscQuerySonar -Operation Users
     /// 
     /// # OPTIONAL
     /// $query.Var.sort = @{

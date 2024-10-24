@@ -1,5 +1,5 @@
 ### PcrAwsImagePullDetails
-Details related to how user will be pulling image from our container registry.
+Details on how users can retrieve images from Rubrik's AWS container registry.
 
 - awsNativeId: System.String
   - AWS account ID of the account from which user will be pulling.

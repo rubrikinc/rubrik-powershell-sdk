@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Exchange
     /// # API Operation: Dag
     /// 
-    /// $query = New-RscQueryExchange -Dag
+    /// $query = New-RscQueryExchange -Operation Dag
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Exchange
     /// # API Operation: Dags
     /// 
-    /// $query = New-RscQueryExchange -Dags
+    /// $query = New-RscQueryExchange -Operation Dags
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Exchange
     /// # API Operation: Database
     /// 
-    /// $query = New-RscQueryExchange -Database
+    /// $query = New-RscQueryExchange -Operation Database
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -219,7 +219,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Exchange
     /// # API Operation: Databases
     /// 
-    /// $query = New-RscQueryExchange -Databases
+    /// $query = New-RscQueryExchange -Operation Databases
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -295,7 +295,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Exchange
     /// # API Operation: LiveMounts
     /// 
-    /// $query = New-RscQueryExchange -LiveMounts
+    /// $query = New-RscQueryExchange -Operation LiveMounts
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -343,7 +343,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Exchange
     /// # API Operation: Server
     /// 
-    /// $query = New-RscQueryExchange -Server
+    /// $query = New-RscQueryExchange -Operation Server
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -371,7 +371,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Exchange
     /// # API Operation: Servers
     /// 
-    /// $query = New-RscQueryExchange -Servers
+    /// $query = New-RscQueryExchange -Operation Servers
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

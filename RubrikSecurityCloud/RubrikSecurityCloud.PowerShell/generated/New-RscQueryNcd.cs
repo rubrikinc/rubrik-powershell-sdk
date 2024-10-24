@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ncd
     /// # API Operation: BackEndCapacity
     /// 
-    /// $query = New-RscQueryNcd -BackEndCapacity
+    /// $query = New-RscQueryNcd -Operation BackEndCapacity
     /// 
     /// # REQUIRED
     /// $query.Var.clusters = @(
@@ -117,7 +117,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ncd
     /// # API Operation: FrontEndCapacity
     /// 
-    /// $query = New-RscQueryNcd -FrontEndCapacity
+    /// $query = New-RscQueryNcd -Operation FrontEndCapacity
     /// 
     /// # REQUIRED
     /// $query.Var.clusters = @(
@@ -147,7 +147,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ncd
     /// # API Operation: ObjectProtectionStatus
     /// 
-    /// $query = New-RscQueryNcd -ObjectProtectionStatus
+    /// $query = New-RscQueryNcd -Operation ObjectProtectionStatus
     /// 
     /// # REQUIRED
     /// $query.Var.clusters = @(
@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ncd
     /// # API Operation: ObjectsOverTimeData
     /// 
-    /// $query = New-RscQueryNcd -ObjectsOverTimeData
+    /// $query = New-RscQueryNcd -Operation ObjectsOverTimeData
     /// 
     /// # REQUIRED
     /// $query.Var.clusters = @(
@@ -207,7 +207,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ncd
     /// # API Operation: TaskData
     /// 
-    /// $query = New-RscQueryNcd -TaskData
+    /// $query = New-RscQueryNcd -Operation TaskData
     /// 
     /// # REQUIRED
     /// $query.Var.clusters = @(
@@ -237,7 +237,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ncd
     /// # API Operation: UsageOverTimeData
     /// 
-    /// $query = New-RscQueryNcd -UsageOverTimeData
+    /// $query = New-RscQueryNcd -Operation UsageOverTimeData
     /// 
     /// # REQUIRED
     /// $query.Var.clusters = @(
@@ -267,7 +267,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ncd
     /// # API Operation: VmImageUrl
     /// 
-    /// $query = New-RscQueryNcd -VmImageUrl
+    /// $query = New-RscQueryNcd -Operation VmImageUrl
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

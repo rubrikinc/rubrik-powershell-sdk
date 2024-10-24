@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActivitySeries
     /// # API Operation: Cancel
     /// 
-    /// $query = New-RscMutationActivitySeries -Cancel
+    /// $query = New-RscMutationActivitySeries -Operation Cancel
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActivitySeries
     /// # API Operation: DownloadUserCsv
     /// 
-    /// $query = New-RscMutationActivitySeries -DownloadUserCsv
+    /// $query = New-RscMutationActivitySeries -Operation DownloadUserCsv
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -206,7 +206,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ActivitySeries
     /// # API Operation: DownloadUserFileCsv
     /// 
-    /// $query = New-RscMutationActivitySeries -DownloadUserFileCsv
+    /// $query = New-RscMutationActivitySeries -Operation DownloadUserFileCsv
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

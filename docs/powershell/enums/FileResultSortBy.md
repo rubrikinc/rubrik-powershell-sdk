@@ -23,3 +23,4 @@ Parameter for sorting file results.
 - DATA_CATEGORY - Sort by number of hits for a data category.
 - DATA_TYPE - Sort by number of hits for a data type.
 - TOTAL_SENSITIVE_HITS - Sort by total sensitive hits.
+- EXPOSED_FILES - Sort by number of files for PUBLIC, EXPLICIT, and NOT_OPEN access types.

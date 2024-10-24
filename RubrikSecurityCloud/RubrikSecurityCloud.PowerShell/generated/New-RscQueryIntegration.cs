@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Integration
     /// # API Operation: Integration
     /// 
-    /// $query = New-RscQueryIntegration -Integration
+    /// $query = New-RscQueryIntegration -Operation Integration
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someInt
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Integration
     /// # API Operation: Integrations
     /// 
-    /// $query = New-RscQueryIntegration -Integrations
+    /// $query = New-RscQueryIntegration -Operation Integrations
     /// 
     /// # REQUIRED
     /// $query.Var.integrationTypes = @(

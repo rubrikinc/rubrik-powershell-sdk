@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: Disk
     /// 
-    /// $query = New-RscQueryGcpNative -Disk
+    /// $query = New-RscQueryGcpNative -Operation Disk
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: Disks
     /// 
-    /// $query = New-RscQueryGcpNative -Disks
+    /// $query = New-RscQueryGcpNative -Operation Disks
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -215,7 +215,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: GceInstance
     /// 
-    /// $query = New-RscQueryGcpNative -GceInstance
+    /// $query = New-RscQueryGcpNative -Operation GceInstance
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -243,7 +243,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: GceInstances
     /// 
-    /// $query = New-RscQueryGcpNative -GceInstances
+    /// $query = New-RscQueryGcpNative -Operation GceInstances
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -350,7 +350,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: Project
     /// 
-    /// $query = New-RscQueryGcpNative -Project
+    /// $query = New-RscQueryGcpNative -Operation Project
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -378,7 +378,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: Projects
     /// 
-    /// $query = New-RscQueryGcpNative -Projects
+    /// $query = New-RscQueryGcpNative -Operation Projects
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -440,7 +440,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    GcpNative
     /// # API Operation: StoredDiskLocations
     /// 
-    /// $query = New-RscQueryGcpNative -StoredDiskLocations
+    /// $query = New-RscQueryGcpNative -Operation StoredDiskLocations
     /// 
     /// # OPTIONAL
     /// $query.Var.projectId = $someString

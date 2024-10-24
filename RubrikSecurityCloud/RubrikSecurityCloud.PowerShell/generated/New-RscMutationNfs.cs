@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nfs
     /// # API Operation: CreateReaderTarget
     /// 
-    /// $query = New-RscMutationNfs -CreateReaderTarget
+    /// $query = New-RscMutationNfs -Operation CreateReaderTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -140,7 +140,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nfs
     /// # API Operation: CreateTarget
     /// 
-    /// $query = New-RscMutationNfs -CreateTarget
+    /// $query = New-RscMutationNfs -Operation CreateTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nfs
     /// # API Operation: UpdateTarget
     /// 
-    /// $query = New-RscMutationNfs -UpdateTarget
+    /// $query = New-RscMutationNfs -Operation UpdateTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

@@ -170,6 +170,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("kmsSpec")]
         public KmsSpec? KmsSpec { get; set; }
 
+        //      C# -> MultiTenantHostSpec? MultiTenantHostSpec
+        // GraphQL -> multiTenantHostSpec: MultiTenantHostSpec (type)
+        [JsonProperty("multiTenantHostSpec")]
+        public MultiTenantHostSpec? MultiTenantHostSpec { get; set; }
+
         //      C# -> ScaleRuntime? ScaleRuntime
         // GraphQL -> scaleRuntime: ScaleRuntime (type)
         [JsonProperty("scaleRuntime")]
@@ -220,6 +225,7 @@ namespace RubrikSecurityCloud.Types
         System.String? TenantId = null,
         ZeusDatabaseIds? DatabaseIds = null,
         KmsSpec? KmsSpec = null,
+        MultiTenantHostSpec? MultiTenantHostSpec = null,
         ScaleRuntime? ScaleRuntime = null,
         ExocomputeStorageAccountIds? StorageIds = null
     ) 
@@ -313,6 +319,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( KmsSpec != null ) {
             this.KmsSpec = KmsSpec;
+        }
+        if ( MultiTenantHostSpec != null ) {
+            this.MultiTenantHostSpec = MultiTenantHostSpec;
         }
         if ( ScaleRuntime != null ) {
             this.ScaleRuntime = ScaleRuntime;
@@ -607,6 +616,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "kmsSpec" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> MultiTenantHostSpec? MultiTenantHostSpec
+        // GraphQL -> multiTenantHostSpec: MultiTenantHostSpec (type)
+        if (this.MultiTenantHostSpec != null) {
+            var fspec = this.MultiTenantHostSpec.AsFieldSpec(conf.Child("multiTenantHostSpec"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "multiTenantHostSpec" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1154,6 +1175,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.KmsSpec != null && ec.Excludes("kmsSpec",false))
         {
             this.KmsSpec = null;
+        }
+        //      C# -> MultiTenantHostSpec? MultiTenantHostSpec
+        // GraphQL -> multiTenantHostSpec: MultiTenantHostSpec (type)
+        if (ec.Includes("multiTenantHostSpec",false))
+        {
+            if(this.MultiTenantHostSpec == null) {
+
+                this.MultiTenantHostSpec = new MultiTenantHostSpec();
+                this.MultiTenantHostSpec.ApplyExploratoryFieldSpec(ec.NewChild("multiTenantHostSpec"));
+
+            } else {
+
+                this.MultiTenantHostSpec.ApplyExploratoryFieldSpec(ec.NewChild("multiTenantHostSpec"));
+
+            }
+        }
+        else if (this.MultiTenantHostSpec != null && ec.Excludes("multiTenantHostSpec",false))
+        {
+            this.MultiTenantHostSpec = null;
         }
         //      C# -> ScaleRuntime? ScaleRuntime
         // GraphQL -> scaleRuntime: ScaleRuntime (type)

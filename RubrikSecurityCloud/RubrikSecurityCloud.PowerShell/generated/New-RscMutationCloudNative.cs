@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: AddSqlServerBackupCredentials
     /// 
-    /// $query = New-RscMutationCloudNative -AddSqlServerBackupCredentials
+    /// $query = New-RscMutationCloudNative -Operation AddSqlServerBackupCredentials
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: CheckRbaConnectivity
     /// 
-    /// $query = New-RscMutationCloudNative -CheckRbaConnectivity
+    /// $query = New-RscMutationCloudNative -Operation CheckRbaConnectivity
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -166,7 +166,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: ClearSqlServerBackupCredentials
     /// 
-    /// $query = New-RscMutationCloudNative -ClearSqlServerBackupCredentials
+    /// $query = New-RscMutationCloudNative -Operation ClearSqlServerBackupCredentials
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -201,7 +201,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: CreateLabelRule
     /// 
-    /// $query = New-RscMutationCloudNative -CreateLabelRule
+    /// $query = New-RscMutationCloudNative -Operation CreateLabelRule
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -264,7 +264,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: CreateTagRule
     /// 
-    /// $query = New-RscMutationCloudNative -CreateTagRule
+    /// $query = New-RscMutationCloudNative -Operation CreateTagRule
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -327,7 +327,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: DeleteLabelRule
     /// 
-    /// $query = New-RscMutationCloudNative -DeleteLabelRule
+    /// $query = New-RscMutationCloudNative -Operation DeleteLabelRule
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -358,7 +358,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: DeleteTagRule
     /// 
-    /// $query = New-RscMutationCloudNative -DeleteTagRule
+    /// $query = New-RscMutationCloudNative -Operation DeleteTagRule
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -389,7 +389,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: DownloadFiles
     /// 
-    /// $query = New-RscMutationCloudNative -DownloadFiles
+    /// $query = New-RscMutationCloudNative -Operation DownloadFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -460,7 +460,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: SetupSqlServerBackup
     /// 
-    /// $query = New-RscMutationCloudNative -SetupSqlServerBackup
+    /// $query = New-RscMutationCloudNative -Operation SetupSqlServerBackup
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -504,7 +504,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: StartSnapshotsIndexJob
     /// 
-    /// $query = New-RscMutationCloudNative -StartSnapshotsIndexJob
+    /// $query = New-RscMutationCloudNative -Operation StartSnapshotsIndexJob
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -537,7 +537,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: UpdateIndexingStatus
     /// 
-    /// $query = New-RscMutationCloudNative -UpdateIndexingStatus
+    /// $query = New-RscMutationCloudNative -Operation UpdateIndexingStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -572,7 +572,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: UpdateLabelRule
     /// 
-    /// $query = New-RscMutationCloudNative -UpdateLabelRule
+    /// $query = New-RscMutationCloudNative -Operation UpdateLabelRule
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -626,7 +626,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: UpdateRootThreatMonitoringEnablement
     /// 
-    /// $query = New-RscMutationCloudNative -UpdateRootThreatMonitoringEnablement
+    /// $query = New-RscMutationCloudNative -Operation UpdateRootThreatMonitoringEnablement
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -661,7 +661,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: UpdateTagRule
     /// 
-    /// $query = New-RscMutationCloudNative -UpdateTagRule
+    /// $query = New-RscMutationCloudNative -Operation UpdateTagRule
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

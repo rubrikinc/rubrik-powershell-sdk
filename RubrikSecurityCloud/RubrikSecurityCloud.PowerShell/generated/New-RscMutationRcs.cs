@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Rcs
     /// # API Operation: CreateAutomaticRcsTargetMapping
     /// 
-    /// $query = New-RscMutationRcs -CreateAutomaticRcsTargetMapping
+    /// $query = New-RscMutationRcs -Operation CreateAutomaticRcsTargetMapping
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -154,7 +154,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Rcs
     /// # API Operation: CreateRcsReaderTarget
     /// 
-    /// $query = New-RscMutationRcs -CreateRcsReaderTarget
+    /// $query = New-RscMutationRcs -Operation CreateRcsReaderTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Rcs
     /// # API Operation: CreateRcsTarget
     /// 
-    /// $query = New-RscMutationRcs -CreateRcsTarget
+    /// $query = New-RscMutationRcs -Operation CreateRcsTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -240,7 +240,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Rcs
     /// # API Operation: UpdateRcsAutomaticTargetMapping
     /// 
-    /// $query = New-RscMutationRcs -UpdateRcsAutomaticTargetMapping
+    /// $query = New-RscMutationRcs -Operation UpdateRcsAutomaticTargetMapping
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

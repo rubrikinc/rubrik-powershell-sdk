@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: ColumnFamilies
     /// 
-    /// $query = New-RscQueryCassandra -ColumnFamilies
+    /// $query = New-RscQueryCassandra -Operation ColumnFamilies
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -163,7 +163,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: ColumnFamily
     /// 
-    /// $query = New-RscQueryCassandra -ColumnFamily
+    /// $query = New-RscQueryCassandra -Operation ColumnFamily
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: ColumnFamilyRecoverableRange
     /// 
-    /// $query = New-RscQueryCassandra -ColumnFamilyRecoverableRange
+    /// $query = New-RscQueryCassandra -Operation ColumnFamilyRecoverableRange
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -233,7 +233,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: ColumnFamilySchema
     /// 
-    /// $query = New-RscQueryCassandra -ColumnFamilySchema
+    /// $query = New-RscQueryCassandra -Operation ColumnFamilySchema
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -275,7 +275,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: Keyspace
     /// 
-    /// $query = New-RscQueryCassandra -Keyspace
+    /// $query = New-RscQueryCassandra -Operation Keyspace
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -303,7 +303,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: Keyspaces
     /// 
-    /// $query = New-RscQueryCassandra -Keyspaces
+    /// $query = New-RscQueryCassandra -Operation Keyspaces
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -379,7 +379,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: Source
     /// 
-    /// $query = New-RscQueryCassandra -Source
+    /// $query = New-RscQueryCassandra -Operation Source
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -407,7 +407,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: Sources
     /// 
-    /// $query = New-RscQueryCassandra -Sources
+    /// $query = New-RscQueryCassandra -Operation Sources
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

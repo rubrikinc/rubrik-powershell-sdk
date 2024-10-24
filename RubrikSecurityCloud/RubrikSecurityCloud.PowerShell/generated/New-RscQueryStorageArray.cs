@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    StorageArray
     /// # API Operation: StorageArray
     /// 
-    /// $query = New-RscQueryStorageArray -StorageArray
+    /// $query = New-RscQueryStorageArray -Operation StorageArray
     /// 
     /// # REQUIRED
     /// $query.Var.input = @(

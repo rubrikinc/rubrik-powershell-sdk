@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: AddClusterCertificate
     /// 
-    /// $query = New-RscMutationCertificate -AddClusterCertificate
+    /// $query = New-RscMutationCertificate -Operation AddClusterCertificate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: AddGlobalCertificate
     /// 
-    /// $query = New-RscMutationCertificate -AddGlobalCertificate
+    /// $query = New-RscMutationCertificate -Operation AddGlobalCertificate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: Delete
     /// 
-    /// $query = New-RscMutationCertificate -Delete
+    /// $query = New-RscMutationCertificate -Operation Delete
     /// 
     /// # REQUIRED
     /// $query.Var.certificateId = $someInt64
@@ -209,7 +209,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: DeleteCsr
     /// 
-    /// $query = New-RscMutationCertificate -DeleteCsr
+    /// $query = New-RscMutationCertificate -Operation DeleteCsr
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -242,7 +242,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: DeleteGlobalCertificate
     /// 
-    /// $query = New-RscMutationCertificate -DeleteGlobalCertificate
+    /// $query = New-RscMutationCertificate -Operation DeleteGlobalCertificate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -273,7 +273,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: GenerateCsr
     /// 
-    /// $query = New-RscMutationCertificate -GenerateCsr
+    /// $query = New-RscMutationCertificate -Operation GenerateCsr
     /// 
     /// # REQUIRED
     /// $query.Var.name = $someString
@@ -321,7 +321,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: MarkAgentSecondary
     /// 
-    /// $query = New-RscMutationCertificate -MarkAgentSecondary
+    /// $query = New-RscMutationCertificate -Operation MarkAgentSecondary
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -354,7 +354,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: SetSso
     /// 
-    /// $query = New-RscMutationCertificate -SetSso
+    /// $query = New-RscMutationCertificate -Operation SetSso
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -387,7 +387,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: SetWebSigned
     /// 
-    /// $query = New-RscMutationCertificate -SetWebSigned
+    /// $query = New-RscMutationCertificate -Operation SetWebSigned
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -423,7 +423,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: Update
     /// 
-    /// $query = New-RscMutationCertificate -Update
+    /// $query = New-RscMutationCertificate -Operation Update
     /// 
     /// # REQUIRED
     /// $query.Var.certificateId = $someInt64
@@ -457,7 +457,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: UpdateGlobalCertificate
     /// 
-    /// $query = New-RscMutationCertificate -UpdateGlobalCertificate
+    /// $query = New-RscMutationCertificate -Operation UpdateGlobalCertificate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -501,7 +501,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Certificate
     /// # API Operation: UpdateHost
     /// 
-    /// $query = New-RscMutationCertificate -UpdateHost
+    /// $query = New-RscMutationCertificate -Operation UpdateHost
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

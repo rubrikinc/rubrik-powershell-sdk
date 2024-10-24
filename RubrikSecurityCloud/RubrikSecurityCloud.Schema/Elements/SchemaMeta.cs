@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20241007-35" ;
+        public static string GraphqlSchemaVersion = "v20241014-23" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -305,6 +305,7 @@ namespace RubrikSecurityCloud.Types
             ArchivalSpec,
             ArchivalStorageUsage,
             ArchivalTieringSpec,
+            ArchivedSnapshot,
             ArchiveK8sClusterReply,
             ArtifactPolicy,
             ArtifactsToDelete,
@@ -356,6 +357,8 @@ namespace RubrikSecurityCloud.Types
             AwsExocomputeGetConfigResponse,
             AwsExocomputeSubnetType,
             AwsFeatureConfig,
+            AwsIamPair,
+            AwsIamPairsWithMissingPermission,
             AwsImmutabilitySettingsType,
             AwsNativeAccount,
             AwsNativeAccountConnection,
@@ -897,6 +900,7 @@ namespace RubrikSecurityCloud.Types
             DeleteAzureCloudAccountWithoutOauthReply,
             DeleteGlobalCertificateReply,
             DeleteManagedVolumeReply,
+            DeleteReplicationPairTprReqChangesTemplate,
             DeleteStorageArraysReply,
             DetailedPrivateEndpointConnection,
             DevicePathToVolumeSnapshotId,
@@ -1008,6 +1012,7 @@ namespace RubrikSecurityCloud.Types
             FeatureDetail,
             FeatureListMinimumCdmVersionReply,
             FeaturePermission,
+            FeatureWithPermissionsGroupsOutputType,
             FederatedLoginStatus,
             FileAccessResult,
             FileDetails,
@@ -1312,6 +1317,7 @@ namespace RubrikSecurityCloud.Types
             Link,
             LinuxFileset,
             ListCidrsForComputeSettingReply,
+            ListIamPairsByCloudAccountAndLocationReply,
             ListIntegrationsReply,
             ListLocationsReply,
             ListO365DirectoryObjectAttributesResp,
@@ -1399,6 +1405,7 @@ namespace RubrikSecurityCloud.Types
             MetadataV2,
             MetricTimeSeries,
             Microsoft365RansomwareInvestigationEnablement,
+            MicrosoftMipLabel,
             MicrosoftPurviewConfig,
             MicrosoftSiteConnection,
             MicrosoftSiteEdge,
@@ -1545,6 +1552,7 @@ namespace RubrikSecurityCloud.Types
             MssqlTopLevelDescendantTypeEdge,
             MssqlUnprotectableReason,
             MultiTenancyConsumptionType,
+            MultiTenantHostSpec,
             MutateRoleReqChangesTemplate,
             MysqldbSlaConfig,
             NasBaseConfig,
@@ -1584,6 +1592,7 @@ namespace RubrikSecurityCloud.Types
             NcdTaskData,
             NcdUsageOverTimeData,
             NcdVmImageUrl,
+            NetworkConfig,
             NetworkHostProject,
             NetworkInfo,
             NetworkInfoListResponse,
@@ -1730,8 +1739,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -1863,6 +1872,7 @@ namespace RubrikSecurityCloud.Types
             PauseSlaReply,
             PauseTargetReply,
             PcrAwsImagePullDetails,
+            PcrAzureImagePullDetails,
             PendingAction,
             PendingActionType,
             PendingSnapshotDeletion,
@@ -2319,6 +2329,7 @@ namespace RubrikSecurityCloud.Types
             TprPolicyRule,
             TprPolicySummary,
             TprPublicConfiguration,
+            TprReplicationPair,
             TprReqStatusChange,
             TprRequestDetail,
             TprRequestDetailReply,
@@ -3566,6 +3577,7 @@ namespace RubrikSecurityCloud.Types
             ListCidrsForComputeSettingInput,
             ListFileActivitiesInput,
             ListFileResultFiltersInput,
+            ListIamPairsByCloudAccountAndLocationInput,
             ListM365DirectoryObjectAttributesInput,
             ListObjectFilesFiltersInput,
             ListValidReplicationTargetFilter,
@@ -3813,6 +3825,7 @@ namespace RubrikSecurityCloud.Types
             PauseSlaInput,
             PauseTargetInput,
             PcrAwsImagePullDetailsInput,
+            PcrAzureImagePullDetailsInput,
             PendingSlaInfo,
             PendingSlaOperationsRequestInput,
             PermissionInput,
@@ -4495,6 +4508,7 @@ namespace RubrikSecurityCloud.Types
             allKmsEncryptionKeysByRegionFromAws,
             allLatestFeaturePermissionsForCloudAccounts,
             allLicensedProducts,
+            allMipLabels,
             allMissingClusters,
             allMssqlDatabaseRestoreFiles,
             allNcdObjectsOverTimeData,
@@ -5640,6 +5654,7 @@ namespace RubrikSecurityCloud.Types
             inviteSsoGroup,
             joinSmbDomain,
             listCidrsForComputeSetting,
+            listIamPairsByCloudAccountAndLocation,
             lockUsersByAdmin,
             logoutFromRubrikSupportPortal,
             makePrimary,
@@ -7929,6 +7944,7 @@ namespace RubrikSecurityCloud.Types
                     "AirGappedTprReqChangesTemplate",
                     "AssignRoleReqChangesTemplate",
                     "CategorizedTprReqChangesTemplate",
+                    "DeleteReplicationPairTprReqChangesTemplate",
                     "EditSlaTprReqChangesTemplate",
                     "ManageUserTprReqChangesTemplate",
                     "MutateRoleReqChangesTemplate",
@@ -8449,6 +8465,12 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {
+                    "PcrAzureImagePullDetails",
+                    new HashSet<string> {
+                    "PcrImagePullDetails",
+                    }
+                },
+                {
                     "ProtectionStatus",
                     new HashSet<string> {
                     "SnappableGroupByInfo",
@@ -8742,6 +8764,7 @@ namespace RubrikSecurityCloud.Types
             allKmsEncryptionKeysByRegionFromAws,
             allLatestFeaturePermissionsForCloudAccounts,
             allLicensedProducts,
+            allMipLabels,
             allMissingClusters,
             allMssqlDatabaseRestoreFiles,
             allNcdObjectsOverTimeData,
@@ -9483,6 +9506,7 @@ namespace RubrikSecurityCloud.Types
             licensesForClusterProductSummary,
             linuxFileset,
             listCidrsForComputeSetting,
+            listIamPairsByCloudAccountAndLocation,
             listO365Apps,
             lockUsersByAdmin,
             lockoutConfig,
@@ -11418,6 +11442,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMisc",
                         cmdletSwitchName: "LicensedProducts",
                         gqlRootFieldName: "allLicensedProducts"
+                    )
+                },
+                {
+                    GqlRootFieldName.allMipLabels,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "MipLabels",
+                        gqlRootFieldName: "allMipLabels"
                     )
                 },
                 {
@@ -17346,6 +17378,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMisc",
                         cmdletSwitchName: "ListCidrsForComputeSetting",
                         gqlRootFieldName: "listCidrsForComputeSetting"
+                    )
+                },
+                {
+                    GqlRootFieldName.listIamPairsByCloudAccountAndLocation,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudAccount",
+                        cmdletSwitchName: "ListIamPairsByAndLocation",
+                        gqlRootFieldName: "listIamPairsByCloudAccountAndLocation"
                     )
                 },
                 {
@@ -23752,6 +23792,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allLicensedProducts
                 },
                 {
+                    "New-RscQueryMisc -Op MipLabels",
+                    GqlRootFieldName.allMipLabels
+                },
+                {
                     "New-RscQueryCluster -Op Missing",
                     GqlRootFieldName.allMissingClusters
                 },
@@ -26714,6 +26758,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationMisc -Op ListCidrsForComputeSetting",
                     GqlRootFieldName.listCidrsForComputeSetting
+                },
+                {
+                    "New-RscMutationCloudAccount -Op ListIamPairsByAndLocation",
+                    GqlRootFieldName.listIamPairsByCloudAccountAndLocation
                 },
                 {
                     "New-RscQueryO365 -Op ListApps",
@@ -31621,6 +31669,10 @@ namespace RubrikSecurityCloud.Types
                         "listCidrsForComputeSetting",
                     }
                 },
+                {   "ListIamPairsByCloudAccountAndLocationReply", new List<string> {
+                        "listIamPairsByCloudAccountAndLocation",
+                    }
+                },
                 {   "ListIntegrationsReply", new List<string> {
                         "allIntegrations",
                     }
@@ -33944,6 +33996,10 @@ namespace RubrikSecurityCloud.Types
                         "allUnmanagedObjectsSupportedTypes",
                     }
                 },
+                {   "[MicrosoftMipLabel]", new List<string> {
+                        "allMipLabels",
+                    }
+                },
                 {   "[MosaicStorageLocation]", new List<string> {
                         "allNosqlStorageLocations",
                     }
@@ -34740,6 +34796,7 @@ namespace RubrikSecurityCloud.Types
                 {   "Boolean", new List<string> {
                         "allAzureCloudAccountTenants",
                         "allGcpCloudAccountProjectsForOauth",
+                        "allMipLabels",
                         "allMissingClusters",
                         "allPendingActions",
                         "allSnapshotPvcs",
@@ -37018,6 +37075,10 @@ namespace RubrikSecurityCloud.Types
                         "allFileActivities",
                     }
                 },
+                {   "ListIamPairsByCloudAccountAndLocationInput", new List<string> {
+                        "listIamPairsByCloudAccountAndLocation",
+                    }
+                },
                 {   "ListM365DirectoryObjectAttributesInput", new List<string> {
                         "m365DirectoryObjectAttributes",
                     }
@@ -38218,6 +38279,7 @@ namespace RubrikSecurityCloud.Types
                         "allGcpNativeCompatibleMachineTypes",
                         "allIntegrations",
                         "allK8sReplicaSnapshotInfos",
+                        "allMipLabels",
                         "allO365AdGroups",
                         "allObjectsAlreadyAssignedToOrgs",
                         "allOptionGroupsByRegionFromAws",
@@ -40055,6 +40117,10 @@ namespace RubrikSecurityCloud.Types
                         "allObjectsAlreadyAssignedToOrgs",
                     }
                 },
+                {   "[OpenAccessType]", new List<string> {
+                        "policyObjs",
+                    }
+                },
                 {   "[OracleLiveMountFilterInput]", new List<string> {
                         "oracleLiveMounts",
                     }
@@ -41075,6 +41141,7 @@ namespace RubrikSecurityCloud.Types
                 { "licensesForClusterProductSummary", "LicensesForClusterProductReply"},
                 { "linuxFileset", "LinuxFileset"},
                 { "listCidrsForComputeSetting", "ListCidrsForComputeSettingReply"},
+                { "listIamPairsByCloudAccountAndLocation", "ListIamPairsByCloudAccountAndLocationReply"},
                 { "allIntegrations", "ListIntegrationsReply"},
                 { "ransomwareDetectionWorkloadLocations", "ListLocationsReply"},
                 { "m365DirectoryObjectAttributes", "ListO365DirectoryObjectAttributesResp"},
@@ -41862,6 +41929,7 @@ namespace RubrikSecurityCloud.Types
                 { "allInventoryWorkloads", "[InventoryCard]"},
                 { "allKmsEncryptionKeysByRegionFromAws", "[KmsEncryptionKey]"},
                 { "allUnmanagedObjectsSupportedTypes", "[ManagedObjectType]"},
+                { "allMipLabels", "[MicrosoftMipLabel]"},
                 { "allNosqlStorageLocations", "[MosaicStorageLocation]"},
                 { "allNcdObjectsOverTimeData", "[NcdObjectsOverTimeData]"},
                 { "allNcdSlaComplianceData", "[NcdSlaComplianceData]"},
@@ -42627,6 +42695,7 @@ namespace RubrikSecurityCloud.Types
                     "CurrentFeaturePermissions",
                     "ExocomputeMappings",
                     "LatestFeaturePermissions",
+                    "ListIamPairsByAndLocation",
                     "MapExocomputeAccount",
                     "UnmapExocomputeAccount",
                     "WithExocomputeMappings",
@@ -43233,6 +43302,7 @@ namespace RubrikSecurityCloud.Types
                     "MfaSetting",
                     "MicrosoftSites",
                     "MinimumCdmVersionForFeatureSet",
+                    "MipLabels",
                     "ModifyDistributionListDigestBatch",
                     "ModifyEventDigestBatch",
                     "ModifyIpmi",

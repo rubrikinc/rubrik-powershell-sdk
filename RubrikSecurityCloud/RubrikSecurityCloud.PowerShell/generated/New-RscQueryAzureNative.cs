@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: AvailabilitySetsByRegionFromAzure
     /// 
-    /// $query = New-RscQueryAzureNative -AvailabilitySetsByRegionFromAzure
+    /// $query = New-RscQueryAzureNative -Operation AvailabilitySetsByRegionFromAzure
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
@@ -119,7 +119,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: DoesResourceGroupExist
     /// 
-    /// $query = New-RscQueryAzureNative -DoesResourceGroupExist
+    /// $query = New-RscQueryAzureNative -Operation DoesResourceGroupExist
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountId = $someString
@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: ExportCompatibleDiskTypesByRegionFromAzure
     /// 
-    /// $query = New-RscQueryAzureNative -ExportCompatibleDiskTypesByRegionFromAzure
+    /// $query = New-RscQueryAzureNative -Operation ExportCompatibleDiskTypesByRegionFromAzure
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: ExportCompatibleVmSizesByRegionFromAzure
     /// 
-    /// $query = New-RscQueryAzureNative -ExportCompatibleVmSizesByRegionFromAzure
+    /// $query = New-RscQueryAzureNative -Operation ExportCompatibleVmSizesByRegionFromAzure
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
@@ -215,7 +215,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: IsManagedDiskSnapshotRestorable
     /// 
-    /// $query = New-RscQueryAzureNative -IsManagedDiskSnapshotRestorable
+    /// $query = New-RscQueryAzureNative -Operation IsManagedDiskSnapshotRestorable
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
@@ -245,7 +245,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: IsSqlDatabaseSnapshotPersistent
     /// 
-    /// $query = New-RscQueryAzureNative -IsSqlDatabaseSnapshotPersistent
+    /// $query = New-RscQueryAzureNative -Operation IsSqlDatabaseSnapshotPersistent
     /// 
     /// # REQUIRED
     /// $query.Var.snapshotId = $someString
@@ -273,7 +273,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: ManagedDisk
     /// 
-    /// $query = New-RscQueryAzureNative -ManagedDisk
+    /// $query = New-RscQueryAzureNative -Operation ManagedDisk
     /// 
     /// # REQUIRED
     /// $query.Var.azureManagedDiskRubrikId = $someString
@@ -303,7 +303,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: ManagedDisks
     /// 
-    /// $query = New-RscQueryAzureNative -ManagedDisks
+    /// $query = New-RscQueryAzureNative -Operation ManagedDisks
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -445,7 +445,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: ResourceGroup
     /// 
-    /// $query = New-RscQueryAzureNative -ResourceGroup
+    /// $query = New-RscQueryAzureNative -Operation ResourceGroup
     /// 
     /// # REQUIRED
     /// $query.Var.resourceGroupId = $someString
@@ -473,7 +473,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: ResourceGroups
     /// 
-    /// $query = New-RscQueryAzureNative -ResourceGroups
+    /// $query = New-RscQueryAzureNative -Operation ResourceGroups
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -548,7 +548,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: ResourceGroupsInfoIfExist
     /// 
-    /// $query = New-RscQueryAzureNative -ResourceGroupsInfoIfExist
+    /// $query = New-RscQueryAzureNative -Operation ResourceGroupsInfoIfExist
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -588,7 +588,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: Root
     /// 
-    /// $query = New-RscQueryAzureNative -Root
+    /// $query = New-RscQueryAzureNative -Operation Root
     /// 
     /// # No variables for this query.
     /// 
@@ -615,7 +615,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: SecurityGroupsByRegionFromAzure
     /// 
-    /// $query = New-RscQueryAzureNative -SecurityGroupsByRegionFromAzure
+    /// $query = New-RscQueryAzureNative -Operation SecurityGroupsByRegionFromAzure
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
@@ -645,7 +645,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: StorageAccountsFromAzure
     /// 
-    /// $query = New-RscQueryAzureNative -StorageAccountsFromAzure
+    /// $query = New-RscQueryAzureNative -Operation StorageAccountsFromAzure
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
@@ -673,7 +673,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: SubnetsByRegionFromAzure
     /// 
-    /// $query = New-RscQueryAzureNative -SubnetsByRegionFromAzure
+    /// $query = New-RscQueryAzureNative -Operation SubnetsByRegionFromAzure
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
@@ -703,7 +703,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: Subscription
     /// 
-    /// $query = New-RscQueryAzureNative -Subscription
+    /// $query = New-RscQueryAzureNative -Operation Subscription
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
@@ -731,7 +731,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: Subscriptions
     /// 
-    /// $query = New-RscQueryAzureNative -Subscriptions
+    /// $query = New-RscQueryAzureNative -Operation Subscriptions
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -790,7 +790,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: ValidateSqlDatabaseDbNameForExport
     /// 
-    /// $query = New-RscQueryAzureNative -ValidateSqlDatabaseDbNameForExport
+    /// $query = New-RscQueryAzureNative -Operation ValidateSqlDatabaseDbNameForExport
     /// 
     /// # REQUIRED
     /// $query.Var.azureSqlDatabaseName = $someString
@@ -820,7 +820,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: ValidateSqlManagedInstanceDbNameForExport
     /// 
-    /// $query = New-RscQueryAzureNative -ValidateSqlManagedInstanceDbNameForExport
+    /// $query = New-RscQueryAzureNative -Operation ValidateSqlManagedInstanceDbNameForExport
     /// 
     /// # REQUIRED
     /// $query.Var.azureSqlDatabaseName = $someString
@@ -850,7 +850,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: VirtualMachine
     /// 
-    /// $query = New-RscQueryAzureNative -VirtualMachine
+    /// $query = New-RscQueryAzureNative -Operation VirtualMachine
     /// 
     /// # REQUIRED
     /// $query.Var.azureVirtualMachineRubrikId = $someString
@@ -880,7 +880,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: VirtualMachineSizes
     /// 
-    /// $query = New-RscQueryAzureNative -VirtualMachineSizes
+    /// $query = New-RscQueryAzureNative -Operation VirtualMachineSizes
     /// 
     /// # OPTIONAL
     /// $query.Var.azureSubscriptionRubrikId = $someString
@@ -908,7 +908,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: VirtualMachines
     /// 
-    /// $query = New-RscQueryAzureNative -VirtualMachines
+    /// $query = New-RscQueryAzureNative -Operation VirtualMachines
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1064,7 +1064,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureNative
     /// # API Operation: VirtualNetworks
     /// 
-    /// $query = New-RscQueryAzureNative -VirtualNetworks
+    /// $query = New-RscQueryAzureNative -Operation VirtualNetworks
     /// 
     /// # OPTIONAL
     /// $query.Var.azureSubscriptionRubrikId = $someString

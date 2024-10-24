@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Webhook
     /// # API Operation: Create
     /// 
-    /// $query = New-RscMutationWebhook -Create
+    /// $query = New-RscMutationWebhook -Operation Create
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Webhook
     /// # API Operation: Delete
     /// 
-    /// $query = New-RscMutationWebhook -Delete
+    /// $query = New-RscMutationWebhook -Operation Delete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -212,7 +212,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Webhook
     /// # API Operation: DeleteV2
     /// 
-    /// $query = New-RscMutationWebhook -DeleteV2
+    /// $query = New-RscMutationWebhook -Operation DeleteV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -243,7 +243,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Webhook
     /// # API Operation: Test
     /// 
-    /// $query = New-RscMutationWebhook -Test
+    /// $query = New-RscMutationWebhook -Operation Test
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -299,7 +299,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Webhook
     /// # API Operation: TestExisting
     /// 
-    /// $query = New-RscMutationWebhook -TestExisting
+    /// $query = New-RscMutationWebhook -Operation TestExisting
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -330,7 +330,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Webhook
     /// # API Operation: Update
     /// 
-    /// $query = New-RscMutationWebhook -Update
+    /// $query = New-RscMutationWebhook -Operation Update
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

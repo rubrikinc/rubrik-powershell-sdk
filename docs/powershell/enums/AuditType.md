@@ -30,3 +30,4 @@ Represents audit types.
 - RUBY_AI - AI confirmation audit.
 - ANOMALY - Anomaly audit.
 - THREAT_FEED - Threat feed audit object.
+- DATA_RISKS - Data Risks audit

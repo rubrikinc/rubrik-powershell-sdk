@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ldap
     /// # API Operation: DeletePrincipals
     /// 
-    /// $query = New-RscMutationLdap -DeletePrincipals
+    /// $query = New-RscMutationLdap -Operation DeletePrincipals
     /// 
     /// # REQUIRED
     /// $query.Var.principalIds = @(
@@ -117,7 +117,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ldap
     /// # API Operation: RemoveIntegration
     /// 
-    /// $query = New-RscMutationLdap -RemoveIntegration
+    /// $query = New-RscMutationLdap -Operation RemoveIntegration
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someString
@@ -145,7 +145,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ldap
     /// # API Operation: SetMfaSetting
     /// 
-    /// $query = New-RscMutationLdap -SetMfaSetting
+    /// $query = New-RscMutationLdap -Operation SetMfaSetting
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -178,7 +178,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ldap
     /// # API Operation: UpdateIntegration
     /// 
-    /// $query = New-RscMutationLdap -UpdateIntegration
+    /// $query = New-RscMutationLdap -Operation UpdateIntegration
     /// 
     /// # OPTIONAL
     /// $query.Var.id = $someString

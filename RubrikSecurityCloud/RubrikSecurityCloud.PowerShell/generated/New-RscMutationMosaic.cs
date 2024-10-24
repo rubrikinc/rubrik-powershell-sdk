@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mosaic
     /// # API Operation: AddStore
     /// 
-    /// $query = New-RscMutationMosaic -AddStore
+    /// $query = New-RscMutationMosaic -Operation AddStore
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -137,7 +137,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mosaic
     /// # API Operation: DeleteStore
     /// 
-    /// $query = New-RscMutationMosaic -DeleteStore
+    /// $query = New-RscMutationMosaic -Operation DeleteStore
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -170,7 +170,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mosaic
     /// # API Operation: UpdateStore
     /// 
-    /// $query = New-RscMutationMosaic -UpdateStore
+    /// $query = New-RscMutationMosaic -Operation UpdateStore
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

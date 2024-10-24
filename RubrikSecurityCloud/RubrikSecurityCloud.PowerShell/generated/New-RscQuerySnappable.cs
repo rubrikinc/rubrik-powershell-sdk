@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: CdmHierarchySnappableNew
     /// 
-    /// $query = New-RscQuerySnappable -CdmHierarchySnappableNew
+    /// $query = New-RscQuerySnappable -Operation CdmHierarchySnappableNew
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: CdmHierarchySnappablesNew
     /// 
-    /// $query = New-RscQuerySnappable -CdmHierarchySnappablesNew
+    /// $query = New-RscQuerySnappable -Operation CdmHierarchySnappablesNew
     /// 
     /// # REQUIRED
     /// $query.Var.fids = @(
@@ -145,7 +145,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: ContactSearch
     /// 
-    /// $query = New-RscQuerySnappable -ContactSearch
+    /// $query = New-RscQuerySnappable -Operation ContactSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -209,7 +209,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: EmailSearch
     /// 
-    /// $query = New-RscQuerySnappable -EmailSearch
+    /// $query = New-RscQuerySnappable -Operation EmailSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -290,7 +290,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: EventSearch
     /// 
-    /// $query = New-RscQuerySnappable -EventSearch
+    /// $query = New-RscQuerySnappable -Operation EventSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -377,7 +377,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: GroupByList
     /// 
-    /// $query = New-RscQuerySnappable -GroupByList
+    /// $query = New-RscQuerySnappable -Operation GroupByList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -479,7 +479,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: Hierarchy
     /// 
-    /// $query = New-RscQuerySnappable -Hierarchy
+    /// $query = New-RscQuerySnappable -Operation Hierarchy
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -555,7 +555,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: List
     /// 
-    /// $query = New-RscQuerySnappable -List
+    /// $query = New-RscQuerySnappable -Operation List
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -648,7 +648,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: OnedriveSearch
     /// 
-    /// $query = New-RscQuerySnappable -OnedriveSearch
+    /// $query = New-RscQuerySnappable -Operation OnedriveSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -738,7 +738,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: Search
     /// 
-    /// $query = New-RscQuerySnappable -Search
+    /// $query = New-RscQuerySnappable -Operation Search
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -838,7 +838,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: SearchVersionedFiles
     /// 
-    /// $query = New-RscQuerySnappable -SearchVersionedFiles
+    /// $query = New-RscQuerySnappable -Operation SearchVersionedFiles
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -872,7 +872,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: TeamsConversationsSearch
     /// 
-    /// $query = New-RscQuerySnappable -TeamsConversationsSearch
+    /// $query = New-RscQuerySnappable -Operation TeamsConversationsSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -893,6 +893,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		channelId = $someString
     /// 		# REQUIRED
     /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		isArchived = $someBoolean
     /// 		# REQUIRED
     /// 		folderId = $someString
     /// 		# REQUIRED
@@ -966,7 +968,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snappable
     /// # API Operation: TeamsDriveSearch
     /// 
-    /// $query = New-RscQuerySnappable -TeamsDriveSearch
+    /// $query = New-RscQuerySnappable -Operation TeamsDriveSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -2107,6 +2109,8 @@ $query.Var.teamConvChannels = @(
 		channelId = $someString
 		# REQUIRED
 		name = $someString
+		# OPTIONAL
+		isArchived = $someBoolean
 		# REQUIRED
 		folderId = $someString
 		# REQUIRED

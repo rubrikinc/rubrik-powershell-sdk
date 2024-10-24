@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: BrowseFileList
     /// 
-    /// $query = New-RscQuerySnapshot -BrowseFileList
+    /// $query = New-RscQuerySnapshot -Operation BrowseFileList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: ClosestToPointInTime
     /// 
-    /// $query = New-RscQuerySnapshot -ClosestToPointInTime
+    /// $query = New-RscQuerySnapshot -Operation ClosestToPointInTime
     /// 
     /// # OPTIONAL
     /// $query.Var.beforeTime = $someDateTime
@@ -167,7 +167,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: EmailSearch
     /// 
-    /// $query = New-RscQuerySnapshot -EmailSearch
+    /// $query = New-RscQuerySnapshot -Operation EmailSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -250,7 +250,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: EventSearch
     /// 
-    /// $query = New-RscQuerySnapshot -EventSearch
+    /// $query = New-RscQuerySnapshot -Operation EventSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -339,7 +339,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: FilesDelta
     /// 
-    /// $query = New-RscQuerySnapshot -FilesDelta
+    /// $query = New-RscQuerySnapshot -Operation FilesDelta
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -410,7 +410,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: FilesDeltaV2
     /// 
-    /// $query = New-RscQuerySnapshot -FilesDeltaV2
+    /// $query = New-RscQuerySnapshot -Operation FilesDeltaV2
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -481,7 +481,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: Fileset
     /// 
-    /// $query = New-RscQuerySnapshot -Fileset
+    /// $query = New-RscQuerySnapshot -Operation Fileset
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someString
@@ -511,7 +511,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: FilesetFiles
     /// 
-    /// $query = New-RscQuerySnapshot -FilesetFiles
+    /// $query = New-RscQuerySnapshot -Operation FilesetFiles
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someString
@@ -545,7 +545,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: LegalHoldSnappable
     /// 
-    /// $query = New-RscQuerySnapshot -LegalHoldSnappable
+    /// $query = New-RscQuerySnapshot -Operation LegalHoldSnappable
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -618,7 +618,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: OnedriveSearch
     /// 
-    /// $query = New-RscQuerySnapshot -OnedriveSearch
+    /// $query = New-RscQuerySnapshot -Operation OnedriveSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -710,7 +710,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: Polaris
     /// 
-    /// $query = New-RscQuerySnapshot -Polaris
+    /// $query = New-RscQuerySnapshot -Operation Polaris
     /// 
     /// # REQUIRED
     /// $query.Var.snapshotFid = $someString
@@ -738,7 +738,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: Pvcs
     /// 
-    /// $query = New-RscQuerySnapshot -Pvcs
+    /// $query = New-RscQuerySnapshot -Operation Pvcs
     /// 
     /// # REQUIRED
     /// $query.Var.snapshotId = $someString
@@ -770,7 +770,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: QuarantinedDetails
     /// 
-    /// $query = New-RscQuerySnapshot -QuarantinedDetails
+    /// $query = New-RscQuerySnapshot -Operation QuarantinedDetails
     /// 
     /// # REQUIRED
     /// $query.Var.snapshotIds = @(
@@ -800,7 +800,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: Results
     /// 
-    /// $query = New-RscQuerySnapshot -Results
+    /// $query = New-RscQuerySnapshot -Operation Results
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -832,7 +832,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: SnappableList
     /// 
-    /// $query = New-RscQuerySnapshot -SnappableList
+    /// $query = New-RscQuerySnapshot -Operation SnappableList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -906,7 +906,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: SnappablesList
     /// 
-    /// $query = New-RscQuerySnapshot -SnappablesList
+    /// $query = New-RscQuerySnapshot -Operation SnappablesList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -982,7 +982,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: SnappablesWithLegalHoldsSummary
     /// 
-    /// $query = New-RscQuerySnapshot -SnappablesWithLegalHoldsSummary
+    /// $query = New-RscQuerySnapshot -Operation SnappablesWithLegalHoldsSummary
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1053,7 +1053,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: Snapshot
     /// 
-    /// $query = New-RscQuerySnapshot -Snapshot
+    /// $query = New-RscQuerySnapshot -Operation Snapshot
     /// 
     /// # REQUIRED
     /// $query.Var.snapshotFid = $someString
@@ -1083,7 +1083,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: UnmanagedObject
     /// 
-    /// $query = New-RscQuerySnapshot -UnmanagedObject
+    /// $query = New-RscQuerySnapshot -Operation UnmanagedObject
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1140,7 +1140,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: VappInstantRecoveryOptions
     /// 
-    /// $query = New-RscQuerySnapshot -VappInstantRecoveryOptions
+    /// $query = New-RscQuerySnapshot -Operation VappInstantRecoveryOptions
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1171,7 +1171,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snapshot
     /// # API Operation: VappTemplateExportOptions
     /// 
-    /// $query = New-RscQuerySnapshot -VappTemplateExportOptions
+    /// $query = New-RscQuerySnapshot -Operation VappTemplateExportOptions
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

@@ -8983,6 +8983,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ListIamPairsByCloudAccountAndLocationReply? ListIamPairsByCloudAccountAndLocation
+        // GraphQL -> listIamPairsByCloudAccountAndLocation: ListIamPairsByCloudAccountAndLocationReply! (type)
+        public static string ListIamPairsByCloudAccountAndLocation(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "listIamPairsByCloudAccountAndLocation" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ListIamPairsByCloudAccountAndLocationFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ListIamPairsByCloudAccountAndLocationReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> SupportPortalLogoutReply? LogoutFromRubrikSupportPortal
         // GraphQL -> logoutFromRubrikSupportPortal: SupportPortalLogoutReply! (type)
         public static string LogoutFromRubrikSupportPortal(object fsObj)

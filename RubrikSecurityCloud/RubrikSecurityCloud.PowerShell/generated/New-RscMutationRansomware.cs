@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ransomware
     /// # API Operation: BulkUpdateInvestigationStatus
     /// 
-    /// $query = New-RscMutationRansomware -BulkUpdateInvestigationStatus
+    /// $query = New-RscMutationRansomware -Operation BulkUpdateInvestigationStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -127,7 +127,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ransomware
     /// # API Operation: TriggerDetection
     /// 
-    /// $query = New-RscMutationRansomware -TriggerDetection
+    /// $query = New-RscMutationRansomware -Operation TriggerDetection
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

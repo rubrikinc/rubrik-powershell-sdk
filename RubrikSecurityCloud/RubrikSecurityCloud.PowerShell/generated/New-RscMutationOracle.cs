@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: BulkUpdateDatabases
     /// 
-    /// $query = New-RscMutationOracle -BulkUpdateDatabases
+    /// $query = New-RscMutationOracle -Operation BulkUpdateDatabases
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -174,7 +174,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: BulkUpdateHosts
     /// 
-    /// $query = New-RscMutationOracle -BulkUpdateHosts
+    /// $query = New-RscMutationOracle -Operation BulkUpdateHosts
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -261,7 +261,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: BulkUpdateRacs
     /// 
-    /// $query = New-RscMutationOracle -BulkUpdateRacs
+    /// $query = New-RscMutationOracle -Operation BulkUpdateRacs
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -348,7 +348,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: CreatePdbRestore
     /// 
-    /// $query = New-RscMutationOracle -CreatePdbRestore
+    /// $query = New-RscMutationOracle -Operation CreatePdbRestore
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -364,6 +364,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			snapshotId = $someString
     /// 			# OPTIONAL
     /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			scn = $someInt64
     /// 		}
     /// 	}
     /// 	# REQUIRED
@@ -393,7 +395,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: DeleteAllDatabaseSnapshots
     /// 
-    /// $query = New-RscMutationOracle -DeleteAllDatabaseSnapshots
+    /// $query = New-RscMutationOracle -Operation DeleteAllDatabaseSnapshots
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -424,7 +426,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: DeleteMount
     /// 
-    /// $query = New-RscMutationOracle -DeleteMount
+    /// $query = New-RscMutationOracle -Operation DeleteMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -457,7 +459,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: DownloadDatabaseSnapshot
     /// 
-    /// $query = New-RscMutationOracle -DownloadDatabaseSnapshot
+    /// $query = New-RscMutationOracle -Operation DownloadDatabaseSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -488,7 +490,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: DownloadSnapshotFromLocation
     /// 
-    /// $query = New-RscMutationOracle -DownloadSnapshotFromLocation
+    /// $query = New-RscMutationOracle -Operation DownloadSnapshotFromLocation
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -521,7 +523,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: DownloadSnapshotFromLocationV2
     /// 
-    /// $query = New-RscMutationOracle -DownloadSnapshotFromLocationV2
+    /// $query = New-RscMutationOracle -Operation DownloadSnapshotFromLocationV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -559,7 +561,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: ExportDatabase
     /// 
-    /// $query = New-RscMutationOracle -ExportDatabase
+    /// $query = New-RscMutationOracle -Operation ExportDatabase
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -609,6 +611,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				snapshotId = $someString
     /// 				# OPTIONAL
     /// 				timestampMs = $someInt64
+    /// 				# OPTIONAL
+    /// 				scn = $someInt64
     /// 			}
     /// 			# REQUIRED
     /// 			targetOracleHostOrRacId = $someString
@@ -650,7 +654,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: ExportTablespace
     /// 
-    /// $query = New-RscMutationOracle -ExportTablespace
+    /// $query = New-RscMutationOracle -Operation ExportTablespace
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -666,6 +670,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			snapshotId = $someString
     /// 			# OPTIONAL
     /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			scn = $someInt64
     /// 		}
     /// 		# REQUIRED
     /// 		tablespaceName = $someString
@@ -697,7 +703,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: InstantRecoverSnapshot
     /// 
-    /// $query = New-RscMutationOracle -InstantRecoverSnapshot
+    /// $query = New-RscMutationOracle -Operation InstantRecoverSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -713,6 +719,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			snapshotId = $someString
     /// 			# OPTIONAL
     /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			scn = $someInt64
     /// 		}
     /// 	}
     /// 	# REQUIRED
@@ -742,7 +750,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: MountDatabase
     /// 
-    /// $query = New-RscMutationOracle -MountDatabase
+    /// $query = New-RscMutationOracle -Operation MountDatabase
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -788,6 +796,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				snapshotId = $someString
     /// 				# OPTIONAL
     /// 				timestampMs = $someInt64
+    /// 				# OPTIONAL
+    /// 				scn = $someInt64
     /// 			}
     /// 			# REQUIRED
     /// 			targetOracleHostOrRacId = $someString
@@ -829,7 +839,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: RefreshDatabase
     /// 
-    /// $query = New-RscMutationOracle -RefreshDatabase
+    /// $query = New-RscMutationOracle -Operation RefreshDatabase
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -860,7 +870,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: RestoreLogs
     /// 
-    /// $query = New-RscMutationOracle -RestoreLogs
+    /// $query = New-RscMutationOracle -Operation RestoreLogs
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -910,7 +920,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: TakeOnDemandDatabaseSnapshot
     /// 
-    /// $query = New-RscMutationOracle -TakeOnDemandDatabaseSnapshot
+    /// $query = New-RscMutationOracle -Operation TakeOnDemandDatabaseSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -953,7 +963,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: TakeOnDemandLogSnapshot
     /// 
-    /// $query = New-RscMutationOracle -TakeOnDemandLogSnapshot
+    /// $query = New-RscMutationOracle -Operation TakeOnDemandLogSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -984,7 +994,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: UpdateDataGuardGroup
     /// 
-    /// $query = New-RscMutationOracle -UpdateDataGuardGroup
+    /// $query = New-RscMutationOracle -Operation UpdateDataGuardGroup
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1051,7 +1061,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: ValidateAcoFile
     /// 
-    /// $query = New-RscMutationOracle -ValidateAcoFile
+    /// $query = New-RscMutationOracle -Operation ValidateAcoFile
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1090,7 +1100,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Oracle
     /// # API Operation: ValidateDatabaseBackups
     /// 
-    /// $query = New-RscMutationOracle -ValidateDatabaseBackups
+    /// $query = New-RscMutationOracle -Operation ValidateDatabaseBackups
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1110,6 +1120,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			snapshotId = $someString
     /// 			# OPTIONAL
     /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			scn = $someInt64
     /// 		}
     /// 		# REQUIRED
     /// 		targetOracleHostOrRacId = $someString
@@ -1698,6 +1710,8 @@ $query.Var.input = @{
 			snapshotId = $someString
 			# OPTIONAL
 			timestampMs = $someInt64
+			# OPTIONAL
+			scn = $someInt64
 		}
 	}
 	# REQUIRED
@@ -1895,6 +1909,8 @@ $query.Var.input = @{
 				snapshotId = $someString
 				# OPTIONAL
 				timestampMs = $someInt64
+				# OPTIONAL
+				scn = $someInt64
 			}
 			# REQUIRED
 			targetOracleHostOrRacId = $someString
@@ -1944,6 +1960,8 @@ $query.Var.input = @{
 			snapshotId = $someString
 			# OPTIONAL
 			timestampMs = $someInt64
+			# OPTIONAL
+			scn = $someInt64
 		}
 		# REQUIRED
 		tablespaceName = $someString
@@ -1983,6 +2001,8 @@ $query.Var.input = @{
 			snapshotId = $someString
 			# OPTIONAL
 			timestampMs = $someInt64
+			# OPTIONAL
+			scn = $someInt64
 		}
 	}
 	# REQUIRED
@@ -2050,6 +2070,8 @@ $query.Var.input = @{
 				snapshotId = $someString
 				# OPTIONAL
 				timestampMs = $someInt64
+				# OPTIONAL
+				scn = $someInt64
 			}
 			# REQUIRED
 			targetOracleHostOrRacId = $someString
@@ -2316,6 +2338,8 @@ $query.Var.input = @{
 			snapshotId = $someString
 			# OPTIONAL
 			timestampMs = $someInt64
+			# OPTIONAL
+			scn = $someInt64
 		}
 		# REQUIRED
 		targetOracleHostOrRacId = $someString

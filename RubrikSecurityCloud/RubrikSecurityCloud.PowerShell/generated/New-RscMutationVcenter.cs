@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: Create
     /// 
-    /// $query = New-RscMutationVcenter -Create
+    /// $query = New-RscMutationVcenter -Operation Create
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: Delete
     /// 
-    /// $query = New-RscMutationVcenter -Delete
+    /// $query = New-RscMutationVcenter -Operation Delete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: Refresh
     /// 
-    /// $query = New-RscMutationVcenter -Refresh
+    /// $query = New-RscMutationVcenter -Operation Refresh
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -214,7 +214,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: Update
     /// 
-    /// $query = New-RscMutationVcenter -Update
+    /// $query = New-RscMutationVcenter -Operation Update
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -591,7 +591,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: UpdateHotAddBandwidth
     /// 
-    /// $query = New-RscMutationVcenter -UpdateHotAddBandwidth
+    /// $query = New-RscMutationVcenter -Operation UpdateHotAddBandwidth
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -629,7 +629,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: UpdateHotAddNetwork
     /// 
-    /// $query = New-RscMutationVcenter -UpdateHotAddNetwork
+    /// $query = New-RscMutationVcenter -Operation UpdateHotAddNetwork
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -680,7 +680,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: UpdateV2
     /// 
-    /// $query = New-RscMutationVcenter -UpdateV2
+    /// $query = New-RscMutationVcenter -Operation UpdateV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

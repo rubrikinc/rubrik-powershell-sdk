@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: BulkAddNasShares
     /// 
-    /// $query = New-RscMutationNas -BulkAddNasShares
+    /// $query = New-RscMutationNas -Operation BulkAddNasShares
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -137,7 +137,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: BulkDeleteNasShares
     /// 
-    /// $query = New-RscMutationNas -BulkDeleteNasShares
+    /// $query = New-RscMutationNas -Operation BulkDeleteNasShares
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -173,7 +173,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: BulkDeleteNasSystems
     /// 
-    /// $query = New-RscMutationNas -BulkDeleteNasSystems
+    /// $query = New-RscMutationNas -Operation BulkDeleteNasSystems
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -209,7 +209,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: BulkUpdateNasShares
     /// 
-    /// $query = New-RscMutationNas -BulkUpdateNasShares
+    /// $query = New-RscMutationNas -Operation BulkUpdateNasShares
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -261,7 +261,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: DeleteNasSystem
     /// 
-    /// $query = New-RscMutationNas -DeleteNasSystem
+    /// $query = New-RscMutationNas -Operation DeleteNasSystem
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -292,7 +292,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: HideRevealNasShares
     /// 
-    /// $query = New-RscMutationNas -HideRevealNasShares
+    /// $query = New-RscMutationNas -Operation HideRevealNasShares
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -330,7 +330,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: RefreshNasSystems
     /// 
-    /// $query = New-RscMutationNas -RefreshNasSystems
+    /// $query = New-RscMutationNas -Operation RefreshNasSystems
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -366,7 +366,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: RegisterNasSystem
     /// 
-    /// $query = New-RscMutationNas -RegisterNasSystem
+    /// $query = New-RscMutationNas -Operation RegisterNasSystem
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -480,7 +480,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: UpdateNasShares
     /// 
-    /// $query = New-RscMutationNas -UpdateNasShares
+    /// $query = New-RscMutationNas -Operation UpdateNasShares
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -521,7 +521,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Nas
     /// # API Operation: UpdateNasSystem
     /// 
-    /// $query = New-RscMutationNas -UpdateNasSystem
+    /// $query = New-RscMutationNas -Operation UpdateNasSystem
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

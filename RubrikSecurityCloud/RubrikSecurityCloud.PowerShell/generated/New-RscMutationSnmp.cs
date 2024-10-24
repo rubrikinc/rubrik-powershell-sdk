@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Snmp
     /// # API Operation: UpdateConfig
     /// 
-    /// $query = New-RscMutationSnmp -UpdateConfig
+    /// $query = New-RscMutationSnmp -Operation UpdateConfig
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

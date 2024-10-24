@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: CloudAccountMissingPermissionsForAddition
     /// 
-    /// $query = New-RscQueryGcp -CloudAccountMissingPermissionsForAddition
+    /// $query = New-RscQueryGcp -Operation CloudAccountMissingPermissionsForAddition
     /// 
     /// # REQUIRED
     /// $query.Var.sessionId = $someString
@@ -119,7 +119,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: CloudAccountProjectsByFeature
     /// 
-    /// $query = New-RscQueryGcp -CloudAccountProjectsByFeature
+    /// $query = New-RscQueryGcp -Operation CloudAccountProjectsByFeature
     /// 
     /// # REQUIRED
     /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: CloudAccountProjectsForOauth
     /// 
-    /// $query = New-RscQueryGcp -CloudAccountProjectsForOauth
+    /// $query = New-RscQueryGcp -Operation CloudAccountProjectsForOauth
     /// 
     /// # REQUIRED
     /// $query.Var.sessionId = $someString
@@ -187,7 +187,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: FeaturePermissionsForCloudAccount
     /// 
-    /// $query = New-RscQueryGcp -FeaturePermissionsForCloudAccount
+    /// $query = New-RscQueryGcp -Operation FeaturePermissionsForCloudAccount
     /// 
     /// # REQUIRED
     /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -215,7 +215,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: GetDefaultCredentialsServiceAccount
     /// 
-    /// $query = New-RscQueryGcp -GetDefaultCredentialsServiceAccount
+    /// $query = New-RscQueryGcp -Operation GetDefaultCredentialsServiceAccount
     /// 
     /// # No variables for this query.
     /// 
@@ -242,7 +242,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: NativeAvailableKmsCryptoKeys
     /// 
-    /// $query = New-RscQueryGcp -NativeAvailableKmsCryptoKeys
+    /// $query = New-RscQueryGcp -Operation NativeAvailableKmsCryptoKeys
     /// 
     /// # REQUIRED
     /// $query.Var.projectId = $someString
@@ -272,7 +272,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: NativeCompatibleMachineTypes
     /// 
-    /// $query = New-RscQueryGcp -NativeCompatibleMachineTypes
+    /// $query = New-RscQueryGcp -Operation NativeCompatibleMachineTypes
     /// 
     /// # REQUIRED
     /// $query.Var.targetZone = $someString
@@ -302,7 +302,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: NativeNetworks
     /// 
-    /// $query = New-RscQueryGcp -NativeNetworks
+    /// $query = New-RscQueryGcp -Operation NativeNetworks
     /// 
     /// # REQUIRED
     /// $query.Var.projectId = $someString
@@ -330,7 +330,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: NativeProjectsWithAccessibleNetworks
     /// 
-    /// $query = New-RscQueryGcp -NativeProjectsWithAccessibleNetworks
+    /// $query = New-RscQueryGcp -Operation NativeProjectsWithAccessibleNetworks
     /// 
     /// # REQUIRED
     /// $query.Var.projectId = $someString
@@ -358,7 +358,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: NativeRegions
     /// 
-    /// $query = New-RscQueryGcp -NativeRegions
+    /// $query = New-RscQueryGcp -Operation NativeRegions
     /// 
     /// # REQUIRED
     /// $query.Var.projectId = $someString
@@ -386,7 +386,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: NativeStoredMachineTypes
     /// 
-    /// $query = New-RscQueryGcp -NativeStoredMachineTypes
+    /// $query = New-RscQueryGcp -Operation NativeStoredMachineTypes
     /// 
     /// # No variables for this query.
     /// 
@@ -413,7 +413,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: NativeStoredMachineTypesInProject
     /// 
-    /// $query = New-RscQueryGcp -NativeStoredMachineTypesInProject
+    /// $query = New-RscQueryGcp -Operation NativeStoredMachineTypesInProject
     /// 
     /// # REQUIRED
     /// $query.Var.projectId = $someString
@@ -441,7 +441,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: NativeStoredNetworkNames
     /// 
-    /// $query = New-RscQueryGcp -NativeStoredNetworkNames
+    /// $query = New-RscQueryGcp -Operation NativeStoredNetworkNames
     /// 
     /// # No variables for this query.
     /// 
@@ -468,7 +468,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: NativeStoredNetworkNamesInProject
     /// 
-    /// $query = New-RscQueryGcp -NativeStoredNetworkNamesInProject
+    /// $query = New-RscQueryGcp -Operation NativeStoredNetworkNamesInProject
     /// 
     /// # REQUIRED
     /// $query.Var.projectId = $someString
@@ -496,7 +496,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: NativeStoredRegions
     /// 
-    /// $query = New-RscQueryGcp -NativeStoredRegions
+    /// $query = New-RscQueryGcp -Operation NativeStoredRegions
     /// 
     /// # No variables for this query.
     /// 
@@ -523,7 +523,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Gcp
     /// # API Operation: NativeStoredRegionsInProject
     /// 
-    /// $query = New-RscQueryGcp -NativeStoredRegionsInProject
+    /// $query = New-RscQueryGcp -Operation NativeStoredRegionsInProject
     /// 
     /// # REQUIRED
     /// $query.Var.projectId = $someString

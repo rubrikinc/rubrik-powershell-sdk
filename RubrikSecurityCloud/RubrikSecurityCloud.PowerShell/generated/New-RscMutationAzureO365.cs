@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureO365
     /// # API Operation: SetupExocompute
     /// 
-    /// $query = New-RscMutationAzureO365 -SetupExocompute
+    /// $query = New-RscMutationAzureO365 -Operation SetupExocompute
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString

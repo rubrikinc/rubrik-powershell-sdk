@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: ComputeCluster
     /// 
-    /// $query = New-RscQueryVsphere -ComputeCluster
+    /// $query = New-RscQueryVsphere -Operation ComputeCluster
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: ComputeClusters
     /// 
-    /// $query = New-RscQueryVsphere -ComputeClusters
+    /// $query = New-RscQueryVsphere -Operation ComputeClusters
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: Datacenter
     /// 
-    /// $query = New-RscQueryVsphere -Datacenter
+    /// $query = New-RscQueryVsphere -Operation Datacenter
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -219,7 +219,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: Datastore
     /// 
-    /// $query = New-RscQueryVsphere -Datastore
+    /// $query = New-RscQueryVsphere -Operation Datastore
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -247,7 +247,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: DatastoreCluster
     /// 
-    /// $query = New-RscQueryVsphere -DatastoreCluster
+    /// $query = New-RscQueryVsphere -Operation DatastoreCluster
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -275,7 +275,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: DatastoreClusters
     /// 
-    /// $query = New-RscQueryVsphere -DatastoreClusters
+    /// $query = New-RscQueryVsphere -Operation DatastoreClusters
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -351,7 +351,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: DatastoreList
     /// 
-    /// $query = New-RscQueryVsphere -DatastoreList
+    /// $query = New-RscQueryVsphere -Operation DatastoreList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -427,7 +427,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: Folder
     /// 
-    /// $query = New-RscQueryVsphere -Folder
+    /// $query = New-RscQueryVsphere -Operation Folder
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -455,7 +455,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: Folders
     /// 
-    /// $query = New-RscQueryVsphere -Folders
+    /// $query = New-RscQueryVsphere -Operation Folders
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -531,7 +531,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: Host
     /// 
-    /// $query = New-RscQueryVsphere -Host
+    /// $query = New-RscQueryVsphere -Operation Host
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -559,7 +559,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: HostDetails
     /// 
-    /// $query = New-RscQueryVsphere -HostDetails
+    /// $query = New-RscQueryVsphere -Operation HostDetails
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -590,7 +590,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: HostList
     /// 
-    /// $query = New-RscQueryVsphere -HostList
+    /// $query = New-RscQueryVsphere -Operation HostList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -666,7 +666,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: HostsByFids
     /// 
-    /// $query = New-RscQueryVsphere -HostsByFids
+    /// $query = New-RscQueryVsphere -Operation HostsByFids
     /// 
     /// # REQUIRED
     /// $query.Var.fids = @(
@@ -696,7 +696,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: LiveMounts
     /// 
-    /// $query = New-RscQueryVsphere -LiveMounts
+    /// $query = New-RscQueryVsphere -Operation LiveMounts
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -744,7 +744,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: Mount
     /// 
-    /// $query = New-RscQueryVsphere -Mount
+    /// $query = New-RscQueryVsphere -Operation Mount
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -772,7 +772,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: MountList
     /// 
-    /// $query = New-RscQueryVsphere -MountList
+    /// $query = New-RscQueryVsphere -Operation MountList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -821,7 +821,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: Network
     /// 
-    /// $query = New-RscQueryVsphere -Network
+    /// $query = New-RscQueryVsphere -Operation Network
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -849,7 +849,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: ResourcePool
     /// 
-    /// $query = New-RscQueryVsphere -ResourcePool
+    /// $query = New-RscQueryVsphere -Operation ResourcePool
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -877,7 +877,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: RootRecoveryHierarchy
     /// 
-    /// $query = New-RscQueryVsphere -RootRecoveryHierarchy
+    /// $query = New-RscQueryVsphere -Operation RootRecoveryHierarchy
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -957,7 +957,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: Tag
     /// 
-    /// $query = New-RscQueryVsphere -Tag
+    /// $query = New-RscQueryVsphere -Operation Tag
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -985,7 +985,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: TagCategory
     /// 
-    /// $query = New-RscQueryVsphere -TagCategory
+    /// $query = New-RscQueryVsphere -Operation TagCategory
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -1013,7 +1013,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: TopLevelDescendantsList
     /// 
-    /// $query = New-RscQueryVsphere -TopLevelDescendantsList
+    /// $query = New-RscQueryVsphere -Operation TopLevelDescendantsList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1093,7 +1093,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: TopLevelRecoveryTargets
     /// 
-    /// $query = New-RscQueryVsphere -TopLevelRecoveryTargets
+    /// $query = New-RscQueryVsphere -Operation TopLevelRecoveryTargets
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1173,7 +1173,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: VmsByFids
     /// 
-    /// $query = New-RscQueryVsphere -VmsByFids
+    /// $query = New-RscQueryVsphere -Operation VmsByFids
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -1215,7 +1215,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: VmwareCdpLiveInfo
     /// 
-    /// $query = New-RscQueryVsphere -VmwareCdpLiveInfo
+    /// $query = New-RscQueryVsphere -Operation VmwareCdpLiveInfo
     /// 
     /// # REQUIRED
     /// $query.Var.ids = @(

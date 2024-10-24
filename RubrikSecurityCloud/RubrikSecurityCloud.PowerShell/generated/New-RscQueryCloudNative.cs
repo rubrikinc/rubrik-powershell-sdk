@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: CheckArchivedSnapshotsLocked
     /// 
-    /// $query = New-RscQueryCloudNative -CheckArchivedSnapshotsLocked
+    /// $query = New-RscQueryCloudNative -Operation CheckArchivedSnapshotsLocked
     /// 
     /// # REQUIRED
     /// $query.Var.workloadId = $someString
@@ -119,7 +119,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: CheckLabelRuleNameUniqueness
     /// 
-    /// $query = New-RscQueryCloudNative -CheckLabelRuleNameUniqueness
+    /// $query = New-RscQueryCloudNative -Operation CheckLabelRuleNameUniqueness
     /// 
     /// # REQUIRED
     /// $query.Var.ruleName = $someString
@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: CheckRequiredPermissionsForFeature
     /// 
-    /// $query = New-RscQueryCloudNative -CheckRequiredPermissionsForFeature
+    /// $query = New-RscQueryCloudNative -Operation CheckRequiredPermissionsForFeature
     /// 
     /// # REQUIRED
     /// $query.Var.cloudNativeAccountId = $someString
@@ -184,7 +184,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: CheckTagRuleNameUniqueness
     /// 
-    /// $query = New-RscQueryCloudNative -CheckTagRuleNameUniqueness
+    /// $query = New-RscQueryCloudNative -Operation CheckTagRuleNameUniqueness
     /// 
     /// # REQUIRED
     /// $query.Var.ruleName = $someString
@@ -214,7 +214,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: CustomerTags
     /// 
-    /// $query = New-RscQueryCloudNative -CustomerTags
+    /// $query = New-RscQueryCloudNative -Operation CustomerTags
     /// 
     /// # REQUIRED
     /// $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
@@ -244,7 +244,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: FileRecoveryEligibleSnapshots
     /// 
-    /// $query = New-RscQueryCloudNative -FileRecoveryEligibleSnapshots
+    /// $query = New-RscQueryCloudNative -Operation FileRecoveryEligibleSnapshots
     /// 
     /// # REQUIRED
     /// $query.Var.workloadId = $someString
@@ -272,7 +272,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: IsFileRecoveryFeasible
     /// 
-    /// $query = New-RscQueryCloudNative -IsFileRecoveryFeasible
+    /// $query = New-RscQueryCloudNative -Operation IsFileRecoveryFeasible
     /// 
     /// # REQUIRED
     /// $query.Var.snapshotIds = @(
@@ -302,7 +302,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: LabelKeys
     /// 
-    /// $query = New-RscQueryCloudNative -LabelKeys
+    /// $query = New-RscQueryCloudNative -Operation LabelKeys
     /// 
     /// # REQUIRED
     /// $query.Var.keySubStr = $someString
@@ -334,7 +334,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: LabelRules
     /// 
-    /// $query = New-RscQueryCloudNative -LabelRules
+    /// $query = New-RscQueryCloudNative -Operation LabelRules
     /// 
     /// # REQUIRED
     /// $query.Var.objectType = $someCloudNativeLabelObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLabelObjectType]) for enum values.
@@ -377,7 +377,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: LabelValues
     /// 
-    /// $query = New-RscQueryCloudNative -LabelValues
+    /// $query = New-RscQueryCloudNative -Operation LabelValues
     /// 
     /// # REQUIRED
     /// $query.Var.valueSubStr = $someString
@@ -411,7 +411,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: RbaInstallers
     /// 
-    /// $query = New-RscQueryCloudNative -RbaInstallers
+    /// $query = New-RscQueryCloudNative -Operation RbaInstallers
     /// 
     /// # No variables for this query.
     /// 
@@ -438,7 +438,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: SnapshotDetailsForRecovery
     /// 
-    /// $query = New-RscQueryCloudNative -SnapshotDetailsForRecovery
+    /// $query = New-RscQueryCloudNative -Operation SnapshotDetailsForRecovery
     /// 
     /// # REQUIRED
     /// $query.Var.snapshotId = $someString
@@ -466,7 +466,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: SnapshotTypeDetails
     /// 
-    /// $query = New-RscQueryCloudNative -SnapshotTypeDetails
+    /// $query = New-RscQueryCloudNative -Operation SnapshotTypeDetails
     /// 
     /// # REQUIRED
     /// $query.Var.snapshotId = $someString
@@ -494,7 +494,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: Snapshots
     /// 
-    /// $query = New-RscQueryCloudNative -Snapshots
+    /// $query = New-RscQueryCloudNative -Operation Snapshots
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -530,7 +530,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: SqlServerSetupScript
     /// 
-    /// $query = New-RscQueryCloudNative -SqlServerSetupScript
+    /// $query = New-RscQueryCloudNative -Operation SqlServerSetupScript
     /// 
     /// # OPTIONAL
     /// $query.Var.cloudNativeObjectType = $someCloudNativeObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeObjectType]) for enum values.
@@ -558,7 +558,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: TagKeys
     /// 
-    /// $query = New-RscQueryCloudNative -TagKeys
+    /// $query = New-RscQueryCloudNative -Operation TagKeys
     /// 
     /// # REQUIRED
     /// $query.Var.keySubStr = $someString
@@ -590,7 +590,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: TagRules
     /// 
-    /// $query = New-RscQueryCloudNative -TagRules
+    /// $query = New-RscQueryCloudNative -Operation TagRules
     /// 
     /// # REQUIRED
     /// $query.Var.objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeTagObjectType]) for enum values.
@@ -633,7 +633,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: TagValues
     /// 
-    /// $query = New-RscQueryCloudNative -TagValues
+    /// $query = New-RscQueryCloudNative -Operation TagValues
     /// 
     /// # REQUIRED
     /// $query.Var.valueSubStr = $someString
@@ -667,7 +667,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudNative
     /// # API Operation: WorkloadVersionedFiles
     /// 
-    /// $query = New-RscQueryCloudNative -WorkloadVersionedFiles
+    /// $query = New-RscQueryCloudNative -Operation WorkloadVersionedFiles
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

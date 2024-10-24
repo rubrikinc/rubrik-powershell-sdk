@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: BulkOnDemandSnapshot
     /// 
-    /// $query = New-RscMutationVsphere -BulkOnDemandSnapshot
+    /// $query = New-RscMutationVsphere -Operation BulkOnDemandSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -127,7 +127,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: CreateAdvancedTag
     /// 
-    /// $query = New-RscMutationVsphere -CreateAdvancedTag
+    /// $query = New-RscMutationVsphere -Operation CreateAdvancedTag
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -167,7 +167,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: DeleteAdvancedTag
     /// 
-    /// $query = New-RscMutationVsphere -DeleteAdvancedTag
+    /// $query = New-RscMutationVsphere -Operation DeleteAdvancedTag
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -200,7 +200,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: DeleteLiveMount
     /// 
-    /// $query = New-RscMutationVsphere -DeleteLiveMount
+    /// $query = New-RscMutationVsphere -Operation DeleteLiveMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -233,7 +233,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: DownloadVirtualMachineFiles
     /// 
-    /// $query = New-RscMutationVsphere -DownloadVirtualMachineFiles
+    /// $query = New-RscMutationVsphere -Operation DownloadVirtualMachineFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -273,7 +273,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: ExportSnapshotToStandaloneHostV2
     /// 
-    /// $query = New-RscMutationVsphere -ExportSnapshotToStandaloneHostV2
+    /// $query = New-RscMutationVsphere -Operation ExportSnapshotToStandaloneHostV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -328,7 +328,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: OnDemandSnapshot
     /// 
-    /// $query = New-RscMutationVsphere -OnDemandSnapshot
+    /// $query = New-RscMutationVsphere -Operation OnDemandSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -366,7 +366,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: SnapshotDownloadFilesFromLocation
     /// 
-    /// $query = New-RscMutationVsphere -SnapshotDownloadFilesFromLocation
+    /// $query = New-RscMutationVsphere -Operation SnapshotDownloadFilesFromLocation
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -415,7 +415,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: SnapshotRestoreFilesFromLocation
     /// 
-    /// $query = New-RscMutationVsphere -SnapshotRestoreFilesFromLocation
+    /// $query = New-RscMutationVsphere -Operation SnapshotRestoreFilesFromLocation
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -487,7 +487,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: UpdateAdvancedTag
     /// 
-    /// $query = New-RscMutationVsphere -UpdateAdvancedTag
+    /// $query = New-RscMutationVsphere -Operation UpdateAdvancedTag
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -529,7 +529,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vsphere
     /// # API Operation: UpdateVmNew
     /// 
-    /// $query = New-RscMutationVsphere -UpdateVmNew
+    /// $query = New-RscMutationVsphere -Operation UpdateVmNew
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

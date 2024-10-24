@@ -161,6 +161,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("unexpiredReplicaCount")]
         public System.Int32? UnexpiredReplicaCount { get; set; }
 
+        //      C# -> List<ArchivedSnapshot>? ArchivedSnapshots
+        // GraphQL -> archivedSnapshots: [ArchivedSnapshot!] (type)
+        [JsonProperty("archivedSnapshots")]
+        public List<ArchivedSnapshot>? ArchivedSnapshots { get; set; }
+
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         [JsonProperty("latestUserNote")]
@@ -209,6 +214,7 @@ namespace RubrikSecurityCloud.Types
         System.String? SnappableId = null,
         System.Int32? UnexpiredArchivedSnapshotCount = null,
         System.Int32? UnexpiredReplicaCount = null,
+        List<ArchivedSnapshot>? ArchivedSnapshots = null,
         LatestUserNote? LatestUserNote = null,
         List<DataLocation>? ReplicationLocations = null
     ) 
@@ -296,6 +302,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UnexpiredReplicaCount != null ) {
             this.UnexpiredReplicaCount = UnexpiredReplicaCount;
+        }
+        if ( ArchivedSnapshots != null ) {
+            this.ArchivedSnapshots = ArchivedSnapshots;
         }
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
@@ -575,6 +584,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "unexpiredReplicaCount\n" ;
             } else {
                 s += ind + "unexpiredReplicaCount\n" ;
+            }
+        }
+        //      C# -> List<ArchivedSnapshot>? ArchivedSnapshots
+        // GraphQL -> archivedSnapshots: [ArchivedSnapshot!] (type)
+        if (this.ArchivedSnapshots != null) {
+            var fspec = this.ArchivedSnapshots.AsFieldSpec(conf.Child("archivedSnapshots"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archivedSnapshots" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> LatestUserNote? LatestUserNote
@@ -1097,6 +1118,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.UnexpiredReplicaCount != null && ec.Excludes("unexpiredReplicaCount",true))
         {
             this.UnexpiredReplicaCount = null;
+        }
+        //      C# -> List<ArchivedSnapshot>? ArchivedSnapshots
+        // GraphQL -> archivedSnapshots: [ArchivedSnapshot!] (type)
+        if (ec.Includes("archivedSnapshots",false))
+        {
+            if(this.ArchivedSnapshots == null) {
+
+                this.ArchivedSnapshots = new List<ArchivedSnapshot>();
+                this.ArchivedSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("archivedSnapshots"));
+
+            } else {
+
+                this.ArchivedSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("archivedSnapshots"));
+
+            }
+        }
+        else if (this.ArchivedSnapshots != null && ec.Excludes("archivedSnapshots",false))
+        {
+            this.ArchivedSnapshots = null;
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)

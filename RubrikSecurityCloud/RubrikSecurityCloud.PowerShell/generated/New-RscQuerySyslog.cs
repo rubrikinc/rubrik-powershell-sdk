@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Syslog
     /// # API Operation: ExportRules
     /// 
-    /// $query = New-RscQuerySyslog -ExportRules
+    /// $query = New-RscQuerySyslog -Operation ExportRules
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

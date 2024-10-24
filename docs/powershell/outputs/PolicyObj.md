@@ -53,6 +53,8 @@
   - Specifies the sensitive files count summary for MIP Labels.
 - violationSeverity: ViolationSeverity
   - Signifies the violation severity of the asset.
+- exposureSummary: list of ExposureSummarys
+  - Signifies the file exposure summary of the asset.
 - id: System.String
 - folderChildConnection: FileResultConnection
 - fileResultConnection: FileResultConnection

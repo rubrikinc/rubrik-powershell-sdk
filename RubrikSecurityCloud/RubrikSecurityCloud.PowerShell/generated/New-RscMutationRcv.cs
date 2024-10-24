@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Rcv
     /// # API Operation: ApprovePrivateEndpoint
     /// 
-    /// $query = New-RscMutationRcv -ApprovePrivateEndpoint
+    /// $query = New-RscMutationRcv -Operation ApprovePrivateEndpoint
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Rcv
     /// # API Operation: CreateLocationsFromTemplate
     /// 
-    /// $query = New-RscMutationRcv -CreateLocationsFromTemplate
+    /// $query = New-RscMutationRcv -Operation CreateLocationsFromTemplate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Rcv
     /// # API Operation: CreatePrivateEndpointApprovalRequest
     /// 
-    /// $query = New-RscMutationRcv -CreatePrivateEndpointApprovalRequest
+    /// $query = New-RscMutationRcv -Operation CreatePrivateEndpointApprovalRequest
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -222,7 +222,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Rcv
     /// # API Operation: UpdateTarget
     /// 
-    /// $query = New-RscMutationRcv -UpdateTarget
+    /// $query = New-RscMutationRcv -Operation UpdateTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

@@ -570,6 +570,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MSSQL_IS_FAILOVER_CLUSTER_PROTECTED")]
         MSSQL_IS_FAILOVER_CLUSTER_PROTECTED,
 
+        [EnumMember(Value = "MSSQL_IS_FAILOVER_CLUSTER_UNPROTECTABLE")]
+        MSSQL_IS_FAILOVER_CLUSTER_UNPROTECTABLE,
+
         [EnumMember(Value = "MSSQL_IS_HOST_PROTECTED")]
         MSSQL_IS_HOST_PROTECTED,
 

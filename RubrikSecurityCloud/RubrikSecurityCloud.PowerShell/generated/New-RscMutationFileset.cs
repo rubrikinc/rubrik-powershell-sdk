@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: BulkCreate
     /// 
-    /// $query = New-RscMutationFileset -BulkCreate
+    /// $query = New-RscMutationFileset -Operation BulkCreate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: BulkCreateTemplates
     /// 
-    /// $query = New-RscMutationFileset -BulkCreateTemplates
+    /// $query = New-RscMutationFileset -Operation BulkCreateTemplates
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -227,7 +227,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: BulkDelete
     /// 
-    /// $query = New-RscMutationFileset -BulkDelete
+    /// $query = New-RscMutationFileset -Operation BulkDelete
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -262,7 +262,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: BulkDeleteTemplate
     /// 
-    /// $query = New-RscMutationFileset -BulkDeleteTemplate
+    /// $query = New-RscMutationFileset -Operation BulkDeleteTemplate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -297,7 +297,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: BulkUpdateTemplate
     /// 
-    /// $query = New-RscMutationFileset -BulkUpdateTemplate
+    /// $query = New-RscMutationFileset -Operation BulkUpdateTemplate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -372,7 +372,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: RecoverFiles
     /// 
-    /// $query = New-RscMutationFileset -RecoverFiles
+    /// $query = New-RscMutationFileset -Operation RecoverFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -445,7 +445,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: Update
     /// 
-    /// $query = New-RscMutationFileset -Update
+    /// $query = New-RscMutationFileset -Operation Update
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

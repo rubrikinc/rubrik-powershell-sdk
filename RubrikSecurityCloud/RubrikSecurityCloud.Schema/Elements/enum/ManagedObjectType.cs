@@ -126,6 +126,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXCHANGE_DATABASE")]
         EXCHANGE_DATABASE,
 
+        [EnumMember(Value = "EXCHANGE_HOST")]
+        EXCHANGE_HOST,
+
         [EnumMember(Value = "EXCHANGE_SERVER")]
         EXCHANGE_SERVER,
 
@@ -248,6 +251,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MSSQL_DATABASE")]
         MSSQL_DATABASE,
+
+        [EnumMember(Value = "MSSQL_HOST")]
+        MSSQL_HOST,
 
         [EnumMember(Value = "MSSQL_INSTANCE")]
         MSSQL_INSTANCE,

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ldap
     /// # API Operation: AuthorizedPrincipalList
     /// 
-    /// $query = New-RscQueryLdap -AuthorizedPrincipalList
+    /// $query = New-RscQueryLdap -Operation AuthorizedPrincipalList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -131,7 +131,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ldap
     /// # API Operation: IntegrationList
     /// 
-    /// $query = New-RscQueryLdap -IntegrationList
+    /// $query = New-RscQueryLdap -Operation IntegrationList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -169,7 +169,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Ldap
     /// # API Operation: PrincipalList
     /// 
-    /// $query = New-RscQueryLdap -PrincipalList
+    /// $query = New-RscQueryLdap -Operation PrincipalList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

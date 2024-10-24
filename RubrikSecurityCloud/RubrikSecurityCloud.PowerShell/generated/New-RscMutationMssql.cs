@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: AddHost
     /// 
-    /// $query = New-RscMutationMssql -AddHost
+    /// $query = New-RscMutationMssql -Operation AddHost
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -202,7 +202,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: AssignSlaDomainProperties
     /// 
-    /// $query = New-RscMutationMssql -AssignSlaDomainProperties
+    /// $query = New-RscMutationMssql -Operation AssignSlaDomainProperties
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -264,7 +264,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: AssignSlaDomainPropertiesAsync
     /// 
-    /// $query = New-RscMutationMssql -AssignSlaDomainPropertiesAsync
+    /// $query = New-RscMutationMssql -Operation AssignSlaDomainPropertiesAsync
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -328,7 +328,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: BrowseDatabaseSnapshot
     /// 
-    /// $query = New-RscMutationMssql -BrowseDatabaseSnapshot
+    /// $query = New-RscMutationMssql -Operation BrowseDatabaseSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -411,7 +411,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: BulkCreateOnDemandBackup
     /// 
-    /// $query = New-RscMutationMssql -BulkCreateOnDemandBackup
+    /// $query = New-RscMutationMssql -Operation BulkCreateOnDemandBackup
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -472,7 +472,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: BulkExportDatabases
     /// 
-    /// $query = New-RscMutationMssql -BulkExportDatabases
+    /// $query = New-RscMutationMssql -Operation BulkExportDatabases
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -532,7 +532,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: BulkUpdateAvailabilityGroup
     /// 
-    /// $query = New-RscMutationMssql -BulkUpdateAvailabilityGroup
+    /// $query = New-RscMutationMssql -Operation BulkUpdateAvailabilityGroup
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -615,7 +615,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: BulkUpdateDbs
     /// 
-    /// $query = New-RscMutationMssql -BulkUpdateDbs
+    /// $query = New-RscMutationMssql -Operation BulkUpdateDbs
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -728,7 +728,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: BulkUpdateInstance
     /// 
-    /// $query = New-RscMutationMssql -BulkUpdateInstance
+    /// $query = New-RscMutationMssql -Operation BulkUpdateInstance
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -811,7 +811,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: BulkUpdatePropertiesOnHost
     /// 
-    /// $query = New-RscMutationMssql -BulkUpdatePropertiesOnHost
+    /// $query = New-RscMutationMssql -Operation BulkUpdatePropertiesOnHost
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -863,7 +863,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: BulkUpdatePropertiesOnWindowsCluster
     /// 
-    /// $query = New-RscMutationMssql -BulkUpdatePropertiesOnWindowsCluster
+    /// $query = New-RscMutationMssql -Operation BulkUpdatePropertiesOnWindowsCluster
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -915,7 +915,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: CreateLiveMount
     /// 
-    /// $query = New-RscMutationMssql -CreateLiveMount
+    /// $query = New-RscMutationMssql -Operation CreateLiveMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -969,7 +969,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: CreateLogShippingConfiguration
     /// 
-    /// $query = New-RscMutationMssql -CreateLogShippingConfiguration
+    /// $query = New-RscMutationMssql -Operation CreateLogShippingConfiguration
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1040,7 +1040,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: CreateOnDemandBackup
     /// 
-    /// $query = New-RscMutationMssql -CreateOnDemandBackup
+    /// $query = New-RscMutationMssql -Operation CreateOnDemandBackup
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1083,7 +1083,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: DeleteDbSnapshots
     /// 
-    /// $query = New-RscMutationMssql -DeleteDbSnapshots
+    /// $query = New-RscMutationMssql -Operation DeleteDbSnapshots
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1114,7 +1114,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: DeleteLiveMount
     /// 
-    /// $query = New-RscMutationMssql -DeleteLiveMount
+    /// $query = New-RscMutationMssql -Operation DeleteLiveMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1147,7 +1147,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: DeleteLogShipping
     /// 
-    /// $query = New-RscMutationMssql -DeleteLogShipping
+    /// $query = New-RscMutationMssql -Operation DeleteLogShipping
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1180,7 +1180,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: DownloadDatabaseBackupFiles
     /// 
-    /// $query = New-RscMutationMssql -DownloadDatabaseBackupFiles
+    /// $query = New-RscMutationMssql -Operation DownloadDatabaseBackupFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1225,7 +1225,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: DownloadDatabaseFilesFromArchivalLocation
     /// 
-    /// $query = New-RscMutationMssql -DownloadDatabaseFilesFromArchivalLocation
+    /// $query = New-RscMutationMssql -Operation DownloadDatabaseFilesFromArchivalLocation
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1273,7 +1273,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: ExportDatabase
     /// 
-    /// $query = New-RscMutationMssql -ExportDatabase
+    /// $query = New-RscMutationMssql -Operation ExportDatabase
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1348,7 +1348,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: RestoreDatabase
     /// 
-    /// $query = New-RscMutationMssql -RestoreDatabase
+    /// $query = New-RscMutationMssql -Operation RestoreDatabase
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1400,7 +1400,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: TakeLogBackup
     /// 
-    /// $query = New-RscMutationMssql -TakeLogBackup
+    /// $query = New-RscMutationMssql -Operation TakeLogBackup
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1431,7 +1431,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: UpdateDefaultProperties
     /// 
-    /// $query = New-RscMutationMssql -UpdateDefaultProperties
+    /// $query = New-RscMutationMssql -Operation UpdateDefaultProperties
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1473,7 +1473,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: UpdateLogShippingConfiguration
     /// 
-    /// $query = New-RscMutationMssql -UpdateLogShippingConfiguration
+    /// $query = New-RscMutationMssql -Operation UpdateLogShippingConfiguration
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1511,7 +1511,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: UpdateLogShippingConfigurationV1
     /// 
-    /// $query = New-RscMutationMssql -UpdateLogShippingConfigurationV1
+    /// $query = New-RscMutationMssql -Operation UpdateLogShippingConfigurationV1
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

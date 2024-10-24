@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: Diagnosis
     /// 
-    /// $query = New-RscQueryHost -Diagnosis
+    /// $query = New-RscQueryHost -Operation Diagnosis
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: PhysicalHost
     /// 
-    /// $query = New-RscQueryHost -PhysicalHost
+    /// $query = New-RscQueryHost -Operation PhysicalHost
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: PhysicalHosts
     /// 
-    /// $query = New-RscQueryHost -PhysicalHosts
+    /// $query = New-RscQueryHost -Operation PhysicalHosts
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -223,7 +223,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: Search
     /// 
-    /// $query = New-RscQueryHost -Search
+    /// $query = New-RscQueryHost -Operation Search
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someString
@@ -253,7 +253,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: Share
     /// 
-    /// $query = New-RscQueryHost -Share
+    /// $query = New-RscQueryHost -Operation Share
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -281,7 +281,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Host
     /// # API Operation: Shares
     /// 
-    /// $query = New-RscQueryHost -Shares
+    /// $query = New-RscQueryHost -Operation Shares
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

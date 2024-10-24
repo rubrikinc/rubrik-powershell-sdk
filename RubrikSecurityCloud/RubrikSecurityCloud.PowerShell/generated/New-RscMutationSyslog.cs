@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Syslog
     /// # API Operation: AddExportRule
     /// 
-    /// $query = New-RscMutationSyslog -AddExportRule
+    /// $query = New-RscMutationSyslog -Operation AddExportRule
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -315,7 +315,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Syslog
     /// # API Operation: DeleteExportRule
     /// 
-    /// $query = New-RscMutationSyslog -DeleteExportRule
+    /// $query = New-RscMutationSyslog -Operation DeleteExportRule
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -348,7 +348,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Syslog
     /// # API Operation: TestExportRule
     /// 
-    /// $query = New-RscMutationSyslog -TestExportRule
+    /// $query = New-RscMutationSyslog -Operation TestExportRule
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -576,7 +576,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Syslog
     /// # API Operation: UpdateExportRule
     /// 
-    /// $query = New-RscMutationSyslog -UpdateExportRule
+    /// $query = New-RscMutationSyslog -Operation UpdateExportRule
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

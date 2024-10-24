@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("timestampMs")]
         public System.Int64? TimestampMs { get; set; }
 
+        //      C# -> System.Int64? Scn
+        // GraphQL -> scn: Long (scalar)
+        [JsonProperty("scn")]
+        public System.Int64? Scn { get; set; }
+
 
         #endregion
 

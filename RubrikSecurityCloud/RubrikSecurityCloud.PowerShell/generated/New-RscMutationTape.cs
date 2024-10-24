@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Tape
     /// # API Operation: CreateReaderTarget
     /// 
-    /// $query = New-RscMutationTape -CreateReaderTarget
+    /// $query = New-RscMutationTape -Operation CreateReaderTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -136,7 +136,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Tape
     /// # API Operation: CreateTarget
     /// 
-    /// $query = New-RscMutationTape -CreateTarget
+    /// $query = New-RscMutationTape -Operation CreateTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Tape
     /// # API Operation: UpdateTarget
     /// 
-    /// $query = New-RscMutationTape -UpdateTarget
+    /// $query = New-RscMutationTape -Operation UpdateTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

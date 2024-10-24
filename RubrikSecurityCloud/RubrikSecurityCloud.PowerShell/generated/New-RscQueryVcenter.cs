@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: AdvancedTagPreview
     /// 
-    /// $query = New-RscQueryVcenter -AdvancedTagPreview
+    /// $query = New-RscQueryVcenter -Operation AdvancedTagPreview
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -124,7 +124,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: AsyncRequestStatus
     /// 
-    /// $query = New-RscQueryVcenter -AsyncRequestStatus
+    /// $query = New-RscQueryVcenter -Operation AsyncRequestStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -157,7 +157,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: HotAddBandwidth
     /// 
-    /// $query = New-RscQueryVcenter -HotAddBandwidth
+    /// $query = New-RscQueryVcenter -Operation HotAddBandwidth
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -188,7 +188,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: HotAddNetwork
     /// 
-    /// $query = New-RscQueryVcenter -HotAddNetwork
+    /// $query = New-RscQueryVcenter -Operation HotAddNetwork
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -219,7 +219,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: HotAddProxy
     /// 
-    /// $query = New-RscQueryVcenter -HotAddProxy
+    /// $query = New-RscQueryVcenter -Operation HotAddProxy
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuids = @(
@@ -249,7 +249,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: HotAddProxyVmsV2
     /// 
-    /// $query = New-RscQueryVcenter -HotAddProxyVmsV2
+    /// $query = New-RscQueryVcenter -Operation HotAddProxyVmsV2
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -294,7 +294,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: List
     /// 
-    /// $query = New-RscQueryVcenter -List
+    /// $query = New-RscQueryVcenter -Operation List
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -370,7 +370,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: Networks
     /// 
-    /// $query = New-RscQueryVcenter -Networks
+    /// $query = New-RscQueryVcenter -Operation Networks
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -401,7 +401,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: NumProxiesNeeded
     /// 
-    /// $query = New-RscQueryVcenter -NumProxiesNeeded
+    /// $query = New-RscQueryVcenter -Operation NumProxiesNeeded
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -432,7 +432,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: PreAddInfo
     /// 
-    /// $query = New-RscQueryVcenter -PreAddInfo
+    /// $query = New-RscQueryVcenter -Operation PreAddInfo
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -479,7 +479,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vcenter
     /// # API Operation: Vcenter
     /// 
-    /// $query = New-RscQueryVcenter -Vcenter
+    /// $query = New-RscQueryVcenter -Operation Vcenter
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: BulkDeleteSources
     /// 
-    /// $query = New-RscMutationCassandra -BulkDeleteSources
+    /// $query = New-RscMutationCassandra -Operation BulkDeleteSources
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: CreateSource
     /// 
-    /// $query = New-RscMutationCassandra -CreateSource
+    /// $query = New-RscMutationCassandra -Operation CreateSource
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -225,7 +225,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: DeleteSource
     /// 
-    /// $query = New-RscMutationCassandra -DeleteSource
+    /// $query = New-RscMutationCassandra -Operation DeleteSource
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -260,7 +260,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: RecoverSource
     /// 
-    /// $query = New-RscMutationCassandra -RecoverSource
+    /// $query = New-RscMutationCassandra -Operation RecoverSource
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -348,7 +348,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cassandra
     /// # API Operation: UpdateSource
     /// 
-    /// $query = New-RscMutationCassandra -UpdateSource
+    /// $query = New-RscMutationCassandra -Operation UpdateSource
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

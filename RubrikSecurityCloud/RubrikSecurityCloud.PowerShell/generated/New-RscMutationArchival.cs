@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: CreateGlacierReaderTarget
     /// 
-    /// $query = New-RscMutationArchival -CreateGlacierReaderTarget
+    /// $query = New-RscMutationArchival -Operation CreateGlacierReaderTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: CreateManualTargetMapping
     /// 
-    /// $query = New-RscMutationArchival -CreateManualTargetMapping
+    /// $query = New-RscMutationArchival -Operation CreateManualTargetMapping
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -174,7 +174,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: CreateS3CompatibleReaderTarget
     /// 
-    /// $query = New-RscMutationArchival -CreateS3CompatibleReaderTarget
+    /// $query = New-RscMutationArchival -Operation CreateS3CompatibleReaderTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -241,7 +241,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: CreateS3CompatibleTarget
     /// 
-    /// $query = New-RscMutationArchival -CreateS3CompatibleTarget
+    /// $query = New-RscMutationArchival -Operation CreateS3CompatibleTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -306,7 +306,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: DeleteTarget
     /// 
-    /// $query = New-RscMutationArchival -DeleteTarget
+    /// $query = New-RscMutationArchival -Operation DeleteTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -337,7 +337,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: DeleteTargetMapping
     /// 
-    /// $query = New-RscMutationArchival -DeleteTargetMapping
+    /// $query = New-RscMutationArchival -Operation DeleteTargetMapping
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -368,7 +368,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: DisableTarget
     /// 
-    /// $query = New-RscMutationArchival -DisableTarget
+    /// $query = New-RscMutationArchival -Operation DisableTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -399,7 +399,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: EnableTarget
     /// 
-    /// $query = New-RscMutationArchival -EnableTarget
+    /// $query = New-RscMutationArchival -Operation EnableTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -430,7 +430,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: PauseTarget
     /// 
-    /// $query = New-RscMutationArchival -PauseTarget
+    /// $query = New-RscMutationArchival -Operation PauseTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -461,7 +461,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: PromoteReaderTarget
     /// 
-    /// $query = New-RscMutationArchival -PromoteReaderTarget
+    /// $query = New-RscMutationArchival -Operation PromoteReaderTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -492,7 +492,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: RefreshReaderTarget
     /// 
-    /// $query = New-RscMutationArchival -RefreshReaderTarget
+    /// $query = New-RscMutationArchival -Operation RefreshReaderTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -535,7 +535,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: ResumeTarget
     /// 
-    /// $query = New-RscMutationArchival -ResumeTarget
+    /// $query = New-RscMutationArchival -Operation ResumeTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -566,7 +566,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: UpdateGlacierTarget
     /// 
-    /// $query = New-RscMutationArchival -UpdateGlacierTarget
+    /// $query = New-RscMutationArchival -Operation UpdateGlacierTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -603,7 +603,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: UpdateManualTargetMapping
     /// 
-    /// $query = New-RscMutationArchival -UpdateManualTargetMapping
+    /// $query = New-RscMutationArchival -Operation UpdateManualTargetMapping
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -645,7 +645,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: UpdateS3CompatibleTarget
     /// 
-    /// $query = New-RscMutationArchival -UpdateS3CompatibleTarget
+    /// $query = New-RscMutationArchival -Operation UpdateS3CompatibleTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -695,7 +695,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: UpgradeCdmManagedTarget
     /// 
-    /// $query = New-RscMutationArchival -UpgradeCdmManagedTarget
+    /// $query = New-RscMutationArchival -Operation UpgradeCdmManagedTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

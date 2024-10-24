@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sharepoint
     /// # API Operation: ExcludeObjectsFromProtection
     /// 
-    /// $query = New-RscMutationSharepoint -ExcludeObjectsFromProtection
+    /// $query = New-RscMutationSharepoint -Operation ExcludeObjectsFromProtection
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

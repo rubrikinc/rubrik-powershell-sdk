@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: ClusterMigrationCount
     /// 
-    /// $query = New-RscQueryReport -ClusterMigrationCount
+    /// $query = New-RscQueryReport -Operation ClusterMigrationCount
     /// 
     /// # OPTIONAL
     /// $query.Var.clusterUuid = $someString
@@ -119,7 +119,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: ClusterMigrationJobStatus
     /// 
-    /// $query = New-RscQueryReport -ClusterMigrationJobStatus
+    /// $query = New-RscQueryReport -Operation ClusterMigrationJobStatus
     /// 
     /// # OPTIONAL
     /// $query.Var.clusterUuid = $someString
@@ -147,7 +147,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: ClusterMigrationStatus
     /// 
-    /// $query = New-RscQueryReport -ClusterMigrationStatus
+    /// $query = New-RscQueryReport -Operation ClusterMigrationStatus
     /// 
     /// # OPTIONAL
     /// $query.Var.clusterUuid = $someString
@@ -187,7 +187,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: Data
     /// 
-    /// $query = New-RscQueryReport -Data
+    /// $query = New-RscQueryReport -Operation Data
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -254,7 +254,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: DatabaseLogForCluster
     /// 
-    /// $query = New-RscQueryReport -DatabaseLogForCluster
+    /// $query = New-RscQueryReport -Operation DatabaseLogForCluster
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -303,7 +303,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: DatabaseLogingPropertiesForCluster
     /// 
-    /// $query = New-RscQueryReport -DatabaseLogingPropertiesForCluster
+    /// $query = New-RscQueryReport -Operation DatabaseLogingPropertiesForCluster
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -334,7 +334,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: ScheduledReport
     /// 
-    /// $query = New-RscQueryReport -ScheduledReport
+    /// $query = New-RscQueryReport -Operation ScheduledReport
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someInt
@@ -362,7 +362,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: ScheduledReports
     /// 
-    /// $query = New-RscQueryReport -ScheduledReports
+    /// $query = New-RscQueryReport -Operation ScheduledReports
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -401,7 +401,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: Sonar
     /// 
-    /// $query = New-RscQueryReport -Sonar
+    /// $query = New-RscQueryReport -Operation Sonar
     /// 
     /// # REQUIRED
     /// $query.Var.sonarReportGroupBy = $someDiscoveryReportGroupBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryReportGroupBy]) for enum values.
@@ -444,7 +444,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: SonarContent
     /// 
-    /// $query = New-RscQueryReport -SonarContent
+    /// $query = New-RscQueryReport -Operation SonarContent
     /// 
     /// # REQUIRED
     /// $query.Var.groupBy = $someDiscoveryContentReportGroupBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryContentReportGroupBy]) for enum values.
@@ -515,7 +515,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Report
     /// # API Operation: SonarRow
     /// 
-    /// $query = New-RscQueryReport -SonarRow
+    /// $query = New-RscQueryReport -Operation SonarRow
     /// 
     /// # OPTIONAL
     /// $query.Var.sortBy = $someDiscoveryReportSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryReportSortBy]) for enum values.

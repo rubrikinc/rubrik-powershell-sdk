@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: AsyncRequestStatus
     /// 
-    /// $query = New-RscQueryVsphereVm -AsyncRequestStatus
+    /// $query = New-RscQueryVsphereVm -Operation AsyncRequestStatus
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -117,7 +117,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: MissedRecoverableRange
     /// 
-    /// $query = New-RscQueryVsphereVm -MissedRecoverableRange
+    /// $query = New-RscQueryVsphereVm -Operation MissedRecoverableRange
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: New
     /// 
-    /// $query = New-RscQueryVsphereVm -New
+    /// $query = New-RscQueryVsphereVm -Operation New
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: NewList
     /// 
-    /// $query = New-RscQueryVsphereVm -NewList
+    /// $query = New-RscQueryVsphereVm -Operation NewList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -253,7 +253,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: RecoverableRange
     /// 
-    /// $query = New-RscQueryVsphereVm -RecoverableRange
+    /// $query = New-RscQueryVsphereVm -Operation RecoverableRange
     /// 
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
@@ -285,7 +285,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: RecoverableRangeInBatch
     /// 
-    /// $query = New-RscQueryVsphereVm -RecoverableRangeInBatch
+    /// $query = New-RscQueryVsphereVm -Operation RecoverableRangeInBatch
     /// 
     /// # REQUIRED
     /// $query.Var.requestInfo = @{

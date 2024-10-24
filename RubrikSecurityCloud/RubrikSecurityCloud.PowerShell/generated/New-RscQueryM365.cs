@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: BackupStorageLicenseUsage
     /// 
-    /// $query = New-RscQueryM365 -BackupStorageLicenseUsage
+    /// $query = New-RscQueryM365 -Operation BackupStorageLicenseUsage
     /// 
     /// # No variables for this query.
     /// 
@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: BackupStorageObjectRestorePoints
     /// 
-    /// $query = New-RscQueryM365 -BackupStorageObjectRestorePoints
+    /// $query = New-RscQueryM365 -Operation BackupStorageObjectRestorePoints
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: DayToDayModeStats
     /// 
-    /// $query = New-RscQueryM365 -DayToDayModeStats
+    /// $query = New-RscQueryM365 -Operation DayToDayModeStats
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -192,7 +192,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: DirectoryObjectAttributes
     /// 
-    /// $query = New-RscQueryM365 -DirectoryObjectAttributes
+    /// $query = New-RscQueryM365 -Operation DirectoryObjectAttributes
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -231,7 +231,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: LicenseEntitlement
     /// 
-    /// $query = New-RscQueryM365 -LicenseEntitlement
+    /// $query = New-RscQueryM365 -Operation LicenseEntitlement
     /// 
     /// # OPTIONAL
     /// $query.Var.orgID = $someString
@@ -259,7 +259,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: OnboardingModeBackupStats
     /// 
-    /// $query = New-RscQueryM365 -OnboardingModeBackupStats
+    /// $query = New-RscQueryM365 -Operation OnboardingModeBackupStats
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -291,7 +291,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: OnboardingModeStats
     /// 
-    /// $query = New-RscQueryM365 -OnboardingModeStats
+    /// $query = New-RscQueryM365 -Operation OnboardingModeStats
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -321,7 +321,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: OrgBackupLocations
     /// 
-    /// $query = New-RscQueryM365 -OrgBackupLocations
+    /// $query = New-RscQueryM365 -Operation OrgBackupLocations
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -349,7 +349,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: OrgOperationModes
     /// 
-    /// $query = New-RscQueryM365 -OrgOperationModes
+    /// $query = New-RscQueryM365 -Operation OrgOperationModes
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -377,7 +377,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    M365
     /// # API Operation: Regions
     /// 
-    /// $query = New-RscQueryM365 -Regions
+    /// $query = New-RscQueryM365 -Operation Regions
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString

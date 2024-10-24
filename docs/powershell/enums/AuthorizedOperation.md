@@ -177,6 +177,8 @@ Authorized operations on an object.
 - TAKE_REMEDIATION_ACTIONS - Take remediation actions.
 - VIEW_DATA_ACCESS_GOVERNANCE - View data access governance.
 - VIEW_DATA_DETECTION_AND_RESPONSE_ALERTS - View data detection and response alerts.
+- VIEW_DSPM_INTEGRATIONS - View DSPM integrations.
+- MANAGE_DSPM_INTEGRATIONS - Manage DSPM Integrations.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

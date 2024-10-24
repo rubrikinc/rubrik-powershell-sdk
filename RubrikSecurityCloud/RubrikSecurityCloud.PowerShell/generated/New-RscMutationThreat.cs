@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Threat
     /// # API Operation: CancelHunt
     /// 
-    /// $query = New-RscMutationThreat -CancelHunt
+    /// $query = New-RscMutationThreat -Operation CancelHunt
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -118,7 +118,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Threat
     /// # API Operation: EnableMonitoring
     /// 
-    /// $query = New-RscMutationThreat -EnableMonitoring
+    /// $query = New-RscMutationThreat -Operation EnableMonitoring
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -156,7 +156,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Threat
     /// # API Operation: StartHunt
     /// 
-    /// $query = New-RscMutationThreat -StartHunt
+    /// $query = New-RscMutationThreat -Operation StartHunt
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

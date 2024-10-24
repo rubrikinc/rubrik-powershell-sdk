@@ -146,6 +146,8 @@ All supported managed objects.
 - CLOUD_DIRECT_NAS_SYSTEM
 - CLOUD_DIRECT_NAS_NAMESPACE
 - CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS share replaces CLOUD_DIRECT_NAS_EXPORT.
+- EXCHANGE_HOST - Exchange Host.
+- MSSQL_HOST - MSSQL Host.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
  NB: ideally we should use 0, but we missed it.

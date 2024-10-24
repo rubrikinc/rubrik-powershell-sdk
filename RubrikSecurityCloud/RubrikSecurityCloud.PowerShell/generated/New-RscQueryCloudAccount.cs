@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudAccount
     /// # API Operation: CloudAccount
     /// 
-    /// $query = New-RscQueryCloudAccount -CloudAccount
+    /// $query = New-RscQueryCloudAccount -Operation CloudAccount
     /// 
     /// # REQUIRED
     /// $query.Var.cloudAccountId = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudAccount
     /// # API Operation: CloudAccounts
     /// 
-    /// $query = New-RscQueryCloudAccount -CloudAccounts
+    /// $query = New-RscQueryCloudAccount -Operation CloudAccounts
     /// 
     /// # OPTIONAL
     /// $query.Var.sortBy = $someCloudAccountSortByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountSortByFieldEnum]) for enum values.
@@ -158,7 +158,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudAccount
     /// # API Operation: CurrentFeaturePermissions
     /// 
-    /// $query = New-RscQueryCloudAccount -CurrentFeaturePermissions
+    /// $query = New-RscQueryCloudAccount -Operation CurrentFeaturePermissions
     /// 
     /// # REQUIRED
     /// $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
@@ -190,7 +190,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudAccount
     /// # API Operation: ExocomputeMappings
     /// 
-    /// $query = New-RscQueryCloudAccount -ExocomputeMappings
+    /// $query = New-RscQueryCloudAccount -Operation ExocomputeMappings
     /// 
     /// # REQUIRED
     /// $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
@@ -222,7 +222,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudAccount
     /// # API Operation: LatestFeaturePermissions
     /// 
-    /// $query = New-RscQueryCloudAccount -LatestFeaturePermissions
+    /// $query = New-RscQueryCloudAccount -Operation LatestFeaturePermissions
     /// 
     /// # REQUIRED
     /// $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
@@ -269,7 +269,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CloudAccount
     /// # API Operation: WithExocomputeMappings
     /// 
-    /// $query = New-RscQueryCloudAccount -WithExocomputeMappings
+    /// $query = New-RscQueryCloudAccount -Operation WithExocomputeMappings
     /// 
     /// # REQUIRED
     /// $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.

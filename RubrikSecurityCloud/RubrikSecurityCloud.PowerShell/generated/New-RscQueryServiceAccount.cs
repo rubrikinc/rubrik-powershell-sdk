@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ServiceAccount
     /// # API Operation: IsOrgDisabled
     /// 
-    /// $query = New-RscQueryServiceAccount -IsOrgDisabled
+    /// $query = New-RscQueryServiceAccount -Operation IsOrgDisabled
     /// 
     /// # No variables for this query.
     /// 
@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    ServiceAccount
     /// # API Operation: ServiceAccount
     /// 
-    /// $query = New-RscQueryServiceAccount -ServiceAccount
+    /// $query = New-RscQueryServiceAccount -Operation ServiceAccount
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

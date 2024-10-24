@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sharepoint
     /// # API Operation: BrowseDrive
     /// 
-    /// $query = New-RscQuerySharepoint -BrowseDrive
+    /// $query = New-RscQuerySharepoint -Operation BrowseDrive
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -185,7 +185,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sharepoint
     /// # API Operation: BrowseList
     /// 
-    /// $query = New-RscQuerySharepoint -BrowseList
+    /// $query = New-RscQuerySharepoint -Operation BrowseList
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -281,7 +281,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sharepoint
     /// # API Operation: SiteDescendants
     /// 
-    /// $query = New-RscQuerySharepoint -SiteDescendants
+    /// $query = New-RscQuerySharepoint -Operation SiteDescendants
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -363,7 +363,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sharepoint
     /// # API Operation: SiteExclusions
     /// 
-    /// $query = New-RscQuerySharepoint -SiteExclusions
+    /// $query = New-RscQuerySharepoint -Operation SiteExclusions
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -395,7 +395,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sharepoint
     /// # API Operation: SiteSearch
     /// 
-    /// $query = New-RscQuerySharepoint -SiteSearch
+    /// $query = New-RscQuerySharepoint -Operation SiteSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -473,7 +473,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sharepoint
     /// # API Operation: SnappableDriveSearch
     /// 
-    /// $query = New-RscQuerySharepoint -SnappableDriveSearch
+    /// $query = New-RscQuerySharepoint -Operation SnappableDriveSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -567,7 +567,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sharepoint
     /// # API Operation: SnappableListSearch
     /// 
-    /// $query = New-RscQuerySharepoint -SnappableListSearch
+    /// $query = New-RscQuerySharepoint -Operation SnappableListSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -659,7 +659,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Sharepoint
     /// # API Operation: SnapshotDriveSearch
     /// 
-    /// $query = New-RscQuerySharepoint -SnapshotDriveSearch
+    /// $query = New-RscQuerySharepoint -Operation SnapshotDriveSearch
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? InterfaceDisplayName
+        // GraphQL -> interfaceDisplayName: String! (scalar)
+        [JsonProperty("interfaceDisplayName")]
+        public System.String? InterfaceDisplayName { get; set; }
+
         //      C# -> System.String? InterfaceName
         // GraphQL -> interfaceName: String! (scalar)
         [JsonProperty("interfaceName")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ClusterNetworkInterfaceDetails Set(
+        System.String? InterfaceDisplayName = null,
         System.String? InterfaceName = null,
         System.String? InterfaceType = null
     ) 
     {
+        if ( InterfaceDisplayName != null ) {
+            this.InterfaceDisplayName = InterfaceDisplayName;
+        }
         if ( InterfaceName != null ) {
             this.InterfaceName = InterfaceName;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? InterfaceDisplayName
+        // GraphQL -> interfaceDisplayName: String! (scalar)
+        if (this.InterfaceDisplayName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "interfaceDisplayName\n" ;
+            } else {
+                s += ind + "interfaceDisplayName\n" ;
+            }
+        }
         //      C# -> System.String? InterfaceName
         // GraphQL -> interfaceName: String! (scalar)
         if (this.InterfaceName != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? InterfaceDisplayName
+        // GraphQL -> interfaceDisplayName: String! (scalar)
+        if (ec.Includes("interfaceDisplayName",true))
+        {
+            if(this.InterfaceDisplayName == null) {
+
+                this.InterfaceDisplayName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InterfaceDisplayName != null && ec.Excludes("interfaceDisplayName",true))
+        {
+            this.InterfaceDisplayName = null;
+        }
         //      C# -> System.String? InterfaceName
         // GraphQL -> interfaceName: String! (scalar)
         if (ec.Includes("interfaceName",true))

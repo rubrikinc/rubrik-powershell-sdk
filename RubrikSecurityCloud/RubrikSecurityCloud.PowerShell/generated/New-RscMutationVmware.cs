@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vmware
     /// # API Operation: DownloadSnapshotFromLocation
     /// 
-    /// $query = New-RscMutationVmware -DownloadSnapshotFromLocation
+    /// $query = New-RscMutationVmware -Operation DownloadSnapshotFromLocation
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

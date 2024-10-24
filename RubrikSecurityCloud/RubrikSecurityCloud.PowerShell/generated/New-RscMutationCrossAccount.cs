@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CrossAccount
     /// # API Operation: AddCrossAccountServiceConsumer
     /// 
-    /// $query = New-RscMutationCrossAccount -AddCrossAccountServiceConsumer
+    /// $query = New-RscMutationCrossAccount -Operation AddCrossAccountServiceConsumer
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -131,7 +131,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CrossAccount
     /// # API Operation: CreateCrossAccountPair
     /// 
-    /// $query = New-RscMutationCrossAccount -CreateCrossAccountPair
+    /// $query = New-RscMutationCrossAccount -Operation CreateCrossAccountPair
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CrossAccount
     /// # API Operation: CreateCrossAccountRegOauthPayload
     /// 
-    /// $query = New-RscMutationCrossAccount -CreateCrossAccountRegOauthPayload
+    /// $query = New-RscMutationCrossAccount -Operation CreateCrossAccountRegOauthPayload
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -201,7 +201,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CrossAccount
     /// # API Operation: DeleteCrossAccountPair
     /// 
-    /// $query = New-RscMutationCrossAccount -DeleteCrossAccountPair
+    /// $query = New-RscMutationCrossAccount -Operation DeleteCrossAccountPair
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

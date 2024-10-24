@@ -88,6 +88,7 @@ Type of hierarchy object.
 - NUTANIX_PRISM_CENTRAL - Nutanix Prism Central.
 - O365Calendar
 - K8S_PROTECTION_SET - Kubernetes Protection Set.
+- EXCHANGE_HOST - Exchange Host.
 - MONGO_SOURCE - MongoDB Source.
 - O365File
 - AwsNativeEbsVolume
@@ -104,6 +105,7 @@ Type of hierarchy object.
 - AzureNativeManagedDisk
 - Db2Instance
 - LinuxFileset
+- MSSQL_HOST - MSSQL Host.
 - O365Site
 - SALESFORCE_ORGANIZATION - Salesforce organization.
 - M365_BACKUP_STORAGE_USER - M365 Backup Storage User.

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: AvailabilityGroup
     /// 
-    /// $query = New-RscQueryMssql -AvailabilityGroup
+    /// $query = New-RscQueryMssql -Operation AvailabilityGroup
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: AvailabilityGroupDatabaseVirtualGroups
     /// 
-    /// $query = New-RscQueryMssql -AvailabilityGroupDatabaseVirtualGroups
+    /// $query = New-RscQueryMssql -Operation AvailabilityGroupDatabaseVirtualGroups
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: AvailabilityGroupVirtualGroups
     /// 
-    /// $query = New-RscQueryMssql -AvailabilityGroupVirtualGroups
+    /// $query = New-RscQueryMssql -Operation AvailabilityGroupVirtualGroups
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -200,7 +200,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: CdmLogShippingTarget
     /// 
-    /// $query = New-RscQueryMssql -CdmLogShippingTarget
+    /// $query = New-RscQueryMssql -Operation CdmLogShippingTarget
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -228,7 +228,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: CdmLogShippingTargets
     /// 
-    /// $query = New-RscQueryMssql -CdmLogShippingTargets
+    /// $query = New-RscQueryMssql -Operation CdmLogShippingTargets
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -276,7 +276,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: CompatibleInstances
     /// 
-    /// $query = New-RscQueryMssql -CompatibleInstances
+    /// $query = New-RscQueryMssql -Operation CompatibleInstances
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -333,7 +333,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: Database
     /// 
-    /// $query = New-RscQueryMssql -Database
+    /// $query = New-RscQueryMssql -Operation Database
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -361,7 +361,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: DatabaseLiveMounts
     /// 
-    /// $query = New-RscQueryMssql -DatabaseLiveMounts
+    /// $query = New-RscQueryMssql -Operation DatabaseLiveMounts
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -409,7 +409,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: DatabaseMissedRecoverableRanges
     /// 
-    /// $query = New-RscQueryMssql -DatabaseMissedRecoverableRanges
+    /// $query = New-RscQueryMssql -Operation DatabaseMissedRecoverableRanges
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -444,7 +444,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: DatabaseMissedSnapshots
     /// 
-    /// $query = New-RscQueryMssql -DatabaseMissedSnapshots
+    /// $query = New-RscQueryMssql -Operation DatabaseMissedSnapshots
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -479,7 +479,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: DatabaseRestoreEstimate
     /// 
-    /// $query = New-RscQueryMssql -DatabaseRestoreEstimate
+    /// $query = New-RscQueryMssql -Operation DatabaseRestoreEstimate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -516,7 +516,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: DatabaseRestoreFiles
     /// 
-    /// $query = New-RscQueryMssql -DatabaseRestoreFiles
+    /// $query = New-RscQueryMssql -Operation DatabaseRestoreFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -553,7 +553,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: Databases
     /// 
-    /// $query = New-RscQueryMssql -Databases
+    /// $query = New-RscQueryMssql -Operation Databases
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -629,7 +629,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: DefaultProperties
     /// 
-    /// $query = New-RscQueryMssql -DefaultProperties
+    /// $query = New-RscQueryMssql -Operation DefaultProperties
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -660,7 +660,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: DefaultPropertiesOnCluster
     /// 
-    /// $query = New-RscQueryMssql -DefaultPropertiesOnCluster
+    /// $query = New-RscQueryMssql -Operation DefaultPropertiesOnCluster
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -693,7 +693,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: Instance
     /// 
-    /// $query = New-RscQueryMssql -Instance
+    /// $query = New-RscQueryMssql -Operation Instance
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -721,7 +721,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: JobStatus
     /// 
-    /// $query = New-RscQueryMssql -JobStatus
+    /// $query = New-RscQueryMssql -Operation JobStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -754,7 +754,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: LogShippingTargets
     /// 
-    /// $query = New-RscQueryMssql -LogShippingTargets
+    /// $query = New-RscQueryMssql -Operation LogShippingTargets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -803,7 +803,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: RecoverableRanges
     /// 
-    /// $query = New-RscQueryMssql -RecoverableRanges
+    /// $query = New-RscQueryMssql -Operation RecoverableRanges
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -838,7 +838,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Mssql
     /// # API Operation: TopLevelDescendants
     /// 
-    /// $query = New-RscQueryMssql -TopLevelDescendants
+    /// $query = New-RscQueryMssql -Operation TopLevelDescendants
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

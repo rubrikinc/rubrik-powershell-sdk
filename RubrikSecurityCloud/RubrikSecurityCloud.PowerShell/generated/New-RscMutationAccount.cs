@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: CreateOrg
     /// 
-    /// $query = New-RscMutationAccount -CreateOrg
+    /// $query = New-RscMutationAccount -Operation CreateOrg
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -211,7 +211,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: CreateOrgSwitchSession
     /// 
-    /// $query = New-RscMutationAccount -CreateOrgSwitchSession
+    /// $query = New-RscMutationAccount -Operation CreateOrgSwitchSession
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -242,7 +242,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: CreateRole
     /// 
-    /// $query = New-RscMutationAccount -CreateRole
+    /// $query = New-RscMutationAccount -Operation CreateRole
     /// 
     /// # REQUIRED
     /// $query.Var.name = $someString
@@ -290,7 +290,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: CreateUser
     /// 
-    /// $query = New-RscMutationAccount -CreateUser
+    /// $query = New-RscMutationAccount -Operation CreateUser
     /// 
     /// # REQUIRED
     /// $query.Var.email = $someString
@@ -322,7 +322,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: CreateUserWithPassword
     /// 
-    /// $query = New-RscMutationAccount -CreateUserWithPassword
+    /// $query = New-RscMutationAccount -Operation CreateUserWithPassword
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -359,7 +359,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: DeleteOrg
     /// 
-    /// $query = New-RscMutationAccount -DeleteOrg
+    /// $query = New-RscMutationAccount -Operation DeleteOrg
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -390,7 +390,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: DeleteRole
     /// 
-    /// $query = New-RscMutationAccount -DeleteRole
+    /// $query = New-RscMutationAccount -Operation DeleteRole
     /// 
     /// # REQUIRED
     /// $query.Var.roleId = $someString
@@ -418,7 +418,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: DeleteTotpConfig
     /// 
-    /// $query = New-RscMutationAccount -DeleteTotpConfig
+    /// $query = New-RscMutationAccount -Operation DeleteTotpConfig
     /// 
     /// # REQUIRED
     /// $query.Var.userId = $someString
@@ -446,7 +446,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: DeleteTotpConfigs
     /// 
-    /// $query = New-RscMutationAccount -DeleteTotpConfigs
+    /// $query = New-RscMutationAccount -Operation DeleteTotpConfigs
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -479,7 +479,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: DeleteUsers
     /// 
-    /// $query = New-RscMutationAccount -DeleteUsers
+    /// $query = New-RscMutationAccount -Operation DeleteUsers
     /// 
     /// # REQUIRED
     /// $query.Var.ids = @(
@@ -509,7 +509,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: GenerateTotpSecret
     /// 
-    /// $query = New-RscMutationAccount -GenerateTotpSecret
+    /// $query = New-RscMutationAccount -Operation GenerateTotpSecret
     /// 
     /// # REQUIRED
     /// $query.Var.userId = $someString
@@ -537,7 +537,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: MutateRole
     /// 
-    /// $query = New-RscMutationAccount -MutateRole
+    /// $query = New-RscMutationAccount -Operation MutateRole
     /// 
     /// # OPTIONAL
     /// $query.Var.roleId = $someString
@@ -591,7 +591,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: UpdateOrg
     /// 
-    /// $query = New-RscMutationAccount -UpdateOrg
+    /// $query = New-RscMutationAccount -Operation UpdateOrg
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -717,7 +717,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Account
     /// # API Operation: UpdateRole
     /// 
-    /// $query = New-RscMutationAccount -UpdateRole
+    /// $query = New-RscMutationAccount -Operation UpdateRole
     /// 
     /// # REQUIRED
     /// $query.Var.roleId = $someString

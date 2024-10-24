@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    CrossAccount
     /// # API Operation: CrossAccountClusters
     /// 
-    /// $query = New-RscQueryCrossAccount -CrossAccountClusters
+    /// $query = New-RscQueryCrossAccount -Operation CrossAccountClusters
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

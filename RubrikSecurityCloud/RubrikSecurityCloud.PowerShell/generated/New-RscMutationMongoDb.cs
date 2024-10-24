@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: AssignSlaToCollection
     /// 
-    /// $query = New-RscMutationMongoDb -AssignSlaToCollection
+    /// $query = New-RscMutationMongoDb -Operation AssignSlaToCollection
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -125,7 +125,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: BulkDeleteSources
     /// 
-    /// $query = New-RscMutationMongoDb -BulkDeleteSources
+    /// $query = New-RscMutationMongoDb -Operation BulkDeleteSources
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -167,7 +167,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: CreateSource
     /// 
-    /// $query = New-RscMutationMongoDb -CreateSource
+    /// $query = New-RscMutationMongoDb -Operation CreateSource
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -263,7 +263,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: DeleteSource
     /// 
-    /// $query = New-RscMutationMongoDb -DeleteSource
+    /// $query = New-RscMutationMongoDb -Operation DeleteSource
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -298,7 +298,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: RecoverSource
     /// 
-    /// $query = New-RscMutationMongoDb -RecoverSource
+    /// $query = New-RscMutationMongoDb -Operation RecoverSource
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -386,7 +386,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    MongoDb
     /// # API Operation: UpdateSource
     /// 
-    /// $query = New-RscMutationMongoDb -UpdateSource
+    /// $query = New-RscMutationMongoDb -Operation UpdateSource
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

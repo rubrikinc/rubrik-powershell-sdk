@@ -38,6 +38,8 @@ Azure O365 Exocompute cluster details.
   - Specifies whether Exocompute is on a multitenant host.
 - shardPoolType: System.Int32
   - Sharding strategy for the Exocompute.
+- multiTenantHostSpec: MultiTenantHostSpec
+  - Specifies the multitenant host details.
 - aksLbIps: list of System.Strings
   - List of AKS load balancer IPs.
 - kmsHostType: AzureHostType

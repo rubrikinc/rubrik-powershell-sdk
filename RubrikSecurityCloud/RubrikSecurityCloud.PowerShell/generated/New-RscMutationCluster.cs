@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: AddClusterNodes
     /// 
-    /// $query = New-RscMutationCluster -AddClusterNodes
+    /// $query = New-RscMutationCluster -Operation AddClusterNodes
     /// 
     /// # REQUIRED
     /// $query.Var.AddClusterNodesInput = @{
@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: AddClusterRoute
     /// 
-    /// $query = New-RscMutationCluster -AddClusterRoute
+    /// $query = New-RscMutationCluster -Operation AddClusterRoute
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -223,7 +223,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: AddNodesToCloud
     /// 
-    /// $query = New-RscMutationCluster -AddNodesToCloud
+    /// $query = New-RscMutationCluster -Operation AddNodesToCloud
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -266,7 +266,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: DeleteClusterRoute
     /// 
-    /// $query = New-RscMutationCluster -DeleteClusterRoute
+    /// $query = New-RscMutationCluster -Operation DeleteClusterRoute
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -304,7 +304,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: ExocomputeClusterConnect
     /// 
-    /// $query = New-RscMutationCluster -ExocomputeClusterConnect
+    /// $query = New-RscMutationCluster -Operation ExocomputeClusterConnect
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -339,7 +339,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: GenerateClusterRegistrationToken
     /// 
-    /// $query = New-RscMutationCluster -GenerateClusterRegistrationToken
+    /// $query = New-RscMutationCluster -Operation GenerateClusterRegistrationToken
     /// 
     /// # OPTIONAL
     /// $query.Var.input = @{
@@ -395,7 +395,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: MigrateCloudClusterDisks
     /// 
-    /// $query = New-RscMutationCluster -MigrateCloudClusterDisks
+    /// $query = New-RscMutationCluster -Operation MigrateCloudClusterDisks
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -430,7 +430,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: RecoverCloud
     /// 
-    /// $query = New-RscMutationCluster -RecoverCloud
+    /// $query = New-RscMutationCluster -Operation RecoverCloud
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -548,7 +548,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: RegisterCloud
     /// 
-    /// $query = New-RscMutationCluster -RegisterCloud
+    /// $query = New-RscMutationCluster -Operation RegisterCloud
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -579,7 +579,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: ReleasePersistentExo
     /// 
-    /// $query = New-RscMutationCluster -ReleasePersistentExo
+    /// $query = New-RscMutationCluster -Operation ReleasePersistentExo
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -612,7 +612,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: RemoveCdm
     /// 
-    /// $query = New-RscMutationCluster -RemoveCdm
+    /// $query = New-RscMutationCluster -Operation RemoveCdm
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUUID = $someString
@@ -644,7 +644,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: RemoveClusterNodes
     /// 
-    /// $query = New-RscMutationCluster -RemoveClusterNodes
+    /// $query = New-RscMutationCluster -Operation RemoveClusterNodes
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -696,7 +696,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: RequestPersistentExo
     /// 
-    /// $query = New-RscMutationCluster -RequestPersistentExo
+    /// $query = New-RscMutationCluster -Operation RequestPersistentExo
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -741,7 +741,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: SetMissingClusterStatus
     /// 
-    /// $query = New-RscMutationCluster -SetMissingClusterStatus
+    /// $query = New-RscMutationCluster -Operation SetMissingClusterStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -776,7 +776,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: UpdateClusterDefaultAddress
     /// 
-    /// $query = New-RscMutationCluster -UpdateClusterDefaultAddress
+    /// $query = New-RscMutationCluster -Operation UpdateClusterDefaultAddress
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -811,7 +811,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: UpdateClusterLocation
     /// 
-    /// $query = New-RscMutationCluster -UpdateClusterLocation
+    /// $query = New-RscMutationCluster -Operation UpdateClusterLocation
     /// 
     /// # REQUIRED
     /// $query.Var.clusterUuid = $someString
@@ -848,7 +848,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: UpdateClusterNtpServers
     /// 
-    /// $query = New-RscMutationCluster -UpdateClusterNtpServers
+    /// $query = New-RscMutationCluster -Operation UpdateClusterNtpServers
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -895,7 +895,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: UpdateClusterPauseStatus
     /// 
-    /// $query = New-RscMutationCluster -UpdateClusterPauseStatus
+    /// $query = New-RscMutationCluster -Operation UpdateClusterPauseStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -930,7 +930,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: UpdateClusterSettings
     /// 
-    /// $query = New-RscMutationCluster -UpdateClusterSettings
+    /// $query = New-RscMutationCluster -Operation UpdateClusterSettings
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -980,7 +980,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Cluster
     /// # API Operation: UpdatePreviewerClusterConfig
     /// 
-    /// $query = New-RscMutationCluster -UpdatePreviewerClusterConfig
+    /// $query = New-RscMutationCluster -Operation UpdatePreviewerClusterConfig
     /// 
     /// # REQUIRED
     /// $query.Var.previewerClusterConfig = @{

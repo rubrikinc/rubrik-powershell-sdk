@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: Database
     /// 
-    /// $query = New-RscQueryDb2 -Database
+    /// $query = New-RscQueryDb2 -Operation Database
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: DatabaseJobStatus
     /// 
-    /// $query = New-RscQueryDb2 -DatabaseJobStatus
+    /// $query = New-RscQueryDb2 -Operation DatabaseJobStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -148,7 +148,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: Databases
     /// 
-    /// $query = New-RscQueryDb2 -Databases
+    /// $query = New-RscQueryDb2 -Operation Databases
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -224,7 +224,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: Instance
     /// 
-    /// $query = New-RscQueryDb2 -Instance
+    /// $query = New-RscQueryDb2 -Operation Instance
     /// 
     /// # REQUIRED
     /// $query.Var.id = $someString
@@ -252,7 +252,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: Instances
     /// 
-    /// $query = New-RscQueryDb2 -Instances
+    /// $query = New-RscQueryDb2 -Operation Instances
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -328,7 +328,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: LogSnapshot
     /// 
-    /// $query = New-RscQueryDb2 -LogSnapshot
+    /// $query = New-RscQueryDb2 -Operation LogSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.db2LogSnapshotFid = $someString
@@ -356,7 +356,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: LogSnapshots
     /// 
-    /// $query = New-RscQueryDb2 -LogSnapshots
+    /// $query = New-RscQueryDb2 -Operation LogSnapshots
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -411,7 +411,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: RecoverableRange
     /// 
-    /// $query = New-RscQueryDb2 -RecoverableRange
+    /// $query = New-RscQueryDb2 -Operation RecoverableRange
     /// 
     /// # REQUIRED
     /// $query.Var.db2RecoverableRangeFid = $someString
@@ -439,7 +439,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: RecoverableRanges
     /// 
-    /// $query = New-RscQueryDb2 -RecoverableRanges
+    /// $query = New-RscQueryDb2 -Operation RecoverableRanges
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

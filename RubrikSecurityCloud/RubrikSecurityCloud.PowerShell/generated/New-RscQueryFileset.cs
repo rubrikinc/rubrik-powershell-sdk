@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: Linux
     /// 
-    /// $query = New-RscQueryFileset -Linux
+    /// $query = New-RscQueryFileset -Operation Linux
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: RequestStatus
     /// 
-    /// $query = New-RscQueryFileset -RequestStatus
+    /// $query = New-RscQueryFileset -Operation RequestStatus
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -148,7 +148,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: Share
     /// 
-    /// $query = New-RscQueryFileset -Share
+    /// $query = New-RscQueryFileset -Operation Share
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -176,7 +176,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: Template
     /// 
-    /// $query = New-RscQueryFileset -Template
+    /// $query = New-RscQueryFileset -Operation Template
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -204,7 +204,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: Templates
     /// 
-    /// $query = New-RscQueryFileset -Templates
+    /// $query = New-RscQueryFileset -Operation Templates
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -282,7 +282,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Fileset
     /// # API Operation: Windows
     /// 
-    /// $query = New-RscQueryFileset -Windows
+    /// $query = New-RscQueryFileset -Operation Windows
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString

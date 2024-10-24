@@ -166,6 +166,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("attachmentSpecs")]
         public List<AttachmentSpecForEbsVolume>? AttachmentSpecs { get; set; }
 
+        //      C# -> AwsNativeAccount? AwsAccount
+        // GraphQL -> awsAccount: AwsNativeAccount (type)
+        [JsonProperty("awsAccount")]
+        public AwsNativeAccount? AwsAccount { get; set; }
+
         //      C# -> AwsNativeAccount? AwsNativeAccount
         // GraphQL -> awsNativeAccount: AwsNativeAccount! (type)
         [JsonProperty("awsNativeAccount")]
@@ -347,6 +352,7 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         List<AwsNativeEc2Instance>? AttachedEc2Instances = null,
         List<AttachmentSpecForEbsVolume>? AttachmentSpecs = null,
+        AwsNativeAccount? AwsAccount = null,
         AwsNativeAccount? AwsNativeAccount = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
@@ -450,6 +456,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AttachmentSpecs != null ) {
             this.AttachmentSpecs = AttachmentSpecs;
+        }
+        if ( AwsAccount != null ) {
+            this.AwsAccount = AwsAccount;
         }
         if ( AwsNativeAccount != null ) {
             this.AwsNativeAccount = AwsNativeAccount;
@@ -789,6 +798,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "attachmentSpecs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AwsNativeAccount? AwsAccount
+        // GraphQL -> awsAccount: AwsNativeAccount (type)
+        if (this.AwsAccount != null) {
+            var fspec = this.AwsAccount.AsFieldSpec(conf.Child("awsAccount"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsAccount" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1498,6 +1519,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AttachmentSpecs != null && ec.Excludes("attachmentSpecs",false))
         {
             this.AttachmentSpecs = null;
+        }
+        //      C# -> AwsNativeAccount? AwsAccount
+        // GraphQL -> awsAccount: AwsNativeAccount (type)
+        if (ec.Includes("awsAccount",false))
+        {
+            if(this.AwsAccount == null) {
+
+                this.AwsAccount = new AwsNativeAccount();
+                this.AwsAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsAccount"));
+
+            } else {
+
+                this.AwsAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsAccount"));
+
+            }
+        }
+        else if (this.AwsAccount != null && ec.Excludes("awsAccount",false))
+        {
+            this.AwsAccount = null;
         }
         //      C# -> AwsNativeAccount? AwsNativeAccount
         // GraphQL -> awsNativeAccount: AwsNativeAccount! (type)

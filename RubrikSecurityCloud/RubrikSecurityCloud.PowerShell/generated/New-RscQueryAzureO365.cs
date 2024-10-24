@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureO365
     /// # API Operation: CheckNSGOutboundRules
     /// 
-    /// $query = New-RscQueryAzureO365 -CheckNSGOutboundRules
+    /// $query = New-RscQueryAzureO365 -Operation CheckNSGOutboundRules
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureO365
     /// # API Operation: CheckNetworkSubnet
     /// 
-    /// $query = New-RscQueryAzureO365 -CheckNetworkSubnet
+    /// $query = New-RscQueryAzureO365 -Operation CheckNetworkSubnet
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -161,7 +161,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureO365
     /// # API Operation: CheckResourceGroupName
     /// 
-    /// $query = New-RscQueryAzureO365 -CheckResourceGroupName
+    /// $query = New-RscQueryAzureO365 -Operation CheckResourceGroupName
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -193,7 +193,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureO365
     /// # API Operation: CheckStorageAccountAccessibility
     /// 
-    /// $query = New-RscQueryAzureO365 -CheckStorageAccountAccessibility
+    /// $query = New-RscQueryAzureO365 -Operation CheckStorageAccountAccessibility
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -227,7 +227,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureO365
     /// # API Operation: CheckStorageAccountName
     /// 
-    /// $query = New-RscQueryAzureO365 -CheckStorageAccountName
+    /// $query = New-RscQueryAzureO365 -Operation CheckStorageAccountName
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -259,7 +259,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureO365
     /// # API Operation: CheckSubscriptionQuota
     /// 
-    /// $query = New-RscQueryAzureO365 -CheckSubscriptionQuota
+    /// $query = New-RscQueryAzureO365 -Operation CheckSubscriptionQuota
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -291,7 +291,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureO365
     /// # API Operation: CheckVirtualNetworkName
     /// 
-    /// $query = New-RscQueryAzureO365 -CheckVirtualNetworkName
+    /// $query = New-RscQueryAzureO365 -Operation CheckVirtualNetworkName
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -325,7 +325,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureO365
     /// # API Operation: Exocompute
     /// 
-    /// $query = New-RscQueryAzureO365 -Exocompute
+    /// $query = New-RscQueryAzureO365 -Operation Exocompute
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -355,7 +355,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureO365
     /// # API Operation: GetAzureHostType
     /// 
-    /// $query = New-RscQueryAzureO365 -GetAzureHostType
+    /// $query = New-RscQueryAzureO365 -Operation GetAzureHostType
     /// 
     /// # No variables for this query.
     /// 
@@ -382,7 +382,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureO365
     /// # API Operation: GetNetworkSubnetUnusedAddr
     /// 
-    /// $query = New-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr
+    /// $query = New-RscQueryAzureO365 -Operation GetNetworkSubnetUnusedAddr
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
@@ -420,7 +420,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    AzureO365
     /// # API Operation: ValidateUserRoles
     /// 
-    /// $query = New-RscQueryAzureO365 -ValidateUserRoles
+    /// $query = New-RscQueryAzureO365 -Operation ValidateUserRoles
     /// 
     /// # REQUIRED
     /// $query.Var.tenantId = $someString

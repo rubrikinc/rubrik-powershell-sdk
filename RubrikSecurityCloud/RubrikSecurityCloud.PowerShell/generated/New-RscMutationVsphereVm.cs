@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: BatchExport
     /// 
-    /// $query = New-RscMutationVsphereVm -BatchExport
+    /// $query = New-RscMutationVsphereVm -Operation BatchExport
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -198,7 +198,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: BatchExportV3
     /// 
-    /// $query = New-RscMutationVsphereVm -BatchExportV3
+    /// $query = New-RscMutationVsphereVm -Operation BatchExportV3
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -318,7 +318,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: BatchInPlaceRecovery
     /// 
-    /// $query = New-RscMutationVsphereVm -BatchInPlaceRecovery
+    /// $query = New-RscMutationVsphereVm -Operation BatchInPlaceRecovery
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -377,7 +377,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: DeleteSnapshot
     /// 
-    /// $query = New-RscMutationVsphereVm -DeleteSnapshot
+    /// $query = New-RscMutationVsphereVm -Operation DeleteSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -410,7 +410,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: DownloadSnapshot
     /// 
-    /// $query = New-RscMutationVsphereVm -DownloadSnapshot
+    /// $query = New-RscMutationVsphereVm -Operation DownloadSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -441,7 +441,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: DownloadSnapshotFiles
     /// 
-    /// $query = New-RscMutationVsphereVm -DownloadSnapshotFiles
+    /// $query = New-RscMutationVsphereVm -Operation DownloadSnapshotFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -488,7 +488,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: ExcludeVmDisks
     /// 
-    /// $query = New-RscMutationVsphereVm -ExcludeVmDisks
+    /// $query = New-RscMutationVsphereVm -Operation ExcludeVmDisks
     /// 
     /// # REQUIRED
     /// $query.Var.input = @(
@@ -523,7 +523,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: ExportSnapshotV2
     /// 
-    /// $query = New-RscMutationVsphereVm -ExportSnapshotV2
+    /// $query = New-RscMutationVsphereVm -Operation ExportSnapshotV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -616,7 +616,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: ExportSnapshotV3
     /// 
-    /// $query = New-RscMutationVsphereVm -ExportSnapshotV3
+    /// $query = New-RscMutationVsphereVm -Operation ExportSnapshotV3
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -718,7 +718,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: ExportSnapshotWithDownloadFromCloud
     /// 
-    /// $query = New-RscMutationVsphereVm -ExportSnapshotWithDownloadFromCloud
+    /// $query = New-RscMutationVsphereVm -Operation ExportSnapshotWithDownloadFromCloud
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -811,7 +811,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: InitiateBatchInstantRecovery
     /// 
-    /// $query = New-RscMutationVsphereVm -InitiateBatchInstantRecovery
+    /// $query = New-RscMutationVsphereVm -Operation InitiateBatchInstantRecovery
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -943,7 +943,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: InitiateBatchLiveMountV2
     /// 
-    /// $query = New-RscMutationVsphereVm -InitiateBatchLiveMountV2
+    /// $query = New-RscMutationVsphereVm -Operation InitiateBatchLiveMountV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1083,7 +1083,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: InitiateDiskMount
     /// 
-    /// $query = New-RscMutationVsphereVm -InitiateDiskMount
+    /// $query = New-RscMutationVsphereVm -Operation InitiateDiskMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1127,7 +1127,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: InitiateInPlaceRecovery
     /// 
-    /// $query = New-RscMutationVsphereVm -InitiateInPlaceRecovery
+    /// $query = New-RscMutationVsphereVm -Operation InitiateInPlaceRecovery
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1170,7 +1170,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: InitiateInstantRecoveryV2
     /// 
-    /// $query = New-RscMutationVsphereVm -InitiateInstantRecoveryV2
+    /// $query = New-RscMutationVsphereVm -Operation InitiateInstantRecoveryV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1286,7 +1286,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: InitiateLiveMountV2
     /// 
-    /// $query = New-RscMutationVsphereVm -InitiateLiveMountV2
+    /// $query = New-RscMutationVsphereVm -Operation InitiateLiveMountV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1408,7 +1408,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: ListEsxiDatastores
     /// 
-    /// $query = New-RscMutationVsphereVm -ListEsxiDatastores
+    /// $query = New-RscMutationVsphereVm -Operation ListEsxiDatastores
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1448,7 +1448,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: MountRelocate
     /// 
-    /// $query = New-RscMutationVsphereVm -MountRelocate
+    /// $query = New-RscMutationVsphereVm -Operation MountRelocate
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1484,7 +1484,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: MountRelocateV2
     /// 
-    /// $query = New-RscMutationVsphereVm -MountRelocateV2
+    /// $query = New-RscMutationVsphereVm -Operation MountRelocateV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1544,7 +1544,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: PowerOnOffLiveMount
     /// 
-    /// $query = New-RscMutationVsphereVm -PowerOnOffLiveMount
+    /// $query = New-RscMutationVsphereVm -Operation PowerOnOffLiveMount
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1582,7 +1582,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: RecoverFiles
     /// 
-    /// $query = New-RscMutationVsphereVm -RecoverFiles
+    /// $query = New-RscMutationVsphereVm -Operation RecoverFiles
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1645,7 +1645,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: RecoverFilesNew
     /// 
-    /// $query = New-RscMutationVsphereVm -RecoverFilesNew
+    /// $query = New-RscMutationVsphereVm -Operation RecoverFilesNew
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1724,7 +1724,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: RegisterAgent
     /// 
-    /// $query = New-RscMutationVsphereVm -RegisterAgent
+    /// $query = New-RscMutationVsphereVm -Operation RegisterAgent
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1757,7 +1757,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: RegisterAgentWithOrg
     /// 
-    /// $query = New-RscMutationVsphereVm -RegisterAgentWithOrg
+    /// $query = New-RscMutationVsphereVm -Operation RegisterAgentWithOrg
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1792,7 +1792,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: Update
     /// 
-    /// $query = New-RscMutationVsphereVm -Update
+    /// $query = New-RscMutationVsphereVm -Operation Update
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -1891,7 +1891,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    VsphereVm
     /// # API Operation: UpdateUnmountTime
     /// 
-    /// $query = New-RscMutationVsphereVm -UpdateUnmountTime
+    /// $query = New-RscMutationVsphereVm -Operation UpdateUnmountTime
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

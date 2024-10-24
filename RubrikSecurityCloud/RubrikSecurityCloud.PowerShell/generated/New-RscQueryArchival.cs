@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: HierarchyObjectRecoveryTarget
     /// 
-    /// $query = New-RscQueryArchival -HierarchyObjectRecoveryTarget
+    /// $query = New-RscQueryArchival -Operation HierarchyObjectRecoveryTarget
     /// 
     /// # REQUIRED
     /// $query.Var.fid = $someString
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: IsTotpMandatoryInTargetVersion
     /// 
-    /// $query = New-RscQueryArchival -IsTotpMandatoryInTargetVersion
+    /// $query = New-RscQueryArchival -Operation IsTotpMandatoryInTargetVersion
     /// 
     /// # REQUIRED
     /// $query.Var.version = $someString
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: RcsLocationsConsumptionStats
     /// 
-    /// $query = New-RscQueryArchival -RcsLocationsConsumptionStats
+    /// $query = New-RscQueryArchival -Operation RcsLocationsConsumptionStats
     /// 
     /// # REQUIRED
     /// $query.Var.rcsAzureTargetConsumptionStatsRequest = @{
@@ -180,7 +180,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: StorageUsage
     /// 
-    /// $query = New-RscQueryArchival -StorageUsage
+    /// $query = New-RscQueryArchival -Operation StorageUsage
     /// 
     /// # REQUIRED
     /// $query.Var.input = $someString
@@ -208,7 +208,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: Target
     /// 
-    /// $query = New-RscQueryArchival -Target
+    /// $query = New-RscQueryArchival -Operation Target
     /// 
     /// # REQUIRED
     /// $query.Var.input = $someString
@@ -236,7 +236,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: TargetMapping
     /// 
-    /// $query = New-RscQueryArchival -TargetMapping
+    /// $query = New-RscQueryArchival -Operation TargetMapping
     /// 
     /// # REQUIRED
     /// $query.Var.targetMappingId = $someString
@@ -264,7 +264,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: TargetMappings
     /// 
-    /// $query = New-RscQueryArchival -TargetMappings
+    /// $query = New-RscQueryArchival -Operation TargetMappings
     /// 
     /// # OPTIONAL
     /// $query.Var.sortBy = $someArchivalGroupQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalGroupQuerySortByField]) for enum values.
@@ -311,7 +311,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Archival
     /// # API Operation: Targets
     /// 
-    /// $query = New-RscQueryArchival -Targets
+    /// $query = New-RscQueryArchival -Operation Targets
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

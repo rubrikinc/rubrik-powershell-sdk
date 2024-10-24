@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: AddInstance
     /// 
-    /// $query = New-RscMutationDb2 -AddInstance
+    /// $query = New-RscMutationDb2 -Operation AddInstance
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -131,7 +131,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: ConfigureRestore
     /// 
-    /// $query = New-RscMutationDb2 -ConfigureRestore
+    /// $query = New-RscMutationDb2 -Operation ConfigureRestore
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -175,7 +175,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: CreateOnDemandBackup
     /// 
-    /// $query = New-RscMutationDb2 -CreateOnDemandBackup
+    /// $query = New-RscMutationDb2 -Operation CreateOnDemandBackup
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -211,7 +211,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: DeleteDatabase
     /// 
-    /// $query = New-RscMutationDb2 -DeleteDatabase
+    /// $query = New-RscMutationDb2 -Operation DeleteDatabase
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -242,7 +242,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: DeleteInstance
     /// 
-    /// $query = New-RscMutationDb2 -DeleteInstance
+    /// $query = New-RscMutationDb2 -Operation DeleteInstance
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -273,7 +273,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: DiscoverInstance
     /// 
-    /// $query = New-RscMutationDb2 -DiscoverInstance
+    /// $query = New-RscMutationDb2 -Operation DiscoverInstance
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -304,7 +304,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: DownloadSnapshot
     /// 
-    /// $query = New-RscMutationDb2 -DownloadSnapshot
+    /// $query = New-RscMutationDb2 -Operation DownloadSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -337,7 +337,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: DownloadSnapshotV2
     /// 
-    /// $query = New-RscMutationDb2 -DownloadSnapshotV2
+    /// $query = New-RscMutationDb2 -Operation DownloadSnapshotV2
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -375,7 +375,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: DownloadSnapshotsForPointInTimeRecovery
     /// 
-    /// $query = New-RscMutationDb2 -DownloadSnapshotsForPointInTimeRecovery
+    /// $query = New-RscMutationDb2 -Operation DownloadSnapshotsForPointInTimeRecovery
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -413,7 +413,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: ExpireDownloadedSnapshots
     /// 
-    /// $query = New-RscMutationDb2 -ExpireDownloadedSnapshots
+    /// $query = New-RscMutationDb2 -Operation ExpireDownloadedSnapshots
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -450,7 +450,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: PatchDatabase
     /// 
-    /// $query = New-RscMutationDb2 -PatchDatabase
+    /// $query = New-RscMutationDb2 -Operation PatchDatabase
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -488,7 +488,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: PatchInstance
     /// 
-    /// $query = New-RscMutationDb2 -PatchInstance
+    /// $query = New-RscMutationDb2 -Operation PatchInstance
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -532,7 +532,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Db2
     /// # API Operation: RefreshDatabase
     /// 
-    /// $query = New-RscMutationDb2 -RefreshDatabase
+    /// $query = New-RscMutationDb2 -Operation RefreshDatabase
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

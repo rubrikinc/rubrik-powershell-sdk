@@ -60,3 +60,4 @@ Enum representing all the possible event types.
 - SCHEDULE_RECOVERY - Orchestrated Application Recovery schedule-recovery event type.
 - TENANT_QUOTA - Tenant quota event type.
 - USER_INTELLIGENCE - User intelligence event type.
+- PROTECTED_OBJECT_DELETION - Protected object deletion event type.

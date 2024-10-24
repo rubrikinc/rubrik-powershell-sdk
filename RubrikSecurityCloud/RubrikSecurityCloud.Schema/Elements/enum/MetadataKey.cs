@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_LINK_ID")]
         CLUSTER_LINK_ID,
 
+        [EnumMember(Value = "CUSTOM_CELL_TYPE")]
+        CUSTOM_CELL_TYPE,
+
         [EnumMember(Value = "HIDE_CHART_LEGEND")]
         HIDE_CHART_LEGEND,
 

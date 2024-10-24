@@ -4,4 +4,4 @@ Details of Private Container Registry, consisting of registry URL and details re
 - registryUrl: System.String
   - URL of user's Private Container Registry.
 - imagePullDetails: PcrImagePullDetails
-  - Details of how a user retrieves images to their AWS account from our container registry.
+  - Details on how users can retrieve images from Rubrik's container registry to their private container registry.

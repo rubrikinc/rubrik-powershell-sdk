@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: CustomTprPolicies
     /// 
-    /// $query = New-RscQueryPolicy -CustomTprPolicies
+    /// $query = New-RscQueryPolicy -Operation CustomTprPolicies
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -134,7 +134,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: IsValidTprPolicyName
     /// 
-    /// $query = New-RscQueryPolicy -IsValidTprPolicyName
+    /// $query = New-RscQueryPolicy -Operation IsValidTprPolicyName
     /// 
     /// # REQUIRED
     /// $query.Var.tprPolicyName = $someString
@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: OrgSecurityPolicy
     /// 
-    /// $query = New-RscQueryPolicy -OrgSecurityPolicy
+    /// $query = New-RscQueryPolicy -Operation OrgSecurityPolicy
     /// 
     /// # No variables for this query.
     /// 
@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: PasswordComplexityPolicy
     /// 
-    /// $query = New-RscQueryPolicy -PasswordComplexityPolicy
+    /// $query = New-RscQueryPolicy -Operation PasswordComplexityPolicy
     /// 
     /// # No variables for this query.
     /// 
@@ -216,7 +216,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: Policies
     /// 
-    /// $query = New-RscQueryPolicy -Policies
+    /// $query = New-RscQueryPolicy -Operation Policies
     /// 
     /// # OPTIONAL
     /// $query.Var.policyObjectFilter = $somePolicyObjectFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyObjectFilter]) for enum values.
@@ -246,7 +246,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: Policy
     /// 
-    /// $query = New-RscQueryPolicy -Policy
+    /// $query = New-RscQueryPolicy -Operation Policy
     /// 
     /// # REQUIRED
     /// $query.Var.policyId = $someString
@@ -306,7 +306,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: PolicyObjectUsages
     /// 
-    /// $query = New-RscQueryPolicy -PolicyObjectUsages
+    /// $query = New-RscQueryPolicy -Operation PolicyObjectUsages
     /// 
     /// # REQUIRED
     /// $query.Var.objectIds = @(
@@ -336,7 +336,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: TopRiskPolicySummaries
     /// 
-    /// $query = New-RscQueryPolicy -TopRiskPolicySummaries
+    /// $query = New-RscQueryPolicy -Operation TopRiskPolicySummaries
     /// 
     /// # REQUIRED
     /// $query.Var.getWhitelistedResults = $someBoolean
@@ -370,7 +370,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Policy
     /// # API Operation: TprPolicyDetail
     /// 
-    /// $query = New-RscQueryPolicy -TprPolicyDetail
+    /// $query = New-RscQueryPolicy -Operation TprPolicyDetail
     /// 
     /// # REQUIRED
     /// $query.Var.tprPolicyId = $someString

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: IncomingStats
     /// 
-    /// $query = New-RscQueryReplication -IncomingStats
+    /// $query = New-RscQueryReplication -Operation IncomingStats
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: NetworkThrottleBypass
     /// 
-    /// $query = New-RscQueryReplication -NetworkThrottleBypass
+    /// $query = New-RscQueryReplication -Operation NetworkThrottleBypass
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: NetworkThrottleBypassById
     /// 
-    /// $query = New-RscQueryReplication -NetworkThrottleBypassById
+    /// $query = New-RscQueryReplication -Operation NetworkThrottleBypassById
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -184,7 +184,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: OutgoingStats
     /// 
-    /// $query = New-RscQueryReplication -OutgoingStats
+    /// $query = New-RscQueryReplication -Operation OutgoingStats
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -217,7 +217,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: Pairs
     /// 
-    /// $query = New-RscQueryReplication -Pairs
+    /// $query = New-RscQueryReplication -Operation Pairs
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -272,7 +272,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: ValidSources
     /// 
-    /// $query = New-RscQueryReplication -ValidSources
+    /// $query = New-RscQueryReplication -Operation ValidSources
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -312,7 +312,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Replication
     /// # API Operation: ValidTargets
     /// 
-    /// $query = New-RscQueryReplication -ValidTargets
+    /// $query = New-RscQueryReplication -Operation ValidTargets
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt

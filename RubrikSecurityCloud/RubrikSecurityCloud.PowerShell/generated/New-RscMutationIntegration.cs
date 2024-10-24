@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Integration
     /// # API Operation: CreateIntegration
     /// 
-    /// $query = New-RscMutationIntegration -CreateIntegration
+    /// $query = New-RscMutationIntegration -Operation CreateIntegration
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -176,7 +176,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Integration
     /// # API Operation: CreateIntegrations
     /// 
-    /// $query = New-RscMutationIntegration -CreateIntegrations
+    /// $query = New-RscMutationIntegration -Operation CreateIntegrations
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -270,7 +270,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Integration
     /// # API Operation: DeleteIntegration
     /// 
-    /// $query = New-RscMutationIntegration -DeleteIntegration
+    /// $query = New-RscMutationIntegration -Operation DeleteIntegration
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -301,7 +301,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Integration
     /// # API Operation: DeleteIntegrations
     /// 
-    /// $query = New-RscMutationIntegration -DeleteIntegrations
+    /// $query = New-RscMutationIntegration -Operation DeleteIntegrations
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -334,7 +334,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Integration
     /// # API Operation: UpdateIntegration
     /// 
-    /// $query = New-RscMutationIntegration -UpdateIntegration
+    /// $query = New-RscMutationIntegration -Operation UpdateIntegration
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -425,7 +425,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Integration
     /// # API Operation: UpdateIntegrations
     /// 
-    /// $query = New-RscMutationIntegration -UpdateIntegrations
+    /// $query = New-RscMutationIntegration -Operation UpdateIntegrations
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

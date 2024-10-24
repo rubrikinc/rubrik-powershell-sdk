@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vmware
     /// # API Operation: CdpStateInfos
     /// 
-    /// $query = New-RscQueryVmware -CdpStateInfos
+    /// $query = New-RscQueryVmware -Operation CdpStateInfos
     /// 
     /// # REQUIRED
     /// $query.Var.ids = @(
@@ -117,7 +117,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vmware
     /// # API Operation: IsManagementEnabled
     /// 
-    /// $query = New-RscQueryVmware -IsManagementEnabled
+    /// $query = New-RscQueryVmware -Operation IsManagementEnabled
     /// 
     /// # No variables for this query.
     /// 
@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vmware
     /// # API Operation: MissedRecoverableRanges
     /// 
-    /// $query = New-RscQueryVmware -MissedRecoverableRanges
+    /// $query = New-RscQueryVmware -Operation MissedRecoverableRanges
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -179,7 +179,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Domain:    Vmware
     /// # API Operation: RecoverableRanges
     /// 
-    /// $query = New-RscQueryVmware -RecoverableRanges
+    /// $query = New-RscQueryVmware -Operation RecoverableRanges
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{

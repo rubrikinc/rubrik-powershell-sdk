@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("folderId")]
         public System.String? FolderId { get; set; }
 
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean (scalar)
+        [JsonProperty("isArchived")]
+        public System.Boolean? IsArchived { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -58,6 +63,7 @@ namespace RubrikSecurityCloud.Types
         ChannelMembershipType? MembershipType = null,
         System.String? ChannelId = null,
         System.String? FolderId = null,
+        System.Boolean? IsArchived = null,
         System.String? Name = null,
         System.String? NaturalId = null
     ) 
@@ -70,6 +76,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( FolderId != null ) {
             this.FolderId = FolderId;
+        }
+        if ( IsArchived != null ) {
+            this.IsArchived = IsArchived;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "folderId\n" ;
             } else {
                 s += ind + "folderId\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean (scalar)
+        if (this.IsArchived != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -193,6 +211,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.FolderId != null && ec.Excludes("folderId",true))
         {
             this.FolderId = null;
+        }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean (scalar)
+        if (ec.Includes("isArchived",true))
+        {
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
