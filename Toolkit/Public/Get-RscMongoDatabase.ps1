@@ -51,7 +51,6 @@ function Get-RscMongoDatabase {
             ParameterSetName = "Name"
         )]
         [RubrikSecurityCloud.Types.Cluster]$Cluster,
-
         [Parameter(
             Mandatory = $false,
             ValueFromPipeline = $true,
@@ -113,11 +112,6 @@ function Get-RscMongoDatabase {
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }
-
-
-
-
-
     } 
 }
 

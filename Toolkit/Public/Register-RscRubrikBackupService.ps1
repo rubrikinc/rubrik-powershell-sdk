@@ -35,7 +35,6 @@ function Register-RscRubrikBackupService
     .EXAMPLE
     # Register Physical Host
     Register-RscRubrikBackupService -Hostname "foo.example.com" -Cluster (Get-RscCluster "mycluster.example.com")
-
     #>
 
     [CmdletBinding()]
@@ -87,7 +86,8 @@ function Register-RscRubrikBackupService
             }
         }
         elseif($Hostname) {
-            if ($Async) {
+            if ($PSBoundParameters.ContainsKey('Async')) {
+                # Don't think we're actually doing Async here.
                 $query = New-RscMutation -GqlMutation bulkRegisterHostAsync
                 $query.var.input =  New-Object -TypeName RubrikSecurityCloud.Types.BulkRegisterHostAsyncInput
             }

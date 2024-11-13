@@ -1,5 +1,5 @@
 #Requires -Version 3
-function Get-RscRole {
+function Get-RscOrganization {
     <#
     .SYNOPSIS
     Retrieves Organizations defined in Rubrik Security Cloud
