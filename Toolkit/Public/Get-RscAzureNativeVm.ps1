@@ -37,7 +37,7 @@ function Get-RscAzureNativeVm {
             Mandatory = $false,
             ParameterSetName = "Name"
         )]
-        [String]$Name,
+        [String]$NameSubstring,
         [Parameter(
             Mandatory = $false,
             ValueFromPipeline = $true,
@@ -58,21 +58,11 @@ function Get-RscAzureNativeVm {
             $result
         } else {
             $query = New-RscQuery -GqlQuery azureNativeVirtualMachines
-            $query.var.filter = @()
+            $query.var.filter = New-Object -TypeName RubrikSecurityCloud.Types.AzureNativeVirtualMachineFilters
 
-            if ($Name) {
-                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-                # Regex filter doesn't work in the API right now, but we're going to play pretend. 
-                # With real Regex, users could search for VMs that start with the letter A if they wanted.
-                if ($name.Contains("*")) {
-                    $name.Replace("*",'')
-                    $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::REGEX
-                    $nameFilter.texts = $Name.Replace("*",'')
-                } else {
-                    $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
-                    $nameFilter.texts = $Name
-                }
-                $query.var.filter += $nameFilter
+            if ($NameSubstring) {
+                $query.var.filter.nameSubstringFilter = New-Object -TypeName RubrikSecurityCloud.Types.NameSubstringFilter
+                $query.var.filter.nameSubstringFilter.NameSubstring = $NameSubstring
             }
     
             if ($Sla) {
