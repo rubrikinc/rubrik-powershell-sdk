@@ -71,6 +71,10 @@ function Get-RscWorkload {
         [Parameter(
             Mandatory = $false
         )]
+        [RubrikSecurityCloud.Types.SlaComplianceTimeRange]$ComplianceTimeRange,
+        [Parameter(
+            Mandatory = $false
+        )]
         [RubrikSecurityCloud.Types.ProtectionStatusEnum[]]$ProtectionStatus,
         [Parameter(
             Mandatory = $false
@@ -91,6 +95,7 @@ function Get-RscWorkload {
             ValueFromPipeline = $true
         )]
         [RubrikSecurityCloud.Types.Org]$Org
+
     )
     
     Process {
@@ -175,6 +180,9 @@ function Get-RscWorkload {
         }
         if ($ComplianceStatus) {
             $query.var.filter.complianceStatus = $ComplianceStatus
+        }
+        if ($ComplianceTimeRange) {
+            $query.var.filter.slaTimeRange = $ComplianceTimeRange
         }
         if ($ProtectionStatus) {
             $query.var.filter.protectionStatus = $ProtectionStatus
