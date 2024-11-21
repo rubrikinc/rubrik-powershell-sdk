@@ -18,8 +18,8 @@ function Get-RscNasSystem {
     .PARAMETER Name
     The name of the NAS system to filter on.
 
-    .PARAMETER First
-    The number of NAS systems to retrieve in one query.
+    .PARAMETER List
+    Switch to list all NAS systems.
 
     .PARAMETER AsQuery
     Instead of running the command, the query object is returned.
