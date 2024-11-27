@@ -185,16 +185,13 @@ function Set-RscSla
 
     [CmdletBinding()]
     Param(
-        # Global SLA ID
-        [Parameter(ParameterSetName="Id")]
-        [String]$Id,
-
         # SLA Domain Name
         [Parameter()]
         [String]$Name,
 
         # SLA Domain Object
         [Parameter(ValueFromPipeline=$true)]
+        [ValidateNotNullOrEmpty()]
         [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla,
 
         # SLA Domain Description
@@ -302,6 +299,10 @@ function Set-RscSla
         [Parameter()]
         [RubrikSecurityCloud.Types.MsSqlConfigInput]$MsSqlConfig,
 
+        # MySqlDb specific settings of this SLA.
+        [Parameter()]
+        [RubrikSecurityCloud.Types.MysqldbSlaConfigInput]$MysqldbConfig,
+
         # Mongo specific settings of this SLA.
         [Parameter()]
         [RubrikSecurityCloud.Types.MongoConfigInput]$MongoConfig,
@@ -332,163 +333,715 @@ function Set-RscSla
     )
 
     Process {
-        $mutation = New-RscMutationSla -Operation UpdateGlobal
-        $mutation.Var.Input =
-            New-Object -TypeName RubrikSecurityCloud.Types.UpdateGlobalSlaInput
-        $mutation.Var.Input.id = $Id
+        # ------------------------------- Function Block Start ----------------------------------
+        # Cast Duration To SlaDurationInput Type
+        function CastToSlaDurationInput {
+            param (
+                [RubrikSecurityCloud.Types.Duration]$Duration
+            )
+            if ($null -eq $Duration) {
+                return $null
+            }
+            
+            $obj = New-Object -TypeName RubrikSecurityCloud.Types.SlaDurationInput
+            $obj.Duration = $Duration.DurationField
+            $obj.Unit = $Duration.Unit
+            return $obj
+        }
 
-        # TODO(Aman) [SPARK-330821]: fetch the current configuration of SLA from
-        # the server and initialise the input object with the current values
+        # Cast BackupWindow To BackupWindowInput Type
+        function CastToBackupWindowInput {
+            param (
+                [RubrikSecurityCloud.Types.BackupWindow]$BackupWindow
+            )
+            if ($null -eq $BackupWindow) {
+                return $null
+            }
+
+            $BackupWindowInput = New-Object RubrikSecurityCloud.Types.BackupWindowInput
+            $BackupWindowInput.DurationInHours = $BackupWindow.DurationInHours
+
+            if ($null -ne $BackupWindow.StartTimeAttributes) {
+                $StartTimeAttributesInput = New-Object RubrikSecurityCloud.Types.StartTimeAttributesInput
+
+                if ($null -ne $BackupWindow.StartTimeAttributes.DayOfWeek) {
+                    $DayOfWeekOptInput = New-Object RubrikSecurityCloud.Types.DayOfWeekOptInput
+                    $DayOfWeekOptInput.day = $BackupWindow.StartTimeAttributes.DayOfWeek.day
+                    $StartTimeAttributesInput.DayOfWeek = $DayOfWeekOptInput
+                } else {
+                    $StartTimeAttributesInput.DayOfWeek = $null
+                }
+
+                $StartTimeAttributesInput.Hour = $BackupWindow.StartTimeAttributes.Hour
+                $StartTimeAttributesInput.Minute = $BackupWindow.StartTimeAttributes.Minute 
+                $BackupWindowInput.StartTimeAttributes = $StartTimeAttributesInput
+            } else {
+                $BackupWindowInput.StartTimeAttributes = $null
+            }
+
+            return $BackupWindowInput
+        }
+        
+        # Cast ArchivalSpec To ArchivalSpecInput Type
+        function CastToArchivalSpecInput {
+            param (
+                [RubrikSecurityCloud.Types.ArchivalSpec]$ArchivalSpec
+            )
+            
+            if ($null -eq $ArchivalSpec) {
+                return $null
+            }
+        
+            $ArchivalSpecInput = New-Object RubrikSecurityCloud.Types.ArchivalSpecInput
+        
+
+            # For new global SLA archival design, the archival group id is not supported in the archival 
+            # spec input for data center archival.
+            if ($ArchivalSpec.StorageSetting -and $ArchivalSpec.ArchivalLocationToClusterMapping.Count -eq 0 ) {
+                $ArchivalSpecInput.ArchivalGroupId = [string]$ArchivalSpec.StorageSetting.Id
+            } else {
+                $ArchivalSpecInput.ArchivalGroupId = $null
+            }
+
+            $ArchivalSpecInput.Threshold = $ArchivalSpec.Threshold
+            $ArchivalSpecInput.ThresholdUnit = $ArchivalSpec.ThresholdUnit
+        
+            if ($ArchivalSpec.ArchivalTieringSpec) {
+                $ArchivalTieringSpecInput = New-Object RubrikSecurityCloud.Types.ArchivalTieringSpecInput
+                $ArchivalTieringSpecInput.IsInstantTieringEnabled = $ArchivalSpec.ArchivalTieringSpec.IsInstantTieringEnabled
+                $ArchivalTieringSpecInput.MinAccessibleDurationInSeconds = $ArchivalSpec.ArchivalTieringSpec.MinAccessibleDurationInSeconds
+                $ArchivalTieringSpecInput.ColdStorageClass = $ArchivalSpec.ArchivalTieringSpec.ColdStorageClass
+                $ArchivalTieringSpecInput.ShouldTierExistingSnapshots = $ArchivalSpec.ArchivalTieringSpec.ShouldTierExistingSnapshots
+                $ArchivalSpecInput.ArchivalTieringSpecInput = $ArchivalTieringSpecInput
+            } else {
+                $ArchivalSpecInput.ArchivalTieringSpecInput = $null
+            }
+        
+            $ArchivalSpecInput.Frequencies = $ArchivalSpec.Frequencies
+        
+            $ArchivalLocationToClusterMappingInputs = @()
+            foreach ($Mapping in $ArchivalSpec.ArchivalLocationToClusterMapping) {
+                $MappingInput = New-Object RubrikSecurityCloud.Types.ArchivalLocationToClusterMappingInput
+                if ($Mapping.Cluster) {
+                    $MappingInput.ClusterUuid = [string]$Mapping.Cluster.Id
+                } else {
+                    $MappingInput.ClusterUuid = $null
+                }
+        
+                if ($Mapping.Location) {
+                    $MappingInput.LocationId = [string]$Mapping.Location.Id
+                } else {
+                    $MappingInput.LocationId = $null
+                }
+                $ArchivalLocationToClusterMappingInputs += $MappingInput
+            }
+            $ArchivalSpecInput.ArchivalLocationToClusterMapping = $ArchivalLocationToClusterMappingInputs
+        
+            return $ArchivalSpecInput
+        }
+
+        # Cast ReplicationSpec To ReplicationSpecInput Type
+        function CastToReplicationSpecToInput {
+            param (
+                [RubrikSecurityCloud.Types.ReplicationSpecV2]$ReplicationSpec
+            )
+            
+            if ($null -eq $ReplicationSpec) {
+                return $null
+            }
+        
+            $ReplicationSpecInput = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2Input
+        
+            if ($null -ne $ReplicationSpec.Cluster) {
+                $ReplicationSpecInput.ClusterUuid = [string]$ReplicationSpec.Cluster.Id
+            } else {
+                $ReplicationSpecInput.ClusterUuid = $null
+            }
+            
+            
+            if ($null -ne $ReplicationSpec.TargetMapping) {
+                $ReplicationSpecInput.StorageSettingId = [string]$ReplicationSpec.TargetMapping.Id
+            } else {
+                $ReplicationSpecInput.StorageSettingId = $null
+            }
+
+            $ReplicationSpecInput.RetentionDuration = CastToSlaDurationInput -Duration $ReplicationSpec.RetentionDuration
+        
+            if ($null -ne $ReplicationSpec.AwsTarget) {
+                $ReplicationSpecInput.AwsAccount = $ReplicationSpec.AwsTarget.AccountName
+            } else {
+                $ReplicationSpecInput.AwsAccount = $null
+            }
+        
+            if ($null -ne $ReplicationSpec.AzureTarget) {
+                $ReplicationSpecInput.AzureSubscription = $ReplicationSpec.AzureTarget.SubscriptionName
+            } else {
+                $ReplicationSpecInput.AzureSubscription = $null
+            }
+        
+            $ReplicationSpecInput.ReplicationLocalRetentionDuration = CastToSlaDurationInput -Duration $ReplicationSpec.ReplicationLocalRetentionDuration
+        
+            $CascadingArchivalSpecInputs = @()
+            foreach ($CascadingArchivalSpec in $ReplicationSpec.CascadingArchivalSpecs) {
+                $CascadingArchivalSpecInput = New-Object RubrikSecurityCloud.Types.CascadingArchivalSpecInput
+                $CascadingArchivalSpecInput.ArchivalThreshold = CastToSlaDurationInput -Duration $CascadingArchivalSpec.ArchivalThreshold
+                if ($CascadingArchivalSpec.ArchivalTieringSpec) {
+                    $ArchivalTieringSpecInput = New-Object RubrikSecurityCloud.Types.ArchivalTieringSpecInput
+                    $ArchivalTieringSpecInput.IsInstantTieringEnabled = $CascadingArchivalSpec.ArchivalTieringSpec.IsInstantTieringEnabled
+                    $ArchivalTieringSpecInput.MinAccessibleDurationInSeconds = $CascadingArchivalSpec.ArchivalTieringSpec.MinAccessibleDurationInSeconds
+                    $ArchivalTieringSpecInput.ColdStorageClass = $CascadingArchivalSpec.ArchivalTieringSpec.ColdStorageClass
+                    $ArchivalTieringSpecInput.ShouldTierExistingSnapshots = $CascadingArchivalSpec.ArchivalTieringSpec.ShouldTierExistingSnapshots
+                    $CascadingArchivalSpecInput.ArchivalTieringSpecInput = $ArchivalTieringSpecInput
+                } else {
+                    $CascadingArchivalSpecInput.ArchivalTieringSpecInput = $null
+                }
+                $CascadingArchivalSpecInput.Frequency = $CascadingArchivalSpec.Frequency
+                $CascadingArchivalSpecInput.ArchivalLocationId = [string]$CascadingArchivalSpec.ArchivalLocation.Id
+                $ArchivalLocationToClusterMappingInputs = @()
+                foreach ($Mapping in $CascadingArchivalSpec.ArchivalLocationToClusterMapping) {
+                    $MappingInput = New-Object RubrikSecurityCloud.Types.ArchivalLocationToClusterMappingInput
+                    if ($Mapping.Cluster) {
+                        $MappingInput.ClusterUuid = [string]$Mapping.Cluster.Id
+                    } else {
+                        $MappingInput.ClusterUuid = $null
+                    }
+        
+                    if ($Mapping.Location) {
+                        $MappingInput.LocationId = [string]$Mapping.Location.Id
+                    } else {
+                        $MappingInput.LocationId = $null
+                    }
+                    $ArchivalLocationToClusterMappingInputs += $MappingInput
+                }
+                $CascadingArchivalSpecInput.ArchivalLocationToClusterMapping = $ArchivalLocationToClusterMappingInputs
+                $CascadingArchivalSpecInputs += $CascadingArchivalSpecInput
+            }
+            $ReplicationSpecInput.CascadingArchivalSpecs = $CascadingArchivalSpecInputs
+
+            $ReplicationPairInputs = @()
+            foreach ($Pair in $ReplicationSpec.ReplicationPairs) {
+                $PairInput = New-Object RubrikSecurityCloud.Types.ReplicationPairInput
+                if ($Pair.SourceCluster) {
+                    $PairInput.SourceClusterUuid = [string]$Pair.SourceCluster.Id
+                } else {
+                    $PairInput.SourceClusterUuid = $null
+                }
+        
+                if ($Pair.TargetCluster) {
+                    $PairInput.TargetClusterUuid = [string]$Pair.TargetCluster.Id
+                } else {
+                    $PairInput.TargetClusterUuid = $null
+                }
+                $ReplicationPairInputs += $PairInput
+            }
+            $ReplicationSpecInput.ReplicationPairs = $ReplicationPairInputs
+
+            $ReplicationSpecInput.AwsRegion = [RubrikSecurityCloud.Types.AwsNativeRegionForReplication] $ReplicationSpec.AwsRegion
+            $ReplicationSpecInput.AzureRegion = [RubrikSecurityCloud.Types.AzureNativeRegionForReplication] $ReplicationSpec.AzureRegion
+        
+            return $ReplicationSpecInput
+        }
+        # ------------------------------- Function Block End ----------------------------------
+
+        $Mutation = New-RscMutationSla -Operation UpdateGlobal
+        $Mutation.Var.Input =
+            New-Object -TypeName RubrikSecurityCloud.Types.UpdateGlobalSlaInput
+        $Mutation.Var.Input.Id = $Sla.Id
+
+        # Prevent race conditions during SLA updates. 
+        # Only set stateVersion programmatically, not by user input.
+        $Mutation.Var.Input.stateVersion = $Sla.stateVersion
 
         if ($Name) {
-            $mutation.Var.Input.Name = $Name
+            $Mutation.Var.Input.Name = $Name
         }
         else {
-            $mutation.Var.Input.Name = $Sla.Name
-        }
-        if ($Description) {
-            $mutation.Var.Input.Description = $Description
-        }
-        else {
-            $mutation.Var.Input.Description = $Sla.Description
-        }
-        if ($UserNote) {
-            $mutation.Var.Input.UserNote = $UserNote
-        }
-        if ($ObjectTypes) {
-            $mutation.Var.Input.ObjectTypes = $ObjectTypes
-        }
-        else {
-            $mutation.Var.Input.ObjectTypes = $sla.ObjectTypes
+            $Mutation.Var.Input.Name = $Sla.Name
         }
 
-        $mutation.Var.Input.SnapshotSchedule =
-            New-Object -TypeName RubrikSecurityCloud.Types.GlobalSnapshotScheduleInput
-        if ($MinuteSchedule) {
-            $mutation.Var.Input.SnapshotSchedule.Minute = $MinuteSchedule
+        if ($Description) {
+            $Mutation.Var.Input.Description = $Description
         }
         else {
-            # Convert snapshot schedule to input
+            $Mutation.Var.Input.Description = $Sla.Description
+        }
+        
+        # If UserNote is not provided, set it to null 
+        if ($UserNote) {
+            $Mutation.Var.Input.UserNote = $UserNote
+        } else {
+            $Mutation.Var.Input.UserNote = $null
+        }
+
+        if ($ObjectTypes) {
+            $Mutation.Var.Input.ObjectTypes = $ObjectTypes
+        }
+        else {
+            $Mutation.Var.Input.ObjectTypes = $Sla.ObjectTypes
+        }
+        
+        # ------------------------------- Snapshot Schedule Block Start ----------------------------------
+        # Setting each SnapshotSchedule from the existing SLA if not provided
+        $Mutation.Var.Input.SnapshotSchedule =
+            New-Object -TypeName RubrikSecurityCloud.Types.GlobalSnapshotScheduleInput
+
+        if ($MinuteSchedule) {
+            $Mutation.Var.Input.SnapshotSchedule.Minute = $MinuteSchedule
+        }
+        else {
+            if ($Sla.SnapshotSchedule.Minute) {
+                $ConfigObj = $Sla.SnapshotSchedule.Minute
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.MinuteSnapshotScheduleInput
+                if($ConfigObj.BasicSchedule) {
+                    $InputObj.BasicSchedule = New-Object -TypeName RubrikSecurityCloud.Types.BasicSnapshotScheduleInput
+                    $InputObj.BasicSchedule.Frequency = $ConfigObj.BasicSchedule.Frequency
+                    $InputObj.BasicSchedule.RetentionUnit = $ConfigObj.BasicSchedule.RetentionUnit
+                    $InputObj.BasicSchedule.Retention = $ConfigObj.BasicSchedule.Retention
+                } else {
+                    $InputObj.BasicSchedule = $null
+                }
+                $Mutation.Var.Input.SnapshotSchedule.Minute = $InputObj
+            } else {
+                $Mutation.Var.Input.SnapshotSchedule.Minute = $null;
+            }
         }
         if ($HourlySchedule) {
-            $mutation.Var.Input.SnapshotSchedule.Hourly = $HourlySchedule
+            $Mutation.Var.Input.SnapshotSchedule.Hourly = $HourlySchedule
         }
         else {
-            # Convert snapshot schedule to input
+            if ($Sla.SnapshotSchedule.Hourly) {
+                $ConfigObj = $Sla.SnapshotSchedule.Hourly
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.HourlySnapshotScheduleInput
+                if($ConfigObj.BasicSchedule) {
+                    $InputObj.BasicSchedule = New-Object -TypeName RubrikSecurityCloud.Types.BasicSnapshotScheduleInput
+                    $InputObj.BasicSchedule.Frequency = $ConfigObj.BasicSchedule.Frequency
+                    $InputObj.BasicSchedule.RetentionUnit = $ConfigObj.BasicSchedule.RetentionUnit
+                    $InputObj.BasicSchedule.Retention = $ConfigObj.BasicSchedule.Retention
+                } else {
+                    $InputObj.BasicSchedule = $null
+                }
+                $Mutation.Var.Input.SnapshotSchedule.Hourly = $InputObj
+            } else {
+                $Mutation.Var.Input.SnapshotSchedule.Hourly = $null;
+            }
         }
+
         if ($DailySchedule) {
-            $mutation.Var.Input.SnapshotSchedule.Daily = $DailySchedule
+            $Mutation.Var.Input.SnapshotSchedule.Daily = $DailySchedule
         }
         else {
-            # Convert snapshot schedule to input
+            if ($Sla.SnapshotSchedule.Daily) {
+                $ConfigObj = $Sla.SnapshotSchedule.Daily
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.DailySnapshotScheduleInput
+                if($ConfigObj.BasicSchedule) {
+                    $InputObj.BasicSchedule = New-Object -TypeName RubrikSecurityCloud.Types.BasicSnapshotScheduleInput
+                    $InputObj.BasicSchedule.Frequency = $ConfigObj.BasicSchedule.Frequency
+                    $InputObj.BasicSchedule.RetentionUnit = $ConfigObj.BasicSchedule.RetentionUnit
+                    $InputObj.BasicSchedule.Retention = $ConfigObj.BasicSchedule.Retention
+                } else {
+                    $InputObj.BasicSchedule = $null
+                }
+                $Mutation.Var.Input.SnapshotSchedule.Daily = $InputObj
+            } else {
+                $Mutation.Var.Input.SnapshotSchedule.Daily = $null;
+            }
+                
         }
+
         if ($WeeklySchedule) {
-            $mutation.Var.Input.SnapshotSchedule.Weekly = $WeeklySchedule
+            $Mutation.Var.Input.SnapshotSchedule.Weekly = $WeeklySchedule
         }
         else {
-            # Convert snapshot schedule to input
+            if ($Sla.SnapshotSchedule.Weekly) {
+                $ConfigObj = $Sla.SnapshotSchedule.Weekly
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.WeeklySnapshotScheduleInput
+                if($ConfigObj.BasicSchedule) {
+                    $InputObj.BasicSchedule = New-Object -TypeName RubrikSecurityCloud.Types.BasicSnapshotScheduleInput
+                    $InputObj.BasicSchedule.Frequency = $ConfigObj.BasicSchedule.Frequency
+                    $InputObj.BasicSchedule.RetentionUnit = $ConfigObj.BasicSchedule.RetentionUnit
+                    $InputObj.BasicSchedule.Retention = $ConfigObj.BasicSchedule.Retention
+                } else {
+                    $InputObj.BasicSchedule = $null
+                }
+                $InputObj.DayOfWeek = $ConfigObj.DayOfWeek
+                $Mutation.Var.Input.SnapshotSchedule.Weekly = $InputObj
+            } else {
+                $Mutation.Var.Input.SnapshotSchedule.Weekly = $null;
+            }
         }
+
         if ($MonthlySchedule) {
-            $mutation.Var.Input.SnapshotSchedule.Monthly = $MonthlySchedule
+            $Mutation.Var.Input.SnapshotSchedule.Monthly = $MonthlySchedule
         }
         else {
-            # Convert snapshot schedule to input
+
+            if ($Sla.SnapshotSchedule.Monthly) {
+                $ConfigObj = $Sla.SnapshotSchedule.Monthly
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.MonthlySnapshotScheduleInput
+                if($ConfigObj.BasicSchedule) {
+                    $InputObj.BasicSchedule = New-Object -TypeName RubrikSecurityCloud.Types.BasicSnapshotScheduleInput
+                    $InputObj.BasicSchedule.Frequency = $ConfigObj.BasicSchedule.Frequency
+                    $InputObj.BasicSchedule.RetentionUnit = $ConfigObj.BasicSchedule.RetentionUnit
+                    $InputObj.BasicSchedule.Retention = $ConfigObj.BasicSchedule.Retention
+                } else {
+                    $InputObj.BasicSchedule = $null
+                }
+                $InputObj.DayOfMonth = $ConfigObj.DayOfMonth
+                $Mutation.Var.Input.SnapshotSchedule.Monthly = $InputObj
+            } else {
+                $Mutation.Var.Input.SnapshotSchedule.Monthly = $null;
+            }
         }
+
         if ($QuarterlySchedule) {
-            $mutation.Var.Input.SnapshotSchedule.Quarterly = $QuarterlySchedule
+            $Mutation.Var.Input.SnapshotSchedule.Quarterly = $QuarterlySchedule
         }
         else {
-            # Convert snapshot schedule to input
+
+            if ($Sla.SnapshotSchedule.Quarterly) {
+                $ConfigObj = $Sla.SnapshotSchedule.Quarterly
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.QuarterlySnapshotScheduleInput
+                if($ConfigObj.BasicSchedule) {
+                    $InputObj.BasicSchedule = New-Object -TypeName RubrikSecurityCloud.Types.BasicSnapshotScheduleInput
+                    $InputObj.BasicSchedule.Frequency = $ConfigObj.BasicSchedule.Frequency
+                    $InputObj.BasicSchedule.RetentionUnit = $ConfigObj.BasicSchedule.RetentionUnit
+                    $InputObj.BasicSchedule.Retention = $ConfigObj.BasicSchedule.Retention
+                } else {
+                    $InputObj.BasicSchedule = $null
+                }
+                $InputObj.DayOfQuarter = $ConfigObj.DayOfQuarter
+                $InputObj.QuarterStartMonth = $ConfigObj.QuarterStartMonth
+                $Mutation.Var.Input.SnapshotSchedule.Quarterly = $InputObj
+            } else {
+                $Mutation.Var.Input.SnapshotSchedule.Quarterly = $null;
+            }
         }
+
         if ($YearlySchedule) {
-            $mutation.Var.Input.SnapshotSchedule.Yearly = $YearlySchedule
+            $Mutation.Var.Input.SnapshotSchedule.Yearly = $YearlySchedule
         }
         else {
-            # Convert snapshot schedule to input
+
+            if ($Sla.SnapshotSchedule.Yearly) {
+                $ConfigObj = $Sla.SnapshotSchedule.Yearly
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.YearlySnapshotScheduleInput
+                if($ConfigObj.BasicSchedule) {
+                    $InputObj.BasicSchedule = New-Object -TypeName RubrikSecurityCloud.Types.BasicSnapshotScheduleInput
+                    $InputObj.BasicSchedule.Frequency = $ConfigObj.BasicSchedule.Frequency
+                    $InputObj.BasicSchedule.RetentionUnit = $ConfigObj.BasicSchedule.RetentionUnit
+                    $InputObj.BasicSchedule.Retention = $ConfigObj.BasicSchedule.Retention
+                } else {
+                    $InputObj.BasicSchedule = $null
+                }
+                $InputObj.DayOfYear = $ConfigObj.DayOfYear
+                $InputObj.YearStartMonth = $ConfigObj.YearStartMonth
+                $Mutation.Var.Input.SnapshotSchedule.Yearly = $InputObj
+            } else {
+                $Mutation.Var.Input.SnapshotSchedule.Yearly = $null;
+            }
         }
+        # ------------------------------- Snapshot Schedule Block End ----------------------------------
 
         if ($LocalRetentionLimit) {
-            $mutation.Var.Input.LocalRetentionLimit = $LocalRetentionLimit
+            $Mutation.Var.Input.LocalRetentionLimit = $LocalRetentionLimit
+        } else {
+            $Mutation.Var.Input.LocalRetentionLimit = CastToSlaDurationInput -Duration $Sla.LocalRetentionLimit
         }
+        
+
         if ($BackupWindows) {
-            $mutation.Var.Input.BackupWindows = $BackupWindows
-        }
+            $Mutation.Var.Input.BackupWindows = $BackupWindows
+        } else {
+            $BackupWindowInputs = @()
+            if ($null -ne $Sla.BackupWindows) {
+                foreach ($BackupWindow in $Sla.BackupWindows) {
+                    $BackupWindowInputs += CastToBackupWindowInput -BackupWindow $BackupWindow
+                }
+            }
+            $Mutation.Var.Input.BackupWindows = $BackupWindowInputs
+        }   
+
         if ($FirstFullBackupWindows) {
-            $mutation.Var.Input.FirstFullBackupWindows = $FirstFullBackupWindows
+            $Mutation.Var.Input.FirstFullBackupWindows = $FirstFullBackupWindows
+        } else {
+            $FirstFullBackupWindowInputs = @()
+            if ($null -ne $Sla.FirstFullBackupWindows) {
+                foreach ($FirstFullBackupWindow in $Sla.FirstFullBackupWindows) {
+                    $FirstFullBackupWindowInputs += CastToBackupWindowInput -BackupWindow $FirstFullBackupWindow
+                }
+            }
+            $Mutation.Var.Input.FirstFullBackupWindows = $FirstFullBackupWindowInputs
         }
 
-        if ($ShouldApplyToExistingSnapshots) {
-            $obj = New-Object -TypeName RubrikSecurityCloud.Types.ShouldApplyToExistingSnapshots
-            $obj.Value = $true
-            $mutation.Var.Input.ShouldApplyToExistingSnapshots = $obj
+        $ShouldApplyToExistingSnapshotsInput = New-Object -TypeName RubrikSecurityCloud.Types.ShouldApplyToExistingSnapshots
+        if ($ShouldApplyToExistingSnapshots) { 
+            $ShouldApplyToExistingSnapshotsInput.Value = $true
+        } else {
+            $ShouldApplyToExistingSnapshotsInput.Value = $false
         }
-        if ($ShouldApplyToNonPolicySnapshots) {
-            $obj = New-Object -TypeName RubrikSecurityCloud.Types.ShouldApplyToNonPolicySnapshots
-            $obj.Value = $true
-            $mutation.Var.Input.ShouldApplyToNonPolicySnapshots = $obj
+        $Mutation.Var.Input.ShouldApplyToExistingSnapshots = $ShouldApplyToExistingSnapshotsInput
+
+        $ShouldApplyToNonPolicySnapshotsInput = New-Object -TypeName RubrikSecurityCloud.Types.ShouldApplyToNonPolicySnapshots
+        if($ShouldApplyToNonPolicySnapshots) {
+            $ShouldApplyToNonPolicySnapshotsInput.Value = $true
+        } else {
+            $ShouldApplyToNonPolicySnapshotsInput.Value = $false
         }
+        $Mutation.Var.Input.ShouldApplyToNonPolicySnapshots = $ShouldApplyToNonPolicySnapshotsInput
+
         if ($RetentionLockSla) {
-            $mutation.Var.Input.IsRetentionLockedSla = $true
+            $Mutation.Var.Input.IsRetentionLockedSla = $true
+        } else {
+            $Mutation.Var.Input.IsRetentionLockedSla = $Sla.IsRetentionLockedSla
         }
+
         if ($RetentionLockMode) {
-            $mutation.Var.Input.RetentionLockMode = $RetentionLockMode
+            $Mutation.Var.Input.RetentionLockMode = $RetentionLockMode
+        } else {
+            $Mutation.Var.Input.RetentionLockMode = $Sla.RetentionLockMode
         }
-
+        
         if ($ArchivalSpecs) {
-            $mutation.Var.Input.ArchivalSpecs = $ArchivalSpecs
+            $Mutation.Var.Input.ArchivalSpecs = $ArchivalSpecs
+        } else {
+            if ($Sla.ArchivalSpecs) {
+                $ArchivalSpecInputs = @()
+                foreach ($ArchivalSpec in $Sla.ArchivalSpecs) {
+                    $ArchivalSpecInputs += CastToArchivalSpecInput -ArchivalSpec $ArchivalSpec
+                }
+                $Mutation.Var.Input.ArchivalSpecs = $ArchivalSpecInputs
+            } else {
+                $Mutation.Var.Input.ArchivalSpecs = $null
+            }
         }
+  
         if ($ReplicationSpecs) {
-            $mutation.Var.Input.ReplicationSpecsV2 = $ReplicationSpecs
+            $Mutation.Var.Input.ReplicationSpecsV2 = $ReplicationSpecs
+        } else {
+            if ($Sla.ReplicationSpecsV2) {
+                $ReplicationSpecInputs = @()
+                foreach ($ReplicationSpec in $Sla.ReplicationSpecsV2) {
+                    $ReplicationSpecInput = CastToReplicationSpecToInput -ReplicationSpec $ReplicationSpec
+                    $ReplicationSpecInputs += $ReplicationSpecInput
+                }
+                $Mutation.Var.Input.ReplicationSpecsV2 = $ReplicationSpecInputs
+            } else {
+                $Mutation.Var.Input.ReplicationSpecsV2 = $null
+            }
         }
 
-        # Update workload specific settings here.
-        $objectSpecificConfig = New-Object -TypeName RubrikSecurityCloud.Types.ObjectSpecificConfigsInput
+        # ------------------------------- Object Specific Config Block Start ----------------------------------
+        $ObjectSpecificConfig = New-Object -TypeName RubrikSecurityCloud.Types.ObjectSpecificConfigsInput
         if ($VmwareVmConfig) {
-            $objectSpecificConfig.VmwareVmConfigInput = $VmwareVmConfig
+            $ObjectSpecificConfig.VmwareVmConfigInput = $VmwareVmConfig
+        } else {
+            if ($Sla.ObjectSpecificConfigs.VmwareVmConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.VmwareVmConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.VmwareVmConfigInput
+                $InputObj.LogRetentionSeconds = $ConfigObj.LogRetentionSeconds
+                $ObjectSpecificConfig.VmwareVmConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.VmwareVmConfigInput = $null
+            }
         }
+
         if ($OracleConfig) {
-            $objectSpecificConfig.OracleConfigInput = $OracleConfig
+            $ObjectSpecificConfig.OracleConfigInput = $OracleConfig
+        } else {
+            if ($Sla.ObjectSpecificConfigs.OracleConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.OracleConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.OracleConfigInput
+                $InputObj.Frequency = CastToSlaDurationInput -Duration $ConfigObj.Frequency
+                $InputObj.LogRetention = CastToSlaDurationInput -Duration $ConfigObj.LogRetention
+                $InputObj.HostLogRetention = CastToSlaDurationInput -Duration $ConfigObj.HostLogRetention
+                $ObjectSpecificConfig.OracleConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.OracleConfigInput = $null
+            }
         }
+
         if ($SapHanaConfig) {
-            $objectSpecificConfig.SapHanaConfigInput = $SapHanaConfig
+            $ObjectSpecificConfig.SapHanaConfigInput = $SapHanaConfig
+        } else {
+            if ($Sla.ObjectSpecificConfigs.SapHanaConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.SapHanaConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.SapHanaConfigInput
+                $InputObj.IncrementalFrequency = CastToSlaDurationInput -Duration $ConfigObj.IncrementalFrequency
+                $InputObj.LogRetention = CastToSlaDurationInput -Duration $ConfigObj.LogRetention
+                $InputObj.DifferentialFrequency = CastToSlaDurationInput -Duration $ConfigObj.DifferentialFrequency
+
+                if ($null -ne $ConfigObj.StorageSnapshotConfig) {
+                    $StorageSnapshotConfigInput = New-Object -TypeName RubrikSecurityCloud.Types.SapHanaStorageSnapshotConfigInput
+                    $StorageSnapshotConfigInput.Retention = CastToSlaDurationInput -Duration $ConfigObj.StorageSnapshotConfig.Retention
+                    $StorageSnapshotConfigInput.Frequency = CastToSlaDurationInput -Duration $ConfigObj.StorageSnapshotConfig.Frequency
+                    $InputObj.StorageSnapshotConfig = $StorageSnapshotConfigInput
+                }
+
+                $ObjectSpecificConfig.SapHanaConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.SapHanaConfigInput = $null
+            }
         }
+
         if ($AwsRdsConfig) {
-            $objectSpecificConfig.AwsRdsConfigInput = $AwsRdsConfig
+            $ObjectSpecificConfig.AwsRdsConfigInput = $AwsRdsConfig
+        } else {
+            if ($Sla.ObjectSpecificConfigs.AwsRdsConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.AwsRdsConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.AwsRdsConfigInput
+                $InputObj.LogRetention = CastToSlaDurationInput -Duration $ConfigObj.LogRetention
+                $ObjectSpecificConfig.AwsRdsConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.AwsRdsConfigInput = $null
+            }
         }
+        
         if ($AzureSqlDatabaseConfig) {
-            $objectSpecificConfig.AzureSqlDatabaseDbConfigInput = $AzureSqlDatabaseConfig
+            $ObjectSpecificConfig.AzureSqlDatabaseDbConfigInput = $AzureSqlDatabaseConfig
+        } else {
+            if ($Sla.ObjectSpecificConfigs.AzureSqlDatabaseDbConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.AzureSqlDatabaseDbConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.AzureSqlDatabaseDbConfigInput
+                $InputObj.LogRetentionInDays = $ConfigObj.LogRetentionInDays
+                $ObjectSpecificConfig.AzureSqlDatabaseDbConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.AzureSqlDatabaseDbConfigInput = $null
+            }
         }
+
         if ($AzureSqlManagedInstanceConfig) {
-            $objectSpecificConfig.AzureSqlManagedInstanceDbConfigInput = $AzureSqlManagedInstanceConfig
+            $ObjectSpecificConfig.AzureSqlManagedInstanceDbConfigInput = $AzureSqlManagedInstanceConfig
+        } else {
+            if ($Sla.ObjectSpecificConfigs.AzureSqlManagedInstanceDbConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.AzureSqlManagedInstanceDbConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.AzureSqlManagedInstanceDbConfigInput
+                $InputObj.LogRetentionInDays = $ConfigObj.LogRetentionInDays
+                $ObjectSpecificConfig.AzureSqlManagedInstanceDbConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.AzureSqlManagedInstanceDbConfigInput = $null
+            }
         }
+
         if ($Db2Config) {
-            $objectSpecificConfig.Db2ConfigInput = $Db2Config
+            $ObjectSpecificConfig.Db2ConfigInput = $Db2Config
+        } else {
+            if ($Sla.ObjectSpecificConfigs.Db2Config) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.Db2Config
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.Db2ConfigInput
+                $InputObj.IncrementalFrequency = CastToSlaDurationInput -Duration $ConfigObj.IncrementalFrequency
+                $InputObj.LogRetention = CastToSlaDurationInput -Duration $ConfigObj.LogRetention
+                $InputObj.DifferentialFrequency = CastToSlaDurationInput -Duration $ConfigObj.DifferentialFrequency
+                $InputObj.LogArchivalMethod = $ConfigObj.LogArchivalMethod
+                $ObjectSpecificConfig.Db2ConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.Db2ConfigInput = $null
+            }
         }
+
         if ($MsSqlConfig) {
-            $objectSpecificConfig.MsSqlConfigInput = $MsSqlConfig
+            $ObjectSpecificConfig.MsSqlConfigInput = $MsSqlConfig
+        } else {
+            if ($Sla.ObjectSpecificConfigs.MssqlConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.MssqlConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.MssqlConfigInput
+                $InputObj.Frequency = CastToSlaDurationInput -Duration $ConfigObj.Frequency
+                $InputObj.LogRetention = CastToSlaDurationInput -Duration $ConfigObj.LogRetention
+                $ObjectSpecificConfig.MsSqlConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.MsSqlConfigInput = $null
+            }
         }
+
+
+        if ($MysqldbConfig) {
+            $ObjectSpecificConfig.MysqldbConfigInput = $MysqldbConfig
+        } else {
+            if ($Sla.ObjectSpecificConfigs.MysqldbSlaConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.MysqldbSlaConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.MysqldbSlaConfigInput
+                $InputObj.LogFrequency = CastToSlaDurationInput -Duration $ConfigObj.LogFrequency
+                $InputObj.LogRetention = CastToSlaDurationInput -Duration $ConfigObj.LogRetention
+                $ObjectSpecificConfig.MysqldbConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.MysqldbConfigInput = $null
+            }
+        }
+
         if ($MongoConfig) {
-            $objectSpecificConfig.MongoConfigInput = $MongoConfig
+            $ObjectSpecificConfig.MongoConfigInput = $MongoConfig
+        } else {
+            if ($Sla.ObjectSpecificConfigs.MongoConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.MongoConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.MongoConfigInput
+                $InputObj.LogFrequency = CastToSlaDurationInput -Duration $ConfigObj.LogFrequency
+                $InputObj.LogRetention = CastToSlaDurationInput -Duration $ConfigObj.LogRetention
+                $ObjectSpecificConfig.MongoConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.MongoConfigInput = $null
+            }
         }
+
         if ($AzureBlobConfig) {
-            $objectSpecificConfig.AzureBlobConfigInput = $AzureBlobConfig
+            $ObjectSpecificConfig.AzureBlobConfigInput = $AzureBlobConfig
+        } else {
+            if ($Sla.ObjectSpecificConfigs.AzureBlobConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.AzureBlobConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.AzureBlobConfigInput
+                $InputObj.ContinuousBackupRetentionInDays = $ConfigObj.ContinuousBackupRetentionInDays
+                $InputObj.BackupLocationId = $ConfigObj.BackupLocationId
+                $ObjectSpecificConfig.AzureBlobConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.AzureBlobConfigInput = $null
+            }
         }
+
         if ($AwsNativeS3Config) {
-            $objectSpecificConfig.AwsNativeS3SlaConfigInput = $AwsNativeS3Config
+            $ObjectSpecificConfig.AwsNativeS3SlaConfigInput = $AwsNativeS3Config
+        } else {
+            if ($Sla.ObjectSpecificConfigs.AwsNativeS3SlaConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.AwsNativeS3SlaConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.AwsNativeS3SlaConfigInput
+                $InputObj.ContinuousBackupRetentionInDays = $ConfigObj.ContinuousBackupRetentionInDays
+                $InputObj.ArchivalLocationId = $ConfigObj.ArchivalLocationId
+                $ObjectSpecificConfig.AwsNativeS3SlaConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.AwsNativeS3SlaConfigInput = $null
+            }
         }
+
         if ($ManagedVolumeConfig) {
-            $objectSpecificConfig.ManagedVolumeSlaConfigInput = $ManagedVolumeConfig
+            $ObjectSpecificConfig.ManagedVolumeSlaConfigInput = $ManagedVolumeConfig
+        } else {
+            if ($Sla.ObjectSpecificConfigs.ManagedVolumeSlaConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.ManagedVolumeSlaConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.ManagedVolumeSlaConfigInput
+                $InputObj.LogRetention = CastToSlaDurationInput -Duration $ConfigObj.LogRetention
+                $ObjectSpecificConfig.ManagedVolumeSlaConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.ManagedVolumeSlaConfigInput = $null
+            }
         }
+
         if ($PostgresDbClusterConfig) {
-            $objectSpecificConfig.PostgresDbClusterSlaConfigInput = $PostgresDbClusterConfig
+            $ObjectSpecificConfig.PostgresDbClusterSlaConfigInput = $PostgresDbClusterConfig
+        } else {
+            if ($Sla.ObjectSpecificConfigs.PostgresDbClusterSlaConfig) {
+                $ConfigObj = $Sla.ObjectSpecificConfigs.PostgresDbClusterSlaConfig
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.PostgresDbClusterSlaConfigInput
+                $InputObj.LogRetention = CastToSlaDurationInput -Duration $ConfigObj.LogRetention
+                $ObjectSpecificConfig.PostgresDbClusterSlaConfigInput = $InputObj
+            } else {
+                $ObjectSpecificConfig.PostgresDbClusterSlaConfigInput = $null
+            }
         }
-        $mutation.Var.Input.ObjectSpecificConfigsInput = $objectSpecificConfig
+
+        $Mutation.Var.Input.ObjectSpecificConfigsInput = $ObjectSpecificConfig
+        # ------------------------------- Object Specific Config Block End ----------------------------------
 
         if ($AsQuery) {
-            return $mutation
+            return $Mutation
         }
 
-        $result = Invoke-Rsc -Query $mutation
-        $result
+        return Invoke-Rsc -Query $Mutation
     }
 }
