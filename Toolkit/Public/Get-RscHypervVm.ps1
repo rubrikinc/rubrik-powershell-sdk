@@ -1,27 +1,27 @@
 #Requires -Version 3
-function Get-RscNutanixVm {
+function Get-RscHypervVm {
     <#
     .SYNOPSIS
-    Retrieves Nutanix VMs protected by Rubrik Security Cloud
+    Retrieves RscHypervVm objects protected by Rubrik Security Cloud
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'nutanixVms' to retrieve a list of VMs with a predetermined set of properties.
+    This cmdlet uses the GQL query 'hypervVirtualMachines' to retrieve a list of VMs with a predetermined set of properties.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    # Get all VMs
-    Get-RscNutanixVm
+    # Get all
+    Get-RscHypervVm
 
     .EXAMPLE
-    # Get VM with specific name
-    Get-RscNutanixVm -Name "jake-001"
+    # Get object with specific name
+    Get-RscHypervVm -Name "jake-001"
 
     .EXAMPLE
-    # Get VMs by specifying part of a name
-    Get-RscNutanixVm
+    # Get objects by specifying part of a name
+    Get-RscHypervVm -Name "*jake*"
     #>
 
     [CmdletBinding(
@@ -56,25 +56,16 @@ function Get-RscNutanixVm {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery nutanixVm
+            $query = New-RscQuery -GqlQuery hypervVirtualMachine
             $query.var.filter = @()
             $query.Var.fid = $Id
-            $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-            $query.Field.Cluster.id = "PIZZA" # Could Fields be a version of the type structure that has all booleans to define what we get back?
-            $query.Field.AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.NutanixVmAgentStatus
-            $query.Field.AgentStatus.connectionStatus = New-Object -typename RubrikSecurityCloud.Types.NutanixVmAgentConnectionStatus
-            $query.Field.osType = New-Object -TypeName RubrikSecurityCloud.Types.OsType
+
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery nutanixVms
+            $query = New-RscQuery -GqlQuery hypervVirtualMachines
             $query.var.filter = @()
-            $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-            $query.Field.Nodes[0].Cluster.id = "FETCH"
-            $query.Field.Nodes[0].Cluster.name = "FETCH"
-            $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.NutanixVmAgentStatus
-            $query.Field.Nodes[0].AgentStatus.connectionStatus = New-Object -typename RubrikSecurityCloud.Types.NutanixVmAgentConnectionStatus
-            $query.Field.Nodes[0].osType = New-Object -TypeName RubrikSecurityCloud.Types.OsType
+
             if ($Name) {
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 # Regex filter doesn't work in the API right now, but we're going to play pretend. 
@@ -114,3 +105,4 @@ function Get-RscNutanixVm {
 
     } 
 }
+

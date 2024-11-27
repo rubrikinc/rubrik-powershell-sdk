@@ -50,6 +50,11 @@ function Get-RscVmwareVm {
         [switch]$Relic,
         [Parameter(
             Mandatory = $false,
+            ParameterSetName = "Name"
+        )]
+        [switch]$Replica,
+        [Parameter(
+            Mandatory = $false,
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
         )]
@@ -128,6 +133,13 @@ function Get-RscVmwareVm {
                 $relicFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_RELIC
                 $relicFilter.Texts = $Relic
                 $query.var.filter += $relicFilter
+            }
+
+            if ($PSBoundParameters.ContainsKey('replica')) {
+                $replicaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $replicaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_REPLICATED
+                $replicaFilter.Texts = $replica
+                $query.var.filter += $replicaFilter
             }
 
             $result = Invoke-Rsc -Query $query
