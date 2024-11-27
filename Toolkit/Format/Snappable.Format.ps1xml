@@ -10,21 +10,26 @@
                 <TableHeaders>
                     <TableColumnHeader>
                         <Label>Name</Label>
+                        <Width>50</Width>
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>Object Type</Label>
+                        <Width>34</Width>
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>Object State</Label>
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>Compliance Status</Label>
+                        <Width>17</Width>
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>SLA Domain</Label>
+                        <Width>30</Width>
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>Forever Id (FID)</Label>
+                        <Width>36</Width>
                     </TableColumnHeader>                      
                 </TableHeaders>
                 <TableRowEntries>

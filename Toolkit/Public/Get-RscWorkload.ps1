@@ -71,6 +71,10 @@ function Get-RscWorkload {
         [Parameter(
             Mandatory = $false
         )]
+        [RubrikSecurityCloud.Types.SlaComplianceTimeRange]$ComplianceTimeRange = [RubrikSecurityCloud.Types.SlaComplianceTimeRange]::UNKNOWN,
+        [Parameter(
+            Mandatory = $false
+        )]
         [RubrikSecurityCloud.Types.ProtectionStatusEnum[]]$ProtectionStatus,
         [Parameter(
             Mandatory = $false
@@ -90,7 +94,12 @@ function Get-RscWorkload {
             Mandatory = $false,
             ValueFromPipeline = $true
         )]
-        [RubrikSecurityCloud.Types.Org]$Org
+        [RubrikSecurityCloud.Types.Org]$Org,
+        [Parameter(
+            Mandatory = $false
+        )]
+        [switch]$AsQuery
+
     )
     
     Process {
@@ -176,6 +185,9 @@ function Get-RscWorkload {
         if ($ComplianceStatus) {
             $query.var.filter.complianceStatus = $ComplianceStatus
         }
+        if ($ComplianceTimeRange -ne [RubrikSecurityCloud.Types.SlaComplianceTimeRange]::UNKNOWN) {
+            $query.var.filter.slaTimeRange = $ComplianceTimeRange
+        }
         if ($ProtectionStatus) {
             $query.var.filter.protectionStatus = $ProtectionStatus
         }
@@ -192,8 +204,12 @@ function Get-RscWorkload {
         if ($Org) {
             $query.var.filter.orgId = $Org.Id
         }
-
-        $result = Invoke-Rsc -Query $query
-        $result.nodes
+        if ($PSBoundParameters.ContainsKey('AsQuery')) {
+            $query
+        }
+        else {
+            $result = Invoke-Rsc -Query $query
+            $result.nodes
+        }
     }
 }
