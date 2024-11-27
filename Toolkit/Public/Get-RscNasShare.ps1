@@ -12,8 +12,14 @@ function Get-RscNasShare {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER Name
+    The Name of the Nas Share object.
+
     .PARAMETER Id
     The Rubrik UUID of the Nas Share object.
+
+    .PARAMETER List
+    Switch to list all NAS Share objects.
 
     .PARAMETER NasSystem
     The object representing the NAS system.
@@ -22,27 +28,54 @@ function Get-RscNasShare {
     Instead of running the command, the query object is returned.
 
     .EXAMPLE
+    Retrieve list of NAS shares.
+    Get-RscNasShare
+        or 
+    Get-RscNasShare -List
+    
+    .EXAMPLE
+    Retrieve all NAS shares with the name containing "foo".
+    Get-RscNasShare -Name "foo"
+        or
+    Get-RscNasShare "foo"
+
+    .EXAMPLE
     Get details of the NAS share with specified ID.
     Get-RscNasShare -Id "d93ddffc-5a70-53f4-9cfa-be54ebeaa5cb"
 
     .EXAMPLE
     Get details of all the Nas shares for a given Nas System.
-    Get-RscNasSystem "72859a28-6276-555a-9a66-d93fe99d2751" | Get-RscNasShare
+    Get-RscNasSystem -Id "72859a28-6276-555a-9a66-d93fe99d2751" | Get-RscNasShare
  
     #>
 
     [CmdletBinding(
-        DefaultParameterSetName = "Share"
+        DefaultParameterSetName = "List"
     )]
     Param(
+        # The name of the NAS share to filter on.
+        [Parameter(
+            ParameterSetName = "Name",
+            Mandatory = $false,
+            Position = 0
+        )]
+        [ValidateNotNullOrEmpty()]
+        [String]$Name,
+
         # The Rubrik UUID of the Nas Share object.
         [Parameter(
-            Mandatory = $true,
-            Position = 0,
-            ParameterSetName = "Share"
+            Mandatory = $false,
+            ParameterSetName = "Id"
         )]
         [ValidateNotNullOrEmpty()]
         [String]$Id,
+
+        # Retrieve list of NAS systems.
+        [Parameter(
+            ParameterSetName = "List",
+            Mandatory = $false
+        )]
+        [Switch]$List,
 
         # The object representing the NAS system.
         [Parameter(
@@ -59,8 +92,65 @@ function Get-RscNasShare {
     )
 
     Process {
+        function InitializeNasSystemFields {
+            Param ($NasSystemField)
+    
+            $NasSystemField.Id = "FETCH"
+            $NasSystemField.Name = "FETCH"
+            $NasSystemField.VendorType = "FETCH"
+            $NasSystemField.OsVersion = "FETCH"
+            $NasSystemField.IsSmbSupported = $true
+            $NasSystemField.IsNfsSupported = $true
+            $NasSystemField.ShareCount = -2147483648
+            $NasSystemField.VolumeCount = -2147483648
+        }
+    
+        function InitializeDescendantConnectionNodes {
+            Param ($Nodes)
+    
+            $Nodes = New-Object -TypeName RubrikSecurityCloud.Types.NasFileset
+            $Nodes.Id = "FETCH"
+            $Nodes.Name = "FETCH"
+            $Nodes.TemplateFid = "FETCH"
+            $Nodes.OnDemandSnapshotCount = -2147483648
+            $Nodes.IsPassThrough = $true
+            $Nodes.IsRelic = $true
+            $Nodes.PathsIncluded = @()
+            $Nodes.PathsExcluded = @()
+            $Nodes.PathsExceptions = @()
+            $Nodes.CdmId = "FETCH"
+            $Nodes.SlaPauseStatus = $true
+            $Nodes.SymlinkResolutionEnabled = $true
+            $Nodes.ReplicatedObjectCount = -2147483648
+    
+            return $Nodes
+        }
+    
+        function InitializeCluster {
+            Param ($ClusterField)
+    
+            $ClusterField.Id = "FETCH"
+            $ClusterField.Name = "FETCH"
+            $ClusterField.Version = "FETCH"
+        }
+        
+
+        function InitializeNasShareOutputFields {
+            Param ($Field)
+
+            $Field.NasSystem = New-Object -TypeName RubrikSecurityCloud.Types.NasSystem
+            InitializeNasSystemFields -NasSystemField $Field.NasSystem
+
+            $Field.DescendantConnection = New-Object -TypeName `
+                RubrikSecurityCloud.Types.NasShareDescendantTypeConnection
+            $Field.DescendantConnection.Nodes = @(InitializeDescendantConnectionNodes)
+
+            $Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+            InitializeCluster -ClusterField $Field.Cluster
+        }
+
         Switch ($PSCmdlet.ParameterSetName) {
-            "Share" {
+            "Id" {
                 $query = New-RscQueryNas -Operation Share `
                     -RemoveField ObjectType `
                     -AddField ShareType, `
@@ -72,35 +162,30 @@ function Get-RscNasShare {
                 # Set query variables.
                 $query.Var.Fid = $Id
 
-                # Specify additional fields not in default field profile.
-                $query.Field.NasSystem = New-Object -TypeName RubrikSecurityCloud.Types.NasSystem
-                $query.Field.NasSystem.Id = "FETCH"
-                $query.Field.NasSystem.Name = "FETCH"
-                $query.Field.NasSystem.VendorType = "FETCH"
-                $query.Field.NasSystem.OsVersion = "FETCH"
-                $query.Field.NasSystem.IsSmbSupported = $true
-                $query.Field.NasSystem.IsNfsSupported = $true
-                $query.Field.NasSystem.ShareCount = -2147483648
-                $query.Field.NasSystem.VolumeCount = -2147483648
-
-                $query.Field.DescendantConnection = New-Object -TypeName `
-                    RubrikSecurityCloud.Types.NasShareDescendantTypeConnection
-                $query.Field.DescendantConnection.Nodes = @(New-Object -TypeName `
-                    RubrikSecurityCloud.Types.NasFileset)
-                $query.Field.DescendantConnection.Nodes[0].Id = "FETCH"
-                $query.Field.DescendantConnection.Nodes[0].Name = "FETCH"
-                $query.Field.DescendantConnection.Nodes[0].TemplateFid = "FETCH"
-                $query.Field.DescendantConnection.Nodes[0].OnDemandSnapshotCount = -2147483648
-                $query.Field.DescendantConnection.Nodes[0].IsPassThrough = $true
-                $query.Field.DescendantConnection.Nodes[0].IsRelic = $true
-                $query.Field.DescendantConnection.Nodes[0].PathsIncluded = @()
-                $query.Field.DescendantConnection.Nodes[0].PathsExcluded = @()
-                $query.Field.DescendantConnection.Nodes[0].PathsExceptions = @()
-                $query.Field.DescendantConnection.Nodes[0].CdmId = "FETCH"
-                $query.Field.DescendantConnection.Nodes[0].SlaPauseStatus = $true
-                $query.Field.DescendantConnection.Nodes[0].SymlinkResolutionEnabled = $true
-                $query.Field.DescendantConnection.Nodes[0].ReplicatedObjectCount = -2147483648
+                # Specify additional fields not in default field profile.           
+                InitializeNasShareOutputFields -Field $query.Field
             }
+
+            "Name" {
+                $query = New-RscQueryNas -Operation Shares
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $InputObj.Field = "Name"
+                $InputObj.Texts = @($Name)
+                $query.Var.Filter = @($InputObj)
+                
+                # Specify additional fields not in default field profile.
+                $query.Field.Nodes[0].HostAddress = "FETCH"
+                InitializeNasShareOutputFields -Field $query.Field.Nodes[0]
+            }
+
+            "List" {
+                $query = New-RscQueryNas -Operation Shares
+
+                # Specify additional fields not in default field profile.
+                $query.Field.Nodes[0].HostAddress = "FETCH"
+                InitializeNasShareOutputFields -Field $query.Field.Nodes[0]
+            }
+
             "NasSystem" {
                 $query = New-RscQueryNas -Operation System `
                     -RemoveField ObjectType `
@@ -141,15 +226,11 @@ function Get-RscNasShare {
                 $query.Field.DescendantConnection.Nodes[0].EffectiveSlaDomain.Name = "FETCH"
                 $query.Field.DescendantConnection.Nodes[0].EffectiveSlaDomain.Version = "FETCH"
                 $query.Field.DescendantConnection.Nodes[0].EffectiveSlaDomain.IsRetentionLockedSla = $true
+
+                $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+                InitializeCluster -ClusterField $query.Field.Cluster
             }
         }
-
-        # Both NasShare and NasSystem types expose Cluster information.
-        $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-        $query.Field.Cluster.Id = "FETCH"
-        $query.Field.Cluster.Name = "FETCH"
-        $query.Field.Cluster.Version = "FETCH"
-        
 
         if ($AsQuery) {
             return $query
@@ -159,6 +240,8 @@ function Get-RscNasShare {
 
         if ($PSCmdlet.ParameterSetName -eq "NasSystem") {
             $result = $result.DescendantConnection.Nodes
+        } elseif ($PSCmdlet.ParameterSetName -eq "Name" -or $PSCmdlet.ParameterSetName -eq "List") {
+            $result = $result.Nodes
         }
 
         $result | Remove-NullProperties
