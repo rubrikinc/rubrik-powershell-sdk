@@ -605,7 +605,6 @@ function Set-RscSla
                 $Mutation.Var.Input.SnapshotSchedule.Minute = $null;
             }
         }
-
         if ($HourlySchedule) {
             $Mutation.Var.Input.SnapshotSchedule.Hourly = $HourlySchedule
         }
@@ -675,6 +674,7 @@ function Set-RscSla
             $Mutation.Var.Input.SnapshotSchedule.Monthly = $MonthlySchedule
         }
         else {
+
             if ($Sla.SnapshotSchedule.Monthly) {
                 $ConfigObj = $Sla.SnapshotSchedule.Monthly
                 $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.MonthlySnapshotScheduleInput
@@ -697,6 +697,7 @@ function Set-RscSla
             $Mutation.Var.Input.SnapshotSchedule.Quarterly = $QuarterlySchedule
         }
         else {
+
             if ($Sla.SnapshotSchedule.Quarterly) {
                 $ConfigObj = $Sla.SnapshotSchedule.Quarterly
                 $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.QuarterlySnapshotScheduleInput
@@ -720,6 +721,7 @@ function Set-RscSla
             $Mutation.Var.Input.SnapshotSchedule.Yearly = $YearlySchedule
         }
         else {
+
             if ($Sla.SnapshotSchedule.Yearly) {
                 $ConfigObj = $Sla.SnapshotSchedule.Yearly
                 $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.YearlySnapshotScheduleInput
