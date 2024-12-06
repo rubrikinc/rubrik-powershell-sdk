@@ -18,6 +18,7 @@
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>Object State</Label>
+                        <Width>8</Width>
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>Compliance Status</Label>
