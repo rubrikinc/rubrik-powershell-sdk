@@ -1,0 +1,12 @@
+mutation vmInPlaceRecovery($id: String! $snapshotId: String) {
+  vsphereVmInitiateInPlaceRecovery(input: {id: $id config: {requiredRecoveryParameters: {snapshotId: $snapshotId}}}) {
+    id
+    status
+    startTime
+    endTime
+    progress
+    error {
+      message
+    }
+  }
+}
