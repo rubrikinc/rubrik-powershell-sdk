@@ -64,7 +64,13 @@ function Get-RscVmwareVm {
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
         )]
-        [RubrikSecurityCloud.Types.Cluster]$Cluster
+        [RubrikSecurityCloud.Types.Cluster]$Cluster,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true,
+            ParameterSetName = "Name"
+        )]
+        [RubrikSecurityCloud.Types.Org]$Org
     )
     
     Process {
@@ -82,23 +88,31 @@ function Get-RscVmwareVm {
             $query.var.filter = @()
             $query.Var.fid = $Id
             $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-            $query.Field.Cluster.id = "PIZZA" # Could Fields be a version of the type structure that has all booleans to define what we get back?
+            $query.Field.Cluster.name = "PIZZA"
+            $query.Field.Cluster.id = "PIZZA"
             $query.Field.GuestOsName = "TACOS"
             $query.Field.AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
             $query.Field.AgentStatus.AgentStatusField = New-Object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
             $query.Field.snapshotConsistencyMandate = [RubrikSecurityCloud.Types.ConsistencyLevelEnum]::CRASH_CONSISTENT
+            $query.Field.allOrgs = New-Object RubrikSecurityCloud.Types.Org
+            $query.Field.allOrgs[0].name = "FETCH"
+            $query.Field.allOrgs[0].id = "FETCH"
             $result = Invoke-Rsc -Query $query
             $result
         } else {
             #$query = New-RscQueryVsphereVm -Operation NewList -FieldProfile $inputProfile
             $query = New-RscQuery -GqlQuery vsphereVmNewConnection -FieldProfile $inputProfile
             $query.var.filter = @()
-            $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-            $query.Field.Nodes.Cluster.id = "PIZZA"
+            $query.Field.Nodes.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+            $query.Field.Nodes[0].Cluster.name = "PIZZA"
+            $query.Field.Nodes[0].Cluster.id = "PIZZA"
             $query.Field.Nodes[0].GuestOsName = "TACOS"
             $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
             $query.Field.Nodes[0].AgentStatus.AgentStatusField = New-Object -TypeName RubrikSecurityCloud.Types.AgentConnectionStatus
             $query.Field.Nodes[0].snapshotConsistencyMandate = [RubrikSecurityCloud.Types.ConsistencyLevelEnum]::CRASH_CONSISTENT
+            $query.Field.Nodes[0].allOrgs = New-Object RubrikSecurityCloud.Types.Org
+            $query.Field.Nodes[0].allOrgs[0].name = "FETCH"
+            $query.Field.Nodes[0].allOrgs[0].id = "FETCH"
             if ($Name) {
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 # Regex filter doesn't work in the API right now, but we're going to play pretend. 
@@ -126,6 +140,13 @@ function Get-RscVmwareVm {
                 $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
                 $clusterFilter.Texts = $Cluster.id
                 $query.var.filter += $clusterFilter
+            }
+
+            if ($Org) {
+                $orgFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $orgFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::ORGANIZATION_ID
+                $orgFilter.Texts = $Org.id
+                $query.var.filter += $orgFilter
             }
 
             if ($PSBoundParameters.ContainsKey('relic')) {
