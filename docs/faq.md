@@ -96,3 +96,25 @@ it is impossible to tell if the field was requested or not.
 ### FAQ3 Resolution
 
 Cross-reference with the request and only inspect fields that were requested.
+
+## FAQ4 Capturing an error log
+
+When I run the SDK script `some-sdk-script.ps1`,
+I get quite a long error message.
+How can I capture this error message to a file ?
+
+### FAQ4 Explanation
+
+SDK error messages can indeed be extensive because they often capture the
+whole request and the whole response. This is useful for debugging, but
+it can be overwhelming.
+
+### FAQ4 Resolution
+
+Use `Start-Transcript` to capture the whole output of the script to a file:
+
+```powershell
+PS> Start-Transcript -Path "C:\path\to\output.log"
+PS> some-sdk-script.ps1
+PS> Stop-Transcript
+```
