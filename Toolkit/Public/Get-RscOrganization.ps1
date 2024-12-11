@@ -28,7 +28,7 @@ function Get-RscOrganization {
             Mandatory = $false,
             ParameterSetName = "Id"
         )]
-        [String[]]$Id,
+        [String]$Id,
         [Parameter(
             Position = 0,
             Mandatory = $false,
@@ -40,12 +40,35 @@ function Get-RscOrganization {
     Process {
        # The query is different for getting a single object by ID.
         if ($Id) {
+            $roleTempQuery = New-RscQuery -GqlQuery getRolesByIds -FieldProfile FULL
             $query = New-RscQuery -GqlQuery org
             $query.var.orgId = $Id
-
-
-
-
+            $query.field.Id = "tacos"
+            $query.field.Name = "FETCH"
+            $query.field.FullName = "FETCH"
+            $query.field.Description = "FETCH"
+            $query.field.AuthDomainConfig = [RubrikSecurityCloud.Types.TenantAuthDomainConfig]::ALLOW_AUTH_DOMAIN_CONTROL
+            $query.field.ShouldEnforceMfaForAll = $true
+            $query.field.IsEnvoyRequired = $true
+            $query.field.AllowedClusters = "FETCH"
+            $query.field.TenantNetworkHealth =  [RubrikSecurityCloud.Types.TenantNetworkHealth]::TENANT_NETWORK_HEALTH_UNSPECIFIED
+            $query.field.HasOwnIdpConfigured = $true
+            $query.field.IsServiceAccountDisabled = $true
+            $query.field.OrgAdminRole = $roleTempQuery.field[0]
+            $query.field.Users = New-Object -TypeName RubrikSecurityCloud.Types.ExistingUser
+            $query.field.Users[0].id = "FETCH"
+            $query.field.Users[0].isOrgAdmin = $true
+            $query.field.Users[0].user = New-Object -TypeName RubrikSecurityCloud.Types.User
+            $query.field.Users[0].user.email = "FETCH"
+            $query.field.Users[0].user.id = "FETCH"
+            $query.field.Permissions = $roleTempQuery.field[0].Permissions[0]
+            $query.field.SelfServicePermissions = New-Object -TypeName RubrikSecurityCloud.Types.SelfServicePermission
+            $query.field.SsoGroups = New-Object -TypeName RubrikSecurityCloud.Types.SsoGroup
+            $query.field.PhysicalStorageUsed = 1
+            $query.field.AllUrls = "FETCH"
+            # "ClusterWithCapacityQuota" does not exist in the SDK
+            # $query.Nodes[0].AllClusterCapacityQuotas = New-Object -TypeName RubrikSecurityCloud.Types.ClusterWithCapacityQuota
+            $query.field.CrossAccountCapabilities = [RubrikSecurityCloud.Types.CrossAccountCapability]::CROSS_ACCOUNT_CAPABILITY_UNSPECIFIED
 
             $result = Invoke-Rsc -Query $query
             $result
