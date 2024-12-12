@@ -1,27 +1,27 @@
 #Requires -Version 3
-function Get-RscVmwareVm {
+function Get-__OBJECT_TYPE__ {
     <#
     .SYNOPSIS
-    Retrieves VMware VMs protected by Rubrik Security Cloud
+    Retrieves __OBJECT_TYPE__ objects protected by Rubrik Security Cloud
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'vsphereVmNewConnection' to retrieve a list of VMs with a predetermined set of properties.
+    This cmdlet uses the GQL query '__MULTIPLE_QUERY__' to retrieve a list of VMs with a predetermined set of properties.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    # Get all VMs
-    Get-RscVmwareVm
+    # Get all
+    Get-__OBJECT_TYPE__
 
     .EXAMPLE
-    # Get VM with specific name
-    Get-RscVmwareVm -Name "jake-001"
+    # Get object with specific name
+    Get-__OBJECT_TYPE__ -Name "jake-001"
 
     .EXAMPLE
-    # Get VMs by specifying part of a name
-    Get-RscVmwareVm
+    # Get objects by specifying part of a name
+    Get-__OBJECT_TYPE__ -Name "*jake*"
     #>
 
     [CmdletBinding(
@@ -33,10 +33,6 @@ function Get-RscVmwareVm {
             ParameterSetName = "Id"
         )]
         [String]$Id,
-        [Parameter(
-            Mandatory = $false
-        )]
-        [Switch]$Detail,
         [Parameter(
             Position = 0,
             Mandatory = $false,
@@ -64,55 +60,23 @@ function Get-RscVmwareVm {
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
         )]
-        [RubrikSecurityCloud.Types.Cluster]$Cluster,
-        [Parameter(
-            Mandatory = $false,
-            ValueFromPipeline = $true,
-            ParameterSetName = "Name"
-        )]
-        [RubrikSecurityCloud.Types.Org]$Org
+        [RubrikSecurityCloud.Types.Cluster]$Cluster
     )
     
     Process {
 
-        # Determine input profile:
-        $inputProfile = "DEFAULT"
-        if ( $Detail -eq $true ) {
-            $inputProfile = "DETAIL"
-        }
-
        # The query is different for getting a single object by ID.
         if ($Id) {
-            #$query = New-RscQueryVsphereVm -Operation New -FieldProfile $inputProfile
-            $query = New-RscQuery -GqlQuery vSphereVmNew -FieldProfile $inputProfile
+            $query = New-RscQuery -GqlQuery __SINGLE_QUERY__
             $query.var.filter = @()
             $query.Var.fid = $Id
-            $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-            $query.Field.Cluster.name = "PIZZA"
-            $query.Field.Cluster.id = "PIZZA"
-            $query.Field.GuestOsName = "TACOS"
-            $query.Field.AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
-            $query.Field.AgentStatus.AgentStatusField = New-Object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
-            $query.Field.snapshotConsistencyMandate = [RubrikSecurityCloud.Types.ConsistencyLevelEnum]::CRASH_CONSISTENT
-            $query.Field.allOrgs = New-Object RubrikSecurityCloud.Types.Org
-            $query.Field.allOrgs[0].name = "FETCH"
-            $query.Field.allOrgs[0].id = "FETCH"
+
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            #$query = New-RscQueryVsphereVm -Operation NewList -FieldProfile $inputProfile
-            $query = New-RscQuery -GqlQuery vsphereVmNewConnection -FieldProfile $inputProfile
+            $query = New-RscQuery -GqlQuery __MULTIPLE_QUERY__
             $query.var.filter = @()
-            $query.Field.Nodes.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-            $query.Field.Nodes[0].Cluster.name = "PIZZA"
-            $query.Field.Nodes[0].Cluster.id = "PIZZA"
-            $query.Field.Nodes[0].GuestOsName = "TACOS"
-            $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
-            $query.Field.Nodes[0].AgentStatus.AgentStatusField = New-Object -TypeName RubrikSecurityCloud.Types.AgentConnectionStatus
-            $query.Field.Nodes[0].snapshotConsistencyMandate = [RubrikSecurityCloud.Types.ConsistencyLevelEnum]::CRASH_CONSISTENT
-            $query.Field.Nodes[0].allOrgs = New-Object RubrikSecurityCloud.Types.Org
-            $query.Field.Nodes[0].allOrgs[0].name = "FETCH"
-            $query.Field.Nodes[0].allOrgs[0].id = "FETCH"
+
             if ($Name) {
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 # Regex filter doesn't work in the API right now, but we're going to play pretend. 
@@ -142,13 +106,6 @@ function Get-RscVmwareVm {
                 $query.var.filter += $clusterFilter
             }
 
-            if ($Org) {
-                $orgFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-                $orgFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::ORGANIZATION_ID
-                $orgFilter.Texts = $Org.id
-                $query.var.filter += $orgFilter
-            }
-
             if ($PSBoundParameters.ContainsKey('relic')) {
                 $relicFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $relicFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_RELIC
@@ -166,5 +123,10 @@ function Get-RscVmwareVm {
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }
+
+
+
+
+
     } 
 }

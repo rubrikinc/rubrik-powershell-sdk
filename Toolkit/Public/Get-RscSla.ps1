@@ -47,12 +47,14 @@ function Get-RscSla {
 
         if ($Id) {
 
-#id: String!
+            $query.var.id = $Id
+
+            #id: String!
             # SLA Domain ID.
-            $query.field.getNext().id = "FETCH"
+            $query.field.id = "FETCH"
             # name: String!
             # SLA Domain name.
-            $query.field.getNext().name = "FETCH"
+            $query.field.name = "FETCH"
 
             # version: String
             # Version for the SLA Domain.

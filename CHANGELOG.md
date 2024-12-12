@@ -5,8 +5,14 @@
 New Features:
 
 - Get-RscSla now retrieves all fields required to update or create SLA Domains.
+- Set-RscSla allows pipeline input of SLA object, allowing full SLA domain automation.
 - Get-RscNutanixVm can now filter by cluster.
+- Get-RscVmwareVm can now filter by organization.
+- Get-RscMssqlInstance can now filter out relics and replicated objects (replicas) with -Relic:$false -Replica:$false
+- Get-RscMssqlDatabase can now filter out relics and replicated objects (replicas) with -Relic:$false -Replica:$false
 - Register-RscRubrikBackupService now supports adding physical hosts by hostname.
+- Get-RscNasSystem no longer requires -id parameter
+- Get-RscNasShare no longer requires -id parameter
 - New Get cmdlets
  - Get-RscArchivalLocation
  - Get-RscAzureNativeVm
@@ -21,11 +27,15 @@ New Features:
  - Get-RscOracleHost
  - Get-RscSapHanaDatabase
  - Get-RscSapHanaSystem
+ - Get-RscAwsNativeEc2Instance
 
 Fixes:
 
  - Get-RscSnapshot no longer throws an exception due to overfetch of fields.
  - New-RscSla now properly adds arguments to query.
+ - Get-RscOrganization correctly retrieves organizations by name
+ - Fixed format widths on some table views
+ - Added table formatting to cmdlets. You can revert back to list view with <cmdlet> | Format-List
 
 Breaking Changes:
 
