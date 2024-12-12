@@ -20,7 +20,7 @@ function Get-RscMssqlInstance {
     .PARAMETER WindowsClusterName
     Windows Cluster Name of the SQL Server Instance
 
-    .PARAMETER InstanceName
+    .PARAMETER Name
     SQL Server Instance Name. If not provided, we default to MSSQLSERVER
     
     .PARAMETER Id
@@ -47,12 +47,12 @@ function Get-RscMssqlInstance {
     .EXAMPLE
     Returns information about a specific instance of SQL on a specific host
     $HostName = "rp-sql19s-001.demo.rubrik.com"
-    $RscMssqlInstance = Get-RscMssqlInstance -HostName $HostName -InstanceName DEV01
+    $RscMssqlInstance = Get-RscMssqlInstance -HostName $HostName -Name DEV01
 
     .EXAMPLE
     Returns information about a specific instance of SQL on a Windows Cluster
     $WindowsClusterName = "rp-winfcsql"
-    $RscMssqlInstance = Get-RscMssqlInstance -WindowsClusterName $WindowsClusterName -InstanceName DEV01
+    $RscMssqlInstance = Get-RscMssqlInstance -WindowsClusterName $WindowsClusterName -Name DEV01
     
     .EXAMPLE
     Return a RscMssqlInstance Object based on a specific MssqlInstance Id
@@ -74,13 +74,45 @@ function Get-RscMssqlInstance {
 
         [Parameter(ParameterSetName = "ByHostName", Mandatory = $false)]
         [Parameter(ParameterSetName = "ByWindowsClusterName", Mandatory = $false)]
-        [String]$InstanceName = "MSSQLSERVER",
+        [Alias("InstanceName")]
+        [String]$Name = "MSSQLSERVER",
         
         [Parameter(ParameterSetName = "Id", Mandatory = $true)]
         [String]$Id,
        
-        [Parameter(Mandatory = $false)]
-        [RubrikSecurityCloud.Types.Cluster]$RscCluster,
+        # Include Relics
+        [Parameter(
+            Mandatory = $false
+        )]
+        [switch]$Relic,
+
+        # Include Replicas
+        [Parameter(
+            Mandatory = $false
+        )]
+        [switch]$Replica,
+
+        # Filter by SLA
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true
+        )]
+        [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla,
+
+        # Filter by Cluster
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true
+        )]
+        [Alias("RscCluster")]
+        [RubrikSecurityCloud.Types.Cluster]$Cluster,
+
+        # Filter by Organization
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true
+        )]
+        [RubrikSecurityCloud.Types.Org]$Org,
 
         [Parameter(
             Mandatory = $false, 
@@ -98,12 +130,13 @@ function Get-RscMssqlInstance {
                 $query.Var.typeFilter = @()
                 $query.Var.typeFilter += "PhysicalHost"
                 $query.Var.typeFilter += "WindowsCluster"
+                $query.var.filter = @()
             }
             { ($_ -eq "ByHostName") -or ($_ -eq "ByWindowsClusterName") } {
                 $Name = ""
                 if ($HostName) { $Name = $HostName }
                 if ($WindowsClusterName) { $Name = $WindowsClusterName }
-                $query = New-RscQueryMssql -Operation TopLevelDescendants 
+                $query = New-RscQuery -GqlQuery MssqlTopLevelDescendants 
                 $query.Var.filter = @()
                 $query.Field.Nodes[3].PhysicalChildConnection.Nodes[5].Cluster = New-Object RubrikSecurityCloud.Types.Cluster
                 $query.Field.Nodes[3].PhysicalChildConnection.Nodes[5].Cluster.SelectForRetrieval()
@@ -122,7 +155,7 @@ function Get-RscMssqlInstance {
             }
             "Id" {
                 Write-Verbose "-  Creating Id Query"
-                $query = New-RscQueryMssql -Operation Instance 
+                $query = New-RscQuery -GqlQuery mssqlInstance
                 $query.Field.PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
                 $query.Field.PhysicalPath.SelectForRetrieval()
                 $query.Var.filter = @()
@@ -130,12 +163,39 @@ function Get-RscMssqlInstance {
             }
         }
         
-        if ($PSBoundParameters.ContainsKey('RscCluster')) {
-            Write-Verbose "-  Creating Cluster Filter"
+        if ($Sla) {
+            $slaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+            $slaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::EFFECTIVE_SLA
+            $slaFilter.Texts = $Sla.id
+            $query.var.filter += $slaFilter
+        }
+
+        if ($Cluster) {
             $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
             $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
-            $clusterFilter.texts = $RscCluster.Id
-            $query.Var.filter += $clusterFilter
+            $clusterFilter.Texts = $Cluster.id
+            $query.var.filter += $clusterFilter
+        }
+
+        if ($Org) {
+            $orgFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+            $orgFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::ORGANIZATION_ID
+            $orgFilter.Texts = $Org.id
+            $query.var.filter += $orgFilter
+        }
+
+        if ($PSBoundParameters.ContainsKey('relic')) {
+            $relicFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+            $relicFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_RELIC
+            $relicFilter.Texts = $Relic
+            $query.var.filter += $relicFilter
+        }
+
+        if ($PSBoundParameters.ContainsKey('replica')) {
+            $replicaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+            $replicaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_REPLICATED
+            $replicaFilter.Texts = $Replica
+            $query.var.filter += $replicaFilter
         }
         #endregion
         
