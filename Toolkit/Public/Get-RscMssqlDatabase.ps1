@@ -53,15 +53,54 @@ function Get-RscMssqlDatabase {
         [String]$Name,
 
         [Parameter(ParameterSetName = "Name", Mandatory = $false)]
-        [Parameter(ParameterSetName = "Instance", Mandatory = $true)]
+        [Parameter(ParameterSetName = "Instance", Mandatory = $true, ValueFromPipeline = $true)]
         [RubrikSecurityCloud.Types.MssqlInstance]$RscMssqlInstance, 
 
         [Parameter(ParameterSetName = "Name", Mandatory = $false)]
-        [Parameter(ParameterSetName = "AvailabilityGroup", Mandatory = $true)]
+        [Parameter(ParameterSetName = "AvailabilityGroup", Mandatory = $true, ValueFromPipeline = $true)]
         [RubrikSecurityCloud.Types.MssqlAvailabilityGroup]$RscMssqlAvailabilityGroup, 
 
         [Parameter(ParameterSetName = "Id", Mandatory = $true)]
-        [String]$Id
+        [String]$Id,
+
+        # Include Relics
+        [Parameter(
+            Mandatory = $false
+        )]
+        [switch]$Relic,
+
+        # Include Replicas
+        [Parameter(
+            Mandatory = $false
+        )]
+        [switch]$Replica,
+
+        # Filter by SLA
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true
+        )]
+        [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla,
+
+        # Filter by Cluster
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true
+        )]
+        [RubrikSecurityCloud.Types.Cluster]$Cluster,
+
+        # Filter by Organization
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true
+        )]
+        [RubrikSecurityCloud.Types.Org]$Org,
+
+        # Return .NET query object for troubleshooting
+        [Parameter(
+            Mandatory = $false
+        )]
+        [switch]$AsQuery
     )
     
     Process {
@@ -69,21 +108,29 @@ function Get-RscMssqlDatabase {
         #region Create Query
         switch($PSCmdlet.ParameterSetName){
             "List"{
-                $query = New-RscQueryMssql -Operation Databases -AddField Nodes.PhysicalPath
+                $query = New-RscQuery -GqlQuery mssqlDatabases `
+                -AddField Nodes.PhysicalPath
+                $query.field.nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+                $query.field.nodes[0].Cluster.name = "Fetch"
+                $query.field.nodes[0].Cluster.id = "Fetch"
+                $query.Var.filter = @()
             }
             { ($_ -eq "Name") -or ($_ -eq "Instance") -or ($_ -eq "AvailabilityGroup")  } {
-                $query = New-RscQueryMssql -Op Databases `
+                $query = New-RscQuery -GqlQuery mssqlDatabases `
                 -AddField Nodes.PhysicalPath, `
                     Nodes.PostBackupScript, `
                     Nodes.PreBackupScript, `
                     Nodes.CopyOnly, `
                     Nodes.HostLogRetention, `
                     Nodes.LogBackupFrequencyInSeconds, `
-                    Nodes.LogBackupRetentionInHours    
-                    $query.Var.filter = @()
+                    Nodes.LogBackupRetentionInHours
+                $query.field.nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+                $query.field.nodes[0].Cluster.name = "Fetch"
+                $query.field.nodes[0].Cluster.id = "Fetch"
+                $query.Var.filter = @()
             }
             "Id"{
-                $query = New-RscQueryMssql -Operation Database 
+                $query = New-RscQuery -GqlQuery mssqlDatabase
                 $query.Field.PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
                 $query.Field.PhysicalPath.SelectForRetrieval() 
                 $query.Var.fid = $Id
@@ -96,25 +143,64 @@ function Get-RscMssqlDatabase {
             $nameFilter.texts = $Name
             $query.Var.filter += $nameFilter
         }
+        if ($Sla) {
+            $slaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+            $slaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::EFFECTIVE_SLA
+            $slaFilter.Texts = $Sla.id
+            $query.var.filter += $slaFilter
+        }
 
-        $results = $query.Invoke()   
-                
-        switch($PSCmdlet.ParameterSetName){
-            "List"{
-                $results.Nodes
-            }
-            "Id"{
-                $results
-            }
-            { ($_ -eq "Name") -or ($_ -eq "Instance") -or ($_ -eq "AvailabilityGroup")  } {
-                if ($RscMssqlInstance) {
-                    $results = ($results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlInstance.id})
+        if ($Cluster) {
+            $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+            $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
+            $clusterFilter.Texts = $Cluster.id
+            $query.var.filter += $clusterFilter
+        }
+
+        if ($Org) {
+            $orgFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+            $orgFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::ORGANIZATION_ID
+            $orgFilter.Texts = $Org.id
+            $query.var.filter += $orgFilter
+        }
+
+        if ($PSBoundParameters.ContainsKey('relic')) {
+            $relicFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+            $relicFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_RELIC
+            $relicFilter.Texts = $Relic
+            $query.var.filter += $relicFilter
+        }
+
+        if ($PSBoundParameters.ContainsKey('replica')) {
+            $replicaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+            $replicaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_REPLICATED
+            $replicaFilter.Texts = $Replica
+            $query.var.filter += $replicaFilter
+        }
+
+        if ($PSBoundParameters.ContainsKey('AsQuery')) {
+            $query
+        }
+        else {
+            $results = $query.Invoke()
+
+            switch($PSCmdlet.ParameterSetName){
+                "List"{
+                    $results.Nodes
+                }
+                "Id"{
                     $results
-                }elseif ($RscMssqlAvailabilityGroup) {
-                    $results = $results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlAvailabilityGroup.id}
-                    $results                
-                }else{
-                    $results.nodes
+                }
+                { ($_ -eq "Name") -or ($_ -eq "Instance") -or ($_ -eq "AvailabilityGroup")  } {
+                    if ($RscMssqlInstance) {
+                        $results = ($results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlInstance.id})
+                        $results
+                    }elseif ($RscMssqlAvailabilityGroup) {
+                        $results = $results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlAvailabilityGroup.id}
+                        $results                
+                    }else{
+                        $results.nodes
+                    }
                 }
             }
         }
