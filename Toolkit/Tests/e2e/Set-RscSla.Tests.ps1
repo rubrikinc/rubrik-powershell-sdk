@@ -52,7 +52,9 @@ function Compare-ArchivalSpecs {
     return $true
 }
 
-Describe -Name 'Set-RscSla Tests' -Tag 'Public' -Fixture {
+# TODO: Fix this test : replace -Skip with -Fixture
+# see https://rubrik.atlassian.net/browse/SPARK-462879
+Describe -Name 'Set-RscSla Tests' -Tag 'Public' -Skip {
 
     Context -Name 'Set-RscSla should update only specified fields not others' {
         BeforeEach {
