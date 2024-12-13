@@ -2,9 +2,9 @@
 Task details.
 
 - id: System.Int64
-  - The task monitoring ID.
+  - The invisible column.
 - reportJobInstanceId: System.String
-  - The job instance ID.
+  - The invisible column.
 - clusterUuid: System.String
   - The cluster UUID of the task.
 - clusterName: System.String

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RubrikCloudVaultType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLOUD_NATIVE")]
         CLOUD_NATIVE,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         NAS_CD,
 
         [EnumMember(Value = "USE_CASE_TYPE_UNSPECIFIED")]
-        USE_CASE_TYPE_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USE_CASE_TYPE_UNSPECIFIED
 
 
     } // enum RubrikCloudVaultType

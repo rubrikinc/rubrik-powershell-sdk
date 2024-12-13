@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum O365AppType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AADSAAS")]
         AADSAAS,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         SPOINT,
 
         [EnumMember(Value = "TEAMS")]
-        TEAMS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TEAMS
 
 
     } // enum O365AppType

@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsReadonly
+        // GraphQL -> isReadonly: Boolean! (scalar)
+        [JsonProperty("isReadonly")]
+        public System.Boolean? IsReadonly { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -90,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
+
+        //      C# -> System.String? VendorType
+        // GraphQL -> vendorType: String (scalar)
+        [JsonProperty("vendorType")]
+        public System.String? VendorType { get; set; }
 
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
@@ -214,10 +224,12 @@ namespace RubrikSecurityCloud.Types
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.String? CdmId = null,
         System.String? Id = null,
+        System.Boolean? IsReadonly = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
+        System.String? VendorType = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
@@ -263,6 +275,9 @@ namespace RubrikSecurityCloud.Types
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( IsReadonly != null ) {
+            this.IsReadonly = IsReadonly;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
@@ -274,6 +289,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( VendorType != null ) {
+            this.VendorType = VendorType;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -438,6 +456,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
+        //      C# -> System.Boolean? IsReadonly
+        // GraphQL -> isReadonly: Boolean! (scalar)
+        if (this.IsReadonly != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReadonly\n" ;
+            } else {
+                s += ind + "isReadonly\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -472,6 +499,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> System.String? VendorType
+        // GraphQL -> vendorType: String (scalar)
+        if (this.VendorType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "vendorType\n" ;
+            } else {
+                s += ind + "vendorType\n" ;
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -837,6 +873,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> System.Boolean? IsReadonly
+        // GraphQL -> isReadonly: Boolean! (scalar)
+        if (ec.Includes("isReadonly",true))
+        {
+            if(this.IsReadonly == null) {
+
+                this.IsReadonly = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReadonly != null && ec.Excludes("isReadonly",true))
+        {
+            this.IsReadonly = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -904,6 +957,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> System.String? VendorType
+        // GraphQL -> vendorType: String (scalar)
+        if (ec.Includes("vendorType",true))
+        {
+            if(this.VendorType == null) {
+
+                this.VendorType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VendorType != null && ec.Excludes("vendorType",true))
+        {
+            this.VendorType = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

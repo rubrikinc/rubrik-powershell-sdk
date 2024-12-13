@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SearchObjectType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "EMAIL")]
         EMAIL,
 
         [EnumMember(Value = "FOLDER")]
-        FOLDER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        FOLDER
 
 
     } // enum SearchObjectType

@@ -4,10 +4,10 @@ Cloud Direct NAS System object.
 - clusterUuid: System.String
   - Cloud Direct NAS Cluster ID.
 - cloudDirectId: System.String
-  - UUID of the Cloud Direct NAS System on the NCD Cluster.
+  - UUID of the Cloud Direct NAS system on the NCD Cluster.
 - systemName: System.String
   - Name of the system.
-- vendorType: System.String
+- vendorType: CloudDirectNasVendorType
   - Vendor type of the system.
 - lastStatus: CloudDirectNasConnectivityStatus
   - Last connectivity status of the system.

@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("roleIds")]
         public List<System.String>? RoleIds { get; set; }
 
+        //      C# -> System.String? AuthDomainId
+        // GraphQL -> authDomainId: String (scalar)
+        [JsonProperty("authDomainId")]
+        public System.String? AuthDomainId { get; set; }
+
 
         #endregion
 

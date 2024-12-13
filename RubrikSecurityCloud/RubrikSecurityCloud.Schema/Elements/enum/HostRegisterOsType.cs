@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HostRegisterOsType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HOST_REGISTER_OS_TYPE_AIX")]
         HOST_REGISTER_OS_TYPE_AIX,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         HOST_REGISTER_OS_TYPE_SUN_OS,
 
         [EnumMember(Value = "HOST_REGISTER_OS_TYPE_WINDOWS")]
-        HOST_REGISTER_OS_TYPE_WINDOWS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        HOST_REGISTER_OS_TYPE_WINDOWS
 
 
     } // enum HostRegisterOsType

@@ -7,7 +7,7 @@
 - Returns AsyncRequestStatus.
 ### missedrecoverablerange
 - There are 3 arguments.
-    - snappableFid - System.String
+    - snappableFid - System.String: The ID of the workload.
     - beforeTime - DateTime
     - afterTime - DateTime
 - Returns RecoverableRangeResponse.
@@ -24,7 +24,7 @@
 - Returns VsphereVmConnection.
 ### recoverablerange
 - There are 3 arguments.
-    - snappableFid - System.String
+    - snappableFid - System.String: The ID of the workload.
     - beforeTime - DateTime
     - afterTime - DateTime
 - Returns RecoverableRangeResponse.

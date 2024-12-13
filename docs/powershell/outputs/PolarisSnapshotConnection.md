@@ -6,6 +6,6 @@ Paginated list of PolarisSnapshot objects. Each page of the results includes at 
 - nodes: list of PolarisSnapshots
   - List of PolarisSnapshot objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of PolarisSnapshot objects matching the request arguments.

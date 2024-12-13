@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TprSubmittedByUser
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "RECEIVED")]
         RECEIVED,
 
         [EnumMember(Value = "SUBMITTED")]
-        SUBMITTED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUBMITTED
 
 
     } // enum TprSubmittedByUser

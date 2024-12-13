@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ConfigurationTypes
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CONFIGURATION_TYPES_ADAPTIVE_BACKUP")]
         CONFIGURATION_TYPES_ADAPTIVE_BACKUP,
 
@@ -76,10 +79,7 @@ namespace RubrikSecurityCloud.Types
         CONFIGURATION_TYPES_VCENTER_SERVERS,
 
         [EnumMember(Value = "CONFIGURATION_TYPES_WIN_AND_UNIX_HOSTS")]
-        CONFIGURATION_TYPES_WIN_AND_UNIX_HOSTS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        CONFIGURATION_TYPES_WIN_AND_UNIX_HOSTS
 
 
     } // enum ConfigurationTypes

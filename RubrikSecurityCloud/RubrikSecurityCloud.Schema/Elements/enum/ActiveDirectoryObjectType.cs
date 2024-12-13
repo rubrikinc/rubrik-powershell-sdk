@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ActiveDirectoryObjectType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_OBJECT_TYPE_BUILTIN_DOMAIN")]
         ACTIVE_DIRECTORY_OBJECT_TYPE_BUILTIN_DOMAIN,
 
@@ -49,10 +52,7 @@ namespace RubrikSecurityCloud.Types
         ACTIVE_DIRECTORY_OBJECT_TYPE_UNKNOWN,
 
         [EnumMember(Value = "ACTIVE_DIRECTORY_OBJECT_TYPE_USER")]
-        ACTIVE_DIRECTORY_OBJECT_TYPE_USER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ACTIVE_DIRECTORY_OBJECT_TYPE_USER
 
 
     } // enum ActiveDirectoryObjectType

@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? GuestCredentialId
+        // GraphQL -> guestCredentialId: String (scalar)
+        [JsonProperty("guestCredentialId")]
+        public System.String? GuestCredentialId { get; set; }
+
         //      C# -> System.Boolean? IsAutomatic
         // GraphQL -> isAutomatic: Boolean! (scalar)
         [Required]

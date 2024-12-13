@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MissingClusterDisconnectedState
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DECOMMISSIONED")]
         DECOMMISSIONED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         ISOLATED,
 
         [EnumMember(Value = "OTHER_REASON")]
-        OTHER_REASON,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        OTHER_REASON
 
 
     } // enum MissingClusterDisconnectedState

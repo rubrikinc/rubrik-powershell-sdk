@@ -52,7 +52,7 @@ List all Azure blob containers by storage account.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - input - AzureBlobContainersByStorageAccountInput: Azure blob containers request parameters by storage account.
 - Returns AzureBlobContainerCcprovisionConnection.
 ### cdmversions
@@ -111,9 +111,10 @@ Retrieves the details of the Azure cloud account.
 ### cloudaccounttenant
 Retrieves the details of the Azure tenant and all the subscriptions of the tenant, for a feature.
 
-- There are 5 arguments.
+- There are 6 arguments.
     - tenantId - System.String: Tenant ID of the Azure tenant.
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
+    - features - list of CloudAccountFeatures: Cloud account features. Rubrik offers a cloud account feature as part of Rubrik Security Cloud (RSC).
     - subscriptionStatusFilters - list of CloudAccountStatuss: List of subscription status filters to apply.
     - subscriptionSearchText - System.String: Search text for subscription name and native ID.
     - subscriptionIdsFilter - list of System.Strings: List of subscription IDs to filter on.
@@ -129,9 +130,10 @@ Retrieves a list of all the Azure tenants and tenant subscriptions for features.
 ### cloudaccounttenantwithexoconfigs
 Retrieves details about the Azure cloud account tenant including the Exocompute configurations for the tenant subscriptions, for a specified feature.
 
-- There are 5 arguments.
+- There are 6 arguments.
     - tenantId - System.String: Tenant ID of the Azure tenant.
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
+    - features - list of CloudAccountFeatures: Cloud account features. Rubrik offers a cloud account feature as part of Rubrik Security Cloud (RSC).
     - subscriptionStatusFilters - list of CloudAccountStatuss: List of subscription status filters to apply.
     - subscriptionSearchText - System.String: Search text for subscription name and native ID.
     - subscriptionIdsFilter - list of System.Strings: List of subscription IDs to filter on.
@@ -245,7 +247,7 @@ Retrieves a paginated list of all Azure SQL Databases.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - AzureSqlDatabaseSortFields: Sort fields for list of Azure SQL Databases.
     - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlDatabaseFilters - AzureSqlDatabaseFilters: Filters for listing Azure SQL Databases.
@@ -272,7 +274,7 @@ Retrieves a paginated list of all Azure SQL Database Servers.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - AzureSqlDatabaseServerSortFields: Sort fields for list of Azure SQL Database Servers.
     - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlDatabaseServerFilters - AzureSqlDatabaseServerFilters: Filters for listing Azure SQL Database Servers.
@@ -291,7 +293,7 @@ Retrieves a paginated list of all Azure SQL Managed Instance Databases.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - AzureSqlManagedInstanceDatabaseSortFields: Sort fields for list of Azure SQL Managed Instance Databases.
     - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlManagedInstanceDatabaseFilters - AzureSqlManagedInstanceDatabaseFilters: Filters for listing Azure SQL Managed Instance Databases.
@@ -318,7 +320,7 @@ Retrieves a paginated list of all Azure SQL Managed Instance Servers.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - AzureSqlManagedInstanceServerSortFields: Sort fields for list of Azure SQL Managed Instance Servers.
     - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlManagedInstanceServerFilters - AzureSqlManagedInstanceServerFilters: Filters for listing Azure SQL Managed Instance Servers.

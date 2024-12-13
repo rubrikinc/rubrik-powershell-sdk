@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UserAccessType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "INSECURE")]
         INSECURE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         SECURE,
 
         [EnumMember(Value = "USER_ACCESS_TYPE_UNKNOWN")]
-        USER_ACCESS_TYPE_UNKNOWN,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USER_ACCESS_TYPE_UNKNOWN
 
 
     } // enum UserAccessType

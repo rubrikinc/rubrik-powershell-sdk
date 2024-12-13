@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GroupByFieldEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ANALYZER")]
         ANALYZER,
 
@@ -136,10 +139,7 @@ namespace RubrikSecurityCloud.Types
         WEEK,
 
         [EnumMember(Value = "YEAR")]
-        YEAR,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        YEAR
 
 
     } // enum GroupByFieldEnum

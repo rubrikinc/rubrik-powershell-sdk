@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ComplianceDuration
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "COMPLIANCE_DURATION_UNSPECIFIED")]
         COMPLIANCE_DURATION_UNSPECIFIED,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         LAST_90_DAYS,
 
         [EnumMember(Value = "START_OF_PROTECTION")]
-        START_OF_PROTECTION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        START_OF_PROTECTION
 
 
     } // enum ComplianceDuration

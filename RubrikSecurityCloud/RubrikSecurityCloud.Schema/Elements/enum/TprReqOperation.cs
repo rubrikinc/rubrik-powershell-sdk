@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TprReqOperation
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "APPROVE")]
         APPROVE,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         SCHEDULE,
 
         [EnumMember(Value = "SUBMIT")]
-        SUBMIT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUBMIT
 
 
     } // enum TprReqOperation

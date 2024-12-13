@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("iocValue")]
         public System.String? IocValue { get; set; }
 
+        //      C# -> System.String? ThreatFamily
+        // GraphQL -> threatFamily: String! (scalar)
+        [JsonProperty("threatFamily")]
+        public System.String? ThreatFamily { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public IndicatorOfCompromise Set(
         IndicatorOfCompromiseKind? IocKind = null,
-        System.String? IocValue = null
+        System.String? IocValue = null,
+        System.String? ThreatFamily = null
     ) 
     {
         if ( IocKind != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IocValue != null ) {
             this.IocValue = IocValue;
+        }
+        if ( ThreatFamily != null ) {
+            this.ThreatFamily = ThreatFamily;
         }
         return this;
     }
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "iocValue\n" ;
             } else {
                 s += ind + "iocValue\n" ;
+            }
+        }
+        //      C# -> System.String? ThreatFamily
+        // GraphQL -> threatFamily: String! (scalar)
+        if (this.ThreatFamily != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "threatFamily\n" ;
+            } else {
+                s += ind + "threatFamily\n" ;
             }
         }
         return s;
@@ -122,6 +140,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IocValue != null && ec.Excludes("iocValue",true))
         {
             this.IocValue = null;
+        }
+        //      C# -> System.String? ThreatFamily
+        // GraphQL -> threatFamily: String! (scalar)
+        if (ec.Includes("threatFamily",true))
+        {
+            if(this.ThreatFamily == null) {
+
+                this.ThreatFamily = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ThreatFamily != null && ec.Excludes("threatFamily",true))
+        {
+            this.ThreatFamily = null;
         }
     }
 

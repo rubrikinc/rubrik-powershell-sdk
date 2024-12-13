@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FailoverClusterNodeConnectionStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FAILOVER_CLUSTER_NODE_CONNECTION_STATUS_CONNECTED")]
         FAILOVER_CLUSTER_NODE_CONNECTION_STATUS_CONNECTED,
 
@@ -43,10 +46,7 @@ namespace RubrikSecurityCloud.Types
         FAILOVER_CLUSTER_NODE_CONNECTION_STATUS_REPLICATION_TARGET,
 
         [EnumMember(Value = "FAILOVER_CLUSTER_NODE_CONNECTION_STATUS_SECONDARY_CLUSTER")]
-        FAILOVER_CLUSTER_NODE_CONNECTION_STATUS_SECONDARY_CLUSTER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        FAILOVER_CLUSTER_NODE_CONNECTION_STATUS_SECONDARY_CLUSTER
 
 
     } // enum FailoverClusterNodeConnectionStatus

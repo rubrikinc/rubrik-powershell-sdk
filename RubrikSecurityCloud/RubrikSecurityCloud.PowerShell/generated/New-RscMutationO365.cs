@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 33
+    /// Create a new RscQuery object for any of the 34
     /// operations in the 'Office 365' API domain:
-    /// AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, ExportMailboxV2, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreMailboxV2, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
+    /// AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, ExportMailboxV2, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreFullTeams, RestoreMailbox, RestoreMailboxV2, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
     /// </summary>
     /// <description>
     /// New-RscMutationO365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 33 operations
+    /// There are 34 operations
     /// in the 'Office 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, ExportMailboxV2, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreMailboxV2, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
+    /// one of: AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, ExportMailboxV2, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreFullTeams, RestoreMailbox, RestoreMailboxV2, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -195,6 +195,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	siteFid = $someString
+    /// 	# OPTIONAL
+    /// 	retentionSlaId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -829,6 +831,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RestoreFullTeams operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: RestoreFullTeams
+    /// 
+    /// $query = New-RscMutationO365 -Operation RestoreFullTeams
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	teamId = $someString
+    /// 	# OPTIONAL
+    /// 	destTeamInfo = @{
+    /// 		# REQUIRED
+    /// 		destTeamName = $someString
+    /// 		# OPTIONAL
+    /// 		destTeamOrgId = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	teamOwnerEmail = $someString
+    /// 	# REQUIRED
+    /// 	snapshotSequenceNum = $someInt
+    /// 	# OPTIONAL
+    /// 	inplaceRestoreConfig = @{
+    /// 		# REQUIRED
+    /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+    /// 	}
+    /// 	# REQUIRED
+    /// 	refreshTokenEncrypted = $someString
+    /// 	# REQUIRED
+    /// 	o365AppId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateOnDemandJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RestoreMailbox operation
     /// of the 'Office 365' API domain.
     /// <code>
@@ -1219,6 +1272,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				)
     /// 				# REQUIRED
     /// 				arePageLibraryItems = $someBoolean
+    /// 				# OPTIONAL
+    /// 				areAppCatalogItems = $someBoolean
     /// 			}
     /// 			# OPTIONAL
     /// 			targetObjectUuid = $someString
@@ -1451,6 +1506,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			restoreLatestPermissions = $someBoolean
     /// 			# REQUIRED
     /// 			snapshotSequenceNum = $someInt
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		fullTeamRestoreConfig = @{
+    /// 			# REQUIRED
+    /// 			sourceTeamId = $someString
+    /// 			# OPTIONAL
+    /// 			targetTeamOwner = $someString
+    /// 			# REQUIRED
+    /// 			snapshotSequenceNum = $someInt
+    /// 			# OPTIONAL
+    /// 			destTeamInfo = @{
+    /// 				# REQUIRED
+    /// 				destTeamName = $someString
+    /// 				# OPTIONAL
+    /// 				destTeamOrgId = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			o365AppId = $someString
+    /// 			# REQUIRED
+    /// 			refreshTokenEncrypted = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		MailboxRestoreConfig = @{
@@ -2117,6 +2192,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "OauthConsentKickoff",
                 "PdlGroups",
                 "RefreshOrg",
+                "RestoreFullTeams",
                 "RestoreMailbox",
                 "RestoreMailboxV2",
                 "RestoreSnappable",
@@ -2206,6 +2282,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RefreshOrg":
                         this.ProcessRecord_RefreshOrg();
+                        break;
+                    case "RestoreFullTeams":
+                        this.ProcessRecord_RestoreFullTeams();
                         break;
                     case "RestoreMailbox":
                         this.ProcessRecord_RestoreMailbox();
@@ -2443,6 +2522,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // restoreO365FullTeams.
+        internal void ProcessRecord_RestoreFullTeams()
+        {
+            this._logger.name += " -RestoreFullTeams";
+            // Create new graphql operation restoreO365FullTeams
+            InitMutationRestoreO365FullTeams();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // restoreO365Mailbox.
         internal void ProcessRecord_RestoreMailbox()
         {
@@ -2648,6 +2736,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	siteFid = $someString
+	# OPTIONAL
+	retentionSlaId = $someString
 }"
             );
         }
@@ -3137,6 +3227,49 @@ $query.Var.orgId = $someString"
         }
 
         // Create new GraphQL Mutation:
+        // restoreO365FullTeams(input: RestoreO365FullTeamsInput!): CreateOnDemandJobReply!
+        internal void InitMutationRestoreO365FullTeams()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestoreO365FullTeamsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestoreO365FullTeams",
+                "($input: RestoreO365FullTeamsInput!)",
+                "CreateOnDemandJobReply",
+                Mutation.RestoreO365FullTeams,
+                Mutation.RestoreO365FullTeamsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	teamId = $someString
+	# OPTIONAL
+	destTeamInfo = @{
+		# REQUIRED
+		destTeamName = $someString
+		# OPTIONAL
+		destTeamOrgId = $someString
+	}
+	# OPTIONAL
+	teamOwnerEmail = $someString
+	# REQUIRED
+	snapshotSequenceNum = $someInt
+	# OPTIONAL
+	inplaceRestoreConfig = @{
+		# REQUIRED
+		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+	}
+	# REQUIRED
+	refreshTokenEncrypted = $someString
+	# REQUIRED
+	o365AppId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // restoreO365Mailbox(restoreConfig: RestoreO365MailboxInput!): CreateOnDemandJobReply!
         internal void InitMutationRestoreO365Mailbox()
         {
@@ -3513,6 +3646,8 @@ $query.Var.input = @{
 				)
 				# REQUIRED
 				arePageLibraryItems = $someBoolean
+				# OPTIONAL
+				areAppCatalogItems = $someBoolean
 			}
 			# OPTIONAL
 			targetObjectUuid = $someString
@@ -3745,6 +3880,26 @@ $query.Var.input = @{
 			restoreLatestPermissions = $someBoolean
 			# REQUIRED
 			snapshotSequenceNum = $someInt
+		}
+		# OPTIONAL
+		fullTeamRestoreConfig = @{
+			# REQUIRED
+			sourceTeamId = $someString
+			# OPTIONAL
+			targetTeamOwner = $someString
+			# REQUIRED
+			snapshotSequenceNum = $someInt
+			# OPTIONAL
+			destTeamInfo = @{
+				# REQUIRED
+				destTeamName = $someString
+				# OPTIONAL
+				destTeamOrgId = $someString
+			}
+			# REQUIRED
+			o365AppId = $someString
+			# REQUIRED
+			refreshTokenEncrypted = $someString
 		}
 		# OPTIONAL
 		MailboxRestoreConfig = @{

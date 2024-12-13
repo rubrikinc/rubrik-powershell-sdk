@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("arePageLibraryItems")]
         public System.Boolean? ArePageLibraryItems { get; set; }
 
+        //      C# -> System.Boolean? AreAppCatalogItems
+        // GraphQL -> areAppCatalogItems: Boolean (scalar)
+        [JsonProperty("areAppCatalogItems")]
+        public System.Boolean? AreAppCatalogItems { get; set; }
+
 
         #endregion
 

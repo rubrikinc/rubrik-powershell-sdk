@@ -19,6 +19,8 @@ Input for creating an Azure archival target.
   - RSA key of the Azure archival target for encryption.
 - computeSettings: AzureCloudComputeSettingsInput
   - Compute settings of the Azure archival target.
+- computeProxySettings: ProxySettingsInput
+  - Compute proxy settings for Azure archival target.
 - proxySettings: ProxySettingsInput
   - Proxy settings of the Azure archival target.
 - isConsolidationEnabled: System.Boolean

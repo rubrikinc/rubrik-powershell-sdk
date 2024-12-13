@@ -26,6 +26,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tenantId")]
         public System.String? TenantId { get; set; }
 
+        //      C# -> System.String? O365OrgId
+        // GraphQL -> o365OrgId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("o365OrgId")]
+        public System.String? O365OrgId { get; set; }
+
 
         #endregion
 

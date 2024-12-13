@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AwsNativeEbsVolumeSortFields
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS_NATIVE_ACCOUNT_NAME")]
         AWS_NATIVE_ACCOUNT_NAME,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         SENSITIVITY_HITS,
 
         [EnumMember(Value = "SENSITIVITY_STATUS")]
-        SENSITIVITY_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SENSITIVITY_STATUS
 
 
     } // enum AwsNativeEbsVolumeSortFields

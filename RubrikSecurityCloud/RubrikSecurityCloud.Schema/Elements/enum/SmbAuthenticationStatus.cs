@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SmbAuthenticationStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CONFIGURED")]
         CONFIGURED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         NOT_CONFIGURED,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSPECIFIED
 
 
     } // enum SmbAuthenticationStatus

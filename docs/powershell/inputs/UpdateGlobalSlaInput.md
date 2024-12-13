@@ -12,7 +12,7 @@ Input to update SLA Domain.
 - stateVersion: System.Int64
   - State version of the SLA Domain.
 - replicationSpecInput: ReplicationSpecInput
-  - Replication specification of the SLA Domain.
+  - Replication specification of the SLA Domain. Deprecated: use replicationSpecsV2 instead.
 - localRetentionLimit: SlaDurationInput
   - Retention limit for snapshots on the local Rubrik system. If none, they will remain as long as SLA requires.
 - firstFullBackupWindows: list of BackupWindowInputs
@@ -32,7 +32,7 @@ Input to update SLA Domain.
 - archivalSpecs: list of ArchivalSpecInputs
   - List of archival specifications for SLA Domain.
 - replicationSpecsV2: list of ReplicationSpecV2Inputs
-  - Replication specificationsof the SLA Domain.
+  - Replication specifications of the SLA Domain.
 - objectTypes: list of SlaObjectTypes
   - Object types of the SLA Domain.
 - isRetentionLockedSla: System.Boolean

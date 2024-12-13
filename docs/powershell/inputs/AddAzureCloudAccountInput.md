@@ -9,3 +9,5 @@ Input for adding an Azure Cloud Account.
   - Subscriptions to be added to the Azure Cloud Account.
 - regions: list of AzureCloudAccountRegions
   - Regions to be added to the Azure Cloud Account.
+- isAsynchronous: System.Boolean
+  - Indicates whether the Azure cloud account can be onboarded asynchronously.

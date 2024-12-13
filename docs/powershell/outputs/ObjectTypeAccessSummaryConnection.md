@@ -6,6 +6,6 @@ Paginated list of ObjectTypeAccessSummary objects. Each page of the results incl
 - nodes: list of ObjectTypeAccessSummarys
   - List of ObjectTypeAccessSummary objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ObjectTypeAccessSummary objects matching the request arguments.

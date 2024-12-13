@@ -17,3 +17,5 @@
   - Last scan time range specified in the local timezone of the user.
 - exposureFilter: list of OpenAccessTypes
   - List to exposure types to filter the paths.
+- mipLabelsFilter: list of MipLabelsFilterInputs
+  - List of Microsoft Purview Information Protection labels used to filter paths.

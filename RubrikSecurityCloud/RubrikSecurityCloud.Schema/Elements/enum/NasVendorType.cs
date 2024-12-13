@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NasVendorType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NAS_VENDOR_TYPE_FLASHBLADE")]
         NAS_VENDOR_TYPE_FLASHBLADE,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         NAS_VENDOR_TYPE_NUTANIX,
 
         [EnumMember(Value = "NAS_VENDOR_TYPE_NUTANIX_FILE_SERVER")]
-        NAS_VENDOR_TYPE_NUTANIX_FILE_SERVER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAS_VENDOR_TYPE_NUTANIX_FILE_SERVER
 
 
     } // enum NasVendorType

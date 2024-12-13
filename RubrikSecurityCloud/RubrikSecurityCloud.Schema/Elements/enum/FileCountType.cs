@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FileCountType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ANY")]
         ANY,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         STALE_HITS,
 
         [EnumMember(Value = "UNUSED_HITS")]
-        UNUSED_HITS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNUSED_HITS
 
 
     } // enum FileCountType

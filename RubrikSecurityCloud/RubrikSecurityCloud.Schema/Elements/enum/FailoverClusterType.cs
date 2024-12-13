@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FailoverClusterType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FAILOVER_CLUSTER_TYPE_UNIX_LIKE")]
         FAILOVER_CLUSTER_TYPE_UNIX_LIKE,
 
         [EnumMember(Value = "FAILOVER_CLUSTER_TYPE_WINDOWS")]
-        FAILOVER_CLUSTER_TYPE_WINDOWS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        FAILOVER_CLUSTER_TYPE_WINDOWS
 
 
     } // enum FailoverClusterType

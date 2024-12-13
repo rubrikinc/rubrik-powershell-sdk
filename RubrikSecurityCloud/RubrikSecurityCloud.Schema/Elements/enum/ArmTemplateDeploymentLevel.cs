@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ArmTemplateDeploymentLevel
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DEPLOYMENT_LEVEL_UNSPECIFIED")]
         DEPLOYMENT_LEVEL_UNSPECIFIED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         RESOURCE_GROUP,
 
         [EnumMember(Value = "SUBSCRIPTION")]
-        SUBSCRIPTION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUBSCRIPTION
 
 
     } // enum ArmTemplateDeploymentLevel

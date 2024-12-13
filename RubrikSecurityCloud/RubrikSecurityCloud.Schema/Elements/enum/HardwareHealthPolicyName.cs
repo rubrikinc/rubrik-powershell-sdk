@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HardwareHealthPolicyName
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CHASSIS_CHECKER")]
         CHASSIS_CHECKER,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         NODE_CHECKER,
 
         [EnumMember(Value = "P_S_U_CHECKER")]
-        P_S_U_CHECKER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        P_S_U_CHECKER
 
 
     } // enum HardwareHealthPolicyName

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AppSortByParamField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ADDED_AT")]
         ADDED_AT,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         IS_AUTHENTICATED,
 
         [EnumMember(Value = "SUBSCRIPTION")]
-        SUBSCRIPTION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUBSCRIPTION
 
 
     } // enum AppSortByParamField

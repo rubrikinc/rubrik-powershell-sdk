@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ResolutionStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "RESOLVED")]
         RESOLVED,
 
         [EnumMember(Value = "UNRESOLVED")]
-        UNRESOLVED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNRESOLVED
 
 
     } // enum ResolutionStatus

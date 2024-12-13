@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HypervVirtualMachineDetailGuestOsType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HYPERV_VIRTUAL_MACHINE_DETAIL_GUEST_OS_TYPE_LINUX")]
         HYPERV_VIRTUAL_MACHINE_DETAIL_GUEST_OS_TYPE_LINUX,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         HYPERV_VIRTUAL_MACHINE_DETAIL_GUEST_OS_TYPE_UNKNOWN,
 
         [EnumMember(Value = "HYPERV_VIRTUAL_MACHINE_DETAIL_GUEST_OS_TYPE_WINDOWS")]
-        HYPERV_VIRTUAL_MACHINE_DETAIL_GUEST_OS_TYPE_WINDOWS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        HYPERV_VIRTUAL_MACHINE_DETAIL_GUEST_OS_TYPE_WINDOWS
 
 
     } // enum HypervVirtualMachineDetailGuestOsType

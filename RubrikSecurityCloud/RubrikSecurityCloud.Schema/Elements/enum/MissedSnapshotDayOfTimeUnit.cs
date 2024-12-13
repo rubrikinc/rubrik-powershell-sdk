@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MissedSnapshotDayOfTimeUnit
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MISSED_SNAPSHOT_DAY_OF_TIME_UNIT_FIFTEENTH")]
         MISSED_SNAPSHOT_DAY_OF_TIME_UNIT_FIFTEENTH,
 
@@ -43,10 +46,7 @@ namespace RubrikSecurityCloud.Types
         MISSED_SNAPSHOT_DAY_OF_TIME_UNIT_TUESDAY,
 
         [EnumMember(Value = "MISSED_SNAPSHOT_DAY_OF_TIME_UNIT_WEDNESDAY")]
-        MISSED_SNAPSHOT_DAY_OF_TIME_UNIT_WEDNESDAY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MISSED_SNAPSHOT_DAY_OF_TIME_UNIT_WEDNESDAY
 
 
     } // enum MissedSnapshotDayOfTimeUnit

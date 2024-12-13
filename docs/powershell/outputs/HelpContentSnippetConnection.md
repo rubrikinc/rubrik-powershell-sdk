@@ -6,6 +6,6 @@ Paginated list of HelpContentSnippet objects. Each page of the results includes 
 - nodes: list of HelpContentSnippets
   - List of HelpContentSnippet objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of HelpContentSnippet objects matching the request arguments.

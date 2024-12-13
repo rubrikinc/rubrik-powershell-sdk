@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudAccount")]
         public CloudAccount? CloudAccount { get; set; }
 
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String (scalar)
+        [JsonProperty("awsIamPairId")]
+        public System.String? AwsIamPairId { get; set; }
+
         //      C# -> System.String? Bucket
         // GraphQL -> bucket: String! (scalar)
         [JsonProperty("bucket")]
@@ -220,6 +225,7 @@ namespace RubrikSecurityCloud.Types
         TargetType? TargetType = null,
         UpgradeStatus? UpgradeStatus = null,
         CloudAccount? CloudAccount = null,
+        System.String? AwsIamPairId = null,
         System.String? Bucket = null,
         System.Boolean? BypassProxy = null,
         System.String? ClusterName = null,
@@ -284,6 +290,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CloudAccount != null ) {
             this.CloudAccount = CloudAccount;
+        }
+        if ( AwsIamPairId != null ) {
+            this.AwsIamPairId = AwsIamPairId;
         }
         if ( Bucket != null ) {
             this.Bucket = Bucket;
@@ -490,6 +499,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "cloudAccount" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String (scalar)
+        if (this.AwsIamPairId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "awsIamPairId\n" ;
+            } else {
+                s += ind + "awsIamPairId\n" ;
             }
         }
         //      C# -> System.String? Bucket
@@ -950,6 +968,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudAccount != null && ec.Excludes("cloudAccount",false))
         {
             this.CloudAccount = null;
+        }
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String (scalar)
+        if (ec.Includes("awsIamPairId",true))
+        {
+            if(this.AwsIamPairId == null) {
+
+                this.AwsIamPairId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsIamPairId != null && ec.Excludes("awsIamPairId",true))
+        {
+            this.AwsIamPairId = null;
         }
         //      C# -> System.String? Bucket
         // GraphQL -> bucket: String! (scalar)

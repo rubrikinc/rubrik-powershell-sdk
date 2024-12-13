@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum InstanceTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AZURE_CHINA")]
         AZURE_CHINA,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         AZURE_GOVERNMENT,
 
         [EnumMember(Value = "UNKNOWN_INSTANCE")]
-        UNKNOWN_INSTANCE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_INSTANCE
 
 
     } // enum InstanceTypeEnum

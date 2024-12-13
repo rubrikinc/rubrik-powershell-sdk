@@ -6,6 +6,6 @@ Paginated list of OracleLiveMount objects. Each page of the results includes at 
 - nodes: list of OracleLiveMounts
   - List of OracleLiveMount objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of OracleLiveMount objects matching the request arguments.

@@ -7,3 +7,4 @@ Cloud account type.
 - CLOUD_ACCOUNT_AWS_ROLE_BASED - Cloud account type is role-based AWS.
 - CLOUD_ACCOUNT_GCP - Cloud account type is GCP.
 - CLOUD_ACCOUNT_AZURE_ROLE_BASED - Cloud account type is role-based Azure.
+- CLOUD_ACCOUNT_GCP_ROLE_BASED - Cloud account type is role-based GCP.

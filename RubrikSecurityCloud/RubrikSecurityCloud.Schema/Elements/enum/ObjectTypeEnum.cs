@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ObjectTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
@@ -69,6 +72,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CONFLUENCE_SPACE")]
         CONFLUENCE_SPACE,
 
+        [EnumMember(Value = "D365_DATAVERSE_TABLE")]
+        D365_DATAVERSE_TABLE,
+
+        [EnumMember(Value = "D365_FIXED_OBJECT")]
+        D365_FIXED_OBJECT,
+
         [EnumMember(Value = "Db2Database")]
         DB2_DATABASE,
 
@@ -101,6 +110,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,
+
+        [EnumMember(Value = "K8S_VIRTUAL_MACHINE")]
+        K8S_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "KuprNamespace")]
         KUPR_NAMESPACE,
@@ -229,10 +241,7 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_FILESET,
 
         [EnumMember(Value = "WindowsVolumeGroup")]
-        WINDOWS_VOLUME_GROUP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS_VOLUME_GROUP
 
 
     } // enum ObjectTypeEnum

@@ -23,6 +23,8 @@ AWS native account.
   - The authorized operations on the object.
 - applicationCloudAccountExoConfigs: ApplicationCloudAccountToExocomputeConfig
   - List of Exocompute configurations for the AWS account.
+- cloudSlabDns: System.String
+  - CloudSlab DNS that must be in the allowlist to protect object store workloads.
 - awsNativeEc2Instances: AwsNativeEc2InstanceConnection
   - List of all EC2 instances under this AWS Native account.
 - awsNativeEbsVolumes: AwsNativeEbsVolumeConnection

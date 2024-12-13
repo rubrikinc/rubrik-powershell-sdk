@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ThreatFeedType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FILE_PATTERN")]
         FILE_PATTERN,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         HASH,
 
         [EnumMember(Value = "YARA")]
-        YARA,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        YARA
 
 
     } // enum ThreatFeedType

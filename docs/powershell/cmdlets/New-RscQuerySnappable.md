@@ -12,7 +12,7 @@ Search over Exchange contacts.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - contactsSearchFilter - ContactsSearchFilter: Search filter for contacts search.
 - Returns O365ExchangeObjectConnection.
@@ -20,7 +20,7 @@ Search over Exchange contacts.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - searchFilter - SearchFilter: search filters
 - Returns O365ExchangeObjectConnection.
@@ -28,7 +28,7 @@ Search over Exchange contacts.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - calendarSearchFilter - CalendarSearchFilter: Search filter for calendar search.
 - Returns O365ExchangeObjectConnection.
@@ -37,7 +37,7 @@ Search over Exchange contacts.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - groupBy - SnappableGroupByEnum: Group workloads by field.
     - filter - SnappableGroupByFilterInput: Filter workloads by groups.
     - timezoneOffset - System.Single: Offset based on customer timezone.
@@ -56,7 +56,7 @@ Search over Exchange contacts.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - SnappableSortByEnum: Sort workloads by field.
     - filter - SnappableFilterInput: Filter protected objects by input.
@@ -65,7 +65,7 @@ Search over Exchange contacts.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - onedriveSearchFilter - OnedriveSearchFilter
 - Returns O365OnedriveObjectConnection.
@@ -74,23 +74,26 @@ Search over Exchange contacts.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - SnappableSortByEnum: Sort workloads by field.
     - filter - SnappableFilterInputWithSearch: Filter workloads by input (with search by name).
 - Returns SnappableConnection.
 ### searchversionedfiles
-- There are 4 arguments.
+List of all files in snapshots whose names match the specified search query.
+
+- There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String
-    - searchQuery - System.String
+    - snappableFid - System.String: The ID of the workload.
+    - searchQuery - System.String: Specifies the name or path prefix used to search for files within a workload.
+    - usePrefixSearch - System.Boolean: Determines whether to use a prefix search.
 - Returns VersionedFileConnection.
 ### teamsconversationssearch
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - snapshotFidOpt - System.String: snapshotFid arg which is of optional type
     - teamConvChannels - list of O365TeamConvChannelInputs: List of channel objects (naturalId and name).
@@ -100,7 +103,7 @@ Search over Exchange contacts.
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - channelId - System.String
     - channelFolderName - System.String

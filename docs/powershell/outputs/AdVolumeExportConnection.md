@@ -6,6 +6,6 @@ Paginated list of AdVolumeExport objects. Each page of the results includes at m
 - nodes: list of AdVolumeExports
   - List of AdVolumeExport objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of AdVolumeExport objects matching the request arguments.

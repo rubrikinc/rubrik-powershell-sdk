@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SyslogFacility
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SYSLOG_FACILITY_ALL")]
         SYSLOG_FACILITY_ALL,
 
@@ -76,10 +79,7 @@ namespace RubrikSecurityCloud.Types
         SYSLOG_FACILITY_USER,
 
         [EnumMember(Value = "SYSLOG_FACILITY_UUCP")]
-        SYSLOG_FACILITY_UUCP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SYSLOG_FACILITY_UUCP
 
 
     } // enum SyslogFacility

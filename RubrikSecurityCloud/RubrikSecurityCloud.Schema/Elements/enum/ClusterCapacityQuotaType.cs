@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ClusterCapacityQuotaType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "LOGICAL_BYTES")]
         LOGICAL_BYTES,
 
         [EnumMember(Value = "PHYSICAL_BYTES")]
-        PHYSICAL_BYTES,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        PHYSICAL_BYTES
 
 
     } // enum ClusterCapacityQuotaType

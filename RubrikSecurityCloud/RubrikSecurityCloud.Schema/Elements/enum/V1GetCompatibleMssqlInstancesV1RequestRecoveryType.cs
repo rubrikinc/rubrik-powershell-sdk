@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum V1GetCompatibleMssqlInstancesV1RequestRecoveryType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "V1_GET_COMPATIBLE_MSSQL_INSTANCES_V1_REQUEST_RECOVERY_TYPE_EXPORT")]
         V1_GET_COMPATIBLE_MSSQL_INSTANCES_V1_REQUEST_RECOVERY_TYPE_EXPORT,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         V1_GET_COMPATIBLE_MSSQL_INSTANCES_V1_REQUEST_RECOVERY_TYPE_MOUNT,
 
         [EnumMember(Value = "V1_GET_COMPATIBLE_MSSQL_INSTANCES_V1_REQUEST_RECOVERY_TYPE_RESTORE")]
-        V1_GET_COMPATIBLE_MSSQL_INSTANCES_V1_REQUEST_RECOVERY_TYPE_RESTORE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        V1_GET_COMPATIBLE_MSSQL_INSTANCES_V1_REQUEST_RECOVERY_TYPE_RESTORE
 
 
     } // enum V1GetCompatibleMssqlInstancesV1RequestRecoveryType

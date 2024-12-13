@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AwsAccountStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ADDED")]
         ADDED,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         REFRESHING,
 
         [EnumMember(Value = "REFRESH_FAILED")]
-        REFRESH_FAILED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        REFRESH_FAILED
 
 
     } // enum AwsAccountStatus

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HiddenStateFilter
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ALL_USERS")]
         ALL_USERS,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         HIDDEN,
 
         [EnumMember(Value = "NOT_HIDDEN")]
-        NOT_HIDDEN,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NOT_HIDDEN
 
 
     } // enum HiddenStateFilter

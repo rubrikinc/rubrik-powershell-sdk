@@ -9,5 +9,7 @@ Input required to mount disks.
   - Snapshot types.
 - mountDiskIds: list of System.Strings
   - List of disk IDs that would be mounted.
+- archivedSnapshotId: System.String
+  - ID of the archived snapshot.
 - workloadType: CloudNativeObjectType
   - Workload type.

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VmType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DENSE")]
         DENSE,
 
         [EnumMember(Value = "STANDARD")]
-        STANDARD,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STANDARD
 
 
     } // enum VmType

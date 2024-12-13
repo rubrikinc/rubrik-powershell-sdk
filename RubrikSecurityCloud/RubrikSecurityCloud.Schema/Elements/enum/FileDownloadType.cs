@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FileDownloadType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DOWNLOAD_TO_CLOUD")]
         DOWNLOAD_TO_CLOUD,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         DOWNLOAD_TO_VM,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSPECIFIED
 
 
     } // enum FileDownloadType

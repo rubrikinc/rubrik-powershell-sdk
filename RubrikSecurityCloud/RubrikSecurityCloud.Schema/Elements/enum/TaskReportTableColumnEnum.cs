@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TaskReportTableColumnEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "EndDate")]
         END_DATE,
 
@@ -43,10 +46,7 @@ namespace RubrikSecurityCloud.Types
         SLA_DOMAIN_NAME,
 
         [EnumMember(Value = "StartDate")]
-        START_DATE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        START_DATE
 
 
     } // enum TaskReportTableColumnEnum

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum KeyTypeEnumType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "KEY_TYPE_PLATFORM")]
         KEY_TYPE_PLATFORM,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         KEY_TYPE_ROAMING,
 
         [EnumMember(Value = "KEY_TYPE_UNSPECIFIED")]
-        KEY_TYPE_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        KEY_TYPE_UNSPECIFIED
 
 
     } // enum KeyTypeEnumType

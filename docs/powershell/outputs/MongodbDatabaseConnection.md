@@ -6,6 +6,6 @@ Paginated list of MongodbDatabase objects. Each page of the results includes at 
 - nodes: list of MongodbDatabases
   - List of MongodbDatabase objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of MongodbDatabase objects matching the request arguments.

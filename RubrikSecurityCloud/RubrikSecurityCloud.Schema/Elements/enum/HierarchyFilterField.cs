@@ -15,11 +15,17 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HierarchyFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_NAME")]
         ACTIVE_DIRECTORY_DOMAIN_NAME,
 
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_SID")]
         ACTIVE_DIRECTORY_DOMAIN_SID,
+
+        [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST_BY_ROOT_DOMAIN_SID")]
+        ACTIVE_DIRECTORY_FOREST_BY_ROOT_DOMAIN_SID,
 
         [EnumMember(Value = "ANCESTOR_ID")]
         ANCESTOR_ID,
@@ -189,6 +195,42 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CDP_VM_SOURCE_CLUSTER_ID")]
         CDP_VM_SOURCE_CLUSTER_ID,
 
+        [EnumMember(Value = "CLOUDDIRECT_NAS_NAMESPACE_NAME")]
+        CLOUDDIRECT_NAS_NAMESPACE_NAME,
+
+        [EnumMember(Value = "CLOUDDIRECT_NAS_NAMESPACE_SYSTEM_NAME")]
+        CLOUDDIRECT_NAS_NAMESPACE_SYSTEM_NAME,
+
+        [EnumMember(Value = "CLOUDDIRECT_NAS_NAMESPACE_VENDOR_TYPE")]
+        CLOUDDIRECT_NAS_NAMESPACE_VENDOR_TYPE,
+
+        [EnumMember(Value = "CLOUDDIRECT_NAS_SHARE_HIDDEN")]
+        CLOUDDIRECT_NAS_SHARE_HIDDEN,
+
+        [EnumMember(Value = "CLOUDDIRECT_NAS_SHARE_ID")]
+        CLOUDDIRECT_NAS_SHARE_ID,
+
+        [EnumMember(Value = "CLOUDDIRECT_NAS_SHARE_NAMESPACE_NAME")]
+        CLOUDDIRECT_NAS_SHARE_NAMESPACE_NAME,
+
+        [EnumMember(Value = "CLOUDDIRECT_NAS_SHARE_PARENT_ID")]
+        CLOUDDIRECT_NAS_SHARE_PARENT_ID,
+
+        [EnumMember(Value = "CLOUDDIRECT_NAS_SHARE_PROTOCOL")]
+        CLOUDDIRECT_NAS_SHARE_PROTOCOL,
+
+        [EnumMember(Value = "CLOUDDIRECT_NAS_SHARE_SYSTEM_NAME")]
+        CLOUDDIRECT_NAS_SHARE_SYSTEM_NAME,
+
+        [EnumMember(Value = "CLOUDDIRECT_NAS_SHARE_VENDOR_TYPE")]
+        CLOUDDIRECT_NAS_SHARE_VENDOR_TYPE,
+
+        [EnumMember(Value = "CLOUDDIRECT_NAS_SYSTEM_NAME")]
+        CLOUDDIRECT_NAS_SYSTEM_NAME,
+
+        [EnumMember(Value = "CLOUDDIRECT_NAS_VENDOR_TYPE")]
+        CLOUDDIRECT_NAS_VENDOR_TYPE,
+
         [EnumMember(Value = "CLOUD_INSTANCE_CDM_APP_PROTECTION_SETUP")]
         CLOUD_INSTANCE_CDM_APP_PROTECTION_SETUP,
 
@@ -203,6 +245,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLUSTER_TYPE")]
         CLUSTER_TYPE,
+
+        [EnumMember(Value = "D365_TABLE_TYPE")]
+        D365_TABLE_TYPE,
 
         [EnumMember(Value = "DB2_DB_TYPE")]
         DB2_DB_TYPE,
@@ -495,11 +540,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "JIRA_PROJECT_TYPE")]
         JIRA_PROJECT_TYPE,
 
+        [EnumMember(Value = "K8S_CLUSTER_ID")]
+        K8S_CLUSTER_ID,
+
         [EnumMember(Value = "K8S_CLUSTER_NAME")]
         K8S_CLUSTER_NAME,
 
         [EnumMember(Value = "K8S_CLUSTER_STATUS")]
         K8S_CLUSTER_STATUS,
+
+        [EnumMember(Value = "K8S_NAMESPACE_ID")]
+        K8S_NAMESPACE_ID,
 
         [EnumMember(Value = "KUPR_CDM_CLUSTER_ID")]
         KUPR_CDM_CLUSTER_ID,
@@ -576,6 +627,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MSSQL_IS_HOST_PROTECTED")]
         MSSQL_IS_HOST_PROTECTED,
 
+        [EnumMember(Value = "MYSQLDB_HOST_CONNECTION_STATUS")]
+        MYSQLDB_HOST_CONNECTION_STATUS,
+
+        [EnumMember(Value = "MYSQLDB_INSTANCE_ID")]
+        MYSQLDB_INSTANCE_ID,
+
         [EnumMember(Value = "NAME")]
         NAME,
 
@@ -587,6 +644,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NAS_NAMESPACE_ID")]
         NAS_NAMESPACE_ID,
+
+        [EnumMember(Value = "NAS_NAMESPACE_SYSTEM_NAME")]
+        NAS_NAMESPACE_SYSTEM_NAME,
+
+        [EnumMember(Value = "NAS_NAMESPACE_VENDOR_TYPE")]
+        NAS_NAMESPACE_VENDOR_TYPE,
 
         [EnumMember(Value = "NAS_SHARE_HIDDEN")]
         NAS_SHARE_HIDDEN,
@@ -600,8 +663,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAS_SHARE_STALE")]
         NAS_SHARE_STALE,
 
+        [EnumMember(Value = "NAS_SHARE_SYSTEM_NAME")]
+        NAS_SHARE_SYSTEM_NAME,
+
         [EnumMember(Value = "NAS_SHARE_TYPE")]
         NAS_SHARE_TYPE,
+
+        [EnumMember(Value = "NAS_SHARE_VENDOR_TYPE")]
+        NAS_SHARE_VENDOR_TYPE,
 
         [EnumMember(Value = "NAS_SYSTEM_FOR_NAS_MIGRATION")]
         NAS_SYSTEM_FOR_NAS_MIGRATION,
@@ -753,6 +822,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VMWARE_IS_STANDALONE_HOST")]
         VMWARE_IS_STANDALONE_HOST,
 
+        [EnumMember(Value = "VMWARE_SNAPSHOT_CONSISTENCY")]
+        VMWARE_SNAPSHOT_CONSISTENCY,
+
         [EnumMember(Value = "VMWARE_VCD_HOSTNAME")]
         VMWARE_VCD_HOSTNAME,
 
@@ -769,10 +841,7 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_DATASTORE_IS_LOCAL,
 
         [EnumMember(Value = "VSPHERE_GET_ROOT_RESTORE_HIERARCHY")]
-        VSPHERE_GET_ROOT_RESTORE_HIERARCHY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VSPHERE_GET_ROOT_RESTORE_HIERARCHY
 
 
     } // enum HierarchyFilterField

@@ -19,6 +19,12 @@ NAS Fileset protected object.
   - Whether optimized backup of hardlinks is supported on this fileset.
 - nasMigrationInfo: System.String
   - Information pertaining to switching the NAS host from Rubrik CDM to RSC.
+- snapmirrorLabelForFullBackup: System.String
+  - Rubrik CDM uses a prefix match to select the latest SnapMirror snapshot that matches this value during a full backup of a SnapMirror destination share.
+- snapmirrorLabelForIncrementalBackup: System.String
+  - Rubrik CDM uses a prefix match to select the latest SnapMirror snapshot that matches this value during an incremental backup of a SnapMirror destination share.
+- allowBackupHiddenFoldersInNetworkMounts: System.Boolean
+  - Include or exclude hidden folders from backups that are inside locally-mounted remote file systems.
 - id: System.String
   - The object's FID.
 - nasShare: NasShare

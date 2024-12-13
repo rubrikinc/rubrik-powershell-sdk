@@ -11,3 +11,5 @@ Inputs to trigger the job to restore Azure Native Virtual Machine.
   - Snapshot type to use if source snapshot is expired.
 - recoveryDiskIds: list of System.Strings
   - Specifies a list of Azure disk unique native IDs that will be restored. When empty, all disks from the snapshot will be restored.
+- archivedSnapshotId: System.String
+  - ID of the archived snapshot to be restored.

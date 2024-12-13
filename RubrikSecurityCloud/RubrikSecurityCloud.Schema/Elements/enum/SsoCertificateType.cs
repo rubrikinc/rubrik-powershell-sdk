@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SsoCertificateType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CERTIFICATE_TYPE_UNSPECIFIED")]
         CERTIFICATE_TYPE_UNSPECIFIED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         ENCRYPTION,
 
         [EnumMember(Value = "SIGNING")]
-        SIGNING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SIGNING
 
 
     } // enum SsoCertificateType

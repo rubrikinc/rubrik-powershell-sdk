@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PermissionsGroup
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BACKUP_V2")]
         BACKUP_V2,
 
@@ -23,6 +26,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLOUD_CLUSTER_ES")]
         CLOUD_CLUSTER_ES,
+
+        [EnumMember(Value = "CUSTOMER_MANAGED_BASIC")]
+        CUSTOMER_MANAGED_BASIC,
 
         [EnumMember(Value = "DATA_CENTER_CONSOLIDATION")]
         DATA_CENTER_CONSOLIDATION,
@@ -64,10 +70,7 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_PRIVATE_ACCESS,
 
         [EnumMember(Value = "SQL_ARCHIVAL")]
-        SQL_ARCHIVAL,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SQL_ARCHIVAL
 
 
     } // enum PermissionsGroup

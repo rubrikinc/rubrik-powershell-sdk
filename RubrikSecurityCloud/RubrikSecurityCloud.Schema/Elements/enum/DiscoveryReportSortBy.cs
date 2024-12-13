@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DiscoveryReportSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NUM_HIGH_RISK_LOCATIONS")]
         NUM_HIGH_RISK_LOCATIONS,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         POLICY_NAME,
 
         [EnumMember(Value = "POLICY_STATUS")]
-        POLICY_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        POLICY_STATUS
 
 
     } // enum DiscoveryReportSortBy

@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ThreatFamily
+        // GraphQL -> threatFamily: String (scalar)
+        [JsonProperty("threatFamily")]
+        public System.String? ThreatFamily { get; set; }
+
         //      C# -> IndicatorOfCompromiseKind? IocKind
         // GraphQL -> iocKind: IndicatorOfCompromiseKind! (enum)
         [Required]

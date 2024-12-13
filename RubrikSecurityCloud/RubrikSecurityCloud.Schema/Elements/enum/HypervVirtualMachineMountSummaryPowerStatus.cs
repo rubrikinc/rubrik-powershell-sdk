@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HypervVirtualMachineMountSummaryPowerStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HYPERV_VIRTUAL_MACHINE_MOUNT_SUMMARY_POWER_STATUS_MOUNTED")]
         HYPERV_VIRTUAL_MACHINE_MOUNT_SUMMARY_POWER_STATUS_MOUNTED,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         HYPERV_VIRTUAL_MACHINE_MOUNT_SUMMARY_POWER_STATUS_POWERING_ON,
 
         [EnumMember(Value = "HYPERV_VIRTUAL_MACHINE_MOUNT_SUMMARY_POWER_STATUS_UNMOUNTING")]
-        HYPERV_VIRTUAL_MACHINE_MOUNT_SUMMARY_POWER_STATUS_UNMOUNTING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        HYPERV_VIRTUAL_MACHINE_MOUNT_SUMMARY_POWER_STATUS_UNMOUNTING
 
 
     } // enum HypervVirtualMachineMountSummaryPowerStatus

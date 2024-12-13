@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ProductState
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVATION_FAILED")]
         ACTIVATION_FAILED,
 
@@ -43,10 +46,7 @@ namespace RubrikSecurityCloud.Types
         INACTIVE,
 
         [EnumMember(Value = "UNSPECIFIED_STATE")]
-        UNSPECIFIED_STATE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSPECIFIED_STATE
 
 
     } // enum ProductState

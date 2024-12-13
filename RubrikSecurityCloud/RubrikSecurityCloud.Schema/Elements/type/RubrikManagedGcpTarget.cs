@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
 
+        //      C# -> GcpCloudNativeTarget? CnpSpecificFields
+        // GraphQL -> cnpSpecificFields: GcpCloudNativeTarget (type)
+        [JsonProperty("cnpSpecificFields")]
+        public GcpCloudNativeTarget? CnpSpecificFields { get; set; }
+
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)
         [JsonProperty("targetMapping")]
@@ -179,6 +184,7 @@ namespace RubrikSecurityCloud.Types
         System.String? SyncFailureReason = null,
         ProxySettings? ArchivalProxySettings = null,
         Cluster? Cluster = null,
+        GcpCloudNativeTarget? CnpSpecificFields = null,
         TargetMappingBasic? TargetMapping = null,
         List<TargetMappingBasic>? TargetMappingBasic = null
     ) 
@@ -251,6 +257,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
+        }
+        if ( CnpSpecificFields != null ) {
+            this.CnpSpecificFields = CnpSpecificFields;
         }
         if ( TargetMapping != null ) {
             this.TargetMapping = TargetMapping;
@@ -482,6 +491,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> GcpCloudNativeTarget? CnpSpecificFields
+        // GraphQL -> cnpSpecificFields: GcpCloudNativeTarget (type)
+        if (this.CnpSpecificFields != null) {
+            var fspec = this.CnpSpecificFields.AsFieldSpec(conf.Child("cnpSpecificFields"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cnpSpecificFields" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -910,6 +931,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> GcpCloudNativeTarget? CnpSpecificFields
+        // GraphQL -> cnpSpecificFields: GcpCloudNativeTarget (type)
+        if (ec.Includes("cnpSpecificFields",false))
+        {
+            if(this.CnpSpecificFields == null) {
+
+                this.CnpSpecificFields = new GcpCloudNativeTarget();
+                this.CnpSpecificFields.ApplyExploratoryFieldSpec(ec.NewChild("cnpSpecificFields"));
+
+            } else {
+
+                this.CnpSpecificFields.ApplyExploratoryFieldSpec(ec.NewChild("cnpSpecificFields"));
+
+            }
+        }
+        else if (this.CnpSpecificFields != null && ec.Excludes("cnpSpecificFields",false))
+        {
+            this.CnpSpecificFields = null;
         }
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)

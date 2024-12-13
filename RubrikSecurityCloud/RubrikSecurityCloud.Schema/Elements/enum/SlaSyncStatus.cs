@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SlaSyncStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FAILED")]
         FAILED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         PENDING,
 
         [EnumMember(Value = "SUCCEEDED")]
-        SUCCEEDED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUCCEEDED
 
 
     } // enum SlaSyncStatus

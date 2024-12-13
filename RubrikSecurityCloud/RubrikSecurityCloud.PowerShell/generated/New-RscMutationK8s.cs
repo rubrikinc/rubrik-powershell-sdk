@@ -582,9 +582,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
+    /// 		virtualMachineRunStrategy = $someString
+    /// 		# OPTIONAL
     /// 		shouldDeleteNamespaceIfExportFailed = $someBoolean
     /// 		# OPTIONAL
     /// 		ignoreErrors = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldKeepVirtualMachineMacAddresses = $someBoolean
     /// 		# REQUIRED
     /// 		targetClusterId = $someString
     /// 		# REQUIRED
@@ -1558,9 +1562,13 @@ $query.Var.input = @{
 			$someString
 		)
 		# OPTIONAL
+		virtualMachineRunStrategy = $someString
+		# OPTIONAL
 		shouldDeleteNamespaceIfExportFailed = $someBoolean
 		# OPTIONAL
 		ignoreErrors = $someBoolean
+		# OPTIONAL
+		shouldKeepVirtualMachineMacAddresses = $someBoolean
 		# REQUIRED
 		targetClusterId = $someString
 		# REQUIRED

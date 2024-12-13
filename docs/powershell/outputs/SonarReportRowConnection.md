@@ -6,6 +6,6 @@ Paginated list of SonarReportRow objects. Each page of the results includes at m
 - nodes: list of SonarReportRows
   - List of SonarReportRow objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of SonarReportRow objects matching the request arguments.

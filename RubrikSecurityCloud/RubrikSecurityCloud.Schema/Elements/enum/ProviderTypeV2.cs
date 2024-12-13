@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ProviderTypeV2
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CUSTOM")]
         CUSTOM,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         PROVIDER_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "SPLUNK")]
-        SPLUNK,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SPLUNK
 
 
     } // enum ProviderTypeV2

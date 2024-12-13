@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ObjectTypeAccessSummarySortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SORT_BY_UNSPECIFIED")]
         SORT_BY_UNSPECIFIED,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         TOTAL_LOW_RISK_HITS,
 
         [EnumMember(Value = "TOTAL_MEDIUM_RISK_HITS")]
-        TOTAL_MEDIUM_RISK_HITS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TOTAL_MEDIUM_RISK_HITS
 
 
     } // enum ObjectTypeAccessSummarySortBy

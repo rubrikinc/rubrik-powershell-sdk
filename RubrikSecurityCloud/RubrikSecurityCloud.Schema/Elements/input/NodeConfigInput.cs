@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vlanIpConfigs")]
         public List<VlanIpInput>? VlanIpConfigs { get; set; }
 
+        //      C# -> System.String? ChassisId
+        // GraphQL -> chassisId: String (scalar)
+        [JsonProperty("chassisId")]
+        public System.String? ChassisId { get; set; }
+
 
         #endregion
 

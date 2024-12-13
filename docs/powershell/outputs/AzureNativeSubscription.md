@@ -33,6 +33,8 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - The authorized operations on the object.
 - applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig
   - List of Exocompute configurations for the Azure subscription.
+- cloudSlabDns: System.String
+  - CloudSlab DNS that must be in the allowlist to protect object store workloads.
 - azureNativeResourceGroups: AzureNativeResourceGroupConnection
   - Paginated list of all Azure Resource Groups in the subscription.
 - rscNativeObjectPendingSla: CompactSlaDomain

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SapHanaRecoverableRangeSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "END_TIME")]
         END_TIME,
 
         [EnumMember(Value = "START_TIME")]
-        START_TIME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        START_TIME
 
 
     } // enum SapHanaRecoverableRangeSortBy

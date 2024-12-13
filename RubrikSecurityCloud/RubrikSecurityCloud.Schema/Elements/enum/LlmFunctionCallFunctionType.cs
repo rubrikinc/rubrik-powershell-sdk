@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum LlmFunctionCallFunctionType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "THREAT_HUNT")]
         THREAT_HUNT,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_DOWNLOAD_SNAPSHOT,
 
         [EnumMember(Value = "VSPHERE_IN_PLACE_RECOVERY")]
-        VSPHERE_IN_PLACE_RECOVERY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VSPHERE_IN_PLACE_RECOVERY
 
 
     } // enum LlmFunctionCallFunctionType

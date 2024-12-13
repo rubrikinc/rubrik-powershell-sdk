@@ -15,11 +15,11 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlUnprotectableType
     {
-        [EnumMember(Value = "MSSQL_UNPROTECTABLE_TYPE_INSUFFICIENT_PERMISSIONS")]
-        MSSQL_UNPROTECTABLE_TYPE_INSUFFICIENT_PERMISSIONS,
-
         [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN,
+
+        [EnumMember(Value = "MSSQL_UNPROTECTABLE_TYPE_INSUFFICIENT_PERMISSIONS")]
+        MSSQL_UNPROTECTABLE_TYPE_INSUFFICIENT_PERMISSIONS
 
 
     } // enum MssqlUnprotectableType

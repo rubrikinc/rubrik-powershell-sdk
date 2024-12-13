@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureAdRelationshipRestoreModeEnumType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MERGE")]
         MERGE,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         ROLLBACK,
 
         [EnumMember(Value = "SKIP")]
-        SKIP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SKIP
 
 
     } // enum AzureAdRelationshipRestoreModeEnumType

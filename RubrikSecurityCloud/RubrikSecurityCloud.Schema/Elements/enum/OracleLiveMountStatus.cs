@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum OracleLiveMountStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AVAILABLE")]
         AVAILABLE,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         UNAVAILABLE,
 
         [EnumMember(Value = "UNMOUNTING")]
-        UNMOUNTING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNMOUNTING
 
 
     } // enum OracleLiveMountStatus

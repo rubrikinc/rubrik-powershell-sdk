@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnappableType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CALENDAR")]
         CALENDAR,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         SHAREPOINT_SITE,
 
         [EnumMember(Value = "TEAMS")]
-        TEAMS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TEAMS
 
 
     } // enum SnappableType

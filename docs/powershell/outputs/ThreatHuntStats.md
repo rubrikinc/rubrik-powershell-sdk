@@ -17,3 +17,5 @@ Represents the statistics related to the threat hunt.
   - Total objects scanned.
 - totalIocs: System.Int64
   - Total number of IOCs.
+- totalProcessedSnapshots: System.Int64
+  - Total number of snapshots that are processed.

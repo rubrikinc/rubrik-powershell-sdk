@@ -6,6 +6,6 @@ Paginated list of Db2Database objects. Each page of the results includes at most
 - nodes: list of Db2Databases
   - List of Db2Database objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of Db2Database objects matching the request arguments.

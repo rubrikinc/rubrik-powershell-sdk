@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DhrcMetric
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ANOMALIES_DETECTED_PAST_WEEK")]
         ANOMALIES_DETECTED_PAST_WEEK,
 
@@ -61,10 +64,7 @@ namespace RubrikSecurityCloud.Types
         SLA_USING_RETENTION_LOCK,
 
         [EnumMember(Value = "USERS_USING_TOTP")]
-        USERS_USING_TOTP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USERS_USING_TOTP
 
 
     } // enum DhrcMetric

@@ -6,7 +6,7 @@ Browse SharePoint  drive files and folders.
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - folderId - System.String
     - sharepointDriveSearchFilter - OnedriveSearchFilter
@@ -20,7 +20,7 @@ Browse list objects.
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - folderId - System.String
     - sharepointDriveSearchFilter - OnedriveSearchFilter
@@ -60,7 +60,7 @@ Search site and descendant objects.
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - sharepointDriveSearchFilter - OnedriveSearchFilter
     - siteChildId - System.String: The site child ID for SharePoint descendant objects.
@@ -72,7 +72,7 @@ Search list objects.
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - sharepointDriveSearchFilter - OnedriveSearchFilter
     - siteChildId - System.String: The site child ID for SharePoint descendant objects.
@@ -81,7 +81,7 @@ Search list objects.
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
     - sharepointDriveSearchFilter - OnedriveSearchFilter

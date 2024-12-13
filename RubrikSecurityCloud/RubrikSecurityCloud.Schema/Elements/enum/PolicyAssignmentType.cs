@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PolicyAssignmentType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ASSIGNMENT_UNSPECIFIED")]
         ASSIGNMENT_UNSPECIFIED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         DIRECT,
 
         [EnumMember(Value = "INHERITED")]
-        INHERITED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        INHERITED
 
 
     } // enum PolicyAssignmentType

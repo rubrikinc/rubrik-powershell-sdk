@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum LdapLockReason
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ADMINISTRATIVE_LOCK")]
         ADMINISTRATIVE_LOCK,
 
         [EnumMember(Value = "LOCK_REASON_UNSPECIFIED")]
-        LOCK_REASON_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        LOCK_REASON_UNSPECIFIED
 
 
     } // enum LdapLockReason

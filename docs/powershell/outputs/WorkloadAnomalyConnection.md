@@ -6,7 +6,7 @@ Paginated list of WorkloadAnomaly objects. Each page of the results includes at 
 - nodes: list of WorkloadAnomalys
   - List of WorkloadAnomaly objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of WorkloadAnomaly objects matching the request arguments.
 - aggregation: AggregatedValues

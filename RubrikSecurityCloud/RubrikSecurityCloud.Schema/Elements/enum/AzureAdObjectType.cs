@@ -15,6 +15,15 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureAdObjectType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
+        [EnumMember(Value = "APPLICATION")]
+        APPLICATION,
+
+        [EnumMember(Value = "APP_ROLE_ASSIGNMENT")]
+        APP_ROLE_ASSIGNMENT,
+
         [EnumMember(Value = "AZURE_AD_OBJECT_TYPE_UNKNOWN")]
         AZURE_AD_OBJECT_TYPE_UNKNOWN,
 
@@ -24,11 +33,11 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ROLE")]
         ROLE,
 
-        [EnumMember(Value = "USER")]
-        USER,
+        [EnumMember(Value = "SERVICE_PRINCIPAL")]
+        SERVICE_PRINCIPAL,
 
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        [EnumMember(Value = "USER")]
+        USER
 
 
     } // enum AzureAdObjectType

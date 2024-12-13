@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RcvRedundancyState
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "P_FIP")]
         P_FIP,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         S_RIP,
 
         [EnumMember(Value = "UNKNOWN_REDUNDANCY_STATE")]
-        UNKNOWN_REDUNDANCY_STATE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_REDUNDANCY_STATE
 
 
     } // enum RcvRedundancyState

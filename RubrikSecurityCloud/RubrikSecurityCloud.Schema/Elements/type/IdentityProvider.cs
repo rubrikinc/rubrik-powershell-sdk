@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("spInitiatedTestUrl")]
         public System.String? SpInitiatedTestUrl { get; set; }
 
+        //      C# -> List<IdpClaimAttributeType>? IdpClaimAttributes
+        // GraphQL -> idpClaimAttributes: [IdpClaimAttributeType!]! (type)
+        [JsonProperty("idpClaimAttributes")]
+        public List<IdpClaimAttributeType>? IdpClaimAttributes { get; set; }
+
 
         #endregion
 
@@ -113,7 +118,8 @@ namespace RubrikSecurityCloud.Types
         System.String? SignOutUrl = null,
         System.String? SigningCertificate = null,
         System.String? SpInitiatedSignInUrl = null,
-        System.String? SpInitiatedTestUrl = null
+        System.String? SpInitiatedTestUrl = null,
+        List<IdpClaimAttributeType>? IdpClaimAttributes = null
     ) 
     {
         if ( ActiveUserCount != null ) {
@@ -157,6 +163,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SpInitiatedTestUrl != null ) {
             this.SpInitiatedTestUrl = SpInitiatedTestUrl;
+        }
+        if ( IdpClaimAttributes != null ) {
+            this.IdpClaimAttributes = IdpClaimAttributes;
         }
         return this;
     }
@@ -296,6 +305,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "spInitiatedTestUrl\n" ;
             } else {
                 s += ind + "spInitiatedTestUrl\n" ;
+            }
+        }
+        //      C# -> List<IdpClaimAttributeType>? IdpClaimAttributes
+        // GraphQL -> idpClaimAttributes: [IdpClaimAttributeType!]! (type)
+        if (this.IdpClaimAttributes != null) {
+            var fspec = this.IdpClaimAttributes.AsFieldSpec(conf.Child("idpClaimAttributes"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "idpClaimAttributes" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -542,6 +563,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SpInitiatedTestUrl != null && ec.Excludes("spInitiatedTestUrl",true))
         {
             this.SpInitiatedTestUrl = null;
+        }
+        //      C# -> List<IdpClaimAttributeType>? IdpClaimAttributes
+        // GraphQL -> idpClaimAttributes: [IdpClaimAttributeType!]! (type)
+        if (ec.Includes("idpClaimAttributes",false))
+        {
+            if(this.IdpClaimAttributes == null) {
+
+                this.IdpClaimAttributes = new List<IdpClaimAttributeType>();
+                this.IdpClaimAttributes.ApplyExploratoryFieldSpec(ec.NewChild("idpClaimAttributes"));
+
+            } else {
+
+                this.IdpClaimAttributes.ApplyExploratoryFieldSpec(ec.NewChild("idpClaimAttributes"));
+
+            }
+        }
+        else if (this.IdpClaimAttributes != null && ec.Excludes("idpClaimAttributes",false))
+        {
+            this.IdpClaimAttributes = null;
         }
     }
 

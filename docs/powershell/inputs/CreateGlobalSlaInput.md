@@ -8,7 +8,7 @@ Input to create SLA Domain.
 - snapshotSchedule: GlobalSnapshotScheduleInput
   - Snapshot schedule of the SLA Domain.
 - replicationSpecInput: ReplicationSpecInput
-  - Replication specification of the SLA Domain.
+  - Replication specification of the SLA Domain. Deprecated: use replicationSpecsV2 instead.
 - localRetentionLimit: SlaDurationInput
   - Retention limit for snapshots on the local Rubrik system. If none, they will remain as long as SLA requires.
 - firstFullBackupWindows: list of BackupWindowInputs

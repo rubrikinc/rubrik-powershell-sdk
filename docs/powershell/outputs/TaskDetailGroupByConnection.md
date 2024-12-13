@@ -6,6 +6,6 @@ Paginated list of TaskDetailGroupBy objects. Each page of the results includes a
 - nodes: list of TaskDetailGroupBys
   - List of TaskDetailGroupBy objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of TaskDetailGroupBy objects matching the request arguments.

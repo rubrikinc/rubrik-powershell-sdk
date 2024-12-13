@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RcsConsumptionMetricNameType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BLOB_CAPACITY")]
         BLOB_CAPACITY,
 
         [EnumMember(Value = "EGRESS_INGRESS")]
-        EGRESS_INGRESS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        EGRESS_INGRESS
 
 
     } // enum RcsConsumptionMetricNameType

@@ -31,3 +31,5 @@ RDS Export defaults from AWS.
   - Port used to connect to the RDS Instance.
 - isMultiAz: System.Boolean
   - Specifies whether RDS is available in multi Availability Zones (AZs). If true, it means it is a multi-AZ RDS Instance.
+- supportedDbEngineVersions: list of System.Strings
+  - List of RDS DB Instance engine versions.

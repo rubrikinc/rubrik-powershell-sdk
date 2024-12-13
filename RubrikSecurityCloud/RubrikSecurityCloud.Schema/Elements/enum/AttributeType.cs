@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AttributeType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ADMINISTRATIVE_UNIT")]
         ADMINISTRATIVE_UNIT,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         EXTENSION_ATTRIBUTES,
 
         [EnumMember(Value = "SCHEMA_EXTENSION_ATTRIBUTES")]
-        SCHEMA_EXTENSION_ATTRIBUTES,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SCHEMA_EXTENSION_ATTRIBUTES
 
 
     } // enum AttributeType

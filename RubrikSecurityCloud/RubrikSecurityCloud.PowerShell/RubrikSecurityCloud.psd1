@@ -27,7 +27,7 @@ Copyright = '(c) Rubrik. All rights reserved.'
 
 # Description of the functionality provided by this module
 # NOTE: This entry is generated.
-Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20241014-23 .'
+Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20241209-45 .'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.0.0'
@@ -62,12 +62,30 @@ PowerShellVersion = '5.0.0'
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
+  "Toolkit/Format/AwsNativeEc2Instance.Format.ps1xml",
+  "Toolkit/Format/AzureNativeVirtualMachine.Format.ps1xml",
+  "Toolkit/Format/CloudNativeTagRule.Format.ps1xml",
+  "Toolkit/Format/Db2Database.Format.ps1xml",
+  "Toolkit/Format/Db2Instance.Format.ps1xml",
   "Toolkit/Format/GlobalSlaReply.Format.ps1xml",
+  "Toolkit/Format/HyperVVirtualMachine.Format.ps1xml",
+  "Toolkit/Format/MongoCollection.Format.ps1xml",
+  "Toolkit/Format/MongoDatabase.Format.ps1xml",
+  "Toolkit/Format/MongoSource.Format.ps1xml",
+  "Toolkit/Format/MssqlDatabase.Format.ps1xml",
+  "Toolkit/Format/MssqlInstance.Format.ps1xml",
   "Toolkit/Format/NutanixVm.Format.ps1xml",
+  "Toolkit/Format/OracleDatabase.Format.ps1xml",
+  "Toolkit/Format/OracleHost.Format.ps1xml",
+  "Toolkit/Format/Org.Format.ps1xml",
   "Toolkit/Format/Permission.Format.ps1xml",
+  "Toolkit/Format/PhysicalHost.Format.ps1xml",
   "Toolkit/Format/Role.Format.ps1xml",
+  "Toolkit/Format/SapHanaDatabase.Format.ps1xml",
+  "Toolkit/Format/SapHanaSystem.Format.ps1xml",
   "Toolkit/Format/Snappable.Format.ps1xml",
-  "Toolkit/Format/VsphereVm.Format.ps1xml")
+  "Toolkit/Format/VsphereVm.Format.ps1xml",
+  "Toolkit/Format/WindowsCluster.Format.ps1xml")
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('PublicFunctions.psm1')

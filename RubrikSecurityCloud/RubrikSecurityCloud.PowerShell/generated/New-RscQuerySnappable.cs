@@ -848,6 +848,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.snappableFid = $someString
     /// # REQUIRED
     /// $query.Var.searchQuery = $someString
+    /// # OPTIONAL
+    /// $query.Var.usePrefixSearch = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -2033,6 +2035,7 @@ $query.Var.filter = @{
         //     after: String
         //     snappableFid: UUID!
         //     searchQuery: String!
+        //     usePrefixSearch: Boolean
         //   ): VersionedFileConnection!
         internal void InitQuerySearchSnappableVersionedFiles()
         {
@@ -2041,12 +2044,13 @@ $query.Var.filter = @{
                 Tuple.Create("after", "String"),
                 Tuple.Create("snappableFid", "UUID!"),
                 Tuple.Create("searchQuery", "String!"),
+                Tuple.Create("usePrefixSearch", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySearchSnappableVersionedFiles",
-                "($first: Int,$after: String,$snappableFid: UUID!,$searchQuery: String!)",
+                "($first: Int,$after: String,$snappableFid: UUID!,$searchQuery: String!,$usePrefixSearch: Boolean)",
                 "VersionedFileConnection",
                 Query.SearchSnappableVersionedFiles,
                 Query.SearchSnappableVersionedFilesFieldSpec,
@@ -2057,7 +2061,9 @@ $query.Var.after = $someString
 # REQUIRED
 $query.Var.snappableFid = $someString
 # REQUIRED
-$query.Var.searchQuery = $someString"
+$query.Var.searchQuery = $someString
+# OPTIONAL
+$query.Var.usePrefixSearch = $someBoolean"
             );
         }
 

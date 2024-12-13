@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AnalyzerUsagesSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DATA_TYPE_HITS")]
         DATA_TYPE_HITS,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         SENSITIVITY,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSPECIFIED
 
 
     } // enum AnalyzerUsagesSortBy

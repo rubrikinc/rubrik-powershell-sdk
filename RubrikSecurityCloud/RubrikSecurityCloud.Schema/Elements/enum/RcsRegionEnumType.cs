@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RcsRegionEnumType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ASIA_EAST")]
         ASIA_EAST,
 
@@ -145,10 +148,7 @@ namespace RubrikSecurityCloud.Types
         US_WEST_CENTRAL,
 
         [EnumMember(Value = "WEST_US3")]
-        WEST_US3,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WEST_US3
 
 
     } // enum RcsRegionEnumType

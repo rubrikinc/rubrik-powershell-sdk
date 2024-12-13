@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DataGovShareType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NFS")]
         NFS,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         SMB,
 
         [EnumMember(Value = "UNKNOWN_SHARE_TYPE")]
-        UNKNOWN_SHARE_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_SHARE_TYPE
 
 
     } // enum DataGovShareType

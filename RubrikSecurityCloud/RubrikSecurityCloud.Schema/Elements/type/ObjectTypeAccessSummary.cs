@@ -25,6 +25,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public DataGovObjectType? ObjectType { get; set; }
 
+        //      C# -> Platform? Platform
+        // GraphQL -> platform: Platform! (enum)
+        [JsonProperty("platform")]
+        public Platform? Platform { get; set; }
+
+        //      C# -> System.String? AccountId
+        // GraphQL -> accountId: String! (scalar)
+        [JsonProperty("accountId")]
+        public System.String? AccountId { get; set; }
+
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        [JsonProperty("accountName")]
+        public System.String? AccountName { get; set; }
+
         //      C# -> System.Int64? DeltaHits
         // GraphQL -> deltaHits: Long! (scalar)
         [JsonProperty("deltaHits")]
@@ -51,6 +66,9 @@ namespace RubrikSecurityCloud.Types
 
     public ObjectTypeAccessSummary Set(
         DataGovObjectType? ObjectType = null,
+        Platform? Platform = null,
+        System.String? AccountId = null,
+        System.String? AccountName = null,
         System.Int64? DeltaHits = null,
         System.Int64? TotalHits = null,
         List<PolicySummaryDetails>? PolicySummaryDetails = null
@@ -58,6 +76,15 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
+        }
+        if ( Platform != null ) {
+            this.Platform = Platform;
+        }
+        if ( AccountId != null ) {
+            this.AccountId = AccountId;
+        }
+        if ( AccountName != null ) {
+            this.AccountName = AccountName;
         }
         if ( DeltaHits != null ) {
             this.DeltaHits = DeltaHits;
@@ -89,6 +116,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectType\n" ;
             } else {
                 s += ind + "objectType\n" ;
+            }
+        }
+        //      C# -> Platform? Platform
+        // GraphQL -> platform: Platform! (enum)
+        if (this.Platform != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "platform\n" ;
+            } else {
+                s += ind + "platform\n" ;
+            }
+        }
+        //      C# -> System.String? AccountId
+        // GraphQL -> accountId: String! (scalar)
+        if (this.AccountId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "accountId\n" ;
+            } else {
+                s += ind + "accountId\n" ;
+            }
+        }
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        if (this.AccountName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "accountName\n" ;
+            } else {
+                s += ind + "accountName\n" ;
             }
         }
         //      C# -> System.Int64? DeltaHits
@@ -144,6 +198,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectType != null && ec.Excludes("objectType",true))
         {
             this.ObjectType = null;
+        }
+        //      C# -> Platform? Platform
+        // GraphQL -> platform: Platform! (enum)
+        if (ec.Includes("platform",true))
+        {
+            if(this.Platform == null) {
+
+                this.Platform = new Platform();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Platform != null && ec.Excludes("platform",true))
+        {
+            this.Platform = null;
+        }
+        //      C# -> System.String? AccountId
+        // GraphQL -> accountId: String! (scalar)
+        if (ec.Includes("accountId",true))
+        {
+            if(this.AccountId == null) {
+
+                this.AccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountId != null && ec.Excludes("accountId",true))
+        {
+            this.AccountId = null;
+        }
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        if (ec.Includes("accountName",true))
+        {
+            if(this.AccountName == null) {
+
+                this.AccountName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountName != null && ec.Excludes("accountName",true))
+        {
+            this.AccountName = null;
         }
         //      C# -> System.Int64? DeltaHits
         // GraphQL -> deltaHits: Long! (scalar)

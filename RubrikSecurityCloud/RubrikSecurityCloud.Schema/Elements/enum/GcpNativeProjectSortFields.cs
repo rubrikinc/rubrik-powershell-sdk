@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GcpNativeProjectSortFields
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "EFFECTIVE_SLA_DOMAIN")]
         EFFECTIVE_SLA_DOMAIN,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         GCP_PROJECT_ORG_NAME,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum GcpNativeProjectSortFields

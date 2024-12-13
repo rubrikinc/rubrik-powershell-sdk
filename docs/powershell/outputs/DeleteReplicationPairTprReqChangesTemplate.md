@@ -1,9 +1,9 @@
 ### DeleteReplicationPairTprReqChangesTemplate
-Template for delete replication pair tpr request changes.
+Template for deleting a replication pair with the quorum authorization request.
 
 - requestedAction: System.String
   - Requested action string.
 - replicationPair: TprReplicationPair
-  - Replication pair details containing source and target cluster names.
+  - Details of the replication pair, including the names of the source and target clusters.
 - templateName: System.String
   - Name of the requested changes template for quorum authorization.

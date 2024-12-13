@@ -27,6 +27,7 @@ AWS native regions.
 - SA_EAST_1 - AWS native South America (Sao Paulo) region.
 - AP_SOUTHEAST_2 - AWS native Asia Pacific (Sydney) region.
 - AP_NORTHEAST_2 - AWS native Asia Pacific (Seoul) region.
+- CA_WEST_1 - AWS native Canada (Calgary) region.
 - AP_SOUTH_2 - AWS native Asia Pacific (Hyderabad) region.
 - EU_NORTH_1 - AWS native EU (Stockholm) region.
 - US_ISO_WEST_1 - AWS DCA native US West region.

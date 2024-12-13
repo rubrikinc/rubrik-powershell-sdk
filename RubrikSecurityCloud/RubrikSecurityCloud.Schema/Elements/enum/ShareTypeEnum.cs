@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ShareTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NFS")]
         NFS,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         NO_SHARE_TYPE,
 
         [EnumMember(Value = "SMB")]
-        SMB,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SMB
 
 
     } // enum ShareTypeEnum

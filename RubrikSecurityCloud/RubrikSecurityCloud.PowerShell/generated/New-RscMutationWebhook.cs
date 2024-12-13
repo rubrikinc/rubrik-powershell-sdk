@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 6
+    /// Create a new RscQuery object for any of the 10
     /// operations in the 'Webhook' API domain:
-    /// Create, Delete, DeleteV2, Test, TestExisting, or Update.
+    /// Create, CreateV2, Delete, DeleteV2, SendTestMessageTo, SendTestMessageToExisting, Test, TestExisting, Update, or UpdateV2.
     /// </summary>
     /// <description>
     /// New-RscMutationWebhook creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 6 operations
+    /// There are 10 operations
     /// in the 'Webhook' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Create, Delete, DeleteV2, Test, TestExisting, or Update.
+    /// one of: Create, CreateV2, Delete, DeleteV2, SendTestMessageTo, SendTestMessageToExisting, Test, TestExisting, Update, or UpdateV2.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -171,6 +171,134 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CreateV2 operation
+    /// of the 'Webhook' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Webhook
+    /// # API Operation: CreateV2
+    /// 
+    /// $query = New-RscMutationWebhook -Operation CreateV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	payload = @{
+    /// 		# OPTIONAL
+    /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		url = $someString
+    /// 		# REQUIRED
+    /// 		providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
+    /// 		# REQUIRED
+    /// 		authInfo = @{
+    /// 			# OPTIONAL
+    /// 			token = $someString
+    /// 			# REQUIRED
+    /// 			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+    /// 			# OPTIONAL
+    /// 			userCredentials = @{
+    /// 				# REQUIRED
+    /// 				username = $someString
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			customHeaders = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					headerKey = $someString
+    /// 					# REQUIRED
+    /// 					headerValue = $someString
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# REQUIRED
+    /// 		subscriptionType = @{
+    /// 			# OPTIONAL
+    /// 			eventSubscription = @{
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllEvents = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllObjectTypes = $someBoolean
+    /// 				# REQUIRED
+    /// 				eventTypes = @(
+    /// 					$someEventType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
+    /// 				)
+    /// 				# REQUIRED
+    /// 				objectTypes = @(
+    /// 					$someEventObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
+    /// 				)
+    /// 				# REQUIRED
+    /// 				severities = @(
+    /// 					$someEventSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
+    /// 				)
+    /// 				# REQUIRED
+    /// 				templateInfo = @{
+    /// 					# REQUIRED
+    /// 					template = @{
+    /// 						# OPTIONAL
+    /// 						templateId = $someInt
+    /// 						# OPTIONAL
+    /// 						customTemplate = $someString
+    /// 					}
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			auditSubscription = @{
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllAudits = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllObjectTypes = $someBoolean
+    /// 				# REQUIRED
+    /// 				auditTypes = @(
+    /// 					$someAuditType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditType]) for enum values.
+    /// 				)
+    /// 				# REQUIRED
+    /// 				objectTypes = @(
+    /// 					$someAuditObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditObjectType]) for enum values.
+    /// 				)
+    /// 				# REQUIRED
+    /// 				severities = @(
+    /// 					$someAuditSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditSeverity]) for enum values.
+    /// 				)
+    /// 				# REQUIRED
+    /// 				templateInfo = @{
+    /// 					# REQUIRED
+    /// 					template = @{
+    /// 						# OPTIONAL
+    /// 						templateId = $someInt
+    /// 						# OPTIONAL
+    /// 						customTemplate = $someString
+    /// 					}
+    /// 				}
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		description = $someString
+    /// 		# OPTIONAL
+    /// 		serverCertificate = $someString
+    /// 		# OPTIONAL
+    /// 		serviceAccountId = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateWebhookV2Reply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Delete operation
     /// of the 'Webhook' API domain.
     /// <code>
@@ -225,6 +353,95 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SendTestMessageTo operation
+    /// of the 'Webhook' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Webhook
+    /// # API Operation: SendTestMessageTo
+    /// 
+    /// $query = New-RscMutationWebhook -Operation SendTestMessageTo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	url = $someString
+    /// 	# REQUIRED
+    /// 	providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
+    /// 	# REQUIRED
+    /// 	authInfo = @{
+    /// 		# OPTIONAL
+    /// 		token = $someString
+    /// 		# REQUIRED
+    /// 		authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+    /// 		# OPTIONAL
+    /// 		userCredentials = @{
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		customHeaders = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				headerKey = $someString
+    /// 				# REQUIRED
+    /// 				headerValue = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	serverCertificate = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SendTestMessageToWebhookReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SendTestMessageToExisting operation
+    /// of the 'Webhook' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Webhook
+    /// # API Operation: SendTestMessageToExisting
+    /// 
+    /// $query = New-RscMutationWebhook -Operation SendTestMessageToExisting
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someInt
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SendTestMessageToExistingWebhookReply
     /// 
     /// 
     /// 
@@ -419,6 +636,136 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the UpdateV2 operation
+    /// of the 'Webhook' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Webhook
+    /// # API Operation: UpdateV2
+    /// 
+    /// $query = New-RscMutationWebhook -Operation UpdateV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someInt
+    /// 	# REQUIRED
+    /// 	payload = @{
+    /// 		# OPTIONAL
+    /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		url = $someString
+    /// 		# REQUIRED
+    /// 		providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
+    /// 		# REQUIRED
+    /// 		authInfo = @{
+    /// 			# OPTIONAL
+    /// 			token = $someString
+    /// 			# REQUIRED
+    /// 			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+    /// 			# OPTIONAL
+    /// 			userCredentials = @{
+    /// 				# REQUIRED
+    /// 				username = $someString
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			customHeaders = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					headerKey = $someString
+    /// 					# REQUIRED
+    /// 					headerValue = $someString
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# REQUIRED
+    /// 		subscriptionType = @{
+    /// 			# OPTIONAL
+    /// 			eventSubscription = @{
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllEvents = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllObjectTypes = $someBoolean
+    /// 				# REQUIRED
+    /// 				eventTypes = @(
+    /// 					$someEventType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
+    /// 				)
+    /// 				# REQUIRED
+    /// 				objectTypes = @(
+    /// 					$someEventObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
+    /// 				)
+    /// 				# REQUIRED
+    /// 				severities = @(
+    /// 					$someEventSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
+    /// 				)
+    /// 				# REQUIRED
+    /// 				templateInfo = @{
+    /// 					# REQUIRED
+    /// 					template = @{
+    /// 						# OPTIONAL
+    /// 						templateId = $someInt
+    /// 						# OPTIONAL
+    /// 						customTemplate = $someString
+    /// 					}
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			auditSubscription = @{
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllAudits = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllObjectTypes = $someBoolean
+    /// 				# REQUIRED
+    /// 				auditTypes = @(
+    /// 					$someAuditType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditType]) for enum values.
+    /// 				)
+    /// 				# REQUIRED
+    /// 				objectTypes = @(
+    /// 					$someAuditObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditObjectType]) for enum values.
+    /// 				)
+    /// 				# REQUIRED
+    /// 				severities = @(
+    /// 					$someAuditSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditSeverity]) for enum values.
+    /// 				)
+    /// 				# REQUIRED
+    /// 				templateInfo = @{
+    /// 					# REQUIRED
+    /// 					template = @{
+    /// 						# OPTIONAL
+    /// 						templateId = $someInt
+    /// 						# OPTIONAL
+    /// 						customTemplate = $someString
+    /// 					}
+    /// 				}
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		description = $someString
+    /// 		# OPTIONAL
+    /// 		serverCertificate = $someString
+    /// 		# OPTIONAL
+    /// 		serviceAccountId = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateWebhookV2Reply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -436,11 +783,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "Create",
+                "CreateV2",
                 "Delete",
                 "DeleteV2",
+                "SendTestMessageTo",
+                "SendTestMessageToExisting",
                 "Test",
                 "TestExisting",
                 "Update",
+                "UpdateV2",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -459,11 +810,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Create":
                         this.ProcessRecord_Create();
                         break;
+                    case "CreateV2":
+                        this.ProcessRecord_CreateV2();
+                        break;
                     case "Delete":
                         this.ProcessRecord_Delete();
                         break;
                     case "DeleteV2":
                         this.ProcessRecord_DeleteV2();
+                        break;
+                    case "SendTestMessageTo":
+                        this.ProcessRecord_SendTestMessageTo();
+                        break;
+                    case "SendTestMessageToExisting":
+                        this.ProcessRecord_SendTestMessageToExisting();
                         break;
                     case "Test":
                         this.ProcessRecord_Test();
@@ -473,6 +833,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Update":
                         this.ProcessRecord_Update();
+                        break;
+                    case "UpdateV2":
+                        this.ProcessRecord_UpdateV2();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -494,6 +857,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // createWebhookV2.
+        internal void ProcessRecord_CreateV2()
+        {
+            this._logger.name += " -CreateV2";
+            // Create new graphql operation createWebhookV2
+            InitMutationCreateWebhookV2();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // deleteWebhook.
         internal void ProcessRecord_Delete()
         {
@@ -509,6 +881,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteV2";
             // Create new graphql operation deleteWebhookV2
             InitMutationDeleteWebhookV2();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // sendTestMessageToWebhook.
+        internal void ProcessRecord_SendTestMessageTo()
+        {
+            this._logger.name += " -SendTestMessageTo";
+            // Create new graphql operation sendTestMessageToWebhook
+            InitMutationSendTestMessageToWebhook();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // sendTestMessageToExistingWebhook.
+        internal void ProcessRecord_SendTestMessageToExisting()
+        {
+            this._logger.name += " -SendTestMessageToExisting";
+            // Create new graphql operation sendTestMessageToExistingWebhook
+            InitMutationSendTestMessageToExistingWebhook();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -536,6 +926,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Update";
             // Create new graphql operation updateWebhook
             InitMutationUpdateWebhook();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateWebhookV2.
+        internal void ProcessRecord_UpdateV2()
+        {
+            this._logger.name += " -UpdateV2";
+            // Create new graphql operation updateWebhookV2
+            InitMutationUpdateWebhookV2();
         }
 
 
@@ -626,6 +1025,126 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // createWebhookV2(input: CreateWebhookV2Input!): CreateWebhookV2Reply!
+        internal void InitMutationCreateWebhookV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateWebhookV2Input!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateWebhookV2",
+                "($input: CreateWebhookV2Input!)",
+                "CreateWebhookV2Reply",
+                Mutation.CreateWebhookV2,
+                Mutation.CreateWebhookV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	payload = @{
+		# OPTIONAL
+		name = $someString
+		# OPTIONAL
+		url = $someString
+		# REQUIRED
+		providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
+		# REQUIRED
+		authInfo = @{
+			# OPTIONAL
+			token = $someString
+			# REQUIRED
+			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+			# OPTIONAL
+			userCredentials = @{
+				# REQUIRED
+				username = $someString
+				# REQUIRED
+				password = $someString
+			}
+			# OPTIONAL
+			customHeaders = @(
+				@{
+					# REQUIRED
+					headerKey = $someString
+					# REQUIRED
+					headerValue = $someString
+				}
+			)
+		}
+		# REQUIRED
+		subscriptionType = @{
+			# OPTIONAL
+			eventSubscription = @{
+				# OPTIONAL
+				isSubscribedToAllEvents = $someBoolean
+				# OPTIONAL
+				isSubscribedToAllObjectTypes = $someBoolean
+				# REQUIRED
+				eventTypes = @(
+					$someEventType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
+				)
+				# REQUIRED
+				objectTypes = @(
+					$someEventObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
+				)
+				# REQUIRED
+				severities = @(
+					$someEventSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
+				)
+				# REQUIRED
+				templateInfo = @{
+					# REQUIRED
+					template = @{
+						# OPTIONAL
+						templateId = $someInt
+						# OPTIONAL
+						customTemplate = $someString
+					}
+				}
+			}
+			# OPTIONAL
+			auditSubscription = @{
+				# OPTIONAL
+				isSubscribedToAllAudits = $someBoolean
+				# OPTIONAL
+				isSubscribedToAllObjectTypes = $someBoolean
+				# REQUIRED
+				auditTypes = @(
+					$someAuditType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditType]) for enum values.
+				)
+				# REQUIRED
+				objectTypes = @(
+					$someAuditObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditObjectType]) for enum values.
+				)
+				# REQUIRED
+				severities = @(
+					$someAuditSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditSeverity]) for enum values.
+				)
+				# REQUIRED
+				templateInfo = @{
+					# REQUIRED
+					template = @{
+						# OPTIONAL
+						templateId = $someInt
+						# OPTIONAL
+						customTemplate = $someString
+					}
+				}
+			}
+		}
+		# OPTIONAL
+		description = $someString
+		# OPTIONAL
+		serverCertificate = $someString
+		# OPTIONAL
+		serviceAccountId = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // deleteWebhook(input: DeleteWebhookInput!): Void
         internal void InitMutationDeleteWebhook()
         {
@@ -663,6 +1182,79 @@ $query.Var.input = @{
                 "System.String",
                 Mutation.DeleteWebhookV2,
                 Mutation.DeleteWebhookV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someInt
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // sendTestMessageToWebhook(input: SendTestMessageToWebhookInput!): SendTestMessageToWebhookReply!
+        internal void InitMutationSendTestMessageToWebhook()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SendTestMessageToWebhookInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSendTestMessageToWebhook",
+                "($input: SendTestMessageToWebhookInput!)",
+                "SendTestMessageToWebhookReply",
+                Mutation.SendTestMessageToWebhook,
+                Mutation.SendTestMessageToWebhookFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	url = $someString
+	# REQUIRED
+	providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
+	# REQUIRED
+	authInfo = @{
+		# OPTIONAL
+		token = $someString
+		# REQUIRED
+		authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+		# OPTIONAL
+		userCredentials = @{
+			# REQUIRED
+			username = $someString
+			# REQUIRED
+			password = $someString
+		}
+		# OPTIONAL
+		customHeaders = @(
+			@{
+				# REQUIRED
+				headerKey = $someString
+				# REQUIRED
+				headerValue = $someString
+			}
+		)
+	}
+	# OPTIONAL
+	serverCertificate = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // sendTestMessageToExistingWebhook(input: SendTestMessageToExistingWebhookInput!): SendTestMessageToExistingWebhookReply!
+        internal void InitMutationSendTestMessageToExistingWebhook()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SendTestMessageToExistingWebhookInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSendTestMessageToExistingWebhook",
+                "($input: SendTestMessageToExistingWebhookInput!)",
+                "SendTestMessageToExistingWebhookReply",
+                Mutation.SendTestMessageToExistingWebhook,
+                Mutation.SendTestMessageToExistingWebhookFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
@@ -830,6 +1422,128 @@ $query.Var.input = @{
 	url = $someString
 	# OPTIONAL
 	shouldSendTestEvent = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateWebhookV2(input: UpdateWebhookV2Input!): UpdateWebhookV2Reply!
+        internal void InitMutationUpdateWebhookV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateWebhookV2Input!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateWebhookV2",
+                "($input: UpdateWebhookV2Input!)",
+                "UpdateWebhookV2Reply",
+                Mutation.UpdateWebhookV2,
+                Mutation.UpdateWebhookV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someInt
+	# REQUIRED
+	payload = @{
+		# OPTIONAL
+		name = $someString
+		# OPTIONAL
+		url = $someString
+		# REQUIRED
+		providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
+		# REQUIRED
+		authInfo = @{
+			# OPTIONAL
+			token = $someString
+			# REQUIRED
+			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+			# OPTIONAL
+			userCredentials = @{
+				# REQUIRED
+				username = $someString
+				# REQUIRED
+				password = $someString
+			}
+			# OPTIONAL
+			customHeaders = @(
+				@{
+					# REQUIRED
+					headerKey = $someString
+					# REQUIRED
+					headerValue = $someString
+				}
+			)
+		}
+		# REQUIRED
+		subscriptionType = @{
+			# OPTIONAL
+			eventSubscription = @{
+				# OPTIONAL
+				isSubscribedToAllEvents = $someBoolean
+				# OPTIONAL
+				isSubscribedToAllObjectTypes = $someBoolean
+				# REQUIRED
+				eventTypes = @(
+					$someEventType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
+				)
+				# REQUIRED
+				objectTypes = @(
+					$someEventObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
+				)
+				# REQUIRED
+				severities = @(
+					$someEventSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
+				)
+				# REQUIRED
+				templateInfo = @{
+					# REQUIRED
+					template = @{
+						# OPTIONAL
+						templateId = $someInt
+						# OPTIONAL
+						customTemplate = $someString
+					}
+				}
+			}
+			# OPTIONAL
+			auditSubscription = @{
+				# OPTIONAL
+				isSubscribedToAllAudits = $someBoolean
+				# OPTIONAL
+				isSubscribedToAllObjectTypes = $someBoolean
+				# REQUIRED
+				auditTypes = @(
+					$someAuditType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditType]) for enum values.
+				)
+				# REQUIRED
+				objectTypes = @(
+					$someAuditObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditObjectType]) for enum values.
+				)
+				# REQUIRED
+				severities = @(
+					$someAuditSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditSeverity]) for enum values.
+				)
+				# REQUIRED
+				templateInfo = @{
+					# REQUIRED
+					template = @{
+						# OPTIONAL
+						templateId = $someInt
+						# OPTIONAL
+						customTemplate = $someString
+					}
+				}
+			}
+		}
+		# OPTIONAL
+		description = $someString
+		# OPTIONAL
+		serverCertificate = $someString
+		# OPTIONAL
+		serviceAccountId = $someString
+	}
 }"
             );
         }

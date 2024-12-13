@@ -1,5 +1,7 @@
 ### JobInfoRequestDetails
-Additional information needed to fetch the status of the job. At most one field may be populated.
+Additional information to be supplied alongside the job info request.
+At most one field must be populated; others must be empty, depending
+on the type of job being queried.
 
 - unmountInfo: UnmountInfo
   - Populate for `UNMOUNT_ORACLE` jobs.
@@ -15,7 +17,7 @@ Additional information needed to fetch the status of the job. At most one field 
   - Populate for `DOWNLOAD_SNAPSHOT_FILES` jobs.
 - mosaicStorageLocationInfo: MosaicStorageLocationInfo
   - Populate for `MOSAIC_STORAGE_LOCATION`
- and `DELETE_MOSAIC_STORAGE_LOCATION` jobs.
+and `DELETE_MOSAIC_STORAGE_LOCATION` jobs.
 - pendingSlaInfo: PendingSlaInfo
   - Populate for `PENDING_SLA` jobs.
 - volumeGroupUnmountInfo: VolumeGroupUnmountInfo
@@ -26,7 +28,7 @@ Additional information needed to fetch the status of the job. At most one field 
   - Populate for `MSSQL_RESTORE` jobs.
 - logShippingInfo: LogShippingInfo
   - Populate for `MSSQL_CREATE_LOG_SHIPPING`
- and `MSSQL_DELETE_LOG_SHIPPING` jobs.
+and `MSSQL_DELETE_LOG_SHIPPING` jobs.
 - addManagedVolumeInfo: AddManagedVolumeInfo
   - Populate for `ADD_MANAGED_VOLUME` jobs.
 - takeManagedVolumeOnDemandSnapshotInfo: TakeManagedVolumeOnDemandSnapshotInfo
@@ -43,8 +45,6 @@ Additional information needed to fetch the status of the job. At most one field 
   - Populate for `EXPORT_ORACLE` jobs.
 - sapHanaDatabaseInfo: SapHanaDatabaseInfo
   - Populate for `SAP_HANA_DATABASE` jobs.
-- exportVcdVappSnapshotInfo: ExportVcdVappSnapshotInfo
-  - Do not use.
 - liveMountRelocateInfo: LiveMountRelocateInfo
   - Populate for `VSPHERE_LIVE_MOUNT_RELOCATE` jobs.
 - mongoSourceInfo: MongoSourceInfo
@@ -63,7 +63,7 @@ Additional information needed to fetch the status of the job. At most one field 
   - Populate for `CONFIGURE_MANAGED_VOLUME_LOG_EXPORT` jobs.
 - downloadSnapshotFromLocationInfo: DownloadSnapshotFromLocationInfo
   - Populate for `DOWNLOAD_SNAPSHOT_FROM_LOCATION`
- and `ACTIVE_DIRECTORY_DOWNLOAD_SNAPSHOT_FROM_LOCATION` jobs.
+and `ACTIVE_DIRECTORY_DOWNLOAD_SNAPSHOT_FROM_LOCATION` jobs.
 - registeredHostInfo: RegisterdHostInfo
   - Do not use.
 - registerOracleHostsInfo: RegisterOracleHostsInfo

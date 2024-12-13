@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DayOfMonth
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FIFTEENTH")]
         FIFTEENTH,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         FIRST_DAY,
 
         [EnumMember(Value = "LAST_DAY")]
-        LAST_DAY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        LAST_DAY
 
 
     } // enum DayOfMonth

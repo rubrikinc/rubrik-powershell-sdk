@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DiscoveryReportTablePolicyStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DISCOVERY")]
         DISCOVERY,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         IN_COMPLIANCE,
 
         [EnumMember(Value = "OUT_OF_COMPLIANCE")]
-        OUT_OF_COMPLIANCE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        OUT_OF_COMPLIANCE
 
 
     } // enum DiscoveryReportTablePolicyStatus

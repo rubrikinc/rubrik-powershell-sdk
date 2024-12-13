@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SapHanaSystemSummaryStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SAP_HANA_SYSTEM_SUMMARY_STATUS_ERROR")]
         SAP_HANA_SYSTEM_SUMMARY_STATUS_ERROR,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         SAP_HANA_SYSTEM_SUMMARY_STATUS_UNKNOWN,
 
         [EnumMember(Value = "SAP_HANA_SYSTEM_SUMMARY_STATUS_WARNING")]
-        SAP_HANA_SYSTEM_SUMMARY_STATUS_WARNING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SAP_HANA_SYSTEM_SUMMARY_STATUS_WARNING
 
 
     } // enum SapHanaSystemSummaryStatus

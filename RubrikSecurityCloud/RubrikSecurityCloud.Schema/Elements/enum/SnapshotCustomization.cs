@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnapshotCustomization
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CUSTOM_RETENTION")]
         CUSTOM_RETENTION,
 
         [EnumMember(Value = "DOWNLOAD")]
-        DOWNLOAD,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        DOWNLOAD
 
 
     } // enum SnapshotCustomization

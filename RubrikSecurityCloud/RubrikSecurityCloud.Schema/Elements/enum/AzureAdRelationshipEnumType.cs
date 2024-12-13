@@ -15,6 +15,15 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureAdRelationshipEnumType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
+        [EnumMember(Value = "APP_ROLE_ASSIGNED_TO")]
+        APP_ROLE_ASSIGNED_TO,
+
+        [EnumMember(Value = "APP_ROLE_ASSIGNMENT")]
+        APP_ROLE_ASSIGNMENT,
+
         [EnumMember(Value = "MEMBER")]
         MEMBER,
 
@@ -22,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         OWNER,
 
         [EnumMember(Value = "ROLE_ASSIGNMENT")]
-        ROLE_ASSIGNMENT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ROLE_ASSIGNMENT
 
 
     } // enum AzureAdRelationshipEnumType

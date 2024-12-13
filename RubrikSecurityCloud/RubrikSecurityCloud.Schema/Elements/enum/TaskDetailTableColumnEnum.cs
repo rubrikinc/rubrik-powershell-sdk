@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TaskDetailTableColumnEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ArchivalTarget")]
         ARCHIVAL_TARGET,
 
@@ -82,10 +85,7 @@ namespace RubrikSecurityCloud.Types
         TOTAL_FILE_TRANSFERRED,
 
         [EnumMember(Value = "UserName")]
-        USER_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USER_NAME
 
 
     } // enum TaskDetailTableColumnEnum

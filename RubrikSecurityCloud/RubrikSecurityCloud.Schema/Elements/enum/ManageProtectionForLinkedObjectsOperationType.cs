@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ManageProtectionForLinkedObjectsOperationType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ASSIGN_SLA")]
         ASSIGN_SLA,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         LINK,
 
         [EnumMember(Value = "UNLINK")]
-        UNLINK,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNLINK
 
 
     } // enum ManageProtectionForLinkedObjectsOperationType

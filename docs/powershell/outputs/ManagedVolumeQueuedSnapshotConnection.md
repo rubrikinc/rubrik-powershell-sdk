@@ -6,6 +6,6 @@ Paginated list of ManagedVolumeQueuedSnapshot objects. Each page of the results 
 - nodes: list of ManagedVolumeQueuedSnapshots
   - List of ManagedVolumeQueuedSnapshot objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ManagedVolumeQueuedSnapshot objects matching the request arguments.

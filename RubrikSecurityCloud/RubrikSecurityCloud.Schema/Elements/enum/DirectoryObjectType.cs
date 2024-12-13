@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DirectoryObjectType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "GROUP")]
         GROUP,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         UNSPECIFIED,
 
         [EnumMember(Value = "USER")]
-        USER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USER
 
 
     } // enum DirectoryObjectType

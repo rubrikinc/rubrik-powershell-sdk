@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudNativeLocTemplateType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "INVALID")]
         INVALID,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         SOURCE_REGION,
 
         [EnumMember(Value = "SPECIFIC_REGION")]
-        SPECIFIC_REGION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SPECIFIC_REGION
 
 
     } // enum CloudNativeLocTemplateType

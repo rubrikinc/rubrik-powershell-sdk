@@ -137,3 +137,8 @@ Enum representing all the possible object types which generate events.
 - M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
 - KMS_KEY_VAULT - KMS Key Vault.
 - K8S_VIRTUAL_MACHINE - Kubernetes Virtual Machine object.
+- K8S_NAMESPACE_V2 - Kubernetes Virtual Machine namespace object.
+- D365_ORGANIZATION - Dynamics 365 organization.
+- D365_DATAVERSE_TABLE - Dynamics 365 dataverse table.
+- D365_METADATA - Dynamics 365 metadata.
+- MYSQLDB_INSTANCE - MySQL instance.

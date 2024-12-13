@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DataGuardType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DATA_GUARD_GROUP")]
         DATA_GUARD_GROUP,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         NON_DATA_GUARD,
 
         [EnumMember(Value = "UNRECOGNIZED_DATA_GUARD_TYPE")]
-        UNRECOGNIZED_DATA_GUARD_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNRECOGNIZED_DATA_GUARD_TYPE
 
 
     } // enum DataGuardType

@@ -9,6 +9,7 @@ AWS native regions for replication.
 - EU_WEST_2 - AWS native for replication EU (London) region.
 - SA_EAST_1 - AWS native for replication South America (Sao Paulo) region.
 - EU_WEST_3 - AWS native for replication EU (Paris) region.
+- CA_WEST_1 - AWS native for replication Canada (Calgary) region.
 - ME_SOUTH_1 - AWS native for replication Middle East (Bahrain) region.
 - CN_NORTHWEST_1 - AWS native for replication China (Ningxia) region.
 - AP_NORTHEAST_3 - AWS native for replication Asia Pacific (Osaka) region.

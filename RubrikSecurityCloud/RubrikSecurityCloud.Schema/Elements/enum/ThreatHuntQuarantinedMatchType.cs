@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ThreatHuntQuarantinedMatchType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NO_QUARANTINED_MATCHES")]
         NO_QUARANTINED_MATCHES,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         QUARANTINED_MATCHES,
 
         [EnumMember(Value = "QUARANTINED_MATCHES_UNSPECIFIED")]
-        QUARANTINED_MATCHES_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        QUARANTINED_MATCHES_UNSPECIFIED
 
 
     } // enum ThreatHuntQuarantinedMatchType

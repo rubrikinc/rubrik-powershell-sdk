@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AgentConnectStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AGENT_CONNECT_STATUS_CONNECTED")]
         AGENT_CONNECT_STATUS_CONNECTED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         AGENT_CONNECT_STATUS_SECONDARY_CLUSTER,
 
         [EnumMember(Value = "AGENT_CONNECT_STATUS_UNREGISTERED")]
-        AGENT_CONNECT_STATUS_UNREGISTERED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        AGENT_CONNECT_STATUS_UNREGISTERED
 
 
     } // enum AgentConnectStatus

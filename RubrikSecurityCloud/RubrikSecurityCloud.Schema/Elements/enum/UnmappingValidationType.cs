@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UnmappingValidationType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AST")]
         AST,
 
         [EnumMember(Value = "EMPTY_STORAGE_ACCOUNT")]
-        EMPTY_STORAGE_ACCOUNT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        EMPTY_STORAGE_ACCOUNT
 
 
     } // enum UnmappingValidationType

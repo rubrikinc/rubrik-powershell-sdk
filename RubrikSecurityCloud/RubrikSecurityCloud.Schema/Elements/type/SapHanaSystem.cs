@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region SapHanaSystem
  
-    public class SapHanaSystem: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject
+    public class SapHanaSystem: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable
     {
         #region members
 

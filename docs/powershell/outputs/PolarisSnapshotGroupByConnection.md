@@ -6,6 +6,6 @@ Paginated list of PolarisSnapshotGroupBy objects. Each page of the results inclu
 - nodes: list of PolarisSnapshotGroupBys
   - List of PolarisSnapshotGroupBy objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of PolarisSnapshotGroupBy objects matching the request arguments.

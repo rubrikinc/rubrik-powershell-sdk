@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CalendarEmailAddressFilterType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ALL")]
         ALL,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         ATTENDEE,
 
         [EnumMember(Value = "ORGANIZER")]
-        ORGANIZER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ORGANIZER
 
 
     } // enum CalendarEmailAddressFilterType

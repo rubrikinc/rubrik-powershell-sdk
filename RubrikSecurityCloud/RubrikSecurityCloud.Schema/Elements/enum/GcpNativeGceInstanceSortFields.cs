@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GcpNativeGceInstanceSortFields
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ASSIGNED_SLA_DOMAIN")]
         ASSIGNED_SLA_DOMAIN,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         GCP_INSTANCE_REGION,
 
         [EnumMember(Value = "GCP_INSTANCE_TYPE")]
-        GCP_INSTANCE_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        GCP_INSTANCE_TYPE
 
 
     } // enum GcpNativeGceInstanceSortFields

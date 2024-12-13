@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AnomalyFalsePositiveType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "APPLICATION_UPDATE")]
         APPLICATION_UPDATE,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         OS_UPDATE,
 
         [EnumMember(Value = "OTHER")]
-        OTHER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        OTHER
 
 
     } // enum AnomalyFalsePositiveType

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum OrgField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FULL_NAME")]
         FULL_NAME,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum OrgField

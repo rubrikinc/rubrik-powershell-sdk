@@ -13,3 +13,7 @@ Nutanix Virtual Machine disk details.
   - Disk size in Bytes.
 - isSnapshottable: System.Boolean
   - Indicates if the disk can be snapshotted.
+- storageContainerId: System.String
+  - Nutanix internal UUID of the storage container.
+- storageContainerName: System.String
+  - Name of the storage container.

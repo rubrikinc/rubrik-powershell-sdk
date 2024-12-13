@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RiskLevelType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HIGH_RISK")]
         HIGH_RISK,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         NO_RISK,
 
         [EnumMember(Value = "UNKNOWN_RISK")]
-        UNKNOWN_RISK,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_RISK
 
 
     } // enum RiskLevelType

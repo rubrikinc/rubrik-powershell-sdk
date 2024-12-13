@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AnalyzerGroupTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CCPA")]
         CCPA,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         US_FINANCE,
 
         [EnumMember(Value = "US_PII")]
-        US_PII,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        US_PII
 
 
     } // enum AnalyzerGroupTypeEnum

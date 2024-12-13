@@ -15,11 +15,11 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ArchivalGroupQuerySortByField
     {
-        [EnumMember(Value = "NAME")]
-        NAME,
-
         [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN,
+
+        [EnumMember(Value = "NAME")]
+        NAME
 
 
     } // enum ArchivalGroupQuerySortByField

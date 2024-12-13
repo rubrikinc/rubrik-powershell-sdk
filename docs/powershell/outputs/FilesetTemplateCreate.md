@@ -32,6 +32,9 @@ Supported in v5.0+
   Specifies whether the template was created for Polaris NAS.
 - filesetOptions: FilesetOptions
   - 
+- shouldRetryPrescriptIfBackupFails: System.Boolean
+  - Supported in v9.3
+  Specifies whether to retry the pre-backup script if the backup fails. If set to true, the pre-backup script will be retried if the backup fails. If set to false, the pre-backup script will not be retried if the backup fails.
 - operatingSystemType: FilesetTemplateCreateOperatingSystemType
   - 
 - shareType: FilesetTemplateCreateShareType

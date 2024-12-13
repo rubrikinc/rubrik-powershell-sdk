@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HostRbsConnectionStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HOST_RBS_CONNECTION_STATUS_CONNECTED")]
         HOST_RBS_CONNECTION_STATUS_CONNECTED,
 
@@ -43,10 +46,7 @@ namespace RubrikSecurityCloud.Types
         HOST_RBS_CONNECTION_STATUS_REPLICATION_TARGET,
 
         [EnumMember(Value = "HOST_RBS_CONNECTION_STATUS_SECONDARY_CLUSTER")]
-        HOST_RBS_CONNECTION_STATUS_SECONDARY_CLUSTER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        HOST_RBS_CONNECTION_STATUS_SECONDARY_CLUSTER
 
 
     } // enum HostRbsConnectionStatus

@@ -80,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tenantId")]
         public System.String? TenantId { get; set; }
 
+        //      C# -> ParentLabelInfo? ParentInfo
+        // GraphQL -> parentInfo: ParentLabelInfo (type)
+        [JsonProperty("parentInfo")]
+        public ParentLabelInfo? ParentInfo { get; set; }
+
 
         #endregion
 
@@ -101,7 +106,8 @@ namespace RubrikSecurityCloud.Types
         System.String? LabelId = null,
         System.String? ParentLabelId = null,
         System.Int32? Sensitivity = null,
-        System.String? TenantId = null
+        System.String? TenantId = null,
+        ParentLabelInfo? ParentInfo = null
     ) 
     {
         if ( Color != null ) {
@@ -139,6 +145,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TenantId != null ) {
             this.TenantId = TenantId;
+        }
+        if ( ParentInfo != null ) {
+            this.ParentInfo = ParentInfo;
         }
         return this;
     }
@@ -260,6 +269,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "tenantId\n" ;
             } else {
                 s += ind + "tenantId\n" ;
+            }
+        }
+        //      C# -> ParentLabelInfo? ParentInfo
+        // GraphQL -> parentInfo: ParentLabelInfo (type)
+        if (this.ParentInfo != null) {
+            var fspec = this.ParentInfo.AsFieldSpec(conf.Child("parentInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "parentInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -472,6 +493,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.TenantId != null && ec.Excludes("tenantId",true))
         {
             this.TenantId = null;
+        }
+        //      C# -> ParentLabelInfo? ParentInfo
+        // GraphQL -> parentInfo: ParentLabelInfo (type)
+        if (ec.Includes("parentInfo",false))
+        {
+            if(this.ParentInfo == null) {
+
+                this.ParentInfo = new ParentLabelInfo();
+                this.ParentInfo.ApplyExploratoryFieldSpec(ec.NewChild("parentInfo"));
+
+            } else {
+
+                this.ParentInfo.ApplyExploratoryFieldSpec(ec.NewChild("parentInfo"));
+
+            }
+        }
+        else if (this.ParentInfo != null && ec.Excludes("parentInfo",false))
+        {
+            this.ParentInfo = null;
         }
     }
 

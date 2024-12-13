@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MongoSslCertificateRequirement
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MONGO_SSL_CERTIFICATE_REQUIREMENT_NONE")]
         MONGO_SSL_CERTIFICATE_REQUIREMENT_NONE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         MONGO_SSL_CERTIFICATE_REQUIREMENT_OPTIONAL,
 
         [EnumMember(Value = "MONGO_SSL_CERTIFICATE_REQUIREMENT_REQUIRED")]
-        MONGO_SSL_CERTIFICATE_REQUIREMENT_REQUIRED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MONGO_SSL_CERTIFICATE_REQUIREMENT_REQUIRED
 
 
     } // enum MongoSslCertificateRequirement

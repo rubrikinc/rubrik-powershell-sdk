@@ -47,6 +47,14 @@ Export snapshot of a virtual machine to standalone ESXi server.
 ### ondemandsnapshot
 - There is a single argument of type VsphereOnDemandSnapshotInput.
 - Returns AsyncRequestStatus.
+### snapshotconsistency
+Update snapshot consistency of VMware hierarchy objects
+
+Supported in v9.3
+Initiates a job to update snapshot consistency of VMware hierarchy objects.
+
+- There is a single argument of type UpdateSnapshotConsistencyInput.
+- Returns AsyncRequestStatus.
 ### snapshotdownloadfilesfromlocation
 Initiate a job to download multiple files or folders
 

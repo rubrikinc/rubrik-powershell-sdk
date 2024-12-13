@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryAz")]
         public System.String? PrimaryAz { get; set; }
 
+        //      C# -> List<System.String>? SupportedDbEngineVersions
+        // GraphQL -> supportedDbEngineVersions: [String!]! (scalar)
+        [JsonProperty("supportedDbEngineVersions")]
+        public List<System.String>? SupportedDbEngineVersions { get; set; }
+
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         [JsonProperty("vpcId")]
@@ -119,6 +124,7 @@ namespace RubrikSecurityCloud.Types
         System.String? OptionGroupName = null,
         System.Int64? Port = null,
         System.String? PrimaryAz = null,
+        List<System.String>? SupportedDbEngineVersions = null,
         System.String? VpcId = null
     ) 
     {
@@ -163,6 +169,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryAz != null ) {
             this.PrimaryAz = PrimaryAz;
+        }
+        if ( SupportedDbEngineVersions != null ) {
+            this.SupportedDbEngineVersions = SupportedDbEngineVersions;
         }
         if ( VpcId != null ) {
             this.VpcId = VpcId;
@@ -305,6 +314,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "primaryAz\n" ;
             } else {
                 s += ind + "primaryAz\n" ;
+            }
+        }
+        //      C# -> List<System.String>? SupportedDbEngineVersions
+        // GraphQL -> supportedDbEngineVersions: [String!]! (scalar)
+        if (this.SupportedDbEngineVersions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "supportedDbEngineVersions\n" ;
+            } else {
+                s += ind + "supportedDbEngineVersions\n" ;
             }
         }
         //      C# -> System.String? VpcId
@@ -560,6 +578,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryAz != null && ec.Excludes("primaryAz",true))
         {
             this.PrimaryAz = null;
+        }
+        //      C# -> List<System.String>? SupportedDbEngineVersions
+        // GraphQL -> supportedDbEngineVersions: [String!]! (scalar)
+        if (ec.Includes("supportedDbEngineVersions",true))
+        {
+            if(this.SupportedDbEngineVersions == null) {
+
+                this.SupportedDbEngineVersions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SupportedDbEngineVersions != null && ec.Excludes("supportedDbEngineVersions",true))
+        {
+            this.SupportedDbEngineVersions = null;
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)

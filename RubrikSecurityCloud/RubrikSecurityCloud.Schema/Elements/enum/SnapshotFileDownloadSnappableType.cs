@@ -15,11 +15,17 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnapshotFileDownloadSnappableType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FILESET")]
         FILESET,
 
         [EnumMember(Value = "HYPERV")]
         HYPERV,
+
+        [EnumMember(Value = "K8S_VM")]
+        K8S_VM,
 
         [EnumMember(Value = "NONE")]
         NONE,
@@ -31,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         VSPHERE,
 
         [EnumMember(Value = "WINDOWS_VOLUME_GROUP")]
-        WINDOWS_VOLUME_GROUP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS_VOLUME_GROUP
 
 
     } // enum SnapshotFileDownloadSnappableType

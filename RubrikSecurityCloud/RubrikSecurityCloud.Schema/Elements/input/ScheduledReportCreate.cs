@@ -72,6 +72,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("timeZone")]
         public System.String? TimeZone { get; set; }
 
+        //      C# -> System.Boolean? ShowChartsInEmailBody
+        // GraphQL -> showChartsInEmailBody: Boolean (scalar)
+        [JsonProperty("showChartsInEmailBody")]
+        public System.Boolean? ShowChartsInEmailBody { get; set; }
+
         //      C# -> System.Boolean? UpdateCreator
         // GraphQL -> updateCreator: Boolean (scalar)
         [JsonProperty("updateCreator")]

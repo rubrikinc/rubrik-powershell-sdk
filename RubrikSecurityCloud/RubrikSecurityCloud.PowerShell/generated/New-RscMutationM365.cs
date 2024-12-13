@@ -95,6 +95,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	workloadUuids = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	retentionSlaId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -128,6 +130,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	workloadUuids = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	retentionSlaId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -194,6 +198,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	workloadUuids = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	retentionSlaId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -323,6 +329,8 @@ $query.Var.input = @{
 	workloadUuids = @(
 		$someString
 	)
+	# OPTIONAL
+	retentionSlaId = $someString
 }"
             );
         }
@@ -348,6 +356,8 @@ $query.Var.input = @{
 	workloadUuids = @(
 		$someString
 	)
+	# OPTIONAL
+	retentionSlaId = $someString
 }"
             );
         }
@@ -398,6 +408,8 @@ $query.Var.input = @{
 	workloadUuids = @(
 		$someString
 	)
+	# OPTIONAL
+	retentionSlaId = $someString
 }"
             );
         }

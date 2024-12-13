@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureOauthResource
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AZURE_RESOURCE_MANAGER")]
         AZURE_RESOURCE_MANAGER,
 
         [EnumMember(Value = "AZURE_SQL")]
-        AZURE_SQL,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        AZURE_SQL
 
 
     } // enum AzureOauthResource

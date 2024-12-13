@@ -15,3 +15,5 @@ GCP Cloud Account Project.
   - Whether the GCP project uses global configuration for authentication.
 - organizationName: System.String
   - The name of the organization containing the GCP Project.
+- isArchived: System.Boolean
+  - Specifies if the project is archived.

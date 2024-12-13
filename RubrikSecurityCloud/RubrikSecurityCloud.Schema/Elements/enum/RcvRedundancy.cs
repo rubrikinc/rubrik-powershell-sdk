@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RcvRedundancy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AZURE_GRS")]
         AZURE_GRS,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         AZURE_ZRS,
 
         [EnumMember(Value = "UNKNOWN_AZURE_REDUNDANCY")]
-        UNKNOWN_AZURE_REDUNDANCY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_AZURE_REDUNDANCY
 
 
     } // enum RcvRedundancy

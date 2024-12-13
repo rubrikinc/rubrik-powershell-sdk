@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudNativeObjectType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS_EBS_VOLUME")]
         AWS_EBS_VOLUME,
 
@@ -49,10 +52,7 @@ namespace RubrikSecurityCloud.Types
         GCP_DISK,
 
         [EnumMember(Value = "GCP_GCE_INSTANCE")]
-        GCP_GCE_INSTANCE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        GCP_GCE_INSTANCE
 
 
     } // enum CloudNativeObjectType

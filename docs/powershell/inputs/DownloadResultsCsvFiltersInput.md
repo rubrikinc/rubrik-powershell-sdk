@@ -5,4 +5,5 @@
 - listFileResultsSnappableTypes: list of System.Strings
 - listFileResultsSearchText: System.String
 - whitelistEnabled: System.Boolean
+- policyViolationId: System.String
 - fileType: FileCountType

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AwsFeatureForPermissionCheck
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS_EXPORT_VM_IN_POWERED_OFF_STATE")]
         AWS_EXPORT_VM_IN_POWERED_OFF_STATE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         AWS_EXPORT_VM_WITH_IAM_INSTANCE_PROFILE,
 
         [EnumMember(Value = "AWS_UNSPECIFIED")]
-        AWS_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        AWS_UNSPECIFIED
 
 
     } // enum AwsFeatureForPermissionCheck

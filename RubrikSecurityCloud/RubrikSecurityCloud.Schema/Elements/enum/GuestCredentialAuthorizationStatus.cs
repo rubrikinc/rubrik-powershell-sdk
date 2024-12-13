@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GuestCredentialAuthorizationStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FAILED")]
         FAILED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         PENDING,
 
         [EnumMember(Value = "SUCCESSFUL")]
-        SUCCESSFUL,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUCCESSFUL
 
 
     } // enum GuestCredentialAuthorizationStatus

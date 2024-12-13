@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TprReqStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "APPROVED")]
         APPROVED,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         PENDING,
 
         [EnumMember(Value = "STAGED")]
-        STAGED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STAGED
 
 
     } // enum TprReqStatus

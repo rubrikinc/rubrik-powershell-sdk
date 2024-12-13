@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS")]
         AWS,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         AZURE,
 
         [EnumMember(Value = "GCP")]
-        GCP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        GCP
 
 
     } // enum CloudType

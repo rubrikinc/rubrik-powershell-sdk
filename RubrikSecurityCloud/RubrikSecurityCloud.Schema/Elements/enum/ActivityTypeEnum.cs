@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ActivityTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "Anomaly")]
         ANOMALY,
 
@@ -138,6 +141,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SCHEDULE_RECOVERY")]
         SCHEDULE_RECOVERY,
 
+        [EnumMember(Value = "SECURITY_VIOLATION")]
+        SECURITY_VIOLATION,
+
         [EnumMember(Value = "Storage")]
         STORAGE,
 
@@ -193,10 +199,7 @@ namespace RubrikSecurityCloud.Types
         VCD,
 
         [EnumMember(Value = "VolumeGroup")]
-        VOLUME_GROUP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VOLUME_GROUP
 
 
     } // enum ActivityTypeEnum

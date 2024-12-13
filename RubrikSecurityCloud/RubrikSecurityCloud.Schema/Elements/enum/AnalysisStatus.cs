@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AnalysisStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "INITIAL_ANALYSIS")]
         INITIAL_ANALYSIS,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         UNSPECIFIED,
 
         [EnumMember(Value = "UP_TO_DATE")]
-        UP_TO_DATE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UP_TO_DATE
 
 
     } // enum AnalysisStatus

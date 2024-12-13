@@ -1,5 +1,5 @@
 ### UpdateCloudNativeRcvAzureStorageSettingInput
-Input for updating an existing Rubrik Cloud Vault Azure storage settings.
+Input for updating an existing Rubrik Cloud Vault Azure storage setting.
 
 - id: System.String
   - ID for the storage setting.

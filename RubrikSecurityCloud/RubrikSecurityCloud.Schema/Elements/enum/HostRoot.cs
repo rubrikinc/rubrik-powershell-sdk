@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HostRoot
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "EXCHANGE_ROOT")]
         EXCHANGE_ROOT,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         NAS_HOST_ROOT,
 
         [EnumMember(Value = "WINDOWS_HOST_ROOT")]
-        WINDOWS_HOST_ROOT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS_HOST_ROOT
 
 
     } // enum HostRoot

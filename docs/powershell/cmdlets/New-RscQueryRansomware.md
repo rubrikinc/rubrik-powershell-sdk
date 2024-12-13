@@ -58,7 +58,7 @@ Results for Ransomware Investigations.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - RansomwareResultSortBy: Sort ransomware results by field.
     - filter - RansomwareResultFilterInput: Filter ransomware results by input.
     - timezoneOffset - System.Single: Offset based on customer timezone.
@@ -70,7 +70,7 @@ Results for the Ransomware Investigations grouped by an argument.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - groupBy - RansomwareResultGroupBy: Group ransomware results by field.
     - filter - RansomwareResultFilterInput: Filter ransomware results by input.
     - timezoneOffset - System.Single: Offset based on customer timezone.

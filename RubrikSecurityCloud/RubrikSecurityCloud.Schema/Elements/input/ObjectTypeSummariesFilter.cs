@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectTypes")]
         public List<DataGovObjectType>? ObjectTypes { get; set; }
 
+        //      C# -> List<PlatformCategory>? PlatformCategories
+        // GraphQL -> platformCategories: [PlatformCategory!] (enum)
+        [JsonProperty("platformCategories")]
+        public List<PlatformCategory>? PlatformCategories { get; set; }
+
 
         #endregion
 

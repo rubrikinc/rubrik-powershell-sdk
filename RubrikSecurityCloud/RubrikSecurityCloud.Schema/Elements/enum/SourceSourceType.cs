@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SourceSourceType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SOURCE_SOURCE_TYPE_CASSANDRA")]
         SOURCE_SOURCE_TYPE_CASSANDRA,
 
         [EnumMember(Value = "SOURCE_SOURCE_TYPE_MONGO")]
-        SOURCE_SOURCE_TYPE_MONGO,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SOURCE_SOURCE_TYPE_MONGO
 
 
     } // enum SourceSourceType

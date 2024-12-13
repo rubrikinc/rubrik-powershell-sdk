@@ -1,0 +1,6 @@
+### VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate
+Snapshot consistency mandate to assign to the objects.
+
+- VMWARE_UPDATE_SNAPSHOT_CONSISTENCY_JOB_CONFIG_SNAPSHOT_CONSISTENCY_MANDATE_CRASH_CONSISTENT - Crash-consistent snapshot consistency mandate.
+- VMWARE_UPDATE_SNAPSHOT_CONSISTENCY_JOB_CONFIG_SNAPSHOT_CONSISTENCY_MANDATE_AUTOMATIC - Automatic snapshot consistency mandate.
+- VMWARE_UPDATE_SNAPSHOT_CONSISTENCY_JOB_CONFIG_SNAPSHOT_CONSISTENCY_MANDATE_INHERITED - Inherited snapshot consistency mandate.

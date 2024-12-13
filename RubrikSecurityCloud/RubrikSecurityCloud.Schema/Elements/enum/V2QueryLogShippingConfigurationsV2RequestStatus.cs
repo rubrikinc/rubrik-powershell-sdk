@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum V2QueryLogShippingConfigurationsV2RequestStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "V2_QUERY_LOG_SHIPPING_CONFIGURATIONS_V2_REQUEST_STATUS_BROKEN")]
         V2_QUERY_LOG_SHIPPING_CONFIGURATIONS_V2_REQUEST_STATUS_BROKEN,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         V2_QUERY_LOG_SHIPPING_CONFIGURATIONS_V2_REQUEST_STATUS_OK,
 
         [EnumMember(Value = "V2_QUERY_LOG_SHIPPING_CONFIGURATIONS_V2_REQUEST_STATUS_STALE")]
-        V2_QUERY_LOG_SHIPPING_CONFIGURATIONS_V2_REQUEST_STATUS_STALE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        V2_QUERY_LOG_SHIPPING_CONFIGURATIONS_V2_REQUEST_STATUS_STALE
 
 
     } // enum V2QueryLogShippingConfigurationsV2RequestStatus

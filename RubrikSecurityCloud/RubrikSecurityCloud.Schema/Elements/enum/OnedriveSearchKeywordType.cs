@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum OnedriveSearchKeywordType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FILE_TYPE")]
         FILE_TYPE,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum OnedriveSearchKeywordType

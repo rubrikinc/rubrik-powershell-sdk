@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nativeId")]
         public System.String? NativeId { get; set; }
 
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String! (scalar)
+        [JsonProperty("orgId")]
+        public System.String? OrgId { get; set; }
+
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String! (scalar)
         [JsonProperty("orgName")]
@@ -69,6 +74,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AccountName = null,
         System.String? Message = null,
         System.String? NativeId = null,
+        System.String? OrgId = null,
         System.String? OrgName = null,
         System.String? OutpostAwsNativeId = null,
         System.Boolean? SeamlessFlowEnabled = null
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NativeId != null ) {
             this.NativeId = NativeId;
+        }
+        if ( OrgId != null ) {
+            this.OrgId = OrgId;
         }
         if ( OrgName != null ) {
             this.OrgName = OrgName;
@@ -143,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "nativeId\n" ;
             } else {
                 s += ind + "nativeId\n" ;
+            }
+        }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String! (scalar)
+        if (this.OrgId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "orgId\n" ;
+            } else {
+                s += ind + "orgId\n" ;
             }
         }
         //      C# -> System.String? OrgName
@@ -246,6 +264,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NativeId != null && ec.Excludes("nativeId",true))
         {
             this.NativeId = null;
+        }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String! (scalar)
+        if (ec.Includes("orgId",true))
+        {
+            if(this.OrgId == null) {
+
+                this.OrgId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgId != null && ec.Excludes("orgId",true))
+        {
+            this.OrgId = null;
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String! (scalar)

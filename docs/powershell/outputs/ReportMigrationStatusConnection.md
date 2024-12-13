@@ -6,6 +6,6 @@ Paginated list of ReportMigrationStatus objects. Each page of the results includ
 - nodes: list of ReportMigrationStatuss
   - List of ReportMigrationStatus objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ReportMigrationStatus objects matching the request arguments.

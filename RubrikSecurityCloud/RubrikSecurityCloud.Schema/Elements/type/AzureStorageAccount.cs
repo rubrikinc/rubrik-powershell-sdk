@@ -101,6 +101,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numContainers")]
         public System.Int64? NumContainers { get; set; }
 
+        //      C# -> System.Int64? NumExcludedContainers
+        // GraphQL -> numExcludedContainers: Long! (scalar)
+        [JsonProperty("numExcludedContainers")]
+        public System.Int64? NumExcludedContainers { get; set; }
+
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
@@ -294,6 +299,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.String? NativeName = null,
         System.Int64? NumContainers = null,
+        System.Int64? NumExcludedContainers = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
         System.Boolean? SlaPauseStatus = null,
@@ -363,6 +369,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NumContainers != null ) {
             this.NumContainers = NumContainers;
+        }
+        if ( NumExcludedContainers != null ) {
+            this.NumExcludedContainers = NumExcludedContainers;
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
@@ -592,6 +601,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "numContainers\n" ;
             } else {
                 s += ind + "numContainers\n" ;
+            }
+        }
+        //      C# -> System.Int64? NumExcludedContainers
+        // GraphQL -> numExcludedContainers: Long! (scalar)
+        if (this.NumExcludedContainers != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "numExcludedContainers\n" ;
+            } else {
+                s += ind + "numExcludedContainers\n" ;
             }
         }
         //      C# -> System.Int32? NumWorkloadDescendants
@@ -1121,6 +1139,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NumContainers != null && ec.Excludes("numContainers",true))
         {
             this.NumContainers = null;
+        }
+        //      C# -> System.Int64? NumExcludedContainers
+        // GraphQL -> numExcludedContainers: Long! (scalar)
+        if (ec.Includes("numExcludedContainers",true))
+        {
+            if(this.NumExcludedContainers == null) {
+
+                this.NumExcludedContainers = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumExcludedContainers != null && ec.Excludes("numExcludedContainers",true))
+        {
+            this.NumExcludedContainers = null;
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)

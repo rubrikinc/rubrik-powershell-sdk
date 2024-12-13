@@ -6,6 +6,6 @@ Paginated list of NfAnomalyResult objects. Each page of the results includes at 
 - nodes: list of NfAnomalyResults
   - List of NfAnomalyResult objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of NfAnomalyResult objects matching the request arguments.

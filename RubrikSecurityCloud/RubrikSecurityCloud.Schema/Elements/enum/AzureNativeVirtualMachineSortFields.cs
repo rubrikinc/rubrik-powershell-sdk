@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureNativeVirtualMachineSortFields
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ASSIGNED_SLA_DOMAIN")]
         ASSIGNED_SLA_DOMAIN,
 
@@ -46,10 +49,7 @@ namespace RubrikSecurityCloud.Types
         SENSITIVITY_HITS,
 
         [EnumMember(Value = "SENSITIVITY_STATUS")]
-        SENSITIVITY_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SENSITIVITY_STATUS
 
 
     } // enum AzureNativeVirtualMachineSortFields

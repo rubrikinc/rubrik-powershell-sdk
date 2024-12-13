@@ -1,12 +1,12 @@
 ### CreateRcvLocationsFromTemplateInput
-Input for creating Rubrik Cloud Vault locations.
+Input for creating Rubrik Cloud Vault Azure locations.
 
 - name: System.String
-  - Name of the RCV location.
+  - Name of the Rubrik Cloud Vault Azure location.
 - region: RcsRegionEnumType
-  - Region for the RCV location.
+  - Region for the Rubrik Cloud Vault Azure location.
 - tier: RcsTierEnumType
-  - Tier for the RCV location.
+  - Tier for the Rubrik Cloud Vault Azure location.
 - lockDurationDays: System.Int64
   - Immutability lock period in days.
 - clusterUuidList: list of System.Strings
@@ -14,10 +14,10 @@ Input for creating Rubrik Cloud Vault locations.
 - ipMapping: list of IpMappingInputs
   - IP mapping for each Rubrik cluster.
 - shouldBypassProxy: System.Boolean
-  - Specifies whether the proxy settings must be bypassed for  the RCV archival target.
+  - Specifies whether the proxy settings must be bypassed for  the Rubrik Cloud Vault Azure archival target.
 - redundancy: RcvRedundancy
-  - Redundancy for the RCV location.
+  - Redundancy for the Rubrik Cloud Vault Azure location.
 - rsaKey: System.String
-  - RSA key for the RCV location.
+  - RSA key for the Rubrik Cloud Vault Azure location.
 - azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput
   - Azure Key Vault key to encrypt the archival target.

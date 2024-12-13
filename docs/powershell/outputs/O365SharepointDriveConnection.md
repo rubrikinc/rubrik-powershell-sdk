@@ -6,6 +6,6 @@ Paginated list of O365SharepointDrive objects. Each page of the results includes
 - nodes: list of O365SharepointDrives
   - List of O365SharepointDrive objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of O365SharepointDrive objects matching the request arguments.

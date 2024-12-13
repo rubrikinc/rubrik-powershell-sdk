@@ -15,11 +15,11 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ServiceAccountSortBy
     {
-        [EnumMember(Value = "NAME")]
-        NAME,
-
         [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN,
+
+        [EnumMember(Value = "NAME")]
+        NAME
 
 
     } // enum ServiceAccountSortBy

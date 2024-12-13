@@ -6,6 +6,6 @@ Paginated list of SapHanaDatabase objects. Each page of the results includes at 
 - nodes: list of SapHanaDatabases
   - List of SapHanaDatabase objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of SapHanaDatabase objects matching the request arguments.

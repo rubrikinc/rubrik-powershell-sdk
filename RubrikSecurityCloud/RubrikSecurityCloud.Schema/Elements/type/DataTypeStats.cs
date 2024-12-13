@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
+
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)
         [JsonProperty("totalHits")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public DataTypeStats Set(
         System.String? Id = null,
+        System.String? Name = null,
         System.Int64? TotalHits = null,
         System.Int64? TotalPermittedHits = null,
         System.Int64? TotalViolatedHits = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( Name != null ) {
+            this.Name = Name;
         }
         if ( TotalHits != null ) {
             this.TotalHits = TotalHits;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
             }
         }
         //      C# -> System.Int64? TotalHits
@@ -141,6 +159,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (ec.Includes("name",true))
+        {
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)

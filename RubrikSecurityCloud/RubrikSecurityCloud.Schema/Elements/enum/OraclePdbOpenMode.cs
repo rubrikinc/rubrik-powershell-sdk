@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum OraclePdbOpenMode
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MIGRATE")]
         MIGRATE,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         READ_WRITE,
 
         [EnumMember(Value = "UNKNOWN_OPEN_MODE")]
-        UNKNOWN_OPEN_MODE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_OPEN_MODE
 
 
     } // enum OraclePdbOpenMode

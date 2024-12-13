@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PrecheckIdentifier
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "PRECHECK_MIGRATION")]
         PRECHECK_MIGRATION,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         PRECHECK_OTHER,
 
         [EnumMember(Value = "PRECHECK_UNSPECIFIED")]
-        PRECHECK_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        PRECHECK_UNSPECIFIED
 
 
     } // enum PrecheckIdentifier

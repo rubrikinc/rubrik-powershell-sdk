@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudNativeTagObjectType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS_EBS_VOLUME")]
         AWS_EBS_VOLUME,
 
@@ -43,10 +46,7 @@ namespace RubrikSecurityCloud.Types
         AZURE_STORAGE_ACCOUNT,
 
         [EnumMember(Value = "AZURE_VIRTUAL_MACHINE")]
-        AZURE_VIRTUAL_MACHINE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        AZURE_VIRTUAL_MACHINE
 
 
     } // enum CloudNativeTagObjectType

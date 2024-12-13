@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AnomalyResultGroupBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         WEEK,
 
         [EnumMember(Value = "YEAR")]
-        YEAR,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        YEAR
 
 
     } // enum AnomalyResultGroupBy

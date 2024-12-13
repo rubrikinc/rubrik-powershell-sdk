@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnappableTableColumnEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ArchiveSnapshots")]
         ARCHIVE_SNAPSHOTS,
 
@@ -70,10 +73,7 @@ namespace RubrikSecurityCloud.Types
         TOTAL_SNAPSHOTS,
 
         [EnumMember(Value = "TransferredBytes")]
-        TRANSFERRED_BYTES,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TRANSFERRED_BYTES
 
 
     } // enum SnappableTableColumnEnum

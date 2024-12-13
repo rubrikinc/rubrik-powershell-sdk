@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GetCrossAccountPairsFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACCOUNT_ROLE")]
         ACCOUNT_ROLE,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         ORG_NAME,
 
         [EnumMember(Value = "STATUS")]
-        STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STATUS
 
 
     } // enum GetCrossAccountPairsFilterField

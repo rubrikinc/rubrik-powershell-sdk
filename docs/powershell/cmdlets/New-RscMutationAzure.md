@@ -173,7 +173,7 @@ Update names of the Azure Subscriptions cloud account and regions for the given 
 - There is a single argument of type UpdateAzureCloudAccountInput.
 - Returns UpdateAzureCloudAccountReply.
 ### updatecloudnativercvstoragesetting
-Updates an existing Rubrik Cloud Vault Storage Settings for the archival of azure cloud native protected objects.
+Updates an existing Rubrik Cloud Vault Azure storage settings for the archival of Azure cloud-native protected objects.
 
 - There is a single argument of type UpdateCloudNativeRcvAzureStorageSettingInput.
 - Returns UpdateCloudNativeRcvAzureStorageSettingReply.

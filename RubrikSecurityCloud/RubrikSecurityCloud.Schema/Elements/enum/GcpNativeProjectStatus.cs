@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GcpNativeProjectStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DELETED")]
         DELETED,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         REFRESHED,
 
         [EnumMember(Value = "REFRESHING")]
-        REFRESHING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        REFRESHING
 
 
     } // enum GcpNativeProjectStatus

@@ -6,6 +6,6 @@ Paginated list of TaskDetail objects. Each page of the results includes at most 
 - nodes: list of TaskDetails
   - List of TaskDetail objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of TaskDetail objects matching the request arguments.

@@ -6,6 +6,6 @@ Paginated list of AccessUser objects. Each page of the results includes at most 
 - nodes: list of AccessUsers
   - List of AccessUser objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of AccessUser objects matching the request arguments.

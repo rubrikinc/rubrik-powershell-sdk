@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DlpConfigShareType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NFS")]
         NFS,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         SHARE_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "SMB")]
-        SMB,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SMB
 
 
     } // enum DlpConfigShareType

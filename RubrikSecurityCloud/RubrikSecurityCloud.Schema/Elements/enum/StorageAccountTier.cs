@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum StorageAccountTier
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "COOL")]
         COOL,
 
         [EnumMember(Value = "HOT")]
-        HOT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        HOT
 
 
     } // enum StorageAccountTier

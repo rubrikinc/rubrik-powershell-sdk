@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AnomalyResultSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ANOMALY_PROBABILITY")]
         ANOMALY_PROBABILITY,
 
@@ -76,10 +79,7 @@ namespace RubrikSecurityCloud.Types
         WORKLOAD_NAME,
 
         [EnumMember(Value = "WORKLOAD_TYPE")]
-        WORKLOAD_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WORKLOAD_TYPE
 
 
     } // enum AnomalyResultSortBy

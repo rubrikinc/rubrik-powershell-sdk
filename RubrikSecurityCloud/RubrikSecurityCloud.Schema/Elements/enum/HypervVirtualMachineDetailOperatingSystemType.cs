@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HypervVirtualMachineDetailOperatingSystemType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HYPERV_VIRTUAL_MACHINE_DETAIL_OPERATING_SYSTEM_TYPE_LINUX")]
         HYPERV_VIRTUAL_MACHINE_DETAIL_OPERATING_SYSTEM_TYPE_LINUX,
 
         [EnumMember(Value = "HYPERV_VIRTUAL_MACHINE_DETAIL_OPERATING_SYSTEM_TYPE_WINDOWS")]
-        HYPERV_VIRTUAL_MACHINE_DETAIL_OPERATING_SYSTEM_TYPE_WINDOWS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        HYPERV_VIRTUAL_MACHINE_DETAIL_OPERATING_SYSTEM_TYPE_WINDOWS
 
 
     } // enum HypervVirtualMachineDetailOperatingSystemType

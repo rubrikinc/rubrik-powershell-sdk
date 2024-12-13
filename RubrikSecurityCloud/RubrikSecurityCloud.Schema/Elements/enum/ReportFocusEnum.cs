@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ReportFocusEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "Activity")]
         ACTIVITY,
 
@@ -52,10 +55,7 @@ namespace RubrikSecurityCloud.Types
         SONAR_CONTENT,
 
         [EnumMember(Value = "TaskSummary")]
-        TASK_SUMMARY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TASK_SUMMARY
 
 
     } // enum ReportFocusEnum

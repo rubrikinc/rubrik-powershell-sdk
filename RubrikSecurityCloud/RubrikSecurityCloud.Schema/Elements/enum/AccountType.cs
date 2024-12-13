@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AccountType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "POC")]
         POC,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         REVENUE,
 
         [EnumMember(Value = "TYPE_UNSPECIFIED")]
-        TYPE_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TYPE_UNSPECIFIED
 
 
     } // enum AccountType

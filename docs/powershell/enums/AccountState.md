@@ -9,3 +9,4 @@ Account state.
 - PENDING_CREATION - The creation of the database is pending.
 - PENDING_MIGRATION - The migration of the database is pending.
 - PENDING_POST_PROCESSING - Post-processing steps for the account are pending.
+- SUSPENDED_STATE - Suspended.

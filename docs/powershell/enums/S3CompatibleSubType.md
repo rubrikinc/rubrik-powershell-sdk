@@ -9,3 +9,4 @@ S3CompatibleSubType enum specifies the sub location type
 - DELLECS - DellEcs subtype.
 - NETAPPSG - NetAppSG subtype.
 - IRONCLOUD - IronCloud subtype.
+- DEFAULT_BUCKET_IMMUTABLE - Default bucket immutable subtype.

@@ -15,11 +15,11 @@ namespace RubrikSecurityCloud.Types
 {
     public enum IntegrationSortBy
     {
-        [EnumMember(Value = "INTEGRATION_SORT_BY_NAME")]
-        INTEGRATION_SORT_BY_NAME,
-
         [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN,
+
+        [EnumMember(Value = "INTEGRATION_SORT_BY_NAME")]
+        INTEGRATION_SORT_BY_NAME
 
 
     } // enum IntegrationSortBy

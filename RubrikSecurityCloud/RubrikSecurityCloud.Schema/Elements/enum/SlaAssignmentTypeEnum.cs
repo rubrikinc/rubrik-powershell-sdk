@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SlaAssignmentTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "Derived")]
         DERIVED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         DIRECT,
 
         [EnumMember(Value = "Unassigned")]
-        UNASSIGNED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNASSIGNED
 
 
     } // enum SlaAssignmentTypeEnum

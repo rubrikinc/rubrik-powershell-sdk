@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudAccountFilterFieldEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACCOUNT_PROVIDER_TYPE")]
         ACCOUNT_PROVIDER_TYPE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         IS_KEY_BASED,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum CloudAccountFilterFieldEnum

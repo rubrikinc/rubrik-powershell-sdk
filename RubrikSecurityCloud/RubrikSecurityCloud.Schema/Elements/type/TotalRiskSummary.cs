@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalMediumRiskHits")]
         public System.Int64? TotalMediumRiskHits { get; set; }
 
+        //      C# -> System.Int64? TotalNoRiskHits
+        // GraphQL -> totalNoRiskHits: Long! (scalar)
+        [JsonProperty("totalNoRiskHits")]
+        public System.Int64? TotalNoRiskHits { get; set; }
+
 
         #endregion
 
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         System.Int64? TotalHighRiskHits = null,
         System.Int64? TotalHits = null,
         System.Int64? TotalLowRiskHits = null,
-        System.Int64? TotalMediumRiskHits = null
+        System.Int64? TotalMediumRiskHits = null,
+        System.Int64? TotalNoRiskHits = null
     ) 
     {
         if ( TotalHighRiskHits != null ) {
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalMediumRiskHits != null ) {
             this.TotalMediumRiskHits = TotalMediumRiskHits;
+        }
+        if ( TotalNoRiskHits != null ) {
+            this.TotalNoRiskHits = TotalNoRiskHits;
         }
         return this;
     }
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalMediumRiskHits\n" ;
             } else {
                 s += ind + "totalMediumRiskHits\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalNoRiskHits
+        // GraphQL -> totalNoRiskHits: Long! (scalar)
+        if (this.TotalNoRiskHits != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalNoRiskHits\n" ;
+            } else {
+                s += ind + "totalNoRiskHits\n" ;
             }
         }
         return s;
@@ -192,6 +210,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalMediumRiskHits != null && ec.Excludes("totalMediumRiskHits",true))
         {
             this.TotalMediumRiskHits = null;
+        }
+        //      C# -> System.Int64? TotalNoRiskHits
+        // GraphQL -> totalNoRiskHits: Long! (scalar)
+        if (ec.Includes("totalNoRiskHits",true))
+        {
+            if(this.TotalNoRiskHits == null) {
+
+                this.TotalNoRiskHits = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalNoRiskHits != null && ec.Excludes("totalNoRiskHits",true))
+        {
+            this.TotalNoRiskHits = null;
         }
     }
 

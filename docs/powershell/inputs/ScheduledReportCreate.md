@@ -17,6 +17,8 @@
   - List of email addresses of non-Rubrik user recipients of the scheduled report.
 - timeZone: System.String
   - Time zone of the schedule time in IANA format.
+- showChartsInEmailBody: System.Boolean
+  - Specifies whether to show charts in email body.
 - updateCreator: System.Boolean
   - Specifies whether to update the creator with the current user. This is typically used when the user account that was the schedule creator has been deleted from Rubrik. It will be null in createScheduledReport.
 - weeklyDays: list of WeekDays

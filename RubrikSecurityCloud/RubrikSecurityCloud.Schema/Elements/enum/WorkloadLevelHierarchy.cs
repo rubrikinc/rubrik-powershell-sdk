@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum WorkloadLevelHierarchy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
         AWS_NATIVE_S3_BUCKET,
 
@@ -79,10 +82,7 @@ namespace RubrikSecurityCloud.Types
         O365_SITE,
 
         [EnumMember(Value = "O365Teams")]
-        O365_TEAMS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        O365_TEAMS
 
 
     } // enum WorkloadLevelHierarchy

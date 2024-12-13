@@ -7,3 +7,5 @@ Details of an SSO Group.
   - ID of the SSO Group.
 - name: System.String
   - Name of the SSO Group.
+- authDomainName: System.String
+  - Authentication domain name of the SSO group.

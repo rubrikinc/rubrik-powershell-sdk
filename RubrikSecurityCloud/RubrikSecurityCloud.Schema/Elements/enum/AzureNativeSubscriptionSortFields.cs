@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureNativeSubscriptionSortFields
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ASSIGNED_SLA_DOMAIN")]
         ASSIGNED_SLA_DOMAIN,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         EFFECTIVE_SLA_DOMAIN,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum AzureNativeSubscriptionSortFields

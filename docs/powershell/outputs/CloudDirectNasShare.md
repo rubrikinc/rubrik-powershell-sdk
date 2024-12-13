@@ -5,14 +5,14 @@ Cloud Direct NAS Share object.
   - Cloud Direct NAS Cluster ID.
 - exportPath: System.String
   - Cloud Direct NAS Share path.
-- protocol: System.String
+- protocol: CloudDirectNasProtocolType
   - Cloud Direct NAS Share NAS protocol.
 - ncdPolicyName: System.String
   - Cloud Direct NAS Share Protecting Policy name.
 - systemId: System.String
-  - SystemID of the system the Cloud Direct NAS Share belongs.
+  - SystemID of the system the Cloud Direct NAS share belongs.
 - namespaceId: System.String
-  - NamespaceID of the namespace(if any) to which the Cloud Direct NAS Share belongs to.
+  - NamespaceID of the namespace(if any) to which the Cloud Direct NAS share belongs to.
 - isArchived: System.Boolean
   - Specifies whether the share is archived.
 - isHidden: System.Boolean
@@ -25,8 +25,26 @@ Cloud Direct NAS Share object.
   - Specifies whether the share was added manually by the user.
 - cloudDirectId: System.String
   - UUID of the Cloud Direct NAS Share on the NCD Cluster.
+- policyName: System.String
+  - Name of the policy assigned to the NAS Cloud Direct share.
 - id: System.String
   - Object ID.
+- cloudDirectNasSystem: CloudDirectNasSystem
+  - The NAS Cloud Direct system to which this NAS share belongs.
+- cloudDirectNasNamespace: CloudDirectNasNamespace
+  - The NAS Cloud Direct namespace to which this NAS share belongs.
+- childShares: CloudDirectNasShareConnection
+  - Directory protection entries included in this share.
+- parentShare: CloudDirectNasShare
+  - The parent of this share.
+- newestSnapshot: CloudDirectSnapshot
+  - The most recent snapshot of this share.
+- oldestSnapshot: CloudDirectSnapshot
+  - The oldest available snapshot of this share.
+- totalSnapshots: System.Int32
+  - The total count of snapshots for this share.
+- cloudDirectSnapshotGroupBySummary: CloudDirectSnapshotsGroupBySummaryConnection
+  - Group the snapshots of this NAS Cloud Direct share.
 - cluster: Cluster
   - Cluster from which this workload originated.
 - name: System.String

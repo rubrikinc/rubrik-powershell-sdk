@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TprPolicySortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NUMBER_OF_ACTIONS")]
         NUMBER_OF_ACTIONS,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         NUMBER_OF_PROTECTABLE_OBJECTS,
 
         [EnumMember(Value = "POLICY_NAME")]
-        POLICY_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        POLICY_NAME
 
 
     } // enum TprPolicySortByField

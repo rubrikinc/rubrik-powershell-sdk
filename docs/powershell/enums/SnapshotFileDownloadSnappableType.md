@@ -7,3 +7,4 @@ Type of workload.
 - NUTANIX - Nutanix.
 - HYPERV - Hyperv.
 - WINDOWS_VOLUME_GROUP - Windows volume group.
+- K8S_VM - Kubernetes virtual machine.

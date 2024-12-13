@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("smbValidUsers")]
         public List<System.String>? SmbValidUsers { get; set; }
 
+        //      C# -> ManagedVolumeNfsSettings? NfsSettings
+        // GraphQL -> nfsSettings: ManagedVolumeNFSSettings (type)
+        [JsonProperty("nfsSettings")]
+        public ManagedVolumeNfsSettings? NfsSettings { get; set; }
+
 
         #endregion
 
@@ -59,7 +64,8 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? NodeHint = null,
         System.String? SmbDomainName = null,
         List<System.String>? SmbValidIps = null,
-        List<System.String>? SmbValidUsers = null
+        List<System.String>? SmbValidUsers = null,
+        ManagedVolumeNfsSettings? NfsSettings = null
     ) 
     {
         if ( HostPatterns != null ) {
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SmbValidUsers != null ) {
             this.SmbValidUsers = SmbValidUsers;
+        }
+        if ( NfsSettings != null ) {
+            this.NfsSettings = NfsSettings;
         }
         return this;
     }
@@ -134,6 +143,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "smbValidUsers\n" ;
             } else {
                 s += ind + "smbValidUsers\n" ;
+            }
+        }
+        //      C# -> ManagedVolumeNfsSettings? NfsSettings
+        // GraphQL -> nfsSettings: ManagedVolumeNFSSettings (type)
+        if (this.NfsSettings != null) {
+            var fspec = this.NfsSettings.AsFieldSpec(conf.Child("nfsSettings"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nfsSettings" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -227,6 +248,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SmbValidUsers != null && ec.Excludes("smbValidUsers",true))
         {
             this.SmbValidUsers = null;
+        }
+        //      C# -> ManagedVolumeNfsSettings? NfsSettings
+        // GraphQL -> nfsSettings: ManagedVolumeNFSSettings (type)
+        if (ec.Includes("nfsSettings",false))
+        {
+            if(this.NfsSettings == null) {
+
+                this.NfsSettings = new ManagedVolumeNfsSettings();
+                this.NfsSettings.ApplyExploratoryFieldSpec(ec.NewChild("nfsSettings"));
+
+            } else {
+
+                this.NfsSettings.ApplyExploratoryFieldSpec(ec.NewChild("nfsSettings"));
+
+            }
+        }
+        else if (this.NfsSettings != null && ec.Excludes("nfsSettings",false))
+        {
+            this.NfsSettings = null;
         }
     }
 

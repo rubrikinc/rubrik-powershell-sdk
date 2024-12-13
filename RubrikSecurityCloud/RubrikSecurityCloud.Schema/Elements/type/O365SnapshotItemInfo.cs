@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotNum")]
         public System.Int32? SnapshotNum { get; set; }
 
+        //      C# -> MetadataFields? Metadata
+        // GraphQL -> metadata: MetadataFields (type)
+        [JsonProperty("metadata")]
+        public MetadataFields? Metadata { get; set; }
+
         //      C# -> O365ReplyFields? O365ReplyFields
         // GraphQL -> o365ReplyFields: O365ReplyFields! (type)
         [JsonProperty("o365ReplyFields")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ParentFolderId = null,
         System.String? SnapshotId = null,
         System.Int32? SnapshotNum = null,
+        MetadataFields? Metadata = null,
         O365ReplyFields? O365ReplyFields = null
     ) 
     {
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotNum != null ) {
             this.SnapshotNum = SnapshotNum;
+        }
+        if ( Metadata != null ) {
+            this.Metadata = Metadata;
         }
         if ( O365ReplyFields != null ) {
             this.O365ReplyFields = O365ReplyFields;
@@ -143,6 +152,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotNum\n" ;
             } else {
                 s += ind + "snapshotNum\n" ;
+            }
+        }
+        //      C# -> MetadataFields? Metadata
+        // GraphQL -> metadata: MetadataFields (type)
+        if (this.Metadata != null) {
+            var fspec = this.Metadata.AsFieldSpec(conf.Child("metadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "metadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> O365ReplyFields? O365ReplyFields
@@ -248,6 +269,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotNum != null && ec.Excludes("snapshotNum",true))
         {
             this.SnapshotNum = null;
+        }
+        //      C# -> MetadataFields? Metadata
+        // GraphQL -> metadata: MetadataFields (type)
+        if (ec.Includes("metadata",false))
+        {
+            if(this.Metadata == null) {
+
+                this.Metadata = new MetadataFields();
+                this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
+
+            } else {
+
+                this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
+
+            }
+        }
+        else if (this.Metadata != null && ec.Excludes("metadata",false))
+        {
+            this.Metadata = null;
         }
         //      C# -> O365ReplyFields? O365ReplyFields
         // GraphQL -> o365ReplyFields: O365ReplyFields! (type)

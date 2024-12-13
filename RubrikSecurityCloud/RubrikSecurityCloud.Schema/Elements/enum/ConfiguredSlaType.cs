@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ConfiguredSlaType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CONFIGURED_SLA_TYPE_PROTECTION_SLA")]
         CONFIGURED_SLA_TYPE_PROTECTION_SLA,
 
         [EnumMember(Value = "CONFIGURED_SLA_TYPE_RETENTION_SLA")]
-        CONFIGURED_SLA_TYPE_RETENTION_SLA,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        CONFIGURED_SLA_TYPE_RETENTION_SLA
 
 
     } // enum ConfiguredSlaType

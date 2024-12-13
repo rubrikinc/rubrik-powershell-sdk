@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VirtualMachineScriptDetailFailureHandling
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "VIRTUAL_MACHINE_SCRIPT_DETAIL_FAILURE_HANDLING_ABORT")]
         VIRTUAL_MACHINE_SCRIPT_DETAIL_FAILURE_HANDLING_ABORT,
 
         [EnumMember(Value = "VIRTUAL_MACHINE_SCRIPT_DETAIL_FAILURE_HANDLING_CONTINUE")]
-        VIRTUAL_MACHINE_SCRIPT_DETAIL_FAILURE_HANDLING_CONTINUE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VIRTUAL_MACHINE_SCRIPT_DETAIL_FAILURE_HANDLING_CONTINUE
 
 
     } // enum VirtualMachineScriptDetailFailureHandling

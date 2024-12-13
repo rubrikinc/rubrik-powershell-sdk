@@ -76,7 +76,7 @@ Type of poller. Different types of jobs are polled by corresponding poller.
 - HOST_BULK_REGISTER_ASYNC - Register host async.
 - VSPHERE_VM_MAKE_PRIMARY - Vsphere update primary Rubrik cluster for RBS.
 - DISCOVERED_MSSQL_OBJECTS_NOTIFICATIONS_POLLER - Start a poller that will send a notification to user
- of new MSSQL objects discovered for the given host.
+of new MSSQL objects discovered for the given host.
 - DARE_OPERATION_POLLER - Data-At-Rest-Encryption operation job poller.
 - KOSMOS_RECOVERY - Kosmos Recovery.
 - MSSQL_BULK_EXPORT - Bulk export of SQL Server databases.

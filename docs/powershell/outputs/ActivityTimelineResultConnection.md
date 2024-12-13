@@ -6,6 +6,6 @@ Paginated list of ActivityTimelineResult objects. Each page of the results inclu
 - nodes: list of ActivityTimelineResults
   - List of ActivityTimelineResult objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ActivityTimelineResult objects matching the request arguments.

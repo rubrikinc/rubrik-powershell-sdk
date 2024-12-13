@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AwsNativeFileRecoveryStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DISABLED")]
         DISABLED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         ENABLED,
 
         [EnumMember(Value = "NOT_SPECIFIED")]
-        NOT_SPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NOT_SPECIFIED
 
 
     } // enum AwsNativeFileRecoveryStatus

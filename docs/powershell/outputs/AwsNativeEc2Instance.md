@@ -34,7 +34,7 @@ AWS native EC2 instance.
 - awsNativeAccountName: System.String
   - Name for the AWS Account.
 - isIndexingEnabled: System.Boolean
-  - Whether indexing is enabled for snapshots of instance.
+  - Specifies whether file indexing is enabled for this EC2 instance or not. When enabled, Rubrik scans the file structure within the EC2 instance in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.
 - isMarketplace: System.Boolean
   - Whether the instance image is marketplace image.
 - sshKeyPairName: System.String
@@ -49,6 +49,10 @@ AWS native EC2 instance.
   - Specifications for ensuring application consistency on the EC2 instance.
 - isAppConsistencyEnabled: System.Boolean
   - Specifies whether application consistent snapshots are enabled for this EC2 instance. When enabled, Rubrik informs the AWS applications before taking snapshots, allowing them to prepare. During the preparation phrase, Rubrik freezes the IO, takes the snapshot, and then unfreezes IO, enabling the apps to resume regular operation.
+- awsNativeAccountDetails: AwsNativeAccountDetails
+  - AWS native account details.
+- fileIndexingStatus: FileIndexingStatus
+  - Specifies the file indexing status for this EC2 instance. When enabled, Rubrik scans the file structure within the EC2 instance in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount

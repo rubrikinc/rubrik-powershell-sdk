@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 6
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Cloud Account' API domain:
-    /// CloudAccount, CloudAccounts, CurrentFeaturePermissions, ExocomputeMappings, LatestFeaturePermissions, or WithExocomputeMappings.
+    /// CloudAccount, CloudAccounts, CurrentFeaturePermissions, ExocomputeMappings, IamPairsByAndLocation, LatestFeaturePermissions, or WithExocomputeMappings.
     /// </summary>
     /// <description>
     /// New-RscQueryCloudAccount creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 6 operations
+    /// There are 7 operations
     /// in the 'Cloud Account' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CloudAccount, CloudAccounts, CurrentFeaturePermissions, ExocomputeMappings, LatestFeaturePermissions, or WithExocomputeMappings.
+    /// one of: CloudAccount, CloudAccounts, CurrentFeaturePermissions, ExocomputeMappings, IamPairsByAndLocation, LatestFeaturePermissions, or WithExocomputeMappings.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -212,6 +212,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the IamPairsByAndLocation operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: IamPairsByAndLocation
+    /// 
+    /// $query = New-RscQueryCloudAccount -Operation IamPairsByAndLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	locationId = $someString
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AwsIamPairsWithMissingPermission&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the LatestFeaturePermissions operation
     /// of the 'Cloud Account' API domain.
     /// <code>
@@ -314,6 +347,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CloudAccounts",
                 "CurrentFeaturePermissions",
                 "ExocomputeMappings",
+                "IamPairsByAndLocation",
                 "LatestFeaturePermissions",
                 "WithExocomputeMappings",
                 IgnoreCase = true)]
@@ -342,6 +376,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ExocomputeMappings":
                         this.ProcessRecord_ExocomputeMappings();
+                        break;
+                    case "IamPairsByAndLocation":
+                        this.ProcessRecord_IamPairsByAndLocation();
                         break;
                     case "LatestFeaturePermissions":
                         this.ProcessRecord_LatestFeaturePermissions();
@@ -393,6 +430,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ExocomputeMappings";
             // Create new graphql operation allCloudAccountExocomputeMappings
             InitQueryAllCloudAccountExocomputeMappings();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allIamPairsByCloudAccountAndLocation.
+        internal void ProcessRecord_IamPairsByAndLocation()
+        {
+            this._logger.name += " -IamPairsByAndLocation";
+            // Create new graphql operation allIamPairsByCloudAccountAndLocation
+            InitQueryAllIamPairsByCloudAccountAndLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -524,6 +570,31 @@ $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecuri
 $query.Var.exocomputeAccountIdsFilter = @(
 	$someString
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allIamPairsByCloudAccountAndLocation(input: AllIamPairsByCloudAccountAndLocationInput!): [AwsIamPairsWithMissingPermission!]!
+        internal void InitQueryAllIamPairsByCloudAccountAndLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AllIamPairsByCloudAccountAndLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllIamPairsByCloudAccountAndLocation",
+                "($input: AllIamPairsByCloudAccountAndLocationInput!)",
+                "List<AwsIamPairsWithMissingPermission>",
+                Query.AllIamPairsByCloudAccountAndLocation,
+                Query.AllIamPairsByCloudAccountAndLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	locationId = $someString
+	# OPTIONAL
+	cloudAccountId = $someString
+}"
             );
         }
 

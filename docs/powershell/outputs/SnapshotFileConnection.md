@@ -6,6 +6,6 @@ Paginated list of SnapshotFile objects. Each page of the results includes at mos
 - nodes: list of SnapshotFiles
   - List of SnapshotFile objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of SnapshotFile objects matching the request arguments.

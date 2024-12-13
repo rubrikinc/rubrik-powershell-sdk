@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ReplicationPairConnectionStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "REPLICATION_ACTIVE")]
         REPLICATION_ACTIVE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         REPLICATION_DISCONNECTED,
 
         [EnumMember(Value = "REPLICATION_PAUSED")]
-        REPLICATION_PAUSED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        REPLICATION_PAUSED
 
 
     } // enum ReplicationPairConnectionStatus

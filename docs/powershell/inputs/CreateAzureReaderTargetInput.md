@@ -19,6 +19,8 @@ Input for creating an Azure Reader Target.
   - Field for specifying RSA key for encryption.
 - computeSettings: AzureCloudComputeSettingsInput
   - Field for Azure compute settings.
+- computeProxySettings: ProxySettingsInput
+  - Compute proxy settings for Azure target.
 - proxySettings: ProxySettingsInput
   - Field for specifying compute settings.
 - isConsolidationEnabled: System.Boolean

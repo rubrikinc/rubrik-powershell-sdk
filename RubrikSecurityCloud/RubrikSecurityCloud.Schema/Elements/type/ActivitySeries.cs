@@ -165,6 +165,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("startTime")]
         public DateTime? StartTime { get; set; }
 
+        //      C# -> System.String? UrlMetadata
+        // GraphQL -> urlMetadata: String (scalar)
+        [JsonProperty("urlMetadata")]
+        public System.String? UrlMetadata { get; set; }
+
         //      C# -> ActivityConnection? ActivityConnection
         // GraphQL -> activityConnection: ActivityConnection! (type)
         [JsonProperty("activityConnection")]
@@ -241,6 +246,7 @@ namespace RubrikSecurityCloud.Types
         System.String? OrgName = null,
         System.String? Progress = null,
         DateTime? StartTime = null,
+        System.String? UrlMetadata = null,
         ActivityConnection? ActivityConnection = null,
         Cluster? Cluster = null,
         List<Org>? Organizations = null
@@ -332,6 +338,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( StartTime != null ) {
             this.StartTime = StartTime;
+        }
+        if ( UrlMetadata != null ) {
+            this.UrlMetadata = UrlMetadata;
         }
         if ( ActivityConnection != null ) {
             this.ActivityConnection = ActivityConnection;
@@ -615,6 +624,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "startTime\n" ;
             } else {
                 s += ind + "startTime\n" ;
+            }
+        }
+        //      C# -> System.String? UrlMetadata
+        // GraphQL -> urlMetadata: String (scalar)
+        if (this.UrlMetadata != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "urlMetadata\n" ;
+            } else {
+                s += ind + "urlMetadata\n" ;
             }
         }
         //      C# -> ActivityConnection? ActivityConnection
@@ -1152,6 +1170,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.StartTime != null && ec.Excludes("startTime",true))
         {
             this.StartTime = null;
+        }
+        //      C# -> System.String? UrlMetadata
+        // GraphQL -> urlMetadata: String (scalar)
+        if (ec.Includes("urlMetadata",true))
+        {
+            if(this.UrlMetadata == null) {
+
+                this.UrlMetadata = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UrlMetadata != null && ec.Excludes("urlMetadata",true))
+        {
+            this.UrlMetadata = null;
         }
         //      C# -> ActivityConnection? ActivityConnection
         // GraphQL -> activityConnection: ActivityConnection! (type)

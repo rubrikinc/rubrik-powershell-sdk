@@ -15,11 +15,11 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TaskDetailSortByEnum
     {
-        [EnumMember(Value = "EndTime")]
-        END_TIME,
-
         [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN,
+
+        [EnumMember(Value = "EndTime")]
+        END_TIME
 
 
     } // enum TaskDetailSortByEnum

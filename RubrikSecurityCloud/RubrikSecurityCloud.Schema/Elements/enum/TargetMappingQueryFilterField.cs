@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TargetMappingQueryFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ARCHIVAL_GROUP_ID")]
         ARCHIVAL_GROUP_ID,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         EXCLUDE_GROUP_TYPE,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum TargetMappingQueryFilterField

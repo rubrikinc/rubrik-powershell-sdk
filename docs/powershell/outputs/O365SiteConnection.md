@@ -6,6 +6,6 @@ Paginated list of O365Site objects. Each page of the results includes at most 10
 - nodes: list of O365Sites
   - List of O365Site objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of O365Site objects matching the request arguments.

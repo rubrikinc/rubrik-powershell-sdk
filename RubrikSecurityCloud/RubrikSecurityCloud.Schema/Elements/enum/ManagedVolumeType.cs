@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ManagedVolumeType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ALWAYS_MOUNTED")]
         ALWAYS_MOUNTED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         MANAGED_VOLUME_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "SLA_BASED")]
-        SLA_BASED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SLA_BASED
 
 
     } // enum ManagedVolumeType

@@ -9,3 +9,5 @@ A NAS Cloud Direct site.
   - The management endpoint URL for the site.
 - clusterUuid: System.String
   - The Rubrik cluster UUID for the site.
+- deviceDetails: list of CloudDirectDeviceDetailss
+  - Details about the devices in the site.

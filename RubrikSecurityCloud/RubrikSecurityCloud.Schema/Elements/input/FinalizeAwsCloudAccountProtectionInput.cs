@@ -83,6 +83,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgId")]
         public System.String? OrgId { get; set; }
 
+        //      C# -> List<AwsOuInput>? AwsChildOus
+        // GraphQL -> awsChildOus: [AwsOuInput!] (input)
+        [JsonProperty("awsChildOus")]
+        public List<AwsOuInput>? AwsChildOus { get; set; }
+
 
         #endregion
 

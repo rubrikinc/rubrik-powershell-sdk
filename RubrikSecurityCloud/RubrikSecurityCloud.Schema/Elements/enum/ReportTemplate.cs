@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ReportTemplate
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CAPACITY_OVER_TIME")]
         CAPACITY_OVER_TIME,
 
@@ -43,10 +46,7 @@ namespace RubrikSecurityCloud.Types
         SYSTEM_CAPACITY,
 
         [EnumMember(Value = "TEMPLATE_UNSPECIFIED")]
-        TEMPLATE_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TEMPLATE_UNSPECIFIED
 
 
     } // enum ReportTemplate

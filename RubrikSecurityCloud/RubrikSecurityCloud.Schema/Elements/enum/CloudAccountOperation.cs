@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudAccountOperation
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ADD")]
         ADD,
 
         [EnumMember(Value = "UPGRADE")]
-        UPGRADE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UPGRADE
 
 
     } // enum CloudAccountOperation

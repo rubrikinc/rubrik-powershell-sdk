@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AccountState
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_STATE")]
         ACTIVE_STATE,
 
@@ -39,8 +42,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PENDING_POST_PROCESSING")]
         PENDING_POST_PROCESSING,
 
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        [EnumMember(Value = "SUSPENDED_STATE")]
+        SUSPENDED_STATE
 
 
     } // enum AccountState

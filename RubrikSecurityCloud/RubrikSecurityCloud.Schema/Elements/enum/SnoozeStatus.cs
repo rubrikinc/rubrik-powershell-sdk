@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnoozeStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE")]
         ACTIVE,
 
         [EnumMember(Value = "EXPIRED")]
-        EXPIRED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        EXPIRED
 
 
     } // enum SnoozeStatus

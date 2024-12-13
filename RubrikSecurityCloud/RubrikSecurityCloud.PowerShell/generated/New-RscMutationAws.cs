@@ -419,6 +419,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	disableApiTermination = $someBoolean
     /// 	# OPTIONAL
+    /// 	usePlacementGroups = $someBoolean
+    /// 	# OPTIONAL
     /// 	clusterConfig = @{
     /// 		# OPTIONAL
     /// 		userEmail = $someString
@@ -492,6 +494,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		instanceProfileName = $someString
     /// 		# OPTIONAL
     /// 		cdmProduct = $someString
+    /// 		# OPTIONAL
+    /// 		placementGroupName = $someString
     /// 		# OPTIONAL
     /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
     /// 		# OPTIONAL
@@ -1074,6 +1078,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		outpostAwsNativeId = $someString
     /// 		# OPTIONAL
+    /// 		orgId = $someString
+    /// 		# OPTIONAL
     /// 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 	}
     /// 	# REQUIRED
@@ -1091,6 +1097,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			orgName = $someString
     /// 			# OPTIONAL
     /// 			outpostAwsNativeId = $someString
+    /// 			# OPTIONAL
+    /// 			orgId = $someString
     /// 			# OPTIONAL
     /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 		}
@@ -1138,6 +1146,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	awsIamPairId = $someString
     /// 	# OPTIONAL
     /// 	orgId = $someString
+    /// 	# OPTIONAL
+    /// 	awsChildOus = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			nativeId = $someString
+    /// 			# OPTIONAL
+    /// 			name = $someString
+    /// 			# OPTIONAL
+    /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 		}
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -2046,6 +2065,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		outpostAwsNativeId = $someString
     /// 		# OPTIONAL
+    /// 		orgId = $someString
+    /// 		# OPTIONAL
     /// 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 	}
     /// 	# REQUIRED
@@ -2063,6 +2084,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			orgName = $someString
     /// 			# OPTIONAL
     /// 			outpostAwsNativeId = $someString
+    /// 			# OPTIONAL
+    /// 			orgId = $someString
     /// 			# OPTIONAL
     /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 		}
@@ -2110,6 +2133,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	outpostAwsNativeId = $someString
     /// 	# OPTIONAL
     /// 	orgId = $someString
+    /// 	# OPTIONAL
+    /// 	awsChildOus = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			nativeId = $someString
+    /// 			# OPTIONAL
+    /// 			name = $someString
+    /// 			# OPTIONAL
+    /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 		}
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -2964,6 +2998,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	disableApiTermination = $someBoolean
 	# OPTIONAL
+	usePlacementGroups = $someBoolean
+	# OPTIONAL
 	clusterConfig = @{
 		# OPTIONAL
 		userEmail = $someString
@@ -3037,6 +3073,8 @@ $query.Var.input = @{
 		instanceProfileName = $someString
 		# OPTIONAL
 		cdmProduct = $someString
+		# OPTIONAL
+		placementGroupName = $someString
 		# OPTIONAL
 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
 		# OPTIONAL
@@ -3539,6 +3577,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		outpostAwsNativeId = $someString
 		# OPTIONAL
+		orgId = $someString
+		# OPTIONAL
 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 	}
 	# REQUIRED
@@ -3556,6 +3596,8 @@ $query.Var.input = @{
 			orgName = $someString
 			# OPTIONAL
 			outpostAwsNativeId = $someString
+			# OPTIONAL
+			orgId = $someString
 			# OPTIONAL
 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 		}
@@ -3603,6 +3645,17 @@ $query.Var.input = @{
 	awsIamPairId = $someString
 	# OPTIONAL
 	orgId = $someString
+	# OPTIONAL
+	awsChildOus = @(
+		@{
+			# OPTIONAL
+			nativeId = $someString
+			# OPTIONAL
+			name = $someString
+			# OPTIONAL
+			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+		}
+	)
 }"
             );
         }
@@ -4367,6 +4420,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		outpostAwsNativeId = $someString
 		# OPTIONAL
+		orgId = $someString
+		# OPTIONAL
 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 	}
 	# REQUIRED
@@ -4384,6 +4439,8 @@ $query.Var.input = @{
 			orgName = $someString
 			# OPTIONAL
 			outpostAwsNativeId = $someString
+			# OPTIONAL
+			orgId = $someString
 			# OPTIONAL
 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 		}
@@ -4431,6 +4488,17 @@ $query.Var.input = @{
 	outpostAwsNativeId = $someString
 	# OPTIONAL
 	orgId = $someString
+	# OPTIONAL
+	awsChildOus = @(
+		@{
+			# OPTIONAL
+			nativeId = $someString
+			# OPTIONAL
+			name = $someString
+			# OPTIONAL
+			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+		}
+	)
 }"
             );
         }

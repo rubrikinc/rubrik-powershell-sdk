@@ -7,6 +7,9 @@ Supported in v5.0+
 - guestCredentialId: System.String
   - Supported in v7.0+
       ID of the guest OS credential to be used for authentication to the virtual machine guest OS. When this ID is specified, the 'guestCredential' field will be ignored.
+- shouldUseAgent: System.Boolean
+  - Supported in v9.3
+      Boolean field specifying whether to use the Rubrik Backup Service or VMware tools to run pre/post scripts. When 'true', the Rubrik Backup Service is used, otherwise the VMware tools is used.
 - guestCredential: BaseGuestCredentialInput
   - Supported in v5.0+
 - virtualMachineUpdate: VirtualMachineUpdateInput

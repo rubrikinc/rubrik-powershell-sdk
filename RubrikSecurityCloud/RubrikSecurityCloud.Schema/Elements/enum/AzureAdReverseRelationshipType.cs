@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureAdReverseRelationshipType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MEMBER_OF")]
         MEMBER_OF,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         REVERSE_RELATIONSHIP_TYPE_UNKNOWN,
 
         [EnumMember(Value = "ROLE_ASSIGNMENT_OF")]
-        ROLE_ASSIGNMENT_OF,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ROLE_ASSIGNMENT_OF
 
 
     } // enum AzureAdReverseRelationshipType

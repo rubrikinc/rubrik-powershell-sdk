@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ClusterLicenseInfoType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "EXPIRED_TERM")]
         EXPIRED_TERM,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         LICENSE_NOT_FOUND,
 
         [EnumMember(Value = "VALID_LICENSE")]
-        VALID_LICENSE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VALID_LICENSE
 
 
     } // enum ClusterLicenseInfoType

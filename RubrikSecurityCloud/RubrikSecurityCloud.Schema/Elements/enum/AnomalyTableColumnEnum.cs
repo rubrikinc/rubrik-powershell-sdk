@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AnomalyTableColumnEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BytesCreated")]
         BYTES_CREATED,
 
@@ -58,10 +61,7 @@ namespace RubrikSecurityCloud.Types
         WORKLOAD_NAME,
 
         [EnumMember(Value = "WorkloadType")]
-        WORKLOAD_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WORKLOAD_TYPE
 
 
     } // enum AnomalyTableColumnEnum

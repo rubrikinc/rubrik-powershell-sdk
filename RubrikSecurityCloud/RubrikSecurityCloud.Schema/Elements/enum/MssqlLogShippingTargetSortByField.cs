@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlLogShippingTargetSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "LAST_APPLIED_POINT")]
         LAST_APPLIED_POINT,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         PRIMARY_NAME,
 
         [EnumMember(Value = "SECONDARY_NAME")]
-        SECONDARY_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SECONDARY_NAME
 
 
     } // enum MssqlLogShippingTargetSortByField

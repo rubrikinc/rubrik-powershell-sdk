@@ -6,6 +6,6 @@ Paginated list of PhysicalHost objects. Each page of the results includes at mos
 - nodes: list of PhysicalHosts
   - List of PhysicalHost objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of PhysicalHost objects matching the request arguments.

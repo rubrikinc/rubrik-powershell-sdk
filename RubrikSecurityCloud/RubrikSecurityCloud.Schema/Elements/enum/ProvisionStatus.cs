@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ProvisionStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE")]
         ACTIVE,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         REFRESHING,
 
         [EnumMember(Value = "UNHEALTHY")]
-        UNHEALTHY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNHEALTHY
 
 
     } // enum ProvisionStatus

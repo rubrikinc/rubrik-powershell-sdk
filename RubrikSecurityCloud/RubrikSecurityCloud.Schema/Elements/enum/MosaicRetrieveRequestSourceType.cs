@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MosaicRetrieveRequestSourceType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MOSAIC_RETRIEVE_REQUEST_SOURCE_TYPE_CASSANDRA")]
         MOSAIC_RETRIEVE_REQUEST_SOURCE_TYPE_CASSANDRA,
 
         [EnumMember(Value = "MOSAIC_RETRIEVE_REQUEST_SOURCE_TYPE_MONGO")]
-        MOSAIC_RETRIEVE_REQUEST_SOURCE_TYPE_MONGO,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MOSAIC_RETRIEVE_REQUEST_SOURCE_TYPE_MONGO
 
 
     } // enum MosaicRetrieveRequestSourceType

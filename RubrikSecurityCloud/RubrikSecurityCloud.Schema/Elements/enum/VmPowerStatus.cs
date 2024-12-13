@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VmPowerStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "POWERED_OFF")]
         POWERED_OFF,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         POWERED_ON,
 
         [EnumMember(Value = "SUSPENDED")]
-        SUSPENDED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUSPENDED
 
 
     } // enum VmPowerStatus

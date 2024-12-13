@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AceQualifier
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACCESS_ALLOWED")]
         ACCESS_ALLOWED,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         SYSTEM_ALARM,
 
         [EnumMember(Value = "SYSTEM_AUDIT")]
-        SYSTEM_AUDIT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SYSTEM_AUDIT
 
 
     } // enum AceQualifier

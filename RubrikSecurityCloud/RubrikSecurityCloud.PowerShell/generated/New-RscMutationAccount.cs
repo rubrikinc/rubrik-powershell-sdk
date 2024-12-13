@@ -176,12 +176,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			name = $someString
     /// 			# REQUIRED
     /// 			isOrgAdmin = $someBoolean
+    /// 			# OPTIONAL
+    /// 			authDomainId = $someString
     /// 		}
     /// 	)
     /// 	# OPTIONAL
     /// 	isServiceAccountEnabled = $someBoolean
     /// 	# OPTIONAL
     /// 	isServiceAccountDisabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isInheritIpAllowlistDisabled = $someBoolean
     /// 	# OPTIONAL
     /// 	crossAccountCapabilities = @(
     /// 		$someCrossAccountCapability # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrossAccountCapability]) for enum values.
@@ -567,6 +571,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.protectableClusters = @(
     /// 	$someString
     /// )
+    /// # OPTIONAL
+    /// $query.Var.isSynced = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -682,12 +688,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			name = $someString
     /// 			# REQUIRED
     /// 			isOrgAdmin = $someBoolean
+    /// 			# OPTIONAL
+    /// 			authDomainId = $someString
     /// 		}
     /// 	)
     /// 	# OPTIONAL
     /// 	isServiceAccountEnabled = $someBoolean
     /// 	# OPTIONAL
     /// 	isServiceAccountDisabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isInheritIpAllowlistDisabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	shouldKeepGlobalIpAllowlist = $someBoolean
     /// 	# OPTIONAL
     /// 	crossAccountCapabilities = @(
     /// 		$someCrossAccountCapability # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrossAccountCapability]) for enum values.
@@ -1082,12 +1094,16 @@ $query.Var.input = @{
 			name = $someString
 			# REQUIRED
 			isOrgAdmin = $someBoolean
+			# OPTIONAL
+			authDomainId = $someString
 		}
 	)
 	# OPTIONAL
 	isServiceAccountEnabled = $someBoolean
 	# OPTIONAL
 	isServiceAccountDisabled = $someBoolean
+	# OPTIONAL
+	isInheritIpAllowlistDisabled = $someBoolean
 	# OPTIONAL
 	crossAccountCapabilities = @(
 		$someCrossAccountCapability # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrossAccountCapability]) for enum values.
@@ -1352,6 +1368,7 @@ $query.Var.userId = $someString"
         //     description: String!
         //     permissions: [PermissionInput!]!
         //     protectableClusters: [String!]!
+        //     isSynced: Boolean
         //   ): UUID!
         internal void InitMutationMutateRole()
         {
@@ -1361,12 +1378,13 @@ $query.Var.userId = $someString"
                 Tuple.Create("description", "String!"),
                 Tuple.Create("permissions", "[PermissionInput!]!"),
                 Tuple.Create("protectableClusters", "[String!]!"),
+                Tuple.Create("isSynced", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationMutateRole",
-                "($roleId: String,$name: String!,$description: String!,$permissions: [PermissionInput!]!,$protectableClusters: [String!]!)",
+                "($roleId: String,$name: String!,$description: String!,$permissions: [PermissionInput!]!,$protectableClusters: [String!]!,$isSynced: Boolean)",
                 "System.String",
                 Mutation.MutateRole,
                 Mutation.MutateRoleFieldSpec,
@@ -1397,7 +1415,9 @@ $query.Var.permissions = @(
 # REQUIRED
 $query.Var.protectableClusters = @(
 	$someString
-)"
+)
+# OPTIONAL
+$query.Var.isSynced = $someBoolean"
             );
         }
 
@@ -1505,12 +1525,18 @@ $query.Var.input = @{
 			name = $someString
 			# REQUIRED
 			isOrgAdmin = $someBoolean
+			# OPTIONAL
+			authDomainId = $someString
 		}
 	)
 	# OPTIONAL
 	isServiceAccountEnabled = $someBoolean
 	# OPTIONAL
 	isServiceAccountDisabled = $someBoolean
+	# OPTIONAL
+	isInheritIpAllowlistDisabled = $someBoolean
+	# OPTIONAL
+	shouldKeepGlobalIpAllowlist = $someBoolean
 	# OPTIONAL
 	crossAccountCapabilities = @(
 		$someCrossAccountCapability # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrossAccountCapability]) for enum values.

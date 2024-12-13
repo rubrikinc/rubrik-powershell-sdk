@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("regions")]
         public List<AzureCloudAccountRegion>? Regions { get; set; }
 
+        //      C# -> System.Boolean? IsAsynchronous
+        // GraphQL -> isAsynchronous: Boolean (scalar)
+        [JsonProperty("isAsynchronous")]
+        public System.Boolean? IsAsynchronous { get; set; }
+
         //      C# -> AzureCloudType? AzureCloudType
         // GraphQL -> azureCloudType: AzureCloudType (enum)
         [JsonProperty("azureCloudType")]

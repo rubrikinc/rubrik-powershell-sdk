@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UpgradeStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "IN_PROGRESS")]
         IN_PROGRESS,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         UPGRADE_SUCCESS,
 
         [EnumMember(Value = "UPGRADE_UNSUPPORTED")]
-        UPGRADE_UNSUPPORTED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UPGRADE_UNSUPPORTED
 
 
     } // enum UpgradeStatus

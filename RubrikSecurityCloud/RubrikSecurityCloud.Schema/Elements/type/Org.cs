@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isEnvoyRequired")]
         public System.Boolean? IsEnvoyRequired { get; set; }
 
+        //      C# -> System.Boolean? IsInheritIpAllowlistDisabled
+        // GraphQL -> isInheritIpAllowlistDisabled: Boolean! (scalar)
+        [JsonProperty("isInheritIpAllowlistDisabled")]
+        public System.Boolean? IsInheritIpAllowlistDisabled { get; set; }
+
         //      C# -> System.Boolean? IsServiceAccountDisabled
         // GraphQL -> isServiceAccountDisabled: Boolean! (scalar)
         [JsonProperty("isServiceAccountDisabled")]
@@ -140,6 +145,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? HasOwnIdpConfigured = null,
         System.String? Id = null,
         System.Boolean? IsEnvoyRequired = null,
+        System.Boolean? IsInheritIpAllowlistDisabled = null,
         System.Boolean? IsServiceAccountDisabled = null,
         System.String? Name = null,
         System.Int64? PhysicalStorageUsed = null,
@@ -181,6 +187,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsEnvoyRequired != null ) {
             this.IsEnvoyRequired = IsEnvoyRequired;
+        }
+        if ( IsInheritIpAllowlistDisabled != null ) {
+            this.IsInheritIpAllowlistDisabled = IsInheritIpAllowlistDisabled;
         }
         if ( IsServiceAccountDisabled != null ) {
             this.IsServiceAccountDisabled = IsServiceAccountDisabled;
@@ -314,6 +323,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isEnvoyRequired\n" ;
             } else {
                 s += ind + "isEnvoyRequired\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsInheritIpAllowlistDisabled
+        // GraphQL -> isInheritIpAllowlistDisabled: Boolean! (scalar)
+        if (this.IsInheritIpAllowlistDisabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isInheritIpAllowlistDisabled\n" ;
+            } else {
+                s += ind + "isInheritIpAllowlistDisabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsServiceAccountDisabled
@@ -600,6 +618,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsEnvoyRequired != null && ec.Excludes("isEnvoyRequired",true))
         {
             this.IsEnvoyRequired = null;
+        }
+        //      C# -> System.Boolean? IsInheritIpAllowlistDisabled
+        // GraphQL -> isInheritIpAllowlistDisabled: Boolean! (scalar)
+        if (ec.Includes("isInheritIpAllowlistDisabled",true))
+        {
+            if(this.IsInheritIpAllowlistDisabled == null) {
+
+                this.IsInheritIpAllowlistDisabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInheritIpAllowlistDisabled != null && ec.Excludes("isInheritIpAllowlistDisabled",true))
+        {
+            this.IsInheritIpAllowlistDisabled = null;
         }
         //      C# -> System.Boolean? IsServiceAccountDisabled
         // GraphQL -> isServiceAccountDisabled: Boolean! (scalar)

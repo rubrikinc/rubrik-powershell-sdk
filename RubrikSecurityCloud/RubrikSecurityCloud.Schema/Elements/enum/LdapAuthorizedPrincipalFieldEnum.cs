@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum LdapAuthorizedPrincipalFieldEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DirectoryName")]
         DIRECTORY_NAME,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         LAST_LOGIN,
 
         [EnumMember(Value = "Name")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum LdapAuthorizedPrincipalFieldEnum

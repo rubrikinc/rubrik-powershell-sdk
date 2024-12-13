@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum WorkloadAnomaliesSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CREATED_FILE_COUNT")]
         CREATED_FILE_COUNT,
 
@@ -46,10 +49,7 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_DATE,
 
         [EnumMember(Value = "SUSPICIOUS_FILE_COUNT")]
-        SUSPICIOUS_FILE_COUNT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUSPICIOUS_FILE_COUNT
 
 
     } // enum WorkloadAnomaliesSortBy

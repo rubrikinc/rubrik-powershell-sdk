@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CalendarEventType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SERIES_EXCEPTION")]
         SERIES_EXCEPTION,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         SERIES_OCCURRENCE,
 
         [EnumMember(Value = "SINGLE_INSTANCE")]
-        SINGLE_INSTANCE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SINGLE_INSTANCE
 
 
     } // enum CalendarEventType

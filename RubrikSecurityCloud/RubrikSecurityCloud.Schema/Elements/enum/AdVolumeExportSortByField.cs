@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AdVolumeExportSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SORT_UNSPECIFIED")]
         SORT_UNSPECIFIED,
 
         [EnumMember(Value = "TIME")]
-        TIME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TIME
 
 
     } // enum AdVolumeExportSortByField

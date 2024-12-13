@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DlpConfigTargetType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "GENERIC_NAS")]
         GENERIC_NAS,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         TARGET_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "VMWARE_VM")]
-        VMWARE_VM,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VMWARE_VM
 
 
     } // enum DlpConfigTargetType

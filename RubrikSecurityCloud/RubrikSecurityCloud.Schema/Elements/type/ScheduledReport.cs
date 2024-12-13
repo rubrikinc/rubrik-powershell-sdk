@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("reportId")]
         public System.Int32? ReportId { get; set; }
 
+        //      C# -> System.Boolean? ShowChartsInEmailBody
+        // GraphQL -> showChartsInEmailBody: Boolean! (scalar)
+        [JsonProperty("showChartsInEmailBody")]
+        public System.Boolean? ShowChartsInEmailBody { get; set; }
+
         //      C# -> System.String? TimeZone
         // GraphQL -> timeZone: String! (scalar)
         [JsonProperty("timeZone")]
@@ -120,6 +125,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? MonthlyTime = null,
         List<System.String>? RecipientEmails = null,
         System.Int32? ReportId = null,
+        System.Boolean? ShowChartsInEmailBody = null,
         System.String? TimeZone = null,
         System.String? Title = null,
         DateTime? WeeklyTime = null,
@@ -157,6 +163,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReportId != null ) {
             this.ReportId = ReportId;
+        }
+        if ( ShowChartsInEmailBody != null ) {
+            this.ShowChartsInEmailBody = ShowChartsInEmailBody;
         }
         if ( TimeZone != null ) {
             this.TimeZone = TimeZone;
@@ -278,6 +287,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "reportId\n" ;
             } else {
                 s += ind + "reportId\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShowChartsInEmailBody
+        // GraphQL -> showChartsInEmailBody: Boolean! (scalar)
+        if (this.ShowChartsInEmailBody != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "showChartsInEmailBody\n" ;
+            } else {
+                s += ind + "showChartsInEmailBody\n" ;
             }
         }
         //      C# -> System.String? TimeZone
@@ -519,6 +537,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReportId != null && ec.Excludes("reportId",true))
         {
             this.ReportId = null;
+        }
+        //      C# -> System.Boolean? ShowChartsInEmailBody
+        // GraphQL -> showChartsInEmailBody: Boolean! (scalar)
+        if (ec.Includes("showChartsInEmailBody",true))
+        {
+            if(this.ShowChartsInEmailBody == null) {
+
+                this.ShowChartsInEmailBody = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShowChartsInEmailBody != null && ec.Excludes("showChartsInEmailBody",true))
+        {
+            this.ShowChartsInEmailBody = null;
         }
         //      C# -> System.String? TimeZone
         // GraphQL -> timeZone: String! (scalar)

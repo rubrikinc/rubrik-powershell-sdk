@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UserSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DOMAIN")]
         DOMAIN,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         LAST_LOGIN,
 
         [EnumMember(Value = "STATUS")]
-        STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STATUS
 
 
     } // enum UserSortByField

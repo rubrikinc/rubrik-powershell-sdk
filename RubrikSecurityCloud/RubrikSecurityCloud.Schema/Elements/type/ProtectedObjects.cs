@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public ManagedObjectType? ObjectType { get; set; }
 
+        //      C# -> System.String? EffectiveSlaFidOpt
+        // GraphQL -> effectiveSlaFidOpt: String! (scalar)
+        [JsonProperty("effectiveSlaFidOpt")]
+        public System.String? EffectiveSlaFidOpt { get; set; }
+
         //      C# -> System.String? EffectiveSlaOpt
         // GraphQL -> effectiveSlaOpt: String (scalar)
         [JsonProperty("effectiveSlaOpt")]
@@ -72,6 +77,7 @@ namespace RubrikSecurityCloud.Types
 
     public ProtectedObjects Set(
         ManagedObjectType? ObjectType = null,
+        System.String? EffectiveSlaFidOpt = null,
         System.String? EffectiveSlaOpt = null,
         System.String? Id = null,
         System.Boolean? IsArchived = null,
@@ -83,6 +89,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
+        }
+        if ( EffectiveSlaFidOpt != null ) {
+            this.EffectiveSlaFidOpt = EffectiveSlaFidOpt;
         }
         if ( EffectiveSlaOpt != null ) {
             this.EffectiveSlaOpt = EffectiveSlaOpt;
@@ -126,6 +135,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectType\n" ;
             } else {
                 s += ind + "objectType\n" ;
+            }
+        }
+        //      C# -> System.String? EffectiveSlaFidOpt
+        // GraphQL -> effectiveSlaFidOpt: String! (scalar)
+        if (this.EffectiveSlaFidOpt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaFidOpt\n" ;
+            } else {
+                s += ind + "effectiveSlaFidOpt\n" ;
             }
         }
         //      C# -> System.String? EffectiveSlaOpt
@@ -217,6 +235,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectType != null && ec.Excludes("objectType",true))
         {
             this.ObjectType = null;
+        }
+        //      C# -> System.String? EffectiveSlaFidOpt
+        // GraphQL -> effectiveSlaFidOpt: String! (scalar)
+        if (ec.Includes("effectiveSlaFidOpt",true))
+        {
+            if(this.EffectiveSlaFidOpt == null) {
+
+                this.EffectiveSlaFidOpt = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaFidOpt != null && ec.Excludes("effectiveSlaFidOpt",true))
+        {
+            this.EffectiveSlaFidOpt = null;
         }
         //      C# -> System.String? EffectiveSlaOpt
         // GraphQL -> effectiveSlaOpt: String (scalar)

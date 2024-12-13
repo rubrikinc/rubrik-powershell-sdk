@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("smbValidUsers")]
         public List<System.String>? SmbValidUsers { get; set; }
 
+        //      C# -> ManagedVolumeNfsSettingsInput? NfsSettings
+        // GraphQL -> nfsSettings: ManagedVolumeNFSSettingsInput (input)
+        [JsonProperty("nfsSettings")]
+        public ManagedVolumeNfsSettingsInput? NfsSettings { get; set; }
+
 
         #endregion
 

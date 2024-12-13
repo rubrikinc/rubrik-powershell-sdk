@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mssqlSddCertificateId")]
         public System.String? MssqlSddCertificateId { get; set; }
 
+        //      C# -> System.String? OracleSddWalletPath
+        // GraphQL -> oracleSddWalletPath: String (scalar)
+        [JsonProperty("oracleSddWalletPath")]
+        public System.String? OracleSddWalletPath { get; set; }
+
         //      C# -> System.String? OrgNetworkId
         // GraphQL -> orgNetworkId: String (scalar)
         [JsonProperty("orgNetworkId")]
@@ -85,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nasConfig: NasConfigInput (input)
         [JsonProperty("nasConfig")]
         public NasConfigInput? NasConfig { get; set; }
+
+        //      C# -> SddUserCredentialsInput? OracleSddUserCredentials
+        // GraphQL -> oracleSddUserCredentials: SddUserCredentialsInput (input)
+        [JsonProperty("oracleSddUserCredentials")]
+        public SddUserCredentialsInput? OracleSddUserCredentials { get; set; }
 
 
         #endregion

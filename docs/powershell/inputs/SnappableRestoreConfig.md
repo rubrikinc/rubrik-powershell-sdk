@@ -15,6 +15,8 @@ Represents the snappable contents to be restored.
   - Restore configuration for Onedrive jobs.
 - TeamsRestoreConfig: TeamsRestoreConfig
   - Restore configuration for Teams jobs.
+- fullTeamRestoreConfig: FullTeamRestoreConfig
+  - Restore configuration for a full Team restore.
 - MailboxRestoreConfig: MailboxRestoreConfig
   - Restore configuration for Mailbox jobs.
 - calendarRestoreConfig: CalendarRestoreConfig

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureNativeRegionForReplication
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AUSTRALIA_CENTRAL")]
         AUSTRALIA_CENTRAL,
 
@@ -184,10 +187,7 @@ namespace RubrikSecurityCloud.Types
         WEST_US2,
 
         [EnumMember(Value = "WEST_US3")]
-        WEST_US3,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WEST_US3
 
 
     } // enum AzureNativeRegionForReplication

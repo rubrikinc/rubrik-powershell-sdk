@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RiskReason
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HIGH_RISK_ANALYZER_HITS")]
         HIGH_RISK_ANALYZER_HITS,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         OPEN_ACCESS,
 
         [EnumMember(Value = "RISK_REASON_UNSPECIFIED")]
-        RISK_REASON_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        RISK_REASON_UNSPECIFIED
 
 
     } // enum RiskReason

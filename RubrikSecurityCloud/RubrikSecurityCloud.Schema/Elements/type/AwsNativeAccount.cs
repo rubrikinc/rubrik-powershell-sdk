@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> System.String? CloudSlabDns
+        // GraphQL -> cloudSlabDns: String! (scalar)
+        [JsonProperty("cloudSlabDns")]
+        public System.String? CloudSlabDns { get; set; }
+
         //      C# -> System.Int32? EbsVolumeCount
         // GraphQL -> ebsVolumeCount: Int! (scalar)
         [JsonProperty("ebsVolumeCount")]
@@ -241,6 +246,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.String? CloudSlabDns = null,
         System.Int32? EbsVolumeCount = null,
         System.Int32? Ec2InstanceCount = null,
         System.String? Id = null,
@@ -290,6 +296,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
+        if ( CloudSlabDns != null ) {
+            this.CloudSlabDns = CloudSlabDns;
         }
         if ( EbsVolumeCount != null ) {
             this.EbsVolumeCount = EbsVolumeCount;
@@ -459,6 +468,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.String? CloudSlabDns
+        // GraphQL -> cloudSlabDns: String! (scalar)
+        if (this.CloudSlabDns != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudSlabDns\n" ;
+            } else {
+                s += ind + "cloudSlabDns\n" ;
             }
         }
         //      C# -> System.Int32? EbsVolumeCount
@@ -866,6 +884,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
         {
             this.EffectiveSlaDomain = null;
+        }
+        //      C# -> System.String? CloudSlabDns
+        // GraphQL -> cloudSlabDns: String! (scalar)
+        if (ec.Includes("cloudSlabDns",true))
+        {
+            if(this.CloudSlabDns == null) {
+
+                this.CloudSlabDns = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudSlabDns != null && ec.Excludes("cloudSlabDns",true))
+        {
+            this.CloudSlabDns = null;
         }
         //      C# -> System.Int32? EbsVolumeCount
         // GraphQL -> ebsVolumeCount: Int! (scalar)

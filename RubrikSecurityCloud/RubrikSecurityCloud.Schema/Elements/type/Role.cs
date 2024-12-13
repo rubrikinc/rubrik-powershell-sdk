@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isReadOnly")]
         public System.Boolean? IsReadOnly { get; set; }
 
+        //      C# -> System.Boolean? IsSynced
+        // GraphQL -> isSynced: Boolean! (scalar)
+        [JsonProperty("isSynced")]
+        public System.Boolean? IsSynced { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -80,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("permissions")]
         public List<Permission>? Permissions { get; set; }
 
+        //      C# -> List<SyncedCluster>? SyncedClusters
+        // GraphQL -> syncedClusters: [SyncedCluster!]! (type)
+        [JsonProperty("syncedClusters")]
+        public List<SyncedCluster>? SyncedClusters { get; set; }
+
 
         #endregion
 
@@ -95,13 +105,15 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsOrgAdmin = null,
         System.Boolean? IsReadOnly = null,
+        System.Boolean? IsSynced = null,
         System.String? Name = null,
         System.String? OrgId = null,
         List<System.String>? ProtectableClusters = null,
         List<Permission>? EffectivePermissions = null,
         List<RbacPermission>? EffectiveRbacPermissions = null,
         List<Permission>? ExplicitlyAssignedPermissions = null,
-        List<Permission>? Permissions = null
+        List<Permission>? Permissions = null,
+        List<SyncedCluster>? SyncedClusters = null
     ) 
     {
         if ( Description != null ) {
@@ -118,6 +130,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsReadOnly != null ) {
             this.IsReadOnly = IsReadOnly;
+        }
+        if ( IsSynced != null ) {
+            this.IsSynced = IsSynced;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -139,6 +154,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Permissions != null ) {
             this.Permissions = Permissions;
+        }
+        if ( SyncedClusters != null ) {
+            this.SyncedClusters = SyncedClusters;
         }
         return this;
     }
@@ -197,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isReadOnly\n" ;
             } else {
                 s += ind + "isReadOnly\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSynced
+        // GraphQL -> isSynced: Boolean! (scalar)
+        if (this.IsSynced != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSynced\n" ;
+            } else {
+                s += ind + "isSynced\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -271,6 +298,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "permissions" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<SyncedCluster>? SyncedClusters
+        // GraphQL -> syncedClusters: [SyncedCluster!]! (type)
+        if (this.SyncedClusters != null) {
+            var fspec = this.SyncedClusters.AsFieldSpec(conf.Child("syncedClusters"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "syncedClusters" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -365,6 +404,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsReadOnly != null && ec.Excludes("isReadOnly",true))
         {
             this.IsReadOnly = null;
+        }
+        //      C# -> System.Boolean? IsSynced
+        // GraphQL -> isSynced: Boolean! (scalar)
+        if (ec.Includes("isSynced",true))
+        {
+            if(this.IsSynced == null) {
+
+                this.IsSynced = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSynced != null && ec.Excludes("isSynced",true))
+        {
+            this.IsSynced = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -492,6 +548,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Permissions != null && ec.Excludes("permissions",false))
         {
             this.Permissions = null;
+        }
+        //      C# -> List<SyncedCluster>? SyncedClusters
+        // GraphQL -> syncedClusters: [SyncedCluster!]! (type)
+        if (ec.Includes("syncedClusters",false))
+        {
+            if(this.SyncedClusters == null) {
+
+                this.SyncedClusters = new List<SyncedCluster>();
+                this.SyncedClusters.ApplyExploratoryFieldSpec(ec.NewChild("syncedClusters"));
+
+            } else {
+
+                this.SyncedClusters.ApplyExploratoryFieldSpec(ec.NewChild("syncedClusters"));
+
+            }
+        }
+        else if (this.SyncedClusters != null && ec.Excludes("syncedClusters",false))
+        {
+            this.SyncedClusters = null;
         }
     }
 

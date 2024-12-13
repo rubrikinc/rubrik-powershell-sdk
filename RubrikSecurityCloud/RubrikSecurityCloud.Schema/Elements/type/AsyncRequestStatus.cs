@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("progress")]
         public System.Single? Progress { get; set; }
 
+        //      C# -> System.String? Result
+        // GraphQL -> result: String (scalar)
+        [JsonProperty("result")]
+        public System.String? Result { get; set; }
+
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
         [JsonProperty("startTime")]
@@ -74,6 +79,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.String? NodeId = null,
         System.Single? Progress = null,
+        System.String? Result = null,
         DateTime? StartTime = null,
         System.String? Status = null,
         RequestErrorInfo? Error = null,
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Progress != null ) {
             this.Progress = Progress;
+        }
+        if ( Result != null ) {
+            this.Result = Result;
         }
         if ( StartTime != null ) {
             this.StartTime = StartTime;
@@ -152,6 +161,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "progress\n" ;
             } else {
                 s += ind + "progress\n" ;
+            }
+        }
+        //      C# -> System.String? Result
+        // GraphQL -> result: String (scalar)
+        if (this.Result != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "result\n" ;
+            } else {
+                s += ind + "result\n" ;
             }
         }
         //      C# -> DateTime? StartTime
@@ -270,6 +288,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Progress != null && ec.Excludes("progress",true))
         {
             this.Progress = null;
+        }
+        //      C# -> System.String? Result
+        // GraphQL -> result: String (scalar)
+        if (ec.Includes("result",true))
+        {
+            if(this.Result == null) {
+
+                this.Result = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Result != null && ec.Excludes("result",true))
+        {
+            this.Result = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)

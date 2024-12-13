@@ -44,3 +44,12 @@ The subgroup type for the pending action.
 - FEDERATED_LOGIN - The subgroup type of the pending action is for configuring or deleting federated login configuration.
 - AZURE_CUSTOMER_FEATURE_UPSERT
 - SECURITY_SETTING_EDIT_KMS_KEY_VAULT - The subgroup type of the pending action is for editing a KMS Key Vault.
+- LCK_LOCATION_PUT - The subgroup type of the pending action is for creating LCK archival location.
+- LCK_LOCATION_READER_POST - The subgroup type of the pending action is for creating LCK reader archival location.
+- DCA_LOCATION_PUT - The subgroup type of the pending action is for creating DCA archival location.
+- DCA_LOCATION_READER_POST - The subgroup type of the pending action is for creating DCA reader archival location.
+- ROLE_CREATION - Subgroup used for role creation in CDM using RSC.
+- ROLE_UPDATION - Subgroup used for role updation in CDM using RSC.
+- ROLE_DELETION - Subgroup used for role deletion in CDM using RSC.
+- GRANT_AUTHZ - Subgroup used for granting authorization to the CDM role using RSC.
+- REVOKE_AUTHZ - Subgroup used for revoking authorization to the CDM role using RSC.

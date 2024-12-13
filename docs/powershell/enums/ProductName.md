@@ -31,3 +31,8 @@ Name of product.
 - LAMINAR - Laminar feature.
 - LAMINAR_LITE_UCL - Laminar Lite UCL feature.
 - M365_BACKUP_STORAGE - Microsoft 365 Backup Storage feature.
+- ONPREM_AD_CR - On-premises Active Directory Cyber Recovery.
+- ONPREM_AD_CP - On-premises Active Directory Cyber Posture.
+- RADAR_CLU - Ransomware Investigation on Cloud Unstructured.
+- AAD_CYBER_RECOVERY - Entra ID Cyber Recovery.
+- AAD_CYBER_POSTURE - Entra ID Cyber Posture.

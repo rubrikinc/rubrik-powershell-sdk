@@ -2,7 +2,7 @@
 Webhook configuration to add to an account.
 
 - id: System.Int32
-  - The webhook's unique id.
+  - The webhook's unique ID.
 - name: System.String
   - The name of the webhook to be created.
 - createdBy: System.String
@@ -22,7 +22,9 @@ Webhook configuration to add to an account.
 - providerType: ProviderTypeV2
   - The application that will receive the webhook.
 - status: WebhookStatusV2
-  - Specifies whether the webhook is enabled or not.
+  - Specifies whether the webhook is enabled.
+- subscriptionType: SubscriptionTypeV2
+  - The information about subscription.
 - authType: AuthenticationTypeV2
   - The authentication type that the endpoint uses.
 - lastFailedErrorInfo: WebhookErrorInfo

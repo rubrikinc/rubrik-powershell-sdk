@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ExoClusterStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE")]
         ACTIVE,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         TEARDOWN_RUNNING,
 
         [EnumMember(Value = "TERMINATED")]
-        TERMINATED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TERMINATED
 
 
     } // enum ExoClusterStatus

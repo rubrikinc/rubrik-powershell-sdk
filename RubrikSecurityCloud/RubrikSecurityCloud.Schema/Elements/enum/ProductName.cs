@@ -15,8 +15,17 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ProductName
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AAD")]
         AAD,
+
+        [EnumMember(Value = "AAD_CYBER_POSTURE")]
+        AAD_CYBER_POSTURE,
+
+        [EnumMember(Value = "AAD_CYBER_RECOVERY")]
+        AAD_CYBER_RECOVERY,
 
         [EnumMember(Value = "APPFLOWS")]
         APPFLOWS,
@@ -60,8 +69,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ONPREM_AD")]
         ONPREM_AD,
 
+        [EnumMember(Value = "ONPREM_AD_CP")]
+        ONPREM_AD_CP,
+
+        [EnumMember(Value = "ONPREM_AD_CR")]
+        ONPREM_AD_CR,
+
         [EnumMember(Value = "RADAR")]
         RADAR,
+
+        [EnumMember(Value = "RADAR_CLU")]
+        RADAR_CLU,
 
         [EnumMember(Value = "RADAR_NAS")]
         RADAR_NAS,
@@ -103,10 +121,7 @@ namespace RubrikSecurityCloud.Types
         USER_ACCESS,
 
         [EnumMember(Value = "USER_INTELLIGENCE")]
-        USER_INTELLIGENCE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USER_INTELLIGENCE
 
 
     } // enum ProductName

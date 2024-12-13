@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VappVmIpAddressingMode
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "VAPP_VM_IP_ADDRESSING_MODE_DHCP")]
         VAPP_VM_IP_ADDRESSING_MODE_DHCP,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         VAPP_VM_IP_ADDRESSING_MODE_NONE,
 
         [EnumMember(Value = "VAPP_VM_IP_ADDRESSING_MODE_POOL")]
-        VAPP_VM_IP_ADDRESSING_MODE_POOL,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VAPP_VM_IP_ADDRESSING_MODE_POOL
 
 
     } // enum VappVmIpAddressingMode

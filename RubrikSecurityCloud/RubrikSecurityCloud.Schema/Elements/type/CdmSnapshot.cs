@@ -226,6 +226,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mssqlAppMetadata")]
         public MssqlAppMetadata? MssqlAppMetadata { get; set; }
 
+        //      C# -> KosmosWorkloadAppMetadata? MysqldbInstanceAppMetadata
+        // GraphQL -> mysqldbInstanceAppMetadata: KosmosWorkloadAppMetadata (type)
+        [JsonProperty("mysqldbInstanceAppMetadata")]
+        public KosmosWorkloadAppMetadata? MysqldbInstanceAppMetadata { get; set; }
+
         //      C# -> PendingSnapshotDeletion? PendingSnapshotDeletion
         // GraphQL -> pendingSnapshotDeletion: PendingSnapshotDeletion (type)
         [JsonProperty("pendingSnapshotDeletion")]
@@ -317,6 +322,7 @@ namespace RubrikSecurityCloud.Types
         ManagedVolumeAppMetadata? ManagedVolumeAppMetadata = null,
         MongoSourceAppMetadata? MongoSourceAppMetadata = null,
         MssqlAppMetadata? MssqlAppMetadata = null,
+        KosmosWorkloadAppMetadata? MysqldbInstanceAppMetadata = null,
         PendingSnapshotDeletion? PendingSnapshotDeletion = null,
         KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata = null,
         List<DataLocation>? ReplicationLocations = null,
@@ -449,6 +455,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MssqlAppMetadata != null ) {
             this.MssqlAppMetadata = MssqlAppMetadata;
+        }
+        if ( MysqldbInstanceAppMetadata != null ) {
+            this.MysqldbInstanceAppMetadata = MysqldbInstanceAppMetadata;
         }
         if ( PendingSnapshotDeletion != null ) {
             this.PendingSnapshotDeletion = PendingSnapshotDeletion;
@@ -908,6 +917,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "mssqlAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> KosmosWorkloadAppMetadata? MysqldbInstanceAppMetadata
+        // GraphQL -> mysqldbInstanceAppMetadata: KosmosWorkloadAppMetadata (type)
+        if (this.MysqldbInstanceAppMetadata != null) {
+            var fspec = this.MysqldbInstanceAppMetadata.AsFieldSpec(conf.Child("mysqldbInstanceAppMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mysqldbInstanceAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1759,6 +1780,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.MssqlAppMetadata != null && ec.Excludes("mssqlAppMetadata",false))
         {
             this.MssqlAppMetadata = null;
+        }
+        //      C# -> KosmosWorkloadAppMetadata? MysqldbInstanceAppMetadata
+        // GraphQL -> mysqldbInstanceAppMetadata: KosmosWorkloadAppMetadata (type)
+        if (ec.Includes("mysqldbInstanceAppMetadata",false))
+        {
+            if(this.MysqldbInstanceAppMetadata == null) {
+
+                this.MysqldbInstanceAppMetadata = new KosmosWorkloadAppMetadata();
+                this.MysqldbInstanceAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("mysqldbInstanceAppMetadata"));
+
+            } else {
+
+                this.MysqldbInstanceAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("mysqldbInstanceAppMetadata"));
+
+            }
+        }
+        else if (this.MysqldbInstanceAppMetadata != null && ec.Excludes("mysqldbInstanceAppMetadata",false))
+        {
+            this.MysqldbInstanceAppMetadata = null;
         }
         //      C# -> PendingSnapshotDeletion? PendingSnapshotDeletion
         // GraphQL -> pendingSnapshotDeletion: PendingSnapshotDeletion (type)

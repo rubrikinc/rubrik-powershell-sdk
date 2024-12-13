@@ -19,7 +19,7 @@
 - lastScanFilter: UserTimeRangeInput
   - Last scan time range specified in the local timezone of the user.
 - mipLabelsFilter: list of MipLabelsFilterInputs
-  - List of mip labels to filter the paths.
+  - List of Microsoft Purview Information Protection labels used to filter paths.
 - violationId: System.String
   - Violation ID to filter the paths.
 - exposureFilter: list of OpenAccessTypes

@@ -6,6 +6,6 @@ Paginated list of CrossAccountPairInfo objects. Each page of the results include
 - nodes: list of CrossAccountPairInfos
   - List of CrossAccountPairInfo objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of CrossAccountPairInfo objects matching the request arguments.

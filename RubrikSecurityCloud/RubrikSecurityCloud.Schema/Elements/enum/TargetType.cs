@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TargetType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS")]
         AWS,
 
@@ -39,14 +42,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RCS_AZURE")]
         RCS_AZURE,
 
+        [EnumMember(Value = "RCV_AWS")]
+        RCV_AWS,
+
         [EnumMember(Value = "S3_COMPATIBLE")]
         S3_COMPATIBLE,
 
         [EnumMember(Value = "TAPE")]
-        TAPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TAPE
 
 
     } // enum TargetType

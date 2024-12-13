@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PendingActionGroupTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "APP_FLOW")]
         APP_FLOW,
 
@@ -39,8 +42,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNMANAGED_OBJECTS")]
         UNMANAGED_OBJECTS,
 
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        [EnumMember(Value = "USERMANAGEMENT")]
+        USERMANAGEMENT
 
 
     } // enum PendingActionGroupTypeEnum

@@ -12,9 +12,9 @@ Represents the configuration and statistics for a
   - Name of the threat hunt.
 - startTime: DateTime
   - Start time of the threat hunt.
-- createdBy: System.String
-  - Name of the user who created the threat hunt.
 - huntType: ThreatHuntType
   - Type of threat hunt.
 - huntDetails: ThreatHuntDetails
   - The details/configuration of the threat hunt.
+- createdBy: User
+  - User who created the threat hunt.

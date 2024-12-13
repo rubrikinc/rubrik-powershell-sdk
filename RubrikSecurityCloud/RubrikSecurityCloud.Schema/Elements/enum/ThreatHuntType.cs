@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ThreatHuntType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "THREAT_HUNT_V1")]
         THREAT_HUNT_V1,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         THREAT_HUNT_V2,
 
         [EnumMember(Value = "TURBO_THREAT_HUNT")]
-        TURBO_THREAT_HUNT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TURBO_THREAT_HUNT
 
 
     } // enum ThreatHuntType

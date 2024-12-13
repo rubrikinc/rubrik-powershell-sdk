@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ExchangeLiveMountSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_NAME")]
         CLUSTER_NAME,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         CREATION_DATE,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSPECIFIED
 
 
     } // enum ExchangeLiveMountSortByField

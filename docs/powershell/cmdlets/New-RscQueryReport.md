@@ -21,14 +21,14 @@ Retrieve details of the Rubrik clusters' reports migration.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns ReportMigrationStatusConnection.
 ### data
 - There are 13 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - dataView - DataViewTypeEnum
     - columns - list of System.Strings: A list of columns to include in the result. It can be omitted when
            requesting aggregations, and server will derive columns by
@@ -80,7 +80,7 @@ Retrieve details of scheduled reports. If the reportId is None, return schedules
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - filter - ScheduledReportFilterInput: Filter report schedules.
 - Returns ScheduledReportConnection.
 ### sonar
@@ -105,7 +105,7 @@ Returns groupBy results for SonarContentReport.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns SonarContentReportConnection.
 ### sonarrow
 Returns rows for SonarReport table.
@@ -118,5 +118,5 @@ Returns rows for SonarReport table.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns SonarReportRowConnection.

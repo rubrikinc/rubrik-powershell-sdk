@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PolicyDetailsSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SORT_UNSPECIFIED")]
         SORT_UNSPECIFIED,
 
         [EnumMember(Value = "WORKLOAD_NAME")]
-        WORKLOAD_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WORKLOAD_NAME
 
 
     } // enum PolicyDetailsSortBy

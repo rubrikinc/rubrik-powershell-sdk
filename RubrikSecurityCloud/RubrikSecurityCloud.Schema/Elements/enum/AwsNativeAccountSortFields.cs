@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AwsNativeAccountSortFields
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "EBS_VOLUME_COUNT")]
         EBS_VOLUME_COUNT,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         EFFECTIVE_SLA_DOMAIN,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum AwsNativeAccountSortFields

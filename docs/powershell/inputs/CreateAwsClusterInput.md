@@ -11,6 +11,8 @@ CreateAwsClusterInput for Aws account.
   - Aws region.
 - disableApiTermination: System.Boolean
   - Disable API termination on AWS instances.
+- usePlacementGroups: System.Boolean
+  - Flag to enable use of placement group on the cluster.
 - clusterConfig: ClusterConfigInput
   - Cluster configuration to initialize cluster.
 - vmConfig: AwsVmConfig

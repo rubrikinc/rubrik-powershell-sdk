@@ -32,7 +32,7 @@ Add a Kubernetes cluster.
 - There is a single argument of type CreateK8sClusterInput.
 - Returns CreateK8sClusterReply.
 ### createnamespacesnapshots
-Snapshot Kubernetes Namespace.
+Snapshot Kubernetes namespace.
 
 - There is a single argument of type CreateK8sNamespaceSnapshotsInput.
 - Returns list of CreateOnDemandJobReplys.
@@ -69,7 +69,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 - There is a single argument of type DownloadK8sSnapshotFromLocationInput.
 - Returns AsyncRequestStatus.
 ### exportnamespace
-Export Kubernetes Namespace snapshot.
+Export Kubernetes namespace snapshot.
 
 - There is a single argument of type ExportK8sNamespaceInput.
 - Returns CreateOnDemandJobReply.

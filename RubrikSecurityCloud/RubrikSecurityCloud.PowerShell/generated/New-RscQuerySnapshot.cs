@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 21
+    /// Create a new RscQuery object for any of the 22
     /// operations in the 'Snapshot' API domain:
-    /// BrowseFileList, ClosestToPointInTime, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// BrowseFileList, ClosestToPointInTime, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// </summary>
     /// <description>
     /// New-RscQuerySnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 21 operations
+    /// There are 22 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BrowseFileList, ClosestToPointInTime, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// one of: BrowseFileList, ClosestToPointInTime, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -822,6 +822,78 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SOfCloudDirectShare operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: SOfCloudDirectShare
+    /// 
+    /// $query = New-RscQuerySnapshot -Operation SOfCloudDirectShare
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.workloadId = $someString
+    /// # OPTIONAL
+    /// $query.Var.snapshotFilter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someSnapshotQueryFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotQueryFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		text = $someString
+    /// 		# OPTIONAL
+    /// 		typeFilters = @(
+    /// 			$someSnapshotTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeEnum]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldFetchLinked = $someBoolean
+    /// 		# OPTIONAL
+    /// 		textList = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		time = $someDateTime
+    /// 		# OPTIONAL
+    /// 		customizationFilters = @(
+    /// 			$someSnapshotCustomization # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotCustomization]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someSnapshotQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotQuerySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.timeRange = @{
+    /// 	# REQUIRED
+    /// 	start = $someDateTime
+    /// 	# REQUIRED
+    /// 	end = $someDateTime
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudDirectSnapshotConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the SnappableList operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -1227,6 +1299,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Pvcs",
                 "QuarantinedDetails",
                 "Results",
+                "SOfCloudDirectShare",
                 "SnappableList",
                 "SnappablesList",
                 "SnappablesWithLegalHoldsSummary",
@@ -1290,6 +1363,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Results":
                         this.ProcessRecord_Results();
+                        break;
+                    case "SOfCloudDirectShare":
+                        this.ProcessRecord_SOfCloudDirectShare();
                         break;
                     case "SnappableList":
                         this.ProcessRecord_SnappableList();
@@ -1446,6 +1522,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Results";
             // Create new graphql operation snapshotResults
             InitQuerySnapshotResults();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // snapshotsOfCloudDirectShare.
+        internal void ProcessRecord_SOfCloudDirectShare()
+        {
+            this._logger.name += " -SOfCloudDirectShare";
+            // Create new graphql operation snapshotsOfCloudDirectShare
+            InitQuerySnapshotsOfCloudDirectShare();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2259,6 +2344,88 @@ $query.Var.snappableFid = $someString
 $query.Var.startTimeMs = $someInt64
 # REQUIRED
 $query.Var.endTimeMs = $someInt64"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // snapshotsOfCloudDirectShare(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     workloadId: String!
+        //     snapshotFilter: [SnapshotQueryFilterInput!]
+        //     sortOrder: SortOrder
+        //     sortBy: SnapshotQuerySortByField
+        //     timeRange: TimeRangeInput
+        //   ): CloudDirectSnapshotConnection!
+        internal void InitQuerySnapshotsOfCloudDirectShare()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("workloadId", "String!"),
+                Tuple.Create("snapshotFilter", "[SnapshotQueryFilterInput!]"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("sortBy", "SnapshotQuerySortByField"),
+                Tuple.Create("timeRange", "TimeRangeInput"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySnapshotsOfCloudDirectShare",
+                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput)",
+                "CloudDirectSnapshotConnection",
+                Query.SnapshotsOfCloudDirectShare,
+                Query.SnapshotsOfCloudDirectShareFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.workloadId = $someString
+# OPTIONAL
+$query.Var.snapshotFilter = @(
+	@{
+		# OPTIONAL
+		field = $someSnapshotQueryFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotQueryFilterField]) for enum values.
+		# OPTIONAL
+		text = $someString
+		# OPTIONAL
+		typeFilters = @(
+			$someSnapshotTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeEnum]) for enum values.
+		)
+		# OPTIONAL
+		shouldFetchLinked = $someBoolean
+		# OPTIONAL
+		textList = @(
+			$someString
+		)
+		# OPTIONAL
+		time = $someDateTime
+		# OPTIONAL
+		customizationFilters = @(
+			$someSnapshotCustomization # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotCustomization]) for enum values.
+		)
+}
+)
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.sortBy = $someSnapshotQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotQuerySortByField]) for enum values.
+# OPTIONAL
+$query.Var.timeRange = @{
+	# REQUIRED
+	start = $someDateTime
+	# REQUIRED
+	end = $someDateTime
+}"
             );
         }
 

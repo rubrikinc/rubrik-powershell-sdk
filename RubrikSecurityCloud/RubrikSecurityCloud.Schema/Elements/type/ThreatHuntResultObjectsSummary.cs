@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ThreatHuntObjectStatus? ObjectScanStatus
+        // GraphQL -> objectScanStatus: ThreatHuntObjectStatus! (enum)
+        [JsonProperty("objectScanStatus")]
+        public ThreatHuntObjectStatus? ObjectScanStatus { get; set; }
+
         //      C# -> CdmHierarchySnappableNew? Object
         // GraphQL -> object: CdmHierarchySnappableNew (interface)
         [JsonProperty("object")]
@@ -29,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> earliestMatchedSnapshotDate: DateTime (scalar)
         [JsonProperty("earliestMatchedSnapshotDate")]
         public DateTime? EarliestMatchedSnapshotDate { get; set; }
+
+        //      C# -> System.Boolean? HasQuarantinedMatches
+        // GraphQL -> hasQuarantinedMatches: Boolean! (scalar)
+        [JsonProperty("hasQuarantinedMatches")]
+        public System.Boolean? HasQuarantinedMatches { get; set; }
 
         //      C# -> DateTime? LatestMatchedSnapshotDate
         // GraphQL -> latestMatchedSnapshotDate: DateTime (scalar)
@@ -85,8 +95,10 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ThreatHuntResultObjectsSummary Set(
+        ThreatHuntObjectStatus? ObjectScanStatus = null,
         CdmHierarchySnappableNew? Object = null,
         DateTime? EarliestMatchedSnapshotDate = null,
+        System.Boolean? HasQuarantinedMatches = null,
         DateTime? LatestMatchedSnapshotDate = null,
         DateTime? LatestSnapshotWithoutMatchDate = null,
         System.String? Location = null,
@@ -98,11 +110,17 @@ namespace RubrikSecurityCloud.Types
         List<ThreatHuntResultSnapshotStats>? SnapshotsStats = null
     ) 
     {
+        if ( ObjectScanStatus != null ) {
+            this.ObjectScanStatus = ObjectScanStatus;
+        }
         if ( Object != null ) {
             this.Object = Object;
         }
         if ( EarliestMatchedSnapshotDate != null ) {
             this.EarliestMatchedSnapshotDate = EarliestMatchedSnapshotDate;
+        }
+        if ( HasQuarantinedMatches != null ) {
+            this.HasQuarantinedMatches = HasQuarantinedMatches;
         }
         if ( LatestMatchedSnapshotDate != null ) {
             this.LatestMatchedSnapshotDate = LatestMatchedSnapshotDate;
@@ -145,6 +163,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ThreatHuntObjectStatus? ObjectScanStatus
+        // GraphQL -> objectScanStatus: ThreatHuntObjectStatus! (enum)
+        if (this.ObjectScanStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectScanStatus\n" ;
+            } else {
+                s += ind + "objectScanStatus\n" ;
+            }
+        }
         //      C# -> CdmHierarchySnappableNew? Object
         // GraphQL -> object: CdmHierarchySnappableNew (interface)
         if (this.Object != null) {
@@ -165,6 +192,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "earliestMatchedSnapshotDate\n" ;
             } else {
                 s += ind + "earliestMatchedSnapshotDate\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HasQuarantinedMatches
+        // GraphQL -> hasQuarantinedMatches: Boolean! (scalar)
+        if (this.HasQuarantinedMatches != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasQuarantinedMatches\n" ;
+            } else {
+                s += ind + "hasQuarantinedMatches\n" ;
             }
         }
         //      C# -> DateTime? LatestMatchedSnapshotDate
@@ -264,6 +300,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> ThreatHuntObjectStatus? ObjectScanStatus
+        // GraphQL -> objectScanStatus: ThreatHuntObjectStatus! (enum)
+        if (ec.Includes("objectScanStatus",true))
+        {
+            if(this.ObjectScanStatus == null) {
+
+                this.ObjectScanStatus = new ThreatHuntObjectStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectScanStatus != null && ec.Excludes("objectScanStatus",true))
+        {
+            this.ObjectScanStatus = null;
+        }
         //      C# -> CdmHierarchySnappableNew? Object
         // GraphQL -> object: CdmHierarchySnappableNew (interface)
         if (ec.Includes("object",false))
@@ -304,6 +357,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EarliestMatchedSnapshotDate != null && ec.Excludes("earliestMatchedSnapshotDate",true))
         {
             this.EarliestMatchedSnapshotDate = null;
+        }
+        //      C# -> System.Boolean? HasQuarantinedMatches
+        // GraphQL -> hasQuarantinedMatches: Boolean! (scalar)
+        if (ec.Includes("hasQuarantinedMatches",true))
+        {
+            if(this.HasQuarantinedMatches == null) {
+
+                this.HasQuarantinedMatches = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasQuarantinedMatches != null && ec.Excludes("hasQuarantinedMatches",true))
+        {
+            this.HasQuarantinedMatches = null;
         }
         //      C# -> DateTime? LatestMatchedSnapshotDate
         // GraphQL -> latestMatchedSnapshotDate: DateTime (scalar)

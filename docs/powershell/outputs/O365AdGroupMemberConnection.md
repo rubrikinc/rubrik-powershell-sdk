@@ -6,6 +6,6 @@ Paginated list of O365AdGroupMember objects. Each page of the results includes a
 - nodes: list of O365AdGroupMembers
   - List of O365AdGroupMember objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of O365AdGroupMember objects matching the request arguments.

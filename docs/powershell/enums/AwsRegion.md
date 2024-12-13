@@ -31,3 +31,4 @@ Regions for AWS.
 - IL_CENTRAL_1 - Israel (tel aviv) region.
 - EU_NORTH_1 - AWS EU (Stockholm) region.
 - AP_SOUTH_2 - AWS Asia Pacific (Hyderabad) region.
+- CA_WEST_1 - AWS Canada (Calgary) region.

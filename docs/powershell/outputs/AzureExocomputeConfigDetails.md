@@ -17,5 +17,17 @@ Exocompute configurations details.
   - Error message received while creating Exocompute configuration.
 - healthCheckStatus: ExocomputeHealthCheckStatus
   - Status of the latest Exocompute health check.
+- hasPcr: System.Boolean
+  - Whether this Exocompute uses a Private Container Registry (PCR).
+- pcrUrl: System.String
+  - URL of the user's PCR.
+- pcrLatestApprovedBundleVersion: System.String
+  - Latest approved exotask bundle version for your Private Container Registry.
+- pcrImagePullAzureAppId: System.String
+  - Customer Azure App ID authorized to pull images from Rubrik's Elastic Container Registry.
+- byokClusterName: System.String
+  - Cluster name of the customer-managed Exocompute.
+- byokClusterId: System.String
+  - Cluster ID of the customer-managed Exocompute.
 - latestExoclusterDetails: ExocomputeClusterDetails
   - Details of the latest Exocompute cluster.

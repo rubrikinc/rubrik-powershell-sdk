@@ -6,6 +6,6 @@ Paginated list of O365User objects. Each page of the results includes at most 10
 - nodes: list of O365Users
   - List of O365User objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of O365User objects matching the request arguments.

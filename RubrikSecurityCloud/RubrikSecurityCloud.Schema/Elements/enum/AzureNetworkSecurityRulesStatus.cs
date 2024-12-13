@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureNetworkSecurityRulesStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BLOCKING")]
         BLOCKING,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         GOOD,
 
         [EnumMember(Value = "MAYBE_BLOCKING")]
-        MAYBE_BLOCKING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MAYBE_BLOCKING
 
 
     } // enum AzureNetworkSecurityRulesStatus

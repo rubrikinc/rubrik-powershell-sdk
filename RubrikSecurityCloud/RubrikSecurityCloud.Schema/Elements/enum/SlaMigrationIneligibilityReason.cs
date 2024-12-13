@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SlaMigrationIneligibilityReason
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CASCADED_ARCHIVAL_CONFIGURED")]
         CASCADED_ARCHIVAL_CONFIGURED,
 
@@ -79,10 +82,7 @@ namespace RubrikSecurityCloud.Types
         UNSUPPORTED_PROTECTED_OBJECTS_MINUTE_FREQUENCY_CONFIGURED,
 
         [EnumMember(Value = "UNSUPPORTED_PROTECTED_OBJECTS_SHARE_FILESET")]
-        UNSUPPORTED_PROTECTED_OBJECTS_SHARE_FILESET,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSUPPORTED_PROTECTED_OBJECTS_SHARE_FILESET
 
 
     } // enum SlaMigrationIneligibilityReason

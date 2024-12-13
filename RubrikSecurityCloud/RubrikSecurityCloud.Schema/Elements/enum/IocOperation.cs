@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum IocOperation
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DISABLE")]
         DISABLE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         ENABLE,
 
         [EnumMember(Value = "OPERATION_UNSPECIFIED")]
-        OPERATION_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        OPERATION_UNSPECIFIED
 
 
     } // enum IocOperation

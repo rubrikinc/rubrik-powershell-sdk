@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum IbmDeploymentType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLOUD")]
         CLOUD,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         IBM_DEPLOYMENT_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "VAULT")]
-        VAULT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VAULT
 
 
     } // enum IbmDeploymentType

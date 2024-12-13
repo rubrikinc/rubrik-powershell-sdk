@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RetentionLockMode
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "COMPLIANCE")]
         COMPLIANCE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         GOVERNANCE,
 
         [EnumMember(Value = "NO_MODE")]
-        NO_MODE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NO_MODE
 
 
     } // enum RetentionLockMode

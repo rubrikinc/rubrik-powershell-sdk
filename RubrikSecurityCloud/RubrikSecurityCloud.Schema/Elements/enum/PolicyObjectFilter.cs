@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PolicyObjectFilter
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ALL")]
         ALL,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         HAS_OBJECTS,
 
         [EnumMember(Value = "NO_OBJECTS")]
-        NO_OBJECTS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NO_OBJECTS
 
 
     } // enum PolicyObjectFilter

@@ -435,6 +435,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	exocomputeCloudNativeAccountId = $someString
     /// 	# OPTIONAL
     /// 	exocomputeRegion = $someString
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1233,6 +1235,8 @@ $query.Var.input = @{
 	exocomputeCloudNativeAccountId = $someString
 	# OPTIONAL
 	exocomputeRegion = $someString
+	# OPTIONAL
+	archivedSnapshotId = $someString
 }"
             );
         }

@@ -1,6 +1,10 @@
 ### VsphereDatacenter
 - cdmId: System.String
   - Vsphere Datacenter CDM ID.
+- snapshotConsistencyMandate: ConsistencyLevelEnum
+  - Snapshot consistency mandate.
+- snapshotConsistencySource: System.String
+  - Fid of the object from where the snapshot consistency mandate is inherited.
 - descendantConnection: VsphereDatacenterDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: VsphereDatacenterLogicalChildTypeConnection

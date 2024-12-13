@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FileResultSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER")]
         CLUSTER,
 
@@ -82,10 +85,7 @@ namespace RubrikSecurityCloud.Types
         STALE_FILES_WITH_HITS,
 
         [EnumMember(Value = "TOTAL_SENSITIVE_HITS")]
-        TOTAL_SENSITIVE_HITS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TOTAL_SENSITIVE_HITS
 
 
     } // enum FileResultSortBy

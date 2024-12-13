@@ -6,6 +6,6 @@ Paginated list of CassandraColumnFamily objects. Each page of the results includ
 - nodes: list of CassandraColumnFamilys
   - List of CassandraColumnFamily objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of CassandraColumnFamily objects matching the request arguments.

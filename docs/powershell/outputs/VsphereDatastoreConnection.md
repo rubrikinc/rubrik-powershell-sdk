@@ -6,6 +6,6 @@ Paginated list of VsphereDatastore objects. Each page of the results includes at
 - nodes: list of VsphereDatastores
   - List of VsphereDatastore objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of VsphereDatastore objects matching the request arguments.

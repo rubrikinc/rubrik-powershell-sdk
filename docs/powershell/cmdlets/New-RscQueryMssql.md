@@ -8,10 +8,13 @@ A Microsoft SQL Availability Group.
 ### availabilitygroupdatabasevirtualgroups
 Paginated list of virtual groups for MSSQL databases.
 
-- There are 3 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - fids - list of System.Strings: The Rubrik UUIDs for the objects.
+    - filters - list of MssqlAvailabilityGroupDatabaseVirtualGroupFilterInputs: Filters for MSSQL availability group database virtual groups. The default is no filters, and all objects are returned.
+    - sortBy - MssqlAvailabilityGroupDatabaseVirtualGroupSortByInput: Sort by argument is for MSSQL availability group database virtual groups. By default, sort according to ID in ascending order.
+    - sortOrder - MssqlAvailabilityGroupDatabaseVirtualGroupSortOrderInput: Sort order argument for MSSQL availability group database virtual groups.
 - Returns MssqlDatabaseVirtualGroupConnection.
 ### availabilitygroupvirtualgroups
 Paginated list of virtual groups for MSSQL availability groups.

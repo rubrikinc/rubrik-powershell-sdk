@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AuditObjectType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN")]
         ACTIVE_DIRECTORY_DOMAIN,
 
@@ -111,6 +114,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CROSS_ACCOUNT_PAIR")]
         CROSS_ACCOUNT_PAIR,
 
+        [EnumMember(Value = "D365_DATAVERSE_TABLE")]
+        D365_DATAVERSE_TABLE,
+
+        [EnumMember(Value = "D365_METADATA")]
+        D365_METADATA,
+
+        [EnumMember(Value = "D365_ORGANIZATION")]
+        D365_ORGANIZATION,
+
         [EnumMember(Value = "DATA_CENTER_CLOUD_ACCOUNT")]
         DATA_CENTER_CLOUD_ACCOUNT,
 
@@ -171,6 +183,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_VM")]
         HYPERV_VM,
 
+        [EnumMember(Value = "INTEGRATION")]
+        INTEGRATION,
+
         [EnumMember(Value = "INTEL_FEED")]
         INTEL_FEED,
 
@@ -189,8 +204,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_CLUSTER")]
         K8S_CLUSTER,
 
+        [EnumMember(Value = "K8S_NAMESPACE_V2")]
+        K8S_NAMESPACE_V2,
+
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,
+
+        [EnumMember(Value = "K8S_VIRTUAL_MACHINE")]
+        K8S_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "KMS_KEY_VAULT")]
         KMS_KEY_VAULT,
@@ -418,10 +439,7 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_FILESET,
 
         [EnumMember(Value = "WINDOWS_HOST")]
-        WINDOWS_HOST,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS_HOST
 
 
     } // enum AuditObjectType

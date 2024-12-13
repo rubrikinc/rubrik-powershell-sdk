@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AwsAuthServerBasedCloudAccountRegion
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "UNKNOWN_AWS_AUTH_SERVER_BASED_REGION")]
         UNKNOWN_AWS_AUTH_SERVER_BASED_REGION,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         US_ISO_EAST_1,
 
         [EnumMember(Value = "US_ISO_WEST_1")]
-        US_ISO_WEST_1,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        US_ISO_WEST_1
 
 
     } // enum AwsAuthServerBasedCloudAccountRegion

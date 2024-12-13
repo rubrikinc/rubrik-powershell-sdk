@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ProtectionType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BACKUP_STORAGE")]
         BACKUP_STORAGE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         PROTECTION_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "RUBRIK")]
-        RUBRIK,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        RUBRIK
 
 
     } // enum ProtectionType

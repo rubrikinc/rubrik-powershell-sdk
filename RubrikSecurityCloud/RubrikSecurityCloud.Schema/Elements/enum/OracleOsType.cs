@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum OracleOsType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "LINUX")]
         LINUX,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         UNDEFINED,
 
         [EnumMember(Value = "WINDOWS")]
-        WINDOWS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS
 
 
     } // enum OracleOsType

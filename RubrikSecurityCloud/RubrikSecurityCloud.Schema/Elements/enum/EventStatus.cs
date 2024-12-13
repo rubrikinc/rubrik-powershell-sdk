@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum EventStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CANCELED")]
         CANCELED,
 
@@ -49,10 +52,7 @@ namespace RubrikSecurityCloud.Types
         UNKNOWN_EVENT_STATUS,
 
         [EnumMember(Value = "WARNING")]
-        WARNING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WARNING
 
 
     } // enum EventStatus

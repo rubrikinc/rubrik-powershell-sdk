@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DlpStatusCode
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "INTEGRATION_STATUS_UNSPECIFIED")]
         INTEGRATION_STATUS_UNSPECIFIED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         SERVICE_ACCOUNT_INSUFFICIENT_PERMISSIONS,
 
         [EnumMember(Value = "SERVICE_ACCOUNT_MISSING")]
-        SERVICE_ACCOUNT_MISSING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SERVICE_ACCOUNT_MISSING
 
 
     } // enum DlpStatusCode

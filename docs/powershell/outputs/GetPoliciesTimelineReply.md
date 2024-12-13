@@ -32,4 +32,20 @@
   - Count of low sensitivity hits.
 - nonSensitivityHits: list of TimelineEntrys
   - Count of non sensitivity hits.
+- highRiskCloudObjects: list of TimelineEntrys
+  - Count of cloud objects with high risk.
+- highRiskDatacenterObjects: list of TimelineEntrys
+  - Count of data center objects with high risk.
+- highRiskSaasObjects: list of TimelineEntrys
+  - Count of SaaS objects with high risk.
+- highRiskSensitiveFiles: list of TimelineEntrys
+  - Count of high-risk sensitive files.
+- mediumRiskSensitiveFiles: list of TimelineEntrys
+  - Count of medium-risk sensitive files.
+- lowRiskSensitiveFiles: list of TimelineEntrys
+  - Count of low-risk sensitive files.
+- noRiskSensitiveFiles: list of TimelineEntrys
+  - Count of no risk-sensitive files.
+- totalRiskObjects: list of TimelineEntrys
+  - Count of objects with non-zero sensitive hits.
 - policySummaries: list of ClassificationPolicySummarys

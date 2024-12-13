@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HypervLiveMountFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         ORIGINAL_VM_ID,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSPECIFIED
 
 
     } // enum HypervLiveMountFilterField

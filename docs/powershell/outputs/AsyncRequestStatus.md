@@ -25,6 +25,9 @@ Supported in v5.0+
   - Required. Supported in v5.0+
   v5.0: Status of the id.
   v5.1+: Status of the ID.
+- result: System.String
+  - Supported in v9.3
+  The result of the request.
 - error: RequestErrorInfo
   - Supported in v5.0+
   Any errors encountered.

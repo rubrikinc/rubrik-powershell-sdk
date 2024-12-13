@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SlaObjectType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_OBJECT_TYPE")]
         ACTIVE_DIRECTORY_OBJECT_TYPE,
 
@@ -47,6 +50,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CASSANDRA_OBJECT_TYPE")]
         CASSANDRA_OBJECT_TYPE,
+
+        [EnumMember(Value = "D365_OBJECT_TYPE")]
+        D365_OBJECT_TYPE,
 
         [EnumMember(Value = "DB2_OBJECT_TYPE")]
         DB2_OBJECT_TYPE,
@@ -121,10 +127,7 @@ namespace RubrikSecurityCloud.Types
         VOLUME_GROUP_OBJECT_TYPE,
 
         [EnumMember(Value = "VSPHERE_OBJECT_TYPE")]
-        VSPHERE_OBJECT_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VSPHERE_OBJECT_TYPE
 
 
     } // enum SlaObjectType

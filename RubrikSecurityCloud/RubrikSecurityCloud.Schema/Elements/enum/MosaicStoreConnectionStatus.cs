@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MosaicStoreConnectionStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "STATUS_UNAVAILABLE")]
         STATUS_UNAVAILABLE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         STORE_CONNECTED,
 
         [EnumMember(Value = "STORE_DISCONNECTED")]
-        STORE_DISCONNECTED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STORE_DISCONNECTED
 
 
     } // enum MosaicStoreConnectionStatus

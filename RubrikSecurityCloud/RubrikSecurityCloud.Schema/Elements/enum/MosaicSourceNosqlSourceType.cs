@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MosaicSourceNosqlSourceType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CASSANDRA")]
         CASSANDRA,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         MONGODB,
 
         [EnumMember(Value = "UNDEFINED")]
-        UNDEFINED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNDEFINED
 
 
     } // enum MosaicSourceNosqlSourceType

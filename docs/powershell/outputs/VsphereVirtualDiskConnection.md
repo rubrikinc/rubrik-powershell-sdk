@@ -6,6 +6,6 @@ Paginated list of VsphereVirtualDisk objects. Each page of the results includes 
 - nodes: list of VsphereVirtualDisks
   - List of VsphereVirtualDisk objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of VsphereVirtualDisk objects matching the request arguments.

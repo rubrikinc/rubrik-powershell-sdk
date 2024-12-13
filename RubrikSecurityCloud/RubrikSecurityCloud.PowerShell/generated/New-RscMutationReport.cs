@@ -321,6 +321,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	timeZone = $someString
     /// 	# OPTIONAL
+    /// 	showChartsInEmailBody = $someBoolean
+    /// 	# OPTIONAL
     /// 	weeklyDays = @(
     /// 		$someWeekDay # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekDay]) for enum values.
     /// 	)
@@ -474,6 +476,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	attachmentTypes = @(
     /// 		$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	showChartsInEmailBody = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -810,6 +814,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		timeZone = $someString
+    /// 		# OPTIONAL
+    /// 		showChartsInEmailBody = $someBoolean
     /// 		# OPTIONAL
     /// 		updateCreator = $someBoolean
     /// 		# OPTIONAL
@@ -1247,6 +1253,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	timeZone = $someString
 	# OPTIONAL
+	showChartsInEmailBody = $someBoolean
+	# OPTIONAL
 	weeklyDays = @(
 		$someWeekDay # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekDay]) for enum values.
 	)
@@ -1368,6 +1376,8 @@ $query.Var.input = @{
 	attachmentTypes = @(
 		$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
 	)
+	# OPTIONAL
+	showChartsInEmailBody = $someBoolean
 }"
             );
         }
@@ -1672,6 +1682,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		timeZone = $someString
+		# OPTIONAL
+		showChartsInEmailBody = $someBoolean
 		# OPTIONAL
 		updateCreator = $someBoolean
 		# OPTIONAL

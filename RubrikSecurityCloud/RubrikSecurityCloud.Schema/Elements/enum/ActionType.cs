@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ActionType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "RESUME")]
         RESUME,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         ROLLBACK,
 
         [EnumMember(Value = "START")]
-        START,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        START
 
 
     } // enum ActionType

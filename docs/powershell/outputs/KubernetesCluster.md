@@ -39,6 +39,8 @@ Kubernetes cluster.
   - List of descendants.
 - k8sDescendantProtectionSets: KubernetesProtectionSetConnection
   - Protection Sets belonging to the Kubernetes cluster.
+- k8sDescendantVirtualMachines: KubernetesVirtualMachineConnection
+  - Virtual machines belonging to the Kubernetes cluster.
 - onboardingType: KubernetesOnboardingType
   - Onboarding type of Kubernetes cluster.
 - id: System.String

@@ -7,7 +7,7 @@ All unarchived custom TPR policies.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - TprPolicySortByField: Fields to sort TPR policies.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - TprPolicyFilterInput: Input for filtering a list of TPR policies.
@@ -51,7 +51,7 @@ Returns detailed policy information.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns ClassificationPolicyDetail.
 ### policyobjectusages
 Returns the policies assigned to each object.

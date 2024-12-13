@@ -86,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureSubscriptionNativeId")]
         public System.String? AzureSubscriptionNativeId { get; set; }
 
+        //      C# -> System.String? CloudSlabDns
+        // GraphQL -> cloudSlabDns: String! (scalar)
+        [JsonProperty("cloudSlabDns")]
+        public System.String? CloudSlabDns { get; set; }
+
         //      C# -> System.Int32? DisksCount
         // GraphQL -> disksCount: Int! (scalar)
         [JsonProperty("disksCount")]
@@ -234,6 +239,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? AzureSqlManagedInstanceDbCount = null,
         System.Int32? AzureStorageAccountCount = null,
         System.String? AzureSubscriptionNativeId = null,
+        System.String? CloudSlabDns = null,
         System.Int32? DisksCount = null,
         System.String? Id = null,
         DateTime? LastRefreshedAt = null,
@@ -294,6 +300,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureSubscriptionNativeId != null ) {
             this.AzureSubscriptionNativeId = AzureSubscriptionNativeId;
+        }
+        if ( CloudSlabDns != null ) {
+            this.CloudSlabDns = CloudSlabDns;
         }
         if ( DisksCount != null ) {
             this.DisksCount = DisksCount;
@@ -496,6 +505,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "azureSubscriptionNativeId\n" ;
             } else {
                 s += ind + "azureSubscriptionNativeId\n" ;
+            }
+        }
+        //      C# -> System.String? CloudSlabDns
+        // GraphQL -> cloudSlabDns: String! (scalar)
+        if (this.CloudSlabDns != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudSlabDns\n" ;
+            } else {
+                s += ind + "cloudSlabDns\n" ;
             }
         }
         //      C# -> System.Int32? DisksCount
@@ -962,6 +980,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureSubscriptionNativeId != null && ec.Excludes("azureSubscriptionNativeId",true))
         {
             this.AzureSubscriptionNativeId = null;
+        }
+        //      C# -> System.String? CloudSlabDns
+        // GraphQL -> cloudSlabDns: String! (scalar)
+        if (ec.Includes("cloudSlabDns",true))
+        {
+            if(this.CloudSlabDns == null) {
+
+                this.CloudSlabDns = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudSlabDns != null && ec.Excludes("cloudSlabDns",true))
+        {
+            this.CloudSlabDns = null;
         }
         //      C# -> System.Int32? DisksCount
         // GraphQL -> disksCount: Int! (scalar)

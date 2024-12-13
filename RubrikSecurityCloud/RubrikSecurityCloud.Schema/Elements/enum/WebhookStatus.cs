@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum WebhookStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AUTO_DISABLED")]
         AUTO_DISABLED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         ENABLED,
 
         [EnumMember(Value = "WEBHOOK_STATUS_UNSPECIFIED")]
-        WEBHOOK_STATUS_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WEBHOOK_STATUS_UNSPECIFIED
 
 
     } // enum WebhookStatus

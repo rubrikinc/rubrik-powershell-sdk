@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ProxyProtocol
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HTTP")]
         HTTP,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         PROTOCOL_UNSPECIFIED,
 
         [EnumMember(Value = "SOCKS5")]
-        SOCK_S5,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SOCK_S5
 
 
     } // enum ProxyProtocol

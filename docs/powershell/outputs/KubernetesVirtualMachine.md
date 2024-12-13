@@ -1,0 +1,105 @@
+### KubernetesVirtualMachine
+Kubernetes virtual machine.
+
+- cdmId: System.String
+  - ID of Kubernetes Virtual Machine on Rubrik CDM.
+- clusterUuid: System.String
+  - UUID of CDM cluster.
+- primaryClusterUuid: System.String
+  - UUID of Primary CDM cluster.
+- isRelic: System.Boolean
+  - Specifies whether the Protection Set is a relic.
+- vmName: System.String
+  - Name of Kubernetes Virtual Machine.
+- k8sClusterUuid: System.String
+  - UUID of the Kubernetes Cluster.
+- k8sClusterName: System.String
+  - Name of the Kubernetes cluster.
+- k8sNamespaceId: System.String
+  - ID of the Kubernetes namespace.
+- namespaceName: System.String
+  - Name of the Kubernetes namespace.
+- apiVersion: System.String
+  - API version of the K8s Virtual Machine.
+- guestOsName: System.String
+  - Guest OS name of the K8s Virtual Machine.
+- protectionSetId: System.String
+  - ID of the Protection Set.
+- powerStatus: System.String
+  - Power status of the K8s Virtual Machine.
+- virtualizationProvider: System.String
+  - Virtualization provider of the K8s Virtual Machine.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- id: System.String
+  - Object ID of Kubernetes Virtual Machine.
+- k8sVirtualMachineDisks: KubernetesVirtualMachineDiskConnection
+  - List of Kubernetes virtual machine disks.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - Sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - Sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- cdmLink: System.String
+  - A link to view the workload on the CDM cluster. For dev use only.
+- missedSnapshotConnection: MissedSnapshotCommonConnection
+  - The list of missed snapshots for this workload.
+- missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection
+  - The list of missed snapshots for this workload.
+- snapshotConnection: CdmSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: CdmSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestIndexedSnapshot: CdmSnapshot
+  - The most recent indexed snapshot of this workload.
+- newestSnapshot: CdmSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: CdmSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestArchivedSnapshot: CdmSnapshot
+  - The newest snapshot archived to AWS.
+- newestReplicatedSnapshot: CdmSnapshot
+  - The newest snapshot replicated to a cluster.

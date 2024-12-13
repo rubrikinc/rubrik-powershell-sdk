@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AceFlags
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CONTAINER_INHERIT")]
         CONTAINER_INHERIT,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         OBJECT_INHERIT,
 
         [EnumMember(Value = "SUCCESSFUL_ACCESS")]
-        SUCCESSFUL_ACCESS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUCCESSFUL_ACCESS
 
 
     } // enum AceFlags

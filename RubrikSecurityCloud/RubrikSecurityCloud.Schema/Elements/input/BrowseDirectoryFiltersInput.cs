@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exposureFilter")]
         public List<OpenAccessType>? ExposureFilter { get; set; }
 
+        //      C# -> List<MipLabelsFilterInput>? MipLabelsFilter
+        // GraphQL -> mipLabelsFilter: [MipLabelsFilterInput!] (input)
+        [JsonProperty("mipLabelsFilter")]
+        public List<MipLabelsFilterInput>? MipLabelsFilter { get; set; }
+
 
         #endregion
 

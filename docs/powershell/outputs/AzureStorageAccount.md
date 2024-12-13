@@ -17,6 +17,8 @@ An Azure storage account that contains Azure storage data objects including blob
   - The access tier of the storage account.
 - numContainers: System.Int64
   - The number of containers in the storage account.
+- numExcludedContainers: System.Int64
+  - The number of containers excluded from protection by the customer in the storage account.
 - accountKind: AzureStorageAccountKind
   - The Storage Account type.
 - isHierarchicalNamespaceEnabled: System.Boolean

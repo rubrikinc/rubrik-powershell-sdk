@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ConnectionStatusType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CONNECTED")]
         CONNECTED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         DISCONNECTED,
 
         [EnumMember(Value = "UNAVAILABLE")]
-        UNAVAILABLE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNAVAILABLE
 
 
     } // enum ConnectionStatusType

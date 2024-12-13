@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UpgradeInfoSortByEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ClusterJobStatus")]
         CLUSTER_JOB_STATUS,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         REGISTERED_AT,
 
         [EnumMember(Value = "VersionStatus")]
-        VERSION_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VERSION_STATUS
 
 
     } // enum UpgradeInfoSortByEnum

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AnalyzerRuleType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "STRUCTURED")]
         STRUCTURED,
 
         [EnumMember(Value = "UNSTRUCTURED")]
-        UNSTRUCTURED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSTRUCTURED
 
 
     } // enum AnalyzerRuleType

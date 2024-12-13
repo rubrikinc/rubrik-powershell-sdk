@@ -6,6 +6,6 @@ Paginated list of GcpNativeGceInstance objects. Each page of the results include
 - nodes: list of GcpNativeGceInstances
   - List of GcpNativeGceInstance objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of GcpNativeGceInstance objects matching the request arguments.

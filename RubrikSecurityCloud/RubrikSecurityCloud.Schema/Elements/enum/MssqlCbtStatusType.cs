@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlCbtStatusType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MSSQL_CBT_STATUS_TYPE_DEFAULT")]
         MSSQL_CBT_STATUS_TYPE_DEFAULT,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         MSSQL_CBT_STATUS_TYPE_DISABLED,
 
         [EnumMember(Value = "MSSQL_CBT_STATUS_TYPE_ENABLED")]
-        MSSQL_CBT_STATUS_TYPE_ENABLED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MSSQL_CBT_STATUS_TYPE_ENABLED
 
 
     } // enum MssqlCbtStatusType

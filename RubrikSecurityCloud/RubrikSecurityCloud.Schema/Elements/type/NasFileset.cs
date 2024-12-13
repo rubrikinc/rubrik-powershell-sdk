@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.Boolean? AllowBackupHiddenFoldersInNetworkMounts
+        // GraphQL -> allowBackupHiddenFoldersInNetworkMounts: Boolean! (scalar)
+        [JsonProperty("allowBackupHiddenFoldersInNetworkMounts")]
+        public System.Boolean? AllowBackupHiddenFoldersInNetworkMounts { get; set; }
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -135,6 +140,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
+
+        //      C# -> System.String? SnapmirrorLabelForFullBackup
+        // GraphQL -> snapmirrorLabelForFullBackup: String! (scalar)
+        [JsonProperty("snapmirrorLabelForFullBackup")]
+        public System.String? SnapmirrorLabelForFullBackup { get; set; }
+
+        //      C# -> System.String? SnapmirrorLabelForIncrementalBackup
+        // GraphQL -> snapmirrorLabelForIncrementalBackup: String! (scalar)
+        [JsonProperty("snapmirrorLabelForIncrementalBackup")]
+        public System.String? SnapmirrorLabelForIncrementalBackup { get; set; }
 
         //      C# -> System.Boolean? SymlinkResolutionEnabled
         // GraphQL -> symlinkResolutionEnabled: Boolean! (scalar)
@@ -356,6 +371,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.Boolean? AllowBackupHiddenFoldersInNetworkMounts = null,
         System.String? CdmId = null,
         System.String? CdmLink = null,
         System.Boolean? HardlinkSupportEnabled = null,
@@ -371,6 +387,8 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? PathsIncluded = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
+        System.String? SnapmirrorLabelForFullBackup = null,
+        System.String? SnapmirrorLabelForIncrementalBackup = null,
         System.Boolean? SymlinkResolutionEnabled = null,
         System.String? TemplateFid = null,
         List<Org>? AllOrgs = null,
@@ -421,6 +439,9 @@ namespace RubrikSecurityCloud.Types
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
         }
+        if ( AllowBackupHiddenFoldersInNetworkMounts != null ) {
+            this.AllowBackupHiddenFoldersInNetworkMounts = AllowBackupHiddenFoldersInNetworkMounts;
+        }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
         }
@@ -465,6 +486,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( SnapmirrorLabelForFullBackup != null ) {
+            this.SnapmirrorLabelForFullBackup = SnapmirrorLabelForFullBackup;
+        }
+        if ( SnapmirrorLabelForIncrementalBackup != null ) {
+            this.SnapmirrorLabelForIncrementalBackup = SnapmirrorLabelForIncrementalBackup;
         }
         if ( SymlinkResolutionEnabled != null ) {
             this.SymlinkResolutionEnabled = SymlinkResolutionEnabled;
@@ -644,6 +671,15 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> System.Boolean? AllowBackupHiddenFoldersInNetworkMounts
+        // GraphQL -> allowBackupHiddenFoldersInNetworkMounts: Boolean! (scalar)
+        if (this.AllowBackupHiddenFoldersInNetworkMounts != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "allowBackupHiddenFoldersInNetworkMounts\n" ;
+            } else {
+                s += ind + "allowBackupHiddenFoldersInNetworkMounts\n" ;
+            }
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
@@ -777,6 +813,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> System.String? SnapmirrorLabelForFullBackup
+        // GraphQL -> snapmirrorLabelForFullBackup: String! (scalar)
+        if (this.SnapmirrorLabelForFullBackup != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapmirrorLabelForFullBackup\n" ;
+            } else {
+                s += ind + "snapmirrorLabelForFullBackup\n" ;
+            }
+        }
+        //      C# -> System.String? SnapmirrorLabelForIncrementalBackup
+        // GraphQL -> snapmirrorLabelForIncrementalBackup: String! (scalar)
+        if (this.SnapmirrorLabelForIncrementalBackup != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapmirrorLabelForIncrementalBackup\n" ;
+            } else {
+                s += ind + "snapmirrorLabelForIncrementalBackup\n" ;
             }
         }
         //      C# -> System.Boolean? SymlinkResolutionEnabled
@@ -1234,6 +1288,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicatedObjects = null;
         }
+        //      C# -> System.Boolean? AllowBackupHiddenFoldersInNetworkMounts
+        // GraphQL -> allowBackupHiddenFoldersInNetworkMounts: Boolean! (scalar)
+        if (ec.Includes("allowBackupHiddenFoldersInNetworkMounts",true))
+        {
+            if(this.AllowBackupHiddenFoldersInNetworkMounts == null) {
+
+                this.AllowBackupHiddenFoldersInNetworkMounts = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AllowBackupHiddenFoldersInNetworkMounts != null && ec.Excludes("allowBackupHiddenFoldersInNetworkMounts",true))
+        {
+            this.AllowBackupHiddenFoldersInNetworkMounts = null;
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (ec.Includes("cdmId",true))
@@ -1488,6 +1559,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> System.String? SnapmirrorLabelForFullBackup
+        // GraphQL -> snapmirrorLabelForFullBackup: String! (scalar)
+        if (ec.Includes("snapmirrorLabelForFullBackup",true))
+        {
+            if(this.SnapmirrorLabelForFullBackup == null) {
+
+                this.SnapmirrorLabelForFullBackup = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapmirrorLabelForFullBackup != null && ec.Excludes("snapmirrorLabelForFullBackup",true))
+        {
+            this.SnapmirrorLabelForFullBackup = null;
+        }
+        //      C# -> System.String? SnapmirrorLabelForIncrementalBackup
+        // GraphQL -> snapmirrorLabelForIncrementalBackup: String! (scalar)
+        if (ec.Includes("snapmirrorLabelForIncrementalBackup",true))
+        {
+            if(this.SnapmirrorLabelForIncrementalBackup == null) {
+
+                this.SnapmirrorLabelForIncrementalBackup = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapmirrorLabelForIncrementalBackup != null && ec.Excludes("snapmirrorLabelForIncrementalBackup",true))
+        {
+            this.SnapmirrorLabelForIncrementalBackup = null;
         }
         //      C# -> System.Boolean? SymlinkResolutionEnabled
         // GraphQL -> symlinkResolutionEnabled: Boolean! (scalar)

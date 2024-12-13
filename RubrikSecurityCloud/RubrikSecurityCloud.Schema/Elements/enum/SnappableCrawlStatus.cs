@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnappableCrawlStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "COMPLETE")]
         COMPLETE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         FAIL,
 
         [EnumMember(Value = "IN_PROGRESS")]
-        IN_PROGRESS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        IN_PROGRESS
 
 
     } // enum SnappableCrawlStatus

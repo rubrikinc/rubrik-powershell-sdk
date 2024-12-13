@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PrivateEndpointConnectionStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "APPROVED")]
         APPROVED,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         REMOVED,
 
         [EnumMember(Value = "UNSPECIFIED_PE_CONNECTION_STATUS")]
-        UNSPECIFIED_PE_CONNECTION_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSPECIFIED_PE_CONNECTION_STATUS
 
 
     } // enum PrivateEndpointConnectionStatus

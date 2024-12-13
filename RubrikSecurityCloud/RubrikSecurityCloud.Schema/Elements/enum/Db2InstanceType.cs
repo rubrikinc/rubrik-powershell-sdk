@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum Db2InstanceType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "INSTANCETYPE_UNSPECIFIED")]
         INSTANCETYPE_UNSPECIFIED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         PURESCALE,
 
         [EnumMember(Value = "STANDALONE")]
-        STANDALONE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STANDALONE
 
 
     } // enum Db2InstanceType

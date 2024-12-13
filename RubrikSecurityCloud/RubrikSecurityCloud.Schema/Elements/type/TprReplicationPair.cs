@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ExistingConfigDetails
+        // GraphQL -> existingConfigDetails: String! (scalar)
+        [JsonProperty("existingConfigDetails")]
+        public System.String? ExistingConfigDetails { get; set; }
+
+        //      C# -> System.String? NewConfigDetails
+        // GraphQL -> newConfigDetails: String! (scalar)
+        [JsonProperty("newConfigDetails")]
+        public System.String? NewConfigDetails { get; set; }
+
         //      C# -> System.String? SourceClusterName
         // GraphQL -> sourceClusterName: String! (scalar)
         [JsonProperty("sourceClusterName")]
@@ -40,10 +50,18 @@ namespace RubrikSecurityCloud.Types
     }
 
     public TprReplicationPair Set(
+        System.String? ExistingConfigDetails = null,
+        System.String? NewConfigDetails = null,
         System.String? SourceClusterName = null,
         System.String? TargetClusterName = null
     ) 
     {
+        if ( ExistingConfigDetails != null ) {
+            this.ExistingConfigDetails = ExistingConfigDetails;
+        }
+        if ( NewConfigDetails != null ) {
+            this.NewConfigDetails = NewConfigDetails;
+        }
         if ( SourceClusterName != null ) {
             this.SourceClusterName = SourceClusterName;
         }
@@ -64,6 +82,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? ExistingConfigDetails
+        // GraphQL -> existingConfigDetails: String! (scalar)
+        if (this.ExistingConfigDetails != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "existingConfigDetails\n" ;
+            } else {
+                s += ind + "existingConfigDetails\n" ;
+            }
+        }
+        //      C# -> System.String? NewConfigDetails
+        // GraphQL -> newConfigDetails: String! (scalar)
+        if (this.NewConfigDetails != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "newConfigDetails\n" ;
+            } else {
+                s += ind + "newConfigDetails\n" ;
+            }
+        }
         //      C# -> System.String? SourceClusterName
         // GraphQL -> sourceClusterName: String! (scalar)
         if (this.SourceClusterName != null) {
@@ -89,6 +125,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? ExistingConfigDetails
+        // GraphQL -> existingConfigDetails: String! (scalar)
+        if (ec.Includes("existingConfigDetails",true))
+        {
+            if(this.ExistingConfigDetails == null) {
+
+                this.ExistingConfigDetails = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExistingConfigDetails != null && ec.Excludes("existingConfigDetails",true))
+        {
+            this.ExistingConfigDetails = null;
+        }
+        //      C# -> System.String? NewConfigDetails
+        // GraphQL -> newConfigDetails: String! (scalar)
+        if (ec.Includes("newConfigDetails",true))
+        {
+            if(this.NewConfigDetails == null) {
+
+                this.NewConfigDetails = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NewConfigDetails != null && ec.Excludes("newConfigDetails",true))
+        {
+            this.NewConfigDetails = null;
+        }
         //      C# -> System.String? SourceClusterName
         // GraphQL -> sourceClusterName: String! (scalar)
         if (ec.Includes("sourceClusterName",true))

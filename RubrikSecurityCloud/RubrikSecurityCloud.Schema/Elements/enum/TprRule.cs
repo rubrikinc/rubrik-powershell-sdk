@@ -15,8 +15,17 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TprRule
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ASSIGN_TPR_ROLE")]
         ASSIGN_TPR_ROLE,
+
+        [EnumMember(Value = "DELETE_CLOUD_ACCOUNTS")]
+        DELETE_CLOUD_ACCOUNTS,
+
+        [EnumMember(Value = "DELETE_CLOUD_ARCHIVAL_LOCATION")]
+        DELETE_CLOUD_ARCHIVAL_LOCATION,
 
         [EnumMember(Value = "DELETE_DATA_SOURCE")]
         DELETE_DATA_SOURCE,
@@ -45,6 +54,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DISABLE_TPR")]
         DISABLE_TPR,
 
+        [EnumMember(Value = "EDIT_REPLICATION_PAIR")]
+        EDIT_REPLICATION_PAIR,
+
         [EnumMember(Value = "EDIT_SLA")]
         EDIT_SLA,
 
@@ -68,6 +80,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PAUSE_CLUSTER")]
         PAUSE_CLUSTER,
+
+        [EnumMember(Value = "PAUSE_REPLICATION")]
+        PAUSE_REPLICATION,
 
         [EnumMember(Value = "PAUSE_RESUME_RCV")]
         PAUSE_RESUME_RCV,
@@ -106,10 +121,7 @@ namespace RubrikSecurityCloud.Types
         TRIGGER_RCV_CUSTOM_FAIL_OVER,
 
         [EnumMember(Value = "UNLOCK_TPR_USER")]
-        UNLOCK_TPR_USER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNLOCK_TPR_USER
 
 
     } // enum TprRule

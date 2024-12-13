@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 33
+    /// Create a new RscQuery object for any of the 37
     /// operations in the 'Cluster' API domain:
-    /// CloudClusterRecoveryValidation, Cluster, ClusterList, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, ExocomputeGetClusterConnectionInfo, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 33 operations
+    /// There are 37 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CloudClusterRecoveryValidation, Cluster, ClusterList, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// one of: CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, ExocomputeGetClusterConnectionInfo, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -97,6 +97,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ValidationRecoveryReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudDirectClusterEndpoints operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: CloudDirectClusterEndpoints
+    /// 
+    /// $query = New-RscQueryCluster -Operation CloudDirectClusterEndpoints
+    /// 
+    /// # REQUIRED
+    /// $query.Var.clusterUuid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ClusterEndpoints
     /// 
     /// 
     /// 
@@ -302,6 +330,104 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the Count operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: Count
+    /// 
+    /// $query = New-RscQueryCluster -Operation Count
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	id = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	name = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	type = @(
+    /// 		$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	objectType = @(
+    /// 		$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	registrationTime_gt = $someDateTime
+    /// 	# OPTIONAL
+    /// 	registrationTime_lt = $someDateTime
+    /// 	# OPTIONAL
+    /// 	minSoftwareVersion = $someString
+    /// 	# OPTIONAL
+    /// 	clusterLocation = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	excludeEmptyCluster = $someBoolean
+    /// 	# OPTIONAL
+    /// 	productType = @(
+    /// 		$someClusterProductEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	registeredMode = @(
+    /// 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+    /// 	# OPTIONAL
+    /// 	orgId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	productFilters = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			productType = $someClusterProductEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+    /// 			# OPTIONAL
+    /// 			minSoftwareVersion = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	excludeId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	systemStatus = @(
+    /// 		$someClusterSystemStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSystemStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	connectionState = @(
+    /// 		$someClusterStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	isInFatalOrDisconnectedState = $someBoolean
+    /// 	# OPTIONAL
+    /// 	cyberEventLockdownMode = @(
+    /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CountClustersReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DefaultGateway operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -353,6 +479,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ClusterDnsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExocomputeGetClusterConnectionInfo operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: ExocomputeGetClusterConnectionInfo
+    /// 
+    /// $query = New-RscQueryCluster -Operation ExocomputeGetClusterConnectionInfo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	clusterName = $someString
+    /// 	# REQUIRED
+    /// 	exocomputeConfigId = $someString
+    /// 	# REQUIRED
+    /// 	cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ExocomputeGetClusterConnectionInfoReply
     /// 
     /// 
     /// 
@@ -625,6 +786,45 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ClusterIpv6ModeReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the IsCloudClusterDiskUpgradeAvailable operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: IsCloudClusterDiskUpgradeAvailable
+    /// 
+    /// $query = New-RscQueryCluster -Operation IsCloudClusterDiskUpgradeAvailable
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	batchSize = $someInt
+    /// 	# OPTIONAL
+    /// 	newNodeCount = $someInt
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: IsCloudClusterDiskUpgradeAvailableReply
     /// 
     /// 
     /// 
@@ -1499,18 +1699,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "CloudClusterRecoveryValidation",
+                "CloudDirectClusterEndpoints",
                 "Cluster",
                 "ClusterList",
                 "ComputeClusterStatus",
                 "Connected",
+                "Count",
                 "DefaultGateway",
                 "Dns",
+                "ExocomputeGetClusterConnectionInfo",
                 "FloatingIps",
                 "GetCdmReleaseDetailsForClusterFromSupportPortal",
                 "GetGroupCountByCdmClusterStatus",
                 "GroupByList",
                 "Ipmi",
                 "Ipv6Mode",
+                "IsCloudClusterDiskUpgradeAvailable",
                 "IsTotpAckNecessary",
                 "LicensesForClusterProductSummary",
                 "List",
@@ -1549,6 +1753,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CloudClusterRecoveryValidation":
                         this.ProcessRecord_CloudClusterRecoveryValidation();
                         break;
+                    case "CloudDirectClusterEndpoints":
+                        this.ProcessRecord_CloudDirectClusterEndpoints();
+                        break;
                     case "Cluster":
                         this.ProcessRecord_Cluster();
                         break;
@@ -1561,11 +1768,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Connected":
                         this.ProcessRecord_Connected();
                         break;
+                    case "Count":
+                        this.ProcessRecord_Count();
+                        break;
                     case "DefaultGateway":
                         this.ProcessRecord_DefaultGateway();
                         break;
                     case "Dns":
                         this.ProcessRecord_Dns();
+                        break;
+                    case "ExocomputeGetClusterConnectionInfo":
+                        this.ProcessRecord_ExocomputeGetClusterConnectionInfo();
                         break;
                     case "FloatingIps":
                         this.ProcessRecord_FloatingIps();
@@ -1584,6 +1797,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Ipv6Mode":
                         this.ProcessRecord_Ipv6Mode();
+                        break;
+                    case "IsCloudClusterDiskUpgradeAvailable":
+                        this.ProcessRecord_IsCloudClusterDiskUpgradeAvailable();
                         break;
                     case "IsTotpAckNecessary":
                         this.ProcessRecord_IsTotpAckNecessary();
@@ -1665,6 +1881,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // cloudDirectClusterEndpoints.
+        internal void ProcessRecord_CloudDirectClusterEndpoints()
+        {
+            this._logger.name += " -CloudDirectClusterEndpoints";
+            // Create new graphql operation cloudDirectClusterEndpoints
+            InitQueryCloudDirectClusterEndpoints();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // cluster.
         internal void ProcessRecord_Cluster()
         {
@@ -1701,6 +1926,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // countClusters.
+        internal void ProcessRecord_Count()
+        {
+            this._logger.name += " -Count";
+            // Create new graphql operation countClusters
+            InitQueryCountClusters();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // clusterDefaultGateway.
         internal void ProcessRecord_DefaultGateway()
         {
@@ -1716,6 +1950,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Dns";
             // Create new graphql operation clusterDns
             InitQueryClusterDns();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // exocomputeGetClusterConnectionInfo.
+        internal void ProcessRecord_ExocomputeGetClusterConnectionInfo()
+        {
+            this._logger.name += " -ExocomputeGetClusterConnectionInfo";
+            // Create new graphql operation exocomputeGetClusterConnectionInfo
+            InitQueryExocomputeGetClusterConnectionInfo();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1770,6 +2013,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Ipv6Mode";
             // Create new graphql operation clusterIpv6Mode
             InitQueryClusterIpv6Mode();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // isCloudClusterDiskUpgradeAvailable.
+        internal void ProcessRecord_IsCloudClusterDiskUpgradeAvailable()
+        {
+            this._logger.name += " -IsCloudClusterDiskUpgradeAvailable";
+            // Create new graphql operation isCloudClusterDiskUpgradeAvailable
+            InitQueryIsCloudClusterDiskUpgradeAvailable();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1974,6 +2226,26 @@ $query.Var.clusterUuid = $someString"
         }
 
         // Create new GraphQL Query:
+        // cloudDirectClusterEndpoints(clusterUuid: UUID!): ClusterEndpoints!
+        internal void InitQueryCloudDirectClusterEndpoints()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusterUuid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudDirectClusterEndpoints",
+                "($clusterUuid: UUID!)",
+                "ClusterEndpoints",
+                Query.CloudDirectClusterEndpoints,
+                Query.CloudDirectClusterEndpointsFieldSpec,
+                @"# REQUIRED
+$query.Var.clusterUuid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // cluster(clusterUuid: UUID!): Cluster!
         internal void InitQueryCluster()
         {
@@ -2153,6 +2425,96 @@ $query.Var.clusterFilterArg = $someClusterTypeEnum # Call [Enum]::GetValues([Rub
         }
 
         // Create new GraphQL Query:
+        // countClusters(filter: ClusterFilterInput): CountClustersReply!
+        internal void InitQueryCountClusters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("filter", "ClusterFilterInput"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCountClusters",
+                "($filter: ClusterFilterInput)",
+                "CountClustersReply",
+                Query.CountClusters,
+                Query.CountClustersFieldSpec,
+                @"# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	id = @(
+		$someString
+	)
+	# OPTIONAL
+	name = @(
+		$someString
+	)
+	# OPTIONAL
+	type = @(
+		$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	objectType = @(
+		$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	registrationTime_gt = $someDateTime
+	# OPTIONAL
+	registrationTime_lt = $someDateTime
+	# OPTIONAL
+	minSoftwareVersion = $someString
+	# OPTIONAL
+	clusterLocation = @(
+		$someString
+	)
+	# OPTIONAL
+	excludeEmptyCluster = $someBoolean
+	# OPTIONAL
+	productType = @(
+		$someClusterProductEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+	)
+	# OPTIONAL
+	registeredMode = @(
+		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
+	)
+	# OPTIONAL
+	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+	# OPTIONAL
+	orgId = @(
+		$someString
+	)
+	# OPTIONAL
+	productFilters = @(
+		@{
+			# REQUIRED
+			productType = $someClusterProductEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+			# OPTIONAL
+			minSoftwareVersion = $someString
+		}
+	)
+	# OPTIONAL
+	excludeId = @(
+		$someString
+	)
+	# OPTIONAL
+	systemStatus = @(
+		$someClusterSystemStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSystemStatus]) for enum values.
+	)
+	# OPTIONAL
+	connectionState = @(
+		$someClusterStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
+	)
+	# OPTIONAL
+	isInFatalOrDisconnectedState = $someBoolean
+	# OPTIONAL
+	cyberEventLockdownMode = @(
+		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // clusterDefaultGateway(input: GetDefaultGatewayInput!): InternalGetDefaultGatewayResponse!
         internal void InitQueryClusterDefaultGateway()
         {
@@ -2192,6 +2554,33 @@ $query.Var.input = @{
                 Query.ClusterDnsFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // exocomputeGetClusterConnectionInfo(input: ExocomputeGetClusterConnectionInput!): ExocomputeGetClusterConnectionInfoReply!
+        internal void InitQueryExocomputeGetClusterConnectionInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExocomputeGetClusterConnectionInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryExocomputeGetClusterConnectionInfo",
+                "($input: ExocomputeGetClusterConnectionInput!)",
+                "ExocomputeGetClusterConnectionInfoReply",
+                Query.ExocomputeGetClusterConnectionInfo,
+                Query.ExocomputeGetClusterConnectionInfoFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	clusterName = $someString
+	# REQUIRED
+	exocomputeConfigId = $someString
+	# REQUIRED
+	cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.
+}"
             );
         }
 
@@ -2442,6 +2831,37 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // isCloudClusterDiskUpgradeAvailable(input: IsCloudClusterDiskUpgradeAvailableInput!): IsCloudClusterDiskUpgradeAvailableReply!
+        internal void InitQueryIsCloudClusterDiskUpgradeAvailable()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "IsCloudClusterDiskUpgradeAvailableInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryIsCloudClusterDiskUpgradeAvailable",
+                "($input: IsCloudClusterDiskUpgradeAvailableInput!)",
+                "IsCloudClusterDiskUpgradeAvailableReply",
+                Query.IsCloudClusterDiskUpgradeAvailable,
+                Query.IsCloudClusterDiskUpgradeAvailableFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudAccountId = $someString
+	# REQUIRED
+	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
+	# REQUIRED
+	clusterUuid = $someString
+	# OPTIONAL
+	batchSize = $someInt
+	# OPTIONAL
+	newNodeCount = $someInt
 }"
             );
         }

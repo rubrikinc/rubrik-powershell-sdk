@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SmbDomainSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_NAME")]
         CLUSTER_NAME,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         DOMAIN_NAME,
 
         [EnumMember(Value = "FIELD_UNSPECIFIED")]
-        FIELD_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        FIELD_UNSPECIFIED
 
 
     } // enum SmbDomainSortByField

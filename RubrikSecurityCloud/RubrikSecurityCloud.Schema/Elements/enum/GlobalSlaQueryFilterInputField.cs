@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GlobalSlaQueryFilterInputField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ARCHIVAL_GROUP_ID")]
         ARCHIVAL_GROUP_ID,
 
@@ -52,10 +55,7 @@ namespace RubrikSecurityCloud.Types
         SHOW_CLUSTER_SLAS_ONLY,
 
         [EnumMember(Value = "UPGRADE_STATUS")]
-        UPGRADE_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UPGRADE_STATUS
 
 
     } // enum GlobalSlaQueryFilterInputField

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureNativeCommonResourceGroupSortFields
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AZURE_REGION")]
         AZURE_REGION,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         AZURE_RG_VM_EFFECTIVE_SLA,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum AzureNativeCommonResourceGroupSortFields

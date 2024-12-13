@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AwsCloudExternalArtifact
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACCESS_KEY")]
         ACCESS_KEY,
 
@@ -46,10 +49,7 @@ namespace RubrikSecurityCloud.Types
         STACK_ARN,
 
         [EnumMember(Value = "STACK_NAME")]
-        STACK_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STACK_NAME
 
 
     } // enum AwsCloudExternalArtifact

@@ -22,6 +22,8 @@
   - Specifies the NAS API hostname.
 - mssqlSddDetail: MssqlSddDetail
   - Specifies the MSSQL SDD details.
+- oracleSddDetail: OracleSddDetail
+  - Specifies the Oracle database Sensitive Data Monitoring details.
 - osType: GuestOsType
   - The operating system type of the physical host.
 - defaultCbt: System.Boolean

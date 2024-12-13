@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum Db2DatabaseType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DBTYPE_UNSPECIFIED")]
         DBTYPE_UNSPECIFIED,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         PURESCALE,
 
         [EnumMember(Value = "STANDALONE")]
-        STANDALONE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STANDALONE
 
 
     } // enum Db2DatabaseType

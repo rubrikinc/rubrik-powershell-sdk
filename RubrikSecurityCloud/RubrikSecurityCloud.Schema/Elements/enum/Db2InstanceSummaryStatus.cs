@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum Db2InstanceSummaryStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DB2_INSTANCE_SUMMARY_STATUS_ERROR")]
         DB2_INSTANCE_SUMMARY_STATUS_ERROR,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         DB2_INSTANCE_SUMMARY_STATUS_UNKNOWN,
 
         [EnumMember(Value = "DB2_INSTANCE_SUMMARY_STATUS_WARNING")]
-        DB2_INSTANCE_SUMMARY_STATUS_WARNING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        DB2_INSTANCE_SUMMARY_STATUS_WARNING
 
 
     } // enum Db2InstanceSummaryStatus

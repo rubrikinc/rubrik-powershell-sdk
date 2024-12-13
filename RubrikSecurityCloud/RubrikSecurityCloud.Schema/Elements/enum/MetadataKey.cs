@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MetadataKey
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CAN_TABLE_ROW_EXPAND")]
         CAN_TABLE_ROW_EXPAND,
 
@@ -42,6 +45,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_LINK_TYPE")]
         OBJECT_LINK_TYPE,
 
+        [EnumMember(Value = "ORG_ID")]
+        ORG_ID,
+
         [EnumMember(Value = "SLA_DOMAIN_LINK_ID")]
         SLA_DOMAIN_LINK_ID,
 
@@ -52,10 +58,7 @@ namespace RubrikSecurityCloud.Types
         TABLE_ROW_HOVER_COLOR,
 
         [EnumMember(Value = "TABLE_ROW_NAME")]
-        TABLE_ROW_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TABLE_ROW_NAME
 
 
     } // enum MetadataKey

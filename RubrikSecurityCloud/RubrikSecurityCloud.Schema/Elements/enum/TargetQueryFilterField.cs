@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TargetQueryFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ADDITIONAL_FIELDS_REQUIRED")]
         ADDITIONAL_FIELDS_REQUIRED,
 
@@ -64,10 +67,7 @@ namespace RubrikSecurityCloud.Types
         NAME,
 
         [EnumMember(Value = "STATUS")]
-        STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STATUS
 
 
     } // enum TargetQueryFilterField

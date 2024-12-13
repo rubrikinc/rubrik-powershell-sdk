@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MongoSourceStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ADD_SOURCE_FAILED")]
         ADD_SOURCE_FAILED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         ADD_SOURCE_SUCCESSFUL,
 
         [EnumMember(Value = "_UNSUPPORTED")]
-        UNSUPPORTED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSUPPORTED
 
 
     } // enum MongoSourceStatus

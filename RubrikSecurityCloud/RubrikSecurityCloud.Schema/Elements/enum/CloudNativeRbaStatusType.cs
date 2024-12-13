@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudNativeRbaStatusType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NOT_REGISTERED")]
         NOT_REGISTERED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         REGISTERED,
 
         [EnumMember(Value = "UNAVAILABLE")]
-        UNAVAILABLE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNAVAILABLE
 
 
     } // enum CloudNativeRbaStatusType

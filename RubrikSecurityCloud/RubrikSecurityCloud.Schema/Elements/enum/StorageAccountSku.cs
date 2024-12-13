@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum StorageAccountSku
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "STANDARD_GRS")]
         STANDARD_GRS,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         STANDARD_LRS,
 
         [EnumMember(Value = "STANDARD_ZRS")]
-        STANDARD_ZRS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STANDARD_ZRS
 
 
     } // enum StorageAccountSku

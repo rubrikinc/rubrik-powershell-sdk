@@ -5,6 +5,11 @@ Validate if a Cloud Cluster can be recovered.
 
 - There is a single argument of type System.String.
 - Returns ValidationRecoveryReply.
+### clouddirectclusterendpoints
+Endpoints used by the NAS cloud direct clusters.
+
+- There is a single argument of type System.String.
+- Returns ClusterEndpoints.
 ### cluster
 A cluster object.
 
@@ -15,7 +20,7 @@ A cluster object.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - filter - ClusterFilterInput: Filter by cluster.
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - ClusterSortByEnum: Sort clusters by field.
@@ -33,6 +38,11 @@ List all connected clusters.
 
 - There is a single argument of type ClusterTypeEnum.
 - Returns list of DataLocationSupportedClusters.
+### count
+Count Rubrik clusters grouped by status.
+
+- There is a single argument of type ClusterFilterInput.
+- Returns CountClustersReply.
 ### defaultgateway
 Get current default gateway
 
@@ -46,6 +56,11 @@ Rubrik cluster DNS information.
 
 - There is a single argument of type System.String.
 - Returns ClusterDnsReply.
+### exocomputegetclusterconnectioninfo
+Obtains the YAML file needed to connect a customer-managed cluster to RSC.
+
+- There is a single argument of type ExocomputeGetClusterConnectionInput.
+- Returns ExocomputeGetClusterConnectionInfoReply.
 ### floatingips
 Get a list of a cluster's always-available Ips
 
@@ -74,7 +89,7 @@ Get CDM release details from support portal for a given list of clusters.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - groupBy - ClusterGroupByEnum: Group by field.
     - filter - ClusterFilterInput: Filter by cluster.
     - timezoneOffset - System.Single: Offset based on customer timezone.
@@ -92,6 +107,11 @@ Rubrik cluster IPv6 mode.
 
 - There is a single argument of type ClusterIpv6ModeInput.
 - Returns ClusterIpv6ModeReply.
+### iscloudclusterdiskupgradeavailable
+Check if an upgrade is available for cloud cluster disks.
+
+- There is a single argument of type IsCloudClusterDiskUpgradeAvailableInput.
+- Returns IsCloudClusterDiskUpgradeAvailableReply.
 ### istotpacknecessary
 Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
 
@@ -109,7 +129,7 @@ List of the available cluster objects.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - filter - ClusterFilterInput: Filter by cluster.
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - ClusterSortByEnum: Sort clusters by field.
@@ -160,7 +180,7 @@ Rubrik cluster proxy information.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - filter - ClusterFilterInput: Filter by cluster.
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - ClusterSortByEnum: Sort clusters by field.
@@ -213,7 +233,7 @@ A Windows Cluster.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - upgradeFilter - CdmUpgradeInfoFilterInput
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - UpgradeInfoSortByEnum: sort upgradeInfo by field

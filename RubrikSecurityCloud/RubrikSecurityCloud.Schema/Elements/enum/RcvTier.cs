@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RcvTier
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ARCHIVE")]
         ARCHIVE,
 
         [EnumMember(Value = "BACKUP")]
-        BACKUP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        BACKUP
 
 
     } // enum RcvTier

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? GuestCredentialId
+        // GraphQL -> guestCredentialId: String (scalar)
+        [JsonProperty("guestCredentialId")]
+        public System.String? GuestCredentialId { get; set; }
+
         //      C# -> System.Boolean? IsAutomatic
         // GraphQL -> isAutomatic: Boolean! (scalar)
         [JsonProperty("isAutomatic")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AgentDeploymentSettings Set(
+        System.String? GuestCredentialId = null,
         System.Boolean? IsAutomatic = null
     ) 
     {
+        if ( GuestCredentialId != null ) {
+            this.GuestCredentialId = GuestCredentialId;
+        }
         if ( IsAutomatic != null ) {
             this.IsAutomatic = IsAutomatic;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? GuestCredentialId
+        // GraphQL -> guestCredentialId: String (scalar)
+        if (this.GuestCredentialId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "guestCredentialId\n" ;
+            } else {
+                s += ind + "guestCredentialId\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsAutomatic
         // GraphQL -> isAutomatic: Boolean! (scalar)
         if (this.IsAutomatic != null) {
@@ -71,6 +89,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? GuestCredentialId
+        // GraphQL -> guestCredentialId: String (scalar)
+        if (ec.Includes("guestCredentialId",true))
+        {
+            if(this.GuestCredentialId == null) {
+
+                this.GuestCredentialId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.GuestCredentialId != null && ec.Excludes("guestCredentialId",true))
+        {
+            this.GuestCredentialId = null;
+        }
         //      C# -> System.Boolean? IsAutomatic
         // GraphQL -> isAutomatic: Boolean! (scalar)
         if (ec.Includes("isAutomatic",true))

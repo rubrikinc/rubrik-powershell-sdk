@@ -53,12 +53,13 @@ Generate TOTP secret for a user.
 - There is a single argument of type System.String.
 - Returns GenerateTotpSecretReply.
 ### mutaterole
-- There are 5 arguments.
+- There are 6 arguments.
     - roleId - System.String: ID of the role.
     - name - System.String
     - description - System.String
     - permissions - list of PermissionInputs: Permissions in the role.
     - protectableClusters - list of System.Strings
+    - isSynced - System.Boolean: Whether the role is marked to be synced to cdm, false if null.
 - Returns System.String.
 ### updateorg
 Update an organization.

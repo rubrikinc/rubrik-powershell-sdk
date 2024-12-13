@@ -7,3 +7,5 @@ SLA Domain assignment type for the Azure resource group.
   - Effective SLA Domain.
 - configuredSlaDomain: GlobalSlaReply
   - Configured SLA domain.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the cloud native objects.

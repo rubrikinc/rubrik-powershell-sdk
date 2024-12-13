@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ProtectionStatusEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DoNotProtect")]
         DO_NOT_PROTECT,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         NO_SLA,
 
         [EnumMember(Value = "Protected")]
-        PROTECTED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        PROTECTED
 
 
     } // enum ProtectionStatusEnum

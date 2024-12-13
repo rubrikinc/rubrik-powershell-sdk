@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ArchivalLocationQuerySortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ARCHIVAL_GROUP_NAME")]
         ARCHIVAL_GROUP_NAME,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         STATUS,
 
         [EnumMember(Value = "STORAGE_CONSUMED_BYTES")]
-        STORAGE_CONSUMED_BYTES,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STORAGE_CONSUMED_BYTES
 
 
     } // enum ArchivalLocationQuerySortByField

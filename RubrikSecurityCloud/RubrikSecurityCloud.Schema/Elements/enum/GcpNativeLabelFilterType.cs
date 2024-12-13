@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GcpNativeLabelFilterType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "LABEL_KEY")]
         LABEL_KEY,
 
         [EnumMember(Value = "LABEL_KEY_VALUE")]
-        LABEL_KEY_VALUE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        LABEL_KEY_VALUE
 
 
     } // enum GcpNativeLabelFilterType

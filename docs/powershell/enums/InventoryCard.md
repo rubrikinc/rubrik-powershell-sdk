@@ -48,3 +48,4 @@ Inventory Card options that the user can select as a workload.
 - MYSQL - Inventory Card is MySQL.
 - M365_BACKUP_STORAGE - Inventory Card is Microsoft 365 Backup Storage.
 - NCD - Inventory Card is NAS Cloud Direct.
+- D365 - Inventory Card is Dynamics 365.

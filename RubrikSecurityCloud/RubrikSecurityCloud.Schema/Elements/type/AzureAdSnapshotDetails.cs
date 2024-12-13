@@ -26,7 +26,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? SnapshotId { get; set; }
 
         //      C# -> DateTime? SnapshotTime
-        // GraphQL -> snapshotTime: DateTime (scalar)
+        // GraphQL -> snapshotTime: DateTime! (scalar)
         [JsonProperty("snapshotTime")]
         public DateTime? SnapshotTime { get; set; }
 
@@ -74,7 +74,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> DateTime? SnapshotTime
-        // GraphQL -> snapshotTime: DateTime (scalar)
+        // GraphQL -> snapshotTime: DateTime! (scalar)
         if (this.SnapshotTime != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "snapshotTime\n" ;
@@ -107,7 +107,7 @@ namespace RubrikSecurityCloud.Types
             this.SnapshotId = null;
         }
         //      C# -> DateTime? SnapshotTime
-        // GraphQL -> snapshotTime: DateTime (scalar)
+        // GraphQL -> snapshotTime: DateTime! (scalar)
         if (ec.Includes("snapshotTime",true))
         {
             if(this.SnapshotTime == null) {

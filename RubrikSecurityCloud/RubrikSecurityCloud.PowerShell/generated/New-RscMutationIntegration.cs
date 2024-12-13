@@ -149,6 +149,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		microsoftPurview = @{
     /// 			# REQUIRED
     /// 			tenantId = $someString
+    /// 			# REQUIRED
+    /// 			o365OrgId = $someString
     /// 		}
     /// 	}
     /// }
@@ -241,6 +243,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				microsoftPurview = @{
     /// 					# REQUIRED
     /// 					tenantId = $someString
+    /// 					# REQUIRED
+    /// 					o365OrgId = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -398,6 +402,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		microsoftPurview = @{
     /// 			# REQUIRED
     /// 			tenantId = $someString
+    /// 			# REQUIRED
+    /// 			o365OrgId = $someString
     /// 		}
     /// 	}
     /// }
@@ -492,6 +498,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				microsoftPurview = @{
     /// 					# REQUIRED
     /// 					tenantId = $someString
+    /// 					# REQUIRED
+    /// 					o365OrgId = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -705,6 +713,8 @@ $query.Var.input = @{
 		microsoftPurview = @{
 			# REQUIRED
 			tenantId = $someString
+			# REQUIRED
+			o365OrgId = $someString
 		}
 	}
 }"
@@ -789,6 +799,8 @@ $query.Var.input = @{
 				microsoftPurview = @{
 					# REQUIRED
 					tenantId = $someString
+					# REQUIRED
+					o365OrgId = $someString
 				}
 			}
 		}
@@ -922,6 +934,8 @@ $query.Var.input = @{
 		microsoftPurview = @{
 			# REQUIRED
 			tenantId = $someString
+			# REQUIRED
+			o365OrgId = $someString
 		}
 	}
 }"
@@ -1008,6 +1022,8 @@ $query.Var.input = @{
 				microsoftPurview = @{
 					# REQUIRED
 					tenantId = $someString
+					# REQUIRED
+					o365OrgId = $someString
 				}
 			}
 		}

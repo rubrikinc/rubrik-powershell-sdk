@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PrePostScriptFailureHandlingEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "abort")]
         ABORT,
 
         [EnumMember(Value = "continue")]
-        CONTINUE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        CONTINUE
 
 
     } // enum PrePostScriptFailureHandlingEnum

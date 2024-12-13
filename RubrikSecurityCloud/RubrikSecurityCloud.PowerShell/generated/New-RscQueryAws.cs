@@ -373,6 +373,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	awsAdminAccountFilter = $someString
     /// 	# OPTIONAL
     /// 	columnSearchFilter = $someString
+    /// 	# OPTIONAL
+    /// 	featuresToFilterOut = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -1034,6 +1038,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	disableApiTermination = $someBoolean
     /// 	# OPTIONAL
+    /// 	usePlacementGroups = $someBoolean
+    /// 	# OPTIONAL
     /// 	clusterConfig = @{
     /// 		# OPTIONAL
     /// 		userEmail = $someString
@@ -1107,6 +1113,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		instanceProfileName = $someString
     /// 		# OPTIONAL
     /// 		cdmProduct = $someString
+    /// 		# OPTIONAL
+    /// 		placementGroupName = $someString
     /// 		# OPTIONAL
     /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
     /// 		# OPTIONAL
@@ -1901,6 +1909,10 @@ $query.Var.awsCloudAccountsArg = @{
 	awsAdminAccountFilter = $someString
 	# OPTIONAL
 	columnSearchFilter = $someString
+	# OPTIONAL
+	featuresToFilterOut = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
 }"
             );
         }
@@ -2445,6 +2457,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	disableApiTermination = $someBoolean
 	# OPTIONAL
+	usePlacementGroups = $someBoolean
+	# OPTIONAL
 	clusterConfig = @{
 		# OPTIONAL
 		userEmail = $someString
@@ -2518,6 +2532,8 @@ $query.Var.input = @{
 		instanceProfileName = $someString
 		# OPTIONAL
 		cdmProduct = $someString
+		# OPTIONAL
+		placementGroupName = $someString
 		# OPTIONAL
 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
 		# OPTIONAL

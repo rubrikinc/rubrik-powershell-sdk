@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> List<CloudDirectDeviceDetails>? DeviceDetails
+        // GraphQL -> deviceDetails: [CloudDirectDeviceDetails!]! (type)
+        [JsonProperty("deviceDetails")]
+        public List<CloudDirectDeviceDetails>? DeviceDetails { get; set; }
+
 
         #endregion
 
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         System.String? ClusterUuid = null,
         System.String? Endpoint = null,
         System.String? Id = null,
-        System.String? Name = null
+        System.String? Name = null,
+        List<CloudDirectDeviceDetails>? DeviceDetails = null
     ) 
     {
         if ( ClusterUuid != null ) {
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( DeviceDetails != null ) {
+            this.DeviceDetails = DeviceDetails;
         }
         return this;
     }
@@ -116,6 +125,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> List<CloudDirectDeviceDetails>? DeviceDetails
+        // GraphQL -> deviceDetails: [CloudDirectDeviceDetails!]! (type)
+        if (this.DeviceDetails != null) {
+            var fspec = this.DeviceDetails.AsFieldSpec(conf.Child("deviceDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "deviceDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -192,6 +213,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> List<CloudDirectDeviceDetails>? DeviceDetails
+        // GraphQL -> deviceDetails: [CloudDirectDeviceDetails!]! (type)
+        if (ec.Includes("deviceDetails",false))
+        {
+            if(this.DeviceDetails == null) {
+
+                this.DeviceDetails = new List<CloudDirectDeviceDetails>();
+                this.DeviceDetails.ApplyExploratoryFieldSpec(ec.NewChild("deviceDetails"));
+
+            } else {
+
+                this.DeviceDetails.ApplyExploratoryFieldSpec(ec.NewChild("deviceDetails"));
+
+            }
+        }
+        else if (this.DeviceDetails != null && ec.Excludes("deviceDetails",false))
+        {
+            this.DeviceDetails = null;
         }
     }
 

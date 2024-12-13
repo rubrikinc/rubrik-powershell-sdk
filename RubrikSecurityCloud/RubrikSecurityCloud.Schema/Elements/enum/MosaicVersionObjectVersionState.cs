@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MosaicVersionObjectVersionState
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MOSAIC_VERSION_OBJECT_VERSION_STATE_DATA_COPIED")]
         MOSAIC_VERSION_OBJECT_VERSION_STATE_DATA_COPIED,
 
         [EnumMember(Value = "MOSAIC_VERSION_OBJECT_VERSION_STATE_REPLAYED")]
-        MOSAIC_VERSION_OBJECT_VERSION_STATE_REPLAYED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MOSAIC_VERSION_OBJECT_VERSION_STATE_REPLAYED
 
 
     } // enum MosaicVersionObjectVersionState

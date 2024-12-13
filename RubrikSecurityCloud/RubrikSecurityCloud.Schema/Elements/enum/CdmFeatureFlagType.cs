@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CdmFeatureFlagType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AHV_BULK_TAKE_ON_DEMAND_SNAPSHOT")]
         AHV_BULK_TAKE_ON_DEMAND_SNAPSHOT,
 
@@ -238,10 +241,7 @@ namespace RubrikSecurityCloud.Types
         REPLICATION_TARGET_SETUP_UPDATE,
 
         [EnumMember(Value = "SAP_HANA_STATIC_RETENTION")]
-        SAP_HANA_STATIC_RETENTION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SAP_HANA_STATIC_RETENTION
 
 
     } // enum CdmFeatureFlagType

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UserAuditSeverityEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "Critical")]
         CRITICAL,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         NA,
 
         [EnumMember(Value = "Warning")]
-        WARNING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WARNING
 
 
     } // enum UserAuditSeverityEnum

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SortOrder
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ASC")]
         ASC,
 
         [EnumMember(Value = "DESC")]
-        DESC,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        DESC
 
 
     } // enum SortOrder

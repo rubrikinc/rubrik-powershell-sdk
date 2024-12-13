@@ -39,6 +39,8 @@
   - Active Directory specific metadata for the snapshot. Null if snapshot is not of a domain controller.
 - postgresDbClusterAppMetadata: KosmosWorkloadAppMetadata
   - PostgreSQL Database Cluster-specific metadata. Null if the snapshot is not of a PostgreSQL Database Cluster.
+- mysqldbInstanceAppMetadata: KosmosWorkloadAppMetadata
+  - MySQL instance-specific metadata. Null if the snapshot is not of a MySQL Instance.
 - fileCount: System.Int64
   - Number of files in the snapshot.
 - pendingSnapshotDeletion: PendingSnapshotDeletion

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FileActivitiesSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NUM_ACTIVITIES")]
         NUM_ACTIVITIES,
 
         [EnumMember(Value = "USER_NAME")]
-        USER_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USER_NAME
 
 
     } // enum FileActivitiesSortBy

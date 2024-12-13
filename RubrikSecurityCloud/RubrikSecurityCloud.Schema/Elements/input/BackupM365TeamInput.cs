@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadUuids")]
         public List<System.String>? WorkloadUuids { get; set; }
 
+        //      C# -> System.String? RetentionSlaId
+        // GraphQL -> retentionSlaId: UUID (scalar)
+        [JsonProperty("retentionSlaId")]
+        public System.String? RetentionSlaId { get; set; }
+
 
         #endregion
 

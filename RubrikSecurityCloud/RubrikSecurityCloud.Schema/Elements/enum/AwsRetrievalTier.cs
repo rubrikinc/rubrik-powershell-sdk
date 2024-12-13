@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AwsRetrievalTier
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BULK_TIER")]
         BULK_TIER,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         EXPEDITED_TIER,
 
         [EnumMember(Value = "STANDARD_TIER")]
-        STANDARD_TIER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STANDARD_TIER
 
 
     } // enum AwsRetrievalTier

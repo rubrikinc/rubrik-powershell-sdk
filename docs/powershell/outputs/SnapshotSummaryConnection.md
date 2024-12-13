@@ -6,6 +6,6 @@ Paginated list of SnapshotSummary objects. Each page of the results includes at 
 - nodes: list of SnapshotSummarys
   - List of SnapshotSummary objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of SnapshotSummary objects matching the request arguments.

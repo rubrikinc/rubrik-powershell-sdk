@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ExoBundleApprovalStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACCEPTED")]
         ACCEPTED,
 
         [EnumMember(Value = "REJECTED")]
-        REJECTED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        REJECTED
 
 
     } // enum ExoBundleApprovalStatus

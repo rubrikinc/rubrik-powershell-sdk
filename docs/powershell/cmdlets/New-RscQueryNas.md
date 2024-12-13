@@ -40,6 +40,16 @@ A NAS Share.
 
 - There is a single argument of type System.String.
 - Returns NasShare.
+### shares
+Paginated list of NAS Shares.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns NasShareConnection.
 ### system
 A NAS System.
 

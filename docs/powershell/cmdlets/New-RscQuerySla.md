@@ -7,7 +7,7 @@ List of audit details for a given SLA Domain.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - SlaId - System.String: SLA Domain ID for global SLA Domains and internal ID for SLA Domains created on Rubrik clusters.
     - filter - list of SLAAuditDetailFilterInputs: Filter for SLA Domain Audit details.
     - timezone - System.String: Timezone.
@@ -19,7 +19,7 @@ Returns paginated list of SLA domains that were created on Rubrik CDM.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns ClusterSlaDomainConnection.
 ### clusterglobals
 Global SLA Domains protecting at least one object on the specified Rubrik cluster.
@@ -56,7 +56,7 @@ Retrieves a list of SLA Domains.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - SlaQuerySortByField: Field to sort the SLA Domains list.
     - sortOrder - SortOrder: Sort order for sorting the SLA Domains returned by the query.
     - filter - list of GlobalSlaFilterInputs: Filter for the SLA Domain query.
@@ -82,7 +82,7 @@ Retrieves a list of SLA Domains.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - SlaQuerySortByField: Field to sort the SLA Domains list.
     - sortOrder - SortOrder: Sort order for sorting the SLA Domains returned by the query.
     - filter - list of GlobalSlaFilterInputs: Filter for the SLA Domain query.
@@ -101,7 +101,7 @@ Status on the clusters where global SLA is synced.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - filter - list of SlaStatusFilterInputs: Filters for SLAStatus.
     - SlaId - System.String: SLA ID for global SLAs.
 - Returns GlobalSlaStatusConnection.

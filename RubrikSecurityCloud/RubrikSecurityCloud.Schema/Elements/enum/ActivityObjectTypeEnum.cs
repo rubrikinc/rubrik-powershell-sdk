@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ActivityObjectTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN")]
         ACTIVE_DIRECTORY_DOMAIN,
 
@@ -123,6 +126,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ComputeInstance")]
         COMPUTE_INSTANCE,
 
+        [EnumMember(Value = "D365_DATAVERSE_TABLE")]
+        D365_DATAVERSE_TABLE,
+
+        [EnumMember(Value = "D365_METADATA")]
+        D365_METADATA,
+
+        [EnumMember(Value = "D365_ORGANIZATION")]
+        D365_ORGANIZATION,
+
         [EnumMember(Value = "DataLocation")]
         DATA_LOCATION,
 
@@ -189,6 +201,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_CLUSTER")]
         K8S_CLUSTER,
 
+        [EnumMember(Value = "K8S_NAMESPACE_V2")]
+        K8S_NAMESPACE_V2,
+
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,
 
@@ -245,6 +260,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MONGO_SOURCE")]
         MONGO_SOURCE,
+
+        [EnumMember(Value = "MYSQLDB_INSTANCE")]
+        MYSQLDB_INSTANCE,
 
         [EnumMember(Value = "ManagedVolume")]
         MANAGED_VOLUME,
@@ -421,10 +439,7 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_FILESET,
 
         [EnumMember(Value = "WindowsHost")]
-        WINDOWS_HOST,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS_HOST
 
 
     } // enum ActivityObjectTypeEnum

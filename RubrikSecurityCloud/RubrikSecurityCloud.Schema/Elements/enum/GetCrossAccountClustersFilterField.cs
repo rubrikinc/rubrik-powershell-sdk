@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GetCrossAccountClustersFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_NAME")]
         CLUSTER_NAME,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         FILTER_FIELD_UNSPECIFIED,
 
         [EnumMember(Value = "ORG_ID")]
-        ORG_ID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ORG_ID
 
 
     } // enum GetCrossAccountClustersFilterField

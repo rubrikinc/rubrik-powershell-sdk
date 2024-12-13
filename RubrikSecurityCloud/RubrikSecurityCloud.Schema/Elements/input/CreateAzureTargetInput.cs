@@ -78,6 +78,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("computeSettings")]
         public AzureCloudComputeSettingsInput? ComputeSettings { get; set; }
 
+        //      C# -> ProxySettingsInput? ComputeProxySettings
+        // GraphQL -> computeProxySettings: ProxySettingsInput (input)
+        [JsonProperty("computeProxySettings")]
+        public ProxySettingsInput? ComputeProxySettings { get; set; }
+
         //      C# -> ProxySettingsInput? ProxySettings
         // GraphQL -> proxySettings: ProxySettingsInput (input)
         [JsonProperty("proxySettings")]

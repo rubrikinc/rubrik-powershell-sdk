@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PendingActionStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FAILED")]
         FAILED,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         SUCCEEDED,
 
         [EnumMember(Value = "SYNCED_TO_CDM")]
-        SYNCED_TO_CDM,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SYNCED_TO_CDM
 
 
     } // enum PendingActionStatus

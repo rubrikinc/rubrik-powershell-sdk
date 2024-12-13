@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("columnSearchFilter")]
         public System.String? ColumnSearchFilter { get; set; }
 
+        //      C# -> List<CloudAccountFeature>? FeaturesToFilterOut
+        // GraphQL -> featuresToFilterOut: [CloudAccountFeature!] (enum)
+        [JsonProperty("featuresToFilterOut")]
+        public List<CloudAccountFeature>? FeaturesToFilterOut { get; set; }
+
 
         #endregion
 

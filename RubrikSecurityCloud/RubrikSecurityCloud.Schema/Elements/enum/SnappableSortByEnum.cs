@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnappableSortByEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ArchivalComplianceStatus")]
         ARCHIVAL_COMPLIANCE_STATUS,
 
@@ -112,10 +115,7 @@ namespace RubrikSecurityCloud.Types
         TOTAL_SNAPSHOTS,
 
         [EnumMember(Value = "TransferredBytes")]
-        TRANSFERRED_BYTES,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TRANSFERRED_BYTES
 
 
     } // enum SnappableSortByEnum

@@ -6,6 +6,6 @@ Paginated list of OracleDatabase objects. Each page of the results includes at m
 - nodes: list of OracleDatabases
   - List of OracleDatabase objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of OracleDatabase objects matching the request arguments.

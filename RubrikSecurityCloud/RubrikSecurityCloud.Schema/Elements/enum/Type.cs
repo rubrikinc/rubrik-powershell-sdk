@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum Type
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BOOLEAN")]
         BOOLEAN,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         ISO_8601_DATETIME,
 
         [EnumMember(Value = "STRING")]
-        STRING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STRING
 
 
     } // enum Type

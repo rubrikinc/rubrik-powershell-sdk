@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureAdRegion
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AUSTRALIAEAST")]
         AUSTRALIAEAST,
 
@@ -85,10 +88,7 @@ namespace RubrikSecurityCloud.Types
         WESTEUROPE,
 
         [EnumMember(Value = "WESTUS2")]
-        WESTU_S2,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WESTU_S2
 
 
     } // enum AzureAdRegion

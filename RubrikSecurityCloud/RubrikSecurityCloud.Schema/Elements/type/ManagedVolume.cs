@@ -251,6 +251,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("newestSnapshot")]
         public CdmSnapshot? NewestSnapshot { get; set; }
 
+        //      C# -> ManagedVolumeNfsSettings? NfsSettings
+        // GraphQL -> nfsSettings: ManagedVolumeNfsSettings (type)
+        [JsonProperty("nfsSettings")]
+        public ManagedVolumeNfsSettings? NfsSettings { get; set; }
+
         //      C# -> CdmSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: CdmSnapshot (type)
         [JsonProperty("oldestSnapshot")]
@@ -519,6 +524,7 @@ namespace RubrikSecurityCloud.Types
         CdmSnapshot? NewestIndexedSnapshot = null,
         CdmSnapshot? NewestReplicatedSnapshot = null,
         CdmSnapshot? NewestSnapshot = null,
+        ManagedVolumeNfsSettings? NfsSettings = null,
         CdmSnapshot? OldestSnapshot = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         ManagedVolumePhysicalChildTypeConnection? PhysicalChildConnection = null,
@@ -672,6 +678,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NewestSnapshot != null ) {
             this.NewestSnapshot = NewestSnapshot;
+        }
+        if ( NfsSettings != null ) {
+            this.NfsSettings = NfsSettings;
         }
         if ( OldestSnapshot != null ) {
             this.OldestSnapshot = OldestSnapshot;
@@ -1214,6 +1223,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "newestSnapshot" + "\n(" + this.Vars.NewestSnapshot.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ManagedVolumeNfsSettings? NfsSettings
+        // GraphQL -> nfsSettings: ManagedVolumeNfsSettings (type)
+        if (this.NfsSettings != null) {
+            var fspec = this.NfsSettings.AsFieldSpec(conf.Child("nfsSettings"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nfsSettings" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2239,6 +2260,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NewestSnapshot != null && ec.Excludes("newestSnapshot",false))
         {
             this.NewestSnapshot = null;
+        }
+        //      C# -> ManagedVolumeNfsSettings? NfsSettings
+        // GraphQL -> nfsSettings: ManagedVolumeNfsSettings (type)
+        if (ec.Includes("nfsSettings",false))
+        {
+            if(this.NfsSettings == null) {
+
+                this.NfsSettings = new ManagedVolumeNfsSettings();
+                this.NfsSettings.ApplyExploratoryFieldSpec(ec.NewChild("nfsSettings"));
+
+            } else {
+
+                this.NfsSettings.ApplyExploratoryFieldSpec(ec.NewChild("nfsSettings"));
+
+            }
+        }
+        else if (this.NfsSettings != null && ec.Excludes("nfsSettings",false))
+        {
+            this.NfsSettings = null;
         }
         //      C# -> CdmSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: CdmSnapshot (type)

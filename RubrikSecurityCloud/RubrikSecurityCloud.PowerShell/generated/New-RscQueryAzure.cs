@@ -698,6 +698,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.tenantId = $someString
     /// # REQUIRED
     /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.features = @(
+    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// )
     /// # REQUIRED
     /// $query.Var.subscriptionStatusFilters = @(
     /// 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
@@ -738,6 +742,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.tenantId = $someString
     /// # REQUIRED
     /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.features = @(
+    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// )
     /// # REQUIRED
     /// $query.Var.subscriptionStatusFilters = @(
     /// 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
@@ -2058,7 +2066,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		@{
     /// 			# REQUIRED
     /// 			region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			subnetNativeId = $someString
     /// 			# REQUIRED
     /// 			isRscManaged = $someBoolean
@@ -3451,6 +3459,7 @@ $query.Var.permissionsGroupFilters = @(
         // azureCloudAccountTenant(
         //     tenantId: UUID!
         //     feature: CloudAccountFeature!
+        //     features: [CloudAccountFeature!]
         //     subscriptionStatusFilters: [CloudAccountStatus!]!
         //     subscriptionSearchText: String!
         //     subscriptionIdsFilter: [UUID!]
@@ -3460,6 +3469,7 @@ $query.Var.permissionsGroupFilters = @(
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "UUID!"),
                 Tuple.Create("feature", "CloudAccountFeature!"),
+                Tuple.Create("features", "[CloudAccountFeature!]"),
                 Tuple.Create("subscriptionStatusFilters", "[CloudAccountStatus!]!"),
                 Tuple.Create("subscriptionSearchText", "String!"),
                 Tuple.Create("subscriptionIdsFilter", "[UUID!]"),
@@ -3468,7 +3478,7 @@ $query.Var.permissionsGroupFilters = @(
                 argDefs,
                 "query",
                 "QueryAzureCloudAccountTenant",
-                "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
+                "($tenantId: UUID!,$feature: CloudAccountFeature!,$features: [CloudAccountFeature!],$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
                 "AzureCloudAccountTenant",
                 Query.AzureCloudAccountTenant,
                 Query.AzureCloudAccountTenantFieldSpec,
@@ -3476,6 +3486,10 @@ $query.Var.permissionsGroupFilters = @(
 $query.Var.tenantId = $someString
 # REQUIRED
 $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# OPTIONAL
+$query.Var.features = @(
+	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)
 # REQUIRED
 $query.Var.subscriptionStatusFilters = @(
 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
@@ -3493,6 +3507,7 @@ $query.Var.subscriptionIdsFilter = @(
         // azureCloudAccountTenantWithExoConfigs(
         //     tenantId: UUID!
         //     feature: CloudAccountFeature!
+        //     features: [CloudAccountFeature!]
         //     subscriptionStatusFilters: [CloudAccountStatus!]!
         //     subscriptionSearchText: String!
         //     subscriptionIdsFilter: [UUID!]
@@ -3502,6 +3517,7 @@ $query.Var.subscriptionIdsFilter = @(
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "UUID!"),
                 Tuple.Create("feature", "CloudAccountFeature!"),
+                Tuple.Create("features", "[CloudAccountFeature!]"),
                 Tuple.Create("subscriptionStatusFilters", "[CloudAccountStatus!]!"),
                 Tuple.Create("subscriptionSearchText", "String!"),
                 Tuple.Create("subscriptionIdsFilter", "[UUID!]"),
@@ -3510,7 +3526,7 @@ $query.Var.subscriptionIdsFilter = @(
                 argDefs,
                 "query",
                 "QueryAzureCloudAccountTenantWithExoConfigs",
-                "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
+                "($tenantId: UUID!,$feature: CloudAccountFeature!,$features: [CloudAccountFeature!],$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
                 "AzureCloudAccountTenantWithExoConfigs",
                 Query.AzureCloudAccountTenantWithExoConfigs,
                 Query.AzureCloudAccountTenantWithExoConfigsFieldSpec,
@@ -3518,6 +3534,10 @@ $query.Var.subscriptionIdsFilter = @(
 $query.Var.tenantId = $someString
 # REQUIRED
 $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# OPTIONAL
+$query.Var.features = @(
+	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)
 # REQUIRED
 $query.Var.subscriptionStatusFilters = @(
 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
@@ -4677,7 +4697,7 @@ $query.Var.input = @{
 		@{
 			# REQUIRED
 			region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
-			# REQUIRED
+			# OPTIONAL
 			subnetNativeId = $someString
 			# REQUIRED
 			isRscManaged = $someBoolean

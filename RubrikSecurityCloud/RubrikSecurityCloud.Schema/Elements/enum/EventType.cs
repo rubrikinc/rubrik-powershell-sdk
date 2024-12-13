@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum EventType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ANOMALY")]
         ANOMALY,
 
@@ -138,6 +141,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SCHEDULE_RECOVERY")]
         SCHEDULE_RECOVERY,
 
+        [EnumMember(Value = "SECURITY_VIOLATION")]
+        SECURITY_VIOLATION,
+
         [EnumMember(Value = "STORAGE")]
         STORAGE,
 
@@ -193,10 +199,7 @@ namespace RubrikSecurityCloud.Types
         VCENTER,
 
         [EnumMember(Value = "VOLUME_GROUP")]
-        VOLUME_GROUP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VOLUME_GROUP
 
 
     } // enum EventType

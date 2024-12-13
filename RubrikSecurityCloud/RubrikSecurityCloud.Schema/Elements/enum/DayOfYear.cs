@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DayOfYear
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FIRST_DAY")]
         FIRST_DAY,
 
         [EnumMember(Value = "LAST_DAY")]
-        LAST_DAY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        LAST_DAY
 
 
     } // enum DayOfYear

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum InternalQueryHypervHostRequestSlaAssignment
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "INTERNAL_QUERY_HYPERV_HOST_REQUEST_SLA_ASSIGNMENT_DERIVED")]
         INTERNAL_QUERY_HYPERV_HOST_REQUEST_SLA_ASSIGNMENT_DERIVED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         INTERNAL_QUERY_HYPERV_HOST_REQUEST_SLA_ASSIGNMENT_DIRECT,
 
         [EnumMember(Value = "INTERNAL_QUERY_HYPERV_HOST_REQUEST_SLA_ASSIGNMENT_UNASSIGNED")]
-        INTERNAL_QUERY_HYPERV_HOST_REQUEST_SLA_ASSIGNMENT_UNASSIGNED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        INTERNAL_QUERY_HYPERV_HOST_REQUEST_SLA_ASSIGNMENT_UNASSIGNED
 
 
     } // enum InternalQueryHypervHostRequestSlaAssignment

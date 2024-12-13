@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CcpVendorType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS")]
         AWS,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         GCP,
 
         [EnumMember(Value = "VENDOR_UNKNOWN")]
-        VENDOR_UNKNOWN,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VENDOR_UNKNOWN
 
 
     } // enum CcpVendorType

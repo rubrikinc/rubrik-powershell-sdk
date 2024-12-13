@@ -150,6 +150,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("standaloneHostName")]
         public System.String? StandaloneHostName { get; set; }
 
+        //      C# -> BlackoutWindowStatus? BlackoutWindowStatus
+        // GraphQL -> blackoutWindowStatus: BlackoutWindowStatus (type)
+        [JsonProperty("blackoutWindowStatus")]
+        public BlackoutWindowStatus? BlackoutWindowStatus { get; set; }
+
+        //      C# -> BlackoutWindows? BlackoutWindows
+        // GraphQL -> blackoutWindows: BlackoutWindows (type)
+        [JsonProperty("blackoutWindows")]
+        public BlackoutWindows? BlackoutWindows { get; set; }
+
         //      C# -> BackupTaskDiagnosticInfo? CurrentBackupTaskInfo
         // GraphQL -> currentBackupTaskInfo: BackupTaskDiagnosticInfo (type)
         [JsonProperty("currentBackupTaskInfo")]
@@ -211,6 +221,8 @@ namespace RubrikSecurityCloud.Types
         System.String? Sid = null,
         System.String? StandaloneHostId = null,
         System.String? StandaloneHostName = null,
+        BlackoutWindowStatus? BlackoutWindowStatus = null,
+        BlackoutWindows? BlackoutWindows = null,
         BackupTaskDiagnosticInfo? CurrentBackupTaskInfo = null,
         List<DataGuardGroupMember>? DataGuardGroupMembers = null,
         List<ManagedHierarchyObjectAncestor>? InfraPath = null,
@@ -295,6 +307,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( StandaloneHostName != null ) {
             this.StandaloneHostName = StandaloneHostName;
+        }
+        if ( BlackoutWindowStatus != null ) {
+            this.BlackoutWindowStatus = BlackoutWindowStatus;
+        }
+        if ( BlackoutWindows != null ) {
+            this.BlackoutWindows = BlackoutWindows;
         }
         if ( CurrentBackupTaskInfo != null ) {
             this.CurrentBackupTaskInfo = CurrentBackupTaskInfo;
@@ -557,6 +575,30 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "standaloneHostName\n" ;
             } else {
                 s += ind + "standaloneHostName\n" ;
+            }
+        }
+        //      C# -> BlackoutWindowStatus? BlackoutWindowStatus
+        // GraphQL -> blackoutWindowStatus: BlackoutWindowStatus (type)
+        if (this.BlackoutWindowStatus != null) {
+            var fspec = this.BlackoutWindowStatus.AsFieldSpec(conf.Child("blackoutWindowStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "blackoutWindowStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> BlackoutWindows? BlackoutWindows
+        // GraphQL -> blackoutWindows: BlackoutWindows (type)
+        if (this.BlackoutWindows != null) {
+            var fspec = this.BlackoutWindows.AsFieldSpec(conf.Child("blackoutWindows"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "blackoutWindows" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> BackupTaskDiagnosticInfo? CurrentBackupTaskInfo
@@ -1067,6 +1109,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.StandaloneHostName != null && ec.Excludes("standaloneHostName",true))
         {
             this.StandaloneHostName = null;
+        }
+        //      C# -> BlackoutWindowStatus? BlackoutWindowStatus
+        // GraphQL -> blackoutWindowStatus: BlackoutWindowStatus (type)
+        if (ec.Includes("blackoutWindowStatus",false))
+        {
+            if(this.BlackoutWindowStatus == null) {
+
+                this.BlackoutWindowStatus = new BlackoutWindowStatus();
+                this.BlackoutWindowStatus.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowStatus"));
+
+            } else {
+
+                this.BlackoutWindowStatus.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowStatus"));
+
+            }
+        }
+        else if (this.BlackoutWindowStatus != null && ec.Excludes("blackoutWindowStatus",false))
+        {
+            this.BlackoutWindowStatus = null;
+        }
+        //      C# -> BlackoutWindows? BlackoutWindows
+        // GraphQL -> blackoutWindows: BlackoutWindows (type)
+        if (ec.Includes("blackoutWindows",false))
+        {
+            if(this.BlackoutWindows == null) {
+
+                this.BlackoutWindows = new BlackoutWindows();
+                this.BlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindows"));
+
+            } else {
+
+                this.BlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindows"));
+
+            }
+        }
+        else if (this.BlackoutWindows != null && ec.Excludes("blackoutWindows",false))
+        {
+            this.BlackoutWindows = null;
         }
         //      C# -> BackupTaskDiagnosticInfo? CurrentBackupTaskInfo
         // GraphQL -> currentBackupTaskInfo: BackupTaskDiagnosticInfo (type)

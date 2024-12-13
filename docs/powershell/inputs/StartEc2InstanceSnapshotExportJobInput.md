@@ -29,3 +29,5 @@ Input to initiate an export job for an AWS native EC2 instance.
   - ID of the Amazon Machine Image (AMI) to be used for launching the EC2 instance. This field should be specified only when snapshotType is specified as Archived and amiTypeForAwsNativeArchivedSnapshot returns AMI type as USER_SPECIFIED. In other cases, either a pre-existing AMI is picked, or a new AMI is created at runtime, and an AMI ID is not required. The AMI specified here should be present in the target account and region of export. The specified AMI will be used for launching the instance for export, and all its volumes will be replaced.
 - iamInstanceProfileArn: System.String
   - ARN of the IAM instance profile to be attached to the exported EC2 instance.
+- archivedSnapshotId: System.String
+  - ID of the archived snapshot to be exported.

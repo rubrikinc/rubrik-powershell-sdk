@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations { get; set; }
 
+        //      C# -> FileIndexingStatus? FileIndexingStatus
+        // GraphQL -> fileIndexingStatus: FileIndexingStatus! (enum)
+        [JsonProperty("fileIndexingStatus")]
+        public FileIndexingStatus? FileIndexingStatus { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -349,6 +354,7 @@ namespace RubrikSecurityCloud.Types
 
     public AzureNativeVirtualMachine Set(
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
+        FileIndexingStatus? FileIndexingStatus = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         AzureNativeVmOsType? OsType = null,
         AzureNativeRegion? Region = null,
@@ -402,6 +408,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( FileIndexingStatus != null ) {
+            this.FileIndexingStatus = FileIndexingStatus;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -571,6 +580,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> FileIndexingStatus? FileIndexingStatus
+        // GraphQL -> fileIndexingStatus: FileIndexingStatus! (enum)
+        if (this.FileIndexingStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "fileIndexingStatus\n" ;
+            } else {
+                s += ind + "fileIndexingStatus\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -1109,6 +1127,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> FileIndexingStatus? FileIndexingStatus
+        // GraphQL -> fileIndexingStatus: FileIndexingStatus! (enum)
+        if (ec.Includes("fileIndexingStatus",true))
+        {
+            if(this.FileIndexingStatus == null) {
+
+                this.FileIndexingStatus = new FileIndexingStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileIndexingStatus != null && ec.Excludes("fileIndexingStatus",true))
+        {
+            this.FileIndexingStatus = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)

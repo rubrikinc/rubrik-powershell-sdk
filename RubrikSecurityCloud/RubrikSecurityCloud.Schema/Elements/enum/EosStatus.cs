@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum EosStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "EOS_STATUS_PLAN_UPGRADE")]
         EOS_STATUS_PLAN_UPGRADE,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         EOS_STATUS_UNKNOWN,
 
         [EnumMember(Value = "EOS_STATUS_UNSUPPORTED")]
-        EOS_STATUS_UNSUPPORTED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        EOS_STATUS_UNSUPPORTED
 
 
     } // enum EosStatus

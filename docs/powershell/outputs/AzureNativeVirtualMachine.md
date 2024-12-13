@@ -38,13 +38,15 @@ An Azure Native Virtual Machine that refers to the Azure infrastructure as a ser
 - isExocomputeConfigured: System.Boolean
   - Specifies whether exocompute is configured for the region in which the virtual machine (VM) exists, or not. When the value is true, exocompute can be used to perform tasks like file indexing.
 - isFileIndexingEnabled: System.Boolean
-  - Specifies whether file indexing is enabled for this virtual machine or not. When enabled, Rubrik can scan through the file structure inside the virtual machine in a protected environment where only the metadata, like folder structure, file names, and file sizes will be readable by Rubrik.
+  - Specifies whether file indexing is enabled for this virtual machine or not. When enabled, Rubrik scans the file structure within the virtual machine in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.
 - privateIp: System.String
   - Private IP address of the virtual machine.
 - cloudNativeId: System.String
   - Native ID of the the virtual machine (VM).
 - nativeName: System.String
   - Azure Native name of the object.
+- fileIndexingStatus: FileIndexingStatus
+  - Specifies the file indexing status for this virtual machine. When enabled, Rubrik scans the file structure within the virtual machine in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - resourceGroup: AzureNativeResourceGroup

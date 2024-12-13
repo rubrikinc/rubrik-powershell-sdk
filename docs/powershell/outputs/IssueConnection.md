@@ -6,6 +6,6 @@ Paginated list of Issue objects. Each page of the results includes at most 1000 
 - nodes: list of Issues
   - List of Issue objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of Issue objects matching the request arguments.

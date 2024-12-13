@@ -6,6 +6,6 @@ Paginated list of CloudDirectNasNamespace objects. Each page of the results incl
 - nodes: list of CloudDirectNasNamespaces
   - List of CloudDirectNasNamespace objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of CloudDirectNasNamespace objects matching the request arguments.

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TimeGranularity
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DAY")]
         DAY,
 
         [EnumMember(Value = "MONTH")]
-        MONTH,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MONTH
 
 
     } // enum TimeGranularity

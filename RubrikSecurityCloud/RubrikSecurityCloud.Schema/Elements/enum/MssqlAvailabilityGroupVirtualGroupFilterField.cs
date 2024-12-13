@@ -15,20 +15,29 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlAvailabilityGroupVirtualGroupFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
+        [EnumMember(Value = "EFFECTIVE_SLA_WITH_RETENTION_SLA")]
+        EFFECTIVE_SLA_WITH_RETENTION_SLA,
+
         [EnumMember(Value = "FIELD_UNSPECIFIED")]
         FIELD_UNSPECIFIED,
+
+        [EnumMember(Value = "IS_RELIC")]
+        IS_RELIC,
+
+        [EnumMember(Value = "IS_REPLICATED")]
+        IS_REPLICATED,
 
         [EnumMember(Value = "NAME")]
         NAME,
 
         [EnumMember(Value = "ORG_ID")]
-        ORG_ID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ORG_ID
 
 
     } // enum MssqlAvailabilityGroupVirtualGroupFilterField

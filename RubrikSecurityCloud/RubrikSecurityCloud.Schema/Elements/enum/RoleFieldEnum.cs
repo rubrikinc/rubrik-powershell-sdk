@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RoleFieldEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ASSIGNMENT")]
         ASSIGNMENT,
 
         [EnumMember(Value = "Name")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum RoleFieldEnum

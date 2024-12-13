@@ -31,10 +31,12 @@ Modify the values of specified fileset templates.
 - There is a single argument of type BulkUpdateFilesetTemplateInput.
 - Returns BulkUpdateFilesetTemplateReply.
 ### recoverfiles
-Create restore job to restore multiple files/directories
+v5.0-v9.2: Create restore job to restore multiple files/directories
+v9.3: (DEPRECATED) Create restore job to restore multiple files/directories
 
 Supported in v5.0+
-Initiate a job to copy one or more file or folder from a fileset backup to the source host. Returns the job instance ID.
+v5.0-v9.2: Initiate a job to copy one or more file or folder from a fileset backup to the source host. Returns the job instance ID.
+v9.3: Initiate a job to copy one or more file or folder from a fileset backup to the source host. Returns the job instance ID. This endpoint will be removed in CDM v9.3.0 in favor of `POST v1/fileset/snapshot/{id}/restore_files`.
 
 - There is a single argument of type FilesetRecoverFilesInput.
 - Returns AsyncRequestStatus.

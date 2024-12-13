@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum EventClusterType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLOUD")]
         CLOUD,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         RUBRIK_SAAS,
 
         [EnumMember(Value = "UNKNOWN_CLUSTER_TYPE")]
-        UNKNOWN_CLUSTER_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_CLUSTER_TYPE
 
 
     } // enum EventClusterType

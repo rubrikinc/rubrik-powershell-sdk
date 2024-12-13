@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VsphereLiveMountSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_NAME")]
         CLUSTER_NAME,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         UNSPECIFIED,
 
         [EnumMember(Value = "VM_STATUS")]
-        VM_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VM_STATUS
 
 
     } // enum VsphereLiveMountSortByField

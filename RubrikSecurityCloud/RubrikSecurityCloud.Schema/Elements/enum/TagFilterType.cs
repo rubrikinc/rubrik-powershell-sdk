@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TagFilterType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "TAG_KEY")]
         TAG_KEY,
 
         [EnumMember(Value = "TAG_KEY_VALUE")]
-        TAG_KEY_VALUE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TAG_KEY_VALUE
 
 
     } // enum TagFilterType

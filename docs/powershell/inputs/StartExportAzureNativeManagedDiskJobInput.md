@@ -27,3 +27,5 @@ Input for the job to export the specified Azure Native Managed Disk to the speci
   - Specifies whether to recover from the replica of the source snapshot or not. Default value is false.
 - snapshotType: AzureSnapshotType
   - The type of the snapshot to recover from.
+- archivedSnapshotId: System.String
+  - ID of the archived snapshot to be exported.

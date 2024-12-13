@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AccessType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CREATE_ACCESS")]
         CREATE_ACCESS,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         READ_ACCESS,
 
         [EnumMember(Value = "WRITE_ACCESS")]
-        WRITE_ACCESS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WRITE_ACCESS
 
 
     } // enum AccessType

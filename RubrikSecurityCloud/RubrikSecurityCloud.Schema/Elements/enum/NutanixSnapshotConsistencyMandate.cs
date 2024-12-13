@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NutanixSnapshotConsistencyMandate
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NUTANIX_APP_CONSISTENT")]
         NUTANIX_APP_CONSISTENT,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         NUTANIX_CRASH_CONSISTENT,
 
         [EnumMember(Value = "NUTANIX_UNSPECIFIED")]
-        NUTANIX_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NUTANIX_UNSPECIFIED
 
 
     } // enum NutanixSnapshotConsistencyMandate

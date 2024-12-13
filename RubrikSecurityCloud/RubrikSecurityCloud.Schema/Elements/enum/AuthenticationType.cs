@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AuthenticationType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AUTH_TYPE_UNSPECIFIED")]
         AUTH_TYPE_UNSPECIFIED,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         CUSTOM_HEADER,
 
         [EnumMember(Value = "URL")]
-        URL,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        URL
 
 
     } // enum AuthenticationType

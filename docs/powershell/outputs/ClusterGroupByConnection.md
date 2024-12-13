@@ -6,6 +6,6 @@ Paginated list of ClusterGroupBy objects. Each page of the results includes at m
 - nodes: list of ClusterGroupBys
   - List of ClusterGroupBy objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ClusterGroupBy objects matching the request arguments.

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UpgradeType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FAST")]
         FAST,
 
         [EnumMember(Value = "ROLLING")]
-        ROLLING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ROLLING
 
 
     } // enum UpgradeType

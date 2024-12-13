@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DownloadStatusEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "COMPLETED")]
         COMPLETED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         IN_PROGRESS,
 
         [EnumMember(Value = "PENDING")]
-        PENDING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        PENDING
 
 
     } // enum DownloadStatusEnum

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ArchivalLocationStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DELETED")]
         DELETED,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         READ_WRITE,
 
         [EnumMember(Value = "UNKNOWN_ARCHIVAL_LOCATION_STATUS")]
-        UNKNOWN_ARCHIVAL_LOCATION_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_ARCHIVAL_LOCATION_STATUS
 
 
     } // enum ArchivalLocationStatus

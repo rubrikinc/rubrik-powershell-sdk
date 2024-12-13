@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CdmManagedVolumeType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MANAGED_VOLUME_TYPE_ALWAYS_MOUNTED")]
         MANAGED_VOLUME_TYPE_ALWAYS_MOUNTED,
 
         [EnumMember(Value = "MANAGED_VOLUME_TYPE_SLA_BASED")]
-        MANAGED_VOLUME_TYPE_SLA_BASED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MANAGED_VOLUME_TYPE_SLA_BASED
 
 
     } // enum CdmManagedVolumeType

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CdmCertificateUsage
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AGENT")]
         AGENT,
 
@@ -46,10 +49,7 @@ namespace RubrikSecurityCloud.Types
         USAGE_UNKNOWN,
 
         [EnumMember(Value = "WEB_SERVER")]
-        WEB_SERVER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WEB_SERVER
 
 
     } // enum CdmCertificateUsage

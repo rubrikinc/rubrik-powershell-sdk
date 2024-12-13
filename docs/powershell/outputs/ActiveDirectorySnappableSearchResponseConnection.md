@@ -6,6 +6,6 @@ Paginated list of ActiveDirectorySnappableSearchResponse objects. Each page of t
 - nodes: list of ActiveDirectorySnappableSearchResponses
   - List of ActiveDirectorySnappableSearchResponse objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ActiveDirectorySnappableSearchResponse objects matching the request arguments.

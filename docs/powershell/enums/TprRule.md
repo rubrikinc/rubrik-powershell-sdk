@@ -31,4 +31,8 @@ The different TPR rules.
 - EDIT_TPR_CONFIG - The TPR rule for editing any QAuth configuration.
 - RESET_USER_PASSKEYS - Quorum authorization is required for resetting passkeys for a QAuth user.
 - DELETE_DATA_SOURCE - Quorum authorization is required for deleting data sources.
-- DELETE_REPLICATION_PAIR - Quorum authorization is required for deleting replication pair.
+- DELETE_REPLICATION_PAIR - Quorum authorization is required for deleting a replication pair.
+- PAUSE_REPLICATION - Quorum authorization is required to pause replication.
+- EDIT_REPLICATION_PAIR - Quorum authorization is required for editing a replication pair.
+- DELETE_CLOUD_ACCOUNTS - Quorum authorization is required for deleting cloud accounts.
+- DELETE_CLOUD_ARCHIVAL_LOCATION - Quorum authorization is required to delete a cloud archival location.

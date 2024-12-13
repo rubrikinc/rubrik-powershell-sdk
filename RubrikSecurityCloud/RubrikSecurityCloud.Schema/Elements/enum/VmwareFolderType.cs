@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VmwareFolderType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DATACENTER")]
         DATACENTER,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         UNDEFINED,
 
         [EnumMember(Value = "VM")]
-        VM,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VM
 
 
     } // enum VmwareFolderType

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DatabaseType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DATABASE_TYPE_ORACLE")]
         DATABASE_TYPE_ORACLE,
 
         [EnumMember(Value = "DATABASE_TYPE_SQL")]
-        DATABASE_TYPE_SQL,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        DATABASE_TYPE_SQL
 
 
     } // enum DatabaseType

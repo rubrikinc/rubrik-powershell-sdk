@@ -77,6 +77,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("timeZone")]
         public System.String? TimeZone { get; set; }
 
+        //      C# -> System.Boolean? ShowChartsInEmailBody
+        // GraphQL -> showChartsInEmailBody: Boolean (scalar)
+        [JsonProperty("showChartsInEmailBody")]
+        public System.Boolean? ShowChartsInEmailBody { get; set; }
+
         //      C# -> List<WeekDay>? WeeklyDays
         // GraphQL -> weeklyDays: [WeekDay!] (enum)
         [JsonProperty("weeklyDays")]

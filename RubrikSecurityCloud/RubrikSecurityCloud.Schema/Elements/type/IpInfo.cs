@@ -35,10 +35,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("description")]
         public System.String? Description { get; set; }
 
+        //      C# -> System.Int64? Id
+        // GraphQL -> id: Long! (scalar)
+        [JsonProperty("id")]
+        public System.Int64? Id { get; set; }
+
         //      C# -> System.String? IpCidr
         // GraphQL -> ipCidr: String! (scalar)
         [JsonProperty("ipCidr")]
         public System.String? IpCidr { get; set; }
+
+        //      C# -> System.Boolean? IsGlobalEntry
+        // GraphQL -> isGlobalEntry: Boolean! (scalar)
+        [JsonProperty("isGlobalEntry")]
+        public System.Boolean? IsGlobalEntry { get; set; }
 
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime! (scalar)
@@ -58,7 +68,9 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? ContainsCurrentIpAddress = null,
         DateTime? CreatedAt = null,
         System.String? Description = null,
+        System.Int64? Id = null,
         System.String? IpCidr = null,
+        System.Boolean? IsGlobalEntry = null,
         DateTime? UpdatedAt = null
     ) 
     {
@@ -71,8 +83,14 @@ namespace RubrikSecurityCloud.Types
         if ( Description != null ) {
             this.Description = Description;
         }
+        if ( Id != null ) {
+            this.Id = Id;
+        }
         if ( IpCidr != null ) {
             this.IpCidr = IpCidr;
+        }
+        if ( IsGlobalEntry != null ) {
+            this.IsGlobalEntry = IsGlobalEntry;
         }
         if ( UpdatedAt != null ) {
             this.UpdatedAt = UpdatedAt;
@@ -118,6 +136,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "description\n" ;
             }
         }
+        //      C# -> System.Int64? Id
+        // GraphQL -> id: Long! (scalar)
+        if (this.Id != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
+        }
         //      C# -> System.String? IpCidr
         // GraphQL -> ipCidr: String! (scalar)
         if (this.IpCidr != null) {
@@ -125,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ipCidr\n" ;
             } else {
                 s += ind + "ipCidr\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsGlobalEntry
+        // GraphQL -> isGlobalEntry: Boolean! (scalar)
+        if (this.IsGlobalEntry != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isGlobalEntry\n" ;
+            } else {
+                s += ind + "isGlobalEntry\n" ;
             }
         }
         //      C# -> DateTime? UpdatedAt
@@ -194,6 +230,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Description = null;
         }
+        //      C# -> System.Int64? Id
+        // GraphQL -> id: Long! (scalar)
+        if (ec.Includes("id",true))
+        {
+            if(this.Id == null) {
+
+                this.Id = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
+        }
         //      C# -> System.String? IpCidr
         // GraphQL -> ipCidr: String! (scalar)
         if (ec.Includes("ipCidr",true))
@@ -210,6 +263,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IpCidr != null && ec.Excludes("ipCidr",true))
         {
             this.IpCidr = null;
+        }
+        //      C# -> System.Boolean? IsGlobalEntry
+        // GraphQL -> isGlobalEntry: Boolean! (scalar)
+        if (ec.Includes("isGlobalEntry",true))
+        {
+            if(this.IsGlobalEntry == null) {
+
+                this.IsGlobalEntry = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsGlobalEntry != null && ec.Excludes("isGlobalEntry",true))
+        {
+            this.IsGlobalEntry = null;
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime! (scalar)

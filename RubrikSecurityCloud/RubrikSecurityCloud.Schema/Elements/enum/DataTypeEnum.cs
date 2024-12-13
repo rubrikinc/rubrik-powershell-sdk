@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DataTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BOOLEAN")]
         BOOLEAN,
 
@@ -43,10 +46,7 @@ namespace RubrikSecurityCloud.Types
         STRING,
 
         [EnumMember(Value = "URL")]
-        URL,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        URL
 
 
     } // enum DataTypeEnum

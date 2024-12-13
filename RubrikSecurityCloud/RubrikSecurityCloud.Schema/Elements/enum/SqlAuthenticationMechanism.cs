@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SqlAuthenticationMechanism
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AUTHENTICATION_MECHANISM_UNSPECIFIED")]
         AUTHENTICATION_MECHANISM_UNSPECIFIED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         AZURE_ACTIVE_DIRECTORY_AUTH_CODE,
 
         [EnumMember(Value = "SQL_AUTHENTICATION")]
-        SQL_AUTHENTICATION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SQL_AUTHENTICATION
 
 
     } // enum SqlAuthenticationMechanism

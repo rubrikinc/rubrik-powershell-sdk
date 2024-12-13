@@ -13,6 +13,8 @@ Input to edit Azure target.
   - Cloud account ID of the Azure target.
 - computeSettings: AzureCloudComputeSettingsInput
   - Compute settings of the Azure target.
+- computeProxySettings: ProxySettingsInput
+  - Compute proxy settings of the Azure target.
 - proxySettings: ProxySettingsInput
   - Proxy settings of the Azure target.
 - isConsolidationEnabled: System.Boolean

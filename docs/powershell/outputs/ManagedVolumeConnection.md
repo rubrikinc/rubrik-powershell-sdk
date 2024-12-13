@@ -6,6 +6,6 @@ Paginated list of ManagedVolume objects. Each page of the results includes at mo
 - nodes: list of ManagedVolumes
   - List of ManagedVolume objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ManagedVolume objects matching the request arguments.

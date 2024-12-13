@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnappableSlaAssignment
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SNAPPABLE_SLA_ASSIGNMENT_DERIVED")]
         SNAPPABLE_SLA_ASSIGNMENT_DERIVED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         SNAPPABLE_SLA_ASSIGNMENT_DIRECT,
 
         [EnumMember(Value = "SNAPPABLE_SLA_ASSIGNMENT_UNASSIGNED")]
-        SNAPPABLE_SLA_ASSIGNMENT_UNASSIGNED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SNAPPABLE_SLA_ASSIGNMENT_UNASSIGNED
 
 
     } // enum SnappableSlaAssignment

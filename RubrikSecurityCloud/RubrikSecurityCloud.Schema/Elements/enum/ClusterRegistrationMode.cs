@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ClusterRegistrationMode
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HYBRID")]
         HYBRID,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         LIFE_OF_DEVICE,
 
         [EnumMember(Value = "NOT_REGISTERED")]
-        NOT_REGISTERED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NOT_REGISTERED
 
 
     } // enum ClusterRegistrationMode

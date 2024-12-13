@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ExchangeItemHierarchyType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DEFAULT_HIERARCHY")]
         DEFAULT_HIERARCHY,
 
         [EnumMember(Value = "RIF_HIERARCHY")]
-        RIF_HIERARCHY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        RIF_HIERARCHY
 
 
     } // enum ExchangeItemHierarchyType

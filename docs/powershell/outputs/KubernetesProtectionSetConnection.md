@@ -6,6 +6,6 @@ Paginated list of KubernetesProtectionSet objects. Each page of the results incl
 - nodes: list of KubernetesProtectionSets
   - List of KubernetesProtectionSet objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of KubernetesProtectionSet objects matching the request arguments.

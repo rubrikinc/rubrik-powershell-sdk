@@ -6,6 +6,6 @@ Paginated list of AzureNativeResourceGroup objects. Each page of the results inc
 - nodes: list of AzureNativeResourceGroups
   - List of AzureNativeResourceGroup objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of AzureNativeResourceGroup objects matching the request arguments.

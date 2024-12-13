@@ -6,6 +6,6 @@ Paginated list of UserAudit objects. Each page of the results includes at most 1
 - nodes: list of UserAudits
   - List of UserAudit objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of UserAudit objects matching the request arguments.

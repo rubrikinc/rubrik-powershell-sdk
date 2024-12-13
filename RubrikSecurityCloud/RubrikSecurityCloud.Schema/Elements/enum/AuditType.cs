@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AuditType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACCESS_MANAGEMENT")]
         ACCESS_MANAGEMENT,
 
@@ -103,10 +106,7 @@ namespace RubrikSecurityCloud.Types
         THREAT_HUNT,
 
         [EnumMember(Value = "TPR")]
-        TPR,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TPR
 
 
     } // enum AuditType

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum OracleLiveMountSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CREATION_DATE")]
         CREATION_DATE,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         SOURCE_DATABASE_NAME,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSPECIFIED
 
 
     } // enum OracleLiveMountSortByField

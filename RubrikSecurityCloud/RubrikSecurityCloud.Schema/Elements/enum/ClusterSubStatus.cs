@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ClusterSubStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DEFAULT")]
         DEFAULT,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         INITIALIZING_METADATA,
 
         [EnumMember(Value = "INITIALIZING_REPORTS")]
-        INITIALIZING_REPORTS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        INITIALIZING_REPORTS
 
 
     } // enum ClusterSubStatus

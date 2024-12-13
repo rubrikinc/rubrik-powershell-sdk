@@ -17,6 +17,10 @@
   - Connection status for this vCenter Server.
 - isStandaloneHost: System.Boolean
   - Specifies whether this entity is a standalone host.
+- snapshotConsistencyMandate: ConsistencyLevelEnum
+  - Snapshot consistency mandate.
+- snapshotConsistencySource: System.String
+  - Fid of the object from where the snapshot consistency mandate is inherited.
 - conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz
 - descendantConnection: VsphereVcenterDescendantTypeConnection
   - List of descendants.

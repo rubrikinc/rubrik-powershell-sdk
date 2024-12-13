@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UnlockMethod
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ADMINISTRATIVE_UNLOCK")]
         ADMINISTRATIVE_UNLOCK,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         SUPPORT_UNLOCK,
 
         [EnumMember(Value = "UNLOCK_METHOD_UNSPECIFIED")]
-        UNLOCK_METHOD_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNLOCK_METHOD_UNSPECIFIED
 
 
     } // enum UnlockMethod

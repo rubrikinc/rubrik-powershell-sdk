@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DayOfWeek
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FRIDAY")]
         FRIDAY,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         TUESDAY,
 
         [EnumMember(Value = "WEDNESDAY")]
-        WEDNESDAY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WEDNESDAY
 
 
     } // enum DayOfWeek

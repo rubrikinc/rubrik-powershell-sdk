@@ -15,6 +15,8 @@ Configuration for creating AWS instances.
   - Instance profile to attach to image.
 - cdmProduct: System.String
   - AWS marketplace product ID.
+- placementGroupName: System.String
+  - Placement Group name.
 - vmType: VmType
   - Create dense or standard nodes.
 - securityGroups: list of System.Strings

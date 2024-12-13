@@ -21,6 +21,8 @@ Managed Volume information.
   - Client configuration related to backup scripts.
 - hostDetail: ManagedVolumeHostDetail
   - Specifies host details for the SLA Managed Volume.
+- nfsSettings: ManagedVolumeNfsSettings
+  - NFS settings and configurations for the Managed Volume.
 - descendantConnection: ManagedVolumeDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: ManagedVolumePhysicalChildTypeConnection

@@ -5,6 +5,8 @@ Specific information for Google Cloud Platform (GCP) target created on Rubrik.
   - Proxy setting of this GCP target.
 - connectionStatus: ConnectionStatusType
   - Connection status of the GCP target.
+- cnpSpecificFields: GcpCloudNativeTarget
+  - CNP specific fields for the GCP target location..
 - region: GcpRegion
   - Region of GCP target.
 - syncStatus: TargetSyncStatus

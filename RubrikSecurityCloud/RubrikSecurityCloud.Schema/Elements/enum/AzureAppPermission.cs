@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureAppPermission
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AZURE_APP_PERMISSION_UNSPECIFIED")]
         AZURE_APP_PERMISSION_UNSPECIFIED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         AZURE_SQL_IMPERSONATION,
 
         [EnumMember(Value = "AZURE_STORAGE_IMPERSONATION")]
-        AZURE_STORAGE_IMPERSONATION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        AZURE_STORAGE_IMPERSONATION
 
 
     } // enum AzureAppPermission

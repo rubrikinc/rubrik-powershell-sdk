@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GcpStorageClass
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "COLDLINE_GCP")]
         COLDLINE_GCP,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         STANDARD_GCP,
 
         [EnumMember(Value = "UNKNOWN_STORAGE_CLASS_GCP")]
-        UNKNOWN_STORAGE_CLASS_GCP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_STORAGE_CLASS_GCP
 
 
     } // enum GcpStorageClass

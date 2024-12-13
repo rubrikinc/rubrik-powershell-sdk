@@ -110,11 +110,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
-    /// 	targetNetworkInterface = @{
-    /// 		# OPTIONAL
-    /// 		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
-    /// 	}
-    /// 	# OPTIONAL
     /// 	networkInterface = @{
     /// 		# OPTIONAL
     /// 		targetInterfaceName = $someString
@@ -330,11 +325,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
-    /// 	targetNetworkInterface = @{
-    /// 		# OPTIONAL
-    /// 		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
-    /// 	}
-    /// 	# OPTIONAL
     /// 	networkInterface = @{
     /// 		# OPTIONAL
     /// 		targetInterfaceName = $someString
@@ -517,11 +507,6 @@ $query.Var.input = @{
 		)
 	}
 	# OPTIONAL
-	targetNetworkInterface = @{
-		# OPTIONAL
-		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
-	}
-	# OPTIONAL
 	networkInterface = @{
 		# OPTIONAL
 		targetInterfaceName = $someString
@@ -695,11 +680,6 @@ $query.Var.input = @{
 		ports = @(
 			$someInt
 		)
-	}
-	# OPTIONAL
-	targetNetworkInterface = @{
-		# OPTIONAL
-		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
 	}
 	# OPTIONAL
 	networkInterface = @{

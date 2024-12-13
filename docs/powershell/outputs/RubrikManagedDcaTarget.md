@@ -1,0 +1,71 @@
+### RubrikManagedDcaTarget
+Specific information for DCA archival target created on Rubrik cluster.
+
+- name: System.String
+  - Name of the DCA target.
+- s3Endpoint: System.String
+  - Amazon S3 endpoint of the DCA target.
+- roleName: System.String
+  - Role name provided for the DCA target.
+- agency: System.String
+  - Agency provided for the DCA target.
+- certificateContent: System.String
+  - Certificate content provided for the DCA target.
+- kmsMasterKeyId: System.String
+  - KMS master key provided for the DCA target.
+- tokenDuration: System.Int32
+  - Token duration in minutes of the DCA target.
+- connectionStatus: ConnectionStatusType
+  - Connection status of the DCA target.
+- bucketName: System.String
+  - Bucket name of the DCA target.
+- capEndpoint: System.String
+  - CAP endpoint of the DCA target.
+- mission: System.String
+  - Mission of the DCA target.
+- region: AwsDcaRegion
+  - Region of the DCA target.
+- rsaKey: System.String
+  - RSA key of the DCA target.
+- syncStatus: TargetSyncStatus
+  - Synchronization status of DCA location.
+- syncFailureReason: System.String
+  - Reason for the synchronization failure between this target and Rubrik CDM.
+- encryptionType: TargetEncryptionTypeEnum
+  - Encryption type provided for the DCA target.
+- awsRetrievalTier: AwsRetrievalTier
+  - AWS retrieval tier of the DCA target.
+- storageClass: AwsStorageClass
+  - Storage class of the DCA target.
+- cluster: Cluster
+  - The cluster to which this target belongs.
+- targetType: TargetType
+  - The type of the target.
+- id: System.String
+  - The ID of the target.
+- locationScope: LocationScope
+  - The scope of the location of the target. Possible values are Global or Local.
+- isActive: System.Boolean
+  - Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
+- isArchived: System.Boolean
+  - Specifies whether the target is archived.
+- targetMapping: TargetMappingBasic
+  - Archival location to which the mapping target belongs.
+- clusterName: System.String
+  - Name of the Rubrik cluster that archives to this archival location.
+- status: ArchivalLocationStatus
+  - Status of the target.
+- upgradeStatus: UpgradeStatus
+  - Upgrade status of the target.
+- consumedBytes: System.Int64
+  - Number of bytes stored on the target.
+- runningTasks: System.Int32
+  - Number of archiving tasks running on this target.
+- failedTasks: System.Int32
+  - Number of archiving tasks failed on this target.
+- readerRetrievalMethod: ReaderRetrievalMethod
+  - The retrieval method of the reader target.
+- targetMappingBasic: list of TargetMappingBasics
+  - List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
+- locationConnectionStatus: ConnectionStatusType
+  - Status of the target.

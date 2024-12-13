@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AdVolumeExportFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN")]
         ACTIVE_DIRECTORY_DOMAIN,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         IS_USER_VISIBLE,
 
         [EnumMember(Value = "SNAPSHOT")]
-        SNAPSHOT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SNAPSHOT
 
 
     } // enum AdVolumeExportFilterField

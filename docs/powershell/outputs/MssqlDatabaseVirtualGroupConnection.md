@@ -6,6 +6,6 @@ Paginated list of MssqlDatabaseVirtualGroup objects. Each page of the results in
 - nodes: list of MssqlDatabaseVirtualGroups
   - List of MssqlDatabaseVirtualGroup objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of MssqlDatabaseVirtualGroup objects matching the request arguments.

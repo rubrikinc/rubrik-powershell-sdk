@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VolumeGroupLiveMountFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         ORG_ID,
 
         [EnumMember(Value = "SOURCE_HOST_ID")]
-        SOURCE_HOST_ID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SOURCE_HOST_ID
 
 
     } // enum VolumeGroupLiveMountFilterField

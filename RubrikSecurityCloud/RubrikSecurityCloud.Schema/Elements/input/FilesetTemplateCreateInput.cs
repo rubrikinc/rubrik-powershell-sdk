@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isCreatedByPolarisNas")]
         public System.Boolean? IsCreatedByPolarisNas { get; set; }
 
+        //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
+        // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean (scalar)
+        [JsonProperty("shouldRetryPrescriptIfBackupFails")]
+        public System.Boolean? ShouldRetryPrescriptIfBackupFails { get; set; }
+
         //      C# -> FilesetTemplateCreateOperatingSystemType? OperatingSystemType
         // GraphQL -> operatingSystemType: FilesetTemplateCreateOperatingSystemType (enum)
         [JsonProperty("operatingSystemType")]

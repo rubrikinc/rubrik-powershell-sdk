@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum Db2SnapshotType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DIFFERENTIAL")]
         DIFFERENTIAL,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         FULL,
 
         [EnumMember(Value = "INCREMENTAL")]
-        INCREMENTAL,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        INCREMENTAL
 
 
     } // enum Db2SnapshotType

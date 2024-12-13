@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ResolutionType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "RESOLVED_AD")]
         RESOLVED_AD,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         UNRESOLVED,
 
         [EnumMember(Value = "WELL_KNOWN")]
-        WELL_KNOWN,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WELL_KNOWN
 
 
     } // enum ResolutionType

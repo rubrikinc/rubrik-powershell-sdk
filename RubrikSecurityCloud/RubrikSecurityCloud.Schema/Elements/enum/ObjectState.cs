@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ObjectState
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE")]
         ACTIVE,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         NOT_SPECIFIED,
 
         [EnumMember(Value = "RELIC")]
-        RELIC,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        RELIC
 
 
     } // enum ObjectState

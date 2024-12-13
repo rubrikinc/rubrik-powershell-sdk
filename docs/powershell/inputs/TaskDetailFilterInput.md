@@ -14,7 +14,7 @@ Filter task detail
 - replicationSource: list of System.Strings
   - The replication source of the task.
 - taskCategory: list of System.Strings
-  - The task category.
+  - The task category. It is a required filter and must be either the Protection or Recovery option.
 - taskStatus: list of System.Strings
   - The task status.
 - taskType: list of System.Strings

@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("attachmentTypes")]
         public List<ReportAttachmentType>? AttachmentTypes { get; set; }
 
+        //      C# -> System.Boolean? ShowChartsInEmailBody
+        // GraphQL -> showChartsInEmailBody: Boolean (scalar)
+        [JsonProperty("showChartsInEmailBody")]
+        public System.Boolean? ShowChartsInEmailBody { get; set; }
+
 
         #endregion
 

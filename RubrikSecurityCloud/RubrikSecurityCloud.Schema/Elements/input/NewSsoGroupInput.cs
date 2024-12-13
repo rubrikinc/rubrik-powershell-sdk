@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isOrgAdmin")]
         public System.Boolean? IsOrgAdmin { get; set; }
 
+        //      C# -> System.String? AuthDomainId
+        // GraphQL -> authDomainId: String (scalar)
+        [JsonProperty("authDomainId")]
+        public System.String? AuthDomainId { get; set; }
+
 
         #endregion
 

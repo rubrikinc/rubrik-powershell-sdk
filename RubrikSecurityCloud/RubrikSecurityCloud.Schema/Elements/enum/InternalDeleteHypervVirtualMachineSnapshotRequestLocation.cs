@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum InternalDeleteHypervVirtualMachineSnapshotRequestLocation
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "INTERNAL_DELETE_HYPERV_VIRTUAL_MACHINE_SNAPSHOT_REQUEST_LOCATION_ALL")]
         INTERNAL_DELETE_HYPERV_VIRTUAL_MACHINE_SNAPSHOT_REQUEST_LOCATION_ALL,
 
         [EnumMember(Value = "INTERNAL_DELETE_HYPERV_VIRTUAL_MACHINE_SNAPSHOT_REQUEST_LOCATION_LOCAL")]
-        INTERNAL_DELETE_HYPERV_VIRTUAL_MACHINE_SNAPSHOT_REQUEST_LOCATION_LOCAL,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        INTERNAL_DELETE_HYPERV_VIRTUAL_MACHINE_SNAPSHOT_REQUEST_LOCATION_LOCAL
 
 
     } // enum InternalDeleteHypervVirtualMachineSnapshotRequestLocation

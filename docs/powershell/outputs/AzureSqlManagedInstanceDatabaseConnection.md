@@ -6,6 +6,6 @@ Paginated list of AzureSqlManagedInstanceDatabase objects. Each page of the resu
 - nodes: list of AzureSqlManagedInstanceDatabases
   - List of AzureSqlManagedInstanceDatabase objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of AzureSqlManagedInstanceDatabase objects matching the request arguments.

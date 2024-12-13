@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AwsInstanceType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS_TYPE_UNSPECIFIED")]
         AWS_TYPE_UNSPECIFIED,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         M6I_8XLARGE,
 
         [EnumMember(Value = "R6I_4XLARGE")]
-        R6I_4XLARGE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        R6I_4XLARGE
 
 
     } // enum AwsInstanceType

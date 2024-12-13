@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnapshotQueryFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ARCHIVAL_LOCATION_IDS")]
         ARCHIVAL_LOCATION_IDS,
 
@@ -106,10 +109,7 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_STATUS,
 
         [EnumMember(Value = "SNAPSHOT_TYPE")]
-        SNAPSHOT_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SNAPSHOT_TYPE
 
 
     } // enum SnapshotQueryFilterField

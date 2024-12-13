@@ -6,6 +6,6 @@ Paginated list of ValidReplicationSource objects. Each page of the results inclu
 - nodes: list of ValidReplicationSources
   - List of ValidReplicationSource objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ValidReplicationSource objects matching the request arguments.

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SlaQuerySortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NAME")]
         NAME,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         PROTECTED_OBJECT_COUNT,
 
         [EnumMember(Value = "RETENTION")]
-        RETENTION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        RETENTION
 
 
     } // enum SlaQuerySortByField

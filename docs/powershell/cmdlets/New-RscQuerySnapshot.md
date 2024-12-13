@@ -27,7 +27,7 @@ Details of the unexpired snapshot closest to the specified point in time for eac
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
     - searchFilter - SearchFilter: search filters
@@ -36,7 +36,7 @@ Details of the unexpired snapshot closest to the specified point in time for eac
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
     - calendarSearchFilter - CalendarSearchFilter: Search filter for calendar search.
@@ -91,14 +91,14 @@ List of legal hold snapshots for a workload.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - input - LegalHoldSnapshotsForSnappableInput: Query legal hold snapshots for a workload.
 - Returns LegalHoldSnapshotDetailConnection.
 ### onedrivesearch
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
     - onedriveSearchFilter - OnedriveSearchFilter
@@ -136,7 +136,7 @@ Returns a list of snapshots for a workload.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - workloadId - System.String: The FID of the workload.
     - snapshotFilter - list of SnapshotQueryFilterInputs: Filter for snapshot connection.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -151,7 +151,7 @@ Returns list of snapshots for a list of workloads.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableIds - list of System.Strings: Workload UUIDs.
     - snapshotFilter - list of SnapshotQueryFilterInputs: Filter for snapshot connection.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -166,7 +166,7 @@ List of workloads with legal hold snapshots.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - input - SnappablesWithLegalHoldSnapshotsInput: Input to retrieve workloads with legal hold snapshots.
 - Returns LegalHoldSnappableDetailConnection.
 ### snapshot
@@ -176,6 +176,20 @@ Returns a single snapshot by snapshot forever UUID and cluster UUID. In case clu
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - clusterUuid - System.String: The Rubrik cluster ID.
 - Returns CdmSnapshot.
+### sofclouddirectshare
+Returns a list of NAS Cloud Direct snapshots for a share.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - workloadId - System.String: The FID of the workload.
+    - snapshotFilter - list of SnapshotQueryFilterInputs: Filter for snapshot connection.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - sortBy - SnapshotQuerySortByField: Sort snapshots by field.
+    - timeRange - TimeRangeInput: Time range input.
+- Returns CloudDirectSnapshotConnection.
 ### unmanagedobject
 List of snapshots for unmanaged objects.
 
@@ -183,7 +197,7 @@ List of snapshots for unmanaged objects.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - input - QueryUnmanagedObjectSnapshotsV1Input: Input for V1QueryUnmanagedObjectSnapshotsV1.
 - Returns SnapshotSummaryConnection.
 ### vappinstantrecoveryoptions
