@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnappableAggregationsEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ArchiveStorage")]
         ARCHIVE_STORAGE,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         TRANSFERRED_BYTES,
 
         [EnumMember(Value = "TotalSnapshots")]
-        TOTAL_SNAPSHOTS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TOTAL_SNAPSHOTS
 
 
     } // enum SnappableAggregationsEnum

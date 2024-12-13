@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SmbDomainFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         FIELD_UNSPECIFIED,
 
         [EnumMember(Value = "STATUS")]
-        STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STATUS
 
 
     } // enum SmbDomainFilterField

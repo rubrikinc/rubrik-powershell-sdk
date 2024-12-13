@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PlatformCategory
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "PLATFORM_CATEGORY_CLOUD")]
         PLATFORM_CATEGORY_CLOUD,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         PLATFORM_CATEGORY_SAAS,
 
         [EnumMember(Value = "PLATFORM_CATEGORY_UNSPECIFIED")]
-        PLATFORM_CATEGORY_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        PLATFORM_CATEGORY_UNSPECIFIED
 
 
     } // enum PlatformCategory

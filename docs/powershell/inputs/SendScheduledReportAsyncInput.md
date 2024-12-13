@@ -9,3 +9,5 @@ Input for sending report email to one or more recipients.
   - Email addresses of non-Rubrik user recipients of the report.
 - attachmentTypes: list of ReportAttachmentTypes
   - Report attachment types, which can be CSV, PDF, both, or none.
+- showChartsInEmailBody: System.Boolean
+  - Specifies whether to show charts in email body.

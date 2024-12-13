@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ThreatHuntStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CANCELED")]
         CANCELED,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         STATUS_UNSPECIFIED,
 
         [EnumMember(Value = "SUCCEEDED")]
-        SUCCEEDED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUCCEEDED
 
 
     } // enum ThreatHuntStatus

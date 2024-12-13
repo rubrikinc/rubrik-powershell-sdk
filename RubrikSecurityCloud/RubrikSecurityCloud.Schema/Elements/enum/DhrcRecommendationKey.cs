@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DhrcRecommendationKey
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CONNECT_RSC_TO_SUPPORT_PORTAL")]
         CONNECT_RSC_TO_SUPPORT_PORTAL,
 
@@ -52,10 +55,7 @@ namespace RubrikSecurityCloud.Types
         SECURE_OPEN_ACCESS_SENSITIVE_FILES,
 
         [EnumMember(Value = "UPGRADE_CDM_CLUSTERS_SOFTWARE_VERSION")]
-        UPGRADE_CDM_CLUSTERS_SOFTWARE_VERSION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UPGRADE_CDM_CLUSTERS_SOFTWARE_VERSION
 
 
     } // enum DhrcRecommendationKey

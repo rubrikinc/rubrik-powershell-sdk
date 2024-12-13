@@ -6,6 +6,6 @@ Paginated list of MissedSnapshotCommon objects. Each page of the results include
 - nodes: list of MissedSnapshotCommons
   - List of MissedSnapshotCommon objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of MissedSnapshotCommon objects matching the request arguments.

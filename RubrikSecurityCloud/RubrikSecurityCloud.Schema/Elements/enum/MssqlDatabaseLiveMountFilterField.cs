@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlDatabaseLiveMountFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         ORG_ID,
 
         [EnumMember(Value = "SOURCE_DATABASE_ID")]
-        SOURCE_DATABASE_ID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SOURCE_DATABASE_ID
 
 
     } // enum MssqlDatabaseLiveMountFilterField

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnapshotType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ARCHIVED")]
         ARCHIVED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         REPLICATED,
 
         [EnumMember(Value = "SOURCE")]
-        SOURCE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SOURCE
 
 
     } // enum SnapshotType

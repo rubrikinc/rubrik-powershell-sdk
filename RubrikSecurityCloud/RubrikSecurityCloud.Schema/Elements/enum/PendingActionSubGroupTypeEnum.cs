@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PendingActionSubGroupTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ADD_CLUSTER_AS_REPLICATION_TARGET")]
         ADD_CLUSTER_AS_REPLICATION_TARGET,
 
@@ -66,6 +69,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_PEER_TOKEN_SET")]
         CLUSTER_PEER_TOKEN_SET,
 
+        [EnumMember(Value = "DCA_LOCATION_PUT")]
+        DCA_LOCATION_PUT,
+
+        [EnumMember(Value = "DCA_LOCATION_READER_POST")]
+        DCA_LOCATION_READER_POST,
+
         [EnumMember(Value = "DISABLE_REPLICATION_LOCATION_PUT")]
         DISABLE_REPLICATION_LOCATION_PUT,
 
@@ -96,6 +105,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GLOBAL_SLA_PUT")]
         GLOBAL_SLA_PUT,
 
+        [EnumMember(Value = "GRANT_AUTHZ")]
+        GRANT_AUTHZ,
+
+        [EnumMember(Value = "LCK_LOCATION_PUT")]
+        LCK_LOCATION_PUT,
+
+        [EnumMember(Value = "LCK_LOCATION_READER_POST")]
+        LCK_LOCATION_READER_POST,
+
         [EnumMember(Value = "NFS_LOCATION_PUT")]
         NFS_LOCATION_PUT,
 
@@ -113,6 +131,18 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "QSTAR_LOCATION_READER_POST")]
         QSTAR_LOCATION_READER_POST,
+
+        [EnumMember(Value = "REVOKE_AUTHZ")]
+        REVOKE_AUTHZ,
+
+        [EnumMember(Value = "ROLE_CREATION")]
+        ROLE_CREATION,
+
+        [EnumMember(Value = "ROLE_DELETION")]
+        ROLE_DELETION,
+
+        [EnumMember(Value = "ROLE_UPDATION")]
+        ROLE_UPDATION,
 
         [EnumMember(Value = "S3COMPATIBLE_LOCATION_PUT")]
         S3COMPATIBLE_LOCATION_PUT,
@@ -142,10 +172,7 @@ namespace RubrikSecurityCloud.Types
         UNMANAGED_OBJECT_DELETE_SNAPSHOTS,
 
         [EnumMember(Value = "UNMANAGED_OBJECT_DELETE_SNAPSHOTS_OF_OBJECT")]
-        UNMANAGED_OBJECT_DELETE_SNAPSHOTS_OF_OBJECT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNMANAGED_OBJECT_DELETE_SNAPSHOTS_OF_OBJECT
 
 
     } // enum PendingActionSubGroupTypeEnum

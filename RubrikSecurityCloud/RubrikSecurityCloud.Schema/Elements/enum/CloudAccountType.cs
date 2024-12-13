@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudAccountType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLOUD_ACCOUNT_AWS")]
         CLOUD_ACCOUNT_AWS,
 
@@ -30,11 +33,11 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_ACCOUNT_GCP")]
         CLOUD_ACCOUNT_GCP,
 
-        [EnumMember(Value = "UNKNOWN_CLOUD_ACCOUNT")]
-        UNKNOWN_CLOUD_ACCOUNT,
+        [EnumMember(Value = "CLOUD_ACCOUNT_GCP_ROLE_BASED")]
+        CLOUD_ACCOUNT_GCP_ROLE_BASED,
 
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        [EnumMember(Value = "UNKNOWN_CLOUD_ACCOUNT")]
+        UNKNOWN_CLOUD_ACCOUNT
 
 
     } // enum CloudAccountType

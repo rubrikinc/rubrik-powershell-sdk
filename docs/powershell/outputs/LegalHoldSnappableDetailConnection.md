@@ -6,6 +6,6 @@ Paginated list of LegalHoldSnappableDetail objects. Each page of the results inc
 - nodes: list of LegalHoldSnappableDetails
   - List of LegalHoldSnappableDetail objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of LegalHoldSnappableDetail objects matching the request arguments.

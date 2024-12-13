@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CalendarRecurrenceType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ALL")]
         ALL,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         RECURRING,
 
         [EnumMember(Value = "SINGLE")]
-        SINGLE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SINGLE
 
 
     } // enum CalendarRecurrenceType

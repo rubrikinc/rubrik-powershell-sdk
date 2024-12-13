@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ContextFilterTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "APPFLOWS_FAILOVER_TO_AWS")]
         APPFLOWS_FAILOVER_TO_AWS,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         APPFLOWS_FAILOVER_TO_CDM,
 
         [EnumMember(Value = "DEFAULT")]
-        DEFAULT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        DEFAULT
 
 
     } // enum ContextFilterTypeEnum

@@ -22,6 +22,9 @@ Supported in v5.0+
       A Boolean that specifies whether to discover Oracle information at registration. A value of 'true' discovers Oracle information at registration.
 - mssqlSddCertificateId: System.String
   - Supported in v9.3. The certificate ID is the identifier associated with the public key certificate issued by the Certificate Authority (CA) that signed the SQL Server certificate. This ID is used to validate the identity of the SQL Server host during Sensitive Data Discovery.
+- oracleSddWalletPath: System.String
+  - Supported in v9.3
+      Contains the wallet path on the Oracle host which is used to authenticate remote connections to oracle databases during Sensitive Data Discovery.
 - orgNetworkId: System.String
   - Supported in v8.1+
       The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.
@@ -37,3 +40,6 @@ Supported in v5.0+
       The user credentials for querying SQL server instance on the host for Sensitive Data Discovery.
 - nasConfig: NasConfigInput
   - Supported in v5.0+
+- oracleSddUserCredentials: SddUserCredentialsInput
+  - Supported in v9.3
+      The user credentials for querying oracle databases on the host for Sensitive Data Discovery.

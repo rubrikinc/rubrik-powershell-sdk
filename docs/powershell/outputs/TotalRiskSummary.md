@@ -9,3 +9,5 @@ Total Risk Summary Details.
   - Total number of medium-risk hits.
 - totalLowRiskHits: System.Int64
   - Total number of low-risk hits.
+- totalNoRiskHits: System.Int64
+  - Total number of no-risk hits.

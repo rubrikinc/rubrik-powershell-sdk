@@ -165,6 +165,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HypervVm")]
         HYPERV_VM,
 
+        [EnumMember(Value = "INTEGRATION")]
+        INTEGRATION,
+
         [EnumMember(Value = "INTEL_FEED")]
         INTEL_FEED,
 
@@ -183,8 +186,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_CLUSTER")]
         K8S_CLUSTER,
 
+        [EnumMember(Value = "K8S_NAMESPACE_V2")]
+        K8S_NAMESPACE_V2,
+
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,
+
+        [EnumMember(Value = "K8S_VIRTUAL_MACHINE")]
+        K8S_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "KMS_KEY_VAULT")]
         KMS_KEY_VAULT,

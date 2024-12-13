@@ -6,6 +6,6 @@ Paginated list of NutanixLiveMount objects. Each page of the results includes at
 - nodes: list of NutanixLiveMounts
   - List of NutanixLiveMount objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of NutanixLiveMount objects matching the request arguments.

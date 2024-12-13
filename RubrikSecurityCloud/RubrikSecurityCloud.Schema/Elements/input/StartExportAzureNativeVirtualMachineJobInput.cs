@@ -120,6 +120,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("recoveryDiskIds")]
         public List<System.String>? RecoveryDiskIds { get; set; }
 
+        //      C# -> System.String? ArchivedSnapshotId
+        // GraphQL -> archivedSnapshotId: UUID (scalar)
+        [JsonProperty("archivedSnapshotId")]
+        public System.String? ArchivedSnapshotId { get; set; }
+
 
         #endregion
 

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureSqlManagedInstanceDatabaseSortFields
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AZURE_SQL_DB_RESOURCE_GROUP")]
         AZURE_SQL_DB_RESOURCE_GROUP,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         SENSITIVITY_HITS,
 
         [EnumMember(Value = "SENSITIVITY_STATUS")]
-        SENSITIVITY_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SENSITIVITY_STATUS
 
 
     } // enum AzureSqlManagedInstanceDatabaseSortFields

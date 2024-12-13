@@ -6,6 +6,6 @@ Paginated list of ValidReplicationTarget objects. Each page of the results inclu
 - nodes: list of ValidReplicationTargets
   - List of ValidReplicationTarget objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ValidReplicationTarget objects matching the request arguments.

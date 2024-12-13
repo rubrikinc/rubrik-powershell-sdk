@@ -262,6 +262,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	shouldUseReplica = $someBoolean
     /// 	# OPTIONAL
     /// 	snapshotType = $someAzureSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -327,6 +329,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	recoveryDiskIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -401,6 +405,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	recoveryDiskIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -717,6 +723,8 @@ $query.Var.input = @{
 	shouldUseReplica = $someBoolean
 	# OPTIONAL
 	snapshotType = $someAzureSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
+	# OPTIONAL
+	archivedSnapshotId = $someString
 }"
             );
         }
@@ -774,6 +782,8 @@ $query.Var.input = @{
 	recoveryDiskIds = @(
 		$someString
 	)
+	# OPTIONAL
+	archivedSnapshotId = $someString
 }"
             );
         }
@@ -832,6 +842,8 @@ $query.Var.input = @{
 	recoveryDiskIds = @(
 		$someString
 	)
+	# OPTIONAL
+	archivedSnapshotId = $someString
 }"
             );
         }

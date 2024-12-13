@@ -30,11 +30,15 @@ AWS native EBS volume.
 - awsNativeAccountName: System.String
   - Name for the AWS account.
 - isIndexingEnabled: System.Boolean
-  - Whether indexing is enabled for snapshots of volume.
+  - Specifies whether file indexing is enabled for this EBS volume or not. When enabled, Rubrik scans the file structure within the EBS volume in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. 
 - isMarketplace: System.Boolean
   - Whether the volume image is marketplace image.
 - nativeName: System.String
   - AWS Native name of the object.
+- awsNativeAccountDetails: AwsNativeAccountDetails
+  - AWS native account details.
+- fileIndexingStatus: FileIndexingStatus
+  - Specifies the file indexing status for this EBS volume. When enabled, Rubrik scans the file structure within the EBS volume in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount

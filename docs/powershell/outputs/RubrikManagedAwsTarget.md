@@ -3,12 +3,12 @@ Specific information for Amazon Web Services (AWS) target created on Rubrik.
 
 - cloudNativeLocTemplateType: CloudNativeLocTemplateType
   - Template type of the storage settings.
-- immutabilitySettings: AwsImmutabilitySettingsType
-  - Immutability settings of AWS target.
 - s3Endpoint: System.String
   - Optional field of an Amazon S3 endpoint for example, a VPC endpoint. When not provided, the default, region-based Amazon S3 endpoint is used.
 - kmsEndpoint: System.String
   - Optional field of the KMS server endpoint when using KMS-based encryption for example, a VPC endpoint. When not provided, the default, region-based KMS server endpoint is used.
+- awsIamPairId: System.String
+  - Optional field of an AWS IAM pair ID that is used to identify AWS role-based credentials used by the target location.
 - cloudAccount: CloudAccount
   - Cloud account details of the AWS target.
 - bucket: System.String
@@ -17,6 +17,8 @@ Specific information for Amazon Web Services (AWS) target created on Rubrik.
   - Region of the AWS target.
 - syncStatus: TargetSyncStatus
   - Sync status of AWS target.
+- immutabilitySettings: AwsImmutabilitySettingsType
+  - Immutability settings of the AWS target.
 - awsRetrievalTier: AwsRetrievalTier
   - Retrieval tier of the AWS target.
 - storageClass: AwsStorageClass

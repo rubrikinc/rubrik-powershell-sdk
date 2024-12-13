@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CreateNasShareInputShareType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CREATE_NAS_SHARE_INPUT_SHARE_TYPE_NFS")]
         CREATE_NAS_SHARE_INPUT_SHARE_TYPE_NFS,
 
         [EnumMember(Value = "CREATE_NAS_SHARE_INPUT_SHARE_TYPE_SMB")]
-        CREATE_NAS_SHARE_INPUT_SHARE_TYPE_SMB,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        CREATE_NAS_SHARE_INPUT_SHARE_TYPE_SMB
 
 
     } // enum CreateNasShareInputShareType

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DataGovObjectType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS_NATIVE_EBS_VOLUME")]
         AWS_NATIVE_EBS_VOLUME,
 
@@ -169,10 +172,7 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_FILESET,
 
         [EnumMember(Value = "WINDOWS_HOST_ROOT")]
-        WINDOWS_HOST_ROOT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS_HOST_ROOT
 
 
     } // enum DataGovObjectType

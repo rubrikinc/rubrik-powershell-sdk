@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SonarContentReportTableColumnEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AnalyzersBreakdown")]
         ANALYZERS_BREAKDOWN,
 
@@ -43,10 +46,7 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_TIME,
 
         [EnumMember(Value = "TotalHits")]
-        TOTAL_HITS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TOTAL_HITS
 
 
     } // enum SonarContentReportTableColumnEnum

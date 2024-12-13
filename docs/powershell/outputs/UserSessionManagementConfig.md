@@ -23,3 +23,9 @@ Specifies information about the session management configuration for the user ac
   - Maximum value, in seconds, for session timeout configuration.
 - isGlobalPolicyEnforced: System.Boolean
   - Specifies whether the Global Organization has enforced it's policy.
+- clientSessionTimeoutInSeconds: System.Int64
+  - Indicates the number of seconds before the service account session logs out.
+- clientSessionTimeoutInSecondsMinLimit: System.Int64
+  - Minimum value, in seconds, for service account session timeout configuration.
+- clientSessionTimeoutInSecondsMaxLimit: System.Int64
+  - Maximum value, in seconds, for service account session timeout configuration.

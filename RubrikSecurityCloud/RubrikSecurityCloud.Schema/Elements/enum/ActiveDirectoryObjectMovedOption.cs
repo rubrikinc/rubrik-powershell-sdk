@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ActiveDirectoryObjectMovedOption
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_OBJECT_MOVED_OPTION_MOVE_BACK_AND_RESTORE_ATTRIBUTES")]
         ACTIVE_DIRECTORY_OBJECT_MOVED_OPTION_MOVE_BACK_AND_RESTORE_ATTRIBUTES,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         ACTIVE_DIRECTORY_OBJECT_MOVED_OPTION_RESTORE_ATTRIBUTES,
 
         [EnumMember(Value = "ACTIVE_DIRECTORY_OBJECT_MOVED_OPTION_SKIP")]
-        ACTIVE_DIRECTORY_OBJECT_MOVED_OPTION_SKIP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ACTIVE_DIRECTORY_OBJECT_MOVED_OPTION_SKIP
 
 
     } // enum ActiveDirectoryObjectMovedOption

@@ -6,6 +6,6 @@ Paginated list of AzureSubscription objects. Each page of the results includes a
 - nodes: list of AzureSubscriptions
   - List of AzureSubscription objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of AzureSubscription objects matching the request arguments.

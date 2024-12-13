@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 2
+    /// Create a new RscQuery object for any of the 5
     /// operations in the 'Webhook' API domain:
-    /// ById, or Webhook.
+    /// ById, MessageTemplateById, MessageTemplates, V2, or Webhook.
     /// </summary>
     /// <description>
     /// New-RscQueryWebhook creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 2 operations
+    /// There are 5 operations
     /// in the 'Webhook' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ById, or Webhook.
+    /// one of: ById, MessageTemplateById, MessageTemplates, V2, or Webhook.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -96,7 +96,93 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: GetWebhookByIdReply
+    /// Write-Host $result.GetType().Name # prints: WebhookV2
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MessageTemplateById operation
+    /// of the 'Webhook' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Webhook
+    /// # API Operation: MessageTemplateById
+    /// 
+    /// $query = New-RscQueryWebhook -Operation MessageTemplateById
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = $someInt
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: WebhookMessageTemplate
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MessageTemplates operation
+    /// of the 'Webhook' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Webhook
+    /// # API Operation: MessageTemplates
+    /// 
+    /// $query = New-RscQueryWebhook -Operation MessageTemplates
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	recordType = $someTemplateRecordType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TemplateRecordType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;WebhookMessageTemplate&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the V2 operation
+    /// of the 'Webhook' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Webhook
+    /// # API Operation: V2
+    /// 
+    /// $query = New-RscQueryWebhook -Operation V2
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;WebhookV2&gt;
     /// 
     /// 
     /// 
@@ -149,6 +235,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "ById",
+                "MessageTemplateById",
+                "MessageTemplates",
+                "V2",
                 "Webhook",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -167,6 +256,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "ById":
                         this.ProcessRecord_ById();
+                        break;
+                    case "MessageTemplateById":
+                        this.ProcessRecord_MessageTemplateById();
+                        break;
+                    case "MessageTemplates":
+                        this.ProcessRecord_MessageTemplates();
+                        break;
+                    case "V2":
+                        this.ProcessRecord_V2();
                         break;
                     case "Webhook":
                         this.ProcessRecord_Webhook();
@@ -191,6 +289,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // webhookMessageTemplateById.
+        internal void ProcessRecord_MessageTemplateById()
+        {
+            this._logger.name += " -MessageTemplateById";
+            // Create new graphql operation webhookMessageTemplateById
+            InitQueryWebhookMessageTemplateById();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allWebhookMessageTemplates.
+        internal void ProcessRecord_MessageTemplates()
+        {
+            this._logger.name += " -MessageTemplates";
+            // Create new graphql operation allWebhookMessageTemplates
+            InitQueryAllWebhookMessageTemplates();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allWebhooksV2.
+        internal void ProcessRecord_V2()
+        {
+            this._logger.name += " -V2";
+            // Create new graphql operation allWebhooksV2
+            InitQueryAllWebhooksV2();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allWebhooks.
         internal void ProcessRecord_Webhook()
         {
@@ -201,7 +326,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
 
         // Create new GraphQL Query:
-        // webhookById(input: Int!): GetWebhookByIdReply!
+        // webhookById(input: Int!): WebhookV2
         internal void InitQueryWebhookById()
         {
             Tuple<string, string>[] argDefs = {
@@ -212,11 +337,72 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryWebhookById",
                 "($input: Int!)",
-                "GetWebhookByIdReply",
+                "WebhookV2",
                 Query.WebhookById,
                 Query.WebhookByIdFieldSpec,
                 @"# REQUIRED
 $query.Var.input = $someInt"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // webhookMessageTemplateById(input: Int!): WebhookMessageTemplate
+        internal void InitQueryWebhookMessageTemplateById()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "Int!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryWebhookMessageTemplateById",
+                "($input: Int!)",
+                "WebhookMessageTemplate",
+                Query.WebhookMessageTemplateById,
+                Query.WebhookMessageTemplateByIdFieldSpec,
+                @"# REQUIRED
+$query.Var.input = $someInt"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allWebhookMessageTemplates(input: WebhookMessageTemplatesReqInput!): [WebhookMessageTemplate!]!
+        internal void InitQueryAllWebhookMessageTemplates()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "WebhookMessageTemplatesReqInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllWebhookMessageTemplates",
+                "($input: WebhookMessageTemplatesReqInput!)",
+                "List<WebhookMessageTemplate>",
+                Query.AllWebhookMessageTemplates,
+                Query.AllWebhookMessageTemplatesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	recordType = $someTemplateRecordType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TemplateRecordType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allWebhooksV2: [WebhookV2!]!
+        internal void InitQueryAllWebhooksV2()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllWebhooksV2",
+                "",
+                "List<WebhookV2>",
+                Query.AllWebhooksV2,
+                Query.AllWebhooksV2FieldSpec,
+                @""
             );
         }
 

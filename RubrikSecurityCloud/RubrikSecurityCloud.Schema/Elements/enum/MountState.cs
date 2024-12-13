@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MountState
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CHANGING_TO_READ_ONLY")]
         CHANGING_TO_READ_ONLY,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         READ_ONLY,
 
         [EnumMember(Value = "WRITABLE")]
-        WRITABLE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WRITABLE
 
 
     } // enum MountState

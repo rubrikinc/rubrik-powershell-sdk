@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaAssignment")]
         public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
 
+        //      C# -> CloudDirectNasVendorType? VendorType
+        // GraphQL -> vendorType: CloudDirectNasVendorType! (enum)
+        [JsonProperty("vendorType")]
+        public CloudDirectNasVendorType? VendorType { get; set; }
+
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
@@ -120,11 +125,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> systemName: String! (scalar)
         [JsonProperty("systemName")]
         public System.String? SystemName { get; set; }
-
-        //      C# -> System.String? VendorType
-        // GraphQL -> vendorType: String! (scalar)
-        [JsonProperty("vendorType")]
-        public System.String? VendorType { get; set; }
 
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
@@ -222,6 +222,7 @@ namespace RubrikSecurityCloud.Types
         CloudDirectNasConnectivityStatus? LastStatus = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
+        CloudDirectNasVendorType? VendorType = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
@@ -239,7 +240,6 @@ namespace RubrikSecurityCloud.Types
         System.Int32? ShareCount = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? SystemName = null,
-        System.String? VendorType = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
         CloudDirectNasSystemDescendantTypeConnection? DescendantConnection = null,
@@ -259,6 +259,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
+        }
+        if ( VendorType != null ) {
+            this.VendorType = VendorType;
         }
         if ( ConfiguredSlaDomain != null ) {
             this.ConfiguredSlaDomain = ConfiguredSlaDomain;
@@ -310,9 +313,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SystemName != null ) {
             this.SystemName = SystemName;
-        }
-        if ( VendorType != null ) {
-            this.VendorType = VendorType;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -380,6 +380,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaAssignment\n" ;
             } else {
                 s += ind + "slaAssignment\n" ;
+            }
+        }
+        //      C# -> CloudDirectNasVendorType? VendorType
+        // GraphQL -> vendorType: CloudDirectNasVendorType! (enum)
+        if (this.VendorType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "vendorType\n" ;
+            } else {
+                s += ind + "vendorType\n" ;
             }
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
@@ -547,15 +556,6 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "systemName\n" ;
             }
         }
-        //      C# -> System.String? VendorType
-        // GraphQL -> vendorType: String! (scalar)
-        if (this.VendorType != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "vendorType\n" ;
-            } else {
-                s += ind + "vendorType\n" ;
-            }
-        }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
@@ -721,6 +721,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",true))
         {
             this.SlaAssignment = null;
+        }
+        //      C# -> CloudDirectNasVendorType? VendorType
+        // GraphQL -> vendorType: CloudDirectNasVendorType! (enum)
+        if (ec.Includes("vendorType",true))
+        {
+            if(this.VendorType == null) {
+
+                this.VendorType = new CloudDirectNasVendorType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.VendorType != null && ec.Excludes("vendorType",true))
+        {
+            this.VendorType = null;
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
@@ -1031,23 +1048,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.SystemName != null && ec.Excludes("systemName",true))
         {
             this.SystemName = null;
-        }
-        //      C# -> System.String? VendorType
-        // GraphQL -> vendorType: String! (scalar)
-        if (ec.Includes("vendorType",true))
-        {
-            if(this.VendorType == null) {
-
-                this.VendorType = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.VendorType != null && ec.Excludes("vendorType",true))
-        {
-            this.VendorType = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

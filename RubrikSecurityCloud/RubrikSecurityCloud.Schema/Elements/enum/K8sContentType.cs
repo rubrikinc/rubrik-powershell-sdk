@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum K8sContentType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "STRING")]
         STRING,
 
         [EnumMember(Value = "URL")]
-        URL,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        URL
 
 
     } // enum K8sContentType

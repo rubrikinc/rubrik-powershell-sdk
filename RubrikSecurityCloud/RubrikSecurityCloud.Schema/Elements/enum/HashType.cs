@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HashType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HASH_TYPE_M_D5")]
         HASH_TYPE_M_D5,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         HASH_TYPE_SH_A1,
 
         [EnumMember(Value = "HASH_TYPE_SH_A256")]
-        HASH_TYPE_SH_A256,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        HASH_TYPE_SH_A256
 
 
     } // enum HashType

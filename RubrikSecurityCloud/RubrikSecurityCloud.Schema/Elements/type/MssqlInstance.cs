@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region MssqlInstance
  
-    public class MssqlInstance: BaseType, CdmHierarchyObject, HierarchyObject, MssqlTopLevelDescendantType, PhysicalHostDescendantType, PhysicalHostPhysicalChildType, WindowsClusterDescendantType, WindowsClusterLogicalChildType
+    public class MssqlInstance: BaseType, CdmHierarchyObject, HierarchyObject, MssqlHostDescendantType, MssqlHostPhysicalChildType, MssqlTopLevelDescendantType, PhysicalHostDescendantType, PhysicalHostPhysicalChildType, WindowsClusterDescendantType, WindowsClusterLogicalChildType
     {
         #region members
 

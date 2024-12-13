@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum Encryption
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ENCRYPTION_DISABLED")]
         ENCRYPTION_DISABLED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         ENCRYPTION_ENABLED,
 
         [EnumMember(Value = "ENCRYPTION_UNSPECIFIED")]
-        ENCRYPTION_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ENCRYPTION_UNSPECIFIED
 
 
     } // enum Encryption

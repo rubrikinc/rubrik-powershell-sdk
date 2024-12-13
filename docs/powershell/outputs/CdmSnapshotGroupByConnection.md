@@ -6,6 +6,6 @@ Paginated list of CdmSnapshotGroupBy objects. Each page of the results includes 
 - nodes: list of CdmSnapshotGroupBys
   - List of CdmSnapshotGroupBy objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of CdmSnapshotGroupBy objects matching the request arguments.

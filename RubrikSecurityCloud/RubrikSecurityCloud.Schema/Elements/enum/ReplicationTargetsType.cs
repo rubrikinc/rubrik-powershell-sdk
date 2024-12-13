@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ReplicationTargetsType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AIR_GAPPED")]
         AIR_GAPPED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         CROSS_ACCOUNT,
 
         [EnumMember(Value = "TARGET_TYPE_UNSPECIFIED")]
-        TARGET_TYPE_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TARGET_TYPE_UNSPECIFIED
 
 
     } // enum ReplicationTargetsType

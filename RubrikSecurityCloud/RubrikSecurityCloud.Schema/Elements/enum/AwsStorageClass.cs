@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AwsStorageClass
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "GLACIER_DEEP_ARCHIVE")]
         GLACIER_DEEP_ARCHIVE,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         STANDARD_IA,
 
         [EnumMember(Value = "UNKNOWN_STORAGE_CLASS")]
-        UNKNOWN_STORAGE_CLASS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_STORAGE_CLASS
 
 
     } // enum AwsStorageClass

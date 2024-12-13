@@ -6,6 +6,6 @@ Paginated list of O365TeamsConversations objects. Each page of the results inclu
 - nodes: list of O365TeamsConversationss
   - List of O365TeamsConversations objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of O365TeamsConversations objects matching the request arguments.

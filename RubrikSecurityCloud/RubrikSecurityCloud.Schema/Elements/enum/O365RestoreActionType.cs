@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum O365RestoreActionType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "EXPORT_FAILED_ITEMS_FOR_SNAPPABLE")]
         EXPORT_FAILED_ITEMS_FOR_SNAPPABLE,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         INPLACE_RESTORE_SNAPPABLE,
 
         [EnumMember(Value = "RESTORE_SNAPPABLE")]
-        RESTORE_SNAPPABLE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        RESTORE_SNAPPABLE
 
 
     } // enum O365RestoreActionType

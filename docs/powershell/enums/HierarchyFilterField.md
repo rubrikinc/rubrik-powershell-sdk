@@ -322,3 +322,51 @@
  +mo:filter:db:index:seq=1
  +mo:filter:db:index:type=BTREE
  +mo:filter:db:index:unique=true
+- NAS_SHARE_SYSTEM_NAME - Filter according to the system name of the NAS Share.
+- NAS_NAMESPACE_SYSTEM_NAME - Filter according to the system name of the NAS Namespace.
+- ACTIVE_DIRECTORY_FOREST_BY_ROOT_DOMAIN_SID - Filter by the SID of Active Directory Forest.
+ +mo:filter:db:table=cdm_active_directory_forest
+ +mo:filter:db:column=forest_root_domain_sid
+ +mo:filter:db:index:key=forest_root_domain_sid_idx
+ +mo:filter:db:index:seq=1
+ +mo:filter:db:index:type=BTREE
+ +mo:filter:db:index:unique=false
+- CLOUDDIRECT_NAS_SHARE_PROTOCOL - Filter by the protocol of the Cloud Direct NAS Share.
+- CLOUDDIRECT_NAS_SHARE_HIDDEN - Filter by hidden shares.
+- CLOUDDIRECT_NAS_VENDOR_TYPE - Filter by the vendor type of the Cloud Direct NAS system.
+- CLOUDDIRECT_NAS_NAMESPACE_NAME - Filter by the name of the Cloud Direct NAS namespace.
+- CLOUDDIRECT_NAS_SHARE_NAMESPACE_NAME - Filter by the name of the Cloud Direct NAS share namespace.
+- CLOUDDIRECT_NAS_SHARE_VENDOR_TYPE - Filter by the system vendor type of the Cloud Direct NAS share.
+- CLOUDDIRECT_NAS_NAMESPACE_VENDOR_TYPE - Filter by the system vendor type of the Cloud Direct NAS namespace.
+- CLOUDDIRECT_NAS_SYSTEM_NAME - Filter by the name of the Cloud Direct NAS system.
+- CLOUDDIRECT_NAS_SHARE_SYSTEM_NAME - Filter by the system name of the Cloud Direct NAS share.
+- CLOUDDIRECT_NAS_NAMESPACE_SYSTEM_NAME - Filter by the system name of the Cloud Direct NAS namespace.
+- VMWARE_SNAPSHOT_CONSISTENCY - Filter VMware objects according to the snapshot consistency mandate.
+- MYSQLDB_INSTANCE_ID - Filter the MySQL Databases based on its Instance Id.
+- MYSQLDB_HOST_CONNECTION_STATUS - Filter the MySQL Instance based on its host.
+ connection status.
+- K8S_NAMESPACE_ID - Filter according to the Kubernetes namespace IDs.
+ +mo:filter:db:table=cdm_k8s_virtual_machine
+ +mo:filter:db:column=k8s_namespace_id
+ +mo:filter:db:column=cluster_uuid
+ +mo:filter:db:table=cdm_k8s_namespace_v2
+ +mo:filter:db:column=fid
+ +mo:filter:db:column=id
+ +mo:filter:db:column=cluster_uuid
+- NAS_NAMESPACE_VENDOR_TYPE - Filter according to the NAS namespace vendor.
+- NAS_SHARE_VENDOR_TYPE - Filter according to the NAS share vendor.
+- D365_TABLE_TYPE - Filter by the D365 dataverse table type.
+- K8S_CLUSTER_ID - Filter based on the Kubernetes cluster IDs.
+ +mo:filter:db:table=cdm_k8s_virtual_machine
+ +mo:filter:db:column=k8s_cluster_uuid
+ +mo:filter:db:column=cluster_uuid
+ +mo:filter:db:table=cdm_k8s_cluster
+ +mo:filter:db:column=fid
+ +mo:filter:db:column=id
+ +mo:filter:db:column=cluster_uuid
+ +mo:sort:db:index:key=k8s_cluster_uuid_cluster_uuid
+ +mo:sort:db:index:seq=4
+ +mo:sort:db:index:type=BTREE
+ +mo:sort:db:index:unique=true
+- CLOUDDIRECT_NAS_SHARE_PARENT_ID - Filter according to the Cloud Direct NAS share parent ID.
+- CLOUDDIRECT_NAS_SHARE_ID - Filter according to the Cloud Direct NAS share ID.

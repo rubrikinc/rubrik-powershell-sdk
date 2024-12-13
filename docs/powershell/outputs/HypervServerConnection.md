@@ -6,6 +6,6 @@ Paginated list of HypervServer objects. Each page of the results includes at mos
 - nodes: list of HypervServers
   - List of HypervServer objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of HypervServer objects matching the request arguments.

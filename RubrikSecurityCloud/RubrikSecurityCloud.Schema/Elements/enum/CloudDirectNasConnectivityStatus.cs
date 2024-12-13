@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudDirectNasConnectivityStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CONNECTED")]
         CONNECTED,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         REFRESHING,
 
         [EnumMember(Value = "UNKNOWN_CONNECTIVITY_STATUS")]
-        UNKNOWN_CONNECTIVITY_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_CONNECTIVITY_STATUS
 
 
     } // enum CloudDirectNasConnectivityStatus

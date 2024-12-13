@@ -85,6 +85,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oracleQueryUser")]
         public System.String? OracleQueryUser { get; set; }
 
+        //      C# -> System.String? OracleSddUsername
+        // GraphQL -> oracleSddUsername: String (scalar)
+        [JsonProperty("oracleSddUsername")]
+        public System.String? OracleSddUsername { get; set; }
+
+        //      C# -> System.String? OracleSddWalletPath
+        // GraphQL -> oracleSddWalletPath: String (scalar)
+        [JsonProperty("oracleSddWalletPath")]
+        public System.String? OracleSddWalletPath { get; set; }
+
         //      C# -> System.String? OracleSysDbaUser
         // GraphQL -> oracleSysDbaUser: String (scalar)
         [JsonProperty("oracleSysDbaUser")]
@@ -123,6 +133,8 @@ namespace RubrikSecurityCloud.Types
         System.String? MssqlSddCertificateId = null,
         System.String? MssqlSddUsername = null,
         System.String? OracleQueryUser = null,
+        System.String? OracleSddUsername = null,
+        System.String? OracleSddWalletPath = null,
         System.String? OracleSysDbaUser = null,
         ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo = null,
         HostSummary? HostSummary = null
@@ -166,6 +178,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OracleQueryUser != null ) {
             this.OracleQueryUser = OracleQueryUser;
+        }
+        if ( OracleSddUsername != null ) {
+            this.OracleSddUsername = OracleSddUsername;
+        }
+        if ( OracleSddWalletPath != null ) {
+            this.OracleSddWalletPath = OracleSddWalletPath;
         }
         if ( OracleSysDbaUser != null ) {
             this.OracleSysDbaUser = OracleSysDbaUser;
@@ -305,6 +323,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "oracleQueryUser\n" ;
             } else {
                 s += ind + "oracleQueryUser\n" ;
+            }
+        }
+        //      C# -> System.String? OracleSddUsername
+        // GraphQL -> oracleSddUsername: String (scalar)
+        if (this.OracleSddUsername != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "oracleSddUsername\n" ;
+            } else {
+                s += ind + "oracleSddUsername\n" ;
+            }
+        }
+        //      C# -> System.String? OracleSddWalletPath
+        // GraphQL -> oracleSddWalletPath: String (scalar)
+        if (this.OracleSddWalletPath != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "oracleSddWalletPath\n" ;
+            } else {
+                s += ind + "oracleSddWalletPath\n" ;
             }
         }
         //      C# -> System.String? OracleSysDbaUser
@@ -567,6 +603,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.OracleQueryUser != null && ec.Excludes("oracleQueryUser",true))
         {
             this.OracleQueryUser = null;
+        }
+        //      C# -> System.String? OracleSddUsername
+        // GraphQL -> oracleSddUsername: String (scalar)
+        if (ec.Includes("oracleSddUsername",true))
+        {
+            if(this.OracleSddUsername == null) {
+
+                this.OracleSddUsername = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OracleSddUsername != null && ec.Excludes("oracleSddUsername",true))
+        {
+            this.OracleSddUsername = null;
+        }
+        //      C# -> System.String? OracleSddWalletPath
+        // GraphQL -> oracleSddWalletPath: String (scalar)
+        if (ec.Includes("oracleSddWalletPath",true))
+        {
+            if(this.OracleSddWalletPath == null) {
+
+                this.OracleSddWalletPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OracleSddWalletPath != null && ec.Excludes("oracleSddWalletPath",true))
+        {
+            this.OracleSddWalletPath = null;
         }
         //      C# -> System.String? OracleSysDbaUser
         // GraphQL -> oracleSysDbaUser: String (scalar)

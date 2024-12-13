@@ -6,6 +6,6 @@ Paginated list of VsphereFolder objects. Each page of the results includes at mo
 - nodes: list of VsphereFolders
   - List of VsphereFolder objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of VsphereFolder objects matching the request arguments.

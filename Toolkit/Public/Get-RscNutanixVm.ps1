@@ -34,10 +34,6 @@ function Get-RscNutanixVm {
         )]
         [String]$Id,
         [Parameter(
-            Mandatory = $false
-        )]
-        [Switch]$Detail,
-        [Parameter(
             Mandatory = $false,
             ParameterSetName = "Name"
         )]
@@ -47,20 +43,20 @@ function Get-RscNutanixVm {
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
         )]
-        [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla
+        [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true,
+            ParameterSetName = "Name"
+        )]
+        [RubrikSecurityCloud.Types.Cluster]$Cluster
     )
     
     Process {
 
-        # Determine input profile:
-        $inputProfile = "DEFAULT"
-        if ( $Detail -eq $true ) {
-            $inputProfile = "DETAIL"
-        }
-
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery nutanixVm -FieldProfile $inputProfile
+            $query = New-RscQuery -GqlQuery nutanixVm
             $query.var.filter = @()
             $query.Var.fid = $Id
             $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
@@ -71,10 +67,11 @@ function Get-RscNutanixVm {
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery nutanixVms -FieldProfile $inputProfile
+            $query = New-RscQuery -GqlQuery nutanixVms
             $query.var.filter = @()
             $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-            $query.Field.Nodes.Cluster.id = "PIZZA"
+            $query.Field.Nodes[0].Cluster.id = "FETCH"
+            $query.Field.Nodes[0].Cluster.name = "FETCH"
             $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.NutanixVmAgentStatus
             $query.Field.Nodes[0].AgentStatus.connectionStatus = New-Object -typename RubrikSecurityCloud.Types.NutanixVmAgentConnectionStatus
             $query.Field.Nodes[0].osType = New-Object -TypeName RubrikSecurityCloud.Types.OsType
@@ -99,6 +96,14 @@ function Get-RscNutanixVm {
                 $slaFilter.Texts = $Sla.id
                 $query.var.filter += $slaFilter
             }
+
+            if ($Cluster) {
+                $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
+                $clusterFilter.Texts = $Cluster.id
+                $query.var.filter += $clusterFilter
+            }
+
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }

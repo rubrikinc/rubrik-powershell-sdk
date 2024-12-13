@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HelpContentSnippetsFilterInitiator
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DEBUG")]
         DEBUG,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         RECOMMENDATION,
 
         [EnumMember(Value = "USER")]
-        USER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USER
 
 
     } // enum HelpContentSnippetsFilterInitiator

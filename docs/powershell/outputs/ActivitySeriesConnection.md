@@ -6,6 +6,6 @@ Paginated list of ActivitySeries objects. Each page of the results includes at m
 - nodes: list of ActivitySeriess
   - List of ActivitySeries objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ActivitySeries objects matching the request arguments.

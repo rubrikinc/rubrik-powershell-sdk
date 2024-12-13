@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum Logging
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "LOGGING_DISABLED")]
         LOGGING_DISABLED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         LOGGING_ENABLED,
 
         [EnumMember(Value = "LOGGING_UNSPECIFIED")]
-        LOGGING_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        LOGGING_UNSPECIFIED
 
 
     } // enum Logging

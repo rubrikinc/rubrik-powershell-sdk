@@ -6,6 +6,6 @@ Paginated list of ExchangeServer objects. Each page of the results includes at m
 - nodes: list of ExchangeServers
   - List of ExchangeServer objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ExchangeServer objects matching the request arguments.

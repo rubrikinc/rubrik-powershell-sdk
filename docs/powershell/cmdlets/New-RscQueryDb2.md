@@ -50,7 +50,7 @@ Connection of all log snapshots for Db2.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - Db2LogSnapshotSortBy: Field to sort Db2 log snapshots.
     - filter - Db2LogSnapshotFilterInput: Field to filter Db2 log snapshots.
@@ -67,7 +67,7 @@ Connection of all recoverable ranges for Db2.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - Db2RecoverableRangeSortBy: Field to sort Db2 recoverable ranges.
     - filter - Db2RecoverableRangeFilterInput: Field to filter Db2 recoverable ranges.

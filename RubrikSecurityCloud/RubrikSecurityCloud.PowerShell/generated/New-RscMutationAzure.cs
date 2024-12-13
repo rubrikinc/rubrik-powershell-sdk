@@ -141,6 +141,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	regions = @(
     /// 		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isAsynchronous = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -177,7 +179,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		@{
     /// 			# REQUIRED
     /// 			region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			subnetNativeId = $someString
     /// 			# REQUIRED
     /// 			isRscManaged = $someBoolean
@@ -287,6 +289,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	regions = @(
     /// 		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isAsynchronous = $someBoolean
     /// 	# OPTIONAL
     /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
     /// }
@@ -924,6 +928,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		subscriptionId = $someString
     /// 	}
     /// 	# OPTIONAL
+    /// 	computeProxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
+    /// 	}
+    /// 	# OPTIONAL
     /// 	proxySettings = @{
     /// 		# OPTIONAL
     /// 		proxyServer = $someString
@@ -1065,6 +1082,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		cloudAccountId = $someString
     /// 		# OPTIONAL
     /// 		subscriptionId = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	computeProxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	proxySettings = @{
@@ -1436,6 +1466,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	forceChangePasswordWithMfa = $someBoolean
     /// 	# REQUIRED
     /// 	relationshipRestoreMode = $someAzureAdRelationshipRestoreModeEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipRestoreModeEnumType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	objectRecoveryOptions = @{
+    /// 		# OPTIONAL
+    /// 		servicePrincipalRecoveryOption = @{
+    /// 			# REQUIRED
+    /// 			recoverLinkedApplication = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		applicationRecoveryOption = @{
+    /// 			# REQUIRED
+    /// 			recoverLinkedServicePrincipal = $someBoolean
+    /// 		}
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -2226,6 +2269,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		cloudAccountId = $someString
     /// 		# OPTIONAL
     /// 		subscriptionId = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	computeProxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	proxySettings = @{
@@ -3062,6 +3118,8 @@ $query.Var.input = @{
 	regions = @(
 		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 	)
+	# OPTIONAL
+	isAsynchronous = $someBoolean
 }"
             );
         }
@@ -3090,7 +3148,7 @@ $query.Var.input = @{
 		@{
 			# REQUIRED
 			region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
-			# REQUIRED
+			# OPTIONAL
 			subnetNativeId = $someString
 			# REQUIRED
 			isRscManaged = $someBoolean
@@ -3192,6 +3250,8 @@ $query.Var.input = @{
 	regions = @(
 		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 	)
+	# OPTIONAL
+	isAsynchronous = $someBoolean
 	# OPTIONAL
 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 }"
@@ -3749,6 +3809,19 @@ $query.Var.input = @{
 		subscriptionId = $someString
 	}
 	# OPTIONAL
+	computeProxySettings = @{
+		# OPTIONAL
+		proxyServer = $someString
+		# OPTIONAL
+		portNumber = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		protocol = $someString
+	}
+	# OPTIONAL
 	proxySettings = @{
 		# OPTIONAL
 		proxyServer = $someString
@@ -3873,6 +3946,19 @@ $query.Var.input = @{
 		cloudAccountId = $someString
 		# OPTIONAL
 		subscriptionId = $someString
+	}
+	# OPTIONAL
+	computeProxySettings = @{
+		# OPTIONAL
+		proxyServer = $someString
+		# OPTIONAL
+		portNumber = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		protocol = $someString
 	}
 	# OPTIONAL
 	proxySettings = @{
@@ -4171,6 +4257,19 @@ $query.Var.input = @{
 	forceChangePasswordWithMfa = $someBoolean
 	# REQUIRED
 	relationshipRestoreMode = $someAzureAdRelationshipRestoreModeEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipRestoreModeEnumType]) for enum values.
+	# OPTIONAL
+	objectRecoveryOptions = @{
+		# OPTIONAL
+		servicePrincipalRecoveryOption = @{
+			# REQUIRED
+			recoverLinkedApplication = $someBoolean
+		}
+		# OPTIONAL
+		applicationRecoveryOption = @{
+			# REQUIRED
+			recoverLinkedServicePrincipal = $someBoolean
+		}
+	}
 }"
             );
         }
@@ -4832,6 +4931,19 @@ $query.Var.input = @{
 		cloudAccountId = $someString
 		# OPTIONAL
 		subscriptionId = $someString
+	}
+	# OPTIONAL
+	computeProxySettings = @{
+		# OPTIONAL
+		proxyServer = $someString
+		# OPTIONAL
+		portNumber = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		protocol = $someString
 	}
 	# OPTIONAL
 	proxySettings = @{

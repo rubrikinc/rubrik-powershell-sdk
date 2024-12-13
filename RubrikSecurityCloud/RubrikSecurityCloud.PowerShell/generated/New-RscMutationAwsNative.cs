@@ -260,6 +260,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	kmsKeyId = $someString
     /// 	# OPTIONAL
     /// 	snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -369,6 +371,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	shouldRestoreTags = $someBoolean
     /// 	# OPTIONAL
     /// 	snapshotTypeToUseIfSourceExpired = $someSnapshotTypeToUseIfSourceExpired # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeToUseIfSourceExpired]) for enum values.
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -683,6 +687,8 @@ $query.Var.input = @{
 	kmsKeyId = $someString
 	# OPTIONAL
 	snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+	# OPTIONAL
+	archivedSnapshotId = $someString
 }"
             );
         }
@@ -768,6 +774,8 @@ $query.Var.input = @{
 	shouldRestoreTags = $someBoolean
 	# OPTIONAL
 	snapshotTypeToUseIfSourceExpired = $someSnapshotTypeToUseIfSourceExpired # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeToUseIfSourceExpired]) for enum values.
+	# OPTIONAL
+	archivedSnapshotId = $someString
 }"
             );
         }

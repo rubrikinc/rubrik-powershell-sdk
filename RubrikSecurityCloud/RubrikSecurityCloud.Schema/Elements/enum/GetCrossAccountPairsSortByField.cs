@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GetCrossAccountPairsSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NAME")]
         NAME,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         ORG_NAME,
 
         [EnumMember(Value = "SORT_BY_FIELD_UNSPECIFIED")]
-        SORT_BY_FIELD_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SORT_BY_FIELD_UNSPECIFIED
 
 
     } // enum GetCrossAccountPairsSortByField

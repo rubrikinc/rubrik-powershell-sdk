@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ClassificationPolicyMode
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "COMPLIANCE")]
         COMPLIANCE,
 
         [EnumMember(Value = "DISCOVERY")]
-        DISCOVERY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        DISCOVERY
 
 
     } // enum ClassificationPolicyMode

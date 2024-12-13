@@ -1,0 +1,51 @@
+### CloudDirectSnapshot
+NAS Cloud Direct snapshot object.
+
+- id: System.String
+  - Object ID.
+- cloudDirectId: System.String
+  - ID of the snapshot on the NAS Cloud Direct cluster.
+- date: DateTime
+  - Timestamp of the snapshot.
+- expirationDate: DateTime
+  - Date the snapshot will expire.
+- expiryHint: System.Boolean
+  - Specifies whether the expiration hint is enabled.
+- clusterUuid: System.String
+  - NAS Cloud Direct Cluster ID.
+- systemId: System.String
+  - ID of the NAS Cloud Direct System.
+- protocol: CloudDirectSnapshotProtocolType
+  - Protocol of the NAS Cloud Direct share.
+- isCorrupted: System.Boolean
+  - Specifies whether the snapshot is corrupted.
+- indexingAttempts: System.Int64
+  - Number of attempts for indexing the snapshot.
+- isIndexed: System.Boolean
+  - Specifies whether the snapshot is indexed or not.
+- isUnindexable: System.Boolean
+  - Specifies whether the snapshot can be unindexed.
+- isOnDemandSnapshot: System.Boolean
+  - Specifies if the snapshot is on-demand.
+- completed: DateTime
+  - Time snapshot completed.
+- state: CloudDirectSnapshotSateType
+  - State of snapshot on NAS Cloud Direct.
+- type: CloudDirectSnapshotType
+  - Type of snapshot on NAS Cloud Direct.
+- policyName: System.String
+  - Name of policy assigned to the snapshot in NAS Cloud Direct.
+- workloadId: System.String
+  - Rubrik ID of NAS Cloud Direct workload.
+- slaDomain: SlaDomain
+  - SLA Domain of the snapshot.
+- isDownloadedSnapshot: System.Boolean
+  - Specifies whether the snapshot was downloaded.
+- isQuarantined: System.Boolean
+  - Specifies whether the snapshot is quarantined.
+- share: CloudDirectNasShare
+  - NAS Cloud Direct share to which this snapshot belongs.
+- isExpired: System.Boolean
+  - Specifies whether or not the snapshot is expired.
+- snappableId: System.String
+  - The workload ID of the snapshot.

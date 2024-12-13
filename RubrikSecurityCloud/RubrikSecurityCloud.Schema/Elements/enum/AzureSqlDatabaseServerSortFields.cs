@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureSqlDatabaseServerSortFields
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AZURE_SQL_DATABASE_SERVER_REGION")]
         AZURE_SQL_DATABASE_SERVER_REGION,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         EFFECTIVE_SLA_DOMAIN,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum AzureSqlDatabaseServerSortFields

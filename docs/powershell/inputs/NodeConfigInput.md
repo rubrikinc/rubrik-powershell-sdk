@@ -9,3 +9,5 @@ IP configurations for the node.
   - IP configuration for management network.
 - vlanIpConfigs: list of VlanIpInputs
   - VLAN Ids and associated IPs for the node.
+- chassisId: System.String
+  - Equivalent to BrikID for the node.

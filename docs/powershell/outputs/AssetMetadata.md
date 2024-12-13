@@ -39,3 +39,5 @@ AssetMetadata stores the metadata of the asset.
   - Signifies the object tags for the asset.
 - name: System.String
   - Signifies the name of the asset.
+- appSpecificMetadata: AppMetadata
+  - Signifies the application-specific metadata.

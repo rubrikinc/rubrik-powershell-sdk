@@ -4,6 +4,10 @@
 - isStandaloneHost: System.Boolean
 - ioFilterStatus: System.String
   - This vsphere host's IOFilter status can be Uninstalled or Installed.
+- snapshotConsistencyMandate: ConsistencyLevelEnum
+  - Snapshot consistency mandate.
+- snapshotConsistencySource: System.String
+  - Fid of the object from where the snapshot consistency mandate is inherited.
 - descendantConnection: VsphereHostDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: VsphereHostPhysicalChildTypeConnection

@@ -6,6 +6,6 @@ Paginated list of ThreatHunt objects. Each page of the results includes at most 
 - nodes: list of ThreatHunts
   - List of ThreatHunt objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ThreatHunt objects matching the request arguments.

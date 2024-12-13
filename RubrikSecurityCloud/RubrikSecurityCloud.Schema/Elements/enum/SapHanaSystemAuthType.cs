@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SapHanaSystemAuthType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AUTH_TYPE_UNSPECIFIED")]
         AUTH_TYPE_UNSPECIFIED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         SAP_HANA_SYSTEM_AUTH_TYPE_SPEC_AUTH_TYPE_HDB_USERSTORE,
 
         [EnumMember(Value = "SAP_HANA_SYSTEM_AUTH_TYPE_SPEC_AUTH_TYPE_USER_CREDENTIALS")]
-        SAP_HANA_SYSTEM_AUTH_TYPE_SPEC_AUTH_TYPE_USER_CREDENTIALS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SAP_HANA_SYSTEM_AUTH_TYPE_SPEC_AUTH_TYPE_USER_CREDENTIALS
 
 
     } // enum SapHanaSystemAuthType

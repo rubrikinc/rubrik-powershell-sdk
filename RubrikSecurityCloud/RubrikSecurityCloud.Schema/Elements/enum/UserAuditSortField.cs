@@ -15,11 +15,11 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UserAuditSortField
     {
-        [EnumMember(Value = "TIME")]
-        TIME,
-
         [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN,
+
+        [EnumMember(Value = "TIME")]
+        TIME
 
 
     } // enum UserAuditSortField

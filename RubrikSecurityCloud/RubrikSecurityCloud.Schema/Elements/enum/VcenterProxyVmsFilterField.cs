@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VcenterProxyVmsFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FIELD_UNSPECIFIED")]
         FIELD_UNSPECIFIED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         INCLUDE_COUNT,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum VcenterProxyVmsFilterField

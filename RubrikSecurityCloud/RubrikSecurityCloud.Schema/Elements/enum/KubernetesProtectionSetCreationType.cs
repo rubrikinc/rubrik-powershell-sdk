@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum KubernetesProtectionSetCreationType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "API")]
         API,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         CRD,
 
         [EnumMember(Value = "RSC")]
-        RSC,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        RSC
 
 
     } // enum KubernetesProtectionSetCreationType

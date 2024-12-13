@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ConfigProtectionStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BACKUP_COMPLETED")]
         BACKUP_COMPLETED,
 
@@ -49,10 +52,7 @@ namespace RubrikSecurityCloud.Types
         SETUP_FAILED,
 
         [EnumMember(Value = "SETUP_RUNNING")]
-        SETUP_RUNNING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SETUP_RUNNING
 
 
     } // enum ConfigProtectionStatus

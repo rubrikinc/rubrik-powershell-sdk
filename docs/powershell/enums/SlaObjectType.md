@@ -37,3 +37,4 @@ Type of objects managed by SLA Domains.
 - SALESFORCE_OBJECT_TYPE - Salesforce object.
 - M365_BACKUP_STORAGE_OBJECT_TYPE - Microsoft 365 Backup Storage object.
 - MYSQLDB_OBJECT_TYPE - MySQL object.
+- D365_OBJECT_TYPE - D365 Object.

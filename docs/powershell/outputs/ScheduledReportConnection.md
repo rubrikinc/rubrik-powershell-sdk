@@ -6,6 +6,6 @@ Paginated list of ScheduledReport objects. Each page of the results includes at 
 - nodes: list of ScheduledReports
   - List of ScheduledReport objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ScheduledReport objects matching the request arguments.

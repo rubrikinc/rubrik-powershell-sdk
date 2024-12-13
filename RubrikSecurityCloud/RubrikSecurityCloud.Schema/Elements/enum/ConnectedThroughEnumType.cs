@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ConnectedThroughEnumType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CDM")]
         CDM,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         NAS_DA,
 
         [EnumMember(Value = "SRC_UNSPECIFIED")]
-        SRC_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SRC_UNSPECIFIED
 
 
     } // enum ConnectedThroughEnumType

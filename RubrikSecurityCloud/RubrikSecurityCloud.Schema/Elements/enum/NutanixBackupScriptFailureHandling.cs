@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NutanixBackupScriptFailureHandling
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ABORT")]
         ABORT,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         CONTINUE,
 
         [EnumMember(Value = "UNKNOWN_FAILURE_HANDLING")]
-        UNKNOWN_FAILURE_HANDLING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_FAILURE_HANDLING
 
 
     } // enum NutanixBackupScriptFailureHandling

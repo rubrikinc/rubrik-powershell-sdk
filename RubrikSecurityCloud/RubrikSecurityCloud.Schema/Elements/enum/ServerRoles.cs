@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ServerRoles
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DHCP")]
         DHCP,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         DNS,
 
         [EnumMember(Value = "UNKNOWN_SERVER_ROLE")]
-        UNKNOWN_SERVER_ROLE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_SERVER_ROLE
 
 
     } // enum ServerRoles

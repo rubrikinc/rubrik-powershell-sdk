@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ClusterTimezoneType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_TIMEZONE_AFRICA_ABIDJAN")]
         CLUSTER_TIMEZONE_AFRICA_ABIDJAN,
 
@@ -934,10 +937,7 @@ namespace RubrikSecurityCloud.Types
         CLUSTER_TIMEZONE_UTC,
 
         [EnumMember(Value = "CLUSTER_TIMEZONE_WET")]
-        CLUSTER_TIMEZONE_WET,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        CLUSTER_TIMEZONE_WET
 
 
     } // enum ClusterTimezoneType

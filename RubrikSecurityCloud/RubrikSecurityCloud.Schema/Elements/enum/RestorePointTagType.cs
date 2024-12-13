@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RestorePointTagType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FAST")]
         FAST,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         RESTORE_POINT_TAG_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "STANDARD")]
-        STANDARD,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STANDARD
 
 
     } // enum RestorePointTagType

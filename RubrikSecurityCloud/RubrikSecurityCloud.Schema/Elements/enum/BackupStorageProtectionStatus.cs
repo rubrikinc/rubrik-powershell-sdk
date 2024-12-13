@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum BackupStorageProtectionStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "STATUS_PROTECTED")]
         STATUS_PROTECTED,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         STATUS_UNPROTECT_REQUESTED,
 
         [EnumMember(Value = "STATUS_UNSPECIFIED")]
-        STATUS_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STATUS_UNSPECIFIED
 
 
     } // enum BackupStorageProtectionStatus

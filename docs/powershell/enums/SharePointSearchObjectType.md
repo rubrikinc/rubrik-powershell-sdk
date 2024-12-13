@@ -7,3 +7,4 @@ Object type to constrain the search against.
 - LIBRARY - Search library only.
 - LIST - Search list only.
 - WEBPART - Search webpart only.
+- APP_CATALOG - Search app catalog only.

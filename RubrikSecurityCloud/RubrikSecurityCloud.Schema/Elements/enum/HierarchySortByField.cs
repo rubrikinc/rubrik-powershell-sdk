@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HierarchySortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_NAME")]
         ACTIVE_DIRECTORY_DOMAIN_NAME,
 
@@ -331,10 +334,7 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_DATASTORE_FREE_SPACE,
 
         [EnumMember(Value = "VSPHERE_DATASTORE_TYPE")]
-        VSPHERE_DATASTORE_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VSPHERE_DATASTORE_TYPE
 
 
     } // enum HierarchySortByField

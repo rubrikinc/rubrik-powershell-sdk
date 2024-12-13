@@ -100,6 +100,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotType")]
         public AzureSnapshotType? SnapshotType { get; set; }
 
+        //      C# -> System.String? ArchivedSnapshotId
+        // GraphQL -> archivedSnapshotId: UUID (scalar)
+        [JsonProperty("archivedSnapshotId")]
+        public System.String? ArchivedSnapshotId { get; set; }
+
 
         #endregion
 

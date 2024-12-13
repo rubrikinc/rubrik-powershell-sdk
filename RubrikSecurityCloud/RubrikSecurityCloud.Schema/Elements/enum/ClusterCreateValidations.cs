@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ClusterCreateValidations
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ALL_CHECKS")]
         ALL_CHECKS,
 
@@ -58,10 +61,7 @@ namespace RubrikSecurityCloud.Types
         NTP_SERVERS_CHECK,
 
         [EnumMember(Value = "OBJECT_STORE_CHECK")]
-        OBJECT_STORE_CHECK,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        OBJECT_STORE_CHECK
 
 
     } // enum ClusterCreateValidations

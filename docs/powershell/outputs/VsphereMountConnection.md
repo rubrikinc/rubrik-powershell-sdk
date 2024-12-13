@@ -6,6 +6,6 @@ Paginated list of VsphereMount objects. Each page of the results includes at mos
 - nodes: list of VsphereMounts
   - List of VsphereMount objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of VsphereMount objects matching the request arguments.

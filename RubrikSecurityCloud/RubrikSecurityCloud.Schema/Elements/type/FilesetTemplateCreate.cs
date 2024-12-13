@@ -85,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("preBackupScript")]
         public System.String? PreBackupScript { get; set; }
 
+        //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
+        // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean (scalar)
+        [JsonProperty("shouldRetryPrescriptIfBackupFails")]
+        public System.Boolean? ShouldRetryPrescriptIfBackupFails { get; set; }
+
         //      C# -> FilesetOptions? FilesetOptions
         // GraphQL -> filesetOptions: FilesetOptions (type)
         [JsonProperty("filesetOptions")]
@@ -113,6 +118,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.String? PostBackupScript = null,
         System.String? PreBackupScript = null,
+        System.Boolean? ShouldRetryPrescriptIfBackupFails = null,
         FilesetOptions? FilesetOptions = null
     ) 
     {
@@ -154,6 +160,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PreBackupScript != null ) {
             this.PreBackupScript = PreBackupScript;
+        }
+        if ( ShouldRetryPrescriptIfBackupFails != null ) {
+            this.ShouldRetryPrescriptIfBackupFails = ShouldRetryPrescriptIfBackupFails;
         }
         if ( FilesetOptions != null ) {
             this.FilesetOptions = FilesetOptions;
@@ -287,6 +296,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "preBackupScript\n" ;
             } else {
                 s += ind + "preBackupScript\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
+        // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean (scalar)
+        if (this.ShouldRetryPrescriptIfBackupFails != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldRetryPrescriptIfBackupFails\n" ;
+            } else {
+                s += ind + "shouldRetryPrescriptIfBackupFails\n" ;
             }
         }
         //      C# -> FilesetOptions? FilesetOptions
@@ -528,6 +546,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PreBackupScript != null && ec.Excludes("preBackupScript",true))
         {
             this.PreBackupScript = null;
+        }
+        //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
+        // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean (scalar)
+        if (ec.Includes("shouldRetryPrescriptIfBackupFails",true))
+        {
+            if(this.ShouldRetryPrescriptIfBackupFails == null) {
+
+                this.ShouldRetryPrescriptIfBackupFails = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldRetryPrescriptIfBackupFails != null && ec.Excludes("shouldRetryPrescriptIfBackupFails",true))
+        {
+            this.ShouldRetryPrescriptIfBackupFails = null;
         }
         //      C# -> FilesetOptions? FilesetOptions
         // GraphQL -> filesetOptions: FilesetOptions (type)

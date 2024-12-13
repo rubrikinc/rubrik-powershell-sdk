@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FieldEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ALL")]
         ALL,
 
@@ -60,14 +63,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SEQUENCE_NUMBER_GREATER_THAN")]
         SEQUENCE_NUMBER_GREATER_THAN,
 
+        [EnumMember(Value = "SNAPSHOT_IDS")]
+        SNAPSHOT_IDS,
+
         [EnumMember(Value = "SPECIFIC_SNAPSHOT_NOT_REQUIRED")]
         SPECIFIC_SNAPSHOT_NOT_REQUIRED,
 
         [EnumMember(Value = "TIME_RANGE_WITH_OFFSET")]
-        TIME_RANGE_WITH_OFFSET,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TIME_RANGE_WITH_OFFSET
 
 
     } // enum FieldEnum

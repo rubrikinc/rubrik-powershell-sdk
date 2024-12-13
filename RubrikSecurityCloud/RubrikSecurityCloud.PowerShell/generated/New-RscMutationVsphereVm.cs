@@ -1805,6 +1805,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		guestCredentialId = $someString
     /// 		# OPTIONAL
+    /// 		shouldUseAgent = $someBoolean
+    /// 		# OPTIONAL
     /// 		guestCredential = @{
     /// 			# REQUIRED
     /// 			password = $someString
@@ -1821,6 +1823,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isVmPaused = $someBoolean
     /// 			# OPTIONAL
     /// 			maxNestedVsphereSnapshots = $someInt
+    /// 			# OPTIONAL
+    /// 			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
     /// 			# OPTIONAL
     /// 			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
     /// 			# OPTIONAL
@@ -3835,6 +3839,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		guestCredentialId = $someString
 		# OPTIONAL
+		shouldUseAgent = $someBoolean
+		# OPTIONAL
 		guestCredential = @{
 			# REQUIRED
 			password = $someString
@@ -3851,6 +3857,8 @@ $query.Var.input = @{
 			isVmPaused = $someBoolean
 			# OPTIONAL
 			maxNestedVsphereSnapshots = $someInt
+			# OPTIONAL
+			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
 			# OPTIONAL
 			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
 			# OPTIONAL

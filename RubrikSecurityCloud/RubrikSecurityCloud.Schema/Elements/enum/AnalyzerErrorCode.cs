@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AnalyzerErrorCode
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ANALYZER")]
         ANALYZER,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         PARSING,
 
         [EnumMember(Value = "READING")]
-        READING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        READING
 
 
     } // enum AnalyzerErrorCode

@@ -138,6 +138,14 @@ v8.1+: Export snapshot of a virtual machine.
 
 - There is a single argument of type ExportNutanixSnapshotInput.
 - Returns AsyncRequestStatus.
+### inplaceexportsnapshot
+In-place export a snapshot to a Nutanix virtual machine
+
+Supported in v9.3
+Restores the Nutanix virtual machine to the specified snapshot in-place.
+
+- There is a single argument of type CreateNutanixInplaceExportInput.
+- Returns AsyncRequestStatus.
 ### migratemountv1
 Relocate a Nutanix virtual machine to another storage container
 

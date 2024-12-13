@@ -6,6 +6,6 @@ Paginated list of ActiveDirectoryDomain objects. Each page of the results includ
 - nodes: list of ActiveDirectoryDomains
   - List of ActiveDirectoryDomain objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ActiveDirectoryDomain objects matching the request arguments.

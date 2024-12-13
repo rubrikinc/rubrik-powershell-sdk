@@ -17,6 +17,8 @@ Exchange Server details object.
   - List of descendants.
 - host: PhysicalHost
   - Host parent for the Exchange Server.
+- exchangeHost: ExchangeHost
+  - Exchange Host parent for the Exchange Server.
 - exchangeDag: ExchangeDag
   - Dag parent for Exchange Server.
 - cluster: Cluster

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum M365Cloud
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "COMMERCIAL")]
         COMMERCIAL,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         GCC_MIL,
 
         [EnumMember(Value = "NULL_CLOUD_TYPE")]
-        NULL_CLOUD_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NULL_CLOUD_TYPE
 
 
     } // enum M365Cloud

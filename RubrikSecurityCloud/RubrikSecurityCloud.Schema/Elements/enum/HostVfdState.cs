@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HostVfdState
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HOST_VFD_STATE_INSTALLED")]
         HOST_VFD_STATE_INSTALLED,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         HOST_VFD_STATE_NOT_INSTALLED,
 
         [EnumMember(Value = "HOST_VFD_STATE_UNINSTALLED_BUT_RESTART_REQUIRED")]
-        HOST_VFD_STATE_UNINSTALLED_BUT_RESTART_REQUIRED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        HOST_VFD_STATE_UNINSTALLED_BUT_RESTART_REQUIRED
 
 
     } // enum HostVfdState

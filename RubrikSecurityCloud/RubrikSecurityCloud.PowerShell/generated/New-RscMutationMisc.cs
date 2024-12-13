@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 144
+    /// Create a new RscQuery object for any of the 148
     /// operations in the 'Miscellaneous' API domain:
-    /// AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangePassword, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
+    /// AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, BulkUpdateNasNamespaces, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangePassword, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RestoreObjectsDryRun, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
     /// </summary>
     /// <description>
     /// New-RscMutationMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 144 operations
+    /// There are 148 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangePassword, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
+    /// one of: AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, BulkUpdateNasNamespaces, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangePassword, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIntelFeed, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RestoreObjectsDryRun, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, or WarmSearchCache.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -645,6 +645,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			isCreatedByPolarisNas = $someBoolean
     /// 			# OPTIONAL
+    /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
+    /// 			# OPTIONAL
     /// 			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
     /// 			# OPTIONAL
     /// 			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
@@ -676,6 +678,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: BulkCreateNasFilesetsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the BulkUpdateNasNamespaces operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: BulkUpdateNasNamespaces
+    /// 
+    /// $query = New-RscMutationMisc -Operation BulkUpdateNasNamespaces
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	bulkUpdateNasNamespacesRequest = @{
+    /// 		# REQUIRED
+    /// 		nasNamespaces = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				smbCredentials = @{
+    /// 					# OPTIONAL
+    /// 					password = $someString
+    /// 					# REQUIRED
+    /// 					username = $someString
+    /// 				}
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -2099,6 +2147,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	roleIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	authDomainId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2530,6 +2580,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	mountDiskIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// 	# REQUIRED
     /// 	workloadType = $someCloudNativeObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeObjectType]) for enum values.
     /// }
@@ -2605,6 +2657,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	dstExportId = $someInt
+    /// 	# OPTIONAL
+    /// 	dstExportFid = $someInt
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RecoverCloudDirectNasShare operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: RecoverCloudDirectNasShare
+    /// 
+    /// $query = New-RscMutationMisc -Operation RecoverCloudDirectNasShare
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	srcShareName = $someString
+    /// 	# REQUIRED
+    /// 	snapshotFid = $someString
+    /// 	# REQUIRED
+    /// 	restorePathPairList = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			srcPath = $someString
+    /// 			# REQUIRED
+    /// 			dstPath = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	destShareFid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2774,6 +2872,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RemoveNodeForReplacement operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: RemoveNodeForReplacement
+    /// 
+    /// $query = New-RscMutationMisc -Operation RemoveNodeForReplacement
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	nodeIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	useQuickDrain = $someBoolean
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	nodeMetadata = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			nodeId = $someString
+    /// 			# OPTIONAL
+    /// 			chassisId = $someString
+    /// 			# OPTIONAL
+    /// 			platform = $someClusterNodePlatformType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodePlatformType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			status = $someClusterNodeStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodeStatus]) for enum values.
+    /// 			# OPTIONAL
+    /// 			useQuickDrain = $someBoolean
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RemoveNodeForReplacementReply
     /// 
     /// 
     /// 
@@ -3088,6 +3238,106 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RequestSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RestoreObjectsDryRun operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: RestoreObjectsDryRun
+    /// 
+    /// $query = New-RscMutationMisc -Operation RestoreObjectsDryRun
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	exportId = $someString
+    /// 	# OPTIONAL
+    /// 	shouldReportOnlyChangedValues = $someBoolean
+    /// 	# OPTIONAL
+    /// 	shouldReportOnlyChangedAttrs = $someBoolean
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		shouldMergeLinkedAttrs = $someBoolean
+    /// 		# OPTIONAL
+    /// 		restoreToDifferentContainer = $someString
+    /// 		# OPTIONAL
+    /// 		shouldContinueOnError = $someBoolean
+    /// 		# OPTIONAL
+    /// 		clearUpAttrsIfNullInBackup = $someBoolean
+    /// 		# OPTIONAL
+    /// 		alternateDcId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldCreateMissingParents = $someBoolean
+    /// 		# OPTIONAL
+    /// 		locationId = $someString
+    /// 		# OPTIONAL
+    /// 		hostId = $someString
+    /// 		# OPTIONAL
+    /// 		nameConflict = $someActiveDirectoryObjectNameConflictOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectNameConflictOption]) for enum values.
+    /// 		# OPTIONAL
+    /// 		objectMovedOptions = $someActiveDirectoryObjectMovedOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectMovedOption]) for enum values.
+    /// 		# OPTIONAL
+    /// 		containerRestoreOptions = @{
+    /// 			# OPTIONAL
+    /// 			shouldDeleteExtraObjects = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldOnlyRecreateMissingObjects = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		credsForRestore = @{
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 		}
+    /// 		# REQUIRED
+    /// 		domainControllerRecoveryObjects = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				attributes = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				objectType = $someActiveDirectoryObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectType]) for enum values.
+    /// 				# REQUIRED
+    /// 				dnt = $someInt64
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		userRestoreOptions = @{
+    /// 			# OPTIONAL
+    /// 			shouldEnableUser = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldChangePassword = $someBoolean
+    /// 			# OPTIONAL
+    /// 			password = $someString
+    /// 			# OPTIONAL
+    /// 			passwordOptions = $someActiveDirectoryUserPasswordRecoveryOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryUserPasswordRecoveryOption]) for enum values.
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	instanceId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RestoreObjectsDryRunReply
     /// 
     /// 
     /// 
@@ -4514,6 +4764,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	settings = @{
+    /// 		# OPTIONAL
+    /// 		guestCredentialId = $someString
     /// 		# REQUIRED
     /// 		isAutomatic = $someBoolean
     /// 	}
@@ -4553,6 +4805,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			clusterUuid = $someString
     /// 			# REQUIRED
     /// 			settings = @{
+    /// 				# OPTIONAL
+    /// 				guestCredentialId = $someString
     /// 				# REQUIRED
     /// 				isAutomatic = $someBoolean
     /// 			}
@@ -6017,6 +6271,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AssignProtection",
                 "BatchDeassignRoleFromUserGroups",
                 "BulkCreateNasFilesets",
+                "BulkUpdateNasNamespaces",
                 "CancelDownloadPackage",
                 "CancelScheduledUpgrade",
                 "CancelTaskchain",
@@ -6065,11 +6320,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MountDisk",
                 "NotificationForGetLicense",
                 "RecoverCloudDirectMultiPaths",
+                "RecoverCloudDirectNasShare",
                 "RecoverCloudDirectPath",
                 "RefreshDomain",
                 "RefreshGlobalManagerConnectivityStatus",
                 "RemoveDisk",
                 "RemoveInventoryWorkloads",
+                "RemoveNodeForReplacement",
                 "RemovePrivateEndpointList",
                 "RemoveProxyConfig",
                 "RemoveVlans",
@@ -6079,6 +6336,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ResizeDisk",
                 "ResolveAnomaly",
                 "ResolveVolumeGroupsConflict",
+                "RestoreObjectsDryRun",
                 "RetryBackup",
                 "RetryDownloadPackageJob",
                 "RevokeAllOrgRoles",
@@ -6201,6 +6459,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "BulkCreateNasFilesets":
                         this.ProcessRecord_BulkCreateNasFilesets();
+                        break;
+                    case "BulkUpdateNasNamespaces":
+                        this.ProcessRecord_BulkUpdateNasNamespaces();
                         break;
                     case "CancelDownloadPackage":
                         this.ProcessRecord_CancelDownloadPackage();
@@ -6346,6 +6607,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "RecoverCloudDirectMultiPaths":
                         this.ProcessRecord_RecoverCloudDirectMultiPaths();
                         break;
+                    case "RecoverCloudDirectNasShare":
+                        this.ProcessRecord_RecoverCloudDirectNasShare();
+                        break;
                     case "RecoverCloudDirectPath":
                         this.ProcessRecord_RecoverCloudDirectPath();
                         break;
@@ -6360,6 +6624,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RemoveInventoryWorkloads":
                         this.ProcessRecord_RemoveInventoryWorkloads();
+                        break;
+                    case "RemoveNodeForReplacement":
+                        this.ProcessRecord_RemoveNodeForReplacement();
                         break;
                     case "RemovePrivateEndpointList":
                         this.ProcessRecord_RemovePrivateEndpointList();
@@ -6387,6 +6654,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ResolveVolumeGroupsConflict":
                         this.ProcessRecord_ResolveVolumeGroupsConflict();
+                        break;
+                    case "RestoreObjectsDryRun":
+                        this.ProcessRecord_RestoreObjectsDryRun();
                         break;
                     case "RetryBackup":
                         this.ProcessRecord_RetryBackup();
@@ -6720,6 +6990,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -BulkCreateNasFilesets";
             // Create new graphql operation bulkCreateNasFilesets
             InitMutationBulkCreateNasFilesets();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // bulkUpdateNasNamespaces.
+        internal void ProcessRecord_BulkUpdateNasNamespaces()
+        {
+            this._logger.name += " -BulkUpdateNasNamespaces";
+            // Create new graphql operation bulkUpdateNasNamespaces
+            InitMutationBulkUpdateNasNamespaces();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -7155,6 +7434,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // recoverCloudDirectNasShare.
+        internal void ProcessRecord_RecoverCloudDirectNasShare()
+        {
+            this._logger.name += " -RecoverCloudDirectNasShare";
+            // Create new graphql operation recoverCloudDirectNasShare
+            InitMutationRecoverCloudDirectNasShare();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // recoverCloudDirectPath.
         internal void ProcessRecord_RecoverCloudDirectPath()
         {
@@ -7197,6 +7485,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RemoveInventoryWorkloads";
             // Create new graphql operation removeInventoryWorkloads
             InitMutationRemoveInventoryWorkloads();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // removeNodeForReplacement.
+        internal void ProcessRecord_RemoveNodeForReplacement()
+        {
+            this._logger.name += " -RemoveNodeForReplacement";
+            // Create new graphql operation removeNodeForReplacement
+            InitMutationRemoveNodeForReplacement();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -7278,6 +7575,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ResolveVolumeGroupsConflict";
             // Create new graphql operation resolveVolumeGroupsConflict
             InitMutationResolveVolumeGroupsConflict();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // restoreObjectsDryRun.
+        internal void ProcessRecord_RestoreObjectsDryRun()
+        {
+            this._logger.name += " -RestoreObjectsDryRun";
+            // Create new graphql operation restoreObjectsDryRun
+            InitMutationRestoreObjectsDryRun();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -8379,6 +8685,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			isCreatedByPolarisNas = $someBoolean
 			# OPTIONAL
+			shouldRetryPrescriptIfBackupFails = $someBoolean
+			# OPTIONAL
 			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
 			# OPTIONAL
 			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
@@ -8401,6 +8709,44 @@ $query.Var.input = @{
 		# REQUIRED
 		nasShareIds = @(
 			$someString
+		)
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // bulkUpdateNasNamespaces(input: BulkUpdateNasNamespacesInput!): Void
+        internal void InitMutationBulkUpdateNasNamespaces()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkUpdateNasNamespacesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkUpdateNasNamespaces",
+                "($input: BulkUpdateNasNamespacesInput!)",
+                "System.String",
+                Mutation.BulkUpdateNasNamespaces,
+                Mutation.BulkUpdateNasNamespacesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	bulkUpdateNasNamespacesRequest = @{
+		# REQUIRED
+		nasNamespaces = @(
+			@{
+				# REQUIRED
+				id = $someString
+				# OPTIONAL
+				smbCredentials = @{
+					# OPTIONAL
+					password = $someString
+					# REQUIRED
+					username = $someString
+				}
+			}
 		)
 	}
 }"
@@ -9537,6 +9883,8 @@ $query.Var.input = @{
 	roleIds = @(
 		$someString
 	)
+	# OPTIONAL
+	authDomainId = $someString
 }"
             );
         }
@@ -9895,6 +10243,8 @@ $query.Var.input = @{
 	mountDiskIds = @(
 		$someString
 	)
+	# OPTIONAL
+	archivedSnapshotId = $someString
 	# REQUIRED
 	workloadType = $someCloudNativeObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeObjectType]) for enum values.
 }"
@@ -9954,6 +10304,44 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	dstExportId = $someInt
+	# OPTIONAL
+	dstExportFid = $someInt
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // recoverCloudDirectNasShare(input: RecoverCloudDirectNasShareInput!): AsyncRequestStatus!
+        internal void InitMutationRecoverCloudDirectNasShare()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RecoverCloudDirectNasShareInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRecoverCloudDirectNasShare",
+                "($input: RecoverCloudDirectNasShareInput!)",
+                "AsyncRequestStatus",
+                Mutation.RecoverCloudDirectNasShare,
+                Mutation.RecoverCloudDirectNasShareFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	srcShareName = $someString
+	# REQUIRED
+	snapshotFid = $someString
+	# REQUIRED
+	restorePathPairList = @(
+		@{
+			# REQUIRED
+			srcPath = $someString
+			# REQUIRED
+			dstPath = $someString
+		}
+	)
+	# OPTIONAL
+	destShareFid = $someString
 }"
             );
         }
@@ -10075,6 +10463,50 @@ $query.Var.input = @{
 	# REQUIRED
 	inventoryCards = @(
 		$someInventoryCard # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InventoryCard]) for enum values.
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // removeNodeForReplacement(input: RemoveNodeForReplacementInput!): RemoveNodeForReplacementReply!
+        internal void InitMutationRemoveNodeForReplacement()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RemoveNodeForReplacementInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRemoveNodeForReplacement",
+                "($input: RemoveNodeForReplacementInput!)",
+                "RemoveNodeForReplacementReply",
+                Mutation.RemoveNodeForReplacement,
+                Mutation.RemoveNodeForReplacementFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	nodeIds = @(
+		$someString
+	)
+	# OPTIONAL
+	useQuickDrain = $someBoolean
+	# REQUIRED
+	clusterUuid = $someString
+	# OPTIONAL
+	nodeMetadata = @(
+		@{
+			# OPTIONAL
+			nodeId = $someString
+			# OPTIONAL
+			chassisId = $someString
+			# OPTIONAL
+			platform = $someClusterNodePlatformType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodePlatformType]) for enum values.
+			# OPTIONAL
+			status = $someClusterNodeStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodeStatus]) for enum values.
+			# OPTIONAL
+			useQuickDrain = $someBoolean
+		}
 	)
 }"
             );
@@ -10317,6 +10749,98 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // restoreObjectsDryRun(input: RestoreObjectsDryRunInput!): RestoreObjectsDryRunReply!
+        internal void InitMutationRestoreObjectsDryRun()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestoreObjectsDryRunInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestoreObjectsDryRun",
+                "($input: RestoreObjectsDryRunInput!)",
+                "RestoreObjectsDryRunReply",
+                Mutation.RestoreObjectsDryRun,
+                Mutation.RestoreObjectsDryRunFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	exportId = $someString
+	# OPTIONAL
+	shouldReportOnlyChangedValues = $someBoolean
+	# OPTIONAL
+	shouldReportOnlyChangedAttrs = $someBoolean
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		shouldMergeLinkedAttrs = $someBoolean
+		# OPTIONAL
+		restoreToDifferentContainer = $someString
+		# OPTIONAL
+		shouldContinueOnError = $someBoolean
+		# OPTIONAL
+		clearUpAttrsIfNullInBackup = $someBoolean
+		# OPTIONAL
+		alternateDcId = $someString
+		# OPTIONAL
+		shouldCreateMissingParents = $someBoolean
+		# OPTIONAL
+		locationId = $someString
+		# OPTIONAL
+		hostId = $someString
+		# OPTIONAL
+		nameConflict = $someActiveDirectoryObjectNameConflictOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectNameConflictOption]) for enum values.
+		# OPTIONAL
+		objectMovedOptions = $someActiveDirectoryObjectMovedOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectMovedOption]) for enum values.
+		# OPTIONAL
+		containerRestoreOptions = @{
+			# OPTIONAL
+			shouldDeleteExtraObjects = $someBoolean
+			# OPTIONAL
+			shouldOnlyRecreateMissingObjects = $someBoolean
+		}
+		# OPTIONAL
+		credsForRestore = @{
+			# REQUIRED
+			password = $someString
+			# REQUIRED
+			username = $someString
+		}
+		# REQUIRED
+		domainControllerRecoveryObjects = @(
+			@{
+				# OPTIONAL
+				attributes = @(
+					$someString
+				)
+				# OPTIONAL
+				objectType = $someActiveDirectoryObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectType]) for enum values.
+				# REQUIRED
+				dnt = $someInt64
+			}
+		)
+		# OPTIONAL
+		userRestoreOptions = @{
+			# OPTIONAL
+			shouldEnableUser = $someBoolean
+			# OPTIONAL
+			shouldChangePassword = $someBoolean
+			# OPTIONAL
+			password = $someString
+			# OPTIONAL
+			passwordOptions = $someActiveDirectoryUserPasswordRecoveryOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryUserPasswordRecoveryOption]) for enum values.
+		}
+	}
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	instanceId = $someString
 }"
             );
         }
@@ -11503,6 +12027,8 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# REQUIRED
 	settings = @{
+		# OPTIONAL
+		guestCredentialId = $someString
 		# REQUIRED
 		isAutomatic = $someBoolean
 	}
@@ -11534,6 +12060,8 @@ $query.Var.input = @{
 			clusterUuid = $someString
 			# REQUIRED
 			settings = @{
+				# OPTIONAL
+				guestCredentialId = $someString
 				# REQUIRED
 				isAutomatic = $someBoolean
 			}

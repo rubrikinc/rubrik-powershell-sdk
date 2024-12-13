@@ -33,5 +33,9 @@ Update organization details.
   - Deprecated. Use isServiceAccountDisabled instead.
 - isServiceAccountDisabled: System.Boolean
   - Specifies whether service accounts are not enabled for this organization.
+- isInheritIpAllowlistDisabled: System.Boolean
+  - Specifies whether IP allowlist settings and entries are not inherited for this organization.
+- shouldKeepGlobalIpAllowlist: System.Boolean
+  - Specifies whether to keep the global organization's IP allowlist settings and entries in the tenant organization.
 - crossAccountCapabilities: list of CrossAccountCapabilitys
   - Specifies cross-account capabilities enabled for this organization.

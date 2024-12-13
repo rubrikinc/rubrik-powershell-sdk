@@ -31,10 +31,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("connectionStatus")]
         public ConnectionStatusType? ConnectionStatus { get; set; }
 
+        //      C# -> AwsRegion? StsRegion
+        // GraphQL -> stsRegion: AwsRegion! (enum)
+        [JsonProperty("stsRegion")]
+        public AwsRegion? StsRegion { get; set; }
+
         //      C# -> System.String? AccessKey
         // GraphQL -> accessKey: String! (scalar)
         [JsonProperty("accessKey")]
         public System.String? AccessKey { get; set; }
+
+        //      C# -> System.String? AwsNativeId
+        // GraphQL -> awsNativeId: String! (scalar)
+        [JsonProperty("awsNativeId")]
+        public System.String? AwsNativeId { get; set; }
 
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
@@ -51,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? StsEndpoint
+        // GraphQL -> stsEndpoint: String (scalar)
+        [JsonProperty("stsEndpoint")]
+        public System.String? StsEndpoint { get; set; }
+
 
         #endregion
 
@@ -63,10 +78,13 @@ namespace RubrikSecurityCloud.Types
     public AwsAccount Set(
         CloudAccountType? CloudProvider = null,
         ConnectionStatusType? ConnectionStatus = null,
+        AwsRegion? StsRegion = null,
         System.String? AccessKey = null,
+        System.String? AwsNativeId = null,
         System.String? CloudAccountId = null,
         System.String? Description = null,
-        System.String? Name = null
+        System.String? Name = null,
+        System.String? StsEndpoint = null
     ) 
     {
         if ( CloudProvider != null ) {
@@ -75,8 +93,14 @@ namespace RubrikSecurityCloud.Types
         if ( ConnectionStatus != null ) {
             this.ConnectionStatus = ConnectionStatus;
         }
+        if ( StsRegion != null ) {
+            this.StsRegion = StsRegion;
+        }
         if ( AccessKey != null ) {
             this.AccessKey = AccessKey;
+        }
+        if ( AwsNativeId != null ) {
+            this.AwsNativeId = AwsNativeId;
         }
         if ( CloudAccountId != null ) {
             this.CloudAccountId = CloudAccountId;
@@ -86,6 +110,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( StsEndpoint != null ) {
+            this.StsEndpoint = StsEndpoint;
         }
         return this;
     }
@@ -119,6 +146,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "connectionStatus\n" ;
             }
         }
+        //      C# -> AwsRegion? StsRegion
+        // GraphQL -> stsRegion: AwsRegion! (enum)
+        if (this.StsRegion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "stsRegion\n" ;
+            } else {
+                s += ind + "stsRegion\n" ;
+            }
+        }
         //      C# -> System.String? AccessKey
         // GraphQL -> accessKey: String! (scalar)
         if (this.AccessKey != null) {
@@ -126,6 +162,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "accessKey\n" ;
             } else {
                 s += ind + "accessKey\n" ;
+            }
+        }
+        //      C# -> System.String? AwsNativeId
+        // GraphQL -> awsNativeId: String! (scalar)
+        if (this.AwsNativeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "awsNativeId\n" ;
+            } else {
+                s += ind + "awsNativeId\n" ;
             }
         }
         //      C# -> System.String? CloudAccountId
@@ -153,6 +198,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? StsEndpoint
+        // GraphQL -> stsEndpoint: String (scalar)
+        if (this.StsEndpoint != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "stsEndpoint\n" ;
+            } else {
+                s += ind + "stsEndpoint\n" ;
             }
         }
         return s;
@@ -196,6 +250,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ConnectionStatus = null;
         }
+        //      C# -> AwsRegion? StsRegion
+        // GraphQL -> stsRegion: AwsRegion! (enum)
+        if (ec.Includes("stsRegion",true))
+        {
+            if(this.StsRegion == null) {
+
+                this.StsRegion = new AwsRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StsRegion != null && ec.Excludes("stsRegion",true))
+        {
+            this.StsRegion = null;
+        }
         //      C# -> System.String? AccessKey
         // GraphQL -> accessKey: String! (scalar)
         if (ec.Includes("accessKey",true))
@@ -212,6 +283,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AccessKey != null && ec.Excludes("accessKey",true))
         {
             this.AccessKey = null;
+        }
+        //      C# -> System.String? AwsNativeId
+        // GraphQL -> awsNativeId: String! (scalar)
+        if (ec.Includes("awsNativeId",true))
+        {
+            if(this.AwsNativeId == null) {
+
+                this.AwsNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsNativeId != null && ec.Excludes("awsNativeId",true))
+        {
+            this.AwsNativeId = null;
         }
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
@@ -263,6 +351,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.String? StsEndpoint
+        // GraphQL -> stsEndpoint: String (scalar)
+        if (ec.Includes("stsEndpoint",true))
+        {
+            if(this.StsEndpoint == null) {
+
+                this.StsEndpoint = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StsEndpoint != null && ec.Excludes("stsEndpoint",true))
+        {
+            this.StsEndpoint = null;
         }
     }
 

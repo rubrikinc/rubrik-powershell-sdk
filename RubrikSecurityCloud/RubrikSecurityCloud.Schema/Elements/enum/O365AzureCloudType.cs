@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum O365AzureCloudType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "PUBLIC")]
         PUBLIC,
 
         [EnumMember(Value = "USGOV")]
-        USGOV,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USGOV
 
 
     } // enum O365AzureCloudType

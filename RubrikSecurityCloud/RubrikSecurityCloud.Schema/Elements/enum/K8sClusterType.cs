@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum K8sClusterType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS")]
         AWS,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         GCP,
 
         [EnumMember(Value = "ON_PREM")]
-        ON_PREM,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ON_PREM
 
 
     } // enum K8sClusterType

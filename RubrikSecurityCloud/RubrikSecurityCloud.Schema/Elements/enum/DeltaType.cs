@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DeltaType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BYTES_CREATED")]
         BYTES_CREATED,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         NODES_RANSOMWARE_STRAIN_NOTE,
 
         [EnumMember(Value = "NODES_SUSPICIOUS")]
-        NODES_SUSPICIOUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NODES_SUSPICIOUS
 
 
     } // enum DeltaType

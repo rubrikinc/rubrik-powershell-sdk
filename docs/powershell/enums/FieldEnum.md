@@ -31,3 +31,4 @@
  without the specific snapshots details. When not provided, Specific
  Snapshot details are returned. Add the filter for efficiency if specific
  snapshot details are not required.
+- SNAPSHOT_IDS - When configured, it returns snapshots with IDs present in the list.

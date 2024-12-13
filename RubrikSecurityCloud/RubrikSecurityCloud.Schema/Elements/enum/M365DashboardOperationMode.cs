@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum M365DashboardOperationMode
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DAY_TO_DAY_MODE")]
         DAY_TO_DAY_MODE,
 
         [EnumMember(Value = "ONBOARDING_MODE")]
-        ONBOARDING_MODE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ONBOARDING_MODE
 
 
     } // enum M365DashboardOperationMode

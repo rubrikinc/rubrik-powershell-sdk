@@ -6,6 +6,6 @@ Paginated list of RansomwareResultGroupedData objects. Each page of the results 
 - nodes: list of RansomwareResultGroupedDatas
   - List of RansomwareResultGroupedData objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of RansomwareResultGroupedData objects matching the request arguments.

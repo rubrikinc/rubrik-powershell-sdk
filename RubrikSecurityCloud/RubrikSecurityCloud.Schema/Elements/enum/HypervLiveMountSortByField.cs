@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HypervLiveMountSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_NAME")]
         CLUSTER_NAME,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         MOUNT_NAME,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSPECIFIED
 
 
     } // enum HypervLiveMountSortByField

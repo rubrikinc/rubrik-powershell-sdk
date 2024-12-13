@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlDatabaseFileType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MSSQL_DATABASE_FILE_TYPE_DATA")]
         MSSQL_DATABASE_FILE_TYPE_DATA,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         MSSQL_DATABASE_FILE_TYPE_FILESTREAM,
 
         [EnumMember(Value = "MSSQL_DATABASE_FILE_TYPE_LOG")]
-        MSSQL_DATABASE_FILE_TYPE_LOG,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MSSQL_DATABASE_FILE_TYPE_LOG
 
 
     } // enum MssqlDatabaseFileType

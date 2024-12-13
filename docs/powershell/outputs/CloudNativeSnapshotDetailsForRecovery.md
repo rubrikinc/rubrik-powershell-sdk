@@ -1,6 +1,10 @@
 ### CloudNativeSnapshotDetailsForRecovery
 Recovery related details for a particular snapshot type.
 
+- snapshotId: System.String
+  - Snapshot ID for the specific snapshot.
+- locationName: System.String
+  - Location name for the specific snapshot. For archived snapshots it contains the archival location name.
 - snapshotType: SnapshotType
   - Type of the snapshot. Can be SOURCE/REPLICATED/ARCHIVED.
 - fileRecoveryFeasibility: FileRecoveryFeasibility

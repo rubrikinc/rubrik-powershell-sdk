@@ -26,6 +26,11 @@ List the mappings from accounts to Exocompute cloud accounts with specified filt
     - cloudVendor - CloudVendor: Vendor of the cloud account.
     - exocomputeAccountIdsFilter - list of System.Strings: List of mapped Exocompute account IDs.
 - Returns list of CloudAccountsExocomputeAccountMappings.
+### iampairsbyandlocation
+List the IAM pairs of the provided cloud account and any missing permission groups, if applicable, for an optional archival location.
+
+- There is a single argument of type AllIamPairsByCloudAccountAndLocationInput.
+- Returns list of AwsIamPairsWithMissingPermissions.
 ### latestfeaturepermissions
 Latest Permissions are the most recent set of permissions we require for a feature. This will retrieve the permissions for all the features currently active in the accounts along with the features passed in the call.
 

@@ -20,6 +20,16 @@ Delete an existing route on a Rubrik cluster. Supported in Rubrik CDM v5.0+
 
 - There is a single argument of type DeleteClusterRouteInput.
 - Returns System.String.
+### deleteterminatedclusteroperationjobdata
+Delete the metadata of a Rubrik cluster operation job that is in a terminal state.
+
+- There is a single argument of type DeleteTerminatedClusterOperationJobDataInput.
+- Returns DeleteTerminatedClusterOperationJobDataReply.
+### disconnectexocompute
+Disconnects a customer-managed Exocompute cluster from RSC.
+
+- There is a single argument of type DisconnectExocomputeClusterInput.
+- Returns System.String.
 ### exocomputeclusterconnect
 Connects an Exocompute cluster to RSC and retrieves the Kubernetes configuration YAML file.
 
@@ -61,6 +71,11 @@ Remove healthy nodes from a cluster.
 
 - There is a single argument of type RemoveClusterNodesInput.
 - Returns CcProvisionJobReply.
+### replaceclusternode
+Replace a removed node with a new node.
+
+- There is a single argument of type ReplaceClusterNodeInput.
+- Returns ReplaceClusterNodeReply.
 ### requestpersistentexo
 Requests a persistent Exocompute clusters for a region configuration in a cloud account.
 

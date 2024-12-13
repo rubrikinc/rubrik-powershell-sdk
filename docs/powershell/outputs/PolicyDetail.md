@@ -21,5 +21,7 @@ Represents the policy detail.
   - List of datatype IDs in a policy.
 - objectsPercentCoverage: System.Int32
   - Percentage of objects covered.
+- percentCoverage: System.Single
+  - The percentage of coverage for a data category.
 - creator: User
   - Policy creator.

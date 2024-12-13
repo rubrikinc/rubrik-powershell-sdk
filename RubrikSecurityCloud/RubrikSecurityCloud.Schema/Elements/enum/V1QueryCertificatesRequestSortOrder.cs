@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum V1QueryCertificatesRequestSortOrder
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "V1_QUERY_CERTIFICATES_REQUEST_SORT_ORDER_ASC")]
         V1_QUERY_CERTIFICATES_REQUEST_SORT_ORDER_ASC,
 
         [EnumMember(Value = "V1_QUERY_CERTIFICATES_REQUEST_SORT_ORDER_DESC")]
-        V1_QUERY_CERTIFICATES_REQUEST_SORT_ORDER_DESC,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        V1_QUERY_CERTIFICATES_REQUEST_SORT_ORDER_DESC
 
 
     } // enum V1QueryCertificatesRequestSortOrder

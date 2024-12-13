@@ -15,8 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum S3CompatibleSubType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DEFAULT")]
         DEFAULT,
+
+        [EnumMember(Value = "DEFAULT_BUCKET_IMMUTABLE")]
+        DEFAULT_BUCKET_IMMUTABLE,
 
         [EnumMember(Value = "DELLECS")]
         DELLECS,
@@ -34,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         SCALITY,
 
         [EnumMember(Value = "TYPE_UNSPECIFIED")]
-        TYPE_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TYPE_UNSPECIFIED
 
 
     } // enum S3CompatibleSubType

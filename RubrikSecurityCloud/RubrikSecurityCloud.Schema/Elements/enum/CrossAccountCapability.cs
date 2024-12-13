@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CrossAccountCapability
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CROSS_ACCOUNT_CAPABILITY_UNSPECIFIED")]
         CROSS_ACCOUNT_CAPABILITY_UNSPECIFIED,
 
         [EnumMember(Value = "REPLICATION_AS_A_SERVICE")]
-        REPLICATION_AS_A_SERVICE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        REPLICATION_AS_A_SERVICE
 
 
     } // enum CrossAccountCapability

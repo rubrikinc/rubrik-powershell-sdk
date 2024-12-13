@@ -707,6 +707,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	amiId = $someString
     /// 	# OPTIONAL
     /// 	iamInstanceProfileArn = $someString
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1650,6 +1652,8 @@ $query.Var.input = @{
 	amiId = $someString
 	# OPTIONAL
 	iamInstanceProfileArn = $someString
+	# OPTIONAL
+	archivedSnapshotId = $someString
 }"
             );
         }

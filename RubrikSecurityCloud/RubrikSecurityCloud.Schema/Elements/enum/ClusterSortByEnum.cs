@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ClusterSortByEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_LOCATION")]
         CLUSTER_LOCATION,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         INSTALLED_VERSION,
 
         [EnumMember(Value = "RegisteredAt")]
-        REGISTERED_AT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        REGISTERED_AT
 
 
     } // enum ClusterSortByEnum

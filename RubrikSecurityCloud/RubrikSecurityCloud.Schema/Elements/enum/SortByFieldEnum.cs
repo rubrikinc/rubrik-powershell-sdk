@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SortByFieldEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ANALYZER_NAME")]
         ANALYZER_NAME,
 
@@ -271,10 +274,7 @@ namespace RubrikSecurityCloud.Types
         WORKLOAD_NAME,
 
         [EnumMember(Value = "WORKLOAD_TYPE")]
-        WORKLOAD_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WORKLOAD_TYPE
 
 
     } // enum SortByFieldEnum

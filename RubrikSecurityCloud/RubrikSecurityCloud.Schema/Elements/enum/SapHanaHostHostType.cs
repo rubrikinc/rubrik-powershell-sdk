@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SapHanaHostHostType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SAP_HANA_HOST_HOST_TYPE_MASTER")]
         SAP_HANA_HOST_HOST_TYPE_MASTER,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         SAP_HANA_HOST_HOST_TYPE_SECONDARY_SLAVE,
 
         [EnumMember(Value = "SAP_HANA_HOST_HOST_TYPE_SLAVE")]
-        SAP_HANA_HOST_HOST_TYPE_SLAVE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SAP_HANA_HOST_HOST_TYPE_SLAVE
 
 
     } // enum SapHanaHostHostType

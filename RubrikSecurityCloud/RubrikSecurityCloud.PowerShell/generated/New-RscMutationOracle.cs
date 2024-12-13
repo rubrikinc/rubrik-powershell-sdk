@@ -881,6 +881,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		oracleLogRecoveryRange = @{
     /// 			# OPTIONAL
+    /// 			oracleScnRange = @{
+    /// 				# REQUIRED
+    /// 				endScn = $someInt64
+    /// 				# REQUIRED
+    /// 				startScn = $someInt64
+    /// 			}
+    /// 			# OPTIONAL
     /// 			oracleTimeRange = @{
     /// 				# OPTIONAL
     /// 				endTime = $someDateTime
@@ -2138,6 +2145,13 @@ $query.Var.input = @{
 		targetMountPath = $someString
 		# REQUIRED
 		oracleLogRecoveryRange = @{
+			# OPTIONAL
+			oracleScnRange = @{
+				# REQUIRED
+				endScn = $someInt64
+				# REQUIRED
+				startScn = $someInt64
+			}
 			# OPTIONAL
 			oracleTimeRange = @{
 				# OPTIONAL

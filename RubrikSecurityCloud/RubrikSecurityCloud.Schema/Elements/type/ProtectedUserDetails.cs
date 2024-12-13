@@ -20,10 +20,30 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int32? ResourceMailboxProtected
+        // GraphQL -> resourceMailboxProtected: Int (scalar)
+        [JsonProperty("resourceMailboxProtected")]
+        public System.Int32? ResourceMailboxProtected { get; set; }
+
         //      C# -> System.Int32? SharedMailboxProtected
         // GraphQL -> sharedMailboxProtected: Int (scalar)
         [JsonProperty("sharedMailboxProtected")]
         public System.Int32? SharedMailboxProtected { get; set; }
+
+        //      C# -> System.Int32? UnlicensedResourceMailboxProtected
+        // GraphQL -> unlicensedResourceMailboxProtected: Int (scalar)
+        [JsonProperty("unlicensedResourceMailboxProtected")]
+        public System.Int32? UnlicensedResourceMailboxProtected { get; set; }
+
+        //      C# -> System.Int32? UnlicensedSharedMailboxProtected
+        // GraphQL -> unlicensedSharedMailboxProtected: Int (scalar)
+        [JsonProperty("unlicensedSharedMailboxProtected")]
+        public System.Int32? UnlicensedSharedMailboxProtected { get; set; }
+
+        //      C# -> System.Int32? UnlicensedUserMailboxProtected
+        // GraphQL -> unlicensedUserMailboxProtected: Int (scalar)
+        [JsonProperty("unlicensedUserMailboxProtected")]
+        public System.Int32? UnlicensedUserMailboxProtected { get; set; }
 
         //      C# -> System.Int32? UserMailboxProtected
         // GraphQL -> userMailboxProtected: Int (scalar)
@@ -40,12 +60,28 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ProtectedUserDetails Set(
+        System.Int32? ResourceMailboxProtected = null,
         System.Int32? SharedMailboxProtected = null,
+        System.Int32? UnlicensedResourceMailboxProtected = null,
+        System.Int32? UnlicensedSharedMailboxProtected = null,
+        System.Int32? UnlicensedUserMailboxProtected = null,
         System.Int32? UserMailboxProtected = null
     ) 
     {
+        if ( ResourceMailboxProtected != null ) {
+            this.ResourceMailboxProtected = ResourceMailboxProtected;
+        }
         if ( SharedMailboxProtected != null ) {
             this.SharedMailboxProtected = SharedMailboxProtected;
+        }
+        if ( UnlicensedResourceMailboxProtected != null ) {
+            this.UnlicensedResourceMailboxProtected = UnlicensedResourceMailboxProtected;
+        }
+        if ( UnlicensedSharedMailboxProtected != null ) {
+            this.UnlicensedSharedMailboxProtected = UnlicensedSharedMailboxProtected;
+        }
+        if ( UnlicensedUserMailboxProtected != null ) {
+            this.UnlicensedUserMailboxProtected = UnlicensedUserMailboxProtected;
         }
         if ( UserMailboxProtected != null ) {
             this.UserMailboxProtected = UserMailboxProtected;
@@ -64,6 +100,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int32? ResourceMailboxProtected
+        // GraphQL -> resourceMailboxProtected: Int (scalar)
+        if (this.ResourceMailboxProtected != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceMailboxProtected\n" ;
+            } else {
+                s += ind + "resourceMailboxProtected\n" ;
+            }
+        }
         //      C# -> System.Int32? SharedMailboxProtected
         // GraphQL -> sharedMailboxProtected: Int (scalar)
         if (this.SharedMailboxProtected != null) {
@@ -71,6 +116,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "sharedMailboxProtected\n" ;
             } else {
                 s += ind + "sharedMailboxProtected\n" ;
+            }
+        }
+        //      C# -> System.Int32? UnlicensedResourceMailboxProtected
+        // GraphQL -> unlicensedResourceMailboxProtected: Int (scalar)
+        if (this.UnlicensedResourceMailboxProtected != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "unlicensedResourceMailboxProtected\n" ;
+            } else {
+                s += ind + "unlicensedResourceMailboxProtected\n" ;
+            }
+        }
+        //      C# -> System.Int32? UnlicensedSharedMailboxProtected
+        // GraphQL -> unlicensedSharedMailboxProtected: Int (scalar)
+        if (this.UnlicensedSharedMailboxProtected != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "unlicensedSharedMailboxProtected\n" ;
+            } else {
+                s += ind + "unlicensedSharedMailboxProtected\n" ;
+            }
+        }
+        //      C# -> System.Int32? UnlicensedUserMailboxProtected
+        // GraphQL -> unlicensedUserMailboxProtected: Int (scalar)
+        if (this.UnlicensedUserMailboxProtected != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "unlicensedUserMailboxProtected\n" ;
+            } else {
+                s += ind + "unlicensedUserMailboxProtected\n" ;
             }
         }
         //      C# -> System.Int32? UserMailboxProtected
@@ -89,6 +161,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.Int32? ResourceMailboxProtected
+        // GraphQL -> resourceMailboxProtected: Int (scalar)
+        if (ec.Includes("resourceMailboxProtected",true))
+        {
+            if(this.ResourceMailboxProtected == null) {
+
+                this.ResourceMailboxProtected = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceMailboxProtected != null && ec.Excludes("resourceMailboxProtected",true))
+        {
+            this.ResourceMailboxProtected = null;
+        }
         //      C# -> System.Int32? SharedMailboxProtected
         // GraphQL -> sharedMailboxProtected: Int (scalar)
         if (ec.Includes("sharedMailboxProtected",true))
@@ -105,6 +194,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.SharedMailboxProtected != null && ec.Excludes("sharedMailboxProtected",true))
         {
             this.SharedMailboxProtected = null;
+        }
+        //      C# -> System.Int32? UnlicensedResourceMailboxProtected
+        // GraphQL -> unlicensedResourceMailboxProtected: Int (scalar)
+        if (ec.Includes("unlicensedResourceMailboxProtected",true))
+        {
+            if(this.UnlicensedResourceMailboxProtected == null) {
+
+                this.UnlicensedResourceMailboxProtected = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnlicensedResourceMailboxProtected != null && ec.Excludes("unlicensedResourceMailboxProtected",true))
+        {
+            this.UnlicensedResourceMailboxProtected = null;
+        }
+        //      C# -> System.Int32? UnlicensedSharedMailboxProtected
+        // GraphQL -> unlicensedSharedMailboxProtected: Int (scalar)
+        if (ec.Includes("unlicensedSharedMailboxProtected",true))
+        {
+            if(this.UnlicensedSharedMailboxProtected == null) {
+
+                this.UnlicensedSharedMailboxProtected = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnlicensedSharedMailboxProtected != null && ec.Excludes("unlicensedSharedMailboxProtected",true))
+        {
+            this.UnlicensedSharedMailboxProtected = null;
+        }
+        //      C# -> System.Int32? UnlicensedUserMailboxProtected
+        // GraphQL -> unlicensedUserMailboxProtected: Int (scalar)
+        if (ec.Includes("unlicensedUserMailboxProtected",true))
+        {
+            if(this.UnlicensedUserMailboxProtected == null) {
+
+                this.UnlicensedUserMailboxProtected = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnlicensedUserMailboxProtected != null && ec.Excludes("unlicensedUserMailboxProtected",true))
+        {
+            this.UnlicensedUserMailboxProtected = null;
         }
         //      C# -> System.Int32? UserMailboxProtected
         // GraphQL -> userMailboxProtected: Int (scalar)

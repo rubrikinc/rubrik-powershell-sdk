@@ -29,11 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetGateway")]
         public ReplicationGatewayInfo? TargetGateway { get; set; }
 
-        //      C# -> NetworkInterfaceDetails? TargetNetworkInterface
-        // GraphQL -> targetNetworkInterface: NetworkInterfaceDetails (input)
-        [JsonProperty("targetNetworkInterface")]
-        public NetworkInterfaceDetails? TargetNetworkInterface { get; set; }
-
         //      C# -> NetworkInterfaceSelection? NetworkInterface
         // GraphQL -> networkInterface: NetworkInterfaceSelection (input)
         [JsonProperty("networkInterface")]

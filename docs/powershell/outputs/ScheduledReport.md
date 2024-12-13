@@ -31,5 +31,7 @@ Metadata for rendering a scheduled report.
   - List of email addresses of (non-Rubrik user) recipients of the scheduled report.
 - timeZone: System.String
   - Time zone of the schedule time in IANA format.
+- showChartsInEmailBody: System.Boolean
+  - Specifies whether to show charts in email body.
 - weeklyDays: list of WeekDays
   - Weekdays for report delivery if weekly schedule is enabled.

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ScanStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLASSIFIED")]
         CLASSIFIED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         SCAN_STATUS_UNKNOWN,
 
         [EnumMember(Value = "UNSCANNED")]
-        UNSCANNED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSCANNED
 
 
     } // enum ScanStatus

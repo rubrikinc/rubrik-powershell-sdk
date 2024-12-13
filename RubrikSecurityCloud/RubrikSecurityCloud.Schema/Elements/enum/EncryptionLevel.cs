@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum EncryptionLevel
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HIGH")]
         HIGH,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         MEDIUM,
 
         [EnumMember(Value = "UNAVAILABLE")]
-        UNAVAILABLE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNAVAILABLE
 
 
     } // enum EncryptionLevel

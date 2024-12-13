@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> HostRbsConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: HostRbsConnectionStatus (enum)
+        [JsonProperty("connectionStatus")]
+        public HostRbsConnectionStatus? ConnectionStatus { get; set; }
+
         //      C# -> NasVendorType? VendorType
         // GraphQL -> vendorType: NasVendorType! (enum)
         [JsonProperty("vendorType")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public UpdateNasSystemReply Set(
+        HostRbsConnectionStatus? ConnectionStatus = null,
         NasVendorType? VendorType = null,
         System.String? Hostname = null,
         System.String? Id = null
     ) 
     {
+        if ( ConnectionStatus != null ) {
+            this.ConnectionStatus = ConnectionStatus;
+        }
         if ( VendorType != null ) {
             this.VendorType = VendorType;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> HostRbsConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: HostRbsConnectionStatus (enum)
+        if (this.ConnectionStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "connectionStatus\n" ;
+            } else {
+                s += ind + "connectionStatus\n" ;
+            }
+        }
         //      C# -> NasVendorType? VendorType
         // GraphQL -> vendorType: NasVendorType! (enum)
         if (this.VendorType != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> HostRbsConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: HostRbsConnectionStatus (enum)
+        if (ec.Includes("connectionStatus",true))
+        {
+            if(this.ConnectionStatus == null) {
+
+                this.ConnectionStatus = new HostRbsConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConnectionStatus != null && ec.Excludes("connectionStatus",true))
+        {
+            this.ConnectionStatus = null;
+        }
         //      C# -> NasVendorType? VendorType
         // GraphQL -> vendorType: NasVendorType! (enum)
         if (ec.Includes("vendorType",true))

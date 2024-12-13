@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FileStateEnumType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FAILED")]
         FAILED,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         PENDING,
 
         [EnumMember(Value = "READY")]
-        READY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        READY
 
 
     } // enum FileStateEnumType

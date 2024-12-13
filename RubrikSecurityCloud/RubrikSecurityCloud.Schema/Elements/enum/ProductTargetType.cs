@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ProductTargetType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CDM")]
         CDM,
 
         [EnumMember(Value = "POLARIS")]
-        POLARIS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        POLARIS
 
 
     } // enum ProductTargetType

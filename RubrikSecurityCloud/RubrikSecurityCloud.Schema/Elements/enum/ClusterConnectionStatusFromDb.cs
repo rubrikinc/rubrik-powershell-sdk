@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ClusterConnectionStatusFromDb
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CONNECTED")]
         CONNECTED,
 
         [EnumMember(Value = "DISCONNECTED")]
-        DISCONNECTED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        DISCONNECTED
 
 
     } // enum ClusterConnectionStatusFromDb

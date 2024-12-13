@@ -107,6 +107,11 @@ Refreshes an O365 org.
 
 - There is a single argument of type System.String.
 - Returns CreateOnDemandJobReply.
+### restorefullteams
+Restore the complete Team.
+
+- There is a single argument of type RestoreO365FullTeamsInput.
+- Returns CreateOnDemandJobReply.
 ### restoremailbox
 Restores an Exchange mailbox.
 

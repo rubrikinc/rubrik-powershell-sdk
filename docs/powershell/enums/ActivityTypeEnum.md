@@ -32,6 +32,7 @@ Enum representing different type of activities.
 - Replication
 - Maintenance
 - Support
+- SECURITY_VIOLATION
 - Fileset
 - LocalRecovery
 - System

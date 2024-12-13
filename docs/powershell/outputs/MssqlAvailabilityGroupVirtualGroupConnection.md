@@ -6,6 +6,6 @@ Paginated list of MssqlAvailabilityGroupVirtualGroup objects. Each page of the r
 - nodes: list of MssqlAvailabilityGroupVirtualGroups
   - List of MssqlAvailabilityGroupVirtualGroup objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of MssqlAvailabilityGroupVirtualGroup objects matching the request arguments.

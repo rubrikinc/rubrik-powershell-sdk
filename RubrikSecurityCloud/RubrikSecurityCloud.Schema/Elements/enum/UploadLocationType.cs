@@ -15,11 +15,11 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UploadLocationType
     {
-        [EnumMember(Value = "REPLICATION_TARGET")]
-        REPLICATION_TARGET,
-
         [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN,
+
+        [EnumMember(Value = "REPLICATION_TARGET")]
+        REPLICATION_TARGET
 
 
     } // enum UploadLocationType

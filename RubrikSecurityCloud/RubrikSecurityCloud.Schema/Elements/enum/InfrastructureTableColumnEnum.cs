@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum InfrastructureTableColumnEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ClusterName")]
         CLUSTER_NAME,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         TOTAL_CAPACITY,
 
         [EnumMember(Value = "UsedCapacity")]
-        USED_CAPACITY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USED_CAPACITY
 
 
     } // enum InfrastructureTableColumnEnum

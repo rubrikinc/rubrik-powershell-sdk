@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum K8sClusterStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "STATUS_CONNECTED")]
         STATUS_CONNECTED,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         STATUS_INIT,
 
         [EnumMember(Value = "STATUS_UNKNOWN")]
-        STATUS_UNKNOWN,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STATUS_UNKNOWN
 
 
     } // enum K8sClusterStatus

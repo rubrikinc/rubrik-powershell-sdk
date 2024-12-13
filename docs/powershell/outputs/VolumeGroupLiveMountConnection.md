@@ -6,6 +6,6 @@ Paginated list of VolumeGroupLiveMount objects. Each page of the results include
 - nodes: list of VolumeGroupLiveMounts
   - List of VolumeGroupLiveMount objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of VolumeGroupLiveMount objects matching the request arguments.

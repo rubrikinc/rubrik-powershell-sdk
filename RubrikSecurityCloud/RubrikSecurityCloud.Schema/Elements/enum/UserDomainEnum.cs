@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UserDomainEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLIENT")]
         CLIENT,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         SSO,
 
         [EnumMember(Value = "SUPPORT")]
-        SUPPORT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUPPORT
 
 
     } // enum UserDomainEnum

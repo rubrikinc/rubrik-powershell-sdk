@@ -15,11 +15,11 @@ namespace RubrikSecurityCloud.Types
 {
     public enum Db2LogSnapshotSortBy
     {
-        [EnumMember(Value = "DATE")]
-        DATE,
-
         [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN,
+
+        [EnumMember(Value = "DATE")]
+        DATE
 
 
     } // enum Db2LogSnapshotSortBy

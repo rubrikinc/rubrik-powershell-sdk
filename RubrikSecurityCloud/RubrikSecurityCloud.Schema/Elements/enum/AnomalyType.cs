@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AnomalyType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FILESYSTEM")]
         FILESYSTEM,
 
         [EnumMember(Value = "HYPERVISOR")]
-        HYPERVISOR,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        HYPERVISOR
 
 
     } // enum AnomalyType

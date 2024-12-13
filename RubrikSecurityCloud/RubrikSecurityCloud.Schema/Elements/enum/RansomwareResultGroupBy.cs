@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RansomwareResultGroupBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_WEEK,
 
         [EnumMember(Value = "SNAPSHOT_YEAR")]
-        SNAPSHOT_YEAR,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SNAPSHOT_YEAR
 
 
     } // enum RansomwareResultGroupBy

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NutanixVmMountStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NUTANIX_VM_MOUNT_STATUS_DELETING")]
         NUTANIX_VM_MOUNT_STATUS_DELETING,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         NUTANIX_VM_MOUNT_STATUS_POWERED_OFF,
 
         [EnumMember(Value = "NUTANIX_VM_MOUNT_STATUS_POWERED_ON")]
-        NUTANIX_VM_MOUNT_STATUS_POWERED_ON,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NUTANIX_VM_MOUNT_STATUS_POWERED_ON
 
 
     } // enum NutanixVmMountStatus

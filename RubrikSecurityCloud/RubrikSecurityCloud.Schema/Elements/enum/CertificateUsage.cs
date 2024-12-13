@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CertificateUsage
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CERTIFICATE_USAGE_UNKNOWN")]
         CERTIFICATE_USAGE_UNKNOWN,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         SSO_SP_ENCRYPTION,
 
         [EnumMember(Value = "SSO_SP_SIGNING")]
-        SSO_SP_SIGNING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SSO_SP_SIGNING
 
 
     } // enum CertificateUsage

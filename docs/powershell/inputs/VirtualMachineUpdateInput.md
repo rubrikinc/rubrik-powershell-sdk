@@ -13,6 +13,9 @@ Supported in v5.0+
       Whether to pause or resume backups/archival for this VM.
 - maxNestedVsphereSnapshots: System.Int32
   - Supported in v5.0+
+- multiNodeBackupMode: MultiNodeBackupMode
+  - Supported in v9.3
+      The multinode backup flag for the virtual machine is either ENABLED, DISABLED, or UNDEFINED.
 - snapshotConsistencyMandate: VirtualMachineUpdateSnapshotConsistencyMandate
   - Supported in v5.0+
       Consistency level mandated for this VM or empty string for none.

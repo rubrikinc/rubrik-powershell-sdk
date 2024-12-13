@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ColdStorageClass
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS_GLACIER")]
         AWS_GLACIER,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         AZURE_ARCHIVE,
 
         [EnumMember(Value = "COLD_STORAGE_CLASS_UNKNOWN")]
-        COLD_STORAGE_CLASS_UNKNOWN,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        COLD_STORAGE_CLASS_UNKNOWN
 
 
     } // enum ColdStorageClass

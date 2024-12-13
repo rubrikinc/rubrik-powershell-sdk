@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dstExportId")]
         public System.Int32? DstExportId { get; set; }
 
+        //      C# -> System.Int32? DstExportFid
+        // GraphQL -> dstExportFid: Int (scalar)
+        [JsonProperty("dstExportFid")]
+        public System.Int32? DstExportFid { get; set; }
+
 
         #endregion
 

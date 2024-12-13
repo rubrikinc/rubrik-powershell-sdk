@@ -263,6 +263,72 @@ function Test-RscToolkit {
     & $scriptPath -SkipCoreTests
 }
 
+function New-ToolkitCmdlet {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$noun,
+
+        [Parameter(Mandatory=$true)]
+        [string]$MultipleQuery,
+
+        [Parameter(Mandatory=$true)]
+        [string]$GraphqlType,
+
+        [string]$SingleQuery,
+
+        # Future option for creating different cmdlet types from templates
+        [Parameter()]
+        [String]
+        $CmdletType = "Get"
+    )
+
+    $templatePath = './toolkit/templates/GetTemplate.ps1'
+    $testTemplatePath = './toolkit/templates/GetTemplate.Tests.ps1'
+    $formatTemplatePath = './toolkit/templates/GetTemplate.Format.ps1xml'
+    $outputScriptDir = './toolkit/public/'
+    $outputFormatDir = './toolkit/Format/'
+    $outputTestsDir = './toolkit/Tests/e2e/'
+    
+    # Read template content
+    $templateContent = Get-Content -Path $templatePath -Raw
+    $testTemplateContent = Get-Content -Path $testTemplatePath -Raw
+    $formatTemplateContent = Get-Content -Path $formatTemplatePath -Raw
+    
+    # Replace placeholders
+    # Ensure all occurrences of the placeholders are replaced
+    $scriptContent = $templateContent -replace '__OBJECT_TYPE__', $noun
+    $scriptContent = $scriptContent -replace '__MULTIPLE_QUERY__', $MultipleQuery
+    $testContent = $testTemplateContent -replace '__OBJECT_TYPE__', $noun
+
+    if ($SingleQuery) {
+        $scriptContent = $scriptContent -replace '__SINGLE_QUERY__', $SingleQuery
+    } else {
+        $scriptContent = $scriptContent -replace '__SINGLE_QUERY__', ''
+    }
+    
+    # Generate script filename
+    $scriptFilename = "Get-$noun.ps1"
+    $scriptOutputPath = Join-Path -Path $outputScriptDir -ChildPath $scriptFilename
+    
+    $testFilename = "Get-$noun.Tests.ps1"
+    $testOutputPath = Join-Path -Path $outputTestsDir -ChildPath $testFilename
+
+    # Write new script file
+    Set-Content -Path $scriptOutputPath -Value $scriptContent
+    Set-Content -Path $testOutputPath -Value $testContent
+
+    # Create Format.ps1xml content
+    $formatContent = $formatTemplateContent -replace '__GRAPHQL_TYPE__', $GraphqlType
+
+    # Generate format filename
+    $formatFilename = "${GraphqlType}.Format.ps1xml"
+    $formatOutputPath = Join-Path -Path $outputFormatDir -ChildPath $formatFilename
+    
+    # Write the Format.ps1xml file
+    Set-Content -Path $formatOutputPath -Value $formatContent
+}
+
+
 function ToolkitDevInfo() {
     Get-RscToolkitStatus -Brief
     Write-Host "`n$([char]::ConvertFromUtf32(0x1F6E0))  Toolkit development utilities:"

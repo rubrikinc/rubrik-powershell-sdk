@@ -6,6 +6,6 @@ Paginated list of SapHanaRecoverableRange objects. Each page of the results incl
 - nodes: list of SapHanaRecoverableRanges
   - List of SapHanaRecoverableRange objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of SapHanaRecoverableRange objects matching the request arguments.

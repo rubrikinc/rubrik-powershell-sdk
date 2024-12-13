@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VersionSourceType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "VERSION_SOURCE_TYPE_CASSANDRA")]
         VERSION_SOURCE_TYPE_CASSANDRA,
 
         [EnumMember(Value = "VERSION_SOURCE_TYPE_MONGO")]
-        VERSION_SOURCE_TYPE_MONGO,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VERSION_SOURCE_TYPE_MONGO
 
 
     } // enum VersionSourceType

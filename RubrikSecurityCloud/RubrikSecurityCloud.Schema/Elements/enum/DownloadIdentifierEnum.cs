@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DownloadIdentifierEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CDM_RBAC_MIGRATION_SUMMARY")]
         CDM_RBAC_MIGRATION_SUMMARY,
 
@@ -43,10 +46,7 @@ namespace RubrikSecurityCloud.Types
         SONAR_DOWNLOAD,
 
         [EnumMember(Value = "USER_AWARENESS_DOWNLOAD")]
-        USER_AWARENESS_DOWNLOAD,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USER_AWARENESS_DOWNLOAD
 
 
     } // enum DownloadIdentifierEnum

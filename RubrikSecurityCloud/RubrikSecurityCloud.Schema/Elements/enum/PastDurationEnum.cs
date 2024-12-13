@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PastDurationEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NONE")]
         NONE,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         PAST_3_DAYS,
 
         [EnumMember(Value = "PAST_7_DAYS")]
-        PAST_7_DAYS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        PAST_7_DAYS
 
 
     } // enum PastDurationEnum

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TargetSyncStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTION_FAILED")]
         ACTION_FAILED,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         PENDING_SYNC,
 
         [EnumMember(Value = "SYNCED")]
-        SYNCED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SYNCED
 
 
     } // enum TargetSyncStatus

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HierarchyObjectTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN")]
         ACTIVE_DIRECTORY_DOMAIN,
 
@@ -108,6 +111,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CloudNativeTagRule")]
         CLOUD_NATIVE_TAG_RULE,
 
+        [EnumMember(Value = "D365_DATAVERSE_TABLE")]
+        D365_DATAVERSE_TABLE,
+
+        [EnumMember(Value = "D365_FIXED_OBJECT")]
+        D365_FIXED_OBJECT,
+
+        [EnumMember(Value = "D365_ORGANIZATION")]
+        D365_ORGANIZATION,
+
         [EnumMember(Value = "Db2Database")]
         DB2_DATABASE,
 
@@ -180,8 +192,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_CLUSTER")]
         K8S_CLUSTER,
 
+        [EnumMember(Value = "K8S_NAMESPACE_V2")]
+        K8S_NAMESPACE_V2,
+
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,
+
+        [EnumMember(Value = "K8S_VIRTUAL_MACHINE")]
+        K8S_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "KuprCluster")]
         KUPR_CLUSTER,
@@ -457,10 +475,7 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_FILESET,
 
         [EnumMember(Value = "WindowsVolumeGroup")]
-        WINDOWS_VOLUME_GROUP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS_VOLUME_GROUP
 
 
     } // enum HierarchyObjectTypeEnum

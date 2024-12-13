@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VcenterSummaryConflictResolutionAuthz
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "VCENTER_SUMMARY_CONFLICT_RESOLUTION_AUTHZ_ALLOW_AUTO_CONFLICT_RESOLUTION")]
         VCENTER_SUMMARY_CONFLICT_RESOLUTION_AUTHZ_ALLOW_AUTO_CONFLICT_RESOLUTION,
 
         [EnumMember(Value = "VCENTER_SUMMARY_CONFLICT_RESOLUTION_AUTHZ_NO_CONFLICT_RESOLUTION")]
-        VCENTER_SUMMARY_CONFLICT_RESOLUTION_AUTHZ_NO_CONFLICT_RESOLUTION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VCENTER_SUMMARY_CONFLICT_RESOLUTION_AUTHZ_NO_CONFLICT_RESOLUTION
 
 
     } // enum VcenterSummaryConflictResolutionAuthz

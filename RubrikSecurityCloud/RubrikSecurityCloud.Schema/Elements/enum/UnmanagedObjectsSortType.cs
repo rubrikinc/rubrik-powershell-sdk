@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UnmanagedObjectsSortType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ARCHIVAL_STORAGE")]
         ARCHIVAL_STORAGE,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOTS_COUNT,
 
         [EnumMember(Value = "UNMANAGED_STATUS")]
-        UNMANAGED_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNMANAGED_STATUS
 
 
     } // enum UnmanagedObjectsSortType

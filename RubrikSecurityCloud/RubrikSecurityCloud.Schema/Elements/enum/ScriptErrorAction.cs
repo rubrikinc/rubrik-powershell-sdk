@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ScriptErrorAction
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SCRIPT_ERROR_ACTION_ABORT")]
         SCRIPT_ERROR_ACTION_ABORT,
 
         [EnumMember(Value = "SCRIPT_ERROR_ACTION_CONTINUE")]
-        SCRIPT_ERROR_ACTION_CONTINUE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SCRIPT_ERROR_ACTION_CONTINUE
 
 
     } // enum ScriptErrorAction

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnapshotCloudState
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DOWNLOADED_FROM_CLOUD")]
         DOWNLOADED_FROM_CLOUD,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         LOCAL_AND_ON_CLOUD,
 
         [EnumMember(Value = "ON_CLOUD")]
-        ON_CLOUD,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ON_CLOUD
 
 
     } // enum SnapshotCloudState

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum BackupStatsTimeRange
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BSTR_LAST_24_HOURS")]
         BSTR_LAST_24_HOURS,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         BSTR_LAST_30_DAYS,
 
         [EnumMember(Value = "BSTR_LAST_7_DAYS")]
-        BSTR_LAST_7_DAYS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        BSTR_LAST_7_DAYS
 
 
     } // enum BackupStatsTimeRange

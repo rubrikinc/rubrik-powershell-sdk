@@ -201,6 +201,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	indicatorsOfCompromise = @(
     /// 		@{
+    /// 			# OPTIONAL
+    /// 			threatFamily = $someString
     /// 			# REQUIRED
     /// 			iocKind = $someIndicatorOfCompromiseKind # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IndicatorOfCompromiseKind]) for enum values.
     /// 			# REQUIRED
@@ -452,6 +454,8 @@ $query.Var.input = @{
 	# REQUIRED
 	indicatorsOfCompromise = @(
 		@{
+			# OPTIONAL
+			threatFamily = $someString
 			# REQUIRED
 			iocKind = $someIndicatorOfCompromiseKind # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IndicatorOfCompromiseKind]) for enum values.
 			# REQUIRED

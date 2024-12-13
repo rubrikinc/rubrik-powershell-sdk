@@ -20,10 +20,30 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<TimelineEntry>? HighRiskCloudObjects
+        // GraphQL -> highRiskCloudObjects: [TimelineEntry!]! (type)
+        [JsonProperty("highRiskCloudObjects")]
+        public List<TimelineEntry>? HighRiskCloudObjects { get; set; }
+
+        //      C# -> List<TimelineEntry>? HighRiskDatacenterObjects
+        // GraphQL -> highRiskDatacenterObjects: [TimelineEntry!]! (type)
+        [JsonProperty("highRiskDatacenterObjects")]
+        public List<TimelineEntry>? HighRiskDatacenterObjects { get; set; }
+
         //      C# -> List<TimelineEntry>? HighRiskObjects
         // GraphQL -> highRiskObjects: [TimelineEntry!]! (type)
         [JsonProperty("highRiskObjects")]
         public List<TimelineEntry>? HighRiskObjects { get; set; }
+
+        //      C# -> List<TimelineEntry>? HighRiskSaasObjects
+        // GraphQL -> highRiskSaasObjects: [TimelineEntry!]! (type)
+        [JsonProperty("highRiskSaasObjects")]
+        public List<TimelineEntry>? HighRiskSaasObjects { get; set; }
+
+        //      C# -> List<TimelineEntry>? HighRiskSensitiveFiles
+        // GraphQL -> highRiskSensitiveFiles: [TimelineEntry!]! (type)
+        [JsonProperty("highRiskSensitiveFiles")]
+        public List<TimelineEntry>? HighRiskSensitiveFiles { get; set; }
 
         //      C# -> List<TimelineEntry>? HighSensitivityHits
         // GraphQL -> highSensitivityHits: [TimelineEntry!]! (type)
@@ -40,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lowRiskObjects")]
         public List<TimelineEntry>? LowRiskObjects { get; set; }
 
+        //      C# -> List<TimelineEntry>? LowRiskSensitiveFiles
+        // GraphQL -> lowRiskSensitiveFiles: [TimelineEntry!]! (type)
+        [JsonProperty("lowRiskSensitiveFiles")]
+        public List<TimelineEntry>? LowRiskSensitiveFiles { get; set; }
+
         //      C# -> List<TimelineEntry>? LowSensitivityHits
         // GraphQL -> lowSensitivityHits: [TimelineEntry!]! (type)
         [JsonProperty("lowSensitivityHits")]
@@ -50,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mediumRiskObjects")]
         public List<TimelineEntry>? MediumRiskObjects { get; set; }
 
+        //      C# -> List<TimelineEntry>? MediumRiskSensitiveFiles
+        // GraphQL -> mediumRiskSensitiveFiles: [TimelineEntry!]! (type)
+        [JsonProperty("mediumRiskSensitiveFiles")]
+        public List<TimelineEntry>? MediumRiskSensitiveFiles { get; set; }
+
         //      C# -> List<TimelineEntry>? MediumSensitivityHits
         // GraphQL -> mediumSensitivityHits: [TimelineEntry!]! (type)
         [JsonProperty("mediumSensitivityHits")]
@@ -59,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> noRiskObjects: [TimelineEntry!]! (type)
         [JsonProperty("noRiskObjects")]
         public List<TimelineEntry>? NoRiskObjects { get; set; }
+
+        //      C# -> List<TimelineEntry>? NoRiskSensitiveFiles
+        // GraphQL -> noRiskSensitiveFiles: [TimelineEntry!]! (type)
+        [JsonProperty("noRiskSensitiveFiles")]
+        public List<TimelineEntry>? NoRiskSensitiveFiles { get; set; }
 
         //      C# -> List<TimelineEntry>? NonSensitivityHits
         // GraphQL -> nonSensitivityHits: [TimelineEntry!]! (type)
@@ -120,6 +155,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalOaFoldersEntries")]
         public List<TimelineEntry>? TotalOaFoldersEntries { get; set; }
 
+        //      C# -> List<TimelineEntry>? TotalRiskObjects
+        // GraphQL -> totalRiskObjects: [TimelineEntry!]! (type)
+        [JsonProperty("totalRiskObjects")]
+        public List<TimelineEntry>? TotalRiskObjects { get; set; }
+
         //      C# -> List<TimelineEntry>? TotalStaleFilesHitsEntries
         // GraphQL -> totalStaleFilesHitsEntries: [TimelineEntry!]! (type)
         [JsonProperty("totalStaleFilesHitsEntries")]
@@ -145,14 +185,21 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GetPoliciesTimelineReply Set(
+        List<TimelineEntry>? HighRiskCloudObjects = null,
+        List<TimelineEntry>? HighRiskDatacenterObjects = null,
         List<TimelineEntry>? HighRiskObjects = null,
+        List<TimelineEntry>? HighRiskSaasObjects = null,
+        List<TimelineEntry>? HighRiskSensitiveFiles = null,
         List<TimelineEntry>? HighSensitivityHits = null,
         List<TimelineCountEntry>? InitialAnalysisStatus = null,
         List<TimelineEntry>? LowRiskObjects = null,
+        List<TimelineEntry>? LowRiskSensitiveFiles = null,
         List<TimelineEntry>? LowSensitivityHits = null,
         List<TimelineEntry>? MediumRiskObjects = null,
+        List<TimelineEntry>? MediumRiskSensitiveFiles = null,
         List<TimelineEntry>? MediumSensitivityHits = null,
         List<TimelineEntry>? NoRiskObjects = null,
+        List<TimelineEntry>? NoRiskSensitiveFiles = null,
         List<TimelineEntry>? NonSensitivityHits = null,
         List<TimelineCountEntry>? OutOfDateStatus = null,
         List<TimelineEntry>? PolicyFilesHitsEntries = null,
@@ -165,13 +212,26 @@ namespace RubrikSecurityCloud.Types
         List<TimelineEntry>? TotalOaFilesEntries = null,
         List<TimelineEntry>? TotalOaFilesHitsEntries = null,
         List<TimelineEntry>? TotalOaFoldersEntries = null,
+        List<TimelineEntry>? TotalRiskObjects = null,
         List<TimelineEntry>? TotalStaleFilesHitsEntries = null,
         List<TimelineEntry>? TotalStaleOaFilesEntries = null,
         List<TimelineCountEntry>? UpToDateStatus = null
     ) 
     {
+        if ( HighRiskCloudObjects != null ) {
+            this.HighRiskCloudObjects = HighRiskCloudObjects;
+        }
+        if ( HighRiskDatacenterObjects != null ) {
+            this.HighRiskDatacenterObjects = HighRiskDatacenterObjects;
+        }
         if ( HighRiskObjects != null ) {
             this.HighRiskObjects = HighRiskObjects;
+        }
+        if ( HighRiskSaasObjects != null ) {
+            this.HighRiskSaasObjects = HighRiskSaasObjects;
+        }
+        if ( HighRiskSensitiveFiles != null ) {
+            this.HighRiskSensitiveFiles = HighRiskSensitiveFiles;
         }
         if ( HighSensitivityHits != null ) {
             this.HighSensitivityHits = HighSensitivityHits;
@@ -182,17 +242,26 @@ namespace RubrikSecurityCloud.Types
         if ( LowRiskObjects != null ) {
             this.LowRiskObjects = LowRiskObjects;
         }
+        if ( LowRiskSensitiveFiles != null ) {
+            this.LowRiskSensitiveFiles = LowRiskSensitiveFiles;
+        }
         if ( LowSensitivityHits != null ) {
             this.LowSensitivityHits = LowSensitivityHits;
         }
         if ( MediumRiskObjects != null ) {
             this.MediumRiskObjects = MediumRiskObjects;
         }
+        if ( MediumRiskSensitiveFiles != null ) {
+            this.MediumRiskSensitiveFiles = MediumRiskSensitiveFiles;
+        }
         if ( MediumSensitivityHits != null ) {
             this.MediumSensitivityHits = MediumSensitivityHits;
         }
         if ( NoRiskObjects != null ) {
             this.NoRiskObjects = NoRiskObjects;
+        }
+        if ( NoRiskSensitiveFiles != null ) {
+            this.NoRiskSensitiveFiles = NoRiskSensitiveFiles;
         }
         if ( NonSensitivityHits != null ) {
             this.NonSensitivityHits = NonSensitivityHits;
@@ -230,6 +299,9 @@ namespace RubrikSecurityCloud.Types
         if ( TotalOaFoldersEntries != null ) {
             this.TotalOaFoldersEntries = TotalOaFoldersEntries;
         }
+        if ( TotalRiskObjects != null ) {
+            this.TotalRiskObjects = TotalRiskObjects;
+        }
         if ( TotalStaleFilesHitsEntries != null ) {
             this.TotalStaleFilesHitsEntries = TotalStaleFilesHitsEntries;
         }
@@ -253,6 +325,30 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<TimelineEntry>? HighRiskCloudObjects
+        // GraphQL -> highRiskCloudObjects: [TimelineEntry!]! (type)
+        if (this.HighRiskCloudObjects != null) {
+            var fspec = this.HighRiskCloudObjects.AsFieldSpec(conf.Child("highRiskCloudObjects"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "highRiskCloudObjects" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<TimelineEntry>? HighRiskDatacenterObjects
+        // GraphQL -> highRiskDatacenterObjects: [TimelineEntry!]! (type)
+        if (this.HighRiskDatacenterObjects != null) {
+            var fspec = this.HighRiskDatacenterObjects.AsFieldSpec(conf.Child("highRiskDatacenterObjects"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "highRiskDatacenterObjects" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<TimelineEntry>? HighRiskObjects
         // GraphQL -> highRiskObjects: [TimelineEntry!]! (type)
         if (this.HighRiskObjects != null) {
@@ -262,6 +358,30 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "highRiskObjects" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<TimelineEntry>? HighRiskSaasObjects
+        // GraphQL -> highRiskSaasObjects: [TimelineEntry!]! (type)
+        if (this.HighRiskSaasObjects != null) {
+            var fspec = this.HighRiskSaasObjects.AsFieldSpec(conf.Child("highRiskSaasObjects"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "highRiskSaasObjects" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<TimelineEntry>? HighRiskSensitiveFiles
+        // GraphQL -> highRiskSensitiveFiles: [TimelineEntry!]! (type)
+        if (this.HighRiskSensitiveFiles != null) {
+            var fspec = this.HighRiskSensitiveFiles.AsFieldSpec(conf.Child("highRiskSensitiveFiles"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "highRiskSensitiveFiles" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -301,6 +421,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<TimelineEntry>? LowRiskSensitiveFiles
+        // GraphQL -> lowRiskSensitiveFiles: [TimelineEntry!]! (type)
+        if (this.LowRiskSensitiveFiles != null) {
+            var fspec = this.LowRiskSensitiveFiles.AsFieldSpec(conf.Child("lowRiskSensitiveFiles"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lowRiskSensitiveFiles" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<TimelineEntry>? LowSensitivityHits
         // GraphQL -> lowSensitivityHits: [TimelineEntry!]! (type)
         if (this.LowSensitivityHits != null) {
@@ -325,6 +457,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<TimelineEntry>? MediumRiskSensitiveFiles
+        // GraphQL -> mediumRiskSensitiveFiles: [TimelineEntry!]! (type)
+        if (this.MediumRiskSensitiveFiles != null) {
+            var fspec = this.MediumRiskSensitiveFiles.AsFieldSpec(conf.Child("mediumRiskSensitiveFiles"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mediumRiskSensitiveFiles" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<TimelineEntry>? MediumSensitivityHits
         // GraphQL -> mediumSensitivityHits: [TimelineEntry!]! (type)
         if (this.MediumSensitivityHits != null) {
@@ -346,6 +490,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "noRiskObjects" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<TimelineEntry>? NoRiskSensitiveFiles
+        // GraphQL -> noRiskSensitiveFiles: [TimelineEntry!]! (type)
+        if (this.NoRiskSensitiveFiles != null) {
+            var fspec = this.NoRiskSensitiveFiles.AsFieldSpec(conf.Child("noRiskSensitiveFiles"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "noRiskSensitiveFiles" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -493,6 +649,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<TimelineEntry>? TotalRiskObjects
+        // GraphQL -> totalRiskObjects: [TimelineEntry!]! (type)
+        if (this.TotalRiskObjects != null) {
+            var fspec = this.TotalRiskObjects.AsFieldSpec(conf.Child("totalRiskObjects"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "totalRiskObjects" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<TimelineEntry>? TotalStaleFilesHitsEntries
         // GraphQL -> totalStaleFilesHitsEntries: [TimelineEntry!]! (type)
         if (this.TotalStaleFilesHitsEntries != null) {
@@ -536,6 +704,44 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> List<TimelineEntry>? HighRiskCloudObjects
+        // GraphQL -> highRiskCloudObjects: [TimelineEntry!]! (type)
+        if (ec.Includes("highRiskCloudObjects",false))
+        {
+            if(this.HighRiskCloudObjects == null) {
+
+                this.HighRiskCloudObjects = new List<TimelineEntry>();
+                this.HighRiskCloudObjects.ApplyExploratoryFieldSpec(ec.NewChild("highRiskCloudObjects"));
+
+            } else {
+
+                this.HighRiskCloudObjects.ApplyExploratoryFieldSpec(ec.NewChild("highRiskCloudObjects"));
+
+            }
+        }
+        else if (this.HighRiskCloudObjects != null && ec.Excludes("highRiskCloudObjects",false))
+        {
+            this.HighRiskCloudObjects = null;
+        }
+        //      C# -> List<TimelineEntry>? HighRiskDatacenterObjects
+        // GraphQL -> highRiskDatacenterObjects: [TimelineEntry!]! (type)
+        if (ec.Includes("highRiskDatacenterObjects",false))
+        {
+            if(this.HighRiskDatacenterObjects == null) {
+
+                this.HighRiskDatacenterObjects = new List<TimelineEntry>();
+                this.HighRiskDatacenterObjects.ApplyExploratoryFieldSpec(ec.NewChild("highRiskDatacenterObjects"));
+
+            } else {
+
+                this.HighRiskDatacenterObjects.ApplyExploratoryFieldSpec(ec.NewChild("highRiskDatacenterObjects"));
+
+            }
+        }
+        else if (this.HighRiskDatacenterObjects != null && ec.Excludes("highRiskDatacenterObjects",false))
+        {
+            this.HighRiskDatacenterObjects = null;
+        }
         //      C# -> List<TimelineEntry>? HighRiskObjects
         // GraphQL -> highRiskObjects: [TimelineEntry!]! (type)
         if (ec.Includes("highRiskObjects",false))
@@ -554,6 +760,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.HighRiskObjects != null && ec.Excludes("highRiskObjects",false))
         {
             this.HighRiskObjects = null;
+        }
+        //      C# -> List<TimelineEntry>? HighRiskSaasObjects
+        // GraphQL -> highRiskSaasObjects: [TimelineEntry!]! (type)
+        if (ec.Includes("highRiskSaasObjects",false))
+        {
+            if(this.HighRiskSaasObjects == null) {
+
+                this.HighRiskSaasObjects = new List<TimelineEntry>();
+                this.HighRiskSaasObjects.ApplyExploratoryFieldSpec(ec.NewChild("highRiskSaasObjects"));
+
+            } else {
+
+                this.HighRiskSaasObjects.ApplyExploratoryFieldSpec(ec.NewChild("highRiskSaasObjects"));
+
+            }
+        }
+        else if (this.HighRiskSaasObjects != null && ec.Excludes("highRiskSaasObjects",false))
+        {
+            this.HighRiskSaasObjects = null;
+        }
+        //      C# -> List<TimelineEntry>? HighRiskSensitiveFiles
+        // GraphQL -> highRiskSensitiveFiles: [TimelineEntry!]! (type)
+        if (ec.Includes("highRiskSensitiveFiles",false))
+        {
+            if(this.HighRiskSensitiveFiles == null) {
+
+                this.HighRiskSensitiveFiles = new List<TimelineEntry>();
+                this.HighRiskSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("highRiskSensitiveFiles"));
+
+            } else {
+
+                this.HighRiskSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("highRiskSensitiveFiles"));
+
+            }
+        }
+        else if (this.HighRiskSensitiveFiles != null && ec.Excludes("highRiskSensitiveFiles",false))
+        {
+            this.HighRiskSensitiveFiles = null;
         }
         //      C# -> List<TimelineEntry>? HighSensitivityHits
         // GraphQL -> highSensitivityHits: [TimelineEntry!]! (type)
@@ -612,6 +856,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.LowRiskObjects = null;
         }
+        //      C# -> List<TimelineEntry>? LowRiskSensitiveFiles
+        // GraphQL -> lowRiskSensitiveFiles: [TimelineEntry!]! (type)
+        if (ec.Includes("lowRiskSensitiveFiles",false))
+        {
+            if(this.LowRiskSensitiveFiles == null) {
+
+                this.LowRiskSensitiveFiles = new List<TimelineEntry>();
+                this.LowRiskSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskSensitiveFiles"));
+
+            } else {
+
+                this.LowRiskSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskSensitiveFiles"));
+
+            }
+        }
+        else if (this.LowRiskSensitiveFiles != null && ec.Excludes("lowRiskSensitiveFiles",false))
+        {
+            this.LowRiskSensitiveFiles = null;
+        }
         //      C# -> List<TimelineEntry>? LowSensitivityHits
         // GraphQL -> lowSensitivityHits: [TimelineEntry!]! (type)
         if (ec.Includes("lowSensitivityHits",false))
@@ -650,6 +913,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.MediumRiskObjects = null;
         }
+        //      C# -> List<TimelineEntry>? MediumRiskSensitiveFiles
+        // GraphQL -> mediumRiskSensitiveFiles: [TimelineEntry!]! (type)
+        if (ec.Includes("mediumRiskSensitiveFiles",false))
+        {
+            if(this.MediumRiskSensitiveFiles == null) {
+
+                this.MediumRiskSensitiveFiles = new List<TimelineEntry>();
+                this.MediumRiskSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskSensitiveFiles"));
+
+            } else {
+
+                this.MediumRiskSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskSensitiveFiles"));
+
+            }
+        }
+        else if (this.MediumRiskSensitiveFiles != null && ec.Excludes("mediumRiskSensitiveFiles",false))
+        {
+            this.MediumRiskSensitiveFiles = null;
+        }
         //      C# -> List<TimelineEntry>? MediumSensitivityHits
         // GraphQL -> mediumSensitivityHits: [TimelineEntry!]! (type)
         if (ec.Includes("mediumSensitivityHits",false))
@@ -687,6 +969,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NoRiskObjects != null && ec.Excludes("noRiskObjects",false))
         {
             this.NoRiskObjects = null;
+        }
+        //      C# -> List<TimelineEntry>? NoRiskSensitiveFiles
+        // GraphQL -> noRiskSensitiveFiles: [TimelineEntry!]! (type)
+        if (ec.Includes("noRiskSensitiveFiles",false))
+        {
+            if(this.NoRiskSensitiveFiles == null) {
+
+                this.NoRiskSensitiveFiles = new List<TimelineEntry>();
+                this.NoRiskSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("noRiskSensitiveFiles"));
+
+            } else {
+
+                this.NoRiskSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("noRiskSensitiveFiles"));
+
+            }
+        }
+        else if (this.NoRiskSensitiveFiles != null && ec.Excludes("noRiskSensitiveFiles",false))
+        {
+            this.NoRiskSensitiveFiles = null;
         }
         //      C# -> List<TimelineEntry>? NonSensitivityHits
         // GraphQL -> nonSensitivityHits: [TimelineEntry!]! (type)
@@ -915,6 +1216,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalOaFoldersEntries != null && ec.Excludes("totalOaFoldersEntries",false))
         {
             this.TotalOaFoldersEntries = null;
+        }
+        //      C# -> List<TimelineEntry>? TotalRiskObjects
+        // GraphQL -> totalRiskObjects: [TimelineEntry!]! (type)
+        if (ec.Includes("totalRiskObjects",false))
+        {
+            if(this.TotalRiskObjects == null) {
+
+                this.TotalRiskObjects = new List<TimelineEntry>();
+                this.TotalRiskObjects.ApplyExploratoryFieldSpec(ec.NewChild("totalRiskObjects"));
+
+            } else {
+
+                this.TotalRiskObjects.ApplyExploratoryFieldSpec(ec.NewChild("totalRiskObjects"));
+
+            }
+        }
+        else if (this.TotalRiskObjects != null && ec.Excludes("totalRiskObjects",false))
+        {
+            this.TotalRiskObjects = null;
         }
         //      C# -> List<TimelineEntry>? TotalStaleFilesHitsEntries
         // GraphQL -> totalStaleFilesHitsEntries: [TimelineEntry!]! (type)

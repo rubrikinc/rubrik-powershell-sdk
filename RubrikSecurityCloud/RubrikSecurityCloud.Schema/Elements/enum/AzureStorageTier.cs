@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureStorageTier
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ARCHIVE")]
         ARCHIVE,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         HOT,
 
         [EnumMember(Value = "UNKNOWN_STORAGE_TIER")]
-        UNKNOWN_STORAGE_TIER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_STORAGE_TIER
 
 
     } // enum AzureStorageTier

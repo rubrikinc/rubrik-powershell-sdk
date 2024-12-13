@@ -35,6 +35,8 @@ AWS native RDS instance.
   - The type of the RDS instance such as Aurora or a regular instance.
 - auroraAvailabilityZones: list of System.Strings
   - Availability zones if this is an Aurora cluster.
+- awsNativeAccountDetails: AwsNativeAccountDetails
+  - AWS native account details.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UserAuditStatusEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "Canceled")]
         CANCELED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         FAILURE,
 
         [EnumMember(Value = "Success")]
-        SUCCESS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUCCESS
 
 
     } // enum UserAuditStatusEnum

@@ -62,6 +62,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exocomputeRegion")]
         public System.String? ExocomputeRegion { get; set; }
 
+        //      C# -> System.String? ArchivedSnapshotId
+        // GraphQL -> archivedSnapshotId: String (scalar)
+        [JsonProperty("archivedSnapshotId")]
+        public System.String? ArchivedSnapshotId { get; set; }
+
 
         #endregion
 

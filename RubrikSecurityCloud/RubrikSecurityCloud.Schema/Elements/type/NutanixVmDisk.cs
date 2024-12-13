@@ -40,6 +40,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sizeInBytes")]
         public System.Int64? SizeInBytes { get; set; }
 
+        //      C# -> System.String? StorageContainerId
+        // GraphQL -> storageContainerId: String! (scalar)
+        [JsonProperty("storageContainerId")]
+        public System.String? StorageContainerId { get; set; }
+
+        //      C# -> System.String? StorageContainerName
+        // GraphQL -> storageContainerName: String! (scalar)
+        [JsonProperty("storageContainerName")]
+        public System.String? StorageContainerName { get; set; }
+
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: String! (scalar)
         [JsonProperty("uuid")]
@@ -64,6 +74,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsSnapshottable = null,
         System.String? Label = null,
         System.Int64? SizeInBytes = null,
+        System.String? StorageContainerId = null,
+        System.String? StorageContainerName = null,
         System.String? Uuid = null,
         System.String? VmDiskUuid = null
     ) 
@@ -79,6 +91,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SizeInBytes != null ) {
             this.SizeInBytes = SizeInBytes;
+        }
+        if ( StorageContainerId != null ) {
+            this.StorageContainerId = StorageContainerId;
+        }
+        if ( StorageContainerName != null ) {
+            this.StorageContainerName = StorageContainerName;
         }
         if ( Uuid != null ) {
             this.Uuid = Uuid;
@@ -134,6 +152,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "sizeInBytes\n" ;
             } else {
                 s += ind + "sizeInBytes\n" ;
+            }
+        }
+        //      C# -> System.String? StorageContainerId
+        // GraphQL -> storageContainerId: String! (scalar)
+        if (this.StorageContainerId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "storageContainerId\n" ;
+            } else {
+                s += ind + "storageContainerId\n" ;
+            }
+        }
+        //      C# -> System.String? StorageContainerName
+        // GraphQL -> storageContainerName: String! (scalar)
+        if (this.StorageContainerName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "storageContainerName\n" ;
+            } else {
+                s += ind + "storageContainerName\n" ;
             }
         }
         //      C# -> System.String? Uuid
@@ -228,6 +264,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.SizeInBytes != null && ec.Excludes("sizeInBytes",true))
         {
             this.SizeInBytes = null;
+        }
+        //      C# -> System.String? StorageContainerId
+        // GraphQL -> storageContainerId: String! (scalar)
+        if (ec.Includes("storageContainerId",true))
+        {
+            if(this.StorageContainerId == null) {
+
+                this.StorageContainerId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageContainerId != null && ec.Excludes("storageContainerId",true))
+        {
+            this.StorageContainerId = null;
+        }
+        //      C# -> System.String? StorageContainerName
+        // GraphQL -> storageContainerName: String! (scalar)
+        if (ec.Includes("storageContainerName",true))
+        {
+            if(this.StorageContainerName == null) {
+
+                this.StorageContainerName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageContainerName != null && ec.Excludes("storageContainerName",true))
+        {
+            this.StorageContainerName = null;
         }
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: String! (scalar)

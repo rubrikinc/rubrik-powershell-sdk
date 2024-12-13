@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SupportUserAccessFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACCESS_PROVIDER_OR_IMPERSONATED_USER")]
         ACCESS_PROVIDER_OR_IMPERSONATED_USER,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         SUPPORT_ACCESS_ID,
 
         [EnumMember(Value = "SUPPORT_USER_ID")]
-        SUPPORT_USER_ID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUPPORT_USER_ID
 
 
     } // enum SupportUserAccessFilterField

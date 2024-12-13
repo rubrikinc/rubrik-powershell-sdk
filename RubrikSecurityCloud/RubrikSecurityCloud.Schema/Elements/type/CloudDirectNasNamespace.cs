@@ -111,6 +111,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allOrgs")]
         public List<Org>? AllOrgs { get; set; }
 
+        //      C# -> CloudDirectNasSystem? CloudDirectNasSystem
+        // GraphQL -> cloudDirectNasSystem: CloudDirectNasSystem (type)
+        [JsonProperty("cloudDirectNasSystem")]
+        public CloudDirectNasSystem? CloudDirectNasSystem { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
@@ -217,6 +222,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? SlaPauseStatus = null,
         System.String? SystemId = null,
         List<Org>? AllOrgs = null,
+        CloudDirectNasSystem? CloudDirectNasSystem = null,
         Cluster? Cluster = null,
         CloudDirectNasNamespaceDescendantTypeConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
@@ -280,6 +286,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
+        }
+        if ( CloudDirectNasSystem != null ) {
+            this.CloudDirectNasSystem = CloudDirectNasSystem;
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
@@ -493,6 +502,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectNasSystem? CloudDirectNasSystem
+        // GraphQL -> cloudDirectNasSystem: CloudDirectNasSystem (type)
+        if (this.CloudDirectNasSystem != null) {
+            var fspec = this.CloudDirectNasSystem.AsFieldSpec(conf.Child("cloudDirectNasSystem"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudDirectNasSystem" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -927,6 +948,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AllOrgs != null && ec.Excludes("allOrgs",false))
         {
             this.AllOrgs = null;
+        }
+        //      C# -> CloudDirectNasSystem? CloudDirectNasSystem
+        // GraphQL -> cloudDirectNasSystem: CloudDirectNasSystem (type)
+        if (ec.Includes("cloudDirectNasSystem",false))
+        {
+            if(this.CloudDirectNasSystem == null) {
+
+                this.CloudDirectNasSystem = new CloudDirectNasSystem();
+                this.CloudDirectNasSystem.ApplyExploratoryFieldSpec(ec.NewChild("cloudDirectNasSystem"));
+
+            } else {
+
+                this.CloudDirectNasSystem.ApplyExploratoryFieldSpec(ec.NewChild("cloudDirectNasSystem"));
+
+            }
+        }
+        else if (this.CloudDirectNasSystem != null && ec.Excludes("cloudDirectNasSystem",false))
+        {
+            this.CloudDirectNasSystem = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

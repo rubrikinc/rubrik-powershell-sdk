@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum InodeType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DIRECTORY")]
         DIRECTORY,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         FILE,
 
         [EnumMember(Value = "UNKNOWN_INODE")]
-        UNKNOWN_INODE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_INODE
 
 
     } // enum InodeType

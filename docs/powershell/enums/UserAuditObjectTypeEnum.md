@@ -23,6 +23,7 @@ User audit object type.
 - GcpNativeProject - GCP native project type.
 - AwsNativeRdsInstance - AWS native RDS instance type.
 - O365Organization - Office 365 organization type.
+- K8S_VIRTUAL_MACHINE - Kubernetes Virtual Machine type.
 - TPR_REQUEST - TPR request type.
 - VolumeGroup - Volume group type.
 - MONGO_COLLECTION - MongoDB Collection type.
@@ -65,6 +66,7 @@ User audit object type.
 - NAS_FILESET - NAS Fileset type.
 - ACTIVE_DIRECTORY_FOREST - Active Directory forest type.
 - AZURE_AD_DIRECTORY - Azure AD Directory type.
+- INTEGRATION - Integration.
 - VmwareVm - VMware virtual machine type.
 - NAS_SYSTEM - NAS system type.
 - JobInstance - Job instance type.
@@ -98,6 +100,7 @@ User audit object type.
 - FederatedAccess - Federated access type.
 - User - User type.
 - SystemPreference - System preference type.
+- K8S_NAMESPACE_V2 - Kubernetes Virtual Machine namespace type.
 - VcdVapp - VCD vApp type.
 - O365SharepointDrive - Office 365 SharePoint drive type.
 - UserRole - User role type.

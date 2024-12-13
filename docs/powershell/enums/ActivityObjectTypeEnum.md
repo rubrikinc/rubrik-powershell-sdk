@@ -4,9 +4,10 @@ The list of object types for activities.
 - ACTIVE_DIRECTORY_DOMAIN - Specifies that the activity object type is related to Activity Directory domain.
 - K8S_CLUSTER - Specifies that the activity object type is Kubernetes Cluster.
 - M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
-- KuprNamespace - Specifies that the activity object type is Kubernetes Namespace.
+- KuprNamespace - Specifies that the activity object type is Kubernetes namespace.
 - SALESFORCE_OBJECT - Specifies that the activity object type is a Salesforce object.
 - OracleRac - Specifies that the activity object type is Oracle RAC.
+- MYSQLDB_INSTANCE - Specifies that the activity object type is MySQL instance.
 - AzureSqlManagedInstanceDatabase - Specifies that the activity object type is Azure SQL Managed Instance Database.
 - HypervVm - Specifies that the activity object type is Hyperv Virtual Machine.
 - DataLocation - Specifies that the activity object type is Data Location.
@@ -50,12 +51,14 @@ The list of object types for activities.
 - Upgrade - Specifies that the activity object type is Upgrade.
 - LinuxHost - Specifies that the activity object type is Linux Host.
 - O365Mailbox - Specifies that the activity object type is O365 Mailbox.
+- D365_ORGANIZATION - Specifies that the activity object type is a Dynamics 365 organization.
 - AwsNativeAccount - Specifies that the activity object type is AWS Native Account.
 - AZURE_STORAGE_ACCOUNT - Specifies that the activity object type is Azure Storage Account.
 - VMWARE_HOST - Specifies that the activity object type is a VSphere host.
 - PolarisAccount - Specifies that the activity object type is RSC Account.
 - AzureSqlManagedInstance - Specifies that the activity object type is Azure SQL Managed Instance.
 - AzureNativeVm - Specifies that the activity object type is Azure Native Virtual Machine.
+- D365_METADATA - Specifies that the activity object type is Dynamics 365 metadata.
 - ORGANIZATION - Specifies that the activity object type is Tenant Organization.
 - O365Team - Specifies that the activity object type is O365 Team.
 - CloudNativeVm - Specifies that the activity object type is Cloud Native Virtual Machine.
@@ -78,6 +81,7 @@ The list of object types for activities.
 - Exocompute - Specifies that the activity object type is Exocompute.
 - SmbDomain - Specifies that the activity object type is SMB Domain.
 - NUTANIX_PRISM_CENTRAL - Specifies that the activity object type is Nutanix Prism Central.
+- D365_DATAVERSE_TABLE - Specifies that the activity object type is a Dynamics 365 dataverse table.
 - O365Calendar - Specifies that the activity object type is O365 Calendar.
 - K8S_PROTECTION_SET - Specifies that the activity object type is Kubernetes Protection Set.
 - MONGO_SOURCE - Specifies that the activity object type is MongoDB source.
@@ -96,6 +100,7 @@ The list of object types for activities.
 - NasHost - Specifies that the activity object type is NAS Host.
 - CROSS_ACCOUNT_PAIR - Cross-account pair.
 - User - Specifies that the activity object type is User.
+- K8S_NAMESPACE_V2 - Specifies that the activity object type is Kubernetes Virtual Machine namespace.
 - SALESFORCE_ORGANIZATION - Specifies that the activity object type is a Salesforce organization.
 - RubrikEbsVolume - Specifies that the activity object type is Rubrik EBS Volume.
 - VcdVapp - Specifies that the activity object type is VCD VApp.

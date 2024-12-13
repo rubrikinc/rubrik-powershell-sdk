@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AppFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "APP_ID")]
         APP_ID,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         SUBSCRIPTION,
 
         [EnumMember(Value = "TENANT_ID")]
-        TENANT_ID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TENANT_ID
 
 
     } // enum AppFilterField

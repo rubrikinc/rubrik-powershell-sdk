@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GlobalCertificateStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "EXPIRED")]
         EXPIRED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         STATUS_UNSPECIFIED,
 
         [EnumMember(Value = "VALID")]
-        VALID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VALID
 
 
     } // enum GlobalCertificateStatus

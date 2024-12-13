@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("TeamsRestoreConfig")]
         public TeamsRestoreConfig? TeamsRestoreConfig { get; set; }
 
+        //      C# -> FullTeamRestoreConfig? FullTeamRestoreConfig
+        // GraphQL -> fullTeamRestoreConfig: FullTeamRestoreConfig (input)
+        [JsonProperty("fullTeamRestoreConfig")]
+        public FullTeamRestoreConfig? FullTeamRestoreConfig { get; set; }
+
         //      C# -> MailboxRestoreConfig? MailboxRestoreConfig
         // GraphQL -> MailboxRestoreConfig: MailboxRestoreConfig (input)
         [JsonProperty("MailboxRestoreConfig")]

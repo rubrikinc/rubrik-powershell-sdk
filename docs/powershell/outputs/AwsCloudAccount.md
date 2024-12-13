@@ -15,5 +15,7 @@ Details of AWS account.
   - The AWS organization name with which you onboarded the AWS account.
 - outpostAwsNativeId: System.String
   - Native ID of the AWS Outpost account.
+- orgId: System.String
+  - The UUID of the onboarded AWS organization.
 - cloudType: AwsCloudType
   - Type of cloud account.

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum O365ContactsSearchObjectType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ALL")]
         ALL,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         CONTACT,
 
         [EnumMember(Value = "CONTACT_FOLDER")]
-        CONTACT_FOLDER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        CONTACT_FOLDER
 
 
     } // enum O365ContactsSearchObjectType

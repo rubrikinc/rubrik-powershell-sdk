@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MosaicSnapshotType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FULL")]
         FULL,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         INCREMENTAL,
 
         [EnumMember(Value = "INVALID")]
-        INVALID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        INVALID
 
 
     } // enum MosaicSnapshotType

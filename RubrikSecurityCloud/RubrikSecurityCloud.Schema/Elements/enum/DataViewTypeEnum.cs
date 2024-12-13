@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DataViewTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVITY_SERIES")]
         ACTIVITY_SERIES,
 
@@ -27,11 +30,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BACKUP_COMPLIANCE")]
         BACKUP_COMPLIANCE,
 
+        [EnumMember(Value = "BACKUP_STRIKES")]
+        BACKUP_STRIKES,
+
         [EnumMember(Value = "CDM_UPGRADES")]
         CDM_UPGRADES,
 
         [EnumMember(Value = "CLUSTERS")]
         CLUSTERS,
+
+        [EnumMember(Value = "DATAGOV_TIMELINE")]
+        DATAGOV_TIMELINE,
 
         [EnumMember(Value = "EVENT_SERIES")]
         EVENT_SERIES,
@@ -108,6 +117,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "QAUTH_ROLES")]
         QAUTH_ROLES,
 
+        [EnumMember(Value = "ROLE_LIST")]
+        ROLE_LIST,
+
+        [EnumMember(Value = "SERVICE_ACCOUNT")]
+        SERVICE_ACCOUNT,
+
         [EnumMember(Value = "SLA_AUDIT_DETAIL")]
         SLA_AUDIT_DETAIL,
 
@@ -123,6 +138,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SLA_COMPLIANCE")]
         SLA_COMPLIANCE,
 
+        [EnumMember(Value = "SSO_GROUP")]
+        SSO_GROUP,
+
         [EnumMember(Value = "TASK_DETAILS")]
         TASK_DETAILS,
 
@@ -132,8 +150,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "THREAT_MONITORING_SNAPSHOT_RESULTS")]
         THREAT_MONITORING_SNAPSHOT_RESULTS,
 
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        [EnumMember(Value = "USERS")]
+        USERS
 
 
     } // enum DataViewTypeEnum

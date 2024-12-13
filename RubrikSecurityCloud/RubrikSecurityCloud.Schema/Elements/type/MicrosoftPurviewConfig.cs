@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? O365OrgId
+        // GraphQL -> o365OrgId: String! (scalar)
+        [JsonProperty("o365OrgId")]
+        public System.String? O365OrgId { get; set; }
+
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         [JsonProperty("tenantId")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public MicrosoftPurviewConfig Set(
+        System.String? O365OrgId = null,
         System.String? TenantId = null
     ) 
     {
+        if ( O365OrgId != null ) {
+            this.O365OrgId = O365OrgId;
+        }
         if ( TenantId != null ) {
             this.TenantId = TenantId;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? O365OrgId
+        // GraphQL -> o365OrgId: String! (scalar)
+        if (this.O365OrgId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "o365OrgId\n" ;
+            } else {
+                s += ind + "o365OrgId\n" ;
+            }
+        }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         if (this.TenantId != null) {
@@ -71,6 +89,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? O365OrgId
+        // GraphQL -> o365OrgId: String! (scalar)
+        if (ec.Includes("o365OrgId",true))
+        {
+            if(this.O365OrgId == null) {
+
+                this.O365OrgId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.O365OrgId != null && ec.Excludes("o365OrgId",true))
+        {
+            this.O365OrgId = null;
+        }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         if (ec.Includes("tenantId",true))

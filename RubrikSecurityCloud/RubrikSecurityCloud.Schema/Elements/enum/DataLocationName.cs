@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DataLocationName
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AZURE")]
         AZURE,
 
@@ -79,10 +82,7 @@ namespace RubrikSecurityCloud.Types
         S3_COMPATIBLE,
 
         [EnumMember(Value = "SCALITY")]
-        SCALITY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SCALITY
 
 
     } // enum DataLocationName

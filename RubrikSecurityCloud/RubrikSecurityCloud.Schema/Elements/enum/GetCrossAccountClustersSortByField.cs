@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GetCrossAccountClustersSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_NAME")]
         CLUSTER_NAME,
 
         [EnumMember(Value = "SORT_BY_FIELD_UNSPECIFIED")]
-        SORT_BY_FIELD_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SORT_BY_FIELD_UNSPECIFIED
 
 
     } // enum GetCrossAccountClustersSortByField

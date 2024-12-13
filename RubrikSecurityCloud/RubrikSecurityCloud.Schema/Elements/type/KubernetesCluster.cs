@@ -201,6 +201,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("k8sDescendantProtectionSets")]
         public KubernetesProtectionSetConnection? K8sDescendantProtectionSets { get; set; }
 
+        //      C# -> KubernetesVirtualMachineConnection? K8sDescendantVirtualMachines
+        // GraphQL -> k8sDescendantVirtualMachines: KubernetesVirtualMachineConnection! (type)
+        [JsonProperty("k8sDescendantVirtualMachines")]
+        public KubernetesVirtualMachineConnection? K8sDescendantVirtualMachines { get; set; }
+
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         [JsonProperty("latestUserNote")]
@@ -247,6 +252,8 @@ namespace RubrikSecurityCloud.Types
 
         public RscGqlVars K8sDescendantProtectionSets { get; set; }
 
+        public RscGqlVars K8sDescendantVirtualMachines { get; set; }
+
 
         public InlineVars() {
             Tuple<string, string>[] descendantConnectionArgs = {
@@ -269,6 +276,15 @@ namespace RubrikSecurityCloud.Types
                 };
             this.K8sDescendantProtectionSets =
                 new RscGqlVars(null, k8sDescendantProtectionSetsArgs, null, true);
+            Tuple<string, string>[] k8sDescendantVirtualMachinesArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortBy", "HierarchySortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("filter", "[Filter!]"),
+                };
+            this.K8sDescendantVirtualMachines =
+                new RscGqlVars(null, k8sDescendantVirtualMachinesArgs, null, true);
         }
     }
 
@@ -318,6 +334,7 @@ namespace RubrikSecurityCloud.Types
         KubernetesClusterDescendantConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
         KubernetesProtectionSetConnection? K8sDescendantProtectionSets = null,
+        KubernetesVirtualMachineConnection? K8sDescendantVirtualMachines = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
@@ -434,6 +451,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( K8sDescendantProtectionSets != null ) {
             this.K8sDescendantProtectionSets = K8sDescendantProtectionSets;
+        }
+        if ( K8sDescendantVirtualMachines != null ) {
+            this.K8sDescendantVirtualMachines = K8sDescendantVirtualMachines;
         }
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
@@ -829,6 +849,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "k8sDescendantProtectionSets" + "\n(" + this.Vars.K8sDescendantProtectionSets.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> KubernetesVirtualMachineConnection? K8sDescendantVirtualMachines
+        // GraphQL -> k8sDescendantVirtualMachines: KubernetesVirtualMachineConnection! (type)
+        if (this.K8sDescendantVirtualMachines != null) {
+            var fspec = this.K8sDescendantVirtualMachines.AsFieldSpec(conf.Child("k8sDescendantVirtualMachines"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "k8sDescendantVirtualMachines" + "\n(" + this.Vars.K8sDescendantVirtualMachines.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1576,6 +1608,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.K8sDescendantProtectionSets != null && ec.Excludes("k8sDescendantProtectionSets",false))
         {
             this.K8sDescendantProtectionSets = null;
+        }
+        //      C# -> KubernetesVirtualMachineConnection? K8sDescendantVirtualMachines
+        // GraphQL -> k8sDescendantVirtualMachines: KubernetesVirtualMachineConnection! (type)
+        if (ec.Includes("k8sDescendantVirtualMachines",false))
+        {
+            if(this.K8sDescendantVirtualMachines == null) {
+
+                this.K8sDescendantVirtualMachines = new KubernetesVirtualMachineConnection();
+                this.K8sDescendantVirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("k8sDescendantVirtualMachines"));
+
+            } else {
+
+                this.K8sDescendantVirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("k8sDescendantVirtualMachines"));
+
+            }
+        }
+        else if (this.K8sDescendantVirtualMachines != null && ec.Excludes("k8sDescendantVirtualMachines",false))
+        {
+            this.K8sDescendantVirtualMachines = null;
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)

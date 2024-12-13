@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NfAnomalyResultSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         OBJECT_TYPE,
 
         [EnumMember(Value = "WORKLOAD_NAME")]
-        WORKLOAD_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WORKLOAD_NAME
 
 
     } // enum NfAnomalyResultSortBy

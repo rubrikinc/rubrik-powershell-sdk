@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudNativeTagRuleFilterFields
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AWS_ACCOUNT")]
         AWS_ACCOUNT,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         NAME,
 
         [EnumMember(Value = "SLA_DOMAIN")]
-        SLA_DOMAIN,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SLA_DOMAIN
 
 
     } // enum CloudNativeTagRuleFilterFields

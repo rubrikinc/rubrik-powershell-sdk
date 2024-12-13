@@ -6,6 +6,6 @@ Paginated list of CassandraKeyspace objects. Each page of the results includes a
 - nodes: list of CassandraKeyspaces
   - List of CassandraKeyspace objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of CassandraKeyspace objects matching the request arguments.

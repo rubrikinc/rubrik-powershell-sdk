@@ -6,6 +6,6 @@ Paginated list of Analyzer objects. Each page of the results includes at most 10
 - nodes: list of Analyzers
   - List of Analyzer objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of Analyzer objects matching the request arguments.

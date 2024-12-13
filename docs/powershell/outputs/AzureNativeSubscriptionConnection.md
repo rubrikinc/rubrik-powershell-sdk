@@ -6,6 +6,6 @@ Paginated list of AzureNativeSubscription objects. Each page of the results incl
 - nodes: list of AzureNativeSubscriptions
   - List of AzureNativeSubscription objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of AzureNativeSubscription objects matching the request arguments.

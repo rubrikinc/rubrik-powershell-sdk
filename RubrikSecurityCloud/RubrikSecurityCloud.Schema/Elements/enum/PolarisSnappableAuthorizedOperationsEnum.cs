@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PolarisSnappableAuthorizedOperationsEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DELETE_SNAPSHOT")]
         DELETE_SNAPSHOT,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         TAKE_ON_DEMAND_SNAPSHOT,
 
         [EnumMember(Value = "VIEW_INVENTORY")]
-        VIEW_INVENTORY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VIEW_INVENTORY
 
 
     } // enum PolarisSnappableAuthorizedOperationsEnum

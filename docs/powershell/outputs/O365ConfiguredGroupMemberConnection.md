@@ -6,6 +6,6 @@ Paginated list of O365ConfiguredGroupMember objects. Each page of the results in
 - nodes: list of O365ConfiguredGroupMembers
   - List of O365ConfiguredGroupMember objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of O365ConfiguredGroupMember objects matching the request arguments.

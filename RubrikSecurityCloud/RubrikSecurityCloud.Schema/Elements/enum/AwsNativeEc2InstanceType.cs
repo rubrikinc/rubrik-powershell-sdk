@@ -1974,6 +1974,39 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "R7IZ_XLARGE")]
         R7IZ_XLARGE,
 
+        [EnumMember(Value = "R7I_12XLARGE")]
+        R7I_12XLARGE,
+
+        [EnumMember(Value = "R7I_16XLARGE")]
+        R7I_16XLARGE,
+
+        [EnumMember(Value = "R7I_24XLARGE")]
+        R7I_24XLARGE,
+
+        [EnumMember(Value = "R7I_2XLARGE")]
+        R7I_2XLARGE,
+
+        [EnumMember(Value = "R7I_48XLARGE")]
+        R7I_48XLARGE,
+
+        [EnumMember(Value = "R7I_4XLARGE")]
+        R7I_4XLARGE,
+
+        [EnumMember(Value = "R7I_8XLARGE")]
+        R7I_8XLARGE,
+
+        [EnumMember(Value = "R7I_LARGE")]
+        R7I_LARGE,
+
+        [EnumMember(Value = "R7I_METAL_24XL")]
+        R7I_METAL_24XL,
+
+        [EnumMember(Value = "R7I_METAL_48XL")]
+        R7I_METAL_48XL,
+
+        [EnumMember(Value = "R7I_XLARGE")]
+        R7I_XLARGE,
+
         [EnumMember(Value = "T1_MICRO")]
         T1_MICRO,
 

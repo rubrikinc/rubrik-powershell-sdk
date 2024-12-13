@@ -15,3 +15,5 @@ Represents the SharePoint items in a site collection to be restored.
   - The files to restore when the parent object is a document library.
 - arePageLibraryItems: System.Boolean
   - Specifies whether these SharePoint items are Page Library items or not.
+- areAppCatalogItems: System.Boolean
+  - Specifies whether these SharePoint items are also App Catalog items.

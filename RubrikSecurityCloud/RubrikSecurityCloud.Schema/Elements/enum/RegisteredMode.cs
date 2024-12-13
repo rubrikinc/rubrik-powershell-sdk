@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RegisteredMode
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "REGISTERED_MODE_ENUM_HYBRID")]
         REGISTERED_MODE_ENUM_HYBRID,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         REGISTERED_MODE_ENUM_NOT_REGISTERED,
 
         [EnumMember(Value = "REGISTERED_MODE_ENUM_UNSPECIFIED")]
-        REGISTERED_MODE_ENUM_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        REGISTERED_MODE_ENUM_UNSPECIFIED
 
 
     } // enum RegisteredMode

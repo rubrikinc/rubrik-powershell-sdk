@@ -5,8 +5,6 @@ Request to create a replication pair between two Rubrik clusters.
   - Gateway information of the source cluster when using the NAT setup type.
 - targetGateway: ReplicationGatewayInfo
   - Gateway information of the target cluster when using the NAT setup type.
-- targetNetworkInterface: NetworkInterfaceDetails
-  - Network interface for communication between the source and target clusters.
 - networkInterface: NetworkInterfaceSelection
   - Network interface names for communication between the source and target clusters. This applies only to the private network setup type.
 - sourceClusterUuid: System.String

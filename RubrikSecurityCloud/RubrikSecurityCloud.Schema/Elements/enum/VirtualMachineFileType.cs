@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VirtualMachineFileType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "VIRTUAL_MACHINE_FILE_TYPE_FILE")]
         VIRTUAL_MACHINE_FILE_TYPE_FILE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         VIRTUAL_MACHINE_FILE_TYPE_NON_VOLATILE_MEMORY_FILE,
 
         [EnumMember(Value = "VIRTUAL_MACHINE_FILE_TYPE_VIRTUAL_DISK")]
-        VIRTUAL_MACHINE_FILE_TYPE_VIRTUAL_DISK,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VIRTUAL_MACHINE_FILE_TYPE_VIRTUAL_DISK
 
 
     } // enum VirtualMachineFileType

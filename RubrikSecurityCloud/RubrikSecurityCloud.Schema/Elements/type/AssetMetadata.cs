@@ -85,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("size")]
         public System.Int64? Size { get; set; }
 
+        //      C# -> AppMetadata? AppSpecificMetadata
+        // GraphQL -> appSpecificMetadata: AppMetadata (type)
+        [JsonProperty("appSpecificMetadata")]
+        public AppMetadata? AppSpecificMetadata { get; set; }
+
         //      C# -> CloudAccountInfo? CloudAccountInfo
         // GraphQL -> cloudAccountInfo: CloudAccountInfo (type)
         [JsonProperty("cloudAccountInfo")]
@@ -128,6 +133,7 @@ namespace RubrikSecurityCloud.Types
         System.String? PhysicalHost = null,
         System.String? Region = null,
         System.Int64? Size = null,
+        AppMetadata? AppSpecificMetadata = null,
         CloudAccountInfo? CloudAccountInfo = null,
         ClusterInfo? ClusterInfo = null,
         List<AssetTag>? ObjectTags = null,
@@ -172,6 +178,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Size != null ) {
             this.Size = Size;
+        }
+        if ( AppSpecificMetadata != null ) {
+            this.AppSpecificMetadata = AppSpecificMetadata;
         }
         if ( CloudAccountInfo != null ) {
             this.CloudAccountInfo = CloudAccountInfo;
@@ -314,6 +323,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "size\n" ;
             } else {
                 s += ind + "size\n" ;
+            }
+        }
+        //      C# -> AppMetadata? AppSpecificMetadata
+        // GraphQL -> appSpecificMetadata: AppMetadata (type)
+        if (this.AppSpecificMetadata != null) {
+            var fspec = this.AppSpecificMetadata.AsFieldSpec(conf.Child("appSpecificMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "appSpecificMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CloudAccountInfo? CloudAccountInfo
@@ -591,6 +612,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Size != null && ec.Excludes("size",true))
         {
             this.Size = null;
+        }
+        //      C# -> AppMetadata? AppSpecificMetadata
+        // GraphQL -> appSpecificMetadata: AppMetadata (type)
+        if (ec.Includes("appSpecificMetadata",false))
+        {
+            if(this.AppSpecificMetadata == null) {
+
+                this.AppSpecificMetadata = new AppMetadata();
+                this.AppSpecificMetadata.ApplyExploratoryFieldSpec(ec.NewChild("appSpecificMetadata"));
+
+            } else {
+
+                this.AppSpecificMetadata.ApplyExploratoryFieldSpec(ec.NewChild("appSpecificMetadata"));
+
+            }
+        }
+        else if (this.AppSpecificMetadata != null && ec.Excludes("appSpecificMetadata",false))
+        {
+            this.AppSpecificMetadata = null;
         }
         //      C# -> CloudAccountInfo? CloudAccountInfo
         // GraphQL -> cloudAccountInfo: CloudAccountInfo (type)

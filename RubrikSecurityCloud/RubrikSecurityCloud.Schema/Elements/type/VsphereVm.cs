@@ -186,6 +186,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
 
+        //      C# -> System.String? SnapshotConsistencySource
+        // GraphQL -> snapshotConsistencySource: String (scalar)
+        [JsonProperty("snapshotConsistencySource")]
+        public System.String? SnapshotConsistencySource { get; set; }
+
         //      C# -> System.Boolean? VmwareToolsInstalled
         // GraphQL -> vmwareToolsInstalled: Boolean! (scalar)
         [JsonProperty("vmwareToolsInstalled")]
@@ -509,6 +514,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? ProtectionDate = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
+        System.String? SnapshotConsistencySource = null,
         System.Boolean? VmwareToolsInstalled = null,
         AgentStatus? AgentStatus = null,
         List<Org>? AllOrgs = null,
@@ -642,6 +648,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( SnapshotConsistencySource != null ) {
+            this.SnapshotConsistencySource = SnapshotConsistencySource;
         }
         if ( VmwareToolsInstalled != null ) {
             this.VmwareToolsInstalled = VmwareToolsInstalled;
@@ -1071,6 +1080,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> System.String? SnapshotConsistencySource
+        // GraphQL -> snapshotConsistencySource: String (scalar)
+        if (this.SnapshotConsistencySource != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotConsistencySource\n" ;
+            } else {
+                s += ind + "snapshotConsistencySource\n" ;
             }
         }
         //      C# -> System.Boolean? VmwareToolsInstalled
@@ -2063,6 +2081,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> System.String? SnapshotConsistencySource
+        // GraphQL -> snapshotConsistencySource: String (scalar)
+        if (ec.Includes("snapshotConsistencySource",true))
+        {
+            if(this.SnapshotConsistencySource == null) {
+
+                this.SnapshotConsistencySource = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotConsistencySource != null && ec.Excludes("snapshotConsistencySource",true))
+        {
+            this.SnapshotConsistencySource = null;
         }
         //      C# -> System.Boolean? VmwareToolsInstalled
         // GraphQL -> vmwareToolsInstalled: Boolean! (scalar)

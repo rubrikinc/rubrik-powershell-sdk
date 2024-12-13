@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MosaicStoreType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AZURE_STORE")]
         AZURE_STORE,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         S3_STORE,
 
         [EnumMember(Value = "TYPE_UNAVAILABLE")]
-        TYPE_UNAVAILABLE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TYPE_UNAVAILABLE
 
 
     } // enum MosaicStoreType

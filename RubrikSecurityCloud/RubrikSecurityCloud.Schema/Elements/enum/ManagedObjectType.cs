@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ManagedObjectType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN")]
         ACTIVE_DIRECTORY_DOMAIN,
 
@@ -114,6 +117,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CONFLUENCE_SPACE")]
         CONFLUENCE_SPACE,
 
+        [EnumMember(Value = "D365_DATAVERSE_TABLE")]
+        D365_DATAVERSE_TABLE,
+
+        [EnumMember(Value = "D365_FIXED_OBJECT")]
+        D365_FIXED_OBJECT,
+
+        [EnumMember(Value = "D365_ORGANIZATION")]
+        D365_ORGANIZATION,
+
         [EnumMember(Value = "DB2_DATABASE")]
         DB2_DATABASE,
 
@@ -183,8 +195,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_CLUSTER")]
         K8S_CLUSTER,
 
+        [EnumMember(Value = "K8S_NAMESPACE_V2")]
+        K8S_NAMESPACE_V2,
+
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,
+
+        [EnumMember(Value = "K8S_VIRTUAL_MACHINE")]
+        K8S_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "KUPR_CLUSTER")]
         KUPR_CLUSTER,
@@ -460,10 +478,7 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_CLUSTER,
 
         [EnumMember(Value = "WINDOWS_FILESET")]
-        WINDOWS_FILESET,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS_FILESET
 
 
     } // enum ManagedObjectType

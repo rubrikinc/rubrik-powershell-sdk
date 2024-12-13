@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum M365DashboardWorkloadType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DST_EXCHANGE")]
         DST_EXCHANGE,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         DST_SHAREPOINT,
 
         [EnumMember(Value = "DST_TEAMS")]
-        DST_TEAMS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        DST_TEAMS
 
 
     } // enum M365DashboardWorkloadType

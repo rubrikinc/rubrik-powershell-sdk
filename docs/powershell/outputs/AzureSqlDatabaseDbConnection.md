@@ -6,6 +6,6 @@ Paginated list of AzureSqlDatabaseDb objects. Each page of the results includes 
 - nodes: list of AzureSqlDatabaseDbs
   - List of AzureSqlDatabaseDb objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of AzureSqlDatabaseDb objects matching the request arguments.

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudAccountAction
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CREATE")]
         CREATE,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         UPDATE_PERMISSIONS,
 
         [EnumMember(Value = "UPDATE_REGIONS")]
-        UPDATE_REGIONS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UPDATE_REGIONS
 
 
     } // enum CloudAccountAction

@@ -6,6 +6,6 @@ Paginated list of ActiveDirectoryDomainController objects. Each page of the resu
 - nodes: list of ActiveDirectoryDomainControllers
   - List of ActiveDirectoryDomainController objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ActiveDirectoryDomainController objects matching the request arguments.

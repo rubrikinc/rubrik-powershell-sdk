@@ -6,6 +6,6 @@ Paginated list of PolicyObj objects. Each page of the results includes at most 1
 - nodes: list of PolicyObjs
   - List of PolicyObj objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of PolicyObj objects matching the request arguments.

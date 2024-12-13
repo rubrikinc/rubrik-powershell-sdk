@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnapshotConsistencyLevel
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SNAPSHOT_APP_CONSISTENT")]
         SNAPSHOT_APP_CONSISTENT,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_CRASH_CONSISTENT,
 
         [EnumMember(Value = "UNKNOWN_CONSISTENCY_LEVEL")]
-        UNKNOWN_CONSISTENCY_LEVEL,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_CONSISTENCY_LEVEL
 
 
     } // enum SnapshotConsistencyLevel

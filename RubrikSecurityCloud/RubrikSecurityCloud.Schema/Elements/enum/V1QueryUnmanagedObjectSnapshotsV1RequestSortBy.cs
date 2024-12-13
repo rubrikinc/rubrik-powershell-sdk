@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum V1QueryUnmanagedObjectSnapshotsV1RequestSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "V1_QUERY_UNMANAGED_OBJECT_SNAPSHOTS_V1_REQUEST_SORT_BY_ARCHIVAL_LOCATION")]
         V1_QUERY_UNMANAGED_OBJECT_SNAPSHOTS_V1_REQUEST_SORT_BY_ARCHIVAL_LOCATION,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         V1_QUERY_UNMANAGED_OBJECT_SNAPSHOTS_V1_REQUEST_SORT_BY_LOCAL_EXPIRATION_DATE,
 
         [EnumMember(Value = "V1_QUERY_UNMANAGED_OBJECT_SNAPSHOTS_V1_REQUEST_SORT_BY_SNAPSHOT_DATE_AND_TIME")]
-        V1_QUERY_UNMANAGED_OBJECT_SNAPSHOTS_V1_REQUEST_SORT_BY_SNAPSHOT_DATE_AND_TIME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        V1_QUERY_UNMANAGED_OBJECT_SNAPSHOTS_V1_REQUEST_SORT_BY_SNAPSHOT_DATE_AND_TIME
 
 
     } // enum V1QueryUnmanagedObjectSnapshotsV1RequestSortBy

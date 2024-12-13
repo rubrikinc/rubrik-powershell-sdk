@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DiscoveryContentReportGroupBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ANALYZER")]
         ANALYZER,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         SLA_DOMAIN,
 
         [EnumMember(Value = "TIME")]
-        TIME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TIME
 
 
     } // enum DiscoveryContentReportGroupBy

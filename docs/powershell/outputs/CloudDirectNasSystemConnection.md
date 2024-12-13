@@ -6,6 +6,6 @@ Paginated list of CloudDirectNasSystem objects. Each page of the results include
 - nodes: list of CloudDirectNasSystems
   - List of CloudDirectNasSystem objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of CloudDirectNasSystem objects matching the request arguments.

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SupportUserAccessStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SUPPORT_ACCESS_STATUS_CLOSED")]
         SUPPORT_ACCESS_STATUS_CLOSED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         SUPPORT_ACCESS_STATUS_OPEN,
 
         [EnumMember(Value = "SUPPORT_ACCESS_STATUS_UNSPECIFIED")]
-        SUPPORT_ACCESS_STATUS_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUPPORT_ACCESS_STATUS_UNSPECIFIED
 
 
     } // enum SupportUserAccessStatus

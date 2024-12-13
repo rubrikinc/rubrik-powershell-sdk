@@ -27,9 +27,7 @@ namespace RubrikSecurityCloud.Types
         public AzureCloudAccountRegion? Region { get; set; }
 
         //      C# -> System.String? SubnetNativeId
-        // GraphQL -> subnetNativeId: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> subnetNativeId: String (scalar)
         [JsonProperty("subnetNativeId")]
         public System.String? SubnetNativeId { get; set; }
 

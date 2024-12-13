@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GlobalCertificateSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SORT_BY_EXPIRATION_DATE")]
         SORT_BY_EXPIRATION_DATE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         SORT_BY_NAME,
 
         [EnumMember(Value = "SORT_BY_UNSPECIFIED")]
-        SORT_BY_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SORT_BY_UNSPECIFIED
 
 
     } // enum GlobalCertificateSortBy

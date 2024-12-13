@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum WhitelistModeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ALL_USERS")]
         ALL_USERS,
 
         [EnumMember(Value = "LOCAL_USERS")]
-        LOCAL_USERS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        LOCAL_USERS
 
 
     } // enum WhitelistModeEnum

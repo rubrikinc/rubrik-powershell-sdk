@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FailoverClusterOsType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FAILOVER_CLUSTER_OS_TYPE_AIX")]
         FAILOVER_CLUSTER_OS_TYPE_AIX,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         FAILOVER_CLUSTER_OS_TYPE_UNIX_LIKE,
 
         [EnumMember(Value = "FAILOVER_CLUSTER_OS_TYPE_WINDOWS")]
-        FAILOVER_CLUSTER_OS_TYPE_WINDOWS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        FAILOVER_CLUSTER_OS_TYPE_WINDOWS
 
 
     } // enum FailoverClusterOsType

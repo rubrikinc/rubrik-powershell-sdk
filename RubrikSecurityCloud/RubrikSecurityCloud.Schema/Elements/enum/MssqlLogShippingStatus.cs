@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlLogShippingStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MSSQL_LOG_SHIPPING_STATUS_BROKEN")]
         MSSQL_LOG_SHIPPING_STATUS_BROKEN,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         MSSQL_LOG_SHIPPING_STATUS_OK,
 
         [EnumMember(Value = "MSSQL_LOG_SHIPPING_STATUS_STALE")]
-        MSSQL_LOG_SHIPPING_STATUS_STALE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MSSQL_LOG_SHIPPING_STATUS_STALE
 
 
     } // enum MssqlLogShippingStatus

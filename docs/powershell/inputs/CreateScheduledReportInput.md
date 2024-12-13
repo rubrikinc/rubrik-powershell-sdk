@@ -18,6 +18,8 @@
 - updateCreator: System.Boolean
 - timeZone: System.String
   - Time zone of the schedule time in IANA format.
+- showChartsInEmailBody: System.Boolean
+  - Specifies whether to show charts in email body.
 - weeklyDays: list of WeekDays
   - List of weekdays for weekly schedule of reports.
 - attachmentTypes: list of ReportAttachmentTypes

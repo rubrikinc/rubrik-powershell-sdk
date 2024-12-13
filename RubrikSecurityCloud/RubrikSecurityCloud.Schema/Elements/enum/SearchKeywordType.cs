@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SearchKeywordType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ALL")]
         ALL,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         FOLDER_NAME,
 
         [EnumMember(Value = "SUBJECT")]
-        SUBJECT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUBJECT
 
 
     } // enum SearchKeywordType

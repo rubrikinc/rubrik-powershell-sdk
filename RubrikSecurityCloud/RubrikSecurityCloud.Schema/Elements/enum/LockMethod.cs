@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum LockMethod
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ADMINISTRATIVE_LOCK")]
         ADMINISTRATIVE_LOCK,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         LEAKED_PASSWORD,
 
         [EnumMember(Value = "LOCK_METHOD_UNSPECIFIED")]
-        LOCK_METHOD_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        LOCK_METHOD_UNSPECIFIED
 
 
     } // enum LockMethod

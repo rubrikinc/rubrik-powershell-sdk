@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ListValidReplicationSourcesSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NAME")]
         NAME,
 
         [EnumMember(Value = "SORT_BY_FIELD_UNSPECIFIED")]
-        SORT_BY_FIELD_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SORT_BY_FIELD_UNSPECIFIED
 
 
     } // enum ListValidReplicationSourcesSortByField

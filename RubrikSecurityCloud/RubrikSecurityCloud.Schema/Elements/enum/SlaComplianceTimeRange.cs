@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SlaComplianceTimeRange
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "LAST_24_HOURS")]
         LAST_24_HOURS,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         PAST_90_DAYS,
 
         [EnumMember(Value = "SINCE_PROTECTION")]
-        SINCE_PROTECTION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SINCE_PROTECTION
 
 
     } // enum SlaComplianceTimeRange

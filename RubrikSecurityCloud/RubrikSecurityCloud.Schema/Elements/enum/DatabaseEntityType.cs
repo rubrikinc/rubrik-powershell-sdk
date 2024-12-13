@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DatabaseEntityType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DATABASE")]
         DATABASE,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         TABLE,
 
         [EnumMember(Value = "UNDEFINED_ENTITY")]
-        UNDEFINED_ENTITY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNDEFINED_ENTITY
 
 
     } // enum DatabaseEntityType

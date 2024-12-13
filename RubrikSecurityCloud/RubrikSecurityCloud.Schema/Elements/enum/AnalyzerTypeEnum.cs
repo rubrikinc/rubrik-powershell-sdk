@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AnalyzerTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ABA_ROUTING_NUMBER")]
         ABA_ROUTING_NUMBER,
 
@@ -220,10 +223,7 @@ namespace RubrikSecurityCloud.Types
         US_VIN,
 
         [EnumMember(Value = "WORD_FREQUENCY")]
-        WORD_FREQUENCY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WORD_FREQUENCY
 
 
     } // enum AnalyzerTypeEnum

@@ -25,3 +25,5 @@ Represents the Microsoft Information Protection Label.
   - Represents the parent label ID of the label.
 - tenantId: System.String
   - Represents the tenant ID of the label.
+- parentInfo: ParentLabelInfo
+  - Represents the parent label information.

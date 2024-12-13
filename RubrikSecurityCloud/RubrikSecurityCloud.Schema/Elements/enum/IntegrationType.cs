@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum IntegrationType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DATA_LOSS_PREVENTION")]
         DATA_LOSS_PREVENTION,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         OKTA,
 
         [EnumMember(Value = "SERVICENOW_ITSM")]
-        SERVICENOW_ITSM,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SERVICENOW_ITSM
 
 
     } // enum IntegrationType

@@ -55,3 +55,5 @@ PermissionsGroup represents the collection of various permission groups that
 - SQL_ARCHIVAL - Represents the permissions required to enable Azure AD authorization to
  store Azure SQL and MI snapshots in an archival location using Colossus.
  These permissions apply to Cloud Native Archival Feature.
+- CUSTOMER_MANAGED_BASIC - Represents the permissions required to enable customer-managed Exocompute feature.
+ These permissions apply only to the Azure Exocompute feature.

@@ -6,10 +6,10 @@ BeforeAll {
   . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
-# TODO: SPARK-234573 fix this test
-return
-
-Describe -Name 'New-SlaDomain Tests' -Tag 'Public' -Fixture{
+# TODO: Fix this test : replace -Skip with -Fixture
+# see https://rubrik.atlassian.net/browse/SPARK-234573
+Write-Warning "TODO: New-SlaDomain Tests are skipped"
+Describe -Name 'New-SlaDomain Tests' -Tag 'Public' -Skip {
     Context -Name 'Sla Creation' {
         It -Name 'Sla is created' -Test {
             $name="e2e-test-sla"

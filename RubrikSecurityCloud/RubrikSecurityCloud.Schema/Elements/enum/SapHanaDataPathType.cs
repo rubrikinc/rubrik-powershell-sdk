@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SapHanaDataPathType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SAP_HANA_DATA_PATH_TYPE_GCP")]
         SAP_HANA_DATA_PATH_TYPE_GCP,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         SAP_HANA_DATA_PATH_TYPE_LOCAL,
 
         [EnumMember(Value = "SAP_HANA_DATA_PATH_TYPE_MANAGED_VOLUME")]
-        SAP_HANA_DATA_PATH_TYPE_MANAGED_VOLUME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SAP_HANA_DATA_PATH_TYPE_MANAGED_VOLUME
 
 
     } // enum SapHanaDataPathType

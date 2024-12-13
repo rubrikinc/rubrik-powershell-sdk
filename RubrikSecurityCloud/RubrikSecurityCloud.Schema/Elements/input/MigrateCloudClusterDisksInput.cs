@@ -40,6 +40,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
+        //      C# -> System.Int32? BatchSize
+        // GraphQL -> batchSize: Int (scalar)
+        [JsonProperty("batchSize")]
+        public System.Int32? BatchSize { get; set; }
+
+        //      C# -> System.Int32? NewNodeCount
+        // GraphQL -> newNodeCount: Int (scalar)
+        [JsonProperty("newNodeCount")]
+        public System.Int32? NewNodeCount { get; set; }
+
 
         #endregion
 

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NetworkThrottleResourceId
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NETWORK_THROTTLE_RESOURCE_ID_ARCHIVAL_EGRESS")]
         NETWORK_THROTTLE_RESOURCE_ID_ARCHIVAL_EGRESS,
 
         [EnumMember(Value = "NETWORK_THROTTLE_RESOURCE_ID_REPLICATION_EGRESS")]
-        NETWORK_THROTTLE_RESOURCE_ID_REPLICATION_EGRESS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NETWORK_THROTTLE_RESOURCE_ID_REPLICATION_EGRESS
 
 
     } // enum NetworkThrottleResourceId

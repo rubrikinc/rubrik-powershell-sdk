@@ -21,12 +21,14 @@ Type of hierarchy object.
 - O365Onedrive
 - Hdfs
 - CASSANDRA_SOURCE - Cassandra Source.
+- D365_FIXED_OBJECT - D365 Metadata.
 - AWS_NATIVE_S3_BUCKET - AWS native S3 bucket.
 - SapHanaSystem - SAP HANA System.
 - KuprCluster
 - GcpNativeProject
 - AwsNativeRdsInstance
 - FeldsparSite
+- K8S_VIRTUAL_MACHINE - Kubernetes virtual machine.
 - VolumeGroup
 - AZURE_SQL_MANAGED_INSTANCE_DB
 - MONGO_COLLECTION - MongoDB Collection.
@@ -60,6 +62,7 @@ Type of hierarchy object.
 - HypervVirtualMachine
 - AwsNativeEc2Instance
 - O365Mailbox
+- D365_ORGANIZATION - D365 Organization.
 - VSPHERE_DATASTORE_CLUSTER - VSphere Datastore cluster.
 - AwsNativeAccount
 - AZURE_STORAGE_ACCOUNT - Azure Storage Account.
@@ -86,6 +89,7 @@ Type of hierarchy object.
 - Fileset
 - NasSystem
 - NUTANIX_PRISM_CENTRAL - Nutanix Prism Central.
+- D365_DATAVERSE_TABLE - D365 Dataverse Table.
 - O365Calendar
 - K8S_PROTECTION_SET - Kubernetes Protection Set.
 - EXCHANGE_HOST - Exchange Host.
@@ -107,6 +111,7 @@ Type of hierarchy object.
 - LinuxFileset
 - MSSQL_HOST - MSSQL Host.
 - O365Site
+- K8S_NAMESPACE_V2 - Kubernetes namespace v2.
 - SALESFORCE_ORGANIZATION - Salesforce organization.
 - M365_BACKUP_STORAGE_USER - M365 Backup Storage User.
 - RubrikEbsVolume

@@ -5,12 +5,16 @@
   - Vsphere folder type.
 - vCenterId: System.String
   - Vcenter ID of the vSphere folder.
+- snapshotConsistencyMandate: ConsistencyLevelEnum
+  - Snapshot consistency mandate.
 - descendantConnection: VsphereFolderDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: VsphereFolderLogicalChildTypeConnection
   - List of logical children.
 - recoveryLogicalChildConnection: VsphereFolderLogicalChildTypeConnection
   - List of recoveryLogical children.
+- snapshotConsistencySource: System.String
+  - Fid of the object from where the snapshot consistency mandate is inherited.
 - datacenterId: System.String
   - Datacenter ID of the vSphere folder.
 - cluster: Cluster

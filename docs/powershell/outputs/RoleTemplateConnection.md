@@ -6,6 +6,6 @@ Paginated list of RoleTemplate objects. Each page of the results includes at mos
 - nodes: list of RoleTemplates
   - List of RoleTemplate objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of RoleTemplate objects matching the request arguments.

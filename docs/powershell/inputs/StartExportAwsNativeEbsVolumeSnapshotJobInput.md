@@ -25,3 +25,5 @@ Input to initiate an export job for the AWS native EBS volume.
   - ID of the KMS key to be used for export.
 - snapshotType: SnapshotType
   - Type of snapshot used for export.
+- archivedSnapshotId: System.String
+  - ID of the archived snapshot to be exported.

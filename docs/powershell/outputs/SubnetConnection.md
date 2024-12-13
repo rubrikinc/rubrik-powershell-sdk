@@ -6,6 +6,6 @@ Paginated list of Subnet objects. Each page of the results includes at most 1000
 - nodes: list of Subnets
   - List of Subnet objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of Subnet objects matching the request arguments.

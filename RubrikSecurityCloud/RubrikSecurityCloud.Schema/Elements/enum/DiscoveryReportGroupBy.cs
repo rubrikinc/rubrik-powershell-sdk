@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DiscoveryReportGroupBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "POLICY_VIOLATIONS")]
         POLICY_VIOLATIONS,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         TIME_ISSUES,
 
         [EnumMember(Value = "TIME_VIOLATIONS")]
-        TIME_VIOLATIONS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TIME_VIOLATIONS
 
 
     } // enum DiscoveryReportGroupBy

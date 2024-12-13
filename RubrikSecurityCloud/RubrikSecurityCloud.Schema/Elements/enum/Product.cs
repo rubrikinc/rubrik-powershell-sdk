@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum Product
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLOUD")]
         CLOUD,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         SCALE,
 
         [EnumMember(Value = "THIRDPARTY_HARDWARE")]
-        THIRDPARTY_HARDWARE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        THIRDPARTY_HARDWARE
 
 
     } // enum Product

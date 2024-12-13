@@ -23,6 +23,8 @@ Details of an org.
   - Specifies whether this tenant organization has configured its own identity providers.
 - isServiceAccountDisabled: System.Boolean
   - Specifies whether service accounts are not enabled for this organization.
+- isInheritIpAllowlistDisabled: System.Boolean
+  - Specifies whether IP allowlist settings and entries are not inherited for this organization.
 - orgAdminRole: Role
   - Organization admin role.
 - users: list of ExistingUsers

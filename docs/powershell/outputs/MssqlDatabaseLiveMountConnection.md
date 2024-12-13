@@ -6,6 +6,6 @@ Paginated list of MssqlDatabaseLiveMount objects. Each page of the results inclu
 - nodes: list of MssqlDatabaseLiveMounts
   - List of MssqlDatabaseLiveMount objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of MssqlDatabaseLiveMount objects matching the request arguments.

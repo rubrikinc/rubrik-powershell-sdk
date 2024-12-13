@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FileModeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DIRECTORY")]
         DIRECTORY,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         SHARE,
 
         [EnumMember(Value = "SYMLINK")]
-        SYMLINK,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SYMLINK
 
 
     } // enum FileModeEnum

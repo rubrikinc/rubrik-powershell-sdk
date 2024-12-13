@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NutanixVmAgentConnectionStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CONNECTED")]
         CONNECTED,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         SECONDARY_CLUSTER,
 
         [EnumMember(Value = "UNREGISTERED")]
-        UNREGISTERED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNREGISTERED
 
 
     } // enum NutanixVmAgentConnectionStatus

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ExchangeLiveMountFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         ORG_ID,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSPECIFIED
 
 
     } // enum ExchangeLiveMountFilterField

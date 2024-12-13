@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FailoverTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FAILOVER")]
         FAILOVER,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         LOCALRECOVERY,
 
         [EnumMember(Value = "TEST_FAILOVER")]
-        TEST_FAILOVER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TEST_FAILOVER
 
 
     } // enum FailoverTypeEnum

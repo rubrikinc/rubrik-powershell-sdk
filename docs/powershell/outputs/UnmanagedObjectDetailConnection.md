@@ -6,6 +6,6 @@ Paginated list of UnmanagedObjectDetail objects. Each page of the results includ
 - nodes: list of UnmanagedObjectDetails
   - List of UnmanagedObjectDetail objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of UnmanagedObjectDetail objects matching the request arguments.

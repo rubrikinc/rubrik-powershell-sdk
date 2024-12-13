@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MosaicBulkRecoverableRangeRequestSourceType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MOSAIC_BULK_RECOVERABLE_RANGE_REQUEST_SOURCE_TYPE_CASSANDRA")]
         MOSAIC_BULK_RECOVERABLE_RANGE_REQUEST_SOURCE_TYPE_CASSANDRA,
 
         [EnumMember(Value = "MOSAIC_BULK_RECOVERABLE_RANGE_REQUEST_SOURCE_TYPE_MONGO")]
-        MOSAIC_BULK_RECOVERABLE_RANGE_REQUEST_SOURCE_TYPE_MONGO,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MOSAIC_BULK_RECOVERABLE_RANGE_REQUEST_SOURCE_TYPE_MONGO
 
 
     } // enum MosaicBulkRecoverableRangeRequestSourceType

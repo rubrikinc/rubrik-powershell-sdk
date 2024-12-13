@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ActivitySeriesSortField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVITY_STATUS")]
         ACTIVITY_STATUS,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         SEVERITY,
 
         [EnumMember(Value = "START_TIME")]
-        START_TIME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        START_TIME
 
 
     } // enum ActivitySeriesSortField

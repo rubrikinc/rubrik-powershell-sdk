@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ReportTableColumnEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ActivityStatus")]
         ACTIVITY_STATUS,
 
@@ -283,10 +286,7 @@ namespace RubrikSecurityCloud.Types
         WORKLOAD_NAME,
 
         [EnumMember(Value = "WorkloadType")]
-        WORKLOAD_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WORKLOAD_TYPE
 
 
     } // enum ReportTableColumnEnum

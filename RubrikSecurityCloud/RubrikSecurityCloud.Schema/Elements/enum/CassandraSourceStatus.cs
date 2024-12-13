@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CassandraSourceStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ADDING")]
         ADDING,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         REFRESHING,
 
         [EnumMember(Value = "UNKNOWN_SYSTEM_STATUS")]
-        UNKNOWN_SYSTEM_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_SYSTEM_STATUS
 
 
     } // enum CassandraSourceStatus

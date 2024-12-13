@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("maxNestedVsphereSnapshots")]
         public System.Int32? MaxNestedVsphereSnapshots { get; set; }
 
+        //      C# -> MultiNodeBackupMode? MultiNodeBackupMode
+        // GraphQL -> multiNodeBackupMode: MultiNodeBackupMode (enum)
+        [JsonProperty("multiNodeBackupMode")]
+        public MultiNodeBackupMode? MultiNodeBackupMode { get; set; }
+
         //      C# -> VirtualMachineUpdateSnapshotConsistencyMandate? SnapshotConsistencyMandate
         // GraphQL -> snapshotConsistencyMandate: VirtualMachineUpdateSnapshotConsistencyMandate (enum)
         [JsonProperty("snapshotConsistencyMandate")]

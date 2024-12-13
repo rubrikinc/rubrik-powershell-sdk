@@ -85,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastFailedErrorInfo")]
         public WebhookErrorInfo? LastFailedErrorInfo { get; set; }
 
+        //      C# -> SubscriptionTypeV2? SubscriptionType
+        // GraphQL -> subscriptionType: SubscriptionTypeV2 (type)
+        [JsonProperty("subscriptionType")]
+        public SubscriptionTypeV2? SubscriptionType { get; set; }
+
 
         #endregion
 
@@ -107,7 +112,8 @@ namespace RubrikSecurityCloud.Types
         System.String? ServiceAccountId = null,
         DateTime? UpdatedAt = null,
         System.String? Url = null,
-        WebhookErrorInfo? LastFailedErrorInfo = null
+        WebhookErrorInfo? LastFailedErrorInfo = null,
+        SubscriptionTypeV2? SubscriptionType = null
     ) 
     {
         if ( AuthType != null ) {
@@ -148,6 +154,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LastFailedErrorInfo != null ) {
             this.LastFailedErrorInfo = LastFailedErrorInfo;
+        }
+        if ( SubscriptionType != null ) {
+            this.SubscriptionType = SubscriptionType;
         }
         return this;
     }
@@ -280,6 +289,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "lastFailedErrorInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SubscriptionTypeV2? SubscriptionType
+        // GraphQL -> subscriptionType: SubscriptionTypeV2 (type)
+        if (this.SubscriptionType != null) {
+            var fspec = this.SubscriptionType.AsFieldSpec(conf.Child("subscriptionType"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "subscriptionType" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -512,6 +533,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LastFailedErrorInfo != null && ec.Excludes("lastFailedErrorInfo",false))
         {
             this.LastFailedErrorInfo = null;
+        }
+        //      C# -> SubscriptionTypeV2? SubscriptionType
+        // GraphQL -> subscriptionType: SubscriptionTypeV2 (type)
+        if (ec.Includes("subscriptionType",false))
+        {
+            if(this.SubscriptionType == null) {
+
+                this.SubscriptionType = new SubscriptionTypeV2();
+                this.SubscriptionType.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionType"));
+
+            } else {
+
+                this.SubscriptionType.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionType"));
+
+            }
+        }
+        else if (this.SubscriptionType != null && ec.Excludes("subscriptionType",false))
+        {
+            this.SubscriptionType = null;
         }
     }
 

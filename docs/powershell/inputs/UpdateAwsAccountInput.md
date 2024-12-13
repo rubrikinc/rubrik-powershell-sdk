@@ -14,4 +14,4 @@ Input for editing an AWS account.
 - stsEndpoint: System.String
   - STS VPC endpoint of the AWS account.
 - stsRegion: AwsRegion
-  - Region for STS VPC endpoint.
+  - Region for STS service.

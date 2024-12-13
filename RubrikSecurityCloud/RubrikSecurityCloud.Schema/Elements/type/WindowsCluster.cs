@@ -131,6 +131,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> List<MssqlHost>? MssqlHosts
+        // GraphQL -> mssqlHosts: [MssqlHost!]! (type)
+        [JsonProperty("mssqlHosts")]
+        public List<MssqlHost>? MssqlHosts { get; set; }
+
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
         [JsonProperty("pendingObjectDeletionStatus")]
@@ -226,6 +231,7 @@ namespace RubrikSecurityCloud.Types
         LatestUserNote? LatestUserNote = null,
         WindowsClusterLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
+        List<MssqlHost>? MssqlHosts = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
@@ -298,6 +304,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( MssqlHosts != null ) {
+            this.MssqlHosts = MssqlHosts;
         }
         if ( PendingObjectDeletionStatus != null ) {
             this.PendingObjectDeletionStatus = PendingObjectDeletionStatus;
@@ -570,6 +579,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<MssqlHost>? MssqlHosts
+        // GraphQL -> mssqlHosts: [MssqlHost!]! (type)
+        if (this.MssqlHosts != null) {
+            var fspec = this.MssqlHosts.AsFieldSpec(conf.Child("mssqlHosts"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mssqlHosts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1061,6 +1082,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> List<MssqlHost>? MssqlHosts
+        // GraphQL -> mssqlHosts: [MssqlHost!]! (type)
+        if (ec.Includes("mssqlHosts",false))
+        {
+            if(this.MssqlHosts == null) {
+
+                this.MssqlHosts = new List<MssqlHost>();
+                this.MssqlHosts.ApplyExploratoryFieldSpec(ec.NewChild("mssqlHosts"));
+
+            } else {
+
+                this.MssqlHosts.ApplyExploratoryFieldSpec(ec.NewChild("mssqlHosts"));
+
+            }
+        }
+        else if (this.MssqlHosts != null && ec.Excludes("mssqlHosts",false))
+        {
+            this.MssqlHosts = null;
         }
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FailoverTableColumnEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AppBlueprintName")]
         APP_BLUEPRINT_NAME,
 
@@ -43,10 +46,7 @@ namespace RubrikSecurityCloud.Types
         START_TIME,
 
         [EnumMember(Value = "TargetSite")]
-        TARGET_SITE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TARGET_SITE
 
 
     } // enum FailoverTableColumnEnum

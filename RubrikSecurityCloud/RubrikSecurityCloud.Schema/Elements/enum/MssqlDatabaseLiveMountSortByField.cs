@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlDatabaseLiveMountSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CREATION_DATE")]
         CREATION_DATE,
 
         [EnumMember(Value = "MOUNTED_DATABASE_NAME")]
-        MOUNTED_DATABASE_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MOUNTED_DATABASE_NAME
 
 
     } // enum MssqlDatabaseLiveMountSortByField

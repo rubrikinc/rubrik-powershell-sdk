@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TagRuleSlaAssignType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DO_NOT_PROTECT")]
         DO_NOT_PROTECT,
 
         [EnumMember(Value = "PROTECT_WITH_SLA_ID")]
-        PROTECT_WITH_SLA_ID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        PROTECT_WITH_SLA_ID
 
 
     } // enum TagRuleSlaAssignType

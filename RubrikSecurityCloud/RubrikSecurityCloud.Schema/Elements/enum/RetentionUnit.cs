@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RetentionUnit
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DAYS")]
         DAYS,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         WEEKS,
 
         [EnumMember(Value = "YEARS")]
-        YEARS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        YEARS
 
 
     } // enum RetentionUnit

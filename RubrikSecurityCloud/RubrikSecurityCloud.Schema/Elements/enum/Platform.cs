@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum Platform
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "PLATFORM_AWS")]
         PLATFORM_AWS,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         PLATFORM_SNOWFLAKE,
 
         [EnumMember(Value = "PLATFORM_UNSPECIFIED")]
-        PLATFORM_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        PLATFORM_UNSPECIFIED
 
 
     } // enum Platform

@@ -12,7 +12,7 @@ List of GCP disks.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - GcpNativeDiskSortFields: Sort fields for list of GCP disks.
     - sortOrder - SortOrder: Sorts the order of results.
     - diskFilters - GcpNativeDiskFilters
@@ -29,7 +29,7 @@ List of GCE instances.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - GcpNativeGceInstanceSortFields: Sort fields for list of GCP GCE instances.
     - sortOrder - SortOrder: Sorts the order of results.
     - gceInstanceFilters - GcpNativeGceInstanceFilters
@@ -46,7 +46,7 @@ List of GCP projects.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - GcpNativeProjectSortFields: Sort fields for list of GCP projects.
     - sortOrder - SortOrder: Sorts the order of results.
     - projectFilters - GcpNativeProjectFilters

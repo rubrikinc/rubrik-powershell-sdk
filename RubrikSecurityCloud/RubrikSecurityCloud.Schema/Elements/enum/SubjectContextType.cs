@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SubjectContextType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "USER")]
         USER,
 
         [EnumMember(Value = "USER_GROUP")]
-        USER_GROUP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USER_GROUP
 
 
     } // enum SubjectContextType

@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
 
+        //      C# -> System.Int32? LatestApplicationsCount
+        // GraphQL -> latestApplicationsCount: Int! (scalar)
+        [JsonProperty("latestApplicationsCount")]
+        public System.Int32? LatestApplicationsCount { get; set; }
+
         //      C# -> System.Int32? LatestGroupCount
         // GraphQL -> latestGroupCount: Int! (scalar)
         [JsonProperty("latestGroupCount")]
@@ -100,6 +105,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestRolesCount: Int! (scalar)
         [JsonProperty("latestRolesCount")]
         public System.Int32? LatestRolesCount { get; set; }
+
+        //      C# -> System.Int32? LatestServicePrincipalsCount
+        // GraphQL -> latestServicePrincipalsCount: Int! (scalar)
+        [JsonProperty("latestServicePrincipalsCount")]
+        public System.Int32? LatestServicePrincipalsCount { get; set; }
 
         //      C# -> DateTime? LatestSnapshotTime
         // GraphQL -> latestSnapshotTime: DateTime (scalar)
@@ -297,8 +307,10 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsProvisioned = null,
         System.Boolean? IsRelic = null,
+        System.Int32? LatestApplicationsCount = null,
         System.Int32? LatestGroupCount = null,
         System.Int32? LatestRolesCount = null,
+        System.Int32? LatestServicePrincipalsCount = null,
         DateTime? LatestSnapshotTime = null,
         System.Int32? LatestUserCount = null,
         System.String? Name = null,
@@ -364,11 +376,17 @@ namespace RubrikSecurityCloud.Types
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
         }
+        if ( LatestApplicationsCount != null ) {
+            this.LatestApplicationsCount = LatestApplicationsCount;
+        }
         if ( LatestGroupCount != null ) {
             this.LatestGroupCount = LatestGroupCount;
         }
         if ( LatestRolesCount != null ) {
             this.LatestRolesCount = LatestRolesCount;
+        }
+        if ( LatestServicePrincipalsCount != null ) {
+            this.LatestServicePrincipalsCount = LatestServicePrincipalsCount;
         }
         if ( LatestSnapshotTime != null ) {
             this.LatestSnapshotTime = LatestSnapshotTime;
@@ -585,6 +603,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isRelic\n" ;
             }
         }
+        //      C# -> System.Int32? LatestApplicationsCount
+        // GraphQL -> latestApplicationsCount: Int! (scalar)
+        if (this.LatestApplicationsCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestApplicationsCount\n" ;
+            } else {
+                s += ind + "latestApplicationsCount\n" ;
+            }
+        }
         //      C# -> System.Int32? LatestGroupCount
         // GraphQL -> latestGroupCount: Int! (scalar)
         if (this.LatestGroupCount != null) {
@@ -601,6 +628,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "latestRolesCount\n" ;
             } else {
                 s += ind + "latestRolesCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? LatestServicePrincipalsCount
+        // GraphQL -> latestServicePrincipalsCount: Int! (scalar)
+        if (this.LatestServicePrincipalsCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestServicePrincipalsCount\n" ;
+            } else {
+                s += ind + "latestServicePrincipalsCount\n" ;
             }
         }
         //      C# -> DateTime? LatestSnapshotTime
@@ -1100,6 +1136,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsRelic = null;
         }
+        //      C# -> System.Int32? LatestApplicationsCount
+        // GraphQL -> latestApplicationsCount: Int! (scalar)
+        if (ec.Includes("latestApplicationsCount",true))
+        {
+            if(this.LatestApplicationsCount == null) {
+
+                this.LatestApplicationsCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestApplicationsCount != null && ec.Excludes("latestApplicationsCount",true))
+        {
+            this.LatestApplicationsCount = null;
+        }
         //      C# -> System.Int32? LatestGroupCount
         // GraphQL -> latestGroupCount: Int! (scalar)
         if (ec.Includes("latestGroupCount",true))
@@ -1133,6 +1186,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestRolesCount != null && ec.Excludes("latestRolesCount",true))
         {
             this.LatestRolesCount = null;
+        }
+        //      C# -> System.Int32? LatestServicePrincipalsCount
+        // GraphQL -> latestServicePrincipalsCount: Int! (scalar)
+        if (ec.Includes("latestServicePrincipalsCount",true))
+        {
+            if(this.LatestServicePrincipalsCount == null) {
+
+                this.LatestServicePrincipalsCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestServicePrincipalsCount != null && ec.Excludes("latestServicePrincipalsCount",true))
+        {
+            this.LatestServicePrincipalsCount = null;
         }
         //      C# -> DateTime? LatestSnapshotTime
         // GraphQL -> latestSnapshotTime: DateTime (scalar)

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnapshotTypeToUseIfSourceExpired
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ARCHIVED")]
         ARCHIVED,
 
         [EnumMember(Value = "REPLICATED")]
-        REPLICATED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        REPLICATED
 
 
     } // enum SnapshotTypeToUseIfSourceExpired

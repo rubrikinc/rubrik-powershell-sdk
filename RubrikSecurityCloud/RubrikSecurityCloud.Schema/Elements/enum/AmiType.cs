@@ -15,17 +15,20 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AmiType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CREATED_AT_RUNTIME")]
         CREATED_AT_RUNTIME,
 
         [EnumMember(Value = "EXISTING")]
         EXISTING,
 
-        [EnumMember(Value = "USER_SPECIFIED")]
-        USER_SPECIFIED,
+        [EnumMember(Value = "PLATFORM_SPECIFIC_AMI")]
+        PLATFORM_SPECIFIC_AMI,
 
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        [EnumMember(Value = "USER_SPECIFIED")]
+        USER_SPECIFIED
 
 
     } // enum AmiType

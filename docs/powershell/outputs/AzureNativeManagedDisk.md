@@ -28,11 +28,13 @@ An Azure Native Managed Disk that refers to the block storage designed to be use
 - isExocomputeConfigured: System.Boolean
   - Specifies whether exocompute is configured for the region in which the Managed Disk exists or not. When the value is true, exocompute can be used to perform tasks like file indexing.
 - isFileIndexingEnabled: System.Boolean
-  - Specifies whether file indexing is enabled for this Managed Disk or not. When file indexing is enabled, Rubrik can scan through the file structure inside the managed disk in a protected environment where only the meta data like folder structure, file names, and file sizes will be readable by Rubrik.
+  - Specifies whether file indexing is enabled for this managed disk or not. When enabled, Rubrik scans the file structure within the managed disk in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.
 - cloudNativeId: System.String
   - Native ID of the Managed Disk.
 - nativeName: System.String
   - Azure Native name of the object.
+- fileIndexingStatus: FileIndexingStatus
+  - Specifies the file indexing status for this managed disk. When enabled, Rubrik scans the file structure within the managed disk in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - resourceGroup: AzureNativeResourceGroup

@@ -3,10 +3,14 @@
 - vsphereTagPath: list of PathNodes
 - isFilterCategory: System.Boolean
   - Specifies whether the child tags are multi-tag filters or vSphere tags.
+- snapshotConsistencyMandate: ConsistencyLevelEnum
+  - Snapshot consistency mandate.
 - id: System.String
   - Object ID.
 - tagChildConnection: VsphereTagCategoryTagChildTypeConnection
   - List of tag children.
+- snapshotConsistencySource: System.String
+  - Fid of the object from where the snapshot consistency mandate is inherited.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

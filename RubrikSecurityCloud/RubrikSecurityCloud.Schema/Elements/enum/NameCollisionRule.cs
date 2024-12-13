@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NameCollisionRule
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "APPEND")]
         APPEND,
 
         [EnumMember(Value = "OVERWRITE")]
-        OVERWRITE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        OVERWRITE
 
 
     } // enum NameCollisionRule

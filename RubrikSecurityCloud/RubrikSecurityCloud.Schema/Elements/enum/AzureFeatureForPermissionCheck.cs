@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureFeatureForPermissionCheck
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AZURE_CROSS_REGION_REPLICATION")]
         AZURE_CROSS_REGION_REPLICATION,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         AZURE_LIST_AVAILABILITY_SET,
 
         [EnumMember(Value = "AZURE_UNSPECIFIED")]
-        AZURE_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        AZURE_UNSPECIFIED
 
 
     } // enum AzureFeatureForPermissionCheck

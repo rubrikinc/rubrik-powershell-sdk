@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> OracleScnRangeInput? OracleScnRange
+        // GraphQL -> oracleScnRange: OracleScnRangeInput (input)
+        [JsonProperty("oracleScnRange")]
+        public OracleScnRangeInput? OracleScnRange { get; set; }
+
         //      C# -> OracleTimeRangeInput? OracleTimeRange
         // GraphQL -> oracleTimeRange: OracleTimeRangeInput (input)
         [JsonProperty("oracleTimeRange")]

@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pvcNames")]
         public List<System.String>? PvcNames { get; set; }
 
+        //      C# -> System.String? VirtualMachineRunStrategy
+        // GraphQL -> virtualMachineRunStrategy: String (scalar)
+        [JsonProperty("virtualMachineRunStrategy")]
+        public System.String? VirtualMachineRunStrategy { get; set; }
+
         //      C# -> System.Boolean? ShouldDeleteNamespaceIfExportFailed
         // GraphQL -> shouldDeleteNamespaceIfExportFailed: Boolean (scalar)
         [JsonProperty("shouldDeleteNamespaceIfExportFailed")]
@@ -38,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ignoreErrors: Boolean (scalar)
         [JsonProperty("ignoreErrors")]
         public System.Boolean? IgnoreErrors { get; set; }
+
+        //      C# -> System.Boolean? ShouldKeepVirtualMachineMacAddresses
+        // GraphQL -> shouldKeepVirtualMachineMacAddresses: Boolean (scalar)
+        [JsonProperty("shouldKeepVirtualMachineMacAddresses")]
+        public System.Boolean? ShouldKeepVirtualMachineMacAddresses { get; set; }
 
         //      C# -> System.String? TargetClusterId
         // GraphQL -> targetClusterId: String! (scalar)

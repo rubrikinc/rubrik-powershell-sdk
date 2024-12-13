@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NasSystemConnectivityStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CONNECTED")]
         CONNECTED,
 
@@ -46,10 +49,7 @@ namespace RubrikSecurityCloud.Types
         SECONDARY_CLUSTER,
 
         [EnumMember(Value = "UNKNOWN_CONNECTIVITY_STATUS")]
-        UNKNOWN_CONNECTIVITY_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_CONNECTIVITY_STATUS
 
 
     } // enum NasSystemConnectivityStatus

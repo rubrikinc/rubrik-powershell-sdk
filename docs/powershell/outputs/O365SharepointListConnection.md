@@ -6,6 +6,6 @@ Paginated list of O365SharepointList objects. Each page of the results includes 
 - nodes: list of O365SharepointLists
   - List of O365SharepointList objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of O365SharepointList objects matching the request arguments.

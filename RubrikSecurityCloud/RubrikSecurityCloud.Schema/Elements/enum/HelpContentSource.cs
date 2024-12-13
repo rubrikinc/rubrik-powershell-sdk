@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HelpContentSource
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "KB_ARTICLES")]
         KB_ARTICLES,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         PRODUCT_DOCS,
 
         [EnumMember(Value = "SOURCE_UNSPECIFIED")]
-        SOURCE_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SOURCE_UNSPECIFIED
 
 
     } // enum HelpContentSource

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ReplicationType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "REPLICATION_TO_CLOUD_LOCATION")]
         REPLICATION_TO_CLOUD_LOCATION,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         UNIDIRECTIONAL_REPLICATION_TO_CLUSTER,
 
         [EnumMember(Value = "UNKNOWN_REPLICATION_TYPE")]
-        UNKNOWN_REPLICATION_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_REPLICATION_TYPE
 
 
     } // enum ReplicationType

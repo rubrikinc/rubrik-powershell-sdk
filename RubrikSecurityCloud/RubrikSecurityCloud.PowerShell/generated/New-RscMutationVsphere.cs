@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 11
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'VMware vSphere' API domain:
-    /// BulkOnDemandSnapshot, CreateAdvancedTag, DeleteAdvancedTag, DeleteLiveMount, DownloadVirtualMachineFiles, ExportSnapshotToStandaloneHostV2, OnDemandSnapshot, SnapshotDownloadFilesFromLocation, SnapshotRestoreFilesFromLocation, UpdateAdvancedTag, or UpdateVmNew.
+    /// BulkOnDemandSnapshot, CreateAdvancedTag, DeleteAdvancedTag, DeleteLiveMount, DownloadVirtualMachineFiles, ExportSnapshotToStandaloneHostV2, OnDemandSnapshot, SnapshotConsistency, SnapshotDownloadFilesFromLocation, SnapshotRestoreFilesFromLocation, UpdateAdvancedTag, or UpdateVmNew.
     /// </summary>
     /// <description>
     /// New-RscMutationVsphere creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 11 operations
+    /// There are 12 operations
     /// in the 'VMware vSphere' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkOnDemandSnapshot, CreateAdvancedTag, DeleteAdvancedTag, DeleteLiveMount, DownloadVirtualMachineFiles, ExportSnapshotToStandaloneHostV2, OnDemandSnapshot, SnapshotDownloadFilesFromLocation, SnapshotRestoreFilesFromLocation, UpdateAdvancedTag, or UpdateVmNew.
+    /// one of: BulkOnDemandSnapshot, CreateAdvancedTag, DeleteAdvancedTag, DeleteLiveMount, DownloadVirtualMachineFiles, ExportSnapshotToStandaloneHostV2, OnDemandSnapshot, SnapshotConsistency, SnapshotDownloadFilesFromLocation, SnapshotRestoreFilesFromLocation, UpdateAdvancedTag, or UpdateVmNew.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -356,6 +356,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SnapshotConsistency operation
+    /// of the 'VMware vSphere' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vsphere
+    /// # API Operation: SnapshotConsistency
+    /// 
+    /// $query = New-RscMutationVsphere -Operation SnapshotConsistency
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		snapshotConsistencyMandate = $someVmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate]) for enum values.
+    /// 		# REQUIRED
+    /// 		ids = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the SnapshotDownloadFilesFromLocation operation
     /// of the 'VMware vSphere' API domain.
     /// <code>
@@ -566,6 +604,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			maxNestedVsphereSnapshots = $someInt
     /// 			# OPTIONAL
+    /// 			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
+    /// 			# OPTIONAL
     /// 			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
     /// 			# OPTIONAL
     /// 			cloudInstantiationSpec = @{
@@ -649,6 +689,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DownloadVirtualMachineFiles",
                 "ExportSnapshotToStandaloneHostV2",
                 "OnDemandSnapshot",
+                "SnapshotConsistency",
                 "SnapshotDownloadFilesFromLocation",
                 "SnapshotRestoreFilesFromLocation",
                 "UpdateAdvancedTag",
@@ -688,6 +729,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "OnDemandSnapshot":
                         this.ProcessRecord_OnDemandSnapshot();
+                        break;
+                    case "SnapshotConsistency":
+                        this.ProcessRecord_SnapshotConsistency();
                         break;
                     case "SnapshotDownloadFilesFromLocation":
                         this.ProcessRecord_SnapshotDownloadFilesFromLocation();
@@ -772,6 +816,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -OnDemandSnapshot";
             // Create new graphql operation vsphereOnDemandSnapshot
             InitMutationVsphereOnDemandSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vsphereSnapshotConsistency.
+        internal void ProcessRecord_SnapshotConsistency()
+        {
+            this._logger.name += " -SnapshotConsistency";
+            // Create new graphql operation vsphereSnapshotConsistency
+            InitMutationVsphereSnapshotConsistency();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1035,6 +1088,36 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // vsphereSnapshotConsistency(input: UpdateSnapshotConsistencyInput!): AsyncRequestStatus!
+        internal void InitMutationVsphereSnapshotConsistency()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateSnapshotConsistencyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereSnapshotConsistency",
+                "($input: UpdateSnapshotConsistencyInput!)",
+                "AsyncRequestStatus",
+                Mutation.VsphereSnapshotConsistency,
+                Mutation.VsphereSnapshotConsistencyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshotConsistencyMandate = $someVmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate]) for enum values.
+		# REQUIRED
+		ids = @(
+			$someString
+		)
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // vsphereSnapshotDownloadFilesFromLocation(input: VsphereSnapshotDownloadFilesFromLocationInput!): AsyncRequestStatus!
         internal void InitMutationVsphereSnapshotDownloadFilesFromLocation()
         {
@@ -1222,6 +1305,8 @@ $query.Var.input = @{
 			isVmPaused = $someBoolean
 			# OPTIONAL
 			maxNestedVsphereSnapshots = $someInt
+			# OPTIONAL
+			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
 			# OPTIONAL
 			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
 			# OPTIONAL

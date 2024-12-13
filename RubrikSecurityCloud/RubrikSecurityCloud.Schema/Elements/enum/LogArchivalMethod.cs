@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum LogArchivalMethod
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "LOGARCHMETH1")]
         LOGARCHMET_H1,
 
         [EnumMember(Value = "LOGARCHMETH2")]
-        LOGARCHMET_H2,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        LOGARCHMET_H2
 
 
     } // enum LogArchivalMethod

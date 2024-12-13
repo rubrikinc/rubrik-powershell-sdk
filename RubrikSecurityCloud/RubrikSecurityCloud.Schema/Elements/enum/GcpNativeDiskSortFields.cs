@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GcpNativeDiskSortFields
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ASSIGNED_SLA_DOMAIN")]
         ASSIGNED_SLA_DOMAIN,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         GCP_DISK_PROJECT_NAME,
 
         [EnumMember(Value = "GCP_DISK_SIZE")]
-        GCP_DISK_SIZE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        GCP_DISK_SIZE
 
 
     } // enum GcpNativeDiskSortFields

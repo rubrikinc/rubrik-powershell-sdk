@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SlaAssignTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "doNotProtect")]
         DO_NOT_PROTECT,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         NO_ASSIGNMENT,
 
         [EnumMember(Value = "protectWithSlaId")]
-        PROTECT_WITH_SLA_ID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        PROTECT_WITH_SLA_ID
 
 
     } // enum SlaAssignTypeEnum

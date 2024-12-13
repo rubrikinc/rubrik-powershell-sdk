@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmProduct")]
         public System.String? CdmProduct { get; set; }
 
+        //      C# -> System.String? PlacementGroupName
+        // GraphQL -> placementGroupName: String (scalar)
+        [JsonProperty("placementGroupName")]
+        public System.String? PlacementGroupName { get; set; }
+
         //      C# -> VmType? VmType
         // GraphQL -> vmType: VmType (enum)
         [JsonProperty("vmType")]

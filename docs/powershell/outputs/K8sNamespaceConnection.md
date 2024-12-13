@@ -6,7 +6,7 @@ Paginated list of K8sNamespace objects. Each page of the results includes at mos
 - nodes: list of K8sNamespaces
   - List of K8sNamespace objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of K8sNamespace objects matching the request arguments.
 - aggregateK8sPvcs: System.Int32

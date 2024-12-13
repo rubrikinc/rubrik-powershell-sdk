@@ -3,6 +3,8 @@ Windows Failover cluster.
 
 - hosts: list of PhysicalHosts
   - The list of hosts associated with a Windows Cluster.
+- mssqlHosts: list of MssqlHosts
+  - The list of Microsoft SQL hosts associated with a Windows Cluster.
 - descendantConnection: WindowsClusterDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: WindowsClusterLogicalChildTypeConnection

@@ -148,6 +148,11 @@ All supported managed objects.
 - CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS share replaces CLOUD_DIRECT_NAS_EXPORT.
 - EXCHANGE_HOST - Exchange Host.
 - MSSQL_HOST - MSSQL Host.
+- K8S_NAMESPACE_V2 - Kubernetes Namespace V2.
+- K8S_VIRTUAL_MACHINE - Kubernetes Virtual Machine.
+- D365_DATAVERSE_TABLE - D365 Dataverse Table.
+- D365_FIXED_OBJECT - D365 metadata.
+- D365_ORGANIZATION - D365 Organization.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
  NB: ideally we should use 0, but we missed it.

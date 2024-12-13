@@ -1080,6 +1080,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	listFileResultsSearchText = $someString
     /// 	# OPTIONAL
     /// 	whitelistEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	policyViolationId = $someString
     /// 	# REQUIRED
     /// 	fileType = $someFileCountType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FileCountType]) for enum values.
     /// }
@@ -1256,6 +1258,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	listFileResultsSearchText = $someString
     /// 	# OPTIONAL
     /// 	whitelistEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	policyViolationId = $someString
     /// 	# REQUIRED
     /// 	fileType = $someFileCountType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FileCountType]) for enum values.
     /// }
@@ -2602,6 +2606,8 @@ $query.Var.downloadFilter = @{
 	listFileResultsSearchText = $someString
 	# OPTIONAL
 	whitelistEnabled = $someBoolean
+	# OPTIONAL
+	policyViolationId = $someString
 	# REQUIRED
 	fileType = $someFileCountType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FileCountType]) for enum values.
 }"
@@ -2748,6 +2754,8 @@ $query.Var.downloadFilter = @{
 	listFileResultsSearchText = $someString
 	# OPTIONAL
 	whitelistEnabled = $someBoolean
+	# OPTIONAL
+	policyViolationId = $someString
 	# REQUIRED
 	fileType = $someFileCountType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FileCountType]) for enum values.
 }"

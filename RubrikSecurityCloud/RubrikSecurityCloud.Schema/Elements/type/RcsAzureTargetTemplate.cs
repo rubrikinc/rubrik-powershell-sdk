@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
+        // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
+        [JsonProperty("cloudNativeLocTemplateType")]
+        public CloudNativeLocTemplateType? CloudNativeLocTemplateType { get; set; }
+
         //      C# -> RcvRedundancy? Redundancy
         // GraphQL -> redundancy: RcvRedundancy! (enum)
         [JsonProperty("redundancy")]
@@ -56,6 +61,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RcsAzureTargetTemplate Set(
+        CloudNativeLocTemplateType? CloudNativeLocTemplateType = null,
         RcvRedundancy? Redundancy = null,
         RcsRegionEnumType? Region = null,
         TargetType? TargetType = null,
@@ -63,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         RcsImmutabilitySettings? ImmutabilitySettings = null
     ) 
     {
+        if ( CloudNativeLocTemplateType != null ) {
+            this.CloudNativeLocTemplateType = CloudNativeLocTemplateType;
+        }
         if ( Redundancy != null ) {
             this.Redundancy = Redundancy;
         }
@@ -92,6 +101,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
+        // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
+        if (this.CloudNativeLocTemplateType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudNativeLocTemplateType\n" ;
+            } else {
+                s += ind + "cloudNativeLocTemplateType\n" ;
+            }
+        }
         //      C# -> RcvRedundancy? Redundancy
         // GraphQL -> redundancy: RcvRedundancy! (enum)
         if (this.Redundancy != null) {
@@ -147,6 +165,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
+        // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
+        if (ec.Includes("cloudNativeLocTemplateType",true))
+        {
+            if(this.CloudNativeLocTemplateType == null) {
+
+                this.CloudNativeLocTemplateType = new CloudNativeLocTemplateType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudNativeLocTemplateType != null && ec.Excludes("cloudNativeLocTemplateType",true))
+        {
+            this.CloudNativeLocTemplateType = null;
+        }
         //      C# -> RcvRedundancy? Redundancy
         // GraphQL -> redundancy: RcvRedundancy! (enum)
         if (ec.Includes("redundancy",true))

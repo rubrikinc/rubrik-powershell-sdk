@@ -34,11 +34,14 @@ namespace RubrikSecurityCloud.Types
         public List<System.String>? ProjectIds { get; set; }
 
         //      C# -> CloudAccountFeature? Feature
-        // GraphQL -> feature: CloudAccountFeature! (enum)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> feature: CloudAccountFeature (enum)
         [JsonProperty("feature")]
         public CloudAccountFeature? Feature { get; set; }
+
+        //      C# -> List<FeatureWithPermissionsGroups>? FeaturesWithPermissionGroups
+        // GraphQL -> featuresWithPermissionGroups: [FeatureWithPermissionsGroups!] (input)
+        [JsonProperty("featuresWithPermissionGroups")]
+        public List<FeatureWithPermissionsGroups>? FeaturesWithPermissionGroups { get; set; }
 
 
         #endregion

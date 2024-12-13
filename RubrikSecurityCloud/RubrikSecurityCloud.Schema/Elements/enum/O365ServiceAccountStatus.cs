@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum O365ServiceAccountStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "INVALID")]
         INVALID,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         NOT_CONFIGURED,
 
         [EnumMember(Value = "VALID")]
-        VALID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VALID
 
 
     } // enum O365ServiceAccountStatus

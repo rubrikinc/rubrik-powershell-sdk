@@ -6,6 +6,6 @@ Paginated list of AuthorizedPrincipal objects. Each page of the results includes
 - nodes: list of AuthorizedPrincipals
   - List of AuthorizedPrincipal objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of AuthorizedPrincipal objects matching the request arguments.

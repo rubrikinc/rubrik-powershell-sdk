@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MosaicStorageLocationFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         NAME,
 
         [EnumMember(Value = "STORE_TYPE")]
-        STORE_TYPE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STORE_TYPE
 
 
     } // enum MosaicStorageLocationFilterField

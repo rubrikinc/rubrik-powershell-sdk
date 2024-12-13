@@ -6,6 +6,6 @@ Paginated list of MissedSnapshotGroupBy objects. Each page of the results includ
 - nodes: list of MissedSnapshotGroupBys
   - List of MissedSnapshotGroupBy objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of MissedSnapshotGroupBy objects matching the request arguments.

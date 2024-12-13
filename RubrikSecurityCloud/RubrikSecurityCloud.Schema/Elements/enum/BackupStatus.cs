@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum BackupStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BACKUP_UNKNOWN")]
         BACKUP_UNKNOWN,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         NOT_BACKED_UP,
 
         [EnumMember(Value = "RUBRIK_BACKED_UP")]
-        RUBRIK_BACKED_UP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        RUBRIK_BACKED_UP
 
 
     } // enum BackupStatus

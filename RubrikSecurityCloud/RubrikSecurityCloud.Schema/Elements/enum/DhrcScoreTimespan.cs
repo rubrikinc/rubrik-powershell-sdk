@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DhrcScoreTimespan
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MONTH")]
         MONTH,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         WEEK,
 
         [EnumMember(Value = "YEAR")]
-        YEAR,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        YEAR
 
 
     } // enum DhrcScoreTimespan

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FailoverSortByEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AppBlueprintName")]
         APP_BLUEPRINT_NAME,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         START_TIME,
 
         [EnumMember(Value = "TargetSiteName")]
-        TARGET_SITE_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TARGET_SITE_NAME
 
 
     } // enum FailoverSortByEnum

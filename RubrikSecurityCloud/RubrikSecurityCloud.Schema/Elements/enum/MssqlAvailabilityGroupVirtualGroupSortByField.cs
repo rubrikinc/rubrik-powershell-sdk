@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlAvailabilityGroupVirtualGroupSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FIELD_UNSPECIFIED")]
         FIELD_UNSPECIFIED,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum MssqlAvailabilityGroupVirtualGroupSortByField

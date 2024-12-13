@@ -171,6 +171,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeAccount")]
         public AwsNativeAccount? AwsNativeAccount { get; set; }
 
+        //      C# -> AwsNativeAccountDetails? AwsNativeAccountDetails
+        // GraphQL -> awsNativeAccountDetails: AwsNativeAccountDetails (type)
+        [JsonProperty("awsNativeAccountDetails")]
+        public AwsNativeAccountDetails? AwsNativeAccountDetails { get; set; }
+
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
@@ -348,6 +353,7 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         AwsNativeAccount? AwsAccount = null,
         AwsNativeAccount? AwsNativeAccount = null,
+        AwsNativeAccountDetails? AwsNativeAccountDetails = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
@@ -453,6 +459,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AwsNativeAccount != null ) {
             this.AwsNativeAccount = AwsNativeAccount;
+        }
+        if ( AwsNativeAccountDetails != null ) {
+            this.AwsNativeAccountDetails = AwsNativeAccountDetails;
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
@@ -798,6 +807,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "awsNativeAccount" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AwsNativeAccountDetails? AwsNativeAccountDetails
+        // GraphQL -> awsNativeAccountDetails: AwsNativeAccountDetails (type)
+        if (this.AwsNativeAccountDetails != null) {
+            var fspec = this.AwsNativeAccountDetails.AsFieldSpec(conf.Child("awsNativeAccountDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsNativeAccountDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1512,6 +1533,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AwsNativeAccount != null && ec.Excludes("awsNativeAccount",false))
         {
             this.AwsNativeAccount = null;
+        }
+        //      C# -> AwsNativeAccountDetails? AwsNativeAccountDetails
+        // GraphQL -> awsNativeAccountDetails: AwsNativeAccountDetails (type)
+        if (ec.Includes("awsNativeAccountDetails",false))
+        {
+            if(this.AwsNativeAccountDetails == null) {
+
+                this.AwsNativeAccountDetails = new AwsNativeAccountDetails();
+                this.AwsNativeAccountDetails.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeAccountDetails"));
+
+            } else {
+
+                this.AwsNativeAccountDetails.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeAccountDetails"));
+
+            }
+        }
+        else if (this.AwsNativeAccountDetails != null && ec.Excludes("awsNativeAccountDetails",false))
+        {
+            this.AwsNativeAccountDetails = null;
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)

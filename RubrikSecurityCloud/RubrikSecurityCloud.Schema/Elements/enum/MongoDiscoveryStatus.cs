@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MongoDiscoveryStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "INVALID_DISCOVERY_STATUS")]
         INVALID_DISCOVERY_STATUS,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         ON_DEMAND_DISCOVERY_IN_PROGRESS,
 
         [EnumMember(Value = "SCHEDULED_DISCOVERY_IN_PROGRESS")]
-        SCHEDULED_DISCOVERY_IN_PROGRESS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SCHEDULED_DISCOVERY_IN_PROGRESS
 
 
     } // enum MongoDiscoveryStatus

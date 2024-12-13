@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("disableApiTermination")]
         public System.Boolean? DisableApiTermination { get; set; }
 
+        //      C# -> System.Boolean? UsePlacementGroups
+        // GraphQL -> usePlacementGroups: Boolean (scalar)
+        [JsonProperty("usePlacementGroups")]
+        public System.Boolean? UsePlacementGroups { get; set; }
+
         //      C# -> ClusterConfigInput? ClusterConfig
         // GraphQL -> clusterConfig: ClusterConfigInput (input)
         [JsonProperty("clusterConfig")]

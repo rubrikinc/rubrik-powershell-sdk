@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PrivateEndpointErrors
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AZURE_ERR")]
         AZURE_ERR,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         NO_ERR,
 
         [EnumMember(Value = "NO_PENDING_PE")]
-        NO_PENDING_PE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NO_PENDING_PE
 
 
     } // enum PrivateEndpointErrors

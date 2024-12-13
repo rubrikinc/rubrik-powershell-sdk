@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SnapshotTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DOWNLOADED")]
         DOWNLOADED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         ON_DEMAND,
 
         [EnumMember(Value = "SCHEDULED")]
-        SCHEDULED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SCHEDULED
 
 
     } // enum SnapshotTypeEnum

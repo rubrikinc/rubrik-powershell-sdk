@@ -125,6 +125,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.fids = @(
     /// 	$someString
     /// )
+    /// # OPTIONAL
+    /// $query.Var.filters = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someMssqlAvailabilityGroupDatabaseVirtualGroupFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlAvailabilityGroupDatabaseVirtualGroupFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = @{
+    /// 	# OPTIONAL
+    /// 	field = $someMssqlAvailabilityGroupDatabaseVirtualGroupSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlAvailabilityGroupDatabaseVirtualGroupSortByField]) for enum values.
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = @{
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -1230,19 +1251,29 @@ $query.Var.fid = $someString"
         }
 
         // Create new GraphQL Query:
-        // mssqlAvailabilityGroupDatabaseVirtualGroups(first: Int, after: String, fids: [UUID!]!): MssqlDatabaseVirtualGroupConnection!
+        // mssqlAvailabilityGroupDatabaseVirtualGroups(
+        //     first: Int
+        //     after: String
+        //     fids: [UUID!]!
+        //     filters: [MssqlAvailabilityGroupDatabaseVirtualGroupFilterInput!]
+        //     sortBy: MssqlAvailabilityGroupDatabaseVirtualGroupSortByInput
+        //     sortOrder: MssqlAvailabilityGroupDatabaseVirtualGroupSortOrderInput
+        //   ): MssqlDatabaseVirtualGroupConnection!
         internal void InitQueryMssqlAvailabilityGroupDatabaseVirtualGroups()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
                 Tuple.Create("fids", "[UUID!]!"),
+                Tuple.Create("filters", "[MssqlAvailabilityGroupDatabaseVirtualGroupFilterInput!]"),
+                Tuple.Create("sortBy", "MssqlAvailabilityGroupDatabaseVirtualGroupSortByInput"),
+                Tuple.Create("sortOrder", "MssqlAvailabilityGroupDatabaseVirtualGroupSortOrderInput"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryMssqlAvailabilityGroupDatabaseVirtualGroups",
-                "($first: Int,$after: String,$fids: [UUID!]!)",
+                "($first: Int,$after: String,$fids: [UUID!]!,$filters: [MssqlAvailabilityGroupDatabaseVirtualGroupFilterInput!],$sortBy: MssqlAvailabilityGroupDatabaseVirtualGroupSortByInput,$sortOrder: MssqlAvailabilityGroupDatabaseVirtualGroupSortOrderInput)",
                 "MssqlDatabaseVirtualGroupConnection",
                 Query.MssqlAvailabilityGroupDatabaseVirtualGroups,
                 Query.MssqlAvailabilityGroupDatabaseVirtualGroupsFieldSpec,
@@ -1253,7 +1284,28 @@ $query.Var.after = $someString
 # REQUIRED
 $query.Var.fids = @(
 	$someString
-)"
+)
+# OPTIONAL
+$query.Var.filters = @(
+	@{
+		# OPTIONAL
+		field = $someMssqlAvailabilityGroupDatabaseVirtualGroupFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlAvailabilityGroupDatabaseVirtualGroupFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+}
+)
+# OPTIONAL
+$query.Var.sortBy = @{
+	# OPTIONAL
+	field = $someMssqlAvailabilityGroupDatabaseVirtualGroupSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlAvailabilityGroupDatabaseVirtualGroupSortByField]) for enum values.
+}
+# OPTIONAL
+$query.Var.sortOrder = @{
+	# OPTIONAL
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}"
             );
         }
 

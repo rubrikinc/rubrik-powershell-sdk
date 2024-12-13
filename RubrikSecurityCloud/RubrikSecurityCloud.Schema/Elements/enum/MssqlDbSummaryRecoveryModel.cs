@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlDbSummaryRecoveryModel
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MSSQL_DB_SUMMARY_RECOVERY_MODEL_BULK_LOGGED")]
         MSSQL_DB_SUMMARY_RECOVERY_MODEL_BULK_LOGGED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         MSSQL_DB_SUMMARY_RECOVERY_MODEL_FULL,
 
         [EnumMember(Value = "MSSQL_DB_SUMMARY_RECOVERY_MODEL_SIMPLE")]
-        MSSQL_DB_SUMMARY_RECOVERY_MODEL_SIMPLE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MSSQL_DB_SUMMARY_RECOVERY_MODEL_SIMPLE
 
 
     } // enum MssqlDbSummaryRecoveryModel

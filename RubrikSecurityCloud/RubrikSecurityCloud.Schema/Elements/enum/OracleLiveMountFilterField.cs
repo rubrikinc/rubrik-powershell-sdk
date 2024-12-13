@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum OracleLiveMountFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         SOURCE_DATABASE_ID,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSPECIFIED
 
 
     } // enum OracleLiveMountFilterField

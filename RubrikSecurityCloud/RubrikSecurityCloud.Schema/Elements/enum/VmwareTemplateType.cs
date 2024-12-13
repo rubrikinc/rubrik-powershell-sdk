@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VmwareTemplateType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DEPLOYED_VM")]
         DEPLOYED_VM,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         UNDEFINED,
 
         [EnumMember(Value = "VM")]
-        VM,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VM
 
 
     } // enum VmwareTemplateType

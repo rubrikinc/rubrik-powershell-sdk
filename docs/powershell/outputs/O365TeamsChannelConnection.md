@@ -6,6 +6,6 @@ Paginated list of O365TeamsChannel objects. Each page of the results includes at
 - nodes: list of O365TeamsChannels
   - List of O365TeamsChannel objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of O365TeamsChannel objects matching the request arguments.

@@ -18,3 +18,6 @@ clean:
 
 test:
 	pwsh -c "./Utils/Test-RscSdk.ps1"
+
+test-toolkit:
+	pwsh -c "./Utils/Test-RscSdk.ps1 -SkipCoreTests"

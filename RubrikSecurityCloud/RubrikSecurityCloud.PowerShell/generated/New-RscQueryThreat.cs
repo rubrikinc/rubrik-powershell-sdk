@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 5
+    /// Create a new RscQuery object for any of the 4
     /// operations in the 'Threat' API domain:
-    /// HuntDetail, HuntResult, HuntSummary, Hunts, or MonitoringCloudRootEnablement.
+    /// HuntDetail, HuntResult, HuntSummary, or Hunts.
     /// </summary>
     /// <description>
     /// New-RscQueryThreat creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 5 operations
+    /// There are 4 operations
     /// in the 'Threat' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: HuntDetail, HuntResult, HuntSummary, Hunts, or MonitoringCloudRootEnablement.
+    /// one of: HuntDetail, HuntResult, HuntSummary, or Hunts.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -216,33 +216,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
-    /// <example>
-    /// Runs the MonitoringCloudRootEnablement operation
-    /// of the 'Threat' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Threat
-    /// # API Operation: MonitoringCloudRootEnablement
-    /// 
-    /// $query = New-RscQueryThreat -Operation MonitoringCloudRootEnablement
-    /// 
-    /// # No variables for this query.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ThreatMonitoringCloudRootEnablement
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -263,7 +236,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "HuntResult",
                 "HuntSummary",
                 "Hunts",
-                "MonitoringCloudRootEnablement",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -290,9 +262,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Hunts":
                         this.ProcessRecord_Hunts();
-                        break;
-                    case "MonitoringCloudRootEnablement":
-                        this.ProcessRecord_MonitoringCloudRootEnablement();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -338,15 +307,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Hunts";
             // Create new graphql operation threatHunts
             InitQueryThreatHunts();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // threatMonitoringCloudRootEnablement.
-        internal void ProcessRecord_MonitoringCloudRootEnablement()
-        {
-            this._logger.name += " -MonitoringCloudRootEnablement";
-            // Create new graphql operation threatMonitoringCloudRootEnablement
-            InitQueryThreatMonitoringCloudRootEnablement();
         }
 
 
@@ -476,24 +436,6 @@ $query.Var.matchesFoundFilter = @(
 $query.Var.quarantinedMatchesFilter = @(
 	$someThreatHuntQuarantinedMatchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatHuntQuarantinedMatchType]) for enum values.
 )"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // threatMonitoringCloudRootEnablement: ThreatMonitoringCloudRootEnablement!
-        internal void InitQueryThreatMonitoringCloudRootEnablement()
-        {
-            Tuple<string, string>[] argDefs = {
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryThreatMonitoringCloudRootEnablement",
-                "",
-                "ThreatMonitoringCloudRootEnablement",
-                Query.ThreatMonitoringCloudRootEnablement,
-                Query.ThreatMonitoringCloudRootEnablementFieldSpec,
-                @""
             );
         }
 

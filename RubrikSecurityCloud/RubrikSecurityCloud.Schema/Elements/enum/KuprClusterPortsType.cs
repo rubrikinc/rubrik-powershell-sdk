@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum KuprClusterPortsType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BACKUP")]
         BACKUP,
 
         [EnumMember(Value = "USER_DRIVEN")]
-        USER_DRIVEN,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USER_DRIVEN
 
 
     } // enum KuprClusterPortsType

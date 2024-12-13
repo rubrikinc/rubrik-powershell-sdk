@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CcpJobStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BOOTSTRAPPING")]
         BOOTSTRAPPING,
 
@@ -40,10 +43,7 @@ namespace RubrikSecurityCloud.Types
         NODE_INFO_EXTRACTION,
 
         [EnumMember(Value = "ROTATE_TOKEN")]
-        ROTATE_TOKEN,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ROTATE_TOKEN
 
 
     } // enum CcpJobStatus

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MongoSourceType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "REPLICA_SET")]
         REPLICA_SET,
 
         [EnumMember(Value = "SHARDED")]
-        SHARDED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SHARDED
 
 
     } // enum MongoSourceType

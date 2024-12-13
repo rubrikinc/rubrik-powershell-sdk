@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum StalenessType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "IS_STALE")]
         IS_STALE,
 
         [EnumMember(Value = "NOT_STALE")]
-        NOT_STALE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NOT_STALE
 
 
     } // enum StalenessType

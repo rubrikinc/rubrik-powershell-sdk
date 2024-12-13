@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum JobType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOWNLOAD_SNAPSHOT_FROM_LOCATION")]
         ACTIVE_DIRECTORY_DOWNLOAD_SNAPSHOT_FROM_LOCATION,
 
@@ -250,10 +253,7 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_UNMOUNT,
 
         [EnumMember(Value = "VSPHERE_VM_MAKE_PRIMARY")]
-        VSPHERE_VM_MAKE_PRIMARY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VSPHERE_VM_MAKE_PRIMARY
 
 
     } // enum JobType

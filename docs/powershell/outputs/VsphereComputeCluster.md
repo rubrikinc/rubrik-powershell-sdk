@@ -3,6 +3,10 @@
   - This vsphere computer cluster's IOFilter status can be Uninstalled or Installed.
 - drsStatus: System.Boolean
   - Current Drs status of the cluster.
+- snapshotConsistencyMandate: ConsistencyLevelEnum
+  - Snapshot consistency mandate.
+- snapshotConsistencySource: System.String
+  - Fid of the object from where the snapshot consistency mandate is inherited.
 - descendantConnection: VsphereComputeClusterDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: VsphereComputeClusterPhysicalChildTypeConnection

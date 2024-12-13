@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum IoFilterStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "IO_FILTER_STATUS_INCONSISTENT")]
         IO_FILTER_STATUS_INCONSISTENT,
 
@@ -58,10 +61,7 @@ namespace RubrikSecurityCloud.Types
         IO_FILTER_STATUS_UPGRADE_ERROR,
 
         [EnumMember(Value = "IO_FILTER_STATUS_UPGRADE_IN_PROGRESS")]
-        IO_FILTER_STATUS_UPGRADE_IN_PROGRESS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        IO_FILTER_STATUS_UPGRADE_IN_PROGRESS
 
 
     } // enum IoFilterStatus

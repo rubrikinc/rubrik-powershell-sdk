@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ClusterReportMigrationStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DONE")]
         DONE,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         READY,
 
         [EnumMember(Value = "UNSPECIFIED")]
-        UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSPECIFIED
 
 
     } // enum ClusterReportMigrationStatus

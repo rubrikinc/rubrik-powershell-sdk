@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CdmFindBadDiskResultType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FIND_BAD_DISK_RESULT_ENUM_FAILED")]
         FIND_BAD_DISK_RESULT_ENUM_FAILED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         FIND_BAD_DISK_RESULT_ENUM_OKAY,
 
         [EnumMember(Value = "FIND_BAD_DISK_RESULT_ENUM_TURNED_OFF")]
-        FIND_BAD_DISK_RESULT_ENUM_TURNED_OFF,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        FIND_BAD_DISK_RESULT_ENUM_TURNED_OFF
 
 
     } // enum CdmFindBadDiskResultType

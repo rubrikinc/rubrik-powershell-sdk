@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> Platform? CloudPlatform
+        // GraphQL -> cloudPlatform: Platform! (enum)
+        [JsonProperty("cloudPlatform")]
+        public Platform? CloudPlatform { get; set; }
+
         //      C# -> System.String? AccountId
         // GraphQL -> accountId: String! (scalar)
         [JsonProperty("accountId")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CloudAccountInfo Set(
+        Platform? CloudPlatform = null,
         System.String? AccountId = null,
         System.String? AccountName = null
     ) 
     {
+        if ( CloudPlatform != null ) {
+            this.CloudPlatform = CloudPlatform;
+        }
         if ( AccountId != null ) {
             this.AccountId = AccountId;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> Platform? CloudPlatform
+        // GraphQL -> cloudPlatform: Platform! (enum)
+        if (this.CloudPlatform != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudPlatform\n" ;
+            } else {
+                s += ind + "cloudPlatform\n" ;
+            }
+        }
         //      C# -> System.String? AccountId
         // GraphQL -> accountId: String! (scalar)
         if (this.AccountId != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> Platform? CloudPlatform
+        // GraphQL -> cloudPlatform: Platform! (enum)
+        if (ec.Includes("cloudPlatform",true))
+        {
+            if(this.CloudPlatform == null) {
+
+                this.CloudPlatform = new Platform();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudPlatform != null && ec.Excludes("cloudPlatform",true))
+        {
+            this.CloudPlatform = null;
+        }
         //      C# -> System.String? AccountId
         // GraphQL -> accountId: String! (scalar)
         if (ec.Includes("accountId",true))

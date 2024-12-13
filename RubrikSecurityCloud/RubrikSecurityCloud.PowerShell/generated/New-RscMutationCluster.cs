@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 20
+    /// Create a new RscQuery object for any of the 23
     /// operations in the 'Cluster' API domain:
-    /// AddClusterNodes, AddClusterRoute, AddNodesToCloud, DeleteClusterRoute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// AddClusterNodes, AddClusterRoute, AddNodesToCloud, DeleteClusterRoute, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// </summary>
     /// <description>
     /// New-RscMutationCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 20 operations
+    /// There are 23 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddClusterNodes, AddClusterRoute, AddNodesToCloud, DeleteClusterRoute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// one of: AddClusterNodes, AddClusterRoute, AddNodesToCloud, DeleteClusterRoute, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -142,6 +142,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						vlan = $someInt
     /// 					}
     /// 				)
+    /// 				# OPTIONAL
+    /// 				chassisId = $someString
     /// 			}
     /// 		}
     /// 	)
@@ -294,6 +296,72 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DeleteTerminatedClusterOperationJobData operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: DeleteTerminatedClusterOperationJobData
+    /// 
+    /// $query = New-RscMutationCluster -Operation DeleteTerminatedClusterOperationJobData
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	jobType = $someCcpJobType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpJobType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DeleteTerminatedClusterOperationJobDataReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DisconnectExocompute operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: DisconnectExocompute
+    /// 
+    /// $query = New-RscMutationCluster -Operation DisconnectExocompute
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterId = $someString
+    /// 	# REQUIRED
+    /// 	cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ExocomputeClusterConnect operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -405,6 +473,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	batchSize = $someInt
+    /// 	# OPTIONAL
+    /// 	newNodeCount = $someInt
     /// }
     /// 
     /// # Execute the query
@@ -495,6 +567,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		instanceProfileName = $someString
     /// 		# OPTIONAL
     /// 		cdmProduct = $someString
+    /// 		# OPTIONAL
+    /// 		placementGroupName = $someString
     /// 		# OPTIONAL
     /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
     /// 		# OPTIONAL
@@ -678,6 +752,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CcProvisionJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ReplaceClusterNode operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: ReplaceClusterNode
+    /// 
+    /// $query = New-RscMutationCluster -Operation ReplaceClusterNode
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	newNodeId = $someString
+    /// 	# OPTIONAL
+    /// 	ipmiPassword = $someString
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ReplaceClusterNodeReply
     /// 
     /// 
     /// 
@@ -1022,6 +1131,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AddClusterRoute",
                 "AddNodesToCloud",
                 "DeleteClusterRoute",
+                "DeleteTerminatedClusterOperationJobData",
+                "DisconnectExocompute",
                 "ExocomputeClusterConnect",
                 "GenerateClusterRegistrationToken",
                 "MigrateCloudClusterDisks",
@@ -1030,6 +1141,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ReleasePersistentExo",
                 "RemoveCdm",
                 "RemoveClusterNodes",
+                "ReplaceClusterNode",
                 "RequestPersistentExo",
                 "SetMissingClusterStatus",
                 "UpdateClusterDefaultAddress",
@@ -1065,6 +1177,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DeleteClusterRoute":
                         this.ProcessRecord_DeleteClusterRoute();
                         break;
+                    case "DeleteTerminatedClusterOperationJobData":
+                        this.ProcessRecord_DeleteTerminatedClusterOperationJobData();
+                        break;
+                    case "DisconnectExocompute":
+                        this.ProcessRecord_DisconnectExocompute();
+                        break;
                     case "ExocomputeClusterConnect":
                         this.ProcessRecord_ExocomputeClusterConnect();
                         break;
@@ -1088,6 +1206,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RemoveClusterNodes":
                         this.ProcessRecord_RemoveClusterNodes();
+                        break;
+                    case "ReplaceClusterNode":
+                        this.ProcessRecord_ReplaceClusterNode();
                         break;
                     case "RequestPersistentExo":
                         this.ProcessRecord_RequestPersistentExo();
@@ -1160,6 +1281,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // deleteTerminatedClusterOperationJobData.
+        internal void ProcessRecord_DeleteTerminatedClusterOperationJobData()
+        {
+            this._logger.name += " -DeleteTerminatedClusterOperationJobData";
+            // Create new graphql operation deleteTerminatedClusterOperationJobData
+            InitMutationDeleteTerminatedClusterOperationJobData();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // disconnectExocomputeCluster.
+        internal void ProcessRecord_DisconnectExocompute()
+        {
+            this._logger.name += " -DisconnectExocompute";
+            // Create new graphql operation disconnectExocomputeCluster
+            InitMutationDisconnectExocomputeCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // exocomputeClusterConnect.
         internal void ProcessRecord_ExocomputeClusterConnect()
         {
@@ -1229,6 +1368,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RemoveClusterNodes";
             // Create new graphql operation removeClusterNodes
             InitMutationRemoveClusterNodes();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // replaceClusterNode.
+        internal void ProcessRecord_ReplaceClusterNode()
+        {
+            this._logger.name += " -ReplaceClusterNode";
+            // Create new graphql operation replaceClusterNode
+            InitMutationReplaceClusterNode();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1372,6 +1520,8 @@ $query.Var.AddClusterNodesInput = @{
 						vlan = $someInt
 					}
 				)
+				# OPTIONAL
+				chassisId = $someString
 			}
 		}
 	)
@@ -1490,6 +1640,56 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // deleteTerminatedClusterOperationJobData(input: DeleteTerminatedClusterOperationJobDataInput!): DeleteTerminatedClusterOperationJobDataReply!
+        internal void InitMutationDeleteTerminatedClusterOperationJobData()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteTerminatedClusterOperationJobDataInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteTerminatedClusterOperationJobData",
+                "($input: DeleteTerminatedClusterOperationJobDataInput!)",
+                "DeleteTerminatedClusterOperationJobDataReply",
+                Mutation.DeleteTerminatedClusterOperationJobData,
+                Mutation.DeleteTerminatedClusterOperationJobDataFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	jobType = $someCcpJobType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpJobType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // disconnectExocomputeCluster(input: DisconnectExocomputeClusterInput!): Void
+        internal void InitMutationDisconnectExocomputeCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DisconnectExocomputeClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDisconnectExocomputeCluster",
+                "($input: DisconnectExocomputeClusterInput!)",
+                "System.String",
+                Mutation.DisconnectExocomputeCluster,
+                Mutation.DisconnectExocomputeClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterId = $someString
+	# REQUIRED
+	cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // exocomputeClusterConnect(input: ExocomputeClusterConnectInput!): ExocomputeClusterConnectReply!
         internal void InitMutationExocomputeClusterConnect()
         {
@@ -1587,6 +1787,10 @@ $query.Var.input = @{
 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
 	# REQUIRED
 	clusterUuid = $someString
+	# OPTIONAL
+	batchSize = $someInt
+	# OPTIONAL
+	newNodeCount = $someInt
 }"
             );
         }
@@ -1669,6 +1873,8 @@ $query.Var.input = @{
 		instanceProfileName = $someString
 		# OPTIONAL
 		cdmProduct = $someString
+		# OPTIONAL
+		placementGroupName = $someString
 		# OPTIONAL
 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
 		# OPTIONAL
@@ -1815,6 +2021,33 @@ $query.Var.input = @{
 			useQuickDrain = $someBoolean
 		}
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // replaceClusterNode(input: ReplaceClusterNodeInput!): ReplaceClusterNodeReply!
+        internal void InitMutationReplaceClusterNode()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ReplaceClusterNodeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationReplaceClusterNode",
+                "($input: ReplaceClusterNodeInput!)",
+                "ReplaceClusterNodeReply",
+                Mutation.ReplaceClusterNode,
+                Mutation.ReplaceClusterNodeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	newNodeId = $someString
+	# OPTIONAL
+	ipmiPassword = $someString
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

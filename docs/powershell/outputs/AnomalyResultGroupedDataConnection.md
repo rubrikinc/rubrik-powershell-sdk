@@ -6,6 +6,6 @@ Paginated list of AnomalyResultGroupedData objects. Each page of the results inc
 - nodes: list of AnomalyResultGroupedDatas
   - List of AnomalyResultGroupedData objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of AnomalyResultGroupedData objects matching the request arguments.

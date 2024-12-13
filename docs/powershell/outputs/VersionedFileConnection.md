@@ -6,6 +6,6 @@ Paginated list of VersionedFile objects. Each page of the results includes at mo
 - nodes: list of VersionedFiles
   - List of VersionedFile objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of VersionedFile objects matching the request arguments.

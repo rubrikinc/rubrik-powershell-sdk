@@ -6,6 +6,6 @@ Paginated list of CassandraSource objects. Each page of the results includes at 
 - nodes: list of CassandraSources
   - List of CassandraSource objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of CassandraSource objects matching the request arguments.

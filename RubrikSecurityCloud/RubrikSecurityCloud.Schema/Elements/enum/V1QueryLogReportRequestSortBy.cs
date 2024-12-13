@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum V1QueryLogReportRequestSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "V1_QUERY_LOG_REPORT_REQUEST_SORT_BY_DATABASE_TYPE")]
         V1_QUERY_LOG_REPORT_REQUEST_SORT_BY_DATABASE_TYPE,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         V1_QUERY_LOG_REPORT_REQUEST_SORT_BY_LOG_BACKUP_FREQUENCY,
 
         [EnumMember(Value = "V1_QUERY_LOG_REPORT_REQUEST_SORT_BY_NAME")]
-        V1_QUERY_LOG_REPORT_REQUEST_SORT_BY_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        V1_QUERY_LOG_REPORT_REQUEST_SORT_BY_NAME
 
 
     } // enum V1QueryLogReportRequestSortBy

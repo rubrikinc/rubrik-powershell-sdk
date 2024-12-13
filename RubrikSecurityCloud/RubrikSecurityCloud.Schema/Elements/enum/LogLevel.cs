@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum LogLevel
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DEBUG")]
         DEBUG,
 
         [EnumMember(Value = "INFO")]
-        INFO,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        INFO
 
 
     } // enum LogLevel

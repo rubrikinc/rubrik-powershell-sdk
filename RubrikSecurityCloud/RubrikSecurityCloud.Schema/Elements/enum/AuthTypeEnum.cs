@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AuthTypeEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "KERBEROS")]
         KERBEROS,
 
         [EnumMember(Value = "NONE")]
-        NONE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NONE
 
 
     } // enum AuthTypeEnum

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HostFilterStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HOST_FILTER_STATUS_INSTALLED")]
         HOST_FILTER_STATUS_INSTALLED,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         HOST_FILTER_STATUS_UNKNOWN,
 
         [EnumMember(Value = "HOST_FILTER_STATUS_UNSUPPORTED_BY_VMWARE")]
-        HOST_FILTER_STATUS_UNSUPPORTED_BY_VMWARE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        HOST_FILTER_STATUS_UNSUPPORTED_BY_VMWARE
 
 
     } // enum HostFilterStatus

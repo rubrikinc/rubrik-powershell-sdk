@@ -20,6 +20,21 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int64? ClientSessionTimeoutInSeconds
+        // GraphQL -> clientSessionTimeoutInSeconds: Long! (scalar)
+        [JsonProperty("clientSessionTimeoutInSeconds")]
+        public System.Int64? ClientSessionTimeoutInSeconds { get; set; }
+
+        //      C# -> System.Int64? ClientSessionTimeoutInSecondsMaxLimit
+        // GraphQL -> clientSessionTimeoutInSecondsMaxLimit: Long! (scalar)
+        [JsonProperty("clientSessionTimeoutInSecondsMaxLimit")]
+        public System.Int64? ClientSessionTimeoutInSecondsMaxLimit { get; set; }
+
+        //      C# -> System.Int64? ClientSessionTimeoutInSecondsMinLimit
+        // GraphQL -> clientSessionTimeoutInSecondsMinLimit: Long! (scalar)
+        [JsonProperty("clientSessionTimeoutInSecondsMinLimit")]
+        public System.Int64? ClientSessionTimeoutInSecondsMinLimit { get; set; }
+
         //      C# -> System.Int64? InactivityTimeoutInSeconds
         // GraphQL -> inactivityTimeoutInSeconds: Long! (scalar)
         [JsonProperty("inactivityTimeoutInSeconds")]
@@ -85,6 +100,9 @@ namespace RubrikSecurityCloud.Types
     }
 
     public UserSessionManagementConfig Set(
+        System.Int64? ClientSessionTimeoutInSeconds = null,
+        System.Int64? ClientSessionTimeoutInSecondsMaxLimit = null,
+        System.Int64? ClientSessionTimeoutInSecondsMinLimit = null,
         System.Int64? InactivityTimeoutInSeconds = null,
         System.Int64? InactivityTimeoutInSecondsMaxLimit = null,
         System.Int64? InactivityTimeoutInSecondsMinLimit = null,
@@ -98,6 +116,15 @@ namespace RubrikSecurityCloud.Types
         System.Int64? SessionTimeoutInSecondsMinLimit = null
     ) 
     {
+        if ( ClientSessionTimeoutInSeconds != null ) {
+            this.ClientSessionTimeoutInSeconds = ClientSessionTimeoutInSeconds;
+        }
+        if ( ClientSessionTimeoutInSecondsMaxLimit != null ) {
+            this.ClientSessionTimeoutInSecondsMaxLimit = ClientSessionTimeoutInSecondsMaxLimit;
+        }
+        if ( ClientSessionTimeoutInSecondsMinLimit != null ) {
+            this.ClientSessionTimeoutInSecondsMinLimit = ClientSessionTimeoutInSecondsMinLimit;
+        }
         if ( InactivityTimeoutInSeconds != null ) {
             this.InactivityTimeoutInSeconds = InactivityTimeoutInSeconds;
         }
@@ -145,6 +172,33 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int64? ClientSessionTimeoutInSeconds
+        // GraphQL -> clientSessionTimeoutInSeconds: Long! (scalar)
+        if (this.ClientSessionTimeoutInSeconds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clientSessionTimeoutInSeconds\n" ;
+            } else {
+                s += ind + "clientSessionTimeoutInSeconds\n" ;
+            }
+        }
+        //      C# -> System.Int64? ClientSessionTimeoutInSecondsMaxLimit
+        // GraphQL -> clientSessionTimeoutInSecondsMaxLimit: Long! (scalar)
+        if (this.ClientSessionTimeoutInSecondsMaxLimit != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clientSessionTimeoutInSecondsMaxLimit\n" ;
+            } else {
+                s += ind + "clientSessionTimeoutInSecondsMaxLimit\n" ;
+            }
+        }
+        //      C# -> System.Int64? ClientSessionTimeoutInSecondsMinLimit
+        // GraphQL -> clientSessionTimeoutInSecondsMinLimit: Long! (scalar)
+        if (this.ClientSessionTimeoutInSecondsMinLimit != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clientSessionTimeoutInSecondsMinLimit\n" ;
+            } else {
+                s += ind + "clientSessionTimeoutInSecondsMinLimit\n" ;
+            }
+        }
         //      C# -> System.Int64? InactivityTimeoutInSeconds
         // GraphQL -> inactivityTimeoutInSeconds: Long! (scalar)
         if (this.InactivityTimeoutInSeconds != null) {
@@ -251,6 +305,57 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.Int64? ClientSessionTimeoutInSeconds
+        // GraphQL -> clientSessionTimeoutInSeconds: Long! (scalar)
+        if (ec.Includes("clientSessionTimeoutInSeconds",true))
+        {
+            if(this.ClientSessionTimeoutInSeconds == null) {
+
+                this.ClientSessionTimeoutInSeconds = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClientSessionTimeoutInSeconds != null && ec.Excludes("clientSessionTimeoutInSeconds",true))
+        {
+            this.ClientSessionTimeoutInSeconds = null;
+        }
+        //      C# -> System.Int64? ClientSessionTimeoutInSecondsMaxLimit
+        // GraphQL -> clientSessionTimeoutInSecondsMaxLimit: Long! (scalar)
+        if (ec.Includes("clientSessionTimeoutInSecondsMaxLimit",true))
+        {
+            if(this.ClientSessionTimeoutInSecondsMaxLimit == null) {
+
+                this.ClientSessionTimeoutInSecondsMaxLimit = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClientSessionTimeoutInSecondsMaxLimit != null && ec.Excludes("clientSessionTimeoutInSecondsMaxLimit",true))
+        {
+            this.ClientSessionTimeoutInSecondsMaxLimit = null;
+        }
+        //      C# -> System.Int64? ClientSessionTimeoutInSecondsMinLimit
+        // GraphQL -> clientSessionTimeoutInSecondsMinLimit: Long! (scalar)
+        if (ec.Includes("clientSessionTimeoutInSecondsMinLimit",true))
+        {
+            if(this.ClientSessionTimeoutInSecondsMinLimit == null) {
+
+                this.ClientSessionTimeoutInSecondsMinLimit = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClientSessionTimeoutInSecondsMinLimit != null && ec.Excludes("clientSessionTimeoutInSecondsMinLimit",true))
+        {
+            this.ClientSessionTimeoutInSecondsMinLimit = null;
+        }
         //      C# -> System.Int64? InactivityTimeoutInSeconds
         // GraphQL -> inactivityTimeoutInSeconds: Long! (scalar)
         if (ec.Includes("inactivityTimeoutInSeconds",true))

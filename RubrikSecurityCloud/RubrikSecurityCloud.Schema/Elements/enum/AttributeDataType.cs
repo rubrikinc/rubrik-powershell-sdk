@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AttributeDataType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ATTRIBUTE_DATA_TYPE_UNSPECIFIED")]
         ATTRIBUTE_DATA_TYPE_UNSPECIFIED,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         ISO_8601_DATETIME,
 
         [EnumMember(Value = "STRING")]
-        STRING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STRING
 
 
     } // enum AttributeDataType

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum IssueStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "OPEN")]
         OPEN,
 
         [EnumMember(Value = "RESOLVED")]
-        RESOLVED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        RESOLVED
 
 
     } // enum IssueStatus

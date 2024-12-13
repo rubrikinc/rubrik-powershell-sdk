@@ -35,6 +35,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotType")]
         public SnapshotType? SnapshotType { get; set; }
 
+        //      C# -> System.String? LocationName
+        // GraphQL -> locationName: String! (scalar)
+        [JsonProperty("locationName")]
+        public System.String? LocationName { get; set; }
+
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        [JsonProperty("snapshotId")]
+        public System.String? SnapshotId { get; set; }
+
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
         // GraphQL -> cloudNativeAccountId: CloudNativeAccountIdWithName (type)
         [JsonProperty("cloudNativeAccountId")]
@@ -58,6 +68,8 @@ namespace RubrikSecurityCloud.Types
         CloudProviderType? CloudType = null,
         FileRecoveryFeasibility? FileRecoveryFeasibility = null,
         SnapshotType? SnapshotType = null,
+        System.String? LocationName = null,
+        System.String? SnapshotId = null,
         CloudNativeAccountIdWithName? CloudNativeAccountId = null,
         CloudNativeRegion? SnapshotRegion = null
     ) 
@@ -70,6 +82,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotType != null ) {
             this.SnapshotType = SnapshotType;
+        }
+        if ( LocationName != null ) {
+            this.LocationName = LocationName;
+        }
+        if ( SnapshotId != null ) {
+            this.SnapshotId = SnapshotId;
         }
         if ( CloudNativeAccountId != null ) {
             this.CloudNativeAccountId = CloudNativeAccountId;
@@ -116,6 +134,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotType\n" ;
             } else {
                 s += ind + "snapshotType\n" ;
+            }
+        }
+        //      C# -> System.String? LocationName
+        // GraphQL -> locationName: String! (scalar)
+        if (this.LocationName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "locationName\n" ;
+            } else {
+                s += ind + "locationName\n" ;
+            }
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (this.SnapshotId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
             }
         }
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
@@ -199,6 +235,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotType != null && ec.Excludes("snapshotType",true))
         {
             this.SnapshotType = null;
+        }
+        //      C# -> System.String? LocationName
+        // GraphQL -> locationName: String! (scalar)
+        if (ec.Includes("locationName",true))
+        {
+            if(this.LocationName == null) {
+
+                this.LocationName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationName != null && ec.Excludes("locationName",true))
+        {
+            this.LocationName = null;
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (ec.Includes("snapshotId",true))
+        {
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
         // GraphQL -> cloudNativeAccountId: CloudNativeAccountIdWithName (type)

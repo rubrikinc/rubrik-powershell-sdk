@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureSqlDbBackupSetupStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CDC_DISABLED")]
         CDC_DISABLED,
 
@@ -46,10 +49,7 @@ namespace RubrikSecurityCloud.Types
         UNSUPPORTED_COLLATION_CONFIG,
 
         [EnumMember(Value = "UNSUPPORTED_COLUMNS_EXIST")]
-        UNSUPPORTED_COLUMNS_EXIST,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNSUPPORTED_COLUMNS_EXIST
 
 
     } // enum AzureSqlDbBackupSetupStatus

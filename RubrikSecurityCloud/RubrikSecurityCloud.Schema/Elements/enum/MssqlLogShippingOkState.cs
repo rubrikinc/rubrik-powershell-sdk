@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlLogShippingOkState
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MSSQL_LOG_SHIPPING_OK_STATE_RESTORING")]
         MSSQL_LOG_SHIPPING_OK_STATE_RESTORING,
 
         [EnumMember(Value = "MSSQL_LOG_SHIPPING_OK_STATE_STANDBY")]
-        MSSQL_LOG_SHIPPING_OK_STATE_STANDBY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MSSQL_LOG_SHIPPING_OK_STATE_STANDBY
 
 
     } // enum MssqlLogShippingOkState

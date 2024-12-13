@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MosaicAddStoreRequestStoreType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "MOSAIC_ADD_STORE_REQUEST_STORE_TYPE_AZURE_STORE")]
         MOSAIC_ADD_STORE_REQUEST_STORE_TYPE_AZURE_STORE,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         MOSAIC_ADD_STORE_REQUEST_STORE_TYPE_NFS_STORE,
 
         [EnumMember(Value = "MOSAIC_ADD_STORE_REQUEST_STORE_TYPE_S3_STORE")]
-        MOSAIC_ADD_STORE_REQUEST_STORE_TYPE_S3_STORE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MOSAIC_ADD_STORE_REQUEST_STORE_TYPE_S3_STORE
 
 
     } // enum MosaicAddStoreRequestStoreType

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum InventoryCard
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AHV_VMS_CDM")]
         AHV_VMS_CDM,
 
@@ -47,6 +50,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CASSANDRA")]
         CASSANDRA,
+
+        [EnumMember(Value = "D365")]
+        D365,
 
         [EnumMember(Value = "DB2")]
         DB2,
@@ -154,10 +160,7 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_HOSTS_CDM,
 
         [EnumMember(Value = "WINDOWS_VOLUME_GROUP")]
-        WINDOWS_VOLUME_GROUP,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS_VOLUME_GROUP
 
 
     } // enum InventoryCard

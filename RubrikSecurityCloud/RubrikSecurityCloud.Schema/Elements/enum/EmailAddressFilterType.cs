@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum EmailAddressFilterType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ALL")]
         ALL,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         FROM,
 
         [EnumMember(Value = "TO")]
-        TO,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TO
 
 
     } // enum EmailAddressFilterType

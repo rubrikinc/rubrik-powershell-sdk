@@ -21,6 +21,8 @@ AWS native S3 Bucket.
   - The time when the Amazon S3 bucket was created.
 - isExocomputeConfigured: System.Boolean
   - A boolean specifying whether exocompute is configured in the region.
+- awsNativeAccountDetails: AwsNativeAccountDetails
+  - AWS native account details.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount

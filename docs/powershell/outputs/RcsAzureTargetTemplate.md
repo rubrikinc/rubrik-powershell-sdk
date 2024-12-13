@@ -9,5 +9,7 @@ Specific info for Rcs Azure Target Template.
   - Redundancy for the RCV location.
 - immutabilitySettings: RcsImmutabilitySettings
   - Immutability setting of the template, that defines thenumber of days for which stored data will be immutable.
+- cloudNativeLocTemplateType: CloudNativeLocTemplateType
+  - Cloud native template type.
 - targetType: TargetType
   - The type of this Target.

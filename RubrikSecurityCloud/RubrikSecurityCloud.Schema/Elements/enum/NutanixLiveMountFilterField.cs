@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NutanixLiveMountFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         SOURCE_OR_ACTIVE_VM_CDMID,
 
         [EnumMember(Value = "SOURCE_VM_CDMID")]
-        SOURCE_VM_CDMID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SOURCE_VM_CDMID
 
 
     } // enum NutanixLiveMountFilterField

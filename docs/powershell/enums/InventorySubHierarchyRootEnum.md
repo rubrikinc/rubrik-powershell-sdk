@@ -37,3 +37,4 @@ Inventory workloads that are supported on Rubrik.
 - M365_BACKUP_STORAGE_ROOT - M365 Backup Storage Root.
 - MYSQLDB_ROOT - MySQL root.
 - CLOUD_DIRECT_NAS_ROOT - Replaces CLOUD_DIRECT_NAS_EXPORT_ROOT
+- D365_ROOT - D365 root.

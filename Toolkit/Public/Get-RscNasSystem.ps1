@@ -15,40 +15,59 @@ function Get-RscNasSystem {
     .PARAMETER Id
     The Rubrik UUID of the Nas System object.
 
-    .PARAMETER First
-    The number of NAS systems to retrieve in one query.
+    .PARAMETER Name
+    The name of the NAS system to filter on.
+
+    .PARAMETER List
+    Switch to list all NAS systems.
 
     .PARAMETER AsQuery
     Instead of running the command, the query object is returned.
 
     .EXAMPLE
-    Get details of NAS system with id="72859a28-6276-555a-9a66-d93fe99d2751"
-    Get-RscNasSystem "72859a28-6276-555a-9a66-d93fe99d2751"
+    Retrieve list of NAS systems.
+    Get-RscNasSystem
+        or 
+    Get-RscNasSystem -List
+    
+    .EXAMPLE
+    Retrieve all NAS systems with the name containing "foo".
+    Get-RscNasSystem -Name "foo"
+        or
+    Get-RscNasSystem "foo"
 
     .EXAMPLE
-    Retrieve list of NAS systems.
-    Get-RscNasSystem -First 2
+    Get details of NAS system with id="72859a28-6276-555a-9a66-d93fe99d2751"
+    Get-RscNasSystem -Id "72859a28-6276-555a-9a66-d93fe99d2751"
     #>
 
     [CmdletBinding(
-        DefaultParameterSetName = "Id"
+        DefaultParameterSetName = "List"
     )]
     Param(
-        # The UUID of the object representing the NAS system.
+        # The name of the NAS system to filter on.
         [Parameter(
-            ParameterSetName = "Id",
-            Mandatory = $true,
+            ParameterSetName = "Name",
+            Mandatory = $false,
             Position = 0
         )]
         [ValidateNotNullOrEmpty()]
-        [String]$Id,
+        [String]$Name,
 
-        # The number of NAS systems to retrieve in one query.
+        # The UUID of the object representing the NAS system.
+        [Parameter(
+            ParameterSetName = "Id",
+            Mandatory = $false
+        )]
+        [ValidateNotNullOrEmpty()]
+        [String]$Id,
+        
+        # Retrieve list of NAS systems.
         [Parameter(
             ParameterSetName = "List",
             Mandatory = $false
         )]
-        [Int]$First = 50,
+        [Switch]$List,
 
         # Should Cmdlet return the query object instead of running it
         [Parameter(Mandatory = $false)]
@@ -67,9 +86,18 @@ function Get-RscNasSystem {
 
                 $query.Var.Fid = $Id
             }
+
+            "Name" {
+                $query = New-RscQueryNas -Operation Systems
+                $query.Field.Nodes[0].VendorType = "FETCH"
+                $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $InputObj.Field = "Name"
+                $InputObj.Texts = @($Name)
+                $query.Var.Filter = @($InputObj)
+            }
+
             "List" {
                 $query = New-RscQueryNas -Operation Systems
-                
                 $query.Field.Nodes[0].VendorType = "FETCH"
             }
         }
@@ -80,7 +108,7 @@ function Get-RscNasSystem {
 
         $result = Invoke-Rsc -Query $query
 
-        if ($PSCmdlet.ParameterSetName -eq "List") {
+        if ($PSCmdlet.ParameterSetName -eq "Name" -or $PSCmdlet.ParameterSetName -eq "List") {
             $result = $result.Nodes
         }
 

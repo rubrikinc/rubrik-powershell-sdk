@@ -6,6 +6,6 @@ Paginated list of SnappableGroupBy objects. Each page of the results includes at
 - nodes: list of SnappableGroupBys
   - List of SnappableGroupBy objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of SnappableGroupBy objects matching the request arguments.

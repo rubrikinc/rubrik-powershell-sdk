@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DownloadSnapshotFromLocationSnappableType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY")]
         ACTIVE_DIRECTORY,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         VCD,
 
         [EnumMember(Value = "VSPHERE")]
-        VSPHERE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VSPHERE
 
 
     } // enum DownloadSnapshotFromLocationSnappableType

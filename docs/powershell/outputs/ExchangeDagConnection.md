@@ -6,6 +6,6 @@ Paginated list of ExchangeDag objects. Each page of the results includes at most
 - nodes: list of ExchangeDags
   - List of ExchangeDag objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ExchangeDag objects matching the request arguments.

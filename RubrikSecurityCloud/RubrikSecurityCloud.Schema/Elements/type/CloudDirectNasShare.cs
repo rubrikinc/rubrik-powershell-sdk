@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public HierarchyObjectTypeEnum? ObjectType { get; set; }
 
+        //      C# -> CloudDirectNasProtocolType? Protocol
+        // GraphQL -> protocol: CloudDirectNasProtocolType! (enum)
+        [JsonProperty("protocol")]
+        public CloudDirectNasProtocolType? Protocol { get; set; }
+
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         [JsonProperty("slaAssignment")]
@@ -111,10 +116,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
 
-        //      C# -> System.String? Protocol
-        // GraphQL -> protocol: String! (scalar)
-        [JsonProperty("protocol")]
-        public System.String? Protocol { get; set; }
+        //      C# -> System.String? PolicyName
+        // GraphQL -> policyName: String! (scalar)
+        [JsonProperty("policyName")]
+        public System.String? PolicyName { get; set; }
 
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -126,10 +131,35 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("systemId")]
         public System.String? SystemId { get; set; }
 
+        //      C# -> System.Int32? TotalSnapshots
+        // GraphQL -> totalSnapshots: Int! (scalar)
+        [JsonProperty("totalSnapshots")]
+        public System.Int32? TotalSnapshots { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
         public List<Org>? AllOrgs { get; set; }
+
+        //      C# -> CloudDirectNasShareConnection? ChildShares
+        // GraphQL -> childShares: CloudDirectNasShareConnection (type)
+        [JsonProperty("childShares")]
+        public CloudDirectNasShareConnection? ChildShares { get; set; }
+
+        //      C# -> CloudDirectNasNamespace? CloudDirectNasNamespace
+        // GraphQL -> cloudDirectNasNamespace: CloudDirectNasNamespace (type)
+        [JsonProperty("cloudDirectNasNamespace")]
+        public CloudDirectNasNamespace? CloudDirectNasNamespace { get; set; }
+
+        //      C# -> CloudDirectNasSystem? CloudDirectNasSystem
+        // GraphQL -> cloudDirectNasSystem: CloudDirectNasSystem (type)
+        [JsonProperty("cloudDirectNasSystem")]
+        public CloudDirectNasSystem? CloudDirectNasSystem { get; set; }
+
+        //      C# -> CloudDirectSnapshotsGroupBySummaryConnection? CloudDirectSnapshotGroupBySummary
+        // GraphQL -> cloudDirectSnapshotGroupBySummary: CloudDirectSnapshotsGroupBySummaryConnection (type)
+        [JsonProperty("cloudDirectSnapshotGroupBySummary")]
+        public CloudDirectSnapshotsGroupBySummaryConnection? CloudDirectSnapshotGroupBySummary { get; set; }
 
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
@@ -146,6 +176,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> CloudDirectSnapshot? NewestSnapshot
+        // GraphQL -> newestSnapshot: CloudDirectSnapshot (type)
+        [JsonProperty("newestSnapshot")]
+        public CloudDirectSnapshot? NewestSnapshot { get; set; }
+
+        //      C# -> CloudDirectSnapshot? OldestSnapshot
+        // GraphQL -> oldestSnapshot: CloudDirectSnapshot (type)
+        [JsonProperty("oldestSnapshot")]
+        public CloudDirectSnapshot? OldestSnapshot { get; set; }
+
+        //      C# -> CloudDirectNasShare? ParentShare
+        // GraphQL -> parentShare: CloudDirectNasShare (type)
+        [JsonProperty("parentShare")]
+        public CloudDirectNasShare? ParentShare { get; set; }
+
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         [JsonProperty("physicalPath")]
@@ -161,10 +206,55 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotDistribution")]
         public SnapshotDistribution? SnapshotDistribution { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars ChildShares { get; set; }
+
+        public RscGqlVars CloudDirectSnapshotGroupBySummary { get; set; }
+
+        public RscGqlVars ParentShare { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] childSharesArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortBy", "HierarchySortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                };
+            this.ChildShares =
+                new RscGqlVars(null, childSharesArgs, null, true);
+            Tuple<string, string>[] cloudDirectSnapshotGroupBySummaryArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("filter", "[CloudDirectSnapshotsFilterInput!]"),
+                    Tuple.Create("groupBy", "SnapshotGroupByTime!"),
+                    Tuple.Create("timeRange", "TimeRangeInput"),
+                };
+            this.CloudDirectSnapshotGroupBySummary =
+                new RscGqlVars(null, cloudDirectSnapshotGroupBySummaryArgs, null, true);
+            Tuple<string, string>[] parentShareArgs = {
+                    Tuple.Create("sortBy", "HierarchySortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                };
+            this.ParentShare =
+                new RscGqlVars(null, parentShareArgs, null, true);
+        }
+    }
+
+    public CloudDirectNasShare()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "CloudDirectNasShare";
@@ -172,6 +262,7 @@ namespace RubrikSecurityCloud.Types
 
     public CloudDirectNasShare Set(
         HierarchyObjectTypeEnum? ObjectType = null,
+        CloudDirectNasProtocolType? Protocol = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
@@ -189,13 +280,21 @@ namespace RubrikSecurityCloud.Types
         System.String? NamespaceId = null,
         System.String? NcdPolicyName = null,
         System.Int32? NumWorkloadDescendants = null,
-        System.String? Protocol = null,
+        System.String? PolicyName = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? SystemId = null,
+        System.Int32? TotalSnapshots = null,
         List<Org>? AllOrgs = null,
+        CloudDirectNasShareConnection? ChildShares = null,
+        CloudDirectNasNamespace? CloudDirectNasNamespace = null,
+        CloudDirectNasSystem? CloudDirectNasSystem = null,
+        CloudDirectSnapshotsGroupBySummaryConnection? CloudDirectSnapshotGroupBySummary = null,
         Cluster? Cluster = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
+        CloudDirectSnapshot? NewestSnapshot = null,
+        CloudDirectSnapshot? OldestSnapshot = null,
+        CloudDirectNasShare? ParentShare = null,
         List<PathNode>? PhysicalPath = null,
         SecurityMetadata? SecurityMetadata = null,
         SnapshotDistribution? SnapshotDistribution = null
@@ -203,6 +302,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
+        }
+        if ( Protocol != null ) {
+            this.Protocol = Protocol;
         }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
@@ -255,8 +357,8 @@ namespace RubrikSecurityCloud.Types
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
         }
-        if ( Protocol != null ) {
-            this.Protocol = Protocol;
+        if ( PolicyName != null ) {
+            this.PolicyName = PolicyName;
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
@@ -264,8 +366,23 @@ namespace RubrikSecurityCloud.Types
         if ( SystemId != null ) {
             this.SystemId = SystemId;
         }
+        if ( TotalSnapshots != null ) {
+            this.TotalSnapshots = TotalSnapshots;
+        }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
+        }
+        if ( ChildShares != null ) {
+            this.ChildShares = ChildShares;
+        }
+        if ( CloudDirectNasNamespace != null ) {
+            this.CloudDirectNasNamespace = CloudDirectNasNamespace;
+        }
+        if ( CloudDirectNasSystem != null ) {
+            this.CloudDirectNasSystem = CloudDirectNasSystem;
+        }
+        if ( CloudDirectSnapshotGroupBySummary != null ) {
+            this.CloudDirectSnapshotGroupBySummary = CloudDirectSnapshotGroupBySummary;
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
@@ -275,6 +392,15 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( NewestSnapshot != null ) {
+            this.NewestSnapshot = NewestSnapshot;
+        }
+        if ( OldestSnapshot != null ) {
+            this.OldestSnapshot = OldestSnapshot;
+        }
+        if ( ParentShare != null ) {
+            this.ParentShare = ParentShare;
         }
         if ( PhysicalPath != null ) {
             this.PhysicalPath = PhysicalPath;
@@ -306,6 +432,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectType\n" ;
             } else {
                 s += ind + "objectType\n" ;
+            }
+        }
+        //      C# -> CloudDirectNasProtocolType? Protocol
+        // GraphQL -> protocol: CloudDirectNasProtocolType! (enum)
+        if (this.Protocol != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "protocol\n" ;
+            } else {
+                s += ind + "protocol\n" ;
             }
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
@@ -473,13 +608,13 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "numWorkloadDescendants\n" ;
             }
         }
-        //      C# -> System.String? Protocol
-        // GraphQL -> protocol: String! (scalar)
-        if (this.Protocol != null) {
+        //      C# -> System.String? PolicyName
+        // GraphQL -> policyName: String! (scalar)
+        if (this.PolicyName != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "protocol\n" ;
+                s += conf.Prefix + "policyName\n" ;
             } else {
-                s += ind + "protocol\n" ;
+                s += ind + "policyName\n" ;
             }
         }
         //      C# -> System.Boolean? SlaPauseStatus
@@ -500,6 +635,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "systemId\n" ;
             }
         }
+        //      C# -> System.Int32? TotalSnapshots
+        // GraphQL -> totalSnapshots: Int! (scalar)
+        if (this.TotalSnapshots != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalSnapshots\n" ;
+            } else {
+                s += ind + "totalSnapshots\n" ;
+            }
+        }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
@@ -509,6 +653,54 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectNasShareConnection? ChildShares
+        // GraphQL -> childShares: CloudDirectNasShareConnection (type)
+        if (this.ChildShares != null) {
+            var fspec = this.ChildShares.AsFieldSpec(conf.Child("childShares"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "childShares" + "\n(" + this.Vars.ChildShares.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectNasNamespace? CloudDirectNasNamespace
+        // GraphQL -> cloudDirectNasNamespace: CloudDirectNasNamespace (type)
+        if (this.CloudDirectNasNamespace != null) {
+            var fspec = this.CloudDirectNasNamespace.AsFieldSpec(conf.Child("cloudDirectNasNamespace"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudDirectNasNamespace" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectNasSystem? CloudDirectNasSystem
+        // GraphQL -> cloudDirectNasSystem: CloudDirectNasSystem (type)
+        if (this.CloudDirectNasSystem != null) {
+            var fspec = this.CloudDirectNasSystem.AsFieldSpec(conf.Child("cloudDirectNasSystem"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudDirectNasSystem" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectSnapshotsGroupBySummaryConnection? CloudDirectSnapshotGroupBySummary
+        // GraphQL -> cloudDirectSnapshotGroupBySummary: CloudDirectSnapshotsGroupBySummaryConnection (type)
+        if (this.CloudDirectSnapshotGroupBySummary != null) {
+            var fspec = this.CloudDirectSnapshotGroupBySummary.AsFieldSpec(conf.Child("cloudDirectSnapshotGroupBySummary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudDirectSnapshotGroupBySummary" + "\n(" + this.Vars.CloudDirectSnapshotGroupBySummary.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -545,6 +737,42 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectSnapshot? NewestSnapshot
+        // GraphQL -> newestSnapshot: CloudDirectSnapshot (type)
+        if (this.NewestSnapshot != null) {
+            var fspec = this.NewestSnapshot.AsFieldSpec(conf.Child("newestSnapshot"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectSnapshot? OldestSnapshot
+        // GraphQL -> oldestSnapshot: CloudDirectSnapshot (type)
+        if (this.OldestSnapshot != null) {
+            var fspec = this.OldestSnapshot.AsFieldSpec(conf.Child("oldestSnapshot"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "oldestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectNasShare? ParentShare
+        // GraphQL -> parentShare: CloudDirectNasShare (type)
+        if (this.ParentShare != null) {
+            var fspec = this.ParentShare.AsFieldSpec(conf.Child("parentShare"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "parentShare" + "\n(" + this.Vars.ParentShare.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -607,6 +835,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectType != null && ec.Excludes("objectType",true))
         {
             this.ObjectType = null;
+        }
+        //      C# -> CloudDirectNasProtocolType? Protocol
+        // GraphQL -> protocol: CloudDirectNasProtocolType! (enum)
+        if (ec.Includes("protocol",true))
+        {
+            if(this.Protocol == null) {
+
+                this.Protocol = new CloudDirectNasProtocolType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Protocol != null && ec.Excludes("protocol",true))
+        {
+            this.Protocol = null;
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
@@ -918,22 +1163,22 @@ namespace RubrikSecurityCloud.Types
         {
             this.NumWorkloadDescendants = null;
         }
-        //      C# -> System.String? Protocol
-        // GraphQL -> protocol: String! (scalar)
-        if (ec.Includes("protocol",true))
+        //      C# -> System.String? PolicyName
+        // GraphQL -> policyName: String! (scalar)
+        if (ec.Includes("policyName",true))
         {
-            if(this.Protocol == null) {
+            if(this.PolicyName == null) {
 
-                this.Protocol = "FETCH";
+                this.PolicyName = "FETCH";
 
             } else {
 
 
             }
         }
-        else if (this.Protocol != null && ec.Excludes("protocol",true))
+        else if (this.PolicyName != null && ec.Excludes("policyName",true))
         {
-            this.Protocol = null;
+            this.PolicyName = null;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -969,6 +1214,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.SystemId = null;
         }
+        //      C# -> System.Int32? TotalSnapshots
+        // GraphQL -> totalSnapshots: Int! (scalar)
+        if (ec.Includes("totalSnapshots",true))
+        {
+            if(this.TotalSnapshots == null) {
+
+                this.TotalSnapshots = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalSnapshots != null && ec.Excludes("totalSnapshots",true))
+        {
+            this.TotalSnapshots = null;
+        }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (ec.Includes("allOrgs",false))
@@ -987,6 +1249,82 @@ namespace RubrikSecurityCloud.Types
         else if (this.AllOrgs != null && ec.Excludes("allOrgs",false))
         {
             this.AllOrgs = null;
+        }
+        //      C# -> CloudDirectNasShareConnection? ChildShares
+        // GraphQL -> childShares: CloudDirectNasShareConnection (type)
+        if (ec.Includes("childShares",false))
+        {
+            if(this.ChildShares == null) {
+
+                this.ChildShares = new CloudDirectNasShareConnection();
+                this.ChildShares.ApplyExploratoryFieldSpec(ec.NewChild("childShares"));
+
+            } else {
+
+                this.ChildShares.ApplyExploratoryFieldSpec(ec.NewChild("childShares"));
+
+            }
+        }
+        else if (this.ChildShares != null && ec.Excludes("childShares",false))
+        {
+            this.ChildShares = null;
+        }
+        //      C# -> CloudDirectNasNamespace? CloudDirectNasNamespace
+        // GraphQL -> cloudDirectNasNamespace: CloudDirectNasNamespace (type)
+        if (ec.Includes("cloudDirectNasNamespace",false))
+        {
+            if(this.CloudDirectNasNamespace == null) {
+
+                this.CloudDirectNasNamespace = new CloudDirectNasNamespace();
+                this.CloudDirectNasNamespace.ApplyExploratoryFieldSpec(ec.NewChild("cloudDirectNasNamespace"));
+
+            } else {
+
+                this.CloudDirectNasNamespace.ApplyExploratoryFieldSpec(ec.NewChild("cloudDirectNasNamespace"));
+
+            }
+        }
+        else if (this.CloudDirectNasNamespace != null && ec.Excludes("cloudDirectNasNamespace",false))
+        {
+            this.CloudDirectNasNamespace = null;
+        }
+        //      C# -> CloudDirectNasSystem? CloudDirectNasSystem
+        // GraphQL -> cloudDirectNasSystem: CloudDirectNasSystem (type)
+        if (ec.Includes("cloudDirectNasSystem",false))
+        {
+            if(this.CloudDirectNasSystem == null) {
+
+                this.CloudDirectNasSystem = new CloudDirectNasSystem();
+                this.CloudDirectNasSystem.ApplyExploratoryFieldSpec(ec.NewChild("cloudDirectNasSystem"));
+
+            } else {
+
+                this.CloudDirectNasSystem.ApplyExploratoryFieldSpec(ec.NewChild("cloudDirectNasSystem"));
+
+            }
+        }
+        else if (this.CloudDirectNasSystem != null && ec.Excludes("cloudDirectNasSystem",false))
+        {
+            this.CloudDirectNasSystem = null;
+        }
+        //      C# -> CloudDirectSnapshotsGroupBySummaryConnection? CloudDirectSnapshotGroupBySummary
+        // GraphQL -> cloudDirectSnapshotGroupBySummary: CloudDirectSnapshotsGroupBySummaryConnection (type)
+        if (ec.Includes("cloudDirectSnapshotGroupBySummary",false))
+        {
+            if(this.CloudDirectSnapshotGroupBySummary == null) {
+
+                this.CloudDirectSnapshotGroupBySummary = new CloudDirectSnapshotsGroupBySummaryConnection();
+                this.CloudDirectSnapshotGroupBySummary.ApplyExploratoryFieldSpec(ec.NewChild("cloudDirectSnapshotGroupBySummary"));
+
+            } else {
+
+                this.CloudDirectSnapshotGroupBySummary.ApplyExploratoryFieldSpec(ec.NewChild("cloudDirectSnapshotGroupBySummary"));
+
+            }
+        }
+        else if (this.CloudDirectSnapshotGroupBySummary != null && ec.Excludes("cloudDirectSnapshotGroupBySummary",false))
+        {
+            this.CloudDirectSnapshotGroupBySummary = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
@@ -1044,6 +1382,63 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> CloudDirectSnapshot? NewestSnapshot
+        // GraphQL -> newestSnapshot: CloudDirectSnapshot (type)
+        if (ec.Includes("newestSnapshot",false))
+        {
+            if(this.NewestSnapshot == null) {
+
+                this.NewestSnapshot = new CloudDirectSnapshot();
+                this.NewestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestSnapshot"));
+
+            } else {
+
+                this.NewestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestSnapshot"));
+
+            }
+        }
+        else if (this.NewestSnapshot != null && ec.Excludes("newestSnapshot",false))
+        {
+            this.NewestSnapshot = null;
+        }
+        //      C# -> CloudDirectSnapshot? OldestSnapshot
+        // GraphQL -> oldestSnapshot: CloudDirectSnapshot (type)
+        if (ec.Includes("oldestSnapshot",false))
+        {
+            if(this.OldestSnapshot == null) {
+
+                this.OldestSnapshot = new CloudDirectSnapshot();
+                this.OldestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("oldestSnapshot"));
+
+            } else {
+
+                this.OldestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("oldestSnapshot"));
+
+            }
+        }
+        else if (this.OldestSnapshot != null && ec.Excludes("oldestSnapshot",false))
+        {
+            this.OldestSnapshot = null;
+        }
+        //      C# -> CloudDirectNasShare? ParentShare
+        // GraphQL -> parentShare: CloudDirectNasShare (type)
+        if (ec.Includes("parentShare",false))
+        {
+            if(this.ParentShare == null) {
+
+                this.ParentShare = new CloudDirectNasShare();
+                this.ParentShare.ApplyExploratoryFieldSpec(ec.NewChild("parentShare"));
+
+            } else {
+
+                this.ParentShare.ApplyExploratoryFieldSpec(ec.NewChild("parentShare"));
+
+            }
+        }
+        else if (this.ParentShare != null && ec.Excludes("parentShare",false))
+        {
+            this.ParentShare = null;
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)

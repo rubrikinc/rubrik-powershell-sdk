@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlLogShippingTargetFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         SECONDARY_NAME,
 
         [EnumMember(Value = "STATUS")]
-        STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STATUS
 
 
     } // enum MssqlLogShippingTargetFilterField

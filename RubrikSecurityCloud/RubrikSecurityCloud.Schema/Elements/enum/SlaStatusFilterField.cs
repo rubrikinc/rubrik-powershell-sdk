@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SlaStatusFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_NAME")]
         CLUSTER_NAME,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         CLUSTER_UUID,
 
         [EnumMember(Value = "PAUSE_STATUS")]
-        PAUSE_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        PAUSE_STATUS
 
 
     } // enum SlaStatusFilterField

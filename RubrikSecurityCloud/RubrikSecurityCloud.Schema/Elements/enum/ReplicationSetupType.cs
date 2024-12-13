@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ReplicationSetupType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NAT")]
         NAT,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         PRIVATE,
 
         [EnumMember(Value = "REPLICATION_SETUP_TYPE_UNSPECIFIED")]
-        REPLICATION_SETUP_TYPE_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        REPLICATION_SETUP_TYPE_UNSPECIFIED
 
 
     } // enum ReplicationSetupType

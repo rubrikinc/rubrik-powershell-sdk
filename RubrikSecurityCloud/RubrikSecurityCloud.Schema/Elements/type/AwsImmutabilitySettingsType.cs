@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? IsObjectLockEnabled
+        // GraphQL -> isObjectLockEnabled: Boolean! (scalar)
+        [JsonProperty("isObjectLockEnabled")]
+        public System.Boolean? IsObjectLockEnabled { get; set; }
+
         //      C# -> System.Int32? LockDurationDays
         // GraphQL -> lockDurationDays: Int! (scalar)
         [JsonProperty("lockDurationDays")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsImmutabilitySettingsType Set(
+        System.Boolean? IsObjectLockEnabled = null,
         System.Int32? LockDurationDays = null
     ) 
     {
+        if ( IsObjectLockEnabled != null ) {
+            this.IsObjectLockEnabled = IsObjectLockEnabled;
+        }
         if ( LockDurationDays != null ) {
             this.LockDurationDays = LockDurationDays;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? IsObjectLockEnabled
+        // GraphQL -> isObjectLockEnabled: Boolean! (scalar)
+        if (this.IsObjectLockEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isObjectLockEnabled\n" ;
+            } else {
+                s += ind + "isObjectLockEnabled\n" ;
+            }
+        }
         //      C# -> System.Int32? LockDurationDays
         // GraphQL -> lockDurationDays: Int! (scalar)
         if (this.LockDurationDays != null) {
@@ -71,6 +89,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.Boolean? IsObjectLockEnabled
+        // GraphQL -> isObjectLockEnabled: Boolean! (scalar)
+        if (ec.Includes("isObjectLockEnabled",true))
+        {
+            if(this.IsObjectLockEnabled == null) {
+
+                this.IsObjectLockEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsObjectLockEnabled != null && ec.Excludes("isObjectLockEnabled",true))
+        {
+            this.IsObjectLockEnabled = null;
+        }
         //      C# -> System.Int32? LockDurationDays
         // GraphQL -> lockDurationDays: Int! (scalar)
         if (ec.Includes("lockDurationDays",true))

@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FilesetTemplateCreateOperatingSystemType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FILESET_TEMPLATE_CREATE_OPERATING_SYSTEM_TYPE_UNIX_LIKE")]
         FILESET_TEMPLATE_CREATE_OPERATING_SYSTEM_TYPE_UNIX_LIKE,
 
         [EnumMember(Value = "FILESET_TEMPLATE_CREATE_OPERATING_SYSTEM_TYPE_WINDOWS")]
-        FILESET_TEMPLATE_CREATE_OPERATING_SYSTEM_TYPE_WINDOWS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        FILESET_TEMPLATE_CREATE_OPERATING_SYSTEM_TYPE_WINDOWS
 
 
     } // enum FilesetTemplateCreateOperatingSystemType

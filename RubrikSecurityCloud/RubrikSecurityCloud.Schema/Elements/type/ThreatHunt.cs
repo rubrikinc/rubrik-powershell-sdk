@@ -30,11 +30,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public ThreatHuntStatus? Status { get; set; }
 
-        //      C# -> System.String? CreatedBy
-        // GraphQL -> createdBy: String! (scalar)
-        [JsonProperty("createdBy")]
-        public System.String? CreatedBy { get; set; }
-
         //      C# -> System.String? HuntId
         // GraphQL -> huntId: String! (scalar)
         [JsonProperty("huntId")]
@@ -49,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startTime: DateTime (scalar)
         [JsonProperty("startTime")]
         public DateTime? StartTime { get; set; }
+
+        //      C# -> User? CreatedBy
+        // GraphQL -> createdBy: User (type)
+        [JsonProperty("createdBy")]
+        public User? CreatedBy { get; set; }
 
         //      C# -> ThreatHuntDetails? HuntDetails
         // GraphQL -> huntDetails: ThreatHuntDetails! (type)
@@ -72,10 +72,10 @@ namespace RubrikSecurityCloud.Types
     public ThreatHunt Set(
         ThreatHuntType? HuntType = null,
         ThreatHuntStatus? Status = null,
-        System.String? CreatedBy = null,
         System.String? HuntId = null,
         System.String? Name = null,
         DateTime? StartTime = null,
+        User? CreatedBy = null,
         ThreatHuntDetails? HuntDetails = null,
         ThreatHuntStats? Stats = null
     ) 
@@ -86,9 +86,6 @@ namespace RubrikSecurityCloud.Types
         if ( Status != null ) {
             this.Status = Status;
         }
-        if ( CreatedBy != null ) {
-            this.CreatedBy = CreatedBy;
-        }
         if ( HuntId != null ) {
             this.HuntId = HuntId;
         }
@@ -97,6 +94,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( StartTime != null ) {
             this.StartTime = StartTime;
+        }
+        if ( CreatedBy != null ) {
+            this.CreatedBy = CreatedBy;
         }
         if ( HuntDetails != null ) {
             this.HuntDetails = HuntDetails;
@@ -136,15 +136,6 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "status\n" ;
             }
         }
-        //      C# -> System.String? CreatedBy
-        // GraphQL -> createdBy: String! (scalar)
-        if (this.CreatedBy != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "createdBy\n" ;
-            } else {
-                s += ind + "createdBy\n" ;
-            }
-        }
         //      C# -> System.String? HuntId
         // GraphQL -> huntId: String! (scalar)
         if (this.HuntId != null) {
@@ -170,6 +161,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "startTime\n" ;
             } else {
                 s += ind + "startTime\n" ;
+            }
+        }
+        //      C# -> User? CreatedBy
+        // GraphQL -> createdBy: User (type)
+        if (this.CreatedBy != null) {
+            var fspec = this.CreatedBy.AsFieldSpec(conf.Child("createdBy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "createdBy" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ThreatHuntDetails? HuntDetails
@@ -237,23 +240,6 @@ namespace RubrikSecurityCloud.Types
         {
             this.Status = null;
         }
-        //      C# -> System.String? CreatedBy
-        // GraphQL -> createdBy: String! (scalar)
-        if (ec.Includes("createdBy",true))
-        {
-            if(this.CreatedBy == null) {
-
-                this.CreatedBy = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.CreatedBy != null && ec.Excludes("createdBy",true))
-        {
-            this.CreatedBy = null;
-        }
         //      C# -> System.String? HuntId
         // GraphQL -> huntId: String! (scalar)
         if (ec.Includes("huntId",true))
@@ -304,6 +290,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.StartTime != null && ec.Excludes("startTime",true))
         {
             this.StartTime = null;
+        }
+        //      C# -> User? CreatedBy
+        // GraphQL -> createdBy: User (type)
+        if (ec.Includes("createdBy",false))
+        {
+            if(this.CreatedBy == null) {
+
+                this.CreatedBy = new User();
+                this.CreatedBy.ApplyExploratoryFieldSpec(ec.NewChild("createdBy"));
+
+            } else {
+
+                this.CreatedBy.ApplyExploratoryFieldSpec(ec.NewChild("createdBy"));
+
+            }
+        }
+        else if (this.CreatedBy != null && ec.Excludes("createdBy",false))
+        {
+            this.CreatedBy = null;
         }
         //      C# -> ThreatHuntDetails? HuntDetails
         // GraphQL -> huntDetails: ThreatHuntDetails! (type)

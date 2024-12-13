@@ -13,7 +13,7 @@ Browse channels in a Teams conversations snapshot.
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - snapshotFidOpt - System.String: snapshotFid arg which is of optional type
     - excludeArchived - System.Boolean
     - orgId - System.String: Org UUID.
@@ -253,7 +253,7 @@ List of Channels for the O365Team.
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - excludeArchived - System.Boolean
     - channelMembershipTypeFilter - ChannelMembershipType: Filter on channel membership type.
     - nameFilter - System.String
@@ -262,7 +262,7 @@ List of Channels for the O365Team.
 ID for the conversations folder in the Team's Group Mailbox.
 
 - There are 3 arguments.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - o365OrgId - System.String: The fid for the O365 organization.
 - Returns System.String.
@@ -272,7 +272,7 @@ Users who have posted in a team.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The fid for the workload.
+    - snappableFid - System.String: The FID for the workload.
     - o365OrgId - System.String: The fid for the O365 organization.
     - nameFilter - System.String
 - Returns O365TeamConversationsSenderConnection.

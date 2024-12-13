@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum OperatingSystemType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "OPERATING_SYSTEM_TYPE_AIX")]
         OPERATING_SYSTEM_TYPE_AIX,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         OPERATING_SYSTEM_TYPE_UNKNOWN,
 
         [EnumMember(Value = "OPERATING_SYSTEM_TYPE_WINDOWS")]
-        OPERATING_SYSTEM_TYPE_WINDOWS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        OPERATING_SYSTEM_TYPE_WINDOWS
 
 
     } // enum OperatingSystemType

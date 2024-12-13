@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SapHanaSystemSummaryContainerType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "SAP_HANA_SYSTEM_SUMMARY_CONTAINER_TYPE_MULTI_CONTAINER")]
         SAP_HANA_SYSTEM_SUMMARY_CONTAINER_TYPE_MULTI_CONTAINER,
 
         [EnumMember(Value = "SAP_HANA_SYSTEM_SUMMARY_CONTAINER_TYPE_SINGLE_CONTAINER")]
-        SAP_HANA_SYSTEM_SUMMARY_CONTAINER_TYPE_SINGLE_CONTAINER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SAP_HANA_SYSTEM_SUMMARY_CONTAINER_TYPE_SINGLE_CONTAINER
 
 
     } // enum SapHanaSystemSummaryContainerType

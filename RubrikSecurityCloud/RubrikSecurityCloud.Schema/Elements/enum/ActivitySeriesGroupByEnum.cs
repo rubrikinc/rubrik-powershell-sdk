@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ActivitySeriesGroupByEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "Cluster")]
         CLUSTER,
 
@@ -46,10 +49,7 @@ namespace RubrikSecurityCloud.Types
         WEEK,
 
         [EnumMember(Value = "Year")]
-        YEAR,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        YEAR
 
 
     } // enum ActivitySeriesGroupByEnum

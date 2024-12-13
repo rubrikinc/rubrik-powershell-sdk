@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HostVfdInstallConfig
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "HOST_VFD_INSTALL_CONFIG_DISABLED")]
         HOST_VFD_INSTALL_CONFIG_DISABLED,
 
         [EnumMember(Value = "HOST_VFD_INSTALL_CONFIG_ENABLED")]
-        HOST_VFD_INSTALL_CONFIG_ENABLED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        HOST_VFD_INSTALL_CONFIG_ENABLED
 
 
     } // enum HostVfdInstallConfig

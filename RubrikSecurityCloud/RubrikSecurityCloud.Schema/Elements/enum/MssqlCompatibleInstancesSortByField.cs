@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlCompatibleInstancesSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NAME")]
         NAME,
 
         [EnumMember(Value = "SORT_UNSPECIFIED")]
-        SORT_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SORT_UNSPECIFIED
 
 
     } // enum MssqlCompatibleInstancesSortByField

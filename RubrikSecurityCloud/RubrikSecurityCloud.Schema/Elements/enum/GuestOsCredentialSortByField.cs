@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GuestOsCredentialSortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_NAME")]
         CLUSTER_NAME,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         FIELD_UNSPECIFIED,
 
         [EnumMember(Value = "USER_NAME")]
-        USER_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USER_NAME
 
 
     } // enum GuestOsCredentialSortByField

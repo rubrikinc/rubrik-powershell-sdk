@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum IndicatorOfCompromiseKind
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "IOC_FILE_PATTERN")]
         IOC_FILE_PATTERN,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         IOC_UNSPECIFIED,
 
         [EnumMember(Value = "IOC_YARA")]
-        IOC_YARA,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        IOC_YARA
 
 
     } // enum IndicatorOfCompromiseKind

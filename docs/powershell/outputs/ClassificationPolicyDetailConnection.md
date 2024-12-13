@@ -6,6 +6,6 @@ Paginated list of ClassificationPolicyDetail objects. Each page of the results i
 - nodes: list of ClassificationPolicyDetails
   - List of ClassificationPolicyDetail objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of ClassificationPolicyDetail objects matching the request arguments.

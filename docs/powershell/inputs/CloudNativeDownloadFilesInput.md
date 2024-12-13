@@ -15,3 +15,5 @@ Input required to download indexed cloud-native snapshot files.
   - Rubrik ID of the account from which exocompute is launched during recovery. This is only applicable when the snapshot type is archived.
 - exocomputeRegion: System.String
   - Cloud account region where Rubrik Exocompute is launched during recovery. This is only applicable when the snapshot type is archived.
+- archivedSnapshotId: System.String
+  - ID of the archived snapshot.

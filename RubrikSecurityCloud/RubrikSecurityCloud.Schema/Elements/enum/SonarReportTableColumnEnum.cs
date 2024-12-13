@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SonarReportTableColumnEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NumCoveredObjects")]
         NUM_COVERED_OBJECTS,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         POLICY_NAME,
 
         [EnumMember(Value = "PolicyStatus")]
-        POLICY_STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        POLICY_STATUS
 
 
     } // enum SonarReportTableColumnEnum

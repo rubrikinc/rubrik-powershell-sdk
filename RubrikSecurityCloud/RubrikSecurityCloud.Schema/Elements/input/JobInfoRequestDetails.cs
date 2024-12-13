@@ -119,11 +119,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sapHanaDatabaseInfo")]
         public SapHanaDatabaseInfo? SapHanaDatabaseInfo { get; set; }
 
-        //      C# -> ExportVcdVappSnapshotInfo? ExportVcdVappSnapshotInfo
-        // GraphQL -> exportVcdVappSnapshotInfo: ExportVcdVappSnapshotInfo (input)
-        [JsonProperty("exportVcdVappSnapshotInfo")]
-        public ExportVcdVappSnapshotInfo? ExportVcdVappSnapshotInfo { get; set; }
-
         //      C# -> LiveMountRelocateInfo? LiveMountRelocateInfo
         // GraphQL -> liveMountRelocateInfo: LiveMountRelocateInfo (input)
         [JsonProperty("liveMountRelocateInfo")]

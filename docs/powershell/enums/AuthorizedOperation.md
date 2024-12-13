@@ -179,6 +179,7 @@ Authorized operations on an object.
 - VIEW_DATA_DETECTION_AND_RESPONSE_ALERTS - View data detection and response alerts.
 - VIEW_DSPM_INTEGRATIONS - View DSPM integrations.
 - MANAGE_DSPM_INTEGRATIONS - Manage DSPM Integrations.
+- VIEW_DATA_SECURITY_POSTURE_RESULTS - View data security posture results.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MongoManagementType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "INVALID_MANAGEMENT_TYPE")]
         INVALID_MANAGEMENT_TYPE,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         NATIVE,
 
         [EnumMember(Value = "OPSMANAGER")]
-        OPSMANAGER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        OPSMANAGER
 
 
     } // enum MongoManagementType

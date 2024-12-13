@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MssqlCompatibleInstancesFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FILTER_UNSPECIFIED")]
         FILTER_UNSPECIFIED,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum MssqlCompatibleInstancesFilterField

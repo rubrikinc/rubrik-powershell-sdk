@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum InventorySubHierarchyRootEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_ROOT")]
         ACTIVE_DIRECTORY_ROOT,
 
@@ -44,6 +47,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLOUD_NATIVE_TAG_RULE_ROOT")]
         CLOUD_NATIVE_TAG_RULE_ROOT,
+
+        [EnumMember(Value = "D365_ROOT")]
+        D365_ROOT,
 
         [EnumMember(Value = "DB2_ROOT")]
         DB2_ROOT,
@@ -121,10 +127,7 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_ROOT,
 
         [EnumMember(Value = "WINDOWS_HOST_ROOT")]
-        WINDOWS_HOST_ROOT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS_HOST_ROOT
 
 
     } // enum InventorySubHierarchyRootEnum

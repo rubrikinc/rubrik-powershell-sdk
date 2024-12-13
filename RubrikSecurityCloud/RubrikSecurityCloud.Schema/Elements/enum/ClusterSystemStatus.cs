@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ClusterSystemStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FATAL")]
         FATAL,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         OK,
 
         [EnumMember(Value = "WARNING")]
-        WARNING,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WARNING
 
 
     } // enum ClusterSystemStatus

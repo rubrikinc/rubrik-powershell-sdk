@@ -40,6 +40,9 @@ Supported in v5.0+
       A Boolean that specifies whether the host refresh is paused or not.
 - mssqlSddCertificateId: System.String
   - Supported in v9.3. The certificate ID is the identifier associated with the public key certificate issued by the Certificate Authority (CA) that signed the SQL Server certificate. This ID is used to validate the identity of the SQL Server host during Sensitive Data Discovery.
+- oracleSddWalletPath: System.String
+  - Supported in v9.3
+      Contains the wallet path on the Oracle host which is used to authenticate the client trying to make remote connections to oracle databases during Sensitive Data Discovery.
 - hostVfdEnabled: HostVfdInstallConfig
   - Supported in v5.0+
 - mssqlCbtEnabled: MssqlCbtStatusType
@@ -51,3 +54,6 @@ Supported in v5.0+
       The user credentials for querying SQL server instance on the host for Sensitive Data Discovery.
 - nasConfig: NasConfigInput
   - Supported in v5.0+
+- oracleSddUserCredentials: SddUserCredentialsInput
+  - Supported in v9.3
+      The user credentials for querying oracle databases on the host for Sensitive Data Discovery.

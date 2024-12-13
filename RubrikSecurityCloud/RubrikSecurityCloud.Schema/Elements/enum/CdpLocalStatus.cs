@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CdpLocalStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CDP_LOCAL_STATUS_ACTIVE")]
         CDP_LOCAL_STATUS_ACTIVE,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         CDP_LOCAL_STATUS_RESYNCING,
 
         [EnumMember(Value = "CDP_LOCAL_STATUS_TAKING_SNAPSHOT")]
-        CDP_LOCAL_STATUS_TAKING_SNAPSHOT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        CDP_LOCAL_STATUS_TAKING_SNAPSHOT
 
 
     } // enum CdpLocalStatus

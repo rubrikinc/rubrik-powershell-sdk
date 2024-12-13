@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VirtualMachineSummarySnapshotConsistencyMandate
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "VIRTUAL_MACHINE_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_APP_CONSISTENT")]
         VIRTUAL_MACHINE_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_APP_CONSISTENT,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         VIRTUAL_MACHINE_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_UNKNOWN,
 
         [EnumMember(Value = "VIRTUAL_MACHINE_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_VSS_CONSISTENT")]
-        VIRTUAL_MACHINE_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_VSS_CONSISTENT,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VIRTUAL_MACHINE_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_VSS_CONSISTENT
 
 
     } // enum VirtualMachineSummarySnapshotConsistencyMandate

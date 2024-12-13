@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DlpConfigOsType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "LINUX")]
         LINUX,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         OS_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "WINDOWS")]
-        WINDOWS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WINDOWS
 
 
     } // enum DlpConfigOsType

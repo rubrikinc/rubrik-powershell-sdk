@@ -6,6 +6,6 @@ Paginated list of Db2LogSnapshot objects. Each page of the results includes at m
 - nodes: list of Db2LogSnapshots
   - List of Db2LogSnapshot objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of Db2LogSnapshot objects matching the request arguments.

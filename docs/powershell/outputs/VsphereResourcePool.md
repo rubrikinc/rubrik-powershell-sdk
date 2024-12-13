@@ -1,4 +1,8 @@
 ### VsphereResourcePool
+- snapshotConsistencyMandate: ConsistencyLevelEnum
+  - Snapshot consistency mandate.
+- snapshotConsistencySource: System.String
+  - Fid of the object from where the snapshot consistency mandate is inherited.
 - descendantConnection: VsphereResourcePoolDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: VsphereResourcePoolPhysicalChildTypeConnection

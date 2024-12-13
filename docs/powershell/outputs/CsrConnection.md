@@ -6,6 +6,6 @@ Paginated list of Csr objects. Each page of the results includes at most 1000 en
 - nodes: list of Csrs
   - List of Csr objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of Csr objects matching the request arguments.

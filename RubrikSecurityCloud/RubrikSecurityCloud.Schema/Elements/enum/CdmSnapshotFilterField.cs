@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CdmSnapshotFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_ID,
 
         [EnumMember(Value = "TIME_RANGE")]
-        TIME_RANGE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TIME_RANGE
 
 
     } // enum CdmSnapshotFilterField

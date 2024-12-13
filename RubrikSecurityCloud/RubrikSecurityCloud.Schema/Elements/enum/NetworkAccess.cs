@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NetworkAccess
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "NETWORK_ACCESS_INTERNAL")]
         NETWORK_ACCESS_INTERNAL,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         NETWORK_ACCESS_INTERNET_FACING,
 
         [EnumMember(Value = "NETWORK_ACCESS_UNSPECIFIED")]
-        NETWORK_ACCESS_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NETWORK_ACCESS_UNSPECIFIED
 
 
     } // enum NetworkAccess

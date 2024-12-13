@@ -3,12 +3,16 @@ NAS namespace instance associated with registered NAS system.
 
 - cdmId: System.String
   - Rubrik CDM ID of the registered NAS system.
+- isReadonly: System.Boolean
+  - Determines whether the NAS namespace is read-only.
 - id: System.String
   - Object ID.
 - descendantConnection: NasNamespaceDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: NasNamespaceLogicalChildTypeConnection
   - List of logical children.
+- vendorType: System.String
+  - Vendor type of the corresponding NAS system.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

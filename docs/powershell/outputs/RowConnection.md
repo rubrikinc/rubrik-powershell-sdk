@@ -6,7 +6,7 @@ Paginated list of Row objects. Each page of the results includes at most 1000 en
 - nodes: list of Rows
   - List of Row objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of Row objects matching the request arguments.
 - columns: list of Columns

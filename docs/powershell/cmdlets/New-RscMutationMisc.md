@@ -67,6 +67,14 @@ Create primary filesets for a list of NAS shares.
 
 - There is a single argument of type BulkCreateNasFilesetsInput.
 - Returns BulkCreateNasFilesetsReply.
+### bulkupdatenasnamespaces
+Update NAS namespaces with SMB credentials
+
+Supported in v8.1+
+Add, update, or remove SMB credentials for NAS namespaces.
+
+- There is a single argument of type BulkUpdateNasNamespacesInput.
+- Returns System.String.
 ### canceldownloadpackage
 Cancels download package job of a cluster.
 
@@ -320,9 +328,14 @@ Send notification when the user clicks on the Get License button.
 - There is a single argument of type NotificationForGetLicenseInput.
 - Returns NotificationForGetLicenseReply.
 ### recoverclouddirectmultipaths
-Cloud Direct MultiPaths Recovery.
+NAS Cloud Direct MultiPaths Recovery.
 
 - There is a single argument of type RecoverCloudDirectMultiPathsInput.
+- Returns AsyncRequestStatus.
+### recoverclouddirectnasshare
+NAS Cloud Direct share recovery.
+
+- There is a single argument of type RecoverCloudDirectNasShareInput.
 - Returns AsyncRequestStatus.
 ### recoverclouddirectpath
 Cloud Direct Path Recovery.
@@ -347,6 +360,11 @@ Remove account level inventory workloads.
 
 - There is a single argument of type RemoveInventoryWorkloadsInput.
 - Returns System.Boolean.
+### removenodeforreplacement
+Remove a node for replacement.
+
+- There is a single argument of type RemoveNodeForReplacementInput.
+- Returns RemoveNodeForReplacementReply.
 ### removeprivateendpointlist
 Remove private endpoint connection to RCV location.
 
@@ -398,6 +416,11 @@ Marks that the user has resolved that there are no conflicting volume groups on 
 
 - There is a single argument of type ResolveVolumeGroupsConflictInput.
 - Returns RequestSuccess.
+### restoreobjectsdryrun
+Runs a simulated recovery for the specified Active Directory objects and returns the attribute values expected after a regular granular restore.
+
+- There is a single argument of type RestoreObjectsDryRunInput.
+- Returns RestoreObjectsDryRunReply.
 ### retrybackup
 Initiates retry for a failed job.
 

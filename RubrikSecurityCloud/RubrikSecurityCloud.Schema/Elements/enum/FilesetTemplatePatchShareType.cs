@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FilesetTemplatePatchShareType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FILESET_TEMPLATE_PATCH_SHARE_TYPE_NFS")]
         FILESET_TEMPLATE_PATCH_SHARE_TYPE_NFS,
 
         [EnumMember(Value = "FILESET_TEMPLATE_PATCH_SHARE_TYPE_SMB")]
-        FILESET_TEMPLATE_PATCH_SHARE_TYPE_SMB,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        FILESET_TEMPLATE_PATCH_SHARE_TYPE_SMB
 
 
     } // enum FilesetTemplatePatchShareType

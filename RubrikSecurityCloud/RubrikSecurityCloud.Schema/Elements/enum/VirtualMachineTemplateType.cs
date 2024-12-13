@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum VirtualMachineTemplateType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "VIRTUAL_MACHINE_TEMPLATE_TYPE_LIBRARY_ITEM")]
         VIRTUAL_MACHINE_TEMPLATE_TYPE_LIBRARY_ITEM,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         VIRTUAL_MACHINE_TEMPLATE_TYPE_UNDEFINED,
 
         [EnumMember(Value = "VIRTUAL_MACHINE_TEMPLATE_TYPE_VM")]
-        VIRTUAL_MACHINE_TEMPLATE_TYPE_VM,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VIRTUAL_MACHINE_TEMPLATE_TYPE_VM
 
 
     } // enum VirtualMachineTemplateType

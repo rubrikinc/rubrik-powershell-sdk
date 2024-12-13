@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum Operation
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ACCESS_CDM_CLUSTER")]
         ACCESS_CDM_CLUSTER,
 
@@ -456,6 +459,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_DATA_SECURITY_DETAILS")]
         VIEW_DATA_SECURITY_DETAILS,
 
+        [EnumMember(Value = "VIEW_DATA_SECURITY_POSTURE_RESULTS")]
+        VIEW_DATA_SECURITY_POSTURE_RESULTS,
+
         [EnumMember(Value = "VIEW_DB_LOG_REPORT_PROPERTIES")]
         VIEW_DB_LOG_REPORT_PROPERTIES,
 
@@ -559,10 +565,7 @@ namespace RubrikSecurityCloud.Types
         VIEW_WEBHOOKS,
 
         [EnumMember(Value = "VIEW_ZSCALER_DLP_INTEGRATION")]
-        VIEW_ZSCALER_DLP_INTEGRATION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        VIEW_ZSCALER_DLP_INTEGRATION
 
 
     } // enum Operation

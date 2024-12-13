@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum InternalQueryNetworkThrottleRequestResourceId
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "INTERNAL_QUERY_NETWORK_THROTTLE_REQUEST_RESOURCE_ID_ARCHIVAL_EGRESS")]
         INTERNAL_QUERY_NETWORK_THROTTLE_REQUEST_RESOURCE_ID_ARCHIVAL_EGRESS,
 
         [EnumMember(Value = "INTERNAL_QUERY_NETWORK_THROTTLE_REQUEST_RESOURCE_ID_REPLICATION_EGRESS")]
-        INTERNAL_QUERY_NETWORK_THROTTLE_REQUEST_RESOURCE_ID_REPLICATION_EGRESS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        INTERNAL_QUERY_NETWORK_THROTTLE_REQUEST_RESOURCE_ID_REPLICATION_EGRESS
 
 
     } // enum InternalQueryNetworkThrottleRequestResourceId

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? CdmVmId
+        // GraphQL -> cdmVmId: String! (scalar)
+        [JsonProperty("cdmVmId")]
+        public System.String? CdmVmId { get; set; }
+
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
         [JsonProperty("isExcludedFromSnapshot")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VcdVmInfo Set(
+        System.String? CdmVmId = null,
         System.Boolean? IsExcludedFromSnapshot = null,
         System.String? VcdVmMoid = null,
         System.String? VcdVmName = null
     ) 
     {
+        if ( CdmVmId != null ) {
+            this.CdmVmId = CdmVmId;
+        }
         if ( IsExcludedFromSnapshot != null ) {
             this.IsExcludedFromSnapshot = IsExcludedFromSnapshot;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? CdmVmId
+        // GraphQL -> cdmVmId: String! (scalar)
+        if (this.CdmVmId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmVmId\n" ;
+            } else {
+                s += ind + "cdmVmId\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
         if (this.IsExcludedFromSnapshot != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? CdmVmId
+        // GraphQL -> cdmVmId: String! (scalar)
+        if (ec.Includes("cdmVmId",true))
+        {
+            if(this.CdmVmId == null) {
+
+                this.CdmVmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmVmId != null && ec.Excludes("cdmVmId",true))
+        {
+            this.CdmVmId = null;
+        }
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
         if (ec.Includes("isExcludedFromSnapshot",true))

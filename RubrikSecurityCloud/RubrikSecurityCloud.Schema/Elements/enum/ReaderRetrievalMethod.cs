@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ReaderRetrievalMethod
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "OBJECT_LIST_AND_DETAILS")]
         OBJECT_LIST_AND_DETAILS,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         OBJECT_LIST_ONLY,
 
         [EnumMember(Value = "UNKNOWN_RETRIEVAL_METHOD")]
-        UNKNOWN_RETRIEVAL_METHOD,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN_RETRIEVAL_METHOD
 
 
     } // enum ReaderRetrievalMethod

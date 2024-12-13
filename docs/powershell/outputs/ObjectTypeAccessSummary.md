@@ -9,3 +9,10 @@ Object type access summary.
   - Change in sensitive hits for the time period.
 - policySummaryDetails: list of PolicySummaryDetailss
   - Policy summaries.
+- accountName: System.String
+  - Store the account name here in case the grouping is based on the account.
+- accountId: System.String
+  - Store the account id here in case the grouping is based on the account.
+- platform: Platform
+  - Store the platform to determine the icon when the grouping is
+ account-based.

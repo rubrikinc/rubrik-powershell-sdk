@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ProductDocumentationType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CONCEPT")]
         CONCEPT,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         TASK,
 
         [EnumMember(Value = "TYPE_UNSPECIFIED")]
-        TYPE_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TYPE_UNSPECIFIED
 
 
     } // enum ProductDocumentationType

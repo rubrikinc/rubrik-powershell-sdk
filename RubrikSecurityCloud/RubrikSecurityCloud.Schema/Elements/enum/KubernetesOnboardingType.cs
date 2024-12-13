@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum KubernetesOnboardingType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "KUBECONFIG")]
         KUBECONFIG,
 
         [EnumMember(Value = "MANIFEST")]
-        MANIFEST,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        MANIFEST
 
 
     } // enum KubernetesOnboardingType

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RcvRegionBundle
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BUNDLE_1")]
         BUNDLE_1,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         BUNDLE_2,
 
         [EnumMember(Value = "DSAAS_BUNDLE")]
-        DSAAS_BUNDLE,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        DSAAS_BUNDLE
 
 
     } // enum RcvRegionBundle

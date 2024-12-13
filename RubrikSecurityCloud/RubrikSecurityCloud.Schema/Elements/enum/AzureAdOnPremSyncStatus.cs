@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureAdOnPremSyncStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DISABLED")]
         DISABLED,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         NEVER_ENABLED,
 
         [EnumMember(Value = "STATUS_UNKNOWN")]
-        STATUS_UNKNOWN,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STATUS_UNKNOWN
 
 
     } // enum AzureAdOnPremSyncStatus

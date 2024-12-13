@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GuestOsCredentialFilterField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         USERNAME_OR_DOMAIN,
 
         [EnumMember(Value = "USER_NAME")]
-        USER_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        USER_NAME
 
 
     } // enum GuestOsCredentialFilterField

@@ -17,6 +17,8 @@ Cloud Direct NAS namespace object.
   - Specifies whether the namespace is stale.
 - id: System.String
   - Object ID.
+- cloudDirectNasSystem: CloudDirectNasSystem
+  - The NAS Cloud Direct system to which this NAS namespace belongs.
 - descendantConnection: CloudDirectNasNamespaceDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: CloudDirectNasNamespaceLogicalChildTypeConnection

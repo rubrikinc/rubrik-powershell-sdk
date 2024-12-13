@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TprPolicyScope
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "DATA_MANAGEMENT_BY_CLUSTER")]
         DATA_MANAGEMENT_BY_CLUSTER,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         SYSTEM_CONFIGURATION,
 
         [EnumMember(Value = "TPR_POLICY_SCOPE_UNSPECIFIED")]
-        TPR_POLICY_SCOPE_UNSPECIFIED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TPR_POLICY_SCOPE_UNSPECIFIED
 
 
     } // enum TprPolicyScope

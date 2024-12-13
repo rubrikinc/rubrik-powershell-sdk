@@ -29,3 +29,5 @@ Identity Provider is an entity responsible for authenticating a user account.
   - Expiration date of the identity providers metadata.
 - id: System.String
   - Unique identifier of the identity provider.
+- idpClaimAttributes: list of IdpClaimAttributeTypes
+  - List of claim attributes of the identity provider.

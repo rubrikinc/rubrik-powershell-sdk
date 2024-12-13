@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DeleteVmwareSnapshotRequestLocation
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "V1_DELETE_VMWARE_SNAPSHOT_REQUEST_LOCATION_ALL")]
         V1_DELETE_VMWARE_SNAPSHOT_REQUEST_LOCATION_ALL,
 
         [EnumMember(Value = "V1_DELETE_VMWARE_SNAPSHOT_REQUEST_LOCATION_LOCAL")]
-        V1_DELETE_VMWARE_SNAPSHOT_REQUEST_LOCATION_LOCAL,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        V1_DELETE_VMWARE_SNAPSHOT_REQUEST_LOCATION_LOCAL
 
 
     } // enum DeleteVmwareSnapshotRequestLocation

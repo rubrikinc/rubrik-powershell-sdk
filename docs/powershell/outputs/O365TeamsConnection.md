@@ -6,6 +6,6 @@ Paginated list of O365Teams objects. Each page of the results includes at most 1
 - nodes: list of O365Teamss
   - List of O365Teams objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of O365Teams objects matching the request arguments.

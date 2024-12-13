@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("relationshipRestoreMode")]
         public AzureAdRelationshipRestoreModeEnumType? RelationshipRestoreMode { get; set; }
 
+        //      C# -> ObjectRecoveryOptionsType? ObjectRecoveryOptions
+        // GraphQL -> objectRecoveryOptions: ObjectRecoveryOptionsType (input)
+        [JsonProperty("objectRecoveryOptions")]
+        public ObjectRecoveryOptionsType? ObjectRecoveryOptions { get; set; }
+
 
         #endregion
 

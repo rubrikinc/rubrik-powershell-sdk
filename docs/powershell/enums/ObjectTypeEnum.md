@@ -8,8 +8,10 @@
 - O365Onedrive
 - Hdfs
 - CASSANDRA_SOURCE - Cassandra Source.
+- D365_FIXED_OBJECT - D365 Metadata.
 - AWS_NATIVE_S3_BUCKET - AWS native S3 Bucket.
 - AwsNativeRdsInstance
+- K8S_VIRTUAL_MACHINE - Kubernetes virtual machine.
 - VolumeGroup
 - AZURE_SQL_MANAGED_INSTANCE_DB
 - MONGO_COLLECTION - MongoDB Collection.
@@ -42,6 +44,7 @@
 - AZURE_AD_DIRECTORY - Azure AD Directory.
 - MONGODB_DATABASE - MongoDB Database.
 - Fileset
+- D365_DATAVERSE_TABLE - D365 Dataverse Table.
 - O365Calendar
 - K8S_PROTECTION_SET - Kubernetes Protection Set.
 - MONGO_SOURCE - MongoDB Source.

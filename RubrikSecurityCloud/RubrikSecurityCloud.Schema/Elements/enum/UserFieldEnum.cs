@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UserFieldEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "Domain")]
         DOMAIN,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         LAST_LOGIN,
 
         [EnumMember(Value = "Status")]
-        STATUS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STATUS
 
 
     } // enum UserFieldEnum

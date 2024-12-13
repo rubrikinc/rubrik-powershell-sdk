@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DhrcCategory
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ANOMALIES_DETECTED")]
         ANOMALIES_DETECTED,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         SENSITIVE_DATA,
 
         [EnumMember(Value = "SUSPICIOUS_USER_ACTIVITY")]
-        SUSPICIOUS_USER_ACTIVITY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUSPICIOUS_USER_ACTIVITY
 
 
     } // enum DhrcCategory

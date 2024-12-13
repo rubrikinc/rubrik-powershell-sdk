@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ArchiveFolderAction
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ARCHIVE_ONLY")]
         ARCHIVE_ONLY,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         EXCLUDE_ARCHIVE,
 
         [EnumMember(Value = "NO_ACTION")]
-        NO_ACTION,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NO_ACTION
 
 
     } // enum ArchiveFolderAction

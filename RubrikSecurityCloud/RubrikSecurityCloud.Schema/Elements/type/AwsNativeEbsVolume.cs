@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations { get; set; }
 
+        //      C# -> FileIndexingStatus? FileIndexingStatus
+        // GraphQL -> fileIndexingStatus: FileIndexingStatus! (enum)
+        [JsonProperty("fileIndexingStatus")]
+        public FileIndexingStatus? FileIndexingStatus { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -176,6 +181,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeAccount")]
         public AwsNativeAccount? AwsNativeAccount { get; set; }
 
+        //      C# -> AwsNativeAccountDetails? AwsNativeAccountDetails
+        // GraphQL -> awsNativeAccountDetails: AwsNativeAccountDetails (type)
+        [JsonProperty("awsNativeAccountDetails")]
+        public AwsNativeAccountDetails? AwsNativeAccountDetails { get; set; }
+
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
@@ -324,6 +334,7 @@ namespace RubrikSecurityCloud.Types
 
     public AwsNativeEbsVolume Set(
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
+        FileIndexingStatus? FileIndexingStatus = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         AwsNativeRegion? Region = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
@@ -354,6 +365,7 @@ namespace RubrikSecurityCloud.Types
         List<AttachmentSpecForEbsVolume>? AttachmentSpecs = null,
         AwsNativeAccount? AwsAccount = null,
         AwsNativeAccount? AwsNativeAccount = null,
+        AwsNativeAccountDetails? AwsNativeAccountDetails = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
@@ -372,6 +384,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( FileIndexingStatus != null ) {
+            this.FileIndexingStatus = FileIndexingStatus;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -463,6 +478,9 @@ namespace RubrikSecurityCloud.Types
         if ( AwsNativeAccount != null ) {
             this.AwsNativeAccount = AwsNativeAccount;
         }
+        if ( AwsNativeAccountDetails != null ) {
+            this.AwsNativeAccountDetails = AwsNativeAccountDetails;
+        }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
         }
@@ -526,6 +544,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> FileIndexingStatus? FileIndexingStatus
+        // GraphQL -> fileIndexingStatus: FileIndexingStatus! (enum)
+        if (this.FileIndexingStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "fileIndexingStatus\n" ;
+            } else {
+                s += ind + "fileIndexingStatus\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -825,6 +852,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> AwsNativeAccountDetails? AwsNativeAccountDetails
+        // GraphQL -> awsNativeAccountDetails: AwsNativeAccountDetails (type)
+        if (this.AwsNativeAccountDetails != null) {
+            var fspec = this.AwsNativeAccountDetails.AsFieldSpec(conf.Child("awsNativeAccountDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsNativeAccountDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
@@ -1016,6 +1055,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> FileIndexingStatus? FileIndexingStatus
+        // GraphQL -> fileIndexingStatus: FileIndexingStatus! (enum)
+        if (ec.Includes("fileIndexingStatus",true))
+        {
+            if(this.FileIndexingStatus == null) {
+
+                this.FileIndexingStatus = new FileIndexingStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileIndexingStatus != null && ec.Excludes("fileIndexingStatus",true))
+        {
+            this.FileIndexingStatus = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
@@ -1557,6 +1613,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AwsNativeAccount != null && ec.Excludes("awsNativeAccount",false))
         {
             this.AwsNativeAccount = null;
+        }
+        //      C# -> AwsNativeAccountDetails? AwsNativeAccountDetails
+        // GraphQL -> awsNativeAccountDetails: AwsNativeAccountDetails (type)
+        if (ec.Includes("awsNativeAccountDetails",false))
+        {
+            if(this.AwsNativeAccountDetails == null) {
+
+                this.AwsNativeAccountDetails = new AwsNativeAccountDetails();
+                this.AwsNativeAccountDetails.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeAccountDetails"));
+
+            } else {
+
+                this.AwsNativeAccountDetails.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeAccountDetails"));
+
+            }
+        }
+        else if (this.AwsNativeAccountDetails != null && ec.Excludes("awsNativeAccountDetails",false))
+        {
+            this.AwsNativeAccountDetails = null;
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)

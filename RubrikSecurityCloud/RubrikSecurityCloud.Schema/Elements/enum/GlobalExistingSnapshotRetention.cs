@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum GlobalExistingSnapshotRetention
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "EXPIRE_IMMEDIATELY")]
         EXPIRE_IMMEDIATELY,
 
@@ -25,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         NOT_APPLICABLE,
 
         [EnumMember(Value = "RETAIN_SNAPSHOTS")]
-        RETAIN_SNAPSHOTS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        RETAIN_SNAPSHOTS
 
 
     } // enum GlobalExistingSnapshotRetention

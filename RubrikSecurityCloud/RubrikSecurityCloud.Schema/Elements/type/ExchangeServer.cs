@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region ExchangeServer
  
-    public class ExchangeServer: BaseType, CdmHierarchyObject, HierarchyObject, PhysicalHostDescendantType, PhysicalHostPhysicalChildType
+    public class ExchangeServer: BaseType, CdmHierarchyObject, ExchangeHostDescendantType, ExchangeHostPhysicalChildType, HierarchyObject, PhysicalHostDescendantType, PhysicalHostPhysicalChildType
     {
         #region members
 
@@ -146,6 +146,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exchangeDag")]
         public ExchangeDag? ExchangeDag { get; set; }
 
+        //      C# -> ExchangeHost? ExchangeHost
+        // GraphQL -> exchangeHost: ExchangeHost! (type)
+        [JsonProperty("exchangeHost")]
+        public ExchangeHost? ExchangeHost { get; set; }
+
         //      C# -> PhysicalHost? Host
         // GraphQL -> host: PhysicalHost! (type)
         [JsonProperty("host")]
@@ -246,6 +251,7 @@ namespace RubrikSecurityCloud.Types
         ExchangeServerDescendantTypeConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
         ExchangeDag? ExchangeDag = null,
+        ExchangeHost? ExchangeHost = null,
         PhysicalHost? Host = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
@@ -330,6 +336,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ExchangeDag != null ) {
             this.ExchangeDag = ExchangeDag;
+        }
+        if ( ExchangeHost != null ) {
+            this.ExchangeHost = ExchangeHost;
         }
         if ( Host != null ) {
             this.Host = Host;
@@ -629,6 +638,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "exchangeDag" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ExchangeHost? ExchangeHost
+        // GraphQL -> exchangeHost: ExchangeHost! (type)
+        if (this.ExchangeHost != null) {
+            var fspec = this.ExchangeHost.AsFieldSpec(conf.Child("exchangeHost"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "exchangeHost" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1201,6 +1222,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExchangeDag != null && ec.Excludes("exchangeDag",false))
         {
             this.ExchangeDag = null;
+        }
+        //      C# -> ExchangeHost? ExchangeHost
+        // GraphQL -> exchangeHost: ExchangeHost! (type)
+        if (ec.Includes("exchangeHost",false))
+        {
+            if(this.ExchangeHost == null) {
+
+                this.ExchangeHost = new ExchangeHost();
+                this.ExchangeHost.ApplyExploratoryFieldSpec(ec.NewChild("exchangeHost"));
+
+            } else {
+
+                this.ExchangeHost.ApplyExploratoryFieldSpec(ec.NewChild("exchangeHost"));
+
+            }
+        }
+        else if (this.ExchangeHost != null && ec.Excludes("exchangeHost",false))
+        {
+            this.ExchangeHost = null;
         }
         //      C# -> PhysicalHost? Host
         // GraphQL -> host: PhysicalHost! (type)

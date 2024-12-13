@@ -21,12 +21,12 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> AzureAdSnapshotDetails? From
-        // GraphQL -> from: AzureAdSnapshotDetails (type)
+        // GraphQL -> from: AzureAdSnapshotDetails! (type)
         [JsonProperty("from")]
         public AzureAdSnapshotDetails? From { get; set; }
 
         //      C# -> AzureAdSnapshotDetails? To
-        // GraphQL -> to: AzureAdSnapshotDetails (type)
+        // GraphQL -> to: AzureAdSnapshotDetails! (type)
         [JsonProperty("to")]
         public AzureAdSnapshotDetails? To { get; set; }
 
@@ -65,7 +65,7 @@ namespace RubrikSecurityCloud.Types
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureAdSnapshotDetails? From
-        // GraphQL -> from: AzureAdSnapshotDetails (type)
+        // GraphQL -> from: AzureAdSnapshotDetails! (type)
         if (this.From != null) {
             var fspec = this.From.AsFieldSpec(conf.Child("from"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -77,7 +77,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> AzureAdSnapshotDetails? To
-        // GraphQL -> to: AzureAdSnapshotDetails (type)
+        // GraphQL -> to: AzureAdSnapshotDetails! (type)
         if (this.To != null) {
             var fspec = this.To.AsFieldSpec(conf.Child("to"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureAdSnapshotDetails? From
-        // GraphQL -> from: AzureAdSnapshotDetails (type)
+        // GraphQL -> from: AzureAdSnapshotDetails! (type)
         if (ec.Includes("from",false))
         {
             if(this.From == null) {
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.Types
             this.From = null;
         }
         //      C# -> AzureAdSnapshotDetails? To
-        // GraphQL -> to: AzureAdSnapshotDetails (type)
+        // GraphQL -> to: AzureAdSnapshotDetails! (type)
         if (ec.Includes("to",false))
         {
             if(this.To == null) {

@@ -6,6 +6,6 @@ Paginated list of O365Org objects. Each page of the results includes at most 100
 - nodes: list of O365Orgs
   - List of O365Org objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of O365Org objects matching the request arguments.

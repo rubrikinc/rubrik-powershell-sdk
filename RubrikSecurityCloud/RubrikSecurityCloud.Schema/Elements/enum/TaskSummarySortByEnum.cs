@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TaskSummarySortByEnum
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "Date")]
         DATE,
 
@@ -37,10 +40,7 @@ namespace RubrikSecurityCloud.Types
         OBJECT_TYPE,
 
         [EnumMember(Value = "SlaDomainName")]
-        SLA_DOMAIN_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SLA_DOMAIN_NAME
 
 
     } // enum TaskSummarySortByEnum

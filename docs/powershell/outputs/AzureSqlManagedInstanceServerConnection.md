@@ -6,6 +6,6 @@ Paginated list of AzureSqlManagedInstanceServer objects. Each page of the result
 - nodes: list of AzureSqlManagedInstanceServers
   - List of AzureSqlManagedInstanceServer objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of AzureSqlManagedInstanceServer objects matching the request arguments.

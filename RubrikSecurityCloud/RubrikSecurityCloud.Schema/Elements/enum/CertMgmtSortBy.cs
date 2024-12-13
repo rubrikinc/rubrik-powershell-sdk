@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CertMgmtSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CREATION_DATE")]
         CREATION_DATE,
 
         [EnumMember(Value = "NAME")]
-        NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NAME
 
 
     } // enum CertMgmtSortBy

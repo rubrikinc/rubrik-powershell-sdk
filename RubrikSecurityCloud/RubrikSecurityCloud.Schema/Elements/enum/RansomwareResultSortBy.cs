@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RansomwareResultSortBy
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_ID,
 
         [EnumMember(Value = "WORKLOAD_ID")]
-        WORKLOAD_ID,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WORKLOAD_ID
 
 
     } // enum RansomwareResultSortBy

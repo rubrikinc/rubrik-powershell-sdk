@@ -6,6 +6,6 @@ Paginated list of PolicyDetail objects. Each page of the results includes at mos
 - nodes: list of PolicyDetails
   - List of PolicyDetail objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of PolicyDetail objects matching the request arguments.

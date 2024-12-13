@@ -5,3 +5,5 @@ Details of a new SSO Group that has not yet been authorized on Rubrik.
   - Name of the SSO group.
 - isOrgAdmin: System.Boolean
   - Specifies whether the SSO group is an org admin or not.
+- authDomainId: System.String
+  - Authentication domain ID of the SSO group.

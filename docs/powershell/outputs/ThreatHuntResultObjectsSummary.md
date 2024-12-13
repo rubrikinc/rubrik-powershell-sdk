@@ -17,6 +17,10 @@ Summary of a threat hunt for an object.
   - Total snapshots where a match was found.
 - clusterInfo: ClusterInfoType
   - Rubrik cluster information.
+- objectScanStatus: ThreatHuntObjectStatus
+  - Scan status of the object.
+- hasQuarantinedMatches: System.Boolean
+  - Specifies whether the object has quarantined matches.
 - snapshotsStats: list of ThreatHuntResultSnapshotStatss
   - Threat hunt summaries for each snapshot.
 - object: CdmHierarchySnappableNew

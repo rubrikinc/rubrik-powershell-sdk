@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ServiceTier
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "BASIC")]
         BASIC,
 
@@ -31,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         PREMIUM,
 
         [EnumMember(Value = "STANDARD")]
-        STANDARD,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STANDARD
 
 
     } // enum ServiceTier

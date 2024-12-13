@@ -25,10 +25,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("region")]
         public AzureCloudAccountRegion? Region { get; set; }
 
+        //      C# -> System.String? ByokClusterId
+        // GraphQL -> byokClusterId: String! (scalar)
+        [JsonProperty("byokClusterId")]
+        public System.String? ByokClusterId { get; set; }
+
+        //      C# -> System.String? ByokClusterName
+        // GraphQL -> byokClusterName: String! (scalar)
+        [JsonProperty("byokClusterName")]
+        public System.String? ByokClusterName { get; set; }
+
         //      C# -> System.String? ConfigUuid
         // GraphQL -> configUuid: String! (scalar)
         [JsonProperty("configUuid")]
         public System.String? ConfigUuid { get; set; }
+
+        //      C# -> System.Boolean? HasPcr
+        // GraphQL -> hasPcr: Boolean! (scalar)
+        [JsonProperty("hasPcr")]
+        public System.Boolean? HasPcr { get; set; }
 
         //      C# -> System.Boolean? IsRscManaged
         // GraphQL -> isRscManaged: Boolean! (scalar)
@@ -39,6 +54,21 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> message: String! (scalar)
         [JsonProperty("message")]
         public System.String? Message { get; set; }
+
+        //      C# -> System.String? PcrImagePullAzureAppId
+        // GraphQL -> pcrImagePullAzureAppId: String! (scalar)
+        [JsonProperty("pcrImagePullAzureAppId")]
+        public System.String? PcrImagePullAzureAppId { get; set; }
+
+        //      C# -> System.String? PcrLatestApprovedBundleVersion
+        // GraphQL -> pcrLatestApprovedBundleVersion: String! (scalar)
+        [JsonProperty("pcrLatestApprovedBundleVersion")]
+        public System.String? PcrLatestApprovedBundleVersion { get; set; }
+
+        //      C# -> System.String? PcrUrl
+        // GraphQL -> pcrUrl: String! (scalar)
+        [JsonProperty("pcrUrl")]
+        public System.String? PcrUrl { get; set; }
 
         //      C# -> System.String? PodOverlayNetworkCidr
         // GraphQL -> podOverlayNetworkCidr: String! (scalar)
@@ -76,9 +106,15 @@ namespace RubrikSecurityCloud.Types
 
     public AzureExocomputeConfigDetails Set(
         AzureCloudAccountRegion? Region = null,
+        System.String? ByokClusterId = null,
+        System.String? ByokClusterName = null,
         System.String? ConfigUuid = null,
+        System.Boolean? HasPcr = null,
         System.Boolean? IsRscManaged = null,
         System.String? Message = null,
+        System.String? PcrImagePullAzureAppId = null,
+        System.String? PcrLatestApprovedBundleVersion = null,
+        System.String? PcrUrl = null,
         System.String? PodOverlayNetworkCidr = null,
         System.String? PodSubnetNativeId = null,
         System.String? SubnetNativeId = null,
@@ -89,14 +125,32 @@ namespace RubrikSecurityCloud.Types
         if ( Region != null ) {
             this.Region = Region;
         }
+        if ( ByokClusterId != null ) {
+            this.ByokClusterId = ByokClusterId;
+        }
+        if ( ByokClusterName != null ) {
+            this.ByokClusterName = ByokClusterName;
+        }
         if ( ConfigUuid != null ) {
             this.ConfigUuid = ConfigUuid;
+        }
+        if ( HasPcr != null ) {
+            this.HasPcr = HasPcr;
         }
         if ( IsRscManaged != null ) {
             this.IsRscManaged = IsRscManaged;
         }
         if ( Message != null ) {
             this.Message = Message;
+        }
+        if ( PcrImagePullAzureAppId != null ) {
+            this.PcrImagePullAzureAppId = PcrImagePullAzureAppId;
+        }
+        if ( PcrLatestApprovedBundleVersion != null ) {
+            this.PcrLatestApprovedBundleVersion = PcrLatestApprovedBundleVersion;
+        }
+        if ( PcrUrl != null ) {
+            this.PcrUrl = PcrUrl;
         }
         if ( PodOverlayNetworkCidr != null ) {
             this.PodOverlayNetworkCidr = PodOverlayNetworkCidr;
@@ -136,6 +190,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "region\n" ;
             }
         }
+        //      C# -> System.String? ByokClusterId
+        // GraphQL -> byokClusterId: String! (scalar)
+        if (this.ByokClusterId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "byokClusterId\n" ;
+            } else {
+                s += ind + "byokClusterId\n" ;
+            }
+        }
+        //      C# -> System.String? ByokClusterName
+        // GraphQL -> byokClusterName: String! (scalar)
+        if (this.ByokClusterName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "byokClusterName\n" ;
+            } else {
+                s += ind + "byokClusterName\n" ;
+            }
+        }
         //      C# -> System.String? ConfigUuid
         // GraphQL -> configUuid: String! (scalar)
         if (this.ConfigUuid != null) {
@@ -143,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "configUuid\n" ;
             } else {
                 s += ind + "configUuid\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HasPcr
+        // GraphQL -> hasPcr: Boolean! (scalar)
+        if (this.HasPcr != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasPcr\n" ;
+            } else {
+                s += ind + "hasPcr\n" ;
             }
         }
         //      C# -> System.Boolean? IsRscManaged
@@ -161,6 +242,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "message\n" ;
             } else {
                 s += ind + "message\n" ;
+            }
+        }
+        //      C# -> System.String? PcrImagePullAzureAppId
+        // GraphQL -> pcrImagePullAzureAppId: String! (scalar)
+        if (this.PcrImagePullAzureAppId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "pcrImagePullAzureAppId\n" ;
+            } else {
+                s += ind + "pcrImagePullAzureAppId\n" ;
+            }
+        }
+        //      C# -> System.String? PcrLatestApprovedBundleVersion
+        // GraphQL -> pcrLatestApprovedBundleVersion: String! (scalar)
+        if (this.PcrLatestApprovedBundleVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "pcrLatestApprovedBundleVersion\n" ;
+            } else {
+                s += ind + "pcrLatestApprovedBundleVersion\n" ;
+            }
+        }
+        //      C# -> System.String? PcrUrl
+        // GraphQL -> pcrUrl: String! (scalar)
+        if (this.PcrUrl != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "pcrUrl\n" ;
+            } else {
+                s += ind + "pcrUrl\n" ;
             }
         }
         //      C# -> System.String? PodOverlayNetworkCidr
@@ -238,6 +346,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.Region = null;
         }
+        //      C# -> System.String? ByokClusterId
+        // GraphQL -> byokClusterId: String! (scalar)
+        if (ec.Includes("byokClusterId",true))
+        {
+            if(this.ByokClusterId == null) {
+
+                this.ByokClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ByokClusterId != null && ec.Excludes("byokClusterId",true))
+        {
+            this.ByokClusterId = null;
+        }
+        //      C# -> System.String? ByokClusterName
+        // GraphQL -> byokClusterName: String! (scalar)
+        if (ec.Includes("byokClusterName",true))
+        {
+            if(this.ByokClusterName == null) {
+
+                this.ByokClusterName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ByokClusterName != null && ec.Excludes("byokClusterName",true))
+        {
+            this.ByokClusterName = null;
+        }
         //      C# -> System.String? ConfigUuid
         // GraphQL -> configUuid: String! (scalar)
         if (ec.Includes("configUuid",true))
@@ -254,6 +396,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ConfigUuid != null && ec.Excludes("configUuid",true))
         {
             this.ConfigUuid = null;
+        }
+        //      C# -> System.Boolean? HasPcr
+        // GraphQL -> hasPcr: Boolean! (scalar)
+        if (ec.Includes("hasPcr",true))
+        {
+            if(this.HasPcr == null) {
+
+                this.HasPcr = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasPcr != null && ec.Excludes("hasPcr",true))
+        {
+            this.HasPcr = null;
         }
         //      C# -> System.Boolean? IsRscManaged
         // GraphQL -> isRscManaged: Boolean! (scalar)
@@ -288,6 +447,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.Message != null && ec.Excludes("message",true))
         {
             this.Message = null;
+        }
+        //      C# -> System.String? PcrImagePullAzureAppId
+        // GraphQL -> pcrImagePullAzureAppId: String! (scalar)
+        if (ec.Includes("pcrImagePullAzureAppId",true))
+        {
+            if(this.PcrImagePullAzureAppId == null) {
+
+                this.PcrImagePullAzureAppId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PcrImagePullAzureAppId != null && ec.Excludes("pcrImagePullAzureAppId",true))
+        {
+            this.PcrImagePullAzureAppId = null;
+        }
+        //      C# -> System.String? PcrLatestApprovedBundleVersion
+        // GraphQL -> pcrLatestApprovedBundleVersion: String! (scalar)
+        if (ec.Includes("pcrLatestApprovedBundleVersion",true))
+        {
+            if(this.PcrLatestApprovedBundleVersion == null) {
+
+                this.PcrLatestApprovedBundleVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PcrLatestApprovedBundleVersion != null && ec.Excludes("pcrLatestApprovedBundleVersion",true))
+        {
+            this.PcrLatestApprovedBundleVersion = null;
+        }
+        //      C# -> System.String? PcrUrl
+        // GraphQL -> pcrUrl: String! (scalar)
+        if (ec.Includes("pcrUrl",true))
+        {
+            if(this.PcrUrl == null) {
+
+                this.PcrUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PcrUrl != null && ec.Excludes("pcrUrl",true))
+        {
+            this.PcrUrl = null;
         }
         //      C# -> System.String? PodOverlayNetworkCidr
         // GraphQL -> podOverlayNetworkCidr: String! (scalar)

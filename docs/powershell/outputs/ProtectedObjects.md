@@ -17,3 +17,5 @@ Metadata for rendering protected objects.
   - The cluster corresponding to the object.
 - slaPauseStatus: System.Boolean
   - The pause status of the protected object.
+- effectiveSlaFidOpt: System.String
+  - Effective SLA Domain RSC ID of the object.

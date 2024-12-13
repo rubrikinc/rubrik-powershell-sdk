@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AwsNativeRegion
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AF_SOUTH_1")]
         AF_SOUTH_1,
 
@@ -47,6 +50,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CA_CENTRAL_1")]
         CA_CENTRAL_1,
+
+        [EnumMember(Value = "CA_WEST_1")]
+        CA_WEST_1,
 
         [EnumMember(Value = "CN_NORTHWEST_1")]
         CN_NORTHWEST_1,
@@ -109,10 +115,7 @@ namespace RubrikSecurityCloud.Types
         US_WEST_1,
 
         [EnumMember(Value = "US_WEST_2")]
-        US_WEST_2,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        US_WEST_2
 
 
     } // enum AwsNativeRegion

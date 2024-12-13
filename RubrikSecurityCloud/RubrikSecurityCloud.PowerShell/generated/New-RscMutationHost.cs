@@ -179,6 +179,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			mssqlSddCertificateId = $someString
     /// 			# OPTIONAL
+    /// 			oracleSddWalletPath = $someString
+    /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
     /// 			# OPTIONAL
     /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
@@ -242,6 +244,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				isNutanixCftEnabled = $someBoolean
     /// 				# REQUIRED
     /// 				vendorType = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			oracleSddUserCredentials = @{
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
     /// 			}
     /// 		}
     /// 	)
@@ -294,6 +303,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			mssqlSddCertificateId = $someString
     /// 			# OPTIONAL
+    /// 			oracleSddWalletPath = $someString
+    /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
     /// 			# OPTIONAL
     /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
@@ -357,6 +368,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				isNutanixCftEnabled = $someBoolean
     /// 				# REQUIRED
     /// 				vendorType = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			oracleSddUserCredentials = @{
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
     /// 			}
     /// 		}
     /// 	)
@@ -419,6 +437,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				mssqlSddCertificateId = $someString
     /// 				# OPTIONAL
+    /// 				oracleSddWalletPath = $someString
+    /// 				# OPTIONAL
     /// 				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
     /// 				# OPTIONAL
     /// 				mssqlCbtEnabled = $someMssqlCbtStatusType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCbtStatusType]) for enum values.
@@ -480,6 +500,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					isNutanixCftEnabled = $someBoolean
     /// 					# REQUIRED
     /// 					vendorType = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				oracleSddUserCredentials = @{
+    /// 					# REQUIRED
+    /// 					password = $someString
+    /// 					# REQUIRED
+    /// 					username = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -789,6 +816,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			mssqlSddCertificateId = $someString
 			# OPTIONAL
+			oracleSddWalletPath = $someString
+			# OPTIONAL
 			orgNetworkId = $someString
 			# OPTIONAL
 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
@@ -852,6 +881,13 @@ $query.Var.input = @{
 				isNutanixCftEnabled = $someBoolean
 				# REQUIRED
 				vendorType = $someString
+			}
+			# OPTIONAL
+			oracleSddUserCredentials = @{
+				# REQUIRED
+				password = $someString
+				# REQUIRED
+				username = $someString
 			}
 		}
 	)
@@ -896,6 +932,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			mssqlSddCertificateId = $someString
 			# OPTIONAL
+			oracleSddWalletPath = $someString
+			# OPTIONAL
 			orgNetworkId = $someString
 			# OPTIONAL
 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
@@ -959,6 +997,13 @@ $query.Var.input = @{
 				isNutanixCftEnabled = $someBoolean
 				# REQUIRED
 				vendorType = $someString
+			}
+			# OPTIONAL
+			oracleSddUserCredentials = @{
+				# REQUIRED
+				password = $someString
+				# REQUIRED
+				username = $someString
 			}
 		}
 	)
@@ -1012,6 +1057,8 @@ $query.Var.input = @{
 				isRefreshPaused = $someBoolean
 				# OPTIONAL
 				mssqlSddCertificateId = $someString
+				# OPTIONAL
+				oracleSddWalletPath = $someString
 				# OPTIONAL
 				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
 				# OPTIONAL
@@ -1074,6 +1121,13 @@ $query.Var.input = @{
 					isNutanixCftEnabled = $someBoolean
 					# REQUIRED
 					vendorType = $someString
+				}
+				# OPTIONAL
+				oracleSddUserCredentials = @{
+					# REQUIRED
+					password = $someString
+					# REQUIRED
+					username = $someString
 				}
 			}
 		}

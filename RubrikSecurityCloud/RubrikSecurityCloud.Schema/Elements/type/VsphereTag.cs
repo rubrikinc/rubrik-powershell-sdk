@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaAssignment")]
         public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
 
+        //      C# -> ConsistencyLevelEnum? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: ConsistencyLevelEnum! (enum)
+        [JsonProperty("snapshotConsistencyMandate")]
+        public ConsistencyLevelEnum? SnapshotConsistencyMandate { get; set; }
+
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
@@ -105,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
+
+        //      C# -> System.String? SnapshotConsistencySource
+        // GraphQL -> snapshotConsistencySource: String (scalar)
+        [JsonProperty("snapshotConsistencySource")]
+        public System.String? SnapshotConsistencySource { get; set; }
 
         //      C# -> System.String? VcenterId
         // GraphQL -> vcenterId: String! (scalar)
@@ -214,6 +224,7 @@ namespace RubrikSecurityCloud.Types
         List<Operation>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
+        ConsistencyLevelEnum? SnapshotConsistencyMandate = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
@@ -228,6 +239,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? ReplicatedObjectCount = null,
         System.String? SlaDomainId = null,
         System.Boolean? SlaPauseStatus = null,
+        System.String? SnapshotConsistencySource = null,
         System.String? VcenterId = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
@@ -252,6 +264,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
+        }
+        if ( SnapshotConsistencyMandate != null ) {
+            this.SnapshotConsistencyMandate = SnapshotConsistencyMandate;
         }
         if ( ConfiguredSlaDomain != null ) {
             this.ConfiguredSlaDomain = ConfiguredSlaDomain;
@@ -294,6 +309,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( SnapshotConsistencySource != null ) {
+            this.SnapshotConsistencySource = SnapshotConsistencySource;
         }
         if ( VcenterId != null ) {
             this.VcenterId = VcenterId;
@@ -376,6 +394,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaAssignment\n" ;
             } else {
                 s += ind + "slaAssignment\n" ;
+            }
+        }
+        //      C# -> ConsistencyLevelEnum? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: ConsistencyLevelEnum! (enum)
+        if (this.SnapshotConsistencyMandate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotConsistencyMandate\n" ;
+            } else {
+                s += ind + "snapshotConsistencyMandate\n" ;
             }
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
@@ -522,6 +549,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> System.String? SnapshotConsistencySource
+        // GraphQL -> snapshotConsistencySource: String (scalar)
+        if (this.SnapshotConsistencySource != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotConsistencySource\n" ;
+            } else {
+                s += ind + "snapshotConsistencySource\n" ;
             }
         }
         //      C# -> System.String? VcenterId
@@ -746,6 +782,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",true))
         {
             this.SlaAssignment = null;
+        }
+        //      C# -> ConsistencyLevelEnum? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: ConsistencyLevelEnum! (enum)
+        if (ec.Includes("snapshotConsistencyMandate",true))
+        {
+            if(this.SnapshotConsistencyMandate == null) {
+
+                this.SnapshotConsistencyMandate = new ConsistencyLevelEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotConsistencyMandate != null && ec.Excludes("snapshotConsistencyMandate",true))
+        {
+            this.SnapshotConsistencyMandate = null;
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
@@ -1014,6 +1067,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> System.String? SnapshotConsistencySource
+        // GraphQL -> snapshotConsistencySource: String (scalar)
+        if (ec.Includes("snapshotConsistencySource",true))
+        {
+            if(this.SnapshotConsistencySource == null) {
+
+                this.SnapshotConsistencySource = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotConsistencySource != null && ec.Excludes("snapshotConsistencySource",true))
+        {
+            this.SnapshotConsistencySource = null;
         }
         //      C# -> System.String? VcenterId
         // GraphQL -> vcenterId: String! (scalar)

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DataTypeSource
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CUSTOM")]
         CUSTOM,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         DEFAULT,
 
         [EnumMember(Value = "PREDEFINED")]
-        PREDEFINED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        PREDEFINED
 
 
     } // enum DataTypeSource

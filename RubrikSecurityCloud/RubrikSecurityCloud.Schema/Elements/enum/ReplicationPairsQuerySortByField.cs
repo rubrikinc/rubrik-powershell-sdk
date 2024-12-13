@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ReplicationPairsQuerySortByField
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CURRENT_THROTTLE_LIMIT")]
         CURRENT_THROTTLE_LIMIT,
 
@@ -34,10 +37,7 @@ namespace RubrikSecurityCloud.Types
         STORAGE,
 
         [EnumMember(Value = "TARGET_CLUSTER_NAME")]
-        TARGET_CLUSTER_NAME,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        TARGET_CLUSTER_NAME
 
 
     } // enum ReplicationPairsQuerySortByField

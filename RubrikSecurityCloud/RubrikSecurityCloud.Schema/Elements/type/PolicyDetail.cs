@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pendingAnalysisObjects")]
         public System.Int32? PendingAnalysisObjects { get; set; }
 
+        //      C# -> System.Single? PercentCoverage
+        // GraphQL -> percentCoverage: Float! (scalar)
+        [JsonProperty("percentCoverage")]
+        public System.Single? PercentCoverage { get; set; }
+
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)
         [JsonProperty("totalHits")]
@@ -93,6 +98,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.Int32? ObjectsPercentCoverage = null,
         System.Int32? PendingAnalysisObjects = null,
+        System.Single? PercentCoverage = null,
         System.Int64? TotalHits = null,
         System.Int32? TotalObjects = null,
         User? Creator = null
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PendingAnalysisObjects != null ) {
             this.PendingAnalysisObjects = PendingAnalysisObjects;
+        }
+        if ( PercentCoverage != null ) {
+            this.PercentCoverage = PercentCoverage;
         }
         if ( TotalHits != null ) {
             this.TotalHits = TotalHits;
@@ -215,6 +224,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "pendingAnalysisObjects\n" ;
             } else {
                 s += ind + "pendingAnalysisObjects\n" ;
+            }
+        }
+        //      C# -> System.Single? PercentCoverage
+        // GraphQL -> percentCoverage: Float! (scalar)
+        if (this.PercentCoverage != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "percentCoverage\n" ;
+            } else {
+                s += ind + "percentCoverage\n" ;
             }
         }
         //      C# -> System.Int64? TotalHits
@@ -389,6 +407,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PendingAnalysisObjects != null && ec.Excludes("pendingAnalysisObjects",true))
         {
             this.PendingAnalysisObjects = null;
+        }
+        //      C# -> System.Single? PercentCoverage
+        // GraphQL -> percentCoverage: Float! (scalar)
+        if (ec.Includes("percentCoverage",true))
+        {
+            if(this.PercentCoverage == null) {
+
+                this.PercentCoverage = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PercentCoverage != null && ec.Excludes("percentCoverage",true))
+        {
+            this.PercentCoverage = null;
         }
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)

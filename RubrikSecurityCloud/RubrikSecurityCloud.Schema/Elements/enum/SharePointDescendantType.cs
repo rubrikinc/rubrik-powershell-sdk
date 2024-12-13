@@ -15,6 +15,12 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SharePointDescendantType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
+        [EnumMember(Value = "APP_CATALOG")]
+        APP_CATALOG,
+
         [EnumMember(Value = "DESCENDANT_UNSPECIFIED")]
         DESCENDANT_UNSPECIFIED,
 
@@ -28,10 +34,7 @@ namespace RubrikSecurityCloud.Types
         SITE,
 
         [EnumMember(Value = "WEBPART")]
-        WEBPART,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        WEBPART
 
 
     } // enum SharePointDescendantType

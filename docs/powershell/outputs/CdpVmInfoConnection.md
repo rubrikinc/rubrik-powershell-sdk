@@ -6,6 +6,6 @@ Paginated list of CdpVmInfo objects. Each page of the results includes at most 1
 - nodes: list of CdpVmInfos
   - List of CdpVmInfo objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of CdpVmInfo objects matching the request arguments.

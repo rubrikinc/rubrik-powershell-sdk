@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AppAuthStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "FULLY_AUTHENTICATED")]
         FULLY_AUTHENTICATED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         PARTIALLY_AUTHENTICATED,
 
         [EnumMember(Value = "UNAUTHENTICATED")]
-        UNAUTHENTICATED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNAUTHENTICATED
 
 
     } // enum AppAuthStatus

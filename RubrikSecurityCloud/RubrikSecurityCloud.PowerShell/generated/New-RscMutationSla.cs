@@ -908,6 +908,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					smbValidUsers = @(
     /// 						$someString
     /// 					)
+    /// 					# OPTIONAL
+    /// 					nfsSettings = @{
+    /// 						# OPTIONAL
+    /// 						version = $someManagedVolumeNFSVersion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeNFSVersion]) for enum values.
+    /// 					}
     /// 				}
     /// 			}
     /// 		}
@@ -2634,6 +2639,11 @@ $query.Var.input = @{
 					smbValidUsers = @(
 						$someString
 					)
+					# OPTIONAL
+					nfsSettings = @{
+						# OPTIONAL
+						version = $someManagedVolumeNFSVersion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeNFSVersion]) for enum values.
+					}
 				}
 			}
 		}

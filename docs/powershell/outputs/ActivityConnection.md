@@ -6,6 +6,6 @@ Paginated list of Activity objects. Each page of the results includes at most 10
 - nodes: list of Activitys
   - List of Activity objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of Activity objects matching the request arguments.

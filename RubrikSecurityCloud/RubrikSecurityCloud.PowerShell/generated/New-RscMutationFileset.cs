@@ -182,6 +182,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			isCreatedByPolarisNas = $someBoolean
     /// 			# OPTIONAL
+    /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
+    /// 			# OPTIONAL
     /// 			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
     /// 			# OPTIONAL
     /// 			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
@@ -330,6 +332,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isCreatedByKupr = $someBoolean
     /// 			# OPTIONAL
     /// 			isCreatedByPolarisNas = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
     /// 			# OPTIONAL
     /// 			operatingSystemType = $someFilesetTemplatePatchOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchOperatingSystemType]) for enum values.
     /// 			# OPTIONAL
@@ -713,6 +717,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			isCreatedByPolarisNas = $someBoolean
 			# OPTIONAL
+			shouldRetryPrescriptIfBackupFails = $someBoolean
+			# OPTIONAL
 			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
 			# OPTIONAL
 			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
@@ -837,6 +843,8 @@ $query.Var.input = @{
 			isCreatedByKupr = $someBoolean
 			# OPTIONAL
 			isCreatedByPolarisNas = $someBoolean
+			# OPTIONAL
+			shouldRetryPrescriptIfBackupFails = $someBoolean
 			# OPTIONAL
 			operatingSystemType = $someFilesetTemplatePatchOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchOperatingSystemType]) for enum values.
 			# OPTIONAL

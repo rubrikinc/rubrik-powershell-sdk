@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TprExecutionType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "IMMEDIATE")]
         IMMEDIATE,
 
         [EnumMember(Value = "ON_DEMAND")]
-        ON_DEMAND,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        ON_DEMAND
 
 
     } // enum TprExecutionType

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ClusterCyberEventLockdownMode
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CYBER_EVENT_LOCKDOWN_MODE_UNSPECIFIED")]
         CYBER_EVENT_LOCKDOWN_MODE_UNSPECIFIED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         ENABLED,
 
         [EnumMember(Value = "NOT_ENABLED")]
-        NOT_ENABLED,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        NOT_ENABLED
 
 
     } // enum ClusterCyberEventLockdownMode

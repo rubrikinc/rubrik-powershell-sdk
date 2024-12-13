@@ -2,8 +2,8 @@
 Rubrik cluster information.
 
 - name: System.String
-  - Name of the cluster.
+  - Rubrik cluster name.
 - version: System.String
-  - Version of the cluster.
+  - Rubrik cluster version.
 - uuid: System.String
   - UUID of the cluster.

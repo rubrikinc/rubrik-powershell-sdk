@@ -9,10 +9,14 @@
   - Specifies whether this tag is a multi-tag filter or a vSphere tag.
 - condition: System.String
   - Conditional logic for the multi-tag filter.
+- snapshotConsistencyMandate: ConsistencyLevelEnum
+  - Snapshot consistency mandate.
 - id: System.String
   - Object ID.
 - tagChildConnection: VsphereTagTagChildTypeConnection
   - List of tag children.
+- snapshotConsistencySource: System.String
+  - Fid of the object from where the snapshot consistency mandate is inherited.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NcdTaskStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "CANCELED")]
         CANCELED,
 
@@ -28,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         STATUS_UNSPECIFIED,
 
         [EnumMember(Value = "SUCCESS")]
-        SUCCESS,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        SUCCESS
 
 
     } // enum NcdTaskStatus

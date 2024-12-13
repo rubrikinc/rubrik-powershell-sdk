@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AzureRetrievalTier
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "AZURE_TIER_UNSPECIFIED")]
         AZURE_TIER_UNSPECIFIED,
 
@@ -22,10 +25,7 @@ namespace RubrikSecurityCloud.Types
         HIGH_PRIORITY_AZURE_TIER,
 
         [EnumMember(Value = "STANDARD_AZURE_TIER")]
-        STANDARD_AZURE_TIER,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        STANDARD_AZURE_TIER
 
 
     } // enum AzureRetrievalTier

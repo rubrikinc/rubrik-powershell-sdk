@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum SaasFeature
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "TYPE_AAD")]
         TYPE_AAD,
 
@@ -24,11 +27,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "TYPE_M365")]
         TYPE_M365,
 
-        [EnumMember(Value = "TYPE_SAAS_PROTECTION")]
-        TYPE_SAAS_PROTECTION,
+        [EnumMember(Value = "TYPE_RCV")]
+        TYPE_RCV,
 
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        [EnumMember(Value = "TYPE_SAAS_PLATFORM")]
+        TYPE_SAAS_PLATFORM,
+
+        [EnumMember(Value = "TYPE_SAAS_PROTECTION")]
+        TYPE_SAAS_PROTECTION
 
 
     } // enum SaasFeature

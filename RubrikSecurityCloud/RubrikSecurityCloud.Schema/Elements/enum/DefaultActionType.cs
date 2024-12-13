@@ -15,14 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DefaultActionType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
         [EnumMember(Value = "ALLOW")]
         ALLOW,
 
         [EnumMember(Value = "DENY")]
-        DENY,
-
-        [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        DENY
 
 
     } // enum DefaultActionType

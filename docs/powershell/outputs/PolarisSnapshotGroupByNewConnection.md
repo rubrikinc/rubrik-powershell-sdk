@@ -6,6 +6,6 @@ Paginated list of PolarisSnapshotGroupByNew objects. Each page of the results in
 - nodes: list of PolarisSnapshotGroupByNews
   - List of PolarisSnapshotGroupByNew objects.
 - pageInfo: PageInfo
-  - General information about this page of results.
+  - General information about this result page.
 - count: System.Int32
   - Total number of PolarisSnapshotGroupByNew objects matching the request arguments.

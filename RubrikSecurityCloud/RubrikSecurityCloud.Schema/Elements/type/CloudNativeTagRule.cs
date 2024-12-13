@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSla")]
         public TagRuleEffectiveSla? EffectiveSla { get; set; }
 
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        [JsonProperty("rscNativeObjectPendingSla")]
+        public CompactSlaDomain? RscNativeObjectPendingSla { get; set; }
+
         //      C# -> TagRuleTag? Tag
         // GraphQL -> tag: TagRuleTag (type)
         [JsonProperty("tag")]
@@ -77,6 +82,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         List<CloudNativeAccountIdWithName>? CloudNativeAccounts = null,
         TagRuleEffectiveSla? EffectiveSla = null,
+        CompactSlaDomain? RscNativeObjectPendingSla = null,
         TagRuleTag? Tag = null
     ) 
     {
@@ -100,6 +106,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSla != null ) {
             this.EffectiveSla = EffectiveSla;
+        }
+        if ( RscNativeObjectPendingSla != null ) {
+            this.RscNativeObjectPendingSla = RscNativeObjectPendingSla;
         }
         if ( Tag != null ) {
             this.Tag = Tag;
@@ -184,6 +193,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSla" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        if (this.RscNativeObjectPendingSla != null) {
+            var fspec = this.RscNativeObjectPendingSla.AsFieldSpec(conf.Child("rscNativeObjectPendingSla"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rscNativeObjectPendingSla" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -328,6 +349,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSla != null && ec.Excludes("effectiveSla",false))
         {
             this.EffectiveSla = null;
+        }
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        if (ec.Includes("rscNativeObjectPendingSla",false))
+        {
+            if(this.RscNativeObjectPendingSla == null) {
+
+                this.RscNativeObjectPendingSla = new CompactSlaDomain();
+                this.RscNativeObjectPendingSla.ApplyExploratoryFieldSpec(ec.NewChild("rscNativeObjectPendingSla"));
+
+            } else {
+
+                this.RscNativeObjectPendingSla.ApplyExploratoryFieldSpec(ec.NewChild("rscNativeObjectPendingSla"));
+
+            }
+        }
+        else if (this.RscNativeObjectPendingSla != null && ec.Excludes("rscNativeObjectPendingSla",false))
+        {
+            this.RscNativeObjectPendingSla = null;
         }
         //      C# -> TagRuleTag? Tag
         // GraphQL -> tag: TagRuleTag (type)
