@@ -71,11 +71,10 @@ foreach ($memberItem in $xml.doc.members.member){
         #Write-Output("`nFound Cmdlet: " + $cmdletName);
         #Write-Output("Opening markdownd for $cmdletName")
 
-        # TODO: SPARK-410830 GenerateDocs.ps1 fails on New-RscMutationSyslog
+        # TODO: SPARK-410830 SDK Build fails in GenerateDocs.ps1
         # see https://rubrik.atlassian.net/browse/SPARK-410830
-        # for description of the issue
-        if ($cmdletName -eq "New-RscMutationSyslog"){
-            Write-Output("Skipping New-RscMutationSyslog due to known issue SPARK-410830")
+        if ($cmdletName -eq "New-RscMutationSyslog" -or $cmdletName -eq "New-RscQueryMisc"){
+            Write-Output("Skipping $cmdletName due to known issue SPARK-410830")
             continue
         }
 
