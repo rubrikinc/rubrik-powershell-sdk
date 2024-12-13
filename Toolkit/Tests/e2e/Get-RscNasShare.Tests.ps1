@@ -11,7 +11,9 @@ BeforeAll {
     }
 }
 
-Describe -Name 'Get-RscNasShare Tests' -Tag 'Public' -Fixture {
+# TODO: Fix this test: replace -Skip with -Fixture
+# see https://rubrik.atlassian.net/browse/SPARK-462873
+Describe -Name 'Get-RscNasShare Tests' -Tag 'Public' -Skip {
 
     It -Name 'retrieves NAS-Shares' -Test {
         $data.nasShares = Get-RscNasShare

@@ -7,8 +7,8 @@ BeforeAll {
     }
 }
 
-// TODO: Fix this test : replace -Skip with -Fixture
-// see https://rubrik.atlassian.net/browse/SPARK-462871
+# TODO: Fix this test : replace -Skip with -Fixture
+# see https://rubrik.atlassian.net/browse/SPARK-462871
 Describe -Name 'Get-RscMssqlInstance Tests' -Tag 'Public' -Skip {
 
     It -Name 'retrieves RscMssqlInstances' -Test {
