@@ -9,6 +9,7 @@ BeforeAll {
 
 # TODO: Fix this test : replace -Skip with -Fixture
 # see https://rubrik.atlassian.net/browse/SPARK-462871
+Write-Warning "TODO: Get-RscMssqlInstance Tests are skipped"
 Describe -Name 'Get-RscMssqlInstance Tests' -Tag 'Public' -Skip {
 
     It -Name 'retrieves RscMssqlInstances' -Test {

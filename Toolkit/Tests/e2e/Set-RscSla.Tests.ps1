@@ -54,6 +54,7 @@ function Compare-ArchivalSpecs {
 
 # TODO: Fix this test : replace -Skip with -Fixture
 # see https://rubrik.atlassian.net/browse/SPARK-462879
+Write-Warning "TODO: Set-RscSla Tests are skipped"
 Describe -Name 'Set-RscSla Tests' -Tag 'Public' -Skip {
 
     Context -Name 'Set-RscSla should update only specified fields not others' {

@@ -13,6 +13,7 @@ BeforeAll {
 
 # TODO: Fix this test: replace -Skip with -Fixture
 # see https://rubrik.atlassian.net/browse/SPARK-462873
+Write-Warning "TODO: Get-RscNasShare Tests are skipped"
 Describe -Name 'Get-RscNasShare Tests' -Tag 'Public' -Skip {
 
     It -Name 'retrieves NAS-Shares' -Test {
