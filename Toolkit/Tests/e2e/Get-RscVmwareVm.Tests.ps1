@@ -7,10 +7,8 @@ BeforeAll {
     }
 }
 
-# TODO: Fix this test : replace -Skip with -Fixture
-# see https://rubrik.atlassian.net/browse/SPARK-462877
-Write-Warning "TODO: Get-RscVmwareVm Tests are skipped"
-Describe -Name 'Get-RscVmwareVm Tests' -Tag 'Public' -Skip {
+
+Describe -Name 'Get-RscVmwareVm Tests' -Tag 'Public' -Fixture {
 
     It -Name 'retrieves VMs' -Test {
         $data.vm = Get-RscVmwareVm
