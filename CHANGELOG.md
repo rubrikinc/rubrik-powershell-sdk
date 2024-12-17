@@ -1,12 +1,14 @@
 # Changelog
 
-## Version 1.13
+## Version 1.12.1
 
 New Features:
 
+- schema update
+
 Fixes:
 
-Breaking Changes:
+- Bugfix for `Get-RscVmwareVm`
 
 ## Version 1.12
 
