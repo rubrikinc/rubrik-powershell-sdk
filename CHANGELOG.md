@@ -1,6 +1,6 @@
 # Changelog
 
-## Version TBD
+## Version 1.13
 
 New Features:
 
@@ -623,4 +623,3 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
-
