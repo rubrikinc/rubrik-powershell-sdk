@@ -103,7 +103,7 @@ function Get-RscVmwareVm {
             #$query = New-RscQueryVsphereVm -Operation NewList -FieldProfile $inputProfile
             $query = New-RscQuery -GqlQuery vsphereVmNewConnection -FieldProfile $inputProfile
             $query.var.filter = @()
-            $query.Field.Nodes.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+            $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
             $query.Field.Nodes[0].Cluster.name = "PIZZA"
             $query.Field.Nodes[0].Cluster.id = "PIZZA"
             $query.Field.Nodes[0].GuestOsName = "TACOS"

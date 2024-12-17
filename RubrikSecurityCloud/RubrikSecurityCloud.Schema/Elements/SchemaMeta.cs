@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20241209-45" ;
+        public static string GraphqlSchemaVersion = "v20241209-57" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -767,7 +767,6 @@ namespace RubrikSecurityCloud.Types
             ClusterHostGroupInfo,
             ClusterInfCidrs,
             ClusterInfo,
-            ClusterInfoType,
             ClusterIpMapping,
             ClusterIpv6ModeReply,
             ClusterLicenseCapacityValidations,
