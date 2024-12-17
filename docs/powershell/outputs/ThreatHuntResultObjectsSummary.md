@@ -15,8 +15,6 @@ Summary of a threat hunt for an object.
   - Latest snapshot date not containing a match.
 - totalMatchedSnapshots: System.Int32
   - Total snapshots where a match was found.
-- clusterInfo: ClusterInfoType
-  - Rubrik cluster information.
 - objectScanStatus: ThreatHuntObjectStatus
   - Scan status of the object.
 - hasQuarantinedMatches: System.Boolean
@@ -25,5 +23,7 @@ Summary of a threat hunt for an object.
   - Threat hunt summaries for each snapshot.
 - object: CdmHierarchySnappableNew
   - The scanned object.
+- clusterInfo: Cluster
+  - Cluster information.
 - location: System.String
   - The object location.

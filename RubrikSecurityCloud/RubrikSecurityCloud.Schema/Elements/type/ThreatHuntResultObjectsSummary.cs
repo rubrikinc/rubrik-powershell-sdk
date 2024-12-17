@@ -70,10 +70,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalUniqueMatchedPaths")]
         public System.Int64? TotalUniqueMatchedPaths { get; set; }
 
-        //      C# -> ClusterInfoType? ClusterInfo
-        // GraphQL -> clusterInfo: ClusterInfoType (type)
+        //      C# -> Cluster? ClusterInfo
+        // GraphQL -> clusterInfo: Cluster (type)
         [JsonProperty("clusterInfo")]
-        public ClusterInfoType? ClusterInfo { get; set; }
+        public Cluster? ClusterInfo { get; set; }
 
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
         // GraphQL -> matchTypes: [IndicatorOfCompromise!]! (type)
@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? TotalMatchedPaths = null,
         System.Int32? TotalMatchedSnapshots = null,
         System.Int64? TotalUniqueMatchedPaths = null,
-        ClusterInfoType? ClusterInfo = null,
+        Cluster? ClusterInfo = null,
         List<IndicatorOfCompromise>? MatchTypes = null,
         List<ThreatHuntResultSnapshotStats>? SnapshotsStats = null
     ) 
@@ -257,8 +257,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "totalUniqueMatchedPaths\n" ;
             }
         }
-        //      C# -> ClusterInfoType? ClusterInfo
-        // GraphQL -> clusterInfo: ClusterInfoType (type)
+        //      C# -> Cluster? ClusterInfo
+        // GraphQL -> clusterInfo: Cluster (type)
         if (this.ClusterInfo != null) {
             var fspec = this.ClusterInfo.AsFieldSpec(conf.Child("clusterInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -477,13 +477,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.TotalUniqueMatchedPaths = null;
         }
-        //      C# -> ClusterInfoType? ClusterInfo
-        // GraphQL -> clusterInfo: ClusterInfoType (type)
+        //      C# -> Cluster? ClusterInfo
+        // GraphQL -> clusterInfo: Cluster (type)
         if (ec.Includes("clusterInfo",false))
         {
             if(this.ClusterInfo == null) {
 
-                this.ClusterInfo = new ClusterInfoType();
+                this.ClusterInfo = new Cluster();
                 this.ClusterInfo.ApplyExploratoryFieldSpec(ec.NewChild("clusterInfo"));
 
             } else {
