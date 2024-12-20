@@ -122,109 +122,137 @@ function Get-RscMssqlInstance {
     )
     Process {
         Write-Verbose "-Running Get-RscMssqlInstance"
-        #region Create Query
-        switch ($PSCmdlet.ParameterSetName) {
-            "List" {
-                Write-Verbose "-  Creating List Query"
-                $query = New-RscQueryMssql -Op TopLevelDescendants 
-                $query.Var.typeFilter = @()
-                $query.Var.typeFilter += "PhysicalHost"
-                $query.Var.typeFilter += "WindowsCluster"
-                $query.var.filter = @()
+
+        if($Id) {
+            Write-Verbose "-  Creating Id Query"
+            $query = New-RscQuery -GqlQuery mssqlInstance
+            $query.Var.fid = $id
+
+            $query.Field.Cluster = New-Object RubrikSecurityCloud.Types.Cluster
+            $query.Field.Cluster.name = "FETCH"
+            $query.Field.Cluster.id = "FETCH"
+            $query.Field.effectiveSlaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
+            $query.Field.effectiveSlaDomain.name = "FETCH"
+            $query.Field.effectiveSlaDomain.id = "FETCH"
+            $query.Field.name = "FETCH"
+            $query.Field.id = "FETCH"
+            
+            if ( $AsQuery ) {
+                return $query
             }
-            { ($_ -eq "ByHostName") -or ($_ -eq "ByWindowsClusterName") } {
-                $Name = ""
-                if ($HostName) { $Name = $HostName }
-                if ($WindowsClusterName) { $Name = $WindowsClusterName }
-                $query = New-RscQuery -GqlQuery MssqlTopLevelDescendants 
-                $query.Var.filter = @()
-                $query.Field.Nodes[3].PhysicalChildConnection.Nodes[5].Cluster = New-Object RubrikSecurityCloud.Types.Cluster
-                $query.Field.Nodes[3].PhysicalChildConnection.Nodes[5].Cluster.SelectForRetrieval()
-                $query.Field.Nodes[3].PhysicalChildConnection.Nodes[5].PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
-                $query.Field.Nodes[3].PhysicalChildConnection.Nodes[5].PhysicalPath.SelectForRetrieval()
-    
-                $query.field.Nodes[4].LogicalChildConnection = New-Object RubrikSecurityCloud.Types.WindowsClusterLogicalChildTypeConnection
-                $query.field.Nodes[4].LogicalChildConnection.SelectForRetrieval()
-                $query.Field.Nodes[4].LogicalChildConnection.Nodes[0].PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
-                $query.Field.Nodes[4].LogicalChildConnection.Nodes[0].PhysicalPath.SelectForRetrieval()
-    
+            else {
+                $results = Invoke-Rsc $query
+                return $results
+            }
+        }
+        else {
+            $query = New-RscQuery -GqlQuery mssqlTopLevelDescendants 
+            $query.Var.filter = @()
+
+            if($HostName) {
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
-                $nameFilter.texts = $Name
+                $nameFilter.texts = $HostName
                 $query.Var.filter += $nameFilter
             }
-            "Id" {
-                Write-Verbose "-  Creating Id Query"
-                $query = New-RscQuery -GqlQuery mssqlInstance
-                $query.Field.PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
-                $query.Field.PhysicalPath.SelectForRetrieval()
-                $query.Var.filter = @()
-                $query.Var.fid = $id
+            elseif ($WindowsClusterName) {
+                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
+                $nameFilter.texts = $WindowsClusterName
+                $query.Var.filter += $nameFilter
             }
-        }
-        
-        if ($Sla) {
-            $slaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-            $slaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::EFFECTIVE_SLA
-            $slaFilter.Texts = $Sla.id
-            $query.var.filter += $slaFilter
-        }
-
-        if ($Cluster) {
-            $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-            $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
-            $clusterFilter.Texts = $Cluster.id
-            $query.var.filter += $clusterFilter
-        }
-
-        if ($Org) {
-            $orgFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-            $orgFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::ORGANIZATION_ID
-            $orgFilter.Texts = $Org.id
-            $query.var.filter += $orgFilter
-        }
-
-        if ($PSBoundParameters.ContainsKey('relic')) {
-            $relicFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-            $relicFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_RELIC
-            $relicFilter.Texts = $Relic
-            $query.var.filter += $relicFilter
-        }
-
-        if ($PSBoundParameters.ContainsKey('replica')) {
-            $replicaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-            $replicaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_REPLICATED
-            $replicaFilter.Texts = $Replica
-            $query.var.filter += $replicaFilter
-        }
-        #endregion
-        
-        # Skip sending, return query object:
-        if ( $AsQuery ) {
-            return $query
-        }
-        
-        # Invoke the query:
-        $results = $query.Invoke()
-        
-        switch ($PSCmdlet.ParameterSetName) {
-            "List" {
-                $results.Nodes
+            
+            if ($Sla) {
+                $slaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $slaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::EFFECTIVE_SLA
+                $slaFilter.Texts = $Sla.id
+                $query.var.filter += $slaFilter
             }
-            { ($_ -eq "ByHostName") -or ($_ -eq "ByWindowsClusterName") } {
-                switch ($results.nodes.objectType) {
-                    "PHYSICAL_HOST" {
-                        $results = $results.Nodes.PhysicalChildConnection.Nodes | Where-Object { $_.Name -eq $InstanceName }
-                        $results
-                    }
-                    "WINDOWS_CLUSTER" {
-                        $results = $results.Nodes.LogicalChildConnection.Nodes | Where-Object { $_.Name -eq $InstanceName }
-                        $results
-                    }
+    
+            if ($Cluster) {
+                $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
+                $clusterFilter.Texts = $Cluster.id
+                $query.var.filter += $clusterFilter
+            }
+    
+            if ($Org) {
+                $orgFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $orgFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::ORGANIZATION_ID
+                $orgFilter.Texts = $Org.id
+                $query.var.filter += $orgFilter
+            }
+    
+            if ($PSBoundParameters.ContainsKey('relic')) {
+                $relicFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $relicFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_RELIC
+                $relicFilter.Texts = $Relic
+                $query.var.filter += $relicFilter
+            }
+    
+            if ($PSBoundParameters.ContainsKey('replica')) {
+                $replicaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $replicaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_REPLICATED
+                $replicaFilter.Texts = $Replica
+                $query.var.filter += $replicaFilter
+            }
+
+            $physicalHostIndex = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "PhysicalHost"})
+            $windowsClusterIndex = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "WindowsCluster"})
+
+
+            $query.field.Nodes[$physicalHostIndex].cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+            $query.field.Nodes[$physicalHostIndex].cluster.name = "FETCH"
+            $query.field.Nodes[$physicalHostIndex].cluster.id = "FETCH"
+            $query.Field.Nodes[$physicalHostIndex].Vars.descendantConnection.typeFilter = [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::MSSQL_INSTANCE
+            $query.field.Nodes[$physicalHostIndex].descendantConnection = New-Object -TypeName RubrikSecurityCloud.Types.PhysicalHostDescendantTypeConnection
+            $query.field.Nodes[$physicalHostIndex].descendantConnection.nodes = New-Object -TypeName RubrikSecurityCloud.Types.MssqlInstance
+
+            $mssqlInstanceIndex = $query.field.nodes[$physicalHostIndex].descendantConnection.Nodes.FindIndex({param($item) $item.gettype().name -eq "MssqlInstance"})
+            $query.field.Nodes[$physicalHostIndex].descendantConnection.nodes[$mssqlInstanceIndex].name = "FETCH"
+            $query.field.Nodes[$physicalHostIndex].descendantConnection.nodes[$mssqlInstanceIndex].id = "FETCH"
+            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster = New-Object RubrikSecurityCloud.Types.Cluster
+            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster.name = "FETCH"
+            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster.id = "FETCH"
+            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
+            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.name = "FETCH"
+            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.id = "FETCH"
+
+            
+            $query.Field.Nodes[$windowsClusterIndex].cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+            $query.Field.Nodes[$windowsClusterIndex].cluster.name = "FETCH"
+            $query.Field.Nodes[$windowsClusterIndex].cluster.id = "FETCH"
+            $query.Field.Nodes[$windowsClusterIndex].effectiveSlaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
+            $query.Field.Nodes[$windowsClusterIndex].effectiveSlaDomain.name = "FETCH"
+            $query.Field.Nodes[$windowsClusterIndex].effectiveSlaDomain.id = "FETCH"
+            $query.Field.Nodes[$windowsClusterIndex].Vars.descendantConnection.typeFilter = [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::MSSQL_INSTANCE
+            $query.field.Nodes[$windowsClusterIndex].descendantConnection = New-Object RubrikSecurityCloud.Types.WindowsClusterDescendantTypeConnection
+            $query.field.Nodes[$windowsClusterIndex].descendantConnection.nodes = New-Object -TypeName RubrikSecurityCloud.Types.MssqlInstance
+            
+            $mssqlInstanceIndex = $query.field.nodes[$windowsClusterIndex].descendantConnection.Nodes.FindIndex({param($item) $item.gettype().name -eq "MssqlInstance"})
+            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster = New-Object RubrikSecurityCloud.Types.Cluster
+            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster.name = "FETCH"
+            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster.id = "FETCH"
+            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
+            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.name = "FETCH"
+            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.id = "FETCH"
+            $query.field.Nodes[$windowsClusterIndex].descendantConnection.nodes[$mssqlInstanceIndex].name = "FETCH"
+            $query.field.Nodes[$windowsClusterIndex].descendantConnection.nodes[$mssqlInstanceIndex].id = "FETCH"
+
+            if ( $AsQuery ) {
+                return $query
+            }
+            else {
+                $results = Invoke-Rsc $query
+
+                # If we passed in a specific host or windows cluster name, we return the instances from that host, otherwise, we return the host and windows cluster objects.
+                # I'm not a fan of this as returning mixed object types results in bad formatting and goes against 
+                if ($HostName -or $WindowsClusterName) {
+                    $results.nodes.descendantConnection.nodes
                 }
-            }
-            "Id" {
-                $results
+                else {
+                    $results.nodes
+                }
             }
         }
     } 
