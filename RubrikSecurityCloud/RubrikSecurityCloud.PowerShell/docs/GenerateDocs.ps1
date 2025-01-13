@@ -71,13 +71,6 @@ foreach ($memberItem in $xml.doc.members.member){
         Write-Output("`nProcessing Cmdlet: " + $cmdletName);
         #Write-Output("Opening markdownd for $cmdletName")
 
-        # TODO: SPARK-410830 SDK Build fails in GenerateDocs.ps1
-        # see https://rubrik.atlassian.net/browse/SPARK-410830
-        if ($cmdletName -eq "New-RscMutationSyslog" -or $cmdletName -eq "New-RscQueryMisc" -or $cmdletName -eq "Get-RscSnapshot"){
-            Write-Warning("Skipping $cmdletName due to known issue SPARK-410830")
-            continue
-        }
-
         $mdFile = "tmp_help/$($cmdletName).md"
         $cmdletMarkdown = Get-Content -Path $mdFile -Raw -ErrorAction Stop
 
@@ -101,7 +94,10 @@ foreach ($memberItem in $xml.doc.members.member){
             for ($i = 0; $i -le $examples.count -1; $i++ ){            
                 $exampleText += "### Example $($i+1)"
                 $exampleText += "`n```````n"
-                $exampleText += $examples[$i].code
+                # Replace tabs with 4 spaces and remove the first leading space from each line
+                $modifiedCode = ($examples[$i].code -split "`n" | ForEach-Object { 
+                    $_ -replace "`t", "    " -replace '^\s', '' }) -join "`n"
+                $exampleText += $modifiedCode
                 $exampleText += "`n```````n"
                 $exampleText += "$($($examples[$i].'#text') -replace '\s+', ' ')`n`n"
             }
@@ -109,6 +105,10 @@ foreach ($memberItem in $xml.doc.members.member){
             $exampleText += "### Example 1"
             $exampleText += "`n```````n"
             $exampleText += $examples.code
+            # Replace tabs with 4 spaces and remove the first leading space from each line
+            $modifiedCode = ($examples.code -split "`n" | ForEach-Object { 
+                $_ -replace "`t", "    " -replace '^\s', '' }) -join "`n"
+            $exampleText += $modifiedCode
             $exampleText += "`n```````n"
             $exampleText += "$($($examples.'#text') -replace '\s+', ' ')`n`n"
         }
