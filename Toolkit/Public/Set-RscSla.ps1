@@ -257,7 +257,7 @@ function Set-RscSla
         # The retention lock mode for the intended SLA Domain update.
         [Parameter()]
         [RubrikSecurityCloud.Types.RetentionLockMode]
-        $RetentionLockMode = [RubrikSecurityCloud.Types.RetentionLockMode]::NO_MODE,
+        $RetentionLockMode,
 
         # Archival specs for this SLA.
         [Parameter()]
