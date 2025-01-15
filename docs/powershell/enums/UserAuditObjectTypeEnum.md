@@ -39,6 +39,7 @@ User audit object type.
 - POSTGRES_DB_CLUSTER - PostgreSQL Database Cluster.
 - HypervServer - Hyper-V server type.
 - MSSQL_MOUNT - MSSQL Mount type.
+- CHATBOT - Chatbot type.
 - Vcenter - A vCenter type.
 - AzureNativeDisk - Azure native disk type.
 - PublicCloudMachineInstance - Public cloud machine instance type.

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int32? AlreadySyncedClusters
+        // GraphQL -> alreadySyncedClusters: Int! (scalar)
+        [JsonProperty("alreadySyncedClusters")]
+        public System.Int32? AlreadySyncedClusters { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         [JsonProperty("description")]
@@ -80,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("explicitlyAssignedPermissions")]
         public List<Permission>? ExplicitlyAssignedPermissions { get; set; }
 
+        //      C# -> SyncedClusterConnection? PaginatedSyncedClusters
+        // GraphQL -> paginatedSyncedClusters: SyncedClusterConnection! (type)
+        [JsonProperty("paginatedSyncedClusters")]
+        public SyncedClusterConnection? PaginatedSyncedClusters { get; set; }
+
         //      C# -> List<Permission>? Permissions
         // GraphQL -> permissions: [Permission!]! (type)
         [JsonProperty("permissions")]
@@ -90,16 +100,39 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("syncedClusters")]
         public List<SyncedCluster>? SyncedClusters { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars PaginatedSyncedClusters { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] paginatedSyncedClustersArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                };
+            this.PaginatedSyncedClusters =
+                new RscGqlVars(null, paginatedSyncedClustersArgs, null, true);
+        }
+    }
+
+    public Role()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "Role";
     }
 
     public Role Set(
+        System.Int32? AlreadySyncedClusters = null,
         System.String? Description = null,
         List<System.String>? ExplicitProtectableClusters = null,
         System.String? Id = null,
@@ -112,10 +145,14 @@ namespace RubrikSecurityCloud.Types
         List<Permission>? EffectivePermissions = null,
         List<RbacPermission>? EffectiveRbacPermissions = null,
         List<Permission>? ExplicitlyAssignedPermissions = null,
+        SyncedClusterConnection? PaginatedSyncedClusters = null,
         List<Permission>? Permissions = null,
         List<SyncedCluster>? SyncedClusters = null
     ) 
     {
+        if ( AlreadySyncedClusters != null ) {
+            this.AlreadySyncedClusters = AlreadySyncedClusters;
+        }
         if ( Description != null ) {
             this.Description = Description;
         }
@@ -152,6 +189,9 @@ namespace RubrikSecurityCloud.Types
         if ( ExplicitlyAssignedPermissions != null ) {
             this.ExplicitlyAssignedPermissions = ExplicitlyAssignedPermissions;
         }
+        if ( PaginatedSyncedClusters != null ) {
+            this.PaginatedSyncedClusters = PaginatedSyncedClusters;
+        }
         if ( Permissions != null ) {
             this.Permissions = Permissions;
         }
@@ -172,6 +212,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int32? AlreadySyncedClusters
+        // GraphQL -> alreadySyncedClusters: Int! (scalar)
+        if (this.AlreadySyncedClusters != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "alreadySyncedClusters\n" ;
+            } else {
+                s += ind + "alreadySyncedClusters\n" ;
+            }
+        }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
@@ -289,6 +338,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> SyncedClusterConnection? PaginatedSyncedClusters
+        // GraphQL -> paginatedSyncedClusters: SyncedClusterConnection! (type)
+        if (this.PaginatedSyncedClusters != null) {
+            var fspec = this.PaginatedSyncedClusters.AsFieldSpec(conf.Child("paginatedSyncedClusters"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "paginatedSyncedClusters" + "\n(" + this.Vars.PaginatedSyncedClusters.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<Permission>? Permissions
         // GraphQL -> permissions: [Permission!]! (type)
         if (this.Permissions != null) {
@@ -320,6 +381,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.Int32? AlreadySyncedClusters
+        // GraphQL -> alreadySyncedClusters: Int! (scalar)
+        if (ec.Includes("alreadySyncedClusters",true))
+        {
+            if(this.AlreadySyncedClusters == null) {
+
+                this.AlreadySyncedClusters = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AlreadySyncedClusters != null && ec.Excludes("alreadySyncedClusters",true))
+        {
+            this.AlreadySyncedClusters = null;
+        }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (ec.Includes("description",true))
@@ -529,6 +607,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExplicitlyAssignedPermissions != null && ec.Excludes("explicitlyAssignedPermissions",false))
         {
             this.ExplicitlyAssignedPermissions = null;
+        }
+        //      C# -> SyncedClusterConnection? PaginatedSyncedClusters
+        // GraphQL -> paginatedSyncedClusters: SyncedClusterConnection! (type)
+        if (ec.Includes("paginatedSyncedClusters",false))
+        {
+            if(this.PaginatedSyncedClusters == null) {
+
+                this.PaginatedSyncedClusters = new SyncedClusterConnection();
+                this.PaginatedSyncedClusters.ApplyExploratoryFieldSpec(ec.NewChild("paginatedSyncedClusters"));
+
+            } else {
+
+                this.PaginatedSyncedClusters.ApplyExploratoryFieldSpec(ec.NewChild("paginatedSyncedClusters"));
+
+            }
+        }
+        else if (this.PaginatedSyncedClusters != null && ec.Excludes("paginatedSyncedClusters",false))
+        {
+            this.PaginatedSyncedClusters = null;
         }
         //      C# -> List<Permission>? Permissions
         // GraphQL -> permissions: [Permission!]! (type)

@@ -21,5 +21,7 @@ Contains validation information, such as blockers or errors encountered in valid
   - Specifies whether there is an overlap between the pod CIDR range used for the CNI overlay network and the cluster subnet CIDR range. Make sure that there is no overlap between the pod CIDR range and the cluster subnet to prevent conflicts. For more details, visit https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay#ip-address-planning.
 - isPodCidrRangeTooSmall: System.Boolean
   - Specifies whether the size of the pod CIDR range provided for Exocompute configuration using CNI overlay network mode is smaller than desired for creating an exo-cluster. For more details, visit https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay#ip-address-planning.
+- isUnsupportedCustomerManagedExocomputeConfigFieldPresent: System.Boolean
+  - Specifies whether the configuration contains any unsupported fields for the customer-managed exocompute configuration.
 - errorMessage: System.String
   - Error received while validating Exocompute configuration.

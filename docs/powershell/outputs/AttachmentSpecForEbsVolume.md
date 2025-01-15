@@ -9,3 +9,7 @@ Host AWS EC2 instance specifications for AWS EBS volume.
   - Specifies whether the EBS volume is excluded from snapshots of the EC2 instance..
 - isRootVolume: System.Boolean
   - Specifies whether the EBS volume is the root volume.
+- awsNativeEc2InstanceNativeId: System.String
+  - Native ID of the EC2 instance.
+- awsNativeEc2InstanceName: System.String
+  - Name of the EC2 instance.

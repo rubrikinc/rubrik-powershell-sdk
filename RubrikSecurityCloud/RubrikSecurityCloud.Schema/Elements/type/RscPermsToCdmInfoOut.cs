@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int32? TotalDisconnectedClusters
+        // GraphQL -> totalDisconnectedClusters: Int! (scalar)
+        [JsonProperty("totalDisconnectedClusters")]
+        public System.Int32? TotalDisconnectedClusters { get; set; }
+
         //      C# -> SyncedClusterConnection? IncompatibleClusters
         // GraphQL -> incompatibleClusters: SyncedClusterConnection! (type)
         [JsonProperty("incompatibleClusters")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RscPermsToCdmInfoOut Set(
+        System.Int32? TotalDisconnectedClusters = null,
         SyncedClusterConnection? IncompatibleClusters = null,
         SyncedClusterConnection? RemovedClusters = null,
         SyncedClusterConnection? SyncedClusters = null
     ) 
     {
+        if ( TotalDisconnectedClusters != null ) {
+            this.TotalDisconnectedClusters = TotalDisconnectedClusters;
+        }
         if ( IncompatibleClusters != null ) {
             this.IncompatibleClusters = IncompatibleClusters;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int32? TotalDisconnectedClusters
+        // GraphQL -> totalDisconnectedClusters: Int! (scalar)
+        if (this.TotalDisconnectedClusters != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalDisconnectedClusters\n" ;
+            } else {
+                s += ind + "totalDisconnectedClusters\n" ;
+            }
+        }
         //      C# -> SyncedClusterConnection? IncompatibleClusters
         // GraphQL -> incompatibleClusters: SyncedClusterConnection! (type)
         if (this.IncompatibleClusters != null) {
@@ -116,6 +134,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.Int32? TotalDisconnectedClusters
+        // GraphQL -> totalDisconnectedClusters: Int! (scalar)
+        if (ec.Includes("totalDisconnectedClusters",true))
+        {
+            if(this.TotalDisconnectedClusters == null) {
+
+                this.TotalDisconnectedClusters = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalDisconnectedClusters != null && ec.Excludes("totalDisconnectedClusters",true))
+        {
+            this.TotalDisconnectedClusters = null;
+        }
         //      C# -> SyncedClusterConnection? IncompatibleClusters
         // GraphQL -> incompatibleClusters: SyncedClusterConnection! (type)
         if (ec.Includes("incompatibleClusters",false))

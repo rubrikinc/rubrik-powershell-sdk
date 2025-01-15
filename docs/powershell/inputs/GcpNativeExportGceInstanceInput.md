@@ -27,3 +27,5 @@ Input required to export a GCP GCE instance snapshot.
   - Customer managed key to encrypt exported instance. This is only applicable when encryption type is CustomerManagedKey.
 - kmsCryptoKeyResourceId: System.String
   - Customer managed key to encrypt exported instance. This is only applicable when encryption type is CustomerManagedKeyResourceId.
+- targetGcpProjectRubrikId: System.String
+  - The target project cloud account ID for cross project export.

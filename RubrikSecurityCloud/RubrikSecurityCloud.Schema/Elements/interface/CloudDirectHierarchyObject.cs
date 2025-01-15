@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         Cluster? Cluster { get; set; }
 
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        [JsonProperty("authorizedOperations")]
+        List<Operation>? AuthorizedOperations { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]

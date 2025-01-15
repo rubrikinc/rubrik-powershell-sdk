@@ -2,4 +2,5 @@
 Input for the updated unmount time of a Live Mount.
 
 - newUnmountTime: System.Int64
-  - Required. The absolute new unmount time.
+  - Required. Supported in v9.3+
+      The absolute new unmount time.

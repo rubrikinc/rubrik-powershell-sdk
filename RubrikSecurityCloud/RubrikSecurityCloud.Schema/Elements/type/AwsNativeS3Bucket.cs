@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsAccountRubrikId")]
         public System.String? AwsAccountRubrikId { get; set; }
 
+        //      C# -> System.Int64? BucketSizeBytes
+        // GraphQL -> bucketSizeBytes: Long! (scalar)
+        [JsonProperty("bucketSizeBytes")]
+        public System.Int64? BucketSizeBytes { get; set; }
+
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
         [JsonProperty("cloudNativeId")]
@@ -86,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isExocomputeConfigured")]
         public System.Boolean? IsExocomputeConfigured { get; set; }
 
+        //      C# -> System.Boolean? IsOnboarding
+        // GraphQL -> isOnboarding: Boolean! (scalar)
+        [JsonProperty("isOnboarding")]
+        public System.Boolean? IsOnboarding { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -110,6 +120,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
+
+        //      C# -> System.Int64? NumberOfObjects
+        // GraphQL -> numberOfObjects: Long! (scalar)
+        [JsonProperty("numberOfObjects")]
+        public System.Int64? NumberOfObjects { get; set; }
 
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
@@ -296,16 +311,19 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
         System.String? AwsAccountRubrikId = null,
+        System.Int64? BucketSizeBytes = null,
         System.String? CloudNativeId = null,
         DateTime? CreationTime = null,
         DateTime? EarliestRestoreTime = null,
         System.String? Id = null,
         System.Boolean? IsExocomputeConfigured = null,
+        System.Boolean? IsOnboarding = null,
         System.Boolean? IsRelic = null,
         System.Boolean? IsVersioningEnabled = null,
         System.String? Name = null,
         System.String? NativeName = null,
         System.Int32? NumWorkloadDescendants = null,
+        System.Int64? NumberOfObjects = null,
         System.Int32? OnDemandSnapshotCount = null,
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
@@ -352,6 +370,9 @@ namespace RubrikSecurityCloud.Types
         if ( AwsAccountRubrikId != null ) {
             this.AwsAccountRubrikId = AwsAccountRubrikId;
         }
+        if ( BucketSizeBytes != null ) {
+            this.BucketSizeBytes = BucketSizeBytes;
+        }
         if ( CloudNativeId != null ) {
             this.CloudNativeId = CloudNativeId;
         }
@@ -367,6 +388,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsExocomputeConfigured != null ) {
             this.IsExocomputeConfigured = IsExocomputeConfigured;
         }
+        if ( IsOnboarding != null ) {
+            this.IsOnboarding = IsOnboarding;
+        }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
         }
@@ -381,6 +405,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
+        }
+        if ( NumberOfObjects != null ) {
+            this.NumberOfObjects = NumberOfObjects;
         }
         if ( OnDemandSnapshotCount != null ) {
             this.OnDemandSnapshotCount = OnDemandSnapshotCount;
@@ -540,6 +567,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "awsAccountRubrikId\n" ;
             }
         }
+        //      C# -> System.Int64? BucketSizeBytes
+        // GraphQL -> bucketSizeBytes: Long! (scalar)
+        if (this.BucketSizeBytes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "bucketSizeBytes\n" ;
+            } else {
+                s += ind + "bucketSizeBytes\n" ;
+            }
+        }
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
         if (this.CloudNativeId != null) {
@@ -585,6 +621,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isExocomputeConfigured\n" ;
             }
         }
+        //      C# -> System.Boolean? IsOnboarding
+        // GraphQL -> isOnboarding: Boolean! (scalar)
+        if (this.IsOnboarding != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isOnboarding\n" ;
+            } else {
+                s += ind + "isOnboarding\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
@@ -628,6 +673,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "numWorkloadDescendants\n" ;
             } else {
                 s += ind + "numWorkloadDescendants\n" ;
+            }
+        }
+        //      C# -> System.Int64? NumberOfObjects
+        // GraphQL -> numberOfObjects: Long! (scalar)
+        if (this.NumberOfObjects != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "numberOfObjects\n" ;
+            } else {
+                s += ind + "numberOfObjects\n" ;
             }
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
@@ -1028,6 +1082,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AwsAccountRubrikId = null;
         }
+        //      C# -> System.Int64? BucketSizeBytes
+        // GraphQL -> bucketSizeBytes: Long! (scalar)
+        if (ec.Includes("bucketSizeBytes",true))
+        {
+            if(this.BucketSizeBytes == null) {
+
+                this.BucketSizeBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BucketSizeBytes != null && ec.Excludes("bucketSizeBytes",true))
+        {
+            this.BucketSizeBytes = null;
+        }
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
         if (ec.Includes("cloudNativeId",true))
@@ -1113,6 +1184,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsExocomputeConfigured = null;
         }
+        //      C# -> System.Boolean? IsOnboarding
+        // GraphQL -> isOnboarding: Boolean! (scalar)
+        if (ec.Includes("isOnboarding",true))
+        {
+            if(this.IsOnboarding == null) {
+
+                this.IsOnboarding = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsOnboarding != null && ec.Excludes("isOnboarding",true))
+        {
+            this.IsOnboarding = null;
+        }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (ec.Includes("isRelic",true))
@@ -1197,6 +1285,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = null;
+        }
+        //      C# -> System.Int64? NumberOfObjects
+        // GraphQL -> numberOfObjects: Long! (scalar)
+        if (ec.Includes("numberOfObjects",true))
+        {
+            if(this.NumberOfObjects == null) {
+
+                this.NumberOfObjects = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumberOfObjects != null && ec.Excludes("numberOfObjects",true))
+        {
+            this.NumberOfObjects = null;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)

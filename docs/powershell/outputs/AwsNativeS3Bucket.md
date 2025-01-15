@@ -23,6 +23,12 @@ AWS native S3 Bucket.
   - A boolean specifying whether exocompute is configured in the region.
 - awsNativeAccountDetails: AwsNativeAccountDetails
   - AWS native account details.
+- numberOfObjects: System.Int64
+  - Number of objects in the S3 bucket.
+- bucketSizeBytes: System.Int64
+  - Total size of the bucket in bytes.
+- isOnboarding: System.Boolean
+  - Flag to specify if the S3 bucket is being onboarded for backup.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount

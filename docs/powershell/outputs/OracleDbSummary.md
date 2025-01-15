@@ -95,8 +95,8 @@ Supported in v5.0+
   - Supported in v6.0+
   List of Data Guard group members.
 - blackoutWindows: BlackoutWindows
-  - Supported in v9.3
+  - Supported in v9.3+
   An array that contains blackout windows for the Oracle database.
 - blackoutWindowStatus: BlackoutWindowStatus
-  - Supported in v9.3
+  - Supported in v9.3+
   Status of the blackout window for the Oracle database.

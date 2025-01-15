@@ -25,6 +25,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeEc2InstanceId")]
         public System.String? AwsNativeEc2InstanceId { get; set; }
 
+        //      C# -> System.String? AwsNativeEc2InstanceName
+        // GraphQL -> awsNativeEc2InstanceName: String! (scalar)
+        [JsonProperty("awsNativeEc2InstanceName")]
+        public System.String? AwsNativeEc2InstanceName { get; set; }
+
+        //      C# -> System.String? AwsNativeEc2InstanceNativeId
+        // GraphQL -> awsNativeEc2InstanceNativeId: String! (scalar)
+        [JsonProperty("awsNativeEc2InstanceNativeId")]
+        public System.String? AwsNativeEc2InstanceNativeId { get; set; }
+
         //      C# -> System.String? DevicePath
         // GraphQL -> devicePath: String! (scalar)
         [JsonProperty("devicePath")]
@@ -51,6 +61,8 @@ namespace RubrikSecurityCloud.Types
 
     public AttachmentSpecForEbsVolume Set(
         System.String? AwsNativeEc2InstanceId = null,
+        System.String? AwsNativeEc2InstanceName = null,
+        System.String? AwsNativeEc2InstanceNativeId = null,
         System.String? DevicePath = null,
         System.Boolean? IsExcludedFromSnapshot = null,
         System.Boolean? IsRootVolume = null
@@ -58,6 +70,12 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AwsNativeEc2InstanceId != null ) {
             this.AwsNativeEc2InstanceId = AwsNativeEc2InstanceId;
+        }
+        if ( AwsNativeEc2InstanceName != null ) {
+            this.AwsNativeEc2InstanceName = AwsNativeEc2InstanceName;
+        }
+        if ( AwsNativeEc2InstanceNativeId != null ) {
+            this.AwsNativeEc2InstanceNativeId = AwsNativeEc2InstanceNativeId;
         }
         if ( DevicePath != null ) {
             this.DevicePath = DevicePath;
@@ -89,6 +107,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "awsNativeEc2InstanceId\n" ;
             } else {
                 s += ind + "awsNativeEc2InstanceId\n" ;
+            }
+        }
+        //      C# -> System.String? AwsNativeEc2InstanceName
+        // GraphQL -> awsNativeEc2InstanceName: String! (scalar)
+        if (this.AwsNativeEc2InstanceName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "awsNativeEc2InstanceName\n" ;
+            } else {
+                s += ind + "awsNativeEc2InstanceName\n" ;
+            }
+        }
+        //      C# -> System.String? AwsNativeEc2InstanceNativeId
+        // GraphQL -> awsNativeEc2InstanceNativeId: String! (scalar)
+        if (this.AwsNativeEc2InstanceNativeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "awsNativeEc2InstanceNativeId\n" ;
+            } else {
+                s += ind + "awsNativeEc2InstanceNativeId\n" ;
             }
         }
         //      C# -> System.String? DevicePath
@@ -141,6 +177,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.AwsNativeEc2InstanceId != null && ec.Excludes("awsNativeEc2InstanceId",true))
         {
             this.AwsNativeEc2InstanceId = null;
+        }
+        //      C# -> System.String? AwsNativeEc2InstanceName
+        // GraphQL -> awsNativeEc2InstanceName: String! (scalar)
+        if (ec.Includes("awsNativeEc2InstanceName",true))
+        {
+            if(this.AwsNativeEc2InstanceName == null) {
+
+                this.AwsNativeEc2InstanceName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsNativeEc2InstanceName != null && ec.Excludes("awsNativeEc2InstanceName",true))
+        {
+            this.AwsNativeEc2InstanceName = null;
+        }
+        //      C# -> System.String? AwsNativeEc2InstanceNativeId
+        // GraphQL -> awsNativeEc2InstanceNativeId: String! (scalar)
+        if (ec.Includes("awsNativeEc2InstanceNativeId",true))
+        {
+            if(this.AwsNativeEc2InstanceNativeId == null) {
+
+                this.AwsNativeEc2InstanceNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsNativeEc2InstanceNativeId != null && ec.Excludes("awsNativeEc2InstanceNativeId",true))
+        {
+            this.AwsNativeEc2InstanceNativeId = null;
         }
         //      C# -> System.String? DevicePath
         // GraphQL -> devicePath: String! (scalar)

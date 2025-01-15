@@ -23,7 +23,7 @@ Supported in v5.0+
 - mssqlSddCertificateId: System.String
   - Supported in v9.3. The certificate ID is the identifier associated with the public key certificate issued by the Certificate Authority (CA) that signed the SQL Server certificate. This ID is used to validate the identity of the SQL Server host during Sensitive Data Discovery.
 - oracleSddWalletPath: System.String
-  - Supported in v9.3
+  - Supported in v9.3+
       Contains the wallet path on the Oracle host which is used to authenticate remote connections to oracle databases during Sensitive Data Discovery.
 - orgNetworkId: System.String
   - Supported in v8.1+
@@ -41,5 +41,5 @@ Supported in v5.0+
 - nasConfig: NasConfigInput
   - Supported in v5.0+
 - oracleSddUserCredentials: SddUserCredentialsInput
-  - Supported in v9.3
+  - Supported in v9.3+
       The user credentials for querying oracle databases on the host for Sensitive Data Discovery.

@@ -634,6 +634,11 @@ Change the Rubrik Backup Service deployment setting in batch.
 
 - There is a single argument of type UpdateAgentDeploymentSettingInBatchInput.
 - Returns UpdateAgentDeploymentSettingInBatchReply.
+### updateagentdeploymentsettinginbatchnew
+Change the Rubrik Backup Service deployment setting in a batch.
+
+- There is a single argument of type UpdateAgentDeploymentSettingInBatchNewInput.
+- Returns UpdateAgentDeploymentSettingInBatchNewReply.
 ### updateauthdomainusershiddenstatus
 Update the hidden status for the given auth domain users.
 

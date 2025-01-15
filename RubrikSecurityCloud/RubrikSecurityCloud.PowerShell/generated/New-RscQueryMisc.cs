@@ -2718,6 +2718,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.assignedRoleIds = @(
     /// 	$someString
     /// )
+    /// # OPTIONAL
+    /// $query.Var.roleSyncedFilter = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -13094,6 +13096,7 @@ $query.Var.before = $someString"
         //     sortBy: RoleFieldEnum = Name
         //     nameFilter: String
         //     assignedRoleIds: [UUID!]
+        //     roleSyncedFilter: Boolean
         //   ): RoleConnection!
         internal void InitQueryGetAllRolesInOrgConnection()
         {
@@ -13106,12 +13109,13 @@ $query.Var.before = $someString"
                 Tuple.Create("sortBy", "RoleFieldEnum"),
                 Tuple.Create("nameFilter", "String"),
                 Tuple.Create("assignedRoleIds", "[UUID!]"),
+                Tuple.Create("roleSyncedFilter", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryGetAllRolesInOrgConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: RoleFieldEnum,$nameFilter: String,$assignedRoleIds: [UUID!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: RoleFieldEnum,$nameFilter: String,$assignedRoleIds: [UUID!],$roleSyncedFilter: Boolean)",
                 "RoleConnection",
                 Query.GetAllRolesInOrgConnection,
                 Query.GetAllRolesInOrgConnectionFieldSpec,
@@ -13132,7 +13136,9 @@ $query.Var.nameFilter = $someString
 # OPTIONAL
 $query.Var.assignedRoleIds = @(
 	$someString
-)"
+)
+# OPTIONAL
+$query.Var.roleSyncedFilter = $someBoolean"
             );
         }
 

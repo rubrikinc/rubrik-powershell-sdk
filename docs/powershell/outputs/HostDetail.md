@@ -36,12 +36,12 @@ Supported in v5.0+
 - activeDirectoryAdditionalInfo: ActiveDirectoryAdditionalInfo
   - Supported in v9.2+
   v9.2:
-  v9.3: Additional Active Directory info for the host if applicable.
+  v9.3+: Additional Active Directory info for the host if applicable.
 - mssqlSddCertificateId: System.String
   - Supported in v9.2+
   Specifies the certificate ID corresponding to the public key certificate of the CA that signed the SQL server certificate for Sensitive Data Discovery.
 - oracleSddWalletPath: System.String
-  - Supported in v9.3
+  - Supported in v9.3+
   Specifies the wallet path on the Oracle host which is used to authenticate remote connections to oracle databases during Sensitive Data Discovery.
 - mssqlSddUsername: System.String
   - Supported in v9.2+
@@ -55,7 +55,7 @@ Supported in v5.0+
   v9.0-v9.1: Id of the Active Directory Domain if the windows host has domain controller hosted.
   v9.2+: (DEPRECATED) This field is deprecate in favor of activeDirectoryAdditionalInfo. Id of the Active Directory Domain if the windows host has domain controller hosted.
 - oracleSddUsername: System.String
-  - Supported in v9.3
+  - Supported in v9.3+
   Specifies the username configured for the Oracle host for sensitive data discovery.
 - hostVfdDriverState: HostVfdState
   - 

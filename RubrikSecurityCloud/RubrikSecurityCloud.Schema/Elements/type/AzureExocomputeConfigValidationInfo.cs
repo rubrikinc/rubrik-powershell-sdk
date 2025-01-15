@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isSubnetDelegated")]
         public System.Boolean? IsSubnetDelegated { get; set; }
 
+        //      C# -> System.Boolean? IsUnsupportedCustomerManagedExocomputeConfigFieldPresent
+        // GraphQL -> isUnsupportedCustomerManagedExocomputeConfigFieldPresent: Boolean! (scalar)
+        [JsonProperty("isUnsupportedCustomerManagedExocomputeConfigFieldPresent")]
+        public System.Boolean? IsUnsupportedCustomerManagedExocomputeConfigFieldPresent { get; set; }
+
         //      C# -> AzureExocomputeRegionConfig? Config
         // GraphQL -> config: AzureExocomputeRegionConfig (type)
         [JsonProperty("config")]
@@ -95,6 +100,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsPodCidrRangeTooSmall = null,
         System.Boolean? IsPodSubnetSizeTooSmall = null,
         System.Boolean? IsSubnetDelegated = null,
+        System.Boolean? IsUnsupportedCustomerManagedExocomputeConfigFieldPresent = null,
         AzureExocomputeRegionConfig? Config = null
     ) 
     {
@@ -127,6 +133,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsSubnetDelegated != null ) {
             this.IsSubnetDelegated = IsSubnetDelegated;
+        }
+        if ( IsUnsupportedCustomerManagedExocomputeConfigFieldPresent != null ) {
+            this.IsUnsupportedCustomerManagedExocomputeConfigFieldPresent = IsUnsupportedCustomerManagedExocomputeConfigFieldPresent;
         }
         if ( Config != null ) {
             this.Config = Config;
@@ -233,6 +242,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isSubnetDelegated\n" ;
             } else {
                 s += ind + "isSubnetDelegated\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsUnsupportedCustomerManagedExocomputeConfigFieldPresent
+        // GraphQL -> isUnsupportedCustomerManagedExocomputeConfigFieldPresent: Boolean! (scalar)
+        if (this.IsUnsupportedCustomerManagedExocomputeConfigFieldPresent != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isUnsupportedCustomerManagedExocomputeConfigFieldPresent\n" ;
+            } else {
+                s += ind + "isUnsupportedCustomerManagedExocomputeConfigFieldPresent\n" ;
             }
         }
         //      C# -> AzureExocomputeRegionConfig? Config
@@ -423,6 +441,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsSubnetDelegated != null && ec.Excludes("isSubnetDelegated",true))
         {
             this.IsSubnetDelegated = null;
+        }
+        //      C# -> System.Boolean? IsUnsupportedCustomerManagedExocomputeConfigFieldPresent
+        // GraphQL -> isUnsupportedCustomerManagedExocomputeConfigFieldPresent: Boolean! (scalar)
+        if (ec.Includes("isUnsupportedCustomerManagedExocomputeConfigFieldPresent",true))
+        {
+            if(this.IsUnsupportedCustomerManagedExocomputeConfigFieldPresent == null) {
+
+                this.IsUnsupportedCustomerManagedExocomputeConfigFieldPresent = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsUnsupportedCustomerManagedExocomputeConfigFieldPresent != null && ec.Excludes("isUnsupportedCustomerManagedExocomputeConfigFieldPresent",true))
+        {
+            this.IsUnsupportedCustomerManagedExocomputeConfigFieldPresent = null;
         }
         //      C# -> AzureExocomputeRegionConfig? Config
         // GraphQL -> config: AzureExocomputeRegionConfig (type)

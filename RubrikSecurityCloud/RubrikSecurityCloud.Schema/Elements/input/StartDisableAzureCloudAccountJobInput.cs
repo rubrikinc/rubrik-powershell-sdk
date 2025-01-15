@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudAccountIds")]
         public List<System.String>? CloudAccountIds { get; set; }
 
+        //      C# -> System.String? SessionId
+        // GraphQL -> sessionId: UUID (scalar)
+        [JsonProperty("sessionId")]
+        public System.String? SessionId { get; set; }
+
 
         #endregion
 

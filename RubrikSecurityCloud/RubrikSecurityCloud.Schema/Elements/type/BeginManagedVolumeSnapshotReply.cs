@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ownerId")]
         public System.String? OwnerId { get; set; }
 
+        //      C# -> System.String? RscSnapshotId
+        // GraphQL -> rscSnapshotId: String (scalar)
+        [JsonProperty("rscSnapshotId")]
+        public System.String? RscSnapshotId { get; set; }
+
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         [JsonProperty("snapshotId")]
@@ -35,10 +40,29 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("asyncRequestStatus")]
         public AsyncRequestStatus? AsyncRequestStatus { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars RscSnapshotId { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] rscSnapshotIdArgs = {
+                    Tuple.Create("input", "BeginManagedVolumeSnapshotInput!"),
+                };
+            this.RscSnapshotId =
+                new RscGqlVars(null, rscSnapshotIdArgs, null, true);
+        }
+    }
+
+    public BeginManagedVolumeSnapshotReply()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "BeginManagedVolumeSnapshotReply";
@@ -46,12 +70,16 @@ namespace RubrikSecurityCloud.Types
 
     public BeginManagedVolumeSnapshotReply Set(
         System.String? OwnerId = null,
+        System.String? RscSnapshotId = null,
         System.String? SnapshotId = null,
         AsyncRequestStatus? AsyncRequestStatus = null
     ) 
     {
         if ( OwnerId != null ) {
             this.OwnerId = OwnerId;
+        }
+        if ( RscSnapshotId != null ) {
+            this.RscSnapshotId = RscSnapshotId;
         }
         if ( SnapshotId != null ) {
             this.SnapshotId = SnapshotId;
@@ -80,6 +108,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ownerId\n" ;
             } else {
                 s += ind + "ownerId\n" ;
+            }
+        }
+        //      C# -> System.String? RscSnapshotId
+        // GraphQL -> rscSnapshotId: String (scalar)
+        if (this.RscSnapshotId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rscSnapshotId\n" ;
+            } else {
+                s += ind + "rscSnapshotId\n" ;
             }
         }
         //      C# -> System.String? SnapshotId
@@ -126,6 +163,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OwnerId != null && ec.Excludes("ownerId",true))
         {
             this.OwnerId = null;
+        }
+        //      C# -> System.String? RscSnapshotId
+        // GraphQL -> rscSnapshotId: String (scalar)
+        if (ec.Includes("rscSnapshotId",true))
+        {
+            if(this.RscSnapshotId == null) {
+
+                this.RscSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RscSnapshotId != null && ec.Excludes("rscSnapshotId",true))
+        {
+            this.RscSnapshotId = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)

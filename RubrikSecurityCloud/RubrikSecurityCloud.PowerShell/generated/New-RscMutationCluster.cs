@@ -745,6 +745,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			useQuickDrain = $someBoolean
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	resetAfterRemoveType = $someResetAfterRemoveType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ResetAfterRemoveType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2021,6 +2023,8 @@ $query.Var.input = @{
 			useQuickDrain = $someBoolean
 		}
 	)
+	# OPTIONAL
+	resetAfterRemoveType = $someResetAfterRemoveType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ResetAfterRemoveType]) for enum values.
 }"
             );
         }

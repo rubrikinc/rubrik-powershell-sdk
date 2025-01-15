@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Address
+        // GraphQL -> address: String! (scalar)
+        [JsonProperty("address")]
+        public System.String? Address { get; set; }
+
         //      C# -> System.Int64? AllocatedStorageInGb
         // GraphQL -> allocatedStorageInGb: Long! (scalar)
         [JsonProperty("allocatedStorageInGb")]
@@ -85,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("kmsKeyId")]
         public System.String? KmsKeyId { get; set; }
 
+        //      C# -> System.String? MasterUsername
+        // GraphQL -> masterUsername: String! (scalar)
+        [JsonProperty("masterUsername")]
+        public System.String? MasterUsername { get; set; }
+
         //      C# -> System.String? OptionGroupName
         // GraphQL -> optionGroupName: String! (scalar)
         [JsonProperty("optionGroupName")]
@@ -125,6 +135,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RdsInstanceDetailsFromAws Set(
+        System.String? Address = null,
         System.Int64? AllocatedStorageInGb = null,
         System.Int64? BackupRetentionPeriod = null,
         System.String? DbEngine = null,
@@ -138,6 +149,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? Iops = null,
         System.Boolean? IsMultiAz = null,
         System.String? KmsKeyId = null,
+        System.String? MasterUsername = null,
         System.String? OptionGroupName = null,
         System.Int64? Port = null,
         System.String? PrimaryAz = null,
@@ -146,6 +158,9 @@ namespace RubrikSecurityCloud.Types
         System.String? VpcId = null
     ) 
     {
+        if ( Address != null ) {
+            this.Address = Address;
+        }
         if ( AllocatedStorageInGb != null ) {
             this.AllocatedStorageInGb = AllocatedStorageInGb;
         }
@@ -185,6 +200,9 @@ namespace RubrikSecurityCloud.Types
         if ( KmsKeyId != null ) {
             this.KmsKeyId = KmsKeyId;
         }
+        if ( MasterUsername != null ) {
+            this.MasterUsername = MasterUsername;
+        }
         if ( OptionGroupName != null ) {
             this.OptionGroupName = OptionGroupName;
         }
@@ -217,6 +235,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? Address
+        // GraphQL -> address: String! (scalar)
+        if (this.Address != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "address\n" ;
+            } else {
+                s += ind + "address\n" ;
+            }
+        }
         //      C# -> System.Int64? AllocatedStorageInGb
         // GraphQL -> allocatedStorageInGb: Long! (scalar)
         if (this.AllocatedStorageInGb != null) {
@@ -334,6 +361,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "kmsKeyId\n" ;
             }
         }
+        //      C# -> System.String? MasterUsername
+        // GraphQL -> masterUsername: String! (scalar)
+        if (this.MasterUsername != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "masterUsername\n" ;
+            } else {
+                s += ind + "masterUsername\n" ;
+            }
+        }
         //      C# -> System.String? OptionGroupName
         // GraphQL -> optionGroupName: String! (scalar)
         if (this.OptionGroupName != null) {
@@ -395,6 +431,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? Address
+        // GraphQL -> address: String! (scalar)
+        if (ec.Includes("address",true))
+        {
+            if(this.Address == null) {
+
+                this.Address = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Address != null && ec.Excludes("address",true))
+        {
+            this.Address = null;
+        }
         //      C# -> System.Int64? AllocatedStorageInGb
         // GraphQL -> allocatedStorageInGb: Long! (scalar)
         if (ec.Includes("allocatedStorageInGb",true))
@@ -615,6 +668,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.KmsKeyId != null && ec.Excludes("kmsKeyId",true))
         {
             this.KmsKeyId = null;
+        }
+        //      C# -> System.String? MasterUsername
+        // GraphQL -> masterUsername: String! (scalar)
+        if (ec.Includes("masterUsername",true))
+        {
+            if(this.MasterUsername == null) {
+
+                this.MasterUsername = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MasterUsername != null && ec.Excludes("masterUsername",true))
+        {
+            this.MasterUsername = null;
         }
         //      C# -> System.String? OptionGroupName
         // GraphQL -> optionGroupName: String! (scalar)

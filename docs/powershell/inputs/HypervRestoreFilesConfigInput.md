@@ -5,7 +5,7 @@ Supported in v5.0+
   - Supported in v9.0+
       Workload ID of the target HyperV virtual machine, which is the destination for the recovered data.
 - shouldIgnoreError: System.Boolean
-  - Supported in v9.3
+  - Supported in v9.3+
       Specify whether to ignore the error during restoration.
 - restoreConfig: list of HypervRestoreFileConfigInputs
   - Required. Supported in v5.0+

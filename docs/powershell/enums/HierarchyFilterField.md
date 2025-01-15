@@ -370,3 +370,6 @@
  +mo:sort:db:index:unique=true
 - CLOUDDIRECT_NAS_SHARE_PARENT_ID - Filter according to the Cloud Direct NAS share parent ID.
 - CLOUDDIRECT_NAS_SHARE_ID - Filter according to the Cloud Direct NAS share ID.
+- RECOVERY_PLAN_AZURE_SOURCE_SUBSCRIPTION - Filter by recovery plan azure source subscription.
+- RECOVERY_PLAN_AZURE_TARGET_SUBSCRIPTION - Filter by recovery plan azure target subscription.
+- RECOVERY_PLAN_AZURE_REGION - Filter by recovery plan azure region.

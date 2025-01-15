@@ -15,5 +15,5 @@ Supported in v5.0+
   - Supported in v5.0+
   The location where the file is stored, either in the cloud or locally.
 - creationTime: System.String
-  - Supported in v9.3
+  - Supported in v9.3+
   Optional timestamp string denoting the creation time of the file.

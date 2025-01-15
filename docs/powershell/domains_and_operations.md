@@ -12,7 +12,7 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | [Account (9,14)](#account-domain) | [Cluster (37,23)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,20)](#oracle-domain) | [Snapshot (22,18)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (10,4)](#microsoft-365-domain) | [Policy (9,15)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (5,3)](#activity-series-domain) | [Db2 (9,13)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (8,16)](#archival-domain) | [Report Download (3,20)](#report-download-domain) | [Miscellaneous (199,148)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (9,16)](#archival-domain) | [Report Download (3,20)](#report-download-domain) | [Miscellaneous (199,149)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (31,36)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (4,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (19,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (52,43)](#azure-domain) | [Fileset (6,7)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (4,3)](#threat-domain) |
@@ -142,6 +142,7 @@ Cmdlets: `New-RscQueryArchival` and `New-RscMutationArchival`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| FeaturePermissionForDataCenterRoleBased | Retrieves a list of AWS permissions required for Data Center Role Based Archival that is based on the selected permission groups. | `New-RscQueryArchival -Operation FeaturePermissionForDataCenterRoleBased`<BR> | [featurePermissionForDataCenterRoleBasedArchival](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | HierarchyObjectRecoveryTarget | Returns a single hierarchy object to be used as a recovery target. Permission checks are performed against the ProvisionOnInfrastructure operation, not the ViewInventory operation. | `New-RscQueryArchival -Operation HierarchyObjectRecoveryTarget`<BR> | [hierarchyObjectRecoveryTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | IsTotpMandatoryInTargetVersion | Checks whether enabling Time-based, One-Time Password (TOTP) is mandatory in the target Rubrik CDM upgrade version. | `New-RscQueryArchival -Operation IsTotpMandatoryInTargetVersion`<BR> | [isTotpMandatoryInTargetVersion](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RcsLocationsConsumptionStats | RCS Azure archival location consumption stats. | `New-RscQueryArchival -Operation RcsLocationsConsumptionStats`<BR> | [rcsArchivalLocationsConsumptionStats](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1063,11 +1064,11 @@ Deletes specfied fileset templates. Detaches and retains all associated filesets
 Supported in v5.0+  
 Modify the values of specified fileset templates. | `New-RscMutationFileset -Operation BulkUpdateTemplate`<BR> | [bulkUpdateFilesetTemplate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RecoverFiles | v5.0-v9.2: Create restore job to restore multiple files/directories  
-v9.3: (DEPRECATED) Create restore job to restore multiple files/directories  
+v9.3+: (DEPRECATED) Create restore job to restore multiple files/directories  
   
 Supported in v5.0+  
 v5.0-v9.2: Initiate a job to copy one or more file or folder from a fileset backup to the source host. Returns the job instance ID.  
-v9.3: Initiate a job to copy one or more file or folder from a fileset backup to the source host. Returns the job instance ID. This endpoint will be removed in CDM v9.3.0 in favor of `POST v1/fileset/snapshot/{id}/restore_files`. | `New-RscMutationFileset -Operation RecoverFiles`<BR> | [filesetRecoverFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+v9.3+: Initiate a job to copy one or more file or folder from a fileset backup to the source host. Returns the job instance ID. This endpoint will be removed in CDM v9.3.0 in favor of `POST v1/fileset/snapshot/{id}/restore_files`. | `New-RscMutationFileset -Operation RecoverFiles`<BR> | [filesetRecoverFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Update | Update a Fileset  
   
 Supported in v5.0+  
@@ -1414,7 +1415,7 @@ Supported in v9.1+
 Deletes a Kubernetes protection set by specifying the protection set ID. | `New-RscMutationK8s -Operation DeleteProtectionSet`<BR> | [deleteK8sProtectionSet](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DownloadSnapshotFromLocation | Download a snapshot from a remote target  
   
-Supported in v9.3  
+Supported in v9.3+  
 Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a remote target connected to this Rubrik cluster. If no SLA Domain is selected, the snapshot is retained forever. | `New-RscMutationK8s -Operation DownloadSnapshotFromLocation`<BR> | [downloadK8sSnapshotFromLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExportNamespace | Export Kubernetes namespace snapshot. | `New-RscMutationK8s -Operation ExportNamespace`<BR> | [exportK8sNamespace](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExportProtectionSetSnapshot | v9.0: Create a job to export a Kubernetes resource set snapshot  
@@ -1968,6 +1969,7 @@ Uninstall the Rubrik ioFilter from the VMware cluster with a specific ID. The cl
 Supported in v5.0+  
 Modify the global setting for automatic deployment of the Rubrik Backup Service to virtual machines. | `New-RscMutationMisc -Operation UpdateAgentDeploymentSetting`<BR> | [updateAgentDeploymentSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateAgentDeploymentSettingInBatch | Change the Rubrik Backup Service deployment setting in batch. | `New-RscMutationMisc -Operation UpdateAgentDeploymentSettingInBatch`<BR> | [updateAgentDeploymentSettingInBatch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateAgentDeploymentSettingInBatchNew | Change the Rubrik Backup Service deployment setting in a batch. | `New-RscMutationMisc -Operation UpdateAgentDeploymentSettingInBatchNew`<BR> | [updateAgentDeploymentSettingInBatchNew](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateAuthDomainUsersHiddenStatus | Update the hidden status for the given auth domain users. | `New-RscMutationMisc -Operation UpdateAuthDomainUsersHiddenStatus`<BR> | [updateAuthDomainUsersHiddenStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateBackupThrottleSetting | Update backup throttle setting. | `New-RscMutationMisc -Operation UpdateBackupThrottleSetting`<BR> | [updateBackupThrottleSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateBadDiskLedStatus | Find bad disk of a node in the CDM cluster. | `New-RscMutationMisc -Operation UpdateBadDiskLedStatus`<BR> | [updateBadDiskLedStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2480,7 +2482,7 @@ v5.0-v8.0: Export snapshot of a vm.
 v8.1+: Export snapshot of a virtual machine. | `New-RscMutationNutanix -Operation ExportSnapshot`<BR> | [exportNutanixSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | InplaceExportSnapshot | In-place export a snapshot to a Nutanix virtual machine  
   
-Supported in v9.3  
+Supported in v9.3+  
 Restores the Nutanix virtual machine to the specified snapshot in-place. | `New-RscMutationNutanix -Operation InplaceExportSnapshot`<BR> | [inplaceExportNutanixSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MigrateMountV1 | Relocate a Nutanix virtual machine to another storage container  
   
@@ -3611,7 +3613,7 @@ Start an asynchronous job to download multiple Virtual Machine files, such as .v
 | OnDemandSnapshot | N/A | `New-RscMutationVsphere -Operation OnDemandSnapshot`<BR> | [vsphereOnDemandSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SnapshotConsistency | Update snapshot consistency of VMware hierarchy objects  
   
-Supported in v9.3  
+Supported in v9.3+  
 Initiates a job to update snapshot consistency of VMware hierarchy objects. | `New-RscMutationVsphere -Operation SnapshotConsistency`<BR> | [vsphereSnapshotConsistency](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SnapshotDownloadFilesFromLocation | Initiate a job to download multiple files or folders  
   

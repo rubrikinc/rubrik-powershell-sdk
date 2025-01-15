@@ -566,6 +566,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			username = $someString
     /// 		}
     /// 	}
+    /// 	# OPTIONAL
+    /// 	updatePropertiesV94 = @{
+    /// 		# OPTIONAL
+    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
+    /// 		# OPTIONAL
+    /// 		vcenterConfig = @{
+    /// 			# OPTIONAL
+    /// 			caCerts = $someString
+    /// 			# OPTIONAL
+    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 			# OPTIONAL
+    /// 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 			# OPTIONAL
+    /// 			computeVisibilityFilter = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					isVmwareMetroStorageCluster = $someBoolean
+    /// 					# REQUIRED
+    /// 					hostGroupFilter = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					id = $someString
+    /// 				}
+    /// 			)
+    /// 			# REQUIRED
+    /// 			hostname = $someString
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 		}
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1285,6 +1318,39 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	updatePropertiesV93 = @{
+		# OPTIONAL
+		shouldUpdateComputeVisibilityFilter = $someBoolean
+		# OPTIONAL
+		vcenterConfig = @{
+			# OPTIONAL
+			caCerts = $someString
+			# OPTIONAL
+			shouldEnableHotAddProxyForOnPrem = $someBoolean
+			# OPTIONAL
+			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+			# OPTIONAL
+			computeVisibilityFilter = @(
+				@{
+					# OPTIONAL
+					isVmwareMetroStorageCluster = $someBoolean
+					# REQUIRED
+					hostGroupFilter = @(
+						$someString
+					)
+					# REQUIRED
+					id = $someString
+				}
+			)
+			# REQUIRED
+			hostname = $someString
+			# REQUIRED
+			password = $someString
+			# REQUIRED
+			username = $someString
+		}
+	}
+	# OPTIONAL
+	updatePropertiesV94 = @{
 		# OPTIONAL
 		shouldUpdateComputeVisibilityFilter = $someBoolean
 		# OPTIONAL

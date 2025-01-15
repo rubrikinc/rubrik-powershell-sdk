@@ -39,3 +39,7 @@ RDS DB Instance details from AWS.
   - Port used to connect to the RDS Instance.
 - dbEngineVersion: System.String
   - Version of the database engine.
+- masterUsername: System.String
+  - Username of the master user.
+- address: System.String
+  - Connection address of the RDS database.

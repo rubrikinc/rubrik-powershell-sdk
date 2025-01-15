@@ -36,5 +36,5 @@ Inventory workloads that are supported on Rubrik.
 - POSTGRES_ROOT - Postgres root.
 - M365_BACKUP_STORAGE_ROOT - M365 Backup Storage Root.
 - MYSQLDB_ROOT - MySQL root.
-- CLOUD_DIRECT_NAS_ROOT - Replaces CLOUD_DIRECT_NAS_EXPORT_ROOT
+- CLOUD_DIRECT_NAS_ROOT - Cloud Direct NAS root.
 - D365_ROOT - D365 root.

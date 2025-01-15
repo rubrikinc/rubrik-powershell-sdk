@@ -5,3 +5,4 @@ NAS Cloud Direct snapshot protocol.
 - SMB - SMB.
 - NFS - NFS.
 - NFS_SMB - NFS,SMB.
+- NFSV4 - NFSv4.

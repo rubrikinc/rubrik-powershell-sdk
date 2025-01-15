@@ -102,6 +102,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("kmsCryptoKeyResourceId")]
         public System.String? KmsCryptoKeyResourceId { get; set; }
 
+        //      C# -> System.String? TargetGcpProjectRubrikId
+        // GraphQL -> targetGcpProjectRubrikId: UUID (scalar)
+        [JsonProperty("targetGcpProjectRubrikId")]
+        public System.String? TargetGcpProjectRubrikId { get; set; }
+
 
         #endregion
 

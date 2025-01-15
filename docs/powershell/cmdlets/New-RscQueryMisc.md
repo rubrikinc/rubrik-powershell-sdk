@@ -486,7 +486,7 @@ List user activity for a specific file on a specific snapshot.
 - The geolocationlist subcommand takes no arguments.
 - Returns list of GroupCounts.
 ### getallrolesinorglist
-- There are 8 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -495,6 +495,7 @@ List user activity for a specific file on a specific snapshot.
     - sortBy - RoleFieldEnum
     - nameFilter - System.String: Name to filter the results.
     - assignedRoleIds - list of System.Strings: List of role IDs that have already been assigned to a set of users. This list will be used to sort the set of all roles.
+    - roleSyncedFilter - System.Boolean: Argument to filter roles based on whether they are marked to be synced to Rubrik cluster.
 - Returns RoleConnection.
 ### getcdmreleasedetailsforversionfromsupportportal
 Get CDM release details from support portal for a given list of clusters specific to a target version.

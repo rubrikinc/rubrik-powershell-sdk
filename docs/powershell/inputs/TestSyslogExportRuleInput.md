@@ -25,3 +25,5 @@ Input for testing a syslog export rule.
   - Syslog export rule.
 - syslogExportRuleV93: SyslogExportRuleFullInput
   - Syslog export rule.
+- syslogExportRuleV94: SyslogExportRuleFullInput
+  - Syslog export rule.

@@ -27,3 +27,5 @@ Input for updating a syslog export rule.
   - Syslog export rule.
 - syslogSettingsV93: SyslogExportRulePartialInput
   - Syslog export rule.
+- syslogSettingsV94: SyslogExportRulePartialInput
+  - Syslog export rule.

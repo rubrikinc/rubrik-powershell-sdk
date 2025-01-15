@@ -20,7 +20,7 @@
 - M365_BACKUP_STORAGE_MAILBOX - M365 Backup Storage Mailbox.
 - MONGO_COLLECTION_SET - MongoDB Database.
 - OracleDatabase
-- CLOUD_DIRECT_NAS_SHARE
+- CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS share.
 - MONGODB_SOURCE - MongoDB Source Cluster.
 - POSTGRES_DB_CLUSTER - Postgres Database Cluster.
 - O365SharePointList

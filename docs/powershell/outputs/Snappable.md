@@ -53,6 +53,8 @@ An object that can be backed-up by taking snapshots.
   - The source NAS protocol.
 - ncdPolicyName: System.String
   - The NASCD policy name.
+- ncdSnapshotType: System.String
+  - The NASCD snapshot type.
 - ncdLatestArchiveSnapshot: DateTime
   - The timestamp of the last taken NASCD archive snapshot.
 - slaDomain: SlaDomain

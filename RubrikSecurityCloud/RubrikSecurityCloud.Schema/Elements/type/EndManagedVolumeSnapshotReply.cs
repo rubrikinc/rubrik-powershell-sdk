@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? RscSnapshotId
+        // GraphQL -> rscSnapshotId: String (scalar)
+        [JsonProperty("rscSnapshotId")]
+        public System.String? RscSnapshotId { get; set; }
+
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
         [JsonProperty("asyncRequestStatus")]
@@ -30,20 +35,43 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("managedVolumeSnapshotSummary")]
         public ManagedVolumeSnapshotSummary? ManagedVolumeSnapshotSummary { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars RscSnapshotId { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] rscSnapshotIdArgs = {
+                    Tuple.Create("input", "EndManagedVolumeSnapshotInput!"),
+                };
+            this.RscSnapshotId =
+                new RscGqlVars(null, rscSnapshotIdArgs, null, true);
+        }
+    }
+
+    public EndManagedVolumeSnapshotReply()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "EndManagedVolumeSnapshotReply";
     }
 
     public EndManagedVolumeSnapshotReply Set(
+        System.String? RscSnapshotId = null,
         AsyncRequestStatus? AsyncRequestStatus = null,
         ManagedVolumeSnapshotSummary? ManagedVolumeSnapshotSummary = null
     ) 
     {
+        if ( RscSnapshotId != null ) {
+            this.RscSnapshotId = RscSnapshotId;
+        }
         if ( AsyncRequestStatus != null ) {
             this.AsyncRequestStatus = AsyncRequestStatus;
         }
@@ -64,6 +92,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? RscSnapshotId
+        // GraphQL -> rscSnapshotId: String (scalar)
+        if (this.RscSnapshotId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rscSnapshotId\n" ;
+            } else {
+                s += ind + "rscSnapshotId\n" ;
+            }
+        }
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
         if (this.AsyncRequestStatus != null) {
@@ -95,6 +132,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? RscSnapshotId
+        // GraphQL -> rscSnapshotId: String (scalar)
+        if (ec.Includes("rscSnapshotId",true))
+        {
+            if(this.RscSnapshotId == null) {
+
+                this.RscSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RscSnapshotId != null && ec.Excludes("rscSnapshotId",true))
+        {
+            this.RscSnapshotId = null;
+        }
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
         if (ec.Includes("asyncRequestStatus",false))

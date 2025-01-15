@@ -11989,6 +11989,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> UpdateAgentDeploymentSettingInBatchNewReply? UpdateAgentDeploymentSettingInBatchNew
+        // GraphQL -> updateAgentDeploymentSettingInBatchNew: UpdateAgentDeploymentSettingInBatchNewReply! (type)
+        public static string UpdateAgentDeploymentSettingInBatchNew(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateAgentDeploymentSettingInBatchNew" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateAgentDeploymentSettingInBatchNewFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new UpdateAgentDeploymentSettingInBatchNewReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> UpdateAutoEnablePolicyClusterConfigReply? UpdateAutoEnablePolicyClusterConfig
         // GraphQL -> updateAutoEnablePolicyClusterConfig: UpdateAutoEnablePolicyClusterConfigReply! (type)
         public static string UpdateAutoEnablePolicyClusterConfig(object fsObj)

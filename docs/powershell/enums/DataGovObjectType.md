@@ -56,3 +56,7 @@ TODO: SPARK-150447 - Deprecate this enum to use managed object type
 - AZURE_NATIVE_STORAGE_ACCOUNT - Represents an Azure Native Storage Account.
 - AZURE_NATIVE_SQL_DATABASE_DB - Represents an Azure SQL Database DB.
 - AZURE_NATIVE_SQL_MANAGED_INSTANCE_DB - Represents an Azure SQL Managed Instance DB.
+- CLOUD_DIRECT_NAS_SHARE - Represents NAS Cloud Direct share.
+- ORACLE_DATABASE - Represents Oracle Database.
+- ORACLE_ROOT - Represents Oracle Root.
+- ORACLE_DATA_GUARD_GROUP - Represents Oracle Data Guard Group

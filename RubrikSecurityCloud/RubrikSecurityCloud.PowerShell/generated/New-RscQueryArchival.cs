@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 9
     /// operations in the 'Archival' API domain:
-    /// HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// </summary>
     /// <description>
     /// New-RscQueryArchival creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 9 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// one of: FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryArchival -HierarchyObjectRecoveryTarget).Info().
+    /// (New-RscQueryArchival -FeaturePermissionForDataCenterRoleBased).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryArchival -HierarchyObjectRecoveryTarget).Info().
+    /// (New-RscQueryArchival -FeaturePermissionForDataCenterRoleBased).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the FeaturePermissionForDataCenterRoleBased operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: FeaturePermissionForDataCenterRoleBased
+    /// 
+    /// $query = New-RscQueryArchival -Operation FeaturePermissionForDataCenterRoleBased
+    /// 
+    /// # REQUIRED
+    /// $query.Var.permissionsGroups = @(
+    /// 	$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: FeaturePermission
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the HierarchyObjectRecoveryTarget operation
@@ -369,6 +399,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "FeaturePermissionForDataCenterRoleBased",
                 "HierarchyObjectRecoveryTarget",
                 "IsTotpMandatoryInTargetVersion",
                 "RcsLocationsConsumptionStats",
@@ -392,6 +423,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "FeaturePermissionForDataCenterRoleBased":
+                        this.ProcessRecord_FeaturePermissionForDataCenterRoleBased();
+                        break;
                     case "HierarchyObjectRecoveryTarget":
                         this.ProcessRecord_HierarchyObjectRecoveryTarget();
                         break;
@@ -424,6 +458,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // featurePermissionForDataCenterRoleBasedArchival.
+        internal void ProcessRecord_FeaturePermissionForDataCenterRoleBased()
+        {
+            this._logger.name += " -FeaturePermissionForDataCenterRoleBased";
+            // Create new graphql operation featurePermissionForDataCenterRoleBasedArchival
+            InitQueryFeaturePermissionForDataCenterRoleBasedArchival();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -498,6 +541,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryTargets();
         }
 
+
+        // Create new GraphQL Query:
+        // featurePermissionForDataCenterRoleBasedArchival(permissionsGroups: [PermissionsGroup!]! = []): FeaturePermission!
+        internal void InitQueryFeaturePermissionForDataCenterRoleBasedArchival()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("permissionsGroups", "[PermissionsGroup!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryFeaturePermissionForDataCenterRoleBasedArchival",
+                "($permissionsGroups: [PermissionsGroup!]!)",
+                "FeaturePermission",
+                Query.FeaturePermissionForDataCenterRoleBasedArchival,
+                Query.FeaturePermissionForDataCenterRoleBasedArchivalFieldSpec,
+                @"# REQUIRED
+$query.Var.permissionsGroups = @(
+	$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+)"
+            );
+        }
 
         // Create new GraphQL Query:
         // hierarchyObjectRecoveryTarget(fid: UUID!): HierarchyObject!

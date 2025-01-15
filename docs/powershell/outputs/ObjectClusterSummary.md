@@ -5,3 +5,5 @@ Basic information about the Rubrik cluster corresponding to the object.
   - ID of the Rubrik cluster.
 - name: System.String
   - Name of the cluster.
+- connectionStatus: System.String
+  - Connection status of the cluster.

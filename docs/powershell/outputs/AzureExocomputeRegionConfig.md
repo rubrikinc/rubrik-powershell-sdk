@@ -11,3 +11,5 @@ Represents an Azure Exocompute Configuration for a specific region. The Azure Ex
   - Native ID of the subnet, configured for usage in this region for the Exocompute pods.
 - podOverlayNetworkCidr: System.String
   - The CIDR range assigned for pods when launching Exocompute with the CNI overlay network plugin mode.
+- optionalConfig: AzureExocomputeOptionalConfigInRegion
+  - Optional configurations for AKS cluster.

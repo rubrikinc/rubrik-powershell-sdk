@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        [JsonProperty("authorizedOperations")]
+        public List<Operation>? AuthorizedOperations { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -171,10 +176,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> List<Exclude>? Excludes
+        // GraphQL -> excludes: [Exclude!]! (type)
+        [JsonProperty("excludes")]
+        public List<Exclude>? Excludes { get; set; }
+
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
+
+        //      C# -> CloudDirectSnapshotsGroupBySummaryConnection? MissedSnapshotGroupByConnection
+        // GraphQL -> missedSnapshotGroupByConnection: CloudDirectSnapshotsGroupBySummaryConnection (type)
+        [JsonProperty("missedSnapshotGroupByConnection")]
+        public CloudDirectSnapshotsGroupBySummaryConnection? MissedSnapshotGroupByConnection { get; set; }
 
         //      C# -> CloudDirectSnapshot? NewestSnapshot
         // GraphQL -> newestSnapshot: CloudDirectSnapshot (type)
@@ -217,6 +232,8 @@ namespace RubrikSecurityCloud.Types
 
         public RscGqlVars CloudDirectSnapshotGroupBySummary { get; set; }
 
+        public RscGqlVars MissedSnapshotGroupByConnection { get; set; }
+
         public RscGqlVars ParentShare { get; set; }
 
 
@@ -242,6 +259,19 @@ namespace RubrikSecurityCloud.Types
                 };
             this.CloudDirectSnapshotGroupBySummary =
                 new RscGqlVars(null, cloudDirectSnapshotGroupBySummaryArgs, null, true);
+            Tuple<string, string>[] missedSnapshotGroupByConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("filter", "[CloudDirectSnapshotsFilterInput!]"),
+                    Tuple.Create("groupBy", "SnapshotGroupByTime!"),
+                    Tuple.Create("timeRange", "TimeRangeInput"),
+                };
+            this.MissedSnapshotGroupByConnection =
+                new RscGqlVars(null, missedSnapshotGroupByConnectionArgs, null, true);
             Tuple<string, string>[] parentShareArgs = {
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
@@ -261,6 +291,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CloudDirectNasShare Set(
+        List<Operation>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         CloudDirectNasProtocolType? Protocol = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
@@ -291,7 +322,9 @@ namespace RubrikSecurityCloud.Types
         CloudDirectSnapshotsGroupBySummaryConnection? CloudDirectSnapshotGroupBySummary = null,
         Cluster? Cluster = null,
         PathNode? EffectiveSlaSourceObject = null,
+        List<Exclude>? Excludes = null,
         List<PathNode>? LogicalPath = null,
+        CloudDirectSnapshotsGroupBySummaryConnection? MissedSnapshotGroupByConnection = null,
         CloudDirectSnapshot? NewestSnapshot = null,
         CloudDirectSnapshot? OldestSnapshot = null,
         CloudDirectNasShare? ParentShare = null,
@@ -300,6 +333,9 @@ namespace RubrikSecurityCloud.Types
         SnapshotDistribution? SnapshotDistribution = null
     ) 
     {
+        if ( AuthorizedOperations != null ) {
+            this.AuthorizedOperations = AuthorizedOperations;
+        }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
         }
@@ -390,8 +426,14 @@ namespace RubrikSecurityCloud.Types
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
         }
+        if ( Excludes != null ) {
+            this.Excludes = Excludes;
+        }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( MissedSnapshotGroupByConnection != null ) {
+            this.MissedSnapshotGroupByConnection = MissedSnapshotGroupByConnection;
         }
         if ( NewestSnapshot != null ) {
             this.NewestSnapshot = NewestSnapshot;
@@ -425,6 +467,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        if (this.AuthorizedOperations != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "authorizedOperations\n" ;
+            } else {
+                s += ind + "authorizedOperations\n" ;
+            }
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
@@ -728,6 +779,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<Exclude>? Excludes
+        // GraphQL -> excludes: [Exclude!]! (type)
+        if (this.Excludes != null) {
+            var fspec = this.Excludes.AsFieldSpec(conf.Child("excludes"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "excludes" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
@@ -737,6 +800,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectSnapshotsGroupBySummaryConnection? MissedSnapshotGroupByConnection
+        // GraphQL -> missedSnapshotGroupByConnection: CloudDirectSnapshotsGroupBySummaryConnection (type)
+        if (this.MissedSnapshotGroupByConnection != null) {
+            var fspec = this.MissedSnapshotGroupByConnection.AsFieldSpec(conf.Child("missedSnapshotGroupByConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "missedSnapshotGroupByConnection" + "\n(" + this.Vars.MissedSnapshotGroupByConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -819,6 +894,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        if (ec.Includes("authorizedOperations",true))
+        {
+            if(this.AuthorizedOperations == null) {
+
+                this.AuthorizedOperations = new List<Operation>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
+        {
+            this.AuthorizedOperations = null;
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (ec.Includes("objectType",true))
@@ -1364,6 +1456,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaSourceObject = null;
         }
+        //      C# -> List<Exclude>? Excludes
+        // GraphQL -> excludes: [Exclude!]! (type)
+        if (ec.Includes("excludes",false))
+        {
+            if(this.Excludes == null) {
+
+                this.Excludes = new List<Exclude>();
+                this.Excludes.ApplyExploratoryFieldSpec(ec.NewChild("excludes"));
+
+            } else {
+
+                this.Excludes.ApplyExploratoryFieldSpec(ec.NewChild("excludes"));
+
+            }
+        }
+        else if (this.Excludes != null && ec.Excludes("excludes",false))
+        {
+            this.Excludes = null;
+        }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (ec.Includes("logicalPath",false))
@@ -1382,6 +1493,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> CloudDirectSnapshotsGroupBySummaryConnection? MissedSnapshotGroupByConnection
+        // GraphQL -> missedSnapshotGroupByConnection: CloudDirectSnapshotsGroupBySummaryConnection (type)
+        if (ec.Includes("missedSnapshotGroupByConnection",false))
+        {
+            if(this.MissedSnapshotGroupByConnection == null) {
+
+                this.MissedSnapshotGroupByConnection = new CloudDirectSnapshotsGroupBySummaryConnection();
+                this.MissedSnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotGroupByConnection"));
+
+            } else {
+
+                this.MissedSnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotGroupByConnection"));
+
+            }
+        }
+        else if (this.MissedSnapshotGroupByConnection != null && ec.Excludes("missedSnapshotGroupByConnection",false))
+        {
+            this.MissedSnapshotGroupByConnection = null;
         }
         //      C# -> CloudDirectSnapshot? NewestSnapshot
         // GraphQL -> newestSnapshot: CloudDirectSnapshot (type)

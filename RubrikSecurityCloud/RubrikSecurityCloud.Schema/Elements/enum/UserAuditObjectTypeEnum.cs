@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CERTIFICATE_MANAGEMENT")]
         CERTIFICATE_MANAGEMENT,
 
+        [EnumMember(Value = "CHATBOT")]
+        CHATBOT,
+
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
         CLOUD_DIRECT_NAS_EXPORT,
 

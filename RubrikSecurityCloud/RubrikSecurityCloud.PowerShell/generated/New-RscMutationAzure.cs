@@ -1478,6 +1478,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			recoverLinkedServicePrincipal = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		userRecoveryOption = @{
+    /// 			# REQUIRED
+    /// 			generatePasswords = $someBoolean
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -1668,6 +1673,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cloudAccountIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	sessionId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -4269,6 +4276,11 @@ $query.Var.input = @{
 			# REQUIRED
 			recoverLinkedServicePrincipal = $someBoolean
 		}
+		# OPTIONAL
+		userRecoveryOption = @{
+			# REQUIRED
+			generatePasswords = $someBoolean
+		}
 	}
 }"
             );
@@ -4419,6 +4431,8 @@ $query.Var.input = @{
 	cloudAccountIds = @(
 		$someString
 	)
+	# OPTIONAL
+	sessionId = $someString
 }"
             );
         }

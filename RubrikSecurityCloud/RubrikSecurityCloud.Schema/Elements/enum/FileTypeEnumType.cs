@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FileTypeEnumType
     {
+        [EnumMember(Value = "CDM_API_METRICS_CSV")]
+        CDM_API_METRICS_CSV,
+
         [EnumMember(Value = "REPORT")]
         REPORT,
 

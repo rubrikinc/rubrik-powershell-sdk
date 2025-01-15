@@ -63,8 +63,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_NATIVE_S3_PROTECTION")]
         CLOUD_NATIVE_S3_PROTECTION,
 
+        [EnumMember(Value = "CYBERRECOVERY_DATA_CLASSIFICATION_DATA")]
+        CYBERRECOVERY_DATA_CLASSIFICATION_DATA,
+
+        [EnumMember(Value = "CYBERRECOVERY_DATA_CLASSIFICATION_METADATA")]
+        CYBERRECOVERY_DATA_CLASSIFICATION_METADATA,
+
         [EnumMember(Value = "DATA_CENTER_ROLE_BASED_ARCHIVAL")]
         DATA_CENTER_ROLE_BASED_ARCHIVAL,
+
+        [EnumMember(Value = "DSPM_DATA")]
+        DSPM_DATA,
+
+        [EnumMember(Value = "DSPM_METADATA")]
+        DSPM_METADATA,
 
         [EnumMember(Value = "EXOCOMPUTE")]
         EXOCOMPUTE,

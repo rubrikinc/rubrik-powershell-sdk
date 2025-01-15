@@ -1,5 +1,10 @@
 # New-RscQueryArchival
 ## Subcommands
+### featurepermissionfordatacenterrolebased
+Retrieves a list of AWS permissions required for Data Center Role Based Archival that is based on the selected permission groups.
+
+- There is a single argument of type list of PermissionsGroups.
+- Returns FeaturePermission.
 ### hierarchyobjectrecoverytarget
 Returns a single hierarchy object to be used as a recovery target. Permission checks are performed against the ProvisionOnInfrastructure operation, not the ViewInventory operation.
 

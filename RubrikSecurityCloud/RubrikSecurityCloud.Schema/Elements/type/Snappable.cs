@@ -181,6 +181,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ncdPolicyName")]
         public System.String? NcdPolicyName { get; set; }
 
+        //      C# -> System.String? NcdSnapshotType
+        // GraphQL -> ncdSnapshotType: String (scalar)
+        [JsonProperty("ncdSnapshotType")]
+        public System.String? NcdSnapshotType { get; set; }
+
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID (scalar)
         [JsonProperty("orgId")]
@@ -298,6 +303,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         DateTime? NcdLatestArchiveSnapshot = null,
         System.String? NcdPolicyName = null,
+        System.String? NcdSnapshotType = null,
         System.String? OrgId = null,
         System.String? OrgName = null,
         System.Int64? PhysicalBytes = null,
@@ -410,6 +416,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NcdPolicyName != null ) {
             this.NcdPolicyName = NcdPolicyName;
+        }
+        if ( NcdSnapshotType != null ) {
+            this.NcdSnapshotType = NcdSnapshotType;
         }
         if ( OrgId != null ) {
             this.OrgId = OrgId;
@@ -760,6 +769,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ncdPolicyName\n" ;
             } else {
                 s += ind + "ncdPolicyName\n" ;
+            }
+        }
+        //      C# -> System.String? NcdSnapshotType
+        // GraphQL -> ncdSnapshotType: String (scalar)
+        if (this.NcdSnapshotType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ncdSnapshotType\n" ;
+            } else {
+                s += ind + "ncdSnapshotType\n" ;
             }
         }
         //      C# -> System.String? OrgId
@@ -1460,6 +1478,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NcdPolicyName != null && ec.Excludes("ncdPolicyName",true))
         {
             this.NcdPolicyName = null;
+        }
+        //      C# -> System.String? NcdSnapshotType
+        // GraphQL -> ncdSnapshotType: String (scalar)
+        if (ec.Includes("ncdSnapshotType",true))
+        {
+            if(this.NcdSnapshotType == null) {
+
+                this.NcdSnapshotType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NcdSnapshotType != null && ec.Excludes("ncdSnapshotType",true))
+        {
+            this.NcdSnapshotType = null;
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID (scalar)

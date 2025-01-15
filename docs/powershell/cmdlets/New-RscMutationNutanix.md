@@ -141,7 +141,7 @@ v8.1+: Export snapshot of a virtual machine.
 ### inplaceexportsnapshot
 In-place export a snapshot to a Nutanix virtual machine
 
-Supported in v9.3
+Supported in v9.3+
 Restores the Nutanix virtual machine to the specified snapshot in-place.
 
 - There is a single argument of type CreateNutanixInplaceExportInput.

@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        [JsonProperty("authorizedOperations")]
+        public List<Operation>? AuthorizedOperations { get; set; }
+
         //      C# -> CloudDirectNasConnectivityStatus? LastStatus
         // GraphQL -> lastStatus: CloudDirectNasConnectivityStatus! (enum)
         [JsonProperty("lastStatus")]
@@ -219,6 +224,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CloudDirectNasSystem Set(
+        List<Operation>? AuthorizedOperations = null,
         CloudDirectNasConnectivityStatus? LastStatus = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
@@ -251,6 +257,9 @@ namespace RubrikSecurityCloud.Types
         SnapshotDistribution? SnapshotDistribution = null
     ) 
     {
+        if ( AuthorizedOperations != null ) {
+            this.AuthorizedOperations = AuthorizedOperations;
+        }
         if ( LastStatus != null ) {
             this.LastStatus = LastStatus;
         }
@@ -355,6 +364,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        if (this.AuthorizedOperations != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "authorizedOperations\n" ;
+            } else {
+                s += ind + "authorizedOperations\n" ;
+            }
+        }
         //      C# -> CloudDirectNasConnectivityStatus? LastStatus
         // GraphQL -> lastStatus: CloudDirectNasConnectivityStatus! (enum)
         if (this.LastStatus != null) {
@@ -671,6 +689,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        if (ec.Includes("authorizedOperations",true))
+        {
+            if(this.AuthorizedOperations == null) {
+
+                this.AuthorizedOperations = new List<Operation>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
+        {
+            this.AuthorizedOperations = null;
+        }
         //      C# -> CloudDirectNasConnectivityStatus? LastStatus
         // GraphQL -> lastStatus: CloudDirectNasConnectivityStatus! (enum)
         if (ec.Includes("lastStatus",true))

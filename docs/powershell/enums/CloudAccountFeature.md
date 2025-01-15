@@ -27,5 +27,9 @@ Cloud account features.
 - LAMINAR_OUTPOST_MANAGED_IDENTITY - Cloud account feature is Azure Laminar Outpost Managed Identity.
 - LAMINAR_TARGET_APPLICATION - Cloud account feature is Azure Laminar Target Application.
 - LAMINAR_TARGET_MANAGED_IDENTITY - Cloud account feature is Azure Laminar Target Managed Identity.
+- DSPM_METADATA - Cloud account feature is DSPM Metadata.
+- DSPM_DATA - Cloud account feature is DSPM Data.
+- CYBERRECOVERY_DATA_CLASSIFICATION_METADATA - Cloud account feature is Cyber Recovery Data Classification Metadata.
+- CYBERRECOVERY_DATA_CLASSIFICATION_DATA - Cloud account feature is Cyber Recovery Data Classification Data.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

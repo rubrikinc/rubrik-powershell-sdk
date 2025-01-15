@@ -580,6 +580,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		guestCredentialId = $someString
     /// 		# OPTIONAL
+    /// 		shouldUseAgent = $someBoolean
+    /// 		# OPTIONAL
     /// 		guestCredential = @{
     /// 			# OPTIONAL
     /// 			domain = $someString
@@ -1281,6 +1283,8 @@ $query.Var.input = @{
 		shouldRefreshCacheAfterUpdate = $someBoolean
 		# OPTIONAL
 		guestCredentialId = $someString
+		# OPTIONAL
+		shouldUseAgent = $someBoolean
 		# OPTIONAL
 		guestCredential = @{
 			# OPTIONAL

@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20241209-57" ;
+        public static string GraphqlSchemaVersion = "v20250106-18" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -452,6 +452,7 @@ namespace RubrikSecurityCloud.Types
             AzureExocomputeConfigsInAccount,
             AzureExocomputeConfigValidationInfo,
             AzureExocomputeGetConfigResponse,
+            AzureExocomputeOptionalConfigInRegion,
             AzureExocomputeRegionConfig,
             AzureImmutabilitySettingsType,
             AzureKeyVault,
@@ -1016,6 +1017,7 @@ namespace RubrikSecurityCloud.Types
             ExchangeServerDescendantTypeConnection,
             ExchangeServerDescendantTypeEdge,
             ExchangeServerEdge,
+            Exclude,
             ExistingUser,
             ExocomputeClusterConnectReply,
             ExocomputeClusterDetails,
@@ -2433,6 +2435,7 @@ namespace RubrikSecurityCloud.Types
             UnmanagedObjectDetailEdge,
             UnmapAzureCloudAccountExocomputeSubscriptionReply,
             UnmapCloudAccountExocomputeAccountReply,
+            UpdateAgentDeploymentSettingInBatchNewReply,
             UpdateAgentDeploymentSettingInBatchReply,
             UpdateAutoEnablePolicyClusterConfigReply,
             UpdateAwsCloudAccountFeatureReply,
@@ -2814,6 +2817,7 @@ namespace RubrikSecurityCloud.Types
             AdVolumeExportFilter,
             AdVolumeExportSortByInput,
             AgentDeploymentSettingsInput,
+            AgentDeploymentSettingsNewInput,
             AirGapStatusInput,
             AllCloudDirectSharesInput,
             AllEventDigestsInput,
@@ -3627,6 +3631,7 @@ namespace RubrikSecurityCloud.Types
             InstantRecoveryJobConfigV2Input,
             IntegrationConfigInput,
             InterfaceCidrInput,
+            InternalUpdateVmAgentDeploymentSettingRequestNewInput,
             InviteSsoGroupInput,
             IocHashOnly,
             IocHashWithProvider,
@@ -4255,6 +4260,7 @@ namespace RubrikSecurityCloud.Types
             UnmountInfo,
             UpdateAdGroupInput,
             UpdateAgentDeploymentSettingInBatchInput,
+            UpdateAgentDeploymentSettingInBatchNewInput,
             UpdateAuthDomainUsersHiddenStatusInput,
             UpdateAutoEnablePolicyClusterConfigInput,
             UpdateAutomaticAwsTargetMappingInput,
@@ -4382,6 +4388,7 @@ namespace RubrikSecurityCloud.Types
             UserFilterInput,
             UserGroupToRolesInput,
             UserInviteInput,
+            UserRecoveryOptionType,
             UserSortByParam,
             UserTimeRangeInput,
             ValidateAndCreateAwsCloudAccountInput,
@@ -4881,6 +4888,7 @@ namespace RubrikSecurityCloud.Types
             failoverClusterApp,
             failoverClusterApps,
             failoverClusterTopLevelDescendants,
+            featurePermissionForDataCenterRoleBasedArchival,
             federatedLoginStatus,
             filesetRequestStatus,
             filesetSnapshot,
@@ -5985,6 +5993,7 @@ namespace RubrikSecurityCloud.Types
             updateAdGroup,
             updateAgentDeploymentSetting,
             updateAgentDeploymentSettingInBatch,
+            updateAgentDeploymentSettingInBatchNew,
             updateAuthDomainUsersHiddenStatus,
             updateAutoEnablePolicyClusterConfig,
             updateAutomaticAwsTargetMapping,
@@ -6183,6 +6192,8 @@ namespace RubrikSecurityCloud.Types
             AdVolumeExportSortByField,
             AgentConnectionStatus,
             AgentConnectStatus,
+            AksNodeCountBucket,
+            AksProvisionTier,
             AmiType,
             AnalysisStatus,
             AnalyzerErrorCode,
@@ -6743,6 +6754,7 @@ namespace RubrikSecurityCloud.Types
             ReportFocusEnum,
             ReportTableColumnEnum,
             ReportTemplate,
+            ResetAfterRemoveType,
             ResolutionStatus,
             ResolutionType,
             RestorePointTagType,
@@ -9589,6 +9601,7 @@ namespace RubrikSecurityCloud.Types
             failoverClusterApp,
             failoverClusterApps,
             failoverClusterTopLevelDescendants,
+            featurePermissionForDataCenterRoleBasedArchival,
             federatedLoginStatus,
             filesetDownloadSnapshotFiles,
             filesetExportSnapshotFiles,
@@ -10231,6 +10244,7 @@ namespace RubrikSecurityCloud.Types
             updateAdGroup,
             updateAgentDeploymentSetting,
             updateAgentDeploymentSettingInBatch,
+            updateAgentDeploymentSettingInBatchNew,
             updateAuthDomainUsersHiddenStatus,
             updateAutoEnablePolicyClusterConfig,
             updateAutomaticAwsTargetMapping,
@@ -16486,6 +16500,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.featurePermissionForDataCenterRoleBasedArchival,
+                    new RscOp(
+                        cmdletName: "New-RscQueryArchival",
+                        cmdletSwitchName: "FeaturePermissionForDataCenterRoleBased",
+                        gqlRootFieldName: "featurePermissionForDataCenterRoleBasedArchival"
+                    )
+                },
+                {
                     GqlRootFieldName.federatedLoginStatus,
                     new RscOp(
                         cmdletName: "New-RscQueryMisc",
@@ -21622,6 +21644,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.updateAgentDeploymentSettingInBatchNew,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "UpdateAgentDeploymentSettingInBatchNew",
+                        gqlRootFieldName: "updateAgentDeploymentSettingInBatchNew"
+                    )
+                },
+                {
                     GqlRootFieldName.updateAuthDomainUsersHiddenStatus,
                     new RscOp(
                         cmdletName: "New-RscMutationMisc",
@@ -26621,6 +26651,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.failoverClusterTopLevelDescendants
                 },
                 {
+                    "New-RscQueryArchival -Op FeaturePermissionForDataCenterRoleBased",
+                    GqlRootFieldName.featurePermissionForDataCenterRoleBasedArchival
+                },
+                {
                     "New-RscQueryMisc -Op FederatedLoginStatus",
                     GqlRootFieldName.federatedLoginStatus
                 },
@@ -29189,6 +29223,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateAgentDeploymentSettingInBatch
                 },
                 {
+                    "New-RscMutationMisc -Op UpdateAgentDeploymentSettingInBatchNew",
+                    GqlRootFieldName.updateAgentDeploymentSettingInBatchNew
+                },
+                {
                     "New-RscMutationMisc -Op UpdateAuthDomainUsersHiddenStatus",
                     GqlRootFieldName.updateAuthDomainUsersHiddenStatus
                 },
@@ -31721,6 +31759,10 @@ namespace RubrikSecurityCloud.Types
                         "minimumCdmVersionForFeatureSet",
                     }
                 },
+                {   "FeaturePermission", new List<string> {
+                        "featurePermissionForDataCenterRoleBasedArchival",
+                    }
+                },
                 {   "FederatedLoginStatus", new List<string> {
                         "federatedLoginStatus",
                     }
@@ -33638,6 +33680,10 @@ namespace RubrikSecurityCloud.Types
                         "unmapCloudAccountExocomputeAccount",
                     }
                 },
+                {   "UpdateAgentDeploymentSettingInBatchNewReply", new List<string> {
+                        "updateAgentDeploymentSettingInBatchNew",
+                    }
+                },
                 {   "UpdateAgentDeploymentSettingInBatchReply", new List<string> {
                         "updateAgentDeploymentSettingInBatch",
                     }
@@ -35436,6 +35482,7 @@ namespace RubrikSecurityCloud.Types
                         "discoveryTimeline",
                         "downloadSlaWithReplicationCsv",
                         "filesetSnapshot",
+                        "getAllRolesInOrgConnection",
                         "getCdmReleaseDetailsForClusterFromSupportPortal",
                         "getCdmReleaseDetailsForVersionFromSupportPortal",
                         "getCdmReleaseDetailsFromSupportPortal",
@@ -39797,6 +39844,10 @@ namespace RubrikSecurityCloud.Types
                         "updateAgentDeploymentSettingInBatch",
                     }
                 },
+                {   "UpdateAgentDeploymentSettingInBatchNewInput", new List<string> {
+                        "updateAgentDeploymentSettingInBatchNew",
+                    }
+                },
                 {   "UpdateAuthDomainUsersHiddenStatusInput", new List<string> {
                         "updateAuthDomainUsersHiddenStatus",
                     }
@@ -40852,6 +40903,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "[PermissionsGroup]", new List<string> {
                         "azureCloudAccountPermissionConfig",
+                        "featurePermissionForDataCenterRoleBasedArchival",
                     }
                 },
                 {   "[PlatformCategory]", new List<string> {
@@ -41725,6 +41777,7 @@ namespace RubrikSecurityCloud.Types
                 { "failoverClusterTopLevelDescendants", "FailoverClusterTopLevelDescendantTypeConnection"},
                 { "cdmVersionCheck", "FeatureCdmVersionReply"},
                 { "minimumCdmVersionForFeatureSet", "FeatureListMinimumCdmVersionReply"},
+                { "featurePermissionForDataCenterRoleBasedArchival", "FeaturePermission"},
                 { "federatedLoginStatus", "FederatedLoginStatus"},
                 { "objectFiles", "FileResultConnection"},
                 { "userActivities", "FileResultConnection"},
@@ -42331,6 +42384,7 @@ namespace RubrikSecurityCloud.Types
                 { "unmanagedObjects", "UnmanagedObjectDetailConnection"},
                 { "unmapAzureCloudAccountExocomputeSubscription", "UnmapAzureCloudAccountExocomputeSubscriptionReply"},
                 { "unmapCloudAccountExocomputeAccount", "UnmapCloudAccountExocomputeAccountReply"},
+                { "updateAgentDeploymentSettingInBatchNew", "UpdateAgentDeploymentSettingInBatchNewReply"},
                 { "updateAgentDeploymentSettingInBatch", "UpdateAgentDeploymentSettingInBatchReply"},
                 { "updateAutoEnablePolicyClusterConfig", "UpdateAutoEnablePolicyClusterConfigReply"},
                 { "updateAwsCloudAccountFeature", "UpdateAwsCloudAccountFeatureReply"},
@@ -43098,6 +43152,7 @@ namespace RubrikSecurityCloud.Types
                     "DeleteTargetMapping",
                     "DisableTarget",
                     "EnableTarget",
+                    "FeaturePermissionForDataCenterRoleBased",
                     "HierarchyObjectRecoveryTarget",
                     "IsTotpMandatoryInTargetVersion",
                     "PauseTarget",
@@ -44162,6 +44217,7 @@ namespace RubrikSecurityCloud.Types
                     "UpdateAdGroup",
                     "UpdateAgentDeploymentSetting",
                     "UpdateAgentDeploymentSettingInBatch",
+                    "UpdateAgentDeploymentSettingInBatchNew",
                     "UpdateAuthDomainUsersHiddenStatus",
                     "UpdateBackupThrottleSetting",
                     "UpdateBadDiskLedStatus",

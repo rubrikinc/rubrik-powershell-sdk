@@ -753,6 +753,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PROTECTION_STATUS")]
         PROTECTION_STATUS,
 
+        [EnumMember(Value = "RECOVERY_PLAN_AZURE_REGION")]
+        RECOVERY_PLAN_AZURE_REGION,
+
+        [EnumMember(Value = "RECOVERY_PLAN_AZURE_SOURCE_SUBSCRIPTION")]
+        RECOVERY_PLAN_AZURE_SOURCE_SUBSCRIPTION,
+
+        [EnumMember(Value = "RECOVERY_PLAN_AZURE_TARGET_SUBSCRIPTION")]
+        RECOVERY_PLAN_AZURE_TARGET_SUBSCRIPTION,
+
         [EnumMember(Value = "RECOVERY_PLAN_NAME")]
         RECOVERY_PLAN_NAME,
 

@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsReplicated
+        // GraphQL -> isReplicated: Boolean (scalar)
+        [JsonProperty("isReplicated")]
+        public System.Boolean? IsReplicated { get; set; }
+
 
         #endregion
 
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         HostRbsConnectionStatus? ConnectionStatus = null,
         NasVendorType? VendorType = null,
         System.String? Hostname = null,
-        System.String? Id = null
+        System.String? Id = null,
+        System.Boolean? IsReplicated = null
     ) 
     {
         if ( ConnectionStatus != null ) {
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsReplicated != null ) {
+            this.IsReplicated = IsReplicated;
         }
         return this;
     }
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplicated
+        // GraphQL -> isReplicated: Boolean (scalar)
+        if (this.IsReplicated != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplicated\n" ;
+            } else {
+                s += ind + "isReplicated\n" ;
             }
         }
         return s;
@@ -192,6 +210,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsReplicated
+        // GraphQL -> isReplicated: Boolean (scalar)
+        if (ec.Includes("isReplicated",true))
+        {
+            if(this.IsReplicated == null) {
+
+                this.IsReplicated = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplicated != null && ec.Excludes("isReplicated",true))
+        {
+            this.IsReplicated = null;
         }
     }
 

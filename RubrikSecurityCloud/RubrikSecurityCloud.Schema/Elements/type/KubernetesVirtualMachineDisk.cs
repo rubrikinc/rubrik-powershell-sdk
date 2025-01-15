@@ -30,10 +30,35 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
+        //      C# -> System.String? DiskType
+        // GraphQL -> diskType: String (scalar)
+        [JsonProperty("diskType")]
+        public System.String? DiskType { get; set; }
+
+        //      C# -> System.Boolean? ExcludeFromSnapshots
+        // GraphQL -> excludeFromSnapshots: Boolean! (scalar)
+        [JsonProperty("excludeFromSnapshots")]
+        public System.Boolean? ExcludeFromSnapshots { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        [JsonProperty("isArchived")]
+        public System.Boolean? IsArchived { get; set; }
+
+        //      C# -> System.Boolean? IsFullNeeded
+        // GraphQL -> isFullNeeded: Boolean! (scalar)
+        [JsonProperty("isFullNeeded")]
+        public System.Boolean? IsFullNeeded { get; set; }
+
+        //      C# -> System.Boolean? IsThin
+        // GraphQL -> isThin: Boolean! (scalar)
+        [JsonProperty("isThin")]
+        public System.Boolean? IsThin { get; set; }
 
         //      C# -> System.String? K8sClusterUuid
         // GraphQL -> k8sClusterUuid: UUID! (scalar)
@@ -54,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> namespaceName: String! (scalar)
         [JsonProperty("namespaceName")]
         public System.String? NamespaceName { get; set; }
+
+        //      C# -> System.String? PrimaryClusterUuid
+        // GraphQL -> primaryClusterUuid: UUID! (scalar)
+        [JsonProperty("primaryClusterUuid")]
+        public System.String? PrimaryClusterUuid { get; set; }
 
         //      C# -> System.String? PvcName
         // GraphQL -> pvcName: String! (scalar)
@@ -77,11 +107,17 @@ namespace RubrikSecurityCloud.Types
     public KubernetesVirtualMachineDisk Set(
         System.String? CdmId = null,
         System.String? ClusterUuid = null,
+        System.String? DiskType = null,
+        System.Boolean? ExcludeFromSnapshots = null,
         System.String? Id = null,
+        System.Boolean? IsArchived = null,
+        System.Boolean? IsFullNeeded = null,
+        System.Boolean? IsThin = null,
         System.String? K8sClusterUuid = null,
         System.String? K8sVirtualMachineId = null,
         System.String? Name = null,
         System.String? NamespaceName = null,
+        System.String? PrimaryClusterUuid = null,
         System.String? PvcName = null,
         System.Int64? Size = null
     ) 
@@ -92,8 +128,23 @@ namespace RubrikSecurityCloud.Types
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
         }
+        if ( DiskType != null ) {
+            this.DiskType = DiskType;
+        }
+        if ( ExcludeFromSnapshots != null ) {
+            this.ExcludeFromSnapshots = ExcludeFromSnapshots;
+        }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsArchived != null ) {
+            this.IsArchived = IsArchived;
+        }
+        if ( IsFullNeeded != null ) {
+            this.IsFullNeeded = IsFullNeeded;
+        }
+        if ( IsThin != null ) {
+            this.IsThin = IsThin;
         }
         if ( K8sClusterUuid != null ) {
             this.K8sClusterUuid = K8sClusterUuid;
@@ -106,6 +157,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NamespaceName != null ) {
             this.NamespaceName = NamespaceName;
+        }
+        if ( PrimaryClusterUuid != null ) {
+            this.PrimaryClusterUuid = PrimaryClusterUuid;
         }
         if ( PvcName != null ) {
             this.PvcName = PvcName;
@@ -145,6 +199,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "clusterUuid\n" ;
             }
         }
+        //      C# -> System.String? DiskType
+        // GraphQL -> diskType: String (scalar)
+        if (this.DiskType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "diskType\n" ;
+            } else {
+                s += ind + "diskType\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ExcludeFromSnapshots
+        // GraphQL -> excludeFromSnapshots: Boolean! (scalar)
+        if (this.ExcludeFromSnapshots != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "excludeFromSnapshots\n" ;
+            } else {
+                s += ind + "excludeFromSnapshots\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -152,6 +224,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        if (this.IsArchived != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsFullNeeded
+        // GraphQL -> isFullNeeded: Boolean! (scalar)
+        if (this.IsFullNeeded != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isFullNeeded\n" ;
+            } else {
+                s += ind + "isFullNeeded\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsThin
+        // GraphQL -> isThin: Boolean! (scalar)
+        if (this.IsThin != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isThin\n" ;
+            } else {
+                s += ind + "isThin\n" ;
             }
         }
         //      C# -> System.String? K8sClusterUuid
@@ -188,6 +287,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "namespaceName\n" ;
             } else {
                 s += ind + "namespaceName\n" ;
+            }
+        }
+        //      C# -> System.String? PrimaryClusterUuid
+        // GraphQL -> primaryClusterUuid: UUID! (scalar)
+        if (this.PrimaryClusterUuid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryClusterUuid\n" ;
+            } else {
+                s += ind + "primaryClusterUuid\n" ;
             }
         }
         //      C# -> System.String? PvcName
@@ -249,6 +357,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.ClusterUuid = null;
         }
+        //      C# -> System.String? DiskType
+        // GraphQL -> diskType: String (scalar)
+        if (ec.Includes("diskType",true))
+        {
+            if(this.DiskType == null) {
+
+                this.DiskType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiskType != null && ec.Excludes("diskType",true))
+        {
+            this.DiskType = null;
+        }
+        //      C# -> System.Boolean? ExcludeFromSnapshots
+        // GraphQL -> excludeFromSnapshots: Boolean! (scalar)
+        if (ec.Includes("excludeFromSnapshots",true))
+        {
+            if(this.ExcludeFromSnapshots == null) {
+
+                this.ExcludeFromSnapshots = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcludeFromSnapshots != null && ec.Excludes("excludeFromSnapshots",true))
+        {
+            this.ExcludeFromSnapshots = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (ec.Includes("id",true))
@@ -265,6 +407,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        if (ec.Includes("isArchived",true))
+        {
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
+        }
+        //      C# -> System.Boolean? IsFullNeeded
+        // GraphQL -> isFullNeeded: Boolean! (scalar)
+        if (ec.Includes("isFullNeeded",true))
+        {
+            if(this.IsFullNeeded == null) {
+
+                this.IsFullNeeded = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsFullNeeded != null && ec.Excludes("isFullNeeded",true))
+        {
+            this.IsFullNeeded = null;
+        }
+        //      C# -> System.Boolean? IsThin
+        // GraphQL -> isThin: Boolean! (scalar)
+        if (ec.Includes("isThin",true))
+        {
+            if(this.IsThin == null) {
+
+                this.IsThin = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsThin != null && ec.Excludes("isThin",true))
+        {
+            this.IsThin = null;
         }
         //      C# -> System.String? K8sClusterUuid
         // GraphQL -> k8sClusterUuid: UUID! (scalar)
@@ -333,6 +526,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NamespaceName != null && ec.Excludes("namespaceName",true))
         {
             this.NamespaceName = null;
+        }
+        //      C# -> System.String? PrimaryClusterUuid
+        // GraphQL -> primaryClusterUuid: UUID! (scalar)
+        if (ec.Includes("primaryClusterUuid",true))
+        {
+            if(this.PrimaryClusterUuid == null) {
+
+                this.PrimaryClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryClusterUuid != null && ec.Excludes("primaryClusterUuid",true))
+        {
+            this.PrimaryClusterUuid = null;
         }
         //      C# -> System.String? PvcName
         // GraphQL -> pvcName: String! (scalar)

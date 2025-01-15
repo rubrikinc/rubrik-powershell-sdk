@@ -19,3 +19,15 @@ Kubernetes virtual machine disk.
   - Name of the PVC.
 - size: System.Int64
   - Size of the disk.
+- diskType: System.String
+  - Type of the disk.
+- excludeFromSnapshots: System.Boolean
+  - Specifies whether or not the Kubernetes virtual machine disk is excluded from snapshots.
+- isArchived: System.Boolean
+  - Specifies whether or not the Kubernetes virtual machine disk is archived.
+- isThin: System.Boolean
+  - Specifies whether or not the Kubernetes virtual machine disk is thin.
+- isFullNeeded: System.Boolean
+  - Specifies whether or not the Kubernetes virtual machine disk is full needed.
+- primaryClusterUuid: System.String
+  - UUID of Primary CDM cluster.

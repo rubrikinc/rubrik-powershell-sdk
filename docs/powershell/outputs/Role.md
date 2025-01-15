@@ -17,6 +17,8 @@ RBAC role.
   - If this role is a tenant organization administrator.
 - isSynced: System.Boolean
   - Whether the role is marked to be synced.
+- alreadySyncedClusters: System.Int32
+  - Clusters to which role is already synced.
 - permissions: list of Permissions
   - Role permissions.
 - effectivePermissions: list of Permissions
@@ -25,6 +27,8 @@ RBAC role.
   - Permissions assigned to the role that are in effect.
 - explicitlyAssignedPermissions: list of Permissions
   - Role permissions that are explicitly assigned by user.
+- paginatedSyncedClusters: SyncedClusterConnection
+  - Paginated list of clusters to which this role is synchronized.
 - explicitProtectableClusters: list of System.Strings
   - Explicit list of protectable Rubrik clusters.
 - syncedClusters: list of SyncedClusters

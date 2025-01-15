@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ConnectionStatus
+        // GraphQL -> connectionStatus: String! (scalar)
+        [JsonProperty("connectionStatus")]
+        public System.String? ConnectionStatus { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ObjectClusterSummary Set(
+        System.String? ConnectionStatus = null,
         System.String? Id = null,
         System.String? Name = null
     ) 
     {
+        if ( ConnectionStatus != null ) {
+            this.ConnectionStatus = ConnectionStatus;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? ConnectionStatus
+        // GraphQL -> connectionStatus: String! (scalar)
+        if (this.ConnectionStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "connectionStatus\n" ;
+            } else {
+                s += ind + "connectionStatus\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? ConnectionStatus
+        // GraphQL -> connectionStatus: String! (scalar)
+        if (ec.Includes("connectionStatus",true))
+        {
+            if(this.ConnectionStatus == null) {
+
+                this.ConnectionStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConnectionStatus != null && ec.Excludes("connectionStatus",true))
+        {
+            this.ConnectionStatus = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (ec.Includes("id",true))

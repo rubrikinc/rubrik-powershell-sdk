@@ -5,3 +5,4 @@ Cloud Direct NAS System protocol type.
 - SMB - Server message block protocol.
 - NFS - Network file system protocol.
 - NFS_SMB - Network file system and server message block protocols.
+- NFSV4 - Network file system protocol version 4.

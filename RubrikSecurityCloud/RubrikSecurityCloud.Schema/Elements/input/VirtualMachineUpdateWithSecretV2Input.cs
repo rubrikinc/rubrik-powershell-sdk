@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("guestCredentialId")]
         public System.String? GuestCredentialId { get; set; }
 
+        //      C# -> System.Boolean? ShouldUseAgent
+        // GraphQL -> shouldUseAgent: Boolean (scalar)
+        [JsonProperty("shouldUseAgent")]
+        public System.Boolean? ShouldUseAgent { get; set; }
+
         //      C# -> GuestCredentialDefinitionInput? GuestCredential
         // GraphQL -> guestCredential: GuestCredentialDefinitionInput (input)
         [JsonProperty("guestCredential")]

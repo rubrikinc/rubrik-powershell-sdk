@@ -201,6 +201,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	kmsCryptoKeyResourceId = $someString
+    /// 	# OPTIONAL
+    /// 	targetGcpProjectRubrikId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -267,6 +269,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	kmsCryptoKeyResourceId = $someString
+    /// 	# OPTIONAL
+    /// 	targetGcpProjectRubrikId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -582,6 +586,8 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	kmsCryptoKeyResourceId = $someString
+	# OPTIONAL
+	targetGcpProjectRubrikId = $someString
 }"
             );
         }
@@ -640,6 +646,8 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	kmsCryptoKeyResourceId = $someString
+	# OPTIONAL
+	targetGcpProjectRubrikId = $someString
 }"
             );
         }

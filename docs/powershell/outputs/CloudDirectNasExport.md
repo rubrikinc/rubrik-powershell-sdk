@@ -51,3 +51,5 @@ Cloud Direct NAS export object.
   - Organizations to which this hierarchy object belongs.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.

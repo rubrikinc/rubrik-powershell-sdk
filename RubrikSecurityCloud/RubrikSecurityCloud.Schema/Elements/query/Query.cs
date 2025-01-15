@@ -7351,6 +7351,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> FeaturePermission? FeaturePermissionForDataCenterRoleBasedArchival
+        // GraphQL -> featurePermissionForDataCenterRoleBasedArchival: FeaturePermission! (type)
+        public static string FeaturePermissionForDataCenterRoleBasedArchival(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\npermissionsGroups: $permissionsGroups\n)";
+            return "featurePermissionForDataCenterRoleBasedArchival" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FeaturePermissionForDataCenterRoleBasedArchivalFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new FeaturePermission() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> FederatedLoginStatus? FederatedLoginStatus
         // GraphQL -> federatedLoginStatus: FederatedLoginStatus! (type)
         public static string FederatedLoginStatus(object fsObj)
@@ -7608,7 +7626,7 @@ namespace RubrikSecurityCloud.Types
         public static string GetAllRolesInOrgConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nnameFilter: $nameFilter\nassignedRoleIds: $assignedRoleIds\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nnameFilter: $nameFilter\nassignedRoleIds: $assignedRoleIds\nroleSyncedFilter: $roleSyncedFilter\n)";
             return "getAllRolesInOrgConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object GetAllRolesInOrgConnectionFieldSpec(ExplorationContext? ec=null)

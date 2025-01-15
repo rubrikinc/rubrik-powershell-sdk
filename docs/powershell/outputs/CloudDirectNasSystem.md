@@ -33,6 +33,8 @@ Cloud Direct NAS System object.
   - Total number of namespaces in this NAS system.
 - cluster: Cluster
   - NAS Cloud Direct cluster where this object originated.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum

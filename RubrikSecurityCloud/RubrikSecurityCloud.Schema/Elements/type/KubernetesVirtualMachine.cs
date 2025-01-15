@@ -323,6 +323,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("filter", "MissedSnapshotFilterInput"),
                     Tuple.Create("groupBy", "MissedSnapshotGroupByTime!"),
                     Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.MissedSnapshotGroupByConnection =
                 new RscGqlVars(null, missedSnapshotGroupByConnectionArgs, null, true);

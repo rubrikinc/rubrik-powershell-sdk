@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
         CLOUD_DIRECT_NAS_EXPORT,
 
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_SHARE")]
+        CLOUD_DIRECT_NAS_SHARE,
+
         [EnumMember(Value = "CLOUD_NATIVE_TAG_RULE")]
         CLOUD_NATIVE_TAG_RULE,
 
@@ -125,6 +128,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OBJECT_TYPE_UNSPECIFIED")]
         OBJECT_TYPE_UNSPECIFIED,
+
+        [EnumMember(Value = "ORACLE_DATABASE")]
+        ORACLE_DATABASE,
+
+        [EnumMember(Value = "ORACLE_DATA_GUARD_GROUP")]
+        ORACLE_DATA_GUARD_GROUP,
+
+        [EnumMember(Value = "ORACLE_ROOT")]
+        ORACLE_ROOT,
 
         [EnumMember(Value = "PHYSICAL_HOST")]
         PHYSICAL_HOST,

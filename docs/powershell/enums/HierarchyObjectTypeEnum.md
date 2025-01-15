@@ -45,7 +45,7 @@ Type of hierarchy object.
 - VSphereDatacenter
 - PhysicalHost
 - ATLASSIAN_SITE - Atlassian site.
-- CLOUD_DIRECT_NAS_SHARE
+- CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS share.
 - MONGODB_SOURCE - MongoDB Source Cluster.
 - POSTGRES_DB_CLUSTER - Postgres Database Cluster.
 - VSphereVCenter

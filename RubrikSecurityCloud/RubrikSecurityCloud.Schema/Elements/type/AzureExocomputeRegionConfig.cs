@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("subnetNativeId")]
         public System.String? SubnetNativeId { get; set; }
 
+        //      C# -> AzureExocomputeOptionalConfigInRegion? OptionalConfig
+        // GraphQL -> optionalConfig: AzureExocomputeOptionalConfigInRegion (type)
+        [JsonProperty("optionalConfig")]
+        public AzureExocomputeOptionalConfigInRegion? OptionalConfig { get; set; }
+
 
         #endregion
 
@@ -59,7 +64,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsRscManaged = null,
         System.String? PodOverlayNetworkCidr = null,
         System.String? PodSubnetNativeId = null,
-        System.String? SubnetNativeId = null
+        System.String? SubnetNativeId = null,
+        AzureExocomputeOptionalConfigInRegion? OptionalConfig = null
     ) 
     {
         if ( Region != null ) {
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SubnetNativeId != null ) {
             this.SubnetNativeId = SubnetNativeId;
+        }
+        if ( OptionalConfig != null ) {
+            this.OptionalConfig = OptionalConfig;
         }
         return this;
     }
@@ -134,6 +143,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "subnetNativeId\n" ;
             } else {
                 s += ind + "subnetNativeId\n" ;
+            }
+        }
+        //      C# -> AzureExocomputeOptionalConfigInRegion? OptionalConfig
+        // GraphQL -> optionalConfig: AzureExocomputeOptionalConfigInRegion (type)
+        if (this.OptionalConfig != null) {
+            var fspec = this.OptionalConfig.AsFieldSpec(conf.Child("optionalConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "optionalConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -227,6 +248,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SubnetNativeId != null && ec.Excludes("subnetNativeId",true))
         {
             this.SubnetNativeId = null;
+        }
+        //      C# -> AzureExocomputeOptionalConfigInRegion? OptionalConfig
+        // GraphQL -> optionalConfig: AzureExocomputeOptionalConfigInRegion (type)
+        if (ec.Includes("optionalConfig",false))
+        {
+            if(this.OptionalConfig == null) {
+
+                this.OptionalConfig = new AzureExocomputeOptionalConfigInRegion();
+                this.OptionalConfig.ApplyExploratoryFieldSpec(ec.NewChild("optionalConfig"));
+
+            } else {
+
+                this.OptionalConfig.ApplyExploratoryFieldSpec(ec.NewChild("optionalConfig"));
+
+            }
+        }
+        else if (this.OptionalConfig != null && ec.Excludes("optionalConfig",false))
+        {
+            this.OptionalConfig = null;
         }
     }
 

@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("applicationRecoveryOption")]
         public ApplicationRecoveryOptionType? ApplicationRecoveryOption { get; set; }
 
+        //      C# -> UserRecoveryOptionType? UserRecoveryOption
+        // GraphQL -> userRecoveryOption: UserRecoveryOptionType (input)
+        [JsonProperty("userRecoveryOption")]
+        public UserRecoveryOptionType? UserRecoveryOption { get; set; }
+
 
         #endregion
 

@@ -50,7 +50,7 @@ Export snapshot of a virtual machine to standalone ESXi server.
 ### snapshotconsistency
 Update snapshot consistency of VMware hierarchy objects
 
-Supported in v9.3
+Supported in v9.3+
 Initiates a job to update snapshot consistency of VMware hierarchy objects.
 
 - There is a single argument of type UpdateSnapshotConsistencyInput.

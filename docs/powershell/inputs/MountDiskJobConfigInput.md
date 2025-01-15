@@ -11,4 +11,5 @@ Supported in v5.0+
   - Supported in v5.0+
       The VMDK files to attach to the existing virtual machine. By default, this value is empty, which attaches all of the VMDKs in the snapshot to the target virtual machine.
 - unmountTimeOpt: System.Int64
-  - Specifies an optional future unmount time for the current live mount.
+  - Supported in v9.3+
+      Specifies an optional future unmount time for the current live mount.

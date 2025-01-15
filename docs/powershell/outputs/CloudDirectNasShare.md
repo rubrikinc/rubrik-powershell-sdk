@@ -27,6 +27,8 @@ Cloud Direct NAS Share object.
   - UUID of the Cloud Direct NAS Share on the NCD Cluster.
 - policyName: System.String
   - Name of the policy assigned to the NAS Cloud Direct share.
+- excludes: list of Excludes
+  - List of exclusions for the NAS share.
 - id: System.String
   - Object ID.
 - cloudDirectNasSystem: CloudDirectNasSystem
@@ -43,6 +45,8 @@ Cloud Direct NAS Share object.
   - The oldest available snapshot of this share.
 - totalSnapshots: System.Int32
   - The total count of snapshots for this share.
+- missedSnapshotGroupByConnection: CloudDirectSnapshotsGroupBySummaryConnection
+  - Group the missed snapshots of this NAS Cloud Direct share.
 - cloudDirectSnapshotGroupBySummary: CloudDirectSnapshotsGroupBySummaryConnection
   - Group the snapshots of this NAS Cloud Direct share.
 - cluster: Cluster
@@ -75,3 +79,5 @@ Cloud Direct NAS Share object.
   - Organizations to which this hierarchy object belongs.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.

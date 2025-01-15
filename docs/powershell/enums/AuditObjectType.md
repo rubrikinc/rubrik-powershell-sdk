@@ -142,3 +142,4 @@ Represents all the object types for which we expect to see audits.
 - D365_DATAVERSE_TABLE - Dynamics 365 dataverse table.
 - D365_METADATA - Dynamics 365 metadata.
 - INTEGRATION - Integration.
+- CHATBOT - Chatbot.

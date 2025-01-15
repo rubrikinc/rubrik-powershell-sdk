@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nodeMetadata")]
         public List<NodeMetadataInput>? NodeMetadata { get; set; }
 
+        //      C# -> ResetAfterRemoveType? ResetAfterRemoveType
+        // GraphQL -> resetAfterRemoveType: ResetAfterRemoveType (enum)
+        [JsonProperty("resetAfterRemoveType")]
+        public ResetAfterRemoveType? ResetAfterRemoveType { get; set; }
+
 
         #endregion
 
