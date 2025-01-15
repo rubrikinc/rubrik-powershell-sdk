@@ -6,6 +6,8 @@ New Features:
 
 Fixes:
 
+- `Get-RscType` now has auto-completion for `-Name` parameter.
+
 Breaking Changes:
 
 ## Version 1.12.1
