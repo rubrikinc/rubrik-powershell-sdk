@@ -4,11 +4,16 @@
 
 New Features:
 
-Fixes:
-
+- Schema update.
 - `Get-RscType` now has auto-completion for `-Name` parameter.
 
-Breaking Changes:
+Fixes:
+
+- E2E test fixes
+  [#171](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/171)
+  [#170](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/170)
+- Generated documentation fixes
+  [#169](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/169)
 
 ## Version 1.12.1
 
