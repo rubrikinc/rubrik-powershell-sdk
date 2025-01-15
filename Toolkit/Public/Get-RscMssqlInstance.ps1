@@ -36,8 +36,8 @@ function Get-RscMssqlInstance {
     Instead of running the command, the query object is returned.
 
     .EXAMPLE
-    Returns a list of all SQL Server Instances connected to RSC
-    Get-RscMssqlInstance -List
+    Returns a list of all SQL Server Hosts and clusters connected to RSC
+    Get-RscMssqlInstance
 
     .EXAMPLE
     Returns information about the default instance of SQL on a specific host
@@ -127,13 +127,8 @@ function Get-RscMssqlInstance {
             Write-Verbose "-  Creating Id Query"
             $query = New-RscQuery -GqlQuery mssqlInstance
             $query.Var.fid = $id
-
-            $query.Field.Cluster = New-Object RubrikSecurityCloud.Types.Cluster
-            $query.Field.Cluster.name = "FETCH"
-            $query.Field.Cluster.id = "FETCH"
-            $query.Field.effectiveSlaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
-            $query.Field.effectiveSlaDomain.name = "FETCH"
-            $query.Field.effectiveSlaDomain.id = "FETCH"
+            $query.Field.Cluster = Get-RscType -Name Cluster -InitialProperties Name,Id
+            $query.Field.effectiveSlaDomain = Get-RscType -Name GlobalSlaReply -InitialProperties Name,Id
             $query.Field.name = "FETCH"
             $query.Field.id = "FETCH"
             
@@ -200,16 +195,14 @@ function Get-RscMssqlInstance {
             $physicalHostIndex = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "PhysicalHost"})
             $windowsClusterIndex = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "WindowsCluster"})
 
-            $query.field.Nodes[$physicalHostIndex].cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-            $query.field.Nodes[$physicalHostIndex].cluster.name = "FETCH"
-            $query.field.Nodes[$physicalHostIndex].cluster.id = "FETCH"
+            $query.field.Nodes[$physicalHostIndex].cluster = Get-RscType -Name Cluster -InitialProperties name,id
             $query.Field.Nodes[$physicalHostIndex].Vars.descendantConnection.typeFilter = [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::MSSQL_INSTANCE
             $query.field.Nodes[$physicalHostIndex].descendantConnection = New-Object -TypeName RubrikSecurityCloud.Types.PhysicalHostDescendantTypeConnection
             $query.field.Nodes[$physicalHostIndex].descendantConnection.nodes = New-Object -TypeName RubrikSecurityCloud.Types.MssqlInstance
 
             $mssqlInstanceIndex = $query.field.nodes[$physicalHostIndex].descendantConnection.Nodes.FindIndex({param($item) $item.gettype().name -eq "MssqlInstance"})
-            $query.field.Nodes[$physicalHostIndex].descendantConnection.nodes[$mssqlInstanceIndex].name = "FETCH"
-            $query.field.Nodes[$physicalHostIndex].descendantConnection.nodes[$mssqlInstanceIndex].id = "FETCH"
+            $query.field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].name = "FETCH"
+            $query.field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].id = "FETCH"
             $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster = New-Object RubrikSecurityCloud.Types.Cluster
             $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster.name = "FETCH"
             $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster.id = "FETCH"
@@ -217,20 +210,14 @@ function Get-RscMssqlInstance {
             $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.name = "FETCH"
             $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.id = "FETCH"
             
-            $query.Field.Nodes[$windowsClusterIndex].cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-            $query.Field.Nodes[$windowsClusterIndex].cluster.name = "FETCH"
-            $query.Field.Nodes[$windowsClusterIndex].cluster.id = "FETCH"
-            $query.Field.Nodes[$windowsClusterIndex].effectiveSlaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
-            $query.Field.Nodes[$windowsClusterIndex].effectiveSlaDomain.name = "FETCH"
-            $query.Field.Nodes[$windowsClusterIndex].effectiveSlaDomain.id = "FETCH"
+            $query.Field.Nodes[$windowsClusterIndex].cluster = Get-RscType -Name Cluster -InitialProperties name,id
+            $query.Field.Nodes[$windowsClusterIndex].effectiveSlaDomain = Get-RscType -Name GlobalSlaReply -InitialProperties name,id
             $query.Field.Nodes[$windowsClusterIndex].Vars.descendantConnection.typeFilter = [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::MSSQL_INSTANCE
             $query.field.Nodes[$windowsClusterIndex].descendantConnection = New-Object RubrikSecurityCloud.Types.WindowsClusterDescendantTypeConnection
             $query.field.Nodes[$windowsClusterIndex].descendantConnection.nodes = New-Object -TypeName RubrikSecurityCloud.Types.MssqlInstance
 
             $mssqlInstanceIndex = $query.field.nodes[$windowsClusterIndex].descendantConnection.Nodes.FindIndex({param($item) $item.gettype().name -eq "MssqlInstance"})
-            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster = New-Object RubrikSecurityCloud.Types.Cluster
-            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster.name = "FETCH"
-            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster.id = "FETCH"
+            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster = Get-RscType -Name Cluster -InitialProperties name,Id
             $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
             $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.name = "FETCH"
             $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.id = "FETCH"
