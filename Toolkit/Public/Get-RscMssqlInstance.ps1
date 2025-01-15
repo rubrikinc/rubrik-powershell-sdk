@@ -152,13 +152,13 @@ function Get-RscMssqlInstance {
             if($HostName) {
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
-                $nameFilter.texts = $HostName
+                $nameFilter.texts = @($HostName)
                 $query.Var.filter += $nameFilter
             }
             elseif ($WindowsClusterName) {
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
-                $nameFilter.texts = $WindowsClusterName
+                $nameFilter.texts = @($WindowsClusterName)
                 $query.Var.filter += $nameFilter
             }
             
@@ -200,7 +200,6 @@ function Get-RscMssqlInstance {
             $physicalHostIndex = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "PhysicalHost"})
             $windowsClusterIndex = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "WindowsCluster"})
 
-
             $query.field.Nodes[$physicalHostIndex].cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
             $query.field.Nodes[$physicalHostIndex].cluster.name = "FETCH"
             $query.field.Nodes[$physicalHostIndex].cluster.id = "FETCH"
@@ -217,7 +216,6 @@ function Get-RscMssqlInstance {
             $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
             $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.name = "FETCH"
             $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.id = "FETCH"
-
             
             $query.Field.Nodes[$windowsClusterIndex].cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
             $query.Field.Nodes[$windowsClusterIndex].cluster.name = "FETCH"
@@ -228,7 +226,7 @@ function Get-RscMssqlInstance {
             $query.Field.Nodes[$windowsClusterIndex].Vars.descendantConnection.typeFilter = [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::MSSQL_INSTANCE
             $query.field.Nodes[$windowsClusterIndex].descendantConnection = New-Object RubrikSecurityCloud.Types.WindowsClusterDescendantTypeConnection
             $query.field.Nodes[$windowsClusterIndex].descendantConnection.nodes = New-Object -TypeName RubrikSecurityCloud.Types.MssqlInstance
-            
+
             $mssqlInstanceIndex = $query.field.nodes[$windowsClusterIndex].descendantConnection.Nodes.FindIndex({param($item) $item.gettype().name -eq "MssqlInstance"})
             $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster = New-Object RubrikSecurityCloud.Types.Cluster
             $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster.name = "FETCH"
