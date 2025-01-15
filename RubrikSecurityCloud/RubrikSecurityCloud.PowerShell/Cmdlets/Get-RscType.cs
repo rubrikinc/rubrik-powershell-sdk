@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Language;
 using System.Reflection;
 using RubrikSecurityCloud;
 using RubrikSecurityCloud.PowerShell.Models;
@@ -12,25 +13,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
 
     /// <summary>
-    /// Return a valid empty .NET object for the
-    /// RubrikSecurityCloud.PowerShell SDK
+    /// Create a new .NET object from the
+    /// RubrikSecurityCloud.Types namespace,
+    /// with pre-selected fields. 
     /// </summary>
     /// <description>
-    /// Return a valid empty .NET object for the
-    /// RubrikSecurityCloud.PowerShell SDK.
+    /// With -Name, the cmdlet returns a new .NET object from the
+    /// RubrikSecurityCloud.Types namespace (both output and input types),
+    /// with pre-selected fields with -InitialProperties or -InitialValues.
     /// 
-    /// The cmdlet will return a .NET object by name.
     /// The -ListAvailable parameter will return a list of
     /// valid RubrikSecurityCloud.Types.
     /// </description>
     /// <example>
-    /// Get a list of all available Rsc .NET types
+    /// Create a filter input object with "a" "b" for text filters.
+    /// <code>
+    /// PS C:\> Get-RscType -Name Filter -InitialValues @{"texts" = @("a", "b")}
+    /// </code>
+    /// </example>
+    /// <example>
+    /// Get a list of all available RSC .NET types
     /// <code>
     /// PS C:\> Get-RscType -ListAvailable
     /// </code>
     /// </example>
     /// <example>
-    /// Get a list of available Rsc .NET types filtered by name
+    /// Get a list of available RSC .NET types filtered by name
     /// <code>
     /// PS C:\> Get-RscType -ListAvailable -FilterByName "accountsetting"
     /// </code>
@@ -80,16 +88,40 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(VerbsCommon.Get, "RscType", DefaultParameterSetName = "GetTypeList")]
     public class Get_RscType : RscBasePSCmdlet
     {
+
         /// <summary>
-        /// The name of the Rsc Type to return
+        /// The name of the RubrikSecurityCloud.Types Type to return
         /// </summary>
         [Parameter(
             Mandatory = false,
             Position = 0,
             ValueFromPipeline = true,
-            ParameterSetName = "GetType")]
+            ParameterSetName = "GetTypeByName")]
         [ValidateNotNullOrEmpty]
+        [ArgumentCompleter(typeof(RscTypeNameCompleter))]
         public string Name { get; set; }
+
+        public class RscTypeNameCompleter : IArgumentCompleter
+        {
+            public IEnumerable<CompletionResult> CompleteArgument(
+                string commandName,
+                string parameterName,
+                string wordToComplete,
+                CommandAst commandAst,
+                IDictionary fakeBoundParameters)
+            {
+                // Fetch the list of valid type names
+                var validTypeSummaries = RscTypeInitializer.GetAllTypeNames();
+                var validNames = validTypeSummaries
+                    .Select(summary => summary.Name)
+                    .Where(name => string.IsNullOrEmpty(wordToComplete) ||
+                                   name.StartsWith(wordToComplete, StringComparison.OrdinalIgnoreCase))
+                    .OrderBy(name => name);
+
+                // Return results as CompletionResult objects
+                return validNames.Select(name => new CompletionResult(name)).ToList();
+            }
+        }
 
         /// <summary>
         /// Specify an array of string containing the names of the
@@ -99,7 +131,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             Position = 1,
             ValueFromPipeline = false,
-            ParameterSetName = "GetType")]
+            ParameterSetName = "GetTypeByName")]
         [ValidateNotNullOrEmpty]
         public string[] InitialProperties { get; set; }
 
@@ -111,7 +143,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             Position = 2,
             ValueFromPipeline = false,
-            ParameterSetName = "GetType")]
+            ParameterSetName = "GetTypeByName")]
         [ValidateNotNullOrEmpty]
         public Hashtable InitialValues { get; set; }
 
@@ -177,7 +209,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         WriteObject(RscTypeInitializer.GetAllTypeNames(FilterByName, Interfaces));
                         break;
 
-                    case "GetType":
+                    case "GetTypeByName":
                         Type returnType = RscTypeInitializer.GetTypeByName(Name);
 
                         if (returnType == null) {

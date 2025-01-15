@@ -53,6 +53,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
         {
             List<RscTypeSummary> types = new List<RscTypeSummary>();
             System.Type baseType = typeof(BaseType);
+            System.Type inputInterface = typeof(IInput); // For input types
             System.Type fieldSpecInterface = typeof(IFieldSpec);
             var assembly = Assembly.Load("RubrikSecurityCloud.Schema");
             if (assembly == null)
@@ -72,14 +73,20 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 {
                     continue;
                 }
-                if ((!interfaces && type.IsClass && type.IsSubclassOf(baseType))
-                    || 
-                    (interfaces && type.IsInterface && fieldSpecInterface.IsAssignableFrom(type)))
+                // Add output types (derived from BaseType)
+                if (!interfaces && type.IsClass && type.IsSubclassOf(baseType))
                 {
-                    types.Add(new RscTypeSummary
-                        {
-                            Name = type.Name
-                        });
+                    types.Add(new RscTypeSummary { Name = type.Name });
+                }
+                // Add input types (implementing IInput)
+                else if (!interfaces && type.IsClass && inputInterface.IsAssignableFrom(type))
+                {
+                    types.Add(new RscTypeSummary { Name = type.Name });
+                }
+                // Add interfaces if requested
+                else if (interfaces && type.IsInterface && fieldSpecInterface.IsAssignableFrom(type))
+                {
+                    types.Add(new RscTypeSummary { Name = type.Name });
                 }
             }
 
@@ -173,6 +180,44 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             psObject.BaseObject
                         ); 
                     } else {
+                        // Auto type conversion for common use case:
+                        //
+                        // User specifies a list of values in PowerShell with:
+                        //   -InitialValues @{"texts" = @("text1", "text2")}
+                        // However it maps in C# here to an object[].
+                        // => If fieldValue is an object[] and the target property is a List<T>,
+                        //    attempt to convert it to the appropriate List<T>.
+
+                        if (fieldValue is object[] objArray &&
+                            inputTypeField.PropertyType.IsGenericType &&
+                            inputTypeField.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
+                        {
+                            // Get the generic type argument of the List<>
+                            var genericArgumentType = inputTypeField.PropertyType.GetGenericArguments()[0];
+
+                            // Create a new List of the appropriate type
+                            var listType = typeof(List<>).MakeGenericType(genericArgumentType);
+                            var list = (IList)Activator.CreateInstance(listType);
+
+                            foreach (var item in objArray)
+                            {
+                                try
+                                {
+                                    // Attempt to convert each item to the target type
+                                    var convertedItem = Convert.ChangeType(item, genericArgumentType);
+                                    list.Add(convertedItem);
+                                }
+                                catch (Exception ex)
+                                {
+                                    throw new ArgumentException(
+                                        $"Unable to convert item '{item}' to type '{genericArgumentType.Name}'. " +
+                                        $"Error: {ex.Message}", ex);
+                                }
+                            }
+
+                            fieldValue = list;
+                        }
+
                         inputTypeField.SetValue(
                             inputInstance,
                             fieldValue
