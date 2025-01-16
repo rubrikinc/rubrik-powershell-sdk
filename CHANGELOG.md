@@ -14,8 +14,11 @@ Fixes:
   [#170](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/170)
 - Generated documentation fixes
   [#169](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/169)
-- Fix Get-RscMssqlInstance fields to account for API changes
+- Fix `Get-RscSla` when using `-id`
+  [#168](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/168)
+- Fix `Get-RscMssqlInstance` fields to account for API changes
   [#167](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/167)
+
 
 ## Version 1.12.1
 
