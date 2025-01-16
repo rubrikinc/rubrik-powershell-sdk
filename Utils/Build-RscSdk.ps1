@@ -1,85 +1,23 @@
 <#
 .SYNOPSIS
-Build the Rubrik Security Cloud SDK.
+Wrapper for running the SDK build process in a separate PowerShell process to avoid file locking issues.
 
 .DESCRIPTION
-This script
+This script invokes the actual `_Build-RscSdk.ps1` script in a new `pwsh.exe` process. 
+This approach ensures that no files remain locked after the build process.
 
-- runs Clean-RscSdk.ps1 to remove any previous build artifacts.
-- builds the Rubrik Security Cloud SDK and copies the output
-  to the Output/ directory.
-- runs Test-RscSdk.ps1 to run the tests.
-
-By default, the script will run the tests.
-You can skip the tests by passing -NoTests.
-
-By default, the script will build the Debug version of the SDK.
-You can build the Release version by passing -Release.
-Note that the Release build is copied to the Output.Release/ directory
-instead of Output/.
 #>
-param(
-    [switch]$NoClean = $false,
-    [switch]$Release = $false,
-    [switch]$NoDocs = $false,
-    [switch]$NoTests = $false,
-    [switch]$CI = $false
-)
 
-# Change to the root of the repository
-Set-Location $PSScriptRoot\.. 
+# Get the current script directory
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
-if (-Not $NoClean) {
-    .\Utils\Clean-RscSdk.ps1
-}
+# Construct the command to run in a new pwsh session
+$buildCommand = "& `$scriptDir/_Build-RscSdk.ps1 $args"
 
-$OutputDir = ".\Output"
-$ProjectDir = ".\RubrikSecurityCloud\RubrikSecurityCloud.PowerShell"
-$ProjectOutputDir = "$ProjectDir\bin\Debug"
+# Run the build command in a new PowerShell process
+$exitCode = & pwsh.exe -Command $buildCommand
 
-if ($Release) {
-    $OutputDir = ".\Output.Release"
-    $ProjectOutputDir = "$ProjectDir\bin\Release"
-}
-
-# Stop on error
-$ErrorActionPreference = "Stop"
-
-# Make sure we have dotnet
-try {
-    $dotnetVersion = dotnet --version
-    Write-Host "dotnet version: $dotnetVersion"
-} catch {
-    Write-Error "Failed to execute 'dotnet --version'. Please ensure .NET SDK is correctly installed and accessible."
-    exit 1
-}
-
-# Build the project
-$buildCommand = if ($Release) {
-    "dotnet build --configuration Release /p:GeneratePSDocs=true $ProjectDir"
-} elseif ($NoDocs) {
-    "dotnet build $ProjectDir"
-} else {
-    "dotnet build /p:GeneratePSDocs=true $ProjectDir"
-}
-
-Invoke-Expression $buildCommand
-
-if ($LASTEXITCODE -ne 0 ) {
-    Write-Error "dotnet build failed."
+# Exit with the same code as the sub-process
+if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
-}
-
-# Copy the output to the output directory
-Copy-Item -Recurse -Force $ProjectOutputDir $OutputDir
-$helpXmlPath = "$OutputDir\net6.0\RubrikSecurityCloud.PowerShell.dll-Help.xml"
-if (Test-Path $helpXmlPath) {
-    Copy-Item $helpXmlPath $OutputDir\net461\
-} else {
-    Write-Warning "Documentation XML file not found. Skipping copy."
-}
-
-if (-not $NoTests) {
-    # Run the tests
-    .\Utils\Test-RscSdk.ps1 -CI:$CI
 }
