@@ -3,17 +3,11 @@ BeforeAll {
 
     # variables shared among tests
     $Global:data = @{
-        logShipping = $null
+        logShipping = Get-RscMssqlLogShipping
     }
 }
 
 Describe -Name 'Get-RscMssqlLogShipping Tests' -Tag 'Public' -Fixture {
-
-    It -Name 'retrieves LogShippingTargets' -Test {
-        $data.logShipping = Get-RscMssqlLogShipping
-        # Write-Host "data.logShipping.count = $($data.logShipping.count)"
-        $data.logShipping | Should -Not -BeNullOrEmpty
-    }
 
     Context -Name 'LogShippingTarget Count > 0' {
         BeforeEach {
@@ -22,6 +16,10 @@ Describe -Name 'Get-RscMssqlLogShipping Tests' -Tag 'Public' -Fixture {
                 Set-ItResult -Skipped -Because "At least 1 LogShippingTarget is needed"
                 return
             }
+        }
+
+        It -Name 'retrieves LogShippingTargets' -Test {
+            $data.logShipping | Should -Not -BeNullOrEmpty
         }
 
         It -Name 'retrieves single LogShippingTarget by Id' -Test {
