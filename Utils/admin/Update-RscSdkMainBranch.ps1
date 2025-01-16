@@ -38,8 +38,10 @@ if ($gitStatus) {
     throw "Repository is not clean. Please commit or stash changes before running this script."
 }
 
-# Checkout main branch
+# Source branch (typically the devel branch)
 $sourceBranch = git rev-parse --abbrev-ref HEAD
+
+# Checkout main branch
 try {
     git checkout main
     git pull --rebase origin main
@@ -48,9 +50,12 @@ catch {
     throw "Failed to checkout 'main' branch."
 }
 
-# Copy $sourceBranch into main
+# Reset main to match $sourceBranch
 try {
-    git checkout $sourceBranch -- .
+    git reset --hard $sourceBranch
+    # This brings in new and modified files, but does not remove deleted files:
+    # git checkout $sourceBranch -- .
+    # This conflicts:
     # git merge $sourceBranch --no-commit --no-ff
     if ($LASTEXITCODE -ne 0) {
         throw
@@ -59,7 +64,7 @@ try {
 catch {
     git reset --hard HEAD
     git checkout $sourceBranch
-    throw "Failed to merge '$sourceBranch' into 'main'."
+    throw "Failed to reset 'main' to '$sourceBranch'."
 }
 
 # Build the SDK on the main branch
@@ -75,12 +80,25 @@ catch {
 }
 
 
-# Commit and push the changes to the main branch
+# Push the changes only if a commit message is provided
 if ($CommitMessage) {
-    git commit -a -m "$CommitMessage"
-    git push origin main
+    try {
+        # Create a commit with the provided message
+        git commit --allow-empty -a -m "$CommitMessage"
+
+        # Push the changes to origin/main
+        git push --force origin main
+    }
+    catch {
+        git reset --hard HEAD
+        git checkout $sourceBranch
+        throw "Failed to push changes to 'main': $($_ | Out-String)"
+    }
+} else {
+    Write-Host "No commit message provided. No changes have been pushed to 'main'." -ForegroundColor Yellow
 }
 
+# Return to the original branch if not staying on main
 if ( -not $StayOnMain ) {
     git checkout $sourceBranch
 }
