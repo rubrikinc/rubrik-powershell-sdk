@@ -16,8 +16,17 @@ Describe -Name 'Get-RscMssqlInstance Tests' -Tag 'Public' -Fixture {
     }
 
     It -Name 'retrieves SQL Instances from a Host' -Test {
-        $data.sqlInstances = Get-RscMssqlInstance -HostName $data.sqlHosts[0].name
-        $data.sqlInstances | Should -Not -BeNullOrEmpty
+        # At least one host in the deployment must have
+        # at least 1 instance
+        $found = $false
+        foreach( $host in $data.sqlHosts) {
+            $data.sqlInstances = Get-RscMssqlInstance -HostName $host.name
+            if ($data.sqlInstances.Count -gt 0) {
+                $found = $true
+                break
+            }
+        }
+        $found | Should -Be $true
     }
 
 
