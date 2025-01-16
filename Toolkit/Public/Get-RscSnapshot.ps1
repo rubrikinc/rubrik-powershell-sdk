@@ -211,7 +211,7 @@ function Get-RscSnapshot {
             $cdmSnapshot = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "cdmSnapshot"})
             $polarisSnapshot = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "polarisSnapshot"})
 
-            # Generic fields on both types of snapshots or on generic type
+            # Generic fields on all types of snapshots
             $query.field.nodes | ForEach-Object {
                 $_.id = "FETCH"
                 $_.date = "1999-01-01"
@@ -229,7 +229,7 @@ function Get-RscSnapshot {
                 $_.isDownloadedSnapshot = $true
                 $_.expiryHint = $true
                 $_.isExpired = $true
-                $_.parentSnapshotId = "FETCH"
+
             }
             
             # Polaris snapshot type
@@ -246,6 +246,7 @@ function Get-RscSnapshot {
             #$query.field.nodes[$polarisSnapshot].replicationLocations[0].id = "FETCH"
             $query.field.nodes[$polarisSnapshot].hasUnexpiredReplica = $true
             $query.field.nodes[$polarisSnapshot].hasUnexpiredArchivedCopy = $true
+            $query.field.nodes[$polarisSnapshot].parentSnapshotId = "FETCH"
 
             # CDM snapshot type
             $query.field.nodes[$cdmSnapshot].isRetentionLocked = $true
@@ -291,6 +292,7 @@ function Get-RscSnapshot {
             $query.field.nodes[$cdmSnapshot].slaDomain.name = "FETCH"
             $query.field.nodes[$cdmSnapshot].slaDomain.id = "FETCH"
             $query.field.nodes[$cdmSnapshot].consistencyLevel = [RubrikSecurityCloud.Types.SnapshotConsistencyLevel]::CRASH_CONSISTENT
+            $query.field.nodes[$cdmSnapshot].parentSnapshotId = "FETCH"
 
             $result = Invoke-Rsc -Query $query
             $result.nodes
