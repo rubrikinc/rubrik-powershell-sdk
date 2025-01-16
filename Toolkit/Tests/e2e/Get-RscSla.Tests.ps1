@@ -6,11 +6,7 @@ BeforeAll {
         sla = $null
     }
 }
-
-# TODO: Fix this test: replace -Skip with -Fixture
-# see https://rubrik.atlassian.net/browse/SPARK-462875
-Write-Warning "TODO: Get-RscSla Tests are skipped"
-Describe -Name 'Get-RscSla Tests' -Tag 'Public' -Skip {
+Describe -Name 'Get-RscSla Tests' -Tag 'Public' -Fixture {
 
     It -Name 'retrieves SLAs' -Test {
         $data.sla = Get-RscSla

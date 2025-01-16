@@ -46,7 +46,7 @@ function Get-RscSla {
     Process {
 
         if ($Id) {
-
+            $query = New-RscQuery -GqlQuery slaDomain
             $query.var.id = $Id
 
             #id: String!
