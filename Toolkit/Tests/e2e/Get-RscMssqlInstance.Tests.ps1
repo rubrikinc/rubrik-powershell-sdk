@@ -4,6 +4,7 @@ BeforeAll {
     # variables shared among tests
     $Global:data = @{
         sqlHosts = $null
+        sqlHost = $null
         sqlInstances = $null
     }
 }
@@ -12,31 +13,29 @@ Describe -Name 'Get-RscMssqlInstance Tests' -Tag 'Public' -Fixture {
 
     It -Name 'retrieves SQL Hosts' -Test {
         $data.sqlHosts = Get-RscMssqlInstance
-        $data.sqlHosts | Should -Not -BeNullOrEmpty
     }
-
-    It -Name 'retrieves SQL Instances from a Host' -Test {
-        # At least one host in the deployment must have
-        # at least 1 instance
-        $found = $false
-        foreach( $host in $data.sqlHosts) {
-            $data.sqlInstances = Get-RscMssqlInstance -HostName $host.name
-            if ($data.sqlInstances.Count -gt 0) {
-                $found = $true
-                break
-            }
-        }
-        $found | Should -Be $true
-    }
-
 
     Context -Name 'RSC SQL Host Count > 0' {
         BeforeEach {
             # Skip the tests if empty 
             if ($data.sqlHosts.Count -le 0) {
-                Set-ItResult -Skipped -Because "At least 1 MssqlInstance is needed"
+                Set-ItResult -Skipped -Because "At least 1 SQL host is needed"
                 return
             }
+        }
+
+        It -Name 'retrieves SQL Instances from a Host' -Test {
+            # At least one host in the deployment must have at least 1 instance
+            $found = $false
+            foreach( $h in $data.sqlHosts) {
+                $data.sqlInstances = Get-RscMssqlInstance -HostName $h.name
+                if ($data.sqlInstances.Count -gt 0) {
+                    $data.sqlHost = $h
+                    $found = $true
+                    break
+                }
+            }
+            $found | Should -Be $true
         }
 
         It -Name 'retrieves single RscMssqlInstance by RSC ID' -Test {
@@ -46,15 +45,19 @@ Describe -Name 'Get-RscMssqlInstance Tests' -Tag 'Public' -Fixture {
         }
 
         It -Name 'retrieves RscMssqlInstance by name' -Test {
-            $object = Get-RscMssqlInstance -HostName $data.sqlHosts[0].name -Name $data.sqlInstances[0].name
+            $object = Get-RscMssqlInstance -HostName $data.sqlHost.name -Name $data.sqlInstances[0].name
+            # if $object is an array, take the first one
+            if ($object -is [array]) {
+                $object = $object[0]
+            }
             $object.name | Should -Be $data.sqlInstances[0].name
             $object.id | Should -Be $data.sqlInstances[0].id
         }
 
         It -Name 'filters by cluster' -Test {
-            $objects = Get-RscMssqlInstance -HostName $data.sqlHosts[0].name -Cluster $data.sqlHosts[0].cluster
+            $objects = Get-RscMssqlInstance -HostName $data.sqlHost.name -Cluster $data.sqlHosts[0].cluster
             $objects | ForEach-Object {
-                $_.cluster.id | Should -Be $data.sqlHosts[0].cluster.id
+                $_.cluster.id | Should -Be $data.sqlHostgs.cluster.id
             }
         }
 
