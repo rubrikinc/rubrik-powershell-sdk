@@ -2,9 +2,13 @@
 
 ## Version 1.12.2
 
+Schema Update:
+
+See [API Changelog](https://rubrikinc.github.io/rubrik-api-documentation/changelog/changes/)
+for API additions, deprecations and breaking changes.
+
 New Features:
 
-- Schema update.
 - `Get-RscType` now has auto-completion for `-Name` parameter.
 
 Fixes:
@@ -18,7 +22,6 @@ Fixes:
   [#168](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/168)
 - Fix `Get-RscMssqlInstance` fields to account for API changes
   [#167](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/167)
-
 
 ## Version 1.12.1
 
