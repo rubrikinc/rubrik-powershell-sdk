@@ -74,6 +74,7 @@ FormatsToProcess = @(
   "Toolkit/Format/MongoSource.Format.ps1xml",
   "Toolkit/Format/MssqlDatabase.Format.ps1xml",
   "Toolkit/Format/MssqlInstance.Format.ps1xml",
+  "Toolkit/Format/MssqlLogShippingTarget.Format.ps1xml",
   "Toolkit/Format/NutanixVm.Format.ps1xml",
   "Toolkit/Format/OracleDatabase.Format.ps1xml",
   "Toolkit/Format/OracleHost.Format.ps1xml",
