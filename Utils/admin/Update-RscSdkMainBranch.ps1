@@ -44,7 +44,6 @@ $sourceBranch = git rev-parse --abbrev-ref HEAD
 # Checkout main branch
 try {
     git checkout main
-    git pull --rebase origin main
 }
 catch {
     throw "Failed to checkout 'main' branch."
