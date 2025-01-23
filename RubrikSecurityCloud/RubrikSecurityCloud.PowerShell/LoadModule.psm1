@@ -9,7 +9,7 @@ try {
     # Determine the module directory based on the PowerShell edition
     If ($PSVersionTable.PSEdition -eq "Desktop") {
        # Write-Host "`nLoading Rubrik Security Cloud PowerShell Module (WindowsPowerShell)...`n"
-        $moduleDir = Join-Path -Path $PSScriptRoot -ChildPath "net461"
+        $moduleDir = Join-Path -Path $PSScriptRoot -ChildPath "net462"
 
         # Load the specific versions of required assemblies
         $unsafeAssemblyPath = Join-Path -Path $moduleDir -ChildPath 'System.Runtime.CompilerServices.Unsafe.dll'
