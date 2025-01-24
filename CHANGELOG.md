@@ -2,11 +2,14 @@
 
 ## Version TBD
 
-New Features:
+Schema Update:
+
+See [API Changelog](https://rubrikinc.github.io/rubrik-api-documentation/changelog/changes/)
+for API additions, deprecations and breaking changes.
 
 Fixes:
 
-Breaking Changes:
+- Fixed multiple CVEs in dependencies
 
 ## Version 1.12.2
 
