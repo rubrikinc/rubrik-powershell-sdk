@@ -6,6 +6,8 @@ Input to initiate an export job for an AWS native EC2 instance.
 - destinationAwsAccountRubrikId: System.String
   - Rubrik UUID of the AWS account where the instance will be exported.
 - instanceType: AwsNativeEc2InstanceType
+  - Deprecated, use ec2InstanceType instead. Instance class of EC2 instance.
+- ec2InstanceType: System.String
   - AWS Native EC2 instance type to be used after export. Some examples are: t2.nano, m5.xlarge. For more information, see https://aws.amazon.com/ec2/instance-types.
 - instanceName: System.String
   - Name of the exported instance.

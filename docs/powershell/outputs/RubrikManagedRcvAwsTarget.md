@@ -1,0 +1,51 @@
+### RubrikManagedRcvAwsTarget
+Specific information for Rubrik Cloud Vault (RCV)AWS target created on Rubrik.
+
+- bucket: System.String
+  - Specifies the bucket for the RCV AWS archival target.
+- shouldBypassProxy: System.Boolean
+  - Specifies whether the proxy settings is bypassed for  the RCV AWS archival target.
+- syncStatus: TargetSyncStatus
+  - Sync status of RCV AWS target.
+- region: RcsRegionEnumType
+  - Region of RCV AWS target.
+- tier: RcsTierEnumType
+  - Tiers for RCV AWS target.
+- syncFailureReason: System.String
+  - Reason why sync of this target with CDM failed.
+- encryptionType: TargetEncryptionTypeEnum
+  - Encryption type to be used for the S3-compatible target.
+- cluster: Cluster
+  - The cluster to which this target belongs.
+- targetType: TargetType
+  - The type of the target.
+- id: System.String
+  - The ID of the target.
+- name: System.String
+  - The name of the target.
+- locationScope: LocationScope
+  - The scope of the location of the target. Possible values are Global or Local.
+- isActive: System.Boolean
+  - Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
+- isArchived: System.Boolean
+  - Specifies whether the target is archived.
+- targetMapping: TargetMappingBasic
+  - Archival location to which the mapping target belongs.
+- clusterName: System.String
+  - Name of the Rubrik cluster that archives to this archival location.
+- status: ArchivalLocationStatus
+  - Status of the target.
+- upgradeStatus: UpgradeStatus
+  - Upgrade status of the target.
+- consumedBytes: System.Int64
+  - Number of bytes stored on the target.
+- runningTasks: System.Int32
+  - Number of archiving tasks running on this target.
+- failedTasks: System.Int32
+  - Number of archiving tasks failed on this target.
+- readerRetrievalMethod: ReaderRetrievalMethod
+  - The retrieval method of the reader target.
+- targetMappingBasic: list of TargetMappingBasics
+  - List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
+- locationConnectionStatus: ConnectionStatusType
+  - Status of the target.

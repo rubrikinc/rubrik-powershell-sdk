@@ -1855,6 +1855,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? ExcludeAzureStorageAccountContainers
+        // GraphQL -> excludeAzureStorageAccountContainers: Void (scalar)
+        public static string ExcludeAzureStorageAccountContainers(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "excludeAzureStorageAccountContainers" + args + "\n";
+        }
+        public static object ExcludeAzureStorageAccountContainersFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? ExcludeSharepointObjectsFromProtection
         // GraphQL -> excludeSharepointObjectsFromProtection: Void (scalar)
         public static string ExcludeSharepointObjectsFromProtection(object fsObj)
@@ -3979,6 +3997,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AwsCloudAccountsMigrateInitiateReply? AwsCloudAccountsMigrateInitiate
+        // GraphQL -> awsCloudAccountsMigrateInitiate: AwsCloudAccountsMigrateInitiateReply! (type)
+        public static string AwsCloudAccountsMigrateInitiate(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "awsCloudAccountsMigrateInitiate" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AwsCloudAccountsMigrateInitiateFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AwsCloudAccountsMigrateInitiateReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AwsExocomputeClusterConnectReply? AwsExocomputeClusterConnect
         // GraphQL -> awsExocomputeClusterConnect: AwsExocomputeClusterConnectReply! (type)
         public static string AwsExocomputeClusterConnect(object fsObj)
@@ -4371,6 +4407,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new BatchReleaseFromQuarantineSnapshotReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> BatchTriggerExocomputeHealthCheckReply? BatchTriggerExocomputeHealthCheck
+        // GraphQL -> batchTriggerExocomputeHealthCheck: BatchTriggerExocomputeHealthCheckReply! (type)
+        public static string BatchTriggerExocomputeHealthCheck(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "batchTriggerExocomputeHealthCheck" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object BatchTriggerExocomputeHealthCheckFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new BatchTriggerExocomputeHealthCheckReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -10581,24 +10635,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new CreateOnDemandJobReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> RestoreObjectsDryRunReply? RestoreObjectsDryRun
-        // GraphQL -> restoreObjectsDryRun: RestoreObjectsDryRunReply! (type)
-        public static string RestoreObjectsDryRun(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "restoreObjectsDryRun" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object RestoreObjectsDryRunFieldSpec(ExplorationContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new ExplorationContext();
-            }
-            var fieldSpecObj = new RestoreObjectsDryRunReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

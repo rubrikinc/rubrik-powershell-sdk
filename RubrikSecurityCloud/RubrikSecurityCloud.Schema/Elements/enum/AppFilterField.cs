@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APP_TYPE")]
         APP_TYPE,
 
+        [EnumMember(Value = "ORG_ID")]
+        ORG_ID,
+
         [EnumMember(Value = "SUBSCRIPTION")]
         SUBSCRIPTION,
 

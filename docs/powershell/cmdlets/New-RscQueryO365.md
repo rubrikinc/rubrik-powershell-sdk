@@ -39,7 +39,7 @@ List of O365 Groups in the O365Org.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - o365OrgId - System.String: The fid for the O365 organization.
+    - o365OrgId - System.String: The FID for the O365 organization.
     - snappableType - SnappableType
 - Returns O365GroupConnection.
 ### license
@@ -70,7 +70,7 @@ List of Mailboxes in the O365Org.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - o365OrgId - System.String: The fid for the O365 organization.
+    - o365OrgId - System.String: The FID for the O365 organization.
 - Returns O365MailboxConnection.
 ### objectancestors
 - There is a single argument of type System.String.
@@ -89,7 +89,7 @@ List of Onedrives in the O365Org.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - o365OrgId - System.String: The fid for the O365 organization.
+    - o365OrgId - System.String: The FID for the O365 organization.
 - Returns O365OnedriveConnection.
 ### org
 Details of the O365Org.
@@ -146,7 +146,7 @@ List of sharepoint drives (document libraries) in the O365Org.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - o365OrgId - System.String: The fid for the O365 organization.
+    - o365OrgId - System.String: The FID for the O365 organization.
 - Returns O365SharepointDriveConnection.
 ### sharepointlist
 Details for the SharePoint list corresponding to the snappable ID.
@@ -162,7 +162,7 @@ Paginated list of sharepoint lists in the O365Org.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - o365OrgId - System.String: The fid for the O365 organization.
+    - o365OrgId - System.String: The FID for the O365 organization.
 - Returns O365SharepointListConnection.
 ### sharepointobjectlist
 Returns the sharepoint objects after filtering on the object types and includeEntireHierarchy.
@@ -213,7 +213,7 @@ Paginated list of sharepoint sites in the O365Org.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - o365OrgId - System.String: The fid for the O365 organization.
+    - o365OrgId - System.String: The FID for the O365 organization.
 - Returns O365SiteConnection.
 ### site
 Details for the SharePoint site corresponding to the snappable ID.
@@ -229,7 +229,7 @@ List of sites in the O365Org.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - o365OrgId - System.String: The fid for the O365 organization.
+    - o365OrgId - System.String: The FID for the O365 organization.
     - excludeChildSites - System.Boolean: When excludeChildSites is set to true, nested child sites are excluded from the results. If not specified, nested child sites are included.
 - Returns O365SiteConnection.
 ### storagestats
@@ -264,7 +264,7 @@ ID for the conversations folder in the Team's Group Mailbox.
 - There are 3 arguments.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
-    - o365OrgId - System.String: The fid for the O365 organization.
+    - o365OrgId - System.String: The FID for the O365 organization.
 - Returns System.String.
 ### teampostedby
 Users who have posted in a team.
@@ -273,7 +273,7 @@ Users who have posted in a team.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - snappableFid - System.String: The FID for the workload.
-    - o365OrgId - System.String: The fid for the O365 organization.
+    - o365OrgId - System.String: The FID for the O365 organization.
     - nameFilter - System.String
 - Returns O365TeamConversationsSenderConnection.
 ### teams
@@ -285,7 +285,7 @@ List of O365 Teams in the O365Org.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - o365OrgId - System.String: The fid for the O365 organization.
+    - o365OrgId - System.String: The FID for the O365 organization.
 - Returns O365TeamsConnection.
 ### user
 Details for the O365 user corresponding to the ID.

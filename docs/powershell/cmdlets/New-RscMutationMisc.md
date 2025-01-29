@@ -59,6 +59,11 @@ Assign protection to cassandra objects.
 ### batchdeassignrolefromusergroups
 - There is a single argument of type list of UserGroupToRolesInputs.
 - Returns System.Boolean.
+### batchtriggerexocomputehealthcheck
+Initiates an on-demand Exocompute health check for a batch of exocompute configurations across regions.
+
+- There is a single argument of type BatchTriggerExocomputeHealthCheckInput.
+- Returns BatchTriggerExocomputeHealthCheckReply.
 ### bulkcreatenasfilesets
 Create filesets in bulk for NAS shares
 
@@ -416,11 +421,6 @@ Marks that the user has resolved that there are no conflicting volume groups on 
 
 - There is a single argument of type ResolveVolumeGroupsConflictInput.
 - Returns RequestSuccess.
-### restoreobjectsdryrun
-Runs a simulated recovery for the specified Active Directory objects and returns the attribute values expected after a regular granular restore.
-
-- There is a single argument of type RestoreObjectsDryRunInput.
-- Returns RestoreObjectsDryRunReply.
 ### retrybackup
 Initiates retry for a failed job.
 

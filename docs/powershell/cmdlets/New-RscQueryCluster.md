@@ -92,7 +92,7 @@ Get CDM release details from support portal for a given list of clusters.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - groupBy - ClusterGroupByEnum: Group by field.
     - filter - ClusterFilterInput: Filter by cluster.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
+    - timezoneOffset - System.Single: Offset based on the customer timezone.
 - Returns ClusterGroupByConnection.
 ### ipmi
 Get IPMI details

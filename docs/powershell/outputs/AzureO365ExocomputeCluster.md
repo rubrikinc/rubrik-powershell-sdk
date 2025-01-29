@@ -46,3 +46,5 @@ Azure O365 Exocompute cluster details.
   - KMS host type details. The possible values are RUBRIK_HOST and CUSTOMER_HOST.
 - hostType: AzureHostType
   - Azure host type details.
+- provisioningState: ClusterProvisioningState
+  - Cluster provisioning state.

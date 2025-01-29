@@ -36,9 +36,9 @@ Hyper-V virtual machine details.
 - effectiveSlaSourceObject: PathNode
   - Path node of the effective SLA Domain source.
 - logicalPath: list of PathNodes
-  - Sequential list of this object's logical ancestors.
+  - Sequential list of the logical ancestors of this object.
 - physicalPath: list of PathNodes
-  - Sequential list of this object's physical ancestors.
+  - Sequential list of the physical ancestors of this object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
 - allOrgs: list of Orgs

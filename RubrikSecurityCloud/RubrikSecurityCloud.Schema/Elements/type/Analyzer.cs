@@ -75,6 +75,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("structuredDictionaryCsv")]
         public System.String? StructuredDictionaryCsv { get; set; }
 
+        //      C# -> List<System.String>? StructuredKeyDictionary
+        // GraphQL -> structuredKeyDictionary: [String!]! (scalar)
+        [JsonProperty("structuredKeyDictionary")]
+        public List<System.String>? StructuredKeyDictionary { get; set; }
+
+        //      C# -> System.String? StructuredKeyDictionaryCsv
+        // GraphQL -> structuredKeyDictionaryCsv: String! (scalar)
+        [JsonProperty("structuredKeyDictionaryCsv")]
+        public System.String? StructuredKeyDictionaryCsv { get; set; }
+
         //      C# -> System.String? StructuredValueRegex
         // GraphQL -> structuredValueRegex: String! (scalar)
         [JsonProperty("structuredValueRegex")]
@@ -111,6 +121,8 @@ namespace RubrikSecurityCloud.Types
         System.String? Regex = null,
         List<System.String>? StructuredDictionary = null,
         System.String? StructuredDictionaryCsv = null,
+        List<System.String>? StructuredKeyDictionary = null,
+        System.String? StructuredKeyDictionaryCsv = null,
         System.String? StructuredValueRegex = null,
         System.Int32? TagId = null,
         AnalyzerRiskInstance? AnalyzerRiskInstance = null
@@ -148,6 +160,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( StructuredDictionaryCsv != null ) {
             this.StructuredDictionaryCsv = StructuredDictionaryCsv;
+        }
+        if ( StructuredKeyDictionary != null ) {
+            this.StructuredKeyDictionary = StructuredKeyDictionary;
+        }
+        if ( StructuredKeyDictionaryCsv != null ) {
+            this.StructuredKeyDictionaryCsv = StructuredKeyDictionaryCsv;
         }
         if ( StructuredValueRegex != null ) {
             this.StructuredValueRegex = StructuredValueRegex;
@@ -269,6 +287,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "structuredDictionaryCsv\n" ;
             } else {
                 s += ind + "structuredDictionaryCsv\n" ;
+            }
+        }
+        //      C# -> List<System.String>? StructuredKeyDictionary
+        // GraphQL -> structuredKeyDictionary: [String!]! (scalar)
+        if (this.StructuredKeyDictionary != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "structuredKeyDictionary\n" ;
+            } else {
+                s += ind + "structuredKeyDictionary\n" ;
+            }
+        }
+        //      C# -> System.String? StructuredKeyDictionaryCsv
+        // GraphQL -> structuredKeyDictionaryCsv: String! (scalar)
+        if (this.StructuredKeyDictionaryCsv != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "structuredKeyDictionaryCsv\n" ;
+            } else {
+                s += ind + "structuredKeyDictionaryCsv\n" ;
             }
         }
         //      C# -> System.String? StructuredValueRegex
@@ -494,6 +530,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.StructuredDictionaryCsv != null && ec.Excludes("structuredDictionaryCsv",true))
         {
             this.StructuredDictionaryCsv = null;
+        }
+        //      C# -> List<System.String>? StructuredKeyDictionary
+        // GraphQL -> structuredKeyDictionary: [String!]! (scalar)
+        if (ec.Includes("structuredKeyDictionary",true))
+        {
+            if(this.StructuredKeyDictionary == null) {
+
+                this.StructuredKeyDictionary = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StructuredKeyDictionary != null && ec.Excludes("structuredKeyDictionary",true))
+        {
+            this.StructuredKeyDictionary = null;
+        }
+        //      C# -> System.String? StructuredKeyDictionaryCsv
+        // GraphQL -> structuredKeyDictionaryCsv: String! (scalar)
+        if (ec.Includes("structuredKeyDictionaryCsv",true))
+        {
+            if(this.StructuredKeyDictionaryCsv == null) {
+
+                this.StructuredKeyDictionaryCsv = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StructuredKeyDictionaryCsv != null && ec.Excludes("structuredKeyDictionaryCsv",true))
+        {
+            this.StructuredKeyDictionaryCsv = null;
         }
         //      C# -> System.String? StructuredValueRegex
         // GraphQL -> structuredValueRegex: String! (scalar)

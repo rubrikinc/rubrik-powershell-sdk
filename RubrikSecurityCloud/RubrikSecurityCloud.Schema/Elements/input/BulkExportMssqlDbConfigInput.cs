@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allowOverwrite")]
         public System.Boolean? AllowOverwrite { get; set; }
 
+        //      C# -> List<System.String>? SourceDatabaseIds
+        // GraphQL -> sourceDatabaseIds: [String!] (scalar)
+        [JsonProperty("sourceDatabaseIds")]
+        public List<System.String>? SourceDatabaseIds { get; set; }
+
         //      C# -> System.String? TargetDataFilePath
         // GraphQL -> targetDataFilePath: String (scalar)
         [JsonProperty("targetDataFilePath")]
@@ -39,17 +44,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("finishRecovery")]
         public System.Boolean? FinishRecovery { get; set; }
 
+        //      C# -> List<System.String>? SourceInstanceIds
+        // GraphQL -> sourceInstanceIds: [String!] (scalar)
+        [JsonProperty("sourceInstanceIds")]
+        public List<System.String>? SourceInstanceIds { get; set; }
+
         //      C# -> MssqlRecoveryPointInput? RecoveryPoint
         // GraphQL -> recoveryPoint: MssqlRecoveryPointInput (input)
         [JsonProperty("recoveryPoint")]
         public MssqlRecoveryPointInput? RecoveryPoint { get; set; }
-
-        //      C# -> List<System.String>? SourceInstanceIds
-        // GraphQL -> sourceInstanceIds: [String!]! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("sourceInstanceIds")]
-        public List<System.String>? SourceInstanceIds { get; set; }
 
         //      C# -> System.String? TargetInstanceId
         // GraphQL -> targetInstanceId: String! (scalar)

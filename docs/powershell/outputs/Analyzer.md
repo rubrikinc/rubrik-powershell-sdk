@@ -21,3 +21,7 @@
   - Dictionary to analyze for the structured data.
 - structuredDictionary: list of System.Strings
   - Parsed list of keywords from structuredDictionaryCsv.
+- structuredKeyDictionaryCsv: System.String
+  - A dictionary to filter fields that need to be analyzed for structured data by dictionary analyzers.
+- structuredKeyDictionary: list of System.Strings
+  - Parsed list of keywords from structuredKeyDictionaryCsv.

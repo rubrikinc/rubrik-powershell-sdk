@@ -61,7 +61,7 @@ Results for Ransomware Investigations.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - RansomwareResultSortBy: Sort ransomware results by field.
     - filter - RansomwareResultFilterInput: Filter ransomware results by input.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
+    - timezoneOffset - System.Single: Offset based on the customer timezone.
 - Returns RansomwareResultConnection.
 ### resultsgrouped
 Results for the Ransomware Investigations grouped by an argument.
@@ -73,5 +73,5 @@ Results for the Ransomware Investigations grouped by an argument.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - groupBy - RansomwareResultGroupBy: Group ransomware results by field.
     - filter - RansomwareResultFilterInput: Filter ransomware results by input.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
+    - timezoneOffset - System.Single: Offset based on the customer timezone.
 - Returns RansomwareResultGroupedDataConnection.

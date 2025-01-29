@@ -94,6 +94,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	entities = @(
     /// 		@{
+    /// 			# OPTIONAL
+    /// 			entityName = $someString
     /// 			# REQUIRED
     /// 			entityType = $someDataThreatAnalyticsEnablementEntity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataThreatAnalyticsEnablementEntity]) for enum values.
     /// 			# REQUIRED
@@ -102,6 +104,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# REQUIRED
     /// 	isRansomwareMonitoringEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	clusterId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -241,6 +245,8 @@ $query.Var.input = @{
 	# REQUIRED
 	entities = @(
 		@{
+			# OPTIONAL
+			entityName = $someString
 			# REQUIRED
 			entityType = $someDataThreatAnalyticsEnablementEntity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataThreatAnalyticsEnablementEntity]) for enum values.
 			# REQUIRED
@@ -249,6 +255,8 @@ $query.Var.input = @{
 	)
 	# REQUIRED
 	isRansomwareMonitoringEnabled = $someBoolean
+	# OPTIONAL
+	clusterId = $someString
 }"
             );
         }

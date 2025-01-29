@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("kmsHostType")]
         public AzureHostType? KmsHostType { get; set; }
 
+        //      C# -> ClusterProvisioningState? ProvisioningState
+        // GraphQL -> provisioningState: ClusterProvisioningState! (enum)
+        [JsonProperty("provisioningState")]
+        public ClusterProvisioningState? ProvisioningState { get; set; }
+
         //      C# -> SaasFeature? SaasFeature
         // GraphQL -> saasFeature: SaasFeature! (enum)
         [JsonProperty("saasFeature")]
@@ -198,6 +203,7 @@ namespace RubrikSecurityCloud.Types
         O365AzureCloudType? AzureCloudType = null,
         AzureHostType? HostType = null,
         AzureHostType? KmsHostType = null,
+        ClusterProvisioningState? ProvisioningState = null,
         SaasFeature? SaasFeature = null,
         System.String? AcrId = null,
         System.String? AksId = null,
@@ -238,6 +244,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( KmsHostType != null ) {
             this.KmsHostType = KmsHostType;
+        }
+        if ( ProvisioningState != null ) {
+            this.ProvisioningState = ProvisioningState;
         }
         if ( SaasFeature != null ) {
             this.SaasFeature = SaasFeature;
@@ -368,6 +377,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "kmsHostType\n" ;
             } else {
                 s += ind + "kmsHostType\n" ;
+            }
+        }
+        //      C# -> ClusterProvisioningState? ProvisioningState
+        // GraphQL -> provisioningState: ClusterProvisioningState! (enum)
+        if (this.ProvisioningState != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "provisioningState\n" ;
+            } else {
+                s += ind + "provisioningState\n" ;
             }
         }
         //      C# -> SaasFeature? SaasFeature
@@ -712,6 +730,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.KmsHostType != null && ec.Excludes("kmsHostType",true))
         {
             this.KmsHostType = null;
+        }
+        //      C# -> ClusterProvisioningState? ProvisioningState
+        // GraphQL -> provisioningState: ClusterProvisioningState! (enum)
+        if (ec.Includes("provisioningState",true))
+        {
+            if(this.ProvisioningState == null) {
+
+                this.ProvisioningState = new ClusterProvisioningState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProvisioningState != null && ec.Excludes("provisioningState",true))
+        {
+            this.ProvisioningState = null;
         }
         //      C# -> SaasFeature? SaasFeature
         // GraphQL -> saasFeature: SaasFeature! (enum)

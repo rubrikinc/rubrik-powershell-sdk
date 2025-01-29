@@ -2,7 +2,7 @@
 Supported in v5.0+
 
 - guestCredentialId: System.String
-  - Supported in v9.3+
+  - Supported in v9.2+
   ID of the guest OS credential to be used for authentication to the virtual machine guest OS.
 - isAutomatic: System.Boolean
   - Required. Supported in v5.0+

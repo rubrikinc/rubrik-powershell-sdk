@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sessionId")]
         public System.String? SessionId { get; set; }
 
+        //      C# -> System.Boolean? DeleteSnapshots
+        // GraphQL -> deleteSnapshots: Boolean (scalar)
+        [JsonProperty("deleteSnapshots")]
+        public System.Boolean? DeleteSnapshots { get; set; }
+
 
         #endregion
 

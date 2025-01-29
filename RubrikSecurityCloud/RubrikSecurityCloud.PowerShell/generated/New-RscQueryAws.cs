@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 31
+    /// Create a new RscQuery object for any of the 33
     /// operations in the 'AWS' API domain:
-    /// ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
+    /// ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
     /// </summary>
     /// <description>
     /// New-RscQueryAws creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 31 operations
+    /// There are 33 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
+    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -486,6 +486,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the Ec2InstanceTypesByRegion operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: Ec2InstanceTypesByRegion
+    /// 
+    /// $query = New-RscQueryAws -Operation Ec2InstanceTypesByRegion
+    /// 
+    /// # REQUIRED
+    /// $query.Var.awsAccountRubrikId = $someString
+    /// # REQUIRED
+    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AwsNativeEc2InstanceTypeOffering&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Ec2KeyPairsByRegion operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -508,6 +538,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the EligibleAccountsForMigrationToOrg operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: EligibleAccountsForMigrationToOrg
+    /// 
+    /// $query = New-RscQueryAws -Operation EligibleAccountsForMigrationToOrg
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.awsOrganizationUuid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AwsCloudAccountConnection
     /// 
     /// 
     /// 
@@ -1237,7 +1303,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ComputeSettings",
                 "DbParameterGroupsByRegion",
                 "DbSubnetGroupsByRegion",
+                "Ec2InstanceTypesByRegion",
                 "Ec2KeyPairsByRegion",
+                "EligibleAccountsForMigrationToOrg",
                 "ExocomputeConfigs",
                 "ExocomputeGetClusterConnectionInfo",
                 "InstanceProfileNames",
@@ -1307,8 +1375,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DbSubnetGroupsByRegion":
                         this.ProcessRecord_DbSubnetGroupsByRegion();
                         break;
+                    case "Ec2InstanceTypesByRegion":
+                        this.ProcessRecord_Ec2InstanceTypesByRegion();
+                        break;
                     case "Ec2KeyPairsByRegion":
                         this.ProcessRecord_Ec2KeyPairsByRegion();
+                        break;
+                    case "EligibleAccountsForMigrationToOrg":
+                        this.ProcessRecord_EligibleAccountsForMigrationToOrg();
                         break;
                     case "ExocomputeConfigs":
                         this.ProcessRecord_ExocomputeConfigs();
@@ -1483,12 +1557,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // allEc2InstanceTypesByRegionFromAws.
+        internal void ProcessRecord_Ec2InstanceTypesByRegion()
+        {
+            this._logger.name += " -Ec2InstanceTypesByRegion";
+            // Create new graphql operation allEc2InstanceTypesByRegionFromAws
+            InitQueryAllEc2InstanceTypesByRegionFromAws();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allEc2KeyPairsByRegionFromAws.
         internal void ProcessRecord_Ec2KeyPairsByRegion()
         {
             this._logger.name += " -Ec2KeyPairsByRegion";
             // Create new graphql operation allEc2KeyPairsByRegionFromAws
             InitQueryAllEc2KeyPairsByRegionFromAws();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // eligibleAccountsForMigrationToAwsOrg.
+        internal void ProcessRecord_EligibleAccountsForMigrationToOrg()
+        {
+            this._logger.name += " -EligibleAccountsForMigrationToOrg";
+            // Create new graphql operation eligibleAccountsForMigrationToAwsOrg
+            InitQueryEligibleAccountsForMigrationToAwsOrg();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1999,6 +2091,29 @@ $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurit
         }
 
         // Create new GraphQL Query:
+        // allEc2InstanceTypesByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [AwsNativeEc2InstanceTypeOffering!]!
+        internal void InitQueryAllEc2InstanceTypesByRegionFromAws()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("awsAccountRubrikId", "UUID!"),
+                Tuple.Create("region", "AwsNativeRegion!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllEc2InstanceTypesByRegionFromAws",
+                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
+                "List<AwsNativeEc2InstanceTypeOffering>",
+                Query.AllEc2InstanceTypesByRegionFromAws,
+                Query.AllEc2InstanceTypesByRegionFromAwsFieldSpec,
+                @"# REQUIRED
+$query.Var.awsAccountRubrikId = $someString
+# REQUIRED
+$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
         // allEc2KeyPairsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [String!]!
         internal void InitQueryAllEc2KeyPairsByRegionFromAws()
         {
@@ -2018,6 +2133,44 @@ $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurit
 $query.Var.awsAccountRubrikId = $someString
 # REQUIRED
 $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // eligibleAccountsForMigrationToAwsOrg(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     awsOrganizationUuid: UUID!
+        //   ): AwsCloudAccountConnection!
+        internal void InitQueryEligibleAccountsForMigrationToAwsOrg()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("awsOrganizationUuid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryEligibleAccountsForMigrationToAwsOrg",
+                "($first: Int,$after: String,$last: Int,$before: String,$awsOrganizationUuid: UUID!)",
+                "AwsCloudAccountConnection",
+                Query.EligibleAccountsForMigrationToAwsOrg,
+                Query.EligibleAccountsForMigrationToAwsOrgFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.awsOrganizationUuid = $someString"
             );
         }
 

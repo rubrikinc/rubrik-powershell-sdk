@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "JOB_STATE")]
         JOB_STATE,
 
+        [EnumMember(Value = "POLICY_NAME")]
+        POLICY_NAME,
+
         [EnumMember(Value = "PROTOCOL")]
         PROTOCOL,
 

@@ -82,6 +82,13 @@ All DB subnet groups in a given region. Refers to logical isolation of RDS on a 
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
 - Returns list of SubnetGroups.
+### ec2instancetypesbyregion
+List of all EC2 instance types available in the region.
+
+- There are 2 arguments.
+    - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
+    - region - AwsNativeRegion: Region in AWS.
+- Returns list of AwsNativeEc2InstanceTypeOfferings.
 ### ec2keypairsbyregion
 List of all key pairs for a given region. A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an EC2 instance. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
 
@@ -89,6 +96,16 @@ List of all key pairs for a given region. A key pair, consisting of a public key
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
 - Returns list of System.Strings.
+### eligibleaccountsformigrationtoorg
+Retrieves the list of accounts eligible for migration to an AWS organization.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - awsOrganizationUuid - System.String: The ID of the AWS organization.
+- Returns AwsCloudAccountConnection.
 ### exocomputeconfigs
 List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix.
 

@@ -858,6 +858,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	teamOwnerEmail = $someString
     /// 	# REQUIRED
     /// 	snapshotSequenceNum = $someInt
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
     /// 	# OPTIONAL
     /// 	inplaceRestoreConfig = @{
     /// 		# REQUIRED
@@ -1515,6 +1517,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			targetTeamOwner = $someString
     /// 			# REQUIRED
     /// 			snapshotSequenceNum = $someInt
+    /// 			# REQUIRED
+    /// 			snapshotId = $someString
     /// 			# OPTIONAL
     /// 			destTeamInfo = @{
     /// 				# REQUIRED
@@ -3256,6 +3260,8 @@ $query.Var.input = @{
 	teamOwnerEmail = $someString
 	# REQUIRED
 	snapshotSequenceNum = $someInt
+	# REQUIRED
+	snapshotId = $someString
 	# OPTIONAL
 	inplaceRestoreConfig = @{
 		# REQUIRED
@@ -3889,6 +3895,8 @@ $query.Var.input = @{
 			targetTeamOwner = $someString
 			# REQUIRED
 			snapshotSequenceNum = $someInt
+			# REQUIRED
+			snapshotId = $someString
 			# OPTIONAL
 			destTeamInfo = @{
 				# REQUIRED

@@ -1,5 +1,5 @@
 ### TriggerExocomputeHealthCheckInput
-Input to initiate Exocompute health check.
+Input to initiate an Exocompute health check for a cluster.
 
 - cloudVendor: CloudVendor
   - Cloud provider type.

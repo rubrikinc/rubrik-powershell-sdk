@@ -47,6 +47,8 @@ A series of activities on either the RSC or a Rubrik cluster.
   - Logical size (if applicable), in bytes.
 - urlMetadata: System.String
   - A JSON string with variable URL parameters.
+- lastActivityMessage: System.String
+  - The final event message in the event series.
 - activitySeriesId: System.String
   - The ID of the activity series.
 - progress: System.String

@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ABORTED")]
+        ABORTED,
+
         [EnumMember(Value = "CANCELED")]
         CANCELED,
 

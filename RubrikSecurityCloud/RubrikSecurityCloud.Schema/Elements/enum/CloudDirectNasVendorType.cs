@@ -18,8 +18,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "AZURE_FILES")]
+        AZURE_FILES,
+
         [EnumMember(Value = "FLASHBLADE")]
         FLASHBLADE,
+
+        [EnumMember(Value = "FSXN")]
+        FSXN,
 
         [EnumMember(Value = "GENERIC")]
         GENERIC,
@@ -35,6 +41,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NUTANIX_FILESERVER")]
         NUTANIX_FILESERVER,
+
+        [EnumMember(Value = "QUMULO")]
+        QUMULO,
 
         [EnumMember(Value = "UNSPECIFIED")]
         UNSPECIFIED

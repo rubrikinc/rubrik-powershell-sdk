@@ -81,3 +81,4 @@ of new MSSQL objects discovered for the given host.
 - KOSMOS_RECOVERY - Kosmos Recovery.
 - MSSQL_BULK_EXPORT - Bulk export of SQL Server databases.
 - MYSQLDB_INSTANCE - MySQL DB instance.
+- K8S_DOWNLOAD_SNAPSHOT_FROM_LOCATION - Kubernetes protection snapshot download from given location.

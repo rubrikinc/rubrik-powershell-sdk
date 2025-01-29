@@ -48,9 +48,17 @@ Authorized operations on an object.
 - PROVISION_ON_INFRASTRUCTURE
 - TRANSFER_ACCOUNT_OWNER
 - UPDATE_ACCOUNT_OWNERSHIP
-- CONFIGURE_DATA_CLASS_GLOBAL
-- VIEW_DATA_CLASS_GLOBAL
-- EXPORT_DATA_CLASS_GLOBAL
+- VIEW_DATA_CLASS_GLOBAL - View data classification.
+- VIEW_DATA_SECURITY_POSTURE_RESULTS - View data security posture results.
+- CONFIGURE_DATA_CLASS_GLOBAL - Manage data classification settings.
+- EXPORT_DATA_CLASS_GLOBAL - Download classification results.
+- MANAGE_SECURITY_VIOLATIONS - Manage security violations.
+- MANAGE_SECURITY_POLICIES - Manage security policies.
+- TAKE_REMEDIATION_ACTIONS - Take remediation actions.
+- VIEW_DATA_ACCESS_GOVERNANCE - View data access governance.
+- VIEW_DATA_DETECTION_AND_RESPONSE_ALERTS - View data threat alerts.
+- VIEW_DSPM_INTEGRATIONS - View security integrations.
+- MANAGE_DSPM_INTEGRATIONS - Manage security integrations.
 - ADD_AWS_CLOUD_ACCOUNT
 - EDIT_AWS_CLOUD_ACCOUNT
 - VIEW_AWS_CLOUD_ACCOUNT
@@ -169,17 +177,9 @@ Authorized operations on an object.
 - USE_OAUTH_APPLICATIONS - Use OAuth applications.
 - MANAGE_OAUTH_APPLICATIONS - Manage OAuth applications.
 - RESTORE_ACTIVE_DIRECTORY_FOREST - Restore Active Directory Forest.
-- MANAGE_SECURITY_POLICIES - Manage security policies.
-- MANAGE_SECURITY_VIOLATIONS - Manage security violations.
 - ASSIGN_MIP_LABELS - Assign Microsoft Information Protection(MIP) labels.
 - ENABLE_ACCESS_LOGGING - Enable access logging.
 - MANAGE_LOG_SHIPPING - Manage log shipping.
-- TAKE_REMEDIATION_ACTIONS - Take remediation actions.
-- VIEW_DATA_ACCESS_GOVERNANCE - View data access governance.
-- VIEW_DATA_DETECTION_AND_RESPONSE_ALERTS - View data detection and response alerts.
-- VIEW_DSPM_INTEGRATIONS - View DSPM integrations.
-- MANAGE_DSPM_INTEGRATIONS - Manage DSPM Integrations.
-- VIEW_DATA_SECURITY_POSTURE_RESULTS - View data security posture results.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

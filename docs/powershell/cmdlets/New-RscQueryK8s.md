@@ -87,3 +87,11 @@ Kubernetes snapshot information.
     - namespaceId - System.String: The FID of the Kubernetes Namespace.
     - isReplica - System.Boolean: Specifies if the snapshot is a replica snapshot.
 - Returns K8sSnapshotInfo.
+### virtualmachinesnapshots
+Get a list of snapshots of a Kubernetes virtual machine
+
+Supported in v9.3+
+Retrieves summary information for each of the snapshots of a specified Kubernetes virtual machine.
+
+- There is a single argument of type KubernetesVirtualMachineSnapshotsInput.
+- Returns KubernetesVirtualMachineSnapshotsReply.

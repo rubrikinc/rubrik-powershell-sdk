@@ -34,9 +34,9 @@ Microsoft 365 Backup Storage SharePoint Site.
 - effectiveSlaSourceObject: PathNode
   - Path node of the effective SLA Domain source.
 - logicalPath: list of PathNodes
-  - Sequential list of this object's logical ancestors.
+  - Sequential list of the logical ancestors of this object.
 - physicalPath: list of PathNodes
-  - Sequential list of this object's physical ancestors.
+  - Sequential list of the physical ancestors of this object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
 - allOrgs: list of Orgs
@@ -50,9 +50,9 @@ Microsoft 365 Backup Storage SharePoint Site.
 - workloadSnapshotConnection: GenericSnapshotConnection
   - The list of snapshots taken for this workload.
 - snapshotGroupByConnection: PolarisSnapshotGroupByConnection
-  - GroupBy connection for this workload's snapshots.
+  - GroupBy connection for the snapshots of this workload.
 - snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
-  - GroupBy connection for this workload's snapshots.
+  - GroupBy connection for the snapshots of this workload.
 - newestSnapshot: PolarisSnapshot
   - The most recent snapshot of this workload.
 - oldestSnapshot: PolarisSnapshot
@@ -60,6 +60,6 @@ Microsoft 365 Backup Storage SharePoint Site.
 - onDemandSnapshotCount: System.Int32
   - The number of on-demand snapshots.
 - newestIndexedSnapshot: PolarisSnapshot
-  - The newest snapshot that is indexed and unexpired, and therefore restorable.
+  - The latest snapshot that is indexed and unexpired, and therefore restorable.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.

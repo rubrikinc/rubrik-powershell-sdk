@@ -420,6 +420,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("filter", "ManagedVolumeQueuedSnapshotFilterInput"),
                     Tuple.Create("groupBy", "ManagedVolumeQueuedSnapshotGroupByTime!"),
                     Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.QueuedSnapshotGroupBys =
                 new RscGqlVars(null, queuedSnapshotGroupBysArgs, null, true);
@@ -428,6 +429,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("after", "String"),
                     Tuple.Create("filter", "ManagedVolumeQueuedSnapshotFilterInput"),
                     Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.QueuedSnapshots =
                 new RscGqlVars(null, queuedSnapshotsArgs, null, true);

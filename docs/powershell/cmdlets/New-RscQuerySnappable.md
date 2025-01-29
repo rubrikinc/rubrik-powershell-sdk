@@ -40,7 +40,7 @@ Search over Exchange contacts.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - groupBy - SnappableGroupByEnum: Group workloads by field.
     - filter - SnappableGroupByFilterInput: Filter workloads by groups.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
+    - timezoneOffset - System.Single: Offset based on the customer timezone.
     - requestedAggregations - list of SnappableAggregationsEnums: List of workload aggregations to retrieve. You can significantly reduce the runtime of the query by specifying a subset of aggregations to retrieve.
 - Returns SnappableGroupByConnection.
 ### hierarchy

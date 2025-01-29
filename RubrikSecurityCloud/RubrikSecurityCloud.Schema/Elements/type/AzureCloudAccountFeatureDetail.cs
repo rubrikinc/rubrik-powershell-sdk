@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("userAssignedManagedIdentity")]
         public AzureUserAssignedManagedIdentity? UserAssignedManagedIdentity { get; set; }
 
+        //      C# -> AzureSpecificFeatureDetails? SpecificDetails
+        // GraphQL -> specificDetails: AzureSpecificFeatureDetails (union)
+        [JsonProperty("specificDetails")]
+        public AzureSpecificFeatureDetails? SpecificDetails { get; set; }
+
 
         #endregion
 
@@ -89,7 +94,8 @@ namespace RubrikSecurityCloud.Types
         AzureResourceGroup? ResourceGroup = null,
         AzureRole? Role = null,
         List<AzureRole>? Roles = null,
-        AzureUserAssignedManagedIdentity? UserAssignedManagedIdentity = null
+        AzureUserAssignedManagedIdentity? UserAssignedManagedIdentity = null,
+        AzureSpecificFeatureDetails? SpecificDetails = null
     ) 
     {
         if ( Feature != null ) {
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UserAssignedManagedIdentity != null ) {
             this.UserAssignedManagedIdentity = UserAssignedManagedIdentity;
+        }
+        if ( SpecificDetails != null ) {
+            this.SpecificDetails = SpecificDetails;
         }
         return this;
     }
@@ -238,6 +247,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "userAssignedManagedIdentity" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureSpecificFeatureDetails? SpecificDetails
+        // GraphQL -> specificDetails: AzureSpecificFeatureDetails (union)
+        if (this.SpecificDetails != null) {
+            var fspec = this.SpecificDetails.AsFieldSpec(conf.Child("specificDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "specificDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -427,6 +448,30 @@ namespace RubrikSecurityCloud.Types
         else if (this.UserAssignedManagedIdentity != null && ec.Excludes("userAssignedManagedIdentity",false))
         {
             this.UserAssignedManagedIdentity = null;
+        }
+        //      C# -> AzureSpecificFeatureDetails? SpecificDetails
+        // GraphQL -> specificDetails: AzureSpecificFeatureDetails (union)
+        if (ec.Includes("specificDetails",false))
+        {
+            if(this.SpecificDetails == null) {
+
+                var impls = new List<AzureSpecificFeatureDetails>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("specificDetails"));
+                this.SpecificDetails = (AzureSpecificFeatureDetails)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<AzureSpecificFeatureDetails>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("specificDetails"));
+                this.SpecificDetails = (AzureSpecificFeatureDetails)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.SpecificDetails != null && ec.Excludes("specificDetails",false))
+        {
+            this.SpecificDetails = null;
         }
     }
 

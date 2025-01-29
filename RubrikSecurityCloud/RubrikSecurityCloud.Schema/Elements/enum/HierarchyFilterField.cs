@@ -231,6 +231,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUDDIRECT_NAS_VENDOR_TYPE")]
         CLOUDDIRECT_NAS_VENDOR_TYPE,
 
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_SHARE_POLICY_NAME")]
+        CLOUD_DIRECT_NAS_SHARE_POLICY_NAME,
+
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_SHARE_STALE")]
+        CLOUD_DIRECT_NAS_SHARE_STALE,
+
         [EnumMember(Value = "CLOUD_INSTANCE_CDM_APP_PROTECTION_SETUP")]
         CLOUD_INSTANCE_CDM_APP_PROTECTION_SETUP,
 
@@ -542,6 +548,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "K8S_CLUSTER_ID")]
         K8S_CLUSTER_ID,
+
+        [EnumMember(Value = "K8S_CLUSTER_ID_ON_NAMESPACE")]
+        K8S_CLUSTER_ID_ON_NAMESPACE,
 
         [EnumMember(Value = "K8S_CLUSTER_NAME")]
         K8S_CLUSTER_NAME,

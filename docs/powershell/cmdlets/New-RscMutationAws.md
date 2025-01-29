@@ -15,6 +15,11 @@ Deletes specified AWS cloud accounts without using CloudFormation Template (CFT)
 
 - There is a single argument of type BulkDeleteAwsCloudAccountWithoutCftInput.
 - Returns BulkDeleteAwsCloudAccountWithoutCftReply.
+### cloudaccountsmigrateinitiate
+Generate CFT for migrating an existing AWS cloud accounts to AWS organizations.
+
+- There is a single argument of type AwsCloudAccountsMigrateInitiateInput.
+- Returns AwsCloudAccountsMigrateInitiateReply.
 ### createaccount
 - There is a single argument of type CreateAwsAccountInput.
 - Returns CloudAccount.

@@ -25,6 +25,22 @@ O365 Groups from O365 hierarchy.
   - The authorized operations on the object.
 - id: System.String
   - Group ID of o365 group object.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The latest snapshot that is indexed and unexpired, and therefore restorable.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -44,9 +60,9 @@ O365 Groups from O365 hierarchy.
 - effectiveSlaSourceObject: PathNode
   - Path node of the effective SLA Domain source.
 - logicalPath: list of PathNodes
-  - Sequential list of this object's logical ancestors.
+  - Sequential list of the logical ancestors of this object.
 - physicalPath: list of PathNodes
-  - Sequential list of this object's physical ancestors.
+  - Sequential list of the physical ancestors of this object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
 - allOrgs: list of Orgs

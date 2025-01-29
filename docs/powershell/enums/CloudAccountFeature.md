@@ -31,5 +31,6 @@ Cloud account features.
 - DSPM_DATA - Cloud account feature is DSPM Data.
 - CYBERRECOVERY_DATA_CLASSIFICATION_METADATA - Cloud account feature is Cyber Recovery Data Classification Metadata.
 - CYBERRECOVERY_DATA_CLASSIFICATION_DATA - Cloud account feature is Cyber Recovery Data Classification Data.
+- OUTPOST - Cloud account feature is Rubrik Outpost.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

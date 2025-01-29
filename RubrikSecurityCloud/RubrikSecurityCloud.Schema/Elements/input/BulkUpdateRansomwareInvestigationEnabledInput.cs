@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRansomwareMonitoringEnabled")]
         public System.Boolean? IsRansomwareMonitoringEnabled { get; set; }
 
+        //      C# -> System.String? ClusterId
+        // GraphQL -> clusterId: String (scalar)
+        [JsonProperty("clusterId")]
+        public System.String? ClusterId { get; set; }
+
 
         #endregion
 

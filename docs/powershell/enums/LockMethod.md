@@ -6,3 +6,4 @@ Locking mechanisms for a user account.
 - ADMINISTRATIVE_LOCK - Account locked by the administrator.
 - LEAKED_PASSWORD - Account locked due to a leaked password.
 - INACTIVITY - Account locked due to inactivity.
+- NO_LOCK - Account is not locked.

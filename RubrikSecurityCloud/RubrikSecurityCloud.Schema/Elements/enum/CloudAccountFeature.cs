@@ -108,6 +108,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LAMINAR_TARGET_MANAGED_IDENTITY")]
         LAMINAR_TARGET_MANAGED_IDENTITY,
 
+        [EnumMember(Value = "OUTPOST")]
+        OUTPOST,
+
         [EnumMember(Value = "RDS_PROTECTION")]
         RDS_PROTECTION,
 

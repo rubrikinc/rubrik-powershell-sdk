@@ -34,11 +34,14 @@ namespace RubrikSecurityCloud.Types
         public System.String? DestinationAwsAccountRubrikId { get; set; }
 
         //      C# -> AwsNativeEc2InstanceType? InstanceType
-        // GraphQL -> instanceType: AwsNativeEc2InstanceType! (enum)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> instanceType: AwsNativeEc2InstanceType (enum)
         [JsonProperty("instanceType")]
         public AwsNativeEc2InstanceType? InstanceType { get; set; }
+
+        //      C# -> System.String? Ec2InstanceType
+        // GraphQL -> ec2InstanceType: String (scalar)
+        [JsonProperty("ec2InstanceType")]
+        public System.String? Ec2InstanceType { get; set; }
 
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String! (scalar)

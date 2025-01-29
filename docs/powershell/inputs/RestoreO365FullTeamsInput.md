@@ -9,6 +9,8 @@ Input for restoring a complete O365 Team.
   - Owner of the restored Team.
 - snapshotSequenceNum: System.Int32
   - The sequence number of the snapshot currently being restored.
+- snapshotId: System.String
+  - ID of the snapshot from which to restore.
 - inplaceRestoreConfig: InplaceRestoreConfig
   - In-place restore configuration for the restore job.
 - refreshTokenEncrypted: System.String

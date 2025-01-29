@@ -23,6 +23,22 @@ Details of the unexpired snapshot closest to the specified point in time for eac
     - excludeAnomalous - System.Boolean: Specifies whether to exclude anomalous snapshots.
     - getFullDetails - System.Boolean: Specifies whether to include full snapshot workload details.
 - Returns list of ClosestSnapshotSearchResults.
+### clouddirect
+Returns a NAS Cloud Direct snapshot by ID.
+
+- There is a single argument of type System.String.
+- Returns CloudDirectSnapshot.
+### clouddirects
+Returns a list of NAS Cloud Direct snapshots.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of CloudDirectSnapshotsFilterInputs: Filter for NAS Cloud Direct snapshots.
+    - sortBy - CloudDirectSnapshotsSortByInput: Sort NAS Cloud Direct snapshots.
+- Returns CloudDirectSnapshotConnection.
 ### emailsearch
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.

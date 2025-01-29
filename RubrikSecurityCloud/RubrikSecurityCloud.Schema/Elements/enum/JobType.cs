@@ -132,6 +132,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_CLUSTER_REFRESH")]
         K8S_CLUSTER_REFRESH,
 
+        [EnumMember(Value = "K8S_DOWNLOAD_SNAPSHOT_FROM_LOCATION")]
+        K8S_DOWNLOAD_SNAPSHOT_FROM_LOCATION,
+
         [EnumMember(Value = "KEY_ROTATION")]
         KEY_ROTATION,
 

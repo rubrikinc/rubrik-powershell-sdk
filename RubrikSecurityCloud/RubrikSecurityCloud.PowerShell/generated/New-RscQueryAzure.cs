@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 52
+    /// Create a new RscQuery object for any of the 54
     /// operations in the 'Azure' API domain:
-    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// </summary>
     /// <description>
     /// New-RscQueryAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 52 operations
+    /// There are 54 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1854,6 +1854,104 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StorageAccountContainers operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: StorageAccountContainers
+    /// 
+    /// $query = New-RscQueryAzure -Operation StorageAccountContainers
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someStorageAccountContainersSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountContainersSortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		text = $someString
+    /// 		# REQUIRED
+    /// 		field = $someStorageAccountContainersFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountContainersFilterField]) for enum values.
+    /// }
+    /// )
+    /// # REQUIRED
+    /// $query.Var.azureStorageAccountRubrikId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BlobContainerConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the StorageAccountExcludedContainers operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: StorageAccountExcludedContainers
+    /// 
+    /// $query = New-RscQueryAzure -Operation StorageAccountExcludedContainers
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someExcludedContainersSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExcludedContainersSortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		text = $someString
+    /// 		# REQUIRED
+    /// 		field = $someStorageAccountContainersFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountContainersFilterField]) for enum values.
+    /// }
+    /// )
+    /// # REQUIRED
+    /// $query.Var.azureStorageAccountRubrikId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ExcludedContainerConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the StorageAccounts operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -2282,6 +2380,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
                 "SqlManagedInstanceServer",
                 "SqlManagedInstanceServers",
+                "StorageAccountContainers",
+                "StorageAccountExcludedContainers",
                 "StorageAccounts",
                 "StorageAccountsByRegion",
                 "Subnets",
@@ -2436,6 +2536,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SqlManagedInstanceServers":
                         this.ProcessRecord_SqlManagedInstanceServers();
+                        break;
+                    case "StorageAccountContainers":
+                        this.ProcessRecord_StorageAccountContainers();
+                        break;
+                    case "StorageAccountExcludedContainers":
+                        this.ProcessRecord_StorageAccountExcludedContainers();
                         break;
                     case "StorageAccounts":
                         this.ProcessRecord_StorageAccounts();
@@ -2865,6 +2971,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SqlManagedInstanceServers";
             // Create new graphql operation azureSqlManagedInstanceServers
             InitQueryAzureSqlManagedInstanceServers();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureStorageAccountContainers.
+        internal void ProcessRecord_StorageAccountContainers()
+        {
+            this._logger.name += " -StorageAccountContainers";
+            // Create new graphql operation azureStorageAccountContainers
+            InitQueryAzureStorageAccountContainers();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureStorageAccountExcludedContainers.
+        internal void ProcessRecord_StorageAccountExcludedContainers()
+        {
+            this._logger.name += " -StorageAccountExcludedContainers";
+            // Create new graphql operation azureStorageAccountExcludedContainers
+            InitQueryAzureStorageAccountExcludedContainers();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4520,6 +4644,120 @@ $query.Var.azureSqlManagedInstanceServerFilters = @{
 		)
 	}
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureStorageAccountContainers(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: StorageAccountContainersSortByField
+        //     sortOrder: SortOrder
+        //     filter: [StorageAccountContainersFilterInput!]!
+        //     azureStorageAccountRubrikId: UUID!
+        //   ): BlobContainerConnection!
+        internal void InitQueryAzureStorageAccountContainers()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "StorageAccountContainersSortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[StorageAccountContainersFilterInput!]!"),
+                Tuple.Create("azureStorageAccountRubrikId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureStorageAccountContainers",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: StorageAccountContainersSortByField,$sortOrder: SortOrder,$filter: [StorageAccountContainersFilterInput!]!,$azureStorageAccountRubrikId: UUID!)",
+                "BlobContainerConnection",
+                Query.AzureStorageAccountContainers,
+                Query.AzureStorageAccountContainersFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.sortBy = $someStorageAccountContainersSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountContainersSortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# REQUIRED
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		text = $someString
+		# REQUIRED
+		field = $someStorageAccountContainersFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountContainersFilterField]) for enum values.
+}
+)
+# REQUIRED
+$query.Var.azureStorageAccountRubrikId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureStorageAccountExcludedContainers(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: ExcludedContainersSortByField
+        //     sortOrder: SortOrder
+        //     filter: [StorageAccountContainersFilterInput!]!
+        //     azureStorageAccountRubrikId: UUID!
+        //   ): ExcludedContainerConnection!
+        internal void InitQueryAzureStorageAccountExcludedContainers()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "ExcludedContainersSortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[StorageAccountContainersFilterInput!]!"),
+                Tuple.Create("azureStorageAccountRubrikId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureStorageAccountExcludedContainers",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: ExcludedContainersSortByField,$sortOrder: SortOrder,$filter: [StorageAccountContainersFilterInput!]!,$azureStorageAccountRubrikId: UUID!)",
+                "ExcludedContainerConnection",
+                Query.AzureStorageAccountExcludedContainers,
+                Query.AzureStorageAccountExcludedContainersFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.sortBy = $someExcludedContainersSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExcludedContainersSortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# REQUIRED
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		text = $someString
+		# REQUIRED
+		field = $someStorageAccountContainersFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountContainersFilterField]) for enum values.
+}
+)
+# REQUIRED
+$query.Var.azureStorageAccountRubrikId = $someString"
             );
         }
 

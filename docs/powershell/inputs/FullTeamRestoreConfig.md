@@ -7,6 +7,8 @@ Restore configuration for a full Team restore.
   - Fallback owner of the destination Team, as requested in the RSC Web UI.
 - snapshotSequenceNum: System.Int32
   - The sequence number of the snapshot currently being restored.
+- snapshotId: System.String
+  - ID of the snapshot from which to restore.
 - destTeamInfo: DestTeamInfo
   - Information about the destination Team.
 - o365AppId: System.String

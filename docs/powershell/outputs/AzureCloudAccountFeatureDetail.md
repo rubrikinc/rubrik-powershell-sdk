@@ -15,6 +15,8 @@ Azure Cloud Account Feature details.
   - User assigned managed identity for encryption feature. It is null for features other than Cloud Native Archival Encryption.
 - persistentStorage: PersistentStorage
   - Persistent storage configured for the feature. It is null for features other than Azure SQL DB and Azure SQL MI.
+- specificDetails: AzureSpecificFeatureDetails
+  - Specific details for the feature, varies based on the feature type.
 - resourceGroup: AzureResourceGroup
   - Resource group for the feature.
 - role: AzureRole

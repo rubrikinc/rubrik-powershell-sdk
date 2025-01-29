@@ -1,0 +1,73 @@
+### M365BackupStorageGroup
+M365 Backup Storage Groups from M365 Backup Storage hierarchy.
+
+- groupID: System.String
+  - Rubrik internal UUID for group.
+- naturalID: System.String
+  - Natural ID of the group.
+- displayName: System.String
+  - Display name of the group.
+- userCount: System.Int64
+  - Number of user that are member of the group.
+- deletedInAzure: System.Boolean
+  - True, if the group is deleted in Microsoft Entra ID.
+- groupType: O365GroupType
+  - The type of group.
+- groupSubType: O365GroupSubType
+  - The subtype of the group.
+- configuredGroupSpec: System.String
+  - The specification for a configured group.
+- configuredGroupSpecification: O365ConfiguredGroupSpec
+  - The specification for a configured group.
+- metadata: O365GroupMetadata
+  - The metadata for an Office 365 group.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- id: System.String
+  - Group ID of M365 Backup Storage Group object.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The latest snapshot that is indexed and unexpired, and therefore restorable.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.

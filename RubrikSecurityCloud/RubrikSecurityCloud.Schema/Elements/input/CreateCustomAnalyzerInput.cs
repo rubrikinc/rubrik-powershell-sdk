@@ -84,6 +84,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("structuredDictionary")]
         public List<System.String>? StructuredDictionary { get; set; }
 
+        //      C# -> System.String? StructuredKeyDictionaryCsv
+        // GraphQL -> structuredKeyDictionaryCsv: String (scalar)
+        [JsonProperty("structuredKeyDictionaryCsv")]
+        public System.String? StructuredKeyDictionaryCsv { get; set; }
+
+        //      C# -> List<System.String>? StructuredKeyDictionary
+        // GraphQL -> structuredKeyDictionary: [String!] (scalar)
+        [JsonProperty("structuredKeyDictionary")]
+        public List<System.String>? StructuredKeyDictionary { get; set; }
+
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType (enum)
         [JsonProperty("risk")]

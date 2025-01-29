@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 12
+    /// Create a new RscQuery object for any of the 13
     /// operations in the 'Kubernetes' API domain:
-    /// AppManifest, Cluster, Clusters, K8sCluster, K8sClusters, Namespace, Namespaces, ProtectionSet, ProtectionSetSnapshots, ProtectionSets, ReplicaSnapshotInfos, or SnapshotInfo.
+    /// AppManifest, Cluster, Clusters, K8sCluster, K8sClusters, Namespace, Namespaces, ProtectionSet, ProtectionSetSnapshots, ProtectionSets, ReplicaSnapshotInfos, SnapshotInfo, or VirtualMachineSnapshots.
     /// </summary>
     /// <description>
     /// New-RscQueryK8s creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 12 operations
+    /// There are 13 operations
     /// in the 'Kubernetes' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AppManifest, Cluster, Clusters, K8sCluster, K8sClusters, Namespace, Namespaces, ProtectionSet, ProtectionSetSnapshots, ProtectionSets, ReplicaSnapshotInfos, or SnapshotInfo.
+    /// one of: AppManifest, Cluster, Clusters, K8sCluster, K8sClusters, Namespace, Namespaces, ProtectionSet, ProtectionSetSnapshots, ProtectionSets, ReplicaSnapshotInfos, SnapshotInfo, or VirtualMachineSnapshots.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -625,6 +625,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the VirtualMachineSnapshots operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: VirtualMachineSnapshots
+    /// 
+    /// $query = New-RscQueryK8s -Operation VirtualMachineSnapshots
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: KubernetesVirtualMachineSnapshotsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -653,6 +684,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ProtectionSets",
                 "ReplicaSnapshotInfos",
                 "SnapshotInfo",
+                "VirtualMachineSnapshots",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -703,6 +735,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SnapshotInfo":
                         this.ProcessRecord_SnapshotInfo();
+                        break;
+                    case "VirtualMachineSnapshots":
+                        this.ProcessRecord_VirtualMachineSnapshots();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -820,6 +855,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SnapshotInfo";
             // Create new graphql operation k8sSnapshotInfo
             InitQueryK8sSnapshotInfo();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // kubernetesVirtualMachineSnapshots.
+        internal void ProcessRecord_VirtualMachineSnapshots()
+        {
+            this._logger.name += " -VirtualMachineSnapshots";
+            // Create new graphql operation kubernetesVirtualMachineSnapshots
+            InitQueryKubernetesVirtualMachineSnapshots();
         }
 
 
@@ -1330,6 +1374,29 @@ $query.Var.snapshotId = $someString
 $query.Var.namespaceId = $someString
 # REQUIRED
 $query.Var.isReplica = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // kubernetesVirtualMachineSnapshots(input: KubernetesVirtualMachineSnapshotsInput!): KubernetesVirtualMachineSnapshotsReply!
+        internal void InitQueryKubernetesVirtualMachineSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "KubernetesVirtualMachineSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryKubernetesVirtualMachineSnapshots",
+                "($input: KubernetesVirtualMachineSnapshotsInput!)",
+                "KubernetesVirtualMachineSnapshotsReply",
+                Query.KubernetesVirtualMachineSnapshots,
+                Query.KubernetesVirtualMachineSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
             );
         }
 

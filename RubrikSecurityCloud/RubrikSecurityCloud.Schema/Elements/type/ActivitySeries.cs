@@ -110,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isPolarisEventSeries")]
         public System.Boolean? IsPolarisEventSeries { get; set; }
 
+        //      C# -> System.String? LastActivityMessage
+        // GraphQL -> lastActivityMessage: String (scalar)
+        [JsonProperty("lastActivityMessage")]
+        public System.String? LastActivityMessage { get; set; }
+
         //      C# -> DateTime? LastEventAddedAt
         // GraphQL -> lastEventAddedAt: DateTime (scalar)
         [JsonProperty("lastEventAddedAt")]
@@ -235,6 +240,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? Id = null,
         System.Boolean? IsCancelable = null,
         System.Boolean? IsPolarisEventSeries = null,
+        System.String? LastActivityMessage = null,
         DateTime? LastEventAddedAt = null,
         DateTime? LastUpdated = null,
         DateTime? LastVerifiedAt = null,
@@ -305,6 +311,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsPolarisEventSeries != null ) {
             this.IsPolarisEventSeries = IsPolarisEventSeries;
+        }
+        if ( LastActivityMessage != null ) {
+            this.LastActivityMessage = LastActivityMessage;
         }
         if ( LastEventAddedAt != null ) {
             this.LastEventAddedAt = LastEventAddedAt;
@@ -525,6 +534,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isPolarisEventSeries\n" ;
             } else {
                 s += ind + "isPolarisEventSeries\n" ;
+            }
+        }
+        //      C# -> System.String? LastActivityMessage
+        // GraphQL -> lastActivityMessage: String (scalar)
+        if (this.LastActivityMessage != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastActivityMessage\n" ;
+            } else {
+                s += ind + "lastActivityMessage\n" ;
             }
         }
         //      C# -> DateTime? LastEventAddedAt
@@ -983,6 +1001,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsPolarisEventSeries != null && ec.Excludes("isPolarisEventSeries",true))
         {
             this.IsPolarisEventSeries = null;
+        }
+        //      C# -> System.String? LastActivityMessage
+        // GraphQL -> lastActivityMessage: String (scalar)
+        if (ec.Includes("lastActivityMessage",true))
+        {
+            if(this.LastActivityMessage == null) {
+
+                this.LastActivityMessage = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastActivityMessage != null && ec.Excludes("lastActivityMessage",true))
+        {
+            this.LastActivityMessage = null;
         }
         //      C# -> DateTime? LastEventAddedAt
         // GraphQL -> lastEventAddedAt: DateTime (scalar)

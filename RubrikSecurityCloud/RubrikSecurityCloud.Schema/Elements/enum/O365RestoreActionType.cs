@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         INPLACE_RESTORE_SNAPPABLE,
 
         [EnumMember(Value = "RESTORE_SNAPPABLE")]
-        RESTORE_SNAPPABLE
+        RESTORE_SNAPPABLE,
+
+        [EnumMember(Value = "SELF_SERVICE_RESTORE")]
+        SELF_SERVICE_RESTORE
 
 
     } // enum O365RestoreActionType

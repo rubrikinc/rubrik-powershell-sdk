@@ -1,36 +1,36 @@
 ### RubrikManagedRcsTarget
-Specific information for Rubrik Cloud Vault (RCV) target created on Rubrik.
+Specific information for Rubrik Cloud Vault (RCV) Azure target created on Rubrik.
 
 - shouldBypassProxy: System.Boolean
-  - Specifies whether the proxy settings is bypassed for  the RCV archival target.
+  - Specifies whether the proxy settings is bypassed for  the RCV Azure archival target.
 - isVersionLevelImmutabilityEnabled: System.Boolean
-  - Specifies whether blob immutability is enabled for the RCV archival target.
+  - Specifies whether blob immutability is enabled for the RCV Azure archival target.
 - syncStatus: TargetSyncStatus
   - Sync status of RCV target.
 - region: RcsRegionEnumType
-  - Region of RCV target.
+  - Region of RCV Azure target.
 - tier: RcsTierEnumType
-  - Tiers for RCV target.
+  - Tier for RCV target.
 - subscriptionId: System.String
-  - Subscription ID for RCV target.
+  - Subscription ID for RCV Azure target.
 - resourceGroup: System.String
-  - Resource group for RCV target.
+  - Resource group for RCV Azure target.
 - storageAccountName: System.String
-  - Storage account name for RCV target.
+  - Storage account name for RCV Azure target.
 - redundancy: RcvRedundancy
-  - Redundancy for RCV target.
+  - Redundancy for RCV Azure target.
 - redundancyState: RcvRedundancyState
-  - Redundancy state for RCV target.
+  - Redundancy state for RCV Azure target.
 - lastRedundancySyncTime: DateTime
-  - Last time when redundancy state was synchronized for the RCV target.
+  - Last time when redundancy state was synchronized for the RCV Azure target.
 - spaceUsageAlertThreshold: System.Int32
-  - Space usage threshold of RCV target above which alert will be raised.
+  - Space usage threshold of RCV Azure target above which alert will be raised.
 - syncFailureReason: System.String
   - Reason why sync of this target with CDM failed.
 - storageConsumptionValue: System.Single
-  - Storage consumption value of RCV target.
+  - Storage consumption value of RCV Azure target.
 - immutabilityPeriodDays: System.Int64
-  - Immutability lock duration of RCV target in days.
+  - Immutability lock duration of RCV Azure target in days.
 - privateEndpointConnection: PrivateEndpointConnection
   - RCV Private endpoint connection details.
 - clusterIpMapping: ClusterIpMapping

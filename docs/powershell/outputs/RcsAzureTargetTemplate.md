@@ -2,11 +2,11 @@
 Specific info for Rcs Azure Target Template.
 
 - region: RcsRegionEnumType
-  - Region of RCV location template.
+  - Region of RCV Azure location template.
 - tier: RcsTierEnumType
-  - Access tier for the RCV location.
+  - Access tier for the RCV Azure location.
 - redundancy: RcvRedundancy
-  - Redundancy for the RCV location.
+  - Redundancy for the RCV Azure location.
 - immutabilitySettings: RcsImmutabilitySettings
   - Immutability setting of the template, that defines thenumber of days for which stored data will be immutable.
 - cloudNativeLocTemplateType: CloudNativeLocTemplateType

@@ -24,7 +24,7 @@ Cassandra Column Family information.
 - snapshots: MosaicSnapshotConnection
   - The list of snapshots taken for this workload.
 - snapshotGroupBys: MosaicSnapshotGroupByTypeConnection
-  - GroupBy connection for this workload's snapshots.
+  - GroupBy connection for the snapshots of this workload.
 - newestSnapshot: MosaicSnapshot
   - The most recent snapshot of this workload.
 - oldestSnapshot: MosaicSnapshot
@@ -48,9 +48,9 @@ Cassandra Column Family information.
 - effectiveSlaSourceObject: PathNode
   - Path node of the effective SLA Domain source.
 - logicalPath: list of PathNodes
-  - Sequential list of this object's logical ancestors.
+  - Sequential list of the logical ancestors of this object.
 - physicalPath: list of PathNodes
-  - Sequential list of this object's physical ancestors.
+  - Sequential list of the physical ancestors of this object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
 - allOrgs: list of Orgs

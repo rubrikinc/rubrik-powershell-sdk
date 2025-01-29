@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GLACIER_INSTANT_RETRIEVAL")]
         GLACIER_INSTANT_RETRIEVAL,
 
+        [EnumMember(Value = "INTELLIGENT_TIERING")]
+        INTELLIGENT_TIERING,
+
         [EnumMember(Value = "ONEZONE_IA")]
         ONEZONE_IA,
 

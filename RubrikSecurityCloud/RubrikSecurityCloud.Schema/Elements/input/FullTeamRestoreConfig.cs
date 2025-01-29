@@ -38,6 +38,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotSequenceNum")]
         public System.Int32? SnapshotSequenceNum { get; set; }
 
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("snapshotId")]
+        public System.String? SnapshotId { get; set; }
+
         //      C# -> DestTeamInfo? DestTeamInfo
         // GraphQL -> destTeamInfo: DestTeamInfo (input)
         [JsonProperty("destTeamInfo")]

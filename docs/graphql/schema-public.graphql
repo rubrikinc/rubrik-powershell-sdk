@@ -376,6 +376,14 @@ type Query {
     # Snapshot ID
     vmSnapshotId: UUID!): [AzureNativeExportCompatibleVmSizes!]!
 
+  # Retrieves a list of all key vaults in the specified region and subscription. This is required for enabling cross region export of ADE Enabled VMs. For more information, see https://learn.microsoft.com/en-us/azure/key-vault.
+  allAzureNativeKeyVaultsByRegionFromAzure(
+    # Rubrik ID of the Azure Subscription.
+    azureSubscriptionRubrikId: UUID!,
+
+    # The azure region.
+    region: AzureNativeRegion!): [AzureNativeKeyVault!]!
+
   # Retrieves a list of resource groups with the specified names which exist in the specified account.
   allAzureNativeResourceGroupsInfoIfExist(
     # Input to get Azure Resource Groups if they exist.
@@ -4669,6 +4677,14 @@ type Query {
 
     # Kubernetes cluster optional UUID.
     k8sClusterOptionalId: UUID): KubernetesProtectionSetConnection!
+
+  # Get a list of snapshots of a Kubernetes virtual machine
+  # 
+  # Supported in v9.3+
+  # Retrieves summary information for each of the snapshots of a specified Kubernetes virtual machine.
+  kubernetesVirtualMachineSnapshots(
+    # Input for V1QueryK8sVMSnapshot.
+    input: KubernetesVirtualMachineSnapshotsInput!): KubernetesVirtualMachineSnapshotsReply!
   lambdaSettings: LambdaSettings!
 
   # Browse LDAP-authorized principals.
@@ -11209,6 +11225,11 @@ type Mutation {
     # User ID for your CSR.
     userId: String): Csr!
 
+  # Generate a preview message for the webhook message template.
+  generatePreviewMessageForWebhookTemplate(
+    # Generate a preview message for the webhook message template input.
+    input: GeneratePreviewMessageForWebhookTemplateInput!): GeneratePreviewMessageForWebhookTemplateReply!
+
   # Collect log files from the cluster
   # 
   # Supported in v5.0+
@@ -14558,8 +14579,14 @@ enum ActiveDirectoryObjectType {
   # Active Directory group.
   ACTIVE_DIRECTORY_OBJECT_TYPE_GROUP
 
+  # Active Directory group managed service account.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_GROUP_MANAGED_SERVICE_ACCOUNT
+
   # Active Directory group policy.
   ACTIVE_DIRECTORY_OBJECT_TYPE_GROUP_POLICY_OBJECT
+
+  # Active Directory managed service account.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_MANAGED_SERVICE_ACCOUNT
 
   # Active Directory MsFVERecovery information object type.
   ACTIVE_DIRECTORY_OBJECT_TYPE_MS_FVE_RECOVERY_INFORMATION
@@ -15107,6 +15134,9 @@ enum ActivityObjectTypeEnum {
 
   # Specifies that the activity object type is Tenant Organization.
   ORGANIZATION
+
+  # Specifies that the activity object type is Threat Hunt.
+  ORION_THREAT_HUNT
 
   # Specifies that the activity object type is Object Protection.
   ObjectProtection
@@ -16193,9 +16223,6 @@ input AddCustomIntelFeedInput {
   # Custom feed description.
   description: String = ""
 
-  # User id.
-  userId: String = ""
-
   # Custom entries.
   entries: [CustomEntries!]!
 }
@@ -16771,6 +16798,12 @@ type Analyzer {
 
   # Parsed list of keywords from structuredDictionaryCsv.
   structuredDictionary: [String!]!
+
+  # A dictionary to filter fields that need to be analyzed for structured data by dictionary analyzers.
+  structuredKeyDictionaryCsv: String!
+
+  # Parsed list of keywords from structuredKeyDictionaryCsv.
+  structuredKeyDictionary: [String!]!
 }
 type AnalyzerAccessUsage {
   analyzer: Analyzer
@@ -17598,6 +17631,9 @@ enum AppFilterField {
   # Filter on app type.
   APP_TYPE
 
+  # Filter by Org ID.
+  ORG_ID
+
   # Filter on subscription name.
   SUBSCRIPTION
 
@@ -18354,6 +18390,14 @@ enum AttributeType {
 
   # M365 Schema Extension attributes.
   SCHEMA_EXTENSION_ATTRIBUTES
+}
+# Summarizes attributes associated with files.
+type AttributesSummary {
+  # Sensitive files count under this attribute.
+  filesCount: SummaryCount
+
+  # ID of the attribute.
+  attributeId: UUID!
 }
 # Represents all the object types for which we expect to see audits.
 enum AuditObjectType {
@@ -19192,6 +19236,9 @@ enum AuthorizedOperation {
 
   # Manage TPR policy.
   MANAGE_TPR_POLICY
+
+  # Manage user credentials.
+  MANAGE_USER_CREDENTIALS
   MANAGE_WEBHOOKS
 
   # Manage Zscaler integration.
@@ -20784,7 +20831,7 @@ input AwsNativeAttachedInstanceFilter {
   ec2InstanceIds: [String!]!
 }
 # AWS native EBS volume.
-type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchyObject , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
+type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchyObject , HierarchySnappable , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
   # AWS Native ID of EBS volume.
   volumeNativeId: String!
 
@@ -21152,7 +21199,7 @@ input AwsNativeEbsVolumeTypeFilter {
   ebsVolumeTypes: [AwsNativeEbsVolumeType!]!
 }
 # AWS native EC2 instance.
-type AwsNativeEc2Instance implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchyObject , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
+type AwsNativeEc2Instance implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchyObject , HierarchySnappable , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
   # AWS Native ID of Instance.
   instanceNativeId: String!
 
@@ -26718,6 +26765,9 @@ type AzureCloudAccountFeatureDetail {
   # Persistent storage configured for the feature. It is null for features other than Azure SQL DB and Azure SQL MI.
   persistentStorage: PersistentStorage
 
+  # Specific details for the feature, varies based on the feature type.
+  specificDetails: AzureSpecificFeatureDetails
+
   # Resource group for the feature.
   resourceGroup: AzureResourceGroup!
 
@@ -27216,6 +27266,9 @@ input AzureExocomputeAddConfigInputType {
 
   # The CIDR range for pods if Exocompute is launched with the CNI overlay network plugin.
   podOverlayNetworkCidr: String
+
+  # Optional configurations for aks cluster.
+  optionalConfig: AzureExocomputeOptionalConfigInRegionInput
 }
 # Exocompute configurations details.
 type AzureExocomputeConfigDetails {
@@ -27263,6 +27316,9 @@ type AzureExocomputeConfigDetails {
 
   # Details of the latest Exocompute cluster.
   latestExoclusterDetails: ExocomputeClusterDetails
+
+  # Optional configurations for aks cluster.
+  optionalConfig: AzureExocomputeOptionalConfigInRegion
 }
 # Contains validation information, such as blockers or errors encountered in validating the Exocompute configuration.
 type AzureExocomputeConfigValidationInfo {
@@ -27362,6 +27418,9 @@ type AzureExocomputeGetConfigResponse {
 
   # Details of the latest Exocompute cluster.
   latestExoclusterDetails: ExocomputeClusterDetails
+
+  # Optional configurations for aks cluster.
+  optionalConfig: AzureExocomputeOptionalConfigInRegion
 }
 # Represents optional parameters to be configured during the exocompute configuration for Azure.
 type AzureExocomputeOptionalConfigInRegion {
@@ -27379,6 +27438,29 @@ type AzureExocomputeOptionalConfigInRegion {
 
   # Bucket to determine the node count in the AKS cluster.
   aksNodeCountBucket: AKSNodeCountBucket!
+
+  # Determines whether Rubrik IPs are whitelisted for the Kubernetes API server of the AKS cluster.
+  shouldWhitelistRubrikIps: Boolean!
+
+  # Enable user-defined routing as the outbound type for AKS load balancer.
+  enableUserDefinedRouting: Boolean!
+}
+# Represents optional parameters that are to be configured during the configuration of exocompute for azure.
+input AzureExocomputeOptionalConfigInRegionInput {
+  # Resource group prefix for AKS nodes.
+  aksNodeRgPrefix: String = ""
+
+  # Disk encryption is enabled for nodes on the AKS cluster.
+  diskEncryptionAtHost: Boolean = false
+
+  # Additional IPs that must be whitelisted for the Kubernetes API server of the AKS cluster.
+  additionalWhitelistIps: [String!] = []
+
+  # Cluster tier of the provisioned aks cluster.
+  aksClusterTier: AKSProvisionTier
+
+  # Bucket to determine the node count in the aks cluster.
+  aksNodeCountBucket: AKSNodeCountBucket
 
   # Determines whether Rubrik IPs are whitelisted for the Kubernetes API server of the AKS cluster.
   shouldWhitelistRubrikIps: Boolean!
@@ -27872,8 +27954,19 @@ type AzureNativeHierarchyObjectTypeEdge {
   # The actual AzureNativeHierarchyObjectType object wrapped by this edge.
   node: AzureNativeHierarchyObjectType!
 }
+# An Azure key vault. For more information, see https://learn.microsoft.com/en-us/azure/key-vault/.
+type AzureNativeKeyVault {
+  # Name of the resource group associated with the key vault.
+  resourceGroupName: String!
+
+  # Name of the key vault.
+  name: String!
+
+  # Native ID of the key vault.
+  nativeId: String!
+}
 # An Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
-type AzureNativeManagedDisk implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchyObject , AzureNativeHierarchyObjectType {
+type AzureNativeManagedDisk implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchySnappable , HierarchyObject , AzureNativeHierarchyObjectType {
   # Azure region where the Managed Disk is located.
   region: AzureNativeRegion!
 
@@ -28960,7 +29053,7 @@ input AzureNativeTagFilter {
   tagFilterParams: [TagFilterParams!]!
 }
 # An Azure Native Virtual Machine that refers to the Azure infrastructure as a service (IaaS) used to deploy persistent VMs. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/.
-type AzureNativeVirtualMachine implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchyObject , AzureNativeHierarchyObjectType {
+type AzureNativeVirtualMachine implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchyObject , HierarchySnappable , AzureNativeHierarchyObjectType {
   # Azure region where the virtual machine (VM) is located.
   region: AzureNativeRegion!
 
@@ -29357,6 +29450,9 @@ type AzureNativeVmSpecificSnapshot implements PolarisSpecificSnapshot {
   # List of data disk snapshots attached to the Azure VM.
   dataDiskSnapshots: [AzureNativeAttachedDiskSpecificSnapshot!]!
 
+  # Specifies whether the snapshot has ADE extension enabled.
+  isSnapshotAdeEnabled: Boolean!
+
   # ID of the snapshot.
   snapshotId: UUID!
 }
@@ -29458,6 +29554,9 @@ type AzureO365ExocomputeCluster {
 
   # Azure host type details.
   hostType: AzureHostType!
+
+  # Cluster provisioning state.
+  provisioningState: ClusterProvisioningState!
 }
 # Exocompute configuration.
 input AzureO365ExocomputeConfig {
@@ -29828,6 +29927,8 @@ enum AzureSnapshotType {
   # Use the source snapshot.
   SOURCE
 }
+# Specific details for the feature, varies based on the feature type.
+union AzureSpecificFeatureDetails = AzureTargetSubscriptions
 # The type of backup storage redundancy for Azure SQL.
 enum AzureSqlBackupStorageRedundancyType {
   # Geo-Redundant Storage.
@@ -31248,6 +31349,36 @@ type AzureTag {
   # Value of the Azure tag.
   value: String!
 }
+# Details about the Azure target subscription.
+type AzureTargetSubscription {
+  # Subscription ID.
+  subscriptionId: String!
+
+  # Subscription Name.
+  subscriptionName: String!
+
+  # Subscription Native ID.
+  subscriptionNativeId: String!
+
+  # AzureTargetSubscription Tenant ID.
+  customerTenantId: String!
+
+  # Features associated with this subscription.
+  features: [AzureTargetSubscriptionFeatureDetail!]!
+}
+# Details about a feature associated with the target subscription.
+type AzureTargetSubscriptionFeatureDetail {
+  # Feature associated with the subscription.
+  feature: CloudAccountFeature!
+
+  # Status of the feature.
+  status: CloudAccountStatus!
+}
+# Details about target subscriptions for the Azure Outpost feature.
+type AzureTargetSubscriptions {
+  # List of target subscriptions.
+  subscriptions: [AzureTargetSubscription!]!
+}
 # Specific info for Azure Target Template.
 type AzureTargetTemplate implements TargetTemplate {
   # Storage account name of the Azure target.
@@ -32428,6 +32559,7 @@ input BulkExportMssqlDbConfigInput {
   # Boolean value determining whether an existing database can be overwritten by a database that was exported from a backup. Set to 'false' to prevent overwrites. This is the default. Set to 'true' to allow overwrites.
   allowOverwrite: Boolean
 
+  # Supported in v9.2+
   # List of Microsoft SQL database IDs to export.
   sourceDatabaseIds: [String!] = []
 
@@ -32696,6 +32828,9 @@ input BulkUpdateRansomwareInvestigationEnabledInput {
 
   # The new Ransomware Investigation status.
   isRansomwareMonitoringEnabled: Boolean!
+
+  # The ID of the cluster.
+  clusterId: String
 }
 # Metadata associated with an Exocompute container image bundle.
 input BundleMetadataInput {
@@ -36616,6 +36751,9 @@ enum CloudAccountFeature {
   # Cloud account feature is Azure Laminar Target Managed Identity.
   LAMINAR_TARGET_MANAGED_IDENTITY
 
+  # Cloud account feature is Rubrik Outpost.
+  OUTPOST
+
   # Cloud account feature is RDS Protection.
   RDS_PROTECTION
 
@@ -40011,6 +40149,32 @@ enum ClusterProductEnum {
   # The cluster is POLARIS cluster.
   POLARIS
 }
+# Exocompute cluster provisioning state.
+enum ClusterProvisioningState {
+  # Creating.
+  PROVISIONING_STATE_CREATING
+
+  # Deleted.
+  PROVISIONING_STATE_DELETED
+
+  # Deleting.
+  PROVISIONING_STATE_DELETING
+
+  # Failed.
+  PROVISIONING_STATE_FAILED
+
+  # Succeeded.
+  PROVISIONING_STATE_SUCCEEDED
+
+  # Unhealthy.
+  PROVISIONING_STATE_UNHEALTHY
+
+  # Unspecified.
+  PROVISIONING_STATE_UNSPECIFIED
+
+  # Updating.
+  PROVISIONING_STATE_UPDATING
+}
 # Represents the response of a request to retrieve proxy information from a Rubrik cluster.
 type ClusterProxyReply {
   # Proxy server.
@@ -42658,6 +42822,12 @@ input CreateCustomAnalyzerInput {
   # Parsed list of keywords from structuredDictionaryCsv.
   structuredDictionary: [String!] = []
 
+  # A dictionary to filter fields that need to be analyzed for structured data by dictionary analyzers.
+  structuredKeyDictionaryCsv: String = ""
+
+  # Parsed list of keywords from structuredKeyDictionaryCsv.
+  structuredKeyDictionary: [String!] = []
+
   # Represents risk associated with the given analyzer.
   risk: RiskLevelType = MEDIUM_RISK
 }
@@ -42992,6 +43162,9 @@ input CreateIntegrationInput {
 type CreateIntegrationReply {
   # ID of the newly created integration.
   id: Long!
+
+  # The result of creating an integration.
+  info: IntegrationCreation
 }
 # Holds the input to a batch create integrations
 # request.
@@ -44935,6 +45108,9 @@ enum DataThreatAnalyticsEnablementEntity {
   UNKNOWN
 }
 input DataThreatAnalyticsEnablementEntityInfo {
+  # The name of entity being affected.
+  entityName: String
+
   # The type of entity for which Ransomware Investigation status is being updated.
   entityType: DataThreatAnalyticsEnablementEntity!
 
@@ -48490,6 +48666,12 @@ enum DownloadSnapshotFromLocationSnappableType {
   # Active Directory.
   ACTIVE_DIRECTORY
 
+  # K8s.
+  K8S
+
+  # Kubernetes virtual machine.
+  K8S_VM
+
   # Type of workload is not specified.
   NONE
 
@@ -49440,6 +49622,9 @@ enum EventObjectType {
 
   # Organization object.
   ORGANIZATION
+
+  # Orion threat hunt.
+  ORION_THREAT_HUNT
 
   # Postgres Database Cluster.
   POSTGRES_DB_CLUSTER
@@ -52974,6 +53159,9 @@ type FileResult {
 
   # Represents the number of files associated with different exposure types.
   exposureSummary: [ExposureSummary!]!
+
+  # Summarizes attributes associated with the file.
+  attributesSummary: [AttributesSummary!]!
   snappable: HierarchyObject!
 }
 # Paginated list of FileResult objects. Each page of the results includes at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
@@ -53281,6 +53469,10 @@ input FilesetExportFilesJobConfigInput {
   # Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
   shouldRecreateDirectoryStructure: Boolean
 
+  # Supported in v9.4
+  # Optional field to determine if we should restore only acls during restore. Default value is false.
+  shouldRestoreOnlyAcls: Boolean
+
   # Required. Supported in v5.0+
   # Pairs of source path and destination path.
   exportPathPairs: [FilesetExportPathPairInput!]!
@@ -53388,6 +53580,10 @@ input FilesetRestoreFilesJobConfigInput {
   # Supported in v8.1+
   # Optional field that specifies whether to recreate directory structure when using the 'Restore to separate folder' option in the UI.
   shouldRecreateDirectoryStructure: Boolean
+
+  # Supported in v9.4
+  # Optional field to determine if we should restore only acls during restore. Default value is false.
+  shouldRestoreOnlyAcls: Boolean
 
   # Required. Supported in v5.0+
   # v5.0-v5.3: Absolute file path and restore path if not restored back to itself
@@ -55026,6 +55222,9 @@ input GcpNativeExportDiskInput {
 
   # The target project cloud account ID for cross project export.
   targetGcpProjectRubrikId: UUID
+
+  # The type of the snapshot to recover from.
+  snapshotType: GcpSnapshotType
 }
 # Input required to export a GCP GCE instance snapshot.
 input GcpNativeExportGceInstanceInput {
@@ -55070,6 +55269,9 @@ input GcpNativeExportGceInstanceInput {
 
   # The target project cloud account ID for cross project export.
   targetGcpProjectRubrikId: UUID
+
+  # The type of the snapshot to recover from.
+  snapshotType: GcpSnapshotType
 }
 # GCP native firewall rule.
 type GcpNativeFirewallRule {
@@ -55770,6 +55972,9 @@ input GcpNativeRestoreGceInstanceInput {
 
   # Specfies whether the the restored instance should be started or not.
   shouldStartRestoredInstance: Boolean!
+
+  # The type of the snapshot to recover from.
+  snapshotType: GcpSnapshotType
 }
 # GCP native subnetwork.
 type GcpNativeSubnetwork {
@@ -55918,6 +56123,14 @@ input GcpSetDefaultServiceAccountJwtConfigInput {
   # The JWT configuration for a service account.
   serviceAccountJwtConfig: String!
 }
+# The type of snapshot to be used in export or restore jobs.
+enum GcpSnapshotType {
+  # Use the archived snapshot.
+  ARCHIVED
+
+  # Use the source snapshot.
+  SOURCE
+}
 # Storage class for GCP type location.
 enum GcpStorageClass {
   # Coldline GCP storage class.
@@ -55988,6 +56201,22 @@ type GenerateConfigProtectionRestoreFormReply {
 
   # Supported configuration types for configuration protection.
   configurationTypes: [ConfigurationTypes!]!
+}
+# The input values for generating preview messages for the webhook message template.
+input GeneratePreviewMessageForWebhookTemplateInput {
+  # The template data.
+  templateData: String!
+
+  # The type of message template.
+  msgType: TemplateMessageType!
+}
+# The reply from generating a preview message for the webhook template request. Either the preview message or error info will be returned.
+type GeneratePreviewMessageForWebhookTemplateReply {
+  # The preview message for the webhook template.
+  previewMessage: String
+
+  # Captures details of errors encountered within the system.
+  errorInfo: WebhookErrorInfo
 }
 # Input for generating support bundle.
 input GenerateSupportBundleInput {
@@ -63677,6 +63906,9 @@ type IntegrationConfig {
 
   # The Microsoft Purview configuration.
   microsoftPurview: MicrosoftPurviewConfig
+
+  # The PAM configuration.
+  pam: PamIntegrationConfig
 }
 # Holds the configuration of a single integration. Note that IntegrationConfig
 # can hold multiple configurations at once but only the configuration specified
@@ -63693,7 +63925,17 @@ input IntegrationConfigInput {
 
   # The Microsoft Purview configuration.
   microsoftPurview: MicrosoftPurviewConfigInput
+
+  # The PAM configuration.
+  pam: PamIntegrationConfigInput
 }
+# The result of creating an integration.
+type IntegrationCreation {
+  # The result of creating an integration.
+  info: IntegrationCreationInfo
+}
+# The result of creating an integration.
+union IntegrationCreationInfo = PamIntegrationCreationInfo
 # Fields by which you can sort the integrations.
 enum IntegrationSortBy {
   # Name of the integration.
@@ -63714,6 +63956,9 @@ enum IntegrationType {
 
   # Represents a OKTA ITP integration.
   OKTA
+
+  # Represents a PAM integration.
+  PRIVILEGED_ACCESS_MANAGEMENT
 
   # Represents a ServiceNow ITSM integration.
   SERVICENOW_ITSM
@@ -64654,6 +64899,12 @@ enum JobType {
 
   # Refresh Kubernetes cluster.
   K8S_CLUSTER_REFRESH
+
+  # Kubernetes protection snapshot download from given location.
+  K8S_DOWNLOAD_SNAPSHOT_FROM_LOCATION
+
+  # Kubernetes virtual machine snapshot download from specified location.
+  K8S_VM_DOWNLOAD_SNAPSHOT_FROM_LOCATION
 
   # Key rotation.
   KEY_ROTATION
@@ -65705,6 +65956,20 @@ enum K8sVirtualMachineDiskSortBy {
   # Sort by disk size.
   SIZE
 }
+# Supported in v9.3+
+# Properties of the Kubernetes virtual machine snapshot.
+type K8sVmSnapshotSummary {
+  # Required. Supported in v9.3+
+  # Name of the Kubernetes Virtual Machine.
+  name: String!
+
+  # The base snapshot summary for Kubernetes virtual machine snapshot.
+  baseSnapshotSummary: BaseSnapshotSummary
+
+  # Required. Supported in v9.3+
+  # Metadata of the Kubernetes Virtual Machine Snapshot, which includes volume information and virtual machine disk names.
+  metadata: String!
+}
 # Passkey types.
 enum KeyTypeEnumType {
   # Platform.
@@ -66704,6 +66969,9 @@ type KubernetesVirtualMachine implements HierarchyObject , HierarchySnappable , 
   # Object ID of Kubernetes Virtual Machine.
   id: UUID!
 
+  # Contains statistics for the protected objects, such as capacity.
+  reportWorkload: Snappable
+
   # List of Kubernetes virtual machine disks.
   k8sVirtualMachineDisks(
     # Returns the first n elements from the list.
@@ -67012,6 +67280,29 @@ type KubernetesVirtualMachineEdge {
 
   # The actual KubernetesVirtualMachine object wrapped by this edge.
   node: KubernetesVirtualMachine!
+}
+# Input for querying Kubernetes virtual machine snapshots.
+input KubernetesVirtualMachineSnapshotsInput {
+  # Required. ID of the Kubernetes virtual machine.
+  id: String!
+}
+# Supported in v9.3+
+type KubernetesVirtualMachineSnapshotsReply {
+  # Supported in v9.3+
+  # List of matching objects.
+  data: [K8sVmSnapshotSummary!]!
+
+  # Supported in v9.3+
+  # Total list responses.
+  total: Int
+
+  # Supported in v9.3+
+  # Cursor to retrieve the next set of results.
+  nextCursor: String
+
+  # Supported in v9.3+
+  # If there is more.
+  hasMore: Boolean
 }
 # The type of the port range.
 enum KuprClusterPortsType {
@@ -69010,6 +69301,9 @@ type M365BackupStorageOrg implements MicrosoftOrg , HierarchyObject , PolarisHie
   workloadSummary(
     # Workload types for protection summary.
     workloadTypes: [ManagedObjectType!]!): [O365WorkloadSummary!]!
+
+  # Summary of Microsoft groups count.
+  groupsSummary: O365GroupsSummary!
 
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
@@ -72556,6 +72850,9 @@ interface MicrosoftOrg {
   workloadSummary(
     # Workload types for protection summary.
     workloadTypes: [ManagedObjectType!]!): [O365WorkloadSummary!]!
+
+  # Summary of Microsoft groups count.
+  groupsSummary: O365GroupsSummary!
 
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
@@ -80001,6 +80298,9 @@ type MultiTenantHostSpec {
 
   # Network configuration of the multi-tenant host.
   multiTenantHostNetworkConfig: NetworkConfig
+
+  # Identifier for the multi-tenant host.
+  multiTenantHostId: Long!
 }
 # TPR requested changes template for editing TPR policies for a role.
 type MutateRoleReqChangesTemplate implements RequestedChangesTemplate {
@@ -82039,6 +82339,29 @@ type NcdBackEndCapacity {
   # The back-end capacity usage in bytes.
   usageInBytes: Long!
 }
+# Input to configure the SLA Domain for NAS Cloud Direct.
+input NcdConfigInput {
+  # Specifies the target locations' UUIDs for the per-minute schedule.
+  minutelyBackupLocations: [UUID!]
+
+  # Specifies the target locations' UUIDs for the hourly schedule.
+  hourlyBackupLocations: [UUID!]
+
+  # Specifies the target locations' UUIDs for the daily schedule.
+  dailyBackupLocations: [UUID!]
+
+  # Specifies the target locations' UUIDs for the weekly schedule.
+  weeklyBackupLocations: [UUID!]
+
+  # Specifies the target locations' UUIDs for the monthly schedule.
+  monthlyBackupLocations: [UUID!]
+
+  # Specifies the target locations' UUIDs for the quarterly schedule.
+  quarterlyBackupLocations: [UUID!]
+
+  # Specifies the target locations' UUIDs for the yearly schedule.
+  yearlyBackupLocations: [UUID!]
+}
 # FilesObjectProtectionStatusData represents a summary of the various types of
 # object protection statuses and their individual counts as well as their delta
 # in bytes for files.
@@ -82129,6 +82452,29 @@ type NcdSlaComplianceData {
 
   # The timestamp of the data point.
   timestamp: DateTime
+}
+# SLA Domain configuration for NAS Cloud Direct.
+type NcdSlaConfig {
+  # Specifies the target locations' UUIDs for the per-minute schedule.
+  minutelyBackupLocations: [UUID!]
+
+  # Specifies the target locations' UUIDs for the hourly schedule.
+  hourlyBackupLocations: [UUID!]
+
+  # Specifies the target locations' UUIDs for the daily schedule.
+  dailyBackupLocations: [UUID!]
+
+  # Specifies the target locations' UUIDs for the weekly schedule.
+  weeklyBackupLocations: [UUID!]
+
+  # Specifies the target locations' UUIDs for the monthly schedule.
+  monthlyBackupLocations: [UUID!]
+
+  # Specifies the target locations' UUIDs for the quarterly schedule.
+  quarterlyBackupLocations: [UUID!]
+
+  # Specifies the target locations' UUIDs for the yearly schedule.
+  yearlyBackupLocations: [UUID!]
 }
 # TaskData represents a NAS Cloud Direct task
 # and its associated fields.
@@ -86847,6 +87193,14 @@ enum O365GroupType {
   # Unknown group type.
   UNTYPED_GROUP
 }
+# Microsoft 365 group objects summary.
+type O365GroupsSummary {
+  # Count of Entra ID group objects.
+  adGroupsCount: Int!
+
+  # Count of configured group objects.
+  configuredGroupsCount: Int!
+}
 # The O365 license.
 type O365License {
   # The license detail of O365 account.
@@ -87683,6 +88037,9 @@ type O365Org implements MicrosoftOrg , HierarchyObject , PolarisHierarchyObject 
     # Workload types for protection summary.
     workloadTypes: [ManagedObjectType!]!): [O365WorkloadSummary!]!
 
+  # Summary of Microsoft groups count.
+  groupsSummary: O365GroupsSummary!
+
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
   rscNativeObjectPendingSla: CompactSlaDomain
 }
@@ -87885,6 +88242,9 @@ enum O365RestoreActionType {
 
   # Used for restore operation.
   RESTORE_SNAPPABLE
+
+  # Used for self service restore.
+  SELF_SERVICE_RESTORE
 }
 # Configuration for the setup of a Rubrik-hosted subscription.
 input O365SaasSetupCompleteInput {
@@ -89405,6 +89765,9 @@ type ObjectSpecificConfigs {
 
   # SLA Domain configuration for MySQL object.
   mysqldbSlaConfig: MysqldbSlaConfig
+
+  # SLA Domain configuration for NAS Cloud Direct object.
+  ncdSlaConfig: NcdSlaConfig
 }
 # Object-specific configurations.
 input ObjectSpecificConfigsInput {
@@ -89449,6 +89812,9 @@ input ObjectSpecificConfigsInput {
 
   # Input to configure the SLA Domain for MySQL.
   mysqldbConfigInput: MysqldbSlaConfigInput
+
+  # Input to configure the SLA Domain for NAS Cloud Direct.
+  ncdConfigInput: NcdConfigInput
 }
 # State of the object.
 enum ObjectState {
@@ -90044,6 +90410,9 @@ enum Operation {
 
   # Manage TPR policy.
   MANAGE_TPR_POLICY
+
+  # Manage user credentials.
+  MANAGE_USER_CREDENTIALS
   MANAGE_WEBHOOKS
 
   # Manage Zscaler integration.
@@ -93056,6 +93425,24 @@ type PaginationMarker {
   # This field is opaque and should not be manually used. Column values of sort_list of the last result.
   sortKey: [Long!]!
 }
+# Holds the configuration of the PAM integration.
+type PamIntegrationConfig {
+  # The optional IP addresses of the PAM system.
+  ipAddresses: [String!]!
+}
+# Holds the configuration of the PAM integration.
+input PamIntegrationConfigInput {
+  # The optional IP addresses of the PAM system.
+  ipAddresses: [String!] = []
+}
+# The service account tied to the PAM integration.
+type PamIntegrationCreationInfo {
+  # The client ID of the service account.
+  clientId: String!
+
+  # The client secret of the service account.
+  clientSecret: String!
+}
 # Supported in v5.0+
 type ParentAppInfo {
   # Supported in v5.0+
@@ -94931,6 +95318,9 @@ type PolicyObj {
 
   # Signifies the file exposure summary of the asset.
   exposureSummary: [ExposureSummary!]!
+
+  # Specifies the sensitive files count summary for attributes.
+  attributesSummary: [AttributesSummary!]!
   id: String!
   folderChildConnection(
     # Returns the first n elements from the list.
@@ -95741,6 +96131,9 @@ type ProtectedUserDetails {
 
   # Total number of protected unlicensed resource mailboxes.
   unlicensedResourceMailboxProtected: Int
+
+  # Total number of protected unlicensed OneDrive storage services.
+  unlicensedOnedriveProtected: Int
 }
 type ProtectionStatus {
   enumValue: ProtectionStatusEnum!
@@ -96652,6 +97045,9 @@ enum RcsRegionEnumType {
 
   # UK West or Cardiff.
   UK_WEST
+
+  # Rubrik Cloud Vault AWS region is unknown.
+  UNKNOWN_AWS_REGION
 
   # Rubrik Cloud Vault Azure region is unknown.
   UNKNOWN_AZURE_REGION
@@ -98988,6 +99384,9 @@ input RestoreO365TeamsConversationsInput {
 
   # Specifies the sequence number of the snapshot being currently restored.
   snapshotSequenceNum: Int!
+
+  # Fallback owner of the private and shared channel while restore, as requested in the RSC Web UI.
+  targetChannelFallbackOwner: String
 }
 # Input for restoring O365 Teams files.
 input RestoreO365TeamsFilesInput {
@@ -99017,6 +99416,9 @@ input RestoreO365TeamsFilesInput {
 
   # Specifies the sequence number of the snapshot being currently restored.
   snapshotSequenceNum: Int!
+
+  # Fallback owner of the private and shared channel while restore, as requested in the RSC Web UI.
+  targetChannelFallbackOwner: String
 }
 # Configuration for the mailbox object (email/folder) to be restored.
 input RestoreObjectConfig {
@@ -104194,6 +104596,9 @@ enum SlaObjectType {
   # NAS object.
   NAS_OBJECT_TYPE
 
+  # NAS Cloud Direct object.
+  NCD_OBJECT_TYPE
+
   # Nutanix object.
   NUTANIX_OBJECT_TYPE
 
@@ -106838,6 +107243,9 @@ input StartExportAzureNativeVirtualMachineJobInput {
 
   # ID of the archived snapshot to be exported.
   archivedSnapshotId: UUID
+
+  # Name of the key vault created in the destination region.This is required for cross region export of ADE enabled VMs.
+  destinationKeyVaultName: String
 }
 # Input for the job to export the specified Azure SQL Database.
 input StartExportAzureSqlDatabaseDbJobInput {
@@ -108868,11 +109276,17 @@ input TeamsRestoreConfig {
 
   # Specifies the sequence number of the snapshot being currently restored.
   snapshotSequenceNum: Int!
+
+  # Fallback owner of the private and shared channel while restore, as requested in the RSC Web UI.
+  targetChannelFallbackOwner: String
 }
 # Enum representing the document format.
 enum TemplateDocFormat {
   # JSON document format.
   JSON
+
+  # Unused default value.
+  TEMPLATE_DOC_FORMAT_UNSPECIFIED
 
   # Text document format.
   TEXT
@@ -108892,6 +109306,9 @@ enum TemplateMessageType {
 
   # Event message template type.
   EVENT
+
+  # Unused default value.
+  TEMPLATE_MESSAGE_TYPE_UNSPECIFIED
 }
 # The type of message template.
 enum TemplateRecordType {
@@ -108900,6 +109317,9 @@ enum TemplateRecordType {
 
   # Default message template.
   DEFAULT
+
+  # Unused default value.
+  TEMPLATE_RECORD_TYPE_UNSPECIFIED
 }
 # Specifies whether to use the SSO/LDAP configuration of the global organization or to use configuration specific to this organization.
 enum TenantAuthDomainConfig {
@@ -109224,6 +109644,9 @@ type ThreatHuntResultObjectsSummary {
   snapshotsStats: [ThreatHuntResultSnapshotStats!]!
 
   # The scanned object.
+  objectV2: HierarchySnappable
+
+  # The scanned object, if it is a CDM object.
   object: CdmHierarchySnappableNew
 
   # Cluster information.
@@ -109354,6 +109777,9 @@ enum ThreatMonitoringEnablementEntity {
   # The root of a cloud-native hierarchy, which can be an AWS account,
   # an Azure subscription, or a GCP project.
   CLOUD_NATIVE_ROOT
+
+  # Microsoft 365 subscription.
+  MICROSOFT_365
 
   # Unknown entity type.
   UNKNOWN
@@ -123695,11 +124121,6 @@ input WebhookSubscriptionTypeV2Input {
 }
 # The template information.
 input WebhookTemplateInfoInput {
-  # The template information.
-  template: WebhookTemplateInput!
-}
-# The template information.
-input WebhookTemplateInput {
   # The template ID.
   templateId: Int
 

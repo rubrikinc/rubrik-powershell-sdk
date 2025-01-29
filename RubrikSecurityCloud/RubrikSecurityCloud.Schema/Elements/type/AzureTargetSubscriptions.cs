@@ -1,4 +1,4 @@
-// RestoreObjectsDryRunReply.cs
+// AzureTargetSubscriptions.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -15,15 +15,16 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region RestoreObjectsDryRunReply
-    public class RestoreObjectsDryRunReply: BaseType
+    #region AzureTargetSubscriptions
+ 
+    public class AzureTargetSubscriptions: BaseType, AzureSpecificFeatureDetails
     {
         #region members
 
-        //      C# -> List<ActiveDirectoryObjectRecoveryDryRunResponseData>? Attributes
-        // GraphQL -> attributes: [ActiveDirectoryObjectRecoveryDryRunResponseData!]! (type)
-        [JsonProperty("attributes")]
-        public List<ActiveDirectoryObjectRecoveryDryRunResponseData>? Attributes { get; set; }
+        //      C# -> List<AzureTargetSubscription>? Subscriptions
+        // GraphQL -> subscriptions: [AzureTargetSubscription!]! (type)
+        [JsonProperty("subscriptions")]
+        public List<AzureTargetSubscription>? Subscriptions { get; set; }
 
 
         #endregion
@@ -31,15 +32,15 @@ namespace RubrikSecurityCloud.Types
     #region methods
 
     public override string GetGqlTypeName() {
-        return "RestoreObjectsDryRunReply";
+        return "AzureTargetSubscriptions";
     }
 
-    public RestoreObjectsDryRunReply Set(
-        List<ActiveDirectoryObjectRecoveryDryRunResponseData>? Attributes = null
+    public AzureTargetSubscriptions Set(
+        List<AzureTargetSubscription>? Subscriptions = null
     ) 
     {
-        if ( Attributes != null ) {
-            this.Attributes = Attributes;
+        if ( Subscriptions != null ) {
+            this.Subscriptions = Subscriptions;
         }
         return this;
     }
@@ -55,15 +56,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> List<ActiveDirectoryObjectRecoveryDryRunResponseData>? Attributes
-        // GraphQL -> attributes: [ActiveDirectoryObjectRecoveryDryRunResponseData!]! (type)
-        if (this.Attributes != null) {
-            var fspec = this.Attributes.AsFieldSpec(conf.Child("attributes"));
+        //      C# -> List<AzureTargetSubscription>? Subscriptions
+        // GraphQL -> subscriptions: [AzureTargetSubscription!]! (type)
+        if (this.Subscriptions != null) {
+            var fspec = this.Subscriptions.AsFieldSpec(conf.Child("subscriptions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "attributes" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "subscriptions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -74,35 +75,35 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
-        //      C# -> List<ActiveDirectoryObjectRecoveryDryRunResponseData>? Attributes
-        // GraphQL -> attributes: [ActiveDirectoryObjectRecoveryDryRunResponseData!]! (type)
-        if (ec.Includes("attributes",false))
+        //      C# -> List<AzureTargetSubscription>? Subscriptions
+        // GraphQL -> subscriptions: [AzureTargetSubscription!]! (type)
+        if (ec.Includes("subscriptions",false))
         {
-            if(this.Attributes == null) {
+            if(this.Subscriptions == null) {
 
-                this.Attributes = new List<ActiveDirectoryObjectRecoveryDryRunResponseData>();
-                this.Attributes.ApplyExploratoryFieldSpec(ec.NewChild("attributes"));
+                this.Subscriptions = new List<AzureTargetSubscription>();
+                this.Subscriptions.ApplyExploratoryFieldSpec(ec.NewChild("subscriptions"));
 
             } else {
 
-                this.Attributes.ApplyExploratoryFieldSpec(ec.NewChild("attributes"));
+                this.Subscriptions.ApplyExploratoryFieldSpec(ec.NewChild("subscriptions"));
 
             }
         }
-        else if (this.Attributes != null && ec.Excludes("attributes",false))
+        else if (this.Subscriptions != null && ec.Excludes("subscriptions",false))
         {
-            this.Attributes = null;
+            this.Subscriptions = null;
         }
     }
 
 
     #endregion
 
-    } // class RestoreObjectsDryRunReply
+    } // class AzureTargetSubscriptions
     
     #endregion
 
-    public static class ListRestoreObjectsDryRunReplyExtensions
+    public static class ListAzureTargetSubscriptionsExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of properties that are not null in an object.
@@ -121,14 +122,14 @@ namespace RubrikSecurityCloud.Types
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
-            this List<RestoreObjectsDryRunReply> list,
+            this List<AzureTargetSubscriptions> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
             return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
-        public static List<string> SelectedFields(this List<RestoreObjectsDryRunReply> list)
+        public static List<string> SelectedFields(this List<AzureTargetSubscriptions> list)
         {
             return StringUtils.FieldSpecStringToList(
                 list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
@@ -137,16 +138,16 @@ namespace RubrikSecurityCloud.Types
 
 
         public static void ApplyExploratoryFieldSpec(
-            this List<RestoreObjectsDryRunReply> list, 
+            this List<AzureTargetSubscriptions> list, 
             ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
-                list.Add(new RestoreObjectsDryRunReply());
+                list.Add(new AzureTargetSubscriptions());
             }
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void SelectForRetrieval(this List<RestoreObjectsDryRunReply> list)
+        public static void SelectForRetrieval(this List<AzureTargetSubscriptions> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

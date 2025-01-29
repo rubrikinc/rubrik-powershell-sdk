@@ -681,8 +681,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	snapshotId = $someString
     /// 	# REQUIRED
     /// 	destinationAwsAccountRubrikId = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	instanceType = $someAwsNativeEc2InstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	ec2InstanceType = $someString
     /// 	# REQUIRED
     /// 	instanceName = $someString
     /// 	# REQUIRED
@@ -1626,8 +1628,10 @@ $query.Var.input = @{
 	snapshotId = $someString
 	# REQUIRED
 	destinationAwsAccountRubrikId = $someString
-	# REQUIRED
+	# OPTIONAL
 	instanceType = $someAwsNativeEc2InstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceType]) for enum values.
+	# OPTIONAL
+	ec2InstanceType = $someString
 	# REQUIRED
 	instanceName = $someString
 	# REQUIRED

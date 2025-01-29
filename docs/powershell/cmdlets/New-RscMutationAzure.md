@@ -91,6 +91,11 @@ Delete the Azure Subscriptions cloud account for the given feature without OAuth
 
 - There is a single argument of type DeleteAzureCloudAccountWithoutOauthInput.
 - Returns DeleteAzureCloudAccountWithoutOauthReply.
+### excludestorageaccountcontainers
+Updates the list of containers excluded from protection for the specified storage account.
+
+- There is a single argument of type ExcludeAzureStorageAccountContainersInput.
+- Returns System.String.
 ### mapcloudaccountexocomputesubscription
 Map Azure cloud accounts to an Exocompute subscription.
 

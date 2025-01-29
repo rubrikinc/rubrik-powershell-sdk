@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 36
+    /// Create a new RscQuery object for any of the 37
     /// operations in the 'AWS' API domain:
-    /// AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, DisconnectExocomputeCluster, ExocomputeClusterConnect, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateIamPair, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, ValidateAndCreateCloudAccount, or ValidateAndInitiateOutpostAccount.
+    /// AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CloudAccountsMigrateInitiate, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, DisconnectExocomputeCluster, ExocomputeClusterConnect, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateIamPair, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, ValidateAndCreateCloudAccount, or ValidateAndInitiateOutpostAccount.
     /// </summary>
     /// <description>
     /// New-RscMutationAws creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 36 operations
+    /// There are 37 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, DisconnectExocomputeCluster, ExocomputeClusterConnect, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateIamPair, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, ValidateAndCreateCloudAccount, or ValidateAndInitiateOutpostAccount.
+    /// one of: AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CloudAccountsMigrateInitiate, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, DisconnectExocomputeCluster, ExocomputeClusterConnect, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateIamPair, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, ValidateAndCreateCloudAccount, or ValidateAndInitiateOutpostAccount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -226,6 +226,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: BulkDeleteAwsCloudAccountWithoutCftReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudAccountsMigrateInitiate operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: CloudAccountsMigrateInitiate
+    /// 
+    /// $query = New-RscMutationAws -Operation CloudAccountsMigrateInitiate
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	orgId = $someString
+    /// 	# OPTIONAL
+    /// 	awsRoleCustomization = @{
+    /// 		# OPTIONAL
+    /// 		crossAccountRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		crossAccountRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		masterRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		masterRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		workerRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		workerRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		instanceProfileName = $someString
+    /// 		# OPTIONAL
+    /// 		instanceProfilePath = $someString
+    /// 		# OPTIONAL
+    /// 		ec2RecoveryRolePath = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AwsCloudAccountsMigrateInitiateReply
     /// 
     /// 
     /// 
@@ -2210,6 +2262,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AddAuthenticationServerBasedCloudAccount",
                 "AddIamUserBasedCloudAccount",
                 "BulkDeleteCloudAccountWithoutCft",
+                "CloudAccountsMigrateInitiate",
                 "CreateAccount",
                 "CreateAutomaticTargetMapping",
                 "CreateCloudNativeStorageSetting",
@@ -2266,6 +2319,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "BulkDeleteCloudAccountWithoutCft":
                         this.ProcessRecord_BulkDeleteCloudAccountWithoutCft();
+                        break;
+                    case "CloudAccountsMigrateInitiate":
+                        this.ProcessRecord_CloudAccountsMigrateInitiate();
                         break;
                     case "CreateAccount":
                         this.ProcessRecord_CreateAccount();
@@ -2401,6 +2457,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -BulkDeleteCloudAccountWithoutCft";
             // Create new graphql operation bulkDeleteAwsCloudAccountWithoutCft
             InitMutationBulkDeleteAwsCloudAccountWithoutCft();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // awsCloudAccountsMigrateInitiate.
+        internal void ProcessRecord_CloudAccountsMigrateInitiate()
+        {
+            this._logger.name += " -CloudAccountsMigrateInitiate";
+            // Create new graphql operation awsCloudAccountsMigrateInitiate
+            InitMutationAwsCloudAccountsMigrateInitiate();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2830,6 +2895,50 @@ $query.Var.input = @{
 	features = @(
 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // awsCloudAccountsMigrateInitiate(input: AwsCloudAccountsMigrateInitiateInput!): AwsCloudAccountsMigrateInitiateReply!
+        internal void InitMutationAwsCloudAccountsMigrateInitiate()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AwsCloudAccountsMigrateInitiateInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAwsCloudAccountsMigrateInitiate",
+                "($input: AwsCloudAccountsMigrateInitiateInput!)",
+                "AwsCloudAccountsMigrateInitiateReply",
+                Mutation.AwsCloudAccountsMigrateInitiate,
+                Mutation.AwsCloudAccountsMigrateInitiateFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	orgId = $someString
+	# OPTIONAL
+	awsRoleCustomization = @{
+		# OPTIONAL
+		crossAccountRoleName = $someString
+		# OPTIONAL
+		crossAccountRolePath = $someString
+		# OPTIONAL
+		masterRoleName = $someString
+		# OPTIONAL
+		masterRolePath = $someString
+		# OPTIONAL
+		workerRoleName = $someString
+		# OPTIONAL
+		workerRolePath = $someString
+		# OPTIONAL
+		instanceProfileName = $someString
+		# OPTIONAL
+		instanceProfilePath = $someString
+		# OPTIONAL
+		ec2RecoveryRolePath = $someString
+	}
 }"
             );
         }

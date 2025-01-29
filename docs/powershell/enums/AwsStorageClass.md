@@ -9,3 +9,4 @@ Storage class for AWS type location.
 - GLACIER_DEEP_ARCHIVE - Amazon S3 Glacier Deep Archive storage class.
 - GLACIER_FLEXIBLE_RETRIEVAL - Amazon S3 Glacier Flexible Retrieval storage class.
 - REDUCED_REDUNDANCY - Deprecated: REDUCED_REDUNDANCY class for legacy locations.
+- INTELLIGENT_TIERING - Amazon S3 Intelligent-Tiering storage class.

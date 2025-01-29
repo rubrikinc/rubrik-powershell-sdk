@@ -77,7 +77,7 @@ Results for Anomaly Investigations.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - AnomalyResultSortBy: Sort anomaly results by field.
     - filter - AnomalyResultFilterInput: Filter anomaly results by input.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
+    - timezoneOffset - System.Single: Offset based on the customer timezone.
 - Returns AnomalyResultConnection.
 ### anomalyresultsgrouped
 Results for Anomaly Investigations grouped by an argument.
@@ -89,7 +89,7 @@ Results for Anomaly Investigations grouped by an argument.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - groupBy - AnomalyResultGroupBy: Group anomaly results by field.
     - filter - AnomalyResultFilterInput: Filter anomaly results by input.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
+    - timezoneOffset - System.Single: Offset based on the customer timezone.
 - Returns AnomalyResultGroupedDataConnection.
 ### aremultigeobackupsenabled
 Retrieves the status of multi-geo backups for the specified organization.
@@ -746,6 +746,19 @@ Get multifactor authentication (MFA) settings for an account.
 
 - The mfasetting subcommand takes no arguments.
 - Returns GetMfaSettingReply.
+### microsoftgroups
+List of Microsoft Groups in the organization.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+    - o365OrgId - System.String: The FID for the O365 organization.
+    - microsoftObjectType - ManagedObjectType
+    - protectionType - ProtectionType: Protection type for Microsoft 365 protection.
+- Returns MicrosoftGroupConnection.
 ### microsoftsites
 List of sites in the Microsoft 365 organization.
 
@@ -755,7 +768,7 @@ List of sites in the Microsoft 365 organization.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - o365OrgId - System.String: The fid for the O365 organization.
+    - o365OrgId - System.String: The FID for the O365 organization.
     - excludeChildSites - System.Boolean: When excludeChildSites is set to true, nested child sites are excluded from the results. If not specified, nested child sites are included.
     - protectionType - ProtectionType: Protection type for Microsoft 365 protection.
 - Returns MicrosoftSiteConnection.
@@ -788,7 +801,7 @@ Results for Non-Filesystem Anomaly Investigations.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - NfAnomalyResultSortBy: Sort non-filesystem anomaly results by field.
     - filter - NfAnomalyResultFilterInput: Filter non-filesystem anomaly results by input.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
+    - timezoneOffset - System.Single: Offset based on the customer timezone.
 - Returns NfAnomalyResultConnection.
 ### nfanomalyresultsgrouped
 Results for Non-Filesystem Anomaly Investigations grouped by an argument.
@@ -800,7 +813,7 @@ Results for Non-Filesystem Anomaly Investigations grouped by an argument.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - groupBy - NfAnomalyResultGroupBy: Group non-filesystem anomaly results by field.
     - filter - NfAnomalyResultFilterInput: Filter non-filesystem anomaly results by input.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
+    - timezoneOffset - System.Single: Offset based on the customer timezone.
 - Returns NfAnomalyResultGroupedDataConnection.
 ### noderemovalcancelpermission
 Check if the running node-removal job is cancelable.
@@ -1053,6 +1066,16 @@ Get the information for removed nodes.
 
 - There is a single argument of type RemovedNodeDetailsInput.
 - Returns RemoveNodeDetailsReply.
+### restoreobjectsdryrun
+Runs a simulated recovery for the specified Active Directory objects and returns the attribute values expected after a regular granular restore.
+
+- There are 5 arguments.
+    - id - System.String: Snapshot ID used for a dummy recovery of selected objects.
+    - config - ActiveDirectoryObjectRecoveryConfigInput: Configuration for the dry run of an object recovery.
+    - exportId - System.String: Specifies the export used if a snapshot was already exposed earlier using Live Mount.
+    - shouldReportOnlyChangedAttrs - System.Boolean: Specifies whether to report only attributes whose values have changed.
+    - shouldReportOnlyChangedValues - System.Boolean: Specifies whether to report only the changed values for an attribute in the object diff.
+- Returns ActiveDirectoryObjectRecoveryDryRunResponse.
 ### roletemplates
 The list of available role templates.
 
@@ -1148,7 +1171,7 @@ Details of a taskchain.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - filter - TaskDetailFilterInput: Filter task summary by input.
     - groupBy - TaskDetailGroupByEnum: Group task detail by a field.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
+    - timezoneOffset - System.Single: Offset based on the customer timezone.
 - Returns TaskDetailGroupByConnection.
 ### taskdetaillist
 - There are 9 arguments.
@@ -1159,7 +1182,7 @@ Details of a taskchain.
     - filter - TaskDetailFilterInput: Filter task summary by input.
     - sortBy - TaskDetailSortByEnum: Sort task detail by field.
     - sortOrder - SortOrder: Task detail sort order.
-    - timezoneOffset - System.Single: Offset based on customer timezone.
+    - timezoneOffset - System.Single: Offset based on the customer timezone.
     - timezone - Timezone: Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
 - Returns TaskDetailConnection.
 ### teamchannelnameavailable

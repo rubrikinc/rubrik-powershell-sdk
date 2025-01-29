@@ -5,3 +5,4 @@ Type of workload.
 - VSPHERE - VSphere.
 - VCD - VCD.
 - ACTIVE_DIRECTORY - Active Directory.
+- K8S - K8s.

@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> ServiceAppStatus? ControllerStatus
+        // GraphQL -> controllerStatus: ServiceAppStatus (enum)
+        [JsonProperty("controllerStatus")]
+        public ServiceAppStatus? ControllerStatus { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -55,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
+
+        //      C# -> DateTime? ActivationTime
+        // GraphQL -> activationTime: DateTime (scalar)
+        [JsonProperty("activationTime")]
+        public DateTime? ActivationTime { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -241,12 +251,14 @@ namespace RubrikSecurityCloud.Types
 
     public M365BackupStorageOrg Set(
         List<Operation>? AuthorizedOperations = null,
+        ServiceAppStatus? ControllerStatus = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         OrgStatus? Status = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        DateTime? ActivationTime = null,
         System.String? Id = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -272,6 +284,9 @@ namespace RubrikSecurityCloud.Types
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
         }
+        if ( ControllerStatus != null ) {
+            this.ControllerStatus = ControllerStatus;
+        }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
         }
@@ -289,6 +304,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
+        if ( ActivationTime != null ) {
+            this.ActivationTime = ActivationTime;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -373,6 +391,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "authorizedOperations\n" ;
             }
         }
+        //      C# -> ServiceAppStatus? ControllerStatus
+        // GraphQL -> controllerStatus: ServiceAppStatus (enum)
+        if (this.ControllerStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "controllerStatus\n" ;
+            } else {
+                s += ind + "controllerStatus\n" ;
+            }
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
@@ -437,6 +464,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> DateTime? ActivationTime
+        // GraphQL -> activationTime: DateTime (scalar)
+        if (this.ActivationTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "activationTime\n" ;
+            } else {
+                s += ind + "activationTime\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -688,6 +724,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AuthorizedOperations = null;
         }
+        //      C# -> ServiceAppStatus? ControllerStatus
+        // GraphQL -> controllerStatus: ServiceAppStatus (enum)
+        if (ec.Includes("controllerStatus",true))
+        {
+            if(this.ControllerStatus == null) {
+
+                this.ControllerStatus = new ServiceAppStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ControllerStatus != null && ec.Excludes("controllerStatus",true))
+        {
+            this.ControllerStatus = null;
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (ec.Includes("objectType",true))
@@ -810,6 +863,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
         {
             this.EffectiveSlaDomain = null;
+        }
+        //      C# -> DateTime? ActivationTime
+        // GraphQL -> activationTime: DateTime (scalar)
+        if (ec.Includes("activationTime",true))
+        {
+            if(this.ActivationTime == null) {
+
+                this.ActivationTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActivationTime != null && ec.Excludes("activationTime",true))
+        {
+            this.ActivationTime = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

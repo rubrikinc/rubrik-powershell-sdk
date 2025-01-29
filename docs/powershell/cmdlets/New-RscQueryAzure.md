@@ -325,6 +325,32 @@ Retrieves a paginated list of all Azure SQL Managed Instance Servers.
     - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlManagedInstanceServerFilters - AzureSqlManagedInstanceServerFilters: Filters for listing Azure SQL Managed Instance Servers.
 - Returns AzureSqlManagedInstanceServerConnection.
+### storageaccountcontainers
+Retrieves the list of containers for the specified storage account.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortBy - StorageAccountContainersSortByField: Sorts the containers by field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of StorageAccountContainersFilterInputs: Filters the containers by field.
+    - azureStorageAccountRubrikId - System.String: Rubrik ID for the Azure Storage Account.
+- Returns BlobContainerConnection.
+### storageaccountexcludedcontainers
+Retrieves the list of containers excluded from protection for the specified storage account.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortBy - ExcludedContainersSortByField: Sorts the excluded containers by field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of StorageAccountContainersFilterInputs: Filters the containers by field.
+    - azureStorageAccountRubrikId - System.String: Rubrik ID for the Azure Storage Account.
+- Returns ExcludedContainerConnection.
 ### storageaccounts
 Gets the storage accounts for the given subscription.
 

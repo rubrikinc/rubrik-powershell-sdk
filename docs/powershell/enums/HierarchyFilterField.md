@@ -373,3 +373,22 @@
 - RECOVERY_PLAN_AZURE_SOURCE_SUBSCRIPTION - Filter by recovery plan azure source subscription.
 - RECOVERY_PLAN_AZURE_TARGET_SUBSCRIPTION - Filter by recovery plan azure target subscription.
 - RECOVERY_PLAN_AZURE_REGION - Filter by recovery plan azure region.
+- K8S_CLUSTER_ID_ON_NAMESPACE - Filter according to the ID of the Kubernetes cluster on the Kubernetes namespace.
+ +mo:filter:db:table=cdm_k8s_namespace_v2
+ +mo:filter:db:column=k8s_cluster_uuid
+ +mo:filter:db:column=cluster_uuid
+ +mo:filter:db:table=cdm_k8s_cluster
+ +mo:filter:db:column=fid
+ +mo:filter:db:column=id
+ +mo:filter:db:column=cluster_uuid
+- CLOUD_DIRECT_NAS_SHARE_POLICY_NAME - Filter by the name of the policy assigned to the NAS Cloud Direct share.
+ +mo:filter:db:table=clouddirect_nas_share
+ +mo:filter:db:column=nas_share_parameters
+- CLOUD_DIRECT_NAS_SHARE_STALE - Filter the result according to the stale NAS Cloud Direct shares.
+ +mo:filter:db:table=clouddirect_nas_share
+ +mo:filter:db:column=is_stale
+ +mo:filter:db:column=fid
+ +mo:filter:db:index:key=stale_idx
+ +mo:filter:db:index:seq=1
+ +mo:filter:db:index:type=BTREE
+ +mo:filter:db:index:unique=false

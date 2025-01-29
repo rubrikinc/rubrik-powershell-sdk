@@ -1,6 +1,7 @@
 ### RcsRegionEnumType
 Regions for Rubrik Cloud Storage Archival Location.
 
+- ASIA_PACIFIC_JAKARTA - Asia Pacific Jakarta.
 - US_EAST - US east or Virginia.
 - NORWAY_EAST - Norway East or Oslo.
 - INDIA_CENTRAL - India Central or Pune.
@@ -12,9 +13,11 @@ Regions for Rubrik Cloud Storage Archival Location.
 - UAE_NORTH - UAE North or Dubai.
 - GERMANY_WEST_CENTRAL - Germany West Central or Frankfurt.
 - AUSTRALIA_EAST - Australia East or New South Wales.
+- MIDDLE_EAST_BAHRAIN - Middle East bahrain.
 - ISRAEL_CENTRAL - Israel Central or Israel.
 - US_NORTH_CENTRAL - US north central or Illinois.
 - JAPAN_WEST - Japan West or Osaka.
+- ASIA_PACIFIC_HYDERABAD - Asia Pacific Hyderabad.
 - SOUTH_AFRICA_NORTH - South Africa North or Johannesburg.
 - US_EAST_2 - US east 2 or Virginia.
 - POLAND_CENTRAL - Poland Central or Warsaw.
@@ -26,9 +29,11 @@ Regions for Rubrik Cloud Storage Archival Location.
 - US_WEST_2 - US west 2 or Washington.
 - CANADA_CENTRAL - Canada Central or Toronto.
 - QATAR_CENTRAL - Qatar Central or Doha.
+- ASIA_PACIFIC_SYDNEY - Asia Pacific Sydney.
 - US_WEST - US west or California.
 - UNKNOWN_AZURE_REGION - Rubrik Cloud Vault Azure region is unknown.
 - EUROPE_NORTH - Europe north or Netherlands.
+- EUROPE_STOCKHOLM - Europe Stockholm.
 - US_CENTRAL - US central or Iowa.
 - GOV_US_ARIZONA - Gov US Arizona or US Gov Arizona.
 - EUROPE_WEST - Europe west or Ireland.
@@ -41,6 +46,7 @@ Regions for Rubrik Cloud Storage Archival Location.
 - UK_WEST - UK West or Cardiff.
 - INDIA_SOUTH - India South or Chennai.
 - INDIA_WEST - India West or Mumbai.
+- CANADA_WEST_CALGARY - Canada West Calgary.
 - KOREA_CENTRAL - Korea Central or Seoul.
 - US_SOUTH_CENTRAL - US south central or Texas.
 - US_WEST_CENTRAL - US West Central or Wyoming.

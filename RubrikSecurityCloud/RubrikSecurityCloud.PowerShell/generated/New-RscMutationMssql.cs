@@ -490,11 +490,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		allowOverwrite = $someBoolean
     /// 		# OPTIONAL
+    /// 		sourceDatabaseIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
     /// 		targetDataFilePath = $someString
     /// 		# OPTIONAL
     /// 		targetLogFilePath = $someString
     /// 		# OPTIONAL
     /// 		finishRecovery = $someBoolean
+    /// 		# OPTIONAL
+    /// 		sourceInstanceIds = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		recoveryPoint = @{
     /// 			# OPTIONAL
@@ -509,10 +517,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				lsn = $someString
     /// 			}
     /// 		}
-    /// 		# REQUIRED
-    /// 		sourceInstanceIds = @(
-    /// 			$someString
-    /// 		)
     /// 		# REQUIRED
     /// 		targetInstanceId = $someString
     /// 	}
@@ -2293,11 +2297,19 @@ $query.Var.input = @{
 		# OPTIONAL
 		allowOverwrite = $someBoolean
 		# OPTIONAL
+		sourceDatabaseIds = @(
+			$someString
+		)
+		# OPTIONAL
 		targetDataFilePath = $someString
 		# OPTIONAL
 		targetLogFilePath = $someString
 		# OPTIONAL
 		finishRecovery = $someBoolean
+		# OPTIONAL
+		sourceInstanceIds = @(
+			$someString
+		)
 		# OPTIONAL
 		recoveryPoint = @{
 			# OPTIONAL
@@ -2312,10 +2324,6 @@ $query.Var.input = @{
 				lsn = $someString
 			}
 		}
-		# REQUIRED
-		sourceInstanceIds = @(
-			$someString
-		)
 		# REQUIRED
 		targetInstanceId = $someString
 	}

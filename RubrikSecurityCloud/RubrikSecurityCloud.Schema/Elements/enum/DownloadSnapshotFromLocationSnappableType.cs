@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY")]
         ACTIVE_DIRECTORY,
 
+        [EnumMember(Value = "K8S")]
+        K8_S,
+
         [EnumMember(Value = "NONE")]
         NONE,
 

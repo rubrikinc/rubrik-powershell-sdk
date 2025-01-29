@@ -1,4 +1,4 @@
-// RestoreObjectsDryRunInput.cs
+// KubernetesVirtualMachineSnapshotsInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,33 +13,11 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region RestoreObjectsDryRunInput
+    #region KubernetesVirtualMachineSnapshotsInput
 
-    public class RestoreObjectsDryRunInput: IInput
+    public class KubernetesVirtualMachineSnapshotsInput: IInput
     {
         #region members
-
-        //      C# -> System.String? ExportId
-        // GraphQL -> exportId: String (scalar)
-        [JsonProperty("exportId")]
-        public System.String? ExportId { get; set; }
-
-        //      C# -> System.Boolean? ShouldReportOnlyChangedValues
-        // GraphQL -> shouldReportOnlyChangedValues: Boolean (scalar)
-        [JsonProperty("shouldReportOnlyChangedValues")]
-        public System.Boolean? ShouldReportOnlyChangedValues { get; set; }
-
-        //      C# -> System.Boolean? ShouldReportOnlyChangedAttrs
-        // GraphQL -> shouldReportOnlyChangedAttrs: Boolean (scalar)
-        [JsonProperty("shouldReportOnlyChangedAttrs")]
-        public System.Boolean? ShouldReportOnlyChangedAttrs { get; set; }
-
-        //      C# -> ActiveDirectoryObjectRecoveryConfigInput? Config
-        // GraphQL -> config: ActiveDirectoryObjectRecoveryConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public ActiveDirectoryObjectRecoveryConfigInput? Config { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
@@ -47,13 +25,6 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
-
-        //      C# -> System.String? InstanceId
-        // GraphQL -> instanceId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("instanceId")]
-        public System.String? InstanceId { get; set; }
 
 
         #endregion
@@ -81,7 +52,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class RestoreObjectsDryRunInput
+    } // class KubernetesVirtualMachineSnapshotsInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types
