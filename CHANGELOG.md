@@ -1,12 +1,11 @@
 # Changelog
 
-## Version TBD
+## Version 1.12.4
 
-New Features:
+Schema Update:
 
-Fixes:
-
-Breaking Changes:
+See [API Changelog](https://rubrikinc.github.io/rubrik-api-documentation/changelog/changes/)
+for API additions, deprecations and breaking changes.
 
 ## Version 1.12.3
 
@@ -667,4 +666,3 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
-
