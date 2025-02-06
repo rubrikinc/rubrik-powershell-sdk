@@ -8,10 +8,6 @@ This script
 - runs Clean-RscSdk.ps1 to remove any previous build artifacts.
 - builds the Rubrik Security Cloud SDK and copies the output
   to the Output/ directory.
-- runs Test-RscSdk.ps1 to run the tests.
-
-By default, the script will run the tests.
-You can skip the tests by passing -NoTests.
 
 By default, the script will build the Debug version of the SDK.
 You can build the Release version by passing -Release.
@@ -21,9 +17,7 @@ instead of Output/.
 param(
     [switch]$NoClean = $false,
     [switch]$Release = $false,
-    [switch]$NoDocs = $false,
-    [switch]$NoTests = $false,
-    [switch]$CI = $false
+    [switch]$NoDocs = $false
 )
 
 # Change to the root of the repository
@@ -79,7 +73,3 @@ if (Test-Path $helpXmlPath) {
     Write-Warning "Documentation XML file not found. Skipping copy."
 }
 
-if (-not $NoTests) {
-    # Run the tests
-    .\Utils\Test-RscSdk.ps1 -CI:$CI
-}

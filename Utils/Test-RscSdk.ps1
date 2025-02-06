@@ -53,7 +53,8 @@ $ErrorActionPreference = "Stop"
 # Uncomment this to enable Write-Debug output
 # $DebugPreference = "Continue"
 
-# Set up
+# With -CI we need to have the service account file
+# passed in as an environment variable
 if ($CI) {
     if ($env:RSC_SERVICE_ACCOUNT_FILE) {
         $serviceAccountFile = $env:RSC_SERVICE_ACCOUNT_FILE
