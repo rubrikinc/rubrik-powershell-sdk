@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S")]
         K8_S,
 
+        [EnumMember(Value = "K8S_VM")]
+        K8S_VM,
+
         [EnumMember(Value = "NONE")]
         NONE,
 

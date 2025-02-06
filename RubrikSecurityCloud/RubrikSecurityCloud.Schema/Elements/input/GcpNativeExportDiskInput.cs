@@ -107,6 +107,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetGcpProjectRubrikId")]
         public System.String? TargetGcpProjectRubrikId { get; set; }
 
+        //      C# -> GcpSnapshotType? SnapshotType
+        // GraphQL -> snapshotType: GcpSnapshotType (enum)
+        [JsonProperty("snapshotType")]
+        public GcpSnapshotType? SnapshotType { get; set; }
+
 
         #endregion
 

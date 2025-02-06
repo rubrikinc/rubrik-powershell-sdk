@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("microsoftPurview")]
         public MicrosoftPurviewConfigInput? MicrosoftPurview { get; set; }
 
+        //      C# -> PamIntegrationConfigInput? Pam
+        // GraphQL -> pam: PamIntegrationConfigInput (input)
+        [JsonProperty("pam")]
+        public PamIntegrationConfigInput? Pam { get; set; }
+
 
         #endregion
 

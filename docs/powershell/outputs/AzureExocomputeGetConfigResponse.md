@@ -31,3 +31,5 @@ Azure Exocompute configuration.
   - Cluster ID of the customer-managed Exocompute.
 - latestExoclusterDetails: ExocomputeClusterDetails
   - Details of the latest Exocompute cluster.
+- optionalConfig: AzureExocomputeOptionalConfigInRegion
+  - Optional configurations for aks cluster.

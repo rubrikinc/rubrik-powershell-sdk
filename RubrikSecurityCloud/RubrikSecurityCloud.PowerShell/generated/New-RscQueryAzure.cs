@@ -2172,6 +2172,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			podSubnetNativeId = $someString
     /// 			# OPTIONAL
     /// 			podOverlayNetworkCidr = $someString
+    /// 			# OPTIONAL
+    /// 			optionalConfig = @{
+    /// 				# OPTIONAL
+    /// 				aksNodeRgPrefix = $someString
+    /// 				# OPTIONAL
+    /// 				diskEncryptionAtHost = $someBoolean
+    /// 				# OPTIONAL
+    /// 				additionalWhitelistIps = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
+    /// 				# OPTIONAL
+    /// 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
+    /// 				# REQUIRED
+    /// 				shouldWhitelistRubrikIps = $someBoolean
+    /// 				# REQUIRED
+    /// 				enableUserDefinedRouting = $someBoolean
+    /// 			}
     /// 		}
     /// 	)
     /// }
@@ -4943,6 +4962,25 @@ $query.Var.input = @{
 			podSubnetNativeId = $someString
 			# OPTIONAL
 			podOverlayNetworkCidr = $someString
+			# OPTIONAL
+			optionalConfig = @{
+				# OPTIONAL
+				aksNodeRgPrefix = $someString
+				# OPTIONAL
+				diskEncryptionAtHost = $someBoolean
+				# OPTIONAL
+				additionalWhitelistIps = @(
+					$someString
+				)
+				# OPTIONAL
+				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
+				# OPTIONAL
+				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
+				# REQUIRED
+				shouldWhitelistRubrikIps = $someBoolean
+				# REQUIRED
+				enableUserDefinedRouting = $someBoolean
+			}
 		}
 	)
 }"

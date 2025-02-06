@@ -3,6 +3,7 @@ The list of object types for activities.
 
 - ACTIVE_DIRECTORY_DOMAIN - Specifies that the activity object type is related to Activity Directory domain.
 - K8S_CLUSTER - Specifies that the activity object type is Kubernetes Cluster.
+- ORION_THREAT_HUNT - Specifies that the activity object type is Threat Hunt.
 - M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
 - KuprNamespace - Specifies that the activity object type is Kubernetes namespace.
 - SALESFORCE_OBJECT - Specifies that the activity object type is a Salesforce object.

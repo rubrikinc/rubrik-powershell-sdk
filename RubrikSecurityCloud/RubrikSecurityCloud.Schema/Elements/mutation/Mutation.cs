@@ -8821,6 +8821,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GeneratePreviewMessageForWebhookTemplateReply? GeneratePreviewMessageForWebhookTemplate
+        // GraphQL -> generatePreviewMessageForWebhookTemplate: GeneratePreviewMessageForWebhookTemplateReply! (type)
+        public static string GeneratePreviewMessageForWebhookTemplate(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "generatePreviewMessageForWebhookTemplate" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GeneratePreviewMessageForWebhookTemplateFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new GeneratePreviewMessageForWebhookTemplateReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? GenerateSupportBundle
         // GraphQL -> generateSupportBundle: AsyncRequestStatus! (type)
         public static string GenerateSupportBundle(object fsObj)

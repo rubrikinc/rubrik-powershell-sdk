@@ -107,6 +107,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotSequenceNum")]
         public System.Int32? SnapshotSequenceNum { get; set; }
 
+        //      C# -> System.String? TargetChannelFallbackOwner
+        // GraphQL -> targetChannelFallbackOwner: String (scalar)
+        [JsonProperty("targetChannelFallbackOwner")]
+        public System.String? TargetChannelFallbackOwner { get; set; }
+
 
         #endregion
 

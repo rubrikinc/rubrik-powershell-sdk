@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "JSON")]
         JSON,
 
+        [EnumMember(Value = "TEMPLATE_DOC_FORMAT_UNSPECIFIED")]
+        TEMPLATE_DOC_FORMAT_UNSPECIFIED,
+
         [EnumMember(Value = "TEXT")]
         TEXT
 

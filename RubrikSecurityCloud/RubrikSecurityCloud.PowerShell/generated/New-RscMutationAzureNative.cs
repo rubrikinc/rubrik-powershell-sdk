@@ -331,6 +331,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	archivedSnapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	destinationKeyVaultName = $someString
     /// }
     /// 
     /// # Execute the query
@@ -784,6 +786,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	archivedSnapshotId = $someString
+	# OPTIONAL
+	destinationKeyVaultName = $someString
 }"
             );
         }

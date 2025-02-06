@@ -318,6 +318,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_TPR_POLICY")]
         MANAGE_TPR_POLICY,
 
+        [EnumMember(Value = "MANAGE_USER_CREDENTIALS")]
+        MANAGE_USER_CREDENTIALS,
+
         [EnumMember(Value = "MANAGE_WEBHOOKS")]
         MANAGE_WEBHOOKS,
 

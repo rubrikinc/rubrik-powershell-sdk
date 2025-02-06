@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("okta")]
         public OktaIntegrationConfig? Okta { get; set; }
 
+        //      C# -> PamIntegrationConfig? Pam
+        // GraphQL -> pam: PamIntegrationConfig (type)
+        [JsonProperty("pam")]
+        public PamIntegrationConfig? Pam { get; set; }
+
         //      C# -> ServiceNowItsmIntegrationConfig? ServiceNowItsm
         // GraphQL -> serviceNowItsm: ServiceNowItsmIntegrationConfig (type)
         [JsonProperty("serviceNowItsm")]
@@ -53,6 +58,7 @@ namespace RubrikSecurityCloud.Types
         DlpConfig? DataLossPrevention = null,
         MicrosoftPurviewConfig? MicrosoftPurview = null,
         OktaIntegrationConfig? Okta = null,
+        PamIntegrationConfig? Pam = null,
         ServiceNowItsmIntegrationConfig? ServiceNowItsm = null
     ) 
     {
@@ -64,6 +70,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Okta != null ) {
             this.Okta = Okta;
+        }
+        if ( Pam != null ) {
+            this.Pam = Pam;
         }
         if ( ServiceNowItsm != null ) {
             this.ServiceNowItsm = ServiceNowItsm;
@@ -115,6 +124,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "okta" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> PamIntegrationConfig? Pam
+        // GraphQL -> pam: PamIntegrationConfig (type)
+        if (this.Pam != null) {
+            var fspec = this.Pam.AsFieldSpec(conf.Child("pam"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pam" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -193,6 +214,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Okta != null && ec.Excludes("okta",false))
         {
             this.Okta = null;
+        }
+        //      C# -> PamIntegrationConfig? Pam
+        // GraphQL -> pam: PamIntegrationConfig (type)
+        if (ec.Includes("pam",false))
+        {
+            if(this.Pam == null) {
+
+                this.Pam = new PamIntegrationConfig();
+                this.Pam.ApplyExploratoryFieldSpec(ec.NewChild("pam"));
+
+            } else {
+
+                this.Pam.ApplyExploratoryFieldSpec(ec.NewChild("pam"));
+
+            }
+        }
+        else if (this.Pam != null && ec.Excludes("pam",false))
+        {
+            this.Pam = null;
         }
         //      C# -> ServiceNowItsmIntegrationConfig? ServiceNowItsm
         // GraphQL -> serviceNowItsm: ServiceNowItsmIntegrationConfig (type)

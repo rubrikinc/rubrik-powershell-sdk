@@ -29,3 +29,5 @@ Input for restoring O365 Teams channel conversations.
   - Specifies whether the newly created Teams channel should have the latest permissions, which maybe different from the permissions at backup time.
 - snapshotSequenceNum: System.Int32
   - Specifies the sequence number of the snapshot being currently restored.
+- targetChannelFallbackOwner: System.String
+  - Fallback owner of the private and shared channel while restore, as requested in the RSC Web UI.

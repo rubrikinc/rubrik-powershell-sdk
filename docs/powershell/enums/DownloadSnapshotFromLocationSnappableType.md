@@ -6,3 +6,4 @@ Type of workload.
 - VCD - VCD.
 - ACTIVE_DIRECTORY - Active Directory.
 - K8S - K8s.
+- K8S_VM - Kubernetes virtual machine.

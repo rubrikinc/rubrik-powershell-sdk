@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sharedMailboxProtected")]
         public System.Int32? SharedMailboxProtected { get; set; }
 
+        //      C# -> System.Int32? UnlicensedOnedriveProtected
+        // GraphQL -> unlicensedOnedriveProtected: Int (scalar)
+        [JsonProperty("unlicensedOnedriveProtected")]
+        public System.Int32? UnlicensedOnedriveProtected { get; set; }
+
         //      C# -> System.Int32? UnlicensedResourceMailboxProtected
         // GraphQL -> unlicensedResourceMailboxProtected: Int (scalar)
         [JsonProperty("unlicensedResourceMailboxProtected")]
@@ -62,6 +67,7 @@ namespace RubrikSecurityCloud.Types
     public ProtectedUserDetails Set(
         System.Int32? ResourceMailboxProtected = null,
         System.Int32? SharedMailboxProtected = null,
+        System.Int32? UnlicensedOnedriveProtected = null,
         System.Int32? UnlicensedResourceMailboxProtected = null,
         System.Int32? UnlicensedSharedMailboxProtected = null,
         System.Int32? UnlicensedUserMailboxProtected = null,
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SharedMailboxProtected != null ) {
             this.SharedMailboxProtected = SharedMailboxProtected;
+        }
+        if ( UnlicensedOnedriveProtected != null ) {
+            this.UnlicensedOnedriveProtected = UnlicensedOnedriveProtected;
         }
         if ( UnlicensedResourceMailboxProtected != null ) {
             this.UnlicensedResourceMailboxProtected = UnlicensedResourceMailboxProtected;
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "sharedMailboxProtected\n" ;
             } else {
                 s += ind + "sharedMailboxProtected\n" ;
+            }
+        }
+        //      C# -> System.Int32? UnlicensedOnedriveProtected
+        // GraphQL -> unlicensedOnedriveProtected: Int (scalar)
+        if (this.UnlicensedOnedriveProtected != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "unlicensedOnedriveProtected\n" ;
+            } else {
+                s += ind + "unlicensedOnedriveProtected\n" ;
             }
         }
         //      C# -> System.Int32? UnlicensedResourceMailboxProtected
@@ -194,6 +212,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SharedMailboxProtected != null && ec.Excludes("sharedMailboxProtected",true))
         {
             this.SharedMailboxProtected = null;
+        }
+        //      C# -> System.Int32? UnlicensedOnedriveProtected
+        // GraphQL -> unlicensedOnedriveProtected: Int (scalar)
+        if (ec.Includes("unlicensedOnedriveProtected",true))
+        {
+            if(this.UnlicensedOnedriveProtected == null) {
+
+                this.UnlicensedOnedriveProtected = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnlicensedOnedriveProtected != null && ec.Excludes("unlicensedOnedriveProtected",true))
+        {
+            this.UnlicensedOnedriveProtected = null;
         }
         //      C# -> System.Int32? UnlicensedResourceMailboxProtected
         // GraphQL -> unlicensedResourceMailboxProtected: Int (scalar)

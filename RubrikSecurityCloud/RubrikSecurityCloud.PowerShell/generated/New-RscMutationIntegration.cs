@@ -152,6 +152,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			o365OrgId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		pam = @{
+    /// 			# OPTIONAL
+    /// 			ipAddresses = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -245,6 +252,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					tenantId = $someString
     /// 					# REQUIRED
     /// 					o365OrgId = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				pam = @{
+    /// 					# OPTIONAL
+    /// 					ipAddresses = @(
+    /// 						$someString
+    /// 					)
     /// 				}
     /// 			}
     /// 		}
@@ -405,6 +419,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			o365OrgId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		pam = @{
+    /// 			# OPTIONAL
+    /// 			ipAddresses = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -500,6 +521,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					tenantId = $someString
     /// 					# REQUIRED
     /// 					o365OrgId = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				pam = @{
+    /// 					# OPTIONAL
+    /// 					ipAddresses = @(
+    /// 						$someString
+    /// 					)
     /// 				}
     /// 			}
     /// 		}
@@ -716,6 +744,13 @@ $query.Var.input = @{
 			# REQUIRED
 			o365OrgId = $someString
 		}
+		# OPTIONAL
+		pam = @{
+			# OPTIONAL
+			ipAddresses = @(
+				$someString
+			)
+		}
 	}
 }"
             );
@@ -801,6 +836,13 @@ $query.Var.input = @{
 					tenantId = $someString
 					# REQUIRED
 					o365OrgId = $someString
+				}
+				# OPTIONAL
+				pam = @{
+					# OPTIONAL
+					ipAddresses = @(
+						$someString
+					)
 				}
 			}
 		}
@@ -937,6 +979,13 @@ $query.Var.input = @{
 			# REQUIRED
 			o365OrgId = $someString
 		}
+		# OPTIONAL
+		pam = @{
+			# OPTIONAL
+			ipAddresses = @(
+				$someString
+			)
+		}
 	}
 }"
             );
@@ -1024,6 +1073,13 @@ $query.Var.input = @{
 					tenantId = $someString
 					# REQUIRED
 					o365OrgId = $someString
+				}
+				# OPTIONAL
+				pam = @{
+					# OPTIONAL
+					ipAddresses = @(
+						$someString
+					)
 				}
 			}
 		}

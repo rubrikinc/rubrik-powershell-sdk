@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         CUSTOM,
 
         [EnumMember(Value = "DEFAULT")]
-        DEFAULT
+        DEFAULT,
+
+        [EnumMember(Value = "TEMPLATE_RECORD_TYPE_UNSPECIFIED")]
+        TEMPLATE_RECORD_TYPE_UNSPECIFIED
 
 
     } // enum TemplateRecordType

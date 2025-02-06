@@ -37,3 +37,5 @@ Input for the job to export the specified Azure Native Virtual Machine to the sp
   - Specifies a list of Azure disk unique native IDs that will be exported. When empty, all disks from the snapshot will be exported.
 - archivedSnapshotId: System.String
   - ID of the archived snapshot to be exported.
+- destinationKeyVaultName: System.String
+  - Name of the key vault created in the destination region.This is required for cross region export of ADE enabled VMs.

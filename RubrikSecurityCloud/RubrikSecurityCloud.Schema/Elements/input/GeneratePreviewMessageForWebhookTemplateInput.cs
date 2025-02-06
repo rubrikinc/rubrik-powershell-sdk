@@ -1,4 +1,4 @@
-// WebhookTemplateInput.cs
+// GeneratePreviewMessageForWebhookTemplateInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,21 +13,25 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region WebhookTemplateInput
+    #region GeneratePreviewMessageForWebhookTemplateInput
 
-    public class WebhookTemplateInput: IInput
+    public class GeneratePreviewMessageForWebhookTemplateInput: IInput
     {
         #region members
 
-        //      C# -> System.Int32? TemplateId
-        // GraphQL -> templateId: Int (scalar)
-        [JsonProperty("templateId")]
-        public System.Int32? TemplateId { get; set; }
+        //      C# -> System.String? TemplateData
+        // GraphQL -> templateData: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("templateData")]
+        public System.String? TemplateData { get; set; }
 
-        //      C# -> System.String? CustomTemplate
-        // GraphQL -> customTemplate: String (scalar)
-        [JsonProperty("customTemplate")]
-        public System.String? CustomTemplate { get; set; }
+        //      C# -> TemplateMessageType? MsgType
+        // GraphQL -> msgType: TemplateMessageType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("msgType")]
+        public TemplateMessageType? MsgType { get; set; }
 
 
         #endregion
@@ -55,7 +59,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class WebhookTemplateInput
+    } // class GeneratePreviewMessageForWebhookTemplateInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

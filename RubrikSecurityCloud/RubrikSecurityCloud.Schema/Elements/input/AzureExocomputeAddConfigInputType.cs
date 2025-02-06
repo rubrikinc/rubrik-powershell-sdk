@@ -48,6 +48,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("podOverlayNetworkCidr")]
         public System.String? PodOverlayNetworkCidr { get; set; }
 
+        //      C# -> AzureExocomputeOptionalConfigInRegionInput? OptionalConfig
+        // GraphQL -> optionalConfig: AzureExocomputeOptionalConfigInRegionInput (input)
+        [JsonProperty("optionalConfig")]
+        public AzureExocomputeOptionalConfigInRegionInput? OptionalConfig { get; set; }
+
 
         #endregion
 

@@ -210,8 +210,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	name = $someString
     /// 	# OPTIONAL
     /// 	description = $someString
-    /// 	# OPTIONAL
-    /// 	userId = $someString
     /// 	# REQUIRED
     /// 	entries = @(
     /// 		@{
@@ -8356,8 +8354,6 @@ $query.Var.input = @{
 	name = $someString
 	# OPTIONAL
 	description = $someString
-	# OPTIONAL
-	userId = $someString
 	# REQUIRED
 	entries = @(
 		@{

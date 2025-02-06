@@ -5,7 +5,5 @@ Custom intel feed input.
   - Custom feed name.
 - description: System.String
   - Custom feed description.
-- userId: System.String
-  - User id.
 - entries: list of CustomEntriess
   - Custom entries.

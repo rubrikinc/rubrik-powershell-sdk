@@ -19,3 +19,5 @@ Input for restoring O365 Teams files.
   - Indicates whether a new channel with latest permissions will be created if a private channel is restored.
 - snapshotSequenceNum: System.Int32
   - Specifies the sequence number of the snapshot being currently restored.
+- targetChannelFallbackOwner: System.String
+  - Fallback owner of the private and shared channel while restore, as requested in the RSC Web UI.

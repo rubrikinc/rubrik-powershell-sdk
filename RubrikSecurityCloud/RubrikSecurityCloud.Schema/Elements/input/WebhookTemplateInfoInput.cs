@@ -19,12 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> WebhookTemplateInput? Template
-        // GraphQL -> template: WebhookTemplateInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("template")]
-        public WebhookTemplateInput? Template { get; set; }
+        //      C# -> System.Int32? TemplateId
+        // GraphQL -> templateId: Int (scalar)
+        [JsonProperty("templateId")]
+        public System.Int32? TemplateId { get; set; }
+
+        //      C# -> System.String? CustomTemplate
+        // GraphQL -> customTemplate: String (scalar)
+        [JsonProperty("customTemplate")]
+        public System.String? CustomTemplate { get; set; }
 
 
         #endregion

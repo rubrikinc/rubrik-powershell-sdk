@@ -125,6 +125,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivedSnapshotId")]
         public System.String? ArchivedSnapshotId { get; set; }
 
+        //      C# -> System.String? DestinationKeyVaultName
+        // GraphQL -> destinationKeyVaultName: String (scalar)
+        [JsonProperty("destinationKeyVaultName")]
+        public System.String? DestinationKeyVaultName { get; set; }
+
 
         #endregion
 

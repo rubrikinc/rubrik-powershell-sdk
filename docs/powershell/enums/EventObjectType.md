@@ -142,3 +142,4 @@ Enum representing all the possible object types which generate events.
 - D365_DATAVERSE_TABLE - Dynamics 365 dataverse table.
 - D365_METADATA - Dynamics 365 metadata.
 - MYSQLDB_INSTANCE - MySQL instance.
+- ORION_THREAT_HUNT - Orion threat hunt.

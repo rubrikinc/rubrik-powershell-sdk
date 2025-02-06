@@ -29,3 +29,5 @@ Input required to export a GCP native disk snapshot.
   - Customer managed key to encrypt exported disk. This is only applicable when encryption type is CustomerManagedKeyResourceId.
 - targetGcpProjectRubrikId: System.String
   - The target project cloud account ID for cross project export.
+- snapshotType: GcpSnapshotType
+  - The type of the snapshot to recover from.

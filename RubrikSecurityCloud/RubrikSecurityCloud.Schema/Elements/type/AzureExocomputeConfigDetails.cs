@@ -95,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestExoclusterDetails")]
         public ExocomputeClusterDetails? LatestExoclusterDetails { get; set; }
 
+        //      C# -> AzureExocomputeOptionalConfigInRegion? OptionalConfig
+        // GraphQL -> optionalConfig: AzureExocomputeOptionalConfigInRegion (type)
+        [JsonProperty("optionalConfig")]
+        public AzureExocomputeOptionalConfigInRegion? OptionalConfig { get; set; }
+
 
         #endregion
 
@@ -119,7 +124,8 @@ namespace RubrikSecurityCloud.Types
         System.String? PodSubnetNativeId = null,
         System.String? SubnetNativeId = null,
         ExocomputeHealthCheckStatus? HealthCheckStatus = null,
-        ExocomputeClusterDetails? LatestExoclusterDetails = null
+        ExocomputeClusterDetails? LatestExoclusterDetails = null,
+        AzureExocomputeOptionalConfigInRegion? OptionalConfig = null
     ) 
     {
         if ( Region != null ) {
@@ -166,6 +172,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LatestExoclusterDetails != null ) {
             this.LatestExoclusterDetails = LatestExoclusterDetails;
+        }
+        if ( OptionalConfig != null ) {
+            this.OptionalConfig = OptionalConfig;
         }
         return this;
     }
@@ -319,6 +328,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "latestExoclusterDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureExocomputeOptionalConfigInRegion? OptionalConfig
+        // GraphQL -> optionalConfig: AzureExocomputeOptionalConfigInRegion (type)
+        if (this.OptionalConfig != null) {
+            var fspec = this.OptionalConfig.AsFieldSpec(conf.Child("optionalConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "optionalConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -587,6 +608,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestExoclusterDetails != null && ec.Excludes("latestExoclusterDetails",false))
         {
             this.LatestExoclusterDetails = null;
+        }
+        //      C# -> AzureExocomputeOptionalConfigInRegion? OptionalConfig
+        // GraphQL -> optionalConfig: AzureExocomputeOptionalConfigInRegion (type)
+        if (ec.Includes("optionalConfig",false))
+        {
+            if(this.OptionalConfig == null) {
+
+                this.OptionalConfig = new AzureExocomputeOptionalConfigInRegion();
+                this.OptionalConfig.ApplyExploratoryFieldSpec(ec.NewChild("optionalConfig"));
+
+            } else {
+
+                this.OptionalConfig.ApplyExploratoryFieldSpec(ec.NewChild("optionalConfig"));
+
+            }
+        }
+        else if (this.OptionalConfig != null && ec.Excludes("optionalConfig",false))
+        {
+            this.OptionalConfig = null;
         }
     }
 

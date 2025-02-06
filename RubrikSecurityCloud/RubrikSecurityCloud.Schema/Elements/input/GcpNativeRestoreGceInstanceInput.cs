@@ -47,6 +47,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldStartRestoredInstance")]
         public System.Boolean? ShouldStartRestoredInstance { get; set; }
 
+        //      C# -> GcpSnapshotType? SnapshotType
+        // GraphQL -> snapshotType: GcpSnapshotType (enum)
+        [JsonProperty("snapshotType")]
+        public GcpSnapshotType? SnapshotType { get; set; }
+
 
         #endregion
 

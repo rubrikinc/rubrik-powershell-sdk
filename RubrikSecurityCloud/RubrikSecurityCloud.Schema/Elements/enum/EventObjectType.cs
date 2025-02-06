@@ -354,6 +354,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORGANIZATION")]
         ORGANIZATION,
 
+        [EnumMember(Value = "ORION_THREAT_HUNT")]
+        ORION_THREAT_HUNT,
+
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
 

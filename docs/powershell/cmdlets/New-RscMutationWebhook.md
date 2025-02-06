@@ -20,6 +20,11 @@ Delete webhook configuration.
 
 - There is a single argument of type DeleteWebhookV2Input.
 - Returns System.String.
+### generatepreviewmessagefortemplate
+Generate a preview message for the webhook message template.
+
+- There is a single argument of type GeneratePreviewMessageForWebhookTemplateInput.
+- Returns GeneratePreviewMessageForWebhookTemplateReply.
 ### sendtestmessageto
 Send test message to webhook.
 

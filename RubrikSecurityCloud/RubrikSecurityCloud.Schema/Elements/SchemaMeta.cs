@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20250120-43" ;
+        public static string GraphqlSchemaVersion = "v20250127-34" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -473,6 +473,7 @@ namespace RubrikSecurityCloud.Types
             AzureNativeExportCompatibleVmSizes,
             AzureNativeHierarchyObjectTypeConnection,
             AzureNativeHierarchyObjectTypeEdge,
+            AzureNativeKeyVault,
             AzureNativeManagedDisk,
             AzureNativeManagedDiskConnection,
             AzureNativeManagedDiskEdge,
@@ -1142,6 +1143,7 @@ namespace RubrikSecurityCloud.Types
             GcpRoleBasedAccount,
             GcpTargetTemplate,
             GenerateConfigProtectionRestoreFormReply,
+            GeneratePreviewMessageForWebhookTemplateReply,
             GenerateTotpSecretReply,
             GenericSnapshotConnection,
             GenericSnapshotEdge,
@@ -1299,6 +1301,7 @@ namespace RubrikSecurityCloud.Types
             InstalledVersionGroupCount,
             Integration,
             IntegrationConfig,
+            IntegrationCreation,
             InterfaceCidr,
             InternalBulkUpdateHostResponse,
             InternalChangeVfdOnHostResponse,
@@ -1941,6 +1944,8 @@ namespace RubrikSecurityCloud.Types
             OverallRansomwareInvestigationSummary,
             PageInfo,
             PaginationMarker,
+            PamIntegrationConfig,
+            PamIntegrationCreationInfo,
             ParentAppInfo,
             ParentLabelInfo,
             Passkey,
@@ -2934,6 +2939,7 @@ namespace RubrikSecurityCloud.Types
             AzureEncryptionKeysInput,
             AzureEsConfigInput,
             AzureExocomputeAddConfigInputType,
+            AzureExocomputeOptionalConfigInRegionInput,
             AzureGetResourceGroupsInfoIfExistInput,
             AzureImmutabilitySettings,
             AzureKeyVaultKeyIdentifierInput,
@@ -3524,6 +3530,7 @@ namespace RubrikSecurityCloud.Types
             GcpSetDefaultServiceAccountJwtConfigInput,
             GenerateClusterRegistrationTokenInput,
             GenerateConfigProtectionRestoreFormInput,
+            GeneratePreviewMessageForWebhookTemplateInput,
             GenerateSupportBundleInput,
             GenerateSupportBundleRequestInput,
             GenericNasSystemCredentialsInput,
@@ -3941,6 +3948,7 @@ namespace RubrikSecurityCloud.Types
             OracleUpdateInput,
             OracleValidateConfigInput,
             OrgFilter,
+            PamIntegrationConfigInput,
             PasskeyConfigInput,
             PasswordByUserId,
             PasswordComplexityPolicyInput,
@@ -4526,7 +4534,6 @@ namespace RubrikSecurityCloud.Types
             WebhookPayload,
             WebhookSubscriptionTypeV2Input,
             WebhookTemplateInfoInput,
-            WebhookTemplateInput,
             WebServerCertificatePayloadInput,
             WeeklySnapshotScheduleInput,
             WorkloadFieldsInput,
@@ -4585,6 +4592,7 @@ namespace RubrikSecurityCloud.Types
             allAzureNativeAvailabilitySetsByRegionFromAzure,
             allAzureNativeExportCompatibleDiskTypesByRegionFromAzure,
             allAzureNativeExportCompatibleVmSizesByRegionFromAzure,
+            allAzureNativeKeyVaultsByRegionFromAzure,
             allAzureNativeResourceGroupsInfoIfExist,
             allAzureNativeSecurityGroupsByRegionFromAzure,
             allAzureNativeStorageAccountsFromAzure,
@@ -5813,6 +5821,7 @@ namespace RubrikSecurityCloud.Types
             generateClusterRegistrationToken,
             generateConfigProtectionRestoreForm,
             generateCsr,
+            generatePreviewMessageForWebhookTemplate,
             generateSupportBundle,
             generateTotpSecret,
             getDownloadUrl,
@@ -6539,6 +6548,7 @@ namespace RubrikSecurityCloud.Types
             GcpNativeProjectSortFields,
             GcpNativeProjectStatus,
             GcpRegion,
+            GcpSnapshotType,
             GcpStorageClass,
             GetCrossAccountClustersFilterField,
             GetCrossAccountClustersSortByField,
@@ -7038,6 +7048,7 @@ namespace RubrikSecurityCloud.Types
             ClusterGroupByInfo,
             ClusterMetricGroupByInfo,
             DataLocationClusterInfo,
+            IntegrationCreationInfo,
             ManagedVolumeQueuedSnapshotGroupByInfo,
             MissedSnapshotGroupByInfo,
             MongoSnapshotGroupByInfo,
@@ -7536,7 +7547,11 @@ namespace RubrikSecurityCloud.Types
                     "HierarchySnappable",
                     new HashSet<string> {
                     "ActiveDirectoryDomainController",
+                    "AwsNativeEbsVolume",
+                    "AwsNativeEc2Instance",
                     "AzureAdDirectory",
+                    "AzureNativeManagedDisk",
+                    "AzureNativeVirtualMachine",
                     "ExchangeDatabase",
                     "K8sNamespace",
                     "KubernetesProtectionSet",
@@ -8761,6 +8776,12 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {
+                    "PamIntegrationCreationInfo",
+                    new HashSet<string> {
+                    "IntegrationCreationInfo",
+                    }
+                },
+                {
                     "PcrAwsImagePullDetails",
                     new HashSet<string> {
                     "PcrImagePullDetails",
@@ -8993,6 +9014,7 @@ namespace RubrikSecurityCloud.Types
             allAzureNativeAvailabilitySetsByRegionFromAzure,
             allAzureNativeExportCompatibleDiskTypesByRegionFromAzure,
             allAzureNativeExportCompatibleVmSizesByRegionFromAzure,
+            allAzureNativeKeyVaultsByRegionFromAzure,
             allAzureNativeResourceGroupsInfoIfExist,
             allAzureNativeSecurityGroupsByRegionFromAzure,
             allAzureNativeStorageAccountsFromAzure,
@@ -9711,6 +9733,7 @@ namespace RubrikSecurityCloud.Types
             generateClusterRegistrationToken,
             generateConfigProtectionRestoreForm,
             generateCsr,
+            generatePreviewMessageForWebhookTemplate,
             generateSupportBundle,
             generateTotpSecret,
             geoLocationList,
@@ -11197,6 +11220,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryAzureNative",
                         cmdletSwitchName: "ExportCompatibleVmSizesByRegionFromAzure",
                         gqlRootFieldName: "allAzureNativeExportCompatibleVmSizesByRegionFromAzure"
+                    )
+                },
+                {
+                    GqlRootFieldName.allAzureNativeKeyVaultsByRegionFromAzure,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "KeyVaultsByRegionFromAzure",
+                        gqlRootFieldName: "allAzureNativeKeyVaultsByRegionFromAzure"
                     )
                 },
                 {
@@ -16941,6 +16972,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationCertificate",
                         cmdletSwitchName: "GenerateCsr",
                         gqlRootFieldName: "generateCsr"
+                    )
+                },
+                {
+                    GqlRootFieldName.generatePreviewMessageForWebhookTemplate,
+                    new RscOp(
+                        cmdletName: "New-RscMutationWebhook",
+                        cmdletSwitchName: "GeneratePreviewMessageForTemplate",
+                        gqlRootFieldName: "generatePreviewMessageForWebhookTemplate"
                     )
                 },
                 {
@@ -24135,6 +24174,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureNativeExportCompatibleVmSizesByRegionFromAzure
                 },
                 {
+                    "New-RscQueryAzureNative -Op KeyVaultsByRegionFromAzure",
+                    GqlRootFieldName.allAzureNativeKeyVaultsByRegionFromAzure
+                },
+                {
                     "New-RscQueryAzureNative -Op ResourceGroupsInfoIfExist",
                     GqlRootFieldName.allAzureNativeResourceGroupsInfoIfExist
                 },
@@ -27005,6 +27048,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationCertificate -Op GenerateCsr",
                     GqlRootFieldName.generateCsr
+                },
+                {
+                    "New-RscMutationWebhook -Op GeneratePreviewMessageForTemplate",
+                    GqlRootFieldName.generatePreviewMessageForWebhookTemplate
                 },
                 {
                     "New-RscMutationMisc -Op GenerateSupportBundle",
@@ -32097,6 +32144,10 @@ namespace RubrikSecurityCloud.Types
                         "generateConfigProtectionRestoreForm",
                     }
                 },
+                {   "GeneratePreviewMessageForWebhookTemplateReply", new List<string> {
+                        "generatePreviewMessageForWebhookTemplate",
+                    }
+                },
                 {   "GenerateTotpSecretReply", new List<string> {
                         "generateTotpSecret",
                     }
@@ -34679,6 +34730,10 @@ namespace RubrikSecurityCloud.Types
                         "allAzureNativeExportCompatibleVmSizesByRegionFromAzure",
                     }
                 },
+                {   "[AzureNativeKeyVault]", new List<string> {
+                        "allAzureNativeKeyVaultsByRegionFromAzure",
+                    }
+                },
                 {   "[AzureNativeSecurityGroup]", new List<string> {
                         "allAzureNativeSecurityGroupsByRegionFromAzure",
                     }
@@ -35540,6 +35595,7 @@ namespace RubrikSecurityCloud.Types
                         "allAzureNativeAvailabilitySetsByRegionFromAzure",
                         "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
                         "allAzureNativeExportCompatibleVmSizesByRegionFromAzure",
+                        "allAzureNativeKeyVaultsByRegionFromAzure",
                         "allAzureNativeSecurityGroupsByRegionFromAzure",
                         "allAzureNativeSubnetsByRegionFromAzure",
                         "isZrsAvailableForLocation",
@@ -37319,6 +37375,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "GenerateConfigProtectionRestoreFormInput", new List<string> {
                         "generateConfigProtectionRestoreForm",
+                    }
+                },
+                {   "GeneratePreviewMessageForWebhookTemplateInput", new List<string> {
+                        "generatePreviewMessageForWebhookTemplate",
                     }
                 },
                 {   "GenerateSupportBundleInput", new List<string> {
@@ -39801,6 +39861,7 @@ namespace RubrikSecurityCloud.Types
                         "allAzureNativeAvailabilitySetsByRegionFromAzure",
                         "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
                         "allAzureNativeExportCompatibleVmSizesByRegionFromAzure",
+                        "allAzureNativeKeyVaultsByRegionFromAzure",
                         "allAzureNativeSecurityGroupsByRegionFromAzure",
                         "allAzureNativeStorageAccountsFromAzure",
                         "allAzureNativeSubnetsByRegionFromAzure",
@@ -42141,6 +42202,7 @@ namespace RubrikSecurityCloud.Types
                 { "gcpNativeProject", "GcpNativeProject"},
                 { "gcpNativeProjects", "GcpNativeProjectConnection"},
                 { "generateConfigProtectionRestoreForm", "GenerateConfigProtectionRestoreFormReply"},
+                { "generatePreviewMessageForWebhookTemplate", "GeneratePreviewMessageForWebhookTemplateReply"},
                 { "generateTotpSecret", "GenerateTotpSecretReply"},
                 { "snapshotOfASnappableConnection", "GenericSnapshotConnection"},
                 { "snapshotOfSnappablesConnection", "GenericSnapshotConnection"},
@@ -42992,6 +43054,7 @@ namespace RubrikSecurityCloud.Types
                 { "allAzureDiskEncryptionSetsByRegion", "[AzureNativeDiskEncryptionSet]"},
                 { "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure", "[AzureNativeExportCompatibleDiskTypes]"},
                 { "allAzureNativeExportCompatibleVmSizesByRegionFromAzure", "[AzureNativeExportCompatibleVmSizes]"},
+                { "allAzureNativeKeyVaultsByRegionFromAzure", "[AzureNativeKeyVault]"},
                 { "allAzureNativeSecurityGroupsByRegionFromAzure", "[AzureNativeSecurityGroup]"},
                 { "allAzureNativeStorageAccountsFromAzure", "[AzureNativeStorageAccount]"},
                 { "allAzureCloudAccountSubnetsByRegion", "[AzureNativeSubnet]"},
@@ -43736,6 +43799,7 @@ namespace RubrikSecurityCloud.Types
                     "ExportCompatibleVmSizesByRegionFromAzure",
                     "IsManagedDiskSnapshotRestorable",
                     "IsSqlDatabaseSnapshotPersistent",
+                    "KeyVaultsByRegionFromAzure",
                     "ManagedDisk",
                     "ManagedDisks",
                     "ResourceGroup",
@@ -45390,6 +45454,7 @@ namespace RubrikSecurityCloud.Types
                     "CreateV2",
                     "Delete",
                     "DeleteV2",
+                    "GeneratePreviewMessageForTemplate",
                     "MessageTemplateById",
                     "MessageTemplates",
                     "SendTestMessageTo",

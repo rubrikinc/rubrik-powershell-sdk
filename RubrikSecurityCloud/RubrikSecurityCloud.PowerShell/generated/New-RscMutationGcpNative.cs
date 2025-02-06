@@ -203,6 +203,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	kmsCryptoKeyResourceId = $someString
     /// 	# OPTIONAL
     /// 	targetGcpProjectRubrikId = $someString
+    /// 	# OPTIONAL
+    /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -271,6 +273,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	kmsCryptoKeyResourceId = $someString
     /// 	# OPTIONAL
     /// 	targetGcpProjectRubrikId = $someString
+    /// 	# OPTIONAL
+    /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -341,6 +345,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	shouldRestoreLabels = $someBoolean
     /// 	# REQUIRED
     /// 	shouldStartRestoredInstance = $someBoolean
+    /// 	# OPTIONAL
+    /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -588,6 +594,8 @@ $query.Var.input = @{
 	kmsCryptoKeyResourceId = $someString
 	# OPTIONAL
 	targetGcpProjectRubrikId = $someString
+	# OPTIONAL
+	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
 }"
             );
         }
@@ -648,6 +656,8 @@ $query.Var.input = @{
 	kmsCryptoKeyResourceId = $someString
 	# OPTIONAL
 	targetGcpProjectRubrikId = $someString
+	# OPTIONAL
+	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
 }"
             );
         }
@@ -702,6 +712,8 @@ $query.Var.input = @{
 	shouldRestoreLabels = $someBoolean
 	# REQUIRED
 	shouldStartRestoredInstance = $someBoolean
+	# OPTIONAL
+	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
 }"
             );
         }

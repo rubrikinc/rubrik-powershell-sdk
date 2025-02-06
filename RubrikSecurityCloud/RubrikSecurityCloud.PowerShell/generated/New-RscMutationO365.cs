@@ -1508,6 +1508,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			restoreLatestPermissions = $someBoolean
     /// 			# REQUIRED
     /// 			snapshotSequenceNum = $someInt
+    /// 			# OPTIONAL
+    /// 			targetChannelFallbackOwner = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		fullTeamRestoreConfig = @{
@@ -1778,6 +1780,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	recoverWithLatestPermissions = $someBoolean
     /// 	# REQUIRED
     /// 	snapshotSequenceNum = $someInt
+    /// 	# OPTIONAL
+    /// 	targetChannelFallbackOwner = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1902,6 +1906,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	recoverWithLatestPermissions = $someBoolean
     /// 	# REQUIRED
     /// 	snapshotSequenceNum = $someInt
+    /// 	# OPTIONAL
+    /// 	targetChannelFallbackOwner = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3886,6 +3892,8 @@ $query.Var.input = @{
 			restoreLatestPermissions = $someBoolean
 			# REQUIRED
 			snapshotSequenceNum = $someInt
+			# OPTIONAL
+			targetChannelFallbackOwner = $someString
 		}
 		# OPTIONAL
 		fullTeamRestoreConfig = @{
@@ -4148,6 +4156,8 @@ $query.Var.input = @{
 	recoverWithLatestPermissions = $someBoolean
 	# REQUIRED
 	snapshotSequenceNum = $someInt
+	# OPTIONAL
+	targetChannelFallbackOwner = $someString
 }"
             );
         }
@@ -4264,6 +4274,8 @@ $query.Var.input = @{
 	recoverWithLatestPermissions = $someBoolean
 	# REQUIRED
 	snapshotSequenceNum = $someInt
+	# OPTIONAL
+	targetChannelFallbackOwner = $someString
 }"
             );
         }

@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_NATIVE_ROOT")]
         CLOUD_NATIVE_ROOT,
 
+        [EnumMember(Value = "MICROSOFT_365")]
+        MICROSOFT_365,
+
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN
 

@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OKTA")]
         OKTA,
 
+        [EnumMember(Value = "PRIVILEGED_ACCESS_MANAGEMENT")]
+        PRIVILEGED_ACCESS_MANAGEMENT,
+
         [EnumMember(Value = "SERVICENOW_ITSM")]
         SERVICENOW_ITSM
 

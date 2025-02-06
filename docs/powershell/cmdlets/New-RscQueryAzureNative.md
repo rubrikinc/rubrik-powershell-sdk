@@ -44,6 +44,13 @@ Checks if an Azure SQL Database Snapshot or an Azure SQL Managed Instance Databa
 
 - There is a single argument of type System.String.
 - Returns System.Boolean.
+### keyvaultsbyregionfromazure
+Retrieves a list of all key vaults in the specified region and subscription. This is required for enabling cross region export of ADE Enabled VMs. For more information, see https://learn.microsoft.com/en-us/azure/key-vault.
+
+- There are 2 arguments.
+    - azureSubscriptionRubrikId - System.String: Rubrik ID of the Azure Subscription.
+    - region - AzureNativeRegion: The azure region.
+- Returns list of AzureNativeKeyVaults.
 ### manageddisk
 Retrieves an Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
 

@@ -2167,6 +2167,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<AzureNativeKeyVault>? AllAzureNativeKeyVaultsByRegionFromAzure
+        // GraphQL -> allAzureNativeKeyVaultsByRegionFromAzure: [AzureNativeKeyVault!]! (type)
+        public static string AllAzureNativeKeyVaultsByRegionFromAzure(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nregion: $region\n)";
+            return "allAzureNativeKeyVaultsByRegionFromAzure" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AllAzureNativeKeyVaultsByRegionFromAzureFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new List<AzureNativeKeyVault>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<AzureResourceGroupInfo>? AllAzureNativeResourceGroupsInfoIfExist
         // GraphQL -> allAzureNativeResourceGroupsInfoIfExist: [AzureResourceGroupInfo!]! (type)
         public static string AllAzureNativeResourceGroupsInfoIfExist(object fsObj)

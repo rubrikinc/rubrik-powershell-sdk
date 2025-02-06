@@ -324,6 +324,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORGANIZATION")]
         ORGANIZATION,
 
+        [EnumMember(Value = "ORION_THREAT_HUNT")]
+        ORION_THREAT_HUNT,
+
         [EnumMember(Value = "ObjectProtection")]
         OBJECT_PROTECTION,
 

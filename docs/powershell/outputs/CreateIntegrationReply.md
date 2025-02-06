@@ -4,3 +4,5 @@ Returned in response to a create integration request and holds the ID of the
 
 - id: System.Int64
   - ID of the newly created integration.
+- info: IntegrationCreation
+  - The result of creating an integration.

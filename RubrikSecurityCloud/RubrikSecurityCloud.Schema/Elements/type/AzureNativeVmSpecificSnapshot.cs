@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? IsSnapshotAdeEnabled
+        // GraphQL -> isSnapshotAdeEnabled: Boolean! (scalar)
+        [JsonProperty("isSnapshotAdeEnabled")]
+        public System.Boolean? IsSnapshotAdeEnabled { get; set; }
+
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
         [JsonProperty("snapshotId")]
@@ -46,11 +51,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureNativeVmSpecificSnapshot Set(
+        System.Boolean? IsSnapshotAdeEnabled = null,
         System.String? SnapshotId = null,
         List<AzureNativeAttachedDiskSpecificSnapshot>? DataDiskSnapshots = null,
         AzureNativeAttachedDiskSpecificSnapshot? OsDiskSnapshot = null
     ) 
     {
+        if ( IsSnapshotAdeEnabled != null ) {
+            this.IsSnapshotAdeEnabled = IsSnapshotAdeEnabled;
+        }
         if ( SnapshotId != null ) {
             this.SnapshotId = SnapshotId;
         }
@@ -74,6 +83,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? IsSnapshotAdeEnabled
+        // GraphQL -> isSnapshotAdeEnabled: Boolean! (scalar)
+        if (this.IsSnapshotAdeEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSnapshotAdeEnabled\n" ;
+            } else {
+                s += ind + "isSnapshotAdeEnabled\n" ;
+            }
+        }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
         if (this.SnapshotId != null) {
@@ -114,6 +132,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.Boolean? IsSnapshotAdeEnabled
+        // GraphQL -> isSnapshotAdeEnabled: Boolean! (scalar)
+        if (ec.Includes("isSnapshotAdeEnabled",true))
+        {
+            if(this.IsSnapshotAdeEnabled == null) {
+
+                this.IsSnapshotAdeEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSnapshotAdeEnabled != null && ec.Excludes("isSnapshotAdeEnabled",true))
+        {
+            this.IsSnapshotAdeEnabled = null;
+        }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
         if (ec.Includes("snapshotId",true))

@@ -13,3 +13,5 @@ Stores the details of protected users.
   - Total number of protected unlicensed shared mailboxes.
 - unlicensedResourceMailboxProtected: System.Int32
   - Total number of protected unlicensed resource mailboxes.
+- unlicensedOnedriveProtected: System.Int32
+  - Total number of protected unlicensed OneDrive storage services.

@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region AzureNativeManagedDisk
  
-    public class AzureNativeManagedDisk: BaseType, AzureNativeHierarchyObjectType, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class AzureNativeManagedDisk: BaseType, AzureNativeHierarchyObjectType, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 

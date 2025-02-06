@@ -33,6 +33,8 @@ Kubernetes virtual machine.
   - The authorized operations on the object.
 - id: System.String
   - Object ID of Kubernetes Virtual Machine.
+- reportWorkload: Snappable
+  - Contains statistics for the protected objects, such as capacity.
 - k8sVirtualMachineDisks: KubernetesVirtualMachineDiskConnection
   - List of Kubernetes virtual machine disks.
 - name: System.String

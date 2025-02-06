@@ -15,3 +15,5 @@ Represents the teams contents to be restored.
   - Indicates whether the new channel will be created with the most recent permissions if a private channel is restored.
 - snapshotSequenceNum: System.Int32
   - Specifies the sequence number of the snapshot being currently restored.
+- targetChannelFallbackOwner: System.String
+  - Fallback owner of the private and shared channel while restore, as requested in the RSC Web UI.

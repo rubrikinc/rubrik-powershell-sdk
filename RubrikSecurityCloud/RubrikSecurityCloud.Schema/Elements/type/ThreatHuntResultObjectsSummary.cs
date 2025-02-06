@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("object")]
         public CdmHierarchySnappableNew? Object { get; set; }
 
+        //      C# -> HierarchySnappable? ObjectV2
+        // GraphQL -> objectV2: HierarchySnappable (interface)
+        [JsonProperty("objectV2")]
+        public HierarchySnappable? ObjectV2 { get; set; }
+
         //      C# -> DateTime? EarliestMatchedSnapshotDate
         // GraphQL -> earliestMatchedSnapshotDate: DateTime (scalar)
         [JsonProperty("earliestMatchedSnapshotDate")]
@@ -97,6 +102,7 @@ namespace RubrikSecurityCloud.Types
     public ThreatHuntResultObjectsSummary Set(
         ThreatHuntObjectStatus? ObjectScanStatus = null,
         CdmHierarchySnappableNew? Object = null,
+        HierarchySnappable? ObjectV2 = null,
         DateTime? EarliestMatchedSnapshotDate = null,
         System.Boolean? HasQuarantinedMatches = null,
         DateTime? LatestMatchedSnapshotDate = null,
@@ -115,6 +121,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Object != null ) {
             this.Object = Object;
+        }
+        if ( ObjectV2 != null ) {
+            this.ObjectV2 = ObjectV2;
         }
         if ( EarliestMatchedSnapshotDate != null ) {
             this.EarliestMatchedSnapshotDate = EarliestMatchedSnapshotDate;
@@ -182,6 +191,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "object" + " " + "{\n" + fspec + ind + "}\n";
+                }
+            }
+        }
+        //      C# -> HierarchySnappable? ObjectV2
+        // GraphQL -> objectV2: HierarchySnappable (interface)
+        if (this.ObjectV2 != null) {
+                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.ObjectV2, conf.Child("objectV2"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectV2" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -340,6 +362,30 @@ namespace RubrikSecurityCloud.Types
         else if (this.Object != null && ec.Excludes("object",false))
         {
             this.Object = null;
+        }
+        //      C# -> HierarchySnappable? ObjectV2
+        // GraphQL -> objectV2: HierarchySnappable (interface)
+        if (ec.Includes("objectV2",false))
+        {
+            if(this.ObjectV2 == null) {
+
+                var impls = new List<HierarchySnappable>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("objectV2"));
+                this.ObjectV2 = (HierarchySnappable)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<HierarchySnappable>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("objectV2"));
+                this.ObjectV2 = (HierarchySnappable)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.ObjectV2 != null && ec.Excludes("objectV2",false))
+        {
+            this.ObjectV2 = null;
         }
         //      C# -> DateTime? EarliestMatchedSnapshotDate
         // GraphQL -> earliestMatchedSnapshotDate: DateTime (scalar)

@@ -21,8 +21,10 @@ Summary of a threat hunt for an object.
   - Specifies whether the object has quarantined matches.
 - snapshotsStats: list of ThreatHuntResultSnapshotStatss
   - Threat hunt summaries for each snapshot.
-- object: CdmHierarchySnappableNew
+- objectV2: HierarchySnappable
   - The scanned object.
+- object: CdmHierarchySnappableNew
+  - The scanned object, if it is a CDM object.
 - clusterInfo: Cluster
   - Cluster information.
 - location: System.String

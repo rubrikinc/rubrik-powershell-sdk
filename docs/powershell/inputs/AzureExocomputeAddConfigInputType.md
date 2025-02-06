@@ -11,3 +11,5 @@ Azure Exocompute configuration to add.
   - Native ID of the subnet where the Exocompute pods should be launched.
 - podOverlayNetworkCidr: System.String
   - The CIDR range for pods if Exocompute is launched with the CNI overlay network plugin.
+- optionalConfig: AzureExocomputeOptionalConfigInRegionInput
+  - Optional configurations for aks cluster.

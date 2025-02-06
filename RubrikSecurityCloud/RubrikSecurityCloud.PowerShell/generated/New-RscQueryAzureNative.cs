@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 23
+    /// Create a new RscQuery object for any of the 24
     /// operations in the 'Azure Native' API domain:
-    /// AvailabilitySetsByRegionFromAzure, DoesResourceGroupExist, ExportCompatibleDiskTypesByRegionFromAzure, ExportCompatibleVmSizesByRegionFromAzure, IsManagedDiskSnapshotRestorable, IsSqlDatabaseSnapshotPersistent, ManagedDisk, ManagedDisks, ResourceGroup, ResourceGroups, ResourceGroupsInfoIfExist, Root, SecurityGroupsByRegionFromAzure, StorageAccountsFromAzure, SubnetsByRegionFromAzure, Subscription, Subscriptions, ValidateSqlDatabaseDbNameForExport, ValidateSqlManagedInstanceDbNameForExport, VirtualMachine, VirtualMachineSizes, VirtualMachines, or VirtualNetworks.
+    /// AvailabilitySetsByRegionFromAzure, DoesResourceGroupExist, ExportCompatibleDiskTypesByRegionFromAzure, ExportCompatibleVmSizesByRegionFromAzure, IsManagedDiskSnapshotRestorable, IsSqlDatabaseSnapshotPersistent, KeyVaultsByRegionFromAzure, ManagedDisk, ManagedDisks, ResourceGroup, ResourceGroups, ResourceGroupsInfoIfExist, Root, SecurityGroupsByRegionFromAzure, StorageAccountsFromAzure, SubnetsByRegionFromAzure, Subscription, Subscriptions, ValidateSqlDatabaseDbNameForExport, ValidateSqlManagedInstanceDbNameForExport, VirtualMachine, VirtualMachineSizes, VirtualMachines, or VirtualNetworks.
     /// </summary>
     /// <description>
     /// New-RscQueryAzureNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 23 operations
+    /// There are 24 operations
     /// in the 'Azure Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AvailabilitySetsByRegionFromAzure, DoesResourceGroupExist, ExportCompatibleDiskTypesByRegionFromAzure, ExportCompatibleVmSizesByRegionFromAzure, IsManagedDiskSnapshotRestorable, IsSqlDatabaseSnapshotPersistent, ManagedDisk, ManagedDisks, ResourceGroup, ResourceGroups, ResourceGroupsInfoIfExist, Root, SecurityGroupsByRegionFromAzure, StorageAccountsFromAzure, SubnetsByRegionFromAzure, Subscription, Subscriptions, ValidateSqlDatabaseDbNameForExport, ValidateSqlManagedInstanceDbNameForExport, VirtualMachine, VirtualMachineSizes, VirtualMachines, or VirtualNetworks.
+    /// one of: AvailabilitySetsByRegionFromAzure, DoesResourceGroupExist, ExportCompatibleDiskTypesByRegionFromAzure, ExportCompatibleVmSizesByRegionFromAzure, IsManagedDiskSnapshotRestorable, IsSqlDatabaseSnapshotPersistent, KeyVaultsByRegionFromAzure, ManagedDisk, ManagedDisks, ResourceGroup, ResourceGroups, ResourceGroupsInfoIfExist, Root, SecurityGroupsByRegionFromAzure, StorageAccountsFromAzure, SubnetsByRegionFromAzure, Subscription, Subscriptions, ValidateSqlDatabaseDbNameForExport, ValidateSqlManagedInstanceDbNameForExport, VirtualMachine, VirtualMachineSizes, VirtualMachines, or VirtualNetworks.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -255,6 +255,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the KeyVaultsByRegionFromAzure operation
+    /// of the 'Azure Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureNative
+    /// # API Operation: KeyVaultsByRegionFromAzure
+    /// 
+    /// $query = New-RscQueryAzureNative -Operation KeyVaultsByRegionFromAzure
+    /// 
+    /// # REQUIRED
+    /// $query.Var.azureSubscriptionRubrikId = $someString
+    /// # REQUIRED
+    /// $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeKeyVault&gt;
     /// 
     /// 
     /// 
@@ -1103,6 +1133,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ExportCompatibleVmSizesByRegionFromAzure",
                 "IsManagedDiskSnapshotRestorable",
                 "IsSqlDatabaseSnapshotPersistent",
+                "KeyVaultsByRegionFromAzure",
                 "ManagedDisk",
                 "ManagedDisks",
                 "ResourceGroup",
@@ -1152,6 +1183,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "IsSqlDatabaseSnapshotPersistent":
                         this.ProcessRecord_IsSqlDatabaseSnapshotPersistent();
+                        break;
+                    case "KeyVaultsByRegionFromAzure":
+                        this.ProcessRecord_KeyVaultsByRegionFromAzure();
                         break;
                     case "ManagedDisk":
                         this.ProcessRecord_ManagedDisk();
@@ -1266,6 +1300,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -IsSqlDatabaseSnapshotPersistent";
             // Create new graphql operation isAzureNativeSqlDatabaseSnapshotPersistent
             InitQueryIsAzureNativeSqlDatabaseSnapshotPersistent();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAzureNativeKeyVaultsByRegionFromAzure.
+        internal void ProcessRecord_KeyVaultsByRegionFromAzure()
+        {
+            this._logger.name += " -KeyVaultsByRegionFromAzure";
+            // Create new graphql operation allAzureNativeKeyVaultsByRegionFromAzure
+            InitQueryAllAzureNativeKeyVaultsByRegionFromAzure();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1571,6 +1614,29 @@ $query.Var.diskSnapshotId = $someString"
                 Query.IsAzureNativeSqlDatabaseSnapshotPersistentFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allAzureNativeKeyVaultsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!): [AzureNativeKeyVault!]!
+        internal void InitQueryAllAzureNativeKeyVaultsByRegionFromAzure()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
+                Tuple.Create("region", "AzureNativeRegion!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllAzureNativeKeyVaultsByRegionFromAzure",
+                "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
+                "List<AzureNativeKeyVault>",
+                Query.AllAzureNativeKeyVaultsByRegionFromAzure,
+                Query.AllAzureNativeKeyVaultsByRegionFromAzureFieldSpec,
+                @"# REQUIRED
+$query.Var.azureSubscriptionRubrikId = $someString
+# REQUIRED
+$query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values."
             );
         }
 

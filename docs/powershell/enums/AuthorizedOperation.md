@@ -180,6 +180,7 @@ Authorized operations on an object.
 - ASSIGN_MIP_LABELS - Assign Microsoft Information Protection(MIP) labels.
 - ENABLE_ACCESS_LOGGING - Enable access logging.
 - MANAGE_LOG_SHIPPING - Manage log shipping.
+- MANAGE_USER_CREDENTIALS - Manage user credentials.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

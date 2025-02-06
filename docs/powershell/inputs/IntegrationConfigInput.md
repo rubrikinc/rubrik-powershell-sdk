@@ -11,3 +11,5 @@ Holds the configuration of a single integration. Note that IntegrationConfig
   - The OKTA configuration.
 - microsoftPurview: MicrosoftPurviewConfigInput
   - The Microsoft Purview configuration.
+- pam: PamIntegrationConfigInput
+  - The PAM configuration.

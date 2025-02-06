@@ -806,7 +806,10 @@ type Query {
     projectStatusFilters: [CloudAccountStatus!]!,
 
     # Search text for project name, native ID and number.
-    projectSearchText: String!): [GcpCloudAccountProjectDetail!]!
+    projectSearchText: String!,
+
+    # Denotes if features are to be aggregated or flattened.
+    aggregateFeatures: Boolean): [GcpCloudAccountProjectDetail!]!
 
   # List of GCP projects to add after successful authorization.
   allGcpCloudAccountProjectsForOauth(
@@ -6056,6 +6059,9 @@ type Query {
 
     # Rubrik UUID for the object.
     fid: UUID!): O365UserDescendantMetadataConnection!
+
+  # Returns the self service information for the logged-in user, which includes the user name and the M365 object details.
+  o365UserSelfServiceInfo: GetSelfServiceInfoForUserResp!
 
   # Reply for request to download Rubrik Edge from Rubrik Security Cloud.
   oauthCodesForEdgeReg(
@@ -13178,6 +13184,11 @@ type Mutation {
     # The webhook configuration to update.
     input: UpdateWebhookInput!): UpdateWebhookReply!
 
+  # Update the webhook status.
+  updateWebhookStatus(
+    # Update webhook status input.
+    input: UpdateWebhookStatusInput!): UpdateWebhookStatusReply!
+
   # Update webhook configuration.
   updateWebhookV2(
     # Update webhook input.
@@ -14622,6 +14633,12 @@ type ActiveDirectoryObjectsCount {
 
   # Count of group policies in the snapshot.
   gpos: Long
+
+  # Count of managed service accounts in the snapshot.
+  managedServiceAccounts: Long
+
+  # Count of group managed service accounts in the snapshot.
+  groupManagedServiceAccounts: Long
 }
 # Supported in v9.0+
 input ActiveDirectoryRecoveryLdapCredsInput {
@@ -19195,6 +19212,9 @@ enum AuthorizedOperation {
 
   # Manage Organization Networks.
   MANAGE_ORGANIZATION_NETWORKS
+
+  # Manage PAM integration.
+  MANAGE_PAM_INTEGRATION
   MANAGE_PROTECTION
 
   # Manage Recovery Plans within Orchestrated Recovery.
@@ -19271,6 +19291,9 @@ enum AuthorizedOperation {
   # Restore Active Directory Forest.
   RESTORE_ACTIVE_DIRECTORY_FOREST
   RESTORE_TO_ORIGIN
+
+  # Users can recover their own objects.
+  SELF_SERVICE_RESTORE
   TAKE_ONDEMAND_SNAPSHOT
 
   # Take remediation actions.
@@ -19376,10 +19399,19 @@ enum AuthorizedOperation {
   VIEW_ORGANIZATION_NETWORKS
   VIEW_REPLICATION_SETTINGS
   VIEW_REPORT
+
+  # View Role.
+  VIEW_ROLE
+
+  # View Security Policy.
+  VIEW_SECURITY_POLICY
   VIEW_SECURITY_SETTINGS
 
   # View ServiceNow integration.
   VIEW_SERVICENOW_INTEGRATION
+
+  # View Service Account.
+  VIEW_SERVICE_ACCOUNT
   VIEW_SLA
 
   # The operation to view the SMB domain.
@@ -19406,6 +19438,9 @@ enum AuthorizedOperation {
 
   # View TPR request.
   VIEW_TPR_REQUEST
+
+  # View User.
+  VIEW_USER
   VIEW_USER_MANAGEMENT
   VIEW_WEBHOOKS
 
@@ -21025,7 +21060,10 @@ type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnap
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -21417,7 +21455,10 @@ type AwsNativeEc2Instance implements PolarisHierarchyObject , PolarisHierarchySn
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -24698,7 +24739,10 @@ type AwsNativeRdsInstance implements PolarisHierarchyObject , PolarisHierarchySn
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -25292,7 +25336,10 @@ type AwsNativeS3Bucket implements PolarisHierarchyObject , PolarisHierarchySnapp
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -26112,7 +26159,10 @@ type AzureAdDirectory implements HierarchyObject , PolarisHierarchyObject , Hier
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -28151,7 +28201,10 @@ type AzureNativeManagedDisk implements PolarisHierarchyObject , PolarisHierarchy
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -29259,7 +29312,10 @@ type AzureNativeVirtualMachine implements PolarisHierarchyObject , PolarisHierar
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -30114,7 +30170,10 @@ type AzureSqlDatabaseDb implements PolarisHierarchyObject , PolarisHierarchySnap
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -30594,7 +30653,10 @@ type AzureSqlManagedInstanceDatabase implements PolarisHierarchyObject , Polaris
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -31089,7 +31151,10 @@ type AzureStorageAccount implements PolarisHierarchyObject , PolarisHierarchySna
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -41899,6 +41964,9 @@ type ConnectionStatusDetails {
 
   # Connection between target and source Rubrik clusters (connected, disconnected, or unavailable).
   targetAndSource: ConnectionStatusType!
+
+  # Bidirectional connection status between source and target Rubrik clusters: connected, disconnected, or partial.
+  bidirectionalConnectionStatus: ReplicationBidirectionalConnectionStatus!
 }
 # The connection status type enum.
 enum ConnectionStatusType {
@@ -42721,8 +42789,11 @@ input CreateCloudNativeRcvAzureStorageSettingInput {
   # Name of the storage setting.
   name: String!
 
-  # Rubrik Cloud Vault location region. For source region template type, this field will be 'UNKNOWN_AZURE_REGION'. For specific region template type, this field must be an Azure region supported for RCV in COOL tier.
+  # Rubrik Cloud Vault location Azure region. For the source region template type, this field will be 'UNKNOWN_AZURE_REGION'. For the specific region template type, this field must be an supported RCV region.
   region: AzureRegion!
+
+  # Rubrik Cloud Vault location region. For the source region template type, this field will be 'UNKNOWN_AZURE_REGION'. For the specific region template type, this field must be an supported RCV region.
+  rcvRegion: RcsRegionEnumType
 
   # Tier for the Rubrik Cloud Vault (RCV) location supports Backup with Azure Cool storage and Archive with Azure Archive storage.
   tier: AzureStorageTier
@@ -43731,6 +43802,9 @@ input CreateReplicationPairInput {
 
   # NAT or Private replication setup type.
   setupType: ReplicationSetupType!
+
+  # Whether to use IPv6 for replication pairing.
+  useIpv6: Boolean = false
 }
 # Input for creating a S3Compatible Reader Target.
 input CreateS3CompatibleReaderTargetInput {
@@ -52810,6 +52884,14 @@ type FeatureCdmVersionReply {
   # Flag denoting feature support.
   isSupported: Boolean!
 }
+# Status of the feature delete operation.
+type FeatureDeleteStatus {
+  # Feature name, for example, CLOUD_NATIVE_PROTECTION, CLOUD_NATIVE_ARCHIVAL.
+  feature: CloudAccountFeature!
+
+  # Specifies whether the feature deletion succeeded.
+  success: Boolean!
+}
 # Feature specific details for a cloud account.
 type FeatureDetail {
   # Feature enum.
@@ -53469,8 +53551,7 @@ input FilesetExportFilesJobConfigInput {
   # Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
   shouldRecreateDirectoryStructure: Boolean
 
-  # Supported in v9.4
-  # Optional field to determine if we should restore only acls during restore. Default value is false.
+  # Optional field to determine if only ACLs should be restored during the restore process. The default value is false.
   shouldRestoreOnlyAcls: Boolean
 
   # Required. Supported in v5.0+
@@ -53581,8 +53662,7 @@ input FilesetRestoreFilesJobConfigInput {
   # Optional field that specifies whether to recreate directory structure when using the 'Restore to separate folder' option in the UI.
   shouldRecreateDirectoryStructure: Boolean
 
-  # Supported in v9.4
-  # Optional field to determine if we should restore only acls during restore. Default value is false.
+  # Optional field to determine if only ACLs should be restored during the restore process. The default value is false.
   shouldRestoreOnlyAcls: Boolean
 
   # Required. Supported in v5.0+
@@ -53723,7 +53803,7 @@ type FilesetSummary {
   slaAssignable: SlaAssignable
 }
 # Fileset template.
-type FilesetTemplate implements CdmHierarchyObject , HierarchyObject {
+type FilesetTemplate implements CdmHierarchyObject , HierarchyObject , PhysicalHostDescendantType , PhysicalHostPhysicalChildType {
   # ID associated with fileset template in CDM.
   cdmId: String!
 
@@ -54663,6 +54743,12 @@ input GcpCloudAccountDeleteProjectsInput {
 
   # Specifies whether cleanup of GCP resources should be skipped. If this flag is set, then the session ID is ignored.
   skipResourceDeletion: Boolean!
+
+  # List of project IDs.
+  projectIds: [UUID!]
+
+  # List of cloud account features.
+  features: [CloudAccountFeature!]
 }
 # Response for the request to delete GCP cloud account projects.
 type GcpCloudAccountDeleteProjectsReply {
@@ -54764,6 +54850,9 @@ type GcpCloudAccountProjectDeleteStatus {
 
   # Error during deletion, if any.
   error: String!
+
+  # Status of the individual features in delete operation.
+  featuresStatus: [FeatureDeleteStatus!]!
 }
 # Details of the Gcp Cloud Account project configured for a feature.
 type GcpCloudAccountProjectDetail {
@@ -54772,6 +54861,9 @@ type GcpCloudAccountProjectDetail {
 
   # Details of the GCP cloud account feature.
   featureDetail: GcpCloudAccountFeatureDetail
+
+  # List of all the enabled features and their details for which the project has been onboarded.
+  allEnabledFeaturesDetails: [GcpCloudAccountFeatureDetail!]!
 }
 # Details of a GCP project for OAuth.
 type GcpCloudAccountProjectForOauth {
@@ -55043,7 +55135,10 @@ type GcpNativeDisk implements PolarisHierarchyObject , PolarisHierarchySnappable
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -55443,7 +55538,10 @@ type GcpNativeGceInstance implements PolarisHierarchyObject , PolarisHierarchySn
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -57121,6 +57219,20 @@ type GetSchemaResponse {
   # Supported in m3.2.0-m4.2.0
   # Object with schema details.
   data: CassandraSchemaObject
+}
+# Self service information for the logged-in user.
+type GetSelfServiceInfoForUserResp {
+  # Name of the logged-in user.
+  name: String!
+
+  # RSC ID of the M365 organization to which the user belongs.
+  orgId: String!
+
+  # Onedrive object, if any, belonging to the user.
+  onedrive: OnedriveForSelfService
+
+  # Mailbox object, if any, belonging to the user.
+  mailbox: MailboxForSelfService
 }
 input GetSmbConfigurationInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -63658,6 +63770,40 @@ input InPlaceRecoveryJobConfigV2Input {
   shouldKeepVsphereSnapshotAfterRecovery: Boolean
   requiredRecoveryParameters: RequiredRecoveryParametersInput
 }
+# Specifies information about inactive lockout configuration.
+type InactiveLockoutConfig {
+  # Specifies whether the inactive lockout feature is enabled.
+  isInactiveLockoutEnabled: Boolean!
+
+  # Specifies the number of inactive days after which a user will be locked.
+  inactivityDaysLimit: Int!
+
+  # Specifies whether warning emails are sent to user accounts pending lockout due to inactivity.
+  isWarningEmailEnabled: Boolean!
+
+  # Specifies the number of days before lockout to send warning emails.
+  numDaysBeforeWarningEmail: Int!
+
+  # Specifies whether locked users can unlock themselves using a password reset.
+  isSelfServiceUnlockEnabled: Boolean!
+}
+# Specifies information about inactive lockout configuration.
+input InactiveLockoutConfigInput {
+  # Specifies whether the inactive lockout feature is enabled.
+  isInactiveLockoutEnabled: Boolean = false
+
+  # Specifies the number of inactive days after which a user will be locked.
+  inactivityDaysLimit: Int = 0
+
+  # Specifies whether warning emails are sent to user accounts pending lockout due to inactivity.
+  isWarningEmailEnabled: Boolean = false
+
+  # Specifies the number of days before lockout to send warning emails.
+  numDaysBeforeWarningEmail: Int = 0
+
+  # Specifies whether locked users can unlock themselves using a password reset.
+  isSelfServiceUnlockEnabled: Boolean = false
+}
 # Indicator of Compromise.
 type IndicatorOfCompromise {
   # The threat family associated with the IOC.
@@ -65712,7 +65858,10 @@ type K8sNamespace implements HierarchyObject , HierarchySnappable , PolarisHiera
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -68423,6 +68572,9 @@ type LockoutConfig {
 
   # Specifies whether the auto unlock feature is enabled on the UI.
   isAutoUnlockFeatureEnabled: Boolean!
+
+  # Specifies information about inactive lockout configuration.
+  inactiveLockoutConfig: InactiveLockoutConfig!
 }
 # User account lockout details.
 type LockoutState {
@@ -68657,7 +68809,10 @@ type M365BackupStorageGroup implements MicrosoftGroup , HierarchyObject , Polari
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -68893,7 +69048,10 @@ type M365BackupStorageMailbox implements HierarchyObject , HierarchySnappable , 
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -69088,7 +69246,10 @@ type M365BackupStorageOnedrive implements HierarchyObject , HierarchySnappable ,
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -69215,7 +69376,10 @@ type M365BackupStorageOrg implements MicrosoftOrg , HierarchyObject , PolarisHie
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -69499,7 +69663,10 @@ type M365BackupStorageSite implements HierarchyObject , HierarchySnappable , Pol
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -69636,6 +69803,11 @@ type M365Region {
 type M365RegionsResp {
   # The list of regions.
   regions: [M365Region!]!
+}
+# Mailbox object belonging to the user.
+type MailboxForSelfService {
+  # RSC ID of the Mailbox object.
+  id: String!
 }
 # Type representing the mailbox contents to be restored.
 input MailboxRestoreConfig {
@@ -72049,6 +72221,9 @@ enum MetadataKey {
   # Specifies whether to hide numbers in the chart legend component.
   HIDE_CHART_LEGEND_NUMBER
 
+  # User message to be displayed if the chart is invalid.
+  INVALID_CHART_USER_MESSAGE
+
   # Metadata key is unspecified.
   METADATA_KEY_UNSPECIFIED
 
@@ -72170,7 +72345,10 @@ interface MicrosoftGroup {
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -72382,7 +72560,10 @@ interface MicrosoftMailbox {
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -72592,7 +72773,10 @@ interface MicrosoftOnedrive {
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -72761,7 +72945,10 @@ interface MicrosoftOrg {
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -72951,7 +73138,10 @@ interface MicrosoftSite {
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -86513,7 +86703,10 @@ type O365Calendar implements HierarchyObject , HierarchySnappable , PolarisHiera
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -87056,7 +87249,10 @@ type O365Group implements MicrosoftGroup , HierarchyObject , PolarisHierarchyObj
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -87357,7 +87553,10 @@ type O365Mailbox implements HierarchyObject , HierarchySnappable , PolarisHierar
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -87594,7 +87793,10 @@ type O365Onedrive implements HierarchyObject , HierarchySnappable , PolarisHiera
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -87950,7 +88152,10 @@ type O365Org implements MicrosoftOrg , HierarchyObject , PolarisHierarchyObject 
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -88457,7 +88662,10 @@ type O365SharepointDrive implements HierarchyObject , HierarchySnappable , Polar
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -88657,7 +88865,10 @@ type O365SharepointList implements HierarchyObject , HierarchySnappable , Polari
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -88909,7 +89120,10 @@ type O365Site implements HierarchyObject , HierarchySnappable , PolarisHierarchy
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -89251,7 +89465,10 @@ type O365Teams implements HierarchyObject , HierarchySnappable , PolarisHierarch
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -90136,6 +90353,11 @@ type OnboardingModeStats {
   # Count of the number of objects protected with an SLA.
   totalProtectedCount: Int!
 }
+# Onedrive object belonging to the user.
+type OnedriveForSelfService {
+  # RSC ID of the Onedrive object.
+  id: String!
+}
 # Parameters for OneDrive file or folder search.
 input OnedriveSearchFilter {
   searchKeywordFilter: OnedriveSearchKeywordFilter
@@ -90369,6 +90591,9 @@ enum Operation {
 
   # Manage Organization Networks.
   MANAGE_ORGANIZATION_NETWORKS
+
+  # Manage PAM integration.
+  MANAGE_PAM_INTEGRATION
   MANAGE_PROTECTION
 
   # Manage Recovery Plans within Orchestrated Recovery.
@@ -90446,6 +90671,9 @@ enum Operation {
   # Restore Active Directory Forest.
   RESTORE_ACTIVE_DIRECTORY_FOREST
   RESTORE_TO_ORIGIN
+
+  # Users can recover their own objects.
+  SELF_SERVICE_RESTORE
   TAKE_ON_DEMAND_SNAPSHOT
 
   # Take remediation actions.
@@ -90550,10 +90778,19 @@ enum Operation {
   VIEW_ORGANIZATION_NETWORKS
   VIEW_REPLICATION_SETTINGS
   VIEW_REPORT
+
+  # View Role.
+  VIEW_ROLE
+
+  # View Security Policy.
+  VIEW_SECURITY_POLICY
   VIEW_SECURITY_SETTINGS
 
   # View ServiceNow integration.
   VIEW_SERVICENOW_INTEGRATION
+
+  # View Service Account.
+  VIEW_SERVICE_ACCOUNT
   VIEW_SLA
 
   # The operation to view the SMB domain.
@@ -90580,6 +90817,9 @@ enum Operation {
 
   # View TPR request.
   VIEW_TPR_REQUEST
+
+  # View User.
+  VIEW_USER
   VIEW_USER_MANAGEMENT
   VIEW_WEBHOOKS
 
@@ -94792,7 +95032,10 @@ interface PolarisHierarchySnappable {
     filter: PolarisSnapshotFilterInput,
 
     # Group Rubrik Security Cloud snapshots by field.
-    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
 
   # GroupBy connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
@@ -98039,6 +98282,20 @@ input ReplicationBandwidthOutgoingInput {
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
 }
+# Bidirectional connection status between Rubrik source and target clusters.
+enum ReplicationBidirectionalConnectionStatus {
+  # Both source and target clusters are connected.
+  BIDIRECTIONAL_CONNECTED
+
+  # Both source and target clusters are disconnected from each other.
+  BIDIRECTIONAL_DISCONNECTED
+
+  # Source and target clusters connectivity is partial.
+  BIDIRECTIONAL_PARTIAL
+
+  # Default Value.
+  BIDIRECTIONAL_UNSPECIFIED
+}
 # Rubrik cluster details.
 type ReplicationCluster {
   # Rubrik cluster name.
@@ -98122,6 +98379,9 @@ type ReplicationPairConfigDetails {
   # Target Rubrik cluster gateway information.
   targetGateway: GatewayInfo
 
+  # Denotes whether the clusters are connected over IPv6.
+  useIpv6: Boolean
+
   # Network interface names for communication between the source and target clusters. This only applies to the private network setup type.
   networkInterface: NetworkInterfaceSelectionType
 
@@ -98172,6 +98432,17 @@ input ReplicationPairInput {
   # ID of the target cluster.
   targetClusterUuid: UUID!
 }
+# Pause status of the replication pair.
+enum ReplicationPairPauseStatus {
+  # Replication pair is not paused.
+  REPLICATION_PAIR_NOT_PAUSED
+
+  # Replication pair is paused.
+  REPLICATION_PAIR_PAUSED
+
+  # Default Value.
+  REPLICATION_PAUSE_UNSPECIFIED
+}
 # Filter for replication pairs request.
 input ReplicationPairsQueryFilter {
   # Rubrik cluster name.
@@ -98185,6 +98456,12 @@ input ReplicationPairsQueryFilter {
 
   # Connection status of the replication pair.
   status: [ReplicationPairConnectionStatus!] = []
+
+  # Replication bidirectional connection status filter.
+  bidirectionalStatus: [ReplicationBidirectionalConnectionStatus!] = []
+
+  # Replication pause status filter.
+  pauseStatus: [ReplicationPairPauseStatus!] = []
 }
 # Field to sort by for replication pairs.
 enum ReplicationPairsQuerySortByField {
@@ -105882,6 +106159,10 @@ enum SnapshotQueryFilterField {
   # hold, else return all snapshots which are not legally held.
   IS_LEGALLY_HELD
 
+  # Checks whether the death_time field is null or not. Determines
+  # whether the snapshot metadata is marked for deletion or not.
+  IS_MARKED_FOR_METADATA_DELETION
+
   # When true, returns source snapshots that are not globally expired
   # i.e. snapshot is unexpired on source or has an unexpired replica/archival
   # copy, else returns globally expired source snapshots.
@@ -112074,6 +112355,9 @@ input UpdateLockoutConfigInput {
 
   # Specifies whether the auto unlock feature is enabled on the UI.
   isAutoUnlockFeatureEnabled: Boolean = false
+
+  # Specifies information about inactive lockout configuration.
+  inactiveLockoutConfig: InactiveLockoutConfigInput
 }
 # Specifies information about lockout configuration.
 type UpdateLockoutConfigReply {
@@ -112097,6 +112381,9 @@ type UpdateLockoutConfigReply {
 
   # Specifies whether the auto unlock feature is enabled on the UI.
   isAutoUnlockFeatureEnabled: Boolean!
+
+  # Specifies information about inactive lockout configuration.
+  inactiveLockoutConfig: InactiveLockoutConfig!
 }
 # UpdateManagedIdentitiesRequest input for the Azure account.
 input UpdateManagedIdentitiesInput {
@@ -112718,6 +113005,9 @@ input UpdateReplicationTargetInput {
 
   # NAT or private replication setup type.
   setupType: ReplicationSetupType!
+
+  # Whether to use IPv6 for replication pairing.
+  useIpv6: Boolean = false
 }
 # Input to edit S3 compatible target.
 input UpdateS3CompatibleTargetInput {
@@ -113292,6 +113582,22 @@ type UpdateWebhookReply {
 
   # This field is empty if the webhook test was not requested (shouldSendTestEvent request field), or was carried out successfully. In case of a webhook test failure, this field contains the failure details.
   testError: ErrorInfo
+}
+# The input values for updating the webhook status.
+input UpdateWebhookStatusInput {
+  # The ID of the webhook to be updated.
+  id: Int!
+
+  # The status of the webhook.
+  status: WebhookStatusV2!
+}
+# The reply from updating the webhook status request.
+type UpdateWebhookStatusReply {
+  # True if the webhook status was successfully updated.
+  isSuccessful: Boolean!
+
+  # Captures details of errors encountered within the system.
+  errorInfo: WebhookErrorInfo
 }
 # The input values for updating the webhook configuration.
 input UpdateWebhookV2Input {

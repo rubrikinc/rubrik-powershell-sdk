@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.Int64? Id { get; set; }
 
+        //      C# -> IntegrationCreation? Info
+        // GraphQL -> info: IntegrationCreation (type)
+        [JsonProperty("info")]
+        public IntegrationCreation? Info { get; set; }
+
 
         #endregion
 
@@ -35,11 +40,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CreateIntegrationReply Set(
-        System.Int64? Id = null
+        System.Int64? Id = null,
+        IntegrationCreation? Info = null
     ) 
     {
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( Info != null ) {
+            this.Info = Info;
         }
         return this;
     }
@@ -62,6 +71,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> IntegrationCreation? Info
+        // GraphQL -> info: IntegrationCreation (type)
+        if (this.Info != null) {
+            var fspec = this.Info.AsFieldSpec(conf.Child("info"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "info" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -87,6 +108,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> IntegrationCreation? Info
+        // GraphQL -> info: IntegrationCreation (type)
+        if (ec.Includes("info",false))
+        {
+            if(this.Info == null) {
+
+                this.Info = new IntegrationCreation();
+                this.Info.ApplyExploratoryFieldSpec(ec.NewChild("info"));
+
+            } else {
+
+                this.Info.ApplyExploratoryFieldSpec(ec.NewChild("info"));
+
+            }
+        }
+        else if (this.Info != null && ec.Excludes("info",false))
+        {
+            this.Info = null;
         }
     }
 

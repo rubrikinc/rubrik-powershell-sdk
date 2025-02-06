@@ -9,3 +9,5 @@ Input required to restore a GCP GCE instance snapshot.
   - Specifies whether to restore labels of the instance from snapshot or not.
 - shouldStartRestoredInstance: System.Boolean
   - Specfies whether the the restored instance should be started or not.
+- snapshotType: GcpSnapshotType
+  - The type of the snapshot to recover from.

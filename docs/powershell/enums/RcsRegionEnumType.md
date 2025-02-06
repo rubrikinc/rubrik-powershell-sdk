@@ -13,6 +13,7 @@ Regions for Rubrik Cloud Storage Archival Location.
 - UAE_NORTH - UAE North or Dubai.
 - GERMANY_WEST_CENTRAL - Germany West Central or Frankfurt.
 - AUSTRALIA_EAST - Australia East or New South Wales.
+- UNKNOWN_AWS_REGION - Rubrik Cloud Vault AWS region is unknown.
 - MIDDLE_EAST_BAHRAIN - Middle East bahrain.
 - ISRAEL_CENTRAL - Israel Central or Israel.
 - US_NORTH_CENTRAL - US north central or Illinois.

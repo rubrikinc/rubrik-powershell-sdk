@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 10
+    /// Create a new RscQuery object for any of the 11
     /// operations in the 'Webhook' API domain:
-    /// Create, CreateV2, Delete, DeleteV2, SendTestMessageTo, SendTestMessageToExisting, Test, TestExisting, Update, or UpdateV2.
+    /// Create, CreateV2, Delete, DeleteV2, GeneratePreviewMessageForTemplate, SendTestMessageTo, SendTestMessageToExisting, Test, TestExisting, Update, or UpdateV2.
     /// </summary>
     /// <description>
     /// New-RscMutationWebhook creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 10 operations
+    /// There are 11 operations
     /// in the 'Webhook' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Create, CreateV2, Delete, DeleteV2, SendTestMessageTo, SendTestMessageToExisting, Test, TestExisting, Update, or UpdateV2.
+    /// one of: Create, CreateV2, Delete, DeleteV2, GeneratePreviewMessageForTemplate, SendTestMessageTo, SendTestMessageToExisting, Test, TestExisting, Update, or UpdateV2.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -238,13 +238,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				)
     /// 				# REQUIRED
     /// 				templateInfo = @{
-    /// 					# REQUIRED
-    /// 					template = @{
-    /// 						# OPTIONAL
-    /// 						templateId = $someInt
-    /// 						# OPTIONAL
-    /// 						customTemplate = $someString
-    /// 					}
+    /// 					# OPTIONAL
+    /// 					templateId = $someInt
+    /// 					# OPTIONAL
+    /// 					customTemplate = $someString
     /// 				}
     /// 			}
     /// 			# OPTIONAL
@@ -267,13 +264,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				)
     /// 				# REQUIRED
     /// 				templateInfo = @{
-    /// 					# REQUIRED
-    /// 					template = @{
-    /// 						# OPTIONAL
-    /// 						templateId = $someInt
-    /// 						# OPTIONAL
-    /// 						customTemplate = $someString
-    /// 					}
+    /// 					# OPTIONAL
+    /// 					templateId = $someInt
+    /// 					# OPTIONAL
+    /// 					customTemplate = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -353,6 +347,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the GeneratePreviewMessageForTemplate operation
+    /// of the 'Webhook' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Webhook
+    /// # API Operation: GeneratePreviewMessageForTemplate
+    /// 
+    /// $query = New-RscMutationWebhook -Operation GeneratePreviewMessageForTemplate
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	templateData = $someString
+    /// 	# REQUIRED
+    /// 	msgType = $someTemplateMessageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TemplateMessageType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GeneratePreviewMessageForWebhookTemplateReply
     /// 
     /// 
     /// 
@@ -706,13 +733,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				)
     /// 				# REQUIRED
     /// 				templateInfo = @{
-    /// 					# REQUIRED
-    /// 					template = @{
-    /// 						# OPTIONAL
-    /// 						templateId = $someInt
-    /// 						# OPTIONAL
-    /// 						customTemplate = $someString
-    /// 					}
+    /// 					# OPTIONAL
+    /// 					templateId = $someInt
+    /// 					# OPTIONAL
+    /// 					customTemplate = $someString
     /// 				}
     /// 			}
     /// 			# OPTIONAL
@@ -735,13 +759,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				)
     /// 				# REQUIRED
     /// 				templateInfo = @{
-    /// 					# REQUIRED
-    /// 					template = @{
-    /// 						# OPTIONAL
-    /// 						templateId = $someInt
-    /// 						# OPTIONAL
-    /// 						customTemplate = $someString
-    /// 					}
+    /// 					# OPTIONAL
+    /// 					templateId = $someInt
+    /// 					# OPTIONAL
+    /// 					customTemplate = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -786,6 +807,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateV2",
                 "Delete",
                 "DeleteV2",
+                "GeneratePreviewMessageForTemplate",
                 "SendTestMessageTo",
                 "SendTestMessageToExisting",
                 "Test",
@@ -818,6 +840,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteV2":
                         this.ProcessRecord_DeleteV2();
+                        break;
+                    case "GeneratePreviewMessageForTemplate":
+                        this.ProcessRecord_GeneratePreviewMessageForTemplate();
                         break;
                     case "SendTestMessageTo":
                         this.ProcessRecord_SendTestMessageTo();
@@ -881,6 +906,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteV2";
             // Create new graphql operation deleteWebhookV2
             InitMutationDeleteWebhookV2();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // generatePreviewMessageForWebhookTemplate.
+        internal void ProcessRecord_GeneratePreviewMessageForTemplate()
+        {
+            this._logger.name += " -GeneratePreviewMessageForTemplate";
+            // Create new graphql operation generatePreviewMessageForWebhookTemplate
+            InitMutationGeneratePreviewMessageForWebhookTemplate();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1094,13 +1128,10 @@ $query.Var.input = @{
 				)
 				# REQUIRED
 				templateInfo = @{
-					# REQUIRED
-					template = @{
-						# OPTIONAL
-						templateId = $someInt
-						# OPTIONAL
-						customTemplate = $someString
-					}
+					# OPTIONAL
+					templateId = $someInt
+					# OPTIONAL
+					customTemplate = $someString
 				}
 			}
 			# OPTIONAL
@@ -1123,13 +1154,10 @@ $query.Var.input = @{
 				)
 				# REQUIRED
 				templateInfo = @{
-					# REQUIRED
-					template = @{
-						# OPTIONAL
-						templateId = $someInt
-						# OPTIONAL
-						customTemplate = $someString
-					}
+					# OPTIONAL
+					templateId = $someInt
+					# OPTIONAL
+					customTemplate = $someString
 				}
 			}
 		}
@@ -1186,6 +1214,31 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someInt
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // generatePreviewMessageForWebhookTemplate(input: GeneratePreviewMessageForWebhookTemplateInput!): GeneratePreviewMessageForWebhookTemplateReply!
+        internal void InitMutationGeneratePreviewMessageForWebhookTemplate()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GeneratePreviewMessageForWebhookTemplateInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationGeneratePreviewMessageForWebhookTemplate",
+                "($input: GeneratePreviewMessageForWebhookTemplateInput!)",
+                "GeneratePreviewMessageForWebhookTemplateReply",
+                Mutation.GeneratePreviewMessageForWebhookTemplate,
+                Mutation.GeneratePreviewMessageForWebhookTemplateFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	templateData = $someString
+	# REQUIRED
+	msgType = $someTemplateMessageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TemplateMessageType]) for enum values.
 }"
             );
         }
@@ -1498,13 +1551,10 @@ $query.Var.input = @{
 				)
 				# REQUIRED
 				templateInfo = @{
-					# REQUIRED
-					template = @{
-						# OPTIONAL
-						templateId = $someInt
-						# OPTIONAL
-						customTemplate = $someString
-					}
+					# OPTIONAL
+					templateId = $someInt
+					# OPTIONAL
+					customTemplate = $someString
 				}
 			}
 			# OPTIONAL
@@ -1527,13 +1577,10 @@ $query.Var.input = @{
 				)
 				# REQUIRED
 				templateInfo = @{
-					# REQUIRED
-					template = @{
-						# OPTIONAL
-						templateId = $someInt
-						# OPTIONAL
-						customTemplate = $someString
-					}
+					# OPTIONAL
+					templateId = $someInt
+					# OPTIONAL
+					customTemplate = $someString
 				}
 			}
 		}

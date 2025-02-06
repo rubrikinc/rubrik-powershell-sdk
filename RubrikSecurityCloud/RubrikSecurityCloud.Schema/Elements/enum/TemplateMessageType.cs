@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         AUDIT,
 
         [EnumMember(Value = "EVENT")]
-        EVENT
+        EVENT,
+
+        [EnumMember(Value = "TEMPLATE_MESSAGE_TYPE_UNSPECIFIED")]
+        TEMPLATE_MESSAGE_TYPE_UNSPECIFIED
 
 
     } // enum TemplateMessageType

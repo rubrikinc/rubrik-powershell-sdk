@@ -138,6 +138,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UK_WEST")]
         UK_WEST,
 
+        [EnumMember(Value = "UNKNOWN_AWS_REGION")]
+        UNKNOWN_AWS_REGION,
+
         [EnumMember(Value = "UNKNOWN_AZURE_REGION")]
         UNKNOWN_AZURE_REGION,
 

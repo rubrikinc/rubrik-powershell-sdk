@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region AwsNativeEc2Instance
  
-    public class AwsNativeEc2Instance: BaseType, AwsNativeAccountDescendantType, AwsNativeAccountLogicalChildType, AwsNativeHierarchyObject, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class AwsNativeEc2Instance: BaseType, AwsNativeAccountDescendantType, AwsNativeAccountLogicalChildType, AwsNativeHierarchyObject, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 
