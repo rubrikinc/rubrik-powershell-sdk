@@ -6,6 +6,8 @@ New Features:
 
 Fixes:
 
+- Fixed build issue that would result in skipping PowerShell 5 tests
+
 Breaking Changes:
 
 ## Version 1.12.4
