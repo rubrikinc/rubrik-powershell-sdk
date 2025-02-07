@@ -74,7 +74,7 @@ if ($LASTEXITCODE -ne 0 ) {
 Copy-Item -Recurse -Force $ProjectOutputDir $OutputDir
 $helpXmlPath = "$OutputDir\net6.0\RubrikSecurityCloud.PowerShell.dll-Help.xml"
 if (Test-Path $helpXmlPath) {
-    Copy-Item $helpXmlPath $OutputDir\net462\
+    Copy-Item $helpXmlPath $OutputDir\net481\
 } else {
     Write-Warning "Documentation XML file not found. Skipping copy."
 }

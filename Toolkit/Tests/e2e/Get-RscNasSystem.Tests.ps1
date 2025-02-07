@@ -32,7 +32,7 @@ Describe -Name 'Get-RscNasSystem Tests' -Tag 'Public' -Fixture {
 
         It -Name 'retrieves single NAS-System by Name' -Test {
             $nasSystemsWithGivenName = Get-RscNasSystem -Name $data.nasSystems[0].name
-            $nasSystemsWithGivenName.Count | Should -BeGreaterThan 0
+            ($nasSystemsWithGivenName.PSObject.Properties).Count | Should -BeGreaterThan 0
             # One of the NAS-Systems in the list should have an id of $data.nasSystems[0].id
             $match = $false
             foreach ($nasSystem in $nasSystemsWithGivenName) {
