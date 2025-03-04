@@ -6,7 +6,7 @@ function New-RscSla
     Creates a new Rubrik SLA Domain
 
     .DESCRIPTION
-    The New-RscSla cmdlet will create a new SLA Domain. Rubrik SLA Domains are policies that define the frequency, retention, and rules for acrhival and replication.
+    The New-RscSla cmdlet will create a new SLA Domain. Rubrik SLA Domains are policies that define the frequency, retention, and rules for archival and replication.
 
     .LINK
     Schema reference:
