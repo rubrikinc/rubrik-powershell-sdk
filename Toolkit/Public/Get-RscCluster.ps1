@@ -19,11 +19,11 @@ function Get-RscCluster {
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cluster.doc.html
     
     .PARAMETER List
-    Retrieve the list of clusters that are connected to Rubrik Securiry Cloud.
+    Retrieve the list of clusters that are connected to Rubrik Security Cloud.
     This is the default parameter set.
 
     .PARAMETER Name
-    Used to return a specific cluster based on the name
+    Used to return a specific cluster based on the name.
 
     .PARAMETER Detail
     Use the DETAIL field profile instead of the DEFAULT field profile.
@@ -42,7 +42,7 @@ function Get-RscCluster {
     Get-RscCluster -List
     
     .EXAMPLE
-    Return a information about a cluster based on the name
+    Return information about a cluster based on the name
 
     Get-RscCluster -Name vault-r-london
     
