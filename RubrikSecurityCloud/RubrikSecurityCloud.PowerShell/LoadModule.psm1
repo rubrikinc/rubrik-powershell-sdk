@@ -9,13 +9,14 @@ try {
     # Determine the module directory based on the PowerShell edition
     If ($PSVersionTable.PSEdition -eq "Desktop") {
        # Write-Host "`nLoading Rubrik Security Cloud PowerShell Module (WindowsPowerShell)...`n"
-        $moduleDir = Join-Path -Path $PSScriptRoot -ChildPath "net461"
+        $moduleDir = Join-Path -Path $PSScriptRoot -ChildPath "net481"
 
         # Load the specific versions of required assemblies
         $unsafeAssemblyPath = Join-Path -Path $moduleDir -ChildPath 'System.Runtime.CompilerServices.Unsafe.dll'
         $vectorsAssemblyPath = Join-Path -Path $moduleDir -ChildPath 'System.Numerics.Vectors.dll'
         $buffersAssemblyPath = Join-Path -Path $moduleDir -ChildPath 'System.Buffers.dll'
         $annotationsAssemblyPath = Join-Path -Path $moduleDir -ChildPath 'System.ComponentModel.Annotations.dll'
+        $textJsonAssemblyPath = Join-Path -Path $moduleDir -ChildPath 'System.Text.Json.dll'
         
         # Force loading the correct assembly versions
         # [System.Reflection.Assembly]::LoadFrom($unsafeAssemblyPath)
@@ -38,6 +39,10 @@ try {
             elseif ($e.Name -like 'System.ComponentModel.Annotations, *') {
                 # Write-Host "LoadModule.psm1: Redirecting $e.Name to the correct System.ComponentModel.Annotations assembly"
                 return [System.Reflection.Assembly]::LoadFrom($annotationsAssemblyPath)
+            }
+            elseif ($e.Name -like 'System.Text.Json, *') {
+                # Write-Host "LoadModule.psm1: Redirecting $e.Name to the correct System.ComponentModel.Annotations assembly"
+                return [System.Reflection.Assembly]::LoadFrom($textJsonAssemblyPath)
             }
         }
 

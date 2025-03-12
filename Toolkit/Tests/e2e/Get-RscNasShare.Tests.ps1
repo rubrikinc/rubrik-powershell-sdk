@@ -37,7 +37,7 @@ Describe -Name 'Get-RscNasShare Tests' -Tag 'Public' -Fixture {
         }
 
         It -Name 'retrieves single NAS-Share by Name' -Test {
-            $nasSharesByName = Get-RscNasShare -Name $data.nasShares[0].name
+            $nasSharesByName = @(Get-RscNasShare -Name $data.nasShares[0].name)
             $nasSharesByName.Count | Should -BeGreaterThan 0
             # One of the NAS-Share in the list should have an id of $data.nasShares[0].id
             $match = $false

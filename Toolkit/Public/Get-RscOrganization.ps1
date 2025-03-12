@@ -68,7 +68,7 @@ function Get-RscOrganization {
             $query.field.AllUrls = "FETCH"
             # "ClusterWithCapacityQuota" does not exist in the SDK
             # $query.Nodes[0].AllClusterCapacityQuotas = New-Object -TypeName RubrikSecurityCloud.Types.ClusterWithCapacityQuota
-            $query.field.CrossAccountCapabilities = [RubrikSecurityCloud.Types.CrossAccountCapability]::CROSS_ACCOUNT_CAPABILITY_UNSPECIFIED
+            $query.field.CrossAccountCapabilities = @([RubrikSecurityCloud.Types.CrossAccountCapability]::CROSS_ACCOUNT_CAPABILITY_UNSPECIFIED)
 
             $result = Invoke-Rsc -Query $query
             $result
@@ -106,7 +106,7 @@ function Get-RscOrganization {
             $query.field.Nodes[0].AllUrls = "FETCH"
             # "ClusterWithCapacityQuota" does not exist in the SDK
             # $query.Nodes[0].AllClusterCapacityQuotas = New-Object -TypeName RubrikSecurityCloud.Types.ClusterWithCapacityQuota
-            $query.field.Nodes[0].CrossAccountCapabilities = [RubrikSecurityCloud.Types.CrossAccountCapability]::CROSS_ACCOUNT_CAPABILITY_UNSPECIFIED
+            $query.field.Nodes[0].CrossAccountCapabilities = @([RubrikSecurityCloud.Types.CrossAccountCapability]::CROSS_ACCOUNT_CAPABILITY_UNSPECIFIED)
 
             $result = Invoke-Rsc -Query $query
             $result.nodes

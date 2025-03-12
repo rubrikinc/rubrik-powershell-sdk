@@ -143,7 +143,8 @@ function Get-RscNasShare {
 
             $Field.DescendantConnection = New-Object -TypeName `
                 RubrikSecurityCloud.Types.NasShareDescendantTypeConnection
-            $Field.DescendantConnection.Nodes = @(InitializeDescendantConnectionNodes)
+            
+            $Field.DescendantConnection.Nodes = [RubrikSecurityCloud.Types.NasFileset[]](InitializeDescendantConnectionNodes)
 
             $Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
             InitializeCluster -ClusterField $Field.Cluster
@@ -171,7 +172,7 @@ function Get-RscNasShare {
                 $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $InputObj.Field = "Name"
                 $InputObj.Texts = @($Name)
-                $query.Var.Filter = @($InputObj)
+                $query.Var.Filter = [RubrikSecurityCloud.Types.Filter[]]@($InputObj)
                 
                 # Specify additional fields not in default field profile.
                 $query.Field.Nodes[0].HostAddress = "FETCH"
@@ -200,8 +201,7 @@ function Get-RscNasShare {
                 # Specify additional fields not in default field profile.
                 $query.Field.DescendantConnection = New-Object -TypeName `
                     RubrikSecurityCloud.Types.NasSystemDescendantTypeConnection
-                $query.Field.DescendantConnection.Nodes = @(New-Object -TypeName `
-                    RubrikSecurityCloud.Types.NasShare)
+                $query.Field.DescendantConnection.Nodes = [RubrikSecurityCloud.Types.NasShare[]]@(New-Object -TypeName RubrikSecurityCloud.Types.NasShare)
                 $query.Field.DescendantConnection.Nodes[0].Id = "FETCH"
                 $query.Field.DescendantConnection.Nodes[0].Name = "FETCH"
                 $query.Field.DescendantConnection.Nodes[0].IsStale = $true

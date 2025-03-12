@@ -172,7 +172,7 @@ function Get-RscSla {
 
                 # frequencies: [RetentionUnit!]!
                 # Archives all snapshots taken with the specified frequency.
-                $query.field.getNext().ArchivalSpecs[0].frequencies = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                $query.field.getNext().ArchivalSpecs[0].frequencies = @([RubrikSecurityCloud.Types.RetentionUnit]::DAYS)
 
                 # archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]!
                 # Mapping between archival location and Rubrik cluster.
@@ -244,7 +244,7 @@ function Get-RscSla {
 
                     # frequency: [RetentionUnit!]!
                     # Frequencies that are associated with this cascaded archival location.
-                    $query.field.getNext().ReplicationSpecsV2[0].cascadingArchivalSpecs[0].frequency = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.getNext().ReplicationSpecsV2[0].cascadingArchivalSpecs[0].frequency = @([RubrikSecurityCloud.Types.RetentionUnit]::DAYS)
 
                     # archivalLocation: Target
                     # Archival location for snapshot on target.
@@ -493,7 +493,7 @@ function Get-RscSla {
 
             # objectTypes: [SlaObjectType!]!
             # The object-types supported by the SLA Domain.
-            $query.field.getNext().objectTypes = [RubrikSecurityCloud.Types.SlaObjectType]::KUPR_OBJECT_TYPE
+            $query.field.getNext().objectTypes = @([RubrikSecurityCloud.Types.SlaObjectType]::KUPR_OBJECT_TYPE)
 
             # clusterUuid: String!
             # Rubrik cluster ID of the SLA Domain.
@@ -686,7 +686,7 @@ function Get-RscSla {
 
                 # frequencies: [RetentionUnit!]!
                 # Archives all snapshots taken with the specified frequency.
-                $query.field.nodes[$globalSlaReply].ArchivalSpecs[0].frequencies = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                $query.field.nodes[$globalSlaReply].ArchivalSpecs[0].frequencies = @([RubrikSecurityCloud.Types.RetentionUnit]::DAYS)
 
                 # archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]!
                 # Mapping between archival location and Rubrik cluster.
@@ -758,7 +758,7 @@ function Get-RscSla {
 
                     # frequency: [RetentionUnit!]!
                     # Frequencies that are associated with this cascaded archival location.
-                    $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].frequency = [RubrikSecurityCloud.Types.RetentionUnit]::DAYS
+                    $query.field.nodes[$globalSlaReply].ReplicationSpecsV2[0].cascadingArchivalSpecs[0].frequency = @([RubrikSecurityCloud.Types.RetentionUnit]::DAYS)
 
                     # archivalLocation: Target
                     # Archival location for snapshot on target.
@@ -1007,7 +1007,7 @@ function Get-RscSla {
 
             # objectTypes: [SlaObjectType!]!
             # The object-types supported by the SLA Domain.
-            $query.field.nodes[$globalSlaReply].objectTypes = [RubrikSecurityCloud.Types.SlaObjectType]::KUPR_OBJECT_TYPE
+            $query.field.nodes[$globalSlaReply].objectTypes = @([RubrikSecurityCloud.Types.SlaObjectType]::KUPR_OBJECT_TYPE)
 
             # clusterUuid: String!
             # Rubrik cluster ID of the SLA Domain.
