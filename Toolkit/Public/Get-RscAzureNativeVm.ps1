@@ -51,25 +51,22 @@ function Get-RscAzureNativeVm {
        # The query is different for getting a single object by ID.
         if ($Id) {
             $query = New-RscQuery -GqlQuery azureNativeVirtualMachine
-            $query.var.filter = @()
-            $query.Var.fid = $Id
+            $query.Var.azureVirtualMachineRubrikId = $Id
 
             $result = Invoke-Rsc -Query $query
             $result
         } else {
             $query = New-RscQuery -GqlQuery azureNativeVirtualMachines
-            $query.var.filter = New-Object -TypeName RubrikSecurityCloud.Types.AzureNativeVirtualMachineFilters
+            $query.var.virtualMachineFilters = (New-Object -TypeName RubrikSecurityCloud.Types.AzureNativeVirtualMachineFilters)
 
-            if ($NameSubstring) {
-                $query.var.filter.nameSubstringFilter = New-Object -TypeName RubrikSecurityCloud.Types.NameSubstringFilter
-                $query.var.filter.nameSubstringFilter.NameSubstring = $NameSubstring
+            if ($NameSubstring) {          
+                $query.var.virtualMachineFilters.nameSubstringFilter = New-Object -TypeName RubrikSecurityCloud.Types.NameSubstringFilter
+                $query.var.virtualMachineFilters.nameSubstringFilter.NameSubstring = $NameSubstring
             }
     
             if ($Sla) {
-                $slaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-                $slaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::EFFECTIVE_SLA
-                $slaFilter.Texts = $Sla.id
-                $query.var.filter += $slaFilter
+                $query.var.virtualMachineFilters.effectiveSlaFilter =  (New-Object -TypeName RubrikSecurityCloud.Types.EffectiveSlaFilter)
+                $query.var.virtualMachineFilters.effectiveSlaFilter.effectiveSlaIds = @($Sla.id)
             }
 
             $result = Invoke-Rsc -Query $query
