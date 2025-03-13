@@ -30,11 +30,6 @@ function Get-RscCloudNativeTagRule {
     Param(
         [Parameter(
             Mandatory = $false,
-            ParameterSetName = "Id"
-        )]
-        [String]$Id,
-        [Parameter(
-            Mandatory = $false,
             ParameterSetName = "Name"
         )]
         [String]$Name,
@@ -53,16 +48,6 @@ function Get-RscCloudNativeTagRule {
     )
     
     Process {
-
-       # The query is different for getting a single object by ID.
-        if ($Id) {
-            $query = New-RscQuery -GqlQuery 
-            $query.var.filters = @()
-            $query.var.fid = $Id
-
-            $result = Invoke-Rsc -Query $query
-            $result
-        } else {
             $query = New-RscQuery -GqlQuery cloudNativeTagRules
             $query.field.tagRules = New-Object -TypeName RubrikSecurityCloud.Types.CloudNativeTagRule
             $query.field.tagRules[0].name = "FETCH"
@@ -72,7 +57,7 @@ function Get-RscCloudNativeTagRule {
             $query.field.tagRules[0].effectiveSla.id = "FETCH"
             $query.field.tagRules[0].objectType = [RubrikSecurityCloud.Types.ManagedObjectType]::AWS_NATIVE_EC2_INSTANCE
 
-            $query.var.filters = @()
+            $query.var.filter = @()
 
             if ($Name) {
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.CloudNativeFilter 
@@ -92,12 +77,6 @@ function Get-RscCloudNativeTagRule {
 
             $result = Invoke-Rsc -Query $query
             $result.tagRules
-        }
-
-
-
-
-
     } 
 }
 
