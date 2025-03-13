@@ -58,7 +58,7 @@ function Get-RscDb2Instance {
         if ($Id) {
             $query = New-RscQuery -GqlQuery db2Instance
             $query.var.filter = @()
-            $query.Var.fid = $Id
+            $query.Var.id = $Id
 
             $result = Invoke-Rsc -Query $query
             $result
