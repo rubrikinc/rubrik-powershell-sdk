@@ -25,8 +25,9 @@ function New-RscMssqlSnapshot {
 
     .EXAMPLE
     Starts an On Demand Snapshot of a MSSQL Database with an SLA Domain ID
+    $sla = Get-RscSla -Name "sdf"
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    New-RscMssqlSnapshot -RscMssqlDatabase $RscMssqlDatabase -SLADomain "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+    New-RscMssqlSnapshot -RscMssqlDatabase $RscMssqlDatabase -RscSLADomain $sla
     #>
 
     [CmdletBinding()]
