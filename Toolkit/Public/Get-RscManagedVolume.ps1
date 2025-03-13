@@ -65,28 +65,26 @@ function Get-RscManagedVolume {
         if ( $Detail -eq $true ) {
             $fieldProfile = "DETAIL"
         }
+
+        $query = New-RscQueryManagedVolume -Operation ManagedVolumes -FieldProfile $fieldProfile 
+        $query.Var.filter = @()
+
         #region Create Query
-        switch ( $PSCmdlet.ParameterSetName){
-            "List" {
-                $query = New-RscQueryManagedVolume -Operation ManagedVolumes -FieldProfile $fieldProfile 
-            }
-            "Name"{
-                $query = New-RscQueryManagedVolume -Operation ManagedVolumes -FieldProfile $fieldProfile 
-                $query.Var.filter = @()
-                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-                $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
-                $nameFilter.texts = $Name
-                $query.Var.filter += $nameFilter
-            }
+        if($Name) {
+            $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+            $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
+            $nameFilter.texts = $Name
+            $query.Var.filter += $nameFilter
         }
-        #endregion
-        if($PSBoundParameters.ContainsKey('clusterId')) {
+        if($RscCluster) {
             $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
             $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
             $clusterFilter.texts = $RscCluster.Id
             $query.Var.filter += $clusterFilter
         }
+        
+        #endregion
         $result = $query.Invoke()
         $result.Nodes
-    } 
-}
+    }
+} 
