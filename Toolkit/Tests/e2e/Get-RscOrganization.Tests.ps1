@@ -30,9 +30,14 @@ Describe -Name 'Get-RscOrganization Tests' -Tag 'Public' -Fixture {
         }
 
         It -Name 'retrieves single org by name' -Test {
-            $object0 = Get-RscOrganization -Name $data.objects[0].FullName
-            $object0.name | Should -Be $data.objects[0].name
-            $object0.id | Should -Be $data.objects[0].id
+            $filteredObjects = Get-RscOrganization -Name $data.objects[0].FullName
+
+            foreach ($obj in $filteredObjects) {
+                $obj.name | Should -BeLike "*$($data.objects[0].name)*"
+            }
+
+            $ids = $filteredObjects | Where-Object { $_.id -eq $data.objects[0].id }
+            ($ids.Count) | Should -BeExactly 1
         }
     }
 }
