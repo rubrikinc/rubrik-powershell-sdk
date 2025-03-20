@@ -257,17 +257,21 @@ namespace RubrikSecurityCloud
         public RscGqlRequest GqlRequest(bool verifyQuery = true)
         {
             _gqlOperation.FieldSpec = this.queryDocMethod(this.Field);
+            string overriddenQuery = GetOverrideGqlQueryIfAny();
+            var FieldStr = GetFieldString();
+            if (overriddenQuery == null && FieldStr == "")
+            {
+                throw new ArgumentException("No field specified. A valid GQL query requires at least one field to be included.");
+            }
 
-            string query = _gqlOperation.Query();
+            string query = overriddenQuery ?? _gqlOperation.Query();
+
             OperationVariableSet gqlVars = new OperationVariableSet();
             if (this.Var != null && this.Var.Count > 0)
             {
                 gqlVars.Variables = verifyQuery ? this.Var.Finalize() : this.Var;
             }
-
-            //  GQL override file
-            query = ApplyOverrideGqlFileIfAny(query);
-
+          
             return new RscGqlRequest(
                 _gqlOperation.Name,
                 gqlVars.AsJson(this.Logger),
@@ -277,11 +281,11 @@ namespace RubrikSecurityCloud
             );
         }
 
-        internal string ApplyOverrideGqlFileIfAny(string query)
+        internal string GetOverrideGqlQueryIfAny()
         {
             if (string.IsNullOrEmpty(this.OperationsDir))
             {
-                return query;
+                return null;
             }
 
             string overrideFile = Path.Combine(
@@ -291,13 +295,11 @@ namespace RubrikSecurityCloud
             if (!string.IsNullOrEmpty(overrideQuery))
             {
                 this.Logger?.Debug("Using override " + overrideFile);
-                query = overrideQuery;
+                return overrideQuery;
             }
-            else
-            {
-                this.Logger?.Debug("No override " + overrideFile);
-            }
-            return query;
+         
+            this.Logger?.Debug("No override " + overrideFile);
+            return null;
         }
 
         /// <summary>
@@ -308,10 +310,8 @@ namespace RubrikSecurityCloud
             return this.rscOp;
         }
 
-        /// <summary>
-        ///  String representation of this object.
-        /// </summary>
-        public override string ToString()
+
+        internal string GetFieldString()
         {
             var FieldStr = this.Field == null ? "null" : this.Field.ToString();
             if (this.Field != null && this.Field is IFieldSpec)
@@ -319,6 +319,15 @@ namespace RubrikSecurityCloud
                 FieldStr = ((IFieldSpec)this.Field).AsFieldSpec();
                 FieldStr = Regex.Replace(FieldStr, @"\s+", " ");
             }
+            return FieldStr;
+        }
+
+        /// <summary>
+        ///  String representation of this object.
+        /// </summary>
+        public override string ToString()
+        {
+            var FieldStr = GetFieldString();
             return $"RscQuery(Op: {this.Op}, Var: {this.Var}, Field: {FieldStr})";
         }
     }
