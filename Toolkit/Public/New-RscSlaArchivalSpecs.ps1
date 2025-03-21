@@ -164,7 +164,7 @@ function New-RscSlaArchivalSpecs
                 $archivalLocationToClusterMapping = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalLocationToClusterMappingInput
                 $archivalLocationToClusterMapping.ClusterUuid = $ClusterUuids[$i]
                 $archivalLocationToClusterMapping.LocationId = $LocationIds[$i]
-                $slaArchivalSpecs.ArchivalLocationToClusterMapping += $archivalLocationToClusterMapping
+                $slaArchivalSpecs.ArchivalLocationToClusterMapping.add($archivalLocationToClusterMapping)
             }
         }
         $slaArchivalSpecs.archivalTieringSpecInput = $archivalTieringSpecInput
