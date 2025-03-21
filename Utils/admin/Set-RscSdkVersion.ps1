@@ -33,15 +33,18 @@ function updateModuleVersion {
     Write-Host "Updated ModuleVersion to $NewVersion in $ModuleFile"
 }
 
-# Before updating the version, check if the new version is the same as the main
-# branch version.
-# Also, Test-RscSdkRelease will throw an error if the current release
-# is corrupted (e.g. the main branch's version is not what's on the gallery).
-$mainSdkVersion = & "$SdkRoot\Utils\admin\Test-RscSdkRelease.ps1"
+if ( -not $Force )
+{
+    # Before updating the version, check if the new version is the same as the main
+    # branch version.
+    # Also, Test-RscSdkRelease will throw an error if the current release
+    # is corrupted (e.g. the main branch's version is not what's on the gallery).
+    $mainSdkVersion = & "$SdkRoot\Utils\admin\Test-RscSdkRelease.ps1"
 
-if ($NewVersion -eq $mainSdkVersion -and -not $Force) {
-    Write-Host "Error: The new version $NewVersion is the same as the main branch version." -ForegroundColor Red
-    throw "New version is the same as the main branch version"
+    if ($NewVersion -eq $mainSdkVersion) {
+        Write-Host "Error: The new version $NewVersion is the same as the main branch version." -ForegroundColor Red
+        throw "New version is the same as the main branch version"
+    }
 }
 
 # Update PSD file
