@@ -1,14 +1,15 @@
 # Changelog
 
-## Version TBD
+## Version 1.12.5
 
-New Features:
+Schema Update:
+
+See [API Changelog](https://rubrikinc.github.io/rubrik-api-documentation/changelog/changes/)
+for API additions, deprecations and breaking changes.
 
 Fixes:
 
-- Fixed build issue that would result in skipping PowerShell 5 tests
-
-Breaking Changes:
+- Fixed compatibility with PowerShell 5
 
 ## Version 1.12.4
 
@@ -676,4 +677,3 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
-
