@@ -39,7 +39,10 @@ param(
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 # Construct the command to run in a new pwsh session
-$buildCommand = "& '$scriptDir\_Build-RscSdk.ps1' -NoClean:`$NoClean -Release:`$Release -NoDocs:`$NoDocs"
+$buildCommand = "& '$scriptDir\_Build-RscSdk.ps1'"
+if ($NoClean) { $buildCommand += " -NoClean" }
+if ($Release) { $buildCommand += " -Release" }
+if ($NoDocs) { $buildCommand += " -NoDocs" }
 
 # Create a process to execute the command and stream output in real-time
 $processStartInfo = New-Object System.Diagnostics.ProcessStartInfo
