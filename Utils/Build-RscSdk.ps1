@@ -98,7 +98,7 @@ if (-not $NoTests) {
     Write-Host "Tests passed in PowerShell 7." -back green -fore white
 
     # Run tests in a PowerShell 5.1 sub-process (if requested)
-    if ($Pw5Tests -or $CI) {
+    if ($Pw5Tests -or $CI -or $Release) {
         Write-Host "Running tests in PowerShell 5..."
         
         $pwsh5TestProcess = Start-Process -FilePath "powershell.exe" `
