@@ -66,7 +66,7 @@ function Get-RscMssqlLiveMount {
         $nameFilter.texts = $MountedDatabaseName
         $query.Var.filters += $nameFilter
 
-        If ( $PSBoundParameters.ContainsKey('MssqlDatabase') ) {
+        If ( $PSBoundParameters.ContainsKey('RscMssqlDatabase') ) {
             $sourceDatabaseFilter = New-Object -TypeName RubrikSecurityCloud.Types.MssqlDatabaseLiveMountFilterInput
             $sourceDatabaseFilter.Field = "SOURCE_DATABASE_ID"
             $sourceDatabaseFilter.Texts = $RscMssqlDatabase.Id

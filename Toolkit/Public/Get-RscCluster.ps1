@@ -142,7 +142,8 @@ function Get-RscCluster {
             }
             "Id" {
                 $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
-                $query.Var.clusterUuid = $Id
+                $query.Var.filter = New-Object -TypeName RubrikSecurityCloud.Types.ClusterFilterInput
+                $query.Var.filter.id = $Id
             }
             "Name" {
                 $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile

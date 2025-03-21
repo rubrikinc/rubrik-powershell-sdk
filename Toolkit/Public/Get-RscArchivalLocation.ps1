@@ -60,9 +60,10 @@ function Get-RscArchivalLocation {
             $query.Field.targetType = [RubrikSecurityCloud.Types.TargetType]::AWS
             $query.Field.connectionStatus = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalGroupConnectionStatus
             $query.Field.connectionStatus.status = [RubrikSecurityCloud.Types.ConnectionStatusType]::CONNECTED
-            $query.Field.tieringStatus = [RubrikSecurityCloud.Types.ArchivalGroupTieringStatus]::UNKNOWN_ARCHIVAL_GROUP_TIERING_STATUS
-            $query.Field.targets[0] = New-Object -TypeName RubrikSecurityCloud.Types.RubrikManagedAwsTarget
-            $query.Field.targets += New-Object -TypeName RubrikSecurityCloud.Types.RubrikManagedAzureTarget
+            $query.Field.tieringStatus = @([RubrikSecurityCloud.Types.ArchivalGroupTieringStatus]::UNKNOWN_ARCHIVAL_GROUP_TIERING_STATUS)
+
+            $query.Field.targets = New-Object -TypeName RubrikSecurityCloud.Types.RubrikManagedAwsTarget
+            $query.Field.targets.add((New-Object -TypeName RubrikSecurityCloud.Types.RubrikManagedAzureTarget))
             #$query.Field.targets[0].cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
             #$query.Field.targets[0].cluster.name = "FETCH"
             #$query.Field.targets[0].cluster.id = "FETCH"
@@ -94,7 +95,7 @@ function Get-RscArchivalLocation {
             if ($Name) {
                 $query.var.filter += New-Object -TypeName RubrikSecurityCloud.Types.TargetMappingFilterInput
                 $query.var.filter[1].field = [RubrikSecurityCloud.Types.TargetMappingQueryFilterField]::NAME
-                $query.var.filter[1].name = $Name
+                $query.var.filter[1].text = $Name
             }
 
             $query.Field[0].id = "FETCH"
@@ -103,7 +104,7 @@ function Get-RscArchivalLocation {
             $query.Field[0].targetType = [RubrikSecurityCloud.Types.TargetType]::AWS
             $query.Field[0].connectionStatus = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalGroupConnectionStatus
             $query.Field[0].connectionStatus.status = [RubrikSecurityCloud.Types.ConnectionStatusType]::CONNECTED
-            $query.Field[0].tieringStatus = [RubrikSecurityCloud.Types.ArchivalGroupTieringStatus]::UNKNOWN_ARCHIVAL_GROUP_TIERING_STATUS
+            $query.Field[0].tieringStatus = @([RubrikSecurityCloud.Types.ArchivalGroupTieringStatus]::UNKNOWN_ARCHIVAL_GROUP_TIERING_STATUS)
 
             $query.Field[0].targets = New-Object -TypeName RubrikSecurityCloud.Types.RubrikManagedAwsTarget
             $query.Field[0].targets.add((New-Object -TypeName RubrikSecurityCloud.Types.RubrikManagedAzureTarget))

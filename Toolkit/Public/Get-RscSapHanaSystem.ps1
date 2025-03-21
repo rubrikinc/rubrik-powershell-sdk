@@ -56,7 +56,7 @@ function Get-RscSapHanaSystem {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery sapHanaSystems
+            $query = New-RscQuery -GqlQuery sapHanaSystem
             $query.var.filter = @()
             $query.Var.fid = $Id
 
