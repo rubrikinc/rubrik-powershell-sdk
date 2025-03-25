@@ -317,12 +317,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 fieldProf = Exploration.Profile.DEFAULT;
             }
 
-            // if no patch is given, profile can't be empty:
-            if (!hasPatch && fieldProf == Exploration.Profile.EMPTY)
-            {
-                fieldProf = Exploration.Profile.DEFAULT;
-            }
-
             // read override patch file (if any) and apply it:
             if (fieldProf == Exploration.Profile.DEFAULT ||
                 fieldProf == Exploration.Profile.DETAIL ||
