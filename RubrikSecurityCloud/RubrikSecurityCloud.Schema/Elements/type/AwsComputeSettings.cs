@@ -259,7 +259,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AwsRegion? Region
         // GraphQL -> region: AwsRegion! (enum)
@@ -504,7 +504,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsComputeSettings> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsComputeSettings());
@@ -514,7 +514,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AwsComputeSettings> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

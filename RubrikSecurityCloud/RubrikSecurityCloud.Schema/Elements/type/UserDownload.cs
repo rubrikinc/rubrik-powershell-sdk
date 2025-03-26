@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> DownloadIdentifierEnum? Identifier
         // GraphQL -> identifier: DownloadIdentifierEnum! (enum)
@@ -343,7 +343,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UserDownload> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UserDownload());
@@ -353,7 +353,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<UserDownload> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

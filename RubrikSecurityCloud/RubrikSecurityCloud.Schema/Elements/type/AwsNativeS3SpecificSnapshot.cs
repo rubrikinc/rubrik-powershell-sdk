@@ -124,7 +124,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? FailedObjectCount
         // GraphQL -> failedObjectCount: Long! (scalar)
@@ -239,7 +239,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsNativeS3SpecificSnapshot> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsNativeS3SpecificSnapshot());
@@ -249,7 +249,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AwsNativeS3SpecificSnapshot> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

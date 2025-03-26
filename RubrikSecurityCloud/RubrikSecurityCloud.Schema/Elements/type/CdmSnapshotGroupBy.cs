@@ -145,7 +145,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<CdmSnapshotGroupBy>? CdmSnapshotGroupByField
         // GraphQL -> cdmSnapshotGroupBy: [CdmSnapshotGroupBy!]! (type)
@@ -254,7 +254,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmSnapshotGroupBy> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmSnapshotGroupBy());
@@ -264,7 +264,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CdmSnapshotGroupBy> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

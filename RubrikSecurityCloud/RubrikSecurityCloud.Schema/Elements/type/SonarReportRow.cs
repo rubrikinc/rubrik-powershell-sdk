@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> DiscoveryReportTablePolicyStatus? PolicyStatus
         // GraphQL -> policyStatus: DiscoveryReportTablePolicyStatus! (enum)
@@ -343,7 +343,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SonarReportRow> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SonarReportRow());
@@ -353,7 +353,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<SonarReportRow> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -416,7 +416,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> SnappableCrawlStatus? Status
         // GraphQL -> status: SnappableCrawlStatus! (enum)
@@ -784,7 +784,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CrawlObj> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CrawlObj());
@@ -794,7 +794,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CrawlObj> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

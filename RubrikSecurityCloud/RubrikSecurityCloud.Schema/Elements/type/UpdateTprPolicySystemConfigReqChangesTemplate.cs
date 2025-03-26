@@ -175,7 +175,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? TemplateName
         // GraphQL -> templateName: String! (scalar)
@@ -334,7 +334,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateTprPolicySystemConfigReqChangesTemplate> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateTprPolicySystemConfigReqChangesTemplate());
@@ -344,7 +344,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<UpdateTprPolicySystemConfigReqChangesTemplate> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

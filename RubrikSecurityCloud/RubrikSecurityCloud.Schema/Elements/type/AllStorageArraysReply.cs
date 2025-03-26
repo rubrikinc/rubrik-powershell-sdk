@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<ClusterStorageArrays>? ClusterStorageArrays
         // GraphQL -> clusterStorageArrays: [ClusterStorageArrays!]! (type)
@@ -138,7 +138,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AllStorageArraysReply> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AllStorageArraysReply());
@@ -148,7 +148,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AllStorageArraysReply> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

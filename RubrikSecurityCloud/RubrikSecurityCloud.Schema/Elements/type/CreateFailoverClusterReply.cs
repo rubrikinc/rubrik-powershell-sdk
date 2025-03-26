@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> FailoverClusterDetail? Output
         // GraphQL -> output: FailoverClusterDetail (type)
@@ -138,7 +138,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateFailoverClusterReply> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateFailoverClusterReply());
@@ -148,7 +148,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CreateFailoverClusterReply> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

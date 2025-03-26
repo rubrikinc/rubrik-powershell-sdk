@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<O365OnedriveObject>? Nodes
         // GraphQL -> nodes: [O365OnedriveObject!]! (interface)
@@ -254,7 +254,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365OnedriveObjectConnection> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365OnedriveObjectConnection());
@@ -264,7 +264,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<O365OnedriveObjectConnection> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<BackupThrottleSetting>? BackupThrottleSettings
         // GraphQL -> backupThrottleSettings: [BackupThrottleSetting!]! (type)
@@ -138,7 +138,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateBackupThrottleSettingReply> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateBackupThrottleSettingReply());
@@ -148,7 +148,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<UpdateBackupThrottleSettingReply> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

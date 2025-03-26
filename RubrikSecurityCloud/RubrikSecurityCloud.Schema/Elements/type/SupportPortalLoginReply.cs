@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> StatusResponse? Status
         // GraphQL -> status: StatusResponse (type)
@@ -138,7 +138,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SupportPortalLoginReply> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SupportPortalLoginReply());
@@ -148,7 +148,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<SupportPortalLoginReply> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

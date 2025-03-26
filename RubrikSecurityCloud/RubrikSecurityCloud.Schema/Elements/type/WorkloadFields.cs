@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> O365SnapshotItemInfo? O365Item
         // GraphQL -> o365Item: O365SnapshotItemInfo (type)
@@ -138,7 +138,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<WorkloadFields> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new WorkloadFields());
@@ -148,7 +148,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<WorkloadFields> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

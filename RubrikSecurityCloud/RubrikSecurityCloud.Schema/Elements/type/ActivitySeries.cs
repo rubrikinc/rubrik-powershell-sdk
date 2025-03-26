@@ -694,7 +694,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ActivityStatusEnum? LastActivityStatus
         // GraphQL -> lastActivityStatus: ActivityStatusEnum! (enum)
@@ -1325,7 +1325,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ActivitySeries> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ActivitySeries());
@@ -1335,7 +1335,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ActivitySeries> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

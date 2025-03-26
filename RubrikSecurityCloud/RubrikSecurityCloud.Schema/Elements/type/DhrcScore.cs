@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> DhrcCategory? Category
         // GraphQL -> category: DhrcCategory! (enum)
@@ -313,7 +313,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DhrcScore> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DhrcScore());
@@ -323,7 +323,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<DhrcScore> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

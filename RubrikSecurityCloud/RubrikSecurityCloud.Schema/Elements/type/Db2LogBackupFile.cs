@@ -195,7 +195,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? BackupFileSizeInBytes
         // GraphQL -> backupFileSizeInBytes: Long (scalar)
@@ -378,7 +378,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Db2LogBackupFile> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Db2LogBackupFile());
@@ -388,7 +388,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<Db2LogBackupFile> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

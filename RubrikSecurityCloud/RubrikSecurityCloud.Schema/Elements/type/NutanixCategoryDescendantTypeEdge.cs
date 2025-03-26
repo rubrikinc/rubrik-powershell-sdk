@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> NutanixCategoryDescendantType? Node
         // GraphQL -> node: NutanixCategoryDescendantType! (interface)
@@ -179,7 +179,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NutanixCategoryDescendantTypeEdge> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NutanixCategoryDescendantTypeEdge());
@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<NutanixCategoryDescendantTypeEdge> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? AppClientId
         // GraphQL -> appClientId: String! (scalar)
@@ -203,7 +203,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateO365AppKickoffResp> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateO365AppKickoffResp());
@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CreateO365AppKickoffResp> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

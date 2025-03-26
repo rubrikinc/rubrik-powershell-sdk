@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> DataGovObjectType? ResourceType
         // GraphQL -> resourceType: DataGovObjectType! (enum)
@@ -238,7 +238,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AssignmentResourceDetails> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AssignmentResourceDetails());
@@ -248,7 +248,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AssignmentResourceDetails> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

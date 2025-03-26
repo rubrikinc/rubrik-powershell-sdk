@@ -154,7 +154,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<RetentionUnit>? Frequency
         // GraphQL -> frequency: [RetentionUnit!]! (enum)
@@ -299,7 +299,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CascadingArchivalSpec> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CascadingArchivalSpec());
@@ -309,7 +309,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CascadingArchivalSpec> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

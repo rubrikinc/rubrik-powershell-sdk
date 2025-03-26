@@ -147,7 +147,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long! (scalar)
@@ -283,7 +283,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrechecksStatusReply> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrechecksStatusReply());
@@ -293,7 +293,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<PrechecksStatusReply> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

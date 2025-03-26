@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? FegbConsumedInBytes
         // GraphQL -> fegbConsumedInBytes: Long (scalar)
@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<M365BackupStorageLicenseConsumption> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new M365BackupStorageLicenseConsumption());
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<M365BackupStorageLicenseConsumption> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

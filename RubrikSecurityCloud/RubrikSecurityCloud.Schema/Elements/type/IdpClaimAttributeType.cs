@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> SamlAttributeType? AttributeType
         // GraphQL -> attributeType: SamlAttributeType! (enum)
@@ -203,7 +203,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<IdpClaimAttributeType> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new IdpClaimAttributeType());
@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<IdpClaimAttributeType> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

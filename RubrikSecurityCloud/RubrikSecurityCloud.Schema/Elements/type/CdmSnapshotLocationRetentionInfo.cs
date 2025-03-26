@@ -195,7 +195,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> SnapshotFrequency? SnapshotFrequency
         // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
@@ -378,7 +378,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmSnapshotLocationRetentionInfo> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmSnapshotLocationRetentionInfo());
@@ -388,7 +388,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CdmSnapshotLocationRetentionInfo> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

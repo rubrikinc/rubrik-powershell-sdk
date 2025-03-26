@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? Capacity
         // GraphQL -> capacity: Long (scalar)
@@ -343,7 +343,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DataStoreSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DataStoreSummary());
@@ -353,7 +353,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<DataStoreSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<OracleRacLogicalChildType>? Nodes
         // GraphQL -> nodes: [OracleRacLogicalChildType!]! (interface)
@@ -254,7 +254,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleRacLogicalChildTypeConnection> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleRacLogicalChildTypeConnection());
@@ -264,7 +264,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<OracleRacLogicalChildTypeConnection> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? AccessTokenUrl
         // GraphQL -> accessTokenUrl: String! (scalar)
@@ -203,7 +203,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CrossAccountSaType> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CrossAccountSaType());
@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CrossAccountSaType> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -147,7 +147,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String! (scalar)
@@ -283,7 +283,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VolumeGroupDetailInfo> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VolumeGroupDetailInfo());
@@ -293,7 +293,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<VolumeGroupDetailInfo> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> DeviceState? LastState
         // GraphQL -> lastState: DeviceState! (enum)
@@ -238,7 +238,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudDirectDeviceDetails> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudDirectDeviceDetails());
@@ -248,7 +248,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CloudDirectDeviceDetails> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

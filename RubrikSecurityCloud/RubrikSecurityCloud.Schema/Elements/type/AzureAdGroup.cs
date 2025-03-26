@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AzureAdOnPremSyncStatus? OnPremSyncStatus
         // GraphQL -> onPremSyncStatus: AzureAdOnPremSyncStatus! (enum)
@@ -238,7 +238,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureAdGroup> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureAdGroup());
@@ -248,7 +248,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AzureAdGroup> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

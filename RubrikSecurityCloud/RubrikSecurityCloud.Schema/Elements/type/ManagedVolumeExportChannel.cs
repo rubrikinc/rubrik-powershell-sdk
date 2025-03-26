@@ -165,7 +165,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> DateTime? ExportDate
         // GraphQL -> exportDate: DateTime! (scalar)
@@ -318,7 +318,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeExportChannel> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeExportChannel());
@@ -328,7 +328,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ManagedVolumeExportChannel> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

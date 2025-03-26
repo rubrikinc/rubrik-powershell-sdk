@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String! (scalar)
@@ -173,7 +173,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RollingUpgradeNodeInfoEntry> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RollingUpgradeNodeInfoEntry());
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<RollingUpgradeNodeInfoEntry> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

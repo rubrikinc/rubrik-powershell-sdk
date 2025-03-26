@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ArchivalLocationStatus? Status
         // GraphQL -> status: ArchivalLocationStatus! (enum)
@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<EnableTargetReply> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new EnableTargetReply());
@@ -178,7 +178,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<EnableTargetReply> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

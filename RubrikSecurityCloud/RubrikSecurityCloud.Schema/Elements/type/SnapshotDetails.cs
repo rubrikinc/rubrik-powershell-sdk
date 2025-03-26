@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Boolean? IsOnDemandSnapshot
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotDetails> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotDetails());
@@ -178,7 +178,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<SnapshotDetails> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

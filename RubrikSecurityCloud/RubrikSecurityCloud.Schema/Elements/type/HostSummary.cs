@@ -402,7 +402,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> MssqlCbtEffectiveStatusType? MssqlCbtEffectiveStatus
         // GraphQL -> mssqlCbtEffectiveStatus: MssqlCbtEffectiveStatusType (enum)
@@ -778,7 +778,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HostSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HostSummary());
@@ -788,7 +788,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<HostSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -163,7 +163,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
         // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
@@ -314,7 +314,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RcsAzureTargetTemplate> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RcsAzureTargetTemplate());
@@ -324,7 +324,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<RcsAzureTargetTemplate> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -7,7 +7,7 @@ BeforeAll {
 }
 
 Describe -Name "Test field specs for interface fields" -Fixture {
-    It -Name 'Field spec exploration' -Test {
+    It -Name 'Field spec autofield' -Test {
 
         # Retrieve all interfaces
         $interfaces = (Get-RscType -ListAvailable -Interfaces)

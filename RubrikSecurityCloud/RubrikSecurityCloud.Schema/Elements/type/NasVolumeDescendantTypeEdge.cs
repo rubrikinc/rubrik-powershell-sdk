@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> NasVolumeDescendantType? Node
         // GraphQL -> node: NasVolumeDescendantType! (interface)
@@ -179,7 +179,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NasVolumeDescendantTypeEdge> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NasVolumeDescendantTypeEdge());
@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<NasVolumeDescendantTypeEdge> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> CloudProviderType? CloudType
         // GraphQL -> cloudType: CloudProviderType! (enum)
@@ -353,7 +353,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeSnapshotDetailsForRecovery> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudNativeSnapshotDetailsForRecovery());
@@ -363,7 +363,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CloudNativeSnapshotDetailsForRecovery> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

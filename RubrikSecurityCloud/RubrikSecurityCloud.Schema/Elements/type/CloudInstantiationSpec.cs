@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? ImageRetentionInSeconds
         // GraphQL -> imageRetentionInSeconds: Long! (scalar)
@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudInstantiationSpec> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudInstantiationSpec());
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CloudInstantiationSpec> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

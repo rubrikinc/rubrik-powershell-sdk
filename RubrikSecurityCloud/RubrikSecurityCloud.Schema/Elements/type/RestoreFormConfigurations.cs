@@ -387,7 +387,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<RestoreFormConfigurationGuestOs>? GuestOsCredentials
         // GraphQL -> guestOsCredentials: [RestoreFormConfigurationGuestOs!]! (type)
@@ -738,7 +738,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RestoreFormConfigurations> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RestoreFormConfigurations());
@@ -748,7 +748,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<RestoreFormConfigurations> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

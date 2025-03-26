@@ -89,7 +89,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             // No Position -> named parameter only.
             HelpMessage = "Field profile. Determines what fields should be selected for retrieval when no -Field object is given. If -FieldProfile is not given and -Field is not given either, the default profile is used.",
             ValueFromPipeline = false)]
-        public Exploration.Profile FieldProfile { get; set; } = Exploration.Profile.UNSET;
+        public Autofield.Profile FieldProfile { get; set; } = Autofield.Profile.UNSET;
 
         [Parameter(
             Mandatory = false,
@@ -241,18 +241,18 @@ namespace RubrikSecurityCloud.PowerShell.Private
             _logger.Debug($"op dir: {opDir} {Directory.Exists(opDir)}");
         }
 
-        protected bool _passPatchesToExploration()
+        protected bool _passPatchesToAutofield()
         {
-            // Pass file patches to Exploration if any:
+            // Pass file patches to Autofield if any:
             if (this.FilePatch != null)
             {
                 foreach (string patchFile in this.FilePatch)
                 {
-                    Exploration.PatchSet.ReadFromFile(patchFile);
+                    Autofield.PatchSet.ReadFromFile(patchFile);
                 }
             }
 
-            // Pass string patches to Exploration if any:
+            // Pass string patches to Autofield if any:
             try
             {
                 string[] af = this.GetStringArrayDynParam("AddField");
@@ -265,20 +265,20 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 {
                     _logger.Debug($"RemoveField: {string.Join(",", rf)}");
                 }
-                Exploration.PatchSet.ReadFromArrays(af, rf);
+                Autofield.PatchSet.ReadFromArrays(af, rf);
             }
             catch (Exception ex)
             {
                 _logger.Debug($"Error getting Patch parameters: {ex.Message}");
             }
-            return Exploration.PatchSet.HasPatch();
+            return Autofield.PatchSet.HasPatch();
         }
 
         protected object _makeFields(
             string opName,
             QueryFieldSpecMethod queryFieldSpecMethod)
         {
-            Exploration.Init();
+            Autofield.Init();
 
             // start off by copying field from other query.
             // Note that with PowerShell, passing `-Copy $q` 
@@ -288,11 +288,11 @@ namespace RubrikSecurityCloud.PowerShell.Private
             // command line, which is not what we want.
             // Instead we serialize by getting the object's
             // flat list of selected fields,
-            // and we deserialize by feeding it to Exploration
+            // and we deserialize by feeding it to Autofield
             // as patch strings.
             if (this.Copy != null && this.Copy.Field != null)
             {
-                Exploration.PatchSet.ReadFieldSpecFromObject(this.Copy.Field);
+                Autofield.PatchSet.ReadFieldSpecFromObject(this.Copy.Field);
                 _logger?.Debug($"Copied field from passed -Copy.");
             }
 
@@ -305,31 +305,31 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 {
                     f = psObject.BaseObject;
                 }
-                Exploration.PatchSet.ReadFieldSpecFromObject(f);
+                Autofield.PatchSet.ReadFieldSpecFromObject(f);
                 _logger?.Debug($"Copied field from passed -Field.");
             }
 
-            bool hasPatch = _passPatchesToExploration();
-            Exploration.Profile fieldProf = this.FieldProfile;
+            bool hasPatch = _passPatchesToAutofield();
+            Autofield.Profile fieldProf = this.FieldProfile;
 
-            if (fieldProf == Exploration.Profile.UNSET)
+            if (fieldProf == Autofield.Profile.UNSET)
             {
-                fieldProf = Exploration.Profile.DEFAULT;
+                fieldProf = Autofield.Profile.DEFAULT;
             }
 
             // read override patch file (if any) and apply it:
-            if (fieldProf == Exploration.Profile.DEFAULT ||
-                fieldProf == Exploration.Profile.DETAIL ||
-                fieldProf == Exploration.Profile.CUSTOM)
+            if (fieldProf == Autofield.Profile.DEFAULT ||
+                fieldProf == Autofield.Profile.DETAIL ||
+                fieldProf == Autofield.Profile.CUSTOM)
             {
                 string f = Path.Combine(
                     this.GetOperationsDir(), opName + ".patch");
-                Exploration.PatchSet.ReadFromFile(patchFile: f, missingOk: true);
+                Autofield.PatchSet.ReadFromFile(patchFile: f, missingOk: true);
             }
 
-            // run exploration
-            ExplorationContext ec = new ExplorationContext();
-            Exploration.GlobalProfile = fieldProf;
+            // run autofield
+            AutofieldContext ec = new AutofieldContext();
+            Autofield.GlobalProfile = fieldProf;
             return queryFieldSpecMethod(ec);
         }
 
@@ -338,12 +338,12 @@ namespace RubrikSecurityCloud.PowerShell.Private
             _logger?.Debug("GetOperationsDir()");
             switch (this.FieldProfile)
             {
-                case Exploration.Profile.CUSTOM:
+                case Autofield.Profile.CUSTOM:
                     return this.GetCustomDir();
-                case Exploration.Profile.DETAIL:
-                    return Files.GetSdkOperationsDir(Exploration.Profile.DETAIL.ToString());
+                case Autofield.Profile.DETAIL:
+                    return Files.GetSdkOperationsDir(Autofield.Profile.DETAIL.ToString());
                 default:
-                    return Files.GetSdkOperationsDir(Exploration.Profile.DEFAULT.ToString());
+                    return Files.GetSdkOperationsDir(Autofield.Profile.DEFAULT.ToString());
             }
         }
 
@@ -395,7 +395,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
         /// </param>
         /// <param name="queryFieldSpecMethod">
         /// Method that builds the field object for this query
-        /// using exploration. It takes for input an exploration context,
+        /// using autofield. It takes for input an autofield context,
         /// and returns the field object.
         /// </param>
         /// <param name="varUsageExample">

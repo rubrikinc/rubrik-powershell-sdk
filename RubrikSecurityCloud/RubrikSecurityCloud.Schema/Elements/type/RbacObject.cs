@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> WorkloadLevelHierarchy? WorkloadHierarchy
         // GraphQL -> workloadHierarchy: WorkloadLevelHierarchy! (enum)
@@ -243,7 +243,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RbacObject> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RbacObject());
@@ -253,7 +253,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<RbacObject> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Single? CurrentThrottleLimit
         // GraphQL -> currentThrottleLimit: Float! (scalar)
@@ -278,7 +278,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NetworkThrottle> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NetworkThrottle());
@@ -288,7 +288,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<NetworkThrottle> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

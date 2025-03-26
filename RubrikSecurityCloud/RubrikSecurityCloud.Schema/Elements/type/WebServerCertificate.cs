@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Boolean? IsConfiguredWithCaSignedCertificate
         // GraphQL -> isConfiguredWithCaSignedCertificate: Boolean! (scalar)
@@ -173,7 +173,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<WebServerCertificate> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new WebServerCertificate());
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<WebServerCertificate> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

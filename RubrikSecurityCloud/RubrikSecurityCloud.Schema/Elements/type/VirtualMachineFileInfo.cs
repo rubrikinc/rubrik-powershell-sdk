@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> VirtualMachineFileType? FileType
         // GraphQL -> fileType: VirtualMachineFileType! (enum)
@@ -203,7 +203,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VirtualMachineFileInfo> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VirtualMachineFileInfo());
@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<VirtualMachineFileInfo> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

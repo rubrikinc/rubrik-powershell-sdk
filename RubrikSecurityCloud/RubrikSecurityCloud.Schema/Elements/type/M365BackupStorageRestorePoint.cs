@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> RestorePointTagType? Type
         // GraphQL -> type: RestorePointTagType! (enum)
@@ -238,7 +238,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<M365BackupStorageRestorePoint> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new M365BackupStorageRestorePoint());
@@ -248,7 +248,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<M365BackupStorageRestorePoint> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

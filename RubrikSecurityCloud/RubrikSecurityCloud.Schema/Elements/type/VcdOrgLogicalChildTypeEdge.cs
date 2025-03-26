@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> VcdOrgLogicalChildType? Node
         // GraphQL -> node: VcdOrgLogicalChildType! (interface)
@@ -179,7 +179,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VcdOrgLogicalChildTypeEdge> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VcdOrgLogicalChildTypeEdge());
@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<VcdOrgLogicalChildTypeEdge> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

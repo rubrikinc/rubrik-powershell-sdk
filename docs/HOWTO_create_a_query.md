@@ -215,5 +215,5 @@ Version              : 8.0.2-p2-22662
 
 ## Working with `-Input`
 
-- no field profile (no exploration, no file overrides.
+- no field profile (no autofield, no file overrides.
   => FieldProfile is set to EMPTY)

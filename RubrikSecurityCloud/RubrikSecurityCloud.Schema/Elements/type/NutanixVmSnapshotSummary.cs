@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int32? NicsInSnapshot
         // GraphQL -> nicsInSnapshot: Int (scalar)
@@ -243,7 +243,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NutanixVmSnapshotSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NutanixVmSnapshotSummary());
@@ -253,7 +253,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<NutanixVmSnapshotSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

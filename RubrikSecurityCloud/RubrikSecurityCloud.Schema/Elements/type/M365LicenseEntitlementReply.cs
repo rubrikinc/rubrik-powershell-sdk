@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? CapacityEntitledInBytes
         // GraphQL -> capacityEntitledInBytes: Long (scalar)
@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<M365LicenseEntitlementReply> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new M365LicenseEntitlementReply());
@@ -178,7 +178,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<M365LicenseEntitlementReply> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

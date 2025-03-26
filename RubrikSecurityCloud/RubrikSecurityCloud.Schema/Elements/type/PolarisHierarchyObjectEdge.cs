@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> PolarisHierarchyObject? Node
         // GraphQL -> node: PolarisHierarchyObject! (interface)
@@ -179,7 +179,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolarisHierarchyObjectEdge> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolarisHierarchyObjectEdge());
@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<PolarisHierarchyObjectEdge> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

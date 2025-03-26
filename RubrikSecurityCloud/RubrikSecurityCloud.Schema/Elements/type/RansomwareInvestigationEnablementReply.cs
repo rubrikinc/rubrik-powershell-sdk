@@ -156,7 +156,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<AwsAccountRansomwareInvestigationEnablement>? AwsAccounts
         // GraphQL -> awsAccounts: [AwsAccountRansomwareInvestigationEnablement!] (type)
@@ -298,7 +298,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RansomwareInvestigationEnablementReply> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RansomwareInvestigationEnablementReply());
@@ -308,7 +308,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<RansomwareInvestigationEnablementReply> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

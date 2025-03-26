@@ -195,7 +195,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AwsCloudType? CloudType
         // GraphQL -> cloudType: AwsCloudType! (enum)
@@ -378,7 +378,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsAccountValidationResponse> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsAccountValidationResponse());
@@ -388,7 +388,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AwsAccountValidationResponse> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

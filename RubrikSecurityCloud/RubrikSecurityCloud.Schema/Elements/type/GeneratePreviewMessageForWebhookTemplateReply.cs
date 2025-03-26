@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? PreviewMessage
         // GraphQL -> previewMessage: String (scalar)
@@ -173,7 +173,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GeneratePreviewMessageForWebhookTemplateReply> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GeneratePreviewMessageForWebhookTemplateReply());
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<GeneratePreviewMessageForWebhookTemplateReply> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

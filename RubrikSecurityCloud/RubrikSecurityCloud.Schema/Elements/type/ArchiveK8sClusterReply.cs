@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ArchiveK8sClusterReply> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ArchiveK8sClusterReply());
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ArchiveK8sClusterReply> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

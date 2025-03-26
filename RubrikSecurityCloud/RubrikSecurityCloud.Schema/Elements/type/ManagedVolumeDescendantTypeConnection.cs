@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<ManagedVolumeDescendantType>? Nodes
         // GraphQL -> nodes: [ManagedVolumeDescendantType!]! (interface)
@@ -254,7 +254,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeDescendantTypeConnection> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeDescendantTypeConnection());
@@ -264,7 +264,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ManagedVolumeDescendantTypeConnection> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

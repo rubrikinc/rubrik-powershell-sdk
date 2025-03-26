@@ -264,7 +264,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AgentConnectStatus? AgentConnectStatus
         // GraphQL -> agentConnectStatus: AgentConnectStatus (enum)
@@ -508,7 +508,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HypervVirtualMachineSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HypervVirtualMachineSummary());
@@ -518,7 +518,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<HypervVirtualMachineSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

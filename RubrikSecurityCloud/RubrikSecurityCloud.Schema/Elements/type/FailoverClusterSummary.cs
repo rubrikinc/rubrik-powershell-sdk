@@ -222,7 +222,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> FailoverClusterConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: FailoverClusterConnectionStatus! (enum)
@@ -428,7 +428,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FailoverClusterSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FailoverClusterSummary());
@@ -438,7 +438,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<FailoverClusterSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

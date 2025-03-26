@@ -198,7 +198,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> Product? Product
         // GraphQL -> product: Product! (enum)
@@ -383,7 +383,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<LicensedClusterProduct> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new LicensedClusterProduct());
@@ -393,7 +393,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<LicensedClusterProduct> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

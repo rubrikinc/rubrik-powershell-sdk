@@ -10,37 +10,37 @@ using System.Linq;
 
 namespace RubrikSecurityCloud
 {
-    public class ExplorationContext
+    public class AutofieldContext
     {
         public string Parent { get; set; } = "";
 
-        public ExplorationContext(string parent = "")
+        public AutofieldContext(string parent = "")
         {
             Parent = parent;
         }
 
         public bool Includes(string nodeName, bool isLeaf = false)
         {
-            return Exploration.Includes(Parent + "." + nodeName, isLeaf);
+            return Autofield.Includes(Parent + "." + nodeName, isLeaf);
         }
 
         public bool Excludes(string nodeName, bool isLeaf = false)
         {
-            return Exploration.Excludes(Parent + "." + nodeName, isLeaf);
+            return Autofield.Excludes(Parent + "." + nodeName, isLeaf);
         }
 
         /// <summary>
-        /// Instantiate a new ExplorationContext from a parent context
+        /// Instantiate a new AutofieldContext from a parent context
         /// and a child node name.
         /// </summary>
-        public ExplorationContext NewChild(string child)
+        public AutofieldContext NewChild(string child)
         {
-            return new ExplorationContext(Parent + "." + child);
+            return new AutofieldContext(Parent + "." + child);
         }
     }
 
 
-    public static class Exploration
+    public static class Autofield
     {
         // Enum for Profile
         public enum Profile
@@ -60,11 +60,11 @@ namespace RubrikSecurityCloud
         // we'll need them to be defined with each cmdlet invocation.
 
         // accessible from PowerShell with
-        // [RubrikSecurityCloud.Exploration]::GlobalProfile
+        // [RubrikSecurityCloud.Autofield]::GlobalProfile
         public static Profile GlobalProfile = Profile.DEFAULT;
 
         // accessible from PowerShell with
-        // [RubrikSecurityCloud.Exploration]::FieldCount
+        // [RubrikSecurityCloud.Autofield]::FieldCount
         public static int FieldCount = 0;
 
         public static int MaxFieldCount = 1000;
@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud
         {
             if (string.IsNullOrEmpty(nodeName))
             {
-                throw new ArgumentException("FieldSpec exploration: nodeName cannot be null or empty");
+                throw new ArgumentException("FieldSpec autofield: nodeName cannot be null or empty");
             }
             // strip any initial '.'
             if (nodeName.StartsWith("."))
@@ -107,7 +107,7 @@ namespace RubrikSecurityCloud
         {
             if (string.IsNullOrEmpty(nodeName))
             {
-                throw new ArgumentException("FieldSpec exploration: nodeName cannot be null or empty");
+                throw new ArgumentException("FieldSpec autofield: nodeName cannot be null or empty");
             }
             // strip any initial '.'
             if (nodeName.StartsWith("."))
@@ -250,7 +250,7 @@ namespace RubrikSecurityCloud
             int depth,
             bool isLeaf)
         {
-            return DetailsIncludes(nodes, lastNode, depth, isLeaf, Exploration.MaxDepth);
+            return DetailsIncludes(nodes, lastNode, depth, isLeaf, Autofield.MaxDepth);
         }
 
         // Static method

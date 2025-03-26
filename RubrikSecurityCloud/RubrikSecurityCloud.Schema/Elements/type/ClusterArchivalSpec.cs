@@ -180,7 +180,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> TargetType? ArchivalLocationType
         // GraphQL -> archivalLocationType: TargetType! (enum)
@@ -348,7 +348,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterArchivalSpec> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterArchivalSpec());
@@ -358,7 +358,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ClusterArchivalSpec> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

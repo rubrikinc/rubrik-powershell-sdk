@@ -178,7 +178,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> CloudAccountType? CloudProvider
         // GraphQL -> cloudProvider: CloudAccountType! (enum)
@@ -344,7 +344,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureAccount> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureAccount());
@@ -354,7 +354,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AzureAccount> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

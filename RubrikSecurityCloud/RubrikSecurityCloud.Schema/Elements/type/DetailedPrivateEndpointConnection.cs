@@ -111,7 +111,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? StorageAccountId
         // GraphQL -> storageAccountId: String! (scalar)
@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DetailedPrivateEndpointConnection> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DetailedPrivateEndpointConnection());
@@ -223,7 +223,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<DetailedPrivateEndpointConnection> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

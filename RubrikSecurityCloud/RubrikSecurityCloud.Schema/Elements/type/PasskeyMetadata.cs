@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Boolean? IsPasskeyEnabled
         // GraphQL -> isPasskeyEnabled: Boolean! (scalar)
@@ -173,7 +173,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PasskeyMetadata> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PasskeyMetadata());
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<PasskeyMetadata> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

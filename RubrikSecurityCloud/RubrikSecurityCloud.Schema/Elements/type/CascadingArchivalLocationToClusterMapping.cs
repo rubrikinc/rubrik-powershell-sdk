@@ -94,7 +94,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> Target? Location
         // GraphQL -> location: Target (interface)
@@ -184,7 +184,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CascadingArchivalLocationToClusterMapping> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CascadingArchivalLocationToClusterMapping());
@@ -194,7 +194,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CascadingArchivalLocationToClusterMapping> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

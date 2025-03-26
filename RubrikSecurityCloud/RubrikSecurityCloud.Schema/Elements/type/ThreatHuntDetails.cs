@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
@@ -323,7 +323,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatHuntDetails> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatHuntDetails());
@@ -333,7 +333,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ThreatHuntDetails> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

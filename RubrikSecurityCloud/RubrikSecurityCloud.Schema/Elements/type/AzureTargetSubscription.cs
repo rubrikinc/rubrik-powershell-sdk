@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? CustomerTenantId
         // GraphQL -> customerTenantId: String! (scalar)
@@ -278,7 +278,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureTargetSubscription> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureTargetSubscription());
@@ -288,7 +288,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AzureTargetSubscription> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

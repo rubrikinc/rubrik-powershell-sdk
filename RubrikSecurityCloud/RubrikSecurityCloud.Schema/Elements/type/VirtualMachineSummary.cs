@@ -504,7 +504,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> VirtualMachineSummarySnapshotConsistencyMandate? SnapshotConsistencyMandate
         // GraphQL -> snapshotConsistencyMandate: VirtualMachineSummarySnapshotConsistencyMandate! (enum)
@@ -973,7 +973,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VirtualMachineSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VirtualMachineSummary());
@@ -983,7 +983,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<VirtualMachineSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

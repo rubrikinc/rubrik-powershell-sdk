@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> OracleHostSummary? OracleHostSummary
         // GraphQL -> oracleHostSummary: OracleHostSummary (type)
@@ -178,7 +178,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleHostDetail> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleHostDetail());
@@ -188,7 +188,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<OracleHostDetail> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

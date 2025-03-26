@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? DailyGrowthInBytes
         // GraphQL -> dailyGrowthInBytes: Long! (scalar)
@@ -313,7 +313,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetO365StorageStatsResp> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetO365StorageStatsResp());
@@ -323,7 +323,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<GetO365StorageStatsResp> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

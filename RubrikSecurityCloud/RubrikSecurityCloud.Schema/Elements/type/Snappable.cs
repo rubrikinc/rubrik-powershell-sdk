@@ -926,7 +926,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ComplianceStatusEnum? ArchivalComplianceStatus
         // GraphQL -> archivalComplianceStatus: ComplianceStatusEnum (enum)
@@ -1800,7 +1800,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Snappable> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Snappable());
@@ -1810,7 +1810,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<Snappable> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

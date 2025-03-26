@@ -198,7 +198,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AzureCloudType? CloudType
         // GraphQL -> cloudType: AzureCloudType! (enum)
@@ -383,7 +383,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureCloudAccountTenant> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureCloudAccountTenant());
@@ -393,7 +393,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AzureCloudAccountTenant> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

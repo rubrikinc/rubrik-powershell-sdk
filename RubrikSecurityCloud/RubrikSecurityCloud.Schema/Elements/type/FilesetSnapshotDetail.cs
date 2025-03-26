@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? LastModified
         // GraphQL -> lastModified: String! (scalar)
@@ -248,7 +248,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FilesetSnapshotDetail> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FilesetSnapshotDetail());
@@ -258,7 +258,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<FilesetSnapshotDetail> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

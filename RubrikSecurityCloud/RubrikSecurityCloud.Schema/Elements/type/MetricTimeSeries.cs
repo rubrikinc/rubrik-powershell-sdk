@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ClusterMetric? Metric
         // GraphQL -> metric: ClusterMetric! (type)
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MetricTimeSeries> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MetricTimeSeries());
@@ -193,7 +193,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<MetricTimeSeries> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

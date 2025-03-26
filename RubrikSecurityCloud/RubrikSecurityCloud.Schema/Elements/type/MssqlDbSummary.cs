@@ -789,7 +789,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> MssqlDbSummaryRecoveryModel? RecoveryModel
         // GraphQL -> recoveryModel: MssqlDbSummaryRecoveryModel (enum)
@@ -1528,7 +1528,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlDbSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlDbSummary());
@@ -1538,7 +1538,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<MssqlDbSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ManagedVolumeStats? AlwaysMounted
         // GraphQL -> alwaysMounted: ManagedVolumeStats! (type)
@@ -178,7 +178,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeInventoryStats> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeInventoryStats());
@@ -188,7 +188,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ManagedVolumeInventoryStats> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

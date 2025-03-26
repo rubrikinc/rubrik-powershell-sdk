@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<TprPolicyObject>? NewValue
         // GraphQL -> newValue: [TprPolicyObject!]! (type)
@@ -178,7 +178,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TprRequestedChangeManagedObjectEntry> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TprRequestedChangeManagedObjectEntry());
@@ -188,7 +188,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<TprRequestedChangeManagedObjectEntry> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

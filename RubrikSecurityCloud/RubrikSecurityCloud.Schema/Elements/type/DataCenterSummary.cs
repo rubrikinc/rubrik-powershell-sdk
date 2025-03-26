@@ -201,7 +201,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String (scalar)
@@ -388,7 +388,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DataCenterSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DataCenterSummary());
@@ -398,7 +398,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<DataCenterSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? AwsNativeEc2InstanceId
         // GraphQL -> awsNativeEc2InstanceId: String! (scalar)
@@ -308,7 +308,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AttachmentSpecForEbsVolume> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AttachmentSpecForEbsVolume());
@@ -318,7 +318,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AttachmentSpecForEbsVolume> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

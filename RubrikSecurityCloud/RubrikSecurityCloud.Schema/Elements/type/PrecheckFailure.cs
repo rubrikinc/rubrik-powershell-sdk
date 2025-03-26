@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> PrecheckIdentifier? PrecheckIdentifier
         // GraphQL -> precheckIdentifier: PrecheckIdentifier! (enum)
@@ -273,7 +273,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrecheckFailure> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrecheckFailure());
@@ -283,7 +283,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<PrecheckFailure> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

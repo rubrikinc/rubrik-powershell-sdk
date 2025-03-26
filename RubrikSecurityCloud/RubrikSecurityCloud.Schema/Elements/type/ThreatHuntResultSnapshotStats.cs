@@ -198,7 +198,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ThreatHuntStatus? SnapshotScanStatus
         // GraphQL -> snapshotScanStatus: ThreatHuntStatus! (enum)
@@ -383,7 +383,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatHuntResultSnapshotStats> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatHuntResultSnapshotStats());
@@ -393,7 +393,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ThreatHuntResultSnapshotStats> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

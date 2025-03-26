@@ -198,7 +198,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> DailySnapshotSchedule? Daily
         // GraphQL -> daily: DailySnapshotSchedule (type)
@@ -378,7 +378,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotSchedule> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotSchedule());
@@ -388,7 +388,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<SnapshotSchedule> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

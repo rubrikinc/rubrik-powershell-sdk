@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ActiveDirectoryObjectType? ObjectType
         // GraphQL -> objectType: ActiveDirectoryObjectType! (enum)
@@ -243,7 +243,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ActiveDirectorySnappableSearchResponse> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ActiveDirectorySnappableSearchResponse());
@@ -253,7 +253,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ActiveDirectorySnappableSearchResponse> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

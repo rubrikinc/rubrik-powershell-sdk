@@ -357,7 +357,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> NutanixVmMountStatus? MountStatus
         // GraphQL -> mountStatus: NutanixVmMountStatus (enum)
@@ -693,7 +693,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NutanixVmMountSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NutanixVmMountSummary());
@@ -703,7 +703,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<NutanixVmMountSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

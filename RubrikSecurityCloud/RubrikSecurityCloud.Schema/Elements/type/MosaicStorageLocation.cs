@@ -234,7 +234,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> MosaicStoreConnectionStatus? StoreConnectionStatus
         // GraphQL -> storeConnectionStatus: MosaicStoreConnectionStatus! (enum)
@@ -453,7 +453,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MosaicStorageLocation> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MosaicStorageLocation());
@@ -463,7 +463,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<MosaicStorageLocation> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

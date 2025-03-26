@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? Computers
         // GraphQL -> computers: Long (scalar)
@@ -343,7 +343,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ActiveDirectoryObjectsCount> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ActiveDirectoryObjectsCount());
@@ -353,7 +353,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ActiveDirectoryObjectsCount> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

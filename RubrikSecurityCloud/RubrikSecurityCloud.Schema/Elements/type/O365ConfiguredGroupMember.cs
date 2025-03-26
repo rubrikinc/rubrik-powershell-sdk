@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> O365ConfiguredGroupMemberType? ObjectType
         // GraphQL -> objectType: O365ConfiguredGroupMemberType! (enum)
@@ -273,7 +273,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365ConfiguredGroupMember> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365ConfiguredGroupMember());
@@ -283,7 +283,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<O365ConfiguredGroupMember> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -235,7 +235,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> SnapshotServiceConsistencyLevel? ConsistencyLevel
         // GraphQL -> consistencyLevel: SnapshotServiceConsistencyLevel! (enum)
@@ -454,7 +454,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsNativeEc2InstanceSpecificSnapshot> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsNativeEc2InstanceSpecificSnapshot());
@@ -464,7 +464,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AwsNativeEc2InstanceSpecificSnapshot> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -249,7 +249,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? ApiCertificate
         // GraphQL -> apiCertificate: String (scalar)
@@ -483,7 +483,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NasBaseConfig> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NasBaseConfig());
@@ -493,7 +493,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<NasBaseConfig> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

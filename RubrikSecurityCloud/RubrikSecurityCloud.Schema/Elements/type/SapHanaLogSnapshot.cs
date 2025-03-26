@@ -234,7 +234,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
@@ -453,7 +453,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaLogSnapshot> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaLogSnapshot());
@@ -463,7 +463,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<SapHanaLogSnapshot> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

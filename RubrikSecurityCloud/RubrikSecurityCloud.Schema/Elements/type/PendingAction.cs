@@ -216,7 +216,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> PendingActionStatus? Status
         // GraphQL -> status: PendingActionStatus! (enum)
@@ -418,7 +418,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PendingAction> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PendingAction());
@@ -428,7 +428,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<PendingAction> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

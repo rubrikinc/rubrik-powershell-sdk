@@ -186,7 +186,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> DlpConfigTargetType? TargetType
         // GraphQL -> targetType: DlpConfigTargetType! (enum)
@@ -358,7 +358,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DlpConfig> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DlpConfig());
@@ -368,7 +368,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<DlpConfig> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: UUID! (scalar)
@@ -293,7 +293,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365SubscriptionAppTypeCounts> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365SubscriptionAppTypeCounts());
@@ -303,7 +303,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<O365SubscriptionAppTypeCounts> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

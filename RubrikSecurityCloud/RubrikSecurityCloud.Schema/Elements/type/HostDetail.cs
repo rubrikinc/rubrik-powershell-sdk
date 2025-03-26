@@ -381,7 +381,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> HostVfdState? HostVfdDriverState
         // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
@@ -738,7 +738,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HostDetail> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HostDetail());
@@ -748,7 +748,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<HostDetail> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

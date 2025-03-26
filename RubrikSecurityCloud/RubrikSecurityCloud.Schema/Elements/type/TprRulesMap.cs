@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<TprRule>? DataManagementByCluster
         // GraphQL -> dataManagementByCluster: [TprRule!]! (enum)
@@ -308,7 +308,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TprRulesMap> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TprRulesMap());
@@ -318,7 +318,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<TprRulesMap> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

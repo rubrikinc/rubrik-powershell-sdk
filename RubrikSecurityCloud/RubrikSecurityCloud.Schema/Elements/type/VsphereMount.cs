@@ -393,7 +393,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> VsphereMountStatus? Status
         // GraphQL -> status: VsphereMountStatus! (enum)
@@ -758,7 +758,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereMount> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereMount());
@@ -768,7 +768,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<VsphereMount> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

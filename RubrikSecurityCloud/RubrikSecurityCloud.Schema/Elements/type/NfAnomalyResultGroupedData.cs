@@ -146,7 +146,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<NfAnomalyResultGroupedData>? NfAnomalyResultGroupedDataField
         // GraphQL -> nfAnomalyResultGroupedData: [NfAnomalyResultGroupedData!]! (type)
@@ -255,7 +255,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NfAnomalyResultGroupedData> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NfAnomalyResultGroupedData());
@@ -265,7 +265,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<NfAnomalyResultGroupedData> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

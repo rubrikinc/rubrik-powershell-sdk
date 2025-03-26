@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> HostConnectivityStatusEnum? Status
         // GraphQL -> status: HostConnectivityStatusEnum! (enum)
@@ -243,7 +243,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmOracleRacNode> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmOracleRacNode());
@@ -253,7 +253,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CdmOracleRacNode> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

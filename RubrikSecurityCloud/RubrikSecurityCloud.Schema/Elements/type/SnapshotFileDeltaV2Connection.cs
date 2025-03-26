@@ -176,7 +176,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> GenericSnapshot? CurrentSnapshot
         // GraphQL -> currentSnapshot: GenericSnapshot! (interface)
@@ -345,7 +345,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotFileDeltaV2Connection> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotFileDeltaV2Connection());
@@ -355,7 +355,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<SnapshotFileDeltaV2Connection> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

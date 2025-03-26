@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
@@ -293,7 +293,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RcsArchivalLocationConsumptionStats> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RcsArchivalLocationConsumptionStats());
@@ -303,7 +303,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<RcsArchivalLocationConsumptionStats> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

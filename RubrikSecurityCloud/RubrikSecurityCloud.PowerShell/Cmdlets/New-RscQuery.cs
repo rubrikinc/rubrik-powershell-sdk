@@ -160,7 +160,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     cmd.AddParameter("Field", this.Field);
                 if (this.FilePatch != null)
                     cmd.AddParameter("FilePatch", this.FilePatch);
-                if (this.FieldProfile != Exploration.Profile.UNSET)
+                if (this.FieldProfile != Autofield.Profile.UNSET)
                     cmd.AddParameter("FieldProfile", this.FieldProfile);
                 if (this.GetDynParam("AddField") != null)
                     cmd.AddParameter("AddField", this.GetDynParam("AddField"));

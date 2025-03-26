@@ -70,7 +70,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Boolean? IsAnomaly
         // GraphQL -> isAnomaly: Boolean! (scalar)
@@ -134,7 +134,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AnomalyStatus> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AnomalyStatus());
@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AnomalyStatus> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

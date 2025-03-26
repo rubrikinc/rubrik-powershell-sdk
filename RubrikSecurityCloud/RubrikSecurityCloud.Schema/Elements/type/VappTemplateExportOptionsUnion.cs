@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> VappTemplateExportOptions? AdvancedExportOptions
         // GraphQL -> advancedExportOptions: VappTemplateExportOptions (type)
@@ -218,7 +218,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VappTemplateExportOptionsUnion> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VappTemplateExportOptionsUnion());
@@ -228,7 +228,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<VappTemplateExportOptionsUnion> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

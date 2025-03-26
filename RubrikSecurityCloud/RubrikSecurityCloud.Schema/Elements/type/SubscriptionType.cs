@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<UserAuditTypeEnum>? AuditTypes
         // GraphQL -> auditTypes: [UserAuditTypeEnum!]! (enum)
@@ -308,7 +308,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SubscriptionType> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SubscriptionType());
@@ -318,7 +318,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<SubscriptionType> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

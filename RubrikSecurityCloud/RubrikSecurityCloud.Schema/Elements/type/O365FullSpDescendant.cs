@@ -214,7 +214,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> SharePointDescendantType? ObjectType
         // GraphQL -> objectType: SharePointDescendantType! (enum)
@@ -414,7 +414,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365FullSpDescendant> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365FullSpDescendant());
@@ -424,7 +424,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<O365FullSpDescendant> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -399,7 +399,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> SnapshotCloudStorageTier? CloudStorageTier
         // GraphQL -> cloudStorageTier: SnapshotCloudStorageTier (enum)
@@ -773,7 +773,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BaseSnapshotSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BaseSnapshotSummary());
@@ -783,7 +783,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<BaseSnapshotSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

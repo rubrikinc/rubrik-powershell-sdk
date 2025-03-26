@@ -339,7 +339,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AwsNativeRdsDbEngine? DbEngine
         // GraphQL -> dbEngine: AwsNativeRdsDbEngine! (enum)
@@ -658,7 +658,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RdsInstanceExportDefaults> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RdsInstanceExportDefaults());
@@ -668,7 +668,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<RdsInstanceExportDefaults> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

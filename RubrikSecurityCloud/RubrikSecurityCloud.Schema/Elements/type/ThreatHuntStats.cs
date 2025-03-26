@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? TotalAffectedObjects
         // GraphQL -> totalAffectedObjects: Long! (scalar)
@@ -413,7 +413,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatHuntStats> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatHuntStats());
@@ -423,7 +423,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ThreatHuntStats> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

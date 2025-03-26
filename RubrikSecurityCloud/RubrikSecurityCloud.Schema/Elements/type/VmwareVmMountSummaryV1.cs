@@ -303,7 +303,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int32? AttachingDiskCount
         // GraphQL -> attachingDiskCount: Int (scalar)
@@ -588,7 +588,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareVmMountSummaryV1> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareVmMountSummaryV1());
@@ -598,7 +598,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<VmwareVmMountSummaryV1> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 
