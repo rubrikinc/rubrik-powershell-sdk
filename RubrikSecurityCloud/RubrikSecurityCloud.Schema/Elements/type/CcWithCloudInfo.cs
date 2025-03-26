@@ -252,7 +252,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> CcpVendorType? Vendor
         // GraphQL -> vendor: CcpVendorType! (enum)
@@ -488,7 +488,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CcWithCloudInfo> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CcWithCloudInfo());
@@ -498,7 +498,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CcWithCloudInfo> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

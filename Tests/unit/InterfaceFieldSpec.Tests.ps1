@@ -8,7 +8,7 @@ BeforeAll {
 
 Describe -Name "Test field specs for interface fields" -Fixture {
 
-    It -Name 'Field spec exploration' -Test {
+    It -Name 'Field spec autofield' -Test {
         # Retrieve all interfaces
         $interfaces = (Get-RscType -ListAvailable -Interfaces)
         # Inf1 should be one of them
@@ -18,7 +18,7 @@ Describe -Name "Test field specs for interface fields" -Fixture {
         $impls = (Get-RscType -Interface $inf)
         $impls.Count | Should -BeGreaterThan 0
         Write-Host "Found $($impls.Count) implementations of interface $inf"
-        # Build exploration field spec for 
+        # Build autofield field spec for 
         # New-RscQueryMssql -TopLevelDescendant invokes
         $fieldSpecString = (New-RscQueryMssql -Op TopLevelDescendants).Field.AsFieldSpec()
         # The built up field spec should have an inline fragment

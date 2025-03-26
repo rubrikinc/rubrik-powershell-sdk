@@ -216,7 +216,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<System.String>? CassandraYaml
         // GraphQL -> cassandraYaml: [String!]! (scalar)
@@ -418,7 +418,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SourceConfigParams> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SourceConfigParams());
@@ -428,7 +428,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<SourceConfigParams> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

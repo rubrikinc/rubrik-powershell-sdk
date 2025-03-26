@@ -201,7 +201,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? Bucket
         // GraphQL -> bucket: String (scalar)
@@ -388,7 +388,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RestoreFormConfigurationS3ArchivalLocation> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RestoreFormConfigurationS3ArchivalLocation());
@@ -398,7 +398,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<RestoreFormConfigurationS3ArchivalLocation> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

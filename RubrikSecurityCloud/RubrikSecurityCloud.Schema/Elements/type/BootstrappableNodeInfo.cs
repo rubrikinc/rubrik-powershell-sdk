@@ -285,7 +285,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? CapacityInBytes
         // GraphQL -> capacityInBytes: Long (scalar)
@@ -553,7 +553,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BootstrappableNodeInfo> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BootstrappableNodeInfo());
@@ -563,7 +563,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<BootstrappableNodeInfo> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

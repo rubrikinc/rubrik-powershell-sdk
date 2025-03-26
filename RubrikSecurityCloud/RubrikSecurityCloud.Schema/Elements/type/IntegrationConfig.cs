@@ -156,7 +156,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> DlpConfig? DataLossPrevention
         // GraphQL -> dataLossPrevention: DlpConfig (type)
@@ -298,7 +298,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<IntegrationConfig> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new IntegrationConfig());
@@ -308,7 +308,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<IntegrationConfig> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

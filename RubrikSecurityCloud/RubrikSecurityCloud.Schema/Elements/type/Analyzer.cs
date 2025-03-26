@@ -342,7 +342,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AnalyzerTypeEnum? AnalyzerType
         // GraphQL -> analyzerType: AnalyzerTypeEnum! (enum)
@@ -663,7 +663,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Analyzer> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Analyzer());
@@ -673,7 +673,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<Analyzer> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

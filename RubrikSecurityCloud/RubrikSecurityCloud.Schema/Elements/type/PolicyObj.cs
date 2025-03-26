@@ -775,7 +775,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<RiskReason>? AccessRiskReasons
         // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
@@ -1443,7 +1443,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolicyObj> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolicyObj());
@@ -1453,7 +1453,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<PolicyObj> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

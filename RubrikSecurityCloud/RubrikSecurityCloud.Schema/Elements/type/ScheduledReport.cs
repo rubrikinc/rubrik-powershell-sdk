@@ -366,7 +366,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<ReportAttachmentType>? AttachmentTypes
         // GraphQL -> attachmentTypes: [ReportAttachmentType!]! (enum)
@@ -708,7 +708,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ScheduledReport> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ScheduledReport());
@@ -718,7 +718,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ScheduledReport> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

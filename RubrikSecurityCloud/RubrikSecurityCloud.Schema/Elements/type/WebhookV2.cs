@@ -309,7 +309,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AuthenticationTypeV2? AuthType
         // GraphQL -> authType: AuthenticationTypeV2! (enum)
@@ -598,7 +598,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<WebhookV2> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new WebhookV2());
@@ -608,7 +608,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<WebhookV2> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

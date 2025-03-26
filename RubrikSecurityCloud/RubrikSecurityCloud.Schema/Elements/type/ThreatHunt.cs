@@ -204,7 +204,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ThreatHuntType? HuntType
         // GraphQL -> huntType: ThreatHuntType! (enum)
@@ -393,7 +393,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatHunt> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatHunt());
@@ -403,7 +403,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ThreatHunt> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

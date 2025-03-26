@@ -106,7 +106,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> TimeUnitEnum? Unit
         // GraphQL -> unit: TimeUnitEnum! (enum)
@@ -204,7 +204,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TimeRangeWithUnit> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TimeRangeWithUnit());
@@ -214,7 +214,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<TimeRangeWithUnit> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

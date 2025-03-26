@@ -249,7 +249,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> MissingClusterConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: MissingClusterConnectionStatus! (enum)
@@ -483,7 +483,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MissingCluster> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MissingCluster());
@@ -493,7 +493,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<MissingCluster> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

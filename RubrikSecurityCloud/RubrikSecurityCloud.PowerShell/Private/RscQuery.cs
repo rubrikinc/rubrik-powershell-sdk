@@ -25,7 +25,7 @@ namespace RubrikSecurityCloud
 {
     public delegate string QueryDocMethod(object fieldSpecObj);
 
-    public delegate object QueryFieldSpecMethod(ExplorationContext ec = null);
+    public delegate object QueryFieldSpecMethod(AutofieldContext ec = null);
 
     public class RscQuery
     {
@@ -61,7 +61,7 @@ namespace RubrikSecurityCloud
 
         /// <summary>
         /// Method that builds the field object for this query
-        /// using exploration. It takes for input an exploration context,
+        /// using autofield. It takes for input an autofield context,
         /// and returns the field object.
         /// </summary>
         internal QueryFieldSpecMethod queryFieldSpecMethod = null;

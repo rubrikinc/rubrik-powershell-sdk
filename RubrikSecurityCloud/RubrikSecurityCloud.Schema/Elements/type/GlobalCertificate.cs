@@ -423,7 +423,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> GlobalCertificateStatus? Status
         // GraphQL -> status: GlobalCertificateStatus! (enum)
@@ -818,7 +818,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GlobalCertificate> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GlobalCertificate());
@@ -828,7 +828,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<GlobalCertificate> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

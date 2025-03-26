@@ -1331,7 +1331,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ClusterCyberEventLockdownMode? CyberEventLockdownMode
         // GraphQL -> cyberEventLockdownMode: ClusterCyberEventLockdownMode (enum)
@@ -2492,7 +2492,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Cluster> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Cluster());
@@ -2502,7 +2502,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<Cluster> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

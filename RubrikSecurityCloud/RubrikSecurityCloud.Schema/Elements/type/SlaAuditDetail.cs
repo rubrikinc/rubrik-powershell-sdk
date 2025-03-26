@@ -206,7 +206,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> SlaDomain? CurrentSlaSummary
         // GraphQL -> currentSlaSummary: SlaDomain (interface)
@@ -405,7 +405,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaAuditDetail> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaAuditDetail());
@@ -415,7 +415,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<SlaAuditDetail> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -493,7 +493,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> TargetEncryptionTypeEnum? EncryptionType
         // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
@@ -954,7 +954,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RubrikManagedRcvAwsTarget> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RubrikManagedRcvAwsTarget());
@@ -964,7 +964,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<RubrikManagedRcvAwsTarget> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 
