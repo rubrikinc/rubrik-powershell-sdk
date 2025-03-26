@@ -104,7 +104,7 @@ function Get-RscWorkload {
     
     Process {
 
-        $query = New-RscQuery -GqlQuery snappableConnection -FieldProfile EMPTY
+        $query = New-RscQuery -GqlQuery snappableConnection
         $query.Field.Nodes[0].Id = "FOO"
         $query.Field.Nodes[0].Location = "FOO"
         $query.Field.Nodes[0].complianceStatus = [RubrikSecurityCloud.Types.ComplianceStatusEnum]::IN_COMPLIANCE
