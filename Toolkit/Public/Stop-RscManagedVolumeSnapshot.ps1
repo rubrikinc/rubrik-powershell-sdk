@@ -41,7 +41,7 @@ function Stop-RscManagedVolumeSnapshot {
         Write-Debug "-Running Stop-RscManagedVolumeSnapshot"
         
         #region Create Query
-        $query = New-RscMutationManagedVolume -Operation EndSnapshot
+        $query = New-RscMutationManagedVolume -Operation EndSnapshot -RemoveField RscSnapshotId
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.EndManagedVolumeSnapshotInput
         $query.Var.input.id = $RscManagedVolume.Id
         $query.Var.input.params = New-Object -TypeName RubrikSecurityCloud.Types.EndSnapshotManagedVolumeRequestInput
