@@ -31,7 +31,7 @@ function Start-RscManagedVolumeSnapshot {
     Process {
         Write-Debug "-Running Start-RscManagedVolumeSnapshot"      
         #region Create Query
-        $query = New-RscMutationManagedVolume -Operation BeginSnapshot
+        $query = New-RscMutationManagedVolume -Operation BeginSnapshot -RemoveField RscSnapshotId
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.BeginManagedVolumeSnapshotInput
         $query.Var.input.id = $RscManagedVolume.Id
         $query.Var.input.config = New-Object -TypeName RubrikSecurityCloud.Types.BeginSnapshotManagedVolumeRequestInput
