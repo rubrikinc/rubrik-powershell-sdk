@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("region")]
         public AzureRegion? Region { get; set; }
 
+        //      C# -> RcsRegionEnumType? RcvRegion
+        // GraphQL -> rcvRegion: RcsRegionEnumType (enum)
+        [JsonProperty("rcvRegion")]
+        public RcsRegionEnumType? RcvRegion { get; set; }
+
         //      C# -> AzureStorageTier? Tier
         // GraphQL -> tier: AzureStorageTier (enum)
         [JsonProperty("tier")]

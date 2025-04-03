@@ -9,6 +9,6 @@ Status of the running threat hunt.
 - CANCELING - Threat hunt is being canceled.
 - CANCELED - Threat hunt canceled.
 - PENDING - Pending: This represents that the set of snapshots has not yet been
- determined for the threat hunt.
+determined for the threat hunt.
 - ABORTED - Aborted: The threat hunt got internally aborted due to very large number
- of file matches.
+of file matches.

@@ -40,10 +40,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("gpos")]
         public System.Int64? Gpos { get; set; }
 
+        //      C# -> System.Int64? GroupManagedServiceAccounts
+        // GraphQL -> groupManagedServiceAccounts: Long (scalar)
+        [JsonProperty("groupManagedServiceAccounts")]
+        public System.Int64? GroupManagedServiceAccounts { get; set; }
+
         //      C# -> System.Int64? Groups
         // GraphQL -> groups: Long (scalar)
         [JsonProperty("groups")]
         public System.Int64? Groups { get; set; }
+
+        //      C# -> System.Int64? ManagedServiceAccounts
+        // GraphQL -> managedServiceAccounts: Long (scalar)
+        [JsonProperty("managedServiceAccounts")]
+        public System.Int64? ManagedServiceAccounts { get; set; }
 
         //      C# -> System.Int64? OrganizationalUnits
         // GraphQL -> organizationalUnits: Long (scalar)
@@ -69,7 +79,9 @@ namespace RubrikSecurityCloud.Types
         System.Int64? Contacts = null,
         System.Int64? Containers = null,
         System.Int64? Gpos = null,
+        System.Int64? GroupManagedServiceAccounts = null,
         System.Int64? Groups = null,
+        System.Int64? ManagedServiceAccounts = null,
         System.Int64? OrganizationalUnits = null,
         System.Int64? Users = null
     ) 
@@ -86,8 +98,14 @@ namespace RubrikSecurityCloud.Types
         if ( Gpos != null ) {
             this.Gpos = Gpos;
         }
+        if ( GroupManagedServiceAccounts != null ) {
+            this.GroupManagedServiceAccounts = GroupManagedServiceAccounts;
+        }
         if ( Groups != null ) {
             this.Groups = Groups;
+        }
+        if ( ManagedServiceAccounts != null ) {
+            this.ManagedServiceAccounts = ManagedServiceAccounts;
         }
         if ( OrganizationalUnits != null ) {
             this.OrganizationalUnits = OrganizationalUnits;
@@ -145,6 +163,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "gpos\n" ;
             }
         }
+        //      C# -> System.Int64? GroupManagedServiceAccounts
+        // GraphQL -> groupManagedServiceAccounts: Long (scalar)
+        if (this.GroupManagedServiceAccounts != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "groupManagedServiceAccounts\n" ;
+            } else {
+                s += ind + "groupManagedServiceAccounts\n" ;
+            }
+        }
         //      C# -> System.Int64? Groups
         // GraphQL -> groups: Long (scalar)
         if (this.Groups != null) {
@@ -152,6 +179,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "groups\n" ;
             } else {
                 s += ind + "groups\n" ;
+            }
+        }
+        //      C# -> System.Int64? ManagedServiceAccounts
+        // GraphQL -> managedServiceAccounts: Long (scalar)
+        if (this.ManagedServiceAccounts != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "managedServiceAccounts\n" ;
+            } else {
+                s += ind + "managedServiceAccounts\n" ;
             }
         }
         //      C# -> System.Int64? OrganizationalUnits
@@ -177,7 +213,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? Computers
         // GraphQL -> computers: Long (scalar)
@@ -247,6 +283,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Gpos = null;
         }
+        //      C# -> System.Int64? GroupManagedServiceAccounts
+        // GraphQL -> groupManagedServiceAccounts: Long (scalar)
+        if (ec.Includes("groupManagedServiceAccounts",true))
+        {
+            if(this.GroupManagedServiceAccounts == null) {
+
+                this.GroupManagedServiceAccounts = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.GroupManagedServiceAccounts != null && ec.Excludes("groupManagedServiceAccounts",true))
+        {
+            this.GroupManagedServiceAccounts = null;
+        }
         //      C# -> System.Int64? Groups
         // GraphQL -> groups: Long (scalar)
         if (ec.Includes("groups",true))
@@ -263,6 +316,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Groups != null && ec.Excludes("groups",true))
         {
             this.Groups = null;
+        }
+        //      C# -> System.Int64? ManagedServiceAccounts
+        // GraphQL -> managedServiceAccounts: Long (scalar)
+        if (ec.Includes("managedServiceAccounts",true))
+        {
+            if(this.ManagedServiceAccounts == null) {
+
+                this.ManagedServiceAccounts = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ManagedServiceAccounts != null && ec.Excludes("managedServiceAccounts",true))
+        {
+            this.ManagedServiceAccounts = null;
         }
         //      C# -> System.Int64? OrganizationalUnits
         // GraphQL -> organizationalUnits: Long (scalar)
@@ -343,7 +413,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ActiveDirectoryObjectsCount> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ActiveDirectoryObjectsCount());
@@ -353,7 +423,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ActiveDirectoryObjectsCount> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

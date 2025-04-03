@@ -142,6 +142,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.excludeAnomalous = $someBoolean
     /// # OPTIONAL
+    /// $query.Var.quarantinedOnly = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.anomalousOnly = $someBoolean
+    /// # OPTIONAL
     /// $query.Var.getFullDetails = $someBoolean
     /// 
     /// # Execute the query
@@ -765,6 +769,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// 	# OPTIONAL
+    /// 	filePath = $someString
+    /// 	# OPTIONAL
+    /// 	parentWorkloadId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1034,6 +1044,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// }
     /// # OPTIONAL
     /// $query.Var.ignoreActiveWorkloadCheck = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.showSnapshotRetentionInfo = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1750,6 +1762,8 @@ $query.Var.searchPrefix = $someString"
         //     ignoreActiveWorkloadCheck: Boolean
         //     excludeQuarantined: Boolean
         //     excludeAnomalous: Boolean
+        //     quarantinedOnly: Boolean
+        //     anomalousOnly: Boolean
         //     getFullDetails: Boolean
         //   ): [ClosestSnapshotSearchResult!]!
         internal void InitQueryAllSnapshotsClosestToPointInTime()
@@ -1762,13 +1776,15 @@ $query.Var.searchPrefix = $someString"
                 Tuple.Create("ignoreActiveWorkloadCheck", "Boolean"),
                 Tuple.Create("excludeQuarantined", "Boolean"),
                 Tuple.Create("excludeAnomalous", "Boolean"),
+                Tuple.Create("quarantinedOnly", "Boolean"),
+                Tuple.Create("anomalousOnly", "Boolean"),
                 Tuple.Create("getFullDetails", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllSnapshotsClosestToPointInTime",
-                "($beforeTime: DateTime,$afterTime: DateTime,$snappableIds: [String!]!,$includeLinked: Boolean,$ignoreActiveWorkloadCheck: Boolean,$excludeQuarantined: Boolean,$excludeAnomalous: Boolean,$getFullDetails: Boolean)",
+                "($beforeTime: DateTime,$afterTime: DateTime,$snappableIds: [String!]!,$includeLinked: Boolean,$ignoreActiveWorkloadCheck: Boolean,$excludeQuarantined: Boolean,$excludeAnomalous: Boolean,$quarantinedOnly: Boolean,$anomalousOnly: Boolean,$getFullDetails: Boolean)",
                 "List<ClosestSnapshotSearchResult>",
                 Query.AllSnapshotsClosestToPointInTime,
                 Query.AllSnapshotsClosestToPointInTimeFieldSpec,
@@ -1788,6 +1804,10 @@ $query.Var.ignoreActiveWorkloadCheck = $someBoolean
 $query.Var.excludeQuarantined = $someBoolean
 # OPTIONAL
 $query.Var.excludeAnomalous = $someBoolean
+# OPTIONAL
+$query.Var.quarantinedOnly = $someBoolean
+# OPTIONAL
+$query.Var.anomalousOnly = $someBoolean
 # OPTIONAL
 $query.Var.getFullDetails = $someBoolean"
             );
@@ -2431,6 +2451,12 @@ $query.Var.onedriveSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	objectId = $someString
+	# OPTIONAL
+	filePath = $someString
+	# OPTIONAL
+	parentWorkloadId = $someString
 }"
             );
         }
@@ -2623,6 +2649,7 @@ $query.Var.timeRange = @{
         //     sortBy: SnapshotQuerySortByField
         //     timeRange: TimeRangeInput
         //     ignoreActiveWorkloadCheck: Boolean
+        //     showSnapshotRetentionInfo: Boolean
         //   ): GenericSnapshotConnection!
         internal void InitQuerySnapshotOfAsnappableConnection()
         {
@@ -2637,12 +2664,13 @@ $query.Var.timeRange = @{
                 Tuple.Create("sortBy", "SnapshotQuerySortByField"),
                 Tuple.Create("timeRange", "TimeRangeInput"),
                 Tuple.Create("ignoreActiveWorkloadCheck", "Boolean"),
+                Tuple.Create("showSnapshotRetentionInfo", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySnapshotOfAsnappableConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean,$showSnapshotRetentionInfo: Boolean)",
                 "GenericSnapshotConnection",
                 Query.SnapshotOfAsnappableConnection,
                 Query.SnapshotOfAsnappableConnectionFieldSpec,
@@ -2693,7 +2721,9 @@ $query.Var.timeRange = @{
 	end = $someDateTime
 }
 # OPTIONAL
-$query.Var.ignoreActiveWorkloadCheck = $someBoolean"
+$query.Var.ignoreActiveWorkloadCheck = $someBoolean
+# OPTIONAL
+$query.Var.showSnapshotRetentionInfo = $someBoolean"
             );
         }
 

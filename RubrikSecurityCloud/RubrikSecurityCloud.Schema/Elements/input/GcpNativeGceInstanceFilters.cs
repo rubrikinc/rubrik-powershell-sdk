@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgFilter")]
         public OrgFilter? OrgFilter { get; set; }
 
+        //      C# -> GcpNativeVmFileIndexingFilter? FileIndexingFilter
+        // GraphQL -> fileIndexingFilter: GcpNativeVmFileIndexingFilter (input)
+        [JsonProperty("fileIndexingFilter")]
+        public GcpNativeVmFileIndexingFilter? FileIndexingFilter { get; set; }
+
 
         #endregion
 

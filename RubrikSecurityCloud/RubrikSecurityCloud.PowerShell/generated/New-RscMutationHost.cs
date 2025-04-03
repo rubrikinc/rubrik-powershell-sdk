@@ -252,6 +252,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				username = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			oracleSepsSettings = @{
+    /// 				# OPTIONAL
+    /// 				isOracleSepsWalletEnabled = $someBoolean
+    /// 			}
     /// 		}
     /// 	)
     /// }
@@ -375,6 +380,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				password = $someString
     /// 				# REQUIRED
     /// 				username = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			oracleSepsSettings = @{
+    /// 				# OPTIONAL
+    /// 				isOracleSepsWalletEnabled = $someBoolean
     /// 			}
     /// 		}
     /// 	)
@@ -507,6 +517,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					password = $someString
     /// 					# REQUIRED
     /// 					username = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				oracleSepsSettings = @{
+    /// 					# OPTIONAL
+    /// 					isOracleSepsWalletEnabled = $someBoolean
     /// 				}
     /// 			}
     /// 		}
@@ -889,6 +904,11 @@ $query.Var.input = @{
 				# REQUIRED
 				username = $someString
 			}
+			# OPTIONAL
+			oracleSepsSettings = @{
+				# OPTIONAL
+				isOracleSepsWalletEnabled = $someBoolean
+			}
 		}
 	)
 }"
@@ -1004,6 +1024,11 @@ $query.Var.input = @{
 				password = $someString
 				# REQUIRED
 				username = $someString
+			}
+			# OPTIONAL
+			oracleSepsSettings = @{
+				# OPTIONAL
+				isOracleSepsWalletEnabled = $someBoolean
 			}
 		}
 	)
@@ -1128,6 +1153,11 @@ $query.Var.input = @{
 					password = $someString
 					# REQUIRED
 					username = $someString
+				}
+				# OPTIONAL
+				oracleSepsSettings = @{
+					# OPTIONAL
+					isOracleSepsWalletEnabled = $someBoolean
 				}
 			}
 		}

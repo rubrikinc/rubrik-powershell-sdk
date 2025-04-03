@@ -144,6 +144,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SECURITY_VIOLATION")]
         SECURITY_VIOLATION,
 
+        [EnumMember(Value = "SEEDING")]
+        SEEDING,
+
         [EnumMember(Value = "STORAGE")]
         STORAGE,
 

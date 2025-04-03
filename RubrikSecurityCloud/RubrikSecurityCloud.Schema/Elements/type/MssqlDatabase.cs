@@ -186,6 +186,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("unprotectableReasons")]
         public List<System.String>? UnprotectableReasons { get; set; }
 
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        [JsonProperty("version")]
+        public System.String? Version { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
@@ -481,6 +486,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
         List<System.String>? UnprotectableReasons = null,
+        System.String? Version = null,
         List<Org>? AllOrgs = null,
         CdmGroupedSnapshotConnection? CdmGroupedSnapshots = null,
         CdmWorkloadSnapshot? CdmNewestSnapshot = null,
@@ -608,6 +614,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UnprotectableReasons != null ) {
             this.UnprotectableReasons = UnprotectableReasons;
+        }
+        if ( Version != null ) {
+            this.Version = Version;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -1021,6 +1030,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "unprotectableReasons\n" ;
             }
         }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        if (this.Version != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
+            }
+        }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
@@ -1350,7 +1368,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
@@ -1943,6 +1961,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.UnprotectableReasons = null;
         }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        if (ec.Includes("version",true))
+        {
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
+        }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (ec.Includes("allOrgs",false))
@@ -2501,7 +2536,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlDatabase> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlDatabase());
@@ -2511,7 +2546,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<MssqlDatabase> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -1,6 +1,6 @@
 ### BackupStorageProtectionStatus
 BackupStorageProtectionStatus is the status of protection
- for the Microsoft 365 Backup Storage objects.
+for the Microsoft 365 Backup Storage objects.
 
 - STATUS_UNSPECIFIED - The status of the object is unspecified.
 - STATUS_PROTECT_REQUESTED - Object has been requested to be enabled for protection.

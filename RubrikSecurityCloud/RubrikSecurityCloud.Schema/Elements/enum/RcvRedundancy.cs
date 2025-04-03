@@ -27,6 +27,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_ZRS")]
         AZURE_ZRS,
 
+        [EnumMember(Value = "MULTI_REGION")]
+        MULTI_REGION,
+
+        [EnumMember(Value = "MULTI_ZONE")]
+        MULTI_ZONE,
+
+        [EnumMember(Value = "REDUNDANCY_UNKNOWN")]
+        REDUNDANCY_UNKNOWN,
+
+        [EnumMember(Value = "SINGLE_ZONE")]
+        SINGLE_ZONE,
+
         [EnumMember(Value = "UNKNOWN_AZURE_REDUNDANCY")]
         UNKNOWN_AZURE_REDUNDANCY
 

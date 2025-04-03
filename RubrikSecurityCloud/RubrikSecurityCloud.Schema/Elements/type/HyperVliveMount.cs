@@ -363,7 +363,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> HypervMountedVmStatusType? MountedVmStatus
         // GraphQL -> mountedVmStatus: HypervMountedVmStatusType! (enum)
@@ -703,7 +703,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HyperVliveMount> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HyperVliveMount());
@@ -713,7 +713,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<HyperVliveMount> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

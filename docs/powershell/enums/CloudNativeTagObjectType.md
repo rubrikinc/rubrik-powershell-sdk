@@ -6,6 +6,7 @@ Object Type for cloud-native tag rule.
 - AZURE_VIRTUAL_MACHINE - Azure Virtual Machine.
 - AZURE_STORAGE_ACCOUNT - Azure Storage Account.
 - AZURE_SQL_DATABASE_DB - Azure SQL Database DB.
+- AWS_DYNAMODB_TABLE - AWS DynamoDB Table.
 - AZURE_SQL_DATABASE_SERVER - Azure SQL Database Server.
 - AWS_RDS_INSTANCE - AWS RDS Instance.
 - AZURE_MANAGED_DISK - Azure Managed Disk.

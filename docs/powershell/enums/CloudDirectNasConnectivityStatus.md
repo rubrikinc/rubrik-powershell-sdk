@@ -1,9 +1,9 @@
 ### CloudDirectNasConnectivityStatus
-Cloud Direct NAS System connection status.
+NAS Cloud Direct system connection status.
 
-- UNKNOWN_CONNECTIVITY_STATUS - Unknown NAS System connectivity.
-- CONNECTED - NAS System is connected.
-- DISCONNECTED - NAS System is disconnected.
-- REFRESHING - NAS System is refreshing.
-- DELETING - NAS System is being deleted.
-- DELETED - NAS System is deleted.
+- UNKNOWN_CONNECTIVITY_STATUS - Unknown system connectivity.
+- CONNECTED - System is connected.
+- DISCONNECTED - System is disconnected.
+- REFRESHING - System is refreshing.
+- DELETING - System is being deleted.
+- DELETED - System is deleted.

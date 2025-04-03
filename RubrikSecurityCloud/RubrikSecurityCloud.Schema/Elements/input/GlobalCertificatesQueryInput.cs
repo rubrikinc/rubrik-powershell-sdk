@@ -49,6 +49,26 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRscBorn")]
         public System.Boolean? IsRscBorn { get; set; }
 
+        //      C# -> System.Boolean? IsCa
+        // GraphQL -> isCa: Boolean (scalar)
+        [JsonProperty("isCa")]
+        public System.Boolean? IsCa { get; set; }
+
+        //      C# -> List<IssuerType>? IssuerTypes
+        // GraphQL -> issuerTypes: [IssuerType!] (enum)
+        [JsonProperty("issuerTypes")]
+        public List<IssuerType>? IssuerTypes { get; set; }
+
+        //      C# -> System.Boolean? IsRenewalInProgress
+        // GraphQL -> isRenewalInProgress: Boolean (scalar)
+        [JsonProperty("isRenewalInProgress")]
+        public System.Boolean? IsRenewalInProgress { get; set; }
+
+        //      C# -> List<CdmCertificateUsage>? CdmUsages
+        // GraphQL -> cdmUsages: [CdmCertificateUsage!] (enum)
+        [JsonProperty("cdmUsages")]
+        public List<CdmCertificateUsage>? CdmUsages { get; set; }
+
 
         #endregion
 

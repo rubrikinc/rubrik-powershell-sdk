@@ -36,3 +36,4 @@ The different TPR rules.
 - EDIT_REPLICATION_PAIR - Quorum authorization is required for editing a replication pair.
 - DELETE_CLOUD_ACCOUNTS - Quorum authorization is required for deleting cloud accounts.
 - DELETE_CLOUD_ARCHIVAL_LOCATION - Quorum authorization is required to delete a cloud archival location.
+- MODIFY_PAM_INTEGRATION - The TPR rule for modifying PAM configuration.

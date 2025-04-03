@@ -15,3 +15,5 @@ Specifies the input required to update the lockout config by the admin.
   - Specifies whether the account lockout feature is enabled on the UI.
 - isAutoUnlockFeatureEnabled: System.Boolean
   - Specifies whether the auto unlock feature is enabled on the UI.
+- inactiveLockoutConfig: InactiveLockoutConfigInput
+  - Specifies information about inactive lockout configuration.

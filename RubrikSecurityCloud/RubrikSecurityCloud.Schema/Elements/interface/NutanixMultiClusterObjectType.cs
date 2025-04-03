@@ -94,7 +94,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NutanixMultiClusterObjectType> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 InterfaceHelper
@@ -111,7 +111,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<NutanixMultiClusterObjectType> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

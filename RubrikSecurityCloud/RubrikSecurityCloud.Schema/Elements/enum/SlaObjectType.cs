@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATLASSIAN_JIRA_OBJECT_TYPE")]
         ATLASSIAN_JIRA_OBJECT_TYPE,
 
+        [EnumMember(Value = "AWS_DYNAMODB_OBJECT_TYPE")]
+        AWS_DYNAMODB_OBJECT_TYPE,
+
         [EnumMember(Value = "AWS_EC2_EBS_OBJECT_TYPE")]
         AWS_EC2_EBS_OBJECT_TYPE,
 
@@ -95,6 +98,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NAS_OBJECT_TYPE")]
         NAS_OBJECT_TYPE,
+
+        [EnumMember(Value = "NCD_OBJECT_TYPE")]
+        NCD_OBJECT_TYPE,
 
         [EnumMember(Value = "NUTANIX_OBJECT_TYPE")]
         NUTANIX_OBJECT_TYPE,

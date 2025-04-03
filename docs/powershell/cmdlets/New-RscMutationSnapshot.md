@@ -37,6 +37,11 @@ Download a snapshot from archival.
 ### createfileset
 - There is a single argument of type CreateFilesetSnapshotInput.
 - Returns AsyncRequestStatus.
+### createvapps
+Create vApp Snapshots.
+
+- There is a single argument of type CreateVappSnapshotsInput.
+- Returns CreateVappSnapshotsReply.
 ### deletecloudworkloadsnapshot
 Deletes the Rubrik Security Cloud on-demand snapshot by ID.
 

@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeFeatureStatusFilter")]
         public AwsNativeFeatureStatusFilter? AwsNativeFeatureStatusFilter { get; set; }
 
+        //      C# -> AwsNativeIsEligibleForEc2ProtectionFilter? AwsNativeIsEligibleForEbsProtectionFilter
+        // GraphQL -> awsNativeIsEligibleForEbsProtectionFilter: AwsNativeIsEligibleForEc2ProtectionFilter (input)
+        [JsonProperty("awsNativeIsEligibleForEbsProtectionFilter")]
+        public AwsNativeIsEligibleForEc2ProtectionFilter? AwsNativeIsEligibleForEbsProtectionFilter { get; set; }
+
 
         #endregion
 

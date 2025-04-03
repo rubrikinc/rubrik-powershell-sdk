@@ -1,6 +1,6 @@
 ### AzureStorageTier
 Storage Tier for the storage accounts/containers.
- For more information, see https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview.
+For more information, see https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview.
 
 - UNKNOWN_STORAGE_TIER - Unknown storage tier.
 - HOT - Optimized for storing data that is frequently accessed and modified.

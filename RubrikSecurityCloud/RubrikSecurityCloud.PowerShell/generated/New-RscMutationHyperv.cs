@@ -612,6 +612,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
+    /// 		zipPassword = $someString
+    /// 		# OPTIONAL
     /// 		legalHoldDownloadConfig = @{
     /// 			# REQUIRED
     /// 			isLegalHoldDownload = $someBoolean
@@ -1956,6 +1958,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
+		# OPTIONAL
+		zipPassword = $someString
 		# OPTIONAL
 		legalHoldDownloadConfig = @{
 			# REQUIRED

@@ -1,6 +1,7 @@
 ### ActivityObjectTypeEnum
 The list of object types for activities.
 
+- OPENSTACK_ENVIRONMENT - Specifies that the activity object type is Openstack Environment.
 - ACTIVE_DIRECTORY_DOMAIN - Specifies that the activity object type is related to Activity Directory domain.
 - K8S_CLUSTER - Specifies that the activity object type is Kubernetes Cluster.
 - ORION_THREAT_HUNT - Specifies that the activity object type is Threat Hunt.
@@ -49,6 +50,7 @@ The list of object types for activities.
 - AwsNativeEc2Instance - Specifies that the activity object type is AWS Native EC2 Instance.
 - Ldap - Specifies that the activity object type is LDAP.
 - WEBHOOK - Specifies that the activity object type is Webhook.
+- AWS_NATIVE_DYNAMODB_TABLE - Specifies that the activity object type is AWS DynamoDB Table.
 - Upgrade - Specifies that the activity object type is Upgrade.
 - LinuxHost - Specifies that the activity object type is Linux Host.
 - O365Mailbox - Specifies that the activity object type is O365 Mailbox.

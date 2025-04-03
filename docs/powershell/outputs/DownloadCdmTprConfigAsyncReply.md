@@ -5,4 +5,4 @@
   - Job reference ID.
 - downloadId: System.Int64
   - ID of the download entity that records the progress of the download, and
- can be used to get the URL on completion.
+can be used to get the URL on completion.

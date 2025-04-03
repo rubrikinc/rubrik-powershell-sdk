@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("userRecoveryOption")]
         public UserRecoveryOptionType? UserRecoveryOption { get; set; }
 
+        //      C# -> ConditionalAccessPolicyRecoveryOption? ConditionalAccessPolicyRecoveryOption
+        // GraphQL -> conditionalAccessPolicyRecoveryOption: ConditionalAccessPolicyRecoveryOption (input)
+        [JsonProperty("conditionalAccessPolicyRecoveryOption")]
+        public ConditionalAccessPolicyRecoveryOption? ConditionalAccessPolicyRecoveryOption { get; set; }
+
 
         #endregion
 

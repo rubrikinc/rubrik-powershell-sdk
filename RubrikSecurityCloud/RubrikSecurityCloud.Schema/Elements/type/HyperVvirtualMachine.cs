@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region HyperVvirtualMachine
  
-    public class HyperVvirtualMachine: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HyperVclusterDescendantType, HyperVscvmmDescendantType, HypervServerDescendantType, HypervServerLogicalChildType, HypervTopLevelDescendantType
+    public class HyperVvirtualMachine: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, HyperVclusterDescendantType, HyperVscvmmDescendantType, HypervServerDescendantType, HypervServerLogicalChildType, HypervTopLevelDescendantType
     {
         #region members
 
@@ -998,7 +998,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
@@ -1852,7 +1852,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HyperVvirtualMachine> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HyperVvirtualMachine());
@@ -1862,7 +1862,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<HyperVvirtualMachine> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NFS_SMB")]
         NFS_SMB,
 
+        [EnumMember(Value = "S3")]
+        S3,
+
         [EnumMember(Value = "SMB")]
         SMB,
 

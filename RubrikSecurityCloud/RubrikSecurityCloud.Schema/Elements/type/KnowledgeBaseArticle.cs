@@ -228,7 +228,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? ArticleNumber
         // GraphQL -> articleNumber: String! (scalar)
@@ -438,7 +438,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<KnowledgeBaseArticle> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new KnowledgeBaseArticle());
@@ -448,7 +448,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<KnowledgeBaseArticle> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

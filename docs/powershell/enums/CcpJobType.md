@@ -8,3 +8,4 @@ Type of cluster job.
 - REPLACE_NODE - Replace a node on a Rubrik cluster.
 - CLUSTER_RECOVER - Recover the Rubrik cluster job.
 - CLUSTER_OPS - The general Rubrik cluster operation job.
+- MIGRATE_NODES - Migrate cloud cluster nodes to new configuration.

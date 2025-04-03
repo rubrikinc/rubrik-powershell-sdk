@@ -27,6 +27,8 @@ Represents a GCP GCE instance.
   - GCP Project of the GCE Instance.
 - attachedDisks: list of GcpNativeAttachmentDetailss
   - List of attached GCP native disks.
+- fileIndexingStatus: FileIndexingStatus
+  - Specifies the file indexing status for this GCE instance. When enabled, Rubrik scans the file structure within the GCE instance in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - id: System.String

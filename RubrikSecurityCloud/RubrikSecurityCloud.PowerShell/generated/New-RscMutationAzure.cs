@@ -654,6 +654,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
     /// 	# OPTIONAL
+    /// 	rcvRegion = $someRcsRegionEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsRegionEnumType]) for enum values.
+    /// 	# OPTIONAL
     /// 	tier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
     /// 	# REQUIRED
     /// 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
@@ -1536,6 +1538,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		userRecoveryOption = @{
     /// 			# REQUIRED
     /// 			generatePasswords = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		conditionalAccessPolicyRecoveryOption = @{
+    /// 			# REQUIRED
+    /// 			policyConfigs = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					id = $someString
+    /// 					# REQUIRED
+    /// 					recoveryState = $someAzureAdConditionalAccessPolicyStateEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyStateEnumType]) for enum values.
+    /// 				}
+    /// 			)
     /// 		}
     /// 	}
     /// }
@@ -3635,6 +3649,8 @@ $query.Var.input = @{
 	# REQUIRED
 	region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
 	# OPTIONAL
+	rcvRegion = $someRcsRegionEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsRegionEnumType]) for enum values.
+	# OPTIONAL
 	tier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
 	# REQUIRED
 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
@@ -4395,6 +4411,18 @@ $query.Var.input = @{
 		userRecoveryOption = @{
 			# REQUIRED
 			generatePasswords = $someBoolean
+		}
+		# OPTIONAL
+		conditionalAccessPolicyRecoveryOption = @{
+			# REQUIRED
+			policyConfigs = @(
+				@{
+					# REQUIRED
+					id = $someString
+					# REQUIRED
+					recoveryState = $someAzureAdConditionalAccessPolicyStateEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyStateEnumType]) for enum values.
+				}
+			)
 		}
 	}
 }"

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("success")]
         public System.Boolean? Success { get; set; }
 
+        //      C# -> List<FeatureDeleteStatus>? FeaturesStatus
+        // GraphQL -> featuresStatus: [FeatureDeleteStatus!]! (type)
+        [JsonProperty("featuresStatus")]
+        public List<FeatureDeleteStatus>? FeaturesStatus { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public GcpCloudAccountProjectDeleteStatus Set(
         System.String? Error = null,
         System.String? ProjectUuid = null,
-        System.Boolean? Success = null
+        System.Boolean? Success = null,
+        List<FeatureDeleteStatus>? FeaturesStatus = null
     ) 
     {
         if ( Error != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Success != null ) {
             this.Success = Success;
+        }
+        if ( FeaturesStatus != null ) {
+            this.FeaturesStatus = FeaturesStatus;
         }
         return this;
     }
@@ -100,12 +109,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "success\n" ;
             }
         }
+        //      C# -> List<FeatureDeleteStatus>? FeaturesStatus
+        // GraphQL -> featuresStatus: [FeatureDeleteStatus!]! (type)
+        if (this.FeaturesStatus != null) {
+            var fspec = this.FeaturesStatus.AsFieldSpec(conf.Child("featuresStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "featuresStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
@@ -158,6 +179,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.Success = null;
         }
+        //      C# -> List<FeatureDeleteStatus>? FeaturesStatus
+        // GraphQL -> featuresStatus: [FeatureDeleteStatus!]! (type)
+        if (ec.Includes("featuresStatus",false))
+        {
+            if(this.FeaturesStatus == null) {
+
+                this.FeaturesStatus = new List<FeatureDeleteStatus>();
+                this.FeaturesStatus.ApplyExploratoryFieldSpec(ec.NewChild("featuresStatus"));
+
+            } else {
+
+                this.FeaturesStatus.ApplyExploratoryFieldSpec(ec.NewChild("featuresStatus"));
+
+            }
+        }
+        else if (this.FeaturesStatus != null && ec.Excludes("featuresStatus",false))
+        {
+            this.FeaturesStatus = null;
+        }
     }
 
 
@@ -203,7 +243,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpCloudAccountProjectDeleteStatus> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpCloudAccountProjectDeleteStatus());
@@ -213,7 +253,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<GcpCloudAccountProjectDeleteStatus> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

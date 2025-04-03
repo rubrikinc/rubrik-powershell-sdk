@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("redundancy")]
         public RcvRedundancy? Redundancy { get; set; }
 
+        //      C# -> EntitlementType? RevenueType
+        // GraphQL -> revenueType: EntitlementType! (enum)
+        [JsonProperty("revenueType")]
+        public EntitlementType? RevenueType { get; set; }
+
         //      C# -> RcvTier? Tier
         // GraphQL -> tier: RcvTier! (enum)
         [JsonProperty("tier")]
@@ -57,6 +62,7 @@ namespace RubrikSecurityCloud.Types
     public RcvEntitlement Set(
         RcvRegionBundle? Bundle = null,
         RcvRedundancy? Redundancy = null,
+        EntitlementType? RevenueType = null,
         RcvTier? Tier = null,
         System.Single? Capacity = null,
         DateTime? CreatedAt = null
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Redundancy != null ) {
             this.Redundancy = Redundancy;
+        }
+        if ( RevenueType != null ) {
+            this.RevenueType = RevenueType;
         }
         if ( Tier != null ) {
             this.Tier = Tier;
@@ -109,6 +118,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "redundancy\n" ;
             }
         }
+        //      C# -> EntitlementType? RevenueType
+        // GraphQL -> revenueType: EntitlementType! (enum)
+        if (this.RevenueType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "revenueType\n" ;
+            } else {
+                s += ind + "revenueType\n" ;
+            }
+        }
         //      C# -> RcvTier? Tier
         // GraphQL -> tier: RcvTier! (enum)
         if (this.Tier != null) {
@@ -141,7 +159,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> RcvRegionBundle? Bundle
         // GraphQL -> bundle: RcvRegionBundle! (enum)
@@ -176,6 +194,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Redundancy != null && ec.Excludes("redundancy",true))
         {
             this.Redundancy = null;
+        }
+        //      C# -> EntitlementType? RevenueType
+        // GraphQL -> revenueType: EntitlementType! (enum)
+        if (ec.Includes("revenueType",true))
+        {
+            if(this.RevenueType == null) {
+
+                this.RevenueType = new EntitlementType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RevenueType != null && ec.Excludes("revenueType",true))
+        {
+            this.RevenueType = null;
         }
         //      C# -> RcvTier? Tier
         // GraphQL -> tier: RcvTier! (enum)
@@ -273,7 +308,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RcvEntitlement> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RcvEntitlement());
@@ -283,7 +318,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<RcvEntitlement> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

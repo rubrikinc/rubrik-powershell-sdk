@@ -50,6 +50,11 @@ Update a webhook.
 
 - There is a single argument of type UpdateWebhookInput.
 - Returns UpdateWebhookReply.
+### updatestatus
+Update the webhook status.
+
+- There is a single argument of type UpdateWebhookStatusInput.
+- Returns UpdateWebhookStatusReply.
 ### updatev2
 Update webhook configuration.
 

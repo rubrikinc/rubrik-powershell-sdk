@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 39
+    /// Create a new RscQuery object for any of the 40
     /// operations in the 'Office 365' API domain:
-    /// AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
+    /// AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, UserObjects, or UserSelfServiceInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryO365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 39 operations
+    /// There are 40 operations
     /// in the 'Office 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
+    /// one of: AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, UserObjects, or UserSelfServiceInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1895,6 +1895,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the UserSelfServiceInfo operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: UserSelfServiceInfo
+    /// 
+    /// $query = New-RscQueryO365 -Operation UserSelfServiceInfo
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetSelfServiceInfoForUserResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -1950,6 +1977,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Teams",
                 "User",
                 "UserObjects",
+                "UserSelfServiceInfo",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -2081,6 +2109,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UserObjects":
                         this.ProcessRecord_UserObjects();
+                        break;
+                    case "UserSelfServiceInfo":
+                        this.ProcessRecord_UserSelfServiceInfo();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -2441,6 +2472,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UserObjects";
             // Create new graphql operation o365UserObjects
             InitQueryO365UserObjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // o365UserSelfServiceInfo.
+        internal void ProcessRecord_UserSelfServiceInfo()
+        {
+            this._logger.name += " -UserSelfServiceInfo";
+            // Create new graphql operation o365UserSelfServiceInfo
+            InitQueryO365UserSelfServiceInfo();
         }
 
 
@@ -4162,6 +4202,24 @@ $query.Var.filter = @(
 )
 # REQUIRED
 $query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // o365UserSelfServiceInfo: GetSelfServiceInfoForUserResp!
+        internal void InitQueryO365UserSelfServiceInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryO365UserSelfServiceInfo",
+                "",
+                "GetSelfServiceInfoForUserResp",
+                Query.O365UserSelfServiceInfo,
+                Query.O365UserSelfServiceInfoFieldSpec,
+                @""
             );
         }
 

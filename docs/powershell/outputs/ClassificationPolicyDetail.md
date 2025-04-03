@@ -2,15 +2,25 @@
 Detailed view of a data classification policy.
 
 - id: System.String
+  - 
 - name: System.String
+  - 
 - description: System.String
+  - 
 - colorEnum: ClassificationPolicyColor
+  - 
 - createdTime: System.Int64
+  - 
 - lastUpdatedTime: System.Int64
+  - 
 - mode: ClassificationPolicyMode
+  - 
 - hierarchyObjectIds: list of System.Strings
+  - 
 - analyzers: list of Analyzers
+  - 
 - deletable: System.Boolean
+  - 
 - dataCategoryResult: DataCategoryResult
   - Data category classification result.
 - creator: User

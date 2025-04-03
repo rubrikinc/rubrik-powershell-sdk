@@ -13,3 +13,13 @@ Azure AD object type.
   - Azure AD service principal type.
 - azureAdAppRoleAssignment: AzureAdAppRoleAssignment
   - Azure AD app role assignment type.
+- azureAdConditionalAccessPolicy: AzureAdConditionalAccessPolicy
+  - Azure AD conditional access policy type.
+- azureAdTermsOfUse: AzureAdTermsOfUse
+  - Azure AD terms of use type.
+- azureAdAuthenticationContext: AzureAdAuthenticationContext
+  - Azure AD authentication context type.
+- azureAdNamedLocation: AzureAdNamedLocation
+  - Azure AD named location type.
+- azureAdAuthenticationStrength: AzureAdAuthenticationStrength
+  - Azure AD authentication strength type.

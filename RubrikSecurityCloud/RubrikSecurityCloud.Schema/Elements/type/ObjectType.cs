@@ -70,7 +70,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ObjectTypeEnum? EnumValue
         // GraphQL -> enumValue: ObjectTypeEnum! (enum)
@@ -134,7 +134,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ObjectType> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ObjectType());
@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ObjectType> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

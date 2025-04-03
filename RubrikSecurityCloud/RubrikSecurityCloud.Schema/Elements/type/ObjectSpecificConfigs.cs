@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mysqldbSlaConfig")]
         public MysqldbSlaConfig? MysqldbSlaConfig { get; set; }
 
+        //      C# -> NcdSlaConfig? NcdSlaConfig
+        // GraphQL -> ncdSlaConfig: NcdSlaConfig (type)
+        [JsonProperty("ncdSlaConfig")]
+        public NcdSlaConfig? NcdSlaConfig { get; set; }
+
         //      C# -> OracleConfig? OracleConfig
         // GraphQL -> oracleConfig: OracleConfig (type)
         [JsonProperty("oracleConfig")]
@@ -110,6 +115,7 @@ namespace RubrikSecurityCloud.Types
         MongoConfig? MongoConfig = null,
         MssqlConfig? MssqlConfig = null,
         MysqldbSlaConfig? MysqldbSlaConfig = null,
+        NcdSlaConfig? NcdSlaConfig = null,
         OracleConfig? OracleConfig = null,
         PostgresDbClusterSlaConfig? PostgresDbClusterSlaConfig = null,
         SapHanaConfig? SapHanaConfig = null,
@@ -145,6 +151,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MysqldbSlaConfig != null ) {
             this.MysqldbSlaConfig = MysqldbSlaConfig;
+        }
+        if ( NcdSlaConfig != null ) {
+            this.NcdSlaConfig = NcdSlaConfig;
         }
         if ( OracleConfig != null ) {
             this.OracleConfig = OracleConfig;
@@ -292,6 +301,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> NcdSlaConfig? NcdSlaConfig
+        // GraphQL -> ncdSlaConfig: NcdSlaConfig (type)
+        if (this.NcdSlaConfig != null) {
+            var fspec = this.NcdSlaConfig.AsFieldSpec(conf.Child("ncdSlaConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ncdSlaConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> OracleConfig? OracleConfig
         // GraphQL -> oracleConfig: OracleConfig (type)
         if (this.OracleConfig != null) {
@@ -345,7 +366,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AwsNativeS3SlaConfig? AwsNativeS3SlaConfig
         // GraphQL -> awsNativeS3SlaConfig: AwsNativeS3SlaConfig (type)
@@ -537,6 +558,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.MysqldbSlaConfig = null;
         }
+        //      C# -> NcdSlaConfig? NcdSlaConfig
+        // GraphQL -> ncdSlaConfig: NcdSlaConfig (type)
+        if (ec.Includes("ncdSlaConfig",false))
+        {
+            if(this.NcdSlaConfig == null) {
+
+                this.NcdSlaConfig = new NcdSlaConfig();
+                this.NcdSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("ncdSlaConfig"));
+
+            } else {
+
+                this.NcdSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("ncdSlaConfig"));
+
+            }
+        }
+        else if (this.NcdSlaConfig != null && ec.Excludes("ncdSlaConfig",false))
+        {
+            this.NcdSlaConfig = null;
+        }
         //      C# -> OracleConfig? OracleConfig
         // GraphQL -> oracleConfig: OracleConfig (type)
         if (ec.Includes("oracleConfig",false))
@@ -658,7 +698,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ObjectSpecificConfigs> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ObjectSpecificConfigs());
@@ -668,7 +708,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ObjectSpecificConfigs> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

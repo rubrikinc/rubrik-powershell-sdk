@@ -11,3 +11,5 @@ Represents security metadata of a workload.
   - Sensitivity status of a workload.
 - isLaminarEnabled: System.Boolean
   - True if Laminar is enabled for a given workload.
+- dataTypeResults: list of DataTypeResultss
+  - List of identified data types with their total and violated hit counts.

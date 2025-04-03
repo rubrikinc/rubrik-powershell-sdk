@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ANOMALOUS_ONLY")]
+        ANOMALOUS_ONLY,
+
         [EnumMember(Value = "ARCHIVAL_LOCATION_IDS")]
         ARCHIVAL_LOCATION_IDS,
 
@@ -72,11 +75,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IS_LEGALLY_HELD")]
         IS_LEGALLY_HELD,
 
+        [EnumMember(Value = "IS_MARKED_FOR_METADATA_DELETION")]
+        IS_MARKED_FOR_METADATA_DELETION,
+
         [EnumMember(Value = "IS_NOT_GLOBALLY_EXPIRED")]
         IS_NOT_GLOBALLY_EXPIRED,
 
         [EnumMember(Value = "IS_ON_DEMAND")]
         IS_ON_DEMAND,
+
+        [EnumMember(Value = "IS_ON_DEMAND_OR_CUSTOMISED_SNAPSHOT")]
+        IS_ON_DEMAND_OR_CUSTOMISED_SNAPSHOT,
 
         [EnumMember(Value = "IS_REPLICA")]
         IS_REPLICA,
@@ -90,8 +99,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IS_SKIPPED_FOR_REPLICATION")]
         IS_SKIPPED_FOR_REPLICATION,
 
+        [EnumMember(Value = "IS_SOURCE_SNAPSHOT")]
+        IS_SOURCE_SNAPSHOT,
+
         [EnumMember(Value = "ON_DEMAND_SLA_ID")]
         ON_DEMAND_SLA_ID,
+
+        [EnumMember(Value = "QUARANTINED_ONLY")]
+        QUARANTINED_ONLY,
 
         [EnumMember(Value = "RDS_AWS_NATIVE_ACCOUNT_ID")]
         RDS_AWS_NATIVE_ACCOUNT_ID,
@@ -109,7 +124,10 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_STATUS,
 
         [EnumMember(Value = "SNAPSHOT_TYPE")]
-        SNAPSHOT_TYPE
+        SNAPSHOT_TYPE,
+
+        [EnumMember(Value = "SOURCE_SNAPSHOT_IDS")]
+        SOURCE_SNAPSHOT_IDS
 
 
     } // enum SnapshotQueryFilterField

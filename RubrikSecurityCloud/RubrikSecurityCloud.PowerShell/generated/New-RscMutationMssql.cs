@@ -184,6 +184,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				username = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			oracleSepsSettings = @{
+    /// 				# OPTIONAL
+    /// 				isOracleSepsWalletEnabled = $someBoolean
+    /// 			}
     /// 		}
     /// 	)
     /// }
@@ -2030,6 +2035,11 @@ $query.Var.input = @{
 				password = $someString
 				# REQUIRED
 				username = $someString
+			}
+			# OPTIONAL
+			oracleSepsSettings = @{
+				# OPTIONAL
+				isOracleSepsWalletEnabled = $someBoolean
 			}
 		}
 	)

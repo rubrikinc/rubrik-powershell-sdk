@@ -10,10 +10,11 @@ Check GCP projects permissions for addition.
 ### cloudaccountprojectsbyfeature
 List of GCP projects configured for a feature.
 
-- There are 3 arguments.
+- There are 4 arguments.
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
     - projectStatusFilters - list of CloudAccountStatuss: List of project status filters to apply.
     - projectSearchText - System.String: Search text for project name, native ID and number.
+    - aggregateFeatures - System.Boolean: Denotes if features are to be aggregated or flattened.
 - Returns list of GcpCloudAccountProjectDetails.
 ### cloudaccountprojectsforoauth
 List of GCP projects to add after successful authorization.

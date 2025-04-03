@@ -37,6 +37,8 @@ AWS native RDS instance.
   - Availability zones if this is an Aurora cluster.
 - awsNativeAccountDetails: AwsNativeAccountDetails
   - AWS native account details.
+- isExocomputeConfigured: System.Boolean
+  - A boolean specifying whether Exocompute is configured in the region.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount

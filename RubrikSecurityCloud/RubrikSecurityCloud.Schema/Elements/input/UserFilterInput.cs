@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authDomainIdsFilter")]
         public List<System.String>? AuthDomainIdsFilter { get; set; }
 
+        //      C# -> List<LockMethod>? LockoutReasonsFilter
+        // GraphQL -> lockoutReasonsFilter: [LockMethod!] (enum)
+        [JsonProperty("lockoutReasonsFilter")]
+        public List<LockMethod>? LockoutReasonsFilter { get; set; }
+
 
         #endregion
 

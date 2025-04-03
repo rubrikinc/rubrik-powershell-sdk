@@ -407,6 +407,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldRecreateDirectoryStructure = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldRestoreOnlyAcls = $someBoolean
     /// 		# REQUIRED
     /// 		restoreConfig = @(
     /// 			@{
@@ -910,6 +912,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldRecreateDirectoryStructure = $someBoolean
+		# OPTIONAL
+		shouldRestoreOnlyAcls = $someBoolean
 		# REQUIRED
 		restoreConfig = @(
 			@{

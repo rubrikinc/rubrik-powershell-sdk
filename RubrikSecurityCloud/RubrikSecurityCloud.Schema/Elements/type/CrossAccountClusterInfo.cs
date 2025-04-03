@@ -88,7 +88,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Boolean? IsConnected
         // GraphQL -> isConnected: Boolean! (scalar)
@@ -169,7 +169,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CrossAccountClusterInfo> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CrossAccountClusterInfo());
@@ -179,7 +179,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CrossAccountClusterInfo> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

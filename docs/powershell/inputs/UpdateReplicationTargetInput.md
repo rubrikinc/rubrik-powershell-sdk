@@ -13,3 +13,5 @@ Request to update replication target information.
   - Target Rubrik cluster UUID.
 - setupType: ReplicationSetupType
   - NAT or private replication setup type.
+- useIpv6: System.Boolean
+  - Whether to use IPv6 for replication pairing.

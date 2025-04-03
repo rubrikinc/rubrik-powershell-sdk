@@ -11,3 +11,5 @@ Details of a node.
   - The status of the node.
 - useQuickDrain: System.Boolean
   - Use quick drain instead of full data drain.
+- resetAfterRemoveType: ResetAfterRemoveType
+  - Type of reset to perform after removing the node.

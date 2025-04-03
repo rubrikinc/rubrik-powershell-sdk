@@ -111,7 +111,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID! (scalar)
@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CrossAccountReplicatedObjectInfo> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CrossAccountReplicatedObjectInfo());
@@ -223,7 +223,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CrossAccountReplicatedObjectInfo> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

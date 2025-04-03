@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mysqldbConfigInput")]
         public MysqldbSlaConfigInput? MysqldbConfigInput { get; set; }
 
+        //      C# -> NcdConfigInput? NcdConfigInput
+        // GraphQL -> ncdConfigInput: NcdConfigInput (input)
+        [JsonProperty("ncdConfigInput")]
+        public NcdConfigInput? NcdConfigInput { get; set; }
+
 
         #endregion
 

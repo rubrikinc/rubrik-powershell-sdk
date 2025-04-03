@@ -13,7 +13,7 @@ Returns a list files whose name is prefixed by the query in the given snapshot.
 ### closesttopointintime
 Details of the unexpired snapshot closest to the specified point in time for each provided workload ID.
 
-- There are 8 arguments.
+- There are 10 arguments.
     - beforeTime - DateTime: Specifies the time at which or before which the snapshot was taken.
     - afterTime - DateTime: Specifies the time at which or after which the snapshot was taken.
     - snappableIds - list of System.Strings: Workload UUIDs.
@@ -21,6 +21,8 @@ Details of the unexpired snapshot closest to the specified point in time for eac
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.
     - excludeQuarantined - System.Boolean: Specifies whether to exclude quarantined snapshots.
     - excludeAnomalous - System.Boolean: Specifies whether to exclude anomalous snapshots.
+    - quarantinedOnly - System.Boolean: Specifies whether to only include quarantined snapshots.
+    - anomalousOnly - System.Boolean: Specifies whether to only include anomalous snapshots.
     - getFullDetails - System.Boolean: Specifies whether to include full snapshot workload details.
 - Returns list of ClosestSnapshotSearchResults.
 ### clouddirect
@@ -148,7 +150,7 @@ Returns snapshot results for a workload.
 ### snappablelist
 Returns a list of snapshots for a workload.
 
-- There are 10 arguments.
+- There are 11 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -159,6 +161,7 @@ Returns a list of snapshots for a workload.
     - sortBy - SnapshotQuerySortByField: Sort snapshots by field.
     - timeRange - TimeRangeInput: Time range input.
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.
+    - showSnapshotRetentionInfo - System.Boolean: Specifies whether to show snapshot retention.
 - Returns GenericSnapshotConnection.
 ### snappableslist
 Returns list of snapshots for a list of workloads.

@@ -75,6 +75,8 @@ A Rubrik CDM Cluster.
   - The most recent metric of a cluster.
 - metricTimeSeries: list of metricTimeSeriess
   - The metric time series of a cluster.
+- metricTimeSeriesNew: list of ClusterMetricTimeSeriesNews
+  - The metric time series of a cluster.
 - rubrikSyncStatus: RubrikSyncStatus
   - This field lists jobs that sync CDM cluster data to RSC.
 - allOrgs: list of Orgs

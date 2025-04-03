@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? MaxCreatedFileCount
         // GraphQL -> maxCreatedFileCount: Long! (scalar)
@@ -273,7 +273,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AggregatedValues> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AggregatedValues());
@@ -283,7 +283,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AggregatedValues> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -29,6 +29,8 @@ Details of the Azure AD directory object.
   - ID of the onboarded Azure AD app.
 - appOwner: System.String
   - Owner of the onboarded Azure AD app.
+- onPremAdProtectionStats: list of OnPremAdProtections
+  - Protection information for on-prem Active Directory (AD) domains synchronized with this Entra ID.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String

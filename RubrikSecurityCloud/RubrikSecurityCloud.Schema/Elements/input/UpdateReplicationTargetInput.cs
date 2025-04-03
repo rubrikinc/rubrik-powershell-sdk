@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("setupType")]
         public ReplicationSetupType? SetupType { get; set; }
 
+        //      C# -> System.Boolean? UseIpv6
+        // GraphQL -> useIpv6: Boolean (scalar)
+        [JsonProperty("useIpv6")]
+        public System.Boolean? UseIpv6 { get; set; }
+
 
         #endregion
 

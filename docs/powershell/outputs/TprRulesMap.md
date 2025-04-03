@@ -3,10 +3,10 @@ Mapping of TPR rules to their categories.
 
 - systemConfigurationCluster: list of TprRules
   - Cluster-level rules applicable when creating a system configuration
- TPR policy.
+TPR policy.
 - systemConfigurationGlobal: list of TprRules
   - Global rules applicable when creating a system configuration
- TPR policy.
+TPR policy.
 - dataManagementByCluster: list of TprRules
   - Rules applicable when creating a data management TPR policy by cluster.
 - dataManagementBySlaDomain: list of TprRules
@@ -15,3 +15,5 @@ Mapping of TPR rules to their categories.
   - Rules applicable when creating a data management TPR policy by object.
 - dataManagementByObjectWorkloads: list of InventorySubHierarchyRootEnums
   - Workloads allowed when creating a data management TPR policy by object.
+- tprRulesByObjectType: list of TprRulesByObjectTypes
+  - TPR rules for object type.

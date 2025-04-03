@@ -11,3 +11,7 @@ Input required to delete a list of GCP projects.
   - List of project native IDs.
 - skipResourceDeletion: System.Boolean
   - Specifies whether cleanup of GCP resources should be skipped. If this flag is set, then the session ID is ignored.
+- projectIds: list of System.Strings
+  - List of project IDs.
+- features: list of CloudAccountFeatures
+  - List of cloud account features.

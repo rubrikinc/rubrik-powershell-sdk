@@ -687,6 +687,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
     /// 		}
+    /// 		# OPTIONAL
+    /// 		ncdConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			minutelyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			hourlyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			dailyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			weeklyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			monthlyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			quarterlyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			yearlyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	archivalSpecs = @(
@@ -1449,6 +1480,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		ncdConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			minutelyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			hourlyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			dailyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			weeklyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			monthlyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			quarterlyBackupLocations = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			yearlyBackupLocations = @(
+    /// 				$someString
+    /// 			)
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -2433,6 +2495,37 @@ $query.Var.input = @{
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
 		}
+		# OPTIONAL
+		ncdConfigInput = @{
+			# OPTIONAL
+			minutelyBackupLocations = @(
+				$someString
+			)
+			# OPTIONAL
+			hourlyBackupLocations = @(
+				$someString
+			)
+			# OPTIONAL
+			dailyBackupLocations = @(
+				$someString
+			)
+			# OPTIONAL
+			weeklyBackupLocations = @(
+				$someString
+			)
+			# OPTIONAL
+			monthlyBackupLocations = @(
+				$someString
+			)
+			# OPTIONAL
+			quarterlyBackupLocations = @(
+				$someString
+			)
+			# OPTIONAL
+			yearlyBackupLocations = @(
+				$someString
+			)
+		}
 	}
 	# OPTIONAL
 	archivalSpecs = @(
@@ -3156,6 +3249,37 @@ $query.Var.input = @{
 				# OPTIONAL
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
+		}
+		# OPTIONAL
+		ncdConfigInput = @{
+			# OPTIONAL
+			minutelyBackupLocations = @(
+				$someString
+			)
+			# OPTIONAL
+			hourlyBackupLocations = @(
+				$someString
+			)
+			# OPTIONAL
+			dailyBackupLocations = @(
+				$someString
+			)
+			# OPTIONAL
+			weeklyBackupLocations = @(
+				$someString
+			)
+			# OPTIONAL
+			monthlyBackupLocations = @(
+				$someString
+			)
+			# OPTIONAL
+			quarterlyBackupLocations = @(
+				$someString
+			)
+			# OPTIONAL
+			yearlyBackupLocations = @(
+				$someString
+			)
 		}
 	}
 	# OPTIONAL

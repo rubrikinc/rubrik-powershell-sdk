@@ -303,3 +303,8 @@ Name, id, object type, and mail address of user descendant object.
     - filter - list of Filters: Hierarchy object filter.
     - fid - System.String: Rubrik UUID for the object.
 - Returns O365UserDescendantMetadataConnection.
+### userselfserviceinfo
+Returns the self service information for the logged-in user, which includes the user name and the M365 object details.
+
+- The userselfserviceinfo subcommand takes no arguments.
+- Returns GetSelfServiceInfoForUserResp.

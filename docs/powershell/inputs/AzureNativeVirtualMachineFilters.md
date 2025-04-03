@@ -33,3 +33,7 @@ Filters for list of Azure virtual machines.
   - Filter by RBS connection status.
 - orgFilter: OrgFilter
   - Filter by organization ID.
+- hierarchyFilter: Filter
+  - Deprecated, use hierarchyFilters.
+- hierarchyFilters: list of Filters
+  - Filter by hierarchy.

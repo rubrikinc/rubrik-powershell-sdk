@@ -198,7 +198,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> VappVmIpAddressingMode? AddressingMode
         // GraphQL -> addressingMode: VappVmIpAddressingMode! (enum)
@@ -383,7 +383,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VappVmNetworkConnection> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VappVmNetworkConnection());
@@ -393,7 +393,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<VappVmNetworkConnection> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

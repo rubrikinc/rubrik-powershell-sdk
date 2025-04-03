@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public M365ObjectType? ObjectType { get; set; }
 
+        //      C# -> System.String? ObjectId
+        // GraphQL -> objectId: String! (scalar)
+        [JsonProperty("objectId")]
+        public System.String? ObjectId { get; set; }
+
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
         [JsonProperty("objectName")]
@@ -56,6 +61,7 @@ namespace RubrikSecurityCloud.Types
 
     public MetadataFields Set(
         M365ObjectType? ObjectType = null,
+        System.String? ObjectId = null,
         System.String? ObjectName = null,
         System.String? SnappableId = null,
         System.String? SnappableType = null,
@@ -64,6 +70,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
+        }
+        if ( ObjectId != null ) {
+            this.ObjectId = ObjectId;
         }
         if ( ObjectName != null ) {
             this.ObjectName = ObjectName;
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectType\n" ;
             } else {
                 s += ind + "objectType\n" ;
+            }
+        }
+        //      C# -> System.String? ObjectId
+        // GraphQL -> objectId: String! (scalar)
+        if (this.ObjectId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectId\n" ;
+            } else {
+                s += ind + "objectId\n" ;
             }
         }
         //      C# -> System.String? ObjectName
@@ -141,7 +159,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> M365ObjectType? ObjectType
         // GraphQL -> objectType: M365ObjectType! (enum)
@@ -159,6 +177,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectType != null && ec.Excludes("objectType",true))
         {
             this.ObjectType = null;
+        }
+        //      C# -> System.String? ObjectId
+        // GraphQL -> objectId: String! (scalar)
+        if (ec.Includes("objectId",true))
+        {
+            if(this.ObjectId == null) {
+
+                this.ObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectId != null && ec.Excludes("objectId",true))
+        {
+            this.ObjectId = null;
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
@@ -273,7 +308,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MetadataFields> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MetadataFields());
@@ -283,7 +318,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<MetadataFields> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -11,3 +11,5 @@ Returns fields related to metadata for different Microsoft Office 365 SharePoint
   - The type of O365 object.
 - objectName: System.String
   - Name of the O365 object.
+- objectId: System.String
+  - ID of the O365 object.

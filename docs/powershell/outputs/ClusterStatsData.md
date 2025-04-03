@@ -1,0 +1,33 @@
+### ClusterStatsData
+Cluster statistics data.
+
+- clusterUuid: System.String
+  - UUID of the cluster.
+- lastUpdateTime: DateTime
+  - Last update time of the statistics.
+- availableCapacity: System.Single
+  - Amount of storage available in the cluster.
+- usedCapacity: System.Single
+  - Amount of storage used in the cluster.
+- totalCapacity: System.Single
+  - Total amount of storage in the cluster.
+- snapshotCapacity: System.Single
+  - Amount of storage for snapshots in the cluster.
+- liveMountCapacity: System.Single
+  - Amount of Live Mount storage in the cluster.
+- miscellaneousCapacity: System.Single
+  - Amount of miscellaneous storage in the cluster.
+- pendingSnapshotCapacity: System.Single
+  - Amount of pending snapshot storage in the cluster.
+- cdpCapacity: System.Single
+  - Amount of CDP storage in the cluster.
+- ingestedSnapshotStorage: System.Single
+  - Amount of ingested snapshot storage in the cluster.
+- physicalSnapshotStorage: System.Single
+  - Amount of physical snapshot storage in the cluster.
+- ingestedArchivalStorage: System.Single
+  - Amount of ingested archival storage in the cluster.
+- physicalArchivalStorage: System.Single
+  - Amount of physical archival storage in the cluster.
+- averageDailyGrowth: System.Single
+  - Average daily growth of storage in the cluster.

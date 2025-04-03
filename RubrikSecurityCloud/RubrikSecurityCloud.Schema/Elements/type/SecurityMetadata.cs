@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mediumSensitiveHits")]
         public System.Int64? MediumSensitiveHits { get; set; }
 
+        //      C# -> List<DataTypeResults>? DataTypeResults
+        // GraphQL -> dataTypeResults: [DataTypeResults!]! (type)
+        [JsonProperty("dataTypeResults")]
+        public List<DataTypeResults>? DataTypeResults { get; set; }
+
 
         #endregion
 
@@ -59,7 +64,8 @@ namespace RubrikSecurityCloud.Types
         System.Int64? HighSensitiveHits = null,
         System.Boolean? IsLaminarEnabled = null,
         System.Int64? LowSensitiveHits = null,
-        System.Int64? MediumSensitiveHits = null
+        System.Int64? MediumSensitiveHits = null,
+        List<DataTypeResults>? DataTypeResults = null
     ) 
     {
         if ( SensitivityStatus != null ) {
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MediumSensitiveHits != null ) {
             this.MediumSensitiveHits = MediumSensitiveHits;
+        }
+        if ( DataTypeResults != null ) {
+            this.DataTypeResults = DataTypeResults;
         }
         return this;
     }
@@ -136,12 +145,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "mediumSensitiveHits\n" ;
             }
         }
+        //      C# -> List<DataTypeResults>? DataTypeResults
+        // GraphQL -> dataTypeResults: [DataTypeResults!]! (type)
+        if (this.DataTypeResults != null) {
+            var fspec = this.DataTypeResults.AsFieldSpec(conf.Child("dataTypeResults"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "dataTypeResults" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> SensitivityStatus? SensitivityStatus
         // GraphQL -> sensitivityStatus: SensitivityStatus! (enum)
@@ -228,6 +249,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.MediumSensitiveHits = null;
         }
+        //      C# -> List<DataTypeResults>? DataTypeResults
+        // GraphQL -> dataTypeResults: [DataTypeResults!]! (type)
+        if (ec.Includes("dataTypeResults",false))
+        {
+            if(this.DataTypeResults == null) {
+
+                this.DataTypeResults = new List<DataTypeResults>();
+                this.DataTypeResults.ApplyExploratoryFieldSpec(ec.NewChild("dataTypeResults"));
+
+            } else {
+
+                this.DataTypeResults.ApplyExploratoryFieldSpec(ec.NewChild("dataTypeResults"));
+
+            }
+        }
+        else if (this.DataTypeResults != null && ec.Excludes("dataTypeResults",false))
+        {
+            this.DataTypeResults = null;
+        }
     }
 
 
@@ -273,7 +313,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SecurityMetadata> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SecurityMetadata());
@@ -283,7 +323,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<SecurityMetadata> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

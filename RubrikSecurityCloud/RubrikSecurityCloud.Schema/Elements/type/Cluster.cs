@@ -296,6 +296,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("metricTimeSeries")]
         public List<MetricTimeSeries>? MetricTimeSeries { get; set; }
 
+        //      C# -> List<ClusterMetricTimeSeriesNew>? MetricTimeSeriesNew
+        // GraphQL -> metricTimeSeriesNew: [ClusterMetricTimeSeriesNew!]! (type)
+        [JsonProperty("metricTimeSeriesNew")]
+        public List<ClusterMetricTimeSeriesNew>? MetricTimeSeriesNew { get; set; }
+
         //      C# -> List<ReplicationSource>? ReplicationSources
         // GraphQL -> replicationSources: [ReplicationSource!]! (type)
         [JsonProperty("replicationSources")]
@@ -348,6 +353,8 @@ namespace RubrikSecurityCloud.Types
 
         public RscGqlVars MetricTimeSeries { get; set; }
 
+        public RscGqlVars MetricTimeSeriesNew { get; set; }
+
         public RscGqlVars SnappableConnection { get; set; }
 
 
@@ -377,6 +384,8 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("last", "Int"),
                     Tuple.Create("before", "String"),
                     Tuple.Create("filter", "ClusterNodeFilterInput"),
+                    Tuple.Create("sortBy", "ClusterNodeSortBy"),
+                    Tuple.Create("sortOrder", "SortOrder"),
                 };
             this.ClusterNodeConnection =
                 new RscGqlVars(null, clusterNodeConnectionArgs, null, true);
@@ -392,6 +401,12 @@ namespace RubrikSecurityCloud.Types
                 };
             this.MetricTimeSeries =
                 new RscGqlVars(null, metricTimeSeriesArgs, null, true);
+            Tuple<string, string>[] metricTimeSeriesNewArgs = {
+                    Tuple.Create("timeRange", "TimeRangeInput"),
+                    Tuple.Create("unit", "TimeUnitEnum!"),
+                };
+            this.MetricTimeSeriesNew =
+                new RscGqlVars(null, metricTimeSeriesNewArgs, null, true);
             Tuple<string, string>[] snappableConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -469,6 +484,7 @@ namespace RubrikSecurityCloud.Types
         JobsReply? MetadataPullScheduler = null,
         ClusterMetric? Metric = null,
         List<MetricTimeSeries>? MetricTimeSeries = null,
+        List<ClusterMetricTimeSeriesNew>? MetricTimeSeriesNew = null,
         List<ReplicationSource>? ReplicationSources = null,
         List<ReplicationTarget>? ReplicationTargets = null,
         RubrikSyncStatus? RubrikSyncStatus = null,
@@ -642,6 +658,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MetricTimeSeries != null ) {
             this.MetricTimeSeries = MetricTimeSeries;
+        }
+        if ( MetricTimeSeriesNew != null ) {
+            this.MetricTimeSeriesNew = MetricTimeSeriesNew;
         }
         if ( ReplicationSources != null ) {
             this.ReplicationSources = ReplicationSources;
@@ -1242,6 +1261,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<ClusterMetricTimeSeriesNew>? MetricTimeSeriesNew
+        // GraphQL -> metricTimeSeriesNew: [ClusterMetricTimeSeriesNew!]! (type)
+        if (this.MetricTimeSeriesNew != null) {
+            var fspec = this.MetricTimeSeriesNew.AsFieldSpec(conf.Child("metricTimeSeriesNew"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "metricTimeSeriesNew" + "\n(" + this.Vars.MetricTimeSeriesNew.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<ReplicationSource>? ReplicationSources
         // GraphQL -> replicationSources: [ReplicationSource!]! (type)
         if (this.ReplicationSources != null) {
@@ -1331,7 +1362,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ClusterCyberEventLockdownMode? CyberEventLockdownMode
         // GraphQL -> cyberEventLockdownMode: ClusterCyberEventLockdownMode (enum)
@@ -2314,6 +2345,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.MetricTimeSeries = null;
         }
+        //      C# -> List<ClusterMetricTimeSeriesNew>? MetricTimeSeriesNew
+        // GraphQL -> metricTimeSeriesNew: [ClusterMetricTimeSeriesNew!]! (type)
+        if (ec.Includes("metricTimeSeriesNew",false))
+        {
+            if(this.MetricTimeSeriesNew == null) {
+
+                this.MetricTimeSeriesNew = new List<ClusterMetricTimeSeriesNew>();
+                this.MetricTimeSeriesNew.ApplyExploratoryFieldSpec(ec.NewChild("metricTimeSeriesNew"));
+
+            } else {
+
+                this.MetricTimeSeriesNew.ApplyExploratoryFieldSpec(ec.NewChild("metricTimeSeriesNew"));
+
+            }
+        }
+        else if (this.MetricTimeSeriesNew != null && ec.Excludes("metricTimeSeriesNew",false))
+        {
+            this.MetricTimeSeriesNew = null;
+        }
         //      C# -> List<ReplicationSource>? ReplicationSources
         // GraphQL -> replicationSources: [ReplicationSource!]! (type)
         if (ec.Includes("replicationSources",false))
@@ -2492,7 +2542,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Cluster> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Cluster());
@@ -2502,7 +2552,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<Cluster> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

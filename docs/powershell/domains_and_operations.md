@@ -9,19 +9,19 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
-| [Account (9,14)](#account-domain) | [Cluster (37,23)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,20)](#oracle-domain) | [Snapshot (24,18)](#snapshot-domain) |
+| [Account (9,14)](#account-domain) | [Cluster (38,23)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,20)](#oracle-domain) | [Snapshot (24,19)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (10,4)](#microsoft-365-domain) | [Policy (9,15)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (5,3)](#activity-series-domain) | [Db2 (9,13)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (9,16)](#archival-domain) | [Report Download (3,20)](#report-download-domain) | [Miscellaneous (201,149)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (9,16)](#archival-domain) | [Report Download (3,20)](#report-download-domain) | [Miscellaneous (205,149)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (33,37)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (4,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
-| [AWS Native (19,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
+| [AWS Native (21,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (54,44)](#azure-domain) | [Fileset (6,7)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (4,3)](#threat-domain) |
-| [Azure Native (24,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,11)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
+| [Azure Native (24,8)](#azure-native-domain) | [Google Cloud Platform (16,12)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,14)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
 | [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (25,12)](#vmware-vsphere-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (6,26)](#vmware-vsphere-vm-domain) |
-| [Cloud Account (7,2)](#cloud-account-domain) | [Integration (2,6)](#integration-domain) | [Nutanix (20,28)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (5,11)](#webhook-domain) |
-| [Cloud Native (19,14)](#cloud-native-domain) | [Kubernetes (13,18)](#kubernetes-domain) | [Office 365 (39,34)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
+| [Cloud Account (7,2)](#cloud-account-domain) | [Integration (2,7)](#integration-domain) | [Nutanix (20,29)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (5,12)](#webhook-domain) |
+| [Cloud Native (19,14)](#cloud-native-domain) | [Kubernetes (13,18)](#kubernetes-domain) | [Office 365 (40,34)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
 
 ## Account domain
 
@@ -276,6 +276,7 @@ Cmdlets: `New-RscQueryAwsNative` and `New-RscMutationAwsNative`
 | Account | Refers to the AWS Native account that serves as a container for all your AWS resources. The AWS Native account contains information about the metadata related to the AWS Native resources. | `New-RscQueryAwsNative -Operation Account`<BR> | [awsNativeAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Accounts | Paginated list of all AWS Native accounts. | `New-RscQueryAwsNative -Operation Accounts`<BR> | [awsNativeAccounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AmiTypeForArchivedSnapshotExport | Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html. | `New-RscQueryAwsNative -Operation AmiTypeForArchivedSnapshotExport`<BR> | [amiTypeForAwsNativeArchivedSnapshotExport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DynamoDbTable | Represents the Amazon DynamoDB Table with a specific ID. For more information, see https://aws.amazon.com/dynamodb/. | `New-RscQueryAwsNative -Operation DynamoDbTable`<BR> | [awsNativeDynamoDbTable](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | EbsVolume | Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/. | `New-RscQueryAwsNative -Operation EbsVolume`<BR> | [awsNativeEbsVolume](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | EbsVolumes | Paginated list of all AWS EBS Volumes. | `New-RscQueryAwsNative -Operation EbsVolumes`<BR> | [awsNativeEbsVolumes](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | EbsVolumesByName | Paginated list of all AWS EBS Volumes by name or substring of name. | `New-RscQueryAwsNative -Operation EbsVolumesByName`<BR> | [awsNativeEbsVolumesByName](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -290,6 +291,7 @@ Cmdlets: `New-RscQueryAwsNative` and `New-RscMutationAwsNative`
 | RdsPointInTimeRestoreWindow | Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information,see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html. | `New-RscQueryAwsNative -Operation RdsPointInTimeRestoreWindow`<BR> | [awsNativeRdsPointInTimeRestoreWindow](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Root | Root of AWS native hierarchy. | `New-RscQueryAwsNative -Operation Root`<BR> | [awsNativeRoot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | S3Bucket | Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/. | `New-RscQueryAwsNative -Operation S3Bucket`<BR> | [awsNativeS3Bucket](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ValidateDynamoDbTableNameForRecovery | Validates the DynamoDB table name provided by the user for recovery. | `New-RscQueryAwsNative -Operation ValidateDynamoDbTableNameForRecovery`<BR> | [validateAwsNativeDynamoDbTableNameForRecovery](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ValidateRdsClusterNameForExport | Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures. | `New-RscQueryAwsNative -Operation ValidateRdsClusterNameForExport`<BR> | [validateAwsNativeRdsClusterNameForExport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ValidateRdsInstanceNameForExport | Validates the name used for an RDS Instance during an export operation. Returns true if the RDS Instance name is valid. Returns false, with an error message, if the RDS Instance name validation fails. Returns false, without an error message for all other failures. | `New-RscQueryAwsNative -Operation ValidateRdsInstanceNameForExport`<BR> | [validateAwsNativeRdsInstanceNameForExport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
@@ -679,6 +681,7 @@ Cmdlets: `New-RscQueryCluster` and `New-RscMutationCluster`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| CanIgnoreClusterRemovalPrechecks | Specifies if the cluster can ignore cluster removal prechecks. | `New-RscQueryCluster -Operation CanIgnoreClusterRemovalPrechecks`<BR> | [canIgnoreClusterRemovalPrechecks](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudClusterRecoveryValidation | Validate if a Cloud Cluster can be recovered. | `New-RscQueryCluster -Operation CloudClusterRecoveryValidation`<BR> | [cloudClusterRecoveryValidation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectClusterEndpoints | Endpoints used by the NAS cloud direct clusters. | `New-RscQueryCluster -Operation CloudDirectClusterEndpoints`<BR> | [cloudDirectClusterEndpoints](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Cluster | A cluster object. | `New-RscQueryCluster -Operation Cluster`<BR> | [cluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1114,6 +1117,7 @@ Cmdlets: `New-RscQueryGcp` and `New-RscMutationGcp`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| BulkSetCloudAccountProperties | Sets the properties of GCP cloud accounts. | `New-RscMutationGcp -Operation BulkSetCloudAccountProperties`<BR> | [gcpBulkSetCloudAccountProperties](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudAccountAddManualAuthProject | Adds a new cloud account for the GCP project which is not already added. | `New-RscMutationGcp -Operation CloudAccountAddManualAuthProject`<BR> | [gcpCloudAccountAddManualAuthProject](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudAccountAddProjects | Add cloud account for GCP projects for the given features. | `New-RscMutationGcp -Operation CloudAccountAddProjects`<BR> | [gcpCloudAccountAddProjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudAccountDeleteProjects | Delete cloud account for the given GCP project cloud account IDs and feature. | `New-RscMutationGcp -Operation CloudAccountDeleteProjects`<BR> | [gcpCloudAccountDeleteProjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1361,6 +1365,7 @@ Cmdlets: `New-RscQueryIntegration` and `New-RscMutationIntegration`
 | CreateIntegrations | Create a batch of new integrations. | `New-RscMutationIntegration -Operation CreateIntegrations`<BR> | [createIntegrations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteIntegration | Delete the integration with the specified integration ID. | `New-RscMutationIntegration -Operation DeleteIntegration`<BR> | [deleteIntegration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteIntegrations | Delete a batch of integrations. | `New-RscMutationIntegration -Operation DeleteIntegrations`<BR> | [deleteIntegrations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| EnableIntegration | Enables the integration with the specified integration ID. | `New-RscMutationIntegration -Operation EnableIntegration`<BR> | [enableIntegration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateIntegration | Update the integration with the specified integration ID. | `New-RscMutationIntegration -Operation UpdateIntegration`<BR> | [updateIntegration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateIntegrations | Update a batch of integrations. | `New-RscMutationIntegration -Operation UpdateIntegrations`<BR> | [updateIntegrations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
@@ -1629,9 +1634,9 @@ Supported in v6.0+
 Gets the details of the request that was triggered to check the cloud compute connectivity of an archival location. | `New-RscQueryMisc -Operation CheckCloudComputeConnectivityJobProgress`<BR> | [checkCloudComputeConnectivityJobProgress](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CheckLatestVersionMgmtAppExists | Checks whether the latest version of the Microsoft 365 Management App exists. | `New-RscQueryMisc -Operation CheckLatestVersionMgmtAppExists`<BR> | [checkLatestVersionMgmtAppExists](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectNasExport | Cloud Direct NAS export object. | `New-RscQueryMisc -Operation CloudDirectNasExport`<BR> | [cloudDirectNasExport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CloudDirectNasNamespace | Cloud Direct NAS namespace. | `New-RscQueryMisc -Operation CloudDirectNasNamespace`<BR> | [cloudDirectNasNamespace](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectNasNamespace | NAS Cloud Direct namespace. | `New-RscQueryMisc -Operation CloudDirectNasNamespace`<BR> | [cloudDirectNasNamespace](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectNasNamespaces | Paginated list of NAS namespaces. | `New-RscQueryMisc -Operation CloudDirectNasNamespaces`<BR> | [cloudDirectNasNamespaces](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CloudDirectNasShare | Cloud Direct NAS share. | `New-RscQueryMisc -Operation CloudDirectNasShare`<BR> | [cloudDirectNasShare](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectNasShare | NAS Cloud Direct share. | `New-RscQueryMisc -Operation CloudDirectNasShare`<BR> | [cloudDirectNasShare](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectShares | Retrieve shares from Cloud Direct site. | `New-RscQueryMisc -Operation CloudDirectShares`<BR> | [allCloudDirectShares](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectSites | List of the Cloud Direct Sites accessible by the current user. | `New-RscQueryMisc -Operation CloudDirectSites`<BR> | [allCloudDirectSites](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectSystems | Retrieve systems managed by the Cloud Direct site. | `New-RscQueryMisc -Operation CloudDirectSystems`<BR> | [cloudDirectSystems](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1717,7 +1722,6 @@ allowed to access the field. | `New-RscQueryMisc -Operation JobInfo`<BR> | [jobI
 | LambdaSettings | N/A | `New-RscQueryMisc -Operation LambdaSettings`<BR> | [lambdaSettings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | LicensedProducts | Information about the licenses at the product level. | `New-RscQueryMisc -Operation LicensedProducts`<BR> | [allLicensedProducts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | LockoutConfig | Get the lockout configurations of the current organization. | `New-RscQueryMisc -Operation LockoutConfig`<BR> | [lockoutConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| MaxProtectedAppsCount | Maximum number of protected apps that can be added per account. | `New-RscQueryMisc -Operation MaxProtectedAppsCount`<BR> | [maxProtectedAppsCount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MfaSetting | Get multifactor authentication (MFA) settings for an account. | `New-RscQueryMisc -Operation MfaSetting`<BR> | [mfaSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MicrosoftGroups | List of Microsoft Groups in the organization. | `New-RscQueryMisc -Operation MicrosoftGroups`<BR> | [microsoftGroups](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MicrosoftSites | List of sites in the Microsoft 365 organization. | `New-RscQueryMisc -Operation MicrosoftSites`<BR> | [microsoftSites](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1757,9 +1761,11 @@ allowed to access the field. | `New-RscQueryMisc -Operation JobInfo`<BR> | [jobI
 | QuarantinedDetailsForWorkload | Quarantine details of a workload. | `New-RscQueryMisc -Operation QuarantinedDetailsForWorkload`<BR> | [allQuarantinedDetailsForWorkload](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | QueryDatastoreFreespaceThresholds | Query datastore threshold configurations. | `New-RscQueryMisc -Operation QueryDatastoreFreespaceThresholds`<BR> | [queryDatastoreFreespaceThresholds](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RemovedNodeDetails | Get the information for removed nodes. | `New-RscQueryMisc -Operation RemovedNodeDetails`<BR> | [removedNodeDetails](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| RestoreObjectsDryRun | Runs a simulated recovery for the specified Active Directory objects and returns the attribute values expected after a regular granular restore. | `New-RscQueryMisc -Operation RestoreObjectsDryRun`<BR> | [restoreObjectsDryRun](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ResetTypeOfRemovalJob | Get the reset type of a node removal job. | `New-RscQueryMisc -Operation ResetTypeOfRemovalJob`<BR> | [resetTypeOfRemovalJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RoleTemplates | The list of available role templates. | `New-RscQueryMisc -Operation RoleTemplates`<BR> | [roleTemplates](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RscPermsToCdmInfo | Synced cluster information for RSC permissions. | `New-RscQueryMisc -Operation RscPermsToCdmInfo`<BR> | [rscPermsToCdmInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SaasWorkloadMetadataTypes | SaasWorkloadMetadataTypes returns the list of metadata types for a  
+specified SaaS app type. | `New-RscQueryMisc -Operation SaasWorkloadMetadataTypes`<BR> | [saasWorkloadMetadataTypes](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SearchFileByPrefix | Search file under given folder and with given prefix. | `New-RscQueryMisc -Operation SearchFileByPrefix`<BR> | [searchFileByPrefix](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SnoozedDirectories | Lists the snoozed directories for the account. | `New-RscQueryMisc -Operation SnoozedDirectories`<BR> | [snoozedDirectories](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SsoGroupAlreadyExists | Determines if the SSO group already exists in the account. | `New-RscQueryMisc -Operation SsoGroupAlreadyExists`<BR> | [ssoGroupAlreadyExists](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1793,7 +1799,7 @@ To be used by Admin to check status of the support tunnel. | `New-RscQueryMisc -
 | UserActivities | N/A | `New-RscQueryMisc -Operation UserActivities`<BR> | [userActivities](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UserAlreadyExists | Determines if the user already exists in the account. | `New-RscQueryMisc -Operation UserAlreadyExists`<BR> | [userAlreadyExists](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UserAnalyzerAccess | N/A | `New-RscQueryMisc -Operation UserAnalyzerAccess`<BR> | [userAnalyzerAccess](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| UserAuditList | N/A | `New-RscQueryMisc -Operation UserAuditList`<BR> | [userAuditConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UserAuditList | Paginated list of user audit data. Each page of the results will include at most 50 entries unless otherwise specified using the first parameter. Query the pageInfo.hasNextPage field to know whether all audits were returned. | `New-RscQueryMisc -Operation UserAuditList`<BR> | [userAuditConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UserDetail | N/A | `New-RscQueryMisc -Operation UserDetail`<BR> | [userDetail](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UserFile | User file. | `New-RscQueryMisc -Operation UserFile`<BR> | [userFile](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UserFiles | All user files. | `New-RscQueryMisc -Operation UserFiles`<BR> | [allUserFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1803,8 +1809,12 @@ To be used by Admin to check status of the support tunnel. | `New-RscQueryMisc -
 | UserSettings | N/A | `New-RscQueryMisc -Operation UserSettings`<BR> | [userSettings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UsersInCurrentAndDescendantOrganization | Retrieve users from current and descendant organizations based on the specified filters. | `New-RscQueryMisc -Operation UsersInCurrentAndDescendantOrganization`<BR> | [usersInCurrentAndDescendantOrganization](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UsersOnAccountList | N/A | `New-RscQueryMisc -Operation UsersOnAccountList`<BR> | [allUsersOnAccountConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ValidateAdForestTransition | Validates if given account is ready to transition from Active Directory domain inventory page to Active Directory forest inventory page. | `New-RscQueryMisc -Operation ValidateAdForestTransition`<BR> | [validateAdForestTransition](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ValidateOrgName | Checks whether the tenant org name is valid and unique. | `New-RscQueryMisc -Operation ValidateOrgName`<BR> | [validateOrgName](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| VcdOrgs | Paginated list of vCloud Director orgs. | `New-RscQueryMisc -Operation VcdOrgs`<BR> | [vcdOrgs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| VcdTopLevelDescendants | Paginated list of the highest-level vCloud Director objects accessible by the current user. | `New-RscQueryMisc -Operation VcdTopLevelDescendants`<BR> | [vcdTopLevelDescendants](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | VcdVappVms | Paginated list of virtual machines under vCloud Director hiearchy. | `New-RscQueryMisc -Operation VcdVappVms`<BR> | [vcdVappVms](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| VcdVapps | Paginated list of vCloud Director vApps. | `New-RscQueryMisc -Operation VcdVapps`<BR> | [vcdVapps](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | VerifyTotp | Verify TOTP for current user. | `New-RscQueryMisc -Operation VerifyTotp`<BR> | [verifyTotp](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | VirtualMachineFiles | Get virtual machine files for a snapshot  
   
@@ -2249,9 +2259,9 @@ Cmdlets: `New-RscQueryNas` and `New-RscMutationNas`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
-| CloudDirectNasShares | Paginated list of Cloud Direct NAS shares. | `New-RscQueryNas -Operation CloudDirectNasShares`<BR> | [cloudDirectNasShares](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CloudDirectNasSystem | Cloud Direct NAS system. | `New-RscQueryNas -Operation CloudDirectNasSystem`<BR> | [cloudDirectNasSystem](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CloudDirectNasSystems | Paginated list of Cloud Direct NAS systems. | `New-RscQueryNas -Operation CloudDirectNasSystems`<BR> | [cloudDirectNasSystems](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectNasShares | Paginated list of NAS Cloud Direct shares. | `New-RscQueryNas -Operation CloudDirectNasShares`<BR> | [cloudDirectNasShares](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectNasSystem | NAS Cloud Direct system. | `New-RscQueryNas -Operation CloudDirectNasSystem`<BR> | [cloudDirectNasSystem](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectNasSystems | Paginated list of NAS Cloud Direct systems. | `New-RscQueryNas -Operation CloudDirectNasSystems`<BR> | [cloudDirectNasSystems](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Fileset | A NAS Fileset. | `New-RscQueryNas -Operation Fileset`<BR> | [nasFileset](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Namespace | A NAS Namespace. | `New-RscQueryNas -Operation Namespace`<BR> | [nasNamespace](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Namespaces | Paginated list of NAS Namespaces. | `New-RscQueryNas -Operation Namespaces`<BR> | [nasNamespaces](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2476,6 +2486,11 @@ v8.1+: Download files from a Nutanix virtual machine backup
 Supported in v5.0+  
 v5.0-v8.0: Start an asynchronous job to download multiple files and folders from a specified Nutanix VM backup. The response returns an asynchronous request ID. Get the URL for downloading the zip file including the specific files/folders by sending a GET request to 'nutanix/vm/request/{id}'.  
 v8.1+: Start an asynchronous job to download multiple files and folders from a specified Nutanix virtual machine backup. The response returns an asynchronous request ID. Get the URL for downloading the zip file including the specific files/folders by sending a GET request to 'nutanix/vm/request/{id}'. | `New-RscMutationNutanix -Operation DownloadFilesSnapshot`<BR> | [downloadFilesNutanixSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DownloadFilesSnapshotFromArchivalLocation | Initiate a job to download multiple files or folders  
+  
+Supported in v8.0+  
+v8.0: Initiates a job to download one or more files or folders from an archived Nutanix VM snapshot. Returns the job instance ID.  
+v8.1+: Initiates a job to download one or more files or folders from an archived Nutanix virtual machine snapshot. Returns the job instance ID. | `New-RscMutationNutanix -Operation DownloadFilesSnapshotFromArchivalLocation`<BR> | [downloadFilesNutanixSnapshotFromArchivalLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DownloadSnapshot | Creates a download from archival request  
   
 Supported in v5.0+  
@@ -2599,6 +2614,7 @@ Cmdlets: `New-RscQueryO365` and `New-RscMutationO365`
 | Teams | List of O365 Teams in the O365Org. | `New-RscQueryO365 -Operation Teams`<BR> | [o365Teams](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | User | Details for the O365 user corresponding to the ID. | `New-RscQueryO365 -Operation User`<BR> | [o365User](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UserObjects | Name, id, object type, and mail address of user descendant object. | `New-RscQueryO365 -Operation UserObjects`<BR> | [o365UserObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UserSelfServiceInfo | Returns the self service information for the logged-in user, which includes the user name and the M365 object details. | `New-RscQueryO365 -Operation UserSelfServiceInfo`<BR> | [o365UserSelfServiceInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations
@@ -3005,6 +3021,10 @@ Cmdlets: `New-RscQuerySapHana` and `New-RscMutationSapHana`
   
 Supported in v5.3+  
 Add a SAP HANA system to the Rubrik cluster. | `New-RscMutationSapHana -Operation AddSystem`<BR> | [addSapHanaSystem](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BulkRecoverDatabases | Bulk recovery of SAP HANA databases to a point in time  
+  
+Supported in v9.4  
+Recover multiple SAP HANA databases to the provided point in time. | `New-RscMutationSapHana -Operation BulkRecoverDatabases`<BR> | [bulkRecoverSapHanaDatabases](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ConfigureRestore | Configure the target database for system copy restore  
   
 Supported in v6.0+  
@@ -3039,6 +3059,14 @@ v9.0+: Update the system properties of the SAP HANA system
 Supported in v5.3+  
 v5.3-v8.1: Update the SLA Domain that is configured for a SAP HANA system.  
 v9.0+: Update the system properties for the SAP HANA system. | `New-RscMutationSapHana -Operation PatchSystem`<BR> | [patchSapHanaSystem](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RecoverDatabaseToFullBackup | Recover SAP HANA database to the full backup  
+  
+Supported in v9.4  
+Recover the SAP HANA database to the provided full backup. | `New-RscMutationSapHana -Operation RecoverDatabaseToFullBackup`<BR> | [recoverSapHanaDatabaseToFullBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RecoverDatabaseToPointInTime | Recover the SAP HANA database to a point in time  
+  
+Supported in v9.4  
+Recover the SAP HANA database to the provided point in time. | `New-RscMutationSapHana -Operation RecoverDatabaseToPointInTime`<BR> | [recoverSapHanaDatabaseToPointInTime](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RestoreSystemStorage | Restore SAP HANA storage to a storage snapshot  
   
 Supported in v9.1+  
@@ -3278,6 +3306,7 @@ Initiates an on-demand snapshot job of a specified Active Directory Domain Contr
 Supported in v5.0+  
 Download a snapshot from archival. | `New-RscMutationSnapshot -Operation CreateDownloadForVolumeGroup`<BR> | [createDownloadSnapshotForVolumeGroup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateFileset | N/A | `New-RscMutationSnapshot -Operation CreateFileset`<BR> | [createFilesetSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateVapps | Create vApp Snapshots. | `New-RscMutationSnapshot -Operation CreateVapps`<BR> | [createVappSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteCloudWorkloadSnapshot | Deletes the Rubrik Security Cloud on-demand snapshot by ID. | `New-RscMutationSnapshot -Operation DeleteCloudWorkloadSnapshot`<BR> | [deleteCloudWorkloadSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteFilesetSnapshots | N/A | `New-RscMutationSnapshot -Operation DeleteFilesetSnapshots`<BR> | [deleteFilesetSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteUnmanageds | Deletes the snapshots of an unmanaged object using the object IDs. | `New-RscMutationSnapshot -Operation DeleteUnmanageds`<BR> | [deleteUnmanagedSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -3755,6 +3784,7 @@ Cmdlets: `New-RscQueryWebhook` and `New-RscMutationWebhook`
 | Test | Test a webhook configuration. | `New-RscMutationWebhook -Operation Test`<BR> | [testWebhook](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | TestExisting | Test an existing webhook. | `New-RscMutationWebhook -Operation TestExisting`<BR> | [testExistingWebhook](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Update | Update a webhook. | `New-RscMutationWebhook -Operation Update`<BR> | [updateWebhook](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateStatus | Update the webhook status. | `New-RscMutationWebhook -Operation UpdateStatus`<BR> | [updateWebhookStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateV2 | Update webhook configuration. | `New-RscMutationWebhook -Operation UpdateV2`<BR> | [updateWebhookV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)

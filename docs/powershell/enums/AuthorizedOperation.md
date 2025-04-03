@@ -72,7 +72,19 @@ Authorized operations on an object.
 - VIEW_USER_MANAGEMENT
 - EDIT_USER_MANAGEMENT
 - VIEW_ACCESS
+- VIEW_USER - View User.
+- VIEW_ROLE - View Role.
+- VIEW_SERVICE_ACCOUNT - View Service Account.
+- VIEW_SECURITY_POLICY - View Security Policy.
 - MANAGE_ACCESS
+- MANAGE_USER - Manage User.
+- MANAGE_ROLE - Manage Role.
+- MANAGE_SERVICE_ACCOUNT - Manage Service Account.
+- MANAGE_SECURITY_POLICY - Manage Security Policy.
+- ASSIGN_ROLE - Assign Role.
+- MANAGE_CREDENTIALS - Manage Credential.
+- MANAGE_LOCKOUT - Manage Lockout.
+- MANAGE_AUTH_DOMAIN - Manage Auth Domain.
 - ADD_AZURE_CLOUD_ACCOUNT
 - EDIT_AZURE_CLOUD_ACCOUNT
 - VIEW_AZURE_CLOUD_ACCOUNT
@@ -156,10 +168,10 @@ Authorized operations on an object.
 - MANAGE_SERVICENOW_INTEGRATION - Manage ServiceNow integration.
 - VIEW_IP_ADDRESS_IN_AUDITS - View client IP address in audits.
 - VIEW_CHATBOT - View chatbot configuration.
-- MANAGE_CHATBOT - Manage chatbot configuration.
 - CHAT_WITH_CHATBOT - Chat with chatbot.
+- MANAGE_CHATBOT - Manage chatbot configuration.
 - VIEW_LICENSE_DASHBOARD - View license dashboard.
-- VIEW_ANOMALY_DETECTION_RESULTS - View Anomaly Detection results.
+- VIEW_ANOMALY_DETECTION_RESULTS - View anomalies.
 - RECOVER_CLUSTER - Recover Cloud Cluster from object store data.
 - ACCESS_CDM_CLUSTER - Access Rubrik clusters via federated access.
 - MANAGE_STORAGE_ENCRYPTION - Manage storage encryption settings.
@@ -181,6 +193,15 @@ Authorized operations on an object.
 - ENABLE_ACCESS_LOGGING - Enable access logging.
 - MANAGE_LOG_SHIPPING - Manage log shipping.
 - MANAGE_USER_CREDENTIALS - Manage user credentials.
+- MANAGE_PAM_INTEGRATION - Manage PAM integration.
+- SELF_SERVICE_RESTORE - Users can recover their own objects.
+- VIEW_ANOMALY_DETECTION_FILE_DETAILS - View file details.
+- DOWNLOAD_ANOMALY_FORENSICS - Download suspicious files for forensics.
+- MANAGE_ANOMALY_DETECTION - Manage anomalies.
+- VIEW_IDENTITY_RESILIENCY - View identity resiliency.
+- MANAGE_IDENTITY_RESILIENCY - Manage identity resiliency.
+- REMEDIATE_IDENTITY_RESILIENCY_VIOLATIONS - Remediate identity resiliency violations.
+- VIEW_RUBY_INSIGHTS - View Ruby Insights use case.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

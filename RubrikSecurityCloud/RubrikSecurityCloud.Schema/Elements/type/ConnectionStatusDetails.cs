@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ReplicationBidirectionalConnectionStatus? BidirectionalConnectionStatus
+        // GraphQL -> bidirectionalConnectionStatus: ReplicationBidirectionalConnectionStatus! (enum)
+        [JsonProperty("bidirectionalConnectionStatus")]
+        public ReplicationBidirectionalConnectionStatus? BidirectionalConnectionStatus { get; set; }
+
         //      C# -> ClusterConnectionStatus? SourceAndRubrik
         // GraphQL -> sourceAndRubrik: ClusterConnectionStatus! (enum)
         [JsonProperty("sourceAndRubrik")]
@@ -50,12 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ConnectionStatusDetails Set(
+        ReplicationBidirectionalConnectionStatus? BidirectionalConnectionStatus = null,
         ClusterConnectionStatus? SourceAndRubrik = null,
         ConnectionStatusType? SourceAndTarget = null,
         ClusterConnectionStatus? TargetAndRubrik = null,
         ConnectionStatusType? TargetAndSource = null
     ) 
     {
+        if ( BidirectionalConnectionStatus != null ) {
+            this.BidirectionalConnectionStatus = BidirectionalConnectionStatus;
+        }
         if ( SourceAndRubrik != null ) {
             this.SourceAndRubrik = SourceAndRubrik;
         }
@@ -82,6 +91,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ReplicationBidirectionalConnectionStatus? BidirectionalConnectionStatus
+        // GraphQL -> bidirectionalConnectionStatus: ReplicationBidirectionalConnectionStatus! (enum)
+        if (this.BidirectionalConnectionStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "bidirectionalConnectionStatus\n" ;
+            } else {
+                s += ind + "bidirectionalConnectionStatus\n" ;
+            }
+        }
         //      C# -> ClusterConnectionStatus? SourceAndRubrik
         // GraphQL -> sourceAndRubrik: ClusterConnectionStatus! (enum)
         if (this.SourceAndRubrik != null) {
@@ -123,8 +141,25 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> ReplicationBidirectionalConnectionStatus? BidirectionalConnectionStatus
+        // GraphQL -> bidirectionalConnectionStatus: ReplicationBidirectionalConnectionStatus! (enum)
+        if (ec.Includes("bidirectionalConnectionStatus",true))
+        {
+            if(this.BidirectionalConnectionStatus == null) {
+
+                this.BidirectionalConnectionStatus = new ReplicationBidirectionalConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BidirectionalConnectionStatus != null && ec.Excludes("bidirectionalConnectionStatus",true))
+        {
+            this.BidirectionalConnectionStatus = null;
+        }
         //      C# -> ClusterConnectionStatus? SourceAndRubrik
         // GraphQL -> sourceAndRubrik: ClusterConnectionStatus! (enum)
         if (ec.Includes("sourceAndRubrik",true))
@@ -238,7 +273,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ConnectionStatusDetails> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ConnectionStatusDetails());
@@ -248,7 +283,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ConnectionStatusDetails> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

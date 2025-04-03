@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaDomain")]
         public SlaDomain? SlaDomain { get; set; }
 
+        //      C# -> System.String? ArchivalLocationId
+        // GraphQL -> archivalLocationId: String (scalar)
+        [JsonProperty("archivalLocationId")]
+        public System.String? ArchivalLocationId { get; set; }
+
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         [JsonProperty("date")]
@@ -151,6 +156,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snappableId")]
         public System.String? SnappableId { get; set; }
 
+        //      C# -> System.String? SourceSnapshotId
+        // GraphQL -> sourceSnapshotId: String (scalar)
+        [JsonProperty("sourceSnapshotId")]
+        public System.String? SourceSnapshotId { get; set; }
+
         //      C# -> System.Int32? UnexpiredArchivedSnapshotCount
         // GraphQL -> unexpiredArchivedSnapshotCount: Int! (scalar)
         [JsonProperty("unexpiredArchivedSnapshotCount")]
@@ -176,6 +186,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicationLocations")]
         public List<DataLocation>? ReplicationLocations { get; set; }
 
+        //      C# -> RscSnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: RscSnapshotRetentionInfo (type)
+        [JsonProperty("snapshotRetentionInfo")]
+        public RscSnapshotRetentionInfo? SnapshotRetentionInfo { get; set; }
+
 
         #endregion
 
@@ -189,6 +204,7 @@ namespace RubrikSecurityCloud.Types
         SnapshotConsistencyLevel? ConsistencyLevel = null,
         PolarisSpecificSnapshot? PolarisSpecificSnapshot = null,
         SlaDomain? SlaDomain = null,
+        System.String? ArchivalLocationId = null,
         DateTime? Date = null,
         DateTime? ExpirationDate = null,
         System.Boolean? ExpiryHint = null,
@@ -212,11 +228,13 @@ namespace RubrikSecurityCloud.Types
         System.String? ParentSnapshotId = null,
         System.Int32? SequenceNumber = null,
         System.String? SnappableId = null,
+        System.String? SourceSnapshotId = null,
         System.Int32? UnexpiredArchivedSnapshotCount = null,
         System.Int32? UnexpiredReplicaCount = null,
         List<ArchivedSnapshot>? ArchivedSnapshots = null,
         LatestUserNote? LatestUserNote = null,
-        List<DataLocation>? ReplicationLocations = null
+        List<DataLocation>? ReplicationLocations = null,
+        RscSnapshotRetentionInfo? SnapshotRetentionInfo = null
     ) 
     {
         if ( ConsistencyLevel != null ) {
@@ -227,6 +245,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaDomain != null ) {
             this.SlaDomain = SlaDomain;
+        }
+        if ( ArchivalLocationId != null ) {
+            this.ArchivalLocationId = ArchivalLocationId;
         }
         if ( Date != null ) {
             this.Date = Date;
@@ -297,6 +318,9 @@ namespace RubrikSecurityCloud.Types
         if ( SnappableId != null ) {
             this.SnappableId = SnappableId;
         }
+        if ( SourceSnapshotId != null ) {
+            this.SourceSnapshotId = SourceSnapshotId;
+        }
         if ( UnexpiredArchivedSnapshotCount != null ) {
             this.UnexpiredArchivedSnapshotCount = UnexpiredArchivedSnapshotCount;
         }
@@ -311,6 +335,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicationLocations != null ) {
             this.ReplicationLocations = ReplicationLocations;
+        }
+        if ( SnapshotRetentionInfo != null ) {
+            this.SnapshotRetentionInfo = SnapshotRetentionInfo;
         }
         return this;
     }
@@ -359,6 +386,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "slaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.String? ArchivalLocationId
+        // GraphQL -> archivalLocationId: String (scalar)
+        if (this.ArchivalLocationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationId\n" ;
+            } else {
+                s += ind + "archivalLocationId\n" ;
             }
         }
         //      C# -> DateTime? Date
@@ -568,6 +604,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "snappableId\n" ;
             }
         }
+        //      C# -> System.String? SourceSnapshotId
+        // GraphQL -> sourceSnapshotId: String (scalar)
+        if (this.SourceSnapshotId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceSnapshotId\n" ;
+            } else {
+                s += ind + "sourceSnapshotId\n" ;
+            }
+        }
         //      C# -> System.Int32? UnexpiredArchivedSnapshotCount
         // GraphQL -> unexpiredArchivedSnapshotCount: Int! (scalar)
         if (this.UnexpiredArchivedSnapshotCount != null) {
@@ -622,12 +667,24 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> RscSnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: RscSnapshotRetentionInfo (type)
+        if (this.SnapshotRetentionInfo != null) {
+            var fspec = this.SnapshotRetentionInfo.AsFieldSpec(conf.Child("snapshotRetentionInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotRetentionInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> SnapshotConsistencyLevel? ConsistencyLevel
         // GraphQL -> consistencyLevel: SnapshotConsistencyLevel! (enum)
@@ -693,6 +750,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaDomain != null && ec.Excludes("slaDomain",false))
         {
             this.SlaDomain = null;
+        }
+        //      C# -> System.String? ArchivalLocationId
+        // GraphQL -> archivalLocationId: String (scalar)
+        if (ec.Includes("archivalLocationId",true))
+        {
+            if(this.ArchivalLocationId == null) {
+
+                this.ArchivalLocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationId != null && ec.Excludes("archivalLocationId",true))
+        {
+            this.ArchivalLocationId = null;
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
@@ -1085,6 +1159,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.SnappableId = null;
         }
+        //      C# -> System.String? SourceSnapshotId
+        // GraphQL -> sourceSnapshotId: String (scalar)
+        if (ec.Includes("sourceSnapshotId",true))
+        {
+            if(this.SourceSnapshotId == null) {
+
+                this.SourceSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceSnapshotId != null && ec.Excludes("sourceSnapshotId",true))
+        {
+            this.SourceSnapshotId = null;
+        }
         //      C# -> System.Int32? UnexpiredArchivedSnapshotCount
         // GraphQL -> unexpiredArchivedSnapshotCount: Int! (scalar)
         if (ec.Includes("unexpiredArchivedSnapshotCount",true))
@@ -1176,6 +1267,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicationLocations = null;
         }
+        //      C# -> RscSnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: RscSnapshotRetentionInfo (type)
+        if (ec.Includes("snapshotRetentionInfo",false))
+        {
+            if(this.SnapshotRetentionInfo == null) {
+
+                this.SnapshotRetentionInfo = new RscSnapshotRetentionInfo();
+                this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
+
+            } else {
+
+                this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
+
+            }
+        }
+        else if (this.SnapshotRetentionInfo != null && ec.Excludes("snapshotRetentionInfo",false))
+        {
+            this.SnapshotRetentionInfo = null;
+        }
     }
 
 
@@ -1221,7 +1331,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolarisSnapshot> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolarisSnapshot());
@@ -1231,7 +1341,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<PolarisSnapshot> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -10,6 +10,8 @@ Supported in v5.0+
 - shouldRecreateDirectoryStructure: System.Boolean
   - Supported in v8.1+
       Optional field that specifies whether to recreate directory structure when using the 'Restore to separate folder' option in the UI.
+- shouldRestoreOnlyAcls: System.Boolean
+  - Optional field to determine if only ACLs should be restored during the restore process. The default value is false.
 - restoreConfig: list of FilesetRestorePathPairInputs
   - Required. Supported in v5.0+
       v5.0-v5.3: Absolute file path and restore path if not restored back to itself

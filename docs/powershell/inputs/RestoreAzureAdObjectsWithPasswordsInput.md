@@ -14,4 +14,4 @@ Configuration to initiate recovery of AzureAdDirectory with multiple passwords.
 - relationshipRestoreMode: AzureAdRelationshipRestoreModeEnumType
   - Represents the modes for relationship restore for Azure AD objects.
 - objectRecoveryOptions: ObjectRecoveryOptionsType
-  - Represents recovery options for every AzureAdObjectType whose linked AzureAdObjects must be recovered.
+  - Represents recovery options for every AzureAdObjectType.

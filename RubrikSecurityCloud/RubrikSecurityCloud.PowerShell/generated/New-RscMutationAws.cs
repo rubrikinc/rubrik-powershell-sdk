@@ -803,6 +803,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	awsIamPairId = $someString
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
+    /// 	# OPTIONAL
+    /// 	awsKmsKey = @{
+    /// 		# REQUIRED
+    /// 		keyManagerId = $someString
+    /// 		# REQUIRED
+    /// 		keyId = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -917,6 +924,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	awsIamPairId = $someString
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
+    /// 	# OPTIONAL
+    /// 	awsKmsKey = @{
+    /// 		# REQUIRED
+    /// 		keyManagerId = $someString
+    /// 		# REQUIRED
+    /// 		keyId = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -3415,6 +3429,13 @@ $query.Var.input = @{
 	awsIamPairId = $someString
 	# REQUIRED
 	bypassProxy = $someBoolean
+	# OPTIONAL
+	awsKmsKey = @{
+		# REQUIRED
+		keyManagerId = $someString
+		# REQUIRED
+		keyId = $someString
+	}
 }"
             );
         }
@@ -3521,6 +3542,13 @@ $query.Var.input = @{
 	awsIamPairId = $someString
 	# REQUIRED
 	bypassProxy = $someBoolean
+	# OPTIONAL
+	awsKmsKey = @{
+		# REQUIRED
+		keyManagerId = $someString
+		# REQUIRED
+		keyId = $someString
+	}
 }"
             );
         }

@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region FilesetTemplate
  
-    public class FilesetTemplate: BaseType, CdmHierarchyObject, HierarchyObject
+    public class FilesetTemplate: BaseType, CdmHierarchyObject, HierarchyObject, PhysicalHostDescendantType, PhysicalHostPhysicalChildType
     {
         #region members
 
@@ -833,7 +833,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
@@ -1582,7 +1582,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FilesetTemplate> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FilesetTemplate());
@@ -1592,7 +1592,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<FilesetTemplate> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

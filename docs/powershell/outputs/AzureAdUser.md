@@ -11,3 +11,5 @@ Azure AD user.
   - Creation type of the Azure AD user.
 - onPremSyncStatus: AzureAdOnPremSyncStatus
   - On-prem sync status of the Azure AD user.
+- onPremSyncInfo: AzureAdOnPremSyncInfo
+  - On-prem sync information of the Azure AD user.

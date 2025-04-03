@@ -24,6 +24,8 @@
   - Specifies the MSSQL SDD details.
 - oracleSddDetail: OracleSddDetail
   - Specifies the Oracle database Sensitive Data Monitoring details.
+- rbaPackageUpgradeInfo: System.String
+  - Specifies the Rubrik Backup Service (RBS) upgrade status on the host.
 - osType: GuestOsType
   - The operating system type of the physical host.
 - defaultCbt: System.Boolean

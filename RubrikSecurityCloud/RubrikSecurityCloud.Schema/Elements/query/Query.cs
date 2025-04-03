@@ -27,10 +27,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allAllowedOrgAdminOperations" + args + "\n";
         }
-        public static object AllAllowedOrgAdminOperationsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAllowedOrgAdminOperationsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -45,10 +45,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allAuthorizationsForGlobalResource" + args + "\n";
         }
-        public static object AllAuthorizationsForGlobalResourceFieldSpec(ExplorationContext? ec=null)
+        public static object AllAuthorizationsForGlobalResourceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -63,10 +63,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "allAuthorizationsForObject" + args + "\n";
         }
-        public static object AllAuthorizationsForObjectFieldSpec(ExplorationContext? ec=null)
+        public static object AllAuthorizationsForObjectFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -81,10 +81,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountId: $cloudAccountId\n)";
             return "allAwsRegions" + args + "\n";
         }
-        public static object AllAwsRegionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAwsRegionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -99,10 +99,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountId: $cloudAccountId\n)";
             return "allAzureRegions" + args + "\n";
         }
-        public static object AllAzureRegionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureRegionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -117,10 +117,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allInventoryWorkloads" + args + "\n";
         }
-        public static object AllInventoryWorkloadsFieldSpec(ExplorationContext? ec=null)
+        public static object AllInventoryWorkloadsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -135,10 +135,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nproductType: $productType\ncloudVendor: $cloudVendor\n)";
             return "allUnmanagedObjectsSupportedTypes" + args + "\n";
         }
-        public static object AllUnmanagedObjectsSupportedTypesFieldSpec(ExplorationContext? ec=null)
+        public static object AllUnmanagedObjectsSupportedTypesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -153,10 +153,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "currentOrgAuthDomainConfig" + args + "\n";
         }
-        public static object CurrentOrgAuthDomainConfigFieldSpec(ExplorationContext? ec=null)
+        public static object CurrentOrgAuthDomainConfigFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -171,10 +171,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nfeatures: $features\n)";
             return "allCloudAccounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllCloudAccountsFieldSpec(ExplorationContext? ec=null)
+        public static object AllCloudAccountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<CloudAccount>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -189,10 +189,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nslaIds: $slaIds\n)";
             return "allSlaSummariesByIds" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllSlaSummariesByIdsFieldSpec(ExplorationContext? ec=null)
+        public static object AllSlaSummariesByIdsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<SlaDomain>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -207,10 +207,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ncontextFilter: $contextFilter\n)";
             return "allTargets" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllTargetsFieldSpec(ExplorationContext? ec=null)
+        public static object AllTargetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<Target>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -225,10 +225,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "cdmHierarchySnappableNew" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CdmHierarchySnappableNewFieldSpec(ExplorationContext? ec=null)
+        public static object CdmHierarchySnappableNewFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var list = new List<CdmHierarchySnappableNew>();
             list.ApplyExploratoryFieldSpec(ec);
@@ -247,10 +247,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfids: $fids\n)";
             return "cdmHierarchySnappablesNew" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CdmHierarchySnappablesNewFieldSpec(ExplorationContext? ec=null)
+        public static object CdmHierarchySnappablesNewFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<CdmHierarchySnappableNew>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -265,10 +265,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountId: $cloudAccountId\n)";
             return "cloudAccount" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudAccountFieldSpec(ExplorationContext? ec=null)
+        public static object CloudAccountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var list = new List<CloudAccount>();
             list.ApplyExploratoryFieldSpec(ec);
@@ -287,10 +287,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\nworkloadHierarchy: $workloadHierarchy\n)";
             return "hierarchyObject" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HierarchyObjectFieldSpec(ExplorationContext? ec=null)
+        public static object HierarchyObjectFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var list = new List<HierarchyObject>();
             list.ApplyExploratoryFieldSpec(ec);
@@ -309,10 +309,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "hierarchyObjectRecoveryTarget" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HierarchyObjectRecoveryTargetFieldSpec(ExplorationContext? ec=null)
+        public static object HierarchyObjectRecoveryTargetFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var list = new List<HierarchyObject>();
             list.ApplyExploratoryFieldSpec(ec);
@@ -331,10 +331,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfids: $fids\nfilter: $filter\n)";
             return "hierarchyObjects" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HierarchyObjectsFieldSpec(ExplorationContext? ec=null)
+        public static object HierarchyObjectsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<HierarchyObject>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -349,10 +349,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfids: $fids\n)";
             return "slaConflictObjects" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SlaConflictObjectsFieldSpec(ExplorationContext? ec=null)
+        public static object SlaConflictObjectsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<HierarchyObject>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -367,10 +367,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nid: $id\nshouldShowSyncStatus: $shouldShowSyncStatus\nshouldShowUpgradeInfo: $shouldShowUpgradeInfo\nshouldShowPausedClusters: $shouldShowPausedClusters\n)";
             return "slaDomain" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SlaDomainFieldSpec(ExplorationContext? ec=null)
+        public static object SlaDomainFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var list = new List<SlaDomain>();
             list.ApplyExploratoryFieldSpec(ec);
@@ -389,10 +389,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "target" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TargetFieldSpec(ExplorationContext? ec=null)
+        public static object TargetFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var list = new List<Target>();
             list.ApplyExploratoryFieldSpec(ec);
@@ -411,10 +411,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "accountId" + args + "\n";
         }
-        public static object AccountIdFieldSpec(ExplorationContext? ec=null)
+        public static object AccountIdFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -429,10 +429,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "allAvailabilityZonesByRegionFromAws" + args + "\n";
         }
-        public static object AllAvailabilityZonesByRegionFromAwsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAvailabilityZonesByRegionFromAwsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -447,10 +447,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountId: $cloudAccountId\nregion: $region\n)";
             return "allAwsInstanceProfileNames" + args + "\n";
         }
-        public static object AllAwsInstanceProfileNamesFieldSpec(ExplorationContext? ec=null)
+        public static object AllAwsInstanceProfileNamesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -465,10 +465,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\n)";
             return "allAzureNativeVirtualMachineSizes" + args + "\n";
         }
-        public static object AllAzureNativeVirtualMachineSizesFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureNativeVirtualMachineSizesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -483,10 +483,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nnsgRequest: $nsgRequest\n)";
             return "allAzureNsgs" + args + "\n";
         }
-        public static object AllAzureNsgsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureNsgsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -501,10 +501,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountId: $cloudAccountId\nazureRegion: $azureRegion\n)";
             return "allAzureResourceGroups" + args + "\n";
         }
-        public static object AllAzureResourceGroupsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureResourceGroupsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -519,10 +519,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nstorageAccountsRequest: $storageAccountsRequest\n)";
             return "allAzureStorageAccounts" + args + "\n";
         }
-        public static object AllAzureStorageAccountsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureStorageAccountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -537,10 +537,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsubnetRequest: $subnetRequest\n)";
             return "allAzureSubnets" + args + "\n";
         }
-        public static object AllAzureSubnetsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureSubnetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -555,10 +555,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nvnetRequest: $vnetRequest\n)";
             return "allAzureVnets" + args + "\n";
         }
-        public static object AllAzureVnetsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureVnetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -573,10 +573,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nworkloadId: $workloadId\n)";
             return "allCloudNativeFileRecoveryEligibleSnapshots" + args + "\n";
         }
-        public static object AllCloudNativeFileRecoveryEligibleSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object AllCloudNativeFileRecoveryEligibleSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -591,10 +591,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nkeySubStr: $keySubStr\nlimit: $limit\nobjectType: $objectType\n)";
             return "allCloudNativeLabelKeys" + args + "\n";
         }
-        public static object AllCloudNativeLabelKeysFieldSpec(ExplorationContext? ec=null)
+        public static object AllCloudNativeLabelKeysFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -609,10 +609,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nvalueSubStr: $valueSubStr\nkey: $key\nlimit: $limit\nobjectType: $objectType\n)";
             return "allCloudNativeLabelValues" + args + "\n";
         }
-        public static object AllCloudNativeLabelValuesFieldSpec(ExplorationContext? ec=null)
+        public static object AllCloudNativeLabelValuesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -627,10 +627,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nkeySubStr: $keySubStr\nlimit: $limit\nobjectType: $objectType\n)";
             return "allCloudNativeTagKeys" + args + "\n";
         }
-        public static object AllCloudNativeTagKeysFieldSpec(ExplorationContext? ec=null)
+        public static object AllCloudNativeTagKeysFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -645,10 +645,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nvalueSubStr: $valueSubStr\nkey: $key\nlimit: $limit\nobjectType: $objectType\n)";
             return "allCloudNativeTagValues" + args + "\n";
         }
-        public static object AllCloudNativeTagValuesFieldSpec(ExplorationContext? ec=null)
+        public static object AllCloudNativeTagValuesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -663,10 +663,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nlistClusterUuid: $listClusterUuid\n)";
             return "allClustersTotpAckStatus" + args + "\n";
         }
-        public static object AllClustersTotpAckStatusFieldSpec(ExplorationContext? ec=null)
+        public static object AllClustersTotpAckStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -681,10 +681,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allDeploymentIpAddresses" + args + "\n";
         }
-        public static object AllDeploymentIpAddressesFieldSpec(ExplorationContext? ec=null)
+        public static object AllDeploymentIpAddressesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -699,10 +699,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "allEc2KeyPairsByRegionFromAws" + args + "\n";
         }
-        public static object AllEc2KeyPairsByRegionFromAwsFieldSpec(ExplorationContext? ec=null)
+        public static object AllEc2KeyPairsByRegionFromAwsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -717,10 +717,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntargetZone: $targetZone\nsnapshotId: $snapshotId\n)";
             return "allGcpNativeCompatibleMachineTypes" + args + "\n";
         }
-        public static object AllGcpNativeCompatibleMachineTypesFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpNativeCompatibleMachineTypesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -735,10 +735,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allGcpNativeStoredMachineTypes" + args + "\n";
         }
-        public static object AllGcpNativeStoredMachineTypesFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpNativeStoredMachineTypesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -753,10 +753,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nprojectId: $projectId\n)";
             return "allGcpNativeStoredMachineTypesInProject" + args + "\n";
         }
-        public static object AllGcpNativeStoredMachineTypesInProjectFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpNativeStoredMachineTypesInProjectFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -771,10 +771,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allGcpNativeStoredNetworkNames" + args + "\n";
         }
-        public static object AllGcpNativeStoredNetworkNamesFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpNativeStoredNetworkNamesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -789,10 +789,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nprojectId: $projectId\n)";
             return "allGcpNativeStoredNetworkNamesInProject" + args + "\n";
         }
-        public static object AllGcpNativeStoredNetworkNamesInProjectFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpNativeStoredNetworkNamesInProjectFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -807,10 +807,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allGcpNativeStoredRegions" + args + "\n";
         }
-        public static object AllGcpNativeStoredRegionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpNativeStoredRegionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -825,10 +825,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nprojectId: $projectId\n)";
             return "allGcpNativeStoredRegionsInProject" + args + "\n";
         }
-        public static object AllGcpNativeStoredRegionsInProjectFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpNativeStoredRegionsInProjectFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -843,10 +843,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nqueryIds: $queryIds\n)";
             return "allIssuesJobIds" + args + "\n";
         }
-        public static object AllIssuesJobIdsFieldSpec(ExplorationContext? ec=null)
+        public static object AllIssuesJobIdsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -861,10 +861,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\n)";
             return "allS3BucketsFromAws" + args + "\n";
         }
-        public static object AllS3BucketsFromAwsFieldSpec(ExplorationContext? ec=null)
+        public static object AllS3BucketsFromAwsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -879,10 +879,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allSupportedAwsEksVersions" + args + "\n";
         }
-        public static object AllSupportedAwsEksVersionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllSupportedAwsEksVersionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -897,10 +897,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\ndbEngine: $dbEngine\ndbEngineVersion: $dbEngineVersion\n)";
             return "allSupportedAwsRdsDatabaseInstanceClasses" + args + "\n";
         }
-        public static object AllSupportedAwsRdsDatabaseInstanceClassesFieldSpec(ExplorationContext? ec=null)
+        public static object AllSupportedAwsRdsDatabaseInstanceClassesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -915,10 +915,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\n)";
             return "areMultiGeoBackupsEnabled" + args + "\n";
         }
-        public static object AreMultiGeoBackupsEnabledFieldSpec(ExplorationContext? ec=null)
+        public static object AreMultiGeoBackupsEnabledFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -933,10 +933,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudNativeAccountId: $cloudNativeAccountId\nfeaturePermissionCheck: $featurePermissionCheck\n)";
             return "cloudNativeCheckRequiredPermissionsForFeature" + args + "\n";
         }
-        public static object CloudNativeCheckRequiredPermissionsForFeatureFieldSpec(ExplorationContext? ec=null)
+        public static object CloudNativeCheckRequiredPermissionsForFeatureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -951,10 +951,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "currentIpAddress" + args + "\n";
         }
-        public static object CurrentIpAddressFieldSpec(ExplorationContext? ec=null)
+        public static object CurrentIpAddressFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -969,10 +969,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "deploymentVersion" + args + "\n";
         }
-        public static object DeploymentVersionFieldSpec(ExplorationContext? ec=null)
+        public static object DeploymentVersionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -987,10 +987,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountId: $cloudAccountId\nazureSubscriptionNativeId: $azureSubscriptionNativeId\nresourceGroupName: $resourceGroupName\nfeature: $feature\n)";
             return "doesAzureNativeResourceGroupExist" + args + "\n";
         }
-        public static object DoesAzureNativeResourceGroupExistFieldSpec(ExplorationContext? ec=null)
+        public static object DoesAzureNativeResourceGroupExistFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1005,10 +1005,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "dummyFieldWithAdminOnlyTag" + args + "\n";
         }
-        public static object DummyFieldWithAdminOnlyTagFieldSpec(ExplorationContext? ec=null)
+        public static object DummyFieldWithAdminOnlyTagFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1023,10 +1023,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "externalDeploymentName" + args + "\n";
         }
-        public static object ExternalDeploymentNameFieldSpec(ExplorationContext? ec=null)
+        public static object ExternalDeploymentNameFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1041,10 +1041,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "gcpGetDefaultCredentialsServiceAccount" + args + "\n";
         }
-        public static object GcpGetDefaultCredentialsServiceAccountFieldSpec(ExplorationContext? ec=null)
+        public static object GcpGetDefaultCredentialsServiceAccountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1059,10 +1059,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "hasIdpConfigured" + args + "\n";
         }
-        public static object HasIdpConfiguredFieldSpec(ExplorationContext? ec=null)
+        public static object HasIdpConfiguredFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1077,10 +1077,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\ndbEngine: $dbEngine\ndbEngineVersion: $dbEngineVersion\ndbClass: $dbClass\ndatabaseInstanceClass: $databaseInstanceClass\nprimaryAz: $primaryAz\nstorageType: $storageType\nisMultiAz: $isMultiAz\nkmsKeyId: $kmsKeyId\niops: $iops\n)";
             return "isAwsNativeRdsInstanceLaunchConfigurationValid" + args + "\n";
         }
-        public static object IsAwsNativeRdsInstanceLaunchConfigurationValidFieldSpec(ExplorationContext? ec=null)
+        public static object IsAwsNativeRdsInstanceLaunchConfigurationValidFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1095,10 +1095,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nbucketName: $bucketName\nawsAccountRubrikId: $awsAccountRubrikId\n)";
             return "isAwsS3BucketNameAvailable" + args + "\n";
         }
-        public static object IsAwsS3BucketNameAvailableFieldSpec(ExplorationContext? ec=null)
+        public static object IsAwsS3BucketNameAvailableFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1113,10 +1113,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\ndiskSnapshotId: $diskSnapshotId\n)";
             return "isAzureNativeManagedDiskSnapshotRestorable" + args + "\n";
         }
-        public static object IsAzureNativeManagedDiskSnapshotRestorableFieldSpec(ExplorationContext? ec=null)
+        public static object IsAzureNativeManagedDiskSnapshotRestorableFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1131,10 +1131,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnapshotId: $snapshotId\n)";
             return "isAzureNativeSqlDatabaseSnapshotPersistent" + args + "\n";
         }
-        public static object IsAzureNativeSqlDatabaseSnapshotPersistentFieldSpec(ExplorationContext? ec=null)
+        public static object IsAzureNativeSqlDatabaseSnapshotPersistentFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1149,10 +1149,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nstorageAccountName: $storageAccountName\n)";
             return "isAzureStorageAccountNameAvailable" + args + "\n";
         }
-        public static object IsAzureStorageAccountNameAvailableFieldSpec(ExplorationContext? ec=null)
+        public static object IsAzureStorageAccountNameAvailableFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1167,10 +1167,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "isIpmiEnabled" + args + "\n";
         }
-        public static object IsIpmiEnabledFieldSpec(ExplorationContext? ec=null)
+        public static object IsIpmiEnabledFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1185,10 +1185,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "isOrgServiceAccountDisabled" + args + "\n";
         }
-        public static object IsOrgServiceAccountDisabledFieldSpec(ExplorationContext? ec=null)
+        public static object IsOrgServiceAccountDisabledFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1203,10 +1203,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "isReplaceNodeTprConfigured" + args + "\n";
         }
-        public static object IsReplaceNodeTprConfiguredFieldSpec(ExplorationContext? ec=null)
+        public static object IsReplaceNodeTprConfiguredFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1221,10 +1221,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nhostname: $hostname\norganizationId: $organizationId\n)";
             return "isSfdcReachable" + args + "\n";
         }
-        public static object IsSfdcReachableFieldSpec(ExplorationContext? ec=null)
+        public static object IsSfdcReachableFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1239,10 +1239,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "isTotpAckNecessaryForCluster" + args + "\n";
         }
-        public static object IsTotpAckNecessaryForClusterFieldSpec(ExplorationContext? ec=null)
+        public static object IsTotpAckNecessaryForClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1257,10 +1257,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nversion: $version\n)";
             return "isTotpMandatoryInTargetVersion" + args + "\n";
         }
-        public static object IsTotpMandatoryInTargetVersionFieldSpec(ExplorationContext? ec=null)
+        public static object IsTotpMandatoryInTargetVersionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1275,10 +1275,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "isTriggerRcvGrsTprConfigured" + args + "\n";
         }
-        public static object IsTriggerRcvGrsTprConfiguredFieldSpec(ExplorationContext? ec=null)
+        public static object IsTriggerRcvGrsTprConfiguredFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1293,10 +1293,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "isVMwareManagementEnabled" + args + "\n";
         }
-        public static object IsVmwareManagementEnabledFieldSpec(ExplorationContext? ec=null)
+        public static object IsVmwareManagementEnabledFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1311,32 +1311,14 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntprPolicyName: $tprPolicyName\n)";
             return "isValidTprPolicyName" + args + "\n";
         }
-        public static object IsValidTprPolicyNameFieldSpec(ExplorationContext? ec=null)
+        public static object IsValidTprPolicyNameFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
             return true ;
-        }
-
-        //      C# -> System.Int32? MaxProtectedAppsCount
-        // GraphQL -> maxProtectedAppsCount: Int! (scalar)
-        public static string MaxProtectedAppsCount(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "";
-            return "maxProtectedAppsCount" + args + "\n";
-        }
-        public static object MaxProtectedAppsCountFieldSpec(ExplorationContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new ExplorationContext();
-            }
-            // there is no field spec for scalar types, but we still
-            // populate the fieldSpec so that caller can see the type 
-            return Int32.MinValue ;
         }
 
         //      C# -> System.String? O365TeamConversationsFolderId
@@ -1347,10 +1329,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\no365OrgId: $o365OrgId\n)";
             return "o365TeamConversationsFolderID" + args + "\n";
         }
-        public static object O365TeamConversationsFolderIdFieldSpec(ExplorationContext? ec=null)
+        public static object O365TeamConversationsFolderIdFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1365,10 +1347,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfilter: $filter\n)";
             return "protectedVolumesCount" + args + "\n";
         }
-        public static object ProtectedVolumesCountFieldSpec(ExplorationContext? ec=null)
+        public static object ProtectedVolumesCountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1383,10 +1365,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "sessionInactivityTimeoutInSeconds" + args + "\n";
         }
-        public static object SessionInactivityTimeoutInSecondsFieldSpec(ExplorationContext? ec=null)
+        public static object SessionInactivityTimeoutInSecondsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1401,10 +1383,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nteamUUID: $teamUUID\nchannelName: $channelName\n)";
             return "teamChannelNameAvailable" + args + "\n";
         }
-        public static object TeamChannelNameAvailableFieldSpec(ExplorationContext? ec=null)
+        public static object TeamChannelNameAvailableFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1419,10 +1401,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfilter: $filter\n)";
             return "uniqueHypervServersCount" + args + "\n";
         }
-        public static object UniqueHypervServersCountFieldSpec(ExplorationContext? ec=null)
+        public static object UniqueHypervServersCountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1437,10 +1419,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfilter: $filter\n)";
             return "uniqueVcdCount" + args + "\n";
         }
-        public static object UniqueVcdCountFieldSpec(ExplorationContext? ec=null)
+        public static object UniqueVcdCountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1455,10 +1437,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "vCenterNumProxiesNeeded" + args + "\n";
         }
-        public static object VcenterNumProxiesNeededFieldSpec(ExplorationContext? ec=null)
+        public static object VcenterNumProxiesNeededFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1473,10 +1455,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\nmanagedId: $managedId\n)";
             return "workloadForeverId" + args + "\n";
         }
-        public static object WorkloadForeverIdFieldSpec(ExplorationContext? ec=null)
+        public static object WorkloadForeverIdFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
@@ -1491,10 +1473,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "accountSettings" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AccountSettingsFieldSpec(ExplorationContext? ec=null)
+        public static object AccountSettingsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AccountSetting() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1509,10 +1491,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "activeCustomAnalyzers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ActiveCustomAnalyzersFieldSpec(ExplorationContext? ec=null)
+        public static object ActiveCustomAnalyzersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AnalyzerConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1527,10 +1509,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "activeDirectoryDomain" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ActiveDirectoryDomainFieldSpec(ExplorationContext? ec=null)
+        public static object ActiveDirectoryDomainFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ActiveDirectoryDomain() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1545,10 +1527,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "activeDirectoryDomainController" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ActiveDirectoryDomainControllerFieldSpec(ExplorationContext? ec=null)
+        public static object ActiveDirectoryDomainControllerFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ActiveDirectoryDomainController() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1563,10 +1545,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "activeDirectoryDomainControllers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ActiveDirectoryDomainControllersFieldSpec(ExplorationContext? ec=null)
+        public static object ActiveDirectoryDomainControllersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ActiveDirectoryDomainControllerConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1581,10 +1563,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "activeDirectoryDomains" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ActiveDirectoryDomainsFieldSpec(ExplorationContext? ec=null)
+        public static object ActiveDirectoryDomainsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ActiveDirectoryDomainConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1599,10 +1581,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nid: $id\nsnapshotAfterDate: $snapshotAfterDate\nsnapshotBeforeDate: $snapshotBeforeDate\nname: $name\nactiveDirectoryObjectType: $activeDirectoryObjectType\n)";
             return "activeDirectorySearchSnapshots" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ActiveDirectorySearchSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object ActiveDirectorySearchSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ActiveDirectorySnappableSearchResponseConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1617,10 +1599,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "activitySeries" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ActivitySeriesFieldSpec(ExplorationContext? ec=null)
+        public static object ActivitySeriesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ActivitySeries() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1635,10 +1617,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilters: $filters\n)";
             return "activitySeriesConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ActivitySeriesConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object ActivitySeriesConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ActivitySeriesConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1653,10 +1635,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\norgId: $orgId\nadGroupSpec: $adGroupSpec\n)";
             return "adGroupMembers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AdGroupMembersFieldSpec(ExplorationContext? ec=null)
+        public static object AdGroupMembersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365AdGroupMemberConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1671,10 +1653,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "adVolumeExports" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AdVolumeExportsFieldSpec(ExplorationContext? ec=null)
+        public static object AdVolumeExportsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AdVolumeExportConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1689,10 +1671,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "agentDeploymentSetting" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AgentDeploymentSettingFieldSpec(ExplorationContext? ec=null)
+        public static object AgentDeploymentSettingFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AgentDeploymentSettings() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1707,10 +1689,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allAccountOwners" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAccountOwnersFieldSpec(ExplorationContext? ec=null)
+        public static object AllAccountOwnersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<User>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1725,10 +1707,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nnameFilter: $nameFilter\ntypeFilter: $typeFilter\nstateFilter: $stateFilter\nstartDateArg: $startDateArg\nendDateArg: $endDateArg\n)";
             return "allAccountProducts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAccountProductsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAccountProductsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AccountProduct>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1743,10 +1725,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudVendor: $cloudVendor\nfeatures: $features\nexocomputeAccountIdsFilter: $exocomputeAccountIdsFilter\n)";
             return "allAccountsWithExocomputeMappings" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAccountsWithExocomputeMappingsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAccountsWithExocomputeMappingsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<CloudAccountWithExocomputeMapping>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1761,10 +1743,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuids: $clusterUuids\n)";
             return "allAgentDeploymentSettings" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAgentDeploymentSettingsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAgentDeploymentSettingsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AgentDeploymentSettingsInfo>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1779,10 +1761,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfids: $fids\n)";
             return "allAuthorizationsForObjects" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAuthorizationsForObjectsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAuthorizationsForObjectsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AuthorizedOperations>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1797,10 +1779,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allAwsCdmVersions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAwsCdmVersionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAwsCdmVersionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AwsCdmVersion>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1815,10 +1797,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsCloudAccountsArg: $awsCloudAccountsArg\n)";
             return "allAwsCloudAccountConfigs" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAwsCloudAccountConfigsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAwsCloudAccountConfigsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AwsFeatureConfig>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1833,10 +1815,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsCloudAccountsArg: $awsCloudAccountsArg\n)";
             return "allAwsCloudAccountsWithFeatures" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAwsCloudAccountsWithFeaturesFieldSpec(ExplorationContext? ec=null)
+        public static object AllAwsCloudAccountsWithFeaturesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AwsCloudAccountWithFeatures>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1851,10 +1833,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ncontextFilter: $contextFilter\n)";
             return "allAwsComputeSettings" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAwsComputeSettingsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAwsComputeSettingsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AwsComputeSettings>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1869,10 +1851,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsNativeAccountIdOrNamePrefix: $awsNativeAccountIdOrNamePrefix\n)";
             return "allAwsExocomputeConfigs" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAwsExocomputeConfigsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAwsExocomputeConfigsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AwsExocomputeConfig>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1887,10 +1869,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allAwsPermissionPolicies" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAwsPermissionPoliciesFieldSpec(ExplorationContext? ec=null)
+        public static object AllAwsPermissionPoliciesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<PermissionPolicy>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1905,10 +1887,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allAzureArmTemplatesByFeature" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureArmTemplatesByFeatureFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureArmTemplatesByFeatureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureArmTemplateByFeature>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1923,10 +1905,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ninput: $input\n)";
             return "allAzureBlobContainersByStorageAccount" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureBlobContainersByStorageAccountFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureBlobContainersByStorageAccountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureBlobContainerCcprovisionConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1941,10 +1923,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncdmVersionRequest: $cdmVersionRequest\n)";
             return "allAzureCdmVersions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureCdmVersionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureCdmVersionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureCdmVersion>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1959,10 +1941,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsessionId: $sessionId\nsubscriptionIds: $subscriptionIds\ncloudAccountAction: $cloudAccountAction\n)";
             return "allAzureCloudAccountMissingPermissions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureCloudAccountMissingPermissionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureCloudAccountMissingPermissionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureSubscriptionMissingPermissions>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1977,10 +1959,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountId: $cloudAccountId\nregion: $region\n)";
             return "allAzureCloudAccountSubnetsByRegion" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureCloudAccountSubnetsByRegionFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureCloudAccountSubnetsByRegionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureNativeSubnet>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -1995,10 +1977,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfeature: $feature\nsubscriptionStatusFilters: $subscriptionStatusFilters\npermissionsGroupFilters: $permissionsGroupFilters\n)";
             return "allAzureCloudAccountSubscriptionsByFeature" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureCloudAccountSubscriptionsByFeatureFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureCloudAccountSubscriptionsByFeatureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureSubscriptionWithFeaturesType>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2013,10 +1995,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfeatures: $features\nfeature: $feature\nincludeSubscriptionDetails: $includeSubscriptionDetails\n)";
             return "allAzureCloudAccountTenants" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureCloudAccountTenantsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureCloudAccountTenantsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureCloudAccountTenant>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2031,10 +2013,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nregion: $region\n)";
             return "allAzureDiskEncryptionSetsByRegion" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureDiskEncryptionSetsByRegionFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureDiskEncryptionSetsByRegionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureNativeDiskEncryptionSet>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2049,10 +2031,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureEncryptionKeysInput: $azureEncryptionKeysInput\n)";
             return "allAzureEncryptionKeys" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureEncryptionKeysFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureEncryptionKeysFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureEncryptionKey>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2067,10 +2049,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureExocomputeSearchQuery: $azureExocomputeSearchQuery\ncloudAccountIDs: $cloudAccountIDs\n)";
             return "allAzureExocomputeConfigsInAccount" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureExocomputeConfigsInAccountFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureExocomputeConfigsInAccountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureExocomputeConfigsInAccount>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2085,10 +2067,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureKeyVaultsInput: $azureKeyVaultsInput\n)";
             return "allAzureKeyVaultsByRegion" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureKeyVaultsByRegionFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureKeyVaultsByRegionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureKeyVault>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2103,10 +2085,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nmanagedIdentitiesRequest: $managedIdentitiesRequest\n)";
             return "allAzureManagedIdentities" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureManagedIdentitiesFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureManagedIdentitiesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureManagedIdentity>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2121,10 +2103,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nresourceGroupName: $resourceGroupName\nregion: $region\n)";
             return "allAzureNativeAvailabilitySetsByRegionFromAzure" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureNativeAvailabilitySetsByRegionFromAzureFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureNativeAvailabilitySetsByRegionFromAzureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureNativeAvailabilitySet>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2139,10 +2121,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nregion: $region\n)";
             return "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureNativeExportCompatibleDiskTypesByRegionFromAzureFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureNativeExportCompatibleDiskTypesByRegionFromAzureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureNativeExportCompatibleDiskTypes>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2157,10 +2139,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nregion: $region\nvmSnapshotId: $vmSnapshotId\n)";
             return "allAzureNativeExportCompatibleVmSizesByRegionFromAzure" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureNativeExportCompatibleVmSizesByRegionFromAzureFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureNativeExportCompatibleVmSizesByRegionFromAzureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureNativeExportCompatibleVmSizes>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2175,10 +2157,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nregion: $region\n)";
             return "allAzureNativeKeyVaultsByRegionFromAzure" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureNativeKeyVaultsByRegionFromAzureFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureNativeKeyVaultsByRegionFromAzureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureNativeKeyVault>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2193,10 +2175,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allAzureNativeResourceGroupsInfoIfExist" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureNativeResourceGroupsInfoIfExistFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureNativeResourceGroupsInfoIfExistFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureResourceGroupInfo>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2211,10 +2193,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nregion: $region\n)";
             return "allAzureNativeSecurityGroupsByRegionFromAzure" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureNativeSecurityGroupsByRegionFromAzureFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureNativeSecurityGroupsByRegionFromAzureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureNativeSecurityGroup>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2229,10 +2211,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\n)";
             return "allAzureNativeStorageAccountsFromAzure" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureNativeStorageAccountsFromAzureFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureNativeStorageAccountsFromAzureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureNativeStorageAccount>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2247,10 +2229,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nregion: $region\n)";
             return "allAzureNativeSubnetsByRegionFromAzure" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureNativeSubnetsByRegionFromAzureFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureNativeSubnetsByRegionFromAzureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureNativeSubnet>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2265,10 +2247,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\n)";
             return "allAzureNativeVirtualNetworks" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureNativeVirtualNetworksFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureNativeVirtualNetworksFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureNativeVirtualNetwork>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2283,10 +2265,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountId: $cloudAccountId\n)";
             return "allAzureRegionsWithAzDetails" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureRegionsWithAzDetailsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureRegionsWithAzDetailsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureLocationDetailType>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2301,10 +2283,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsubscriptionId: $subscriptionId\nresourceGroupName: $resourceGroupName\nazureSqlDatabaseServerName: $azureSqlDatabaseServerName\nazureSqlDatabaseServerRubrikId: $azureSqlDatabaseServerRubrikId\n)";
             return "allAzureSqlDatabaseServerElasticPools" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureSqlDatabaseServerElasticPoolsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureSqlDatabaseServerElasticPoolsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureSqlDatabaseServerElasticPool>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2319,10 +2301,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allAzureStorageAccountsByRegion" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureStorageAccountsByRegionFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureStorageAccountsByRegionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureStorageAccountCcprovision>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2337,10 +2319,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfeatures: $features\nexocomputeSubscriptionIdsFilter: $exocomputeSubscriptionIdsFilter\n)";
             return "allAzureSubscriptionWithExocomputeMappings" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllAzureSubscriptionWithExocomputeMappingsFieldSpec(ExplorationContext? ec=null)
+        public static object AllAzureSubscriptionWithExocomputeMappingsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureSubscriptionWithExocomputeMapping>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2355,10 +2337,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuids: $clusterUuids\n)";
             return "allBackupThrottleSettings" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllBackupThrottleSettingsFieldSpec(ExplorationContext? ec=null)
+        public static object AllBackupThrottleSettingsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<BackupThrottleSetting>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2373,10 +2355,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuids: $clusterUuids\n)";
             return "allCdmGuestCredentials" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllCdmGuestCredentialsFieldSpec(ExplorationContext? ec=null)
+        public static object AllCdmGuestCredentialsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<CdmGuestCredential>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2391,10 +2373,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allCdmOvaDetails" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllCdmOvaDetailsFieldSpec(ExplorationContext? ec=null)
+        public static object AllCdmOvaDetailsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<CdmOvaDetail>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2409,10 +2391,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nallCdpVmInfoSort: $allCdpVmInfoSort\nallCdpVmInfoFilter: $allCdpVmInfoFilter\n)";
             return "allCdpVmsInfos" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllCdpVmsInfosFieldSpec(ExplorationContext? ec=null)
+        public static object AllCdpVmsInfosFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdpVmInfoConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2427,10 +2409,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudVendor: $cloudVendor\nexocomputeAccountIdsFilter: $exocomputeAccountIdsFilter\n)";
             return "allCloudAccountExocomputeMappings" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllCloudAccountExocomputeMappingsFieldSpec(ExplorationContext? ec=null)
+        public static object AllCloudAccountExocomputeMappingsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<CloudAccountsExocomputeAccountMapping>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2445,10 +2427,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allCloudDirectShares" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllCloudDirectSharesFieldSpec(ExplorationContext? ec=null)
+        public static object AllCloudDirectSharesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<ShareExportIdPair>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2463,10 +2445,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allCloudDirectSites" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllCloudDirectSitesFieldSpec(ExplorationContext? ec=null)
+        public static object AllCloudDirectSitesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<CloudDirectSite>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2481,10 +2463,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortOrder: $sortOrder\nsortBy: $sortBy\n)";
             return "allClusterConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllClusterConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object AllClusterConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2499,10 +2481,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncdmClusterUUID: $cdmClusterUUID\n)";
             return "allClusterGlobalSlas" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllClusterGlobalSlasFieldSpec(ExplorationContext? ec=null)
+        public static object AllClusterGlobalSlasFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<SlaInfo>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2517,10 +2499,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "allClusterReplicationTargets" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllClusterReplicationTargetsFieldSpec(ExplorationContext? ec=null)
+        public static object AllClusterReplicationTargetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<ClusterReplicationTarget>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2535,10 +2517,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allClusterWebCertsAndIpmis" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllClusterWebCertsAndIpmisFieldSpec(ExplorationContext? ec=null)
+        public static object AllClusterWebCertsAndIpmisFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<ClusterWebCertAndIpmi>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2553,10 +2535,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterFilterArg: $clusterFilterArg\n)";
             return "allConnectedClusters" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllConnectedClustersFieldSpec(ExplorationContext? ec=null)
+        public static object AllConnectedClustersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<DataLocationSupportedCluster>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2571,10 +2553,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "allCrossAccountClusters" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllCrossAccountClustersFieldSpec(ExplorationContext? ec=null)
+        public static object AllCrossAccountClustersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CrossAccountClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2589,10 +2571,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountIds: $cloudAccountIds\n)";
             return "allCurrentFeaturePermissionsForCloudAccounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllCurrentFeaturePermissionsForCloudAccountsFieldSpec(ExplorationContext? ec=null)
+        public static object AllCurrentFeaturePermissionsForCloudAccountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<CloudAccountFeaturePermission>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2607,10 +2589,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allCurrentOrgIdentityProviders" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllCurrentOrgIdentityProvidersFieldSpec(ExplorationContext? ec=null)
+        public static object AllCurrentOrgIdentityProvidersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<IdentityProvider>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2625,10 +2607,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\ndbEngine: $dbEngine\ndbEngineVersion: $dbEngineVersion\nrdsType: $rdsType\n)";
             return "allDbParameterGroupsByRegionFromAws" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllDbParameterGroupsByRegionFromAwsFieldSpec(ExplorationContext? ec=null)
+        public static object AllDbParameterGroupsByRegionFromAwsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<DbParameterGroup>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2643,10 +2625,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "allDbSubnetGroupsByRegionFromAws" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllDbSubnetGroupsByRegionFromAwsFieldSpec(ExplorationContext? ec=null)
+        public static object AllDbSubnetGroupsByRegionFromAwsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<SubnetGroup>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2661,10 +2643,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncategories: $categories\n)";
             return "allDhrcActiveRecommendations" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllDhrcActiveRecommendationsFieldSpec(ExplorationContext? ec=null)
+        public static object AllDhrcActiveRecommendationsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<DhrcActiveRecommendation>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2679,10 +2661,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncategories: $categories\n)";
             return "allDhrcLatestMetrics" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllDhrcLatestMetricsFieldSpec(ExplorationContext? ec=null)
+        public static object AllDhrcLatestMetricsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<DhrcCollectedMetric>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2697,10 +2679,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncategories: $categories\nbeginTime: $beginTime\ntimespan: $timespan\n)";
             return "allDhrcScores" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllDhrcScoresFieldSpec(ExplorationContext? ec=null)
+        public static object AllDhrcScoresFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<DhrcScore>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2715,10 +2697,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allDistributionListDigests" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllDistributionListDigestsFieldSpec(ExplorationContext? ec=null)
+        public static object AllDistributionListDigestsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<EventDigest>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2733,10 +2715,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "allEc2InstanceTypesByRegionFromAws" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllEc2InstanceTypesByRegionFromAwsFieldSpec(ExplorationContext? ec=null)
+        public static object AllEc2InstanceTypesByRegionFromAwsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AwsNativeEc2InstanceTypeOffering>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2751,10 +2733,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nroleId: $roleId\n)";
             return "allEffectiveRbacPermissions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllEffectiveRbacPermissionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllEffectiveRbacPermissionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<RbacPermission>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2769,10 +2751,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allEnabledFeaturesForAccount" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllEnabledFeaturesForAccountFieldSpec(ExplorationContext? ec=null)
+        public static object AllEnabledFeaturesForAccountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AllEnabledFeaturesForAccountReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2787,10 +2769,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allEventDigests" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllEventDigestsFieldSpec(ExplorationContext? ec=null)
+        public static object AllEventDigestsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<EventDigest>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2805,10 +2787,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfeature: $feature\n)";
             return "allFeaturePermissionsForGcpCloudAccount" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllFeaturePermissionsForGcpCloudAccountFieldSpec(ExplorationContext? ec=null)
+        public static object AllFeaturePermissionsForGcpCloudAccountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GcpPermission>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2823,10 +2805,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nListFileActivitiesInput: $ListFileActivitiesInput\nFileActivitiesSort: $FileActivitiesSort\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "allFileActivities" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllFileActivitiesFieldSpec(ExplorationContext? ec=null)
+        public static object AllFileActivitiesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new UserActivityResultConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2841,10 +2823,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsessionId: $sessionId\nprojectIds: $projectIds\n)";
             return "allGcpCloudAccountMissingPermissionsForAddition" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllGcpCloudAccountMissingPermissionsForAdditionFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpCloudAccountMissingPermissionsForAdditionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GcpCloudAccountMissingPermissionsForAddition>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2856,13 +2838,13 @@ namespace RubrikSecurityCloud.Types
         public static string AllGcpCloudAccountProjectsByFeature(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfeature: $feature\nprojectStatusFilters: $projectStatusFilters\nprojectSearchText: $projectSearchText\n)";
+            string args = "\n(\nfeature: $feature\nprojectStatusFilters: $projectStatusFilters\nprojectSearchText: $projectSearchText\naggregateFeatures: $aggregateFeatures\n)";
             return "allGcpCloudAccountProjectsByFeature" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllGcpCloudAccountProjectsByFeatureFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpCloudAccountProjectsByFeatureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GcpCloudAccountProjectDetail>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2877,10 +2859,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsessionId: $sessionId\nfeatures: $features\ncheckPermissions: $checkPermissions\n)";
             return "allGcpCloudAccountProjectsForOauth" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllGcpCloudAccountProjectsForOauthFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpCloudAccountProjectsForOauthFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GcpCloudAccountProjectForOauth>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2895,10 +2877,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nprojectId: $projectId\nregionName: $regionName\n)";
             return "allGcpNativeAvailableKmsCryptoKeys" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllGcpNativeAvailableKmsCryptoKeysFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpNativeAvailableKmsCryptoKeysFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GcpNativeKmsCryptoKey>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2913,10 +2895,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nprojectId: $projectId\n)";
             return "allGcpNativeNetworks" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllGcpNativeNetworksFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpNativeNetworksFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GcpNativeNetwork>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2931,10 +2913,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nprojectId: $projectId\n)";
             return "allGcpNativeProjectsWithAccessibleNetworks" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllGcpNativeProjectsWithAccessibleNetworksFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpNativeProjectsWithAccessibleNetworksFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<NetworkHostProject>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2949,10 +2931,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nprojectId: $projectId\n)";
             return "allGcpNativeRegions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllGcpNativeRegionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllGcpNativeRegionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GcpNativeRegion>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2967,10 +2949,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allHostedAzureRegions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllHostedAzureRegionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllHostedAzureRegionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureRegionsResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -2985,10 +2967,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allIamPairsByCloudAccountAndLocation" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllIamPairsByCloudAccountAndLocationFieldSpec(ExplorationContext? ec=null)
+        public static object AllIamPairsByCloudAccountAndLocationFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AwsIamPairsWithMissingPermission>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3003,10 +2985,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nintegrationTypes: $integrationTypes\nnameFilter: $nameFilter\nintegrationSortBy: $integrationSortBy\nsortOrder: $sortOrder\n)";
             return "allIntegrations" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllIntegrationsFieldSpec(ExplorationContext? ec=null)
+        public static object AllIntegrationsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ListIntegrationsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3021,10 +3003,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnapshotId: $snapshotId\nsnappableId: $snappableId\n)";
             return "allK8sReplicaSnapshotInfos" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllK8sReplicaSnapshotInfosFieldSpec(ExplorationContext? ec=null)
+        public static object AllK8sReplicaSnapshotInfosFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<ReplicatedSnapshotInfo>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3039,10 +3021,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "allKmsEncryptionKeysByRegionFromAws" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllKmsEncryptionKeysByRegionFromAwsFieldSpec(ExplorationContext? ec=null)
+        public static object AllKmsEncryptionKeysByRegionFromAwsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<KmsEncryptionKey>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3057,10 +3039,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountIds: $cloudAccountIds\nfeatures: $features\nfeaturesWithPermissionsGroups: $featuresWithPermissionsGroups\n)";
             return "allLatestFeaturePermissionsForCloudAccounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllLatestFeaturePermissionsForCloudAccountsFieldSpec(ExplorationContext? ec=null)
+        public static object AllLatestFeaturePermissionsForCloudAccountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<CloudAccountFeaturePermission>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3075,10 +3057,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allLicensedProducts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllLicensedProductsFieldSpec(ExplorationContext? ec=null)
+        public static object AllLicensedProductsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetLicensedProductsInfoReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3093,10 +3075,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nonlyActiveFilter: $onlyActiveFilter\nonlyAppliableFilter: $onlyAppliableFilter\ntenantIdFilter: $tenantIdFilter\n)";
             return "allMipLabels" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllMipLabelsFieldSpec(ExplorationContext? ec=null)
+        public static object AllMipLabelsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<MicrosoftMipLabel>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3111,10 +3093,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nconnectionStatus: $connectionStatus\nisExcluded: $isExcluded\n)";
             return "allMissingClusters" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllMissingClustersFieldSpec(ExplorationContext? ec=null)
+        public static object AllMissingClustersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MissingClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3129,10 +3111,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allMssqlDatabaseRestoreFiles" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllMssqlDatabaseRestoreFilesFieldSpec(ExplorationContext? ec=null)
+        public static object AllMssqlDatabaseRestoreFilesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new V1MssqlGetRestoreFilesV1Response() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3147,10 +3129,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusters: $clusters\n)";
             return "allNcdObjectsOverTimeData" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllNcdObjectsOverTimeDataFieldSpec(ExplorationContext? ec=null)
+        public static object AllNcdObjectsOverTimeDataFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<NcdObjectsOverTimeData>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3165,10 +3147,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusters: $clusters\n)";
             return "allNcdSlaComplianceData" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllNcdSlaComplianceDataFieldSpec(ExplorationContext? ec=null)
+        public static object AllNcdSlaComplianceDataFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<NcdSlaComplianceData>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3183,10 +3165,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusters: $clusters\n)";
             return "allNcdTaskData" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllNcdTaskDataFieldSpec(ExplorationContext? ec=null)
+        public static object AllNcdTaskDataFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<NcdTaskData>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3201,10 +3183,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusters: $clusters\n)";
             return "allNcdUsageOverTimeData" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllNcdUsageOverTimeDataFieldSpec(ExplorationContext? ec=null)
+        public static object AllNcdUsageOverTimeDataFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<NcdUsageOverTimeData>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3219,10 +3201,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "allNosqlStorageLocations" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllNosqlStorageLocationsFieldSpec(ExplorationContext? ec=null)
+        public static object AllNosqlStorageLocationsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<MosaicStorageLocation>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3237,10 +3219,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\nadGroupSearchFilter: $adGroupSearchFilter\n)";
             return "allO365AdGroups" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllO365AdGroupsFieldSpec(ExplorationContext? ec=null)
+        public static object AllO365AdGroupsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AdGroup>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3255,10 +3237,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allO365OrgStatuses" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllO365OrgStatusesFieldSpec(ExplorationContext? ec=null)
+        public static object AllO365OrgStatusesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<O365OrgInfo>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3273,10 +3255,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allO365SubscriptionsAppTypeCounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllO365SubscriptionsAppTypeCountsFieldSpec(ExplorationContext? ec=null)
+        public static object AllO365SubscriptionsAppTypeCountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<O365SubscriptionAppTypeCounts>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3291,10 +3273,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nobjectIdsForHierarchyTypes: $objectIdsForHierarchyTypes\nallowedClusters: $allowedClusters\ntargetOrgId: $targetOrgId\n)";
             return "allObjectsAlreadyAssignedToOrgs" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllObjectsAlreadyAssignedToOrgsFieldSpec(ExplorationContext? ec=null)
+        public static object AllObjectsAlreadyAssignedToOrgsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<ObjectIdsForHierarchyType>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3309,10 +3291,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\ndbEngine: $dbEngine\ndbEngineVersion: $dbEngineVersion\nmajorEngineVersion: $majorEngineVersion\n)";
             return "allOptionGroupsByRegionFromAws" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllOptionGroupsByRegionFromAwsFieldSpec(ExplorationContext? ec=null)
+        public static object AllOptionGroupsByRegionFromAwsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<OptionGroup>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3327,10 +3309,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgIds: $orgIds\n)";
             return "allOrgsByIds" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllOrgsByIdsFieldSpec(ExplorationContext? ec=null)
+        public static object AllOrgsByIdsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<Org>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3345,10 +3327,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterFilter: $clusterFilter\npendingActionGroupTypeFilter: $pendingActionGroupTypeFilter\npendingActionSubGroupTypeFilter: $pendingActionSubGroupTypeFilter\nstatusFilter: $statusFilter\nobjectIds: $objectIds\nsortedOrder: $sortedOrder\nhistoryOnly: $historyOnly\nlimit: $limit\n)";
             return "allPendingActions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllPendingActionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllPendingActionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<PendingAction>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3363,10 +3345,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnapshotIds: $snapshotIds\n)";
             return "allQuarantinedDetailsForSnapshots" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllQuarantinedDetailsForSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object AllQuarantinedDetailsForSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<QuarantineSpec>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3381,10 +3363,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nworkloadId: $workloadId\n)";
             return "allQuarantinedDetailsForWorkload" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllQuarantinedDetailsForWorkloadFieldSpec(ExplorationContext? ec=null)
+        public static object AllQuarantinedDetailsForWorkloadFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<QuarantineSpec>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3399,10 +3381,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allRcvAccountEntitlements" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllRcvAccountEntitlementsFieldSpec(ExplorationContext? ec=null)
+        public static object AllRcvAccountEntitlementsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AllRcvAccountEntitlements() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3417,10 +3399,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allRcvPrivateEndpointConnections" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllRcvPrivateEndpointConnectionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllRcvPrivateEndpointConnectionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<DetailedPrivateEndpointConnection>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3435,10 +3417,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountId: $cloudAccountId\nazureSubscriptionNativeId: $azureSubscriptionNativeId\nfeature: $feature\n)";
             return "allResourceGroupsFromAzure" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllResourceGroupsFromAzureFieldSpec(ExplorationContext? ec=null)
+        public static object AllResourceGroupsFromAzureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AzureResourceGroup>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3453,10 +3435,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "allS3BucketsDetailsFromAws" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllS3BucketsDetailsFromAwsFieldSpec(ExplorationContext? ec=null)
+        public static object AllS3BucketsDetailsFromAwsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<S3BucketDetails>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3471,10 +3453,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\nsiteFids: $siteFids\n)";
             return "allSharepointSiteExclusions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllSharepointSiteExclusionsFieldSpec(ExplorationContext? ec=null)
+        public static object AllSharepointSiteExclusionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<FullSpSiteExclusions>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3489,10 +3471,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnapshotId: $snapshotId\nsnappableId: $snappableId\nisReplica: $isReplica\n)";
             return "allSnapshotPvcs" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllSnapshotPvcsFieldSpec(ExplorationContext? ec=null)
+        public static object AllSnapshotPvcsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<PvcInformation>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3504,13 +3486,13 @@ namespace RubrikSecurityCloud.Types
         public static string AllSnapshotsClosestToPointInTime(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nbeforeTime: $beforeTime\nafterTime: $afterTime\nsnappableIds: $snappableIds\nincludeLinked: $includeLinked\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nexcludeQuarantined: $excludeQuarantined\nexcludeAnomalous: $excludeAnomalous\ngetFullDetails: $getFullDetails\n)";
+            string args = "\n(\nbeforeTime: $beforeTime\nafterTime: $afterTime\nsnappableIds: $snappableIds\nincludeLinked: $includeLinked\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nexcludeQuarantined: $excludeQuarantined\nexcludeAnomalous: $excludeAnomalous\nquarantinedOnly: $quarantinedOnly\nanomalousOnly: $anomalousOnly\ngetFullDetails: $getFullDetails\n)";
             return "allSnapshotsClosestToPointInTime" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllSnapshotsClosestToPointInTimeFieldSpec(ExplorationContext? ec=null)
+        public static object AllSnapshotsClosestToPointInTimeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<ClosestSnapshotSearchResult>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3525,10 +3507,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allStorageArrays" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllStorageArraysFieldSpec(ExplorationContext? ec=null)
+        public static object AllStorageArraysFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AllStorageArraysReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3543,10 +3525,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ncontextFilter: $contextFilter\nisRcsStatsRequired: $isRcsStatsRequired\n)";
             return "allTargetMappings" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllTargetMappingsFieldSpec(ExplorationContext? ec=null)
+        public static object AllTargetMappingsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<TargetMapping>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3561,10 +3543,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ngetWhitelistedResults: $getWhitelistedResults\nlimit: $limit\nworkloadTypes: $workloadTypes\n)";
             return "allTopRiskPolicySummaries" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllTopRiskPolicySummariesFieldSpec(ExplorationContext? ec=null)
+        public static object AllTopRiskPolicySummariesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<PolicySummary>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3579,10 +3561,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "allUserFiles" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllUserFilesFieldSpec(ExplorationContext? ec=null)
+        public static object AllUserFilesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GetCustomerFacingDownloadsReply>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3597,10 +3579,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "allUsersOnAccount" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllUsersOnAccountFieldSpec(ExplorationContext? ec=null)
+        public static object AllUsersOnAccountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<User>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3615,10 +3597,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nemailFilter: $emailFilter\nroleIdsFilter: $roleIdsFilter\nlockoutStateFilter: $lockoutStateFilter\nhiddenStateFilter: $hiddenStateFilter\nshouldGetLocalUsersOnly: $shouldGetLocalUsersOnly\nuserDomainsFilter: $userDomainsFilter\n)";
             return "allUsersOnAccountConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllUsersOnAccountConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object AllUsersOnAccountConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new UserConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3633,10 +3615,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nisCrossAccount: $isCrossAccount\n)";
             return "allValidReplicationSources" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllValidReplicationSourcesFieldSpec(ExplorationContext? ec=null)
+        public static object AllValidReplicationSourcesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidReplicationSourceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3651,10 +3633,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nisCrossAccount: $isCrossAccount\nvalidReplicationTargetFilter: $validReplicationTargetFilter\n)";
             return "allValidReplicationTargets" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllValidReplicationTargetsFieldSpec(ExplorationContext? ec=null)
+        public static object AllValidReplicationTargetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidReplicationTargetConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3669,10 +3651,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuids: $clusterUuids\n)";
             return "allVcenterHotAddProxyVms" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllVcenterHotAddProxyVmsFieldSpec(ExplorationContext? ec=null)
+        public static object AllVcenterHotAddProxyVmsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<VcenterHotAddProxyVmInfo>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3687,10 +3669,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allVirtualMachineFiles" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllVirtualMachineFilesFieldSpec(ExplorationContext? ec=null)
+        public static object AllVirtualMachineFilesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VirtualMachineFilesReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3705,10 +3687,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\ninput: $input\n)";
             return "allVmRecoveryJobsInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllVmRecoveryJobsInfoFieldSpec(ExplorationContext? ec=null)
+        public static object AllVmRecoveryJobsInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<VmRecoveryJobInfo>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3723,10 +3705,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nids: $ids\n)";
             return "allVmwareCdpStateInfos" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllVmwareCdpStateInfosFieldSpec(ExplorationContext? ec=null)
+        public static object AllVmwareCdpStateInfosFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<VmwareCdpStateInfo>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3741,10 +3723,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "allVpcsByRegionFromAws" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllVpcsByRegionFromAwsFieldSpec(ExplorationContext? ec=null)
+        public static object AllVpcsByRegionFromAwsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AwsVpc>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3759,10 +3741,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\n)";
             return "allVpcsFromAws" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllVpcsFromAwsFieldSpec(ExplorationContext? ec=null)
+        public static object AllVpcsFromAwsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AwsVpc>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3777,10 +3759,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfids: $fids\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "allVsphereVmsByFids" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllVsphereVmsByFidsFieldSpec(ExplorationContext? ec=null)
+        public static object AllVsphereVmsByFidsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereVmConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3795,10 +3777,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "allWebhookMessageTemplates" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllWebhookMessageTemplatesFieldSpec(ExplorationContext? ec=null)
+        public static object AllWebhookMessageTemplatesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<WebhookMessageTemplate>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3813,10 +3795,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nname: $name\n)";
             return "allWebhooks" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllWebhooksFieldSpec(ExplorationContext? ec=null)
+        public static object AllWebhooksFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new WebhookConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3831,10 +3813,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "allWebhooksV2" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AllWebhooksV2FieldSpec(ExplorationContext? ec=null)
+        public static object AllWebhooksV2FieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<WebhookV2>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3849,10 +3831,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "amiTypeForAwsNativeArchivedSnapshotExport" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AmiTypeForAwsNativeArchivedSnapshotExportFieldSpec(ExplorationContext? ec=null)
+        public static object AmiTypeForAwsNativeArchivedSnapshotExportFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AmiTypeForAwsNativeArchivedSnapshotExportReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3867,10 +3849,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "analyzerGroups" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AnalyzerGroupsFieldSpec(ExplorationContext? ec=null)
+        public static object AnalyzerGroupsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AnalyzerGroupConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3885,10 +3867,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ndataCategoryIdsFilter: $dataCategoryIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\ndataTypeSourceFilter: $dataTypeSourceFilter\ndataTypeNameSearchFilter: $dataTypeNameSearchFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "analyzerUsages" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AnalyzerUsagesFieldSpec(ExplorationContext? ec=null)
+        public static object AnalyzerUsagesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AnalyzerUsageConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3903,10 +3885,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\nsnapshotId: $snapshotId\nworkloadId: $workloadId\nanomalyId: $anomalyId\n)";
             return "anomalyResultOpt" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AnomalyResultOptFieldSpec(ExplorationContext? ec=null)
+        public static object AnomalyResultOptFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetAnomalyDetailsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3921,10 +3903,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "anomalyResults" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AnomalyResultsFieldSpec(ExplorationContext? ec=null)
+        public static object AnomalyResultsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AnomalyResultConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3939,10 +3921,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ngroupBy: $groupBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "anomalyResultsGrouped" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AnomalyResultsGroupedFieldSpec(ExplorationContext? ec=null)
+        public static object AnomalyResultsGroupedFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AnomalyResultGroupedDataConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3957,10 +3939,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "archivalStorageUsage" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ArchivalStorageUsageFieldSpec(ExplorationContext? ec=null)
+        public static object ArchivalStorageUsageFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<ArchivalStorageUsage>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3975,10 +3957,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\ninput: $input\n)";
             return "assignableGlobalCertificates" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AssignableGlobalCertificatesFieldSpec(ExplorationContext? ec=null)
+        public static object AssignableGlobalCertificatesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GlobalCertificateConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -3993,10 +3975,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "awsArtifactsToDelete" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsArtifactsToDeleteFieldSpec(ExplorationContext? ec=null)
+        public static object AwsArtifactsToDeleteFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsArtifactsToDelete() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4011,10 +3993,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountUuid: $cloudAccountUuid\nfeature: $feature\nregion: $region\nvpcID: $vpcID\n)";
             return "awsCloudAccountListSecurityGroups" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsCloudAccountListSecurityGroupsFieldSpec(ExplorationContext? ec=null)
+        public static object AwsCloudAccountListSecurityGroupsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsCloudAccountListSecurityGroupsResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4029,10 +4011,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountUuid: $cloudAccountUuid\nfeature: $feature\nregion: $region\nvpcID: $vpcID\n)";
             return "awsCloudAccountListSubnets" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsCloudAccountListSubnetsFieldSpec(ExplorationContext? ec=null)
+        public static object AwsCloudAccountListSubnetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsCloudAccountListSubnetsResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4047,10 +4029,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountUuid: $cloudAccountUuid\nfeature: $feature\nregion: $region\n)";
             return "awsCloudAccountListVpcs" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsCloudAccountListVpcsFieldSpec(ExplorationContext? ec=null)
+        public static object AwsCloudAccountListVpcsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsCloudAccountListVpcResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4065,10 +4047,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountId: $cloudAccountId\nawsCloudAccountArg: $awsCloudAccountArg\n)";
             return "awsCloudAccountWithFeatures" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsCloudAccountWithFeaturesFieldSpec(ExplorationContext? ec=null)
+        public static object AwsCloudAccountWithFeaturesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsCloudAccountWithFeatures() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4083,10 +4065,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncomputeSettingId: $computeSettingId\n)";
             return "awsComputeSettings" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsComputeSettingsFieldSpec(ExplorationContext? ec=null)
+        public static object AwsComputeSettingsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsComputeSettings() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4101,10 +4083,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "awsExocomputeGetClusterConnectionInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsExocomputeGetClusterConnectionInfoFieldSpec(ExplorationContext? ec=null)
+        public static object AwsExocomputeGetClusterConnectionInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsExocomputeGetClusterConnectionInfoReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4119,10 +4101,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsNativeAccountRubrikId: $awsNativeAccountRubrikId\nawsNativeProtectionFeature: $awsNativeProtectionFeature\n)";
             return "awsNativeAccount" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeAccountFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeAccountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeAccount() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4137,12 +4119,30 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\naccountFilters: $accountFilters\nauthorizedOperationFilter: $authorizedOperationFilter\nawsNativeProtectionFeature: $awsNativeProtectionFeature\n)";
             return "awsNativeAccounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeAccountsFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeAccountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeAccountConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AwsNativeDynamoDbTable? AwsNativeDynamoDbTable
+        // GraphQL -> awsNativeDynamoDbTable: AwsNativeDynamoDbTable! (type)
+        public static string AwsNativeDynamoDbTable(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ndynamoDbTableRubrikId: $dynamoDbTableRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
+            return "awsNativeDynamoDbTable" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AwsNativeDynamoDbTableFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AwsNativeDynamoDbTable() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -4155,10 +4155,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nebsVolumeRubrikId: $ebsVolumeRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeEbsVolume" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeEbsVolumeFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeEbsVolumeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeEbsVolume() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4173,10 +4173,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nebsVolumeFilters: $ebsVolumeFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeEbsVolumes" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeEbsVolumesFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeEbsVolumesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeEbsVolumeConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4191,10 +4191,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nebsVolumeName: $ebsVolumeName\n)";
             return "awsNativeEbsVolumesByName" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeEbsVolumesByNameFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeEbsVolumesByNameFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeEbsVolumeConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4209,10 +4209,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nec2InstanceRubrikId: $ec2InstanceRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeEc2Instance" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeEc2InstanceFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeEc2InstanceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeEc2Instance() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4227,10 +4227,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndescendantTypeFilter: $descendantTypeFilter\nec2InstanceFilters: $ec2InstanceFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeEc2Instances" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeEc2InstancesFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeEc2InstancesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeEc2InstanceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4245,10 +4245,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nec2InstanceName: $ec2InstanceName\n)";
             return "awsNativeEc2InstancesByName" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeEc2InstancesByNameFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeEc2InstancesByNameFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeEc2InstanceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4260,13 +4260,13 @@ namespace RubrikSecurityCloud.Types
         public static string AwsNativeRdsExportDefaults(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nrdsInstanceRubrikId: $rdsInstanceRubrikId\nsnapshotId: $snapshotId\nisPointInTime: $isPointInTime\n)";
+            string args = "\n(\nrdsInstanceRubrikId: $rdsInstanceRubrikId\nsnapshotId: $snapshotId\nisPointInTime: $isPointInTime\nisArchivalCopy: $isArchivalCopy\n)";
             return "awsNativeRdsExportDefaults" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeRdsExportDefaultsFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeRdsExportDefaultsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RdsInstanceExportDefaults() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4281,10 +4281,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nrdsInstanceRubrikId: $rdsInstanceRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeRdsInstance" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeRdsInstanceFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeRdsInstanceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeRdsInstance() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4299,10 +4299,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nrdsInstanceFilters: $rdsInstanceFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeRdsInstances" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeRdsInstancesFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeRdsInstancesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeRdsInstanceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4317,10 +4317,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrdsInstanceName: $rdsInstanceName\nrdsDatabaseRubrikId: $rdsDatabaseRubrikId\n)";
             return "awsNativeRdsPointInTimeRestoreWindow" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeRdsPointInTimeRestoreWindowFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeRdsPointInTimeRestoreWindowFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeRdsPointInTimeRestoreWindow() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4335,10 +4335,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "awsNativeRoot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeRootFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeRootFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeRoot() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4353,10 +4353,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ns3BucketRubrikId: $s3BucketRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "awsNativeS3Bucket" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsNativeS3BucketFieldSpec(ExplorationContext? ec=null)
+        public static object AwsNativeS3BucketFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeS3Bucket() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4371,10 +4371,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "awsTrustPolicy" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AwsTrustPolicyFieldSpec(ExplorationContext? ec=null)
+        public static object AwsTrustPolicyFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsTrustPolicy() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4389,10 +4389,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "azureAdDirectories" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureAdDirectoriesFieldSpec(ExplorationContext? ec=null)
+        public static object AzureAdDirectoriesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureAdDirectoryConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4407,10 +4407,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nworkloadFid: $workloadFid\n)";
             return "azureAdDirectory" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureAdDirectoryFieldSpec(ExplorationContext? ec=null)
+        public static object AzureAdDirectoryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureAdDirectory() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4425,10 +4425,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortByOption: $sortByOption\nsortOrder: $sortOrder\ninput: $input\n)";
             return "azureAdObjectsByType" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureAdObjectsByTypeFieldSpec(ExplorationContext? ec=null)
+        public static object AzureAdObjectsByTypeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureAdObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4443,10 +4443,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfeatureId: $featureId\n)";
             return "azureCloudAccountDetailsForFeature" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureCloudAccountDetailsForFeatureFieldSpec(ExplorationContext? ec=null)
+        public static object AzureCloudAccountDetailsForFeatureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureCloudAccountDetailsForFeatureReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4461,10 +4461,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfeature: $feature\npermissionsGroups: $permissionsGroups\n)";
             return "azureCloudAccountPermissionConfig" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureCloudAccountPermissionConfigFieldSpec(ExplorationContext? ec=null)
+        public static object AzureCloudAccountPermissionConfigFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureCloudAccountPermissionConfigResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4479,10 +4479,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountId: $cloudAccountId\n)";
             return "azureCloudAccountSubscriptionWithFeatures" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureCloudAccountSubscriptionWithFeaturesFieldSpec(ExplorationContext? ec=null)
+        public static object AzureCloudAccountSubscriptionWithFeaturesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureCloudAccountSubscriptionWithFeatures() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4497,10 +4497,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nfeature: $feature\nfeatures: $features\nsubscriptionStatusFilters: $subscriptionStatusFilters\nsubscriptionSearchText: $subscriptionSearchText\nsubscriptionIdsFilter: $subscriptionIdsFilter\n)";
             return "azureCloudAccountTenant" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureCloudAccountTenantFieldSpec(ExplorationContext? ec=null)
+        public static object AzureCloudAccountTenantFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureCloudAccountTenant() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4515,10 +4515,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nfeature: $feature\nfeatures: $features\nsubscriptionStatusFilters: $subscriptionStatusFilters\nsubscriptionSearchText: $subscriptionSearchText\nsubscriptionIdsFilter: $subscriptionIdsFilter\n)";
             return "azureCloudAccountTenantWithExoConfigs" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureCloudAccountTenantWithExoConfigsFieldSpec(ExplorationContext? ec=null)
+        public static object AzureCloudAccountTenantWithExoConfigsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureCloudAccountTenantWithExoConfigs() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4533,10 +4533,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureManagedDiskRubrikId: $azureManagedDiskRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureNativeManagedDisk" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureNativeManagedDiskFieldSpec(ExplorationContext? ec=null)
+        public static object AzureNativeManagedDiskFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNativeManagedDisk() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4551,10 +4551,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndiskFilters: $diskFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureNativeManagedDisks" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureNativeManagedDisksFieldSpec(ExplorationContext? ec=null)
+        public static object AzureNativeManagedDisksFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNativeManagedDiskConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4569,10 +4569,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nresourceGroupId: $resourceGroupId\n)";
             return "azureNativeResourceGroup" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureNativeResourceGroupFieldSpec(ExplorationContext? ec=null)
+        public static object AzureNativeResourceGroupFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNativeResourceGroup() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4587,10 +4587,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ncommonResourceGroupFilters: $commonResourceGroupFilters\nprotectedObjectTypes: $protectedObjectTypes\nazureNativeProtectionFeatures: $azureNativeProtectionFeatures\n)";
             return "azureNativeResourceGroups" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureNativeResourceGroupsFieldSpec(ExplorationContext? ec=null)
+        public static object AzureNativeResourceGroupsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNativeResourceGroupConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4605,10 +4605,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "azureNativeRoot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureNativeRootFieldSpec(ExplorationContext? ec=null)
+        public static object AzureNativeRootFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNativeRoot() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4623,10 +4623,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\n)";
             return "azureNativeSubscription" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureNativeSubscriptionFieldSpec(ExplorationContext? ec=null)
+        public static object AzureNativeSubscriptionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNativeSubscription() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4641,10 +4641,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nsubscriptionFilters: $subscriptionFilters\nauthorizedOperationFilter: $authorizedOperationFilter\nworkloadHierarchy: $workloadHierarchy\nazureNativeProtectionFeature: $azureNativeProtectionFeature\n)";
             return "azureNativeSubscriptions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureNativeSubscriptionsFieldSpec(ExplorationContext? ec=null)
+        public static object AzureNativeSubscriptionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNativeSubscriptionConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4659,10 +4659,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureVirtualMachineRubrikId: $azureVirtualMachineRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureNativeVirtualMachine" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureNativeVirtualMachineFieldSpec(ExplorationContext? ec=null)
+        public static object AzureNativeVirtualMachineFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNativeVirtualMachine() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4677,10 +4677,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndescendantTypeFilter: $descendantTypeFilter\nvirtualMachineFilters: $virtualMachineFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureNativeVirtualMachines" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureNativeVirtualMachinesFieldSpec(ExplorationContext? ec=null)
+        public static object AzureNativeVirtualMachinesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNativeVirtualMachineConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4695,10 +4695,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nresourceGroupName: $resourceGroupName\nvnet_name: $vnet_name\nsubnet_name: $subnet_name\n)";
             return "azureO365CheckNSGOutboundRules" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureO365CheckNsgOutboundRulesFieldSpec(ExplorationContext? ec=null)
+        public static object AzureO365CheckNsgOutboundRulesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNetworkSecurityGroupResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4713,10 +4713,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nresourceGroupName: $resourceGroupName\nvnet_name: $vnet_name\nsubnet_name: $subnet_name\nstrict_addr_check: $strict_addr_check\n)";
             return "azureO365CheckNetworkSubnet" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureO365CheckNetworkSubnetFieldSpec(ExplorationContext? ec=null)
+        public static object AzureO365CheckNetworkSubnetFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNetworkSubnetResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4731,10 +4731,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\ngroupName: $groupName\n)";
             return "azureO365CheckResourceGroupName" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureO365CheckResourceGroupNameFieldSpec(ExplorationContext? ec=null)
+        public static object AzureO365CheckResourceGroupNameFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureResourceAvailabilityResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4749,10 +4749,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nstorage_account_name: $storage_account_name\ngroupName: $groupName\n)";
             return "azureO365CheckStorageAccountAccessibility" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureO365CheckStorageAccountAccessibilityFieldSpec(ExplorationContext? ec=null)
+        public static object AzureO365CheckStorageAccountAccessibilityFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureResourceAvailabilityResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4767,10 +4767,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nstorage_account_name: $storage_account_name\n)";
             return "azureO365CheckStorageAccountName" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureO365CheckStorageAccountNameFieldSpec(ExplorationContext? ec=null)
+        public static object AzureO365CheckStorageAccountNameFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureResourceAvailabilityResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4785,10 +4785,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nregionName: $regionName\n)";
             return "azureO365CheckSubscriptionQuota" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureO365CheckSubscriptionQuotaFieldSpec(ExplorationContext? ec=null)
+        public static object AzureO365CheckSubscriptionQuotaFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureResourceAvailabilityResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4803,10 +4803,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\ngroupName: $groupName\nvnet_name: $vnet_name\n)";
             return "azureO365CheckVirtualNetworkName" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureO365CheckVirtualNetworkNameFieldSpec(ExplorationContext? ec=null)
+        public static object AzureO365CheckVirtualNetworkNameFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureResourceAvailabilityResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4821,10 +4821,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\nexocomputeClusterId: $exocomputeClusterId\n)";
             return "azureO365Exocompute" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureO365ExocomputeFieldSpec(ExplorationContext? ec=null)
+        public static object AzureO365ExocomputeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetAzureO365ExocomputeResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4839,10 +4839,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "azureO365GetAzureHostType" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureO365GetAzureHostTypeFieldSpec(ExplorationContext? ec=null)
+        public static object AzureO365GetAzureHostTypeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetAzureHostTypeResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4857,10 +4857,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nresourceGroupName: $resourceGroupName\nvnet_name: $vnet_name\nsubnet_name: $subnet_name\nstrict_addr_check: $strict_addr_check\n)";
             return "azureO365GetNetworkSubnetUnusedAddr" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureO365GetNetworkSubnetUnusedAddrFieldSpec(ExplorationContext? ec=null)
+        public static object AzureO365GetNetworkSubnetUnusedAddrFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNetworkSubnetUnusedAddrResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4875,10 +4875,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\n)";
             return "azureO365ValidateUserRoles" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureO365ValidateUserRolesFieldSpec(ExplorationContext? ec=null)
+        public static object AzureO365ValidateUserRolesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureUserRoleResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4893,10 +4893,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\n)";
             return "azureRegions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureRegionsFieldSpec(ExplorationContext? ec=null)
+        public static object AzureRegionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RegionConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4911,10 +4911,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\n)";
             return "azureResourceGroups" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureResourceGroupsFieldSpec(ExplorationContext? ec=null)
+        public static object AzureResourceGroupsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ResourceGroupConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4929,10 +4929,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSqlDatabaseRubrikId: $azureSqlDatabaseRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureSqlDatabase" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureSqlDatabaseFieldSpec(ExplorationContext? ec=null)
+        public static object AzureSqlDatabaseFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureSqlDatabaseDb() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4947,10 +4947,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsubscriptionId: $subscriptionId\nresourceGroupName: $resourceGroupName\nazureSqlDatabaseServerName: $azureSqlDatabaseServerName\nazureSqlDatabaseName: $azureSqlDatabaseName\n)";
             return "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzureFieldSpec(ExplorationContext? ec=null)
+        public static object AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNativeSqlDatabasePointInTimeRestoreWindow() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4965,10 +4965,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSqlDatabaseServerRubrikId: $azureSqlDatabaseServerRubrikId\n)";
             return "azureSqlDatabaseServer" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureSqlDatabaseServerFieldSpec(ExplorationContext? ec=null)
+        public static object AzureSqlDatabaseServerFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureSqlDatabaseServer() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -4983,10 +4983,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlDatabaseServerFilters: $azureSqlDatabaseServerFilters\n)";
             return "azureSqlDatabaseServers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureSqlDatabaseServersFieldSpec(ExplorationContext? ec=null)
+        public static object AzureSqlDatabaseServersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureSqlDatabaseServerConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5001,10 +5001,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlDatabaseFilters: $azureSqlDatabaseFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureSqlDatabases" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureSqlDatabasesFieldSpec(ExplorationContext? ec=null)
+        public static object AzureSqlDatabasesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureSqlDatabaseDbConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5019,10 +5019,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSqlManagedInstanceDatabaseRubrikId: $azureSqlManagedInstanceDatabaseRubrikId\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureSqlManagedInstanceDatabase" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureSqlManagedInstanceDatabaseFieldSpec(ExplorationContext? ec=null)
+        public static object AzureSqlManagedInstanceDatabaseFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureSqlManagedInstanceDatabase() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5037,10 +5037,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlManagedInstanceDatabaseFilters: $azureSqlManagedInstanceDatabaseFilters\nincludeSecurityMetadata: $includeSecurityMetadata\n)";
             return "azureSqlManagedInstanceDatabases" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureSqlManagedInstanceDatabasesFieldSpec(ExplorationContext? ec=null)
+        public static object AzureSqlManagedInstanceDatabasesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureSqlManagedInstanceDatabaseConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5055,10 +5055,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsubscriptionId: $subscriptionId\nresourceGroupName: $resourceGroupName\nazureSqlManagedInstanceName: $azureSqlManagedInstanceName\nazureSqlDatabaseName: $azureSqlDatabaseName\n)";
             return "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzureFieldSpec(ExplorationContext? ec=null)
+        public static object AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureNativeSqlDatabasePointInTimeRestoreWindow() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5073,10 +5073,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSqlManagedInstanceServerRubrikId: $azureSqlManagedInstanceServerRubrikId\n)";
             return "azureSqlManagedInstanceServer" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureSqlManagedInstanceServerFieldSpec(ExplorationContext? ec=null)
+        public static object AzureSqlManagedInstanceServerFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureSqlManagedInstanceServer() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5091,10 +5091,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlManagedInstanceServerFilters: $azureSqlManagedInstanceServerFilters\n)";
             return "azureSqlManagedInstanceServers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureSqlManagedInstanceServersFieldSpec(ExplorationContext? ec=null)
+        public static object AzureSqlManagedInstanceServersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureSqlManagedInstanceServerConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5109,10 +5109,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nazureStorageAccountRubrikId: $azureStorageAccountRubrikId\n)";
             return "azureStorageAccountContainers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureStorageAccountContainersFieldSpec(ExplorationContext? ec=null)
+        public static object AzureStorageAccountContainersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new BlobContainerConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5127,10 +5127,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nazureStorageAccountRubrikId: $azureStorageAccountRubrikId\n)";
             return "azureStorageAccountExcludedContainers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureStorageAccountExcludedContainersFieldSpec(ExplorationContext? ec=null)
+        public static object AzureStorageAccountExcludedContainersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ExcludedContainerConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5145,10 +5145,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nregionName: $regionName\n)";
             return "azureStorageAccounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureStorageAccountsFieldSpec(ExplorationContext? ec=null)
+        public static object AzureStorageAccountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new StorageAccountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5163,10 +5163,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nvNetId: $vNetId\n)";
             return "azureSubnets" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureSubnetsFieldSpec(ExplorationContext? ec=null)
+        public static object AzureSubnetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SubnetConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5181,10 +5181,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\n)";
             return "azureSubscriptions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureSubscriptionsFieldSpec(ExplorationContext? ec=null)
+        public static object AzureSubscriptionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureSubscriptionConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5199,10 +5199,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nregionName: $regionName\n)";
             return "azureVNets" + args + "\n{\n" + fs + "}\n";
         }
-        public static object AzureVnetsFieldSpec(ExplorationContext? ec=null)
+        public static object AzureVnetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VnetConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5217,10 +5217,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\norgId: $orgId\ncalendarSearchFilter: $calendarSearchFilter\n)";
             return "browseCalendar" + args + "\n{\n" + fs + "}\n";
         }
-        public static object BrowseCalendarFieldSpec(ExplorationContext? ec=null)
+        public static object BrowseCalendarFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365ExchangeObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5235,10 +5235,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\norgId: $orgId\ncontactsSearchFilter: $contactsSearchFilter\n)";
             return "browseContacts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object BrowseContactsFieldSpec(ExplorationContext? ec=null)
+        public static object BrowseContactsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365ExchangeObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5253,10 +5253,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\norgId: $orgId\n)";
             return "browseFolder" + args + "\n{\n" + fs + "}\n";
         }
-        public static object BrowseFolderFieldSpec(ExplorationContext? ec=null)
+        public static object BrowseFolderFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365ExchangeObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5271,10 +5271,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFidOpt: $snapshotFidOpt\nexcludeArchived: $excludeArchived\norgId: $orgId\nchannelMembershipTypeFilter: $channelMembershipTypeFilter\nnameFilter: $nameFilter\n)";
             return "browseO365TeamConvChannels" + args + "\n{\n" + fs + "}\n";
         }
-        public static object BrowseO365TeamConvChannelsFieldSpec(ExplorationContext? ec=null)
+        public static object BrowseO365TeamConvChannelsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365TeamConvChannelConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5289,10 +5289,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\nonedriveSearchFilter: $onedriveSearchFilter\norgId: $orgId\n)";
             return "browseOnedrive" + args + "\n{\n" + fs + "}\n";
         }
-        public static object BrowseOnedriveFieldSpec(ExplorationContext? ec=null)
+        public static object BrowseOnedriveFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365OnedriveObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5307,10 +5307,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\norgId: $orgId\nsiteChildId: $siteChildId\nsiteChildType: $siteChildType\n)";
             return "browseSharepointDrive" + args + "\n{\n" + fs + "}\n";
         }
-        public static object BrowseSharepointDriveFieldSpec(ExplorationContext? ec=null)
+        public static object BrowseSharepointDriveFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365OnedriveObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5325,10 +5325,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\norgId: $orgId\nsiteChildId: $siteChildId\n)";
             return "browseSharepointList" + args + "\n{\n" + fs + "}\n";
         }
-        public static object BrowseSharepointListFieldSpec(ExplorationContext? ec=null)
+        public static object BrowseSharepointListFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365OnedriveObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5343,10 +5343,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\npath: $path\nsnapshotFid: $snapshotFid\nsearchPrefix: $searchPrefix\n)";
             return "browseSnapshotFileConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object BrowseSnapshotFileConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object BrowseSnapshotFileConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SnapshotFileConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5361,10 +5361,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nchannelMembershipTypeFilter: $channelMembershipTypeFilter\nnameFilter: $nameFilter\n)";
             return "browseTeamsChannels" + args + "\n{\n" + fs + "}\n";
         }
-        public static object BrowseTeamsChannelsFieldSpec(ExplorationContext? ec=null)
+        public static object BrowseTeamsChannelsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365TeamsChannelConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5379,12 +5379,30 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\nteamsDriveSearchFilter: $teamsDriveSearchFilter\norgId: $orgId\n)";
             return "browseTeamsDrive" + args + "\n{\n" + fs + "}\n";
         }
-        public static object BrowseTeamsDriveFieldSpec(ExplorationContext? ec=null)
+        public static object BrowseTeamsDriveFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365OnedriveObjectConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> IgnoreClusterRemovalPrecheckReply? CanIgnoreClusterRemovalPrechecks
+        // GraphQL -> canIgnoreClusterRemovalPrechecks: IgnoreClusterRemovalPrecheckReply! (type)
+        public static string CanIgnoreClusterRemovalPrechecks(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nclusterUuid: $clusterUuid\n)";
+            return "canIgnoreClusterRemovalPrechecks" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CanIgnoreClusterRemovalPrechecksFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new IgnoreClusterRemovalPrecheckReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -5397,10 +5415,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cassandraColumnFamilies" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CassandraColumnFamiliesFieldSpec(ExplorationContext? ec=null)
+        public static object CassandraColumnFamiliesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CassandraColumnFamilyConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5415,10 +5433,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "cassandraColumnFamily" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CassandraColumnFamilyFieldSpec(ExplorationContext? ec=null)
+        public static object CassandraColumnFamilyFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CassandraColumnFamily() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5433,10 +5451,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "cassandraColumnFamilyRecoverableRange" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CassandraColumnFamilyRecoverableRangeFieldSpec(ExplorationContext? ec=null)
+        public static object CassandraColumnFamilyRecoverableRangeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetMosaicRecoverableRangeResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5451,10 +5469,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "cassandraColumnFamilySchema" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CassandraColumnFamilySchemaFieldSpec(ExplorationContext? ec=null)
+        public static object CassandraColumnFamilySchemaFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetSchemaResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5469,10 +5487,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "cassandraKeyspace" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CassandraKeyspaceFieldSpec(ExplorationContext? ec=null)
+        public static object CassandraKeyspaceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CassandraKeyspace() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5487,10 +5505,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cassandraKeyspaces" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CassandraKeyspacesFieldSpec(ExplorationContext? ec=null)
+        public static object CassandraKeyspacesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CassandraKeyspaceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5505,10 +5523,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "cassandraSource" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CassandraSourceFieldSpec(ExplorationContext? ec=null)
+        public static object CassandraSourceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CassandraSource() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5523,10 +5541,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cassandraSources" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CassandraSourcesFieldSpec(ExplorationContext? ec=null)
+        public static object CassandraSourcesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CassandraSourceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5541,10 +5559,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nrootEnum: $rootEnum\n)";
             return "cdmInventorySubHierarchyRoot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CdmInventorySubHierarchyRootFieldSpec(ExplorationContext? ec=null)
+        public static object CdmInventorySubHierarchyRootFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmInventorySubHierarchyRoot() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5559,10 +5577,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "cdmMssqlLogShippingTarget" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CdmMssqlLogShippingTargetFieldSpec(ExplorationContext? ec=null)
+        public static object CdmMssqlLogShippingTargetFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlLogShippingTarget() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5577,10 +5595,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nfilters: $filters\n)";
             return "cdmMssqlLogShippingTargets" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CdmMssqlLogShippingTargetsFieldSpec(ExplorationContext? ec=null)
+        public static object CdmMssqlLogShippingTargetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlLogShippingTargetConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5595,10 +5613,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfeatureToCdmVersion: $featureToCdmVersion\n)";
             return "cdmVersionCheck" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CdmVersionCheckFieldSpec(ExplorationContext? ec=null)
+        public static object CdmVersionCheckFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FeatureCdmVersionReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5613,10 +5631,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "certificateInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CertificateInfoFieldSpec(ExplorationContext? ec=null)
+        public static object CertificateInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetCertificateInfoReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5631,10 +5649,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "certificateSigningRequest" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CertificateSigningRequestFieldSpec(ExplorationContext? ec=null)
+        public static object CertificateSigningRequestFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Csr() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5649,10 +5667,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nsearchTerm: $searchTerm\n)";
             return "certificateSigningRequests" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CertificateSigningRequestsFieldSpec(ExplorationContext? ec=null)
+        public static object CertificateSigningRequestsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CsrConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5667,10 +5685,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nsearchTerm: $searchTerm\n)";
             return "certificates" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CertificatesFieldSpec(ExplorationContext? ec=null)
+        public static object CertificatesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CertificateConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5685,10 +5703,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "certificatesWithKey" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CertificatesWithKeyFieldSpec(ExplorationContext? ec=null)
+        public static object CertificatesWithKeyFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CertificateConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5703,10 +5721,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudAccountId: $cloudAccountId\nfeature: $feature\nunmappingValidationType: $unmappingValidationType\n)";
             return "checkAzurePersistentStorageSubscriptionCanUnmap" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CheckAzurePersistentStorageSubscriptionCanUnmapFieldSpec(ExplorationContext? ec=null)
+        public static object CheckAzurePersistentStorageSubscriptionCanUnmapFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CheckAzurePersistentStorageSubscriptionCanUnmapReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5721,10 +5739,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "checkCloudComputeConnectivityJobProgress" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CheckCloudComputeConnectivityJobProgressFieldSpec(ExplorationContext? ec=null)
+        public static object CheckCloudComputeConnectivityJobProgressFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5739,10 +5757,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nruleName: $ruleName\nobjectType: $objectType\n)";
             return "checkCloudNativeLabelRuleNameUniqueness" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CheckCloudNativeLabelRuleNameUniquenessFieldSpec(ExplorationContext? ec=null)
+        public static object CheckCloudNativeLabelRuleNameUniquenessFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new IsCloudNativeTagRuleNameUniqueReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5757,10 +5775,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nruleName: $ruleName\nobjectType: $objectType\n)";
             return "checkCloudNativeTagRuleNameUniqueness" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CheckCloudNativeTagRuleNameUniquenessFieldSpec(ExplorationContext? ec=null)
+        public static object CheckCloudNativeTagRuleNameUniquenessFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new IsCloudNativeTagRuleNameUniqueReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5775,10 +5793,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "checkLatestVersionMgmtAppExists" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CheckLatestVersionMgmtAppExistsFieldSpec(ExplorationContext? ec=null)
+        public static object CheckLatestVersionMgmtAppExistsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CheckLatestVersionMgmtAppExistsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5793,10 +5811,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "cloudClusterRecoveryValidation" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudClusterRecoveryValidationFieldSpec(ExplorationContext? ec=null)
+        public static object CloudClusterRecoveryValidationFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidationRecoveryReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5811,10 +5829,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "cloudDirectClusterEndpoints" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudDirectClusterEndpointsFieldSpec(ExplorationContext? ec=null)
+        public static object CloudDirectClusterEndpointsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterEndpoints() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5829,10 +5847,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "cloudDirectNasExport" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudDirectNasExportFieldSpec(ExplorationContext? ec=null)
+        public static object CloudDirectNasExportFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectNasExport() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5847,10 +5865,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "cloudDirectNasNamespace" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudDirectNasNamespaceFieldSpec(ExplorationContext? ec=null)
+        public static object CloudDirectNasNamespaceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectNasNamespace() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5865,10 +5883,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cloudDirectNasNamespaces" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudDirectNasNamespacesFieldSpec(ExplorationContext? ec=null)
+        public static object CloudDirectNasNamespacesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectNasNamespaceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5883,10 +5901,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "cloudDirectNasShare" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudDirectNasShareFieldSpec(ExplorationContext? ec=null)
+        public static object CloudDirectNasShareFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectNasShare() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5901,10 +5919,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cloudDirectNasShares" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudDirectNasSharesFieldSpec(ExplorationContext? ec=null)
+        public static object CloudDirectNasSharesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectNasShareConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5919,10 +5937,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "cloudDirectNasSystem" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudDirectNasSystemFieldSpec(ExplorationContext? ec=null)
+        public static object CloudDirectNasSystemFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectNasSystem() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5937,10 +5955,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cloudDirectNasSystems" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudDirectNasSystemsFieldSpec(ExplorationContext? ec=null)
+        public static object CloudDirectNasSystemsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectNasSystemConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5955,10 +5973,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnapshotFid: $snapshotFid\n)";
             return "cloudDirectSnapshot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudDirectSnapshotFieldSpec(ExplorationContext? ec=null)
+        public static object CloudDirectSnapshotFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectSnapshot() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5973,10 +5991,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\n)";
             return "cloudDirectSnapshots" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudDirectSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object CloudDirectSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectSnapshotConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -5991,10 +6009,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "cloudDirectSystems" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudDirectSystemsFieldSpec(ExplorationContext? ec=null)
+        public static object CloudDirectSystemsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectSystems() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6009,10 +6027,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nworkloadId: $workloadId\nsnapshotIds: $snapshotIds\n)";
             return "cloudNativeCheckArchivedSnapshotsLocked" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudNativeCheckArchivedSnapshotsLockedFieldSpec(ExplorationContext? ec=null)
+        public static object CloudNativeCheckArchivedSnapshotsLockedFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CheckArchivedSnapshotsLockedReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6027,10 +6045,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountId: $cloudAccountId\n)";
             return "cloudNativeCustomerTags" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudNativeCustomerTagsFieldSpec(ExplorationContext? ec=null)
+        public static object CloudNativeCustomerTagsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudNativeCustomerTagsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6045,10 +6063,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nobjectType: $objectType\nfilters: $filters\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "cloudNativeLabelRules" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudNativeLabelRulesFieldSpec(ExplorationContext? ec=null)
+        public static object CloudNativeLabelRulesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetCloudNativeLabelRulesReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6063,10 +6081,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "cloudNativeRbaInstallers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudNativeRbaInstallersFieldSpec(ExplorationContext? ec=null)
+        public static object CloudNativeRbaInstallersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RbaInstallerUrls() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6081,10 +6099,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnapshotId: $snapshotId\n)";
             return "cloudNativeSnapshotDetailsForRecovery" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudNativeSnapshotDetailsForRecoveryFieldSpec(ExplorationContext? ec=null)
+        public static object CloudNativeSnapshotDetailsForRecoveryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudNativeSnapshotDetailsForRecoveryReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6099,10 +6117,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnapshotId: $snapshotId\n)";
             return "cloudNativeSnapshotTypeDetails" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudNativeSnapshotTypeDetailsFieldSpec(ExplorationContext? ec=null)
+        public static object CloudNativeSnapshotTypeDetailsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudNativeSnapshotTypeDetailsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6117,10 +6135,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\npath: $path\nsnapshotFid: $snapshotFid\nsearchPrefix: $searchPrefix\n)";
             return "cloudNativeSnapshots" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudNativeSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object CloudNativeSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SnapshotFileConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6135,10 +6153,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncloudNativeObjectType: $cloudNativeObjectType\n)";
             return "cloudNativeSqlServerSetupScript" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudNativeSqlServerSetupScriptFieldSpec(ExplorationContext? ec=null)
+        public static object CloudNativeSqlServerSetupScriptFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudNativeSqlServerSetupScript() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6153,10 +6171,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nobjectType: $objectType\nfilters: $filters\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "cloudNativeTagRules" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudNativeTagRulesFieldSpec(ExplorationContext? ec=null)
+        public static object CloudNativeTagRulesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetCloudNativeTagRulesReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6171,10 +6189,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableId: $snappableId\nsearchQuery: $searchQuery\n)";
             return "cloudNativeWorkloadVersionedFiles" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CloudNativeWorkloadVersionedFilesFieldSpec(ExplorationContext? ec=null)
+        public static object CloudNativeWorkloadVersionedFilesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudNativeVersionedFileConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6189,10 +6207,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "cluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Cluster() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6207,10 +6225,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "clusterCertificates" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterCertificatesFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterCertificatesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CertificateSummaryListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6225,10 +6243,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortOrder: $sortOrder\nsortBy: $sortBy\n)";
             return "clusterConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6243,10 +6261,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "clusterCsr" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterCsrFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterCsrFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterCsr() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6261,10 +6279,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "clusterDefaultGateway" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterDefaultGatewayFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterDefaultGatewayFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new InternalGetDefaultGatewayResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6279,10 +6297,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "clusterDns" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterDnsFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterDnsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterDnsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6297,10 +6315,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "clusterFloatingIps" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterFloatingIpsFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterFloatingIpsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new InternalGetClusterIpsResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6315,10 +6333,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ngroupBy: $groupBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "clusterGroupByConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterGroupByConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterGroupByConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterGroupByConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6333,10 +6351,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "clusterIpmi" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterIpmiFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterIpmiFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ModifyIpmiReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6351,10 +6369,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "clusterIpv6Mode" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterIpv6ModeFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterIpv6ModeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterIpv6ModeReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6369,10 +6387,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "clusterNetworkInterfaces" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterNetworkInterfacesFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterNetworkInterfacesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NetworkInterfaceListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6387,10 +6405,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "clusterNodes" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterNodesFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterNodesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NodeStatusListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6405,10 +6423,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "clusterNtpServers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterNtpServersFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterNtpServersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NtpServerConfigurationListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6423,10 +6441,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "clusterOperationJobProgress" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterOperationJobProgressFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterOperationJobProgressFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterOperationJobProgress() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6441,10 +6459,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "clusterProxy" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterProxyFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterProxyFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterProxyReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6459,10 +6477,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "clusterRegistrationProductInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterRegistrationProductInfoFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterRegistrationProductInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterRegistrationProductInfoType() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6477,10 +6495,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\nstatus: $status\n)";
             return "clusterReportMigrationCount" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterReportMigrationCountFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterReportMigrationCountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ReportsMigrationCount() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6495,10 +6513,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "clusterReportMigrationJobStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterReportMigrationJobStatusFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterReportMigrationJobStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterReportMigrationJobStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6513,10 +6531,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\nstatus: $status\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "clusterReportMigrationStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterReportMigrationStatusFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterReportMigrationStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ReportMigrationStatusConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6531,10 +6549,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "clusterRoutes" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterRoutesFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterRoutesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterRoutesReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6549,10 +6567,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "clusterSlaDomains" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterSlaDomainsFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterSlaDomainsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterSlaDomainConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6567,10 +6585,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "clusterTypeList" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterTypeListFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterTypeListFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GroupCount>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6585,10 +6603,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "clusterVlans" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterVlansFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterVlansFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VlanConfigListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6603,10 +6621,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "clusterWebSignedCertificate" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterWebSignedCertificateFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterWebSignedCertificateFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterWebSignedCertificateReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6621,10 +6639,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nupgradeFilter: $upgradeFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\n)";
             return "clusterWithUpgradesInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ClusterWithUpgradesInfoFieldSpec(ExplorationContext? ec=null)
+        public static object ClusterWithUpgradesInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6639,10 +6657,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "computeClusterStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ComputeClusterStatusFieldSpec(ExplorationContext? ec=null)
+        public static object ComputeClusterStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ComputeClusterDetail() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6657,10 +6675,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\norgId: $orgId\nwildcard: $wildcard\npdls: $pdls\nworkloadHierarchy: $workloadHierarchy\ngroupFilterAttributes: $groupFilterAttributes\n)";
             return "configuredGroupMembers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ConfiguredGroupMembersFieldSpec(ExplorationContext? ec=null)
+        public static object ConfiguredGroupMembersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365ConfiguredGroupMemberConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6675,10 +6693,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfilter: $filter\n)";
             return "countClusters" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CountClustersFieldSpec(ExplorationContext? ec=null)
+        public static object CountClustersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CountClustersReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6693,10 +6711,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nrootOptionalFid: $rootOptionalFid\nslaIds: $slaIds\nfilter: $filter\ntypeFilter: $typeFilter\n)";
             return "countOfObjectsProtectedBySlas" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CountOfObjectsProtectedBySlasFieldSpec(ExplorationContext? ec=null)
+        public static object CountOfObjectsProtectedBySlasFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CountOfObjectsProtectedBySlAsResult() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6711,10 +6729,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncrawlId: $crawlId\n)";
             return "crawl" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CrawlFieldSpec(ExplorationContext? ec=null)
+        public static object CrawlFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Crawl() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6729,10 +6747,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "crawls" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CrawlsFieldSpec(ExplorationContext? ec=null)
+        public static object CrawlsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CrawlConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6747,10 +6765,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nfilter: $filter\nsortOrder: $sortOrder\n)";
             return "crossAccountPairs" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CrossAccountPairsFieldSpec(ExplorationContext? ec=null)
+        public static object CrossAccountPairsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CrossAccountPairInfoConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6765,10 +6783,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "currentOrg" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CurrentOrgFieldSpec(ExplorationContext? ec=null)
+        public static object CurrentOrgFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Org() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6783,10 +6801,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "currentUser" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CurrentUserFieldSpec(ExplorationContext? ec=null)
+        public static object CurrentUserFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new User() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6801,10 +6819,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "currentUserLoginContext" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CurrentUserLoginContextFieldSpec(ExplorationContext? ec=null)
+        public static object CurrentUserLoginContextFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new UserLoginContext() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6819,10 +6837,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nanalyzerId: $analyzerId\n)";
             return "customAnalyzer" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CustomAnalyzerFieldSpec(ExplorationContext? ec=null)
+        public static object CustomAnalyzerFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Analyzer() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6837,10 +6855,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "customTprPolicies" + args + "\n{\n" + fs + "}\n";
         }
-        public static object CustomTprPoliciesFieldSpec(ExplorationContext? ec=null)
+        public static object CustomTprPoliciesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CustomTprPolicyConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6855,10 +6873,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ngetWhitelistedResults: $getWhitelistedResults\n)";
             return "dashboardSummary" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DashboardSummaryFieldSpec(ExplorationContext? ec=null)
+        public static object DashboardSummaryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetDashboardSummaryReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6873,10 +6891,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "databaseLogReportForCluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DatabaseLogReportForClusterFieldSpec(ExplorationContext? ec=null)
+        public static object DatabaseLogReportForClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new DbLogReportSummaryListReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6891,10 +6909,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "databaseLogReportingPropertiesForCluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DatabaseLogReportingPropertiesForClusterFieldSpec(ExplorationContext? ec=null)
+        public static object DatabaseLogReportingPropertiesForClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new DbLogReportProperties() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6909,10 +6927,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nstdPath: $stdPath\nskipResolveSids: $skipResolveSids\nfilters: $filters\n)";
             return "datagovSecDesc" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DatagovSecDescFieldSpec(ExplorationContext? ec=null)
+        public static object DatagovSecDescFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new QuerySddlReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6927,10 +6945,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "db2Database" + args + "\n{\n" + fs + "}\n";
         }
-        public static object Db2DatabaseFieldSpec(ExplorationContext? ec=null)
+        public static object Db2DatabaseFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Db2Database() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6945,10 +6963,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "db2DatabaseJobStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object Db2DatabaseJobStatusFieldSpec(ExplorationContext? ec=null)
+        public static object Db2DatabaseJobStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6963,10 +6981,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "db2Databases" + args + "\n{\n" + fs + "}\n";
         }
-        public static object Db2DatabasesFieldSpec(ExplorationContext? ec=null)
+        public static object Db2DatabasesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Db2DatabaseConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6981,10 +6999,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nid: $id\n)";
             return "db2Instance" + args + "\n{\n" + fs + "}\n";
         }
-        public static object Db2InstanceFieldSpec(ExplorationContext? ec=null)
+        public static object Db2InstanceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Db2Instance() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -6999,10 +7017,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "db2Instances" + args + "\n{\n" + fs + "}\n";
         }
-        public static object Db2InstancesFieldSpec(ExplorationContext? ec=null)
+        public static object Db2InstancesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Db2InstanceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7017,10 +7035,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ndb2LogSnapshotFid: $db2LogSnapshotFid\n)";
             return "db2LogSnapshot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object Db2LogSnapshotFieldSpec(ExplorationContext? ec=null)
+        public static object Db2LogSnapshotFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Db2LogSnapshot() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7035,10 +7053,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
             return "db2LogSnapshots" + args + "\n{\n" + fs + "}\n";
         }
-        public static object Db2LogSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object Db2LogSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Db2LogSnapshotConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7053,10 +7071,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ndb2RecoverableRangeFid: $db2RecoverableRangeFid\n)";
             return "db2RecoverableRange" + args + "\n{\n" + fs + "}\n";
         }
-        public static object Db2RecoverableRangeFieldSpec(ExplorationContext? ec=null)
+        public static object Db2RecoverableRangeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Db2RecoverableRange() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7071,10 +7089,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
             return "db2RecoverableRanges" + args + "\n{\n" + fs + "}\n";
         }
-        public static object Db2RecoverableRangesFieldSpec(ExplorationContext? ec=null)
+        public static object Db2RecoverableRangesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Db2RecoverableRangeConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7089,10 +7107,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nworkloadFid: $workloadFid\nexportUrlSpecsEnc: $exportUrlSpecsEnc\n)";
             return "decryptExportUrl" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DecryptExportUrlFieldSpec(ExplorationContext? ec=null)
+        public static object DecryptExportUrlFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ExportUrlSpecs() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7107,10 +7125,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\nmanagedId: $managedId\nsnapshotId: $snapshotId\nbrowseDiffPath: $browseDiffPath\n)";
             return "diffFmd" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DiffFmdFieldSpec(ExplorationContext? ec=null)
+        public static object DiffFmdFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new DiffResult() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7125,10 +7143,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nid: $id\n)";
             return "discoverNodes" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DiscoverNodesFieldSpec(ExplorationContext? ec=null)
+        public static object DiscoverNodesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new BootstrappableNodeInfoListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7143,10 +7161,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nstartDay: $startDay\nendDay: $endDay\ntimezone: $timezone\ngetWhitelistedResults: $getWhitelistedResults\nworkloadTypes: $workloadTypes\nuseOptimisedDiscoveryTimeline: $useOptimisedDiscoveryTimeline\nsubscriptionIdsFilter: $subscriptionIdsFilter\nobjectIdsFilter: $objectIdsFilter\nplatformCategoryFilter: $platformCategoryFilter\n)";
             return "discoveryTimeline" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DiscoveryTimelineFieldSpec(ExplorationContext? ec=null)
+        public static object DiscoveryTimelineFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetPoliciesTimelineReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7161,10 +7179,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "distributionListDigest" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DistributionListDigestFieldSpec(ExplorationContext? ec=null)
+        public static object DistributionListDigestFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new EventDigest() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7179,10 +7197,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ndownloadFilter: $downloadFilter\n)";
             return "downloadCdmUpgradesPdf" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DownloadCdmUpgradesPdfFieldSpec(ExplorationContext? ec=null)
+        public static object DownloadCdmUpgradesPdfFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new DownloadCdmUpgradesPdfReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7197,10 +7215,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "downloadPackageStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DownloadPackageStatusFieldSpec(ExplorationContext? ec=null)
+        public static object DownloadPackageStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new DownloadPackageStatusReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7215,10 +7233,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncdmClusterUUID: $cdmClusterUUID\nincludeArchived: $includeArchived\n)";
             return "downloadSlaWithReplicationCsv" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DownloadSlaWithReplicationCsvFieldSpec(ExplorationContext? ec=null)
+        public static object DownloadSlaWithReplicationCsvFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new DownloadSlaWithReplicationCsvReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7233,10 +7251,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "downloadedVersionList" + args + "\n{\n" + fs + "}\n";
         }
-        public static object DownloadedVersionListFieldSpec(ExplorationContext? ec=null)
+        public static object DownloadedVersionListFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GroupCount>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7251,10 +7269,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "edgeWindowsToolLink" + args + "\n{\n" + fs + "}\n";
         }
-        public static object EdgeWindowsToolLinkFieldSpec(ExplorationContext? ec=null)
+        public static object EdgeWindowsToolLinkFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new EdgeWindowsToolLink() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7269,10 +7287,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nawsOrganizationUuid: $awsOrganizationUuid\n)";
             return "eligibleAccountsForMigrationToAwsOrg" + args + "\n{\n" + fs + "}\n";
         }
-        public static object EligibleAccountsForMigrationToAwsOrgFieldSpec(ExplorationContext? ec=null)
+        public static object EligibleAccountsForMigrationToAwsOrgFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsCloudAccountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7287,10 +7305,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "exchangeDag" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ExchangeDagFieldSpec(ExplorationContext? ec=null)
+        public static object ExchangeDagFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ExchangeDag() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7305,10 +7323,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "exchangeDags" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ExchangeDagsFieldSpec(ExplorationContext? ec=null)
+        public static object ExchangeDagsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ExchangeDagConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7323,10 +7341,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "exchangeDatabase" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ExchangeDatabaseFieldSpec(ExplorationContext? ec=null)
+        public static object ExchangeDatabaseFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ExchangeDatabase() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7341,10 +7359,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "exchangeDatabases" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ExchangeDatabasesFieldSpec(ExplorationContext? ec=null)
+        public static object ExchangeDatabasesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ExchangeDatabaseConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7359,10 +7377,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "exchangeLiveMounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ExchangeLiveMountsFieldSpec(ExplorationContext? ec=null)
+        public static object ExchangeLiveMountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ExchangeLiveMountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7377,10 +7395,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "exchangeServer" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ExchangeServerFieldSpec(ExplorationContext? ec=null)
+        public static object ExchangeServerFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ExchangeServer() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7395,10 +7413,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "exchangeServers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ExchangeServersFieldSpec(ExplorationContext? ec=null)
+        public static object ExchangeServersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ExchangeServerConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7413,10 +7431,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "exocomputeGetClusterConnectionInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ExocomputeGetClusterConnectionInfoFieldSpec(ExplorationContext? ec=null)
+        public static object ExocomputeGetClusterConnectionInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ExocomputeGetClusterConnectionInfoReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7431,10 +7449,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nworkloadFid: $workloadFid\nfailedItemsInstanceId: $failedItemsInstanceId\n)";
             return "failedRestoreItemsInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object FailedRestoreItemsInfoFieldSpec(ExplorationContext? ec=null)
+        public static object FailedRestoreItemsInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FailedRestoreItemsInfoReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7449,10 +7467,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "failoverClusterApp" + args + "\n{\n" + fs + "}\n";
         }
-        public static object FailoverClusterAppFieldSpec(ExplorationContext? ec=null)
+        public static object FailoverClusterAppFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FailoverClusterApp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7467,10 +7485,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostFailoverClusterRoot: $hostFailoverClusterRoot\n)";
             return "failoverClusterApps" + args + "\n{\n" + fs + "}\n";
         }
-        public static object FailoverClusterAppsFieldSpec(ExplorationContext? ec=null)
+        public static object FailoverClusterAppsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FailoverClusterAppConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7485,10 +7503,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\nhostFailoverClusterRoot: $hostFailoverClusterRoot\n)";
             return "failoverClusterTopLevelDescendants" + args + "\n{\n" + fs + "}\n";
         }
-        public static object FailoverClusterTopLevelDescendantsFieldSpec(ExplorationContext? ec=null)
+        public static object FailoverClusterTopLevelDescendantsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FailoverClusterTopLevelDescendantTypeConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7503,10 +7521,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\npermissionsGroups: $permissionsGroups\n)";
             return "featurePermissionForDataCenterRoleBasedArchival" + args + "\n{\n" + fs + "}\n";
         }
-        public static object FeaturePermissionForDataCenterRoleBasedArchivalFieldSpec(ExplorationContext? ec=null)
+        public static object FeaturePermissionForDataCenterRoleBasedArchivalFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FeaturePermission() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7521,10 +7539,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "federatedLoginStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object FederatedLoginStatusFieldSpec(ExplorationContext? ec=null)
+        public static object FederatedLoginStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FederatedLoginStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7539,10 +7557,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "filesetRequestStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object FilesetRequestStatusFieldSpec(ExplorationContext? ec=null)
+        public static object FilesetRequestStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7557,10 +7575,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nid: $id\nverbose: $verbose\n)";
             return "filesetSnapshot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object FilesetSnapshotFieldSpec(ExplorationContext? ec=null)
+        public static object FilesetSnapshotFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FilesetSnapshotDetail() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7575,10 +7593,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nid: $id\nlimit: $limit\noffset: $offset\npath: $path\n)";
             return "filesetSnapshotFiles" + args + "\n{\n" + fs + "}\n";
         }
-        public static object FilesetSnapshotFilesFieldSpec(ExplorationContext? ec=null)
+        public static object FilesetSnapshotFilesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new BrowseResponseListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7593,10 +7611,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "filesetTemplate" + args + "\n{\n" + fs + "}\n";
         }
-        public static object FilesetTemplateFieldSpec(ExplorationContext? ec=null)
+        public static object FilesetTemplateFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FilesetTemplate() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7611,10 +7629,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostRoot: $hostRoot\n)";
             return "filesetTemplates" + args + "\n{\n" + fs + "}\n";
         }
-        public static object FilesetTemplatesFieldSpec(ExplorationContext? ec=null)
+        public static object FilesetTemplatesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FilesetTemplateConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7629,10 +7647,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "gcpNativeDisk" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GcpNativeDiskFieldSpec(ExplorationContext? ec=null)
+        public static object GcpNativeDiskFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GcpNativeDisk() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7647,10 +7665,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndiskFilters: $diskFilters\n)";
             return "gcpNativeDisks" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GcpNativeDisksFieldSpec(ExplorationContext? ec=null)
+        public static object GcpNativeDisksFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GcpNativeDiskConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7665,10 +7683,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "gcpNativeGceInstance" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GcpNativeGceInstanceFieldSpec(ExplorationContext? ec=null)
+        public static object GcpNativeGceInstanceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GcpNativeGceInstance() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7683,10 +7701,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ngceInstanceFilters: $gceInstanceFilters\n)";
             return "gcpNativeGceInstances" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GcpNativeGceInstancesFieldSpec(ExplorationContext? ec=null)
+        public static object GcpNativeGceInstancesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GcpNativeGceInstanceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7701,10 +7719,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "gcpNativeProject" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GcpNativeProjectFieldSpec(ExplorationContext? ec=null)
+        public static object GcpNativeProjectFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GcpNativeProject() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7719,10 +7737,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nprojectFilters: $projectFilters\nauthorizedOperationFilter: $authorizedOperationFilter\nworkloadHierarchy: $workloadHierarchy\n)";
             return "gcpNativeProjects" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GcpNativeProjectsFieldSpec(ExplorationContext? ec=null)
+        public static object GcpNativeProjectsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GcpNativeProjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7737,10 +7755,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nprojectId: $projectId\n)";
             return "gcpNativeStoredDiskLocations" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GcpNativeStoredDiskLocationsFieldSpec(ExplorationContext? ec=null)
+        public static object GcpNativeStoredDiskLocationsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ListStoredDiskLocationsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7755,10 +7773,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "geoLocationList" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GeoLocationListFieldSpec(ExplorationContext? ec=null)
+        public static object GeoLocationListFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GroupCount>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7773,10 +7791,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nnameFilter: $nameFilter\nassignedRoleIds: $assignedRoleIds\nroleSyncedFilter: $roleSyncedFilter\n)";
             return "getAllRolesInOrgConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GetAllRolesInOrgConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object GetAllRolesInOrgConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RoleConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7791,10 +7809,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nlistClusterUuid: $listClusterUuid\nfilterVersion: $filterVersion\nfetchLinks: $fetchLinks\nfilterUpgradeable: $filterUpgradeable\nshouldShowAll: $shouldShowAll\nfilterAfterSource: $filterAfterSource\nsortOrder: $sortOrder\n)";
             return "getCdmReleaseDetailsForClusterFromSupportPortal" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GetCdmReleaseDetailsForClusterFromSupportPortalFieldSpec(ExplorationContext? ec=null)
+        public static object GetCdmReleaseDetailsForClusterFromSupportPortalFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmUpgradeReleaseDetailsFromSupportPortalReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7809,10 +7827,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nlistClusterUuid: $listClusterUuid\nfilterVersion: $filterVersion\nfetchLinks: $fetchLinks\nfilterUpgradeable: $filterUpgradeable\nshouldShowAll: $shouldShowAll\nfilterAfterSource: $filterAfterSource\nsortOrder: $sortOrder\n)";
             return "getCdmReleaseDetailsForVersionFromSupportPortal" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GetCdmReleaseDetailsForVersionFromSupportPortalFieldSpec(ExplorationContext? ec=null)
+        public static object GetCdmReleaseDetailsForVersionFromSupportPortalFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmUpgradeReleaseDetailsFromSupportPortalReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7827,10 +7845,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nplatform: $platform\nnodeCount: $nodeCount\nsourceVersion: $sourceVersion\nfilterVersion: $filterVersion\nfetchLinks: $fetchLinks\nfilterUpgradeable: $filterUpgradeable\nshouldShowAll: $shouldShowAll\nfilterAfterSource: $filterAfterSource\nsortOrder: $sortOrder\n)";
             return "getCdmReleaseDetailsFromSupportPortal" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GetCdmReleaseDetailsFromSupportPortalFieldSpec(ExplorationContext? ec=null)
+        public static object GetCdmReleaseDetailsFromSupportPortalFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmUpgradeReleaseDetailsFromSupportPortalReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7845,10 +7863,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "getGroupCountByCdmClusterStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GetGroupCountByCdmClusterStatusFieldSpec(ExplorationContext? ec=null)
+        public static object GetGroupCountByCdmClusterStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GroupCountListWithTotal() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7863,10 +7881,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "getGroupCountByPrechecksStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GetGroupCountByPrechecksStatusFieldSpec(ExplorationContext? ec=null)
+        public static object GetGroupCountByPrechecksStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GroupCount>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7881,10 +7899,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "getGroupCountByUpgradeJobStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GetGroupCountByUpgradeJobStatusFieldSpec(ExplorationContext? ec=null)
+        public static object GetGroupCountByUpgradeJobStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GroupCount>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7899,10 +7917,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "getGroupCountByVersionStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GetGroupCountByVersionStatusFieldSpec(ExplorationContext? ec=null)
+        public static object GetGroupCountByVersionStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GroupCount>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7917,10 +7935,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntaskchainId: $taskchainId\n)";
             return "getKorgTaskchainStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GetKorgTaskchainStatusFieldSpec(ExplorationContext? ec=null)
+        public static object GetKorgTaskchainStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetTaskchainStatusReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7935,10 +7953,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nroleId: $roleId\n)";
             return "getPermissions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GetPermissionsFieldSpec(ExplorationContext? ec=null)
+        public static object GetPermissionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<Permission>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7953,10 +7971,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nroleIds: $roleIds\n)";
             return "getRolesByIds" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GetRolesByIdsFieldSpec(ExplorationContext? ec=null)
+        public static object GetRolesByIdsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<Role>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7971,10 +7989,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "getUserDownloads" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GetUserDownloadsFieldSpec(ExplorationContext? ec=null)
+        public static object GetUserDownloadsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<UserDownload>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -7989,10 +8007,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncertificateId: $certificateId\n)";
             return "globalCertificate" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GlobalCertificateFieldSpec(ExplorationContext? ec=null)
+        public static object GlobalCertificateFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GlobalCertificate() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8007,10 +8025,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\ninput: $input\n)";
             return "globalCertificates" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GlobalCertificatesFieldSpec(ExplorationContext? ec=null)
+        public static object GlobalCertificatesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GlobalCertificateConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8025,10 +8043,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "globalFileSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GlobalFileSearchFieldSpec(ExplorationContext? ec=null)
+        public static object GlobalFileSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GlobalFileSearchReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8043,10 +8061,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "globalLockoutConfig" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GlobalLockoutConfigFieldSpec(ExplorationContext? ec=null)
+        public static object GlobalLockoutConfigFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new LockoutConfig() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8061,10 +8079,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "globalMfaSetting" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GlobalMfaSettingFieldSpec(ExplorationContext? ec=null)
+        public static object GlobalMfaSettingFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetMfaSettingReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8079,10 +8097,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "globalSearchResults" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GlobalSearchResultsFieldSpec(ExplorationContext? ec=null)
+        public static object GlobalSearchResultsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HierarchyObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8097,10 +8115,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ncontextFilter: $contextFilter\ncontextFilterInput: $contextFilterInput\nshouldShowSyncStatus: $shouldShowSyncStatus\nshouldShowProtectedObjectCount: $shouldShowProtectedObjectCount\nshouldShowUpgradeInfo: $shouldShowUpgradeInfo\nshowRemoteSlas: $showRemoteSlas\nshouldShowPausedClusters: $shouldShowPausedClusters\n)";
             return "globalSlaFilterConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GlobalSlaFilterConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object GlobalSlaFilterConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GlobalSlaForFilterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8115,10 +8133,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nSlaId: $SlaId\n)";
             return "globalSlaStatuses" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GlobalSlaStatusesFieldSpec(ExplorationContext? ec=null)
+        public static object GlobalSlaStatusesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GlobalSlaStatusConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8133,10 +8151,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nshouldIncludeGroupsWithoutRole: $shouldIncludeGroupsWithoutRole\n)";
             return "groupsInCurrentAndDescendantOrganization" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GroupsInCurrentAndDescendantOrganizationFieldSpec(ExplorationContext? ec=null)
+        public static object GroupsInCurrentAndDescendantOrganizationFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GroupConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8151,10 +8169,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "guestCredentials" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GuestCredentialsFieldSpec(ExplorationContext? ec=null)
+        public static object GuestCredentialsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GuestCredentialDetailListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8169,10 +8187,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfilter: $filter\nsortBy: $sortBy\n)";
             return "guestCredentialsV2" + args + "\n{\n" + fs + "}\n";
         }
-        public static object GuestCredentialsV2FieldSpec(ExplorationContext? ec=null)
+        public static object GuestCredentialsV2FieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GuestOsCredentialConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8187,10 +8205,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "hasRelicAzureAdSnapshot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HasRelicAzureAdSnapshotFieldSpec(ExplorationContext? ec=null)
+        public static object HasRelicAzureAdSnapshotFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HasRelicAzureAdSnapshotReplyType() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8205,10 +8223,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\n)";
             return "helpContentSnippets" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HelpContentSnippetsFieldSpec(ExplorationContext? ec=null)
+        public static object HelpContentSnippetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HelpContentSnippetConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8223,10 +8241,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "hierarchySnappables" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HierarchySnappablesFieldSpec(ExplorationContext? ec=null)
+        public static object HierarchySnappablesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HierarchySnappableConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8241,10 +8259,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nid: $id\n)";
             return "hostDiagnosis" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HostDiagnosisFieldSpec(ExplorationContext? ec=null)
+        public static object HostDiagnosisFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HostDiagnosisSummary() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8259,10 +8277,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "hostFailoverCluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HostFailoverClusterFieldSpec(ExplorationContext? ec=null)
+        public static object HostFailoverClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HostFailoverCluster() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8277,10 +8295,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostFailoverClusterRoot: $hostFailoverClusterRoot\n)";
             return "hostFailoverClusters" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HostFailoverClustersFieldSpec(ExplorationContext? ec=null)
+        public static object HostFailoverClustersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HostFailoverClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8295,10 +8313,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "hostShare" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HostShareFieldSpec(ExplorationContext? ec=null)
+        public static object HostShareFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HostShare() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8313,10 +8331,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "hostShares" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HostSharesFieldSpec(ExplorationContext? ec=null)
+        public static object HostSharesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HostShareConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8331,10 +8349,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "hypervCluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervClusterFieldSpec(ExplorationContext? ec=null)
+        public static object HypervClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HyperVcluster() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8349,10 +8367,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "hypervHostAsyncRequestStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervHostAsyncRequestStatusFieldSpec(ExplorationContext? ec=null)
+        public static object HypervHostAsyncRequestStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8367,10 +8385,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "hypervMounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervMountsFieldSpec(ExplorationContext? ec=null)
+        public static object HypervMountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HyperVliveMountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8385,10 +8403,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "hypervScvmm" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervScvmmFieldSpec(ExplorationContext? ec=null)
+        public static object HypervScvmmFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HyperVscvmm() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8403,10 +8421,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "hypervScvmmAsyncRequestStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervScvmmAsyncRequestStatusFieldSpec(ExplorationContext? ec=null)
+        public static object HypervScvmmAsyncRequestStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8421,10 +8439,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "hypervScvmms" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervScvmmsFieldSpec(ExplorationContext? ec=null)
+        public static object HypervScvmmsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HyperVscvmmConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8439,10 +8457,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "hypervServer" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervServerFieldSpec(ExplorationContext? ec=null)
+        public static object HypervServerFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HypervServer() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8457,10 +8475,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "hypervServers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervServersFieldSpec(ExplorationContext? ec=null)
+        public static object HypervServersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HypervHostSummaryListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8475,10 +8493,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "hypervServersPaginated" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervServersPaginatedFieldSpec(ExplorationContext? ec=null)
+        public static object HypervServersPaginatedFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HypervServerConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8493,10 +8511,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "hypervTopLevelDescendants" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervTopLevelDescendantsFieldSpec(ExplorationContext? ec=null)
+        public static object HypervTopLevelDescendantsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HypervTopLevelDescendantTypeConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8511,10 +8529,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "hypervVirtualMachine" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervVirtualMachineFieldSpec(ExplorationContext? ec=null)
+        public static object HypervVirtualMachineFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HyperVvirtualMachine() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8529,10 +8547,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "hypervVirtualMachineAsyncRequestStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervVirtualMachineAsyncRequestStatusFieldSpec(ExplorationContext? ec=null)
+        public static object HypervVirtualMachineAsyncRequestStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8547,10 +8565,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "hypervVirtualMachineLevelFileInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervVirtualMachineLevelFileInfoFieldSpec(ExplorationContext? ec=null)
+        public static object HypervVirtualMachineLevelFileInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HypervVirtualMachineSnapshotFileDetails() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8565,10 +8583,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "hypervVirtualMachines" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervVirtualMachinesFieldSpec(ExplorationContext? ec=null)
+        public static object HypervVirtualMachinesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HyperVvirtualMachineConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8583,10 +8601,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "hypervVmDetail" + args + "\n{\n" + fs + "}\n";
         }
-        public static object HypervVmDetailFieldSpec(ExplorationContext? ec=null)
+        public static object HypervVmDetailFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HypervVirtualMachineDetail() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8601,10 +8619,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "installedVersionList" + args + "\n{\n" + fs + "}\n";
         }
-        public static object InstalledVersionListFieldSpec(ExplorationContext? ec=null)
+        public static object InstalledVersionListFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<InstalledVersionGroupCount>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8619,10 +8637,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nid: $id\n)";
             return "integration" + args + "\n{\n" + fs + "}\n";
         }
-        public static object IntegrationFieldSpec(ExplorationContext? ec=null)
+        public static object IntegrationFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ReadIntegrationReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8637,10 +8655,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "inventoryRoot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object InventoryRootFieldSpec(ExplorationContext? ec=null)
+        public static object InventoryRootFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new InventoryRoot() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8655,10 +8673,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nrootEnum: $rootEnum\n)";
             return "inventorySubHierarchyRoot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object InventorySubHierarchyRootFieldSpec(ExplorationContext? ec=null)
+        public static object InventorySubHierarchyRootFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new InventorySubHierarchyRoot() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8673,10 +8691,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\nworkloadId: $workloadId\nsnapshotId: $snapshotId\n)";
             return "investigationCsvDownloadLink" + args + "\n{\n" + fs + "}\n";
         }
-        public static object InvestigationCsvDownloadLinkFieldSpec(ExplorationContext? ec=null)
+        public static object InvestigationCsvDownloadLinkFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new InvestigationCsvDownloadLinkReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8691,10 +8709,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "ipWhitelist" + args + "\n{\n" + fs + "}\n";
         }
-        public static object IpWhitelistFieldSpec(ExplorationContext? ec=null)
+        public static object IpWhitelistFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetWhitelistReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8709,10 +8727,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnapshotId: $snapshotId\n)";
             return "isAwsNativeEbsVolumeSnapshotRestorable" + args + "\n{\n" + fs + "}\n";
         }
-        public static object IsAwsNativeEbsVolumeSnapshotRestorableFieldSpec(ExplorationContext? ec=null)
+        public static object IsAwsNativeEbsVolumeSnapshotRestorableFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new IsVolumeSnapshotRestorableReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8727,10 +8745,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "isCloudClusterDiskUpgradeAvailable" + args + "\n{\n" + fs + "}\n";
         }
-        public static object IsCloudClusterDiskUpgradeAvailableFieldSpec(ExplorationContext? ec=null)
+        public static object IsCloudClusterDiskUpgradeAvailableFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new IsCloudClusterDiskUpgradeAvailableReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8745,10 +8763,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnapshotIds: $snapshotIds\n)";
             return "isCloudNativeFileRecoveryFeasible" + args + "\n{\n" + fs + "}\n";
         }
-        public static object IsCloudNativeFileRecoveryFeasibleFieldSpec(ExplorationContext? ec=null)
+        public static object IsCloudNativeFileRecoveryFeasibleFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidateCloudNativeFileRecoveryFeasibilityReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8763,10 +8781,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "isLoggedIntoRubrikSupportPortal" + args + "\n{\n" + fs + "}\n";
         }
-        public static object IsLoggedIntoRubrikSupportPortalFieldSpec(ExplorationContext? ec=null)
+        public static object IsLoggedIntoRubrikSupportPortalFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SupportPortalStatusReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8781,10 +8799,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "isUpgradeAvailable" + args + "\n{\n" + fs + "}\n";
         }
-        public static object IsUpgradeAvailableFieldSpec(ExplorationContext? ec=null)
+        public static object IsUpgradeAvailableFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmUpgradeAvailabilityReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8799,10 +8817,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "isUpgradeRecommended" + args + "\n{\n" + fs + "}\n";
         }
-        public static object IsUpgradeRecommendedFieldSpec(ExplorationContext? ec=null)
+        public static object IsUpgradeRecommendedFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmUpgradeRecommendationReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8817,10 +8835,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nserviceTier: $serviceTier\nregion: $region\nsubscriptionId: $subscriptionId\n)";
             return "isZrsAvailableForLocation" + args + "\n{\n" + fs + "}\n";
         }
-        public static object IsZrsAvailableForLocationFieldSpec(ExplorationContext? ec=null)
+        public static object IsZrsAvailableForLocationFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ZrsAvailabilityReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8835,10 +8853,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nissueId: $issueId\n)";
             return "issue" + args + "\n{\n" + fs + "}\n";
         }
-        public static object IssueFieldSpec(ExplorationContext? ec=null)
+        public static object IssueFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Issue() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8853,10 +8871,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nstatus: $status\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "issues" + args + "\n{\n" + fs + "}\n";
         }
-        public static object IssuesFieldSpec(ExplorationContext? ec=null)
+        public static object IssuesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new IssueConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8871,10 +8889,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "jobInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object JobInfoFieldSpec(ExplorationContext? ec=null)
+        public static object JobInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new JobInfo() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8889,10 +8907,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\napp: $app\nversion: $version\nretrieveLatestVersion: $retrieveLatestVersion\ntargetVersion: $targetVersion\nk8sClusterId: $k8sClusterId\n)";
             return "k8sAppManifest" + args + "\n{\n" + fs + "}\n";
         }
-        public static object K8sAppManifestFieldSpec(ExplorationContext? ec=null)
+        public static object K8sAppManifestFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new K8sAppManifest() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8907,10 +8925,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "k8sCluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object K8sClusterFieldSpec(ExplorationContext? ec=null)
+        public static object K8sClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new K8sCluster() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8925,10 +8943,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "k8sClusters" + args + "\n{\n" + fs + "}\n";
         }
-        public static object K8sClustersFieldSpec(ExplorationContext? ec=null)
+        public static object K8sClustersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new K8sClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8943,10 +8961,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "k8sNamespace" + args + "\n{\n" + fs + "}\n";
         }
-        public static object K8sNamespaceFieldSpec(ExplorationContext? ec=null)
+        public static object K8sNamespaceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new K8sNamespace() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8961,10 +8979,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nk8sClusterId: $k8sClusterId\n)";
             return "k8sNamespaces" + args + "\n{\n" + fs + "}\n";
         }
-        public static object K8sNamespacesFieldSpec(ExplorationContext? ec=null)
+        public static object K8sNamespacesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new K8sNamespaceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8979,10 +8997,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "k8sProtectionSetSnapshots" + args + "\n{\n" + fs + "}\n";
         }
-        public static object K8sProtectionSetSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object K8sProtectionSetSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new K8sSnapshotSummaryListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -8997,10 +9015,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnapshotId: $snapshotId\nnamespaceId: $namespaceId\nisReplica: $isReplica\n)";
             return "k8sSnapshotInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object K8sSnapshotInfoFieldSpec(ExplorationContext? ec=null)
+        public static object K8sSnapshotInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new K8sSnapshotInfo() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9015,10 +9033,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nid: $id\n)";
             return "knowledgeBaseArticle" + args + "\n{\n" + fs + "}\n";
         }
-        public static object KnowledgeBaseArticleFieldSpec(ExplorationContext? ec=null)
+        public static object KnowledgeBaseArticleFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new KnowledgeBaseArticle() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9033,10 +9051,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "kubernetesCluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object KubernetesClusterFieldSpec(ExplorationContext? ec=null)
+        public static object KubernetesClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new KubernetesCluster() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9051,10 +9069,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "kubernetesClusters" + args + "\n{\n" + fs + "}\n";
         }
-        public static object KubernetesClustersFieldSpec(ExplorationContext? ec=null)
+        public static object KubernetesClustersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new KubernetesClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9069,10 +9087,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "kubernetesProtectionSet" + args + "\n{\n" + fs + "}\n";
         }
-        public static object KubernetesProtectionSetFieldSpec(ExplorationContext? ec=null)
+        public static object KubernetesProtectionSetFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new KubernetesProtectionSet() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9087,10 +9105,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nk8sClusterOptionalId: $k8sClusterOptionalId\n)";
             return "kubernetesProtectionSets" + args + "\n{\n" + fs + "}\n";
         }
-        public static object KubernetesProtectionSetsFieldSpec(ExplorationContext? ec=null)
+        public static object KubernetesProtectionSetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new KubernetesProtectionSetConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9105,10 +9123,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "kubernetesVirtualMachineSnapshots" + args + "\n{\n" + fs + "}\n";
         }
-        public static object KubernetesVirtualMachineSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object KubernetesVirtualMachineSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new KubernetesVirtualMachineSnapshotsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9123,10 +9141,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "lambdaSettings" + args + "\n{\n" + fs + "}\n";
         }
-        public static object LambdaSettingsFieldSpec(ExplorationContext? ec=null)
+        public static object LambdaSettingsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new LambdaSettings() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9141,10 +9159,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nsearchText: $searchText\nroleIds: $roleIds\n)";
             return "ldapAuthorizedPrincipalConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object LdapAuthorizedPrincipalConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object LdapAuthorizedPrincipalConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AuthorizedPrincipalConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9159,10 +9177,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\n)";
             return "ldapIntegrationConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object LdapIntegrationConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object LdapIntegrationConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new LdapIntegrationConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9177,10 +9195,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nid: $id\nsearchText: $searchText\n)";
             return "ldapPrincipalConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object LdapPrincipalConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object LdapPrincipalConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PrincipalConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9195,10 +9213,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ninput: $input\n)";
             return "legalHoldSnapshotsForSnappable" + args + "\n{\n" + fs + "}\n";
         }
-        public static object LegalHoldSnapshotsForSnappableFieldSpec(ExplorationContext? ec=null)
+        public static object LegalHoldSnapshotsForSnappableFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new LegalHoldSnapshotDetailConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9213,10 +9231,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "licensesForClusterProductSummary" + args + "\n{\n" + fs + "}\n";
         }
-        public static object LicensesForClusterProductSummaryFieldSpec(ExplorationContext? ec=null)
+        public static object LicensesForClusterProductSummaryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new LicensesForClusterProductReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9231,10 +9249,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "linuxFileset" + args + "\n{\n" + fs + "}\n";
         }
-        public static object LinuxFilesetFieldSpec(ExplorationContext? ec=null)
+        public static object LinuxFilesetFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new LinuxFileset() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9249,10 +9267,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\no365AppFilters: $o365AppFilters\no365AppSortByParam: $o365AppSortByParam\n)";
             return "listO365Apps" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ListO365AppsFieldSpec(ExplorationContext? ec=null)
+        public static object ListO365AppsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365AppConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9267,10 +9285,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "lockoutConfig" + args + "\n{\n" + fs + "}\n";
         }
-        public static object LockoutConfigFieldSpec(ExplorationContext? ec=null)
+        public static object LockoutConfigFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new LockoutConfig() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9285,10 +9303,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "lookupAccount" + args + "\n{\n" + fs + "}\n";
         }
-        public static object LookupAccountFieldSpec(ExplorationContext? ec=null)
+        public static object LookupAccountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new LookupAccountReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9303,10 +9321,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "m365BackupStorageLicenseUsage" + args + "\n{\n" + fs + "}\n";
         }
-        public static object M365BackupStorageLicenseUsageFieldSpec(ExplorationContext? ec=null)
+        public static object M365BackupStorageLicenseUsageFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new M365BackupStorageLicenseUsage() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9321,10 +9339,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nm365BackupStorageObjectRestorePointsInput: $m365BackupStorageObjectRestorePointsInput\n)";
             return "m365BackupStorageObjectRestorePoints" + args + "\n{\n" + fs + "}\n";
         }
-        public static object M365BackupStorageObjectRestorePointsFieldSpec(ExplorationContext? ec=null)
+        public static object M365BackupStorageObjectRestorePointsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new M365BackupStorageRestorePointConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9339,10 +9357,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\ndashboardWorkloadType: $dashboardWorkloadType\n)";
             return "m365DayToDayModeStats" + args + "\n{\n" + fs + "}\n";
         }
-        public static object M365DayToDayModeStatsFieldSpec(ExplorationContext? ec=null)
+        public static object M365DayToDayModeStatsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new DayToDayModeStats() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9357,10 +9375,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "m365DirectoryObjectAttributes" + args + "\n{\n" + fs + "}\n";
         }
-        public static object M365DirectoryObjectAttributesFieldSpec(ExplorationContext? ec=null)
+        public static object M365DirectoryObjectAttributesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ListO365DirectoryObjectAttributesResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9375,10 +9393,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgID: $orgID\n)";
             return "m365LicenseEntitlement" + args + "\n{\n" + fs + "}\n";
         }
-        public static object M365LicenseEntitlementFieldSpec(ExplorationContext? ec=null)
+        public static object M365LicenseEntitlementFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new M365LicenseEntitlementReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9393,10 +9411,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\ndashboardWorkloadType: $dashboardWorkloadType\nbackupStatsTimeRange: $backupStatsTimeRange\n)";
             return "m365OnboardingModeBackupStats" + args + "\n{\n" + fs + "}\n";
         }
-        public static object M365OnboardingModeBackupStatsFieldSpec(ExplorationContext? ec=null)
+        public static object M365OnboardingModeBackupStatsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OnboardingModeBackupStats() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9411,10 +9429,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\ndashboardWorkloadType: $dashboardWorkloadType\n)";
             return "m365OnboardingModeStats" + args + "\n{\n" + fs + "}\n";
         }
-        public static object M365OnboardingModeStatsFieldSpec(ExplorationContext? ec=null)
+        public static object M365OnboardingModeStatsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OnboardingModeStats() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9429,10 +9447,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\n)";
             return "m365OrgBackupLocations" + args + "\n{\n" + fs + "}\n";
         }
-        public static object M365OrgBackupLocationsFieldSpec(ExplorationContext? ec=null)
+        public static object M365OrgBackupLocationsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new M365OrgBackupLocations() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9447,10 +9465,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\n)";
             return "m365OrgOperationModes" + args + "\n{\n" + fs + "}\n";
         }
-        public static object M365OrgOperationModesFieldSpec(ExplorationContext? ec=null)
+        public static object M365OrgOperationModesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new M365OrgOperationModes() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9465,10 +9483,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\n)";
             return "m365Regions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object M365RegionsFieldSpec(ExplorationContext? ec=null)
+        public static object M365RegionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new M365RegionsResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9483,10 +9501,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "managedVolume" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ManagedVolumeFieldSpec(ExplorationContext? ec=null)
+        public static object ManagedVolumeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ManagedVolume() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9501,10 +9519,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "managedVolumeInventoryStats" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ManagedVolumeInventoryStatsFieldSpec(ExplorationContext? ec=null)
+        public static object ManagedVolumeInventoryStatsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ManagedVolumeInventoryStats() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9519,10 +9537,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "managedVolumeLiveMounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ManagedVolumeLiveMountsFieldSpec(ExplorationContext? ec=null)
+        public static object ManagedVolumeLiveMountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ManagedVolumeMountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9537,10 +9555,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "managedVolumes" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ManagedVolumesFieldSpec(ExplorationContext? ec=null)
+        public static object ManagedVolumesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ManagedVolumeConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9555,10 +9573,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "mfaSetting" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MfaSettingFieldSpec(ExplorationContext? ec=null)
+        public static object MfaSettingFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetMfaSettingReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9573,10 +9591,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\nmicrosoftObjectType: $microsoftObjectType\nprotectionType: $protectionType\n)";
             return "microsoftGroups" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MicrosoftGroupsFieldSpec(ExplorationContext? ec=null)
+        public static object MicrosoftGroupsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MicrosoftGroupConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9591,10 +9609,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\nexcludeChildSites: $excludeChildSites\nprotectionType: $protectionType\n)";
             return "microsoftSites" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MicrosoftSitesFieldSpec(ExplorationContext? ec=null)
+        public static object MicrosoftSitesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MicrosoftSiteConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9609,10 +9627,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfeatureListMinimumCdmVersion: $featureListMinimumCdmVersion\n)";
             return "minimumCdmVersionForFeatureSet" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MinimumCdmVersionForFeatureSetFieldSpec(ExplorationContext? ec=null)
+        public static object MinimumCdmVersionForFeatureSetFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FeatureListMinimumCdmVersionReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9627,10 +9645,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mongoBulkRecoverableRanges" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongoBulkRecoverableRangesFieldSpec(ExplorationContext? ec=null)
+        public static object MongoBulkRecoverableRangesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongoRecoverableRanges() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9645,10 +9663,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "mongoCollection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongoCollectionFieldSpec(ExplorationContext? ec=null)
+        public static object MongoCollectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongoCollection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9663,10 +9681,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mongoCollections" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongoCollectionsFieldSpec(ExplorationContext? ec=null)
+        public static object MongoCollectionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongoCollectionConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9681,10 +9699,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "mongoDatabase" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongoDatabaseFieldSpec(ExplorationContext? ec=null)
+        public static object MongoDatabaseFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongoDatabase() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9699,10 +9717,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mongoDatabases" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongoDatabasesFieldSpec(ExplorationContext? ec=null)
+        public static object MongoDatabasesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongoDatabaseConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9717,10 +9735,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mongoRecoverableRanges" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongoRecoverableRangesFieldSpec(ExplorationContext? ec=null)
+        public static object MongoRecoverableRangesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongoRecoverableRanges() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9735,10 +9753,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "mongoSource" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongoSourceFieldSpec(ExplorationContext? ec=null)
+        public static object MongoSourceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongoSource() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9753,10 +9771,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mongoSources" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongoSourcesFieldSpec(ExplorationContext? ec=null)
+        public static object MongoSourcesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongoSourceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9771,10 +9789,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mongodbBulkRecoverableRange" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongodbBulkRecoverableRangeFieldSpec(ExplorationContext? ec=null)
+        public static object MongodbBulkRecoverableRangeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MosaicRecoveryRangeResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9789,10 +9807,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "mongodbCollection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongodbCollectionFieldSpec(ExplorationContext? ec=null)
+        public static object MongodbCollectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongodbCollection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9807,10 +9825,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mongodbCollectionRecoverableRange" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongodbCollectionRecoverableRangeFieldSpec(ExplorationContext? ec=null)
+        public static object MongodbCollectionRecoverableRangeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetMosaicRecoverableRangeResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9825,10 +9843,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mongodbCollections" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongodbCollectionsFieldSpec(ExplorationContext? ec=null)
+        public static object MongodbCollectionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongodbCollectionConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9843,10 +9861,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "mongodbDatabase" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongodbDatabaseFieldSpec(ExplorationContext? ec=null)
+        public static object MongodbDatabaseFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongodbDatabase() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9861,10 +9879,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mongodbDatabases" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongodbDatabasesFieldSpec(ExplorationContext? ec=null)
+        public static object MongodbDatabasesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongodbDatabaseConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9879,10 +9897,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "mongodbSource" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongodbSourceFieldSpec(ExplorationContext? ec=null)
+        public static object MongodbSourceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongodbSource() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9897,10 +9915,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mongodbSources" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MongodbSourcesFieldSpec(ExplorationContext? ec=null)
+        public static object MongodbSourcesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongodbSourceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9915,10 +9933,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mosaicBulkRecoveryRange" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MosaicBulkRecoveryRangeFieldSpec(ExplorationContext? ec=null)
+        public static object MosaicBulkRecoveryRangeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MosaicRecoveryRangeResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9933,10 +9951,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mosaicSnapshots" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MosaicSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object MosaicSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ListVersionResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9951,10 +9969,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mosaicStores" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MosaicStoresFieldSpec(ExplorationContext? ec=null)
+        public static object MosaicStoresFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ListStoreResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9969,10 +9987,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mosaicVersions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MosaicVersionsFieldSpec(ExplorationContext? ec=null)
+        public static object MosaicVersionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ListVersionResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -9987,10 +10005,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "mssqlAvailabilityGroup" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlAvailabilityGroupFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlAvailabilityGroupFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlAvailabilityGroup() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10005,10 +10023,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfids: $fids\nfilters: $filters\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "mssqlAvailabilityGroupDatabaseVirtualGroups" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlAvailabilityGroupDatabaseVirtualGroupsFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlAvailabilityGroupDatabaseVirtualGroupsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlDatabaseVirtualGroupConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10023,10 +10041,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "mssqlAvailabilityGroupVirtualGroups" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlAvailabilityGroupVirtualGroupsFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlAvailabilityGroupVirtualGroupsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlAvailabilityGroupVirtualGroupConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10041,10 +10059,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\ninput: $input\nsortBy: $sortBy\nfilters: $filters\n)";
             return "mssqlCompatibleInstances" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlCompatibleInstancesFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlCompatibleInstancesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlInstanceSummaryListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10059,10 +10077,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "mssqlDatabase" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlDatabaseFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlDatabaseFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlDatabase() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10077,10 +10095,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nfilters: $filters\n)";
             return "mssqlDatabaseLiveMounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlDatabaseLiveMountsFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlDatabaseLiveMountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlDatabaseLiveMountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10095,10 +10113,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mssqlDatabaseMissedRecoverableRanges" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlDatabaseMissedRecoverableRangesFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlDatabaseMissedRecoverableRangesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlMissedRecoverableRangeListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10113,10 +10131,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mssqlDatabaseMissedSnapshots" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlDatabaseMissedSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlDatabaseMissedSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MissedSnapshotListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10131,10 +10149,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mssqlDatabaseRestoreEstimate" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlDatabaseRestoreEstimateFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlDatabaseRestoreEstimateFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlRestoreEstimateResult() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10149,10 +10167,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mssqlDatabases" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlDatabasesFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlDatabasesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlDatabaseConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10167,10 +10185,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mssqlDefaultProperties" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlDefaultPropertiesFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlDefaultPropertiesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new UpdateMssqlDefaultPropertiesReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10185,10 +10203,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mssqlDefaultPropertiesOnCluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlDefaultPropertiesOnClusterFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlDefaultPropertiesOnClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlDefaultPropertiesOnClusterReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10203,10 +10221,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "mssqlInstance" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlInstanceFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlInstanceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlInstance() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10221,10 +10239,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mssqlJobStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlJobStatusFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlJobStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10239,10 +10257,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mssqlLogShippingTargets" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlLogShippingTargetsFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlLogShippingTargetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlLogShippingSummaryV2ListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10257,10 +10275,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "mssqlRecoverableRanges" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlRecoverableRangesFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlRecoverableRangesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlRecoverableRangeListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10275,10 +10293,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "mssqlTopLevelDescendants" + args + "\n{\n" + fs + "}\n";
         }
-        public static object MssqlTopLevelDescendantsFieldSpec(ExplorationContext? ec=null)
+        public static object MssqlTopLevelDescendantsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MssqlTopLevelDescendantTypeConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10293,10 +10311,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "nasFileset" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NasFilesetFieldSpec(ExplorationContext? ec=null)
+        public static object NasFilesetFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NasFileset() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10311,10 +10329,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "nasNamespace" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NasNamespaceFieldSpec(ExplorationContext? ec=null)
+        public static object NasNamespaceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NasNamespace() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10329,10 +10347,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nasNamespaces" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NasNamespacesFieldSpec(ExplorationContext? ec=null)
+        public static object NasNamespacesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NasNamespaceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10347,10 +10365,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "nasShare" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NasShareFieldSpec(ExplorationContext? ec=null)
+        public static object NasShareFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NasShare() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10365,10 +10383,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nasShares" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NasSharesFieldSpec(ExplorationContext? ec=null)
+        public static object NasSharesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NasShareConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10383,10 +10401,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "nasSystem" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NasSystemFieldSpec(ExplorationContext? ec=null)
+        public static object NasSystemFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NasSystem() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10401,10 +10419,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nasSystems" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NasSystemsFieldSpec(ExplorationContext? ec=null)
+        public static object NasSystemsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NasSystemConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10419,10 +10437,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "nasTopLevelDescendants" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NasTopLevelDescendantsFieldSpec(ExplorationContext? ec=null)
+        public static object NasTopLevelDescendantsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmHierarchyObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10437,10 +10455,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "nasVolume" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NasVolumeFieldSpec(ExplorationContext? ec=null)
+        public static object NasVolumeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NasVolume() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10455,10 +10473,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusters: $clusters\n)";
             return "ncdBackEndCapacity" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NcdBackEndCapacityFieldSpec(ExplorationContext? ec=null)
+        public static object NcdBackEndCapacityFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NcdBackEndCapacity() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10473,10 +10491,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusters: $clusters\n)";
             return "ncdFrontEndCapacity" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NcdFrontEndCapacityFieldSpec(ExplorationContext? ec=null)
+        public static object NcdFrontEndCapacityFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NcdFrontEndCapacity() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10491,10 +10509,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusters: $clusters\n)";
             return "ncdObjectProtectionStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NcdObjectProtectionStatusFieldSpec(ExplorationContext? ec=null)
+        public static object NcdObjectProtectionStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NcdObjectProtectionStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10509,10 +10527,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "ncdVmImageUrl" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NcdVmImageUrlFieldSpec(ExplorationContext? ec=null)
+        public static object NcdVmImageUrlFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NcdVmImageUrl() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10527,10 +10545,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "networkThrottle" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NetworkThrottleFieldSpec(ExplorationContext? ec=null)
+        public static object NetworkThrottleFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NetworkThrottleSummaryListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10545,10 +10563,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "nfAnomalyResults" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NfAnomalyResultsFieldSpec(ExplorationContext? ec=null)
+        public static object NfAnomalyResultsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NfAnomalyResultConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10563,10 +10581,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ngroupBy: $groupBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "nfAnomalyResultsGrouped" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NfAnomalyResultsGroupedFieldSpec(ExplorationContext? ec=null)
+        public static object NfAnomalyResultsGroupedFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NfAnomalyResultGroupedDataConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10581,10 +10599,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "nodeRemovalCancelPermission" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NodeRemovalCancelPermissionFieldSpec(ExplorationContext? ec=null)
+        public static object NodeRemovalCancelPermissionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NodeRemovalCancelPermissionReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10599,10 +10617,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "nodeToReplace" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NodeToReplaceFieldSpec(ExplorationContext? ec=null)
+        public static object NodeToReplaceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NodeToReplaceReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10617,10 +10635,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "nodeTunnelStatuses" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NodeTunnelStatusesFieldSpec(ExplorationContext? ec=null)
+        public static object NodeTunnelStatusesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NodeTunnelStatusConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10635,10 +10653,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "nutanixBrowseSnapshot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixBrowseSnapshotFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixBrowseSnapshotFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new BrowseResponseListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10653,10 +10671,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "nutanixCategory" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixCategoryFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixCategoryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixCategory() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10671,10 +10689,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "nutanixCategoryValue" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixCategoryValueFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixCategoryValueFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixCategoryValue() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10689,10 +10707,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "nutanixCluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixClusterFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixCluster() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10707,10 +10725,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "nutanixClusterAsyncRequestStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixClusterAsyncRequestStatusFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixClusterAsyncRequestStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10725,10 +10743,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "nutanixClusterContainers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixClusterContainersFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixClusterContainersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixContainerListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10743,10 +10761,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "nutanixClusterNetworks" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixClusterNetworksFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixClusterNetworksFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixNetworkListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10761,10 +10779,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nutanixClusters" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixClustersFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixClustersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10779,10 +10797,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "nutanixMounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixMountsFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixMountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixLiveMountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10797,10 +10815,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "nutanixPrismCentral" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixPrismCentralFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixPrismCentralFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixPrismCentral() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10815,10 +10833,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nutanixPrismCentrals" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixPrismCentralsFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixPrismCentralsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixPrismCentralConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10833,10 +10851,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "nutanixSnapshotDetail" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixSnapshotDetailFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixSnapshotDetailFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixVmSnapshotDetail() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10851,10 +10869,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "nutanixSnapshotVdisks" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixSnapshotVdisksFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixSnapshotVdisksFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixVmSnapshotVdiskDetailListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10869,10 +10887,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "nutanixTopLevelDescendants" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixTopLevelDescendantsFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixTopLevelDescendantsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmHierarchyObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10887,10 +10905,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "nutanixVm" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixVmFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixVmFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixVm() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10905,10 +10923,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "nutanixVmAsyncRequestStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixVmAsyncRequestStatusFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixVmAsyncRequestStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10923,10 +10941,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "nutanixVmMissedSnapshots" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixVmMissedSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixVmMissedSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MissedSnapshotListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10941,10 +10959,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nutanixVms" + args + "\n{\n" + fs + "}\n";
         }
-        public static object NutanixVmsFieldSpec(ExplorationContext? ec=null)
+        public static object NutanixVmsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixVmConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10959,10 +10977,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365Calendar" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365CalendarFieldSpec(ExplorationContext? ec=null)
+        public static object O365CalendarFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365Calendar() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10977,10 +10995,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "o365Consumption" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365ConsumptionFieldSpec(ExplorationContext? ec=null)
+        public static object O365ConsumptionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365Consumption() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -10995,10 +11013,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\nsnappableType: $snappableType\n)";
             return "o365Groups" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365GroupsFieldSpec(ExplorationContext? ec=null)
+        public static object O365GroupsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365GroupConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11013,10 +11031,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "o365License" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365LicenseFieldSpec(ExplorationContext? ec=null)
+        public static object O365LicenseFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365License() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11031,10 +11049,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365Mailbox" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365MailboxFieldSpec(ExplorationContext? ec=null)
+        public static object O365MailboxFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365Mailbox() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11049,10 +11067,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\n)";
             return "o365Mailboxes" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365MailboxesFieldSpec(ExplorationContext? ec=null)
+        public static object O365MailboxesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365MailboxConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11067,10 +11085,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365ObjectAncestors" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365ObjectAncestorsFieldSpec(ExplorationContext? ec=null)
+        public static object O365ObjectAncestorsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetImplicitlyAuthorizedAncestorSummariesResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11085,10 +11103,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365Onedrive" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365OnedriveFieldSpec(ExplorationContext? ec=null)
+        public static object O365OnedriveFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365Onedrive() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11103,10 +11121,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\n)";
             return "o365Onedrives" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365OnedrivesFieldSpec(ExplorationContext? ec=null)
+        public static object O365OnedrivesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365OnedriveConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11121,10 +11139,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "o365Org" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365OrgFieldSpec(ExplorationContext? ec=null)
+        public static object O365OrgFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365Org() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11139,10 +11157,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\nsnappableType: $snappableType\n)";
             return "o365OrgAtSnappableLevel" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365OrgAtSnappableLevelFieldSpec(ExplorationContext? ec=null)
+        public static object O365OrgAtSnappableLevelFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365Org() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11157,10 +11175,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "o365OrgSummaries" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365OrgSummariesFieldSpec(ExplorationContext? ec=null)
+        public static object O365OrgSummariesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetImplicitlyAuthorizedObjectSummariesResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11175,10 +11193,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nworkloadHierarchy: $workloadHierarchy\n)";
             return "o365Orgs" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365OrgsFieldSpec(ExplorationContext? ec=null)
+        public static object O365OrgsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365OrgConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11193,10 +11211,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\n)";
             return "o365ServiceAccount" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365ServiceAccountFieldSpec(ExplorationContext? ec=null)
+        public static object O365ServiceAccountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365ServiceAccountStatusResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11211,10 +11229,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgID: $orgID\n)";
             return "o365ServiceStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365ServiceStatusFieldSpec(ExplorationContext? ec=null)
+        public static object O365ServiceStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetO365ServiceStatusResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11229,10 +11247,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365SharepointDrive" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365SharepointDriveFieldSpec(ExplorationContext? ec=null)
+        public static object O365SharepointDriveFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365SharepointDrive() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11247,10 +11265,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\n)";
             return "o365SharepointDrives" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365SharepointDrivesFieldSpec(ExplorationContext? ec=null)
+        public static object O365SharepointDrivesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365SharepointDriveConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11265,10 +11283,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365SharepointList" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365SharepointListFieldSpec(ExplorationContext? ec=null)
+        public static object O365SharepointListFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365SharepointList() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11283,10 +11301,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\n)";
             return "o365SharepointLists" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365SharepointListsFieldSpec(ExplorationContext? ec=null)
+        public static object O365SharepointListsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365SharepointListConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11301,10 +11319,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nobjectTypeFilter: $objectTypeFilter\nincludeEntireHierarchy: $includeEntireHierarchy\nfid: $fid\n)";
             return "o365SharepointObjectList" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365SharepointObjectListFieldSpec(ExplorationContext? ec=null)
+        public static object O365SharepointObjectListFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365SharepointObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11319,10 +11337,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nfid: $fid\n)";
             return "o365SharepointObjects" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365SharepointObjectsFieldSpec(ExplorationContext? ec=null)
+        public static object O365SharepointObjectsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365SharepointObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11337,10 +11355,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nobjectTypeFilter: $objectTypeFilter\nincludeEntireHierarchy: $includeEntireHierarchy\nfid: $fid\n)";
             return "o365SharepointObjectsNew" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365SharepointObjectsNewFieldSpec(ExplorationContext? ec=null)
+        public static object O365SharepointObjectsNewFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365SharepointObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11355,10 +11373,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsiteFid: $siteFid\n)";
             return "o365SharepointSite" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365SharepointSiteFieldSpec(ExplorationContext? ec=null)
+        public static object O365SharepointSiteFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365Site() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11373,10 +11391,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\n)";
             return "o365SharepointSites" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365SharepointSitesFieldSpec(ExplorationContext? ec=null)
+        public static object O365SharepointSitesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365SiteConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11391,10 +11409,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365Site" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365SiteFieldSpec(ExplorationContext? ec=null)
+        public static object O365SiteFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365Site() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11409,10 +11427,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\nexcludeChildSites: $excludeChildSites\n)";
             return "o365Sites" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365SitesFieldSpec(ExplorationContext? ec=null)
+        public static object O365SitesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365SiteConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11427,10 +11445,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgID: $orgID\n)";
             return "o365StorageStats" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365StorageStatsFieldSpec(ExplorationContext? ec=null)
+        public static object O365StorageStatsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetO365StorageStatsResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11445,10 +11463,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365Team" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365TeamFieldSpec(ExplorationContext? ec=null)
+        public static object O365TeamFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365Teams() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11463,10 +11481,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nexcludeArchived: $excludeArchived\nchannelMembershipTypeFilter: $channelMembershipTypeFilter\nnameFilter: $nameFilter\n)";
             return "o365TeamChannels" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365TeamChannelsFieldSpec(ExplorationContext? ec=null)
+        public static object O365TeamChannelsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365TeamsChannelConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11481,10 +11499,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\no365OrgId: $o365OrgId\nnameFilter: $nameFilter\n)";
             return "o365TeamPostedBy" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365TeamPostedByFieldSpec(ExplorationContext? ec=null)
+        public static object O365TeamPostedByFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365TeamConversationsSenderConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11499,10 +11517,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\n)";
             return "o365Teams" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365TeamsFieldSpec(ExplorationContext? ec=null)
+        public static object O365TeamsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365TeamsConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11517,10 +11535,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "o365User" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365UserFieldSpec(ExplorationContext? ec=null)
+        public static object O365UserFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365User() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11535,12 +11553,30 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nfid: $fid\n)";
             return "o365UserObjects" + args + "\n{\n" + fs + "}\n";
         }
-        public static object O365UserObjectsFieldSpec(ExplorationContext? ec=null)
+        public static object O365UserObjectsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365UserDescendantMetadataConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetSelfServiceInfoForUserResp? O365UserSelfServiceInfo
+        // GraphQL -> o365UserSelfServiceInfo: GetSelfServiceInfoForUserResp! (type)
+        public static string O365UserSelfServiceInfo(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "o365UserSelfServiceInfo" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object O365UserSelfServiceInfoFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetSelfServiceInfoForUserResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -11553,10 +11589,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nnumberOfEdges: $numberOfEdges\ncdmOvaLink: $cdmOvaLink\n)";
             return "oauthCodesForEdgeReg" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OauthCodesForEdgeRegFieldSpec(ExplorationContext? ec=null)
+        public static object OauthCodesForEdgeRegFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OauthCodesForEdgeRegReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11571,10 +11607,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfilter: $filter\nsort: $sort\nday: $day\ntimezone: $timezone\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "objectFiles" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ObjectFilesFieldSpec(ExplorationContext? ec=null)
+        public static object ObjectFilesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FileResultConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11589,10 +11625,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntimelineDate: $timelineDate\nhistoricalDeltaDays: $historicalDeltaDays\nincludeWhitelistedResults: $includeWhitelistedResults\nsortOrder: $sortOrder\nfilter: $filter\nsort: $sort\ngroupBy: $groupBy\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "objectTypeAccessSummary" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ObjectTypeAccessSummaryFieldSpec(ExplorationContext? ec=null)
+        public static object ObjectTypeAccessSummaryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ObjectTypeAccessSummaryConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11607,10 +11643,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "oracleAcoExampleDownloadLink" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleAcoExampleDownloadLinkFieldSpec(ExplorationContext? ec=null)
+        public static object OracleAcoExampleDownloadLinkFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleFileDownloadLink() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11625,10 +11661,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "oracleAcoParameters" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleAcoParametersFieldSpec(ExplorationContext? ec=null)
+        public static object OracleAcoParametersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleAcoParameterList() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11643,10 +11679,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "oracleDataGuardGroup" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleDataGuardGroupFieldSpec(ExplorationContext? ec=null)
+        public static object OracleDataGuardGroupFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleDataGuardGroup() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11661,10 +11697,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "oracleDatabase" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleDatabaseFieldSpec(ExplorationContext? ec=null)
+        public static object OracleDatabaseFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleDatabase() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11679,10 +11715,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "oracleDatabaseAsyncRequestDetails" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleDatabaseAsyncRequestDetailsFieldSpec(ExplorationContext? ec=null)
+        public static object OracleDatabaseAsyncRequestDetailsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11697,10 +11733,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "oracleDatabaseLogBackupConfig" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleDatabaseLogBackupConfigFieldSpec(ExplorationContext? ec=null)
+        public static object OracleDatabaseLogBackupConfigFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleLogBackupConfig() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11715,10 +11751,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "oracleDatabases" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleDatabasesFieldSpec(ExplorationContext? ec=null)
+        public static object OracleDatabasesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleDatabaseConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11733,10 +11769,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "oracleHost" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleHostFieldSpec(ExplorationContext? ec=null)
+        public static object OracleHostFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleHost() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11751,10 +11787,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "oracleHostLogBackupConfig" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleHostLogBackupConfigFieldSpec(ExplorationContext? ec=null)
+        public static object OracleHostLogBackupConfigFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleLogBackupConfig() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11769,10 +11805,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "oracleLiveMounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleLiveMountsFieldSpec(ExplorationContext? ec=null)
+        public static object OracleLiveMountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleLiveMountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11787,10 +11823,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "oracleMissedRecoverableRanges" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleMissedRecoverableRangesFieldSpec(ExplorationContext? ec=null)
+        public static object OracleMissedRecoverableRangesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleMissedRecoverableRangeListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11805,10 +11841,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "oracleMissedSnapshots" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleMissedSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object OracleMissedSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new MissedSnapshotListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11823,10 +11859,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "oraclePdbDetails" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OraclePdbDetailsFieldSpec(ExplorationContext? ec=null)
+        public static object OraclePdbDetailsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OraclePdbDetails() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11841,10 +11877,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "oracleRac" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleRacFieldSpec(ExplorationContext? ec=null)
+        public static object OracleRacFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleRac() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11859,10 +11895,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "oracleRacLogBackupConfig" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleRacLogBackupConfigFieldSpec(ExplorationContext? ec=null)
+        public static object OracleRacLogBackupConfigFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleLogBackupConfig() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11877,10 +11913,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "oracleRecoverableRanges" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleRecoverableRangesFieldSpec(ExplorationContext? ec=null)
+        public static object OracleRecoverableRangesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleRecoverableRangeListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11895,10 +11931,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "oracleTopLevelDescendants" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OracleTopLevelDescendantsFieldSpec(ExplorationContext? ec=null)
+        public static object OracleTopLevelDescendantsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OracleTopLevelDescendantTypeConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11913,10 +11949,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\n)";
             return "org" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OrgFieldSpec(ExplorationContext? ec=null)
+        public static object OrgFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Org() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11931,10 +11967,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "orgSecurityPolicy" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OrgSecurityPolicyFieldSpec(ExplorationContext? ec=null)
+        public static object OrgSecurityPolicyFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OrgSecurityPolicy() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11946,13 +11982,13 @@ namespace RubrikSecurityCloud.Types
         public static string Orgs(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nnameFilter: $nameFilter\nmfaEnforcedFilter: $mfaEnforcedFilter\ncrossAccountEnabledFilter: $crossAccountEnabledFilter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nnameFilter: $nameFilter\nmfaEnforcedFilter: $mfaEnforcedFilter\nmfaStatusFilter: $mfaStatusFilter\ncrossAccountEnabledFilter: $crossAccountEnabledFilter\n)";
             return "orgs" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OrgsFieldSpec(ExplorationContext? ec=null)
+        public static object OrgsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OrgConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11967,10 +12003,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgSearchFilter: $orgSearchFilter\n)";
             return "orgsForPrincipal" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OrgsForPrincipalFieldSpec(ExplorationContext? ec=null)
+        public static object OrgsForPrincipalFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OrgsForPrincipalReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -11985,10 +12021,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nhistoryNumHours: $historyNumHours\n)";
             return "overallRansomwareInvestigationSummary" + args + "\n{\n" + fs + "}\n";
         }
-        public static object OverallRansomwareInvestigationSummaryFieldSpec(ExplorationContext? ec=null)
+        public static object OverallRansomwareInvestigationSummaryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new OverallRansomwareInvestigationSummary() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12003,10 +12039,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "passkeyConfig" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PasskeyConfigFieldSpec(ExplorationContext? ec=null)
+        public static object PasskeyConfigFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetPasskeyConfigReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12021,10 +12057,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "passkeyInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PasskeyInfoFieldSpec(ExplorationContext? ec=null)
+        public static object PasskeyInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetPasskeyInfoReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12039,10 +12075,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "passwordComplexityPolicy" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PasswordComplexityPolicyFieldSpec(ExplorationContext? ec=null)
+        public static object PasswordComplexityPolicyFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PasswordComplexityPolicy() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12057,10 +12093,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\npendingActionId: $pendingActionId\n)";
             return "pendingAction" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PendingActionFieldSpec(ExplorationContext? ec=null)
+        public static object PendingActionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PendingAction() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12075,10 +12111,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\n)";
             return "phoenixRolloutProgress" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PhoenixRolloutProgressFieldSpec(ExplorationContext? ec=null)
+        public static object PhoenixRolloutProgressFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PhoenixRolloutProgress() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12093,10 +12129,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "physicalHost" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PhysicalHostFieldSpec(ExplorationContext? ec=null)
+        public static object PhysicalHostFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PhysicalHost() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12111,10 +12147,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostRoot: $hostRoot\nisBulkPolicyAssignmentFlow: $isBulkPolicyAssignmentFlow\n)";
             return "physicalHosts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PhysicalHostsFieldSpec(ExplorationContext? ec=null)
+        public static object PhysicalHostsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PhysicalHostConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12129,10 +12165,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nbeginTime: $beginTime\nendTime: $endTime\n)";
             return "pipelineHealthForTimeRange" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PipelineHealthForTimeRangeFieldSpec(ExplorationContext? ec=null)
+        public static object PipelineHealthForTimeRangeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetPipelineHealthReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12147,10 +12183,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nrootEnum: $rootEnum\n)";
             return "polarisInventorySubHierarchyRoot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PolarisInventorySubHierarchyRootFieldSpec(ExplorationContext? ec=null)
+        public static object PolarisInventorySubHierarchyRootFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PolarisInventorySubHierarchyRoot() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12165,10 +12201,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnapshotFid: $snapshotFid\n)";
             return "polarisSnapshot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PolarisSnapshotFieldSpec(ExplorationContext? ec=null)
+        public static object PolarisSnapshotFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PolarisSnapshot() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12183,10 +12219,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\npolicyObjectFilter: $policyObjectFilter\nexcludeHierarchyObjectList: $excludeHierarchyObjectList\n)";
             return "policies" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PoliciesFieldSpec(ExplorationContext? ec=null)
+        public static object PoliciesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClassificationPolicyDetailConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12201,10 +12237,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\npolicyId: $policyId\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nclusterIdsFilter: $clusterIdsFilter\nreplicationFilter: $replicationFilter\nsearchObjectName: $searchObjectName\nhierarchyAncestorIdFilter: $hierarchyAncestorIdFilter\npolicyAssignmentType: $policyAssignmentType\nincludeDataTypeHits: $includeDataTypeHits\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "policy" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PolicyFieldSpec(ExplorationContext? ec=null)
+        public static object PolicyFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClassificationPolicyDetail() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12219,10 +12255,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ndataCategoryIds: $dataCategoryIds\ndataTypeIds: $dataTypeIds\ndataCategoryType: $dataCategoryType\n)";
             return "policyDetails" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PolicyDetailsFieldSpec(ExplorationContext? ec=null)
+        public static object PolicyDetailsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PolicyDetailConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12237,10 +12273,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nincludeWhitelistedResults: $includeWhitelistedResults\n)";
             return "policyObj" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PolicyObjFieldSpec(ExplorationContext? ec=null)
+        public static object PolicyObjFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PolicyObj() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12255,10 +12291,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nobjectIds: $objectIds\n)";
             return "policyObjectUsages" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PolicyObjectUsagesFieldSpec(ExplorationContext? ec=null)
+        public static object PolicyObjectUsagesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PolicyObjectUsageConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12270,13 +12306,13 @@ namespace RubrikSecurityCloud.Types
         public static string PolicyObjs(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nobjectIdsFilter: $objectIdsFilter\nplatformFilter: $platformFilter\nplatformCategoryFilter: $platformCategoryFilter\ncloudAccountIdsFilter: $cloudAccountIdsFilter\nresourceGroupsFilter: $resourceGroupsFilter\nregionsFilter: $regionsFilter\ndataTypeIdsFilter: $dataTypeIdsFilter\nfirstSeenTimeRange: $firstSeenTimeRange\nlastAccessTimeRange: $lastAccessTimeRange\ncreationTimeRange: $creationTimeRange\nlastScanTimeRange: $lastScanTimeRange\nobjectTagsFilter: $objectTagsFilter\nmipLabelsFilter: $mipLabelsFilter\nbackupStatusFilter: $backupStatusFilter\nslaIdsFilter: $slaIdsFilter\nnetworkAccessFilter: $networkAccessFilter\nencryptionFilter: $encryptionFilter\nloggingFilter: $loggingFilter\nviolationSeverityFilter: $violationSeverityFilter\nexposureFilter: $exposureFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nobjectIdsFilter: $objectIdsFilter\nplatformFilter: $platformFilter\nplatformCategoryFilter: $platformCategoryFilter\ncloudAccountIdsFilter: $cloudAccountIdsFilter\nresourceGroupsFilter: $resourceGroupsFilter\nregionsFilter: $regionsFilter\ndataTypeIdsFilter: $dataTypeIdsFilter\nfirstSeenTimeRange: $firstSeenTimeRange\nlastAccessTimeRange: $lastAccessTimeRange\ncreationTimeRange: $creationTimeRange\nlastScanTimeRange: $lastScanTimeRange\nobjectTagsFilter: $objectTagsFilter\nmipLabelsFilter: $mipLabelsFilter\nbackupStatusFilter: $backupStatusFilter\nslaIdsFilter: $slaIdsFilter\nnetworkAccessFilter: $networkAccessFilter\nencryptionFilter: $encryptionFilter\nloggingFilter: $loggingFilter\nviolationSeverityFilter: $violationSeverityFilter\nexposureFilter: $exposureFilter\naccessTypeFilter: $accessTypeFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "policyObjs" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PolicyObjsFieldSpec(ExplorationContext? ec=null)
+        public static object PolicyObjsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PolicyObjConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12291,10 +12327,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "prechecksStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PrechecksStatusFieldSpec(ExplorationContext? ec=null)
+        public static object PrechecksStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PrechecksStatusReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12309,10 +12345,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "prechecksStatusWithNextJobInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PrechecksStatusWithNextJobInfoFieldSpec(ExplorationContext? ec=null)
+        public static object PrechecksStatusWithNextJobInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PrechecksStatusReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12327,10 +12363,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "privateContainerRegistry" + args + "\n{\n" + fs + "}\n";
         }
-        public static object PrivateContainerRegistryFieldSpec(ExplorationContext? ec=null)
+        public static object PrivateContainerRegistryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new PrivateContainerRegistryReplyType() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12345,10 +12381,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "processedRansomwareInvestigationWorkloadCount" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ProcessedRansomwareInvestigationWorkloadCountFieldSpec(ExplorationContext? ec=null)
+        public static object ProcessedRansomwareInvestigationWorkloadCountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ProcessedRansomwareInvestigationWorkloadCountReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12363,10 +12399,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nid: $id\n)";
             return "productDocumentation" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ProductDocumentationFieldSpec(ExplorationContext? ec=null)
+        public static object ProductDocumentationFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ProductDocumentation() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12381,10 +12417,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nrootOptionalFid: $rootOptionalFid\nslaIds: $slaIds\nfilter: $filter\nobjectTypeFilter: $objectTypeFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "protectedObjectsConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ProtectedObjectsConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object ProtectedObjectsConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ProtectedObjectsConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12399,10 +12435,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nqueryDatastoreFreespaceThresholdsInput: $queryDatastoreFreespaceThresholdsInput\n)";
             return "queryDatastoreFreespaceThresholds" + args + "\n{\n" + fs + "}\n";
         }
-        public static object QueryDatastoreFreespaceThresholdsFieldSpec(ExplorationContext? ec=null)
+        public static object QueryDatastoreFreespaceThresholdsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new QueryDatastoreFreespaceThresholdsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12417,10 +12453,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortOrder: $sortOrder\nsortBy: $sortBy\n)";
             return "radarClusterConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RadarClusterConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object RadarClusterConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12435,10 +12471,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nbeginTime: $beginTime\nendTime: $endTime\nreturnOnlyForAnomalousEntities: $returnOnlyForAnomalousEntities\n)";
             return "ransomwareDetectionWorkloadLocations" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RansomwareDetectionWorkloadLocationsFieldSpec(ExplorationContext? ec=null)
+        public static object RansomwareDetectionWorkloadLocationsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ListLocationsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12453,10 +12489,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nstartDay: $startDay\nendDay: $endDay\ntimezone: $timezone\nobjectTypeFilter: $objectTypeFilter\nclusterUuidFilter: $clusterUuidFilter\nslaFidFilter: $slaFidFilter\nhideSuspiciousDataIfNonAnomalous: $hideSuspiciousDataIfNonAnomalous\n)";
             return "ransomwareInvestigationAnalysisSummary" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RansomwareInvestigationAnalysisSummaryFieldSpec(ExplorationContext? ec=null)
+        public static object RansomwareInvestigationAnalysisSummaryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RansomwareInvestigationAnalysisSummaryReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12471,10 +12507,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "ransomwareInvestigationEnablement" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RansomwareInvestigationEnablementFieldSpec(ExplorationContext? ec=null)
+        public static object RansomwareInvestigationEnablementFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RansomwareInvestigationEnablementReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12489,10 +12525,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\nmanagedId: $managedId\nsnapshotId: $snapshotId\n)";
             return "ransomwareResult" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RansomwareResultFieldSpec(ExplorationContext? ec=null)
+        public static object RansomwareResultFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RansomwareResult() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12507,10 +12543,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\nmanagedId: $managedId\nsnapshotId: $snapshotId\n)";
             return "ransomwareResultOpt" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RansomwareResultOptFieldSpec(ExplorationContext? ec=null)
+        public static object RansomwareResultOptFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RansomwareResult() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12525,10 +12561,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "ransomwareResults" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RansomwareResultsFieldSpec(ExplorationContext? ec=null)
+        public static object RansomwareResultsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RansomwareResultConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12543,10 +12579,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ngroupBy: $groupBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "ransomwareResultsGrouped" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RansomwareResultsGroupedFieldSpec(ExplorationContext? ec=null)
+        public static object RansomwareResultsGroupedFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RansomwareResultGroupedDataConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12561,10 +12597,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nrcsAzureTargetConsumptionStatsRequest: $rcsAzureTargetConsumptionStatsRequest\n)";
             return "rcsArchivalLocationsConsumptionStats" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RcsArchivalLocationsConsumptionStatsFieldSpec(ExplorationContext? ec=null)
+        public static object RcsArchivalLocationsConsumptionStatsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RcsAzureArchivalLocationsConsumptionStatsOutput() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12579,10 +12615,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "rcvAccountEntitlement" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RcvAccountEntitlementFieldSpec(ExplorationContext? ec=null)
+        public static object RcvAccountEntitlementFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RcvAccountEntitlement() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12597,10 +12633,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrdsInstanceName: $rdsInstanceName\nrdsDatabaseRubrikId: $rdsDatabaseRubrikId\n)";
             return "rdsInstanceDetailsFromAws" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RdsInstanceDetailsFromAwsFieldSpec(ExplorationContext? ec=null)
+        public static object RdsInstanceDetailsFromAwsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RdsInstanceDetailsFromAws() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12615,10 +12651,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "removedNodeDetails" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RemovedNodeDetailsFieldSpec(ExplorationContext? ec=null)
+        public static object RemovedNodeDetailsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RemoveNodeDetailsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12633,10 +12669,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "replicationIncomingStats" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ReplicationIncomingStatsFieldSpec(ExplorationContext? ec=null)
+        public static object ReplicationIncomingStatsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new InternalReplicationBandwidthIncomingResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12651,10 +12687,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "replicationNetworkThrottleBypass" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ReplicationNetworkThrottleBypassFieldSpec(ExplorationContext? ec=null)
+        public static object ReplicationNetworkThrottleBypassFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ReplicationTargetThrottleBypassSummaryListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12669,10 +12705,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "replicationNetworkThrottleBypassById" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ReplicationNetworkThrottleBypassByIdFieldSpec(ExplorationContext? ec=null)
+        public static object ReplicationNetworkThrottleBypassByIdFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ReplicationNetworkThrottleBypassReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12687,10 +12723,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "replicationOutgoingStats" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ReplicationOutgoingStatsFieldSpec(ExplorationContext? ec=null)
+        public static object ReplicationOutgoingStatsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new InternalReplicationBandwidthOutgoingResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12705,10 +12741,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "replicationPairs" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ReplicationPairsFieldSpec(ExplorationContext? ec=null)
+        public static object ReplicationPairsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ReplicationPairConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12723,30 +12759,30 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ndataView: $dataView\ncolumns: $columns\nfilters: $filters\ngroupBy: $groupBy\nsecondaryGroupBy: $secondaryGroupBy\naggregations: $aggregations\nsortBy: $sortBy\nsortOrder: $sortOrder\ntimezone: $timezone\n)";
             return "reportData" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ReportDataFieldSpec(ExplorationContext? ec=null)
+        public static object ReportDataFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RowConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
-        //      C# -> ActiveDirectoryObjectRecoveryDryRunResponse? RestoreObjectsDryRun
-        // GraphQL -> restoreObjectsDryRun: ActiveDirectoryObjectRecoveryDryRunResponse! (type)
-        public static string RestoreObjectsDryRun(object fsObj)
+        //      C# -> ResetTypeOfRemovalJob? ResetTypeOfRemovalJob
+        // GraphQL -> resetTypeOfRemovalJob: ResetTypeOfRemovalJob! (type)
+        public static string ResetTypeOfRemovalJob(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nid: $id\nconfig: $config\nexportId: $exportId\nshouldReportOnlyChangedAttrs: $shouldReportOnlyChangedAttrs\nshouldReportOnlyChangedValues: $shouldReportOnlyChangedValues\n)";
-            return "restoreObjectsDryRun" + args + "\n{\n" + fs + "}\n";
+            string args = "\n(\ninput: $input\n)";
+            return "resetTypeOfRemovalJob" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RestoreObjectsDryRunFieldSpec(ExplorationContext? ec=null)
+        public static object ResetTypeOfRemovalJobFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
-            var fieldSpecObj = new ActiveDirectoryObjectRecoveryDryRunResponse() ;
+            var fieldSpecObj = new ResetTypeOfRemovalJob() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -12759,10 +12795,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nnameFilter: $nameFilter\n)";
             return "roleTemplates" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RoleTemplatesFieldSpec(ExplorationContext? ec=null)
+        public static object RoleTemplatesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RoleTemplateConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12774,13 +12810,13 @@ namespace RubrikSecurityCloud.Types
         public static string RscPermsToCdmInfo(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\npermissions: $permissions\nroleId: $roleId\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\npermissions: $permissions\nroleId: $roleId\nprotectableClusters: $protectableClusters\n)";
             return "rscPermsToCdmInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object RscPermsToCdmInfoFieldSpec(ExplorationContext? ec=null)
+        public static object RscPermsToCdmInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RscPermsToCdmInfoOut() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12795,12 +12831,30 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nbucketName: $bucketName\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "s3BucketStateForRecovery" + args + "\n{\n" + fs + "}\n";
         }
-        public static object S3BucketStateForRecoveryFieldSpec(ExplorationContext? ec=null)
+        public static object S3BucketStateForRecoveryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetS3BucketStateForRecoveryReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SaasWorkloadMetadataTypesReply? SaasWorkloadMetadataTypes
+        // GraphQL -> saasWorkloadMetadataTypes: SaasWorkloadMetadataTypesReply! (type)
+        public static string SaasWorkloadMetadataTypes(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "saasWorkloadMetadataTypes" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SaasWorkloadMetadataTypesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SaasWorkloadMetadataTypesReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -12813,10 +12867,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "sapHanaDatabase" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SapHanaDatabaseFieldSpec(ExplorationContext? ec=null)
+        public static object SapHanaDatabaseFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SapHanaDatabase() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12831,10 +12885,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "sapHanaDatabases" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SapHanaDatabasesFieldSpec(ExplorationContext? ec=null)
+        public static object SapHanaDatabasesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SapHanaDatabaseConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12849,10 +12903,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "sapHanaLogSnapshot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SapHanaLogSnapshotFieldSpec(ExplorationContext? ec=null)
+        public static object SapHanaLogSnapshotFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SapHanaLogSnapshot() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12867,10 +12921,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
             return "sapHanaLogSnapshots" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SapHanaLogSnapshotsFieldSpec(ExplorationContext? ec=null)
+        public static object SapHanaLogSnapshotsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SapHanaLogSnapshotConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12885,10 +12939,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "sapHanaRecoverableRange" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SapHanaRecoverableRangeFieldSpec(ExplorationContext? ec=null)
+        public static object SapHanaRecoverableRangeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SapHanaRecoverableRange() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12903,10 +12957,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
             return "sapHanaRecoverableRanges" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SapHanaRecoverableRangesFieldSpec(ExplorationContext? ec=null)
+        public static object SapHanaRecoverableRangesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SapHanaRecoverableRangeConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12921,10 +12975,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "sapHanaSystem" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SapHanaSystemFieldSpec(ExplorationContext? ec=null)
+        public static object SapHanaSystemFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SapHanaSystem() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12939,10 +12993,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "sapHanaSystems" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SapHanaSystemsFieldSpec(ExplorationContext? ec=null)
+        public static object SapHanaSystemsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SapHanaSystemConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12957,10 +13011,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nid: $id\n)";
             return "scheduledReport" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ScheduledReportFieldSpec(ExplorationContext? ec=null)
+        public static object ScheduledReportFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ScheduledReport() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12975,10 +13029,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\n)";
             return "scheduledReports" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ScheduledReportsFieldSpec(ExplorationContext? ec=null)
+        public static object ScheduledReportsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ScheduledReportConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -12993,10 +13047,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\ninput: $input\n)";
             return "searchAzureAdSnapshot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SearchAzureAdSnapshotFieldSpec(ExplorationContext? ec=null)
+        public static object SearchAzureAdSnapshotFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureAdObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13011,10 +13065,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\nmanagedId: $managedId\nsnapshotId: $snapshotId\nsearchFolderPath: $searchFolderPath\nfilenamePrefix: $filenamePrefix\n)";
             return "searchFileByPrefix" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SearchFileByPrefixFieldSpec(ExplorationContext? ec=null)
+        public static object SearchFileByPrefixFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new DiffResult() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13029,10 +13083,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nid: $id\npath: $path\n)";
             return "searchHost" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SearchHostFieldSpec(ExplorationContext? ec=null)
+        public static object SearchHostFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SearchResponseListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13047,10 +13101,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "searchNutanixVm" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SearchNutanixVmFieldSpec(ExplorationContext? ec=null)
+        public static object SearchNutanixVmFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SearchResponseListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13065,10 +13119,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
             return "searchSnappableConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SearchSnappableConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object SearchSnappableConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SnappableConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13083,10 +13137,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsearchQuery: $searchQuery\nusePrefixSearch: $usePrefixSearch\n)";
             return "searchSnappableVersionedFiles" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SearchSnappableVersionedFilesFieldSpec(ExplorationContext? ec=null)
+        public static object SearchSnappableVersionedFilesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VersionedFileConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13101,10 +13155,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nsearchText: $searchText\nroleIds: $roleIds\n)";
             return "serviceAccounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ServiceAccountsFieldSpec(ExplorationContext? ec=null)
+        public static object ServiceAccountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ServiceAccountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13119,10 +13173,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "shareFileset" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ShareFilesetFieldSpec(ExplorationContext? ec=null)
+        public static object ShareFilesetFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ShareFileset() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13137,10 +13191,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsiteFid: $siteFid\nsnapshotFid: $snapshotFid\nnaturalId: $naturalId\nsharepointSiteSearchFilter: $sharepointSiteSearchFilter\norgId: $orgId\n)";
             return "sharepointSiteDescendants" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SharepointSiteDescendantsFieldSpec(ExplorationContext? ec=null)
+        public static object SharepointSiteDescendantsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365FullSpObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13155,10 +13209,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsiteFid: $siteFid\norgId: $orgId\nsharepointSiteSearchFilter: $sharepointSiteSearchFilter\n)";
             return "sharepointSiteSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SharepointSiteSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SharepointSiteSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365FullSpObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13173,10 +13227,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nSlaId: $SlaId\nfilter: $filter\ntimezone: $timezone\n)";
             return "slaAuditDetail" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SlaAuditDetailFieldSpec(ExplorationContext? ec=null)
+        public static object SlaAuditDetailFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<SlaAuditDetail>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13191,10 +13245,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ncontextFilter: $contextFilter\ncontextFilterInput: $contextFilterInput\nshouldShowSyncStatus: $shouldShowSyncStatus\nshouldShowProtectedObjectCount: $shouldShowProtectedObjectCount\nshouldShowUpgradeInfo: $shouldShowUpgradeInfo\nshowRemoteSlas: $showRemoteSlas\nshouldShowPausedClusters: $shouldShowPausedClusters\n)";
             return "slaDomains" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SlaDomainsFieldSpec(ExplorationContext? ec=null)
+        public static object SlaDomainsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SlaDomainConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13209,10 +13263,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "slaManagedVolume" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SlaManagedVolumeFieldSpec(ExplorationContext? ec=null)
+        public static object SlaManagedVolumeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ManagedVolume() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13227,10 +13281,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "slaManagedVolumes" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SlaManagedVolumesFieldSpec(ExplorationContext? ec=null)
+        public static object SlaManagedVolumesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ManagedVolumeConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13245,10 +13299,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "smbConfiguration" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SmbConfigurationFieldSpec(ExplorationContext? ec=null)
+        public static object SmbConfigurationFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetSmbConfigurationReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13263,10 +13317,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "smbDomains" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SmbDomainsFieldSpec(ExplorationContext? ec=null)
+        public static object SmbDomainsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SmbDomainConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13281,10 +13335,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
             return "snappableConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnappableConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object SnappableConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SnappableConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13299,10 +13353,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\ncontactsSearchFilter: $contactsSearchFilter\n)";
             return "snappableContactSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnappableContactSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SnappableContactSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365ExchangeObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13317,10 +13371,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\nsearchFilter: $searchFilter\n)";
             return "snappableEmailSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnappableEmailSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SnappableEmailSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365ExchangeObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13335,10 +13389,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\ncalendarSearchFilter: $calendarSearchFilter\n)";
             return "snappableEventSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnappableEventSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SnappableEventSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365ExchangeObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13353,10 +13407,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ngroupBy: $groupBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\nrequestedAggregations: $requestedAggregations\n)";
             return "snappableGroupByConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnappableGroupByConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object SnappableGroupByConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SnappableGroupByConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13371,10 +13425,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\nonedriveSearchFilter: $onedriveSearchFilter\n)";
             return "snappableOnedriveSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnappableOnedriveSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SnappableOnedriveSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365OnedriveObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13389,10 +13443,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\nsiteChildId: $siteChildId\nsiteChildType: $siteChildType\n)";
             return "snappableSharepointDriveSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnappableSharepointDriveSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SnappableSharepointDriveSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365OnedriveObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13407,10 +13461,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\nsiteChildId: $siteChildId\n)";
             return "snappableSharepointListSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnappableSharepointListSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SnappableSharepointListSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365OnedriveObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13425,10 +13479,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\nsnapshotFidOpt: $snapshotFidOpt\nteamConvChannels: $teamConvChannels\nteamsConversationsSearchFilter: $teamsConversationsSearchFilter\n)";
             return "snappableTeamsConversationsSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnappableTeamsConversationsSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SnappableTeamsConversationsSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365TeamsConversationsConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13443,10 +13497,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\nchannelId: $channelId\nchannelFolderName: $channelFolderName\nteamsDriveSearchFilter: $teamsDriveSearchFilter\n)";
             return "snappableTeamsDriveSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnappableTeamsDriveSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SnappableTeamsDriveSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365OnedriveObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13461,10 +13515,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ninput: $input\n)";
             return "snappablesWithLegalHoldSnapshotsSummary" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnappablesWithLegalHoldSnapshotsSummaryFieldSpec(ExplorationContext? ec=null)
+        public static object SnappablesWithLegalHoldSnapshotsSummaryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new LegalHoldSnappableDetailConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13479,10 +13533,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnapshotFid: $snapshotFid\nclusterUuid: $clusterUuid\n)";
             return "snapshot" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnapshotFieldSpec(ExplorationContext? ec=null)
+        public static object SnapshotFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmSnapshot() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13497,10 +13551,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nsearchFilter: $searchFilter\n)";
             return "snapshotEmailSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnapshotEmailSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SnapshotEmailSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365ExchangeObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13515,10 +13569,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\ncalendarSearchFilter: $calendarSearchFilter\n)";
             return "snapshotEventSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnapshotEventSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SnapshotEventSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365ExchangeObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13533,10 +13587,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\npath: $path\nsnapshotFid: $snapshotFid\nfilter: $filter\nsearchPrefix: $searchPrefix\nquarantineFilters: $quarantineFilters\nworkloadFieldsArg: $workloadFieldsArg\n)";
             return "snapshotFilesDelta" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnapshotFilesDeltaFieldSpec(ExplorationContext? ec=null)
+        public static object SnapshotFilesDeltaFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SnapshotFileDeltaConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13551,10 +13605,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\npath: $path\nsnapshotFid: $snapshotFid\nfilter: $filter\nsearchPrefix: $searchPrefix\nquarantineFilters: $quarantineFilters\nworkloadFieldsArg: $workloadFieldsArg\n)";
             return "snapshotFilesDeltaV2" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnapshotFilesDeltaV2FieldSpec(ExplorationContext? ec=null)
+        public static object SnapshotFilesDeltaV2FieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SnapshotFileDeltaV2Connection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13566,13 +13620,13 @@ namespace RubrikSecurityCloud.Types
         public static string SnapshotOfAsnappableConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nshowSnapshotRetentionInfo: $showSnapshotRetentionInfo\n)";
             return "snapshotOfASnappableConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnapshotOfAsnappableConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object SnapshotOfAsnappableConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GenericSnapshotConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13587,10 +13641,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableIds: $snappableIds\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\n)";
             return "snapshotOfSnappablesConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnapshotOfSnappablesConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object SnapshotOfSnappablesConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GenericSnapshotConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13605,10 +13659,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nonedriveSearchFilter: $onedriveSearchFilter\n)";
             return "snapshotOnedriveSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnapshotOnedriveSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SnapshotOnedriveSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365OnedriveObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13623,10 +13677,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\nstartTimeMs: $startTimeMs\nendTimeMs: $endTimeMs\n)";
             return "snapshotResults" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnapshotResultsFieldSpec(ExplorationContext? ec=null)
+        public static object SnapshotResultsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SnapshotResultConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13641,10 +13695,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\n)";
             return "snapshotSharepointDriveSearch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnapshotSharepointDriveSearchFieldSpec(ExplorationContext? ec=null)
+        public static object SnapshotSharepointDriveSearchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365OnedriveObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13659,10 +13713,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ninput: $input\n)";
             return "snapshotsForUnmanagedObject" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnapshotsForUnmanagedObjectFieldSpec(ExplorationContext? ec=null)
+        public static object SnapshotsForUnmanagedObjectFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SnapshotSummaryConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13677,10 +13731,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\n)";
             return "snapshotsOfCloudDirectShare" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnapshotsOfCloudDirectShareFieldSpec(ExplorationContext? ec=null)
+        public static object SnapshotsOfCloudDirectShareFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectSnapshotConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13695,10 +13749,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "snmpConfigurations" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnmpConfigurationsFieldSpec(ExplorationContext? ec=null)
+        public static object SnmpConfigurationsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SnmpConfiguration() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13713,10 +13767,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnoozeStatusFilter: $snoozeStatusFilter\ndirectorySearchFilter: $directorySearchFilter\nfalsePositiveTypeFilter: $falsePositiveTypeFilter\n)";
             return "snoozedDirectories" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SnoozedDirectoriesFieldSpec(ExplorationContext? ec=null)
+        public static object SnoozedDirectoriesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SnoozedDirectoryConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13731,10 +13785,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ngroupBy: $groupBy\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilters: $filters\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "sonarContentReport" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SonarContentReportFieldSpec(ExplorationContext? ec=null)
+        public static object SonarContentReportFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SonarContentReportConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13749,10 +13803,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsonarReportGroupBy: $sonarReportGroupBy\nfilter: $filter\ntimeFilter: $timeFilter\n)";
             return "sonarReport" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SonarReportFieldSpec(ExplorationContext? ec=null)
+        public static object SonarReportFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SonarReportConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13767,10 +13821,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nendTime: $endTime\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "sonarReportRow" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SonarReportRowFieldSpec(ExplorationContext? ec=null)
+        public static object SonarReportRowFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SonarReportRowConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13785,10 +13839,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfilter: $filter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "sonarUserGroups" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SonarUserGroupsFieldSpec(ExplorationContext? ec=null)
+        public static object SonarUserGroupsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AccessGroupConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13803,10 +13857,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsort: $sort\nfilter: $filter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "sonarUsers" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SonarUsersFieldSpec(ExplorationContext? ec=null)
+        public static object SonarUsersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AccessUserConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13821,10 +13875,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nssoGroupName: $ssoGroupName\nuserDomainId: $userDomainId\n)";
             return "ssoGroupAlreadyExists" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SsoGroupAlreadyExistsFieldSpec(ExplorationContext? ec=null)
+        public static object SsoGroupAlreadyExistsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SsoGroupAlreadyExistsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13839,10 +13893,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "supportBundle" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SupportBundleFieldSpec(ExplorationContext? ec=null)
+        public static object SupportBundleFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13857,10 +13911,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilters: $filters\n)";
             return "supportUserAccesses" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SupportUserAccessesFieldSpec(ExplorationContext? ec=null)
+        public static object SupportUserAccessesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SupportUserAccessConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13875,10 +13929,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "syslogExportRules" + args + "\n{\n" + fs + "}\n";
         }
-        public static object SyslogExportRulesFieldSpec(ExplorationContext? ec=null)
+        public static object SyslogExportRulesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SyslogExportRuleSummaryListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13893,10 +13947,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "tableFilters" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TableFiltersFieldSpec(ExplorationContext? ec=null)
+        public static object TableFiltersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TableFilters() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13911,10 +13965,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntargetMappingId: $targetMappingId\n)";
             return "targetMapping" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TargetMappingFieldSpec(ExplorationContext? ec=null)
+        public static object TargetMappingFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TargetMapping() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13929,10 +13983,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ncontextFilter: $contextFilter\n)";
             return "targets" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TargetsFieldSpec(ExplorationContext? ec=null)
+        public static object TargetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TargetConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13947,10 +14001,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\ntimezoneOffset: $timezoneOffset\ntimezone: $timezone\n)";
             return "taskDetailConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TaskDetailConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object TaskDetailConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TaskDetailConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13965,10 +14019,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\ngroupBy: $groupBy\ntimezoneOffset: $timezoneOffset\n)";
             return "taskDetailGroupByConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TaskDetailGroupByConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object TaskDetailGroupByConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TaskDetailGroupByConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -13983,10 +14037,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntaskchainId: $taskchainId\n)";
             return "taskchain" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TaskchainFieldSpec(ExplorationContext? ec=null)
+        public static object TaskchainFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new Taskchain() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14001,10 +14055,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nhuntId: $huntId\n)";
             return "threatHuntDetail" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ThreatHuntDetailFieldSpec(ExplorationContext? ec=null)
+        public static object ThreatHuntDetailFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ThreatHunt() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14019,10 +14073,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nhuntId: $huntId\nobjectId: $objectId\n)";
             return "threatHuntResult" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ThreatHuntResultFieldSpec(ExplorationContext? ec=null)
+        public static object ThreatHuntResultFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ThreatHuntResult() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14037,10 +14091,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nhuntId: $huntId\n)";
             return "threatHuntSummary" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ThreatHuntSummaryFieldSpec(ExplorationContext? ec=null)
+        public static object ThreatHuntSummaryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ThreatHuntSummaryReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14055,10 +14109,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nbeginTime: $beginTime\nendTime: $endTime\nclusterUuidFilter: $clusterUuidFilter\nstatusFilter: $statusFilter\nmatchesFoundFilter: $matchesFoundFilter\nquarantinedMatchesFilter: $quarantinedMatchesFilter\n)";
             return "threatHunts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ThreatHuntsFieldSpec(ExplorationContext? ec=null)
+        public static object ThreatHuntsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ThreatHuntConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14073,10 +14127,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nuserId: $userId\n)";
             return "totpConfigStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TotpConfigStatusFieldSpec(ExplorationContext? ec=null)
+        public static object TotpConfigStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetTotpStatusReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14091,10 +14145,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\n)";
             return "tprConfiguration" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TprConfigurationFieldSpec(ExplorationContext? ec=null)
+        public static object TprConfigurationFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TprConfiguration() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14109,10 +14163,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntprPolicyId: $tprPolicyId\n)";
             return "tprPolicyDetail" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TprPolicyDetailFieldSpec(ExplorationContext? ec=null)
+        public static object TprPolicyDetailFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TprPolicyDetail() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14127,10 +14181,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\n)";
             return "tprPublicConfiguration" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TprPublicConfigurationFieldSpec(ExplorationContext? ec=null)
+        public static object TprPublicConfigurationFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TprPublicConfiguration() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14145,10 +14199,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ntprRequestId: $tprRequestId\n)";
             return "tprRequestDetail" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TprRequestDetailFieldSpec(ExplorationContext? ec=null)
+        public static object TprRequestDetailFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TprRequestDetailReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14163,10 +14217,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\n)";
             return "tprRequestSummaries" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TprRequestSummariesFieldSpec(ExplorationContext? ec=null)
+        public static object TprRequestSummariesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TprRequestSummaryConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14181,10 +14235,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\norgId: $orgId\nemail: $email\n)";
             return "tprRoleEligibility" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TprRoleEligibilityFieldSpec(ExplorationContext? ec=null)
+        public static object TprRoleEligibilityFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TprRoleEligibilityType() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14199,10 +14253,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "tprRulesMap" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TprRulesMapFieldSpec(ExplorationContext? ec=null)
+        public static object TprRulesMapFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TprRulesMap() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14217,10 +14271,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "tprStatusForNodeRemoval" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TprStatusForNodeRemovalFieldSpec(ExplorationContext? ec=null)
+        public static object TprStatusForNodeRemovalFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new TprStatusForNodeRemoval() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14235,10 +14289,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "tunnelStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object TunnelStatusFieldSpec(ExplorationContext? ec=null)
+        public static object TunnelStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new SupportTunnelInfo() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14253,10 +14307,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ninput: $input\n)";
             return "unmanagedObjects" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UnmanagedObjectsFieldSpec(ExplorationContext? ec=null)
+        public static object UnmanagedObjectsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new UnmanagedObjectDetailConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14271,10 +14325,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "upgradeStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UpgradeStatusFieldSpec(ExplorationContext? ec=null)
+        public static object UpgradeStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new UpgradeStatusReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14289,10 +14343,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfilter: $filter\nsort: $sort\ntimeRange: $timeRange\nuserId: $userId\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "userActivities" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UserActivitiesFieldSpec(ExplorationContext? ec=null)
+        public static object UserActivitiesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new FileResultConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14307,10 +14361,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nuserId: $userId\nstartDay: $startDay\ntimezone: $timezone\nuniqueActivities: $uniqueActivities\n)";
             return "userActivityTimeline" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UserActivityTimelineFieldSpec(ExplorationContext? ec=null)
+        public static object UserActivityTimelineFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ActivityTimelineResultConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14325,10 +14379,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nemailOrUsername: $emailOrUsername\nuserDomain: $userDomain\nuserDomainId: $userDomainId\n)";
             return "userAlreadyExists" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UserAlreadyExistsFieldSpec(ExplorationContext? ec=null)
+        public static object UserAlreadyExistsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new UserAlreadyExistsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14343,10 +14397,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nuserId: $userId\nstartDay: $startDay\ntimezone: $timezone\nlimit: $limit\n)";
             return "userAnalyzerAccess" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UserAnalyzerAccessFieldSpec(ExplorationContext? ec=null)
+        public static object UserAnalyzerAccessFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AnalyzerAccessUsageConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14361,10 +14415,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilters: $filters\n)";
             return "userAuditConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UserAuditConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object UserAuditConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new UserAuditConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14379,10 +14433,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nuserId: $userId\nstartDay: $startDay\ntimezone: $timezone\n)";
             return "userDetail" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UserDetailFieldSpec(ExplorationContext? ec=null)
+        public static object UserDetailFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetUserDetailReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14397,10 +14451,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nexternalId: $externalId\n)";
             return "userFile" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UserFileFieldSpec(ExplorationContext? ec=null)
+        public static object UserFileFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CustomerFacingFile() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14415,10 +14469,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nuserId: $userId\nresource: $resource\nnativePath: $nativePath\nstartDay: $startDay\ntimezone: $timezone\ntimeGranularity: $timeGranularity\n)";
             return "userFileActivityTimeline" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UserFileActivityTimelineFieldSpec(ExplorationContext? ec=null)
+        public static object UserFileActivityTimelineFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ActivityTimelineResultConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14433,10 +14487,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nroleIdsFilter: $roleIdsFilter\n)";
             return "userGroups" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UserGroupsFieldSpec(ExplorationContext? ec=null)
+        public static object UserGroupsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<Group>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14451,10 +14505,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "userNotifications" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UserNotificationsFieldSpec(ExplorationContext? ec=null)
+        public static object UserNotificationsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new UserNotifications() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14469,10 +14523,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "userSessionManagementConfig" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UserSessionManagementConfigFieldSpec(ExplorationContext? ec=null)
+        public static object UserSessionManagementConfigFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetUserSessionManagementConfigReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14487,10 +14541,10 @@ namespace RubrikSecurityCloud.Types
             string args = "";
             return "userSettings" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UserSettingsFieldSpec(ExplorationContext? ec=null)
+        public static object UserSettingsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new UserSettings() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14505,10 +14559,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nfilter: $filter\nshouldIncludeUserWithoutRole: $shouldIncludeUserWithoutRole\n)";
             return "usersInCurrentAndDescendantOrganization" + args + "\n{\n" + fs + "}\n";
         }
-        public static object UsersInCurrentAndDescendantOrganizationFieldSpec(ExplorationContext? ec=null)
+        public static object UsersInCurrentAndDescendantOrganizationFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new UserConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14523,10 +14577,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "vCenterAdvancedTagPreview" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VcenterAdvancedTagPreviewFieldSpec(ExplorationContext? ec=null)
+        public static object VcenterAdvancedTagPreviewFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VcenterAdvancedTagPreviewReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14541,10 +14595,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "vCenterHotAddBandwidth" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VcenterHotAddBandwidthFieldSpec(ExplorationContext? ec=null)
+        public static object VcenterHotAddBandwidthFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HotAddBandwidthInfo() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14559,10 +14613,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "vCenterHotAddNetwork" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VcenterHotAddNetworkFieldSpec(ExplorationContext? ec=null)
+        public static object VcenterHotAddNetworkFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new HotAddNetworkConfigWithName() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14577,10 +14631,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfilter: $filter\nclusterUuids: $clusterUuids\n)";
             return "vCenterHotAddProxyVmsV2" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VcenterHotAddProxyVmsV2FieldSpec(ExplorationContext? ec=null)
+        public static object VcenterHotAddProxyVmsV2FieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereProxyVmInfoConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14595,10 +14649,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "vCenterNetworks" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VcenterNetworksFieldSpec(ExplorationContext? ec=null)
+        public static object VcenterNetworksFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NetworkInfoListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14613,10 +14667,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "vCenterPreAddInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VcenterPreAddInfoFieldSpec(ExplorationContext? ec=null)
+        public static object VcenterPreAddInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VcenterPreAddInfo() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14631,10 +14685,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vDiskMountableNutanixVms" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VdiskMountableNutanixVmsFieldSpec(ExplorationContext? ec=null)
+        public static object VdiskMountableNutanixVmsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixVmConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14649,10 +14703,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereComputeCluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereComputeClusterFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereComputeClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereComputeCluster() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14667,10 +14721,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereComputeClusters" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereComputeClustersFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereComputeClustersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereComputeClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14685,10 +14739,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereDatacenter" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereDatacenterFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereDatacenterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereDatacenter() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14703,10 +14757,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereDatastore" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereDatastoreFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereDatastoreFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereDatastore() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14721,10 +14775,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereDatastoreCluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereDatastoreClusterFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereDatastoreClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereDatastoreCluster() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14739,10 +14793,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereDatastoreClusters" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereDatastoreClustersFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereDatastoreClustersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereDatastoreClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14757,10 +14811,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereDatastoreConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereDatastoreConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereDatastoreConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereDatastoreConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14775,10 +14829,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereFolder" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereFolderFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereFolderFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereFolder() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14793,10 +14847,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereFolders" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereFoldersFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereFoldersFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereFolderConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14811,10 +14865,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereHost" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereHostFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereHostFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereHost() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14829,10 +14883,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereHostConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereHostConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereHostConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereHostConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14847,10 +14901,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "vSphereHostDetails" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereHostDetailsFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereHostDetailsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VmwareHostDetail() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14865,10 +14919,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfids: $fids\n)";
             return "vSphereHostsByFids" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereHostsByFidsFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereHostsByFidsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<VsphereHost>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14883,10 +14937,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfilter: $filter\nsortBy: $sortBy\n)";
             return "vSphereLiveMounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereLiveMountsFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereLiveMountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereLiveMountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14901,10 +14955,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereMount" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereMountFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereMountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereMount() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14919,10 +14973,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "vSphereMountConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereMountConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereMountConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereMountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14937,10 +14991,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereNetwork" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereNetworkFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereNetworkFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereNetwork() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14955,10 +15009,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereResourcePool" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereResourcePoolFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereResourcePoolFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereResourcePool() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14973,10 +15027,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "vSphereRootRecoveryHierarchy" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereRootRecoveryHierarchyFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereRootRecoveryHierarchyFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmHierarchyObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -14991,10 +15045,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereTag" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereTagFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereTagFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereTag() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15009,10 +15063,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereTagCategory" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereTagCategoryFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereTagCategoryFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereTagCategory() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15027,10 +15081,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "vSphereTopLevelDescendantsConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereTopLevelDescendantsConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereTopLevelDescendantsConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmHierarchyObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15045,10 +15099,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "vSphereTopLevelRecoveryTargets" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereTopLevelRecoveryTargetsFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereTopLevelRecoveryTargetsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmHierarchyObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15063,10 +15117,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereVCenter" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereVcenterFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereVcenterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereVcenter() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15081,10 +15135,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereVCenterConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereVcenterConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereVcenterConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereVcenterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15099,10 +15153,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\nid: $id\n)";
             return "vSphereVMAsyncRequestStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereVmAsyncRequestStatusFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereVmAsyncRequestStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15117,10 +15171,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "vSphereVmNew" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereVmNewFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereVmNewFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereVm() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15135,12 +15189,48 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereVmNewConnection" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereVmNewConnectionFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereVmNewConnectionFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereVmConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ValidateAdForestTransition? ValidateAdForestTransition
+        // GraphQL -> validateAdForestTransition: ValidateAdForestTransition! (type)
+        public static string ValidateAdForestTransition(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "validateAdForestTransition" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ValidateAdForestTransitionFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ValidateAdForestTransition() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ValidateAwsNativeDynamoDbTableNameForRecoveryReply? ValidateAwsNativeDynamoDbTableNameForRecovery
+        // GraphQL -> validateAwsNativeDynamoDbTableNameForRecovery: ValidateAwsNativeDynamoDbTableNameForRecoveryReply! (type)
+        public static string ValidateAwsNativeDynamoDbTableNameForRecovery(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\ndynamoDBTableNameForRecovery: $dynamoDBTableNameForRecovery\nregion: $region\n)";
+            return "validateAwsNativeDynamoDbTableNameForRecovery" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ValidateAwsNativeDynamoDbTableNameForRecoveryFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ValidateAwsNativeDynamoDbTableNameForRecoveryReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15153,10 +15243,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrdsClusterName: $rdsClusterName\n)";
             return "validateAwsNativeRdsClusterNameForExport" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ValidateAwsNativeRdsClusterNameForExportFieldSpec(ExplorationContext? ec=null)
+        public static object ValidateAwsNativeRdsClusterNameForExportFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidateAwsNativeRdsClusterNameForExportReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15171,10 +15261,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrdsInstanceName: $rdsInstanceName\n)";
             return "validateAwsNativeRdsInstanceNameForExport" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ValidateAwsNativeRdsInstanceNameForExportFieldSpec(ExplorationContext? ec=null)
+        public static object ValidateAwsNativeRdsInstanceNameForExportFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidateAwsNativeRdsInstanceNameForExportReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15189,10 +15279,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "validateAzureCloudAccountExocomputeConfigurations" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ValidateAzureCloudAccountExocomputeConfigurationsFieldSpec(ExplorationContext? ec=null)
+        public static object ValidateAzureCloudAccountExocomputeConfigurationsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidateAzureSubnetsForCloudAccountExocomputeReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15207,10 +15297,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSqlDatabaseName: $azureSqlDatabaseName\nazureSqlDatabaseServerRubrikId: $azureSqlDatabaseServerRubrikId\n)";
             return "validateAzureNativeSqlDatabaseDbNameForExport" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ValidateAzureNativeSqlDatabaseDbNameForExportFieldSpec(ExplorationContext? ec=null)
+        public static object ValidateAzureNativeSqlDatabaseDbNameForExportFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidateAzureNativeSqlDatabaseDbNameForExportReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15225,10 +15315,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nazureSqlDatabaseName: $azureSqlDatabaseName\nazureSqlManagedInstanceServerRubrikId: $azureSqlManagedInstanceServerRubrikId\n)";
             return "validateAzureNativeSqlManagedInstanceDbNameForExport" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ValidateAzureNativeSqlManagedInstanceDbNameForExportFieldSpec(ExplorationContext? ec=null)
+        public static object ValidateAzureNativeSqlManagedInstanceDbNameForExportFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidateAzureNativeSqlManagedInstanceDbNameForExportReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15243,10 +15333,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "validateClusterLicenseCapacity" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ValidateClusterLicenseCapacityFieldSpec(ExplorationContext? ec=null)
+        public static object ValidateClusterLicenseCapacityFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterLicenseCapacityValidations() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15261,10 +15351,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "validateCreateAwsClusterInput" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ValidateCreateAwsClusterInputFieldSpec(ExplorationContext? ec=null)
+        public static object ValidateCreateAwsClusterInputFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidationReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15279,10 +15369,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "validateCreateAzureClusterInput" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ValidateCreateAzureClusterInputFieldSpec(ExplorationContext? ec=null)
+        public static object ValidateCreateAzureClusterInputFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidationReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15297,10 +15387,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "validateOrgName" + args + "\n{\n" + fs + "}\n";
         }
-        public static object ValidateOrgNameFieldSpec(ExplorationContext? ec=null)
+        public static object ValidateOrgNameFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidateOrgNameReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15315,10 +15405,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "vappSnapshotInstantRecoveryOptions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VappSnapshotInstantRecoveryOptionsFieldSpec(ExplorationContext? ec=null)
+        public static object VappSnapshotInstantRecoveryOptionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VappInstantRecoveryOptions() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15333,12 +15423,48 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "vappTemplateSnapshotExportOptions" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VappTemplateSnapshotExportOptionsFieldSpec(ExplorationContext? ec=null)
+        public static object VappTemplateSnapshotExportOptionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VappTemplateExportOptionsUnion() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> VcdOrgConnection? VcdOrgs
+        // GraphQL -> vcdOrgs: VcdOrgConnection! (type)
+        public static string VcdOrgs(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "vcdOrgs" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object VcdOrgsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new VcdOrgConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> VcdTopLevelDescendantTypeConnection? VcdTopLevelDescendants
+        // GraphQL -> vcdTopLevelDescendants: VcdTopLevelDescendantTypeConnection! (type)
+        public static string VcdTopLevelDescendants(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
+            return "vcdTopLevelDescendants" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object VcdTopLevelDescendantsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new VcdTopLevelDescendantTypeConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15351,12 +15477,30 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vcdVappVms" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VcdVappVmsFieldSpec(ExplorationContext? ec=null)
+        public static object VcdVappVmsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereVmConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> VcdVappConnection? VcdVapps
+        // GraphQL -> vcdVapps: VcdVappConnection! (type)
+        public static string VcdVapps(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "vcdVapps" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object VcdVappsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new VcdVappConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15369,10 +15513,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "vcenterAsyncRequestStatus" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VcenterAsyncRequestStatusFieldSpec(ExplorationContext? ec=null)
+        public static object VcenterAsyncRequestStatusFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15387,10 +15531,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ncdmClusterUUID: $cdmClusterUUID\nincludeArchived: $includeArchived\n)";
             return "verifySlaWithReplicationToCluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VerifySlaWithReplicationToClusterFieldSpec(ExplorationContext? ec=null)
+        public static object VerifySlaWithReplicationToClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VerifySlaWithReplicationToClusterResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15405,10 +15549,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "verifyTotp" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VerifyTotpFieldSpec(ExplorationContext? ec=null)
+        public static object VerifyTotpFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VerifyTotpReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15423,10 +15567,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "vmwareMissedRecoverableRanges" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VmwareMissedRecoverableRangesFieldSpec(ExplorationContext? ec=null)
+        public static object VmwareMissedRecoverableRangesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VmwareRecoverableRangeListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15441,10 +15585,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "vmwareRecoverableRanges" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VmwareRecoverableRangesFieldSpec(ExplorationContext? ec=null)
+        public static object VmwareRecoverableRangesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VmwareRecoverableRangeListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15459,10 +15603,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "volumeGroupMounts" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VolumeGroupMountsFieldSpec(ExplorationContext? ec=null)
+        public static object VolumeGroupMountsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new VolumeGroupLiveMountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15477,10 +15621,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\nbeforeTime: $beforeTime\nafterTime: $afterTime\n)";
             return "vsphereVMMissedRecoverableRange" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereVmMissedRecoverableRangeFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereVmMissedRecoverableRangeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RecoverableRangeResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15495,10 +15639,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nsnappableFid: $snappableFid\nbeforeTime: $beforeTime\nafterTime: $afterTime\n)";
             return "vsphereVMRecoverableRange" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereVmRecoverableRangeFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereVmRecoverableRangeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new RecoverableRangeResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15513,10 +15657,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nrequestInfo: $requestInfo\n)";
             return "vsphereVMRecoverableRangeInBatch" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereVmRecoverableRangeInBatchFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereVmRecoverableRangeInBatchFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new BatchVmwareVmRecoverableRanges() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15531,10 +15675,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nids: $ids\n)";
             return "vsphereVmwareCdpLiveInfo" + args + "\n{\n" + fs + "}\n";
         }
-        public static object VsphereVmwareCdpLiveInfoFieldSpec(ExplorationContext? ec=null)
+        public static object VsphereVmwareCdpLiveInfoFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new BatchVmwareCdpLiveInfo() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15549,10 +15693,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "webhookById" + args + "\n{\n" + fs + "}\n";
         }
-        public static object WebhookByIdFieldSpec(ExplorationContext? ec=null)
+        public static object WebhookByIdFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new WebhookV2() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15567,10 +15711,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\ninput: $input\n)";
             return "webhookMessageTemplateById" + args + "\n{\n" + fs + "}\n";
         }
-        public static object WebhookMessageTemplateByIdFieldSpec(ExplorationContext? ec=null)
+        public static object WebhookMessageTemplateByIdFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new WebhookMessageTemplate() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15585,10 +15729,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "windowsCluster" + args + "\n{\n" + fs + "}\n";
         }
-        public static object WindowsClusterFieldSpec(ExplorationContext? ec=null)
+        public static object WindowsClusterFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new WindowsCluster() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15603,10 +15747,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfid: $fid\n)";
             return "windowsFileset" + args + "\n{\n" + fs + "}\n";
         }
-        public static object WindowsFilesetFieldSpec(ExplorationContext? ec=null)
+        public static object WindowsFilesetFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new WindowsFileset() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15621,10 +15765,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nclusterUuid: $clusterUuid\nworkloadId: $workloadId\n)";
             return "workloadAlertSetting" + args + "\n{\n" + fs + "}\n";
         }
-        public static object WorkloadAlertSettingFieldSpec(ExplorationContext? ec=null)
+        public static object WorkloadAlertSettingFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetWorkloadAlertSettingReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
@@ -15639,10 +15783,10 @@ namespace RubrikSecurityCloud.Types
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nbeginTime: $beginTime\nendTime: $endTime\nworkloadNameSearch: $workloadNameSearch\nobjectTypeFilter: $objectTypeFilter\nclusterUuidFilter: $clusterUuidFilter\nslaFidFilter: $slaFidFilter\nencryptionFilter: $encryptionFilter\nseverityFilter: $severityFilter\nanalyzerGroupFilter: $analyzerGroupFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\norderParentsFirst: $orderParentsFirst\nblueprintRecoveryTypes: $blueprintRecoveryTypes\nlocationsFilter: $locationsFilter\nresolutionStatusFilter: $resolutionStatusFilter\n)";
             return "workloadAnomalies" + args + "\n{\n" + fs + "}\n";
         }
-        public static object WorkloadAnomaliesFieldSpec(ExplorationContext? ec=null)
+        public static object WorkloadAnomaliesFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
-                ec = new ExplorationContext();
+                ec = new AutofieldContext();
             }
             var fieldSpecObj = new WorkloadAnomalyConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);

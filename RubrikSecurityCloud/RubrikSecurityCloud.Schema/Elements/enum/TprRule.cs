@@ -78,6 +78,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MODIFY_AIR_GAPPED_STATUS")]
         MODIFY_AIR_GAPPED_STATUS,
 
+        [EnumMember(Value = "MODIFY_PAM_INTEGRATION")]
+        MODIFY_PAM_INTEGRATION,
+
         [EnumMember(Value = "PAUSE_CLUSTER")]
         PAUSE_CLUSTER,
 

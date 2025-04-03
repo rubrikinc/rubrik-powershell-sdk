@@ -9,3 +9,7 @@ Filter for replication pairs request.
   - Target Rubrik cluster uuids.
 - status: list of ReplicationPairConnectionStatuss
   - Connection status of the replication pair.
+- bidirectionalStatus: list of ReplicationBidirectionalConnectionStatuss
+  - Replication bidirectional connection status filter.
+- pauseStatus: list of ReplicationPairPauseStatuss
+  - Replication pause status filter.

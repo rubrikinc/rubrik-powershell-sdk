@@ -7,9 +7,9 @@ Summary of user information.
   - ID of the user.
 - email: System.String
   - Email of the user.
+- domain: UserDomain
+  - Domain type of the user.
 - domainId: System.String
   - ID of the domain.
 - domainName: System.String
   - Name of the domain.
-- domain: UserDomain
-  - Domain type of the user.

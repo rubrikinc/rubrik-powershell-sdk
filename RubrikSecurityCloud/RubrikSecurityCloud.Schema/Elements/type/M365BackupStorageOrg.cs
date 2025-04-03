@@ -101,6 +101,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> O365GroupsSummary? GroupsSummary
+        // GraphQL -> groupsSummary: O365GroupsSummary! (type)
+        [JsonProperty("groupsSummary")]
+        public O365GroupsSummary? GroupsSummary { get; set; }
+
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         [JsonProperty("logicalPath")]
@@ -204,6 +209,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("filter", "PolarisSnapshotFilterInput"),
                     Tuple.Create("groupBy", "PolarisSnapshotGroupByEnum!"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.SnapshotGroupByConnection =
                 new RscGqlVars(null, snapshotGroupByConnectionArgs, null, true);
@@ -266,6 +272,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
         PathNode? EffectiveSlaSourceObject = null,
+        O365GroupsSummary? GroupsSummary = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
         PolarisSnapshot? NewestSnapshot = null,
@@ -328,6 +335,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( GroupsSummary != null ) {
+            this.GroupsSummary = GroupsSummary;
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
@@ -544,6 +554,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> O365GroupsSummary? GroupsSummary
+        // GraphQL -> groupsSummary: O365GroupsSummary! (type)
+        if (this.GroupsSummary != null) {
+            var fspec = this.GroupsSummary.AsFieldSpec(conf.Child("groupsSummary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "groupsSummary" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
@@ -705,7 +727,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
@@ -1004,6 +1026,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaSourceObject = null;
         }
+        //      C# -> O365GroupsSummary? GroupsSummary
+        // GraphQL -> groupsSummary: O365GroupsSummary! (type)
+        if (ec.Includes("groupsSummary",false))
+        {
+            if(this.GroupsSummary == null) {
+
+                this.GroupsSummary = new O365GroupsSummary();
+                this.GroupsSummary.ApplyExploratoryFieldSpec(ec.NewChild("groupsSummary"));
+
+            } else {
+
+                this.GroupsSummary.ApplyExploratoryFieldSpec(ec.NewChild("groupsSummary"));
+
+            }
+        }
+        else if (this.GroupsSummary != null && ec.Excludes("groupsSummary",false))
+        {
+            this.GroupsSummary = null;
+        }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (ec.Includes("logicalPath",false))
@@ -1296,7 +1337,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<M365BackupStorageOrg> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new M365BackupStorageOrg());
@@ -1306,7 +1347,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<M365BackupStorageOrg> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

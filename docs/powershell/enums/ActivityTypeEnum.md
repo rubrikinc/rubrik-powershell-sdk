@@ -17,7 +17,7 @@ Enum representing different type of activities.
 - BULK_RECOVERY - Activity representing bulk recovery.
 - LOG_BACKUP - Activity representing log backup event type.
 - HypervServer
-- ISOLATED_RECOVERY - Recovering selected objects to an Isolated Recovery Environment (IRE).
+- ISOLATED_RECOVERY - Recovering selected objects to a Cyber Recovery Environment (IRE).
 - Configuration
 - Upgrade
 - ENCRYPTION_MANAGEMENT_OPERATION - Activity representing Encryption Management event type.
@@ -42,6 +42,7 @@ Enum representing different type of activities.
 - Diagnostic
 - Vcd
 - Anomaly
+- SEEDING - Activity representing seeding event type.
 - Archive
 - CloudNativeSource
 - HostEvent

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 19
+    /// Create a new RscQuery object for any of the 21
     /// operations in the 'AWS Native' API domain:
-    /// Account, Accounts, AmiTypeForArchivedSnapshotExport, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
+    /// Account, Accounts, AmiTypeForArchivedSnapshotExport, DynamoDbTable, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateDynamoDbTableNameForRecovery, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
     /// </summary>
     /// <description>
     /// New-RscQueryAwsNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 19 operations
+    /// There are 21 operations
     /// in the 'AWS Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Account, Accounts, AmiTypeForArchivedSnapshotExport, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
+    /// one of: Account, Accounts, AmiTypeForArchivedSnapshotExport, DynamoDbTable, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateDynamoDbTableNameForRecovery, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -206,6 +206,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DynamoDbTable operation
+    /// of the 'AWS Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AwsNative
+    /// # API Operation: DynamoDbTable
+    /// 
+    /// $query = New-RscQueryAwsNative -Operation DynamoDbTable
+    /// 
+    /// # REQUIRED
+    /// $query.Var.dynamoDbTableRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AwsNativeDynamoDbTable
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the EbsVolume operation
     /// of the 'AWS Native' API domain.
     /// <code>
@@ -358,6 +388,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	awsNativeFeatureStatusFilter = @{
     /// 		# REQUIRED
     /// 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsNativeIsEligibleForEbsProtectionFilter = @{
+    /// 		# REQUIRED
+    /// 		isEligibleForProtection = $someBoolean
     /// 	}
     /// }
     /// # OPTIONAL
@@ -583,6 +618,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	awsNativeIsEligibleForEc2ProtectionFilter = @{
+    /// 		# REQUIRED
+    /// 		isEligibleForProtection = $someBoolean
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -734,6 +774,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.snapshotId = $someString
     /// # REQUIRED
     /// $query.Var.isPointInTime = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.isArchivalCopy = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -901,6 +943,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	awsNativeIsEligibleForRdsProtectionFilter = @{
+    /// 		# REQUIRED
+    /// 		isEligibleForProtection = $someBoolean
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -1009,6 +1056,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ValidateDynamoDbTableNameForRecovery operation
+    /// of the 'AWS Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AwsNative
+    /// # API Operation: ValidateDynamoDbTableNameForRecovery
+    /// 
+    /// $query = New-RscQueryAwsNative -Operation ValidateDynamoDbTableNameForRecovery
+    /// 
+    /// # REQUIRED
+    /// $query.Var.awsAccountRubrikId = $someString
+    /// # REQUIRED
+    /// $query.Var.dynamoDBTableNameForRecovery = $someString
+    /// # REQUIRED
+    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ValidateAwsNativeDynamoDbTableNameForRecoveryReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ValidateRdsClusterNameForExport operation
     /// of the 'AWS Native' API domain.
     /// <code>
@@ -1091,6 +1170,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Account",
                 "Accounts",
                 "AmiTypeForArchivedSnapshotExport",
+                "DynamoDbTable",
                 "EbsVolume",
                 "EbsVolumes",
                 "EbsVolumesByName",
@@ -1105,6 +1185,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RdsPointInTimeRestoreWindow",
                 "Root",
                 "S3Bucket",
+                "ValidateDynamoDbTableNameForRecovery",
                 "ValidateRdsClusterNameForExport",
                 "ValidateRdsInstanceNameForExport",
                 IgnoreCase = true)]
@@ -1130,6 +1211,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "AmiTypeForArchivedSnapshotExport":
                         this.ProcessRecord_AmiTypeForArchivedSnapshotExport();
+                        break;
+                    case "DynamoDbTable":
+                        this.ProcessRecord_DynamoDbTable();
                         break;
                     case "EbsVolume":
                         this.ProcessRecord_EbsVolume();
@@ -1173,6 +1257,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "S3Bucket":
                         this.ProcessRecord_S3Bucket();
                         break;
+                    case "ValidateDynamoDbTableNameForRecovery":
+                        this.ProcessRecord_ValidateDynamoDbTableNameForRecovery();
+                        break;
                     case "ValidateRdsClusterNameForExport":
                         this.ProcessRecord_ValidateRdsClusterNameForExport();
                         break;
@@ -1214,6 +1301,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AmiTypeForArchivedSnapshotExport";
             // Create new graphql operation amiTypeForAwsNativeArchivedSnapshotExport
             InitQueryAmiTypeForAwsNativeArchivedSnapshotExport();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // awsNativeDynamoDbTable.
+        internal void ProcessRecord_DynamoDbTable()
+        {
+            this._logger.name += " -DynamoDbTable";
+            // Create new graphql operation awsNativeDynamoDbTable
+            InitQueryAwsNativeDynamoDbTable();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1340,6 +1436,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -S3Bucket";
             // Create new graphql operation awsNativeS3Bucket
             InitQueryAwsNativeS3Bucket();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // validateAwsNativeDynamoDbTableNameForRecovery.
+        internal void ProcessRecord_ValidateDynamoDbTableNameForRecovery()
+        {
+            this._logger.name += " -ValidateDynamoDbTableNameForRecovery";
+            // Create new graphql operation validateAwsNativeDynamoDbTableNameForRecovery
+            InitQueryValidateAwsNativeDynamoDbTableNameForRecovery();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1482,6 +1587,29 @@ $query.Var.input = @{
 	# REQUIRED
 	destinationAwsAccountRubrikId = $someString
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // awsNativeDynamoDbTable(dynamoDbTableRubrikId: UUID!, includeSecurityMetadata: Boolean): AwsNativeDynamoDbTable!
+        internal void InitQueryAwsNativeDynamoDbTable()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("dynamoDbTableRubrikId", "UUID!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAwsNativeDynamoDbTable",
+                "($dynamoDbTableRubrikId: UUID!,$includeSecurityMetadata: Boolean)",
+                "AwsNativeDynamoDbTable",
+                Query.AwsNativeDynamoDbTable,
+                Query.AwsNativeDynamoDbTableFieldSpec,
+                @"# REQUIRED
+$query.Var.dynamoDbTableRubrikId = $someString
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -1649,6 +1777,11 @@ $query.Var.ebsVolumeFilters = @{
 	awsNativeFeatureStatusFilter = @{
 		# REQUIRED
 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	}
+	# OPTIONAL
+	awsNativeIsEligibleForEbsProtectionFilter = @{
+		# REQUIRED
+		isEligibleForProtection = $someBoolean
 	}
 }
 # OPTIONAL
@@ -1883,6 +2016,11 @@ $query.Var.ec2InstanceFilters = @{
 		# REQUIRED
 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	}
+	# OPTIONAL
+	awsNativeIsEligibleForEc2ProtectionFilter = @{
+		# REQUIRED
+		isEligibleForProtection = $someBoolean
+	}
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -2018,19 +2156,25 @@ $query.Var.iops = $someInt"
         }
 
         // Create new GraphQL Query:
-        // awsNativeRdsExportDefaults(rdsInstanceRubrikId: UUID!, snapshotId: String, isPointInTime: Boolean!): RdsInstanceExportDefaults!
+        // awsNativeRdsExportDefaults(
+        //     rdsInstanceRubrikId: UUID!
+        //     snapshotId: String
+        //     isPointInTime: Boolean!
+        //     isArchivalCopy: Boolean
+        //   ): RdsInstanceExportDefaults!
         internal void InitQueryAwsNativeRdsExportDefaults()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("rdsInstanceRubrikId", "UUID!"),
                 Tuple.Create("snapshotId", "String"),
                 Tuple.Create("isPointInTime", "Boolean!"),
+                Tuple.Create("isArchivalCopy", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeRdsExportDefaults",
-                "($rdsInstanceRubrikId: UUID!,$snapshotId: String,$isPointInTime: Boolean!)",
+                "($rdsInstanceRubrikId: UUID!,$snapshotId: String,$isPointInTime: Boolean!,$isArchivalCopy: Boolean)",
                 "RdsInstanceExportDefaults",
                 Query.AwsNativeRdsExportDefaults,
                 Query.AwsNativeRdsExportDefaultsFieldSpec,
@@ -2039,7 +2183,9 @@ $query.Var.rdsInstanceRubrikId = $someString
 # OPTIONAL
 $query.Var.snapshotId = $someString
 # REQUIRED
-$query.Var.isPointInTime = $someBoolean"
+$query.Var.isPointInTime = $someBoolean
+# OPTIONAL
+$query.Var.isArchivalCopy = $someBoolean"
             );
         }
 
@@ -2208,6 +2354,11 @@ $query.Var.rdsInstanceFilters = @{
 		# REQUIRED
 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	}
+	# OPTIONAL
+	awsNativeIsEligibleForRdsProtectionFilter = @{
+		# REQUIRED
+		isEligibleForProtection = $someBoolean
+	}
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -2286,6 +2437,32 @@ $query.Var.rdsDatabaseRubrikId = $someString"
 $query.Var.s3BucketRubrikId = $someString
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // validateAwsNativeDynamoDbTableNameForRecovery(awsAccountRubrikId: UUID!, dynamoDBTableNameForRecovery: String!, region: AwsNativeRegion!): ValidateAwsNativeDynamoDbTableNameForRecoveryReply!
+        internal void InitQueryValidateAwsNativeDynamoDbTableNameForRecovery()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("awsAccountRubrikId", "UUID!"),
+                Tuple.Create("dynamoDBTableNameForRecovery", "String!"),
+                Tuple.Create("region", "AwsNativeRegion!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryValidateAwsNativeDynamoDbTableNameForRecovery",
+                "($awsAccountRubrikId: UUID!,$dynamoDBTableNameForRecovery: String!,$region: AwsNativeRegion!)",
+                "ValidateAwsNativeDynamoDbTableNameForRecoveryReply",
+                Query.ValidateAwsNativeDynamoDbTableNameForRecovery,
+                Query.ValidateAwsNativeDynamoDbTableNameForRecoveryFieldSpec,
+                @"# REQUIRED
+$query.Var.awsAccountRubrikId = $someString
+# REQUIRED
+$query.Var.dynamoDBTableNameForRecovery = $someString
+# REQUIRED
+$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
             );
         }
 

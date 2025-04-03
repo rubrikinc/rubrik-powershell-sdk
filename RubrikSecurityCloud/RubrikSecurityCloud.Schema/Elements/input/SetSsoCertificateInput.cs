@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> SsoCertificateType? CertificateType
+        // GraphQL -> certificateType: SsoCertificateType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("certificateType")]
+        public SsoCertificateType? CertificateType { get; set; }
+
         //      C# -> System.Int32? CertificateId
         // GraphQL -> certificateId: Int! (scalar)
         [Required]
@@ -26,12 +33,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("certificateId")]
         public System.Int32? CertificateId { get; set; }
 
-        //      C# -> SsoCertificateType? CertificateType
-        // GraphQL -> certificateType: SsoCertificateType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("certificateType")]
-        public SsoCertificateType? CertificateType { get; set; }
+        //      C# -> System.String? CertificateFid
+        // GraphQL -> certificateFid: String (scalar)
+        [JsonProperty("certificateFid")]
+        public System.String? CertificateFid { get; set; }
+
+        //      C# -> System.Boolean? UseDefaultCert
+        // GraphQL -> useDefaultCert: Boolean (scalar)
+        [JsonProperty("useDefaultCert")]
+        public System.Boolean? UseDefaultCert { get; set; }
 
 
         #endregion

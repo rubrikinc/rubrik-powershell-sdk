@@ -95,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("eulaState")]
         public EulaState? EulaState { get; set; }
 
+        //      C# -> List<UserLockoutEvent>? LockoutHistory
+        // GraphQL -> lockoutHistory: [UserLockoutEvent!]! (type)
+        [JsonProperty("lockoutHistory")]
+        public List<UserLockoutEvent>? LockoutHistory { get; set; }
+
         //      C# -> LockoutState? LockoutState
         // GraphQL -> lockoutState: LockoutState! (type)
         [JsonProperty("lockoutState")]
@@ -140,6 +145,7 @@ namespace RubrikSecurityCloud.Types
         List<RoleAssignment>? AssignedRoles = null,
         List<EventDigest>? EmailConfig = null,
         EulaState? EulaState = null,
+        List<UserLockoutEvent>? LockoutHistory = null,
         LockoutState? LockoutState = null,
         PasskeyMetadata? PasskeyMetadata = null,
         List<Role>? Roles = null,
@@ -190,6 +196,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EulaState != null ) {
             this.EulaState = EulaState;
+        }
+        if ( LockoutHistory != null ) {
+            this.LockoutHistory = LockoutHistory;
         }
         if ( LockoutState != null ) {
             this.LockoutState = LockoutState;
@@ -364,6 +373,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<UserLockoutEvent>? LockoutHistory
+        // GraphQL -> lockoutHistory: [UserLockoutEvent!]! (type)
+        if (this.LockoutHistory != null) {
+            var fspec = this.LockoutHistory.AsFieldSpec(conf.Child("lockoutHistory"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lockoutHistory" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> LockoutState? LockoutState
         // GraphQL -> lockoutState: LockoutState! (type)
         if (this.LockoutState != null) {
@@ -417,7 +438,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> UserDomainEnum? Domain
         // GraphQL -> domain: UserDomainEnum! (enum)
@@ -682,6 +703,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.EulaState = null;
         }
+        //      C# -> List<UserLockoutEvent>? LockoutHistory
+        // GraphQL -> lockoutHistory: [UserLockoutEvent!]! (type)
+        if (ec.Includes("lockoutHistory",false))
+        {
+            if(this.LockoutHistory == null) {
+
+                this.LockoutHistory = new List<UserLockoutEvent>();
+                this.LockoutHistory.ApplyExploratoryFieldSpec(ec.NewChild("lockoutHistory"));
+
+            } else {
+
+                this.LockoutHistory.ApplyExploratoryFieldSpec(ec.NewChild("lockoutHistory"));
+
+            }
+        }
+        else if (this.LockoutHistory != null && ec.Excludes("lockoutHistory",false))
+        {
+            this.LockoutHistory = null;
+        }
         //      C# -> LockoutState? LockoutState
         // GraphQL -> lockoutState: LockoutState! (type)
         if (ec.Includes("lockoutState",false))
@@ -803,7 +843,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<User> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new User());
@@ -813,7 +853,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<User> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

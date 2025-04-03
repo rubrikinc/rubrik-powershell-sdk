@@ -1,6 +1,6 @@
 ### DeltaType
 Categories for comparing a selected snapshot and the snapshot taken prior
- to the selected snapshot, at the time of browsing or searching snapshots.
+to the selected snapshot, at the time of browsing or searching snapshots.
 
 - BYTES_CREATED - Number of bytes created.
 - BYTES_MODIFIED - Number of bytes modified.
@@ -11,4 +11,4 @@ Categories for comparing a selected snapshot and the snapshot taken prior
 - NODES_SUSPICIOUS - Number of files that are suspicious.
 - NODES_RANSOMWARE_STRAIN_AFFECTED - Number of files affected by the identified ransomware strain.
 - NODES_RANSOMWARE_STRAIN_NOTE - Number of ransomware notes corresponding to the identified ransomware
- strain.
+strain.

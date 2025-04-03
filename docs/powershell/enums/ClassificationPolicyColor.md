@@ -10,6 +10,7 @@ Color for defined and custom policies.
 - COLOR_011
 - COLOR_012
 - COLOR_013 - COLOR_013 is for imported Laminar data-categories.
+And COLOR_013 must not be used for any other data category.
 - COLOR_006 - Used for custom policies.
 - COLOR_007
 - COLOR_008

@@ -105,3 +105,19 @@
 - SENSITIVITY_STATUS - Sort based on sensitivity status.
 - EFFECTIVE_SLA_FREQUENCY - Sort based on the base frequency of effective SLA Domain.
 - EFFECTIVE_SLA_MAX_RETENTION - Sort based on the maximum retention of the effective SLA Domain.
+- MSSQL_HOST_CONNECTION_STATUS - Sort MSSQL hosts by connection status.
++mo:sort:db:table=rsc_mssql_host
++mo:sort:db:column=host_fid
++mo:sort:db:index:key=host_fid_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=true
++mo:sort:db:table=cdm_host
++mo:sort:db:column=last_status
++mo:sort:db:index:key=NULL // no matching index for last_status (json column)
++comment: This is a re-implementation of the PHYSICAL_HOST_CONNECTION_STATUS
++comment: sort for the Host -> MSSQL host hierarchy migration, so the lack of
++comment: matching index is inherited. That said, there have not been customer
++comment: complaints regarding the original filter, so it seems performance
++comment: is acceptable. The number of MSSQL hosts is expected to be <100k.
+- PHYSICAL_HOST_RBS_UPGRADE_STATUS - Sort physical hosts by upgrade status.

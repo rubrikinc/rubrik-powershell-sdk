@@ -13,9 +13,10 @@ Generate a new authentication token for a user to switch organizations.
 ### createrole
 This endpoint is deprecated.
 
-- There are 3 arguments.
+- There are 4 arguments.
     - name - System.String
     - description - System.String
+    - isSynced - System.Boolean: Determines whether the role is marked to be synced to Rubrik CDM; false if null.
     - permissions - list of PermissionInputs: Permissions in the role.
 - Returns System.String.
 ### createuser
@@ -58,8 +59,8 @@ Generate TOTP secret for a user.
     - name - System.String
     - description - System.String
     - permissions - list of PermissionInputs: Permissions in the role.
-    - protectableClusters - list of System.Strings
-    - isSynced - System.Boolean: Whether the role is marked to be synced to cdm, false if null.
+    - protectableClusters - list of System.Strings: List of protectable clusters.
+    - isSynced - System.Boolean: Determines whether the role is marked to be synced to Rubrik CDM; false if null.
 - Returns System.String.
 ### updateorg
 Update an organization.
@@ -69,9 +70,10 @@ Update an organization.
 ### updaterole
 This endpoint is deprecated.
 
-- There are 4 arguments.
+- There are 5 arguments.
     - roleId - System.String: ID of the role.
     - name - System.String
     - description - System.String
+    - isSynced - System.Boolean: Determines whether the role is marked to be synced to Rubrik CDM; false if null.
     - permissions - list of PermissionInputs: Permissions in the role.
 - Returns System.Boolean.

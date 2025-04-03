@@ -57,6 +57,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_NATIVE_BLOB_PROTECTION")]
         CLOUD_NATIVE_BLOB_PROTECTION,
 
+        [EnumMember(Value = "CLOUD_NATIVE_DYNAMODB_PROTECTION")]
+        CLOUD_NATIVE_DYNAMODB_PROTECTION,
+
         [EnumMember(Value = "CLOUD_NATIVE_PROTECTION")]
         CLOUD_NATIVE_PROTECTION,
 

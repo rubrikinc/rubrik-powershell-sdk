@@ -1,12 +1,12 @@
 ### CloudDirectNasNamespace
-Cloud Direct NAS namespace object.
+NAS Cloud Direct namespace object.
 
 - clusterUuid: System.String
-  - Cloud Direct NAS Cluster ID.
+  - NAS Cloud Direct cluster ID.
 - cloudDirectId: System.String
-  - UUID of the Cloud Direct NAS namespace on the NCD Cluster.
+  - UUID of the NAS Cloud Direct namespace on the NCD Cluster.
 - systemId: System.String
-  - SystemID of the system to which Cloud Direct NAS namespace belongs.
+  - SystemID of the system to which the NAS Cloud Direct namespace belongs.
 - namespaceName: System.String
   - Name of the namespace.
 - isArchived: System.Boolean

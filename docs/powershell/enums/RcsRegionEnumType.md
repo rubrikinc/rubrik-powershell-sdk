@@ -3,6 +3,7 @@ Regions for Rubrik Cloud Storage Archival Location.
 
 - ASIA_PACIFIC_JAKARTA - Asia Pacific Jakarta.
 - US_EAST - US east or Virginia.
+- GOV_US_TEXAS - Gov US Texas or US Gov Texas.
 - NORWAY_EAST - Norway East or Oslo.
 - INDIA_CENTRAL - India Central or Pune.
 - SPAIN_CENTRAL - Spain Central or Madrid.

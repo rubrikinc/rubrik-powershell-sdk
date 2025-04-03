@@ -48,6 +48,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_FEATURE_CONNECTED_STATUS")]
         AWS_NATIVE_FEATURE_CONNECTED_STATUS,
 
+        [EnumMember(Value = "AWS_NATIVE_IS_ELIGIBLE_FOR_EC2_PROTECTION")]
+        AWS_NATIVE_IS_ELIGIBLE_FOR_EC2_PROTECTION,
+
+        [EnumMember(Value = "AWS_NATIVE_IS_ELIGIBLE_FOR_RDS_PROTECTION")]
+        AWS_NATIVE_IS_ELIGIBLE_FOR_RDS_PROTECTION,
+
+        [EnumMember(Value = "AWS_NATIVE_IS_ELIGIBLE_FOR_S3_PROTECTION")]
+        AWS_NATIVE_IS_ELIGIBLE_FOR_S3_PROTECTION,
+
         [EnumMember(Value = "AWS_NATIVE_RDS_DB_ENGINE")]
         AWS_NATIVE_RDS_DB_ENGINE,
 
@@ -258,6 +267,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DB2_DB_TYPE")]
         DB2_DB_TYPE,
 
+        [EnumMember(Value = "DB2_HOST_ID")]
+        DB2_HOST_ID,
+
         [EnumMember(Value = "DB2_INSTANCE_ID")]
         DB2_INSTANCE_ID,
 
@@ -393,6 +405,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP_LABEL")]
         GCP_LABEL,
 
+        [EnumMember(Value = "GCP_NATIVE_DISK_INDEXING_STATUS")]
+        GCP_NATIVE_DISK_INDEXING_STATUS,
+
         [EnumMember(Value = "GCP_NATIVE_DISK_LOCATION")]
         GCP_NATIVE_DISK_LOCATION,
 
@@ -425,6 +440,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GCP_NATIVE_REGION")]
         GCP_NATIVE_REGION,
+
+        [EnumMember(Value = "GCP_NATIVE_VM_INDEXING_STATUS")]
+        GCP_NATIVE_VM_INDEXING_STATUS,
 
         [EnumMember(Value = "GCP_REGION")]
         GCP_REGION,
@@ -476,6 +494,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "HYPERV_VM_MAC_ADDRESS")]
         HYPERV_VM_MAC_ADDRESS,
+
+        [EnumMember(Value = "INCLUDE_DIRECT_ASSIGN_OBJECT")]
+        INCLUDE_DIRECT_ASSIGN_OBJECT,
 
         [EnumMember(Value = "INCLUDE_INDEPENDENT_REPLICA")]
         INCLUDE_INDEPENDENT_REPLICA,
@@ -530,6 +551,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "IS_REPLICATED")]
         IS_REPLICATED,
+
+        [EnumMember(Value = "IS_SAP_HANA_SYSTEMDB")]
+        IS_SAP_HANA_SYSTEMDB,
 
         [EnumMember(Value = "IS_UNACCESSED")]
         IS_UNACCESSED,
@@ -626,6 +650,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MONGO_SOURCE_ID")]
         MONGO_SOURCE_ID,
+
+        [EnumMember(Value = "MSSQL_HOST_BY_MSSQL_EFFECTIVE_SLA")]
+        MSSQL_HOST_BY_MSSQL_EFFECTIVE_SLA,
+
+        [EnumMember(Value = "MSSQL_HOST_CBT_STATUS")]
+        MSSQL_HOST_CBT_STATUS,
+
+        [EnumMember(Value = "MSSQL_HOST_CONNECTION_STATUS")]
+        MSSQL_HOST_CONNECTION_STATUS,
 
         [EnumMember(Value = "MSSQL_IS_FAILOVER_CLUSTER_PROTECTED")]
         MSSQL_IS_FAILOVER_CLUSTER_PROTECTED,
@@ -753,6 +786,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PHYSICAL_HOST_ID")]
         PHYSICAL_HOST_ID,
 
+        [EnumMember(Value = "PHYSICAL_HOST_RBS_UPGRADE_STATUS")]
+        PHYSICAL_HOST_RBS_UPGRADE_STATUS,
+
         [EnumMember(Value = "POSTGRES_DB_CLUSTER_HOST_CONNECTION_STATUS")]
         POSTGRES_DB_CLUSTER_HOST_CONNECTION_STATUS,
 
@@ -776,6 +812,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RECOVERY_PLAN_SOURCE_LOCATION")]
         RECOVERY_PLAN_SOURCE_LOCATION,
+
+        [EnumMember(Value = "RECOVERY_PLAN_STATUS")]
+        RECOVERY_PLAN_STATUS,
 
         [EnumMember(Value = "RECOVERY_PLAN_TARGET_LOCATION")]
         RECOVERY_PLAN_TARGET_LOCATION,

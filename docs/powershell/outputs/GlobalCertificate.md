@@ -31,6 +31,8 @@ Information about a certificate on Rubrik Security Cloud.
   - The serial number of the certificate, in hexadecimal format.
 - isCdmBorn: System.Boolean
   - Specifies whether the certificate was imported directly from Rubrik CDM.
+- isCa: System.Boolean
+  - Specifies whether the certificate is a CA.
 - certificateFid: System.String
   - The FID of the certificate.
 - clusters: list of CertificateClusterInfos
@@ -39,5 +41,9 @@ Information about a certificate on Rubrik Security Cloud.
   - The usages for the certificate on Rubrik clusters.
 - usages: list of CertificateUsageInfos
   - The usages for the certificate on Rubrik Security Cloud.
+- issuerType: IssuerType
+  - Specifies the type of the certificate issuer.
+- certificateRotation: CertificateRotation
+  - Specifies the certificate rotation details.
 - org: Org
   - The organization to which the certificate has been assigned.

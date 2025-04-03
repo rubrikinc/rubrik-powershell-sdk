@@ -367,7 +367,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
@@ -709,7 +709,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmTarget> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmTarget());
@@ -719,7 +719,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CdmTarget> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

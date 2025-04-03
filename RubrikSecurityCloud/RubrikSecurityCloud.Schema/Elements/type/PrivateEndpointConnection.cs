@@ -108,7 +108,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> PrivateEndpointConnectionStatus? PrivateEndpointConnectionStatus
         // GraphQL -> privateEndpointConnectionStatus: PrivateEndpointConnectionStatus! (enum)
@@ -208,7 +208,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrivateEndpointConnection> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrivateEndpointConnection());
@@ -218,7 +218,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<PrivateEndpointConnection> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

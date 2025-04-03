@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 201
+    /// Create a new RscQuery object for any of the 205
     /// operations in the 'Miscellaneous' API domain:
-    /// ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectNasNamespace, CloudDirectNasNamespaces, CloudDirectNasShare, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MicrosoftGroups, MicrosoftSites, MinimumCdmVersionForFeatureSet, MipLabels, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RestoreObjectsDryRun, RoleTemplates, RscPermsToCdmInfo, SearchFileByPrefix, SnoozedDirectories, SsoGroupAlreadyExists, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprConfiguration, TprPublicConfiguration, TprRequestDetail, TprRequestSummaries, TprRoleEligibility, TprRulesMap, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAlreadyExists, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VerifyTotp, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
+    /// ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectNasNamespace, CloudDirectNasNamespaces, CloudDirectNasShare, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MfaSetting, MicrosoftGroups, MicrosoftSites, MinimumCdmVersionForFeatureSet, MipLabels, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, ResetTypeOfRemovalJob, RoleTemplates, RscPermsToCdmInfo, SaasWorkloadMetadataTypes, SearchFileByPrefix, SnoozedDirectories, SsoGroupAlreadyExists, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprConfiguration, TprPublicConfiguration, TprRequestDetail, TprRequestSummaries, TprRoleEligibility, TprRulesMap, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAlreadyExists, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateAdForestTransition, ValidateOrgName, VcdOrgs, VcdTopLevelDescendants, VcdVappVms, VcdVapps, VerifyTotp, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
     /// </summary>
     /// <description>
     /// New-RscQueryMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 201 operations
+    /// There are 205 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectNasNamespace, CloudDirectNasNamespaces, CloudDirectNasShare, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MicrosoftGroups, MicrosoftSites, MinimumCdmVersionForFeatureSet, MipLabels, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RestoreObjectsDryRun, RoleTemplates, RscPermsToCdmInfo, SearchFileByPrefix, SnoozedDirectories, SsoGroupAlreadyExists, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprConfiguration, TprPublicConfiguration, TprRequestDetail, TprRequestSummaries, TprRoleEligibility, TprRulesMap, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAlreadyExists, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VerifyTotp, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
+    /// one of: ActiveCustomAnalyzers, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectNasNamespace, CloudDirectNasNamespaces, CloudDirectNasShare, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MfaSetting, MicrosoftGroups, MicrosoftSites, MinimumCdmVersionForFeatureSet, MipLabels, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PasskeyConfig, PasskeyInfo, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, ResetTypeOfRemovalJob, RoleTemplates, RscPermsToCdmInfo, SaasWorkloadMetadataTypes, SearchFileByPrefix, SnoozedDirectories, SsoGroupAlreadyExists, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprConfiguration, TprPublicConfiguration, TprRequestDetail, TprRequestSummaries, TprRoleEligibility, TprRulesMap, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAlreadyExists, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateAdForestTransition, ValidateOrgName, VcdOrgs, VcdTopLevelDescendants, VcdVappVms, VcdVapps, VerifyTotp, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, WorkloadAnomalies, or WorkloadForeverId.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1048,6 +1048,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// 	# OPTIONAL
+    /// 	filePath = $someString
+    /// 	# OPTIONAL
+    /// 	parentWorkloadId = $someString
     /// }
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -1182,6 +1188,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// 	# OPTIONAL
+    /// 	filePath = $someString
+    /// 	# OPTIONAL
+    /// 	parentWorkloadId = $someString
     /// }
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -4205,17 +4217,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			functionType = $someLlmFunctionCallFunctionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LlmFunctionCallFunctionType]) for enum values.
     /// 			# OPTIONAL
     /// 			functionUuid = $someString
-    /// 			# OPTIONAL
-    /// 			subjectContexts = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					organizationId = $someString
-    /// 					# OPTIONAL
-    /// 					subjectId = $someString
-    /// 					# OPTIONAL
-    /// 					subjectType = $someSubjectContextType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SubjectContextType]) for enum values.
-    /// 				}
-    /// 			)
     /// 		}
     /// 		# OPTIONAL
     /// 		hostMakePrimaryInfo = @{
@@ -4387,33 +4388,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: LockoutConfig
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the MaxProtectedAppsCount operation
-    /// of the 'Miscellaneous' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Misc
-    /// # API Operation: MaxProtectedAppsCount
-    /// 
-    /// $query = New-RscQueryMisc -Operation MaxProtectedAppsCount
-    /// 
-    /// # No variables for this query.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.Int32
     /// 
     /// 
     /// 
@@ -5246,6 +5220,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.mfaEnforcedFilter = $someBoolean
     /// # OPTIONAL
+    /// $query.Var.mfaStatusFilter = $someMfaStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MfaStatus]) for enum values.
+    /// # OPTIONAL
     /// $query.Var.crossAccountEnabledFilter = $someBoolean
     /// 
     /// # Execute the query
@@ -5779,6 +5755,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	$someOpenAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OpenAccessType]) for enum values.
     /// )
     /// # OPTIONAL
+    /// $query.Var.accessTypeFilter = @(
+    /// 	$someAccessVia # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AccessVia]) for enum values.
+    /// )
+    /// # OPTIONAL
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
@@ -6171,7 +6151,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the RestoreObjectsDryRun operation
+    /// Runs the ResetTypeOfRemovalJob operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
     /// PS &gt;
@@ -6179,85 +6159,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Misc
-    /// # API Operation: RestoreObjectsDryRun
+    /// # API Operation: ResetTypeOfRemovalJob
     /// 
-    /// $query = New-RscQueryMisc -Operation RestoreObjectsDryRun
+    /// $query = New-RscQueryMisc -Operation ResetTypeOfRemovalJob
     /// 
     /// # REQUIRED
-    /// $query.Var.id = $someString
-    /// # REQUIRED
-    /// $query.Var.config = @{
-    /// 	# OPTIONAL
-    /// 	shouldMergeLinkedAttrs = $someBoolean
-    /// 	# OPTIONAL
-    /// 	restoreToDifferentContainer = $someString
-    /// 	# OPTIONAL
-    /// 	shouldContinueOnError = $someBoolean
-    /// 	# OPTIONAL
-    /// 	clearUpAttrsIfNullInBackup = $someBoolean
-    /// 	# OPTIONAL
-    /// 	alternateDcId = $someString
-    /// 	# OPTIONAL
-    /// 	shouldCreateMissingParents = $someBoolean
-    /// 	# OPTIONAL
-    /// 	locationId = $someString
-    /// 	# OPTIONAL
-    /// 	hostId = $someString
-    /// 	# OPTIONAL
-    /// 	nameConflict = $someActiveDirectoryObjectNameConflictOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectNameConflictOption]) for enum values.
-    /// 	# OPTIONAL
-    /// 	objectMovedOptions = $someActiveDirectoryObjectMovedOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectMovedOption]) for enum values.
-    /// 	# OPTIONAL
-    /// 	containerRestoreOptions = @{
-    /// 		# OPTIONAL
-    /// 		shouldDeleteExtraObjects = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldOnlyRecreateMissingObjects = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	credsForRestore = @{
-    /// 		# REQUIRED
-    /// 		password = $someString
-    /// 		# REQUIRED
-    /// 		username = $someString
-    /// 	}
+    /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	domainControllerRecoveryObjects = @(
-    /// 		@{
-    /// 			# OPTIONAL
-    /// 			attributes = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			objectType = $someActiveDirectoryObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectType]) for enum values.
-    /// 			# REQUIRED
-    /// 			dnt = $someInt64
-    /// 		}
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	userRestoreOptions = @{
-    /// 		# OPTIONAL
-    /// 		shouldEnableUser = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldChangePassword = $someBoolean
-    /// 		# OPTIONAL
-    /// 		password = $someString
-    /// 		# OPTIONAL
-    /// 		passwordOptions = $someActiveDirectoryUserPasswordRecoveryOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryUserPasswordRecoveryOption]) for enum values.
-    /// 	}
+    /// 	clusterUuid = $someString
     /// }
-    /// # OPTIONAL
-    /// $query.Var.exportId = $someString
-    /// # OPTIONAL
-    /// $query.Var.shouldReportOnlyChangedAttrs = $someBoolean
-    /// # OPTIONAL
-    /// $query.Var.shouldReportOnlyChangedValues = $someBoolean
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: ActiveDirectoryObjectRecoveryDryRunResponse
+    /// Write-Host $result.GetType().Name # prints: ResetTypeOfRemovalJob
     /// 
     /// 
     /// 
@@ -6342,12 +6258,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// )
     /// # OPTIONAL
     /// $query.Var.roleId = $someString
+    /// # REQUIRED
+    /// $query.Var.protectableClusters = @(
+    /// 	$someString
+    /// )
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RscPermsToCdmInfoOut
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SaasWorkloadMetadataTypes operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: SaasWorkloadMetadataTypes
+    /// 
+    /// $query = New-RscQueryMisc -Operation SaasWorkloadMetadataTypes
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	workloadId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SaasWorkloadMetadataTypesReply
     /// 
     /// 
     /// 
@@ -7871,6 +7822,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	authDomainIdsFilter = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	lockoutReasonsFilter = @(
+    /// 		$someLockMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LockMethod]) for enum values.
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.shouldIncludeUserWithoutRole = $someBoolean
@@ -7942,6 +7897,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ValidateAdForestTransition operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: ValidateAdForestTransition
+    /// 
+    /// $query = New-RscQueryMisc -Operation ValidateAdForestTransition
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ValidateAdForestTransition
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ValidateOrgName operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -7967,6 +7949,162 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ValidateOrgNameReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the VcdOrgs operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: VcdOrgs
+    /// 
+    /// $query = New-RscQueryMisc -Operation VcdOrgs
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VcdOrgConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the VcdTopLevelDescendants operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: VcdTopLevelDescendants
+    /// 
+    /// $query = New-RscQueryMisc -Operation VcdTopLevelDescendants
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.typeFilter = @(
+    /// 	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VcdTopLevelDescendantTypeConnection
     /// 
     /// 
     /// 
@@ -8043,6 +8181,82 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: VsphereVmConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the VcdVapps operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: VcdVapps
+    /// 
+    /// $query = New-RscQueryMisc -Operation VcdVapps
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VcdVappConnection
     /// 
     /// 
     /// 
@@ -8463,7 +8677,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "LambdaSettings",
                 "LicensedProducts",
                 "LockoutConfig",
-                "MaxProtectedAppsCount",
                 "MfaSetting",
                 "MicrosoftGroups",
                 "MicrosoftSites",
@@ -8503,9 +8716,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QuarantinedDetailsForWorkload",
                 "QueryDatastoreFreespaceThresholds",
                 "RemovedNodeDetails",
-                "RestoreObjectsDryRun",
+                "ResetTypeOfRemovalJob",
                 "RoleTemplates",
                 "RscPermsToCdmInfo",
+                "SaasWorkloadMetadataTypes",
                 "SearchFileByPrefix",
                 "SnoozedDirectories",
                 "SsoGroupAlreadyExists",
@@ -8543,8 +8757,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UserSettings",
                 "UsersInCurrentAndDescendantOrganization",
                 "UsersOnAccountList",
+                "ValidateAdForestTransition",
                 "ValidateOrgName",
+                "VcdOrgs",
+                "VcdTopLevelDescendants",
                 "VcdVappVms",
+                "VcdVapps",
                 "VerifyTotp",
                 "VirtualMachineFiles",
                 "VmRecoveryJobsInfo",
@@ -8903,9 +9121,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "LockoutConfig":
                         this.ProcessRecord_LockoutConfig();
                         break;
-                    case "MaxProtectedAppsCount":
-                        this.ProcessRecord_MaxProtectedAppsCount();
-                        break;
                     case "MfaSetting":
                         this.ProcessRecord_MfaSetting();
                         break;
@@ -9023,14 +9238,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "RemovedNodeDetails":
                         this.ProcessRecord_RemovedNodeDetails();
                         break;
-                    case "RestoreObjectsDryRun":
-                        this.ProcessRecord_RestoreObjectsDryRun();
+                    case "ResetTypeOfRemovalJob":
+                        this.ProcessRecord_ResetTypeOfRemovalJob();
                         break;
                     case "RoleTemplates":
                         this.ProcessRecord_RoleTemplates();
                         break;
                     case "RscPermsToCdmInfo":
                         this.ProcessRecord_RscPermsToCdmInfo();
+                        break;
+                    case "SaasWorkloadMetadataTypes":
+                        this.ProcessRecord_SaasWorkloadMetadataTypes();
                         break;
                     case "SearchFileByPrefix":
                         this.ProcessRecord_SearchFileByPrefix();
@@ -9143,11 +9361,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "UsersOnAccountList":
                         this.ProcessRecord_UsersOnAccountList();
                         break;
+                    case "ValidateAdForestTransition":
+                        this.ProcessRecord_ValidateAdForestTransition();
+                        break;
                     case "ValidateOrgName":
                         this.ProcessRecord_ValidateOrgName();
                         break;
+                    case "VcdOrgs":
+                        this.ProcessRecord_VcdOrgs();
+                        break;
+                    case "VcdTopLevelDescendants":
+                        this.ProcessRecord_VcdTopLevelDescendants();
+                        break;
                     case "VcdVappVms":
                         this.ProcessRecord_VcdVappVms();
+                        break;
+                    case "VcdVapps":
+                        this.ProcessRecord_VcdVapps();
                         break;
                     case "VerifyTotp":
                         this.ProcessRecord_VerifyTotp();
@@ -10189,15 +10419,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // maxProtectedAppsCount.
-        internal void ProcessRecord_MaxProtectedAppsCount()
-        {
-            this._logger.name += " -MaxProtectedAppsCount";
-            // Create new graphql operation maxProtectedAppsCount
-            InitQueryMaxProtectedAppsCount();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // mfaSetting.
         internal void ProcessRecord_MfaSetting()
         {
@@ -10549,12 +10770,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // restoreObjectsDryRun.
-        internal void ProcessRecord_RestoreObjectsDryRun()
+        // resetTypeOfRemovalJob.
+        internal void ProcessRecord_ResetTypeOfRemovalJob()
         {
-            this._logger.name += " -RestoreObjectsDryRun";
-            // Create new graphql operation restoreObjectsDryRun
-            InitQueryRestoreObjectsDryRun();
+            this._logger.name += " -ResetTypeOfRemovalJob";
+            // Create new graphql operation resetTypeOfRemovalJob
+            InitQueryResetTypeOfRemovalJob();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -10573,6 +10794,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RscPermsToCdmInfo";
             // Create new graphql operation rscPermsToCdmInfo
             InitQueryRscPermsToCdmInfo();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // saasWorkloadMetadataTypes.
+        internal void ProcessRecord_SaasWorkloadMetadataTypes()
+        {
+            this._logger.name += " -SaasWorkloadMetadataTypes";
+            // Create new graphql operation saasWorkloadMetadataTypes
+            InitQuerySaasWorkloadMetadataTypes();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -10909,6 +11139,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // validateAdForestTransition.
+        internal void ProcessRecord_ValidateAdForestTransition()
+        {
+            this._logger.name += " -ValidateAdForestTransition";
+            // Create new graphql operation validateAdForestTransition
+            InitQueryValidateAdForestTransition();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // validateOrgName.
         internal void ProcessRecord_ValidateOrgName()
         {
@@ -10918,12 +11157,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // vcdOrgs.
+        internal void ProcessRecord_VcdOrgs()
+        {
+            this._logger.name += " -VcdOrgs";
+            // Create new graphql operation vcdOrgs
+            InitQueryVcdOrgs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vcdTopLevelDescendants.
+        internal void ProcessRecord_VcdTopLevelDescendants()
+        {
+            this._logger.name += " -VcdTopLevelDescendants";
+            // Create new graphql operation vcdTopLevelDescendants
+            InitQueryVcdTopLevelDescendants();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // vcdVappVms.
         internal void ProcessRecord_VcdVappVms()
         {
             this._logger.name += " -VcdVappVms";
             // Create new graphql operation vcdVappVms
             InitQueryVcdVappVms();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vcdVapps.
+        internal void ProcessRecord_VcdVapps()
+        {
+            this._logger.name += " -VcdVapps";
+            // Create new graphql operation vcdVapps
+            InitQueryVcdVapps();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -11921,6 +12187,12 @@ $query.Var.onedriveSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	objectId = $someString
+	# OPTIONAL
+	filePath = $someString
+	# OPTIONAL
+	parentWorkloadId = $someString
 }
 # REQUIRED
 $query.Var.orgId = $someString"
@@ -12067,6 +12339,12 @@ $query.Var.teamsDriveSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	objectId = $someString
+	# OPTIONAL
+	filePath = $someString
+	# OPTIONAL
+	parentWorkloadId = $someString
 }
 # REQUIRED
 $query.Var.orgId = $someString"
@@ -14623,17 +14901,6 @@ $query.Var.input = @{
 			functionType = $someLlmFunctionCallFunctionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LlmFunctionCallFunctionType]) for enum values.
 			# OPTIONAL
 			functionUuid = $someString
-			# OPTIONAL
-			subjectContexts = @(
-				@{
-					# OPTIONAL
-					organizationId = $someString
-					# OPTIONAL
-					subjectId = $someString
-					# OPTIONAL
-					subjectType = $someSubjectContextType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SubjectContextType]) for enum values.
-				}
-			)
 		}
 		# OPTIONAL
 		hostMakePrimaryInfo = @{
@@ -14763,24 +15030,6 @@ $query.Var.id = $someString"
                 "LockoutConfig",
                 Query.LockoutConfig,
                 Query.LockoutConfigFieldSpec,
-                @""
-            );
-        }
-
-        // Create new GraphQL Query:
-        // maxProtectedAppsCount: Int!
-        internal void InitQueryMaxProtectedAppsCount()
-        {
-            Tuple<string, string>[] argDefs = {
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryMaxProtectedAppsCount",
-                "",
-                "System.Int32",
-                Query.MaxProtectedAppsCount,
-                Query.MaxProtectedAppsCountFieldSpec,
                 @""
             );
         }
@@ -15560,6 +15809,7 @@ $query.Var.orgId = $someString"
         //     sortBy: OrgField = NAME
         //     nameFilter: String
         //     mfaEnforcedFilter: Boolean
+        //     mfaStatusFilter: MfaStatus
         //     crossAccountEnabledFilter: Boolean
         //   ): OrgConnection!
         internal void InitQueryOrgs()
@@ -15573,13 +15823,14 @@ $query.Var.orgId = $someString"
                 Tuple.Create("sortBy", "OrgField"),
                 Tuple.Create("nameFilter", "String"),
                 Tuple.Create("mfaEnforcedFilter", "Boolean"),
+                Tuple.Create("mfaStatusFilter", "MfaStatus"),
                 Tuple.Create("crossAccountEnabledFilter", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryOrgs",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: OrgField,$nameFilter: String,$mfaEnforcedFilter: Boolean,$crossAccountEnabledFilter: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: OrgField,$nameFilter: String,$mfaEnforcedFilter: Boolean,$mfaStatusFilter: MfaStatus,$crossAccountEnabledFilter: Boolean)",
                 "OrgConnection",
                 Query.Orgs,
                 Query.OrgsFieldSpec,
@@ -15599,6 +15850,8 @@ $query.Var.sortBy = $someOrgField # Call [Enum]::GetValues([RubrikSecurityCloud.
 $query.Var.nameFilter = $someString
 # OPTIONAL
 $query.Var.mfaEnforcedFilter = $someBoolean
+# OPTIONAL
+$query.Var.mfaStatusFilter = $someMfaStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MfaStatus]) for enum values.
 # OPTIONAL
 $query.Var.crossAccountEnabledFilter = $someBoolean"
             );
@@ -15917,6 +16170,7 @@ $query.Var.includeWhitelistedResults = $someBoolean"
         //     loggingFilter: [Logging!]
         //     violationSeverityFilter: [ViolationSeverity!]
         //     exposureFilter: [OpenAccessType!]
+        //     accessTypeFilter: [AccessVia!]
         //     first: Int
         //     after: String
         //     last: Int
@@ -15961,6 +16215,7 @@ $query.Var.includeWhitelistedResults = $someBoolean"
                 Tuple.Create("loggingFilter", "[Logging!]"),
                 Tuple.Create("violationSeverityFilter", "[ViolationSeverity!]"),
                 Tuple.Create("exposureFilter", "[OpenAccessType!]"),
+                Tuple.Create("accessTypeFilter", "[AccessVia!]"),
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
@@ -15970,7 +16225,7 @@ $query.Var.includeWhitelistedResults = $someBoolean"
                 argDefs,
                 "query",
                 "QueryPolicyObjs",
-                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$insightsMetadataId: String,$includeInsightsMarker: Boolean,$userAccessObjectsFilter: Boolean!,$objectIdsFilter: [String!],$platformFilter: [Platform!],$platformCategoryFilter: [PlatformCategory!],$cloudAccountIdsFilter: [String!],$resourceGroupsFilter: [String!],$regionsFilter: [String!],$dataTypeIdsFilter: [String!],$firstSeenTimeRange: UserTimeRangeInput,$lastAccessTimeRange: UserTimeRangeInput,$creationTimeRange: UserTimeRangeInput,$lastScanTimeRange: UserTimeRangeInput,$objectTagsFilter: ObjectTagsFilterInput,$mipLabelsFilter: [MipLabelsFilterInput!],$backupStatusFilter: [BackupStatus!],$slaIdsFilter: [String!],$networkAccessFilter: [NetworkAccess!],$encryptionFilter: [Encryption!],$loggingFilter: [Logging!],$violationSeverityFilter: [ViolationSeverity!],$exposureFilter: [OpenAccessType!],$first: Int,$after: String,$last: Int,$before: String)",
+                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$insightsMetadataId: String,$includeInsightsMarker: Boolean,$userAccessObjectsFilter: Boolean!,$objectIdsFilter: [String!],$platformFilter: [Platform!],$platformCategoryFilter: [PlatformCategory!],$cloudAccountIdsFilter: [String!],$resourceGroupsFilter: [String!],$regionsFilter: [String!],$dataTypeIdsFilter: [String!],$firstSeenTimeRange: UserTimeRangeInput,$lastAccessTimeRange: UserTimeRangeInput,$creationTimeRange: UserTimeRangeInput,$lastScanTimeRange: UserTimeRangeInput,$objectTagsFilter: ObjectTagsFilterInput,$mipLabelsFilter: [MipLabelsFilterInput!],$backupStatusFilter: [BackupStatus!],$slaIdsFilter: [String!],$networkAccessFilter: [NetworkAccess!],$encryptionFilter: [Encryption!],$loggingFilter: [Logging!],$violationSeverityFilter: [ViolationSeverity!],$exposureFilter: [OpenAccessType!],$accessTypeFilter: [AccessVia!],$first: Int,$after: String,$last: Int,$before: String)",
                 "PolicyObjConnection",
                 Query.PolicyObjs,
                 Query.PolicyObjsFieldSpec,
@@ -16134,6 +16389,10 @@ $query.Var.violationSeverityFilter = @(
 # OPTIONAL
 $query.Var.exposureFilter = @(
 	$someOpenAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OpenAccessType]) for enum values.
+)
+# OPTIONAL
+$query.Var.accessTypeFilter = @(
+	$someAccessVia # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AccessVia]) for enum values.
 )
 # OPTIONAL
 $query.Var.first = $someInt
@@ -16466,99 +16725,25 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
-        // restoreObjectsDryRun(
-        //     id: String!
-        //     config: ActiveDirectoryObjectRecoveryConfigInput!
-        //     exportId: String
-        //     shouldReportOnlyChangedAttrs: Boolean
-        //     shouldReportOnlyChangedValues: Boolean
-        //   ): ActiveDirectoryObjectRecoveryDryRunResponse!
-        internal void InitQueryRestoreObjectsDryRun()
+        // resetTypeOfRemovalJob(input: ResetTypeOfRemovalJobInput!): ResetTypeOfRemovalJob!
+        internal void InitQueryResetTypeOfRemovalJob()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("id", "String!"),
-                Tuple.Create("config", "ActiveDirectoryObjectRecoveryConfigInput!"),
-                Tuple.Create("exportId", "String"),
-                Tuple.Create("shouldReportOnlyChangedAttrs", "Boolean"),
-                Tuple.Create("shouldReportOnlyChangedValues", "Boolean"),
+                Tuple.Create("input", "ResetTypeOfRemovalJobInput!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryRestoreObjectsDryRun",
-                "($id: String!,$config: ActiveDirectoryObjectRecoveryConfigInput!,$exportId: String,$shouldReportOnlyChangedAttrs: Boolean,$shouldReportOnlyChangedValues: Boolean)",
-                "ActiveDirectoryObjectRecoveryDryRunResponse",
-                Query.RestoreObjectsDryRun,
-                Query.RestoreObjectsDryRunFieldSpec,
+                "QueryResetTypeOfRemovalJob",
+                "($input: ResetTypeOfRemovalJobInput!)",
+                "ResetTypeOfRemovalJob",
+                Query.ResetTypeOfRemovalJob,
+                Query.ResetTypeOfRemovalJobFieldSpec,
                 @"# REQUIRED
-$query.Var.id = $someString
-# REQUIRED
-$query.Var.config = @{
-	# OPTIONAL
-	shouldMergeLinkedAttrs = $someBoolean
-	# OPTIONAL
-	restoreToDifferentContainer = $someString
-	# OPTIONAL
-	shouldContinueOnError = $someBoolean
-	# OPTIONAL
-	clearUpAttrsIfNullInBackup = $someBoolean
-	# OPTIONAL
-	alternateDcId = $someString
-	# OPTIONAL
-	shouldCreateMissingParents = $someBoolean
-	# OPTIONAL
-	locationId = $someString
-	# OPTIONAL
-	hostId = $someString
-	# OPTIONAL
-	nameConflict = $someActiveDirectoryObjectNameConflictOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectNameConflictOption]) for enum values.
-	# OPTIONAL
-	objectMovedOptions = $someActiveDirectoryObjectMovedOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectMovedOption]) for enum values.
-	# OPTIONAL
-	containerRestoreOptions = @{
-		# OPTIONAL
-		shouldDeleteExtraObjects = $someBoolean
-		# OPTIONAL
-		shouldOnlyRecreateMissingObjects = $someBoolean
-	}
-	# OPTIONAL
-	credsForRestore = @{
-		# REQUIRED
-		password = $someString
-		# REQUIRED
-		username = $someString
-	}
+$query.Var.input = @{
 	# REQUIRED
-	domainControllerRecoveryObjects = @(
-		@{
-			# OPTIONAL
-			attributes = @(
-				$someString
-			)
-			# OPTIONAL
-			objectType = $someActiveDirectoryObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectType]) for enum values.
-			# REQUIRED
-			dnt = $someInt64
-		}
-	)
-	# OPTIONAL
-	userRestoreOptions = @{
-		# OPTIONAL
-		shouldEnableUser = $someBoolean
-		# OPTIONAL
-		shouldChangePassword = $someBoolean
-		# OPTIONAL
-		password = $someString
-		# OPTIONAL
-		passwordOptions = $someActiveDirectoryUserPasswordRecoveryOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryUserPasswordRecoveryOption]) for enum values.
-	}
-}
-# OPTIONAL
-$query.Var.exportId = $someString
-# OPTIONAL
-$query.Var.shouldReportOnlyChangedAttrs = $someBoolean
-# OPTIONAL
-$query.Var.shouldReportOnlyChangedValues = $someBoolean"
+	clusterUuid = $someString
+}"
             );
         }
 
@@ -16608,6 +16793,7 @@ $query.Var.nameFilter = $someString"
         //     before: String
         //     permissions: [PermissionInput!]!
         //     roleId: String
+        //     protectableClusters: [String!]!
         //   ): RscPermsToCdmInfoOut!
         internal void InitQueryRscPermsToCdmInfo()
         {
@@ -16618,12 +16804,13 @@ $query.Var.nameFilter = $someString"
                 Tuple.Create("before", "String"),
                 Tuple.Create("permissions", "[PermissionInput!]!"),
                 Tuple.Create("roleId", "String"),
+                Tuple.Create("protectableClusters", "[String!]!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryRscPermsToCdmInfo",
-                "($first: Int,$after: String,$last: Int,$before: String,$permissions: [PermissionInput!]!,$roleId: String)",
+                "($first: Int,$after: String,$last: Int,$before: String,$permissions: [PermissionInput!]!,$roleId: String,$protectableClusters: [String!]!)",
                 "RscPermsToCdmInfoOut",
                 Query.RscPermsToCdmInfo,
                 Query.RscPermsToCdmInfoFieldSpec,
@@ -16654,7 +16841,34 @@ $query.Var.permissions = @(
 }
 )
 # OPTIONAL
-$query.Var.roleId = $someString"
+$query.Var.roleId = $someString
+# REQUIRED
+$query.Var.protectableClusters = @(
+	$someString
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // saasWorkloadMetadataTypes(input: SaasWorkloadMetadataTypesReq!): SaasWorkloadMetadataTypesReply!
+        internal void InitQuerySaasWorkloadMetadataTypes()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SaasWorkloadMetadataTypesReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySaasWorkloadMetadataTypes",
+                "($input: SaasWorkloadMetadataTypesReq!)",
+                "SaasWorkloadMetadataTypesReply",
+                Query.SaasWorkloadMetadataTypes,
+                Query.SaasWorkloadMetadataTypesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	workloadId = $someString
+}"
             );
         }
 
@@ -18067,6 +18281,10 @@ $query.Var.filter = @{
 	authDomainIdsFilter = @(
 		$someString
 	)
+	# OPTIONAL
+	lockoutReasonsFilter = @(
+		$someLockMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LockMethod]) for enum values.
+	)
 }
 # OPTIONAL
 $query.Var.shouldIncludeUserWithoutRole = $someBoolean"
@@ -18144,6 +18362,24 @@ $query.Var.userDomainsFilter = @(
         }
 
         // Create new GraphQL Query:
+        // validateAdForestTransition: ValidateAdForestTransition!
+        internal void InitQueryValidateAdForestTransition()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryValidateAdForestTransition",
+                "",
+                "ValidateAdForestTransition",
+                Query.ValidateAdForestTransition,
+                Query.ValidateAdForestTransitionFieldSpec,
+                @""
+            );
+        }
+
+        // Create new GraphQL Query:
         // validateOrgName(input: ValidateOrgNameInput!): ValidateOrgNameReply!
         internal void InitQueryValidateOrgName()
         {
@@ -18165,6 +18401,168 @@ $query.Var.input = @{
 	# OPTIONAL
 	name = $someString
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vcdOrgs(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): VcdOrgConnection!
+        internal void InitQueryVcdOrgs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVcdOrgs",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "VcdOrgConnection",
+                Query.VcdOrgs,
+                Query.VcdOrgsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vcdTopLevelDescendants(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     typeFilter: [HierarchyObjectTypeEnum!]
+        //     filter: [Filter!]
+        //   ): VcdTopLevelDescendantTypeConnection!
+        internal void InitQueryVcdTopLevelDescendants()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVcdTopLevelDescendants",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
+                "VcdTopLevelDescendantTypeConnection",
+                Query.VcdTopLevelDescendants,
+                Query.VcdTopLevelDescendantsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.typeFilter = @(
+	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+)
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
             );
         }
 
@@ -18193,6 +18591,84 @@ $query.Var.input = @{
                 "VsphereVmConnection",
                 Query.VcdVappVms,
                 Query.VcdVappVmsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vcdVapps(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): VcdVappConnection!
+        internal void InitQueryVcdVapps()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVcdVapps",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "VcdVappConnection",
+                Query.VcdVapps,
+                Query.VcdVappsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
 # OPTIONAL

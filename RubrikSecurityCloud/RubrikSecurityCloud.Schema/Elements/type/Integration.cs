@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> IntegrationEnabledStatus? Enabled
+        // GraphQL -> enabled: IntegrationEnabledStatus! (enum)
+        [JsonProperty("enabled")]
+        public IntegrationEnabledStatus? Enabled { get; set; }
+
         //      C# -> IntegrationType? IntegrationType
         // GraphQL -> integrationType: IntegrationType! (enum)
         [JsonProperty("integrationType")]
@@ -60,6 +65,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Integration Set(
+        IntegrationEnabledStatus? Enabled = null,
         IntegrationType? IntegrationType = null,
         DateTime? CreatedAt = null,
         System.Int64? Id = null,
@@ -68,6 +74,9 @@ namespace RubrikSecurityCloud.Types
         IntegrationConfig? Config = null
     ) 
     {
+        if ( Enabled != null ) {
+            this.Enabled = Enabled;
+        }
         if ( IntegrationType != null ) {
             this.IntegrationType = IntegrationType;
         }
@@ -100,6 +109,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> IntegrationEnabledStatus? Enabled
+        // GraphQL -> enabled: IntegrationEnabledStatus! (enum)
+        if (this.Enabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "enabled\n" ;
+            } else {
+                s += ind + "enabled\n" ;
+            }
+        }
         //      C# -> IntegrationType? IntegrationType
         // GraphQL -> integrationType: IntegrationType! (enum)
         if (this.IntegrationType != null) {
@@ -162,8 +180,25 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> IntegrationEnabledStatus? Enabled
+        // GraphQL -> enabled: IntegrationEnabledStatus! (enum)
+        if (ec.Includes("enabled",true))
+        {
+            if(this.Enabled == null) {
+
+                this.Enabled = new IntegrationEnabledStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Enabled != null && ec.Excludes("enabled",true))
+        {
+            this.Enabled = null;
+        }
         //      C# -> IntegrationType? IntegrationType
         // GraphQL -> integrationType: IntegrationType! (enum)
         if (ec.Includes("integrationType",true))
@@ -313,7 +348,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Integration> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Integration());
@@ -323,7 +358,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<Integration> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

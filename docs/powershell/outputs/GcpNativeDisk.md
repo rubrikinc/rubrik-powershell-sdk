@@ -27,6 +27,8 @@
   - GCP Project of the disk.
 - attachedInstances: list of GcpNativeAttachmentDetailss
   - Instances to which the disk is attached.
+- fileIndexingStatus: FileIndexingStatus
+  - Specifies the file indexing status for this GCP disk. When enabled, Rubrik scans the file structure within the GCP disk in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - id: System.String

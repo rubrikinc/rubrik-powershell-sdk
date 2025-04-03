@@ -144,6 +144,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadSummary")]
         List<O365WorkloadSummary>? WorkloadSummary { get; set; }
 
+        //      C# -> O365GroupsSummary? GroupsSummary
+        // GraphQL -> groupsSummary: O365GroupsSummary! (type)
+        [JsonProperty("groupsSummary")]
+        O365GroupsSummary? GroupsSummary { get; set; }
+
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         [JsonProperty("authorizedOperations")]
@@ -214,7 +219,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MicrosoftOrg> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 InterfaceHelper
@@ -231,7 +236,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<MicrosoftOrg> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

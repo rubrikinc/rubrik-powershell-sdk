@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HIDE_CHART_LEGEND_NUMBER")]
         HIDE_CHART_LEGEND_NUMBER,
 
+        [EnumMember(Value = "INVALID_CHART_USER_MESSAGE")]
+        INVALID_CHART_USER_MESSAGE,
+
         [EnumMember(Value = "METADATA_KEY_UNSPECIFIED")]
         METADATA_KEY_UNSPECIFIED,
 

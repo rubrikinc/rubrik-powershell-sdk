@@ -1,6 +1,6 @@
 ### NcdObjectProtectionStatus
 ObjectProtectionStatusReply is returned in response to a
- ObjectProtectionStatusReq and holds the requested object protection statuses.
+ObjectProtectionStatusReq and holds the requested object protection statuses.
 
 - files: NcdFilesObjectProtectionStatusData
   - The object protection status summary for files.

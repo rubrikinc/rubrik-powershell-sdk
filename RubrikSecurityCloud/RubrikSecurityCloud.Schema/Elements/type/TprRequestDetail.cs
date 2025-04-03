@@ -196,7 +196,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> RequestedChangesTemplate? RequestedChangesTemplate
         // GraphQL -> requestedChangesTemplate: RequestedChangesTemplate (interface)
@@ -379,7 +379,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TprRequestDetail> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TprRequestDetail());
@@ -389,7 +389,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<TprRequestDetail> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

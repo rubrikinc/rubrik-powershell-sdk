@@ -21,11 +21,23 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APPLICATION_NAME")]
         APPLICATION_NAME,
 
+        [EnumMember(Value = "AUTHENTICATION_CONTEXT_NAME")]
+        AUTHENTICATION_CONTEXT_NAME,
+
+        [EnumMember(Value = "AUTHENTICATION_STRENGTH_NAME")]
+        AUTHENTICATION_STRENGTH_NAME,
+
+        [EnumMember(Value = "CONDITIONAL_ACCESS_POLICY_NAME")]
+        CONDITIONAL_ACCESS_POLICY_NAME,
+
         [EnumMember(Value = "GROUP_NAME")]
         GROUP_NAME,
 
         [EnumMember(Value = "GROUP_TYPE")]
         GROUP_TYPE,
+
+        [EnumMember(Value = "NAMED_LOCATION_NAME")]
+        NAMED_LOCATION_NAME,
 
         [EnumMember(Value = "PRINCIPAL_USER_NAME")]
         PRINCIPAL_USER_NAME,
@@ -35,6 +47,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SERVICE_PRINCIPAL_NAME")]
         SERVICE_PRINCIPAL_NAME,
+
+        [EnumMember(Value = "TERMS_OF_USE_NAME")]
+        TERMS_OF_USE_NAME,
 
         [EnumMember(Value = "USER_NAME")]
         USER_NAME,

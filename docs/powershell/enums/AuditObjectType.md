@@ -143,3 +143,5 @@ Represents all the object types for which we expect to see audits.
 - D365_METADATA - Dynamics 365 metadata.
 - INTEGRATION - Integration.
 - CHATBOT - Chatbot.
+- MYSQLDB_INSTANCE - MySQL Instance.
+- AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB Table.

@@ -25,6 +25,8 @@ Details of an org.
   - Specifies whether service accounts are not enabled for this organization.
 - isInheritIpAllowlistDisabled: System.Boolean
   - Specifies whether IP allowlist settings and entries are not inherited for this organization.
+- mfaStatus: MfaStatus
+  - Specifies MFA status.
 - orgAdminRole: Role
   - Organization admin role.
 - users: list of ExistingUsers

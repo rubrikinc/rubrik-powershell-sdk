@@ -20,6 +20,11 @@ Delete a batch of integrations.
 
 - There is a single argument of type DeleteIntegrationsInput.
 - Returns System.String.
+### enableintegration
+Enables the integration with the specified integration ID.
+
+- There is a single argument of type EnableIntegrationInput.
+- Returns System.String.
 ### updateintegration
 Update the integration with the specified integration ID.
 

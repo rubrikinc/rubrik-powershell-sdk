@@ -41,3 +41,5 @@ Input for creating ab AWS archival target.
   - Internal ID of the AWS IAM pair. This field is required only when creating Data Center AWS role-based archival locations.
 - bypassProxy: System.Boolean
   - Specifies whether the proxy settings should be bypassed for creating this AWS archival target.
+- awsKmsKey: AwsKmsKeyIdentifierInput
+  - AWS KMS key to encrypt the archival target.

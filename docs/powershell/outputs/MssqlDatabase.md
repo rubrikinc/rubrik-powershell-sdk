@@ -49,6 +49,8 @@ SQL Server database.
   - The oldest snapshot taken for a CDM workload.
 - cdmNewestSnapshot: CdmWorkloadSnapshot
   - The newest snapshot taken for a CDM workload.
+- version: System.String
+  - The Microsoft SQL Server version.
 - id: System.String
   - FID of the hierarchy object.
 - name: System.String

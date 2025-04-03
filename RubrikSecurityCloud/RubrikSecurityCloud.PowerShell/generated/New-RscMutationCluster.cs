@@ -477,6 +477,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	batchSize = $someInt
     /// 	# OPTIONAL
     /// 	newNodeCount = $someInt
+    /// 	# OPTIONAL
+    /// 	migrateToExtraDense = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -743,6 +745,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			status = $someClusterNodeStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodeStatus]) for enum values.
     /// 			# OPTIONAL
     /// 			useQuickDrain = $someBoolean
+    /// 			# OPTIONAL
+    /// 			resetAfterRemoveType = $someResetAfterRemoveType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ResetAfterRemoveType]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1793,6 +1797,8 @@ $query.Var.input = @{
 	batchSize = $someInt
 	# OPTIONAL
 	newNodeCount = $someInt
+	# OPTIONAL
+	migrateToExtraDense = $someBoolean
 }"
             );
         }
@@ -2021,6 +2027,8 @@ $query.Var.input = @{
 			status = $someClusterNodeStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodeStatus]) for enum values.
 			# OPTIONAL
 			useQuickDrain = $someBoolean
+			# OPTIONAL
+			resetAfterRemoveType = $someResetAfterRemoveType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ResetAfterRemoveType]) for enum values.
 		}
 	)
 	# OPTIONAL

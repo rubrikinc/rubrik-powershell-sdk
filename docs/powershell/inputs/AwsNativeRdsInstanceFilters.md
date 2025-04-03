@@ -29,3 +29,5 @@ Filters for list of AWS RDS instances.
   - Filter by organization ID.
 - awsNativeFeatureStatusFilter: AwsNativeFeatureStatusFilter
   - Filter by connected status for the AWS native feature.
+- awsNativeIsEligibleForRdsProtectionFilter: AwsNativeIsEligibleForRdsProtectionFilter
+  - Filter workloads based on their eligibility for protection.

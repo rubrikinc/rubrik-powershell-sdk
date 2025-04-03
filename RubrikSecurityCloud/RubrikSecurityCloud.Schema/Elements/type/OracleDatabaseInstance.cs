@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("instanceName")]
         public System.String? InstanceName { get; set; }
 
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        [JsonProperty("version")]
+        public System.String? Version { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public OracleDatabaseInstance Set(
         System.String? HostId = null,
-        System.String? InstanceName = null
+        System.String? InstanceName = null,
+        System.String? Version = null
     ) 
     {
         if ( HostId != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( InstanceName != null ) {
             this.InstanceName = InstanceName;
+        }
+        if ( Version != null ) {
+            this.Version = Version;
         }
         return this;
     }
@@ -82,12 +91,21 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "instanceName\n" ;
             }
         }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        if (this.Version != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
+            }
+        }
         return s;
     }
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? HostId
         // GraphQL -> hostId: UUID! (scalar)
@@ -122,6 +140,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.InstanceName != null && ec.Excludes("instanceName",true))
         {
             this.InstanceName = null;
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        if (ec.Includes("version",true))
+        {
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
     }
 
@@ -168,7 +203,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleDatabaseInstance> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleDatabaseInstance());
@@ -178,7 +213,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<OracleDatabaseInstance> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

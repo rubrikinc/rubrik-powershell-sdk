@@ -27,7 +27,7 @@ Inventory workloads that are supported on Rubrik.
 - MONGODB_ROOT - MongoDB Root.
 - DB2_ROOT
 - EXCHANGE_ROOT - Root of exchange hierarchy.
-- CLOUD_DIRECT_NAS_EXPORT_ROOT - Cloud Direct NAS export root.
+- CLOUD_DIRECT_NAS_EXPORT_ROOT - NAS Cloud Direct export root.
 - AZURE_AD_ROOT - Azure AD root.
 - ACTIVE_DIRECTORY_ROOT - Active Directory root.
 - ATLASSIAN_ROOT - Atlassian root.
@@ -36,5 +36,6 @@ Inventory workloads that are supported on Rubrik.
 - POSTGRES_ROOT - Postgres root.
 - M365_BACKUP_STORAGE_ROOT - M365 Backup Storage Root.
 - MYSQLDB_ROOT - MySQL root.
-- CLOUD_DIRECT_NAS_ROOT - Cloud Direct NAS root.
+- CLOUD_DIRECT_NAS_ROOT - NAS Cloud Direct root.
 - D365_ROOT - D365 root.
+- OPENSTACK_ROOT - OpenStack root.

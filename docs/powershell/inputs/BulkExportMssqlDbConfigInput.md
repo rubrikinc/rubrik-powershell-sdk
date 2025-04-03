@@ -5,7 +5,8 @@ Supported in v9.2+
   - Supported in v9.2+
       Boolean value determining whether an existing database can be overwritten by a database that was exported from a backup. Set to 'false' to prevent overwrites. This is the default. Set to 'true' to allow overwrites.
 - sourceDatabaseIds: list of System.Strings
-  - List of Microsoft SQL database IDs to export.
+  - Supported in v9.2+
+      List of Microsoft SQL database IDs to export.
 - targetDataFilePath: System.String
   - Supported in v9.2+
       Target path used to store all data files.

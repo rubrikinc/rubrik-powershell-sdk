@@ -73,7 +73,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmSnapshotGroupByInfo> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 InterfaceHelper
@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<CdmSnapshotGroupByInfo> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

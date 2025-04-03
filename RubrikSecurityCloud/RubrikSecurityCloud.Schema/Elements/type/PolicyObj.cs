@@ -100,6 +100,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("timeContext")]
         public System.String? TimeContext { get; set; }
 
+        //      C# -> AccessTypeSummary? AccessTypeSummary
+        // GraphQL -> accessTypeSummary: AccessTypeSummary (type)
+        [JsonProperty("accessTypeSummary")]
+        public AccessTypeSummary? AccessTypeSummary { get; set; }
+
         //      C# -> List<AnalyzerMapping>? AllAnalyzerMappings
         // GraphQL -> allAnalyzerMappings: [AnalyzerMapping!]! (type)
         [JsonProperty("allAnalyzerMappings")]
@@ -115,6 +120,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("assetMetadata")]
         public AssetMetadata? AssetMetadata { get; set; }
 
+        //      C# -> List<AttributesSummary>? AttributesSummary
+        // GraphQL -> attributesSummary: [AttributesSummary!]! (type)
+        [JsonProperty("attributesSummary")]
+        public List<AttributesSummary>? AttributesSummary { get; set; }
+
         //      C# -> List<DataTypeResult>? DataTypeResults
         // GraphQL -> dataTypeResults: [DataTypeResult!]! (type)
         [JsonProperty("dataTypeResults")]
@@ -124,6 +134,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deltaUserCounts: PrincipalCounts (type)
         [JsonProperty("deltaUserCounts")]
         public PrincipalCounts? DeltaUserCounts { get; set; }
+
+        //      C# -> List<DocumentTypeSummary>? DocumentTypesSummary
+        // GraphQL -> documentTypesSummary: [DocumentTypeSummary!]! (type)
+        [JsonProperty("documentTypesSummary")]
+        public List<DocumentTypeSummary>? DocumentTypesSummary { get; set; }
 
         //      C# -> List<ExposureSummary>? ExposureSummary
         // GraphQL -> exposureSummary: [ExposureSummary!]! (type)
@@ -270,11 +285,14 @@ namespace RubrikSecurityCloud.Types
         System.String? SnapshotFid = null,
         System.Int64? SnapshotTimestamp = null,
         System.String? TimeContext = null,
+        AccessTypeSummary? AccessTypeSummary = null,
         List<AnalyzerMapping>? AllAnalyzerMappings = null,
         AnalyzerHits? AnalyzerHits = null,
         AssetMetadata? AssetMetadata = null,
+        List<AttributesSummary>? AttributesSummary = null,
         List<DataTypeResult>? DataTypeResults = null,
         PrincipalCounts? DeltaUserCounts = null,
+        List<DocumentTypeSummary>? DocumentTypesSummary = null,
         List<ExposureSummary>? ExposureSummary = null,
         FileResultConnection? FileResultConnection = null,
         FileResultConnection? FolderChildConnection = null,
@@ -338,6 +356,9 @@ namespace RubrikSecurityCloud.Types
         if ( TimeContext != null ) {
             this.TimeContext = TimeContext;
         }
+        if ( AccessTypeSummary != null ) {
+            this.AccessTypeSummary = AccessTypeSummary;
+        }
         if ( AllAnalyzerMappings != null ) {
             this.AllAnalyzerMappings = AllAnalyzerMappings;
         }
@@ -347,11 +368,17 @@ namespace RubrikSecurityCloud.Types
         if ( AssetMetadata != null ) {
             this.AssetMetadata = AssetMetadata;
         }
+        if ( AttributesSummary != null ) {
+            this.AttributesSummary = AttributesSummary;
+        }
         if ( DataTypeResults != null ) {
             this.DataTypeResults = DataTypeResults;
         }
         if ( DeltaUserCounts != null ) {
             this.DeltaUserCounts = DeltaUserCounts;
+        }
+        if ( DocumentTypesSummary != null ) {
+            this.DocumentTypesSummary = DocumentTypesSummary;
         }
         if ( ExposureSummary != null ) {
             this.ExposureSummary = ExposureSummary;
@@ -554,6 +581,18 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "timeContext\n" ;
             }
         }
+        //      C# -> AccessTypeSummary? AccessTypeSummary
+        // GraphQL -> accessTypeSummary: AccessTypeSummary (type)
+        if (this.AccessTypeSummary != null) {
+            var fspec = this.AccessTypeSummary.AsFieldSpec(conf.Child("accessTypeSummary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "accessTypeSummary" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<AnalyzerMapping>? AllAnalyzerMappings
         // GraphQL -> allAnalyzerMappings: [AnalyzerMapping!]! (type)
         if (this.AllAnalyzerMappings != null) {
@@ -590,6 +629,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<AttributesSummary>? AttributesSummary
+        // GraphQL -> attributesSummary: [AttributesSummary!]! (type)
+        if (this.AttributesSummary != null) {
+            var fspec = this.AttributesSummary.AsFieldSpec(conf.Child("attributesSummary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "attributesSummary" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<DataTypeResult>? DataTypeResults
         // GraphQL -> dataTypeResults: [DataTypeResult!]! (type)
         if (this.DataTypeResults != null) {
@@ -611,6 +662,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "deltaUserCounts" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<DocumentTypeSummary>? DocumentTypesSummary
+        // GraphQL -> documentTypesSummary: [DocumentTypeSummary!]! (type)
+        if (this.DocumentTypesSummary != null) {
+            var fspec = this.DocumentTypesSummary.AsFieldSpec(conf.Child("documentTypesSummary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "documentTypesSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -775,7 +838,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<RiskReason>? AccessRiskReasons
         // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
@@ -1056,6 +1119,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.TimeContext = null;
         }
+        //      C# -> AccessTypeSummary? AccessTypeSummary
+        // GraphQL -> accessTypeSummary: AccessTypeSummary (type)
+        if (ec.Includes("accessTypeSummary",false))
+        {
+            if(this.AccessTypeSummary == null) {
+
+                this.AccessTypeSummary = new AccessTypeSummary();
+                this.AccessTypeSummary.ApplyExploratoryFieldSpec(ec.NewChild("accessTypeSummary"));
+
+            } else {
+
+                this.AccessTypeSummary.ApplyExploratoryFieldSpec(ec.NewChild("accessTypeSummary"));
+
+            }
+        }
+        else if (this.AccessTypeSummary != null && ec.Excludes("accessTypeSummary",false))
+        {
+            this.AccessTypeSummary = null;
+        }
         //      C# -> List<AnalyzerMapping>? AllAnalyzerMappings
         // GraphQL -> allAnalyzerMappings: [AnalyzerMapping!]! (type)
         if (ec.Includes("allAnalyzerMappings",false))
@@ -1113,6 +1195,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.AssetMetadata = null;
         }
+        //      C# -> List<AttributesSummary>? AttributesSummary
+        // GraphQL -> attributesSummary: [AttributesSummary!]! (type)
+        if (ec.Includes("attributesSummary",false))
+        {
+            if(this.AttributesSummary == null) {
+
+                this.AttributesSummary = new List<AttributesSummary>();
+                this.AttributesSummary.ApplyExploratoryFieldSpec(ec.NewChild("attributesSummary"));
+
+            } else {
+
+                this.AttributesSummary.ApplyExploratoryFieldSpec(ec.NewChild("attributesSummary"));
+
+            }
+        }
+        else if (this.AttributesSummary != null && ec.Excludes("attributesSummary",false))
+        {
+            this.AttributesSummary = null;
+        }
         //      C# -> List<DataTypeResult>? DataTypeResults
         // GraphQL -> dataTypeResults: [DataTypeResult!]! (type)
         if (ec.Includes("dataTypeResults",false))
@@ -1150,6 +1251,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.DeltaUserCounts != null && ec.Excludes("deltaUserCounts",false))
         {
             this.DeltaUserCounts = null;
+        }
+        //      C# -> List<DocumentTypeSummary>? DocumentTypesSummary
+        // GraphQL -> documentTypesSummary: [DocumentTypeSummary!]! (type)
+        if (ec.Includes("documentTypesSummary",false))
+        {
+            if(this.DocumentTypesSummary == null) {
+
+                this.DocumentTypesSummary = new List<DocumentTypeSummary>();
+                this.DocumentTypesSummary.ApplyExploratoryFieldSpec(ec.NewChild("documentTypesSummary"));
+
+            } else {
+
+                this.DocumentTypesSummary.ApplyExploratoryFieldSpec(ec.NewChild("documentTypesSummary"));
+
+            }
+        }
+        else if (this.DocumentTypesSummary != null && ec.Excludes("documentTypesSummary",false))
+        {
+            this.DocumentTypesSummary = null;
         }
         //      C# -> List<ExposureSummary>? ExposureSummary
         // GraphQL -> exposureSummary: [ExposureSummary!]! (type)
@@ -1443,7 +1563,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolicyObj> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolicyObj());
@@ -1453,7 +1573,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<PolicyObj> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

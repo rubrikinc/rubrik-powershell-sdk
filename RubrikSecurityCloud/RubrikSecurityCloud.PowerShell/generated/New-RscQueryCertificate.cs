@@ -119,6 +119,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isTrustedAny = $someBoolean
     /// 	# OPTIONAL
     /// 	isRscBorn = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isCa = $someBoolean
+    /// 	# OPTIONAL
+    /// 	issuerTypes = @(
+    /// 		$someIssuerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IssuerType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	isRenewalInProgress = $someBoolean
+    /// 	# OPTIONAL
+    /// 	cdmUsages = @(
+    /// 		$someCdmCertificateUsage # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmCertificateUsage]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -380,6 +392,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isTrustedAny = $someBoolean
     /// 	# OPTIONAL
     /// 	isRscBorn = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isCa = $someBoolean
+    /// 	# OPTIONAL
+    /// 	issuerTypes = @(
+    /// 		$someIssuerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IssuerType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	isRenewalInProgress = $someBoolean
+    /// 	# OPTIONAL
+    /// 	cdmUsages = @(
+    /// 		$someCdmCertificateUsage # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmCertificateUsage]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -740,6 +764,18 @@ $query.Var.input = @{
 	isTrustedAny = $someBoolean
 	# OPTIONAL
 	isRscBorn = $someBoolean
+	# OPTIONAL
+	isCa = $someBoolean
+	# OPTIONAL
+	issuerTypes = @(
+		$someIssuerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IssuerType]) for enum values.
+	)
+	# OPTIONAL
+	isRenewalInProgress = $someBoolean
+	# OPTIONAL
+	cdmUsages = @(
+		$someCdmCertificateUsage # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmCertificateUsage]) for enum values.
+	)
 }"
             );
         }
@@ -972,6 +1008,18 @@ $query.Var.input = @{
 	isTrustedAny = $someBoolean
 	# OPTIONAL
 	isRscBorn = $someBoolean
+	# OPTIONAL
+	isCa = $someBoolean
+	# OPTIONAL
+	issuerTypes = @(
+		$someIssuerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IssuerType]) for enum values.
+	)
+	# OPTIONAL
+	isRenewalInProgress = $someBoolean
+	# OPTIONAL
+	cdmUsages = @(
+		$someCdmCertificateUsage # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmCertificateUsage]) for enum values.
+	)
 }"
             );
         }

@@ -11,3 +11,5 @@ Disk migration request for a cloud cluster.
   - Size of the batch for migrating the old configuration nodes to new configuration nodes.
 - newNodeCount: System.Int32
   - The total count of nodes after migration. This is applicable only when switching the instance type.
+- migrateToExtraDense: System.Boolean
+  - Specifies whether new nodes must be extra dense.

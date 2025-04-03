@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
+        [EnumMember(Value = "AWS_NATIVE_DYNAMODB_TABLE")]
+        AWS_NATIVE_DYNAMODB_TABLE,
+
         [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
         AWS_NATIVE_S3_BUCKET,
 
@@ -191,6 +194,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "O365Teams")]
         O365_TEAMS,
+
+        [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
+        OPENSTACK_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "ORACLE_DATA_GUARD_GROUP")]
         ORACLE_DATA_GUARD_GROUP,

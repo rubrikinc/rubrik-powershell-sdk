@@ -377,6 +377,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	featuresToFilterOut = @(
     /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	operation = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2005,6 +2007,8 @@ $query.Var.awsCloudAccountsArg = @{
 	featuresToFilterOut = @(
 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
+	# OPTIONAL
+	operation = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
 }"
             );
         }

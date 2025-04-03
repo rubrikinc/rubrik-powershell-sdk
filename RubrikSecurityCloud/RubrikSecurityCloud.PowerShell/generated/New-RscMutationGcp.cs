@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 11
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Google Cloud Platform' API domain:
-    /// CloudAccountAddManualAuthProject, CloudAccountAddProjects, CloudAccountDeleteProjects, CloudAccountOauthComplete, CloudAccountOauthInitiate, CloudAccountUpgradeProjects, CreateReaderTarget, CreateTarget, SetDefaultServiceAccountJwtConfig, UpdateTarget, or UpgradeCloudAccountPermissionsWithoutOauth.
+    /// BulkSetCloudAccountProperties, CloudAccountAddManualAuthProject, CloudAccountAddProjects, CloudAccountDeleteProjects, CloudAccountOauthComplete, CloudAccountOauthInitiate, CloudAccountUpgradeProjects, CreateReaderTarget, CreateTarget, SetDefaultServiceAccountJwtConfig, UpdateTarget, or UpgradeCloudAccountPermissionsWithoutOauth.
     /// </summary>
     /// <description>
     /// New-RscMutationGcp creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 11 operations
+    /// There are 12 operations
     /// in the 'Google Cloud Platform' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CloudAccountAddManualAuthProject, CloudAccountAddProjects, CloudAccountDeleteProjects, CloudAccountOauthComplete, CloudAccountOauthInitiate, CloudAccountUpgradeProjects, CreateReaderTarget, CreateTarget, SetDefaultServiceAccountJwtConfig, UpdateTarget, or UpgradeCloudAccountPermissionsWithoutOauth.
+    /// one of: BulkSetCloudAccountProperties, CloudAccountAddManualAuthProject, CloudAccountAddProjects, CloudAccountDeleteProjects, CloudAccountOauthComplete, CloudAccountOauthInitiate, CloudAccountUpgradeProjects, CreateReaderTarget, CreateTarget, SetDefaultServiceAccountJwtConfig, UpdateTarget, or UpgradeCloudAccountPermissionsWithoutOauth.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationGcp -CloudAccountAddManualAuthProject).Info().
+    /// (New-RscMutationGcp -BulkSetCloudAccountProperties).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,46 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationGcp -CloudAccountAddManualAuthProject).Info().
+    /// (New-RscMutationGcp -BulkSetCloudAccountProperties).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the BulkSetCloudAccountProperties operation
+    /// of the 'Google Cloud Platform' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Gcp
+    /// # API Operation: BulkSetCloudAccountProperties
+    /// 
+    /// $query = New-RscMutationGcp -Operation BulkSetCloudAccountProperties
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	projectCredentialsJwt = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the CloudAccountAddManualAuthProject operation
@@ -208,6 +243,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# REQUIRED
     /// 	skipResourceDeletion = $someBoolean
+    /// 	# OPTIONAL
+    /// 	projectIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -594,6 +637,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "BulkSetCloudAccountProperties",
                 "CloudAccountAddManualAuthProject",
                 "CloudAccountAddProjects",
                 "CloudAccountDeleteProjects",
@@ -620,6 +664,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "BulkSetCloudAccountProperties":
+                        this.ProcessRecord_BulkSetCloudAccountProperties();
+                        break;
                     case "CloudAccountAddManualAuthProject":
                         this.ProcessRecord_CloudAccountAddManualAuthProject();
                         break;
@@ -661,6 +708,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // gcpBulkSetCloudAccountProperties.
+        internal void ProcessRecord_BulkSetCloudAccountProperties()
+        {
+            this._logger.name += " -BulkSetCloudAccountProperties";
+            // Create new graphql operation gcpBulkSetCloudAccountProperties
+            InitMutationGcpBulkSetCloudAccountProperties();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -762,6 +818,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationUpgradeGcpCloudAccountPermissionsWithoutOauth();
         }
 
+
+        // Create new GraphQL Mutation:
+        // gcpBulkSetCloudAccountProperties(input: GcpBulkSetCloudAccountPropertiesInput!): Boolean!
+        internal void InitMutationGcpBulkSetCloudAccountProperties()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GcpBulkSetCloudAccountPropertiesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationGcpBulkSetCloudAccountProperties",
+                "($input: GcpBulkSetCloudAccountPropertiesInput!)",
+                "System.Boolean",
+                Mutation.GcpBulkSetCloudAccountProperties,
+                Mutation.GcpBulkSetCloudAccountPropertiesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudAccountIds = @(
+		$someString
+	)
+	# REQUIRED
+	projectCredentialsJwt = $someString
+}"
+            );
+        }
 
         // Create new GraphQL Mutation:
         // gcpCloudAccountAddManualAuthProject(input: GcpCloudAccountAddManualAuthProjectInput!): Boolean!
@@ -881,6 +964,14 @@ $query.Var.input = @{
 	)
 	# REQUIRED
 	skipResourceDeletion = $someBoolean
+	# OPTIONAL
+	projectIds = @(
+		$someString
+	)
+	# OPTIONAL
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
 }"
             );
         }

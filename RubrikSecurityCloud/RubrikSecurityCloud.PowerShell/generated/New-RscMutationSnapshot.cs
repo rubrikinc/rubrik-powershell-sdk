@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 18
+    /// Create a new RscQuery object for any of the 19
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, or UploadDatabaseToBlobstore.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, or UploadDatabaseToBlobstore.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 18 operations
+    /// There are 19 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, or UploadDatabaseToBlobstore.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, or UploadDatabaseToBlobstore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -310,6 +310,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CreateVapps operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: CreateVapps
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation CreateVapps
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	inputs = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			config = @{
+    /// 				# OPTIONAL
+    /// 				slaId = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			id = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateVappSnapshotsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DeleteCloudWorkloadSnapshot operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -531,6 +572,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldRecreateDirectoryStructure = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldRestoreOnlyAcls = $someBoolean
     /// 		# REQUIRED
     /// 		exportPathPairs = @(
     /// 			@{
@@ -879,6 +922,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateDomainController",
                 "CreateDownloadForVolumeGroup",
                 "CreateFileset",
+                "CreateVapps",
                 "DeleteCloudWorkloadSnapshot",
                 "DeleteFilesetSnapshots",
                 "DeleteUnmanageds",
@@ -923,6 +967,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CreateFileset":
                         this.ProcessRecord_CreateFileset();
+                        break;
+                    case "CreateVapps":
+                        this.ProcessRecord_CreateVapps();
                         break;
                     case "DeleteCloudWorkloadSnapshot":
                         this.ProcessRecord_DeleteCloudWorkloadSnapshot();
@@ -1022,6 +1069,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreateFileset";
             // Create new graphql operation createFilesetSnapshot
             InitMutationCreateFilesetSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createVappSnapshots.
+        internal void ProcessRecord_CreateVapps()
+        {
+            this._logger.name += " -CreateVapps";
+            // Create new graphql operation createVappSnapshots
+            InitMutationCreateVappSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1319,6 +1375,39 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // createVappSnapshots(input: CreateVappSnapshotsInput!): CreateVappSnapshotsReply!
+        internal void InitMutationCreateVappSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateVappSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateVappSnapshots",
+                "($input: CreateVappSnapshotsInput!)",
+                "CreateVappSnapshotsReply",
+                Mutation.CreateVappSnapshots,
+                Mutation.CreateVappSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	inputs = @(
+		@{
+			# REQUIRED
+			config = @{
+				# OPTIONAL
+				slaId = $someString
+			}
+			# REQUIRED
+			id = $someString
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // deleteCloudWorkloadSnapshot(input: DeleteCloudWorkloadSnapshotInput!): Boolean!
         internal void InitMutationDeleteCloudWorkloadSnapshot()
         {
@@ -1502,6 +1591,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldRecreateDirectoryStructure = $someBoolean
+		# OPTIONAL
+		shouldRestoreOnlyAcls = $someBoolean
 		# REQUIRED
 		exportPathPairs = @(
 			@{

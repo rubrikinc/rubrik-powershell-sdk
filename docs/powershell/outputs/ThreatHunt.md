@@ -1,6 +1,6 @@
 ### ThreatHunt
 Represents the configuration and statistics for a
- threat hunt.
+threat hunt.
 
 - huntId: System.String
   - ID of the threat hunt.

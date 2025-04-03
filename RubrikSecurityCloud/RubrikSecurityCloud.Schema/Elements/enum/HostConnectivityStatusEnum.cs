@@ -60,6 +60,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SECONDARY_CLUSTER")]
         SECONDARY_CLUSTER,
 
+        [EnumMember(Value = "UNAUTHORIZED")]
+        UNAUTHORIZED,
+
         [EnumMember(Value = "UNKNOWN_CONNECTIVITY_STATUS")]
         UNKNOWN_CONNECTIVITY_STATUS
 

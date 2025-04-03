@@ -154,6 +154,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// 	# OPTIONAL
+    /// 	filePath = $someString
+    /// 	# OPTIONAL
+    /// 	parentWorkloadId = $someString
     /// }
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -252,6 +258,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// 	# OPTIONAL
+    /// 	filePath = $someString
+    /// 	# OPTIONAL
+    /// 	parentWorkloadId = $someString
     /// }
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -336,6 +348,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	descendantWorkloadId = $someString
     /// }
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -448,6 +462,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	descendantWorkloadId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -538,6 +554,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// 	# OPTIONAL
+    /// 	filePath = $someString
+    /// 	# OPTIONAL
+    /// 	parentWorkloadId = $someString
     /// }
     /// # OPTIONAL
     /// $query.Var.siteChildId = $someString
@@ -632,6 +654,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// 	# OPTIONAL
+    /// 	filePath = $someString
+    /// 	# OPTIONAL
+    /// 	parentWorkloadId = $someString
     /// }
     /// # OPTIONAL
     /// $query.Var.siteChildId = $someString
@@ -726,6 +754,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// 	# OPTIONAL
+    /// 	filePath = $someString
+    /// 	# OPTIONAL
+    /// 	parentWorkloadId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -984,6 +1018,12 @@ $query.Var.sharepointDriveSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	objectId = $someString
+	# OPTIONAL
+	filePath = $someString
+	# OPTIONAL
+	parentWorkloadId = $someString
 }
 # REQUIRED
 $query.Var.orgId = $someString
@@ -1090,6 +1130,12 @@ $query.Var.sharepointDriveSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	objectId = $someString
+	# OPTIONAL
+	filePath = $someString
+	# OPTIONAL
+	parentWorkloadId = $someString
 }
 # REQUIRED
 $query.Var.orgId = $someString
@@ -1180,6 +1226,8 @@ $query.Var.sharepointSiteSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	descendantWorkloadId = $someString
 }
 # REQUIRED
 $query.Var.orgId = $someString"
@@ -1287,6 +1335,8 @@ $query.Var.sharepointSiteSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	descendantWorkloadId = $someString
 }"
             );
         }
@@ -1383,6 +1433,12 @@ $query.Var.sharepointDriveSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	objectId = $someString
+	# OPTIONAL
+	filePath = $someString
+	# OPTIONAL
+	parentWorkloadId = $someString
 }
 # OPTIONAL
 $query.Var.siteChildId = $someString
@@ -1481,6 +1537,12 @@ $query.Var.sharepointDriveSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	objectId = $someString
+	# OPTIONAL
+	filePath = $someString
+	# OPTIONAL
+	parentWorkloadId = $someString
 }
 # OPTIONAL
 $query.Var.siteChildId = $someString"
@@ -1579,6 +1641,12 @@ $query.Var.sharepointDriveSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	objectId = $someString
+	# OPTIONAL
+	filePath = $someString
+	# OPTIONAL
+	parentWorkloadId = $someString
 }"
             );
         }

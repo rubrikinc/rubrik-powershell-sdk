@@ -5,3 +5,5 @@ Aws cloud accounts features.
   - AWS account details.
 - featureDetails: list of FeatureDetails
   - Feature details for the cloud account.
+- awsRoleCustomization: AwsRoleCustomizationResponseType
+  - Role customizations for the AWS account.

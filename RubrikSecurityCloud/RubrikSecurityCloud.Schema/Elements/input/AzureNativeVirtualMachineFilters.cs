@@ -99,6 +99,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgFilter")]
         public OrgFilter? OrgFilter { get; set; }
 
+        //      C# -> Filter? HierarchyFilter
+        // GraphQL -> hierarchyFilter: Filter (input)
+        [JsonProperty("hierarchyFilter")]
+        public Filter? HierarchyFilter { get; set; }
+
+        //      C# -> List<Filter>? HierarchyFilters
+        // GraphQL -> hierarchyFilters: [Filter!] (input)
+        [JsonProperty("hierarchyFilters")]
+        public List<Filter>? HierarchyFilters { get; set; }
+
 
         #endregion
 

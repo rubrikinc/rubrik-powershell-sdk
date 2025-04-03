@@ -57,6 +57,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ASSIGN_MIP_LABELS")]
         ASSIGN_MIP_LABELS,
 
+        [EnumMember(Value = "ASSIGN_ROLE")]
+        ASSIGN_ROLE,
+
         [EnumMember(Value = "CANCEL_RUNNING_EVENT")]
         CANCEL_RUNNING_EVENT,
 
@@ -128,6 +131,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "DOWNLOAD")]
         DOWNLOAD,
+
+        [EnumMember(Value = "DOWNLOAD_ANOMALY_FORENSICS")]
+        DOWNLOAD_ANOMALY_FORENSICS,
 
         [EnumMember(Value = "DOWNLOAD_FROM_ARCHIVAL_LOCATION")]
         DOWNLOAD_FROM_ARCHIVAL_LOCATION,
@@ -207,8 +213,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_ACCESS")]
         MANAGE_ACCESS,
 
+        [EnumMember(Value = "MANAGE_ANOMALY_DETECTION")]
+        MANAGE_ANOMALY_DETECTION,
+
         [EnumMember(Value = "MANAGE_ARCHIVAL_NETWORK_THROTTLE_SETTINGS")]
         MANAGE_ARCHIVAL_NETWORK_THROTTLE_SETTINGS,
+
+        [EnumMember(Value = "MANAGE_AUTH_DOMAIN")]
+        MANAGE_AUTH_DOMAIN,
 
         [EnumMember(Value = "MANAGE_CDP_IO_FILTER")]
         MANAGE_CDP_IO_FILTER,
@@ -227,6 +239,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_CORS_SETTINGS")]
         MANAGE_CORS_SETTINGS,
+
+        [EnumMember(Value = "MANAGE_CREDENTIALS")]
+        MANAGE_CREDENTIALS,
 
         [EnumMember(Value = "MANAGE_CROSS_ACCOUNT_PAIR")]
         MANAGE_CROSS_ACCOUNT_PAIR,
@@ -249,11 +264,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_GUEST_OS_CREDENTIAL")]
         MANAGE_GUEST_OS_CREDENTIAL,
 
+        [EnumMember(Value = "MANAGE_IDENTITY_RESILIENCY")]
+        MANAGE_IDENTITY_RESILIENCY,
+
         [EnumMember(Value = "MANAGE_KMS_KEY_VAULT")]
         MANAGE_KMS_KEY_VAULT,
 
         [EnumMember(Value = "MANAGE_LEGAL_HOLD")]
         MANAGE_LEGAL_HOLD,
+
+        [EnumMember(Value = "MANAGE_LOCKOUT")]
+        MANAGE_LOCKOUT,
 
         [EnumMember(Value = "MANAGE_LOG_SHIPPING")]
         MANAGE_LOG_SHIPPING,
@@ -273,20 +294,32 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_ORGANIZATION_NETWORKS")]
         MANAGE_ORGANIZATION_NETWORKS,
 
+        [EnumMember(Value = "MANAGE_PAM_INTEGRATION")]
+        MANAGE_PAM_INTEGRATION,
+
         [EnumMember(Value = "MANAGE_PROTECTION")]
         MANAGE_PROTECTION,
 
         [EnumMember(Value = "MANAGE_RECOVERY_PLAN")]
         MANAGE_RECOVERY_PLAN,
 
+        [EnumMember(Value = "MANAGE_ROLE")]
+        MANAGE_ROLE,
+
         [EnumMember(Value = "MANAGE_SECURITY_POLICIES")]
         MANAGE_SECURITY_POLICIES,
+
+        [EnumMember(Value = "MANAGE_SECURITY_POLICY")]
+        MANAGE_SECURITY_POLICY,
 
         [EnumMember(Value = "MANAGE_SECURITY_VIOLATIONS")]
         MANAGE_SECURITY_VIOLATIONS,
 
         [EnumMember(Value = "MANAGE_SERVICENOW_INTEGRATION")]
         MANAGE_SERVICENOW_INTEGRATION,
+
+        [EnumMember(Value = "MANAGE_SERVICE_ACCOUNT")]
+        MANAGE_SERVICE_ACCOUNT,
 
         [EnumMember(Value = "MANAGE_SLA")]
         MANAGE_SLA,
@@ -317,6 +350,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_TPR_POLICY")]
         MANAGE_TPR_POLICY,
+
+        [EnumMember(Value = "MANAGE_USER")]
+        MANAGE_USER,
 
         [EnumMember(Value = "MANAGE_USER_CREDENTIALS")]
         MANAGE_USER_CREDENTIALS,
@@ -360,6 +396,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "REFRESH_DATA_SOURCE")]
         REFRESH_DATA_SOURCE,
 
+        [EnumMember(Value = "REMEDIATE_IDENTITY_RESILIENCY_VIOLATIONS")]
+        REMEDIATE_IDENTITY_RESILIENCY_VIOLATIONS,
+
         [EnumMember(Value = "REMOVE_CLUSTER_NODES")]
         REMOVE_CLUSTER_NODES,
 
@@ -374,6 +413,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RESTORE_TO_ORIGIN")]
         RESTORE_TO_ORIGIN,
+
+        [EnumMember(Value = "SELF_SERVICE_RESTORE")]
+        SELF_SERVICE_RESTORE,
 
         [EnumMember(Value = "TAKE_ONDEMAND_SNAPSHOT")]
         TAKE_ONDEMAND_SNAPSHOT,
@@ -407,6 +449,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_ACCESS")]
         VIEW_ACCESS,
+
+        [EnumMember(Value = "VIEW_ANOMALY_DETECTION_FILE_DETAILS")]
+        VIEW_ANOMALY_DETECTION_FILE_DETAILS,
 
         [EnumMember(Value = "VIEW_ANOMALY_DETECTION_RESULTS")]
         VIEW_ANOMALY_DETECTION_RESULTS,
@@ -486,6 +531,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_GUEST_OS_CREDENTIAL")]
         VIEW_GUEST_OS_CREDENTIAL,
 
+        [EnumMember(Value = "VIEW_IDENTITY_RESILIENCY")]
+        VIEW_IDENTITY_RESILIENCY,
+
         [EnumMember(Value = "VIEW_INVENTORY")]
         VIEW_INVENTORY,
 
@@ -522,11 +570,23 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_REPORT")]
         VIEW_REPORT,
 
+        [EnumMember(Value = "VIEW_ROLE")]
+        VIEW_ROLE,
+
+        [EnumMember(Value = "VIEW_RUBY_INSIGHTS")]
+        VIEW_RUBY_INSIGHTS,
+
+        [EnumMember(Value = "VIEW_SECURITY_POLICY")]
+        VIEW_SECURITY_POLICY,
+
         [EnumMember(Value = "VIEW_SECURITY_SETTINGS")]
         VIEW_SECURITY_SETTINGS,
 
         [EnumMember(Value = "VIEW_SERVICENOW_INTEGRATION")]
         VIEW_SERVICENOW_INTEGRATION,
+
+        [EnumMember(Value = "VIEW_SERVICE_ACCOUNT")]
+        VIEW_SERVICE_ACCOUNT,
 
         [EnumMember(Value = "VIEW_SLA")]
         VIEW_SLA,
@@ -563,6 +623,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_TPR_REQUEST")]
         VIEW_TPR_REQUEST,
+
+        [EnumMember(Value = "VIEW_USER")]
+        VIEW_USER,
 
         [EnumMember(Value = "VIEW_USER_MANAGEMENT")]
         VIEW_USER_MANAGEMENT,

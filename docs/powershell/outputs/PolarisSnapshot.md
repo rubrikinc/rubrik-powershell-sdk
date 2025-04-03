@@ -22,6 +22,10 @@
 - isArchivalCopy: System.Boolean
 - archivedSnapshots: list of ArchivedSnapshots
   - Archived copies of the snapshot.
+- archivalLocationId: System.String
+  - Specifies ID of the location where snapshot is uploaded to.
+- sourceSnapshotId: System.String
+  - Specifies the source snapshot ID.
 - isQuarantined: System.Boolean
   - Specifies whether the snapshot is quarantined.
 - replicationLocations: list of DataLocations
@@ -34,6 +38,8 @@
 - polarisSpecificSnapshot: PolarisSpecificSnapshot
   - Rubrik-specific information about snapshots of specific workloads. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and M365 snapshots.
 - slaDomain: SlaDomain
+- snapshotRetentionInfo: RscSnapshotRetentionInfo
+  - Snapshot retention-related information for local, archival, and replication locations.
 - isIndexed: System.Boolean
   - Specifies whether or not the snapshot is indexed.
 - isExpired: System.Boolean

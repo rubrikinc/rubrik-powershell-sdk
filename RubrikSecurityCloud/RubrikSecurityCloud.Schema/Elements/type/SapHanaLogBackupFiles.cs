@@ -234,7 +234,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int64? BackupId
         // GraphQL -> backupId: Long (scalar)
@@ -453,7 +453,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaLogBackupFiles> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaLogBackupFiles());
@@ -463,7 +463,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<SapHanaLogBackupFiles> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -320,7 +320,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ThreatHuntObjectStatus? ObjectScanStatus
         // GraphQL -> objectScanStatus: ThreatHuntObjectStatus! (enum)
@@ -625,7 +625,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatHuntResultObjectsSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatHuntResultObjectsSummary());
@@ -635,7 +635,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ThreatHuntResultObjectsSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

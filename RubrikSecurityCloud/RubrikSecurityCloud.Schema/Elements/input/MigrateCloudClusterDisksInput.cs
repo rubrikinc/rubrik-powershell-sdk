@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("newNodeCount")]
         public System.Int32? NewNodeCount { get; set; }
 
+        //      C# -> System.Boolean? MigrateToExtraDense
+        // GraphQL -> migrateToExtraDense: Boolean (scalar)
+        [JsonProperty("migrateToExtraDense")]
+        public System.Boolean? MigrateToExtraDense { get; set; }
+
 
         #endregion
 

@@ -1,0 +1,71 @@
+### AwsNativeDynamoDbTable
+AWS native DynamoDB Table.
+
+- cloudNativeId: System.String
+  - AWS native ID of DynamoDB Table.
+- awsAccountRubrikId: System.String
+  - Rubrik ID of the AWS account.
+- region: AwsNativeRegion
+  - Name of the region from where backup will be taken. Some examples are: US_EAST_1, AP_EAST_1. This field cannot be null or empty, and will be mapped directly to regions available for the DynamoDB table in the AWS cloud.
+- tags: list of Tags
+  - List of tags associated with the table.
+- isRelic: System.Boolean
+  - Whether the table is relic.
+- nativeName: System.String
+  - AWS native name of the object.
+- isExocomputeConfigured: System.Boolean
+  - A boolean specifying whether an exocompute is configured in the region.
+- nonBackupRegionNames: list of AwsNativeRegions
+  - Names of the regions where the table is present but are not chosen as backup regions. This field is only valid for Global tables.
+- authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- awsAccount: AwsNativeAccount
+  - AWS account of the Amazon DynamoDB Table.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- id: System.String
+  - FID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The latest snapshot that is indexed and unexpired, and therefore restorable.

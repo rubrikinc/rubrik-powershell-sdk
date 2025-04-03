@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATLASSIAN")]
         ATLASSIAN,
 
+        [EnumMember(Value = "AWS_DYNAMODB")]
+        AWS_DYNAMODB,
+
         [EnumMember(Value = "AWS_EC2")]
         AWS_EC2,
 

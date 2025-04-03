@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LRS")]
         LRS,
 
+        [EnumMember(Value = "UNKNOWN_AZURE_REDUNDANCY")]
+        UNKNOWN_AZURE_REDUNDANCY,
+
         [EnumMember(Value = "ZRS")]
         ZRS
 

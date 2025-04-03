@@ -16,6 +16,8 @@ Supported in v5.0+
 - shouldRecreateDirectoryStructure: System.Boolean
   - Supported in v8.1+
       Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
+- shouldRestoreOnlyAcls: System.Boolean
+  - Optional field to determine if only ACLs should be restored during the restore process. The default value is false.
 - exportPathPairs: list of FilesetExportPathPairInputs
   - Required. Supported in v5.0+
       Pairs of source path and destination path.

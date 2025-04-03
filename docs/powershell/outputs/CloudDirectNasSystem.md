@@ -1,10 +1,10 @@
 ### CloudDirectNasSystem
-Cloud Direct NAS System object.
+NAS Cloud Direct System object.
 
 - clusterUuid: System.String
-  - Cloud Direct NAS Cluster ID.
+  - NAS Cloud Direct cluster ID.
 - cloudDirectId: System.String
-  - UUID of the Cloud Direct NAS system on the NCD Cluster.
+  - UUID of the NAS Cloud Direct system on the NCD cluster.
 - systemName: System.String
   - Name of the system.
 - vendorType: CloudDirectNasVendorType
@@ -28,7 +28,7 @@ Cloud Direct NAS System object.
 - logicalChildConnection: CloudDirectNasSystemLogicalChildTypeConnection
   - List of logical children.
 - shareCount: System.Int32
-  - Total number of shares in this NAS system.
+  - Total number of objects in this NAS system.
 - namespaceCount: System.Int32
   - Total number of namespaces in this NAS system.
 - cluster: Cluster

@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GENERIC")]
         GENERIC,
 
+        [EnumMember(Value = "GENERIC_S3")]
+        GENERIC_S3,
+
         [EnumMember(Value = "ISILON")]
         ISILON,
 

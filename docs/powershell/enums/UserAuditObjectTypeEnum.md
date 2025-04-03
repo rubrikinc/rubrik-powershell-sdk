@@ -8,6 +8,7 @@ User audit object type.
 - M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
 - DATA_CENTER_CLOUD_ACCOUNT - Data Center Cloud Account.
 - OracleRac - Oracle RAC type.
+- MYSQLDB_INSTANCE - MySQL Instance.
 - IpWhitelist - IP whitelist type.
 - HypervVm - Hyper-V virtual machine type.
 - DataLocation - Data location type.
@@ -47,6 +48,7 @@ User audit object type.
 - ShareFileset - Share fileset type.
 - AwsNativeEc2Instance - AWS native EC2 instance type.
 - Ldap - LDAP type.
+- AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB table.
 - Upgrade - Upgrade type.
 - LinuxHost - Linux host type.
 - O365Mailbox - Office 365 mailbox type.

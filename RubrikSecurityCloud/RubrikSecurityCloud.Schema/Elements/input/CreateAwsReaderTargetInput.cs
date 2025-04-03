@@ -137,6 +137,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("bypassProxy")]
         public System.Boolean? BypassProxy { get; set; }
 
+        //      C# -> AwsKmsKeyIdentifierInput? AwsKmsKey
+        // GraphQL -> awsKmsKey: AwsKmsKeyIdentifierInput (input)
+        [JsonProperty("awsKmsKey")]
+        public AwsKmsKeyIdentifierInput? AwsKmsKey { get; set; }
+
 
         #endregion
 

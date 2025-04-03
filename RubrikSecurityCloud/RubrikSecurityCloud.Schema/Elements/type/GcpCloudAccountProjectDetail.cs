@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<GcpCloudAccountFeatureDetail>? AllEnabledFeaturesDetails
+        // GraphQL -> allEnabledFeaturesDetails: [GcpCloudAccountFeatureDetail!]! (type)
+        [JsonProperty("allEnabledFeaturesDetails")]
+        public List<GcpCloudAccountFeatureDetail>? AllEnabledFeaturesDetails { get; set; }
+
         //      C# -> GcpCloudAccountFeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: GcpCloudAccountFeatureDetail (type)
         [JsonProperty("featureDetail")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GcpCloudAccountProjectDetail Set(
+        List<GcpCloudAccountFeatureDetail>? AllEnabledFeaturesDetails = null,
         GcpCloudAccountFeatureDetail? FeatureDetail = null,
         GcpCloudAccountProject? Project = null
     ) 
     {
+        if ( AllEnabledFeaturesDetails != null ) {
+            this.AllEnabledFeaturesDetails = AllEnabledFeaturesDetails;
+        }
         if ( FeatureDetail != null ) {
             this.FeatureDetail = FeatureDetail;
         }
@@ -64,6 +73,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<GcpCloudAccountFeatureDetail>? AllEnabledFeaturesDetails
+        // GraphQL -> allEnabledFeaturesDetails: [GcpCloudAccountFeatureDetail!]! (type)
+        if (this.AllEnabledFeaturesDetails != null) {
+            var fspec = this.AllEnabledFeaturesDetails.AsFieldSpec(conf.Child("allEnabledFeaturesDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "allEnabledFeaturesDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> GcpCloudAccountFeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: GcpCloudAccountFeatureDetail (type)
         if (this.FeatureDetail != null) {
@@ -93,8 +114,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<GcpCloudAccountFeatureDetail>? AllEnabledFeaturesDetails
+        // GraphQL -> allEnabledFeaturesDetails: [GcpCloudAccountFeatureDetail!]! (type)
+        if (ec.Includes("allEnabledFeaturesDetails",false))
+        {
+            if(this.AllEnabledFeaturesDetails == null) {
+
+                this.AllEnabledFeaturesDetails = new List<GcpCloudAccountFeatureDetail>();
+                this.AllEnabledFeaturesDetails.ApplyExploratoryFieldSpec(ec.NewChild("allEnabledFeaturesDetails"));
+
+            } else {
+
+                this.AllEnabledFeaturesDetails.ApplyExploratoryFieldSpec(ec.NewChild("allEnabledFeaturesDetails"));
+
+            }
+        }
+        else if (this.AllEnabledFeaturesDetails != null && ec.Excludes("allEnabledFeaturesDetails",false))
+        {
+            this.AllEnabledFeaturesDetails = null;
+        }
         //      C# -> GcpCloudAccountFeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: GcpCloudAccountFeatureDetail (type)
         if (ec.Includes("featureDetail",false))
@@ -178,7 +218,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpCloudAccountProjectDetail> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpCloudAccountProjectDetail());
@@ -188,7 +228,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<GcpCloudAccountProjectDetail> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

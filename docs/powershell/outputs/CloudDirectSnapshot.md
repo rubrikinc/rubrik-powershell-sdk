@@ -12,11 +12,11 @@ NAS Cloud Direct snapshot object.
 - expiryHint: System.Boolean
   - Specifies whether the expiration hint is enabled.
 - clusterUuid: System.String
-  - NAS Cloud Direct Cluster ID.
+  - NAS Cloud Direct cluster ID.
 - systemId: System.String
   - ID of the NAS Cloud Direct System.
 - protocol: CloudDirectSnapshotProtocolType
-  - Protocol of the NAS Cloud Direct share.
+  - Protocol of the NAS Cloud Direct object.
 - isCorrupted: System.Boolean
   - Specifies whether the snapshot is corrupted.
 - indexingAttempts: System.Int64
@@ -44,7 +44,7 @@ NAS Cloud Direct snapshot object.
 - isQuarantined: System.Boolean
   - Specifies whether the snapshot is quarantined.
 - share: CloudDirectNasShare
-  - NAS Cloud Direct share to which this snapshot belongs.
+  - NAS Cloud Direct object to which this snapshot belongs.
 - isExpired: System.Boolean
   - Specifies whether or not the snapshot is expired.
 - snappableId: System.String

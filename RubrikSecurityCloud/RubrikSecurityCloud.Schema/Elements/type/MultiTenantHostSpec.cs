@@ -25,6 +25,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("multiTenantHostAzureAppId")]
         public System.String? MultiTenantHostAzureAppId { get; set; }
 
+        //      C# -> System.Int64? MultiTenantHostId
+        // GraphQL -> multiTenantHostId: Long! (scalar)
+        [JsonProperty("multiTenantHostId")]
+        public System.Int64? MultiTenantHostId { get; set; }
+
+        //      C# -> System.String? RegistryServer
+        // GraphQL -> registryServer: String! (scalar)
+        [JsonProperty("registryServer")]
+        public System.String? RegistryServer { get; set; }
+
+        //      C# -> System.String? TunnelMode
+        // GraphQL -> tunnelMode: String! (scalar)
+        [JsonProperty("tunnelMode")]
+        public System.String? TunnelMode { get; set; }
+
         //      C# -> NetworkConfig? MultiTenantHostNetworkConfig
         // GraphQL -> multiTenantHostNetworkConfig: NetworkConfig (type)
         [JsonProperty("multiTenantHostNetworkConfig")]
@@ -41,11 +56,23 @@ namespace RubrikSecurityCloud.Types
 
     public MultiTenantHostSpec Set(
         System.String? MultiTenantHostAzureAppId = null,
+        System.Int64? MultiTenantHostId = null,
+        System.String? RegistryServer = null,
+        System.String? TunnelMode = null,
         NetworkConfig? MultiTenantHostNetworkConfig = null
     ) 
     {
         if ( MultiTenantHostAzureAppId != null ) {
             this.MultiTenantHostAzureAppId = MultiTenantHostAzureAppId;
+        }
+        if ( MultiTenantHostId != null ) {
+            this.MultiTenantHostId = MultiTenantHostId;
+        }
+        if ( RegistryServer != null ) {
+            this.RegistryServer = RegistryServer;
+        }
+        if ( TunnelMode != null ) {
+            this.TunnelMode = TunnelMode;
         }
         if ( MultiTenantHostNetworkConfig != null ) {
             this.MultiTenantHostNetworkConfig = MultiTenantHostNetworkConfig;
@@ -73,6 +100,33 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "multiTenantHostAzureAppId\n" ;
             }
         }
+        //      C# -> System.Int64? MultiTenantHostId
+        // GraphQL -> multiTenantHostId: Long! (scalar)
+        if (this.MultiTenantHostId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "multiTenantHostId\n" ;
+            } else {
+                s += ind + "multiTenantHostId\n" ;
+            }
+        }
+        //      C# -> System.String? RegistryServer
+        // GraphQL -> registryServer: String! (scalar)
+        if (this.RegistryServer != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "registryServer\n" ;
+            } else {
+                s += ind + "registryServer\n" ;
+            }
+        }
+        //      C# -> System.String? TunnelMode
+        // GraphQL -> tunnelMode: String! (scalar)
+        if (this.TunnelMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "tunnelMode\n" ;
+            } else {
+                s += ind + "tunnelMode\n" ;
+            }
+        }
         //      C# -> NetworkConfig? MultiTenantHostNetworkConfig
         // GraphQL -> multiTenantHostNetworkConfig: NetworkConfig (type)
         if (this.MultiTenantHostNetworkConfig != null) {
@@ -90,7 +144,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? MultiTenantHostAzureAppId
         // GraphQL -> multiTenantHostAzureAppId: String! (scalar)
@@ -108,6 +162,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.MultiTenantHostAzureAppId != null && ec.Excludes("multiTenantHostAzureAppId",true))
         {
             this.MultiTenantHostAzureAppId = null;
+        }
+        //      C# -> System.Int64? MultiTenantHostId
+        // GraphQL -> multiTenantHostId: Long! (scalar)
+        if (ec.Includes("multiTenantHostId",true))
+        {
+            if(this.MultiTenantHostId == null) {
+
+                this.MultiTenantHostId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MultiTenantHostId != null && ec.Excludes("multiTenantHostId",true))
+        {
+            this.MultiTenantHostId = null;
+        }
+        //      C# -> System.String? RegistryServer
+        // GraphQL -> registryServer: String! (scalar)
+        if (ec.Includes("registryServer",true))
+        {
+            if(this.RegistryServer == null) {
+
+                this.RegistryServer = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RegistryServer != null && ec.Excludes("registryServer",true))
+        {
+            this.RegistryServer = null;
+        }
+        //      C# -> System.String? TunnelMode
+        // GraphQL -> tunnelMode: String! (scalar)
+        if (ec.Includes("tunnelMode",true))
+        {
+            if(this.TunnelMode == null) {
+
+                this.TunnelMode = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TunnelMode != null && ec.Excludes("tunnelMode",true))
+        {
+            this.TunnelMode = null;
         }
         //      C# -> NetworkConfig? MultiTenantHostNetworkConfig
         // GraphQL -> multiTenantHostNetworkConfig: NetworkConfig (type)
@@ -173,7 +278,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MultiTenantHostSpec> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MultiTenantHostSpec());
@@ -183,7 +288,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<MultiTenantHostSpec> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

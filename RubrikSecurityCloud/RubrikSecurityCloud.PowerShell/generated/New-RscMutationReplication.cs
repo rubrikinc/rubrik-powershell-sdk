@@ -122,6 +122,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	targetClusterUuid = $someString
     /// 	# REQUIRED
     /// 	setupType = $someReplicationSetupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationSetupType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	useIpv6 = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -337,6 +339,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	targetClusterUuid = $someString
     /// 	# REQUIRED
     /// 	setupType = $someReplicationSetupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationSetupType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	useIpv6 = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -519,6 +523,8 @@ $query.Var.input = @{
 	targetClusterUuid = $someString
 	# REQUIRED
 	setupType = $someReplicationSetupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationSetupType]) for enum values.
+	# OPTIONAL
+	useIpv6 = $someBoolean
 }"
             );
         }
@@ -694,6 +700,8 @@ $query.Var.input = @{
 	targetClusterUuid = $someString
 	# REQUIRED
 	setupType = $someReplicationSetupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationSetupType]) for enum values.
+	# OPTIONAL
+	useIpv6 = $someBoolean
 }"
             );
         }

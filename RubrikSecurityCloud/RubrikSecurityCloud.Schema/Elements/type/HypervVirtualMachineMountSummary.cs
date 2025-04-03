@@ -339,7 +339,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> HypervVirtualMachineMountSummaryPowerStatus? PowerStatus
         // GraphQL -> powerStatus: HypervVirtualMachineMountSummaryPowerStatus! (enum)
@@ -658,7 +658,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HypervVirtualMachineMountSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HypervVirtualMachineMountSummary());
@@ -668,7 +668,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<HypervVirtualMachineMountSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

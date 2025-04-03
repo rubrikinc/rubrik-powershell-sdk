@@ -44,6 +44,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isArchived")]
         public System.Boolean? IsArchived { get; set; }
 
+        //      C# -> DateTime? StartBeforeTime
+        // GraphQL -> startBeforeTime: DateTime (scalar)
+        [JsonProperty("startBeforeTime")]
+        public DateTime? StartBeforeTime { get; set; }
+
+        //      C# -> DateTime? EndAfterTime
+        // GraphQL -> endAfterTime: DateTime (scalar)
+        [JsonProperty("endAfterTime")]
+        public DateTime? EndAfterTime { get; set; }
+
 
         #endregion
 

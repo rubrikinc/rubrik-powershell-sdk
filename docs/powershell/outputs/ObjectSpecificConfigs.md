@@ -29,3 +29,5 @@ Object-specific configurations.
   - SLA Domain configuration for Postgres DB Cluster object.
 - mysqldbSlaConfig: MysqldbSlaConfig
   - SLA Domain configuration for MySQL object.
+- ncdSlaConfig: NcdSlaConfig
+  - SLA Domain configuration for NAS Cloud Direct object.

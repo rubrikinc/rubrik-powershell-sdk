@@ -10,6 +10,7 @@
 - AzureSqlManagedInstanceDb
 - O365SharePointDrive
 - AwsNativeEc2Instance
+- AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB table.
 - O365Mailbox
 - AZURE_STORAGE_ACCOUNT - Azure storage account.
 - GcpNativeGCEInstance

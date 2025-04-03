@@ -151,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("osName")]
         public System.String? OsName { get; set; }
 
+        //      C# -> System.String? RbaPackageUpgradeInfo
+        // GraphQL -> rbaPackageUpgradeInfo: String (scalar)
+        [JsonProperty("rbaPackageUpgradeInfo")]
+        public System.String? RbaPackageUpgradeInfo { get; set; }
+
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         [JsonProperty("replicatedObjectCount")]
@@ -330,6 +335,7 @@ namespace RubrikSecurityCloud.Types
         System.String? NasVendorType = null,
         System.Int32? NumWorkloadDescendants = null,
         System.String? OsName = null,
+        System.String? RbaPackageUpgradeInfo = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? VfdState = null,
@@ -430,6 +436,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OsName != null ) {
             this.OsName = OsName;
+        }
+        if ( RbaPackageUpgradeInfo != null ) {
+            this.RbaPackageUpgradeInfo = RbaPackageUpgradeInfo;
         }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
@@ -762,6 +771,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "osName\n" ;
             }
         }
+        //      C# -> System.String? RbaPackageUpgradeInfo
+        // GraphQL -> rbaPackageUpgradeInfo: String (scalar)
+        if (this.RbaPackageUpgradeInfo != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rbaPackageUpgradeInfo\n" ;
+            } else {
+                s += ind + "rbaPackageUpgradeInfo\n" ;
+            }
+        }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount != null) {
@@ -1010,7 +1028,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
@@ -1484,6 +1502,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.OsName = null;
         }
+        //      C# -> System.String? RbaPackageUpgradeInfo
+        // GraphQL -> rbaPackageUpgradeInfo: String (scalar)
+        if (ec.Includes("rbaPackageUpgradeInfo",true))
+        {
+            if(this.RbaPackageUpgradeInfo == null) {
+
+                this.RbaPackageUpgradeInfo = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RbaPackageUpgradeInfo != null && ec.Excludes("rbaPackageUpgradeInfo",true))
+        {
+            this.RbaPackageUpgradeInfo = null;
+        }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (ec.Includes("replicatedObjectCount",true))
@@ -1922,7 +1957,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PhysicalHost> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PhysicalHost());
@@ -1932,7 +1967,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<PhysicalHost> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

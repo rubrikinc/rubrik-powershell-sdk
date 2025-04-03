@@ -29,11 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("functionUuid")]
         public System.String? FunctionUuid { get; set; }
 
-        //      C# -> List<SubjectContext>? SubjectContexts
-        // GraphQL -> subjectContexts: [SubjectContext!] (input)
-        [JsonProperty("subjectContexts")]
-        public List<SubjectContext>? SubjectContexts { get; set; }
-
 
         #endregion
 

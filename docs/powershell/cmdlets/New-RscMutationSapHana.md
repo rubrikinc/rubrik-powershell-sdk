@@ -8,6 +8,14 @@ Add a SAP HANA system to the Rubrik cluster.
 
 - There is a single argument of type AddSapHanaSystemInput.
 - Returns AddSapHanaSystemReply.
+### bulkrecoverdatabases
+Bulk recovery of SAP HANA databases to a point in time
+
+Supported in v9.4
+Recover multiple SAP HANA databases to the provided point in time.
+
+- There is a single argument of type BulkRecoverSapHanaDatabasesInput.
+- Returns AsyncRequestStatus.
 ### configurerestore
 Configure the target database for system copy restore
 
@@ -74,6 +82,22 @@ v9.0+: Update the system properties for the SAP HANA system.
 
 - There is a single argument of type PatchSapHanaSystemInput.
 - Returns PatchSapHanaSystemReply.
+### recoverdatabasetofullbackup
+Recover SAP HANA database to the full backup
+
+Supported in v9.4
+Recover the SAP HANA database to the provided full backup.
+
+- There is a single argument of type RecoverSapHanaDatabaseToFullBackupInput.
+- Returns AsyncRequestStatus.
+### recoverdatabasetopointintime
+Recover the SAP HANA database to a point in time
+
+Supported in v9.4
+Recover the SAP HANA database to the provided point in time.
+
+- There is a single argument of type RecoverSapHanaDatabaseToPointInTimeInput.
+- Returns AsyncRequestStatus.
 ### restoresystemstorage
 Restore SAP HANA storage to a storage snapshot
 

@@ -13,3 +13,5 @@ Request to create a replication pair between two Rubrik clusters.
   - Target Rubrik cluster UUID.
 - setupType: ReplicationSetupType
   - NAT or Private replication setup type.
+- useIpv6: System.Boolean
+  - Whether to use IPv6 for replication pairing.

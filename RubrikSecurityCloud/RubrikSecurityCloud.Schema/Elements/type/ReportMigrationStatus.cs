@@ -180,7 +180,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ReportTemplate? ReportTemplate
         // GraphQL -> reportTemplate: ReportTemplate! (enum)
@@ -348,7 +348,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReportMigrationStatus> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReportMigrationStatus());
@@ -358,7 +358,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ReportMigrationStatus> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

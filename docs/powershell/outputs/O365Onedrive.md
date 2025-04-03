@@ -11,6 +11,8 @@
   - The authorized operations on the object.
 - id: System.String
   - Object ID.
+- isRansomwareInvestigationEnabled: System.Boolean
+  - Ransomware Investigation enablement status.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum

@@ -164,6 +164,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dbClusterParameterGroupName")]
         public System.String? DbClusterParameterGroupName { get; set; }
 
+        //      C# -> System.String? DbEngineVersion
+        // GraphQL -> dbEngineVersion: String (scalar)
+        [JsonProperty("dbEngineVersion")]
+        public System.String? DbEngineVersion { get; set; }
+
 
         #endregion
 

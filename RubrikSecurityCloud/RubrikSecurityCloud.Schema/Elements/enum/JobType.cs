@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ADD_MONGO_SOURCE")]
         ADD_MONGO_SOURCE,
 
+        [EnumMember(Value = "ADD_OR_REMOVE_OPENSTACK_ENVIRONMENT")]
+        ADD_OR_REMOVE_OPENSTACK_ENVIRONMENT,
+
         [EnumMember(Value = "ADD_OR_REMOVE_VCENTER")]
         ADD_OR_REMOVE_VCENTER,
 

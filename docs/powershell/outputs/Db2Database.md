@@ -23,6 +23,8 @@ Db2 Database details object.
   - Status of Db2 database: OK, WARNING, ERROR, UNKNOWN or UNSPECIFIED.
 - statusMessage: list of System.Strings
   - Additional information about the current status of the Db2 database.
+- crossHostRecoveryMetadata: Db2CrossHostRecoveryMetadata
+  - Db2 cross host recovery enabled target hosts.
 - reportWorkload: Snappable
   - Stats for DB2 database.
 - db2Instance: Db2Instance
@@ -33,8 +35,8 @@ Db2 Database details object.
   - Connection of recoverable ranges for given Db2 database.
 - logSnapshots: Db2LogSnapshotConnection
   - Connection of log snapshots for given Db2 database.
-- crossHostRecoveryMetadata: Db2CrossHostRecoveryMetadata
-  - Db2 cross host recovery enabled target hosts.
+- hostsForRecovery: list of PhysicalHosts
+  - The list of hosts authorized for recovery.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

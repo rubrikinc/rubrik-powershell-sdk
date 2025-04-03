@@ -332,6 +332,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("filter", "PolarisSnapshotFilterInput"),
                     Tuple.Create("groupBy", "PolarisSnapshotGroupByEnum!"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.SnapshotGroupByConnection =
                 new RscGqlVars(null, snapshotGroupByConnectionArgs, null, true);
@@ -1187,7 +1188,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]! (enum)
@@ -2234,7 +2235,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsNativeEc2Instance> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsNativeEc2Instance());
@@ -2244,7 +2245,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AwsNativeEc2Instance> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

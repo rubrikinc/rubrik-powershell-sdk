@@ -84,6 +84,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_VIRTUAL_MACHINE")]
         HYPERV_VIRTUAL_MACHINE,
 
+        [EnumMember(Value = "K8S_VIRTUAL_MACHINE")]
+        K8S_VIRTUAL_MACHINE,
+
         [EnumMember(Value = "LINUX_FILESET")]
         LINUX_FILESET,
 

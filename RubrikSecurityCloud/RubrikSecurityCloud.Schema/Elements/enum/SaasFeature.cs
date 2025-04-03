@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "TYPE_CLOUD_DIRECT_HOSTED")]
         TYPE_CLOUD_DIRECT_HOSTED,
 
+        [EnumMember(Value = "TYPE_LAMBDA")]
+        TYPE_LAMBDA,
+
         [EnumMember(Value = "TYPE_M365")]
         TYPE_M365,
 

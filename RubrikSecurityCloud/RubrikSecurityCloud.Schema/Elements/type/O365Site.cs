@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsRansomwareInvestigationEnabled
+        // GraphQL -> isRansomwareInvestigationEnabled: Boolean! (scalar)
+        [JsonProperty("isRansomwareInvestigationEnabled")]
+        public System.Boolean? IsRansomwareInvestigationEnabled { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -227,6 +232,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("filter", "PolarisSnapshotFilterInput"),
                     Tuple.Create("groupBy", "PolarisSnapshotGroupByEnum!"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.SnapshotGroupByConnection =
                 new RscGqlVars(null, snapshotGroupByConnectionArgs, null, true);
@@ -276,6 +282,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         System.Int32? HierarchyLevel = null,
         System.String? Id = null,
+        System.Boolean? IsRansomwareInvestigationEnabled = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -327,6 +334,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsRansomwareInvestigationEnabled != null ) {
+            this.IsRansomwareInvestigationEnabled = IsRansomwareInvestigationEnabled;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -502,6 +512,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsRansomwareInvestigationEnabled
+        // GraphQL -> isRansomwareInvestigationEnabled: Boolean! (scalar)
+        if (this.IsRansomwareInvestigationEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isRansomwareInvestigationEnabled\n" ;
+            } else {
+                s += ind + "isRansomwareInvestigationEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -788,7 +807,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
@@ -946,6 +965,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsRansomwareInvestigationEnabled
+        // GraphQL -> isRansomwareInvestigationEnabled: Boolean! (scalar)
+        if (ec.Includes("isRansomwareInvestigationEnabled",true))
+        {
+            if(this.IsRansomwareInvestigationEnabled == null) {
+
+                this.IsRansomwareInvestigationEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRansomwareInvestigationEnabled != null && ec.Excludes("isRansomwareInvestigationEnabled",true))
+        {
+            this.IsRansomwareInvestigationEnabled = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -1464,7 +1500,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365Site> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365Site());
@@ -1474,7 +1510,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<O365Site> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

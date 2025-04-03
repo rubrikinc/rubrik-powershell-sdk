@@ -11,3 +11,5 @@ Parameters for SharePoint site descendant search.
   - Filters by object type (site, library, list or all).
 - lambdaFilters: LambdaPathFilters
   - Parameters for using Lambda filters in the query.
+- descendantWorkloadId: System.String
+  - The descendant workload ID to filter in the query.

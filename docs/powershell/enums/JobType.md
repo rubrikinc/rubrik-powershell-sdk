@@ -83,3 +83,4 @@ of new MSSQL objects discovered for the given host.
 - MYSQLDB_INSTANCE - MySQL DB instance.
 - K8S_DOWNLOAD_SNAPSHOT_FROM_LOCATION - Kubernetes protection snapshot download from given location.
 - K8S_VM_DOWNLOAD_SNAPSHOT_FROM_LOCATION - Kubernetes virtual machine snapshot download from specified location.
+- ADD_OR_REMOVE_OPENSTACK_ENVIRONMENT - Addition or removal of an OpenStack environment.

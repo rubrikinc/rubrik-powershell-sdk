@@ -5,3 +5,5 @@ Details of the Gcp Cloud Account project configured for a feature.
   - GCP cloud account project.
 - featureDetail: GcpCloudAccountFeatureDetail
   - Details of the GCP cloud account feature.
+- allEnabledFeaturesDetails: list of GcpCloudAccountFeatureDetails
+  - List of all the enabled features and their details for which the project has been onboarded.

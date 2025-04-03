@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations { get; set; }
 
+        //      C# -> FileIndexingStatus? FileIndexingStatus
+        // GraphQL -> fileIndexingStatus: FileIndexingStatus! (enum)
+        [JsonProperty("fileIndexingStatus")]
+        public FileIndexingStatus? FileIndexingStatus { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -247,6 +252,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("filter", "PolarisSnapshotFilterInput"),
                     Tuple.Create("groupBy", "PolarisSnapshotGroupByEnum!"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.SnapshotGroupByConnection =
                 new RscGqlVars(null, snapshotGroupByConnectionArgs, null, true);
@@ -289,6 +295,7 @@ namespace RubrikSecurityCloud.Types
 
     public GcpNativeDisk Set(
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
+        FileIndexingStatus? FileIndexingStatus = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
@@ -330,6 +337,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( FileIndexingStatus != null ) {
+            this.FileIndexingStatus = FileIndexingStatus;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -463,6 +473,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> FileIndexingStatus? FileIndexingStatus
+        // GraphQL -> fileIndexingStatus: FileIndexingStatus! (enum)
+        if (this.FileIndexingStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "fileIndexingStatus\n" ;
+            } else {
+                s += ind + "fileIndexingStatus\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -866,7 +885,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]! (enum)
@@ -884,6 +903,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> FileIndexingStatus? FileIndexingStatus
+        // GraphQL -> fileIndexingStatus: FileIndexingStatus! (enum)
+        if (ec.Includes("fileIndexingStatus",true))
+        {
+            if(this.FileIndexingStatus == null) {
+
+                this.FileIndexingStatus = new FileIndexingStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileIndexingStatus != null && ec.Excludes("fileIndexingStatus",true))
+        {
+            this.FileIndexingStatus = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
@@ -1614,7 +1650,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpNativeDisk> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpNativeDisk());
@@ -1624,7 +1660,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<GcpNativeDisk> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

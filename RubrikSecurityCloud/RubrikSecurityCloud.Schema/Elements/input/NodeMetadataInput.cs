@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("useQuickDrain")]
         public System.Boolean? UseQuickDrain { get; set; }
 
+        //      C# -> ResetAfterRemoveType? ResetAfterRemoveType
+        // GraphQL -> resetAfterRemoveType: ResetAfterRemoveType (enum)
+        [JsonProperty("resetAfterRemoveType")]
+        public ResetAfterRemoveType? ResetAfterRemoveType { get; set; }
+
 
         #endregion
 

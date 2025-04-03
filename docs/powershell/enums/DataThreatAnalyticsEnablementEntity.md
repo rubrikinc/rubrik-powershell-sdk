@@ -7,4 +7,4 @@ Entities on which Ransomware Investigation can be enabled.
 - RCV - Rubrik Cloud Vault.
 - CLOUD_DIRECT_CLUSTER - NAS Cloud Direct.
 - CLOUD_NATIVE_ROOT - The root of a cloud-native hierarchy, which can be an AWS account,
- an Azure subscription, or a GCP project.
+an Azure subscription, or a GCP project.

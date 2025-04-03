@@ -254,7 +254,7 @@ Cloud Direct NAS export object.
 - There is a single argument of type System.String.
 - Returns CloudDirectNasExport.
 ### clouddirectnasnamespace
-Cloud Direct NAS namespace.
+NAS Cloud Direct namespace.
 
 - There is a single argument of type System.String.
 - Returns CloudDirectNasNamespace.
@@ -269,7 +269,7 @@ Paginated list of NAS namespaces.
     - filter - list of Filters: Hierarchy object filter.
 - Returns CloudDirectNasNamespaceConnection.
 ### clouddirectnasshare
-Cloud Direct NAS share.
+NAS Cloud Direct share.
 
 - There is a single argument of type System.String.
 - Returns CloudDirectNasShare.
@@ -736,11 +736,6 @@ Get the lockout configurations of the current organization.
 
 - The lockoutconfig subcommand takes no arguments.
 - Returns LockoutConfig.
-### maxprotectedappscount
-Maximum number of protected apps that can be added per account.
-
-- The maxprotectedappscount subcommand takes no arguments.
-- Returns System.Int32.
 ### mfasetting
 Get multifactor authentication (MFA) settings for an account.
 
@@ -869,7 +864,7 @@ Returns total sensitive hits grouped by object type and also gives policy level 
 
 - There are 11 arguments.
     - timelineDate - System.String: Date for which the results will be retrieved.
-    - historicalDeltaDays - System.Int32: Historical days to go backward in time to calculate the delta.
+    - historicalDeltaDays - System.Int32: Number of historical days to go backward in time to calculate the delta.
     - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - ObjectTypeSummariesFilter: Filter for object type summary.
@@ -888,7 +883,7 @@ Org details of the given org ID.
 ### orgs
 All orgs.
 
-- There are 9 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -897,6 +892,7 @@ All orgs.
     - sortBy - OrgField: Field in the org to sort orgs by.
     - nameFilter - System.String: Name to filter the results.
     - mfaEnforcedFilter - System.Boolean: Filter orgs by the status of MFA enforcement. When the field is not used, all orgs are returned. When the field is set to true, only orgs that have MFA enforced are returned. When the field is set to false, only orgs that do not have MFA enforced are returned.
+    - mfaStatusFilter - MfaStatus: Filter organizations by MFA status.
     - crossAccountEnabledFilter - System.Boolean: Filter organizations based on their cross-account enablement status. When the field is not used, all organizations are returned. When set to true, only organizations with cross-account enabled are returned. When set to false, only organizations without cross-account enabled are returned.
 - Returns OrgConnection.
 ### orgsbyids
@@ -969,7 +965,7 @@ Returns details for one policy object.
 ### policyobjs
 Returns status for all objects at a specified timestamp.
 
-- There are 40 arguments.
+- There are 41 arguments.
     - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
@@ -1006,6 +1002,7 @@ Returns status for all objects at a specified timestamp.
     - loggingFilter - list of Loggings: Filter by logging type.
     - violationSeverityFilter - list of ViolationSeveritys: Violation Severity list input arg.
     - exposureFilter - list of OpenAccessTypes: Exposure to filter.
+    - accessTypeFilter - list of AccessVias: Access types to filter by.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -1066,16 +1063,11 @@ Get the information for removed nodes.
 
 - There is a single argument of type RemovedNodeDetailsInput.
 - Returns RemoveNodeDetailsReply.
-### restoreobjectsdryrun
-Runs a simulated recovery for the specified Active Directory objects and returns the attribute values expected after a regular granular restore.
+### resettypeofremovaljob
+Get the reset type of a node removal job.
 
-- There are 5 arguments.
-    - id - System.String: Snapshot ID used for a dummy recovery of selected objects.
-    - config - ActiveDirectoryObjectRecoveryConfigInput: Configuration for the dry run of an object recovery.
-    - exportId - System.String: Specifies the export used if a snapshot was already exposed earlier using Live Mount.
-    - shouldReportOnlyChangedAttrs - System.Boolean: Specifies whether to report only attributes whose values have changed.
-    - shouldReportOnlyChangedValues - System.Boolean: Specifies whether to report only the changed values for an attribute in the object diff.
-- Returns ActiveDirectoryObjectRecoveryDryRunResponse.
+- There is a single argument of type ResetTypeOfRemovalJobInput.
+- Returns ResetTypeOfRemovalJob.
 ### roletemplates
 The list of available role templates.
 
@@ -1089,14 +1081,21 @@ The list of available role templates.
 ### rscpermstocdminfo
 Synced cluster information for RSC permissions.
 
-- There are 6 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - permissions - list of PermissionInputs: Permissions in the role.
     - roleId - System.String: ID of the role.
+    - protectableClusters - list of System.Strings: List of protectable clusters.
 - Returns RscPermsToCdmInfoOut.
+### saasworkloadmetadatatypes
+SaasWorkloadMetadataTypes returns the list of metadata types for a
+specified SaaS app type.
+
+- There is a single argument of type SaasWorkloadMetadataTypesReq.
+- Returns SaasWorkloadMetadataTypesReply.
 ### searchfilebyprefix
 Search file under given folder and with given prefix.
 
@@ -1301,6 +1300,8 @@ Determines if the user already exists in the account.
     - limit - System.Int32: Maximum number of entries in the response.
 - Returns AnalyzerAccessUsageConnection.
 ### userauditlist
+Paginated list of user audit data. Each page of the results will include at most 50 entries unless otherwise specified using the first parameter. Query the pageInfo.hasNextPage field to know whether all audits were returned.
+
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
@@ -1378,11 +1379,47 @@ Retrieve users from current and descendant organizations based on the specified 
     - shouldGetLocalUsersOnly - System.Boolean: Get local users only.
     - userDomainsFilter - list of UserDomainEnums: Filter users based on their authentication domain.
 - Returns UserConnection.
+### validateadforesttransition
+Validates if given account is ready to transition from Active Directory domain inventory page to Active Directory forest inventory page.
+
+- The validateadforesttransition subcommand takes no arguments.
+- Returns ValidateAdForestTransition.
 ### validateorgname
 Checks whether the tenant org name is valid and unique.
 
 - There is a single argument of type ValidateOrgNameInput.
 - Returns ValidateOrgNameReply.
+### vcdorgs
+Paginated list of vCloud Director orgs.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns VcdOrgConnection.
+### vcdtopleveldescendants
+Paginated list of the highest-level vCloud Director objects accessible by the current user.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns VcdTopLevelDescendantTypeConnection.
+### vcdvapps
+Paginated list of vCloud Director vApps.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns VcdVappConnection.
 ### vcdvappvms
 Paginated list of virtual machines under vCloud Director hiearchy.
 

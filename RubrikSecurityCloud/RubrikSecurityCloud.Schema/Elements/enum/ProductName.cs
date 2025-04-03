@@ -27,8 +27,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AAD_CYBER_RECOVERY")]
         AAD_CYBER_RECOVERY,
 
+        [EnumMember(Value = "ANNAPURNA")]
+        ANNAPURNA,
+
         [EnumMember(Value = "APPFLOWS")]
         APPFLOWS,
+
+        [EnumMember(Value = "APPFLOWS_UCL")]
+        APPFLOWS_UCL,
 
         [EnumMember(Value = "ATLASSIAN_JIRA")]
         ATLASSIAN_JIRA,
@@ -41,6 +47,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLOUD_UNSTRUCTURED")]
         CLOUD_UNSTRUCTURED,
+
+        [EnumMember(Value = "DYNAMICS_365")]
+        DYNAMICS_365,
 
         [EnumMember(Value = "GPS")]
         GPS,
@@ -98,6 +107,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SALESFORCE")]
         SALESFORCE,
+
+        [EnumMember(Value = "SALESFORCE_DEVOPS_ADD_ON")]
+        SALESFORCE_DEVOPS_ADD_ON,
 
         [EnumMember(Value = "SAPHANA")]
         SAPHANA,

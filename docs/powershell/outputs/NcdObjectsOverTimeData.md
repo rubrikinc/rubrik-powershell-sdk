@@ -1,6 +1,6 @@
 ### NcdObjectsOverTimeData
 ObjectsOverTimeData represents the object counts statistics broken out per
- object type as a data point from a timeseries perspective.
+object type as a data point from a timeseries perspective.
 
 - directories: System.Int32
   - The total count of directories.

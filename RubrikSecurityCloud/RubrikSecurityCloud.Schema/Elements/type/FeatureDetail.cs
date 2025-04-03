@@ -75,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authServerDetail")]
         public AwsAuthServerDetail? AuthServerDetail { get; set; }
 
+        //      C# -> List<AwsMappedAccount>? MappedAccounts
+        // GraphQL -> mappedAccounts: [AwsMappedAccount!]! (type)
+        [JsonProperty("mappedAccounts")]
+        public List<AwsMappedAccount>? MappedAccounts { get; set; }
+
 
         #endregion
 
@@ -95,7 +100,8 @@ namespace RubrikSecurityCloud.Types
         System.String? RoleArn = null,
         System.String? StackArn = null,
         System.String? UserArn = null,
-        AwsAuthServerDetail? AuthServerDetail = null
+        AwsAuthServerDetail? AuthServerDetail = null,
+        List<AwsMappedAccount>? MappedAccounts = null
     ) 
     {
         if ( AwsRegions != null ) {
@@ -130,6 +136,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AuthServerDetail != null ) {
             this.AuthServerDetail = AuthServerDetail;
+        }
+        if ( MappedAccounts != null ) {
+            this.MappedAccounts = MappedAccounts;
         }
         return this;
     }
@@ -247,12 +256,24 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<AwsMappedAccount>? MappedAccounts
+        // GraphQL -> mappedAccounts: [AwsMappedAccount!]! (type)
+        if (this.MappedAccounts != null) {
+            var fspec = this.MappedAccounts.AsFieldSpec(conf.Child("mappedAccounts"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mappedAccounts" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<AwsCloudAccountRegion>? AwsRegions
         // GraphQL -> awsRegions: [AwsCloudAccountRegion!]! (enum)
@@ -443,6 +464,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.AuthServerDetail = null;
         }
+        //      C# -> List<AwsMappedAccount>? MappedAccounts
+        // GraphQL -> mappedAccounts: [AwsMappedAccount!]! (type)
+        if (ec.Includes("mappedAccounts",false))
+        {
+            if(this.MappedAccounts == null) {
+
+                this.MappedAccounts = new List<AwsMappedAccount>();
+                this.MappedAccounts.ApplyExploratoryFieldSpec(ec.NewChild("mappedAccounts"));
+
+            } else {
+
+                this.MappedAccounts.ApplyExploratoryFieldSpec(ec.NewChild("mappedAccounts"));
+
+            }
+        }
+        else if (this.MappedAccounts != null && ec.Excludes("mappedAccounts",false))
+        {
+            this.MappedAccounts = null;
+        }
     }
 
 
@@ -488,7 +528,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FeatureDetail> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FeatureDetail());
@@ -498,7 +538,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<FeatureDetail> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

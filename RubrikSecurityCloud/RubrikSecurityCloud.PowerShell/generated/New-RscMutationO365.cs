@@ -713,6 +713,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	resourceNaturalId = $someString
     /// 	# OPTIONAL
     /// 	resourceId = $someString
+    /// 	# OPTIONAL
+    /// 	destOrgId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3153,6 +3155,8 @@ $query.Var.input = @{
 	resourceNaturalId = $someString
 	# OPTIONAL
 	resourceId = $someString
+	# OPTIONAL
+	destOrgId = $someString
 }"
             );
         }

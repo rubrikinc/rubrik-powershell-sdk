@@ -36,3 +36,7 @@ Name of product.
 - RADAR_CLU - Ransomware Investigation on Cloud Unstructured.
 - AAD_CYBER_RECOVERY - Entra ID Cyber Recovery.
 - AAD_CYBER_POSTURE - Entra ID Cyber Posture.
+- ANNAPURNA - Annapurna.
+- DYNAMICS_365 - Dynamics 365 protection.
+- SALESFORCE_DEVOPS_ADD_ON - Salesforce DevOps Add-on.
+- APPFLOWS_UCL - AppFlows on CNP.

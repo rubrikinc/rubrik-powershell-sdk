@@ -11,3 +11,5 @@ AWS cloud accounts with features.
   - Search text to match in native ID, account name, and role ARN.
 - featuresToFilterOut: list of CloudAccountFeatures
   - Exclude AWS accounts that have any of these features enabled.
+- operation: Operation
+  - Filter by the operation defined in the RBAC system.

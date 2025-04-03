@@ -1,7 +1,7 @@
 # New-RscQueryNas
 ## Subcommands
 ### clouddirectnasshares
-Paginated list of Cloud Direct NAS shares.
+Paginated list of NAS Cloud Direct shares.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -11,12 +11,12 @@ Paginated list of Cloud Direct NAS shares.
     - filter - list of Filters: Hierarchy object filter.
 - Returns CloudDirectNasShareConnection.
 ### clouddirectnassystem
-Cloud Direct NAS system.
+NAS Cloud Direct system.
 
 - There is a single argument of type System.String.
 - Returns CloudDirectNasSystem.
 ### clouddirectnassystems
-Paginated list of Cloud Direct NAS systems.
+Paginated list of NAS Cloud Direct systems.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.

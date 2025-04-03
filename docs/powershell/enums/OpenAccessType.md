@@ -6,4 +6,4 @@ OpenAccessType is used to indicate the file's open access type.
 - EXPLICIT - Explicitly open.
 - PUBLIC - Publicly accessible.
 - UNKNOWN_ACCESS - Deprecated. Still defined here because it is still present in sstables
- and in root results in the DB.
+and in root results in the DB.

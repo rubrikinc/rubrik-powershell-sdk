@@ -1,6 +1,6 @@
 ### AnalyzerTypeEnum
 AnalyzerType is the shared enum for the backend and frontend to
- identify analyzers.
+identify analyzers.
 
 - UNDEFINED - Undefined analyzer.
 - ABA_ROUTING_NUMBER - American Bankers Association (ABA) routing number analyzer.

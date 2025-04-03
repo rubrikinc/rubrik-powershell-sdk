@@ -129,6 +129,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// )
     /// # REQUIRED
     /// $query.Var.projectSearchText = $someString
+    /// # OPTIONAL
+    /// $query.Var.aggregateFeatures = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -816,19 +818,25 @@ $query.Var.projectIds = @(
         }
 
         // Create new GraphQL Query:
-        // allGcpCloudAccountProjectsByFeature(feature: CloudAccountFeature!, projectStatusFilters: [CloudAccountStatus!]!, projectSearchText: String!): [GcpCloudAccountProjectDetail!]!
+        // allGcpCloudAccountProjectsByFeature(
+        //     feature: CloudAccountFeature!
+        //     projectStatusFilters: [CloudAccountStatus!]!
+        //     projectSearchText: String!
+        //     aggregateFeatures: Boolean
+        //   ): [GcpCloudAccountProjectDetail!]!
         internal void InitQueryAllGcpCloudAccountProjectsByFeature()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("feature", "CloudAccountFeature!"),
                 Tuple.Create("projectStatusFilters", "[CloudAccountStatus!]!"),
                 Tuple.Create("projectSearchText", "String!"),
+                Tuple.Create("aggregateFeatures", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllGcpCloudAccountProjectsByFeature",
-                "($feature: CloudAccountFeature!,$projectStatusFilters: [CloudAccountStatus!]!,$projectSearchText: String!)",
+                "($feature: CloudAccountFeature!,$projectStatusFilters: [CloudAccountStatus!]!,$projectSearchText: String!,$aggregateFeatures: Boolean)",
                 "List<GcpCloudAccountProjectDetail>",
                 Query.AllGcpCloudAccountProjectsByFeature,
                 Query.AllGcpCloudAccountProjectsByFeatureFieldSpec,
@@ -839,7 +847,9 @@ $query.Var.projectStatusFilters = @(
 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
 )
 # REQUIRED
-$query.Var.projectSearchText = $someString"
+$query.Var.projectSearchText = $someString
+# OPTIONAL
+$query.Var.aggregateFeatures = $someBoolean"
             );
         }
 

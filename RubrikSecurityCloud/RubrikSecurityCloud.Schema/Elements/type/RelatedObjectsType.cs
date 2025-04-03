@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureAdObjectType? Type
+        // GraphQL -> type: AzureAdObjectType! (enum)
+        [JsonProperty("type")]
+        public AzureAdObjectType? Type { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RelatedObjectsType Set(
+        AzureAdObjectType? Type = null,
         System.String? Id = null,
         System.String? Name = null
     ) 
     {
+        if ( Type != null ) {
+            this.Type = Type;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureAdObjectType? Type
+        // GraphQL -> type: AzureAdObjectType! (enum)
+        if (this.Type != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "type\n" ;
+            } else {
+                s += ind + "type\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -87,8 +105,25 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AzureAdObjectType? Type
+        // GraphQL -> type: AzureAdObjectType! (enum)
+        if (ec.Includes("type",true))
+        {
+            if(this.Type == null) {
+
+                this.Type = new AzureAdObjectType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Type != null && ec.Excludes("type",true))
+        {
+            this.Type = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (ec.Includes("id",true))
@@ -168,7 +203,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RelatedObjectsType> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RelatedObjectsType());
@@ -178,7 +213,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<RelatedObjectsType> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

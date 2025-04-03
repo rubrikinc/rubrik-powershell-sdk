@@ -27,8 +27,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_CLUSTER_ES")]
         CLOUD_CLUSTER_ES,
 
+        [EnumMember(Value = "CUSTOMER_HOSTED_LOGGING")]
+        CUSTOMER_HOSTED_LOGGING,
+
         [EnumMember(Value = "CUSTOMER_MANAGED_BASIC")]
         CUSTOMER_MANAGED_BASIC,
+
+        [EnumMember(Value = "CUSTOMER_MANAGED_STORAGE_INDEXING")]
+        CUSTOMER_MANAGED_STORAGE_INDEXING,
 
         [EnumMember(Value = "DATA_CENTER_CONSOLIDATION")]
         DATA_CENTER_CONSOLIDATION,

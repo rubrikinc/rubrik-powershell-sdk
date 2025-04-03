@@ -17,18 +17,18 @@ AssetMetadata stores the metadata of the asset.
   - Region signifies the region of the asset.
 - firstSeenTime: System.Int64
   - First seen time signifies the initial detection time of the asset in
- milliseconds.
+milliseconds.
 - creationTime: System.Int64
   - Creation time signifies the creation time of the asset in milliseconds.
 - lastAccessTime: System.Int64
   - Last access time signifies the last access time of the asset in
- milliseconds.
+milliseconds.
 - backupStatus: BackupStatus
   - Backup status signifies the status of backup of the asset.
 - rubrikSlaInfo: RubrikSlaInfo
   - Rubrik SLA Domain information signifies the SLA Domain information for
- the asset. This field will only be populated when Rubrik backs up the
- asset.
+the asset. This field will only be populated when Rubrik backs up the
+asset.
 - encryption: Encryption
   - Signifies the encryption status for the asset.
 - logging: Logging

@@ -104,6 +104,15 @@ v8.1+: Start an asynchronous job to download multiple files and folders from a s
 
 - There is a single argument of type DownloadFilesNutanixSnapshotInput.
 - Returns AsyncRequestStatus.
+### downloadfilessnapshotfromarchivallocation
+Initiate a job to download multiple files or folders
+
+Supported in v8.0+
+v8.0: Initiates a job to download one or more files or folders from an archived Nutanix VM snapshot. Returns the job instance ID.
+v8.1+: Initiates a job to download one or more files or folders from an archived Nutanix virtual machine snapshot. Returns the job instance ID.
+
+- There is a single argument of type CreateNutanixDownloadFilesFromArchivalLocationJobInput.
+- Returns AsyncRequestStatus.
 ### downloadsnapshot
 Creates a download from archival request
 

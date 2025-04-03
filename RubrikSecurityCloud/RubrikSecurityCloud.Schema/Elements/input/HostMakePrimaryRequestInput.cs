@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oldPrimaryClusterUuid")]
         public System.String? OldPrimaryClusterUuid { get; set; }
 
+        //      C# -> HostMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters? ShouldSkipCertificateUpdateOnSecondaryClusters
+        // GraphQL -> shouldSkipCertificateUpdateOnSecondaryClusters: HostMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters (enum)
+        [JsonProperty("shouldSkipCertificateUpdateOnSecondaryClusters")]
+        public HostMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters? ShouldSkipCertificateUpdateOnSecondaryClusters { get; set; }
+
 
         #endregion
 

@@ -312,7 +312,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> HostFilterStatus? IoFilterStatus
         // GraphQL -> ioFilterStatus: HostFilterStatus (enum)
@@ -603,7 +603,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareHostSummary> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareHostSummary());
@@ -613,7 +613,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<VmwareHostSummary> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

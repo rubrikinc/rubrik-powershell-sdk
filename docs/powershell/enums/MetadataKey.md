@@ -15,3 +15,4 @@ The types of metadata key.
 - HIDE_CHART_LEGEND - Specifies whether to hide the chart legend component.
 - CUSTOM_CELL_TYPE - Specifies custom UI components to use for the column.
 - ORG_ID - Organization ID used in various queries.
+- INVALID_CHART_USER_MESSAGE - User message to be displayed if the chart is invalid.

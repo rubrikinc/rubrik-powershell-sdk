@@ -17,3 +17,5 @@ Filters for list of GCP disks.
   - Filter by GCP native labels.
 - orgFilter: OrgFilter
   - Filter by organization ID.
+- fileIndexingFilter: GcpNativeDiskFileIndexingFilter
+  - Filter by file indexing status.

@@ -1,6 +1,6 @@
 ### NcdTaskData
 TaskData represents a NAS Cloud Direct task
- and its associated fields.
+and its associated fields.
 
 - site: System.String
   - The site at which the NAS Cloud Direct task took place.

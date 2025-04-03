@@ -7,4 +7,4 @@ Response of the threat hunt request.
   - Status of the metadata load request.
 - huntId: System.String
   - Forever ID of the hunt that can be used
- to query threat hunt APIs.
+to query threat hunt APIs.

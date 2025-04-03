@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? FileId
+        // GraphQL -> fileId: String! (scalar)
+        [JsonProperty("fileId")]
+        public System.String? FileId { get; set; }
+
         //      C# -> System.String? FilePath
         // GraphQL -> filePath: String! (scalar)
         [JsonProperty("filePath")]
@@ -35,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastModified")]
         public DateTime? LastModified { get; set; }
 
+        //      C# -> WorkloadInfo? WorkloadInfo
+        // GraphQL -> workloadInfo: WorkloadInfo (type)
+        [JsonProperty("workloadInfo")]
+        public WorkloadInfo? WorkloadInfo { get; set; }
+
 
         #endregion
 
@@ -45,11 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SuspiciousFileInfo Set(
+        System.String? FileId = null,
         System.String? FilePath = null,
         System.Int64? FileSizeBytes = null,
-        DateTime? LastModified = null
+        DateTime? LastModified = null,
+        WorkloadInfo? WorkloadInfo = null
     ) 
     {
+        if ( FileId != null ) {
+            this.FileId = FileId;
+        }
         if ( FilePath != null ) {
             this.FilePath = FilePath;
         }
@@ -58,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LastModified != null ) {
             this.LastModified = LastModified;
+        }
+        if ( WorkloadInfo != null ) {
+            this.WorkloadInfo = WorkloadInfo;
         }
         return this;
     }
@@ -73,6 +91,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? FileId
+        // GraphQL -> fileId: String! (scalar)
+        if (this.FileId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "fileId\n" ;
+            } else {
+                s += ind + "fileId\n" ;
+            }
+        }
         //      C# -> System.String? FilePath
         // GraphQL -> filePath: String! (scalar)
         if (this.FilePath != null) {
@@ -100,13 +127,42 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "lastModified\n" ;
             }
         }
+        //      C# -> WorkloadInfo? WorkloadInfo
+        // GraphQL -> workloadInfo: WorkloadInfo (type)
+        if (this.WorkloadInfo != null) {
+            var fspec = this.WorkloadInfo.AsFieldSpec(conf.Child("workloadInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "workloadInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? FileId
+        // GraphQL -> fileId: String! (scalar)
+        if (ec.Includes("fileId",true))
+        {
+            if(this.FileId == null) {
+
+                this.FileId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileId != null && ec.Excludes("fileId",true))
+        {
+            this.FileId = null;
+        }
         //      C# -> System.String? FilePath
         // GraphQL -> filePath: String! (scalar)
         if (ec.Includes("filePath",true))
@@ -158,6 +214,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.LastModified = null;
         }
+        //      C# -> WorkloadInfo? WorkloadInfo
+        // GraphQL -> workloadInfo: WorkloadInfo (type)
+        if (ec.Includes("workloadInfo",false))
+        {
+            if(this.WorkloadInfo == null) {
+
+                this.WorkloadInfo = new WorkloadInfo();
+                this.WorkloadInfo.ApplyExploratoryFieldSpec(ec.NewChild("workloadInfo"));
+
+            } else {
+
+                this.WorkloadInfo.ApplyExploratoryFieldSpec(ec.NewChild("workloadInfo"));
+
+            }
+        }
+        else if (this.WorkloadInfo != null && ec.Excludes("workloadInfo",false))
+        {
+            this.WorkloadInfo = null;
+        }
     }
 
 
@@ -203,7 +278,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SuspiciousFileInfo> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SuspiciousFileInfo());
@@ -213,7 +288,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<SuspiciousFileInfo> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

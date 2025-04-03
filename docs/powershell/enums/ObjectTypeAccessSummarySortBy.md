@@ -1,6 +1,6 @@
 ### ObjectTypeAccessSummarySortBy
 GetObjectTypeAccessSummariesSortBy specifies the sort criteria for
- object type access summaries.
+object type access summaries.
 
 - SORT_BY_UNSPECIFIED - Unspecified sort criteria.
 - TOTAL_HITS - Sort based on total number of  hits.

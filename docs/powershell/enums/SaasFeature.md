@@ -7,3 +7,4 @@ Types of Rubrik SaaS features using the Exocompute cluster.
 - TYPE_SAAS_PROTECTION - Rubrik-hosted Exocompute cluster for SaaS Protection.
 - TYPE_RCV - Rubrik-hosted cloud resources for RCV.
 - TYPE_SAAS_PLATFORM - Rubrik-hosted cloud resources managed by the SaaS platform.
+- TYPE_LAMBDA - Rubrik-hosted Exocompute cluster for Data Security Posture.

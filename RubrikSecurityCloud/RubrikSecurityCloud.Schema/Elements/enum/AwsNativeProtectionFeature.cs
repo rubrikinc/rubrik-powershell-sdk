@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "DYNAMODB")]
+        DYNAMODB,
+
         [EnumMember(Value = "EC2")]
         EC2,
 

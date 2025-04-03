@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LDAP")]
         LDAP,
 
+        [EnumMember(Value = "RBA")]
+        RBA,
+
         [EnumMember(Value = "RSA")]
         RSA,
 

@@ -29,7 +29,7 @@ All supported managed objects.
 - SHARE_FILESET - Share fileset.
 - AWS_NATIVE_RDS_INSTANCE - AWS Relational Database Service instance.
 - MONGO_SOURCE - MongoDB source.
-- MONGO_DB - MongoDB database - deprecated.
+- MONGO_DB - MongoDB database.
 - MONGO_COLLECTION - MongoDB collection.
 - CLOUD_NATIVE_TAG_RULE - Cloud tag rule.
 - VSPHERE_NETWORK - VMware vSphere network.
@@ -99,7 +99,7 @@ All supported managed objects.
 - VSPHERE_DATASTORE_CLUSTER - VMware vSphere database cluster.
 - DB2_DATABASE - DB2 database.
 - DB2_INSTANCE - DB2 instance.
-- RECOVERY_PLAN - Recovery plan - deprecated.
+- RECOVERY_PLAN - Recovery Plan.
 - EXCHANGE_DAG - Exchange Database Availability Group.
 - EXCHANGE_DATABASE - Exchange Database.
 - EXCHANGE_SERVER - Exchange Server.
@@ -153,7 +153,13 @@ All supported managed objects.
 - D365_DATAVERSE_TABLE - D365 Dataverse Table.
 - D365_FIXED_OBJECT - D365 metadata.
 - D365_ORGANIZATION - D365 Organization.
+- AWS_NATIVE_DYNAMODB_TABLE - DynamoDB table.
+- OPENSTACK_ENVIRONMENT - Openstack Environment.
+- OPENSTACK_REGION - Openstack Region.
+- OPENSTACK_AVAILABILITY_ZONE - Openstack Availability Zone.
+- OPENSTACK_HOST - Openstack Host.
+- OPENSTACK_VIRTUAL_MACHINE - Openstack Virtual Machine.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
- NB: ideally we should use 0, but we missed it.
- using 10000 to make coding and debugging easier with number in logs.
+NB: ideally we should use 0, but we missed it.
+using 10000 to make coding and debugging easier with number in logs.

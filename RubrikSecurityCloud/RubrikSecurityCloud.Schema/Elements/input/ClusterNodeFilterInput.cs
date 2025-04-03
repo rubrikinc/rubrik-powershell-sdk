@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nodeId")]
         public System.String? NodeId { get; set; }
 
+        //      C# -> System.String? IpAddress
+        // GraphQL -> ipAddress: String (scalar)
+        [JsonProperty("ipAddress")]
+        public System.String? IpAddress { get; set; }
+
 
         #endregion
 

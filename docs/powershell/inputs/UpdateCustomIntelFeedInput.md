@@ -13,5 +13,5 @@ Input request for update custom intel feed.
   - Entries to add - optional.
 - entriesToRemove: list of System.Strings
   - Optional - The string to be removed, corresponding to the hex representation of either:
-   1) A hash (MD5/SHA1/SHA256)
-   2) MD5 of a yara rule
+1) A hash (MD5/SHA1/SHA256)
+2) MD5 of a yara rule

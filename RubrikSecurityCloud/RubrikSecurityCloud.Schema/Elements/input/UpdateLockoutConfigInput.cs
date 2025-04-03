@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAutoUnlockFeatureEnabled")]
         public System.Boolean? IsAutoUnlockFeatureEnabled { get; set; }
 
+        //      C# -> InactiveLockoutConfigInput? InactiveLockoutConfig
+        // GraphQL -> inactiveLockoutConfig: InactiveLockoutConfigInput (input)
+        [JsonProperty("inactiveLockoutConfig")]
+        public InactiveLockoutConfigInput? InactiveLockoutConfig { get; set; }
+
 
         #endregion
 

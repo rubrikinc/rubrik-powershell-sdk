@@ -30,6 +30,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OWNER")]
         OWNER,
 
+        [EnumMember(Value = "POLICY_APPLIED_TO")]
+        POLICY_APPLIED_TO,
+
+        [EnumMember(Value = "POLICY_INCLUDES")]
+        POLICY_INCLUDES,
+
         [EnumMember(Value = "ROLE_ASSIGNMENT")]
         ROLE_ASSIGNMENT
 

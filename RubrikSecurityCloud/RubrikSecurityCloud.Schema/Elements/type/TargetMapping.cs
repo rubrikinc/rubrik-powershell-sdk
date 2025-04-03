@@ -206,7 +206,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ArchivalGroupType? GroupType
         // GraphQL -> groupType: ArchivalGroupType! (enum)
@@ -400,7 +400,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TargetMapping> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TargetMapping());
@@ -410,7 +410,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<TargetMapping> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

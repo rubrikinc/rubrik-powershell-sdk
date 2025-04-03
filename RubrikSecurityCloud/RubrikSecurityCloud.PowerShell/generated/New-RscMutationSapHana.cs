@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 11
+    /// Create a new RscQuery object for any of the 14
     /// operations in the 'SAP HANA' API domain:
-    /// AddSystem, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, RestoreSystemStorage, or UnconfigureRestore.
+    /// AddSystem, BulkRecoverDatabases, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, RecoverDatabaseToFullBackup, RecoverDatabaseToPointInTime, RestoreSystemStorage, or UnconfigureRestore.
     /// </summary>
     /// <description>
     /// New-RscMutationSapHana creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 11 operations
+    /// There are 14 operations
     /// in the 'SAP HANA' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddSystem, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, RestoreSystemStorage, or UnconfigureRestore.
+    /// one of: AddSystem, BulkRecoverDatabases, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, RecoverDatabaseToFullBackup, RecoverDatabaseToPointInTime, RestoreSystemStorage, or UnconfigureRestore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -144,6 +144,53 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AddSapHanaSystemReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the BulkRecoverDatabases operation
+    /// of the 'SAP HANA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    SapHana
+    /// # API Operation: BulkRecoverDatabases
+    /// 
+    /// $query = New-RscMutationSapHana -Operation BulkRecoverDatabases
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		recoveryPoint = $someDateTime
+    /// 		# REQUIRED
+    /// 		dbIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		sapHanaSystemCopyMap = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				sourceDbId = $someString
+    /// 				# REQUIRED
+    /// 				targetDbId = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -462,6 +509,92 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RecoverDatabaseToFullBackup operation
+    /// of the 'SAP HANA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    SapHana
+    /// # API Operation: RecoverDatabaseToFullBackup
+    /// 
+    /// $query = New-RscMutationSapHana -Operation RecoverDatabaseToFullBackup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		remoteLocationId = $someString
+    /// 		# REQUIRED
+    /// 		dbId = $someString
+    /// 		# REQUIRED
+    /// 		fullSnapshotId = $someString
+    /// 		# OPTIONAL
+    /// 		sourceDbConfig = @{
+    /// 			# OPTIONAL
+    /// 			snappableId = $someString
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RecoverDatabaseToPointInTime operation
+    /// of the 'SAP HANA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    SapHana
+    /// # API Operation: RecoverDatabaseToPointInTime
+    /// 
+    /// $query = New-RscMutationSapHana -Operation RecoverDatabaseToPointInTime
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		recoveryPoint = $someDateTime
+    /// 		# REQUIRED
+    /// 		dbId = $someString
+    /// 		# REQUIRED
+    /// 		shouldInitializeLogArea = $someBoolean
+    /// 		# OPTIONAL
+    /// 		sourceDbConfig = @{
+    /// 			# OPTIONAL
+    /// 			snappableId = $someString
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RestoreSystemStorage operation
     /// of the 'SAP HANA' API domain.
     /// <code>
@@ -545,6 +678,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "AddSystem",
+                "BulkRecoverDatabases",
                 "ConfigureRestore",
                 "CreateOnDemandBackup",
                 "CreateOnDemandStorageSnapshot",
@@ -553,6 +687,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteSystem",
                 "ExpireDownloadedSnapshots",
                 "PatchSystem",
+                "RecoverDatabaseToFullBackup",
+                "RecoverDatabaseToPointInTime",
                 "RestoreSystemStorage",
                 "UnconfigureRestore",
                 IgnoreCase = true)]
@@ -572,6 +708,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "AddSystem":
                         this.ProcessRecord_AddSystem();
+                        break;
+                    case "BulkRecoverDatabases":
+                        this.ProcessRecord_BulkRecoverDatabases();
                         break;
                     case "ConfigureRestore":
                         this.ProcessRecord_ConfigureRestore();
@@ -597,6 +736,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "PatchSystem":
                         this.ProcessRecord_PatchSystem();
                         break;
+                    case "RecoverDatabaseToFullBackup":
+                        this.ProcessRecord_RecoverDatabaseToFullBackup();
+                        break;
+                    case "RecoverDatabaseToPointInTime":
+                        this.ProcessRecord_RecoverDatabaseToPointInTime();
+                        break;
                     case "RestoreSystemStorage":
                         this.ProcessRecord_RestoreSystemStorage();
                         break;
@@ -620,6 +765,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AddSystem";
             // Create new graphql operation addSapHanaSystem
             InitMutationAddSapHanaSystem();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // bulkRecoverSapHanaDatabases.
+        internal void ProcessRecord_BulkRecoverDatabases()
+        {
+            this._logger.name += " -BulkRecoverDatabases";
+            // Create new graphql operation bulkRecoverSapHanaDatabases
+            InitMutationBulkRecoverSapHanaDatabases();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -692,6 +846,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -PatchSystem";
             // Create new graphql operation patchSapHanaSystem
             InitMutationPatchSapHanaSystem();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // recoverSapHanaDatabaseToFullBackup.
+        internal void ProcessRecord_RecoverDatabaseToFullBackup()
+        {
+            this._logger.name += " -RecoverDatabaseToFullBackup";
+            // Create new graphql operation recoverSapHanaDatabaseToFullBackup
+            InitMutationRecoverSapHanaDatabaseToFullBackup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // recoverSapHanaDatabaseToPointInTime.
+        internal void ProcessRecord_RecoverDatabaseToPointInTime()
+        {
+            this._logger.name += " -RecoverDatabaseToPointInTime";
+            // Create new graphql operation recoverSapHanaDatabaseToPointInTime
+            InitMutationRecoverSapHanaDatabaseToPointInTime();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -775,6 +947,45 @@ $query.Var.input = @{
 		}
 		# REQUIRED
 		username = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // bulkRecoverSapHanaDatabases(input: BulkRecoverSapHanaDatabasesInput!): AsyncRequestStatus!
+        internal void InitMutationBulkRecoverSapHanaDatabases()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkRecoverSapHanaDatabasesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkRecoverSapHanaDatabases",
+                "($input: BulkRecoverSapHanaDatabasesInput!)",
+                "AsyncRequestStatus",
+                Mutation.BulkRecoverSapHanaDatabases,
+                Mutation.BulkRecoverSapHanaDatabasesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		recoveryPoint = $someDateTime
+		# REQUIRED
+		dbIds = @(
+			$someString
+		)
+		# OPTIONAL
+		sapHanaSystemCopyMap = @(
+			@{
+				# REQUIRED
+				sourceDbId = $someString
+				# REQUIRED
+				targetDbId = $someString
+			}
+		)
 	}
 }"
             );
@@ -1020,6 +1231,76 @@ $query.Var.input = @{
 			encryptionProvider = $someSapHanaSslInfoEncryptionProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSslInfoEncryptionProvider]) for enum values.
 			# REQUIRED
 			keyStorePath = $someString
+		}
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // recoverSapHanaDatabaseToFullBackup(input: RecoverSapHanaDatabaseToFullBackupInput!): AsyncRequestStatus!
+        internal void InitMutationRecoverSapHanaDatabaseToFullBackup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RecoverSapHanaDatabaseToFullBackupInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRecoverSapHanaDatabaseToFullBackup",
+                "($input: RecoverSapHanaDatabaseToFullBackupInput!)",
+                "AsyncRequestStatus",
+                Mutation.RecoverSapHanaDatabaseToFullBackup,
+                Mutation.RecoverSapHanaDatabaseToFullBackupFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		remoteLocationId = $someString
+		# REQUIRED
+		dbId = $someString
+		# REQUIRED
+		fullSnapshotId = $someString
+		# OPTIONAL
+		sourceDbConfig = @{
+			# OPTIONAL
+			snappableId = $someString
+		}
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // recoverSapHanaDatabaseToPointInTime(input: RecoverSapHanaDatabaseToPointInTimeInput!): AsyncRequestStatus!
+        internal void InitMutationRecoverSapHanaDatabaseToPointInTime()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RecoverSapHanaDatabaseToPointInTimeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRecoverSapHanaDatabaseToPointInTime",
+                "($input: RecoverSapHanaDatabaseToPointInTimeInput!)",
+                "AsyncRequestStatus",
+                Mutation.RecoverSapHanaDatabaseToPointInTime,
+                Mutation.RecoverSapHanaDatabaseToPointInTimeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		recoveryPoint = $someDateTime
+		# REQUIRED
+		dbId = $someString
+		# REQUIRED
+		shouldInitializeLogArea = $someBoolean
+		# OPTIONAL
+		sourceDbConfig = @{
+			# OPTIONAL
+			snappableId = $someString
 		}
 	}
 }"

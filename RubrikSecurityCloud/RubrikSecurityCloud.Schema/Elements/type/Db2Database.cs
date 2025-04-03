@@ -186,6 +186,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> List<PhysicalHost>? HostsForRecovery
+        // GraphQL -> hostsForRecovery: [PhysicalHost!]! (type)
+        [JsonProperty("hostsForRecovery")]
+        public List<PhysicalHost>? HostsForRecovery { get; set; }
+
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         [JsonProperty("latestUserNote")]
@@ -438,6 +443,7 @@ namespace RubrikSecurityCloud.Types
         Db2HadrMetadata? Db2HadrMetadata = null,
         Db2Instance? Db2Instance = null,
         PathNode? EffectiveSlaSourceObject = null,
+        List<PhysicalHost>? HostsForRecovery = null,
         LatestUserNote? LatestUserNote = null,
         Db2LogSnapshotConnection? LogSnapshots = null,
         List<PathNode>? LogicalPath = null,
@@ -558,6 +564,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( HostsForRecovery != null ) {
+            this.HostsForRecovery = HostsForRecovery;
         }
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
@@ -971,6 +980,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<PhysicalHost>? HostsForRecovery
+        // GraphQL -> hostsForRecovery: [PhysicalHost!]! (type)
+        if (this.HostsForRecovery != null) {
+            var fspec = this.HostsForRecovery.AsFieldSpec(conf.Child("hostsForRecovery"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hostsForRecovery" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
@@ -1216,7 +1237,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
@@ -1823,6 +1844,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaSourceObject = null;
         }
+        //      C# -> List<PhysicalHost>? HostsForRecovery
+        // GraphQL -> hostsForRecovery: [PhysicalHost!]! (type)
+        if (ec.Includes("hostsForRecovery",false))
+        {
+            if(this.HostsForRecovery == null) {
+
+                this.HostsForRecovery = new List<PhysicalHost>();
+                this.HostsForRecovery.ApplyExploratoryFieldSpec(ec.NewChild("hostsForRecovery"));
+
+            } else {
+
+                this.HostsForRecovery.ApplyExploratoryFieldSpec(ec.NewChild("hostsForRecovery"));
+
+            }
+        }
+        else if (this.HostsForRecovery != null && ec.Excludes("hostsForRecovery",false))
+        {
+            this.HostsForRecovery = null;
+        }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (ec.Includes("latestUserNote",false))
@@ -2248,7 +2288,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Db2Database> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Db2Database());
@@ -2258,7 +2298,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<Db2Database> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

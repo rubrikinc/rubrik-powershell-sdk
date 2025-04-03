@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("systemConfigurationGlobal")]
         public List<TprRule>? SystemConfigurationGlobal { get; set; }
 
+        //      C# -> List<TprRulesByObjectType>? TprRulesByObjectType
+        // GraphQL -> tprRulesByObjectType: [TprRulesByObjectType!]! (type)
+        [JsonProperty("tprRulesByObjectType")]
+        public List<TprRulesByObjectType>? TprRulesByObjectType { get; set; }
+
 
         #endregion
 
@@ -65,7 +70,8 @@ namespace RubrikSecurityCloud.Types
         List<InventorySubHierarchyRootEnum>? DataManagementByObjectWorkloads = null,
         List<TprRule>? DataManagementBySlaDomain = null,
         List<TprRule>? SystemConfigurationCluster = null,
-        List<TprRule>? SystemConfigurationGlobal = null
+        List<TprRule>? SystemConfigurationGlobal = null,
+        List<TprRulesByObjectType>? TprRulesByObjectType = null
     ) 
     {
         if ( DataManagementByCluster != null ) {
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SystemConfigurationGlobal != null ) {
             this.SystemConfigurationGlobal = SystemConfigurationGlobal;
+        }
+        if ( TprRulesByObjectType != null ) {
+            this.TprRulesByObjectType = TprRulesByObjectType;
         }
         return this;
     }
@@ -154,12 +163,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "systemConfigurationGlobal\n" ;
             }
         }
+        //      C# -> List<TprRulesByObjectType>? TprRulesByObjectType
+        // GraphQL -> tprRulesByObjectType: [TprRulesByObjectType!]! (type)
+        if (this.TprRulesByObjectType != null) {
+            var fspec = this.TprRulesByObjectType.AsFieldSpec(conf.Child("tprRulesByObjectType"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "tprRulesByObjectType" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<TprRule>? DataManagementByCluster
         // GraphQL -> dataManagementByCluster: [TprRule!]! (enum)
@@ -263,6 +284,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.SystemConfigurationGlobal = null;
         }
+        //      C# -> List<TprRulesByObjectType>? TprRulesByObjectType
+        // GraphQL -> tprRulesByObjectType: [TprRulesByObjectType!]! (type)
+        if (ec.Includes("tprRulesByObjectType",false))
+        {
+            if(this.TprRulesByObjectType == null) {
+
+                this.TprRulesByObjectType = new List<TprRulesByObjectType>();
+                this.TprRulesByObjectType.ApplyExploratoryFieldSpec(ec.NewChild("tprRulesByObjectType"));
+
+            } else {
+
+                this.TprRulesByObjectType.ApplyExploratoryFieldSpec(ec.NewChild("tprRulesByObjectType"));
+
+            }
+        }
+        else if (this.TprRulesByObjectType != null && ec.Excludes("tprRulesByObjectType",false))
+        {
+            this.TprRulesByObjectType = null;
+        }
     }
 
 
@@ -308,7 +348,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TprRulesMap> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TprRulesMap());
@@ -318,7 +358,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<TprRulesMap> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

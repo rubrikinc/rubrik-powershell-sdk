@@ -8,7 +8,11 @@ Type of the Active Directory object.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_CONTAINER - Active Directory container object type.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_DOMAIN_ROOT - Active Directory domain root.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_GROUP - Active Directory group.
+- ACTIVE_DIRECTORY_OBJECT_TYPE_GROUP_MANAGED_SERVICE_ACCOUNT - Active Directory group managed service account.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_GROUP_POLICY_OBJECT - Active Directory group policy.
+- ACTIVE_DIRECTORY_OBJECT_TYPE_MANAGED_SERVICE_ACCOUNT - Active Directory managed service account.
+- ACTIVE_DIRECTORY_OBJECT_TYPE_MS_DS_PASSWORD_SETTINGS - Active Directory msDS-PasswordSettings object type.
+- ACTIVE_DIRECTORY_OBJECT_TYPE_MS_DS_PASSWORD_SETTINGS_CONTAINER - Active Directory msDS-PasswordSettingsContainer object type.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_MS_FVE_RECOVERY_INFORMATION - Active Directory MsFVERecovery information object type.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_ORGANIZATION_UNIT - Active Directory organization unit.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_UNKNOWN - Unknown object type.

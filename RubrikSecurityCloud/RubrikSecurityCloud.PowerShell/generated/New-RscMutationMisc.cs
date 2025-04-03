@@ -2323,6 +2323,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		oldPrimaryClusterUuid = $someString
+    /// 		# OPTIONAL
+    /// 		shouldSkipCertificateUpdateOnSecondaryClusters = $someHostMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters]) for enum values.
     /// 	}
     /// }
     /// 
@@ -2959,6 +2961,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			status = $someClusterNodeStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodeStatus]) for enum values.
     /// 			# OPTIONAL
     /// 			useQuickDrain = $someBoolean
+    /// 			# OPTIONAL
+    /// 			resetAfterRemoveType = $someResetAfterRemoveType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ResetAfterRemoveType]) for enum values.
     /// 		}
     /// 	)
     /// }
@@ -4138,6 +4142,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	dbClusterName = $someString
     /// 	# OPTIONAL
     /// 	dbClusterParameterGroupName = $someString
+    /// 	# OPTIONAL
+    /// 	dbEngineVersion = $someString
     /// }
     /// 
     /// # Execute the query
@@ -5636,6 +5642,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isBruteForceLockoutEnabled = $someBoolean
     /// 	# OPTIONAL
     /// 	isAutoUnlockFeatureEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	inactiveLockoutConfig = @{
+    /// 		# OPTIONAL
+    /// 		isInactiveLockoutEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		inactivityDaysLimit = $someInt
+    /// 		# OPTIONAL
+    /// 		isWarningEmailEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		numDaysBeforeWarningEmail = $someInt
+    /// 		# OPTIONAL
+    /// 		isSelfServiceUnlockEnabled = $someBoolean
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -6206,6 +6225,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	shouldSkipCertificateUpdateOnSecondaryClusters = $someV1VmMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1VmMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters]) for enum values.
     /// 	# REQUIRED
     /// 	ids = @(
     /// 		$someString
@@ -10044,6 +10065,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		oldPrimaryClusterUuid = $someString
+		# OPTIONAL
+		shouldSkipCertificateUpdateOnSecondaryClusters = $someHostMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters]) for enum values.
 	}
 }"
             );
@@ -10568,6 +10591,8 @@ $query.Var.input = @{
 			status = $someClusterNodeStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodeStatus]) for enum values.
 			# OPTIONAL
 			useQuickDrain = $someBoolean
+			# OPTIONAL
+			resetAfterRemoveType = $someResetAfterRemoveType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ResetAfterRemoveType]) for enum values.
 		}
 	)
 }"
@@ -11545,6 +11570,8 @@ $query.Var.input = @{
 	dbClusterName = $someString
 	# OPTIONAL
 	dbClusterParameterGroupName = $someString
+	# OPTIONAL
+	dbEngineVersion = $someString
 }"
             );
         }
@@ -12776,6 +12803,19 @@ $query.Var.input = @{
 	isBruteForceLockoutEnabled = $someBoolean
 	# OPTIONAL
 	isAutoUnlockFeatureEnabled = $someBoolean
+	# OPTIONAL
+	inactiveLockoutConfig = @{
+		# OPTIONAL
+		isInactiveLockoutEnabled = $someBoolean
+		# OPTIONAL
+		inactivityDaysLimit = $someInt
+		# OPTIONAL
+		isWarningEmailEnabled = $someBoolean
+		# OPTIONAL
+		numDaysBeforeWarningEmail = $someInt
+		# OPTIONAL
+		isSelfServiceUnlockEnabled = $someBoolean
+	}
 }"
             );
         }
@@ -13245,6 +13285,8 @@ $query.Var.input = @{
                 Mutation.VmMakePrimaryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# OPTIONAL
+	shouldSkipCertificateUpdateOnSecondaryClusters = $someV1VmMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1VmMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters]) for enum values.
 	# REQUIRED
 	ids = @(
 		$someString

@@ -124,7 +124,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> PastDurationEnum? Value
         // GraphQL -> value: PastDurationEnum (enum)
@@ -239,7 +239,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DisplayableValueDateRange> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DisplayableValueDateRange());
@@ -249,7 +249,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<DisplayableValueDateRange> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ResetAfterRemoveType? ResetAfterRemoveType
+        // GraphQL -> resetAfterRemoveType: ResetAfterRemoveType! (enum)
+        [JsonProperty("resetAfterRemoveType")]
+        public ResetAfterRemoveType? ResetAfterRemoveType { get; set; }
+
         //      C# -> System.String? ChassisId
         // GraphQL -> chassisId: String! (scalar)
         [JsonProperty("chassisId")]
@@ -55,6 +60,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ClusterNodeDetail Set(
+        ResetAfterRemoveType? ResetAfterRemoveType = null,
         System.String? ChassisId = null,
         System.String? NodeId = null,
         System.String? Platform = null,
@@ -62,6 +68,9 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? UseQuickDrain = null
     ) 
     {
+        if ( ResetAfterRemoveType != null ) {
+            this.ResetAfterRemoveType = ResetAfterRemoveType;
+        }
         if ( ChassisId != null ) {
             this.ChassisId = ChassisId;
         }
@@ -91,6 +100,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ResetAfterRemoveType? ResetAfterRemoveType
+        // GraphQL -> resetAfterRemoveType: ResetAfterRemoveType! (enum)
+        if (this.ResetAfterRemoveType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "resetAfterRemoveType\n" ;
+            } else {
+                s += ind + "resetAfterRemoveType\n" ;
+            }
+        }
         //      C# -> System.String? ChassisId
         // GraphQL -> chassisId: String! (scalar)
         if (this.ChassisId != null) {
@@ -141,8 +159,25 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> ResetAfterRemoveType? ResetAfterRemoveType
+        // GraphQL -> resetAfterRemoveType: ResetAfterRemoveType! (enum)
+        if (ec.Includes("resetAfterRemoveType",true))
+        {
+            if(this.ResetAfterRemoveType == null) {
+
+                this.ResetAfterRemoveType = new ResetAfterRemoveType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResetAfterRemoveType != null && ec.Excludes("resetAfterRemoveType",true))
+        {
+            this.ResetAfterRemoveType = null;
+        }
         //      C# -> System.String? ChassisId
         // GraphQL -> chassisId: String! (scalar)
         if (ec.Includes("chassisId",true))
@@ -273,7 +308,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterNodeDetail> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterNodeDetail());
@@ -283,7 +318,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ClusterNodeDetail> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

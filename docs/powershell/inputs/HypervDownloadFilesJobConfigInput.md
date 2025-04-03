@@ -1,6 +1,9 @@
 ### HypervDownloadFilesJobConfigInput
 Supported in v5.0+
 
+- zipPassword: System.String
+  - Supported in v9.4
+      Password to protect the generated zip file.
 - legalHoldDownloadConfig: LegalHoldDownloadConfigInput
   - Supported in v5.2+
       v5.2-v7.0: An optional argument containing a Boolean parameter to depict if the download is being triggered for Legal Hold use case.

@@ -72,4 +72,8 @@
   - Represents the type of database entity.
 - exposureSummary: list of ExposureSummarys
   - Represents the number of files associated with different exposure types.
+- attributesSummary: list of AttributesSummarys
+  - Summarizes attributes associated with the file.
+- documentTypesSummary: list of DocumentTypeSummarys
+  - Summarizes the document types associated with the file.
 - snappable: HierarchyObject

@@ -4,7 +4,7 @@
 - MssqlDatabaseBatchMaintenance
 - MYSQLDB_INSTANCE - MySQL Instance.
 - O365Teams
-- CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS Export.
+- CLOUD_DIRECT_NAS_EXPORT - NAS Cloud Direct Export.
 - O365Onedrive
 - Hdfs
 - CASSANDRA_SOURCE - Cassandra Source.
@@ -20,7 +20,7 @@
 - M365_BACKUP_STORAGE_MAILBOX - M365 Backup Storage Mailbox.
 - MONGO_COLLECTION_SET - MongoDB Database.
 - OracleDatabase
-- CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS share.
+- CLOUD_DIRECT_NAS_SHARE - NAS Cloud Direct share.
 - MONGODB_SOURCE - MongoDB Source Cluster.
 - POSTGRES_DB_CLUSTER - Postgres Database Cluster.
 - O365SharePointList
@@ -30,6 +30,7 @@
 - MONGODB_COLLECTION - MongoDB Collection.
 - HypervVirtualMachine
 - AwsNativeEc2Instance
+- AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB table.
 - O365Mailbox
 - AZURE_STORAGE_ACCOUNT - Azure Storage Account.
 - GcpNativeGCEInstance
@@ -68,6 +69,7 @@
 - SnapMirrorCloud
 - SALESFORCE_FIXED_OBJECT - Salesforce metadata.
 - AppBlueprint
+- OPENSTACK_VIRTUAL_MACHINE - OpenStack Virtual Machine.
 - NutanixVirtualMachine
 - M365_BACKUP_STORAGE_ONEDRIVE - M365 Backup Storage Onedrive.
 - SapHanaDatabase - SAP HANA Database.

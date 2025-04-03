@@ -671,7 +671,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
@@ -1300,7 +1300,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RubrikManagedAzureTarget> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RubrikManagedAzureTarget());
@@ -1310,7 +1310,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<RubrikManagedAzureTarget> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

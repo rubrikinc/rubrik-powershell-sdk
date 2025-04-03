@@ -176,6 +176,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oldestSnapshot")]
         public PolarisSnapshot? OldestSnapshot { get; set; }
 
+        //      C# -> List<OnPremAdProtection>? OnPremAdProtectionStats
+        // GraphQL -> onPremAdProtectionStats: [OnPremAdProtection!] (type)
+        [JsonProperty("onPremAdProtectionStats")]
+        public List<OnPremAdProtection>? OnPremAdProtectionStats { get; set; }
+
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         [JsonProperty("physicalPath")]
@@ -252,6 +257,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("filter", "PolarisSnapshotFilterInput"),
                     Tuple.Create("groupBy", "PolarisSnapshotGroupByEnum!"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.SnapshotGroupByConnection =
                 new RscGqlVars(null, snapshotGroupByConnectionArgs, null, true);
@@ -324,6 +330,7 @@ namespace RubrikSecurityCloud.Types
         PolarisSnapshot? NewestIndexedSnapshot = null,
         PolarisSnapshot? NewestSnapshot = null,
         PolarisSnapshot? OldestSnapshot = null,
+        List<OnPremAdProtection>? OnPremAdProtectionStats = null,
         List<PathNode>? PhysicalPath = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
         SecurityMetadata? SecurityMetadata = null,
@@ -426,6 +433,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OldestSnapshot != null ) {
             this.OldestSnapshot = OldestSnapshot;
+        }
+        if ( OnPremAdProtectionStats != null ) {
+            this.OnPremAdProtectionStats = OnPremAdProtectionStats;
         }
         if ( PhysicalPath != null ) {
             this.PhysicalPath = PhysicalPath;
@@ -774,6 +784,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<OnPremAdProtection>? OnPremAdProtectionStats
+        // GraphQL -> onPremAdProtectionStats: [OnPremAdProtection!] (type)
+        if (this.OnPremAdProtectionStats != null) {
+            var fspec = this.OnPremAdProtectionStats.AsFieldSpec(conf.Child("onPremAdProtectionStats"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "onPremAdProtectionStats" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         if (this.PhysicalPath != null) {
@@ -875,7 +897,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
@@ -1437,6 +1459,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.OldestSnapshot = null;
         }
+        //      C# -> List<OnPremAdProtection>? OnPremAdProtectionStats
+        // GraphQL -> onPremAdProtectionStats: [OnPremAdProtection!] (type)
+        if (ec.Includes("onPremAdProtectionStats",false))
+        {
+            if(this.OnPremAdProtectionStats == null) {
+
+                this.OnPremAdProtectionStats = new List<OnPremAdProtection>();
+                this.OnPremAdProtectionStats.ApplyExploratoryFieldSpec(ec.NewChild("onPremAdProtectionStats"));
+
+            } else {
+
+                this.OnPremAdProtectionStats.ApplyExploratoryFieldSpec(ec.NewChild("onPremAdProtectionStats"));
+
+            }
+        }
+        else if (this.OnPremAdProtectionStats != null && ec.Excludes("onPremAdProtectionStats",false))
+        {
+            this.OnPremAdProtectionStats = null;
+        }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         if (ec.Includes("physicalPath",false))
@@ -1634,7 +1675,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureAdDirectory> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureAdDirectory());
@@ -1644,7 +1685,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AzureAdDirectory> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

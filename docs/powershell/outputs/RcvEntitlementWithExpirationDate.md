@@ -13,3 +13,5 @@ Rubrik Cloud Vault (RCV) entitlement with expiration date.
   - Rubrik Cloud Vault (RCV) redundancy level.
 - createdAt: DateTime
   - Rubrik Cloud Vault (RCV) entitlement creation date.
+- revenueType: EntitlementType
+  - Rubrik Cloud Vault (RCV) entitlement revenue type.

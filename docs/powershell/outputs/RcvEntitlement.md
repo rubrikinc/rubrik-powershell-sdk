@@ -11,3 +11,5 @@ Rubrik Cloud Vault (RCV) entitlement tier wise details.
   - Rubrik Cloud Vault (RCV) redundancy level.
 - createdAt: DateTime
   - Rubrik Cloud Vault (RCV) entitlement creation date.
+- revenueType: EntitlementType
+  - Rubrik Cloud Vault (RCV) entitlement revenue type.

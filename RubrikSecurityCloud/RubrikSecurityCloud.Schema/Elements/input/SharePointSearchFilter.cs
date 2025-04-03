@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lambdaFilters")]
         public LambdaPathFilters? LambdaFilters { get; set; }
 
+        //      C# -> System.String? DescendantWorkloadId
+        // GraphQL -> descendantWorkloadId: String (scalar)
+        [JsonProperty("descendantWorkloadId")]
+        public System.String? DescendantWorkloadId { get; set; }
+
 
         #endregion
 

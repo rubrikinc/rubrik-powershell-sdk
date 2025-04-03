@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("selfServiceTokenValidityInMins")]
         public System.Int32? SelfServiceTokenValidityInMins { get; set; }
 
+        //      C# -> InactiveLockoutConfig? InactiveLockoutConfig
+        // GraphQL -> inactiveLockoutConfig: InactiveLockoutConfig! (type)
+        [JsonProperty("inactiveLockoutConfig")]
+        public InactiveLockoutConfig? InactiveLockoutConfig { get; set; }
+
 
         #endregion
 
@@ -71,7 +76,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsSelfServiceEnabled = null,
         System.Int32? LoginAttemptsLimit = null,
         System.Int32? SelfServiceAttemptsLimit = null,
-        System.Int32? SelfServiceTokenValidityInMins = null
+        System.Int32? SelfServiceTokenValidityInMins = null,
+        InactiveLockoutConfig? InactiveLockoutConfig = null
     ) 
     {
         if ( AccountAutoUnlockDurationInMins != null ) {
@@ -94,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SelfServiceTokenValidityInMins != null ) {
             this.SelfServiceTokenValidityInMins = SelfServiceTokenValidityInMins;
+        }
+        if ( InactiveLockoutConfig != null ) {
+            this.InactiveLockoutConfig = InactiveLockoutConfig;
         }
         return this;
     }
@@ -172,12 +181,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "selfServiceTokenValidityInMins\n" ;
             }
         }
+        //      C# -> InactiveLockoutConfig? InactiveLockoutConfig
+        // GraphQL -> inactiveLockoutConfig: InactiveLockoutConfig! (type)
+        if (this.InactiveLockoutConfig != null) {
+            var fspec = this.InactiveLockoutConfig.AsFieldSpec(conf.Child("inactiveLockoutConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "inactiveLockoutConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int32? AccountAutoUnlockDurationInMins
         // GraphQL -> accountAutoUnlockDurationInMins: Int! (scalar)
@@ -298,6 +319,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.SelfServiceTokenValidityInMins = null;
         }
+        //      C# -> InactiveLockoutConfig? InactiveLockoutConfig
+        // GraphQL -> inactiveLockoutConfig: InactiveLockoutConfig! (type)
+        if (ec.Includes("inactiveLockoutConfig",false))
+        {
+            if(this.InactiveLockoutConfig == null) {
+
+                this.InactiveLockoutConfig = new InactiveLockoutConfig();
+                this.InactiveLockoutConfig.ApplyExploratoryFieldSpec(ec.NewChild("inactiveLockoutConfig"));
+
+            } else {
+
+                this.InactiveLockoutConfig.ApplyExploratoryFieldSpec(ec.NewChild("inactiveLockoutConfig"));
+
+            }
+        }
+        else if (this.InactiveLockoutConfig != null && ec.Excludes("inactiveLockoutConfig",false))
+        {
+            this.InactiveLockoutConfig = null;
+        }
     }
 
 
@@ -343,7 +383,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateLockoutConfigReply> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateLockoutConfigReply());
@@ -353,7 +393,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<UpdateLockoutConfigReply> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

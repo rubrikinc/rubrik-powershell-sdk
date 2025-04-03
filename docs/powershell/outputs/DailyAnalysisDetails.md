@@ -21,5 +21,5 @@ A daily summary of Ransomware Investigation results across all workloads.
   - The number of anomaly events generated.
 - day: System.String
   - The day for which the Ransomware Investigation results were recorded.
- The value is formatted using the ISO 8601 standard and
- appears as YYYY-MM-DD.
+The value is formatted using the ISO 8601 standard and
+appears as YYYY-MM-DD.

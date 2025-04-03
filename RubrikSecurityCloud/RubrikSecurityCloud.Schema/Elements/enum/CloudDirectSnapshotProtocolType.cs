@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PROTOCOL_UNSPECIFIED")]
         PROTOCOL_UNSPECIFIED,
 
+        [EnumMember(Value = "S3")]
+        S3,
+
         [EnumMember(Value = "SMB")]
         SMB
 

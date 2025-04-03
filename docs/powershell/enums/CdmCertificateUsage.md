@@ -12,3 +12,4 @@ Different types of usages of a certificate on a Rubrik cluster.
 - AGENT - Secondary Agent.
 - SSO_ENC - SSO Encryption.
 - SSO_SIGN - SSO Signing.
+- RBA - Rubrik Backup Agent (RBA).

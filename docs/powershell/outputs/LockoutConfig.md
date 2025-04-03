@@ -15,3 +15,5 @@ Specifies information about lockout configuration.
   - Specifies whether the account lockout feature is enabled on the UI.
 - isAutoUnlockFeatureEnabled: System.Boolean
   - Specifies whether the auto unlock feature is enabled on the UI.
+- inactiveLockoutConfig: InactiveLockoutConfig
+  - Specifies information about inactive lockout configuration.

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("setupType")]
         public System.String? SetupType { get; set; }
 
+        //      C# -> System.Boolean? UseIpv6
+        // GraphQL -> useIpv6: Boolean (scalar)
+        [JsonProperty("useIpv6")]
+        public System.Boolean? UseIpv6 { get; set; }
+
         //      C# -> NetworkInterfaceSelectionType? NetworkInterface
         // GraphQL -> networkInterface: NetworkInterfaceSelectionType (type)
         [JsonProperty("networkInterface")]
@@ -61,6 +66,7 @@ namespace RubrikSecurityCloud.Types
 
     public ReplicationPairConfigDetails Set(
         System.String? SetupType = null,
+        System.Boolean? UseIpv6 = null,
         NetworkInterfaceSelectionType? NetworkInterface = null,
         GatewayInfo? SourceGateway = null,
         ClusterNetworkInterfaceDetails? SourceNetworkInterfaceDetails = null,
@@ -70,6 +76,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( SetupType != null ) {
             this.SetupType = SetupType;
+        }
+        if ( UseIpv6 != null ) {
+            this.UseIpv6 = UseIpv6;
         }
         if ( NetworkInterface != null ) {
             this.NetworkInterface = NetworkInterface;
@@ -107,6 +116,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "setupType\n" ;
             } else {
                 s += ind + "setupType\n" ;
+            }
+        }
+        //      C# -> System.Boolean? UseIpv6
+        // GraphQL -> useIpv6: Boolean (scalar)
+        if (this.UseIpv6 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "useIpv6\n" ;
+            } else {
+                s += ind + "useIpv6\n" ;
             }
         }
         //      C# -> NetworkInterfaceSelectionType? NetworkInterface
@@ -174,7 +192,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? SetupType
         // GraphQL -> setupType: String! (scalar)
@@ -192,6 +210,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SetupType != null && ec.Excludes("setupType",true))
         {
             this.SetupType = null;
+        }
+        //      C# -> System.Boolean? UseIpv6
+        // GraphQL -> useIpv6: Boolean (scalar)
+        if (ec.Includes("useIpv6",true))
+        {
+            if(this.UseIpv6 == null) {
+
+                this.UseIpv6 = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UseIpv6 != null && ec.Excludes("useIpv6",true))
+        {
+            this.UseIpv6 = null;
         }
         //      C# -> NetworkInterfaceSelectionType? NetworkInterface
         // GraphQL -> networkInterface: NetworkInterfaceSelectionType (type)
@@ -333,7 +368,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReplicationPairConfigDetails> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReplicationPairConfigDetails());
@@ -343,7 +378,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<ReplicationPairConfigDetails> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

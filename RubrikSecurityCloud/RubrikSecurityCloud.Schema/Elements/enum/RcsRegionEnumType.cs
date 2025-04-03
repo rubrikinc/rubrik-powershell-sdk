@@ -72,6 +72,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GOV_US_ARIZONA")]
         GOV_US_ARIZONA,
 
+        [EnumMember(Value = "GOV_US_TEXAS")]
+        GOV_US_TEXAS,
+
         [EnumMember(Value = "GOV_US_VIRGINIA")]
         GOV_US_VIRGINIA,
 

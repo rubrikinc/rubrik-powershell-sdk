@@ -26,6 +26,13 @@ Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot.
 
 - There is a single argument of type AmiTypeForAwsNativeArchivedSnapshotExportInput.
 - Returns AmiTypeForAwsNativeArchivedSnapshotExportReply.
+### dynamodbtable
+Represents the Amazon DynamoDB Table with a specific ID. For more information, see https://aws.amazon.com/dynamodb/.
+
+- There are 2 arguments.
+    - dynamoDbTableRubrikId - System.String: Rubrik ID for the AWS DynamoDB table object.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
+- Returns AwsNativeDynamoDbTable.
 ### ebsvolume
 Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
 
@@ -115,10 +122,11 @@ Specifies whether the given DbInstance class, storage type, multi-az capability,
 ### rdsexportdefaults
 Refers to the default values for the export operation of the RDS DB Instance in the AWS Native account.
 
-- There are 3 arguments.
+- There are 4 arguments.
     - rdsInstanceRubrikId - System.String: The Rubrik ID for the AWS RDS Instance.
     - snapshotId - System.String: ID of the snapshot if the export is manual.
     - isPointInTime - System.Boolean: Specifies whether the export of the instance is manual or Point-in-Time.
+    - isArchivalCopy - System.Boolean: Specifies whether the export of the instance is from an archival copy.
 - Returns RdsInstanceExportDefaults.
 ### rdsinstance
 Refers to AWS Relational Database Service (RDS) represented by a specific ID. For more information, see https://aws.amazon.com/rds/.
@@ -161,6 +169,14 @@ Represents the Amazon S3 Bucket with a specific ID. For more information, see ht
     - s3BucketRubrikId - System.String: Rubrik ID for the AWS S3 bucket object.
     - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AwsNativeS3Bucket.
+### validatedynamodbtablenameforrecovery
+Validates the DynamoDB table name provided by the user for recovery.
+
+- There are 3 arguments.
+    - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
+    - dynamoDBTableNameForRecovery - System.String: Name of the DynamoDB table for recovery.
+    - region - AwsNativeRegion: Region in AWS.
+- Returns ValidateAwsNativeDynamoDbTableNameForRecoveryReply.
 ### validaterdsclusternameforexport
 Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures.
 

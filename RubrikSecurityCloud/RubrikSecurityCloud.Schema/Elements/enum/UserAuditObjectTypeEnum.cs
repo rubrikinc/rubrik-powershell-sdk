@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 
+        [EnumMember(Value = "AWS_NATIVE_DYNAMODB_TABLE")]
+        AWS_NATIVE_DYNAMODB_TABLE,
+
         [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
         AWS_NATIVE_S3_BUCKET,
 
@@ -242,6 +245,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MSSQL_OBJECT")]
         MSSQL_OBJECT,
+
+        [EnumMember(Value = "MYSQLDB_INSTANCE")]
+        MYSQLDB_INSTANCE,
 
         [EnumMember(Value = "ManagedVolume")]
         MANAGED_VOLUME,

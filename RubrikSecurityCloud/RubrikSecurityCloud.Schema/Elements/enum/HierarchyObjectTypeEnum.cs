@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 
+        [EnumMember(Value = "AWS_NATIVE_DYNAMODB_TABLE")]
+        AWS_NATIVE_DYNAMODB_TABLE,
+
         [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
         AWS_NATIVE_S3_BUCKET,
 
@@ -344,6 +347,21 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "O365User")]
         O365_USER,
+
+        [EnumMember(Value = "OPENSTACK_AVAILABILITY_ZONE")]
+        OPENSTACK_AVAILABILITY_ZONE,
+
+        [EnumMember(Value = "OPENSTACK_ENVIRONMENT")]
+        OPENSTACK_ENVIRONMENT,
+
+        [EnumMember(Value = "OPENSTACK_HOST")]
+        OPENSTACK_HOST,
+
+        [EnumMember(Value = "OPENSTACK_REGION")]
+        OPENSTACK_REGION,
+
+        [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
+        OPENSTACK_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "ORACLE_DATA_GUARD_GROUP")]
         ORACLE_DATA_GUARD_GROUP,

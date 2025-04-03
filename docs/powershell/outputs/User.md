@@ -31,6 +31,8 @@ User account details.
   - The user's EULA acceptance state.
 - domainName: System.String
   - Name of the domain to which the SSO user belongs.
+- lockoutHistory: list of UserLockoutEvents
+  - The user account lockout history.
 - assignedRoles: list of RoleAssignments
   - Roles assigned to the user.
 - allOrgs: list of Orgs

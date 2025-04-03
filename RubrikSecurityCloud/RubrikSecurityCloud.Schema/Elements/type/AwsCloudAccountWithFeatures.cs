@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsCloudAccount")]
         public AwsCloudAccount? AwsCloudAccount { get; set; }
 
+        //      C# -> AwsRoleCustomizationResponseType? AwsRoleCustomization
+        // GraphQL -> awsRoleCustomization: AwsRoleCustomizationResponseType (type)
+        [JsonProperty("awsRoleCustomization")]
+        public AwsRoleCustomizationResponseType? AwsRoleCustomization { get; set; }
+
         //      C# -> List<FeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [FeatureDetail!]! (type)
         [JsonProperty("featureDetails")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public AwsCloudAccountWithFeatures Set(
         AwsCloudAccount? AwsCloudAccount = null,
+        AwsRoleCustomizationResponseType? AwsRoleCustomization = null,
         List<FeatureDetail>? FeatureDetails = null
     ) 
     {
         if ( AwsCloudAccount != null ) {
             this.AwsCloudAccount = AwsCloudAccount;
+        }
+        if ( AwsRoleCustomization != null ) {
+            this.AwsRoleCustomization = AwsRoleCustomization;
         }
         if ( FeatureDetails != null ) {
             this.FeatureDetails = FeatureDetails;
@@ -76,6 +85,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> AwsRoleCustomizationResponseType? AwsRoleCustomization
+        // GraphQL -> awsRoleCustomization: AwsRoleCustomizationResponseType (type)
+        if (this.AwsRoleCustomization != null) {
+            var fspec = this.AwsRoleCustomization.AsFieldSpec(conf.Child("awsRoleCustomization"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsRoleCustomization" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<FeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [FeatureDetail!]! (type)
         if (this.FeatureDetails != null) {
@@ -93,7 +114,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount (type)
@@ -113,6 +134,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AwsCloudAccount != null && ec.Excludes("awsCloudAccount",false))
         {
             this.AwsCloudAccount = null;
+        }
+        //      C# -> AwsRoleCustomizationResponseType? AwsRoleCustomization
+        // GraphQL -> awsRoleCustomization: AwsRoleCustomizationResponseType (type)
+        if (ec.Includes("awsRoleCustomization",false))
+        {
+            if(this.AwsRoleCustomization == null) {
+
+                this.AwsRoleCustomization = new AwsRoleCustomizationResponseType();
+                this.AwsRoleCustomization.ApplyExploratoryFieldSpec(ec.NewChild("awsRoleCustomization"));
+
+            } else {
+
+                this.AwsRoleCustomization.ApplyExploratoryFieldSpec(ec.NewChild("awsRoleCustomization"));
+
+            }
+        }
+        else if (this.AwsRoleCustomization != null && ec.Excludes("awsRoleCustomization",false))
+        {
+            this.AwsRoleCustomization = null;
         }
         //      C# -> List<FeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [FeatureDetail!]! (type)
@@ -178,7 +218,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsCloudAccountWithFeatures> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsCloudAccountWithFeatures());
@@ -188,7 +228,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AwsCloudAccountWithFeatures> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

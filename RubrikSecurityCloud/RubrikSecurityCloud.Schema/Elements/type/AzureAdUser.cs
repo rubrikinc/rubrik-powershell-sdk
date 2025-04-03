@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("userType")]
         public System.String? UserType { get; set; }
 
+        //      C# -> AzureAdOnPremSyncInfo? OnPremSyncInfo
+        // GraphQL -> onPremSyncInfo: AzureAdOnPremSyncInfo (type)
+        [JsonProperty("onPremSyncInfo")]
+        public AzureAdOnPremSyncInfo? OnPremSyncInfo { get; set; }
+
 
         #endregion
 
@@ -59,7 +64,8 @@ namespace RubrikSecurityCloud.Types
         System.String? CreationType = null,
         System.String? DisplayName = null,
         System.String? PrincipalUserName = null,
-        System.String? UserType = null
+        System.String? UserType = null,
+        AzureAdOnPremSyncInfo? OnPremSyncInfo = null
     ) 
     {
         if ( OnPremSyncStatus != null ) {
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UserType != null ) {
             this.UserType = UserType;
+        }
+        if ( OnPremSyncInfo != null ) {
+            this.OnPremSyncInfo = OnPremSyncInfo;
         }
         return this;
     }
@@ -136,12 +145,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "userType\n" ;
             }
         }
+        //      C# -> AzureAdOnPremSyncInfo? OnPremSyncInfo
+        // GraphQL -> onPremSyncInfo: AzureAdOnPremSyncInfo (type)
+        if (this.OnPremSyncInfo != null) {
+            var fspec = this.OnPremSyncInfo.AsFieldSpec(conf.Child("onPremSyncInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "onPremSyncInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AzureAdOnPremSyncStatus? OnPremSyncStatus
         // GraphQL -> onPremSyncStatus: AzureAdOnPremSyncStatus! (enum)
@@ -228,6 +249,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.UserType = null;
         }
+        //      C# -> AzureAdOnPremSyncInfo? OnPremSyncInfo
+        // GraphQL -> onPremSyncInfo: AzureAdOnPremSyncInfo (type)
+        if (ec.Includes("onPremSyncInfo",false))
+        {
+            if(this.OnPremSyncInfo == null) {
+
+                this.OnPremSyncInfo = new AzureAdOnPremSyncInfo();
+                this.OnPremSyncInfo.ApplyExploratoryFieldSpec(ec.NewChild("onPremSyncInfo"));
+
+            } else {
+
+                this.OnPremSyncInfo.ApplyExploratoryFieldSpec(ec.NewChild("onPremSyncInfo"));
+
+            }
+        }
+        else if (this.OnPremSyncInfo != null && ec.Excludes("onPremSyncInfo",false))
+        {
+            this.OnPremSyncInfo = null;
+        }
     }
 
 
@@ -273,7 +313,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureAdUser> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureAdUser());
@@ -283,7 +323,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AzureAdUser> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

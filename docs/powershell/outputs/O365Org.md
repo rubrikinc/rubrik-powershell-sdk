@@ -1,6 +1,8 @@
 ### O365Org
 - status: OrgStatus
 - exocomputeId: System.String
+- tenantId: System.String
+  - The tenant ID of the Microsoft organization.
 - past1DayMailboxComplianceCount: System.Int32
   - Compliance count for Exchange.
 - past1DayMailboxOutOfComplianceCount: System.Int32
@@ -83,5 +85,7 @@
   - Security posture metadata.
 - workloadSummary: list of O365WorkloadSummarys
   - Summary of workload by type.
+- groupsSummary: O365GroupsSummary
+  - Summary of Microsoft groups count.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.

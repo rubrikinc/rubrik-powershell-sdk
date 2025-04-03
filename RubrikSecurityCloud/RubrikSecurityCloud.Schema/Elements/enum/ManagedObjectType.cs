@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_ACCOUNT")]
         AWS_NATIVE_ACCOUNT,
 
+        [EnumMember(Value = "AWS_NATIVE_DYNAMODB_TABLE")]
+        AWS_NATIVE_DYNAMODB_TABLE,
+
         [EnumMember(Value = "AWS_NATIVE_EBS_VOLUME")]
         AWS_NATIVE_EBS_VOLUME,
 
@@ -356,6 +359,21 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "O365_USER")]
         O365_USER,
+
+        [EnumMember(Value = "OPENSTACK_AVAILABILITY_ZONE")]
+        OPENSTACK_AVAILABILITY_ZONE,
+
+        [EnumMember(Value = "OPENSTACK_ENVIRONMENT")]
+        OPENSTACK_ENVIRONMENT,
+
+        [EnumMember(Value = "OPENSTACK_HOST")]
+        OPENSTACK_HOST,
+
+        [EnumMember(Value = "OPENSTACK_REGION")]
+        OPENSTACK_REGION,
+
+        [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
+        OPENSTACK_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "ORACLE_DATABASE")]
         ORACLE_DATABASE,

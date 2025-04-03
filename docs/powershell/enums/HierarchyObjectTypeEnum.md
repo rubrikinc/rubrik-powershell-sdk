@@ -1,6 +1,7 @@
 ### HierarchyObjectTypeEnum
 Type of hierarchy object.
 
+- OPENSTACK_ENVIRONMENT - OpenStack Environment.
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
 - K8S_CLUSTER - Kubernetes cluster.
 - MYSQLDB_DATABASE - MySQL Database.
@@ -16,7 +17,7 @@ Type of hierarchy object.
 - O365Teams
 - CLOUD_DIRECT_NAS_NAMESPACE
 - VSPHERE_VIRTUAL_DISK - VSphere Virtual Disk.
-- CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS export.
+- CLOUD_DIRECT_NAS_EXPORT - NAS Cloud Direct export.
 - MONGO_DB - MongoDB database.
 - O365Onedrive
 - Hdfs
@@ -29,6 +30,7 @@ Type of hierarchy object.
 - AwsNativeRdsInstance
 - FeldsparSite
 - K8S_VIRTUAL_MACHINE - Kubernetes virtual machine.
+- OPENSTACK_AVAILABILITY_ZONE - OpenStack Availability Zone.
 - VolumeGroup
 - AZURE_SQL_MANAGED_INSTANCE_DB
 - MONGO_COLLECTION - MongoDB Collection.
@@ -45,7 +47,7 @@ Type of hierarchy object.
 - VSphereDatacenter
 - PhysicalHost
 - ATLASSIAN_SITE - Atlassian site.
-- CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS share.
+- CLOUD_DIRECT_NAS_SHARE - NAS Cloud Direct share.
 - MONGODB_SOURCE - MongoDB Source Cluster.
 - POSTGRES_DB_CLUSTER - Postgres Database Cluster.
 - VSphereVCenter
@@ -61,6 +63,7 @@ Type of hierarchy object.
 - HOST_FAILOVER_CLUSTER - Host Failover Cluster.
 - HypervVirtualMachine
 - AwsNativeEc2Instance
+- AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB table.
 - O365Mailbox
 - D365_ORGANIZATION - D365 Organization.
 - VSPHERE_DATASTORE_CLUSTER - VSphere Datastore cluster.
@@ -111,6 +114,7 @@ Type of hierarchy object.
 - LinuxFileset
 - MSSQL_HOST - MSSQL Host.
 - O365Site
+- OPENSTACK_HOST - OpenStack Host.
 - K8S_NAMESPACE_V2 - Kubernetes namespace v2.
 - SALESFORCE_ORGANIZATION - Salesforce organization.
 - M365_BACKUP_STORAGE_USER - M365 Backup Storage User.
@@ -132,12 +136,14 @@ Type of hierarchy object.
 - ORCHESTRATED_APPLICATION_RECOVERY_BLUEPRINT - Orchestrated Application Recovery Blueprint.
 - HypervCluster
 - JIRA_PROJECT - Jira project.
+- OPENSTACK_REGION - OpenStack Region.
 - StorageArrayVolumeGroup
 - SnapMirrorCloud
 - HypervSCVMM
 - SALESFORCE_FIXED_OBJECT - Salesforce metadata.
 - AppBlueprint
 - NasNamespace
+- OPENSTACK_VIRTUAL_MACHINE - OpenStack Virtual Machine.
 - NutanixVirtualMachine
 - AzureNativeSubscription
 - NUTANIX_CATEGORY_VALUE - Nutanix Category Value.

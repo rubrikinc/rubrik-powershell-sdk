@@ -1,6 +1,6 @@
 ### ThreatHuntObjectStatus
 ThreatHuntObjectStatus represents the status of an object in a threat
- hunt.
+hunt.
 
 - OBJ_UNSPECIFIED - Unused default.
 - OBJ_PENDING - Object scan is pending.

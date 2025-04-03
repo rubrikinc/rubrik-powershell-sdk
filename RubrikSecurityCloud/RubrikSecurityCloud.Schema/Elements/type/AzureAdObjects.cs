@@ -30,10 +30,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureAdApplication")]
         public AzureAdApplication? AzureAdApplication { get; set; }
 
+        //      C# -> AzureAdAuthenticationContext? AzureAdAuthenticationContext
+        // GraphQL -> azureAdAuthenticationContext: AzureAdAuthenticationContext (type)
+        [JsonProperty("azureAdAuthenticationContext")]
+        public AzureAdAuthenticationContext? AzureAdAuthenticationContext { get; set; }
+
+        //      C# -> AzureAdAuthenticationStrength? AzureAdAuthenticationStrength
+        // GraphQL -> azureAdAuthenticationStrength: AzureAdAuthenticationStrength (type)
+        [JsonProperty("azureAdAuthenticationStrength")]
+        public AzureAdAuthenticationStrength? AzureAdAuthenticationStrength { get; set; }
+
+        //      C# -> AzureAdConditionalAccessPolicy? AzureAdConditionalAccessPolicy
+        // GraphQL -> azureAdConditionalAccessPolicy: AzureAdConditionalAccessPolicy (type)
+        [JsonProperty("azureAdConditionalAccessPolicy")]
+        public AzureAdConditionalAccessPolicy? AzureAdConditionalAccessPolicy { get; set; }
+
         //      C# -> AzureAdGroup? AzureAdGroup
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
         [JsonProperty("azureAdGroup")]
         public AzureAdGroup? AzureAdGroup { get; set; }
+
+        //      C# -> AzureAdNamedLocation? AzureAdNamedLocation
+        // GraphQL -> azureAdNamedLocation: AzureAdNamedLocation (type)
+        [JsonProperty("azureAdNamedLocation")]
+        public AzureAdNamedLocation? AzureAdNamedLocation { get; set; }
 
         //      C# -> AzureAdRole? AzureAdRole
         // GraphQL -> azureAdRole: AzureAdRole (type)
@@ -44,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureAdServicePrincipal: AzureAdServicePrincipal (type)
         [JsonProperty("azureAdServicePrincipal")]
         public AzureAdServicePrincipal? AzureAdServicePrincipal { get; set; }
+
+        //      C# -> AzureAdTermsOfUse? AzureAdTermsOfUse
+        // GraphQL -> azureAdTermsOfUse: AzureAdTermsOfUse (type)
+        [JsonProperty("azureAdTermsOfUse")]
+        public AzureAdTermsOfUse? AzureAdTermsOfUse { get; set; }
 
         //      C# -> AzureAdUser? AzureAdUser
         // GraphQL -> azureAdUser: AzureAdUser (type)
@@ -62,9 +87,14 @@ namespace RubrikSecurityCloud.Types
     public AzureAdObjects Set(
         AzureAdAppRoleAssignment? AzureAdAppRoleAssignment = null,
         AzureAdApplication? AzureAdApplication = null,
+        AzureAdAuthenticationContext? AzureAdAuthenticationContext = null,
+        AzureAdAuthenticationStrength? AzureAdAuthenticationStrength = null,
+        AzureAdConditionalAccessPolicy? AzureAdConditionalAccessPolicy = null,
         AzureAdGroup? AzureAdGroup = null,
+        AzureAdNamedLocation? AzureAdNamedLocation = null,
         AzureAdRole? AzureAdRole = null,
         AzureAdServicePrincipal? AzureAdServicePrincipal = null,
+        AzureAdTermsOfUse? AzureAdTermsOfUse = null,
         AzureAdUser? AzureAdUser = null
     ) 
     {
@@ -74,14 +104,29 @@ namespace RubrikSecurityCloud.Types
         if ( AzureAdApplication != null ) {
             this.AzureAdApplication = AzureAdApplication;
         }
+        if ( AzureAdAuthenticationContext != null ) {
+            this.AzureAdAuthenticationContext = AzureAdAuthenticationContext;
+        }
+        if ( AzureAdAuthenticationStrength != null ) {
+            this.AzureAdAuthenticationStrength = AzureAdAuthenticationStrength;
+        }
+        if ( AzureAdConditionalAccessPolicy != null ) {
+            this.AzureAdConditionalAccessPolicy = AzureAdConditionalAccessPolicy;
+        }
         if ( AzureAdGroup != null ) {
             this.AzureAdGroup = AzureAdGroup;
+        }
+        if ( AzureAdNamedLocation != null ) {
+            this.AzureAdNamedLocation = AzureAdNamedLocation;
         }
         if ( AzureAdRole != null ) {
             this.AzureAdRole = AzureAdRole;
         }
         if ( AzureAdServicePrincipal != null ) {
             this.AzureAdServicePrincipal = AzureAdServicePrincipal;
+        }
+        if ( AzureAdTermsOfUse != null ) {
+            this.AzureAdTermsOfUse = AzureAdTermsOfUse;
         }
         if ( AzureAdUser != null ) {
             this.AzureAdUser = AzureAdUser;
@@ -124,6 +169,42 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> AzureAdAuthenticationContext? AzureAdAuthenticationContext
+        // GraphQL -> azureAdAuthenticationContext: AzureAdAuthenticationContext (type)
+        if (this.AzureAdAuthenticationContext != null) {
+            var fspec = this.AzureAdAuthenticationContext.AsFieldSpec(conf.Child("azureAdAuthenticationContext"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdAuthenticationContext" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdAuthenticationStrength? AzureAdAuthenticationStrength
+        // GraphQL -> azureAdAuthenticationStrength: AzureAdAuthenticationStrength (type)
+        if (this.AzureAdAuthenticationStrength != null) {
+            var fspec = this.AzureAdAuthenticationStrength.AsFieldSpec(conf.Child("azureAdAuthenticationStrength"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdAuthenticationStrength" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdConditionalAccessPolicy? AzureAdConditionalAccessPolicy
+        // GraphQL -> azureAdConditionalAccessPolicy: AzureAdConditionalAccessPolicy (type)
+        if (this.AzureAdConditionalAccessPolicy != null) {
+            var fspec = this.AzureAdConditionalAccessPolicy.AsFieldSpec(conf.Child("azureAdConditionalAccessPolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdConditionalAccessPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureAdGroup? AzureAdGroup
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
         if (this.AzureAdGroup != null) {
@@ -133,6 +214,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureAdGroup" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdNamedLocation? AzureAdNamedLocation
+        // GraphQL -> azureAdNamedLocation: AzureAdNamedLocation (type)
+        if (this.AzureAdNamedLocation != null) {
+            var fspec = this.AzureAdNamedLocation.AsFieldSpec(conf.Child("azureAdNamedLocation"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdNamedLocation" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -160,6 +253,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> AzureAdTermsOfUse? AzureAdTermsOfUse
+        // GraphQL -> azureAdTermsOfUse: AzureAdTermsOfUse (type)
+        if (this.AzureAdTermsOfUse != null) {
+            var fspec = this.AzureAdTermsOfUse.AsFieldSpec(conf.Child("azureAdTermsOfUse"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdTermsOfUse" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureAdUser? AzureAdUser
         // GraphQL -> azureAdUser: AzureAdUser (type)
         if (this.AzureAdUser != null) {
@@ -177,7 +282,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AzureAdAppRoleAssignment? AzureAdAppRoleAssignment
         // GraphQL -> azureAdAppRoleAssignment: AzureAdAppRoleAssignment (type)
@@ -217,6 +322,63 @@ namespace RubrikSecurityCloud.Types
         {
             this.AzureAdApplication = null;
         }
+        //      C# -> AzureAdAuthenticationContext? AzureAdAuthenticationContext
+        // GraphQL -> azureAdAuthenticationContext: AzureAdAuthenticationContext (type)
+        if (ec.Includes("azureAdAuthenticationContext",false))
+        {
+            if(this.AzureAdAuthenticationContext == null) {
+
+                this.AzureAdAuthenticationContext = new AzureAdAuthenticationContext();
+                this.AzureAdAuthenticationContext.ApplyExploratoryFieldSpec(ec.NewChild("azureAdAuthenticationContext"));
+
+            } else {
+
+                this.AzureAdAuthenticationContext.ApplyExploratoryFieldSpec(ec.NewChild("azureAdAuthenticationContext"));
+
+            }
+        }
+        else if (this.AzureAdAuthenticationContext != null && ec.Excludes("azureAdAuthenticationContext",false))
+        {
+            this.AzureAdAuthenticationContext = null;
+        }
+        //      C# -> AzureAdAuthenticationStrength? AzureAdAuthenticationStrength
+        // GraphQL -> azureAdAuthenticationStrength: AzureAdAuthenticationStrength (type)
+        if (ec.Includes("azureAdAuthenticationStrength",false))
+        {
+            if(this.AzureAdAuthenticationStrength == null) {
+
+                this.AzureAdAuthenticationStrength = new AzureAdAuthenticationStrength();
+                this.AzureAdAuthenticationStrength.ApplyExploratoryFieldSpec(ec.NewChild("azureAdAuthenticationStrength"));
+
+            } else {
+
+                this.AzureAdAuthenticationStrength.ApplyExploratoryFieldSpec(ec.NewChild("azureAdAuthenticationStrength"));
+
+            }
+        }
+        else if (this.AzureAdAuthenticationStrength != null && ec.Excludes("azureAdAuthenticationStrength",false))
+        {
+            this.AzureAdAuthenticationStrength = null;
+        }
+        //      C# -> AzureAdConditionalAccessPolicy? AzureAdConditionalAccessPolicy
+        // GraphQL -> azureAdConditionalAccessPolicy: AzureAdConditionalAccessPolicy (type)
+        if (ec.Includes("azureAdConditionalAccessPolicy",false))
+        {
+            if(this.AzureAdConditionalAccessPolicy == null) {
+
+                this.AzureAdConditionalAccessPolicy = new AzureAdConditionalAccessPolicy();
+                this.AzureAdConditionalAccessPolicy.ApplyExploratoryFieldSpec(ec.NewChild("azureAdConditionalAccessPolicy"));
+
+            } else {
+
+                this.AzureAdConditionalAccessPolicy.ApplyExploratoryFieldSpec(ec.NewChild("azureAdConditionalAccessPolicy"));
+
+            }
+        }
+        else if (this.AzureAdConditionalAccessPolicy != null && ec.Excludes("azureAdConditionalAccessPolicy",false))
+        {
+            this.AzureAdConditionalAccessPolicy = null;
+        }
         //      C# -> AzureAdGroup? AzureAdGroup
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
         if (ec.Includes("azureAdGroup",false))
@@ -235,6 +397,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureAdGroup != null && ec.Excludes("azureAdGroup",false))
         {
             this.AzureAdGroup = null;
+        }
+        //      C# -> AzureAdNamedLocation? AzureAdNamedLocation
+        // GraphQL -> azureAdNamedLocation: AzureAdNamedLocation (type)
+        if (ec.Includes("azureAdNamedLocation",false))
+        {
+            if(this.AzureAdNamedLocation == null) {
+
+                this.AzureAdNamedLocation = new AzureAdNamedLocation();
+                this.AzureAdNamedLocation.ApplyExploratoryFieldSpec(ec.NewChild("azureAdNamedLocation"));
+
+            } else {
+
+                this.AzureAdNamedLocation.ApplyExploratoryFieldSpec(ec.NewChild("azureAdNamedLocation"));
+
+            }
+        }
+        else if (this.AzureAdNamedLocation != null && ec.Excludes("azureAdNamedLocation",false))
+        {
+            this.AzureAdNamedLocation = null;
         }
         //      C# -> AzureAdRole? AzureAdRole
         // GraphQL -> azureAdRole: AzureAdRole (type)
@@ -273,6 +454,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureAdServicePrincipal != null && ec.Excludes("azureAdServicePrincipal",false))
         {
             this.AzureAdServicePrincipal = null;
+        }
+        //      C# -> AzureAdTermsOfUse? AzureAdTermsOfUse
+        // GraphQL -> azureAdTermsOfUse: AzureAdTermsOfUse (type)
+        if (ec.Includes("azureAdTermsOfUse",false))
+        {
+            if(this.AzureAdTermsOfUse == null) {
+
+                this.AzureAdTermsOfUse = new AzureAdTermsOfUse();
+                this.AzureAdTermsOfUse.ApplyExploratoryFieldSpec(ec.NewChild("azureAdTermsOfUse"));
+
+            } else {
+
+                this.AzureAdTermsOfUse.ApplyExploratoryFieldSpec(ec.NewChild("azureAdTermsOfUse"));
+
+            }
+        }
+        else if (this.AzureAdTermsOfUse != null && ec.Excludes("azureAdTermsOfUse",false))
+        {
+            this.AzureAdTermsOfUse = null;
         }
         //      C# -> AzureAdUser? AzureAdUser
         // GraphQL -> azureAdUser: AzureAdUser (type)
@@ -338,7 +538,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureAdObjects> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureAdObjects());
@@ -348,7 +548,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<AzureAdObjects> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

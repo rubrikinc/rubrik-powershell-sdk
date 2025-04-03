@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> V1VmMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters? ShouldSkipCertificateUpdateOnSecondaryClusters
+        // GraphQL -> shouldSkipCertificateUpdateOnSecondaryClusters: V1VmMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters (enum)
+        [JsonProperty("shouldSkipCertificateUpdateOnSecondaryClusters")]
+        public V1VmMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters? ShouldSkipCertificateUpdateOnSecondaryClusters { get; set; }
+
         //      C# -> List<System.String>? Ids
         // GraphQL -> ids: [String!]! (scalar)
         [Required]

@@ -143,3 +143,5 @@ Enum representing all the possible object types which generate events.
 - D365_METADATA - Dynamics 365 metadata.
 - MYSQLDB_INSTANCE - MySQL instance.
 - ORION_THREAT_HUNT - Orion threat hunt.
+- AWS_NATIVE_DYNAMODB_TABLE - AWS native dynamoDB table.
+- OPENSTACK_ENVIRONMENT - Openstack Environment.

@@ -252,6 +252,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.name = $someString
     /// # REQUIRED
     /// $query.Var.description = $someString
+    /// # OPTIONAL
+    /// $query.Var.isSynced = $someBoolean
     /// # REQUIRED
     /// $query.Var.permissions = @(
     /// 	@{
@@ -737,6 +739,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.name = $someString
     /// # REQUIRED
     /// $query.Var.description = $someString
+    /// # OPTIONAL
+    /// $query.Var.isSynced = $someBoolean
     /// # REQUIRED
     /// $query.Var.permissions = @(
     /// 	@{
@@ -1136,19 +1140,25 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // createRole(name: String!, description: String!, permissions: [PermissionInput!]!): UUID!
+        // createRole(
+        //     name: String!
+        //     description: String!
+        //     isSynced: Boolean
+        //     permissions: [PermissionInput!]!
+        //   ): UUID!
         internal void InitMutationCreateRole()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("name", "String!"),
                 Tuple.Create("description", "String!"),
+                Tuple.Create("isSynced", "Boolean"),
                 Tuple.Create("permissions", "[PermissionInput!]!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationCreateRole",
-                "($name: String!,$description: String!,$permissions: [PermissionInput!]!)",
+                "($name: String!,$description: String!,$isSynced: Boolean,$permissions: [PermissionInput!]!)",
                 "System.String",
                 Mutation.CreateRole,
                 Mutation.CreateRoleFieldSpec,
@@ -1156,6 +1166,8 @@ $query.Var.input = @{
 $query.Var.name = $someString
 # REQUIRED
 $query.Var.description = $someString
+# OPTIONAL
+$query.Var.isSynced = $someBoolean
 # REQUIRED
 $query.Var.permissions = @(
 	@{
@@ -1550,6 +1562,7 @@ $query.Var.input = @{
         //     roleId: String!
         //     name: String!
         //     description: String!
+        //     isSynced: Boolean
         //     permissions: [PermissionInput!]!
         //   ): Boolean!
         internal void InitMutationUpdateRole()
@@ -1558,13 +1571,14 @@ $query.Var.input = @{
                 Tuple.Create("roleId", "String!"),
                 Tuple.Create("name", "String!"),
                 Tuple.Create("description", "String!"),
+                Tuple.Create("isSynced", "Boolean"),
                 Tuple.Create("permissions", "[PermissionInput!]!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationUpdateRole",
-                "($roleId: String!,$name: String!,$description: String!,$permissions: [PermissionInput!]!)",
+                "($roleId: String!,$name: String!,$description: String!,$isSynced: Boolean,$permissions: [PermissionInput!]!)",
                 "System.Boolean",
                 Mutation.UpdateRole,
                 Mutation.UpdateRoleFieldSpec,
@@ -1574,6 +1588,8 @@ $query.Var.roleId = $someString
 $query.Var.name = $someString
 # REQUIRED
 $query.Var.description = $someString
+# OPTIONAL
+$query.Var.isSynced = $someBoolean
 # REQUIRED
 $query.Var.permissions = @(
 	@{

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> IssuerType? IssuerType
+        // GraphQL -> issuerType: IssuerType! (enum)
+        [JsonProperty("issuerType")]
+        public IssuerType? IssuerType { get; set; }
+
         //      C# -> GlobalCertificateStatus? Status
         // GraphQL -> status: GlobalCertificateStatus! (enum)
         [JsonProperty("status")]
@@ -54,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hasKey: Boolean! (scalar)
         [JsonProperty("hasKey")]
         public System.Boolean? HasKey { get; set; }
+
+        //      C# -> System.Boolean? IsCa
+        // GraphQL -> isCa: Boolean! (scalar)
+        [JsonProperty("isCa")]
+        public System.Boolean? IsCa { get; set; }
 
         //      C# -> System.Boolean? IsCaSigned
         // GraphQL -> isCaSigned: Boolean! (scalar)
@@ -105,6 +115,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmUsages")]
         public List<CdmCertificateUsageInfo>? CdmUsages { get; set; }
 
+        //      C# -> CertificateRotation? CertificateRotation
+        // GraphQL -> certificateRotation: CertificateRotation (type)
+        [JsonProperty("certificateRotation")]
+        public CertificateRotation? CertificateRotation { get; set; }
+
         //      C# -> List<CertificateClusterInfo>? Clusters
         // GraphQL -> clusters: [CertificateClusterInfo!] (type)
         [JsonProperty("clusters")]
@@ -130,6 +145,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GlobalCertificate Set(
+        IssuerType? IssuerType = null,
         GlobalCertificateStatus? Status = null,
         System.String? Certificate = null,
         System.String? CertificateFid = null,
@@ -137,6 +153,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Description = null,
         DateTime? ExpiringAt = null,
         System.Boolean? HasKey = null,
+        System.Boolean? IsCa = null,
         System.Boolean? IsCaSigned = null,
         System.Boolean? IsCdmBorn = null,
         System.String? IssuedBy = null,
@@ -147,11 +164,15 @@ namespace RubrikSecurityCloud.Types
         System.String? Sha1Fingerprint = null,
         System.String? Sha256Fingerprint = null,
         List<CdmCertificateUsageInfo>? CdmUsages = null,
+        CertificateRotation? CertificateRotation = null,
         List<CertificateClusterInfo>? Clusters = null,
         Org? Org = null,
         List<CertificateUsageInfo>? Usages = null
     ) 
     {
+        if ( IssuerType != null ) {
+            this.IssuerType = IssuerType;
+        }
         if ( Status != null ) {
             this.Status = Status;
         }
@@ -172,6 +193,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HasKey != null ) {
             this.HasKey = HasKey;
+        }
+        if ( IsCa != null ) {
+            this.IsCa = IsCa;
         }
         if ( IsCaSigned != null ) {
             this.IsCaSigned = IsCaSigned;
@@ -203,6 +227,9 @@ namespace RubrikSecurityCloud.Types
         if ( CdmUsages != null ) {
             this.CdmUsages = CdmUsages;
         }
+        if ( CertificateRotation != null ) {
+            this.CertificateRotation = CertificateRotation;
+        }
         if ( Clusters != null ) {
             this.Clusters = Clusters;
         }
@@ -226,6 +253,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> IssuerType? IssuerType
+        // GraphQL -> issuerType: IssuerType! (enum)
+        if (this.IssuerType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "issuerType\n" ;
+            } else {
+                s += ind + "issuerType\n" ;
+            }
+        }
         //      C# -> GlobalCertificateStatus? Status
         // GraphQL -> status: GlobalCertificateStatus! (enum)
         if (this.Status != null) {
@@ -287,6 +323,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hasKey\n" ;
             } else {
                 s += ind + "hasKey\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsCa
+        // GraphQL -> isCa: Boolean! (scalar)
+        if (this.IsCa != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isCa\n" ;
+            } else {
+                s += ind + "isCa\n" ;
             }
         }
         //      C# -> System.Boolean? IsCaSigned
@@ -382,6 +427,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> CertificateRotation? CertificateRotation
+        // GraphQL -> certificateRotation: CertificateRotation (type)
+        if (this.CertificateRotation != null) {
+            var fspec = this.CertificateRotation.AsFieldSpec(conf.Child("certificateRotation"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "certificateRotation" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<CertificateClusterInfo>? Clusters
         // GraphQL -> clusters: [CertificateClusterInfo!] (type)
         if (this.Clusters != null) {
@@ -423,8 +480,25 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> IssuerType? IssuerType
+        // GraphQL -> issuerType: IssuerType! (enum)
+        if (ec.Includes("issuerType",true))
+        {
+            if(this.IssuerType == null) {
+
+                this.IssuerType = new IssuerType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IssuerType != null && ec.Excludes("issuerType",true))
+        {
+            this.IssuerType = null;
+        }
         //      C# -> GlobalCertificateStatus? Status
         // GraphQL -> status: GlobalCertificateStatus! (enum)
         if (ec.Includes("status",true))
@@ -543,6 +617,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.HasKey != null && ec.Excludes("hasKey",true))
         {
             this.HasKey = null;
+        }
+        //      C# -> System.Boolean? IsCa
+        // GraphQL -> isCa: Boolean! (scalar)
+        if (ec.Includes("isCa",true))
+        {
+            if(this.IsCa == null) {
+
+                this.IsCa = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCa != null && ec.Excludes("isCa",true))
+        {
+            this.IsCa = null;
         }
         //      C# -> System.Boolean? IsCaSigned
         // GraphQL -> isCaSigned: Boolean! (scalar)
@@ -716,6 +807,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.CdmUsages = null;
         }
+        //      C# -> CertificateRotation? CertificateRotation
+        // GraphQL -> certificateRotation: CertificateRotation (type)
+        if (ec.Includes("certificateRotation",false))
+        {
+            if(this.CertificateRotation == null) {
+
+                this.CertificateRotation = new CertificateRotation();
+                this.CertificateRotation.ApplyExploratoryFieldSpec(ec.NewChild("certificateRotation"));
+
+            } else {
+
+                this.CertificateRotation.ApplyExploratoryFieldSpec(ec.NewChild("certificateRotation"));
+
+            }
+        }
+        else if (this.CertificateRotation != null && ec.Excludes("certificateRotation",false))
+        {
+            this.CertificateRotation = null;
+        }
         //      C# -> List<CertificateClusterInfo>? Clusters
         // GraphQL -> clusters: [CertificateClusterInfo!] (type)
         if (ec.Includes("clusters",false))
@@ -818,7 +928,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GlobalCertificate> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GlobalCertificate());
@@ -828,7 +938,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<GlobalCertificate> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

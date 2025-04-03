@@ -9,10 +9,12 @@ Input for filtering a list of users.
   - Filter users by organization ID.
 - roleIdsFilter: list of System.Strings
   - Filter users that have the specified roles assigned in the current
- organization.
+organization.
 - lockoutStateFilter: LockoutStateFilter
   - Filter users by lockout state.
 - hiddenStateFilter: HiddenStateFilter
   - Filter users by hidden status.
 - authDomainIdsFilter: list of System.Strings
   - Filter according to the authentication doamin ID.
+- lockoutReasonsFilter: list of LockMethods
+  - Filter users by lockout reason.

@@ -190,6 +190,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	fileIndexingFilter = @{
+    /// 		# REQUIRED
+    /// 		statuses = @(
+    /// 			$someGcpNativeFileIndexingStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeFileIndexingStatus]) for enum values.
+    /// 		)
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -323,6 +330,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		orgIds = @(
     /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	fileIndexingFilter = @{
+    /// 		# REQUIRED
+    /// 		statuses = @(
+    /// 			$someGcpNativeFileIndexingStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeFileIndexingStatus]) for enum values.
     /// 		)
     /// 	}
     /// }
@@ -712,6 +726,13 @@ $query.Var.diskFilters = @{
 			$someString
 		)
 	}
+	# OPTIONAL
+	fileIndexingFilter = @{
+		# REQUIRED
+		statuses = @(
+			$someGcpNativeFileIndexingStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeFileIndexingStatus]) for enum values.
+		)
+	}
 }"
             );
         }
@@ -843,6 +864,13 @@ $query.Var.gceInstanceFilters = @{
 		# REQUIRED
 		orgIds = @(
 			$someString
+		)
+	}
+	# OPTIONAL
+	fileIndexingFilter = @{
+		# REQUIRED
+		statuses = @(
+			$someGcpNativeFileIndexingStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeFileIndexingStatus]) for enum values.
 		)
 	}
 }"

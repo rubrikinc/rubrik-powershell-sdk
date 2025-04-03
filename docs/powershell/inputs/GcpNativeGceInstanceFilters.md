@@ -19,3 +19,5 @@ Filters for list of GCP GCE instances.
   - Filter by relic status.
 - orgFilter: OrgFilter
   - Filter by organization ID.
+- fileIndexingFilter: GcpNativeVmFileIndexingFilter
+  - Filter by file indexing status.

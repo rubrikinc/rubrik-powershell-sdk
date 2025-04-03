@@ -182,6 +182,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("filter", "MosaicSnapshotFilterInput"),
                     Tuple.Create("groupBy", "MosaicSnapshotGroupBy!"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.SnapshotGroupBys =
                 new RscGqlVars(null, snapshotGroupBysArgs, null, true);
@@ -651,7 +652,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<PolarisObjectAuthorizedOperationsEnum>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [PolarisObjectAuthorizedOperationsEnum!]! (enum)
@@ -1225,7 +1226,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MongodbCollection> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MongodbCollection());
@@ -1235,7 +1236,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<MongodbCollection> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

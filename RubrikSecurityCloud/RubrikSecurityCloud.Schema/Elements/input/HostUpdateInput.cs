@@ -109,6 +109,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oracleSddUserCredentials")]
         public SddUserCredentialsInput? OracleSddUserCredentials { get; set; }
 
+        //      C# -> OracleSepsWalletSettingsInput? OracleSepsSettings
+        // GraphQL -> oracleSepsSettings: OracleSepsWalletSettingsInput (input)
+        [JsonProperty("oracleSepsSettings")]
+        public OracleSepsWalletSettingsInput? OracleSepsSettings { get; set; }
+
 
         #endregion
 

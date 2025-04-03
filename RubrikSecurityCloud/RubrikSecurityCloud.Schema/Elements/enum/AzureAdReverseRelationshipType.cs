@@ -18,6 +18,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "APPLIED_POLICY")]
+        APPLIED_POLICY,
+
+        [EnumMember(Value = "INCLUDED_IN_POLICY")]
+        INCLUDED_IN_POLICY,
+
         [EnumMember(Value = "MEMBER_OF")]
         MEMBER_OF,
 

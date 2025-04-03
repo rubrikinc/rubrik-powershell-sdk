@@ -151,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
 
+        //      C# -> System.String? TenantId
+        // GraphQL -> tenantId: String! (scalar)
+        [JsonProperty("tenantId")]
+        public System.String? TenantId { get; set; }
+
         //      C# -> System.Int32? UnprotectedUsersCount
         // GraphQL -> unprotectedUsersCount: Int! (scalar)
         [JsonProperty("unprotectedUsersCount")]
@@ -170,6 +175,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
+
+        //      C# -> O365GroupsSummary? GroupsSummary
+        // GraphQL -> groupsSummary: O365GroupsSummary! (type)
+        [JsonProperty("groupsSummary")]
+        public O365GroupsSummary? GroupsSummary { get; set; }
 
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
@@ -301,6 +311,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("filter", "PolarisSnapshotFilterInput"),
                     Tuple.Create("groupBy", "PolarisSnapshotGroupByEnum!"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.SnapshotGroupByConnection =
                 new RscGqlVars(null, snapshotGroupByConnectionArgs, null, true);
@@ -373,10 +384,12 @@ namespace RubrikSecurityCloud.Types
         System.Int32? Past1DayTeamsComplianceCount = null,
         System.Int32? Past1DayTeamsOutOfComplianceCount = null,
         System.Boolean? SlaPauseStatus = null,
+        System.String? TenantId = null,
         System.Int32? UnprotectedUsersCount = null,
         List<Org>? AllOrgs = null,
         O365UserConnection? ChildConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
+        O365GroupsSummary? GroupsSummary = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
         PolarisSnapshot? NewestSnapshot = null,
@@ -471,6 +484,9 @@ namespace RubrikSecurityCloud.Types
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
         }
+        if ( TenantId != null ) {
+            this.TenantId = TenantId;
+        }
         if ( UnprotectedUsersCount != null ) {
             this.UnprotectedUsersCount = UnprotectedUsersCount;
         }
@@ -482,6 +498,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( GroupsSummary != null ) {
+            this.GroupsSummary = GroupsSummary;
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
@@ -785,6 +804,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "slaPauseStatus\n" ;
             }
         }
+        //      C# -> System.String? TenantId
+        // GraphQL -> tenantId: String! (scalar)
+        if (this.TenantId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "tenantId\n" ;
+            } else {
+                s += ind + "tenantId\n" ;
+            }
+        }
         //      C# -> System.Int32? UnprotectedUsersCount
         // GraphQL -> unprotectedUsersCount: Int! (scalar)
         if (this.UnprotectedUsersCount != null) {
@@ -827,6 +855,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> O365GroupsSummary? GroupsSummary
+        // GraphQL -> groupsSummary: O365GroupsSummary! (type)
+        if (this.GroupsSummary != null) {
+            var fspec = this.GroupsSummary.AsFieldSpec(conf.Child("groupsSummary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "groupsSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1003,7 +1043,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
@@ -1468,6 +1508,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.SlaPauseStatus = null;
         }
+        //      C# -> System.String? TenantId
+        // GraphQL -> tenantId: String! (scalar)
+        if (ec.Includes("tenantId",true))
+        {
+            if(this.TenantId == null) {
+
+                this.TenantId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TenantId != null && ec.Excludes("tenantId",true))
+        {
+            this.TenantId = null;
+        }
         //      C# -> System.Int32? UnprotectedUsersCount
         // GraphQL -> unprotectedUsersCount: Int! (scalar)
         if (ec.Includes("unprotectedUsersCount",true))
@@ -1541,6 +1598,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> O365GroupsSummary? GroupsSummary
+        // GraphQL -> groupsSummary: O365GroupsSummary! (type)
+        if (ec.Includes("groupsSummary",false))
+        {
+            if(this.GroupsSummary == null) {
+
+                this.GroupsSummary = new O365GroupsSummary();
+                this.GroupsSummary.ApplyExploratoryFieldSpec(ec.NewChild("groupsSummary"));
+
+            } else {
+
+                this.GroupsSummary.ApplyExploratoryFieldSpec(ec.NewChild("groupsSummary"));
+
+            }
+        }
+        else if (this.GroupsSummary != null && ec.Excludes("groupsSummary",false))
+        {
+            this.GroupsSummary = null;
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
@@ -1853,7 +1929,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365Org> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365Org());
@@ -1863,7 +1939,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<O365Org> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

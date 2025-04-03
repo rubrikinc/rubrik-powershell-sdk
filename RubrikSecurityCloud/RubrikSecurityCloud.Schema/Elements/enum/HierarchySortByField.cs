@@ -276,6 +276,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MSSQL_FAILOVER_DATABASE_COUNT")]
         MSSQL_FAILOVER_DATABASE_COUNT,
 
+        [EnumMember(Value = "MSSQL_HOST_CONNECTION_STATUS")]
+        MSSQL_HOST_CONNECTION_STATUS,
+
         [EnumMember(Value = "MSSQL_HOST_DB_COUNT")]
         MSSQL_HOST_DB_COUNT,
 
@@ -293,6 +296,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PHYSICAL_HOST_OS_NAME")]
         PHYSICAL_HOST_OS_NAME,
+
+        [EnumMember(Value = "PHYSICAL_HOST_RBS_UPGRADE_STATUS")]
+        PHYSICAL_HOST_RBS_UPGRADE_STATUS,
 
         [EnumMember(Value = "SAP_HANA_SYSTEM_SID")]
         SAP_HANA_SYSTEM_SID,

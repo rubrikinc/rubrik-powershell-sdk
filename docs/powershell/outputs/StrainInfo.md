@@ -7,7 +7,7 @@ Information about list of strains identified.
   - Total number of files affected by the above strain.
 - totalRansomwareNotes: System.Int64
   - Total number of ransomware notes corresponding to the
- above strain.
+above strain.
 - sampleAffectedFiles: list of System.Strings
   - A sample of filepaths that are affected by the strain.
 - sampleRansomwareNotes: list of System.Strings

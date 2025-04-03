@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("crossAccountCapabilities")]
         public List<CrossAccountCapability>? CrossAccountCapabilities { get; set; }
 
+        //      C# -> MfaStatus? MfaStatus
+        // GraphQL -> mfaStatus: MfaStatus! (enum)
+        [JsonProperty("mfaStatus")]
+        public MfaStatus? MfaStatus { get; set; }
+
         //      C# -> TenantNetworkHealth? TenantNetworkHealth
         // GraphQL -> tenantNetworkHealth: TenantNetworkHealth! (enum)
         [JsonProperty("tenantNetworkHealth")]
@@ -137,6 +142,7 @@ namespace RubrikSecurityCloud.Types
     public Org Set(
         TenantAuthDomainConfig? AuthDomainConfig = null,
         List<CrossAccountCapability>? CrossAccountCapabilities = null,
+        MfaStatus? MfaStatus = null,
         TenantNetworkHealth? TenantNetworkHealth = null,
         List<System.String>? AllUrls = null,
         List<System.String>? AllowedClusters = null,
@@ -163,6 +169,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CrossAccountCapabilities != null ) {
             this.CrossAccountCapabilities = CrossAccountCapabilities;
+        }
+        if ( MfaStatus != null ) {
+            this.MfaStatus = MfaStatus;
         }
         if ( TenantNetworkHealth != null ) {
             this.TenantNetworkHealth = TenantNetworkHealth;
@@ -251,6 +260,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "crossAccountCapabilities\n" ;
             } else {
                 s += ind + "crossAccountCapabilities\n" ;
+            }
+        }
+        //      C# -> MfaStatus? MfaStatus
+        // GraphQL -> mfaStatus: MfaStatus! (enum)
+        if (this.MfaStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mfaStatus\n" ;
+            } else {
+                s += ind + "mfaStatus\n" ;
             }
         }
         //      C# -> TenantNetworkHealth? TenantNetworkHealth
@@ -447,7 +465,7 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> TenantAuthDomainConfig? AuthDomainConfig
         // GraphQL -> authDomainConfig: TenantAuthDomainConfig! (enum)
@@ -482,6 +500,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CrossAccountCapabilities != null && ec.Excludes("crossAccountCapabilities",true))
         {
             this.CrossAccountCapabilities = null;
+        }
+        //      C# -> MfaStatus? MfaStatus
+        // GraphQL -> mfaStatus: MfaStatus! (enum)
+        if (ec.Includes("mfaStatus",true))
+        {
+            if(this.MfaStatus == null) {
+
+                this.MfaStatus = new MfaStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MfaStatus != null && ec.Excludes("mfaStatus",true))
+        {
+            this.MfaStatus = null;
         }
         //      C# -> TenantNetworkHealth? TenantNetworkHealth
         // GraphQL -> tenantNetworkHealth: TenantNetworkHealth! (enum)
@@ -863,7 +898,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Org> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Org());
@@ -873,7 +908,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<Org> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

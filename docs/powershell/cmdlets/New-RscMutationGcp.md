@@ -1,5 +1,10 @@
 # New-RscMutationGcp
 ## Subcommands
+### bulksetcloudaccountproperties
+Sets the properties of GCP cloud accounts.
+
+- There is a single argument of type GcpBulkSetCloudAccountPropertiesInput.
+- Returns System.Boolean.
 ### cloudaccountaddmanualauthproject
 Adds a new cloud account for the GCP project which is not already added.
 

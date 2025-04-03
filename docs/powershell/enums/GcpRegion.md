@@ -32,3 +32,22 @@ Regions for GCP.
 - US - GCP region is in US.
 - EU - GCP region is Europe.
 - ASIA - GCP region is Asia.
+- ASIA_SOUTH2 - GCP region is Asia South 2.
+- AUSTRALIA_SOUTHEAST2 - GCP region is Australia South East 2.
+- EUROPE_CENTRAL2 - GCP region is Europe Central 2.
+- EUROPE_SOUTHWEST1 - GCP region is Europe South West 1.
+- EUROPE_WEST8 - GCP region is Europe West 8.
+- EUROPE_WEST9 - GCP region is Europe West 9.
+- EUROPE_WEST10 - GCP region is Europe West 10.
+- EUROPE_WEST12 - GCP region is Europe West 12.
+- ME_CENTRAL1 - GCP region is ME Central 1.
+- ME_CENTRAL2 - GCP region is ME Central 2.
+- ME_WEST1 - GCP region is ME West 1.
+- NORTHAMERICA_NORTHEAST2 - GCP region is North America North East 2.
+- NORTHAMERICA_SOUTH1 - GCP region is North America South 1.
+- SOUTHAMERICA_WEST1 - GCP region is South America West 1.
+- US_EAST5 - GCP region is US East 5.
+- US_EAST7 - GCP region is US East 7.
+- US_SOUTH1 - GCP region is US South 1.
+- US_WEST8 - GCP region is US West 8.
+- AFRICA_SOUTH1 - GCP region is Africa South 1.

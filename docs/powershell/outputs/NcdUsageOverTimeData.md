@@ -1,6 +1,6 @@
 ### NcdUsageOverTimeData
 UsageOverTimeData represents capacity statistics as a data point from a
- timeseries perspective.
+timeseries perspective.
 
 - newInBytes: System.Int64
   - The amount of new data ingested.

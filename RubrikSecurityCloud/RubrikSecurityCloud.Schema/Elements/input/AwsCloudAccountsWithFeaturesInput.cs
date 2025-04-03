@@ -48,6 +48,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("featuresToFilterOut")]
         public List<CloudAccountFeature>? FeaturesToFilterOut { get; set; }
 
+        //      C# -> Operation? Operation
+        // GraphQL -> operation: Operation (enum)
+        [JsonProperty("operation")]
+        public Operation? Operation { get; set; }
+
 
         #endregion
 

@@ -39,6 +39,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public List<ReplicationPairConnectionStatus>? Status { get; set; }
 
+        //      C# -> List<ReplicationBidirectionalConnectionStatus>? BidirectionalStatus
+        // GraphQL -> bidirectionalStatus: [ReplicationBidirectionalConnectionStatus!] (enum)
+        [JsonProperty("bidirectionalStatus")]
+        public List<ReplicationBidirectionalConnectionStatus>? BidirectionalStatus { get; set; }
+
+        //      C# -> List<ReplicationPairPauseStatus>? PauseStatus
+        // GraphQL -> pauseStatus: [ReplicationPairPauseStatus!] (enum)
+        [JsonProperty("pauseStatus")]
+        public List<ReplicationPairPauseStatus>? PauseStatus { get; set; }
+
 
         #endregion
 

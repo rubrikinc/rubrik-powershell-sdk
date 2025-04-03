@@ -23,15 +23,15 @@ A workload that has a snapshot or children with anomalous activity.
   - The level of encryption detected within the snapshot.
 - anomalousChildren: list of WorkloadAnomalys
   - A list of children belonging to the workload. These children were also
- determined to have snapshots with anomalous activity.
+determined to have snapshots with anomalous activity.
 - totalChildren: System.Int64
   - The total number of children belong to the workload, regardless
- of whether or not they have snapshots containing anomalous activity.
+of whether or not they have snapshots containing anomalous activity.
 - anomalyInfo: AnomalyInfo
   - Represents the information about strains that cause anomalies.
 - previousSnapshotFid: System.String
   - The FID of the snapshot taken before the snapshot that was determined
- to have anomalous activity.
+to have anomalous activity.
 - anomalyType: AnomalyType
   - Type of the anomaly detected.
 - detectionTime: DateTime

@@ -38,3 +38,5 @@ Type of objects managed by SLA Domains.
 - M365_BACKUP_STORAGE_OBJECT_TYPE - Microsoft 365 Backup Storage object.
 - MYSQLDB_OBJECT_TYPE - MySQL object.
 - D365_OBJECT_TYPE - D365 Object.
+- NCD_OBJECT_TYPE - NAS Cloud Direct object.
+- AWS_DYNAMODB_OBJECT_TYPE - AWS DynamoDB object.

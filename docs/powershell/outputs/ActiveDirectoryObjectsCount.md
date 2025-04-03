@@ -15,3 +15,7 @@ Count of different type of Active Directory objects in the snapshot.
   - Count of containers in the snapshot.
 - gpos: System.Int64
   - Count of group policies in the snapshot.
+- managedServiceAccounts: System.Int64
+  - Count of managed service accounts in the snapshot.
+- groupManagedServiceAccounts: System.Int64
+  - Count of group managed service accounts in the snapshot.

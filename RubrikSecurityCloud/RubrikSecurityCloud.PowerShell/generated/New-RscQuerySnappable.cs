@@ -713,6 +713,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// 	# OPTIONAL
+    /// 	filePath = $someString
+    /// 	# OPTIONAL
+    /// 	parentWorkloadId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1039,6 +1045,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// 	# OPTIONAL
+    /// 	filePath = $someString
+    /// 	# OPTIONAL
+    /// 	parentWorkloadId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1919,6 +1931,12 @@ $query.Var.onedriveSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	objectId = $someString
+	# OPTIONAL
+	filePath = $someString
+	# OPTIONAL
+	parentWorkloadId = $someString
 }"
             );
         }
@@ -2265,6 +2283,12 @@ $query.Var.teamsDriveSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	objectId = $someString
+	# OPTIONAL
+	filePath = $someString
+	# OPTIONAL
+	parentWorkloadId = $someString
 }"
             );
         }

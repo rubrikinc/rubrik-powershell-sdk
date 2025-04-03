@@ -1,11 +1,11 @@
 ### DataGovObjectType
 TODO: SPARK-150447 - Deprecate this enum to use managed object type
- Filters objects by object type.
- Note: All the object types, except CDM, are granular object types.
+Filters objects by object type.
+Note: All the object types, except CDM, are granular object types.
 
 - OBJECT_TYPE_UNSPECIFIED - Unknown object type.
 - CDM - Represents all the object types that belong to CDM. This is the default
- value and is added for maintaining backward compatability.
+value and is added for maintaining backward compatability.
 - O365_ONEDRIVE - Represents O365 OneDrive objects.
 - O365_SHAREPOINT_DRIVE - Represents O365 SharePoint Drive objects.
 - VSPHERE_VIRTUAL_MACHINE - Represents vSphere Virtual Machine objects.
@@ -60,3 +60,4 @@ TODO: SPARK-150447 - Deprecate this enum to use managed object type
 - ORACLE_DATABASE - Represents Oracle Database.
 - ORACLE_ROOT - Represents Oracle Root.
 - ORACLE_DATA_GUARD_GROUP - Represents Oracle Data Guard Group
+- K8S_VIRTUAL_MACHINE - Represents Kubernetes Virtual Machine.

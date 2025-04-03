@@ -332,6 +332,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	toTime = $someDateTime
     /// 	# OPTIONAL
     /// 	isArchived = $someBoolean
+    /// 	# OPTIONAL
+    /// 	startBeforeTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	endAfterTime = $someDateTime
     /// }
     /// 
     /// # Execute the query
@@ -852,6 +856,10 @@ $query.Var.filter = @{
 	toTime = $someDateTime
 	# OPTIONAL
 	isArchived = $someBoolean
+	# OPTIONAL
+	startBeforeTime = $someDateTime
+	# OPTIONAL
+	endAfterTime = $someDateTime
 }"
             );
         }

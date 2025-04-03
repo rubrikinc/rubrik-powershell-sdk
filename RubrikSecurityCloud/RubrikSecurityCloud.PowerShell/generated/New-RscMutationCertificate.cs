@@ -359,9 +359,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	certificateId = $someInt
-    /// 	# REQUIRED
     /// 	certificateType = $someSsoCertificateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SsoCertificateType]) for enum values.
+    /// 	# REQUIRED
+    /// 	certificateId = $someInt
+    /// 	# OPTIONAL
+    /// 	certificateFid = $someString
+    /// 	# OPTIONAL
+    /// 	useDefaultCert = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -968,9 +972,13 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	certificateId = $someInt
-	# REQUIRED
 	certificateType = $someSsoCertificateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SsoCertificateType]) for enum values.
+	# REQUIRED
+	certificateId = $someInt
+	# OPTIONAL
+	certificateFid = $someString
+	# OPTIONAL
+	useDefaultCert = $someBoolean
 }"
             );
         }

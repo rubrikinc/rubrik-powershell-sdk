@@ -164,7 +164,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MongodbDatabasePhysicalChildType> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 InterfaceHelper
@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<MongodbDatabasePhysicalChildType> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

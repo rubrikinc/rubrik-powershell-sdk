@@ -32,5 +32,6 @@ Cloud account features.
 - CYBERRECOVERY_DATA_CLASSIFICATION_METADATA - Cloud account feature is Cyber Recovery Data Classification Metadata.
 - CYBERRECOVERY_DATA_CLASSIFICATION_DATA - Cloud account feature is Cyber Recovery Data Classification Data.
 - OUTPOST - Cloud account feature is Rubrik Outpost.
+- CLOUD_NATIVE_DYNAMODB_PROTECTION - Cloud account feature is Cloud Native DynamoDB Protection.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

@@ -52,6 +52,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("skipResourceDeletion")]
         public System.Boolean? SkipResourceDeletion { get; set; }
 
+        //      C# -> List<System.String>? ProjectIds
+        // GraphQL -> projectIds: [UUID!] (scalar)
+        [JsonProperty("projectIds")]
+        public List<System.String>? ProjectIds { get; set; }
+
+        //      C# -> List<CloudAccountFeature>? Features
+        // GraphQL -> features: [CloudAccountFeature!] (enum)
+        [JsonProperty("features")]
+        public List<CloudAccountFeature>? Features { get; set; }
+
 
         #endregion
 

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? DataCategoryName
+        // GraphQL -> dataCategoryName: String! (scalar)
+        [JsonProperty("dataCategoryName")]
+        public System.String? DataCategoryName { get; set; }
+
         //      C# -> DataCategoryHits? DataCategoryHits
         // GraphQL -> dataCategoryHits: DataCategoryHits (type)
         [JsonProperty("dataCategoryHits")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public DataCategoryResult Set(
+        System.String? DataCategoryName = null,
         DataCategoryHits? DataCategoryHits = null,
         List<DataTypeHits>? DataTypeHits = null
     ) 
     {
+        if ( DataCategoryName != null ) {
+            this.DataCategoryName = DataCategoryName;
+        }
         if ( DataCategoryHits != null ) {
             this.DataCategoryHits = DataCategoryHits;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? DataCategoryName
+        // GraphQL -> dataCategoryName: String! (scalar)
+        if (this.DataCategoryName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dataCategoryName\n" ;
+            } else {
+                s += ind + "dataCategoryName\n" ;
+            }
+        }
         //      C# -> DataCategoryHits? DataCategoryHits
         // GraphQL -> dataCategoryHits: DataCategoryHits (type)
         if (this.DataCategoryHits != null) {
@@ -93,8 +111,25 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? DataCategoryName
+        // GraphQL -> dataCategoryName: String! (scalar)
+        if (ec.Includes("dataCategoryName",true))
+        {
+            if(this.DataCategoryName == null) {
+
+                this.DataCategoryName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DataCategoryName != null && ec.Excludes("dataCategoryName",true))
+        {
+            this.DataCategoryName = null;
+        }
         //      C# -> DataCategoryHits? DataCategoryHits
         // GraphQL -> dataCategoryHits: DataCategoryHits (type)
         if (ec.Includes("dataCategoryHits",false))
@@ -178,7 +213,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DataCategoryResult> list, 
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DataCategoryResult());
@@ -188,7 +223,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<DataCategoryResult> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 

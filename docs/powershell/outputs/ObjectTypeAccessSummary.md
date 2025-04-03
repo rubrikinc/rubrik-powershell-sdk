@@ -15,4 +15,4 @@ Object type access summary.
   - Store the account id here in case the grouping is based on the account.
 - platform: Platform
   - Store the platform to determine the icon when the grouping is
- account-based.
+account-based.

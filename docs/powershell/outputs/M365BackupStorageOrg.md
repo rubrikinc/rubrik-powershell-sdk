@@ -55,6 +55,8 @@ Microsoft 365 Backup Storage Organization.
   - Security posture metadata.
 - workloadSummary: list of O365WorkloadSummarys
   - Summary of workload by type.
+- groupsSummary: O365GroupsSummary
+  - Summary of Microsoft groups count.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - rscNativeObjectPendingSla: CompactSlaDomain

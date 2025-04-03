@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FileTypeEnumType
     {
+        [EnumMember(Value = "ANOMALY_DETAILS_CSV")]
+        ANOMALY_DETAILS_CSV,
+
         [EnumMember(Value = "CDM_API_METRICS_CSV")]
         CDM_API_METRICS_CSV,
 
@@ -23,6 +26,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SAAS_APPS")]
         SAAS_APPS,
+
+        [EnumMember(Value = "THREAT_HUNT_RESULT_CSV")]
+        THREAT_HUNT_RESULT_CSV,
 
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN

@@ -1,6 +1,6 @@
 ### CreateIntegrationsInput
 Holds the input to a batch create integrations
- request.
+request.
 
 - integrations: list of CreateIntegrationInputs
   - The integrations.

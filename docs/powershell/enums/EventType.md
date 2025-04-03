@@ -62,4 +62,5 @@ Enum representing all the possible event types.
 - USER_INTELLIGENCE - User intelligence event type.
 - PROTECTED_OBJECT_DELETION - Protected object deletion event type.
 - SECURITY_VIOLATION - SECURITY_VIOLATION captures life cycle of security violations raised
- by PolicyEngine component.
+by PolicyEngine component.
+- SEEDING - Sandbox seeding event type.
