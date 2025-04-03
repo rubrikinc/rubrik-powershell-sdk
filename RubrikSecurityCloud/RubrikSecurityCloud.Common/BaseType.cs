@@ -95,7 +95,7 @@ namespace RubrikSecurityCloud.Types
         }
 
 
-        public abstract void ApplyExploratoryFieldSpec(ExplorationContext ec);
+        public abstract void ApplyExploratoryFieldSpec(AutofieldContext ec);
         
         // Note: "SelectForRetrieval" could take for parmeter a HashSet<string>
         // to pass in what fields are to be selected for retrieval,
@@ -106,7 +106,7 @@ namespace RubrikSecurityCloud.Types
             // Note: this method will need to be overridden when
             // we implement native simple types with Rsc Types.
             // e.g. for RscString: this = "FETCH"
-            this.ApplyExploratoryFieldSpec(new ExplorationContext());
+            this.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
 
         public void UnselectFromRetrieval()
@@ -182,7 +182,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BaseType> list,
-            ExplorationContext ec)
+            AutofieldContext ec)
         {
             foreach (BaseType item in list)
             {
@@ -192,7 +192,7 @@ namespace RubrikSecurityCloud.Types
 
         public static void SelectForRetrieval(this List<BaseType> list)
         {
-            list.ApplyExploratoryFieldSpec(new ExplorationContext());
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }
     }
 
