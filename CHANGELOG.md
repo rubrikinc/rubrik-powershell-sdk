@@ -2,11 +2,14 @@
 
 ## Version TBD
 
-New Features:
+Schema Update:
+
+See [API Changelog](https://rubrikinc.github.io/rubrik-api-documentation/changelog/changes/)
+for API additions, deprecations and breaking changes.
 
 Fixes:
 
-Breaking Changes:
+- Bugfix in StartRscManagedVolume and StopRscManagedVolume
 
 ## Version 1.12.5
 
