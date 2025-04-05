@@ -43,6 +43,13 @@ Write-Host "Importing module from file $ModuleFilePath"
 Import-Module $ModuleFilePath -ErrorAction Stop
 #Generate markdown from Module Binary
 Write-Output("Writing cmdlet help markdown files, this could take a while. Please wait...")
+
+# We delete the tmp_help directory if it exists to ensure no stale files
+# from previous runs are present.
+if (Test-Path -Path ./tmp_help) {
+    Write-Output("Removing existing tmp_help directory...")
+    Remove-Item -Recurse -Force -Path ./tmp_help
+}
 $null = New-MarkdownHelp -Module $ModuleName -OutputFolder ./tmp_help/
 
 if (!$IncludeFunctions){
