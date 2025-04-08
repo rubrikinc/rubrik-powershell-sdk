@@ -19,6 +19,20 @@ Fixes:
 
 - Bugfix in StartRscManagedVolume and StopRscManagedVolume
 
+Breaking Changes:
+
+- Up to 1.12.5, when creating an empty Query object with `-FieldProfile EMPTY`, the object
+  was automatically populated with minimum fields (with the AutoField feature), since
+  an empty query is invalid. Starting in 1.12.6, we changed the rationale with empty
+  Query objects: when you now create an empty Query object with `-FieldProfile EMPTY`,
+  the object does contain an empty query. It is then up to the user to populate the
+  fields manually in that query. We believe it is a better model. However, it implies
+  that anybody who had scripts purposely creating an empty Query object (expecting
+  AutoField to give them some field specification) and sending it as-is to the API
+  server, will now break. Note though that it is a very peculiar scenario: if you
+  wanted to created an auto-filled object, you'd give `-FieldProfile DEFAULT`, 
+  or rather, not specify any field profile since it defaults to `DEFAULT`. 
+
 ## Version 1.12.5
 
 Schema Update:
