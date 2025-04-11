@@ -12,6 +12,13 @@ Fixes:
 Get-RscMssqlDatabase -Name "example" -Relic:$false -Replica:$false | Get-RscSnapshot
 ```
 
+- Protect-RscWorkload now works with MSSQL databases. MSSQL database protection is tied to the DAG ID, not the ID of the object.
+
+```
+# Assign "example" database to the Bronze SLA
+Get-RscMssqlDatabase -Name "example" -Relic:$false -Replica:$false | Protect-RscWorkload -Sla (Get-RscSla Bronze)
+```
+
 Breaking Changes:
 
 ## Version 1.12.6
