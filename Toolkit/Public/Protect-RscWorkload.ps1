@@ -36,30 +36,30 @@ function Protect-RscWorkload
   [CmdletBinding()]
   Param(
     # Id of a Workload to be assigned
-    [Parameter(ValueFromPipelineByPropertyName=$true)]
+    [Parameter()]
     [String]$Id,
 
     # Input object that accepts an array of objects for bulk assignment
-    [Parameter()]
+    [Parameter(ValueFromPipeline=$true)]
     $InputObject,
 
     # RSC Sla Object
     [Parameter()]
     [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla,
 
-    # RSC Sla Object
+    # RSC Assignment Type
     [Parameter()]
     [RubrikSecurityCloud.Types.SlaAssignTypeEnum]$AssignmentType = [RubrikSecurityCloud.Types.SlaAssignTypeEnum]::PROTECT_WITH_SLA_ID,
   
-    # RSC Sla Object
+    # RSC Apply to existing snapshots
     [Parameter()]
     [Switch]$ShouldApplyToExistingSnapshots,
 
-    # RSC Sla Object
+    # RSC Apply to non-policy snapshots
     [Parameter()]
     [Switch]$ShouldApplyToNonPolicySnapshots,
 
-    # RSC Sla Object
+    # RSC Snapshot retention setting
     [Parameter()]
     [RubrikSecurityCloud.Types.GlobalExistingSnapshotRetention]$ExistingSnapshotAction
   )
@@ -74,7 +74,12 @@ function Protect-RscWorkload
           $query.Var.Input.ObjectIds = @($Id)
         }
         elseif ($InputObject) {
-          $query.Var.Input.ObjectIds = $InputObject.id
+          if ($InputObject -is [RubrikSecurityCloud.Types.MssqlDatabase]) {
+            $query.Var.Input.ObjectIds = @($InputObject.dagId)
+          }
+          else {
+            $query.Var.Input.ObjectIds = $InputObject.id
+          }
         }
 
         if ($Sla) {

@@ -185,13 +185,23 @@ function Get-RscSnapshot {
         else {
             $query = New-RscQuery -GqlQuery snapshotOfASnappableConnection
 
-            # This is for pipeline support from Get-RscWorkload. 
+            # This is for pipeline support from Get-RscWorkload.
             # Most objects in the API return .id with the RSC FID, but Get-RscWorkload(snappableConnection) returns .fid for the RSC FID, and .id is the CDM ID.
-            if ($InputObject.fid) {
+            # Additionally, we need to check for MSSQL databases, because database snapshots are tied to the DAG ID, not the MSSQL Object ID.
+            if ($InputObject -is [RubrikSecurityCloud.Types.Snappable]) {
+                if ($InputObject.objectType -eq [RubrikSecurityCloud.Types.ObjectTypeEnum]::MSSQL) {
+                    Write-Error "MSSQL snapshots cannot be retrieved using Get-RscWorkload. Please use Get-RscMssqlDatabase."
+                    return
+                }
                 $query.var.workloadId = $InputObject.fid
             }
             else {
                 $query.var.workloadId = $InputObject.id
+            }
+
+            # MSSQL database snapshots are tied to the dag ID, not the object ID (fid).
+            if ($InputObject -is [RubrikSecurityCloud.Types.MssqlDatabase]) {
+                $query.var.workloadId = $inputObject.dagId
             }
 
             if ($PSBoundParameters.ContainsKey('latest')) {
