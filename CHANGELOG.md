@@ -5,6 +5,12 @@
 New Features:
 
 Fixes:
+- Get-RscSnapshot now retrieves snapshots for MSSQL databases. MSSQL database snapshots are tied to the DAG ID, not the ID of the object. Pipeline support now works with Get-RscMssqlDatabase:
+
+```
+# Retrieve all snapshots for "example" database
+Get-RscMssqlDatabase -Name "example" -Relic:$false -Replica:$false | Get-RscSnapshot
+```
 
 Breaking Changes:
 
