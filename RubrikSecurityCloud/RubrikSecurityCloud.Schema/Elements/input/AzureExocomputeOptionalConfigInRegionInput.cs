@@ -34,6 +34,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("additionalWhitelistIps")]
         public List<System.String>? AdditionalWhitelistIps { get; set; }
 
+        //      C# -> System.Boolean? EnableUserDefinedRouting
+        // GraphQL -> enableUserDefinedRouting: Boolean (scalar)
+        [JsonProperty("enableUserDefinedRouting")]
+        public System.Boolean? EnableUserDefinedRouting { get; set; }
+
+        //      C# -> System.Boolean? ShouldWhitelistRubrikIps
+        // GraphQL -> shouldWhitelistRubrikIps: Boolean (scalar)
+        [JsonProperty("shouldWhitelistRubrikIps")]
+        public System.Boolean? ShouldWhitelistRubrikIps { get; set; }
+
         //      C# -> AksProvisionTier? AksClusterTier
         // GraphQL -> aksClusterTier: AKSProvisionTier (enum)
         [JsonProperty("aksClusterTier")]
@@ -43,20 +53,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> aksNodeCountBucket: AKSNodeCountBucket (enum)
         [JsonProperty("aksNodeCountBucket")]
         public AksNodeCountBucket? AksNodeCountBucket { get; set; }
-
-        //      C# -> System.Boolean? ShouldWhitelistRubrikIps
-        // GraphQL -> shouldWhitelistRubrikIps: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("shouldWhitelistRubrikIps")]
-        public System.Boolean? ShouldWhitelistRubrikIps { get; set; }
-
-        //      C# -> System.Boolean? EnableUserDefinedRouting
-        // GraphQL -> enableUserDefinedRouting: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("enableUserDefinedRouting")]
-        public System.Boolean? EnableUserDefinedRouting { get; set; }
 
 
         #endregion

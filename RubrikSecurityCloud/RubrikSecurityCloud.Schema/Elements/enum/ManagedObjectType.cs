@@ -363,11 +363,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OPENSTACK_AVAILABILITY_ZONE")]
         OPENSTACK_AVAILABILITY_ZONE,
 
+        [EnumMember(Value = "OPENSTACK_DOMAIN")]
+        OPENSTACK_DOMAIN,
+
         [EnumMember(Value = "OPENSTACK_ENVIRONMENT")]
         OPENSTACK_ENVIRONMENT,
 
         [EnumMember(Value = "OPENSTACK_HOST")]
         OPENSTACK_HOST,
+
+        [EnumMember(Value = "OPENSTACK_PROJECT")]
+        OPENSTACK_PROJECT,
 
         [EnumMember(Value = "OPENSTACK_REGION")]
         OPENSTACK_REGION,
@@ -398,6 +404,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RECOVERY_PLAN")]
         RECOVERY_PLAN,
+
+        [EnumMember(Value = "ROOT")]
+        ROOT,
 
         [EnumMember(Value = "SALESFORCE_FIXED_OBJECT")]
         SALESFORCE_FIXED_OBJECT,

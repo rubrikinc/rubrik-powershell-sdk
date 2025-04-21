@@ -25,3 +25,5 @@
 - exposureFilter: list of OpenAccessTypes
   - List to exposure types to filter the paths.
 - fileType: FileCountType
+- documentTypesFilter: list of System.Strings
+  - List of document type IDs to filter the paths.

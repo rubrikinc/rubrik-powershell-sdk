@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         POLICY_INCLUDES,
 
         [EnumMember(Value = "ROLE_ASSIGNMENT")]
-        ROLE_ASSIGNMENT
+        ROLE_ASSIGNMENT,
+
+        [EnumMember(Value = "SCOPE_ROLE_ASSIGNMENT")]
+        SCOPE_ROLE_ASSIGNMENT
 
 
     } // enum AzureAdRelationshipEnumType

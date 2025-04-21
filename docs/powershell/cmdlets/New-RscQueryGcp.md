@@ -34,6 +34,11 @@ Returns the service account corresponding to global credentials. Return empty st
 
 - The getdefaultcredentialsserviceaccount subcommand takes no arguments.
 - Returns System.String.
+### latestpermissionsbypermissionsgroup
+Details of all the supported permission groups for the specified features.
+
+- There is a single argument of type list of CloudAccountFeatures.
+- Returns list of GcpFeatureWithPermissionGroupss.
 ### nativeavailablekmscryptokeys
 List of GCP KMS Crypto keys accessible in the provided region.
 

@@ -21,6 +21,16 @@ Details of the Azure AD directory object.
   - Applications count from the latest snapshot.
 - latestServicePrincipalsCount: System.Int32
   - Service principals count from the latest snapshot.
+- latestConditionalAccessPoliciesCount: System.Int32
+  - Conditional access policies count from the latest snapshot.
+- latestNamedLocationsCount: System.Int32
+  - Named Locations count from the latest snapshot.
+- latestTermsOfUseCount: System.Int32
+  - Terms of Use count from the latest snapshot.
+- latestAuthenticationContextsCount: System.Int32
+  - Authentication Contexts count from the latest snapshot.
+- latestAuthenticationStrengthsCount: System.Int32
+  - Authentication Strengths count from the latest snapshot.
 - isProvisioned: System.Boolean
   - Specifies whether the infrastructure has been provisioned to enable protection for this Azure AD.
 - latestSnapshotTime: DateTime

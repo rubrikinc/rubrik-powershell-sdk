@@ -117,6 +117,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RDS_PROTECTION")]
         RDS_PROTECTION,
 
+        [EnumMember(Value = "ROLE_CHAINING")]
+        ROLE_CHAINING,
+
         [EnumMember(Value = "SERVERS_AND_APPS")]
         SERVERS_AND_APPS
 

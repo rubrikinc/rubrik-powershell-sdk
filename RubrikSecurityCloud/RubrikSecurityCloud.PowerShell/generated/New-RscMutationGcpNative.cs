@@ -205,6 +205,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	targetGcpProjectRubrikId = $someString
     /// 	# OPTIONAL
     /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -275,6 +277,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	targetGcpProjectRubrikId = $someString
     /// 	# OPTIONAL
     /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -347,6 +351,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	shouldStartRestoredInstance = $someBoolean
     /// 	# OPTIONAL
     /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -596,6 +602,8 @@ $query.Var.input = @{
 	targetGcpProjectRubrikId = $someString
 	# OPTIONAL
 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
+	# OPTIONAL
+	archivedSnapshotId = $someString
 }"
             );
         }
@@ -658,6 +666,8 @@ $query.Var.input = @{
 	targetGcpProjectRubrikId = $someString
 	# OPTIONAL
 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
+	# OPTIONAL
+	archivedSnapshotId = $someString
 }"
             );
         }
@@ -714,6 +724,8 @@ $query.Var.input = @{
 	shouldStartRestoredInstance = $someBoolean
 	# OPTIONAL
 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
+	# OPTIONAL
+	archivedSnapshotId = $someString
 }"
             );
         }

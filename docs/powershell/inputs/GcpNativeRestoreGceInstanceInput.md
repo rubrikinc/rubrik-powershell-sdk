@@ -11,3 +11,5 @@ Input required to restore a GCP GCE instance snapshot.
   - Specfies whether the the restored instance should be started or not.
 - snapshotType: GcpSnapshotType
   - The type of the snapshot to recover from.
+- archivedSnapshotId: System.String
+  - The archived snapshot ID from which the recovery should happen.

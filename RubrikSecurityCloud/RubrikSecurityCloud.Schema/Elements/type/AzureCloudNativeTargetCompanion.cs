@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudNativeLocTemplateType")]
         public CloudNativeLocTemplateType? CloudNativeLocTemplateType { get; set; }
 
+        //      C# -> AzureStorageAccountNetworkAccess? NetworkAccessType
+        // GraphQL -> networkAccessType: AzureStorageAccountNetworkAccess! (enum)
+        [JsonProperty("networkAccessType")]
+        public AzureStorageAccountNetworkAccess? NetworkAccessType { get; set; }
+
         //      C# -> AzureRedundancy? Redundancy
         // GraphQL -> redundancy: AzureRedundancy! (enum)
         [JsonProperty("redundancy")]
@@ -66,6 +71,7 @@ namespace RubrikSecurityCloud.Types
 
     public AzureCloudNativeTargetCompanion Set(
         CloudNativeLocTemplateType? CloudNativeLocTemplateType = null,
+        AzureStorageAccountNetworkAccess? NetworkAccessType = null,
         AzureRedundancy? Redundancy = null,
         AzureRegion? StorageAccountRegion = null,
         AzureStorageTier? StorageTier = null,
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( CloudNativeLocTemplateType != null ) {
             this.CloudNativeLocTemplateType = CloudNativeLocTemplateType;
+        }
+        if ( NetworkAccessType != null ) {
+            this.NetworkAccessType = NetworkAccessType;
         }
         if ( Redundancy != null ) {
             this.Redundancy = Redundancy;
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cloudNativeLocTemplateType\n" ;
             } else {
                 s += ind + "cloudNativeLocTemplateType\n" ;
+            }
+        }
+        //      C# -> AzureStorageAccountNetworkAccess? NetworkAccessType
+        // GraphQL -> networkAccessType: AzureStorageAccountNetworkAccess! (enum)
+        if (this.NetworkAccessType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "networkAccessType\n" ;
+            } else {
+                s += ind + "networkAccessType\n" ;
             }
         }
         //      C# -> AzureRedundancy? Redundancy
@@ -201,6 +219,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudNativeLocTemplateType != null && ec.Excludes("cloudNativeLocTemplateType",true))
         {
             this.CloudNativeLocTemplateType = null;
+        }
+        //      C# -> AzureStorageAccountNetworkAccess? NetworkAccessType
+        // GraphQL -> networkAccessType: AzureStorageAccountNetworkAccess! (enum)
+        if (ec.Includes("networkAccessType",true))
+        {
+            if(this.NetworkAccessType == null) {
+
+                this.NetworkAccessType = new AzureStorageAccountNetworkAccess();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkAccessType != null && ec.Excludes("networkAccessType",true))
+        {
+            this.NetworkAccessType = null;
         }
         //      C# -> AzureRedundancy? Redundancy
         // GraphQL -> redundancy: AzureRedundancy! (enum)

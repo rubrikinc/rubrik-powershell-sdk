@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("activitySeriesId")]
         public System.String? ActivitySeriesId { get; set; }
 
+        //      C# -> System.Int32? AttemptNumber
+        // GraphQL -> attemptNumber: Int (scalar)
+        [JsonProperty("attemptNumber")]
+        public System.Int32? AttemptNumber { get; set; }
+
         //      C# -> System.String? CauseErrorCode
         // GraphQL -> causeErrorCode: String (scalar)
         [JsonProperty("causeErrorCode")]
@@ -105,10 +110,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isCancelable")]
         public System.Boolean? IsCancelable { get; set; }
 
+        //      C# -> System.Boolean? IsOnDemand
+        // GraphQL -> isOnDemand: Boolean (scalar)
+        [JsonProperty("isOnDemand")]
+        public System.Boolean? IsOnDemand { get; set; }
+
         //      C# -> System.Boolean? IsPolarisEventSeries
         // GraphQL -> isPolarisEventSeries: Boolean! (scalar)
         [JsonProperty("isPolarisEventSeries")]
         public System.Boolean? IsPolarisEventSeries { get; set; }
+
+        //      C# -> System.Boolean? IsTransactionLogEventSeries
+        // GraphQL -> isTransactionLogEventSeries: Boolean (scalar)
+        [JsonProperty("isTransactionLogEventSeries")]
+        public System.Boolean? IsTransactionLogEventSeries { get; set; }
 
         //      C# -> System.String? LastActivityMessage
         // GraphQL -> lastActivityMessage: String (scalar)
@@ -227,6 +242,7 @@ namespace RubrikSecurityCloud.Types
         ActivityObjectTypeEnum? ObjectType = null,
         ActivitySeverityEnum? Severity = null,
         System.String? ActivitySeriesId = null,
+        System.Int32? AttemptNumber = null,
         System.String? CauseErrorCode = null,
         System.String? CauseErrorMessage = null,
         System.String? CauseErrorReason = null,
@@ -239,7 +255,9 @@ namespace RubrikSecurityCloud.Types
         System.String? Fid = null,
         System.Int64? Id = null,
         System.Boolean? IsCancelable = null,
+        System.Boolean? IsOnDemand = null,
         System.Boolean? IsPolarisEventSeries = null,
+        System.Boolean? IsTransactionLogEventSeries = null,
         System.String? LastActivityMessage = null,
         DateTime? LastEventAddedAt = null,
         DateTime? LastUpdated = null,
@@ -272,6 +290,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ActivitySeriesId != null ) {
             this.ActivitySeriesId = ActivitySeriesId;
+        }
+        if ( AttemptNumber != null ) {
+            this.AttemptNumber = AttemptNumber;
         }
         if ( CauseErrorCode != null ) {
             this.CauseErrorCode = CauseErrorCode;
@@ -309,8 +330,14 @@ namespace RubrikSecurityCloud.Types
         if ( IsCancelable != null ) {
             this.IsCancelable = IsCancelable;
         }
+        if ( IsOnDemand != null ) {
+            this.IsOnDemand = IsOnDemand;
+        }
         if ( IsPolarisEventSeries != null ) {
             this.IsPolarisEventSeries = IsPolarisEventSeries;
+        }
+        if ( IsTransactionLogEventSeries != null ) {
+            this.IsTransactionLogEventSeries = IsTransactionLogEventSeries;
         }
         if ( LastActivityMessage != null ) {
             this.LastActivityMessage = LastActivityMessage;
@@ -417,6 +444,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "activitySeriesId\n" ;
             } else {
                 s += ind + "activitySeriesId\n" ;
+            }
+        }
+        //      C# -> System.Int32? AttemptNumber
+        // GraphQL -> attemptNumber: Int (scalar)
+        if (this.AttemptNumber != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "attemptNumber\n" ;
+            } else {
+                s += ind + "attemptNumber\n" ;
             }
         }
         //      C# -> System.String? CauseErrorCode
@@ -527,6 +563,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isCancelable\n" ;
             }
         }
+        //      C# -> System.Boolean? IsOnDemand
+        // GraphQL -> isOnDemand: Boolean (scalar)
+        if (this.IsOnDemand != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isOnDemand\n" ;
+            } else {
+                s += ind + "isOnDemand\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsPolarisEventSeries
         // GraphQL -> isPolarisEventSeries: Boolean! (scalar)
         if (this.IsPolarisEventSeries != null) {
@@ -534,6 +579,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isPolarisEventSeries\n" ;
             } else {
                 s += ind + "isPolarisEventSeries\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsTransactionLogEventSeries
+        // GraphQL -> isTransactionLogEventSeries: Boolean (scalar)
+        if (this.IsTransactionLogEventSeries != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isTransactionLogEventSeries\n" ;
+            } else {
+                s += ind + "isTransactionLogEventSeries\n" ;
             }
         }
         //      C# -> System.String? LastActivityMessage
@@ -781,6 +835,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ActivitySeriesId = null;
         }
+        //      C# -> System.Int32? AttemptNumber
+        // GraphQL -> attemptNumber: Int (scalar)
+        if (ec.Includes("attemptNumber",true))
+        {
+            if(this.AttemptNumber == null) {
+
+                this.AttemptNumber = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AttemptNumber != null && ec.Excludes("attemptNumber",true))
+        {
+            this.AttemptNumber = null;
+        }
         //      C# -> System.String? CauseErrorCode
         // GraphQL -> causeErrorCode: String (scalar)
         if (ec.Includes("causeErrorCode",true))
@@ -985,6 +1056,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsCancelable = null;
         }
+        //      C# -> System.Boolean? IsOnDemand
+        // GraphQL -> isOnDemand: Boolean (scalar)
+        if (ec.Includes("isOnDemand",true))
+        {
+            if(this.IsOnDemand == null) {
+
+                this.IsOnDemand = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsOnDemand != null && ec.Excludes("isOnDemand",true))
+        {
+            this.IsOnDemand = null;
+        }
         //      C# -> System.Boolean? IsPolarisEventSeries
         // GraphQL -> isPolarisEventSeries: Boolean! (scalar)
         if (ec.Includes("isPolarisEventSeries",true))
@@ -1001,6 +1089,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsPolarisEventSeries != null && ec.Excludes("isPolarisEventSeries",true))
         {
             this.IsPolarisEventSeries = null;
+        }
+        //      C# -> System.Boolean? IsTransactionLogEventSeries
+        // GraphQL -> isTransactionLogEventSeries: Boolean (scalar)
+        if (ec.Includes("isTransactionLogEventSeries",true))
+        {
+            if(this.IsTransactionLogEventSeries == null) {
+
+                this.IsTransactionLogEventSeries = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTransactionLogEventSeries != null && ec.Excludes("isTransactionLogEventSeries",true))
+        {
+            this.IsTransactionLogEventSeries = null;
         }
         //      C# -> System.String? LastActivityMessage
         // GraphQL -> lastActivityMessage: String (scalar)

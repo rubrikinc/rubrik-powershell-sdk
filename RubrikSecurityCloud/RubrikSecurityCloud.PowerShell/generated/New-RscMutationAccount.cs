@@ -108,6 +108,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
+    /// 	replicationOnlyClusters = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
     /// 	existingUsers = @(
     /// 		@{
     /// 			# REQUIRED
@@ -622,6 +626,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
+    /// 	replicationOnlyClusters = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
     /// 	existingUsers = @(
     /// 		@{
     /// 			# REQUIRED
@@ -1027,6 +1035,10 @@ $query.Var.input = @{
 	isEnvoyRequired = $someBoolean
 	# REQUIRED
 	allowedClusters = @(
+		$someString
+	)
+	# OPTIONAL
+	replicationOnlyClusters = @(
 		$someString
 	)
 	# OPTIONAL
@@ -1466,6 +1478,10 @@ $query.Var.input = @{
 	isEnvoyRequired = $someBoolean
 	# REQUIRED
 	allowedClusters = @(
+		$someString
+	)
+	# OPTIONAL
+	replicationOnlyClusters = @(
 		$someString
 	)
 	# OPTIONAL

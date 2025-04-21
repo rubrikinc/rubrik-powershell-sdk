@@ -1,6 +1,7 @@
 ### AzureNativeRegion
 Azure native regions.
 
+- BRAZIL_SOUTHEAST - Azure native region is Brazil Southeast.
 - WEST_INDIA - Azure native region is West India.
 - NORWAY_EAST - Azure native region is Norway East.
 - CHINA_EAST2 - Azure native region is China East 2.
@@ -52,6 +53,7 @@ Azure native regions.
 - UK_WEST - Azure native region is UK West.
 - EAST_US2 - Azure native region is East US 2.
 - WEST_US2 - Azure native region is West US 2.
+- SWEDEN_SOUTH - Azure native region is Sweden South.
 - CHINA_NORTH2 - Azure native region is China North 2.
 - KOREA_CENTRAL - Azure native region is Korea Central.
 - US_GOV_VIRGINIA - Azure native region is US Gov Virginia.

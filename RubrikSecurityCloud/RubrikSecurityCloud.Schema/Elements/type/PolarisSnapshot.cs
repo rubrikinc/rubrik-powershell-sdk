@@ -81,6 +81,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("indexingAttempts")]
         public System.Int64? IndexingAttempts { get; set; }
 
+        //      C# -> System.Boolean? IsAnomaly
+        // GraphQL -> isAnomaly: Boolean! (scalar)
+        [JsonProperty("isAnomaly")]
+        public System.Boolean? IsAnomaly { get; set; }
+
         //      C# -> System.Boolean? IsArchivalCopy
         // GraphQL -> isArchivalCopy: Boolean (scalar)
         [JsonProperty("isArchivalCopy")]
@@ -213,6 +218,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         DateTime? IndexTime = null,
         System.Int64? IndexingAttempts = null,
+        System.Boolean? IsAnomaly = null,
         System.Boolean? IsArchivalCopy = null,
         System.Boolean? IsArchived = null,
         System.Boolean? IsCorrupted = null,
@@ -272,6 +278,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IndexingAttempts != null ) {
             this.IndexingAttempts = IndexingAttempts;
+        }
+        if ( IsAnomaly != null ) {
+            this.IsAnomaly = IsAnomaly;
         }
         if ( IsArchivalCopy != null ) {
             this.IsArchivalCopy = IsArchivalCopy;
@@ -467,6 +476,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "indexingAttempts\n" ;
             } else {
                 s += ind + "indexingAttempts\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAnomaly
+        // GraphQL -> isAnomaly: Boolean! (scalar)
+        if (this.IsAnomaly != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAnomaly\n" ;
+            } else {
+                s += ind + "isAnomaly\n" ;
             }
         }
         //      C# -> System.Boolean? IsArchivalCopy
@@ -903,6 +921,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IndexingAttempts != null && ec.Excludes("indexingAttempts",true))
         {
             this.IndexingAttempts = null;
+        }
+        //      C# -> System.Boolean? IsAnomaly
+        // GraphQL -> isAnomaly: Boolean! (scalar)
+        if (ec.Includes("isAnomaly",true))
+        {
+            if(this.IsAnomaly == null) {
+
+                this.IsAnomaly = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAnomaly != null && ec.Excludes("isAnomaly",true))
+        {
+            this.IsAnomaly = null;
         }
         //      C# -> System.Boolean? IsArchivalCopy
         // GraphQL -> isArchivalCopy: Boolean (scalar)

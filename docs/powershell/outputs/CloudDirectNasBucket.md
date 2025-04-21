@@ -1,0 +1,79 @@
+### CloudDirectNasBucket
+NAS Cloud Direct bucket.
+
+- clusterUuid: System.String
+  - NAS Cloud Direct cluster ID.
+- exportPath: System.String
+  - NAS Cloud Direct bucket path.
+- protocol: CloudDirectNasProtocolType
+  - NAS Cloud Direct bucket protocol.
+- systemId: System.String
+  - SystemID of the system the NAS Cloud Direct bucket belongs to.
+- namespaceId: System.String
+  - NamespaceID of the namespace (if any) to which the NAS Cloud Direct bucket belongs.
+- isArchived: System.Boolean
+  - Specifies whether the bucket is archived.
+- isHidden: System.Boolean
+  - Specifies whether the bucket is hidden.
+- isStale: System.Boolean
+  - Specifies whether the bucket is stale.
+- isRelic: System.Boolean
+  - Specifies whether the bucket is a relic.
+- cloudDirectId: System.String
+  - UUID of the NAS Cloud Direct bucket on the NCD Cluster.
+- policyName: System.String
+  - Name of the policy assigned to the NAS Cloud Direct bucket.
+- excludes: list of Excludes
+  - List of exclusions for the NAS bucket.
+- id: System.String
+  - Bucket ID.
+- cloudDirectNasSystem: CloudDirectNasSystem
+  - The NAS Cloud Direct system to which this NAS bucket belongs.
+- cloudDirectNasNamespace: CloudDirectNasNamespace
+  - The NAS Cloud Direct namespace to which this NAS bucket belongs.
+- childBuckets: CloudDirectNasBucketConnection
+  - Prefix protection entries included in this bucket.
+- parentBucket: CloudDirectNasBucket
+  - The parent of this bucket.
+- newestSnapshot: CloudDirectSnapshot
+  - The most recent snapshot of this bucket.
+- oldestSnapshot: CloudDirectSnapshot
+  - The oldest available snapshot of this bucket.
+- totalSnapshots: System.Int32
+  - The total count of snapshots for this bucket.
+- missedSnapshotGroupByConnection: CloudDirectSnapshotsGroupBySummaryConnection
+  - Groups the missed snapshots of this NAS Cloud Direct bucket.
+- cloudDirectSnapshotGroupBySummary: CloudDirectSnapshotsGroupBySummaryConnection
+  - Groups the snapshots of this NAS Cloud Direct bucket.
+- cluster: Cluster
+  - Cluster from which this workload originated.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.

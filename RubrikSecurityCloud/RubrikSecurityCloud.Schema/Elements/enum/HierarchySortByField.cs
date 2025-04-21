@@ -156,6 +156,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CDP_VM_VCENTER_LOCATION")]
         CDP_VM_VCENTER_LOCATION,
 
+        [EnumMember(Value = "DB2_INSTANCE_HOST_LIST")]
+        DB2_INSTANCE_HOST_LIST,
+
         [EnumMember(Value = "DB2_INSTANCE_ID")]
         DB2_INSTANCE_ID,
 

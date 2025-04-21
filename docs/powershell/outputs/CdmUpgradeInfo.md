@@ -5,6 +5,8 @@
   - Version of the Rubrik cluster.
 - downloadedVersion: System.String
   - Downloaded version of tarball.
+- upgradeStatusV2: UpgradeStatusV2
+  - Upgrade status for CDM Upgrade Service 2.0.
 - clusterJobStatus: ClusterJobStatusTypeEnum
   - Cluster job status.
 - stateMachineStatus: System.String

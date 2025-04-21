@@ -5,3 +5,7 @@
 - accessType: AceQualifier
 - flags: list of AceFlagss
 - resolutionType: ResolutionType
+- principalType: PrincipalRiskySummaryPrincipalType
+  - The type of the principal (user, group, etc.).
+- accessMethodDetails: DatagovAccessMethodDetailsType
+  - The details of how the principal can access the path.

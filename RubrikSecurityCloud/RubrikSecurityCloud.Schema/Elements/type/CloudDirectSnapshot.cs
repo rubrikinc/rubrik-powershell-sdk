@@ -81,6 +81,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("indexingAttempts")]
         public System.Int64? IndexingAttempts { get; set; }
 
+        //      C# -> System.Boolean? IsAnomaly
+        // GraphQL -> isAnomaly: Boolean! (scalar)
+        [JsonProperty("isAnomaly")]
+        public System.Boolean? IsAnomaly { get; set; }
+
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
         [JsonProperty("isCorrupted")]
@@ -136,10 +141,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadId")]
         public System.String? WorkloadId { get; set; }
 
-        //      C# -> CloudDirectNasShare? Share
-        // GraphQL -> share: CloudDirectNasShare! (type)
-        [JsonProperty("share")]
-        public CloudDirectNasShare? Share { get; set; }
+        //      C# -> CloudDirectNasObject? Object
+        // GraphQL -> object: CloudDirectNasObject! (union)
+        [JsonProperty("object")]
+        public CloudDirectNasObject? Object { get; set; }
 
 
         #endregion
@@ -163,6 +168,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? ExpiryHint = null,
         System.String? Id = null,
         System.Int64? IndexingAttempts = null,
+        System.Boolean? IsAnomaly = null,
         System.Boolean? IsCorrupted = null,
         System.Boolean? IsDownloadedSnapshot = null,
         System.Boolean? IsExpired = null,
@@ -174,7 +180,7 @@ namespace RubrikSecurityCloud.Types
         System.String? SnappableId = null,
         System.String? SystemId = null,
         System.String? WorkloadId = null,
-        CloudDirectNasShare? Share = null
+        CloudDirectNasObject? Object = null
     ) 
     {
         if ( Protocol != null ) {
@@ -213,6 +219,9 @@ namespace RubrikSecurityCloud.Types
         if ( IndexingAttempts != null ) {
             this.IndexingAttempts = IndexingAttempts;
         }
+        if ( IsAnomaly != null ) {
+            this.IsAnomaly = IsAnomaly;
+        }
         if ( IsCorrupted != null ) {
             this.IsCorrupted = IsCorrupted;
         }
@@ -246,8 +255,8 @@ namespace RubrikSecurityCloud.Types
         if ( WorkloadId != null ) {
             this.WorkloadId = WorkloadId;
         }
-        if ( Share != null ) {
-            this.Share = Share;
+        if ( Object != null ) {
+            this.Object = Object;
         }
         return this;
     }
@@ -375,6 +384,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "indexingAttempts\n" ;
             }
         }
+        //      C# -> System.Boolean? IsAnomaly
+        // GraphQL -> isAnomaly: Boolean! (scalar)
+        if (this.IsAnomaly != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAnomaly\n" ;
+            } else {
+                s += ind + "isAnomaly\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
         if (this.IsCorrupted != null) {
@@ -474,15 +492,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "workloadId\n" ;
             }
         }
-        //      C# -> CloudDirectNasShare? Share
-        // GraphQL -> share: CloudDirectNasShare! (type)
-        if (this.Share != null) {
-            var fspec = this.Share.AsFieldSpec(conf.Child("share"));
+        //      C# -> CloudDirectNasObject? Object
+        // GraphQL -> object: CloudDirectNasObject! (union)
+        if (this.Object != null) {
+            var fspec = this.Object.AsFieldSpec(conf.Child("object"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "share" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "object" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -704,6 +722,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IndexingAttempts = null;
         }
+        //      C# -> System.Boolean? IsAnomaly
+        // GraphQL -> isAnomaly: Boolean! (scalar)
+        if (ec.Includes("isAnomaly",true))
+        {
+            if(this.IsAnomaly == null) {
+
+                this.IsAnomaly = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAnomaly != null && ec.Excludes("isAnomaly",true))
+        {
+            this.IsAnomaly = null;
+        }
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
         if (ec.Includes("isCorrupted",true))
@@ -891,24 +926,29 @@ namespace RubrikSecurityCloud.Types
         {
             this.WorkloadId = null;
         }
-        //      C# -> CloudDirectNasShare? Share
-        // GraphQL -> share: CloudDirectNasShare! (type)
-        if (ec.Includes("share",false))
+        //      C# -> CloudDirectNasObject? Object
+        // GraphQL -> object: CloudDirectNasObject! (union)
+        if (ec.Includes("object",false))
         {
-            if(this.Share == null) {
+            if(this.Object == null) {
 
-                this.Share = new CloudDirectNasShare();
-                this.Share.ApplyExploratoryFieldSpec(ec.NewChild("share"));
+                var impls = new List<CloudDirectNasObject>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("object"));
+                this.Object = (CloudDirectNasObject)InterfaceHelper.MakeCompositeFromList(impls);
 
             } else {
 
-                this.Share.ApplyExploratoryFieldSpec(ec.NewChild("share"));
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<CloudDirectNasObject>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("object"));
+                this.Object = (CloudDirectNasObject)InterfaceHelper.MakeCompositeFromList(impls);
 
             }
         }
-        else if (this.Share != null && ec.Excludes("share",false))
+        else if (this.Object != null && ec.Excludes("object",false))
         {
-            this.Share = null;
+            this.Object = null;
         }
     }
 

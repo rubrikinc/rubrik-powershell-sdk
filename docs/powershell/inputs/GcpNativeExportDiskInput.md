@@ -31,3 +31,5 @@ Input required to export a GCP native disk snapshot.
   - The target project cloud account ID for cross project export.
 - snapshotType: GcpSnapshotType
   - The type of the snapshot to recover from.
+- archivedSnapshotId: System.String
+  - The archived snapshot ID from which the recovery should happen.

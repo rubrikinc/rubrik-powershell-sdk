@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exocomputeConfigs")]
         public List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs { get; set; }
 
+        //      C# -> List<AwsExocomputeGetConfigurationResponse>? MappedExocomputeConfigs
+        // GraphQL -> mappedExocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]! (interface)
+        [JsonProperty("mappedExocomputeConfigs")]
+        public List<AwsExocomputeGetConfigurationResponse>? MappedExocomputeConfigs { get; set; }
+
         //      C# -> List<System.String>? MappedCloudAccountIds
         // GraphQL -> mappedCloudAccountIds: [UUID!]! (scalar)
         [JsonProperty("mappedCloudAccountIds")]
@@ -67,6 +72,7 @@ namespace RubrikSecurityCloud.Types
     public AwsExocomputeConfig Set(
         List<AwsCloudAccountRegion>? ExocomputeEligibleRegions = null,
         List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs = null,
+        List<AwsExocomputeGetConfigurationResponse>? MappedExocomputeConfigs = null,
         List<System.String>? MappedCloudAccountIds = null,
         AwsCloudAccount? AwsCloudAccount = null,
         List<AwsExocomputeGetConfigResponse>? Configs = null,
@@ -79,6 +85,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ExocomputeConfigs != null ) {
             this.ExocomputeConfigs = ExocomputeConfigs;
+        }
+        if ( MappedExocomputeConfigs != null ) {
+            this.MappedExocomputeConfigs = MappedExocomputeConfigs;
         }
         if ( MappedCloudAccountIds != null ) {
             this.MappedCloudAccountIds = MappedCloudAccountIds;
@@ -128,6 +137,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "exocomputeConfigs" + " " + "{\n" + fspec + ind + "}\n";
+                }
+            }
+        }
+        //      C# -> List<AwsExocomputeGetConfigurationResponse>? MappedExocomputeConfigs
+        // GraphQL -> mappedExocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]! (interface)
+        if (this.MappedExocomputeConfigs != null) {
+                var fspec = this.MappedExocomputeConfigs.AsFieldSpec(conf.Child("mappedExocomputeConfigs"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mappedExocomputeConfigs" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -230,6 +252,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExocomputeConfigs != null && ec.Excludes("exocomputeConfigs",false))
         {
             this.ExocomputeConfigs = null;
+        }
+        //      C# -> List<AwsExocomputeGetConfigurationResponse>? MappedExocomputeConfigs
+        // GraphQL -> mappedExocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]! (interface)
+        if (ec.Includes("mappedExocomputeConfigs",false))
+        {
+            if(this.MappedExocomputeConfigs == null) {
+
+                this.MappedExocomputeConfigs = new List<AwsExocomputeGetConfigurationResponse>();
+                this.MappedExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("mappedExocomputeConfigs"));
+
+            } else {
+
+                this.MappedExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("mappedExocomputeConfigs"));
+
+            }
+        }
+        else if (this.MappedExocomputeConfigs != null && ec.Excludes("mappedExocomputeConfigs",false))
+        {
+            this.MappedExocomputeConfigs = null;
         }
         //      C# -> List<System.String>? MappedCloudAccountIds
         // GraphQL -> mappedCloudAccountIds: [UUID!]! (scalar)

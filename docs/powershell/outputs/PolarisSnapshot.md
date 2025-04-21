@@ -44,3 +44,5 @@
   - Specifies whether or not the snapshot is indexed.
 - isExpired: System.Boolean
   - Specifies whether or not the snapshot is expired.
+- isAnomaly: System.Boolean
+  - Flag if the snapshot is an anomaly.

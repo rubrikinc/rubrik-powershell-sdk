@@ -37,3 +37,4 @@ The different TPR rules.
 - DELETE_CLOUD_ACCOUNTS - Quorum authorization is required for deleting cloud accounts.
 - DELETE_CLOUD_ARCHIVAL_LOCATION - Quorum authorization is required to delete a cloud archival location.
 - MODIFY_PAM_INTEGRATION - The TPR rule for modifying PAM configuration.
+- REMOVE_CLUSTER - The TPR rule for removing a cluster.

@@ -123,6 +123,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ON_PREM_AD")]
         ON_PREM_AD,
 
+        [EnumMember(Value = "OPENSTACK")]
+        OPENSTACK,
+
         [EnumMember(Value = "ORACLE")]
         ORACLE,
 

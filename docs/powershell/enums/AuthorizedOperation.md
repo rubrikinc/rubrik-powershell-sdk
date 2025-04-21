@@ -202,6 +202,7 @@ Authorized operations on an object.
 - MANAGE_IDENTITY_RESILIENCY - Manage identity resiliency.
 - REMEDIATE_IDENTITY_RESILIENCY_VIOLATIONS - Remediate identity resiliency violations.
 - VIEW_RUBY_INSIGHTS - View Ruby Insights use case.
+- VIEW_ALL_EVENTS - View all events and audits.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

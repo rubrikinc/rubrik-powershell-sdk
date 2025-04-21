@@ -121,3 +121,4 @@
 +comment: complaints regarding the original filter, so it seems performance
 +comment: is acceptable. The number of MSSQL hosts is expected to be <100k.
 - PHYSICAL_HOST_RBS_UPGRADE_STATUS - Sort physical hosts by upgrade status.
+- DB2_INSTANCE_HOST_LIST - Sort the DB2 instance based on the hosts list.

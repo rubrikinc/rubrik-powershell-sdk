@@ -17,6 +17,8 @@ Update organization details.
   - Force organization to use envoy to connect their hosts.
 - allowedClusters: list of System.Strings
   - Allowed clusters for the organization.
+- replicationOnlyClusters: list of System.Strings
+  - Clusters designated as replication-only for the organization.
 - existingUsers: list of ExistingUserInputs
   - Existing users to add to the tenant organization.
 - userInvites: list of UserInviteInputs

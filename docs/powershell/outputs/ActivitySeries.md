@@ -49,6 +49,12 @@ A series of activities on either the RSC or a Rubrik cluster.
   - A JSON string with variable URL parameters.
 - lastActivityMessage: System.String
   - The final event message in the event series.
+- attemptNumber: System.Int32
+  - The attempt number of the related job.
+- isOnDemand: System.Boolean
+  - Specifies whether the activity series is triggered on demand or is driven by the SLA Domain.
+- isTransactionLogEventSeries: System.Boolean
+  - Specifies whether the event series is a transaction log event.
 - activitySeriesId: System.String
   - The ID of the activity series.
 - progress: System.String

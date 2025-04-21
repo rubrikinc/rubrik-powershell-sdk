@@ -24,6 +24,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M5_4XLARGE")]
         M5_4XLARGE,
 
+        [EnumMember(Value = "M6A_2XLARGE")]
+        M6A_2XLARGE,
+
+        [EnumMember(Value = "M6A_4XLARGE")]
+        M6A_4XLARGE,
+
+        [EnumMember(Value = "M6A_8XLARGE")]
+        M6A_8XLARGE,
+
         [EnumMember(Value = "M6I_2XLARGE")]
         M6I_2XLARGE,
 
@@ -32,6 +41,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "M6I_8XLARGE")]
         M6I_8XLARGE,
+
+        [EnumMember(Value = "R6A_4XLARGE")]
+        R6A_4XLARGE,
 
         [EnumMember(Value = "R6I_4XLARGE")]
         R6I_4XLARGE

@@ -1462,6 +1462,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					ChannelFolderId = $someString
     /// 					# OPTIONAL
     /// 					ChannelNaturalId = $someString
+    /// 					# OPTIONAL
+    /// 					channelMembershipType = $someChannelMembershipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
     /// 				}
     /// 				# REQUIRED
     /// 				RefreshTokenEncrypted = $someString
@@ -1482,6 +1484,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						ChannelFolderId = $someString
     /// 						# OPTIONAL
     /// 						ChannelNaturalId = $someString
+    /// 						# OPTIONAL
+    /// 						channelMembershipType = $someChannelMembershipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
     /// 					}
     /// 				)
     /// 				# REQUIRED
@@ -3848,6 +3852,8 @@ $query.Var.input = @{
 					ChannelFolderId = $someString
 					# OPTIONAL
 					ChannelNaturalId = $someString
+					# OPTIONAL
+					channelMembershipType = $someChannelMembershipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
 				}
 				# REQUIRED
 				RefreshTokenEncrypted = $someString
@@ -3868,6 +3874,8 @@ $query.Var.input = @{
 						ChannelFolderId = $someString
 						# OPTIONAL
 						ChannelNaturalId = $someString
+						# OPTIONAL
+						channelMembershipType = $someChannelMembershipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
 					}
 				)
 				# REQUIRED

@@ -6,6 +6,7 @@ Type of hierarchy object.
 - K8S_CLUSTER - Kubernetes cluster.
 - MYSQLDB_DATABASE - MySQL Database.
 - M365_BACKUP_STORAGE_GROUP - M365 Backup Storage Group.
+- OPENSTACK_DOMAIN - OpenStack Domain.
 - KuprNamespace
 - HostShare
 - SALESFORCE_OBJECT - Salesforce object.
@@ -72,6 +73,7 @@ Type of hierarchy object.
 - GcpNativeGCEInstance
 - WindowsVolumeGroup
 - O365Org
+- OPENSTACK_PROJECT - OpenStack Project.
 - VSphereFolder
 - AzureNativeVm
 - AZURE_SQL_DATABASE_DB
@@ -147,6 +149,7 @@ Type of hierarchy object.
 - NutanixVirtualMachine
 - AzureNativeSubscription
 - NUTANIX_CATEGORY_VALUE - Nutanix Category Value.
+- CLOUD_DIRECT_NAS_BUCKET - NAS Cloud Direct bucket.
 - MssqlInstance
 - O365User
 - EXCHANGE_DAG - Exchange DAG.

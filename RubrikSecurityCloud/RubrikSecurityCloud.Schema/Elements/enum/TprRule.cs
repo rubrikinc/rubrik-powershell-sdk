@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PAUSE_SLA")]
         PAUSE_SLA,
 
+        [EnumMember(Value = "REMOVE_CLUSTER")]
+        REMOVE_CLUSTER,
+
         [EnumMember(Value = "REMOVE_CLUSTER_NODE")]
         REMOVE_CLUSTER_NODE,
 

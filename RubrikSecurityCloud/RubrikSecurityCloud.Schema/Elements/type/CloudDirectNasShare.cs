@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region CloudDirectNasShare
  
-    public class CloudDirectNasShare: BaseType, CloudDirectHierarchyObject, CloudDirectHierarchyWorkload, CloudDirectNasNamespaceDescendantType, CloudDirectNasNamespaceLogicalChildType, CloudDirectNasSystemDescendantType, CloudDirectNasSystemLogicalChildType, HierarchyObject
+    public class CloudDirectNasShare: BaseType, CloudDirectHierarchyObject, CloudDirectHierarchyWorkload, CloudDirectNasNamespaceDescendantType, CloudDirectNasNamespaceLogicalChildType, CloudDirectNasObject, CloudDirectNasSystemDescendantType, CloudDirectNasSystemLogicalChildType, HierarchyObject
     {
         #region members
 
@@ -228,6 +228,8 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
     public class InlineVars {
+        public RscGqlVars NumWorkloadDescendants { get; set; }
+
         public RscGqlVars ChildShares { get; set; }
 
         public RscGqlVars CloudDirectSnapshotGroupBySummary { get; set; }
@@ -238,6 +240,15 @@ namespace RubrikSecurityCloud.Types
 
 
         public InlineVars() {
+            Tuple<string, string>[] numWorkloadDescendantsArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("objectTypes", "[ManagedObjectType!]"),
+                };
+            this.NumWorkloadDescendants =
+                new RscGqlVars(null, numWorkloadDescendantsArgs, null, true);
             Tuple<string, string>[] childSharesArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),

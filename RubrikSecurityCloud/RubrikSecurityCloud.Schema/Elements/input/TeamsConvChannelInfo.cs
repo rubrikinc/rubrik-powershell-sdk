@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ChannelNaturalId")]
         public System.String? ChannelNaturalId { get; set; }
 
+        //      C# -> ChannelMembershipType? ChannelMembershipType
+        // GraphQL -> channelMembershipType: ChannelMembershipType (enum)
+        [JsonProperty("channelMembershipType")]
+        public ChannelMembershipType? ChannelMembershipType { get; set; }
+
 
         #endregion
 

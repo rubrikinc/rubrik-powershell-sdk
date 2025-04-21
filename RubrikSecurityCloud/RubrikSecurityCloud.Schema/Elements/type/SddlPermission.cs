@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("flags")]
         public List<AceFlags>? Flags { get; set; }
 
+        //      C# -> PrincipalRiskySummaryPrincipalType? PrincipalType
+        // GraphQL -> principalType: PrincipalRiskySummaryPrincipalType! (enum)
+        [JsonProperty("principalType")]
+        public PrincipalRiskySummaryPrincipalType? PrincipalType { get; set; }
+
         //      C# -> ResolutionType? ResolutionType
         // GraphQL -> resolutionType: ResolutionType! (enum)
         [JsonProperty("resolutionType")]
@@ -50,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dn")]
         public System.String? Dn { get; set; }
 
+        //      C# -> DatagovAccessMethodDetailsType? AccessMethodDetails
+        // GraphQL -> accessMethodDetails: DatagovAccessMethodDetailsType (type)
+        [JsonProperty("accessMethodDetails")]
+        public DatagovAccessMethodDetailsType? AccessMethodDetails { get; set; }
+
 
         #endregion
 
@@ -62,10 +72,12 @@ namespace RubrikSecurityCloud.Types
     public SddlPermission Set(
         AceQualifier? AccessType = null,
         List<AceFlags>? Flags = null,
+        PrincipalRiskySummaryPrincipalType? PrincipalType = null,
         ResolutionType? ResolutionType = null,
         System.String? Access = null,
         System.String? Cn = null,
-        System.String? Dn = null
+        System.String? Dn = null,
+        DatagovAccessMethodDetailsType? AccessMethodDetails = null
     ) 
     {
         if ( AccessType != null ) {
@@ -73,6 +85,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Flags != null ) {
             this.Flags = Flags;
+        }
+        if ( PrincipalType != null ) {
+            this.PrincipalType = PrincipalType;
         }
         if ( ResolutionType != null ) {
             this.ResolutionType = ResolutionType;
@@ -85,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Dn != null ) {
             this.Dn = Dn;
+        }
+        if ( AccessMethodDetails != null ) {
+            this.AccessMethodDetails = AccessMethodDetails;
         }
         return this;
     }
@@ -116,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "flags\n" ;
             } else {
                 s += ind + "flags\n" ;
+            }
+        }
+        //      C# -> PrincipalRiskySummaryPrincipalType? PrincipalType
+        // GraphQL -> principalType: PrincipalRiskySummaryPrincipalType! (enum)
+        if (this.PrincipalType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "principalType\n" ;
+            } else {
+                s += ind + "principalType\n" ;
             }
         }
         //      C# -> ResolutionType? ResolutionType
@@ -152,6 +179,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "dn\n" ;
             } else {
                 s += ind + "dn\n" ;
+            }
+        }
+        //      C# -> DatagovAccessMethodDetailsType? AccessMethodDetails
+        // GraphQL -> accessMethodDetails: DatagovAccessMethodDetailsType (type)
+        if (this.AccessMethodDetails != null) {
+            var fspec = this.AccessMethodDetails.AsFieldSpec(conf.Child("accessMethodDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "accessMethodDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -194,6 +233,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Flags != null && ec.Excludes("flags",true))
         {
             this.Flags = null;
+        }
+        //      C# -> PrincipalRiskySummaryPrincipalType? PrincipalType
+        // GraphQL -> principalType: PrincipalRiskySummaryPrincipalType! (enum)
+        if (ec.Includes("principalType",true))
+        {
+            if(this.PrincipalType == null) {
+
+                this.PrincipalType = new PrincipalRiskySummaryPrincipalType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrincipalType != null && ec.Excludes("principalType",true))
+        {
+            this.PrincipalType = null;
         }
         //      C# -> ResolutionType? ResolutionType
         // GraphQL -> resolutionType: ResolutionType! (enum)
@@ -262,6 +318,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Dn != null && ec.Excludes("dn",true))
         {
             this.Dn = null;
+        }
+        //      C# -> DatagovAccessMethodDetailsType? AccessMethodDetails
+        // GraphQL -> accessMethodDetails: DatagovAccessMethodDetailsType (type)
+        if (ec.Includes("accessMethodDetails",false))
+        {
+            if(this.AccessMethodDetails == null) {
+
+                this.AccessMethodDetails = new DatagovAccessMethodDetailsType();
+                this.AccessMethodDetails.ApplyExploratoryFieldSpec(ec.NewChild("accessMethodDetails"));
+
+            } else {
+
+                this.AccessMethodDetails.ApplyExploratoryFieldSpec(ec.NewChild("accessMethodDetails"));
+
+            }
+        }
+        else if (this.AccessMethodDetails != null && ec.Excludes("accessMethodDetails",false))
+        {
+            this.AccessMethodDetails = null;
         }
     }
 

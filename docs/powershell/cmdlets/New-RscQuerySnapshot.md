@@ -13,7 +13,7 @@ Returns a list files whose name is prefixed by the query in the given snapshot.
 ### closesttopointintime
 Details of the unexpired snapshot closest to the specified point in time for each provided workload ID.
 
-- There are 10 arguments.
+- There are 12 arguments.
     - beforeTime - DateTime: Specifies the time at which or before which the snapshot was taken.
     - afterTime - DateTime: Specifies the time at which or after which the snapshot was taken.
     - snappableIds - list of System.Strings: Workload UUIDs.
@@ -24,6 +24,8 @@ Details of the unexpired snapshot closest to the specified point in time for eac
     - quarantinedOnly - System.Boolean: Specifies whether to only include quarantined snapshots.
     - anomalousOnly - System.Boolean: Specifies whether to only include anomalous snapshots.
     - getFullDetails - System.Boolean: Specifies whether to include full snapshot workload details.
+    - excludeReplica - System.Boolean: Specifies whether to exclude replica snapshots.
+    - excludeArchivalLocationTypes - list of System.Strings: List of archival location types that, if a snapshot is stored in them, will exclude the snapshot from query results.
 - Returns list of ClosestSnapshotSearchResults.
 ### clouddirect
 Returns a NAS Cloud Direct snapshot by ID.
@@ -156,9 +158,9 @@ Returns a list of snapshots for a workload.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - workloadId - System.String: The FID of the workload.
-    - snapshotFilter - list of SnapshotQueryFilterInputs: Filter for snapshot connection.
+    - snapshotFilter - list of SnapshotQueryFilterInputs: Filters for snapshot connection.
     - sortOrder - SortOrder: Sorts the order of results.
-    - sortBy - SnapshotQuerySortByField: Sort snapshots by field.
+    - sortBy - SnapshotQuerySortByField: Sorts snapshots by field.
     - timeRange - TimeRangeInput: Time range input.
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.
     - showSnapshotRetentionInfo - System.Boolean: Specifies whether to show snapshot retention.
@@ -172,9 +174,9 @@ Returns list of snapshots for a list of workloads.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableIds - list of System.Strings: Workload UUIDs.
-    - snapshotFilter - list of SnapshotQueryFilterInputs: Filter for snapshot connection.
+    - snapshotFilter - list of SnapshotQueryFilterInputs: Filters for snapshot connection.
     - sortOrder - SortOrder: Sorts the order of results.
-    - sortBy - SnapshotQuerySortByField: Sort snapshots by field.
+    - sortBy - SnapshotQuerySortByField: Sorts snapshots by field.
     - timeRange - TimeRangeInput: Time range input.
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.
 - Returns GenericSnapshotConnection.
@@ -195,6 +197,20 @@ Returns a single snapshot by snapshot forever UUID and cluster UUID. In case clu
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - clusterUuid - System.String: The Rubrik cluster ID.
 - Returns CdmSnapshot.
+### sofclouddirectbucket
+Returns a list of NAS Cloud Direct snapshots for a bucket.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - workloadId - System.String: The FID of the workload.
+    - snapshotFilter - list of SnapshotQueryFilterInputs: Filters for snapshot connection.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - sortBy - SnapshotQuerySortByField: Sorts snapshots by field.
+    - timeRange - TimeRangeInput: Time range input.
+- Returns CloudDirectSnapshotConnection.
 ### sofclouddirectshare
 Returns a list of NAS Cloud Direct snapshots for a share.
 
@@ -204,9 +220,9 @@ Returns a list of NAS Cloud Direct snapshots for a share.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - workloadId - System.String: The FID of the workload.
-    - snapshotFilter - list of SnapshotQueryFilterInputs: Filter for snapshot connection.
+    - snapshotFilter - list of SnapshotQueryFilterInputs: Filters for snapshot connection.
     - sortOrder - SortOrder: Sorts the order of results.
-    - sortBy - SnapshotQuerySortByField: Sort snapshots by field.
+    - sortBy - SnapshotQuerySortByField: Sorts snapshots by field.
     - timeRange - TimeRangeInput: Time range input.
 - Returns CloudDirectSnapshotConnection.
 ### unmanagedobject

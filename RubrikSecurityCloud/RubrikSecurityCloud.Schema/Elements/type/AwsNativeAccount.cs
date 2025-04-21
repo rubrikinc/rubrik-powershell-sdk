@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudSlabDns")]
         public System.String? CloudSlabDns { get; set; }
 
+        //      C# -> System.Int32? DynamoDbTableCount
+        // GraphQL -> dynamoDbTableCount: Int! (scalar)
+        [JsonProperty("dynamoDbTableCount")]
+        public System.Int32? DynamoDbTableCount { get; set; }
+
         //      C# -> System.Int32? EbsVolumeCount
         // GraphQL -> ebsVolumeCount: Int! (scalar)
         [JsonProperty("ebsVolumeCount")]
@@ -183,6 +188,8 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
     public class InlineVars {
+        public RscGqlVars NumWorkloadDescendants { get; set; }
+
         public RscGqlVars AwsNativeEbsVolumes { get; set; }
 
         public RscGqlVars AwsNativeEc2Instances { get; set; }
@@ -191,6 +198,15 @@ namespace RubrikSecurityCloud.Types
 
 
         public InlineVars() {
+            Tuple<string, string>[] numWorkloadDescendantsArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("objectTypes", "[ManagedObjectType!]"),
+                };
+            this.NumWorkloadDescendants =
+                new RscGqlVars(null, numWorkloadDescendantsArgs, null, true);
             Tuple<string, string>[] awsNativeEbsVolumesArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -247,6 +263,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
         System.String? CloudSlabDns = null,
+        System.Int32? DynamoDbTableCount = null,
         System.Int32? EbsVolumeCount = null,
         System.Int32? Ec2InstanceCount = null,
         System.String? Id = null,
@@ -299,6 +316,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CloudSlabDns != null ) {
             this.CloudSlabDns = CloudSlabDns;
+        }
+        if ( DynamoDbTableCount != null ) {
+            this.DynamoDbTableCount = DynamoDbTableCount;
         }
         if ( EbsVolumeCount != null ) {
             this.EbsVolumeCount = EbsVolumeCount;
@@ -477,6 +497,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cloudSlabDns\n" ;
             } else {
                 s += ind + "cloudSlabDns\n" ;
+            }
+        }
+        //      C# -> System.Int32? DynamoDbTableCount
+        // GraphQL -> dynamoDbTableCount: Int! (scalar)
+        if (this.DynamoDbTableCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dynamoDbTableCount\n" ;
+            } else {
+                s += ind + "dynamoDbTableCount\n" ;
             }
         }
         //      C# -> System.Int32? EbsVolumeCount
@@ -901,6 +930,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudSlabDns != null && ec.Excludes("cloudSlabDns",true))
         {
             this.CloudSlabDns = null;
+        }
+        //      C# -> System.Int32? DynamoDbTableCount
+        // GraphQL -> dynamoDbTableCount: Int! (scalar)
+        if (ec.Includes("dynamoDbTableCount",true))
+        {
+            if(this.DynamoDbTableCount == null) {
+
+                this.DynamoDbTableCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DynamoDbTableCount != null && ec.Excludes("dynamoDbTableCount",true))
+        {
+            this.DynamoDbTableCount = null;
         }
         //      C# -> System.Int32? EbsVolumeCount
         // GraphQL -> ebsVolumeCount: Int! (scalar)

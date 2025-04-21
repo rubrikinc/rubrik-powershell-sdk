@@ -1,11 +1,15 @@
 ### ActiveDirectoryObjectType
 Type of the Active Directory object.
 
+- ACTIVE_DIRECTORY_OBJECT_TYPE_ATTRIBUTE_SCHEMA
 - ACTIVE_DIRECTORY_OBJECT_TYPE_BUILTIN_DOMAIN - Active Directory built-in domain.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_CHILD_DOMAIN - Active Directory child domain.
+- ACTIVE_DIRECTORY_OBJECT_TYPE_CLASS_SCHEMA
 - ACTIVE_DIRECTORY_OBJECT_TYPE_COMPUTER - Active Directory computer object type.
+- ACTIVE_DIRECTORY_OBJECT_TYPE_CONFIGURATION
 - ACTIVE_DIRECTORY_OBJECT_TYPE_CONTACT - Active Directory contact object type.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_CONTAINER - Active Directory container object type.
+- ACTIVE_DIRECTORY_OBJECT_TYPE_DMD
 - ACTIVE_DIRECTORY_OBJECT_TYPE_DOMAIN_ROOT - Active Directory domain root.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_GROUP - Active Directory group.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_GROUP_MANAGED_SERVICE_ACCOUNT - Active Directory group managed service account.

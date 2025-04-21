@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AUSTRALIA_CENTRAL")]
         AUSTRALIA_CENTRAL,
 
+        [EnumMember(Value = "AUSTRALIA_CENTRAL2")]
+        AUSTRALIA_CENTRAL2,
+
         [EnumMember(Value = "AUSTRALIA_EAST")]
         AUSTRALIA_EAST,
 
@@ -44,6 +47,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "BRAZIL_SOUTH")]
         BRAZIL_SOUTH,
+
+        [EnumMember(Value = "BRAZIL_SOUTHEAST")]
+        BRAZIL_SOUTHEAST,
 
         [EnumMember(Value = "CANADA_CENTRAL")]
         CANADA_CENTRAL,
@@ -65,6 +71,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "FRANCE_CENTRAL")]
         FRANCE_CENTRAL,
+
+        [EnumMember(Value = "FRANCE_SOUTH")]
+        FRANCE_SOUTH,
+
+        [EnumMember(Value = "GERMANY_NORTH")]
+        GERMANY_NORTH,
 
         [EnumMember(Value = "GERMANY_WEST_CENTRAL")]
         GERMANY_WEST_CENTRAL,
@@ -114,6 +126,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NORWAY_EAST")]
         NORWAY_EAST,
 
+        [EnumMember(Value = "NORWAY_WEST")]
+        NORWAY_WEST,
+
         [EnumMember(Value = "POLAND_CENTRAL")]
         POLAND_CENTRAL,
 
@@ -123,14 +138,26 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SOUTH_AFRICA_NORTH")]
         SOUTH_AFRICA_NORTH,
 
+        [EnumMember(Value = "SOUTH_AFRICA_WEST")]
+        SOUTH_AFRICA_WEST,
+
         [EnumMember(Value = "SPAIN_CENTRAL")]
         SPAIN_CENTRAL,
 
         [EnumMember(Value = "SWEDEN_CENTRAL")]
         SWEDEN_CENTRAL,
 
+        [EnumMember(Value = "SWEDEN_SOUTH")]
+        SWEDEN_SOUTH,
+
         [EnumMember(Value = "SWITZERLAND_NORTH")]
         SWITZERLAND_NORTH,
+
+        [EnumMember(Value = "SWITZERLAND_WEST")]
+        SWITZERLAND_WEST,
+
+        [EnumMember(Value = "UAE_CENTRAL")]
+        UAE_CENTRAL,
 
         [EnumMember(Value = "UAE_NORTH")]
         UAE_NORTH,

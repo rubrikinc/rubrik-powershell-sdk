@@ -131,10 +131,33 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tags")]
         public List<AzureTag>? Tags { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars NumWorkloadDescendants { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] numWorkloadDescendantsArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("objectTypes", "[ManagedObjectType!]"),
+                };
+            this.NumWorkloadDescendants =
+                new RscGqlVars(null, numWorkloadDescendantsArgs, null, true);
+        }
+    }
+
+    public AzureSqlDatabaseServer()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "AzureSqlDatabaseServer";

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
 
+        //      C# -> PausedSlaInfo? PausedSlaInfo
+        // GraphQL -> pausedSlaInfo: PausedSlaInfo (type)
+        [JsonProperty("pausedSlaInfo")]
+        public PausedSlaInfo? PausedSlaInfo { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public GlobalSlaStatus Set(
         PauseStatus? PauseStatus = null,
         SlaSyncStatus? SyncStatus = null,
-        Cluster? Cluster = null
+        Cluster? Cluster = null,
+        PausedSlaInfo? PausedSlaInfo = null
     ) 
     {
         if ( PauseStatus != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
+        }
+        if ( PausedSlaInfo != null ) {
+            this.PausedSlaInfo = PausedSlaInfo;
         }
         return this;
     }
@@ -100,6 +109,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> PausedSlaInfo? PausedSlaInfo
+        // GraphQL -> pausedSlaInfo: PausedSlaInfo (type)
+        if (this.PausedSlaInfo != null) {
+            var fspec = this.PausedSlaInfo.AsFieldSpec(conf.Child("pausedSlaInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pausedSlaInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -162,6 +183,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> PausedSlaInfo? PausedSlaInfo
+        // GraphQL -> pausedSlaInfo: PausedSlaInfo (type)
+        if (ec.Includes("pausedSlaInfo",false))
+        {
+            if(this.PausedSlaInfo == null) {
+
+                this.PausedSlaInfo = new PausedSlaInfo();
+                this.PausedSlaInfo.ApplyExploratoryFieldSpec(ec.NewChild("pausedSlaInfo"));
+
+            } else {
+
+                this.PausedSlaInfo.ApplyExploratoryFieldSpec(ec.NewChild("pausedSlaInfo"));
+
+            }
+        }
+        else if (this.PausedSlaInfo != null && ec.Excludes("pausedSlaInfo",false))
+        {
+            this.PausedSlaInfo = null;
         }
     }
 

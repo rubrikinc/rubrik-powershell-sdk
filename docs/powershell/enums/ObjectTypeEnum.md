@@ -71,6 +71,7 @@
 - AppBlueprint
 - OPENSTACK_VIRTUAL_MACHINE - OpenStack Virtual Machine.
 - NutanixVirtualMachine
+- CLOUD_DIRECT_NAS_BUCKET - NAS Cloud Direct bucket.
 - M365_BACKUP_STORAGE_ONEDRIVE - M365 Backup Storage Onedrive.
 - SapHanaDatabase - SAP HANA Database.
 - GcpNativeDisk

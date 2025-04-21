@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureAdAdministrativeUnit? AzureAdAdministrativeUnit
+        // GraphQL -> azureAdAdministrativeUnit: AzureAdAdministrativeUnit (type)
+        [JsonProperty("azureAdAdministrativeUnit")]
+        public AzureAdAdministrativeUnit? AzureAdAdministrativeUnit { get; set; }
+
         //      C# -> AzureAdAppRoleAssignment? AzureAdAppRoleAssignment
         // GraphQL -> azureAdAppRoleAssignment: AzureAdAppRoleAssignment (type)
         [JsonProperty("azureAdAppRoleAssignment")]
@@ -60,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureAdRole")]
         public AzureAdRole? AzureAdRole { get; set; }
 
+        //      C# -> AzureAdRoleAssignment? AzureAdRoleAssignment
+        // GraphQL -> azureAdRoleAssignment: AzureAdRoleAssignment (type)
+        [JsonProperty("azureAdRoleAssignment")]
+        public AzureAdRoleAssignment? AzureAdRoleAssignment { get; set; }
+
         //      C# -> AzureAdServicePrincipal? AzureAdServicePrincipal
         // GraphQL -> azureAdServicePrincipal: AzureAdServicePrincipal (type)
         [JsonProperty("azureAdServicePrincipal")]
@@ -85,6 +95,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureAdObjects Set(
+        AzureAdAdministrativeUnit? AzureAdAdministrativeUnit = null,
         AzureAdAppRoleAssignment? AzureAdAppRoleAssignment = null,
         AzureAdApplication? AzureAdApplication = null,
         AzureAdAuthenticationContext? AzureAdAuthenticationContext = null,
@@ -93,11 +104,15 @@ namespace RubrikSecurityCloud.Types
         AzureAdGroup? AzureAdGroup = null,
         AzureAdNamedLocation? AzureAdNamedLocation = null,
         AzureAdRole? AzureAdRole = null,
+        AzureAdRoleAssignment? AzureAdRoleAssignment = null,
         AzureAdServicePrincipal? AzureAdServicePrincipal = null,
         AzureAdTermsOfUse? AzureAdTermsOfUse = null,
         AzureAdUser? AzureAdUser = null
     ) 
     {
+        if ( AzureAdAdministrativeUnit != null ) {
+            this.AzureAdAdministrativeUnit = AzureAdAdministrativeUnit;
+        }
         if ( AzureAdAppRoleAssignment != null ) {
             this.AzureAdAppRoleAssignment = AzureAdAppRoleAssignment;
         }
@@ -122,6 +137,9 @@ namespace RubrikSecurityCloud.Types
         if ( AzureAdRole != null ) {
             this.AzureAdRole = AzureAdRole;
         }
+        if ( AzureAdRoleAssignment != null ) {
+            this.AzureAdRoleAssignment = AzureAdRoleAssignment;
+        }
         if ( AzureAdServicePrincipal != null ) {
             this.AzureAdServicePrincipal = AzureAdServicePrincipal;
         }
@@ -145,6 +163,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureAdAdministrativeUnit? AzureAdAdministrativeUnit
+        // GraphQL -> azureAdAdministrativeUnit: AzureAdAdministrativeUnit (type)
+        if (this.AzureAdAdministrativeUnit != null) {
+            var fspec = this.AzureAdAdministrativeUnit.AsFieldSpec(conf.Child("azureAdAdministrativeUnit"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdAdministrativeUnit" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureAdAppRoleAssignment? AzureAdAppRoleAssignment
         // GraphQL -> azureAdAppRoleAssignment: AzureAdAppRoleAssignment (type)
         if (this.AzureAdAppRoleAssignment != null) {
@@ -241,6 +271,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> AzureAdRoleAssignment? AzureAdRoleAssignment
+        // GraphQL -> azureAdRoleAssignment: AzureAdRoleAssignment (type)
+        if (this.AzureAdRoleAssignment != null) {
+            var fspec = this.AzureAdRoleAssignment.AsFieldSpec(conf.Child("azureAdRoleAssignment"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdRoleAssignment" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureAdServicePrincipal? AzureAdServicePrincipal
         // GraphQL -> azureAdServicePrincipal: AzureAdServicePrincipal (type)
         if (this.AzureAdServicePrincipal != null) {
@@ -284,6 +326,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AzureAdAdministrativeUnit? AzureAdAdministrativeUnit
+        // GraphQL -> azureAdAdministrativeUnit: AzureAdAdministrativeUnit (type)
+        if (ec.Includes("azureAdAdministrativeUnit",false))
+        {
+            if(this.AzureAdAdministrativeUnit == null) {
+
+                this.AzureAdAdministrativeUnit = new AzureAdAdministrativeUnit();
+                this.AzureAdAdministrativeUnit.ApplyExploratoryFieldSpec(ec.NewChild("azureAdAdministrativeUnit"));
+
+            } else {
+
+                this.AzureAdAdministrativeUnit.ApplyExploratoryFieldSpec(ec.NewChild("azureAdAdministrativeUnit"));
+
+            }
+        }
+        else if (this.AzureAdAdministrativeUnit != null && ec.Excludes("azureAdAdministrativeUnit",false))
+        {
+            this.AzureAdAdministrativeUnit = null;
+        }
         //      C# -> AzureAdAppRoleAssignment? AzureAdAppRoleAssignment
         // GraphQL -> azureAdAppRoleAssignment: AzureAdAppRoleAssignment (type)
         if (ec.Includes("azureAdAppRoleAssignment",false))
@@ -435,6 +496,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureAdRole != null && ec.Excludes("azureAdRole",false))
         {
             this.AzureAdRole = null;
+        }
+        //      C# -> AzureAdRoleAssignment? AzureAdRoleAssignment
+        // GraphQL -> azureAdRoleAssignment: AzureAdRoleAssignment (type)
+        if (ec.Includes("azureAdRoleAssignment",false))
+        {
+            if(this.AzureAdRoleAssignment == null) {
+
+                this.AzureAdRoleAssignment = new AzureAdRoleAssignment();
+                this.AzureAdRoleAssignment.ApplyExploratoryFieldSpec(ec.NewChild("azureAdRoleAssignment"));
+
+            } else {
+
+                this.AzureAdRoleAssignment.ApplyExploratoryFieldSpec(ec.NewChild("azureAdRoleAssignment"));
+
+            }
+        }
+        else if (this.AzureAdRoleAssignment != null && ec.Excludes("azureAdRoleAssignment",false))
+        {
+            this.AzureAdRoleAssignment = null;
         }
         //      C# -> AzureAdServicePrincipal? AzureAdServicePrincipal
         // GraphQL -> azureAdServicePrincipal: AzureAdServicePrincipal (type)

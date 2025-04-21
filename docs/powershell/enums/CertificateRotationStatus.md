@@ -5,3 +5,4 @@ The result status of the certificate rotation.
 - IN_PROGRESS - Certificate rotation is in progress.
 - FAILED - Certificate rotation failed.
 - NOT_SCHEDULED - Certificate rotation has not been scheduled.
+- UNSUPPORTED - Certificate rotation is not supported.

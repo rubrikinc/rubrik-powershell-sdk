@@ -140,6 +140,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("upgradeRecommendationInfo")]
         public UpgradeRecommendationInfo? UpgradeRecommendationInfo { get; set; }
 
+        //      C# -> UpgradeStatusV2? UpgradeStatusV2
+        // GraphQL -> upgradeStatusV2: UpgradeStatusV2 (type)
+        [JsonProperty("upgradeStatusV2")]
+        public UpgradeStatusV2? UpgradeStatusV2 { get; set; }
+
 
         #endregion
 
@@ -173,7 +178,8 @@ namespace RubrikSecurityCloud.Types
         List<CdmNodeDetail>? CdmClusterNodeDetails = null,
         CdmClusterStatus? ClusterStatus = null,
         UpgradeDurationReply? LastUpgradeDuration = null,
-        UpgradeRecommendationInfo? UpgradeRecommendationInfo = null
+        UpgradeRecommendationInfo? UpgradeRecommendationInfo = null,
+        UpgradeStatusV2? UpgradeStatusV2 = null
     ) 
     {
         if ( ClusterJobStatus != null ) {
@@ -247,6 +253,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UpgradeRecommendationInfo != null ) {
             this.UpgradeRecommendationInfo = UpgradeRecommendationInfo;
+        }
+        if ( UpgradeStatusV2 != null ) {
+            this.UpgradeStatusV2 = UpgradeStatusV2;
         }
         return this;
     }
@@ -490,6 +499,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "upgradeRecommendationInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> UpgradeStatusV2? UpgradeStatusV2
+        // GraphQL -> upgradeStatusV2: UpgradeStatusV2 (type)
+        if (this.UpgradeStatusV2 != null) {
+            var fspec = this.UpgradeStatusV2.AsFieldSpec(conf.Child("upgradeStatusV2"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "upgradeStatusV2" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -917,6 +938,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.UpgradeRecommendationInfo != null && ec.Excludes("upgradeRecommendationInfo",false))
         {
             this.UpgradeRecommendationInfo = null;
+        }
+        //      C# -> UpgradeStatusV2? UpgradeStatusV2
+        // GraphQL -> upgradeStatusV2: UpgradeStatusV2 (type)
+        if (ec.Includes("upgradeStatusV2",false))
+        {
+            if(this.UpgradeStatusV2 == null) {
+
+                this.UpgradeStatusV2 = new UpgradeStatusV2();
+                this.UpgradeStatusV2.ApplyExploratoryFieldSpec(ec.NewChild("upgradeStatusV2"));
+
+            } else {
+
+                this.UpgradeStatusV2.ApplyExploratoryFieldSpec(ec.NewChild("upgradeStatusV2"));
+
+            }
+        }
+        else if (this.UpgradeStatusV2 != null && ec.Excludes("upgradeStatusV2",false))
+        {
+            this.UpgradeStatusV2 = null;
         }
     }
 

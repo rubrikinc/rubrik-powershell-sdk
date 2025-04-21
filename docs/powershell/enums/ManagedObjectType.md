@@ -143,8 +143,8 @@ All supported managed objects.
 - M365_BACKUP_STORAGE_GROUP - M365 Backup Storage Group.
 - MYSQLDB_INSTANCE - MySQL Instance.
 - MYSQLDB_DATABASE - MySQL Database.
-- CLOUD_DIRECT_NAS_SYSTEM
-- CLOUD_DIRECT_NAS_NAMESPACE
+- CLOUD_DIRECT_NAS_SYSTEM - NAS Cloud Direct system.
+- CLOUD_DIRECT_NAS_NAMESPACE - Namespace for the NAS Cloud Direct.
 - CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS share replaces CLOUD_DIRECT_NAS_EXPORT.
 - EXCHANGE_HOST - Exchange Host.
 - MSSQL_HOST - MSSQL Host.
@@ -159,6 +159,9 @@ All supported managed objects.
 - OPENSTACK_AVAILABILITY_ZONE - Openstack Availability Zone.
 - OPENSTACK_HOST - Openstack Host.
 - OPENSTACK_VIRTUAL_MACHINE - Openstack Virtual Machine.
+- ROOT - Root Node.
+- OPENSTACK_DOMAIN - Openstack Domain.
+- OPENSTACK_PROJECT - Openstack Project.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

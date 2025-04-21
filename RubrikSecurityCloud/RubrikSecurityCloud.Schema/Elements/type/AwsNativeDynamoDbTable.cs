@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsAwsContinuousBackupEnabled
+        // GraphQL -> isAwsContinuousBackupEnabled: Boolean! (scalar)
+        [JsonProperty("isAwsContinuousBackupEnabled")]
+        public System.Boolean? IsAwsContinuousBackupEnabled { get; set; }
+
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
         [JsonProperty("isExocomputeConfigured")]
@@ -111,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
 
+        //      C# -> System.Int64? TableSizeBytes
+        // GraphQL -> tableSizeBytes: Long! (scalar)
+        [JsonProperty("tableSizeBytes")]
+        public System.Int64? TableSizeBytes { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
@@ -120,6 +130,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> awsAccount: AwsNativeAccount (type)
         [JsonProperty("awsAccount")]
         public AwsNativeAccount? AwsAccount { get; set; }
+
+        //      C# -> AwsNativeAccountDetails? AwsNativeAccountDetails
+        // GraphQL -> awsNativeAccountDetails: AwsNativeAccountDetails (type)
+        [JsonProperty("awsNativeAccountDetails")]
+        public AwsNativeAccountDetails? AwsNativeAccountDetails { get; set; }
 
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
@@ -198,6 +213,8 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
     public class InlineVars {
+        public RscGqlVars NumWorkloadDescendants { get; set; }
+
         public RscGqlVars SnapshotConnection { get; set; }
 
         public RscGqlVars SnapshotGroupByConnection { get; set; }
@@ -208,6 +225,15 @@ namespace RubrikSecurityCloud.Types
 
 
         public InlineVars() {
+            Tuple<string, string>[] numWorkloadDescendantsArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("objectTypes", "[ManagedObjectType!]"),
+                };
+            this.NumWorkloadDescendants =
+                new RscGqlVars(null, numWorkloadDescendantsArgs, null, true);
             Tuple<string, string>[] snapshotConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -280,6 +306,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AwsAccountRubrikId = null,
         System.String? CloudNativeId = null,
         System.String? Id = null,
+        System.Boolean? IsAwsContinuousBackupEnabled = null,
         System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
@@ -287,8 +314,10 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
         System.Boolean? SlaPauseStatus = null,
+        System.Int64? TableSizeBytes = null,
         List<Org>? AllOrgs = null,
         AwsNativeAccount? AwsAccount = null,
+        AwsNativeAccountDetails? AwsNativeAccountDetails = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
@@ -338,6 +367,9 @@ namespace RubrikSecurityCloud.Types
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( IsAwsContinuousBackupEnabled != null ) {
+            this.IsAwsContinuousBackupEnabled = IsAwsContinuousBackupEnabled;
+        }
         if ( IsExocomputeConfigured != null ) {
             this.IsExocomputeConfigured = IsExocomputeConfigured;
         }
@@ -359,11 +391,17 @@ namespace RubrikSecurityCloud.Types
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
         }
+        if ( TableSizeBytes != null ) {
+            this.TableSizeBytes = TableSizeBytes;
+        }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
         }
         if ( AwsAccount != null ) {
             this.AwsAccount = AwsAccount;
+        }
+        if ( AwsNativeAccountDetails != null ) {
+            this.AwsNativeAccountDetails = AwsNativeAccountDetails;
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
@@ -532,6 +570,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
+        //      C# -> System.Boolean? IsAwsContinuousBackupEnabled
+        // GraphQL -> isAwsContinuousBackupEnabled: Boolean! (scalar)
+        if (this.IsAwsContinuousBackupEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAwsContinuousBackupEnabled\n" ;
+            } else {
+                s += ind + "isAwsContinuousBackupEnabled\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
         if (this.IsExocomputeConfigured != null) {
@@ -595,6 +642,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "slaPauseStatus\n" ;
             }
         }
+        //      C# -> System.Int64? TableSizeBytes
+        // GraphQL -> tableSizeBytes: Long! (scalar)
+        if (this.TableSizeBytes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "tableSizeBytes\n" ;
+            } else {
+                s += ind + "tableSizeBytes\n" ;
+            }
+        }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
@@ -616,6 +672,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "awsAccount" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AwsNativeAccountDetails? AwsNativeAccountDetails
+        // GraphQL -> awsNativeAccountDetails: AwsNativeAccountDetails (type)
+        if (this.AwsNativeAccountDetails != null) {
+            var fspec = this.AwsNativeAccountDetails.AsFieldSpec(conf.Child("awsNativeAccountDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsNativeAccountDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1002,6 +1070,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> System.Boolean? IsAwsContinuousBackupEnabled
+        // GraphQL -> isAwsContinuousBackupEnabled: Boolean! (scalar)
+        if (ec.Includes("isAwsContinuousBackupEnabled",true))
+        {
+            if(this.IsAwsContinuousBackupEnabled == null) {
+
+                this.IsAwsContinuousBackupEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAwsContinuousBackupEnabled != null && ec.Excludes("isAwsContinuousBackupEnabled",true))
+        {
+            this.IsAwsContinuousBackupEnabled = null;
+        }
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
         if (ec.Includes("isExocomputeConfigured",true))
@@ -1121,6 +1206,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.SlaPauseStatus = null;
         }
+        //      C# -> System.Int64? TableSizeBytes
+        // GraphQL -> tableSizeBytes: Long! (scalar)
+        if (ec.Includes("tableSizeBytes",true))
+        {
+            if(this.TableSizeBytes == null) {
+
+                this.TableSizeBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TableSizeBytes != null && ec.Excludes("tableSizeBytes",true))
+        {
+            this.TableSizeBytes = null;
+        }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (ec.Includes("allOrgs",false))
@@ -1158,6 +1260,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AwsAccount != null && ec.Excludes("awsAccount",false))
         {
             this.AwsAccount = null;
+        }
+        //      C# -> AwsNativeAccountDetails? AwsNativeAccountDetails
+        // GraphQL -> awsNativeAccountDetails: AwsNativeAccountDetails (type)
+        if (ec.Includes("awsNativeAccountDetails",false))
+        {
+            if(this.AwsNativeAccountDetails == null) {
+
+                this.AwsNativeAccountDetails = new AwsNativeAccountDetails();
+                this.AwsNativeAccountDetails.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeAccountDetails"));
+
+            } else {
+
+                this.AwsNativeAccountDetails.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeAccountDetails"));
+
+            }
+        }
+        else if (this.AwsNativeAccountDetails != null && ec.Excludes("awsNativeAccountDetails",false))
+        {
+            this.AwsNativeAccountDetails = null;
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)

@@ -27,7 +27,7 @@ NAS Cloud Direct System object.
   - List of descendants.
 - logicalChildConnection: CloudDirectNasSystemLogicalChildTypeConnection
   - List of logical children.
-- shareCount: System.Int32
+- objectCount: System.Int32
   - Total number of objects in this NAS system.
 - namespaceCount: System.Int32
   - Total number of namespaces in this NAS system.

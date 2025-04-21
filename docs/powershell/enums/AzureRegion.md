@@ -59,3 +59,6 @@ Regions for Azure.
 - ITALY_NORTH - Azure region is Italy North.
 - SPAIN_CENTRAL - Azure region is Spain Central.
 - MEXICO_CENTRAL - Azure region is Mexico Central.
+- BRAZIL_SOUTHEAST - Azure region is Brazil Southeast.
+- SWEDEN_SOUTH - Azure region is Sweden South.
+- GERMANY_NORTH - Azure region is Germany North.

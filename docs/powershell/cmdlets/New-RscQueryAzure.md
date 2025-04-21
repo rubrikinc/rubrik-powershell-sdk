@@ -101,7 +101,7 @@ Retrieves a list of all Azure Subscriptions with feature details such as feature
 - There are 3 arguments.
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
     - subscriptionStatusFilters - list of CloudAccountStatuss: List of subscription status filters to apply.
-    - permissionsGroupFilters - list of FeatureWithPermissionsGroupss: List of feature to permission group filters to apply.
+    - permissionsGroupFilters - list of FeatureWithPermissionsGroupss: List of feature-to-permission group filters to apply.
 - Returns list of AzureSubscriptionWithFeaturesTypes.
 ### cloudaccountsubscriptionwithfeatures
 Retrieves the details of the Azure cloud account.

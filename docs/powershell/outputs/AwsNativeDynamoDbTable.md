@@ -7,6 +7,8 @@ AWS native DynamoDB Table.
   - Rubrik ID of the AWS account.
 - region: AwsNativeRegion
   - Name of the region from where backup will be taken. Some examples are: US_EAST_1, AP_EAST_1. This field cannot be null or empty, and will be mapped directly to regions available for the DynamoDB table in the AWS cloud.
+- tableSizeBytes: System.Int64
+  - Size of the DynamoDB table in bytes.
 - tags: list of Tags
   - List of tags associated with the table.
 - isRelic: System.Boolean
@@ -15,8 +17,12 @@ AWS native DynamoDB Table.
   - AWS native name of the object.
 - isExocomputeConfigured: System.Boolean
   - A boolean specifying whether an exocompute is configured in the region.
+- isAwsContinuousBackupEnabled: System.Boolean
+  - A boolean specifying whether AWS continuous backup is enabled in the backup region for the table.
 - nonBackupRegionNames: list of AwsNativeRegions
   - Names of the regions where the table is present but are not chosen as backup regions. This field is only valid for Global tables.
+- awsNativeAccountDetails: AwsNativeAccountDetails
+  - AWS native account details.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsAccount: AwsNativeAccount

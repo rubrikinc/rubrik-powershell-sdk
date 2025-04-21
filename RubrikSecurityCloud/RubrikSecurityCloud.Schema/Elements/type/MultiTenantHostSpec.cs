@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("multiTenantHostId")]
         public System.Int64? MultiTenantHostId { get; set; }
 
+        //      C# -> System.String? Namespace
+        // GraphQL -> namespace: String! (scalar)
+        [JsonProperty("namespace")]
+        public System.String? Namespace { get; set; }
+
         //      C# -> System.String? RegistryServer
         // GraphQL -> registryServer: String! (scalar)
         [JsonProperty("registryServer")]
@@ -57,6 +62,7 @@ namespace RubrikSecurityCloud.Types
     public MultiTenantHostSpec Set(
         System.String? MultiTenantHostAzureAppId = null,
         System.Int64? MultiTenantHostId = null,
+        System.String? Namespace = null,
         System.String? RegistryServer = null,
         System.String? TunnelMode = null,
         NetworkConfig? MultiTenantHostNetworkConfig = null
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MultiTenantHostId != null ) {
             this.MultiTenantHostId = MultiTenantHostId;
+        }
+        if ( Namespace != null ) {
+            this.Namespace = Namespace;
         }
         if ( RegistryServer != null ) {
             this.RegistryServer = RegistryServer;
@@ -107,6 +116,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "multiTenantHostId\n" ;
             } else {
                 s += ind + "multiTenantHostId\n" ;
+            }
+        }
+        //      C# -> System.String? Namespace
+        // GraphQL -> namespace: String! (scalar)
+        if (this.Namespace != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "namespace\n" ;
+            } else {
+                s += ind + "namespace\n" ;
             }
         }
         //      C# -> System.String? RegistryServer
@@ -179,6 +197,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MultiTenantHostId != null && ec.Excludes("multiTenantHostId",true))
         {
             this.MultiTenantHostId = null;
+        }
+        //      C# -> System.String? Namespace
+        // GraphQL -> namespace: String! (scalar)
+        if (ec.Includes("namespace",true))
+        {
+            if(this.Namespace == null) {
+
+                this.Namespace = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Namespace != null && ec.Excludes("namespace",true))
+        {
+            this.Namespace = null;
         }
         //      C# -> System.String? RegistryServer
         // GraphQL -> registryServer: String! (scalar)

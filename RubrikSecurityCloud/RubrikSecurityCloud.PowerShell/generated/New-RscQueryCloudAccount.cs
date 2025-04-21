@@ -162,9 +162,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
-    /// # REQUIRED
+    /// # OPTIONAL
     /// $query.Var.cloudAccountIds = @(
     /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.permissionsGroupFilters = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 		# OPTIONAL
+    /// 		permissionsGroups = @(
+    /// 			$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 		)
+    /// }
     /// )
     /// 
     /// # Execute the query
@@ -524,26 +535,38 @@ $query.Var.features = @(
         }
 
         // Create new GraphQL Query:
-        // allCurrentFeaturePermissionsForCloudAccounts(cloudVendor: CloudVendor!, cloudAccountIds: [UUID!]!): [CloudAccountFeaturePermission!]!
+        // allCurrentFeaturePermissionsForCloudAccounts(cloudVendor: CloudVendor!, cloudAccountIds: [UUID!], permissionsGroupFilters: [FeatureWithPermissionsGroups!]): [CloudAccountFeaturePermission!]!
         internal void InitQueryAllCurrentFeaturePermissionsForCloudAccounts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudVendor", "CloudVendor!"),
-                Tuple.Create("cloudAccountIds", "[UUID!]!"),
+                Tuple.Create("cloudAccountIds", "[UUID!]"),
+                Tuple.Create("permissionsGroupFilters", "[FeatureWithPermissionsGroups!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllCurrentFeaturePermissionsForCloudAccounts",
-                "($cloudVendor: CloudVendor!,$cloudAccountIds: [UUID!]!)",
+                "($cloudVendor: CloudVendor!,$cloudAccountIds: [UUID!],$permissionsGroupFilters: [FeatureWithPermissionsGroups!])",
                 "List<CloudAccountFeaturePermission>",
                 Query.AllCurrentFeaturePermissionsForCloudAccounts,
                 Query.AllCurrentFeaturePermissionsForCloudAccountsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
-# REQUIRED
+# OPTIONAL
 $query.Var.cloudAccountIds = @(
 	$someString
+)
+# OPTIONAL
+$query.Var.permissionsGroupFilters = @(
+	@{
+		# OPTIONAL
+		featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+		# OPTIONAL
+		permissionsGroups = @(
+			$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+		)
+}
 )"
             );
         }

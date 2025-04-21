@@ -96,10 +96,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
 
-        //      C# -> System.Int32? ShareCount
-        // GraphQL -> shareCount: Int! (scalar)
-        [JsonProperty("shareCount")]
-        public System.Int32? ShareCount { get; set; }
+        //      C# -> System.Int32? ObjectCount
+        // GraphQL -> objectCount: Int! (scalar)
+        [JsonProperty("objectCount")]
+        public System.Int32? ObjectCount { get; set; }
 
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -168,12 +168,23 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
     public class InlineVars {
+        public RscGqlVars NumWorkloadDescendants { get; set; }
+
         public RscGqlVars DescendantConnection { get; set; }
 
         public RscGqlVars LogicalChildConnection { get; set; }
 
 
         public InlineVars() {
+            Tuple<string, string>[] numWorkloadDescendantsArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("objectTypes", "[ManagedObjectType!]"),
+                };
+            this.NumWorkloadDescendants =
+                new RscGqlVars(null, numWorkloadDescendantsArgs, null, true);
             Tuple<string, string>[] descendantConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -224,7 +235,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.String? NamespaceName = null,
         System.Int32? NumWorkloadDescendants = null,
-        System.Int32? ShareCount = null,
+        System.Int32? ObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? SystemId = null,
         List<Org>? AllOrgs = null,
@@ -284,8 +295,8 @@ namespace RubrikSecurityCloud.Types
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
         }
-        if ( ShareCount != null ) {
-            this.ShareCount = ShareCount;
+        if ( ObjectCount != null ) {
+            this.ObjectCount = ObjectCount;
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
@@ -484,13 +495,13 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "numWorkloadDescendants\n" ;
             }
         }
-        //      C# -> System.Int32? ShareCount
-        // GraphQL -> shareCount: Int! (scalar)
-        if (this.ShareCount != null) {
+        //      C# -> System.Int32? ObjectCount
+        // GraphQL -> objectCount: Int! (scalar)
+        if (this.ObjectCount != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "shareCount\n" ;
+                s += conf.Prefix + "objectCount\n" ;
             } else {
-                s += ind + "shareCount\n" ;
+                s += ind + "objectCount\n" ;
             }
         }
         //      C# -> System.Boolean? SlaPauseStatus
@@ -914,22 +925,22 @@ namespace RubrikSecurityCloud.Types
         {
             this.NumWorkloadDescendants = null;
         }
-        //      C# -> System.Int32? ShareCount
-        // GraphQL -> shareCount: Int! (scalar)
-        if (ec.Includes("shareCount",true))
+        //      C# -> System.Int32? ObjectCount
+        // GraphQL -> objectCount: Int! (scalar)
+        if (ec.Includes("objectCount",true))
         {
-            if(this.ShareCount == null) {
+            if(this.ObjectCount == null) {
 
-                this.ShareCount = Int32.MinValue;
+                this.ObjectCount = Int32.MinValue;
 
             } else {
 
 
             }
         }
-        else if (this.ShareCount != null && ec.Excludes("shareCount",true))
+        else if (this.ObjectCount != null && ec.Excludes("objectCount",true))
         {
-            this.ShareCount = null;
+            this.ObjectCount = null;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

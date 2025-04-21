@@ -23,8 +23,8 @@ NAS Cloud Direct namespace object.
   - List of descendants.
 - logicalChildConnection: CloudDirectNasNamespaceLogicalChildTypeConnection
   - List of logical children.
-- shareCount: System.Int32
-  - Total number of shares in this NAS namespace.
+- objectCount: System.Int32
+  - Total number of objects in this NAS namespace.
 - cluster: Cluster
   - NAS Cloud Direct cluster where this object originated.
 - authorizedOperations: list of Operations

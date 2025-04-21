@@ -345,6 +345,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OPENSTACK_ENVIRONMENT")]
         OPENSTACK_ENVIRONMENT,
 
+        [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
+        OPENSTACK_VIRTUAL_MACHINE,
+
         [EnumMember(Value = "ORACLE")]
         ORACLE,
 

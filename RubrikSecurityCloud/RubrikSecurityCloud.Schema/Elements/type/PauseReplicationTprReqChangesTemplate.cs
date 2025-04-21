@@ -31,10 +31,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("requestedAction")]
         public System.String? RequestedAction { get; set; }
 
+        //      C# -> System.String? SourceClusterName
+        // GraphQL -> sourceClusterName: String! (scalar)
+        [JsonProperty("sourceClusterName")]
+        public System.String? SourceClusterName { get; set; }
+
+        //      C# -> System.String? TargetClusterName
+        // GraphQL -> targetClusterName: String! (scalar)
+        [JsonProperty("targetClusterName")]
+        public System.String? TargetClusterName { get; set; }
+
         //      C# -> System.String? TemplateName
         // GraphQL -> templateName: String! (scalar)
         [JsonProperty("templateName")]
         public System.String? TemplateName { get; set; }
+
+        //      C# -> ReplicationPairConfigDetails? ExistingConfigDetails
+        // GraphQL -> existingConfigDetails: ReplicationPairConfigDetails! (type)
+        [JsonProperty("existingConfigDetails")]
+        public ReplicationPairConfigDetails? ExistingConfigDetails { get; set; }
+
+        //      C# -> ReplicationPairConfigDetails? NewConfigDetails
+        // GraphQL -> newConfigDetails: ReplicationPairConfigDetails! (type)
+        [JsonProperty("newConfigDetails")]
+        public ReplicationPairConfigDetails? NewConfigDetails { get; set; }
 
         //      C# -> TprReplicationPair? ReplicationPair
         // GraphQL -> replicationPair: TprReplicationPair (type)
@@ -53,7 +73,11 @@ namespace RubrikSecurityCloud.Types
     public PauseReplicationTprReqChangesTemplate Set(
         System.String? ActionDescription = null,
         System.String? RequestedAction = null,
+        System.String? SourceClusterName = null,
+        System.String? TargetClusterName = null,
         System.String? TemplateName = null,
+        ReplicationPairConfigDetails? ExistingConfigDetails = null,
+        ReplicationPairConfigDetails? NewConfigDetails = null,
         TprReplicationPair? ReplicationPair = null
     ) 
     {
@@ -63,8 +87,20 @@ namespace RubrikSecurityCloud.Types
         if ( RequestedAction != null ) {
             this.RequestedAction = RequestedAction;
         }
+        if ( SourceClusterName != null ) {
+            this.SourceClusterName = SourceClusterName;
+        }
+        if ( TargetClusterName != null ) {
+            this.TargetClusterName = TargetClusterName;
+        }
         if ( TemplateName != null ) {
             this.TemplateName = TemplateName;
+        }
+        if ( ExistingConfigDetails != null ) {
+            this.ExistingConfigDetails = ExistingConfigDetails;
+        }
+        if ( NewConfigDetails != null ) {
+            this.NewConfigDetails = NewConfigDetails;
         }
         if ( ReplicationPair != null ) {
             this.ReplicationPair = ReplicationPair;
@@ -101,6 +137,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "requestedAction\n" ;
             }
         }
+        //      C# -> System.String? SourceClusterName
+        // GraphQL -> sourceClusterName: String! (scalar)
+        if (this.SourceClusterName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceClusterName\n" ;
+            } else {
+                s += ind + "sourceClusterName\n" ;
+            }
+        }
+        //      C# -> System.String? TargetClusterName
+        // GraphQL -> targetClusterName: String! (scalar)
+        if (this.TargetClusterName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "targetClusterName\n" ;
+            } else {
+                s += ind + "targetClusterName\n" ;
+            }
+        }
         //      C# -> System.String? TemplateName
         // GraphQL -> templateName: String! (scalar)
         if (this.TemplateName != null) {
@@ -108,6 +162,30 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "templateName\n" ;
             } else {
                 s += ind + "templateName\n" ;
+            }
+        }
+        //      C# -> ReplicationPairConfigDetails? ExistingConfigDetails
+        // GraphQL -> existingConfigDetails: ReplicationPairConfigDetails! (type)
+        if (this.ExistingConfigDetails != null) {
+            var fspec = this.ExistingConfigDetails.AsFieldSpec(conf.Child("existingConfigDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "existingConfigDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ReplicationPairConfigDetails? NewConfigDetails
+        // GraphQL -> newConfigDetails: ReplicationPairConfigDetails! (type)
+        if (this.NewConfigDetails != null) {
+            var fspec = this.NewConfigDetails.AsFieldSpec(conf.Child("newConfigDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newConfigDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> TprReplicationPair? ReplicationPair
@@ -163,6 +241,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.RequestedAction = null;
         }
+        //      C# -> System.String? SourceClusterName
+        // GraphQL -> sourceClusterName: String! (scalar)
+        if (ec.Includes("sourceClusterName",true))
+        {
+            if(this.SourceClusterName == null) {
+
+                this.SourceClusterName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceClusterName != null && ec.Excludes("sourceClusterName",true))
+        {
+            this.SourceClusterName = null;
+        }
+        //      C# -> System.String? TargetClusterName
+        // GraphQL -> targetClusterName: String! (scalar)
+        if (ec.Includes("targetClusterName",true))
+        {
+            if(this.TargetClusterName == null) {
+
+                this.TargetClusterName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetClusterName != null && ec.Excludes("targetClusterName",true))
+        {
+            this.TargetClusterName = null;
+        }
         //      C# -> System.String? TemplateName
         // GraphQL -> templateName: String! (scalar)
         if (ec.Includes("templateName",true))
@@ -179,6 +291,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.TemplateName != null && ec.Excludes("templateName",true))
         {
             this.TemplateName = null;
+        }
+        //      C# -> ReplicationPairConfigDetails? ExistingConfigDetails
+        // GraphQL -> existingConfigDetails: ReplicationPairConfigDetails! (type)
+        if (ec.Includes("existingConfigDetails",false))
+        {
+            if(this.ExistingConfigDetails == null) {
+
+                this.ExistingConfigDetails = new ReplicationPairConfigDetails();
+                this.ExistingConfigDetails.ApplyExploratoryFieldSpec(ec.NewChild("existingConfigDetails"));
+
+            } else {
+
+                this.ExistingConfigDetails.ApplyExploratoryFieldSpec(ec.NewChild("existingConfigDetails"));
+
+            }
+        }
+        else if (this.ExistingConfigDetails != null && ec.Excludes("existingConfigDetails",false))
+        {
+            this.ExistingConfigDetails = null;
+        }
+        //      C# -> ReplicationPairConfigDetails? NewConfigDetails
+        // GraphQL -> newConfigDetails: ReplicationPairConfigDetails! (type)
+        if (ec.Includes("newConfigDetails",false))
+        {
+            if(this.NewConfigDetails == null) {
+
+                this.NewConfigDetails = new ReplicationPairConfigDetails();
+                this.NewConfigDetails.ApplyExploratoryFieldSpec(ec.NewChild("newConfigDetails"));
+
+            } else {
+
+                this.NewConfigDetails.ApplyExploratoryFieldSpec(ec.NewChild("newConfigDetails"));
+
+            }
+        }
+        else if (this.NewConfigDetails != null && ec.Excludes("newConfigDetails",false))
+        {
+            this.NewConfigDetails = null;
         }
         //      C# -> TprReplicationPair? ReplicationPair
         // GraphQL -> replicationPair: TprReplicationPair (type)

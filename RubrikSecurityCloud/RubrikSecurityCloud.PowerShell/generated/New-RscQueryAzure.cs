@@ -2183,13 +2183,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					$someString
     /// 				)
     /// 				# OPTIONAL
+    /// 				enableUserDefinedRouting = $someBoolean
+    /// 				# OPTIONAL
+    /// 				shouldWhitelistRubrikIps = $someBoolean
+    /// 				# OPTIONAL
     /// 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
     /// 				# OPTIONAL
     /// 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
-    /// 				# REQUIRED
-    /// 				shouldWhitelistRubrikIps = $someBoolean
-    /// 				# REQUIRED
-    /// 				enableUserDefinedRouting = $someBoolean
     /// 			}
     /// 		}
     /// 	)
@@ -4973,13 +4973,13 @@ $query.Var.input = @{
 					$someString
 				)
 				# OPTIONAL
+				enableUserDefinedRouting = $someBoolean
+				# OPTIONAL
+				shouldWhitelistRubrikIps = $someBoolean
+				# OPTIONAL
 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
 				# OPTIONAL
 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
-				# REQUIRED
-				shouldWhitelistRubrikIps = $someBoolean
-				# REQUIRED
-				enableUserDefinedRouting = $someBoolean
 			}
 		}
 	)

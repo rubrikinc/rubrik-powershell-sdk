@@ -75,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allowedClusters")]
         public List<System.String>? AllowedClusters { get; set; }
 
+        //      C# -> List<System.String>? ReplicationOnlyClusters
+        // GraphQL -> replicationOnlyClusters: [String!] (scalar)
+        [JsonProperty("replicationOnlyClusters")]
+        public List<System.String>? ReplicationOnlyClusters { get; set; }
+
         //      C# -> List<ExistingUserInput>? ExistingUsers
         // GraphQL -> existingUsers: [ExistingUserInput!] (input)
         [JsonProperty("existingUsers")]

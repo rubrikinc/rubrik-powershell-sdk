@@ -27,6 +27,8 @@ Details of an org.
   - Specifies whether IP allowlist settings and entries are not inherited for this organization.
 - mfaStatus: MfaStatus
   - Specifies MFA status.
+- replicationOnlyClusters: list of System.Strings
+  - Clusters designated as replication-only for the organization.
 - orgAdminRole: Role
   - Organization admin role.
 - users: list of ExistingUsers

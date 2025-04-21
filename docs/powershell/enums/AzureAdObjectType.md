@@ -13,3 +13,5 @@ Azure AD object types.
 - TERMS_OF_USE - Object type is Azure AD terms of use.
 - AUTHENTICATION_CONTEXT - Object type is Azure AD authentication context.
 - AUTHENTICATION_STRENGTH - Object type is Azure AD authentication strength.
+- ADMINISTRATIVE_UNIT - Object type is Azure AD administrative unit.
+- ROLE_ASSIGNMENT - Object type is Azure AD role assignment.

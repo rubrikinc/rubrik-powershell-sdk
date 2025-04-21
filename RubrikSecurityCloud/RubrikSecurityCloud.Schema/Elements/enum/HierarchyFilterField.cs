@@ -879,6 +879,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VMWARE_IS_STANDALONE_HOST")]
         VMWARE_IS_STANDALONE_HOST,
 
+        [EnumMember(Value = "VMWARE_PURE_DATASTORE_SERIAL_NUMBER")]
+        VMWARE_PURE_DATASTORE_SERIAL_NUMBER,
+
         [EnumMember(Value = "VMWARE_SNAPSHOT_CONSISTENCY")]
         VMWARE_SNAPSHOT_CONSISTENCY,
 

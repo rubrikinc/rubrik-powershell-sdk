@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isQuarantined")]
         System.Boolean? IsQuarantined { get; set; }
 
+        //      C# -> System.Boolean? IsAnomaly
+        // GraphQL -> isAnomaly: Boolean! (scalar)
+        [JsonProperty("isAnomaly")]
+        System.Boolean? IsAnomaly { get; set; }
+
 
         #endregion
 

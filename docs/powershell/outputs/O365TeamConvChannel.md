@@ -2,7 +2,7 @@
 - naturalId: System.String
   - The natural ID of Microsoft 365 Teams channel.
 - channelId: System.String
-  - The RSC ID of channel, used only for browsing files.
+  - The RSC ID of channel.
 - name: System.String
   - Display name of the channel.
 - isArchived: System.Boolean

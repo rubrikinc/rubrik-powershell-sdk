@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mipLabelsFilter")]
         public List<MipLabelsFilterInput>? MipLabelsFilter { get; set; }
 
+        //      C# -> List<System.String>? DocumentTypesFilter
+        // GraphQL -> documentTypesFilter: [UUID!] (scalar)
+        [JsonProperty("documentTypesFilter")]
+        public List<System.String>? DocumentTypesFilter { get; set; }
+
 
         #endregion
 

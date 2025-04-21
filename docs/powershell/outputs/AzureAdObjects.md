@@ -23,3 +23,7 @@ Azure AD object type.
   - Azure AD named location type.
 - azureAdAuthenticationStrength: AzureAdAuthenticationStrength
   - Azure AD authentication strength type.
+- azureAdAdministrativeUnit: AzureAdAdministrativeUnit
+  - Azure AD administrative unit type.
+- azureAdRoleAssignment: AzureAdRoleAssignment
+  - Azure AD role assignment type.

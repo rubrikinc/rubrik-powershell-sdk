@@ -110,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sha256Fingerprint")]
         public System.String? Sha256Fingerprint { get; set; }
 
+        //      C# -> System.Boolean? UserHasPrivilegeToScheduleRotation
+        // GraphQL -> userHasPrivilegeToScheduleRotation: Boolean! (scalar)
+        [JsonProperty("userHasPrivilegeToScheduleRotation")]
+        public System.Boolean? UserHasPrivilegeToScheduleRotation { get; set; }
+
         //      C# -> List<CdmCertificateUsageInfo>? CdmUsages
         // GraphQL -> cdmUsages: [CdmCertificateUsageInfo!]! (type)
         [JsonProperty("cdmUsages")]
@@ -129,6 +134,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> org: Org (type)
         [JsonProperty("org")]
         public Org? Org { get; set; }
+
+        //      C# -> RbsHostUsage? RbsHostUsage
+        // GraphQL -> rbsHostUsage: RbsHostUsage (type)
+        [JsonProperty("rbsHostUsage")]
+        public RbsHostUsage? RbsHostUsage { get; set; }
 
         //      C# -> List<CertificateUsageInfo>? Usages
         // GraphQL -> usages: [CertificateUsageInfo!]! (type)
@@ -163,10 +173,12 @@ namespace RubrikSecurityCloud.Types
         System.String? SerialNumber = null,
         System.String? Sha1Fingerprint = null,
         System.String? Sha256Fingerprint = null,
+        System.Boolean? UserHasPrivilegeToScheduleRotation = null,
         List<CdmCertificateUsageInfo>? CdmUsages = null,
         CertificateRotation? CertificateRotation = null,
         List<CertificateClusterInfo>? Clusters = null,
         Org? Org = null,
+        RbsHostUsage? RbsHostUsage = null,
         List<CertificateUsageInfo>? Usages = null
     ) 
     {
@@ -224,6 +236,9 @@ namespace RubrikSecurityCloud.Types
         if ( Sha256Fingerprint != null ) {
             this.Sha256Fingerprint = Sha256Fingerprint;
         }
+        if ( UserHasPrivilegeToScheduleRotation != null ) {
+            this.UserHasPrivilegeToScheduleRotation = UserHasPrivilegeToScheduleRotation;
+        }
         if ( CdmUsages != null ) {
             this.CdmUsages = CdmUsages;
         }
@@ -235,6 +250,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Org != null ) {
             this.Org = Org;
+        }
+        if ( RbsHostUsage != null ) {
+            this.RbsHostUsage = RbsHostUsage;
         }
         if ( Usages != null ) {
             this.Usages = Usages;
@@ -415,6 +433,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "sha256Fingerprint\n" ;
             }
         }
+        //      C# -> System.Boolean? UserHasPrivilegeToScheduleRotation
+        // GraphQL -> userHasPrivilegeToScheduleRotation: Boolean! (scalar)
+        if (this.UserHasPrivilegeToScheduleRotation != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "userHasPrivilegeToScheduleRotation\n" ;
+            } else {
+                s += ind + "userHasPrivilegeToScheduleRotation\n" ;
+            }
+        }
         //      C# -> List<CdmCertificateUsageInfo>? CdmUsages
         // GraphQL -> cdmUsages: [CdmCertificateUsageInfo!]! (type)
         if (this.CdmUsages != null) {
@@ -460,6 +487,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "org" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> RbsHostUsage? RbsHostUsage
+        // GraphQL -> rbsHostUsage: RbsHostUsage (type)
+        if (this.RbsHostUsage != null) {
+            var fspec = this.RbsHostUsage.AsFieldSpec(conf.Child("rbsHostUsage"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rbsHostUsage" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -788,6 +827,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Sha256Fingerprint = null;
         }
+        //      C# -> System.Boolean? UserHasPrivilegeToScheduleRotation
+        // GraphQL -> userHasPrivilegeToScheduleRotation: Boolean! (scalar)
+        if (ec.Includes("userHasPrivilegeToScheduleRotation",true))
+        {
+            if(this.UserHasPrivilegeToScheduleRotation == null) {
+
+                this.UserHasPrivilegeToScheduleRotation = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserHasPrivilegeToScheduleRotation != null && ec.Excludes("userHasPrivilegeToScheduleRotation",true))
+        {
+            this.UserHasPrivilegeToScheduleRotation = null;
+        }
         //      C# -> List<CdmCertificateUsageInfo>? CdmUsages
         // GraphQL -> cdmUsages: [CdmCertificateUsageInfo!]! (type)
         if (ec.Includes("cdmUsages",false))
@@ -863,6 +919,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Org != null && ec.Excludes("org",false))
         {
             this.Org = null;
+        }
+        //      C# -> RbsHostUsage? RbsHostUsage
+        // GraphQL -> rbsHostUsage: RbsHostUsage (type)
+        if (ec.Includes("rbsHostUsage",false))
+        {
+            if(this.RbsHostUsage == null) {
+
+                this.RbsHostUsage = new RbsHostUsage();
+                this.RbsHostUsage.ApplyExploratoryFieldSpec(ec.NewChild("rbsHostUsage"));
+
+            } else {
+
+                this.RbsHostUsage.ApplyExploratoryFieldSpec(ec.NewChild("rbsHostUsage"));
+
+            }
+        }
+        else if (this.RbsHostUsage != null && ec.Excludes("rbsHostUsage",false))
+        {
+            this.RbsHostUsage = null;
         }
         //      C# -> List<CertificateUsageInfo>? Usages
         // GraphQL -> usages: [CertificateUsageInfo!]! (type)

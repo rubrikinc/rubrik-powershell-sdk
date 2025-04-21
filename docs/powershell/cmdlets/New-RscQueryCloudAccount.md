@@ -13,11 +13,12 @@ List all cloud accounts.
     - features - list of CloudAccountFeatures: Filters and shows cloud accounts for a specific use-cases or features. Default value: [ARCHIVAL].
 - Returns list of CloudAccounts.
 ### currentfeaturepermissions
-Current permissions are the set of permissions the client has given to Rubrik. This will retrieve permissions for all the features currently active in the account. If these permissions are older than the latest set of permissions we require, the account will go in Update Permissions state
+Current permissions are granted by the client to Rubrik. For Azure, permissions are retrieved for specified features and groups. If none are specified, all active features are included. For AWS and GCP, permissions for all active features are returned. Outdated permissions will trigger an Update Permissions state.
 
-- There are 2 arguments.
+- There are 3 arguments.
     - cloudVendor - CloudVendor: Vendor of the cloud account.
     - cloudAccountIds - list of System.Strings: List of Rubrik IDs of the cloud accounts.
+    - permissionsGroupFilters - list of FeatureWithPermissionsGroupss: List of feature-to-permission group filters to apply.
 - Returns list of CloudAccountFeaturePermissions.
 ### exocomputemappings
 List the mappings from accounts to Exocompute cloud accounts with specified filters.

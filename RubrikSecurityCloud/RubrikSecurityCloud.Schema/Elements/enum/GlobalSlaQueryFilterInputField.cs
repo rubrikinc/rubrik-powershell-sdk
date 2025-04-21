@@ -54,6 +54,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SHOW_CLUSTER_SLAS_ONLY")]
         SHOW_CLUSTER_SLAS_ONLY,
 
+        [EnumMember(Value = "SHOW_PAUSED_SLAS_ONLY")]
+        SHOW_PAUSED_SLAS_ONLY,
+
         [EnumMember(Value = "UPGRADE_STATUS")]
         UPGRADE_STATUS
 

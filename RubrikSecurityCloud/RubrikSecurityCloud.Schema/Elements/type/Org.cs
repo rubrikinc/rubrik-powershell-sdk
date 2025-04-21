@@ -95,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("physicalStorageUsed")]
         public System.Int64? PhysicalStorageUsed { get; set; }
 
+        //      C# -> List<System.String>? ReplicationOnlyClusters
+        // GraphQL -> replicationOnlyClusters: [String!]! (scalar)
+        [JsonProperty("replicationOnlyClusters")]
+        public List<System.String>? ReplicationOnlyClusters { get; set; }
+
         //      C# -> System.Boolean? ShouldEnforceMfaForAll
         // GraphQL -> shouldEnforceMfaForAll: Boolean! (scalar)
         [JsonProperty("shouldEnforceMfaForAll")]
@@ -155,6 +160,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsServiceAccountDisabled = null,
         System.String? Name = null,
         System.Int64? PhysicalStorageUsed = null,
+        List<System.String>? ReplicationOnlyClusters = null,
         System.Boolean? ShouldEnforceMfaForAll = null,
         List<ClusterWithCapacityQuota>? AllClusterCapacityQuotas = null,
         Role? OrgAdminRole = null,
@@ -208,6 +214,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PhysicalStorageUsed != null ) {
             this.PhysicalStorageUsed = PhysicalStorageUsed;
+        }
+        if ( ReplicationOnlyClusters != null ) {
+            this.ReplicationOnlyClusters = ReplicationOnlyClusters;
         }
         if ( ShouldEnforceMfaForAll != null ) {
             this.ShouldEnforceMfaForAll = ShouldEnforceMfaForAll;
@@ -377,6 +386,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "physicalStorageUsed\n" ;
             } else {
                 s += ind + "physicalStorageUsed\n" ;
+            }
+        }
+        //      C# -> List<System.String>? ReplicationOnlyClusters
+        // GraphQL -> replicationOnlyClusters: [String!]! (scalar)
+        if (this.ReplicationOnlyClusters != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "replicationOnlyClusters\n" ;
+            } else {
+                s += ind + "replicationOnlyClusters\n" ;
             }
         }
         //      C# -> System.Boolean? ShouldEnforceMfaForAll
@@ -721,6 +739,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PhysicalStorageUsed != null && ec.Excludes("physicalStorageUsed",true))
         {
             this.PhysicalStorageUsed = null;
+        }
+        //      C# -> List<System.String>? ReplicationOnlyClusters
+        // GraphQL -> replicationOnlyClusters: [String!]! (scalar)
+        if (ec.Includes("replicationOnlyClusters",true))
+        {
+            if(this.ReplicationOnlyClusters == null) {
+
+                this.ReplicationOnlyClusters = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicationOnlyClusters != null && ec.Excludes("replicationOnlyClusters",true))
+        {
+            this.ReplicationOnlyClusters = null;
         }
         //      C# -> System.Boolean? ShouldEnforceMfaForAll
         // GraphQL -> shouldEnforceMfaForAll: Boolean! (scalar)

@@ -7,6 +7,7 @@ Azure AD object search keyword names.
 - GROUP_NAME - Group name of the group.
 - ROLE_NAME - Name of the Role.
 - AUTHENTICATION_CONTEXT_NAME - Name of the service authentication context.
+- ADMINISTRATIVE_UNIT_NAME - Name of the administrative unit.
 - USER_TYPE - User type of the user.
 - SERVICE_PRINCIPAL_NAME - Name of the service principal.
 - AUTHENTICATION_STRENGTH_NAME - Name of the service authentication strength.

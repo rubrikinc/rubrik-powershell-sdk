@@ -33,6 +33,8 @@ Information about a certificate on Rubrik Security Cloud.
   - Specifies whether the certificate was imported directly from Rubrik CDM.
 - isCa: System.Boolean
   - Specifies whether the certificate is a CA.
+- userHasPrivilegeToScheduleRotation: System.Boolean
+  - Specifies whether the user has the privilege to schedule a certificate rotation.
 - certificateFid: System.String
   - The FID of the certificate.
 - clusters: list of CertificateClusterInfos
@@ -45,5 +47,7 @@ Information about a certificate on Rubrik Security Cloud.
   - Specifies the type of the certificate issuer.
 - certificateRotation: CertificateRotation
   - Specifies the certificate rotation details.
+- rbsHostUsage: RbsHostUsage
+  - Specifies the host that uses this certificate for Rubrik Backup Service (RBS).
 - org: Org
   - The organization to which the certificate has been assigned.

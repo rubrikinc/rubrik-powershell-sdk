@@ -198,13 +198,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					$someString
     /// 				)
     /// 				# OPTIONAL
+    /// 				enableUserDefinedRouting = $someBoolean
+    /// 				# OPTIONAL
+    /// 				shouldWhitelistRubrikIps = $someBoolean
+    /// 				# OPTIONAL
     /// 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
     /// 				# OPTIONAL
     /// 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
-    /// 				# REQUIRED
-    /// 				shouldWhitelistRubrikIps = $someBoolean
-    /// 				# REQUIRED
-    /// 				enableUserDefinedRouting = $someBoolean
     /// 			}
     /// 		}
     /// 	)
@@ -731,6 +731,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	networkAccessType = $someAzureStorageAccountNetworkAccess # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageAccountNetworkAccess]) for enum values.
     /// 	# OPTIONAL
     /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
     /// }
@@ -2243,6 +2245,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	networkAccessType = $someAzureStorageAccountNetworkAccess # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageAccountNetworkAccess]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -3257,13 +3261,13 @@ $query.Var.input = @{
 					$someString
 				)
 				# OPTIONAL
+				enableUserDefinedRouting = $someBoolean
+				# OPTIONAL
+				shouldWhitelistRubrikIps = $someBoolean
+				# OPTIONAL
 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
 				# OPTIONAL
 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
-				# REQUIRED
-				shouldWhitelistRubrikIps = $someBoolean
-				# REQUIRED
-				enableUserDefinedRouting = $someBoolean
 			}
 		}
 	)
@@ -3718,6 +3722,8 @@ $query.Var.input = @{
 			region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
 		}
 	)
+	# OPTIONAL
+	networkAccessType = $someAzureStorageAccountNetworkAccess # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageAccountNetworkAccess]) for enum values.
 	# OPTIONAL
 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 }"
@@ -5004,6 +5010,8 @@ $query.Var.input = @{
 			region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
 		}
 	)
+	# OPTIONAL
+	networkAccessType = $someAzureStorageAccountNetworkAccess # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageAccountNetworkAccess]) for enum values.
 }"
             );
         }

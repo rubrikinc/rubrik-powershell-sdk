@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 38
+    /// Create a new RscQuery object for any of the 39
     /// operations in the 'Cluster' API domain:
-    /// CanIgnoreClusterRemovalPrechecks, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, ExocomputeGetClusterConnectionInfo, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// CanIgnoreClusterRemovalPrechecks, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, ExocomputeGetClusterConnectionInfo, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 38 operations
+    /// There are 39 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CanIgnoreClusterRemovalPrechecks, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, ExocomputeGetClusterConnectionInfo, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// one of: CanIgnoreClusterRemovalPrechecks, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, ExocomputeGetClusterConnectionInfo, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -853,6 +853,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: IsCloudClusterDiskUpgradeAvailableReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the IsRemoveClusterTprConfigured operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: IsRemoveClusterTprConfigured
+    /// 
+    /// $query = New-RscQueryCluster -Operation IsRemoveClusterTprConfigured
+    /// 
+    /// # REQUIRED
+    /// $query.Var.clusterUuid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
     /// 
     /// 
     /// 
@@ -1744,6 +1772,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Ipmi",
                 "Ipv6Mode",
                 "IsCloudClusterDiskUpgradeAvailable",
+                "IsRemoveClusterTprConfigured",
                 "IsTotpAckNecessary",
                 "LicensesForClusterProductSummary",
                 "List",
@@ -1832,6 +1861,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "IsCloudClusterDiskUpgradeAvailable":
                         this.ProcessRecord_IsCloudClusterDiskUpgradeAvailable();
+                        break;
+                    case "IsRemoveClusterTprConfigured":
+                        this.ProcessRecord_IsRemoveClusterTprConfigured();
                         break;
                     case "IsTotpAckNecessary":
                         this.ProcessRecord_IsTotpAckNecessary();
@@ -2063,6 +2095,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -IsCloudClusterDiskUpgradeAvailable";
             // Create new graphql operation isCloudClusterDiskUpgradeAvailable
             InitQueryIsCloudClusterDiskUpgradeAvailable();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // isRemoveClusterTprConfigured.
+        internal void ProcessRecord_IsRemoveClusterTprConfigured()
+        {
+            this._logger.name += " -IsRemoveClusterTprConfigured";
+            // Create new graphql operation isRemoveClusterTprConfigured
+            InitQueryIsRemoveClusterTprConfigured();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2924,6 +2965,26 @@ $query.Var.input = @{
 	# OPTIONAL
 	newNodeCount = $someInt
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // isRemoveClusterTprConfigured(clusterUuid: UUID!): Boolean!
+        internal void InitQueryIsRemoveClusterTprConfigured()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusterUuid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryIsRemoveClusterTprConfigured",
+                "($clusterUuid: UUID!)",
+                "System.Boolean",
+                Query.IsRemoveClusterTprConfigured,
+                Query.IsRemoveClusterTprConfiguredFieldSpec,
+                @"# REQUIRED
+$query.Var.clusterUuid = $someString"
             );
         }
 

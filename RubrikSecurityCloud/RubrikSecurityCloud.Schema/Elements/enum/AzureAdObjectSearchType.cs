@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ADMINISTRATIVE_UNIT_NAME")]
+        ADMINISTRATIVE_UNIT_NAME,
+
         [EnumMember(Value = "APPLICATION_NAME")]
         APPLICATION_NAME,
 

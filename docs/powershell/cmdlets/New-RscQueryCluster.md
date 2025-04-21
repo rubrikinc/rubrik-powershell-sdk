@@ -117,6 +117,11 @@ Check if an upgrade is available for cloud cluster disks.
 
 - There is a single argument of type IsCloudClusterDiskUpgradeAvailableInput.
 - Returns IsCloudClusterDiskUpgradeAvailableReply.
+### isremoveclustertprconfigured
+Check if Remove Cluster Authorization policy is set on the  cluster.
+
+- There is a single argument of type System.String.
+- Returns System.Boolean.
 ### istotpacknecessary
 Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
 

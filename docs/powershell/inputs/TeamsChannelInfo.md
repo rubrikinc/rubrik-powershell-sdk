@@ -7,4 +7,4 @@ Represents the Teams Channels to/from be restored.
 - ChannelFolderName: System.String
 - ChannelNaturalId: System.String
 - channelMembershipType: ChannelMembershipType
-  - Represents membership type of the channel (STANDARD or PRIVATE).
+  - Represents membership type of the channel (STANDARD, PRIVATE or SHARED).

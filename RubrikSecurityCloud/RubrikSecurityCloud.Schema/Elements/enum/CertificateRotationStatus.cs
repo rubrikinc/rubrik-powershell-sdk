@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         NOT_SCHEDULED,
 
         [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN,
+
+        [EnumMember(Value = "UNSUPPORTED")]
+        UNSUPPORTED
 
 
     } // enum CertificateRotationStatus

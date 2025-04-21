@@ -15,3 +15,5 @@ Azure native archival specific fields for Azure Target Template.
   - Native ID of the Azure subscription.
 - cmkInfo: list of AzureCmks
   - List of configured customer managed keys per region.
+- networkAccessType: AzureStorageAccountNetworkAccess
+  - Information about the network access type of the storage account.

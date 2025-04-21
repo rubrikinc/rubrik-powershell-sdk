@@ -23,5 +23,7 @@ Input for create storage settings for an account.
   - Template type of the storage settings. Must be either SOURCE_REGION or SPECIFIC_REGION.
 - cmkInfo: list of AzureCmkInputs
   - Information about the customer-managed key and key vault.
+- networkAccessType: AzureStorageAccountNetworkAccess
+  - Information about the network access type of the storage account.
 - azureCloudType: AzureCloudType
   - Cloud type of Azure cloud account.

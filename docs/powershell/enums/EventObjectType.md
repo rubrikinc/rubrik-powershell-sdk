@@ -145,3 +145,4 @@ Enum representing all the possible object types which generate events.
 - ORION_THREAT_HUNT - Orion threat hunt.
 - AWS_NATIVE_DYNAMODB_TABLE - AWS native dynamoDB table.
 - OPENSTACK_ENVIRONMENT - Openstack Environment.
+- OPENSTACK_VIRTUAL_MACHINE - Openstack Virtual Machine.

@@ -1195,6 +1195,24 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.Boolean? IsRemoveClusterTprConfigured
+        // GraphQL -> isRemoveClusterTprConfigured: Boolean! (scalar)
+        public static string IsRemoveClusterTprConfigured(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nclusterUuid: $clusterUuid\n)";
+            return "isRemoveClusterTprConfigured" + args + "\n";
+        }
+        public static object IsRemoveClusterTprConfiguredFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return true ;
+        }
+
         //      C# -> System.Boolean? IsReplaceNodeTprConfigured
         // GraphQL -> isReplaceNodeTprConfigured: Boolean! (scalar)
         public static string IsReplaceNodeTprConfigured(object fsObj)
@@ -2568,7 +2586,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllCurrentFeaturePermissionsForCloudAccounts(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountIds: $cloudAccountIds\n)";
+            string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountIds: $cloudAccountIds\npermissionsGroupFilters: $permissionsGroupFilters\n)";
             return "allCurrentFeaturePermissionsForCloudAccounts" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllCurrentFeaturePermissionsForCloudAccountsFieldSpec(AutofieldContext? ec=null)
@@ -3049,6 +3067,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<GcpFeatureWithPermissionGroups>? AllLatestPermissionsByPermissionsGroupGcp
+        // GraphQL -> allLatestPermissionsByPermissionsGroupGcp: [GcpFeatureWithPermissionGroups!]! (type)
+        public static string AllLatestPermissionsByPermissionsGroupGcp(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfeatures: $features\n)";
+            return "allLatestPermissionsByPermissionsGroupGcp" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AllLatestPermissionsByPermissionsGroupGcpFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new List<GcpFeatureWithPermissionGroups>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GetLicensedProductsInfoReply? AllLicensedProducts
         // GraphQL -> allLicensedProducts: GetLicensedProductsInfoReply! (type)
         public static string AllLicensedProducts(object fsObj)
@@ -3486,7 +3522,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllSnapshotsClosestToPointInTime(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nbeforeTime: $beforeTime\nafterTime: $afterTime\nsnappableIds: $snappableIds\nincludeLinked: $includeLinked\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nexcludeQuarantined: $excludeQuarantined\nexcludeAnomalous: $excludeAnomalous\nquarantinedOnly: $quarantinedOnly\nanomalousOnly: $anomalousOnly\ngetFullDetails: $getFullDetails\n)";
+            string args = "\n(\nbeforeTime: $beforeTime\nafterTime: $afterTime\nsnappableIds: $snappableIds\nincludeLinked: $includeLinked\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nexcludeQuarantined: $excludeQuarantined\nexcludeAnomalous: $excludeAnomalous\nquarantinedOnly: $quarantinedOnly\nanomalousOnly: $anomalousOnly\ngetFullDetails: $getFullDetails\nexcludeReplica: $excludeReplica\nexcludeArchivalLocationTypes: $excludeArchivalLocationTypes\n)";
             return "allSnapshotsClosestToPointInTime" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllSnapshotsClosestToPointInTimeFieldSpec(AutofieldContext? ec=null)
@@ -5839,6 +5875,42 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CloudDirectNasBucket? CloudDirectNasBucket
+        // GraphQL -> cloudDirectNasBucket: CloudDirectNasBucket! (type)
+        public static string CloudDirectNasBucket(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "cloudDirectNasBucket" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectNasBucketFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectNasBucket() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CloudDirectNasBucketConnection? CloudDirectNasBuckets
+        // GraphQL -> cloudDirectNasBuckets: CloudDirectNasBucketConnection! (type)
+        public static string CloudDirectNasBuckets(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "cloudDirectNasBuckets" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectNasBucketsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectNasBucketConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CloudDirectNasExport? CloudDirectNasExport
         // GraphQL -> cloudDirectNasExport: CloudDirectNasExport! (type)
         public static string CloudDirectNasExport(object fsObj)
@@ -7968,7 +8040,7 @@ namespace RubrikSecurityCloud.Types
         public static string GetRolesByIds(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nroleIds: $roleIds\n)";
+            string args = "\n(\nroleIds: $roleIds\nsyncedClustersFilter: $syncedClustersFilter\n)";
             return "getRolesByIds" + args + "\n{\n" + fs + "}\n";
         }
         public static object GetRolesByIdsFieldSpec(AutofieldContext? ec=null)
@@ -11982,7 +12054,7 @@ namespace RubrikSecurityCloud.Types
         public static string Orgs(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nnameFilter: $nameFilter\nmfaEnforcedFilter: $mfaEnforcedFilter\nmfaStatusFilter: $mfaStatusFilter\ncrossAccountEnabledFilter: $crossAccountEnabledFilter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nnameFilter: $nameFilter\nmfaEnforcedFilter: $mfaEnforcedFilter\nmfaStatusFilter: $mfaStatusFilter\nmfaStatusesFilter: $mfaStatusesFilter\ncrossAccountEnabledFilter: $crossAccountEnabledFilter\n)";
             return "orgs" + args + "\n{\n" + fs + "}\n";
         }
         public static object OrgsFieldSpec(AutofieldContext? ec=null)
@@ -12306,7 +12378,7 @@ namespace RubrikSecurityCloud.Types
         public static string PolicyObjs(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nobjectIdsFilter: $objectIdsFilter\nplatformFilter: $platformFilter\nplatformCategoryFilter: $platformCategoryFilter\ncloudAccountIdsFilter: $cloudAccountIdsFilter\nresourceGroupsFilter: $resourceGroupsFilter\nregionsFilter: $regionsFilter\ndataTypeIdsFilter: $dataTypeIdsFilter\nfirstSeenTimeRange: $firstSeenTimeRange\nlastAccessTimeRange: $lastAccessTimeRange\ncreationTimeRange: $creationTimeRange\nlastScanTimeRange: $lastScanTimeRange\nobjectTagsFilter: $objectTagsFilter\nmipLabelsFilter: $mipLabelsFilter\nbackupStatusFilter: $backupStatusFilter\nslaIdsFilter: $slaIdsFilter\nnetworkAccessFilter: $networkAccessFilter\nencryptionFilter: $encryptionFilter\nloggingFilter: $loggingFilter\nviolationSeverityFilter: $violationSeverityFilter\nexposureFilter: $exposureFilter\naccessTypeFilter: $accessTypeFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nobjectIdsFilter: $objectIdsFilter\nplatformFilter: $platformFilter\nplatformCategoryFilter: $platformCategoryFilter\ncloudAccountIdsFilter: $cloudAccountIdsFilter\nresourceGroupsFilter: $resourceGroupsFilter\nregionsFilter: $regionsFilter\ndataTypeIdsFilter: $dataTypeIdsFilter\nfirstSeenTimeRange: $firstSeenTimeRange\nlastAccessTimeRange: $lastAccessTimeRange\ncreationTimeRange: $creationTimeRange\nlastScanTimeRange: $lastScanTimeRange\nobjectTagsFilter: $objectTagsFilter\nmipLabelsFilter: $mipLabelsFilter\ndocumentTypesFilter: $documentTypesFilter\nbackupStatusFilter: $backupStatusFilter\nslaIdsFilter: $slaIdsFilter\nnetworkAccessFilter: $networkAccessFilter\nencryptionFilter: $encryptionFilter\nloggingFilter: $loggingFilter\nviolationSeverityFilter: $violationSeverityFilter\nexposureFilter: $exposureFilter\naccessTypeFilter: $accessTypeFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "policyObjs" + args + "\n{\n" + fs + "}\n";
         }
         public static object PolicyObjsFieldSpec(AutofieldContext? ec=null)
@@ -13719,6 +13791,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new SnapshotSummaryConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CloudDirectSnapshotConnection? SnapshotsOfCloudDirectBucket
+        // GraphQL -> snapshotsOfCloudDirectBucket: CloudDirectSnapshotConnection! (type)
+        public static string SnapshotsOfCloudDirectBucket(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\n)";
+            return "snapshotsOfCloudDirectBucket" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SnapshotsOfCloudDirectBucketFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectSnapshotConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

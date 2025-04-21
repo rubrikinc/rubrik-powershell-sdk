@@ -15,6 +15,8 @@ AWS native account.
   - Count of RDS Instances in the account.
 - s3BucketCount: System.Int32
   - Count of Amazon S3 Buckets in the AWS native account.
+- dynamoDbTableCount: System.Int32
+  - Count of Amazon DynamoDB Tables in the AWS native account.
 - cloudType: AwsCloudType
   - AWS cloud type.
 - cloudAccountState: CloudAccountState

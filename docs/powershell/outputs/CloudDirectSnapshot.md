@@ -16,7 +16,7 @@ NAS Cloud Direct snapshot object.
 - systemId: System.String
   - ID of the NAS Cloud Direct System.
 - protocol: CloudDirectSnapshotProtocolType
-  - Protocol of the NAS Cloud Direct object.
+  - Protocol of the NAS Cloud Direct snapshot.
 - isCorrupted: System.Boolean
   - Specifies whether the snapshot is corrupted.
 - indexingAttempts: System.Int64
@@ -43,9 +43,11 @@ NAS Cloud Direct snapshot object.
   - Specifies whether the snapshot was downloaded.
 - isQuarantined: System.Boolean
   - Specifies whether the snapshot is quarantined.
-- share: CloudDirectNasShare
-  - NAS Cloud Direct object to which this snapshot belongs.
+- object: CloudDirectNasObject
+  - NAS Cloud Direct object (Bucket or Share) to which this snapshot belongs.
 - isExpired: System.Boolean
   - Specifies whether or not the snapshot is expired.
 - snappableId: System.String
   - The workload ID of the snapshot.
+- isAnomaly: System.Boolean
+  - Flag if the snapshot is an anomaly.

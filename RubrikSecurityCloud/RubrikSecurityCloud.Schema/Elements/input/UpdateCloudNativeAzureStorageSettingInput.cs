@@ -52,6 +52,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cmkInfo")]
         public List<AzureCmkInput>? CmkInfo { get; set; }
 
+        //      C# -> AzureStorageAccountNetworkAccess? NetworkAccessType
+        // GraphQL -> networkAccessType: AzureStorageAccountNetworkAccess (enum)
+        [JsonProperty("networkAccessType")]
+        public AzureStorageAccountNetworkAccess? NetworkAccessType { get; set; }
+
 
         #endregion
 

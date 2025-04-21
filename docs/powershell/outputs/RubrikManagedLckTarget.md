@@ -1,8 +1,6 @@
 ### RubrikManagedLckTarget
 Specific information for LCK archival target created on Rubrik cluster.
 
-- name: System.String
-  - Name of the LCK target.
 - s3Endpoint: System.String
   - Amazon S3 endpoint of the LCK target.
 - roleName: System.String
@@ -41,6 +39,8 @@ Specific information for LCK archival target created on Rubrik cluster.
   - The type of the target.
 - id: System.String
   - The ID of the target.
+- name: System.String
+  - The name of the target.
 - locationScope: LocationScope
   - The scope of the location of the target. Possible values are Global or Local.
 - isActive: System.Boolean

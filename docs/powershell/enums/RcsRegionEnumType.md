@@ -2,10 +2,12 @@
 Regions for Rubrik Cloud Storage Archival Location.
 
 - ASIA_PACIFIC_JAKARTA - Asia Pacific Jakarta.
+- BRAZIL_SOUTHEAST - Brazil Southeast or Rio.
 - US_EAST - US east or Virginia.
 - GOV_US_TEXAS - Gov US Texas or US Gov Texas.
 - NORWAY_EAST - Norway East or Oslo.
 - INDIA_CENTRAL - India Central or Pune.
+- GERMANY_NORTH - Germany North or Berlin.
 - SPAIN_CENTRAL - Spain Central or Madrid.
 - KOREA_SOUTH - Korea South or Busan.
 - SWITZERLAND_NORTH - Switzerland North or Zurich.
@@ -15,7 +17,10 @@ Regions for Rubrik Cloud Storage Archival Location.
 - GERMANY_WEST_CENTRAL - Germany West Central or Frankfurt.
 - AUSTRALIA_EAST - Australia East or New South Wales.
 - UNKNOWN_AWS_REGION - Rubrik Cloud Vault AWS region is unknown.
+- AUSTRALIA_CENTRAL2 - Australia Central 2 or Canberra.
+- SWITZERLAND_WEST - Switzerland West or Geneva.
 - MIDDLE_EAST_BAHRAIN - Middle East bahrain.
+- UAE_CENTRAL - UAE Central or Abu Dhabi.
 - ISRAEL_CENTRAL - Israel Central or Israel.
 - US_NORTH_CENTRAL - US north central or Illinois.
 - JAPAN_WEST - Japan West or Osaka.
@@ -32,12 +37,15 @@ Regions for Rubrik Cloud Storage Archival Location.
 - CANADA_CENTRAL - Canada Central or Toronto.
 - QATAR_CENTRAL - Qatar Central or Doha.
 - ASIA_PACIFIC_SYDNEY - Asia Pacific Sydney.
+- FRANCE_SOUTH - France South or Marseille.
 - US_WEST - US west or California.
 - UNKNOWN_AZURE_REGION - Rubrik Cloud Vault Azure region is unknown.
 - EUROPE_NORTH - Europe north or Netherlands.
 - EUROPE_STOCKHOLM - Europe Stockholm.
+- SOUTH_AFRICA_WEST - South Africa West or Cape Town.
 - US_CENTRAL - US central or Iowa.
 - GOV_US_ARIZONA - Gov US Arizona or US Gov Arizona.
+- NORWAY_WEST - Norway West or Stavanger.
 - EUROPE_WEST - Europe west or Ireland.
 - ASIA_EAST - Asia East or Hong Kong.
 - FRANCE_CENTRAL - France Central or Paris.
@@ -47,6 +55,7 @@ Regions for Rubrik Cloud Storage Archival Location.
 - ASIA_SOUTHEAST - Asia Southeast or Singapore.
 - UK_WEST - UK West or Cardiff.
 - INDIA_SOUTH - India South or Chennai.
+- SWEDEN_SOUTH - Sweden South or Malmo.
 - INDIA_WEST - India West or Mumbai.
 - CANADA_WEST_CALGARY - Canada West Calgary.
 - KOREA_CENTRAL - Korea Central or Seoul.

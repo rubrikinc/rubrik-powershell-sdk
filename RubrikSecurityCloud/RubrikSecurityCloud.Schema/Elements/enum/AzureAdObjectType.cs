@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ADMINISTRATIVE_UNIT")]
+        ADMINISTRATIVE_UNIT,
+
         [EnumMember(Value = "APPLICATION")]
         APPLICATION,
 
@@ -44,6 +47,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ROLE")]
         ROLE,
+
+        [EnumMember(Value = "ROLE_ASSIGNMENT")]
+        ROLE_ASSIGNMENT,
 
         [EnumMember(Value = "SERVICE_PRINCIPAL")]
         SERVICE_PRINCIPAL,

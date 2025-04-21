@@ -450,6 +450,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_ACCESS")]
         VIEW_ACCESS,
 
+        [EnumMember(Value = "VIEW_ALL_EVENTS")]
+        VIEW_ALL_EVENTS,
+
         [EnumMember(Value = "VIEW_ANOMALY_DETECTION_FILE_DETAILS")]
         VIEW_ANOMALY_DETECTION_FILE_DETAILS,
 

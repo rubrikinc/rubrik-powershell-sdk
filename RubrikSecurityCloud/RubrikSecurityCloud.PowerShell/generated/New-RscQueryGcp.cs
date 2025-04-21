@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 16
+    /// Create a new RscQuery object for any of the 17
     /// operations in the 'Google Cloud Platform' API domain:
-    /// CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
+    /// CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, LatestPermissionsByPermissionsGroup, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
     /// </summary>
     /// <description>
     /// New-RscQueryGcp creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 16 operations
+    /// There are 17 operations
     /// in the 'Google Cloud Platform' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
+    /// one of: CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, LatestPermissionsByPermissionsGroup, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -226,6 +226,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the LatestPermissionsByPermissionsGroup operation
+    /// of the 'Google Cloud Platform' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Gcp
+    /// # API Operation: LatestPermissionsByPermissionsGroup
+    /// 
+    /// $query = New-RscQueryGcp -Operation LatestPermissionsByPermissionsGroup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.features = @(
+    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;GcpFeatureWithPermissionGroups&gt;
     /// 
     /// 
     /// 
@@ -563,6 +593,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CloudAccountProjectsForOauth",
                 "FeaturePermissionsForCloudAccount",
                 "GetDefaultCredentialsServiceAccount",
+                "LatestPermissionsByPermissionsGroup",
                 "NativeAvailableKmsCryptoKeys",
                 "NativeCompatibleMachineTypes",
                 "NativeNetworks",
@@ -603,6 +634,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "GetDefaultCredentialsServiceAccount":
                         this.ProcessRecord_GetDefaultCredentialsServiceAccount();
+                        break;
+                    case "LatestPermissionsByPermissionsGroup":
+                        this.ProcessRecord_LatestPermissionsByPermissionsGroup();
                         break;
                     case "NativeAvailableKmsCryptoKeys":
                         this.ProcessRecord_NativeAvailableKmsCryptoKeys();
@@ -690,6 +724,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -GetDefaultCredentialsServiceAccount";
             // Create new graphql operation gcpGetDefaultCredentialsServiceAccount
             InitQueryGcpGetDefaultCredentialsServiceAccount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allLatestPermissionsByPermissionsGroupGcp.
+        internal void ProcessRecord_LatestPermissionsByPermissionsGroup()
+        {
+            this._logger.name += " -LatestPermissionsByPermissionsGroup";
+            // Create new graphql operation allLatestPermissionsByPermissionsGroupGcp
+            InitQueryAllLatestPermissionsByPermissionsGroupGcp();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -916,6 +959,28 @@ $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSe
                 Query.GcpGetDefaultCredentialsServiceAccount,
                 Query.GcpGetDefaultCredentialsServiceAccountFieldSpec,
                 @""
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allLatestPermissionsByPermissionsGroupGcp(features: [CloudAccountFeature!]!): [GcpFeatureWithPermissionGroups!]!
+        internal void InitQueryAllLatestPermissionsByPermissionsGroupGcp()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("features", "[CloudAccountFeature!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllLatestPermissionsByPermissionsGroupGcp",
+                "($features: [CloudAccountFeature!]!)",
+                "List<GcpFeatureWithPermissionGroups>",
+                Query.AllLatestPermissionsByPermissionsGroupGcp,
+                Query.AllLatestPermissionsByPermissionsGroupGcpFieldSpec,
+                @"# REQUIRED
+$query.Var.features = @(
+	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)"
             );
         }
 

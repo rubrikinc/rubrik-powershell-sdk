@@ -116,6 +116,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("after", "String"),
                     Tuple.Create("last", "Int"),
                     Tuple.Create("before", "String"),
+                    Tuple.Create("sortOrder", "SortOrder"),
                 };
             this.PaginatedSyncedClusters =
                 new RscGqlVars(null, paginatedSyncedClustersArgs, null, true);

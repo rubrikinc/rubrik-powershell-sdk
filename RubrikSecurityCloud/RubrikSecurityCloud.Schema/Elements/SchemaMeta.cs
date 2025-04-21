@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20250324-44" ;
+        public static string GraphqlSchemaVersion = "v20250414-30" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -414,6 +414,7 @@ namespace RubrikSecurityCloud.Types
             AwsTrustPolicyResult,
             AwsVpc,
             AzureAccount,
+            AzureAdAdministrativeUnit,
             AzureAdApplication,
             AzureAdAppRole,
             AzureAdAppRoleAssignment,
@@ -433,6 +434,7 @@ namespace RubrikSecurityCloud.Types
             AzureAdRelatedItemCount,
             AzureAdReverseRelationship,
             AzureAdRole,
+            AzureAdRoleAssignment,
             AzureAdServicePrincipal,
             AzureAdSnapshotDetails,
             AzureAdSnapshotRange,
@@ -649,8 +651,10 @@ namespace RubrikSecurityCloud.Types
             CdmLightweightHost,
             CdmManagedAwsTarget,
             CdmManagedAzureTarget,
+            CdmManagedDcaTarget,
             CdmManagedGcpTarget,
             CdmManagedGlacierTarget,
+            CdmManagedLckTarget,
             CdmManagedNfsTarget,
             CdmManagedS3CompatibleTarget,
             CdmManagedTapeTarget,
@@ -725,6 +729,9 @@ namespace RubrikSecurityCloud.Types
             CloudDirectCluster,
             CloudDirectClusterRansomwareInvestigationEnablement,
             CloudDirectDeviceDetails,
+            CloudDirectNasBucket,
+            CloudDirectNasBucketConnection,
+            CloudDirectNasBucketEdge,
             CloudDirectNasExport,
             CloudDirectNasNamespace,
             CloudDirectNasNamespaceConnection,
@@ -905,6 +912,7 @@ namespace RubrikSecurityCloud.Types
             DataCategoryHits,
             DataCategoryResult,
             DataCenterSummary,
+            DatagovAccessMethodDetailsType,
             DataGuardGroupMember,
             DataLocation,
             DataLocationSupportedCluster,
@@ -1135,6 +1143,7 @@ namespace RubrikSecurityCloud.Types
             GcpCloudAccountUpgradeProjectsReply,
             GcpCloudNativeTarget,
             GcpCmk,
+            GcpFeatureWithPermissionGroups,
             GcpNativeAttachmentDetails,
             GcpNativeDisk,
             GcpNativeDiskConnection,
@@ -1154,6 +1163,7 @@ namespace RubrikSecurityCloud.Types
             GcpNativeSubnetwork,
             GcpOauthUserInfo,
             GcpPermission,
+            GcpPermissionGroup,
             GcpRoleBasedAccount,
             GcpTargetTemplate,
             GenerateConfigProtectionRestoreFormReply,
@@ -1426,6 +1436,7 @@ namespace RubrikSecurityCloud.Types
             LockoutState,
             LogConfigResult,
             LookupAccountReply,
+            M365AccessMethodDetails,
             M365BackupStorageGroup,
             M365BackupStorageLicenseConsumption,
             M365BackupStorageLicenseUsage,
@@ -1850,8 +1861,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -1987,6 +1998,7 @@ namespace RubrikSecurityCloud.Types
             PathNode,
             PathSecInfo,
             PausedClustersInfo,
+            PausedSlaInfo,
             PauseReplicationTprReqChangesTemplate,
             PauseSlaReply,
             PauseTargetReply,
@@ -2050,6 +2062,7 @@ namespace RubrikSecurityCloud.Types
             PrincipalConnection,
             PrincipalCounts,
             PrincipalEdge,
+            PrincipalObject,
             PrivateContainerRegistryDetailsType,
             PrivateContainerRegistryReplyType,
             PrivateEndpointConnection,
@@ -2083,6 +2096,7 @@ namespace RubrikSecurityCloud.Types
             RbacObject,
             RbacPermission,
             RbaInstallerUrls,
+            RbsHostUsage,
             RcsArchivalLocationConsumptionStats,
             RcsArchivalLocationStatsRecord,
             RcsAzureArchivalLocationsConsumptionStatsOutput,
@@ -2117,6 +2131,7 @@ namespace RubrikSecurityCloud.Types
             RelativeMonthlyRecurrencePattern,
             RelativeTimeRange,
             RelativeYearlyRecurrencePattern,
+            RemoveClusterTprReqChangesTemplate,
             RemovedNodeDetail,
             RemoveNodeDetailsReply,
             RemoveNodeForReplacementReply,
@@ -2462,6 +2477,7 @@ namespace RubrikSecurityCloud.Types
             TimeStat,
             TotalRiskSummary,
             TotpStatus,
+            TprClusterRemovalDetails,
             TprConfiguration,
             TprPolicyDetail,
             TprPolicyObject,
@@ -2488,6 +2504,7 @@ namespace RubrikSecurityCloud.Types
             TriggeredTprPolicy,
             TriggerExocomputeHealthCheckReply,
             TriggerRansomwareDetectionReply,
+            UiStatusAttributes,
             UnidirectionalReplicationSpec,
             UnlockMethodType,
             UnmanagedObjectDetail,
@@ -2567,6 +2584,7 @@ namespace RubrikSecurityCloud.Types
             UpgradeRecommendationInfo,
             UpgradeSlasReply,
             UpgradeStatusReply,
+            UpgradeStatusV2,
             User,
             UserActivityResult,
             UserActivityResultConnection,
@@ -4735,6 +4753,7 @@ namespace RubrikSecurityCloud.Types
             allK8sReplicaSnapshotInfos,
             allKmsEncryptionKeysByRegionFromAws,
             allLatestFeaturePermissionsForCloudAccounts,
+            allLatestPermissionsByPermissionsGroupGcp,
             allLicensedProducts,
             allMipLabels,
             allMissingClusters,
@@ -4900,6 +4919,8 @@ namespace RubrikSecurityCloud.Types
             cloudAccount,
             cloudClusterRecoveryValidation,
             cloudDirectClusterEndpoints,
+            cloudDirectNasBucket,
+            cloudDirectNasBuckets,
             cloudDirectNasExport,
             cloudDirectNasNamespace,
             cloudDirectNasNamespaces,
@@ -5083,6 +5104,7 @@ namespace RubrikSecurityCloud.Types
             isIpmiEnabled,
             isLoggedIntoRubrikSupportPortal,
             isOrgServiceAccountDisabled,
+            isRemoveClusterTprConfigured,
             isReplaceNodeTprConfigured,
             isSfdcReachable,
             issue,
@@ -5369,6 +5391,7 @@ namespace RubrikSecurityCloud.Types
             snapshotResults,
             snapshotsForUnmanagedObject,
             snapshotSharepointDriveSearch,
+            snapshotsOfCloudDirectBucket,
             snapshotsOfCloudDirectShare,
             snmpConfigurations,
             snoozedDirectories,
@@ -6300,6 +6323,7 @@ namespace RubrikSecurityCloud.Types
         public enum GqlEnumName
         {
             Unknown,
+            AccessMethod,
             AccessType,
             AccessVia,
             AccountState,
@@ -6390,6 +6414,7 @@ namespace RubrikSecurityCloud.Types
             AwsRegion,
             AwsRetrievalTier,
             AwsStorageClass,
+            AzureAdAdminUnitMembershipEnumType,
             AzureAdConditionalAccessPolicyStateEnumType,
             AzureAdNamedLocationEnumType,
             AzureAdNamedLocationIsTrustedEnumType,
@@ -6400,6 +6425,8 @@ namespace RubrikSecurityCloud.Types
             AzureAdRelationshipEnumType,
             AzureAdRelationshipRestoreModeEnumType,
             AzureAdReverseRelationshipType,
+            AzureAdRoleAssignmentPrincipalType,
+            AzureAdRoleAssignmentScopeType,
             AzureAdServicePrincipalEnumType,
             AzureAppPermission,
             AzureCloudAccountRegion,
@@ -6431,6 +6458,7 @@ namespace RubrikSecurityCloud.Types
             AzureSqlManagedInstanceServerSortFields,
             AzureStorageAccessTier,
             AzureStorageAccountKind,
+            AzureStorageAccountNetworkAccess,
             AzureStorageTier,
             AzureSubscriptionStatus,
             BackupStatsTimeRange,
@@ -6864,6 +6892,7 @@ namespace RubrikSecurityCloud.Types
             PrecheckIdentifier,
             PrechecksStatusTypeEnum,
             PrePostScriptFailureHandlingEnum,
+            PrincipalRiskySummaryPrincipalType,
             PrincipalTypeEnum,
             PrivateEndpointConnectionStatus,
             PrivateEndpointErrors,
@@ -6913,6 +6942,7 @@ namespace RubrikSecurityCloud.Types
             RiskLevelType,
             RiskReason,
             RoleFieldEnum,
+            RscUpgradeStatusType,
             RubrikCloudVaultType,
             S3CompatibleSubType,
             SaasFeature,
@@ -7139,10 +7169,12 @@ namespace RubrikSecurityCloud.Types
         public enum GqlUnionName
         {
             Unknown,
+            AccessMethodDetailsType,
             AnomalyResultGroupByInfo,
             ApplicationSpecificMetadata,
             AzureSpecificFeatureDetails,
             CdmSnapshotGroupByInfo,
+            CloudDirectNasObject,
             ClusterGroupByInfo,
             ClusterMetricGroupByInfo,
             DataLocationClusterInfo,
@@ -7367,6 +7399,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     "CloudDirectHierarchyObject",
                     new HashSet<string> {
+                    "CloudDirectNasBucket",
                     "CloudDirectNasExport",
                     "CloudDirectNasNamespace",
                     "CloudDirectNasShare",
@@ -7376,6 +7409,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     "CloudDirectHierarchyWorkload",
                     new HashSet<string> {
+                    "CloudDirectNasBucket",
                     "CloudDirectNasExport",
                     "CloudDirectNasShare",
                     }
@@ -7383,20 +7417,21 @@ namespace RubrikSecurityCloud.Types
                 {
                     "CloudDirectNasNamespaceDescendantType",
                     new HashSet<string> {
-                    "CloudDirectNasNamespaceDescendantType",
+                    "CloudDirectNasBucket",
                     "CloudDirectNasShare",
                     }
                 },
                 {
                     "CloudDirectNasNamespaceLogicalChildType",
                     new HashSet<string> {
-                    "CloudDirectNasNamespaceLogicalChildType",
+                    "CloudDirectNasBucket",
                     "CloudDirectNasShare",
                     }
                 },
                 {
                     "CloudDirectNasSystemDescendantType",
                     new HashSet<string> {
+                    "CloudDirectNasBucket",
                     "CloudDirectNasNamespace",
                     "CloudDirectNasShare",
                     }
@@ -7404,6 +7439,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     "CloudDirectNasSystemLogicalChildType",
                     new HashSet<string> {
+                    "CloudDirectNasBucket",
                     "CloudDirectNasNamespace",
                     "CloudDirectNasShare",
                     }
@@ -7551,6 +7587,7 @@ namespace RubrikSecurityCloud.Types
                     "CassandraColumnFamily",
                     "CassandraKeyspace",
                     "CassandraSource",
+                    "CloudDirectNasBucket",
                     "CloudDirectNasExport",
                     "CloudDirectNasNamespace",
                     "CloudDirectNasShare",
@@ -8352,6 +8389,7 @@ namespace RubrikSecurityCloud.Types
                     "PamIntegrationReqChangesTemplate",
                     "PauseReplicationTprReqChangesTemplate",
                     "RcvActionsTprReqChangesTemplate",
+                    "RemoveClusterTprReqChangesTemplate",
                     "RemoveNodesTprReqChangesTemplate",
                     "SaaSorgTprReqChangesTemplate",
                     "StandardTprReqChangesTemplate",
@@ -8385,8 +8423,10 @@ namespace RubrikSecurityCloud.Types
                     new HashSet<string> {
                     "CdmManagedAwsTarget",
                     "CdmManagedAzureTarget",
+                    "CdmManagedDcaTarget",
                     "CdmManagedGcpTarget",
                     "CdmManagedGlacierTarget",
+                    "CdmManagedLckTarget",
                     "CdmManagedNfsTarget",
                     "CdmManagedS3CompatibleTarget",
                     "CdmManagedTapeTarget",
@@ -8814,6 +8854,18 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {
+                    "CloudDirectNasBucket",
+                    new HashSet<string> {
+                    "CloudDirectNasObject",
+                    }
+                },
+                {
+                    "CloudDirectNasShare",
+                    new HashSet<string> {
+                    "CloudDirectNasObject",
+                    }
+                },
+                {
                     "Cluster",
                     new HashSet<string> {
                     "AnomalyResultGroupByInfo",
@@ -8882,6 +8934,12 @@ namespace RubrikSecurityCloud.Types
                     "LockMethodType",
                     new HashSet<string> {
                     "LockoutEvent",
+                    }
+                },
+                {
+                    "M365AccessMethodDetails",
+                    new HashSet<string> {
+                    "AccessMethodDetailsType",
                     }
                 },
                 {
@@ -9210,6 +9268,7 @@ namespace RubrikSecurityCloud.Types
             allK8sReplicaSnapshotInfos,
             allKmsEncryptionKeysByRegionFromAws,
             allLatestFeaturePermissionsForCloudAccounts,
+            allLatestPermissionsByPermissionsGroupGcp,
             allLicensedProducts,
             allMipLabels,
             allMissingClusters,
@@ -9460,6 +9519,8 @@ namespace RubrikSecurityCloud.Types
             cloudAccount,
             cloudClusterRecoveryValidation,
             cloudDirectClusterEndpoints,
+            cloudDirectNasBucket,
+            cloudDirectNasBuckets,
             cloudDirectNasExport,
             cloudDirectNasNamespace,
             cloudDirectNasNamespaces,
@@ -9948,6 +10009,7 @@ namespace RubrikSecurityCloud.Types
             isIpmiEnabled,
             isLoggedIntoRubrikSupportPortal,
             isOrgServiceAccountDisabled,
+            isRemoveClusterTprConfigured,
             isReplaceNodeTprConfigured,
             isSfdcReachable,
             isTotpAckNecessaryForCluster,
@@ -10378,6 +10440,7 @@ namespace RubrikSecurityCloud.Types
             snapshotResults,
             snapshotSharepointDriveSearch,
             snapshotsForUnmanagedObject,
+            snapshotsOfCloudDirectBucket,
             snapshotsOfCloudDirectShare,
             snmpConfigurations,
             snoozedDirectories,
@@ -11957,6 +12020,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryCloudAccount",
                         cmdletSwitchName: "LatestFeaturePermissions",
                         gqlRootFieldName: "allLatestFeaturePermissionsForCloudAccounts"
+                    )
+                },
+                {
+                    GqlRootFieldName.allLatestPermissionsByPermissionsGroupGcp,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "LatestPermissionsByPermissionsGroup",
+                        gqlRootFieldName: "allLatestPermissionsByPermissionsGroupGcp"
                     )
                 },
                 {
@@ -13957,6 +14028,22 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryCluster",
                         cmdletSwitchName: "CloudDirectClusterEndpoints",
                         gqlRootFieldName: "cloudDirectClusterEndpoints"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudDirectNasBucket,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "CloudDirectNasBucket",
+                        gqlRootFieldName: "cloudDirectNasBucket"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudDirectNasBuckets,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "CloudDirectNasBuckets",
+                        gqlRootFieldName: "cloudDirectNasBuckets"
                     )
                 },
                 {
@@ -17864,6 +17951,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.isRemoveClusterTprConfigured,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "IsRemoveClusterTprConfigured",
+                        gqlRootFieldName: "isRemoveClusterTprConfigured"
+                    )
+                },
+                {
                     GqlRootFieldName.isReplaceNodeTprConfigured,
                     new RscOp(
                         cmdletName: "New-RscQueryMisc",
@@ -21304,6 +21399,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.snapshotsOfCloudDirectBucket,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "SOfCloudDirectBucket",
+                        gqlRootFieldName: "snapshotsOfCloudDirectBucket"
+                    )
+                },
+                {
                     GqlRootFieldName.snapshotsOfCloudDirectShare,
                     new RscOp(
                         cmdletName: "New-RscQuerySnapshot",
@@ -24739,6 +24842,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allLatestFeaturePermissionsForCloudAccounts
                 },
                 {
+                    "New-RscQueryGcp -Op LatestPermissionsByPermissionsGroup",
+                    GqlRootFieldName.allLatestPermissionsByPermissionsGroupGcp
+                },
+                {
                     "New-RscQueryMisc -Op LicensedProducts",
                     GqlRootFieldName.allLicensedProducts
                 },
@@ -25737,6 +25844,14 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryCluster -Op CloudDirectClusterEndpoints",
                     GqlRootFieldName.cloudDirectClusterEndpoints
+                },
+                {
+                    "New-RscQueryMisc -Op CloudDirectNasBucket",
+                    GqlRootFieldName.cloudDirectNasBucket
+                },
+                {
+                    "New-RscQueryMisc -Op CloudDirectNasBuckets",
+                    GqlRootFieldName.cloudDirectNasBuckets
                 },
                 {
                     "New-RscQueryMisc -Op CloudDirectNasExport",
@@ -27691,6 +27806,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.isOrgServiceAccountDisabled
                 },
                 {
+                    "New-RscQueryCluster -Op IsRemoveClusterTprConfigured",
+                    GqlRootFieldName.isRemoveClusterTprConfigured
+                },
+                {
                     "New-RscQueryMisc -Op IsReplaceNodeTprConfigured",
                     GqlRootFieldName.isReplaceNodeTprConfigured
                 },
@@ -29409,6 +29528,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQuerySnapshot -Op UnmanagedObject",
                     GqlRootFieldName.snapshotsForUnmanagedObject
+                },
+                {
+                    "New-RscQuerySnapshot -Op SOfCloudDirectBucket",
+                    GqlRootFieldName.snapshotsOfCloudDirectBucket
                 },
                 {
                     "New-RscQuerySnapshot -Op SOfCloudDirectShare",
@@ -31592,6 +31715,7 @@ namespace RubrikSecurityCloud.Types
                         "isAzureStorageAccountNameAvailable",
                         "isIpmiEnabled",
                         "isOrgServiceAccountDisabled",
+                        "isRemoveClusterTprConfigured",
                         "isReplaceNodeTprConfigured",
                         "isSfdcReachable",
                         "isTotpAckNecessaryForCluster",
@@ -31838,6 +31962,14 @@ namespace RubrikSecurityCloud.Types
                         "updateAzureAccount",
                     }
                 },
+                {   "CloudDirectNasBucket", new List<string> {
+                        "cloudDirectNasBucket",
+                    }
+                },
+                {   "CloudDirectNasBucketConnection", new List<string> {
+                        "cloudDirectNasBuckets",
+                    }
+                },
                 {   "CloudDirectNasExport", new List<string> {
                         "cloudDirectNasExport",
                     }
@@ -31872,6 +32004,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "CloudDirectSnapshotConnection", new List<string> {
                         "cloudDirectSnapshots",
+                        "snapshotsOfCloudDirectBucket",
                         "snapshotsOfCloudDirectShare",
                     }
                 },
@@ -35270,6 +35403,10 @@ namespace RubrikSecurityCloud.Types
                         "allGcpCloudAccountProjectsForOauth",
                     }
                 },
+                {   "[GcpFeatureWithPermissionGroups]", new List<string> {
+                        "allLatestPermissionsByPermissionsGroupGcp",
+                    }
+                },
                 {   "[GcpNativeKmsCryptoKey]", new List<string> {
                         "allGcpNativeAvailableKmsCryptoKeys",
                     }
@@ -38056,6 +38193,7 @@ namespace RubrikSecurityCloud.Types
                         "cassandraColumnFamilies",
                         "cassandraKeyspaces",
                         "cassandraSources",
+                        "cloudDirectNasBuckets",
                         "cloudDirectNasNamespaces",
                         "cloudDirectNasShares",
                         "cloudDirectNasSystems",
@@ -38248,6 +38386,7 @@ namespace RubrikSecurityCloud.Types
                         "cdmMssqlLogShippingTargets",
                         "certificates",
                         "certificateSigningRequests",
+                        "cloudDirectNasBuckets",
                         "cloudDirectNasNamespaces",
                         "cloudDirectNasShares",
                         "cloudDirectNasSystems",
@@ -38405,6 +38544,7 @@ namespace RubrikSecurityCloud.Types
                         "snapshotOnedriveSearch",
                         "snapshotsForUnmanagedObject",
                         "snapshotSharepointDriveSearch",
+                        "snapshotsOfCloudDirectBucket",
                         "snapshotsOfCloudDirectShare",
                         "snoozedDirectories",
                         "sonarContentReport",
@@ -39466,6 +39606,7 @@ namespace RubrikSecurityCloud.Types
                 {   "SnapshotQuerySortByField", new List<string> {
                         "snapshotOfASnappableConnection",
                         "snapshotOfSnappablesConnection",
+                        "snapshotsOfCloudDirectBucket",
                         "snapshotsOfCloudDirectShare",
                     }
                 },
@@ -39516,6 +39657,7 @@ namespace RubrikSecurityCloud.Types
                         "cassandraSources",
                         "certificates",
                         "certificateSigningRequests",
+                        "cloudDirectNasBuckets",
                         "cloudDirectNasNamespaces",
                         "cloudDirectNasShares",
                         "cloudDirectNasSystems",
@@ -39615,6 +39757,7 @@ namespace RubrikSecurityCloud.Types
                         "snappableConnection",
                         "snapshotOfASnappableConnection",
                         "snapshotOfSnappablesConnection",
+                        "snapshotsOfCloudDirectBucket",
                         "snapshotsOfCloudDirectShare",
                         "sonarContentReport",
                         "sonarReportRow",
@@ -39885,6 +40028,7 @@ namespace RubrikSecurityCloud.Types
                         "checkCloudNativeLabelRuleNameUniqueness",
                         "checkCloudNativeTagRuleNameUniqueness",
                         "cloudClusterRecoveryValidation",
+                        "cloudDirectNasBuckets",
                         "cloudDirectNasNamespaces",
                         "cloudDirectNasShares",
                         "cloudDirectNasSystems",
@@ -39946,6 +40090,7 @@ namespace RubrikSecurityCloud.Types
                         "getCdmReleaseDetailsFromSupportPortal",
                         "getKorgTaskchainStatus",
                         "getPermissions",
+                        "getRolesByIds",
                         "getUserDownloads",
                         "globalCertificate",
                         "globalCertificates",
@@ -40098,6 +40243,7 @@ namespace RubrikSecurityCloud.Types
                         "snapshotResults",
                         "snapshotsForUnmanagedObject",
                         "snapshotSharepointDriveSearch",
+                        "snapshotsOfCloudDirectBucket",
                         "snapshotsOfCloudDirectShare",
                         "snoozedDirectories",
                         "sonarContentReport",
@@ -40245,6 +40391,7 @@ namespace RubrikSecurityCloud.Types
                 {   "TimeRangeInput", new List<string> {
                         "snapshotOfASnappableConnection",
                         "snapshotOfSnappablesConnection",
+                        "snapshotsOfCloudDirectBucket",
                         "snapshotsOfCloudDirectShare",
                     }
                 },
@@ -40400,6 +40547,7 @@ namespace RubrikSecurityCloud.Types
                         "checkAzurePersistentStorageSubscriptionCanUnmap",
                         "cloudAccount",
                         "cloudDirectClusterEndpoints",
+                        "cloudDirectNasBucket",
                         "cloudDirectNasExport",
                         "cloudDirectNasNamespace",
                         "cloudDirectNasShare",
@@ -40458,6 +40606,7 @@ namespace RubrikSecurityCloud.Types
                         "isAzureNativeManagedDiskSnapshotRestorable",
                         "isAzureNativeSqlDatabaseSnapshotPersistent",
                         "isAzureStorageAccountNameAvailable",
+                        "isRemoveClusterTprConfigured",
                         "isReplaceNodeTprConfigured",
                         "isTotpAckNecessaryForCluster",
                         "isUpgradeAvailable",
@@ -41455,6 +41604,7 @@ namespace RubrikSecurityCloud.Types
                         "allCloudAccounts",
                         "allGcpCloudAccountProjectsForOauth",
                         "allLatestFeaturePermissionsForCloudAccounts",
+                        "allLatestPermissionsByPermissionsGroupGcp",
                         "azureCloudAccountTenant",
                         "azureCloudAccountTenantWithExoConfigs",
                     }
@@ -41516,6 +41666,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "[FeatureWithPermissionsGroups]", new List<string> {
                         "allAzureCloudAccountSubscriptionsByFeature",
+                        "allCurrentFeaturePermissionsForCloudAccounts",
                         "allLatestFeaturePermissionsForCloudAccounts",
                     }
                 },
@@ -41526,6 +41677,7 @@ namespace RubrikSecurityCloud.Types
                         "cassandraColumnFamilies",
                         "cassandraKeyspaces",
                         "cassandraSources",
+                        "cloudDirectNasBuckets",
                         "cloudDirectNasNamespaces",
                         "cloudDirectNasShares",
                         "cloudDirectNasSystems",
@@ -41662,6 +41814,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "[Logging]", new List<string> {
                         "policyObjs",
+                    }
+                },
+                {   "[MfaStatus]", new List<string> {
+                        "orgs",
                     }
                 },
                 {   "[MipLabelsFilterInput]", new List<string> {
@@ -41806,6 +41962,7 @@ namespace RubrikSecurityCloud.Types
                 {   "[SnapshotQueryFilterInput]", new List<string> {
                         "snapshotOfASnappableConnection",
                         "snapshotOfSnappablesConnection",
+                        "snapshotsOfCloudDirectBucket",
                         "snapshotsOfCloudDirectShare",
                     }
                 },
@@ -41928,6 +42085,7 @@ namespace RubrikSecurityCloud.Types
                         "ncdBackEndCapacity",
                         "ncdFrontEndCapacity",
                         "ncdObjectProtectionStatus",
+                        "policyObjs",
                         "protectedObjectsConnection",
                         "scheduleUpgradeBatchJob",
                         "serviceAccounts",
@@ -42375,6 +42533,7 @@ namespace RubrikSecurityCloud.Types
                 { "isAzureStorageAccountNameAvailable", "Boolean"},
                 { "isIpmiEnabled", "Boolean"},
                 { "isOrgServiceAccountDisabled", "Boolean"},
+                { "isRemoveClusterTprConfigured", "Boolean"},
                 { "isReplaceNodeTprConfigured", "Boolean"},
                 { "isSfdcReachable", "Boolean"},
                 { "isTotpAckNecessaryForCluster", "Boolean"},
@@ -42472,6 +42631,8 @@ namespace RubrikSecurityCloud.Types
                 { "createAzureAccount", "CloudAccount"},
                 { "updateAwsAccount", "CloudAccount"},
                 { "updateAzureAccount", "CloudAccount"},
+                { "cloudDirectNasBucket", "CloudDirectNasBucket"},
+                { "cloudDirectNasBuckets", "CloudDirectNasBucketConnection"},
                 { "cloudDirectNasExport", "CloudDirectNasExport"},
                 { "cloudDirectNasNamespace", "CloudDirectNasNamespace"},
                 { "cloudDirectNasNamespaces", "CloudDirectNasNamespaceConnection"},
@@ -42481,6 +42642,7 @@ namespace RubrikSecurityCloud.Types
                 { "cloudDirectNasSystems", "CloudDirectNasSystemConnection"},
                 { "cloudDirectSnapshot", "CloudDirectSnapshot"},
                 { "cloudDirectSnapshots", "CloudDirectSnapshotConnection"},
+                { "snapshotsOfCloudDirectBucket", "CloudDirectSnapshotConnection"},
                 { "snapshotsOfCloudDirectShare", "CloudDirectSnapshotConnection"},
                 { "cloudDirectSystems", "CloudDirectSystems"},
                 { "cloudNativeCheckRbaConnectivity", "CloudNativeCheckRbaConnectivityReply"},
@@ -43564,6 +43726,7 @@ namespace RubrikSecurityCloud.Types
                 { "allGcpCloudAccountMissingPermissionsForAddition", "[GcpCloudAccountMissingPermissionsForAddition]"},
                 { "allGcpCloudAccountProjectsByFeature", "[GcpCloudAccountProjectDetail]"},
                 { "allGcpCloudAccountProjectsForOauth", "[GcpCloudAccountProjectForOauth]"},
+                { "allLatestPermissionsByPermissionsGroupGcp", "[GcpFeatureWithPermissionGroups]"},
                 { "allGcpNativeAvailableKmsCryptoKeys", "[GcpNativeKmsCryptoKey]"},
                 { "allGcpNativeNetworks", "[GcpNativeNetwork]"},
                 { "allGcpNativeRegions", "[GcpNativeRegion]"},
@@ -44434,6 +44597,7 @@ namespace RubrikSecurityCloud.Types
                     "Ipmi",
                     "Ipv6Mode",
                     "IsCloudClusterDiskUpgradeAvailable",
+                    "IsRemoveClusterTprConfigured",
                     "IsTotpAckNecessary",
                     "LicensesForClusterProductSummary",
                     "List",
@@ -44605,6 +44769,7 @@ namespace RubrikSecurityCloud.Types
                     "CreateTarget",
                     "FeaturePermissionsForCloudAccount",
                     "GetDefaultCredentialsServiceAccount",
+                    "LatestPermissionsByPermissionsGroup",
                     "NativeAvailableKmsCryptoKeys",
                     "NativeCompatibleMachineTypes",
                     "NativeNetworks",
@@ -44860,6 +45025,8 @@ namespace RubrikSecurityCloud.Types
                     "ChangePassword",
                     "CheckCloudComputeConnectivityJobProgress",
                     "CheckLatestVersionMgmtAppExists",
+                    "CloudDirectNasBucket",
+                    "CloudDirectNasBuckets",
                     "CloudDirectNasExport",
                     "CloudDirectNasNamespace",
                     "CloudDirectNasNamespaces",
@@ -45743,6 +45910,7 @@ namespace RubrikSecurityCloud.Types
                     "RestoreDomainController",
                     "RestoreVolumeGroupFiles",
                     "Results",
+                    "SOfCloudDirectBucket",
                     "SOfCloudDirectShare",
                     "SnappableList",
                     "SnappablesList",

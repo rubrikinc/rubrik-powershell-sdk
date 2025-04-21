@@ -11,3 +11,5 @@ Input for updating azure storage settings. Specify old value of the property if 
   - Storage tier for the storage account.
 - cmkInfo: list of AzureCmkInputs
   - Information about the customer-managed key and key vault.
+- networkAccessType: AzureStorageAccountNetworkAccess
+  - Information about the network access type of the storage account.

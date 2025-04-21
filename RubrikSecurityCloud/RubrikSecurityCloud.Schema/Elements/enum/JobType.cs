@@ -54,6 +54,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BEGIN_MANAGED_VOLUME_SNAPSHOT")]
         BEGIN_MANAGED_VOLUME_SNAPSHOT,
 
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_SYSTEM_CRUD")]
+        CLOUD_DIRECT_NAS_SYSTEM_CRUD,
+
         [EnumMember(Value = "CLUSTER_WEB_CERT")]
         CLUSTER_WEB_CERT,
 

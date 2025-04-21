@@ -96,6 +96,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CASSANDRA_SOURCE")]
         CASSANDRA_SOURCE,
 
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_BUCKET")]
+        CLOUD_DIRECT_NAS_BUCKET,
+
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
         CLOUD_DIRECT_NAS_EXPORT,
 
@@ -351,11 +354,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OPENSTACK_AVAILABILITY_ZONE")]
         OPENSTACK_AVAILABILITY_ZONE,
 
+        [EnumMember(Value = "OPENSTACK_DOMAIN")]
+        OPENSTACK_DOMAIN,
+
         [EnumMember(Value = "OPENSTACK_ENVIRONMENT")]
         OPENSTACK_ENVIRONMENT,
 
         [EnumMember(Value = "OPENSTACK_HOST")]
         OPENSTACK_HOST,
+
+        [EnumMember(Value = "OPENSTACK_PROJECT")]
+        OPENSTACK_PROJECT,
 
         [EnumMember(Value = "OPENSTACK_REGION")]
         OPENSTACK_REGION,

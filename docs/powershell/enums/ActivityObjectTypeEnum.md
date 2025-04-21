@@ -125,6 +125,7 @@ The list of object types for activities.
 - Envoy - Specifies that the activity object type is Envoy.
 - Cluster - Specifies that the activity object type is Rubrik Cluster.
 - AppBlueprint - Specifies that the activity object type is App Blueprint.
+- OPENSTACK_VIRTUAL_MACHINE - Specifies that the activity object type is Openstack Virtual Machine.
 - AzureNativeSubscription - Specifies that the activity object type is Azure Native Subscription.
 - Certificate - Specifies that the activity object type is Certificate.
 - SamlSso - Specifies that the activity object type is Saml SSO.
