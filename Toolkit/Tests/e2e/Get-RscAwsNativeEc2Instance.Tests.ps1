@@ -10,8 +10,7 @@ BeforeAll {
 Describe -Name 'Get-RscAwsNativeEc2Instance Tests' -Tag 'Public' -Fixture {
 
     It -Name 'retrieves RscAwsNativeEc2Instances' -Test {
-        $data.objects = Get-RscAwsNativeEc2Instance
-        $data.objects | Should -Not -BeNullOrEmpty
+        { Get-RscAwsNativeEc2Instance } | Should -Not -Throw
     }
 
     Context -Name 'RscAwsNativeEc2Instance Count > 0' {

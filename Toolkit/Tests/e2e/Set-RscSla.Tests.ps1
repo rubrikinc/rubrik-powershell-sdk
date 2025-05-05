@@ -92,6 +92,10 @@ Describe -Name 'Set-RscSla Tests' -Tag 'Public' -Fixture {
             $sla.description = $null
             $retrievedSla.description = $null
 
+            # Clear `SnapshotScheduleLastUpdatedAt` since it will be updated after every update
+            $sla.SnapshotScheduleLastUpdatedAt = $null
+            $retrievedSla.SnapshotScheduleLastUpdatedAt = $null
+            
             $originalJson = $sla | ConvertTo-Json -Depth 10
             $retrievedJson = $retrievedSla | ConvertTo-Json -Depth 10
 
