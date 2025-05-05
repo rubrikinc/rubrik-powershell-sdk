@@ -33,6 +33,11 @@ Represents the Amazon DynamoDB Table with a specific ID. For more information, s
     - dynamoDbTableRubrikId - System.String: Rubrik ID for the AWS DynamoDB table object.
     - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AwsNativeDynamoDbTable.
+### dynamodbtablepointintimerestorewindow
+The Point-in-Time (PiT) restore window of a DynamoDB table in an AWS native account refers to the range of time available for restoration. This window defines the period during which you can restore the table to a specific point in time. For more information, see https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Point-in-time-recovery.html.
+
+- There is a single argument of type System.String.
+- Returns AwsNativeDynamoDbTablePointInTimeRestoreWindow.
 ### ebsvolume
 Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
 

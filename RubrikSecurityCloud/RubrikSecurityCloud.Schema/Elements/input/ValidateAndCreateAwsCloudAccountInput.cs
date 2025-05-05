@@ -73,6 +73,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsChildOus")]
         public List<AwsOuInput>? AwsChildOus { get; set; }
 
+        //      C# -> System.String? RoleChainingAccountId
+        // GraphQL -> roleChainingAccountId: UUID (scalar)
+        [JsonProperty("roleChainingAccountId")]
+        public System.String? RoleChainingAccountId { get; set; }
+
 
         #endregion
 

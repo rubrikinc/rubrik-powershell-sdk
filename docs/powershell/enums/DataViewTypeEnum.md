@@ -46,3 +46,4 @@ All reporting table schemas.
 - SSO_GROUP - Specifies the database schema for SSO groups.
 - ROLE_LIST - Specifies the roles information.
 - USERS - Specifies the Users report information.
+- PHYSICAL_HOSTS - Specifies the database schema for physical hosts.

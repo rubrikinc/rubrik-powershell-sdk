@@ -17,7 +17,7 @@ Input to list global certificates.
   - Specifies whether to include only CA certificates.
 - issuerTypes: list of IssuerTypes
   - Specifies the certificate issuer types to return.
-- isRenewalInProgress: System.Boolean
-  - Specifies whether to include only certificates undergoing renewal.
+- renewalStatuses: list of CertificateRotationStatuss
+  - Specifies the certificate rotation statuses to retrieve.
 - cdmUsages: list of CdmCertificateUsages
   - Specifies the CDM certificate usages to return.

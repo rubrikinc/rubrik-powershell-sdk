@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("permissionsGroups")]
         public List<PermissionsGroup>? PermissionsGroups { get; set; }
 
+        //      C# -> AddAzureCloudAccountResourceGroupInput? ResourceGroup
+        // GraphQL -> resourceGroup: AddAzureCloudAccountResourceGroupInput (input)
+        [JsonProperty("resourceGroup")]
+        public AddAzureCloudAccountResourceGroupInput? ResourceGroup { get; set; }
+
 
         #endregion
 

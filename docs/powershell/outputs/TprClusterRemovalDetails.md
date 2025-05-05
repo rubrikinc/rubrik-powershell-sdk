@@ -9,3 +9,5 @@ Details of the cluster being removed.
   - IP address of the cluster.
 - location: System.String
   - Location of the cluster.
+- status: ClusterStatus
+  - Connected status of the cluster.

@@ -9,3 +9,4 @@ Target mapping filter field.
 - ARCHIVAL_GROUP_ID - Filter by target mapping ID.
 - CLOUD_NATIVE_USE_CASE - Filter by cloud native use case.
 - EXCLUDE_GROUP_TYPE - Filter to exclude group types.
+- INCLUDE_INLINE - Filter to include inline groups.

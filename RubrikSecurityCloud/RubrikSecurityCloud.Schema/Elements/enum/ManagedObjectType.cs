@@ -102,6 +102,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CASSANDRA_SOURCE")]
         CASSANDRA_SOURCE,
 
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_BUCKET")]
+        CLOUD_DIRECT_NAS_BUCKET,
+
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
         CLOUD_DIRECT_NAS_EXPORT,
 

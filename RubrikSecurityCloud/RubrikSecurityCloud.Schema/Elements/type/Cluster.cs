@@ -121,6 +121,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAirGapped")]
         public System.Boolean? IsAirGapped { get; set; }
 
+        //      C# -> System.Boolean? IsClusterRemovalTprEnabled
+        // GraphQL -> isClusterRemovalTprEnabled: Boolean (scalar)
+        [JsonProperty("isClusterRemovalTprEnabled")]
+        public System.Boolean? IsClusterRemovalTprEnabled { get; set; }
+
         //      C# -> System.Boolean? IsHealthy
         // GraphQL -> isHealthy: Boolean! (scalar)
         [JsonProperty("isHealthy")]
@@ -449,6 +454,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? EstimatedRunway = null,
         System.String? Id = null,
         System.Boolean? IsAirGapped = null,
+        System.Boolean? IsClusterRemovalTprEnabled = null,
         System.Boolean? IsHealthy = null,
         System.Boolean? IsTprEnabled = null,
         DateTime? LastConnectionTime = null,
@@ -553,6 +559,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsAirGapped != null ) {
             this.IsAirGapped = IsAirGapped;
+        }
+        if ( IsClusterRemovalTprEnabled != null ) {
+            this.IsClusterRemovalTprEnabled = IsClusterRemovalTprEnabled;
         }
         if ( IsHealthy != null ) {
             this.IsHealthy = IsHealthy;
@@ -875,6 +884,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isAirGapped\n" ;
             } else {
                 s += ind + "isAirGapped\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsClusterRemovalTprEnabled
+        // GraphQL -> isClusterRemovalTprEnabled: Boolean (scalar)
+        if (this.IsClusterRemovalTprEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isClusterRemovalTprEnabled\n" ;
+            } else {
+                s += ind + "isClusterRemovalTprEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsHealthy
@@ -1703,6 +1721,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsAirGapped != null && ec.Excludes("isAirGapped",true))
         {
             this.IsAirGapped = null;
+        }
+        //      C# -> System.Boolean? IsClusterRemovalTprEnabled
+        // GraphQL -> isClusterRemovalTprEnabled: Boolean (scalar)
+        if (ec.Includes("isClusterRemovalTprEnabled",true))
+        {
+            if(this.IsClusterRemovalTprEnabled == null) {
+
+                this.IsClusterRemovalTprEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsClusterRemovalTprEnabled != null && ec.Excludes("isClusterRemovalTprEnabled",true))
+        {
+            this.IsClusterRemovalTprEnabled = null;
         }
         //      C# -> System.Boolean? IsHealthy
         // GraphQL -> isHealthy: Boolean! (scalar)

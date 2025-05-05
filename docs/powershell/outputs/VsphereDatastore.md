@@ -9,6 +9,8 @@ Vsphere datastore.
   - Indicates whether the datastore is standalone or not.
 - isArchived: System.Boolean
   - Indicates whether the datastore is archived or not.
+- backingDeviceName: System.String
+  - Specifies the device backing the datastore.
 - id: System.String
   - Object ID.
 - cluster: Cluster

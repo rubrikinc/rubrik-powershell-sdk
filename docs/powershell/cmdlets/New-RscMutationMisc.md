@@ -15,6 +15,11 @@ Add custom intel feed.
 
 - There is a single argument of type AddCustomIntelFeedInput.
 - Returns AddCustomIntelFeedReply.
+### addidentityprovider
+Add a new identity provider.
+
+- There is a single argument of type AddIdentityProviderInput.
+- Returns AddIdentityProviderReply.
 ### addinventoryworkloads
 Add account level inventory workloads.
 
@@ -100,6 +105,11 @@ Cancel a two-person rule (TPR) request with optional comments.
 
 - There is a single argument of type CancelTprRequestInput.
 - Returns System.String.
+### changecurrentuserpassword
+Change the password for the current user.
+
+- There is a single argument of type ChangeCurrentUserPasswordInput.
+- Returns System.String.
 ### changepassword
 - There is a single argument of type ChangePasswordInput.
 - Returns System.Boolean.
@@ -136,6 +146,11 @@ Create an on-demand snapshot for the given Volume Group ID.
 
 - There is a single argument of type CreateOnDemandVolumeGroupBackupInput.
 - Returns AsyncRequestStatus.
+### createssousers
+Create SSO users.
+
+- There is a single argument of type CreateSsoUsersInput.
+- Returns CreateSsoUsersReply.
 ### createvappsinstantrecovery
 Initiate instant recovery from vApp snapshots.
 
@@ -166,6 +181,11 @@ Delete guest OS credentials.
 
 - There is a single argument of type DeleteGuestCredentialByIdInput.
 - Returns System.Boolean.
+### deleteidentityproviderbyid
+Delete an identity provider.
+
+- There is a single argument of type DeleteIdentityProviderByIdInput.
+- Returns System.String.
 ### deleteintelfeed
 Delete intel feed.
 
@@ -313,6 +333,11 @@ Modify distribution list digests.
 Modify event digests for specific recipients.
 
 - There is a single argument of type ModifyEventDigestBatchInput.
+- Returns System.String.
+### modifyidentityprovider
+Modify an existing identity provider.
+
+- There is a single argument of type ModifyIdentityProviderInput.
 - Returns System.String.
 ### modifyipmi
 Modify IPMI settings
@@ -505,6 +530,11 @@ Update the user-level TOTP enforcement for given users. Return true when the ope
 
 - There is a single argument of type SetUserLevelTotpEnforcementInput.
 - Returns System.Boolean.
+### setusersessionmanagementconfig
+Update the session management configurations for the user account.
+
+- There is a single argument of type SetUserSessionManagementConfigInput.
+- Returns SetUserSessionManagementConfigReply.
 ### setworkloadalertsetting
 Enable/disable alerts for given workload on given cluster.
 

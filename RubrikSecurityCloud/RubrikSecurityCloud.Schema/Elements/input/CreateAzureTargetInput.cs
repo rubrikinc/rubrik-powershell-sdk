@@ -105,6 +105,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("retrievalTier")]
         public AzureRetrievalTier? RetrievalTier { get; set; }
 
+        //      C# -> AzureStorageTier? AccessTier
+        // GraphQL -> accessTier: AzureStorageTier (enum)
+        [JsonProperty("accessTier")]
+        public AzureStorageTier? AccessTier { get; set; }
+
         //      C# -> System.Boolean? BypassProxy
         // GraphQL -> bypassProxy: Boolean! (scalar)
         [Required]

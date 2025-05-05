@@ -144,8 +144,8 @@ All supported managed objects.
 - MYSQLDB_INSTANCE - MySQL Instance.
 - MYSQLDB_DATABASE - MySQL Database.
 - CLOUD_DIRECT_NAS_SYSTEM - NAS Cloud Direct system.
-- CLOUD_DIRECT_NAS_NAMESPACE - Namespace for the NAS Cloud Direct.
-- CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS share replaces CLOUD_DIRECT_NAS_EXPORT.
+- CLOUD_DIRECT_NAS_NAMESPACE - NAS Cloud Direct namespace.
+- CLOUD_DIRECT_NAS_SHARE - NAS Cloud Direct share.
 - EXCHANGE_HOST - Exchange Host.
 - MSSQL_HOST - MSSQL Host.
 - K8S_NAMESPACE_V2 - Kubernetes Namespace V2.
@@ -162,6 +162,7 @@ All supported managed objects.
 - ROOT - Root Node.
 - OPENSTACK_DOMAIN - Openstack Domain.
 - OPENSTACK_PROJECT - Openstack Project.
+- CLOUD_DIRECT_NAS_BUCKET - NAS Cloud direct bucket.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

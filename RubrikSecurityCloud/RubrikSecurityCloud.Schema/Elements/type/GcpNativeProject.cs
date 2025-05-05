@@ -56,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: String! (scalar)
+        [JsonProperty("cloudAccountId")]
+        public System.String? CloudAccountId { get; set; }
+
         //      C# -> System.Int32? DiskCount
         // GraphQL -> diskCount: Int! (scalar)
         [JsonProperty("diskCount")]
@@ -222,6 +227,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.String? CloudAccountId = null,
         System.Int32? DiskCount = null,
         System.String? Id = null,
         DateTime? LastRefreshedAt = null,
@@ -264,6 +270,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
+        if ( CloudAccountId != null ) {
+            this.CloudAccountId = CloudAccountId;
         }
         if ( DiskCount != null ) {
             this.DiskCount = DiskCount;
@@ -412,6 +421,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: String! (scalar)
+        if (this.CloudAccountId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudAccountId\n" ;
+            } else {
+                s += ind + "cloudAccountId\n" ;
             }
         }
         //      C# -> System.Int32? DiskCount
@@ -767,6 +785,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
         {
             this.EffectiveSlaDomain = null;
+        }
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: String! (scalar)
+        if (ec.Includes("cloudAccountId",true))
+        {
+            if(this.CloudAccountId == null) {
+
+                this.CloudAccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudAccountId != null && ec.Excludes("cloudAccountId",true))
+        {
+            this.CloudAccountId = null;
         }
         //      C# -> System.Int32? DiskCount
         // GraphQL -> diskCount: Int! (scalar)

@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RADAR_NAS")]
         RADAR_NAS,
 
+        [EnumMember(Value = "RADAR_O365")]
+        RADAR_O365,
+
         [EnumMember(Value = "RADAR_UCL")]
         RADAR_UCL,
 

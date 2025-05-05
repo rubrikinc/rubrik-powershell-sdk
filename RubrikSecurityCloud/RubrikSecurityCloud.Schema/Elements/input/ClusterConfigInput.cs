@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsEsConfig")]
         public AwsEsConfigInput? AwsEsConfig { get; set; }
 
+        //      C# -> OciEsConfigInput? OciEsConfig
+        // GraphQL -> ociEsConfig: OciEsConfigInput (input)
+        [JsonProperty("ociEsConfig")]
+        public OciEsConfigInput? OciEsConfig { get; set; }
+
 
         #endregion
 

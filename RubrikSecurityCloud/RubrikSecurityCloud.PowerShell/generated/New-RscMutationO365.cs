@@ -714,6 +714,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	resourceId = $someString
     /// 	# OPTIONAL
+    /// 	resourceIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
     /// 	destOrgId = $someString
     /// }
     /// 
@@ -750,6 +754,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	appType = $someString
     /// 	# OPTIONAL
     /// 	resourceId = $someString
+    /// 	# OPTIONAL
+    /// 	resourceIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -3160,6 +3168,10 @@ $query.Var.input = @{
 	# OPTIONAL
 	resourceId = $someString
 	# OPTIONAL
+	resourceIds = @(
+		$someString
+	)
+	# OPTIONAL
 	destOrgId = $someString
 }"
             );
@@ -3188,6 +3200,10 @@ $query.Var.input = @{
 	appType = $someString
 	# OPTIONAL
 	resourceId = $someString
+	# OPTIONAL
+	resourceIds = @(
+		$someString
+	)
 }"
             );
         }

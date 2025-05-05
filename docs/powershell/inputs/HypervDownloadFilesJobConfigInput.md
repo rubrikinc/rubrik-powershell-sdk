@@ -2,7 +2,7 @@
 Supported in v5.0+
 
 - zipPassword: System.String
-  - Supported in v9.4
+  - Supported in v9.3+
       Password to protect the generated zip file.
 - legalHoldDownloadConfig: LegalHoldDownloadConfigInput
   - Supported in v5.2+

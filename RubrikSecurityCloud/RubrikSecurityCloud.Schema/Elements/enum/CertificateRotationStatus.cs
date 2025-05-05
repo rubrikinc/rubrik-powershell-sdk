@@ -24,6 +24,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NOT_SCHEDULED")]
         NOT_SCHEDULED,
 
+        [EnumMember(Value = "READY_TO_MIGRATE")]
+        READY_TO_MIGRATE,
+
+        [EnumMember(Value = "SUCCEEDED")]
+        SUCCEEDED,
+
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 

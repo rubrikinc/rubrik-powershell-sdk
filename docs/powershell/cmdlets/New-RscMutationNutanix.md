@@ -222,6 +222,15 @@ Restore files from a snapshot to the source Nutanix virtual machine.
 
 - There is a single argument of type RestoreFilesNutanixSnapshotInput.
 - Returns AsyncRequestStatus.
+### restorevmsnapshotfilesfromarchivallocation
+Initiate a job to restore multiple files or folders
+
+Supported in v8.0+
+v8.0: Initiates a job to restore one or more files or folders from an archived Nutanix VM snapshot. Returns the job instance ID.
+v8.1+: Initiates a job to restore one or more files or folders from an archived Nutanix virtual machine snapshot. Returns the job instance ID.
+
+- There is a single argument of type RestoreNutanixVmSnapshotFilesFromArchivalLocationInput.
+- Returns AsyncRequestStatus.
 ### updatecluster
 Patch Nutanix cluster
 

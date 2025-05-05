@@ -127,3 +127,5 @@ A Rubrik CDM Cluster.
   - The cluster's raw address.
 - isAirGapped: System.Boolean
   - Air-gap status of the Rubrik cluster.
+- isClusterRemovalTprEnabled: System.Boolean
+  - Specifies whether Quorum Authorization is enabled for cluster removal.

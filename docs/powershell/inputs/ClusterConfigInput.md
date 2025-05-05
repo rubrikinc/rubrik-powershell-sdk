@@ -19,3 +19,5 @@ ClusterConfig for new CDM cloud cluster.
   - Azure storage container details.
 - awsEsConfig: AwsEsConfigInput
   - AWS S3 bucket details.
+- ociEsConfig: OciEsConfigInput
+  - OCI bucket details.

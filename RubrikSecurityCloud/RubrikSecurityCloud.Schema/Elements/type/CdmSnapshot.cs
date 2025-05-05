@@ -191,6 +191,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("db2AppMetadata")]
         public Db2AppMetadata? Db2AppMetadata { get; set; }
 
+        //      C# -> K8sResourceSnapshotMetadata? K8sAppMetadata
+        // GraphQL -> k8sAppMetadata: K8sResourceSnapshotMetadata (type)
+        [JsonProperty("k8sAppMetadata")]
+        public K8sResourceSnapshotMetadata? K8sAppMetadata { get; set; }
+
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         [JsonProperty("latestUserNote")]
@@ -315,6 +320,7 @@ namespace RubrikSecurityCloud.Types
         List<DataLocation>? CloudNativeLocations = null,
         Cluster? Cluster = null,
         Db2AppMetadata? Db2AppMetadata = null,
+        K8sResourceSnapshotMetadata? K8sAppMetadata = null,
         LatestUserNote? LatestUserNote = null,
         LegalHoldInfo? LegalHoldInfo = null,
         List<DataLocation>? LocalLocations = null,
@@ -434,6 +440,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Db2AppMetadata != null ) {
             this.Db2AppMetadata = Db2AppMetadata;
+        }
+        if ( K8sAppMetadata != null ) {
+            this.K8sAppMetadata = K8sAppMetadata;
         }
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
@@ -833,6 +842,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "db2AppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> K8sResourceSnapshotMetadata? K8sAppMetadata
+        // GraphQL -> k8sAppMetadata: K8sResourceSnapshotMetadata (type)
+        if (this.K8sAppMetadata != null) {
+            var fspec = this.K8sAppMetadata.AsFieldSpec(conf.Child("k8sAppMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "k8sAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1647,6 +1668,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Db2AppMetadata != null && ec.Excludes("db2AppMetadata",false))
         {
             this.Db2AppMetadata = null;
+        }
+        //      C# -> K8sResourceSnapshotMetadata? K8sAppMetadata
+        // GraphQL -> k8sAppMetadata: K8sResourceSnapshotMetadata (type)
+        if (ec.Includes("k8sAppMetadata",false))
+        {
+            if(this.K8sAppMetadata == null) {
+
+                this.K8sAppMetadata = new K8sResourceSnapshotMetadata();
+                this.K8sAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("k8sAppMetadata"));
+
+            } else {
+
+                this.K8sAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("k8sAppMetadata"));
+
+            }
+        }
+        else if (this.K8sAppMetadata != null && ec.Excludes("k8sAppMetadata",false))
+        {
+            this.K8sAppMetadata = null;
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)

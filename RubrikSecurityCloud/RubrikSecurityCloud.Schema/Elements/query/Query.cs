@@ -4183,6 +4183,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AwsNativeDynamoDbTablePointInTimeRestoreWindow? AwsNativeDynamoDbTablePointInTimeRestoreWindow
+        // GraphQL -> awsNativeDynamoDbTablePointInTimeRestoreWindow: AwsNativeDynamoDbTablePointInTimeRestoreWindow! (type)
+        public static string AwsNativeDynamoDbTablePointInTimeRestoreWindow(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ndynamoDbTableRubrikId: $dynamoDbTableRubrikId\n)";
+            return "awsNativeDynamoDbTablePointInTimeRestoreWindow" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AwsNativeDynamoDbTablePointInTimeRestoreWindowFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AwsNativeDynamoDbTablePointInTimeRestoreWindow() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AwsNativeEbsVolume? AwsNativeEbsVolume
         // GraphQL -> awsNativeEbsVolume: AwsNativeEbsVolume! (type)
         public static string AwsNativeEbsVolume(object fsObj)
@@ -13165,6 +13183,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> SearchM365BackupStorageObjectRestorePointsResp? SearchM365BackupStorageObjectRestorePoints
+        // GraphQL -> searchM365BackupStorageObjectRestorePoints: SearchM365BackupStorageObjectRestorePointsResp! (type)
+        public static string SearchM365BackupStorageObjectRestorePoints(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nsearchM365BackupStorageObjectRestorePointsInput: $searchM365BackupStorageObjectRestorePointsInput\n)";
+            return "searchM365BackupStorageObjectRestorePoints" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SearchM365BackupStorageObjectRestorePointsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SearchM365BackupStorageObjectRestorePointsResp() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> SearchResponseListResponse? SearchNutanixVm
         // GraphQL -> searchNutanixVm: SearchResponseListResponse! (type)
         public static string SearchNutanixVm(object fsObj)
@@ -14007,6 +14043,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new SupportUserAccessConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SupportedAzureAdRegions? SupportedAzureAdRegions
+        // GraphQL -> supportedAzureAdRegions: SupportedAzureAdRegions! (type)
+        public static string SupportedAzureAdRegions(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "supportedAzureAdRegions" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SupportedAzureAdRegionsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SupportedAzureAdRegions() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

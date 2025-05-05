@@ -25,3 +25,5 @@ Feature specific details for a cloud account.
   - The name of the IAM pair corresponds to the feature. The name can be non-empty only for the DATA_CENTER_ROLE_BASED_ARCHIVAL feature.
 - mappedAccounts: list of AwsMappedAccounts
   - AWS accounts mapped to this feature.
+- roleChainingDetails: AwsRoleChainingDetails
+  - AWS account details which facilitates role chaining.

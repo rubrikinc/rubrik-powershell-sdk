@@ -500,6 +500,13 @@ for cloud native protection.
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=true
 - INCLUDE_DIRECT_ASSIGN_OBJECT - Filter will retrieve all objects with SLA Domains assigned directly.
-- VMWARE_PURE_DATASTORE_SERIAL_NUMBER - Filter VMware datastore connections by the serial number of Pure Storage volumes.
+- VMWARE_DATASTORE_DEVICE_NAME - Filter VMware datastore connections by their device names.
 +mo:filter:db:table=cdm_vmware_datastore
 +mo:filter:db:column=vmfs_volume
+- VMWARE_DATASTORE_ID - Filter VMware virtual machines by their datastore IDs.
++mo:filter:db:table=cdm_vmware_datastore
++mo:filter:db:column=fid
++mo:filter:db:index:key=fid
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true

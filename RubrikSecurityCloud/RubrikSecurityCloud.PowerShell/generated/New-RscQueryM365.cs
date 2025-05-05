@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 10
+    /// Create a new RscQuery object for any of the 11
     /// operations in the 'Microsoft 365' API domain:
-    /// BackupStorageLicenseUsage, BackupStorageObjectRestorePoints, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, or Regions.
+    /// BackupStorageLicenseUsage, BackupStorageObjectRestorePoints, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, Regions, or SearchBackupStorageObjectRestorePoints.
     /// </summary>
     /// <description>
     /// New-RscQueryM365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 10 operations
+    /// There are 11 operations
     /// in the 'Microsoft 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BackupStorageLicenseUsage, BackupStorageObjectRestorePoints, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, or Regions.
+    /// one of: BackupStorageLicenseUsage, BackupStorageObjectRestorePoints, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, Regions, or SearchBackupStorageObjectRestorePoints.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -394,6 +394,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the SearchBackupStorageObjectRestorePoints operation
+    /// of the 'Microsoft 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    M365
+    /// # API Operation: SearchBackupStorageObjectRestorePoints
+    /// 
+    /// $query = New-RscQueryM365 -Operation SearchBackupStorageObjectRestorePoints
+    /// 
+    /// # REQUIRED
+    /// $query.Var.searchM365BackupStorageObjectRestorePointsInput = @{
+    /// 	# REQUIRED
+    /// 	objectId = $someString
+    /// 	# REQUIRED
+    /// 	rangeFilter = @{
+    /// 		# OPTIONAL
+    /// 		fromTime = $someDateTime
+    /// 		# OPTIONAL
+    /// 		untilTime = $someDateTime
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	restorePointTagType = $someRestorePointTagType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RestorePointTagType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	restorePointPreferenceType = $someRestorePointPreferenceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RestorePointPreferenceType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SearchM365BackupStorageObjectRestorePointsResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -420,6 +462,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "OrgBackupLocations",
                 "OrgOperationModes",
                 "Regions",
+                "SearchBackupStorageObjectRestorePoints",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -464,6 +507,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Regions":
                         this.ProcessRecord_Regions();
+                        break;
+                    case "SearchBackupStorageObjectRestorePoints":
+                        this.ProcessRecord_SearchBackupStorageObjectRestorePoints();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -563,6 +609,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Regions";
             // Create new graphql operation m365Regions
             InitQueryM365Regions();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // searchM365BackupStorageObjectRestorePoints.
+        internal void ProcessRecord_SearchBackupStorageObjectRestorePoints()
+        {
+            this._logger.name += " -SearchBackupStorageObjectRestorePoints";
+            // Create new graphql operation searchM365BackupStorageObjectRestorePoints
+            InitQuerySearchM365BackupStorageObjectRestorePoints();
         }
 
 
@@ -806,6 +861,40 @@ $query.Var.orgId = $someString"
                 Query.M365RegionsFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // searchM365BackupStorageObjectRestorePoints(searchM365BackupStorageObjectRestorePointsInput: M365BackupStorageObjectSearchRestorePointsInput!): SearchM365BackupStorageObjectRestorePointsResp!
+        internal void InitQuerySearchM365BackupStorageObjectRestorePoints()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("searchM365BackupStorageObjectRestorePointsInput", "M365BackupStorageObjectSearchRestorePointsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySearchM365BackupStorageObjectRestorePoints",
+                "($searchM365BackupStorageObjectRestorePointsInput: M365BackupStorageObjectSearchRestorePointsInput!)",
+                "SearchM365BackupStorageObjectRestorePointsResp",
+                Query.SearchM365BackupStorageObjectRestorePoints,
+                Query.SearchM365BackupStorageObjectRestorePointsFieldSpec,
+                @"# REQUIRED
+$query.Var.searchM365BackupStorageObjectRestorePointsInput = @{
+	# REQUIRED
+	objectId = $someString
+	# REQUIRED
+	rangeFilter = @{
+		# OPTIONAL
+		fromTime = $someDateTime
+		# OPTIONAL
+		untilTime = $someDateTime
+	}
+	# OPTIONAL
+	restorePointTagType = $someRestorePointTagType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RestorePointTagType]) for enum values.
+	# OPTIONAL
+	restorePointPreferenceType = $someRestorePointPreferenceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RestorePointPreferenceType]) for enum values.
+}"
             );
         }
 

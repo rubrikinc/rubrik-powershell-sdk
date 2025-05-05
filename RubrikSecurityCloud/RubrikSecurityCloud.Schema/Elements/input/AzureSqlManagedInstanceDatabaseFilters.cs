@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serverFilter")]
         public CloudNativeDatabaseServerFilter? ServerFilter { get; set; }
 
+        //      C# -> System.String? ServerId
+        // GraphQL -> serverId: UUID (scalar)
+        [JsonProperty("serverId")]
+        public System.String? ServerId { get; set; }
+
 
         #endregion
 

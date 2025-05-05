@@ -60,6 +60,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CDM_CLUSTER")]
         CDM_CLUSTER,
 
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_BUCKET")]
+        CLOUD_DIRECT_NAS_BUCKET,
+
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
         CLOUD_DIRECT_NAS_EXPORT,
 

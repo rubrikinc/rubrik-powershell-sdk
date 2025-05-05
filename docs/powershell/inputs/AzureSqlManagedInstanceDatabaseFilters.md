@@ -19,3 +19,5 @@ Filters for list of Azure SQL Managed Instance Databases.
   - Filter by protection status.
 - serverFilter: CloudNativeDatabaseServerFilter
   - Filter by server.
+- serverId: System.String
+  - Filter by managed object ID of the server.

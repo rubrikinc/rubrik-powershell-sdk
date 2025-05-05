@@ -141,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjectCount")]
         public System.Int32? ReplicatedObjectCount { get; set; }
 
+        //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
+        // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean! (scalar)
+        [JsonProperty("shouldRetryPrescriptIfBackupFails")]
+        public System.Boolean? ShouldRetryPrescriptIfBackupFails { get; set; }
+
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
@@ -294,6 +299,7 @@ namespace RubrikSecurityCloud.Types
         System.String? PostBackupScript = null,
         System.String? PreBackupScript = null,
         System.Int32? ReplicatedObjectCount = null,
+        System.Boolean? ShouldRetryPrescriptIfBackupFails = null,
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
@@ -381,6 +387,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
+        }
+        if ( ShouldRetryPrescriptIfBackupFails != null ) {
+            this.ShouldRetryPrescriptIfBackupFails = ShouldRetryPrescriptIfBackupFails;
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
@@ -672,6 +681,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "replicatedObjectCount\n" ;
             } else {
                 s += ind + "replicatedObjectCount\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
+        // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean! (scalar)
+        if (this.ShouldRetryPrescriptIfBackupFails != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldRetryPrescriptIfBackupFails\n" ;
+            } else {
+                s += ind + "shouldRetryPrescriptIfBackupFails\n" ;
             }
         }
         //      C# -> System.Boolean? SlaPauseStatus
@@ -1283,6 +1301,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReplicatedObjectCount != null && ec.Excludes("replicatedObjectCount",true))
         {
             this.ReplicatedObjectCount = null;
+        }
+        //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
+        // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean! (scalar)
+        if (ec.Includes("shouldRetryPrescriptIfBackupFails",true))
+        {
+            if(this.ShouldRetryPrescriptIfBackupFails == null) {
+
+                this.ShouldRetryPrescriptIfBackupFails = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldRetryPrescriptIfBackupFails != null && ec.Excludes("shouldRetryPrescriptIfBackupFails",true))
+        {
+            this.ShouldRetryPrescriptIfBackupFails = null;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

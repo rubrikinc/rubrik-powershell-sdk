@@ -30,6 +30,14 @@ Modify the values of specified fileset templates.
 
 - There is a single argument of type BulkUpdateFilesetTemplateInput.
 - Returns BulkUpdateFilesetTemplateReply.
+### generatebackupreport
+Generate a success and failure report for a fileset backup
+
+Supported in v9.2+
+Start an asynchronous job to generate success and failure files for a specified fileset backup. The response returns an asynchronous request ID. To get the URL for downloading the ZIP file containing the specific files and folders, send a GET request to 'fileset/request/{id}'.
+
+- There is a single argument of type GenerateFilesetBackupReportInput.
+- Returns AsyncRequestStatus.
 ### recoverfiles
 v5.0-v9.2: Create restore job to restore multiple files/directories
 v9.3+: (DEPRECATED) Create restore job to restore multiple files/directories

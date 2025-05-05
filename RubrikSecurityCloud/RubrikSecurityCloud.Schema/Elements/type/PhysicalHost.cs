@@ -226,6 +226,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oracleSddDetail")]
         public OracleSddDetail? OracleSddDetail { get; set; }
 
+        //      C# -> OracleSettings? OracleSettings
+        // GraphQL -> oracleSettings: OracleSettings (type)
+        [JsonProperty("oracleSettings")]
+        public OracleSettings? OracleSettings { get; set; }
+
         //      C# -> OracleUserDetails? OracleUserDetails
         // GraphQL -> oracleUserDetails: OracleUserDetails (type)
         [JsonProperty("oracleUserDetails")]
@@ -361,6 +366,7 @@ namespace RubrikSecurityCloud.Types
         List<PathNode>? LogicalPath = null,
         MssqlSddDetail? MssqlSddDetail = null,
         OracleSddDetail? OracleSddDetail = null,
+        OracleSettings? OracleSettings = null,
         OracleUserDetails? OracleUserDetails = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         PhysicalHostPhysicalChildTypeConnection? PhysicalChildConnection = null,
@@ -492,6 +498,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OracleSddDetail != null ) {
             this.OracleSddDetail = OracleSddDetail;
+        }
+        if ( OracleSettings != null ) {
+            this.OracleSettings = OracleSettings;
         }
         if ( OracleUserDetails != null ) {
             this.OracleUserDetails = OracleUserDetails;
@@ -947,6 +956,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "oracleSddDetail" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> OracleSettings? OracleSettings
+        // GraphQL -> oracleSettings: OracleSettings (type)
+        if (this.OracleSettings != null) {
+            var fspec = this.OracleSettings.AsFieldSpec(conf.Child("oracleSettings"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "oracleSettings" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1789,6 +1810,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.OracleSddDetail != null && ec.Excludes("oracleSddDetail",false))
         {
             this.OracleSddDetail = null;
+        }
+        //      C# -> OracleSettings? OracleSettings
+        // GraphQL -> oracleSettings: OracleSettings (type)
+        if (ec.Includes("oracleSettings",false))
+        {
+            if(this.OracleSettings == null) {
+
+                this.OracleSettings = new OracleSettings();
+                this.OracleSettings.ApplyExploratoryFieldSpec(ec.NewChild("oracleSettings"));
+
+            } else {
+
+                this.OracleSettings.ApplyExploratoryFieldSpec(ec.NewChild("oracleSettings"));
+
+            }
+        }
+        else if (this.OracleSettings != null && ec.Excludes("oracleSettings",false))
+        {
+            this.OracleSettings = null;
         }
         //      C# -> OracleUserDetails? OracleUserDetails
         // GraphQL -> oracleUserDetails: OracleUserDetails (type)

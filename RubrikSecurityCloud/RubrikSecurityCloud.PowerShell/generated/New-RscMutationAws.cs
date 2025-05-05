@@ -529,6 +529,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			enableImmutability = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		ociEsConfig = @{
+    /// 			# OPTIONAL
+    /// 			bucketName = $someString
+    /// 			# OPTIONAL
+    /// 			ociNamespace = $someString
+    /// 			# OPTIONAL
+    /// 			accessKey = $someString
+    /// 			# OPTIONAL
+    /// 			secretKey = $someString
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	vmConfig = @{
@@ -2210,6 +2221,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	roleChainingAccountId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3178,6 +3191,17 @@ $query.Var.input = @{
 			enableObjectLock = $someBoolean
 			# OPTIONAL
 			enableImmutability = $someBoolean
+		}
+		# OPTIONAL
+		ociEsConfig = @{
+			# OPTIONAL
+			bucketName = $someString
+			# OPTIONAL
+			ociNamespace = $someString
+			# OPTIONAL
+			accessKey = $someString
+			# OPTIONAL
+			secretKey = $someString
 		}
 	}
 	# OPTIONAL
@@ -4636,6 +4660,8 @@ $query.Var.input = @{
 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 		}
 	)
+	# OPTIONAL
+	roleChainingAccountId = $someString
 }"
             );
         }

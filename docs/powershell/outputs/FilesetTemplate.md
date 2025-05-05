@@ -23,6 +23,8 @@ Fileset template.
   - Boolean variable denoting if network mounts can be backed up.
 - allowBackupHiddenFoldersInNetworkMounts: System.Boolean
   - Boolean variable specifying if hidden folders can be backed up.
+- shouldRetryPrescriptIfBackupFails: System.Boolean
+  - Indicates whether to retry the pre-backup script if the backup fails. When set to true, the system retries the pre-backup script if the backup fails. When set to false, the system does not retry the pre-backup script if the backup fails.
 - shareType: ShareTypeEnum
   - Share type of the fileset template.
 - descendantConnection: FilesetTemplateDescendantTypeConnection

@@ -5,3 +5,5 @@ Response of the operation that initiates onboarding of Azure AD.
   - State token to be used in CompleteAzureAdAppSetupReply.
 - appId: System.String
   - ID of the created Azure AD app.
+- warning: AzureAdAppSetupWarningType
+  - A warning message indicating a unrecommended onboarding scenario.

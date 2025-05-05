@@ -21,3 +21,5 @@ Input to validate and set up an AWS account.
   - The ID of the organization to which the AWS accounts belong.
 - awsChildOus: list of AwsOuInputs
   - List of the AWS Organization units.
+- roleChainingAccountId: System.String
+  - The UUID of the AWS account to be used for role chaining.

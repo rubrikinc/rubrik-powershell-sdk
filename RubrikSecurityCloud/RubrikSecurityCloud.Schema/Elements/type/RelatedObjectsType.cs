@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? Metadata
+        // GraphQL -> metadata: String! (scalar)
+        [JsonProperty("metadata")]
+        public System.String? Metadata { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -47,6 +52,7 @@ namespace RubrikSecurityCloud.Types
     public RelatedObjectsType Set(
         AzureAdObjectType? Type = null,
         System.String? Id = null,
+        System.String? Metadata = null,
         System.String? Name = null
     ) 
     {
@@ -55,6 +61,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( Metadata != null ) {
+            this.Metadata = Metadata;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.String? Metadata
+        // GraphQL -> metadata: String! (scalar)
+        if (this.Metadata != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "metadata\n" ;
+            } else {
+                s += ind + "metadata\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -140,6 +158,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.String? Metadata
+        // GraphQL -> metadata: String! (scalar)
+        if (ec.Includes("metadata",true))
+        {
+            if(this.Metadata == null) {
+
+                this.Metadata = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Metadata != null && ec.Excludes("metadata",true))
+        {
+            this.Metadata = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

@@ -12,6 +12,8 @@ Configuration for the completion of an O365 OAuth consent flow.
 - resourceNaturalId: System.String
   - Natural ID of the resource.
 - resourceId: System.String
-  - Rubrik Security Cloud ID of the Microsoft 365 resource.
+  - Rubrik Security Cloud ID of the Microsoft 365 resource [Deprecated pls switch to resourceIds].
+- resourceIds: list of System.Strings
+  - Rubrik Security Cloud IDs of the Microsoft 365 resources.
 - destOrgId: System.String
   - Rubrik Security Cloud ID of the destination Microsoft 365 tenant.

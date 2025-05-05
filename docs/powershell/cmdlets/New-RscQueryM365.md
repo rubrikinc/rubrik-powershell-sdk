@@ -60,3 +60,8 @@ Retrieves the M365 regions for the organization.
 
 - There is a single argument of type System.String.
 - Returns M365RegionsResp.
+### searchbackupstorageobjectrestorepoints
+Searches the M365 Backup Storage object restore points.
+
+- There is a single argument of type M365BackupStorageObjectSearchRestorePointsInput.
+- Returns SearchM365BackupStorageObjectRestorePointsResp.

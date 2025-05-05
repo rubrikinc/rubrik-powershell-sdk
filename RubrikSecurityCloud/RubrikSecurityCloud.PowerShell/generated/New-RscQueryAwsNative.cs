@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 21
+    /// Create a new RscQuery object for any of the 22
     /// operations in the 'AWS Native' API domain:
-    /// Account, Accounts, AmiTypeForArchivedSnapshotExport, DynamoDbTable, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateDynamoDbTableNameForRecovery, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
+    /// Account, Accounts, AmiTypeForArchivedSnapshotExport, DynamoDbTable, DynamoDbTablePointInTimeRestoreWindow, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateDynamoDbTableNameForRecovery, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
     /// </summary>
     /// <description>
     /// New-RscQueryAwsNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 21 operations
+    /// There are 22 operations
     /// in the 'AWS Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Account, Accounts, AmiTypeForArchivedSnapshotExport, DynamoDbTable, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateDynamoDbTableNameForRecovery, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
+    /// one of: Account, Accounts, AmiTypeForArchivedSnapshotExport, DynamoDbTable, DynamoDbTablePointInTimeRestoreWindow, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateDynamoDbTableNameForRecovery, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -228,6 +228,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AwsNativeDynamoDbTable
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DynamoDbTablePointInTimeRestoreWindow operation
+    /// of the 'AWS Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AwsNative
+    /// # API Operation: DynamoDbTablePointInTimeRestoreWindow
+    /// 
+    /// $query = New-RscQueryAwsNative -Operation DynamoDbTablePointInTimeRestoreWindow
+    /// 
+    /// # REQUIRED
+    /// $query.Var.dynamoDbTableRubrikId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AwsNativeDynamoDbTablePointInTimeRestoreWindow
     /// 
     /// 
     /// 
@@ -1171,6 +1199,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Accounts",
                 "AmiTypeForArchivedSnapshotExport",
                 "DynamoDbTable",
+                "DynamoDbTablePointInTimeRestoreWindow",
                 "EbsVolume",
                 "EbsVolumes",
                 "EbsVolumesByName",
@@ -1214,6 +1243,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DynamoDbTable":
                         this.ProcessRecord_DynamoDbTable();
+                        break;
+                    case "DynamoDbTablePointInTimeRestoreWindow":
+                        this.ProcessRecord_DynamoDbTablePointInTimeRestoreWindow();
                         break;
                     case "EbsVolume":
                         this.ProcessRecord_EbsVolume();
@@ -1310,6 +1342,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DynamoDbTable";
             // Create new graphql operation awsNativeDynamoDbTable
             InitQueryAwsNativeDynamoDbTable();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // awsNativeDynamoDbTablePointInTimeRestoreWindow.
+        internal void ProcessRecord_DynamoDbTablePointInTimeRestoreWindow()
+        {
+            this._logger.name += " -DynamoDbTablePointInTimeRestoreWindow";
+            // Create new graphql operation awsNativeDynamoDbTablePointInTimeRestoreWindow
+            InitQueryAwsNativeDynamoDbTablePointInTimeRestoreWindow();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1610,6 +1651,26 @@ $query.Var.input = @{
 $query.Var.dynamoDbTableRubrikId = $someString
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // awsNativeDynamoDbTablePointInTimeRestoreWindow(dynamoDbTableRubrikId: UUID!): AwsNativeDynamoDbTablePointInTimeRestoreWindow!
+        internal void InitQueryAwsNativeDynamoDbTablePointInTimeRestoreWindow()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("dynamoDbTableRubrikId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAwsNativeDynamoDbTablePointInTimeRestoreWindow",
+                "($dynamoDbTableRubrikId: UUID!)",
+                "AwsNativeDynamoDbTablePointInTimeRestoreWindow",
+                Query.AwsNativeDynamoDbTablePointInTimeRestoreWindow,
+                Query.AwsNativeDynamoDbTablePointInTimeRestoreWindowFieldSpec,
+                @"# REQUIRED
+$query.Var.dynamoDbTableRubrikId = $someString"
             );
         }
 

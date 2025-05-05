@@ -9,6 +9,8 @@ Active Directory Domain.
   - ID of the Active Directory domain.
 - registeredDomainControllersCount: System.Int32
   - Number of domain controllers that are added to RSC from this domain.
+- isArchived: System.Boolean
+  - Specifies whether the domain is archived.
 - cluster: Cluster
   - Rubrik cluster.
 - descendantConnection: ActiveDirectoryDomainDescendantTypeConnection

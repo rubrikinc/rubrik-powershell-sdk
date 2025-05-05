@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 29
+    /// Create a new RscQuery object for any of the 30
     /// operations in the 'Nutanix' API domain:
-    /// BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadFilesSnapshotFromArchivalLocation, DownloadSnapshot, DownloadVdisks, DownloadVmFromLocation, ExportSnapshot, InplaceExportSnapshot, MigrateMountV1, MountSnapshotV1, MountVdisks, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
+    /// BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadFilesSnapshotFromArchivalLocation, DownloadSnapshot, DownloadVdisks, DownloadVmFromLocation, ExportSnapshot, InplaceExportSnapshot, MigrateMountV1, MountSnapshotV1, MountVdisks, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, RestoreVmSnapshotFilesFromArchivalLocation, UpdateCluster, UpdatePrismCentral, or UpdateVm.
     /// </summary>
     /// <description>
     /// New-RscMutationNutanix creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 29 operations
+    /// There are 30 operations
     /// in the 'Nutanix' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadFilesSnapshotFromArchivalLocation, DownloadSnapshot, DownloadVdisks, DownloadVmFromLocation, ExportSnapshot, InplaceExportSnapshot, MigrateMountV1, MountSnapshotV1, MountVdisks, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
+    /// one of: BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadFilesSnapshotFromArchivalLocation, DownloadSnapshot, DownloadVdisks, DownloadVmFromLocation, ExportSnapshot, InplaceExportSnapshot, MigrateMountV1, MountSnapshotV1, MountVdisks, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, RestoreVmSnapshotFilesFromArchivalLocation, UpdateCluster, UpdatePrismCentral, or UpdateVm.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1150,6 +1150,53 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RestoreVmSnapshotFilesFromArchivalLocation operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: RestoreVmSnapshotFilesFromArchivalLocation
+    /// 
+    /// $query = New-RscMutationNutanix -Operation RestoreVmSnapshotFilesFromArchivalLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		targetVirtualMachineId = $someString
+    /// 		# REQUIRED
+    /// 		restoreConfig = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				path = $someString
+    /// 				# REQUIRED
+    /// 				restorePath = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateCluster operation
     /// of the 'Nutanix' API domain.
     /// <code>
@@ -1367,6 +1414,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RefreshPrismCentral",
                 "RegisterAgentVm",
                 "RestoreFilesSnapshot",
+                "RestoreVmSnapshotFilesFromArchivalLocation",
                 "UpdateCluster",
                 "UpdatePrismCentral",
                 "UpdateVm",
@@ -1462,6 +1510,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RestoreFilesSnapshot":
                         this.ProcessRecord_RestoreFilesSnapshot();
+                        break;
+                    case "RestoreVmSnapshotFilesFromArchivalLocation":
+                        this.ProcessRecord_RestoreVmSnapshotFilesFromArchivalLocation();
                         break;
                     case "UpdateCluster":
                         this.ProcessRecord_UpdateCluster();
@@ -1714,6 +1765,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RestoreFilesSnapshot";
             // Create new graphql operation restoreFilesNutanixSnapshot
             InitMutationRestoreFilesNutanixSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // restoreNutanixVmSnapshotFilesFromArchivalLocation.
+        internal void ProcessRecord_RestoreVmSnapshotFilesFromArchivalLocation()
+        {
+            this._logger.name += " -RestoreVmSnapshotFilesFromArchivalLocation";
+            // Create new graphql operation restoreNutanixVmSnapshotFilesFromArchivalLocation
+            InitMutationRestoreNutanixVmSnapshotFilesFromArchivalLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2605,6 +2665,45 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // restoreNutanixVmSnapshotFilesFromArchivalLocation(input: RestoreNutanixVmSnapshotFilesFromArchivalLocationInput!): AsyncRequestStatus!
+        internal void InitMutationRestoreNutanixVmSnapshotFilesFromArchivalLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestoreNutanixVmSnapshotFilesFromArchivalLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestoreNutanixVmSnapshotFilesFromArchivalLocation",
+                "($input: RestoreNutanixVmSnapshotFilesFromArchivalLocationInput!)",
+                "AsyncRequestStatus",
+                Mutation.RestoreNutanixVmSnapshotFilesFromArchivalLocation,
+                Mutation.RestoreNutanixVmSnapshotFilesFromArchivalLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetVirtualMachineId = $someString
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# REQUIRED
+				path = $someString
+				# REQUIRED
+				restorePath = $someString
+			}
+		)
+	}
+	# REQUIRED
+	locationId = $someString
+	# REQUIRED
+	snapshotId = $someString
 }"
             );
         }

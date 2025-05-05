@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureStorageTier? AccessTier
+        // GraphQL -> accessTier: AzureStorageTier! (enum)
+        [JsonProperty("accessTier")]
+        public AzureStorageTier? AccessTier { get; set; }
+
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
         [JsonProperty("connectionStatus")]
@@ -196,6 +201,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RubrikManagedAzureTarget Set(
+        AzureStorageTier? AccessTier = null,
         ConnectionStatusType? ConnectionStatus = null,
         InstanceTypeEnum? InstanceType = null,
         ConnectionStatusType? LocationConnectionStatus = null,
@@ -231,6 +237,9 @@ namespace RubrikSecurityCloud.Types
         List<TargetMappingBasic>? TargetMappingBasic = null
     ) 
     {
+        if ( AccessTier != null ) {
+            this.AccessTier = AccessTier;
+        }
         if ( ConnectionStatus != null ) {
             this.ConnectionStatus = ConnectionStatus;
         }
@@ -344,6 +353,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureStorageTier? AccessTier
+        // GraphQL -> accessTier: AzureStorageTier! (enum)
+        if (this.AccessTier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "accessTier\n" ;
+            } else {
+                s += ind + "accessTier\n" ;
+            }
+        }
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
         if (this.ConnectionStatus != null) {
@@ -673,6 +691,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AzureStorageTier? AccessTier
+        // GraphQL -> accessTier: AzureStorageTier! (enum)
+        if (ec.Includes("accessTier",true))
+        {
+            if(this.AccessTier == null) {
+
+                this.AccessTier = new AzureStorageTier();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccessTier != null && ec.Excludes("accessTier",true))
+        {
+            this.AccessTier = null;
+        }
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
         if (ec.Includes("connectionStatus",true))

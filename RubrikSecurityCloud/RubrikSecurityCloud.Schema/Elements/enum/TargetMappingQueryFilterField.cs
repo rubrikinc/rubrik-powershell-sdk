@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXCLUDE_GROUP_TYPE")]
         EXCLUDE_GROUP_TYPE,
 
+        [EnumMember(Value = "INCLUDE_INLINE")]
+        INCLUDE_INLINE,
+
         [EnumMember(Value = "NAME")]
         NAME
 

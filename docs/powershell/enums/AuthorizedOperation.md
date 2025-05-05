@@ -186,7 +186,7 @@ Authorized operations on an object.
 - MANAGE_CYBER_EVENT_LOCKDOWN - Manage Cyber Event Lockdown.
 - VIEW_OKTA_INTEGRATION - View Okta integration.
 - MANAGE_OKTA_INTEGRATION - Manage Okta integration.
-- USE_OAUTH_APPLICATIONS - Use OAuth applications.
+- USE_OAUTH_APPLICATIONS - Authorize and use selected applications.
 - MANAGE_OAUTH_APPLICATIONS - Manage OAuth applications.
 - RESTORE_ACTIVE_DIRECTORY_FOREST - Restore Active Directory Forest.
 - ASSIGN_MIP_LABELS - Assign Microsoft Information Protection(MIP) labels.
@@ -203,6 +203,10 @@ Authorized operations on an object.
 - REMEDIATE_IDENTITY_RESILIENCY_VIOLATIONS - Remediate identity resiliency violations.
 - VIEW_RUBY_INSIGHTS - View Ruby Insights use case.
 - VIEW_ALL_EVENTS - View all events and audits.
+- ADD_KMS_KEY_VAULT - Adds new KMS key vaults for tenant organizations.
+- ADD_TAG - Add RSC tags.
+- VIEW_TAG - View RSC tags.
+- MANAGE_TAG - Manage RSC tags.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

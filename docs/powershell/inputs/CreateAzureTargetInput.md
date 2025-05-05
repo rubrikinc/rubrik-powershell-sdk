@@ -29,6 +29,8 @@ Input for creating an Azure archival target.
   - Immutability settings of the Azure archival target.
 - retrievalTier: AzureRetrievalTier
   - Retrieval tier to use for retrieving data from archive storage.
+- accessTier: AzureStorageTier
+  - Access tier to use for storing data in Azure storage, used only by NAS Cloud Direct locations.
 - bypassProxy: System.Boolean
   - Specifies whether the proxy settings should be bypassed for creating this target location.
 - azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput

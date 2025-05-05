@@ -26,6 +26,8 @@
   - Specifies the Oracle database Sensitive Data Monitoring details.
 - rbaPackageUpgradeInfo: System.String
   - Specifies the Rubrik Backup Service (RBS) upgrade status on the host.
+- oracleSettings: OracleSettings
+  - The Oracle settings, such as the SEPS configuration associated with this host.
 - osType: GuestOsType
   - The operating system type of the physical host.
 - defaultCbt: System.Boolean

@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.String? BackingDeviceName
+        // GraphQL -> backingDeviceName: String! (scalar)
+        [JsonProperty("backingDeviceName")]
+        public System.String? BackingDeviceName { get; set; }
+
         //      C# -> System.Int64? Capacity
         // GraphQL -> capacity: Long! (scalar)
         [JsonProperty("capacity")]
@@ -212,6 +217,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.String? BackingDeviceName = null,
         System.Int64? Capacity = null,
         System.String? DatastoreType = null,
         System.Int64? FreeSpace = null,
@@ -259,6 +265,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
+        }
+        if ( BackingDeviceName != null ) {
+            this.BackingDeviceName = BackingDeviceName;
         }
         if ( Capacity != null ) {
             this.Capacity = Capacity;
@@ -430,6 +439,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "replicatedObjects" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.String? BackingDeviceName
+        // GraphQL -> backingDeviceName: String! (scalar)
+        if (this.BackingDeviceName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backingDeviceName\n" ;
+            } else {
+                s += ind + "backingDeviceName\n" ;
             }
         }
         //      C# -> System.Int64? Capacity
@@ -835,6 +853,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReplicatedObjects != null && ec.Excludes("replicatedObjects",false))
         {
             this.ReplicatedObjects = null;
+        }
+        //      C# -> System.String? BackingDeviceName
+        // GraphQL -> backingDeviceName: String! (scalar)
+        if (ec.Includes("backingDeviceName",true))
+        {
+            if(this.BackingDeviceName == null) {
+
+                this.BackingDeviceName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackingDeviceName != null && ec.Excludes("backingDeviceName",true))
+        {
+            this.BackingDeviceName = null;
         }
         //      C# -> System.Int64? Capacity
         // GraphQL -> capacity: Long! (scalar)

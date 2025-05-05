@@ -33,6 +33,8 @@ Specific information for Azure target created on Rubrik.
   - Specifies whether the proxy settings should be bypassed for creating this target location.
 - retrievalTier: AzureRetrievalTier
   - Retrieval tier of the Azure target.
+- accessTier: AzureStorageTier
+  - Access tier of the Azure target.
 - cluster: Cluster
   - The cluster to which this target belongs.
 - targetType: TargetType

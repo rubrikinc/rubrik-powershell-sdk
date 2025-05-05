@@ -25,10 +25,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("multiTenantHostAzureAppId")]
         public System.String? MultiTenantHostAzureAppId { get; set; }
 
-        //      C# -> System.Int64? MultiTenantHostId
-        // GraphQL -> multiTenantHostId: Long! (scalar)
+        //      C# -> System.String? MultiTenantHostId
+        // GraphQL -> multiTenantHostId: String! (scalar)
         [JsonProperty("multiTenantHostId")]
-        public System.Int64? MultiTenantHostId { get; set; }
+        public System.String? MultiTenantHostId { get; set; }
 
         //      C# -> System.String? Namespace
         // GraphQL -> namespace: String! (scalar)
@@ -61,7 +61,7 @@ namespace RubrikSecurityCloud.Types
 
     public MultiTenantHostSpec Set(
         System.String? MultiTenantHostAzureAppId = null,
-        System.Int64? MultiTenantHostId = null,
+        System.String? MultiTenantHostId = null,
         System.String? Namespace = null,
         System.String? RegistryServer = null,
         System.String? TunnelMode = null,
@@ -109,8 +109,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "multiTenantHostAzureAppId\n" ;
             }
         }
-        //      C# -> System.Int64? MultiTenantHostId
-        // GraphQL -> multiTenantHostId: Long! (scalar)
+        //      C# -> System.String? MultiTenantHostId
+        // GraphQL -> multiTenantHostId: String! (scalar)
         if (this.MultiTenantHostId != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "multiTenantHostId\n" ;
@@ -181,13 +181,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.MultiTenantHostAzureAppId = null;
         }
-        //      C# -> System.Int64? MultiTenantHostId
-        // GraphQL -> multiTenantHostId: Long! (scalar)
+        //      C# -> System.String? MultiTenantHostId
+        // GraphQL -> multiTenantHostId: String! (scalar)
         if (ec.Includes("multiTenantHostId",true))
         {
             if(this.MultiTenantHostId == null) {
 
-                this.MultiTenantHostId = new System.Int64();
+                this.MultiTenantHostId = "FETCH";
 
             } else {
 

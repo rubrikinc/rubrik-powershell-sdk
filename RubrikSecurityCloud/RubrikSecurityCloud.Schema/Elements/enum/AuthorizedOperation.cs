@@ -42,8 +42,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ADD_INVENTORY")]
         ADD_INVENTORY,
 
+        [EnumMember(Value = "ADD_KMS_KEY_VAULT")]
+        ADD_KMS_KEY_VAULT,
+
         [EnumMember(Value = "ADD_STORAGE_SETTINGS")]
         ADD_STORAGE_SETTINGS,
+
+        [EnumMember(Value = "ADD_TAG")]
+        ADD_TAG,
 
         [EnumMember(Value = "ALLOW_SUPPORT_USER_SESSIONS")]
         ALLOW_SUPPORT_USER_SESSIONS,
@@ -342,6 +348,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_SYSLOG")]
         MANAGE_SYSLOG,
 
+        [EnumMember(Value = "MANAGE_TAG")]
+        MANAGE_TAG,
+
         [EnumMember(Value = "MANAGE_TPR_CONFIGURATION")]
         MANAGE_TPR_CONFIGURATION,
 
@@ -614,6 +623,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_SYS_PREFERENCE")]
         VIEW_SYS_PREFERENCE,
+
+        [EnumMember(Value = "VIEW_TAG")]
+        VIEW_TAG,
 
         [EnumMember(Value = "VIEW_THREAT_HUNT_RESULTS")]
         VIEW_THREAT_HUNT_RESULTS,

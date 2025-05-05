@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ClusterStatus? Status
+        // GraphQL -> status: ClusterStatus! (enum)
+        [JsonProperty("status")]
+        public ClusterStatus? Status { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -50,12 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public TprClusterRemovalDetails Set(
+        ClusterStatus? Status = null,
         System.String? Id = null,
         System.String? Ip = null,
         System.String? Location = null,
         System.String? Name = null
     ) 
     {
+        if ( Status != null ) {
+            this.Status = Status;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -82,6 +91,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ClusterStatus? Status
+        // GraphQL -> status: ClusterStatus! (enum)
+        if (this.Status != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -125,6 +143,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> ClusterStatus? Status
+        // GraphQL -> status: ClusterStatus! (enum)
+        if (ec.Includes("status",true))
+        {
+            if(this.Status == null) {
+
+                this.Status = new ClusterStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (ec.Includes("id",true))

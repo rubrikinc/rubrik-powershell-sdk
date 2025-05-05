@@ -9,3 +9,4 @@ Azure AD object relationship types.
 - POLICY_INCLUDES - Relationship between a policy and its included Azure AD objects.
 - POLICY_APPLIED_TO - Policy applied to relationship for an Azure AD object.
 - SCOPE_ROLE_ASSIGNMENT - Scope Role Assignment relationship for an Azure AD object.
+- PRINCIPAL_ROLE_ASSIGNMENT - Principal Role Assignment relationship for an Azure AD object.

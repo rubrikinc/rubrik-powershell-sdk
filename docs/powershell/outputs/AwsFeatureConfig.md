@@ -11,3 +11,5 @@ AWS feature configurations in an AWS account.
   - AWS Exocompute Configurations.
 - mappedExocomputeAccount: CloudAccountDetails
   - Account details of the mapped Exocompute account.
+- roleChainingAccount: AwsRoleChainingAccount
+  - Role chaining account details.

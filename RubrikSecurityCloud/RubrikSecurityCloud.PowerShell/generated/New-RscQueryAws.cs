@@ -1164,6 +1164,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			enableImmutability = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		ociEsConfig = @{
+    /// 			# OPTIONAL
+    /// 			bucketName = $someString
+    /// 			# OPTIONAL
+    /// 			ociNamespace = $someString
+    /// 			# OPTIONAL
+    /// 			accessKey = $someString
+    /// 			# OPTIONAL
+    /// 			secretKey = $someString
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	vmConfig = @{
@@ -2671,6 +2682,17 @@ $query.Var.input = @{
 			enableObjectLock = $someBoolean
 			# OPTIONAL
 			enableImmutability = $someBoolean
+		}
+		# OPTIONAL
+		ociEsConfig = @{
+			# OPTIONAL
+			bucketName = $someString
+			# OPTIONAL
+			ociNamespace = $someString
+			# OPTIONAL
+			accessKey = $someString
+			# OPTIONAL
+			secretKey = $someString
 		}
 	}
 	# OPTIONAL

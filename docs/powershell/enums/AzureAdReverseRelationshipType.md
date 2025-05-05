@@ -7,4 +7,3 @@ Reverse relationships of an Azure Active Directory object.
 - ROLE_ASSIGNMENT_OF - Assignee of a role. For example, a user assigned to the admin role.
 - INCLUDED_IN_POLICY - Component of a policy. For example, a named location included in the policy.
 - APPLIED_POLICY - Directory object to which the policy is applied.
-- SCOPE_ASSIGNMENT_OF - Scope of a role. For example, an admin unit is the scope of a role assignment.

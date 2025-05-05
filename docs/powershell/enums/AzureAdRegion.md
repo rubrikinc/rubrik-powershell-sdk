@@ -25,3 +25,4 @@ Represents regions for Azure AD.
 - POLANDCENTRAL - Azure region is Poland Central.
 - QATARCENTRAL - Azure region is Qatar Central.
 - UAENORTH - Azure region is UAE North.
+- USGOVVIRGINIA - Azure AD region is US Gov Virginia.

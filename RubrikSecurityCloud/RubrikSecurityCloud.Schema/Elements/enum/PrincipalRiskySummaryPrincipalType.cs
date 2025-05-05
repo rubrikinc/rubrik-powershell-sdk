@@ -27,6 +27,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GROUP")]
         GROUP,
 
+        [EnumMember(Value = "ORG_WIDE")]
+        ORG_WIDE,
+
+        [EnumMember(Value = "PUBLIC")]
+        PUBLIC,
+
         [EnumMember(Value = "SERVICE_ACCOUNT")]
         SERVICE_ACCOUNT,
 

@@ -21,6 +21,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ItemName
+        // GraphQL -> itemName: String! (scalar)
+        [JsonProperty("itemName")]
+        public System.String? ItemName { get; set; }
+
+        //      C# -> System.String? ItemPath
+        // GraphQL -> itemPath: String! (scalar)
+        [JsonProperty("itemPath")]
+        public System.String? ItemPath { get; set; }
+
         //      C# -> System.String? SharingLink
         // GraphQL -> sharingLink: String! (scalar)
         [JsonProperty("sharingLink")]
@@ -36,9 +46,17 @@ namespace RubrikSecurityCloud.Types
     }
 
     public M365AccessMethodDetails Set(
+        System.String? ItemName = null,
+        System.String? ItemPath = null,
         System.String? SharingLink = null
     ) 
     {
+        if ( ItemName != null ) {
+            this.ItemName = ItemName;
+        }
+        if ( ItemPath != null ) {
+            this.ItemPath = ItemPath;
+        }
         if ( SharingLink != null ) {
             this.SharingLink = SharingLink;
         }
@@ -56,6 +74,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? ItemName
+        // GraphQL -> itemName: String! (scalar)
+        if (this.ItemName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "itemName\n" ;
+            } else {
+                s += ind + "itemName\n" ;
+            }
+        }
+        //      C# -> System.String? ItemPath
+        // GraphQL -> itemPath: String! (scalar)
+        if (this.ItemPath != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "itemPath\n" ;
+            } else {
+                s += ind + "itemPath\n" ;
+            }
+        }
         //      C# -> System.String? SharingLink
         // GraphQL -> sharingLink: String! (scalar)
         if (this.SharingLink != null) {
@@ -72,6 +108,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? ItemName
+        // GraphQL -> itemName: String! (scalar)
+        if (ec.Includes("itemName",true))
+        {
+            if(this.ItemName == null) {
+
+                this.ItemName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ItemName != null && ec.Excludes("itemName",true))
+        {
+            this.ItemName = null;
+        }
+        //      C# -> System.String? ItemPath
+        // GraphQL -> itemPath: String! (scalar)
+        if (ec.Includes("itemPath",true))
+        {
+            if(this.ItemPath == null) {
+
+                this.ItemPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ItemPath != null && ec.Excludes("itemPath",true))
+        {
+            this.ItemPath = null;
+        }
         //      C# -> System.String? SharingLink
         // GraphQL -> sharingLink: String! (scalar)
         if (ec.Includes("sharingLink",true))

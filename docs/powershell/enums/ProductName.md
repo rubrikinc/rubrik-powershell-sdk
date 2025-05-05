@@ -40,3 +40,4 @@ Name of product.
 - DYNAMICS_365 - Dynamics 365 protection.
 - SALESFORCE_DEVOPS_ADD_ON - Salesforce DevOps Add-on.
 - APPFLOWS_UCL - AppFlows on CNP.
+- RADAR_O365 - Anomaly Detection on Office 365.

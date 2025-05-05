@@ -827,6 +827,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			enableImmutability = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		ociEsConfig = @{
+    /// 			# OPTIONAL
+    /// 			bucketName = $someString
+    /// 			# OPTIONAL
+    /// 			ociNamespace = $someString
+    /// 			# OPTIONAL
+    /// 			accessKey = $someString
+    /// 			# OPTIONAL
+    /// 			secretKey = $someString
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	vmConfig = @{
@@ -1141,6 +1152,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
+    /// 	# OPTIONAL
+    /// 	accessTier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
     /// 	# OPTIONAL
@@ -1548,8 +1561,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				@{
     /// 					# REQUIRED
     /// 					id = $someString
+    /// 					# OPTIONAL
+    /// 					exportedPolicyName = $someString
     /// 					# REQUIRED
     /// 					recoveryState = $someAzureAdConditionalAccessPolicyStateEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyStateEnumType]) for enum values.
+    /// 					# OPTIONAL
+    /// 					recoveryMethod = $someAzureAdConditionalAccessPolicyRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyRecoveryType]) for enum values.
     /// 				}
     /// 			)
     /// 		}
@@ -2386,6 +2403,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
+    /// 	# OPTIONAL
+    /// 	accessTier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
     /// }
@@ -2467,6 +2486,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			permissionsGroups = @(
     /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
     /// 			)
+    /// 			# OPTIONAL
+    /// 			resourceGroup = @{
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 				# OPTIONAL
+    /// 				tags = @{
+    /// 					# REQUIRED
+    /// 					tagList = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							key = $someString
+    /// 							# REQUIRED
+    /// 							value = $someString
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# REQUIRED
+    /// 				region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 			}
     /// 		}
     /// 	)
     /// 	# REQUIRED
@@ -2515,6 +2553,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			permissionsGroups = @(
     /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
     /// 			)
+    /// 			# OPTIONAL
+    /// 			resourceGroup = @{
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 				# OPTIONAL
+    /// 				tags = @{
+    /// 					# REQUIRED
+    /// 					tagList = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							key = $someString
+    /// 							# REQUIRED
+    /// 							value = $someString
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# REQUIRED
+    /// 				region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 			}
     /// 		}
     /// 	)
     /// }
@@ -3810,6 +3867,17 @@ $query.Var.input = @{
 			# OPTIONAL
 			enableImmutability = $someBoolean
 		}
+		# OPTIONAL
+		ociEsConfig = @{
+			# OPTIONAL
+			bucketName = $someString
+			# OPTIONAL
+			ociNamespace = $someString
+			# OPTIONAL
+			accessKey = $someString
+			# OPTIONAL
+			secretKey = $someString
+		}
 	}
 	# OPTIONAL
 	vmConfig = @{
@@ -4099,6 +4167,8 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
+	# OPTIONAL
+	accessTier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
 	# REQUIRED
 	bypassProxy = $someBoolean
 	# OPTIONAL
@@ -4425,8 +4495,12 @@ $query.Var.input = @{
 				@{
 					# REQUIRED
 					id = $someString
+					# OPTIONAL
+					exportedPolicyName = $someString
 					# REQUIRED
 					recoveryState = $someAzureAdConditionalAccessPolicyStateEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyStateEnumType]) for enum values.
+					# OPTIONAL
+					recoveryMethod = $someAzureAdConditionalAccessPolicyRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyRecoveryType]) for enum values.
 				}
 			)
 		}
@@ -5134,6 +5208,8 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
+	# OPTIONAL
+	accessTier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
 	# REQUIRED
 	bypassProxy = $someBoolean
 }"
@@ -5199,6 +5275,25 @@ $query.Var.input = @{
 			permissionsGroups = @(
 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
 			)
+			# OPTIONAL
+			resourceGroup = @{
+				# REQUIRED
+				name = $someString
+				# OPTIONAL
+				tags = @{
+					# REQUIRED
+					tagList = @(
+						@{
+							# REQUIRED
+							key = $someString
+							# REQUIRED
+							value = $someString
+						}
+					)
+				}
+				# REQUIRED
+				region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+			}
 		}
 	)
 	# REQUIRED
@@ -5239,6 +5334,25 @@ $query.Var.input = @{
 			permissionsGroups = @(
 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
 			)
+			# OPTIONAL
+			resourceGroup = @{
+				# REQUIRED
+				name = $someString
+				# OPTIONAL
+				tags = @{
+					# REQUIRED
+					tagList = @(
+						@{
+							# REQUIRED
+							key = $someString
+							# REQUIRED
+							value = $someString
+						}
+					)
+				}
+				# REQUIRED
+				region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+			}
 		}
 	)
 }"

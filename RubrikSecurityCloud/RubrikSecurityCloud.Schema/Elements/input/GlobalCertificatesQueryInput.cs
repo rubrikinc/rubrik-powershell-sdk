@@ -59,10 +59,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("issuerTypes")]
         public List<IssuerType>? IssuerTypes { get; set; }
 
-        //      C# -> System.Boolean? IsRenewalInProgress
-        // GraphQL -> isRenewalInProgress: Boolean (scalar)
-        [JsonProperty("isRenewalInProgress")]
-        public System.Boolean? IsRenewalInProgress { get; set; }
+        //      C# -> List<CertificateRotationStatus>? RenewalStatuses
+        // GraphQL -> renewalStatuses: [CertificateRotationStatus!] (enum)
+        [JsonProperty("renewalStatuses")]
+        public List<CertificateRotationStatus>? RenewalStatuses { get; set; }
 
         //      C# -> List<CdmCertificateUsage>? CdmUsages
         // GraphQL -> cdmUsages: [CdmCertificateUsage!] (enum)

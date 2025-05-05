@@ -384,6 +384,11 @@ Retrieves a list of all Azure subscriptions with Exocompute subscription mapping
     - features - list of CloudAccountFeatures: Cloud account features. Rubrik offers a cloud account feature as part of Rubrik Security Cloud (RSC).
     - exocomputeSubscriptionIdsFilter - list of System.Strings: List of mapped Exocompute subscription IDs.
 - Returns list of AzureSubscriptionWithExocomputeMappings.
+### supportedadregions
+Lists all the supported Azure AD regions.
+
+- The supportedadregions subcommand takes no arguments.
+- Returns SupportedAzureAdRegions.
 ### validatecloudaccountexocomputeconfigurations
 Validates if Azure subnets are correctly configured for running Azure Kubernetes Service (AKS) Clusters. When correctly configured, the Azure subnets allow the required region-specific outbound connectivity and do not overlap with Azure restricted IP Address Space.
 

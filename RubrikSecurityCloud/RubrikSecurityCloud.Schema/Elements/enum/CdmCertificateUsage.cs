@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RBA")]
         RBA,
 
+        [EnumMember(Value = "RCCA")]
+        RCCA,
+
         [EnumMember(Value = "RSA")]
         RSA,
 

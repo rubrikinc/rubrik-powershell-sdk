@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureAdAppSetupWarningType? Warning
+        // GraphQL -> warning: AzureAdAppSetupWarningType! (enum)
+        [JsonProperty("warning")]
+        public AzureAdAppSetupWarningType? Warning { get; set; }
+
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
         [JsonProperty("appId")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public StartAzureAdAppSetupReply Set(
+        AzureAdAppSetupWarningType? Warning = null,
         System.String? AppId = null,
         System.String? CsrfToken = null
     ) 
     {
+        if ( Warning != null ) {
+            this.Warning = Warning;
+        }
         if ( AppId != null ) {
             this.AppId = AppId;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureAdAppSetupWarningType? Warning
+        // GraphQL -> warning: AzureAdAppSetupWarningType! (enum)
+        if (this.Warning != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "warning\n" ;
+            } else {
+                s += ind + "warning\n" ;
+            }
+        }
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
         if (this.AppId != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AzureAdAppSetupWarningType? Warning
+        // GraphQL -> warning: AzureAdAppSetupWarningType! (enum)
+        if (ec.Includes("warning",true))
+        {
+            if(this.Warning == null) {
+
+                this.Warning = new AzureAdAppSetupWarningType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Warning != null && ec.Excludes("warning",true))
+        {
+            this.Warning = null;
+        }
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
         if (ec.Includes("appId",true))

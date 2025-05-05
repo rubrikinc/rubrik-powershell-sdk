@@ -15,6 +15,8 @@ Metadata details of a Physical Host.
   - Specifies the MSSQL SDD details.
 - oracleSddDetail: OracleSddDetail
   - Specifies the Oracle database Sensitive Data Monitoring details.
+- oracleSettings: OracleSettings
+  - The Oracle settings, such as the SEPS configuration associated with this host.
 - osType: GuestOsType
   - The operating system type of the physical host.
 - defaultCbt: System.Boolean

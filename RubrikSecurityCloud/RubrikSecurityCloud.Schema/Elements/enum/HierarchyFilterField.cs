@@ -876,11 +876,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VCD_VAPP_TYPE")]
         VCD_VAPP_TYPE,
 
+        [EnumMember(Value = "VMWARE_DATASTORE_DEVICE_NAME")]
+        VMWARE_DATASTORE_DEVICE_NAME,
+
+        [EnumMember(Value = "VMWARE_DATASTORE_ID")]
+        VMWARE_DATASTORE_ID,
+
         [EnumMember(Value = "VMWARE_IS_STANDALONE_HOST")]
         VMWARE_IS_STANDALONE_HOST,
-
-        [EnumMember(Value = "VMWARE_PURE_DATASTORE_SERIAL_NUMBER")]
-        VMWARE_PURE_DATASTORE_SERIAL_NUMBER,
 
         [EnumMember(Value = "VMWARE_SNAPSHOT_CONSISTENCY")]
         VMWARE_SNAPSHOT_CONSISTENCY,
