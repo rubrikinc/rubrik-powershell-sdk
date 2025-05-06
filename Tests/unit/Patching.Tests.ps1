@@ -34,7 +34,7 @@ Describe -Name "Test patching" -Fixture {
 
         # The following hard-coded list needs to be updated manually
         # when the schema changes. The repetition is intentional.
-        $defaultNodes = "pauseStatus status statusFromDb subStatus systemStatus type id isAirGapped isHealthy name systemStatusMessage version"
+        $defaultNodes = "pauseStatus status statusFromDb subStatus systemStatus type id isAirGapped isClusterRemovalTprEnabled isHealthy name systemStatusMessage version"
 
         $defaultNodesSnapshot = $defaultNodes -replace 'name', 'name snapshotcount'
         $pageInfo = "pageInfo { endCursor hasNextPage hasPreviousPage startCursor }"
@@ -105,7 +105,7 @@ Describe -Name "Test patching" -Fixture {
 
         # The following hard-coded list needs to be updated manually
         # when the schema changes. The repetition is intentional.
-        $defaultWithSnapshotAndEstimatedRunway = "pauseStatus status statusFromDb subStatus systemStatus type estimatedRunway id isAirGapped isHealthy name snapshotCount systemStatusMessage version"
+        $defaultWithSnapshotAndEstimatedRunway = "pauseStatus status statusFromDb subStatus systemStatus type estimatedRunway id isAirGapped isClusterRemovalTprEnabled isHealthy name snapshotCount systemStatusMessage version"
 
         $qc2ExpectedFs = "count nodes { $defaultWithSnapshotAndEstimatedRunway } $pageInfo"
         $qc2Fs | Should -Be $qc2ExpectedFs
@@ -160,7 +160,7 @@ Describe -Name "Test patching" -Fixture {
 
         # The following hard-coded list needs to be updated manually
         # when the schema changes. The repetition is intentional.
-        $defaultNodesEstimatedRunway = "pauseStatus status statusFromDb subStatus systemStatus type estimatedRunway id isAirGapped isHealthy name systemStatusMessage version"
+        $defaultNodesEstimatedRunway = "pauseStatus status statusFromDb subStatus systemStatus type estimatedRunway id isAirGapped isClusterRemovalTprEnabled isHealthy name systemStatusMessage version"
 
         $qf3ExpectedFs = "count nodes { $defaultNodesEstimatedRunway } $pageInfo"
         $qf3Fs | Should -Be $qf3ExpectedFs
