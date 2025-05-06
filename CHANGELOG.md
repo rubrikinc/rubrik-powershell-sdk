@@ -1,25 +1,27 @@
 # Changelog
 
-## Version TBD
+## Version 1.12.7
 
-New Features:
+Schema Update:
+
+See [API Changelog](https://rubrikinc.github.io/rubrik-api-documentation/changelog/changes/)
+for API additions, deprecations and breaking changes.
 
 Fixes:
+
 - Get-RscSnapshot now retrieves snapshots for MSSQL databases. MSSQL database snapshots are tied to the DAG ID, not the ID of the object. Pipeline support now works with Get-RscMssqlDatabase:
 
-```
+```powershell
 # Retrieve all snapshots for "example" database
 Get-RscMssqlDatabase -Name "example" -Relic:$false -Replica:$false | Get-RscSnapshot
 ```
 
 - Protect-RscWorkload now works with MSSQL databases. MSSQL database protection is tied to the DAG ID, not the ID of the object.
 
-```
+```powershell
 # Assign "example" database to the Bronze SLA
 Get-RscMssqlDatabase -Name "example" -Relic:$false -Replica:$false | Protect-RscWorkload -Sla (Get-RscSla Bronze)
 ```
-
-Breaking Changes:
 
 ## Version 1.12.6
 
@@ -723,4 +725,3 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
-
