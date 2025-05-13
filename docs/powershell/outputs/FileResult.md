@@ -76,4 +76,8 @@
   - Summarizes attributes associated with the file.
 - documentTypesSummary: list of DocumentTypeSummarys
   - Summarizes the document types associated with the file.
+- createdBy: System.String
+  - Represents Identity who created the file.
+- modifiedBy: System.String
+  - Represents Identity who last modified the file.
 - snappable: HierarchyObject

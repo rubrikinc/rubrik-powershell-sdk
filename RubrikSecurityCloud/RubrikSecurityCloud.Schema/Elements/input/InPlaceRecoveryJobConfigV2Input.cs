@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldKeepVsphereSnapshotAfterRecovery")]
         public System.Boolean? ShouldKeepVsphereSnapshotAfterRecovery { get; set; }
 
+        //      C# -> System.Boolean? ShouldPowerOn
+        // GraphQL -> shouldPowerOn: Boolean (scalar)
+        [JsonProperty("shouldPowerOn")]
+        public System.Boolean? ShouldPowerOn { get; set; }
+
         //      C# -> RequiredRecoveryParametersInput? RequiredRecoveryParameters
         // GraphQL -> requiredRecoveryParameters: RequiredRecoveryParametersInput (input)
         [JsonProperty("requiredRecoveryParameters")]

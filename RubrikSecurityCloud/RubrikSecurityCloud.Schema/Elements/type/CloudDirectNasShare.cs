@@ -196,6 +196,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("newestSnapshot")]
         public CloudDirectSnapshot? NewestSnapshot { get; set; }
 
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        [JsonProperty("objectPauseStatus")]
+        public ObjectPauseStatus? ObjectPauseStatus { get; set; }
+
         //      C# -> CloudDirectSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: CloudDirectSnapshot (type)
         [JsonProperty("oldestSnapshot")]
@@ -337,6 +342,7 @@ namespace RubrikSecurityCloud.Types
         List<PathNode>? LogicalPath = null,
         CloudDirectSnapshotsGroupBySummaryConnection? MissedSnapshotGroupByConnection = null,
         CloudDirectSnapshot? NewestSnapshot = null,
+        ObjectPauseStatus? ObjectPauseStatus = null,
         CloudDirectSnapshot? OldestSnapshot = null,
         CloudDirectNasShare? ParentShare = null,
         List<PathNode>? PhysicalPath = null,
@@ -448,6 +454,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NewestSnapshot != null ) {
             this.NewestSnapshot = NewestSnapshot;
+        }
+        if ( ObjectPauseStatus != null ) {
+            this.ObjectPauseStatus = ObjectPauseStatus;
         }
         if ( OldestSnapshot != null ) {
             this.OldestSnapshot = OldestSnapshot;
@@ -835,6 +844,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "newestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        if (this.ObjectPauseStatus != null) {
+            var fspec = this.ObjectPauseStatus.AsFieldSpec(conf.Child("objectPauseStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectPauseStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1542,6 +1563,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NewestSnapshot != null && ec.Excludes("newestSnapshot",false))
         {
             this.NewestSnapshot = null;
+        }
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        if (ec.Includes("objectPauseStatus",false))
+        {
+            if(this.ObjectPauseStatus == null) {
+
+                this.ObjectPauseStatus = new ObjectPauseStatus();
+                this.ObjectPauseStatus.ApplyExploratoryFieldSpec(ec.NewChild("objectPauseStatus"));
+
+            } else {
+
+                this.ObjectPauseStatus.ApplyExploratoryFieldSpec(ec.NewChild("objectPauseStatus"));
+
+            }
+        }
+        else if (this.ObjectPauseStatus != null && ec.Excludes("objectPauseStatus",false))
+        {
+            this.ObjectPauseStatus = null;
         }
         //      C# -> CloudDirectSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: CloudDirectSnapshot (type)

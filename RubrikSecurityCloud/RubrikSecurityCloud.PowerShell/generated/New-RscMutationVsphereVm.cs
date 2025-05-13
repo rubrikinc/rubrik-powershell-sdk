@@ -340,6 +340,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					shouldKeepVsphereSnapshotAfterRecovery = $someBoolean
     /// 					# OPTIONAL
+    /// 					shouldPowerOn = $someBoolean
+    /// 					# OPTIONAL
     /// 					requiredRecoveryParameters = @{
     /// 						# OPTIONAL
     /// 						recoveryPoint = $someDateTime
@@ -1135,6 +1137,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		shouldKeepVsphereSnapshotAfterRecovery = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldPowerOn = $someBoolean
     /// 		# OPTIONAL
     /// 		requiredRecoveryParameters = @{
     /// 			# OPTIONAL
@@ -2550,6 +2554,8 @@ $query.Var.input = @{
 					# OPTIONAL
 					shouldKeepVsphereSnapshotAfterRecovery = $someBoolean
 					# OPTIONAL
+					shouldPowerOn = $someBoolean
+					# OPTIONAL
 					requiredRecoveryParameters = @{
 						# OPTIONAL
 						recoveryPoint = $someDateTime
@@ -3257,6 +3263,8 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		shouldKeepVsphereSnapshotAfterRecovery = $someBoolean
+		# OPTIONAL
+		shouldPowerOn = $someBoolean
 		# OPTIONAL
 		requiredRecoveryParameters = @{
 			# OPTIONAL

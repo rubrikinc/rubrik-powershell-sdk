@@ -61,3 +61,6 @@ Supported in v5.0+
   - 
 - hostVfdEnabled: HostVfdInstallConfig
   - 
+- oracleSepsSettings: OracleSepsWalletSettings
+  - Supported in v9.4
+  Oracle SEPS settings for the host.

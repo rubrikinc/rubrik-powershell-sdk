@@ -663,6 +663,19 @@ Link to downloadable investigation results in CSV format.
     - workloadId - System.String: ID of the object and not the FID.
     - snapshotId - System.String: Corresponds to snapshot ID in Rubrik CDM tables.
 - Returns InvestigationCsvDownloadLinkReply.
+### iocfeedentries
+Lists IOC entries for a threat feed.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - providerId - System.String: ID of threat feed.
+    - threatFeedType - list of ThreatFeedTypes: Type of IOCs to return.
+    - feedEntryStatusFilter - FeedEntryStatusFilter: Filter feed entries by entry status.
+    - feedEntrySort - FeedEntrySort: Sorts feed entries.
+- Returns IocFeedEntryConnection.
 ### ipwhitelist
 - The ipwhitelist subcommand takes no arguments.
 - Returns GetWhitelistReply.
@@ -1403,6 +1416,11 @@ Validates if given account is ready to transition from Active Directory domain i
 
 - The validateadforesttransition subcommand takes no arguments.
 - Returns ValidateAdForestTransition.
+### validateiocentry
+Validates IOC entry.
+
+- There is a single argument of type ValidateIocEntryInput.
+- Returns ValidateEntryReply.
 ### validateorgname
 Checks whether the tenant org name is valid and unique.
 

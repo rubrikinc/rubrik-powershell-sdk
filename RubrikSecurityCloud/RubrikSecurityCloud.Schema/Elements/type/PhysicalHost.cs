@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
+        // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        [JsonProperty("cdmPendingObjectPauseAssignment")]
+        public PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -221,6 +226,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mssqlSddDetail")]
         public MssqlSddDetail? MssqlSddDetail { get; set; }
 
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        [JsonProperty("objectPauseStatus")]
+        public ObjectPauseStatus? ObjectPauseStatus { get; set; }
+
         //      C# -> OracleSddDetail? OracleSddDetail
         // GraphQL -> oracleSddDetail: OracleSddDetail (type)
         [JsonProperty("oracleSddDetail")]
@@ -326,6 +336,7 @@ namespace RubrikSecurityCloud.Types
 
     public PhysicalHost Set(
         List<Operation>? AuthorizedOperations = null,
+        PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         GuestOsType? OsType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
@@ -365,6 +376,7 @@ namespace RubrikSecurityCloud.Types
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
         MssqlSddDetail? MssqlSddDetail = null,
+        ObjectPauseStatus? ObjectPauseStatus = null,
         OracleSddDetail? OracleSddDetail = null,
         OracleSettings? OracleSettings = null,
         OracleUserDetails? OracleUserDetails = null,
@@ -378,6 +390,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( CdmPendingObjectPauseAssignment != null ) {
+            this.CdmPendingObjectPauseAssignment = CdmPendingObjectPauseAssignment;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -496,6 +511,9 @@ namespace RubrikSecurityCloud.Types
         if ( MssqlSddDetail != null ) {
             this.MssqlSddDetail = MssqlSddDetail;
         }
+        if ( ObjectPauseStatus != null ) {
+            this.ObjectPauseStatus = ObjectPauseStatus;
+        }
         if ( OracleSddDetail != null ) {
             this.OracleSddDetail = OracleSddDetail;
         }
@@ -544,6 +562,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
+        // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        if (this.CdmPendingObjectPauseAssignment != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmPendingObjectPauseAssignment\n" ;
+            } else {
+                s += ind + "cdmPendingObjectPauseAssignment\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -947,6 +974,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        if (this.ObjectPauseStatus != null) {
+            var fspec = this.ObjectPauseStatus.AsFieldSpec(conf.Child("objectPauseStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectPauseStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> OracleSddDetail? OracleSddDetail
         // GraphQL -> oracleSddDetail: OracleSddDetail (type)
         if (this.OracleSddDetail != null) {
@@ -1078,6 +1117,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
+        // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        if (ec.Includes("cdmPendingObjectPauseAssignment",true))
+        {
+            if(this.CdmPendingObjectPauseAssignment == null) {
+
+                this.CdmPendingObjectPauseAssignment = new PendingObjectPauseAssignmentStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmPendingObjectPauseAssignment != null && ec.Excludes("cdmPendingObjectPauseAssignment",true))
+        {
+            this.CdmPendingObjectPauseAssignment = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
@@ -1791,6 +1847,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.MssqlSddDetail != null && ec.Excludes("mssqlSddDetail",false))
         {
             this.MssqlSddDetail = null;
+        }
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        if (ec.Includes("objectPauseStatus",false))
+        {
+            if(this.ObjectPauseStatus == null) {
+
+                this.ObjectPauseStatus = new ObjectPauseStatus();
+                this.ObjectPauseStatus.ApplyExploratoryFieldSpec(ec.NewChild("objectPauseStatus"));
+
+            } else {
+
+                this.ObjectPauseStatus.ApplyExploratoryFieldSpec(ec.NewChild("objectPauseStatus"));
+
+            }
+        }
+        else if (this.ObjectPauseStatus != null && ec.Excludes("objectPauseStatus",false))
+        {
+            this.ObjectPauseStatus = null;
         }
         //      C# -> OracleSddDetail? OracleSddDetail
         // GraphQL -> oracleSddDetail: OracleSddDetail (type)

@@ -15,3 +15,6 @@ Supported in v7.0+
 - certificateId: System.String
   - Supported in v7.0+
       The ID corresponding to the imported certificate.
+- areApiCredentialsPermanent: System.Boolean
+  - Supported in v9.2+
+      Optional parameter that specifies whether to use the specified credentials for Isilon/NetApp instead of generating our own.

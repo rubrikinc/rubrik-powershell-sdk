@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public System.String? Status { get; set; }
 
+        //      C# -> System.String? SubStatus
+        // GraphQL -> subStatus: String (scalar)
+        [JsonProperty("subStatus")]
+        public System.String? SubStatus { get; set; }
+
         //      C# -> SupportTunnelInfo? SupportTunnel
         // GraphQL -> supportTunnel: SupportTunnelInfo (type)
         [JsonProperty("supportTunnel")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.String? IpAddress = null,
         System.String? Status = null,
+        System.String? SubStatus = null,
         SupportTunnelInfo? SupportTunnel = null
     ) 
     {
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( SubStatus != null ) {
+            this.SubStatus = SubStatus;
         }
         if ( SupportTunnel != null ) {
             this.SupportTunnel = SupportTunnel;
@@ -161,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> System.String? SubStatus
+        // GraphQL -> subStatus: String (scalar)
+        if (this.SubStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "subStatus\n" ;
+            } else {
+                s += ind + "subStatus\n" ;
             }
         }
         //      C# -> SupportTunnelInfo? SupportTunnel
@@ -283,6 +301,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> System.String? SubStatus
+        // GraphQL -> subStatus: String (scalar)
+        if (ec.Includes("subStatus",true))
+        {
+            if(this.SubStatus == null) {
+
+                this.SubStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubStatus != null && ec.Excludes("subStatus",true))
+        {
+            this.SubStatus = null;
         }
         //      C# -> SupportTunnelInfo? SupportTunnel
         // GraphQL -> supportTunnel: SupportTunnelInfo (type)

@@ -51,5 +51,7 @@ Cloud Direct NAS export object.
   - Organizations to which this hierarchy object belongs.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.

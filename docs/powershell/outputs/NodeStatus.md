@@ -16,3 +16,5 @@ Supported in v5.0+
 - hostname: System.String
   - Supported in v6.0+
   Hostname of the node.
+- subStatus: System.String
+  - 

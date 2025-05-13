@@ -110,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostSummary")]
         public HostSummary? HostSummary { get; set; }
 
+        //      C# -> OracleSepsWalletSettings? OracleSepsSettings
+        // GraphQL -> oracleSepsSettings: OracleSepsWalletSettings (type)
+        [JsonProperty("oracleSepsSettings")]
+        public OracleSepsWalletSettings? OracleSepsSettings { get; set; }
+
 
         #endregion
 
@@ -137,7 +142,8 @@ namespace RubrikSecurityCloud.Types
         System.String? OracleSddWalletPath = null,
         System.String? OracleSysDbaUser = null,
         ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo = null,
-        HostSummary? HostSummary = null
+        HostSummary? HostSummary = null,
+        OracleSepsWalletSettings? OracleSepsSettings = null
     ) 
     {
         if ( HostVfdDriverState != null ) {
@@ -193,6 +199,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HostSummary != null ) {
             this.HostSummary = HostSummary;
+        }
+        if ( OracleSepsSettings != null ) {
+            this.OracleSepsSettings = OracleSepsSettings;
         }
         return this;
     }
@@ -373,6 +382,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "hostSummary" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> OracleSepsWalletSettings? OracleSepsSettings
+        // GraphQL -> oracleSepsSettings: OracleSepsWalletSettings (type)
+        if (this.OracleSepsSettings != null) {
+            var fspec = this.OracleSepsSettings.AsFieldSpec(conf.Child("oracleSepsSettings"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "oracleSepsSettings" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -692,6 +713,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.HostSummary != null && ec.Excludes("hostSummary",false))
         {
             this.HostSummary = null;
+        }
+        //      C# -> OracleSepsWalletSettings? OracleSepsSettings
+        // GraphQL -> oracleSepsSettings: OracleSepsWalletSettings (type)
+        if (ec.Includes("oracleSepsSettings",false))
+        {
+            if(this.OracleSepsSettings == null) {
+
+                this.OracleSepsSettings = new OracleSepsWalletSettings();
+                this.OracleSepsSettings.ApplyExploratoryFieldSpec(ec.NewChild("oracleSepsSettings"));
+
+            } else {
+
+                this.OracleSepsSettings.ApplyExploratoryFieldSpec(ec.NewChild("oracleSepsSettings"));
+
+            }
+        }
+        else if (this.OracleSepsSettings != null && ec.Excludes("oracleSepsSettings",false))
+        {
+            this.OracleSepsSettings = null;
         }
     }
 

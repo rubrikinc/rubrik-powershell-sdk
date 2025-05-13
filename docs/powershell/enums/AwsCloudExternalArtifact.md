@@ -12,3 +12,4 @@ Keywords for AWS external artifacts.
 - EXOCOMPUTE_EKS_WORKERNODE_INSTANCE_PROFILE - Keyword to capture EKS worker node instance profile.
 - STACK_NAME - Keyword to capture stack name.
 - STACK_ARN - Keyword to capture stack ARN.
+- EXOCOMPUTE_EKS_LAMBDA_ROLE_ARN - Keyword to capture EKS Lambda role.

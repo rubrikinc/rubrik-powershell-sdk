@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjectCount")]
         System.Int32? ReplicatedObjectCount { get; set; }
 
+        //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
+        // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        [JsonProperty("cdmPendingObjectPauseAssignment")]
+        PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment { get; set; }
+
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         [JsonProperty("authorizedOperations")]
@@ -138,6 +143,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> securityMetadata: SecurityMetadata (type)
         [JsonProperty("securityMetadata")]
         SecurityMetadata? SecurityMetadata { get; set; }
+
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        [JsonProperty("objectPauseStatus")]
+        ObjectPauseStatus? ObjectPauseStatus { get; set; }
 
 
         #endregion

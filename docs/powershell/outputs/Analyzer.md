@@ -1,10 +1,18 @@
 ### Analyzer
+Represents the analyzer.
+
 - analyzerType: AnalyzerTypeEnum
+  - Represents the analyzer type.
 - id: System.String
+  - Represents the analyzer ID.
 - name: System.String
+  - Represents the analyzer name.
 - dictionaryCsv: System.String
+  - Represents the dictionary CSV.
 - dictionary: list of System.Strings
+  - Represents the dictionary.
 - regex: System.String
+  - Represents the regex.
 - analyzerRiskInstance: AnalyzerRiskInstance
   - Represents the latest analyzer risk.
 - risk: RiskLevelType

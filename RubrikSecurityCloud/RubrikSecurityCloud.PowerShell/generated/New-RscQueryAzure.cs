@@ -790,6 +790,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// # REQUIRED
     /// $query.Var.includeSubscriptionDetails = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.azureTenants = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.status = @(
+    /// 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+    /// )
     /// 
     /// # Execute the query
     /// 
@@ -1555,6 +1563,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	serverId = $someString
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -3748,19 +3758,27 @@ $query.Var.subscriptionIdsFilter = @(
         }
 
         // Create new GraphQL Query:
-        // allAzureCloudAccountTenants(features: [CloudAccountFeature!], feature: CloudAccountFeature!, includeSubscriptionDetails: Boolean!): [AzureCloudAccountTenant!]!
+        // allAzureCloudAccountTenants(
+        //     features: [CloudAccountFeature!]
+        //     feature: CloudAccountFeature!
+        //     includeSubscriptionDetails: Boolean!
+        //     azureTenants: [String!]
+        //     status: [CloudAccountStatus!]
+        //   ): [AzureCloudAccountTenant!]!
         internal void InitQueryAllAzureCloudAccountTenants()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("features", "[CloudAccountFeature!]"),
                 Tuple.Create("feature", "CloudAccountFeature!"),
                 Tuple.Create("includeSubscriptionDetails", "Boolean!"),
+                Tuple.Create("azureTenants", "[String!]"),
+                Tuple.Create("status", "[CloudAccountStatus!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllAzureCloudAccountTenants",
-                "($features: [CloudAccountFeature!],$feature: CloudAccountFeature!,$includeSubscriptionDetails: Boolean!)",
+                "($features: [CloudAccountFeature!],$feature: CloudAccountFeature!,$includeSubscriptionDetails: Boolean!,$azureTenants: [String!],$status: [CloudAccountStatus!])",
                 "List<AzureCloudAccountTenant>",
                 Query.AllAzureCloudAccountTenants,
                 Query.AllAzureCloudAccountTenantsFieldSpec,
@@ -3771,7 +3789,15 @@ $query.Var.features = @(
 # REQUIRED
 $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 # REQUIRED
-$query.Var.includeSubscriptionDetails = $someBoolean"
+$query.Var.includeSubscriptionDetails = $someBoolean
+# OPTIONAL
+$query.Var.azureTenants = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.status = @(
+	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+)"
             );
         }
 
@@ -4432,6 +4458,8 @@ $query.Var.azureSqlDatabaseFilters = @{
 			$someString
 		)
 	}
+	# OPTIONAL
+	serverId = $someString
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"

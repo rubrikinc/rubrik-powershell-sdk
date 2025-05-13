@@ -1570,6 +1570,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				}
     /// 			)
     /// 		}
+    /// 		# OPTIONAL
+    /// 		administrativeUnitRecoveryOption = @{
+    /// 			# REQUIRED
+    /// 			skipRestrictedManagementAdministrativeUnits = $someBoolean
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -4503,6 +4508,11 @@ $query.Var.input = @{
 					recoveryMethod = $someAzureAdConditionalAccessPolicyRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyRecoveryType]) for enum values.
 				}
 			)
+		}
+		# OPTIONAL
+		administrativeUnitRecoveryOption = @{
+			# REQUIRED
+			skipRestrictedManagementAdministrativeUnits = $someBoolean
 		}
 	}
 }"

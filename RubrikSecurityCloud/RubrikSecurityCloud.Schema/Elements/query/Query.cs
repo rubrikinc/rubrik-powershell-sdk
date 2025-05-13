@@ -2010,7 +2010,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllAzureCloudAccountTenants(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfeatures: $features\nfeature: $feature\nincludeSubscriptionDetails: $includeSubscriptionDetails\n)";
+            string args = "\n(\nfeatures: $features\nfeature: $feature\nincludeSubscriptionDetails: $includeSubscriptionDetails\nazureTenants: $azureTenants\nstatus: $status\n)";
             return "allAzureCloudAccountTenants" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllAzureCloudAccountTenantsFieldSpec(AutofieldContext? ec=null)
@@ -7333,6 +7333,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> DownloadTurboThreatHuntResultsCsvResponse? DownloadTurboThreatHuntCsv
+        // GraphQL -> downloadTurboThreatHuntCsv: DownloadTurboThreatHuntResultsCsvResponse! (type)
+        public static string DownloadTurboThreatHuntCsv(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "downloadTurboThreatHuntCsv" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadTurboThreatHuntCsvFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DownloadTurboThreatHuntResultsCsvResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<GroupCount>? DownloadedVersionList
         // GraphQL -> downloadedVersionList: [GroupCount!]! (type)
         public static string DownloadedVersionList(object fsObj)
@@ -8787,6 +8805,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new InvestigationCsvDownloadLinkReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> IocFeedEntryConnection? IocFeedEntries
+        // GraphQL -> iocFeedEntries: IocFeedEntryConnection! (type)
+        public static string IocFeedEntries(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nproviderId: $providerId\nthreatFeedType: $threatFeedType\nfeedEntryStatusFilter: $feedEntryStatusFilter\nfeedEntrySort: $feedEntrySort\n)";
+            return "iocFeedEntries" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object IocFeedEntriesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new IocFeedEntryConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -14191,6 +14227,42 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ThreatAnalyticsEnablement? ThreatAnalyticsEnablement
+        // GraphQL -> threatAnalyticsEnablement: ThreatAnalyticsEnablement! (type)
+        public static string ThreatAnalyticsEnablement(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "threatAnalyticsEnablement" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatAnalyticsEnablementFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ThreatAnalyticsEnablement() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ListThreatFeedsResponse? ThreatFeeds
+        // GraphQL -> threatFeeds: ListThreatFeedsResponse! (type)
+        public static string ThreatFeeds(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "threatFeeds" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatFeedsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ListThreatFeedsResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ThreatHunt? ThreatHuntDetail
         // GraphQL -> threatHuntDetail: ThreatHunt! (type)
         public static string ThreatHuntDetail(object fsObj)
@@ -14205,6 +14277,60 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ThreatHunt() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ThreatHuntDetailsV2? ThreatHuntDetailV2
+        // GraphQL -> threatHuntDetailV2: ThreatHuntDetailsV2! (type)
+        public static string ThreatHuntDetailV2(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nhuntId: $huntId\n)";
+            return "threatHuntDetailV2" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatHuntDetailV2FieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ThreatHuntDetailsV2() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ThreatHuntMatchedSnapshotsReply? ThreatHuntMatchedSnapshots
+        // GraphQL -> threatHuntMatchedSnapshots: ThreatHuntMatchedSnapshotsReply! (type)
+        public static string ThreatHuntMatchedSnapshots(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nhuntId: $huntId\nobjectFid: $objectFid\nmatchIds: $matchIds\n)";
+            return "threatHuntMatchedSnapshots" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatHuntMatchedSnapshotsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ThreatHuntMatchedSnapshotsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ThreatHuntObjectMetricsReply? ThreatHuntObjectMetrics
+        // GraphQL -> threatHuntObjectMetrics: ThreatHuntObjectMetricsReply! (type)
+        public static string ThreatHuntObjectMetrics(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nhuntId: $huntId\n)";
+            return "threatHuntObjectMetrics" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatHuntObjectMetricsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ThreatHuntObjectMetricsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -14245,6 +14371,42 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ThreatHuntResultObjectsSummaryConnection? ThreatHuntSummaryV2
+        // GraphQL -> threatHuntSummaryV2: ThreatHuntResultObjectsSummaryConnection! (type)
+        public static string ThreatHuntSummaryV2(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nhuntId: $huntId\nobjectTypeFilter: $objectTypeFilter\nmatchesFoundFilter: $matchesFoundFilter\nquarantinedMatchesFilter: $quarantinedMatchesFilter\nthreatHuntSummaryFilters: $threatHuntSummaryFilters\nthreatHuntSummarySort: $threatHuntSummarySort\nworkloadNameSearch: $workloadNameSearch\n)";
+            return "threatHuntSummaryV2" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatHuntSummaryV2FieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ThreatHuntResultObjectsSummaryConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ThreatHuntingObjectFileMatchConnection? ThreatHuntingObjectMatchedFiles
+        // GraphQL -> threatHuntingObjectMatchedFiles: ThreatHuntingObjectFileMatchConnection! (type)
+        public static string ThreatHuntingObjectMatchedFiles(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nhuntId: $huntId\nobjectFid: $objectFid\nfilenameSearchFilter: $filenameSearchFilter\nquarantinedFileMatchFilter: $quarantinedFileMatchFilter\nthreatHuntMatchedFilesSort: $threatHuntMatchedFilesSort\n)";
+            return "threatHuntingObjectMatchedFiles" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatHuntingObjectMatchedFilesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ThreatHuntingObjectFileMatchConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ThreatHuntConnection? ThreatHunts
         // GraphQL -> threatHunts: ThreatHuntConnection! (type)
         public static string ThreatHunts(object fsObj)
@@ -14259,6 +14421,114 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ThreatHuntConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ThreatMonitoringFileMatchDetailsReply? ThreatMonitoringMatchedFileDetails
+        // GraphQL -> threatMonitoringMatchedFileDetails: ThreatMonitoringFileMatchDetailsReply! (type)
+        public static string ThreatMonitoringMatchedFileDetails(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nmatchId: $matchId\n)";
+            return "threatMonitoringMatchedFileDetails" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatMonitoringMatchedFileDetailsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ThreatMonitoringFileMatchDetailsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ThreatMonitoringFileMatchDetailsV2? ThreatMonitoringMatchedFileDetailsV2
+        // GraphQL -> threatMonitoringMatchedFileDetailsV2: ThreatMonitoringFileMatchDetailsV2! (type)
+        public static string ThreatMonitoringMatchedFileDetailsV2(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nmatchedSnapshotFid: $matchedSnapshotFid\nfilepath: $filepath\n)";
+            return "threatMonitoringMatchedFileDetailsV2" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatMonitoringMatchedFileDetailsV2FieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ThreatMonitoringFileMatchDetailsV2() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FileMatchConnection? ThreatMonitoringMatchedFiles
+        // GraphQL -> threatMonitoringMatchedFiles: FileMatchConnection! (type)
+        public static string ThreatMonitoringMatchedFiles(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nobjectFid: $objectFid\nfilenameSearchFilter: $filenameSearchFilter\n)";
+            return "threatMonitoringMatchedFiles" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatMonitoringMatchedFilesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FileMatchConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ThreatMonitoringMatchedObjectConnection? ThreatMonitoringMatchedObjects
+        // GraphQL -> threatMonitoringMatchedObjects: ThreatMonitoringMatchedObjectConnection! (type)
+        public static string ThreatMonitoringMatchedObjects(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nbeginTime: $beginTime\nendTime: $endTime\nclusterUuidFilter: $clusterUuidFilter\nobjectTypeFilter: $objectTypeFilter\nworkloadNameSearch: $workloadNameSearch\nmatchTypeFilter: $matchTypeFilter\n)";
+            return "threatMonitoringMatchedObjects" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatMonitoringMatchedObjectsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ThreatMonitoringMatchedObjectConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetThreatMonitoringObjectEnablementStatsResponse? ThreatMonitoringObjectEnablementStats
+        // GraphQL -> threatMonitoringObjectEnablementStats: GetThreatMonitoringObjectEnablementStatsResponse! (type)
+        public static string ThreatMonitoringObjectEnablementStats(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nbeginTime: $beginTime\n)";
+            return "threatMonitoringObjectEnablementStats" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatMonitoringObjectEnablementStatsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetThreatMonitoringObjectEnablementStatsResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ThreatMonitoringObjects? ThreatMonitoringObjects
+        // GraphQL -> threatMonitoringObjects: ThreatMonitoringObjects! (type)
+        public static string ThreatMonitoringObjects(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nbeginTime: $beginTime\n)";
+            return "threatMonitoringObjects" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ThreatMonitoringObjectsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ThreatMonitoringObjects() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15469,6 +15739,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ValidateBulkThreatHuntResponse? ValidateBulkThreatHunt
+        // GraphQL -> validateBulkThreatHunt: ValidateBulkThreatHuntResponse! (type)
+        public static string ValidateBulkThreatHunt(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "validateBulkThreatHunt" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ValidateBulkThreatHuntFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ValidateBulkThreatHuntResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ClusterLicenseCapacityValidations? ValidateClusterLicenseCapacity
         // GraphQL -> validateClusterLicenseCapacity: ClusterLicenseCapacityValidations! (type)
         public static string ValidateClusterLicenseCapacity(object fsObj)
@@ -15519,6 +15807,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidationReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ValidateEntryReply? ValidateIocEntry
+        // GraphQL -> validateIocEntry: ValidateEntryReply! (type)
+        public static string ValidateIocEntry(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "validateIocEntry" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ValidateIocEntryFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ValidateEntryReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

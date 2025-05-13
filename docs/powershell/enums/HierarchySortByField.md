@@ -122,3 +122,6 @@
 +comment: is acceptable. The number of MSSQL hosts is expected to be <100k.
 - PHYSICAL_HOST_RBS_UPGRADE_STATUS - Sort physical hosts by upgrade status.
 - DB2_INSTANCE_HOST_LIST - Sort the DB2 instance based on the hosts list.
+- MONGO_SOURCE_NAME_FOR_DB - Sort the MongoDB database objects based on their source name.
+- MONGO_SOURCE_NAME_FOR_COLLECTION - Sort the MongoDB collection objects based on their source name.
+- MONGO_DATABASE_NAME_FOR_COLLECTION - Sort the MongoDB collection objects based on their database name.

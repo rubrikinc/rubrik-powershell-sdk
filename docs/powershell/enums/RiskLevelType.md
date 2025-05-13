@@ -1,6 +1,8 @@
 ### RiskLevelType
-- UNKNOWN_RISK
-- HIGH_RISK
-- MEDIUM_RISK
-- LOW_RISK
-- NO_RISK
+Risk level type.
+
+- UNKNOWN_RISK - Unknown risk level.
+- HIGH_RISK - High risk.
+- MEDIUM_RISK - Medium risk.
+- LOW_RISK - Low risk.
+- NO_RISK - No risk.

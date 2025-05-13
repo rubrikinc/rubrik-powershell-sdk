@@ -270,6 +270,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_CLUSTER_NAME")]
         K8S_CLUSTER_NAME,
 
+        [EnumMember(Value = "MONGO_DATABASE_NAME_FOR_COLLECTION")]
+        MONGO_DATABASE_NAME_FOR_COLLECTION,
+
+        [EnumMember(Value = "MONGO_SOURCE_NAME_FOR_COLLECTION")]
+        MONGO_SOURCE_NAME_FOR_COLLECTION,
+
+        [EnumMember(Value = "MONGO_SOURCE_NAME_FOR_DB")]
+        MONGO_SOURCE_NAME_FOR_DB,
+
         [EnumMember(Value = "MSSQL_AVAILABILITY_GROUP_COPY_ONLY")]
         MSSQL_AVAILABILITY_GROUP_COPY_ONLY,
 

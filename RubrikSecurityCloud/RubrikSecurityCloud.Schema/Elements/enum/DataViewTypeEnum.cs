@@ -54,6 +54,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GLOBAL_OBJECT_SUMMARY_MONTHLY")]
         GLOBAL_OBJECT_SUMMARY_MONTHLY,
 
+        [EnumMember(Value = "IDENTITY_RISKS")]
+        IDENTITY_RISKS,
+
         [EnumMember(Value = "INDEXING")]
         INDEXING,
 

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 8
     /// operations in the 'Threat' API domain:
-    /// HuntDetail, HuntResult, HuntSummary, or Hunts.
+    /// AnalyticsEnablement, Feeds, MonitoringMatchedFileDetails, MonitoringMatchedFileDetailsV2, MonitoringMatchedFiles, MonitoringMatchedObjects, MonitoringObjectEnablementStats, or MonitoringObjects.
     /// </summary>
     /// <description>
     /// New-RscQueryThreat creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 8 operations
     /// in the 'Threat' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: HuntDetail, HuntResult, HuntSummary, or Hunts.
+    /// one of: AnalyticsEnablement, Feeds, MonitoringMatchedFileDetails, MonitoringMatchedFileDetailsV2, MonitoringMatchedFiles, MonitoringMatchedObjects, MonitoringObjectEnablementStats, or MonitoringObjects.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryThreat -HuntDetail).Info().
+    /// (New-RscQueryThreat -AnalyticsEnablement).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,14 +70,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryThreat -HuntDetail).Info().
+    /// (New-RscQueryThreat -AnalyticsEnablement).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
     ///
     /// <example>
-    /// Runs the HuntDetail operation
+    /// Runs the AnalyticsEnablement operation
     /// of the 'Threat' API domain.
     /// <code>
     /// PS &gt;
@@ -85,18 +85,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Threat
-    /// # API Operation: HuntDetail
+    /// # API Operation: AnalyticsEnablement
     /// 
-    /// $query = New-RscQueryThreat -Operation HuntDetail
+    /// $query = New-RscQueryThreat -Operation AnalyticsEnablement
     /// 
-    /// # REQUIRED
-    /// $query.Var.huntId = $someString
+    /// # No variables for this query.
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: ThreatHunt
+    /// Write-Host $result.GetType().Name # prints: ThreatAnalyticsEnablement
     /// 
     /// 
     /// 
@@ -105,7 +104,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the HuntResult operation
+    /// Runs the Feeds operation
     /// of the 'Threat' API domain.
     /// <code>
     /// PS &gt;
@@ -113,48 +112,113 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Threat
-    /// # API Operation: HuntResult
+    /// # API Operation: Feeds
     /// 
-    /// $query = New-RscQueryThreat -Operation HuntResult
+    /// $query = New-RscQueryThreat -Operation Feeds
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ListThreatFeedsResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MonitoringMatchedFileDetails operation
+    /// of the 'Threat' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Threat
+    /// # API Operation: MonitoringMatchedFileDetails
+    /// 
+    /// $query = New-RscQueryThreat -Operation MonitoringMatchedFileDetails
     /// 
     /// # REQUIRED
-    /// $query.Var.huntId = $someString
+    /// $query.Var.matchId = $someInt64
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ThreatMonitoringFileMatchDetailsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MonitoringMatchedFileDetailsV2 operation
+    /// of the 'Threat' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Threat
+    /// # API Operation: MonitoringMatchedFileDetailsV2
+    /// 
+    /// $query = New-RscQueryThreat -Operation MonitoringMatchedFileDetailsV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.matchedSnapshotFid = $someString
+    /// # REQUIRED
+    /// $query.Var.filepath = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ThreatMonitoringFileMatchDetailsV2
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MonitoringMatchedFiles operation
+    /// of the 'Threat' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Threat
+    /// # API Operation: MonitoringMatchedFiles
+    /// 
+    /// $query = New-RscQueryThreat -Operation MonitoringMatchedFiles
+    /// 
     /// # OPTIONAL
-    /// $query.Var.objectId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ThreatHuntResult
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the HuntSummary operation
-    /// of the 'Threat' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Threat
-    /// # API Operation: HuntSummary
-    /// 
-    /// $query = New-RscQueryThreat -Operation HuntSummary
-    /// 
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
-    /// $query.Var.huntId = $someString
+    /// $query.Var.objectFid = $someString
+    /// # OPTIONAL
+    /// $query.Var.filenameSearchFilter = $someString
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: ThreatHuntSummaryReply
+    /// Write-Host $result.GetType().Name # prints: FileMatchConnection
     /// 
     /// 
     /// 
@@ -163,7 +227,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the Hunts operation
+    /// Runs the MonitoringMatchedObjects operation
     /// of the 'Threat' API domain.
     /// <code>
     /// PS &gt;
@@ -171,9 +235,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Threat
-    /// # API Operation: Hunts
+    /// # API Operation: MonitoringMatchedObjects
     /// 
-    /// $query = New-RscQueryThreat -Operation Hunts
+    /// $query = New-RscQueryThreat -Operation MonitoringMatchedObjects
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -192,23 +256,77 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	$someString
     /// )
     /// # OPTIONAL
-    /// $query.Var.statusFilter = @(
-    /// 	$someThreatHuntStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatHuntStatus]) for enum values.
+    /// $query.Var.objectTypeFilter = @(
+    /// 	$someString
     /// )
     /// # OPTIONAL
-    /// $query.Var.matchesFoundFilter = @(
-    /// 	$someThreatHuntMatchesFound # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatHuntMatchesFound]) for enum values.
-    /// )
+    /// $query.Var.workloadNameSearch = $someString
     /// # OPTIONAL
-    /// $query.Var.quarantinedMatchesFilter = @(
-    /// 	$someThreatHuntQuarantinedMatchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatHuntQuarantinedMatchType]) for enum values.
+    /// $query.Var.matchTypeFilter = @(
+    /// 	$someIndicatorOfCompromiseKind # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IndicatorOfCompromiseKind]) for enum values.
     /// )
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: ThreatHuntConnection
+    /// Write-Host $result.GetType().Name # prints: ThreatMonitoringMatchedObjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MonitoringObjectEnablementStats operation
+    /// of the 'Threat' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Threat
+    /// # API Operation: MonitoringObjectEnablementStats
+    /// 
+    /// $query = New-RscQueryThreat -Operation MonitoringObjectEnablementStats
+    /// 
+    /// # REQUIRED
+    /// $query.Var.beginTime = $someDateTime
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetThreatMonitoringObjectEnablementStatsResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MonitoringObjects operation
+    /// of the 'Threat' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Threat
+    /// # API Operation: MonitoringObjects
+    /// 
+    /// $query = New-RscQueryThreat -Operation MonitoringObjects
+    /// 
+    /// # REQUIRED
+    /// $query.Var.beginTime = $someDateTime
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ThreatMonitoringObjects
     /// 
     /// 
     /// 
@@ -232,10 +350,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "HuntDetail",
-                "HuntResult",
-                "HuntSummary",
-                "Hunts",
+                "AnalyticsEnablement",
+                "Feeds",
+                "MonitoringMatchedFileDetails",
+                "MonitoringMatchedFileDetailsV2",
+                "MonitoringMatchedFiles",
+                "MonitoringMatchedObjects",
+                "MonitoringObjectEnablementStats",
+                "MonitoringObjects",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -251,17 +373,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "HuntDetail":
-                        this.ProcessRecord_HuntDetail();
+                    case "AnalyticsEnablement":
+                        this.ProcessRecord_AnalyticsEnablement();
                         break;
-                    case "HuntResult":
-                        this.ProcessRecord_HuntResult();
+                    case "Feeds":
+                        this.ProcessRecord_Feeds();
                         break;
-                    case "HuntSummary":
-                        this.ProcessRecord_HuntSummary();
+                    case "MonitoringMatchedFileDetails":
+                        this.ProcessRecord_MonitoringMatchedFileDetails();
                         break;
-                    case "Hunts":
-                        this.ProcessRecord_Hunts();
+                    case "MonitoringMatchedFileDetailsV2":
+                        this.ProcessRecord_MonitoringMatchedFileDetailsV2();
+                        break;
+                    case "MonitoringMatchedFiles":
+                        this.ProcessRecord_MonitoringMatchedFiles();
+                        break;
+                    case "MonitoringMatchedObjects":
+                        this.ProcessRecord_MonitoringMatchedObjects();
+                        break;
+                    case "MonitoringObjectEnablementStats":
+                        this.ProcessRecord_MonitoringObjectEnablementStats();
+                        break;
+                    case "MonitoringObjects":
+                        this.ProcessRecord_MonitoringObjects();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -274,107 +408,201 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // threatHuntDetail.
-        internal void ProcessRecord_HuntDetail()
+        // threatAnalyticsEnablement.
+        internal void ProcessRecord_AnalyticsEnablement()
         {
-            this._logger.name += " -HuntDetail";
-            // Create new graphql operation threatHuntDetail
-            InitQueryThreatHuntDetail();
+            this._logger.name += " -AnalyticsEnablement";
+            // Create new graphql operation threatAnalyticsEnablement
+            InitQueryThreatAnalyticsEnablement();
         }
 
         // This parameter set invokes a single graphql operation:
-        // threatHuntResult.
-        internal void ProcessRecord_HuntResult()
+        // threatFeeds.
+        internal void ProcessRecord_Feeds()
         {
-            this._logger.name += " -HuntResult";
-            // Create new graphql operation threatHuntResult
-            InitQueryThreatHuntResult();
+            this._logger.name += " -Feeds";
+            // Create new graphql operation threatFeeds
+            InitQueryThreatFeeds();
         }
 
         // This parameter set invokes a single graphql operation:
-        // threatHuntSummary.
-        internal void ProcessRecord_HuntSummary()
+        // threatMonitoringMatchedFileDetails.
+        internal void ProcessRecord_MonitoringMatchedFileDetails()
         {
-            this._logger.name += " -HuntSummary";
-            // Create new graphql operation threatHuntSummary
-            InitQueryThreatHuntSummary();
+            this._logger.name += " -MonitoringMatchedFileDetails";
+            // Create new graphql operation threatMonitoringMatchedFileDetails
+            InitQueryThreatMonitoringMatchedFileDetails();
         }
 
         // This parameter set invokes a single graphql operation:
-        // threatHunts.
-        internal void ProcessRecord_Hunts()
+        // threatMonitoringMatchedFileDetailsV2.
+        internal void ProcessRecord_MonitoringMatchedFileDetailsV2()
         {
-            this._logger.name += " -Hunts";
-            // Create new graphql operation threatHunts
-            InitQueryThreatHunts();
+            this._logger.name += " -MonitoringMatchedFileDetailsV2";
+            // Create new graphql operation threatMonitoringMatchedFileDetailsV2
+            InitQueryThreatMonitoringMatchedFileDetailsV2();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // threatMonitoringMatchedFiles.
+        internal void ProcessRecord_MonitoringMatchedFiles()
+        {
+            this._logger.name += " -MonitoringMatchedFiles";
+            // Create new graphql operation threatMonitoringMatchedFiles
+            InitQueryThreatMonitoringMatchedFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // threatMonitoringMatchedObjects.
+        internal void ProcessRecord_MonitoringMatchedObjects()
+        {
+            this._logger.name += " -MonitoringMatchedObjects";
+            // Create new graphql operation threatMonitoringMatchedObjects
+            InitQueryThreatMonitoringMatchedObjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // threatMonitoringObjectEnablementStats.
+        internal void ProcessRecord_MonitoringObjectEnablementStats()
+        {
+            this._logger.name += " -MonitoringObjectEnablementStats";
+            // Create new graphql operation threatMonitoringObjectEnablementStats
+            InitQueryThreatMonitoringObjectEnablementStats();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // threatMonitoringObjects.
+        internal void ProcessRecord_MonitoringObjects()
+        {
+            this._logger.name += " -MonitoringObjects";
+            // Create new graphql operation threatMonitoringObjects
+            InitQueryThreatMonitoringObjects();
         }
 
 
         // Create new GraphQL Query:
-        // threatHuntDetail(huntId: String!): ThreatHunt!
-        internal void InitQueryThreatHuntDetail()
+        // threatAnalyticsEnablement: ThreatAnalyticsEnablement!
+        internal void InitQueryThreatAnalyticsEnablement()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("huntId", "String!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryThreatHuntDetail",
-                "($huntId: String!)",
-                "ThreatHunt",
-                Query.ThreatHuntDetail,
-                Query.ThreatHuntDetailFieldSpec,
-                @"# REQUIRED
-$query.Var.huntId = $someString"
+                "QueryThreatAnalyticsEnablement",
+                "",
+                "ThreatAnalyticsEnablement",
+                Query.ThreatAnalyticsEnablement,
+                Query.ThreatAnalyticsEnablementFieldSpec,
+                @""
             );
         }
 
         // Create new GraphQL Query:
-        // threatHuntResult(huntId: String!, objectId: String): ThreatHuntResult!
-        internal void InitQueryThreatHuntResult()
+        // threatFeeds: ListThreatFeedsResponse!
+        internal void InitQueryThreatFeeds()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("huntId", "String!"),
-                Tuple.Create("objectId", "String"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryThreatHuntResult",
-                "($huntId: String!,$objectId: String)",
-                "ThreatHuntResult",
-                Query.ThreatHuntResult,
-                Query.ThreatHuntResultFieldSpec,
+                "QueryThreatFeeds",
+                "",
+                "ListThreatFeedsResponse",
+                Query.ThreatFeeds,
+                Query.ThreatFeedsFieldSpec,
+                @""
+            );
+        }
+
+        // Create new GraphQL Query:
+        // threatMonitoringMatchedFileDetails(matchId: Long!): ThreatMonitoringFileMatchDetailsReply!
+        internal void InitQueryThreatMonitoringMatchedFileDetails()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("matchId", "Long!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryThreatMonitoringMatchedFileDetails",
+                "($matchId: Long!)",
+                "ThreatMonitoringFileMatchDetailsReply",
+                Query.ThreatMonitoringMatchedFileDetails,
+                Query.ThreatMonitoringMatchedFileDetailsFieldSpec,
                 @"# REQUIRED
-$query.Var.huntId = $someString
+$query.Var.matchId = $someInt64"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // threatMonitoringMatchedFileDetailsV2(matchedSnapshotFid: UUID!, filepath: String!): ThreatMonitoringFileMatchDetailsV2!
+        internal void InitQueryThreatMonitoringMatchedFileDetailsV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("matchedSnapshotFid", "UUID!"),
+                Tuple.Create("filepath", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryThreatMonitoringMatchedFileDetailsV2",
+                "($matchedSnapshotFid: UUID!,$filepath: String!)",
+                "ThreatMonitoringFileMatchDetailsV2",
+                Query.ThreatMonitoringMatchedFileDetailsV2,
+                Query.ThreatMonitoringMatchedFileDetailsV2FieldSpec,
+                @"# REQUIRED
+$query.Var.matchedSnapshotFid = $someString
+# REQUIRED
+$query.Var.filepath = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // threatMonitoringMatchedFiles(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     objectFid: UUID!
+        //     filenameSearchFilter: String
+        //   ): FileMatchConnection!
+        internal void InitQueryThreatMonitoringMatchedFiles()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("objectFid", "UUID!"),
+                Tuple.Create("filenameSearchFilter", "String"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryThreatMonitoringMatchedFiles",
+                "($first: Int,$after: String,$last: Int,$before: String,$objectFid: UUID!,$filenameSearchFilter: String)",
+                "FileMatchConnection",
+                Query.ThreatMonitoringMatchedFiles,
+                Query.ThreatMonitoringMatchedFilesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
 # OPTIONAL
-$query.Var.objectId = $someString"
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.objectFid = $someString
+# OPTIONAL
+$query.Var.filenameSearchFilter = $someString"
             );
         }
 
         // Create new GraphQL Query:
-        // threatHuntSummary(huntId: String!): ThreatHuntSummaryReply!
-        internal void InitQueryThreatHuntSummary()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("huntId", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryThreatHuntSummary",
-                "($huntId: String!)",
-                "ThreatHuntSummaryReply",
-                Query.ThreatHuntSummary,
-                Query.ThreatHuntSummaryFieldSpec,
-                @"# REQUIRED
-$query.Var.huntId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // threatHunts(
+        // threatMonitoringMatchedObjects(
         //     first: Int
         //     after: String
         //     last: Int
@@ -382,11 +610,11 @@ $query.Var.huntId = $someString"
         //     beginTime: DateTime
         //     endTime: DateTime
         //     clusterUuidFilter: [String!]
-        //     statusFilter: [ThreatHuntStatus!]
-        //     matchesFoundFilter: [ThreatHuntMatchesFound!]
-        //     quarantinedMatchesFilter: [ThreatHuntQuarantinedMatchType!]
-        //   ): ThreatHuntConnection!
-        internal void InitQueryThreatHunts()
+        //     objectTypeFilter: [String!]
+        //     workloadNameSearch: String
+        //     matchTypeFilter: [IndicatorOfCompromiseKind!]
+        //   ): ThreatMonitoringMatchedObjectConnection!
+        internal void InitQueryThreatMonitoringMatchedObjects()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -396,18 +624,18 @@ $query.Var.huntId = $someString"
                 Tuple.Create("beginTime", "DateTime"),
                 Tuple.Create("endTime", "DateTime"),
                 Tuple.Create("clusterUuidFilter", "[String!]"),
-                Tuple.Create("statusFilter", "[ThreatHuntStatus!]"),
-                Tuple.Create("matchesFoundFilter", "[ThreatHuntMatchesFound!]"),
-                Tuple.Create("quarantinedMatchesFilter", "[ThreatHuntQuarantinedMatchType!]"),
+                Tuple.Create("objectTypeFilter", "[String!]"),
+                Tuple.Create("workloadNameSearch", "String"),
+                Tuple.Create("matchTypeFilter", "[IndicatorOfCompromiseKind!]"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryThreatHunts",
-                "($first: Int,$after: String,$last: Int,$before: String,$beginTime: DateTime,$endTime: DateTime,$clusterUuidFilter: [String!],$statusFilter: [ThreatHuntStatus!],$matchesFoundFilter: [ThreatHuntMatchesFound!],$quarantinedMatchesFilter: [ThreatHuntQuarantinedMatchType!])",
-                "ThreatHuntConnection",
-                Query.ThreatHunts,
-                Query.ThreatHuntsFieldSpec,
+                "QueryThreatMonitoringMatchedObjects",
+                "($first: Int,$after: String,$last: Int,$before: String,$beginTime: DateTime,$endTime: DateTime,$clusterUuidFilter: [String!],$objectTypeFilter: [String!],$workloadNameSearch: String,$matchTypeFilter: [IndicatorOfCompromiseKind!])",
+                "ThreatMonitoringMatchedObjectConnection",
+                Query.ThreatMonitoringMatchedObjects,
+                Query.ThreatMonitoringMatchedObjectsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
 # OPTIONAL
@@ -425,17 +653,55 @@ $query.Var.clusterUuidFilter = @(
 	$someString
 )
 # OPTIONAL
-$query.Var.statusFilter = @(
-	$someThreatHuntStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatHuntStatus]) for enum values.
+$query.Var.objectTypeFilter = @(
+	$someString
 )
 # OPTIONAL
-$query.Var.matchesFoundFilter = @(
-	$someThreatHuntMatchesFound # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatHuntMatchesFound]) for enum values.
-)
+$query.Var.workloadNameSearch = $someString
 # OPTIONAL
-$query.Var.quarantinedMatchesFilter = @(
-	$someThreatHuntQuarantinedMatchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatHuntQuarantinedMatchType]) for enum values.
+$query.Var.matchTypeFilter = @(
+	$someIndicatorOfCompromiseKind # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IndicatorOfCompromiseKind]) for enum values.
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // threatMonitoringObjectEnablementStats(beginTime: DateTime!): GetThreatMonitoringObjectEnablementStatsResponse!
+        internal void InitQueryThreatMonitoringObjectEnablementStats()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("beginTime", "DateTime!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryThreatMonitoringObjectEnablementStats",
+                "($beginTime: DateTime!)",
+                "GetThreatMonitoringObjectEnablementStatsResponse",
+                Query.ThreatMonitoringObjectEnablementStats,
+                Query.ThreatMonitoringObjectEnablementStatsFieldSpec,
+                @"# REQUIRED
+$query.Var.beginTime = $someDateTime"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // threatMonitoringObjects(beginTime: DateTime!): ThreatMonitoringObjects!
+        internal void InitQueryThreatMonitoringObjects()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("beginTime", "DateTime!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryThreatMonitoringObjects",
+                "($beginTime: DateTime!)",
+                "ThreatMonitoringObjects",
+                Query.ThreatMonitoringObjects,
+                Query.ThreatMonitoringObjectsFieldSpec,
+                @"# REQUIRED
+$query.Var.beginTime = $someDateTime"
             );
         }
 

@@ -47,3 +47,4 @@ All reporting table schemas.
 - ROLE_LIST - Specifies the roles information.
 - USERS - Specifies the Users report information.
 - PHYSICAL_HOSTS - Specifies the database schema for physical hosts.
+- IDENTITY_RISKS - Specifies the Identity Risks report information.

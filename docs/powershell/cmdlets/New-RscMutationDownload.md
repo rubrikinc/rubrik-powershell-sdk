@@ -114,6 +114,11 @@ Download threat hunt result in CSV format.
 
 - There is a single argument of type DownloadThreatHuntCsvInput.
 - Returns DownloadThreatHuntCsvReply.
+### threathuntv2resultscsv
+Download the threat hunt v2 results in CSV format.
+
+- There is a single argument of type DownloadThreatHuntV2CsvInput.
+- Returns DownloadThreatHuntV2CsvResponse.
 ### volumegroupsnapshotfiles
 Download files from Volume Group snapshot
 

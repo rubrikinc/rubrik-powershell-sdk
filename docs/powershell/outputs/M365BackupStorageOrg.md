@@ -53,6 +53,8 @@ Microsoft 365 Backup Storage Organization.
   - Organizations to which this hierarchy object belongs.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
 - workloadSummary: list of O365WorkloadSummarys
   - Summary of workload by type.
 - groupsSummary: O365GroupsSummary
@@ -61,3 +63,5 @@ Microsoft 365 Backup Storage Organization.
   - The authorized operations on the object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.

@@ -10,3 +10,4 @@ Principal type for risk summary.
 - EXTERNAL_PRINCIPAL - Principal of the external principal type.
 - PUBLIC - Principal of the public identity type.
 - ORG_WIDE - Principal of the org-wide identity type.
+- ROLE - Principal of the role type.

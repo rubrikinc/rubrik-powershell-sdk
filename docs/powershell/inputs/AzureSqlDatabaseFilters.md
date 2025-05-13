@@ -21,3 +21,5 @@ Filters for list of Azure SQL Databases.
   - Filter by tag.
 - serverFilter: CloudNativeDatabaseServerFilter
   - Filter by server.
+- serverId: System.String
+  - Filter by managed object ID of the server.

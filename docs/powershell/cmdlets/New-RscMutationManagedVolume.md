@@ -41,6 +41,14 @@ Start an asynchronous job to download multiple files and folders from a specifie
 
 - There is a single argument of type DownloadManagedVolumeFilesInput.
 - Returns AsyncRequestStatus.
+### downloadfilessnapshotfromarchivallocation
+Initiate a job to download multiple files or folders
+
+Supported in v8.0+
+Initiates a job to download one or more files or folders from an archived Managed Volume snapshot. Returns the job instance ID.
+
+- There is a single argument of type CreateMVDownloadFilesFromArchivalLocationJobInput.
+- Returns AsyncRequestStatus.
 ### downloadfromlocation
 Download a snapshot from a remote target
 

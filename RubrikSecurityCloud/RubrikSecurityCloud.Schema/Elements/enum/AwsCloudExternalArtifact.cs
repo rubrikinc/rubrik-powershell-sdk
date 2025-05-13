@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CROSSACCOUNT_ROLE_ARN")]
         CROSSACCOUNT_ROLE_ARN,
 
+        [EnumMember(Value = "EXOCOMPUTE_EKS_LAMBDA_ROLE_ARN")]
+        EXOCOMPUTE_EKS_LAMBDA_ROLE_ARN,
+
         [EnumMember(Value = "EXOCOMPUTE_EKS_MASTERNODE_INSTANCE_PROFILE")]
         EXOCOMPUTE_EKS_MASTERNODE_INSTANCE_PROFILE,
 

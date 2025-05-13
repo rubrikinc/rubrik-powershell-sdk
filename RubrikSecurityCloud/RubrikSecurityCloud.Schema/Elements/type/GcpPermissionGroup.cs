@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("permissionsWithConditions")]
         public List<System.String>? PermissionsWithConditions { get; set; }
 
+        //      C# -> List<System.String>? PermissionsWithoutConditions
+        // GraphQL -> permissionsWithoutConditions: [String!]! (scalar)
+        [JsonProperty("permissionsWithoutConditions")]
+        public List<System.String>? PermissionsWithoutConditions { get; set; }
+
         //      C# -> System.Int32? PolicyVersion
         // GraphQL -> policyVersion: Int! (scalar)
         [JsonProperty("policyVersion")]
@@ -47,6 +52,7 @@ namespace RubrikSecurityCloud.Types
     public GcpPermissionGroup Set(
         PermissionsGroup? PermissionGroupType = null,
         List<System.String>? PermissionsWithConditions = null,
+        List<System.String>? PermissionsWithoutConditions = null,
         System.Int32? PolicyVersion = null
     ) 
     {
@@ -55,6 +61,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PermissionsWithConditions != null ) {
             this.PermissionsWithConditions = PermissionsWithConditions;
+        }
+        if ( PermissionsWithoutConditions != null ) {
+            this.PermissionsWithoutConditions = PermissionsWithoutConditions;
         }
         if ( PolicyVersion != null ) {
             this.PolicyVersion = PolicyVersion;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "permissionsWithConditions\n" ;
             } else {
                 s += ind + "permissionsWithConditions\n" ;
+            }
+        }
+        //      C# -> List<System.String>? PermissionsWithoutConditions
+        // GraphQL -> permissionsWithoutConditions: [String!]! (scalar)
+        if (this.PermissionsWithoutConditions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "permissionsWithoutConditions\n" ;
+            } else {
+                s += ind + "permissionsWithoutConditions\n" ;
             }
         }
         //      C# -> System.Int32? PolicyVersion
@@ -140,6 +158,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PermissionsWithConditions != null && ec.Excludes("permissionsWithConditions",true))
         {
             this.PermissionsWithConditions = null;
+        }
+        //      C# -> List<System.String>? PermissionsWithoutConditions
+        // GraphQL -> permissionsWithoutConditions: [String!]! (scalar)
+        if (ec.Includes("permissionsWithoutConditions",true))
+        {
+            if(this.PermissionsWithoutConditions == null) {
+
+                this.PermissionsWithoutConditions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PermissionsWithoutConditions != null && ec.Excludes("permissionsWithoutConditions",true))
+        {
+            this.PermissionsWithoutConditions = null;
         }
         //      C# -> System.Int32? PolicyVersion
         // GraphQL -> policyVersion: Int! (scalar)

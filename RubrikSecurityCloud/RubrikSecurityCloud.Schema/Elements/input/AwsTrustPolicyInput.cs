@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeAccounts")]
         public List<AwsNativeAccountInput>? AwsNativeAccounts { get; set; }
 
+        //      C# -> System.String? RoleChainingAccountId
+        // GraphQL -> roleChainingAccountId: UUID (scalar)
+        [JsonProperty("roleChainingAccountId")]
+        public System.String? RoleChainingAccountId { get; set; }
+
 
         #endregion
 

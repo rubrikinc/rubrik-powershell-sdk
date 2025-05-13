@@ -134,6 +134,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("securityMetadata")]
         SecurityMetadata? SecurityMetadata { get; set; }
 
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        [JsonProperty("objectPauseStatus")]
+        ObjectPauseStatus? ObjectPauseStatus { get; set; }
+
         //      C# -> OrgStatus? Status
         // GraphQL -> status: OrgStatus! (enum)
         [JsonProperty("status")]

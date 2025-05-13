@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("certificateId")]
         public System.String? CertificateId { get; set; }
 
+        //      C# -> System.Boolean? AreApiCredentialsPermanent
+        // GraphQL -> areApiCredentialsPermanent: Boolean (scalar)
+        [JsonProperty("areApiCredentialsPermanent")]
+        public System.Boolean? AreApiCredentialsPermanent { get; set; }
+
 
         #endregion
 

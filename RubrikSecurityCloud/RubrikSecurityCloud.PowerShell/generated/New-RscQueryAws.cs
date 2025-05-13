@@ -1066,6 +1066,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			id = $someString
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	roleChainingAccountId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2593,6 +2595,8 @@ $query.Var.input = @{
 			id = $someString
 		}
 	)
+	# OPTIONAL
+	roleChainingAccountId = $someString
 }"
             );
         }

@@ -14,7 +14,7 @@ Supported in v5.0+
 - maxNestedVsphereSnapshots: System.Int32
   - Supported in v5.0+
 - multiNodeBackupMode: MultiNodeBackupMode
-  - Supported in v9.3+
+  - Supported in v9.2+
       The multinode backup flag for the virtual machine is either ENABLED, DISABLED, or UNDEFINED.
 - snapshotConsistencyMandate: VirtualMachineUpdateSnapshotConsistencyMandate
   - Supported in v5.0+

@@ -57,6 +57,7 @@ The list of object types for activities.
 - D365_ORGANIZATION - Specifies that the activity object type is a Dynamics 365 organization.
 - AwsNativeAccount - Specifies that the activity object type is AWS Native Account.
 - AZURE_STORAGE_ACCOUNT - Specifies that the activity object type is Azure Storage Account.
+- INFORMIX - Specifies that the activity object type is Informix Instance.
 - VMWARE_HOST - Specifies that the activity object type is a VSphere host.
 - PolarisAccount - Specifies that the activity object type is RSC Account.
 - AzureSqlManagedInstance - Specifies that the activity object type is Azure SQL Managed Instance.

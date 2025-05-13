@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldGrantSmbShareRootAccess")]
         public System.Boolean? ShouldGrantSmbShareRootAccess { get; set; }
 
+        //      C# -> System.Boolean? IsNetAppMetroClusterEnabled
+        // GraphQL -> isNetAppMetroClusterEnabled: Boolean (scalar)
+        [JsonProperty("isNetAppMetroClusterEnabled")]
+        public System.Boolean? IsNetAppMetroClusterEnabled { get; set; }
+
         //      C# -> System.Boolean? ShouldGrantNfsShareRootAccess
         // GraphQL -> shouldGrantNfsShareRootAccess: Boolean (scalar)
         [JsonProperty("shouldGrantNfsShareRootAccess")]

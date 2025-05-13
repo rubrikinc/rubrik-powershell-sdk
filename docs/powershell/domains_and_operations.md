@@ -1,6 +1,6 @@
 # API Domains and Operations
 
-The RSC API is organized into 64 domain.
+The RSC API is organized into 65 domain.
 Each API domain is a set of related operations.
 
 ## Table of Contents
@@ -11,17 +11,17 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | --- | --- | --- | --- | --- |
 | [Account (9,14)](#account-domain) | [Cluster (39,23)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,20)](#oracle-domain) | [Snapshot (25,19)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (11,4)](#microsoft-365-domain) | [Policy (9,15)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
-| [Activity series (5,3)](#activity-series-domain) | [Db2 (9,13)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (9,16)](#archival-domain) | [Report Download (3,20)](#report-download-domain) | [Miscellaneous (207,155)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Activity series (5,3)](#activity-series-domain) | [Db2 (9,13)](#db2-domain) | [Managed Volume (4,12)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
+| [Archival (9,16)](#archival-domain) | [Report Download (4,21)](#report-download-domain) | [Miscellaneous (209,155)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (33,37)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (4,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (22,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
-| [Azure (55,44)](#azure-domain) | [Fileset (6,8)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (4,3)](#threat-domain) |
-| [Azure Native (24,8)](#azure-native-domain) | [Google Cloud Platform (17,12)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,14)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
-| [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
-| [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (25,12)](#vmware-vsphere-domain) |
-| [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (6,26)](#vmware-vsphere-vm-domain) |
-| [Cloud Account (7,2)](#cloud-account-domain) | [Integration (2,7)](#integration-domain) | [Nutanix (20,30)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (5,12)](#webhook-domain) |
-| [Cloud Native (19,14)](#cloud-native-domain) | [Kubernetes (13,18)](#kubernetes-domain) | [Office 365 (40,34)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
+| [Azure (55,44)](#azure-domain) | [Fileset (6,8)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (8,1)](#threat-domain) |
+| [Azure Native (24,8)](#azure-native-domain) | [Google Cloud Platform (17,12)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,14)](#sap-hana-domain) | [ThreatHunt (10,5)](#threathunt-domain) |
+| [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
+| [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware (4,1)](#vmware-domain) |
+| [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere (25,12)](#vmware-vsphere-domain) |
+| [Cloud Account (7,2)](#cloud-account-domain) | [Integration (2,7)](#integration-domain) | [Nutanix (20,30)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [VMware vSphere VM (6,26)](#vmware-vsphere-vm-domain) |
+| [Cloud Native (19,14)](#cloud-native-domain) | [Kubernetes (13,18)](#kubernetes-domain) | [Office 365 (40,34)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) | [Webhook (5,12)](#webhook-domain) |
 
 ## Account domain
 
@@ -339,7 +339,7 @@ Cmdlets: `New-RscQueryAzure` and `New-RscMutationAzure`
 | CloudAccountSubscriptionsByFeature | Retrieves a list of all Azure Subscriptions with feature details such as feature, status, and regions. | `New-RscQueryAzure -Operation CloudAccountSubscriptionsByFeature`<BR> | [allAzureCloudAccountSubscriptionsByFeature](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudAccountTenant | Retrieves the details of the Azure tenant and all the subscriptions of the tenant, for a feature. | `New-RscQueryAzure -Operation CloudAccountTenant`<BR> | [azureCloudAccountTenant](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudAccountTenantWithExoConfigs | Retrieves details about the Azure cloud account tenant including the Exocompute configurations for the tenant subscriptions, for a specified feature. | `New-RscQueryAzure -Operation CloudAccountTenantWithExoConfigs`<BR> | [azureCloudAccountTenantWithExoConfigs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CloudAccountTenants | Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, and subscription name. | `New-RscQueryAzure -Operation CloudAccountTenants`<BR> | [allAzureCloudAccountTenants](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudAccountTenants | Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, subscription name, and tenant domain names. | `New-RscQueryAzure -Operation CloudAccountTenants`<BR> | [allAzureCloudAccountTenants](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DiskEncryptionSetsByRegion | List of all Azure Disk Encryption Sets in a region. | `New-RscQueryAzure -Operation DiskEncryptionSetsByRegion`<BR> | [allAzureDiskEncryptionSetsByRegion](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | EncryptionKeys | List of all Encryption Keys in an Azure Key Vault. | `New-RscQueryAzure -Operation EncryptionKeys`<BR> | [allAzureEncryptionKeys](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExocomputeConfigsInAccount | Retrieves a list of Azure Exocompute configurations filtered by a cloud account ID or a search query. | `New-RscQueryAzure -Operation ExocomputeConfigsInAccount`<BR> | [allAzureExocomputeConfigsInAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -886,6 +886,7 @@ Cmdlets: `New-RscQueryDownload` and `New-RscMutationDownload`
 | CdmUpgradesPdf | Download cdm upgrades table pdf. | `New-RscQueryDownload -Operation CdmUpgradesPdf`<BR> | [downloadCdmUpgradesPdf](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DownloadedVersionList | N/A | `New-RscQueryDownload -Operation DownloadedVersionList`<BR> | [downloadedVersionList](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | PackageStatus | Get Status of download package job. | `New-RscQueryDownload -Operation PackageStatus`<BR> | [downloadPackageStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TurboThreatHuntCsv | Get status of turbo threat hunt result generation and, if available, signed URL to download the CSV. | `New-RscQueryDownload -Operation TurboThreatHuntCsv`<BR> | [downloadTurboThreatHuntCsv](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations
@@ -931,6 +932,7 @@ Supported in v8.0+
 Downloads the most recent full snapshot and the log snapshots taken after the full snapshot, required for the point in time recovery of an SAP HANA database. | `New-RscMutationDownload -Operation SapHanaSnapshotsForPointInTimeRecovery`<BR> | [downloadSapHanaSnapshotsForPointInTimeRecovery](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SnapshotResultsCsv | Download snapshot policy results in CSV format. | `New-RscMutationDownload -Operation SnapshotResultsCsv`<BR> | [downloadSnapshotResultsCsv](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ThreatHuntCsv | Download threat hunt result in CSV format. | `New-RscMutationDownload -Operation ThreatHuntCsv`<BR> | [downloadThreatHuntCsv](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ThreatHuntV2ResultsCsv | Download the threat hunt v2 results in CSV format. | `New-RscMutationDownload -Operation ThreatHuntV2ResultsCsv`<BR> | [downloadThreatHuntV2ResultsCsv](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | VolumeGroupSnapshotFiles | Download files from Volume Group snapshot  
   
 Supported in v5.0+  
@@ -1569,6 +1571,10 @@ Deletes an exported Managed Volume snapshot, identified by the snapshot ID. | `N
   
 Supported in v5.0+  
 Start an asynchronous job to download multiple files and folders from a specified managed volume backup. The response returns an asynchronous request ID. Get the URL for downloading the ZIP file including the specific files/folders by sending a GET request to 'managed-volume/request/{id}'. | `New-RscMutationManagedVolume -Operation DownloadFiles`<BR> | [downloadManagedVolumeFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DownloadFilesSnapshotFromArchivalLocation | Initiate a job to download multiple files or folders  
+  
+Supported in v8.0+  
+Initiates a job to download one or more files or folders from an archived Managed Volume snapshot. Returns the job instance ID. | `New-RscMutationManagedVolume -Operation DownloadFilesSnapshotFromArchivalLocation`<BR> | [downloadFilesManagedVolumeSnapshotFromArchivalLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DownloadFromLocation | Download a snapshot from a remote target  
   
 Supported in v7.0+  
@@ -1713,6 +1719,7 @@ v5.2+: Searches for nodes that can bootstrap into the specified Rubrik cluster. 
 | InventorySubHierarchyRoot | N/A | `New-RscQueryMisc -Operation InventorySubHierarchyRoot`<BR> | [inventorySubHierarchyRoot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | InventoryWorkloads | All account level inventory workloads. | `New-RscQueryMisc -Operation InventoryWorkloads`<BR> | [allInventoryWorkloads](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | InvestigationCsvDownloadLink | Link to downloadable investigation results in CSV format. | `New-RscQueryMisc -Operation InvestigationCsvDownloadLink`<BR> | [investigationCsvDownloadLink](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IocFeedEntries | Lists IOC entries for a threat feed. | `New-RscQueryMisc -Operation IocFeedEntries`<BR> | [iocFeedEntries](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | IpWhitelist | N/A | `New-RscQueryMisc -Operation IpWhitelist`<BR> | [ipWhitelist](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | IsIpmiEnabled | Check if IPMI is enabled on the cluster. | `New-RscQueryMisc -Operation IsIpmiEnabled`<BR> | [isIpmiEnabled](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | IsLoggedIntoRubrikSupportPortal | Is Logged into Rubrik support portal. | `New-RscQueryMisc -Operation IsLoggedIntoRubrikSupportPortal`<BR> | [isLoggedIntoRubrikSupportPortal](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1821,6 +1828,7 @@ To be used by Admin to check status of the support tunnel. | `New-RscQueryMisc -
 | UsersInCurrentAndDescendantOrganization | Retrieve users from current and descendant organizations based on the specified filters. | `New-RscQueryMisc -Operation UsersInCurrentAndDescendantOrganization`<BR> | [usersInCurrentAndDescendantOrganization](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UsersOnAccountList | N/A | `New-RscQueryMisc -Operation UsersOnAccountList`<BR> | [allUsersOnAccountConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ValidateAdForestTransition | Validates if given account is ready to transition from Active Directory domain inventory page to Active Directory forest inventory page. | `New-RscQueryMisc -Operation ValidateAdForestTransition`<BR> | [validateAdForestTransition](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ValidateIocEntry | Validates IOC entry. | `New-RscQueryMisc -Operation ValidateIocEntry`<BR> | [validateIocEntry](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ValidateOrgName | Checks whether the tenant org name is valid and unique. | `New-RscQueryMisc -Operation ValidateOrgName`<BR> | [validateOrgName](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | VcdOrgs | Paginated list of vCloud Director orgs. | `New-RscQueryMisc -Operation VcdOrgs`<BR> | [vcdOrgs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | VcdTopLevelDescendants | Paginated list of the highest-level vCloud Director objects accessible by the current user. | `New-RscQueryMisc -Operation VcdTopLevelDescendants`<BR> | [vcdTopLevelDescendants](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -3497,19 +3505,54 @@ Cmdlets: `New-RscQueryThreat` and `New-RscMutationThreat`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
-| HuntDetail | The details of a threat hunt. | `New-RscQueryThreat -Operation HuntDetail`<BR> | [threatHuntDetail](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| HuntResult | The results of the Threat Hunt. | `New-RscQueryThreat -Operation HuntResult`<BR> | [threatHuntResult](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| HuntSummary | The summary of the threat hunt. | `New-RscQueryThreat -Operation HuntSummary`<BR> | [threatHuntSummary](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| Hunts | List of Threat Hunts. | `New-RscQueryThreat -Operation Hunts`<BR> | [threatHunts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AnalyticsEnablement | Retrieves the enablement status of cloud-native accounts for Data Threat Analytics features. | `New-RscQueryThreat -Operation AnalyticsEnablement`<BR> | [threatAnalyticsEnablement](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Feeds | List the threat feeds. | `New-RscQueryThreat -Operation Feeds`<BR> | [threatFeeds](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MonitoringMatchedFileDetails | Details of the Threat Monitoring matched file. | `New-RscQueryThreat -Operation MonitoringMatchedFileDetails`<BR> | [threatMonitoringMatchedFileDetails](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MonitoringMatchedFileDetailsV2 | Details of the Threat Monitoring matched file. | `New-RscQueryThreat -Operation MonitoringMatchedFileDetailsV2`<BR> | [threatMonitoringMatchedFileDetailsV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MonitoringMatchedFiles | List of matched files for an object for Threat Monitoring. | `New-RscQueryThreat -Operation MonitoringMatchedFiles`<BR> | [threatMonitoringMatchedFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MonitoringMatchedObjects | List of matched objects for Threat Monitoring. | `New-RscQueryThreat -Operation MonitoringMatchedObjects`<BR> | [threatMonitoringMatchedObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MonitoringObjectEnablementStats | Threat Monitoring object enablement stats. | `New-RscQueryThreat -Operation MonitoringObjectEnablementStats`<BR> | [threatMonitoringObjectEnablementStats](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MonitoringObjects | Object level stats for threats found. | `New-RscQueryThreat -Operation MonitoringObjects`<BR> | [threatMonitoringObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
-| CancelHunt | Cancel an in-progress threat hunt. | `New-RscMutationThreat -Operation CancelHunt`<BR> | [cancelThreatHunt](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | EnableMonitoring | Enable or disable Threat Monitoring on a Rubrik cluster. | `New-RscMutationThreat -Operation EnableMonitoring`<BR> | [enableThreatMonitoring](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| StartHunt | Start a threat hunt on a cluster. | `New-RscMutationThreat -Operation StartHunt`<BR> | [startThreatHunt](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+## ThreatHunt domain
+
+Domain key: ThreatHunt
+
+Cmdlets: `New-RscQueryThreatHunt` and `New-RscMutationThreatHunt`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| Detail | The details of a threat hunt. | `New-RscQueryThreatHunt -Operation Detail`<BR> | [threatHuntDetail](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DetailV2 | The details of a threat hunt. | `New-RscQueryThreatHunt -Operation DetailV2`<BR> | [threatHuntDetailV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IngObjectMatchedFiles | List of matched files for an object for a specified threat hunt. | `New-RscQueryThreatHunt -Operation IngObjectMatchedFiles`<BR> | [threatHuntingObjectMatchedFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MatchedSnapshots | List of matched snapshots for a set of file matches. | `New-RscQueryThreatHunt -Operation MatchedSnapshots`<BR> | [threatHuntMatchedSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ObjectMetrics | Aggregated object metrics for a threat hunt. | `New-RscQueryThreatHunt -Operation ObjectMetrics`<BR> | [threatHuntObjectMetrics](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Result | The results of the Threat Hunt. | `New-RscQueryThreatHunt -Operation Result`<BR> | [threatHuntResult](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| S | List of Threat Hunts. | `New-RscQueryThreatHunt -Operation S`<BR> | [threatHunts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Summary | The summary of the threat hunt. | `New-RscQueryThreatHunt -Operation Summary`<BR> | [threatHuntSummary](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SummaryV2 | The summary of the threat hunt. | `New-RscQueryThreatHunt -Operation SummaryV2`<BR> | [threatHuntSummaryV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ValidateBulk | Validates a bulk threat hunt request. | `New-RscQueryThreatHunt -Operation ValidateBulk`<BR> | [validateBulkThreatHunt](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| Cancel | Cancel an in-progress threat hunt. | `New-RscMutationThreatHunt -Operation Cancel`<BR> | [cancelThreatHunt](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Start | Start a threat hunt on a cluster. | `New-RscMutationThreatHunt -Operation Start`<BR> | [startThreatHunt](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StartBulk | Start a new bulk threat hunt. | `New-RscMutationThreatHunt -Operation StartBulk`<BR> | [startBulkThreatHunt](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StartTurbo | Start a new turbo threat hunt. | `New-RscMutationThreatHunt -Operation StartTurbo`<BR> | [startTurboThreatHunt](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StartV2 | Start a new threat hunt. | `New-RscMutationThreatHunt -Operation StartV2`<BR> | [startThreatHuntV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## VMware vSphere vCenter domain

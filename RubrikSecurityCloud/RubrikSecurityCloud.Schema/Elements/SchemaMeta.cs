@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20250428-24" ;
+        public static string GraphqlSchemaVersion = "v20250505-56" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -346,6 +346,7 @@ namespace RubrikSecurityCloud.Types
             AutoEnablePolicyClusterConfigReply,
             AwsAccount,
             AwsAccountRansomwareInvestigationEnablement,
+            AwsAccountThreatAnalyticsEnablement,
             AwsAccountValidationResponse,
             AwsArtifactsToDelete,
             AwsAuthServerDetail,
@@ -545,6 +546,7 @@ namespace RubrikSecurityCloud.Types
             AzureSubscriptionEdge,
             AzureSubscriptionMissingPermissions,
             AzureSubscriptionRansomwareInvestigationEnablement,
+            AzureSubscriptionThreatAnalyticsEnablement,
             AzureSubscriptionWithExocomputeMapping,
             AzureSubscriptionWithExoConfigs,
             AzureSubscriptionWithFeaturesType,
@@ -987,6 +989,7 @@ namespace RubrikSecurityCloud.Types
             DiffData,
             DiffResult,
             DirectoryObjectAttribute,
+            DisabledInfo,
             DisableTargetReply,
             DiscoverNasSystemSummary,
             DiskInfo,
@@ -1018,6 +1021,8 @@ namespace RubrikSecurityCloud.Types
             DownloadResultsCsvReply,
             DownloadSlaWithReplicationCsvReply,
             DownloadThreatHuntCsvReply,
+            DownloadThreatHuntV2CsvResponse,
+            DownloadTurboThreatHuntResultsCsvResponse,
             DuplicatedVapp,
             DuplicatedVm,
             Duration,
@@ -1101,8 +1106,14 @@ namespace RubrikSecurityCloud.Types
             FeaturePermission,
             FeatureWithPermissionsGroupsOutputType,
             FederatedLoginStatus,
+            FeedInfo,
+            FeedSummaryStats,
             FileAccessResult,
             FileDetails,
+            FileMatch,
+            FileMatchConnection,
+            FileMatchEdge,
+            FileMatchWithMatchedSnapshots,
             FileResult,
             FileResultConnection,
             FileResultEdge,
@@ -1206,6 +1217,7 @@ namespace RubrikSecurityCloud.Types
             GetSelfServiceInfoForUserResp,
             GetSmbConfigurationReply,
             GetTaskchainStatusReply,
+            GetThreatMonitoringObjectEnablementStatsResponse,
             GetTotpStatusReply,
             GetUserDetailReply,
             GetUserSessionManagementConfigReply,
@@ -1237,6 +1249,7 @@ namespace RubrikSecurityCloud.Types
             GuestOsCredentialConnection,
             GuestOsCredentialEdge,
             HashDetail,
+            HashInfo,
             HasRelicAzureAdSnapshotReplyType,
             HdfsBaseConfig,
             HdfsHost,
@@ -1280,6 +1293,13 @@ namespace RubrikSecurityCloud.Types
             HotAddProxyVmInfo,
             HotAddProxyVmInfoListResponse,
             HourlySnapshotSchedule,
+            HuntConfig,
+            HuntResponse,
+            HuntScanFileCriteria,
+            HuntScanFileSizeLimits,
+            HuntScanFileTimeLimits,
+            HuntScanPathFilters,
+            HuntScanSnapshotLimit,
             HypervAsyncRequestFailureSummary,
             HypervAsyncRequestSuccessSummary,
             HyperVcluster,
@@ -1329,6 +1349,7 @@ namespace RubrikSecurityCloud.Types
             IgnoreClusterRemovalPrecheckReply,
             InactiveLockoutConfig,
             IndicatorOfCompromise,
+            IndicatorOfCompromiseInputOutputListType,
             InfrastructureChart,
             InfrastructureTable,
             InstalledVersionGroupCount,
@@ -1345,6 +1366,11 @@ namespace RubrikSecurityCloud.Types
             InventoryRoot,
             InventorySubHierarchyRoot,
             InvestigationCsvDownloadLinkReply,
+            Ioc,
+            IocDetails,
+            IocFeedEntry,
+            IocFeedEntryConnection,
+            IocFeedEntryEdge,
             IpInfo,
             IpmiAccess,
             IpmiInfo,
@@ -1435,6 +1461,7 @@ namespace RubrikSecurityCloud.Types
             ListO365DirectoryObjectAttributesResp,
             ListStoredDiskLocationsReply,
             ListStoreResponse,
+            ListThreatFeedsResponse,
             ListVersionResponse,
             LocalClusterInfo,
             LocationImmutabilityType,
@@ -1462,6 +1489,7 @@ namespace RubrikSecurityCloud.Types
             M365ProductOperationMode,
             M365Region,
             M365RegionsResp,
+            M365SubscriptionThreatAnalyticsEnablement,
             MailboxForSelfService,
             MalwareMatch,
             MalwareScanFileCriteria,
@@ -1518,6 +1546,8 @@ namespace RubrikSecurityCloud.Types
             MapAzureCloudAccountToPersistentStorageLocationReply,
             MapCloudAccountExocomputeAccountReply,
             MarkAgentSecondaryCertificateReply,
+            MatchedSnapshot,
+            MatchedSnapshotInfo,
             Metadata,
             MetadataFields,
             MetadataV2,
@@ -1913,6 +1943,10 @@ namespace RubrikSecurityCloud.Types
             ObjectClusterSummary,
             ObjectIdsForHierarchyType,
             ObjectIdToSnapshotIds,
+            ObjectPausedSource,
+            ObjectPausedSourceDetails,
+            ObjectPauseStatus,
+            ObjectSnapshotMapping,
             ObjectSpecificConfigs,
             ObjectStatus,
             ObjectSummary,
@@ -1976,6 +2010,7 @@ namespace RubrikSecurityCloud.Types
             OracleRecoverableRange,
             OracleRecoverableRangeListResponse,
             OracleSddDetail,
+            OracleSepsWalletSettings,
             OracleSettings,
             OracleTopLevelDescendantTypeConnection,
             OracleTopLevelDescendantTypeEdge,
@@ -2086,6 +2121,7 @@ namespace RubrikSecurityCloud.Types
             ProtectedUserDetails,
             ProtectionStatus,
             ProtectionTaskDetailsTableFilter,
+            ProviderInfo,
             ProxySettings,
             PutSmbConfigurationReply,
             PvcInformation,
@@ -2279,6 +2315,7 @@ namespace RubrikSecurityCloud.Types
             SapHanaSystemPhysicalChildTypeEdge,
             SapHanaSystemSummary,
             ScaleRuntime,
+            ScanLimit,
             ScheduledReport,
             ScheduledReportConnection,
             ScheduledReportEdge,
@@ -2368,6 +2405,7 @@ namespace RubrikSecurityCloud.Types
             SnapshotResultConnection,
             SnapshotResultEdge,
             SnapshotRetentionInfo,
+            SnapshotScanConfig,
             SnapshotSchedule,
             SnapshotSubObj,
             SnapshotSubObject,
@@ -2401,10 +2439,13 @@ namespace RubrikSecurityCloud.Types
             StartAzureAdAppSetupReply,
             StartAzureAdAppUpdateReply,
             StartAzureCloudAccountOauthReply,
+            StartBulkThreatHuntReply,
             StartClusterReportMigrationJobReply,
             StartCrawlReply,
             StartThreatHuntReply,
+            StartThreatHuntV2Reply,
             StartTimeAttributes,
+            StartTurboThreatHuntReply,
             StaticIpInfo,
             Status,
             StatusResponse,
@@ -2472,16 +2513,34 @@ namespace RubrikSecurityCloud.Types
             TestExistingWebhookReply,
             TestSyslogExportRuleReply,
             TestWebhookReply,
+            ThreatAnalyticsEnablement,
             ThreatHunt,
+            ThreatHuntBaseConfig,
             ThreatHuntConfig,
             ThreatHuntConnection,
             ThreatHuntDetails,
+            ThreatHuntDetailsV2,
             ThreatHuntEdge,
+            ThreatHuntingObjectFileMatch,
+            ThreatHuntingObjectFileMatchConnection,
+            ThreatHuntingObjectFileMatchEdge,
+            ThreatHuntIocDetails,
+            ThreatHuntMatchedSnapshotsReply,
+            ThreatHuntObjectMetricsReply,
             ThreatHuntResult,
             ThreatHuntResultObjectsSummary,
+            ThreatHuntResultObjectsSummaryConnection,
+            ThreatHuntResultObjectsSummaryEdge,
             ThreatHuntResultSnapshotStats,
             ThreatHuntStats,
             ThreatHuntSummaryReply,
+            ThreatMonitoringFileMatchDetailsReply,
+            ThreatMonitoringFileMatchDetailsV2,
+            ThreatMonitoringMatchedObject,
+            ThreatMonitoringMatchedObjectConnection,
+            ThreatMonitoringMatchedObjectEdge,
+            ThreatMonitoringObjects,
+            ThreatMonitoringStats,
             TimelineCountEntry,
             TimelineEntry,
             TimeRange,
@@ -2635,7 +2694,9 @@ namespace RubrikSecurityCloud.Types
             ValidateAzureNativeSqlDatabaseDbNameForExportReply,
             ValidateAzureNativeSqlManagedInstanceDbNameForExportReply,
             ValidateAzureSubnetsForCloudAccountExocomputeReply,
+            ValidateBulkThreatHuntResponse,
             ValidateCloudNativeFileRecoveryFeasibilityReply,
+            ValidateEntryReply,
             ValidateOracleAcoFileReply,
             ValidateOrgNameReply,
             ValidationRecoveryReply,
@@ -2851,6 +2912,7 @@ namespace RubrikSecurityCloud.Types
             WorkloadRecoveryInfo,
             WorkloadRegion,
             WorkloadTypeToBackupSetupSpecs,
+            YaraInfo,
             YaraMatchDetail,
             YearlySnapshotSchedule,
             ZeusDatabaseIds,
@@ -2916,6 +2978,7 @@ namespace RubrikSecurityCloud.Types
             AddVlanInput,
             AddVmAppConsistentSpecsInput,
             AdGroupSpecInput,
+            AdministrativeUnitRecoveryOption,
             AdvancedRecoveryConfigMap,
             AdVolumeExportFilter,
             AdVolumeExportSortByInput,
@@ -3286,6 +3349,7 @@ namespace RubrikSecurityCloud.Types
             CreateMountHypervVirtualDisksInput,
             CreateMssqlLiveMountInput,
             CreateMssqlLogShippingConfigurationInput,
+            CreateMvDownloadFilesFromArchivalLocationJobInput,
             CreateNasShareInput,
             CreateNfsReaderTargetInput,
             CreateNfsTargetInput,
@@ -3482,6 +3546,8 @@ namespace RubrikSecurityCloud.Types
             DownloadSapHanaSnapshotsForPointInTimeRecoveryInput,
             DownloadSnapshotFromLocationInfo,
             DownloadThreatHuntCsvInput,
+            DownloadThreatHuntV2CsvInput,
+            DownloadTurboThreatHuntResultsCsvInput,
             DownloadUserActivityCsvInput,
             DownloadUserFileActivityCsvInput,
             DownloadVirtualMachineFileJobConfigInput,
@@ -3561,6 +3627,8 @@ namespace RubrikSecurityCloud.Types
             FeatureListMinimumCdmVersionInputType,
             FeatureSpecificDetailsInput,
             FeatureWithPermissionsGroups,
+            FeedEntrySort,
+            FeedEntryStatusFilter,
             FileActivitiesSort,
             FileDetailsInput,
             FileInfo,
@@ -3716,6 +3784,10 @@ namespace RubrikSecurityCloud.Types
             HotAddBandwidthInfoInput,
             HotAddNetworkConfigWithIdInput,
             HourlySnapshotScheduleInput,
+            HuntScanFileCriteriaInputType,
+            HuntScanFileSizeLimitsInputType,
+            HuntScanFileTimeLimitsInputType,
+            HuntScanPathFiltersInputType,
             HypervBatchExportSnapshotJobConfigInput,
             HypervBatchInstantRecoverSnapshotJobConfigInput,
             HypervBatchMountSnapshotJobConfigInput,
@@ -3748,6 +3820,8 @@ namespace RubrikSecurityCloud.Types
             IdpClaimAttribute,
             InactiveLockoutConfigInput,
             IndicatorOfCompromiseInput,
+            IndicatorOfCompromiseInputListType,
+            IndicatorOfCompromiseInputType,
             InplaceExportHypervVirtualMachineInput,
             InPlaceRecoveryJobConfigForBatchInput,
             InPlaceRecoveryJobConfigV2Input,
@@ -3762,8 +3836,10 @@ namespace RubrikSecurityCloud.Types
             InterfaceCidrInput,
             InternalUpdateVmAgentDeploymentSettingRequestNewInput,
             InviteSsoGroupInput,
+            IocDetailInput,
             IocHashOnly,
             IocHashWithProvider,
+            IocInputType,
             IocProviderWithThreatFeedType,
             IpConfigInput,
             IpMappingInput,
@@ -4014,8 +4090,11 @@ namespace RubrikSecurityCloud.Types
             O365TeamConvChannelInput,
             ObjectIdsForHierarchyTypeInput,
             ObjectIdToSnapshotIdsInput,
+            ObjectInfoInput,
             ObjectInfoType,
             ObjectRecoveryOptionsType,
+            ObjectSnapshotMappingInputType,
+            ObjectSnapshotMappingListInputType,
             ObjectSpecificConfigsInput,
             ObjectTag,
             ObjectTagsFilterInput,
@@ -4229,6 +4308,8 @@ namespace RubrikSecurityCloud.Types
             SapHanaSystemDataPathSpecInput,
             SapHanaSystemPatchInput,
             SapHanaSystemRestoreConfigInput,
+            ScanLimitInputType,
+            ScanObjectsConfig,
             ScheduledReportCreate,
             ScheduledReportFilterInput,
             SddlRequestFiltersInput,
@@ -4299,6 +4380,7 @@ namespace RubrikSecurityCloud.Types
             SnapshotDeltaFilterInput,
             SnapshotFileDownloadInfo,
             SnapshotQueryFilterInput,
+            SnapshotScanConfigInput,
             SnmpConfigurationInput,
             SnmpConfigurationPatchInput,
             SnmpTrapReceiverConfigInput,
@@ -4333,7 +4415,9 @@ namespace RubrikSecurityCloud.Types
             StartRestoreAwsNativeEc2InstanceSnapshotJobInput,
             StartRestoreAzureNativeVirtualMachineJobInput,
             StartThreatHuntInput,
+            StartThreatHuntV2Input,
             StartTimeAttributesInput,
+            StartTurboThreatHuntInput,
             StartVolumeGroupMountInput,
             StaticIpInfoInput,
             StopJobInstanceFromEventSeriesInput,
@@ -4376,6 +4460,10 @@ namespace RubrikSecurityCloud.Types
             TestExistingWebhookInput,
             TestSyslogExportRuleInput,
             TestWebhookInput,
+            ThreatHuntBaseConfigInputType,
+            ThreatHuntMatchedFilesSort,
+            ThreatHuntSummaryFiltersInput,
+            ThreatHuntSummarySort,
             ThreatMonitoringEnablementStatusInput,
             TimeFilterInput,
             TimeRangeFilter,
@@ -4390,6 +4478,7 @@ namespace RubrikSecurityCloud.Types
             TriggerCloudComputeConnectivityCheckInput,
             TriggerExocomputeHealthCheckInput,
             TriggerRansomwareDetectionInput,
+            TurboThreatHuntConfig,
             UnaccessedFilter,
             UnconfigureSapHanaRestoreInput,
             UnidirectionalReplicationSpecInput,
@@ -4540,7 +4629,9 @@ namespace RubrikSecurityCloud.Types
             ValidateAndInitiateAwsOutpostAccountInput,
             ValidateAndSaveCustomerKmsInfoInput,
             ValidateAzureCloudAccountExocomputeConfigurationsInput,
+            ValidateBulkThreatHuntInput,
             ValidateClusterLicenseCapacityInput,
+            ValidateIocEntryInput,
             ValidateOracleAcoFileInput,
             ValidateOracleDatabaseBackupsInput,
             ValidateOrgNameInput,
@@ -5030,6 +5121,7 @@ namespace RubrikSecurityCloud.Types
             downloadedVersionList,
             downloadPackageStatus,
             downloadSlaWithReplicationCsv,
+            downloadTurboThreatHuntCsv,
             dummyFieldWithAdminOnlyTag,
             edgeWindowsToolLink,
             eligibleAccountsForMigrationToAwsOrg,
@@ -5117,6 +5209,7 @@ namespace RubrikSecurityCloud.Types
             inventoryRoot,
             inventorySubHierarchyRoot,
             investigationCsvDownloadLink,
+            iocFeedEntries,
             ipWhitelist,
             isAwsNativeEbsVolumeSnapshotRestorable,
             isAwsNativeRdsInstanceLaunchConfigurationValid,
@@ -5439,10 +5532,23 @@ namespace RubrikSecurityCloud.Types
             taskDetailConnection,
             taskDetailGroupByConnection,
             teamChannelNameAvailable,
+            threatAnalyticsEnablement,
+            threatFeeds,
             threatHuntDetail,
+            threatHuntDetailV2,
+            threatHuntingObjectMatchedFiles,
+            threatHuntMatchedSnapshots,
+            threatHuntObjectMetrics,
             threatHuntResult,
             threatHunts,
             threatHuntSummary,
+            threatHuntSummaryV2,
+            threatMonitoringMatchedFileDetails,
+            threatMonitoringMatchedFileDetailsV2,
+            threatMonitoringMatchedFiles,
+            threatMonitoringMatchedObjects,
+            threatMonitoringObjectEnablementStats,
+            threatMonitoringObjects,
             totpConfigStatus,
             tprConfiguration,
             tprPolicyDetail,
@@ -5477,9 +5583,11 @@ namespace RubrikSecurityCloud.Types
             validateAzureCloudAccountExocomputeConfigurations,
             validateAzureNativeSqlDatabaseDbNameForExport,
             validateAzureNativeSqlManagedInstanceDbNameForExport,
+            validateBulkThreatHunt,
             validateClusterLicenseCapacity,
             validateCreateAwsClusterInput,
             validateCreateAzureClusterInput,
+            validateIocEntry,
             validateOrgName,
             vappSnapshotInstantRecoveryOptions,
             vappTemplateSnapshotExportOptions,
@@ -5869,6 +5977,7 @@ namespace RubrikSecurityCloud.Types
             downloadExchangeSnapshotV2,
             downloadFilesetSnapshot,
             downloadFilesetSnapshotFromLocation,
+            downloadFilesManagedVolumeSnapshotFromArchivalLocation,
             downloadFilesNutanixSnapshot,
             downloadFilesNutanixSnapshotFromArchivalLocation,
             downloadFromArchiveV2,
@@ -5897,6 +6006,7 @@ namespace RubrikSecurityCloud.Types
             downloadSapHanaSnapshotsForPointInTimeRecovery,
             downloadSnapshotResultsCsv,
             downloadThreatHuntCsv,
+            downloadThreatHuntV2ResultsCsv,
             downloadUserActivityCsv,
             downloadUserFileActivityCsv,
             downloadVolumeGroupSnapshotFiles,
@@ -6130,6 +6240,7 @@ namespace RubrikSecurityCloud.Types
             startAzureAdAppSetup,
             startAzureAdAppUpdate,
             startAzureCloudAccountOauth,
+            startBulkThreatHunt,
             startCloudNativeSnapshotsIndexJob,
             startClusterReportMigrationJob,
             startCrawl,
@@ -6153,6 +6264,8 @@ namespace RubrikSecurityCloud.Types
             startRestoreAwsNativeEc2InstanceSnapshotJob,
             startRestoreAzureNativeVirtualMachineJob,
             startThreatHunt,
+            startThreatHuntV2,
+            startTurboThreatHunt,
             startUpgradeBatchJob,
             startVolumeGroupMount,
             stopJobInstance,
@@ -6502,6 +6615,7 @@ namespace RubrikSecurityCloud.Types
             BackupStatus,
             BackupStorageProtectionStatus,
             BlueprintRecoveryType,
+            BulkThreatHuntValidationStatus,
             CalendarEmailAddressFilterType,
             CalendarEventType,
             CalendarRecurrenceType,
@@ -6680,6 +6794,10 @@ namespace RubrikSecurityCloud.Types
             FailoverStatusEnum,
             FailoverTableColumnEnum,
             FailoverTypeEnum,
+            FeedEntryAttributes,
+            FeedEntryStatus,
+            FeedStatus,
+            FeedType,
             FieldEnum,
             FileActivitiesSortBy,
             FileCountType,
@@ -6743,6 +6861,7 @@ namespace RubrikSecurityCloud.Types
             HostVfdState,
             HotAddProxyVmStatus,
             HotAddProxyVmStatusType,
+            HuntTriggerStatus,
             HypervHostStatusType,
             HypervLiveMountFilterField,
             HypervLiveMountSortByField,
@@ -6768,6 +6887,7 @@ namespace RubrikSecurityCloud.Types
             InternalQueryNetworkThrottleRequestResourceId,
             InventoryCard,
             InventorySubHierarchyRootEnum,
+            IocHashType,
             IocOperation,
             IoFilterStatus,
             IssueEventType,
@@ -6814,6 +6934,7 @@ namespace RubrikSecurityCloud.Types
             ManagedVolumeState,
             ManagedVolumeType,
             ManageProtectionForLinkedObjectsOperationType,
+            MatchedFilesSortByFields,
             MetadataKey,
             MfaStatus,
             MissedSnapshotDayOfTimeUnit,
@@ -6896,6 +7017,7 @@ namespace RubrikSecurityCloud.Types
             O365ServiceStatusIndication,
             ObjectPolicyStatus,
             ObjectState,
+            ObjectSummariesSortByFields,
             ObjectTypeAccessSummaryGroupBy,
             ObjectTypeAccessSummarySortBy,
             ObjectTypeEnum,
@@ -6918,6 +7040,7 @@ namespace RubrikSecurityCloud.Types
             PendingActionStatus,
             PendingActionSubGroupTypeEnum,
             PendingActionSyncType,
+            PendingObjectPauseAssignmentStatus,
             PermissionsGroup,
             Platform,
             PlatformCategory,
@@ -7089,9 +7212,11 @@ namespace RubrikSecurityCloud.Types
             TenantAuthDomainConfig,
             TenantNetworkHealth,
             ThreatFeedType,
+            ThreatHuntCsvGenerationStatus,
             ThreatHuntMatchesFound,
             ThreatHuntObjectStatus,
             ThreatHuntQuarantinedMatchType,
+            ThreatHuntRootObjectType,
             ThreatHuntStatus,
             ThreatHuntType,
             ThreatMonitoringEnablementEntity,
@@ -7179,6 +7304,7 @@ namespace RubrikSecurityCloud.Types
             WhitelistModeEnum,
             WorkloadAnomaliesSortBy,
             WorkloadLevelHierarchy,
+            YaraVersion,
         }
 
         /// <summary>
@@ -9842,6 +9968,7 @@ namespace RubrikSecurityCloud.Types
             downloadDb2SnapshotsForPointInTimeRecovery,
             downloadExchangeSnapshot,
             downloadExchangeSnapshotV2,
+            downloadFilesManagedVolumeSnapshotFromArchivalLocation,
             downloadFilesNutanixSnapshot,
             downloadFilesNutanixSnapshotFromArchivalLocation,
             downloadFilesetSnapshot,
@@ -9874,6 +10001,8 @@ namespace RubrikSecurityCloud.Types
             downloadSlaWithReplicationCsv,
             downloadSnapshotResultsCsv,
             downloadThreatHuntCsv,
+            downloadThreatHuntV2ResultsCsv,
+            downloadTurboThreatHuntCsv,
             downloadUserActivityCsv,
             downloadUserFileActivityCsv,
             downloadVolumeGroupSnapshotFiles,
@@ -10041,6 +10170,7 @@ namespace RubrikSecurityCloud.Types
             inventorySubHierarchyRoot,
             investigationCsvDownloadLink,
             inviteSsoGroup,
+            iocFeedEntries,
             ipWhitelist,
             isAwsNativeEbsVolumeSnapshotRestorable,
             isAwsNativeRdsInstanceLaunchConfigurationValid,
@@ -10505,6 +10635,7 @@ namespace RubrikSecurityCloud.Types
             startAzureAdAppSetup,
             startAzureAdAppUpdate,
             startAzureCloudAccountOauth,
+            startBulkThreatHunt,
             startCloudNativeSnapshotsIndexJob,
             startClusterReportMigrationJob,
             startCrawl,
@@ -10528,6 +10659,8 @@ namespace RubrikSecurityCloud.Types
             startRestoreAwsNativeEc2InstanceSnapshotJob,
             startRestoreAzureNativeVirtualMachineJob,
             startThreatHunt,
+            startThreatHuntV2,
+            startTurboThreatHunt,
             startUpgradeBatchJob,
             startVolumeGroupMount,
             stopJobInstance,
@@ -10555,10 +10688,23 @@ namespace RubrikSecurityCloud.Types
             testExistingWebhook,
             testSyslogExportRule,
             testWebhook,
+            threatAnalyticsEnablement,
+            threatFeeds,
             threatHuntDetail,
+            threatHuntDetailV2,
+            threatHuntMatchedSnapshots,
+            threatHuntObjectMetrics,
             threatHuntResult,
             threatHuntSummary,
+            threatHuntSummaryV2,
+            threatHuntingObjectMatchedFiles,
             threatHunts,
+            threatMonitoringMatchedFileDetails,
+            threatMonitoringMatchedFileDetailsV2,
+            threatMonitoringMatchedFiles,
+            threatMonitoringMatchedObjects,
+            threatMonitoringObjectEnablementStats,
+            threatMonitoringObjects,
             totpConfigStatus,
             tprConfiguration,
             tprPolicyDetail,
@@ -10774,9 +10920,11 @@ namespace RubrikSecurityCloud.Types
             validateAzureCloudAccountExocomputeConfigurations,
             validateAzureNativeSqlDatabaseDbNameForExport,
             validateAzureNativeSqlManagedInstanceDbNameForExport,
+            validateBulkThreatHunt,
             validateClusterLicenseCapacity,
             validateCreateAwsClusterInput,
             validateCreateAzureClusterInput,
+            validateIocEntry,
             validateOracleAcoFile,
             validateOracleDatabaseBackups,
             validateOrgName,
@@ -13842,8 +13990,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cancelThreatHunt,
                     new RscOp(
-                        cmdletName: "New-RscMutationThreat",
-                        cmdletSwitchName: "CancelHunt",
+                        cmdletName: "New-RscMutationThreatHunt",
+                        cmdletSwitchName: "Cancel",
                         gqlRootFieldName: "cancelThreatHunt"
                     )
                 },
@@ -16360,6 +16508,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.downloadFilesManagedVolumeSnapshotFromArchivalLocation,
+                    new RscOp(
+                        cmdletName: "New-RscMutationManagedVolume",
+                        cmdletSwitchName: "DownloadFilesSnapshotFromArchivalLocation",
+                        gqlRootFieldName: "downloadFilesManagedVolumeSnapshotFromArchivalLocation"
+                    )
+                },
+                {
                     GqlRootFieldName.downloadFilesNutanixSnapshot,
                     new RscOp(
                         cmdletName: "New-RscMutationNutanix",
@@ -16613,6 +16769,22 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationDownload",
                         cmdletSwitchName: "ThreatHuntCsv",
                         gqlRootFieldName: "downloadThreatHuntCsv"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadThreatHuntV2ResultsCsv,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "ThreatHuntV2ResultsCsv",
+                        gqlRootFieldName: "downloadThreatHuntV2ResultsCsv"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadTurboThreatHuntCsv,
+                    new RscOp(
+                        cmdletName: "New-RscQueryDownload",
+                        cmdletSwitchName: "TurboThreatHuntCsv",
+                        gqlRootFieldName: "downloadTurboThreatHuntCsv"
                     )
                 },
                 {
@@ -17949,6 +18121,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMisc",
                         cmdletSwitchName: "InviteSsoGroup",
                         gqlRootFieldName: "inviteSsoGroup"
+                    )
+                },
+                {
+                    GqlRootFieldName.iocFeedEntries,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "IocFeedEntries",
+                        gqlRootFieldName: "iocFeedEntries"
                     )
                 },
                 {
@@ -21664,6 +21844,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.startBulkThreatHunt,
+                    new RscOp(
+                        cmdletName: "New-RscMutationThreatHunt",
+                        cmdletSwitchName: "StartBulk",
+                        gqlRootFieldName: "startBulkThreatHunt"
+                    )
+                },
+                {
                     GqlRootFieldName.startCloudNativeSnapshotsIndexJob,
                     new RscOp(
                         cmdletName: "New-RscMutationCloudNative",
@@ -21842,9 +22030,25 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startThreatHunt,
                     new RscOp(
-                        cmdletName: "New-RscMutationThreat",
-                        cmdletSwitchName: "StartHunt",
+                        cmdletName: "New-RscMutationThreatHunt",
+                        cmdletSwitchName: "Start",
                         gqlRootFieldName: "startThreatHunt"
+                    )
+                },
+                {
+                    GqlRootFieldName.startThreatHuntV2,
+                    new RscOp(
+                        cmdletName: "New-RscMutationThreatHunt",
+                        cmdletSwitchName: "StartV2",
+                        gqlRootFieldName: "startThreatHuntV2"
+                    )
+                },
+                {
+                    GqlRootFieldName.startTurboThreatHunt,
+                    new RscOp(
+                        cmdletName: "New-RscMutationThreatHunt",
+                        cmdletSwitchName: "StartTurbo",
+                        gqlRootFieldName: "startTurboThreatHunt"
                     )
                 },
                 {
@@ -22064,35 +22268,139 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
-                    GqlRootFieldName.threatHuntDetail,
+                    GqlRootFieldName.threatAnalyticsEnablement,
                     new RscOp(
                         cmdletName: "New-RscQueryThreat",
-                        cmdletSwitchName: "HuntDetail",
+                        cmdletSwitchName: "AnalyticsEnablement",
+                        gqlRootFieldName: "threatAnalyticsEnablement"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatFeeds,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreat",
+                        cmdletSwitchName: "Feeds",
+                        gqlRootFieldName: "threatFeeds"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatHuntDetail,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreatHunt",
+                        cmdletSwitchName: "Detail",
                         gqlRootFieldName: "threatHuntDetail"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatHuntDetailV2,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreatHunt",
+                        cmdletSwitchName: "DetailV2",
+                        gqlRootFieldName: "threatHuntDetailV2"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatHuntMatchedSnapshots,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreatHunt",
+                        cmdletSwitchName: "MatchedSnapshots",
+                        gqlRootFieldName: "threatHuntMatchedSnapshots"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatHuntObjectMetrics,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreatHunt",
+                        cmdletSwitchName: "ObjectMetrics",
+                        gqlRootFieldName: "threatHuntObjectMetrics"
                     )
                 },
                 {
                     GqlRootFieldName.threatHuntResult,
                     new RscOp(
-                        cmdletName: "New-RscQueryThreat",
-                        cmdletSwitchName: "HuntResult",
+                        cmdletName: "New-RscQueryThreatHunt",
+                        cmdletSwitchName: "Result",
                         gqlRootFieldName: "threatHuntResult"
                     )
                 },
                 {
                     GqlRootFieldName.threatHuntSummary,
                     new RscOp(
-                        cmdletName: "New-RscQueryThreat",
-                        cmdletSwitchName: "HuntSummary",
+                        cmdletName: "New-RscQueryThreatHunt",
+                        cmdletSwitchName: "Summary",
                         gqlRootFieldName: "threatHuntSummary"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatHuntSummaryV2,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreatHunt",
+                        cmdletSwitchName: "SummaryV2",
+                        gqlRootFieldName: "threatHuntSummaryV2"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatHuntingObjectMatchedFiles,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreatHunt",
+                        cmdletSwitchName: "IngObjectMatchedFiles",
+                        gqlRootFieldName: "threatHuntingObjectMatchedFiles"
                     )
                 },
                 {
                     GqlRootFieldName.threatHunts,
                     new RscOp(
-                        cmdletName: "New-RscQueryThreat",
-                        cmdletSwitchName: "Hunts",
+                        cmdletName: "New-RscQueryThreatHunt",
+                        cmdletSwitchName: "S",
                         gqlRootFieldName: "threatHunts"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatMonitoringMatchedFileDetails,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreat",
+                        cmdletSwitchName: "MonitoringMatchedFileDetails",
+                        gqlRootFieldName: "threatMonitoringMatchedFileDetails"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatMonitoringMatchedFileDetailsV2,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreat",
+                        cmdletSwitchName: "MonitoringMatchedFileDetailsV2",
+                        gqlRootFieldName: "threatMonitoringMatchedFileDetailsV2"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatMonitoringMatchedFiles,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreat",
+                        cmdletSwitchName: "MonitoringMatchedFiles",
+                        gqlRootFieldName: "threatMonitoringMatchedFiles"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatMonitoringMatchedObjects,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreat",
+                        cmdletSwitchName: "MonitoringMatchedObjects",
+                        gqlRootFieldName: "threatMonitoringMatchedObjects"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatMonitoringObjectEnablementStats,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreat",
+                        cmdletSwitchName: "MonitoringObjectEnablementStats",
+                        gqlRootFieldName: "threatMonitoringObjectEnablementStats"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatMonitoringObjects,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreat",
+                        cmdletSwitchName: "MonitoringObjects",
+                        gqlRootFieldName: "threatMonitoringObjects"
                     )
                 },
                 {
@@ -23816,6 +24124,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.validateBulkThreatHunt,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreatHunt",
+                        cmdletSwitchName: "ValidateBulk",
+                        gqlRootFieldName: "validateBulkThreatHunt"
+                    )
+                },
+                {
                     GqlRootFieldName.validateClusterLicenseCapacity,
                     new RscOp(
                         cmdletName: "New-RscQueryCluster",
@@ -23837,6 +24153,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryAzure",
                         cmdletSwitchName: "ValidateCreateClusterInput",
                         gqlRootFieldName: "validateCreateAzureClusterInput"
+                    )
+                },
+                {
+                    GqlRootFieldName.validateIocEntry,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "ValidateIocEntry",
+                        gqlRootFieldName: "validateIocEntry"
                     )
                 },
                 {
@@ -25863,7 +26187,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.cancelTaskchain
                 },
                 {
-                    "New-RscMutationThreat -Op CancelHunt",
+                    "New-RscMutationThreatHunt -Op Cancel",
                     GqlRootFieldName.cancelThreatHunt
                 },
                 {
@@ -27123,6 +27447,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.downloadExchangeSnapshotV2
                 },
                 {
+                    "New-RscMutationManagedVolume -Op DownloadFilesSnapshotFromArchivalLocation",
+                    GqlRootFieldName.downloadFilesManagedVolumeSnapshotFromArchivalLocation
+                },
+                {
                     "New-RscMutationNutanix -Op DownloadFilesSnapshot",
                     GqlRootFieldName.downloadFilesNutanixSnapshot
                 },
@@ -27249,6 +27577,14 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationDownload -Op ThreatHuntCsv",
                     GqlRootFieldName.downloadThreatHuntCsv
+                },
+                {
+                    "New-RscMutationDownload -Op ThreatHuntV2ResultsCsv",
+                    GqlRootFieldName.downloadThreatHuntV2ResultsCsv
+                },
+                {
+                    "New-RscQueryDownload -Op TurboThreatHuntCsv",
+                    GqlRootFieldName.downloadTurboThreatHuntCsv
                 },
                 {
                     "New-RscMutationActivitySeries -Op DownloadUserCsv",
@@ -27917,6 +28253,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationMisc -Op InviteSsoGroup",
                     GqlRootFieldName.inviteSsoGroup
+                },
+                {
+                    "New-RscQueryMisc -Op IocFeedEntries",
+                    GqlRootFieldName.iocFeedEntries
                 },
                 {
                     "New-RscQueryMisc -Op IpWhitelist",
@@ -29775,6 +30115,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.startAzureCloudAccountOauth
                 },
                 {
+                    "New-RscMutationThreatHunt -Op StartBulk",
+                    GqlRootFieldName.startBulkThreatHunt
+                },
+                {
                     "New-RscMutationCloudNative -Op StartSnapshotsIndexJob",
                     GqlRootFieldName.startCloudNativeSnapshotsIndexJob
                 },
@@ -29863,8 +30207,16 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.startRestoreAzureNativeVirtualMachineJob
                 },
                 {
-                    "New-RscMutationThreat -Op StartHunt",
+                    "New-RscMutationThreatHunt -Op Start",
                     GqlRootFieldName.startThreatHunt
+                },
+                {
+                    "New-RscMutationThreatHunt -Op StartV2",
+                    GqlRootFieldName.startThreatHuntV2
+                },
+                {
+                    "New-RscMutationThreatHunt -Op StartTurbo",
+                    GqlRootFieldName.startTurboThreatHunt
                 },
                 {
                     "New-RscMutationMisc -Op StartUpgradeBatchJob",
@@ -29975,20 +30327,72 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.testWebhook
                 },
                 {
-                    "New-RscQueryThreat -Op HuntDetail",
+                    "New-RscQueryThreat -Op AnalyticsEnablement",
+                    GqlRootFieldName.threatAnalyticsEnablement
+                },
+                {
+                    "New-RscQueryThreat -Op Feeds",
+                    GqlRootFieldName.threatFeeds
+                },
+                {
+                    "New-RscQueryThreatHunt -Op Detail",
                     GqlRootFieldName.threatHuntDetail
                 },
                 {
-                    "New-RscQueryThreat -Op HuntResult",
+                    "New-RscQueryThreatHunt -Op DetailV2",
+                    GqlRootFieldName.threatHuntDetailV2
+                },
+                {
+                    "New-RscQueryThreatHunt -Op MatchedSnapshots",
+                    GqlRootFieldName.threatHuntMatchedSnapshots
+                },
+                {
+                    "New-RscQueryThreatHunt -Op ObjectMetrics",
+                    GqlRootFieldName.threatHuntObjectMetrics
+                },
+                {
+                    "New-RscQueryThreatHunt -Op Result",
                     GqlRootFieldName.threatHuntResult
                 },
                 {
-                    "New-RscQueryThreat -Op HuntSummary",
+                    "New-RscQueryThreatHunt -Op Summary",
                     GqlRootFieldName.threatHuntSummary
                 },
                 {
-                    "New-RscQueryThreat -Op Hunts",
+                    "New-RscQueryThreatHunt -Op SummaryV2",
+                    GqlRootFieldName.threatHuntSummaryV2
+                },
+                {
+                    "New-RscQueryThreatHunt -Op IngObjectMatchedFiles",
+                    GqlRootFieldName.threatHuntingObjectMatchedFiles
+                },
+                {
+                    "New-RscQueryThreatHunt -Op S",
                     GqlRootFieldName.threatHunts
+                },
+                {
+                    "New-RscQueryThreat -Op MonitoringMatchedFileDetails",
+                    GqlRootFieldName.threatMonitoringMatchedFileDetails
+                },
+                {
+                    "New-RscQueryThreat -Op MonitoringMatchedFileDetailsV2",
+                    GqlRootFieldName.threatMonitoringMatchedFileDetailsV2
+                },
+                {
+                    "New-RscQueryThreat -Op MonitoringMatchedFiles",
+                    GqlRootFieldName.threatMonitoringMatchedFiles
+                },
+                {
+                    "New-RscQueryThreat -Op MonitoringMatchedObjects",
+                    GqlRootFieldName.threatMonitoringMatchedObjects
+                },
+                {
+                    "New-RscQueryThreat -Op MonitoringObjectEnablementStats",
+                    GqlRootFieldName.threatMonitoringObjectEnablementStats
+                },
+                {
+                    "New-RscQueryThreat -Op MonitoringObjects",
+                    GqlRootFieldName.threatMonitoringObjects
                 },
                 {
                     "New-RscQueryMisc -Op TotpConfigStatus",
@@ -30851,6 +31255,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.validateAzureNativeSqlManagedInstanceDbNameForExport
                 },
                 {
+                    "New-RscQueryThreatHunt -Op ValidateBulk",
+                    GqlRootFieldName.validateBulkThreatHunt
+                },
+                {
                     "New-RscQueryCluster -Op ValidateClusterLicenseCapacity",
                     GqlRootFieldName.validateClusterLicenseCapacity
                 },
@@ -30861,6 +31269,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryAzure -Op ValidateCreateClusterInput",
                     GqlRootFieldName.validateCreateAzureClusterInput
+                },
+                {
+                    "New-RscQueryMisc -Op ValidateIocEntry",
+                    GqlRootFieldName.validateIocEntry
                 },
                 {
                     "New-RscMutationOracle -Op ValidateAcoFile",
@@ -31420,6 +31832,7 @@ namespace RubrikSecurityCloud.Types
                         "downloadExchangeSnapshotV2",
                         "downloadFilesetSnapshot",
                         "downloadFilesetSnapshotFromLocation",
+                        "downloadFilesManagedVolumeSnapshotFromArchivalLocation",
                         "downloadFilesNutanixSnapshot",
                         "downloadFilesNutanixSnapshotFromArchivalLocation",
                         "downloadFromArchiveV2",
@@ -32629,6 +33042,14 @@ namespace RubrikSecurityCloud.Types
                         "downloadThreatHuntCsv",
                     }
                 },
+                {   "DownloadThreatHuntV2CsvResponse", new List<string> {
+                        "downloadThreatHuntV2ResultsCsv",
+                    }
+                },
+                {   "DownloadTurboThreatHuntResultsCsvResponse", new List<string> {
+                        "downloadTurboThreatHuntCsv",
+                    }
+                },
                 {   "EdgeWindowsToolLink", new List<string> {
                         "edgeWindowsToolLink",
                     }
@@ -32731,6 +33152,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "FederatedLoginStatus", new List<string> {
                         "federatedLoginStatus",
+                    }
+                },
+                {   "FileMatchConnection", new List<string> {
+                        "threatMonitoringMatchedFiles",
                     }
                 },
                 {   "FileResultConnection", new List<string> {
@@ -32923,6 +33348,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "GetTaskchainStatusReply", new List<string> {
                         "getKorgTaskchainStatus",
+                    }
+                },
+                {   "GetThreatMonitoringObjectEnablementStatsResponse", new List<string> {
+                        "threatMonitoringObjectEnablementStats",
                     }
                 },
                 {   "GetTotpStatusReply", new List<string> {
@@ -33131,6 +33560,10 @@ namespace RubrikSecurityCloud.Types
                         "investigationCsvDownloadLink",
                     }
                 },
+                {   "IocFeedEntryConnection", new List<string> {
+                        "iocFeedEntries",
+                    }
+                },
                 {   "IsCloudClusterDiskUpgradeAvailableReply", new List<string> {
                         "isCloudClusterDiskUpgradeAvailable",
                     }
@@ -33263,6 +33696,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "ListStoredDiskLocationsReply", new List<string> {
                         "gcpNativeStoredDiskLocations",
+                    }
+                },
+                {   "ListThreatFeedsResponse", new List<string> {
+                        "threatFeeds",
                     }
                 },
                 {   "ListVersionResponse", new List<string> {
@@ -34460,6 +34897,10 @@ namespace RubrikSecurityCloud.Types
                         "startAzureCloudAccountOauth",
                     }
                 },
+                {   "StartBulkThreatHuntReply", new List<string> {
+                        "startBulkThreatHunt",
+                    }
+                },
                 {   "StartClusterReportMigrationJobReply", new List<string> {
                         "startClusterReportMigrationJob",
                     }
@@ -34470,6 +34911,14 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "StartThreatHuntReply", new List<string> {
                         "startThreatHunt",
+                    }
+                },
+                {   "StartThreatHuntV2Reply", new List<string> {
+                        "startThreatHuntV2",
+                    }
+                },
+                {   "StartTurboThreatHuntReply", new List<string> {
+                        "startTurboThreatHunt",
                     }
                 },
                 {   "StopJobInstanceReply", new List<string> {
@@ -34607,6 +35056,10 @@ namespace RubrikSecurityCloud.Types
                         "testWebhook",
                     }
                 },
+                {   "ThreatAnalyticsEnablement", new List<string> {
+                        "threatAnalyticsEnablement",
+                    }
+                },
                 {   "ThreatHunt", new List<string> {
                         "threatHuntDetail",
                     }
@@ -34615,12 +35068,48 @@ namespace RubrikSecurityCloud.Types
                         "threatHunts",
                     }
                 },
+                {   "ThreatHuntDetailsV2", new List<string> {
+                        "threatHuntDetailV2",
+                    }
+                },
+                {   "ThreatHuntMatchedSnapshotsReply", new List<string> {
+                        "threatHuntMatchedSnapshots",
+                    }
+                },
+                {   "ThreatHuntObjectMetricsReply", new List<string> {
+                        "threatHuntObjectMetrics",
+                    }
+                },
                 {   "ThreatHuntResult", new List<string> {
                         "threatHuntResult",
                     }
                 },
+                {   "ThreatHuntResultObjectsSummaryConnection", new List<string> {
+                        "threatHuntSummaryV2",
+                    }
+                },
                 {   "ThreatHuntSummaryReply", new List<string> {
                         "threatHuntSummary",
+                    }
+                },
+                {   "ThreatHuntingObjectFileMatchConnection", new List<string> {
+                        "threatHuntingObjectMatchedFiles",
+                    }
+                },
+                {   "ThreatMonitoringFileMatchDetailsReply", new List<string> {
+                        "threatMonitoringMatchedFileDetails",
+                    }
+                },
+                {   "ThreatMonitoringFileMatchDetailsV2", new List<string> {
+                        "threatMonitoringMatchedFileDetailsV2",
+                    }
+                },
+                {   "ThreatMonitoringMatchedObjectConnection", new List<string> {
+                        "threatMonitoringMatchedObjects",
+                    }
+                },
+                {   "ThreatMonitoringObjects", new List<string> {
+                        "threatMonitoringObjects",
                     }
                 },
                 {   "TprConfiguration", new List<string> {
@@ -35015,8 +35504,16 @@ namespace RubrikSecurityCloud.Types
                         "validateAzureCloudAccountExocomputeConfigurations",
                     }
                 },
+                {   "ValidateBulkThreatHuntResponse", new List<string> {
+                        "validateBulkThreatHunt",
+                    }
+                },
                 {   "ValidateCloudNativeFileRecoveryFeasibilityReply", new List<string> {
                         "isCloudNativeFileRecoveryFeasible",
+                    }
+                },
+                {   "ValidateEntryReply", new List<string> {
+                        "validateIocEntry",
                     }
                 },
                 {   "ValidateOracleAcoFileReply", new List<string> {
@@ -37138,6 +37635,10 @@ namespace RubrikSecurityCloud.Types
                         "createLegalHold",
                     }
                 },
+                {   "CreateMVDownloadFilesFromArchivalLocationJobInput", new List<string> {
+                        "downloadFilesManagedVolumeSnapshotFromArchivalLocation",
+                    }
+                },
                 {   "CreateManualTargetMappingInput", new List<string> {
                         "createManualTargetMapping",
                     }
@@ -37339,6 +37840,9 @@ namespace RubrikSecurityCloud.Types
                         "ransomwareDetectionWorkloadLocations",
                         "scheduleUpgradeBatchJob",
                         "threatHunts",
+                        "threatMonitoringMatchedObjects",
+                        "threatMonitoringObjectEnablementStats",
+                        "threatMonitoringObjects",
                         "vsphereVMMissedRecoverableRange",
                         "vsphereVMRecoverableRange",
                         "workloadAnomalies",
@@ -37850,6 +38354,14 @@ namespace RubrikSecurityCloud.Types
                         "downloadThreatHuntCsv",
                     }
                 },
+                {   "DownloadThreatHuntV2CsvInput", new List<string> {
+                        "downloadThreatHuntV2ResultsCsv",
+                    }
+                },
+                {   "DownloadTurboThreatHuntResultsCsvInput", new List<string> {
+                        "downloadTurboThreatHuntCsv",
+                    }
+                },
                 {   "DownloadUserActivityCsvInput", new List<string> {
                         "downloadUserActivityCsv",
                     }
@@ -38005,6 +38517,14 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "FeatureListMinimumCdmVersionInputType", new List<string> {
                         "minimumCdmVersionForFeatureSet",
+                    }
+                },
+                {   "FeedEntrySort", new List<string> {
+                        "iocFeedEntries",
+                    }
+                },
+                {   "FeedEntryStatusFilter", new List<string> {
+                        "iocFeedEntries",
                     }
                 },
                 {   "FileActivitiesSort", new List<string> {
@@ -38665,6 +39185,7 @@ namespace RubrikSecurityCloud.Types
                         "hypervTopLevelDescendants",
                         "hypervVirtualMachines",
                         "integration",
+                        "iocFeedEntries",
                         "isAwsNativeRdsInstanceLaunchConfigurationValid",
                         "issues",
                         "k8sClusters",
@@ -38785,7 +39306,11 @@ namespace RubrikSecurityCloud.Types
                         "targets",
                         "taskDetailConnection",
                         "taskDetailGroupByConnection",
+                        "threatHuntingObjectMatchedFiles",
                         "threatHunts",
+                        "threatHuntSummaryV2",
+                        "threatMonitoringMatchedFiles",
+                        "threatMonitoringMatchedObjects",
                         "tprRequestSummaries",
                         "unmanagedObjects",
                         "userActivities",
@@ -38932,6 +39457,7 @@ namespace RubrikSecurityCloud.Types
                         "removeCdmCluster",
                         "snapshotResults",
                         "startDownloadPackageBatchJob",
+                        "threatMonitoringMatchedFileDetails",
                         "updateCertificate",
                     }
                 },
@@ -40138,6 +40664,15 @@ namespace RubrikSecurityCloud.Types
                         "startThreatHunt",
                     }
                 },
+                {   "StartThreatHuntV2Input", new List<string> {
+                        "startBulkThreatHunt",
+                        "startThreatHuntV2",
+                    }
+                },
+                {   "StartTurboThreatHuntInput", new List<string> {
+                        "startTurboThreatHunt",
+                    }
+                },
                 {   "StartVolumeGroupMountInput", new List<string> {
                         "startVolumeGroupMount",
                     }
@@ -40356,6 +40891,7 @@ namespace RubrikSecurityCloud.Types
                         "hypervTopLevelDescendants",
                         "hypervVirtualMachines",
                         "investigationCsvDownloadLink",
+                        "iocFeedEntries",
                         "isAwsNativeEbsVolumeSnapshotRestorable",
                         "isAwsNativeRdsInstanceLaunchConfigurationValid",
                         "isAwsS3BucketNameAvailable",
@@ -40507,9 +41043,17 @@ namespace RubrikSecurityCloud.Types
                         "taskDetailGroupByConnection",
                         "teamChannelNameAvailable",
                         "threatHuntDetail",
+                        "threatHuntDetailV2",
+                        "threatHuntingObjectMatchedFiles",
+                        "threatHuntMatchedSnapshots",
+                        "threatHuntObjectMetrics",
                         "threatHuntResult",
                         "threatHunts",
                         "threatHuntSummary",
+                        "threatHuntSummaryV2",
+                        "threatMonitoringMatchedFileDetailsV2",
+                        "threatMonitoringMatchedFiles",
+                        "threatMonitoringMatchedObjects",
                         "totpConfigStatus",
                         "tprConfiguration",
                         "tprPublicConfiguration",
@@ -40624,6 +41168,27 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "TestWebhookInput", new List<string> {
                         "testWebhook",
+                    }
+                },
+                {   "ThreatHuntMatchedFilesSort", new List<string> {
+                        "threatHuntingObjectMatchedFiles",
+                    }
+                },
+                {   "ThreatHuntMatchesFound", new List<string> {
+                        "threatHuntSummaryV2",
+                    }
+                },
+                {   "ThreatHuntQuarantinedMatchType", new List<string> {
+                        "threatHuntingObjectMatchedFiles",
+                        "threatHuntSummaryV2",
+                    }
+                },
+                {   "ThreatHuntSummaryFiltersInput", new List<string> {
+                        "threatHuntSummaryV2",
+                    }
+                },
+                {   "ThreatHuntSummarySort", new List<string> {
+                        "threatHuntSummaryV2",
                     }
                 },
                 {   "TimeFilterInput", new List<string> {
@@ -40980,6 +41545,10 @@ namespace RubrikSecurityCloud.Types
                         "target",
                         "targetMapping",
                         "teamChannelNameAvailable",
+                        "threatHuntingObjectMatchedFiles",
+                        "threatHuntMatchedSnapshots",
+                        "threatMonitoringMatchedFileDetailsV2",
+                        "threatMonitoringMatchedFiles",
                         "tprPolicyDetail",
                         "updateClusterLocation",
                         "updateLdapIntegration",
@@ -41565,8 +42134,16 @@ namespace RubrikSecurityCloud.Types
                         "validateAzureCloudAccountExocomputeConfigurations",
                     }
                 },
+                {   "ValidateBulkThreatHuntInput", new List<string> {
+                        "validateBulkThreatHunt",
+                    }
+                },
                 {   "ValidateClusterLicenseCapacityInput", new List<string> {
                         "validateClusterLicenseCapacity",
+                    }
+                },
+                {   "ValidateIocEntryInput", new List<string> {
+                        "validateIocEntry",
                     }
                 },
                 {   "ValidateOracleAcoFileInput", new List<string> {
@@ -41862,6 +42439,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "[CloudAccountStatus]", new List<string> {
                         "allAzureCloudAccountSubscriptionsByFeature",
+                        "allAzureCloudAccountTenants",
                         "allGcpCloudAccountProjectsByFeature",
                         "azureCloudAccountTenant",
                         "azureCloudAccountTenantWithExoConfigs",
@@ -42051,6 +42629,10 @@ namespace RubrikSecurityCloud.Types
                         "hypervMounts",
                     }
                 },
+                {   "[IndicatorOfCompromiseKind]", new List<string> {
+                        "threatMonitoringMatchedObjects",
+                    }
+                },
                 {   "[IntegrationType]", new List<string> {
                         "allIntegrations",
                     }
@@ -42061,6 +42643,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "[Logging]", new List<string> {
                         "policyObjs",
+                    }
+                },
+                {   "[Long]", new List<string> {
+                        "threatHuntMatchedSnapshots",
                     }
                 },
                 {   "[MfaStatus]", new List<string> {
@@ -42225,6 +42811,7 @@ namespace RubrikSecurityCloud.Types
                 {   "[String]", new List<string> {
                         "addPolicyObjects",
                         "addRoleAssignments",
+                        "allAzureCloudAccountTenants",
                         "allGcpCloudAccountMissingPermissionsForAddition",
                         "allIssuesJobIds",
                         "allObjectsAlreadyAssignedToOrgs",
@@ -42259,6 +42846,8 @@ namespace RubrikSecurityCloud.Types
                         "sonarReportRow",
                         "startCrawl",
                         "threatHunts",
+                        "threatHuntSummaryV2",
+                        "threatMonitoringMatchedObjects",
                         "updateIpWhitelist",
                         "updateRoleAssignments",
                         "updateWhitelistedAnalyzers",
@@ -42277,6 +42866,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "[TargetMappingFilterInput]", new List<string> {
                         "allTargetMappings",
+                    }
+                },
+                {   "[ThreatFeedType]", new List<string> {
+                        "iocFeedEntries",
                     }
                 },
                 {   "[ThreatHuntMatchesFound]", new List<string> {
@@ -42526,6 +43119,7 @@ namespace RubrikSecurityCloud.Types
                 { "downloadExchangeSnapshotV2", "AsyncRequestStatus"},
                 { "downloadFilesetSnapshot", "AsyncRequestStatus"},
                 { "downloadFilesetSnapshotFromLocation", "AsyncRequestStatus"},
+                { "downloadFilesManagedVolumeSnapshotFromArchivalLocation", "AsyncRequestStatus"},
                 { "downloadFilesNutanixSnapshot", "AsyncRequestStatus"},
                 { "downloadFilesNutanixSnapshotFromArchivalLocation", "AsyncRequestStatus"},
                 { "downloadFromArchiveV2", "AsyncRequestStatus"},
@@ -43022,6 +43616,8 @@ namespace RubrikSecurityCloud.Types
                 { "downloadResultsCsv", "DownloadResultsCsvReply"},
                 { "downloadSlaWithReplicationCsv", "DownloadSlaWithReplicationCsvReply"},
                 { "downloadThreatHuntCsv", "DownloadThreatHuntCsvReply"},
+                { "downloadThreatHuntV2ResultsCsv", "DownloadThreatHuntV2CsvResponse"},
+                { "downloadTurboThreatHuntCsv", "DownloadTurboThreatHuntResultsCsvResponse"},
                 { "edgeWindowsToolLink", "EdgeWindowsToolLink"},
                 { "enableAutomaticFmdUpload", "EnableAutomaticFmdUploadReply"},
                 { "enableDisableAppConsistency", "EnableDisableAppConsistencyReply"},
@@ -43048,6 +43644,7 @@ namespace RubrikSecurityCloud.Types
                 { "minimumCdmVersionForFeatureSet", "FeatureListMinimumCdmVersionReply"},
                 { "featurePermissionForDataCenterRoleBasedArchival", "FeaturePermission"},
                 { "federatedLoginStatus", "FederatedLoginStatus"},
+                { "threatMonitoringMatchedFiles", "FileMatchConnection"},
                 { "objectFiles", "FileResultConnection"},
                 { "userActivities", "FileResultConnection"},
                 { "updateFileset", "FilesetDetail"},
@@ -43099,6 +43696,7 @@ namespace RubrikSecurityCloud.Types
                 { "o365UserSelfServiceInfo", "GetSelfServiceInfoForUserResp"},
                 { "smbConfiguration", "GetSmbConfigurationReply"},
                 { "getKorgTaskchainStatus", "GetTaskchainStatusReply"},
+                { "threatMonitoringObjectEnablementStats", "GetThreatMonitoringObjectEnablementStatsResponse"},
                 { "totpConfigStatus", "GetTotpStatusReply"},
                 { "userDetail", "GetUserDetailReply"},
                 { "userSessionManagementConfig", "GetUserSessionManagementConfigReply"},
@@ -43155,6 +43753,7 @@ namespace RubrikSecurityCloud.Types
                 { "inventoryRoot", "InventoryRoot"},
                 { "inventorySubHierarchyRoot", "InventorySubHierarchyRoot"},
                 { "investigationCsvDownloadLink", "InvestigationCsvDownloadLinkReply"},
+                { "iocFeedEntries", "IocFeedEntryConnection"},
                 { "isCloudClusterDiskUpgradeAvailable", "IsCloudClusterDiskUpgradeAvailableReply"},
                 { "checkCloudNativeLabelRuleNameUniqueness", "IsCloudNativeTagRuleNameUniqueReply"},
                 { "checkCloudNativeTagRuleNameUniqueness", "IsCloudNativeTagRuleNameUniqueReply"},
@@ -43190,6 +43789,7 @@ namespace RubrikSecurityCloud.Types
                 { "m365DirectoryObjectAttributes", "ListO365DirectoryObjectAttributesResp"},
                 { "mosaicStores", "ListStoreResponse"},
                 { "gcpNativeStoredDiskLocations", "ListStoredDiskLocationsReply"},
+                { "threatFeeds", "ListThreatFeedsResponse"},
                 { "mosaicSnapshots", "ListVersionResponse"},
                 { "mosaicVersions", "ListVersionResponse"},
                 { "globalLockoutConfig", "LockoutConfig"},
@@ -43572,9 +44172,12 @@ namespace RubrikSecurityCloud.Types
                 { "startAzureAdAppSetup", "StartAzureAdAppSetupReply"},
                 { "startAzureAdAppUpdate", "StartAzureAdAppUpdateReply"},
                 { "startAzureCloudAccountOauth", "StartAzureCloudAccountOauthReply"},
+                { "startBulkThreatHunt", "StartBulkThreatHuntReply"},
                 { "startClusterReportMigrationJob", "StartClusterReportMigrationJobReply"},
                 { "startCrawl", "StartCrawlReply"},
                 { "startThreatHunt", "StartThreatHuntReply"},
+                { "startThreatHuntV2", "StartThreatHuntV2Reply"},
+                { "startTurboThreatHunt", "StartTurboThreatHuntReply"},
                 { "stopJobInstance", "StopJobInstanceReply"},
                 { "azureStorageAccounts", "StorageAccountConnection"},
                 { "accountId", "String"},
@@ -43641,10 +44244,20 @@ namespace RubrikSecurityCloud.Types
                 { "testExistingWebhook", "TestExistingWebhookReply"},
                 { "testSyslogExportRule", "TestSyslogExportRuleReply"},
                 { "testWebhook", "TestWebhookReply"},
+                { "threatAnalyticsEnablement", "ThreatAnalyticsEnablement"},
                 { "threatHuntDetail", "ThreatHunt"},
                 { "threatHunts", "ThreatHuntConnection"},
+                { "threatHuntDetailV2", "ThreatHuntDetailsV2"},
+                { "threatHuntMatchedSnapshots", "ThreatHuntMatchedSnapshotsReply"},
+                { "threatHuntObjectMetrics", "ThreatHuntObjectMetricsReply"},
                 { "threatHuntResult", "ThreatHuntResult"},
+                { "threatHuntSummaryV2", "ThreatHuntResultObjectsSummaryConnection"},
                 { "threatHuntSummary", "ThreatHuntSummaryReply"},
+                { "threatHuntingObjectMatchedFiles", "ThreatHuntingObjectFileMatchConnection"},
+                { "threatMonitoringMatchedFileDetails", "ThreatMonitoringFileMatchDetailsReply"},
+                { "threatMonitoringMatchedFileDetailsV2", "ThreatMonitoringFileMatchDetailsV2"},
+                { "threatMonitoringMatchedObjects", "ThreatMonitoringMatchedObjectConnection"},
+                { "threatMonitoringObjects", "ThreatMonitoringObjects"},
                 { "tprConfiguration", "TprConfiguration"},
                 { "tprPolicyDetail", "TprPolicyDetail"},
                 { "tprPublicConfiguration", "TprPublicConfiguration"},
@@ -43746,7 +44359,9 @@ namespace RubrikSecurityCloud.Types
                 { "validateAzureNativeSqlDatabaseDbNameForExport", "ValidateAzureNativeSqlDatabaseDbNameForExportReply"},
                 { "validateAzureNativeSqlManagedInstanceDbNameForExport", "ValidateAzureNativeSqlManagedInstanceDbNameForExportReply"},
                 { "validateAzureCloudAccountExocomputeConfigurations", "ValidateAzureSubnetsForCloudAccountExocomputeReply"},
+                { "validateBulkThreatHunt", "ValidateBulkThreatHuntResponse"},
                 { "isCloudNativeFileRecoveryFeasible", "ValidateCloudNativeFileRecoveryFeasibilityReply"},
+                { "validateIocEntry", "ValidateEntryReply"},
                 { "validateOracleAcoFile", "ValidateOracleAcoFileReply"},
                 { "validateOrgName", "ValidateOrgNameReply"},
                 { "cloudClusterRecoveryValidation", "ValidationRecoveryReply"},
@@ -44220,6 +44835,7 @@ namespace RubrikSecurityCloud.Types
             Syslog,
             Tape,
             Threat,
+            ThreatHunt,
             Vcenter,
             Vmware,
             Vsphere,
@@ -44350,6 +44966,8 @@ namespace RubrikSecurityCloud.Types
             { "New-RscMutationTape", ApiDomainName.Tape},
             { "New-RscQueryThreat", ApiDomainName.Threat },
             { "New-RscMutationThreat", ApiDomainName.Threat},
+            { "New-RscQueryThreatHunt", ApiDomainName.ThreatHunt },
+            { "New-RscMutationThreatHunt", ApiDomainName.ThreatHunt},
             { "New-RscQueryVcenter", ApiDomainName.Vcenter },
             { "New-RscMutationVcenter", ApiDomainName.Vcenter},
             { "New-RscQueryVmware", ApiDomainName.Vmware },
@@ -44956,6 +45574,8 @@ namespace RubrikSecurityCloud.Types
                     "SapHanaSnapshotsForPointInTimeRecovery",
                     "SnapshotResultsCsv",
                     "ThreatHuntCsv",
+                    "ThreatHuntV2ResultsCsv",
+                    "TurboThreatHuntCsv",
                     "VolumeGroupSnapshotFiles",
                     "VolumeGroupSnapshotFromLocation",
                     }
@@ -45220,6 +45840,7 @@ namespace RubrikSecurityCloud.Types
                     "Delete",
                     "DeleteSnapshotExport",
                     "DownloadFiles",
+                    "DownloadFilesSnapshotFromArchivalLocation",
                     "DownloadFromLocation",
                     "EndSnapshot",
                     "ExportSnapshot",
@@ -45389,6 +46010,7 @@ namespace RubrikSecurityCloud.Types
                     "InventoryWorkloads",
                     "InvestigationCsvDownloadLink",
                     "InviteSsoGroup",
+                    "IocFeedEntries",
                     "IpWhitelist",
                     "IsIpmiEnabled",
                     "IsLoggedIntoRubrikSupportPortal",
@@ -45583,6 +46205,7 @@ namespace RubrikSecurityCloud.Types
                     "UsersOnAccountList",
                     "ValidateAdForestTransition",
                     "ValidateAndSaveCustomerKmsInfo",
+                    "ValidateIocEntry",
                     "ValidateOrgName",
                     "VcdOrgs",
                     "VcdTopLevelDescendants",
@@ -46239,13 +46862,35 @@ namespace RubrikSecurityCloud.Types
                 {
                     ApiDomainName.Threat,
                     new List<string> {
-                    "CancelHunt",
+                    "AnalyticsEnablement",
                     "EnableMonitoring",
-                    "HuntDetail",
-                    "HuntResult",
-                    "HuntSummary",
-                    "Hunts",
-                    "StartHunt",
+                    "Feeds",
+                    "MonitoringMatchedFileDetails",
+                    "MonitoringMatchedFileDetailsV2",
+                    "MonitoringMatchedFiles",
+                    "MonitoringMatchedObjects",
+                    "MonitoringObjectEnablementStats",
+                    "MonitoringObjects",
+                    }
+                },
+                {
+                    ApiDomainName.ThreatHunt,
+                    new List<string> {
+                    "Cancel",
+                    "Detail",
+                    "DetailV2",
+                    "IngObjectMatchedFiles",
+                    "MatchedSnapshots",
+                    "ObjectMetrics",
+                    "Result",
+                    "S",
+                    "Start",
+                    "StartBulk",
+                    "StartTurbo",
+                    "StartV2",
+                    "Summary",
+                    "SummaryV2",
+                    "ValidateBulk",
                     }
                 },
                 {

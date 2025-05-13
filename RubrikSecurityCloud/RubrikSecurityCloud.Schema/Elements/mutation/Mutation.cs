@@ -7633,6 +7633,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? DownloadFilesManagedVolumeSnapshotFromArchivalLocation
+        // GraphQL -> downloadFilesManagedVolumeSnapshotFromArchivalLocation: AsyncRequestStatus! (type)
+        public static string DownloadFilesManagedVolumeSnapshotFromArchivalLocation(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "downloadFilesManagedVolumeSnapshotFromArchivalLocation" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadFilesManagedVolumeSnapshotFromArchivalLocationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? DownloadFilesNutanixSnapshot
         // GraphQL -> downloadFilesNutanixSnapshot: AsyncRequestStatus! (type)
         public static string DownloadFilesNutanixSnapshot(object fsObj)
@@ -8169,6 +8187,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new DownloadThreatHuntCsvReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> DownloadThreatHuntV2CsvResponse? DownloadThreatHuntV2ResultsCsv
+        // GraphQL -> downloadThreatHuntV2ResultsCsv: DownloadThreatHuntV2CsvResponse! (type)
+        public static string DownloadThreatHuntV2ResultsCsv(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "downloadThreatHuntV2ResultsCsv" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadThreatHuntV2ResultsCsvFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DownloadThreatHuntV2CsvResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -11521,6 +11557,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> StartBulkThreatHuntReply? StartBulkThreatHunt
+        // GraphQL -> startBulkThreatHunt: StartBulkThreatHuntReply! (type)
+        public static string StartBulkThreatHunt(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startBulkThreatHunt" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartBulkThreatHuntFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartBulkThreatHuntReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> BatchAsyncJobStatus? StartCloudNativeSnapshotsIndexJob
         // GraphQL -> startCloudNativeSnapshotsIndexJob: BatchAsyncJobStatus! (type)
         public static string StartCloudNativeSnapshotsIndexJob(object fsObj)
@@ -11931,6 +11985,42 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new StartThreatHuntReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> StartThreatHuntV2Reply? StartThreatHuntV2
+        // GraphQL -> startThreatHuntV2: StartThreatHuntV2Reply! (type)
+        public static string StartThreatHuntV2(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startThreatHuntV2" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartThreatHuntV2FieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartThreatHuntV2Reply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> StartTurboThreatHuntReply? StartTurboThreatHunt
+        // GraphQL -> startTurboThreatHunt: StartTurboThreatHuntReply! (type)
+        public static string StartTurboThreatHunt(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startTurboThreatHunt" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartTurboThreatHuntFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartTurboThreatHuntReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

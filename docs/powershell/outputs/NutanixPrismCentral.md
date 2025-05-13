@@ -43,6 +43,8 @@ Nutanix Prism Central details.
   - Latest user note information.
 - replicatedObjectCount: System.Int32
   - The number of objects either replicated by this object or related to this object by replication.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - name: System.String
@@ -73,6 +75,8 @@ Nutanix Prism Central details.
   - Organizations to which this hierarchy object belongs.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
 - duplicateObjectsAbsoluteCount: System.Int32
   - Determine the total count of duplicate objects for the Multi Cluster Object, regardless of the user's RBAC permissions.
 - duplicateObjects: list of CdmHierarchyObjects

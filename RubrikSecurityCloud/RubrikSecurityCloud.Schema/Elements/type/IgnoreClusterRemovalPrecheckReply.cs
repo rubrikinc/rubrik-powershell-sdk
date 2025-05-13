@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ignorePrecheckTime")]
         public DateTime? IgnorePrecheckTime { get; set; }
 
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean! (scalar)
+        [JsonProperty("isAirGapped")]
+        public System.Boolean? IsAirGapped { get; set; }
+
         //      C# -> System.Boolean? IsDisconnected
         // GraphQL -> isDisconnected: Boolean! (scalar)
         [JsonProperty("isDisconnected")]
@@ -52,6 +57,7 @@ namespace RubrikSecurityCloud.Types
     public IgnoreClusterRemovalPrecheckReply Set(
         System.Boolean? CanIgnorePrecheck = null,
         DateTime? IgnorePrecheckTime = null,
+        System.Boolean? IsAirGapped = null,
         System.Boolean? IsDisconnected = null,
         DateTime? LastConnectionTime = null
     ) 
@@ -61,6 +67,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IgnorePrecheckTime != null ) {
             this.IgnorePrecheckTime = IgnorePrecheckTime;
+        }
+        if ( IsAirGapped != null ) {
+            this.IsAirGapped = IsAirGapped;
         }
         if ( IsDisconnected != null ) {
             this.IsDisconnected = IsDisconnected;
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ignorePrecheckTime\n" ;
             } else {
                 s += ind + "ignorePrecheckTime\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean! (scalar)
+        if (this.IsAirGapped != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAirGapped\n" ;
+            } else {
+                s += ind + "isAirGapped\n" ;
             }
         }
         //      C# -> System.Boolean? IsDisconnected
@@ -158,6 +176,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IgnorePrecheckTime != null && ec.Excludes("ignorePrecheckTime",true))
         {
             this.IgnorePrecheckTime = null;
+        }
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean! (scalar)
+        if (ec.Includes("isAirGapped",true))
+        {
+            if(this.IsAirGapped == null) {
+
+                this.IsAirGapped = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAirGapped != null && ec.Excludes("isAirGapped",true))
+        {
+            this.IsAirGapped = null;
         }
         //      C# -> System.Boolean? IsDisconnected
         // GraphQL -> isDisconnected: Boolean! (scalar)

@@ -1,0 +1,33 @@
+### ThreatMonitoringFileMatchDetailsReply
+Response to ThreatMonitoringFileMatchDetails.
+
+- matchType: IndicatorOfCompromiseKind
+  - Type of threat match.
+- intelSource: System.String
+  - Source of the rule that matched.
+- isQuarantinedInFirstObservedSnapshot: System.Boolean
+  - Specifies if the file is quarantined.
+- detectedSnapshotDate: DateTime
+  - Snapshot date where the match was first detected.
+- firstDetectedSnapshotFid: System.String
+  - FID of the snapshot where the match was first detected.
+- matchedFileMd5: System.String
+  - MD5 hash of the matched file.
+- matchedFileSha1: System.String
+  - SHA1 hash of the matched file.
+- matchedFileSha256: System.String
+  - SHA256 hash of the matched file.
+- iocRuleName: System.String
+  - Name of the rule that matched.
+- iocRuleAuthor: System.String
+  - Author of the rule that matched.
+- iocRuleDescription: System.String
+  - Description of the rule that matched.
+- filePath: System.String
+  - Filepath that was matched.
+- fileName: System.String
+  - Name of the file that was matched.
+- objectFid: System.String
+  - FID of the object.
+- cluster: Cluster
+  - The Rubrik cluster associated with the workload.

@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
+        // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        [JsonProperty("cdmPendingObjectPauseAssignment")]
+        public PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -215,6 +220,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> newestSnapshot: CdmSnapshot (type)
         [JsonProperty("newestSnapshot")]
         public CdmSnapshot? NewestSnapshot { get; set; }
+
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        [JsonProperty("objectPauseStatus")]
+        public ObjectPauseStatus? ObjectPauseStatus { get; set; }
 
         //      C# -> CdmSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: CdmSnapshot (type)
@@ -407,6 +417,7 @@ namespace RubrikSecurityCloud.Types
 
     public SapHanaSystem Set(
         List<Operation>? AuthorizedOperations = null,
+        PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SapHanaSystemStatus? Status = null,
@@ -445,6 +456,7 @@ namespace RubrikSecurityCloud.Types
         CdmSnapshot? NewestIndexedSnapshot = null,
         CdmSnapshot? NewestReplicatedSnapshot = null,
         CdmSnapshot? NewestSnapshot = null,
+        ObjectPauseStatus? ObjectPauseStatus = null,
         CdmSnapshot? OldestSnapshot = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         SapHanaSystemPhysicalChildTypeConnection? PhysicalChildConnection = null,
@@ -461,6 +473,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( CdmPendingObjectPauseAssignment != null ) {
+            this.CdmPendingObjectPauseAssignment = CdmPendingObjectPauseAssignment;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -576,6 +591,9 @@ namespace RubrikSecurityCloud.Types
         if ( NewestSnapshot != null ) {
             this.NewestSnapshot = NewestSnapshot;
         }
+        if ( ObjectPauseStatus != null ) {
+            this.ObjectPauseStatus = ObjectPauseStatus;
+        }
         if ( OldestSnapshot != null ) {
             this.OldestSnapshot = OldestSnapshot;
         }
@@ -633,6 +651,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
+        // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        if (this.CdmPendingObjectPauseAssignment != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmPendingObjectPauseAssignment\n" ;
+            } else {
+                s += ind + "cdmPendingObjectPauseAssignment\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -1039,6 +1066,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        if (this.ObjectPauseStatus != null) {
+            var fspec = this.ObjectPauseStatus.AsFieldSpec(conf.Child("objectPauseStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectPauseStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> CdmSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: CdmSnapshot (type)
         if (this.OldestSnapshot != null) {
@@ -1206,6 +1245,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
+        // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        if (ec.Includes("cdmPendingObjectPauseAssignment",true))
+        {
+            if(this.CdmPendingObjectPauseAssignment == null) {
+
+                this.CdmPendingObjectPauseAssignment = new PendingObjectPauseAssignmentStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmPendingObjectPauseAssignment != null && ec.Excludes("cdmPendingObjectPauseAssignment",true))
+        {
+            this.CdmPendingObjectPauseAssignment = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
@@ -1910,6 +1966,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NewestSnapshot != null && ec.Excludes("newestSnapshot",false))
         {
             this.NewestSnapshot = null;
+        }
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        if (ec.Includes("objectPauseStatus",false))
+        {
+            if(this.ObjectPauseStatus == null) {
+
+                this.ObjectPauseStatus = new ObjectPauseStatus();
+                this.ObjectPauseStatus.ApplyExploratoryFieldSpec(ec.NewChild("objectPauseStatus"));
+
+            } else {
+
+                this.ObjectPauseStatus.ApplyExploratoryFieldSpec(ec.NewChild("objectPauseStatus"));
+
+            }
+        }
+        else if (this.ObjectPauseStatus != null && ec.Excludes("objectPauseStatus",false))
+        {
+            this.ObjectPauseStatus = null;
         }
         //      C# -> CdmSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: CdmSnapshot (type)

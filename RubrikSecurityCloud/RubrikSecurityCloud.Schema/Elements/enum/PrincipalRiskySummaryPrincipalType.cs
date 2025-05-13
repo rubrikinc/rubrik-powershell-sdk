@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PUBLIC")]
         PUBLIC,
 
+        [EnumMember(Value = "ROLE")]
+        ROLE,
+
         [EnumMember(Value = "SERVICE_ACCOUNT")]
         SERVICE_ACCOUNT,
 

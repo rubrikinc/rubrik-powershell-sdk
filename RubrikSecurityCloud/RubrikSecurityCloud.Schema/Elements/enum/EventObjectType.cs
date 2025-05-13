@@ -171,6 +171,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_VM")]
         HYPERV_VM,
 
+        [EnumMember(Value = "INFORMIX")]
+        INFORMIX,
+
         [EnumMember(Value = "INTEL_FEED")]
         INTEL_FEED,
 

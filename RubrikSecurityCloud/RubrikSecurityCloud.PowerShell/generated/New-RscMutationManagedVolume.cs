@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 11
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Managed Volume' API domain:
-    /// Add, BeginSnapshot, Delete, DeleteSnapshotExport, DownloadFiles, DownloadFromLocation, EndSnapshot, ExportSnapshot, Resize, TakeOnDemandSnapshot, or Update.
+    /// Add, BeginSnapshot, Delete, DeleteSnapshotExport, DownloadFiles, DownloadFilesSnapshotFromArchivalLocation, DownloadFromLocation, EndSnapshot, ExportSnapshot, Resize, TakeOnDemandSnapshot, or Update.
     /// </summary>
     /// <description>
     /// New-RscMutationManagedVolume creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 11 operations
+    /// There are 12 operations
     /// in the 'Managed Volume' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Add, BeginSnapshot, Delete, DeleteSnapshotExport, DownloadFiles, DownloadFromLocation, EndSnapshot, ExportSnapshot, Resize, TakeOnDemandSnapshot, or Update.
+    /// one of: Add, BeginSnapshot, Delete, DeleteSnapshotExport, DownloadFiles, DownloadFilesSnapshotFromArchivalLocation, DownloadFromLocation, EndSnapshot, ExportSnapshot, Resize, TakeOnDemandSnapshot, or Update.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -347,6 +347,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DownloadFilesSnapshotFromArchivalLocation operation
+    /// of the 'Managed Volume' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    ManagedVolume
+    /// # API Operation: DownloadFilesSnapshotFromArchivalLocation
+    /// 
+    /// $query = New-RscMutationManagedVolume -Operation DownloadFilesSnapshotFromArchivalLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		legalHoldDownloadConfig = @{
+    /// 			# REQUIRED
+    /// 			isLegalHoldDownload = $someBoolean
+    /// 		}
+    /// 		# REQUIRED
+    /// 		paths = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -712,6 +757,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Delete",
                 "DeleteSnapshotExport",
                 "DownloadFiles",
+                "DownloadFilesSnapshotFromArchivalLocation",
                 "DownloadFromLocation",
                 "EndSnapshot",
                 "ExportSnapshot",
@@ -747,6 +793,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DownloadFiles":
                         this.ProcessRecord_DownloadFiles();
+                        break;
+                    case "DownloadFilesSnapshotFromArchivalLocation":
+                        this.ProcessRecord_DownloadFilesSnapshotFromArchivalLocation();
                         break;
                     case "DownloadFromLocation":
                         this.ProcessRecord_DownloadFromLocation();
@@ -819,6 +868,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DownloadFiles";
             // Create new graphql operation downloadManagedVolumeFiles
             InitMutationDownloadManagedVolumeFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadFilesManagedVolumeSnapshotFromArchivalLocation.
+        internal void ProcessRecord_DownloadFilesSnapshotFromArchivalLocation()
+        {
+            this._logger.name += " -DownloadFilesSnapshotFromArchivalLocation";
+            // Create new graphql operation downloadFilesManagedVolumeSnapshotFromArchivalLocation
+            InitMutationDownloadFilesManagedVolumeSnapshotFromArchivalLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1117,6 +1175,43 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadFilesManagedVolumeSnapshotFromArchivalLocation(input: CreateMVDownloadFilesFromArchivalLocationJobInput!): AsyncRequestStatus!
+        internal void InitMutationDownloadFilesManagedVolumeSnapshotFromArchivalLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateMVDownloadFilesFromArchivalLocationJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadFilesManagedVolumeSnapshotFromArchivalLocation",
+                "($input: CreateMVDownloadFilesFromArchivalLocationJobInput!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadFilesManagedVolumeSnapshotFromArchivalLocation,
+                Mutation.DownloadFilesManagedVolumeSnapshotFromArchivalLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = $someBoolean
+		}
+		# REQUIRED
+		paths = @(
+			$someString
+		)
+	}
+	# REQUIRED
+	locationId = $someString
+	# REQUIRED
+	snapshotId = $someString
 }"
             );
         }

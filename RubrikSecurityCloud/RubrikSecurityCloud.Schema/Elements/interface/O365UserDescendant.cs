@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("rscNativeObjectPendingSla")]
         CompactSlaDomain? RscNativeObjectPendingSla { get; set; }
 
+        //      C# -> PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment
+        // GraphQL -> rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        [JsonProperty("rscPendingObjectPauseAssignment")]
+        PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -98,6 +103,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> securityMetadata: SecurityMetadata (type)
         [JsonProperty("securityMetadata")]
         SecurityMetadata? SecurityMetadata { get; set; }
+
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        [JsonProperty("objectPauseStatus")]
+        ObjectPauseStatus? ObjectPauseStatus { get; set; }
 
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)

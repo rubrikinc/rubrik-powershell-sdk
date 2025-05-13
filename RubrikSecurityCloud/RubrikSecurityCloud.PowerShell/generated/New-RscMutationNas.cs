@@ -379,6 +379,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldGrantSmbShareRootAccess = $someBoolean
     /// 		# OPTIONAL
+    /// 		isNetAppMetroClusterEnabled = $someBoolean
+    /// 		# OPTIONAL
     /// 		shouldGrantNfsShareRootAccess = $someBoolean
     /// 		# REQUIRED
     /// 		nasVendorType = $someNasVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NasVendorType]) for enum values.
@@ -426,6 +428,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			apiUsername = $someString
     /// 			# OPTIONAL
     /// 			certificateId = $someString
+    /// 			# OPTIONAL
+    /// 			areApiCredentialsPermanent = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		nutanixFileServerParameters = @{
@@ -538,6 +542,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldGrantSmbShareRootAccess = $someBoolean
     /// 		# OPTIONAL
+    /// 		isNetAppMetroClusterEnabled = $someBoolean
+    /// 		# OPTIONAL
     /// 		shouldGrantNfsShareRootAccess = $someBoolean
     /// 		# OPTIONAL
     /// 		genericNasSystemParameters = @{
@@ -563,6 +569,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			apiUsername = $someString
     /// 			# OPTIONAL
     /// 			certificateId = $someString
+    /// 			# OPTIONAL
+    /// 			areApiCredentialsPermanent = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		nasFlashBladeApiCredentials = @{
@@ -1045,6 +1053,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldGrantSmbShareRootAccess = $someBoolean
 		# OPTIONAL
+		isNetAppMetroClusterEnabled = $someBoolean
+		# OPTIONAL
 		shouldGrantNfsShareRootAccess = $someBoolean
 		# REQUIRED
 		nasVendorType = $someNasVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NasVendorType]) for enum values.
@@ -1092,6 +1102,8 @@ $query.Var.input = @{
 			apiUsername = $someString
 			# OPTIONAL
 			certificateId = $someString
+			# OPTIONAL
+			areApiCredentialsPermanent = $someBoolean
 		}
 		# OPTIONAL
 		nutanixFileServerParameters = @{
@@ -1188,6 +1200,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldGrantSmbShareRootAccess = $someBoolean
 		# OPTIONAL
+		isNetAppMetroClusterEnabled = $someBoolean
+		# OPTIONAL
 		shouldGrantNfsShareRootAccess = $someBoolean
 		# OPTIONAL
 		genericNasSystemParameters = @{
@@ -1213,6 +1227,8 @@ $query.Var.input = @{
 			apiUsername = $someString
 			# OPTIONAL
 			certificateId = $someString
+			# OPTIONAL
+			areApiCredentialsPermanent = $someBoolean
 		}
 		# OPTIONAL
 		nasFlashBladeApiCredentials = @{

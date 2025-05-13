@@ -75,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accessibleBySidsRepresentationShortForm")]
         public System.String? AccessibleBySidsRepresentationShortForm { get; set; }
 
+        //      C# -> System.String? CreatedBy
+        // GraphQL -> createdBy: String! (scalar)
+        [JsonProperty("createdBy")]
+        public System.String? CreatedBy { get; set; }
+
         //      C# -> System.Int64? CreationTime
         // GraphQL -> creationTime: Long! (scalar)
         [JsonProperty("creationTime")]
@@ -109,6 +114,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lastScanTime: Long! (scalar)
         [JsonProperty("lastScanTime")]
         public System.Int64? LastScanTime { get; set; }
+
+        //      C# -> System.String? ModifiedBy
+        // GraphQL -> modifiedBy: String! (scalar)
+        [JsonProperty("modifiedBy")]
+        public System.String? ModifiedBy { get; set; }
 
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)
@@ -321,6 +331,7 @@ namespace RubrikSecurityCloud.Types
         HierarchyObject? Snappable = null,
         System.String? AccessibleBySidsRepresentation = null,
         System.String? AccessibleBySidsRepresentationShortForm = null,
+        System.String? CreatedBy = null,
         System.Int64? CreationTime = null,
         System.String? Directory = null,
         System.String? Filename = null,
@@ -328,6 +339,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? LastAccessTime = null,
         System.Int64? LastModifiedTime = null,
         System.Int64? LastScanTime = null,
+        System.String? ModifiedBy = null,
         System.String? NativePath = null,
         System.Int64? NumActivities = null,
         System.Int64? NumActivitiesDelta = null,
@@ -401,6 +413,9 @@ namespace RubrikSecurityCloud.Types
         if ( AccessibleBySidsRepresentationShortForm != null ) {
             this.AccessibleBySidsRepresentationShortForm = AccessibleBySidsRepresentationShortForm;
         }
+        if ( CreatedBy != null ) {
+            this.CreatedBy = CreatedBy;
+        }
         if ( CreationTime != null ) {
             this.CreationTime = CreationTime;
         }
@@ -421,6 +436,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LastScanTime != null ) {
             this.LastScanTime = LastScanTime;
+        }
+        if ( ModifiedBy != null ) {
+            this.ModifiedBy = ModifiedBy;
         }
         if ( NativePath != null ) {
             this.NativePath = NativePath;
@@ -653,6 +671,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "accessibleBySidsRepresentationShortForm\n" ;
             }
         }
+        //      C# -> System.String? CreatedBy
+        // GraphQL -> createdBy: String! (scalar)
+        if (this.CreatedBy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "createdBy\n" ;
+            } else {
+                s += ind + "createdBy\n" ;
+            }
+        }
         //      C# -> System.Int64? CreationTime
         // GraphQL -> creationTime: Long! (scalar)
         if (this.CreationTime != null) {
@@ -714,6 +741,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "lastScanTime\n" ;
             } else {
                 s += ind + "lastScanTime\n" ;
+            }
+        }
+        //      C# -> System.String? ModifiedBy
+        // GraphQL -> modifiedBy: String! (scalar)
+        if (this.ModifiedBy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "modifiedBy\n" ;
+            } else {
+                s += ind + "modifiedBy\n" ;
             }
         }
         //      C# -> System.String? NativePath
@@ -1322,6 +1358,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AccessibleBySidsRepresentationShortForm = null;
         }
+        //      C# -> System.String? CreatedBy
+        // GraphQL -> createdBy: String! (scalar)
+        if (ec.Includes("createdBy",true))
+        {
+            if(this.CreatedBy == null) {
+
+                this.CreatedBy = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedBy != null && ec.Excludes("createdBy",true))
+        {
+            this.CreatedBy = null;
+        }
         //      C# -> System.Int64? CreationTime
         // GraphQL -> creationTime: Long! (scalar)
         if (ec.Includes("creationTime",true))
@@ -1440,6 +1493,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LastScanTime != null && ec.Excludes("lastScanTime",true))
         {
             this.LastScanTime = null;
+        }
+        //      C# -> System.String? ModifiedBy
+        // GraphQL -> modifiedBy: String! (scalar)
+        if (ec.Includes("modifiedBy",true))
+        {
+            if(this.ModifiedBy == null) {
+
+                this.ModifiedBy = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ModifiedBy != null && ec.Excludes("modifiedBy",true))
+        {
+            this.ModifiedBy = null;
         }
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)

@@ -19,5 +19,6 @@ Type of the Active Directory object.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_MS_DS_PASSWORD_SETTINGS_CONTAINER - Active Directory msDS-PasswordSettingsContainer object type.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_MS_FVE_RECOVERY_INFORMATION - Active Directory MsFVERecovery information object type.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_ORGANIZATION_UNIT - Active Directory organization unit.
+- ACTIVE_DIRECTORY_OBJECT_TYPE_SERVICE_CONNECTION_POINT
 - ACTIVE_DIRECTORY_OBJECT_TYPE_UNKNOWN - Unknown object type.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_USER - Active Directory user object type.

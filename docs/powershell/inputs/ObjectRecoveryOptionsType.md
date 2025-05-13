@@ -9,3 +9,5 @@ Configuration to retrieve Azure AD object recovery.
   - Specifies the recovery option of an Azure AD user.
 - conditionalAccessPolicyRecoveryOption: ConditionalAccessPolicyRecoveryOption
   - Specifies the recovery option of Azure AD conditional access policy.
+- administrativeUnitRecoveryOption: AdministrativeUnitRecoveryOption
+  - Specifies the recovery option for an Azure AD administrative unit.
