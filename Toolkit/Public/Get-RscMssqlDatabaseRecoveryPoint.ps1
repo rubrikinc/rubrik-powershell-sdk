@@ -71,8 +71,9 @@ function Get-RscMssqlDatabaseRecoveryPoint {
             $RecoveryDateTime = $LatestRecoveryRange[0].EndTime.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
         }
         if ($PSBoundParameters.ContainsKey('LastFull')) {
-            $RubrikSnapshot = Get-RscSnapshot -SnappableId $RscMssqlDatabase.id  | Sort-Object date -Descending | Select-object -First 1
-            $RecoveryDateTime = $(Get-Date $RubrikSnapshot.Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
+            $RubrikSnapshot = $RscMssqlDatabase| Get-RscSnapshot | Sort-Object date -Descending | Select-object -First 1
+            $endBackupTime = [datetime]::UnixEpoch.AddSeconds(($RubrikSnapshot.MssqlAppMetadata.EndBackupTimestampMs / 1000))
+            $RecoveryDateTime = $(Get-Date $endBackupTime).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
         }
         if ($PSBoundParameters.ContainsKey('RestoreTime')) {
             $RawRestoreDate = (get-date -Date $RestoreTime)
