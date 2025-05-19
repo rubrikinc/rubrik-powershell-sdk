@@ -6,6 +6,10 @@ New Features:
 
 Fixes:
 
+- `Get-RscMssqlDatabaseRecoveryPoint -LastFull` was previously returning the snapshot date, which is not the same as the recovery date, resulting in recoveries that would still perform log recoveries in addition to the snapshot recovery. The cmdlet has been updated to get use the correct time property.
+
+- `Get-RscSnapshot` has been updated to include `MssqlAppMetadata.EndBackupTimestampMs`, needed to get the SQL recovery time for snapshot restores. The cmdlet has also been refactored to make future modifications easier.
+
 Breaking Changes:
 
 ## Version 1.12.7
