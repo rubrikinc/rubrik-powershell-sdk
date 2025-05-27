@@ -74,6 +74,9 @@ namespace RubrikSecurityCloud
             // partial matches
             {"status", new List<string>{ "cdmRbacMigrationStatus", "eosStatus" } },
             {"state", null },
+            // TODO (SPARK-): Remove these entries once `OBJECT_PROTECTION_PAUSE` FF is GA
+            {"^cdmPendingObjectPauseAssignment$", new List<string>{ "cdmPendingObjectPauseAssignment" } },
+            {"^rscPendingObjectPauseAssignment$", new List<string>{ "rscPendingObjectPauseAssignment" } },
         };
 
         /// <summary>
