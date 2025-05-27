@@ -345,6 +345,11 @@ namespace RubrikSecurityCloud
                     string propertyName = inputObjProperty.Name;
                     try
                     {
+                        if (Config.FieldsToSkip.Contains(propertyName))
+                        {
+                            inputObjProperty.SetValue(inputObject, null);
+                            continue;
+                        }
                         Type basePropertyType = GetNullableUnderlyingType(inputObjProperty);
 
                         if (IsNullableEnum(inputObjProperty))
@@ -356,7 +361,7 @@ namespace RubrikSecurityCloud
                         {
                             inputObjProperty.SetValue(inputObject, InitializeSimpleValue(basePropertyType));
                         }
-                        
+
                         else if (basePropertyType.IsClass && maxDepth > 0)
                         {
                             //Check if the property is a list
@@ -386,13 +391,13 @@ namespace RubrikSecurityCloud
                                                 testList.Add(testItem);
                                                 compatInterfaceReturned = true;
                                             }
-                                            catch(Exception ex)
+                                            catch (Exception ex)
                                             {
                                                 if (retryCount >= 10) continue;
                                                 retryCount++;
-                                                Console.WriteLine($"Concrete class not suitable, "+
+                                                Console.WriteLine($"Concrete class not suitable, " +
                                                     $"trying again. Retries: {retryCount}." +
-                                                    $" MESSAGE: { ex.Message}");
+                                                    $" MESSAGE: {ex.Message}");
 
                                                 compatInterfaceReturned = false;
                                             }
@@ -421,7 +426,7 @@ namespace RubrikSecurityCloud
                                             }
                                         }
                                     }
-                                    
+
                                     list.Add(item);
                                     inputObjProperty.SetValue(inputObject, list);
                                 }
@@ -446,7 +451,7 @@ namespace RubrikSecurityCloud
                                 int nextDepth = currentDepth + 1;
                                 item?.InitializeToDefaultValues(maxDepth, nextDepth);
                             }
-                            inputObjProperty.SetValue(inputObject, item);       
+                            inputObjProperty.SetValue(inputObject, item);
                         }
                     }
                     catch (Exception ex)

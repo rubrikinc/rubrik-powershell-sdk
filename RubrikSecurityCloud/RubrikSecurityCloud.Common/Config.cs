@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -46,6 +47,16 @@ namespace RubrikSecurityCloud
         public static uint ApiClientTimeOutMinutes = 6;
 
         /// <summary>
+        /// List of fields that should be not be selected for consumption
+        /// </summary>
+        /// TODO (SPARK-548179): Unskip these fields once it reaches GA.
+        public static readonly HashSet<string> FieldsToSkip = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "CdmPendingObjectPauseAssignment",
+            "RscPendingObjectPauseAssignment"
+        };
+
+        /// <summary>
         /// Default profile leaf pattern. Keys are patterns to match against
         /// leaf node names. Values are lists of exceptions to the pattern.
         /// </summary>
@@ -74,9 +85,6 @@ namespace RubrikSecurityCloud
             // partial matches
             {"status", new List<string>{ "cdmRbacMigrationStatus", "eosStatus" } },
             {"state", null },
-            // TODO (SPARK-): Remove these entries once `OBJECT_PROTECTION_PAUSE` FF is GA
-            {"^cdmPendingObjectPauseAssignment$", new List<string>{ "cdmPendingObjectPauseAssignment" } },
-            {"^rscPendingObjectPauseAssignment$", new List<string>{ "rscPendingObjectPauseAssignment" } },
         };
 
         /// <summary>
