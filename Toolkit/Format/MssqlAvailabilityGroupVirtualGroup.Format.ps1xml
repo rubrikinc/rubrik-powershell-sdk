@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+    <ViewDefinitions>
+        <View>
+            <Name>RubrikSecurityCloudTypesAGVirtualGroup</Name>
+            <ViewSelectedBy>
+                <TypeName>RubrikSecurityCloud.Types.MssqlAvailabilityGroupVirtualGroup</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader><Label>Name</Label><Width>35</Width><Alignment>Left</Alignment></TableColumnHeader>
+                    <TableColumnHeader><Label>Groups</Label><Width>50</Width><Alignment>Left</Alignment></TableColumnHeader>
+                    <TableColumnHeader><Label>LinkedFids</Label><Width>80</Width><Alignment>Left</Alignment></TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem><PropertyName>Name</PropertyName></TableColumnItem>
+                            <TableColumnItem><ScriptBlock>$_.Groups.name</ScriptBlock></TableColumnItem>
+                            <TableColumnItem><PropertyName>LinkedFids</PropertyName></TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>
