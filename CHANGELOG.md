@@ -4,11 +4,21 @@
 
 New Features:
 
+Multi-DC MSSQL database management
+
+Manage the protection for these multi-DC replicas as a single linked group. Two new cmdlets have been introduced for this:
+
+`Get-RscMssqlLinkedAvailabilityGroup` - This cmdlet will show the linked status for any replica availability groups across multiple Rubrik clusters.
+
+`Protect-RscLinkedWorkload` - This cmdlet manages linking replica availability groups or databases and SLA assignment for the linked group.
+
 Fixes:
 
 - `Get-RscMssqlDatabaseRecoveryPoint -LastFull` was previously returning the snapshot date, which is not the same as the recovery date, resulting in recoveries that would still perform log recoveries in addition to the snapshot recovery. The cmdlet has been updated to get use the correct time property.
 
 - `Get-RscSnapshot` has been updated to include `MssqlAppMetadata.EndBackupTimestampMs`, needed to get the SQL recovery time for snapshot restores. The cmdlet has also been refactored to make future modifications easier.
+
+- New cmdlet `Get-RscMssqlLinkedAvailabilityGroup`
 
 Breaking Changes:
 
