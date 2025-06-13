@@ -8,7 +8,7 @@
 RootModule = 'LoadModule.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.13.0'
+ModuleVersion = '1.13.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
