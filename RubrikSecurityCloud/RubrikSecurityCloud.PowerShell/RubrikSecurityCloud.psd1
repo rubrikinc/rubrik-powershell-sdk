@@ -72,6 +72,7 @@ FormatsToProcess = @(
   "Toolkit/Format/MongoCollection.Format.ps1xml",
   "Toolkit/Format/MongoDatabase.Format.ps1xml",
   "Toolkit/Format/MongoSource.Format.ps1xml",
+  "Toolkit/Format/MssqlAvailabilityGroupVirtualGroup.Format.ps1xml",
   "Toolkit/Format/MssqlDatabase.Format.ps1xml",
   "Toolkit/Format/MssqlInstance.Format.ps1xml",
   "Toolkit/Format/MssqlLogShippingTarget.Format.ps1xml",
