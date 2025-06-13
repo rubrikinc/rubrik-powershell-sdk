@@ -1,11 +1,11 @@
 #
 # Load Core DLL:
 #
-try {
-    # Record the user's current working directory so that we can return to it when we 
-    # are done loading the module
-    $currentPath = Get-Location
+# Record the user's current working directory so that we can return to it when we 
+# are done loading the module
+$currentPath = Get-Location
 
+try {
     # Determine the module directory based on the PowerShell edition
     If ($PSVersionTable.PSEdition -eq "Desktop") {
        # Write-Host "`nLoading Rubrik Security Cloud PowerShell Module (WindowsPowerShell)...`n"
