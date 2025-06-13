@@ -1307,6 +1307,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		targetDataFilePath = $someString
     /// 		# OPTIONAL
     /// 		targetLogFilePath = $someString
+    /// 		# OPTIONAL
+    /// 		preserveCdcMetadata = $someBoolean
     /// 		# REQUIRED
     /// 		recoveryPoint = @{
     /// 			# OPTIONAL
@@ -3007,6 +3009,8 @@ $query.Var.input = @{
 		targetDataFilePath = $someString
 		# OPTIONAL
 		targetLogFilePath = $someString
+		# OPTIONAL
+		preserveCdcMetadata = $someBoolean
 		# REQUIRED
 		recoveryPoint = @{
 			# OPTIONAL

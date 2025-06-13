@@ -36,6 +36,14 @@ Enables an Archival Location.
 
 - There is a single argument of type EnableTargetInput.
 - Returns EnableTargetReply.
+### filesetdownloadsnapshotfilesfromlocation
+Initiate a job to download files or folders
+
+Supported in v8.0+
+Initiates a job to download one or more files or folders from an archived Fileset snapshot. Returns the job instance ID.
+
+- There is a single argument of type FilesetDownloadSnapshotFilesFromArchivalLocationInput.
+- Returns AsyncRequestStatus.
 ### pausetarget
 - There is a single argument of type PauseTargetInput.
 - Returns PauseTargetReply.

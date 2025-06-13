@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldWhitelistRubrikIps")]
         public System.Boolean? ShouldWhitelistRubrikIps { get; set; }
 
+        //      C# -> System.String? PrivateDnsZoneId
+        // GraphQL -> privateDnsZoneId: String (scalar)
+        [JsonProperty("privateDnsZoneId")]
+        public System.String? PrivateDnsZoneId { get; set; }
+
         //      C# -> AksProvisionTier? AksClusterTier
         // GraphQL -> aksClusterTier: AKSProvisionTier (enum)
         [JsonProperty("aksClusterTier")]

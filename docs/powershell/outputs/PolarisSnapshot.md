@@ -26,6 +26,8 @@
   - Specifies ID of the location where snapshot is uploaded to.
 - sourceSnapshotId: System.String
   - Specifies the source snapshot ID.
+- isRetentionLocked: System.Boolean
+  - Specifies whether the snapshot is retention locked.
 - isQuarantined: System.Boolean
   - Specifies whether the snapshot is quarantined.
 - replicationLocations: list of DataLocations

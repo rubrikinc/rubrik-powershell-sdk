@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP")]
         GCP,
 
+        [EnumMember(Value = "OCI")]
+        OCI,
+
         [EnumMember(Value = "VENDOR_UNKNOWN")]
         VENDOR_UNKNOWN
 

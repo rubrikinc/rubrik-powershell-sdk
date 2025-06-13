@@ -10,4 +10,4 @@ Trigger AWS EC2 instance snapshot restore job.
 - snapshotTypeToUseIfSourceExpired: SnapshotTypeToUseIfSourceExpired
   - Snapshot type to use if source snapshot is expired.
 - archivedSnapshotId: System.String
-  - ID of the archived snapshot to be restored.
+  - ID of the archived snapshot to be restored. This field should be specified only when `snapshotTypeToUseIfSourceExpired` is set to `Archived`. In such cases, the archived snapshot will be used for restore. If `snapshotTypeToUseIfSourceExpired` is not `Archived`, this field is ignored.

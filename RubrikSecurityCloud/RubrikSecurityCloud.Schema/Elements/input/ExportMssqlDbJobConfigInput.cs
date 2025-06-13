@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetLogFilePath")]
         public System.String? TargetLogFilePath { get; set; }
 
+        //      C# -> System.Boolean? PreserveCdcMetadata
+        // GraphQL -> preserveCdcMetadata: Boolean (scalar)
+        [JsonProperty("preserveCdcMetadata")]
+        public System.Boolean? PreserveCdcMetadata { get; set; }
+
         //      C# -> MssqlRecoveryPointInput? RecoveryPoint
         // GraphQL -> recoveryPoint: MssqlRecoveryPointInput! (input)
         [Required]

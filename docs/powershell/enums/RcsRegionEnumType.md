@@ -47,6 +47,7 @@ Regions for Rubrik Cloud Storage Archival Location.
 - GOV_US_ARIZONA - Gov US Arizona or US Gov Arizona.
 - NORWAY_WEST - Norway West or Stavanger.
 - EUROPE_WEST - Europe west or Ireland.
+- ASIA_PACIFIC_MELBOURNE - Asia Pacific Melbourne.
 - ASIA_EAST - Asia East or Hong Kong.
 - FRANCE_CENTRAL - France Central or Paris.
 - AUSTRALIA_CENTRAL - Australia Central or Canberra.
@@ -56,6 +57,7 @@ Regions for Rubrik Cloud Storage Archival Location.
 - UK_WEST - UK West or Cardiff.
 - INDIA_SOUTH - India South or Chennai.
 - SWEDEN_SOUTH - Sweden South or Malmo.
+- SPAIN_NORTH - Spain North or Aragon.
 - INDIA_WEST - India West or Mumbai.
 - CANADA_WEST_CALGARY - Canada West Calgary.
 - KOREA_CENTRAL - Korea Central or Seoul.

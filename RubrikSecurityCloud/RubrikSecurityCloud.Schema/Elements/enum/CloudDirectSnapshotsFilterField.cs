@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SYSTEM_ID")]
         SYSTEM_ID,
 
+        [EnumMember(Value = "TARGET_ID")]
+        TARGET_ID,
+
         [EnumMember(Value = "TIME_RANGE")]
         TIME_RANGE,
 

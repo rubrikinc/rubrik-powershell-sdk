@@ -34,7 +34,7 @@ RDS DB Instance details from AWS.
 - kmsKeyId: System.String
   - Key Management System (KMS) key ID associated with RDS Instance.
 - storageType: System.String
-  - Storage type of RDS Instance. Amazon RDS provides four storage types: General Purpose SSD (gp2), General Purpose SSD (gp3), Provisioned IOPS SSD (io1), and magnetic (standard).
+  - Storage type of RDS Instance. Amazon RDS provides four storage types: General Purpose SSD (gp2), General Purpose SSD (gp3), Provisioned IOPS SSD (io1), Provisioned IOPS SSD (io2), and magnetic (standard).
 - port: System.Int64
   - Port used to connect to the RDS Instance.
 - dbEngineVersion: System.String

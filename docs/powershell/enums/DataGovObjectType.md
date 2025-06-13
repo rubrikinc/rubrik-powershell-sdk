@@ -62,3 +62,7 @@ value and is added for maintaining backward compatability.
 - ORACLE_DATA_GUARD_GROUP - Represents Oracle Data Guard Group
 - K8S_VIRTUAL_MACHINE - Represents Kubernetes Virtual Machine.
 - CLOUD_DIRECT_NAS_BUCKET - Represents a NAS Cloud Direct bucket.
+- O365_MAILBOX - Represents O365 mailbox.
+- K8S_ROOT - Represents Kubernetes Root.
+- K8S_CLUSTER - Represents Kubernetes Cluster.
+- K8S_NAMESPACE_V2 - Represents Kubernetes Namespace.

@@ -264,6 +264,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "D365_TABLE_TYPE")]
         D365_TABLE_TYPE,
 
+        [EnumMember(Value = "DB2_CDM_DATABASE_ID")]
+        DB2_CDM_DATABASE_ID,
+
         [EnumMember(Value = "DB2_DB_TYPE")]
         DB2_DB_TYPE,
 
@@ -830,6 +833,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "REGEX")]
         REGEX,
+
+        [EnumMember(Value = "RSC_TAG_ID")]
+        RSC_TAG_ID,
 
         [EnumMember(Value = "RUBRIK_NATIVE_HAS_AT_LEAST_ONE_SNAPSHOT")]
         RUBRIK_NATIVE_HAS_AT_LEAST_ONE_SNAPSHOT,

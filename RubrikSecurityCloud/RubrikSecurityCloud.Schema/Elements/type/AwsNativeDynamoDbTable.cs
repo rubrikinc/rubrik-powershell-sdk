@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region AwsNativeDynamoDbTable
  
-    public class AwsNativeDynamoDbTable: BaseType, AwsNativeAccountDescendantType, AwsNativeAccountLogicalChildType, AwsNativeHierarchyObject, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class AwsNativeDynamoDbTable: BaseType, AwsNativeAccountDescendantType, AwsNativeAccountLogicalChildType, AwsNativeHierarchyObject, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 

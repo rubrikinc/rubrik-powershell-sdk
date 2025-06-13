@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region AzureStorageAccount
  
-    public class AzureStorageAccount: BaseType, AzureNativeHierarchyObjectType, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class AzureStorageAccount: BaseType, AzureNativeHierarchyObjectType, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 

@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HypervServer")]
         HYPERV_SERVER,
 
+        [EnumMember(Value = "IDENTITY_ALERTS")]
+        IDENTITY_ALERTS,
+
         [EnumMember(Value = "ISOLATED_RECOVERY")]
         ISOLATED_RECOVERY,
 

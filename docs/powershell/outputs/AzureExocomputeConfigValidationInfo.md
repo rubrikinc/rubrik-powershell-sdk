@@ -23,5 +23,13 @@ Contains validation information, such as blockers or errors encountered in valid
   - Specifies whether the size of the pod CIDR range provided for Exocompute configuration using CNI overlay network mode is smaller than desired for creating an exo-cluster. For more details, visit https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay#ip-address-planning.
 - isUnsupportedCustomerManagedExocomputeConfigFieldPresent: System.Boolean
   - Specifies whether the configuration contains any unsupported fields for the customer-managed exocompute configuration.
+- isPrivateDnsZoneInvalid: System.Boolean
+  - Specifies that the Azure resource ID of the private DNS zone ID provided for Exocompute configuration is invalid. Currently, the DNS zone is considered invalid if the DNS zone name does not equal 'privatelink.blob.core.windows.net'.
+- isPrivateDnsZoneInDifferentSubscription: System.Boolean
+  - Specifies that the private DNS zone provided for Exocompute configuration belongs to a different subscription than the Exocompute VNet. The customer must verify that the private DNS zone is linked to the Exocompute VNet, as RSC cannot.
+- isPrivateDnsZoneDoesNotExist: System.Boolean
+  - Specifies that the private DNS zone provided for Exocompute configuration does not exist on Azure.
+- isPrivateDnsZoneNotLinkedToVnet: System.Boolean
+  - Specifies that the private DNS zone provided for Exocompute configuration is not linked to the Exocompute VNet on Azure.
 - errorMessage: System.String
   - Error received while validating Exocompute configuration.

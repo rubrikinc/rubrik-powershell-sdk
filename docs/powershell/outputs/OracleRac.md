@@ -19,6 +19,12 @@
   - List of descendants.
 - logicalChildConnection: OracleRacLogicalChildTypeConnection
   - List of logical children.
+- effectiveLogBackupFrequency: Duration
+  - Effective log backup frequency for the Oracle RAC.
+- effectiveLogRetention: Duration
+  - Effective log retention for the Oracle RAC.
+- effectiveHostLogRetention: Duration
+  - Effective host log retention for the Oracle RAC. If the host log retention is indefinite, -1 is used.
 - id: System.String
   - FID of the hierarchy object.
 - name: System.String

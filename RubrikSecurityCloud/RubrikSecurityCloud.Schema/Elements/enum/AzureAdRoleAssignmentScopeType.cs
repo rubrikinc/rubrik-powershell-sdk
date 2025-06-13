@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SCOPE_TYPE_APPLICATION")]
         SCOPE_TYPE_APPLICATION,
 
+        [EnumMember(Value = "SCOPE_TYPE_DEVICE")]
+        SCOPE_TYPE_DEVICE,
+
         [EnumMember(Value = "SCOPE_TYPE_DIRECTORY")]
         SCOPE_TYPE_DIRECTORY,
 

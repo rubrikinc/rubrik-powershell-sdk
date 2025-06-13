@@ -32,4 +32,4 @@ Input to initiate an export job for an AWS native EC2 instance.
 - iamInstanceProfileArn: System.String
   - ARN of the IAM instance profile to be attached to the exported EC2 instance.
 - archivedSnapshotId: System.String
-  - ID of the archived snapshot to be exported.
+  - ID of the archived snapshot to be exported. This field should be specified only when `snapshotType` is set to `Archived`. In such cases, the archived snapshot will be used for export. If `snapshotType` is not `Archived`, this field is ignored.

@@ -146,4 +146,5 @@ Enum representing all the possible object types which generate events.
 - AWS_NATIVE_DYNAMODB_TABLE - AWS native dynamoDB table.
 - OPENSTACK_ENVIRONMENT - Openstack Environment.
 - OPENSTACK_VIRTUAL_MACHINE - Openstack Virtual Machine.
-- INFORMIX - Informix instance.
+- INFORMIX_INSTANCE - Informix instance.
+- K8S_LABEL - Kubernetes label object.

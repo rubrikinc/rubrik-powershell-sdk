@@ -1525,6 +1525,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 	)
     /// 	# OPTIONAL
+    /// 	roleChainingAccountId = $someString
+    /// 	# OPTIONAL
     /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// }
     /// 
@@ -4067,6 +4069,8 @@ $query.Var.input = @{
 			)
 		}
 	)
+	# OPTIONAL
+	roleChainingAccountId = $someString
 	# OPTIONAL
 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 }"

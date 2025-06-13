@@ -13,6 +13,12 @@
   - List of descendants.
 - logicalChildConnection: OracleHostLogicalChildTypeConnection
   - List of logical children.
+- effectiveLogBackupFrequency: Duration
+  - Effective log backup frequency for the Oracle host.
+- effectiveLogRetention: Duration
+  - Effective log retention for the Oracle host.
+- effectiveHostLogRetention: Duration
+  - Effective host log retention for the Oracle host. If the host log retention is indefinite, -1 is used.
 - host: PhysicalHost
   - Source host of the Oracle database.
 - id: System.String

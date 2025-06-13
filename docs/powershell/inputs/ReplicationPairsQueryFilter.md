@@ -13,3 +13,7 @@ Filter for replication pairs request.
   - Replication bidirectional connection status filter.
 - pauseStatus: list of ReplicationPairPauseStatuss
   - Replication pause status filter.
+- sourceAndTargetConnectionStatuses: list of ConnectionStatusTypes
+  - Source and target connection status filter.
+- targetAndSourceConnectionStatuses: list of ConnectionStatusTypes
+  - Target and source connection status filter.

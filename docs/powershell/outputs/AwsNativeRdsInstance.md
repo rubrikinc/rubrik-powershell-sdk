@@ -39,6 +39,10 @@ AWS native RDS instance.
   - AWS native account details.
 - isExocomputeConfigured: System.Boolean
   - A boolean specifying whether Exocompute is configured in the region.
+- cloudNativeId: System.String
+  - Native ID of the RDS instance.
+- nativeName: System.String
+  - AWS native name of the object.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount

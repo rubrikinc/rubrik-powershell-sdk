@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region KubernetesVirtualMachine
  
-    public class KubernetesVirtualMachine: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, KubernetesClusterDescendant, KubernetesNamespaceDescendant
+    public class KubernetesVirtualMachine: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, KubernetesClusterDescendant, KubernetesLabelDescendant, KubernetesNamespaceDescendant
     {
         #region members
 
@@ -110,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> k8sClusterUuid: UUID! (scalar)
         [JsonProperty("k8sClusterUuid")]
         public System.String? K8sClusterUuid { get; set; }
+
+        //      C# -> List<System.String>? K8sLabelIds
+        // GraphQL -> k8sLabelIds: [UUID!]! (scalar)
+        [JsonProperty("k8sLabelIds")]
+        public List<System.String>? K8sLabelIds { get; set; }
 
         //      C# -> System.String? K8sNamespaceId
         // GraphQL -> k8sNamespaceId: UUID! (scalar)
@@ -424,6 +429,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsRelic = null,
         System.String? K8sClusterName = null,
         System.String? K8sClusterUuid = null,
+        List<System.String>? K8sLabelIds = null,
         System.String? K8sNamespaceId = null,
         System.String? Name = null,
         System.String? NamespaceName = null,
@@ -515,6 +521,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( K8sClusterUuid != null ) {
             this.K8sClusterUuid = K8sClusterUuid;
+        }
+        if ( K8sLabelIds != null ) {
+            this.K8sLabelIds = K8sLabelIds;
         }
         if ( K8sNamespaceId != null ) {
             this.K8sNamespaceId = K8sNamespaceId;
@@ -818,6 +827,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "k8sClusterUuid\n" ;
             } else {
                 s += ind + "k8sClusterUuid\n" ;
+            }
+        }
+        //      C# -> List<System.String>? K8sLabelIds
+        // GraphQL -> k8sLabelIds: [UUID!]! (scalar)
+        if (this.K8sLabelIds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "k8sLabelIds\n" ;
+            } else {
+                s += ind + "k8sLabelIds\n" ;
             }
         }
         //      C# -> System.String? K8sNamespaceId
@@ -1558,6 +1576,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.K8sClusterUuid != null && ec.Excludes("k8sClusterUuid",true))
         {
             this.K8sClusterUuid = null;
+        }
+        //      C# -> List<System.String>? K8sLabelIds
+        // GraphQL -> k8sLabelIds: [UUID!]! (scalar)
+        if (ec.Includes("k8sLabelIds",true))
+        {
+            if(this.K8sLabelIds == null) {
+
+                this.K8sLabelIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.K8sLabelIds != null && ec.Excludes("k8sLabelIds",true))
+        {
+            this.K8sLabelIds = null;
         }
         //      C# -> System.String? K8sNamespaceId
         // GraphQL -> k8sNamespaceId: UUID! (scalar)

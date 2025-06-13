@@ -19,6 +19,8 @@ Kubernetes virtual machine.
   - ID of the Kubernetes namespace.
 - namespaceName: System.String
   - Name of the Kubernetes namespace.
+- k8sLabelIds: list of System.Strings
+  - List of IDs of the Kubernetes labels.
 - apiVersion: System.String
   - API version of the K8s Virtual Machine.
 - guestOsName: System.String

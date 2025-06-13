@@ -32,3 +32,6 @@ Regions for AWS.
 - EU_NORTH_1 - AWS EU (Stockholm) region.
 - AP_SOUTH_2 - AWS Asia Pacific (Hyderabad) region.
 - CA_WEST_1 - AWS Canada (Calgary) region.
+- AP_SOUTHEAST_4 - AWS Asia Pacific (Melbourne) region.
+- EU_SOUTH_2 - AWS EU (Spain) region.
+- ME_CENTRAL_1 - AWS Middle East (UAE) region.

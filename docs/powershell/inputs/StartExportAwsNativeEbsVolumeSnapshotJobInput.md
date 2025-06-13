@@ -26,4 +26,4 @@ Input to initiate an export job for the AWS native EBS volume.
 - snapshotType: SnapshotType
   - Type of snapshot used for export.
 - archivedSnapshotId: System.String
-  - ID of the archived snapshot to be exported.
+  - ID of the archived snapshot to be exported. This field should be specified only when `snapshotType` is set to `Archived`. In such cases, the archived snapshot will be used for export. If `snapshotType` is not `Archived`, this field is ignored.

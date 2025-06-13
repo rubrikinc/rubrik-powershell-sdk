@@ -6,3 +6,4 @@ Recover operation type, Restore/Export/Inplace.
 - INPLACE_RESTORE_SNAPPABLE - Used for in-place restore operation.
 - EXPORT_FAILED_ITEMS_FOR_SNAPPABLE - Used for failed items export operation.
 - SELF_SERVICE_RESTORE - Used for self service restore.
+- DOWNLOAD_ANOMALY_FORENSICS - Used for downloading anomaly forensics in Ransomware investigation.

@@ -344,6 +344,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	roleIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	requirePasswordChange = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1251,6 +1253,8 @@ $query.Var.input = @{
 	roleIds = @(
 		$someString
 	)
+	# OPTIONAL
+	requirePasswordChange = $someBoolean
 }"
             );
         }

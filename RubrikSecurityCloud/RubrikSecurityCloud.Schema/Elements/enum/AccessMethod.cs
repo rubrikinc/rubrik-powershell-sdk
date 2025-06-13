@@ -24,8 +24,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M365_DIRECT_PERMISSION")]
         M365_DIRECT_PERMISSION,
 
+        [EnumMember(Value = "M365_DRIVE_PERMISSION")]
+        M365_DRIVE_PERMISSION,
+
+        [EnumMember(Value = "M365_OD_SITE_PERMISSION")]
+        M365_OD_SITE_PERMISSION,
+
         [EnumMember(Value = "M365_SHARING_LINK")]
         M365_SHARING_LINK,
+
+        [EnumMember(Value = "M365_SITE_COLLECTION_ADMIN")]
+        M365_SITE_COLLECTION_ADMIN,
 
         [EnumMember(Value = "M365_SITE_PERMISSION")]
         M365_SITE_PERMISSION,

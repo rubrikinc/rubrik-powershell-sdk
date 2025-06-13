@@ -20,6 +20,8 @@ Supported in v5.0+
   - Supported in v5.0+
       v5.0-v9.1: The target path to store all log files.
       v9.2+: Target path in which store all log files.
+- preserveCdcMetadata: System.Boolean
+  - Boolean value determining whether to preserve Change Data Capture (CDC) metadata during database export. When set to true, CDC configuration will be maintained in the exported database.
 - recoveryPoint: MssqlRecoveryPointInput
   - Required. Supported in v5.0+
 - targetDatabaseName: System.String

@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_RECOVER")]
         CLUSTER_RECOVER,
 
+        [EnumMember(Value = "MIGRATE_CLUSTER_TO_MANAGED_IDENTITY")]
+        MIGRATE_CLUSTER_TO_MANAGED_IDENTITY,
+
         [EnumMember(Value = "MIGRATE_NODES")]
         MIGRATE_NODES,
 

@@ -312,6 +312,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PHYSICAL_HOST_RBS_UPGRADE_STATUS")]
         PHYSICAL_HOST_RBS_UPGRADE_STATUS,
 
+        [EnumMember(Value = "SALESFORCE_OBJECT_LABEL")]
+        SALESFORCE_OBJECT_LABEL,
+
         [EnumMember(Value = "SAP_HANA_SYSTEM_SID")]
         SAP_HANA_SYSTEM_SID,
 

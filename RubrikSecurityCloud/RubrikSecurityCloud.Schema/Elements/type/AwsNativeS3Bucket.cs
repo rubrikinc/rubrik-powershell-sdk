@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region AwsNativeS3Bucket
  
-    public class AwsNativeS3Bucket: BaseType, AwsNativeAccountDescendantType, AwsNativeAccountLogicalChildType, AwsNativeHierarchyObject, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class AwsNativeS3Bucket: BaseType, AwsNativeAccountDescendantType, AwsNativeAccountLogicalChildType, AwsNativeHierarchyObject, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 

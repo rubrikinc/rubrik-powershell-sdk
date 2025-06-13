@@ -108,6 +108,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HypervVirtualMachine")]
         HYPERV_VIRTUAL_MACHINE,
 
+        [EnumMember(Value = "INFORMIX_INSTANCE")]
+        INFORMIX_INSTANCE,
+
         [EnumMember(Value = "JIRA_FIXED_OBJECT")]
         JIRA_FIXED_OBJECT,
 

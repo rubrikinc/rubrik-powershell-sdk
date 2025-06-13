@@ -171,8 +171,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_VM")]
         HYPERV_VM,
 
-        [EnumMember(Value = "INFORMIX")]
-        INFORMIX,
+        [EnumMember(Value = "INFORMIX_INSTANCE")]
+        INFORMIX_INSTANCE,
 
         [EnumMember(Value = "INTEL_FEED")]
         INTEL_FEED,
@@ -188,6 +188,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "K8S_CLUSTER")]
         K8S_CLUSTER,
+
+        [EnumMember(Value = "K8S_LABEL")]
+        K8S_LABEL,
 
         [EnumMember(Value = "K8S_NAMESPACE_V2")]
         K8S_NAMESPACE_V2,

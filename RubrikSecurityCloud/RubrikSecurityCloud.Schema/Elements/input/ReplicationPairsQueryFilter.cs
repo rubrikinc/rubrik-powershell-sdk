@@ -49,6 +49,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pauseStatus")]
         public List<ReplicationPairPauseStatus>? PauseStatus { get; set; }
 
+        //      C# -> List<ConnectionStatusType>? SourceAndTargetConnectionStatuses
+        // GraphQL -> sourceAndTargetConnectionStatuses: [ConnectionStatusType!] (enum)
+        [JsonProperty("sourceAndTargetConnectionStatuses")]
+        public List<ConnectionStatusType>? SourceAndTargetConnectionStatuses { get; set; }
+
+        //      C# -> List<ConnectionStatusType>? TargetAndSourceConnectionStatuses
+        // GraphQL -> targetAndSourceConnectionStatuses: [ConnectionStatusType!] (enum)
+        [JsonProperty("targetAndSourceConnectionStatuses")]
+        public List<ConnectionStatusType>? TargetAndSourceConnectionStatuses { get; set; }
+
 
         #endregion
 

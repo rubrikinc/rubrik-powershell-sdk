@@ -60,6 +60,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BLUEPRINT_UPDATE")]
         BLUEPRINT_UPDATE,
 
+        [EnumMember(Value = "CLOUD_ACCOUNT_UPDATE")]
+        CLOUD_ACCOUNT_UPDATE,
+
         [EnumMember(Value = "CLUSTER_PEER_TOKEN_GET")]
         CLUSTER_PEER_TOKEN_GET,
 

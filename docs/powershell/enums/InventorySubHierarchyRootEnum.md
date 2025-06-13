@@ -39,3 +39,4 @@ Inventory workloads that are supported on Rubrik.
 - CLOUD_DIRECT_NAS_ROOT - NAS Cloud Direct root.
 - D365_ROOT - D365 root.
 - OPENSTACK_ROOT - OpenStack root.
+- INFORMIX_ROOT - The root of the Informix hierarchy.

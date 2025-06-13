@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 10
     /// operations in the 'Archival' API domain:
-    /// FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, PerObjectInfo, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// </summary>
     /// <description>
     /// New-RscQueryArchival creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 10 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// one of: FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, PerObjectInfo, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -163,6 +163,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the PerObjectInfo operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: PerObjectInfo
+    /// 
+    /// $query = New-RscQueryArchival -Operation PerObjectInfo
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someArchivalPerObjectInfoSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalPerObjectInfoSortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someArchivalPerObjectInfoFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalPerObjectInfoFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		values = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
+    /// # REQUIRED
+    /// $query.Var.input = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ArchivalObjectInfoConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RcsLocationsConsumptionStats operation
     /// of the 'Archival' API domain.
     /// <code>
@@ -214,6 +265,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = $someString
+    /// # OPTIONAL
+    /// $query.Var.lookBackWindow = $someLookBackWindow # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LookBackWindow]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -402,6 +455,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "FeaturePermissionForDataCenterRoleBased",
                 "HierarchyObjectRecoveryTarget",
                 "IsTotpMandatoryInTargetVersion",
+                "PerObjectInfo",
                 "RcsLocationsConsumptionStats",
                 "StorageUsage",
                 "Target",
@@ -431,6 +485,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "IsTotpMandatoryInTargetVersion":
                         this.ProcessRecord_IsTotpMandatoryInTargetVersion();
+                        break;
+                    case "PerObjectInfo":
+                        this.ProcessRecord_PerObjectInfo();
                         break;
                     case "RcsLocationsConsumptionStats":
                         this.ProcessRecord_RcsLocationsConsumptionStats();
@@ -485,6 +542,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -IsTotpMandatoryInTargetVersion";
             // Create new graphql operation isTotpMandatoryInTargetVersion
             InitQueryIsTotpMandatoryInTargetVersion();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // archivalPerObjectInfo.
+        internal void ProcessRecord_PerObjectInfo()
+        {
+            this._logger.name += " -PerObjectInfo";
+            // Create new graphql operation archivalPerObjectInfo
+            InitQueryArchivalPerObjectInfo();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -605,6 +671,65 @@ $query.Var.version = $someString"
         }
 
         // Create new GraphQL Query:
+        // archivalPerObjectInfo(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortOrder: SortOrder
+        //     sortBy: ArchivalPerObjectInfoSortByField
+        //     filter: [ArchivalPerObjectInfoFilterInput!]
+        //     input: UUID!
+        //   ): ArchivalObjectInfoConnection!
+        internal void InitQueryArchivalPerObjectInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("sortBy", "ArchivalPerObjectInfoSortByField"),
+                Tuple.Create("filter", "[ArchivalPerObjectInfoFilterInput!]"),
+                Tuple.Create("input", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryArchivalPerObjectInfo",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: ArchivalPerObjectInfoSortByField,$filter: [ArchivalPerObjectInfoFilterInput!],$input: UUID!)",
+                "ArchivalObjectInfoConnection",
+                Query.ArchivalPerObjectInfo,
+                Query.ArchivalPerObjectInfoFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.sortBy = $someArchivalPerObjectInfoSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalPerObjectInfoSortByField]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someArchivalPerObjectInfoFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalPerObjectInfoFilterField]) for enum values.
+		# OPTIONAL
+		values = @(
+			$someString
+		)
+}
+)
+# REQUIRED
+$query.Var.input = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // rcsArchivalLocationsConsumptionStats(rcsAzureTargetConsumptionStatsRequest: RcsConsumptionStatsInput!): RcsAzureArchivalLocationsConsumptionStatsOutput!
         internal void InitQueryRcsArchivalLocationsConsumptionStats()
         {
@@ -634,22 +759,25 @@ $query.Var.rcsAzureTargetConsumptionStatsRequest = @{
         }
 
         // Create new GraphQL Query:
-        // archivalStorageUsage(input: UUID!): [ArchivalStorageUsage!]!
+        // archivalStorageUsage(input: UUID!, lookBackWindow: LookBackWindow): [ArchivalStorageUsage!]!
         internal void InitQueryArchivalStorageUsage()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UUID!"),
+                Tuple.Create("lookBackWindow", "LookBackWindow"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryArchivalStorageUsage",
-                "($input: UUID!)",
+                "($input: UUID!,$lookBackWindow: LookBackWindow)",
                 "List<ArchivalStorageUsage>",
                 Query.ArchivalStorageUsage,
                 Query.ArchivalStorageUsageFieldSpec,
                 @"# REQUIRED
-$query.Var.input = $someString"
+$query.Var.input = $someString
+# OPTIONAL
+$query.Var.lookBackWindow = $someLookBackWindow # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LookBackWindow]) for enum values."
             );
         }
 

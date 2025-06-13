@@ -17,6 +17,8 @@ Live Mount of a vSphere Virtual Machine.
   - Mount timestamp of the vSphere Live Mount.
 - migrateDatastoreRequestId: System.String
   - Migrate datastore request id of the vSphere Live Mount.
+- unmountTimestamp: DateTime
+  - Timestamp for scheduled unmount job if there is one.
 - vCenter: VsphereVcenter
   - Vcenter of the Live Mount.
 - cluster: Cluster

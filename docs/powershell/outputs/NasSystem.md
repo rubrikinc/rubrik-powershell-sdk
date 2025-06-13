@@ -19,6 +19,9 @@ Instance of a registered NAS system.
   - Specifies whether this object is a relic.
 - cdmId: System.String
   - Rubrik CDM ID of the registered NAS system.
+- isNetAppMetroClusterEnabled: System.Boolean
+- netAppMetroClusterInfo: NasSystemNetAppMetroClusterInfo
+  - Optional NetApp Metro Cluster info for the NAS system.
 - id: System.String
   - Object ID.
 - descendantConnection: NasSystemDescendantTypeConnection

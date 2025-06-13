@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> List<ExcludeUsages>? ExcludeUsages
+        // GraphQL -> excludeUsages: [ExcludeUsages!] (enum)
+        [JsonProperty("excludeUsages")]
+        public List<ExcludeUsages>? ExcludeUsages { get; set; }
+
         //      C# -> V1QueryCertificatesRequestSortBy? SortBy
         // GraphQL -> sortBy: V1QueryCertificatesRequestSortBy (enum)
         [JsonProperty("sortBy")]

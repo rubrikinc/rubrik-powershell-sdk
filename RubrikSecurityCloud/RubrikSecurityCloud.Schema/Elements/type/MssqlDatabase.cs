@@ -382,6 +382,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("sortBy", "CdmSnapshotSortByEnum"),
                     Tuple.Create("groupBy", "CdmSnapshotGroupByEnum!"),
                     Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.CdmGroupedSnapshots =
                 new RscGqlVars(null, cdmGroupedSnapshotsArgs, null, true);

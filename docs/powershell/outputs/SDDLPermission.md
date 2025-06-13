@@ -9,3 +9,9 @@
   - The type of the principal (user, group, etc.).
 - accessMethodDetails: DatagovAccessMethodDetailsType
   - The details of how the principal can access the path.
+- principalId: System.String
+  - The principalID that this ACE applies to.
+- idpType: IdpType
+  - The type of identity provider the principal belongs to.
+- principalOrigin: PrincipalOrigin
+  - Specifies whether the principal is internal or external to the organization.

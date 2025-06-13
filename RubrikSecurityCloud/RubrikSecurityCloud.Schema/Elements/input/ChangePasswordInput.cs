@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("password")]
         public System.String? Password { get; set; }
 
+        //      C# -> System.Boolean? RequirePasswordChange
+        // GraphQL -> requirePasswordChange: Boolean (scalar)
+        [JsonProperty("requirePasswordChange")]
+        public System.Boolean? RequirePasswordChange { get; set; }
+
 
         #endregion
 

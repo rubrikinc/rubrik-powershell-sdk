@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> O365RestoreActionType? ActionType
+        // GraphQL -> actionType: O365RestoreActionType! (enum)
+        [JsonProperty("actionType")]
+        public O365RestoreActionType? ActionType { get; set; }
+
         //      C# -> System.String? BlobName
         // GraphQL -> blobName: String! (scalar)
         [JsonProperty("blobName")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ExportUrlSpecs Set(
+        O365RestoreActionType? ActionType = null,
         System.String? BlobName = null,
         System.String? BlobSasUri = null,
         System.String? PolarisAccount = null
     ) 
     {
+        if ( ActionType != null ) {
+            this.ActionType = ActionType;
+        }
         if ( BlobName != null ) {
             this.BlobName = BlobName;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> O365RestoreActionType? ActionType
+        // GraphQL -> actionType: O365RestoreActionType! (enum)
+        if (this.ActionType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "actionType\n" ;
+            } else {
+                s += ind + "actionType\n" ;
+            }
+        }
         //      C# -> System.String? BlobName
         // GraphQL -> blobName: String! (scalar)
         if (this.BlobName != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> O365RestoreActionType? ActionType
+        // GraphQL -> actionType: O365RestoreActionType! (enum)
+        if (ec.Includes("actionType",true))
+        {
+            if(this.ActionType == null) {
+
+                this.ActionType = new O365RestoreActionType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActionType != null && ec.Excludes("actionType",true))
+        {
+            this.ActionType = null;
+        }
         //      C# -> System.String? BlobName
         // GraphQL -> blobName: String! (scalar)
         if (ec.Includes("blobName",true))

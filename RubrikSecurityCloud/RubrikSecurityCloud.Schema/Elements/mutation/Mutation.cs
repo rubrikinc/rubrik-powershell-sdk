@@ -5329,6 +5329,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CompleteUploadSessionReply? CompleteUploadSession
+        // GraphQL -> completeUploadSession: CompleteUploadSessionReply! (type)
+        public static string CompleteUploadSession(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "completeUploadSession" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CompleteUploadSessionFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CompleteUploadSessionReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> Db2ConfigureRestoreResponse? ConfigureDb2Restore
         // GraphQL -> configureDb2Restore: Db2ConfigureRestoreResponse! (type)
         public static string ConfigureDb2Restore(object fsObj)
@@ -5361,6 +5379,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ConfirmPartUploadReply? ConfirmPartUpload
+        // GraphQL -> confirmPartUpload: ConfirmPartUploadReply! (type)
+        public static string ConfirmPartUpload(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "confirmPartUpload" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ConfirmPartUploadFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ConfirmPartUploadReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -8731,6 +8767,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? FilesetDownloadSnapshotFilesFromArchivalLocation
+        // GraphQL -> filesetDownloadSnapshotFilesFromArchivalLocation: AsyncRequestStatus! (type)
+        public static string FilesetDownloadSnapshotFilesFromArchivalLocation(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "filesetDownloadSnapshotFilesFromArchivalLocation" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FilesetDownloadSnapshotFilesFromArchivalLocationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? FilesetExportSnapshotFiles
         // GraphQL -> filesetExportSnapshotFiles: AsyncRequestStatus! (type)
         public static string FilesetExportSnapshotFiles(object fsObj)
@@ -8758,6 +8812,24 @@ namespace RubrikSecurityCloud.Types
             return "filesetRecoverFiles" + args + "\n{\n" + fs + "}\n";
         }
         public static object FilesetRecoverFilesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? FilesetRecoverFilesFromArchivalLocation
+        // GraphQL -> filesetRecoverFilesFromArchivalLocation: AsyncRequestStatus! (type)
+        public static string FilesetRecoverFilesFromArchivalLocation(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "filesetRecoverFilesFromArchivalLocation" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FilesetRecoverFilesFromArchivalLocationFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -9055,6 +9127,42 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GeneratePresignedUrlForDownloadReply? GeneratePresignedUrlForDownload
+        // GraphQL -> generatePresignedUrlForDownload: GeneratePresignedUrlForDownloadReply! (type)
+        public static string GeneratePresignedUrlForDownload(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "generatePresignedUrlForDownload" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GeneratePresignedUrlForDownloadFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GeneratePresignedUrlForDownloadReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GeneratePresignedUrlForPartUploadReply? GeneratePresignedUrlForPartUpload
+        // GraphQL -> generatePresignedUrlForPartUpload: GeneratePresignedUrlForPartUploadReply! (type)
+        public static string GeneratePresignedUrlForPartUpload(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "generatePresignedUrlForPartUpload" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GeneratePresignedUrlForPartUploadFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GeneratePresignedUrlForPartUploadReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GeneratePreviewMessageForWebhookTemplateReply? GeneratePreviewMessageForWebhookTemplate
         // GraphQL -> generatePreviewMessageForWebhookTemplate: GeneratePreviewMessageForWebhookTemplateReply! (type)
         public static string GeneratePreviewMessageForWebhookTemplate(object fsObj)
@@ -9253,6 +9361,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> InitializeUploadSessionReply? InitializeUploadSession
+        // GraphQL -> initializeUploadSession: InitializeUploadSessionReply! (type)
+        public static string InitializeUploadSession(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "initializeUploadSession" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object InitializeUploadSessionFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new InitializeUploadSessionReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? InplaceExportHypervVirtualMachine
         // GraphQL -> inplaceExportHypervVirtualMachine: AsyncRequestStatus! (type)
         public static string InplaceExportHypervVirtualMachine(object fsObj)
@@ -9357,6 +9483,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> LinuxRbsBulkInstallReply? LinuxRbsBulkInstall
+        // GraphQL -> linuxRbsBulkInstall: LinuxRbsBulkInstallReply! (type)
+        public static string LinuxRbsBulkInstall(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "linuxRbsBulkInstall" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object LinuxRbsBulkInstallFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new LinuxRbsBulkInstallReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -10545,6 +10689,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ResponseSuccess() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> RemoveUploadRecordReply? RemoveUploadRecord
+        // GraphQL -> removeUploadRecord: RemoveUploadRecordReply! (type)
+        public static string RemoveUploadRecord(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "removeUploadRecord" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RemoveUploadRecordFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new RemoveUploadRecordReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -12097,6 +12259,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> BatchAsyncRequestStatus? TakeCloudDirectSnapshot
+        // GraphQL -> takeCloudDirectSnapshot: BatchAsyncRequestStatus! (type)
+        public static string TakeCloudDirectSnapshot(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "takeCloudDirectSnapshot" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TakeCloudDirectSnapshotFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new BatchAsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? TakeManagedVolumeOnDemandSnapshot
         // GraphQL -> takeManagedVolumeOnDemandSnapshot: AsyncRequestStatus! (type)
         public static string TakeManagedVolumeOnDemandSnapshot(object fsObj)
@@ -13191,6 +13371,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new UpdateManagedIdentitiesReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CcProvisionJobReply? UpdateManagedIdentitiesAsync
+        // GraphQL -> updateManagedIdentitiesAsync: CcProvisionJobReply! (type)
+        public static string UpdateManagedIdentitiesAsync(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateManagedIdentitiesAsync" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateManagedIdentitiesAsyncFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CcProvisionJobReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -14649,6 +14847,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new RequestSuccess() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> WindowsRbsBulkInstallReply? WindowsRbsBulkInstall
+        // GraphQL -> windowsRbsBulkInstall: WindowsRbsBulkInstallReply! (type)
+        public static string WindowsRbsBulkInstall(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "windowsRbsBulkInstall" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object WindowsRbsBulkInstallFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new WindowsRbsBulkInstallReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

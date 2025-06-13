@@ -9,3 +9,4 @@ Status of Exocompute clusters.
 - TEARDOWN_RUNNING - The teardown of Exocompute cluster is running.
 - TEARDOWN_FAILED - The teardown of Exocompute cluster has failed.
 - TERMINATED - The Exocompute cluster is deleted.
+- UNSCHEDULABLE

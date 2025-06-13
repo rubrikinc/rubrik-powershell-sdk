@@ -113,6 +113,16 @@ Change the password for the current user.
 ### changepassword
 - There is a single argument of type ChangePasswordInput.
 - Returns System.Boolean.
+### completeuploadsession
+Complete the upload session with Minio.
+
+- There is a single argument of type CompleteUploadSessionInput.
+- Returns CompleteUploadSessionReply.
+### confirmpartupload
+Confirm the upload of a part of the CDM package.
+
+- There is a single argument of type ConfirmPartUploadInput.
+- Returns ConfirmPartUploadReply.
 ### createcustomanalyzer
 Create a new custom analyzer.
 
@@ -264,6 +274,16 @@ Generate restore form for the configuration backup file.
 
 - There is a single argument of type GenerateConfigProtectionRestoreFormInput.
 - Returns GenerateConfigProtectionRestoreFormReply.
+### generatepresignedurlfordownload
+Generate a presigned URL for downloading a specific package in CDM.
+
+- There is a single argument of type GeneratePresignedUrlForDownloadInput.
+- Returns GeneratePresignedUrlForDownloadReply.
+### generatepresignedurlforpartupload
+Generate a presigned URL for uploading a part of the CDM package.
+
+- There is a single argument of type GeneratePresignedUrlForPartUploadInput.
+- Returns GeneratePresignedUrlForPartUploadReply.
 ### generatesupportbundle
 Collect log files from the cluster
 
@@ -283,6 +303,11 @@ Hide individually selected NAS namespaces by setting the "action" field to "Hide
 
 - There is a single argument of type HideRevealNasNamespacesInput.
 - Returns System.String.
+### initializeuploadsession
+Initialize a new upload session for CDM package upload.
+
+- There is a single argument of type InitializeUploadSessionInput.
+- Returns InitializeUploadSessionReply.
 ### installiofilter
 Install the Rubrik ioFilter to the VMware cluster with a specific ID
 
@@ -296,6 +321,11 @@ Assigns roles to SSO groups in the current organization using the given group na
 
 - There is a single argument of type InviteSsoGroupInput.
 - Returns System.Boolean.
+### linuxrbsbulkinstall
+Bulk install and register RBS on Linux host.
+
+- There is a single argument of type LinuxRbsBulkInstallInput.
+- Returns LinuxRbsBulkInstallReply.
 ### listcidrsforcomputesetting
 List CIDRs for compute setting.
 
@@ -408,6 +438,11 @@ Delete an existing proxy that was configured.
 
 - There is a single argument of type RemoveProxyConfigInput.
 - Returns ResponseSuccess.
+### removeuploadrecord
+Remove the upload record from the database.
+
+- There is a single argument of type RemoveUploadRecordInput.
+- Returns RemoveUploadRecordReply.
 ### removevlans
 Delete cluster VLAN(s).
 
@@ -763,6 +798,11 @@ Transition to Managed Identities.
 
 - There is a single argument of type UpdateManagedIdentitiesInput.
 - Returns UpdateManagedIdentitiesReply.
+### updatemanagedidentitiesasync
+Async transition to managed identities.
+
+- There is a single argument of type UpdateManagedIdentitiesAsyncInput.
+- Returns CcProvisionJobReply.
 ### updatenetworkthrottle
 - There is a single argument of type UpdateNetworkThrottleInput.
 - Returns UpdateNetworkThrottleReply.
@@ -855,3 +895,8 @@ Warms the search cache for an O365 workload.
 
 - There is a single argument of type WarmSearchCacheInput.
 - Returns System.Boolean.
+### windowsrbsbulkinstall
+Bulk install and register RBS on Windows host.
+
+- There is a single argument of type WindowsRbsBulkInstallInput.
+- Returns WindowsRbsBulkInstallReply.

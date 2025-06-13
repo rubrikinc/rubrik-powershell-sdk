@@ -141,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isReplicated")]
         public System.Boolean? IsReplicated { get; set; }
 
+        //      C# -> System.Boolean? IsRetentionLocked
+        // GraphQL -> isRetentionLocked: Boolean (scalar)
+        [JsonProperty("isRetentionLocked")]
+        public System.Boolean? IsRetentionLocked { get; set; }
+
         //      C# -> System.Boolean? IsUnindexable
         // GraphQL -> isUnindexable: Boolean! (scalar)
         [JsonProperty("isUnindexable")]
@@ -230,6 +235,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsQuarantined = null,
         System.Boolean? IsReplica = null,
         System.Boolean? IsReplicated = null,
+        System.Boolean? IsRetentionLocked = null,
         System.Boolean? IsUnindexable = null,
         System.String? ParentSnapshotId = null,
         System.Int32? SequenceNumber = null,
@@ -314,6 +320,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsReplicated != null ) {
             this.IsReplicated = IsReplicated;
+        }
+        if ( IsRetentionLocked != null ) {
+            this.IsRetentionLocked = IsRetentionLocked;
         }
         if ( IsUnindexable != null ) {
             this.IsUnindexable = IsUnindexable;
@@ -584,6 +593,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isReplicated\n" ;
             } else {
                 s += ind + "isReplicated\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsRetentionLocked
+        // GraphQL -> isRetentionLocked: Boolean (scalar)
+        if (this.IsRetentionLocked != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isRetentionLocked\n" ;
+            } else {
+                s += ind + "isRetentionLocked\n" ;
             }
         }
         //      C# -> System.Boolean? IsUnindexable
@@ -1125,6 +1143,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsReplicated != null && ec.Excludes("isReplicated",true))
         {
             this.IsReplicated = null;
+        }
+        //      C# -> System.Boolean? IsRetentionLocked
+        // GraphQL -> isRetentionLocked: Boolean (scalar)
+        if (ec.Includes("isRetentionLocked",true))
+        {
+            if(this.IsRetentionLocked == null) {
+
+                this.IsRetentionLocked = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRetentionLocked != null && ec.Excludes("isRetentionLocked",true))
+        {
+            this.IsRetentionLocked = null;
         }
         //      C# -> System.Boolean? IsUnindexable
         // GraphQL -> isUnindexable: Boolean! (scalar)

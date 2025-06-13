@@ -27,7 +27,7 @@ Copyright = '(c) Rubrik. All rights reserved.'
 
 # Description of the functionality provided by this module
 # NOTE: This entry is generated.
-Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20250505-56 .'
+Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20250602-55 .'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.0.0'
@@ -72,6 +72,7 @@ FormatsToProcess = @(
   "Toolkit/Format/MongoCollection.Format.ps1xml",
   "Toolkit/Format/MongoDatabase.Format.ps1xml",
   "Toolkit/Format/MongoSource.Format.ps1xml",
+  "Toolkit/Format/MssqlAvailabilityGroupVirtualGroup.Format.ps1xml",
   "Toolkit/Format/MssqlDatabase.Format.ps1xml",
   "Toolkit/Format/MssqlInstance.Format.ps1xml",
   "Toolkit/Format/MssqlLogShippingTarget.Format.ps1xml",

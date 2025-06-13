@@ -102,6 +102,11 @@ Starts an on-demand snapshot recovery job for the specified AWS S3 bucket. Retur
 
 - There is a single argument of type StartRecoverS3SnapshotJobInput.
 - Returns AsyncJobStatus.
+### takeclouddirect
+NAS Cloud Direct on demand snapshot.
+
+- There is a single argument of type TakeCloudDirectSnapshotInput.
+- Returns BatchAsyncRequestStatus.
 ### takeondemand
 Triggers on-demand snapshot for the given workloads.
 

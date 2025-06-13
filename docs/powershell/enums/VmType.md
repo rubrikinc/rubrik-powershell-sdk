@@ -1,5 +1,6 @@
 ### VmType
-Type of VM, standard or dense.
+Type of VM, standard, dense or extra dense.
 
-- STANDARD - Standard Node.
-- DENSE - Dense Node.
+- STANDARD - Standard node.
+- DENSE - Dense node.
+- EXTRA_DENSE - Extra Dense node.

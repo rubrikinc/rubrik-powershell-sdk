@@ -24,7 +24,7 @@ RDS Export defaults from AWS.
 - primaryAz: System.String
   - Primary Availability Zone (AZ) of RDS Instance.
 - storageType: AwsNativeRdsStorageType
-  - Storage type of RDS Instance. Amazon RDS provides four storage types: General Purpose SSD (gp2), General Purpose SSD (gp3), Provisioned IOPS SSD (io1), and magnetic (standard).
+  - Storage type of RDS Instance. Amazon RDS provides four storage types: General Purpose SSD (gp2), General Purpose SSD (gp3), Provisioned IOPS SSD (io1), Provisioned IOPS SSD (io2), and magnetic (standard).
 - iops: System.Int32
   - Input/Output (IO) operation limit per second for RDS Instance.
 - port: System.Int64

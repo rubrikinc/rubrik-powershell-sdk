@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ASIA_PACIFIC_JAKARTA")]
         ASIA_PACIFIC_JAKARTA,
 
+        [EnumMember(Value = "ASIA_PACIFIC_MELBOURNE")]
+        ASIA_PACIFIC_MELBOURNE,
+
         [EnumMember(Value = "ASIA_PACIFIC_SYDNEY")]
         ASIA_PACIFIC_SYDNEY,
 
@@ -143,6 +146,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SPAIN_CENTRAL")]
         SPAIN_CENTRAL,
+
+        [EnumMember(Value = "SPAIN_NORTH")]
+        SPAIN_NORTH,
 
         [EnumMember(Value = "SWEDEN_CENTRAL")]
         SWEDEN_CENTRAL,

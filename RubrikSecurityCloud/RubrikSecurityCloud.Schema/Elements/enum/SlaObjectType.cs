@@ -108,6 +108,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "O365_OBJECT_TYPE")]
         O365_OBJECT_TYPE,
 
+        [EnumMember(Value = "OPENSTACK_OBJECT_TYPE")]
+        OPENSTACK_OBJECT_TYPE,
+
         [EnumMember(Value = "ORACLE_OBJECT_TYPE")]
         ORACLE_OBJECT_TYPE,
 

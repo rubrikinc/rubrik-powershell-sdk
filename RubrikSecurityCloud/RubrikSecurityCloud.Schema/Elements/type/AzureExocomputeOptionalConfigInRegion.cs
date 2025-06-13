@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("enableUserDefinedRouting")]
         public System.Boolean? EnableUserDefinedRouting { get; set; }
 
+        //      C# -> System.String? PrivateDnsZoneId
+        // GraphQL -> privateDnsZoneId: String! (scalar)
+        [JsonProperty("privateDnsZoneId")]
+        public System.String? PrivateDnsZoneId { get; set; }
+
         //      C# -> System.Boolean? ShouldWhitelistRubrikIps
         // GraphQL -> shouldWhitelistRubrikIps: Boolean! (scalar)
         [JsonProperty("shouldWhitelistRubrikIps")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AksNodeRgPrefix = null,
         System.Boolean? DiskEncryptionAtHost = null,
         System.Boolean? EnableUserDefinedRouting = null,
+        System.String? PrivateDnsZoneId = null,
         System.Boolean? ShouldWhitelistRubrikIps = null
     ) 
     {
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EnableUserDefinedRouting != null ) {
             this.EnableUserDefinedRouting = EnableUserDefinedRouting;
+        }
+        if ( PrivateDnsZoneId != null ) {
+            this.PrivateDnsZoneId = PrivateDnsZoneId;
         }
         if ( ShouldWhitelistRubrikIps != null ) {
             this.ShouldWhitelistRubrikIps = ShouldWhitelistRubrikIps;
@@ -161,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "enableUserDefinedRouting\n" ;
             } else {
                 s += ind + "enableUserDefinedRouting\n" ;
+            }
+        }
+        //      C# -> System.String? PrivateDnsZoneId
+        // GraphQL -> privateDnsZoneId: String! (scalar)
+        if (this.PrivateDnsZoneId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "privateDnsZoneId\n" ;
+            } else {
+                s += ind + "privateDnsZoneId\n" ;
             }
         }
         //      C# -> System.Boolean? ShouldWhitelistRubrikIps
@@ -280,6 +298,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EnableUserDefinedRouting != null && ec.Excludes("enableUserDefinedRouting",true))
         {
             this.EnableUserDefinedRouting = null;
+        }
+        //      C# -> System.String? PrivateDnsZoneId
+        // GraphQL -> privateDnsZoneId: String! (scalar)
+        if (ec.Includes("privateDnsZoneId",true))
+        {
+            if(this.PrivateDnsZoneId == null) {
+
+                this.PrivateDnsZoneId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrivateDnsZoneId != null && ec.Excludes("privateDnsZoneId",true))
+        {
+            this.PrivateDnsZoneId = null;
         }
         //      C# -> System.Boolean? ShouldWhitelistRubrikIps
         // GraphQL -> shouldWhitelistRubrikIps: Boolean! (scalar)

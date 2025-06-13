@@ -226,6 +226,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotDistribution")]
         public SnapshotDistribution? SnapshotDistribution { get; set; }
 
+        //      C# -> CloudDirectObjectTargets? Targets
+        // GraphQL -> targets: CloudDirectObjectTargets (type)
+        [JsonProperty("targets")]
+        public CloudDirectObjectTargets? Targets { get; set; }
+
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
 
@@ -272,6 +277,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("filter", "[CloudDirectSnapshotsFilterInput!]"),
                     Tuple.Create("groupBy", "SnapshotGroupByTime!"),
                     Tuple.Create("timeRange", "TimeRangeInput"),
+                    Tuple.Create("cloudDirectTargetId", "UUID"),
                 };
             this.CloudDirectSnapshotGroupBySummary =
                 new RscGqlVars(null, cloudDirectSnapshotGroupBySummaryArgs, null, true);
@@ -347,7 +353,8 @@ namespace RubrikSecurityCloud.Types
         CloudDirectNasShare? ParentShare = null,
         List<PathNode>? PhysicalPath = null,
         SecurityMetadata? SecurityMetadata = null,
-        SnapshotDistribution? SnapshotDistribution = null
+        SnapshotDistribution? SnapshotDistribution = null,
+        CloudDirectObjectTargets? Targets = null
     ) 
     {
         if ( AuthorizedOperations != null ) {
@@ -472,6 +479,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
+        }
+        if ( Targets != null ) {
+            this.Targets = Targets;
         }
         return this;
     }
@@ -916,6 +926,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "snapshotDistribution" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectObjectTargets? Targets
+        // GraphQL -> targets: CloudDirectObjectTargets (type)
+        if (this.Targets != null) {
+            var fspec = this.Targets.AsFieldSpec(conf.Child("targets"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "targets" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1677,6 +1699,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotDistribution != null && ec.Excludes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = null;
+        }
+        //      C# -> CloudDirectObjectTargets? Targets
+        // GraphQL -> targets: CloudDirectObjectTargets (type)
+        if (ec.Includes("targets",false))
+        {
+            if(this.Targets == null) {
+
+                this.Targets = new CloudDirectObjectTargets();
+                this.Targets.ApplyExploratoryFieldSpec(ec.NewChild("targets"));
+
+            } else {
+
+                this.Targets.ApplyExploratoryFieldSpec(ec.NewChild("targets"));
+
+            }
+        }
+        else if (this.Targets != null && ec.Excludes("targets",false))
+        {
+            this.Targets = null;
         }
     }
 

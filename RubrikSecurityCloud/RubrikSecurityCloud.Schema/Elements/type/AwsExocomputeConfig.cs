@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mappedCloudAccounts")]
         public List<CloudAccountDetails>? MappedCloudAccounts { get; set; }
 
+        //      C# -> AwsRoleChainingAccount? RoleChainingAccount
+        // GraphQL -> roleChainingAccount: AwsRoleChainingAccount (type)
+        [JsonProperty("roleChainingAccount")]
+        public AwsRoleChainingAccount? RoleChainingAccount { get; set; }
+
 
         #endregion
 
@@ -77,7 +82,8 @@ namespace RubrikSecurityCloud.Types
         AwsCloudAccount? AwsCloudAccount = null,
         List<AwsExocomputeGetConfigResponse>? Configs = null,
         FeatureDetail? FeatureDetail = null,
-        List<CloudAccountDetails>? MappedCloudAccounts = null
+        List<CloudAccountDetails>? MappedCloudAccounts = null,
+        AwsRoleChainingAccount? RoleChainingAccount = null
     ) 
     {
         if ( ExocomputeEligibleRegions != null ) {
@@ -103,6 +109,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MappedCloudAccounts != null ) {
             this.MappedCloudAccounts = MappedCloudAccounts;
+        }
+        if ( RoleChainingAccount != null ) {
+            this.RoleChainingAccount = RoleChainingAccount;
         }
         return this;
     }
@@ -207,6 +216,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "mappedCloudAccounts" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AwsRoleChainingAccount? RoleChainingAccount
+        // GraphQL -> roleChainingAccount: AwsRoleChainingAccount (type)
+        if (this.RoleChainingAccount != null) {
+            var fspec = this.RoleChainingAccount.AsFieldSpec(conf.Child("roleChainingAccount"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "roleChainingAccount" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -364,6 +385,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.MappedCloudAccounts != null && ec.Excludes("mappedCloudAccounts",false))
         {
             this.MappedCloudAccounts = null;
+        }
+        //      C# -> AwsRoleChainingAccount? RoleChainingAccount
+        // GraphQL -> roleChainingAccount: AwsRoleChainingAccount (type)
+        if (ec.Includes("roleChainingAccount",false))
+        {
+            if(this.RoleChainingAccount == null) {
+
+                this.RoleChainingAccount = new AwsRoleChainingAccount();
+                this.RoleChainingAccount.ApplyExploratoryFieldSpec(ec.NewChild("roleChainingAccount"));
+
+            } else {
+
+                this.RoleChainingAccount.ApplyExploratoryFieldSpec(ec.NewChild("roleChainingAccount"));
+
+            }
+        }
+        else if (this.RoleChainingAccount != null && ec.Excludes("roleChainingAccount",false))
+        {
+            this.RoleChainingAccount = null;
         }
     }
 

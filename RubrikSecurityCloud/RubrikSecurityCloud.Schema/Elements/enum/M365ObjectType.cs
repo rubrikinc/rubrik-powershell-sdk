@@ -24,6 +24,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M365_FOLDER")]
         M365_FOLDER,
 
+        [EnumMember(Value = "M365_MAILBOX")]
+        M365_MAILBOX,
+
+        [EnumMember(Value = "M365_MAILBOX_FOLDER")]
+        M365_MAILBOX_FOLDER,
+
         [EnumMember(Value = "M365_ONEDRIVE")]
         M365_ONEDRIVE,
 

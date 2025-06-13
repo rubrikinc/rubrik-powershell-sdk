@@ -510,3 +510,12 @@ for cloud native protection.
 +mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=true
+- RSC_TAG_ID - Filter by RSC tag ID.
+- DB2_CDM_DATABASE_ID - Filter the Db2 databases using the database ID generated
+by CDM (database_id column).
++mo:filter:db:table=cdm_udf_db
++mo:filter:db:column=database_id
++mo:filter:db:index:key=cluster_mds_index_v2
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false

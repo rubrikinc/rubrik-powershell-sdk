@@ -5,3 +5,4 @@ Cloud vendor provider.
 - AWS - AWS.
 - GCP - GCP.
 - VENDOR_UNKNOWN - Unknown.
+- OCI - OCI.

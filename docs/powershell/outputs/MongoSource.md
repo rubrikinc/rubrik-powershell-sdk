@@ -31,6 +31,8 @@ Information about MongoDB Source.
   - Management type of the MongoDB source.
 - sourceMetadata: SourceMetadata
   - Metadata of the MongoDB source.
+- isArchived: System.Boolean
+  - Specifies whether the MongoDB source is deleted.
 - descendantConnection: MongoSourceDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: MongoSourcePhysicalChildTypeConnection

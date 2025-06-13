@@ -174,6 +174,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		dbIds = @(
     /// 			$someString
     /// 		)
+    /// 		# REQUIRED
+    /// 		isAfter = $someBoolean
     /// 		# OPTIONAL
     /// 		sapHanaSystemCopyMap = @(
     /// 			@{
@@ -183,6 +185,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				targetDbId = $someString
     /// 			}
     /// 		)
+    /// 		# REQUIRED
+    /// 		shouldInitializeLogArea = $someBoolean
     /// 	}
     /// }
     /// 
@@ -977,6 +981,8 @@ $query.Var.input = @{
 		dbIds = @(
 			$someString
 		)
+		# REQUIRED
+		isAfter = $someBoolean
 		# OPTIONAL
 		sapHanaSystemCopyMap = @(
 			@{
@@ -986,6 +992,8 @@ $query.Var.input = @{
 				targetDbId = $someString
 			}
 		)
+		# REQUIRED
+		shouldInitializeLogArea = $someBoolean
 	}
 }"
             );

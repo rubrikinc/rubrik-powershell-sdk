@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRIMARY_NAME")]
         PRIMARY_NAME,
 
+        [EnumMember(Value = "SECONDARY_DB_ID")]
+        SECONDARY_DB_ID,
+
         [EnumMember(Value = "SECONDARY_NAME")]
         SECONDARY_NAME,
 

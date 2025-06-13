@@ -26,6 +26,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public ThreatMonitoringEnablementStatusInput? Status { get; set; }
 
+        //      C# -> List<System.String>? RootIds
+        // GraphQL -> rootIds: [UUID!] (scalar)
+        [JsonProperty("rootIds")]
+        public List<System.String>? RootIds { get; set; }
+
+        //      C# -> System.Boolean? IsBatchEnabled
+        // GraphQL -> isBatchEnabled: Boolean (scalar)
+        [JsonProperty("isBatchEnabled")]
+        public System.Boolean? IsBatchEnabled { get; set; }
+
 
         #endregion
 

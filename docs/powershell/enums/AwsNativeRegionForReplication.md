@@ -11,6 +11,7 @@ AWS native regions for replication.
 - EU_WEST_3 - AWS native for replication EU (Paris) region.
 - CA_WEST_1 - AWS native for replication Canada (Calgary) region.
 - ME_SOUTH_1 - AWS native for replication Middle East (Bahrain) region.
+- EU_SOUTH_2 - AWS native for replication EU (Spain) region.
 - CN_NORTHWEST_1 - AWS native for replication China (Ningxia) region.
 - AP_NORTHEAST_3 - AWS native for replication Asia Pacific (Osaka) region.
 - CN_NORTH_1 - AWS native for replication China (Beijing) region.
@@ -30,8 +31,10 @@ AWS native regions for replication.
 - AP_SOUTH_1 - AWS native for replication Asia Pacific (Mumbai) region.
 - AP_SOUTH_2 - AWS native for replication Asia Pacific (Hyderabad) region.
 - CA_CENTRAL_1 - AWS native for replication Canada (Central) region.
+- ME_CENTRAL_1 - AWS native for replication Middle East (UAE) region.
 - US_EAST_1 - AWS native for replication US East (N. Virginia) region.
 - US_ISO_WEST_1 - AWS DCA native for replication US West region.
 - US_ISOB_EAST_1 - AWS LCK native for replication US East region.
 - AP_SOUTHEAST_2 - AWS native for replication Asia Pacific (Sydney) region.
 - EU_CENTRAL_1 - AWS native for replication EU (Frankfurt) region.
+- AP_SOUTHEAST_4 - AWS native for replication Asia Pacific (Melbourne) region.

@@ -65,6 +65,26 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isPodSubnetSizeTooSmall")]
         public System.Boolean? IsPodSubnetSizeTooSmall { get; set; }
 
+        //      C# -> System.Boolean? IsPrivateDnsZoneDoesNotExist
+        // GraphQL -> isPrivateDnsZoneDoesNotExist: Boolean! (scalar)
+        [JsonProperty("isPrivateDnsZoneDoesNotExist")]
+        public System.Boolean? IsPrivateDnsZoneDoesNotExist { get; set; }
+
+        //      C# -> System.Boolean? IsPrivateDnsZoneInDifferentSubscription
+        // GraphQL -> isPrivateDnsZoneInDifferentSubscription: Boolean! (scalar)
+        [JsonProperty("isPrivateDnsZoneInDifferentSubscription")]
+        public System.Boolean? IsPrivateDnsZoneInDifferentSubscription { get; set; }
+
+        //      C# -> System.Boolean? IsPrivateDnsZoneInvalid
+        // GraphQL -> isPrivateDnsZoneInvalid: Boolean! (scalar)
+        [JsonProperty("isPrivateDnsZoneInvalid")]
+        public System.Boolean? IsPrivateDnsZoneInvalid { get; set; }
+
+        //      C# -> System.Boolean? IsPrivateDnsZoneNotLinkedToVnet
+        // GraphQL -> isPrivateDnsZoneNotLinkedToVnet: Boolean! (scalar)
+        [JsonProperty("isPrivateDnsZoneNotLinkedToVnet")]
+        public System.Boolean? IsPrivateDnsZoneNotLinkedToVnet { get; set; }
+
         //      C# -> System.Boolean? IsSubnetDelegated
         // GraphQL -> isSubnetDelegated: Boolean! (scalar)
         [JsonProperty("isSubnetDelegated")]
@@ -99,6 +119,10 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsPodCidrAndSubnetCidrOverlap = null,
         System.Boolean? IsPodCidrRangeTooSmall = null,
         System.Boolean? IsPodSubnetSizeTooSmall = null,
+        System.Boolean? IsPrivateDnsZoneDoesNotExist = null,
+        System.Boolean? IsPrivateDnsZoneInDifferentSubscription = null,
+        System.Boolean? IsPrivateDnsZoneInvalid = null,
+        System.Boolean? IsPrivateDnsZoneNotLinkedToVnet = null,
         System.Boolean? IsSubnetDelegated = null,
         System.Boolean? IsUnsupportedCustomerManagedExocomputeConfigFieldPresent = null,
         AzureExocomputeRegionConfig? Config = null
@@ -130,6 +154,18 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsPodSubnetSizeTooSmall != null ) {
             this.IsPodSubnetSizeTooSmall = IsPodSubnetSizeTooSmall;
+        }
+        if ( IsPrivateDnsZoneDoesNotExist != null ) {
+            this.IsPrivateDnsZoneDoesNotExist = IsPrivateDnsZoneDoesNotExist;
+        }
+        if ( IsPrivateDnsZoneInDifferentSubscription != null ) {
+            this.IsPrivateDnsZoneInDifferentSubscription = IsPrivateDnsZoneInDifferentSubscription;
+        }
+        if ( IsPrivateDnsZoneInvalid != null ) {
+            this.IsPrivateDnsZoneInvalid = IsPrivateDnsZoneInvalid;
+        }
+        if ( IsPrivateDnsZoneNotLinkedToVnet != null ) {
+            this.IsPrivateDnsZoneNotLinkedToVnet = IsPrivateDnsZoneNotLinkedToVnet;
         }
         if ( IsSubnetDelegated != null ) {
             this.IsSubnetDelegated = IsSubnetDelegated;
@@ -233,6 +269,42 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isPodSubnetSizeTooSmall\n" ;
             } else {
                 s += ind + "isPodSubnetSizeTooSmall\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsPrivateDnsZoneDoesNotExist
+        // GraphQL -> isPrivateDnsZoneDoesNotExist: Boolean! (scalar)
+        if (this.IsPrivateDnsZoneDoesNotExist != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPrivateDnsZoneDoesNotExist\n" ;
+            } else {
+                s += ind + "isPrivateDnsZoneDoesNotExist\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsPrivateDnsZoneInDifferentSubscription
+        // GraphQL -> isPrivateDnsZoneInDifferentSubscription: Boolean! (scalar)
+        if (this.IsPrivateDnsZoneInDifferentSubscription != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPrivateDnsZoneInDifferentSubscription\n" ;
+            } else {
+                s += ind + "isPrivateDnsZoneInDifferentSubscription\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsPrivateDnsZoneInvalid
+        // GraphQL -> isPrivateDnsZoneInvalid: Boolean! (scalar)
+        if (this.IsPrivateDnsZoneInvalid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPrivateDnsZoneInvalid\n" ;
+            } else {
+                s += ind + "isPrivateDnsZoneInvalid\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsPrivateDnsZoneNotLinkedToVnet
+        // GraphQL -> isPrivateDnsZoneNotLinkedToVnet: Boolean! (scalar)
+        if (this.IsPrivateDnsZoneNotLinkedToVnet != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPrivateDnsZoneNotLinkedToVnet\n" ;
+            } else {
+                s += ind + "isPrivateDnsZoneNotLinkedToVnet\n" ;
             }
         }
         //      C# -> System.Boolean? IsSubnetDelegated
@@ -424,6 +496,74 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsPodSubnetSizeTooSmall != null && ec.Excludes("isPodSubnetSizeTooSmall",true))
         {
             this.IsPodSubnetSizeTooSmall = null;
+        }
+        //      C# -> System.Boolean? IsPrivateDnsZoneDoesNotExist
+        // GraphQL -> isPrivateDnsZoneDoesNotExist: Boolean! (scalar)
+        if (ec.Includes("isPrivateDnsZoneDoesNotExist",true))
+        {
+            if(this.IsPrivateDnsZoneDoesNotExist == null) {
+
+                this.IsPrivateDnsZoneDoesNotExist = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPrivateDnsZoneDoesNotExist != null && ec.Excludes("isPrivateDnsZoneDoesNotExist",true))
+        {
+            this.IsPrivateDnsZoneDoesNotExist = null;
+        }
+        //      C# -> System.Boolean? IsPrivateDnsZoneInDifferentSubscription
+        // GraphQL -> isPrivateDnsZoneInDifferentSubscription: Boolean! (scalar)
+        if (ec.Includes("isPrivateDnsZoneInDifferentSubscription",true))
+        {
+            if(this.IsPrivateDnsZoneInDifferentSubscription == null) {
+
+                this.IsPrivateDnsZoneInDifferentSubscription = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPrivateDnsZoneInDifferentSubscription != null && ec.Excludes("isPrivateDnsZoneInDifferentSubscription",true))
+        {
+            this.IsPrivateDnsZoneInDifferentSubscription = null;
+        }
+        //      C# -> System.Boolean? IsPrivateDnsZoneInvalid
+        // GraphQL -> isPrivateDnsZoneInvalid: Boolean! (scalar)
+        if (ec.Includes("isPrivateDnsZoneInvalid",true))
+        {
+            if(this.IsPrivateDnsZoneInvalid == null) {
+
+                this.IsPrivateDnsZoneInvalid = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPrivateDnsZoneInvalid != null && ec.Excludes("isPrivateDnsZoneInvalid",true))
+        {
+            this.IsPrivateDnsZoneInvalid = null;
+        }
+        //      C# -> System.Boolean? IsPrivateDnsZoneNotLinkedToVnet
+        // GraphQL -> isPrivateDnsZoneNotLinkedToVnet: Boolean! (scalar)
+        if (ec.Includes("isPrivateDnsZoneNotLinkedToVnet",true))
+        {
+            if(this.IsPrivateDnsZoneNotLinkedToVnet == null) {
+
+                this.IsPrivateDnsZoneNotLinkedToVnet = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPrivateDnsZoneNotLinkedToVnet != null && ec.Excludes("isPrivateDnsZoneNotLinkedToVnet",true))
+        {
+            this.IsPrivateDnsZoneNotLinkedToVnet = null;
         }
         //      C# -> System.Boolean? IsSubnetDelegated
         // GraphQL -> isSubnetDelegated: Boolean! (scalar)

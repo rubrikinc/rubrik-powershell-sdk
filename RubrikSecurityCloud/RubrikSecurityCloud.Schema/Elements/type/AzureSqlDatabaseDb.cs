@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region AzureSqlDatabaseDb
  
-    public class AzureSqlDatabaseDb: BaseType, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class AzureSqlDatabaseDb: BaseType, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 

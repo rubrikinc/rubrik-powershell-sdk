@@ -83,6 +83,9 @@ Supported in v5.0+
   Boolean value specifying whether the database obtains the log backup configurations from the SLA Domain.
 - snappable: CdmWorkload
   - 
+- shouldUseSecureThriftForDataTransfer: System.Boolean
+  - Supported in v9.4
+  Boolean value specifying whether to use secure thrift as the data transfer mechanism between the Rubrik cluster and the Oracle database instead of NFS. The default data transfer mechanism is NFS.
 - dataGuardType: CdmDataGuardType
   - 
 - infraPath: list of ManagedHierarchyObjectAncestors

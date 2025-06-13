@@ -87,6 +87,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_VIRTUAL_MACHINE")]
         HYPERV_VIRTUAL_MACHINE,
 
+        [EnumMember(Value = "K8S_CLUSTER")]
+        K8S_CLUSTER,
+
+        [EnumMember(Value = "K8S_NAMESPACE_V2")]
+        K8S_NAMESPACE_V2,
+
+        [EnumMember(Value = "K8S_ROOT")]
+        K8S_ROOT,
+
         [EnumMember(Value = "K8S_VIRTUAL_MACHINE")]
         K8S_VIRTUAL_MACHINE,
 
@@ -116,6 +125,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "O365_GROUP")]
         O365_GROUP,
+
+        [EnumMember(Value = "O365_MAILBOX")]
+        O365_MAILBOX,
 
         [EnumMember(Value = "O365_ONEDRIVE")]
         O365_ONEDRIVE,

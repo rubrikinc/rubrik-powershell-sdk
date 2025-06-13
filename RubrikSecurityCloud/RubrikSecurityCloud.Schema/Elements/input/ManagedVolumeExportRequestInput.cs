@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldDownloadToLocal")]
         public System.Boolean? ShouldDownloadToLocal { get; set; }
 
+        //      C# -> System.String? LocationId
+        // GraphQL -> locationId: String (scalar)
+        [JsonProperty("locationId")]
+        public System.String? LocationId { get; set; }
+
         //      C# -> ManagedVolumeExportConfigInput? ManagedVolumeExportConfig
         // GraphQL -> managedVolumeExportConfig: ManagedVolumeExportConfigInput (input)
         [JsonProperty("managedVolumeExportConfig")]

@@ -13,6 +13,8 @@
   - Search certificates according to whether or not they are added to truststore. The default is false.
 - name: System.String
   - Search by certificate name.
+- excludeUsages: list of ExcludeUsagess
+  - Specifies which certificate usages to exclude.
 - sortBy: V1QueryCertificatesRequestSortBy
   - Attribute by which the list of certificates is sorted.
 - sortOrder: V1QueryCertificatesRequestSortOrder

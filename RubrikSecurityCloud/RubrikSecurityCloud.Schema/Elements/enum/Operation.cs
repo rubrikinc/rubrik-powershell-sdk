@@ -45,6 +45,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ADD_KMS_KEY_VAULT")]
         ADD_KMS_KEY_VAULT,
 
+        [EnumMember(Value = "ADD_OCI_CLOUD_ACCOUNT")]
+        ADD_OCI_CLOUD_ACCOUNT,
+
         [EnumMember(Value = "ADD_STORAGE_SETTINGS")]
         ADD_STORAGE_SETTINGS,
 
@@ -120,6 +123,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DELETE_INVENTORY")]
         DELETE_INVENTORY,
 
+        [EnumMember(Value = "DELETE_OCI_CLOUD_ACCOUNT")]
+        DELETE_OCI_CLOUD_ACCOUNT,
+
         [EnumMember(Value = "DELETE_REPORT")]
         DELETE_REPORT,
 
@@ -170,6 +176,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "EDIT_NETWORK_THROTTLE_SETTINGS")]
         EDIT_NETWORK_THROTTLE_SETTINGS,
+
+        [EnumMember(Value = "EDIT_OCI_CLOUD_ACCOUNT")]
+        EDIT_OCI_CLOUD_ACCOUNT,
 
         [EnumMember(Value = "EDIT_ORGANIZATION")]
         EDIT_ORGANIZATION,
@@ -560,6 +569,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_NON_SYSTEM_EVENT")]
         VIEW_NON_SYSTEM_EVENT,
+
+        [EnumMember(Value = "VIEW_OCI_CLOUD_ACCOUNT")]
+        VIEW_OCI_CLOUD_ACCOUNT,
 
         [EnumMember(Value = "VIEW_OKTA_INTEGRATION")]
         VIEW_OKTA_INTEGRATION,

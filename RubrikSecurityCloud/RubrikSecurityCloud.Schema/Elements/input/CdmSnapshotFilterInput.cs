@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isIndexed")]
         public System.Boolean? IsIndexed { get; set; }
 
+        //      C# -> System.Boolean? LocalSnapshotsOnly
+        // GraphQL -> localSnapshotsOnly: Boolean (scalar)
+        [JsonProperty("localSnapshotsOnly")]
+        public System.Boolean? LocalSnapshotsOnly { get; set; }
+
 
         #endregion
 

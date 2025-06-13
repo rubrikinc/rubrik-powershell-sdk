@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DENSE")]
         DENSE,
 
+        [EnumMember(Value = "EXTRA_DENSE")]
+        EXTRA_DENSE,
+
         [EnumMember(Value = "STANDARD")]
         STANDARD
 

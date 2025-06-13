@@ -3,6 +3,7 @@ AWS native regions.
 
 - US_EAST_1 - AWS native US East (N. Virginia) region.
 - ME_SOUTH_1 - AWS native Middle East (Bahrain) region.
+- AP_SOUTHEAST_4 - AWS native Asia Pacific (Melbourne) region.
 - CN_NORTH_1 - AWS native China (Beijing) region.
 - US_GOV_WEST_1 - AWS Gov native US West 1 (N. California) region.
 - CN_NORTHWEST_1 - AWS native China (Ningxia) region.
@@ -15,8 +16,10 @@ AWS native regions.
 - US_ISOB_EAST_1 - AWS LCK native US East region.
 - AP_NORTHEAST_1 - AWS native Asia Pacific (Tokyo) region.
 - US_EAST_2 - AWS native US East (Ohio) region.
+- EU_SOUTH_2 - AWS native EU (Spain) region.
 - US_ISO_EAST_1 - AWS DCA native US East region.
 - AP_SOUTHEAST_3 - AWS native Asia Pacific (Jakarta) region.
+- ME_CENTRAL_1 - AWS native Middle East (UAE) region.
 - NOT_SPECIFIED - AWS native region is not specified.
 - CA_CENTRAL_1 - AWS native Canada (Central) region.
 - EU_WEST_2 - AWS native EU (London) region.

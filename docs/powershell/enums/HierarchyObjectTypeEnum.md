@@ -15,6 +15,7 @@ Type of hierarchy object.
 - MYSQLDB_INSTANCE - MySQL Instance.
 - NUTANIX_CATEGORY - Nutanix Category.
 - VcdOrg
+- K8S_LABEL - Kubernetes label.
 - O365Teams
 - CLOUD_DIRECT_NAS_NAMESPACE
 - VSPHERE_VIRTUAL_DISK - VSphere Virtual Disk.
@@ -136,6 +137,7 @@ Type of hierarchy object.
 - CONFLUENCE_SPACE - Confluence space.
 - NUTANIX_ERA - Nutanix Era.
 - ORCHESTRATED_APPLICATION_RECOVERY_BLUEPRINT - Orchestrated Application Recovery Blueprint.
+- AzureNativeRegion
 - HypervCluster
 - JIRA_PROJECT - Jira project.
 - OPENSTACK_REGION - OpenStack Region.
@@ -158,6 +160,7 @@ Type of hierarchy object.
 - M365_BACKUP_STORAGE_ONEDRIVE - M365 Backup Storage Onedrive.
 - SapHanaDatabase - SAP HANA Database.
 - GcpNativeDisk
+- INFORMIX_INSTANCE - Informix Instance.
 - NutanixCluster
 - CASSANDRA_KEYSPACE - Cassandra Keyspace.
 - VSphereResourcePool

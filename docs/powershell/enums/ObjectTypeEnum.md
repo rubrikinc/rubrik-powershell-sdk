@@ -75,5 +75,6 @@
 - M365_BACKUP_STORAGE_ONEDRIVE - M365 Backup Storage Onedrive.
 - SapHanaDatabase - SAP HANA Database.
 - GcpNativeDisk
+- INFORMIX_INSTANCE - Informix Instance.
 - CASSANDRA_KEYSPACE - Cassandra Keyspace.
 - ORACLE_DATA_GUARD_GROUP

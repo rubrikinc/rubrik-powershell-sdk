@@ -207,6 +207,10 @@ Authorized operations on an object.
 - ADD_TAG - Add RSC tags.
 - VIEW_TAG - View RSC tags.
 - MANAGE_TAG - Manage RSC tags.
+- ADD_OCI_CLOUD_ACCOUNT - Add OCI cloud account.
+- EDIT_OCI_CLOUD_ACCOUNT - Edit OCI cloud account.
+- VIEW_OCI_CLOUD_ACCOUNT - View OCI cloud account.
+- DELETE_OCI_CLOUD_ACCOUNT - Delete OCI cloud account.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

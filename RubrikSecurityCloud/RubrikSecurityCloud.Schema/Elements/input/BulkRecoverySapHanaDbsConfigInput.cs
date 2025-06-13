@@ -31,10 +31,24 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dbIds")]
         public List<System.String>? DbIds { get; set; }
 
+        //      C# -> System.Boolean? IsAfter
+        // GraphQL -> isAfter: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("isAfter")]
+        public System.Boolean? IsAfter { get; set; }
+
         //      C# -> List<SapHanaSystemCopyConfigInput>? SapHanaSystemCopyMap
         // GraphQL -> sapHanaSystemCopyMap: [SapHanaSystemCopyConfigInput!] (input)
         [JsonProperty("sapHanaSystemCopyMap")]
         public List<SapHanaSystemCopyConfigInput>? SapHanaSystemCopyMap { get; set; }
+
+        //      C# -> System.Boolean? ShouldInitializeLogArea
+        // GraphQL -> shouldInitializeLogArea: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("shouldInitializeLogArea")]
+        public System.Boolean? ShouldInitializeLogArea { get; set; }
 
 
         #endregion

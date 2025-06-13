@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RestoreFailedItemsExportDisabledReason? ExportDisabledReason
+        // GraphQL -> exportDisabledReason: RestoreFailedItemsExportDisabledReason! (enum)
+        [JsonProperty("exportDisabledReason")]
+        public RestoreFailedItemsExportDisabledReason? ExportDisabledReason { get; set; }
+
+        //      C# -> System.Boolean? CanExportFailedItems
+        // GraphQL -> canExportFailedItems: Boolean! (scalar)
+        [JsonProperty("canExportFailedItems")]
+        public System.Boolean? CanExportFailedItems { get; set; }
+
         //      C# -> System.String? CsvDownloadLink
         // GraphQL -> csvDownloadLink: URL! (scalar)
         [JsonProperty("csvDownloadLink")]
@@ -45,11 +55,19 @@ namespace RubrikSecurityCloud.Types
     }
 
     public FailedRestoreItemsInfoReply Set(
+        RestoreFailedItemsExportDisabledReason? ExportDisabledReason = null,
+        System.Boolean? CanExportFailedItems = null,
         System.String? CsvDownloadLink = null,
         System.Int32? TotalFailedItemCount = null,
         List<FailedRestoreItemInfo>? FailedItems = null
     ) 
     {
+        if ( ExportDisabledReason != null ) {
+            this.ExportDisabledReason = ExportDisabledReason;
+        }
+        if ( CanExportFailedItems != null ) {
+            this.CanExportFailedItems = CanExportFailedItems;
+        }
         if ( CsvDownloadLink != null ) {
             this.CsvDownloadLink = CsvDownloadLink;
         }
@@ -73,6 +91,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RestoreFailedItemsExportDisabledReason? ExportDisabledReason
+        // GraphQL -> exportDisabledReason: RestoreFailedItemsExportDisabledReason! (enum)
+        if (this.ExportDisabledReason != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "exportDisabledReason\n" ;
+            } else {
+                s += ind + "exportDisabledReason\n" ;
+            }
+        }
+        //      C# -> System.Boolean? CanExportFailedItems
+        // GraphQL -> canExportFailedItems: Boolean! (scalar)
+        if (this.CanExportFailedItems != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "canExportFailedItems\n" ;
+            } else {
+                s += ind + "canExportFailedItems\n" ;
+            }
+        }
         //      C# -> System.String? CsvDownloadLink
         // GraphQL -> csvDownloadLink: URL! (scalar)
         if (this.CsvDownloadLink != null) {
@@ -110,6 +146,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> RestoreFailedItemsExportDisabledReason? ExportDisabledReason
+        // GraphQL -> exportDisabledReason: RestoreFailedItemsExportDisabledReason! (enum)
+        if (ec.Includes("exportDisabledReason",true))
+        {
+            if(this.ExportDisabledReason == null) {
+
+                this.ExportDisabledReason = new RestoreFailedItemsExportDisabledReason();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExportDisabledReason != null && ec.Excludes("exportDisabledReason",true))
+        {
+            this.ExportDisabledReason = null;
+        }
+        //      C# -> System.Boolean? CanExportFailedItems
+        // GraphQL -> canExportFailedItems: Boolean! (scalar)
+        if (ec.Includes("canExportFailedItems",true))
+        {
+            if(this.CanExportFailedItems == null) {
+
+                this.CanExportFailedItems = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.CanExportFailedItems != null && ec.Excludes("canExportFailedItems",true))
+        {
+            this.CanExportFailedItems = null;
+        }
         //      C# -> System.String? CsvDownloadLink
         // GraphQL -> csvDownloadLink: URL! (scalar)
         if (ec.Includes("csvDownloadLink",true))

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 9
     /// operations in the 'Fileset' API domain:
-    /// BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkUpdateTemplate, GenerateBackupReport, RecoverFiles, or Update.
+    /// BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkUpdateTemplate, GenerateBackupReport, RecoverFiles, RecoverFilesFromArchivalLocation, or Update.
     /// </summary>
     /// <description>
     /// New-RscMutationFileset creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 9 operations
     /// in the 'Fileset' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkUpdateTemplate, GenerateBackupReport, RecoverFiles, or Update.
+    /// one of: BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkUpdateTemplate, GenerateBackupReport, RecoverFiles, RecoverFilesFromArchivalLocation, or Update.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -439,6 +439,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldRecreateDirectoryStructure = $someBoolean
     /// 		# OPTIONAL
+    /// 		postRestoreScript = $someString
+    /// 		# OPTIONAL
     /// 		shouldRestoreOnlyAcls = $someBoolean
     /// 		# REQUIRED
     /// 		restoreConfig = @(
@@ -457,6 +459,85 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
     /// 	# REQUIRED
     /// 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RecoverFilesFromArchivalLocation operation
+    /// of the 'Fileset' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Fileset
+    /// # API Operation: RecoverFilesFromArchivalLocation
+    /// 
+    /// $query = New-RscMutationFileset -Operation RecoverFilesFromArchivalLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	nextSnapshotId = $someString
+    /// 	# REQUIRED
+    /// 	restorePathPairList = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			path = $someString
+    /// 			# OPTIONAL
+    /// 			restorePath = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	deltaTypeFilter = @(
+    /// 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+    /// 	)
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		ignoreErrors = $someBoolean
+    /// 		# OPTIONAL
+    /// 		excludePaths = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldRecreateDirectoryStructure = $someBoolean
+    /// 		# OPTIONAL
+    /// 		postRestoreScript = $someString
+    /// 		# OPTIONAL
+    /// 		shouldRestoreOnlyAcls = $someBoolean
+    /// 		# REQUIRED
+    /// 		restoreConfig = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				restorePathPair = @{
+    /// 					# OPTIONAL
+    /// 					restorePath = $someString
+    /// 					# REQUIRED
+    /// 					path = $someString
+    /// 				}
+    /// 			}
+    /// 		)
+    /// 	}
+    /// 	# REQUIRED
+    /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
+    /// 	# REQUIRED
+    /// 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+    /// 	# REQUIRED
+    /// 	locationId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -540,6 +621,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "BulkUpdateTemplate",
                 "GenerateBackupReport",
                 "RecoverFiles",
+                "RecoverFilesFromArchivalLocation",
                 "Update",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -576,6 +658,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RecoverFiles":
                         this.ProcessRecord_RecoverFiles();
+                        break;
+                    case "RecoverFilesFromArchivalLocation":
+                        this.ProcessRecord_RecoverFilesFromArchivalLocation();
                         break;
                     case "Update":
                         this.ProcessRecord_Update();
@@ -651,6 +736,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RecoverFiles";
             // Create new graphql operation filesetRecoverFiles
             InitMutationFilesetRecoverFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // filesetRecoverFilesFromArchivalLocation.
+        internal void ProcessRecord_RecoverFilesFromArchivalLocation()
+        {
+            this._logger.name += " -RecoverFilesFromArchivalLocation";
+            // Create new graphql operation filesetRecoverFilesFromArchivalLocation
+            InitMutationFilesetRecoverFilesFromArchivalLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -980,6 +1074,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldRecreateDirectoryStructure = $someBoolean
 		# OPTIONAL
+		postRestoreScript = $someString
+		# OPTIONAL
 		shouldRestoreOnlyAcls = $someBoolean
 		# REQUIRED
 		restoreConfig = @(
@@ -998,6 +1094,77 @@ $query.Var.input = @{
 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
 	# REQUIRED
 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // filesetRecoverFilesFromArchivalLocation(input: FilesetRecoverFilesFromArchivalLocationInput!): AsyncRequestStatus!
+        internal void InitMutationFilesetRecoverFilesFromArchivalLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "FilesetRecoverFilesFromArchivalLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationFilesetRecoverFilesFromArchivalLocation",
+                "($input: FilesetRecoverFilesFromArchivalLocationInput!)",
+                "AsyncRequestStatus",
+                Mutation.FilesetRecoverFilesFromArchivalLocation,
+                Mutation.FilesetRecoverFilesFromArchivalLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	snapshotId = $someString
+	# OPTIONAL
+	nextSnapshotId = $someString
+	# REQUIRED
+	restorePathPairList = @(
+		@{
+			# OPTIONAL
+			path = $someString
+			# OPTIONAL
+			restorePath = $someString
+		}
+	)
+	# OPTIONAL
+	deltaTypeFilter = @(
+		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+	)
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		ignoreErrors = $someBoolean
+		# OPTIONAL
+		excludePaths = @(
+			$someString
+		)
+		# OPTIONAL
+		shouldRecreateDirectoryStructure = $someBoolean
+		# OPTIONAL
+		postRestoreScript = $someString
+		# OPTIONAL
+		shouldRestoreOnlyAcls = $someBoolean
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# OPTIONAL
+				restorePathPair = @{
+					# OPTIONAL
+					restorePath = $someString
+					# REQUIRED
+					path = $someString
+				}
+			}
+		)
+	}
+	# REQUIRED
+	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
+	# REQUIRED
+	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+	# REQUIRED
+	locationId = $someString
 }"
             );
         }

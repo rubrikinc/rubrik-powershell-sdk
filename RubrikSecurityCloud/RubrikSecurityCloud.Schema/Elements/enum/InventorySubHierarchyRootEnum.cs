@@ -66,6 +66,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_ROOT")]
         HYPERV_ROOT,
 
+        [EnumMember(Value = "INFORMIX_ROOT")]
+        INFORMIX_ROOT,
+
         [EnumMember(Value = "K8S_ROOT")]
         K8S_ROOT,
 

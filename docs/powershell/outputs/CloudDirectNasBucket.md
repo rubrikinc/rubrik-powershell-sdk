@@ -35,6 +35,8 @@ NAS Cloud Direct bucket.
   - Prefix protection entries included in this bucket.
 - parentBucket: CloudDirectNasBucket
   - The parent of this bucket.
+- targets: CloudDirectObjectTargets
+  - Targets associated with the backups for this bucket.
 - newestSnapshot: CloudDirectSnapshot
   - The most recent snapshot of this bucket.
 - oldestSnapshot: CloudDirectSnapshot

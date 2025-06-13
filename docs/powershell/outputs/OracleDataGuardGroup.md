@@ -43,6 +43,12 @@
   - List of descendants.
 - logicalChildConnection: OracleDataGuardGroupLogicalChildTypeConnection
   - List of logical children.
+- effectiveLogBackupFrequency: Duration
+  - Effective log backup frequency for the Oracle database.
+- effectiveLogRetention: Duration
+  - Effective log retention for the Oracle Data Guard group.
+- effectiveHostLogRetention: Duration
+  - Effective host log retention for the Oracle Data Guard group, or -1 if indefinite.
 - id: System.String
   - FID of the hierarchy object.
 - name: System.String

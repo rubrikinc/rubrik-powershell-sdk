@@ -48,6 +48,14 @@ v9.3+: Initiate a job to copy one or more file or folder from a fileset backup t
 
 - There is a single argument of type FilesetRecoverFilesInput.
 - Returns AsyncRequestStatus.
+### recoverfilesfromarchivallocation
+Initiate a job to restore files or folders
+
+Supported in v8.0+
+Initiate a job to copy one or more file or folder in a fileset backup from specified archival location to the source host. Returns the job instance ID.
+
+- There is a single argument of type FilesetRecoverFilesFromArchivalLocationInput.
+- Returns AsyncRequestStatus.
 ### update
 Update a Fileset
 

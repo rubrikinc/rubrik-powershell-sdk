@@ -120,3 +120,8 @@ Returns rows for SonarReport table.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns SonarReportRowConnection.
+### templatesbycategories
+Retrieve all report templates by category.
+
+- There is a single argument of type AllReportTemplatesByCategoriesInput.
+- Returns list of ReportTemplatesByCategorys.

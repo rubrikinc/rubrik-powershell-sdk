@@ -7,3 +7,5 @@ Specs required for Export URL.
   - Name of the blob.
 - polarisAccount: System.String
   - Polaris account of the user.
+- actionType: O365RestoreActionType
+  - Recovery action type.

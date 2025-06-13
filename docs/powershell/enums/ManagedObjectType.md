@@ -163,6 +163,9 @@ All supported managed objects.
 - OPENSTACK_DOMAIN - Openstack Domain.
 - OPENSTACK_PROJECT - Openstack Project.
 - CLOUD_DIRECT_NAS_BUCKET - NAS Cloud direct bucket.
+- K8S_LABEL - Kubernetes label.
+- INFORMIX_INSTANCE - Informix Instance.
+- AZURE_REGION - Azure Region.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

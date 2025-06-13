@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region AwsNativeRdsInstance
  
-    public class AwsNativeRdsInstance: BaseType, AwsNativeAccountDescendantType, AwsNativeAccountLogicalChildType, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class AwsNativeRdsInstance: BaseType, AwsNativeAccountDescendantType, AwsNativeAccountLogicalChildType, AwsNativeHierarchyObject, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 
@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsAccountRubrikId")]
         public System.String? AwsAccountRubrikId { get; set; }
 
+        //      C# -> System.String? CloudNativeId
+        // GraphQL -> cloudNativeId: String! (scalar)
+        [JsonProperty("cloudNativeId")]
+        public System.String? CloudNativeId { get; set; }
+
         //      C# -> System.String? DbInstanceName
         // GraphQL -> dbInstanceName: String! (scalar)
         [JsonProperty("dbInstanceName")]
@@ -130,6 +135,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
         public System.String? Name { get; set; }
+
+        //      C# -> System.String? NativeName
+        // GraphQL -> nativeName: String! (scalar)
+        [JsonProperty("nativeName")]
+        public System.String? NativeName { get; set; }
 
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
@@ -364,6 +374,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? AllocatedStorageInGibi = null,
         List<System.String>? AuroraAvailabilityZones = null,
         System.String? AwsAccountRubrikId = null,
+        System.String? CloudNativeId = null,
         System.String? DbInstanceName = null,
         System.String? DbiResourceId = null,
         System.String? Id = null,
@@ -372,6 +383,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsRelic = null,
         System.String? MaintenanceWindow = null,
         System.String? Name = null,
+        System.String? NativeName = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
         System.String? PrimaryAvailabilityZone = null,
@@ -442,6 +454,9 @@ namespace RubrikSecurityCloud.Types
         if ( AwsAccountRubrikId != null ) {
             this.AwsAccountRubrikId = AwsAccountRubrikId;
         }
+        if ( CloudNativeId != null ) {
+            this.CloudNativeId = CloudNativeId;
+        }
         if ( DbInstanceName != null ) {
             this.DbInstanceName = DbInstanceName;
         }
@@ -465,6 +480,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( NativeName != null ) {
+            this.NativeName = NativeName;
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
@@ -696,6 +714,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "awsAccountRubrikId\n" ;
             }
         }
+        //      C# -> System.String? CloudNativeId
+        // GraphQL -> cloudNativeId: String! (scalar)
+        if (this.CloudNativeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudNativeId\n" ;
+            } else {
+                s += ind + "cloudNativeId\n" ;
+            }
+        }
         //      C# -> System.String? DbInstanceName
         // GraphQL -> dbInstanceName: String! (scalar)
         if (this.DbInstanceName != null) {
@@ -766,6 +793,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? NativeName
+        // GraphQL -> nativeName: String! (scalar)
+        if (this.NativeName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nativeName\n" ;
+            } else {
+                s += ind + "nativeName\n" ;
             }
         }
         //      C# -> System.Int32? NumWorkloadDescendants
@@ -1325,6 +1361,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AwsAccountRubrikId = null;
         }
+        //      C# -> System.String? CloudNativeId
+        // GraphQL -> cloudNativeId: String! (scalar)
+        if (ec.Includes("cloudNativeId",true))
+        {
+            if(this.CloudNativeId == null) {
+
+                this.CloudNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudNativeId != null && ec.Excludes("cloudNativeId",true))
+        {
+            this.CloudNativeId = null;
+        }
         //      C# -> System.String? DbInstanceName
         // GraphQL -> dbInstanceName: String! (scalar)
         if (ec.Includes("dbInstanceName",true))
@@ -1460,6 +1513,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.String? NativeName
+        // GraphQL -> nativeName: String! (scalar)
+        if (ec.Includes("nativeName",true))
+        {
+            if(this.NativeName == null) {
+
+                this.NativeName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NativeName != null && ec.Excludes("nativeName",true))
+        {
+            this.NativeName = null;
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)

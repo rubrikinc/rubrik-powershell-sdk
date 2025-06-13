@@ -37,6 +37,8 @@ NAS Cloud Direct share.
   - The NAS Cloud Direct namespace to which this NAS share belongs.
 - childShares: CloudDirectNasShareConnection
   - Directory protection entries included in this share.
+- targets: CloudDirectObjectTargets
+  - Targets associated with the backups for this share.
 - parentShare: CloudDirectNasShare
   - The parent of this share.
 - newestSnapshot: CloudDirectSnapshot

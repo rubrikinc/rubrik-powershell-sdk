@@ -146,6 +146,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> NasNamespaceNetAppMetroClusterInfo? NetAppMetroClusterInfo
+        // GraphQL -> netAppMetroClusterInfo: NasNamespaceNetAppMetroClusterInfo (type)
+        [JsonProperty("netAppMetroClusterInfo")]
+        public NasNamespaceNetAppMetroClusterInfo? NetAppMetroClusterInfo { get; set; }
+
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
         [JsonProperty("objectPauseStatus")]
@@ -260,6 +265,7 @@ namespace RubrikSecurityCloud.Types
         LatestUserNote? LatestUserNote = null,
         NasNamespaceLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
+        NasNamespaceNetAppMetroClusterInfo? NetAppMetroClusterInfo = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
@@ -342,6 +348,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( NetAppMetroClusterInfo != null ) {
+            this.NetAppMetroClusterInfo = NetAppMetroClusterInfo;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -641,6 +650,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> NasNamespaceNetAppMetroClusterInfo? NetAppMetroClusterInfo
+        // GraphQL -> netAppMetroClusterInfo: NasNamespaceNetAppMetroClusterInfo (type)
+        if (this.NetAppMetroClusterInfo != null) {
+            var fspec = this.NetAppMetroClusterInfo.AsFieldSpec(conf.Child("netAppMetroClusterInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "netAppMetroClusterInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1193,6 +1214,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> NasNamespaceNetAppMetroClusterInfo? NetAppMetroClusterInfo
+        // GraphQL -> netAppMetroClusterInfo: NasNamespaceNetAppMetroClusterInfo (type)
+        if (ec.Includes("netAppMetroClusterInfo",false))
+        {
+            if(this.NetAppMetroClusterInfo == null) {
+
+                this.NetAppMetroClusterInfo = new NasNamespaceNetAppMetroClusterInfo();
+                this.NetAppMetroClusterInfo.ApplyExploratoryFieldSpec(ec.NewChild("netAppMetroClusterInfo"));
+
+            } else {
+
+                this.NetAppMetroClusterInfo.ApplyExploratoryFieldSpec(ec.NewChild("netAppMetroClusterInfo"));
+
+            }
+        }
+        else if (this.NetAppMetroClusterInfo != null && ec.Excludes("netAppMetroClusterInfo",false))
+        {
+            this.NetAppMetroClusterInfo = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

@@ -57,6 +57,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_MANAGED_DISK")]
         AZURE_MANAGED_DISK,
 
+        [EnumMember(Value = "AZURE_REGION")]
+        AZURE_REGION,
+
         [EnumMember(Value = "AZURE_RESOURCE_GROUP")]
         AZURE_RESOURCE_GROUP,
 
@@ -192,6 +195,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_VIRTUAL_MACHINE")]
         HYPERV_VIRTUAL_MACHINE,
 
+        [EnumMember(Value = "INFORMIX_INSTANCE")]
+        INFORMIX_INSTANCE,
+
         [EnumMember(Value = "JIRA_FIXED_OBJECT")]
         JIRA_FIXED_OBJECT,
 
@@ -200,6 +206,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "K8S_CLUSTER")]
         K8S_CLUSTER,
+
+        [EnumMember(Value = "K8S_LABEL")]
+        K8S_LABEL,
 
         [EnumMember(Value = "K8S_NAMESPACE_V2")]
         K8S_NAMESPACE_V2,

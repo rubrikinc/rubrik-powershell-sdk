@@ -255,6 +255,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	pauseStatus = @(
     /// 		$someReplicationPairPauseStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationPairPauseStatus]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	sourceAndTargetConnectionStatuses = @(
+    /// 		$someConnectionStatusType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConnectionStatusType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	targetAndSourceConnectionStatuses = @(
+    /// 		$someConnectionStatusType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConnectionStatusType]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -655,6 +663,14 @@ $query.Var.filter = @{
 	# OPTIONAL
 	pauseStatus = @(
 		$someReplicationPairPauseStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationPairPauseStatus]) for enum values.
+	)
+	# OPTIONAL
+	sourceAndTargetConnectionStatuses = @(
+		$someConnectionStatusType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConnectionStatusType]) for enum values.
+	)
+	# OPTIONAL
+	targetAndSourceConnectionStatuses = @(
+		$someConnectionStatusType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConnectionStatusType]) for enum values.
 	)
 }"
             );

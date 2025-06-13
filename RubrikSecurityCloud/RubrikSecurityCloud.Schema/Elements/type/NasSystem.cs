@@ -86,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isChangelistEnabled")]
         public System.Boolean? IsChangelistEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsNetAppMetroClusterEnabled
+        // GraphQL -> isNetAppMetroClusterEnabled: Boolean! (scalar)
+        [JsonProperty("isNetAppMetroClusterEnabled")]
+        public System.Boolean? IsNetAppMetroClusterEnabled { get; set; }
+
         //      C# -> System.Boolean? IsNfsSupported
         // GraphQL -> isNfsSupported: Boolean! (scalar)
         [JsonProperty("isNfsSupported")]
@@ -191,6 +196,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> NasSystemNetAppMetroClusterInfo? NetAppMetroClusterInfo
+        // GraphQL -> netAppMetroClusterInfo: NasSystemNetAppMetroClusterInfo (type)
+        [JsonProperty("netAppMetroClusterInfo")]
+        public NasSystemNetAppMetroClusterInfo? NetAppMetroClusterInfo { get; set; }
+
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
         [JsonProperty("objectPauseStatus")]
@@ -293,6 +303,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CdmId = null,
         System.String? Id = null,
         System.Boolean? IsChangelistEnabled = null,
+        System.Boolean? IsNetAppMetroClusterEnabled = null,
         System.Boolean? IsNfsSupported = null,
         System.Boolean? IsRelic = null,
         System.Boolean? IsSmbSupported = null,
@@ -314,6 +325,7 @@ namespace RubrikSecurityCloud.Types
         LatestUserNote? LatestUserNote = null,
         NasSystemLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
+        NasSystemNetAppMetroClusterInfo? NetAppMetroClusterInfo = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
@@ -360,6 +372,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsChangelistEnabled != null ) {
             this.IsChangelistEnabled = IsChangelistEnabled;
+        }
+        if ( IsNetAppMetroClusterEnabled != null ) {
+            this.IsNetAppMetroClusterEnabled = IsNetAppMetroClusterEnabled;
         }
         if ( IsNfsSupported != null ) {
             this.IsNfsSupported = IsNfsSupported;
@@ -423,6 +438,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( NetAppMetroClusterInfo != null ) {
+            this.NetAppMetroClusterInfo = NetAppMetroClusterInfo;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -591,6 +609,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isChangelistEnabled\n" ;
             } else {
                 s += ind + "isChangelistEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsNetAppMetroClusterEnabled
+        // GraphQL -> isNetAppMetroClusterEnabled: Boolean! (scalar)
+        if (this.IsNetAppMetroClusterEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isNetAppMetroClusterEnabled\n" ;
+            } else {
+                s += ind + "isNetAppMetroClusterEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsNfsSupported
@@ -803,6 +830,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> NasSystemNetAppMetroClusterInfo? NetAppMetroClusterInfo
+        // GraphQL -> netAppMetroClusterInfo: NasSystemNetAppMetroClusterInfo (type)
+        if (this.NetAppMetroClusterInfo != null) {
+            var fspec = this.NetAppMetroClusterInfo.AsFieldSpec(conf.Child("netAppMetroClusterInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "netAppMetroClusterInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1135,6 +1174,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsChangelistEnabled != null && ec.Excludes("isChangelistEnabled",true))
         {
             this.IsChangelistEnabled = null;
+        }
+        //      C# -> System.Boolean? IsNetAppMetroClusterEnabled
+        // GraphQL -> isNetAppMetroClusterEnabled: Boolean! (scalar)
+        if (ec.Includes("isNetAppMetroClusterEnabled",true))
+        {
+            if(this.IsNetAppMetroClusterEnabled == null) {
+
+                this.IsNetAppMetroClusterEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsNetAppMetroClusterEnabled != null && ec.Excludes("isNetAppMetroClusterEnabled",true))
+        {
+            this.IsNetAppMetroClusterEnabled = null;
         }
         //      C# -> System.Boolean? IsNfsSupported
         // GraphQL -> isNfsSupported: Boolean! (scalar)
@@ -1508,6 +1564,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> NasSystemNetAppMetroClusterInfo? NetAppMetroClusterInfo
+        // GraphQL -> netAppMetroClusterInfo: NasSystemNetAppMetroClusterInfo (type)
+        if (ec.Includes("netAppMetroClusterInfo",false))
+        {
+            if(this.NetAppMetroClusterInfo == null) {
+
+                this.NetAppMetroClusterInfo = new NasSystemNetAppMetroClusterInfo();
+                this.NetAppMetroClusterInfo.ApplyExploratoryFieldSpec(ec.NewChild("netAppMetroClusterInfo"));
+
+            } else {
+
+                this.NetAppMetroClusterInfo.ApplyExploratoryFieldSpec(ec.NewChild("netAppMetroClusterInfo"));
+
+            }
+        }
+        else if (this.NetAppMetroClusterInfo != null && ec.Excludes("netAppMetroClusterInfo",false))
+        {
+            this.NetAppMetroClusterInfo = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

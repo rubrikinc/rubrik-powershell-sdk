@@ -15,6 +15,19 @@ Checks whether enabling Time-based, One-Time Password (TOTP) is mandatory in the
 
 - There is a single argument of type System.String.
 - Returns System.Boolean.
+### perobjectinfo
+Get archival information for all objects with data archived to the specified location.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - sortBy - ArchivalPerObjectInfoSortByField: Specifies the field by which the list of archival object info will be sorted.
+    - filter - list of ArchivalPerObjectInfoFilterInputs: Specifies how to filter the list of archival object info.
+    - input - System.String: Corresponds to ID of the target in Rubrik.
+- Returns ArchivalObjectInfoConnection.
 ### rcslocationsconsumptionstats
 RCS Azure archival location consumption stats.
 
@@ -23,7 +36,9 @@ RCS Azure archival location consumption stats.
 ### storageusage
 Storage usage of an archival location.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - input - System.String: Corresponds to ID of the target in Rubrik.
+    - lookBackWindow - LookBackWindow: Lookback window defines how far back in time to look for a specific archival-related metric.
 - Returns list of ArchivalStorageUsages.
 ### target
 - There is a single argument of type System.String.

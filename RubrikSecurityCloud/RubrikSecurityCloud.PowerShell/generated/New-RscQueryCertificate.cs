@@ -242,6 +242,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	name = $someString
     /// 	# OPTIONAL
+    /// 	excludeUsages = @(
+    /// 		$someExcludeUsages # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExcludeUsages]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
     /// 	sortBy = $someV1QueryCertificatesRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortBy]) for enum values.
     /// 	# OPTIONAL
     /// 	sortOrder = $someV1QueryCertificatesRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortOrder]) for enum values.
@@ -879,6 +883,10 @@ $query.Var.input = @{
 	isTrusted = $someBoolean
 	# OPTIONAL
 	name = $someString
+	# OPTIONAL
+	excludeUsages = @(
+		$someExcludeUsages # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExcludeUsages]) for enum values.
+	)
 	# OPTIONAL
 	sortBy = $someV1QueryCertificatesRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortBy]) for enum values.
 	# OPTIONAL

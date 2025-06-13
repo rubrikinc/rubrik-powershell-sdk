@@ -3445,6 +3445,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<ReportTemplatesByCategory>? AllReportTemplatesByCategories
+        // GraphQL -> allReportTemplatesByCategories: [ReportTemplatesByCategory!]! (type)
+        public static string AllReportTemplatesByCategories(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "allReportTemplatesByCategories" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AllReportTemplatesByCategoriesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new List<ReportTemplatesByCategory>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<AzureResourceGroup>? AllResourceGroupsFromAzure
         // GraphQL -> allResourceGroupsFromAzure: [AzureResourceGroup!]! (type)
         public static string AllResourceGroupsFromAzure(object fsObj)
@@ -3967,12 +3985,30 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ArchivalObjectInfoConnection? ArchivalPerObjectInfo
+        // GraphQL -> archivalPerObjectInfo: ArchivalObjectInfoConnection! (type)
+        public static string ArchivalPerObjectInfo(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\ninput: $input\n)";
+            return "archivalPerObjectInfo" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ArchivalPerObjectInfoFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ArchivalObjectInfoConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<ArchivalStorageUsage>? ArchivalStorageUsage
         // GraphQL -> archivalStorageUsage: [ArchivalStorageUsage!]! (type)
         public static string ArchivalStorageUsage(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
+            string args = "\n(\ninput: $input\nlookBackWindow: $lookBackWindow\n)";
             return "archivalStorageUsage" + args + "\n{\n" + fs + "}\n";
         }
         public static object ArchivalStorageUsageFieldSpec(AutofieldContext? ec=null)
@@ -9385,6 +9421,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ListAllUploadRecordsReply? ListAllUploadRecords
+        // GraphQL -> listAllUploadRecords: ListAllUploadRecordsReply! (type)
+        public static string ListAllUploadRecords(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "listAllUploadRecords" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ListAllUploadRecordsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ListAllUploadRecordsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> O365AppConnection? ListO365Apps
         // GraphQL -> listO365Apps: O365AppConnection! (type)
         public static string ListO365Apps(object fsObj)
@@ -13872,7 +13926,7 @@ namespace RubrikSecurityCloud.Types
         public static string SnapshotsOfCloudDirectBucket(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\ncloudDirectTargetId: $cloudDirectTargetId\n)";
             return "snapshotsOfCloudDirectBucket" + args + "\n{\n" + fs + "}\n";
         }
         public static object SnapshotsOfCloudDirectBucketFieldSpec(AutofieldContext? ec=null)
@@ -13890,7 +13944,7 @@ namespace RubrikSecurityCloud.Types
         public static string SnapshotsOfCloudDirectShare(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\ncloudDirectTargetId: $cloudDirectTargetId\n)";
             return "snapshotsOfCloudDirectShare" + args + "\n{\n" + fs + "}\n";
         }
         public static object SnapshotsOfCloudDirectShareFieldSpec(AutofieldContext? ec=null)

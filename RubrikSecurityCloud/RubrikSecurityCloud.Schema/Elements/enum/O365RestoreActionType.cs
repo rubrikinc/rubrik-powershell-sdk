@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "DOWNLOAD_ANOMALY_FORENSICS")]
+        DOWNLOAD_ANOMALY_FORENSICS,
+
         [EnumMember(Value = "EXPORT_FAILED_ITEMS_FOR_SNAPPABLE")]
         EXPORT_FAILED_ITEMS_FOR_SNAPPABLE,
 

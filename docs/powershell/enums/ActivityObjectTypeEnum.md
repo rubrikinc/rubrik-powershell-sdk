@@ -13,6 +13,7 @@ The list of object types for activities.
 - AzureSqlManagedInstanceDatabase - Specifies that the activity object type is Azure SQL Managed Instance Database.
 - HypervVm - Specifies that the activity object type is Hyperv Virtual Machine.
 - DataLocation - Specifies that the activity object type is Data Location.
+- K8S_LABEL - Specifies that the activity object type is Kubernetes label.
 - CLOUD_DIRECT_NAS_EXPORT - Specifies that the activity object type is Cloud Direct NAS export.
 - HypervScvmm - Specifies that the activity object type is HyperV SCVMM.
 - O365Onedrive - Specifies that the activity object type is O365 OneDrive.
@@ -57,7 +58,6 @@ The list of object types for activities.
 - D365_ORGANIZATION - Specifies that the activity object type is a Dynamics 365 organization.
 - AwsNativeAccount - Specifies that the activity object type is AWS Native Account.
 - AZURE_STORAGE_ACCOUNT - Specifies that the activity object type is Azure Storage Account.
-- INFORMIX - Specifies that the activity object type is Informix Instance.
 - VMWARE_HOST - Specifies that the activity object type is a VSphere host.
 - PolarisAccount - Specifies that the activity object type is RSC Account.
 - AzureSqlManagedInstance - Specifies that the activity object type is Azure SQL Managed Instance.
@@ -136,6 +136,7 @@ The list of object types for activities.
 - Host - Specifies that the activity object type is Host.
 - GcpNativeDisk - Specifies that the activity object type is GCP Native Disk.
 - JIRA_SETTINGS - Specifies that the activity object type is Jira settings.
+- INFORMIX_INSTANCE - Specifies that the activity object type is Informix Instance.
 - SupportBundle - Specifies that the activity object type is Support Bundle.
 - NutanixCluster - Specifies that the activity object type is Nutanix Cluster.
 - ComputeInstance - Specifies that the activity object type is Compute Instance.

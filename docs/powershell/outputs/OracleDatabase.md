@@ -49,6 +49,12 @@
   - The Oracle Data Guard Group corresponding to the Oracle Data Guard member database.
 - liveMounts: OracleLiveMountConnection
   - List of live mounts for an Oracle database.
+- effectiveLogBackupFrequency: Duration
+  - Effective log backup frequency for the Oracle database.
+- effectiveLogRetention: Duration
+  - Effective log retention for the Oracle database.
+- effectiveHostLogRetention: Duration
+  - Effective host log retention for the Oracle database, or -1 if indefinite.
 - id: System.String
   - FID of the hierarchy object.
 - name: System.String

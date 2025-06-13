@@ -761,6 +761,11 @@ Information about the licenses at the product level.
 
 - The licensedproducts subcommand takes no arguments.
 - Returns GetLicensedProductsInfoReply.
+### listalluploadrecords
+List all the upload records.
+
+- There is a single argument of type ListAllUploadRecordsInput.
+- Returns ListAllUploadRecordsReply.
 ### lockoutconfig
 Get the lockout configurations of the current organization.
 

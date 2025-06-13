@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IO1")]
         IO1,
 
+        [EnumMember(Value = "IO2")]
+        IO2,
+
         [EnumMember(Value = "NOT_SPECIFIED")]
         NOT_SPECIFIED,
 

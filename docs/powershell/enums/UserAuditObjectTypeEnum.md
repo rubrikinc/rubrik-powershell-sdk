@@ -13,6 +13,7 @@ User audit object type.
 - HypervVm - Hyper-V virtual machine type.
 - DataLocation - Data location type.
 - DB2_INSTANCE - Db2 instance type.
+- K8S_LABEL - Kubernetes label type.
 - DB2_DATABASE - Db2 database type.
 - CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS Export.
 - HypervScvmm - Hyper-V SCVMM type.
@@ -131,6 +132,7 @@ User audit object type.
 - Host - Host type.
 - GcpNativeDisk - GCP native disk type.
 - JIRA_SETTINGS - Atlassian Jira settings.
+- INFORMIX_INSTANCE - Informix instance type.
 - NutanixCluster - Nutanix cluster type.
 - ORACLE_MOUNT - Oracle Mount type.
 - CASSANDRA_KEYSPACE - Cassandra keyspace type.

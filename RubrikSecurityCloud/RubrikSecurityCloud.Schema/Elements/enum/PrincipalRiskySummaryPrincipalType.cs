@@ -18,11 +18,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ASSUMABLE_IDENTITY")]
         ASSUMABLE_IDENTITY,
 
+        [EnumMember(Value = "COMPUTER")]
+        COMPUTER,
+
         [EnumMember(Value = "EXTERNAL_ACCOUNT")]
         EXTERNAL_ACCOUNT,
 
         [EnumMember(Value = "EXTERNAL_PRINCIPAL")]
         EXTERNAL_PRINCIPAL,
+
+        [EnumMember(Value = "GPO")]
+        GPO,
 
         [EnumMember(Value = "GROUP")]
         GROUP,
@@ -32,9 +38,6 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PUBLIC")]
         PUBLIC,
-
-        [EnumMember(Value = "ROLE")]
-        ROLE,
 
         [EnumMember(Value = "SERVICE_ACCOUNT")]
         SERVICE_ACCOUNT,

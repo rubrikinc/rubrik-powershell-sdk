@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> AzureStorageTier? AccessTier
-        // GraphQL -> accessTier: AzureStorageTier! (enum)
+        // GraphQL -> accessTier: AzureStorageTier (enum)
         [JsonProperty("accessTier")]
         public AzureStorageTier? AccessTier { get; set; }
 
@@ -354,7 +354,7 @@ namespace RubrikSecurityCloud.Types
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureStorageTier? AccessTier
-        // GraphQL -> accessTier: AzureStorageTier! (enum)
+        // GraphQL -> accessTier: AzureStorageTier (enum)
         if (this.AccessTier != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "accessTier\n" ;
@@ -692,7 +692,7 @@ namespace RubrikSecurityCloud.Types
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> AzureStorageTier? AccessTier
-        // GraphQL -> accessTier: AzureStorageTier! (enum)
+        // GraphQL -> accessTier: AzureStorageTier (enum)
         if (ec.Includes("accessTier",true))
         {
             if(this.AccessTier == null) {

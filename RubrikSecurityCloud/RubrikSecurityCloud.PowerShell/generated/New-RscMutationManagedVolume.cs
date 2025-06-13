@@ -511,6 +511,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldDownloadToLocal = $someBoolean
     /// 		# OPTIONAL
+    /// 		locationId = $someString
+    /// 		# OPTIONAL
     /// 		managedVolumeExportConfig = @{
     /// 			# OPTIONAL
     /// 			subnet = $someString
@@ -1306,6 +1308,8 @@ $query.Var.input = @{
 	params = @{
 		# OPTIONAL
 		shouldDownloadToLocal = $someBoolean
+		# OPTIONAL
+		locationId = $someString
 		# OPTIONAL
 		managedVolumeExportConfig = @{
 			# OPTIONAL

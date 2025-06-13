@@ -200,7 +200,7 @@ Returns a single snapshot by snapshot forever UUID and cluster UUID. In case clu
 ### sofclouddirectbucket
 Returns a list of NAS Cloud Direct snapshots for a bucket.
 
-- There are 9 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -210,11 +210,12 @@ Returns a list of NAS Cloud Direct snapshots for a bucket.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - SnapshotQuerySortByField: Sorts snapshots by field.
     - timeRange - TimeRangeInput: Time range input.
+    - cloudDirectTargetId - System.String: NAS Cloud Direct target ID.
 - Returns CloudDirectSnapshotConnection.
 ### sofclouddirectshare
 Returns a list of NAS Cloud Direct snapshots for a share.
 
-- There are 9 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -224,6 +225,7 @@ Returns a list of NAS Cloud Direct snapshots for a share.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - SnapshotQuerySortByField: Sorts snapshots by field.
     - timeRange - TimeRangeInput: Time range input.
+    - cloudDirectTargetId - System.String: NAS Cloud Direct target ID.
 - Returns CloudDirectSnapshotConnection.
 ### unmanagedobject
 List of snapshots for unmanaged objects.

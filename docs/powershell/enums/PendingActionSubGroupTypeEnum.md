@@ -53,3 +53,4 @@ The subgroup type for the pending action.
 - ROLE_DELETION - Subgroup used for role deletion in CDM using RSC.
 - GRANT_AUTHZ - Subgroup used for granting authorization to the CDM role using RSC.
 - REVOKE_AUTHZ - Subgroup used for revoking authorization to the CDM role using RSC.
+- CLOUD_ACCOUNT_UPDATE - The subgroup type of the pending action is used for updating access credentials of a cloud account to CDM using RSC.

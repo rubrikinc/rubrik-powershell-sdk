@@ -11,6 +11,8 @@ Represents optional parameters that are to be configured during the configuratio
   - Enable user-defined routing as the outbound type for AKS load balancer.
 - shouldWhitelistRubrikIps: System.Boolean
   - Determines whether Rubrik IPs are whitelisted for the Kubernetes API server of the AKS cluster.
+- privateDnsZoneId: System.String
+  - Azure resource ID of the private DNS zone which will be used to resolve private endpoints if using private access to snapshots.
 - aksClusterTier: AKSProvisionTier
   - Cluster tier of the provisioned aks cluster.
 - aksNodeCountBucket: AKSNodeCountBucket

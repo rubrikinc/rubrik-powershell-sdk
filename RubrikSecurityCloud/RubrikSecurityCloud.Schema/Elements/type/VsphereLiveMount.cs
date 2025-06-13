@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("newVmName")]
         public System.String? NewVmName { get; set; }
 
+        //      C# -> DateTime? UnmountTimestamp
+        // GraphQL -> unmountTimestamp: DateTime (scalar)
+        [JsonProperty("unmountTimestamp")]
+        public DateTime? UnmountTimestamp { get; set; }
+
         //      C# -> System.String? VcenterId
         // GraphQL -> vcenterId: String! (scalar)
         [JsonProperty("vcenterId")]
@@ -119,6 +124,7 @@ namespace RubrikSecurityCloud.Types
         System.String? MigrateDatastoreRequestId = null,
         DateTime? MountTimestamp = null,
         System.String? NewVmName = null,
+        DateTime? UnmountTimestamp = null,
         System.String? VcenterId = null,
         Cluster? Cluster = null,
         VsphereHost? Host = null,
@@ -154,6 +160,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NewVmName != null ) {
             this.NewVmName = NewVmName;
+        }
+        if ( UnmountTimestamp != null ) {
+            this.UnmountTimestamp = UnmountTimestamp;
         }
         if ( VcenterId != null ) {
             this.VcenterId = VcenterId;
@@ -269,6 +278,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "newVmName\n" ;
             } else {
                 s += ind + "newVmName\n" ;
+            }
+        }
+        //      C# -> DateTime? UnmountTimestamp
+        // GraphQL -> unmountTimestamp: DateTime (scalar)
+        if (this.UnmountTimestamp != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "unmountTimestamp\n" ;
+            } else {
+                s += ind + "unmountTimestamp\n" ;
             }
         }
         //      C# -> System.String? VcenterId
@@ -511,6 +529,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NewVmName != null && ec.Excludes("newVmName",true))
         {
             this.NewVmName = null;
+        }
+        //      C# -> DateTime? UnmountTimestamp
+        // GraphQL -> unmountTimestamp: DateTime (scalar)
+        if (ec.Includes("unmountTimestamp",true))
+        {
+            if(this.UnmountTimestamp == null) {
+
+                this.UnmountTimestamp = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnmountTimestamp != null && ec.Excludes("unmountTimestamp",true))
+        {
+            this.UnmountTimestamp = null;
         }
         //      C# -> System.String? VcenterId
         // GraphQL -> vcenterId: String! (scalar)

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<ThreatAnalyticsEnablementItem>? AllEnablementItems
+        // GraphQL -> allEnablementItems: [ThreatAnalyticsEnablementItem!]! (type)
+        [JsonProperty("allEnablementItems")]
+        public List<ThreatAnalyticsEnablementItem>? AllEnablementItems { get; set; }
+
         //      C# -> List<AwsAccountThreatAnalyticsEnablement>? AwsAccounts
         // GraphQL -> awsAccounts: [AwsAccountThreatAnalyticsEnablement!]! (type)
         [JsonProperty("awsAccounts")]
@@ -35,21 +40,44 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("m365Subscriptions")]
         public List<M365SubscriptionThreatAnalyticsEnablement>? M365Subscriptions { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars AllEnablementItems { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] allEnablementItemsArgs = {
+                    Tuple.Create("type", "ThreatHuntRootObjectType!"),
+                };
+            this.AllEnablementItems =
+                new RscGqlVars(null, allEnablementItemsArgs, null, true);
+        }
+    }
+
+    public ThreatAnalyticsEnablement()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "ThreatAnalyticsEnablement";
     }
 
     public ThreatAnalyticsEnablement Set(
+        List<ThreatAnalyticsEnablementItem>? AllEnablementItems = null,
         List<AwsAccountThreatAnalyticsEnablement>? AwsAccounts = null,
         List<AzureSubscriptionThreatAnalyticsEnablement>? AzureSubscriptions = null,
         List<M365SubscriptionThreatAnalyticsEnablement>? M365Subscriptions = null
     ) 
     {
+        if ( AllEnablementItems != null ) {
+            this.AllEnablementItems = AllEnablementItems;
+        }
         if ( AwsAccounts != null ) {
             this.AwsAccounts = AwsAccounts;
         }
@@ -73,6 +101,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<ThreatAnalyticsEnablementItem>? AllEnablementItems
+        // GraphQL -> allEnablementItems: [ThreatAnalyticsEnablementItem!]! (type)
+        if (this.AllEnablementItems != null) {
+            var fspec = this.AllEnablementItems.AsFieldSpec(conf.Child("allEnablementItems"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "allEnablementItems" + "\n(" + this.Vars.AllEnablementItems.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<AwsAccountThreatAnalyticsEnablement>? AwsAccounts
         // GraphQL -> awsAccounts: [AwsAccountThreatAnalyticsEnablement!]! (type)
         if (this.AwsAccounts != null) {
@@ -116,6 +156,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<ThreatAnalyticsEnablementItem>? AllEnablementItems
+        // GraphQL -> allEnablementItems: [ThreatAnalyticsEnablementItem!]! (type)
+        if (ec.Includes("allEnablementItems",false))
+        {
+            if(this.AllEnablementItems == null) {
+
+                this.AllEnablementItems = new List<ThreatAnalyticsEnablementItem>();
+                this.AllEnablementItems.ApplyExploratoryFieldSpec(ec.NewChild("allEnablementItems"));
+
+            } else {
+
+                this.AllEnablementItems.ApplyExploratoryFieldSpec(ec.NewChild("allEnablementItems"));
+
+            }
+        }
+        else if (this.AllEnablementItems != null && ec.Excludes("allEnablementItems",false))
+        {
+            this.AllEnablementItems = null;
+        }
         //      C# -> List<AwsAccountThreatAnalyticsEnablement>? AwsAccounts
         // GraphQL -> awsAccounts: [AwsAccountThreatAnalyticsEnablement!]! (type)
         if (ec.Includes("awsAccounts",false))

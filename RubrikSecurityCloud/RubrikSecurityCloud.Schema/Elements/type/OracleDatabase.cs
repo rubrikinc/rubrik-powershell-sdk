@@ -221,6 +221,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("directoryPaths")]
         public OracleDirectoryPaths? DirectoryPaths { get; set; }
 
+        //      C# -> Duration? EffectiveHostLogRetention
+        // GraphQL -> effectiveHostLogRetention: Duration! (type)
+        [JsonProperty("effectiveHostLogRetention")]
+        public Duration? EffectiveHostLogRetention { get; set; }
+
+        //      C# -> Duration? EffectiveLogBackupFrequency
+        // GraphQL -> effectiveLogBackupFrequency: Duration! (type)
+        [JsonProperty("effectiveLogBackupFrequency")]
+        public Duration? EffectiveLogBackupFrequency { get; set; }
+
+        //      C# -> Duration? EffectiveLogRetention
+        // GraphQL -> effectiveLogRetention: Duration! (type)
+        [JsonProperty("effectiveLogRetention")]
+        public Duration? EffectiveLogRetention { get; set; }
+
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
@@ -490,6 +505,9 @@ namespace RubrikSecurityCloud.Types
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         OracleDataGuardGroup? DataGuardGroup = null,
         OracleDirectoryPaths? DirectoryPaths = null,
+        Duration? EffectiveHostLogRetention = null,
+        Duration? EffectiveLogBackupFrequency = null,
+        Duration? EffectiveLogRetention = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<OracleDatabaseInstance>? Instances = null,
         OracleDatabaseLastValidationStatus? LastValidationResult = null,
@@ -634,6 +652,15 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DirectoryPaths != null ) {
             this.DirectoryPaths = DirectoryPaths;
+        }
+        if ( EffectiveHostLogRetention != null ) {
+            this.EffectiveHostLogRetention = EffectiveHostLogRetention;
+        }
+        if ( EffectiveLogBackupFrequency != null ) {
+            this.EffectiveLogBackupFrequency = EffectiveLogBackupFrequency;
+        }
+        if ( EffectiveLogRetention != null ) {
+            this.EffectiveLogRetention = EffectiveLogRetention;
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
@@ -1110,6 +1137,42 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "directoryPaths" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> Duration? EffectiveHostLogRetention
+        // GraphQL -> effectiveHostLogRetention: Duration! (type)
+        if (this.EffectiveHostLogRetention != null) {
+            var fspec = this.EffectiveHostLogRetention.AsFieldSpec(conf.Child("effectiveHostLogRetention"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveHostLogRetention" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> Duration? EffectiveLogBackupFrequency
+        // GraphQL -> effectiveLogBackupFrequency: Duration! (type)
+        if (this.EffectiveLogBackupFrequency != null) {
+            var fspec = this.EffectiveLogBackupFrequency.AsFieldSpec(conf.Child("effectiveLogBackupFrequency"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveLogBackupFrequency" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> Duration? EffectiveLogRetention
+        // GraphQL -> effectiveLogRetention: Duration! (type)
+        if (this.EffectiveLogRetention != null) {
+            var fspec = this.EffectiveLogRetention.AsFieldSpec(conf.Child("effectiveLogRetention"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveLogRetention" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2115,6 +2178,63 @@ namespace RubrikSecurityCloud.Types
         else if (this.DirectoryPaths != null && ec.Excludes("directoryPaths",false))
         {
             this.DirectoryPaths = null;
+        }
+        //      C# -> Duration? EffectiveHostLogRetention
+        // GraphQL -> effectiveHostLogRetention: Duration! (type)
+        if (ec.Includes("effectiveHostLogRetention",false))
+        {
+            if(this.EffectiveHostLogRetention == null) {
+
+                this.EffectiveHostLogRetention = new Duration();
+                this.EffectiveHostLogRetention.ApplyExploratoryFieldSpec(ec.NewChild("effectiveHostLogRetention"));
+
+            } else {
+
+                this.EffectiveHostLogRetention.ApplyExploratoryFieldSpec(ec.NewChild("effectiveHostLogRetention"));
+
+            }
+        }
+        else if (this.EffectiveHostLogRetention != null && ec.Excludes("effectiveHostLogRetention",false))
+        {
+            this.EffectiveHostLogRetention = null;
+        }
+        //      C# -> Duration? EffectiveLogBackupFrequency
+        // GraphQL -> effectiveLogBackupFrequency: Duration! (type)
+        if (ec.Includes("effectiveLogBackupFrequency",false))
+        {
+            if(this.EffectiveLogBackupFrequency == null) {
+
+                this.EffectiveLogBackupFrequency = new Duration();
+                this.EffectiveLogBackupFrequency.ApplyExploratoryFieldSpec(ec.NewChild("effectiveLogBackupFrequency"));
+
+            } else {
+
+                this.EffectiveLogBackupFrequency.ApplyExploratoryFieldSpec(ec.NewChild("effectiveLogBackupFrequency"));
+
+            }
+        }
+        else if (this.EffectiveLogBackupFrequency != null && ec.Excludes("effectiveLogBackupFrequency",false))
+        {
+            this.EffectiveLogBackupFrequency = null;
+        }
+        //      C# -> Duration? EffectiveLogRetention
+        // GraphQL -> effectiveLogRetention: Duration! (type)
+        if (ec.Includes("effectiveLogRetention",false))
+        {
+            if(this.EffectiveLogRetention == null) {
+
+                this.EffectiveLogRetention = new Duration();
+                this.EffectiveLogRetention.ApplyExploratoryFieldSpec(ec.NewChild("effectiveLogRetention"));
+
+            } else {
+
+                this.EffectiveLogRetention.ApplyExploratoryFieldSpec(ec.NewChild("effectiveLogRetention"));
+
+            }
+        }
+        else if (this.EffectiveLogRetention != null && ec.Excludes("effectiveLogRetention",false))
+        {
+            this.EffectiveLogRetention = null;
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 11
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Report' API domain:
-    /// ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, ScheduledReport, ScheduledReports, Sonar, SonarContent, or SonarRow.
+    /// ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, ScheduledReport, ScheduledReports, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
     /// </summary>
     /// <description>
     /// New-RscQueryReport creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 11 operations
+    /// There are 12 operations
     /// in the 'Report' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, ScheduledReport, ScheduledReports, Sonar, SonarContent, or SonarRow.
+    /// one of: ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, ScheduledReport, ScheduledReports, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -548,6 +548,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the TemplatesByCategories operation
+    /// of the 'Report' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Report
+    /// # API Operation: TemplatesByCategories
+    /// 
+    /// $query = New-RscQueryReport -Operation TemplatesByCategories
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	reportCategory = $someReportCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportCategory]) for enum values.
+    /// 	# OPTIONAL
+    /// 	searchTerm = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;ReportTemplatesByCategory&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -575,6 +608,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Sonar",
                 "SonarContent",
                 "SonarRow",
+                "TemplatesByCategories",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -622,6 +656,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SonarRow":
                         this.ProcessRecord_SonarRow();
+                        break;
+                    case "TemplatesByCategories":
+                        this.ProcessRecord_TemplatesByCategories();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -730,6 +767,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SonarRow";
             // Create new graphql operation sonarReportRow
             InitQuerySonarReportRow();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allReportTemplatesByCategories.
+        internal void ProcessRecord_TemplatesByCategories()
+        {
+            this._logger.name += " -TemplatesByCategories";
+            // Create new graphql operation allReportTemplatesByCategories
+            InitQueryAllReportTemplatesByCategories();
         }
 
 
@@ -1203,6 +1249,31 @@ $query.Var.after = $someString
 $query.Var.last = $someInt
 # OPTIONAL
 $query.Var.before = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allReportTemplatesByCategories(input: AllReportTemplatesByCategoriesInput!): [ReportTemplatesByCategory!]!
+        internal void InitQueryAllReportTemplatesByCategories()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AllReportTemplatesByCategoriesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllReportTemplatesByCategories",
+                "($input: AllReportTemplatesByCategoriesInput!)",
+                "List<ReportTemplatesByCategory>",
+                Query.AllReportTemplatesByCategories,
+                Query.AllReportTemplatesByCategoriesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	reportCategory = $someReportCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportCategory]) for enum values.
+	# OPTIONAL
+	searchTerm = $someString
+}"
             );
         }
 

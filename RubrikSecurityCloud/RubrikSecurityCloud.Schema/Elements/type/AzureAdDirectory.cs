@@ -81,6 +81,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exocomputeId")]
         public System.String? ExocomputeId { get; set; }
 
+        //      C# -> DateTime? FirstScopeSnapshotTime
+        // GraphQL -> firstScopeSnapshotTime: DateTime (scalar)
+        [JsonProperty("firstScopeSnapshotTime")]
+        public DateTime? FirstScopeSnapshotTime { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -95,6 +100,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
+
+        //      C# -> System.Int32? LatestAdministrativeUnitsCount
+        // GraphQL -> latestAdministrativeUnitsCount: Int! (scalar)
+        [JsonProperty("latestAdministrativeUnitsCount")]
+        public System.Int32? LatestAdministrativeUnitsCount { get; set; }
 
         //      C# -> System.Int32? LatestApplicationsCount
         // GraphQL -> latestApplicationsCount: Int! (scalar)
@@ -357,9 +367,11 @@ namespace RubrikSecurityCloud.Types
         System.String? DirectoryId = null,
         System.String? DomainName = null,
         System.String? ExocomputeId = null,
+        DateTime? FirstScopeSnapshotTime = null,
         System.String? Id = null,
         System.Boolean? IsProvisioned = null,
         System.Boolean? IsRelic = null,
+        System.Int32? LatestAdministrativeUnitsCount = null,
         System.Int32? LatestApplicationsCount = null,
         System.Int32? LatestAuthenticationContextsCount = null,
         System.Int32? LatestAuthenticationStrengthsCount = null,
@@ -430,6 +442,9 @@ namespace RubrikSecurityCloud.Types
         if ( ExocomputeId != null ) {
             this.ExocomputeId = ExocomputeId;
         }
+        if ( FirstScopeSnapshotTime != null ) {
+            this.FirstScopeSnapshotTime = FirstScopeSnapshotTime;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -438,6 +453,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( LatestAdministrativeUnitsCount != null ) {
+            this.LatestAdministrativeUnitsCount = LatestAdministrativeUnitsCount;
         }
         if ( LatestApplicationsCount != null ) {
             this.LatestApplicationsCount = LatestApplicationsCount;
@@ -669,6 +687,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "exocomputeId\n" ;
             }
         }
+        //      C# -> DateTime? FirstScopeSnapshotTime
+        // GraphQL -> firstScopeSnapshotTime: DateTime (scalar)
+        if (this.FirstScopeSnapshotTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "firstScopeSnapshotTime\n" ;
+            } else {
+                s += ind + "firstScopeSnapshotTime\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -694,6 +721,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRelic\n" ;
             } else {
                 s += ind + "isRelic\n" ;
+            }
+        }
+        //      C# -> System.Int32? LatestAdministrativeUnitsCount
+        // GraphQL -> latestAdministrativeUnitsCount: Int! (scalar)
+        if (this.LatestAdministrativeUnitsCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestAdministrativeUnitsCount\n" ;
+            } else {
+                s += ind + "latestAdministrativeUnitsCount\n" ;
             }
         }
         //      C# -> System.Int32? LatestApplicationsCount
@@ -1264,6 +1300,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ExocomputeId = null;
         }
+        //      C# -> DateTime? FirstScopeSnapshotTime
+        // GraphQL -> firstScopeSnapshotTime: DateTime (scalar)
+        if (ec.Includes("firstScopeSnapshotTime",true))
+        {
+            if(this.FirstScopeSnapshotTime == null) {
+
+                this.FirstScopeSnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FirstScopeSnapshotTime != null && ec.Excludes("firstScopeSnapshotTime",true))
+        {
+            this.FirstScopeSnapshotTime = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (ec.Includes("id",true))
@@ -1314,6 +1367,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRelic != null && ec.Excludes("isRelic",true))
         {
             this.IsRelic = null;
+        }
+        //      C# -> System.Int32? LatestAdministrativeUnitsCount
+        // GraphQL -> latestAdministrativeUnitsCount: Int! (scalar)
+        if (ec.Includes("latestAdministrativeUnitsCount",true))
+        {
+            if(this.LatestAdministrativeUnitsCount == null) {
+
+                this.LatestAdministrativeUnitsCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestAdministrativeUnitsCount != null && ec.Excludes("latestAdministrativeUnitsCount",true))
+        {
+            this.LatestAdministrativeUnitsCount = null;
         }
         //      C# -> System.Int32? LatestApplicationsCount
         // GraphQL -> latestApplicationsCount: Int! (scalar)

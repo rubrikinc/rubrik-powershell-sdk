@@ -135,6 +135,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("racName")]
         public System.String? RacName { get; set; }
 
+        //      C# -> System.Boolean? ShouldUseSecureThriftForDataTransfer
+        // GraphQL -> shouldUseSecureThriftForDataTransfer: Boolean (scalar)
+        [JsonProperty("shouldUseSecureThriftForDataTransfer")]
+        public System.Boolean? ShouldUseSecureThriftForDataTransfer { get; set; }
+
         //      C# -> System.String? Sid
         // GraphQL -> sid: String (scalar)
         [JsonProperty("sid")]
@@ -218,6 +223,7 @@ namespace RubrikSecurityCloud.Types
         System.String? PrimaryClusterId = null,
         System.String? RacId = null,
         System.String? RacName = null,
+        System.Boolean? ShouldUseSecureThriftForDataTransfer = null,
         System.String? Sid = null,
         System.String? StandaloneHostId = null,
         System.String? StandaloneHostName = null,
@@ -298,6 +304,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RacName != null ) {
             this.RacName = RacName;
+        }
+        if ( ShouldUseSecureThriftForDataTransfer != null ) {
+            this.ShouldUseSecureThriftForDataTransfer = ShouldUseSecureThriftForDataTransfer;
         }
         if ( Sid != null ) {
             this.Sid = Sid;
@@ -548,6 +557,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "racName\n" ;
             } else {
                 s += ind + "racName\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldUseSecureThriftForDataTransfer
+        // GraphQL -> shouldUseSecureThriftForDataTransfer: Boolean (scalar)
+        if (this.ShouldUseSecureThriftForDataTransfer != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldUseSecureThriftForDataTransfer\n" ;
+            } else {
+                s += ind + "shouldUseSecureThriftForDataTransfer\n" ;
             }
         }
         //      C# -> System.String? Sid
@@ -1058,6 +1076,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.RacName != null && ec.Excludes("racName",true))
         {
             this.RacName = null;
+        }
+        //      C# -> System.Boolean? ShouldUseSecureThriftForDataTransfer
+        // GraphQL -> shouldUseSecureThriftForDataTransfer: Boolean (scalar)
+        if (ec.Includes("shouldUseSecureThriftForDataTransfer",true))
+        {
+            if(this.ShouldUseSecureThriftForDataTransfer == null) {
+
+                this.ShouldUseSecureThriftForDataTransfer = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldUseSecureThriftForDataTransfer != null && ec.Excludes("shouldUseSecureThriftForDataTransfer",true))
+        {
+            this.ShouldUseSecureThriftForDataTransfer = null;
         }
         //      C# -> System.String? Sid
         // GraphQL -> sid: String (scalar)

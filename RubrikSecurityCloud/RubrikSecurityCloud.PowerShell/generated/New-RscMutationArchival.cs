@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 16
+    /// Create a new RscQuery object for any of the 17
     /// operations in the 'Archival' API domain:
-    /// CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, ResumeTarget, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
+    /// CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, ResumeTarget, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
     /// </summary>
     /// <description>
     /// New-RscMutationArchival creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 16 operations
+    /// There are 17 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, ResumeTarget, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
+    /// one of: CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, ResumeTarget, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -420,6 +420,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the FilesetDownloadSnapshotFilesFromLocation operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: FilesetDownloadSnapshotFilesFromLocation
+    /// 
+    /// $query = New-RscMutationArchival -Operation FilesetDownloadSnapshotFilesFromLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	nextSnapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// 	# OPTIONAL
+    /// 	zipPassword = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
+    /// 		# OPTIONAL
+    /// 		legalHoldDownloadConfig = @{
+    /// 			# REQUIRED
+    /// 			isLegalHoldDownload = $someBoolean
+    /// 		}
+    /// 		# REQUIRED
+    /// 		sourceDirs = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	deltaTypeFilter = @(
+    /// 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+    /// 	)
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the PauseTarget operation
     /// of the 'Archival' API domain.
     /// <code>
@@ -741,6 +798,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteTargetMapping",
                 "DisableTarget",
                 "EnableTarget",
+                "FilesetDownloadSnapshotFilesFromLocation",
                 "PauseTarget",
                 "PromoteReaderTarget",
                 "RefreshReaderTarget",
@@ -787,6 +845,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "EnableTarget":
                         this.ProcessRecord_EnableTarget();
+                        break;
+                    case "FilesetDownloadSnapshotFilesFromLocation":
+                        this.ProcessRecord_FilesetDownloadSnapshotFilesFromLocation();
                         break;
                     case "PauseTarget":
                         this.ProcessRecord_PauseTarget();
@@ -892,6 +953,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -EnableTarget";
             // Create new graphql operation enableTarget
             InitMutationEnableTarget();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // filesetDownloadSnapshotFilesFromArchivalLocation.
+        internal void ProcessRecord_FilesetDownloadSnapshotFilesFromLocation()
+        {
+            this._logger.name += " -FilesetDownloadSnapshotFilesFromLocation";
+            // Create new graphql operation filesetDownloadSnapshotFilesFromArchivalLocation
+            InitMutationFilesetDownloadSnapshotFilesFromArchivalLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1242,6 +1312,55 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# OPTIONAL
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // filesetDownloadSnapshotFilesFromArchivalLocation(input: FilesetDownloadSnapshotFilesFromArchivalLocationInput!): AsyncRequestStatus!
+        internal void InitMutationFilesetDownloadSnapshotFilesFromArchivalLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "FilesetDownloadSnapshotFilesFromArchivalLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationFilesetDownloadSnapshotFilesFromArchivalLocation",
+                "($input: FilesetDownloadSnapshotFilesFromArchivalLocationInput!)",
+                "AsyncRequestStatus",
+                Mutation.FilesetDownloadSnapshotFilesFromArchivalLocation,
+                Mutation.FilesetDownloadSnapshotFilesFromArchivalLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	nextSnapshotId = $someString
+	# OPTIONAL
+	userNote = $someString
+	# OPTIONAL
+	zipPassword = $someString
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		zipPassword = $someString
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = $someBoolean
+		}
+		# REQUIRED
+		sourceDirs = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	deltaTypeFilter = @(
+		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+	)
+	# REQUIRED
+	locationId = $someString
 }"
             );
         }

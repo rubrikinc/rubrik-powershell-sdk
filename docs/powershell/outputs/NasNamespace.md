@@ -5,6 +5,8 @@ NAS namespace instance associated with registered NAS system.
   - Rubrik CDM ID of the registered NAS system.
 - isReadonly: System.Boolean
   - Determines whether the NAS namespace is read-only.
+- netAppMetroClusterInfo: NasNamespaceNetAppMetroClusterInfo
+  - Optional NetApp Metro Cluster info for the NAS namespace.
 - id: System.String
   - Object ID.
 - descendantConnection: NasNamespaceDescendantTypeConnection

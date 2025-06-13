@@ -31,6 +31,8 @@ Details of the Azure AD directory object.
   - Authentication Contexts count from the latest snapshot.
 - latestAuthenticationStrengthsCount: System.Int32
   - Authentication Strengths count from the latest snapshot.
+- latestAdministrativeUnitsCount: System.Int32
+  - Count of administrative units from the latest snapshot.
 - isProvisioned: System.Boolean
   - Specifies whether the infrastructure has been provisioned to enable protection for this Azure AD.
 - latestSnapshotTime: DateTime
@@ -41,6 +43,8 @@ Details of the Azure AD directory object.
   - Owner of the onboarded Azure AD app.
 - onPremAdProtectionStats: list of OnPremAdProtections
   - Protection information for on-prem Active Directory (AD) domains synchronized with this Entra ID.
+- firstScopeSnapshotTime: DateTime
+  - Time of the first snapshot with scope enabled for Role Assignments.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String

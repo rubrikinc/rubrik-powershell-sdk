@@ -125,3 +125,6 @@
 - MONGO_SOURCE_NAME_FOR_DB - Sort the MongoDB database objects based on their source name.
 - MONGO_SOURCE_NAME_FOR_COLLECTION - Sort the MongoDB collection objects based on their source name.
 - MONGO_DATABASE_NAME_FOR_COLLECTION - Sort the MongoDB collection objects based on their database name.
+- SALESFORCE_OBJECT_LABEL - Sort the Salesforce objects based on their label.
++mo:sort:db:table=saasapps_salesforce_objects
++mo:sort:db:column=label

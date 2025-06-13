@@ -976,6 +976,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	end = $someDateTime
     /// }
+    /// # OPTIONAL
+    /// $query.Var.cloudDirectTargetId = $someString
     /// 
     /// # Execute the query
     /// 
@@ -1048,6 +1050,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	end = $someDateTime
     /// }
+    /// # OPTIONAL
+    /// $query.Var.cloudDirectTargetId = $someString
     /// 
     /// # Execute the query
     /// 
@@ -2667,6 +2671,7 @@ $query.Var.endTimeMs = $someInt64"
         //     sortOrder: SortOrder
         //     sortBy: SnapshotQuerySortByField
         //     timeRange: TimeRangeInput
+        //     cloudDirectTargetId: UUID
         //   ): CloudDirectSnapshotConnection!
         internal void InitQuerySnapshotsOfCloudDirectBucket()
         {
@@ -2680,12 +2685,13 @@ $query.Var.endTimeMs = $someInt64"
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("sortBy", "SnapshotQuerySortByField"),
                 Tuple.Create("timeRange", "TimeRangeInput"),
+                Tuple.Create("cloudDirectTargetId", "UUID"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySnapshotsOfCloudDirectBucket",
-                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput)",
+                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$cloudDirectTargetId: UUID)",
                 "CloudDirectSnapshotConnection",
                 Query.SnapshotsOfCloudDirectBucket,
                 Query.SnapshotsOfCloudDirectBucketFieldSpec,
@@ -2734,7 +2740,9 @@ $query.Var.timeRange = @{
 	start = $someDateTime
 	# REQUIRED
 	end = $someDateTime
-}"
+}
+# OPTIONAL
+$query.Var.cloudDirectTargetId = $someString"
             );
         }
 
@@ -2749,6 +2757,7 @@ $query.Var.timeRange = @{
         //     sortOrder: SortOrder
         //     sortBy: SnapshotQuerySortByField
         //     timeRange: TimeRangeInput
+        //     cloudDirectTargetId: UUID
         //   ): CloudDirectSnapshotConnection!
         internal void InitQuerySnapshotsOfCloudDirectShare()
         {
@@ -2762,12 +2771,13 @@ $query.Var.timeRange = @{
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("sortBy", "SnapshotQuerySortByField"),
                 Tuple.Create("timeRange", "TimeRangeInput"),
+                Tuple.Create("cloudDirectTargetId", "UUID"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySnapshotsOfCloudDirectShare",
-                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput)",
+                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$cloudDirectTargetId: UUID)",
                 "CloudDirectSnapshotConnection",
                 Query.SnapshotsOfCloudDirectShare,
                 Query.SnapshotsOfCloudDirectShareFieldSpec,
@@ -2816,7 +2826,9 @@ $query.Var.timeRange = @{
 	start = $someDateTime
 	# REQUIRED
 	end = $someDateTime
-}"
+}
+# OPTIONAL
+$query.Var.cloudDirectTargetId = $someString"
             );
         }
 

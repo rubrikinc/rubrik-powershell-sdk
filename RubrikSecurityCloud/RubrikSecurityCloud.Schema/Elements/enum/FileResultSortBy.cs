@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DATA_TYPE")]
         DATA_TYPE,
 
+        [EnumMember(Value = "DOCUMENT_TYPE")]
+        DOCUMENT_TYPE,
+
         [EnumMember(Value = "EXPOSED_FILES")]
         EXPOSED_FILES,
 

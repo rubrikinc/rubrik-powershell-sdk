@@ -48,6 +48,7 @@ Enum representing different type of activities.
 - HostEvent
 - AwsEvent
 - ResourceOperations
+- IDENTITY_ALERTS - Activity representing identity alerts type.
 - Backup
 - Sync
 - TENANT_QUOTA - Activity representing tenant quota event type.

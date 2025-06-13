@@ -25,6 +25,8 @@ This endpoint is deprecated.
     - roleIds - list of System.Strings
 - Returns System.String.
 ### createuserwithpassword
+Creates a new user with a set password.
+
 - There is a single argument of type CreateUserWithPasswordInput.
 - Returns System.String.
 ### deleteorg

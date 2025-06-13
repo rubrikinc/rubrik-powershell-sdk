@@ -17,3 +17,5 @@ AWS Exocompute configurations in an AWS account.
   - Details of cloud accounts which are mapped to this Exocompute account.
 - mappedExocomputeConfigs: list of AwsExocomputeGetConfigurationResponses
   - AWS Exocompute configurations of the account to be used for Exocompute.
+- roleChainingAccount: AwsRoleChainingAccount
+  - Role chaining account details.

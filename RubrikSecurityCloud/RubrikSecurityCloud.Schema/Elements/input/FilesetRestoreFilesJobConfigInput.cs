@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldRecreateDirectoryStructure")]
         public System.Boolean? ShouldRecreateDirectoryStructure { get; set; }
 
+        //      C# -> System.String? PostRestoreScript
+        // GraphQL -> postRestoreScript: String (scalar)
+        [JsonProperty("postRestoreScript")]
+        public System.String? PostRestoreScript { get; set; }
+
         //      C# -> System.Boolean? ShouldRestoreOnlyAcls
         // GraphQL -> shouldRestoreOnlyAcls: Boolean (scalar)
         [JsonProperty("shouldRestoreOnlyAcls")]

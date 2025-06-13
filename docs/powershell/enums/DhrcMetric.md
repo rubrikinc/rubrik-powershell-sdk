@@ -7,13 +7,17 @@ protected by an SLA Domain.
 - ANOMALIES_DETECTED_PAST_WEEK - The ANOMALIES_DETECTED_PAST_WEEK metric represent the total
 number of anomalous snapshots detected in the past week.
 - CDM_LOW_RUNWAY_REMAINING - The CDM_LOW_RUNWAY_REMAINING metric represents the total number of clusters
-with low runway remaining.
+with low runway remaining. This metric was moved to the
+gps-cluster-mgmt's metricProviderService and
+is no longer used in gps-manager.
 - CDM_SAME_RELEASE_UPGRADE_AVAILABLE - The CDM_SAME_RELEASE_UPGRADE_AVAILABLE metric represents the total number
 of clusters which have a minor or patch upgrade available.
 - DATA_DISCOVERY_ENABLED_CLUSTERS - The DATA_DISCOVERY_ENABLED_CLUSTERS metric represents the total number of
 clusters having Sensitive Data Discovery enabled.
 - CDM_NODE_ENCRYPTION - The CDM_NODE_ENCRYPTION metric represents the total number of clusters
-having node encryption turned on.
+having node encryption turned on. This metric was moved to the
+gps-cluster-mgmt's metricProviderService and
+is no longer used in gps-manager.
 - CDM_NEXT_RELEASE_UPGRADE_AVAILABLE - The CDM_NEXT_RELEASE_UPGRADE_AVAILABLE metric represents the total number
 of clusters which have a major upgrade available.
 - OPEN_ACCESS_SENSITIVE_FILES - The OPEN_ACCESS_SENSITIVE_FILES metric represents the total number of

@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region GcpNativeDisk
  
-    public class GcpNativeDisk: BaseType, GcpNativeProjectDescendantType, GcpNativeProjectLogicalChildType, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class GcpNativeDisk: BaseType, GcpNativeProjectDescendantType, GcpNativeProjectLogicalChildType, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 
