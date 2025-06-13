@@ -55,9 +55,13 @@ Describe -Name 'Get-RscMssqlInstance Tests' -Tag 'Public' -Fixture {
         }
 
         It -Name 'filters by cluster' -Test {
-            $objects = Get-RscMssqlInstance -HostName $data.sqlHost.name -Cluster $data.sqlHosts[0].cluster
+            if ($data.sqlHost.cluster -eq $null) {
+                Set-ItResult -Skipped -Because "SQL Host has no cluster"
+                return
+            }
+            $objects = Get-RscMssqlInstance -HostName $data.sqlHost.name -Cluster $data.sqlHost.cluster.id
             $objects | ForEach-Object {
-                $_.cluster.id | Should -Be $data.sqlHostgs.cluster.id
+                $_.cluster.id | Should -Be $data.sqlHost.cluster.id
             }
         }
 
