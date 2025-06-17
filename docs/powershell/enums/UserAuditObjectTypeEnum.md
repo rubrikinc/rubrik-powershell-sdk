@@ -91,6 +91,7 @@ User audit object type.
 - UserActionAudit - User action audit type.
 - TPR_CONFIG - TPR configuration type.
 - CASSANDRA_COLUMN_FAMILY - Cassandra column family type.
+- GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance type.
 - EXCHANGE_SERVER - Exchange Server type.
 - OAUTH_TOKEN - OAuth token.
 - ENCRYPTION_MANAGEMENT - Encryption Management type.

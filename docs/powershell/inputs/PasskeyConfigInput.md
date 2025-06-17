@@ -9,3 +9,5 @@ Passkey configuration.
   - Required. Are roaming passkeys allowed?
 - maxPasskeysAllowed: System.Int32
   - Required. Maximum number of passkeys allowed.
+- passwordlessLoginAllowed: System.Boolean
+  - Optional. Specifies whether passwordless login is allowed.

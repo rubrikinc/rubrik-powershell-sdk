@@ -13,3 +13,5 @@ Disk migration request for a cloud cluster.
   - The total count of nodes after migration. This is applicable only when switching the instance type.
 - migrateToExtraDense: System.Boolean
   - Specifies whether new nodes must be extra dense.
+- newInstanceType: System.Int32
+  - Instance type enum value for the choosen cloud vendor.

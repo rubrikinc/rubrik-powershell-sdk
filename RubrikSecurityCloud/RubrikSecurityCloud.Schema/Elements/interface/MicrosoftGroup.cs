@@ -129,6 +129,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allOrgs")]
         List<Org>? AllOrgs { get; set; }
 
+        //      C# -> List<AssignedRscTag>? AllTags
+        // GraphQL -> allTags: [AssignedRscTag!]! (type)
+        [JsonProperty("allTags")]
+        List<AssignedRscTag>? AllTags { get; set; }
+
         //      C# -> SecurityMetadata? SecurityMetadata
         // GraphQL -> securityMetadata: SecurityMetadata (type)
         [JsonProperty("securityMetadata")]

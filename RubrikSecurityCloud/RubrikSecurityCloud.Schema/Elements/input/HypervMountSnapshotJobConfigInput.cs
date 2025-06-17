@@ -44,6 +44,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vmName")]
         public System.String? VmName { get; set; }
 
+        //      C# -> System.Boolean? ShouldMigrateDataStore
+        // GraphQL -> shouldMigrateDataStore: Boolean (scalar)
+        [JsonProperty("shouldMigrateDataStore")]
+        public System.Boolean? ShouldMigrateDataStore { get; set; }
+
+        //      C# -> System.String? DestinationFolder
+        // GraphQL -> destinationFolder: String (scalar)
+        [JsonProperty("destinationFolder")]
+        public System.String? DestinationFolder { get; set; }
+
 
         #endregion
 

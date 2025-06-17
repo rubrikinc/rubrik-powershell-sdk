@@ -93,6 +93,7 @@ The list of object types for activities.
 - AwsNativeEbsVolume - Specifies that the activity object type is AWS Native EBS Volume.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Specifies that the activity object type is related to Activity Directory domain controller.
 - CASSANDRA_COLUMN_FAMILY - Specifies that the activity object type is Cassandra column family.
+- GCP_CLOUD_SQL_INSTANCE - Specifies that the activity object type is GCP Cloud SQL Instance.
 - OAUTH_TOKEN - Specifies that the activity object type is OAuth Token.
 - ENCRYPTION_MANAGEMENT - Specifies that the activity object type is related to Encryption Management.
 - ManagedVolume - Specifies that the activity object type is Managed Volume.

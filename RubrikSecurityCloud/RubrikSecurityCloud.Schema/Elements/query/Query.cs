@@ -2617,6 +2617,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<CustomReportInfo>? AllCustomReports
+        // GraphQL -> allCustomReports: [CustomReportInfo!]! (type)
+        public static string AllCustomReports(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "allCustomReports" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AllCustomReportsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new List<CustomReportInfo>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<DbParameterGroup>? AllDbParameterGroupsByRegionFromAws
         // GraphQL -> allDbParameterGroupsByRegionFromAws: [DbParameterGroup!]! (type)
         public static string AllDbParameterGroupsByRegionFromAws(object fsObj)
@@ -5889,6 +5907,42 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new CheckLatestVersionMgmtAppExistsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> InstancePropertiesReply? CloudClusterInstanceProperties
+        // GraphQL -> cloudClusterInstanceProperties: InstancePropertiesReply! (type)
+        public static string CloudClusterInstanceProperties(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudClusterInstanceProperties" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudClusterInstancePropertiesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new InstancePropertiesReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ClusterNodesInstancePropertiesReply? CloudClusterNodesInstanceProperties
+        // GraphQL -> cloudClusterNodesInstanceProperties: ClusterNodesInstancePropertiesReply! (type)
+        public static string CloudClusterNodesInstanceProperties(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudClusterNodesInstanceProperties" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudClusterNodesInstancePropertiesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ClusterNodesInstancePropertiesReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

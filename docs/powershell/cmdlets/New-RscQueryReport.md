@@ -23,6 +23,11 @@ Retrieve details of the Rubrik clusters' reports migration.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns ReportMigrationStatusConnection.
+### custom
+Retrieve reports created by users.
+
+- There is a single argument of type AllCustomReportsInput.
+- Returns list of CustomReportInfos.
 ### data
 - There are 13 arguments.
     - first - System.Int32: Returns the first n elements from the list.

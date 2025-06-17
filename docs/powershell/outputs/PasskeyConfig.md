@@ -9,3 +9,5 @@ Represents the reply returned for passkeyConfig.
   - Are platform passkeys allowed.
 - maxPasskeysAllowed: System.Int32
   - Max number of passkeys allowed.
+- passwordlessLoginAllowed: System.Boolean
+  - Specifies whether passwordless login is allowed.

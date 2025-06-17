@@ -116,10 +116,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allOrgs")]
         public List<Org>? AllOrgs { get; set; }
 
+        //      C# -> List<AssignedRscTag>? AllTags
+        // GraphQL -> allTags: [AssignedRscTag!]! (type)
+        [JsonProperty("allTags")]
+        public List<AssignedRscTag>? AllTags { get; set; }
+
+        //      C# -> AzureNativeSubscriptionDetails? AzureNativeSubscriptionDetails
+        // GraphQL -> azureNativeSubscriptionDetails: AzureNativeSubscriptionDetails (type)
+        [JsonProperty("azureNativeSubscriptionDetails")]
+        public AzureNativeSubscriptionDetails? AzureNativeSubscriptionDetails { get; set; }
+
         //      C# -> AzureNativeVirtualMachineConnection? AzureNativeVirtualMachines
         // GraphQL -> azureNativeVirtualMachines: AzureNativeVirtualMachineConnection! (type)
         [JsonProperty("azureNativeVirtualMachines")]
         public AzureNativeVirtualMachineConnection? AzureNativeVirtualMachines { get; set; }
+
+        //      C# -> AzureNativeSubscription? AzureSubscription
+        // GraphQL -> azureSubscription: AzureNativeSubscription (type)
+        [JsonProperty("azureSubscription")]
+        public AzureNativeSubscription? AzureSubscription { get; set; }
 
         //      C# -> AzureNativeResourceGroupSlaAssignment? DiskSla
         // GraphQL -> diskSla: AzureNativeResourceGroupSlaAssignment! (type)
@@ -251,7 +266,10 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? SlaPauseStatus = null,
         System.Int32? VmsCount = null,
         List<Org>? AllOrgs = null,
+        List<AssignedRscTag>? AllTags = null,
+        AzureNativeSubscriptionDetails? AzureNativeSubscriptionDetails = null,
         AzureNativeVirtualMachineConnection? AzureNativeVirtualMachines = null,
+        AzureNativeSubscription? AzureSubscription = null,
         AzureNativeResourceGroupSlaAssignment? DiskSla = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
@@ -324,8 +342,17 @@ namespace RubrikSecurityCloud.Types
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
         }
+        if ( AllTags != null ) {
+            this.AllTags = AllTags;
+        }
+        if ( AzureNativeSubscriptionDetails != null ) {
+            this.AzureNativeSubscriptionDetails = AzureNativeSubscriptionDetails;
+        }
         if ( AzureNativeVirtualMachines != null ) {
             this.AzureNativeVirtualMachines = AzureNativeVirtualMachines;
+        }
+        if ( AzureSubscription != null ) {
+            this.AzureSubscription = AzureSubscription;
         }
         if ( DiskSla != null ) {
             this.DiskSla = DiskSla;
@@ -566,6 +593,30 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<AssignedRscTag>? AllTags
+        // GraphQL -> allTags: [AssignedRscTag!]! (type)
+        if (this.AllTags != null) {
+            var fspec = this.AllTags.AsFieldSpec(conf.Child("allTags"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "allTags" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureNativeSubscriptionDetails? AzureNativeSubscriptionDetails
+        // GraphQL -> azureNativeSubscriptionDetails: AzureNativeSubscriptionDetails (type)
+        if (this.AzureNativeSubscriptionDetails != null) {
+            var fspec = this.AzureNativeSubscriptionDetails.AsFieldSpec(conf.Child("azureNativeSubscriptionDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureNativeSubscriptionDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureNativeVirtualMachineConnection? AzureNativeVirtualMachines
         // GraphQL -> azureNativeVirtualMachines: AzureNativeVirtualMachineConnection! (type)
         if (this.AzureNativeVirtualMachines != null) {
@@ -575,6 +626,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureNativeVirtualMachines" + "\n(" + this.Vars.AzureNativeVirtualMachines.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureNativeSubscription? AzureSubscription
+        // GraphQL -> azureSubscription: AzureNativeSubscription (type)
+        if (this.AzureSubscription != null) {
+            var fspec = this.AzureSubscription.AsFieldSpec(conf.Child("azureSubscription"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureSubscription" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1087,6 +1150,44 @@ namespace RubrikSecurityCloud.Types
         {
             this.AllOrgs = null;
         }
+        //      C# -> List<AssignedRscTag>? AllTags
+        // GraphQL -> allTags: [AssignedRscTag!]! (type)
+        if (ec.Includes("allTags",false))
+        {
+            if(this.AllTags == null) {
+
+                this.AllTags = new List<AssignedRscTag>();
+                this.AllTags.ApplyExploratoryFieldSpec(ec.NewChild("allTags"));
+
+            } else {
+
+                this.AllTags.ApplyExploratoryFieldSpec(ec.NewChild("allTags"));
+
+            }
+        }
+        else if (this.AllTags != null && ec.Excludes("allTags",false))
+        {
+            this.AllTags = null;
+        }
+        //      C# -> AzureNativeSubscriptionDetails? AzureNativeSubscriptionDetails
+        // GraphQL -> azureNativeSubscriptionDetails: AzureNativeSubscriptionDetails (type)
+        if (ec.Includes("azureNativeSubscriptionDetails",false))
+        {
+            if(this.AzureNativeSubscriptionDetails == null) {
+
+                this.AzureNativeSubscriptionDetails = new AzureNativeSubscriptionDetails();
+                this.AzureNativeSubscriptionDetails.ApplyExploratoryFieldSpec(ec.NewChild("azureNativeSubscriptionDetails"));
+
+            } else {
+
+                this.AzureNativeSubscriptionDetails.ApplyExploratoryFieldSpec(ec.NewChild("azureNativeSubscriptionDetails"));
+
+            }
+        }
+        else if (this.AzureNativeSubscriptionDetails != null && ec.Excludes("azureNativeSubscriptionDetails",false))
+        {
+            this.AzureNativeSubscriptionDetails = null;
+        }
         //      C# -> AzureNativeVirtualMachineConnection? AzureNativeVirtualMachines
         // GraphQL -> azureNativeVirtualMachines: AzureNativeVirtualMachineConnection! (type)
         if (ec.Includes("azureNativeVirtualMachines",false))
@@ -1105,6 +1206,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureNativeVirtualMachines != null && ec.Excludes("azureNativeVirtualMachines",false))
         {
             this.AzureNativeVirtualMachines = null;
+        }
+        //      C# -> AzureNativeSubscription? AzureSubscription
+        // GraphQL -> azureSubscription: AzureNativeSubscription (type)
+        if (ec.Includes("azureSubscription",false))
+        {
+            if(this.AzureSubscription == null) {
+
+                this.AzureSubscription = new AzureNativeSubscription();
+                this.AzureSubscription.ApplyExploratoryFieldSpec(ec.NewChild("azureSubscription"));
+
+            } else {
+
+                this.AzureSubscription.ApplyExploratoryFieldSpec(ec.NewChild("azureSubscription"));
+
+            }
+        }
+        else if (this.AzureSubscription != null && ec.Excludes("azureSubscription",false))
+        {
+            this.AzureSubscription = null;
         }
         //      C# -> AzureNativeResourceGroupSlaAssignment? DiskSla
         // GraphQL -> diskSla: AzureNativeResourceGroupSlaAssignment! (type)

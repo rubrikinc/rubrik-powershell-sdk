@@ -166,6 +166,7 @@ All supported managed objects.
 - K8S_LABEL - Kubernetes label.
 - INFORMIX_INSTANCE - Informix Instance.
 - AZURE_REGION - Azure Region.
+- GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

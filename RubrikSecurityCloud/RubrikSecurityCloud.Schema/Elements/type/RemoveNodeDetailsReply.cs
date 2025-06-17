@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? RemoveCloudResources
+        // GraphQL -> removeCloudResources: Boolean! (scalar)
+        [JsonProperty("removeCloudResources")]
+        public System.Boolean? RemoveCloudResources { get; set; }
+
         //      C# -> List<RemovedNodeDetail>? RemoveNodeDetails
         // GraphQL -> removeNodeDetails: [RemovedNodeDetail!]! (type)
         [JsonProperty("removeNodeDetails")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RemoveNodeDetailsReply Set(
+        System.Boolean? RemoveCloudResources = null,
         List<RemovedNodeDetail>? RemoveNodeDetails = null
     ) 
     {
+        if ( RemoveCloudResources != null ) {
+            this.RemoveCloudResources = RemoveCloudResources;
+        }
         if ( RemoveNodeDetails != null ) {
             this.RemoveNodeDetails = RemoveNodeDetails;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? RemoveCloudResources
+        // GraphQL -> removeCloudResources: Boolean! (scalar)
+        if (this.RemoveCloudResources != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "removeCloudResources\n" ;
+            } else {
+                s += ind + "removeCloudResources\n" ;
+            }
+        }
         //      C# -> List<RemovedNodeDetail>? RemoveNodeDetails
         // GraphQL -> removeNodeDetails: [RemovedNodeDetail!]! (type)
         if (this.RemoveNodeDetails != null) {
@@ -74,6 +92,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Boolean? RemoveCloudResources
+        // GraphQL -> removeCloudResources: Boolean! (scalar)
+        if (ec.Includes("removeCloudResources",true))
+        {
+            if(this.RemoveCloudResources == null) {
+
+                this.RemoveCloudResources = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.RemoveCloudResources != null && ec.Excludes("removeCloudResources",true))
+        {
+            this.RemoveCloudResources = null;
+        }
         //      C# -> List<RemovedNodeDetail>? RemoveNodeDetails
         // GraphQL -> removeNodeDetails: [RemovedNodeDetail!]! (type)
         if (ec.Includes("removeNodeDetails",false))

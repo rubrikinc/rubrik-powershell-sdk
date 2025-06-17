@@ -23,10 +23,14 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
   - Name of the subnet associated with the Azure SQL Managed Instance Server.
 - backupSetupSourceObject: PathNode
   - The object from where the setup for performing backups of Azure SQL Managed Instance Databases is inherited.
+- azureNativeResourceGroupAndSubscriptionDetails: AzureNativeResourceGroupAndSubscriptionDetails
+  - RG and subscription details.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - azureNativeResourceGroup: AzureNativeResourceGroup
   - Resource Group of the Azure SQL Managed Instance Server.
+- azureResourceGroup: AzureNativeResourceGroup
+  - Resource Group of the Azure object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
@@ -59,6 +63,8 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
   - Number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
+- allTags: list of AssignedRscTags
+  - Rsc tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

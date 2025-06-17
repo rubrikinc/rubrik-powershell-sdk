@@ -5,6 +5,16 @@ Specifies if the cluster can ignore cluster removal prechecks.
 
 - There is a single argument of type System.String.
 - Returns IgnoreClusterRemovalPrecheckReply.
+### cloudclusterinstanceproperties
+Retrieves instance properties.
+
+- There is a single argument of type InstancePropertiesReq.
+- Returns InstancePropertiesReply.
+### cloudclusternodesinstanceproperties
+Get instance properties of cluster nodes.
+
+- There is a single argument of type ClusterNodesInstancePropertiesReq.
+- Returns ClusterNodesInstancePropertiesReply.
 ### cloudclusterrecoveryvalidation
 Validate if a Cloud Cluster can be recovered.
 

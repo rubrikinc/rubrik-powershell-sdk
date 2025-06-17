@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("passkeysAllowed")]
         public System.Boolean? PasskeysAllowed { get; set; }
 
+        //      C# -> System.Boolean? PasswordlessLoginAllowed
+        // GraphQL -> passwordlessLoginAllowed: Boolean! (scalar)
+        [JsonProperty("passwordlessLoginAllowed")]
+        public System.Boolean? PasswordlessLoginAllowed { get; set; }
+
         //      C# -> System.Boolean? PlatformPasskeyAllowed
         // GraphQL -> platformPasskeyAllowed: Boolean! (scalar)
         [JsonProperty("platformPasskeyAllowed")]
@@ -52,6 +57,7 @@ namespace RubrikSecurityCloud.Types
     public PasskeyConfig Set(
         System.Int32? MaxPasskeysAllowed = null,
         System.Boolean? PasskeysAllowed = null,
+        System.Boolean? PasswordlessLoginAllowed = null,
         System.Boolean? PlatformPasskeyAllowed = null,
         System.Boolean? RoamingPasskeyAllowed = null
     ) 
@@ -61,6 +67,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PasskeysAllowed != null ) {
             this.PasskeysAllowed = PasskeysAllowed;
+        }
+        if ( PasswordlessLoginAllowed != null ) {
+            this.PasswordlessLoginAllowed = PasswordlessLoginAllowed;
         }
         if ( PlatformPasskeyAllowed != null ) {
             this.PlatformPasskeyAllowed = PlatformPasskeyAllowed;
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "passkeysAllowed\n" ;
             } else {
                 s += ind + "passkeysAllowed\n" ;
+            }
+        }
+        //      C# -> System.Boolean? PasswordlessLoginAllowed
+        // GraphQL -> passwordlessLoginAllowed: Boolean! (scalar)
+        if (this.PasswordlessLoginAllowed != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "passwordlessLoginAllowed\n" ;
+            } else {
+                s += ind + "passwordlessLoginAllowed\n" ;
             }
         }
         //      C# -> System.Boolean? PlatformPasskeyAllowed
@@ -158,6 +176,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PasskeysAllowed != null && ec.Excludes("passkeysAllowed",true))
         {
             this.PasskeysAllowed = null;
+        }
+        //      C# -> System.Boolean? PasswordlessLoginAllowed
+        // GraphQL -> passwordlessLoginAllowed: Boolean! (scalar)
+        if (ec.Includes("passwordlessLoginAllowed",true))
+        {
+            if(this.PasswordlessLoginAllowed == null) {
+
+                this.PasswordlessLoginAllowed = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PasswordlessLoginAllowed != null && ec.Excludes("passwordlessLoginAllowed",true))
+        {
+            this.PasswordlessLoginAllowed = null;
         }
         //      C# -> System.Boolean? PlatformPasskeyAllowed
         // GraphQL -> platformPasskeyAllowed: Boolean! (scalar)

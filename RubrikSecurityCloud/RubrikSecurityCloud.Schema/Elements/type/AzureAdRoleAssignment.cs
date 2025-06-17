@@ -40,10 +40,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("principalId")]
         public System.String? PrincipalId { get; set; }
 
+        //      C# -> System.String? PrincipalName
+        // GraphQL -> principalName: String! (scalar)
+        [JsonProperty("principalName")]
+        public System.String? PrincipalName { get; set; }
+
         //      C# -> System.String? RoleId
         // GraphQL -> roleId: String! (scalar)
         [JsonProperty("roleId")]
         public System.String? RoleId { get; set; }
+
+        //      C# -> System.String? RoleName
+        // GraphQL -> roleName: String! (scalar)
+        [JsonProperty("roleName")]
+        public System.String? RoleName { get; set; }
 
         //      C# -> System.String? ScopeObjId
         // GraphQL -> scopeObjId: String! (scalar)
@@ -79,7 +89,9 @@ namespace RubrikSecurityCloud.Types
         AzureAdRoleAssignmentScopeType? ScopeObjType = null,
         System.String? Id = null,
         System.String? PrincipalId = null,
+        System.String? PrincipalName = null,
         System.String? RoleId = null,
+        System.String? RoleName = null,
         System.String? ScopeObjId = null,
         System.String? ScopeObjName = null,
         PrincipalObject? PrincipalObject = null,
@@ -98,8 +110,14 @@ namespace RubrikSecurityCloud.Types
         if ( PrincipalId != null ) {
             this.PrincipalId = PrincipalId;
         }
+        if ( PrincipalName != null ) {
+            this.PrincipalName = PrincipalName;
+        }
         if ( RoleId != null ) {
             this.RoleId = RoleId;
+        }
+        if ( RoleName != null ) {
+            this.RoleName = RoleName;
         }
         if ( ScopeObjId != null ) {
             this.ScopeObjId = ScopeObjId;
@@ -163,6 +181,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "principalId\n" ;
             }
         }
+        //      C# -> System.String? PrincipalName
+        // GraphQL -> principalName: String! (scalar)
+        if (this.PrincipalName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "principalName\n" ;
+            } else {
+                s += ind + "principalName\n" ;
+            }
+        }
         //      C# -> System.String? RoleId
         // GraphQL -> roleId: String! (scalar)
         if (this.RoleId != null) {
@@ -170,6 +197,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "roleId\n" ;
             } else {
                 s += ind + "roleId\n" ;
+            }
+        }
+        //      C# -> System.String? RoleName
+        // GraphQL -> roleName: String! (scalar)
+        if (this.RoleName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "roleName\n" ;
+            } else {
+                s += ind + "roleName\n" ;
             }
         }
         //      C# -> System.String? ScopeObjId
@@ -289,6 +325,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.PrincipalId = null;
         }
+        //      C# -> System.String? PrincipalName
+        // GraphQL -> principalName: String! (scalar)
+        if (ec.Includes("principalName",true))
+        {
+            if(this.PrincipalName == null) {
+
+                this.PrincipalName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrincipalName != null && ec.Excludes("principalName",true))
+        {
+            this.PrincipalName = null;
+        }
         //      C# -> System.String? RoleId
         // GraphQL -> roleId: String! (scalar)
         if (ec.Includes("roleId",true))
@@ -305,6 +358,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.RoleId != null && ec.Excludes("roleId",true))
         {
             this.RoleId = null;
+        }
+        //      C# -> System.String? RoleName
+        // GraphQL -> roleName: String! (scalar)
+        if (ec.Includes("roleName",true))
+        {
+            if(this.RoleName == null) {
+
+                this.RoleName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RoleName != null && ec.Excludes("roleName",true))
+        {
+            this.RoleName = null;
         }
         //      C# -> System.String? ScopeObjId
         // GraphQL -> scopeObjId: String! (scalar)

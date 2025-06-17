@@ -53,6 +53,7 @@
 - AwsNativeEbsVolume
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller.
 - CASSANDRA_COLUMN_FAMILY - Cassandra Column Family.
+- GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
 - ManagedVolume - Managed Volume.
 - AzureNativeManagedDisk
 - LinuxFileset

@@ -45,11 +45,15 @@ An Azure Native Virtual Machine that refers to the Azure infrastructure as a ser
   - Native ID of the the virtual machine (VM).
 - nativeName: System.String
   - Azure Native name of the object.
+- azureNativeResourceGroupAndSubscriptionDetails: AzureNativeResourceGroupAndSubscriptionDetails
+  - RG and subscription details.
 - fileIndexingStatus: FileIndexingStatus
   - Specifies the file indexing status for this virtual machine. When enabled, Rubrik scans the file structure within the virtual machine in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - resourceGroup: AzureNativeResourceGroup
+  - Resource Group of the Azure Virtual Machine (VM).
+- azureResourceGroup: AzureNativeResourceGroup
   - Resource Group of the Azure Virtual Machine (VM).
 - attachedManagedDisks: list of AzureNativeManagedDisks
   - List of Managed Disks attached to the Azure Virtual Machine (VM).
@@ -87,6 +91,8 @@ An Azure Native Virtual Machine that refers to the Azure infrastructure as a ser
   - Number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
+- allTags: list of AssignedRscTags
+  - Rsc tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

@@ -131,6 +131,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allOrgs")]
         public List<Org>? AllOrgs { get; set; }
 
+        //      C# -> List<AssignedRscTag>? AllTags
+        // GraphQL -> allTags: [AssignedRscTag!]! (type)
+        [JsonProperty("allTags")]
+        public List<AssignedRscTag>? AllTags { get; set; }
+
         //      C# -> ApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs
         // GraphQL -> applicationCloudAccountExoConfigs: ApplicationCloudAccountToExocomputeConfig! (type)
         [JsonProperty("applicationCloudAccountExoConfigs")]
@@ -285,6 +290,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? S3BucketCount = null,
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
+        List<AssignedRscTag>? AllTags = null,
         ApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs = null,
         AwsNativeEbsVolumeConnection? AwsNativeEbsVolumes = null,
         AwsNativeEc2InstanceConnection? AwsNativeEc2Instances = null,
@@ -364,6 +370,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
+        }
+        if ( AllTags != null ) {
+            this.AllTags = AllTags;
         }
         if ( ApplicationCloudAccountExoConfigs != null ) {
             this.ApplicationCloudAccountExoConfigs = ApplicationCloudAccountExoConfigs;
@@ -625,6 +634,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AssignedRscTag>? AllTags
+        // GraphQL -> allTags: [AssignedRscTag!]! (type)
+        if (this.AllTags != null) {
+            var fspec = this.AllTags.AsFieldSpec(conf.Child("allTags"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "allTags" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1175,6 +1196,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AllOrgs != null && ec.Excludes("allOrgs",false))
         {
             this.AllOrgs = null;
+        }
+        //      C# -> List<AssignedRscTag>? AllTags
+        // GraphQL -> allTags: [AssignedRscTag!]! (type)
+        if (ec.Includes("allTags",false))
+        {
+            if(this.AllTags == null) {
+
+                this.AllTags = new List<AssignedRscTag>();
+                this.AllTags.ApplyExploratoryFieldSpec(ec.NewChild("allTags"));
+
+            } else {
+
+                this.AllTags.ApplyExploratoryFieldSpec(ec.NewChild("allTags"));
+
+            }
+        }
+        else if (this.AllTags != null && ec.Excludes("allTags",false))
+        {
+            this.AllTags = null;
         }
         //      C# -> ApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs
         // GraphQL -> applicationCloudAccountExoConfigs: ApplicationCloudAccountToExocomputeConfig! (type)

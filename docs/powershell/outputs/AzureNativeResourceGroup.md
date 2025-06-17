@@ -25,9 +25,13 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - The number of Azure storage accounts in the resource group.
 - snappableTypeToBackupSetupSpecs: list of WorkloadTypeToBackupSetupSpecss
   - A list of mappings between object types and details about the backup setup.
+- azureNativeSubscriptionDetails: AzureNativeSubscriptionDetails
+  - Subscription details of the resource group.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
   - The authorized operations on the object.
 - subscription: AzureNativeSubscription
+  - Azure Native Subscription of the Resource Group.
+- azureSubscription: AzureNativeSubscription
   - Azure Native Subscription of the Resource Group.
 - azureNativeVirtualMachines: AzureNativeVirtualMachineConnection
   - Paginated ist of Azure Virtual Machines (VMs) in the Resource Group.
@@ -63,6 +67,8 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - Number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
+- allTags: list of AssignedRscTags
+  - Rsc tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

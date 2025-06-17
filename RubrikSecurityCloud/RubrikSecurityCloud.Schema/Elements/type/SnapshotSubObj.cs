@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> OpenstackVmSubObject? OpenstackVmSubObj
+        // GraphQL -> openstackVmSubObj: OpenstackVmSubObject (type)
+        [JsonProperty("openstackVmSubObj")]
+        public OpenstackVmSubObject? OpenstackVmSubObj { get; set; }
+
         //      C# -> VmwareVmSubObject? VmwareVmSubObj
         // GraphQL -> vmwareVmSubObj: VmwareVmSubObject (type)
         [JsonProperty("vmwareVmSubObj")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SnapshotSubObj Set(
+        OpenstackVmSubObject? OpenstackVmSubObj = null,
         VmwareVmSubObject? VmwareVmSubObj = null,
         VolumeGroupSubObject? VolumeGroupSubObj = null
     ) 
     {
+        if ( OpenstackVmSubObj != null ) {
+            this.OpenstackVmSubObj = OpenstackVmSubObj;
+        }
         if ( VmwareVmSubObj != null ) {
             this.VmwareVmSubObj = VmwareVmSubObj;
         }
@@ -64,6 +73,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> OpenstackVmSubObject? OpenstackVmSubObj
+        // GraphQL -> openstackVmSubObj: OpenstackVmSubObject (type)
+        if (this.OpenstackVmSubObj != null) {
+            var fspec = this.OpenstackVmSubObj.AsFieldSpec(conf.Child("openstackVmSubObj"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "openstackVmSubObj" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> VmwareVmSubObject? VmwareVmSubObj
         // GraphQL -> vmwareVmSubObj: VmwareVmSubObject (type)
         if (this.VmwareVmSubObj != null) {
@@ -95,6 +116,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> OpenstackVmSubObject? OpenstackVmSubObj
+        // GraphQL -> openstackVmSubObj: OpenstackVmSubObject (type)
+        if (ec.Includes("openstackVmSubObj",false))
+        {
+            if(this.OpenstackVmSubObj == null) {
+
+                this.OpenstackVmSubObj = new OpenstackVmSubObject();
+                this.OpenstackVmSubObj.ApplyExploratoryFieldSpec(ec.NewChild("openstackVmSubObj"));
+
+            } else {
+
+                this.OpenstackVmSubObj.ApplyExploratoryFieldSpec(ec.NewChild("openstackVmSubObj"));
+
+            }
+        }
+        else if (this.OpenstackVmSubObj != null && ec.Excludes("openstackVmSubObj",false))
+        {
+            this.OpenstackVmSubObj = null;
+        }
         //      C# -> VmwareVmSubObject? VmwareVmSubObj
         // GraphQL -> vmwareVmSubObj: VmwareVmSubObject (type)
         if (ec.Includes("vmwareVmSubObj",false))

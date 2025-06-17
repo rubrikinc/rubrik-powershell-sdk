@@ -4197,6 +4197,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		roamingPasskeyAllowed = $someBoolean
     /// 		# REQUIRED
     /// 		maxPasskeysAllowed = $someInt
+    /// 		# OPTIONAL
+    /// 		passwordlessLoginAllowed = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	deletePasskeys = $someBoolean
@@ -12412,6 +12414,8 @@ $query.Var.input = @{
 		roamingPasskeyAllowed = $someBoolean
 		# REQUIRED
 		maxPasskeysAllowed = $someInt
+		# OPTIONAL
+		passwordlessLoginAllowed = $someBoolean
 	}
 	# OPTIONAL
 	deletePasskeys = $someBoolean

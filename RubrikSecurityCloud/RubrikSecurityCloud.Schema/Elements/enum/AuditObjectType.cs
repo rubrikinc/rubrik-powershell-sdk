@@ -165,6 +165,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FEDERATED_ACCESS")]
         FEDERATED_ACCESS,
 
+        [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
+        GCP_CLOUD_SQL_INSTANCE,
+
         [EnumMember(Value = "GCP_NATIVE_DISK")]
         GCP_NATIVE_DISK,
 

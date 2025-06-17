@@ -107,6 +107,7 @@ Type of hierarchy object.
 - VSphereNetwork
 - CASSANDRA_COLUMN_FAMILY - Cassandra Column Family.
 - VcdOrgVdc
+- GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
 - NasVolume
 - VcdCatalog
 - EXCHANGE_SERVER - Exchange Server.

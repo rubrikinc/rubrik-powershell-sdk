@@ -17,6 +17,7 @@
 - AZURE_AD_DIRECTORY - Azure AD Directory.
 - AwsNativeEbsVolume
 - AzureSqlDatabaseDb
+- GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
 - AzureNativeManagedDisk
 - O365Site
 - M365_BACKUP_STORAGE_SHAREPOINT_SITE - Microsoft 365 Backup Storage SharePoint site.

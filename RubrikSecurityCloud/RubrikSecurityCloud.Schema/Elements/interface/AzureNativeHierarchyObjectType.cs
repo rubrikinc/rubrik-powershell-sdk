@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("resourceGroup")]
         AzureNativeResourceGroup? ResourceGroup { get; set; }
 
+        //      C# -> AzureNativeResourceGroup? AzureResourceGroup
+        // GraphQL -> azureResourceGroup: AzureNativeResourceGroup (type)
+        [JsonProperty("azureResourceGroup")]
+        AzureNativeResourceGroup? AzureResourceGroup { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -118,6 +123,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
         List<Org>? AllOrgs { get; set; }
+
+        //      C# -> List<AssignedRscTag>? AllTags
+        // GraphQL -> allTags: [AssignedRscTag!]! (type)
+        [JsonProperty("allTags")]
+        List<AssignedRscTag>? AllTags { get; set; }
 
         //      C# -> SecurityMetadata? SecurityMetadata
         // GraphQL -> securityMetadata: SecurityMetadata (type)

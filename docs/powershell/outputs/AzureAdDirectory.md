@@ -75,6 +75,8 @@ Details of the Azure AD directory object.
   - Number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
+- allTags: list of AssignedRscTags
+  - Rsc tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

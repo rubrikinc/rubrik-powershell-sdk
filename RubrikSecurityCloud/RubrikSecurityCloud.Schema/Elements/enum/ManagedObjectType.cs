@@ -165,6 +165,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FILESET_TEMPLATE")]
         FILESET_TEMPLATE,
 
+        [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
+        GCP_CLOUD_SQL_INSTANCE,
+
         [EnumMember(Value = "GCP_NATIVE_DISK")]
         GCP_NATIVE_DISK,
 

@@ -54,6 +54,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AzureSqlManagedInstanceDb")]
         AZURE_SQL_MANAGED_INSTANCE_DB,
 
+        [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
+        GCP_CLOUD_SQL_INSTANCE,
+
         [EnumMember(Value = "GcpNativeGCEInstance")]
         GCP_NATIVE_GCE_INSTANCE,
 

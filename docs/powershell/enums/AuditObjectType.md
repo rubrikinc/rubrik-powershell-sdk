@@ -147,3 +147,4 @@ Represents all the object types for which we expect to see audits.
 - AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB Table.
 - K8S_LABEL - Kubernetes label object.
 - INFORMIX_INSTANCE - Informix instance.
+- GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.

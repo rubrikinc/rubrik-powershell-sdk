@@ -11,6 +11,10 @@ Represents the details of a role assignment between a principal object, role def
   - ID of the directory scope object where the role is assigned.
 - scopeObjName: System.String
   - Name of the directory scope object where the role is assigned.
+- principalName: System.String
+  - Name of the principal object to which the role is assigned.
+- roleName: System.String
+  - Name of the role object associated with this assignment.
 - principalObject: PrincipalObject
   - Azure AD object to which the role is assigned.
 - roleObject: AzureAdRole

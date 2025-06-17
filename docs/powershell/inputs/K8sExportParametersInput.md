@@ -25,4 +25,5 @@ Supported in v9.0+
       The UUID of the target Kubernetes cluster to which the resources should be exported.
 - targetNamespaceName: System.String
   - Required. Supported in v9.0+
-      The name of the new Kubernetes namespace that will be created. The resources will be exported to the new namespace.
+      v9.0-v9.3: The name of the new Kubernetes namespace that will be created. The resources will be exported to the new namespace.
+      v9.4: The name of the new Kubernetes namespace that will be created. The resources will be exported to the new namespace. Set to empty string for cluster level export.

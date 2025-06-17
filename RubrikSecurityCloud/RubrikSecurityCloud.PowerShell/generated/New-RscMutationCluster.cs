@@ -479,6 +479,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	newNodeCount = $someInt
     /// 	# OPTIONAL
     /// 	migrateToExtraDense = $someBoolean
+    /// 	# OPTIONAL
+    /// 	newInstanceType = $someInt
     /// }
     /// 
     /// # Execute the query
@@ -730,6 +732,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	useQuickDrain = $someBoolean
+    /// 	# OPTIONAL
+    /// 	removeCloudResources = $someBoolean
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
     /// 	# OPTIONAL
@@ -751,6 +755,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	resetAfterRemoveType = $someResetAfterRemoveType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ResetAfterRemoveType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1799,6 +1807,8 @@ $query.Var.input = @{
 	newNodeCount = $someInt
 	# OPTIONAL
 	migrateToExtraDense = $someBoolean
+	# OPTIONAL
+	newInstanceType = $someInt
 }"
             );
         }
@@ -2012,6 +2022,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	useQuickDrain = $someBoolean
+	# OPTIONAL
+	removeCloudResources = $someBoolean
 	# REQUIRED
 	clusterUuid = $someString
 	# OPTIONAL
@@ -2033,6 +2045,10 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	resetAfterRemoveType = $someResetAfterRemoveType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ResetAfterRemoveType]) for enum values.
+	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
+	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
 }"
             );
         }

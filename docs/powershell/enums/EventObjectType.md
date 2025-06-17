@@ -148,3 +148,4 @@ Enum representing all the possible object types which generate events.
 - OPENSTACK_VIRTUAL_MACHINE - Openstack Virtual Machine.
 - INFORMIX_INSTANCE - Informix instance.
 - K8S_LABEL - Kubernetes label object.
+- GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.

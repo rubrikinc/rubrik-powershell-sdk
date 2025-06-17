@@ -211,6 +211,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allOrgs")]
         public List<Org>? AllOrgs { get; set; }
 
+        //      C# -> List<AssignedRscTag>? AllTags
+        // GraphQL -> allTags: [AssignedRscTag!]! (type)
+        [JsonProperty("allTags")]
+        public List<AssignedRscTag>? AllTags { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
@@ -541,6 +546,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? VmwareToolsInstalled = null,
         AgentStatus? AgentStatus = null,
         List<Org>? AllOrgs = null,
+        List<AssignedRscTag>? AllTags = null,
         Cluster? Cluster = null,
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         List<DuplicatedVm>? DuplicatedVms = null,
@@ -687,6 +693,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
+        }
+        if ( AllTags != null ) {
+            this.AllTags = AllTags;
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
@@ -1160,6 +1169,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AssignedRscTag>? AllTags
+        // GraphQL -> allTags: [AssignedRscTag!]! (type)
+        if (this.AllTags != null) {
+            var fspec = this.AllTags.AsFieldSpec(conf.Child("allTags"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "allTags" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2221,6 +2242,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AllOrgs != null && ec.Excludes("allOrgs",false))
         {
             this.AllOrgs = null;
+        }
+        //      C# -> List<AssignedRscTag>? AllTags
+        // GraphQL -> allTags: [AssignedRscTag!]! (type)
+        if (ec.Includes("allTags",false))
+        {
+            if(this.AllTags == null) {
+
+                this.AllTags = new List<AssignedRscTag>();
+                this.AllTags.ApplyExploratoryFieldSpec(ec.NewChild("allTags"));
+
+            } else {
+
+                this.AllTags.ApplyExploratoryFieldSpec(ec.NewChild("allTags"));
+
+            }
+        }
+        else if (this.AllTags != null && ec.Excludes("allTags",false))
+        {
+            this.AllTags = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

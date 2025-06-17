@@ -156,6 +156,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FAILOVER_CLUSTER_APP")]
         FAILOVER_CLUSTER_APP,
 
+        [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
+        GCP_CLOUD_SQL_INSTANCE,
+
         [EnumMember(Value = "GCP_NATIVE_DISK")]
         GCP_NATIVE_DISK,
 

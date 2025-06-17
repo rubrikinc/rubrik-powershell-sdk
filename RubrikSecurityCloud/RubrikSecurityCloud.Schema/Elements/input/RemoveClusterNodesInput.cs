@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("useQuickDrain")]
         public System.Boolean? UseQuickDrain { get; set; }
 
+        //      C# -> System.Boolean? RemoveCloudResources
+        // GraphQL -> removeCloudResources: Boolean (scalar)
+        [JsonProperty("removeCloudResources")]
+        public System.Boolean? RemoveCloudResources { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [Required]
@@ -45,6 +50,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resetAfterRemoveType: ResetAfterRemoveType (enum)
         [JsonProperty("resetAfterRemoveType")]
         public ResetAfterRemoveType? ResetAfterRemoveType { get; set; }
+
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: UUID (scalar)
+        [JsonProperty("cloudAccountId")]
+        public System.String? CloudAccountId { get; set; }
+
+        //      C# -> CcpVendorType? Vendor
+        // GraphQL -> vendor: CcpVendorType (enum)
+        [JsonProperty("vendor")]
+        public CcpVendorType? Vendor { get; set; }
 
 
         #endregion

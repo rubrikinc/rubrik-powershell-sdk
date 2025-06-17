@@ -236,6 +236,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					removeNetworkDevices = $someBoolean
     /// 					# OPTIONAL
     /// 					vmName = $someString
+    /// 					# OPTIONAL
+    /// 					shouldMigrateDataStore = $someBoolean
+    /// 					# OPTIONAL
+    /// 					destinationFolder = $someString
     /// 				}
     /// 				# REQUIRED
     /// 				vmId = $someString
@@ -369,6 +373,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		removeNetworkDevices = $someBoolean
     /// 		# OPTIONAL
     /// 		vmName = $someString
+    /// 		# OPTIONAL
+    /// 		shouldMigrateDataStore = $someBoolean
+    /// 		# OPTIONAL
+    /// 		destinationFolder = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1663,6 +1671,10 @@ $query.Var.input = @{
 					removeNetworkDevices = $someBoolean
 					# OPTIONAL
 					vmName = $someString
+					# OPTIONAL
+					shouldMigrateDataStore = $someBoolean
+					# OPTIONAL
+					destinationFolder = $someString
 				}
 				# REQUIRED
 				vmId = $someString
@@ -1772,6 +1784,10 @@ $query.Var.input = @{
 		removeNetworkDevices = $someBoolean
 		# OPTIONAL
 		vmName = $someString
+		# OPTIONAL
+		shouldMigrateDataStore = $someBoolean
+		# OPTIONAL
+		destinationFolder = $someString
 	}
 	# REQUIRED
 	id = $someString

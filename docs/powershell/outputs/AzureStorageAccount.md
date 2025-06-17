@@ -23,9 +23,13 @@ An Azure storage account that contains Azure storage data objects including blob
   - The Storage Account type.
 - isHierarchicalNamespaceEnabled: System.Boolean
   - Specifies whether hierarchical namespace is enabled for the storage account or not. When the value is true, hierarchical namespace is enabled.
+- azureNativeResourceGroupAndSubscriptionDetails: AzureNativeResourceGroupAndSubscriptionDetails
+  - RG and subscription details.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - resourceGroup: AzureNativeResourceGroup
+  - Resource Group of the Azure storage account.
+- azureResourceGroup: AzureNativeResourceGroup
   - Resource Group of the Azure storage account.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
@@ -59,6 +63,8 @@ An Azure storage account that contains Azure storage data objects including blob
   - Number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
+- allTags: list of AssignedRscTags
+  - Rsc tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

@@ -9,10 +9,14 @@ Retrieves an Azure SQL Database Server. Refers to the server the Azure SQL Datab
   - Azure region where the Azure SQL Database Server is located.
 - backupSetupSourceObject: PathNode
   - The object from where the setup for performing backups of Azure SQL Databases is inherited.
+- azureNativeResourceGroupAndSubscriptionDetails: AzureNativeResourceGroupAndSubscriptionDetails
+  - RG and subscription details.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - azureNativeResourceGroup: AzureNativeResourceGroup
   - Resource Group of the Azure SQL Database Server.
+- azureResourceGroup: AzureNativeResourceGroup
+  - Resource Group of the Azure object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
@@ -45,6 +49,8 @@ Retrieves an Azure SQL Database Server. Refers to the server the Azure SQL Datab
   - Number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
+- allTags: list of AssignedRscTags
+  - Rsc tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

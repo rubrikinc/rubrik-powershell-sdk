@@ -47,6 +47,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("maxPasskeysAllowed")]
         public System.Int32? MaxPasskeysAllowed { get; set; }
 
+        //      C# -> System.Boolean? PasswordlessLoginAllowed
+        // GraphQL -> passwordlessLoginAllowed: Boolean (scalar)
+        [JsonProperty("passwordlessLoginAllowed")]
+        public System.Boolean? PasswordlessLoginAllowed { get; set; }
+
 
         #endregion
 

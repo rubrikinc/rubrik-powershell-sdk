@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("newNodeCount")]
         public System.Int32? NewNodeCount { get; set; }
 
+        //      C# -> System.Int32? NewInstanceType
+        // GraphQL -> newInstanceType: Int (scalar)
+        [JsonProperty("newInstanceType")]
+        public System.Int32? NewInstanceType { get; set; }
+
 
         #endregion
 

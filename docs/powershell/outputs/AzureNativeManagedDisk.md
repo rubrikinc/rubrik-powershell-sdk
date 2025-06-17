@@ -33,12 +33,16 @@ An Azure Native Managed Disk that refers to the block storage designed to be use
   - Native ID of the Managed Disk.
 - nativeName: System.String
   - Azure Native name of the object.
+- azureNativeResourceGroupAndSubscriptionDetails: AzureNativeResourceGroupAndSubscriptionDetails
+  - RG and subscription details.
 - fileIndexingStatus: FileIndexingStatus
   - Specifies the file indexing status for this managed disk. When enabled, Rubrik scans the file structure within the managed disk in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - resourceGroup: AzureNativeResourceGroup
   - Resource Group of the Azure Native Managed Disk.
+- azureResourceGroup: AzureNativeResourceGroup
+  - Resource Group of the Azure Virtual Managed Disk.
 - allAttachedAzureNativeVirtualMachines: list of AzureNativeVirtualMachines
   - All Virtual Machines (VMs) attached to the Managed Disk.
 - rscNativeObjectPendingSla: CompactSlaDomain
@@ -73,6 +77,8 @@ An Azure Native Managed Disk that refers to the block storage designed to be use
   - Number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
+- allTags: list of AssignedRscTags
+  - Rsc tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
