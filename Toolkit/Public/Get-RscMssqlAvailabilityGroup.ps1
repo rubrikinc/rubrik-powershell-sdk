@@ -52,67 +52,138 @@ function Get-RscMssqlAvailabilityGroup {
         DefaultParameterSetName = "List"
     )]
     Param(
+        # DEPRECATED. Providing -List is superfluous. Running Get-RscMssqlAvailabilityGroup with no arguments will return a list. This argument will be ignored.
         [Parameter(ParameterSetName = "List", Mandatory = $false)]
         [Switch]$List,
         
+        # Rubrik id of the availability group
         [Parameter(ParameterSetName = "Id",Mandatory = $true)]
         [String]$Id,
 
-        [Parameter(ParameterSetName = "AvailabilityGroupName",Mandatory = $true)]
-        [String]$AvailabilityGroupName,
-        
-        [Parameter(Mandatory = $false)]
-        [RubrikSecurityCloud.Types.Cluster]$RscCluster,
+        # Name of the availability group
+        [Parameter(ParameterSetName = "Name",Mandatory = $false)]
+        [Alias("AvailabilityGroupName")] # standardizing on -Name across cmdlets. Leaving alias for backward compatibility.
+        [String]$Name,
 
-        #  Common parameter to all parameter sets:
+        # Sla Domain object
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true,
+            ParameterSetName = "Name"
+        )]
+        [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla,
+        
+        # Rubrik cluster
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $true,
+            ParameterSetName = "Name"
+        )]
+        [Alias("RscCluster")] # standardizing on -Cluster across cmdlets. Leaving alias for backward compatibility.
+        [RubrikSecurityCloud.Types.Cluster]$Cluster,
+
+        # DEPRECATED. -Detail was intended to provide a more detailed view of the objects, however the definitions of "detail" resulted in the potential to pull inaccessible fields.
+        # Detail is now the default, and the field definition is managed in the cmdlet code.
         [Parameter(
             Mandatory = $false, 
             ValueFromPipeline = $false
-        )][Switch]$Detail
+        )][Switch]$Detail,
+
+        # Include Relics
+        [Parameter(
+            Mandatory = $false
+        )]
+        [switch]$Relic,
+
+        # Include Replicas
+        [Parameter(
+            Mandatory = $false
+        )]
+        [switch]$Replica,
+
+        # Return .NET query object for troubleshooting
+        [Parameter(
+            Mandatory = $false
+        )]
+        [switch]$AsQuery
     )
     
     Process {
-        # Determine field profile:
-        $fieldProfile = "DEFAULT"
-        if ( $Detail -eq $true ) {
-            $fieldProfile = "DETAIL"
-        }
         Write-Debug "- Running Get-RscMssqlAvailabilityGroup"
-        
-         #region Create Query
-         switch ( $PSCmdlet.ParameterSetName ){
-            "List" {
-                $query = New-RscQueryMssql -Operation TopLevelDescendants -FieldProfile $fieldProfile
-                $query.Var.typeFilter = "MssqlAvailabilityGroup"
-            }
-            "Id"  {
-                $query = New-RscQueryMssql -Op AvailabilityGroup -FieldProfile $fieldProfile -AddField PhysicalPath
-                $query.Var.filter = @()
-                $query.Var.fid = $id
-            }
-            "AvailabilityGroupName" {
-                $query = New-RscQueryMssql -Op TopLevelDescendants -FieldProfile $fieldProfile
-                $query.Var.filter = @()
-                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-                $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
-                $nameFilter.texts = $AvailabilityGroupName
-                $query.Var.filter += $nameFilter
-            }
-        }
-        #endregion
 
-        #region filters
-        if($PSBoundParameters.ContainsKey('RscCluster')) {
-            $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-            $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
-            $clusterFilter.texts = $RscCluster.Id
-            $query.Var.filter += $clusterFilter
-        }
-        #endregion
-        $result = $query.Invoke()
-        switch ( $PSCmdlet.ParameterSetName ){
-            "Id" {$result}
-            default {$result.nodes}
-        }
+        $agFieldDef = Get-RscType -Name MssqlAvailabilityGroup -InitialProperties `
+            name,`
+            id,`
+            cluster.name, cluster.id,`
+            primaryClusterLocation.name, primaryClusterLocation.clusterUuid,`
+        
+        # This is required because Get-RscType sets it as a ClusterSla, not a globalSlaReply
+        $agFieldDef.effectiveSlaDomain = Get-RscType -Name GlobalSlaReply -InitialProperties name,Id
+        
+         if ($Id) {
+            $query = New-RscQuery -GqlQuery mssqlAvailabilityGroup
+            $query.Var.filter = @()
+            $query.Var.fid = $id
+            $query.Field = $agFieldDef
+            if ($PSBoundParameters.ContainsKey("AsQuery")) {
+                $query
+            }
+            else {
+                $query.invoke()
+            }
+
+         }
+         else {
+            $query = New-RscQuery -GqlQuery mssqlTopLevelDescendants
+            $query.var.typeFilter = [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::MSSQL_AVAILABILITY_GROUP
+            $query.Var.filter = @()
+            $query.Field.Nodes = $agFieldDef
+
+            if ($Name) {
+                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                # Regex filter doesn't work in the API right now, but we're going to play pretend. 
+                # With real Regex, users could search for VMs that start with the letter A if they wanted.
+                if ($name.Contains("*")) {
+                    $name.Replace("*",'')
+                    $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::REGEX
+                    $nameFilter.texts = $Name.Replace("*",'')
+                } else {
+                    $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
+                    $nameFilter.texts = $Name
+                }
+                $query.var.filter += $nameFilter
+            }
+            if ($Sla) {
+                $slaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $slaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::EFFECTIVE_SLA
+                $slaFilter.Texts = $Sla.id
+                $query.var.filter += $slaFilter
+            }
+            if($Cluster) {
+                $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
+                $clusterFilter.texts = $Cluster.Id
+                $query.Var.filter += $clusterFilter
+            }
+            if ($PSBoundParameters.ContainsKey('relic')) {
+                $relicFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $relicFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_RELIC
+                $relicFilter.Texts = $Relic
+                $query.var.filter += $relicFilter
+            }
+            if ($PSBoundParameters.ContainsKey('replica')) {
+                $replicaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $replicaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_REPLICATED
+                $replicaFilter.Texts = $Replica
+                $query.var.filter += $replicaFilter
+            }
+
+            if ($PSBoundParameters.ContainsKey("AsQuery")) {
+                $query
+            }
+            else {
+                $query.invoke().nodes
+            }
+         }
     } 
 }
