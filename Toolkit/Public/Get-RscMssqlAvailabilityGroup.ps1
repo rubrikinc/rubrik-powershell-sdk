@@ -13,23 +13,27 @@ function Get-RscMssqlAvailabilityGroup {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
-    .PARAMETER List
-    Used to create a list of Availability Groups
     .PARAMETER Id
     Used to return a specific Availability Groups based on the Id assigned inside of Rubrik
 
-    .PARAMETER AvailabilityGroupName
+    .PARAMETER Name
     Used to return a specific Availability Groups based on the name of the Availability Group
     
-     .PARAMETER RscCluster
-    RscCluster object retrieved via Get-RscCluster
+    .PARAMETER Cluster
+    Cluster object retrieved via Get-RscCluster
     
-    .PARAMETER Detail
-    Changes the data profile. This can affect the fields returned
+    .PARAMETER Sla
+    SLA object retrieved via Get-RscCluster
+
+    .PARAMETER Relic
+    Switch to include or exclude relics
+
+    .PARAMETER Replica
+    Switch to include or exclude replicated AGs
 
     .EXAMPLE
-    Returns a list of Availbility Groups that are connected to Rubrik
-    Get-RscMssqlAvailabilityGroup -List
+    Returns a list of Availability Groups in Rubrik, including relics and replicas.
+    Get-RscMssqlAvailabilityGroup
 
     .EXAMPLE
     Returns information about a specific Availability Group based on the Rubrik ID
@@ -37,15 +41,15 @@ function Get-RscMssqlAvailabilityGroup {
 
     .EXAMPLE
     Returns information about a specific Availability Group based on the name of the AG.
-    Get-RscMssqlAvailabilityGroup -Name AG_Accounting
+    Get-RscMssqlAvailabilityGroup -Name AG_Accounting -Relic:$false -Replica:$false
 
     .EXAMPLE
-    Returns a list of Availbility Groups that are connected to a specific Rubrik Cluster
-    Get-RscMssqlAvailabilityGroup -List -clusterID hja87-ajb43-v4avna-hnjag
+    Returns a list of Availability Groups that are connected to a specific Rubrik Cluster
+    Get-RscCluster -Name "example" | Get-RscMssqlAvailabilityGroup -Relic:$false -Replica:$false
 
     .EXAMPLE
     Returns information about a specific Availability Group based on the name of the AG and the name of the Rubrik Cluster
-    Get-RscMssqlAvailabilityGroup -Name AG_Accounting -clusterID hja87-ajb43-v4avna-hnjag
+    Get-RscCluster -Name "example" | Get-RscMssqlAvailabilityGroup -Name AG_Accounting -Relic:$false -Replica:$false
     #>
 
     [CmdletBinding(
@@ -61,7 +65,11 @@ function Get-RscMssqlAvailabilityGroup {
         [String]$Id,
 
         # Name of the availability group
-        [Parameter(ParameterSetName = "Name",Mandatory = $false)]
+        [Parameter(
+            ParameterSetName = "Name",
+            Mandatory = $false,
+            Position = 0
+        )]
         [Alias("AvailabilityGroupName")] # standardizing on -Name across cmdlets. Leaving alias for backward compatibility.
         [String]$Name,
 
@@ -115,7 +123,7 @@ function Get-RscMssqlAvailabilityGroup {
             name,`
             id,`
             cluster.name, cluster.id,`
-            primaryClusterLocation.name, primaryClusterLocation.clusterUuid,`
+            primaryClusterLocation.name, primaryClusterLocation.clusterUuid
         
         # This is required because Get-RscType sets it as a ClusterSla, not a globalSlaReply
         $agFieldDef.effectiveSlaDomain = Get-RscType -Name GlobalSlaReply -InitialProperties name,Id
