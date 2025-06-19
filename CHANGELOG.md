@@ -4,6 +4,8 @@
 
 New Features:
 
+`Get-RscMssqlAvailabilityGroup` - Updated cmdlet to include cluster fields, added -Relic and -Replica filters.
+
 Fixes:
 
 Breaking Changes:
