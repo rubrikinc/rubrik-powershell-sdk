@@ -324,9 +324,8 @@ namespace RubrikSecurityCloud.NetSDK.Client
             }
             logGraphQLResponse<T>(response, logger);
             
-            if (response.Errors != null ||
-                response.StatusCode >= System.Net.HttpStatusCode.BadRequest ||
-                localError != null)
+            if (localError != null || response.Errors != null ||
+                response.StatusCode >= System.Net.HttpStatusCode.BadRequest)
             {
                 string msg = "The request generated an error.\n" +
                     this.GraphQLRequestToString(Request) + "\n\n" +
