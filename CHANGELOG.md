@@ -2,13 +2,20 @@
 
 ## Version TBD
 
+Schema Update:
+
+See [API Changelog](https://rubrikinc.github.io/rubrik-api-documentation/changelog/changes/)
+for API additions, deprecations and breaking changes.
+
 New Features:
 
-`Get-RscMssqlAvailabilityGroup` - Updated cmdlet to include cluster fields, added -Relic and -Replica filters.
+- `Get-RscMssqlAvailabilityGroup` : updated cmdlet to include cluster fields,
+  added `-Relic` and `-Replica` filters.
 
 Fixes:
 
-Breaking Changes:
+- Fix GraphQLClient.cs Exception Handling
+  [PR](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/206)
 
 ## Version 1.13.1
 
@@ -21,13 +28,15 @@ for API additions, deprecations and breaking changes.
 
 New Features:
 
-Multi-DC MSSQL database management
+- Multi-DC MSSQL database management
+- Manage the protection for these multi-DC replicas as a single linked group.
+  Two new cmdlets have been introduced for this:
 
-Manage the protection for these multi-DC replicas as a single linked group. Two new cmdlets have been introduced for this:
+  `Get-RscMssqlLinkedAvailabilityGroup` - This cmdlet will show the linked
+  status for any replica availability groups across multiple Rubrik clusters.
 
-`Get-RscMssqlLinkedAvailabilityGroup` - This cmdlet will show the linked status for any replica availability groups across multiple Rubrik clusters.
-
-`Protect-RscLinkedWorkload` - This cmdlet manages linking replica availability groups or databases and SLA assignment for the linked group.
+  `Protect-RscLinkedWorkload` - This cmdlet manages linking replica availability
+  groups or databases and SLA assignment for the linked group.
 
 Fixes:
 
