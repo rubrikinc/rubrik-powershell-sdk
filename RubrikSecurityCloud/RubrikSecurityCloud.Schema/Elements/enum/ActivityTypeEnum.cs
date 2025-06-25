@@ -96,6 +96,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IDENTITY_ALERTS")]
         IDENTITY_ALERTS,
 
+        [EnumMember(Value = "IDENTITY_VIOLATION")]
+        IDENTITY_VIOLATION,
+
         [EnumMember(Value = "ISOLATED_RECOVERY")]
         ISOLATED_RECOVERY,
 

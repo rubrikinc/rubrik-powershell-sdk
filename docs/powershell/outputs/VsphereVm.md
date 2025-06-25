@@ -21,6 +21,8 @@
   - VMware virtual machine template type.
 - resourceSpec: VmwareVmResourceSpec
   - Resource specification for a virtual machine.
+- parentResourcePoolId: System.String
+  - ID of the parent resource pool.
 - snapshotConsistencySource: System.String
   - Fid of the object from where the snapshot consistency mandate is inherited.
 - parentWorkloadIdOpt: System.String

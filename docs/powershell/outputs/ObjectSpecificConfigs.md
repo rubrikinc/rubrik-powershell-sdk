@@ -31,3 +31,5 @@ Object-specific configurations.
   - SLA Domain configuration for MySQL object.
 - ncdSlaConfig: NcdSlaConfig
   - SLA Domain configuration for NAS Cloud Direct object.
+- informixSlaConfig: InformixSlaConfig
+  - SLA Domain configuration for Informix object.

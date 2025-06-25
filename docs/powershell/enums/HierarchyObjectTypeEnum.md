@@ -54,6 +54,7 @@ Type of hierarchy object.
 - POSTGRES_DB_CLUSTER - Postgres Database Cluster.
 - VSphereVCenter
 - HypervServer
+- AwsNativeRegion
 - O365SharePointList
 - VmwareVirtualMachine
 - AllSubHierarchyType

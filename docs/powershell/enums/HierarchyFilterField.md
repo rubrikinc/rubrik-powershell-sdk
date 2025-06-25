@@ -519,3 +519,4 @@ by CDM (database_id column).
 +mo:filter:db:index:seq=2
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false
+- IS_DOMAIN_CONTROLLER - Filter hosts that are domain controllers.

@@ -27,6 +27,8 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - A list of mappings between object types and details about the backup setup.
 - azureNativeSubscriptionDetails: AzureNativeSubscriptionDetails
   - Subscription details of the resource group.
+- azureSubscriptionDetails: AzureNativeSubscriptionDetails
+  - Subscription details of the resource group.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
   - The authorized operations on the object.
 - subscription: AzureNativeSubscription

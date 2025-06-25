@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SCOPE_TYPE_GROUP")]
         SCOPE_TYPE_GROUP,
 
+        [EnumMember(Value = "SCOPE_TYPE_MISSING")]
+        SCOPE_TYPE_MISSING,
+
         [EnumMember(Value = "SCOPE_TYPE_SERVICE_PRINCIPAL")]
         SCOPE_TYPE_SERVICE_PRINCIPAL,
 

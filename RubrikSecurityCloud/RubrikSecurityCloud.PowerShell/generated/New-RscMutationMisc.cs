@@ -4686,6 +4686,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	dbClusterParameterGroupName = $someString
     /// 	# OPTIONAL
     /// 	dbEngineVersion = $someString
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -12841,6 +12843,8 @@ $query.Var.input = @{
 	dbClusterParameterGroupName = $someString
 	# OPTIONAL
 	dbEngineVersion = $someString
+	# OPTIONAL
+	archivedSnapshotId = $someString
 }"
             );
         }

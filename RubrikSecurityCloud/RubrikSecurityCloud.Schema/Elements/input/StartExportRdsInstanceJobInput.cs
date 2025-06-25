@@ -169,6 +169,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dbEngineVersion")]
         public System.String? DbEngineVersion { get; set; }
 
+        //      C# -> System.String? ArchivedSnapshotId
+        // GraphQL -> archivedSnapshotId: String (scalar)
+        [JsonProperty("archivedSnapshotId")]
+        public System.String? ArchivedSnapshotId { get; set; }
+
 
         #endregion
 

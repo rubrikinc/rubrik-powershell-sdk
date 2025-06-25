@@ -31,3 +31,5 @@ Object-specific configurations.
   - Input to configure the SLA Domain for MySQL.
 - ncdConfigInput: NcdConfigInput
   - Input to configure the SLA Domain for NAS Cloud Direct.
+- informixConfigInput: InformixSlaConfigInput
+  - Input to configure the SLA Domain for Informix.

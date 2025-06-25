@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 14
+    /// Create a new RscQuery object for any of the 15
     /// operations in the 'SAP HANA' API domain:
-    /// AddSystem, BulkRecoverDatabases, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, RecoverDatabaseToFullBackup, RecoverDatabaseToPointInTime, RestoreSystemStorage, or UnconfigureRestore.
+    /// AddSystem, BulkRecoverDatabases, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandDataBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, RecoverDatabaseToFullBackup, RecoverDatabaseToPointInTime, RestoreSystemStorage, or UnconfigureRestore.
     /// </summary>
     /// <description>
     /// New-RscMutationSapHana creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 14 operations
+    /// There are 15 operations
     /// in the 'SAP HANA' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddSystem, BulkRecoverDatabases, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, RecoverDatabaseToFullBackup, RecoverDatabaseToPointInTime, RestoreSystemStorage, or UnconfigureRestore.
+    /// one of: AddSystem, BulkRecoverDatabases, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandDataBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, RecoverDatabaseToFullBackup, RecoverDatabaseToPointInTime, RestoreSystemStorage, or UnconfigureRestore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -257,6 +257,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		slaId = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreateOnDemandDataBackup operation
+    /// of the 'SAP HANA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    SapHana
+    /// # API Operation: CreateOnDemandDataBackup
+    /// 
+    /// $query = New-RscMutationSapHana -Operation CreateOnDemandDataBackup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		backupType = $someSapHanaOnDemandBackupConfigBackupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaOnDemandBackupConfigBackupType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		baseOnDemandSnapshotConfig = @{
+    /// 			# OPTIONAL
+    /// 			slaId = $someString
+    /// 		}
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -685,6 +726,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "BulkRecoverDatabases",
                 "ConfigureRestore",
                 "CreateOnDemandBackup",
+                "CreateOnDemandDataBackup",
                 "CreateOnDemandStorageSnapshot",
                 "CreateSystemRefresh",
                 "DeleteDbSnapshot",
@@ -721,6 +763,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CreateOnDemandBackup":
                         this.ProcessRecord_CreateOnDemandBackup();
+                        break;
+                    case "CreateOnDemandDataBackup":
+                        this.ProcessRecord_CreateOnDemandDataBackup();
                         break;
                     case "CreateOnDemandStorageSnapshot":
                         this.ProcessRecord_CreateOnDemandStorageSnapshot();
@@ -796,6 +841,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreateOnDemandBackup";
             // Create new graphql operation createOnDemandSapHanaBackup
             InitMutationCreateOnDemandSapHanaBackup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createOnDemandSapHanaDataBackup.
+        internal void ProcessRecord_CreateOnDemandDataBackup()
+        {
+            this._logger.name += " -CreateOnDemandDataBackup";
+            // Create new graphql operation createOnDemandSapHanaDataBackup
+            InitMutationCreateOnDemandSapHanaDataBackup();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1048,6 +1102,39 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		slaId = $someString
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createOnDemandSapHanaDataBackup(input: CreateOnDemandSapHanaDataBackupInput!): AsyncRequestStatus!
+        internal void InitMutationCreateOnDemandSapHanaDataBackup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateOnDemandSapHanaDataBackupInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateOnDemandSapHanaDataBackup",
+                "($input: CreateOnDemandSapHanaDataBackupInput!)",
+                "AsyncRequestStatus",
+                Mutation.CreateOnDemandSapHanaDataBackup,
+                Mutation.CreateOnDemandSapHanaDataBackupFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		backupType = $someSapHanaOnDemandBackupConfigBackupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaOnDemandBackupConfigBackupType]) for enum values.
+		# OPTIONAL
+		baseOnDemandSnapshotConfig = @{
+			# OPTIONAL
+			slaId = $someString
+		}
 	}
 	# REQUIRED
 	id = $someString

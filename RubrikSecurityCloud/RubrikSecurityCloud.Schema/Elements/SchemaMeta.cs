@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20250609-26" ;
+        public static string GraphqlSchemaVersion = "v20250616-31" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -528,6 +528,7 @@ namespace RubrikSecurityCloud.Types
             AzureReplicationTarget,
             AzureResourceAvailabilityResp,
             AzureResourceGroup,
+            AzureResourceGroupDetails,
             AzureResourceGroupInfo,
             AzureRole,
             AzureRoleBasedAccount,
@@ -1370,6 +1371,7 @@ namespace RubrikSecurityCloud.Types
             InactiveLockoutConfig,
             IndicatorOfCompromise,
             IndicatorOfCompromiseInputOutputListType,
+            InformixSlaConfig,
             InfrastructureChart,
             InfrastructureTable,
             InitializeUploadSessionReply,
@@ -1419,6 +1421,7 @@ namespace RubrikSecurityCloud.Types
             K8sClusterInfo,
             K8sClusterPortsInfo,
             K8sClusterSummary,
+            K8sManifestResponse,
             K8sNamespace,
             K8sNamespaceConnection,
             K8sNamespaceEdge,
@@ -3406,6 +3409,7 @@ namespace RubrikSecurityCloud.Types
             CreateOnDemandMssqlBackupInput,
             CreateOnDemandNutanixBackupInput,
             CreateOnDemandSapHanaBackupInput,
+            CreateOnDemandSapHanaDataBackupInput,
             CreateOnDemandSapHanaStorageSnapshotInput,
             CreateOnDemandVolumeGroupBackupInput,
             CreateOracleMountInput,
@@ -3735,6 +3739,7 @@ namespace RubrikSecurityCloud.Types
             GenerateClusterRegistrationTokenInput,
             GenerateConfigProtectionRestoreFormInput,
             GenerateFilesetBackupReportInput,
+            GenerateK8sManifestInput,
             GeneratePresignedUrlForDownloadInput,
             GeneratePresignedUrlForPartUploadInput,
             GeneratePreviewMessageForWebhookTemplateInput,
@@ -3867,6 +3872,7 @@ namespace RubrikSecurityCloud.Types
             IndicatorOfCompromiseInput,
             IndicatorOfCompromiseInputListType,
             IndicatorOfCompromiseInputType,
+            InformixSlaConfigInput,
             InitializeUploadSessionInput,
             InplaceExportHypervVirtualMachineInput,
             InPlaceRecoveryJobConfigForBatchInput,
@@ -3900,9 +3906,11 @@ namespace RubrikSecurityCloud.Types
             K8sClusterAddInput,
             K8sClusterUpdateConfigInput,
             K8sExportParametersInput,
+            K8sManifestConfigInput,
             K8sNamespaceSnapshot,
             K8sProtectionSetAddInput,
             K8sProtectionSetUpdateConfigInput,
+            K8sRegenerateManifestConfigInput,
             K8sRestoreParametersInput,
             K8sSnapshotDownloadConfigInput,
             K8sVirtualMachineDiskFilter,
@@ -4263,6 +4271,7 @@ namespace RubrikSecurityCloud.Types
             RefreshReaderTargetInput,
             RefreshStorageArraysInput,
             RefreshVsphereVcenterInput,
+            RegenerateK8sManifestInput,
             RegisterAgentHypervVirtualMachineInput,
             RegisterAgentNutanixVmInput,
             RegisterAwsFeatureArtifactsInput,
@@ -4351,6 +4360,7 @@ namespace RubrikSecurityCloud.Types
             SapHanaDownloadRecoverableRangeRequestInput,
             SapHanaDownloadRequestInput,
             SapHanaLogSnapshotFilterInput,
+            SapHanaOnDemandBackupConfigInput,
             SapHanaRecoverableRangeFilterInput,
             SapHanaRestoreSourceConfigInput,
             SapHanaSslInfoInput,
@@ -4378,6 +4388,7 @@ namespace RubrikSecurityCloud.Types
             SendTestMessageToExistingWebhookInput,
             SendTestMessageToWebhookInput,
             SensitivityStatusFilter,
+            ServiceAccountInputInput,
             ServiceNowItsmIntegrationConfigInput,
             ServicePrincipalRecoveryOptionType,
             SetAnalyzerRisksInput,
@@ -5706,6 +5717,7 @@ namespace RubrikSecurityCloud.Types
             vsphereVMRecoverableRange,
             vsphereVMRecoverableRangeInBatch,
             vsphereVmwareCdpLiveInfo,
+            vSphereVmWithProvisionOnInfrastructure,
             webhookById,
             webhookMessageTemplateById,
             windowsCluster,
@@ -5913,6 +5925,7 @@ namespace RubrikSecurityCloud.Types
             createOnDemandMssqlBackup,
             createOnDemandNutanixBackup,
             createOnDemandSapHanaBackup,
+            createOnDemandSapHanaDataBackup,
             createOnDemandSapHanaStorageSnapshot,
             createOnDemandVolumeGroupBackup,
             createOraclePdbRestore,
@@ -6136,6 +6149,7 @@ namespace RubrikSecurityCloud.Types
             generateConfigProtectionRestoreForm,
             generateCsr,
             generateFilesetBackupReport,
+            generateK8sManifest,
             generatePresignedUrlForDownload,
             generatePresignedUrlForPartUpload,
             generatePreviewMessageForWebhookTemplate,
@@ -6226,6 +6240,7 @@ namespace RubrikSecurityCloud.Types
             refreshReaderTarget,
             refreshStorageArrays,
             refreshVsphereVcenter,
+            regenerateK8sManifest,
             registerAgentHypervVirtualMachine,
             registerAgentNutanixVm,
             registerAwsFeatureArtifacts,
@@ -7201,6 +7216,7 @@ namespace RubrikSecurityCloud.Types
             SapHanaEncryptionProvider,
             SapHanaHostHostType,
             SapHanaLogSnapshotSortBy,
+            SapHanaOnDemandBackupConfigBackupType,
             SapHanaRecoverableRangeSortBy,
             SapHanaSslInfoEncryptionProvider,
             SapHanaSystemAuthType,
@@ -9924,6 +9940,7 @@ namespace RubrikSecurityCloud.Types
             createOnDemandMssqlBackup,
             createOnDemandNutanixBackup,
             createOnDemandSapHanaBackup,
+            createOnDemandSapHanaDataBackup,
             createOnDemandSapHanaStorageSnapshot,
             createOnDemandVolumeGroupBackup,
             createOraclePdbRestore,
@@ -10211,6 +10228,7 @@ namespace RubrikSecurityCloud.Types
             generateConfigProtectionRestoreForm,
             generateCsr,
             generateFilesetBackupReport,
+            generateK8sManifest,
             generatePresignedUrlForDownload,
             generatePresignedUrlForPartUpload,
             generatePreviewMessageForWebhookTemplate,
@@ -10595,6 +10613,7 @@ namespace RubrikSecurityCloud.Types
             refreshReaderTarget,
             refreshStorageArrays,
             refreshVsphereVcenter,
+            regenerateK8sManifest,
             registerAgentHypervVirtualMachine,
             registerAgentNutanixVm,
             registerAwsFeatureArtifacts,
@@ -11034,6 +11053,7 @@ namespace RubrikSecurityCloud.Types
             vSphereVMAsyncRequestStatus,
             vSphereVmNew,
             vSphereVmNewConnection,
+            vSphereVmWithProvisionOnInfrastructure,
             validateAdForestTransition,
             validateAndCreateAwsCloudAccount,
             validateAndInitiateAwsOutpostAccount,
@@ -15425,6 +15445,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.createOnDemandSapHanaDataBackup,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSapHana",
+                        cmdletSwitchName: "CreateOnDemandDataBackup",
+                        gqlRootFieldName: "createOnDemandSapHanaDataBackup"
+                    )
+                },
+                {
                     GqlRootFieldName.createOnDemandSapHanaStorageSnapshot,
                     new RscOp(
                         cmdletName: "New-RscMutationSapHana",
@@ -17718,6 +17746,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationFileset",
                         cmdletSwitchName: "GenerateBackupReport",
                         gqlRootFieldName: "generateFilesetBackupReport"
+                    )
+                },
+                {
+                    GqlRootFieldName.generateK8sManifest,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "GenerateManifest",
+                        gqlRootFieldName: "generateK8sManifest"
                     )
                 },
                 {
@@ -20790,6 +20826,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationVcenter",
                         cmdletSwitchName: "Refresh",
                         gqlRootFieldName: "refreshVsphereVcenter"
+                    )
+                },
+                {
+                    GqlRootFieldName.regenerateK8sManifest,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "RegenerateManifest",
+                        gqlRootFieldName: "regenerateK8sManifest"
                     )
                 },
                 {
@@ -24305,6 +24349,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.vSphereVmWithProvisionOnInfrastructure,
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphereVm",
+                        cmdletSwitchName: "WithProvisionOnInfrastructure",
+                        gqlRootFieldName: "vSphereVmWithProvisionOnInfrastructure"
+                    )
+                },
+                {
                     GqlRootFieldName.validateAdForestTransition,
                     new RscOp(
                         cmdletName: "New-RscQueryMisc",
@@ -27112,6 +27164,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createOnDemandSapHanaBackup
                 },
                 {
+                    "New-RscMutationSapHana -Op CreateOnDemandDataBackup",
+                    GqlRootFieldName.createOnDemandSapHanaDataBackup
+                },
+                {
                     "New-RscMutationSapHana -Op CreateOnDemandStorageSnapshot",
                     GqlRootFieldName.createOnDemandSapHanaStorageSnapshot
                 },
@@ -28258,6 +28314,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationFileset -Op GenerateBackupReport",
                     GqlRootFieldName.generateFilesetBackupReport
+                },
+                {
+                    "New-RscMutationK8s -Op GenerateManifest",
+                    GqlRootFieldName.generateK8sManifest
                 },
                 {
                     "New-RscMutationMisc -Op GeneratePresignedUrlForDownload",
@@ -29794,6 +29854,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationVcenter -Op Refresh",
                     GqlRootFieldName.refreshVsphereVcenter
+                },
+                {
+                    "New-RscMutationK8s -Op RegenerateManifest",
+                    GqlRootFieldName.regenerateK8sManifest
                 },
                 {
                     "New-RscMutationHyperv -Op RegisterAgentVirtualMachine",
@@ -31552,6 +31616,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.vSphereVmNewConnection
                 },
                 {
+                    "New-RscQueryVsphereVm -Op WithProvisionOnInfrastructure",
+                    GqlRootFieldName.vSphereVmWithProvisionOnInfrastructure
+                },
+                {
                     "New-RscQueryMisc -Op ValidateAdForestTransition",
                     GqlRootFieldName.validateAdForestTransition
                 },
@@ -32146,6 +32214,7 @@ namespace RubrikSecurityCloud.Types
                         "createOnDemandMssqlBackup",
                         "createOnDemandNutanixBackup",
                         "createOnDemandSapHanaBackup",
+                        "createOnDemandSapHanaDataBackup",
                         "createOnDemandSapHanaStorageSnapshot",
                         "createOnDemandVolumeGroupBackup",
                         "createOraclePdbRestore",
@@ -33980,6 +34049,11 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "K8sClusterSummary", new List<string> {
                         "addK8sCluster",
+                    }
+                },
+                {   "K8sManifestResponse", new List<string> {
+                        "generateK8sManifest",
+                        "regenerateK8sManifest",
                     }
                 },
                 {   "K8sNamespace", new List<string> {
@@ -36184,6 +36258,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "VsphereVm", new List<string> {
                         "vSphereVmNew",
+                        "vSphereVmWithProvisionOnInfrastructure",
                     }
                 },
                 {   "VsphereVmConnection", new List<string> {
@@ -38136,6 +38211,10 @@ namespace RubrikSecurityCloud.Types
                         "createOnDemandSapHanaBackup",
                     }
                 },
+                {   "CreateOnDemandSapHanaDataBackupInput", new List<string> {
+                        "createOnDemandSapHanaDataBackup",
+                    }
+                },
                 {   "CreateOnDemandSapHanaStorageSnapshotInput", new List<string> {
                         "createOnDemandSapHanaStorageSnapshot",
                     }
@@ -39093,6 +39172,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "GenerateFilesetBackupReportInput", new List<string> {
                         "generateFilesetBackupReport",
+                    }
+                },
+                {   "GenerateK8sManifestInput", new List<string> {
+                        "generateK8sManifest",
                     }
                 },
                 {   "GeneratePresignedUrlForDownloadInput", new List<string> {
@@ -40429,6 +40512,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "RefreshVsphereVcenterInput", new List<string> {
                         "refreshVsphereVcenter",
+                    }
+                },
+                {   "RegenerateK8sManifestInput", new List<string> {
+                        "regenerateK8sManifest",
                     }
                 },
                 {   "RegisterAgentHypervVirtualMachineInput", new List<string> {
@@ -42050,6 +42137,7 @@ namespace RubrikSecurityCloud.Types
                         "vsphereVMMissedRecoverableRange",
                         "vSphereVmNew",
                         "vsphereVMRecoverableRange",
+                        "vSphereVmWithProvisionOnInfrastructure",
                         "windowsCluster",
                         "windowsFileset",
                         "workloadAlertSetting",
@@ -43576,6 +43664,7 @@ namespace RubrikSecurityCloud.Types
                 { "createOnDemandMssqlBackup", "AsyncRequestStatus"},
                 { "createOnDemandNutanixBackup", "AsyncRequestStatus"},
                 { "createOnDemandSapHanaBackup", "AsyncRequestStatus"},
+                { "createOnDemandSapHanaDataBackup", "AsyncRequestStatus"},
                 { "createOnDemandSapHanaStorageSnapshot", "AsyncRequestStatus"},
                 { "createOnDemandVolumeGroupBackup", "AsyncRequestStatus"},
                 { "createOraclePdbRestore", "AsyncRequestStatus"},
@@ -44264,6 +44353,8 @@ namespace RubrikSecurityCloud.Types
                 { "k8sCluster", "K8sCluster"},
                 { "k8sClusters", "K8sClusterConnection"},
                 { "addK8sCluster", "K8sClusterSummary"},
+                { "generateK8sManifest", "K8sManifestResponse"},
+                { "regenerateK8sManifest", "K8sManifestResponse"},
                 { "k8sNamespace", "K8sNamespace"},
                 { "k8sNamespaces", "K8sNamespaceConnection"},
                 { "addK8sProtectionSet", "K8sProtectionSetSummary"},
@@ -45013,6 +45104,7 @@ namespace RubrikSecurityCloud.Types
                 { "vSphereVCenter", "VsphereVcenter"},
                 { "vSphereVCenterConnection", "VsphereVcenterConnection"},
                 { "vSphereVmNew", "VsphereVm"},
+                { "vSphereVmWithProvisionOnInfrastructure", "VsphereVm"},
                 { "allVsphereVmsByFids", "VsphereVmConnection"},
                 { "vcdVappVms", "VsphereVmConnection"},
                 { "vSphereVmNewConnection", "VsphereVmConnection"},
@@ -46289,6 +46381,7 @@ namespace RubrikSecurityCloud.Types
                     "DownloadSnapshotFromLocation",
                     "ExportNamespace",
                     "ExportProtectionSetSnapshot",
+                    "GenerateManifest",
                     "K8sCluster",
                     "K8sClusters",
                     "Namespace",
@@ -46298,6 +46391,7 @@ namespace RubrikSecurityCloud.Types
                     "ProtectionSets",
                     "RefreshCluster",
                     "RefreshV2Cluster",
+                    "RegenerateManifest",
                     "ReplicaSnapshotInfos",
                     "RestoreNamespace",
                     "RestoreProtectionSetSnapshot",
@@ -47182,6 +47276,7 @@ namespace RubrikSecurityCloud.Types
                     "BulkRecoverDatabases",
                     "ConfigureRestore",
                     "CreateOnDemandBackup",
+                    "CreateOnDemandDataBackup",
                     "CreateOnDemandStorageSnapshot",
                     "CreateSystemRefresh",
                     "Database",
@@ -47518,6 +47613,7 @@ namespace RubrikSecurityCloud.Types
                     "RegisterAgentWithOrg",
                     "Update",
                     "UpdateUnmountTime",
+                    "WithProvisionOnInfrastructure",
                     }
                 },
                 {

@@ -15,3 +15,5 @@ InstanceProperties represents common properties across cloud providers.
   - Type of processor (Intel, AMD) used by this instance type.
 - vmType: VmType
   - Virtual machine density, Standard, Dense, or Extra Dense for this instance type.
+- instanceTypeString: System.String
+  - String identifier for the instance type.

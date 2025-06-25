@@ -94,6 +94,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ncdConfigInput")]
         public NcdConfigInput? NcdConfigInput { get; set; }
 
+        //      C# -> InformixSlaConfigInput? InformixConfigInput
+        // GraphQL -> informixConfigInput: InformixSlaConfigInput (input)
+        [JsonProperty("informixConfigInput")]
+        public InformixSlaConfigInput? InformixConfigInput { get; set; }
+
 
         #endregion
 

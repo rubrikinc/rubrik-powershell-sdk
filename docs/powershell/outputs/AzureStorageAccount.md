@@ -24,7 +24,9 @@ An Azure storage account that contains Azure storage data objects including blob
 - isHierarchicalNamespaceEnabled: System.Boolean
   - Specifies whether hierarchical namespace is enabled for the storage account or not. When the value is true, hierarchical namespace is enabled.
 - azureNativeResourceGroupAndSubscriptionDetails: AzureNativeResourceGroupAndSubscriptionDetails
-  - RG and subscription details.
+  - Azure native resource group and subscription details.
+- azureResourceGroupDetails: AzureResourceGroupDetails
+  - Azure native resource group and subscription details.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - resourceGroup: AzureNativeResourceGroup

@@ -192,6 +192,21 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HypervVm")]
         HYPERV_VM,
 
+        [EnumMember(Value = "IDP_AWS")]
+        IDP_AWS,
+
+        [EnumMember(Value = "IDP_ENTRA_ID")]
+        IDP_ENTRA_ID,
+
+        [EnumMember(Value = "IDP_LOCAL_AD")]
+        IDP_LOCAL_AD,
+
+        [EnumMember(Value = "IDP_ON_PREM_AD")]
+        IDP_ON_PREM_AD,
+
+        [EnumMember(Value = "IDP_SHAREPOINT")]
+        IDP_SHAREPOINT,
+
         [EnumMember(Value = "INFORMIX_INSTANCE")]
         INFORMIX_INSTANCE,
 
@@ -362,6 +377,33 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
+
+        [EnumMember(Value = "PRINCIPAL_ASSUMABLE_IDENTITY")]
+        PRINCIPAL_ASSUMABLE_IDENTITY,
+
+        [EnumMember(Value = "PRINCIPAL_COMPUTER")]
+        PRINCIPAL_COMPUTER,
+
+        [EnumMember(Value = "PRINCIPAL_EXTERNAL_ACCOUNT")]
+        PRINCIPAL_EXTERNAL_ACCOUNT,
+
+        [EnumMember(Value = "PRINCIPAL_EXTERNAL_PRINCIPAL")]
+        PRINCIPAL_EXTERNAL_PRINCIPAL,
+
+        [EnumMember(Value = "PRINCIPAL_GPO")]
+        PRINCIPAL_GPO,
+
+        [EnumMember(Value = "PRINCIPAL_GROUP")]
+        PRINCIPAL_GROUP,
+
+        [EnumMember(Value = "PRINCIPAL_ORG_WIDE")]
+        PRINCIPAL_ORG_WIDE,
+
+        [EnumMember(Value = "PRINCIPAL_PUBLIC")]
+        PRINCIPAL_PUBLIC,
+
+        [EnumMember(Value = "PRINCIPAL_SERVICE_ACCOUNT")]
+        PRINCIPAL_SERVICE_ACCOUNT,
 
         [EnumMember(Value = "PolarisAccount")]
         POLARIS_ACCOUNT,

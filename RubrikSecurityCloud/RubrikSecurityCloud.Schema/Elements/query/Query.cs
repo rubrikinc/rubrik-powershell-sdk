@@ -15721,6 +15721,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> VsphereVm? VsphereVmWithProvisionOnInfrastructure
+        // GraphQL -> vSphereVmWithProvisionOnInfrastructure: VsphereVm! (type)
+        public static string VsphereVmWithProvisionOnInfrastructure(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "vSphereVmWithProvisionOnInfrastructure" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object VsphereVmWithProvisionOnInfrastructureFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new VsphereVm() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ValidateAdForestTransition? ValidateAdForestTransition
         // GraphQL -> validateAdForestTransition: ValidateAdForestTransition! (type)
         public static string ValidateAdForestTransition(object fsObj)

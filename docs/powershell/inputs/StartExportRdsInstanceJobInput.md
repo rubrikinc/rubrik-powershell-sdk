@@ -53,3 +53,5 @@ Input to trigger AWS native RDS Instance export job.
   - Name of the DB cluster parameter group.
 - dbEngineVersion: System.String
   - Version of the database engine.
+- archivedSnapshotId: System.String
+  - ID of the archived snapshot.

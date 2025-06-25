@@ -12,3 +12,4 @@ Type of storage location.
 - AWS_SECRET_REGION_LCK - AWS secret region (LCK) type of archival location.
 - AWS_SECRET_REGION_DCA - AWS secret region (DCA) type of archival location.
 - RCV_AWS - Rubrik Cloud Vault - AWS type of archival location.
+- RCV_GCP - Rubrik Cloud Vault - GCP type of archival location.

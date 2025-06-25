@@ -166,6 +166,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("onDemandSnapshotCount")]
         public System.Int32? OnDemandSnapshotCount { get; set; }
 
+        //      C# -> System.String? ParentResourcePoolId
+        // GraphQL -> parentResourcePoolId: String (scalar)
+        [JsonProperty("parentResourcePoolId")]
+        public System.String? ParentResourcePoolId { get; set; }
+
         //      C# -> System.String? ParentWorkloadIdOpt
         // GraphQL -> parentWorkloadIdOpt: UUID (scalar)
         [JsonProperty("parentWorkloadIdOpt")]
@@ -537,6 +542,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
+        System.String? ParentResourcePoolId = null,
         System.String? ParentWorkloadIdOpt = null,
         System.String? ParentWorkloadTypeOpt = null,
         DateTime? ProtectionDate = null,
@@ -666,6 +672,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OnDemandSnapshotCount != null ) {
             this.OnDemandSnapshotCount = OnDemandSnapshotCount;
+        }
+        if ( ParentResourcePoolId != null ) {
+            this.ParentResourcePoolId = ParentResourcePoolId;
         }
         if ( ParentWorkloadIdOpt != null ) {
             this.ParentWorkloadIdOpt = ParentWorkloadIdOpt;
@@ -1083,6 +1092,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "onDemandSnapshotCount\n" ;
             } else {
                 s += ind + "onDemandSnapshotCount\n" ;
+            }
+        }
+        //      C# -> System.String? ParentResourcePoolId
+        // GraphQL -> parentResourcePoolId: String (scalar)
+        if (this.ParentResourcePoolId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "parentResourcePoolId\n" ;
+            } else {
+                s += ind + "parentResourcePoolId\n" ;
             }
         }
         //      C# -> System.String? ParentWorkloadIdOpt
@@ -2085,6 +2103,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OnDemandSnapshotCount != null && ec.Excludes("onDemandSnapshotCount",true))
         {
             this.OnDemandSnapshotCount = null;
+        }
+        //      C# -> System.String? ParentResourcePoolId
+        // GraphQL -> parentResourcePoolId: String (scalar)
+        if (ec.Includes("parentResourcePoolId",true))
+        {
+            if(this.ParentResourcePoolId == null) {
+
+                this.ParentResourcePoolId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ParentResourcePoolId != null && ec.Excludes("parentResourcePoolId",true))
+        {
+            this.ParentResourcePoolId = null;
         }
         //      C# -> System.String? ParentWorkloadIdOpt
         // GraphQL -> parentWorkloadIdOpt: UUID (scalar)

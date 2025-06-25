@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RSA_KEY_BASED")]
         RSA_KEY_BASED,
 
+        [EnumMember(Value = "UNIFIED_ENCRYPTION_KEY_MGMT_BASED")]
+        UNIFIED_ENCRYPTION_KEY_MGMT_BASED,
+
         [EnumMember(Value = "UNKNOWN_ENCRYPTION_TYPE")]
         UNKNOWN_ENCRYPTION_TYPE
 

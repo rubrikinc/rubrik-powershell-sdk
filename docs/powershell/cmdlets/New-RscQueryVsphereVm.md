@@ -31,3 +31,8 @@
 ### recoverablerangeinbatch
 - There is a single argument of type BatchVmwareVmRecoverableRangesRequestInput.
 - Returns BatchVmwareVmRecoverableRanges.
+### withprovisiononinfrastructure
+Returns compute resources information for a single vsphere virtual machine to be used as a recovery source. Permission checks are performed against the ProvisionOnInfrastructure operation, not the ViewInventory operation. This is a short-term approach for solving RBAC issues where an org-user with view permission that is lower than hosts cannot have the same datastore auto-selected.
+
+- There is a single argument of type System.String.
+- Returns VsphereVm.

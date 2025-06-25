@@ -171,6 +171,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allTags")]
         public List<AssignedRscTag>? AllTags { get; set; }
 
+        //      C# -> List<AzureNativeVirtualMachine>? AttachedAzureNativeVirtualMachines
+        // GraphQL -> attachedAzureNativeVirtualMachines: [AzureNativeVirtualMachine!]! (type)
+        [JsonProperty("attachedAzureNativeVirtualMachines")]
+        public List<AzureNativeVirtualMachine>? AttachedAzureNativeVirtualMachines { get; set; }
+
         //      C# -> List<AttachmentSpecsForManagedDisk>? AttachmentSpecs
         // GraphQL -> attachmentSpecs: [AttachmentSpecsForManagedDisk!]! (type)
         [JsonProperty("attachmentSpecs")]
@@ -185,6 +190,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureResourceGroup: AzureNativeResourceGroup (type)
         [JsonProperty("azureResourceGroup")]
         public AzureNativeResourceGroup? AzureResourceGroup { get; set; }
+
+        //      C# -> AzureResourceGroupDetails? AzureResourceGroupDetails
+        // GraphQL -> azureResourceGroupDetails: AzureResourceGroupDetails! (type)
+        [JsonProperty("azureResourceGroupDetails")]
+        public AzureResourceGroupDetails? AzureResourceGroupDetails { get; set; }
 
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
@@ -385,9 +395,11 @@ namespace RubrikSecurityCloud.Types
         List<AzureNativeVirtualMachine>? AllAttachedAzureNativeVirtualMachines = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
+        List<AzureNativeVirtualMachine>? AttachedAzureNativeVirtualMachines = null,
         List<AttachmentSpecsForManagedDisk>? AttachmentSpecs = null,
         AzureNativeResourceGroupAndSubscriptionDetails? AzureNativeResourceGroupAndSubscriptionDetails = null,
         AzureNativeResourceGroup? AzureResourceGroup = null,
+        AzureResourceGroupDetails? AzureResourceGroupDetails = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
@@ -496,6 +508,9 @@ namespace RubrikSecurityCloud.Types
         if ( AllTags != null ) {
             this.AllTags = AllTags;
         }
+        if ( AttachedAzureNativeVirtualMachines != null ) {
+            this.AttachedAzureNativeVirtualMachines = AttachedAzureNativeVirtualMachines;
+        }
         if ( AttachmentSpecs != null ) {
             this.AttachmentSpecs = AttachmentSpecs;
         }
@@ -504,6 +519,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureResourceGroup != null ) {
             this.AzureResourceGroup = AzureResourceGroup;
+        }
+        if ( AzureResourceGroupDetails != null ) {
+            this.AzureResourceGroupDetails = AzureResourceGroupDetails;
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
@@ -858,6 +876,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<AzureNativeVirtualMachine>? AttachedAzureNativeVirtualMachines
+        // GraphQL -> attachedAzureNativeVirtualMachines: [AzureNativeVirtualMachine!]! (type)
+        if (this.AttachedAzureNativeVirtualMachines != null) {
+            var fspec = this.AttachedAzureNativeVirtualMachines.AsFieldSpec(conf.Child("attachedAzureNativeVirtualMachines"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "attachedAzureNativeVirtualMachines" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<AttachmentSpecsForManagedDisk>? AttachmentSpecs
         // GraphQL -> attachmentSpecs: [AttachmentSpecsForManagedDisk!]! (type)
         if (this.AttachmentSpecs != null) {
@@ -891,6 +921,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureResourceGroup" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureResourceGroupDetails? AzureResourceGroupDetails
+        // GraphQL -> azureResourceGroupDetails: AzureResourceGroupDetails! (type)
+        if (this.AzureResourceGroupDetails != null) {
+            var fspec = this.AzureResourceGroupDetails.AsFieldSpec(conf.Child("azureResourceGroupDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureResourceGroupDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1630,6 +1672,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.AllTags = null;
         }
+        //      C# -> List<AzureNativeVirtualMachine>? AttachedAzureNativeVirtualMachines
+        // GraphQL -> attachedAzureNativeVirtualMachines: [AzureNativeVirtualMachine!]! (type)
+        if (ec.Includes("attachedAzureNativeVirtualMachines",false))
+        {
+            if(this.AttachedAzureNativeVirtualMachines == null) {
+
+                this.AttachedAzureNativeVirtualMachines = new List<AzureNativeVirtualMachine>();
+                this.AttachedAzureNativeVirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("attachedAzureNativeVirtualMachines"));
+
+            } else {
+
+                this.AttachedAzureNativeVirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("attachedAzureNativeVirtualMachines"));
+
+            }
+        }
+        else if (this.AttachedAzureNativeVirtualMachines != null && ec.Excludes("attachedAzureNativeVirtualMachines",false))
+        {
+            this.AttachedAzureNativeVirtualMachines = null;
+        }
         //      C# -> List<AttachmentSpecsForManagedDisk>? AttachmentSpecs
         // GraphQL -> attachmentSpecs: [AttachmentSpecsForManagedDisk!]! (type)
         if (ec.Includes("attachmentSpecs",false))
@@ -1686,6 +1747,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureResourceGroup != null && ec.Excludes("azureResourceGroup",false))
         {
             this.AzureResourceGroup = null;
+        }
+        //      C# -> AzureResourceGroupDetails? AzureResourceGroupDetails
+        // GraphQL -> azureResourceGroupDetails: AzureResourceGroupDetails! (type)
+        if (ec.Includes("azureResourceGroupDetails",false))
+        {
+            if(this.AzureResourceGroupDetails == null) {
+
+                this.AzureResourceGroupDetails = new AzureResourceGroupDetails();
+                this.AzureResourceGroupDetails.ApplyExploratoryFieldSpec(ec.NewChild("azureResourceGroupDetails"));
+
+            } else {
+
+                this.AzureResourceGroupDetails.ApplyExploratoryFieldSpec(ec.NewChild("azureResourceGroupDetails"));
+
+            }
+        }
+        else if (this.AzureResourceGroupDetails != null && ec.Excludes("azureResourceGroupDetails",false))
+        {
+            this.AzureResourceGroupDetails = null;
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)

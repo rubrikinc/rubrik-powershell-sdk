@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("db2Config")]
         public Db2Config? Db2Config { get; set; }
 
+        //      C# -> InformixSlaConfig? InformixSlaConfig
+        // GraphQL -> informixSlaConfig: InformixSlaConfig (type)
+        [JsonProperty("informixSlaConfig")]
+        public InformixSlaConfig? InformixSlaConfig { get; set; }
+
         //      C# -> ManagedVolumeSlaConfig? ManagedVolumeSlaConfig
         // GraphQL -> managedVolumeSlaConfig: ManagedVolumeSlaConfig (type)
         [JsonProperty("managedVolumeSlaConfig")]
@@ -111,6 +116,7 @@ namespace RubrikSecurityCloud.Types
         AzureSqlDatabaseDbConfig? AzureSqlDatabaseDbConfig = null,
         AzureSqlManagedInstanceDbConfig? AzureSqlManagedInstanceDbConfig = null,
         Db2Config? Db2Config = null,
+        InformixSlaConfig? InformixSlaConfig = null,
         ManagedVolumeSlaConfig? ManagedVolumeSlaConfig = null,
         MongoConfig? MongoConfig = null,
         MssqlConfig? MssqlConfig = null,
@@ -139,6 +145,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Db2Config != null ) {
             this.Db2Config = Db2Config;
+        }
+        if ( InformixSlaConfig != null ) {
+            this.InformixSlaConfig = InformixSlaConfig;
         }
         if ( ManagedVolumeSlaConfig != null ) {
             this.ManagedVolumeSlaConfig = ManagedVolumeSlaConfig;
@@ -250,6 +259,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "db2Config" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> InformixSlaConfig? InformixSlaConfig
+        // GraphQL -> informixSlaConfig: InformixSlaConfig (type)
+        if (this.InformixSlaConfig != null) {
+            var fspec = this.InformixSlaConfig.AsFieldSpec(conf.Child("informixSlaConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "informixSlaConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -481,6 +502,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Db2Config != null && ec.Excludes("db2Config",false))
         {
             this.Db2Config = null;
+        }
+        //      C# -> InformixSlaConfig? InformixSlaConfig
+        // GraphQL -> informixSlaConfig: InformixSlaConfig (type)
+        if (ec.Includes("informixSlaConfig",false))
+        {
+            if(this.InformixSlaConfig == null) {
+
+                this.InformixSlaConfig = new InformixSlaConfig();
+                this.InformixSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("informixSlaConfig"));
+
+            } else {
+
+                this.InformixSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("informixSlaConfig"));
+
+            }
+        }
+        else if (this.InformixSlaConfig != null && ec.Excludes("informixSlaConfig",false))
+        {
+            this.InformixSlaConfig = null;
         }
         //      C# -> ManagedVolumeSlaConfig? ManagedVolumeSlaConfig
         // GraphQL -> managedVolumeSlaConfig: ManagedVolumeSlaConfig (type)

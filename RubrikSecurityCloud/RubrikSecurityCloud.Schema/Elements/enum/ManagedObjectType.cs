@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_RDS_INSTANCE")]
         AWS_NATIVE_RDS_INSTANCE,
 
+        [EnumMember(Value = "AWS_NATIVE_REGION")]
+        AWS_NATIVE_REGION,
+
         [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
         AWS_NATIVE_S3_BUCKET,
 

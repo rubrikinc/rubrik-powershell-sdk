@@ -39,6 +39,8 @@
   - Latest user note information.
 - polarisSpecificSnapshot: PolarisSpecificSnapshot
   - Rubrik-specific information about snapshots of specific workloads. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and M365 snapshots.
+- pendingSla: SlaDomain
+  - Specifies that the SLA Domain assignment is pending for this snapshot. The field is non-null when a user has assigned an SLA Domain, and the assignment is still in progress.
 - slaDomain: SlaDomain
 - snapshotRetentionInfo: RscSnapshotRetentionInfo
   - Snapshot retention-related information for local, archival, and replication locations.

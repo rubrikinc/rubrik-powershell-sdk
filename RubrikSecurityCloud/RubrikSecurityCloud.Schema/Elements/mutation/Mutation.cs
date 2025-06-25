@@ -6283,6 +6283,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? CreateOnDemandSapHanaDataBackup
+        // GraphQL -> createOnDemandSapHanaDataBackup: AsyncRequestStatus! (type)
+        public static string CreateOnDemandSapHanaDataBackup(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "createOnDemandSapHanaDataBackup" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CreateOnDemandSapHanaDataBackupFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? CreateOnDemandSapHanaStorageSnapshot
         // GraphQL -> createOnDemandSapHanaStorageSnapshot: AsyncRequestStatus! (type)
         public static string CreateOnDemandSapHanaStorageSnapshot(object fsObj)
@@ -9127,6 +9145,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> K8sManifestResponse? GenerateK8sManifest
+        // GraphQL -> generateK8sManifest: K8sManifestResponse! (type)
+        public static string GenerateK8sManifest(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "generateK8sManifest" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GenerateK8sManifestFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new K8sManifestResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GeneratePresignedUrlForDownloadReply? GeneratePresignedUrlForDownload
         // GraphQL -> generatePresignedUrlForDownload: GeneratePresignedUrlForDownloadReply! (type)
         public static string GeneratePresignedUrlForDownload(object fsObj)
@@ -10509,6 +10545,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> K8sManifestResponse? RegenerateK8sManifest
+        // GraphQL -> regenerateK8sManifest: K8sManifestResponse! (type)
+        public static string RegenerateK8sManifest(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "regenerateK8sManifest" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RegenerateK8sManifestFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new K8sManifestResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

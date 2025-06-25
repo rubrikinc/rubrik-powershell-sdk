@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 18
+    /// Create a new RscQuery object for any of the 20
     /// operations in the 'Kubernetes' API domain:
-    /// AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, RefreshCluster, RefreshV2Cluster, RestoreNamespace, RestoreProtectionSetSnapshot, UpdateCluster, or UpdateProtectionSet.
+    /// AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, UpdateCluster, or UpdateProtectionSet.
     /// </summary>
     /// <description>
     /// New-RscMutationK8s creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 18 operations
+    /// There are 20 operations
     /// in the 'Kubernetes' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, RefreshCluster, RefreshV2Cluster, RestoreNamespace, RestoreProtectionSetSnapshot, UpdateCluster, or UpdateProtectionSet.
+    /// one of: AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, UpdateCluster, or UpdateProtectionSet.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -609,6 +609,67 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the GenerateManifest operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: GenerateManifest
+    /// 
+    /// $query = New-RscMutationK8s -Operation GenerateManifest
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		id = $someString
+    /// 		# OPTIONAL
+    /// 		registry = $someString
+    /// 		# OPTIONAL
+    /// 		k8sNodeIp = $someString
+    /// 		# OPTIONAL
+    /// 		pullSecret = $someString
+    /// 		# OPTIONAL
+    /// 		isAutoPsCreationEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		distribution = $someString
+    /// 		# REQUIRED
+    /// 		name = $someString
+    /// 		# REQUIRED
+    /// 		serviceAccount = @{
+    /// 			# REQUIRED
+    /// 			accessToken = $someString
+    /// 			# REQUIRED
+    /// 			clientId = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
+    /// 			# REQUIRED
+    /// 			serviceAccountName = $someString
+    /// 		}
+    /// 		# REQUIRED
+    /// 		transport = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: K8sManifestResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RefreshCluster operation
     /// of the 'Kubernetes' API domain.
     /// <code>
@@ -663,6 +724,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RegenerateManifest operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: RegenerateManifest
+    /// 
+    /// $query = New-RscMutationK8s -Operation RegenerateManifest
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		serviceAccount = @{
+    /// 			# REQUIRED
+    /// 			accessToken = $someString
+    /// 			# REQUIRED
+    /// 			clientId = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
+    /// 			# REQUIRED
+    /// 			serviceAccountName = $someString
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: K8sManifestResponse
     /// 
     /// 
     /// 
@@ -894,8 +1000,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DownloadSnapshotFromLocation",
                 "ExportNamespace",
                 "ExportProtectionSetSnapshot",
+                "GenerateManifest",
                 "RefreshCluster",
                 "RefreshV2Cluster",
+                "RegenerateManifest",
                 "RestoreNamespace",
                 "RestoreProtectionSetSnapshot",
                 "UpdateCluster",
@@ -951,11 +1059,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ExportProtectionSetSnapshot":
                         this.ProcessRecord_ExportProtectionSetSnapshot();
                         break;
+                    case "GenerateManifest":
+                        this.ProcessRecord_GenerateManifest();
+                        break;
                     case "RefreshCluster":
                         this.ProcessRecord_RefreshCluster();
                         break;
                     case "RefreshV2Cluster":
                         this.ProcessRecord_RefreshV2Cluster();
+                        break;
+                    case "RegenerateManifest":
+                        this.ProcessRecord_RegenerateManifest();
                         break;
                     case "RestoreNamespace":
                         this.ProcessRecord_RestoreNamespace();
@@ -1088,6 +1202,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // generateK8sManifest.
+        internal void ProcessRecord_GenerateManifest()
+        {
+            this._logger.name += " -GenerateManifest";
+            // Create new graphql operation generateK8sManifest
+            InitMutationGenerateK8sManifest();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // refreshK8sCluster.
         internal void ProcessRecord_RefreshCluster()
         {
@@ -1103,6 +1226,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RefreshV2Cluster";
             // Create new graphql operation refreshK8sV2Cluster
             InitMutationRefreshK8sV2Cluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // regenerateK8sManifest.
+        internal void ProcessRecord_RegenerateManifest()
+        {
+            this._logger.name += " -RegenerateManifest";
+            // Create new graphql operation regenerateK8sManifest
+            InitMutationRegenerateK8sManifest();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1579,6 +1711,59 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // generateK8sManifest(input: GenerateK8sManifestInput!): K8sManifestResponse!
+        internal void InitMutationGenerateK8sManifest()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GenerateK8sManifestInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationGenerateK8sManifest",
+                "($input: GenerateK8sManifestInput!)",
+                "K8sManifestResponse",
+                Mutation.GenerateK8sManifest,
+                Mutation.GenerateK8sManifestFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		id = $someString
+		# OPTIONAL
+		registry = $someString
+		# OPTIONAL
+		k8sNodeIp = $someString
+		# OPTIONAL
+		pullSecret = $someString
+		# OPTIONAL
+		isAutoPsCreationEnabled = $someBoolean
+		# REQUIRED
+		distribution = $someString
+		# REQUIRED
+		name = $someString
+		# REQUIRED
+		serviceAccount = @{
+			# REQUIRED
+			accessToken = $someString
+			# REQUIRED
+			clientId = $someString
+			# REQUIRED
+			clientSecret = $someString
+			# REQUIRED
+			serviceAccountName = $someString
+		}
+		# REQUIRED
+		transport = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // refreshK8sCluster(input: RefreshK8sClusterInput!): CreateOnDemandJobReply!
         internal void InitMutationRefreshK8sCluster()
         {
@@ -1618,6 +1803,43 @@ $query.Var.input = @{
                 Mutation.RefreshK8sV2ClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // regenerateK8sManifest(input: RegenerateK8sManifestInput!): K8sManifestResponse!
+        internal void InitMutationRegenerateK8sManifest()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RegenerateK8sManifestInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRegenerateK8sManifest",
+                "($input: RegenerateK8sManifestInput!)",
+                "K8sManifestResponse",
+                Mutation.RegenerateK8sManifest,
+                Mutation.RegenerateK8sManifestFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		serviceAccount = @{
+			# REQUIRED
+			accessToken = $someString
+			# REQUIRED
+			clientId = $someString
+			# REQUIRED
+			clientSecret = $someString
+			# REQUIRED
+			serviceAccountName = $someString
+		}
+	}
 	# REQUIRED
 	id = $someString
 }"

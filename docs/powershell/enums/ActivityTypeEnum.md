@@ -14,6 +14,7 @@ Enum representing different type of activities.
 - VolumeGroup
 - LockSnapshot
 - Instantiate
+- IDENTITY_VIOLATION - Activity representing identity violation event type.
 - BULK_RECOVERY - Activity representing bulk recovery.
 - LOG_BACKUP - Activity representing log backup event type.
 - HypervServer
@@ -32,7 +33,7 @@ Enum representing different type of activities.
 - Replication
 - Maintenance
 - Support
-- SECURITY_VIOLATION
+- SECURITY_VIOLATION - Activity representing security violation event type.
 - Fileset
 - LocalRecovery
 - System

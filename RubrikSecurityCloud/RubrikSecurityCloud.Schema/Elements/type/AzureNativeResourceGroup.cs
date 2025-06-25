@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureSubscription")]
         public AzureNativeSubscription? AzureSubscription { get; set; }
 
+        //      C# -> AzureNativeSubscriptionDetails? AzureSubscriptionDetails
+        // GraphQL -> azureSubscriptionDetails: AzureNativeSubscriptionDetails! (type)
+        [JsonProperty("azureSubscriptionDetails")]
+        public AzureNativeSubscriptionDetails? AzureSubscriptionDetails { get; set; }
+
         //      C# -> AzureNativeResourceGroupSlaAssignment? DiskSla
         // GraphQL -> diskSla: AzureNativeResourceGroupSlaAssignment! (type)
         [JsonProperty("diskSla")]
@@ -270,6 +275,7 @@ namespace RubrikSecurityCloud.Types
         AzureNativeSubscriptionDetails? AzureNativeSubscriptionDetails = null,
         AzureNativeVirtualMachineConnection? AzureNativeVirtualMachines = null,
         AzureNativeSubscription? AzureSubscription = null,
+        AzureNativeSubscriptionDetails? AzureSubscriptionDetails = null,
         AzureNativeResourceGroupSlaAssignment? DiskSla = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
@@ -353,6 +359,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureSubscription != null ) {
             this.AzureSubscription = AzureSubscription;
+        }
+        if ( AzureSubscriptionDetails != null ) {
+            this.AzureSubscriptionDetails = AzureSubscriptionDetails;
         }
         if ( DiskSla != null ) {
             this.DiskSla = DiskSla;
@@ -638,6 +647,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureSubscription" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureNativeSubscriptionDetails? AzureSubscriptionDetails
+        // GraphQL -> azureSubscriptionDetails: AzureNativeSubscriptionDetails! (type)
+        if (this.AzureSubscriptionDetails != null) {
+            var fspec = this.AzureSubscriptionDetails.AsFieldSpec(conf.Child("azureSubscriptionDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureSubscriptionDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1225,6 +1246,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureSubscription != null && ec.Excludes("azureSubscription",false))
         {
             this.AzureSubscription = null;
+        }
+        //      C# -> AzureNativeSubscriptionDetails? AzureSubscriptionDetails
+        // GraphQL -> azureSubscriptionDetails: AzureNativeSubscriptionDetails! (type)
+        if (ec.Includes("azureSubscriptionDetails",false))
+        {
+            if(this.AzureSubscriptionDetails == null) {
+
+                this.AzureSubscriptionDetails = new AzureNativeSubscriptionDetails();
+                this.AzureSubscriptionDetails.ApplyExploratoryFieldSpec(ec.NewChild("azureSubscriptionDetails"));
+
+            } else {
+
+                this.AzureSubscriptionDetails.ApplyExploratoryFieldSpec(ec.NewChild("azureSubscriptionDetails"));
+
+            }
+        }
+        else if (this.AzureSubscriptionDetails != null && ec.Excludes("azureSubscriptionDetails",false))
+        {
+            this.AzureSubscriptionDetails = null;
         }
         //      C# -> AzureNativeResourceGroupSlaAssignment? DiskSla
         // GraphQL -> diskSla: AzureNativeResourceGroupSlaAssignment! (type)

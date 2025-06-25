@@ -10,7 +10,9 @@ Retrieves an Azure SQL Database Server. Refers to the server the Azure SQL Datab
 - backupSetupSourceObject: PathNode
   - The object from where the setup for performing backups of Azure SQL Databases is inherited.
 - azureNativeResourceGroupAndSubscriptionDetails: AzureNativeResourceGroupAndSubscriptionDetails
-  - RG and subscription details.
+  - Azure native resource group and subscription details.
+- azureResourceGroupDetails: AzureResourceGroupDetails
+  - Azure native resource group and subscription details.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - azureNativeResourceGroup: AzureNativeResourceGroup

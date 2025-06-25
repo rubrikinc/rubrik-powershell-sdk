@@ -342,6 +342,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "REPLICATION_PAIR")]
         REPLICATION_PAIR,
 
+        [EnumMember(Value = "RSC_TAG")]
+        RSC_TAG,
+
         [EnumMember(Value = "SapHanaDb")]
         SAP_HANA_DB,
 

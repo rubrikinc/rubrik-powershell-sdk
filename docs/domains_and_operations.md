@@ -16,12 +16,12 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | [AWS (33,37)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (4,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (22,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (55,44)](#azure-domain) | [Fileset (6,9)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (13,10)](#report-domain) | [Threat (18,6)](#threat-domain) |
-| [Azure Native (24,8)](#azure-native-domain) | [Google Cloud Platform (17,12)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,14)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
+| [Azure Native (24,8)](#azure-native-domain) | [Google Cloud Platform (17,12)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
 | [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (25,12)](#vmware-vsphere-domain) |
-| [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (6,26)](#vmware-vsphere-vm-domain) |
+| [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (7,26)](#vmware-vsphere-vm-domain) |
 | [Cloud Account (7,2)](#cloud-account-domain) | [Integration (2,7)](#integration-domain) | [Nutanix (20,30)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (5,12)](#webhook-domain) |
-| [Cloud Native (19,14)](#cloud-native-domain) | [Kubernetes (13,18)](#kubernetes-domain) | [Office 365 (40,34)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
+| [Cloud Native (19,14)](#cloud-native-domain) | [Kubernetes (13,20)](#kubernetes-domain) | [Office 365 (40,34)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
 
 ## Account domain
 
@@ -1461,11 +1461,19 @@ v9.1+: Create a job to export a Kubernetes protection set snapshot
 Supported in v9.0+  
 v9.0: Launches a job to export the Kubernetes resources from a resource set snapshot to a new namespace in a target Kubernetes cluster. The target namespace should not exist before the export.  
 v9.1+: Launches a job to export the Kubernetes resources from a protection set snapshot to a new namespace in a target Kubernetes cluster. The target namespace should not exist before the export. | `New-RscMutationK8s -Operation ExportProtectionSetSnapshot`<BR> | [exportK8sProtectionSetSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GenerateManifest | Generate manifest for adding Kubernetes cluster  
+  
+Supported in v9.2+  
+Generates a manifest for adding a Kubernetes Cluster. | `New-RscMutationK8s -Operation GenerateManifest`<BR> | [generateK8sManifest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RefreshCluster | Refresh resources of a Kubernetes cluster. | `New-RscMutationK8s -Operation RefreshCluster`<BR> | [refreshK8sCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RefreshV2Cluster | Initiate an on-demand refresh for a Kubernetes cluster  
   
 Supported in v9.0+  
 Initiates an on-demand refresh request for the specified Kubernetes cluster. | `New-RscMutationK8s -Operation RefreshV2Cluster`<BR> | [refreshK8sV2Cluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RegenerateManifest | Regenerate a manifest for an existing Kubernetes cluster  
+  
+Supported in v9.2+  
+Regenerates the manifest for the Kubernetes cluster by specifying the ID of the cluster. | `New-RscMutationK8s -Operation RegenerateManifest`<BR> | [regenerateK8sManifest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RestoreNamespace | Restores Kubernetes namespace snapshot. | `New-RscMutationK8s -Operation RestoreNamespace`<BR> | [restoreK8sNamespace](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RestoreProtectionSetSnapshot | v9.0: Create a job to restore a Kubernetes resource set snapshot  
 v9.1+: Create a job to restore a Kubernetes protection set snapshot  
@@ -3086,6 +3094,10 @@ Initiates a job to configure the specified target database for a system copy res
   
 Supported in v5.3+  
 Initiates a job to take an on demand full snapshot of a specified SAP HANA database object. The GET /sap_hana/db/request/{id} endpoint can be used to monitor the progress of the job. | `New-RscMutationSapHana -Operation CreateOnDemandBackup`<BR> | [createOnDemandSapHanaBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateOnDemandDataBackup | Create an on-demand snapshot of the database  
+  
+Supported in v9.4  
+Initiates a job to take an on-demand snapshot of a specified SAP HANA database object. You can use the GET /sap_hana/db/request/{id} endpoint to monitor the progress of the job. | `New-RscMutationSapHana -Operation CreateOnDemandDataBackup`<BR> | [createOnDemandSapHanaDataBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateOnDemandStorageSnapshot | Create on demand storage snapshot  
   
 Supported in v9.1+  
@@ -3764,6 +3776,7 @@ Cmdlets: `New-RscQueryVsphereVm` and `New-RscMutationVsphereVm`
 | NewList | N/A | `New-RscQueryVsphereVm -Operation NewList`<BR> | [vSphereVmNewConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RecoverableRange | N/A | `New-RscQueryVsphereVm -Operation RecoverableRange`<BR> | [vsphereVMRecoverableRange](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RecoverableRangeInBatch | N/A | `New-RscQueryVsphereVm -Operation RecoverableRangeInBatch`<BR> | [vsphereVMRecoverableRangeInBatch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| WithProvisionOnInfrastructure | Returns compute resources information for a single vsphere virtual machine to be used as a recovery source. Permission checks are performed against the ProvisionOnInfrastructure operation, not the ViewInventory operation. This is a short-term approach for solving RBAC issues where an org-user with view permission that is lower than hosts cannot have the same datastore auto-selected. | `New-RscQueryVsphereVm -Operation WithProvisionOnInfrastructure`<BR> | [vSphereVmWithProvisionOnInfrastructure](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations

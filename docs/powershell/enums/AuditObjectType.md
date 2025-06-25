@@ -148,3 +148,4 @@ Represents all the object types for which we expect to see audits.
 - K8S_LABEL - Kubernetes label object.
 - INFORMIX_INSTANCE - Informix instance.
 - GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
+- RSC_TAG - RSC tag.

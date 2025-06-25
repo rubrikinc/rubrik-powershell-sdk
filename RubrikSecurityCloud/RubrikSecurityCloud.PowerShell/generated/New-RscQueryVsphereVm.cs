@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 6
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'VMware vSphere VM' API domain:
-    /// AsyncRequestStatus, MissedRecoverableRange, New, NewList, RecoverableRange, or RecoverableRangeInBatch.
+    /// AsyncRequestStatus, MissedRecoverableRange, New, NewList, RecoverableRange, RecoverableRangeInBatch, or WithProvisionOnInfrastructure.
     /// </summary>
     /// <description>
     /// New-RscQueryVsphereVm creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 6 operations
+    /// There are 7 operations
     /// in the 'VMware vSphere VM' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AsyncRequestStatus, MissedRecoverableRange, New, NewList, RecoverableRange, or RecoverableRangeInBatch.
+    /// one of: AsyncRequestStatus, MissedRecoverableRange, New, NewList, RecoverableRange, RecoverableRangeInBatch, or WithProvisionOnInfrastructure.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -311,6 +311,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the WithProvisionOnInfrastructure operation
+    /// of the 'VMware vSphere VM' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    VsphereVm
+    /// # API Operation: WithProvisionOnInfrastructure
+    /// 
+    /// $query = New-RscQueryVsphereVm -Operation WithProvisionOnInfrastructure
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VsphereVm
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -333,6 +361,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "NewList",
                 "RecoverableRange",
                 "RecoverableRangeInBatch",
+                "WithProvisionOnInfrastructure",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -365,6 +394,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RecoverableRangeInBatch":
                         this.ProcessRecord_RecoverableRangeInBatch();
+                        break;
+                    case "WithProvisionOnInfrastructure":
+                        this.ProcessRecord_WithProvisionOnInfrastructure();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -428,6 +460,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RecoverableRangeInBatch";
             // Create new graphql operation vsphereVMRecoverableRangeInBatch
             InitQueryVsphereVmRecoverableRangeInBatch();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vSphereVmWithProvisionOnInfrastructure.
+        internal void ProcessRecord_WithProvisionOnInfrastructure()
+        {
+            this._logger.name += " -WithProvisionOnInfrastructure";
+            // Create new graphql operation vSphereVmWithProvisionOnInfrastructure
+            InitQueryVsphereVmWithProvisionOnInfrastructure();
         }
 
 
@@ -630,6 +671,26 @@ $query.Var.requestInfo = @{
 		$someString
 	)
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vSphereVmWithProvisionOnInfrastructure(fid: UUID!): VsphereVm!
+        internal void InitQueryVsphereVmWithProvisionOnInfrastructure()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVsphereVmWithProvisionOnInfrastructure",
+                "($fid: UUID!)",
+                "VsphereVm",
+                Query.VsphereVmWithProvisionOnInfrastructure,
+                Query.VsphereVmWithProvisionOnInfrastructureFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
             );
         }
 

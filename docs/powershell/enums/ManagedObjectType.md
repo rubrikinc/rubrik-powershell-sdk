@@ -167,6 +167,7 @@ All supported managed objects.
 - INFORMIX_INSTANCE - Informix Instance.
 - AZURE_REGION - Azure Region.
 - GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
+- AWS_NATIVE_REGION - AWS Native Region.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

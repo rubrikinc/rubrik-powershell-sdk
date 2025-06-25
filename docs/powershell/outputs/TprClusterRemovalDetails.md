@@ -9,5 +9,7 @@ Details of the cluster being removed.
   - IP address of the cluster.
 - location: System.String
   - Location of the cluster.
+- isForce: System.Boolean
+  - Specifies if the cluster has been force-removed.
 - status: ClusterStatus
   - Connected status of the cluster.

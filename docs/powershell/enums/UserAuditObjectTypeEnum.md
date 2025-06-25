@@ -97,6 +97,7 @@ User audit object type.
 - ENCRYPTION_MANAGEMENT - Encryption Management type.
 - ManagedVolume - Managed Volume type.
 - Vcd - VCD type.
+- RSC_TAG - RSC tag type.
 - AzureSqlDatabase - Azure SQL database type.
 - LinuxFileset - Linux fileset type.
 - VmwareMount - VMware mount type.

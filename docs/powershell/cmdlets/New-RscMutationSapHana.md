@@ -32,6 +32,14 @@ Initiates a job to take an on demand full snapshot of a specified SAP HANA datab
 
 - There is a single argument of type CreateOnDemandSapHanaBackupInput.
 - Returns AsyncRequestStatus.
+### createondemanddatabackup
+Create an on-demand snapshot of the database
+
+Supported in v9.4
+Initiates a job to take an on-demand snapshot of a specified SAP HANA database object. You can use the GET /sap_hana/db/request/{id} endpoint to monitor the progress of the job.
+
+- There is a single argument of type CreateOnDemandSapHanaDataBackupInput.
+- Returns AsyncRequestStatus.
 ### createondemandstoragesnapshot
 Create on demand storage snapshot
 

@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("instanceType")]
         public System.Int32? InstanceType { get; set; }
 
+        //      C# -> System.String? InstanceTypeString
+        // GraphQL -> instanceTypeString: String! (scalar)
+        [JsonProperty("instanceTypeString")]
+        public System.String? InstanceTypeString { get; set; }
+
         //      C# -> System.Int32? MemoryGib
         // GraphQL -> memoryGib: Int! (scalar)
         [JsonProperty("memoryGib")]
@@ -70,6 +75,7 @@ namespace RubrikSecurityCloud.Types
         VmType? VmType = null,
         System.Int32? CapacityTb = null,
         System.Int32? InstanceType = null,
+        System.String? InstanceTypeString = null,
         System.Int32? MemoryGib = null,
         System.Int32? VcpuCount = null
     ) 
@@ -88,6 +94,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( InstanceType != null ) {
             this.InstanceType = InstanceType;
+        }
+        if ( InstanceTypeString != null ) {
+            this.InstanceTypeString = InstanceTypeString;
         }
         if ( MemoryGib != null ) {
             this.MemoryGib = MemoryGib;
@@ -152,6 +161,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "instanceType\n" ;
             } else {
                 s += ind + "instanceType\n" ;
+            }
+        }
+        //      C# -> System.String? InstanceTypeString
+        // GraphQL -> instanceTypeString: String! (scalar)
+        if (this.InstanceTypeString != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceTypeString\n" ;
+            } else {
+                s += ind + "instanceTypeString\n" ;
             }
         }
         //      C# -> System.Int32? MemoryGib
@@ -263,6 +281,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.InstanceType != null && ec.Excludes("instanceType",true))
         {
             this.InstanceType = null;
+        }
+        //      C# -> System.String? InstanceTypeString
+        // GraphQL -> instanceTypeString: String! (scalar)
+        if (ec.Includes("instanceTypeString",true))
+        {
+            if(this.InstanceTypeString == null) {
+
+                this.InstanceTypeString = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceTypeString != null && ec.Excludes("instanceTypeString",true))
+        {
+            this.InstanceTypeString = null;
         }
         //      C# -> System.Int32? MemoryGib
         // GraphQL -> memoryGib: Int! (scalar)

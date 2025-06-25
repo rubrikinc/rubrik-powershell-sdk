@@ -83,6 +83,14 @@ v9.1+: Launches a job to export the Kubernetes resources from a protection set s
 
 - There is a single argument of type ExportK8sProtectionSetSnapshotInput.
 - Returns AsyncRequestStatus.
+### generatemanifest
+Generate manifest for adding Kubernetes cluster
+
+Supported in v9.2+
+Generates a manifest for adding a Kubernetes Cluster.
+
+- There is a single argument of type GenerateK8sManifestInput.
+- Returns K8sManifestResponse.
 ### refreshcluster
 Refresh resources of a Kubernetes cluster.
 
@@ -96,6 +104,14 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
 - There is a single argument of type RefreshK8sV2ClusterInput.
 - Returns AsyncRequestStatus.
+### regeneratemanifest
+Regenerate a manifest for an existing Kubernetes cluster
+
+Supported in v9.2+
+Regenerates the manifest for the Kubernetes cluster by specifying the ID of the cluster.
+
+- There is a single argument of type RegenerateK8sManifestInput.
+- Returns K8sManifestResponse.
 ### restorenamespace
 Restores Kubernetes namespace snapshot.
 

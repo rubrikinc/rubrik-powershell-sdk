@@ -14,6 +14,7 @@ The list of object types for activities.
 - HypervVm - Specifies that the activity object type is Hyperv Virtual Machine.
 - DataLocation - Specifies that the activity object type is Data Location.
 - K8S_LABEL - Specifies that the activity object type is Kubernetes label.
+- IDP_ENTRA_ID - Specifies that the activity object type is Microsoft Entra ID.
 - CLOUD_DIRECT_NAS_EXPORT - Specifies that the activity object type is Cloud Direct NAS export.
 - HypervScvmm - Specifies that the activity object type is HyperV SCVMM.
 - O365Onedrive - Specifies that the activity object type is O365 OneDrive.
@@ -21,6 +22,7 @@ The list of object types for activities.
 - CASSANDRA_SOURCE - Specifies that the activity object type is Cassandra source.
 - AppFlows - Specifies that the activity object type is Orchestrated Application Recovery.
 - AWS_NATIVE_S3_BUCKET - Specifies that the activity object type is AWS S3 Bucket.
+- IDP_AWS - Specifies that the activity object type is AWS IAM.
 - SapHanaSystem - Specifies that the activity object type is Sap Hana System.
 - KuprCluster - Specifies that the activity object type is Kubernetes Cluster.
 - GcpNativeProject - Specifies that the activity object type is GCP Native Project.
@@ -34,17 +36,21 @@ The list of object types for activities.
 - M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
 - O365Group - Specifies that the activity object type is O365 Group.
 - ObjectProtection - Specifies that the activity object type is Object Protection.
+- PRINCIPAL_SERVICE_ACCOUNT - Specifies that the activity object type is Service Account.
 - NutanixVm - Specifies that the activity object type is Nutanix Virtual Machine.
+- IDP_ON_PREM_AD - Specifies that the activity object type is On-prem AD.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
 - INTEL_FEED - Specifies that the activity object type is Intel feed.
 - ATLASSIAN_SITE - Specifies that the activity object type is Atlassian site.
 - MONGODB_SOURCE - Specifies that the activity object type is MongoDB source.
+- PRINCIPAL_GROUP - Specifies that the activity object type is Group.
 - POSTGRES_DB_CLUSTER - Specifies that the activity object type is Postgres Database Cluster.
 - HypervServer - Specifies that the activity object type is HyperV Server.
 - O365SharePointList - Specifies that the activity object type is O365 SharePoint List.
 - Vcenter - Specifies that the activity object type is vCenter.
 - AzureNativeDisk - Specifies that the activity object type is Azure Native Disk.
 - PublicCloudMachineInstance - Specifies that the activity object type is Public Cloud Machine Instance.
+- PRINCIPAL_GPO - Specifies that the activity object type is GPO.
 - O365SharePointDrive - Specifies that the activity object type is O365 SharePoint Drive.
 - ShareFileset - Specifies that the activity object type is Share Fileset.
 - MONGODB_COLLECTION - Specifies that the activity object type is MongoDB collection.
@@ -74,6 +80,7 @@ The list of object types for activities.
 - Mssql - Specifies that the activity object type is MSSQL.
 - NAS_FILESET - Specifies that the activity object type is NAS Fileset.
 - ACTIVE_DIRECTORY_FOREST - Specifies that the activity object type is related to Active Directory forest.
+- PRINCIPAL_ASSUMABLE_IDENTITY - Specifies that the activity object type is Assumable Identity.
 - CloudNativeVirtualMachine - Specifies that the activity object type is Cloud Native Virtual Machine.
 - AZURE_AD_DIRECTORY - Specifies that the activity object type is Azure AD Directory.
 - VmwareVm - Specifies that the activity object type is VMware Virtual Machine.
@@ -88,8 +95,10 @@ The list of object types for activities.
 - D365_DATAVERSE_TABLE - Specifies that the activity object type is a Dynamics 365 dataverse table.
 - O365Calendar - Specifies that the activity object type is O365 Calendar.
 - K8S_PROTECTION_SET - Specifies that the activity object type is Kubernetes Protection Set.
+- PRINCIPAL_EXTERNAL_ACCOUNT - Specifies that the activity object type is External Account.
 - MONGO_SOURCE - Specifies that the activity object type is MongoDB source.
 - SALESFORCE_METADATA - Specifies that the activity object type is Salesforce metadata.
+- PRINCIPAL_EXTERNAL_PRINCIPAL - Specifies that the activity object type is External Principal.
 - AwsNativeEbsVolume - Specifies that the activity object type is AWS Native EBS Volume.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Specifies that the activity object type is related to Activity Directory domain controller.
 - CASSANDRA_COLUMN_FAMILY - Specifies that the activity object type is Cassandra column family.
@@ -98,6 +107,7 @@ The list of object types for activities.
 - ENCRYPTION_MANAGEMENT - Specifies that the activity object type is related to Encryption Management.
 - ManagedVolume - Specifies that the activity object type is Managed Volume.
 - Vcd - Specifies that the activity object type is VCD.
+- PRINCIPAL_PUBLIC - Specifies that the activity object type is Public Exposure.
 - AzureSqlDatabase - Specifies that the activity object type is Azure SQL Database.
 - Db2Instance - Specifies that the activity object type is Db2 Instance.
 - LinuxFileset - Specifies that the activity object type is Linux Fileset.
@@ -124,12 +134,16 @@ The list of object types for activities.
 - StorageArrayVolumeGroup - Specifies that the activity object type is Storage Array Volume Group.
 - SnapMirrorCloud - Specifies that the activity object type is Snap Mirror Cloud.
 - GcpNativeGceInstance - Specifies that the activity object type is GCP Native GCE Instance.
+- PRINCIPAL_ORG_WIDE - Specifies that the activity object type is Org Wide Exposure.
 - Envoy - Specifies that the activity object type is Envoy.
 - Cluster - Specifies that the activity object type is Rubrik Cluster.
 - AppBlueprint - Specifies that the activity object type is App Blueprint.
 - OPENSTACK_VIRTUAL_MACHINE - Specifies that the activity object type is Openstack Virtual Machine.
 - AzureNativeSubscription - Specifies that the activity object type is Azure Native Subscription.
+- IDP_SHAREPOINT - Specifies that the activity object type is SharePoint Site Domain.
 - Certificate - Specifies that the activity object type is Certificate.
+- PRINCIPAL_COMPUTER - Specifies that the activity object type is Computer.
+- IDP_LOCAL_AD - Specifies that the activity object type is Local Windows Machine.
 - SamlSso - Specifies that the activity object type is Saml SSO.
 - OracleDb - Specifies that the activity object type is Oracle Database.
 - FailoverClusterApp - Specifies that the activity object type is Failover Cluster App.

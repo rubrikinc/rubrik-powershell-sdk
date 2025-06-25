@@ -146,6 +146,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureResourceGroup")]
         public AzureNativeResourceGroup? AzureResourceGroup { get; set; }
 
+        //      C# -> AzureResourceGroupDetails? AzureResourceGroupDetails
+        // GraphQL -> azureResourceGroupDetails: AzureResourceGroupDetails! (type)
+        [JsonProperty("azureResourceGroupDetails")]
+        public AzureResourceGroupDetails? AzureResourceGroupDetails { get; set; }
+
         //      C# -> PathNode? BackupSetupSourceObject
         // GraphQL -> backupSetupSourceObject: PathNode (type)
         [JsonProperty("backupSetupSourceObject")]
@@ -249,6 +254,7 @@ namespace RubrikSecurityCloud.Types
         AzureNativeResourceGroup? AzureNativeResourceGroup = null,
         AzureNativeResourceGroupAndSubscriptionDetails? AzureNativeResourceGroupAndSubscriptionDetails = null,
         AzureNativeResourceGroup? AzureResourceGroup = null,
+        AzureResourceGroupDetails? AzureResourceGroupDetails = null,
         PathNode? BackupSetupSourceObject = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
@@ -334,6 +340,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureResourceGroup != null ) {
             this.AzureResourceGroup = AzureResourceGroup;
+        }
+        if ( AzureResourceGroupDetails != null ) {
+            this.AzureResourceGroupDetails = AzureResourceGroupDetails;
         }
         if ( BackupSetupSourceObject != null ) {
             this.BackupSetupSourceObject = BackupSetupSourceObject;
@@ -625,6 +634,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureResourceGroup" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureResourceGroupDetails? AzureResourceGroupDetails
+        // GraphQL -> azureResourceGroupDetails: AzureResourceGroupDetails! (type)
+        if (this.AzureResourceGroupDetails != null) {
+            var fspec = this.AzureResourceGroupDetails.AsFieldSpec(conf.Child("azureResourceGroupDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureResourceGroupDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1198,6 +1219,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureResourceGroup != null && ec.Excludes("azureResourceGroup",false))
         {
             this.AzureResourceGroup = null;
+        }
+        //      C# -> AzureResourceGroupDetails? AzureResourceGroupDetails
+        // GraphQL -> azureResourceGroupDetails: AzureResourceGroupDetails! (type)
+        if (ec.Includes("azureResourceGroupDetails",false))
+        {
+            if(this.AzureResourceGroupDetails == null) {
+
+                this.AzureResourceGroupDetails = new AzureResourceGroupDetails();
+                this.AzureResourceGroupDetails.ApplyExploratoryFieldSpec(ec.NewChild("azureResourceGroupDetails"));
+
+            } else {
+
+                this.AzureResourceGroupDetails.ApplyExploratoryFieldSpec(ec.NewChild("azureResourceGroupDetails"));
+
+            }
+        }
+        else if (this.AzureResourceGroupDetails != null && ec.Excludes("azureResourceGroupDetails",false))
+        {
+            this.AzureResourceGroupDetails = null;
         }
         //      C# -> PathNode? BackupSetupSourceObject
         // GraphQL -> backupSetupSourceObject: PathNode (type)

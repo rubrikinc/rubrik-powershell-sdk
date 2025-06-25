@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SEQUENCE_NUMBER_GREATER_THAN")]
         SEQUENCE_NUMBER_GREATER_THAN,
 
+        [EnumMember(Value = "SEQUENCE_NUMS")]
+        SEQUENCE_NUMS,
+
         [EnumMember(Value = "SNAPSHOT_IDS")]
         SNAPSHOT_IDS,
 

@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUDACCOUNTS")]
         CLOUDACCOUNTS,
 
+        [EnumMember(Value = "CLOUD_DISCOVERY")]
+        CLOUD_DISCOVERY,
+
         [EnumMember(Value = "CLOUD_NATIVE_ARCHIVAL")]
         CLOUD_NATIVE_ARCHIVAL,
 
@@ -65,6 +68,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLOUD_NATIVE_S3_PROTECTION")]
         CLOUD_NATIVE_S3_PROTECTION,
+
+        [EnumMember(Value = "CLOUD_SQL_PROTECTION")]
+        CLOUD_SQL_PROTECTION,
 
         [EnumMember(Value = "CYBERRECOVERY_DATA_CLASSIFICATION_DATA")]
         CYBERRECOVERY_DATA_CLASSIFICATION_DATA,

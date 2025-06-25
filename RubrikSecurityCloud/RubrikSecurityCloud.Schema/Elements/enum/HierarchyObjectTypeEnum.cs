@@ -66,6 +66,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AwsNativeRdsInstance")]
         AWS_NATIVE_RDS_INSTANCE,
 
+        [EnumMember(Value = "AwsNativeRegion")]
+        AWS_NATIVE_REGION,
+
         [EnumMember(Value = "AzureNativeManagedDisk")]
         AZURE_NATIVE_MANAGED_DISK,
 

@@ -516,6 +516,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IS_DELETED_IN_CDM")]
         IS_DELETED_IN_CDM,
 
+        [EnumMember(Value = "IS_DOMAIN_CONTROLLER")]
+        IS_DOMAIN_CONTROLLER,
+
         [EnumMember(Value = "IS_GHOST")]
         IS_GHOST,
 

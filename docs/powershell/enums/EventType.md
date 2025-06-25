@@ -65,3 +65,4 @@ Enum representing all the possible event types.
 by PolicyEngine component.
 - SEEDING - Sandbox seeding event type.
 - IDENTITY_ALERTS - Identity alerts type.
+- IDENTITY_VIOLATION - Identity violation event type.

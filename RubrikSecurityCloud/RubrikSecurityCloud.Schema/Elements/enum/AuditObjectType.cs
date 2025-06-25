@@ -360,6 +360,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "REPLICATION_PAIR")]
         REPLICATION_PAIR,
 
+        [EnumMember(Value = "RSC_TAG")]
+        RSC_TAG,
+
         [EnumMember(Value = "SALESFORCE_METADATA")]
         SALESFORCE_METADATA,
 

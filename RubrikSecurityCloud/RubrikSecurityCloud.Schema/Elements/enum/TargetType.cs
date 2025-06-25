@@ -45,6 +45,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RCV_AWS")]
         RCV_AWS,
 
+        [EnumMember(Value = "RCV_GCP")]
+        RCV_GCP,
+
         [EnumMember(Value = "S3_COMPATIBLE")]
         S3_COMPATIBLE,
 

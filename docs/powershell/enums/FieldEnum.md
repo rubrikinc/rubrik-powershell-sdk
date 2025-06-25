@@ -32,3 +32,5 @@ without the specific snapshots details. When not provided, Specific
 Snapshot details are returned. Add the filter for efficiency if specific
 snapshot details are not required.
 - SNAPSHOT_IDS - When configured, it returns snapshots with IDs present in the list.
+- SEQUENCE_NUMS - SEQUENCE_NUMS will only return results matching one of the sequence
+numbers in the list.

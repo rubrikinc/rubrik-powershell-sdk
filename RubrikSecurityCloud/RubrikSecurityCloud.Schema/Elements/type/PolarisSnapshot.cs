@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("consistencyLevel")]
         public SnapshotConsistencyLevel? ConsistencyLevel { get; set; }
 
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        [JsonProperty("pendingSla")]
+        public SlaDomain? PendingSla { get; set; }
+
         //      C# -> PolarisSpecificSnapshot? PolarisSpecificSnapshot
         // GraphQL -> polarisSpecificSnapshot: PolarisSpecificSnapshot (interface)
         [JsonProperty("polarisSpecificSnapshot")]
@@ -212,6 +217,7 @@ namespace RubrikSecurityCloud.Types
 
     public PolarisSnapshot Set(
         SnapshotConsistencyLevel? ConsistencyLevel = null,
+        SlaDomain? PendingSla = null,
         PolarisSpecificSnapshot? PolarisSpecificSnapshot = null,
         SlaDomain? SlaDomain = null,
         System.String? ArchivalLocationId = null,
@@ -251,6 +257,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ConsistencyLevel != null ) {
             this.ConsistencyLevel = ConsistencyLevel;
+        }
+        if ( PendingSla != null ) {
+            this.PendingSla = PendingSla;
         }
         if ( PolarisSpecificSnapshot != null ) {
             this.PolarisSpecificSnapshot = PolarisSpecificSnapshot;
@@ -378,6 +387,19 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "consistencyLevel\n" ;
             } else {
                 s += ind + "consistencyLevel\n" ;
+            }
+        }
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        if (this.PendingSla != null) {
+                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.PendingSla, conf.Child("pendingSla"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pendingSla" + " " + "{\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> PolarisSpecificSnapshot? PolarisSpecificSnapshot
@@ -738,6 +760,30 @@ namespace RubrikSecurityCloud.Types
         else if (this.ConsistencyLevel != null && ec.Excludes("consistencyLevel",true))
         {
             this.ConsistencyLevel = null;
+        }
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        if (ec.Includes("pendingSla",false))
+        {
+            if(this.PendingSla == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
+                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
+                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.PendingSla != null && ec.Excludes("pendingSla",false))
+        {
+            this.PendingSla = null;
         }
         //      C# -> PolarisSpecificSnapshot? PolarisSpecificSnapshot
         // GraphQL -> polarisSpecificSnapshot: PolarisSpecificSnapshot (interface)

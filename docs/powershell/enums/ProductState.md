@@ -9,7 +9,6 @@ State of product.
 - ACTIVATION_FAILED - Product failed to activate.
 - DISABLE_PENDING - Product is being disabled.
 - DISABLE_FAILED - Product couldn't be disabled.
-- EXPIRATION_PENDING - Product has been selected for expiration, but somehow
-            expiration failed.
-- INACTIVE - Inactive product state waiting to
-            be activated.
+- EXPIRATION_PENDING - Product has been selected for expiration, but somehow expiration
+failed.
+- INACTIVE - Inactive product state waiting to be activated.

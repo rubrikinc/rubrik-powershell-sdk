@@ -149,3 +149,17 @@ Enum representing all the possible object types which generate events.
 - INFORMIX_INSTANCE - Informix instance.
 - K8S_LABEL - Kubernetes label object.
 - GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
+- PRINCIPAL_GROUP - Group principal type.
+- PRINCIPAL_ASSUMABLE_IDENTITY - Assumable identity principal type.
+- PRINCIPAL_EXTERNAL_ACCOUNT - External account principal type.
+- PRINCIPAL_SERVICE_ACCOUNT - Service account principal type.
+- PRINCIPAL_EXTERNAL_PRINCIPAL - External principal principal type.
+- PRINCIPAL_PUBLIC - Public principal type.
+- PRINCIPAL_ORG_WIDE - Org wide principal type.
+- PRINCIPAL_GPO - GPO principal type.
+- PRINCIPAL_COMPUTER - Computer principal type.
+- IDP_ON_PREM_AD - On-prem AD IDP type.
+- IDP_AWS - AWS IDP type.
+- IDP_ENTRA_ID - Entra ID IDP type.
+- IDP_LOCAL_AD - Local AD type.
+- IDP_SHAREPOINT - SharePoint IDP type.

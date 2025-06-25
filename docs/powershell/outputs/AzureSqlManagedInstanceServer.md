@@ -24,7 +24,9 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
 - backupSetupSourceObject: PathNode
   - The object from where the setup for performing backups of Azure SQL Managed Instance Databases is inherited.
 - azureNativeResourceGroupAndSubscriptionDetails: AzureNativeResourceGroupAndSubscriptionDetails
-  - RG and subscription details.
+  - Azure native resource group and subscription details.
+- azureResourceGroupDetails: AzureResourceGroupDetails
+  - Azure native resource group and subscription details.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - azureNativeResourceGroup: AzureNativeResourceGroup

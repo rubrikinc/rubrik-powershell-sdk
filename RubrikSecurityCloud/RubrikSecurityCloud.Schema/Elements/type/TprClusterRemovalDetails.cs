@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ip")]
         public System.String? Ip { get; set; }
 
+        //      C# -> System.Boolean? IsForce
+        // GraphQL -> isForce: Boolean! (scalar)
+        [JsonProperty("isForce")]
+        public System.Boolean? IsForce { get; set; }
+
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         [JsonProperty("location")]
@@ -58,6 +63,7 @@ namespace RubrikSecurityCloud.Types
         ClusterStatus? Status = null,
         System.String? Id = null,
         System.String? Ip = null,
+        System.Boolean? IsForce = null,
         System.String? Location = null,
         System.String? Name = null
     ) 
@@ -70,6 +76,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Ip != null ) {
             this.Ip = Ip;
+        }
+        if ( IsForce != null ) {
+            this.IsForce = IsForce;
         }
         if ( Location != null ) {
             this.Location = Location;
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ip\n" ;
             } else {
                 s += ind + "ip\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsForce
+        // GraphQL -> isForce: Boolean! (scalar)
+        if (this.IsForce != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isForce\n" ;
+            } else {
+                s += ind + "isForce\n" ;
             }
         }
         //      C# -> System.String? Location
@@ -193,6 +211,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Ip != null && ec.Excludes("ip",true))
         {
             this.Ip = null;
+        }
+        //      C# -> System.Boolean? IsForce
+        // GraphQL -> isForce: Boolean! (scalar)
+        if (ec.Includes("isForce",true))
+        {
+            if(this.IsForce == null) {
+
+                this.IsForce = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsForce != null && ec.Excludes("isForce",true))
+        {
+            this.IsForce = null;
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
