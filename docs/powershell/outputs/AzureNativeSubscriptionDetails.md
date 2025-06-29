@@ -17,3 +17,5 @@ Azure native subscription details.
   - The account connection identifier for the Azure subscription.
 - regionSpecs: list of AzureNativeRegionSpecs
   - The region specifications for the Azure subscription.
+- enabledFeatures: list of AzureNativeSubscriptionEnabledFeatures
+  - Details of features enabled for the subscription.

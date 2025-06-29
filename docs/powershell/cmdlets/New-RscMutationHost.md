@@ -32,6 +32,16 @@ Install or uninstall volume filter driver on hosts.
 
 - There is a single argument of type ChangeVfdOnHostInput.
 - Returns ChangeVfdOnHostReply.
+### clearrbsnetworklimit
+Clear RBS network throttle limits for hosts.
+
+- There is a single argument of type ClearHostRbsNetworkLimitInput.
+- Returns ClearHostRbsNetworkLimitReply.
 ### refresh
 - There is a single argument of type RefreshHostInput.
 - Returns RefreshHostReply.
+### setrbsnetworklimit
+Set RBS network throttle limits for hosts.
+
+- There is a single argument of type SetHostRbsNetworkLimitInput.
+- Returns SetHostRbsNetworkLimitReply.

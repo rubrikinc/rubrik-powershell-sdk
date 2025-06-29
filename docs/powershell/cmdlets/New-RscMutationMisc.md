@@ -714,6 +714,14 @@ Update backup throttle setting.
 
 - There is a single argument of type UpdateBackupThrottleSettingInput.
 - Returns UpdateBackupThrottleSettingReply.
+### updatebackuptriggerforworkloads
+Set the backup trigger type for the workloads
+
+Supported in v9.4
+Updates the backup trigger type for the workloads passed in the input.
+
+- There is a single argument of type UpdateBackupTriggerForWorkloadsInput.
+- Returns System.String.
 ### updatebaddiskledstatus
 Find bad disk of a node in the CDM cluster.
 

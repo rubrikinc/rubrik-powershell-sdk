@@ -4431,6 +4431,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			mysqldbInstanceFid = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		informixInstanceInfo = @{
+    /// 			# OPTIONAL
+    /// 			informixInstanceFid = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -15423,6 +15428,11 @@ $query.Var.input = @{
 		mysqldbInstanceInfo = @{
 			# OPTIONAL
 			mysqldbInstanceFid = $someString
+		}
+		# OPTIONAL
+		informixInstanceInfo = @{
+			# OPTIONAL
+			informixInstanceFid = $someString
 		}
 	}
 }"

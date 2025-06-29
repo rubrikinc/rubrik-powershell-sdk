@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 7
+    /// Create a new RscQuery object for any of the 9
     /// operations in the 'Host' API domain:
-    /// BulkDelete, BulkRefresh, BulkRegister, BulkRegisterAsync, BulkUpdate, ChangeVfd, or Refresh.
+    /// BulkDelete, BulkRefresh, BulkRegister, BulkRegisterAsync, BulkUpdate, ChangeVfd, ClearRbsNetworkLimit, Refresh, or SetRbsNetworkLimit.
     /// </summary>
     /// <description>
     /// New-RscMutationHost creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 7 operations
+    /// There are 9 operations
     /// in the 'Host' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkDelete, BulkRefresh, BulkRegister, BulkRegisterAsync, BulkUpdate, ChangeVfd, or Refresh.
+    /// one of: BulkDelete, BulkRefresh, BulkRegister, BulkRegisterAsync, BulkUpdate, ChangeVfd, ClearRbsNetworkLimit, Refresh, or SetRbsNetworkLimit.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -579,6 +579,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ClearRbsNetworkLimit operation
+    /// of the 'Host' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Host
+    /// # API Operation: ClearRbsNetworkLimit
+    /// 
+    /// $query = New-RscMutationHost -Operation ClearRbsNetworkLimit
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	request = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ClearHostRbsNetworkLimitReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Refresh operation
     /// of the 'Host' API domain.
     /// <code>
@@ -609,6 +642,46 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the SetRbsNetworkLimit operation
+    /// of the 'Host' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Host
+    /// # API Operation: SetRbsNetworkLimit
+    /// 
+    /// $query = New-RscMutationHost -Operation SetRbsNetworkLimit
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	hostIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	networkThrottleLimits = @{
+    /// 		# OPTIONAL
+    /// 		throttleValue = $someInt64
+    /// 		# OPTIONAL
+    /// 		throttlePercent = $someInt
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SetHostRbsNetworkLimitReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -631,7 +704,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "BulkRegisterAsync",
                 "BulkUpdate",
                 "ChangeVfd",
+                "ClearRbsNetworkLimit",
                 "Refresh",
+                "SetRbsNetworkLimit",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -665,8 +740,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ChangeVfd":
                         this.ProcessRecord_ChangeVfd();
                         break;
+                    case "ClearRbsNetworkLimit":
+                        this.ProcessRecord_ClearRbsNetworkLimit();
+                        break;
                     case "Refresh":
                         this.ProcessRecord_Refresh();
+                        break;
+                    case "SetRbsNetworkLimit":
+                        this.ProcessRecord_SetRbsNetworkLimit();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -733,12 +814,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // clearHostRbsNetworkLimit.
+        internal void ProcessRecord_ClearRbsNetworkLimit()
+        {
+            this._logger.name += " -ClearRbsNetworkLimit";
+            // Create new graphql operation clearHostRbsNetworkLimit
+            InitMutationClearHostRbsNetworkLimit();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // refreshHost.
         internal void ProcessRecord_Refresh()
         {
             this._logger.name += " -Refresh";
             // Create new graphql operation refreshHost
             InitMutationRefreshHost();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // setHostRbsNetworkLimit.
+        internal void ProcessRecord_SetRbsNetworkLimit()
+        {
+            this._logger.name += " -SetRbsNetworkLimit";
+            // Create new graphql operation setHostRbsNetworkLimit
+            InitMutationSetHostRbsNetworkLimit();
         }
 
 
@@ -1197,6 +1296,31 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // clearHostRbsNetworkLimit(input: ClearHostRbsNetworkLimitInput!): ClearHostRbsNetworkLimitReply!
+        internal void InitMutationClearHostRbsNetworkLimit()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ClearHostRbsNetworkLimitInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationClearHostRbsNetworkLimit",
+                "($input: ClearHostRbsNetworkLimitInput!)",
+                "ClearHostRbsNetworkLimitReply",
+                Mutation.ClearHostRbsNetworkLimit,
+                Mutation.ClearHostRbsNetworkLimitFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	request = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // refreshHost(input: RefreshHostInput!): RefreshHostReply!
         internal void InitMutationRefreshHost()
         {
@@ -1215,6 +1339,38 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // setHostRbsNetworkLimit(input: SetHostRbsNetworkLimitInput!): SetHostRbsNetworkLimitReply!
+        internal void InitMutationSetHostRbsNetworkLimit()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SetHostRbsNetworkLimitInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSetHostRbsNetworkLimit",
+                "($input: SetHostRbsNetworkLimitInput!)",
+                "SetHostRbsNetworkLimitReply",
+                Mutation.SetHostRbsNetworkLimit,
+                Mutation.SetHostRbsNetworkLimitFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	hostIds = @(
+		$someString
+	)
+	# OPTIONAL
+	networkThrottleLimits = @{
+		# OPTIONAL
+		throttleValue = $someInt64
+		# OPTIONAL
+		throttlePercent = $someInt
+	}
 }"
             );
         }

@@ -16,3 +16,6 @@ List of all validations to perform.
 - AZURE_QUOTA_CHECK - Check if sufficient quota is available to launch the cluster nodes.
 - AZURE_MI_CHECK - Check if the managed identity is valid and supported.
 - CLOUD_ACCOUNT_CHECK - Check if the selected cloud account supports cluster provisioning.
+- GCP_NETWORK_CONFIG_CHECK - Check if the GCP network configuration is valid.
+- GCP_SERVICE_ACCOUNT_CHECK - Check if the GCP service account is valid.
+- GCP_INSTANCE_LABEL_KEY_CHECK - Check if the GCP instance label key is valid.

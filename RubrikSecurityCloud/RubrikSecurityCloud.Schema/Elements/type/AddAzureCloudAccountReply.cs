@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tenantId")]
         public System.String? TenantId { get; set; }
 
+        //      C# -> AzureEntraIdGroupStatus? EntraIdGroupStatus
+        // GraphQL -> entraIdGroupStatus: AzureEntraIdGroupStatus (type)
+        [JsonProperty("entraIdGroupStatus")]
+        public AzureEntraIdGroupStatus? EntraIdGroupStatus { get; set; }
+
         //      C# -> List<AddAzureCloudAccountStatus>? Status
         // GraphQL -> status: [AddAzureCloudAccountStatus!]! (type)
         [JsonProperty("status")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public AddAzureCloudAccountReply Set(
         System.String? TenantId = null,
+        AzureEntraIdGroupStatus? EntraIdGroupStatus = null,
         List<AddAzureCloudAccountStatus>? Status = null
     ) 
     {
         if ( TenantId != null ) {
             this.TenantId = TenantId;
+        }
+        if ( EntraIdGroupStatus != null ) {
+            this.EntraIdGroupStatus = EntraIdGroupStatus;
         }
         if ( Status != null ) {
             this.Status = Status;
@@ -71,6 +80,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "tenantId\n" ;
             } else {
                 s += ind + "tenantId\n" ;
+            }
+        }
+        //      C# -> AzureEntraIdGroupStatus? EntraIdGroupStatus
+        // GraphQL -> entraIdGroupStatus: AzureEntraIdGroupStatus (type)
+        if (this.EntraIdGroupStatus != null) {
+            var fspec = this.EntraIdGroupStatus.AsFieldSpec(conf.Child("entraIdGroupStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "entraIdGroupStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AddAzureCloudAccountStatus>? Status
@@ -108,6 +129,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.TenantId != null && ec.Excludes("tenantId",true))
         {
             this.TenantId = null;
+        }
+        //      C# -> AzureEntraIdGroupStatus? EntraIdGroupStatus
+        // GraphQL -> entraIdGroupStatus: AzureEntraIdGroupStatus (type)
+        if (ec.Includes("entraIdGroupStatus",false))
+        {
+            if(this.EntraIdGroupStatus == null) {
+
+                this.EntraIdGroupStatus = new AzureEntraIdGroupStatus();
+                this.EntraIdGroupStatus.ApplyExploratoryFieldSpec(ec.NewChild("entraIdGroupStatus"));
+
+            } else {
+
+                this.EntraIdGroupStatus.ApplyExploratoryFieldSpec(ec.NewChild("entraIdGroupStatus"));
+
+            }
+        }
+        else if (this.EntraIdGroupStatus != null && ec.Excludes("entraIdGroupStatus",false))
+        {
+            this.EntraIdGroupStatus = null;
         }
         //      C# -> List<AddAzureCloudAccountStatus>? Status
         // GraphQL -> status: [AddAzureCloudAccountStatus!]! (type)

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 20
+    /// Create a new RscQuery object for any of the 21
     /// operations in the 'Nutanix' API domain:
-    /// BrowseSnapshot, Category, CategoryValue, Cluster, ClusterAsyncRequestStatus, ClusterContainers, ClusterNetworks, Clusters, Mounts, PrismCentral, PrismCentrals, SearchVm, SnapshotDetail, SnapshotVdisks, TopLevelDescendants, VDiskMountableVms, Vm, VmAsyncRequestStatus, VmMissedSnapshots, or Vms.
+    /// BrowseSnapshot, Category, CategoryValue, Cluster, ClusterAsyncRequestStatus, ClusterContainers, ClusterNetworks, Clusters, Mounts, MountsV2, PrismCentral, PrismCentrals, SearchVm, SnapshotDetail, SnapshotVdisks, TopLevelDescendants, VDiskMountableVms, Vm, VmAsyncRequestStatus, VmMissedSnapshots, or Vms.
     /// </summary>
     /// <description>
     /// New-RscQueryNutanix creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 20 operations
+    /// There are 21 operations
     /// in the 'Nutanix' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BrowseSnapshot, Category, CategoryValue, Cluster, ClusterAsyncRequestStatus, ClusterContainers, ClusterNetworks, Clusters, Mounts, PrismCentral, PrismCentrals, SearchVm, SnapshotDetail, SnapshotVdisks, TopLevelDescendants, VDiskMountableVms, Vm, VmAsyncRequestStatus, VmMissedSnapshots, or Vms.
+    /// one of: BrowseSnapshot, Category, CategoryValue, Cluster, ClusterAsyncRequestStatus, ClusterContainers, ClusterNetworks, Clusters, Mounts, MountsV2, PrismCentral, PrismCentrals, SearchVm, SnapshotDetail, SnapshotVdisks, TopLevelDescendants, VDiskMountableVms, Vm, VmAsyncRequestStatus, VmMissedSnapshots, or Vms.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -409,6 +409,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: NutanixLiveMountConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MountsV2 operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: MountsV2
+    /// 
+    /// $query = New-RscQueryNutanix -Operation MountsV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetNutanixMountsReply
     /// 
     /// 
     /// 
@@ -968,6 +999,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ClusterNetworks",
                 "Clusters",
                 "Mounts",
+                "MountsV2",
                 "PrismCentral",
                 "PrismCentrals",
                 "SearchVm",
@@ -1020,6 +1052,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Mounts":
                         this.ProcessRecord_Mounts();
+                        break;
+                    case "MountsV2":
+                        this.ProcessRecord_MountsV2();
                         break;
                     case "PrismCentral":
                         this.ProcessRecord_PrismCentral();
@@ -1143,6 +1178,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Mounts";
             // Create new graphql operation nutanixMounts
             InitQueryNutanixMounts();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // nutanixMountsV2.
+        internal void ProcessRecord_MountsV2()
+        {
+            this._logger.name += " -MountsV2";
+            // Create new graphql operation nutanixMountsV2
+            InitQueryNutanixMountsV2();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1527,6 +1571,29 @@ $query.Var.sortBy = @{
 	field = $someNutanixLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixLiveMountSortByField]) for enum values.
 	# OPTIONAL
 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // nutanixMountsV2(input: GetNutanixMountsReq!): GetNutanixMountsReply!
+        internal void InitQueryNutanixMountsV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetNutanixMountsReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixMountsV2",
+                "($input: GetNutanixMountsReq!)",
+                "GetNutanixMountsReply",
+                Query.NutanixMountsV2,
+                Query.NutanixMountsV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	id = $someString
 }"
             );
         }

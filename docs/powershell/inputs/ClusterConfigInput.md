@@ -2,17 +2,17 @@
 ClusterConfig for new CDM cloud cluster.
 
 - userEmail: System.String
-  - Cloud account ID.
+  - Email of the admin account for the cluster.
 - adminPassword: System.String
-  - Cloud account ID.
+  - Password of the admin account for the cluster.
 - clusterName: System.String
-  - Cloud account ID.
+  - Name of the cluster.
 - numNodes: System.Int32
-  - Cloud account ID.
-- dnsSearchDomains: list of System.Strings
-  - Array of DNS search domains for CDM clusters.
+  - Number of nodes in the cluster.
 - dnsNameServers: list of System.Strings
   - Array of DNS server names.
+- dnsSearchDomains: list of System.Strings
+  - Array of DNS search domains for CDM clusters.
 - ntpServers: list of System.Strings
   - Array of NTP servers.
 - azureEsConfig: AzureEsConfigInput
@@ -21,3 +21,5 @@ ClusterConfig for new CDM cloud cluster.
   - AWS S3 bucket details.
 - ociEsConfig: OciEsConfigInput
   - OCI bucket details.
+- gcpEsConfig: GcpEsConfigInput
+  - GCP storage bucket details.

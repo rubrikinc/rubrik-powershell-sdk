@@ -41,3 +41,4 @@ Type of objects managed by SLA Domains.
 - NCD_OBJECT_TYPE - NAS Cloud Direct object.
 - AWS_DYNAMODB_OBJECT_TYPE - AWS DynamoDB object.
 - OPENSTACK_OBJECT_TYPE
+- GOOGLE_WORKSPACE_OBJECT_TYPE - Google Workspace object.

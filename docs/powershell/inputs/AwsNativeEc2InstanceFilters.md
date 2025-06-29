@@ -35,3 +35,5 @@ Filters for list of AWS EC2 instances.
   - Filter by connected status for the AWS native feature.
 - awsNativeIsEligibleForEc2ProtectionFilter: AwsNativeIsEligibleForEc2ProtectionFilter
   - Filter workloads based on their eligibility for protection.
+- hierarchyFilters: list of Filters
+  - Filter by hierarchy.

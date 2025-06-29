@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CredentialsManagedBy? CredentialsManagedBy
+        // GraphQL -> credentialsManagedBy: CredentialsManagedBy! (enum)
+        [JsonProperty("credentialsManagedBy")]
+        public CredentialsManagedBy? CredentialsManagedBy { get; set; }
+
         //      C# -> List<GcpCloudAccountFeatureDetail>? AllEnabledFeaturesDetails
         // GraphQL -> allEnabledFeaturesDetails: [GcpCloudAccountFeatureDetail!]! (type)
         [JsonProperty("allEnabledFeaturesDetails")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GcpCloudAccountProjectDetail Set(
+        CredentialsManagedBy? CredentialsManagedBy = null,
         List<GcpCloudAccountFeatureDetail>? AllEnabledFeaturesDetails = null,
         GcpCloudAccountFeatureDetail? FeatureDetail = null,
         GcpCloudAccountProject? Project = null
     ) 
     {
+        if ( CredentialsManagedBy != null ) {
+            this.CredentialsManagedBy = CredentialsManagedBy;
+        }
         if ( AllEnabledFeaturesDetails != null ) {
             this.AllEnabledFeaturesDetails = AllEnabledFeaturesDetails;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> CredentialsManagedBy? CredentialsManagedBy
+        // GraphQL -> credentialsManagedBy: CredentialsManagedBy! (enum)
+        if (this.CredentialsManagedBy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "credentialsManagedBy\n" ;
+            } else {
+                s += ind + "credentialsManagedBy\n" ;
+            }
+        }
         //      C# -> List<GcpCloudAccountFeatureDetail>? AllEnabledFeaturesDetails
         // GraphQL -> allEnabledFeaturesDetails: [GcpCloudAccountFeatureDetail!]! (type)
         if (this.AllEnabledFeaturesDetails != null) {
@@ -116,6 +134,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> CredentialsManagedBy? CredentialsManagedBy
+        // GraphQL -> credentialsManagedBy: CredentialsManagedBy! (enum)
+        if (ec.Includes("credentialsManagedBy",true))
+        {
+            if(this.CredentialsManagedBy == null) {
+
+                this.CredentialsManagedBy = new CredentialsManagedBy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CredentialsManagedBy != null && ec.Excludes("credentialsManagedBy",true))
+        {
+            this.CredentialsManagedBy = null;
+        }
         //      C# -> List<GcpCloudAccountFeatureDetail>? AllEnabledFeaturesDetails
         // GraphQL -> allEnabledFeaturesDetails: [GcpCloudAccountFeatureDetail!]! (type)
         if (ec.Includes("allEnabledFeaturesDetails",false))

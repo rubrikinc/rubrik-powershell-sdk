@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAsynchronous")]
         public System.Boolean? IsAsynchronous { get; set; }
 
+        //      C# -> System.String? EntraIdGroupId
+        // GraphQL -> entraIdGroupId: String (scalar)
+        [JsonProperty("entraIdGroupId")]
+        public System.String? EntraIdGroupId { get; set; }
+
         //      C# -> AzureCloudType? AzureCloudType
         // GraphQL -> azureCloudType: AzureCloudType (enum)
         [JsonProperty("azureCloudType")]

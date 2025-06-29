@@ -168,6 +168,11 @@ All supported managed objects.
 - AZURE_REGION - Azure Region.
 - GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
 - AWS_NATIVE_REGION - AWS Native Region.
+- GOOGLE_WORKSPACE_ORGANIZATION - Google Workspace Organisation.
+- GOOGLE_WORKSPACE_ORG_UNIT - Google Workspace Organisation units.
+- GOOGLE_WORKSPACE_USER - Google Workspace User.
+- GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
+- GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

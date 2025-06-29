@@ -3,6 +3,7 @@ User audit object type.
 
 - ArchivalLocation - Archival location type.
 - TPR_POLICY - TPR policy type.
+- OPENSTACK_ENVIRONMENT - Openstack Environment.
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain type.
 - K8S_CLUSTER - Kubernetes Cluster type.
 - M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
@@ -126,6 +127,7 @@ User audit object type.
 - Cluster - Rubrik cluster type.
 - Unknown - Unknown type.
 - AppBlueprint - App blueprint type.
+- OPENSTACK_VIRTUAL_MACHINE - Openstack Virtual Machine.
 - AzureNativeSubscription - Azure native subscription type.
 - EXCHANGE_DAG - Exchange DAG type.
 - OracleDb - Oracle database type.

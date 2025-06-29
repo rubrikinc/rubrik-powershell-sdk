@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("skipRifItems")]
         public System.Boolean? SkipRifItems { get; set; }
 
+        //      C# -> System.Boolean? UseExactVersionMatch
+        // GraphQL -> useExactVersionMatch: Boolean (scalar)
+        [JsonProperty("useExactVersionMatch")]
+        public System.Boolean? UseExactVersionMatch { get; set; }
+
 
         #endregion
 

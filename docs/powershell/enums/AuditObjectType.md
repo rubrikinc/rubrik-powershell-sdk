@@ -149,3 +149,5 @@ Represents all the object types for which we expect to see audits.
 - INFORMIX_INSTANCE - Informix instance.
 - GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
 - RSC_TAG - RSC tag.
+- OPENSTACK_ENVIRONMENT - Openstack environment.
+- OPENSTACK_VIRTUAL_MACHINE - Openstack virtual machine.

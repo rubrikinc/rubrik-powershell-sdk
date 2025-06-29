@@ -315,6 +315,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	archiveFolderAction = $someArchiveFolderAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchiveFolderAction]) for enum values.
     /// 	# OPTIONAL
     /// 	skipRifItems = $someBoolean
+    /// 	# OPTIONAL
+    /// 	useExactVersionMatch = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -2077,6 +2079,8 @@ $query.Var.searchFilter = @{
 	archiveFolderAction = $someArchiveFolderAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchiveFolderAction]) for enum values.
 	# OPTIONAL
 	skipRifItems = $someBoolean
+	# OPTIONAL
+	useExactVersionMatch = $someBoolean
 }"
             );
         }

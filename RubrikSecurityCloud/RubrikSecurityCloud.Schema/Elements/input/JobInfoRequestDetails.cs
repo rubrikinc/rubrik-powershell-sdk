@@ -224,6 +224,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mysqldbInstanceInfo")]
         public MysqldbInstanceInfo? MysqldbInstanceInfo { get; set; }
 
+        //      C# -> InformixInstanceInfo? InformixInstanceInfo
+        // GraphQL -> informixInstanceInfo: InformixInstanceInfo (input)
+        [JsonProperty("informixInstanceInfo")]
+        public InformixInstanceInfo? InformixInstanceInfo { get; set; }
+
 
         #endregion
 

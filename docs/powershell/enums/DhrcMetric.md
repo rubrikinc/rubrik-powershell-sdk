@@ -2,8 +2,10 @@
 The metric identity.
 
 - METRIC_UNSPECIFIED - The METRIC_UNSPECIFIED metric represents an unspecified metric.
-- PROTECTED_OBJECTS - The PROTECTED_OBJECTS metric represents the total number of objects
-protected by an SLA Domain.
+- PROTECTED_OBJECTS - The "protected objects" metric represents the total number of objects
+protected by an SLA domain.
+This metric was moved to the metric provider
+service of the report builder and is no longer used in GPS.
 - ANOMALIES_DETECTED_PAST_WEEK - The ANOMALIES_DETECTED_PAST_WEEK metric represent the total
 number of anomalous snapshots detected in the past week.
 - CDM_LOW_RUNWAY_REMAINING - The CDM_LOW_RUNWAY_REMAINING metric represents the total number of clusters
@@ -27,13 +29,17 @@ been marked as allowed.
 logged in to the Support Portal.
 - RADAR_ENABLED_CLUSTERS - The RADAR_ENABLED_CLUSTERS metric represents the total number of clusters
 having Ransomware Investigation enabled.
-- DO_NOT_PROTECT_OBJECTS - The DO_NOT_PROTECT_OBJECTS metric represents the total number of objects
-marked as Do Not Protect.
+- DO_NOT_PROTECT_OBJECTS - The "do not protect objects" metric represents the total number of objects
+marked as do not protect.
+This metric was moved to the metric provider
+service of the report builder and is no longer used in GPS.
 - SLA_USING_RETENTION_LOCK - The SLA_USING_RETENTION_LOCK metric represents the total number of SLA
 Domains protected by retention lock.
 - CDM_VERSION_UNSUPPORTED - The CDM_VERSION_UNSUPPORTED metric represents the total number of clusters
 running an unsupported software version.
 - USERS_USING_TOTP - The USERS_USING_TOTP metric represents the total number of users
 using TOTP.
-- SLA_COMPLIANCE - The SLA_COMPLIANCE metric represents the total number of objects in
-compliance with their SLA Domain.
+- SLA_COMPLIANCE - The "sla compliance" metric represents the total number of objects in
+compliance with their SLA domain.
+This metric was moved to the metric provider
+service of the report builder and is no longer used in GPS.

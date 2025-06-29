@@ -12,15 +12,15 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | [Account (9,14)](#account-domain) | [Cluster (41,23)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,20)](#oracle-domain) | [Snapshot (25,20)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (11,4)](#microsoft-365-domain) | [Policy (9,15)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (5,3)](#activity-series-domain) | [Db2 (9,13)](#db2-domain) | [Managed Volume (4,12)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (10,17)](#archival-domain) | [Report Download (4,21)](#report-download-domain) | [Miscellaneous (210,164)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (10,17)](#archival-domain) | [Report Download (4,21)](#report-download-domain) | [Miscellaneous (210,165)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (33,37)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (4,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (22,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (55,44)](#azure-domain) | [Fileset (6,9)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (13,10)](#report-domain) | [Threat (18,6)](#threat-domain) |
 | [Azure Native (24,8)](#azure-native-domain) | [Google Cloud Platform (17,12)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
-| [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (25,12)](#vmware-vsphere-domain) |
+| [Cassandra (8,5)](#cassandra-domain) | [Host (7,9)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (26,12)](#vmware-vsphere-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (7,26)](#vmware-vsphere-vm-domain) |
-| [Cloud Account (7,2)](#cloud-account-domain) | [Integration (2,7)](#integration-domain) | [Nutanix (20,30)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (5,12)](#webhook-domain) |
+| [Cloud Account (7,2)](#cloud-account-domain) | [Integration (2,7)](#integration-domain) | [Nutanix (21,30)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (5,12)](#webhook-domain) |
 | [Cloud Native (19,14)](#cloud-native-domain) | [Kubernetes (13,20)](#kubernetes-domain) | [Office 365 (40,34)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
 
 ## Account domain
@@ -1199,6 +1199,7 @@ Supported in v5.0+
 Retrieve the availability status for each host registered with a specified Rubrik CDM instance. | `New-RscQueryHost -Operation Diagnosis`<BR> | [hostDiagnosis](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | PhysicalHost | N/A | `New-RscQueryHost -Operation PhysicalHost`<BR> | [physicalHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | PhysicalHosts | Get list of physical hosts. | `New-RscQueryHost -Operation PhysicalHosts`<BR> | [physicalHosts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RbsNetworkLimit | Get RBS network throttle limits for a host. | `New-RscQueryHost -Operation RbsNetworkLimit`<BR> | [hostRbsNetworkLimit](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Search | N/A | `New-RscQueryHost -Operation Search`<BR> | [searchHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Share | N/A | `New-RscQueryHost -Operation Share`<BR> | [hostShare](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Shares | Get all host shares. | `New-RscQueryHost -Operation Shares`<BR> | [hostShares](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1220,7 +1221,9 @@ Supported in v5.3+
 Register multiple hosts and perform discovery for databases and Microsoft SQL Server instances. When called, this API returns a success message, but completes the host registration in the background. Monitor the status of the background host discovery with the "status" field in GET API on /hosts. The POST API on /hosts can take longer for discovery, depending on the number of hosts on the system. POST on this API can be used instead to perform the discovery in the background and quickly register the host. Doing this requires that you install RBS for Linux and Windows hosts, similar to regular register using POST on /hosts. | `New-RscMutationHost -Operation BulkRegisterAsync`<BR> | [bulkRegisterHostAsync](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | BulkUpdate | N/A | `New-RscMutationHost -Operation BulkUpdate`<BR> | [bulkUpdateHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ChangeVfd | Install or uninstall volume filter driver on hosts. | `New-RscMutationHost -Operation ChangeVfd`<BR> | [changeVfdOnHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ClearRbsNetworkLimit | Clear RBS network throttle limits for hosts. | `New-RscMutationHost -Operation ClearRbsNetworkLimit`<BR> | [clearHostRbsNetworkLimit](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Refresh | N/A | `New-RscMutationHost -Operation Refresh`<BR> | [refreshHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetRbsNetworkLimit | Set RBS network throttle limits for hosts. | `New-RscMutationHost -Operation SetRbsNetworkLimit`<BR> | [setHostRbsNetworkLimit](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Microsoft Hyper-V domain
@@ -2047,6 +2050,10 @@ Modify the global setting for automatic deployment of the Rubrik Backup Service 
 | UpdateAgentDeploymentSettingInBatchNew | Change the Rubrik Backup Service deployment setting in a batch. | `New-RscMutationMisc -Operation UpdateAgentDeploymentSettingInBatchNew`<BR> | [updateAgentDeploymentSettingInBatchNew](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateAuthDomainUsersHiddenStatus | Update the hidden status for the given auth domain users. | `New-RscMutationMisc -Operation UpdateAuthDomainUsersHiddenStatus`<BR> | [updateAuthDomainUsersHiddenStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateBackupThrottleSetting | Update backup throttle setting. | `New-RscMutationMisc -Operation UpdateBackupThrottleSetting`<BR> | [updateBackupThrottleSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateBackupTriggerForWorkloads | Set the backup trigger type for the workloads  
+  
+Supported in v9.4  
+Updates the backup trigger type for the workloads passed in the input. | `New-RscMutationMisc -Operation UpdateBackupTriggerForWorkloads`<BR> | [updateBackupTriggerForWorkloads](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateBadDiskLedStatus | Find bad disk of a node in the CDM cluster. | `New-RscMutationMisc -Operation UpdateBadDiskLedStatus`<BR> | [updateBadDiskLedStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateConfiguredGroup | Update the configuration, name, or deletion status of a configured group. | `New-RscMutationMisc -Operation UpdateConfiguredGroup`<BR> | [updateConfiguredGroup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateCustomAnalyzer | Update a custom analyzer. | `New-RscMutationMisc -Operation UpdateCustomAnalyzer`<BR> | [updateCustomAnalyzer](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2451,6 +2458,7 @@ Supported in v8.1+
 Retrieves the list of networks by querying the Nutanix cluster. The list of networks is used for restore purposes. | `New-RscQueryNutanix -Operation ClusterNetworks`<BR> | [nutanixClusterNetworks](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Clusters | Paginated list of Nutanix Clusters. | `New-RscQueryNutanix -Operation Clusters`<BR> | [nutanixClusters](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Mounts | Nutanix Live Mount Connection. | `New-RscQueryNutanix -Operation Mounts`<BR> | [nutanixMounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MountsV2 | Details of a Nutanix mount. | `New-RscQueryNutanix -Operation MountsV2`<BR> | [nutanixMountsV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | PrismCentral | Details of the given Prism Central. | `New-RscQueryNutanix -Operation PrismCentral`<BR> | [nutanixPrismCentral](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | PrismCentrals | Paginated list of Nutanix Prism Central objects. | `New-RscQueryNutanix -Operation PrismCentrals`<BR> | [nutanixPrismCentrals](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SearchVm | v5.0-v8.0: Search for file in Nutanix VM  
@@ -3706,6 +3714,7 @@ Get details of a ESXi hypervisor. | `New-RscQueryVsphere -Operation HostDetails`
 | MountList | vSphere Live Mount Connection | `New-RscQueryVsphere -Operation MountList`<BR> | [vSphereMountConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Network | N/A | `New-RscQueryVsphere -Operation Network`<BR> | [vSphereNetwork](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ResourcePool | N/A | `New-RscQueryVsphere -Operation ResourcePool`<BR> | [vSphereResourcePool](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ResourcePoolWithProvisionOnInfrastructure | Returns a single vSphere resource pool that is to be used as a recovery compute resource. Permission checks are performed against the ProvisionOnInfrastructure operation, not the ViewInventory operation. This is a short-term approach for solving RBAC issues with a previous datastore that was not auto-selected during the export workflow with low inventory view permission. | `New-RscQueryVsphere -Operation ResourcePoolWithProvisionOnInfrastructure`<BR> | [vSphereResourcePoolWithProvisionOnInfrastructure](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RootRecoveryHierarchy | The root hierarchy for VMware export, which includes VMware compute clusters and standalone hosts. | `New-RscQueryVsphere -Operation RootRecoveryHierarchy`<BR> | [vSphereRootRecoveryHierarchy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Tag | N/A | `New-RscQueryVsphere -Operation Tag`<BR> | [vSphereTag](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | TagCategory | N/A | `New-RscQueryVsphere -Operation TagCategory`<BR> | [vSphereTagCategory](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |

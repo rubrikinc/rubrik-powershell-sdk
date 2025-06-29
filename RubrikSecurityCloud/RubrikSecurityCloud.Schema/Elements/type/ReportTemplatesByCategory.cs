@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("category")]
         public ReportCategory? Category { get; set; }
 
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        [JsonProperty("description")]
+        public System.String? Description { get; set; }
+
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         [JsonProperty("displayName")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public ReportTemplatesByCategory Set(
         ReportCategory? Category = null,
+        System.String? Description = null,
         System.String? DisplayName = null,
         List<RscReportTemplate>? Templates = null
     ) 
     {
         if ( Category != null ) {
             this.Category = Category;
+        }
+        if ( Description != null ) {
+            this.Description = Description;
         }
         if ( DisplayName != null ) {
             this.DisplayName = DisplayName;
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "category\n" ;
             } else {
                 s += ind + "category\n" ;
+            }
+        }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
             }
         }
         //      C# -> System.String? DisplayName
@@ -126,6 +144,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Category != null && ec.Excludes("category",true))
         {
             this.Category = null;
+        }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (ec.Includes("description",true))
+        {
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)

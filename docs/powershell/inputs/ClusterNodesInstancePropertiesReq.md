@@ -6,4 +6,4 @@ Request for getting instance properties for cluster nodes.
 - vendor: VendorType
   - Cloud vendor type for which to retrieve instance properties.
 - clusterUuid: System.String
-  - Unique ID for a cluster.
+  - Unique ID for a Rubrik cluster.

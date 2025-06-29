@@ -49,6 +49,8 @@ Details of the Azure AD directory object.
   - The authorized operations on the object.
 - id: System.String
   - Object ID.
+- provisioningState: AzureAdProvisioningState
+  - Specifies the provisioning state of the infrastructure for this Azure AD.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum

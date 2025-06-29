@@ -603,6 +603,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KUPR_NAMESPACE_CLUSTER_STATUS")]
         KUPR_NAMESPACE_CLUSTER_STATUS,
 
+        [EnumMember(Value = "LINUX_OS_TYPE")]
+        LINUX_OS_TYPE,
+
         [EnumMember(Value = "LOCATION")]
         LOCATION,
 

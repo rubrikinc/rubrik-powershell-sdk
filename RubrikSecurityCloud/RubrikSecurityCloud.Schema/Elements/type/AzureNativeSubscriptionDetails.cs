@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tenantId")]
         public System.String? TenantId { get; set; }
 
+        //      C# -> List<AzureNativeSubscriptionEnabledFeature>? EnabledFeatures
+        // GraphQL -> enabledFeatures: [AzureNativeSubscriptionEnabledFeature!]! (type)
+        [JsonProperty("enabledFeatures")]
+        public List<AzureNativeSubscriptionEnabledFeature>? EnabledFeatures { get; set; }
+
         //      C# -> List<AzureNativeRegionSpec>? RegionSpecs
         // GraphQL -> regionSpecs: [AzureNativeRegionSpec!]! (type)
         [JsonProperty("regionSpecs")]
@@ -77,6 +82,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.String? NativeId = null,
         System.String? TenantId = null,
+        List<AzureNativeSubscriptionEnabledFeature>? EnabledFeatures = null,
         List<AzureNativeRegionSpec>? RegionSpecs = null
     ) 
     {
@@ -100,6 +106,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TenantId != null ) {
             this.TenantId = TenantId;
+        }
+        if ( EnabledFeatures != null ) {
+            this.EnabledFeatures = EnabledFeatures;
         }
         if ( RegionSpecs != null ) {
             this.RegionSpecs = RegionSpecs;
@@ -179,6 +188,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "tenantId\n" ;
             } else {
                 s += ind + "tenantId\n" ;
+            }
+        }
+        //      C# -> List<AzureNativeSubscriptionEnabledFeature>? EnabledFeatures
+        // GraphQL -> enabledFeatures: [AzureNativeSubscriptionEnabledFeature!]! (type)
+        if (this.EnabledFeatures != null) {
+            var fspec = this.EnabledFeatures.AsFieldSpec(conf.Child("enabledFeatures"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "enabledFeatures" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AzureNativeRegionSpec>? RegionSpecs
@@ -318,6 +339,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.TenantId != null && ec.Excludes("tenantId",true))
         {
             this.TenantId = null;
+        }
+        //      C# -> List<AzureNativeSubscriptionEnabledFeature>? EnabledFeatures
+        // GraphQL -> enabledFeatures: [AzureNativeSubscriptionEnabledFeature!]! (type)
+        if (ec.Includes("enabledFeatures",false))
+        {
+            if(this.EnabledFeatures == null) {
+
+                this.EnabledFeatures = new List<AzureNativeSubscriptionEnabledFeature>();
+                this.EnabledFeatures.ApplyExploratoryFieldSpec(ec.NewChild("enabledFeatures"));
+
+            } else {
+
+                this.EnabledFeatures.ApplyExploratoryFieldSpec(ec.NewChild("enabledFeatures"));
+
+            }
+        }
+        else if (this.EnabledFeatures != null && ec.Excludes("enabledFeatures",false))
+        {
+            this.EnabledFeatures = null;
         }
         //      C# -> List<AzureNativeRegionSpec>? RegionSpecs
         // GraphQL -> regionSpecs: [AzureNativeRegionSpec!]! (type)

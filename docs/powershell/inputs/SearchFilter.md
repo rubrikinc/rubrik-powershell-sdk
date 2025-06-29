@@ -12,3 +12,5 @@ Parameters for mail or folder search.
   - Specifies actions for the in-place archive folder.
 - skipRifItems: System.Boolean
   - Specifies whether to skip items in the Recoverable Items folder.
+- useExactVersionMatch: System.Boolean
+  - Determines whether you should use a query that is an exact version match.

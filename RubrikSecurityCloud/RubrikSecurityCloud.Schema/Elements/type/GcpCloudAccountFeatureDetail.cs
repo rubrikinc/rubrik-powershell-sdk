@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public CloudAccountStatus? Status { get; set; }
 
+        //      C# -> System.String? RoleId
+        // GraphQL -> roleId: String! (scalar)
+        [JsonProperty("roleId")]
+        public System.String? RoleId { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public GcpCloudAccountFeatureDetail Set(
         CloudAccountFeature? Feature = null,
-        CloudAccountStatus? Status = null
+        CloudAccountStatus? Status = null,
+        System.String? RoleId = null
     ) 
     {
         if ( Feature != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( RoleId != null ) {
+            this.RoleId = RoleId;
         }
         return this;
     }
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> System.String? RoleId
+        // GraphQL -> roleId: String! (scalar)
+        if (this.RoleId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "roleId\n" ;
+            } else {
+                s += ind + "roleId\n" ;
             }
         }
         return s;
@@ -122,6 +140,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> System.String? RoleId
+        // GraphQL -> roleId: String! (scalar)
+        if (ec.Includes("roleId",true))
+        {
+            if(this.RoleId == null) {
+
+                this.RoleId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RoleId != null && ec.Excludes("roleId",true))
+        {
+            this.RoleId = null;
         }
     }
 

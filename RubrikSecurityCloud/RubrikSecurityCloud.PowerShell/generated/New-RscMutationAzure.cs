@@ -313,6 +313,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isAsynchronous = $someBoolean
     /// 	# OPTIONAL
+    /// 	entraIdGroupId = $someString
+    /// 	# OPTIONAL
     /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
     /// }
     /// 
@@ -783,11 +785,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		numNodes = $someInt
     /// 		# OPTIONAL
-    /// 		dnsSearchDomains = @(
+    /// 		dnsNameServers = @(
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
-    /// 		dnsNameServers = @(
+    /// 		dnsSearchDomains = @(
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
@@ -839,6 +841,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			accessKey = $someString
     /// 			# OPTIONAL
     /// 			secretKey = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		gcpEsConfig = @{
+    /// 			# OPTIONAL
+    /// 			bucketName = $someString
+    /// 			# OPTIONAL
+    /// 			region = $someString
+    /// 			# OPTIONAL
+    /// 			shouldCreateBucket = $someBoolean
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -2581,6 +2592,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	entraIdGroupId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3432,6 +3445,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	isAsynchronous = $someBoolean
 	# OPTIONAL
+	entraIdGroupId = $someString
+	# OPTIONAL
 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 }"
             );
@@ -3830,11 +3845,11 @@ $query.Var.input = @{
 		# OPTIONAL
 		numNodes = $someInt
 		# OPTIONAL
-		dnsSearchDomains = @(
+		dnsNameServers = @(
 			$someString
 		)
 		# OPTIONAL
-		dnsNameServers = @(
+		dnsSearchDomains = @(
 			$someString
 		)
 		# OPTIONAL
@@ -3886,6 +3901,15 @@ $query.Var.input = @{
 			accessKey = $someString
 			# OPTIONAL
 			secretKey = $someString
+		}
+		# OPTIONAL
+		gcpEsConfig = @{
+			# OPTIONAL
+			bucketName = $someString
+			# OPTIONAL
+			region = $someString
+			# OPTIONAL
+			shouldCreateBucket = $someBoolean
 		}
 	}
 	# OPTIONAL
@@ -5369,6 +5393,8 @@ $query.Var.input = @{
 			}
 		}
 	)
+	# OPTIONAL
+	entraIdGroupId = $someString
 }"
             );
         }

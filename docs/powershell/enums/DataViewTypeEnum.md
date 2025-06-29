@@ -40,7 +40,7 @@ All reporting table schemas.
 - CLUSTERS - Clusters database table schema.
 - ACTIVITY_SERIES - Deprecated. Use EVENT_SERIES.
 - EVENT_SERIES - Specified the Events report information.
-- BACKUP_STRIKES - Specifies the backup strikes information.
+- BACKUP_STRIKES - Specifies the legacy backup strikes information.
 - DATAGOV_TIMELINE - Specifies Rubrik DSPM information for a given workload over time.
 - SERVICE_ACCOUNT - Specifies the database schema for service account.
 - SSO_GROUP - Specifies the database schema for SSO groups.
@@ -48,3 +48,4 @@ All reporting table schemas.
 - USERS - Specifies the Users report information.
 - PHYSICAL_HOSTS - Specifies the database schema for physical hosts.
 - IDENTITY_RISKS - Specifies the Identity Risks report information.
+- BACKUP_STRIKES_V2 - Specifies the backup strikes information.

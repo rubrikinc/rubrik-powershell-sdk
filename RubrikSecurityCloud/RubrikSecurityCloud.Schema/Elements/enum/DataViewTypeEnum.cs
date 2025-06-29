@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BACKUP_STRIKES")]
         BACKUP_STRIKES,
 
+        [EnumMember(Value = "BACKUP_STRIKES_V2")]
+        BACKUP_STRIKES_V2,
+
         [EnumMember(Value = "CDM_UPGRADES")]
         CDM_UPGRADES,
 

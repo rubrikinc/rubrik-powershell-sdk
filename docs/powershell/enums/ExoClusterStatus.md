@@ -4,9 +4,9 @@ Status of Exocompute clusters.
 - SETUP_PENDING - The setup of the Exocompute cluster is pending.
 - SETUP_RUNNING - The setup of the Exocompute cluster is running.
 - ACTIVE - The Exocompute cluster is running.
-- SETUP_FAILED - The setup of the Exocompute cluster has failed.
+- SETUP_FAILED - The setup of the Exocompute cluster is failed.
 - TEARDOWN_PENDING - The teardown of Exocompute cluster is pending.
 - TEARDOWN_RUNNING - The teardown of Exocompute cluster is running.
-- TEARDOWN_FAILED - The teardown of Exocompute cluster has failed.
+- TEARDOWN_FAILED - The teardown of Exocompute cluster is failed.
 - TERMINATED - The Exocompute cluster is deleted.
 - UNSCHEDULABLE

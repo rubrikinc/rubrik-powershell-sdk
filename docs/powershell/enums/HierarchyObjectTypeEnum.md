@@ -33,6 +33,7 @@ Type of hierarchy object.
 - FeldsparSite
 - K8S_VIRTUAL_MACHINE - Kubernetes virtual machine.
 - OPENSTACK_AVAILABILITY_ZONE - OpenStack Availability Zone.
+- GOOGLE_WORKSPACE_ORG_UNIT - Google Workspace Organization Unit.
 - VolumeGroup
 - AZURE_SQL_MANAGED_INSTANCE_DB
 - MONGO_COLLECTION - MongoDB Collection.
@@ -45,6 +46,7 @@ Type of hierarchy object.
 - MONGO_COLLECTION_SET - MongoDB Database.
 - VSphereComputeCluster
 - OracleDatabase
+- GOOGLE_WORKSPACE_ORGANIZATION - Google Workspace Organization.
 - VSPHERE_DATACENTER_FOLDER - VSphere datacenter folder.
 - VSphereDatacenter
 - PhysicalHost
@@ -95,6 +97,7 @@ Type of hierarchy object.
 - MONGODB_DATABASE - MongoDB Database.
 - Fileset
 - NasSystem
+- GOOGLE_WORKSPACE_USER - Google Workspace User.
 - NUTANIX_PRISM_CENTRAL - Nutanix Prism Central.
 - D365_DATAVERSE_TABLE - D365 Dataverse Table.
 - O365Calendar
@@ -117,6 +120,7 @@ Type of hierarchy object.
 - AzureNativeManagedDisk
 - Db2Instance
 - LinuxFileset
+- GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
 - MSSQL_HOST - MSSQL Host.
 - O365Site
 - OPENSTACK_HOST - OpenStack Host.
@@ -142,6 +146,7 @@ Type of hierarchy object.
 - AzureNativeRegion
 - HypervCluster
 - JIRA_PROJECT - Jira project.
+- GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
 - OPENSTACK_REGION - OpenStack Region.
 - StorageArrayVolumeGroup
 - SnapMirrorCloud
