@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("updatePropertiesV94")]
         public VcenterUpdateConfigInput? UpdatePropertiesV94 { get; set; }
 
+        //      C# -> VcenterUpdateConfigInput? UpdatePropertiesV95
+        // GraphQL -> updatePropertiesV95: VcenterUpdateConfigInput (input)
+        [JsonProperty("updatePropertiesV95")]
+        public VcenterUpdateConfigInput? UpdatePropertiesV95 { get; set; }
+
 
         #endregion
 

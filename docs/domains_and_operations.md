@@ -2052,7 +2052,7 @@ Modify the global setting for automatic deployment of the Rubrik Backup Service 
 | UpdateBackupThrottleSetting | Update backup throttle setting. | `New-RscMutationMisc -Operation UpdateBackupThrottleSetting`<BR> | [updateBackupThrottleSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateBackupTriggerForWorkloads | Set the backup trigger type for the workloads  
   
-Supported in v9.4  
+Supported in v9.4+  
 Updates the backup trigger type for the workloads passed in the input. | `New-RscMutationMisc -Operation UpdateBackupTriggerForWorkloads`<BR> | [updateBackupTriggerForWorkloads](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateBadDiskLedStatus | Find bad disk of a node in the CDM cluster. | `New-RscMutationMisc -Operation UpdateBadDiskLedStatus`<BR> | [updateBadDiskLedStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateConfiguredGroup | Update the configuration, name, or deletion status of a configured group. | `New-RscMutationMisc -Operation UpdateConfiguredGroup`<BR> | [updateConfiguredGroup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -3092,7 +3092,7 @@ Supported in v5.3+
 Add a SAP HANA system to the Rubrik cluster. | `New-RscMutationSapHana -Operation AddSystem`<BR> | [addSapHanaSystem](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | BulkRecoverDatabases | Bulk recovery of SAP HANA databases to a point in time  
   
-Supported in v9.4  
+Supported in v9.4+  
 Recover multiple SAP HANA databases to the provided point in time. | `New-RscMutationSapHana -Operation BulkRecoverDatabases`<BR> | [bulkRecoverSapHanaDatabases](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ConfigureRestore | Configure the target database for system copy restore  
   
@@ -3104,7 +3104,7 @@ Supported in v5.3+
 Initiates a job to take an on demand full snapshot of a specified SAP HANA database object. The GET /sap_hana/db/request/{id} endpoint can be used to monitor the progress of the job. | `New-RscMutationSapHana -Operation CreateOnDemandBackup`<BR> | [createOnDemandSapHanaBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateOnDemandDataBackup | Create an on-demand snapshot of the database  
   
-Supported in v9.4  
+Supported in v9.4+  
 Initiates a job to take an on-demand snapshot of a specified SAP HANA database object. You can use the GET /sap_hana/db/request/{id} endpoint to monitor the progress of the job. | `New-RscMutationSapHana -Operation CreateOnDemandDataBackup`<BR> | [createOnDemandSapHanaDataBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateOnDemandStorageSnapshot | Create on demand storage snapshot  
   
@@ -3134,11 +3134,11 @@ v5.3-v8.1: Update the SLA Domain that is configured for a SAP HANA system.
 v9.0+: Update the system properties for the SAP HANA system. | `New-RscMutationSapHana -Operation PatchSystem`<BR> | [patchSapHanaSystem](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RecoverDatabaseToFullBackup | Recover SAP HANA database to the full backup  
   
-Supported in v9.4  
+Supported in v9.4+  
 Recover the SAP HANA database to the provided full backup. | `New-RscMutationSapHana -Operation RecoverDatabaseToFullBackup`<BR> | [recoverSapHanaDatabaseToFullBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RecoverDatabaseToPointInTime | Recover the SAP HANA database to a point in time  
   
-Supported in v9.4  
+Supported in v9.4+  
 Recover the SAP HANA database to the provided point in time. | `New-RscMutationSapHana -Operation RecoverDatabaseToPointInTime`<BR> | [recoverSapHanaDatabaseToPointInTime](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RestoreSystemStorage | Restore SAP HANA storage to a storage snapshot  
   

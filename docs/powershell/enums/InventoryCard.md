@@ -51,3 +51,4 @@ Inventory Card options that the user can select as a workload.
 - D365 - Inventory Card is Dynamics 365.
 - AWS_DYNAMODB - Inventory Card is AWS DynamoDB.
 - OPENSTACK - Inventory card is OpenStack.
+- GOOGLE_WORKSPACE - Inventory Card is Google Workspace.

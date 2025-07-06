@@ -7,7 +7,7 @@ Supported in v7.0+
   - Supported in v7.0+
       Specifies if the snapshot should be downloaded to local when not available locally.
 - locationId: System.String
-  - Supported in v9.4
+  - Supported in v9.4+
       ID of the location from which the snapshot must be downloaded for export.
 - managedVolumeSlaExportConfig: ManagedVolumeSlaExportConfigInput
   - 

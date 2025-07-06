@@ -116,6 +116,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isChangelistEnabled")]
         public System.Boolean? IsChangelistEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsExchangeHost
+        // GraphQL -> isExchangeHost: Boolean! (scalar)
+        [JsonProperty("isExchangeHost")]
+        public System.Boolean? IsExchangeHost { get; set; }
+
+        //      C# -> System.Boolean? IsMssqlHost
+        // GraphQL -> isMssqlHost: Boolean! (scalar)
+        [JsonProperty("isMssqlHost")]
+        public System.Boolean? IsMssqlHost { get; set; }
+
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean! (scalar)
         [JsonProperty("isOracleHost")]
@@ -359,6 +369,8 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? IpAddresses = null,
         System.Boolean? IsArchived = null,
         System.Boolean? IsChangelistEnabled = null,
+        System.Boolean? IsExchangeHost = null,
+        System.Boolean? IsMssqlHost = null,
         System.Boolean? IsOracleHost = null,
         System.String? Name = null,
         System.String? NasApiEndpoint = null,
@@ -450,6 +462,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsChangelistEnabled != null ) {
             this.IsChangelistEnabled = IsChangelistEnabled;
+        }
+        if ( IsExchangeHost != null ) {
+            this.IsExchangeHost = IsExchangeHost;
+        }
+        if ( IsMssqlHost != null ) {
+            this.IsMssqlHost = IsMssqlHost;
         }
         if ( IsOracleHost != null ) {
             this.IsOracleHost = IsOracleHost;
@@ -753,6 +771,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isChangelistEnabled\n" ;
             } else {
                 s += ind + "isChangelistEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsExchangeHost
+        // GraphQL -> isExchangeHost: Boolean! (scalar)
+        if (this.IsExchangeHost != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isExchangeHost\n" ;
+            } else {
+                s += ind + "isExchangeHost\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsMssqlHost
+        // GraphQL -> isMssqlHost: Boolean! (scalar)
+        if (this.IsMssqlHost != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isMssqlHost\n" ;
+            } else {
+                s += ind + "isMssqlHost\n" ;
             }
         }
         //      C# -> System.Boolean? IsOracleHost
@@ -1474,6 +1510,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsChangelistEnabled != null && ec.Excludes("isChangelistEnabled",true))
         {
             this.IsChangelistEnabled = null;
+        }
+        //      C# -> System.Boolean? IsExchangeHost
+        // GraphQL -> isExchangeHost: Boolean! (scalar)
+        if (ec.Includes("isExchangeHost",true))
+        {
+            if(this.IsExchangeHost == null) {
+
+                this.IsExchangeHost = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExchangeHost != null && ec.Excludes("isExchangeHost",true))
+        {
+            this.IsExchangeHost = null;
+        }
+        //      C# -> System.Boolean? IsMssqlHost
+        // GraphQL -> isMssqlHost: Boolean! (scalar)
+        if (ec.Includes("isMssqlHost",true))
+        {
+            if(this.IsMssqlHost == null) {
+
+                this.IsMssqlHost = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsMssqlHost != null && ec.Excludes("isMssqlHost",true))
+        {
+            this.IsMssqlHost = null;
         }
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean! (scalar)

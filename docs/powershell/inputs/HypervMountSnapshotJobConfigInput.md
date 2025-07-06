@@ -22,8 +22,8 @@ Supported in v5.0+
       v6.0: Name of the mounted VM.
       v7.0+: Name of the mounted virtual machine.
 - shouldMigrateDataStore: System.Boolean
-  - Supported in v9.4
+  - Supported in v9.4+
       Determines whether we should do datastore migration right after the mount.
 - destinationFolder: System.String
-  - Supported in v9.4
+  - Supported in v9.4+
       The destination folder for datastore migration.

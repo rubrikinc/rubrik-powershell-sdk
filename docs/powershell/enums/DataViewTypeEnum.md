@@ -49,3 +49,4 @@ All reporting table schemas.
 - PHYSICAL_HOSTS - Specifies the database schema for physical hosts.
 - IDENTITY_RISKS - Specifies the Identity Risks report information.
 - BACKUP_STRIKES_V2 - Specifies the backup strikes information.
+- ACTIVE_DIRECTORY_FOREST_RECOVERY - Specifies the Active Directory forest recovery report information.

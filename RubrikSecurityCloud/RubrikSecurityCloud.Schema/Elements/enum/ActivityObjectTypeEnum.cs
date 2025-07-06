@@ -168,6 +168,21 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
 
+        [EnumMember(Value = "GOOGLE_WORKSPACE_ORGANIZATION")]
+        GOOGLE_WORKSPACE_ORGANIZATION,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_ORG_UNIT")]
+        GOOGLE_WORKSPACE_ORG_UNIT,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_SHARED_DRIVE")]
+        GOOGLE_WORKSPACE_SHARED_DRIVE,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_USER")]
+        GOOGLE_WORKSPACE_USER,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_USER_DRIVE")]
+        GOOGLE_WORKSPACE_USER_DRIVE,
+
         [EnumMember(Value = "GcpNativeDisk")]
         GCP_NATIVE_DISK,
 

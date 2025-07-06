@@ -109,6 +109,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRetentionLockedSla")]
         public System.Boolean? IsRetentionLockedSla { get; set; }
 
+        //      C# -> List<BackupLocationSpecInput>? BackupLocationSpecs
+        // GraphQL -> backupLocationSpecs: [BackupLocationSpecInput!] (input)
+        [JsonProperty("backupLocationSpecs")]
+        public List<BackupLocationSpecInput>? BackupLocationSpecs { get; set; }
+
         //      C# -> RetentionLockMode? RetentionLockMode
         // GraphQL -> retentionLockMode: RetentionLockMode (enum)
         [JsonProperty("retentionLockMode")]

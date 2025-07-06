@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "TYPE_AAD")]
         TYPE_AAD,
 
+        [EnumMember(Value = "TYPE_CAMS")]
+        TYPE_CAMS,
+
         [EnumMember(Value = "TYPE_CLOUD_DIRECT_HOSTED")]
         TYPE_CLOUD_DIRECT_HOSTED,
 

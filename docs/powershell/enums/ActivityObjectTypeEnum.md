@@ -29,6 +29,7 @@ The list of object types for activities.
 - AwsNativeRdsInstance - Specifies that the activity object type is AWS Native RDS Instance.
 - O365Organization - Specifies that the activity object type is O365 Organization.
 - K8S_VIRTUAL_MACHINE - Specifies that the activity object type is Kubernetes Virtual Machine.
+- GOOGLE_WORKSPACE_ORG_UNIT - Specifies that the activity object type is a Google Worksapce organization unit.
 - VolumeGroup - Specifies that the activity object type is Volume Group.
 - MONGO_COLLECTION - Specifies that the activity object type is MongoDB collection.
 - RubrikEc2Instance - Specifies that the activity object type is Rubrik EC2 Instance.
@@ -39,6 +40,7 @@ The list of object types for activities.
 - PRINCIPAL_SERVICE_ACCOUNT - Specifies that the activity object type is Service Account.
 - NutanixVm - Specifies that the activity object type is Nutanix Virtual Machine.
 - IDP_ON_PREM_AD - Specifies that the activity object type is On-prem AD.
+- GOOGLE_WORKSPACE_ORGANIZATION - Specifies that the activity object type is Google Worksapce organization.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
 - INTEL_FEED - Specifies that the activity object type is Intel feed.
 - ATLASSIAN_SITE - Specifies that the activity object type is Atlassian site.
@@ -90,6 +92,7 @@ The list of object types for activities.
 - MONGODB_DATABASE - Specifies that the activity object type is MongoDB database.
 - NasSystem - Specifies that the activity object type is NAS System.
 - Exocompute - Specifies that the activity object type is Exocompute.
+- GOOGLE_WORKSPACE_USER - Specifies that the activity object type is a Google Workspace user.
 - SmbDomain - Specifies that the activity object type is SMB Domain.
 - NUTANIX_PRISM_CENTRAL - Specifies that the activity object type is Nutanix Prism Central.
 - D365_DATAVERSE_TABLE - Specifies that the activity object type is a Dynamics 365 dataverse table.
@@ -111,6 +114,7 @@ The list of object types for activities.
 - AzureSqlDatabase - Specifies that the activity object type is Azure SQL Database.
 - Db2Instance - Specifies that the activity object type is Db2 Instance.
 - LinuxFileset - Specifies that the activity object type is Linux Fileset.
+- GOOGLE_WORKSPACE_SHARED_DRIVE - Specifies that the activity object type is a Google Workspace shared drive.
 - O365Site - Specifies that the activity object type is O365 Site.
 - NasHost - Specifies that the activity object type is NAS Host.
 - CROSS_ACCOUNT_PAIR - Cross-account pair.
@@ -131,6 +135,7 @@ The list of object types for activities.
 - CONFLUENCE_SPACE - Specifies that the activity object type is Confluence Space.
 - NUTANIX_ERA - Specifies that the activity object type is Nutanix Era.
 - JIRA_PROJECT - Specifies that the activity object type is Jira project.
+- GOOGLE_WORKSPACE_USER_DRIVE - Specifies that the activity object type is a Google Workspace user drive.
 - StorageArrayVolumeGroup - Specifies that the activity object type is Storage Array Volume Group.
 - SnapMirrorCloud - Specifies that the activity object type is Snap Mirror Cloud.
 - GcpNativeGceInstance - Specifies that the activity object type is GCP Native GCE Instance.

@@ -30,3 +30,4 @@ PolarisReportViewType is the template type for a report.
 - ROLE_REPORT - Role report.
 - USER_REPORT - User report.
 - IDENTITY_RISKS_REPORT - Identity Risks report.
+- ACTIVE_DIRECTORY_FOREST_RECOVERY_REPORT - Active Directory forest recovery report.

@@ -44,5 +44,5 @@ Supported in v5.0+
   - Supported in v9.3+
       The user credentials for querying oracle databases on the host for Sensitive Data Discovery.
 - oracleSepsSettings: OracleSepsWalletSettingsInput
-  - Supported in v9.4
+  - Supported in v9.4+
       Oracle SEPS settings for the host.

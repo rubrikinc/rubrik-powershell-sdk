@@ -11,7 +11,7 @@ Supported in v5.0+
   - Supported in v8.1+
       Optional field that specifies whether to recreate directory structure when using the 'Restore to separate folder' option in the UI.
 - postRestoreScript: System.String
-  - Supported in v9.4
+  - Supported in v9.4+
       Optional script to run after restore of this fileset ends.
 - shouldRestoreOnlyAcls: System.Boolean
   - Optional field to determine if only ACLs should be restored during the restore process. The default value is false.

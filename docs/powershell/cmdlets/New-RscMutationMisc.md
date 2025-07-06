@@ -717,7 +717,7 @@ Update backup throttle setting.
 ### updatebackuptriggerforworkloads
 Set the backup trigger type for the workloads
 
-Supported in v9.4
+Supported in v9.4+
 Updates the backup trigger type for the workloads passed in the input.
 
 - There is a single argument of type UpdateBackupTriggerForWorkloadsInput.

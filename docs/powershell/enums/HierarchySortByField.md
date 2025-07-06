@@ -128,3 +128,8 @@
 - SALESFORCE_OBJECT_LABEL - Sort the Salesforce objects based on their label.
 +mo:sort:db:table=saasapps_salesforce_objects
 +mo:sort:db:column=label
+- AZURE_REGION_DISKCOUNT - Sort Azure Regions by Disk Count.
+- AZURE_REGION_VMCOUNT - Sort Azure Regions by Virtual Machine Count.
+- AZURE_REGION_SQL_DATABASE_DB_COUNT - Sort Azure Regions by SQL Database DB Count.
+- AZURE_REGION_SQL_MANAGED_INSTANCE_DB_COUNT - Sort Azure Regions by SQL Managed Instance DB Count.
+- AZURE_REGION_STORAGE_ACCOUNT_COUNT - Sort Azure Regions by Storage Account Count.

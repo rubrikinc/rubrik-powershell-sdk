@@ -66,6 +66,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP")]
         GCP,
 
+        [EnumMember(Value = "GOOGLE_WORKSPACE")]
+        GOOGLE_WORKSPACE,
+
         [EnumMember(Value = "HYPERV")]
         HYPERV,
 

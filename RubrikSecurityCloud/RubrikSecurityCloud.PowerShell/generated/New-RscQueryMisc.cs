@@ -5928,6 +5928,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		labelId = $someString
     /// 		# OPTIONAL
     /// 		labelName = $someString
+    /// 		# OPTIONAL
+    /// 		hasProtection = $someBoolean
     /// }
     /// )
     /// # OPTIONAL
@@ -16874,6 +16876,8 @@ $query.Var.mipLabelsFilter = @(
 		labelId = $someString
 		# OPTIONAL
 		labelName = $someString
+		# OPTIONAL
+		hasProtection = $someBoolean
 }
 )
 # OPTIONAL

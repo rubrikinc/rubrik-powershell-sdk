@@ -1,11 +1,14 @@
 ### RecoverToFullBackupSapHanaDbConfigInput
-
+Supported in v9.4+
 
 - remoteLocationId: System.String
-  - The location from where the full backup has to be downloaded back to the source cluster, if it is not present on the local cluster.
+  - Supported in v9.4+
+      The location from where the full backup has to be downloaded back to the source cluster, if it is not present on the local cluster.
 - dbId: System.String
-  - Required. The database ID that you want to recover.
+  - Required. Supported in v9.4+
+      The database ID that you want to recover.
 - fullSnapshotId: System.String
-  - Required. The ID of the full backup to which the database has to be recovered.
+  - Required. Supported in v9.4+
+      The ID of the full backup to which the database has to be recovered.
 - sourceDbConfig: SapHanaRestoreSourceConfigInput
-  - 
+  - Supported in v9.4+

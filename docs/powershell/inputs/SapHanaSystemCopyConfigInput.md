@@ -1,7 +1,9 @@
 ### SapHanaSystemCopyConfigInput
-
+Supported in v9.4+
 
 - sourceDbId: System.String
-  - Required. ID of the source database.
+  - Required. Supported in v9.4+
+      ID of the source database.
 - targetDbId: System.String
-  - Required. ID of the target database.
+  - Required. Supported in v9.4+
+      ID of the target database.

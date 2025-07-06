@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "AZ_CLOUD_DISCOVERY")]
+        AZ_CLOUD_DISCOVERY,
+
         [EnumMember(Value = "BLOB")]
         BLOB,
 

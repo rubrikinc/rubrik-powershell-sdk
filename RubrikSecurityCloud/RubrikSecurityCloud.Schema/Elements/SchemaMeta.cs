@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20250623-27" ;
+        public static string GraphqlSchemaVersion = "v20250630-25" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -1203,6 +1203,7 @@ namespace RubrikSecurityCloud.Types
             GcpOauthUserInfo,
             GcpPermission,
             GcpPermissionGroup,
+            GcpProjectRansomwareInvestigationEnablement,
             GcpRoleBasedAccount,
             GcpTargetTemplate,
             GenerateConfigProtectionRestoreFormReply,
@@ -1937,8 +1938,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -3193,6 +3194,7 @@ namespace RubrikSecurityCloud.Types
             AzureVmConfig,
             AzureVnetReq,
             BackupAzureAdDirectoryInput,
+            BackupLocationSpecInput,
             BackupM365MailboxInput,
             BackupM365OnedriveInput,
             BackupM365SharepointDriveInput,
@@ -7248,6 +7250,8 @@ namespace RubrikSecurityCloud.Types
             SapHanaSslInfoEncryptionProvider,
             SapHanaSystemAuthType,
             SapHanaSystemAuthTypeSpecAuthType,
+            SapHanaSystemConfigBackupTriggerType,
+            SapHanaSystemPatchBackupTriggerType,
             SapHanaSystemStatus,
             SapHanaSystemSummaryContainerType,
             SapHanaSystemSummaryStatus,

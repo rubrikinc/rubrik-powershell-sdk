@@ -26,4 +26,4 @@ Supported in v9.0+
 - targetNamespaceName: System.String
   - Required. Supported in v9.0+
       v9.0-v9.3: The name of the new Kubernetes namespace that will be created. The resources will be exported to the new namespace.
-      v9.4: The name of the new Kubernetes namespace that will be created. The resources will be exported to the new namespace. Set to empty string for cluster level export.
+      v9.4+: The name of the new Kubernetes namespace that will be created. The resources will be exported to the new namespace. Set to empty string for cluster level export.
