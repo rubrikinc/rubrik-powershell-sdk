@@ -91,10 +91,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	range = $someString
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	range = $someString
     /// }
     /// 
     /// # Execute the query
@@ -156,9 +156,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -188,10 +188,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	range = $someString
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	range = $someString
     /// }
     /// 
     /// # Execute the query
@@ -518,10 +518,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.ReplicationIncomingStatsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	range = $someString
 	# REQUIRED
 	clusterUuid = $someString
+	# OPTIONAL
+	range = $someString
 }"
             );
         }
@@ -567,9 +567,9 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	id = $someString
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -591,10 +591,10 @@ $query.Var.input = @{
                 Query.ReplicationOutgoingStatsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	range = $someString
 	# REQUIRED
 	clusterUuid = $someString
+	# OPTIONAL
+	range = $someString
 }"
             );
         }

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("availabilityZone")]
         public System.String? AvailabilityZone { get; set; }
 
+        //      C# -> System.String? PodSubnetId
+        // GraphQL -> podSubnetId: String (scalar)
+        [JsonProperty("podSubnetId")]
+        public System.String? PodSubnetId { get; set; }
+
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
         [JsonProperty("subnetId")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public AwsExocomputeSubnetType Set(
         System.String? AvailabilityZone = null,
+        System.String? PodSubnetId = null,
         System.String? SubnetId = null
     ) 
     {
         if ( AvailabilityZone != null ) {
             this.AvailabilityZone = AvailabilityZone;
+        }
+        if ( PodSubnetId != null ) {
+            this.PodSubnetId = PodSubnetId;
         }
         if ( SubnetId != null ) {
             this.SubnetId = SubnetId;
@@ -71,6 +80,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "availabilityZone\n" ;
             } else {
                 s += ind + "availabilityZone\n" ;
+            }
+        }
+        //      C# -> System.String? PodSubnetId
+        // GraphQL -> podSubnetId: String (scalar)
+        if (this.PodSubnetId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "podSubnetId\n" ;
+            } else {
+                s += ind + "podSubnetId\n" ;
             }
         }
         //      C# -> System.String? SubnetId
@@ -105,6 +123,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AvailabilityZone != null && ec.Excludes("availabilityZone",true))
         {
             this.AvailabilityZone = null;
+        }
+        //      C# -> System.String? PodSubnetId
+        // GraphQL -> podSubnetId: String (scalar)
+        if (ec.Includes("podSubnetId",true))
+        {
+            if(this.PodSubnetId == null) {
+
+                this.PodSubnetId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PodSubnetId != null && ec.Excludes("podSubnetId",true))
+        {
+            this.PodSubnetId = null;
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)

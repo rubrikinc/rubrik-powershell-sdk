@@ -15,3 +15,7 @@ Details of the customer-owned O365 app to insert.
   - Private key for a SharePoint-typed app.
 - updateAppCredentials: System.Boolean
   - Specifies whether the application exists in RSC. If so, you can update the application credentials.
+- appSecretExpiry: DateTime
+  - Expiration date of the app secret.
+- appCertificateExpiry: DateTime
+  - Expiration date of the app certificate.

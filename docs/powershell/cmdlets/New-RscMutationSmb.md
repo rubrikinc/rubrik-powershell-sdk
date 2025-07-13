@@ -8,6 +8,17 @@ Add a new domain manually and join Active Directory.
 
 - There is a single argument of type AddAndJoinSmbDomainInput.
 - Returns AddAndJoinSmbDomainReply.
+### clouddirectdeleteglobaluser
+CloudDirectDeleteGlobalSmbUser is used to delete Global SMB User for the NCD cluster.
+
+- There is a single argument of type CloudDirectDeleteGlobalSmbUserInput.
+- Returns System.String.
+### clouddirectsetglobalauth
+CloudDirectSetGlobalSmbAuth is used to set Global SMB creds for the NCD
+cluster.
+
+- There is a single argument of type CloudDirectSetGlobalSmbAuthInput.
+- Returns CloudDirectSetGlobalSmbAuthReply.
 ### deletedomain
 Delete Active Directory from Rubrik
 
@@ -32,3 +43,8 @@ SMB configuration.
 
 - There is a single argument of type PutSmbConfigurationInput.
 - Returns PutSmbConfigurationReply.
+### setclouddirectglobalsettings
+SetCloudDirectGlobalSmbSettings is used to set Global SMB Settings for the NCD cluster.
+
+- There is a single argument of type SetCloudDirectGlobalSmbSettingsInput.
+- Returns SetCloudDirectGlobalSmbSettingsReply.

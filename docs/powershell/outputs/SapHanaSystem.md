@@ -30,6 +30,8 @@ SAP HANA system details object.
   - List of descendants.
 - physicalChildConnection: SapHanaSystemPhysicalChildTypeConnection
   - List of physical children.
+- backupTriggerType: BackupTriggerType
+  - The backup trigger type for the SAP HANA system.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

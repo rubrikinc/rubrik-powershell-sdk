@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_ACCOUNT_GCP_ROLE_BASED")]
         CLOUD_ACCOUNT_GCP_ROLE_BASED,
 
+        [EnumMember(Value = "CLOUD_ACCOUNT_OCI")]
+        CLOUD_ACCOUNT_OCI,
+
         [EnumMember(Value = "UNKNOWN_CLOUD_ACCOUNT")]
         UNKNOWN_CLOUD_ACCOUNT
 

@@ -180,6 +180,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("rootFileResult")]
         public FileResult? RootFileResult { get; set; }
 
+        //      C# -> ScanErrorInfo? ScanErrorInfo
+        // GraphQL -> scanErrorInfo: ScanErrorInfo (type)
+        [JsonProperty("scanErrorInfo")]
+        public ScanErrorInfo? ScanErrorInfo { get; set; }
+
         //      C# -> SensitiveFiles? SensitiveFiles
         // GraphQL -> sensitiveFiles: SensitiveFiles (type)
         [JsonProperty("sensitiveFiles")]
@@ -301,6 +306,7 @@ namespace RubrikSecurityCloud.Types
         List<ClassificationPolicySummary>? PolicySummaries = null,
         SensitiveHits? RiskHits = null,
         FileResult? RootFileResult = null,
+        ScanErrorInfo? ScanErrorInfo = null,
         SensitiveFiles? SensitiveFiles = null,
         SummaryHits? TotalSensitiveHits = null,
         SensitiveFiles? UnusedSensitiveFiles = null,
@@ -403,6 +409,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RootFileResult != null ) {
             this.RootFileResult = RootFileResult;
+        }
+        if ( ScanErrorInfo != null ) {
+            this.ScanErrorInfo = ScanErrorInfo;
         }
         if ( SensitiveFiles != null ) {
             this.SensitiveFiles = SensitiveFiles;
@@ -770,6 +779,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "rootFileResult" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ScanErrorInfo? ScanErrorInfo
+        // GraphQL -> scanErrorInfo: ScanErrorInfo (type)
+        if (this.ScanErrorInfo != null) {
+            var fspec = this.ScanErrorInfo.AsFieldSpec(conf.Child("scanErrorInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "scanErrorInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1422,6 +1443,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.RootFileResult != null && ec.Excludes("rootFileResult",false))
         {
             this.RootFileResult = null;
+        }
+        //      C# -> ScanErrorInfo? ScanErrorInfo
+        // GraphQL -> scanErrorInfo: ScanErrorInfo (type)
+        if (ec.Includes("scanErrorInfo",false))
+        {
+            if(this.ScanErrorInfo == null) {
+
+                this.ScanErrorInfo = new ScanErrorInfo();
+                this.ScanErrorInfo.ApplyExploratoryFieldSpec(ec.NewChild("scanErrorInfo"));
+
+            } else {
+
+                this.ScanErrorInfo.ApplyExploratoryFieldSpec(ec.NewChild("scanErrorInfo"));
+
+            }
+        }
+        else if (this.ScanErrorInfo != null && ec.Excludes("scanErrorInfo",false))
+        {
+            this.ScanErrorInfo = null;
         }
         //      C# -> SensitiveFiles? SensitiveFiles
         // GraphQL -> sensitiveFiles: SensitiveFiles (type)

@@ -62,3 +62,4 @@ These permissions apply only to the Azure Exocompute feature.
 - CUSTOMER_MANAGED_STORAGE_INDEXING - Represents the permissions required to store and retrieve index files
 from customer hosted storage account.
 These permissions apply only for Azure cloud type.
+- AUTOMATED_NETWORKING_SETUP - Represents the permissions required to setup networking for exocompute.

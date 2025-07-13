@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nodeType")]
         public System.String? NodeType { get; set; }
 
+        //      C# -> OptionalHealthChecksInput? OptionalHealthChecks
+        // GraphQL -> optionalHealthChecks: OptionalHealthChecksInput (input)
+        [JsonProperty("optionalHealthChecks")]
+        public OptionalHealthChecksInput? OptionalHealthChecks { get; set; }
+
 
         #endregion
 

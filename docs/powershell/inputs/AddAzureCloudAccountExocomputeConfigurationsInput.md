@@ -7,3 +7,5 @@ Input for adding Exocompute configurations for an Azure Cloud Account.
   - List of Exocompute configurations to be added.
 - triggerHealthCheck: System.Boolean
   - Specifies whether to start Exocompute health check.
+- optionalHealthChecks: OptionalHealthChecksInput
+  - User selected health checks to be run.

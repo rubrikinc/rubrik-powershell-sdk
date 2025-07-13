@@ -71,10 +71,31 @@ Retrieves a paginated list of all Azure Native Managed Disks.
     - diskFilters - AzureNativeDiskFilters
     - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureNativeManagedDiskConnection.
+### regions
+Retrieves a paginated list of all Azure Native Regions.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortBy - AzureNativeRegionSortFields: Sort fields for list of Azure regions.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - regionFilters - AzureNativeRegionFilters: Filters for list of Azure regions.
+    - subscriptionId - System.String: Subscription ID.
+    - authorizedOperationFilter - Operation: Filters according to the operation given.
+- Returns AzureNativeRegionManagedObjectConnection.
 ### resourcegroup
 Retrieves an Azure Native Resource Group. Refers to a collection of resources in which multiple Azure services can reside.
 
 - There is a single argument of type System.String.
+- Returns AzureNativeResourceGroup.
+### resourcegroupforsql
+Retrieves an Azure Native Resource Group for SQL Workloads. Refers to a collection of resources in which multiple Azure services can reside.
+
+- There are 2 arguments.
+    - resourceGroupId - System.String: Resource Group ID of Virtual Machine (VM) or Disk.
+    - workloadHierarchy - WorkloadLevelHierarchy: Workload hierarchy.
 - Returns AzureNativeResourceGroup.
 ### resourcegroups
 Retrieves a paginated list of all Azure Native Resource Groups.
@@ -122,7 +143,9 @@ Retrieves all subnets in the specified region and subscription. Subnets allow yo
 ### subscription
 Retrieves an Azure Native Subscription. Refers to the logical entity that provides entitlement to deploy and consume Azure resources.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - azureSubscriptionRubrikId - System.String: Rubrik ID of the Azure Subscription.
+    - workloadHierarchy - WorkloadLevelHierarchy: Workload hierarchy.
 - Returns AzureNativeSubscription.
 ### subscriptions
 Retrieves a paginated list of all Azure Native Subscriptions.

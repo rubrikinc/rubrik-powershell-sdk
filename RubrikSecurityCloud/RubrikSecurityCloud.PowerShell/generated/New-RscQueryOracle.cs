@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 17
+    /// Create a new RscQuery object for any of the 18
     /// operations in the 'Oracle' API domain:
-    /// AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseAsyncRequestDetails, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
+    /// AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseAsyncRequestDetails, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, RecoverableRangesMinimal, or TopLevelDescendants.
     /// </summary>
     /// <description>
     /// New-RscQueryOracle creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 17 operations
+    /// There are 18 operations
     /// in the 'Oracle' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseAsyncRequestDetails, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
+    /// one of: AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseAsyncRequestDetails, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, RecoverableRangesMinimal, or TopLevelDescendants.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -655,6 +655,43 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RecoverableRangesMinimal operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: RecoverableRangesMinimal
+    /// 
+    /// $query = New-RscQueryOracle -Operation RecoverableRangesMinimal
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	includeSnapshots = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleRecoverableRangeMinimalResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the TopLevelDescendants operation
     /// of the 'Oracle' API domain.
     /// <code>
@@ -766,6 +803,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Rac",
                 "RacLogBackupConfig",
                 "RecoverableRanges",
+                "RecoverableRangesMinimal",
                 "TopLevelDescendants",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -829,6 +867,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RecoverableRanges":
                         this.ProcessRecord_RecoverableRanges();
+                        break;
+                    case "RecoverableRangesMinimal":
+                        this.ProcessRecord_RecoverableRangesMinimal();
                         break;
                     case "TopLevelDescendants":
                         this.ProcessRecord_TopLevelDescendants();
@@ -985,6 +1026,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RecoverableRanges";
             // Create new graphql operation oracleRecoverableRanges
             InitQueryOracleRecoverableRanges();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // oracleRecoverableRangesMinimal.
+        internal void ProcessRecord_RecoverableRangesMinimal()
+        {
+            this._logger.name += " -RecoverableRangesMinimal";
+            // Create new graphql operation oracleRecoverableRangesMinimal
+            InitQueryOracleRecoverableRangesMinimal();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1461,6 +1511,35 @@ $query.Var.input = @{
 	shouldIncludeDbSnapshotSummaries = $someBoolean
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // oracleRecoverableRangesMinimal(input: OracleRecoverableRangesMinimalInput!): OracleRecoverableRangeMinimalResponse!
+        internal void InitQueryOracleRecoverableRangesMinimal()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "OracleRecoverableRangesMinimalInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryOracleRecoverableRangesMinimal",
+                "($input: OracleRecoverableRangesMinimalInput!)",
+                "OracleRecoverableRangeMinimalResponse",
+                Query.OracleRecoverableRangesMinimal,
+                Query.OracleRecoverableRangesMinimalFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	beforeTime = $someDateTime
+	# OPTIONAL
+	afterTime = $someDateTime
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	includeSnapshots = $someBoolean
 }"
             );
         }

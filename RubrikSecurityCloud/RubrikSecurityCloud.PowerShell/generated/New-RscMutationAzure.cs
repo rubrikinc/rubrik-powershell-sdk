@@ -212,6 +212,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	triggerHealthCheck = $someBoolean
+    /// 	# OPTIONAL
+    /// 	optionalHealthChecks = @{
+    /// 		# OPTIONAL
+    /// 		archivalHealthCheckParams = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				locationId = $someString
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		runCloudslabCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		runGcsConnectivityCheck = $someBoolean
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -3352,6 +3368,22 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	triggerHealthCheck = $someBoolean
+	# OPTIONAL
+	optionalHealthChecks = @{
+		# OPTIONAL
+		archivalHealthCheckParams = @(
+			@{
+				# REQUIRED
+				locationId = $someString
+				# REQUIRED
+				name = $someString
+			}
+		)
+		# OPTIONAL
+		runCloudslabCheck = $someBoolean
+		# OPTIONAL
+		runGcsConnectivityCheck = $someBoolean
+	}
 }"
             );
         }

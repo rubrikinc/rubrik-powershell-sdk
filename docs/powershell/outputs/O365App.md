@@ -17,3 +17,5 @@
   - The authentication status of the app against the subscription.
 - appAuthVersion: System.Int32
   - The authentication version of the app against the subscription.
+- credsState: AppCredsState
+  - The state of the app credentials.

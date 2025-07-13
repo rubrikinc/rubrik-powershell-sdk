@@ -7,3 +7,5 @@ Input to initiate an Exocompute health check for a cluster.
   - ID for Exocompute configuration.
 - nodeType: System.String
   - Compute instance type of the worker nodes (applicable only for Azure).
+- optionalHealthChecks: OptionalHealthChecksInput
+  - User selected health checks to be run.

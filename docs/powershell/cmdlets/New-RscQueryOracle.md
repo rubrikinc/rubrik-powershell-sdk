@@ -110,6 +110,11 @@ Retrieve the recoverable ranges for a specified Oracle database. A begin and/or 
 
 - There is a single argument of type GetOracleDbRecoverableRangesInput.
 - Returns OracleRecoverableRangeListResponse.
+### recoverablerangesminimal
+Get recoverable ranges of a Oracle database. Unlike oracleRecoverableRanges, retrieve minimal database snapshot details.
+
+- There is a single argument of type OracleRecoverableRangesMinimalInput.
+- Returns OracleRecoverableRangeMinimalResponse.
 ### topleveldescendants
 Paginated list of the highest-level Oracle Objects accessible by the current user.
 

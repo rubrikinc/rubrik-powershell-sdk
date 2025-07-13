@@ -62,6 +62,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("updateAppCredentials")]
         public System.Boolean? UpdateAppCredentials { get; set; }
 
+        //      C# -> DateTime? AppSecretExpiry
+        // GraphQL -> appSecretExpiry: DateTime (scalar)
+        [JsonProperty("appSecretExpiry")]
+        public DateTime? AppSecretExpiry { get; set; }
+
+        //      C# -> DateTime? AppCertificateExpiry
+        // GraphQL -> appCertificateExpiry: DateTime (scalar)
+        [JsonProperty("appCertificateExpiry")]
+        public DateTime? AppCertificateExpiry { get; set; }
+
 
         #endregion
 

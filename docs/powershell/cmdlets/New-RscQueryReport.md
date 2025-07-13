@@ -73,6 +73,13 @@ Get the properties for the database (SQL and Oracle) log backup delay email noti
 
 - There is a single argument of type QueryReportPropertiesInput.
 - Returns DbLogReportProperties.
+### healthcheckerror
+GetHealthCheckErrorReport returns the detailed failure information for
+health checks that can have multiple components succeed/fail independently.
+The failure information is returned in CSV format.
+
+- There is a single argument of type GetHealthCheckErrorReportReq.
+- Returns GetHealthCheckErrorReportReply.
 ### scheduledreport
 Retrieve details of a scheduled report.
 

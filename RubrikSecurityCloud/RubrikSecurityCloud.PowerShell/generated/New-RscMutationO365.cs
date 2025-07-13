@@ -672,6 +672,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	base64AppPrivateKey = $someString
     /// 	# OPTIONAL
     /// 	updateAppCredentials = $someBoolean
+    /// 	# OPTIONAL
+    /// 	appSecretExpiry = $someDateTime
+    /// 	# OPTIONAL
+    /// 	appCertificateExpiry = $someDateTime
     /// }
     /// 
     /// # Execute the query
@@ -3134,6 +3138,10 @@ $query.Var.input = @{
 	base64AppPrivateKey = $someString
 	# OPTIONAL
 	updateAppCredentials = $someBoolean
+	# OPTIONAL
+	appSecretExpiry = $someDateTime
+	# OPTIONAL
+	appCertificateExpiry = $someDateTime
 }"
             );
         }

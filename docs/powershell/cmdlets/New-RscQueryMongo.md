@@ -40,6 +40,11 @@ Provides the point in time range for MongoDB object recovery.
 
 - There is a single argument of type RecoverableRangeInput.
 - Returns MongoRecoverableRanges.
+### restoretargetsforsnapshot
+Get the list of valid restore targets for a snapshot. Supported in v9.3. Retrieve the list of OpsManager-managed MongoDB sources that can be valid restore targets for the specified snapshot.
+
+- There is a single argument of type GetValidOpsManagerManagedRestoreTargetsForSnapshotInput.
+- Returns MongoOpsManagerRestoreTargetsForSnapshotListResponse.
 ### source
 Provides details for the MongoDB source cluster identified by the fid.
 

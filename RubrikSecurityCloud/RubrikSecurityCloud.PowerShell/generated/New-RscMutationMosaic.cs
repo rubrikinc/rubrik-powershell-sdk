@@ -104,9 +104,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		skipKeyFileConfig = $someBoolean
     /// 		# REQUIRED
-    /// 		storeType = $someMosaicAddStoreRequestStoreType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicAddStoreRequestStoreType]) for enum values.
-    /// 		# REQUIRED
     /// 		storeName = $someString
+    /// 		# REQUIRED
+    /// 		storeType = $someMosaicAddStoreRequestStoreType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicAddStoreRequestStoreType]) for enum values.
     /// 		# REQUIRED
     /// 		storeUrl = $someString
     /// 	}
@@ -175,8 +175,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	modifyStoreData = @{
     /// 		# OPTIONAL
     /// 		accessKeyId = $someString
@@ -187,6 +185,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		storeName = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -312,9 +312,9 @@ $query.Var.input = @{
 		# OPTIONAL
 		skipKeyFileConfig = $someBoolean
 		# REQUIRED
-		storeType = $someMosaicAddStoreRequestStoreType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicAddStoreRequestStoreType]) for enum values.
-		# REQUIRED
 		storeName = $someString
+		# REQUIRED
+		storeType = $someMosaicAddStoreRequestStoreType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicAddStoreRequestStoreType]) for enum values.
 		# REQUIRED
 		storeUrl = $someString
 	}
@@ -367,8 +367,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	modifyStoreData = @{
 		# OPTIONAL
 		accessKeyId = $someString
@@ -379,6 +377,8 @@ $query.Var.input = @{
 		# REQUIRED
 		storeName = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

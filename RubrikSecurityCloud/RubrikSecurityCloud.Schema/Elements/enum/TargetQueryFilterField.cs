@@ -66,6 +66,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAME")]
         NAME,
 
+        [EnumMember(Value = "REDUNDANCY_CONVERSION_STATUS")]
+        REDUNDANCY_CONVERSION_STATUS,
+
         [EnumMember(Value = "STATUS")]
         STATUS
 

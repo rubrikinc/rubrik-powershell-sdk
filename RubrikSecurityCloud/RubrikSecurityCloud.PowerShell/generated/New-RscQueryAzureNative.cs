@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 24
+    /// Create a new RscQuery object for any of the 26
     /// operations in the 'Azure Native' API domain:
-    /// AvailabilitySetsByRegionFromAzure, DoesResourceGroupExist, ExportCompatibleDiskTypesByRegionFromAzure, ExportCompatibleVmSizesByRegionFromAzure, IsManagedDiskSnapshotRestorable, IsSqlDatabaseSnapshotPersistent, KeyVaultsByRegionFromAzure, ManagedDisk, ManagedDisks, ResourceGroup, ResourceGroups, ResourceGroupsInfoIfExist, Root, SecurityGroupsByRegionFromAzure, StorageAccountsFromAzure, SubnetsByRegionFromAzure, Subscription, Subscriptions, ValidateSqlDatabaseDbNameForExport, ValidateSqlManagedInstanceDbNameForExport, VirtualMachine, VirtualMachineSizes, VirtualMachines, or VirtualNetworks.
+    /// AvailabilitySetsByRegionFromAzure, DoesResourceGroupExist, ExportCompatibleDiskTypesByRegionFromAzure, ExportCompatibleVmSizesByRegionFromAzure, IsManagedDiskSnapshotRestorable, IsSqlDatabaseSnapshotPersistent, KeyVaultsByRegionFromAzure, ManagedDisk, ManagedDisks, Regions, ResourceGroup, ResourceGroupForSql, ResourceGroups, ResourceGroupsInfoIfExist, Root, SecurityGroupsByRegionFromAzure, StorageAccountsFromAzure, SubnetsByRegionFromAzure, Subscription, Subscriptions, ValidateSqlDatabaseDbNameForExport, ValidateSqlManagedInstanceDbNameForExport, VirtualMachine, VirtualMachineSizes, VirtualMachines, or VirtualNetworks.
     /// </summary>
     /// <description>
     /// New-RscQueryAzureNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 24 operations
+    /// There are 26 operations
     /// in the 'Azure Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AvailabilitySetsByRegionFromAzure, DoesResourceGroupExist, ExportCompatibleDiskTypesByRegionFromAzure, ExportCompatibleVmSizesByRegionFromAzure, IsManagedDiskSnapshotRestorable, IsSqlDatabaseSnapshotPersistent, KeyVaultsByRegionFromAzure, ManagedDisk, ManagedDisks, ResourceGroup, ResourceGroups, ResourceGroupsInfoIfExist, Root, SecurityGroupsByRegionFromAzure, StorageAccountsFromAzure, SubnetsByRegionFromAzure, Subscription, Subscriptions, ValidateSqlDatabaseDbNameForExport, ValidateSqlManagedInstanceDbNameForExport, VirtualMachine, VirtualMachineSizes, VirtualMachines, or VirtualNetworks.
+    /// one of: AvailabilitySetsByRegionFromAzure, DoesResourceGroupExist, ExportCompatibleDiskTypesByRegionFromAzure, ExportCompatibleVmSizesByRegionFromAzure, IsManagedDiskSnapshotRestorable, IsSqlDatabaseSnapshotPersistent, KeyVaultsByRegionFromAzure, ManagedDisk, ManagedDisks, Regions, ResourceGroup, ResourceGroupForSql, ResourceGroups, ResourceGroupsInfoIfExist, Root, SecurityGroupsByRegionFromAzure, StorageAccountsFromAzure, SubnetsByRegionFromAzure, Subscription, Subscriptions, ValidateSqlDatabaseDbNameForExport, ValidateSqlManagedInstanceDbNameForExport, VirtualMachine, VirtualMachineSizes, VirtualMachines, or VirtualNetworks.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -465,6 +465,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the Regions operation
+    /// of the 'Azure Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureNative
+    /// # API Operation: Regions
+    /// 
+    /// $query = New-RscQueryAzureNative -Operation Regions
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someAzureNativeRegionSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionSortFields]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.regionFilters = @{
+    /// 	# OPTIONAL
+    /// 	nameSubstringFilter = @{
+    /// 		# REQUIRED
+    /// 		nameSubstring = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	effectiveSlaFilter = @{
+    /// 		# REQUIRED
+    /// 		effectiveSlaIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.subscriptionId = $someString
+    /// # OPTIONAL
+    /// $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureNativeRegionManagedObjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ResourceGroup operation
     /// of the 'Azure Native' API domain.
     /// <code>
@@ -479,6 +536,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.resourceGroupId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureNativeResourceGroup
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ResourceGroupForSql operation
+    /// of the 'Azure Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureNative
+    /// # API Operation: ResourceGroupForSql
+    /// 
+    /// $query = New-RscQueryAzureNative -Operation ResourceGroupForSql
+    /// 
+    /// # REQUIRED
+    /// $query.Var.resourceGroupId = $someString
+    /// # OPTIONAL
+    /// $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -737,6 +824,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -1218,7 +1307,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "KeyVaultsByRegionFromAzure",
                 "ManagedDisk",
                 "ManagedDisks",
+                "Regions",
                 "ResourceGroup",
+                "ResourceGroupForSql",
                 "ResourceGroups",
                 "ResourceGroupsInfoIfExist",
                 "Root",
@@ -1275,8 +1366,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ManagedDisks":
                         this.ProcessRecord_ManagedDisks();
                         break;
+                    case "Regions":
+                        this.ProcessRecord_Regions();
+                        break;
                     case "ResourceGroup":
                         this.ProcessRecord_ResourceGroup();
+                        break;
+                    case "ResourceGroupForSql":
+                        this.ProcessRecord_ResourceGroupForSql();
                         break;
                     case "ResourceGroups":
                         this.ProcessRecord_ResourceGroups();
@@ -1412,12 +1509,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // azureNativeRegions.
+        internal void ProcessRecord_Regions()
+        {
+            this._logger.name += " -Regions";
+            // Create new graphql operation azureNativeRegions
+            InitQueryAzureNativeRegions();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // azureNativeResourceGroup.
         internal void ProcessRecord_ResourceGroup()
         {
             this._logger.name += " -ResourceGroup";
             // Create new graphql operation azureNativeResourceGroup
             InitQueryAzureNativeResourceGroup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureNativeResourceGroupForSql.
+        internal void ProcessRecord_ResourceGroupForSql()
+        {
+            this._logger.name += " -ResourceGroupForSql";
+            // Create new graphql operation azureNativeResourceGroupForSql
+            InitQueryAzureNativeResourceGroupForSql();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1896,6 +2011,73 @@ $query.Var.includeSecurityMetadata = $someBoolean"
         }
 
         // Create new GraphQL Query:
+        // azureNativeRegions(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: AzureNativeRegionSortFields
+        //     sortOrder: SortOrder
+        //     regionFilters: AzureNativeRegionFilters
+        //     subscriptionId: UUID
+        //     authorizedOperationFilter: Operation
+        //   ): AzureNativeRegionManagedObjectConnection!
+        internal void InitQueryAzureNativeRegions()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "AzureNativeRegionSortFields"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("regionFilters", "AzureNativeRegionFilters"),
+                Tuple.Create("subscriptionId", "UUID"),
+                Tuple.Create("authorizedOperationFilter", "Operation"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureNativeRegions",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeRegionSortFields,$sortOrder: SortOrder,$regionFilters: AzureNativeRegionFilters,$subscriptionId: UUID,$authorizedOperationFilter: Operation)",
+                "AzureNativeRegionManagedObjectConnection",
+                Query.AzureNativeRegions,
+                Query.AzureNativeRegionsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.sortBy = $someAzureNativeRegionSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionSortFields]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.regionFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = $someString
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			$someString
+		)
+	}
+}
+# OPTIONAL
+$query.Var.subscriptionId = $someString
+# OPTIONAL
+$query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
         // azureNativeResourceGroup(resourceGroupId: UUID!): AzureNativeResourceGroup!
         internal void InitQueryAzureNativeResourceGroup()
         {
@@ -1912,6 +2094,29 @@ $query.Var.includeSecurityMetadata = $someBoolean"
                 Query.AzureNativeResourceGroupFieldSpec,
                 @"# REQUIRED
 $query.Var.resourceGroupId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureNativeResourceGroupForSql(resourceGroupId: UUID!, workloadHierarchy: WorkloadLevelHierarchy): AzureNativeResourceGroup!
+        internal void InitQueryAzureNativeResourceGroupForSql()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("resourceGroupId", "UUID!"),
+                Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureNativeResourceGroupForSql",
+                "($resourceGroupId: UUID!,$workloadHierarchy: WorkloadLevelHierarchy)",
+                "AzureNativeResourceGroup",
+                Query.AzureNativeResourceGroupForSql,
+                Query.AzureNativeResourceGroupForSqlFieldSpec,
+                @"# REQUIRED
+$query.Var.resourceGroupId = $someString
+# OPTIONAL
+$query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values."
             );
         }
 
@@ -2117,22 +2322,25 @@ $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecur
         }
 
         // Create new GraphQL Query:
-        // azureNativeSubscription(azureSubscriptionRubrikId: UUID!): AzureNativeSubscription!
+        // azureNativeSubscription(azureSubscriptionRubrikId: UUID!, workloadHierarchy: WorkloadLevelHierarchy): AzureNativeSubscription!
         internal void InitQueryAzureNativeSubscription()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
+                Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureNativeSubscription",
-                "($azureSubscriptionRubrikId: UUID!)",
+                "($azureSubscriptionRubrikId: UUID!,$workloadHierarchy: WorkloadLevelHierarchy)",
                 "AzureNativeSubscription",
                 Query.AzureNativeSubscription,
                 Query.AzureNativeSubscriptionFieldSpec,
                 @"# REQUIRED
-$query.Var.azureSubscriptionRubrikId = $someString"
+$query.Var.azureSubscriptionRubrikId = $someString
+# OPTIONAL
+$query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values."
             );
         }
 

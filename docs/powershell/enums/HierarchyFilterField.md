@@ -471,15 +471,15 @@ connection status.
 +mo:filter:db:column=name
 - GCP_NATIVE_DISK_INDEXING_STATUS - Filter by the "indexing status" of GCP disks.
 - GCP_NATIVE_VM_INDEXING_STATUS - Filter by the "indexing status" of GCP VMs.
-- AWS_NATIVE_IS_ELIGIBLE_FOR_EC2_PROTECTION - Whether to filter for EC2 workloads that are eligible for protection.
-Eligibility is defined by whether the region of the workload is added
-for cloud native protection.
-- AWS_NATIVE_IS_ELIGIBLE_FOR_RDS_PROTECTION - Whether to filter for RDS workloads that are eligible for protection.
-Eligibility is defined by whether the region of the workload is added
-for cloud native protection.
-- AWS_NATIVE_IS_ELIGIBLE_FOR_S3_PROTECTION - Whether to filter for S3 workloads that are eligible for protection.
-Eligibility is defined by whether the region of the workload is added
-for cloud native protection.
+- AWS_NATIVE_IS_ELIGIBLE_FOR_EC2_PROTECTION - Filter EC2 workloads by their eligibility for protection.
+Eligibility is determined by whether the AWS customer account is not
+archived and has the protection feature enabled for EC2.
+- AWS_NATIVE_IS_ELIGIBLE_FOR_RDS_PROTECTION - Filter RDS workloads by their eligibility for protection.
+Eligibility is determined by whether the AWS customer account is not
+archived and has the protection feature enabled for RDS.
+- AWS_NATIVE_IS_ELIGIBLE_FOR_S3_PROTECTION - Filter S3 workloads by their eligibility for protection.
+Eligibility is determined by whether the AWS customer account is not
+archived and has the protection feature enabled for S3.
 - PHYSICAL_HOST_RBS_UPGRADE_STATUS - Filter by the RBS upgrade of the physical host.
 +mo:filter:db:table=cdm_host
 +mo:filter:db:column=rba_package_upgrade_info
@@ -524,3 +524,20 @@ by CDM (database_id column).
 +mo:filter:db:table=cdm_host
 +mo:filter:db:column=operating_system
 +mo:filter:db:index:key=operating_system
+- DATA_TYPES - Filter objects by data types (analyzers) for data classification.
++mo:filter:db:table=data_gov_predefined_analyzer
++mo:filter:db:column=analyzer_uuid
++mo:filter:db:index:key=analyzer_uuid_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
+- RECOVERY_PLAN_AWS_SOURCE_ACCOUNT - Filter the recovery plan by the AWS source account.
+- RECOVERY_PLAN_AWS_TARGET_ACCOUNT - Filter the recovery plan by the AWS target account.
+- RECOVERY_PLAN_AWS_REGION - Filter the recovery plan by the AWS region.
+- K8S_PS_CREATION_TYPE - Filter ProtectionSet objects based on the creation type.
++mo:filter:db:table=cdm_k8s_protection_set
++mo:filter:db:column=creation_type
+- K8S_PS_SCOPE_TYPE - Filter ProtectionSet objects based on the scope type.
++mo:filter:db:table=cdm_k8s_protection_set
++mo:filter:db:column=type
+- IS_MICROSOFT_TEAMS_SITE - Filter Teams' sites in o365 sharepoint sites by presence of team_id.

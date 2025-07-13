@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 9
     /// operations in the 'Mongo' API domain:
-    /// BulkRecoverableRanges, Collection, Collections, Database, Databases, RecoverableRanges, Source, or Sources.
+    /// BulkRecoverableRanges, Collection, Collections, Database, Databases, RecoverableRanges, RestoreTargetsForSnapshot, Source, or Sources.
     /// </summary>
     /// <description>
     /// New-RscQueryMongo creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 9 operations
     /// in the 'Mongo' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkRecoverableRanges, Collection, Collections, Database, Databases, RecoverableRanges, Source, or Sources.
+    /// one of: BulkRecoverableRanges, Collection, Collections, Database, Databases, RecoverableRanges, RestoreTargetsForSnapshot, Source, or Sources.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -363,6 +363,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RestoreTargetsForSnapshot operation
+    /// of the 'Mongo' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mongo
+    /// # API Operation: RestoreTargetsForSnapshot
+    /// 
+    /// $query = New-RscQueryMongo -Operation RestoreTargetsForSnapshot
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MongoOpsManagerRestoreTargetsForSnapshotListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Source operation
     /// of the 'Mongo' API domain.
     /// <code>
@@ -488,6 +519,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Database",
                 "Databases",
                 "RecoverableRanges",
+                "RestoreTargetsForSnapshot",
                 "Source",
                 "Sources",
                 IgnoreCase = true)]
@@ -522,6 +554,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RecoverableRanges":
                         this.ProcessRecord_RecoverableRanges();
+                        break;
+                    case "RestoreTargetsForSnapshot":
+                        this.ProcessRecord_RestoreTargetsForSnapshot();
                         break;
                     case "Source":
                         this.ProcessRecord_Source();
@@ -591,6 +626,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RecoverableRanges";
             // Create new graphql operation mongoRecoverableRanges
             InitQueryMongoRecoverableRanges();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mongoRestoreTargetsForSnapshot.
+        internal void ProcessRecord_RestoreTargetsForSnapshot()
+        {
+            this._logger.name += " -RestoreTargetsForSnapshot";
+            // Create new graphql operation mongoRestoreTargetsForSnapshot
+            InitQueryMongoRestoreTargetsForSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -866,6 +910,29 @@ $query.Var.input = @{
 	collections = @(
 		$someString
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // mongoRestoreTargetsForSnapshot(input: GetValidOpsManagerManagedRestoreTargetsForSnapshotInput!): MongoOpsManagerRestoreTargetsForSnapshotListResponse!
+        internal void InitQueryMongoRestoreTargetsForSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetValidOpsManagerManagedRestoreTargetsForSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryMongoRestoreTargetsForSnapshot",
+                "($input: GetValidOpsManagerManagedRestoreTargetsForSnapshotInput!)",
+                "MongoOpsManagerRestoreTargetsForSnapshotListResponse",
+                Query.MongoRestoreTargetsForSnapshot,
+                Query.MongoRestoreTargetsForSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
 }"
             );
         }

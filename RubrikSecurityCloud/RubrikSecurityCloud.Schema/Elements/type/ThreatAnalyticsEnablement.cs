@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureSubscriptions")]
         public List<AzureSubscriptionThreatAnalyticsEnablement>? AzureSubscriptions { get; set; }
 
+        //      C# -> List<GcpProjectThreatAnalyticsEnablement>? GcpProjects
+        // GraphQL -> gcpProjects: [GcpProjectThreatAnalyticsEnablement!]! (type)
+        [JsonProperty("gcpProjects")]
+        public List<GcpProjectThreatAnalyticsEnablement>? GcpProjects { get; set; }
+
         //      C# -> List<M365SubscriptionThreatAnalyticsEnablement>? M365Subscriptions
         // GraphQL -> m365Subscriptions: [M365SubscriptionThreatAnalyticsEnablement!]! (type)
         [JsonProperty("m365Subscriptions")]
@@ -72,6 +77,7 @@ namespace RubrikSecurityCloud.Types
         List<ThreatAnalyticsEnablementItem>? AllEnablementItems = null,
         List<AwsAccountThreatAnalyticsEnablement>? AwsAccounts = null,
         List<AzureSubscriptionThreatAnalyticsEnablement>? AzureSubscriptions = null,
+        List<GcpProjectThreatAnalyticsEnablement>? GcpProjects = null,
         List<M365SubscriptionThreatAnalyticsEnablement>? M365Subscriptions = null
     ) 
     {
@@ -83,6 +89,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureSubscriptions != null ) {
             this.AzureSubscriptions = AzureSubscriptions;
+        }
+        if ( GcpProjects != null ) {
+            this.GcpProjects = GcpProjects;
         }
         if ( M365Subscriptions != null ) {
             this.M365Subscriptions = M365Subscriptions;
@@ -134,6 +143,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureSubscriptions" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<GcpProjectThreatAnalyticsEnablement>? GcpProjects
+        // GraphQL -> gcpProjects: [GcpProjectThreatAnalyticsEnablement!]! (type)
+        if (this.GcpProjects != null) {
+            var fspec = this.GcpProjects.AsFieldSpec(conf.Child("gcpProjects"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "gcpProjects" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -212,6 +233,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureSubscriptions != null && ec.Excludes("azureSubscriptions",false))
         {
             this.AzureSubscriptions = null;
+        }
+        //      C# -> List<GcpProjectThreatAnalyticsEnablement>? GcpProjects
+        // GraphQL -> gcpProjects: [GcpProjectThreatAnalyticsEnablement!]! (type)
+        if (ec.Includes("gcpProjects",false))
+        {
+            if(this.GcpProjects == null) {
+
+                this.GcpProjects = new List<GcpProjectThreatAnalyticsEnablement>();
+                this.GcpProjects.ApplyExploratoryFieldSpec(ec.NewChild("gcpProjects"));
+
+            } else {
+
+                this.GcpProjects.ApplyExploratoryFieldSpec(ec.NewChild("gcpProjects"));
+
+            }
+        }
+        else if (this.GcpProjects != null && ec.Excludes("gcpProjects",false))
+        {
+            this.GcpProjects = null;
         }
         //      C# -> List<M365SubscriptionThreatAnalyticsEnablement>? M365Subscriptions
         // GraphQL -> m365Subscriptions: [M365SubscriptionThreatAnalyticsEnablement!]! (type)

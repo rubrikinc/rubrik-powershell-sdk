@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'SMB' API domain:
-    /// AddAndJoinDomain, DeleteDomain, JoinDomain, or PutConfiguration.
+    /// AddAndJoinDomain, CloudDirectDeleteGlobalUser, CloudDirectSetGlobalAuth, DeleteDomain, JoinDomain, PutConfiguration, or SetCloudDirectGlobalSettings.
     /// </summary>
     /// <description>
     /// New-RscMutationSmb creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 7 operations
     /// in the 'SMB' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAndJoinDomain, DeleteDomain, JoinDomain, or PutConfiguration.
+    /// one of: AddAndJoinDomain, CloudDirectDeleteGlobalUser, CloudDirectSetGlobalAuth, DeleteDomain, JoinDomain, PutConfiguration, or SetCloudDirectGlobalSettings.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -124,6 +124,74 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AddAndJoinSmbDomainReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudDirectDeleteGlobalUser operation
+    /// of the 'SMB' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Smb
+    /// # API Operation: CloudDirectDeleteGlobalUser
+    /// 
+    /// $query = New-RscMutationSmb -Operation CloudDirectDeleteGlobalUser
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	username = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudDirectSetGlobalAuth operation
+    /// of the 'SMB' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Smb
+    /// # API Operation: CloudDirectSetGlobalAuth
+    /// 
+    /// $query = New-RscMutationSmb -Operation CloudDirectSetGlobalAuth
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	username = $someString
+    /// 	# REQUIRED
+    /// 	password = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudDirectSetGlobalSmbAuthReply
     /// 
     /// 
     /// 
@@ -248,6 +316,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the SetCloudDirectGlobalSettings operation
+    /// of the 'SMB' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Smb
+    /// # API Operation: SetCloudDirectGlobalSettings
+    /// 
+    /// $query = New-RscMutationSmb -Operation SetCloudDirectGlobalSettings
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	shouldSupportSystemFiles = $someBoolean
+    /// 	# REQUIRED
+    /// 	offlineFilesBehaviour = $someCloudDirectOfflineFilesBehaviour # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudDirectOfflineFilesBehaviour]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SetCloudDirectGlobalSmbSettingsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -265,9 +368,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "AddAndJoinDomain",
+                "CloudDirectDeleteGlobalUser",
+                "CloudDirectSetGlobalAuth",
                 "DeleteDomain",
                 "JoinDomain",
                 "PutConfiguration",
+                "SetCloudDirectGlobalSettings",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -286,6 +392,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AddAndJoinDomain":
                         this.ProcessRecord_AddAndJoinDomain();
                         break;
+                    case "CloudDirectDeleteGlobalUser":
+                        this.ProcessRecord_CloudDirectDeleteGlobalUser();
+                        break;
+                    case "CloudDirectSetGlobalAuth":
+                        this.ProcessRecord_CloudDirectSetGlobalAuth();
+                        break;
                     case "DeleteDomain":
                         this.ProcessRecord_DeleteDomain();
                         break;
@@ -294,6 +406,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "PutConfiguration":
                         this.ProcessRecord_PutConfiguration();
+                        break;
+                    case "SetCloudDirectGlobalSettings":
+                        this.ProcessRecord_SetCloudDirectGlobalSettings();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -312,6 +427,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AddAndJoinDomain";
             // Create new graphql operation addAndJoinSmbDomain
             InitMutationAddAndJoinSmbDomain();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudDirectDeleteGlobalSmbUser.
+        internal void ProcessRecord_CloudDirectDeleteGlobalUser()
+        {
+            this._logger.name += " -CloudDirectDeleteGlobalUser";
+            // Create new graphql operation cloudDirectDeleteGlobalSmbUser
+            InitMutationCloudDirectDeleteGlobalSmbUser();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudDirectSetGlobalSmbAuth.
+        internal void ProcessRecord_CloudDirectSetGlobalAuth()
+        {
+            this._logger.name += " -CloudDirectSetGlobalAuth";
+            // Create new graphql operation cloudDirectSetGlobalSmbAuth
+            InitMutationCloudDirectSetGlobalSmbAuth();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -339,6 +472,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -PutConfiguration";
             // Create new graphql operation putSmbConfiguration
             InitMutationPutSmbConfiguration();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // setCloudDirectGlobalSmbSettings.
+        internal void ProcessRecord_SetCloudDirectGlobalSettings()
+        {
+            this._logger.name += " -SetCloudDirectGlobalSettings";
+            // Create new graphql operation setCloudDirectGlobalSmbSettings
+            InitMutationSetCloudDirectGlobalSmbSettings();
         }
 
 
@@ -385,6 +527,58 @@ $query.Var.input = @{
 			username = $someString
 		}
 	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // cloudDirectDeleteGlobalSmbUser(input: CloudDirectDeleteGlobalSmbUserInput!): Void
+        internal void InitMutationCloudDirectDeleteGlobalSmbUser()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CloudDirectDeleteGlobalSmbUserInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCloudDirectDeleteGlobalSmbUser",
+                "($input: CloudDirectDeleteGlobalSmbUserInput!)",
+                "System.String",
+                Mutation.CloudDirectDeleteGlobalSmbUser,
+                Mutation.CloudDirectDeleteGlobalSmbUserFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	username = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // cloudDirectSetGlobalSmbAuth(input: CloudDirectSetGlobalSmbAuthInput!): CloudDirectSetGlobalSmbAuthReply!
+        internal void InitMutationCloudDirectSetGlobalSmbAuth()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CloudDirectSetGlobalSmbAuthInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCloudDirectSetGlobalSmbAuth",
+                "($input: CloudDirectSetGlobalSmbAuthInput!)",
+                "CloudDirectSetGlobalSmbAuthReply",
+                Mutation.CloudDirectSetGlobalSmbAuth,
+                Mutation.CloudDirectSetGlobalSmbAuthFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	username = $someString
+	# REQUIRED
+	password = $someString
 }"
             );
         }
@@ -478,6 +672,33 @@ $query.Var.input = @{
 		# REQUIRED
 		enforceSmbSecurity = $someBoolean
 	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // setCloudDirectGlobalSmbSettings(input: SetCloudDirectGlobalSmbSettingsInput!): SetCloudDirectGlobalSmbSettingsReply!
+        internal void InitMutationSetCloudDirectGlobalSmbSettings()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SetCloudDirectGlobalSmbSettingsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSetCloudDirectGlobalSmbSettings",
+                "($input: SetCloudDirectGlobalSmbSettingsInput!)",
+                "SetCloudDirectGlobalSmbSettingsReply",
+                Mutation.SetCloudDirectGlobalSmbSettings,
+                Mutation.SetCloudDirectGlobalSmbSettingsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	shouldSupportSystemFiles = $someBoolean
+	# REQUIRED
+	offlineFilesBehaviour = $someCloudDirectOfflineFilesBehaviour # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudDirectOfflineFilesBehaviour]) for enum values.
 }"
             );
         }

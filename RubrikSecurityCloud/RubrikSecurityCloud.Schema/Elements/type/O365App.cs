@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("appAuthStatus")]
         public AppAuthStatus? AppAuthStatus { get; set; }
 
+        //      C# -> AppCredsState? CredsState
+        // GraphQL -> credsState: AppCredsState! (enum)
+        [JsonProperty("credsState")]
+        public AppCredsState? CredsState { get; set; }
+
         //      C# -> DateTime? AddedAt
         // GraphQL -> addedAt: DateTime! (scalar)
         [JsonProperty("addedAt")]
@@ -77,6 +82,7 @@ namespace RubrikSecurityCloud.Types
 
     public O365App Set(
         AppAuthStatus? AppAuthStatus = null,
+        AppCredsState? CredsState = null,
         DateTime? AddedAt = null,
         System.Int32? AppAuthVersion = null,
         System.String? AppId = null,
@@ -89,6 +95,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AppAuthStatus != null ) {
             this.AppAuthStatus = AppAuthStatus;
+        }
+        if ( CredsState != null ) {
+            this.CredsState = CredsState;
         }
         if ( AddedAt != null ) {
             this.AddedAt = AddedAt;
@@ -135,6 +144,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "appAuthStatus\n" ;
             } else {
                 s += ind + "appAuthStatus\n" ;
+            }
+        }
+        //      C# -> AppCredsState? CredsState
+        // GraphQL -> credsState: AppCredsState! (enum)
+        if (this.CredsState != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "credsState\n" ;
+            } else {
+                s += ind + "credsState\n" ;
             }
         }
         //      C# -> DateTime? AddedAt
@@ -232,6 +250,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AppAuthStatus != null && ec.Excludes("appAuthStatus",true))
         {
             this.AppAuthStatus = null;
+        }
+        //      C# -> AppCredsState? CredsState
+        // GraphQL -> credsState: AppCredsState! (enum)
+        if (ec.Includes("credsState",true))
+        {
+            if(this.CredsState == null) {
+
+                this.CredsState = new AppCredsState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CredsState != null && ec.Excludes("credsState",true))
+        {
+            this.CredsState = null;
         }
         //      C# -> DateTime? AddedAt
         // GraphQL -> addedAt: DateTime! (scalar)

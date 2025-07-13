@@ -1,0 +1,53 @@
+### AzureNativeRegionManagedObject
+An Azure Native Region. Refers to a specific location where Azure resources are deployed and managed.
+
+- azureSubscriptionId: System.String
+  - Native ID of the Azure subscription associated with the region.
+- vmsCount: System.Int32
+  - Count of Virtual Machines (VMs) in the region.
+- disksCount: System.Int32
+  - Count of disks in the region.
+- azureSqlDatabaseDbCount: System.Int32
+  - Count of Azure SQL databases in the region.
+- azureSqlManagedInstanceDbCount: System.Int32
+  - Count of Azure SQL Managed Instance databases in the region.
+- azureStorageAccountCount: System.Int32
+  - The number of Azure storage accounts in the region.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
+- id: System.String
+  - FID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- allTags: list of AssignedRscTags
+  - Rsc tags to which this hierarchy object is assigned.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.

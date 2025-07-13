@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("availabilityZone")]
         public System.String? AvailabilityZone { get; set; }
 
+        //      C# -> System.String? PodSubnetId
+        // GraphQL -> podSubnetId: String (scalar)
+        [JsonProperty("podSubnetId")]
+        public System.String? PodSubnetId { get; set; }
+
 
         #endregion
 

@@ -113,6 +113,26 @@ Change the password for the current user.
 ### changepassword
 - There is a single argument of type ChangePasswordInput.
 - Returns System.Boolean.
+### clouddirectaddsubdirbackup
+CloudDirectAddSubdirBackup is used to add Details of Subdir for backup.
+
+- There is a single argument of type CloudDirectAddSubdirBackupInput.
+- Returns CloudDirectAddSubdirBackupReply.
+### clouddirectsetwanthrottlesettings
+CloudDirectSetWanThrottleSettings is used to set WAN Throttle Settings for the NCD cluster.
+
+- There is a single argument of type CloudDirectSetWanThrottleSettingsInput.
+- Returns CloudDirectSetWanThrottleSettingsReply.
+### clouddirectsystemdelete
+CloudDirectSystemDelete is used to delete the system.
+
+- There is a single argument of type CloudDirectSystemDeleteInput.
+- Returns System.String.
+### clouddirectvalidatesubdir
+CloudDirectValidateSubdir is used to validate SubDir on an export.
+
+- There is a single argument of type CloudDirectValidateSubdirInput.
+- Returns CloudDirectValidateSubdirReply.
 ### completeuploadsession
 Complete the upload session with Minio.
 
@@ -812,6 +832,11 @@ Async transition to managed identities.
 - There is a single argument of type UpdateManagedIdentitiesAsyncInput.
 - Returns CcProvisionJobReply.
 ### updatenetworkthrottle
+Update a network throttle
+
+Supported in v5.0+
+Update the configuration of a specified network throttle object.
+
 - There is a single argument of type UpdateNetworkThrottleInput.
 - Returns UpdateNetworkThrottleReply.
 ### updateproxyconfig

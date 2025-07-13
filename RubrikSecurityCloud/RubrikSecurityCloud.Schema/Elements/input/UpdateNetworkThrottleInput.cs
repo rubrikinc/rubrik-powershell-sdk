@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> NetworkThrottleUpdateInput? ThrottleUpdate
+        // GraphQL -> throttleUpdate: NetworkThrottleUpdateInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("throttleUpdate")]
+        public NetworkThrottleUpdateInput? ThrottleUpdate { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         [Required]
@@ -32,13 +39,6 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
-
-        //      C# -> NetworkThrottleUpdateInput? ThrottleUpdate
-        // GraphQL -> throttleUpdate: NetworkThrottleUpdateInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("throttleUpdate")]
-        public NetworkThrottleUpdateInput? ThrottleUpdate { get; set; }
 
 
         #endregion

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 165
+    /// Create a new RscQuery object for any of the 169
     /// operations in the 'Miscellaneous' API domain:
-    /// AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BatchTriggerExocomputeHealthCheck, BulkCreateNasFilesets, BulkUpdateNasNamespaces, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CompleteUploadSession, ConfirmPartUpload, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateSsoUsers, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
+    /// AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BatchTriggerExocomputeHealthCheck, BulkCreateNasFilesets, BulkUpdateNasNamespaces, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CloudDirectAddSubdirBackup, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectValidateSubdir, CompleteUploadSession, ConfirmPartUpload, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateSsoUsers, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
     /// </summary>
     /// <description>
     /// New-RscMutationMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 165 operations
+    /// There are 169 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BatchTriggerExocomputeHealthCheck, BulkCreateNasFilesets, BulkUpdateNasNamespaces, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CompleteUploadSession, ConfirmPartUpload, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateSsoUsers, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
+    /// one of: AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BatchTriggerExocomputeHealthCheck, BulkCreateNasFilesets, BulkUpdateNasNamespaces, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CloudDirectAddSubdirBackup, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectValidateSubdir, CompleteUploadSession, ConfirmPartUpload, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateSsoUsers, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -667,6 +667,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			exocomputeConfigId = $someString
     /// 			# OPTIONAL
     /// 			nodeType = $someString
+    /// 			# OPTIONAL
+    /// 			optionalHealthChecks = @{
+    /// 				# OPTIONAL
+    /// 				archivalHealthCheckParams = @(
+    /// 					@{
+    /// 						# REQUIRED
+    /// 						locationId = $someString
+    /// 						# REQUIRED
+    /// 						name = $someString
+    /// 					}
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				runCloudslabCheck = $someBoolean
+    /// 				# OPTIONAL
+    /// 				runGcsConnectivityCheck = $someBoolean
+    /// 			}
     /// 		}
     /// 	)
     /// }
@@ -1001,6 +1017,157 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudDirectAddSubdirBackup operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CloudDirectAddSubdirBackup
+    /// 
+    /// $query = New-RscMutationMisc -Operation CloudDirectAddSubdirBackup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	slaId = $someString
+    /// 	# REQUIRED
+    /// 	shareFid = $someString
+    /// 	# REQUIRED
+    /// 	subpath = $someString
+    /// 	# OPTIONAL
+    /// 	exclusions = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			path = $someString
+    /// 			# OPTIONAL
+    /// 			pattern = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudDirectAddSubdirBackupReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudDirectSetWanThrottleSettings operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CloudDirectSetWanThrottleSettings
+    /// 
+    /// $query = New-RscMutationMisc -Operation CloudDirectSetWanThrottleSettings
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	enabled = $someBoolean
+    /// 	# REQUIRED
+    /// 	upLimitInBytes = $someInt64
+    /// 	# REQUIRED
+    /// 	downLimitInBytes = $someInt64
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudDirectSetWanThrottleSettingsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudDirectSystemDelete operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CloudDirectSystemDelete
+    /// 
+    /// $query = New-RscMutationMisc -Operation CloudDirectSystemDelete
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	systemFid = $someString
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudDirectValidateSubdir operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CloudDirectValidateSubdir
+    /// 
+    /// $query = New-RscMutationMisc -Operation CloudDirectValidateSubdir
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	shareFid = $someString
+    /// 	# REQUIRED
+    /// 	subpath = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudDirectValidateSubdirReply
     /// 
     /// 
     /// 
@@ -5011,12 +5178,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	shouldCheckCloudConnectivityForCloudOut = $someBoolean
     /// 	# REQUIRED
     /// 	id = $someString
     /// 	# REQUIRED
     /// 	shouldCheckCloudConnectivityForCloudOn = $someBoolean
+    /// 	# OPTIONAL
+    /// 	shouldCheckCloudConnectivityForCloudOut = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -5052,6 +5219,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	exocomputeConfigId = $someString
     /// 	# OPTIONAL
     /// 	nodeType = $someString
+    /// 	# OPTIONAL
+    /// 	optionalHealthChecks = @{
+    /// 		# OPTIONAL
+    /// 		archivalHealthCheckParams = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				locationId = $someString
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		runCloudslabCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		runGcsConnectivityCheck = $someBoolean
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -6353,19 +6536,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	throttleUpdate = @{
     /// 		# OPTIONAL
     /// 		defaultThrottleLimit = $someSingle
     /// 		# OPTIONAL
     /// 		isEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		networkInterface = $someString
-    /// 		# OPTIONAL
-    /// 		archivalThrottlePort = $someInt
     /// 		# OPTIONAL
     /// 		scheduledThrottles = @(
     /// 			@{
@@ -6381,7 +6556,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				throttleLimit = $someSingle
     /// 			}
     /// 		)
+    /// 		# OPTIONAL
+    /// 		networkInterface = $someString
+    /// 		# OPTIONAL
+    /// 		archivalThrottlePort = $someInt
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -6992,6 +7175,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CancelTprRequest",
                 "ChangeCurrentUserPassword",
                 "ChangePassword",
+                "CloudDirectAddSubdirBackup",
+                "CloudDirectSetWanThrottleSettings",
+                "CloudDirectSystemDelete",
+                "CloudDirectValidateSubdir",
                 "CompleteUploadSession",
                 "ConfirmPartUpload",
                 "CreateCustomAnalyzer",
@@ -7215,6 +7402,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ChangePassword":
                         this.ProcessRecord_ChangePassword();
+                        break;
+                    case "CloudDirectAddSubdirBackup":
+                        this.ProcessRecord_CloudDirectAddSubdirBackup();
+                        break;
+                    case "CloudDirectSetWanThrottleSettings":
+                        this.ProcessRecord_CloudDirectSetWanThrottleSettings();
+                        break;
+                    case "CloudDirectSystemDelete":
+                        this.ProcessRecord_CloudDirectSystemDelete();
+                        break;
+                    case "CloudDirectValidateSubdir":
+                        this.ProcessRecord_CloudDirectValidateSubdir();
                         break;
                     case "CompleteUploadSession":
                         this.ProcessRecord_CompleteUploadSession();
@@ -7851,6 +8050,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ChangePassword";
             // Create new graphql operation changePassword
             InitMutationChangePassword();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudDirectAddSubdirBackup.
+        internal void ProcessRecord_CloudDirectAddSubdirBackup()
+        {
+            this._logger.name += " -CloudDirectAddSubdirBackup";
+            // Create new graphql operation cloudDirectAddSubdirBackup
+            InitMutationCloudDirectAddSubdirBackup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudDirectSetWanThrottleSettings.
+        internal void ProcessRecord_CloudDirectSetWanThrottleSettings()
+        {
+            this._logger.name += " -CloudDirectSetWanThrottleSettings";
+            // Create new graphql operation cloudDirectSetWanThrottleSettings
+            InitMutationCloudDirectSetWanThrottleSettings();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudDirectSystemDelete.
+        internal void ProcessRecord_CloudDirectSystemDelete()
+        {
+            this._logger.name += " -CloudDirectSystemDelete";
+            // Create new graphql operation cloudDirectSystemDelete
+            InitMutationCloudDirectSystemDelete();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudDirectValidateSubdir.
+        internal void ProcessRecord_CloudDirectValidateSubdir()
+        {
+            this._logger.name += " -CloudDirectValidateSubdir";
+            // Create new graphql operation cloudDirectValidateSubdir
+            InitMutationCloudDirectValidateSubdir();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -9632,6 +9867,22 @@ $query.Var.input = @{
 			exocomputeConfigId = $someString
 			# OPTIONAL
 			nodeType = $someString
+			# OPTIONAL
+			optionalHealthChecks = @{
+				# OPTIONAL
+				archivalHealthCheckParams = @(
+					@{
+						# REQUIRED
+						locationId = $someString
+						# REQUIRED
+						name = $someString
+					}
+				)
+				# OPTIONAL
+				runCloudslabCheck = $someBoolean
+				# OPTIONAL
+				runGcsConnectivityCheck = $someBoolean
+			}
 		}
 	)
 }"
@@ -9895,6 +10146,125 @@ $query.Var.input = @{
 	password = $someString
 	# OPTIONAL
 	requirePasswordChange = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // cloudDirectAddSubdirBackup(input: CloudDirectAddSubdirBackupInput!): CloudDirectAddSubdirBackupReply!
+        internal void InitMutationCloudDirectAddSubdirBackup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CloudDirectAddSubdirBackupInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCloudDirectAddSubdirBackup",
+                "($input: CloudDirectAddSubdirBackupInput!)",
+                "CloudDirectAddSubdirBackupReply",
+                Mutation.CloudDirectAddSubdirBackup,
+                Mutation.CloudDirectAddSubdirBackupFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	slaId = $someString
+	# REQUIRED
+	shareFid = $someString
+	# REQUIRED
+	subpath = $someString
+	# OPTIONAL
+	exclusions = @(
+		@{
+			# OPTIONAL
+			path = $someString
+			# OPTIONAL
+			pattern = $someString
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // cloudDirectSetWanThrottleSettings(input: CloudDirectSetWanThrottleSettingsInput!): CloudDirectSetWanThrottleSettingsReply!
+        internal void InitMutationCloudDirectSetWanThrottleSettings()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CloudDirectSetWanThrottleSettingsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCloudDirectSetWanThrottleSettings",
+                "($input: CloudDirectSetWanThrottleSettingsInput!)",
+                "CloudDirectSetWanThrottleSettingsReply",
+                Mutation.CloudDirectSetWanThrottleSettings,
+                Mutation.CloudDirectSetWanThrottleSettingsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	enabled = $someBoolean
+	# REQUIRED
+	upLimitInBytes = $someInt64
+	# REQUIRED
+	downLimitInBytes = $someInt64
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // cloudDirectSystemDelete(input: CloudDirectSystemDeleteInput!): Void
+        internal void InitMutationCloudDirectSystemDelete()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CloudDirectSystemDeleteInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCloudDirectSystemDelete",
+                "($input: CloudDirectSystemDeleteInput!)",
+                "System.String",
+                Mutation.CloudDirectSystemDelete,
+                Mutation.CloudDirectSystemDeleteFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	systemFid = $someString
+	# REQUIRED
+	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // cloudDirectValidateSubdir(input: CloudDirectValidateSubdirInput!): CloudDirectValidateSubdirReply!
+        internal void InitMutationCloudDirectValidateSubdir()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CloudDirectValidateSubdirInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCloudDirectValidateSubdir",
+                "($input: CloudDirectValidateSubdirInput!)",
+                "CloudDirectValidateSubdirReply",
+                Mutation.CloudDirectValidateSubdir,
+                Mutation.CloudDirectValidateSubdirFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	shareFid = $someString
+	# REQUIRED
+	subpath = $someString
 }"
             );
         }
@@ -13159,12 +13529,12 @@ $query.Var.input = @{
                 Mutation.TriggerCloudComputeConnectivityCheckFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	shouldCheckCloudConnectivityForCloudOut = $someBoolean
 	# REQUIRED
 	id = $someString
 	# REQUIRED
 	shouldCheckCloudConnectivityForCloudOn = $someBoolean
+	# OPTIONAL
+	shouldCheckCloudConnectivityForCloudOut = $someBoolean
 }"
             );
         }
@@ -13192,6 +13562,22 @@ $query.Var.input = @{
 	exocomputeConfigId = $someString
 	# OPTIONAL
 	nodeType = $someString
+	# OPTIONAL
+	optionalHealthChecks = @{
+		# OPTIONAL
+		archivalHealthCheckParams = @(
+			@{
+				# REQUIRED
+				locationId = $someString
+				# REQUIRED
+				name = $someString
+			}
+		)
+		# OPTIONAL
+		runCloudslabCheck = $someBoolean
+		# OPTIONAL
+		runGcsConnectivityCheck = $someBoolean
+	}
 }"
             );
         }
@@ -14264,19 +14650,11 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	id = $someString
-	# REQUIRED
 	throttleUpdate = @{
 		# OPTIONAL
 		defaultThrottleLimit = $someSingle
 		# OPTIONAL
 		isEnabled = $someBoolean
-		# OPTIONAL
-		networkInterface = $someString
-		# OPTIONAL
-		archivalThrottlePort = $someInt
 		# OPTIONAL
 		scheduledThrottles = @(
 			@{
@@ -14292,7 +14670,15 @@ $query.Var.input = @{
 				throttleLimit = $someSingle
 			}
 		)
+		# OPTIONAL
+		networkInterface = $someString
+		# OPTIONAL
+		archivalThrottlePort = $someInt
 	}
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
 }"
             );
         }

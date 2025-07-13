@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 13
+    /// Create a new RscQuery object for any of the 14
     /// operations in the 'Report' API domain:
-    /// ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, ScheduledReport, ScheduledReports, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
+    /// ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, HealthCheckError, ScheduledReport, ScheduledReports, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
     /// </summary>
     /// <description>
     /// New-RscQueryReport creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 13 operations
+    /// There are 14 operations
     /// in the 'Report' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, ScheduledReport, ScheduledReports, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
+    /// one of: ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, HealthCheckError, ScheduledReport, ScheduledReports, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -363,6 +363,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the HealthCheckError operation
+    /// of the 'Report' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Report
+    /// # API Operation: HealthCheckError
+    /// 
+    /// $query = New-RscQueryReport -Operation HealthCheckError
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	exocomputeConfigId = $someString
+    /// 	# OPTIONAL
+    /// 	checkType = $someString
+    /// 	# OPTIONAL
+    /// 	cloudVendor = $someExocomputeCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExocomputeCloudType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetHealthCheckErrorReportReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ScheduledReport operation
     /// of the 'Report' API domain.
     /// <code>
@@ -643,6 +678,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Data",
                 "DatabaseLogForCluster",
                 "DatabaseLogingPropertiesForCluster",
+                "HealthCheckError",
                 "ScheduledReport",
                 "ScheduledReports",
                 "Sonar",
@@ -684,6 +720,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DatabaseLogingPropertiesForCluster":
                         this.ProcessRecord_DatabaseLogingPropertiesForCluster();
+                        break;
+                    case "HealthCheckError":
+                        this.ProcessRecord_HealthCheckError();
                         break;
                     case "ScheduledReport":
                         this.ProcessRecord_ScheduledReport();
@@ -774,6 +813,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DatabaseLogingPropertiesForCluster";
             // Create new graphql operation databaseLogReportingPropertiesForCluster
             InitQueryDatabaseLogReportingPropertiesForCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // healthCheckErrorReport.
+        internal void ProcessRecord_HealthCheckError()
+        {
+            this._logger.name += " -HealthCheckError";
+            // Create new graphql operation healthCheckErrorReport
+            InitQueryHealthCheckErrorReport();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1096,6 +1144,33 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // healthCheckErrorReport(input: GetHealthCheckErrorReportReq!): GetHealthCheckErrorReportReply!
+        internal void InitQueryHealthCheckErrorReport()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetHealthCheckErrorReportReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHealthCheckErrorReport",
+                "($input: GetHealthCheckErrorReportReq!)",
+                "GetHealthCheckErrorReportReply",
+                Query.HealthCheckErrorReport,
+                Query.HealthCheckErrorReportFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	exocomputeConfigId = $someString
+	# OPTIONAL
+	checkType = $someString
+	# OPTIONAL
+	cloudVendor = $someExocomputeCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExocomputeCloudType]) for enum values.
 }"
             );
         }

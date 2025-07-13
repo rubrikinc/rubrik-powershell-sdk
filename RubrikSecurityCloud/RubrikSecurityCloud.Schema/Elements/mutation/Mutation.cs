@@ -919,6 +919,42 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.String? CloudDirectDeleteGlobalSmbUser
+        // GraphQL -> cloudDirectDeleteGlobalSmbUser: Void (scalar)
+        public static string CloudDirectDeleteGlobalSmbUser(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudDirectDeleteGlobalSmbUser" + args + "\n";
+        }
+        public static object CloudDirectDeleteGlobalSmbUserFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? CloudDirectSystemDelete
+        // GraphQL -> cloudDirectSystemDelete: Void (scalar)
+        public static string CloudDirectSystemDelete(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudDirectSystemDelete" + args + "\n";
+        }
+        public static object CloudDirectSystemDeleteFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? CompleteAzureAdAppUpdate
         // GraphQL -> completeAzureAdAppUpdate: Void (scalar)
         public static string CompleteAzureAdAppUpdate(object fsObj)
@@ -3853,6 +3889,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AddOpsManagerMongoSourceResponse? AddOpsManagerManagedMongoSource
+        // GraphQL -> addOpsManagerManagedMongoSource: AddOpsManagerMongoSourceResponse! (type)
+        public static string AddOpsManagerManagedMongoSource(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "addOpsManagerManagedMongoSource" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AddOpsManagerManagedMongoSourceFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AddOpsManagerMongoSourceResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AddSapHanaSystemReply? AddSapHanaSystem
         // GraphQL -> addSapHanaSystem: AddSapHanaSystemReply! (type)
         public static string AddSapHanaSystem(object fsObj)
@@ -5293,6 +5347,78 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CloudDirectAddSubdirBackupReply? CloudDirectAddSubdirBackup
+        // GraphQL -> cloudDirectAddSubdirBackup: CloudDirectAddSubdirBackupReply! (type)
+        public static string CloudDirectAddSubdirBackup(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudDirectAddSubdirBackup" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectAddSubdirBackupFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectAddSubdirBackupReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CloudDirectSetGlobalSmbAuthReply? CloudDirectSetGlobalSmbAuth
+        // GraphQL -> cloudDirectSetGlobalSmbAuth: CloudDirectSetGlobalSmbAuthReply! (type)
+        public static string CloudDirectSetGlobalSmbAuth(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudDirectSetGlobalSmbAuth" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectSetGlobalSmbAuthFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectSetGlobalSmbAuthReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CloudDirectSetWanThrottleSettingsReply? CloudDirectSetWanThrottleSettings
+        // GraphQL -> cloudDirectSetWanThrottleSettings: CloudDirectSetWanThrottleSettingsReply! (type)
+        public static string CloudDirectSetWanThrottleSettings(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudDirectSetWanThrottleSettings" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectSetWanThrottleSettingsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectSetWanThrottleSettingsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CloudDirectValidateSubdirReply? CloudDirectValidateSubdir
+        // GraphQL -> cloudDirectValidateSubdir: CloudDirectValidateSubdirReply! (type)
+        public static string CloudDirectValidateSubdir(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudDirectValidateSubdir" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectValidateSubdirFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectValidateSubdirReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CloudNativeCheckRbaConnectivityReply? CloudNativeCheckRbaConnectivity
         // GraphQL -> cloudNativeCheckRbaConnectivity: CloudNativeCheckRbaConnectivityReply! (type)
         public static string CloudNativeCheckRbaConnectivity(object fsObj)
@@ -6265,6 +6391,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? CreateOnDemandMongoDatabaseBackup
+        // GraphQL -> createOnDemandMongoDatabaseBackup: AsyncRequestStatus! (type)
+        public static string CreateOnDemandMongoDatabaseBackup(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\nattributes: $attributes\n)";
+            return "createOnDemandMongoDatabaseBackup" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CreateOnDemandMongoDatabaseBackupFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? CreateOnDemandMssqlBackup
         // GraphQL -> createOnDemandMssqlBackup: AsyncRequestStatus! (type)
         public static string CreateOnDemandMssqlBackup(object fsObj)
@@ -6364,6 +6508,24 @@ namespace RubrikSecurityCloud.Types
             return "createOnDemandVolumeGroupBackup" + args + "\n{\n" + fs + "}\n";
         }
         public static object CreateOnDemandVolumeGroupBackupFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? CreateOpsManagerManagedMongoSourceOnDemandSnapshot
+        // GraphQL -> createOpsManagerManagedMongoSourceOnDemandSnapshot: AsyncRequestStatus! (type)
+        public static string CreateOpsManagerManagedMongoSourceOnDemandSnapshot(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "createOpsManagerManagedMongoSourceOnDemandSnapshot" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CreateOpsManagerManagedMongoSourceOnDemandSnapshotFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -10045,6 +10207,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? PatchOpsManagerManagedMongoSource
+        // GraphQL -> patchOpsManagerManagedMongoSource: AsyncRequestStatus! (type)
+        public static string PatchOpsManagerManagedMongoSource(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "patchOpsManagerManagedMongoSource" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PatchOpsManagerManagedMongoSourceFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> PatchSapHanaSystemReply? PatchSapHanaSystem
         // GraphQL -> patchSapHanaSystem: PatchSapHanaSystemReply! (type)
         public static string PatchSapHanaSystem(object fsObj)
@@ -10275,6 +10455,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new MosaicAsyncResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? RecoverOpsManagerManagedMongoSource
+        // GraphQL -> recoverOpsManagerManagedMongoSource: AsyncRequestStatus! (type)
+        public static string RecoverOpsManagerManagedMongoSource(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "recoverOpsManagerManagedMongoSource" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RecoverOpsManagerManagedMongoSourceFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -11287,6 +11485,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? RetryAddOpsManagerManagedMongoSource
+        // GraphQL -> retryAddOpsManagerManagedMongoSource: AsyncRequestStatus! (type)
+        public static string RetryAddOpsManagerManagedMongoSource(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "retryAddOpsManagerManagedMongoSource" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RetryAddOpsManagerManagedMongoSourceFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> RetryBackupResp? RetryBackup
         // GraphQL -> retryBackup: RetryBackupResp! (type)
         public static string RetryBackup(object fsObj)
@@ -11499,6 +11715,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new SetAnalyzerRisksReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SetCloudDirectGlobalSmbSettingsReply? SetCloudDirectGlobalSmbSettings
+        // GraphQL -> setCloudDirectGlobalSmbSettings: SetCloudDirectGlobalSmbSettingsReply! (type)
+        public static string SetCloudDirectGlobalSmbSettings(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setCloudDirectGlobalSmbSettings" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SetCloudDirectGlobalSmbSettingsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SetCloudDirectGlobalSmbSettingsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

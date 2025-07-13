@@ -702,6 +702,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					subnetId = $someString
     /// 					# REQUIRED
     /// 					availabilityZone = $someString
+    /// 					# OPTIONAL
+    /// 					podSubnetId = $someString
     /// 				}
     /// 			)
     /// 			# OPTIONAL
@@ -1886,6 +1888,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					subnetId = $someString
     /// 					# REQUIRED
     /// 					availabilityZone = $someString
+    /// 					# OPTIONAL
+    /// 					podSubnetId = $someString
     /// 				}
     /// 			)
     /// 			# OPTIONAL
@@ -3360,6 +3364,8 @@ $query.Var.input = @{
 					subnetId = $someString
 					# REQUIRED
 					availabilityZone = $someString
+					# OPTIONAL
+					podSubnetId = $someString
 				}
 			)
 			# OPTIONAL
@@ -4376,6 +4382,8 @@ $query.Var.input = @{
 					subnetId = $someString
 					# REQUIRED
 					availabilityZone = $someString
+					# OPTIONAL
+					podSubnetId = $someString
 				}
 			)
 			# OPTIONAL

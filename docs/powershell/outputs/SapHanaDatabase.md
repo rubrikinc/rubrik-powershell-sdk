@@ -37,6 +37,8 @@ SAP HANA Database details object.
   - The number of on-demand snapshots for SAP HANA workloads.
 - totalSnapshotCount: System.Int32
   - The total number of snapshots for SAP HANA workloads.
+- backupTriggerType: BackupTriggerType
+  - The backup trigger type for the SAP HANA database.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

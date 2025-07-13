@@ -451,9 +451,6 @@ Retrieve all custom distribution list event digests.
 
 - The distributionlistdigests subcommand takes no arguments.
 - Returns list of EventDigests.
-### dummyfieldwithadminonlytag
-- The dummyfieldwithadminonlytag subcommand takes no arguments.
-- Returns System.Boolean.
 ### edgewindowstoollink
 Download link for Rubrik Edge Deployment Tool for Microsoft Windows.
 
@@ -469,6 +466,18 @@ Retrieve event digests for specific recipients.
 
 - There is a single argument of type AllEventDigestsInput.
 - Returns list of EventDigests.
+### exocomputegetsupportedhealthchecks
+ExocomputeGetSupportedHealthChecks returns the supported health check
+details for the given cloud type for Exocompute.
+
+- There is a single argument of type ExocomputeGetSupportedHealthChecksReq.
+- Returns ExocomputeGetSupportedHealthChecksReply.
+### exocomputehealthchecks
+ExocomputeHealthChecks returns the health checks for the
+Exocompute configuration.
+
+- There is a single argument of type ExocomputeHealthChecksReq.
+- Returns ExocomputeHealthChecksReply.
 ### externaldeploymentname
 Customer facing Polaris deployment name.
 

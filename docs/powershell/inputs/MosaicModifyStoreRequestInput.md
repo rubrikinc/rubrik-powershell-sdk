@@ -1,16 +1,16 @@
 ### MosaicModifyStoreRequestInput
 Supported in m3.2.0-m4.2.0
-  Object for stores added on mosaic.
+Object for stores added on mosaic.
 
 - accessKeyId: System.String
   - Supported in m3.2.0-m4.2.0
-      Access key id.
+Access key id.
 - secretKey: System.String
   - Supported in m3.2.0-m4.2.0
-      Secret key.
+Secret key.
 - skipKeyFileConfig: System.Boolean
   - Supported in m3.2.0-m4.2.0
-      Whether to skip key file config.
+Whether to skip key file config.
 - storeName: System.String
   - Required. Supported in m3.2.0-m4.2.0
-      Name of the store.
+Name of the store.

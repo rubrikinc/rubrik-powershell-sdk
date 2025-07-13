@@ -128,6 +128,12 @@ Returns the RSC snapshot according to ID.
 
 - There is a single argument of type System.String.
 - Returns PolarisSnapshot.
+### possiblelocationsforobjects
+GetPossibleSnapshotLocationsForObjects returns all valid
+locations where unexpired snapshots of the objects are present.
+
+- There is a single argument of type GetPossibleSnapshotLocationsForObjectsInput.
+- Returns GetPossibleSnapshotLocationsForObjectsResp.
 ### pvcs
 All PVCs in a snapshot.
 

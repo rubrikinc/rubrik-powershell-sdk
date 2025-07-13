@@ -264,6 +264,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "D365_TABLE_TYPE")]
         D365_TABLE_TYPE,
 
+        [EnumMember(Value = "DATA_TYPES")]
+        DATA_TYPES,
+
         [EnumMember(Value = "DB2_CDM_DATABASE_ID")]
         DB2_CDM_DATABASE_ID,
 
@@ -537,6 +540,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IS_MANAGED_VOLUME_ARCHIVED")]
         IS_MANAGED_VOLUME_ARCHIVED,
 
+        [EnumMember(Value = "IS_MICROSOFT_TEAMS_SITE")]
+        IS_MICROSOFT_TEAMS_SITE,
+
         [EnumMember(Value = "IS_MOUNT")]
         IS_MOUNT,
 
@@ -590,6 +596,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "K8S_NAMESPACE_ID")]
         K8S_NAMESPACE_ID,
+
+        [EnumMember(Value = "K8S_PS_CREATION_TYPE")]
+        K8S_PS_CREATION_TYPE,
+
+        [EnumMember(Value = "K8S_PS_SCOPE_TYPE")]
+        K8S_PS_SCOPE_TYPE,
 
         [EnumMember(Value = "KUPR_CDM_CLUSTER_ID")]
         KUPR_CDM_CLUSTER_ID,
@@ -806,6 +818,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PROTECTION_STATUS")]
         PROTECTION_STATUS,
+
+        [EnumMember(Value = "RECOVERY_PLAN_AWS_REGION")]
+        RECOVERY_PLAN_AWS_REGION,
+
+        [EnumMember(Value = "RECOVERY_PLAN_AWS_SOURCE_ACCOUNT")]
+        RECOVERY_PLAN_AWS_SOURCE_ACCOUNT,
+
+        [EnumMember(Value = "RECOVERY_PLAN_AWS_TARGET_ACCOUNT")]
+        RECOVERY_PLAN_AWS_TARGET_ACCOUNT,
 
         [EnumMember(Value = "RECOVERY_PLAN_AZURE_REGION")]
         RECOVERY_PLAN_AZURE_REGION,

@@ -29,3 +29,4 @@ ArchivalLocationAdditionalFields.
 ArchivalEntityUseCaseType.
 - EXTERNAL_CDM_LOCATION_ID - Filter archival location by the Rubrik CDM ID of the location.
 - LOCATION_REDUNDANCY - Filter by redundancy for RCV archival location.
+- REDUNDANCY_CONVERSION_STATUS - Filter by redundancy conversion status.

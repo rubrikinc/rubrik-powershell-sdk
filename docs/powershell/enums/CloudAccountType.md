@@ -8,3 +8,4 @@ Cloud account type.
 - CLOUD_ACCOUNT_GCP - Cloud account type is GCP.
 - CLOUD_ACCOUNT_AZURE_ROLE_BASED - Cloud account type is role-based Azure.
 - CLOUD_ACCOUNT_GCP_ROLE_BASED - Cloud account type is role-based GCP.
+- CLOUD_ACCOUNT_OCI - Cloud account type is OCI.

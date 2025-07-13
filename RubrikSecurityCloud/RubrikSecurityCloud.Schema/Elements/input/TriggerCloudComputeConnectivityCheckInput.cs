@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? ShouldCheckCloudConnectivityForCloudOut
-        // GraphQL -> shouldCheckCloudConnectivityForCloudOut: Boolean (scalar)
-        [JsonProperty("shouldCheckCloudConnectivityForCloudOut")]
-        public System.Boolean? ShouldCheckCloudConnectivityForCloudOut { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
@@ -37,6 +32,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("shouldCheckCloudConnectivityForCloudOn")]
         public System.Boolean? ShouldCheckCloudConnectivityForCloudOn { get; set; }
+
+        //      C# -> System.Boolean? ShouldCheckCloudConnectivityForCloudOut
+        // GraphQL -> shouldCheckCloudConnectivityForCloudOut: Boolean (scalar)
+        [JsonProperty("shouldCheckCloudConnectivityForCloudOut")]
+        public System.Boolean? ShouldCheckCloudConnectivityForCloudOut { get; set; }
 
 
         #endregion

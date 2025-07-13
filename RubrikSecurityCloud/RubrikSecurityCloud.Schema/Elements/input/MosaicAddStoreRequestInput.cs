@@ -44,19 +44,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("skipKeyFileConfig")]
         public System.Boolean? SkipKeyFileConfig { get; set; }
 
-        //      C# -> MosaicAddStoreRequestStoreType? StoreType
-        // GraphQL -> storeType: MosaicAddStoreRequestStoreType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("storeType")]
-        public MosaicAddStoreRequestStoreType? StoreType { get; set; }
-
         //      C# -> System.String? StoreName
         // GraphQL -> storeName: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("storeName")]
         public System.String? StoreName { get; set; }
+
+        //      C# -> MosaicAddStoreRequestStoreType? StoreType
+        // GraphQL -> storeType: MosaicAddStoreRequestStoreType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("storeType")]
+        public MosaicAddStoreRequestStoreType? StoreType { get; set; }
 
         //      C# -> System.String? StoreUrl
         // GraphQL -> storeUrl: String! (scalar)

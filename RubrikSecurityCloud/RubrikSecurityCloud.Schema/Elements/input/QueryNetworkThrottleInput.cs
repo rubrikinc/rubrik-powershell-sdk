@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> InternalQueryNetworkThrottleRequestResourceId? ResourceId
-        // GraphQL -> resourceId: InternalQueryNetworkThrottleRequestResourceId (enum)
-        [JsonProperty("resourceId")]
-        public InternalQueryNetworkThrottleRequestResourceId? ResourceId { get; set; }
-
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
+
+        //      C# -> InternalQueryNetworkThrottleRequestResourceId? ResourceId
+        // GraphQL -> resourceId: InternalQueryNetworkThrottleRequestResourceId (enum)
+        [JsonProperty("resourceId")]
+        public InternalQueryNetworkThrottleRequestResourceId? ResourceId { get; set; }
 
 
         #endregion

@@ -997,24 +997,6 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
-        //      C# -> System.Boolean? DummyFieldWithAdminOnlyTag
-        // GraphQL -> dummyFieldWithAdminOnlyTag: Boolean! (scalar)
-        public static string DummyFieldWithAdminOnlyTag(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "";
-            return "dummyFieldWithAdminOnlyTag" + args + "\n";
-        }
-        public static object DummyFieldWithAdminOnlyTagFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            // there is no field spec for scalar types, but we still
-            // populate the fieldSpec so that caller can see the type 
-            return true ;
-        }
-
         //      C# -> System.String? ExternalDeploymentName
         // GraphQL -> externalDeploymentName: String! (scalar)
         public static string ExternalDeploymentName(object fsObj)
@@ -4669,6 +4651,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AzureNativeRegionManagedObjectConnection? AzureNativeRegions
+        // GraphQL -> azureNativeRegions: AzureNativeRegionManagedObjectConnection! (type)
+        public static string AzureNativeRegions(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nregionFilters: $regionFilters\nsubscriptionId: $subscriptionId\nauthorizedOperationFilter: $authorizedOperationFilter\n)";
+            return "azureNativeRegions" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureNativeRegionsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureNativeRegionManagedObjectConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AzureNativeResourceGroup? AzureNativeResourceGroup
         // GraphQL -> azureNativeResourceGroup: AzureNativeResourceGroup! (type)
         public static string AzureNativeResourceGroup(object fsObj)
@@ -4678,6 +4678,24 @@ namespace RubrikSecurityCloud.Types
             return "azureNativeResourceGroup" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureNativeResourceGroupFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureNativeResourceGroup() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzureNativeResourceGroup? AzureNativeResourceGroupForSql
+        // GraphQL -> azureNativeResourceGroupForSql: AzureNativeResourceGroup! (type)
+        public static string AzureNativeResourceGroupForSql(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nresourceGroupId: $resourceGroupId\nworkloadHierarchy: $workloadHierarchy\n)";
+            return "azureNativeResourceGroupForSql" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureNativeResourceGroupForSqlFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -4728,7 +4746,7 @@ namespace RubrikSecurityCloud.Types
         public static string AzureNativeSubscription(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\n)";
+            string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nworkloadHierarchy: $workloadHierarchy\n)";
             return "azureNativeSubscription" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureNativeSubscriptionFieldSpec(AutofieldContext? ec=null)
@@ -7639,6 +7657,42 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ExocomputeGetSupportedHealthChecksReply? ExocomputeGetSupportedHealthChecks
+        // GraphQL -> exocomputeGetSupportedHealthChecks: ExocomputeGetSupportedHealthChecksReply! (type)
+        public static string ExocomputeGetSupportedHealthChecks(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "exocomputeGetSupportedHealthChecks" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ExocomputeGetSupportedHealthChecksFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ExocomputeGetSupportedHealthChecksReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ExocomputeHealthChecksReply? ExocomputeHealthChecks
+        // GraphQL -> exocomputeHealthChecks: ExocomputeHealthChecksReply! (type)
+        public static string ExocomputeHealthChecks(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "exocomputeHealthChecks" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ExocomputeHealthChecksFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ExocomputeHealthChecksReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> FailedRestoreItemsInfoReply? FailedRestoreItemsInfo
         // GraphQL -> failedRestoreItemsInfo: FailedRestoreItemsInfoReply! (type)
         public static string FailedRestoreItemsInfo(object fsObj)
@@ -8409,6 +8463,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new HasRelicAzureAdSnapshotReplyType() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetHealthCheckErrorReportReply? HealthCheckErrorReport
+        // GraphQL -> healthCheckErrorReport: GetHealthCheckErrorReportReply! (type)
+        public static string HealthCheckErrorReport(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "healthCheckErrorReport" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object HealthCheckErrorReportFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetHealthCheckErrorReportReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -9993,6 +10065,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongoRecoverableRanges() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> MongoOpsManagerRestoreTargetsForSnapshotListResponse? MongoRestoreTargetsForSnapshot
+        // GraphQL -> mongoRestoreTargetsForSnapshot: MongoOpsManagerRestoreTargetsForSnapshotListResponse! (type)
+        public static string MongoRestoreTargetsForSnapshot(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "mongoRestoreTargetsForSnapshot" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object MongoRestoreTargetsForSnapshotFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new MongoOpsManagerRestoreTargetsForSnapshotListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -12193,6 +12283,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> OracleRecoverableRangeMinimalResponse? OracleRecoverableRangesMinimal
+        // GraphQL -> oracleRecoverableRangesMinimal: OracleRecoverableRangeMinimalResponse! (type)
+        public static string OracleRecoverableRangesMinimal(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "oracleRecoverableRangesMinimal" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object OracleRecoverableRangesMinimalFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new OracleRecoverableRangeMinimalResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> OracleTopLevelDescendantTypeConnection? OracleTopLevelDescendants
         // GraphQL -> oracleTopLevelDescendants: OracleTopLevelDescendantTypeConnection! (type)
         public static string OracleTopLevelDescendants(object fsObj)
@@ -12585,6 +12693,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new PolicyObjConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetPossibleSnapshotLocationsForObjectsResp? PossibleSnapshotLocationsForObjects
+        // GraphQL -> possibleSnapshotLocationsForObjects: GetPossibleSnapshotLocationsForObjectsResp! (type)
+        public static string PossibleSnapshotLocationsForObjects(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "possibleSnapshotLocationsForObjects" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PossibleSnapshotLocationsForObjectsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetPossibleSnapshotLocationsForObjectsResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

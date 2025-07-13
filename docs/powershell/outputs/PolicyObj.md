@@ -64,6 +64,8 @@ different time points.
   - Specifies the access type summary for a principal.
 - documentTypesSummary: list of DocumentTypeSummarys
   - Specifies the sensitive files count summary for document types.
+- scanErrorInfo: ScanErrorInfo
+  - Scan error information for the policy object.
 - id: System.String
 - folderChildConnection: FileResultConnection
 - fileResultConnection: FileResultConnection

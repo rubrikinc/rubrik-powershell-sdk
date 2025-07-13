@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "AUTOMATED_NETWORKING_SETUP")]
+        AUTOMATED_NETWORKING_SETUP,
+
         [EnumMember(Value = "BACKUP_V2")]
         BACKUP_V2,
 

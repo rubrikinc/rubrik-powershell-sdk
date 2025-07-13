@@ -5,3 +5,5 @@ AWS Exocompute subnet input.
   - AWS ID of subnet.
 - availabilityZone: System.String
   - Availability zone of the subnet.
+- podSubnetId: System.String
+  - Subnet ID of the pod subnet.
