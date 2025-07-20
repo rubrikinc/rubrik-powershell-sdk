@@ -24,6 +24,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("policies")]
         public List<System.String>? Policies { get; set; }
 
+        //      C# -> DlpConfigTargetType? TargetType
+        // GraphQL -> targetType: DlpConfigTargetType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("targetType")]
+        public DlpConfigTargetType? TargetType { get; set; }
+
         //      C# -> DlpConfigGenericNasInput? GenericNas
         // GraphQL -> genericNas: DlpConfigGenericNasInput (input)
         [JsonProperty("genericNas")]
@@ -48,13 +55,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> status: DlpStatusInput (input)
         [JsonProperty("status")]
         public DlpStatusInput? Status { get; set; }
-
-        //      C# -> DlpConfigTargetType? TargetType
-        // GraphQL -> targetType: DlpConfigTargetType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("targetType")]
-        public DlpConfigTargetType? TargetType { get; set; }
 
 
         #endregion

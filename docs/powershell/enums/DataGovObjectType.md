@@ -66,3 +66,5 @@ value and is added for maintaining backward compatability.
 - K8S_ROOT - Represents Kubernetes Root.
 - K8S_CLUSTER - Represents Kubernetes Cluster.
 - K8S_NAMESPACE_V2 - Represents Kubernetes Namespace.
+- GCP_NATIVE_GCE_INSTANCE - Represents GCP Native GCE Instance.
+- GCP_NATIVE_DISK - Represents GCP Native Disk.

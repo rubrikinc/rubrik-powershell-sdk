@@ -19,3 +19,7 @@ Role customization details for the AWS account.
   - Path of the instance profile for the Exocompute's worker node.
 - ec2RecoveryRolePath: System.String
   - Path that can be attached to a recovered EC2 instance.
+- lambdaRoleName: System.String
+  - Name of the role for Exocompute's lambda.
+- lambdaRolePath: System.String
+  - Path of the role for Exocompute's lambda.

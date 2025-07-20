@@ -1,5 +1,5 @@
 ### ManagedObjectType
-All supported managed objects.
+All supported Rubrik managed objects.
 
 - O365_ORGANIZATION - O365 organization.
 - O365_USER - O365 user.

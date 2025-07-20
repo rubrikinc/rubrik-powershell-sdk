@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
-
         //      C# -> DisablePerLocationPauseInput? DisablePerLocationPause
         // GraphQL -> disablePerLocationPause: DisablePerLocationPauseInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("disablePerLocationPause")]
         public DisablePerLocationPauseInput? DisablePerLocationPause { get; set; }
+
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
 
 
         #endregion

@@ -43,6 +43,9 @@ Supported in v5.0+
 - oracleSddWalletPath: System.String
   - Supported in v9.3+
   Specifies the wallet path on the Oracle host which is used to authenticate remote connections to oracle databases during Sensitive Data Discovery.
+- shouldSddThroughRba: System.Boolean
+  - Supported in v9.5
+  A Boolean flag that specifies whether to perform the Data Discovery and Classification data acquisition workflow through RBA.
 - mssqlSddUsername: System.String
   - Supported in v9.2+
   Specifies the username configured for the SQL server instance for sensitive data discovery.

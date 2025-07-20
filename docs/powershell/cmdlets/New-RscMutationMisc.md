@@ -128,6 +128,12 @@ CloudDirectSystemDelete is used to delete the system.
 
 - There is a single argument of type CloudDirectSystemDeleteInput.
 - Returns System.String.
+### clouddirectsystemrescan
+CloudDirectSystemRescan is used to rescan a system already
+added to the NCD cluster.
+
+- There is a single argument of type CloudDirectSystemRescanInput.
+- Returns CloudDirectSystemRescanReply.
 ### clouddirectvalidatesubdir
 CloudDirectValidateSubdir is used to validate SubDir on an export.
 
@@ -542,6 +548,18 @@ Sets the approval status of an Exocompute container image bundle.
 
 - There is a single argument of type SetBundleApprovalStatusInput.
 - Returns System.String.
+### setclouddirectnamespaceoverride
+SetCloudDirectNamespaceOverride is used to override properties of a
+namespace already added to the NCD cluster.
+
+- There is a single argument of type SetCloudDirectNamespaceOverrideInput.
+- Returns System.String.
+### setclouddirectsystemoverride
+SetCloudDirectSystemOverride is used to override properties of a
+system already added to the NCD cluster.
+
+- There is a single argument of type SetCloudDirectSystemOverrideInput.
+- Returns System.String.
 ### setcustomertags
 Sets customer-specified tags and the value whether the resource tags should be overridden by customer-specified tags for a given cloud type.
 
@@ -564,6 +582,11 @@ Update the MFA settings for the account. Return true when the operation succeeds
 Sets the Private Container Registry (PCR) details for an Exocompute cloud account. Updates the details if the registry already exists and creates a new entry if it does not exist.
 
 - There is a single argument of type SetPrivateContainerRegistryInput.
+- Returns System.String.
+### setshareexclusions
+Sets exclusions to a specific share.
+
+- There is a single argument of type SetShareExclusionsInput.
 - Returns System.String.
 ### settotpconfig
 Setup TOTP configuration for a user. Return true when the operation succeeds.

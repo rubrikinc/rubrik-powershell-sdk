@@ -4615,6 +4615,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GetAzureExocomputeNetworkSetupTemplateReply? AzureExocomputeNetworkSetupTemplate
+        // GraphQL -> azureExocomputeNetworkSetupTemplate: GetAzureExocomputeNetworkSetupTemplateReply! (type)
+        public static string AzureExocomputeNetworkSetupTemplate(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "azureExocomputeNetworkSetupTemplate" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureExocomputeNetworkSetupTemplateFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetAzureExocomputeNetworkSetupTemplateReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AzureNativeManagedDisk? AzureNativeManagedDisk
         // GraphQL -> azureNativeManagedDisk: AzureNativeManagedDisk! (type)
         public static string AzureNativeManagedDisk(object fsObj)
@@ -5673,6 +5691,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new CassandraSourceConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CcProvisionMetadataReply? CcProvisionMetadata
+        // GraphQL -> ccProvisionMetadata: CcProvisionMetadataReply! (type)
+        public static string CcProvisionMetadata(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "ccProvisionMetadata" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CcProvisionMetadataFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CcProvisionMetadataReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -9579,6 +9615,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ListAllUploadRecordsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ListCertificateCloudAccountMappingsResp? ListCertificateCloudAccountMappings
+        // GraphQL -> listCertificateCloudAccountMappings: ListCertificateCloudAccountMappingsResp! (type)
+        public static string ListCertificateCloudAccountMappings(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ncloudNativeAccountId: $cloudNativeAccountId\ncloudType: $cloudType\n)";
+            return "listCertificateCloudAccountMappings" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ListCertificateCloudAccountMappingsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ListCertificateCloudAccountMappingsResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

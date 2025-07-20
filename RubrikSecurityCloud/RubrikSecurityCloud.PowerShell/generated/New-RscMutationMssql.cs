@@ -113,6 +113,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			oracleSddWalletPath = $someString
     /// 			# OPTIONAL
+    /// 			shouldSddThroughRba = $someBoolean
+    /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
     /// 			# OPTIONAL
     /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
@@ -1966,6 +1968,8 @@ $query.Var.input = @{
 			mssqlSddCertificateId = $someString
 			# OPTIONAL
 			oracleSddWalletPath = $someString
+			# OPTIONAL
+			shouldSddThroughRba = $someBoolean
 			# OPTIONAL
 			orgNetworkId = $someString
 			# OPTIONAL

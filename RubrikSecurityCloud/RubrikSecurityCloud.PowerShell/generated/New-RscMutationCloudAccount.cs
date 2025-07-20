@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 2
+    /// Create a new RscQuery object for any of the 3
     /// operations in the 'Cloud Account' API domain:
-    /// MapExocomputeAccount, or UnmapExocomputeAccount.
+    /// MapExocomputeAccount, UnmapExocomputeAccount, or UpdateCertificateMappings.
     /// </summary>
     /// <description>
     /// New-RscMutationCloudAccount creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 2 operations
+    /// There are 3 operations
     /// in the 'Cloud Account' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: MapExocomputeAccount, or UnmapExocomputeAccount.
+    /// one of: MapExocomputeAccount, UnmapExocomputeAccount, or UpdateCertificateMappings.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -148,6 +148,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the UpdateCertificateMappings operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: UpdateCertificateMappings
+    /// 
+    /// $query = New-RscMutationCloudAccount -Operation UpdateCertificateMappings
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudNativeAccountId = $someString
+    /// 	# REQUIRED
+    /// 	certificates = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			isUsed = $someBoolean
+    /// 			# REQUIRED
+    /// 			id = $someString
+    /// 			# REQUIRED
+    /// 			name = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -166,6 +210,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "MapExocomputeAccount",
                 "UnmapExocomputeAccount",
+                "UpdateCertificateMappings",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -186,6 +231,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UnmapExocomputeAccount":
                         this.ProcessRecord_UnmapExocomputeAccount();
+                        break;
+                    case "UpdateCertificateMappings":
+                        this.ProcessRecord_UpdateCertificateMappings();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -213,6 +261,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UnmapExocomputeAccount";
             // Create new graphql operation unmapCloudAccountExocomputeAccount
             InitMutationUnmapCloudAccountExocomputeAccount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateCertificateCloudAccountMappings.
+        internal void ProcessRecord_UpdateCertificateMappings()
+        {
+            this._logger.name += " -UpdateCertificateMappings";
+            // Create new graphql operation updateCertificateCloudAccountMappings
+            InitMutationUpdateCertificateCloudAccountMappings();
         }
 
 
@@ -268,6 +325,42 @@ $query.Var.input = @{
 	)
 	# REQUIRED
 	cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateCertificateCloudAccountMappings(input: UpdateCertificateCloudAccountMappingsInput!): Void
+        internal void InitMutationUpdateCertificateCloudAccountMappings()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateCertificateCloudAccountMappingsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateCertificateCloudAccountMappings",
+                "($input: UpdateCertificateCloudAccountMappingsInput!)",
+                "System.String",
+                Mutation.UpdateCertificateCloudAccountMappings,
+                Mutation.UpdateCertificateCloudAccountMappingsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudNativeAccountId = $someString
+	# REQUIRED
+	certificates = @(
+		@{
+			# OPTIONAL
+			isUsed = $someBoolean
+			# REQUIRED
+			id = $someString
+			# REQUIRED
+			name = $someString
+		}
+	)
+	# OPTIONAL
+	cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.
 }"
             );
         }

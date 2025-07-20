@@ -33,6 +33,21 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_RDS_DB_INSTANCE_CLASS")]
         AWS_NATIVE_RDS_DB_INSTANCE_CLASS,
 
+        [EnumMember(Value = "AWS_NATIVE_REGION_DYNAMODB_TABLE_COUNT")]
+        AWS_NATIVE_REGION_DYNAMODB_TABLE_COUNT,
+
+        [EnumMember(Value = "AWS_NATIVE_REGION_EBS_VOLUME_COUNT")]
+        AWS_NATIVE_REGION_EBS_VOLUME_COUNT,
+
+        [EnumMember(Value = "AWS_NATIVE_REGION_EC2_INSTANCE_COUNT")]
+        AWS_NATIVE_REGION_EC2_INSTANCE_COUNT,
+
+        [EnumMember(Value = "AWS_NATIVE_REGION_RDS_INSTANCE_COUNT")]
+        AWS_NATIVE_REGION_RDS_INSTANCE_COUNT,
+
+        [EnumMember(Value = "AWS_NATIVE_REGION_S3_BUCKET_COUNT")]
+        AWS_NATIVE_REGION_S3_BUCKET_COUNT,
+
         [EnumMember(Value = "AWS_REGION")]
         AWS_REGION,
 

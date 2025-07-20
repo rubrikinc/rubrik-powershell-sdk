@@ -51,6 +51,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORG_ID")]
         ORG_ID,
 
+        [EnumMember(Value = "ROW_ACTION_BUTTON")]
+        ROW_ACTION_BUTTON,
+
         [EnumMember(Value = "SLA_DOMAIN_LINK_ID")]
         SLA_DOMAIN_LINK_ID,
 

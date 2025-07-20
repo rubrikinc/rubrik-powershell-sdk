@@ -15,6 +15,16 @@ NAS Cloud Direct namespace object.
   - Specifies whether the namespace is hidden.
 - isStale: System.Boolean
   - Specifies whether the namespace is stale.
+- overrides: NamespaceOverrides
+  - Configuration overrides for this namespace.
+- nfsHosts: list of System.Strings
+  - List of default NFS hosts for this namespace.
+- nfs4Hosts: list of System.Strings
+  - List of default NFSv4 hosts for this namespace.
+- smbHosts: list of System.Strings
+  - List of default SMB hosts for this namespace.
+- s3Hosts: list of System.Strings
+  - List of default S3 hosts for this namespace.
 - id: System.String
   - Object ID.
 - cloudDirectNasSystem: CloudDirectNasSystem

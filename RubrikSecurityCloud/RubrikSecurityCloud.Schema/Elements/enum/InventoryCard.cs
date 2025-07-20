@@ -75,6 +75,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_VMS_CDM")]
         HYPERV_VMS_CDM,
 
+        [EnumMember(Value = "INFORMIX")]
+        INFORMIX,
+
         [EnumMember(Value = "KUBERNETES")]
         KUBERNETES,
 

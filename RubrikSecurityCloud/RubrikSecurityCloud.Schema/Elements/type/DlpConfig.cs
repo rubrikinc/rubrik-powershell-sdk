@@ -26,17 +26,17 @@ namespace RubrikSecurityCloud.Types
         public DlpConfigTargetType? TargetType { get; set; }
 
         //      C# -> List<System.String>? Policies
-        // GraphQL -> policies: [String!] (scalar)
+        // GraphQL -> policies: [String!]! (scalar)
         [JsonProperty("policies")]
         public List<System.String>? Policies { get; set; }
 
         //      C# -> System.String? ServiceAccountId
-        // GraphQL -> serviceAccountId: String (scalar)
+        // GraphQL -> serviceAccountId: String! (scalar)
         [JsonProperty("serviceAccountId")]
         public System.String? ServiceAccountId { get; set; }
 
         //      C# -> System.String? ServiceAccountName
-        // GraphQL -> serviceAccountName: String (scalar)
+        // GraphQL -> serviceAccountName: String! (scalar)
         [JsonProperty("serviceAccountName")]
         public System.String? ServiceAccountName { get; set; }
 
@@ -119,7 +119,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> List<System.String>? Policies
-        // GraphQL -> policies: [String!] (scalar)
+        // GraphQL -> policies: [String!]! (scalar)
         if (this.Policies != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "policies\n" ;
@@ -128,7 +128,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? ServiceAccountId
-        // GraphQL -> serviceAccountId: String (scalar)
+        // GraphQL -> serviceAccountId: String! (scalar)
         if (this.ServiceAccountId != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "serviceAccountId\n" ;
@@ -137,7 +137,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? ServiceAccountName
-        // GraphQL -> serviceAccountName: String (scalar)
+        // GraphQL -> serviceAccountName: String! (scalar)
         if (this.ServiceAccountName != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "serviceAccountName\n" ;
@@ -206,7 +206,7 @@ namespace RubrikSecurityCloud.Types
             this.TargetType = null;
         }
         //      C# -> List<System.String>? Policies
-        // GraphQL -> policies: [String!] (scalar)
+        // GraphQL -> policies: [String!]! (scalar)
         if (ec.Includes("policies",true))
         {
             if(this.Policies == null) {
@@ -223,7 +223,7 @@ namespace RubrikSecurityCloud.Types
             this.Policies = null;
         }
         //      C# -> System.String? ServiceAccountId
-        // GraphQL -> serviceAccountId: String (scalar)
+        // GraphQL -> serviceAccountId: String! (scalar)
         if (ec.Includes("serviceAccountId",true))
         {
             if(this.ServiceAccountId == null) {
@@ -240,7 +240,7 @@ namespace RubrikSecurityCloud.Types
             this.ServiceAccountId = null;
         }
         //      C# -> System.String? ServiceAccountName
-        // GraphQL -> serviceAccountName: String (scalar)
+        // GraphQL -> serviceAccountName: String! (scalar)
         if (ec.Includes("serviceAccountName",true))
         {
             if(this.ServiceAccountName == null) {

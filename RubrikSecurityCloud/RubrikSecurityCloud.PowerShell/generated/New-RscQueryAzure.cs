@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 55
+    /// Create a new RscQuery object for any of the 56
     /// operations in the 'Azure' API domain:
-    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// </summary>
     /// <description>
     /// New-RscQueryAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 55 operations
+    /// There are 56 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -901,6 +901,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;AzureExocomputeConfigsInAccount&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExocomputeNetworkSetupTemplate operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: ExocomputeNetworkSetupTemplate
+    /// 
+    /// $query = New-RscQueryAzure -Operation ExocomputeNetworkSetupTemplate
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	locations = @(
+    /// 		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetAzureExocomputeNetworkSetupTemplateReply
     /// 
     /// 
     /// 
@@ -2438,6 +2471,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DiskEncryptionSetsByRegion",
                 "EncryptionKeys",
                 "ExocomputeConfigsInAccount",
+                "ExocomputeNetworkSetupTemplate",
                 "HasRelicAdSnapshot",
                 "HostedAzureRegions",
                 "IsStorageAccountNameAvailable",
@@ -2551,6 +2585,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ExocomputeConfigsInAccount":
                         this.ProcessRecord_ExocomputeConfigsInAccount();
+                        break;
+                    case "ExocomputeNetworkSetupTemplate":
+                        this.ProcessRecord_ExocomputeNetworkSetupTemplate();
                         break;
                     case "HasRelicAdSnapshot":
                         this.ProcessRecord_HasRelicAdSnapshot();
@@ -2857,6 +2894,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ExocomputeConfigsInAccount";
             // Create new graphql operation allAzureExocomputeConfigsInAccount
             InitQueryAllAzureExocomputeConfigsInAccount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureExocomputeNetworkSetupTemplate.
+        internal void ProcessRecord_ExocomputeNetworkSetupTemplate()
+        {
+            this._logger.name += " -ExocomputeNetworkSetupTemplate";
+            // Create new graphql operation azureExocomputeNetworkSetupTemplate
+            InitQueryAzureExocomputeNetworkSetupTemplate();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3884,6 +3930,31 @@ $query.Var.azureExocomputeSearchQuery = $someString
 $query.Var.cloudAccountIDs = @(
 	$someString
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureExocomputeNetworkSetupTemplate(input: GetAzureExocomputeNetworkSetupTemplateReq!): GetAzureExocomputeNetworkSetupTemplateReply!
+        internal void InitQueryAzureExocomputeNetworkSetupTemplate()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetAzureExocomputeNetworkSetupTemplateReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureExocomputeNetworkSetupTemplate",
+                "($input: GetAzureExocomputeNetworkSetupTemplateReq!)",
+                "GetAzureExocomputeNetworkSetupTemplateReply",
+                Query.AzureExocomputeNetworkSetupTemplate,
+                Query.AzureExocomputeNetworkSetupTemplateFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	locations = @(
+		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+	)
+}"
             );
         }
 

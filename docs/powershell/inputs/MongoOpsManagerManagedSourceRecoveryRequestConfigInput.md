@@ -1,6 +1,7 @@
 ### MongoOpsManagerManagedSourceRecoveryRequestConfigInput
 Supported in v9.3+
-  Configuration for OpsManager managed MongoDB source recovery from source to target cluster.
+  v9.3-v9.4: Configuration for OpsManager managed MongoDB source recovery from source to target cluster.
+  v9.5: Configuration for recovering a MongoDB source managed by Ops Manager from a source to a target cluster.
 
 - restoreTime: DateTime
   - Required. Time of the source cluster to which the target cluster should be restored, using the ISO8601 format 2016-01-01T01:23:45.678. The restore will happen to the latest available snapshot before the specified time.

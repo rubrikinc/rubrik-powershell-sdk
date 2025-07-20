@@ -44,7 +44,8 @@ SMB configuration.
 - There is a single argument of type PutSmbConfigurationInput.
 - Returns PutSmbConfigurationReply.
 ### setclouddirectglobalsettings
-SetCloudDirectGlobalSmbSettings is used to set Global SMB Settings for the NCD cluster.
+SetCloudDirectGlobalSmbSettings is used to set Global SMB Settings for
+the NCD cluster.
 
 - There is a single argument of type SetCloudDirectGlobalSmbSettingsInput.
 - Returns SetCloudDirectGlobalSmbSettingsReply.

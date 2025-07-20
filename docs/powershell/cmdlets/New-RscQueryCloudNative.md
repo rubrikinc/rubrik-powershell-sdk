@@ -18,7 +18,7 @@ Check if label rule name is unique or not
 Queries whether Polaris has the required permissions for a particular feature.
 
 - There are 2 arguments.
-    - cloudNativeAccountId - System.String: Cloud native account ID
+    - cloudNativeAccountId - System.String: Cloud-native account ID.
     - featurePermissionCheck - CloudNativeFeatureForPermissionsCheck: Feature for which required permissions have to be checked.
 - Returns System.Boolean.
 ### checktagrulenameuniqueness

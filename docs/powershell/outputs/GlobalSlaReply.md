@@ -57,6 +57,8 @@ Metadata for rendering an SLA Domain.
   - Specifies if this SLA Domain is retention-locked or not.
 - isReadOnly: System.Boolean
   - Specifies whether the SLA Domain is read-only.
+- backupLocationSpecs: list of BackupLocationSpecs
+  - List of backup location specifications for the SLA Domain.
 - retentionLockMode: RetentionLockMode
   - Specifies the retention lock mode when enabled for the SLA Domain.
 - allOrgsWithAccess: list of Orgs

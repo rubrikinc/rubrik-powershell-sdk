@@ -21,6 +21,16 @@ NAS Cloud Direct System object.
   - Specifies whether the system has been deleted.
 - isRelic: System.Boolean
   - Specifies whether the system is a relic.
+- overrides: SystemOverrides
+  - Configuration overrides for this system.
+- nfsHosts: list of System.Strings
+  - List of default NFS hosts for this system.
+- nfs4Hosts: list of System.Strings
+  - List of default NFSv4 hosts for this system.
+- smbHosts: list of System.Strings
+  - List of default SMB hosts for this system.
+- s3Hosts: list of System.Strings
+  - List of default S3 hosts for this system.
 - id: System.String
   - Object ID.
 - descendantConnection: CloudDirectNasSystemDescendantTypeConnection

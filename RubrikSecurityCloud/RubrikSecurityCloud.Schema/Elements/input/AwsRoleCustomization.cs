@@ -64,6 +64,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ec2RecoveryRolePath")]
         public System.String? Ec2RecoveryRolePath { get; set; }
 
+        //      C# -> System.String? LambdaRolePath
+        // GraphQL -> lambdaRolePath: String (scalar)
+        [JsonProperty("lambdaRolePath")]
+        public System.String? LambdaRolePath { get; set; }
+
+        //      C# -> System.String? LambdaRoleName
+        // GraphQL -> lambdaRoleName: String (scalar)
+        [JsonProperty("lambdaRoleName")]
+        public System.String? LambdaRoleName { get; set; }
+
 
         #endregion
 

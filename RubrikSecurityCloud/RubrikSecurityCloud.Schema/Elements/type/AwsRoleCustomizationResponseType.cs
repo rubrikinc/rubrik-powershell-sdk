@@ -45,6 +45,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("instanceProfilePath")]
         public System.String? InstanceProfilePath { get; set; }
 
+        //      C# -> System.String? LambdaRoleName
+        // GraphQL -> lambdaRoleName: String! (scalar)
+        [JsonProperty("lambdaRoleName")]
+        public System.String? LambdaRoleName { get; set; }
+
+        //      C# -> System.String? LambdaRolePath
+        // GraphQL -> lambdaRolePath: String! (scalar)
+        [JsonProperty("lambdaRolePath")]
+        public System.String? LambdaRolePath { get; set; }
+
         //      C# -> System.String? MasterRoleName
         // GraphQL -> masterRoleName: String! (scalar)
         [JsonProperty("masterRoleName")]
@@ -80,6 +90,8 @@ namespace RubrikSecurityCloud.Types
         System.String? Ec2RecoveryRolePath = null,
         System.String? InstanceProfileName = null,
         System.String? InstanceProfilePath = null,
+        System.String? LambdaRoleName = null,
+        System.String? LambdaRolePath = null,
         System.String? MasterRoleName = null,
         System.String? MasterRolePath = null,
         System.String? WorkerRoleName = null,
@@ -100,6 +112,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( InstanceProfilePath != null ) {
             this.InstanceProfilePath = InstanceProfilePath;
+        }
+        if ( LambdaRoleName != null ) {
+            this.LambdaRoleName = LambdaRoleName;
+        }
+        if ( LambdaRolePath != null ) {
+            this.LambdaRolePath = LambdaRolePath;
         }
         if ( MasterRoleName != null ) {
             this.MasterRoleName = MasterRoleName;
@@ -170,6 +188,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "instanceProfilePath\n" ;
             } else {
                 s += ind + "instanceProfilePath\n" ;
+            }
+        }
+        //      C# -> System.String? LambdaRoleName
+        // GraphQL -> lambdaRoleName: String! (scalar)
+        if (this.LambdaRoleName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lambdaRoleName\n" ;
+            } else {
+                s += ind + "lambdaRoleName\n" ;
+            }
+        }
+        //      C# -> System.String? LambdaRolePath
+        // GraphQL -> lambdaRolePath: String! (scalar)
+        if (this.LambdaRolePath != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lambdaRolePath\n" ;
+            } else {
+                s += ind + "lambdaRolePath\n" ;
             }
         }
         //      C# -> System.String? MasterRoleName
@@ -299,6 +335,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.InstanceProfilePath != null && ec.Excludes("instanceProfilePath",true))
         {
             this.InstanceProfilePath = null;
+        }
+        //      C# -> System.String? LambdaRoleName
+        // GraphQL -> lambdaRoleName: String! (scalar)
+        if (ec.Includes("lambdaRoleName",true))
+        {
+            if(this.LambdaRoleName == null) {
+
+                this.LambdaRoleName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LambdaRoleName != null && ec.Excludes("lambdaRoleName",true))
+        {
+            this.LambdaRoleName = null;
+        }
+        //      C# -> System.String? LambdaRolePath
+        // GraphQL -> lambdaRolePath: String! (scalar)
+        if (ec.Includes("lambdaRolePath",true))
+        {
+            if(this.LambdaRolePath == null) {
+
+                this.LambdaRolePath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LambdaRolePath != null && ec.Excludes("lambdaRolePath",true))
+        {
+            this.LambdaRolePath = null;
         }
         //      C# -> System.String? MasterRoleName
         // GraphQL -> masterRoleName: String! (scalar)

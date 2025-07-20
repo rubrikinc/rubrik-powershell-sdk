@@ -156,6 +156,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeRdsInstances")]
         public AwsNativeRdsInstanceConnection? AwsNativeRdsInstances { get; set; }
 
+        //      C# -> AwsNativeRegionHierarchyObjectConnection? AwsRegions
+        // GraphQL -> awsRegions: AwsNativeRegionHierarchyObjectConnection! (type)
+        [JsonProperty("awsRegions")]
+        public AwsNativeRegionHierarchyObjectConnection? AwsRegions { get; set; }
+
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
@@ -211,6 +216,8 @@ namespace RubrikSecurityCloud.Types
 
         public RscGqlVars AwsNativeRdsInstances { get; set; }
 
+        public RscGqlVars AwsRegions { get; set; }
+
 
         public InlineVars() {
             Tuple<string, string>[] numWorkloadDescendantsArgs = {
@@ -255,6 +262,17 @@ namespace RubrikSecurityCloud.Types
                 };
             this.AwsNativeRdsInstances =
                 new RscGqlVars(null, awsNativeRdsInstancesArgs, null, true);
+            Tuple<string, string>[] awsRegionsArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortBy", "AwsNativeRegionSortFields"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("regionFilters", "AwsNativeRegionFilters"),
+                };
+            this.AwsRegions =
+                new RscGqlVars(null, awsRegionsArgs, null, true);
         }
     }
 
@@ -295,6 +313,7 @@ namespace RubrikSecurityCloud.Types
         AwsNativeEbsVolumeConnection? AwsNativeEbsVolumes = null,
         AwsNativeEc2InstanceConnection? AwsNativeEc2Instances = null,
         AwsNativeRdsInstanceConnection? AwsNativeRdsInstances = null,
+        AwsNativeRegionHierarchyObjectConnection? AwsRegions = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
@@ -385,6 +404,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AwsNativeRdsInstances != null ) {
             this.AwsNativeRdsInstances = AwsNativeRdsInstances;
+        }
+        if ( AwsRegions != null ) {
+            this.AwsRegions = AwsRegions;
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
@@ -694,6 +716,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "awsNativeRdsInstances" + "\n(" + this.Vars.AwsNativeRdsInstances.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AwsNativeRegionHierarchyObjectConnection? AwsRegions
+        // GraphQL -> awsRegions: AwsNativeRegionHierarchyObjectConnection! (type)
+        if (this.AwsRegions != null) {
+            var fspec = this.AwsRegions.AsFieldSpec(conf.Child("awsRegions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsRegions" + "\n(" + this.Vars.AwsRegions.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1291,6 +1325,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AwsNativeRdsInstances != null && ec.Excludes("awsNativeRdsInstances",false))
         {
             this.AwsNativeRdsInstances = null;
+        }
+        //      C# -> AwsNativeRegionHierarchyObjectConnection? AwsRegions
+        // GraphQL -> awsRegions: AwsNativeRegionHierarchyObjectConnection! (type)
+        if (ec.Includes("awsRegions",false))
+        {
+            if(this.AwsRegions == null) {
+
+                this.AwsRegions = new AwsNativeRegionHierarchyObjectConnection();
+                this.AwsRegions.ApplyExploratoryFieldSpec(ec.NewChild("awsRegions"));
+
+            } else {
+
+                this.AwsRegions.ApplyExploratoryFieldSpec(ec.NewChild("awsRegions"));
+
+            }
+        }
+        else if (this.AwsRegions != null && ec.Excludes("awsRegions",false))
+        {
+            this.AwsRegions = null;
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)

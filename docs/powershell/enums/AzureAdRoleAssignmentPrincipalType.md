@@ -1,5 +1,5 @@
 ### AzureAdRoleAssignmentPrincipalType
-Represents types of Azure AD objects that can be assigned roles.
+Represents types of Entra ID objects that can be assigned roles.
 
 - PRINCIPAL_TYPE_UNKNOWN - AzureAdRoleAssignment principal type is unknown.
 - PRINCIPAL_TYPE_USER - AzureAdRoleAssignment principal type is a user.

@@ -2,4 +2,5 @@
 
 
 - id: System.String
-  - Required. The ID of the snapshot for which restorable targets must be returned.
+  - Required. v9.3-v9.4: The ID of the snapshot for which restorable targets must be returned.
+      v9.5: The ID of the snapshot for which the list of restorable targets must be returned.

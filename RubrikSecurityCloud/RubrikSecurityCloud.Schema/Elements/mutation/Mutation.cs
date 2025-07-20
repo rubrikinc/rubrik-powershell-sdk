@@ -2521,6 +2521,42 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? SetCloudDirectNamespaceOverride
+        // GraphQL -> setCloudDirectNamespaceOverride: Void (scalar)
+        public static string SetCloudDirectNamespaceOverride(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setCloudDirectNamespaceOverride" + args + "\n";
+        }
+        public static object SetCloudDirectNamespaceOverrideFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? SetCloudDirectSystemOverride
+        // GraphQL -> setCloudDirectSystemOverride: Void (scalar)
+        public static string SetCloudDirectSystemOverride(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setCloudDirectSystemOverride" + args + "\n";
+        }
+        public static object SetCloudDirectSystemOverrideFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? SetCustomerTags
         // GraphQL -> setCustomerTags: Void (scalar)
         public static string SetCustomerTags(object fsObj)
@@ -2620,6 +2656,24 @@ namespace RubrikSecurityCloud.Types
             return "setPrivateContainerRegistry" + args + "\n";
         }
         public static object SetPrivateContainerRegistryFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? SetShareExclusions
+        // GraphQL -> setShareExclusions: Void (scalar)
+        public static string SetShareExclusions(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setShareExclusions" + args + "\n";
+        }
+        public static object SetShareExclusionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -2915,6 +2969,24 @@ namespace RubrikSecurityCloud.Types
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
             return true ;
+        }
+
+        //      C# -> System.String? UpdateCertificateCloudAccountMappings
+        // GraphQL -> updateCertificateCloudAccountMappings: Void (scalar)
+        public static string UpdateCertificateCloudAccountMappings(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateCertificateCloudAccountMappings" + args + "\n";
+        }
+        public static object UpdateCertificateCloudAccountMappingsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
         }
 
         //      C# -> System.String? UpdateCloudNativeLabelRule
@@ -5397,6 +5469,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectSetWanThrottleSettingsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CloudDirectSystemRescanReply? CloudDirectSystemRescan
+        // GraphQL -> cloudDirectSystemRescan: CloudDirectSystemRescanReply! (type)
+        public static string CloudDirectSystemRescan(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudDirectSystemRescan" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectSystemRescanFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectSystemRescanReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

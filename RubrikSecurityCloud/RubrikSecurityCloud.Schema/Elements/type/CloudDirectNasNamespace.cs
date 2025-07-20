@@ -91,6 +91,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("namespaceName")]
         public System.String? NamespaceName { get; set; }
 
+        //      C# -> List<System.String>? Nfs4Hosts
+        // GraphQL -> nfs4Hosts: [String!]! (scalar)
+        [JsonProperty("nfs4Hosts")]
+        public List<System.String>? Nfs4Hosts { get; set; }
+
+        //      C# -> List<System.String>? NfsHosts
+        // GraphQL -> nfsHosts: [String!]! (scalar)
+        [JsonProperty("nfsHosts")]
+        public List<System.String>? NfsHosts { get; set; }
+
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
@@ -101,10 +111,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectCount")]
         public System.Int32? ObjectCount { get; set; }
 
+        //      C# -> List<System.String>? S3Hosts
+        // GraphQL -> s3Hosts: [String!]! (scalar)
+        [JsonProperty("s3Hosts")]
+        public List<System.String>? S3Hosts { get; set; }
+
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
+
+        //      C# -> List<System.String>? SmbHosts
+        // GraphQL -> smbHosts: [String!]! (scalar)
+        [JsonProperty("smbHosts")]
+        public List<System.String>? SmbHosts { get; set; }
 
         //      C# -> System.String? SystemId
         // GraphQL -> systemId: UUID! (scalar)
@@ -155,6 +175,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
         [JsonProperty("objectPauseStatus")]
         public ObjectPauseStatus? ObjectPauseStatus { get; set; }
+
+        //      C# -> NamespaceOverrides? Overrides
+        // GraphQL -> overrides: NamespaceOverrides (type)
+        [JsonProperty("overrides")]
+        public NamespaceOverrides? Overrides { get; set; }
 
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
@@ -244,9 +269,13 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsStale = null,
         System.String? Name = null,
         System.String? NamespaceName = null,
+        List<System.String>? Nfs4Hosts = null,
+        List<System.String>? NfsHosts = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? ObjectCount = null,
+        List<System.String>? S3Hosts = null,
         System.Boolean? SlaPauseStatus = null,
+        List<System.String>? SmbHosts = null,
         System.String? SystemId = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
@@ -257,6 +286,7 @@ namespace RubrikSecurityCloud.Types
         CloudDirectNasNamespaceLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
+        NamespaceOverrides? Overrides = null,
         List<PathNode>? PhysicalPath = null,
         SecurityMetadata? SecurityMetadata = null,
         SnapshotDistribution? SnapshotDistribution = null
@@ -304,14 +334,26 @@ namespace RubrikSecurityCloud.Types
         if ( NamespaceName != null ) {
             this.NamespaceName = NamespaceName;
         }
+        if ( Nfs4Hosts != null ) {
+            this.Nfs4Hosts = Nfs4Hosts;
+        }
+        if ( NfsHosts != null ) {
+            this.NfsHosts = NfsHosts;
+        }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
         }
         if ( ObjectCount != null ) {
             this.ObjectCount = ObjectCount;
         }
+        if ( S3Hosts != null ) {
+            this.S3Hosts = S3Hosts;
+        }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( SmbHosts != null ) {
+            this.SmbHosts = SmbHosts;
         }
         if ( SystemId != null ) {
             this.SystemId = SystemId;
@@ -342,6 +384,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
+        }
+        if ( Overrides != null ) {
+            this.Overrides = Overrides;
         }
         if ( PhysicalPath != null ) {
             this.PhysicalPath = PhysicalPath;
@@ -504,6 +549,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "namespaceName\n" ;
             }
         }
+        //      C# -> List<System.String>? Nfs4Hosts
+        // GraphQL -> nfs4Hosts: [String!]! (scalar)
+        if (this.Nfs4Hosts != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nfs4Hosts\n" ;
+            } else {
+                s += ind + "nfs4Hosts\n" ;
+            }
+        }
+        //      C# -> List<System.String>? NfsHosts
+        // GraphQL -> nfsHosts: [String!]! (scalar)
+        if (this.NfsHosts != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nfsHosts\n" ;
+            } else {
+                s += ind + "nfsHosts\n" ;
+            }
+        }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants != null) {
@@ -522,6 +585,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "objectCount\n" ;
             }
         }
+        //      C# -> List<System.String>? S3Hosts
+        // GraphQL -> s3Hosts: [String!]! (scalar)
+        if (this.S3Hosts != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "s3Hosts\n" ;
+            } else {
+                s += ind + "s3Hosts\n" ;
+            }
+        }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (this.SlaPauseStatus != null) {
@@ -529,6 +601,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> List<System.String>? SmbHosts
+        // GraphQL -> smbHosts: [String!]! (scalar)
+        if (this.SmbHosts != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "smbHosts\n" ;
+            } else {
+                s += ind + "smbHosts\n" ;
             }
         }
         //      C# -> System.String? SystemId
@@ -645,6 +726,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "objectPauseStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> NamespaceOverrides? Overrides
+        // GraphQL -> overrides: NamespaceOverrides (type)
+        if (this.Overrides != null) {
+            var fspec = this.Overrides.AsFieldSpec(conf.Child("overrides"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "overrides" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -950,6 +1043,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.NamespaceName = null;
         }
+        //      C# -> List<System.String>? Nfs4Hosts
+        // GraphQL -> nfs4Hosts: [String!]! (scalar)
+        if (ec.Includes("nfs4Hosts",true))
+        {
+            if(this.Nfs4Hosts == null) {
+
+                this.Nfs4Hosts = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Nfs4Hosts != null && ec.Excludes("nfs4Hosts",true))
+        {
+            this.Nfs4Hosts = null;
+        }
+        //      C# -> List<System.String>? NfsHosts
+        // GraphQL -> nfsHosts: [String!]! (scalar)
+        if (ec.Includes("nfsHosts",true))
+        {
+            if(this.NfsHosts == null) {
+
+                this.NfsHosts = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NfsHosts != null && ec.Excludes("nfsHosts",true))
+        {
+            this.NfsHosts = null;
+        }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (ec.Includes("numWorkloadDescendants",true))
@@ -984,6 +1111,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ObjectCount = null;
         }
+        //      C# -> List<System.String>? S3Hosts
+        // GraphQL -> s3Hosts: [String!]! (scalar)
+        if (ec.Includes("s3Hosts",true))
+        {
+            if(this.S3Hosts == null) {
+
+                this.S3Hosts = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.S3Hosts != null && ec.Excludes("s3Hosts",true))
+        {
+            this.S3Hosts = null;
+        }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (ec.Includes("slaPauseStatus",true))
@@ -1000,6 +1144,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> List<System.String>? SmbHosts
+        // GraphQL -> smbHosts: [String!]! (scalar)
+        if (ec.Includes("smbHosts",true))
+        {
+            if(this.SmbHosts == null) {
+
+                this.SmbHosts = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SmbHosts != null && ec.Excludes("smbHosts",true))
+        {
+            this.SmbHosts = null;
         }
         //      C# -> System.String? SystemId
         // GraphQL -> systemId: UUID! (scalar)
@@ -1188,6 +1349,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectPauseStatus != null && ec.Excludes("objectPauseStatus",false))
         {
             this.ObjectPauseStatus = null;
+        }
+        //      C# -> NamespaceOverrides? Overrides
+        // GraphQL -> overrides: NamespaceOverrides (type)
+        if (ec.Includes("overrides",false))
+        {
+            if(this.Overrides == null) {
+
+                this.Overrides = new NamespaceOverrides();
+                this.Overrides.ApplyExploratoryFieldSpec(ec.NewChild("overrides"));
+
+            } else {
+
+                this.Overrides.ApplyExploratoryFieldSpec(ec.NewChild("overrides"));
+
+            }
+        }
+        else if (this.Overrides != null && ec.Excludes("overrides",false))
+        {
+            this.Overrides = null;
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)

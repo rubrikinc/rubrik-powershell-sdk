@@ -72,6 +72,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_NATIVE_TAG_RULE")]
         CLOUD_NATIVE_TAG_RULE,
 
+        [EnumMember(Value = "GCP_NATIVE_DISK")]
+        GCP_NATIVE_DISK,
+
+        [EnumMember(Value = "GCP_NATIVE_GCE_INSTANCE")]
+        GCP_NATIVE_GCE_INSTANCE,
+
         [EnumMember(Value = "HYPERV_CLUSTER")]
         HYPERV_CLUSTER,
 

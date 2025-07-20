@@ -1,5 +1,5 @@
 ### AzureAdObjectSearchType
-Azure AD object search keyword names.
+Entra ID object search keyword names.
 
 - USER_NAME - User name of the user.
 - NAMED_LOCATION_NAME - Name of the named location.

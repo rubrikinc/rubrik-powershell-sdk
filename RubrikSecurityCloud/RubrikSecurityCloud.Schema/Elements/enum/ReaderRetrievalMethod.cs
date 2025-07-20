@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_LIST_ONLY")]
         OBJECT_LIST_ONLY,
 
+        [EnumMember(Value = "SPECIFIC_OBJECT_LIST_AND_DETAILS")]
+        SPECIFIC_OBJECT_LIST_AND_DETAILS,
+
         [EnumMember(Value = "UNKNOWN_RETRIEVAL_METHOD")]
         UNKNOWN_RETRIEVAL_METHOD
 

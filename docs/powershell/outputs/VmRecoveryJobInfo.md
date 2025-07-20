@@ -11,3 +11,5 @@ Child VM recovery jobs info for a recovery.
   - The status of recovery job.
 - cdmRecoveryJobId: System.String
   - The ID of recovery job.
+- hierarchyObject: HierarchyObject
+  - Hierarchy object of virtual machine.

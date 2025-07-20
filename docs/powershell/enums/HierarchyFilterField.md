@@ -1,4 +1,6 @@
 ### HierarchyFilterField
+Fields for filtering hierarchy objects.
+
 - IS_ARCHIVED - Filters archived workloads.
 - NAME - Filter by name. For an exact match, use NAME_EXACT_MATCH.
 - IS_RELIC - Filters workloads that are relics.
@@ -25,7 +27,7 @@ AzureVm.Region and AzureDisk.region.
 - AWS_TAG - Filter by aws_native_tags.
 - ON_OR_ABOVE_CLUSTER_VERSION - Filter by software version of the cluster.
 - AZURE_VM_SUBSCRIPTION_ID - Filter Azure virtual machines on subscription ID.
-todo (SPARK-88655): remove usage of VMRG and DiskRG
++comment: todo (SPARK-88655): remove usage of VMRG and DiskRG.
 - AZURE_VNET_NAME - Filter Azure virtual machines on VNet name.
 - AZURE_VM_SIZE - Filter Azure virtual machines on virtual machine size.
 - AWS_NATIVE_EC2_INSTANCE_ID - ID of the AWS native EC2 instance (Rubrik ID), applicable for filtering
@@ -51,7 +53,7 @@ measure will not distinguish between two similar names.
 to them.
 - FILESET_TEMPLATE_OS_TYPE - Filter fileset templates by OS Type.
 - AZURE_DISK_SUBSCRIPTION_ID - Filter Azure disks by subscription ID.
-todo (SPARK-88655): remove usage of VMRG and DiskRG
++comment: todo (SPARK-88655): remove usage of VMRG and DiskRG.
 - AZURE_DISK_SIZE - Filter Azure disks on Disk size.
 - AZURE_DISK_ATTACHED_VM - Filter Azure disks by ID of the attached virtual machine.
 - EC2_INSTANCE_INDEXING_STATUS - Filter EC2 Instances by status of indexing. Possible values for
@@ -72,8 +74,7 @@ source object.
 - GCP_NATIVE_INSTANCE_TYPE - Filter by GCP instance type.
 - GCP_NATIVE_INSTANCE_NETWORK_NAME - Filter by GCP Instance Network Name.
 - AZURE_TAG - Filter by azure_native_tags.
-- PHYSICAL_HOST_ID - tag_filter_params field.
-Filter by the ID of a Physical Host.
+- PHYSICAL_HOST_ID - Filter by the ID of a Physical Host.
 - EFFECTIVE_SLA_TYPE - Filter by the SLA type of the effective SLA.
 - SAP_HANA_SYSTEM_ID - Filter by the ID of parent SAP HANA system.
 - PHYSICAL_HOST_CONNECTION_STATUS - Filter by the RBS status of the physical host.

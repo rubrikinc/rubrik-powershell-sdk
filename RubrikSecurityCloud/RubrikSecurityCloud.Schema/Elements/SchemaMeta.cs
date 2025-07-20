@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20250707-25" ;
+        public static string GraphqlSchemaVersion = "v20250714-24" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -398,12 +398,16 @@ namespace RubrikSecurityCloud.Types
             AwsNativeEc2InstanceEdge,
             AwsNativeEc2InstanceSpecificSnapshot,
             AwsNativeEc2InstanceTypeOffering,
+            AwsNativeHierarchyObjectCommon,
             AwsNativeHierarchyObjectConnection,
             AwsNativeHierarchyObjectEdge,
             AwsNativeRdsInstance,
             AwsNativeRdsInstanceConnection,
             AwsNativeRdsInstanceEdge,
             AwsNativeRdsPointInTimeRestoreWindow,
+            AwsNativeRegionHierarchyObject,
+            AwsNativeRegionHierarchyObjectConnection,
+            AwsNativeRegionHierarchyObjectEdge,
             AwsNativeRegionSpec,
             AwsNativeRoot,
             AwsNativeS3Bucket,
@@ -572,6 +576,7 @@ namespace RubrikSecurityCloud.Types
             AzureUserAssignedManagedIdentity,
             AzureUserRoleResp,
             BackupEventStatus,
+            BackupLocationSpec,
             BackupStatsBucket,
             BackupTaskDiagnosticInfo,
             BackupThrottleSetting,
@@ -657,6 +662,7 @@ namespace RubrikSecurityCloud.Types
             CategorizedTprRequestedChangeEntry,
             CcprovisionInfo,
             CcProvisionJobReply,
+            CcProvisionMetadataReply,
             CcWithCloudInfo,
             CdmAgentStatus,
             CdmCertificateUsageInfo,
@@ -786,11 +792,13 @@ namespace RubrikSecurityCloud.Types
             CloudDirectSnapshotsGroupBySummary,
             CloudDirectSnapshotsGroupBySummaryConnection,
             CloudDirectSnapshotsGroupBySummaryEdge,
+            CloudDirectSystemRescanReply,
             CloudDirectSystems,
             CloudDirectTarget,
             CloudDirectValidateSubdirReply,
             CloudInstantiationSpec,
             CloudNativeAccountIdWithName,
+            CloudNativeCertificateInfo,
             CloudNativeCheckRbaConnectivityReply,
             CloudNativeCustomerTagsReply,
             CloudNativeDatabaseBackupSetupSpecs,
@@ -953,6 +961,7 @@ namespace RubrikSecurityCloud.Types
             DataCenterSummary,
             DatagovAccessMethodDetailsType,
             DataGuardGroupMember,
+            DataHosts,
             DataLocation,
             DataLocationSupportedCluster,
             Datastore,
@@ -1230,6 +1239,7 @@ namespace RubrikSecurityCloud.Types
             GenericTimeRange,
             GeoLocation,
             GetAnomalyDetailsReply,
+            GetAzureExocomputeNetworkSetupTemplateReply,
             GetAzureHostTypeResp,
             GetAzureO365ExocomputeResp,
             GetCertificateInfoReply,
@@ -1511,6 +1521,7 @@ namespace RubrikSecurityCloud.Types
             LinuxFileset,
             LinuxRbsBulkInstallReply,
             ListAllUploadRecordsReply,
+            ListCertificateCloudAccountMappingsResp,
             ListCidrsForComputeSettingReply,
             ListIntegrationsReply,
             ListLocationsReply,
@@ -1768,6 +1779,7 @@ namespace RubrikSecurityCloud.Types
             MultiTenantHostSpec,
             MutateRoleReqChangesTemplate,
             MysqldbSlaConfig,
+            NamespaceOverrides,
             NasBaseConfig,
             NasFileset,
             NasNamespace,
@@ -1960,8 +1972,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharepointDrive,
             O365SharePointDrive,
+            O365SharepointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -2560,6 +2572,7 @@ namespace RubrikSecurityCloud.Types
             SyslogExportRuleSummary,
             SyslogExportRuleSummaryListResponse,
             SyslogServerTestResult,
+            SystemOverrides,
             TableFilters,
             Tag,
             TagObject,
@@ -3140,6 +3153,8 @@ namespace RubrikSecurityCloud.Types
             AwsNativeRdsDbInstanceClassFilter,
             AwsNativeRdsInstanceFilters,
             AwsNativeRegionFilter,
+            AwsNativeRegionFilters,
+            AwsNativeRegionNameSubstringFilter,
             AwsNativeS3SlaConfigInput,
             AwsNativeTagFilter,
             AwsNativeVpcFilter,
@@ -3327,6 +3342,7 @@ namespace RubrikSecurityCloud.Types
             CancelThreatHuntInput,
             CancelTprRequestInput,
             CascadingArchivalSpecInput,
+            CcProvisionMetadataReq,
             CdmSnapshotFilter,
             CdmSnapshotFilterInput,
             CdmUpgradeInfoFilterInput,
@@ -3334,6 +3350,7 @@ namespace RubrikSecurityCloud.Types
             CdpPerfDashboardSortParam,
             CertificateClusterInput,
             CertificateImportRequestInput,
+            CertificateInfoInput,
             ChangeCurrentUserPasswordInput,
             ChangePasswordInput,
             ChangeVfdOnHostInput,
@@ -3344,11 +3361,15 @@ namespace RubrikSecurityCloud.Types
             CloudDirectAddSubdirBackupInput,
             CloudDirectDeleteGlobalSmbUserInput,
             CloudDirectExclusion,
+            CloudDirectLatencyThresholdConfig,
+            CloudDirectNetworkOverrideConfig,
+            CloudDirectProtocolNetworkConfig,
             CloudDirectSetGlobalSmbAuthInput,
             CloudDirectSetWanThrottleSettingsInput,
             CloudDirectSnapshotsFilterInput,
             CloudDirectSnapshotsSortByInput,
             CloudDirectSystemDeleteInput,
+            CloudDirectSystemRescanInput,
             CloudDirectSystemsInput,
             CloudDirectValidateSubdirInput,
             CloudDownloadLocationDetailsInput,
@@ -3687,6 +3708,7 @@ namespace RubrikSecurityCloud.Types
             ExcludeAzureStorageAccountContainersInput,
             ExcludeSharepointObjectsFromProtectionInput,
             ExcludeVmDisksInput,
+            Exclusion,
             ExecuteTprRequestsInput,
             ExistingComputeConfig,
             ExistingSsoGroupInput,
@@ -3808,6 +3830,7 @@ namespace RubrikSecurityCloud.Types
             GenericNasSystemCredentialsInput,
             GenericNasSystemParametersInput,
             GenericTimeRangeInput,
+            GetAzureExocomputeNetworkSetupTemplateReq,
             GetCertificateInfoInput,
             GetCloudComputeConnectivityCheckRequestStatusInput,
             GetClusterCsrInput,
@@ -4471,6 +4494,8 @@ namespace RubrikSecurityCloud.Types
             SetAzureCloudAccountCustomerAppCredentialsInput,
             SetBundleApprovalStatusInput,
             SetCloudDirectGlobalSmbSettingsInput,
+            SetCloudDirectNamespaceOverrideInput,
+            SetCloudDirectSystemOverrideInput,
             SetCustomerTagsInput,
             SetDatastoreFreespaceThresholdInput,
             SetDatastoreFreespaceThresholdsInput,
@@ -4480,6 +4505,7 @@ namespace RubrikSecurityCloud.Types
             SetMissingClusterStatusInput,
             SetPasswordComplexityPolicyInput,
             SetPrivateContainerRegistryInput,
+            SetShareExclusionsInput,
             SetSsoCertificateInput,
             SetTotpConfigInput,
             SetupCloudNativeSqlServerBackupInput,
@@ -4655,6 +4681,7 @@ namespace RubrikSecurityCloud.Types
             UpdateBackupTriggerForWorkloadsInput,
             UpdateBackupTriggerRequestInput,
             UpdateBadDiskLedStatusInput,
+            UpdateCertificateCloudAccountMappingsInput,
             UpdateCertificateHostInput,
             UpdateCloudNativeAwsStorageSettingInput,
             UpdateCloudNativeAzureStorageSettingInput,
@@ -5112,6 +5139,7 @@ namespace RubrikSecurityCloud.Types
             azureCloudAccountSubscriptionWithFeatures,
             azureCloudAccountTenant,
             azureCloudAccountTenantWithExoConfigs,
+            azureExocomputeNetworkSetupTemplate,
             azureNativeManagedDisk,
             azureNativeManagedDisks,
             azureNativeRegions,
@@ -5171,6 +5199,7 @@ namespace RubrikSecurityCloud.Types
             cassandraKeyspaces,
             cassandraSource,
             cassandraSources,
+            ccProvisionMetadata,
             cdmHierarchySnappableNew,
             cdmHierarchySnappablesNew,
             cdmInventorySubHierarchyRoot,
@@ -5417,6 +5446,7 @@ namespace RubrikSecurityCloud.Types
             licensesForClusterProductSummary,
             linuxFileset,
             listAllUploadRecords,
+            listCertificateCloudAccountMappings,
             listO365Apps,
             lockoutConfig,
             lookupAccount,
@@ -5950,6 +5980,7 @@ namespace RubrikSecurityCloud.Types
             cloudDirectSetGlobalSmbAuth,
             cloudDirectSetWanThrottleSettings,
             cloudDirectSystemDelete,
+            cloudDirectSystemRescan,
             cloudDirectValidateSubdir,
             cloudNativeCheckRbaConnectivity,
             cloudNativeDownloadFiles,
@@ -6407,6 +6438,8 @@ namespace RubrikSecurityCloud.Types
             setAzureCloudAccountCustomerAppCredentials,
             setBundleApprovalStatus,
             setCloudDirectGlobalSmbSettings,
+            setCloudDirectNamespaceOverride,
+            setCloudDirectSystemOverride,
             setCustomerTags,
             setDatastoreFreespaceThresholds,
             setHostRbsNetworkLimit,
@@ -6417,6 +6450,7 @@ namespace RubrikSecurityCloud.Types
             setO365ServiceAccount,
             setPasswordComplexityPolicy,
             setPrivateContainerRegistry,
+            setShareExclusions,
             setSsoCertificate,
             setTotpConfig,
             setupAzureO365Exocompute,
@@ -6510,6 +6544,7 @@ namespace RubrikSecurityCloud.Types
             updateBadDiskLedStatus,
             updateCassandraSource,
             updateCertificate,
+            updateCertificateCloudAccountMappings,
             updateCertificateHost,
             updateCloudNativeAwsStorageSetting,
             updateCloudNativeAzureStorageSetting,
@@ -6859,6 +6894,7 @@ namespace RubrikSecurityCloud.Types
             CloudDirectNasConnectivityStatus,
             CloudDirectNasProtocolType,
             CloudDirectNasVendorType,
+            CloudDirectNetworkOverrideProtocol,
             CloudDirectOfflineFilesBehaviour,
             CloudDirectSnapshotProtocolType,
             CloudDirectSnapshotSateType,
@@ -7625,6 +7661,7 @@ namespace RubrikSecurityCloud.Types
                     "AwsNativeEbsVolume",
                     "AwsNativeEc2Instance",
                     "AwsNativeRdsInstance",
+                    "AwsNativeRegionHierarchyObject",
                     "AwsNativeS3Bucket",
                     }
                 },
@@ -7635,6 +7672,7 @@ namespace RubrikSecurityCloud.Types
                     "AwsNativeEbsVolume",
                     "AwsNativeEc2Instance",
                     "AwsNativeRdsInstance",
+                    "AwsNativeRegionHierarchyObject",
                     "AwsNativeS3Bucket",
                     }
                 },
@@ -7969,6 +8007,7 @@ namespace RubrikSecurityCloud.Types
                     "AwsNativeEbsVolume",
                     "AwsNativeEc2Instance",
                     "AwsNativeRdsInstance",
+                    "AwsNativeRegionHierarchyObject",
                     "AwsNativeS3Bucket",
                     "AzureAdDirectory",
                     "AzureNativeManagedDisk",
@@ -8699,6 +8738,7 @@ namespace RubrikSecurityCloud.Types
                     "AwsNativeEbsVolume",
                     "AwsNativeEc2Instance",
                     "AwsNativeRdsInstance",
+                    "AwsNativeRegionHierarchyObject",
                     "AwsNativeS3Bucket",
                     "AzureAdDirectory",
                     "AzureNativeManagedDisk",
@@ -9808,6 +9848,7 @@ namespace RubrikSecurityCloud.Types
             azureCloudAccountSubscriptionWithFeatures,
             azureCloudAccountTenant,
             azureCloudAccountTenantWithExoConfigs,
+            azureExocomputeNetworkSetupTemplate,
             azureNativeManagedDisk,
             azureNativeManagedDisks,
             azureNativeRegions,
@@ -9935,6 +9976,7 @@ namespace RubrikSecurityCloud.Types
             cassandraKeyspaces,
             cassandraSource,
             cassandraSources,
+            ccProvisionMetadata,
             cdmHierarchySnappableNew,
             cdmHierarchySnappablesNew,
             cdmInventorySubHierarchyRoot,
@@ -9977,6 +10019,7 @@ namespace RubrikSecurityCloud.Types
             cloudDirectSnapshot,
             cloudDirectSnapshots,
             cloudDirectSystemDelete,
+            cloudDirectSystemRescan,
             cloudDirectSystems,
             cloudDirectValidateSubdir,
             cloudNativeCheckArchivedSnapshotsLocked,
@@ -10515,6 +10558,7 @@ namespace RubrikSecurityCloud.Types
             linuxFileset,
             linuxRbsBulkInstall,
             listAllUploadRecords,
+            listCertificateCloudAccountMappings,
             listCidrsForComputeSetting,
             listO365Apps,
             lockUsersByAdmin,
@@ -10873,6 +10917,8 @@ namespace RubrikSecurityCloud.Types
             setAzureCloudAccountCustomerAppCredentials,
             setBundleApprovalStatus,
             setCloudDirectGlobalSmbSettings,
+            setCloudDirectNamespaceOverride,
+            setCloudDirectSystemOverride,
             setCustomerTags,
             setDatastoreFreespaceThresholds,
             setHostRbsNetworkLimit,
@@ -10883,6 +10929,7 @@ namespace RubrikSecurityCloud.Types
             setO365ServiceAccount,
             setPasswordComplexityPolicy,
             setPrivateContainerRegistry,
+            setShareExclusions,
             setSsoCertificate,
             setTotpConfig,
             setUpgradeType,
@@ -11061,6 +11108,7 @@ namespace RubrikSecurityCloud.Types
             updateBadDiskLedStatus,
             updateCassandraSource,
             updateCertificate,
+            updateCertificateCloudAccountMappings,
             updateCertificateHost,
             updateCloudNativeAwsStorageSetting,
             updateCloudNativeAzureStorageSetting,
@@ -13414,6 +13462,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.azureExocomputeNetworkSetupTemplate,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "ExocomputeNetworkSetupTemplate",
+                        gqlRootFieldName: "azureExocomputeNetworkSetupTemplate"
+                    )
+                },
+                {
                     GqlRootFieldName.azureNativeManagedDisk,
                     new RscOp(
                         cmdletName: "New-RscQueryAzureNative",
@@ -14430,6 +14486,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.ccProvisionMetadata,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "CcProvisionMetadata",
+                        gqlRootFieldName: "ccProvisionMetadata"
+                    )
+                },
+                {
                     GqlRootFieldName.cdmHierarchySnappableNew,
                     new RscOp(
                         cmdletName: "New-RscQuerySnappable",
@@ -14763,6 +14827,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMisc",
                         cmdletSwitchName: "CloudDirectSystemDelete",
                         gqlRootFieldName: "cloudDirectSystemDelete"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudDirectSystemRescan,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "CloudDirectSystemRescan",
+                        gqlRootFieldName: "cloudDirectSystemRescan"
                     )
                 },
                 {
@@ -19070,6 +19142,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.listCertificateCloudAccountMappings,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudAccount",
+                        cmdletSwitchName: "ListCertificateMappings",
+                        gqlRootFieldName: "listCertificateCloudAccountMappings"
+                    )
+                },
+                {
                     GqlRootFieldName.listCidrsForComputeSetting,
                     new RscOp(
                         cmdletName: "New-RscMutationMisc",
@@ -21934,6 +22014,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.setCloudDirectNamespaceOverride,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "SetCloudDirectNamespaceOverride",
+                        gqlRootFieldName: "setCloudDirectNamespaceOverride"
+                    )
+                },
+                {
+                    GqlRootFieldName.setCloudDirectSystemOverride,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "SetCloudDirectSystemOverride",
+                        gqlRootFieldName: "setCloudDirectSystemOverride"
+                    )
+                },
+                {
                     GqlRootFieldName.setCustomerTags,
                     new RscOp(
                         cmdletName: "New-RscMutationMisc",
@@ -22011,6 +22107,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMisc",
                         cmdletSwitchName: "SetPrivateContainerRegistry",
                         gqlRootFieldName: "setPrivateContainerRegistry"
+                    )
+                },
+                {
+                    GqlRootFieldName.setShareExclusions,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "SetShareExclusions",
+                        gqlRootFieldName: "setShareExclusions"
                     )
                 },
                 {
@@ -23435,6 +23539,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationCertificate",
                         cmdletSwitchName: "Update",
                         gqlRootFieldName: "updateCertificate"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateCertificateCloudAccountMappings,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudAccount",
+                        cmdletSwitchName: "UpdateCertificateMappings",
+                        gqlRootFieldName: "updateCertificateCloudAccountMappings"
                     )
                 },
                 {
@@ -26441,6 +26553,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.azureCloudAccountTenantWithExoConfigs
                 },
                 {
+                    "New-RscQueryAzure -Op ExocomputeNetworkSetupTemplate",
+                    GqlRootFieldName.azureExocomputeNetworkSetupTemplate
+                },
+                {
                     "New-RscQueryAzureNative -Op ManagedDisk",
                     GqlRootFieldName.azureNativeManagedDisk
                 },
@@ -26949,6 +27065,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.cassandraSources
                 },
                 {
+                    "New-RscQueryMisc -Op CcProvisionMetadata",
+                    GqlRootFieldName.ccProvisionMetadata
+                },
+                {
                     "New-RscQuerySnappable -Op CdmHierarchySnappableNew",
                     GqlRootFieldName.cdmHierarchySnappableNew
                 },
@@ -27115,6 +27235,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationMisc -Op CloudDirectSystemDelete",
                     GqlRootFieldName.cloudDirectSystemDelete
+                },
+                {
+                    "New-RscMutationMisc -Op CloudDirectSystemRescan",
+                    GqlRootFieldName.cloudDirectSystemRescan
                 },
                 {
                     "New-RscQueryMisc -Op CloudDirectSystems",
@@ -29269,6 +29393,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.listAllUploadRecords
                 },
                 {
+                    "New-RscQueryCloudAccount -Op ListCertificateMappings",
+                    GqlRootFieldName.listCertificateCloudAccountMappings
+                },
+                {
                     "New-RscMutationMisc -Op ListCidrsForComputeSetting",
                     GqlRootFieldName.listCidrsForComputeSetting
                 },
@@ -30701,6 +30829,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.setCloudDirectGlobalSmbSettings
                 },
                 {
+                    "New-RscMutationMisc -Op SetCloudDirectNamespaceOverride",
+                    GqlRootFieldName.setCloudDirectNamespaceOverride
+                },
+                {
+                    "New-RscMutationMisc -Op SetCloudDirectSystemOverride",
+                    GqlRootFieldName.setCloudDirectSystemOverride
+                },
+                {
                     "New-RscMutationMisc -Op SetCustomerTags",
                     GqlRootFieldName.setCustomerTags
                 },
@@ -30739,6 +30875,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationMisc -Op SetPrivateContainerRegistry",
                     GqlRootFieldName.setPrivateContainerRegistry
+                },
+                {
+                    "New-RscMutationMisc -Op SetShareExclusions",
+                    GqlRootFieldName.setShareExclusions
                 },
                 {
                     "New-RscMutationCertificate -Op SetSso",
@@ -31451,6 +31591,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationCertificate -Op Update",
                     GqlRootFieldName.updateCertificate
+                },
+                {
+                    "New-RscMutationCloudAccount -Op UpdateCertificateMappings",
+                    GqlRootFieldName.updateCertificateCloudAccountMappings
                 },
                 {
                     "New-RscMutationCertificate -Op UpdateHost",
@@ -33393,6 +33537,10 @@ namespace RubrikSecurityCloud.Types
                         "updateManagedIdentitiesAsync",
                     }
                 },
+                {   "CcProvisionMetadataReply", new List<string> {
+                        "ccProvisionMetadata",
+                    }
+                },
                 {   "CdmHierarchyObjectConnection", new List<string> {
                         "nasTopLevelDescendants",
                         "nutanixTopLevelDescendants",
@@ -33538,6 +33686,10 @@ namespace RubrikSecurityCloud.Types
                         "cloudDirectSnapshots",
                         "snapshotsOfCloudDirectBucket",
                         "snapshotsOfCloudDirectShare",
+                    }
+                },
+                {   "CloudDirectSystemRescanReply", new List<string> {
+                        "cloudDirectSystemRescan",
                     }
                 },
                 {   "CloudDirectSystems", new List<string> {
@@ -34212,6 +34364,10 @@ namespace RubrikSecurityCloud.Types
                         "anomalyResultOpt",
                     }
                 },
+                {   "GetAzureExocomputeNetworkSetupTemplateReply", new List<string> {
+                        "azureExocomputeNetworkSetupTemplate",
+                    }
+                },
                 {   "GetAzureHostTypeResp", new List<string> {
                         "azureO365GetAzureHostType",
                     }
@@ -34669,6 +34825,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "ListAllUploadRecordsReply", new List<string> {
                         "listAllUploadRecords",
+                    }
+                },
+                {   "ListCertificateCloudAccountMappingsResp", new List<string> {
+                        "listCertificateCloudAccountMappings",
                     }
                 },
                 {   "ListCidrsForComputeSettingReply", new List<string> {
@@ -36683,9 +36843,12 @@ namespace RubrikSecurityCloud.Types
                         "resolveAnomaly",
                         "revokeAllOrgRoles",
                         "setBundleApprovalStatus",
+                        "setCloudDirectNamespaceOverride",
+                        "setCloudDirectSystemOverride",
                         "setCustomerTags",
                         "setPasswordComplexityPolicy",
                         "setPrivateContainerRegistry",
+                        "setShareExclusions",
                         "setSsoCertificate",
                         "stopJobInstanceFromEventSeries",
                         "submitTprRequest",
@@ -36698,6 +36861,7 @@ namespace RubrikSecurityCloud.Types
                         "updateAwsCloudAccount",
                         "updateAwsIamPair",
                         "updateBackupTriggerForWorkloads",
+                        "updateCertificateCloudAccountMappings",
                         "updateCloudNativeLabelRule",
                         "updateCloudNativeRootThreatMonitoringEnablement",
                         "updateCloudNativeTagRule",
@@ -38310,6 +38474,10 @@ namespace RubrikSecurityCloud.Types
                         "cancelTprRequest",
                     }
                 },
+                {   "CcProvisionMetadataReq", new List<string> {
+                        "ccProvisionMetadata",
+                    }
+                },
                 {   "CdmUpgradeInfoFilterInput", new List<string> {
                         "clusterWithUpgradesInfo",
                     }
@@ -38401,6 +38569,10 @@ namespace RubrikSecurityCloud.Types
                         "cloudDirectSystemDelete",
                     }
                 },
+                {   "CloudDirectSystemRescanInput", new List<string> {
+                        "cloudDirectSystemRescan",
+                    }
+                },
                 {   "CloudDirectSystemsInput", new List<string> {
                         "cloudDirectSystems",
                     }
@@ -38442,6 +38614,10 @@ namespace RubrikSecurityCloud.Types
                 {   "CloudNativeTagRuleSortByFields", new List<string> {
                         "cloudNativeLabelRules",
                         "cloudNativeTagRules",
+                    }
+                },
+                {   "CloudType", new List<string> {
+                        "listCertificateCloudAccountMappings",
                     }
                 },
                 {   "CloudVendor", new List<string> {
@@ -39806,6 +39982,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "GenerateSupportBundleInput", new List<string> {
                         "generateSupportBundle",
+                    }
+                },
+                {   "GetAzureExocomputeNetworkSetupTemplateReq", new List<string> {
+                        "azureExocomputeNetworkSetupTemplate",
                     }
                 },
                 {   "GetCertificateInfoInput", new List<string> {
@@ -41456,6 +41636,14 @@ namespace RubrikSecurityCloud.Types
                         "setCloudDirectGlobalSmbSettings",
                     }
                 },
+                {   "SetCloudDirectNamespaceOverrideInput", new List<string> {
+                        "setCloudDirectNamespaceOverride",
+                    }
+                },
+                {   "SetCloudDirectSystemOverrideInput", new List<string> {
+                        "setCloudDirectSystemOverride",
+                    }
+                },
                 {   "SetCustomerTagsInput", new List<string> {
                         "setCustomerTags",
                     }
@@ -41486,6 +41674,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "SetPrivateContainerRegistryInput", new List<string> {
                         "setPrivateContainerRegistry",
+                    }
+                },
+                {   "SetShareExclusionsInput", new List<string> {
+                        "setShareExclusions",
                     }
                 },
                 {   "SetSsoCertificateInput", new List<string> {
@@ -42125,6 +42317,7 @@ namespace RubrikSecurityCloud.Types
                         "ldapIntegrationConnection",
                         "ldapPrincipalConnection",
                         "legalHoldSnapshotsForSnappable",
+                        "listCertificateCloudAccountMappings",
                         "listO365Apps",
                         "m365BackupStorageObjectRestorePoints",
                         "managedVolumeLiveMounts",
@@ -42920,6 +43113,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "UpdateBadDiskLedStatusInput", new List<string> {
                         "updateBadDiskLedStatus",
+                    }
+                },
+                {   "UpdateCertificateCloudAccountMappingsInput", new List<string> {
+                        "updateCertificateCloudAccountMappings",
                     }
                 },
                 {   "UpdateCertificateHostInput", new List<string> {
@@ -44705,6 +44902,7 @@ namespace RubrikSecurityCloud.Types
                 { "recoverCloudCluster", "CcProvisionJobReply"},
                 { "removeClusterNodes", "CcProvisionJobReply"},
                 { "updateManagedIdentitiesAsync", "CcProvisionJobReply"},
+                { "ccProvisionMetadata", "CcProvisionMetadataReply"},
                 { "nasTopLevelDescendants", "CdmHierarchyObjectConnection"},
                 { "nutanixTopLevelDescendants", "CdmHierarchyObjectConnection"},
                 { "vSphereRootRecoveryHierarchy", "CdmHierarchyObjectConnection"},
@@ -44753,6 +44951,7 @@ namespace RubrikSecurityCloud.Types
                 { "cloudDirectSnapshots", "CloudDirectSnapshotConnection"},
                 { "snapshotsOfCloudDirectBucket", "CloudDirectSnapshotConnection"},
                 { "snapshotsOfCloudDirectShare", "CloudDirectSnapshotConnection"},
+                { "cloudDirectSystemRescan", "CloudDirectSystemRescanReply"},
                 { "cloudDirectSystems", "CloudDirectSystems"},
                 { "cloudDirectValidateSubdir", "CloudDirectValidateSubdirReply"},
                 { "cloudNativeCheckRbaConnectivity", "CloudNativeCheckRbaConnectivityReply"},
@@ -44942,6 +45141,7 @@ namespace RubrikSecurityCloud.Types
                 { "snapshotOfASnappableConnection", "GenericSnapshotConnection"},
                 { "snapshotOfSnappablesConnection", "GenericSnapshotConnection"},
                 { "anomalyResultOpt", "GetAnomalyDetailsReply"},
+                { "azureExocomputeNetworkSetupTemplate", "GetAzureExocomputeNetworkSetupTemplateReply"},
                 { "azureO365GetAzureHostType", "GetAzureHostTypeResp"},
                 { "azureO365Exocompute", "GetAzureO365ExocomputeResp"},
                 { "certificateInfo", "GetCertificateInfoReply"},
@@ -45065,6 +45265,7 @@ namespace RubrikSecurityCloud.Types
                 { "linuxFileset", "LinuxFileset"},
                 { "linuxRbsBulkInstall", "LinuxRbsBulkInstallReply"},
                 { "listAllUploadRecords", "ListAllUploadRecordsReply"},
+                { "listCertificateCloudAccountMappings", "ListCertificateCloudAccountMappingsResp"},
                 { "listCidrsForComputeSetting", "ListCidrsForComputeSettingReply"},
                 { "allIntegrations", "ListIntegrationsReply"},
                 { "ransomwareDetectionWorkloadLocations", "ListLocationsReply"},
@@ -45741,9 +45942,12 @@ namespace RubrikSecurityCloud.Types
                 { "resolveAnomaly", "Void"},
                 { "revokeAllOrgRoles", "Void"},
                 { "setBundleApprovalStatus", "Void"},
+                { "setCloudDirectNamespaceOverride", "Void"},
+                { "setCloudDirectSystemOverride", "Void"},
                 { "setCustomerTags", "Void"},
                 { "setPasswordComplexityPolicy", "Void"},
                 { "setPrivateContainerRegistry", "Void"},
+                { "setShareExclusions", "Void"},
                 { "setSsoCertificate", "Void"},
                 { "stopJobInstanceFromEventSeries", "Void"},
                 { "submitTprRequest", "Void"},
@@ -45756,6 +45960,7 @@ namespace RubrikSecurityCloud.Types
                 { "updateAwsCloudAccount", "Void"},
                 { "updateAwsIamPair", "Void"},
                 { "updateBackupTriggerForWorkloads", "Void"},
+                { "updateCertificateCloudAccountMappings", "Void"},
                 { "updateCloudNativeLabelRule", "Void"},
                 { "updateCloudNativeRootThreatMonitoringEnablement", "Void"},
                 { "updateCloudNativeTagRule", "Void"},
@@ -46529,6 +46734,7 @@ namespace RubrikSecurityCloud.Types
                     "EncryptionKeys",
                     "ExcludeStorageAccountContainers",
                     "ExocomputeConfigsInAccount",
+                    "ExocomputeNetworkSetupTemplate",
                     "HasRelicAdSnapshot",
                     "HostedAzureRegions",
                     "IsStorageAccountNameAvailable",
@@ -46699,8 +46905,10 @@ namespace RubrikSecurityCloud.Types
                     "ExocomputeMappings",
                     "IamPairsByAndLocation",
                     "LatestFeaturePermissions",
+                    "ListCertificateMappings",
                     "MapExocomputeAccount",
                     "UnmapExocomputeAccount",
+                    "UpdateCertificateMappings",
                     "WithExocomputeMappings",
                     }
                 },
@@ -47205,6 +47413,7 @@ namespace RubrikSecurityCloud.Types
                     "CancelScheduledUpgrade",
                     "CancelTaskchain",
                     "CancelTprRequest",
+                    "CcProvisionMetadata",
                     "CdmGuestCredentials",
                     "CdmInventorySubHierarchyRoot",
                     "CdmOvaDetails",
@@ -47225,6 +47434,7 @@ namespace RubrikSecurityCloud.Types
                     "CloudDirectShares",
                     "CloudDirectSites",
                     "CloudDirectSystemDelete",
+                    "CloudDirectSystemRescan",
                     "CloudDirectSystems",
                     "CloudDirectValidateSubdir",
                     "CompleteUploadSession",
@@ -47423,11 +47633,14 @@ namespace RubrikSecurityCloud.Types
                     "SearchFileByPrefix",
                     "SetAnalyzerRisks",
                     "SetBundleApprovalStatus",
+                    "SetCloudDirectNamespaceOverride",
+                    "SetCloudDirectSystemOverride",
                     "SetCustomerTags",
                     "SetDatastoreFreespaceThresholds",
                     "SetIpWhitelistEnabled",
                     "SetMfaSetting",
                     "SetPrivateContainerRegistry",
+                    "SetShareExclusions",
                     "SetTotpConfig",
                     "SetUpgradeType",
                     "SetUserLevelTotpEnforcement",

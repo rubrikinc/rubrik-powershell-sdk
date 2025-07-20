@@ -10,3 +10,5 @@ of a S3Compatible location.
 - NETAPPSG - NetAppSG subtype.
 - IRONCLOUD - IronCloud subtype.
 - DEFAULT_BUCKET_IMMUTABLE - Default bucket immutable subtype.
+- PURE_FB - PureFlashBlade subtype.
+- WASABI - Wasabi subtype.

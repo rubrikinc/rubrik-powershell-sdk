@@ -100,6 +100,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oracleSysDbaUser")]
         public System.String? OracleSysDbaUser { get; set; }
 
+        //      C# -> System.Boolean? ShouldSddThroughRba
+        // GraphQL -> shouldSddThroughRba: Boolean (scalar)
+        [JsonProperty("shouldSddThroughRba")]
+        public System.Boolean? ShouldSddThroughRba { get; set; }
+
         //      C# -> ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo
         // GraphQL -> activeDirectoryAdditionalInfo: ActiveDirectoryAdditionalInfo (type)
         [JsonProperty("activeDirectoryAdditionalInfo")]
@@ -141,6 +146,7 @@ namespace RubrikSecurityCloud.Types
         System.String? OracleSddUsername = null,
         System.String? OracleSddWalletPath = null,
         System.String? OracleSysDbaUser = null,
+        System.Boolean? ShouldSddThroughRba = null,
         ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo = null,
         HostSummary? HostSummary = null,
         OracleSepsWalletSettings? OracleSepsSettings = null
@@ -193,6 +199,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OracleSysDbaUser != null ) {
             this.OracleSysDbaUser = OracleSysDbaUser;
+        }
+        if ( ShouldSddThroughRba != null ) {
+            this.ShouldSddThroughRba = ShouldSddThroughRba;
         }
         if ( ActiveDirectoryAdditionalInfo != null ) {
             this.ActiveDirectoryAdditionalInfo = ActiveDirectoryAdditionalInfo;
@@ -359,6 +368,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "oracleSysDbaUser\n" ;
             } else {
                 s += ind + "oracleSysDbaUser\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldSddThroughRba
+        // GraphQL -> shouldSddThroughRba: Boolean (scalar)
+        if (this.ShouldSddThroughRba != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldSddThroughRba\n" ;
+            } else {
+                s += ind + "shouldSddThroughRba\n" ;
             }
         }
         //      C# -> ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo
@@ -675,6 +693,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OracleSysDbaUser != null && ec.Excludes("oracleSysDbaUser",true))
         {
             this.OracleSysDbaUser = null;
+        }
+        //      C# -> System.Boolean? ShouldSddThroughRba
+        // GraphQL -> shouldSddThroughRba: Boolean (scalar)
+        if (ec.Includes("shouldSddThroughRba",true))
+        {
+            if(this.ShouldSddThroughRba == null) {
+
+                this.ShouldSddThroughRba = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldSddThroughRba != null && ec.Excludes("shouldSddThroughRba",true))
+        {
+            this.ShouldSddThroughRba = null;
         }
         //      C# -> ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo
         // GraphQL -> activeDirectoryAdditionalInfo: ActiveDirectoryAdditionalInfo (type)

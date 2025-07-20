@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> HierarchyObject? HierarchyObject
+        // GraphQL -> hierarchyObject: HierarchyObject! (interface)
+        [JsonProperty("hierarchyObject")]
+        public HierarchyObject? HierarchyObject { get; set; }
+
         //      C# -> System.String? CdmRecoveryJobId
         // GraphQL -> cdmRecoveryJobId: String! (scalar)
         [JsonProperty("cdmRecoveryJobId")]
@@ -55,6 +60,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VmRecoveryJobInfo Set(
+        HierarchyObject? HierarchyObject = null,
         System.String? CdmRecoveryJobId = null,
         System.String? JobStatus = null,
         System.String? VmId = null,
@@ -62,6 +68,9 @@ namespace RubrikSecurityCloud.Types
         System.Int64? VmSizeInKbs = null
     ) 
     {
+        if ( HierarchyObject != null ) {
+            this.HierarchyObject = HierarchyObject;
+        }
         if ( CdmRecoveryJobId != null ) {
             this.CdmRecoveryJobId = CdmRecoveryJobId;
         }
@@ -91,6 +100,19 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> HierarchyObject? HierarchyObject
+        // GraphQL -> hierarchyObject: HierarchyObject! (interface)
+        if (this.HierarchyObject != null) {
+                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.HierarchyObject, conf.Child("hierarchyObject"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hierarchyObject" + " " + "{\n" + fspec + ind + "}\n";
+                }
+            }
+        }
         //      C# -> System.String? CdmRecoveryJobId
         // GraphQL -> cdmRecoveryJobId: String! (scalar)
         if (this.CdmRecoveryJobId != null) {
@@ -143,6 +165,30 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> HierarchyObject? HierarchyObject
+        // GraphQL -> hierarchyObject: HierarchyObject! (interface)
+        if (ec.Includes("hierarchyObject",false))
+        {
+            if(this.HierarchyObject == null) {
+
+                var impls = new List<HierarchyObject>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObject"));
+                this.HierarchyObject = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<HierarchyObject>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObject"));
+                this.HierarchyObject = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.HierarchyObject != null && ec.Excludes("hierarchyObject",false))
+        {
+            this.HierarchyObject = null;
+        }
         //      C# -> System.String? CdmRecoveryJobId
         // GraphQL -> cdmRecoveryJobId: String! (scalar)
         if (ec.Includes("cdmRecoveryJobId",true))

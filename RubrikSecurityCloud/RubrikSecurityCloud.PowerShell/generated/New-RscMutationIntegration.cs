@@ -103,6 +103,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			policies = @(
     /// 				$someString
     /// 			)
+    /// 			# REQUIRED
+    /// 			targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
     /// 			# OPTIONAL
     /// 			genericNas = @{
     /// 				# REQUIRED
@@ -132,8 +134,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				code = $someDlpStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpStatusCode]) for enum values.
     /// 			}
-    /// 			# REQUIRED
-    /// 			targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
     /// 		}
     /// 		# OPTIONAL
     /// 		serviceNowItsm = @{
@@ -204,6 +204,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					policies = @(
     /// 						$someString
     /// 					)
+    /// 					# REQUIRED
+    /// 					targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
     /// 					# OPTIONAL
     /// 					genericNas = @{
     /// 						# REQUIRED
@@ -233,8 +235,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						# OPTIONAL
     /// 						code = $someDlpStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpStatusCode]) for enum values.
     /// 					}
-    /// 					# REQUIRED
-    /// 					targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
     /// 				}
     /// 				# OPTIONAL
     /// 				serviceNowItsm = @{
@@ -401,6 +401,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			policies = @(
     /// 				$someString
     /// 			)
+    /// 			# REQUIRED
+    /// 			targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
     /// 			# OPTIONAL
     /// 			genericNas = @{
     /// 				# REQUIRED
@@ -430,8 +432,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				code = $someDlpStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpStatusCode]) for enum values.
     /// 			}
-    /// 			# REQUIRED
-    /// 			targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
     /// 		}
     /// 		# OPTIONAL
     /// 		serviceNowItsm = @{
@@ -504,6 +504,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					policies = @(
     /// 						$someString
     /// 					)
+    /// 					# REQUIRED
+    /// 					targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
     /// 					# OPTIONAL
     /// 					genericNas = @{
     /// 						# REQUIRED
@@ -533,8 +535,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						# OPTIONAL
     /// 						code = $someDlpStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpStatusCode]) for enum values.
     /// 					}
-    /// 					# REQUIRED
-    /// 					targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
     /// 				}
     /// 				# OPTIONAL
     /// 				serviceNowItsm = @{
@@ -739,6 +739,8 @@ $query.Var.input = @{
 			policies = @(
 				$someString
 			)
+			# REQUIRED
+			targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
 			# OPTIONAL
 			genericNas = @{
 				# REQUIRED
@@ -768,8 +770,6 @@ $query.Var.input = @{
 				# OPTIONAL
 				code = $someDlpStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpStatusCode]) for enum values.
 			}
-			# REQUIRED
-			targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
 		}
 		# OPTIONAL
 		serviceNowItsm = @{
@@ -832,6 +832,8 @@ $query.Var.input = @{
 					policies = @(
 						$someString
 					)
+					# REQUIRED
+					targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
 					# OPTIONAL
 					genericNas = @{
 						# REQUIRED
@@ -861,8 +863,6 @@ $query.Var.input = @{
 						# OPTIONAL
 						code = $someDlpStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpStatusCode]) for enum values.
 					}
-					# REQUIRED
-					targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
 				}
 				# OPTIONAL
 				serviceNowItsm = @{
@@ -997,6 +997,8 @@ $query.Var.input = @{
 			policies = @(
 				$someString
 			)
+			# REQUIRED
+			targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
 			# OPTIONAL
 			genericNas = @{
 				# REQUIRED
@@ -1026,8 +1028,6 @@ $query.Var.input = @{
 				# OPTIONAL
 				code = $someDlpStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpStatusCode]) for enum values.
 			}
-			# REQUIRED
-			targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
 		}
 		# OPTIONAL
 		serviceNowItsm = @{
@@ -1092,6 +1092,8 @@ $query.Var.input = @{
 					policies = @(
 						$someString
 					)
+					# REQUIRED
+					targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
 					# OPTIONAL
 					genericNas = @{
 						# REQUIRED
@@ -1121,8 +1123,6 @@ $query.Var.input = @{
 						# OPTIONAL
 						code = $someDlpStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpStatusCode]) for enum values.
 					}
-					# REQUIRED
-					targetType = $someDlpConfigTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DlpConfigTargetType]) for enum values.
 				}
 				# OPTIONAL
 				serviceNowItsm = @{

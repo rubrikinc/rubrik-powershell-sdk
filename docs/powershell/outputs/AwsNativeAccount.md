@@ -33,6 +33,8 @@ AWS native account.
   - List of all EBS Volumes under this AWS Native account.
 - awsNativeRdsInstances: AwsNativeRdsInstanceConnection
   - List of all RDS Instances under this AWS Native account.
+- awsRegions: AwsNativeRegionHierarchyObjectConnection
+  - Paginated list of AWS native regions in this account.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus

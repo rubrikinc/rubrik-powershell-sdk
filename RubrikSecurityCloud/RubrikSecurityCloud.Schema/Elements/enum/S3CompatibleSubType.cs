@@ -36,11 +36,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NETAPPSG")]
         NETAPPSG,
 
+        [EnumMember(Value = "PURE_FB")]
+        PURE_FB,
+
         [EnumMember(Value = "SCALITY")]
         SCALITY,
 
         [EnumMember(Value = "TYPE_UNSPECIFIED")]
-        TYPE_UNSPECIFIED
+        TYPE_UNSPECIFIED,
+
+        [EnumMember(Value = "WASABI")]
+        WASABI
 
 
     } // enum S3CompatibleSubType

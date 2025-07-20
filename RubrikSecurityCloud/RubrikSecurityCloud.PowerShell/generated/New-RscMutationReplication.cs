@@ -189,8 +189,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	disablePerLocationPause = @{
     /// 		# REQUIRED
     /// 		shouldSkipOldSnapshots = $someBoolean
@@ -199,6 +197,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -229,18 +229,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	enablePerLocationPause = @{
-    /// 		# OPTIONAL
-    /// 		shouldPauseImmediately = $someBoolean
     /// 		# REQUIRED
     /// 		shouldCancelImmediately = $someBoolean
     /// 		# REQUIRED
     /// 		sourceClusterUuids = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldPauseImmediately = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -271,14 +271,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
+    /// 	id = $someString
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		shouldBypassReplicationThrottle = $someBoolean
     /// 	}
     /// 	# REQUIRED
-    /// 	id = $someString
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -574,8 +574,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	disablePerLocationPause = @{
 		# REQUIRED
 		shouldSkipOldSnapshots = $someBoolean
@@ -584,6 +582,8 @@ $query.Var.input = @{
 			$someString
 		)
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -606,18 +606,18 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	enablePerLocationPause = @{
-		# OPTIONAL
-		shouldPauseImmediately = $someBoolean
 		# REQUIRED
 		shouldCancelImmediately = $someBoolean
 		# REQUIRED
 		sourceClusterUuids = @(
 			$someString
 		)
+		# OPTIONAL
+		shouldPauseImmediately = $someBoolean
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -640,14 +640,14 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
+	id = $someString
 	# REQUIRED
 	config = @{
 		# REQUIRED
 		shouldBypassReplicationThrottle = $someBoolean
 	}
 	# REQUIRED
-	id = $someString
+	clusterUuid = $someString
 }"
             );
         }

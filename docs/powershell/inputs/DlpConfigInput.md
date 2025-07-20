@@ -3,6 +3,8 @@ Holds the configuration for the Data Loss Prevention integration.
 
 - policies: list of System.Strings
   - Policies to which the configuration applies.
+- targetType: DlpConfigTargetType
+  - The target to use when exporting files for fingerprinting.
 - genericNas: DlpConfigGenericNasInput
   - The generic NAS target configuration.
 - vmwareVm: DlpConfigVmwareVmInput
@@ -15,5 +17,3 @@ runs with administrator privileges.
 to create a service account name.
 - status: DlpStatusInput
   - The status of the integration.
-- targetType: DlpConfigTargetType
-  - The target to use when exporting files for fingerprinting.

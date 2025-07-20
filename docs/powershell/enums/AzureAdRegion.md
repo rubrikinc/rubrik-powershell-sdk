@@ -1,5 +1,5 @@
 ### AzureAdRegion
-Represents regions for Azure AD.
+Represents regions for Entra ID.
 
 - UNKNOWN_AZURE_AD_REGION - AzureAd region is Unknown.
 - AUSTRALIAEAST - Azure region is Australia East.
@@ -25,4 +25,4 @@ Represents regions for Azure AD.
 - POLANDCENTRAL - Azure region is Poland Central.
 - QATARCENTRAL - Azure region is Qatar Central.
 - UAENORTH - Azure region is UAE North.
-- USGOVVIRGINIA - Azure AD region is US Gov Virginia.
+- USGOVVIRGINIA - Entra ID region is US Gov Virginia.

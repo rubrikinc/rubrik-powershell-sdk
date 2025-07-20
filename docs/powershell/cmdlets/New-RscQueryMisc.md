@@ -206,6 +206,11 @@ Browse team files.
     - teamsDriveSearchFilter - OnedriveSearchFilter
     - orgId - System.String: Org UUID.
 - Returns O365OnedriveObjectConnection.
+### ccprovisionmetadata
+Retrieves ccprovision metadata.
+
+- There is a single argument of type CcProvisionMetadataReq.
+- Returns CcProvisionMetadataReply.
 ### cdmguestcredentials
 Get all cdm guest credentials.
 

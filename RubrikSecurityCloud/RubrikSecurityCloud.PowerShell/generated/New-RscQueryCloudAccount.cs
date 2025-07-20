@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 7
+    /// Create a new RscQuery object for any of the 8
     /// operations in the 'Cloud Account' API domain:
-    /// CloudAccount, CloudAccounts, CurrentFeaturePermissions, ExocomputeMappings, IamPairsByAndLocation, LatestFeaturePermissions, or WithExocomputeMappings.
+    /// CloudAccount, CloudAccounts, CurrentFeaturePermissions, ExocomputeMappings, IamPairsByAndLocation, LatestFeaturePermissions, ListCertificateMappings, or WithExocomputeMappings.
     /// </summary>
     /// <description>
     /// New-RscQueryCloudAccount creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 7 operations
+    /// There are 8 operations
     /// in the 'Cloud Account' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CloudAccount, CloudAccounts, CurrentFeaturePermissions, ExocomputeMappings, IamPairsByAndLocation, LatestFeaturePermissions, or WithExocomputeMappings.
+    /// one of: CloudAccount, CloudAccounts, CurrentFeaturePermissions, ExocomputeMappings, IamPairsByAndLocation, LatestFeaturePermissions, ListCertificateMappings, or WithExocomputeMappings.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -303,6 +303,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ListCertificateMappings operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: ListCertificateMappings
+    /// 
+    /// $query = New-RscQueryCloudAccount -Operation ListCertificateMappings
+    /// 
+    /// # REQUIRED
+    /// $query.Var.cloudNativeAccountId = $someString
+    /// # REQUIRED
+    /// $query.Var.cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ListCertificateCloudAccountMappingsResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the WithExocomputeMappings operation
     /// of the 'Cloud Account' API domain.
     /// <code>
@@ -360,6 +390,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ExocomputeMappings",
                 "IamPairsByAndLocation",
                 "LatestFeaturePermissions",
+                "ListCertificateMappings",
                 "WithExocomputeMappings",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -393,6 +424,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "LatestFeaturePermissions":
                         this.ProcessRecord_LatestFeaturePermissions();
+                        break;
+                    case "ListCertificateMappings":
+                        this.ProcessRecord_ListCertificateMappings();
                         break;
                     case "WithExocomputeMappings":
                         this.ProcessRecord_WithExocomputeMappings();
@@ -459,6 +493,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -LatestFeaturePermissions";
             // Create new graphql operation allLatestFeaturePermissionsForCloudAccounts
             InitQueryAllLatestFeaturePermissionsForCloudAccounts();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // listCertificateCloudAccountMappings.
+        internal void ProcessRecord_ListCertificateMappings()
+        {
+            this._logger.name += " -ListCertificateMappings";
+            // Create new graphql operation listCertificateCloudAccountMappings
+            InitQueryListCertificateCloudAccountMappings();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -665,6 +708,29 @@ $query.Var.featuresWithPermissionsGroups = @(
 		)
 }
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // listCertificateCloudAccountMappings(cloudNativeAccountId: String!, cloudType: CloudType!): ListCertificateCloudAccountMappingsResp!
+        internal void InitQueryListCertificateCloudAccountMappings()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudNativeAccountId", "String!"),
+                Tuple.Create("cloudType", "CloudType!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryListCertificateCloudAccountMappings",
+                "($cloudNativeAccountId: String!,$cloudType: CloudType!)",
+                "ListCertificateCloudAccountMappingsResp",
+                Query.ListCertificateCloudAccountMappings,
+                Query.ListCertificateCloudAccountMappingsFieldSpec,
+                @"# REQUIRED
+$query.Var.cloudNativeAccountId = $someString
+# REQUIRED
+$query.Var.cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values."
             );
         }
 

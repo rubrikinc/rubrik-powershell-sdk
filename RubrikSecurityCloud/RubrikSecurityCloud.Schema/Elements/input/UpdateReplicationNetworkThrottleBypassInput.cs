@@ -19,12 +19,12 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: String! (scalar)
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
 
         //      C# -> ReplicationTargetThrottleUpdateInput? Config
         // GraphQL -> config: ReplicationTargetThrottleUpdateInput! (input)
@@ -33,12 +33,12 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("config")]
         public ReplicationTargetThrottleUpdateInput? Config { get; set; }
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
 
 
         #endregion

@@ -159,6 +159,12 @@ Retrieves a list of Azure Exocompute configurations filtered by a cloud account 
     - azureExocomputeSearchQuery - System.String: A query that searches for Exocompute configurations with an account name or account native ID that is prefixed by the search query.
     - cloudAccountIDs - list of System.Strings: IDs of cloud accounts.
 - Returns list of AzureExocomputeConfigsInAccounts.
+### exocomputenetworksetuptemplate
+GetAzureExocomputeNetworkSetupTemplate retrieves the ARM templates for
+creating VNet, Subnet, and NSG in the regions provided in the request.
+
+- There is a single argument of type GetAzureExocomputeNetworkSetupTemplateReq.
+- Returns GetAzureExocomputeNetworkSetupTemplateReply.
 ### hasrelicadsnapshot
 Checks if Microsoft Entra ID has relic snapshots.
 

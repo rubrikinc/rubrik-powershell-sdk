@@ -16,3 +16,4 @@ The types of metadata key.
 - CUSTOM_CELL_TYPE - Specifies custom UI components to use for the column.
 - ORG_ID - Organization ID used in various queries.
 - INVALID_CHART_USER_MESSAGE - User message to be displayed if the chart is invalid.
+- ROW_ACTION_BUTTON - Specifies UI to render an action button for the row.

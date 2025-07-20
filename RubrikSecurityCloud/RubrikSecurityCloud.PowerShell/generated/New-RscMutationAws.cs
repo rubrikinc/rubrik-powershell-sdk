@@ -270,6 +270,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		instanceProfilePath = $someString
     /// 		# OPTIONAL
     /// 		ec2RecoveryRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		lambdaRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		lambdaRoleName = $someString
     /// 	}
     /// }
     /// 
@@ -1414,6 +1418,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		instanceProfilePath = $someString
     /// 		# OPTIONAL
     /// 		ec2RecoveryRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		lambdaRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		lambdaRoleName = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	awsIamPairId = $someString
@@ -1483,6 +1491,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		instanceProfilePath = $someString
     /// 		# OPTIONAL
     /// 		ec2RecoveryRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		lambdaRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		lambdaRoleName = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	awsIamPairId = $someString
@@ -2202,6 +2214,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		instanceProfilePath = $someString
     /// 		# OPTIONAL
     /// 		ec2RecoveryRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		lambdaRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		lambdaRoleName = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	featuresWithPermissionsGroups = @(
@@ -2980,6 +2996,10 @@ $query.Var.input = @{
 		instanceProfilePath = $someString
 		# OPTIONAL
 		ec2RecoveryRolePath = $someString
+		# OPTIONAL
+		lambdaRolePath = $someString
+		# OPTIONAL
+		lambdaRoleName = $someString
 	}
 }"
             );
@@ -3988,6 +4008,10 @@ $query.Var.input = @{
 		instanceProfilePath = $someString
 		# OPTIONAL
 		ec2RecoveryRolePath = $someString
+		# OPTIONAL
+		lambdaRolePath = $someString
+		# OPTIONAL
+		lambdaRoleName = $someString
 	}
 	# OPTIONAL
 	awsIamPairId = $someString
@@ -4049,6 +4073,10 @@ $query.Var.input = @{
 		instanceProfilePath = $someString
 		# OPTIONAL
 		ec2RecoveryRolePath = $someString
+		# OPTIONAL
+		lambdaRolePath = $someString
+		# OPTIONAL
+		lambdaRoleName = $someString
 	}
 	# OPTIONAL
 	awsIamPairId = $someString
@@ -4656,6 +4684,10 @@ $query.Var.input = @{
 		instanceProfilePath = $someString
 		# OPTIONAL
 		ec2RecoveryRolePath = $someString
+		# OPTIONAL
+		lambdaRolePath = $someString
+		# OPTIONAL
+		lambdaRoleName = $someString
 	}
 	# OPTIONAL
 	featuresWithPermissionsGroups = @(

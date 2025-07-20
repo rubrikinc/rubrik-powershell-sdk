@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? ShouldPauseImmediately
-        // GraphQL -> shouldPauseImmediately: Boolean (scalar)
-        [JsonProperty("shouldPauseImmediately")]
-        public System.Boolean? ShouldPauseImmediately { get; set; }
-
         //      C# -> System.Boolean? ShouldCancelImmediately
         // GraphQL -> shouldCancelImmediately: Boolean! (scalar)
         [Required]
@@ -37,6 +32,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("sourceClusterUuids")]
         public List<System.String>? SourceClusterUuids { get; set; }
+
+        //      C# -> System.Boolean? ShouldPauseImmediately
+        // GraphQL -> shouldPauseImmediately: Boolean (scalar)
+        [JsonProperty("shouldPauseImmediately")]
+        public System.Boolean? ShouldPauseImmediately { get; set; }
 
 
         #endregion

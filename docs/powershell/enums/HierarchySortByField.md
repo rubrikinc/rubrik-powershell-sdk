@@ -1,7 +1,9 @@
 ### HierarchySortByField
-- NAME
-- ASSIGNED_SLA_DOMAIN
-- EFFECTIVE_SLA_DOMAIN
+Fields for sorting hierarchy objects.
+
+- NAME - Sort by name.
+- ASSIGNED_SLA_DOMAIN - Sort by assigned SLA Domain.
+- EFFECTIVE_SLA_DOMAIN - Sort by effective SLA Domain.
 - EC2_INSTANCE_ID - Sort by EC2 instance native ID.
 - EC2_INSTANCE_NAME - Sort by EC2 instance name.
 - EBS_VOLUME_ID - Sort by EBS volume native ID.
@@ -24,7 +26,7 @@
 - AZURE_SUBNET_NAME - Sort Azure virtual machines by Subnet name.
 - AZURE_VM_SIZE - Sort Azure virtual machines by virtual machine size.
 - AZURE_DISK_SIZE - Sort Azure disks by Disk size.
-- AZURE_DISK_ATTACHED_VM
+- AZURE_DISK_ATTACHED_VM - Sort Azure disks by attached virtual machine name.
 - AZURE_DISK_TYPE - Sort Azure disks by Disk type.
 - PHYSICAL_HOST_OS_NAME - Sort physical hosts by OS name.
 - FILESET_TEMPLATE_INCLUDES - Sort fileset templates by included files.
@@ -133,3 +135,23 @@
 - AZURE_REGION_SQL_DATABASE_DB_COUNT - Sort Azure Regions by SQL Database DB Count.
 - AZURE_REGION_SQL_MANAGED_INSTANCE_DB_COUNT - Sort Azure Regions by SQL Managed Instance DB Count.
 - AZURE_REGION_STORAGE_ACCOUNT_COUNT - Sort Azure Regions by Storage Account Count.
+- AWS_NATIVE_REGION_EC2_INSTANCE_COUNT - Sort AWS Regions by EC2 Instance Count.
++mo:sort:db:table=aws_native_hierarchy_region
++mo:sort:db:column=ec2_instance_count
++mo:sort:db:index:key=NULL
+- AWS_NATIVE_REGION_EBS_VOLUME_COUNT - Sort AWS Regions by EBS Volume Count.
++mo:sort:db:table=aws_native_hierarchy_region
++mo:sort:db:column=ebs_volume_count
++mo:sort:db:index:key=NULL
+- AWS_NATIVE_REGION_RDS_INSTANCE_COUNT - Sort AWS Regions by RDS Instance Count.
++mo:sort:db:table=aws_native_hierarchy_region
++mo:sort:db:column=rds_instance_count
++mo:sort:db:index:key=NULL
+- AWS_NATIVE_REGION_S3_BUCKET_COUNT - Sort AWS Regions by S3 Bucket Count.
++mo:sort:db:table=aws_native_hierarchy_region
++mo:sort:db:column=s3_bucket_count
++mo:sort:db:index:key=NULL
+- AWS_NATIVE_REGION_DYNAMODB_TABLE_COUNT - Sort AWS Regions by DynamoDB Table Count.
++mo:sort:db:table=aws_native_hierarchy_region
++mo:sort:db:column=dynamo_db_table_count
++mo:sort:db:index:key=NULL
