@@ -7,3 +7,5 @@ Input to create AWS Exocompute configurations.
   - List of Exocompute configurations for the cloud account.
 - triggerHealthCheck: System.Boolean
   - Specifies whether to start Exocompute health check.
+- optionalHealthChecks: OptionalHealthChecksInput
+  - User selected health checks to be run.

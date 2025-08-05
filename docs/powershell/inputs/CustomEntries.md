@@ -6,4 +6,4 @@ Custom entries for the intel feed.
 - threatFamily: System.String
   - The threat family associated with the IOC.
 - iocType: ThreatFeedType
-  - IOC type.
+  - Threat feed type.

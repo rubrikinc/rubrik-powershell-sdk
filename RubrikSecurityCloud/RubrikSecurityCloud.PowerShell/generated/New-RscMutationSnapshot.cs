@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 20
+    /// Create a new RscQuery object for any of the 22
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, or UploadDatabaseToBlobstore.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, Deletes, DeletesOfObjects, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, or UploadDatabaseToBlobstore.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 20 operations
+    /// There are 22 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, or UploadDatabaseToBlobstore.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, Deletes, DeletesOfObjects, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, or UploadDatabaseToBlobstore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -440,6 +440,80 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RequestSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Deletes operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: Deletes
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation Deletes
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	locationIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeletesOfObjects operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: DeletesOfObjects
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation DeletesOfObjects
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	objectIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	locationIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -961,6 +1035,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteCloudWorkloadSnapshot",
                 "DeleteFilesetSnapshots",
                 "DeleteUnmanageds",
+                "Deletes",
+                "DeletesOfObjects",
                 "DeletesOfUnmanagedObjects",
                 "FilesetDownloadFiles",
                 "FilesetExportFiles",
@@ -1015,6 +1091,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteUnmanageds":
                         this.ProcessRecord_DeleteUnmanageds();
+                        break;
+                    case "Deletes":
+                        this.ProcessRecord_Deletes();
+                        break;
+                    case "DeletesOfObjects":
+                        this.ProcessRecord_DeletesOfObjects();
                         break;
                     case "DeletesOfUnmanagedObjects":
                         this.ProcessRecord_DeletesOfUnmanagedObjects();
@@ -1144,6 +1226,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteUnmanageds";
             // Create new graphql operation deleteUnmanagedSnapshots
             InitMutationDeleteUnmanagedSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteSnapshots.
+        internal void ProcessRecord_Deletes()
+        {
+            this._logger.name += " -Deletes";
+            // Create new graphql operation deleteSnapshots
+            InitMutationDeleteSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteSnapshotsOfObjects.
+        internal void ProcessRecord_DeletesOfObjects()
+        {
+            this._logger.name += " -DeletesOfObjects";
+            // Create new graphql operation deleteSnapshotsOfObjects
+            InitMutationDeleteSnapshotsOfObjects();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1522,6 +1622,64 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	snapshotIds = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteSnapshots(input: DeleteSnapshotsInput!): Void
+        internal void InitMutationDeleteSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteSnapshots",
+                "($input: DeleteSnapshotsInput!)",
+                "System.String",
+                Mutation.DeleteSnapshots,
+                Mutation.DeleteSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	snapshotIds = @(
+		$someString
+	)
+	# REQUIRED
+	locationIds = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteSnapshotsOfObjects(input: DeleteSnapshotsOfObjectsInput!): Void
+        internal void InitMutationDeleteSnapshotsOfObjects()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteSnapshotsOfObjectsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteSnapshotsOfObjects",
+                "($input: DeleteSnapshotsOfObjectsInput!)",
+                "System.String",
+                Mutation.DeleteSnapshotsOfObjects,
+                Mutation.DeleteSnapshotsOfObjectsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	objectIds = @(
+		$someString
+	)
+	# REQUIRED
+	locationIds = @(
 		$someString
 	)
 }"

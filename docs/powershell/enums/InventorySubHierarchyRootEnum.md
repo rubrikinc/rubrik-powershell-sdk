@@ -41,3 +41,4 @@ Inventory workloads that are supported on Rubrik.
 - OPENSTACK_ROOT - OpenStack root.
 - INFORMIX_ROOT - The root of the Informix hierarchy.
 - GOOGLE_WORKSPACE_ROOT - The root of the Google workspace hierarchy.
+- AZURE_DEVOPS_ROOT - The root of the Azure DevOps hierarchy.

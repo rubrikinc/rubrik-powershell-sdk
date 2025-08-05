@@ -7927,6 +7927,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GcpGetResourceSetupTemplateReply? GcpGetResourceSetupTemplate
+        // GraphQL -> gcpGetResourceSetupTemplate: GcpGetResourceSetupTemplateReply! (type)
+        public static string GcpGetResourceSetupTemplate(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "gcpGetResourceSetupTemplate" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GcpGetResourceSetupTemplateFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GcpGetResourceSetupTemplateReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GcpNativeDisk? GcpNativeDisk
         // GraphQL -> gcpNativeDisk: GcpNativeDisk! (type)
         public static string GcpNativeDisk(object fsObj)
@@ -12738,7 +12756,7 @@ namespace RubrikSecurityCloud.Types
         public static string PolicyObjs(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nobjectIdsFilter: $objectIdsFilter\nplatformFilter: $platformFilter\nplatformCategoryFilter: $platformCategoryFilter\ncloudAccountIdsFilter: $cloudAccountIdsFilter\nresourceGroupsFilter: $resourceGroupsFilter\nregionsFilter: $regionsFilter\ndataTypeIdsFilter: $dataTypeIdsFilter\nfirstSeenTimeRange: $firstSeenTimeRange\nlastAccessTimeRange: $lastAccessTimeRange\ncreationTimeRange: $creationTimeRange\nlastScanTimeRange: $lastScanTimeRange\nobjectTagsFilter: $objectTagsFilter\nmipLabelsFilter: $mipLabelsFilter\ndocumentTypesFilter: $documentTypesFilter\nbackupStatusFilter: $backupStatusFilter\nslaIdsFilter: $slaIdsFilter\nnetworkAccessFilter: $networkAccessFilter\nencryptionFilter: $encryptionFilter\nloggingFilter: $loggingFilter\nviolationSeverityFilter: $violationSeverityFilter\nexposureFilter: $exposureFilter\naccessTypeFilter: $accessTypeFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nobjectIdsFilter: $objectIdsFilter\nplatformFilter: $platformFilter\nplatformCategoryFilter: $platformCategoryFilter\ncloudAccountIdsFilter: $cloudAccountIdsFilter\nresourceGroupsFilter: $resourceGroupsFilter\nregionsFilter: $regionsFilter\ndataTypeIdsFilter: $dataTypeIdsFilter\nfirstSeenTimeRange: $firstSeenTimeRange\nlastAccessTimeRange: $lastAccessTimeRange\ncreationTimeRange: $creationTimeRange\nlastScanTimeRange: $lastScanTimeRange\nobjectTagsFilter: $objectTagsFilter\nmipLabelsFilter: $mipLabelsFilter\ndocumentTypesFilter: $documentTypesFilter\nscanResultErrorCodesFilter: $scanResultErrorCodesFilter\nscanResultCategoriesFilter: $scanResultCategoriesFilter\nbackupStatusFilter: $backupStatusFilter\nslaIdsFilter: $slaIdsFilter\nnetworkAccessFilter: $networkAccessFilter\nencryptionFilter: $encryptionFilter\nloggingFilter: $loggingFilter\nviolationSeverityFilter: $violationSeverityFilter\nexposureFilter: $exposureFilter\naccessTypeFilter: $accessTypeFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "policyObjs" + args + "\n{\n" + fs + "}\n";
         }
         public static object PolicyObjsFieldSpec(AutofieldContext? ec=null)

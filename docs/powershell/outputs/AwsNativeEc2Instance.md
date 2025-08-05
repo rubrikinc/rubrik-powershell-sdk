@@ -63,6 +63,8 @@ AWS native EC2 instance.
   - Attach an AWS Elastic Block Store (EBS) volume to your instance.
 - hostInfo: PhysicalHost
   - Rubrik CDM host information for the AWS EC2 instance added as a host to the cluster. The value is Null when the virtual machine is not added as a host on any Rubrik cluster.
+- recoveryPlansInfo: list of RecoveryPlansInfos
+  - List of Recovery Plans associated with the virtual machine.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus

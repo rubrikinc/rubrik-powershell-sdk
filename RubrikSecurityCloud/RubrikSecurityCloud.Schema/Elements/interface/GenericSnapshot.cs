@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snappableId")]
         System.String? SnappableId { get; set; }
 
+        //      C# -> System.Boolean? IsQuarantineProcessing
+        // GraphQL -> isQuarantineProcessing: Boolean! (scalar)
+        [JsonProperty("isQuarantineProcessing")]
+        System.Boolean? IsQuarantineProcessing { get; set; }
+
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
         [JsonProperty("isQuarantined")]

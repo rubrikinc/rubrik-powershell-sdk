@@ -111,6 +111,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	encryptionPassword = $someString
     /// 	# REQUIRED
     /// 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
+    /// 	# OPTIONAL
+    /// 	archivalDataSourceIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -331,6 +335,10 @@ $query.Var.input = @{
 	encryptionPassword = $someString
 	# REQUIRED
 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
+	# OPTIONAL
+	archivalDataSourceIds = @(
+		$someString
+	)
 }"
             );
         }

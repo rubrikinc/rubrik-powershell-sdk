@@ -19,5 +19,7 @@ Input for GCP Reader Target.
   - Field for creating proxy settings.
 - readerRetrievalMethod: ReaderRetrievalMethod
   - Field for specifying the metadata to be retrieved from a target.
+- archivalDataSourceIds: list of System.Strings
+  - List of workload IDs on the original Rubrik cluster. This list should be empty for a full refresh.
 - bypassProxy: System.Boolean
   - Specifies whether the proxy settings should be bypassed for creating this target location.

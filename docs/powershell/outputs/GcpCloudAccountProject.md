@@ -17,3 +17,5 @@ GCP Cloud Account Project.
   - The name of the organization containing the GCP Project.
 - isArchived: System.Boolean
   - Specifies if the project is archived.
+- effectiveServiceAccount: System.String
+  - Service account that will be used to make cloud calls for this project.

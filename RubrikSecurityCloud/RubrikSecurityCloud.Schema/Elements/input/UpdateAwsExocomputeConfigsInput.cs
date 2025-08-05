@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("triggerHealthCheck")]
         public System.Boolean? TriggerHealthCheck { get; set; }
 
+        //      C# -> OptionalHealthChecksInput? OptionalHealthChecks
+        // GraphQL -> optionalHealthChecks: OptionalHealthChecksInput (input)
+        [JsonProperty("optionalHealthChecks")]
+        public OptionalHealthChecksInput? OptionalHealthChecks { get; set; }
+
 
         #endregion
 

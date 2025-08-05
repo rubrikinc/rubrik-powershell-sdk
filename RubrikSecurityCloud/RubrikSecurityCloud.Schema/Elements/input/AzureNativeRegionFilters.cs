@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaFilter")]
         public EffectiveSlaFilter? EffectiveSlaFilter { get; set; }
 
+        //      C# -> AzureNativeRegionNonEmptyFilter? NonEmptyFilter
+        // GraphQL -> nonEmptyFilter: AzureNativeRegionNonEmptyFilter (input)
+        [JsonProperty("nonEmptyFilter")]
+        public AzureNativeRegionNonEmptyFilter? NonEmptyFilter { get; set; }
+
 
         #endregion
 

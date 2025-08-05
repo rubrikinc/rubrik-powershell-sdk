@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudVendor")]
         public CloudVendor? CloudVendor { get; set; }
 
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: UUID (scalar)
+        [JsonProperty("cloudAccountId")]
+        public System.String? CloudAccountId { get; set; }
+
         //      C# -> TagsInput? CustomerTags
         // GraphQL -> customerTags: TagsInput! (input)
         [Required]

@@ -34,6 +34,12 @@ Returns the service account corresponding to global credentials. Return empty st
 
 - The getdefaultcredentialsserviceaccount subcommand takes no arguments.
 - Returns System.String.
+### getresourcesetuptemplate
+GcpGetResourceSetupTemplate returns the terraform template to setup the
+resources on GCP.
+
+- There is a single argument of type GcpGetResourceSetupTemplateReq.
+- Returns GcpGetResourceSetupTemplateReply.
 ### latestpermissionsbypermissionsgroup
 Details of all the supported permission groups for the specified features.
 

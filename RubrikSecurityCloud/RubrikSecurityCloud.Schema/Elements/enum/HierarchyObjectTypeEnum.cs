@@ -39,6 +39,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_AD_DIRECTORY")]
         AZURE_AD_DIRECTORY,
 
+        [EnumMember(Value = "AZURE_DEVOPS_ORGANIZATION")]
+        AZURE_DEVOPS_ORGANIZATION,
+
+        [EnumMember(Value = "AZURE_DEVOPS_PROJECT")]
+        AZURE_DEVOPS_PROJECT,
+
+        [EnumMember(Value = "AZURE_DEVOPS_REPOSITORY")]
+        AZURE_DEVOPS_REPOSITORY,
+
         [EnumMember(Value = "AZURE_SQL_DATABASE_DB")]
         AZURE_SQL_DATABASE_DB,
 

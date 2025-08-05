@@ -12,4 +12,6 @@ Input required to add a GCP cloud account manually.
 - serviceAccountJwtConfig: System.String
   - The JWT configuration of the service account.
 - features: list of CloudAccountFeatures
-  - Features to be enabled for the GCP cloud account.
+  - Deprecated due to Permission Groups rollout, use featuresWithPermissionGroups.
+- featuresWithPermissionGroups: list of FeatureWithPermissionsGroupss
+  - Features with respective permission groups to be added to the account.

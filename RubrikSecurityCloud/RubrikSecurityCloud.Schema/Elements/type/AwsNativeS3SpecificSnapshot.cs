@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
 
+        //      C# -> DateTime? SnapshotStartTime
+        // GraphQL -> snapshotStartTime: DateTime (scalar)
+        [JsonProperty("snapshotStartTime")]
+        public DateTime? SnapshotStartTime { get; set; }
+
 
         #endregion
 
@@ -54,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         System.Int64? FailedObjectCount = null,
         System.Boolean? IsSnapshotPartial = null,
         System.Int64? ProcessedObjectCount = null,
-        System.String? SnapshotId = null
+        System.String? SnapshotId = null,
+        DateTime? SnapshotStartTime = null
     ) 
     {
         if ( FailedObjectCount != null ) {
@@ -68,6 +74,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotId != null ) {
             this.SnapshotId = SnapshotId;
+        }
+        if ( SnapshotStartTime != null ) {
+            this.SnapshotStartTime = SnapshotStartTime;
         }
         return this;
     }
@@ -117,6 +126,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotId\n" ;
             } else {
                 s += ind + "snapshotId\n" ;
+            }
+        }
+        //      C# -> DateTime? SnapshotStartTime
+        // GraphQL -> snapshotStartTime: DateTime (scalar)
+        if (this.SnapshotStartTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotStartTime\n" ;
+            } else {
+                s += ind + "snapshotStartTime\n" ;
             }
         }
         return s;
@@ -193,6 +211,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
         {
             this.SnapshotId = null;
+        }
+        //      C# -> DateTime? SnapshotStartTime
+        // GraphQL -> snapshotStartTime: DateTime (scalar)
+        if (ec.Includes("snapshotStartTime",true))
+        {
+            if(this.SnapshotStartTime == null) {
+
+                this.SnapshotStartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotStartTime != null && ec.Excludes("snapshotStartTime",true))
+        {
+            this.SnapshotStartTime = null;
         }
     }
 

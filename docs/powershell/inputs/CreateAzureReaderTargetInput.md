@@ -31,6 +31,8 @@ Input for creating an Azure Reader Target.
   - Field for specifying the metadata to be retrieved from a target.
 - retrievalTier: AzureRetrievalTier
   - Retrieval tier to use for retrieving data from archive storage.
+- archivalDataSourceIds: list of System.Strings
+  - List of workload IDs on the original Rubrik cluster. This list should be empty for a full refresh.
 - bypassProxy: System.Boolean
   - Specifies whether the proxy settings should be bypassed for creating this target location.
 - azureKeyVaultKey: AzureKeyVaultKeyIdentifierWithoutKeyVersionInput

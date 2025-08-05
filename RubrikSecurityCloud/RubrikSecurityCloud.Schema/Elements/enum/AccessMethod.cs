@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACCESS_METHOD_UNSPECIFIED")]
         ACCESS_METHOD_UNSPECIFIED,
 
+        [EnumMember(Value = "ENTRAID_SERVICE_PRINCIPAL_API_PERMISSION")]
+        ENTRAID_SERVICE_PRINCIPAL_API_PERMISSION,
+
         [EnumMember(Value = "M365_DIRECT_PERMISSION")]
         M365_DIRECT_PERMISSION,
 

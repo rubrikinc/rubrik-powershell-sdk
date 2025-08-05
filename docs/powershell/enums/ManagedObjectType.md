@@ -173,6 +173,9 @@ All supported Rubrik managed objects.
 - GOOGLE_WORKSPACE_USER - Google Workspace User.
 - GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
 - GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
+- AZURE_DEVOPS_ORGANIZATION - Azure DevOps organization.
+- AZURE_DEVOPS_PROJECT - Azure DevOps project.
+- AZURE_DEVOPS_REPOSITORY - Azure DevOps repository.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

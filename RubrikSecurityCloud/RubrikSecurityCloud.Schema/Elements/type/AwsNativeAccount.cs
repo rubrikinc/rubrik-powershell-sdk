@@ -166,6 +166,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> List<AwsNativeAccountEnabledFeature>? EnabledFeatures
+        // GraphQL -> enabledFeatures: [AwsNativeAccountEnabledFeature!]! (type)
+        [JsonProperty("enabledFeatures")]
+        public List<AwsNativeAccountEnabledFeature>? EnabledFeatures { get; set; }
+
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         [JsonProperty("logicalPath")]
@@ -315,6 +320,7 @@ namespace RubrikSecurityCloud.Types
         AwsNativeRdsInstanceConnection? AwsNativeRdsInstances = null,
         AwsNativeRegionHierarchyObjectConnection? AwsRegions = null,
         PathNode? EffectiveSlaSourceObject = null,
+        List<AwsNativeAccountEnabledFeature>? EnabledFeatures = null,
         List<PathNode>? LogicalPath = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         List<PathNode>? PhysicalPath = null,
@@ -410,6 +416,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( EnabledFeatures != null ) {
+            this.EnabledFeatures = EnabledFeatures;
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
@@ -740,6 +749,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AwsNativeAccountEnabledFeature>? EnabledFeatures
+        // GraphQL -> enabledFeatures: [AwsNativeAccountEnabledFeature!]! (type)
+        if (this.EnabledFeatures != null) {
+            var fspec = this.EnabledFeatures.AsFieldSpec(conf.Child("enabledFeatures"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "enabledFeatures" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1363,6 +1384,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> List<AwsNativeAccountEnabledFeature>? EnabledFeatures
+        // GraphQL -> enabledFeatures: [AwsNativeAccountEnabledFeature!]! (type)
+        if (ec.Includes("enabledFeatures",false))
+        {
+            if(this.EnabledFeatures == null) {
+
+                this.EnabledFeatures = new List<AwsNativeAccountEnabledFeature>();
+                this.EnabledFeatures.ApplyExploratoryFieldSpec(ec.NewChild("enabledFeatures"));
+
+            } else {
+
+                this.EnabledFeatures.ApplyExploratoryFieldSpec(ec.NewChild("enabledFeatures"));
+
+            }
+        }
+        else if (this.EnabledFeatures != null && ec.Excludes("enabledFeatures",false))
+        {
+            this.EnabledFeatures = null;
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)

@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("osName")]
         public System.String? OsName { get; set; }
 
+        //      C# -> System.String? ResourceInfo
+        // GraphQL -> resourceInfo: String (scalar)
+        [JsonProperty("resourceInfo")]
+        public System.String? ResourceInfo { get; set; }
+
         //      C# -> HostConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: HostConnectionStatus (type)
         [JsonProperty("connectionStatus")]
@@ -92,6 +97,7 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? IpAddresses = null,
         System.Boolean? IsArchived = null,
         System.String? OsName = null,
+        System.String? ResourceInfo = null,
         HostConnectionStatus? ConnectionStatus = null,
         MssqlSddDetail? MssqlSddDetail = null,
         OracleSddDetail? OracleSddDetail = null,
@@ -118,6 +124,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OsName != null ) {
             this.OsName = OsName;
+        }
+        if ( ResourceInfo != null ) {
+            this.ResourceInfo = ResourceInfo;
         }
         if ( ConnectionStatus != null ) {
             this.ConnectionStatus = ConnectionStatus;
@@ -206,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "osName\n" ;
             } else {
                 s += ind + "osName\n" ;
+            }
+        }
+        //      C# -> System.String? ResourceInfo
+        // GraphQL -> resourceInfo: String (scalar)
+        if (this.ResourceInfo != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceInfo\n" ;
+            } else {
+                s += ind + "resourceInfo\n" ;
             }
         }
         //      C# -> HostConnectionStatus? ConnectionStatus
@@ -381,6 +399,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OsName != null && ec.Excludes("osName",true))
         {
             this.OsName = null;
+        }
+        //      C# -> System.String? ResourceInfo
+        // GraphQL -> resourceInfo: String (scalar)
+        if (ec.Includes("resourceInfo",true))
+        {
+            if(this.ResourceInfo == null) {
+
+                this.ResourceInfo = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceInfo != null && ec.Excludes("resourceInfo",true))
+        {
+            this.ResourceInfo = null;
         }
         //      C# -> HostConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: HostConnectionStatus (type)

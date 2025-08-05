@@ -45,6 +45,8 @@ Details of the Azure AD directory object.
   - Protection information for on-prem Active Directory (AD) domains synchronized with this Entra ID.
 - firstScopeSnapshotTime: DateTime
   - Time of the first snapshot with scope enabled for Role Assignments.
+- firstZeusSnapshotTime: DateTime
+  - When enabled, time of the first snapshot saved to the Zeus store.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String

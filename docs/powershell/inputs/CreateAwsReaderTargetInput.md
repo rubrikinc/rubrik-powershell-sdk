@@ -39,6 +39,8 @@ Input for creating an AWS Reader Target.
   - Compute proxy settings for AWS reader target.
 - awsIamPairId: System.String
   - Internal ID of the AWS IAM pair. This field is required only when connecting as a reader to Data Center AWS role-based archival locations.
+- archivalDataSourceIds: list of System.Strings
+  - List of workload IDs on the original Rubrik cluster. This list should be empty for a full refresh.
 - bypassProxy: System.Boolean
   - Specifies whether the proxy settings should be bypassed for creating this target location.
 - awsKmsKey: AwsKmsKeyIdentifierInput

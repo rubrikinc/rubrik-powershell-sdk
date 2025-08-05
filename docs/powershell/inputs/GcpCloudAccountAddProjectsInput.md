@@ -12,4 +12,4 @@ Input required to add a GCP cloud account.
 - projectIds: list of System.Strings
   - List of project IDs.
 - featuresWithPermissionGroups: list of FeatureWithPermissionsGroupss
-  - Features with respected permission groups to be added.
+  - Features with respective permission groups to be added.

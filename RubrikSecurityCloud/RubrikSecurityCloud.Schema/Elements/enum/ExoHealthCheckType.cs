@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ARCHIVAL_LOCATION_CONNECTIVITY_OPTIONAL")]
         ARCHIVAL_LOCATION_CONNECTIVITY_OPTIONAL,
 
+        [EnumMember(Value = "AUTOSCALER_CONNECTIVITY")]
+        AUTOSCALER_CONNECTIVITY,
+
         [EnumMember(Value = "AZURE_PLATFORM_IP_CONNECTIVITY")]
         AZURE_PLATFORM_IP_CONNECTIVITY,
 
@@ -33,14 +36,26 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUDSLAB_CONNECTIVITY_OPTIONAL")]
         CLOUDSLAB_CONNECTIVITY_OPTIONAL,
 
+        [EnumMember(Value = "EC2_CONNECTIVITY")]
+        EC2_CONNECTIVITY,
+
         [EnumMember(Value = "GCP_CONNECTIVITY")]
         GCP_CONNECTIVITY,
 
         [EnumMember(Value = "GCS_CONNECTIVITY_OPTIONAL")]
         GCS_CONNECTIVITY_OPTIONAL,
 
+        [EnumMember(Value = "HOST_CONNECTIVITY")]
+        HOST_CONNECTIVITY,
+
+        [EnumMember(Value = "KMS_CONNECTIVITY")]
+        KMS_CONNECTIVITY,
+
         [EnumMember(Value = "RSC_IP_CONNECTIVITY")]
-        RSC_IP_CONNECTIVITY
+        RSC_IP_CONNECTIVITY,
+
+        [EnumMember(Value = "STS_CONNECTIVITY")]
+        STS_CONNECTIVITY
 
 
     } // enum ExoHealthCheckType

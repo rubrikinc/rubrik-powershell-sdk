@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KB_ARTICLES")]
         KB_ARTICLES,
 
+        [EnumMember(Value = "KNOWN_ISSUES")]
+        KNOWN_ISSUES,
+
         [EnumMember(Value = "PRODUCT_DOCS")]
         PRODUCT_DOCS,
 

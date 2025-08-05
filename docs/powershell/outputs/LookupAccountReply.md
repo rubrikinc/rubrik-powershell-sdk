@@ -13,3 +13,5 @@ Information on the account.
   - Specifies number of days for which ui should show the warning.
 - accountStateUpdatedAt: DateTime
   - Specifies last state update date of account.
+- subdomain: System.String
+  - Account subdomain.

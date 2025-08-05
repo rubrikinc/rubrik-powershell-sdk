@@ -107,6 +107,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
     /// 	# REQUIRED
     /// 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
+    /// 	# OPTIONAL
+    /// 	archivalDataSourceIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -218,6 +222,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		deploymentType = $someIbmDeploymentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IbmDeploymentType]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	archivalDataSourceIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -1076,6 +1084,10 @@ $query.Var.input = @{
 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
 	# REQUIRED
 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
+	# OPTIONAL
+	archivalDataSourceIds = @(
+		$someString
+	)
 }"
             );
         }
@@ -1171,6 +1183,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		deploymentType = $someIbmDeploymentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IbmDeploymentType]) for enum values.
 	}
+	# OPTIONAL
+	archivalDataSourceIds = @(
+		$someString
+	)
 }"
             );
         }

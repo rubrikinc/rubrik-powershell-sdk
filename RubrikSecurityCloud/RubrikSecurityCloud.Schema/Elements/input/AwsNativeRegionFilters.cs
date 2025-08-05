@@ -39,6 +39,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgFilter")]
         public OrgFilter? OrgFilter { get; set; }
 
+        //      C# -> EffectiveSlaFilter? EffectiveSlaFilter
+        // GraphQL -> effectiveSlaFilter: EffectiveSlaFilter (input)
+        [JsonProperty("effectiveSlaFilter")]
+        public EffectiveSlaFilter? EffectiveSlaFilter { get; set; }
+
+        //      C# -> AwsNativeRegionNonEmptyFilter? NonEmptyFilter
+        // GraphQL -> nonEmptyFilter: AwsNativeRegionNonEmptyFilter (input)
+        [JsonProperty("nonEmptyFilter")]
+        public AwsNativeRegionNonEmptyFilter? NonEmptyFilter { get; set; }
+
 
         #endregion
 

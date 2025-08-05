@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_RDS_DB_INSTANCE_CLASS")]
         AWS_NATIVE_RDS_DB_INSTANCE_CLASS,
 
+        [EnumMember(Value = "AWS_NATIVE_REGION_NON_EMPTY")]
+        AWS_NATIVE_REGION_NON_EMPTY,
+
         [EnumMember(Value = "AWS_REGION")]
         AWS_REGION,
 
@@ -107,6 +110,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_NATIVE_DISK_INDEXING_STATUS")]
         AZURE_NATIVE_DISK_INDEXING_STATUS,
+
+        [EnumMember(Value = "AZURE_NATIVE_REGION_NON_EMPTY")]
+        AZURE_NATIVE_REGION_NON_EMPTY,
 
         [EnumMember(Value = "AZURE_NATIVE_SUBSCRIPTION_ENABLED_FEATURE")]
         AZURE_NATIVE_SUBSCRIPTION_ENABLED_FEATURE,

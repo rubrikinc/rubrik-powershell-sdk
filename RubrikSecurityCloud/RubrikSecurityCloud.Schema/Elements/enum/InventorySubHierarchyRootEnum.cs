@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_AD_ROOT")]
         AZURE_AD_ROOT,
 
+        [EnumMember(Value = "AZURE_DEVOPS_ROOT")]
+        AZURE_DEVOPS_ROOT,
+
         [EnumMember(Value = "CASSANDRA_ROOT")]
         CASSANDRA_ROOT,
 

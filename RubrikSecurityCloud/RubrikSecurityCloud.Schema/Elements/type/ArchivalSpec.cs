@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("thresholdUnit")]
         public RetentionUnit? ThresholdUnit { get; set; }
 
+        //      C# -> System.Boolean? IsComplianceImmutabilityEnabled
+        // GraphQL -> isComplianceImmutabilityEnabled: Boolean! (scalar)
+        [JsonProperty("isComplianceImmutabilityEnabled")]
+        public System.Boolean? IsComplianceImmutabilityEnabled { get; set; }
+
         //      C# -> System.Int32? Threshold
         // GraphQL -> threshold: Int! (scalar)
         [JsonProperty("threshold")]
@@ -62,6 +67,7 @@ namespace RubrikSecurityCloud.Types
     public ArchivalSpec Set(
         List<RetentionUnit>? Frequencies = null,
         RetentionUnit? ThresholdUnit = null,
+        System.Boolean? IsComplianceImmutabilityEnabled = null,
         System.Int32? Threshold = null,
         List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping = null,
         ArchivalTieringSpec? ArchivalTieringSpec = null,
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ThresholdUnit != null ) {
             this.ThresholdUnit = ThresholdUnit;
+        }
+        if ( IsComplianceImmutabilityEnabled != null ) {
+            this.IsComplianceImmutabilityEnabled = IsComplianceImmutabilityEnabled;
         }
         if ( Threshold != null ) {
             this.Threshold = Threshold;
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "thresholdUnit\n" ;
             } else {
                 s += ind + "thresholdUnit\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsComplianceImmutabilityEnabled
+        // GraphQL -> isComplianceImmutabilityEnabled: Boolean! (scalar)
+        if (this.IsComplianceImmutabilityEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isComplianceImmutabilityEnabled\n" ;
+            } else {
+                s += ind + "isComplianceImmutabilityEnabled\n" ;
             }
         }
         //      C# -> System.Int32? Threshold
@@ -203,6 +221,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ThresholdUnit != null && ec.Excludes("thresholdUnit",true))
         {
             this.ThresholdUnit = null;
+        }
+        //      C# -> System.Boolean? IsComplianceImmutabilityEnabled
+        // GraphQL -> isComplianceImmutabilityEnabled: Boolean! (scalar)
+        if (ec.Includes("isComplianceImmutabilityEnabled",true))
+        {
+            if(this.IsComplianceImmutabilityEnabled == null) {
+
+                this.IsComplianceImmutabilityEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsComplianceImmutabilityEnabled != null && ec.Excludes("isComplianceImmutabilityEnabled",true))
+        {
+            this.IsComplianceImmutabilityEnabled = null;
         }
         //      C# -> System.Int32? Threshold
         // GraphQL -> threshold: Int! (scalar)

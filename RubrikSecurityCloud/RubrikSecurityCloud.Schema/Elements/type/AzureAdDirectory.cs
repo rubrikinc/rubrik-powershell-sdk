@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("firstScopeSnapshotTime")]
         public DateTime? FirstScopeSnapshotTime { get; set; }
 
+        //      C# -> DateTime? FirstZeusSnapshotTime
+        // GraphQL -> firstZeusSnapshotTime: DateTime (scalar)
+        [JsonProperty("firstZeusSnapshotTime")]
+        public DateTime? FirstZeusSnapshotTime { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -379,6 +384,7 @@ namespace RubrikSecurityCloud.Types
         System.String? DomainName = null,
         System.String? ExocomputeId = null,
         DateTime? FirstScopeSnapshotTime = null,
+        DateTime? FirstZeusSnapshotTime = null,
         System.String? Id = null,
         System.Boolean? IsProvisioned = null,
         System.Boolean? IsRelic = null,
@@ -459,6 +465,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( FirstScopeSnapshotTime != null ) {
             this.FirstScopeSnapshotTime = FirstScopeSnapshotTime;
+        }
+        if ( FirstZeusSnapshotTime != null ) {
+            this.FirstZeusSnapshotTime = FirstZeusSnapshotTime;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -721,6 +730,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "firstScopeSnapshotTime\n" ;
             } else {
                 s += ind + "firstScopeSnapshotTime\n" ;
+            }
+        }
+        //      C# -> DateTime? FirstZeusSnapshotTime
+        // GraphQL -> firstZeusSnapshotTime: DateTime (scalar)
+        if (this.FirstZeusSnapshotTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "firstZeusSnapshotTime\n" ;
+            } else {
+                s += ind + "firstZeusSnapshotTime\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -1372,6 +1390,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.FirstScopeSnapshotTime != null && ec.Excludes("firstScopeSnapshotTime",true))
         {
             this.FirstScopeSnapshotTime = null;
+        }
+        //      C# -> DateTime? FirstZeusSnapshotTime
+        // GraphQL -> firstZeusSnapshotTime: DateTime (scalar)
+        if (ec.Includes("firstZeusSnapshotTime",true))
+        {
+            if(this.FirstZeusSnapshotTime == null) {
+
+                this.FirstZeusSnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FirstZeusSnapshotTime != null && ec.Excludes("firstZeusSnapshotTime",true))
+        {
+            this.FirstZeusSnapshotTime = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

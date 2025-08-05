@@ -23,5 +23,7 @@ Represents the policy detail.
   - Percentage of objects covered.
 - percentCoverage: System.Single
   - The percentage of coverage for a data category.
+- totalDocumentTypes: System.Int32
+  - Total document types in a policy.
 - creator: User
   - Policy creator.

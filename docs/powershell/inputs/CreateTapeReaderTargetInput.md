@@ -21,3 +21,5 @@ Input for creating a Tape reader target.
   - Encryption password for the reader Tape archival location.
 - readerRetrievalMethod: ReaderRetrievalMethod
   - Field for specifying the metadata to be retrieved from a target.
+- archivalDataSourceIds: list of System.Strings
+  - List of workload IDs on the original Rubrik cluster. This list should be empty for a full refresh.

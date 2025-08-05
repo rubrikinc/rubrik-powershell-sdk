@@ -46,6 +46,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivalLocationId")]
         public System.String? ArchivalLocationId { get; set; }
 
+        //      C# -> System.String? ArchivalLocationName
+        // GraphQL -> archivalLocationName: String (scalar)
+        [JsonProperty("archivalLocationName")]
+        public System.String? ArchivalLocationName { get; set; }
+
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         [JsonProperty("date")]
@@ -130,6 +135,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
         [JsonProperty("isOnDemandSnapshot")]
         public System.Boolean? IsOnDemandSnapshot { get; set; }
+
+        //      C# -> System.Boolean? IsQuarantineProcessing
+        // GraphQL -> isQuarantineProcessing: Boolean! (scalar)
+        [JsonProperty("isQuarantineProcessing")]
+        public System.Boolean? IsQuarantineProcessing { get; set; }
 
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
@@ -221,6 +231,7 @@ namespace RubrikSecurityCloud.Types
         PolarisSpecificSnapshot? PolarisSpecificSnapshot = null,
         SlaDomain? SlaDomain = null,
         System.String? ArchivalLocationId = null,
+        System.String? ArchivalLocationName = null,
         DateTime? Date = null,
         DateTime? ExpirationDate = null,
         System.Boolean? ExpiryHint = null,
@@ -238,6 +249,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsExpired = null,
         System.Boolean? IsIndexed = null,
         System.Boolean? IsOnDemandSnapshot = null,
+        System.Boolean? IsQuarantineProcessing = null,
         System.Boolean? IsQuarantined = null,
         System.Boolean? IsReplica = null,
         System.Boolean? IsReplicated = null,
@@ -269,6 +281,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ArchivalLocationId != null ) {
             this.ArchivalLocationId = ArchivalLocationId;
+        }
+        if ( ArchivalLocationName != null ) {
+            this.ArchivalLocationName = ArchivalLocationName;
         }
         if ( Date != null ) {
             this.Date = Date;
@@ -320,6 +335,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsOnDemandSnapshot != null ) {
             this.IsOnDemandSnapshot = IsOnDemandSnapshot;
+        }
+        if ( IsQuarantineProcessing != null ) {
+            this.IsQuarantineProcessing = IsQuarantineProcessing;
         }
         if ( IsQuarantined != null ) {
             this.IsQuarantined = IsQuarantined;
@@ -435,6 +453,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "archivalLocationId\n" ;
             } else {
                 s += ind + "archivalLocationId\n" ;
+            }
+        }
+        //      C# -> System.String? ArchivalLocationName
+        // GraphQL -> archivalLocationName: String (scalar)
+        if (this.ArchivalLocationName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationName\n" ;
+            } else {
+                s += ind + "archivalLocationName\n" ;
             }
         }
         //      C# -> DateTime? Date
@@ -588,6 +615,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isOnDemandSnapshot\n" ;
             } else {
                 s += ind + "isOnDemandSnapshot\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsQuarantineProcessing
+        // GraphQL -> isQuarantineProcessing: Boolean! (scalar)
+        if (this.IsQuarantineProcessing != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isQuarantineProcessing\n" ;
+            } else {
+                s += ind + "isQuarantineProcessing\n" ;
             }
         }
         //      C# -> System.Boolean? IsQuarantined
@@ -849,6 +885,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ArchivalLocationId != null && ec.Excludes("archivalLocationId",true))
         {
             this.ArchivalLocationId = null;
+        }
+        //      C# -> System.String? ArchivalLocationName
+        // GraphQL -> archivalLocationName: String (scalar)
+        if (ec.Includes("archivalLocationName",true))
+        {
+            if(this.ArchivalLocationName == null) {
+
+                this.ArchivalLocationName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationName != null && ec.Excludes("archivalLocationName",true))
+        {
+            this.ArchivalLocationName = null;
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
@@ -1138,6 +1191,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsOnDemandSnapshot != null && ec.Excludes("isOnDemandSnapshot",true))
         {
             this.IsOnDemandSnapshot = null;
+        }
+        //      C# -> System.Boolean? IsQuarantineProcessing
+        // GraphQL -> isQuarantineProcessing: Boolean! (scalar)
+        if (ec.Includes("isQuarantineProcessing",true))
+        {
+            if(this.IsQuarantineProcessing == null) {
+
+                this.IsQuarantineProcessing = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsQuarantineProcessing != null && ec.Excludes("isQuarantineProcessing",true))
+        {
+            this.IsQuarantineProcessing = null;
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)

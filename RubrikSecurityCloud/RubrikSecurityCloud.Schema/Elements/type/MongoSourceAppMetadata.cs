@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? IsFullSnapshot
+        // GraphQL -> isFullSnapshot: Boolean (scalar)
+        [JsonProperty("isFullSnapshot")]
+        public System.Boolean? IsFullSnapshot { get; set; }
+
         //      C# -> System.Int64? SnapshotSize
         // GraphQL -> snapshotSize: Long (scalar)
         [JsonProperty("snapshotSize")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public MongoSourceAppMetadata Set(
+        System.Boolean? IsFullSnapshot = null,
         System.Int64? SnapshotSize = null
     ) 
     {
+        if ( IsFullSnapshot != null ) {
+            this.IsFullSnapshot = IsFullSnapshot;
+        }
         if ( SnapshotSize != null ) {
             this.SnapshotSize = SnapshotSize;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? IsFullSnapshot
+        // GraphQL -> isFullSnapshot: Boolean (scalar)
+        if (this.IsFullSnapshot != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isFullSnapshot\n" ;
+            } else {
+                s += ind + "isFullSnapshot\n" ;
+            }
+        }
         //      C# -> System.Int64? SnapshotSize
         // GraphQL -> snapshotSize: Long (scalar)
         if (this.SnapshotSize != null) {
@@ -71,6 +89,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Boolean? IsFullSnapshot
+        // GraphQL -> isFullSnapshot: Boolean (scalar)
+        if (ec.Includes("isFullSnapshot",true))
+        {
+            if(this.IsFullSnapshot == null) {
+
+                this.IsFullSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsFullSnapshot != null && ec.Excludes("isFullSnapshot",true))
+        {
+            this.IsFullSnapshot = null;
+        }
         //      C# -> System.Int64? SnapshotSize
         // GraphQL -> snapshotSize: Long (scalar)
         if (ec.Includes("snapshotSize",true))

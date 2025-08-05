@@ -130,6 +130,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsIamPairId")]
         public System.String? AwsIamPairId { get; set; }
 
+        //      C# -> List<System.String>? ArchivalDataSourceIds
+        // GraphQL -> archivalDataSourceIds: [String!] (scalar)
+        [JsonProperty("archivalDataSourceIds")]
+        public List<System.String>? ArchivalDataSourceIds { get; set; }
+
         //      C# -> System.Boolean? BypassProxy
         // GraphQL -> bypassProxy: Boolean! (scalar)
         [Required]

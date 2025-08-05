@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? EffectiveServiceAccount
+        // GraphQL -> effectiveServiceAccount: String! (scalar)
+        [JsonProperty("effectiveServiceAccount")]
+        public System.String? EffectiveServiceAccount { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -70,6 +75,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GcpCloudAccountProject Set(
+        System.String? EffectiveServiceAccount = null,
         System.String? Id = null,
         System.Boolean? IsArchived = null,
         System.String? Name = null,
@@ -80,6 +86,9 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? UsesGlobalConfig = null
     ) 
     {
+        if ( EffectiveServiceAccount != null ) {
+            this.EffectiveServiceAccount = EffectiveServiceAccount;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -118,6 +127,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? EffectiveServiceAccount
+        // GraphQL -> effectiveServiceAccount: String! (scalar)
+        if (this.EffectiveServiceAccount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveServiceAccount\n" ;
+            } else {
+                s += ind + "effectiveServiceAccount\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -197,6 +215,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? EffectiveServiceAccount
+        // GraphQL -> effectiveServiceAccount: String! (scalar)
+        if (ec.Includes("effectiveServiceAccount",true))
+        {
+            if(this.EffectiveServiceAccount == null) {
+
+                this.EffectiveServiceAccount = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveServiceAccount != null && ec.Excludes("effectiveServiceAccount",true))
+        {
+            this.EffectiveServiceAccount = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (ec.Includes("id",true))

@@ -70,6 +70,7 @@
 - GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
 - StorageArrayVolumeGroup
 - SnapMirrorCloud
+- AZURE_DEVOPS_REPOSITORY - Azure Devops Repository.
 - SALESFORCE_FIXED_OBJECT - Salesforce metadata.
 - AppBlueprint
 - OPENSTACK_VIRTUAL_MACHINE - OpenStack Virtual Machine.

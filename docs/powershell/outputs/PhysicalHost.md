@@ -28,6 +28,8 @@
   - Specifies the Rubrik Backup Service (RBS) upgrade status on the host.
 - oracleSettings: OracleSettings
   - The Oracle settings, such as the SEPS configuration associated with this host.
+- resourceInfo: System.String
+  - Resource information associated with this physical host as a JSON string.
 - isMssqlHost: System.Boolean
   - Specifies if the physical host is a SQL Server database host.
 - isExchangeHost: System.Boolean

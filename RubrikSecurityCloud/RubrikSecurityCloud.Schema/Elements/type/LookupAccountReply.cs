@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("holdWarningLength")]
         public System.Int64? HoldWarningLength { get; set; }
 
+        //      C# -> System.String? Subdomain
+        // GraphQL -> subdomain: String! (scalar)
+        [JsonProperty("subdomain")]
+        public System.String? Subdomain { get; set; }
+
 
         #endregion
 
@@ -65,7 +70,8 @@ namespace RubrikSecurityCloud.Types
         DateTime? AccountExpiryDate = null,
         System.Int64? AccountHoldLength = null,
         DateTime? AccountStateUpdatedAt = null,
-        System.Int64? HoldWarningLength = null
+        System.Int64? HoldWarningLength = null,
+        System.String? Subdomain = null
     ) 
     {
         if ( AccountState != null ) {
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HoldWarningLength != null ) {
             this.HoldWarningLength = HoldWarningLength;
+        }
+        if ( Subdomain != null ) {
+            this.Subdomain = Subdomain;
         }
         return this;
     }
@@ -152,6 +161,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "holdWarningLength\n" ;
             } else {
                 s += ind + "holdWarningLength\n" ;
+            }
+        }
+        //      C# -> System.String? Subdomain
+        // GraphQL -> subdomain: String! (scalar)
+        if (this.Subdomain != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "subdomain\n" ;
+            } else {
+                s += ind + "subdomain\n" ;
             }
         }
         return s;
@@ -262,6 +280,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.HoldWarningLength != null && ec.Excludes("holdWarningLength",true))
         {
             this.HoldWarningLength = null;
+        }
+        //      C# -> System.String? Subdomain
+        // GraphQL -> subdomain: String! (scalar)
+        if (ec.Includes("subdomain",true))
+        {
+            if(this.Subdomain == null) {
+
+                this.Subdomain = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Subdomain != null && ec.Excludes("subdomain",true))
+        {
+            this.Subdomain = null;
         }
     }
 

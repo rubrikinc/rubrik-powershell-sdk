@@ -41,6 +41,8 @@
   - Rubrik-specific information about snapshots of specific workloads. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and M365 snapshots.
 - pendingSla: SlaDomain
   - Specifies that the SLA Domain assignment is pending for this snapshot. The field is non-null when a user has assigned an SLA Domain, and the assignment is still in progress.
+- archivalLocationName: System.String
+  - Specifies the name of the location where the snapshot is uploaded.
 - slaDomain: SlaDomain
 - snapshotRetentionInfo: RscSnapshotRetentionInfo
   - Snapshot retention-related information for local, archival, and replication locations.
@@ -48,5 +50,7 @@
   - Specifies whether or not the snapshot is indexed.
 - isExpired: System.Boolean
   - Specifies whether or not the snapshot is expired.
+- isQuarantineProcessing: System.Boolean
+  - Specifies whether the snapshot is being processed processed to determine its quarantine state.
 - isAnomaly: System.Boolean
   - Flag if the snapshot is an anomaly.

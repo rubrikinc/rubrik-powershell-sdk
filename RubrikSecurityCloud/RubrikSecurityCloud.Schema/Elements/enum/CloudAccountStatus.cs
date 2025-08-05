@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DISABLED")]
         DISABLED,
 
+        [EnumMember(Value = "DISABLING")]
+        DISABLING,
+
         [EnumMember(Value = "DISCONNECTED")]
         DISCONNECTED,
 

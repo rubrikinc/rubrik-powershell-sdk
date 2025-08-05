@@ -1567,6 +1567,42 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? DeleteSnapshots
+        // GraphQL -> deleteSnapshots: Void (scalar)
+        public static string DeleteSnapshots(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteSnapshots" + args + "\n";
+        }
+        public static object DeleteSnapshotsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? DeleteSnapshotsOfObjects
+        // GraphQL -> deleteSnapshotsOfObjects: Void (scalar)
+        public static string DeleteSnapshotsOfObjects(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteSnapshotsOfObjects" + args + "\n";
+        }
+        public static object DeleteSnapshotsOfObjectsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? DeleteSyslogExportRule
         // GraphQL -> deleteSyslogExportRule: Void (scalar)
         public static string DeleteSyslogExportRule(object fsObj)
@@ -3849,6 +3885,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new K8sProtectionSetSummary() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AddKerberosCredentialReply? AddKerberosCredential
+        // GraphQL -> addKerberosCredential: AddKerberosCredentialReply! (type)
+        public static string AddKerberosCredential(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "addKerberosCredential" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AddKerberosCredentialFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AddKerberosCredentialReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

@@ -397,6 +397,7 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] clusterNodeStatsArgs = {
                     Tuple.Create("cdmClusterNodeID", "String"),
                     Tuple.Create("timeRange", "TimeRangeInput"),
+                    Tuple.Create("aggregationType", "NodeStatsAggregationType"),
                 };
             this.ClusterNodeStats =
                 new RscGqlVars(null, clusterNodeStatsArgs, null, true);

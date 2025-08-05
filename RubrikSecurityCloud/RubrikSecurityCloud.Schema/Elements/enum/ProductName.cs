@@ -48,6 +48,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_UNSTRUCTURED")]
         CLOUD_UNSTRUCTURED,
 
+        [EnumMember(Value = "DSPM_CLOUD")]
+        DSPM_CLOUD,
+
+        [EnumMember(Value = "DSPM_O365")]
+        DSPM_O365,
+
         [EnumMember(Value = "DYNAMICS_365")]
         DYNAMICS_365,
 

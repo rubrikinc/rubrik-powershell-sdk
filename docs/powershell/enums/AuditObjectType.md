@@ -156,3 +156,4 @@ Represents all the object types for which we expect to see audits.
 - GOOGLE_WORKSPACE_USER - Google Workspace User.
 - GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
 - GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
+- CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS share.

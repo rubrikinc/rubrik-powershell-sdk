@@ -9,14 +9,14 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
-| [Account (9,14)](#account-domain) | [Cluster (41,23)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (26,20)](#snapshot-domain) |
+| [Account (9,14)](#account-domain) | [Cluster (41,23)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (26,22)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (11,4)](#microsoft-365-domain) | [Policy (9,15)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (5,3)](#activity-series-domain) | [Db2 (9,13)](#db2-domain) | [Managed Volume (4,12)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (10,17)](#archival-domain) | [Report Download (4,21)](#report-download-domain) | [Miscellaneous (212,173)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (10,17)](#archival-domain) | [Report Download (4,21)](#report-download-domain) | [Miscellaneous (212,174)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (33,37)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (9,12)](#mongo-domain) | [RCV (4,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (22,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (56,44)](#azure-domain) | [Fileset (6,9)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (14,10)](#report-domain) | [Threat (18,6)](#threat-domain) |
-| [Azure Native (26,8)](#azure-native-domain) | [Google Cloud Platform (17,12)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
+| [Azure Native (26,8)](#azure-native-domain) | [Google Cloud Platform (18,12)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
 | [Cassandra (8,5)](#cassandra-domain) | [Host (7,9)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (26,12)](#vmware-vsphere-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (7,26)](#vmware-vsphere-vm-domain) |
@@ -1126,6 +1126,8 @@ Cmdlets: `New-RscQueryGcp` and `New-RscMutationGcp`
 | CloudAccountProjectsForOauth | List of GCP projects to add after successful authorization. | `New-RscQueryGcp -Operation CloudAccountProjectsForOauth`<BR> | [allGcpCloudAccountProjectsForOauth](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | FeaturePermissionsForCloudAccount | List of permissions required to enable the given feature. | `New-RscQueryGcp -Operation FeaturePermissionsForCloudAccount`<BR> | [allFeaturePermissionsForGcpCloudAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | GetDefaultCredentialsServiceAccount | Returns the service account corresponding to global credentials. Return empty string if global credentials are absent | `New-RscQueryGcp -Operation GetDefaultCredentialsServiceAccount`<BR> | [gcpGetDefaultCredentialsServiceAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetResourceSetupTemplate | GcpGetResourceSetupTemplate returns the terraform template to setup the  
+resources on GCP. | `New-RscQueryGcp -Operation GetResourceSetupTemplate`<BR> | [gcpGetResourceSetupTemplate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | LatestPermissionsByPermissionsGroup | Details of all the supported permission groups for the specified features. | `New-RscQueryGcp -Operation LatestPermissionsByPermissionsGroup`<BR> | [allLatestPermissionsByPermissionsGroupGcp](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NativeAvailableKmsCryptoKeys | List of GCP KMS Crypto keys accessible in the provided region. | `New-RscQueryGcp -Operation NativeAvailableKmsCryptoKeys`<BR> | [allGcpNativeAvailableKmsCryptoKeys](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NativeCompatibleMachineTypes | List of compatible machine types for instance. | `New-RscQueryGcp -Operation NativeCompatibleMachineTypes`<BR> | [allGcpNativeCompatibleMachineTypes](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1888,6 +1890,7 @@ Returns all virtual machine files, such as .vmdk, .vmx, and .nvram files, for th
 | AddCustomIntelFeed | Add custom intel feed. | `New-RscMutationMisc -Operation AddCustomIntelFeed`<BR> | [addCustomIntelFeed](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AddIdentityProvider | Add a new identity provider. | `New-RscMutationMisc -Operation AddIdentityProvider`<BR> | [addIdentityProvider](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AddInventoryWorkloads | Add account level inventory workloads. | `New-RscMutationMisc -Operation AddInventoryWorkloads`<BR> | [addInventoryWorkloads](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AddKerberosCredential | AddKerberosCredential creates a new Kerberos credential for NCD systems. | `New-RscMutationMisc -Operation AddKerberosCredential`<BR> | [addKerberosCredential](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AddRoleAssignments | N/A | `New-RscMutationMisc -Operation AddRoleAssignments`<BR> | [addRoleAssignments](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AddVlan | Add VLAN to Rubrik cluster. | `New-RscMutationMisc -Operation AddVlan`<BR> | [addVlan](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AddVmAppConsistentSpecs | Add Vm App consistent specs info | `New-RscMutationMisc -Operation AddVmAppConsistentSpecs`<BR> | [addVmAppConsistentSpecs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2170,8 +2173,8 @@ Adds a new MongoDB source to the Rubrik Cluster. | `New-RscMutationMongo -Operat
   
 Supported in v9.0+  
 Initiates a job to take an on-demand, full or incremental snapshot of the specified MongoDB database. | `New-RscMutationMongo -Operation CreateOnDemandDatabaseBackup`<BR> | [createOnDemandMongoDatabaseBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CreateOpsManagerManagedSourceOnDemandSnapshot | v9.3-v9.4: Take an on-demand snapshot for an OpsManager managed MongoDB source  
-v9.5: Take an on-demand snapshot of a MongoDB source managed by Ops Manager  
+| CreateOpsManagerManagedSourceOnDemandSnapshot | v9.3: Take an on-demand snapshot for an OpsManager managed MongoDB source  
+v9.4+: Take an on-demand snapshot of a MongoDB source managed by Ops Manager  
   
 Supported in v9.3+  
 Initiates a job to take an on-demand, full or incremental snapshot of the specified MongoDB source. | `New-RscMutationMongo -Operation CreateOpsManagerManagedSourceOnDemandSnapshot`<BR> | [createOpsManagerManagedMongoSourceOnDemandSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2183,19 +2186,19 @@ Deletes a specific MongoDB source. | `New-RscMutationMongo -Operation DeleteSour
   
 Supported in v8.1+  
 Initiates an on-demand job to discover a MongoDB source. | `New-RscMutationMongo -Operation DiscoverSource`<BR> | [discoverMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| PatchOpsManagerManagedSource | v9.2-v9.4: Edit a MongoDB source  
-v9.5: Edit a MongoDB source managed by Ops Manager  
+| PatchOpsManagerManagedSource | v9.2-v9.3: Edit a MongoDB source  
+v9.4+: Edit a MongoDB source managed by Ops Manager  
   
 Supported in v9.2+  
 v9.2: Edits the properties of a MongoDB source. Name, group ID and cluster ID cannot be modified for a source once added.  
-v9.3-v9.4: Edits the properties of a MongoDB source. Name, Group ID and Cluster ID cannot be modified for a source once added.  
-v9.5: Edits the properties of a MongoDB source managed by Ops Manager. Source name, Group / Project ID, Cluster / Deployment ID and the Ops Manager host cannot be modified for a source once added. | `New-RscMutationMongo -Operation PatchOpsManagerManagedSource`<BR> | [patchOpsManagerManagedMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+v9.3: Edits the properties of a MongoDB source. Name, Group ID and Cluster ID cannot be modified for a source once added.  
+v9.4+: Edits the properties of a MongoDB source managed by Ops Manager. Source name, Group / Project ID, Cluster / Deployment ID and the Ops Manager host cannot be modified for a source once added. | `New-RscMutationMongo -Operation PatchOpsManagerManagedSource`<BR> | [patchOpsManagerManagedMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | PatchSource | Edit a MongoDB source  
   
 Supported in v8.1+  
 Edits the properties of a MongoDB source. Hosts, name, and type of MongoDB cannot be changed once added. | `New-RscMutationMongo -Operation PatchSource`<BR> | [patchMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| RecoverOpsManagerManagedSource | v9.3-v9.4: Recover an existing snapshot to the target MongoDB cluster  
-v9.5: Recover an existing snapshot to the target MongoDB cluster managed by Ops Manager  
+| RecoverOpsManagerManagedSource | v9.3: Recover an existing snapshot to the target MongoDB cluster  
+v9.4+: Recover an existing snapshot to the target MongoDB cluster managed by Ops Manager  
   
 Supported in v9.3+  
 Recovers the selected snapshot to target MongoDB cluster. | `New-RscMutationMongo -Operation RecoverOpsManagerManagedSource`<BR> | [recoverOpsManagerManagedMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2204,8 +2207,8 @@ Recovers the selected snapshot to target MongoDB cluster. | `New-RscMutationMong
   
 Supported in v9.2+  
 v9.2: Updates the configuration of a MongoDB source managed by OpsManager. You can use this endpoint for updating MongoDB source details when the request to add a source fails.  
-v9.3-v9.4: Updates the configuration of a MongoDB source managed by OpsManager. This endpoint can be used for updating the MongoDB source details when the request to add a source had previously failed.  
-v9.5: Updates the configuration of a MongoDB source managed by Ops Manager. This endpoint can be used for updating the MongoDB source details when the request to add a source had previously failed. | `New-RscMutationMongo -Operation RetryAddOpsManagerManagedSource`<BR> | [retryAddOpsManagerManagedMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+v9.3: Updates the configuration of a MongoDB source managed by OpsManager. This endpoint can be used for updating the MongoDB source details when the request to add a source had previously failed.  
+v9.4+: Updates the configuration of a MongoDB source managed by Ops Manager. This endpoint can be used for updating the MongoDB source details when the request to add a source had previously failed. | `New-RscMutationMongo -Operation RetryAddOpsManagerManagedSource`<BR> | [retryAddOpsManagerManagedMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RetryAddSource | Update a MongoDB source  
   
 Supported in v8.1+  
@@ -3451,6 +3454,10 @@ Download a snapshot from archival. | `New-RscMutationSnapshot -Operation CreateD
 | DeleteCloudWorkloadSnapshot | Deletes the Rubrik Security Cloud on-demand snapshot by ID. | `New-RscMutationSnapshot -Operation DeleteCloudWorkloadSnapshot`<BR> | [deleteCloudWorkloadSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteFilesetSnapshots | N/A | `New-RscMutationSnapshot -Operation DeleteFilesetSnapshots`<BR> | [deleteFilesetSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteUnmanageds | Deletes the snapshots of an unmanaged object using the object IDs. | `New-RscMutationSnapshot -Operation DeleteUnmanageds`<BR> | [deleteUnmanagedSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Deletes | DeleteSnapshots deletes the specified snapshots of a single object at all  
+the provided location IDs. | `New-RscMutationSnapshot -Operation Deletes`<BR> | [deleteSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeletesOfObjects | DeleteSnapshotsOfObjects deletes all the snapshots of the specified  
+objects from the provided location IDs. | `New-RscMutationSnapshot -Operation DeletesOfObjects`<BR> | [deleteSnapshotsOfObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeletesOfUnmanagedObjects | Deletes all the snapshots of the unmanaged objects in the request. | `New-RscMutationSnapshot -Operation DeletesOfUnmanagedObjects`<BR> | [deleteSnapshotsOfUnmanagedObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | FilesetDownloadFiles | Download files from a fileset backup  
   

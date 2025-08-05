@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> List<AwsNativeAccountEnabledFeature>? EnabledFeatures
+        // GraphQL -> enabledFeatures: [AwsNativeAccountEnabledFeature!]! (type)
+        [JsonProperty("enabledFeatures")]
+        public List<AwsNativeAccountEnabledFeature>? EnabledFeatures { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public AwsNativeAccountDetails Set(
         AwsAccountStatus? Status = null,
         System.String? Id = null,
-        System.String? Name = null
+        System.String? Name = null,
+        List<AwsNativeAccountEnabledFeature>? EnabledFeatures = null
     ) 
     {
         if ( Status != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( EnabledFeatures != null ) {
+            this.EnabledFeatures = EnabledFeatures;
         }
         return this;
     }
@@ -98,6 +107,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> List<AwsNativeAccountEnabledFeature>? EnabledFeatures
+        // GraphQL -> enabledFeatures: [AwsNativeAccountEnabledFeature!]! (type)
+        if (this.EnabledFeatures != null) {
+            var fspec = this.EnabledFeatures.AsFieldSpec(conf.Child("enabledFeatures"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "enabledFeatures" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -157,6 +178,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> List<AwsNativeAccountEnabledFeature>? EnabledFeatures
+        // GraphQL -> enabledFeatures: [AwsNativeAccountEnabledFeature!]! (type)
+        if (ec.Includes("enabledFeatures",false))
+        {
+            if(this.EnabledFeatures == null) {
+
+                this.EnabledFeatures = new List<AwsNativeAccountEnabledFeature>();
+                this.EnabledFeatures.ApplyExploratoryFieldSpec(ec.NewChild("enabledFeatures"));
+
+            } else {
+
+                this.EnabledFeatures.ApplyExploratoryFieldSpec(ec.NewChild("enabledFeatures"));
+
+            }
+        }
+        else if (this.EnabledFeatures != null && ec.Excludes("enabledFeatures",false))
+        {
+            this.EnabledFeatures = null;
         }
     }
 

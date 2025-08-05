@@ -25,6 +25,11 @@ Add account level inventory workloads.
 
 - There is a single argument of type AddInventoryWorkloadsInput.
 - Returns System.Boolean.
+### addkerberoscredential
+AddKerberosCredential creates a new Kerberos credential for NCD systems.
+
+- There is a single argument of type AddKerberosCredentialInput.
+- Returns AddKerberosCredentialReply.
 ### addroleassignments
 - There are 3 arguments.
     - userIds - list of System.Strings: List of user IDs.

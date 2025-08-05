@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FeedType
     {
+        [EnumMember(Value = "CROWDSTRIKE")]
+        CROWDSTRIKE,
+
         [EnumMember(Value = "CUSTOM")]
         CUSTOM,
 

@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("percentCoverage")]
         public System.Single? PercentCoverage { get; set; }
 
+        //      C# -> System.Int32? TotalDocumentTypes
+        // GraphQL -> totalDocumentTypes: Int! (scalar)
+        [JsonProperty("totalDocumentTypes")]
+        public System.Int32? TotalDocumentTypes { get; set; }
+
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)
         [JsonProperty("totalHits")]
@@ -99,6 +104,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? ObjectsPercentCoverage = null,
         System.Int32? PendingAnalysisObjects = null,
         System.Single? PercentCoverage = null,
+        System.Int32? TotalDocumentTypes = null,
         System.Int64? TotalHits = null,
         System.Int32? TotalObjects = null,
         User? Creator = null
@@ -130,6 +136,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PercentCoverage != null ) {
             this.PercentCoverage = PercentCoverage;
+        }
+        if ( TotalDocumentTypes != null ) {
+            this.TotalDocumentTypes = TotalDocumentTypes;
         }
         if ( TotalHits != null ) {
             this.TotalHits = TotalHits;
@@ -233,6 +242,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "percentCoverage\n" ;
             } else {
                 s += ind + "percentCoverage\n" ;
+            }
+        }
+        //      C# -> System.Int32? TotalDocumentTypes
+        // GraphQL -> totalDocumentTypes: Int! (scalar)
+        if (this.TotalDocumentTypes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalDocumentTypes\n" ;
+            } else {
+                s += ind + "totalDocumentTypes\n" ;
             }
         }
         //      C# -> System.Int64? TotalHits
@@ -424,6 +442,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PercentCoverage != null && ec.Excludes("percentCoverage",true))
         {
             this.PercentCoverage = null;
+        }
+        //      C# -> System.Int32? TotalDocumentTypes
+        // GraphQL -> totalDocumentTypes: Int! (scalar)
+        if (ec.Includes("totalDocumentTypes",true))
+        {
+            if(this.TotalDocumentTypes == null) {
+
+                this.TotalDocumentTypes = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalDocumentTypes != null && ec.Excludes("totalDocumentTypes",true))
+        {
+            this.TotalDocumentTypes = null;
         }
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)

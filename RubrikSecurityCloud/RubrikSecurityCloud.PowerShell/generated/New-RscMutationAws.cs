@@ -563,6 +563,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		subnet = $someString
     /// 		# OPTIONAL
+    /// 		vpc = $someString
+    /// 		# OPTIONAL
     /// 		tags = $someString
     /// 		# OPTIONAL
     /// 		imageId = $someString
@@ -587,6 +589,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				availabilityZone = $someString
     /// 				# OPTIONAL
     /// 				subnet = $someString
+    /// 				# OPTIONAL
+    /// 				vpc = $someString
     /// 			}
     /// 		)
     /// 	}
@@ -718,6 +722,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	triggerHealthCheck = $someBoolean
+    /// 	# OPTIONAL
+    /// 	optionalHealthChecks = @{
+    /// 		# OPTIONAL
+    /// 		archivalHealthCheckParams = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				locationId = $someString
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		runCloudslabCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		runGcsConnectivityCheck = $someBoolean
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -827,6 +847,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	awsIamPairId = $someString
+    /// 	# OPTIONAL
+    /// 	archivalDataSourceIds = @(
+    /// 		$someString
+    /// 	)
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
     /// 	# OPTIONAL
@@ -1912,6 +1936,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	triggerHealthCheck = $someBoolean
+    /// 	# OPTIONAL
+    /// 	optionalHealthChecks = @{
+    /// 		# OPTIONAL
+    /// 		archivalHealthCheckParams = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				locationId = $someString
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		runCloudslabCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		runGcsConnectivityCheck = $someBoolean
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -3257,6 +3297,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		subnet = $someString
 		# OPTIONAL
+		vpc = $someString
+		# OPTIONAL
 		tags = $someString
 		# OPTIONAL
 		imageId = $someString
@@ -3281,6 +3323,8 @@ $query.Var.input = @{
 				availabilityZone = $someString
 				# OPTIONAL
 				subnet = $someString
+				# OPTIONAL
+				vpc = $someString
 			}
 		)
 	}
@@ -3396,6 +3440,22 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	triggerHealthCheck = $someBoolean
+	# OPTIONAL
+	optionalHealthChecks = @{
+		# OPTIONAL
+		archivalHealthCheckParams = @(
+			@{
+				# REQUIRED
+				locationId = $someString
+				# REQUIRED
+				name = $someString
+			}
+		)
+		# OPTIONAL
+		runCloudslabCheck = $someBoolean
+		# OPTIONAL
+		runGcsConnectivityCheck = $someBoolean
+	}
 }"
             );
         }
@@ -3497,6 +3557,10 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	awsIamPairId = $someString
+	# OPTIONAL
+	archivalDataSourceIds = @(
+		$someString
+	)
 	# REQUIRED
 	bypassProxy = $someBoolean
 	# OPTIONAL
@@ -4422,6 +4486,22 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	triggerHealthCheck = $someBoolean
+	# OPTIONAL
+	optionalHealthChecks = @{
+		# OPTIONAL
+		archivalHealthCheckParams = @(
+			@{
+				# REQUIRED
+				locationId = $someString
+				# REQUIRED
+				name = $someString
+			}
+		)
+		# OPTIONAL
+		runCloudslabCheck = $someBoolean
+		# OPTIONAL
+		runGcsConnectivityCheck = $someBoolean
+	}
 }"
             );
         }

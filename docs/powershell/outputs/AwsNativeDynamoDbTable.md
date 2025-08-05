@@ -23,6 +23,8 @@ AWS native DynamoDB Table.
   - Names of the regions where the table is present but are not chosen as backup regions. This field is only valid for Global tables.
 - awsNativeAccountDetails: AwsNativeAccountDetails
   - AWS native account details.
+- s3BackupBucket: System.String
+  - S3 backup bucket for the DynamoDB table.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsAccount: AwsNativeAccount

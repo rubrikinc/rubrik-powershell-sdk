@@ -116,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ibmDetails")]
         public IbmCosDetails? IbmDetails { get; set; }
 
+        //      C# -> List<System.String>? ArchivalDataSourceIds
+        // GraphQL -> archivalDataSourceIds: [String!] (scalar)
+        [JsonProperty("archivalDataSourceIds")]
+        public List<System.String>? ArchivalDataSourceIds { get; set; }
+
 
         #endregion
 

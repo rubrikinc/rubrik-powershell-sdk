@@ -5,3 +5,4 @@ Type of the threat intel feed.
 - RUBRIK - Rubrik feed.
 - CUSTOM - Custom feed.
 - MISP - MISP feed.
+- CROWDSTRIKE - CrowdStrike feed.

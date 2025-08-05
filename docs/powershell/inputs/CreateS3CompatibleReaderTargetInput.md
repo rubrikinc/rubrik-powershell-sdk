@@ -31,3 +31,5 @@ Input for creating a S3Compatible Reader Target.
   - Deprecated: S3-compatible immutability settings is no longer used.
 - ibmDetails: IbmCosDetails
   - Deprecated: IBM subtype location specific details is no longer used.
+- archivalDataSourceIds: list of System.Strings
+  - List of workload IDs on the original Rubrik cluster. This list should be empty for a full refresh.

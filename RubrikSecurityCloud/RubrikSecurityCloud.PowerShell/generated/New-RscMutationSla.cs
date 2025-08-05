@@ -783,6 +783,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					locationId = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			isComplianceImmutabilityEnabled = $someBoolean
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -874,6 +876,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		@{
     /// 			# OPTIONAL
     /// 			archivalGroupId = $someString
+    /// 			# OPTIONAL
+    /// 			isComplianceImmutabilityEnabled = $someBoolean
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1629,6 +1633,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					locationId = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			isComplianceImmutabilityEnabled = $someBoolean
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1720,6 +1726,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		@{
     /// 			# OPTIONAL
     /// 			archivalGroupId = $someString
+    /// 			# OPTIONAL
+    /// 			isComplianceImmutabilityEnabled = $someBoolean
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -2669,6 +2677,8 @@ $query.Var.input = @{
 					locationId = $someString
 				}
 			)
+			# OPTIONAL
+			isComplianceImmutabilityEnabled = $someBoolean
 		}
 	)
 	# OPTIONAL
@@ -2760,6 +2770,8 @@ $query.Var.input = @{
 		@{
 			# OPTIONAL
 			archivalGroupId = $someString
+			# OPTIONAL
+			isComplianceImmutabilityEnabled = $someBoolean
 		}
 	)
 	# OPTIONAL
@@ -3476,6 +3488,8 @@ $query.Var.input = @{
 					locationId = $someString
 				}
 			)
+			# OPTIONAL
+			isComplianceImmutabilityEnabled = $someBoolean
 		}
 	)
 	# OPTIONAL
@@ -3567,6 +3581,8 @@ $query.Var.input = @{
 		@{
 			# OPTIONAL
 			archivalGroupId = $someString
+			# OPTIONAL
+			isComplianceImmutabilityEnabled = $someBoolean
 		}
 	)
 	# OPTIONAL

@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivalLocationToClusterMapping")]
         public List<ArchivalLocationToClusterMappingInput>? ArchivalLocationToClusterMapping { get; set; }
 
+        //      C# -> System.Boolean? IsComplianceImmutabilityEnabled
+        // GraphQL -> isComplianceImmutabilityEnabled: Boolean (scalar)
+        [JsonProperty("isComplianceImmutabilityEnabled")]
+        public System.Boolean? IsComplianceImmutabilityEnabled { get; set; }
+
 
         #endregion
 

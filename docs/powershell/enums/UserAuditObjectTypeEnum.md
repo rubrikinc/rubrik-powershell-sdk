@@ -38,6 +38,7 @@ User audit object type.
 - INTEL_FEED - Intel feed.
 - ATLASSIAN_SITE - Atlassian site.
 - EXOCOMPUTE - Exocompute.
+- CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS Share.
 - MONGODB_SOURCE - MongoDB source type.
 - POSTGRES_DB_CLUSTER - PostgreSQL Database Cluster.
 - HypervServer - Hyper-V server type.

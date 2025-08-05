@@ -176,6 +176,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjectCount")]
         public System.Int32? ReplicatedObjectCount { get; set; }
 
+        //      C# -> System.String? ResourceInfo
+        // GraphQL -> resourceInfo: String (scalar)
+        [JsonProperty("resourceInfo")]
+        public System.String? ResourceInfo { get; set; }
+
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
@@ -381,6 +386,7 @@ namespace RubrikSecurityCloud.Types
         System.String? OsName = null,
         System.String? RbaPackageUpgradeInfo = null,
         System.Int32? ReplicatedObjectCount = null,
+        System.String? ResourceInfo = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? VfdState = null,
         List<Org>? AllOrgs = null,
@@ -498,6 +504,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
+        }
+        if ( ResourceInfo != null ) {
+            this.ResourceInfo = ResourceInfo;
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
@@ -879,6 +888,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "replicatedObjectCount\n" ;
             } else {
                 s += ind + "replicatedObjectCount\n" ;
+            }
+        }
+        //      C# -> System.String? ResourceInfo
+        // GraphQL -> resourceInfo: String (scalar)
+        if (this.ResourceInfo != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceInfo\n" ;
+            } else {
+                s += ind + "resourceInfo\n" ;
             }
         }
         //      C# -> System.Boolean? SlaPauseStatus
@@ -1714,6 +1732,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReplicatedObjectCount != null && ec.Excludes("replicatedObjectCount",true))
         {
             this.ReplicatedObjectCount = null;
+        }
+        //      C# -> System.String? ResourceInfo
+        // GraphQL -> resourceInfo: String (scalar)
+        if (ec.Includes("resourceInfo",true))
+        {
+            if(this.ResourceInfo == null) {
+
+                this.ResourceInfo = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceInfo != null && ec.Excludes("resourceInfo",true))
+        {
+            this.ResourceInfo = null;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

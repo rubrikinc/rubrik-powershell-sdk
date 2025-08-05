@@ -25,4 +25,5 @@ Represents regions for Entra ID.
 - POLANDCENTRAL - Azure region is Poland Central.
 - QATARCENTRAL - Azure region is Qatar Central.
 - UAENORTH - Azure region is UAE North.
-- USGOVVIRGINIA - Entra ID region is US Gov Virginia.
+- USGOVVIRGINIA - Azure region is US Gov Virginia.
+- ISRAELCENTRAL - Azure region is Israel Central.

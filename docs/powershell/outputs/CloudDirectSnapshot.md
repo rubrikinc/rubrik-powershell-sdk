@@ -49,5 +49,7 @@ NAS Cloud Direct snapshot object.
   - Specifies whether or not the snapshot is expired.
 - snappableId: System.String
   - The workload ID of the snapshot.
+- isQuarantineProcessing: System.Boolean
+  - Specifies whether the snapshot is being processed processed to determine its quarantine state.
 - isAnomaly: System.Boolean
   - Flag if the snapshot is an anomaly.

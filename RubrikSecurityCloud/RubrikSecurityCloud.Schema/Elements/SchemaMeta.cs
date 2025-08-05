@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20250714-24" ;
+        public static string GraphqlSchemaVersion = "v20250728-44" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -255,6 +255,7 @@ namespace RubrikSecurityCloud.Types
             AddDb2InstanceReply,
             AddGlobalCertificateReply,
             AddIdentityProviderReply,
+            AddKerberosCredentialReply,
             AddManagedVolumeReply,
             AddMongoSourceReply,
             AddO365OrgResponse,
@@ -388,6 +389,7 @@ namespace RubrikSecurityCloud.Types
             AwsNativeAccountConnection,
             AwsNativeAccountDetails,
             AwsNativeAccountEdge,
+            AwsNativeAccountEnabledFeature,
             AwsNativeDynamoDbTable,
             AwsNativeDynamoDbTablePointInTimeRestoreWindow,
             AwsNativeEbsVolume,
@@ -1204,6 +1206,7 @@ namespace RubrikSecurityCloud.Types
             GcpCloudNativeTarget,
             GcpCmk,
             GcpFeatureWithPermissionGroups,
+            GcpGetResourceSetupTemplateReply,
             GcpNativeAttachmentDetails,
             GcpNativeDisk,
             GcpNativeDiskConnection,
@@ -1972,8 +1975,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -3056,6 +3059,7 @@ namespace RubrikSecurityCloud.Types
             AddInventoryWorkloadsInput,
             AddK8sClusterInput,
             AddK8sProtectionSetInput,
+            AddKerberosCredentialInput,
             AddManagedVolumeInfo,
             AddManagedVolumeInput,
             AddMongoSourceInput,
@@ -3155,6 +3159,7 @@ namespace RubrikSecurityCloud.Types
             AwsNativeRegionFilter,
             AwsNativeRegionFilters,
             AwsNativeRegionNameSubstringFilter,
+            AwsNativeRegionNonEmptyFilter,
             AwsNativeS3SlaConfigInput,
             AwsNativeTagFilter,
             AwsNativeVpcFilter,
@@ -3200,6 +3205,7 @@ namespace RubrikSecurityCloud.Types
             AzureNativeDiskTypeFilter,
             AzureNativeRegionFilter,
             AzureNativeRegionFilters,
+            AzureNativeRegionNonEmptyFilter,
             AzureNativeResourceGroupInfoInput,
             AzureNativeRgSlaFilter,
             AzureNativeSubscriptionFilters,
@@ -3592,6 +3598,8 @@ namespace RubrikSecurityCloud.Types
             DeleteScheduledReportInput,
             DeleteServiceAccountsFromAccountInput,
             DeleteSmbDomainInput,
+            DeleteSnapshotsInput,
+            DeleteSnapshotsOfObjectsInput,
             DeleteSnapshotsOfUnmanagedObjectsInput,
             DeleteStorageArraysInput,
             DeleteSyslogExportRuleInput,
@@ -3794,6 +3802,7 @@ namespace RubrikSecurityCloud.Types
             GcpCloudAccountOauthInitiateInput,
             GcpCloudAccountUpgradeProjectsInput,
             GcpEsConfigInput,
+            GcpGetResourceSetupTemplateReq,
             GcpNativeDisableProjectInput,
             GcpNativeDiskFileIndexingFilter,
             GcpNativeDiskFilters,
@@ -4003,6 +4012,7 @@ namespace RubrikSecurityCloud.Types
             K8sRestoreParametersInput,
             K8sSnapshotDownloadConfigInput,
             K8sVirtualMachineDiskFilter,
+            KdcConfigInput,
             KmsCryptoKey,
             KmsSpecInput,
             KosmosRecoveryInfo,
@@ -4318,6 +4328,9 @@ namespace RubrikSecurityCloud.Types
             PreviewFilterInput,
             PrismElementCdmTuple,
             PrivateContainerRegistryInput,
+            ProjectIdToServiceAccount,
+            ProjectIdToServiceAccountEntry,
+            ProjectWithFeatures,
             PromoteReaderTargetInput,
             ProtectionStatusFilter,
             ProviderDescription,
@@ -5333,6 +5346,7 @@ namespace RubrikSecurityCloud.Types
             filesetTemplate,
             filesetTemplates,
             gcpGetDefaultCredentialsServiceAccount,
+            gcpGetResourceSetupTemplate,
             gcpNativeDisk,
             gcpNativeDisks,
             gcpNativeGceInstance,
@@ -5873,6 +5887,7 @@ namespace RubrikSecurityCloud.Types
             addInventoryWorkloads,
             addK8sCluster,
             addK8sProtectionSet,
+            addKerberosCredential,
             addManagedVolume,
             addMongoSource,
             addMosaicStore,
@@ -6151,6 +6166,8 @@ namespace RubrikSecurityCloud.Types
             deleteScheduledReport,
             deleteServiceAccountsFromAccount,
             deleteSmbDomain,
+            deleteSnapshots,
+            deleteSnapshotsOfObjects,
             deleteSnapshotsOfUnmanagedObjects,
             deleteStorageArrays,
             deleteSyslogExportRule,
@@ -9617,6 +9634,7 @@ namespace RubrikSecurityCloud.Types
             addInventoryWorkloads,
             addK8sCluster,
             addK8sProtectionSet,
+            addKerberosCredential,
             addManagedVolume,
             addMongoSource,
             addMosaicStore,
@@ -10255,6 +10273,8 @@ namespace RubrikSecurityCloud.Types
             deleteScheduledReport,
             deleteServiceAccountsFromAccount,
             deleteSmbDomain,
+            deleteSnapshots,
+            deleteSnapshotsOfObjects,
             deleteSnapshotsOfUnmanagedObjects,
             deleteStorageArrays,
             deleteSyslogExportRule,
@@ -10409,6 +10429,7 @@ namespace RubrikSecurityCloud.Types
             gcpCloudAccountOauthInitiate,
             gcpCloudAccountUpgradeProjects,
             gcpGetDefaultCredentialsServiceAccount,
+            gcpGetResourceSetupTemplate,
             gcpNativeDisableProject,
             gcpNativeDisk,
             gcpNativeDisks,
@@ -11611,6 +11632,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationK8s",
                         cmdletSwitchName: "AddProtectionSet",
                         gqlRootFieldName: "addK8sProtectionSet"
+                    )
+                },
+                {
+                    GqlRootFieldName.addKerberosCredential,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "AddKerberosCredential",
+                        gqlRootFieldName: "addKerberosCredential"
                     )
                 },
                 {
@@ -16718,6 +16747,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.deleteSnapshots,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "Deletes",
+                        gqlRootFieldName: "deleteSnapshots"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteSnapshotsOfObjects,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "DeletesOfObjects",
+                        gqlRootFieldName: "deleteSnapshotsOfObjects"
+                    )
+                },
+                {
                     GqlRootFieldName.deleteSnapshotsOfUnmanagedObjects,
                     new RscOp(
                         cmdletName: "New-RscMutationSnapshot",
@@ -17947,6 +17992,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryGcp",
                         cmdletSwitchName: "GetDefaultCredentialsServiceAccount",
                         gqlRootFieldName: "gcpGetDefaultCredentialsServiceAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpGetResourceSetupTemplate,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "GetResourceSetupTemplate",
+                        gqlRootFieldName: "gcpGetResourceSetupTemplate"
                     )
                 },
                 {
@@ -25629,6 +25682,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.addK8sProtectionSet
                 },
                 {
+                    "New-RscMutationMisc -Op AddKerberosCredential",
+                    GqlRootFieldName.addKerberosCredential
+                },
+                {
                     "New-RscMutationManagedVolume -Op Add",
                     GqlRootFieldName.addManagedVolume
                 },
@@ -28181,6 +28238,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteSmbDomain
                 },
                 {
+                    "New-RscMutationSnapshot -Op Deletes",
+                    GqlRootFieldName.deleteSnapshots
+                },
+                {
+                    "New-RscMutationSnapshot -Op DeletesOfObjects",
+                    GqlRootFieldName.deleteSnapshotsOfObjects
+                },
+                {
                     "New-RscMutationSnapshot -Op DeletesOfUnmanagedObjects",
                     GqlRootFieldName.deleteSnapshotsOfUnmanagedObjects
                 },
@@ -28795,6 +28860,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryGcp -Op GetDefaultCredentialsServiceAccount",
                     GqlRootFieldName.gcpGetDefaultCredentialsServiceAccount
+                },
+                {
+                    "New-RscQueryGcp -Op GetResourceSetupTemplate",
+                    GqlRootFieldName.gcpGetResourceSetupTemplate
                 },
                 {
                     "New-RscMutationGcpNative -Op DisableProject",
@@ -32690,6 +32759,10 @@ namespace RubrikSecurityCloud.Types
                         "addIdentityProvider",
                     }
                 },
+                {   "AddKerberosCredentialReply", new List<string> {
+                        "addKerberosCredential",
+                    }
+                },
                 {   "AddManagedVolumeReply", new List<string> {
                         "addManagedVolume",
                     }
@@ -34309,6 +34382,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "GcpCloudAccountUpgradeProjectsReply", new List<string> {
                         "gcpCloudAccountUpgradeProjects",
+                    }
+                },
+                {   "GcpGetResourceSetupTemplateReply", new List<string> {
+                        "gcpGetResourceSetupTemplate",
                     }
                 },
                 {   "GcpNativeDisk", new List<string> {
@@ -36805,6 +36882,8 @@ namespace RubrikSecurityCloud.Types
                         "deleteReplicationPair",
                         "deleteScheduledReport",
                         "deleteSmbDomain",
+                        "deleteSnapshots",
+                        "deleteSnapshotsOfObjects",
                         "deleteSyslogExportRule",
                         "deleteTarget",
                         "deleteTargetMapping",
@@ -37694,6 +37773,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "AddK8sProtectionSetInput", new List<string> {
                         "addK8sProtectionSet",
+                    }
+                },
+                {   "AddKerberosCredentialInput", new List<string> {
+                        "addKerberosCredential",
                     }
                 },
                 {   "AddManagedVolumeInput", new List<string> {
@@ -39371,6 +39454,14 @@ namespace RubrikSecurityCloud.Types
                         "deleteSmbDomain",
                     }
                 },
+                {   "DeleteSnapshotsInput", new List<string> {
+                        "deleteSnapshots",
+                    }
+                },
+                {   "DeleteSnapshotsOfObjectsInput", new List<string> {
+                        "deleteSnapshotsOfObjects",
+                    }
+                },
                 {   "DeleteSnapshotsOfUnmanagedObjectsInput", new List<string> {
                         "deleteSnapshotsOfUnmanagedObjects",
                     }
@@ -39898,6 +39989,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "GcpCloudAccountUpgradeProjectsInput", new List<string> {
                         "gcpCloudAccountUpgradeProjects",
+                    }
+                },
+                {   "GcpGetResourceSetupTemplateReq", new List<string> {
+                        "gcpGetResourceSetupTemplate",
                     }
                 },
                 {   "GcpNativeDisableProjectInput", new List<string> {
@@ -44032,6 +44127,10 @@ namespace RubrikSecurityCloud.Types
                         "vSphereVmNewConnection",
                     }
                 },
+                {   "[FlowErrorCode]", new List<string> {
+                        "policyObjs",
+                    }
+                },
                 {   "[GetCrossAccountClustersFilter]", new List<string> {
                         "allCrossAccountClusters",
                     }
@@ -44222,6 +44321,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "[SLAAuditDetailFilterInput]", new List<string> {
                         "slaAuditDetail",
+                    }
+                },
+                {   "[ScanResultCategory]", new List<string> {
+                        "policyObjs",
                     }
                 },
                 {   "[SlaStatusFilterInput]", new List<string> {
@@ -44460,6 +44563,7 @@ namespace RubrikSecurityCloud.Types
                 { "addDb2Instance", "AddDb2InstanceReply"},
                 { "addGlobalCertificate", "AddGlobalCertificateReply"},
                 { "addIdentityProvider", "AddIdentityProviderReply"},
+                { "addKerberosCredential", "AddKerberosCredentialReply"},
                 { "addManagedVolume", "AddManagedVolumeReply"},
                 { "addMongoSource", "AddMongoSourceReply"},
                 { "addO365Org", "AddO365OrgResponse"},
@@ -45127,6 +45231,7 @@ namespace RubrikSecurityCloud.Types
                 { "gcpCloudAccountOauthComplete", "GcpCloudAccountOauthCompleteReply"},
                 { "gcpCloudAccountOauthInitiate", "GcpCloudAccountOauthInitiateReply"},
                 { "gcpCloudAccountUpgradeProjects", "GcpCloudAccountUpgradeProjectsReply"},
+                { "gcpGetResourceSetupTemplate", "GcpGetResourceSetupTemplateReply"},
                 { "gcpNativeDisk", "GcpNativeDisk"},
                 { "gcpNativeDisks", "GcpNativeDiskConnection"},
                 { "gcpNativeGceInstance", "GcpNativeGceInstance"},
@@ -45904,6 +46009,8 @@ namespace RubrikSecurityCloud.Types
                 { "deleteReplicationPair", "Void"},
                 { "deleteScheduledReport", "Void"},
                 { "deleteSmbDomain", "Void"},
+                { "deleteSnapshots", "Void"},
+                { "deleteSnapshotsOfObjects", "Void"},
                 { "deleteSyslogExportRule", "Void"},
                 { "deleteTarget", "Void"},
                 { "deleteTargetMapping", "Void"},
@@ -47157,6 +47264,7 @@ namespace RubrikSecurityCloud.Types
                     "CreateTarget",
                     "FeaturePermissionsForCloudAccount",
                     "GetDefaultCredentialsServiceAccount",
+                    "GetResourceSetupTemplate",
                     "LatestPermissionsByPermissionsGroup",
                     "NativeAvailableKmsCryptoKeys",
                     "NativeCompatibleMachineTypes",
@@ -47376,6 +47484,7 @@ namespace RubrikSecurityCloud.Types
                     "AddCustomIntelFeed",
                     "AddIdentityProvider",
                     "AddInventoryWorkloads",
+                    "AddKerberosCredential",
                     "AddRoleAssignments",
                     "AddVlan",
                     "AddVmAppConsistentSpecs",
@@ -48334,6 +48443,8 @@ namespace RubrikSecurityCloud.Types
                     "DeleteCloudWorkloadSnapshot",
                     "DeleteFilesetSnapshots",
                     "DeleteUnmanageds",
+                    "Deletes",
+                    "DeletesOfObjects",
                     "DeletesOfUnmanagedObjects",
                     "EmailSearch",
                     "EventSearch",

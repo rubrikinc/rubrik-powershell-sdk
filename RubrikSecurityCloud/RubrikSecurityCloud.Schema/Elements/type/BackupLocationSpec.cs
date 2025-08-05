@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? IsComplianceImmutabilityEnabled
+        // GraphQL -> isComplianceImmutabilityEnabled: Boolean! (scalar)
+        [JsonProperty("isComplianceImmutabilityEnabled")]
+        public System.Boolean? IsComplianceImmutabilityEnabled { get; set; }
+
         //      C# -> TargetMapping? ArchivalGroup
         // GraphQL -> archivalGroup: TargetMapping (type)
         [JsonProperty("archivalGroup")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public BackupLocationSpec Set(
+        System.Boolean? IsComplianceImmutabilityEnabled = null,
         TargetMapping? ArchivalGroup = null
     ) 
     {
+        if ( IsComplianceImmutabilityEnabled != null ) {
+            this.IsComplianceImmutabilityEnabled = IsComplianceImmutabilityEnabled;
+        }
         if ( ArchivalGroup != null ) {
             this.ArchivalGroup = ArchivalGroup;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? IsComplianceImmutabilityEnabled
+        // GraphQL -> isComplianceImmutabilityEnabled: Boolean! (scalar)
+        if (this.IsComplianceImmutabilityEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isComplianceImmutabilityEnabled\n" ;
+            } else {
+                s += ind + "isComplianceImmutabilityEnabled\n" ;
+            }
+        }
         //      C# -> TargetMapping? ArchivalGroup
         // GraphQL -> archivalGroup: TargetMapping (type)
         if (this.ArchivalGroup != null) {
@@ -74,6 +92,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Boolean? IsComplianceImmutabilityEnabled
+        // GraphQL -> isComplianceImmutabilityEnabled: Boolean! (scalar)
+        if (ec.Includes("isComplianceImmutabilityEnabled",true))
+        {
+            if(this.IsComplianceImmutabilityEnabled == null) {
+
+                this.IsComplianceImmutabilityEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsComplianceImmutabilityEnabled != null && ec.Excludes("isComplianceImmutabilityEnabled",true))
+        {
+            this.IsComplianceImmutabilityEnabled = null;
+        }
         //      C# -> TargetMapping? ArchivalGroup
         // GraphQL -> archivalGroup: TargetMapping (type)
         if (ec.Includes("archivalGroup",false))

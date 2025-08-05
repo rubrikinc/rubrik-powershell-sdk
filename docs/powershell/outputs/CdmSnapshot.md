@@ -77,5 +77,7 @@
   - Specifies whether or not the snapshot is expired.
 - snappableId: System.String
   - The workload ID of the snapshot.
+- isQuarantineProcessing: System.Boolean
+  - Specifies whether the snapshot is being processed processed to determine its quarantine state.
 - isQuarantined: System.Boolean
   - Specifies whether the snapshot is quarantined.

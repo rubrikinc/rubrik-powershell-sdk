@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("endTime")]
         public DateTime? EndTime { get; set; }
 
+        //      C# -> System.Boolean? HasFileVersionInfo
+        // GraphQL -> hasFileVersionInfo: Boolean! (scalar)
+        [JsonProperty("hasFileVersionInfo")]
+        public System.Boolean? HasFileVersionInfo { get; set; }
+
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
         [JsonProperty("startTime")]
@@ -77,6 +82,7 @@ namespace RubrikSecurityCloud.Types
     public ThreatHuntDetailsV2 Set(
         ThreatHuntStatus? Status = null,
         DateTime? EndTime = null,
+        System.Boolean? HasFileVersionInfo = null,
         DateTime? StartTime = null,
         System.Int64? TotalMatchedSnapshots = null,
         System.Int64? TotalObjectFids = null,
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EndTime != null ) {
             this.EndTime = EndTime;
+        }
+        if ( HasFileVersionInfo != null ) {
+            this.HasFileVersionInfo = HasFileVersionInfo;
         }
         if ( StartTime != null ) {
             this.StartTime = StartTime;
@@ -143,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "endTime\n" ;
             } else {
                 s += ind + "endTime\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HasFileVersionInfo
+        // GraphQL -> hasFileVersionInfo: Boolean! (scalar)
+        if (this.HasFileVersionInfo != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasFileVersionInfo\n" ;
+            } else {
+                s += ind + "hasFileVersionInfo\n" ;
             }
         }
         //      C# -> DateTime? StartTime
@@ -254,6 +272,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EndTime != null && ec.Excludes("endTime",true))
         {
             this.EndTime = null;
+        }
+        //      C# -> System.Boolean? HasFileVersionInfo
+        // GraphQL -> hasFileVersionInfo: Boolean! (scalar)
+        if (ec.Includes("hasFileVersionInfo",true))
+        {
+            if(this.HasFileVersionInfo == null) {
+
+                this.HasFileVersionInfo = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasFileVersionInfo != null && ec.Excludes("hasFileVersionInfo",true))
+        {
+            this.HasFileVersionInfo = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)

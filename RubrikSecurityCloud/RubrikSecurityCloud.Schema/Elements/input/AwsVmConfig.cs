@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("subnet")]
         public System.String? Subnet { get; set; }
 
+        //      C# -> System.String? Vpc
+        // GraphQL -> vpc: String (scalar)
+        [JsonProperty("vpc")]
+        public System.String? Vpc { get; set; }
+
         //      C# -> System.String? Tags
         // GraphQL -> tags: String (scalar)
         [JsonProperty("tags")]

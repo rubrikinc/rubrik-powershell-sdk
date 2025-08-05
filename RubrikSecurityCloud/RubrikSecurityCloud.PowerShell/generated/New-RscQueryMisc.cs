@@ -6007,6 +6007,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	$someString
     /// )
     /// # OPTIONAL
+    /// $query.Var.scanResultErrorCodesFilter = @(
+    /// 	$someFlowErrorCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlowErrorCode]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.scanResultCategoriesFilter = @(
+    /// 	$someScanResultCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScanResultCategory]) for enum values.
+    /// )
+    /// # OPTIONAL
     /// $query.Var.backupStatusFilter = @(
     /// 	$someBackupStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupStatus]) for enum values.
     /// )
@@ -16829,6 +16837,8 @@ $query.Var.includeWhitelistedResults = $someBoolean"
         //     objectTagsFilter: ObjectTagsFilterInput
         //     mipLabelsFilter: [MipLabelsFilterInput!]
         //     documentTypesFilter: [UUID!]
+        //     scanResultErrorCodesFilter: [FlowErrorCode!]
+        //     scanResultCategoriesFilter: [ScanResultCategory!]
         //     backupStatusFilter: [BackupStatus!]
         //     slaIdsFilter: [String!]
         //     networkAccessFilter: [NetworkAccess!]
@@ -16875,6 +16885,8 @@ $query.Var.includeWhitelistedResults = $someBoolean"
                 Tuple.Create("objectTagsFilter", "ObjectTagsFilterInput"),
                 Tuple.Create("mipLabelsFilter", "[MipLabelsFilterInput!]"),
                 Tuple.Create("documentTypesFilter", "[UUID!]"),
+                Tuple.Create("scanResultErrorCodesFilter", "[FlowErrorCode!]"),
+                Tuple.Create("scanResultCategoriesFilter", "[ScanResultCategory!]"),
                 Tuple.Create("backupStatusFilter", "[BackupStatus!]"),
                 Tuple.Create("slaIdsFilter", "[String!]"),
                 Tuple.Create("networkAccessFilter", "[NetworkAccess!]"),
@@ -16892,7 +16904,7 @@ $query.Var.includeWhitelistedResults = $someBoolean"
                 argDefs,
                 "query",
                 "QueryPolicyObjs",
-                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$insightsMetadataId: String,$includeInsightsMarker: Boolean,$userAccessObjectsFilter: Boolean!,$objectIdsFilter: [String!],$platformFilter: [Platform!],$platformCategoryFilter: [PlatformCategory!],$cloudAccountIdsFilter: [String!],$resourceGroupsFilter: [String!],$regionsFilter: [String!],$dataTypeIdsFilter: [String!],$firstSeenTimeRange: UserTimeRangeInput,$lastAccessTimeRange: UserTimeRangeInput,$creationTimeRange: UserTimeRangeInput,$lastScanTimeRange: UserTimeRangeInput,$objectTagsFilter: ObjectTagsFilterInput,$mipLabelsFilter: [MipLabelsFilterInput!],$documentTypesFilter: [UUID!],$backupStatusFilter: [BackupStatus!],$slaIdsFilter: [String!],$networkAccessFilter: [NetworkAccess!],$encryptionFilter: [Encryption!],$loggingFilter: [Logging!],$violationSeverityFilter: [ViolationSeverity!],$exposureFilter: [OpenAccessType!],$accessTypeFilter: [AccessVia!],$first: Int,$after: String,$last: Int,$before: String)",
+                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$insightsMetadataId: String,$includeInsightsMarker: Boolean,$userAccessObjectsFilter: Boolean!,$objectIdsFilter: [String!],$platformFilter: [Platform!],$platformCategoryFilter: [PlatformCategory!],$cloudAccountIdsFilter: [String!],$resourceGroupsFilter: [String!],$regionsFilter: [String!],$dataTypeIdsFilter: [String!],$firstSeenTimeRange: UserTimeRangeInput,$lastAccessTimeRange: UserTimeRangeInput,$creationTimeRange: UserTimeRangeInput,$lastScanTimeRange: UserTimeRangeInput,$objectTagsFilter: ObjectTagsFilterInput,$mipLabelsFilter: [MipLabelsFilterInput!],$documentTypesFilter: [UUID!],$scanResultErrorCodesFilter: [FlowErrorCode!],$scanResultCategoriesFilter: [ScanResultCategory!],$backupStatusFilter: [BackupStatus!],$slaIdsFilter: [String!],$networkAccessFilter: [NetworkAccess!],$encryptionFilter: [Encryption!],$loggingFilter: [Logging!],$violationSeverityFilter: [ViolationSeverity!],$exposureFilter: [OpenAccessType!],$accessTypeFilter: [AccessVia!],$first: Int,$after: String,$last: Int,$before: String)",
                 "PolicyObjConnection",
                 Query.PolicyObjs,
                 Query.PolicyObjsFieldSpec,
@@ -17034,6 +17046,14 @@ $query.Var.mipLabelsFilter = @(
 # OPTIONAL
 $query.Var.documentTypesFilter = @(
 	$someString
+)
+# OPTIONAL
+$query.Var.scanResultErrorCodesFilter = @(
+	$someFlowErrorCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlowErrorCode]) for enum values.
+)
+# OPTIONAL
+$query.Var.scanResultCategoriesFilter = @(
+	$someScanResultCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScanResultCategory]) for enum values.
 )
 # OPTIONAL
 $query.Var.backupStatusFilter = @(

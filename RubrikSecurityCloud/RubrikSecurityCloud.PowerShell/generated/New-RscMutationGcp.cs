@@ -136,9 +136,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	organizationName = $someString
     /// 	# OPTIONAL
     /// 	serviceAccountJwtConfig = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	features = @(
     /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	featuresWithPermissionGroups = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 			# OPTIONAL
+    /// 			permissionsGroups = @(
+    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
+    /// 		}
     /// 	)
     /// }
     /// 
@@ -423,6 +434,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
+    /// 	# OPTIONAL
+    /// 	archivalDataSourceIds = @(
+    /// 		$someString
+    /// 	)
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
     /// }
@@ -873,9 +888,20 @@ $query.Var.input = @{
 	organizationName = $someString
 	# OPTIONAL
 	serviceAccountJwtConfig = $someString
-	# REQUIRED
+	# OPTIONAL
 	features = @(
 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# OPTIONAL
+	featuresWithPermissionGroups = @(
+		@{
+			# OPTIONAL
+			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			# OPTIONAL
+			permissionsGroups = @(
+				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+		}
 	)
 }"
             );
@@ -1112,6 +1138,10 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
+	# OPTIONAL
+	archivalDataSourceIds = @(
+		$someString
+	)
 	# REQUIRED
 	bypassProxy = $someBoolean
 }"

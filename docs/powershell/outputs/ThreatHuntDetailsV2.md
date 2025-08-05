@@ -15,6 +15,8 @@ Details for the threat hunt.
   - Total number of snapshots across all objects selected for scan.
 - totalUniqueFileMatches: System.Int64
   - Total number of unique paths for which malware was found.
+- hasFileVersionInfo: System.Boolean
+  - Specifies whether the hunt has file version information.
 - baseConfig: ThreatHuntBaseConfig
   - The configuration of the threat hunt.
 - clusters: list of Clusters

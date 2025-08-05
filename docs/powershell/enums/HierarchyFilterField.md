@@ -542,3 +542,34 @@ by CDM (database_id column).
 +mo:filter:db:table=cdm_k8s_protection_set
 +mo:filter:db:column=type
 - IS_MICROSOFT_TEAMS_SITE - Filter Teams' sites in o365 sharepoint sites by presence of team_id.
+- AWS_NATIVE_REGION_NON_EMPTY - Filter AWS native regions that have at least one workload.
+A region is considered non-empty if any of its workload counters,
+such as ec2_instance_count, ebs_volume_count, rds_instance_count,
+s3_bucket_count, or dynamo_db_table_count, are greater than zero.
++mo:filter:db:table=aws_native_hierarchy_region
++mo:filter:db:column=region_id
++mo:filter:db:column=ec2_instance_count
++mo:filter:db:column=ebs_volume_count
++mo:filter:db:column=rds_instance_count
++mo:filter:db:column=s3_bucket_count
++mo:filter:db:column=dynamo_db_table_count
++mo:filter:db:index:key=region_id
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
+- AZURE_NATIVE_REGION_NON_EMPTY - Filter Azure native regions that have at least one workload.
+A region is considered non-empty if any of its workload counters,
+such as vms_count, disks_count, azure_sql_database_db_count,
+azure_sql_managed_instance_db_count or storage_account_count
+are greater than zero.
++mo:filter:db:table=azure_native_regions
++mo:filter:db:column=region_id
++mo:filter:db:column=vms_count
++mo:filter:db:column=disks_count
++mo:filter:db:column=azure_sql_database_db_count
++mo:filter:db:column=azure_sql_managed_instance_db_count
++mo:filter:db:column=storage_account_count
++mo:filter:db:index:key=region_id
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true

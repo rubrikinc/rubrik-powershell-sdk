@@ -1196,6 +1196,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		subnet = $someString
     /// 		# OPTIONAL
+    /// 		vpc = $someString
+    /// 		# OPTIONAL
     /// 		tags = $someString
     /// 		# OPTIONAL
     /// 		imageId = $someString
@@ -1220,6 +1222,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				availabilityZone = $someString
     /// 				# OPTIONAL
     /// 				subnet = $someString
+    /// 				# OPTIONAL
+    /// 				vpc = $someString
     /// 			}
     /// 		)
     /// 	}
@@ -2726,6 +2730,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		subnet = $someString
 		# OPTIONAL
+		vpc = $someString
+		# OPTIONAL
 		tags = $someString
 		# OPTIONAL
 		imageId = $someString
@@ -2750,6 +2756,8 @@ $query.Var.input = @{
 				availabilityZone = $someString
 				# OPTIONAL
 				subnet = $someString
+				# OPTIONAL
+				vpc = $someString
 			}
 		)
 	}

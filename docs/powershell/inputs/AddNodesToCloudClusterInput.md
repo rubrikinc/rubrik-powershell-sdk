@@ -7,6 +7,8 @@ Nodes add request for a cloud cluster.
   - AWS AMI ID to deploy to add nodes to an AWS Cloud Cluster without the marketplace.
 - azureImageName: System.String
   - Azure image name to deploy to add nodes to an Azure Cloud Cluster without the marketplace.
+- ociImageId: System.String
+  - OCI Image ID to deploy to add nodes to an OCI Cloud Cluster without the marketplace.
 - cloudAccountId: System.String
   - Customer cloud account UUID.
 - vendor: CcpVendorType

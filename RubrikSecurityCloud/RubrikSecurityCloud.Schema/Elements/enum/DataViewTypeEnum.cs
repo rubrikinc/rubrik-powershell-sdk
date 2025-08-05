@@ -117,9 +117,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_PROTECTION_AUDIT_LIST_EXPORT")]
         OBJECT_PROTECTION_AUDIT_LIST_EXPORT,
 
-        [EnumMember(Value = "PHYSICAL_HOSTS")]
-        PHYSICAL_HOSTS,
-
         [EnumMember(Value = "PROTECTION_TASK_DETAILS")]
         PROTECTION_TASK_DETAILS,
 

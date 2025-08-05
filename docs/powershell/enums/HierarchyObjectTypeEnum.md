@@ -80,6 +80,7 @@ Type of hierarchy object.
 - OPENSTACK_PROJECT - OpenStack Project.
 - VSphereFolder
 - AzureNativeVm
+- AZURE_DEVOPS_PROJECT - Azure Devops Project.
 - AZURE_SQL_DATABASE_DB
 - AzureSqlManagedInstanceServer
 - WindowsFileset
@@ -98,6 +99,7 @@ Type of hierarchy object.
 - Fileset
 - NasSystem
 - GOOGLE_WORKSPACE_USER - Google Workspace User.
+- AZURE_DEVOPS_ORGANIZATION - Azure Devops Organization.
 - NUTANIX_PRISM_CENTRAL - Nutanix Prism Central.
 - D365_DATAVERSE_TABLE - D365 Dataverse Table.
 - O365Calendar
@@ -150,6 +152,7 @@ Type of hierarchy object.
 - OPENSTACK_REGION - OpenStack Region.
 - StorageArrayVolumeGroup
 - SnapMirrorCloud
+- AZURE_DEVOPS_REPOSITORY - Azure Devops Repository.
 - HypervSCVMM
 - SALESFORCE_FIXED_OBJECT - Salesforce metadata.
 - AppBlueprint

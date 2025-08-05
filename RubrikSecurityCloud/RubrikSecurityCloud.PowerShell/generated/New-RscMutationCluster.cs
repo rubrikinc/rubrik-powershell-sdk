@@ -235,6 +235,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	awsImageId = $someString
     /// 	# OPTIONAL
     /// 	azureImageName = $someString
+    /// 	# OPTIONAL
+    /// 	ociImageId = $someString
     /// 	# REQUIRED
     /// 	cloudAccountId = $someString
     /// 	# REQUIRED
@@ -564,6 +566,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		subnet = $someString
     /// 		# OPTIONAL
+    /// 		vpc = $someString
+    /// 		# OPTIONAL
     /// 		tags = $someString
     /// 		# OPTIONAL
     /// 		imageId = $someString
@@ -588,6 +592,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				availabilityZone = $someString
     /// 				# OPTIONAL
     /// 				subnet = $someString
+    /// 				# OPTIONAL
+    /// 				vpc = $someString
     /// 			}
     /// 		)
     /// 	}
@@ -1611,6 +1617,8 @@ $query.Var.input = @{
 	awsImageId = $someString
 	# OPTIONAL
 	azureImageName = $someString
+	# OPTIONAL
+	ociImageId = $someString
 	# REQUIRED
 	cloudAccountId = $someString
 	# REQUIRED
@@ -1884,6 +1892,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		subnet = $someString
 		# OPTIONAL
+		vpc = $someString
+		# OPTIONAL
 		tags = $someString
 		# OPTIONAL
 		imageId = $someString
@@ -1908,6 +1918,8 @@ $query.Var.input = @{
 				availabilityZone = $someString
 				# OPTIONAL
 				subnet = $someString
+				# OPTIONAL
+				vpc = $someString
 			}
 		)
 	}

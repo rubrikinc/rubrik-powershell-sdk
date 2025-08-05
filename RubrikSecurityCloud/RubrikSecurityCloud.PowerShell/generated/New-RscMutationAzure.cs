@@ -1027,6 +1027,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
     /// 	# OPTIONAL
     /// 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
+    /// 	# OPTIONAL
+    /// 	archivalDataSourceIds = @(
+    /// 		$someString
+    /// 	)
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
     /// 	# OPTIONAL
@@ -4095,6 +4099,10 @@ $query.Var.input = @{
 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
 	# OPTIONAL
 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
+	# OPTIONAL
+	archivalDataSourceIds = @(
+		$someString
+	)
 	# REQUIRED
 	bypassProxy = $someBoolean
 	# OPTIONAL

@@ -7,3 +7,5 @@ AWS native account details.
   - Name of the AWS account.
 - status: AwsAccountStatus
   - Status of the AWS account for the relevant feature.
+- enabledFeatures: list of AwsNativeAccountEnabledFeatures
+  - List of protection features enabled for the AWS account.

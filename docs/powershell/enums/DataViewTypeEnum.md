@@ -46,7 +46,6 @@ All reporting table schemas.
 - SSO_GROUP - Specifies the database schema for SSO groups.
 - ROLE_LIST - Specifies the roles information.
 - USERS - Specifies the Users report information.
-- PHYSICAL_HOSTS - Specifies the database schema for physical hosts.
 - IDENTITY_RISKS - Specifies the Identity Risks report information.
 - BACKUP_STRIKES_V2 - Specifies the backup strikes information.
 - ACTIVE_DIRECTORY_FOREST_RECOVERY - Specifies the Active Directory forest recovery report information.

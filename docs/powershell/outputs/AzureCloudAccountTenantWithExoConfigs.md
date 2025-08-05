@@ -15,5 +15,7 @@ Azure Cloud Account Tenant with details of exocompute configured for subscriptio
   - App name of Azure application for the tenant.
 - isAppRubrikManaged: System.Boolean
   - If Rubrik manages the application associated with this tenant, this field will be set to FALSE. However, if the application is customer-managed and the customers manually added the credentials, this field will have a different value.
+- entraIdGroupId: System.String
+  - Object ID of the Entra ID group used for Entra ID authentication in Exocompute. Field will be empty for use cases other than exocompute or if customer has not onboarded to Entra ID authentication.
 - subscriptions: list of AzureSubscriptionWithExoConfigss
   - Details of subscriptions for the tenant.

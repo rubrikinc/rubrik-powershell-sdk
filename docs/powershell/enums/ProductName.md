@@ -41,3 +41,5 @@ Name of product.
 - SALESFORCE_DEVOPS_ADD_ON - Salesforce DevOps Add-on.
 - APPFLOWS_UCL - AppFlows UCL.
 - RADAR_O365 - Anomaly Detection on Office 365.
+- DSPM_O365 - DSPM for O365 workloads.
+- DSPM_CLOUD - DSPM for Cloud workloads.

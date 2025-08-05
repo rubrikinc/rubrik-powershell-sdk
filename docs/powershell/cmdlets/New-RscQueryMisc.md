@@ -1015,7 +1015,7 @@ Returns details for one policy object.
 ### policyobjs
 Returns status for all objects at a specified timestamp.
 
-- There are 42 arguments.
+- There are 44 arguments.
     - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
@@ -1046,6 +1046,8 @@ Returns status for all objects at a specified timestamp.
     - objectTagsFilter - ObjectTagsFilterInput: Object tags associated with workloads as key-value pairs.
     - mipLabelsFilter - list of MipLabelsFilterInputs: List of MIP Labels that will be used for filtering the result.
     - documentTypesFilter - list of System.Strings: List of document type IDs that will be used for filtering the result.
+    - scanResultErrorCodesFilter - list of FlowErrorCodes: List of scan result error codes that will be used for filtering the result.
+    - scanResultCategoriesFilter - list of ScanResultCategorys: List of scan result categories that will be used for filtering the result.
     - backupStatusFilter - list of BackupStatuss: Filter by backup status.
     - slaIdsFilter - list of System.Strings: Filter by SLA Domain IDs.
     - networkAccessFilter - list of NetworkAccesss: Filter by network access type.

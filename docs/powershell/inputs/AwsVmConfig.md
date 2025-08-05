@@ -7,6 +7,8 @@ Configuration for creating AWS instances.
   - Node disk size in GB.
 - subnet: System.String
   - AWS subnet in which instance is created.
+- vpc: System.String
+  - The VPC of the AWS cluster.
 - tags: System.String
   - Tags to attach to created resources.
 - imageId: System.String

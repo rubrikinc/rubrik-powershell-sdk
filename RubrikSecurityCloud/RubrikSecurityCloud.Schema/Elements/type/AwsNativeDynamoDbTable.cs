@@ -116,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("onDemandSnapshotCount")]
         public System.Int32? OnDemandSnapshotCount { get; set; }
 
+        //      C# -> System.String? S3BackupBucket
+        // GraphQL -> s3BackupBucket: String! (scalar)
+        [JsonProperty("s3BackupBucket")]
+        public System.String? S3BackupBucket { get; set; }
+
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
@@ -329,6 +334,7 @@ namespace RubrikSecurityCloud.Types
         System.String? NativeName = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
+        System.String? S3BackupBucket = null,
         System.Boolean? SlaPauseStatus = null,
         System.Int64? TableSizeBytes = null,
         List<Org>? AllOrgs = null,
@@ -408,6 +414,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OnDemandSnapshotCount != null ) {
             this.OnDemandSnapshotCount = OnDemandSnapshotCount;
+        }
+        if ( S3BackupBucket != null ) {
+            this.S3BackupBucket = S3BackupBucket;
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
@@ -667,6 +676,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "onDemandSnapshotCount\n" ;
             } else {
                 s += ind + "onDemandSnapshotCount\n" ;
+            }
+        }
+        //      C# -> System.String? S3BackupBucket
+        // GraphQL -> s3BackupBucket: String! (scalar)
+        if (this.S3BackupBucket != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "s3BackupBucket\n" ;
+            } else {
+                s += ind + "s3BackupBucket\n" ;
             }
         }
         //      C# -> System.Boolean? SlaPauseStatus
@@ -1265,6 +1283,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OnDemandSnapshotCount != null && ec.Excludes("onDemandSnapshotCount",true))
         {
             this.OnDemandSnapshotCount = null;
+        }
+        //      C# -> System.String? S3BackupBucket
+        // GraphQL -> s3BackupBucket: String! (scalar)
+        if (ec.Includes("s3BackupBucket",true))
+        {
+            if(this.S3BackupBucket == null) {
+
+                this.S3BackupBucket = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.S3BackupBucket != null && ec.Excludes("s3BackupBucket",true))
+        {
+            this.S3BackupBucket = null;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

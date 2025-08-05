@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivalGroupId")]
         public System.String? ArchivalGroupId { get; set; }
 
+        //      C# -> System.Boolean? IsComplianceImmutabilityEnabled
+        // GraphQL -> isComplianceImmutabilityEnabled: Boolean (scalar)
+        [JsonProperty("isComplianceImmutabilityEnabled")]
+        public System.Boolean? IsComplianceImmutabilityEnabled { get; set; }
+
 
         #endregion
 

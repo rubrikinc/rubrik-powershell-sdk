@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("readerRetrievalMethod")]
         public ReaderRetrievalMethod? ReaderRetrievalMethod { get; set; }
 
+        //      C# -> List<System.String>? ArchivalDataSourceIds
+        // GraphQL -> archivalDataSourceIds: [String!] (scalar)
+        [JsonProperty("archivalDataSourceIds")]
+        public List<System.String>? ArchivalDataSourceIds { get; set; }
+
 
         #endregion
 

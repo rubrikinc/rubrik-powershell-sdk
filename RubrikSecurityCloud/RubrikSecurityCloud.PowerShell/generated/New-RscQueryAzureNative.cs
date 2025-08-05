@@ -503,6 +503,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	nonEmptyFilter = @{
+    /// 		# REQUIRED
+    /// 		nonEmpty = $someBoolean
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.subscriptionId = $someString
@@ -2068,6 +2073,11 @@ $query.Var.regionFilters = @{
 		effectiveSlaIds = @(
 			$someString
 		)
+	}
+	# OPTIONAL
+	nonEmptyFilter = @{
+		# REQUIRED
+		nonEmpty = $someBoolean
 	}
 }
 # OPTIONAL
