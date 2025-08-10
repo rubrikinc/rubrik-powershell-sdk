@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgFilter")]
         public OrgFilter? OrgFilter { get; set; }
 
+        //      C# -> AzureNativeIsEligibleForManagedDiskProtectionFilter? AzureNativeIsEligibleForManagedDiskProtectionFilter
+        // GraphQL -> azureNativeIsEligibleForManagedDiskProtectionFilter: AzureNativeIsEligibleForManagedDiskProtectionFilter (input)
+        [JsonProperty("azureNativeIsEligibleForManagedDiskProtectionFilter")]
+        public AzureNativeIsEligibleForManagedDiskProtectionFilter? AzureNativeIsEligibleForManagedDiskProtectionFilter { get; set; }
+
 
         #endregion
 

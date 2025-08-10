@@ -39,6 +39,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EC2_CONNECTIVITY")]
         EC2_CONNECTIVITY,
 
+        [EnumMember(Value = "ECR_CONNECTIVITY")]
+        ECR_CONNECTIVITY,
+
+        [EnumMember(Value = "EKS_CONNECTIVITY")]
+        EKS_CONNECTIVITY,
+
         [EnumMember(Value = "GCP_CONNECTIVITY")]
         GCP_CONNECTIVITY,
 

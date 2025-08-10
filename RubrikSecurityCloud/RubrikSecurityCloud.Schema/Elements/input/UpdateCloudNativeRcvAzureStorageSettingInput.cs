@@ -33,6 +33,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> RcvRedundancy? RedundancyOpt
+        // GraphQL -> redundancyOpt: RcvRedundancy (enum)
+        [JsonProperty("redundancyOpt")]
+        public RcvRedundancy? RedundancyOpt { get; set; }
+
+        //      C# -> System.Boolean? UpdateChildVaultsOpt
+        // GraphQL -> updateChildVaultsOpt: Boolean (scalar)
+        [JsonProperty("updateChildVaultsOpt")]
+        public System.Boolean? UpdateChildVaultsOpt { get; set; }
+
 
         #endregion
 

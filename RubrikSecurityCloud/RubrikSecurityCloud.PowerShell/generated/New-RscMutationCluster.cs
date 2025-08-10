@@ -191,6 +191,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	routeConfig = @{
+    /// 		# OPTIONAL
+    /// 		networkZoneName = $someString
     /// 		# REQUIRED
     /// 		device = $someString
     /// 		# REQUIRED
@@ -237,6 +239,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	azureImageName = $someString
     /// 	# OPTIONAL
     /// 	ociImageId = $someString
+    /// 	# OPTIONAL
+    /// 	gcpImageId = $someString
     /// 	# REQUIRED
     /// 	cloudAccountId = $someString
     /// 	# REQUIRED
@@ -1581,6 +1585,8 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# REQUIRED
 	routeConfig = @{
+		# OPTIONAL
+		networkZoneName = $someString
 		# REQUIRED
 		device = $someString
 		# REQUIRED
@@ -1619,6 +1625,8 @@ $query.Var.input = @{
 	azureImageName = $someString
 	# OPTIONAL
 	ociImageId = $someString
+	# OPTIONAL
+	gcpImageId = $someString
 	# REQUIRED
 	cloudAccountId = $someString
 	# REQUIRED

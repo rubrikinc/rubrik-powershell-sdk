@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("matchedSnapshotFid")]
         public System.String? MatchedSnapshotFid { get; set; }
 
+        //      C# -> DateTime? Mtime
+        // GraphQL -> mtime: DateTime (scalar)
+        [JsonProperty("mtime")]
+        public DateTime? Mtime { get; set; }
+
         //      C# -> System.String? ObjectFid
         // GraphQL -> objectFid: UUID! (scalar)
         [JsonProperty("objectFid")]
@@ -124,6 +129,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? MatchId = null,
         DateTime? MatchedSnapshotDate = null,
         System.String? MatchedSnapshotFid = null,
+        DateTime? Mtime = null,
         System.String? ObjectFid = null,
         System.String? ObjectName = null
     ) 
@@ -169,6 +175,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MatchedSnapshotFid != null ) {
             this.MatchedSnapshotFid = MatchedSnapshotFid;
+        }
+        if ( Mtime != null ) {
+            this.Mtime = Mtime;
         }
         if ( ObjectFid != null ) {
             this.ObjectFid = ObjectFid;
@@ -314,6 +323,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "matchedSnapshotFid\n" ;
             } else {
                 s += ind + "matchedSnapshotFid\n" ;
+            }
+        }
+        //      C# -> DateTime? Mtime
+        // GraphQL -> mtime: DateTime (scalar)
+        if (this.Mtime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mtime\n" ;
+            } else {
+                s += ind + "mtime\n" ;
             }
         }
         //      C# -> System.String? ObjectFid
@@ -578,6 +596,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MatchedSnapshotFid != null && ec.Excludes("matchedSnapshotFid",true))
         {
             this.MatchedSnapshotFid = null;
+        }
+        //      C# -> DateTime? Mtime
+        // GraphQL -> mtime: DateTime (scalar)
+        if (ec.Includes("mtime",true))
+        {
+            if(this.Mtime == null) {
+
+                this.Mtime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Mtime != null && ec.Excludes("mtime",true))
+        {
+            this.Mtime = null;
         }
         //      C# -> System.String? ObjectFid
         // GraphQL -> objectFid: UUID! (scalar)

@@ -26,3 +26,6 @@ Supported in v5.1+
 - isTrusted: System.Boolean
   - Supported in v7.0+
   A Boolean value that specifies whether or not the certificate is added to the trust store. when the value is 'true,' the certificate is added to the trust store. when this value is 'false,' the certificate is not added to trust store.
+- isInternal: System.Boolean
+  - Supported in v9.5
+  A Boolean value that indicates whether the certificate is for internal system use only.

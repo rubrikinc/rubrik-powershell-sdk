@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("regionFilter")]
         public AzureNativeRegionFilter? RegionFilter { get; set; }
 
+        //      C# -> AzureNativeIsEligibleForSqlDatabaseServerProtectionFilter? AzureNativeIsEligibleForSqlDatabaseServerProtectionFilter
+        // GraphQL -> azureNativeIsEligibleForSqlDatabaseServerProtectionFilter: AzureNativeIsEligibleForSqlDatabaseServerProtectionFilter (input)
+        [JsonProperty("azureNativeIsEligibleForSqlDatabaseServerProtectionFilter")]
+        public AzureNativeIsEligibleForSqlDatabaseServerProtectionFilter? AzureNativeIsEligibleForSqlDatabaseServerProtectionFilter { get; set; }
+
 
         #endregion
 

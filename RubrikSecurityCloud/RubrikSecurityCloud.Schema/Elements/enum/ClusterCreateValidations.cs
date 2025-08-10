@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DNS_SERVERS_CHECK")]
         DNS_SERVERS_CHECK,
 
+        [EnumMember(Value = "GCP_CLUSTER_NAME_LENGTH_CHECK")]
+        GCP_CLUSTER_NAME_LENGTH_CHECK,
+
         [EnumMember(Value = "GCP_INSTANCE_LABEL_KEY_CHECK")]
         GCP_INSTANCE_LABEL_KEY_CHECK,
 

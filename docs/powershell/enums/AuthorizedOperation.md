@@ -211,6 +211,9 @@ Authorized operations on an object.
 - EDIT_OCI_CLOUD_ACCOUNT - Edit OCI cloud account.
 - VIEW_OCI_CLOUD_ACCOUNT - View OCI cloud account.
 - DELETE_OCI_CLOUD_ACCOUNT - Delete OCI cloud account.
+- ADD_AWS_ROLE_CHAINING_CLOUD_ACCOUNT - Add AWS Role Chaining cloud account.
+- EDIT_AWS_ROLE_CHAINING_CLOUD_ACCOUNT - Edit AWS Role Chaining cloud account.
+- DELETE_AWS_ROLE_CHAINING_CLOUD_ACCOUNT - Delete AWS Role Chaining cloud account.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

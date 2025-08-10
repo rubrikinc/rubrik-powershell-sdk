@@ -1274,6 +1274,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		isDrEnabled = $someBoolean
     /// 		# OPTIONAL
+    /// 		decommissionedNutanixClusters = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				name = $someString
+    /// 				# OPTIONAL
+    /// 				password = $someString
+    /// 				# OPTIONAL
+    /// 				username = $someString
+    /// 				# REQUIRED
+    /// 				clusterUuid = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
     /// 		nutanixClusters = @(
     /// 			@{
     /// 				# OPTIONAL
@@ -2779,6 +2792,19 @@ $query.Var.input = @{
 		username = $someString
 		# OPTIONAL
 		isDrEnabled = $someBoolean
+		# OPTIONAL
+		decommissionedNutanixClusters = @(
+			@{
+				# OPTIONAL
+				name = $someString
+				# OPTIONAL
+				password = $someString
+				# OPTIONAL
+				username = $someString
+				# REQUIRED
+				clusterUuid = $someString
+			}
+		)
 		# OPTIONAL
 		nutanixClusters = @(
 			@{

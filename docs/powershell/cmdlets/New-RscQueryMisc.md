@@ -253,6 +253,11 @@ Checks whether the latest version of the Microsoft 365 Management App exists.
 
 - There is a single argument of type CheckLatestVersionMgmtAppExistsInput.
 - Returns CheckLatestVersionMgmtAppExistsReply.
+### clouddirectchecksharepath
+CloudDirectCheckSharePath validates if a share path is accessible on the specified host.
+
+- There is a single argument of type CloudDirectCheckSharePathReq.
+- Returns CloudDirectCheckSharePathResp.
 ### clouddirectnasbucket
 NAS Cloud Direct bucket.
 

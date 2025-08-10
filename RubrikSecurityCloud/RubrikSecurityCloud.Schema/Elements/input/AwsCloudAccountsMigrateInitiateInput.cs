@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsRoleCustomization")]
         public AwsRoleCustomization? AwsRoleCustomization { get; set; }
 
+        //      C# -> System.String? RoleChainingAccountId
+        // GraphQL -> roleChainingAccountId: UUID (scalar)
+        [JsonProperty("roleChainingAccountId")]
+        public System.String? RoleChainingAccountId { get; set; }
+
 
         #endregion
 

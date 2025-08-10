@@ -165,6 +165,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PHYSICAL_HOST")]
         PHYSICAL_HOST,
 
+        [EnumMember(Value = "SALESFORCE_OBJECT")]
+        SALESFORCE_OBJECT,
+
         [EnumMember(Value = "SHARE_FILESET")]
         SHARE_FILESET,
 

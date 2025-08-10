@@ -180,6 +180,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN_AZURE_REGION")]
         UNKNOWN_AZURE_REGION,
 
+        [EnumMember(Value = "UNKNOWN_GCP_REGION")]
+        UNKNOWN_GCP_REGION,
+
         [EnumMember(Value = "US_CENTRAL")]
         US_CENTRAL,
 

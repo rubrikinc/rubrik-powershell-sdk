@@ -26,4 +26,7 @@ Error code from Laminar flow processing.
 - AWS_UNAUTHORIZED_OPERATION - AWS unauthorized operation error.
 - AZURE_FUNCTION_APP_QUOTA_EXCEEDED - Azure Function App quota exceeded error.
 - CLOUD_FUNCTION_EXCEPTION - Cloud function execution exception.
+- RDS_DB_PERSISTENT_OR_PERMANENT - RDS instances that are part of a Persistent or Permanent option group are unsupported.
+- RDS_DB_UNSUPPORTED_ENGINE - RDS instance with Unsupported Engine.
+- AZURE_SQL_ELASTIC_POOL_UNSUPPORTED - Azure SQL databases that are part of an Elastic Pool are unsupported.
 - SUCCESS - Operation completed successfully.

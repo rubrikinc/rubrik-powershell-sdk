@@ -1,5 +1,5 @@
 ### AzureStorageAccessTier
-The Azure Storage accounts access tier.
+Storage Tier for the storage accounts/containers.
 
 - UNKNOWN_STORAGE_TIER - The Azure Storage account access tier is unknown.
 - HOT - The Azure Storage account access is Hot.

@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldGrantSmbShareRootAccess")]
         public System.Boolean? ShouldGrantSmbShareRootAccess { get; set; }
 
+        //      C# -> List<System.String>? UserSelectedSmbInterfaces
+        // GraphQL -> userSelectedSmbInterfaces: [String!] (scalar)
+        [JsonProperty("userSelectedSmbInterfaces")]
+        public List<System.String>? UserSelectedSmbInterfaces { get; set; }
+
         //      C# -> System.Boolean? IsNetAppMetroClusterEnabled
         // GraphQL -> isNetAppMetroClusterEnabled: Boolean (scalar)
         [JsonProperty("isNetAppMetroClusterEnabled")]
@@ -48,6 +53,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldGrantNfsShareRootAccess: Boolean (scalar)
         [JsonProperty("shouldGrantNfsShareRootAccess")]
         public System.Boolean? ShouldGrantNfsShareRootAccess { get; set; }
+
+        //      C# -> List<System.String>? UserSelectedNfsInterfaces
+        // GraphQL -> userSelectedNfsInterfaces: [String!] (scalar)
+        [JsonProperty("userSelectedNfsInterfaces")]
+        public List<System.String>? UserSelectedNfsInterfaces { get; set; }
 
         //      C# -> GenericNasSystemParametersInput? GenericNasSystemParameters
         // GraphQL -> genericNasSystemParameters: GenericNasSystemParametersInput (input)

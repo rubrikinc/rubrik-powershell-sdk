@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serverId")]
         public System.String? ServerId { get; set; }
 
+        //      C# -> AzureNativeIsEligibleForSqlMiDbProtectionFilter? AzureNativeIsEligibleForSqlMiDbProtectionFilter
+        // GraphQL -> azureNativeIsEligibleForSqlMiDbProtectionFilter: AzureNativeIsEligibleForSqlMiDbProtectionFilter (input)
+        [JsonProperty("azureNativeIsEligibleForSqlMiDbProtectionFilter")]
+        public AzureNativeIsEligibleForSqlMiDbProtectionFilter? AzureNativeIsEligibleForSqlMiDbProtectionFilter { get; set; }
+
 
         #endregion
 

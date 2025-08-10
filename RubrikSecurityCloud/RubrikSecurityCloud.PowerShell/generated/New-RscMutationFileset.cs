@@ -182,7 +182,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			isCreatedByPolarisNas = $someBoolean
     /// 			# OPTIONAL
+    /// 			templateBlocklistedFilesystemPaths = $someString
+    /// 			# OPTIONAL
     /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
     /// 			# OPTIONAL
     /// 			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
     /// 			# OPTIONAL
@@ -333,7 +337,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			isCreatedByPolarisNas = $someBoolean
     /// 			# OPTIONAL
+    /// 			templateBlocklistedFilesystemPaths = $someString
+    /// 			# OPTIONAL
     /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
     /// 			# OPTIONAL
     /// 			operatingSystemType = $someFilesetTemplatePatchOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchOperatingSystemType]) for enum values.
     /// 			# OPTIONAL
@@ -857,7 +865,11 @@ $query.Var.input = @{
 			# OPTIONAL
 			isCreatedByPolarisNas = $someBoolean
 			# OPTIONAL
+			templateBlocklistedFilesystemPaths = $someString
+			# OPTIONAL
 			shouldRetryPrescriptIfBackupFails = $someBoolean
+			# OPTIONAL
+			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
 			# OPTIONAL
 			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
 			# OPTIONAL
@@ -984,7 +996,11 @@ $query.Var.input = @{
 			# OPTIONAL
 			isCreatedByPolarisNas = $someBoolean
 			# OPTIONAL
+			templateBlocklistedFilesystemPaths = $someString
+			# OPTIONAL
 			shouldRetryPrescriptIfBackupFails = $someBoolean
+			# OPTIONAL
+			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
 			# OPTIONAL
 			operatingSystemType = $someFilesetTemplatePatchOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchOperatingSystemType]) for enum values.
 			# OPTIONAL

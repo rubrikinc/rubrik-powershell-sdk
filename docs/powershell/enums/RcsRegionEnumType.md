@@ -56,6 +56,7 @@ Regions for Rubrik Cloud Storage Archival Location.
 - ASIA_SOUTHEAST - Asia Southeast or Singapore.
 - UK_WEST - UK West or Cardiff.
 - INDIA_SOUTH - India South or Chennai.
+- UNKNOWN_GCP_REGION - Rubrik Cloud Vault GCP region is unknown.
 - SWEDEN_SOUTH - Sweden South or Malmo.
 - SPAIN_NORTH - Spain North or Aragon.
 - INDIA_WEST - India West or Mumbai.

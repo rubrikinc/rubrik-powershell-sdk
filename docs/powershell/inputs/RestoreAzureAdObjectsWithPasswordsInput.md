@@ -15,3 +15,7 @@ Configuration to initiate recovery of AzureAdDirectory with multiple passwords.
   - Represents the modes for relationship restore for Azure AD objects.
 - objectRecoveryOptions: ObjectRecoveryOptionsType
   - Represents recovery options for every AzureAdObjectType.
+- attributeRecoveryMode: AttributeRecoveryMode
+  - Represents the modes for attributes restore for Azure AD objects.
+- attributeRecoveryOptions: AttributeRecoveryOptions
+  - Represents attribute recovery options for each Azure AD object.

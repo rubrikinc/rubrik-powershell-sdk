@@ -55,6 +55,8 @@ A series of activities on either the RSC or a Rubrik cluster.
   - Specifies whether the activity series is triggered on demand or is driven by the SLA Domain.
 - isTransactionLogEventSeries: System.Boolean
   - Specifies whether the event series is a transaction log event.
+- username: System.String
+  - The user who triggered the related job.
 - activitySeriesId: System.String
   - The ID of the activity series.
 - progress: System.String

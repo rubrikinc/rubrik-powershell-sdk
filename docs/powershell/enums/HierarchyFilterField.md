@@ -473,13 +473,13 @@ connection status.
 - GCP_NATIVE_DISK_INDEXING_STATUS - Filter by the "indexing status" of GCP disks.
 - GCP_NATIVE_VM_INDEXING_STATUS - Filter by the "indexing status" of GCP VMs.
 - AWS_NATIVE_IS_ELIGIBLE_FOR_EC2_PROTECTION - Filter EC2 workloads by their eligibility for protection.
-Eligibility is determined by whether the AWS customer account is not
+Eligibility is determined by whether the AWS native account is not
 archived and has the protection feature enabled for EC2.
 - AWS_NATIVE_IS_ELIGIBLE_FOR_RDS_PROTECTION - Filter RDS workloads by their eligibility for protection.
-Eligibility is determined by whether the AWS customer account is not
+Eligibility is determined by whether the AWS native account is not
 archived and has the protection feature enabled for RDS.
 - AWS_NATIVE_IS_ELIGIBLE_FOR_S3_PROTECTION - Filter S3 workloads by their eligibility for protection.
-Eligibility is determined by whether the AWS customer account is not
+Eligibility is determined by whether the AWS native account is not
 archived and has the protection feature enabled for S3.
 - PHYSICAL_HOST_RBS_UPGRADE_STATUS - Filter by the RBS upgrade of the physical host.
 +mo:filter:db:table=cdm_host
@@ -573,3 +573,32 @@ are greater than zero.
 +mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=true
+- AZURE_NATIVE_IS_ELIGIBLE_FOR_VM_PROTECTION - Filter Virtual Machine workloads by their eligibility for protection.
+Eligibility is determined by whether the Azure native subscription is
+not archived and has the protection feature enabled for Virtual Machine.
+- AZURE_NATIVE_IS_ELIGIBLE_FOR_MANAGED_DISK_PROTECTION - Filter Managed Disk workloads by their eligibility for protection.
+Eligibility is determined by whether the Azure native subscription is
+not archived and has the protection feature enabled for Managed Disk.
+- AZURE_NATIVE_IS_ELIGIBLE_FOR_BLOB_PROTECTION - Filter Blob storage workloads by their eligibility for protection.
+Eligibility is determined by whether the Azure native subscription is
+not archived and has the protection feature enabled for Blob.
+- AZURE_NATIVE_IS_ELIGIBLE_FOR_SQL_DATABASE_DB_PROTECTION - Filter SQL Database DB workloads by their eligibility for protection.
+Eligibility is determined by whether the Azure native subscription is
+not archived and has the protection feature enabled for SQL Database DB.
+- AZURE_NATIVE_IS_ELIGIBLE_FOR_SQL_DATABASE_SERVER_PROTECTION - Filter SQL Database server workloads by their eligibility for protection.
+Eligibility is determined by whether the Azure native subscription is
+not archived and has the protection feature enabled for SQL Database
+server.
+- AZURE_NATIVE_IS_ELIGIBLE_FOR_SQL_MI_DB_PROTECTION - Filter SQL MI DB workloads by their eligibility for protection.
+Eligibility is determined by whether the Azure native subscription is
+not archived and has the protection feature enabled for SQL MI DB.
+- AZURE_NATIVE_IS_ELIGIBLE_FOR_SQL_MI_SERVER_PROTECTION - Filter SQL MI server workloads by their eligibility for protection.
+Eligibility is determined by whether the Azure native subscription is
+not archived and has the protection feature enabled for SQL MI server.
+- DOMAIN_CONTROLLER_BY_GUID - Filters Active Directory domain controllers by their GUID.
++mo:filter:db:table=cdm_active_directory_domain_controller
++mo:filter:db:column=domain_controller_guid
++mo:filter:db:index:key=domain_controller_guid_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false

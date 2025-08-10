@@ -127,7 +127,7 @@ namespace RubrikSecurityCloud.Types
         public List<ArchivalSpec>? ArchivalSpecs { get; set; }
 
         //      C# -> List<BackupLocationSpec>? BackupLocationSpecs
-        // GraphQL -> backupLocationSpecs: [BackupLocationSpec!]! (type)
+        // GraphQL -> backupLocationSpecs: [BackupLocationSpec!] (type)
         [JsonProperty("backupLocationSpecs")]
         public List<BackupLocationSpec>? BackupLocationSpecs { get; set; }
 
@@ -576,7 +576,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> List<BackupLocationSpec>? BackupLocationSpecs
-        // GraphQL -> backupLocationSpecs: [BackupLocationSpec!]! (type)
+        // GraphQL -> backupLocationSpecs: [BackupLocationSpec!] (type)
         if (this.BackupLocationSpecs != null) {
             var fspec = this.BackupLocationSpecs.AsFieldSpec(conf.Child("backupLocationSpecs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -1130,7 +1130,7 @@ namespace RubrikSecurityCloud.Types
             this.ArchivalSpecs = null;
         }
         //      C# -> List<BackupLocationSpec>? BackupLocationSpecs
-        // GraphQL -> backupLocationSpecs: [BackupLocationSpec!]! (type)
+        // GraphQL -> backupLocationSpecs: [BackupLocationSpec!] (type)
         if (ec.Includes("backupLocationSpecs",false))
         {
             if(this.BackupLocationSpecs == null) {

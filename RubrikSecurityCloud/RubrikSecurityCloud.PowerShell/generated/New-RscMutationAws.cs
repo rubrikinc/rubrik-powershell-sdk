@@ -275,6 +275,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		lambdaRoleName = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	roleChainingAccountId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3041,6 +3043,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		lambdaRoleName = $someString
 	}
+	# OPTIONAL
+	roleChainingAccountId = $someString
 }"
             );
         }

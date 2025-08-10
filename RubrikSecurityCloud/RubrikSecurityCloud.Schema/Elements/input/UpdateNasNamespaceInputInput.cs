@@ -19,6 +19,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<System.String>? UserSelectedSmbInterfaces
+        // GraphQL -> userSelectedSmbInterfaces: [String!] (scalar)
+        [JsonProperty("userSelectedSmbInterfaces")]
+        public List<System.String>? UserSelectedSmbInterfaces { get; set; }
+
+        //      C# -> List<System.String>? UserSelectedNfsInterfaces
+        // GraphQL -> userSelectedNfsInterfaces: [String!] (scalar)
+        [JsonProperty("userSelectedNfsInterfaces")]
+        public List<System.String>? UserSelectedNfsInterfaces { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]

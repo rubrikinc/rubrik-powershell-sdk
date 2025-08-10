@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ociImageId")]
         public System.String? OciImageId { get; set; }
 
+        //      C# -> System.String? GcpImageId
+        // GraphQL -> gcpImageId: String (scalar)
+        [JsonProperty("gcpImageId")]
+        public System.String? GcpImageId { get; set; }
+
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: UUID! (scalar)
         [Required]

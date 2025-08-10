@@ -19,3 +19,4 @@ List of all validations to perform.
 - GCP_NETWORK_CONFIG_CHECK - Check if the GCP network configuration is valid.
 - GCP_SERVICE_ACCOUNT_CHECK - Check if the GCP service account is valid.
 - GCP_INSTANCE_LABEL_KEY_CHECK - Check if the GCP instance label key is valid.
+- GCP_CLUSTER_NAME_LENGTH_CHECK - Check if the cluster name is too long.

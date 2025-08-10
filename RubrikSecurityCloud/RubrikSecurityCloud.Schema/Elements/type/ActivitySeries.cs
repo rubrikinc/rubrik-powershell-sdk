@@ -190,6 +190,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("urlMetadata")]
         public System.String? UrlMetadata { get; set; }
 
+        //      C# -> System.String? Username
+        // GraphQL -> username: String (scalar)
+        [JsonProperty("username")]
+        public System.String? Username { get; set; }
+
         //      C# -> ActivityConnection? ActivityConnection
         // GraphQL -> activityConnection: ActivityConnection! (type)
         [JsonProperty("activityConnection")]
@@ -271,6 +276,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Progress = null,
         DateTime? StartTime = null,
         System.String? UrlMetadata = null,
+        System.String? Username = null,
         ActivityConnection? ActivityConnection = null,
         Cluster? Cluster = null,
         List<Org>? Organizations = null
@@ -377,6 +383,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UrlMetadata != null ) {
             this.UrlMetadata = UrlMetadata;
+        }
+        if ( Username != null ) {
+            this.Username = Username;
         }
         if ( ActivityConnection != null ) {
             this.ActivityConnection = ActivityConnection;
@@ -705,6 +714,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "urlMetadata\n" ;
             } else {
                 s += ind + "urlMetadata\n" ;
+            }
+        }
+        //      C# -> System.String? Username
+        // GraphQL -> username: String (scalar)
+        if (this.Username != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "username\n" ;
+            } else {
+                s += ind + "username\n" ;
             }
         }
         //      C# -> ActivityConnection? ActivityConnection
@@ -1327,6 +1345,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.UrlMetadata != null && ec.Excludes("urlMetadata",true))
         {
             this.UrlMetadata = null;
+        }
+        //      C# -> System.String? Username
+        // GraphQL -> username: String (scalar)
+        if (ec.Includes("username",true))
+        {
+            if(this.Username == null) {
+
+                this.Username = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Username != null && ec.Excludes("username",true))
+        {
+            this.Username = null;
         }
         //      C# -> ActivityConnection? ActivityConnection
         // GraphQL -> activityConnection: ActivityConnection! (type)

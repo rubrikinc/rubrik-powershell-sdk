@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> UserMfaStatus? MfaStatus
+        // GraphQL -> mfaStatus: UserMfaStatus! (enum)
+        [JsonProperty("mfaStatus")]
+        public UserMfaStatus? MfaStatus { get; set; }
+
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
         [JsonProperty("isEnabled")]
@@ -55,6 +60,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public TotpStatus Set(
+        UserMfaStatus? MfaStatus = null,
         System.Boolean? IsEnabled = null,
         System.Boolean? IsEnforced = null,
         System.Boolean? IsEnforcedUserLevel = null,
@@ -62,6 +68,9 @@ namespace RubrikSecurityCloud.Types
         DateTime? TotpConfigUpdateAt = null
     ) 
     {
+        if ( MfaStatus != null ) {
+            this.MfaStatus = MfaStatus;
+        }
         if ( IsEnabled != null ) {
             this.IsEnabled = IsEnabled;
         }
@@ -91,6 +100,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> UserMfaStatus? MfaStatus
+        // GraphQL -> mfaStatus: UserMfaStatus! (enum)
+        if (this.MfaStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mfaStatus\n" ;
+            } else {
+                s += ind + "mfaStatus\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
         if (this.IsEnabled != null) {
@@ -143,6 +161,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> UserMfaStatus? MfaStatus
+        // GraphQL -> mfaStatus: UserMfaStatus! (enum)
+        if (ec.Includes("mfaStatus",true))
+        {
+            if(this.MfaStatus == null) {
+
+                this.MfaStatus = new UserMfaStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MfaStatus != null && ec.Excludes("mfaStatus",true))
+        {
+            this.MfaStatus = null;
+        }
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
         if (ec.Includes("isEnabled",true))

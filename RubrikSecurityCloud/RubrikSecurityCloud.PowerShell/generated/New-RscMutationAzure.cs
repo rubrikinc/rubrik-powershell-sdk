@@ -1609,6 +1609,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			skipRestrictedManagementAdministrativeUnits = $someBoolean
     /// 		}
     /// 	}
+    /// 	# OPTIONAL
+    /// 	attributeRecoveryMode = $someAttributeRecoveryMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeRecoveryMode]) for enum values.
+    /// 	# OPTIONAL
+    /// 	attributeRecoveryOptions = @{
+    /// 		# REQUIRED
+    /// 		attributeRecoveryConfigs = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# REQUIRED
+    /// 				attributes = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -2242,6 +2258,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	id = $someString
     /// 	# REQUIRED
     /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	redundancyOpt = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+    /// 	# OPTIONAL
+    /// 	updateChildVaultsOpt = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -4583,6 +4603,22 @@ $query.Var.input = @{
 			skipRestrictedManagementAdministrativeUnits = $someBoolean
 		}
 	}
+	# OPTIONAL
+	attributeRecoveryMode = $someAttributeRecoveryMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeRecoveryMode]) for enum values.
+	# OPTIONAL
+	attributeRecoveryOptions = @{
+		# REQUIRED
+		attributeRecoveryConfigs = @(
+			@{
+				# REQUIRED
+				id = $someString
+				# REQUIRED
+				attributes = @(
+					$someString
+				)
+			}
+		)
+	}
 }"
             );
         }
@@ -5112,6 +5148,10 @@ $query.Var.input = @{
 	id = $someString
 	# REQUIRED
 	name = $someString
+	# OPTIONAL
+	redundancyOpt = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+	# OPTIONAL
+	updateChildVaultsOpt = $someBoolean
 }"
             );
         }

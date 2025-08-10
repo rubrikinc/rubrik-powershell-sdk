@@ -15,12 +15,16 @@ Supported in v7.0+
 - shouldGrantSmbShareRootAccess: System.Boolean
   - Supported in v8.1+
       Optional parameter that specifies whether to grant root user access to SMB shares on Isilon NAS systems. The root user access is granted on first fileset creation for the SMB share. The default value is true. This setting is applicable only when system-generated credentials are used.
+- userSelectedSmbInterfaces: list of System.Strings
+  - List of hostnames or IP addresses used for Fileset jobs on SMB shares in the NAS system.
 - isNetAppMetroClusterEnabled: System.Boolean
   - Supported in v9.4+
       Enables the Metro Cluster feature for the NetApp NAS system. If the NetApp cluster is operating in the Metro Cluster environment and this flag is not enabled, the NAS protections on this NAS system will not seamlessly move when switchover or switchback occurs.
 - shouldGrantNfsShareRootAccess: System.Boolean
   - Supported in v8.1+
       Optional parameter that specifies whether to grant root client access to NFS shares on Isilon and NetApp NAS systems. The root client access is granted on first fileset creation for the NFS share. The default value is true.
+- userSelectedNfsInterfaces: list of System.Strings
+  - List of hostnames or IP addresses used for Fileset jobs on NFS shares in the NAS system.
 - genericNasSystemParameters: GenericNasSystemParametersInput
   - Supported in v7.0+
       The updated Generic NAS system parameters.

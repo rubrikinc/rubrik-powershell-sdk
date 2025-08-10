@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exportPoint")]
         public System.String? ExportPoint { get; set; }
 
+        //      C# -> List<System.String>? UserSelectedInterfaces
+        // GraphQL -> userSelectedInterfaces: [String!] (scalar)
+        [JsonProperty("userSelectedInterfaces")]
+        public List<System.String>? UserSelectedInterfaces { get; set; }
+
         //      C# -> System.String? NasSourceId
         // GraphQL -> nasSourceId: String (scalar)
         [JsonProperty("nasSourceId")]

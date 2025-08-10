@@ -31,6 +31,10 @@ Kubernetes virtual machine.
   - Power status of the K8s Virtual Machine.
 - virtualizationProvider: System.String
   - Virtualization provider of the K8s Virtual Machine.
+- k8sProtectionLabelFid: System.String
+  - Protection label FID of the Kubernetes virtual machine.
+- k8sProtectionLabelName: System.String
+  - Protection label name of the Kubernetes virtual machine..
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String

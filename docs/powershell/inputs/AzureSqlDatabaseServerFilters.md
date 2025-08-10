@@ -11,3 +11,5 @@ Filters for list of Azure SQL Database Servers.
   - Filter by subscription.
 - regionFilter: AzureNativeRegionFilter
   - Filter by region.
+- azureNativeIsEligibleForSqlDatabaseServerProtectionFilter: AzureNativeIsEligibleForSqlDatabaseServerProtectionFilter
+  - Filter workloads based on their eligibility for protection.

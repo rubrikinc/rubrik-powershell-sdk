@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tagFilter")]
         public AzureNativeTagFilter? TagFilter { get; set; }
 
+        //      C# -> AzureNativeIsEligibleForSqlMiServerProtectionFilter? AzureNativeIsEligibleForSqlMiServerProtectionFilter
+        // GraphQL -> azureNativeIsEligibleForSqlMiServerProtectionFilter: AzureNativeIsEligibleForSqlMiServerProtectionFilter (input)
+        [JsonProperty("azureNativeIsEligibleForSqlMiServerProtectionFilter")]
+        public AzureNativeIsEligibleForSqlMiServerProtectionFilter? AzureNativeIsEligibleForSqlMiServerProtectionFilter { get; set; }
+
 
         #endregion
 

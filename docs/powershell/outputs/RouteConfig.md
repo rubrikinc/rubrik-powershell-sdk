@@ -9,3 +9,5 @@ Supported in v5.0+
   - Required. Supported in v5.0+
 - network: System.String
   - Required. Supported in v5.0+
+- networkZoneName: System.String
+  - 

@@ -29,3 +29,5 @@ Filters for list of Azure disks.
   - Filter disks where file indexing is enabled.
 - orgFilter: OrgFilter
   - Filter by organization ID.
+- azureNativeIsEligibleForManagedDiskProtectionFilter: AzureNativeIsEligibleForManagedDiskProtectionFilter
+  - Filter workloads based on their eligibility for protection.

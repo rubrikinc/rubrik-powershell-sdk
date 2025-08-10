@@ -448,6 +448,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	azureNativeIsEligibleForManagedDiskProtectionFilter = @{
+    /// 		# REQUIRED
+    /// 		isEligibleForProtection = $someBoolean
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -1243,6 +1248,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	azureNativeIsEligibleForVmProtectionFilter = @{
+    /// 		# REQUIRED
+    /// 		isEligibleForProtection = $someBoolean
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -2009,6 +2019,11 @@ $query.Var.diskFilters = @{
 			$someString
 		)
 	}
+	# OPTIONAL
+	azureNativeIsEligibleForManagedDiskProtectionFilter = @{
+		# REQUIRED
+		isEligibleForProtection = $someBoolean
+	}
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -2756,6 +2771,11 @@ $query.Var.virtualMachineFilters = @{
 			)
 		}
 	)
+	# OPTIONAL
+	azureNativeIsEligibleForVmProtectionFilter = @{
+		# REQUIRED
+		isEligibleForProtection = $someBoolean
+	}
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"

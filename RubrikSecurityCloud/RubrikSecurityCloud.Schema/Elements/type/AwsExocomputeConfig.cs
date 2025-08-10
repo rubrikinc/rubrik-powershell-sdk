@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("roleChainingAccount")]
         public AwsRoleChainingAccount? RoleChainingAccount { get; set; }
 
+        //      C# -> List<CloudAccountsCertificateInfo>? SslInspectionCertificates
+        // GraphQL -> sslInspectionCertificates: [CloudAccountsCertificateInfo!]! (type)
+        [JsonProperty("sslInspectionCertificates")]
+        public List<CloudAccountsCertificateInfo>? SslInspectionCertificates { get; set; }
+
 
         #endregion
 
@@ -83,7 +88,8 @@ namespace RubrikSecurityCloud.Types
         List<AwsExocomputeGetConfigResponse>? Configs = null,
         FeatureDetail? FeatureDetail = null,
         List<CloudAccountDetails>? MappedCloudAccounts = null,
-        AwsRoleChainingAccount? RoleChainingAccount = null
+        AwsRoleChainingAccount? RoleChainingAccount = null,
+        List<CloudAccountsCertificateInfo>? SslInspectionCertificates = null
     ) 
     {
         if ( ExocomputeEligibleRegions != null ) {
@@ -112,6 +118,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RoleChainingAccount != null ) {
             this.RoleChainingAccount = RoleChainingAccount;
+        }
+        if ( SslInspectionCertificates != null ) {
+            this.SslInspectionCertificates = SslInspectionCertificates;
         }
         return this;
     }
@@ -228,6 +237,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "roleChainingAccount" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<CloudAccountsCertificateInfo>? SslInspectionCertificates
+        // GraphQL -> sslInspectionCertificates: [CloudAccountsCertificateInfo!]! (type)
+        if (this.SslInspectionCertificates != null) {
+            var fspec = this.SslInspectionCertificates.AsFieldSpec(conf.Child("sslInspectionCertificates"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sslInspectionCertificates" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -404,6 +425,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.RoleChainingAccount != null && ec.Excludes("roleChainingAccount",false))
         {
             this.RoleChainingAccount = null;
+        }
+        //      C# -> List<CloudAccountsCertificateInfo>? SslInspectionCertificates
+        // GraphQL -> sslInspectionCertificates: [CloudAccountsCertificateInfo!]! (type)
+        if (ec.Includes("sslInspectionCertificates",false))
+        {
+            if(this.SslInspectionCertificates == null) {
+
+                this.SslInspectionCertificates = new List<CloudAccountsCertificateInfo>();
+                this.SslInspectionCertificates.ApplyExploratoryFieldSpec(ec.NewChild("sslInspectionCertificates"));
+
+            } else {
+
+                this.SslInspectionCertificates.ApplyExploratoryFieldSpec(ec.NewChild("sslInspectionCertificates"));
+
+            }
+        }
+        else if (this.SslInspectionCertificates != null && ec.Excludes("sslInspectionCertificates",false))
+        {
+            this.SslInspectionCertificates = null;
         }
     }
 

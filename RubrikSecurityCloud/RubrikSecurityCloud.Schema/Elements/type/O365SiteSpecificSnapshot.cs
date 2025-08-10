@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("percentOfObjectsSkipped")]
         public System.Int32? PercentOfObjectsSkipped { get; set; }
 
+        //      C# -> System.Int64? SkippedItemCount
+        // GraphQL -> skippedItemCount: Long! (scalar)
+        [JsonProperty("skippedItemCount")]
+        public System.Int64? SkippedItemCount { get; set; }
+
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
         [JsonProperty("snapshotId")]
@@ -48,6 +53,7 @@ namespace RubrikSecurityCloud.Types
     public O365SiteSpecificSnapshot Set(
         SnapshotServiceBackupStatus? BackupStatus = null,
         System.Int32? PercentOfObjectsSkipped = null,
+        System.Int64? SkippedItemCount = null,
         System.String? SnapshotId = null
     ) 
     {
@@ -56,6 +62,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PercentOfObjectsSkipped != null ) {
             this.PercentOfObjectsSkipped = PercentOfObjectsSkipped;
+        }
+        if ( SkippedItemCount != null ) {
+            this.SkippedItemCount = SkippedItemCount;
         }
         if ( SnapshotId != null ) {
             this.SnapshotId = SnapshotId;
@@ -90,6 +99,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "percentOfObjectsSkipped\n" ;
             } else {
                 s += ind + "percentOfObjectsSkipped\n" ;
+            }
+        }
+        //      C# -> System.Int64? SkippedItemCount
+        // GraphQL -> skippedItemCount: Long! (scalar)
+        if (this.SkippedItemCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "skippedItemCount\n" ;
+            } else {
+                s += ind + "skippedItemCount\n" ;
             }
         }
         //      C# -> System.String? SnapshotId
@@ -141,6 +159,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PercentOfObjectsSkipped != null && ec.Excludes("percentOfObjectsSkipped",true))
         {
             this.PercentOfObjectsSkipped = null;
+        }
+        //      C# -> System.Int64? SkippedItemCount
+        // GraphQL -> skippedItemCount: Long! (scalar)
+        if (ec.Includes("skippedItemCount",true))
+        {
+            if(this.SkippedItemCount == null) {
+
+                this.SkippedItemCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SkippedItemCount != null && ec.Excludes("skippedItemCount",true))
+        {
+            this.SkippedItemCount = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)

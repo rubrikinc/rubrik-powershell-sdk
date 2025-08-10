@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CERTIFICATE_USAGE_UNKNOWN")]
         CERTIFICATE_USAGE_UNKNOWN,
 
+        [EnumMember(Value = "CLOUD_SSL_INSPECTION")]
+        CLOUD_SSL_INSPECTION,
+
         [EnumMember(Value = "ON_PREM_SMTP")]
         ON_PREM_SMTP,
 

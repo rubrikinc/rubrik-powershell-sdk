@@ -275,7 +275,13 @@ namespace RubrikSecurityCloud.Types
     public class InlineVars {
         public RscGqlVars NumWorkloadDescendants { get; set; }
 
+        public RscGqlVars OnDemandSnapshotCount { get; set; }
+
         public RscGqlVars ChildConnection { get; set; }
+
+        public RscGqlVars NewestSnapshot { get; set; }
+
+        public RscGqlVars OldestSnapshot { get; set; }
 
         public RscGqlVars SearchDescendantConnection { get; set; }
 
@@ -300,6 +306,11 @@ namespace RubrikSecurityCloud.Types
                 };
             this.NumWorkloadDescendants =
                 new RscGqlVars(null, numWorkloadDescendantsArgs, null, true);
+            Tuple<string, string>[] onDemandSnapshotCountArgs = {
+                    Tuple.Create("backupLocationId", "String"),
+                };
+            this.OnDemandSnapshotCount =
+                new RscGqlVars(null, onDemandSnapshotCountArgs, null, true);
             Tuple<string, string>[] childConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -309,6 +320,16 @@ namespace RubrikSecurityCloud.Types
                 };
             this.ChildConnection =
                 new RscGqlVars(null, childConnectionArgs, null, true);
+            Tuple<string, string>[] newestSnapshotArgs = {
+                    Tuple.Create("backupLocationId", "String"),
+                };
+            this.NewestSnapshot =
+                new RscGqlVars(null, newestSnapshotArgs, null, true);
+            Tuple<string, string>[] oldestSnapshotArgs = {
+                    Tuple.Create("backupLocationId", "String"),
+                };
+            this.OldestSnapshot =
+                new RscGqlVars(null, oldestSnapshotArgs, null, true);
             Tuple<string, string>[] searchDescendantConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -961,7 +982,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "newestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "newestSnapshot" + "\n(" + this.Vars.NewestSnapshot.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -985,7 +1006,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "oldestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "oldestSnapshot" + "\n(" + this.Vars.OldestSnapshot.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

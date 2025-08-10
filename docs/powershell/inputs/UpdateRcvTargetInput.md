@@ -11,3 +11,5 @@ Input for the Rubrik Cloud Vault Azure update request.
   - List of allowed IP addresses for the RCV Azure archival location.
 - shouldBypassProxy: System.Boolean
   - Specifies whether the proxy settings must be bypassed for the RCV Azure archival target.
+- redundancy: RcvRedundancy
+  - New redundancy for RCV Azure location.

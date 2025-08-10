@@ -5,6 +5,7 @@ query GlobalSearchResults(
   $sortBy: HierarchySortByField
   $sortOrder: SortOrder
   $after: String
+  $objectTypeFilterParams: [ManagedObjectType!]
 ) {
   globalSearchResults(
     first: $first
@@ -12,6 +13,7 @@ query GlobalSearchResults(
     sortBy: $sortBy
     sortOrder: $sortOrder
     after: $after
+    objectTypeFilterParams: $objectTypeFilterParams
   ) {
     ...GlobalSearchResultsFragment
   }

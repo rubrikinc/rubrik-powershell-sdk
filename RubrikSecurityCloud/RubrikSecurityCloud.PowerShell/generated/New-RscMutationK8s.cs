@@ -417,6 +417,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# OPTIONAL
+    /// 	forceDelete = $someBoolean
+    /// 	# OPTIONAL
     /// 	preserveSnapshots = $someBoolean
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1560,6 +1562,8 @@ $query.Var.input = @{
                 Mutation.DeleteK8sClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# OPTIONAL
+	forceDelete = $someBoolean
 	# OPTIONAL
 	preserveSnapshots = $someBoolean
 	# REQUIRED

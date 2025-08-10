@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isOnDemandSnapshot")]
         public System.Boolean? IsOnDemandSnapshot { get; set; }
 
+        //      C# -> List<System.String>? ArchivalLocationId
+        // GraphQL -> archivalLocationId: [String!] (scalar)
+        [JsonProperty("archivalLocationId")]
+        public List<System.String>? ArchivalLocationId { get; set; }
+
 
         #endregion
 

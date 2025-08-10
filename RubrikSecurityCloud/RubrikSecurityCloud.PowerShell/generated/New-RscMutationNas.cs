@@ -223,6 +223,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				exportPoint = $someString
     /// 				# OPTIONAL
+    /// 				userSelectedInterfaces = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
     /// 				nasSourceId = $someString
     /// 				# OPTIONAL
     /// 				credentials = @{
@@ -542,9 +546,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldGrantSmbShareRootAccess = $someBoolean
     /// 		# OPTIONAL
+    /// 		userSelectedSmbInterfaces = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
     /// 		isNetAppMetroClusterEnabled = $someBoolean
     /// 		# OPTIONAL
     /// 		shouldGrantNfsShareRootAccess = $someBoolean
+    /// 		# OPTIONAL
+    /// 		userSelectedNfsInterfaces = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		genericNasSystemParameters = @{
     /// 			# REQUIRED
@@ -929,6 +941,10 @@ $query.Var.input = @{
 				# OPTIONAL
 				exportPoint = $someString
 				# OPTIONAL
+				userSelectedInterfaces = @(
+					$someString
+				)
+				# OPTIONAL
 				nasSourceId = $someString
 				# OPTIONAL
 				credentials = @{
@@ -1200,9 +1216,17 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldGrantSmbShareRootAccess = $someBoolean
 		# OPTIONAL
+		userSelectedSmbInterfaces = @(
+			$someString
+		)
+		# OPTIONAL
 		isNetAppMetroClusterEnabled = $someBoolean
 		# OPTIONAL
 		shouldGrantNfsShareRootAccess = $someBoolean
+		# OPTIONAL
+		userSelectedNfsInterfaces = @(
+			$someString
+		)
 		# OPTIONAL
 		genericNasSystemParameters = @{
 			# REQUIRED

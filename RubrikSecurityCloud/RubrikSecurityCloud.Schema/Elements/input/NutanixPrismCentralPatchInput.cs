@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isDrEnabled")]
         public System.Boolean? IsDrEnabled { get; set; }
 
+        //      C# -> List<NutanixClustersListElementInput>? DecommissionedNutanixClusters
+        // GraphQL -> decommissionedNutanixClusters: [NutanixClustersListElementInput!] (input)
+        [JsonProperty("decommissionedNutanixClusters")]
+        public List<NutanixClustersListElementInput>? DecommissionedNutanixClusters { get; set; }
+
         //      C# -> List<NutanixClustersListElementInput>? NutanixClusters
         // GraphQL -> nutanixClusters: [NutanixClustersListElementInput!] (input)
         [JsonProperty("nutanixClusters")]

@@ -11,3 +11,5 @@ TOTP status for a user.
   - Specifies whether TOTP is supported for the user.
 - totpConfigUpdateAt: DateTime
   - The timestamp of the last TOTP configuration update.
+- mfaStatus: UserMfaStatus
+  - The MFA configuration status of the user.

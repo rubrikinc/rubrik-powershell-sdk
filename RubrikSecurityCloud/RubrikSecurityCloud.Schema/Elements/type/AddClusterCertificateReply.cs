@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hasKey")]
         public System.Boolean? HasKey { get; set; }
 
+        //      C# -> System.Boolean? IsInternal
+        // GraphQL -> isInternal: Boolean (scalar)
+        [JsonProperty("isInternal")]
+        public System.Boolean? IsInternal { get; set; }
+
         //      C# -> System.Boolean? IsTrusted
         // GraphQL -> isTrusted: Boolean (scalar)
         [JsonProperty("isTrusted")]
@@ -74,6 +79,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Description = null,
         DateTime? Expiration = null,
         System.Boolean? HasKey = null,
+        System.Boolean? IsInternal = null,
         System.Boolean? IsTrusted = null,
         System.String? Name = null,
         System.String? PemFile = null,
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HasKey != null ) {
             this.HasKey = HasKey;
+        }
+        if ( IsInternal != null ) {
+            this.IsInternal = IsInternal;
         }
         if ( IsTrusted != null ) {
             this.IsTrusted = IsTrusted;
@@ -152,6 +161,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hasKey\n" ;
             } else {
                 s += ind + "hasKey\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsInternal
+        // GraphQL -> isInternal: Boolean (scalar)
+        if (this.IsInternal != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isInternal\n" ;
+            } else {
+                s += ind + "isInternal\n" ;
             }
         }
         //      C# -> System.Boolean? IsTrusted
@@ -264,6 +282,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.HasKey != null && ec.Excludes("hasKey",true))
         {
             this.HasKey = null;
+        }
+        //      C# -> System.Boolean? IsInternal
+        // GraphQL -> isInternal: Boolean (scalar)
+        if (ec.Includes("isInternal",true))
+        {
+            if(this.IsInternal == null) {
+
+                this.IsInternal = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInternal != null && ec.Excludes("isInternal",true))
+        {
+            this.IsInternal = null;
         }
         //      C# -> System.Boolean? IsTrusted
         // GraphQL -> isTrusted: Boolean (scalar)

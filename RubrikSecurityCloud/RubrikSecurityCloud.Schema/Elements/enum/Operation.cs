@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ADD_AWS_CLOUD_ACCOUNT")]
         ADD_AWS_CLOUD_ACCOUNT,
 
+        [EnumMember(Value = "ADD_AWS_ROLE_CHAINING_CLOUD_ACCOUNT")]
+        ADD_AWS_ROLE_CHAINING_CLOUD_ACCOUNT,
+
         [EnumMember(Value = "ADD_AZURE_CLOUD_ACCOUNT")]
         ADD_AZURE_CLOUD_ACCOUNT,
 
@@ -114,6 +117,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DELETE_AWS_CLOUD_ACCOUNT")]
         DELETE_AWS_CLOUD_ACCOUNT,
 
+        [EnumMember(Value = "DELETE_AWS_ROLE_CHAINING_CLOUD_ACCOUNT")]
+        DELETE_AWS_ROLE_CHAINING_CLOUD_ACCOUNT,
+
         [EnumMember(Value = "DELETE_AZURE_CLOUD_ACCOUNT")]
         DELETE_AZURE_CLOUD_ACCOUNT,
 
@@ -158,6 +164,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "EDIT_AWS_CLOUD_ACCOUNT")]
         EDIT_AWS_CLOUD_ACCOUNT,
+
+        [EnumMember(Value = "EDIT_AWS_ROLE_CHAINING_CLOUD_ACCOUNT")]
+        EDIT_AWS_ROLE_CHAINING_CLOUD_ACCOUNT,
 
         [EnumMember(Value = "EDIT_AZURE_CLOUD_ACCOUNT")]
         EDIT_AZURE_CLOUD_ACCOUNT,

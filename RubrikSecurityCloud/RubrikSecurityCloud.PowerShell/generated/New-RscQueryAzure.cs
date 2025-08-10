@@ -1482,6 +1482,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	azureNativeIsEligibleForSqlDatabaseServerProtectionFilter = @{
+    /// 		# REQUIRED
+    /// 		isEligibleForProtection = $someBoolean
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1598,6 +1603,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	serverId = $someString
+    /// 	# OPTIONAL
+    /// 	azureNativeIsEligibleForSqlDatabaseDbProtectionFilter = @{
+    /// 		# REQUIRED
+    /// 		isEligibleForProtection = $someBoolean
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -1732,6 +1742,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	serverId = $someString
+    /// 	# OPTIONAL
+    /// 	azureNativeIsEligibleForSqlMiDbProtectionFilter = @{
+    /// 		# REQUIRED
+    /// 		isEligibleForProtection = $someBoolean
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -1883,6 +1898,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				tagValue = $someString
     /// 			}
     /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	azureNativeIsEligibleForSqlMiServerProtectionFilter = @{
+    /// 		# REQUIRED
+    /// 		isEligibleForProtection = $someBoolean
     /// 	}
     /// }
     /// 
@@ -4418,6 +4438,11 @@ $query.Var.azureSqlDatabaseServerFilters = @{
 			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
 		)
 	}
+	# OPTIONAL
+	azureNativeIsEligibleForSqlDatabaseServerProtectionFilter = @{
+		# REQUIRED
+		isEligibleForProtection = $someBoolean
+	}
 }"
             );
         }
@@ -4542,6 +4567,11 @@ $query.Var.azureSqlDatabaseFilters = @{
 	}
 	# OPTIONAL
 	serverId = $someString
+	# OPTIONAL
+	azureNativeIsEligibleForSqlDatabaseDbProtectionFilter = @{
+		# REQUIRED
+		isEligibleForProtection = $someBoolean
+	}
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -4677,6 +4707,11 @@ $query.Var.azureSqlManagedInstanceDatabaseFilters = @{
 	}
 	# OPTIONAL
 	serverId = $someString
+	# OPTIONAL
+	azureNativeIsEligibleForSqlMiDbProtectionFilter = @{
+		# REQUIRED
+		isEligibleForProtection = $someBoolean
+	}
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -4826,6 +4861,11 @@ $query.Var.azureSqlManagedInstanceServerFilters = @{
 				tagValue = $someString
 			}
 		)
+	}
+	# OPTIONAL
+	azureNativeIsEligibleForSqlMiServerProtectionFilter = @{
+		# REQUIRED
+		isEligibleForProtection = $someBoolean
 	}
 }"
             );

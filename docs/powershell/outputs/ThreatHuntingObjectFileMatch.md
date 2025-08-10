@@ -33,3 +33,6 @@ Data for a matched file.
   - Matched file name.
 - matchId: System.Int64
   - ID of the matched file being returned.
+- fileVersionMatchDetails: list of ThreatHuntFileVersionMatchDetailss
+  - File version match details containing time-related metadata.
+There can be multiple file versions for a file match.

@@ -35,6 +35,8 @@ Specific information for Rubrik Cloud Vault (RCV) Azure target created on Rubrik
   - RCV Private endpoint connection details.
 - clusterIpMapping: ClusterIpMapping
   - IP allow list for location.
+- conversionOpt: RcvRedundancyConversionType
+  - Latest redundancy conversion for this RCV Azure location.
 - cluster: Cluster
   - The cluster to which this target belongs.
 - targetType: TargetType

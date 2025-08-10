@@ -64,10 +64,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isCreatedByPolarisNas")]
         public System.Boolean? IsCreatedByPolarisNas { get; set; }
 
+        //      C# -> System.String? TemplateBlocklistedFilesystemPaths
+        // GraphQL -> templateBlocklistedFilesystemPaths: String (scalar)
+        [JsonProperty("templateBlocklistedFilesystemPaths")]
+        public System.String? TemplateBlocklistedFilesystemPaths { get; set; }
+
         //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
         // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean (scalar)
         [JsonProperty("shouldRetryPrescriptIfBackupFails")]
         public System.Boolean? ShouldRetryPrescriptIfBackupFails { get; set; }
+
+        //      C# -> System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths
+        // GraphQL -> shouldOverrideClusterWideBlocklistedFilesystemPaths: Boolean (scalar)
+        [JsonProperty("shouldOverrideClusterWideBlocklistedFilesystemPaths")]
+        public System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths { get; set; }
 
         //      C# -> FilesetTemplateCreateOperatingSystemType? OperatingSystemType
         // GraphQL -> operatingSystemType: FilesetTemplateCreateOperatingSystemType (enum)

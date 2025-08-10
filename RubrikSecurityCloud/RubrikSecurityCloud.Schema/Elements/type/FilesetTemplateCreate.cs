@@ -85,10 +85,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("preBackupScript")]
         public System.String? PreBackupScript { get; set; }
 
+        //      C# -> System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths
+        // GraphQL -> shouldOverrideClusterWideBlocklistedFilesystemPaths: Boolean (scalar)
+        [JsonProperty("shouldOverrideClusterWideBlocklistedFilesystemPaths")]
+        public System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths { get; set; }
+
         //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
         // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean (scalar)
         [JsonProperty("shouldRetryPrescriptIfBackupFails")]
         public System.Boolean? ShouldRetryPrescriptIfBackupFails { get; set; }
+
+        //      C# -> System.String? TemplateBlocklistedFilesystemPaths
+        // GraphQL -> templateBlocklistedFilesystemPaths: String (scalar)
+        [JsonProperty("templateBlocklistedFilesystemPaths")]
+        public System.String? TemplateBlocklistedFilesystemPaths { get; set; }
 
         //      C# -> FilesetOptions? FilesetOptions
         // GraphQL -> filesetOptions: FilesetOptions (type)
@@ -118,7 +128,9 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.String? PostBackupScript = null,
         System.String? PreBackupScript = null,
+        System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths = null,
         System.Boolean? ShouldRetryPrescriptIfBackupFails = null,
+        System.String? TemplateBlocklistedFilesystemPaths = null,
         FilesetOptions? FilesetOptions = null
     ) 
     {
@@ -161,8 +173,14 @@ namespace RubrikSecurityCloud.Types
         if ( PreBackupScript != null ) {
             this.PreBackupScript = PreBackupScript;
         }
+        if ( ShouldOverrideClusterWideBlocklistedFilesystemPaths != null ) {
+            this.ShouldOverrideClusterWideBlocklistedFilesystemPaths = ShouldOverrideClusterWideBlocklistedFilesystemPaths;
+        }
         if ( ShouldRetryPrescriptIfBackupFails != null ) {
             this.ShouldRetryPrescriptIfBackupFails = ShouldRetryPrescriptIfBackupFails;
+        }
+        if ( TemplateBlocklistedFilesystemPaths != null ) {
+            this.TemplateBlocklistedFilesystemPaths = TemplateBlocklistedFilesystemPaths;
         }
         if ( FilesetOptions != null ) {
             this.FilesetOptions = FilesetOptions;
@@ -298,6 +316,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "preBackupScript\n" ;
             }
         }
+        //      C# -> System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths
+        // GraphQL -> shouldOverrideClusterWideBlocklistedFilesystemPaths: Boolean (scalar)
+        if (this.ShouldOverrideClusterWideBlocklistedFilesystemPaths != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldOverrideClusterWideBlocklistedFilesystemPaths\n" ;
+            } else {
+                s += ind + "shouldOverrideClusterWideBlocklistedFilesystemPaths\n" ;
+            }
+        }
         //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
         // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean (scalar)
         if (this.ShouldRetryPrescriptIfBackupFails != null) {
@@ -305,6 +332,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "shouldRetryPrescriptIfBackupFails\n" ;
             } else {
                 s += ind + "shouldRetryPrescriptIfBackupFails\n" ;
+            }
+        }
+        //      C# -> System.String? TemplateBlocklistedFilesystemPaths
+        // GraphQL -> templateBlocklistedFilesystemPaths: String (scalar)
+        if (this.TemplateBlocklistedFilesystemPaths != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateBlocklistedFilesystemPaths\n" ;
+            } else {
+                s += ind + "templateBlocklistedFilesystemPaths\n" ;
             }
         }
         //      C# -> FilesetOptions? FilesetOptions
@@ -547,6 +583,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.PreBackupScript = null;
         }
+        //      C# -> System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths
+        // GraphQL -> shouldOverrideClusterWideBlocklistedFilesystemPaths: Boolean (scalar)
+        if (ec.Includes("shouldOverrideClusterWideBlocklistedFilesystemPaths",true))
+        {
+            if(this.ShouldOverrideClusterWideBlocklistedFilesystemPaths == null) {
+
+                this.ShouldOverrideClusterWideBlocklistedFilesystemPaths = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldOverrideClusterWideBlocklistedFilesystemPaths != null && ec.Excludes("shouldOverrideClusterWideBlocklistedFilesystemPaths",true))
+        {
+            this.ShouldOverrideClusterWideBlocklistedFilesystemPaths = null;
+        }
         //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
         // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean (scalar)
         if (ec.Includes("shouldRetryPrescriptIfBackupFails",true))
@@ -563,6 +616,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ShouldRetryPrescriptIfBackupFails != null && ec.Excludes("shouldRetryPrescriptIfBackupFails",true))
         {
             this.ShouldRetryPrescriptIfBackupFails = null;
+        }
+        //      C# -> System.String? TemplateBlocklistedFilesystemPaths
+        // GraphQL -> templateBlocklistedFilesystemPaths: String (scalar)
+        if (ec.Includes("templateBlocklistedFilesystemPaths",true))
+        {
+            if(this.TemplateBlocklistedFilesystemPaths == null) {
+
+                this.TemplateBlocklistedFilesystemPaths = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateBlocklistedFilesystemPaths != null && ec.Excludes("templateBlocklistedFilesystemPaths",true))
+        {
+            this.TemplateBlocklistedFilesystemPaths = null;
         }
         //      C# -> FilesetOptions? FilesetOptions
         // GraphQL -> filesetOptions: FilesetOptions (type)

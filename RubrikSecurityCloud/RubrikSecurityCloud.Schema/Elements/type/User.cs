@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAccountOwner")]
         public System.Boolean? IsAccountOwner { get; set; }
 
+        //      C# -> System.Boolean? IsEmailEnabled
+        // GraphQL -> isEmailEnabled: Boolean! (scalar)
+        [JsonProperty("isEmailEnabled")]
+        public System.Boolean? IsEmailEnabled { get; set; }
+
         //      C# -> System.Boolean? IsHidden
         // GraphQL -> isHidden: Boolean! (scalar)
         [JsonProperty("isHidden")]
@@ -85,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("assignedRoles")]
         public List<RoleAssignment>? AssignedRoles { get; set; }
 
+        //      C# -> List<Role>? DirectlyAssignedRoles
+        // GraphQL -> directlyAssignedRoles: [Role!]! (type)
+        [JsonProperty("directlyAssignedRoles")]
+        public List<Role>? DirectlyAssignedRoles { get; set; }
+
         //      C# -> List<EventDigest>? EmailConfig
         // GraphQL -> emailConfig: [EventDigest!]! (type)
         [JsonProperty("emailConfig")]
@@ -94,6 +104,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> eulaState: EulaState! (type)
         [JsonProperty("eulaState")]
         public EulaState? EulaState { get; set; }
+
+        //      C# -> List<Role>? InheritedRoles
+        // GraphQL -> inheritedRoles: [Role!]! (type)
+        [JsonProperty("inheritedRoles")]
+        public List<Role>? InheritedRoles { get; set; }
 
         //      C# -> List<UserLockoutEvent>? LockoutHistory
         // GraphQL -> lockoutHistory: [UserLockoutEvent!]! (type)
@@ -137,14 +152,17 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? Groups = null,
         System.String? Id = null,
         System.Boolean? IsAccountOwner = null,
+        System.Boolean? IsEmailEnabled = null,
         System.Boolean? IsHidden = null,
         DateTime? LastLogin = null,
         System.Int64? UnreadCount = null,
         System.String? Username = null,
         List<Org>? AllOrgs = null,
         List<RoleAssignment>? AssignedRoles = null,
+        List<Role>? DirectlyAssignedRoles = null,
         List<EventDigest>? EmailConfig = null,
         EulaState? EulaState = null,
+        List<Role>? InheritedRoles = null,
         List<UserLockoutEvent>? LockoutHistory = null,
         LockoutState? LockoutState = null,
         PasskeyMetadata? PasskeyMetadata = null,
@@ -173,6 +191,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsAccountOwner != null ) {
             this.IsAccountOwner = IsAccountOwner;
         }
+        if ( IsEmailEnabled != null ) {
+            this.IsEmailEnabled = IsEmailEnabled;
+        }
         if ( IsHidden != null ) {
             this.IsHidden = IsHidden;
         }
@@ -191,11 +212,17 @@ namespace RubrikSecurityCloud.Types
         if ( AssignedRoles != null ) {
             this.AssignedRoles = AssignedRoles;
         }
+        if ( DirectlyAssignedRoles != null ) {
+            this.DirectlyAssignedRoles = DirectlyAssignedRoles;
+        }
         if ( EmailConfig != null ) {
             this.EmailConfig = EmailConfig;
         }
         if ( EulaState != null ) {
             this.EulaState = EulaState;
+        }
+        if ( InheritedRoles != null ) {
+            this.InheritedRoles = InheritedRoles;
         }
         if ( LockoutHistory != null ) {
             this.LockoutHistory = LockoutHistory;
@@ -289,6 +316,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isAccountOwner\n" ;
             }
         }
+        //      C# -> System.Boolean? IsEmailEnabled
+        // GraphQL -> isEmailEnabled: Boolean! (scalar)
+        if (this.IsEmailEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isEmailEnabled\n" ;
+            } else {
+                s += ind + "isEmailEnabled\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsHidden
         // GraphQL -> isHidden: Boolean! (scalar)
         if (this.IsHidden != null) {
@@ -349,6 +385,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<Role>? DirectlyAssignedRoles
+        // GraphQL -> directlyAssignedRoles: [Role!]! (type)
+        if (this.DirectlyAssignedRoles != null) {
+            var fspec = this.DirectlyAssignedRoles.AsFieldSpec(conf.Child("directlyAssignedRoles"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "directlyAssignedRoles" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<EventDigest>? EmailConfig
         // GraphQL -> emailConfig: [EventDigest!]! (type)
         if (this.EmailConfig != null) {
@@ -370,6 +418,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "eulaState" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<Role>? InheritedRoles
+        // GraphQL -> inheritedRoles: [Role!]! (type)
+        if (this.InheritedRoles != null) {
+            var fspec = this.InheritedRoles.AsFieldSpec(conf.Child("inheritedRoles"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "inheritedRoles" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -559,6 +619,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsAccountOwner = null;
         }
+        //      C# -> System.Boolean? IsEmailEnabled
+        // GraphQL -> isEmailEnabled: Boolean! (scalar)
+        if (ec.Includes("isEmailEnabled",true))
+        {
+            if(this.IsEmailEnabled == null) {
+
+                this.IsEmailEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEmailEnabled != null && ec.Excludes("isEmailEnabled",true))
+        {
+            this.IsEmailEnabled = null;
+        }
         //      C# -> System.Boolean? IsHidden
         // GraphQL -> isHidden: Boolean! (scalar)
         if (ec.Includes("isHidden",true))
@@ -665,6 +742,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.AssignedRoles = null;
         }
+        //      C# -> List<Role>? DirectlyAssignedRoles
+        // GraphQL -> directlyAssignedRoles: [Role!]! (type)
+        if (ec.Includes("directlyAssignedRoles",false))
+        {
+            if(this.DirectlyAssignedRoles == null) {
+
+                this.DirectlyAssignedRoles = new List<Role>();
+                this.DirectlyAssignedRoles.ApplyExploratoryFieldSpec(ec.NewChild("directlyAssignedRoles"));
+
+            } else {
+
+                this.DirectlyAssignedRoles.ApplyExploratoryFieldSpec(ec.NewChild("directlyAssignedRoles"));
+
+            }
+        }
+        else if (this.DirectlyAssignedRoles != null && ec.Excludes("directlyAssignedRoles",false))
+        {
+            this.DirectlyAssignedRoles = null;
+        }
         //      C# -> List<EventDigest>? EmailConfig
         // GraphQL -> emailConfig: [EventDigest!]! (type)
         if (ec.Includes("emailConfig",false))
@@ -702,6 +798,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EulaState != null && ec.Excludes("eulaState",false))
         {
             this.EulaState = null;
+        }
+        //      C# -> List<Role>? InheritedRoles
+        // GraphQL -> inheritedRoles: [Role!]! (type)
+        if (ec.Includes("inheritedRoles",false))
+        {
+            if(this.InheritedRoles == null) {
+
+                this.InheritedRoles = new List<Role>();
+                this.InheritedRoles.ApplyExploratoryFieldSpec(ec.NewChild("inheritedRoles"));
+
+            } else {
+
+                this.InheritedRoles.ApplyExploratoryFieldSpec(ec.NewChild("inheritedRoles"));
+
+            }
+        }
+        else if (this.InheritedRoles != null && ec.Excludes("inheritedRoles",false))
+        {
+            this.InheritedRoles = null;
         }
         //      C# -> List<UserLockoutEvent>? LockoutHistory
         // GraphQL -> lockoutHistory: [UserLockoutEvent!]! (type)

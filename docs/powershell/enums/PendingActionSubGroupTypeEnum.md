@@ -1,48 +1,48 @@
 ### PendingActionSubGroupTypeEnum
-The subgroup type for the pending action.
+The specific subgroup type that defines the exact operation to be performed within a pending action group.
 
-- BLUEPRINT_CREATE
-- BLUEPRINT_UPDATE
-- BLUEPRINT_DELETE
-- GLOBAL_SLA_PUT
-- GLOBAL_SLA_ASSIGN
-- GLOBAL_SLA_DELETE
-- OBJECT_STORE_LOCATION_PUT
-- NFS_LOCATION_PUT
-- ARCHIVAL_LOCATION_DELETE
-- CLUSTER_PEER_TOKEN_GET
-- CLUSTER_PEER_TOKEN_SET
-- CLUSTER_PEER_TOKEN_GET_AND_SET
-- DISABLE_REPLICATION_LOCATION_PUT
-- ENABLE_LOCATION_AS_REPLICATION_TARGET
-- ARCHIVAL_LOCATION_PAUSE
-- ARCHIVAL_LOCATION_RESUME
-- ENABLE_POLARIS_AS_REPLICATION_SOURCE
-- AWS_IAM_CUSTOMER_ACCOUNT_UPSERT
-- AWS_COMPUTE_SETTING_UPSERT
-- AWS_ROLE_BASED_ARCHIVAL_LOCATION
-- GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPPABLE
-- GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPSHOT
-- GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPSHOT_V2
-- UNMANAGED_OBJECT_DELETE_SNAPSHOTS
-- UNMANAGED_OBJECT_DELETE_SNAPSHOTS_OF_OBJECT
-- BLUEPRINT_DEPRECATE
-- S3COMPATIBLE_LOCATION_PUT
-- ARCHIVAL_LOCATION_DISABLE
-- ARCHIVAL_LOCATION_ENABLE
-- OBJECT_STORE_LOCATION_READER_POST
-- NFS_LOCATION_READER_POST
-- S3COMPATIBLE_LOCATION_READER_POST
-- ADD_CLUSTER_AS_REPLICATION_TARGET
-- SERVICE_ACCOUNT_SYNC
-- SERVICE_ACCOUNT_DELETE
+- BLUEPRINT_CREATE - Creates a new application blueprint.
+- BLUEPRINT_UPDATE - Updates an existing application blueprint.
+- BLUEPRINT_DELETE - Deletes an application blueprint.
+- GLOBAL_SLA_PUT - Creates or updates a global SLA domain.
+- GLOBAL_SLA_ASSIGN - Assigns a global SLA domain to objects.
+- GLOBAL_SLA_DELETE - Deletes a global SLA domain.
+- OBJECT_STORE_LOCATION_PUT - Creates or updates an object store archival location.
+- NFS_LOCATION_PUT - Creates or updates an NFS archival location.
+- ARCHIVAL_LOCATION_DELETE - Deletes an archival location.
+- CLUSTER_PEER_TOKEN_GET - Retrieves cluster peer token for replication setup.
+- CLUSTER_PEER_TOKEN_SET - Sets cluster peer token for replication setup.
+- CLUSTER_PEER_TOKEN_GET_AND_SET - Retrieves and sets cluster peer token in a single operation.
+- DISABLE_REPLICATION_LOCATION_PUT - Disables a replication location.
+- ENABLE_LOCATION_AS_REPLICATION_TARGET - Enables a location as a replication target.
+- ARCHIVAL_LOCATION_PAUSE - Pauses operations on an archival location.
+- ARCHIVAL_LOCATION_RESUME - Resumes operations on an archival location.
+- ENABLE_POLARIS_AS_REPLICATION_SOURCE - Enables Polaris as a replication source.
+- AWS_IAM_CUSTOMER_ACCOUNT_UPSERT - Creates or updates AWS IAM customer account configuration.
+- AWS_COMPUTE_SETTING_UPSERT - Creates or updates AWS compute settings.
+- AWS_ROLE_BASED_ARCHIVAL_LOCATION - Creates AWS role-based archival location.
+- GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPPABLE - Assigns retention SLA to a snappable object.
+- GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPSHOT - Assigns retention SLA to a snapshot.
+- GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPSHOT_V2 - Assigns retention SLA to a snapshot using v2 API.
+- UNMANAGED_OBJECT_DELETE_SNAPSHOTS - Deletes snapshots of unmanaged objects.
+- UNMANAGED_OBJECT_DELETE_SNAPSHOTS_OF_OBJECT - Deletes all snapshots of a specific unmanaged object.
+- BLUEPRINT_DEPRECATE - Deprecates an application blueprint.
+- S3COMPATIBLE_LOCATION_PUT - Creates or updates an S3-compatible archival location.
+- ARCHIVAL_LOCATION_DISABLE - Disables an archival location.
+- ARCHIVAL_LOCATION_ENABLE - Enables an archival location.
+- OBJECT_STORE_LOCATION_READER_POST - Creates a reader for object store archival location.
+- NFS_LOCATION_READER_POST - Creates a reader for NFS archival location.
+- S3COMPATIBLE_LOCATION_READER_POST - Creates a reader for S3-compatible archival location.
+- ADD_CLUSTER_AS_REPLICATION_TARGET - Adds a cluster as replication target.
+- SERVICE_ACCOUNT_SYNC - Synchronizes an RSC service account.
+- SERVICE_ACCOUNT_DELETE - Deletes an RSC service account from CDM cluster.
 - SECURITY_SETTING_ADD_KMIP_SERVER - The subgroup type of the pending action is for adding a KMIP server.
 - SECURITY_SETTING_DELETE_KMIP_SERVER - The subgroup type of the pending action is for deleting a KMIP server.
 - SECURITY_SETTING_EDIT_KMIP_SERVER - The subgroup type of the pending action is for editing a KMIP server.
 - QSTAR_LOCATION_PUT - The subgroup type of the pending action is forput of Q-star location.
 - QSTAR_LOCATION_READER_POST - The subgroup type of the pending action is forcreate of reader of Q=star location.
-- FEDERATED_LOGIN - The subgroup type of the pending action is for configuring or deleting federated login configuration.
-- AZURE_CUSTOMER_FEATURE_UPSERT
+- FEDERATED_LOGIN - Configures or deletes federated login configuration.
+- AZURE_CUSTOMER_FEATURE_UPSERT - Creates or updates Azure customer feature configuration.
 - SECURITY_SETTING_EDIT_KMS_KEY_VAULT - The subgroup type of the pending action is for editing a KMS Key Vault.
 - LCK_LOCATION_PUT - The subgroup type of the pending action is for creating LCK archival location.
 - LCK_LOCATION_READER_POST - The subgroup type of the pending action is for creating LCK reader archival location.
@@ -53,4 +53,4 @@ The subgroup type for the pending action.
 - ROLE_DELETION - Subgroup used for role deletion in CDM using RSC.
 - GRANT_AUTHZ - Subgroup used for granting authorization to the CDM role using RSC.
 - REVOKE_AUTHZ - Subgroup used for revoking authorization to the CDM role using RSC.
-- CLOUD_ACCOUNT_UPDATE - The subgroup type of the pending action is used for updating access credentials of a cloud account to CDM using RSC.
+- CLOUD_ACCOUNT_UPDATE - Updates access credentials of a cloud account to CDM using RSC.

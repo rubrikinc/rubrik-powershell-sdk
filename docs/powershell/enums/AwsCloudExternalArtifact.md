@@ -8,7 +8,7 @@ Keywords for AWS external artifacts.
 - EXOCOMPUTE_EKS_MASTERNODE_INSTANCE_PROFILE - Keyword to capture EKS worker node instance profile.
 - ACCESS_KEY - Keyword to capture AWS Account access key.
 - SECRET_KEY - Keyword to capture AWS account secret key.
-- IAM_USER_ARN - Keyword to capture AWS account IAM user.
+- IAM_USER_ARN - Keyword to capture AWS account IAM user ARN.
 - EXOCOMPUTE_EKS_WORKERNODE_INSTANCE_PROFILE - Keyword to capture EKS worker node instance profile.
 - STACK_NAME - Keyword to capture stack name.
 - STACK_ARN - Keyword to capture stack ARN.

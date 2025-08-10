@@ -19,3 +19,5 @@ AWS Exocompute configurations in an AWS account.
   - AWS Exocompute configurations of the account to be used for Exocompute.
 - roleChainingAccount: AwsRoleChainingAccount
   - Role chaining account details.
+- sslInspectionCertificates: list of CloudAccountsCertificateInfos
+  - SSL inspection certificates for the Exocompute.

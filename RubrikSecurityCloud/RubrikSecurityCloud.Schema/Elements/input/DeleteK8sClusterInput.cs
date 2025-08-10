@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? ForceDelete
+        // GraphQL -> forceDelete: Boolean (scalar)
+        [JsonProperty("forceDelete")]
+        public System.Boolean? ForceDelete { get; set; }
+
         //      C# -> System.Boolean? PreserveSnapshots
         // GraphQL -> preserveSnapshots: Boolean (scalar)
         [JsonProperty("preserveSnapshots")]

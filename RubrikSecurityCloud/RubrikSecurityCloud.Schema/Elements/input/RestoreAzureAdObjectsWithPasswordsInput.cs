@@ -66,6 +66,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectRecoveryOptions")]
         public ObjectRecoveryOptionsType? ObjectRecoveryOptions { get; set; }
 
+        //      C# -> AttributeRecoveryMode? AttributeRecoveryMode
+        // GraphQL -> attributeRecoveryMode: AttributeRecoveryMode (enum)
+        [JsonProperty("attributeRecoveryMode")]
+        public AttributeRecoveryMode? AttributeRecoveryMode { get; set; }
+
+        //      C# -> AttributeRecoveryOptions? AttributeRecoveryOptions
+        // GraphQL -> attributeRecoveryOptions: AttributeRecoveryOptions (input)
+        [JsonProperty("attributeRecoveryOptions")]
+        public AttributeRecoveryOptions? AttributeRecoveryOptions { get; set; }
+
 
         #endregion
 

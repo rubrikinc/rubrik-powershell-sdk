@@ -49,6 +49,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.Boolean? IsInternal
+        // GraphQL -> isInternal: Boolean (scalar)
+        [JsonProperty("isInternal")]
+        public System.Boolean? IsInternal { get; set; }
+
+        //      C# -> System.String? PemFile
+        // GraphQL -> pemFile: String (scalar)
+        [JsonProperty("pemFile")]
+        public System.String? PemFile { get; set; }
+
         //      C# -> List<ExcludeUsages>? ExcludeUsages
         // GraphQL -> excludeUsages: [ExcludeUsages!] (enum)
         [JsonProperty("excludeUsages")]

@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalSnapshotsScanned")]
         public System.Int64? TotalSnapshotsScanned { get; set; }
 
+        //      C# -> List<ThreatHuntFileVersionMatchDetails>? FileVersionMatchDetails
+        // GraphQL -> fileVersionMatchDetails: [ThreatHuntFileVersionMatchDetails!]! (type)
+        [JsonProperty("fileVersionMatchDetails")]
+        public List<ThreatHuntFileVersionMatchDetails>? FileVersionMatchDetails { get; set; }
+
         //      C# -> List<ThreatHuntIocDetails>? IocDetails
         // GraphQL -> iocDetails: [ThreatHuntIocDetails!]! (type)
         [JsonProperty("iocDetails")]
@@ -124,6 +129,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? ModifiedTime = null,
         System.Int64? TotalSnapshotsMatched = null,
         System.Int64? TotalSnapshotsScanned = null,
+        List<ThreatHuntFileVersionMatchDetails>? FileVersionMatchDetails = null,
         List<ThreatHuntIocDetails>? IocDetails = null,
         List<MatchedSnapshot>? MatchedSnapshots = null
     ) 
@@ -169,6 +175,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalSnapshotsScanned != null ) {
             this.TotalSnapshotsScanned = TotalSnapshotsScanned;
+        }
+        if ( FileVersionMatchDetails != null ) {
+            this.FileVersionMatchDetails = FileVersionMatchDetails;
         }
         if ( IocDetails != null ) {
             this.IocDetails = IocDetails;
@@ -314,6 +323,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalSnapshotsScanned\n" ;
             } else {
                 s += ind + "totalSnapshotsScanned\n" ;
+            }
+        }
+        //      C# -> List<ThreatHuntFileVersionMatchDetails>? FileVersionMatchDetails
+        // GraphQL -> fileVersionMatchDetails: [ThreatHuntFileVersionMatchDetails!]! (type)
+        if (this.FileVersionMatchDetails != null) {
+            var fspec = this.FileVersionMatchDetails.AsFieldSpec(conf.Child("fileVersionMatchDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "fileVersionMatchDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ThreatHuntIocDetails>? IocDetails
@@ -584,6 +605,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalSnapshotsScanned != null && ec.Excludes("totalSnapshotsScanned",true))
         {
             this.TotalSnapshotsScanned = null;
+        }
+        //      C# -> List<ThreatHuntFileVersionMatchDetails>? FileVersionMatchDetails
+        // GraphQL -> fileVersionMatchDetails: [ThreatHuntFileVersionMatchDetails!]! (type)
+        if (ec.Includes("fileVersionMatchDetails",false))
+        {
+            if(this.FileVersionMatchDetails == null) {
+
+                this.FileVersionMatchDetails = new List<ThreatHuntFileVersionMatchDetails>();
+                this.FileVersionMatchDetails.ApplyExploratoryFieldSpec(ec.NewChild("fileVersionMatchDetails"));
+
+            } else {
+
+                this.FileVersionMatchDetails.ApplyExploratoryFieldSpec(ec.NewChild("fileVersionMatchDetails"));
+
+            }
+        }
+        else if (this.FileVersionMatchDetails != null && ec.Excludes("fileVersionMatchDetails",false))
+        {
+            this.FileVersionMatchDetails = null;
         }
         //      C# -> List<ThreatHuntIocDetails>? IocDetails
         // GraphQL -> iocDetails: [ThreatHuntIocDetails!]! (type)

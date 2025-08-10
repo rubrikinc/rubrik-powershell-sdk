@@ -35,9 +35,15 @@ User account details.
   - The user account lockout history.
 - assignedRoles: list of RoleAssignments
   - Roles assigned to the user.
+- inheritedRoles: list of Roles
+  - Roles inherited by the user.
+- directlyAssignedRoles: list of Roles
+  - Roles directly assigned to the user.
 - allOrgs: list of Orgs
   - The suborganizations in which the user has roles.
 - emailConfig: list of EventDigests
   - Email notification configurations.
+- isEmailEnabled: System.Boolean
+  - Specifies whether the user has email notifications enabled.
 - roles: list of Roles
   - Roles assigned to the user.

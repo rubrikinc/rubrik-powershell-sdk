@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("network")]
         public System.String? Network { get; set; }
 
+        //      C# -> System.String? NetworkZoneName
+        // GraphQL -> networkZoneName: String (scalar)
+        [JsonProperty("networkZoneName")]
+        public System.String? NetworkZoneName { get; set; }
+
 
         #endregion
 
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         System.String? Device = null,
         System.String? Gateway = null,
         System.String? Netmask = null,
-        System.String? Network = null
+        System.String? Network = null,
+        System.String? NetworkZoneName = null
     ) 
     {
         if ( Device != null ) {
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Network != null ) {
             this.Network = Network;
+        }
+        if ( NetworkZoneName != null ) {
+            this.NetworkZoneName = NetworkZoneName;
         }
         return this;
     }
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "network\n" ;
             } else {
                 s += ind + "network\n" ;
+            }
+        }
+        //      C# -> System.String? NetworkZoneName
+        // GraphQL -> networkZoneName: String (scalar)
+        if (this.NetworkZoneName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "networkZoneName\n" ;
+            } else {
+                s += ind + "networkZoneName\n" ;
             }
         }
         return s;
@@ -192,6 +210,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Network != null && ec.Excludes("network",true))
         {
             this.Network = null;
+        }
+        //      C# -> System.String? NetworkZoneName
+        // GraphQL -> networkZoneName: String (scalar)
+        if (ec.Includes("networkZoneName",true))
+        {
+            if(this.NetworkZoneName == null) {
+
+                this.NetworkZoneName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkZoneName != null && ec.Excludes("networkZoneName",true))
+        {
+            this.NetworkZoneName = null;
         }
     }
 

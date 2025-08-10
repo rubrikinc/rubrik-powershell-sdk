@@ -109,6 +109,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hierarchyFilters")]
         public List<Filter>? HierarchyFilters { get; set; }
 
+        //      C# -> AzureNativeIsEligibleForVmProtectionFilter? AzureNativeIsEligibleForVmProtectionFilter
+        // GraphQL -> azureNativeIsEligibleForVmProtectionFilter: AzureNativeIsEligibleForVmProtectionFilter (input)
+        [JsonProperty("azureNativeIsEligibleForVmProtectionFilter")]
+        public AzureNativeIsEligibleForVmProtectionFilter? AzureNativeIsEligibleForVmProtectionFilter { get; set; }
+
 
         #endregion
 

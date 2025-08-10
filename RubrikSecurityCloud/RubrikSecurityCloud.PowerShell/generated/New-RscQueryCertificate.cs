@@ -242,6 +242,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	name = $someString
     /// 	# OPTIONAL
+    /// 	isInternal = $someBoolean
+    /// 	# OPTIONAL
+    /// 	pemFile = $someString
+    /// 	# OPTIONAL
     /// 	excludeUsages = @(
     /// 		$someExcludeUsages # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExcludeUsages]) for enum values.
     /// 	)
@@ -883,6 +887,10 @@ $query.Var.input = @{
 	isTrusted = $someBoolean
 	# OPTIONAL
 	name = $someString
+	# OPTIONAL
+	isInternal = $someBoolean
+	# OPTIONAL
+	pemFile = $someString
 	# OPTIONAL
 	excludeUsages = @(
 		$someExcludeUsages # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExcludeUsages]) for enum values.

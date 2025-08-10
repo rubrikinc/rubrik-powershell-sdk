@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20250728-44" ;
+        public static string GraphqlSchemaVersion = "v20250804-26" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -751,6 +751,7 @@ namespace RubrikSecurityCloud.Types
             CloudAccountDetails,
             CloudAccountFeaturePermission,
             CloudAccountInfo,
+            CloudAccountsCertificateInfo,
             CloudAccountsExocomputeAccountMapping,
             CloudAccountsTprReqChangesTemplate,
             CloudAccountSub,
@@ -759,6 +760,7 @@ namespace RubrikSecurityCloud.Types
             CloudAccountWithExocomputeMapping,
             CloudArchivalLocationTprReqChangesTemplate,
             CloudDirectAddSubdirBackupReply,
+            CloudDirectCheckSharePathResp,
             CloudDirectCluster,
             CloudDirectClusterRansomwareInvestigationEnablement,
             CloudDirectDeviceDetails,
@@ -2235,6 +2237,8 @@ namespace RubrikSecurityCloud.Types
             RcvEntitlementsUsageDetails,
             RcvEntitlementWithExpirationDate,
             RcvEntitlementWithOrderNumber,
+            RcvGcpTargetTemplate,
+            RcvRedundancyConversionType,
             RdsInstanceDetailsFromAws,
             RdsInstanceExportDefaults,
             ReadIntegrationReply,
@@ -2354,6 +2358,7 @@ namespace RubrikSecurityCloud.Types
             RubrikManagedNfsTarget,
             RubrikManagedRcsTarget,
             RubrikManagedRcvAwsTarget,
+            RubrikManagedRcvGcpTarget,
             RubrikManagedS3CompatibleTarget,
             RubrikManagedTapeTargetType,
             RubrikSlaInfo,
@@ -2616,6 +2621,7 @@ namespace RubrikSecurityCloud.Types
             ThreatHuntDetails,
             ThreatHuntDetailsV2,
             ThreatHuntEdge,
+            ThreatHuntFileVersionMatchDetails,
             ThreatHuntingObjectFileMatch,
             ThreatHuntingObjectFileMatchConnection,
             ThreatHuntingObjectFileMatchEdge,
@@ -3111,6 +3117,8 @@ namespace RubrikSecurityCloud.Types
             AssignProtectionInput,
             AssignSlaInput,
             AssignSlaToMongoDbCollectionInput,
+            AttributeRecoveryConfig,
+            AttributeRecoveryOptions,
             AuthInfoInput,
             AwsAccountFeatureArtifact,
             AwsArtifactsToDeleteInput,
@@ -3203,6 +3211,12 @@ namespace RubrikSecurityCloud.Types
             AzureNativeDiskResourceGroupFilter,
             AzureNativeDiskSubscriptionFilter,
             AzureNativeDiskTypeFilter,
+            AzureNativeIsEligibleForManagedDiskProtectionFilter,
+            AzureNativeIsEligibleForSqlDatabaseDbProtectionFilter,
+            AzureNativeIsEligibleForSqlDatabaseServerProtectionFilter,
+            AzureNativeIsEligibleForSqlMiDbProtectionFilter,
+            AzureNativeIsEligibleForSqlMiServerProtectionFilter,
+            AzureNativeIsEligibleForVmProtectionFilter,
             AzureNativeRegionFilter,
             AzureNativeRegionFilters,
             AzureNativeRegionNonEmptyFilter,
@@ -3365,6 +3379,7 @@ namespace RubrikSecurityCloud.Types
             ClearHostRbsNetworkLimitInput,
             CloudAccountFilterInput,
             CloudDirectAddSubdirBackupInput,
+            CloudDirectCheckSharePathReq,
             CloudDirectDeleteGlobalSmbUserInput,
             CloudDirectExclusion,
             CloudDirectLatencyThresholdConfig,
@@ -5233,6 +5248,7 @@ namespace RubrikSecurityCloud.Types
             cloudClusterInstanceProperties,
             cloudClusterNodesInstanceProperties,
             cloudClusterRecoveryValidation,
+            cloudDirectCheckSharePath,
             cloudDirectClusterEndpoints,
             cloudDirectNasBucket,
             cloudDirectNasBuckets,
@@ -6778,6 +6794,7 @@ namespace RubrikSecurityCloud.Types
             ArchiveFolderAction,
             ArmTemplateDeploymentLevel,
             AttributeDataType,
+            AttributeRecoveryMode,
             AttributeType,
             AuditObjectType,
             AuditSeverity,
@@ -6908,6 +6925,7 @@ namespace RubrikSecurityCloud.Types
             CloudAccountState,
             CloudAccountStatus,
             CloudAccountType,
+            CloudDirectCheckShareProtocolType,
             CloudDirectNasConnectivityStatus,
             CloudDirectNasProtocolType,
             CloudDirectNasVendorType,
@@ -7349,6 +7367,7 @@ namespace RubrikSecurityCloud.Types
             RcsRegionEnumType,
             RcsTierEnumType,
             RcvRedundancy,
+            RcvRedundancyConversionStatus,
             RcvRedundancyState,
             RcvRegionBundle,
             RcvTier,
@@ -7536,6 +7555,7 @@ namespace RubrikSecurityCloud.Types
             UserDomain,
             UserDomainEnum,
             UserFieldEnum,
+            UserMfaStatus,
             UserSortByField,
             UserStatus,
             V1GetCompatibleMssqlInstancesV1RequestRecoveryType,
@@ -8909,6 +8929,7 @@ namespace RubrikSecurityCloud.Types
                     "RubrikManagedNfsTarget",
                     "RubrikManagedRcsTarget",
                     "RubrikManagedRcvAwsTarget",
+                    "RubrikManagedRcvGcpTarget",
                     "RubrikManagedS3CompatibleTarget",
                     "RubrikManagedTapeTargetType",
                     "Target",
@@ -8922,6 +8943,7 @@ namespace RubrikSecurityCloud.Types
                     "GcpTargetTemplate",
                     "RcsAzureTargetTemplate",
                     "RcvAwsTargetTemplate",
+                    "RcvGcpTargetTemplate",
                     }
                 },
                 {
@@ -10021,6 +10043,7 @@ namespace RubrikSecurityCloud.Types
             cloudClusterNodesInstanceProperties,
             cloudClusterRecoveryValidation,
             cloudDirectAddSubdirBackup,
+            cloudDirectCheckSharePath,
             cloudDirectClusterEndpoints,
             cloudDirectDeleteGlobalSmbUser,
             cloudDirectNasBucket,
@@ -14728,6 +14751,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMisc",
                         cmdletSwitchName: "CloudDirectAddSubdirBackup",
                         gqlRootFieldName: "cloudDirectAddSubdirBackup"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudDirectCheckSharePath,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "CloudDirectCheckSharePath",
+                        gqlRootFieldName: "cloudDirectCheckSharePath"
                     )
                 },
                 {
@@ -27230,6 +27261,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.cloudDirectAddSubdirBackup
                 },
                 {
+                    "New-RscQueryMisc -Op CloudDirectCheckSharePath",
+                    GqlRootFieldName.cloudDirectCheckSharePath
+                },
+                {
                     "New-RscQueryCluster -Op CloudDirectClusterEndpoints",
                     GqlRootFieldName.cloudDirectClusterEndpoints
                 },
@@ -33707,6 +33742,10 @@ namespace RubrikSecurityCloud.Types
                         "cloudDirectAddSubdirBackup",
                     }
                 },
+                {   "CloudDirectCheckSharePathResp", new List<string> {
+                        "cloudDirectCheckSharePath",
+                    }
+                },
                 {   "CloudDirectNasBucket", new List<string> {
                         "cloudDirectNasBucket",
                     }
@@ -38630,6 +38669,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "CloudDirectAddSubdirBackupInput", new List<string> {
                         "cloudDirectAddSubdirBackup",
+                    }
+                },
+                {   "CloudDirectCheckSharePathReq", new List<string> {
+                        "cloudDirectCheckSharePath",
                     }
                 },
                 {   "CloudDirectDeleteGlobalSmbUserInput", new List<string> {
@@ -45040,6 +45083,7 @@ namespace RubrikSecurityCloud.Types
                 { "updateAwsAccount", "CloudAccount"},
                 { "updateAzureAccount", "CloudAccount"},
                 { "cloudDirectAddSubdirBackup", "CloudDirectAddSubdirBackupReply"},
+                { "cloudDirectCheckSharePath", "CloudDirectCheckSharePathResp"},
                 { "cloudDirectNasBucket", "CloudDirectNasBucket"},
                 { "cloudDirectNasBuckets", "CloudDirectNasBucketConnection"},
                 { "cloudDirectNasExport", "CloudDirectNasExport"},
@@ -47533,6 +47577,7 @@ namespace RubrikSecurityCloud.Types
                     "CheckCloudComputeConnectivityJobProgress",
                     "CheckLatestVersionMgmtAppExists",
                     "CloudDirectAddSubdirBackup",
+                    "CloudDirectCheckSharePath",
                     "CloudDirectNasBucket",
                     "CloudDirectNasBuckets",
                     "CloudDirectNasExport",

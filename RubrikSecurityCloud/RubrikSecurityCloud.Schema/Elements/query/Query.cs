@@ -6019,6 +6019,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CloudDirectCheckSharePathResp? CloudDirectCheckSharePath
+        // GraphQL -> cloudDirectCheckSharePath: CloudDirectCheckSharePathResp! (type)
+        public static string CloudDirectCheckSharePath(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudDirectCheckSharePath" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectCheckSharePathFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectCheckSharePathResp() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ClusterEndpoints? CloudDirectClusterEndpoints
         // GraphQL -> cloudDirectClusterEndpoints: ClusterEndpoints! (type)
         public static string CloudDirectClusterEndpoints(object fsObj)

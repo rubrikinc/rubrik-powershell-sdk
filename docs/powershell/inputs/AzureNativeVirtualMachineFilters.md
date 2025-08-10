@@ -37,3 +37,5 @@ Filters for list of Azure virtual machines.
   - Deprecated, use hierarchyFilters.
 - hierarchyFilters: list of Filters
   - Filter by hierarchy.
+- azureNativeIsEligibleForVmProtectionFilter: AzureNativeIsEligibleForVmProtectionFilter
+  - Filter workloads based on their eligibility for protection.
