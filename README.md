@@ -1,6 +1,9 @@
 # Rubrik Security Cloud PowerShell Module and SDK
 
-The Rubrik Security Cloud PowerShell module extends your PowerShell console to give you full access to the Rubrik Security Cloud API.
+The Rubrik Security Cloud PowerShell module:
+
+1. Makes it easy to work with RSC from the command line
+2. Acts as an SDK to provide access to the RSC API for custom scripting
 
 (For the community CDM SDK for PowerShell, please see:
 [github.com/rubrikinc/rubrik-sdk-for-powershell](https://github.com/rubrikinc/rubrik-sdk-for-powershell))
