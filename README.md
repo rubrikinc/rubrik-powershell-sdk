@@ -1,4 +1,4 @@
-# Rubrik Security Cloud Module and SDK
+# Rubrik Security Cloud PowerShell Module and SDK
 
 The Rubrik Security Cloud PowerShell module extends your PowerShell console to give you full access to the Rubrik Security Cloud API.
 
