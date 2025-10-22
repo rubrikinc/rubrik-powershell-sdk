@@ -1,5 +1,5 @@
 ### OciEsConfigInput
-ES storage for OCI account.
+ES storage for OCI compartment.
 
 - bucketName: System.String
   - Name of the bucket in OCI.

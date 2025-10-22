@@ -67,6 +67,11 @@ Nutanix Live Mount Connection.
     - filters - list of NutanixLiveMountFilterInputs: Filter for Nutanix virtual machine live mounts.
     - sortBy - NutanixLiveMountSortByInput: Sort by argument for Nutanix virtual machine live mounts.
 - Returns NutanixLiveMountConnection.
+### mountsv2
+Details of a Nutanix mount.
+
+- There is a single argument of type GetNutanixMountsReq.
+- Returns GetNutanixMountsReply.
 ### prismcentral
 Details of the given Prism Central.
 

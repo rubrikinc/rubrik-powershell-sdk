@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("domainName")]
         public System.String? DomainName { get; set; }
 
+        //      C# -> System.String? EntraIdGroupId
+        // GraphQL -> entraIdGroupId: String! (scalar)
+        [JsonProperty("entraIdGroupId")]
+        public System.String? EntraIdGroupId { get; set; }
+
         //      C# -> System.Boolean? IsAppRubrikManaged
         // GraphQL -> isAppRubrikManaged: Boolean! (scalar)
         [JsonProperty("isAppRubrikManaged")]
@@ -75,6 +80,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AzureCloudAccountTenantRubrikId = null,
         System.String? ClientId = null,
         System.String? DomainName = null,
+        System.String? EntraIdGroupId = null,
         System.Boolean? IsAppRubrikManaged = null,
         System.Int32? SubscriptionCount = null,
         List<AzureCloudAccountSubscriptionDetail>? Subscriptions = null
@@ -94,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DomainName != null ) {
             this.DomainName = DomainName;
+        }
+        if ( EntraIdGroupId != null ) {
+            this.EntraIdGroupId = EntraIdGroupId;
         }
         if ( IsAppRubrikManaged != null ) {
             this.IsAppRubrikManaged = IsAppRubrikManaged;
@@ -161,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "domainName\n" ;
             } else {
                 s += ind + "domainName\n" ;
+            }
+        }
+        //      C# -> System.String? EntraIdGroupId
+        // GraphQL -> entraIdGroupId: String! (scalar)
+        if (this.EntraIdGroupId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "entraIdGroupId\n" ;
+            } else {
+                s += ind + "entraIdGroupId\n" ;
             }
         }
         //      C# -> System.Boolean? IsAppRubrikManaged
@@ -284,6 +302,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DomainName != null && ec.Excludes("domainName",true))
         {
             this.DomainName = null;
+        }
+        //      C# -> System.String? EntraIdGroupId
+        // GraphQL -> entraIdGroupId: String! (scalar)
+        if (ec.Includes("entraIdGroupId",true))
+        {
+            if(this.EntraIdGroupId == null) {
+
+                this.EntraIdGroupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EntraIdGroupId != null && ec.Excludes("entraIdGroupId",true))
+        {
+            this.EntraIdGroupId = null;
         }
         //      C# -> System.Boolean? IsAppRubrikManaged
         // GraphQL -> isAppRubrikManaged: Boolean! (scalar)

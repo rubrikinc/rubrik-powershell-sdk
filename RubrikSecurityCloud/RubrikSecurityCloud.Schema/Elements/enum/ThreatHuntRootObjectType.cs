@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CDM_CLUSTER")]
         CDM_CLUSTER,
 
+        [EnumMember(Value = "GCP_NATIVE_PROJECT")]
+        GCP_NATIVE_PROJECT,
+
         [EnumMember(Value = "M365_SUBSCRIPTION")]
         M365_SUBSCRIPTION
 

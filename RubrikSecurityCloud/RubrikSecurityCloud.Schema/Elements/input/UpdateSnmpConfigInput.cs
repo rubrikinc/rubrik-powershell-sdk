@@ -98,6 +98,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snmpConfigV94")]
         public SnmpConfigurationPatchInput? SnmpConfigV94 { get; set; }
 
+        //      C# -> SnmpConfigurationPatchInput? SnmpConfigV95
+        // GraphQL -> snmpConfigV95: SnmpConfigurationPatchInput (input)
+        [JsonProperty("snmpConfigV95")]
+        public SnmpConfigurationPatchInput? SnmpConfigV95 { get; set; }
+
 
         #endregion
 

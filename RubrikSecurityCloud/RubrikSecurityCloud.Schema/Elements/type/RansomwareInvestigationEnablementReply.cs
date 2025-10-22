@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudDirectClusters")]
         public List<CloudDirectClusterRansomwareInvestigationEnablement>? CloudDirectClusters { get; set; }
 
+        //      C# -> List<GcpProjectRansomwareInvestigationEnablement>? GcpProjects
+        // GraphQL -> gcpProjects: [GcpProjectRansomwareInvestigationEnablement!] (type)
+        [JsonProperty("gcpProjects")]
+        public List<GcpProjectRansomwareInvestigationEnablement>? GcpProjects { get; set; }
+
         //      C# -> List<Microsoft365RansomwareInvestigationEnablement>? Microsoft365Subscriptions
         // GraphQL -> microsoft365Subscriptions: [Microsoft365RansomwareInvestigationEnablement!] (type)
         [JsonProperty("microsoft365Subscriptions")]
@@ -58,6 +63,7 @@ namespace RubrikSecurityCloud.Types
         List<AwsAccountRansomwareInvestigationEnablement>? AwsAccounts = null,
         List<AzureSubscriptionRansomwareInvestigationEnablement>? AzureSubscriptions = null,
         List<CloudDirectClusterRansomwareInvestigationEnablement>? CloudDirectClusters = null,
+        List<GcpProjectRansomwareInvestigationEnablement>? GcpProjects = null,
         List<Microsoft365RansomwareInvestigationEnablement>? Microsoft365Subscriptions = null,
         List<RubrikCloudVaultRansomwareInvestigationEnablement>? RubrikCloudVaultLocations = null
     ) 
@@ -70,6 +76,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CloudDirectClusters != null ) {
             this.CloudDirectClusters = CloudDirectClusters;
+        }
+        if ( GcpProjects != null ) {
+            this.GcpProjects = GcpProjects;
         }
         if ( Microsoft365Subscriptions != null ) {
             this.Microsoft365Subscriptions = Microsoft365Subscriptions;
@@ -124,6 +133,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cloudDirectClusters" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<GcpProjectRansomwareInvestigationEnablement>? GcpProjects
+        // GraphQL -> gcpProjects: [GcpProjectRansomwareInvestigationEnablement!] (type)
+        if (this.GcpProjects != null) {
+            var fspec = this.GcpProjects.AsFieldSpec(conf.Child("gcpProjects"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "gcpProjects" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -214,6 +235,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudDirectClusters != null && ec.Excludes("cloudDirectClusters",false))
         {
             this.CloudDirectClusters = null;
+        }
+        //      C# -> List<GcpProjectRansomwareInvestigationEnablement>? GcpProjects
+        // GraphQL -> gcpProjects: [GcpProjectRansomwareInvestigationEnablement!] (type)
+        if (ec.Includes("gcpProjects",false))
+        {
+            if(this.GcpProjects == null) {
+
+                this.GcpProjects = new List<GcpProjectRansomwareInvestigationEnablement>();
+                this.GcpProjects.ApplyExploratoryFieldSpec(ec.NewChild("gcpProjects"));
+
+            } else {
+
+                this.GcpProjects.ApplyExploratoryFieldSpec(ec.NewChild("gcpProjects"));
+
+            }
+        }
+        else if (this.GcpProjects != null && ec.Excludes("gcpProjects",false))
+        {
+            this.GcpProjects = null;
         }
         //      C# -> List<Microsoft365RansomwareInvestigationEnablement>? Microsoft365Subscriptions
         // GraphQL -> microsoft365Subscriptions: [Microsoft365RansomwareInvestigationEnablement!] (type)

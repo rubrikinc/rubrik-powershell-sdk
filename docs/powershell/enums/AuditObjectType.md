@@ -149,3 +149,10 @@ Represents all the object types for which we expect to see audits.
 - INFORMIX_INSTANCE - Informix instance.
 - GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
 - RSC_TAG - RSC tag.
+- OPENSTACK_ENVIRONMENT - Openstack environment.
+- OPENSTACK_VIRTUAL_MACHINE - Openstack virtual machine.
+- GOOGLE_WORKSPACE_ORGANIZATION - Google Workspace Organisation.
+- GOOGLE_WORKSPACE_ORG_UNIT - Google Workspace Organisation unit.
+- GOOGLE_WORKSPACE_USER - Google Workspace User.
+- GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
+- GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.

@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("labelName")]
         public System.String? LabelName { get; set; }
 
+        //      C# -> System.Boolean? HasProtection
+        // GraphQL -> hasProtection: Boolean (scalar)
+        [JsonProperty("hasProtection")]
+        public System.Boolean? HasProtection { get; set; }
+
 
         #endregion
 

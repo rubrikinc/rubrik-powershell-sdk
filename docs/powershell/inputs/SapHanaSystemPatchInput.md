@@ -23,6 +23,9 @@ Supported in v5.3+
 - azureFeatureId: System.String
   - Supported in v9.1+
       The Rubrik ID of the SAP HANA Azure Feature.
+- backupTriggerType: SapHanaSystemPatchBackupTriggerType
+  - Supported in v9.4+
+      The backup trigger type for the SAP HANA system.
 - authTypeSpec: SapHanaSystemAuthTypeSpecInput
   - Supported in v9.0+
       Specifies the authentication type for the SAP HANA system.

@@ -40,3 +40,4 @@ Inventory workloads that are supported on Rubrik.
 - D365_ROOT - D365 root.
 - OPENSTACK_ROOT - OpenStack root.
 - INFORMIX_ROOT - The root of the Informix hierarchy.
+- GOOGLE_WORKSPACE_ROOT - The root of the Google workspace hierarchy.

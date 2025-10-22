@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadFid")]
         public System.String? WorkloadFid { get; set; }
 
+        //      C# -> ClusterDetails? ClusterDetails
+        // GraphQL -> clusterDetails: ClusterDetails (type)
+        [JsonProperty("clusterDetails")]
+        public ClusterDetails? ClusterDetails { get; set; }
+
 
         #endregion
 
@@ -35,11 +40,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CompleteAzureAdAppSetupReply Set(
-        System.String? WorkloadFid = null
+        System.String? WorkloadFid = null,
+        ClusterDetails? ClusterDetails = null
     ) 
     {
         if ( WorkloadFid != null ) {
             this.WorkloadFid = WorkloadFid;
+        }
+        if ( ClusterDetails != null ) {
+            this.ClusterDetails = ClusterDetails;
         }
         return this;
     }
@@ -62,6 +71,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "workloadFid\n" ;
             } else {
                 s += ind + "workloadFid\n" ;
+            }
+        }
+        //      C# -> ClusterDetails? ClusterDetails
+        // GraphQL -> clusterDetails: ClusterDetails (type)
+        if (this.ClusterDetails != null) {
+            var fspec = this.ClusterDetails.AsFieldSpec(conf.Child("clusterDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "clusterDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -87,6 +108,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.WorkloadFid != null && ec.Excludes("workloadFid",true))
         {
             this.WorkloadFid = null;
+        }
+        //      C# -> ClusterDetails? ClusterDetails
+        // GraphQL -> clusterDetails: ClusterDetails (type)
+        if (ec.Includes("clusterDetails",false))
+        {
+            if(this.ClusterDetails == null) {
+
+                this.ClusterDetails = new ClusterDetails();
+                this.ClusterDetails.ApplyExploratoryFieldSpec(ec.NewChild("clusterDetails"));
+
+            } else {
+
+                this.ClusterDetails.ApplyExploratoryFieldSpec(ec.NewChild("clusterDetails"));
+
+            }
+        }
+        else if (this.ClusterDetails != null && ec.Excludes("clusterDetails",false))
+        {
+            this.ClusterDetails = null;
         }
     }
 

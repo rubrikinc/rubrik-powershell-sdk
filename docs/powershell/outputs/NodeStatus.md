@@ -17,4 +17,4 @@ Supported in v5.0+
   - Supported in v6.0+
   Hostname of the node.
 - subStatus: System.String
-  - 
+  - Supported in v9.4+

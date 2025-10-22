@@ -6,5 +6,7 @@ that category.
   - Category of the report templates.
 - displayName: System.String
   - Display name of the category.
+- description: System.String
+  - Description of the category.
 - templates: list of RscReportTemplates
   - List of report templates that belong to this category.

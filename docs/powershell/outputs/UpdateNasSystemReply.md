@@ -10,7 +10,7 @@ Supported in v7.0+
   - Required. Supported in v7.0+
   ID assigned to the NAS System.
 - isReplicated: System.Boolean
-  - 
+  - Supported in v9.4+
 - connectionStatus: HostRbsConnectionStatus
   - Connection status of the NAS system.
 - vendorType: NasVendorType

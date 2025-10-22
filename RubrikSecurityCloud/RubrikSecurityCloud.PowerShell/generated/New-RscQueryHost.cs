@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 6
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Host' API domain:
-    /// Diagnosis, PhysicalHost, PhysicalHosts, Search, Share, or Shares.
+    /// Diagnosis, PhysicalHost, PhysicalHosts, RbsNetworkLimit, Search, Share, or Shares.
     /// </summary>
     /// <description>
     /// New-RscQueryHost creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 6 operations
+    /// There are 7 operations
     /// in the 'Host' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Diagnosis, PhysicalHost, PhysicalHosts, Search, Share, or Shares.
+    /// one of: Diagnosis, PhysicalHost, PhysicalHosts, RbsNetworkLimit, Search, Share, or Shares.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -213,6 +213,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RbsNetworkLimit operation
+    /// of the 'Host' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Host
+    /// # API Operation: RbsNetworkLimit
+    /// 
+    /// $query = New-RscQueryHost -Operation RbsNetworkLimit
+    /// 
+    /// # REQUIRED
+    /// $query.Var.hostId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetHostRbsNetworkThrottleResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Search operation
     /// of the 'Host' API domain.
     /// <code>
@@ -365,6 +393,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Diagnosis",
                 "PhysicalHost",
                 "PhysicalHosts",
+                "RbsNetworkLimit",
                 "Search",
                 "Share",
                 "Shares",
@@ -391,6 +420,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "PhysicalHosts":
                         this.ProcessRecord_PhysicalHosts();
+                        break;
+                    case "RbsNetworkLimit":
+                        this.ProcessRecord_RbsNetworkLimit();
                         break;
                     case "Search":
                         this.ProcessRecord_Search();
@@ -436,6 +468,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -PhysicalHosts";
             // Create new graphql operation physicalHosts
             InitQueryPhysicalHosts();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hostRbsNetworkLimit.
+        internal void ProcessRecord_RbsNetworkLimit()
+        {
+            this._logger.name += " -RbsNetworkLimit";
+            // Create new graphql operation hostRbsNetworkLimit
+            InitQueryHostRbsNetworkLimit();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -589,6 +630,26 @@ $query.Var.filter = @(
 $query.Var.hostRoot = $someHostRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRoot]) for enum values.
 # OPTIONAL
 $query.Var.isBulkPolicyAssignmentFlow = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // hostRbsNetworkLimit(hostId: String!): GetHostRbsNetworkThrottleResponse!
+        internal void InitQueryHostRbsNetworkLimit()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("hostId", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHostRbsNetworkLimit",
+                "($hostId: String!)",
+                "GetHostRbsNetworkThrottleResponse",
+                Query.HostRbsNetworkLimit,
+                Query.HostRbsNetworkLimitFieldSpec,
+                @"# REQUIRED
+$query.Var.hostId = $someString"
             );
         }
 

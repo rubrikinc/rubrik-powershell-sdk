@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST_RECOVERY_REPORT")]
+        ACTIVE_DIRECTORY_FOREST_RECOVERY_REPORT,
+
         [EnumMember(Value = "ANOMALY_REPORT")]
         ANOMALY_REPORT,
 

@@ -63,6 +63,21 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_REGION")]
         AZURE_REGION,
 
+        [EnumMember(Value = "AZURE_REGION_DISKCOUNT")]
+        AZURE_REGION_DISKCOUNT,
+
+        [EnumMember(Value = "AZURE_REGION_SQL_DATABASE_DB_COUNT")]
+        AZURE_REGION_SQL_DATABASE_DB_COUNT,
+
+        [EnumMember(Value = "AZURE_REGION_SQL_MANAGED_INSTANCE_DB_COUNT")]
+        AZURE_REGION_SQL_MANAGED_INSTANCE_DB_COUNT,
+
+        [EnumMember(Value = "AZURE_REGION_STORAGE_ACCOUNT_COUNT")]
+        AZURE_REGION_STORAGE_ACCOUNT_COUNT,
+
+        [EnumMember(Value = "AZURE_REGION_VMCOUNT")]
+        AZURE_REGION_VMCOUNT,
+
         [EnumMember(Value = "AZURE_RG_DISKCOUNT")]
         AZURE_RG_DISKCOUNT,
 

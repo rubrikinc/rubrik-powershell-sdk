@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("featureToUpgrade")]
         public List<UpgradeAzureCloudAccountFeatureInput>? FeatureToUpgrade { get; set; }
 
+        //      C# -> System.String? EntraIdGroupId
+        // GraphQL -> entraIdGroupId: String (scalar)
+        [JsonProperty("entraIdGroupId")]
+        public System.String? EntraIdGroupId { get; set; }
+
 
         #endregion
 

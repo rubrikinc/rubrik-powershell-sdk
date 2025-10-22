@@ -57,6 +57,7 @@
 - ManagedVolume - Managed Volume.
 - AzureNativeManagedDisk
 - LinuxFileset
+- GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
 - O365Site
 - RubrikEbsVolume
 - VcdVapp
@@ -66,6 +67,7 @@
 - Ec2Instance
 - CONFLUENCE_SPACE - Confluence Space.
 - JIRA_PROJECT - Jira project.
+- GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
 - StorageArrayVolumeGroup
 - SnapMirrorCloud
 - SALESFORCE_FIXED_OBJECT - Salesforce metadata.

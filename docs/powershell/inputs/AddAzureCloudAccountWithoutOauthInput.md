@@ -9,5 +9,7 @@ Input for adding an Azure Cloud Account without OAuth.
   - Regions to be added to the Azure Cloud Account.
 - isAsynchronous: System.Boolean
   - Indicates whether the Azure cloud account can be onboarded asynchronously.
+- entraIdGroupId: System.String
+  - Group Object ID of the Entra ID group to be used for Entra ID authentication in Exocompute.
 - azureCloudType: AzureCloudType
   - Type of Azure Tenant. Possible values: Azure Public Cloud, Azure China Cloud.

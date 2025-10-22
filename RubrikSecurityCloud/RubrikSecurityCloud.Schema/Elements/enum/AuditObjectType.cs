@@ -177,6 +177,21 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP_NATIVE_PROJECT")]
         GCP_NATIVE_PROJECT,
 
+        [EnumMember(Value = "GOOGLE_WORKSPACE_ORGANIZATION")]
+        GOOGLE_WORKSPACE_ORGANIZATION,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_ORG_UNIT")]
+        GOOGLE_WORKSPACE_ORG_UNIT,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_SHARED_DRIVE")]
+        GOOGLE_WORKSPACE_SHARED_DRIVE,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_USER")]
+        GOOGLE_WORKSPACE_USER,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_USER_DRIVE")]
+        GOOGLE_WORKSPACE_USER_DRIVE,
+
         [EnumMember(Value = "HOST")]
         HOST,
 
@@ -335,6 +350,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OAUTH_TOKEN")]
         OAUTH_TOKEN,
+
+        [EnumMember(Value = "OPENSTACK_ENVIRONMENT")]
+        OPENSTACK_ENVIRONMENT,
+
+        [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
+        OPENSTACK_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "ORACLE_DB")]
         ORACLE_DB,

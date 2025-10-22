@@ -307,6 +307,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		port = $someInt
     /// 	}
+    /// 	# OPTIONAL
+    /// 	syslogExportRuleV95 = @{
+    /// 		# OPTIONAL
+    /// 		certificateId = $someString
+    /// 		# REQUIRED
+    /// 		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+    /// 		# REQUIRED
+    /// 		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+    /// 		# REQUIRED
+    /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+    /// 		# REQUIRED
+    /// 		enableTls = $someBoolean
+    /// 		# REQUIRED
+    /// 		hostname = $someString
+    /// 		# REQUIRED
+    /// 		port = $someInt
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -585,6 +602,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		port = $someInt
     /// 	}
+    /// 	# OPTIONAL
+    /// 	syslogExportRuleV95 = @{
+    /// 		# OPTIONAL
+    /// 		certificateId = $someString
+    /// 		# REQUIRED
+    /// 		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+    /// 		# REQUIRED
+    /// 		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+    /// 		# REQUIRED
+    /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+    /// 		# REQUIRED
+    /// 		enableTls = $someBoolean
+    /// 		# REQUIRED
+    /// 		hostname = $someString
+    /// 		# REQUIRED
+    /// 		port = $someInt
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -817,6 +851,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV94 = @{
+    /// 		# OPTIONAL
+    /// 		enableTls = $someBoolean
+    /// 		# OPTIONAL
+    /// 		hostname = $someString
+    /// 		# OPTIONAL
+    /// 		port = $someInt
+    /// 		# OPTIONAL
+    /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+    /// 		# OPTIONAL
+    /// 		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+    /// 		# OPTIONAL
+    /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	syslogSettingsV95 = @{
     /// 		# OPTIONAL
     /// 		enableTls = $someBoolean
     /// 		# OPTIONAL
@@ -1173,6 +1224,23 @@ $query.Var.input = @{
 		# REQUIRED
 		port = $someInt
 	}
+	# OPTIONAL
+	syslogExportRuleV95 = @{
+		# OPTIONAL
+		certificateId = $someString
+		# REQUIRED
+		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+		# REQUIRED
+		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+		# REQUIRED
+		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+		# REQUIRED
+		enableTls = $someBoolean
+		# REQUIRED
+		hostname = $someString
+		# REQUIRED
+		port = $someInt
+	}
 }"
             );
         }
@@ -1435,6 +1503,23 @@ $query.Var.input = @{
 		# REQUIRED
 		port = $someInt
 	}
+	# OPTIONAL
+	syslogExportRuleV95 = @{
+		# OPTIONAL
+		certificateId = $someString
+		# REQUIRED
+		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+		# REQUIRED
+		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+		# REQUIRED
+		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+		# REQUIRED
+		enableTls = $someBoolean
+		# REQUIRED
+		hostname = $someString
+		# REQUIRED
+		port = $someInt
+	}
 }"
             );
         }
@@ -1659,6 +1744,23 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	syslogSettingsV94 = @{
+		# OPTIONAL
+		enableTls = $someBoolean
+		# OPTIONAL
+		hostname = $someString
+		# OPTIONAL
+		port = $someInt
+		# OPTIONAL
+		certificateId = $someString
+		# OPTIONAL
+		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+		# OPTIONAL
+		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+		# OPTIONAL
+		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+	}
+	# OPTIONAL
+	syslogSettingsV95 = @{
 		# OPTIONAL
 		enableTls = $someBoolean
 		# OPTIONAL

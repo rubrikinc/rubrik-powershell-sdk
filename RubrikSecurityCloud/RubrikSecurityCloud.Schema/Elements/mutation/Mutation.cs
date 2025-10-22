@@ -2845,6 +2845,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? UpdateBackupTriggerForWorkloads
+        // GraphQL -> updateBackupTriggerForWorkloads: Void (scalar)
+        public static string UpdateBackupTriggerForWorkloads(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateBackupTriggerForWorkloads" + args + "\n";
+        }
+        public static object UpdateBackupTriggerForWorkloadsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.Boolean? UpdateCertificate
         // GraphQL -> updateCertificate: Boolean! (scalar)
         public static string UpdateCertificate(object fsObj)
@@ -5253,6 +5271,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClearCloudNativeSqlServerBackupCredentialsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ClearHostRbsNetworkLimitReply? ClearHostRbsNetworkLimit
+        // GraphQL -> clearHostRbsNetworkLimit: ClearHostRbsNetworkLimitReply! (type)
+        public static string ClearHostRbsNetworkLimit(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "clearHostRbsNetworkLimit" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ClearHostRbsNetworkLimitFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ClearHostRbsNetworkLimitReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -11481,6 +11517,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new SetDatastoreFreespaceThresholdsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SetHostRbsNetworkLimitReply? SetHostRbsNetworkLimit
+        // GraphQL -> setHostRbsNetworkLimit: SetHostRbsNetworkLimitReply! (type)
+        public static string SetHostRbsNetworkLimit(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setHostRbsNetworkLimit" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SetHostRbsNetworkLimitFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SetHostRbsNetworkLimitReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCPNATIVE_ROOT")]
         GCPNATIVE_ROOT,
 
+        [EnumMember(Value = "GOOGLE_WORKSPACE_ROOT")]
+        GOOGLE_WORKSPACE_ROOT,
+
         [EnumMember(Value = "HYPERV_ROOT")]
         HYPERV_ROOT,
 

@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST_RECOVERY")]
+        ACTIVE_DIRECTORY_FOREST_RECOVERY,
+
         [EnumMember(Value = "ACTIVITY_SERIES")]
         ACTIVITY_SERIES,
 
@@ -32,6 +35,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "BACKUP_STRIKES")]
         BACKUP_STRIKES,
+
+        [EnumMember(Value = "BACKUP_STRIKES_V2")]
+        BACKUP_STRIKES_V2,
 
         [EnumMember(Value = "CDM_UPGRADES")]
         CDM_UPGRADES,

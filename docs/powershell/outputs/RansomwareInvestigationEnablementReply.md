@@ -11,3 +11,5 @@ Lists of entities and their Ransomware Monitoring enablement status.
   - The Azure subscriptions on which Ransomware Investigation can be enabled.
 - awsAccounts: list of AwsAccountRansomwareInvestigationEnablements
   - The AWS accounts on which Ransomware Investigation can be enabled.
+- gcpProjects: list of GcpProjectRansomwareInvestigationEnablements
+  - The GCP projects on which Ransomware Investigation can be enabled.

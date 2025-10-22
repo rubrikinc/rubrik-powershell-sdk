@@ -6,3 +6,4 @@ Storage class for GCP type location.
 - DURABLE_REDUCED_AVAILABILITY_GCP - Durable reduced availability GCP storage class.
 - NEARLINE_GCP - Nearline GCP storage class.
 - COLDLINE_GCP - Coldline GCP storage class.
+- ARCHIVE_GCP - Archive GCP storage class.

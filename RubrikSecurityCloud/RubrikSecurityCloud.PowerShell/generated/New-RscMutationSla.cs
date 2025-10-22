@@ -870,6 +870,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isRetentionLockedSla = $someBoolean
     /// 	# OPTIONAL
+    /// 	backupLocationSpecs = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			archivalGroupId = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
     /// 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
     /// }
     /// 
@@ -1708,6 +1715,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isRetentionLockedSla = $someBoolean
+    /// 	# OPTIONAL
+    /// 	backupLocationSpecs = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			archivalGroupId = $someString
+    /// 		}
+    /// 	)
     /// 	# OPTIONAL
     /// 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
     /// }
@@ -2742,6 +2756,13 @@ $query.Var.input = @{
 	# OPTIONAL
 	isRetentionLockedSla = $someBoolean
 	# OPTIONAL
+	backupLocationSpecs = @(
+		@{
+			# OPTIONAL
+			archivalGroupId = $someString
+		}
+	)
+	# OPTIONAL
 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }"
             );
@@ -3541,6 +3562,13 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	isRetentionLockedSla = $someBoolean
+	# OPTIONAL
+	backupLocationSpecs = @(
+		@{
+			# OPTIONAL
+			archivalGroupId = $someString
+		}
+	)
 	# OPTIONAL
 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }"

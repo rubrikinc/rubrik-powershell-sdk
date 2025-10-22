@@ -132,6 +132,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_VM_V1")]
         HYPERV_VM_V1,
 
+        [EnumMember(Value = "INFORMIX_INSTANCE")]
+        INFORMIX_INSTANCE,
+
         [EnumMember(Value = "INSTANT_RECOVER_VCD_VAPP")]
         INSTANT_RECOVER_VCD_VAPP,
 

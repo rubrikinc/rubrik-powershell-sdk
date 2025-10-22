@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureFeatureId")]
         public System.String? AzureFeatureId { get; set; }
 
+        //      C# -> SapHanaSystemPatchBackupTriggerType? BackupTriggerType
+        // GraphQL -> backupTriggerType: SapHanaSystemPatchBackupTriggerType (enum)
+        [JsonProperty("backupTriggerType")]
+        public SapHanaSystemPatchBackupTriggerType? BackupTriggerType { get; set; }
+
         //      C# -> SapHanaSystemAuthTypeSpecInput? AuthTypeSpec
         // GraphQL -> authTypeSpec: SapHanaSystemAuthTypeSpecInput (input)
         [JsonProperty("authTypeSpec")]

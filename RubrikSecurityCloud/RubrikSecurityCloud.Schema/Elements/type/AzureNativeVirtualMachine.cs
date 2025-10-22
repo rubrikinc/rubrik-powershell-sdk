@@ -256,6 +256,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("physicalPath")]
         public List<PathNode>? PhysicalPath { get; set; }
 
+        //      C# -> List<RecoveryPlansInfo>? RecoveryPlansInfo
+        // GraphQL -> recoveryPlansInfo: [RecoveryPlansInfo!]! (type)
+        [JsonProperty("recoveryPlansInfo")]
+        public List<RecoveryPlansInfo>? RecoveryPlansInfo { get; set; }
+
         //      C# -> AzureNativeResourceGroup? ResourceGroup
         // GraphQL -> resourceGroup: AzureNativeResourceGroup! (type)
         [JsonProperty("resourceGroup")]
@@ -442,6 +447,7 @@ namespace RubrikSecurityCloud.Types
         ObjectPauseStatus? ObjectPauseStatus = null,
         PolarisSnapshot? OldestSnapshot = null,
         List<PathNode>? PhysicalPath = null,
+        List<RecoveryPlansInfo>? RecoveryPlansInfo = null,
         AzureNativeResourceGroup? ResourceGroup = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
         SecurityMetadata? SecurityMetadata = null,
@@ -594,6 +600,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PhysicalPath != null ) {
             this.PhysicalPath = PhysicalPath;
+        }
+        if ( RecoveryPlansInfo != null ) {
+            this.RecoveryPlansInfo = RecoveryPlansInfo;
         }
         if ( ResourceGroup != null ) {
             this.ResourceGroup = ResourceGroup;
@@ -1116,6 +1125,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "physicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<RecoveryPlansInfo>? RecoveryPlansInfo
+        // GraphQL -> recoveryPlansInfo: [RecoveryPlansInfo!]! (type)
+        if (this.RecoveryPlansInfo != null) {
+            var fspec = this.RecoveryPlansInfo.AsFieldSpec(conf.Child("recoveryPlansInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "recoveryPlansInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2095,6 +2116,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PhysicalPath != null && ec.Excludes("physicalPath",false))
         {
             this.PhysicalPath = null;
+        }
+        //      C# -> List<RecoveryPlansInfo>? RecoveryPlansInfo
+        // GraphQL -> recoveryPlansInfo: [RecoveryPlansInfo!]! (type)
+        if (ec.Includes("recoveryPlansInfo",false))
+        {
+            if(this.RecoveryPlansInfo == null) {
+
+                this.RecoveryPlansInfo = new List<RecoveryPlansInfo>();
+                this.RecoveryPlansInfo.ApplyExploratoryFieldSpec(ec.NewChild("recoveryPlansInfo"));
+
+            } else {
+
+                this.RecoveryPlansInfo.ApplyExploratoryFieldSpec(ec.NewChild("recoveryPlansInfo"));
+
+            }
+        }
+        else if (this.RecoveryPlansInfo != null && ec.Excludes("recoveryPlansInfo",false))
+        {
+            this.RecoveryPlansInfo = null;
         }
         //      C# -> AzureNativeResourceGroup? ResourceGroup
         // GraphQL -> resourceGroup: AzureNativeResourceGroup! (type)

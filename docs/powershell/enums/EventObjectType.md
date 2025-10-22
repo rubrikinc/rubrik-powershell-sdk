@@ -163,3 +163,8 @@ Enum representing all the possible object types which generate events.
 - IDP_ENTRA_ID - Entra ID IDP type.
 - IDP_LOCAL_AD - Local AD type.
 - IDP_SHAREPOINT - SharePoint IDP type.
+- GOOGLE_WORKSPACE_ORGANIZATION - Google Workspace Organisation.
+- GOOGLE_WORKSPACE_ORG_UNIT - Google Workspace Organisation unit.
+- GOOGLE_WORKSPACE_USER - Google Workspace User.
+- GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
+- GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.

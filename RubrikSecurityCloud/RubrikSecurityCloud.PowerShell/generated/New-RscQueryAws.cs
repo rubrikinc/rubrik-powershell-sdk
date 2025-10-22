@@ -1120,11 +1120,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		numNodes = $someInt
     /// 		# OPTIONAL
-    /// 		dnsSearchDomains = @(
+    /// 		dnsNameServers = @(
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
-    /// 		dnsNameServers = @(
+    /// 		dnsSearchDomains = @(
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
@@ -1176,6 +1176,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			accessKey = $someString
     /// 			# OPTIONAL
     /// 			secretKey = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		gcpEsConfig = @{
+    /// 			# OPTIONAL
+    /// 			bucketName = $someString
+    /// 			# OPTIONAL
+    /// 			region = $someString
+    /// 			# OPTIONAL
+    /// 			shouldCreateBucket = $someBoolean
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -2641,11 +2650,11 @@ $query.Var.input = @{
 		# OPTIONAL
 		numNodes = $someInt
 		# OPTIONAL
-		dnsSearchDomains = @(
+		dnsNameServers = @(
 			$someString
 		)
 		# OPTIONAL
-		dnsNameServers = @(
+		dnsSearchDomains = @(
 			$someString
 		)
 		# OPTIONAL
@@ -2697,6 +2706,15 @@ $query.Var.input = @{
 			accessKey = $someString
 			# OPTIONAL
 			secretKey = $someString
+		}
+		# OPTIONAL
+		gcpEsConfig = @{
+			# OPTIONAL
+			bucketName = $someString
+			# OPTIONAL
+			region = $someString
+			# OPTIONAL
+			shouldCreateBucket = $someBoolean
 		}
 	}
 	# OPTIONAL

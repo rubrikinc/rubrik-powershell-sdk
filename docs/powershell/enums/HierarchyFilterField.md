@@ -520,3 +520,7 @@ by CDM (database_id column).
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false
 - IS_DOMAIN_CONTROLLER - Filter hosts that are domain controllers.
+- LINUX_OS_TYPE - Filter objects based on the Linux operating system type.
++mo:filter:db:table=cdm_host
++mo:filter:db:column=operating_system
++mo:filter:db:index:key=operating_system

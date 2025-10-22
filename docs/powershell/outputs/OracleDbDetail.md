@@ -78,6 +78,8 @@ Supported in v5.0+
   - The time stamp of the earliest recovery point for this database.
 - oldestRecoveryPointV94: DateTime
   - The time stamp of the earliest recovery point for this database.
+- oldestRecoveryPointV95: DateTime
+  - The time stamp of the earliest recovery point for this database.
 - latestRecoveryPointV91: DateTime
   - The time stamp of the most recent recovery point for this database.
 - latestRecoveryPointV92: DateTime
@@ -85,6 +87,8 @@ Supported in v5.0+
 - latestRecoveryPointV93: DateTime
   - The time stamp of the most recent recovery point for this database.
 - latestRecoveryPointV94: DateTime
+  - The time stamp of the most recent recovery point for this database.
+- latestRecoveryPointV95: DateTime
   - The time stamp of the most recent recovery point for this database.
 - hostsInfo: list of HostInfos
   - Supported in v5.3+

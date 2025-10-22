@@ -208,6 +208,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	immutabilitySettings = @{
     /// 		# OPTIONAL
     /// 		bucketLockDurationDays = $someInt
+    /// 		# OPTIONAL
+    /// 		isObjectLockEnabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	ibmDetails = @{
@@ -273,6 +275,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	immutabilitySettings = @{
     /// 		# OPTIONAL
     /// 		bucketLockDurationDays = $someInt
+    /// 		# OPTIONAL
+    /// 		isObjectLockEnabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	ibmDetails = @{
@@ -726,6 +730,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	immutabilitySettings = @{
     /// 		# OPTIONAL
     /// 		bucketLockDurationDays = $someInt
+    /// 		# OPTIONAL
+    /// 		isObjectLockEnabled = $someBoolean
     /// 	}
     /// }
     /// 
@@ -1155,6 +1161,8 @@ $query.Var.input = @{
 	immutabilitySettings = @{
 		# OPTIONAL
 		bucketLockDurationDays = $someInt
+		# OPTIONAL
+		isObjectLockEnabled = $someBoolean
 	}
 	# OPTIONAL
 	ibmDetails = @{
@@ -1212,6 +1220,8 @@ $query.Var.input = @{
 	immutabilitySettings = @{
 		# OPTIONAL
 		bucketLockDurationDays = $someInt
+		# OPTIONAL
+		isObjectLockEnabled = $someBoolean
 	}
 	# OPTIONAL
 	ibmDetails = @{
@@ -1569,6 +1579,8 @@ $query.Var.input = @{
 	immutabilitySettings = @{
 		# OPTIONAL
 		bucketLockDurationDays = $someInt
+		# OPTIONAL
+		isObjectLockEnabled = $someBoolean
 	}
 }"
             );

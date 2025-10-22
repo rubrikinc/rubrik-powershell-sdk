@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 25
+    /// Create a new RscQuery object for any of the 26
     /// operations in the 'VMware vSphere' API domain:
-    /// ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, TopLevelRecoveryTargets, VmsByFids, or VmwareCdpLiveInfo.
+    /// ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, ResourcePoolWithProvisionOnInfrastructure, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, TopLevelRecoveryTargets, VmsByFids, or VmwareCdpLiveInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryVsphere creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 25 operations
+    /// There are 26 operations
     /// in the 'VMware vSphere' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, TopLevelRecoveryTargets, VmsByFids, or VmwareCdpLiveInfo.
+    /// one of: ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, ResourcePoolWithProvisionOnInfrastructure, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, TopLevelRecoveryTargets, VmsByFids, or VmwareCdpLiveInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -867,6 +867,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ResourcePoolWithProvisionOnInfrastructure operation
+    /// of the 'VMware vSphere' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vsphere
+    /// # API Operation: ResourcePoolWithProvisionOnInfrastructure
+    /// 
+    /// $query = New-RscQueryVsphere -Operation ResourcePoolWithProvisionOnInfrastructure
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VsphereResourcePool
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RootRecoveryHierarchy operation
     /// of the 'VMware vSphere' API domain.
     /// <code>
@@ -1268,6 +1296,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MountList",
                 "Network",
                 "ResourcePool",
+                "ResourcePoolWithProvisionOnInfrastructure",
                 "RootRecoveryHierarchy",
                 "Tag",
                 "TagCategory",
@@ -1343,6 +1372,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ResourcePool":
                         this.ProcessRecord_ResourcePool();
+                        break;
+                    case "ResourcePoolWithProvisionOnInfrastructure":
+                        this.ProcessRecord_ResourcePoolWithProvisionOnInfrastructure();
                         break;
                     case "RootRecoveryHierarchy":
                         this.ProcessRecord_RootRecoveryHierarchy();
@@ -1535,6 +1567,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ResourcePool";
             // Create new graphql operation vSphereResourcePool
             InitQueryVsphereResourcePool();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vSphereResourcePoolWithProvisionOnInfrastructure.
+        internal void ProcessRecord_ResourcePoolWithProvisionOnInfrastructure()
+        {
+            this._logger.name += " -ResourcePoolWithProvisionOnInfrastructure";
+            // Create new graphql operation vSphereResourcePoolWithProvisionOnInfrastructure
+            InitQueryVsphereResourcePoolWithProvisionOnInfrastructure();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2310,6 +2351,26 @@ $query.Var.fid = $someString"
                 "VsphereResourcePool",
                 Query.VsphereResourcePool,
                 Query.VsphereResourcePoolFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vSphereResourcePoolWithProvisionOnInfrastructure(fid: UUID!): VsphereResourcePool!
+        internal void InitQueryVsphereResourcePoolWithProvisionOnInfrastructure()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVsphereResourcePoolWithProvisionOnInfrastructure",
+                "($fid: UUID!)",
+                "VsphereResourcePool",
+                Query.VsphereResourcePoolWithProvisionOnInfrastructure,
+                Query.VsphereResourcePoolWithProvisionOnInfrastructureFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
             );

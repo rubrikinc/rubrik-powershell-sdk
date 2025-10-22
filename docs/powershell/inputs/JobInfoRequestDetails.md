@@ -88,3 +88,5 @@ and `ACTIVE_DIRECTORY_DOWNLOAD_SNAPSHOT_FROM_LOCATION` jobs.
   - Populate for `SQL Server instance` specific jobs.
 - mysqldbInstanceInfo: MysqldbInstanceInfo
   - Populate for `MYSQLDB_INSTANCE` jobs.
+- informixInstanceInfo: InformixInstanceInfo
+  - Populate for `INFORMIX_INSTANCE` jobs.

@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        [JsonProperty("cdmId")]
+        public System.String? CdmId { get; set; }
+
         //      C# -> System.Boolean? HasDatastoresForRecovery
         // GraphQL -> hasDatastoresForRecovery: Boolean! (scalar)
         [JsonProperty("hasDatastoresForRecovery")]
@@ -286,6 +291,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.String? CdmId = null,
         System.Boolean? HasDatastoresForRecovery = null,
         System.String? Id = null,
         System.String? Name = null,
@@ -341,6 +347,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
+        }
+        if ( CdmId != null ) {
+            this.CdmId = CdmId;
         }
         if ( HasDatastoresForRecovery != null ) {
             this.HasDatastoresForRecovery = HasDatastoresForRecovery;
@@ -536,6 +545,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "replicatedObjects" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmId\n" ;
+            } else {
+                s += ind + "cdmId\n" ;
             }
         }
         //      C# -> System.Boolean? HasDatastoresForRecovery
@@ -1011,6 +1029,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReplicatedObjects != null && ec.Excludes("replicatedObjects",false))
         {
             this.ReplicatedObjects = null;
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (ec.Includes("cdmId",true))
+        {
+            if(this.CdmId == null) {
+
+                this.CdmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmId != null && ec.Excludes("cdmId",true))
+        {
+            this.CdmId = null;
         }
         //      C# -> System.Boolean? HasDatastoresForRecovery
         // GraphQL -> hasDatastoresForRecovery: Boolean! (scalar)

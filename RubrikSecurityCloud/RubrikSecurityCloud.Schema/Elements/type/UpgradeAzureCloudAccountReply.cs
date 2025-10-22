@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureEntraIdGroupStatus? EntraIdGroupStatus
+        // GraphQL -> entraIdGroupStatus: AzureEntraIdGroupStatus (type)
+        [JsonProperty("entraIdGroupStatus")]
+        public AzureEntraIdGroupStatus? EntraIdGroupStatus { get; set; }
+
         //      C# -> List<UpgradeAzureCloudAccountStatus>? Status
         // GraphQL -> status: [UpgradeAzureCloudAccountStatus!]! (type)
         [JsonProperty("status")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public UpgradeAzureCloudAccountReply Set(
+        AzureEntraIdGroupStatus? EntraIdGroupStatus = null,
         List<UpgradeAzureCloudAccountStatus>? Status = null
     ) 
     {
+        if ( EntraIdGroupStatus != null ) {
+            this.EntraIdGroupStatus = EntraIdGroupStatus;
+        }
         if ( Status != null ) {
             this.Status = Status;
         }
@@ -55,6 +64,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureEntraIdGroupStatus? EntraIdGroupStatus
+        // GraphQL -> entraIdGroupStatus: AzureEntraIdGroupStatus (type)
+        if (this.EntraIdGroupStatus != null) {
+            var fspec = this.EntraIdGroupStatus.AsFieldSpec(conf.Child("entraIdGroupStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "entraIdGroupStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<UpgradeAzureCloudAccountStatus>? Status
         // GraphQL -> status: [UpgradeAzureCloudAccountStatus!]! (type)
         if (this.Status != null) {
@@ -74,6 +95,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AzureEntraIdGroupStatus? EntraIdGroupStatus
+        // GraphQL -> entraIdGroupStatus: AzureEntraIdGroupStatus (type)
+        if (ec.Includes("entraIdGroupStatus",false))
+        {
+            if(this.EntraIdGroupStatus == null) {
+
+                this.EntraIdGroupStatus = new AzureEntraIdGroupStatus();
+                this.EntraIdGroupStatus.ApplyExploratoryFieldSpec(ec.NewChild("entraIdGroupStatus"));
+
+            } else {
+
+                this.EntraIdGroupStatus.ApplyExploratoryFieldSpec(ec.NewChild("entraIdGroupStatus"));
+
+            }
+        }
+        else if (this.EntraIdGroupStatus != null && ec.Excludes("entraIdGroupStatus",false))
+        {
+            this.EntraIdGroupStatus = null;
+        }
         //      C# -> List<UpgradeAzureCloudAccountStatus>? Status
         // GraphQL -> status: [UpgradeAzureCloudAccountStatus!]! (type)
         if (ec.Includes("status",false))

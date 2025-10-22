@@ -11,7 +11,7 @@ Add a SAP HANA system to the Rubrik cluster.
 ### bulkrecoverdatabases
 Bulk recovery of SAP HANA databases to a point in time
 
-Supported in v9.4
+Supported in v9.4+
 Recover multiple SAP HANA databases to the provided point in time.
 
 - There is a single argument of type BulkRecoverSapHanaDatabasesInput.
@@ -35,7 +35,7 @@ Initiates a job to take an on demand full snapshot of a specified SAP HANA datab
 ### createondemanddatabackup
 Create an on-demand snapshot of the database
 
-Supported in v9.4
+Supported in v9.4+
 Initiates a job to take an on-demand snapshot of a specified SAP HANA database object. You can use the GET /sap_hana/db/request/{id} endpoint to monitor the progress of the job.
 
 - There is a single argument of type CreateOnDemandSapHanaDataBackupInput.
@@ -93,7 +93,7 @@ v9.0+: Update the system properties for the SAP HANA system.
 ### recoverdatabasetofullbackup
 Recover SAP HANA database to the full backup
 
-Supported in v9.4
+Supported in v9.4+
 Recover the SAP HANA database to the provided full backup.
 
 - There is a single argument of type RecoverSapHanaDatabaseToFullBackupInput.
@@ -101,7 +101,7 @@ Recover the SAP HANA database to the provided full backup.
 ### recoverdatabasetopointintime
 Recover the SAP HANA database to a point in time
 
-Supported in v9.4
+Supported in v9.4+
 Recover the SAP HANA database to the provided point in time.
 
 - There is a single argument of type RecoverSapHanaDatabaseToPointInTimeInput.

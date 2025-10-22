@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? HasProtection
+        // GraphQL -> hasProtection: Boolean (scalar)
+        [JsonProperty("hasProtection")]
+        public System.Boolean? HasProtection { get; set; }
+
         //      C# -> System.String? LabelId
         // GraphQL -> labelId: String! (scalar)
         [JsonProperty("labelId")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public MipLabel Set(
+        System.Boolean? HasProtection = null,
         System.String? LabelId = null,
         System.String? LabelName = null,
         System.String? SiteId = null
     ) 
     {
+        if ( HasProtection != null ) {
+            this.HasProtection = HasProtection;
+        }
         if ( LabelId != null ) {
             this.LabelId = LabelId;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? HasProtection
+        // GraphQL -> hasProtection: Boolean (scalar)
+        if (this.HasProtection != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasProtection\n" ;
+            } else {
+                s += ind + "hasProtection\n" ;
+            }
+        }
         //      C# -> System.String? LabelId
         // GraphQL -> labelId: String! (scalar)
         if (this.LabelId != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Boolean? HasProtection
+        // GraphQL -> hasProtection: Boolean (scalar)
+        if (ec.Includes("hasProtection",true))
+        {
+            if(this.HasProtection == null) {
+
+                this.HasProtection = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasProtection != null && ec.Excludes("hasProtection",true))
+        {
+            this.HasProtection = null;
+        }
         //      C# -> System.String? LabelId
         // GraphQL -> labelId: String! (scalar)
         if (ec.Includes("labelId",true))

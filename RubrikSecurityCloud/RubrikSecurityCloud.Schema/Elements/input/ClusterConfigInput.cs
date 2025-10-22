@@ -39,15 +39,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numNodes")]
         public System.Int32? NumNodes { get; set; }
 
-        //      C# -> List<System.String>? DnsSearchDomains
-        // GraphQL -> dnsSearchDomains: [String!] (scalar)
-        [JsonProperty("dnsSearchDomains")]
-        public List<System.String>? DnsSearchDomains { get; set; }
-
         //      C# -> List<System.String>? DnsNameServers
         // GraphQL -> dnsNameServers: [String!] (scalar)
         [JsonProperty("dnsNameServers")]
         public List<System.String>? DnsNameServers { get; set; }
+
+        //      C# -> List<System.String>? DnsSearchDomains
+        // GraphQL -> dnsSearchDomains: [String!] (scalar)
+        [JsonProperty("dnsSearchDomains")]
+        public List<System.String>? DnsSearchDomains { get; set; }
 
         //      C# -> List<System.String>? NtpServers
         // GraphQL -> ntpServers: [String!] (scalar)
@@ -68,6 +68,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ociEsConfig: OciEsConfigInput (input)
         [JsonProperty("ociEsConfig")]
         public OciEsConfigInput? OciEsConfig { get; set; }
+
+        //      C# -> GcpEsConfigInput? GcpEsConfig
+        // GraphQL -> gcpEsConfig: GcpEsConfigInput (input)
+        [JsonProperty("gcpEsConfig")]
+        public GcpEsConfigInput? GcpEsConfig { get; set; }
 
 
         #endregion

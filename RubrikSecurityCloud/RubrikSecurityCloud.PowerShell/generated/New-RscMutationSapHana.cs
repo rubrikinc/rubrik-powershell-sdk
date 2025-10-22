@@ -98,6 +98,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		azureFeatureId = $someString
     /// 		# OPTIONAL
+    /// 		backupTriggerType = $someSapHanaSystemConfigBackupTriggerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemConfigBackupTriggerType]) for enum values.
+    /// 		# OPTIONAL
     /// 		authTypeSpec = @{
     /// 			# REQUIRED
     /// 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
@@ -516,6 +518,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		username = $someString
     /// 		# OPTIONAL
     /// 		azureFeatureId = $someString
+    /// 		# OPTIONAL
+    /// 		backupTriggerType = $someSapHanaSystemPatchBackupTriggerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemPatchBackupTriggerType]) for enum values.
     /// 		# OPTIONAL
     /// 		authTypeSpec = @{
     /// 			# REQUIRED
@@ -967,6 +971,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		azureFeatureId = $someString
 		# OPTIONAL
+		backupTriggerType = $someSapHanaSystemConfigBackupTriggerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemConfigBackupTriggerType]) for enum values.
+		# OPTIONAL
 		authTypeSpec = @{
 			# REQUIRED
 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
@@ -1305,6 +1311,8 @@ $query.Var.input = @{
 		username = $someString
 		# OPTIONAL
 		azureFeatureId = $someString
+		# OPTIONAL
+		backupTriggerType = $someSapHanaSystemPatchBackupTriggerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemPatchBackupTriggerType]) for enum values.
 		# OPTIONAL
 		authTypeSpec = @{
 			# REQUIRED

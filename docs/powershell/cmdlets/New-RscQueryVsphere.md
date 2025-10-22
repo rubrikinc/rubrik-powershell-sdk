@@ -111,6 +111,11 @@ vSphere Live Mount Connection
 ### resourcepool
 - There is a single argument of type System.String.
 - Returns VsphereResourcePool.
+### resourcepoolwithprovisiononinfrastructure
+Returns a single vSphere resource pool that is to be used as a recovery compute resource. Permission checks are performed against the ProvisionOnInfrastructure operation, not the ViewInventory operation. This is a short-term approach for solving RBAC issues with a previous datastore that was not auto-selected during the export workflow with low inventory view permission.
+
+- There is a single argument of type System.String.
+- Returns VsphereResourcePool.
 ### rootrecoveryhierarchy
 The root hierarchy for VMware export, which includes VMware compute clusters and standalone hosts.
 

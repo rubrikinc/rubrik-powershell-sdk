@@ -4431,6 +4431,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			mysqldbInstanceFid = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		informixInstanceInfo = @{
+    /// 			# OPTIONAL
+    /// 			informixInstanceFid = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -5923,6 +5928,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		labelId = $someString
     /// 		# OPTIONAL
     /// 		labelName = $someString
+    /// 		# OPTIONAL
+    /// 		hasProtection = $someBoolean
     /// }
     /// )
     /// # OPTIONAL
@@ -15424,6 +15431,11 @@ $query.Var.input = @{
 			# OPTIONAL
 			mysqldbInstanceFid = $someString
 		}
+		# OPTIONAL
+		informixInstanceInfo = @{
+			# OPTIONAL
+			informixInstanceFid = $someString
+		}
 	}
 }"
             );
@@ -16864,6 +16876,8 @@ $query.Var.mipLabelsFilter = @(
 		labelId = $someString
 		# OPTIONAL
 		labelName = $someString
+		# OPTIONAL
+		hasProtection = $someBoolean
 }
 )
 # OPTIONAL

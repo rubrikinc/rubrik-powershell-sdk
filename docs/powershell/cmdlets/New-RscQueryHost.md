@@ -23,6 +23,11 @@ Get list of physical hosts.
     - hostRoot - HostRoot: Host root type.
     - isBulkPolicyAssignmentFlow - System.Boolean: Bulk policy assignment request.
 - Returns PhysicalHostConnection.
+### rbsnetworklimit
+Get RBS network throttle limits for a host.
+
+- There is a single argument of type System.String.
+- Returns GetHostRbsNetworkThrottleResponse.
 ### search
 - There are 2 arguments.
     - id - System.String: ID of the host to search.

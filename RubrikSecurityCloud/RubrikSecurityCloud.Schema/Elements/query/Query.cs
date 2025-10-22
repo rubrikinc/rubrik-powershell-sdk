@@ -8503,6 +8503,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GetHostRbsNetworkThrottleResponse? HostRbsNetworkLimit
+        // GraphQL -> hostRbsNetworkLimit: GetHostRbsNetworkThrottleResponse! (type)
+        public static string HostRbsNetworkLimit(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nhostId: $hostId\n)";
+            return "hostRbsNetworkLimit" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object HostRbsNetworkLimitFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetHostRbsNetworkThrottleResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> HostShare? HostShare
         // GraphQL -> hostShare: HostShare! (type)
         public static string HostShare(object fsObj)
@@ -11037,6 +11055,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new NutanixLiveMountConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetNutanixMountsReply? NutanixMountsV2
+        // GraphQL -> nutanixMountsV2: GetNutanixMountsReply! (type)
+        public static string NutanixMountsV2(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "nutanixMountsV2" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object NutanixMountsV2FieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetNutanixMountsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15532,6 +15568,24 @@ namespace RubrikSecurityCloud.Types
             return "vSphereResourcePool" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereResourcePoolFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new VsphereResourcePool() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> VsphereResourcePool? VsphereResourcePoolWithProvisionOnInfrastructure
+        // GraphQL -> vSphereResourcePoolWithProvisionOnInfrastructure: VsphereResourcePool! (type)
+        public static string VsphereResourcePoolWithProvisionOnInfrastructure(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "vSphereResourcePoolWithProvisionOnInfrastructure" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object VsphereResourcePoolWithProvisionOnInfrastructureFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();

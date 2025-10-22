@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public HierarchyObjectTypeEnum? ObjectType { get; set; }
 
+        //      C# -> AzureAdProvisioningState? ProvisioningState
+        // GraphQL -> provisioningState: AzureAdProvisioningState! (enum)
+        [JsonProperty("provisioningState")]
+        public AzureAdProvisioningState? ProvisioningState { get; set; }
+
         //      C# -> PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment
         // GraphQL -> rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
         [JsonProperty("rscPendingObjectPauseAssignment")]
@@ -362,6 +367,7 @@ namespace RubrikSecurityCloud.Types
     public AzureAdDirectory Set(
         List<Operation>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,
+        AzureAdProvisioningState? ProvisioningState = null,
         PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
@@ -417,6 +423,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
+        }
+        if ( ProvisioningState != null ) {
+            this.ProvisioningState = ProvisioningState;
         }
         if ( RscPendingObjectPauseAssignment != null ) {
             this.RscPendingObjectPauseAssignment = RscPendingObjectPauseAssignment;
@@ -592,6 +601,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectType\n" ;
             } else {
                 s += ind + "objectType\n" ;
+            }
+        }
+        //      C# -> AzureAdProvisioningState? ProvisioningState
+        // GraphQL -> provisioningState: AzureAdProvisioningState! (enum)
+        if (this.ProvisioningState != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "provisioningState\n" ;
+            } else {
+                s += ind + "provisioningState\n" ;
             }
         }
         //      C# -> PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment
@@ -1129,6 +1147,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectType != null && ec.Excludes("objectType",true))
         {
             this.ObjectType = null;
+        }
+        //      C# -> AzureAdProvisioningState? ProvisioningState
+        // GraphQL -> provisioningState: AzureAdProvisioningState! (enum)
+        if (ec.Includes("provisioningState",true))
+        {
+            if(this.ProvisioningState == null) {
+
+                this.ProvisioningState = new AzureAdProvisioningState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProvisioningState != null && ec.Excludes("provisioningState",true))
+        {
+            this.ProvisioningState = null;
         }
         //      C# -> PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment
         // GraphQL -> rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)

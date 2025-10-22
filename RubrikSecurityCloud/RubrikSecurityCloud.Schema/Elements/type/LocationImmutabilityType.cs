@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("bucketLockDurationDays")]
         public System.Int32? BucketLockDurationDays { get; set; }
 
+        //      C# -> System.Boolean? IsObjectLockEnabled
+        // GraphQL -> isObjectLockEnabled: Boolean! (scalar)
+        [JsonProperty("isObjectLockEnabled")]
+        public System.Boolean? IsObjectLockEnabled { get; set; }
+
 
         #endregion
 
@@ -35,11 +40,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public LocationImmutabilityType Set(
-        System.Int32? BucketLockDurationDays = null
+        System.Int32? BucketLockDurationDays = null,
+        System.Boolean? IsObjectLockEnabled = null
     ) 
     {
         if ( BucketLockDurationDays != null ) {
             this.BucketLockDurationDays = BucketLockDurationDays;
+        }
+        if ( IsObjectLockEnabled != null ) {
+            this.IsObjectLockEnabled = IsObjectLockEnabled;
         }
         return this;
     }
@@ -62,6 +71,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "bucketLockDurationDays\n" ;
             } else {
                 s += ind + "bucketLockDurationDays\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsObjectLockEnabled
+        // GraphQL -> isObjectLockEnabled: Boolean! (scalar)
+        if (this.IsObjectLockEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isObjectLockEnabled\n" ;
+            } else {
+                s += ind + "isObjectLockEnabled\n" ;
             }
         }
         return s;
@@ -87,6 +105,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.BucketLockDurationDays != null && ec.Excludes("bucketLockDurationDays",true))
         {
             this.BucketLockDurationDays = null;
+        }
+        //      C# -> System.Boolean? IsObjectLockEnabled
+        // GraphQL -> isObjectLockEnabled: Boolean! (scalar)
+        if (ec.Includes("isObjectLockEnabled",true))
+        {
+            if(this.IsObjectLockEnabled == null) {
+
+                this.IsObjectLockEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsObjectLockEnabled != null && ec.Excludes("isObjectLockEnabled",true))
+        {
+            this.IsObjectLockEnabled = null;
         }
     }
 
