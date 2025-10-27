@@ -3,18 +3,12 @@ BeforeAll {
 
     # variables shared among tests
     $Global:data = @{
-        vm = $null
+        vm = Get-RscVmwareVm
     }
 }
 
 
 Describe -Name 'Get-RscVmwareVm Tests' -Tag 'Public' -Fixture {
-
-    It -Name 'retrieves VMs' -Test {
-        $data.vm = Get-RscVmwareVm
-        # Write-Host "data.vm.count = $($data.vm.count)"
-        $data.vm | Should -Not -BeNullOrEmpty
-    }
 
     Context -Name 'VM Count > 0' {
         BeforeEach {

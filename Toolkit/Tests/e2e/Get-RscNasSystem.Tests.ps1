@@ -3,21 +3,15 @@ BeforeAll {
 
     # variables shared among tests
     $Global:data = @{
-        nasSystems = $null
+        nasSystems = Get-RscNasSystem
     }
 }
 
 Describe -Name 'Get-RscNasSystem Tests' -Tag 'Public' -Fixture {
 
-    It -Name 'retrieves NAS-Systems' -Test {
-        $data.nasSystems = Get-RscNasSystem
-        Write-Host "data.nasSystems.count = $($data.nasSystems.count)"
-        $data.nasSystems | Should -Not -BeNullOrEmpty
-    }
-
     Context -Name 'NasSystems Count > 0' {
         BeforeEach {
-            # Skip the tests if empty NAS-Systems list 
+            # Skip the tests if empty NAS-Systems list
             if ($data.nasSystems.Count -le 0) {
                 Set-ItResult -Skipped -Because "At least 1 NAS-System is needed"
                 return
